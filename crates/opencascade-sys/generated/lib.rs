@@ -1,6 +1,7 @@
 // Generated OCCT bindings
 // Nested C++ types use Parent_Child naming, which is intentional
 #![allow(non_camel_case_types)]
+#![allow(non_snake_case)]
 
 // FFI type definitions (opaque structs, POD structs, handles)
 pub(crate) mod ffi_types;

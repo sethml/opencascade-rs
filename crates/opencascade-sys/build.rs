@@ -109,10 +109,20 @@ fn main() {
         .flag_if_supported("-Wno-delete-non-abstract-non-virtual-dtor")
         .flag_if_supported("-Wno-delete-abstract-non-virtual-dtor")
         .define("_USE_MATH_DEFINES", "TRUE")
-        .include(&occt_config.include_dir)
         .include(&gen_dir)
-        .debug(false)
-        .compile("opencascade_sys_wrapper");
+        .debug(false);
+
+    // Treat the OCCT include directory as a system header path so the compiler
+    // suppresses warnings from third-party OCCT code (e.g. sprintf deprecation).
+    // MSVC does not support -isystem; on GCC/Clang it is standard.
+    if target.contains("msvc") {
+        build.include(&occt_config.include_dir);
+    } else {
+        build.flag("-isystem");
+        build.flag(occt_config.include_dir.to_str().unwrap());
+    }
+
+    build.compile("opencascade_sys_wrapper");
 
     println!("cargo:rustc-link-lib=static=opencascade_sys_wrapper");
 

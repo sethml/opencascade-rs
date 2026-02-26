@@ -872,3 +872,110 @@ Done. Here's a summary:
 **Refactoring committed** (build.rs): Replaced the manually-maintained `OCCT_LIBS` array (24 libraries) with auto-derivation from generated wrapper filenames. This fixed a real bug: 25 toolkits had generated wrapper code but were missing from the link list, which would cause linker errors if their functions were used from Rust.
 
 Made changes.
+
+User: Can you suppress the C++ sprintf warnings and the generated/lib.rs snake case warnings?
+
+warning: opencascade-sys@0.2.0: In file included from /Users/sethml/src/opencascade-rs/crates/opencascade-sys/generated/wrappers_TKShHealing.cpp:50:
+warning: opencascade-sys@0.2.0: In file included from /Users/sethml/src/opencascade-rs/target/debug/build/opencascade-sys-3f85feb8bc2b51d0/out/../../../../OCCT/build/include/ShapeAnalysis_Surface.hxx:1:
+warning: opencascade-sys@0.2.0: In file included from /Users/sethml/src/opencascade-rs/crates/occt-sys/OCCT/src/ShapeAnalysis/ShapeAnalysis_Surface.hxx:20:
+warning: opencascade-sys@0.2.0: In file included from /Users/sethml/src/opencascade-rs/target/debug/build/opencascade-sys-3f85feb8bc2b51d0/out/../../../../OCCT/build/include/Extrema_ExtPS.hxx:1:
+warning: opencascade-sys@0.2.0: In file included from /Users/sethml/src/opencascade-rs/crates/occt-sys/OCCT/src/Extrema/Extrema_ExtPS.hxx:25:
+warning: opencascade-sys@0.2.0: In file included from /Users/sethml/src/opencascade-rs/target/debug/build/opencascade-sys-3f85feb8bc2b51d0/out/../../../../OCCT/build/include/Extrema_GenExtPS.hxx:1:
+warning: opencascade-sys@0.2.0: In file included from /Users/sethml/src/opencascade-rs/crates/occt-sys/OCCT/src/Extrema/Extrema_GenExtPS.hxx:23:
+warning: opencascade-sys@0.2.0: In file included from /Users/sethml/src/opencascade-rs/target/debug/build/opencascade-sys-3f85feb8bc2b51d0/out/../../../../OCCT/build/include/Extrema_HUBTreeOfSphere.hxx:1:
+warning: opencascade-sys@0.2.0: In file included from /Users/sethml/src/opencascade-rs/crates/occt-sys/OCCT/src/Extrema/Extrema_HUBTreeOfSphere.hxx:19:
+warning: opencascade-sys@0.2.0: In file included from /Users/sethml/src/opencascade-rs/target/debug/build/opencascade-sys-3f85feb8bc2b51d0/out/../../../../OCCT/build/include/NCollection_UBTreeFiller.hxx:1:
+warning: opencascade-sys@0.2.0: /Users/sethml/src/opencascade-rs/crates/occt-sys/OCCT/src/NCollection/NCollection_UBTreeFiller.hxx:198:3: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+warning: opencascade-sys@0.2.0:   198 |   sprintf(buf, "Checking UBTree:%8d leaves, balance =%7.2f", aNumber, aLen1 / aLen0);
+warning: opencascade-sys@0.2.0:       |   ^
+warning: opencascade-sys@0.2.0: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+warning: opencascade-sys@0.2.0:   278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+warning: opencascade-sys@0.2.0:       | ^
+warning: opencascade-sys@0.2.0: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+warning: opencascade-sys@0.2.0:   227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+warning: opencascade-sys@0.2.0:       |                                                       ^
+warning: opencascade-sys@0.2.0: 1 warning generated.
+
+ --> crates/opencascade-sys/src/../generated/lib.rs:9:16
+  |
+9 | pub(crate) mod ffi_extern_TKBO;
+  |                ^^^^^^^^^^^^^^^ help: convert the identifier to snake case: `ffi_extern_tkbo`
+  |
+  = note: `#[warn(non_snake_case)]` (part of `#[warn(nonstandard_style)]`) on by default
+
+GitHub Copilot: Reading lines 1-20 of [lib.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/generated/lib.rs#L1-L21)
+Completed with input: {
+  "filePath": "crates/opencascade-sys/generated/lib.rs",
+  "startLine": 1,
+  "endLine": 20
+}
+
+Reading lines 80-140 of [build.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/build.rs#L80-L141)
+Completed with input: {
+  "filePath": "crates/opencascade-sys/build.rs",
+  "startLine": 80,
+  "endLine": 140
+}
+
+Now let me find where the binding generator writes `lib.rs`: 
+
+Searched for text `lib.rs|non_camel_case_types|non_snake_case|ffi_extern` (`**/crates/opencascade-binding-generator/src/**`), 20 results
+
+Reading lines 1558-1585 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L1558-L1586)
+Completed with input: {
+  "endLine": 1585,
+  "filePath": "crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 1558
+}
+
+Two fixes needed:
+1. `generated/lib.rs` needs `#![allow(non_snake_case)]` — also fix the generator so it sticks after regeneration
+2. `build.rs` should use `-isystem` for the OCCT include path — this treats OCCT headers as system headers, definitively suppressing all their warnings (the existing `-Wno-deprecated-declarations` flag passes through `flag_if_supported` but may not be applying correctly) 
+
+Edited: [lib.rs -1+2](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/generated/lib.rs#L3-L5)  
+Edited: [main.rs -1+2](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L1563-L1565)  
+Edited: [build.rs -4+14](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/build.rs#L112-L126)
+Completed with input: {
+  "edits": [
+    {
+      "filePath": "crates/opencascade-sys/generated/lib.rs",
+      "lineHashes": "3:on",
+      "content": "#![allow(non_camel_case_types)]\n#![allow(non_snake_case)]"
+    },
+    {
+      "filePath": "crates/opencascade-binding-generator/src/main.rs",
+      "lineHashes": "1563:pm",
+      "content": "    output.push_str(\"#![allow(non_camel_case_types)]\\n\");\n    output.push_str(\"#![allow(non_snake_case)]\\n\\n\");"
+    },
+    {
+      "filePath": "crates/opencascade-sys/build.rs",
+      "lineHashes": "112:cn,113:ik,114:ip,115:yq",
+      "content": "        .include(&gen_dir)\n        .debug(false);\n\n    // Treat the OCCT include directory as a system header path so the compiler\n    // suppresses warnings from third-party OCCT code (e.g. sprintf deprecation).\n    // MSVC does not support -isystem; on GCC/Clang it is standard.\n    if target.contains(\"msvc\") {\n        build.include(&occt_config.include_dir);\n    } else {\n        build.flag(\"-isystem\");\n        build.flag(occt_config.include_dir.to_str().unwrap());\n    }\n\n    build.compile(\"opencascade_sys_wrapper\");"
+    }
+  ]
+}
+
+Ran terminal command:  time cargo build 2>&1 | grep -E "^warning:|^error|Finished|Compiling opencascade-sys" | grep -v "^warning: opencascade-sys.*In file" | grep -v "^warning: opencascade-sys.*from /" | head -30
+
+Both warnings are gone. Let me run the tests before committing: 
+
+Ran terminal command:  cargo test --workspace --exclude opencascade-binding-generator 2>&1 | grep -E "test result|error\[" && scripts/run-binding-generator-tests.sh 2>&1 | tail -5
+
+Ran terminal command:  grep -E "test result|error\[" '/Users/sethml/Library/Application Support/Code - Insiders/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/c65b6eac-4952-45c3-9b66-7775d211e908/toolu_bdrk_01Uh7REvK2XjLEfcBakEH51J__vscode-1772068646139/content.txt'
+Completed with input:  grep -E "test result|error\[" '/Users/sethml/Library/Application Support/Code - Insiders/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/c65b6eac-4952-45c3-9b66-7775d211e908/toolu_bdrk_01Uh7REvK2XjLEfcBakEH51J__vscode-1772068646139/content.txt'
+
+Ran terminal command:  scripts/run-binding-generator-tests.sh 2>&1 | tail -8
+
+All tests pass. Now let me commit: 
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/commit-msg-suppress-warnings.txt)
+
+Ran terminal command:  git add crates/opencascade-sys/build.rs crates/opencascade-sys/generated/lib.rs crates/opencascade-binding-generator/src/main.rs && git commit -F tmp/commit-msg-suppress-warnings.txt
+
+Done. Both warnings are suppressed:
+
+1. **C++ `sprintf` deprecation**: Changed the OCCT include path from `-I` to `-isystem` in build.rs. System headers have their warnings silenced by default by the compiler — this is the correct treatment for third-party code we don't control. MSVC falls back to `-I`.
+
+2. **Rust `non_snake_case`**: Added `#![allow(non_snake_case)]` to generated/lib.rs, and updated main.rs in the binding generator so the attribute is re-emitted on regeneration.
+
+Made changes.

@@ -1560,7 +1560,8 @@ fn generate_lib_rs(modules: &[&module_graph::Module], extra_modules: &[(String, 
     let mut output = String::new();
     output.push_str("// Generated OCCT bindings\n");
     output.push_str("// Nested C++ types use Parent_Child naming, which is intentional\n");
-    output.push_str("#![allow(non_camel_case_types)]\n\n");
+    output.push_str("#![allow(non_camel_case_types)]\n");
+    output.push_str("#![allow(non_snake_case)]\n\n");
 
     // FFI type definitions + per-toolkit extern modules
     output.push_str("// FFI type definitions (opaque structs, POD structs, handles)\n");
