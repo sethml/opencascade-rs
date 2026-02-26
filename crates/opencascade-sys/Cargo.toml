@@ -14,7 +14,7 @@ doctest = false
 
 [build-dependencies]
 cmake = "0.1"
-cc = "1"
+cc = { version = "1", features = ["parallel"] }
 occt-sys = { path = "../occt-sys", optional = true }
 
 [features]
