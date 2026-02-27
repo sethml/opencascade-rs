@@ -21,6 +21,15 @@ When writing scripts, if they're more than 5 lines write to a temporary file rat
 
 Never git commit unless explicitly asked to do so.
 
+## Chat Log Export
+
+After committing, run `scripts/export_chat_log.py` to export the current chat session to `agent-logs/`. Then amend the commit to include the generated log file:
+```
+python3 scripts/export_chat_log.py
+git add agent-logs/
+git commit --amend --no-edit
+```
+
 When resolving git merge conflicts, any code in crates/opencascade-sys/generated is generated code and should be regenerated rather than trying to resolve conflicts.
 
 When converting code to use the new API, refer to crates/opencascade-sys/PORTING.md. Update that file as you discover new porting ideas or changes.
