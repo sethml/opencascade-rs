@@ -1396,6 +1396,9 @@ def main() -> None:
     # have been generated but not yet persisted.
     if not args.no_wait:
         sys.stdin.close()
+        devnull = os.open(os.devnull, os.O_RDONLY)
+        os.dup2(devnull, 0)
+        os.close(devnull)
         initial_mtime = os.path.getmtime(session_path)
         deadline = time.time() + 65
         print("  Waiting for JSONL flush...", end="", file=sys.stderr, flush=True)
