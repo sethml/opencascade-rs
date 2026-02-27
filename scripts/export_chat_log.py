@@ -4,7 +4,7 @@ Extract a VS Code Copilot chat session from JSONL format into
 a clean, readable markdown file.
 
 Usage:
-    python3 tmp/export_chat_log.py [--session-id UUID] [--output PATH]
+    python3 scripts/export_chat_log.py [--session-id UUID] [--output PATH]
 
 If no session-id is given, uses the most recently active session for this workspace.
 If no output is given, writes to agent-logs/ with the standard naming convention.
@@ -23,6 +23,7 @@ from urllib.parse import unquote
 
 # Prepended to workspace-relative links; set via --project-root (default "..")
 _project_root = ".."
+_workspace_path = ""
 
 
 # ---------------------------------------------------------------------------
@@ -393,13 +394,13 @@ def _reassign_interjections(request_order, requests_by_id, request_submit_seq,
         owner = find_owner(seq_num)
         new_windows[owner].append(window)
 
+    idx_by_rid = {rid: i for i, rid in enumerate(request_order)}
     # Log reassignments
     for rid in request_order:
-        idx = request_order.index(rid)
         orig_count = sum(len(w) for _, w in response_windows.get(rid, []))
         new_count = sum(len(w) for w in new_windows[rid])
         if orig_count != new_count:
-            print(f"  Interjection: req[{idx}] response parts {orig_count} -> {new_count}",
+            print(f"  Interjection: req[{idx_by_rid[rid]}] response parts {orig_count} -> {new_count}",
                   file=sys.stderr)
 
     # Stitch and apply
@@ -435,7 +436,8 @@ def _reassign_interjections(request_order, requests_by_id, request_submit_seq,
 
     reassign_field(result_writes, "result")
     reassign_field(model_state_writes, "modelState", skip_canceled=False)
-    reassign_field(followups_writes, "followups", skip_canceled=False)
+
+# ---------------------------------------------------------------------------
 # ---------------------------------------------------------------------------
 # Text extraction helpers
 # ---------------------------------------------------------------------------
@@ -453,13 +455,18 @@ def shorten_path(p):
     """Return workspace-relative path, or the original absolute path if external."""
     if not p:
         return p
-    for m in ("/opencascade-rs/",):
-        idx = p.find(m)
-        if idx >= 0:
-            return p[idx + len(m):]
+    if _workspace_path:
+        prefix = _workspace_path + "/"
+        if p.startswith(prefix):
+            return p[len(prefix):]
     return p  # Keep absolute path as-is for external files
 
 
+def shorten_paths_in_text(text):
+    """Replace workspace-absolute paths with workspace-relative paths in arbitrary text."""
+    if not text or not _workspace_path:
+        return text
+    return text.replace(_workspace_path + "/", "")
 def make_link_path(p):
     """Prepend project root to workspace-relative paths for use in markdown links."""
     if not p or p.startswith('/') or p.startswith('~'):
@@ -668,7 +675,7 @@ def format_result_details(result_details):
     if is_error:
         lines.append("**(error)**")
     if inp:
-        inp_display = shorten_path(inp[:3000])
+        inp_display = shorten_paths_in_text(inp[:3000])
         inp_fence = fence_for(inp_display)
         lines.append("**Input:**")
         lines.append(inp_fence)
@@ -680,7 +687,7 @@ def format_result_details(result_details):
         if isinstance(out_item, dict):
             val = out_item.get("value", "")
             if val:
-                val_display = shorten_path(val[:3000])
+                val_display = shorten_paths_in_text(val[:3000])
                 val_fence = fence_for(val_display)
                 lines.append("**Output:**")
                 lines.append(val_fence)
@@ -878,7 +885,6 @@ def get_request_model(req):
     return humanize_model_id(model_id)
 
 
-
 def classify_requests(requests):
     """Classify requests and assign display turn numbers.
 
@@ -940,6 +946,7 @@ def _get_prompt_text(req):
     elif isinstance(msg, str):
         return msg.strip()
     return ""
+
 def session_to_markdown(session, rolled_back_ids=None):
     """Convert a replayed session state to a rich markdown document."""
     out = []
@@ -965,7 +972,6 @@ def session_to_markdown(session, rolled_back_ids=None):
     visible = [c for c in active if not c["is_rolled_back"]]
 
     # Compute stats (only for visible requests)
-    total_parts = sum(len(c["req"].get("response", [])) for c in visible)
     total_tool_calls = 0
     total_thinking = 0
     total_prompt_tokens = 0
@@ -1235,9 +1241,8 @@ def get_session_creation_time(session):
 
 def generate_output_path(session, output_dir):
     dt = get_session_creation_time(session)
-    model = get_model_short_name(session)
     date_str = dt.strftime("%Y-%m-%d_%H-%M")
-    filename = f"{date_str}-vscode-{model}.md"
+    filename = f"{date_str}_log.md"
     return os.path.join(output_dir, filename)
 
 
@@ -1257,8 +1262,9 @@ def main():
     parser.add_argument("--no-wait", action="store_true", help="Skip waiting for JSONL flush (VS Code writes ~every 60s)")
     args = parser.parse_args()
 
-    global _project_root
+    global _project_root, _workspace_path
     _project_root = args.project_root
+    _workspace_path = os.path.abspath(args.workspace)
 
     workspace = os.path.abspath(args.workspace)
     storage_path = find_workspace_storage(workspace)
