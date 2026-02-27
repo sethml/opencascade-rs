@@ -2,4 +2,5 @@
 /Cargo.lock
 .DS_Store
 .cargo/
-tmp/
+__pycache__/
+

@@ -16,6 +16,7 @@ import os
 import re
 import sqlite3
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import unquote
@@ -1253,6 +1254,7 @@ def main():
     parser.add_argument("--workspace", "-w", default=".", help="Workspace root directory")
     parser.add_argument("--project-root", default="..", help="Path from output dir to project root, prepended to relative links (default: '..')")
     parser.add_argument("--list", "-l", action="store_true", help="List available sessions")
+    parser.add_argument("--no-wait", action="store_true", help="Skip waiting for JSONL flush (VS Code writes ~every 60s)")
     args = parser.parse_args()
 
     global _project_root
@@ -1278,6 +1280,23 @@ def main():
 
     session_path = find_active_session(storage_path, args.session_id)
     print(f"Extracting session from: {os.path.basename(session_path)}", file=sys.stderr)
+
+    # Wait for JSONL flush — VS Code writes chat data every ~60 seconds.
+    # Waiting for the next write ensures we capture response parts that
+    # have been generated but not yet persisted.
+    if not args.no_wait:
+        initial_mtime = os.path.getmtime(session_path)
+        deadline = time.time() + 65
+        print("  Waiting for JSONL flush...", end="", file=sys.stderr, flush=True)
+        while time.time() < deadline:
+            if os.path.getmtime(session_path) != initial_mtime:
+                break
+            time.sleep(0.5)
+        elapsed_wait = 65 - (deadline - time.time())
+        if os.path.getmtime(session_path) != initial_mtime:
+            print(f" flushed after {elapsed_wait:.0f}s", file=sys.stderr)
+        else:
+            print(f" timeout (file unchanged)", file=sys.stderr)
 
     session = replay_jsonl(session_path)
 
