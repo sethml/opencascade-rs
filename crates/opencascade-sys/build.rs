@@ -10,6 +10,7 @@
 //!     -o crates/opencascade-sys/generated \
 //!     $(cat crates/opencascade-sys/headers.txt | grep -v '^#' | grep -v '^$' | sed 's|^|target/OCCT/include/|')
 
+use std::io::Write;
 use std::path::PathBuf;
 
 fn main() {
@@ -78,11 +79,25 @@ fn main() {
         Vec::new()
     };
 
+    // Combine all per-toolkit wrappers into a single compilation unit.
+    // This reduces total CPU time by avoiding redundant OCCT header parsing
+    // across 50 separate files.
+    let out_dir = PathBuf::from(std::env::var("OUT_DIR").expect("OUT_DIR not set"));
+    let combined_cpp = out_dir.join("wrappers_combined.cpp");
+    {
+        let mut f = std::fs::File::create(&combined_cpp)
+            .expect("Failed to create combined wrapper file");
+        writeln!(f, "// Auto-generated: combines all per-toolkit wrappers into one TU").unwrap();
+        for cpp_file in &wrapper_cpp_files {
+            let abs = std::fs::canonicalize(cpp_file)
+                .unwrap_or_else(|_| cpp_file.clone());
+            writeln!(f, "#include \"{}\"", abs.display()).unwrap();
+        }
+    }
+
     // Build with cc
     let mut build = cc::Build::new();
-    for cpp_file in &wrapper_cpp_files {
-        build.file(cpp_file);
-    }
+    build.file(&combined_cpp);
     for cpp_file in &manual_cpp_files {
         build.file(cpp_file);
     }
