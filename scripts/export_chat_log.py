@@ -980,6 +980,8 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
     total_thinking = 0
     total_prompt_tokens = 0
     total_output_tokens = 0
+    total_input_words = 0
+    total_output_words = 0
     total_elapsed_ms = 0
     models_used = set()
     for c in visible:
@@ -1034,6 +1036,10 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
     out.append(f"- **Turns:** {len(visible)}")
     out.append(f"- **Tool calls:** {total_tool_calls}")
     out.append(f"- **Thinking blocks:** {total_thinking}")
+    INPUT_WORDS_IDX = len(out)
+    out.append("")  # placeholder for input words
+    OUTPUT_WORDS_IDX = len(out)
+    out.append("")  # placeholder for output words
     if total_prompt_tokens:
         out.append(f"- **Input tokens:** {total_prompt_tokens:,}")
     if total_output_tokens:
@@ -1090,6 +1096,8 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
         req = c["req"]
         turn_idx = c["turn_num"]
         user_text = _get_prompt_text(req)
+        turn_input_words = len(user_text.split()) if user_text else 0
+        turn_output_words = 0
 
         req_ts = req.get("timestamp", 0)
         req_dt = datetime.fromtimestamp(req_ts / 1000) if req_ts else None
@@ -1167,6 +1175,8 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
                     for line in think_lines:
                         out.append(line)
                     out.append("")
+                think_text = part.get("value", "")
+                turn_output_words += len(think_text.split()) if think_text else 0
                 continue
 
             # Inline reference — merge into text run
@@ -1185,6 +1195,20 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
                     for line in tool_lines:
                         out.append(line)
                     out.append("")
+                # Tool output = input words; tool invocation = output words
+                rd = part.get("resultDetails", {})
+                if isinstance(rd, dict):
+                    tool_inp = rd.get("input", "")
+                    turn_output_words += len(tool_inp.split()) if tool_inp else 0
+                    for out_item in rd.get("output", []):
+                        if isinstance(out_item, dict):
+                            val = out_item.get("value", "")
+                            turn_input_words += len(val.split()) if val else 0
+                elif isinstance(rd, list):
+                    for item in rd:
+                        if isinstance(item, dict):
+                            val = item.get("value", "") or item.get("path", "")
+                            turn_input_words += len(str(val).split()) if val else 0
                 continue
 
             # Text content — add to text run
@@ -1192,8 +1216,11 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
             text = extract_text(val)
             if text and text.strip():
                 text_run.append(text)
+                turn_output_words += len(text.split())
 
         flush_text_run()
+        total_input_words += turn_input_words
+        total_output_words += turn_output_words
 
         # Response end metadata
         resp_meta_parts = []
@@ -1206,6 +1233,13 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
             resp_meta_parts.append(f"{req_elapsed_ms / 1000:.0f}s")
         if c["status"] == "incomplete":
             resp_meta_parts.append("in progress")
+        resp_word_parts = []
+        if turn_input_words:
+            resp_word_parts.append(f"{turn_input_words:,} in")
+        if turn_output_words:
+            resp_word_parts.append(f"{turn_output_words:,} out")
+        if resp_word_parts:
+            resp_meta_parts.append("Words: " + " \u00b7 ".join(resp_word_parts))
         resp_token_parts = []
         if req_pt:
             resp_token_parts.append(f"{req_pt:,} in")
@@ -1226,6 +1260,10 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
         out.append("")
         out.append("---")
         out.append("")
+
+    # Fill in word count placeholders now that we've counted everything
+    out[INPUT_WORDS_IDX] = f"- **Input words:** {total_input_words:,}"
+    out[OUTPUT_WORDS_IDX] = f"- **Output words:** {total_output_words:,}"
 
     return "\n".join(out)
 
