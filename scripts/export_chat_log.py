@@ -10,6 +10,9 @@ If no session-id is given, uses the most recently active session for this worksp
 If no output is given, writes to agent-logs/ with the standard naming convention.
 """
 
+from __future__ import annotations
+
+
 import hashlib
 import html
 import json
@@ -21,6 +24,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import unquote
+from typing import Any
 
 # Prepended to workspace-relative links; set via --project-root (default "..")
 _project_root = ".."
@@ -31,7 +35,7 @@ _workspace_path = ""
 # Workspace / session discovery
 # ---------------------------------------------------------------------------
 
-def _vscode_data_dirs():
+def _vscode_data_dirs() -> list[str]:
     """Return candidate VS Code user-data directories, ordered by preference.
 
     Checks TERM_PROGRAM_VERSION to prefer Insiders when running inside it.
@@ -56,7 +60,7 @@ def _vscode_data_dirs():
     return dirs
 
 
-def find_workspace_storage(workspace_path):
+def find_workspace_storage(workspace_path: str) -> str | None:
     """Find the VS Code workspace storage dir for the given workspace."""
     workspace_uri = "file://" + os.path.abspath(workspace_path)
     for data_dir in _vscode_data_dirs():
@@ -76,7 +80,7 @@ def find_workspace_storage(workspace_path):
     return None
 
 
-def get_session_index(storage_path):
+def get_session_index(storage_path: str) -> dict[str, Any] | None:
     """Read the chat session index from the SQLite state DB."""
     db_path = os.path.join(storage_path, "state.vscdb")
     conn = sqlite3.connect(db_path)
@@ -90,7 +94,7 @@ def get_session_index(storage_path):
         conn.close()
 
 
-def find_rolled_back_request_ids(storage_path, session_id, all_request_ids=None):
+def find_rolled_back_request_ids(storage_path: str, session_id: str, all_request_ids: set[str] | None = None) -> set[str]:
     """Detect rolled-back requests using chatEditingSessions timeline.
 
     VS Code tracks file edits per chat request in a timeline with checkpoints.
@@ -147,7 +151,7 @@ def find_rolled_back_request_ids(storage_path, session_id, all_request_ids=None)
 
     return rolled_back
 
-def find_active_session(storage_path, session_id=None):
+def find_active_session(storage_path: str, session_id: str | None = None) -> str:
     """Find the session JSONL file path."""
     sessions_dir = os.path.join(storage_path, "chatSessions")
 
@@ -188,7 +192,7 @@ def find_active_session(storage_path, session_id=None):
 # JSONL replay with response-window collection
 # ---------------------------------------------------------------------------
 
-def fingerprint_part(part):
+def fingerprint_part(part: dict[str, Any]) -> tuple[str, ...] | None:
     """Return a hashable fingerprint for a response part, or None to skip."""
     kind = part.get("kind", "")
 
@@ -228,7 +232,7 @@ def fingerprint_part(part):
     return ("text", hashlib.md5(val.encode()).hexdigest())
 
 
-def stitch_response_windows(windows):
+def stitch_response_windows(windows: list[list[dict[str, Any]]]) -> list[dict[str, Any]]:
     """Merge overlapping response windows into a single ordered part list."""
     seen = {}   # fingerprint -> index in result
     result = []
@@ -250,7 +254,7 @@ def stitch_response_windows(windows):
     return result
 
 
-def replay_jsonl(filepath):
+def replay_jsonl(filepath: str) -> dict[str, Any]:
     """Replay the JSONL to reconstruct the full session state."""
     session_state = {}
     requests_by_id = {}
@@ -344,7 +348,7 @@ def replay_jsonl(filepath):
     return session_state
 
 
-def _apply_nested_update(obj, keys, value):
+def _apply_nested_update(obj: Any, keys: list[str | int], value: Any) -> None:
     """Apply a nested key-path update to obj."""
     for i, k in enumerate(keys[:-1]):
         if isinstance(k, int):
@@ -370,9 +374,15 @@ def _apply_nested_update(obj, keys, value):
             obj[last] = value
 
 
-def _reassign_interjections(request_order, requests_by_id, request_submit_seq,
-                           response_windows, result_writes, model_state_writes,
-                           followups_writes):
+def _reassign_interjections(
+    request_order: list[str],
+    requests_by_id: dict[str, dict[str, Any]],
+    request_submit_seq: dict[str, int],
+    response_windows: dict[str, list[tuple[int, list[dict[str, Any]]]]],
+    result_writes: list[tuple[int, int, dict[str, Any]]],
+    model_state_writes: list[tuple[int, int, Any]],
+    followups_writes: list[tuple[int, int, Any]],
+) -> None:
     """Reassign response windows and results to the correct requests.
 
     VS Code may write response windows for request N+1 under request N's index
@@ -392,7 +402,7 @@ def _reassign_interjections(request_order, requests_by_id, request_submit_seq,
         (request_submit_seq[rid], rid) for rid in request_order
     )
 
-    def find_owner(seq_num):
+    def find_owner(seq_num: int) -> str:
         """Find the request with the largest submit_seq <= seq_num."""
         owner = submit_list[0][1]  # default to first request
         for submit_seq, rid in submit_list:
@@ -432,7 +442,7 @@ def _reassign_interjections(request_order, requests_by_id, request_submit_seq,
         requests_by_id[rid]["response"] = stitch_response_windows(new_windows[rid])
 
     # --- Reassign results, modelState, followups ---
-    def reassign_field(writes, field_name, skip_canceled=True):
+    def reassign_field(writes: list[tuple[int, int, Any]], field_name: str, skip_canceled: bool = True) -> None:
         """Reassign a field based on JSONL write sequence numbers."""
         # Collect (seq, idx, value) -> assign to correct owner
         assignments = {}  # rid -> (seq, value) — keep latest by seq
@@ -465,7 +475,7 @@ def _reassign_interjections(request_order, requests_by_id, request_submit_seq,
 # Text extraction helpers
 # ---------------------------------------------------------------------------
 
-def extract_text(val):
+def extract_text(val: str | dict[str, Any]) -> str:
     """Extract plain text from a value that may be a string or {value: ...}."""
     if isinstance(val, str):
         return val
@@ -474,7 +484,7 @@ def extract_text(val):
     return ""
 
 
-def shorten_path(p):
+def shorten_path(p: str) -> str:
     """Return workspace-relative path, or the original absolute path if external."""
     if not p:
         return p
@@ -485,19 +495,19 @@ def shorten_path(p):
     return p  # Keep absolute path as-is for external files
 
 
-def shorten_paths_in_text(text):
+def shorten_paths_in_text(text: str) -> str:
     """Replace workspace-absolute paths with workspace-relative paths in arbitrary text."""
     if not text or not _workspace_path:
         return text
     return text.replace(_workspace_path + "/", "")
-def make_link_path(p):
+def make_link_path(p: str) -> str:
     """Prepend project root to workspace-relative paths for use in markdown links."""
     if not p or p.startswith('/') or p.startswith('~'):
         return p
     return f"{_project_root}/{p}"
 
 
-def extract_path_from_uris(msg_obj):
+def extract_path_from_uris(msg_obj: dict[str, Any]) -> str | None:
     """Extract a shortened file path from a message object with uris."""
     if not isinstance(msg_obj, dict):
         return None
@@ -510,7 +520,7 @@ def extract_path_from_uris(msg_obj):
     return None
 
 
-def clean_message_links(msg):
+def clean_message_links(msg: str) -> str:
     """Replace file:/// markdown links with proper relative/absolute links."""
     def _sub(m):
         text = m.group(1)
@@ -528,7 +538,7 @@ def clean_message_links(msg):
     return re.sub(r'\[([^\]]*)\]\(file:///([^)]+)\)', _sub, msg)
 
 
-def linkify_paths_in_message(msg):
+def linkify_paths_in_message(msg: str) -> str:
     """Convert backtick-wrapped workspace paths to markdown links with the basename."""
     def _replace(m):
         path = m.group(1)
@@ -539,7 +549,7 @@ def linkify_paths_in_message(msg):
     return re.sub(r'`([a-zA-Z0-9_.][a-zA-Z0-9_./~-]*\.[a-zA-Z0-9]+[^`]*)`', _replace, msg)
 
 
-def get_tool_message(part):
+def get_tool_message(part: dict[str, Any]) -> str:
     """Get the best human-readable message for a tool call, with links cleaned."""
     past = part.get("pastTenseMessage", "")
     inv = part.get("invocationMessage", "")
@@ -550,7 +560,7 @@ def get_tool_message(part):
     return msg.strip() if msg else ""
 
 
-def humanize_model_id(model_id):
+def humanize_model_id(model_id: str) -> str:
     """Convert a model ID like 'copilot/claude-opus-4.6' to 'Claude Opus 4.6'."""
     if not model_id:
         return ""
@@ -570,7 +580,7 @@ def humanize_model_id(model_id):
     return " ".join(result)
 
 
-def sanitize_for_markdown(text):
+def sanitize_for_markdown(text: str) -> str:
     """Ensure code fences in text are balanced so they don't break the document."""
     lines = text.rstrip().split("\n")
     fence_count = 0
@@ -587,41 +597,40 @@ def sanitize_for_markdown(text):
     return "\n".join(lines)
 
 
-def fence_for(content):
+def fence_for(content: str) -> str:
     """Return a backtick fence string long enough that content can't close it."""
     max_run = 0
     for m in re.finditer(r'`+', content):
         max_run = max(max_run, len(m.group()))
     return '`' * max(3, max_run + 1)
 
-def escape_html(text):
+def escape_html(text: str) -> str:
     """Escape HTML special characters in text embedded in markdown headings or blockquotes."""
     return html.escape(text)
 
 
-def escape_link_text(text):
+def escape_link_text(text: str) -> str:
     """Escape text for use inside a markdown link display: escape HTML and bracket chars."""
     s = html.escape(text)
     return s.replace("[", "&#91;").replace("]", "&#93;")
 
 
-def md_to_summary_html(text):
+def md_to_summary_html(text: str) -> str:
     """Convert markdown-formatted text to HTML safe for use inside <summary> tags."""
-    import html as _html  # already imported at module level but kept for clarity
     result = []
     pos = 0
     for m in re.finditer(r'\[([^\]]*)\]\(([^)]*)\)|`([^`]+)`', text):
-        result.append(_html.escape(text[pos:m.start()]))
+        result.append(html.escape(text[pos:m.start()]))
         if m.group(3) is not None:
-            result.append(f'<code>{_html.escape(m.group(3))}</code>')
+            result.append(f'<code>{html.escape(m.group(3))}</code>')
         else:
-            result.append(f'<a href="{m.group(2)}">{_html.escape(m.group(1))}</a>')
+            result.append(f'<a href="{m.group(2)}">{html.escape(m.group(1))}</a>')
         pos = m.end()
-    result.append(_html.escape(text[pos:]))
+    result.append(html.escape(text[pos:]))
     return ''.join(result)
 
 
-def strip_ansi(text):
+def strip_ansi(text: str) -> str:
     """Strip ANSI escape codes and simulate carriage-return overwriting."""
     # Simulate CR overwrite: keep last non-empty \r-segment per line
     # (trailing \r leaves an empty final segment that we skip)
@@ -635,7 +644,7 @@ def strip_ansi(text):
     return re.sub(r'\x1b\[[0-9;]*[a-zA-Z]', '', text)
 
 
-def format_list_result(tool_id, result_list):
+def format_list_result(tool_id: str, result_list: list[dict[str, Any]]) -> list[str]:
     """Format a list of URI/match results into markdown list lines."""
     lines = []
     seen = set()
@@ -665,7 +674,7 @@ def format_list_result(tool_id, result_list):
     return lines
 
 
-def format_hashline_output(result_details):
+def format_hashline_output(result_details: dict[str, Any]) -> list[str]:
     """Format hashline_read resultDetails output, stripping line:hash| prefixes."""
     outputs = result_details.get("output", [])
     if not outputs:
@@ -694,7 +703,7 @@ def format_hashline_output(result_details):
 # Tool call formatting
 # ---------------------------------------------------------------------------
 
-def format_result_details(result_details):
+def format_result_details(result_details: dict[str, Any]) -> list[str]:
     """Format resultDetails as input/output content for inside a collapsed section."""
     if not isinstance(result_details, dict):
         return []
@@ -731,7 +740,7 @@ def format_result_details(result_details):
     return lines
 
 
-def format_tool_call(part):
+def format_tool_call(part: dict[str, Any]) -> list[str]:
     """Format a tool call into readable markdown lines."""
     tool_id = part.get("toolId", "")
     tsd = part.get("toolSpecificData", {})
@@ -875,7 +884,7 @@ def format_tool_call(part):
 # Thinking block formatting
 # ---------------------------------------------------------------------------
 
-def format_thinking_block(part):
+def format_thinking_block(part: dict[str, Any]) -> list[str]:
     """Format a thinking block as an indented blockquote."""
     val = part.get("value", "")
     if not val or not val.strip():
@@ -890,7 +899,7 @@ def format_thinking_block(part):
 # Markdown generation
 # ---------------------------------------------------------------------------
 
-def format_inline_ref(part):
+def format_inline_ref(part: dict[str, Any]) -> str:
     """Format an inlineReference into a readable file name."""
     name = part.get("name", "")
     if name:
@@ -903,7 +912,7 @@ def format_inline_ref(part):
     return ""
 
 
-def make_gfm_anchor(text):
+def make_gfm_anchor(text: str) -> str:
     """Generate a GFM-compatible heading anchor from heading text."""
     text = text.lower()
     text = re.sub(r'[^\w\s-]', '', text)
@@ -912,13 +921,13 @@ def make_gfm_anchor(text):
     return text
 
 
-def get_request_model(req):
+def get_request_model(req: dict[str, Any]) -> str:
     """Get the human-readable model name for a request."""
     model_id = req.get("modelId", "")
     return humanize_model_id(model_id)
 
 
-def classify_requests(requests):
+def classify_requests(requests: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Classify requests and assign display turn numbers.
 
     Returns a list of dicts with keys:
@@ -972,7 +981,7 @@ def classify_requests(requests):
     return classified
 
 
-def _get_prompt_text(req):
+def _get_prompt_text(req: dict[str, Any]) -> str:
     msg = req.get("message", {})
     if isinstance(msg, dict):
         return msg.get("text", "").strip()
@@ -980,7 +989,7 @@ def _get_prompt_text(req):
         return msg.strip()
     return ""
 
-def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
+def session_to_markdown(session: dict[str, Any], rolled_back_ids: set[str] | None = None, source_mtime: float | None = None) -> str:
     """Convert a replayed session state to a rich markdown document.
 
     source_mtime: mtime of the JSONL file (epoch seconds), used to estimate
@@ -1313,7 +1322,7 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
 # Metadata helpers
 # ---------------------------------------------------------------------------
 
-def get_model_short_name(session):
+def get_model_short_name(session: dict[str, Any]) -> str:
     model_meta = (
         session.get("inputState", {})
         .get("selectedModel", {})
@@ -1322,14 +1331,14 @@ def get_model_short_name(session):
     return model_meta.get("id", "unknown")
 
 
-def get_session_creation_time(session):
+def get_session_creation_time(session: dict[str, Any]) -> datetime:
     ts = session.get("creationDate", 0)
     if ts > 0:
         return datetime.fromtimestamp(ts / 1000)
     return datetime.now()
 
 
-def generate_output_path(session, output_dir):
+def generate_output_path(session: dict[str, Any], output_dir: str) -> str:
     dt = get_session_creation_time(session)
     date_str = dt.strftime("%Y-%m-%d_%H-%M")
     filename = f"{date_str}_log.md"
@@ -1340,7 +1349,7 @@ def generate_output_path(session, output_dir):
 # CLI
 # ---------------------------------------------------------------------------
 
-def main():
+def main() -> None:
     import argparse
 
     parser = argparse.ArgumentParser(description="Export VS Code chat session to markdown")
