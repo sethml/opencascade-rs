@@ -14,6 +14,7 @@
 // ========================
 
 #include <cxxabi.h>
+#include <Standard_Failure.hxx>
 
 template<typename T>
 struct OcctResult {
@@ -50,15 +51,18 @@ static const char* occt_make_exception(const char* type_name, const char* messag
     return occt_alloc_exception(combined.data(), combined.size());
 }
 
+__attribute__((noinline)) static const char* occt_handle_exception() {
+    try { throw; }
+    catch (const Standard_Failure& e) { return occt_make_exception(typeid(e).name(), e.GetMessageString()); }
+    catch (const std::exception& e) { return occt_make_exception(typeid(e).name(), e.what()); }
+    catch (...) { return occt_make_exception(nullptr, "unknown C++ exception"); }
+}
+
 #define OCCT_CATCH_RETURN \
-    catch (const Standard_Failure& e) { return {{}, occt_make_exception(typeid(e).name(), e.GetMessageString())}; } \
-    catch (const std::exception& e) { return {{}, occt_make_exception(typeid(e).name(), e.what())}; } \
-    catch (...) { return {{}, occt_make_exception(nullptr, "unknown C++ exception")}; }
+    catch (...) { return {{}, occt_handle_exception()}; }
 
 #define OCCT_CATCH_RETURN_VOID \
-    catch (const Standard_Failure& e) { return occt_make_exception(typeid(e).name(), e.GetMessageString()); } \
-    catch (const std::exception& e) { return occt_make_exception(typeid(e).name(), e.what()); } \
-    catch (...) { return occt_make_exception(nullptr, "unknown C++ exception"); }
+    catch (...) { return occt_handle_exception(); }
 
 #include <AIS_Animation.hxx>
 #include <AIS_InteractiveObject.hxx>
