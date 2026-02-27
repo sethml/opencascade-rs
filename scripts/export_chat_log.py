@@ -979,7 +979,7 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
     total_tool_calls = 0
     total_thinking = 0
     total_prompt_tokens = 0
-    total_output_tokens = 0
+    total_rounds = 0
     total_input_words = 0
     total_output_words = 0
     total_elapsed_ms = 0
@@ -993,8 +993,8 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
         if isinstance(meta, dict):
             if meta.get("promptTokens"):
                 total_prompt_tokens += meta["promptTokens"]
-            if meta.get("outputTokens"):
-                total_output_tokens += meta["outputTokens"]
+            rounds = meta.get("toolCallRounds", [])
+            total_rounds += max(len(rounds), 1) if rounds or meta.get("promptTokens") else 0
         timings = req.get("result", {}).get("timings", {})
         if isinstance(timings, dict) and timings.get("totalElapsed"):
             total_elapsed_ms += timings["totalElapsed"]
@@ -1041,9 +1041,9 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
     OUTPUT_WORDS_IDX = len(out)
     out.append("")  # placeholder for output words
     if total_prompt_tokens:
-        out.append(f"- **Input tokens:** {total_prompt_tokens:,}")
-    if total_output_tokens:
-        out.append(f"- **Output tokens:** {total_output_tokens:,}")
+        out.append(f"- **Prompt tokens (last round):** {total_prompt_tokens:,}")
+    if total_rounds:
+        out.append(f"- **API rounds:** {total_rounds:,}")
     if total_elapsed_ms:
         out.append(f"- **Total elapsed:** {total_elapsed_ms / 1000:.0f}s")
     out.append("")
@@ -1108,7 +1108,7 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
             req_elapsed_ms = source_mtime * 1000 - req_ts
         req_meta = req.get("result", {}).get("metadata", {})
         req_pt = req_meta.get("promptTokens") if isinstance(req_meta, dict) else None
-        req_ot = req_meta.get("outputTokens") if isinstance(req_meta, dict) else None
+        req_rounds = len(req_meta.get("toolCallRounds", [])) if isinstance(req_meta, dict) else 0
 
         anchor = make_gfm_anchor(f"User ({turn_idx})")
         out.append(f'<a id="{anchor}"></a>')
@@ -1195,11 +1195,9 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
                     for line in tool_lines:
                         out.append(line)
                     out.append("")
-                # Tool output = input words; tool invocation = output words
+                # Tool output = input words (counted from response parts)
                 rd = part.get("resultDetails", {})
                 if isinstance(rd, dict):
-                    tool_inp = rd.get("input", "")
-                    turn_output_words += len(tool_inp.split()) if tool_inp else 0
                     for out_item in rd.get("output", []):
                         if isinstance(out_item, dict):
                             val = out_item.get("value", "")
@@ -1219,6 +1217,15 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
                 turn_output_words += len(text.split())
 
         flush_text_run()
+        # Count tool call arguments from toolCallRounds (output words)
+        if isinstance(req_meta, dict):
+            for rnd in req_meta.get("toolCallRounds", []):
+                if not isinstance(rnd, dict):
+                    continue
+                for tc in rnd.get("toolCalls", []):
+                    if isinstance(tc, dict):
+                        args = tc.get("arguments", "")
+                        turn_output_words += len(str(args).split()) if args else 0
         total_input_words += turn_input_words
         total_output_words += turn_output_words
 
@@ -1242,11 +1249,11 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
             resp_meta_parts.append("Words: " + " \u00b7 ".join(resp_word_parts))
         resp_token_parts = []
         if req_pt:
-            resp_token_parts.append(f"{req_pt:,} in")
-        if req_ot:
-            resp_token_parts.append(f"{req_ot:,} out")
+            resp_token_parts.append(f"{req_pt:,} ctx")
+        if req_rounds > 1:
+            resp_token_parts.append(f"{req_rounds} rounds")
         if resp_token_parts:
-            resp_meta_parts.append("Tokens: " + " \u00b7 ".join(resp_token_parts))
+            resp_meta_parts.append(" · ".join(resp_token_parts))
         if resp_meta_parts:
             out.append(f"*{' \u00b7 '.join(resp_meta_parts)}*")
             out.append("")
