@@ -947,8 +947,12 @@ def _get_prompt_text(req):
         return msg.strip()
     return ""
 
-def session_to_markdown(session, rolled_back_ids=None):
-    """Convert a replayed session state to a rich markdown document."""
+def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
+    """Convert a replayed session state to a rich markdown document.
+
+    source_mtime: mtime of the JSONL file (epoch seconds), used to estimate
+                  duration for in-progress requests.
+    """
     out = []
     if rolled_back_ids is None:
         rolled_back_ids = set()
@@ -1011,6 +1015,8 @@ def session_to_markdown(session, rolled_back_ids=None):
         timings = req.get("result", {}).get("timings", {})
         if isinstance(timings, dict) and timings.get("totalElapsed"):
             req_elapsed = timings["totalElapsed"]
+        elif c["status"] == "incomplete" and req_ts and source_mtime:
+            req_elapsed = source_mtime * 1000 - req_ts
         if req_ts:
             candidate = datetime.fromtimestamp((req_ts + req_elapsed) / 1000)
             if candidate > end_dt:
@@ -1089,6 +1095,9 @@ def session_to_markdown(session, rolled_back_ids=None):
         req_dt = datetime.fromtimestamp(req_ts / 1000) if req_ts else None
         req_timings = req.get("result", {}).get("timings", {})
         req_elapsed_ms = req_timings.get("totalElapsed") if isinstance(req_timings, dict) else None
+        # For incomplete requests, estimate elapsed from file mtime
+        if req_elapsed_ms is None and c["status"] == "incomplete" and req_ts and source_mtime:
+            req_elapsed_ms = source_mtime * 1000 - req_ts
         req_meta = req.get("result", {}).get("metadata", {})
         req_pt = req_meta.get("promptTokens") if isinstance(req_meta, dict) else None
         req_ot = req_meta.get("outputTokens") if isinstance(req_meta, dict) else None
@@ -1327,7 +1336,9 @@ def main():
     total_parts = sum(len(r.get("response", [])) for r in session.get("requests", []))
     print(f"  Stitched parts: {total_parts}", file=sys.stderr)
 
-    markdown = session_to_markdown(session, rolled_back_ids=rolled_back_ids)
+    source_mtime = os.path.getmtime(session_path)
+    markdown = session_to_markdown(session, rolled_back_ids=rolled_back_ids,
+                                   source_mtime=source_mtime)
 
     if args.output:
         output_path = args.output
