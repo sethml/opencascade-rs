@@ -1288,7 +1288,8 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
         if resp_token_parts:
             resp_meta_parts.append(" · ".join(resp_token_parts))
         if resp_meta_parts:
-            out.append(f"*{' \u00b7 '.join(resp_meta_parts)}*")
+            sep = " \u00b7 "
+            out.append("*" + sep.join(resp_meta_parts) + "*")
             out.append("")
 
         out.append("---")
