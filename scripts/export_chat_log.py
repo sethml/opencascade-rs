@@ -11,6 +11,7 @@ If no output is given, writes to agent-logs/ with the standard naming convention
 """
 
 import hashlib
+import html
 import json
 import os
 import re
@@ -571,10 +572,20 @@ def fence_for(content):
         max_run = max(max_run, len(m.group()))
     return '`' * max(3, max_run + 1)
 
+def escape_html(text):
+    """Escape HTML special characters in text embedded in markdown headings or blockquotes."""
+    return html.escape(text)
+
+
+def escape_link_text(text):
+    """Escape text for use inside a markdown link display: escape HTML and bracket chars."""
+    s = html.escape(text)
+    return s.replace("[", "&#91;").replace("]", "&#93;")
+
 
 def md_to_summary_html(text):
     """Convert markdown-formatted text to HTML safe for use inside <summary> tags."""
-    import html as _html
+    import html as _html  # already imported at module level but kept for clarity
     result = []
     pos = 0
     for m in re.finditer(r'\[([^\]]*)\]\(([^)]*)\)|`([^`]+)`', text):
@@ -1029,7 +1040,7 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
     else:
         date_range = f"{dt.strftime('%Y-%m-%d %H:%M')} – {end_dt.strftime('%Y-%m-%d %H:%M')}"
 
-    out.append(f"# {title}")
+    out.append(f"# {escape_html(title)}")
     out.append("")
     out.append(f"- **Date:** {date_range}")
     out.append(f"- **{model_label}:** {models_str}")
@@ -1073,7 +1084,7 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
         model_suffix = f" ({model_name})" if model_name else ""
 
         anchor = make_gfm_anchor(f"User ({turn_idx})")
-        out.append(f"{turn_idx}. [{preview}](#{anchor}){model_suffix}{status_marker}")
+        out.append(f"{turn_idx}. [{escape_link_text(preview)}](#{anchor}){model_suffix}{status_marker}")
     out.append("")
     out.append("---")
     out.append("")
@@ -1116,7 +1127,7 @@ def session_to_markdown(session, rolled_back_ids=None, source_mtime=None):
         out.append(f"## User ({turn_idx})")
         out.append("")
         if user_text:
-            quoted_user = "> " + user_text.strip().replace("\n", "\n> ")
+            quoted_user = "> " + escape_html(user_text.strip()).replace("\n", "\n> ")
             out.append(quoted_user)
         else:
             out.append("> *(empty message)*")
