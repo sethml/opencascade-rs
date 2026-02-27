@@ -1195,6 +1195,8 @@ def session_to_markdown(session, rolled_back_ids=None):
             resp_meta_parts.append(req_dt.strftime('%Y-%m-%d %H:%M'))
         if req_elapsed_ms is not None:
             resp_meta_parts.append(f"{req_elapsed_ms / 1000:.0f}s")
+        if c["status"] == "incomplete":
+            resp_meta_parts.append("in progress")
         resp_token_parts = []
         if req_pt:
             resp_token_parts.append(f"{req_pt:,} in")
