@@ -29,6 +29,7 @@ from typing import Any
 # Prepended to workspace-relative links; set via --project-root (default "..")
 _project_root = ".."
 _workspace_path = ""
+_force_insiders = False
 
 
 # ---------------------------------------------------------------------------
@@ -41,7 +42,7 @@ def _vscode_data_dirs() -> list[str]:
     Checks TERM_PROGRAM_VERSION to prefer Insiders when running inside it.
     Supports macOS, Linux, and Windows.
     """
-    is_insiders = "insider" in os.environ.get("TERM_PROGRAM_VERSION", "").lower()
+    is_insiders = _force_insiders or "insider" in os.environ.get("TERM_PROGRAM_VERSION", "").lower()
     variants = ["Code - Insiders", "Code"] if is_insiders else ["Code", "Code - Insiders"]
 
     platform = sys.platform
@@ -1359,11 +1360,13 @@ def main() -> None:
     parser.add_argument("--project-root", default="..", help="Path from output dir to project root, prepended to relative links (default: '..')")
     parser.add_argument("--list", "-l", action="store_true", help="List available sessions")
     parser.add_argument("--no-wait", action="store_true", help="Skip waiting for JSONL flush (VS Code writes ~every 60s)")
+    parser.add_argument("--insiders", action="store_true", help="Force using VS Code Insiders data directory")
     args = parser.parse_args()
 
-    global _project_root, _workspace_path
+    global _project_root, _workspace_path, _force_insiders
     _project_root = args.project_root
     _workspace_path = os.path.abspath(args.workspace)
+    _force_insiders = args.insiders
 
     workspace = os.path.abspath(args.workspace)
     storage_path = find_workspace_storage(workspace)
@@ -1379,10 +1382,10 @@ def main() -> None:
                 if not isinstance(info, dict):
                     continue
                 ts = info.get("lastMessageDate", 0)
-                dt = datetime.fromtimestamp(ts / 1000) if ts else "?"
+                dt = datetime.fromtimestamp(ts / 1000).strftime('%Y-%m-%d %H:%M:%S') if ts else "?"
                 title = info.get("title", "Untitled")
                 empty = info.get("isEmpty", True)
-                print(f"  {sid}  {dt}  empty={empty}  {title}")
+                print(f"  {sid}  {dt}  {title}")
         return
 
     session_path = find_active_session(storage_path, args.session_id)
@@ -1392,6 +1395,7 @@ def main() -> None:
     # Waiting for the next write ensures we capture response parts that
     # have been generated but not yet persisted.
     if not args.no_wait:
+        sys.stdin.close()
         initial_mtime = os.path.getmtime(session_path)
         deadline = time.time() + 65
         print("  Waiting for JSONL flush...", end="", file=sys.stderr, flush=True)
