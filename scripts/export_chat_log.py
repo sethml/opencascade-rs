@@ -31,23 +31,46 @@ _workspace_path = ""
 # Workspace / session discovery
 # ---------------------------------------------------------------------------
 
+def _vscode_data_dirs():
+    """Return candidate VS Code user-data directories, ordered by preference.
+
+    Checks TERM_PROGRAM_VERSION to prefer Insiders when running inside it.
+    Supports macOS, Linux, and Windows.
+    """
+    is_insiders = "insider" in os.environ.get("TERM_PROGRAM_VERSION", "").lower()
+    variants = ["Code - Insiders", "Code"] if is_insiders else ["Code", "Code - Insiders"]
+
+    platform = sys.platform
+    dirs = []
+    for variant in variants:
+        if platform == "darwin":
+            base = os.path.expanduser(f"~/Library/Application Support/{variant}")
+        elif platform == "win32":
+            appdata = os.environ.get("APPDATA", "")
+            base = os.path.join(appdata, variant) if appdata else ""
+        else:  # linux / other unix
+            config = os.environ.get("XDG_CONFIG_HOME", os.path.expanduser("~/.config"))
+            base = os.path.join(config, variant)
+        if base:
+            dirs.append(base)
+    return dirs
+
+
 def find_workspace_storage(workspace_path):
-    """Find the VS Code Insiders workspace storage dir for the given workspace."""
-    for variant in ("Code - Insiders", "Code"):
-        base = os.path.expanduser(
-            f"~/Library/Application Support/{variant}/User/workspaceStorage"
-        )
-        if not os.path.isdir(base):
+    """Find the VS Code workspace storage dir for the given workspace."""
+    workspace_uri = "file://" + os.path.abspath(workspace_path)
+    for data_dir in _vscode_data_dirs():
+        ws_storage = os.path.join(data_dir, "User", "workspaceStorage")
+        if not os.path.isdir(ws_storage):
             continue
-        workspace_uri = "file://" + os.path.abspath(workspace_path)
-        for entry in os.listdir(base):
-            ws_json = os.path.join(base, entry, "workspace.json")
+        for entry in os.listdir(ws_storage):
+            ws_json = os.path.join(ws_storage, entry, "workspace.json")
             if os.path.isfile(ws_json):
                 try:
                     with open(ws_json) as f:
                         data = json.load(f)
                     if data.get("folder", "").rstrip("/") == workspace_uri.rstrip("/"):
-                        return os.path.join(base, entry)
+                        return os.path.join(ws_storage, entry)
                 except (json.JSONDecodeError, IOError):
                     continue
     return None
@@ -438,7 +461,6 @@ def _reassign_interjections(request_order, requests_by_id, request_submit_seq,
     reassign_field(result_writes, "result")
     reassign_field(model_state_writes, "modelState", skip_canceled=False)
 
-# ---------------------------------------------------------------------------
 # ---------------------------------------------------------------------------
 # Text extraction helpers
 # ---------------------------------------------------------------------------
@@ -1343,7 +1365,9 @@ def main():
         index = get_session_index(storage_path)
         if index:
             entries = index.get("entries", {})
-            for sid, info in sorted(entries.items(), key=lambda x: x[1].get("lastMessageDate", 0), reverse=True):
+            for sid, info in sorted(entries.items(), key=lambda x: x[1].get("lastMessageDate", 0) if isinstance(x[1], dict) else 0, reverse=True):
+                if not isinstance(info, dict):
+                    continue
                 ts = info.get("lastMessageDate", 0)
                 dt = datetime.fromtimestamp(ts / 1000) if ts else "?"
                 title = info.get("title", "Untitled")
