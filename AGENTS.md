@@ -27,9 +27,9 @@ When converting code to use the new API, refer to crates/opencascade-sys/PORTING
 
 ## Chat Log Export
 
-After committing, run `scripts/export_chat_log.py` to export the current chat session to `agent-logs/`. Do not use any flags. Then amend the commit to include the generated log file:
+After committing, run the export script from `~/src/vscode-export-chat-log` to export the current chat session. Do not use any flags. Then amend the commit to include the generated log file:
 ```
-python3 scripts/export_chat_log.py
+python3 ~/src/vscode-export-chat-log/export_chat_log.py </dev/null
 git add agent-logs/
 git commit --amend --no-edit
 ```
