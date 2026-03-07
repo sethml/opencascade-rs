@@ -623,6 +623,12 @@ unsafe impl crate::CppDeletable for HandleGeomAdaptorCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeomAdaptorCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_clone(ptr))
+    }
+}
+
 impl HandleGeomAdaptorCurve {
     /// Dereference this Handle to access the underlying GeomAdaptor_Curve
     pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_Curve {
@@ -1494,6 +1500,12 @@ pub use crate::ffi_types::HandleGeomAdaptorSurface;
 unsafe impl crate::CppDeletable for HandleGeomAdaptorSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeomAdaptorSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_clone(ptr))
     }
 }
 
@@ -2415,6 +2427,14 @@ unsafe impl crate::CppDeletable for HandleGeomAdaptorSurfaceOfLinearExtrusion {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeomAdaptorSurfaceOfLinearExtrusion {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_clone(ptr),
+        )
+    }
+}
+
 impl HandleGeomAdaptorSurfaceOfLinearExtrusion {
     /// Dereference this Handle to access the underlying GeomAdaptor_SurfaceOfLinearExtrusion
     pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_SurfaceOfLinearExtrusion {
@@ -3330,6 +3350,14 @@ pub use crate::ffi_types::HandleGeomAdaptorSurfaceOfRevolution;
 unsafe impl crate::CppDeletable for HandleGeomAdaptorSurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeomAdaptorSurfaceOfRevolution {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_clone(
+            ptr,
+        ))
     }
 }
 

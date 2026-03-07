@@ -5,6 +5,7 @@
 //! freed by calling the corresponding `_destroy` function.
 
 use std::fmt;
+use std::borrow::Borrow;
 use std::ops::{Deref, DerefMut};
 use std::ptr::NonNull;
 
@@ -16,6 +17,16 @@ use std::ptr::NonNull;
 /// The pointer must have been allocated by the corresponding C++ constructor wrapper.
 pub unsafe trait CppDeletable {
     unsafe fn cpp_delete(ptr: *mut Self);
+}
+
+/// Trait for C++ types that can be copied via an extern "C" copy function.
+///
+/// # Safety
+///
+/// Implementations must call the correct C++ copy constructor wrapper for the type.
+/// The returned pointer must point to a valid, independently-owned C++ object.
+pub unsafe trait CppCopyable {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self;
 }
 
 /// An owning pointer to a C++ object allocated with `new`.
@@ -101,6 +112,18 @@ impl<T: CppDeletable> DerefMut for OwnedPtr<T> {
 impl<T: CppDeletable + fmt::Debug> fmt::Debug for OwnedPtr<T> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_tuple("OwnedPtr").field(&self.ptr).finish()
+    }
+}
+
+impl<T: CppDeletable + CppCopyable> Clone for OwnedPtr<T> {
+    fn clone(&self) -> Self {
+        unsafe { Self::from_raw(T::cpp_copy(self.as_ptr())) }
+    }
+}
+
+impl<T: CppDeletable> Borrow<T> for OwnedPtr<T> {
+    fn borrow(&self) -> &T {
+        self
     }
 }
 

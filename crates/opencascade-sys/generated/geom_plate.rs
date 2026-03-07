@@ -1604,6 +1604,12 @@ unsafe impl crate::CppDeletable for HandleGeomPlateCurveConstraint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeomPlateCurveConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateCurveConstraint_clone(ptr))
+    }
+}
+
 impl HandleGeomPlateCurveConstraint {
     /// Dereference this Handle to access the underlying GeomPlate_CurveConstraint
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_CurveConstraint {
@@ -1886,6 +1892,12 @@ unsafe impl crate::CppDeletable for HandleGeomPlateHArray1OfHCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeomPlateHArray1OfHCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfHCurve_clone(ptr))
+    }
+}
+
 impl HandleGeomPlateHArray1OfHCurve {
     /// Dereference this Handle to access the underlying GeomPlate_HArray1OfHCurve
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_HArray1OfHCurve {
@@ -2149,6 +2161,14 @@ unsafe impl crate::CppDeletable for HandleGeomPlateHArray1OfSequenceOfReal {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeomPlateHArray1OfSequenceOfReal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfSequenceOfReal_clone(ptr),
+        )
+    }
+}
+
 impl HandleGeomPlateHArray1OfSequenceOfReal {
     /// Dereference this Handle to access the underlying GeomPlate_HArray1OfSequenceOfReal
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_HArray1OfSequenceOfReal {
@@ -2391,6 +2411,14 @@ unsafe impl crate::CppDeletable for HandleGeomPlateHSequenceOfCurveConstraint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeomPlateHSequenceOfCurveConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfCurveConstraint_clone(ptr),
+        )
+    }
+}
+
 impl HandleGeomPlateHSequenceOfCurveConstraint {
     /// Dereference this Handle to access the underlying GeomPlate_HSequenceOfCurveConstraint
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_HSequenceOfCurveConstraint {
@@ -2630,6 +2658,14 @@ pub use crate::ffi_types::HandleGeomPlateHSequenceOfPointConstraint;
 unsafe impl crate::CppDeletable for HandleGeomPlateHSequenceOfPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfPointConstraint_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeomPlateHSequenceOfPointConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfPointConstraint_clone(ptr),
+        )
     }
 }
 
@@ -3496,6 +3532,12 @@ unsafe impl crate::CppDeletable for HandleGeomPlatePointConstraint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeomPlatePointConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlatePointConstraint_clone(ptr))
+    }
+}
+
 impl HandleGeomPlatePointConstraint {
     /// Dereference this Handle to access the underlying GeomPlate_PointConstraint
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_PointConstraint {
@@ -4340,6 +4382,12 @@ pub use crate::ffi_types::HandleGeomPlateSurface;
 unsafe impl crate::CppDeletable for HandleGeomPlateSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeomPlateSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_clone(ptr))
     }
 }
 

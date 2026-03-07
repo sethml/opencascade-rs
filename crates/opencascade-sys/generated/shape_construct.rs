@@ -757,6 +757,14 @@ unsafe impl crate::CppDeletable for HandleShapeConstructProjectCurveOnSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeConstructProjectCurveOnSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeConstructProjectCurveOnSurface_clone(ptr),
+        )
+    }
+}
+
 impl HandleShapeConstructProjectCurveOnSurface {
     /// Dereference this Handle to access the underlying ShapeConstruct_ProjectCurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::ShapeConstruct_ProjectCurveOnSurface {

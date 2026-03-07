@@ -1062,6 +1062,12 @@ unsafe impl crate::CppDeletable for HandleIGESDrawCircArraySubfigure {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDrawCircArraySubfigure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawCircArraySubfigure_clone(ptr))
+    }
+}
+
 impl HandleIGESDrawCircArraySubfigure {
     /// Dereference this Handle to access the underlying IGESDraw_CircArraySubfigure
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_CircArraySubfigure {
@@ -2224,6 +2230,12 @@ unsafe impl crate::CppDeletable for HandleIGESDrawConnectPoint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDrawConnectPoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawConnectPoint_clone(ptr))
+    }
+}
+
 impl HandleIGESDrawConnectPoint {
     /// Dereference this Handle to access the underlying IGESDraw_ConnectPoint
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_ConnectPoint {
@@ -3221,6 +3233,12 @@ pub use crate::ffi_types::HandleIGESDrawDrawing;
 unsafe impl crate::CppDeletable for HandleIGESDrawDrawing {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawing_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDrawDrawing {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawing_clone(ptr))
     }
 }
 
@@ -4287,6 +4305,14 @@ unsafe impl crate::CppDeletable for HandleIGESDrawDrawingWithRotation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDrawDrawingWithRotation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawingWithRotation_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESDrawDrawingWithRotation {
     /// Dereference this Handle to access the underlying IGESDraw_DrawingWithRotation
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_DrawingWithRotation {
@@ -4937,6 +4963,12 @@ unsafe impl crate::CppDeletable for HandleIGESDrawGeneralModule {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDrawGeneralModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawGeneralModule_clone(ptr))
+    }
+}
+
 impl HandleIGESDrawGeneralModule {
     /// Dereference this Handle to access the underlying IGESDraw_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_GeneralModule {
@@ -5219,6 +5251,14 @@ unsafe impl crate::CppDeletable for HandleIGESDrawHArray1OfConnectPoint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDrawHArray1OfConnectPoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfConnectPoint_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESDrawHArray1OfConnectPoint {
     /// Dereference this Handle to access the underlying IGESDraw_HArray1OfConnectPoint
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_HArray1OfConnectPoint {
@@ -5476,6 +5516,14 @@ pub use crate::ffi_types::HandleIGESDrawHArray1OfViewKindEntity;
 unsafe impl crate::CppDeletable for HandleIGESDrawHArray1OfViewKindEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfViewKindEntity_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDrawHArray1OfViewKindEntity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfViewKindEntity_clone(ptr),
+        )
     }
 }
 
@@ -6524,6 +6572,12 @@ pub use crate::ffi_types::HandleIGESDrawLabelDisplay;
 unsafe impl crate::CppDeletable for HandleIGESDrawLabelDisplay {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDrawLabelDisplay_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDrawLabelDisplay {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawLabelDisplay_clone(ptr))
     }
 }
 
@@ -7621,6 +7675,12 @@ unsafe impl crate::CppDeletable for HandleIGESDrawNetworkSubfigure {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDrawNetworkSubfigure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigure_clone(ptr))
+    }
+}
+
 impl HandleIGESDrawNetworkSubfigure {
     /// Dereference this Handle to access the underlying IGESDraw_NetworkSubfigure
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_NetworkSubfigure {
@@ -8705,6 +8765,14 @@ pub use crate::ffi_types::HandleIGESDrawNetworkSubfigureDef;
 unsafe impl crate::CppDeletable for HandleIGESDrawNetworkSubfigureDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigureDef_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDrawNetworkSubfigureDef {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigureDef_clone(
+            ptr,
+        ))
     }
 }
 
@@ -9892,6 +9960,12 @@ unsafe impl crate::CppDeletable for HandleIGESDrawPerspectiveView {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDrawPerspectiveView {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawPerspectiveView_clone(ptr))
+    }
+}
+
 impl HandleIGESDrawPerspectiveView {
     /// Dereference this Handle to access the underlying IGESDraw_PerspectiveView
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_PerspectiveView {
@@ -10829,6 +10903,12 @@ unsafe impl crate::CppDeletable for HandleIGESDrawPlanar {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDrawPlanar {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawPlanar_clone(ptr))
+    }
+}
+
 impl HandleIGESDrawPlanar {
     /// Dereference this Handle to access the underlying IGESDraw_Planar
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_Planar {
@@ -11218,6 +11298,12 @@ unsafe impl crate::CppDeletable for HandleIGESDrawProtocol {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDrawProtocol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawProtocol_clone(ptr))
+    }
+}
+
 impl HandleIGESDrawProtocol {
     /// Dereference this Handle to access the underlying IGESDraw_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_Protocol {
@@ -11593,6 +11679,12 @@ pub use crate::ffi_types::HandleIGESDrawReadWriteModule;
 unsafe impl crate::CppDeletable for HandleIGESDrawReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDrawReadWriteModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDrawReadWriteModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawReadWriteModule_clone(ptr))
     }
 }
 
@@ -12695,6 +12787,12 @@ pub use crate::ffi_types::HandleIGESDrawRectArraySubfigure;
 unsafe impl crate::CppDeletable for HandleIGESDrawRectArraySubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDrawRectArraySubfigure_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDrawRectArraySubfigure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawRectArraySubfigure_clone(ptr))
     }
 }
 
@@ -13818,6 +13916,14 @@ unsafe impl crate::CppDeletable for HandleIGESDrawSegmentedViewsVisible {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDrawSegmentedViewsVisible {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawSegmentedViewsVisible_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESDrawSegmentedViewsVisible {
     /// Dereference this Handle to access the underlying IGESDraw_SegmentedViewsVisible
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_SegmentedViewsVisible {
@@ -14094,6 +14200,12 @@ pub use crate::ffi_types::HandleIGESDrawSpecificModule;
 unsafe impl crate::CppDeletable for HandleIGESDrawSpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDrawSpecificModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDrawSpecificModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawSpecificModule_clone(ptr))
     }
 }
 
@@ -17413,6 +17525,12 @@ unsafe impl crate::CppDeletable for HandleIGESDrawView {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDrawView {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawView_clone(ptr))
+    }
+}
+
 impl HandleIGESDrawView {
     /// Dereference this Handle to access the underlying IGESDraw_View
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_View {
@@ -18449,6 +18567,12 @@ pub use crate::ffi_types::HandleIGESDrawViewsVisible;
 unsafe impl crate::CppDeletable for HandleIGESDrawViewsVisible {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisible_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDrawViewsVisible {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisible_clone(ptr))
     }
 }
 
@@ -19586,6 +19710,14 @@ pub use crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr;
 unsafe impl crate::CppDeletable for HandleIGESDrawViewsVisibleWithAttr {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisibleWithAttr_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDrawViewsVisibleWithAttr {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisibleWithAttr_clone(
+            ptr,
+        ))
     }
 }
 

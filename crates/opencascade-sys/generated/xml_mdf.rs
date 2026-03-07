@@ -300,6 +300,12 @@ unsafe impl crate::CppDeletable for HandleXmlMDFADriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMDFADriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDFADriver_clone(ptr))
+    }
+}
+
 impl HandleXmlMDFADriver {
     /// Dereference this Handle to access the underlying XmlMDF_ADriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDF_ADriver {
@@ -1497,6 +1503,12 @@ unsafe impl crate::CppDeletable for HandleXmlMDFADriverTable {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMDFADriverTable {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDFADriverTable_clone(ptr))
+    }
+}
+
 impl HandleXmlMDFADriverTable {
     /// Dereference this Handle to access the underlying XmlMDF_ADriverTable
     pub fn get(&self) -> &crate::ffi_types::XmlMDF_ADriverTable {
@@ -1804,6 +1816,12 @@ pub use crate::ffi_types::HandleXmlMDFDerivedDriver;
 unsafe impl crate::CppDeletable for HandleXmlMDFDerivedDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXmlL::HandleXmlMDFDerivedDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMDFDerivedDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDFDerivedDriver_clone(ptr))
     }
 }
 
@@ -2126,6 +2144,12 @@ unsafe impl crate::CppDeletable for HandleXmlMDFReferenceDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMDFReferenceDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDFReferenceDriver_clone(ptr))
+    }
+}
+
 impl HandleXmlMDFReferenceDriver {
     /// Dereference this Handle to access the underlying XmlMDF_ReferenceDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDF_ReferenceDriver {
@@ -2442,6 +2466,12 @@ pub use crate::ffi_types::HandleXmlMDFTagSourceDriver;
 unsafe impl crate::CppDeletable for HandleXmlMDFTagSourceDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXmlL::HandleXmlMDFTagSourceDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMDFTagSourceDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDFTagSourceDriver_clone(ptr))
     }
 }
 

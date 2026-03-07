@@ -770,6 +770,12 @@ unsafe impl crate::CppDeletable for HandleShapeBuildReShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeBuildReShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_clone(ptr))
+    }
+}
+
 impl HandleShapeBuildReShape {
     /// Dereference this Handle to access the underlying ShapeBuild_ReShape
     pub fn get(&self) -> &crate::ffi_types::ShapeBuild_ReShape {

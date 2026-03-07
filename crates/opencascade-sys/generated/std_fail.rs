@@ -301,6 +301,12 @@ unsafe impl crate::CppDeletable for HandleStdFailInfiniteSolutions {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdFailInfiniteSolutions {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_clone(ptr))
+    }
+}
+
 impl HandleStdFailInfiniteSolutions {
     /// Dereference this Handle to access the underlying StdFail_InfiniteSolutions
     pub fn get(&self) -> &crate::ffi_types::StdFail_InfiniteSolutions {
@@ -610,6 +616,12 @@ pub use crate::ffi_types::HandleStdFailNotDone;
 unsafe impl crate::CppDeletable for HandleStdFailNotDone {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStdFailNotDone_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStdFailNotDone {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStdFailNotDone_clone(ptr))
     }
 }
 
@@ -928,6 +940,12 @@ pub use crate::ffi_types::HandleStdFailUndefined;
 unsafe impl crate::CppDeletable for HandleStdFailUndefined {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStdFailUndefined_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStdFailUndefined {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefined_clone(ptr))
     }
 }
 
@@ -1287,6 +1305,12 @@ unsafe impl crate::CppDeletable for HandleStdFailUndefinedDerivative {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdFailUndefinedDerivative {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_clone(ptr))
+    }
+}
+
 impl HandleStdFailUndefinedDerivative {
     /// Dereference this Handle to access the underlying StdFail_UndefinedDerivative
     pub fn get(&self) -> &crate::ffi_types::StdFail_UndefinedDerivative {
@@ -1635,6 +1659,12 @@ pub use crate::ffi_types::HandleStdFailUndefinedValue;
 unsafe impl crate::CppDeletable for HandleStdFailUndefinedValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStdFailUndefinedValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_clone(ptr))
     }
 }
 

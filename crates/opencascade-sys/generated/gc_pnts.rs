@@ -397,6 +397,22 @@ unsafe impl crate::CppDeletable for DistFunction {
     }
 }
 
+unsafe impl crate::CppCopyable for DistFunction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::GCPnts_DistFunction_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for DistFunction {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl DistFunction {
     /// **Source:** `GCPnts_DistFunction.hxx`:28 - `GCPnts_DistFunction::GCPnts_DistFunction()`
     pub fn new_curve_real2(
@@ -439,15 +455,6 @@ impl DistFunction {
                     self as *mut Self,
                 ),
             )
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GCPnts_DistFunction_to_owned(self as *const Self),
-            ))
         }
     }
 
@@ -547,6 +554,22 @@ unsafe impl crate::CppDeletable for DistFunction2d {
     }
 }
 
+unsafe impl crate::CppCopyable for DistFunction2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::GCPnts_DistFunction2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for DistFunction2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl DistFunction2d {
     /// **Source:** `GCPnts_DistFunction2d.hxx`:28 - `GCPnts_DistFunction2d::GCPnts_DistFunction2d()`
     pub fn new_curve2d_real2(
@@ -589,15 +612,6 @@ impl DistFunction2d {
                     self as *mut Self,
                 ),
             )
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GCPnts_DistFunction2d_to_owned(self as *const Self),
-            ))
         }
     }
 

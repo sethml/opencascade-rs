@@ -403,6 +403,12 @@ unsafe impl crate::CppDeletable for HandleRWStlReader {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleRWStlReader {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTL::HandleRWStlReader_clone(ptr))
+    }
+}
+
 impl HandleRWStlReader {
     /// Dereference this Handle to access the underlying RWStl_Reader
     pub fn get(&self) -> &crate::ffi_types::RWStl_Reader {

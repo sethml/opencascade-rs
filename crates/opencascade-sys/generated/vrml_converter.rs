@@ -957,6 +957,12 @@ unsafe impl crate::CppDeletable for HandleVrmlConverterDrawer {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleVrmlConverterDrawer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_clone(ptr))
+    }
+}
+
 impl HandleVrmlConverterDrawer {
     /// Dereference this Handle to access the underlying VrmlConverter_Drawer
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_Drawer {
@@ -1307,6 +1313,12 @@ unsafe impl crate::CppDeletable for HandleVrmlConverterIsoAspect {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleVrmlConverterIsoAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_clone(ptr))
+    }
+}
+
 impl HandleVrmlConverterIsoAspect {
     /// Dereference this Handle to access the underlying VrmlConverter_IsoAspect
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_IsoAspect {
@@ -1572,6 +1584,12 @@ pub use crate::ffi_types::HandleVrmlConverterLineAspect;
 unsafe impl crate::CppDeletable for HandleVrmlConverterLineAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleVrmlConverterLineAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_clone(ptr))
     }
 }
 
@@ -1848,6 +1866,12 @@ unsafe impl crate::CppDeletable for HandleVrmlConverterPointAspect {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleVrmlConverterPointAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_clone(ptr))
+    }
+}
+
 impl HandleVrmlConverterPointAspect {
     /// Dereference this Handle to access the underlying VrmlConverter_PointAspect
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_PointAspect {
@@ -2117,6 +2141,12 @@ pub use crate::ffi_types::HandleVrmlConverterProjector;
 unsafe impl crate::CppDeletable for HandleVrmlConverterProjector {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleVrmlConverterProjector {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_clone(ptr))
     }
 }
 
@@ -2465,6 +2495,12 @@ pub use crate::ffi_types::HandleVrmlConverterShadingAspect;
 unsafe impl crate::CppDeletable for HandleVrmlConverterShadingAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleVrmlConverterShadingAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_clone(ptr))
     }
 }
 

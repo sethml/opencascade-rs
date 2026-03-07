@@ -17,7 +17,7 @@
 // Handle type aliases
 typedef opencascade::handle<LDOM_MemManager> HandleLDOMMemManager;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 
 // ========================
 // LDOMBasicString wrappers
@@ -59,7 +59,7 @@ extern "C" OcctResult<bool> LDOMBasicString_equals(const LDOMBasicString* self_,
     try { return {self_->equals(*anOther), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<LDOMBasicString*> LDOMBasicString_to_owned(const LDOMBasicString* self_) {
+extern "C" OcctResult<LDOMBasicString*> LDOMBasicString_clone(const LDOMBasicString* self_) {
     try { return {new LDOMBasicString(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -115,7 +115,7 @@ extern "C" OcctResult<LDOM_MemManager const*> LDOMString_get_owner_document(cons
     try { return {&(self_->getOwnerDocument()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<LDOMString*> LDOMString_to_owned(const LDOMString* self_) {
+extern "C" OcctResult<LDOMString*> LDOMString_clone(const LDOMString* self_) {
     try { return {new LDOMString(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }

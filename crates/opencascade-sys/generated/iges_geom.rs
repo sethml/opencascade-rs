@@ -1098,6 +1098,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomBSplineCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomBSplineCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineCurve_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomBSplineCurve {
     /// Dereference this Handle to access the underlying IGESGeom_BSplineCurve
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_BSplineCurve {
@@ -2306,6 +2312,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomBSplineSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomBSplineSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineSurface_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomBSplineSurface {
     /// Dereference this Handle to access the underlying IGESGeom_BSplineSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_BSplineSurface {
@@ -3334,6 +3346,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomBoundary {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomBoundary {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundary_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomBoundary {
     /// Dereference this Handle to access the underlying IGESGeom_Boundary
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Boundary {
@@ -4319,6 +4337,12 @@ pub use crate::ffi_types::HandleIGESGeomBoundedSurface;
 unsafe impl crate::CppDeletable for HandleIGESGeomBoundedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundedSurface_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESGeomBoundedSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundedSurface_clone(ptr))
     }
 }
 
@@ -5369,6 +5393,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomCircularArc {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomCircularArc {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCircularArc_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomCircularArc {
     /// Dereference this Handle to access the underlying IGESGeom_CircularArc
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_CircularArc {
@@ -6316,6 +6346,12 @@ pub use crate::ffi_types::HandleIGESGeomCompositeCurve;
 unsafe impl crate::CppDeletable for HandleIGESGeomCompositeCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESGeomCompositeCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESGeomCompositeCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCompositeCurve_clone(ptr))
     }
 }
 
@@ -7457,6 +7493,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomConicArc {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomConicArc {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomConicArc_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomConicArc {
     /// Dereference this Handle to access the underlying IGESGeom_ConicArc
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_ConicArc {
@@ -8522,6 +8564,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomCopiousData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomCopiousData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCopiousData_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomCopiousData {
     /// Dereference this Handle to access the underlying IGESGeom_CopiousData
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_CopiousData {
@@ -9526,6 +9574,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomCurveOnSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomCurveOnSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCurveOnSurface_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomCurveOnSurface {
     /// Dereference this Handle to access the underlying IGESGeom_CurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_CurveOnSurface {
@@ -10439,6 +10493,12 @@ pub use crate::ffi_types::HandleIGESGeomDirection;
 unsafe impl crate::CppDeletable for HandleIGESGeomDirection {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESGeomDirection_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESGeomDirection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomDirection_clone(ptr))
     }
 }
 
@@ -11390,6 +11450,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomFlash {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomFlash {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomFlash_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomFlash {
     /// Dereference this Handle to access the underlying IGESGeom_Flash
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Flash {
@@ -12036,6 +12102,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomGeneralModule {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomGeneralModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomGeneralModule_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomGeneralModule {
     /// Dereference this Handle to access the underlying IGESGeom_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_GeneralModule {
@@ -12322,6 +12394,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomHArray1OfBoundary {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomHArray1OfBoundary {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfBoundary_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomHArray1OfBoundary {
     /// Dereference this Handle to access the underlying IGESGeom_HArray1OfBoundary
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_HArray1OfBoundary {
@@ -12580,6 +12658,14 @@ unsafe impl crate::CppDeletable for HandleIGESGeomHArray1OfCurveOnSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomHArray1OfCurveOnSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfCurveOnSurface_clone(ptr),
+        )
+    }
+}
+
 impl HandleIGESGeomHArray1OfCurveOnSurface {
     /// Dereference this Handle to access the underlying IGESGeom_HArray1OfCurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_HArray1OfCurveOnSurface {
@@ -12833,6 +12919,14 @@ pub use crate::ffi_types::HandleIGESGeomHArray1OfTransformationMatrix;
 unsafe impl crate::CppDeletable for HandleIGESGeomHArray1OfTransformationMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfTransformationMatrix_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESGeomHArray1OfTransformationMatrix {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfTransformationMatrix_clone(ptr),
+        )
     }
 }
 
@@ -13716,6 +13810,12 @@ pub use crate::ffi_types::HandleIGESGeomLine;
 unsafe impl crate::CppDeletable for HandleIGESGeomLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESGeomLine_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESGeomLine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomLine_clone(ptr))
     }
 }
 
@@ -14838,6 +14938,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomOffsetCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomOffsetCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetCurve_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomOffsetCurve {
     /// Dereference this Handle to access the underlying IGESGeom_OffsetCurve
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_OffsetCurve {
@@ -15823,6 +15929,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomOffsetSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomOffsetSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetSurface_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomOffsetSurface {
     /// Dereference this Handle to access the underlying IGESGeom_OffsetSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_OffsetSurface {
@@ -16788,6 +16900,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomPlane {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomPlane {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomPlane_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomPlane {
     /// Dereference this Handle to access the underlying IGESGeom_Plane
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Plane {
@@ -17678,6 +17796,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomPoint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomPoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomPoint_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomPoint {
     /// Dereference this Handle to access the underlying IGESGeom_Point
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Point {
@@ -18067,6 +18191,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomProtocol {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomProtocol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomProtocol_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomProtocol {
     /// Dereference this Handle to access the underlying IGESGeom_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Protocol {
@@ -18442,6 +18572,12 @@ pub use crate::ffi_types::HandleIGESGeomReadWriteModule;
 unsafe impl crate::CppDeletable for HandleIGESGeomReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESGeomReadWriteModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESGeomReadWriteModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomReadWriteModule_clone(ptr))
     }
 }
 
@@ -19449,6 +19585,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomRuledSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomRuledSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomRuledSurface_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomRuledSurface {
     /// Dereference this Handle to access the underlying IGESGeom_RuledSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_RuledSurface {
@@ -19720,6 +19862,12 @@ pub use crate::ffi_types::HandleIGESGeomSpecificModule;
 unsafe impl crate::CppDeletable for HandleIGESGeomSpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESGeomSpecificModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESGeomSpecificModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomSpecificModule_clone(ptr))
     }
 }
 
@@ -20841,6 +20989,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomSplineCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomSplineCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineCurve_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomSplineCurve {
     /// Dereference this Handle to access the underlying IGESGeom_SplineCurve
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_SplineCurve {
@@ -21940,6 +22094,12 @@ unsafe impl crate::CppDeletable for HandleIGESGeomSplineSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomSplineSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineSurface_clone(ptr))
+    }
+}
+
 impl HandleIGESGeomSplineSurface {
     /// Dereference this Handle to access the underlying IGESGeom_SplineSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_SplineSurface {
@@ -22917,6 +23077,14 @@ unsafe impl crate::CppDeletable for HandleIGESGeomSurfaceOfRevolution {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomSurfaceOfRevolution {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomSurfaceOfRevolution_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESGeomSurfaceOfRevolution {
     /// Dereference this Handle to access the underlying IGESGeom_SurfaceOfRevolution
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_SurfaceOfRevolution {
@@ -23889,6 +24057,12 @@ pub use crate::ffi_types::HandleIGESGeomTabulatedCylinder;
 unsafe impl crate::CppDeletable for HandleIGESGeomTabulatedCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESGeomTabulatedCylinder_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESGeomTabulatedCylinder {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomTabulatedCylinder_clone(ptr))
     }
 }
 
@@ -28391,6 +28565,14 @@ unsafe impl crate::CppDeletable for HandleIGESGeomTransformationMatrix {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESGeomTransformationMatrix {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomTransformationMatrix_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESGeomTransformationMatrix {
     /// Dereference this Handle to access the underlying IGESGeom_TransformationMatrix
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_TransformationMatrix {
@@ -29417,6 +29599,12 @@ pub use crate::ffi_types::HandleIGESGeomTrimmedSurface;
 unsafe impl crate::CppDeletable for HandleIGESGeomTrimmedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESGeomTrimmedSurface_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESGeomTrimmedSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomTrimmedSurface_clone(ptr))
     }
 }
 

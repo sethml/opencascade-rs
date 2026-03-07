@@ -1318,6 +1318,22 @@ unsafe impl crate::CppDeletable for SectionLine {
     }
 }
 
+unsafe impl crate::CppCopyable for SectionLine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for SectionLine {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl SectionLine {
     /// **Source:** `IntPolyh_SectionLine.hxx`:32 - `IntPolyh_SectionLine::IntPolyh_SectionLine()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -1424,15 +1440,6 @@ impl SectionLine {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_prepend(self as *mut Self, SP)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 

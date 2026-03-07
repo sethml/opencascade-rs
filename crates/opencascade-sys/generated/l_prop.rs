@@ -390,6 +390,12 @@ unsafe impl crate::CppDeletable for HandleLPropBadContinuity {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleLPropBadContinuity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleLPropBadContinuity_clone(ptr))
+    }
+}
+
 impl HandleLPropBadContinuity {
     /// Dereference this Handle to access the underlying LProp_BadContinuity
     pub fn get(&self) -> &crate::ffi_types::LProp_BadContinuity {
@@ -786,6 +792,12 @@ pub use crate::ffi_types::HandleLPropNotDefined;
 unsafe impl crate::CppDeletable for HandleLPropNotDefined {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleLPropNotDefined_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleLPropNotDefined {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleLPropNotDefined_clone(ptr))
     }
 }
 

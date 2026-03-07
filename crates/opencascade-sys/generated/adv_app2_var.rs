@@ -2020,6 +2020,12 @@ unsafe impl crate::CppDeletable for HandleAdvApp2VarIso {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAdvApp2VarIso {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarIso_clone(ptr))
+    }
+}
+
 impl HandleAdvApp2VarIso {
     /// Dereference this Handle to access the underlying AdvApp2Var_Iso
     pub fn get(&self) -> &crate::ffi_types::AdvApp2Var_Iso {
@@ -3053,6 +3059,12 @@ unsafe impl crate::CppDeletable for HandleAdvApp2VarNode {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAdvApp2VarNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarNode_clone(ptr))
+    }
+}
+
 impl HandleAdvApp2VarNode {
     /// Dereference this Handle to access the underlying AdvApp2Var_Node
     pub fn get(&self) -> &crate::ffi_types::AdvApp2Var_Node {
@@ -3522,6 +3534,12 @@ pub use crate::ffi_types::HandleAdvApp2VarPatch;
 unsafe impl crate::CppDeletable for HandleAdvApp2VarPatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleAdvApp2VarPatch_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAdvApp2VarPatch {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarPatch_clone(ptr))
     }
 }
 

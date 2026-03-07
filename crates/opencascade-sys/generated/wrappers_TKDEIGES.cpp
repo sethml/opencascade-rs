@@ -1040,289 +1040,1417 @@ typedef opencascade::handle<Transfer_TransientProcess> HandleTransferTransientPr
 typedef opencascade::handle<XSControl_Controller> HandleXSControlController;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleDEIGESConfigurationNode_destructor(HandleDEIGESConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<HandleDEIGESConfigurationNode*> HandleDEIGESConfigurationNode_clone(const HandleDEIGESConfigurationNode* self_) {
+    try { return {new HandleDEIGESConfigurationNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDEIGESProvider_destructor(HandleDEIGESProvider* self_) { delete self_; }
+extern "C" OcctResult<HandleDEIGESProvider*> HandleDEIGESProvider_clone(const HandleDEIGESProvider* self_) {
+    try { return {new HandleDEIGESProvider(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliDrilledHole_destructor(HandleIGESAppliDrilledHole* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliDrilledHole*> HandleIGESAppliDrilledHole_clone(const HandleIGESAppliDrilledHole* self_) {
+    try { return {new HandleIGESAppliDrilledHole(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliElementResults_destructor(HandleIGESAppliElementResults* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliElementResults*> HandleIGESAppliElementResults_clone(const HandleIGESAppliElementResults* self_) {
+    try { return {new HandleIGESAppliElementResults(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliFiniteElement_destructor(HandleIGESAppliFiniteElement* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliFiniteElement*> HandleIGESAppliFiniteElement_clone(const HandleIGESAppliFiniteElement* self_) {
+    try { return {new HandleIGESAppliFiniteElement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliFlow_destructor(HandleIGESAppliFlow* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliFlow*> HandleIGESAppliFlow_clone(const HandleIGESAppliFlow* self_) {
+    try { return {new HandleIGESAppliFlow(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliFlowLineSpec_destructor(HandleIGESAppliFlowLineSpec* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliFlowLineSpec*> HandleIGESAppliFlowLineSpec_clone(const HandleIGESAppliFlowLineSpec* self_) {
+    try { return {new HandleIGESAppliFlowLineSpec(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliGeneralModule_destructor(HandleIGESAppliGeneralModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliGeneralModule*> HandleIGESAppliGeneralModule_clone(const HandleIGESAppliGeneralModule* self_) {
+    try { return {new HandleIGESAppliGeneralModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliHArray1OfFiniteElement_destructor(HandleIGESAppliHArray1OfFiniteElement* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliHArray1OfFiniteElement*> HandleIGESAppliHArray1OfFiniteElement_clone(const HandleIGESAppliHArray1OfFiniteElement* self_) {
+    try { return {new HandleIGESAppliHArray1OfFiniteElement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliHArray1OfFlow_destructor(HandleIGESAppliHArray1OfFlow* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliHArray1OfFlow*> HandleIGESAppliHArray1OfFlow_clone(const HandleIGESAppliHArray1OfFlow* self_) {
+    try { return {new HandleIGESAppliHArray1OfFlow(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliHArray1OfNode_destructor(HandleIGESAppliHArray1OfNode* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliHArray1OfNode*> HandleIGESAppliHArray1OfNode_clone(const HandleIGESAppliHArray1OfNode* self_) {
+    try { return {new HandleIGESAppliHArray1OfNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliLevelFunction_destructor(HandleIGESAppliLevelFunction* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliLevelFunction*> HandleIGESAppliLevelFunction_clone(const HandleIGESAppliLevelFunction* self_) {
+    try { return {new HandleIGESAppliLevelFunction(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliLevelToPWBLayerMap_destructor(HandleIGESAppliLevelToPWBLayerMap* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliLevelToPWBLayerMap*> HandleIGESAppliLevelToPWBLayerMap_clone(const HandleIGESAppliLevelToPWBLayerMap* self_) {
+    try { return {new HandleIGESAppliLevelToPWBLayerMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliLineWidening_destructor(HandleIGESAppliLineWidening* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliLineWidening*> HandleIGESAppliLineWidening_clone(const HandleIGESAppliLineWidening* self_) {
+    try { return {new HandleIGESAppliLineWidening(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliNodalConstraint_destructor(HandleIGESAppliNodalConstraint* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliNodalConstraint*> HandleIGESAppliNodalConstraint_clone(const HandleIGESAppliNodalConstraint* self_) {
+    try { return {new HandleIGESAppliNodalConstraint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliNodalDisplAndRot_destructor(HandleIGESAppliNodalDisplAndRot* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliNodalDisplAndRot*> HandleIGESAppliNodalDisplAndRot_clone(const HandleIGESAppliNodalDisplAndRot* self_) {
+    try { return {new HandleIGESAppliNodalDisplAndRot(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliNodalResults_destructor(HandleIGESAppliNodalResults* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliNodalResults*> HandleIGESAppliNodalResults_clone(const HandleIGESAppliNodalResults* self_) {
+    try { return {new HandleIGESAppliNodalResults(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliNode_destructor(HandleIGESAppliNode* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliNode*> HandleIGESAppliNode_clone(const HandleIGESAppliNode* self_) {
+    try { return {new HandleIGESAppliNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliPWBArtworkStackup_destructor(HandleIGESAppliPWBArtworkStackup* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliPWBArtworkStackup*> HandleIGESAppliPWBArtworkStackup_clone(const HandleIGESAppliPWBArtworkStackup* self_) {
+    try { return {new HandleIGESAppliPWBArtworkStackup(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliPWBDrilledHole_destructor(HandleIGESAppliPWBDrilledHole* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliPWBDrilledHole*> HandleIGESAppliPWBDrilledHole_clone(const HandleIGESAppliPWBDrilledHole* self_) {
+    try { return {new HandleIGESAppliPWBDrilledHole(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliPartNumber_destructor(HandleIGESAppliPartNumber* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliPartNumber*> HandleIGESAppliPartNumber_clone(const HandleIGESAppliPartNumber* self_) {
+    try { return {new HandleIGESAppliPartNumber(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliPinNumber_destructor(HandleIGESAppliPinNumber* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliPinNumber*> HandleIGESAppliPinNumber_clone(const HandleIGESAppliPinNumber* self_) {
+    try { return {new HandleIGESAppliPinNumber(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliPipingFlow_destructor(HandleIGESAppliPipingFlow* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliPipingFlow*> HandleIGESAppliPipingFlow_clone(const HandleIGESAppliPipingFlow* self_) {
+    try { return {new HandleIGESAppliPipingFlow(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliProtocol_destructor(HandleIGESAppliProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliProtocol*> HandleIGESAppliProtocol_clone(const HandleIGESAppliProtocol* self_) {
+    try { return {new HandleIGESAppliProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliReadWriteModule_destructor(HandleIGESAppliReadWriteModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliReadWriteModule*> HandleIGESAppliReadWriteModule_clone(const HandleIGESAppliReadWriteModule* self_) {
+    try { return {new HandleIGESAppliReadWriteModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliReferenceDesignator_destructor(HandleIGESAppliReferenceDesignator* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliReferenceDesignator*> HandleIGESAppliReferenceDesignator_clone(const HandleIGESAppliReferenceDesignator* self_) {
+    try { return {new HandleIGESAppliReferenceDesignator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliRegionRestriction_destructor(HandleIGESAppliRegionRestriction* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliRegionRestriction*> HandleIGESAppliRegionRestriction_clone(const HandleIGESAppliRegionRestriction* self_) {
+    try { return {new HandleIGESAppliRegionRestriction(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESAppliSpecificModule_destructor(HandleIGESAppliSpecificModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESAppliSpecificModule*> HandleIGESAppliSpecificModule_clone(const HandleIGESAppliSpecificModule* self_) {
+    try { return {new HandleIGESAppliSpecificModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicAssocGroupType_destructor(HandleIGESBasicAssocGroupType* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicAssocGroupType*> HandleIGESBasicAssocGroupType_clone(const HandleIGESBasicAssocGroupType* self_) {
+    try { return {new HandleIGESBasicAssocGroupType(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicExternalRefFile_destructor(HandleIGESBasicExternalRefFile* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicExternalRefFile*> HandleIGESBasicExternalRefFile_clone(const HandleIGESBasicExternalRefFile* self_) {
+    try { return {new HandleIGESBasicExternalRefFile(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicExternalRefFileIndex_destructor(HandleIGESBasicExternalRefFileIndex* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicExternalRefFileIndex*> HandleIGESBasicExternalRefFileIndex_clone(const HandleIGESBasicExternalRefFileIndex* self_) {
+    try { return {new HandleIGESBasicExternalRefFileIndex(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicExternalRefFileName_destructor(HandleIGESBasicExternalRefFileName* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicExternalRefFileName*> HandleIGESBasicExternalRefFileName_clone(const HandleIGESBasicExternalRefFileName* self_) {
+    try { return {new HandleIGESBasicExternalRefFileName(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicExternalRefLibName_destructor(HandleIGESBasicExternalRefLibName* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicExternalRefLibName*> HandleIGESBasicExternalRefLibName_clone(const HandleIGESBasicExternalRefLibName* self_) {
+    try { return {new HandleIGESBasicExternalRefLibName(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicExternalRefName_destructor(HandleIGESBasicExternalRefName* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicExternalRefName*> HandleIGESBasicExternalRefName_clone(const HandleIGESBasicExternalRefName* self_) {
+    try { return {new HandleIGESBasicExternalRefName(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicExternalReferenceFile_destructor(HandleIGESBasicExternalReferenceFile* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicExternalReferenceFile*> HandleIGESBasicExternalReferenceFile_clone(const HandleIGESBasicExternalReferenceFile* self_) {
+    try { return {new HandleIGESBasicExternalReferenceFile(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicGeneralModule_destructor(HandleIGESBasicGeneralModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicGeneralModule*> HandleIGESBasicGeneralModule_clone(const HandleIGESBasicGeneralModule* self_) {
+    try { return {new HandleIGESBasicGeneralModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicGroup_destructor(HandleIGESBasicGroup* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicGroup*> HandleIGESBasicGroup_clone(const HandleIGESBasicGroup* self_) {
+    try { return {new HandleIGESBasicGroup(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicGroupWithoutBackP_destructor(HandleIGESBasicGroupWithoutBackP* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicGroupWithoutBackP*> HandleIGESBasicGroupWithoutBackP_clone(const HandleIGESBasicGroupWithoutBackP* self_) {
+    try { return {new HandleIGESBasicGroupWithoutBackP(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicHArray1OfHArray1OfIGESEntity_destructor(HandleIGESBasicHArray1OfHArray1OfIGESEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicHArray1OfHArray1OfIGESEntity*> HandleIGESBasicHArray1OfHArray1OfIGESEntity_clone(const HandleIGESBasicHArray1OfHArray1OfIGESEntity* self_) {
+    try { return {new HandleIGESBasicHArray1OfHArray1OfIGESEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicHArray1OfHArray1OfInteger_destructor(HandleIGESBasicHArray1OfHArray1OfInteger* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicHArray1OfHArray1OfInteger*> HandleIGESBasicHArray1OfHArray1OfInteger_clone(const HandleIGESBasicHArray1OfHArray1OfInteger* self_) {
+    try { return {new HandleIGESBasicHArray1OfHArray1OfInteger(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicHArray1OfHArray1OfReal_destructor(HandleIGESBasicHArray1OfHArray1OfReal* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicHArray1OfHArray1OfReal*> HandleIGESBasicHArray1OfHArray1OfReal_clone(const HandleIGESBasicHArray1OfHArray1OfReal* self_) {
+    try { return {new HandleIGESBasicHArray1OfHArray1OfReal(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicHArray1OfHArray1OfXY_destructor(HandleIGESBasicHArray1OfHArray1OfXY* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicHArray1OfHArray1OfXY*> HandleIGESBasicHArray1OfHArray1OfXY_clone(const HandleIGESBasicHArray1OfHArray1OfXY* self_) {
+    try { return {new HandleIGESBasicHArray1OfHArray1OfXY(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicHArray1OfHArray1OfXYZ_destructor(HandleIGESBasicHArray1OfHArray1OfXYZ* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicHArray1OfHArray1OfXYZ*> HandleIGESBasicHArray1OfHArray1OfXYZ_clone(const HandleIGESBasicHArray1OfHArray1OfXYZ* self_) {
+    try { return {new HandleIGESBasicHArray1OfHArray1OfXYZ(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicHArray1OfLineFontEntity_destructor(HandleIGESBasicHArray1OfLineFontEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicHArray1OfLineFontEntity*> HandleIGESBasicHArray1OfLineFontEntity_clone(const HandleIGESBasicHArray1OfLineFontEntity* self_) {
+    try { return {new HandleIGESBasicHArray1OfLineFontEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicHArray2OfHArray1OfReal_destructor(HandleIGESBasicHArray2OfHArray1OfReal* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicHArray2OfHArray1OfReal*> HandleIGESBasicHArray2OfHArray1OfReal_clone(const HandleIGESBasicHArray2OfHArray1OfReal* self_) {
+    try { return {new HandleIGESBasicHArray2OfHArray1OfReal(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicHierarchy_destructor(HandleIGESBasicHierarchy* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicHierarchy*> HandleIGESBasicHierarchy_clone(const HandleIGESBasicHierarchy* self_) {
+    try { return {new HandleIGESBasicHierarchy(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicName_destructor(HandleIGESBasicName* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicName*> HandleIGESBasicName_clone(const HandleIGESBasicName* self_) {
+    try { return {new HandleIGESBasicName(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicOrderedGroup_destructor(HandleIGESBasicOrderedGroup* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicOrderedGroup*> HandleIGESBasicOrderedGroup_clone(const HandleIGESBasicOrderedGroup* self_) {
+    try { return {new HandleIGESBasicOrderedGroup(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicOrderedGroupWithoutBackP_destructor(HandleIGESBasicOrderedGroupWithoutBackP* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicOrderedGroupWithoutBackP*> HandleIGESBasicOrderedGroupWithoutBackP_clone(const HandleIGESBasicOrderedGroupWithoutBackP* self_) {
+    try { return {new HandleIGESBasicOrderedGroupWithoutBackP(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicProtocol_destructor(HandleIGESBasicProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicProtocol*> HandleIGESBasicProtocol_clone(const HandleIGESBasicProtocol* self_) {
+    try { return {new HandleIGESBasicProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicReadWriteModule_destructor(HandleIGESBasicReadWriteModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicReadWriteModule*> HandleIGESBasicReadWriteModule_clone(const HandleIGESBasicReadWriteModule* self_) {
+    try { return {new HandleIGESBasicReadWriteModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicSingleParent_destructor(HandleIGESBasicSingleParent* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicSingleParent*> HandleIGESBasicSingleParent_clone(const HandleIGESBasicSingleParent* self_) {
+    try { return {new HandleIGESBasicSingleParent(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicSingularSubfigure_destructor(HandleIGESBasicSingularSubfigure* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicSingularSubfigure*> HandleIGESBasicSingularSubfigure_clone(const HandleIGESBasicSingularSubfigure* self_) {
+    try { return {new HandleIGESBasicSingularSubfigure(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicSpecificModule_destructor(HandleIGESBasicSpecificModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicSpecificModule*> HandleIGESBasicSpecificModule_clone(const HandleIGESBasicSpecificModule* self_) {
+    try { return {new HandleIGESBasicSpecificModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESBasicSubfigureDef_destructor(HandleIGESBasicSubfigureDef* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESBasicSubfigureDef*> HandleIGESBasicSubfigureDef_clone(const HandleIGESBasicSubfigureDef* self_) {
+    try { return {new HandleIGESBasicSubfigureDef(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESControlActorWrite_destructor(HandleIGESControlActorWrite* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESControlActorWrite*> HandleIGESControlActorWrite_clone(const HandleIGESControlActorWrite* self_) {
+    try { return {new HandleIGESControlActorWrite(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESControlAlgoContainer_destructor(HandleIGESControlAlgoContainer* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESControlAlgoContainer*> HandleIGESControlAlgoContainer_clone(const HandleIGESControlAlgoContainer* self_) {
+    try { return {new HandleIGESControlAlgoContainer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESControlController_destructor(HandleIGESControlController* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESControlController*> HandleIGESControlController_clone(const HandleIGESControlController* self_) {
+    try { return {new HandleIGESControlController(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESControlIGESBoundary_destructor(HandleIGESControlIGESBoundary* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESControlIGESBoundary*> HandleIGESControlIGESBoundary_clone(const HandleIGESControlIGESBoundary* self_) {
+    try { return {new HandleIGESControlIGESBoundary(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESControlToolContainer_destructor(HandleIGESControlToolContainer* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESControlToolContainer*> HandleIGESControlToolContainer_clone(const HandleIGESControlToolContainer* self_) {
+    try { return {new HandleIGESControlToolContainer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataColorEntity_destructor(HandleIGESDataColorEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataColorEntity*> HandleIGESDataColorEntity_clone(const HandleIGESDataColorEntity* self_) {
+    try { return {new HandleIGESDataColorEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataDefaultGeneral_destructor(HandleIGESDataDefaultGeneral* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataDefaultGeneral*> HandleIGESDataDefaultGeneral_clone(const HandleIGESDataDefaultGeneral* self_) {
+    try { return {new HandleIGESDataDefaultGeneral(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataDefaultSpecific_destructor(HandleIGESDataDefaultSpecific* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataDefaultSpecific*> HandleIGESDataDefaultSpecific_clone(const HandleIGESDataDefaultSpecific* self_) {
+    try { return {new HandleIGESDataDefaultSpecific(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataFileProtocol_destructor(HandleIGESDataFileProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataFileProtocol*> HandleIGESDataFileProtocol_clone(const HandleIGESDataFileProtocol* self_) {
+    try { return {new HandleIGESDataFileProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataFileRecognizer_destructor(HandleIGESDataFileRecognizer* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataFileRecognizer*> HandleIGESDataFileRecognizer_clone(const HandleIGESDataFileRecognizer* self_) {
+    try { return {new HandleIGESDataFileRecognizer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataFreeFormatEntity_destructor(HandleIGESDataFreeFormatEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataFreeFormatEntity*> HandleIGESDataFreeFormatEntity_clone(const HandleIGESDataFreeFormatEntity* self_) {
+    try { return {new HandleIGESDataFreeFormatEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataGeneralModule_destructor(HandleIGESDataGeneralModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataGeneralModule*> HandleIGESDataGeneralModule_clone(const HandleIGESDataGeneralModule* self_) {
+    try { return {new HandleIGESDataGeneralModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataGlobalNodeOfSpecificLib_destructor(HandleIGESDataGlobalNodeOfSpecificLib* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataGlobalNodeOfSpecificLib*> HandleIGESDataGlobalNodeOfSpecificLib_clone(const HandleIGESDataGlobalNodeOfSpecificLib* self_) {
+    try { return {new HandleIGESDataGlobalNodeOfSpecificLib(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataGlobalNodeOfWriterLib_destructor(HandleIGESDataGlobalNodeOfWriterLib* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataGlobalNodeOfWriterLib*> HandleIGESDataGlobalNodeOfWriterLib_clone(const HandleIGESDataGlobalNodeOfWriterLib* self_) {
+    try { return {new HandleIGESDataGlobalNodeOfWriterLib(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataHArray1OfIGESEntity_destructor(HandleIGESDataHArray1OfIGESEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataHArray1OfIGESEntity*> HandleIGESDataHArray1OfIGESEntity_clone(const HandleIGESDataHArray1OfIGESEntity* self_) {
+    try { return {new HandleIGESDataHArray1OfIGESEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataIGESEntity_destructor(HandleIGESDataIGESEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataIGESEntity*> HandleIGESDataIGESEntity_clone(const HandleIGESDataIGESEntity* self_) {
+    try { return {new HandleIGESDataIGESEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataIGESModel_destructor(HandleIGESDataIGESModel* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataIGESModel*> HandleIGESDataIGESModel_clone(const HandleIGESDataIGESModel* self_) {
+    try { return {new HandleIGESDataIGESModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataIGESReaderData_destructor(HandleIGESDataIGESReaderData* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataIGESReaderData*> HandleIGESDataIGESReaderData_clone(const HandleIGESDataIGESReaderData* self_) {
+    try { return {new HandleIGESDataIGESReaderData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataLabelDisplayEntity_destructor(HandleIGESDataLabelDisplayEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataLabelDisplayEntity*> HandleIGESDataLabelDisplayEntity_clone(const HandleIGESDataLabelDisplayEntity* self_) {
+    try { return {new HandleIGESDataLabelDisplayEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataLevelListEntity_destructor(HandleIGESDataLevelListEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataLevelListEntity*> HandleIGESDataLevelListEntity_clone(const HandleIGESDataLevelListEntity* self_) {
+    try { return {new HandleIGESDataLevelListEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataLineFontEntity_destructor(HandleIGESDataLineFontEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataLineFontEntity*> HandleIGESDataLineFontEntity_clone(const HandleIGESDataLineFontEntity* self_) {
+    try { return {new HandleIGESDataLineFontEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataNameEntity_destructor(HandleIGESDataNameEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataNameEntity*> HandleIGESDataNameEntity_clone(const HandleIGESDataNameEntity* self_) {
+    try { return {new HandleIGESDataNameEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataNodeOfSpecificLib_destructor(HandleIGESDataNodeOfSpecificLib* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataNodeOfSpecificLib*> HandleIGESDataNodeOfSpecificLib_clone(const HandleIGESDataNodeOfSpecificLib* self_) {
+    try { return {new HandleIGESDataNodeOfSpecificLib(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataNodeOfWriterLib_destructor(HandleIGESDataNodeOfWriterLib* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataNodeOfWriterLib*> HandleIGESDataNodeOfWriterLib_clone(const HandleIGESDataNodeOfWriterLib* self_) {
+    try { return {new HandleIGESDataNodeOfWriterLib(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataProtocol_destructor(HandleIGESDataProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataProtocol*> HandleIGESDataProtocol_clone(const HandleIGESDataProtocol* self_) {
+    try { return {new HandleIGESDataProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataReadWriteModule_destructor(HandleIGESDataReadWriteModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataReadWriteModule*> HandleIGESDataReadWriteModule_clone(const HandleIGESDataReadWriteModule* self_) {
+    try { return {new HandleIGESDataReadWriteModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataSingleParentEntity_destructor(HandleIGESDataSingleParentEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataSingleParentEntity*> HandleIGESDataSingleParentEntity_clone(const HandleIGESDataSingleParentEntity* self_) {
+    try { return {new HandleIGESDataSingleParentEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataSpecificModule_destructor(HandleIGESDataSpecificModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataSpecificModule*> HandleIGESDataSpecificModule_clone(const HandleIGESDataSpecificModule* self_) {
+    try { return {new HandleIGESDataSpecificModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataToolLocation_destructor(HandleIGESDataToolLocation* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataToolLocation*> HandleIGESDataToolLocation_clone(const HandleIGESDataToolLocation* self_) {
+    try { return {new HandleIGESDataToolLocation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataTransfEntity_destructor(HandleIGESDataTransfEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataTransfEntity*> HandleIGESDataTransfEntity_clone(const HandleIGESDataTransfEntity* self_) {
+    try { return {new HandleIGESDataTransfEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataUndefinedEntity_destructor(HandleIGESDataUndefinedEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataUndefinedEntity*> HandleIGESDataUndefinedEntity_clone(const HandleIGESDataUndefinedEntity* self_) {
+    try { return {new HandleIGESDataUndefinedEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDataViewKindEntity_destructor(HandleIGESDataViewKindEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDataViewKindEntity*> HandleIGESDataViewKindEntity_clone(const HandleIGESDataViewKindEntity* self_) {
+    try { return {new HandleIGESDataViewKindEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsAssociativityDef_destructor(HandleIGESDefsAssociativityDef* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsAssociativityDef*> HandleIGESDefsAssociativityDef_clone(const HandleIGESDefsAssociativityDef* self_) {
+    try { return {new HandleIGESDefsAssociativityDef(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsAttributeDef_destructor(HandleIGESDefsAttributeDef* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsAttributeDef*> HandleIGESDefsAttributeDef_clone(const HandleIGESDefsAttributeDef* self_) {
+    try { return {new HandleIGESDefsAttributeDef(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsAttributeTable_destructor(HandleIGESDefsAttributeTable* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsAttributeTable*> HandleIGESDefsAttributeTable_clone(const HandleIGESDefsAttributeTable* self_) {
+    try { return {new HandleIGESDefsAttributeTable(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsGeneralModule_destructor(HandleIGESDefsGeneralModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsGeneralModule*> HandleIGESDefsGeneralModule_clone(const HandleIGESDefsGeneralModule* self_) {
+    try { return {new HandleIGESDefsGeneralModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsGenericData_destructor(HandleIGESDefsGenericData* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsGenericData*> HandleIGESDefsGenericData_clone(const HandleIGESDefsGenericData* self_) {
+    try { return {new HandleIGESDefsGenericData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate_destructor(HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate*> HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate_clone(const HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate* self_) {
+    try { return {new HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsHArray1OfTabularData_destructor(HandleIGESDefsHArray1OfTabularData* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsHArray1OfTabularData*> HandleIGESDefsHArray1OfTabularData_clone(const HandleIGESDefsHArray1OfTabularData* self_) {
+    try { return {new HandleIGESDefsHArray1OfTabularData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsMacroDef_destructor(HandleIGESDefsMacroDef* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsMacroDef*> HandleIGESDefsMacroDef_clone(const HandleIGESDefsMacroDef* self_) {
+    try { return {new HandleIGESDefsMacroDef(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsProtocol_destructor(HandleIGESDefsProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsProtocol*> HandleIGESDefsProtocol_clone(const HandleIGESDefsProtocol* self_) {
+    try { return {new HandleIGESDefsProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsReadWriteModule_destructor(HandleIGESDefsReadWriteModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsReadWriteModule*> HandleIGESDefsReadWriteModule_clone(const HandleIGESDefsReadWriteModule* self_) {
+    try { return {new HandleIGESDefsReadWriteModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsSpecificModule_destructor(HandleIGESDefsSpecificModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsSpecificModule*> HandleIGESDefsSpecificModule_clone(const HandleIGESDefsSpecificModule* self_) {
+    try { return {new HandleIGESDefsSpecificModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsTabularData_destructor(HandleIGESDefsTabularData* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsTabularData*> HandleIGESDefsTabularData_clone(const HandleIGESDefsTabularData* self_) {
+    try { return {new HandleIGESDefsTabularData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDefsUnitsData_destructor(HandleIGESDefsUnitsData* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDefsUnitsData*> HandleIGESDefsUnitsData_clone(const HandleIGESDefsUnitsData* self_) {
+    try { return {new HandleIGESDefsUnitsData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenAngularDimension_destructor(HandleIGESDimenAngularDimension* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenAngularDimension*> HandleIGESDimenAngularDimension_clone(const HandleIGESDimenAngularDimension* self_) {
+    try { return {new HandleIGESDimenAngularDimension(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenBasicDimension_destructor(HandleIGESDimenBasicDimension* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenBasicDimension*> HandleIGESDimenBasicDimension_clone(const HandleIGESDimenBasicDimension* self_) {
+    try { return {new HandleIGESDimenBasicDimension(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenCenterLine_destructor(HandleIGESDimenCenterLine* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenCenterLine*> HandleIGESDimenCenterLine_clone(const HandleIGESDimenCenterLine* self_) {
+    try { return {new HandleIGESDimenCenterLine(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenCurveDimension_destructor(HandleIGESDimenCurveDimension* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenCurveDimension*> HandleIGESDimenCurveDimension_clone(const HandleIGESDimenCurveDimension* self_) {
+    try { return {new HandleIGESDimenCurveDimension(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenDiameterDimension_destructor(HandleIGESDimenDiameterDimension* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenDiameterDimension*> HandleIGESDimenDiameterDimension_clone(const HandleIGESDimenDiameterDimension* self_) {
+    try { return {new HandleIGESDimenDiameterDimension(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenDimensionDisplayData_destructor(HandleIGESDimenDimensionDisplayData* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenDimensionDisplayData*> HandleIGESDimenDimensionDisplayData_clone(const HandleIGESDimenDimensionDisplayData* self_) {
+    try { return {new HandleIGESDimenDimensionDisplayData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenDimensionTolerance_destructor(HandleIGESDimenDimensionTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenDimensionTolerance*> HandleIGESDimenDimensionTolerance_clone(const HandleIGESDimenDimensionTolerance* self_) {
+    try { return {new HandleIGESDimenDimensionTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenDimensionUnits_destructor(HandleIGESDimenDimensionUnits* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenDimensionUnits*> HandleIGESDimenDimensionUnits_clone(const HandleIGESDimenDimensionUnits* self_) {
+    try { return {new HandleIGESDimenDimensionUnits(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenDimensionedGeometry_destructor(HandleIGESDimenDimensionedGeometry* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenDimensionedGeometry*> HandleIGESDimenDimensionedGeometry_clone(const HandleIGESDimenDimensionedGeometry* self_) {
+    try { return {new HandleIGESDimenDimensionedGeometry(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenFlagNote_destructor(HandleIGESDimenFlagNote* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenFlagNote*> HandleIGESDimenFlagNote_clone(const HandleIGESDimenFlagNote* self_) {
+    try { return {new HandleIGESDimenFlagNote(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenGeneralLabel_destructor(HandleIGESDimenGeneralLabel* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenGeneralLabel*> HandleIGESDimenGeneralLabel_clone(const HandleIGESDimenGeneralLabel* self_) {
+    try { return {new HandleIGESDimenGeneralLabel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenGeneralModule_destructor(HandleIGESDimenGeneralModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenGeneralModule*> HandleIGESDimenGeneralModule_clone(const HandleIGESDimenGeneralModule* self_) {
+    try { return {new HandleIGESDimenGeneralModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenGeneralNote_destructor(HandleIGESDimenGeneralNote* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenGeneralNote*> HandleIGESDimenGeneralNote_clone(const HandleIGESDimenGeneralNote* self_) {
+    try { return {new HandleIGESDimenGeneralNote(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenGeneralSymbol_destructor(HandleIGESDimenGeneralSymbol* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenGeneralSymbol*> HandleIGESDimenGeneralSymbol_clone(const HandleIGESDimenGeneralSymbol* self_) {
+    try { return {new HandleIGESDimenGeneralSymbol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenHArray1OfGeneralNote_destructor(HandleIGESDimenHArray1OfGeneralNote* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenHArray1OfGeneralNote*> HandleIGESDimenHArray1OfGeneralNote_clone(const HandleIGESDimenHArray1OfGeneralNote* self_) {
+    try { return {new HandleIGESDimenHArray1OfGeneralNote(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenHArray1OfLeaderArrow_destructor(HandleIGESDimenHArray1OfLeaderArrow* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenHArray1OfLeaderArrow*> HandleIGESDimenHArray1OfLeaderArrow_clone(const HandleIGESDimenHArray1OfLeaderArrow* self_) {
+    try { return {new HandleIGESDimenHArray1OfLeaderArrow(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenLeaderArrow_destructor(HandleIGESDimenLeaderArrow* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenLeaderArrow*> HandleIGESDimenLeaderArrow_clone(const HandleIGESDimenLeaderArrow* self_) {
+    try { return {new HandleIGESDimenLeaderArrow(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenLinearDimension_destructor(HandleIGESDimenLinearDimension* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenLinearDimension*> HandleIGESDimenLinearDimension_clone(const HandleIGESDimenLinearDimension* self_) {
+    try { return {new HandleIGESDimenLinearDimension(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenNewDimensionedGeometry_destructor(HandleIGESDimenNewDimensionedGeometry* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenNewDimensionedGeometry*> HandleIGESDimenNewDimensionedGeometry_clone(const HandleIGESDimenNewDimensionedGeometry* self_) {
+    try { return {new HandleIGESDimenNewDimensionedGeometry(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenNewGeneralNote_destructor(HandleIGESDimenNewGeneralNote* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenNewGeneralNote*> HandleIGESDimenNewGeneralNote_clone(const HandleIGESDimenNewGeneralNote* self_) {
+    try { return {new HandleIGESDimenNewGeneralNote(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenOrdinateDimension_destructor(HandleIGESDimenOrdinateDimension* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenOrdinateDimension*> HandleIGESDimenOrdinateDimension_clone(const HandleIGESDimenOrdinateDimension* self_) {
+    try { return {new HandleIGESDimenOrdinateDimension(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenPointDimension_destructor(HandleIGESDimenPointDimension* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenPointDimension*> HandleIGESDimenPointDimension_clone(const HandleIGESDimenPointDimension* self_) {
+    try { return {new HandleIGESDimenPointDimension(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenProtocol_destructor(HandleIGESDimenProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenProtocol*> HandleIGESDimenProtocol_clone(const HandleIGESDimenProtocol* self_) {
+    try { return {new HandleIGESDimenProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenRadiusDimension_destructor(HandleIGESDimenRadiusDimension* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenRadiusDimension*> HandleIGESDimenRadiusDimension_clone(const HandleIGESDimenRadiusDimension* self_) {
+    try { return {new HandleIGESDimenRadiusDimension(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenReadWriteModule_destructor(HandleIGESDimenReadWriteModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenReadWriteModule*> HandleIGESDimenReadWriteModule_clone(const HandleIGESDimenReadWriteModule* self_) {
+    try { return {new HandleIGESDimenReadWriteModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenSection_destructor(HandleIGESDimenSection* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenSection*> HandleIGESDimenSection_clone(const HandleIGESDimenSection* self_) {
+    try { return {new HandleIGESDimenSection(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenSectionedArea_destructor(HandleIGESDimenSectionedArea* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenSectionedArea*> HandleIGESDimenSectionedArea_clone(const HandleIGESDimenSectionedArea* self_) {
+    try { return {new HandleIGESDimenSectionedArea(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenSpecificModule_destructor(HandleIGESDimenSpecificModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenSpecificModule*> HandleIGESDimenSpecificModule_clone(const HandleIGESDimenSpecificModule* self_) {
+    try { return {new HandleIGESDimenSpecificModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDimenWitnessLine_destructor(HandleIGESDimenWitnessLine* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDimenWitnessLine*> HandleIGESDimenWitnessLine_clone(const HandleIGESDimenWitnessLine* self_) {
+    try { return {new HandleIGESDimenWitnessLine(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawCircArraySubfigure_destructor(HandleIGESDrawCircArraySubfigure* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawCircArraySubfigure*> HandleIGESDrawCircArraySubfigure_clone(const HandleIGESDrawCircArraySubfigure* self_) {
+    try { return {new HandleIGESDrawCircArraySubfigure(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawConnectPoint_destructor(HandleIGESDrawConnectPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawConnectPoint*> HandleIGESDrawConnectPoint_clone(const HandleIGESDrawConnectPoint* self_) {
+    try { return {new HandleIGESDrawConnectPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawDrawing_destructor(HandleIGESDrawDrawing* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawDrawing*> HandleIGESDrawDrawing_clone(const HandleIGESDrawDrawing* self_) {
+    try { return {new HandleIGESDrawDrawing(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawDrawingWithRotation_destructor(HandleIGESDrawDrawingWithRotation* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawDrawingWithRotation*> HandleIGESDrawDrawingWithRotation_clone(const HandleIGESDrawDrawingWithRotation* self_) {
+    try { return {new HandleIGESDrawDrawingWithRotation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawGeneralModule_destructor(HandleIGESDrawGeneralModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawGeneralModule*> HandleIGESDrawGeneralModule_clone(const HandleIGESDrawGeneralModule* self_) {
+    try { return {new HandleIGESDrawGeneralModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawHArray1OfConnectPoint_destructor(HandleIGESDrawHArray1OfConnectPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawHArray1OfConnectPoint*> HandleIGESDrawHArray1OfConnectPoint_clone(const HandleIGESDrawHArray1OfConnectPoint* self_) {
+    try { return {new HandleIGESDrawHArray1OfConnectPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawHArray1OfViewKindEntity_destructor(HandleIGESDrawHArray1OfViewKindEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawHArray1OfViewKindEntity*> HandleIGESDrawHArray1OfViewKindEntity_clone(const HandleIGESDrawHArray1OfViewKindEntity* self_) {
+    try { return {new HandleIGESDrawHArray1OfViewKindEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawLabelDisplay_destructor(HandleIGESDrawLabelDisplay* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawLabelDisplay*> HandleIGESDrawLabelDisplay_clone(const HandleIGESDrawLabelDisplay* self_) {
+    try { return {new HandleIGESDrawLabelDisplay(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawNetworkSubfigure_destructor(HandleIGESDrawNetworkSubfigure* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawNetworkSubfigure*> HandleIGESDrawNetworkSubfigure_clone(const HandleIGESDrawNetworkSubfigure* self_) {
+    try { return {new HandleIGESDrawNetworkSubfigure(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawNetworkSubfigureDef_destructor(HandleIGESDrawNetworkSubfigureDef* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawNetworkSubfigureDef*> HandleIGESDrawNetworkSubfigureDef_clone(const HandleIGESDrawNetworkSubfigureDef* self_) {
+    try { return {new HandleIGESDrawNetworkSubfigureDef(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawPerspectiveView_destructor(HandleIGESDrawPerspectiveView* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawPerspectiveView*> HandleIGESDrawPerspectiveView_clone(const HandleIGESDrawPerspectiveView* self_) {
+    try { return {new HandleIGESDrawPerspectiveView(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawPlanar_destructor(HandleIGESDrawPlanar* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawPlanar*> HandleIGESDrawPlanar_clone(const HandleIGESDrawPlanar* self_) {
+    try { return {new HandleIGESDrawPlanar(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawProtocol_destructor(HandleIGESDrawProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawProtocol*> HandleIGESDrawProtocol_clone(const HandleIGESDrawProtocol* self_) {
+    try { return {new HandleIGESDrawProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawReadWriteModule_destructor(HandleIGESDrawReadWriteModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawReadWriteModule*> HandleIGESDrawReadWriteModule_clone(const HandleIGESDrawReadWriteModule* self_) {
+    try { return {new HandleIGESDrawReadWriteModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawRectArraySubfigure_destructor(HandleIGESDrawRectArraySubfigure* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawRectArraySubfigure*> HandleIGESDrawRectArraySubfigure_clone(const HandleIGESDrawRectArraySubfigure* self_) {
+    try { return {new HandleIGESDrawRectArraySubfigure(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawSegmentedViewsVisible_destructor(HandleIGESDrawSegmentedViewsVisible* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawSegmentedViewsVisible*> HandleIGESDrawSegmentedViewsVisible_clone(const HandleIGESDrawSegmentedViewsVisible* self_) {
+    try { return {new HandleIGESDrawSegmentedViewsVisible(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawSpecificModule_destructor(HandleIGESDrawSpecificModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawSpecificModule*> HandleIGESDrawSpecificModule_clone(const HandleIGESDrawSpecificModule* self_) {
+    try { return {new HandleIGESDrawSpecificModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawView_destructor(HandleIGESDrawView* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawView*> HandleIGESDrawView_clone(const HandleIGESDrawView* self_) {
+    try { return {new HandleIGESDrawView(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawViewsVisible_destructor(HandleIGESDrawViewsVisible* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawViewsVisible*> HandleIGESDrawViewsVisible_clone(const HandleIGESDrawViewsVisible* self_) {
+    try { return {new HandleIGESDrawViewsVisible(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESDrawViewsVisibleWithAttr_destructor(HandleIGESDrawViewsVisibleWithAttr* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESDrawViewsVisibleWithAttr*> HandleIGESDrawViewsVisibleWithAttr_clone(const HandleIGESDrawViewsVisibleWithAttr* self_) {
+    try { return {new HandleIGESDrawViewsVisibleWithAttr(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomBSplineCurve_destructor(HandleIGESGeomBSplineCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomBSplineCurve*> HandleIGESGeomBSplineCurve_clone(const HandleIGESGeomBSplineCurve* self_) {
+    try { return {new HandleIGESGeomBSplineCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomBSplineSurface_destructor(HandleIGESGeomBSplineSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomBSplineSurface*> HandleIGESGeomBSplineSurface_clone(const HandleIGESGeomBSplineSurface* self_) {
+    try { return {new HandleIGESGeomBSplineSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomBoundary_destructor(HandleIGESGeomBoundary* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomBoundary*> HandleIGESGeomBoundary_clone(const HandleIGESGeomBoundary* self_) {
+    try { return {new HandleIGESGeomBoundary(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomBoundedSurface_destructor(HandleIGESGeomBoundedSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomBoundedSurface*> HandleIGESGeomBoundedSurface_clone(const HandleIGESGeomBoundedSurface* self_) {
+    try { return {new HandleIGESGeomBoundedSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomCircularArc_destructor(HandleIGESGeomCircularArc* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomCircularArc*> HandleIGESGeomCircularArc_clone(const HandleIGESGeomCircularArc* self_) {
+    try { return {new HandleIGESGeomCircularArc(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomCompositeCurve_destructor(HandleIGESGeomCompositeCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomCompositeCurve*> HandleIGESGeomCompositeCurve_clone(const HandleIGESGeomCompositeCurve* self_) {
+    try { return {new HandleIGESGeomCompositeCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomConicArc_destructor(HandleIGESGeomConicArc* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomConicArc*> HandleIGESGeomConicArc_clone(const HandleIGESGeomConicArc* self_) {
+    try { return {new HandleIGESGeomConicArc(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomCopiousData_destructor(HandleIGESGeomCopiousData* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomCopiousData*> HandleIGESGeomCopiousData_clone(const HandleIGESGeomCopiousData* self_) {
+    try { return {new HandleIGESGeomCopiousData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomCurveOnSurface_destructor(HandleIGESGeomCurveOnSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomCurveOnSurface*> HandleIGESGeomCurveOnSurface_clone(const HandleIGESGeomCurveOnSurface* self_) {
+    try { return {new HandleIGESGeomCurveOnSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomDirection_destructor(HandleIGESGeomDirection* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomDirection*> HandleIGESGeomDirection_clone(const HandleIGESGeomDirection* self_) {
+    try { return {new HandleIGESGeomDirection(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomFlash_destructor(HandleIGESGeomFlash* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomFlash*> HandleIGESGeomFlash_clone(const HandleIGESGeomFlash* self_) {
+    try { return {new HandleIGESGeomFlash(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomGeneralModule_destructor(HandleIGESGeomGeneralModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomGeneralModule*> HandleIGESGeomGeneralModule_clone(const HandleIGESGeomGeneralModule* self_) {
+    try { return {new HandleIGESGeomGeneralModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomHArray1OfBoundary_destructor(HandleIGESGeomHArray1OfBoundary* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomHArray1OfBoundary*> HandleIGESGeomHArray1OfBoundary_clone(const HandleIGESGeomHArray1OfBoundary* self_) {
+    try { return {new HandleIGESGeomHArray1OfBoundary(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomHArray1OfCurveOnSurface_destructor(HandleIGESGeomHArray1OfCurveOnSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomHArray1OfCurveOnSurface*> HandleIGESGeomHArray1OfCurveOnSurface_clone(const HandleIGESGeomHArray1OfCurveOnSurface* self_) {
+    try { return {new HandleIGESGeomHArray1OfCurveOnSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomHArray1OfTransformationMatrix_destructor(HandleIGESGeomHArray1OfTransformationMatrix* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomHArray1OfTransformationMatrix*> HandleIGESGeomHArray1OfTransformationMatrix_clone(const HandleIGESGeomHArray1OfTransformationMatrix* self_) {
+    try { return {new HandleIGESGeomHArray1OfTransformationMatrix(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomLine_destructor(HandleIGESGeomLine* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomLine*> HandleIGESGeomLine_clone(const HandleIGESGeomLine* self_) {
+    try { return {new HandleIGESGeomLine(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomOffsetCurve_destructor(HandleIGESGeomOffsetCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomOffsetCurve*> HandleIGESGeomOffsetCurve_clone(const HandleIGESGeomOffsetCurve* self_) {
+    try { return {new HandleIGESGeomOffsetCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomOffsetSurface_destructor(HandleIGESGeomOffsetSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomOffsetSurface*> HandleIGESGeomOffsetSurface_clone(const HandleIGESGeomOffsetSurface* self_) {
+    try { return {new HandleIGESGeomOffsetSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomPlane_destructor(HandleIGESGeomPlane* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomPlane*> HandleIGESGeomPlane_clone(const HandleIGESGeomPlane* self_) {
+    try { return {new HandleIGESGeomPlane(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomPoint_destructor(HandleIGESGeomPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomPoint*> HandleIGESGeomPoint_clone(const HandleIGESGeomPoint* self_) {
+    try { return {new HandleIGESGeomPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomProtocol_destructor(HandleIGESGeomProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomProtocol*> HandleIGESGeomProtocol_clone(const HandleIGESGeomProtocol* self_) {
+    try { return {new HandleIGESGeomProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomReadWriteModule_destructor(HandleIGESGeomReadWriteModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomReadWriteModule*> HandleIGESGeomReadWriteModule_clone(const HandleIGESGeomReadWriteModule* self_) {
+    try { return {new HandleIGESGeomReadWriteModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomRuledSurface_destructor(HandleIGESGeomRuledSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomRuledSurface*> HandleIGESGeomRuledSurface_clone(const HandleIGESGeomRuledSurface* self_) {
+    try { return {new HandleIGESGeomRuledSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomSpecificModule_destructor(HandleIGESGeomSpecificModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomSpecificModule*> HandleIGESGeomSpecificModule_clone(const HandleIGESGeomSpecificModule* self_) {
+    try { return {new HandleIGESGeomSpecificModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomSplineCurve_destructor(HandleIGESGeomSplineCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomSplineCurve*> HandleIGESGeomSplineCurve_clone(const HandleIGESGeomSplineCurve* self_) {
+    try { return {new HandleIGESGeomSplineCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomSplineSurface_destructor(HandleIGESGeomSplineSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomSplineSurface*> HandleIGESGeomSplineSurface_clone(const HandleIGESGeomSplineSurface* self_) {
+    try { return {new HandleIGESGeomSplineSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomSurfaceOfRevolution_destructor(HandleIGESGeomSurfaceOfRevolution* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomSurfaceOfRevolution*> HandleIGESGeomSurfaceOfRevolution_clone(const HandleIGESGeomSurfaceOfRevolution* self_) {
+    try { return {new HandleIGESGeomSurfaceOfRevolution(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomTabulatedCylinder_destructor(HandleIGESGeomTabulatedCylinder* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomTabulatedCylinder*> HandleIGESGeomTabulatedCylinder_clone(const HandleIGESGeomTabulatedCylinder* self_) {
+    try { return {new HandleIGESGeomTabulatedCylinder(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomTransformationMatrix_destructor(HandleIGESGeomTransformationMatrix* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomTransformationMatrix*> HandleIGESGeomTransformationMatrix_clone(const HandleIGESGeomTransformationMatrix* self_) {
+    try { return {new HandleIGESGeomTransformationMatrix(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGeomTrimmedSurface_destructor(HandleIGESGeomTrimmedSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGeomTrimmedSurface*> HandleIGESGeomTrimmedSurface_clone(const HandleIGESGeomTrimmedSurface* self_) {
+    try { return {new HandleIGESGeomTrimmedSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphColor_destructor(HandleIGESGraphColor* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphColor*> HandleIGESGraphColor_clone(const HandleIGESGraphColor* self_) {
+    try { return {new HandleIGESGraphColor(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphDefinitionLevel_destructor(HandleIGESGraphDefinitionLevel* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphDefinitionLevel*> HandleIGESGraphDefinitionLevel_clone(const HandleIGESGraphDefinitionLevel* self_) {
+    try { return {new HandleIGESGraphDefinitionLevel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphDrawingSize_destructor(HandleIGESGraphDrawingSize* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphDrawingSize*> HandleIGESGraphDrawingSize_clone(const HandleIGESGraphDrawingSize* self_) {
+    try { return {new HandleIGESGraphDrawingSize(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphDrawingUnits_destructor(HandleIGESGraphDrawingUnits* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphDrawingUnits*> HandleIGESGraphDrawingUnits_clone(const HandleIGESGraphDrawingUnits* self_) {
+    try { return {new HandleIGESGraphDrawingUnits(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphGeneralModule_destructor(HandleIGESGraphGeneralModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphGeneralModule*> HandleIGESGraphGeneralModule_clone(const HandleIGESGraphGeneralModule* self_) {
+    try { return {new HandleIGESGraphGeneralModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphHArray1OfColor_destructor(HandleIGESGraphHArray1OfColor* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphHArray1OfColor*> HandleIGESGraphHArray1OfColor_clone(const HandleIGESGraphHArray1OfColor* self_) {
+    try { return {new HandleIGESGraphHArray1OfColor(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphHArray1OfTextDisplayTemplate_destructor(HandleIGESGraphHArray1OfTextDisplayTemplate* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphHArray1OfTextDisplayTemplate*> HandleIGESGraphHArray1OfTextDisplayTemplate_clone(const HandleIGESGraphHArray1OfTextDisplayTemplate* self_) {
+    try { return {new HandleIGESGraphHArray1OfTextDisplayTemplate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphHArray1OfTextFontDef_destructor(HandleIGESGraphHArray1OfTextFontDef* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphHArray1OfTextFontDef*> HandleIGESGraphHArray1OfTextFontDef_clone(const HandleIGESGraphHArray1OfTextFontDef* self_) {
+    try { return {new HandleIGESGraphHArray1OfTextFontDef(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphHighLight_destructor(HandleIGESGraphHighLight* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphHighLight*> HandleIGESGraphHighLight_clone(const HandleIGESGraphHighLight* self_) {
+    try { return {new HandleIGESGraphHighLight(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphIntercharacterSpacing_destructor(HandleIGESGraphIntercharacterSpacing* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphIntercharacterSpacing*> HandleIGESGraphIntercharacterSpacing_clone(const HandleIGESGraphIntercharacterSpacing* self_) {
+    try { return {new HandleIGESGraphIntercharacterSpacing(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphLineFontDefPattern_destructor(HandleIGESGraphLineFontDefPattern* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphLineFontDefPattern*> HandleIGESGraphLineFontDefPattern_clone(const HandleIGESGraphLineFontDefPattern* self_) {
+    try { return {new HandleIGESGraphLineFontDefPattern(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphLineFontDefTemplate_destructor(HandleIGESGraphLineFontDefTemplate* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphLineFontDefTemplate*> HandleIGESGraphLineFontDefTemplate_clone(const HandleIGESGraphLineFontDefTemplate* self_) {
+    try { return {new HandleIGESGraphLineFontDefTemplate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphLineFontPredefined_destructor(HandleIGESGraphLineFontPredefined* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphLineFontPredefined*> HandleIGESGraphLineFontPredefined_clone(const HandleIGESGraphLineFontPredefined* self_) {
+    try { return {new HandleIGESGraphLineFontPredefined(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphNominalSize_destructor(HandleIGESGraphNominalSize* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphNominalSize*> HandleIGESGraphNominalSize_clone(const HandleIGESGraphNominalSize* self_) {
+    try { return {new HandleIGESGraphNominalSize(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphPick_destructor(HandleIGESGraphPick* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphPick*> HandleIGESGraphPick_clone(const HandleIGESGraphPick* self_) {
+    try { return {new HandleIGESGraphPick(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphProtocol_destructor(HandleIGESGraphProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphProtocol*> HandleIGESGraphProtocol_clone(const HandleIGESGraphProtocol* self_) {
+    try { return {new HandleIGESGraphProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphReadWriteModule_destructor(HandleIGESGraphReadWriteModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphReadWriteModule*> HandleIGESGraphReadWriteModule_clone(const HandleIGESGraphReadWriteModule* self_) {
+    try { return {new HandleIGESGraphReadWriteModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphSpecificModule_destructor(HandleIGESGraphSpecificModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphSpecificModule*> HandleIGESGraphSpecificModule_clone(const HandleIGESGraphSpecificModule* self_) {
+    try { return {new HandleIGESGraphSpecificModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphTextDisplayTemplate_destructor(HandleIGESGraphTextDisplayTemplate* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphTextDisplayTemplate*> HandleIGESGraphTextDisplayTemplate_clone(const HandleIGESGraphTextDisplayTemplate* self_) {
+    try { return {new HandleIGESGraphTextDisplayTemplate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphTextFontDef_destructor(HandleIGESGraphTextFontDef* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphTextFontDef*> HandleIGESGraphTextFontDef_clone(const HandleIGESGraphTextFontDef* self_) {
+    try { return {new HandleIGESGraphTextFontDef(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESGraphUniformRectGrid_destructor(HandleIGESGraphUniformRectGrid* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESGraphUniformRectGrid*> HandleIGESGraphUniformRectGrid_clone(const HandleIGESGraphUniformRectGrid* self_) {
+    try { return {new HandleIGESGraphUniformRectGrid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectActivator_destructor(HandleIGESSelectActivator* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectActivator*> HandleIGESSelectActivator_clone(const HandleIGESSelectActivator* self_) {
+    try { return {new HandleIGESSelectActivator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectAddFileComment_destructor(HandleIGESSelectAddFileComment* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectAddFileComment*> HandleIGESSelectAddFileComment_clone(const HandleIGESSelectAddFileComment* self_) {
+    try { return {new HandleIGESSelectAddFileComment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectAddGroup_destructor(HandleIGESSelectAddGroup* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectAddGroup*> HandleIGESSelectAddGroup_clone(const HandleIGESSelectAddGroup* self_) {
+    try { return {new HandleIGESSelectAddGroup(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectAutoCorrect_destructor(HandleIGESSelectAutoCorrect* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectAutoCorrect*> HandleIGESSelectAutoCorrect_clone(const HandleIGESSelectAutoCorrect* self_) {
+    try { return {new HandleIGESSelectAutoCorrect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectChangeLevelList_destructor(HandleIGESSelectChangeLevelList* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectChangeLevelList*> HandleIGESSelectChangeLevelList_clone(const HandleIGESSelectChangeLevelList* self_) {
+    try { return {new HandleIGESSelectChangeLevelList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectChangeLevelNumber_destructor(HandleIGESSelectChangeLevelNumber* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectChangeLevelNumber*> HandleIGESSelectChangeLevelNumber_clone(const HandleIGESSelectChangeLevelNumber* self_) {
+    try { return {new HandleIGESSelectChangeLevelNumber(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectComputeStatus_destructor(HandleIGESSelectComputeStatus* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectComputeStatus*> HandleIGESSelectComputeStatus_clone(const HandleIGESSelectComputeStatus* self_) {
+    try { return {new HandleIGESSelectComputeStatus(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectCounterOfLevelNumber_destructor(HandleIGESSelectCounterOfLevelNumber* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectCounterOfLevelNumber*> HandleIGESSelectCounterOfLevelNumber_clone(const HandleIGESSelectCounterOfLevelNumber* self_) {
+    try { return {new HandleIGESSelectCounterOfLevelNumber(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectDispPerDrawing_destructor(HandleIGESSelectDispPerDrawing* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectDispPerDrawing*> HandleIGESSelectDispPerDrawing_clone(const HandleIGESSelectDispPerDrawing* self_) {
+    try { return {new HandleIGESSelectDispPerDrawing(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectDispPerSingleView_destructor(HandleIGESSelectDispPerSingleView* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectDispPerSingleView*> HandleIGESSelectDispPerSingleView_clone(const HandleIGESSelectDispPerSingleView* self_) {
+    try { return {new HandleIGESSelectDispPerSingleView(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectDumper_destructor(HandleIGESSelectDumper* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectDumper*> HandleIGESSelectDumper_clone(const HandleIGESSelectDumper* self_) {
+    try { return {new HandleIGESSelectDumper(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectEditDirPart_destructor(HandleIGESSelectEditDirPart* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectEditDirPart*> HandleIGESSelectEditDirPart_clone(const HandleIGESSelectEditDirPart* self_) {
+    try { return {new HandleIGESSelectEditDirPart(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectEditHeader_destructor(HandleIGESSelectEditHeader* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectEditHeader*> HandleIGESSelectEditHeader_clone(const HandleIGESSelectEditHeader* self_) {
+    try { return {new HandleIGESSelectEditHeader(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectFileModifier_destructor(HandleIGESSelectFileModifier* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectFileModifier*> HandleIGESSelectFileModifier_clone(const HandleIGESSelectFileModifier* self_) {
+    try { return {new HandleIGESSelectFileModifier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectFloatFormat_destructor(HandleIGESSelectFloatFormat* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectFloatFormat*> HandleIGESSelectFloatFormat_clone(const HandleIGESSelectFloatFormat* self_) {
+    try { return {new HandleIGESSelectFloatFormat(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectIGESName_destructor(HandleIGESSelectIGESName* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectIGESName*> HandleIGESSelectIGESName_clone(const HandleIGESSelectIGESName* self_) {
+    try { return {new HandleIGESSelectIGESName(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectIGESTypeForm_destructor(HandleIGESSelectIGESTypeForm* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectIGESTypeForm*> HandleIGESSelectIGESTypeForm_clone(const HandleIGESSelectIGESTypeForm* self_) {
+    try { return {new HandleIGESSelectIGESTypeForm(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectModelModifier_destructor(HandleIGESSelectModelModifier* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectModelModifier*> HandleIGESSelectModelModifier_clone(const HandleIGESSelectModelModifier* self_) {
+    try { return {new HandleIGESSelectModelModifier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectRebuildDrawings_destructor(HandleIGESSelectRebuildDrawings* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectRebuildDrawings*> HandleIGESSelectRebuildDrawings_clone(const HandleIGESSelectRebuildDrawings* self_) {
+    try { return {new HandleIGESSelectRebuildDrawings(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectRebuildGroups_destructor(HandleIGESSelectRebuildGroups* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectRebuildGroups*> HandleIGESSelectRebuildGroups_clone(const HandleIGESSelectRebuildGroups* self_) {
+    try { return {new HandleIGESSelectRebuildGroups(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectRemoveCurves_destructor(HandleIGESSelectRemoveCurves* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectRemoveCurves*> HandleIGESSelectRemoveCurves_clone(const HandleIGESSelectRemoveCurves* self_) {
+    try { return {new HandleIGESSelectRemoveCurves(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectBasicGeom_destructor(HandleIGESSelectSelectBasicGeom* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectBasicGeom*> HandleIGESSelectSelectBasicGeom_clone(const HandleIGESSelectSelectBasicGeom* self_) {
+    try { return {new HandleIGESSelectSelectBasicGeom(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectBypassGroup_destructor(HandleIGESSelectSelectBypassGroup* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectBypassGroup*> HandleIGESSelectSelectBypassGroup_clone(const HandleIGESSelectSelectBypassGroup* self_) {
+    try { return {new HandleIGESSelectSelectBypassGroup(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectBypassSubfigure_destructor(HandleIGESSelectSelectBypassSubfigure* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectBypassSubfigure*> HandleIGESSelectSelectBypassSubfigure_clone(const HandleIGESSelectSelectBypassSubfigure* self_) {
+    try { return {new HandleIGESSelectSelectBypassSubfigure(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectDrawingFrom_destructor(HandleIGESSelectSelectDrawingFrom* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectDrawingFrom*> HandleIGESSelectSelectDrawingFrom_clone(const HandleIGESSelectSelectDrawingFrom* self_) {
+    try { return {new HandleIGESSelectSelectDrawingFrom(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectFaces_destructor(HandleIGESSelectSelectFaces* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectFaces*> HandleIGESSelectSelectFaces_clone(const HandleIGESSelectSelectFaces* self_) {
+    try { return {new HandleIGESSelectSelectFaces(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectFromDrawing_destructor(HandleIGESSelectSelectFromDrawing* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectFromDrawing*> HandleIGESSelectSelectFromDrawing_clone(const HandleIGESSelectSelectFromDrawing* self_) {
+    try { return {new HandleIGESSelectSelectFromDrawing(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectFromSingleView_destructor(HandleIGESSelectSelectFromSingleView* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectFromSingleView*> HandleIGESSelectSelectFromSingleView_clone(const HandleIGESSelectSelectFromSingleView* self_) {
+    try { return {new HandleIGESSelectSelectFromSingleView(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectLevelNumber_destructor(HandleIGESSelectSelectLevelNumber* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectLevelNumber*> HandleIGESSelectSelectLevelNumber_clone(const HandleIGESSelectSelectLevelNumber* self_) {
+    try { return {new HandleIGESSelectSelectLevelNumber(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectName_destructor(HandleIGESSelectSelectName* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectName*> HandleIGESSelectSelectName_clone(const HandleIGESSelectSelectName* self_) {
+    try { return {new HandleIGESSelectSelectName(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectPCurves_destructor(HandleIGESSelectSelectPCurves* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectPCurves*> HandleIGESSelectSelectPCurves_clone(const HandleIGESSelectSelectPCurves* self_) {
+    try { return {new HandleIGESSelectSelectPCurves(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectSingleViewFrom_destructor(HandleIGESSelectSelectSingleViewFrom* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectSingleViewFrom*> HandleIGESSelectSelectSingleViewFrom_clone(const HandleIGESSelectSelectSingleViewFrom* self_) {
+    try { return {new HandleIGESSelectSelectSingleViewFrom(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectSubordinate_destructor(HandleIGESSelectSelectSubordinate* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectSubordinate*> HandleIGESSelectSelectSubordinate_clone(const HandleIGESSelectSelectSubordinate* self_) {
+    try { return {new HandleIGESSelectSelectSubordinate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSelectVisibleStatus_destructor(HandleIGESSelectSelectVisibleStatus* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSelectVisibleStatus*> HandleIGESSelectSelectVisibleStatus_clone(const HandleIGESSelectSelectVisibleStatus* self_) {
+    try { return {new HandleIGESSelectSelectVisibleStatus(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSetGlobalParameter_destructor(HandleIGESSelectSetGlobalParameter* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSetGlobalParameter*> HandleIGESSelectSetGlobalParameter_clone(const HandleIGESSelectSetGlobalParameter* self_) {
+    try { return {new HandleIGESSelectSetGlobalParameter(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSetLabel_destructor(HandleIGESSelectSetLabel* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSetLabel*> HandleIGESSelectSetLabel_clone(const HandleIGESSelectSetLabel* self_) {
+    try { return {new HandleIGESSelectSetLabel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSetVersion5_destructor(HandleIGESSelectSetVersion5* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSetVersion5*> HandleIGESSelectSetVersion5_clone(const HandleIGESSelectSetVersion5* self_) {
+    try { return {new HandleIGESSelectSetVersion5(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSignColor_destructor(HandleIGESSelectSignColor* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSignColor*> HandleIGESSelectSignColor_clone(const HandleIGESSelectSignColor* self_) {
+    try { return {new HandleIGESSelectSignColor(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSignLevelNumber_destructor(HandleIGESSelectSignLevelNumber* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSignLevelNumber*> HandleIGESSelectSignLevelNumber_clone(const HandleIGESSelectSignLevelNumber* self_) {
+    try { return {new HandleIGESSelectSignLevelNumber(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSignStatus_destructor(HandleIGESSelectSignStatus* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSignStatus*> HandleIGESSelectSignStatus_clone(const HandleIGESSelectSignStatus* self_) {
+    try { return {new HandleIGESSelectSignStatus(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectSplineToBSpline_destructor(HandleIGESSelectSplineToBSpline* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectSplineToBSpline*> HandleIGESSelectSplineToBSpline_clone(const HandleIGESSelectSplineToBSpline* self_) {
+    try { return {new HandleIGESSelectSplineToBSpline(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectUpdateCreationDate_destructor(HandleIGESSelectUpdateCreationDate* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectUpdateCreationDate*> HandleIGESSelectUpdateCreationDate_clone(const HandleIGESSelectUpdateCreationDate* self_) {
+    try { return {new HandleIGESSelectUpdateCreationDate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectUpdateFileName_destructor(HandleIGESSelectUpdateFileName* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectUpdateFileName*> HandleIGESSelectUpdateFileName_clone(const HandleIGESSelectUpdateFileName* self_) {
+    try { return {new HandleIGESSelectUpdateFileName(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectUpdateLastChange_destructor(HandleIGESSelectUpdateLastChange* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectUpdateLastChange*> HandleIGESSelectUpdateLastChange_clone(const HandleIGESSelectUpdateLastChange* self_) {
+    try { return {new HandleIGESSelectUpdateLastChange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectViewSorter_destructor(HandleIGESSelectViewSorter* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectViewSorter*> HandleIGESSelectViewSorter_clone(const HandleIGESSelectViewSorter* self_) {
+    try { return {new HandleIGESSelectViewSorter(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSelectWorkLibrary_destructor(HandleIGESSelectWorkLibrary* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSelectWorkLibrary*> HandleIGESSelectWorkLibrary_clone(const HandleIGESSelectWorkLibrary* self_) {
+    try { return {new HandleIGESSelectWorkLibrary(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidBlock_destructor(HandleIGESSolidBlock* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidBlock*> HandleIGESSolidBlock_clone(const HandleIGESSolidBlock* self_) {
+    try { return {new HandleIGESSolidBlock(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidBooleanTree_destructor(HandleIGESSolidBooleanTree* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidBooleanTree*> HandleIGESSolidBooleanTree_clone(const HandleIGESSolidBooleanTree* self_) {
+    try { return {new HandleIGESSolidBooleanTree(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidConeFrustum_destructor(HandleIGESSolidConeFrustum* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidConeFrustum*> HandleIGESSolidConeFrustum_clone(const HandleIGESSolidConeFrustum* self_) {
+    try { return {new HandleIGESSolidConeFrustum(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidConicalSurface_destructor(HandleIGESSolidConicalSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidConicalSurface*> HandleIGESSolidConicalSurface_clone(const HandleIGESSolidConicalSurface* self_) {
+    try { return {new HandleIGESSolidConicalSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidCylinder_destructor(HandleIGESSolidCylinder* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidCylinder*> HandleIGESSolidCylinder_clone(const HandleIGESSolidCylinder* self_) {
+    try { return {new HandleIGESSolidCylinder(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidCylindricalSurface_destructor(HandleIGESSolidCylindricalSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidCylindricalSurface*> HandleIGESSolidCylindricalSurface_clone(const HandleIGESSolidCylindricalSurface* self_) {
+    try { return {new HandleIGESSolidCylindricalSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidEdgeList_destructor(HandleIGESSolidEdgeList* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidEdgeList*> HandleIGESSolidEdgeList_clone(const HandleIGESSolidEdgeList* self_) {
+    try { return {new HandleIGESSolidEdgeList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidEllipsoid_destructor(HandleIGESSolidEllipsoid* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidEllipsoid*> HandleIGESSolidEllipsoid_clone(const HandleIGESSolidEllipsoid* self_) {
+    try { return {new HandleIGESSolidEllipsoid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidFace_destructor(HandleIGESSolidFace* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidFace*> HandleIGESSolidFace_clone(const HandleIGESSolidFace* self_) {
+    try { return {new HandleIGESSolidFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidGeneralModule_destructor(HandleIGESSolidGeneralModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidGeneralModule*> HandleIGESSolidGeneralModule_clone(const HandleIGESSolidGeneralModule* self_) {
+    try { return {new HandleIGESSolidGeneralModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidHArray1OfFace_destructor(HandleIGESSolidHArray1OfFace* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidHArray1OfFace*> HandleIGESSolidHArray1OfFace_clone(const HandleIGESSolidHArray1OfFace* self_) {
+    try { return {new HandleIGESSolidHArray1OfFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidHArray1OfLoop_destructor(HandleIGESSolidHArray1OfLoop* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidHArray1OfLoop*> HandleIGESSolidHArray1OfLoop_clone(const HandleIGESSolidHArray1OfLoop* self_) {
+    try { return {new HandleIGESSolidHArray1OfLoop(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidHArray1OfShell_destructor(HandleIGESSolidHArray1OfShell* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidHArray1OfShell*> HandleIGESSolidHArray1OfShell_clone(const HandleIGESSolidHArray1OfShell* self_) {
+    try { return {new HandleIGESSolidHArray1OfShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidHArray1OfVertexList_destructor(HandleIGESSolidHArray1OfVertexList* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidHArray1OfVertexList*> HandleIGESSolidHArray1OfVertexList_clone(const HandleIGESSolidHArray1OfVertexList* self_) {
+    try { return {new HandleIGESSolidHArray1OfVertexList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidLoop_destructor(HandleIGESSolidLoop* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidLoop*> HandleIGESSolidLoop_clone(const HandleIGESSolidLoop* self_) {
+    try { return {new HandleIGESSolidLoop(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidManifoldSolid_destructor(HandleIGESSolidManifoldSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidManifoldSolid*> HandleIGESSolidManifoldSolid_clone(const HandleIGESSolidManifoldSolid* self_) {
+    try { return {new HandleIGESSolidManifoldSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidPlaneSurface_destructor(HandleIGESSolidPlaneSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidPlaneSurface*> HandleIGESSolidPlaneSurface_clone(const HandleIGESSolidPlaneSurface* self_) {
+    try { return {new HandleIGESSolidPlaneSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidProtocol_destructor(HandleIGESSolidProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidProtocol*> HandleIGESSolidProtocol_clone(const HandleIGESSolidProtocol* self_) {
+    try { return {new HandleIGESSolidProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidReadWriteModule_destructor(HandleIGESSolidReadWriteModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidReadWriteModule*> HandleIGESSolidReadWriteModule_clone(const HandleIGESSolidReadWriteModule* self_) {
+    try { return {new HandleIGESSolidReadWriteModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidRightAngularWedge_destructor(HandleIGESSolidRightAngularWedge* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidRightAngularWedge*> HandleIGESSolidRightAngularWedge_clone(const HandleIGESSolidRightAngularWedge* self_) {
+    try { return {new HandleIGESSolidRightAngularWedge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidSelectedComponent_destructor(HandleIGESSolidSelectedComponent* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidSelectedComponent*> HandleIGESSolidSelectedComponent_clone(const HandleIGESSolidSelectedComponent* self_) {
+    try { return {new HandleIGESSolidSelectedComponent(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidShell_destructor(HandleIGESSolidShell* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidShell*> HandleIGESSolidShell_clone(const HandleIGESSolidShell* self_) {
+    try { return {new HandleIGESSolidShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidSolidAssembly_destructor(HandleIGESSolidSolidAssembly* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidSolidAssembly*> HandleIGESSolidSolidAssembly_clone(const HandleIGESSolidSolidAssembly* self_) {
+    try { return {new HandleIGESSolidSolidAssembly(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidSolidInstance_destructor(HandleIGESSolidSolidInstance* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidSolidInstance*> HandleIGESSolidSolidInstance_clone(const HandleIGESSolidSolidInstance* self_) {
+    try { return {new HandleIGESSolidSolidInstance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidSolidOfLinearExtrusion_destructor(HandleIGESSolidSolidOfLinearExtrusion* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidSolidOfLinearExtrusion*> HandleIGESSolidSolidOfLinearExtrusion_clone(const HandleIGESSolidSolidOfLinearExtrusion* self_) {
+    try { return {new HandleIGESSolidSolidOfLinearExtrusion(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidSolidOfRevolution_destructor(HandleIGESSolidSolidOfRevolution* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidSolidOfRevolution*> HandleIGESSolidSolidOfRevolution_clone(const HandleIGESSolidSolidOfRevolution* self_) {
+    try { return {new HandleIGESSolidSolidOfRevolution(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidSpecificModule_destructor(HandleIGESSolidSpecificModule* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidSpecificModule*> HandleIGESSolidSpecificModule_clone(const HandleIGESSolidSpecificModule* self_) {
+    try { return {new HandleIGESSolidSpecificModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidSphere_destructor(HandleIGESSolidSphere* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidSphere*> HandleIGESSolidSphere_clone(const HandleIGESSolidSphere* self_) {
+    try { return {new HandleIGESSolidSphere(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidSphericalSurface_destructor(HandleIGESSolidSphericalSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidSphericalSurface*> HandleIGESSolidSphericalSurface_clone(const HandleIGESSolidSphericalSurface* self_) {
+    try { return {new HandleIGESSolidSphericalSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidToroidalSurface_destructor(HandleIGESSolidToroidalSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidToroidalSurface*> HandleIGESSolidToroidalSurface_clone(const HandleIGESSolidToroidalSurface* self_) {
+    try { return {new HandleIGESSolidToroidalSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidTorus_destructor(HandleIGESSolidTorus* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidTorus*> HandleIGESSolidTorus_clone(const HandleIGESSolidTorus* self_) {
+    try { return {new HandleIGESSolidTorus(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESSolidVertexList_destructor(HandleIGESSolidVertexList* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESSolidVertexList*> HandleIGESSolidVertexList_clone(const HandleIGESSolidVertexList* self_) {
+    try { return {new HandleIGESSolidVertexList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESToBRepActor_destructor(HandleIGESToBRepActor* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESToBRepActor*> HandleIGESToBRepActor_clone(const HandleIGESToBRepActor* self_) {
+    try { return {new HandleIGESToBRepActor(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESToBRepAlgoContainer_destructor(HandleIGESToBRepAlgoContainer* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESToBRepAlgoContainer*> HandleIGESToBRepAlgoContainer_clone(const HandleIGESToBRepAlgoContainer* self_) {
+    try { return {new HandleIGESToBRepAlgoContainer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESToBRepIGESBoundary_destructor(HandleIGESToBRepIGESBoundary* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESToBRepIGESBoundary*> HandleIGESToBRepIGESBoundary_clone(const HandleIGESToBRepIGESBoundary* self_) {
+    try { return {new HandleIGESToBRepIGESBoundary(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIGESToBRepToolContainer_destructor(HandleIGESToBRepToolContainer* self_) { delete self_; }
+extern "C" OcctResult<HandleIGESToBRepToolContainer*> HandleIGESToBRepToolContainer_clone(const HandleIGESToBRepToolContainer* self_) {
+    try { return {new HandleIGESToBRepToolContainer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // BRepToIGES_BREntity wrappers
@@ -2142,7 +3270,7 @@ extern "C" OcctResult<double> Geom2dToIGES_Geom2dEntity_get_unit(const Geom2dToI
     try { return {self_->GetUnit(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dToIGES_Geom2dEntity*> Geom2dToIGES_Geom2dEntity_to_owned(const Geom2dToIGES_Geom2dEntity* self_) {
+extern "C" OcctResult<Geom2dToIGES_Geom2dEntity*> Geom2dToIGES_Geom2dEntity_clone(const Geom2dToIGES_Geom2dEntity* self_) {
     try { return {new Geom2dToIGES_Geom2dEntity(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2336,7 +3464,7 @@ extern "C" OcctResult<double> GeomToIGES_GeomEntity_get_unit(const GeomToIGES_Ge
     try { return {self_->GetUnit(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomToIGES_GeomEntity*> GeomToIGES_GeomEntity_to_owned(const GeomToIGES_GeomEntity* self_) {
+extern "C" OcctResult<GeomToIGES_GeomEntity*> GeomToIGES_GeomEntity_clone(const GeomToIGES_GeomEntity* self_) {
     try { return {new GeomToIGES_GeomEntity(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -23987,7 +25115,7 @@ extern "C" OcctResult<bool> IGESData_IGESWriter_print(const IGESData_IGESWriter*
     try { return {self_->Print(*S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IGESData_IGESWriter*> IGESData_IGESWriter_to_owned(const IGESData_IGESWriter* self_) {
+extern "C" OcctResult<IGESData_IGESWriter*> IGESData_IGESWriter_clone(const IGESData_IGESWriter* self_) {
     try { return {new IGESData_IGESWriter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -82799,7 +83927,7 @@ extern "C" OcctResult<bool> IGESToBRep_TopoCurve_bad_case(const IGESToBRep_TopoC
 }
 extern "C" OcctResult<const IGESToBRep_CurveAndSurface*> IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface(const IGESToBRep_TopoCurve* self_) { return {static_cast<const IGESToBRep_CurveAndSurface*>(self_), nullptr}; }
 extern "C" OcctResult<IGESToBRep_CurveAndSurface*> IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface_mut(IGESToBRep_TopoCurve* self_) { return {static_cast<IGESToBRep_CurveAndSurface*>(self_), nullptr}; }
-extern "C" OcctResult<IGESToBRep_TopoCurve*> IGESToBRep_TopoCurve_to_owned(const IGESToBRep_TopoCurve* self_) {
+extern "C" OcctResult<IGESToBRep_TopoCurve*> IGESToBRep_TopoCurve_clone(const IGESToBRep_TopoCurve* self_) {
     try { return {new IGESToBRep_TopoCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }

@@ -526,6 +526,12 @@ unsafe impl crate::CppDeletable for HandleRWObjCafReader {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleRWObjCafReader {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjCafReader_clone(ptr))
+    }
+}
+
 impl HandleRWObjCafReader {
     /// Dereference this Handle to access the underlying RWObj_CafReader
     pub fn get(&self) -> &crate::ffi_types::RWObj_CafReader {
@@ -831,6 +837,12 @@ pub use crate::ffi_types::HandleRWObjCafWriter;
 unsafe impl crate::CppDeletable for HandleRWObjCafWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEOBJ::HandleRWObjCafWriter_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleRWObjCafWriter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjCafWriter_clone(ptr))
     }
 }
 
@@ -1216,6 +1228,12 @@ pub use crate::ffi_types::HandleRWObjObjMaterialMap;
 unsafe impl crate::CppDeletable for HandleRWObjObjMaterialMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEOBJ::HandleRWObjObjMaterialMap_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleRWObjObjMaterialMap {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjObjMaterialMap_clone(ptr))
     }
 }
 
@@ -1780,6 +1798,12 @@ unsafe impl crate::CppDeletable for HandleRWObjReader {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleRWObjReader {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjReader_clone(ptr))
+    }
+}
+
 impl HandleRWObjReader {
     /// Dereference this Handle to access the underlying RWObj_Reader
     pub fn get(&self) -> &crate::ffi_types::RWObj_Reader {
@@ -2261,6 +2285,12 @@ pub use crate::ffi_types::HandleRWObjTriangulationReader;
 unsafe impl crate::CppDeletable for HandleRWObjTriangulationReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEOBJ::HandleRWObjTriangulationReader_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleRWObjTriangulationReader {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjTriangulationReader_clone(ptr))
     }
 }
 

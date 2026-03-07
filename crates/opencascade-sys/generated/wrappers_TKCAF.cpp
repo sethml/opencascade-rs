@@ -139,27 +139,107 @@ typedef opencascade::handle<TNaming_Naming> HandleTNamingNaming;
 typedef opencascade::handle<TNaming_TranslateTool> HandleTNamingTranslateTool;
 typedef opencascade::handle<TNaming_UsedShapes> HandleTNamingUsedShapes;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleAppStdApplication_destructor(HandleAppStdApplication* self_) { delete self_; }
+extern "C" OcctResult<HandleAppStdApplication*> HandleAppStdApplication_clone(const HandleAppStdApplication* self_) {
+    try { return {new HandleAppStdApplication(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdAxis_destructor(HandleTDataXtdAxis* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdAxis*> HandleTDataXtdAxis_clone(const HandleTDataXtdAxis* self_) {
+    try { return {new HandleTDataXtdAxis(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdConstraint_destructor(HandleTDataXtdConstraint* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdConstraint*> HandleTDataXtdConstraint_clone(const HandleTDataXtdConstraint* self_) {
+    try { return {new HandleTDataXtdConstraint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdGeometry_destructor(HandleTDataXtdGeometry* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdGeometry*> HandleTDataXtdGeometry_clone(const HandleTDataXtdGeometry* self_) {
+    try { return {new HandleTDataXtdGeometry(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdHArray1OfTrsf_destructor(HandleTDataXtdHArray1OfTrsf* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdHArray1OfTrsf*> HandleTDataXtdHArray1OfTrsf_clone(const HandleTDataXtdHArray1OfTrsf* self_) {
+    try { return {new HandleTDataXtdHArray1OfTrsf(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdPattern_destructor(HandleTDataXtdPattern* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdPattern*> HandleTDataXtdPattern_clone(const HandleTDataXtdPattern* self_) {
+    try { return {new HandleTDataXtdPattern(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdPatternStd_destructor(HandleTDataXtdPatternStd* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdPatternStd*> HandleTDataXtdPatternStd_clone(const HandleTDataXtdPatternStd* self_) {
+    try { return {new HandleTDataXtdPatternStd(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdPlacement_destructor(HandleTDataXtdPlacement* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdPlacement*> HandleTDataXtdPlacement_clone(const HandleTDataXtdPlacement* self_) {
+    try { return {new HandleTDataXtdPlacement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdPlane_destructor(HandleTDataXtdPlane* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdPlane*> HandleTDataXtdPlane_clone(const HandleTDataXtdPlane* self_) {
+    try { return {new HandleTDataXtdPlane(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdPoint_destructor(HandleTDataXtdPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdPoint*> HandleTDataXtdPoint_clone(const HandleTDataXtdPoint* self_) {
+    try { return {new HandleTDataXtdPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdPosition_destructor(HandleTDataXtdPosition* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdPosition*> HandleTDataXtdPosition_clone(const HandleTDataXtdPosition* self_) {
+    try { return {new HandleTDataXtdPosition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdPresentation_destructor(HandleTDataXtdPresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdPresentation*> HandleTDataXtdPresentation_clone(const HandleTDataXtdPresentation* self_) {
+    try { return {new HandleTDataXtdPresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdShape_destructor(HandleTDataXtdShape* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdShape*> HandleTDataXtdShape_clone(const HandleTDataXtdShape* self_) {
+    try { return {new HandleTDataXtdShape(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataXtdTriangulation_destructor(HandleTDataXtdTriangulation* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataXtdTriangulation*> HandleTDataXtdTriangulation_clone(const HandleTDataXtdTriangulation* self_) {
+    try { return {new HandleTDataXtdTriangulation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTNamingDeltaOnModification_destructor(HandleTNamingDeltaOnModification* self_) { delete self_; }
+extern "C" OcctResult<HandleTNamingDeltaOnModification*> HandleTNamingDeltaOnModification_clone(const HandleTNamingDeltaOnModification* self_) {
+    try { return {new HandleTNamingDeltaOnModification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTNamingDeltaOnRemoval_destructor(HandleTNamingDeltaOnRemoval* self_) { delete self_; }
+extern "C" OcctResult<HandleTNamingDeltaOnRemoval*> HandleTNamingDeltaOnRemoval_clone(const HandleTNamingDeltaOnRemoval* self_) {
+    try { return {new HandleTNamingDeltaOnRemoval(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTNamingNamedShape_destructor(HandleTNamingNamedShape* self_) { delete self_; }
+extern "C" OcctResult<HandleTNamingNamedShape*> HandleTNamingNamedShape_clone(const HandleTNamingNamedShape* self_) {
+    try { return {new HandleTNamingNamedShape(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTNamingNaming_destructor(HandleTNamingNaming* self_) { delete self_; }
+extern "C" OcctResult<HandleTNamingNaming*> HandleTNamingNaming_clone(const HandleTNamingNaming* self_) {
+    try { return {new HandleTNamingNaming(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTNamingTranslateTool_destructor(HandleTNamingTranslateTool* self_) { delete self_; }
+extern "C" OcctResult<HandleTNamingTranslateTool*> HandleTNamingTranslateTool_clone(const HandleTNamingTranslateTool* self_) {
+    try { return {new HandleTNamingTranslateTool(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTNamingUsedShapes_destructor(HandleTNamingUsedShapes* self_) { delete self_; }
+extern "C" OcctResult<HandleTNamingUsedShapes*> HandleTNamingUsedShapes_clone(const HandleTNamingUsedShapes* self_) {
+    try { return {new HandleTNamingUsedShapes(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // AppStd_Application wrappers
@@ -4807,7 +4887,7 @@ extern "C" OcctResult<bool> TNaming_NewShapeIterator_is_modification(const TNami
     try { return {self_->IsModification(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TNaming_NewShapeIterator*> TNaming_NewShapeIterator_to_owned(const TNaming_NewShapeIterator* self_) {
+extern "C" OcctResult<TNaming_NewShapeIterator*> TNaming_NewShapeIterator_clone(const TNaming_NewShapeIterator* self_) {
     try { return {new TNaming_NewShapeIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4853,7 +4933,7 @@ extern "C" OcctResult<bool> TNaming_OldShapeIterator_is_modification(const TNami
     try { return {self_->IsModification(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TNaming_OldShapeIterator*> TNaming_OldShapeIterator_to_owned(const TNaming_OldShapeIterator* self_) {
+extern "C" OcctResult<TNaming_OldShapeIterator*> TNaming_OldShapeIterator_clone(const TNaming_OldShapeIterator* self_) {
     try { return {new TNaming_OldShapeIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }

@@ -98,6 +98,10 @@ extern "C" {
     pub fn HandleMeshVSCommonSensitiveEntity_destructor(
         self_: *mut HandleMeshVSCommonSensitiveEntity,
     );
+    /// Clone Handle<MeshVS_CommonSensitiveEntity> (increments reference count)
+    pub fn HandleMeshVSCommonSensitiveEntity_clone(
+        self_: *const HandleMeshVSCommonSensitiveEntity,
+    ) -> crate::OcctResult<*mut HandleMeshVSCommonSensitiveEntity>;
     /// Dereference Handle to get *const MeshVS_CommonSensitiveEntity
     pub fn HandleMeshVSCommonSensitiveEntity_get(
         handle: *const HandleMeshVSCommonSensitiveEntity,
@@ -369,6 +373,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<MeshVS_DataSource>
     pub fn HandleMeshVSDataSource_destructor(self_: *mut HandleMeshVSDataSource);
+    /// Clone Handle<MeshVS_DataSource> (increments reference count)
+    pub fn HandleMeshVSDataSource_clone(
+        self_: *const HandleMeshVSDataSource,
+    ) -> crate::OcctResult<*mut HandleMeshVSDataSource>;
     /// Dereference Handle to get *const MeshVS_DataSource
     pub fn HandleMeshVSDataSource_get(
         handle: *const HandleMeshVSDataSource,
@@ -465,6 +473,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<MeshVS_DataSource3D>
     pub fn HandleMeshVSDataSource3D_destructor(self_: *mut HandleMeshVSDataSource3D);
+    /// Clone Handle<MeshVS_DataSource3D> (increments reference count)
+    pub fn HandleMeshVSDataSource3D_clone(
+        self_: *const HandleMeshVSDataSource3D,
+    ) -> crate::OcctResult<*mut HandleMeshVSDataSource3D>;
     /// Dereference Handle to get *const MeshVS_DataSource3D
     pub fn HandleMeshVSDataSource3D_get(
         handle: *const HandleMeshVSDataSource3D,
@@ -704,6 +716,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSDeformedDataSource>;
     /// Destroy Handle<MeshVS_DeformedDataSource>
     pub fn HandleMeshVSDeformedDataSource_destructor(self_: *mut HandleMeshVSDeformedDataSource);
+    /// Clone Handle<MeshVS_DeformedDataSource> (increments reference count)
+    pub fn HandleMeshVSDeformedDataSource_clone(
+        self_: *const HandleMeshVSDeformedDataSource,
+    ) -> crate::OcctResult<*mut HandleMeshVSDeformedDataSource>;
     /// Dereference Handle to get *const MeshVS_DeformedDataSource
     pub fn HandleMeshVSDeformedDataSource_get(
         handle: *const HandleMeshVSDeformedDataSource,
@@ -933,6 +949,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSDrawer>;
     /// Destroy Handle<MeshVS_Drawer>
     pub fn HandleMeshVSDrawer_destructor(self_: *mut HandleMeshVSDrawer);
+    /// Clone Handle<MeshVS_Drawer> (increments reference count)
+    pub fn HandleMeshVSDrawer_clone(
+        self_: *const HandleMeshVSDrawer,
+    ) -> crate::OcctResult<*mut HandleMeshVSDrawer>;
     /// Dereference Handle to get *const MeshVS_Drawer
     pub fn HandleMeshVSDrawer_get(
         handle: *const HandleMeshVSDrawer,
@@ -1050,6 +1070,10 @@ extern "C" {
     pub fn HandleMeshVSDummySensitiveEntity_destructor(
         self_: *mut HandleMeshVSDummySensitiveEntity,
     );
+    /// Clone Handle<MeshVS_DummySensitiveEntity> (increments reference count)
+    pub fn HandleMeshVSDummySensitiveEntity_clone(
+        self_: *const HandleMeshVSDummySensitiveEntity,
+    ) -> crate::OcctResult<*mut HandleMeshVSDummySensitiveEntity>;
     /// Dereference Handle to get *const MeshVS_DummySensitiveEntity
     pub fn HandleMeshVSDummySensitiveEntity_get(
         handle: *const HandleMeshVSDummySensitiveEntity,
@@ -1244,6 +1268,10 @@ extern "C" {
     pub fn HandleMeshVSElementalColorPrsBuilder_destructor(
         self_: *mut HandleMeshVSElementalColorPrsBuilder,
     );
+    /// Clone Handle<MeshVS_ElementalColorPrsBuilder> (increments reference count)
+    pub fn HandleMeshVSElementalColorPrsBuilder_clone(
+        self_: *const HandleMeshVSElementalColorPrsBuilder,
+    ) -> crate::OcctResult<*mut HandleMeshVSElementalColorPrsBuilder>;
     /// Dereference Handle to get *const MeshVS_ElementalColorPrsBuilder
     pub fn HandleMeshVSElementalColorPrsBuilder_get(
         handle: *const HandleMeshVSElementalColorPrsBuilder,
@@ -1420,6 +1448,10 @@ extern "C" {
     pub fn HandleMeshVSHArray1OfSequenceOfInteger_destructor(
         self_: *mut HandleMeshVSHArray1OfSequenceOfInteger,
     );
+    /// Clone Handle<MeshVS_HArray1OfSequenceOfInteger> (increments reference count)
+    pub fn HandleMeshVSHArray1OfSequenceOfInteger_clone(
+        self_: *const HandleMeshVSHArray1OfSequenceOfInteger,
+    ) -> crate::OcctResult<*mut HandleMeshVSHArray1OfSequenceOfInteger>;
     /// Dereference Handle to get *const MeshVS_HArray1OfSequenceOfInteger
     pub fn HandleMeshVSHArray1OfSequenceOfInteger_get(
         handle: *const HandleMeshVSHArray1OfSequenceOfInteger,
@@ -1683,6 +1715,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleMeshVSMesh>;
     /// Destroy Handle<MeshVS_Mesh>
     pub fn HandleMeshVSMesh_destructor(self_: *mut HandleMeshVSMesh);
+    /// Clone Handle<MeshVS_Mesh> (increments reference count)
+    pub fn HandleMeshVSMesh_clone(
+        self_: *const HandleMeshVSMesh,
+    ) -> crate::OcctResult<*mut HandleMeshVSMesh>;
     /// Dereference Handle to get *const MeshVS_Mesh
     pub fn HandleMeshVSMesh_get(
         handle: *const HandleMeshVSMesh,
@@ -2295,6 +2331,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSMeshEntityOwner>;
     /// Destroy Handle<MeshVS_MeshEntityOwner>
     pub fn HandleMeshVSMeshEntityOwner_destructor(self_: *mut HandleMeshVSMeshEntityOwner);
+    /// Clone Handle<MeshVS_MeshEntityOwner> (increments reference count)
+    pub fn HandleMeshVSMeshEntityOwner_clone(
+        self_: *const HandleMeshVSMeshEntityOwner,
+    ) -> crate::OcctResult<*mut HandleMeshVSMeshEntityOwner>;
     /// Dereference Handle to get *const MeshVS_MeshEntityOwner
     pub fn HandleMeshVSMeshEntityOwner_get(
         handle: *const HandleMeshVSMeshEntityOwner,
@@ -2529,6 +2569,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSMeshOwner>;
     /// Destroy Handle<MeshVS_MeshOwner>
     pub fn HandleMeshVSMeshOwner_destructor(self_: *mut HandleMeshVSMeshOwner);
+    /// Clone Handle<MeshVS_MeshOwner> (increments reference count)
+    pub fn HandleMeshVSMeshOwner_clone(
+        self_: *const HandleMeshVSMeshOwner,
+    ) -> crate::OcctResult<*mut HandleMeshVSMeshOwner>;
     /// Dereference Handle to get *const MeshVS_MeshOwner
     pub fn HandleMeshVSMeshOwner_get(
         handle: *const HandleMeshVSMeshOwner,
@@ -2773,6 +2817,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSMeshPrsBuilder>;
     /// Destroy Handle<MeshVS_MeshPrsBuilder>
     pub fn HandleMeshVSMeshPrsBuilder_destructor(self_: *mut HandleMeshVSMeshPrsBuilder);
+    /// Clone Handle<MeshVS_MeshPrsBuilder> (increments reference count)
+    pub fn HandleMeshVSMeshPrsBuilder_clone(
+        self_: *const HandleMeshVSMeshPrsBuilder,
+    ) -> crate::OcctResult<*mut HandleMeshVSMeshPrsBuilder>;
     /// Dereference Handle to get *const MeshVS_MeshPrsBuilder
     pub fn HandleMeshVSMeshPrsBuilder_get(
         handle: *const HandleMeshVSMeshPrsBuilder,
@@ -3022,6 +3070,10 @@ extern "C" {
     pub fn HandleMeshVSNodalColorPrsBuilder_destructor(
         self_: *mut HandleMeshVSNodalColorPrsBuilder,
     );
+    /// Clone Handle<MeshVS_NodalColorPrsBuilder> (increments reference count)
+    pub fn HandleMeshVSNodalColorPrsBuilder_clone(
+        self_: *const HandleMeshVSNodalColorPrsBuilder,
+    ) -> crate::OcctResult<*mut HandleMeshVSNodalColorPrsBuilder>;
     /// Dereference Handle to get *const MeshVS_NodalColorPrsBuilder
     pub fn HandleMeshVSNodalColorPrsBuilder_get(
         handle: *const HandleMeshVSNodalColorPrsBuilder,
@@ -3227,6 +3279,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<MeshVS_PrsBuilder>
     pub fn HandleMeshVSPrsBuilder_destructor(self_: *mut HandleMeshVSPrsBuilder);
+    /// Clone Handle<MeshVS_PrsBuilder> (increments reference count)
+    pub fn HandleMeshVSPrsBuilder_clone(
+        self_: *const HandleMeshVSPrsBuilder,
+    ) -> crate::OcctResult<*mut HandleMeshVSPrsBuilder>;
     /// Dereference Handle to get *const MeshVS_PrsBuilder
     pub fn HandleMeshVSPrsBuilder_get(
         handle: *const HandleMeshVSPrsBuilder,
@@ -3335,6 +3391,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSSensitiveFace>;
     /// Destroy Handle<MeshVS_SensitiveFace>
     pub fn HandleMeshVSSensitiveFace_destructor(self_: *mut HandleMeshVSSensitiveFace);
+    /// Clone Handle<MeshVS_SensitiveFace> (increments reference count)
+    pub fn HandleMeshVSSensitiveFace_clone(
+        self_: *const HandleMeshVSSensitiveFace,
+    ) -> crate::OcctResult<*mut HandleMeshVSSensitiveFace>;
     /// Dereference Handle to get *const MeshVS_SensitiveFace
     pub fn HandleMeshVSSensitiveFace_get(
         handle: *const HandleMeshVSSensitiveFace,
@@ -3522,6 +3582,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSSensitiveMesh>;
     /// Destroy Handle<MeshVS_SensitiveMesh>
     pub fn HandleMeshVSSensitiveMesh_destructor(self_: *mut HandleMeshVSSensitiveMesh);
+    /// Clone Handle<MeshVS_SensitiveMesh> (increments reference count)
+    pub fn HandleMeshVSSensitiveMesh_clone(
+        self_: *const HandleMeshVSSensitiveMesh,
+    ) -> crate::OcctResult<*mut HandleMeshVSSensitiveMesh>;
     /// Dereference Handle to get *const MeshVS_SensitiveMesh
     pub fn HandleMeshVSSensitiveMesh_get(
         handle: *const HandleMeshVSSensitiveMesh,
@@ -3676,6 +3740,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSSensitivePolyhedron>;
     /// Destroy Handle<MeshVS_SensitivePolyhedron>
     pub fn HandleMeshVSSensitivePolyhedron_destructor(self_: *mut HandleMeshVSSensitivePolyhedron);
+    /// Clone Handle<MeshVS_SensitivePolyhedron> (increments reference count)
+    pub fn HandleMeshVSSensitivePolyhedron_clone(
+        self_: *const HandleMeshVSSensitivePolyhedron,
+    ) -> crate::OcctResult<*mut HandleMeshVSSensitivePolyhedron>;
     /// Dereference Handle to get *const MeshVS_SensitivePolyhedron
     pub fn HandleMeshVSSensitivePolyhedron_get(
         handle: *const HandleMeshVSSensitivePolyhedron,
@@ -3836,6 +3904,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSSensitiveQuad>;
     /// Destroy Handle<MeshVS_SensitiveQuad>
     pub fn HandleMeshVSSensitiveQuad_destructor(self_: *mut HandleMeshVSSensitiveQuad);
+    /// Clone Handle<MeshVS_SensitiveQuad> (increments reference count)
+    pub fn HandleMeshVSSensitiveQuad_clone(
+        self_: *const HandleMeshVSSensitiveQuad,
+    ) -> crate::OcctResult<*mut HandleMeshVSSensitiveQuad>;
     /// Dereference Handle to get *const MeshVS_SensitiveQuad
     pub fn HandleMeshVSSensitiveQuad_get(
         handle: *const HandleMeshVSSensitiveQuad,
@@ -3976,6 +4048,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSSensitiveSegment>;
     /// Destroy Handle<MeshVS_SensitiveSegment>
     pub fn HandleMeshVSSensitiveSegment_destructor(self_: *mut HandleMeshVSSensitiveSegment);
+    /// Clone Handle<MeshVS_SensitiveSegment> (increments reference count)
+    pub fn HandleMeshVSSensitiveSegment_clone(
+        self_: *const HandleMeshVSSensitiveSegment,
+    ) -> crate::OcctResult<*mut HandleMeshVSSensitiveSegment>;
     /// Dereference Handle to get *const MeshVS_SensitiveSegment
     pub fn HandleMeshVSSensitiveSegment_get(
         handle: *const HandleMeshVSSensitiveSegment,
@@ -4195,6 +4271,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSTextPrsBuilder>;
     /// Destroy Handle<MeshVS_TextPrsBuilder>
     pub fn HandleMeshVSTextPrsBuilder_destructor(self_: *mut HandleMeshVSTextPrsBuilder);
+    /// Clone Handle<MeshVS_TextPrsBuilder> (increments reference count)
+    pub fn HandleMeshVSTextPrsBuilder_clone(
+        self_: *const HandleMeshVSTextPrsBuilder,
+    ) -> crate::OcctResult<*mut HandleMeshVSTextPrsBuilder>;
     /// Dereference Handle to get *const MeshVS_TextPrsBuilder
     pub fn HandleMeshVSTextPrsBuilder_get(
         handle: *const HandleMeshVSTextPrsBuilder,
@@ -4473,6 +4553,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMeshVSVectorPrsBuilder>;
     /// Destroy Handle<MeshVS_VectorPrsBuilder>
     pub fn HandleMeshVSVectorPrsBuilder_destructor(self_: *mut HandleMeshVSVectorPrsBuilder);
+    /// Clone Handle<MeshVS_VectorPrsBuilder> (increments reference count)
+    pub fn HandleMeshVSVectorPrsBuilder_clone(
+        self_: *const HandleMeshVSVectorPrsBuilder,
+    ) -> crate::OcctResult<*mut HandleMeshVSVectorPrsBuilder>;
     /// Dereference Handle to get *const MeshVS_VectorPrsBuilder
     pub fn HandleMeshVSVectorPrsBuilder_get(
         handle: *const HandleMeshVSVectorPrsBuilder,

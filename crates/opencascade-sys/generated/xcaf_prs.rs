@@ -1826,6 +1826,12 @@ unsafe impl crate::CppDeletable for HandleXCAFPrsAISObject {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFPrsAISObject {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFPrsAISObject_clone(ptr))
+    }
+}
+
 impl HandleXCAFPrsAISObject {
     /// Dereference this Handle to access the underlying XCAFPrs_AISObject
     pub fn get(&self) -> &crate::ffi_types::XCAFPrs_AISObject {
@@ -2435,6 +2441,12 @@ pub use crate::ffi_types::HandleXCAFPrsDriver;
 unsafe impl crate::CppDeletable for HandleXCAFPrsDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFPrsDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFPrsDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFPrsDriver_clone(ptr))
     }
 }
 
@@ -3121,6 +3133,12 @@ pub use crate::ffi_types::HandleXCAFPrsTexture;
 unsafe impl crate::CppDeletable for HandleXCAFPrsTexture {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFPrsTexture_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFPrsTexture {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFPrsTexture_clone(ptr))
     }
 }
 

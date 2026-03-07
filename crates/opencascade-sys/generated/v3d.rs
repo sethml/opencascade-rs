@@ -699,6 +699,12 @@ unsafe impl crate::CppDeletable for HandleV3dAmbientLight {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleV3dAmbientLight {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dAmbientLight_clone(ptr))
+    }
+}
+
 impl HandleV3dAmbientLight {
     /// Dereference this Handle to access the underlying V3d_AmbientLight
     pub fn get(&self) -> &crate::ffi_types::V3d_AmbientLight {
@@ -1047,6 +1053,12 @@ pub use crate::ffi_types::HandleV3dBadValue;
 unsafe impl crate::CppDeletable for HandleV3dBadValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleV3dBadValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleV3dBadValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dBadValue_clone(ptr))
     }
 }
 
@@ -1598,6 +1610,12 @@ pub use crate::ffi_types::HandleV3dCircularGrid;
 unsafe impl crate::CppDeletable for HandleV3dCircularGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleV3dCircularGrid_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleV3dCircularGrid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dCircularGrid_clone(ptr))
     }
 }
 
@@ -2195,6 +2213,12 @@ unsafe impl crate::CppDeletable for HandleV3dDirectionalLight {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleV3dDirectionalLight {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dDirectionalLight_clone(ptr))
+    }
+}
+
 impl HandleV3dDirectionalLight {
     /// Dereference this Handle to access the underlying V3d_DirectionalLight
     pub fn get(&self) -> &crate::ffi_types::V3d_DirectionalLight {
@@ -2516,6 +2540,12 @@ pub use crate::ffi_types::HandleV3dPlane;
 unsafe impl crate::CppDeletable for HandleV3dPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleV3dPlane_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleV3dPlane {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dPlane_clone(ptr))
     }
 }
 
@@ -3068,6 +3098,12 @@ pub use crate::ffi_types::HandleV3dPositionLight;
 unsafe impl crate::CppDeletable for HandleV3dPositionLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleV3dPositionLight_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleV3dPositionLight {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dPositionLight_clone(ptr))
     }
 }
 
@@ -3688,6 +3724,12 @@ unsafe impl crate::CppDeletable for HandleV3dPositionalLight {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleV3dPositionalLight {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dPositionalLight_clone(ptr))
+    }
+}
+
 impl HandleV3dPositionalLight {
     /// Dereference this Handle to access the underlying V3d_PositionalLight
     pub fn get(&self) -> &crate::ffi_types::V3d_PositionalLight {
@@ -4251,6 +4293,12 @@ pub use crate::ffi_types::HandleV3dRectangularGrid;
 unsafe impl crate::CppDeletable for HandleV3dRectangularGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleV3dRectangularGrid_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleV3dRectangularGrid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dRectangularGrid_clone(ptr))
     }
 }
 
@@ -4864,6 +4912,12 @@ unsafe impl crate::CppDeletable for HandleV3dSpotLight {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleV3dSpotLight {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dSpotLight_clone(ptr))
+    }
+}
+
 impl HandleV3dSpotLight {
     /// Dereference this Handle to access the underlying V3d_SpotLight
     pub fn get(&self) -> &crate::ffi_types::V3d_SpotLight {
@@ -5312,6 +5366,12 @@ unsafe impl crate::CppDeletable for HandleV3dTrihedron {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleV3dTrihedron {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dTrihedron_clone(ptr))
+    }
+}
+
 impl HandleV3dTrihedron {
     /// Dereference this Handle to access the underlying V3d_Trihedron
     pub fn get(&self) -> &crate::ffi_types::V3d_Trihedron {
@@ -5613,6 +5673,12 @@ pub use crate::ffi_types::HandleV3dUnMapped;
 unsafe impl crate::CppDeletable for HandleV3dUnMapped {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleV3dUnMapped_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleV3dUnMapped {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dUnMapped_clone(ptr))
     }
 }
 
@@ -8104,6 +8170,12 @@ unsafe impl crate::CppDeletable for HandleV3dView {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleV3dView {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dView_clone(ptr))
+    }
+}
+
 impl HandleV3dView {
     /// Dereference this Handle to access the underlying V3d_View
     pub fn get(&self) -> &crate::ffi_types::V3d_View {
@@ -9286,6 +9358,12 @@ pub use crate::ffi_types::HandleV3dViewer;
 unsafe impl crate::CppDeletable for HandleV3dViewer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleV3dViewer_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleV3dViewer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleV3dViewer_clone(ptr))
     }
 }
 

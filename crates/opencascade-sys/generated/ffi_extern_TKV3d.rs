@@ -131,6 +131,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISAnimation>;
     /// Destroy Handle<AIS_Animation>
     pub fn HandleAISAnimation_destructor(self_: *mut HandleAISAnimation);
+    /// Clone Handle<AIS_Animation> (increments reference count)
+    pub fn HandleAISAnimation_clone(
+        self_: *const HandleAISAnimation,
+    ) -> crate::OcctResult<*mut HandleAISAnimation>;
     /// Dereference Handle to get *const AIS_Animation
     pub fn HandleAISAnimation_get(
         handle: *const HandleAISAnimation,
@@ -237,6 +241,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISAnimationAxisRotation>;
     /// Destroy Handle<AIS_AnimationAxisRotation>
     pub fn HandleAISAnimationAxisRotation_destructor(self_: *mut HandleAISAnimationAxisRotation);
+    /// Clone Handle<AIS_AnimationAxisRotation> (increments reference count)
+    pub fn HandleAISAnimationAxisRotation_clone(
+        self_: *const HandleAISAnimationAxisRotation,
+    ) -> crate::OcctResult<*mut HandleAISAnimationAxisRotation>;
     /// Dereference Handle to get *const AIS_AnimationAxisRotation
     pub fn HandleAISAnimationAxisRotation_get(
         handle: *const HandleAISAnimationAxisRotation,
@@ -466,6 +474,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISAnimationCamera>;
     /// Destroy Handle<AIS_AnimationCamera>
     pub fn HandleAISAnimationCamera_destructor(self_: *mut HandleAISAnimationCamera);
+    /// Clone Handle<AIS_AnimationCamera> (increments reference count)
+    pub fn HandleAISAnimationCamera_clone(
+        self_: *const HandleAISAnimationCamera,
+    ) -> crate::OcctResult<*mut HandleAISAnimationCamera>;
     /// Dereference Handle to get *const AIS_AnimationCamera
     pub fn HandleAISAnimationCamera_get(
         handle: *const HandleAISAnimationCamera,
@@ -675,6 +687,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISAnimationObject>;
     /// Destroy Handle<AIS_AnimationObject>
     pub fn HandleAISAnimationObject_destructor(self_: *mut HandleAISAnimationObject);
+    /// Clone Handle<AIS_AnimationObject> (increments reference count)
+    pub fn HandleAISAnimationObject_clone(
+        self_: *const HandleAISAnimationObject,
+    ) -> crate::OcctResult<*mut HandleAISAnimationObject>;
     /// Dereference Handle to get *const AIS_AnimationObject
     pub fn HandleAISAnimationObject_get(
         handle: *const HandleAISAnimationObject,
@@ -913,6 +929,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISAttributeFilter>;
     /// Destroy Handle<AIS_AttributeFilter>
     pub fn HandleAISAttributeFilter_destructor(self_: *mut HandleAISAttributeFilter);
+    /// Clone Handle<AIS_AttributeFilter> (increments reference count)
+    pub fn HandleAISAttributeFilter_clone(
+        self_: *const HandleAISAttributeFilter,
+    ) -> crate::OcctResult<*mut HandleAISAttributeFilter>;
     /// Dereference Handle to get *const AIS_AttributeFilter
     pub fn HandleAISAttributeFilter_get(
         handle: *const HandleAISAttributeFilter,
@@ -1084,6 +1104,10 @@ extern "C" {
     pub fn AIS_Axis_to_handle(obj: *mut AIS_Axis) -> crate::OcctResult<*mut HandleAISAxis>;
     /// Destroy Handle<AIS_Axis>
     pub fn HandleAISAxis_destructor(self_: *mut HandleAISAxis);
+    /// Clone Handle<AIS_Axis> (increments reference count)
+    pub fn HandleAISAxis_clone(
+        self_: *const HandleAISAxis,
+    ) -> crate::OcctResult<*mut HandleAISAxis>;
     /// Dereference Handle to get *const AIS_Axis
     pub fn HandleAISAxis_get(handle: *const HandleAISAxis) -> crate::OcctResult<*const AIS_Axis>;
     /// Dereference Handle to get *mut AIS_Axis
@@ -1627,6 +1651,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISBadEdgeFilter>;
     /// Destroy Handle<AIS_BadEdgeFilter>
     pub fn HandleAISBadEdgeFilter_destructor(self_: *mut HandleAISBadEdgeFilter);
+    /// Clone Handle<AIS_BadEdgeFilter> (increments reference count)
+    pub fn HandleAISBadEdgeFilter_clone(
+        self_: *const HandleAISBadEdgeFilter,
+    ) -> crate::OcctResult<*mut HandleAISBadEdgeFilter>;
     /// Dereference Handle to get *const AIS_BadEdgeFilter
     pub fn HandleAISBadEdgeFilter_get(
         handle: *const HandleAISBadEdgeFilter,
@@ -1706,6 +1734,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISBaseAnimationObject>;
     /// Destroy Handle<AIS_BaseAnimationObject>
     pub fn HandleAISBaseAnimationObject_destructor(self_: *mut HandleAISBaseAnimationObject);
+    /// Clone Handle<AIS_BaseAnimationObject> (increments reference count)
+    pub fn HandleAISBaseAnimationObject_clone(
+        self_: *const HandleAISBaseAnimationObject,
+    ) -> crate::OcctResult<*mut HandleAISBaseAnimationObject>;
     /// Dereference Handle to get *const AIS_BaseAnimationObject
     pub fn HandleAISBaseAnimationObject_get(
         handle: *const HandleAISBaseAnimationObject,
@@ -1922,6 +1954,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISC0RegularityFilter>;
     /// Destroy Handle<AIS_C0RegularityFilter>
     pub fn HandleAISC0RegularityFilter_destructor(self_: *mut HandleAISC0RegularityFilter);
+    /// Clone Handle<AIS_C0RegularityFilter> (increments reference count)
+    pub fn HandleAISC0RegularityFilter_clone(
+        self_: *const HandleAISC0RegularityFilter,
+    ) -> crate::OcctResult<*mut HandleAISC0RegularityFilter>;
     /// Dereference Handle to get *const AIS_C0RegularityFilter
     pub fn HandleAISC0RegularityFilter_get(
         handle: *const HandleAISC0RegularityFilter,
@@ -2039,6 +2075,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISCameraFrustum>;
     /// Destroy Handle<AIS_CameraFrustum>
     pub fn HandleAISCameraFrustum_destructor(self_: *mut HandleAISCameraFrustum);
+    /// Clone Handle<AIS_CameraFrustum> (increments reference count)
+    pub fn HandleAISCameraFrustum_clone(
+        self_: *const HandleAISCameraFrustum,
+    ) -> crate::OcctResult<*mut HandleAISCameraFrustum>;
     /// Dereference Handle to get *const AIS_CameraFrustum
     pub fn HandleAISCameraFrustum_get(
         handle: *const HandleAISCameraFrustum,
@@ -2712,6 +2752,10 @@ extern "C" {
     pub fn AIS_Circle_to_handle(obj: *mut AIS_Circle) -> crate::OcctResult<*mut HandleAISCircle>;
     /// Destroy Handle<AIS_Circle>
     pub fn HandleAISCircle_destructor(self_: *mut HandleAISCircle);
+    /// Clone Handle<AIS_Circle> (increments reference count)
+    pub fn HandleAISCircle_clone(
+        self_: *const HandleAISCircle,
+    ) -> crate::OcctResult<*mut HandleAISCircle>;
     /// Dereference Handle to get *const AIS_Circle
     pub fn HandleAISCircle_get(
         handle: *const HandleAISCircle,
@@ -3612,6 +3656,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISColorScale>;
     /// Destroy Handle<AIS_ColorScale>
     pub fn HandleAISColorScale_destructor(self_: *mut HandleAISColorScale);
+    /// Clone Handle<AIS_ColorScale> (increments reference count)
+    pub fn HandleAISColorScale_clone(
+        self_: *const HandleAISColorScale,
+    ) -> crate::OcctResult<*mut HandleAISColorScale>;
     /// Dereference Handle to get *const AIS_ColorScale
     pub fn HandleAISColorScale_get(
         handle: *const HandleAISColorScale,
@@ -4294,6 +4342,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISColoredDrawer>;
     /// Destroy Handle<AIS_ColoredDrawer>
     pub fn HandleAISColoredDrawer_destructor(self_: *mut HandleAISColoredDrawer);
+    /// Clone Handle<AIS_ColoredDrawer> (increments reference count)
+    pub fn HandleAISColoredDrawer_clone(
+        self_: *const HandleAISColoredDrawer,
+    ) -> crate::OcctResult<*mut HandleAISColoredDrawer>;
     /// Dereference Handle to get *const AIS_ColoredDrawer
     pub fn HandleAISColoredDrawer_get(
         handle: *const HandleAISColoredDrawer,
@@ -5203,6 +5255,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISColoredShape>;
     /// Destroy Handle<AIS_ColoredShape>
     pub fn HandleAISColoredShape_destructor(self_: *mut HandleAISColoredShape);
+    /// Clone Handle<AIS_ColoredShape> (increments reference count)
+    pub fn HandleAISColoredShape_clone(
+        self_: *const HandleAISColoredShape,
+    ) -> crate::OcctResult<*mut HandleAISColoredShape>;
     /// Dereference Handle to get *const AIS_ColoredShape
     pub fn HandleAISColoredShape_get(
         handle: *const HandleAISColoredShape,
@@ -5952,6 +6008,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISConnectedInteractive>;
     /// Destroy Handle<AIS_ConnectedInteractive>
     pub fn HandleAISConnectedInteractive_destructor(self_: *mut HandleAISConnectedInteractive);
+    /// Clone Handle<AIS_ConnectedInteractive> (increments reference count)
+    pub fn HandleAISConnectedInteractive_clone(
+        self_: *const HandleAISConnectedInteractive,
+    ) -> crate::OcctResult<*mut HandleAISConnectedInteractive>;
     /// Dereference Handle to get *const AIS_ConnectedInteractive
     pub fn HandleAISConnectedInteractive_get(
         handle: *const HandleAISConnectedInteractive,
@@ -6628,6 +6688,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISExclusionFilter>;
     /// Destroy Handle<AIS_ExclusionFilter>
     pub fn HandleAISExclusionFilter_destructor(self_: *mut HandleAISExclusionFilter);
+    /// Clone Handle<AIS_ExclusionFilter> (increments reference count)
+    pub fn HandleAISExclusionFilter_clone(
+        self_: *const HandleAISExclusionFilter,
+    ) -> crate::OcctResult<*mut HandleAISExclusionFilter>;
     /// Dereference Handle to get *const AIS_ExclusionFilter
     pub fn HandleAISExclusionFilter_get(
         handle: *const HandleAISExclusionFilter,
@@ -6761,6 +6825,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISGlobalStatus>;
     /// Destroy Handle<AIS_GlobalStatus>
     pub fn HandleAISGlobalStatus_destructor(self_: *mut HandleAISGlobalStatus);
+    /// Clone Handle<AIS_GlobalStatus> (increments reference count)
+    pub fn HandleAISGlobalStatus_clone(
+        self_: *const HandleAISGlobalStatus,
+    ) -> crate::OcctResult<*mut HandleAISGlobalStatus>;
     /// Dereference Handle to get *const AIS_GlobalStatus
     pub fn HandleAISGlobalStatus_get(
         handle: *const HandleAISGlobalStatus,
@@ -7918,6 +7986,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISInteractiveContext>;
     /// Destroy Handle<AIS_InteractiveContext>
     pub fn HandleAISInteractiveContext_destructor(self_: *mut HandleAISInteractiveContext);
+    /// Clone Handle<AIS_InteractiveContext> (increments reference count)
+    pub fn HandleAISInteractiveContext_clone(
+        self_: *const HandleAISInteractiveContext,
+    ) -> crate::OcctResult<*mut HandleAISInteractiveContext>;
     /// Dereference Handle to get *const AIS_InteractiveContext
     pub fn HandleAISInteractiveContext_get(
         handle: *const HandleAISInteractiveContext,
@@ -8062,6 +8134,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<AIS_InteractiveObject>
     pub fn HandleAISInteractiveObject_destructor(self_: *mut HandleAISInteractiveObject);
+    /// Clone Handle<AIS_InteractiveObject> (increments reference count)
+    pub fn HandleAISInteractiveObject_clone(
+        self_: *const HandleAISInteractiveObject,
+    ) -> crate::OcctResult<*mut HandleAISInteractiveObject>;
     /// Dereference Handle to get *const AIS_InteractiveObject
     pub fn HandleAISInteractiveObject_get(
         handle: *const HandleAISInteractiveObject,
@@ -8941,6 +9017,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISLightSource>;
     /// Destroy Handle<AIS_LightSource>
     pub fn HandleAISLightSource_destructor(self_: *mut HandleAISLightSource);
+    /// Clone Handle<AIS_LightSource> (increments reference count)
+    pub fn HandleAISLightSource_clone(
+        self_: *const HandleAISLightSource,
+    ) -> crate::OcctResult<*mut HandleAISLightSource>;
     /// Dereference Handle to get *const AIS_LightSource
     pub fn HandleAISLightSource_get(
         handle: *const HandleAISLightSource,
@@ -9569,6 +9649,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISLightSourceOwner>;
     /// Destroy Handle<AIS_LightSourceOwner>
     pub fn HandleAISLightSourceOwner_destructor(self_: *mut HandleAISLightSourceOwner);
+    /// Clone Handle<AIS_LightSourceOwner> (increments reference count)
+    pub fn HandleAISLightSourceOwner_clone(
+        self_: *const HandleAISLightSourceOwner,
+    ) -> crate::OcctResult<*mut HandleAISLightSourceOwner>;
     /// Dereference Handle to get *const AIS_LightSourceOwner
     pub fn HandleAISLightSourceOwner_get(
         handle: *const HandleAISLightSourceOwner,
@@ -9807,6 +9891,10 @@ extern "C" {
     pub fn AIS_Line_to_handle(obj: *mut AIS_Line) -> crate::OcctResult<*mut HandleAISLine>;
     /// Destroy Handle<AIS_Line>
     pub fn HandleAISLine_destructor(self_: *mut HandleAISLine);
+    /// Clone Handle<AIS_Line> (increments reference count)
+    pub fn HandleAISLine_clone(
+        self_: *const HandleAISLine,
+    ) -> crate::OcctResult<*mut HandleAISLine>;
     /// Dereference Handle to get *const AIS_Line
     pub fn HandleAISLine_get(handle: *const HandleAISLine) -> crate::OcctResult<*const AIS_Line>;
     /// Dereference Handle to get *mut AIS_Line
@@ -10348,6 +10436,10 @@ extern "C" {
     pub fn HandleAISManipulatorObjectSequence_destructor(
         self_: *mut HandleAISManipulatorObjectSequence,
     );
+    /// Clone Handle<AIS_ManipulatorObjectSequence> (increments reference count)
+    pub fn HandleAISManipulatorObjectSequence_clone(
+        self_: *const HandleAISManipulatorObjectSequence,
+    ) -> crate::OcctResult<*mut HandleAISManipulatorObjectSequence>;
     /// Dereference Handle to get *const AIS_ManipulatorObjectSequence
     pub fn HandleAISManipulatorObjectSequence_get(
         handle: *const HandleAISManipulatorObjectSequence,
@@ -10668,6 +10760,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISManipulator>;
     /// Destroy Handle<AIS_Manipulator>
     pub fn HandleAISManipulator_destructor(self_: *mut HandleAISManipulator);
+    /// Clone Handle<AIS_Manipulator> (increments reference count)
+    pub fn HandleAISManipulator_clone(
+        self_: *const HandleAISManipulator,
+    ) -> crate::OcctResult<*mut HandleAISManipulator>;
     /// Dereference Handle to get *const AIS_Manipulator
     pub fn HandleAISManipulator_get(
         handle: *const HandleAISManipulator,
@@ -11284,6 +11380,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISManipulatorOwner>;
     /// Destroy Handle<AIS_ManipulatorOwner>
     pub fn HandleAISManipulatorOwner_destructor(self_: *mut HandleAISManipulatorOwner);
+    /// Clone Handle<AIS_ManipulatorOwner> (increments reference count)
+    pub fn HandleAISManipulatorOwner_clone(
+        self_: *const HandleAISManipulatorOwner,
+    ) -> crate::OcctResult<*mut HandleAISManipulatorOwner>;
     /// Dereference Handle to get *const AIS_ManipulatorOwner
     pub fn HandleAISManipulatorOwner_get(
         handle: *const HandleAISManipulatorOwner,
@@ -11512,6 +11612,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISMediaPlayer>;
     /// Destroy Handle<AIS_MediaPlayer>
     pub fn HandleAISMediaPlayer_destructor(self_: *mut HandleAISMediaPlayer);
+    /// Clone Handle<AIS_MediaPlayer> (increments reference count)
+    pub fn HandleAISMediaPlayer_clone(
+        self_: *const HandleAISMediaPlayer,
+    ) -> crate::OcctResult<*mut HandleAISMediaPlayer>;
     /// Dereference Handle to get *const AIS_MediaPlayer
     pub fn HandleAISMediaPlayer_get(
         handle: *const HandleAISMediaPlayer,
@@ -12216,6 +12320,10 @@ extern "C" {
     pub fn HandleAISMultipleConnectedInteractive_destructor(
         self_: *mut HandleAISMultipleConnectedInteractive,
     );
+    /// Clone Handle<AIS_MultipleConnectedInteractive> (increments reference count)
+    pub fn HandleAISMultipleConnectedInteractive_clone(
+        self_: *const HandleAISMultipleConnectedInteractive,
+    ) -> crate::OcctResult<*mut HandleAISMultipleConnectedInteractive>;
     /// Dereference Handle to get *const AIS_MultipleConnectedInteractive
     pub fn HandleAISMultipleConnectedInteractive_get(
         handle: *const HandleAISMultipleConnectedInteractive,
@@ -12966,6 +13074,10 @@ extern "C" {
     pub fn AIS_Plane_to_handle(obj: *mut AIS_Plane) -> crate::OcctResult<*mut HandleAISPlane>;
     /// Destroy Handle<AIS_Plane>
     pub fn HandleAISPlane_destructor(self_: *mut HandleAISPlane);
+    /// Clone Handle<AIS_Plane> (increments reference count)
+    pub fn HandleAISPlane_clone(
+        self_: *const HandleAISPlane,
+    ) -> crate::OcctResult<*mut HandleAISPlane>;
     /// Dereference Handle to get *const AIS_Plane
     pub fn HandleAISPlane_get(handle: *const HandleAISPlane)
         -> crate::OcctResult<*const AIS_Plane>;
@@ -13578,6 +13690,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISPlaneTrihedron>;
     /// Destroy Handle<AIS_PlaneTrihedron>
     pub fn HandleAISPlaneTrihedron_destructor(self_: *mut HandleAISPlaneTrihedron);
+    /// Clone Handle<AIS_PlaneTrihedron> (increments reference count)
+    pub fn HandleAISPlaneTrihedron_clone(
+        self_: *const HandleAISPlaneTrihedron,
+    ) -> crate::OcctResult<*mut HandleAISPlaneTrihedron>;
     /// Dereference Handle to get *const AIS_PlaneTrihedron
     pub fn HandleAISPlaneTrihedron_get(
         handle: *const HandleAISPlaneTrihedron,
@@ -14233,6 +14349,10 @@ extern "C" {
     pub fn AIS_Point_to_handle(obj: *mut AIS_Point) -> crate::OcctResult<*mut HandleAISPoint>;
     /// Destroy Handle<AIS_Point>
     pub fn HandleAISPoint_destructor(self_: *mut HandleAISPoint);
+    /// Clone Handle<AIS_Point> (increments reference count)
+    pub fn HandleAISPoint_clone(
+        self_: *const HandleAISPoint,
+    ) -> crate::OcctResult<*mut HandleAISPoint>;
     /// Dereference Handle to get *const AIS_Point
     pub fn HandleAISPoint_get(handle: *const HandleAISPoint)
         -> crate::OcctResult<*const AIS_Point>;
@@ -14827,6 +14947,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISPointCloud>;
     /// Destroy Handle<AIS_PointCloud>
     pub fn HandleAISPointCloud_destructor(self_: *mut HandleAISPointCloud);
+    /// Clone Handle<AIS_PointCloud> (increments reference count)
+    pub fn HandleAISPointCloud_clone(
+        self_: *const HandleAISPointCloud,
+    ) -> crate::OcctResult<*mut HandleAISPointCloud>;
     /// Dereference Handle to get *const AIS_PointCloud
     pub fn HandleAISPointCloud_get(
         handle: *const HandleAISPointCloud,
@@ -15457,6 +15581,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISPointCloudOwner>;
     /// Destroy Handle<AIS_PointCloudOwner>
     pub fn HandleAISPointCloudOwner_destructor(self_: *mut HandleAISPointCloudOwner);
+    /// Clone Handle<AIS_PointCloudOwner> (increments reference count)
+    pub fn HandleAISPointCloudOwner_clone(
+        self_: *const HandleAISPointCloudOwner,
+    ) -> crate::OcctResult<*mut HandleAISPointCloudOwner>;
     /// Dereference Handle to get *const AIS_PointCloudOwner
     pub fn HandleAISPointCloudOwner_get(
         handle: *const HandleAISPointCloudOwner,
@@ -15751,6 +15879,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISRubberBand>;
     /// Destroy Handle<AIS_RubberBand>
     pub fn HandleAISRubberBand_destructor(self_: *mut HandleAISRubberBand);
+    /// Clone Handle<AIS_RubberBand> (increments reference count)
+    pub fn HandleAISRubberBand_clone(
+        self_: *const HandleAISRubberBand,
+    ) -> crate::OcctResult<*mut HandleAISRubberBand>;
     /// Dereference Handle to get *const AIS_RubberBand
     pub fn HandleAISRubberBand_get(
         handle: *const HandleAISRubberBand,
@@ -16410,6 +16542,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISSelection>;
     /// Destroy Handle<AIS_Selection>
     pub fn HandleAISSelection_destructor(self_: *mut HandleAISSelection);
+    /// Clone Handle<AIS_Selection> (increments reference count)
+    pub fn HandleAISSelection_clone(
+        self_: *const HandleAISSelection,
+    ) -> crate::OcctResult<*mut HandleAISSelection>;
     /// Dereference Handle to get *const AIS_Selection
     pub fn HandleAISSelection_get(
         handle: *const HandleAISSelection,
@@ -16638,6 +16774,10 @@ extern "C" {
     pub fn AIS_Shape_to_handle(obj: *mut AIS_Shape) -> crate::OcctResult<*mut HandleAISShape>;
     /// Destroy Handle<AIS_Shape>
     pub fn HandleAISShape_destructor(self_: *mut HandleAISShape);
+    /// Clone Handle<AIS_Shape> (increments reference count)
+    pub fn HandleAISShape_clone(
+        self_: *const HandleAISShape,
+    ) -> crate::OcctResult<*mut HandleAISShape>;
     /// Dereference Handle to get *const AIS_Shape
     pub fn HandleAISShape_get(handle: *const HandleAISShape)
         -> crate::OcctResult<*const AIS_Shape>;
@@ -17171,6 +17311,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISSignatureFilter>;
     /// Destroy Handle<AIS_SignatureFilter>
     pub fn HandleAISSignatureFilter_destructor(self_: *mut HandleAISSignatureFilter);
+    /// Clone Handle<AIS_SignatureFilter> (increments reference count)
+    pub fn HandleAISSignatureFilter_clone(
+        self_: *const HandleAISSignatureFilter,
+    ) -> crate::OcctResult<*mut HandleAISSignatureFilter>;
     /// Dereference Handle to get *const AIS_SignatureFilter
     pub fn HandleAISSignatureFilter_get(
         handle: *const HandleAISSignatureFilter,
@@ -17405,6 +17549,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISTextLabel>;
     /// Destroy Handle<AIS_TextLabel>
     pub fn HandleAISTextLabel_destructor(self_: *mut HandleAISTextLabel);
+    /// Clone Handle<AIS_TextLabel> (increments reference count)
+    pub fn HandleAISTextLabel_clone(
+        self_: *const HandleAISTextLabel,
+    ) -> crate::OcctResult<*mut HandleAISTextLabel>;
     /// Dereference Handle to get *const AIS_TextLabel
     pub fn HandleAISTextLabel_get(
         handle: *const HandleAISTextLabel,
@@ -18145,6 +18293,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISTexturedShape>;
     /// Destroy Handle<AIS_TexturedShape>
     pub fn HandleAISTexturedShape_destructor(self_: *mut HandleAISTexturedShape);
+    /// Clone Handle<AIS_TexturedShape> (increments reference count)
+    pub fn HandleAISTexturedShape_clone(
+        self_: *const HandleAISTexturedShape,
+    ) -> crate::OcctResult<*mut HandleAISTexturedShape>;
     /// Dereference Handle to get *const AIS_TexturedShape
     pub fn HandleAISTexturedShape_get(
         handle: *const HandleAISTexturedShape,
@@ -18879,6 +19031,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISTriangulation>;
     /// Destroy Handle<AIS_Triangulation>
     pub fn HandleAISTriangulation_destructor(self_: *mut HandleAISTriangulation);
+    /// Clone Handle<AIS_Triangulation> (increments reference count)
+    pub fn HandleAISTriangulation_clone(
+        self_: *const HandleAISTriangulation,
+    ) -> crate::OcctResult<*mut HandleAISTriangulation>;
     /// Dereference Handle to get *const AIS_Triangulation
     pub fn HandleAISTriangulation_get(
         handle: *const HandleAISTriangulation,
@@ -19666,6 +19822,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISTrihedron>;
     /// Destroy Handle<AIS_Trihedron>
     pub fn HandleAISTrihedron_destructor(self_: *mut HandleAISTrihedron);
+    /// Clone Handle<AIS_Trihedron> (increments reference count)
+    pub fn HandleAISTrihedron_clone(
+        self_: *const HandleAISTrihedron,
+    ) -> crate::OcctResult<*mut HandleAISTrihedron>;
     /// Dereference Handle to get *const AIS_Trihedron
     pub fn HandleAISTrihedron_get(
         handle: *const HandleAISTrihedron,
@@ -20267,6 +20427,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISTrihedronOwner>;
     /// Destroy Handle<AIS_TrihedronOwner>
     pub fn HandleAISTrihedronOwner_destructor(self_: *mut HandleAISTrihedronOwner);
+    /// Clone Handle<AIS_TrihedronOwner> (increments reference count)
+    pub fn HandleAISTrihedronOwner_clone(
+        self_: *const HandleAISTrihedronOwner,
+    ) -> crate::OcctResult<*mut HandleAISTrihedronOwner>;
     /// Dereference Handle to get *const AIS_TrihedronOwner
     pub fn HandleAISTrihedronOwner_get(
         handle: *const HandleAISTrihedronOwner,
@@ -20457,6 +20621,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISTypeFilter>;
     /// Destroy Handle<AIS_TypeFilter>
     pub fn HandleAISTypeFilter_destructor(self_: *mut HandleAISTypeFilter);
+    /// Clone Handle<AIS_TypeFilter> (increments reference count)
+    pub fn HandleAISTypeFilter_clone(
+        self_: *const HandleAISTypeFilter,
+    ) -> crate::OcctResult<*mut HandleAISTypeFilter>;
     /// Dereference Handle to get *const AIS_TypeFilter
     pub fn HandleAISTypeFilter_get(
         handle: *const HandleAISTypeFilter,
@@ -21631,6 +21799,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISViewCube>;
     /// Destroy Handle<AIS_ViewCube>
     pub fn HandleAISViewCube_destructor(self_: *mut HandleAISViewCube);
+    /// Clone Handle<AIS_ViewCube> (increments reference count)
+    pub fn HandleAISViewCube_clone(
+        self_: *const HandleAISViewCube,
+    ) -> crate::OcctResult<*mut HandleAISViewCube>;
     /// Dereference Handle to get *const AIS_ViewCube
     pub fn HandleAISViewCube_get(
         handle: *const HandleAISViewCube,
@@ -22184,6 +22356,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISViewCubeOwner>;
     /// Destroy Handle<AIS_ViewCubeOwner>
     pub fn HandleAISViewCubeOwner_destructor(self_: *mut HandleAISViewCubeOwner);
+    /// Clone Handle<AIS_ViewCubeOwner> (increments reference count)
+    pub fn HandleAISViewCubeOwner_clone(
+        self_: *const HandleAISViewCubeOwner,
+    ) -> crate::OcctResult<*mut HandleAISViewCubeOwner>;
     /// Dereference Handle to get *const AIS_ViewCubeOwner
     pub fn HandleAISViewCubeOwner_get(
         handle: *const HandleAISViewCubeOwner,
@@ -22400,6 +22576,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISViewCubeSensitive>;
     /// Destroy Handle<AIS_ViewCubeSensitive>
     pub fn HandleAISViewCubeSensitive_destructor(self_: *mut HandleAISViewCubeSensitive);
+    /// Clone Handle<AIS_ViewCubeSensitive> (increments reference count)
+    pub fn HandleAISViewCubeSensitive_clone(
+        self_: *const HandleAISViewCubeSensitive,
+    ) -> crate::OcctResult<*mut HandleAISViewCubeSensitive>;
     /// Dereference Handle to get *const AIS_ViewCubeSensitive
     pub fn HandleAISViewCubeSensitive_get(
         handle: *const HandleAISViewCubeSensitive,
@@ -22806,6 +22986,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAISXRTrackedDevice>;
     /// Destroy Handle<AIS_XRTrackedDevice>
     pub fn HandleAISXRTrackedDevice_destructor(self_: *mut HandleAISXRTrackedDevice);
+    /// Clone Handle<AIS_XRTrackedDevice> (increments reference count)
+    pub fn HandleAISXRTrackedDevice_clone(
+        self_: *const HandleAISXRTrackedDevice,
+    ) -> crate::OcctResult<*mut HandleAISXRTrackedDevice>;
     /// Dereference Handle to get *const AIS_XRTrackedDevice
     pub fn HandleAISXRTrackedDevice_get(
         handle: *const HandleAISXRTrackedDevice,
@@ -24201,6 +24385,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dArrowAspect>;
     /// Destroy Handle<Prs3d_ArrowAspect>
     pub fn HandlePrs3dArrowAspect_destructor(self_: *mut HandlePrs3dArrowAspect);
+    /// Clone Handle<Prs3d_ArrowAspect> (increments reference count)
+    pub fn HandlePrs3dArrowAspect_clone(
+        self_: *const HandlePrs3dArrowAspect,
+    ) -> crate::OcctResult<*mut HandlePrs3dArrowAspect>;
     /// Dereference Handle to get *const Prs3d_ArrowAspect
     pub fn HandlePrs3dArrowAspect_get(
         handle: *const HandlePrs3dArrowAspect,
@@ -24267,6 +24455,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Prs3d_BasicAspect>
     pub fn HandlePrs3dBasicAspect_destructor(self_: *mut HandlePrs3dBasicAspect);
+    /// Clone Handle<Prs3d_BasicAspect> (increments reference count)
+    pub fn HandlePrs3dBasicAspect_clone(
+        self_: *const HandlePrs3dBasicAspect,
+    ) -> crate::OcctResult<*mut HandlePrs3dBasicAspect>;
     /// Dereference Handle to get *const Prs3d_BasicAspect
     pub fn HandlePrs3dBasicAspect_get(
         handle: *const HandlePrs3dBasicAspect,
@@ -24521,6 +24713,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dDatumAspect>;
     /// Destroy Handle<Prs3d_DatumAspect>
     pub fn HandlePrs3dDatumAspect_destructor(self_: *mut HandlePrs3dDatumAspect);
+    /// Clone Handle<Prs3d_DatumAspect> (increments reference count)
+    pub fn HandlePrs3dDatumAspect_clone(
+        self_: *const HandlePrs3dDatumAspect,
+    ) -> crate::OcctResult<*mut HandlePrs3dDatumAspect>;
     /// Dereference Handle to get *const Prs3d_DatumAspect
     pub fn HandlePrs3dDatumAspect_get(
         handle: *const HandlePrs3dDatumAspect,
@@ -24724,6 +24920,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dDimensionAspect>;
     /// Destroy Handle<Prs3d_DimensionAspect>
     pub fn HandlePrs3dDimensionAspect_destructor(self_: *mut HandlePrs3dDimensionAspect);
+    /// Clone Handle<Prs3d_DimensionAspect> (increments reference count)
+    pub fn HandlePrs3dDimensionAspect_clone(
+        self_: *const HandlePrs3dDimensionAspect,
+    ) -> crate::OcctResult<*mut HandlePrs3dDimensionAspect>;
     /// Dereference Handle to get *const Prs3d_DimensionAspect
     pub fn HandlePrs3dDimensionAspect_get(
         handle: *const HandlePrs3dDimensionAspect,
@@ -24793,7 +24993,7 @@ extern "C" {
         self_: *const Prs3d_DimensionUnits,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
     /// Clone via copy constructor
-    pub fn Prs3d_DimensionUnits_to_owned(
+    pub fn Prs3d_DimensionUnits_clone(
         self_: *const Prs3d_DimensionUnits,
     ) -> crate::OcctResult<*mut Prs3d_DimensionUnits>;
     // ======================== Prs3d_Drawer ========================
@@ -25462,6 +25662,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dDrawer>;
     /// Destroy Handle<Prs3d_Drawer>
     pub fn HandlePrs3dDrawer_destructor(self_: *mut HandlePrs3dDrawer);
+    /// Clone Handle<Prs3d_Drawer> (increments reference count)
+    pub fn HandlePrs3dDrawer_clone(
+        self_: *const HandlePrs3dDrawer,
+    ) -> crate::OcctResult<*mut HandlePrs3dDrawer>;
     /// Dereference Handle to get *const Prs3d_Drawer
     pub fn HandlePrs3dDrawer_get(
         handle: *const HandlePrs3dDrawer,
@@ -25638,6 +25842,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dInvalidAngle>;
     /// Destroy Handle<Prs3d_InvalidAngle>
     pub fn HandlePrs3dInvalidAngle_destructor(self_: *mut HandlePrs3dInvalidAngle);
+    /// Clone Handle<Prs3d_InvalidAngle> (increments reference count)
+    pub fn HandlePrs3dInvalidAngle_clone(
+        self_: *const HandlePrs3dInvalidAngle,
+    ) -> crate::OcctResult<*mut HandlePrs3dInvalidAngle>;
     /// Dereference Handle to get *const Prs3d_InvalidAngle
     pub fn HandlePrs3dInvalidAngle_get(
         handle: *const HandlePrs3dInvalidAngle,
@@ -25759,6 +25967,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dIsoAspect>;
     /// Destroy Handle<Prs3d_IsoAspect>
     pub fn HandlePrs3dIsoAspect_destructor(self_: *mut HandlePrs3dIsoAspect);
+    /// Clone Handle<Prs3d_IsoAspect> (increments reference count)
+    pub fn HandlePrs3dIsoAspect_clone(
+        self_: *const HandlePrs3dIsoAspect,
+    ) -> crate::OcctResult<*mut HandlePrs3dIsoAspect>;
     /// Dereference Handle to get *const Prs3d_IsoAspect
     pub fn HandlePrs3dIsoAspect_get(
         handle: *const HandlePrs3dIsoAspect,
@@ -25899,6 +26111,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dLineAspect>;
     /// Destroy Handle<Prs3d_LineAspect>
     pub fn HandlePrs3dLineAspect_destructor(self_: *mut HandlePrs3dLineAspect);
+    /// Clone Handle<Prs3d_LineAspect> (increments reference count)
+    pub fn HandlePrs3dLineAspect_clone(
+        self_: *const HandlePrs3dLineAspect,
+    ) -> crate::OcctResult<*mut HandlePrs3dLineAspect>;
     /// Dereference Handle to get *const Prs3d_LineAspect
     pub fn HandlePrs3dLineAspect_get(
         handle: *const HandlePrs3dLineAspect,
@@ -26080,6 +26296,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dPlaneAspect>;
     /// Destroy Handle<Prs3d_PlaneAspect>
     pub fn HandlePrs3dPlaneAspect_destructor(self_: *mut HandlePrs3dPlaneAspect);
+    /// Clone Handle<Prs3d_PlaneAspect> (increments reference count)
+    pub fn HandlePrs3dPlaneAspect_clone(
+        self_: *const HandlePrs3dPlaneAspect,
+    ) -> crate::OcctResult<*mut HandlePrs3dPlaneAspect>;
     /// Dereference Handle to get *const Prs3d_PlaneAspect
     pub fn HandlePrs3dPlaneAspect_get(
         handle: *const HandlePrs3dPlaneAspect,
@@ -26209,6 +26429,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dPointAspect>;
     /// Destroy Handle<Prs3d_PointAspect>
     pub fn HandlePrs3dPointAspect_destructor(self_: *mut HandlePrs3dPointAspect);
+    /// Clone Handle<Prs3d_PointAspect> (increments reference count)
+    pub fn HandlePrs3dPointAspect_clone(
+        self_: *const HandlePrs3dPointAspect,
+    ) -> crate::OcctResult<*mut HandlePrs3dPointAspect>;
     /// Dereference Handle to get *const Prs3d_PointAspect
     pub fn HandlePrs3dPointAspect_get(
         handle: *const HandlePrs3dPointAspect,
@@ -26305,6 +26529,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dPresentationShadow>;
     /// Destroy Handle<Prs3d_PresentationShadow>
     pub fn HandlePrs3dPresentationShadow_destructor(self_: *mut HandlePrs3dPresentationShadow);
+    /// Clone Handle<Prs3d_PresentationShadow> (increments reference count)
+    pub fn HandlePrs3dPresentationShadow_clone(
+        self_: *const HandlePrs3dPresentationShadow,
+    ) -> crate::OcctResult<*mut HandlePrs3dPresentationShadow>;
     /// Dereference Handle to get *const Prs3d_PresentationShadow
     pub fn HandlePrs3dPresentationShadow_get(
         handle: *const HandlePrs3dPresentationShadow,
@@ -26696,6 +26924,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dShadingAspect>;
     /// Destroy Handle<Prs3d_ShadingAspect>
     pub fn HandlePrs3dShadingAspect_destructor(self_: *mut HandlePrs3dShadingAspect);
+    /// Clone Handle<Prs3d_ShadingAspect> (increments reference count)
+    pub fn HandlePrs3dShadingAspect_clone(
+        self_: *const HandlePrs3dShadingAspect,
+    ) -> crate::OcctResult<*mut HandlePrs3dShadingAspect>;
     /// Dereference Handle to get *const Prs3d_ShadingAspect
     pub fn HandlePrs3dShadingAspect_get(
         handle: *const HandlePrs3dShadingAspect,
@@ -26857,6 +27089,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrs3dTextAspect>;
     /// Destroy Handle<Prs3d_TextAspect>
     pub fn HandlePrs3dTextAspect_destructor(self_: *mut HandlePrs3dTextAspect);
+    /// Clone Handle<Prs3d_TextAspect> (increments reference count)
+    pub fn HandlePrs3dTextAspect_clone(
+        self_: *const HandlePrs3dTextAspect,
+    ) -> crate::OcctResult<*mut HandlePrs3dTextAspect>;
     /// Dereference Handle to get *const Prs3d_TextAspect
     pub fn HandlePrs3dTextAspect_get(
         handle: *const HandlePrs3dTextAspect,
@@ -27448,6 +27684,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimAngleDimension>;
     /// Destroy Handle<PrsDim_AngleDimension>
     pub fn HandlePrsDimAngleDimension_destructor(self_: *mut HandlePrsDimAngleDimension);
+    /// Clone Handle<PrsDim_AngleDimension> (increments reference count)
+    pub fn HandlePrsDimAngleDimension_clone(
+        self_: *const HandlePrsDimAngleDimension,
+    ) -> crate::OcctResult<*mut HandlePrsDimAngleDimension>;
     /// Dereference Handle to get *const PrsDim_AngleDimension
     pub fn HandlePrsDimAngleDimension_get(
         handle: *const HandlePrsDimAngleDimension,
@@ -28221,6 +28461,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimChamf2dDimension>;
     /// Destroy Handle<PrsDim_Chamf2dDimension>
     pub fn HandlePrsDimChamf2dDimension_destructor(self_: *mut HandlePrsDimChamf2dDimension);
+    /// Clone Handle<PrsDim_Chamf2dDimension> (increments reference count)
+    pub fn HandlePrsDimChamf2dDimension_clone(
+        self_: *const HandlePrsDimChamf2dDimension,
+    ) -> crate::OcctResult<*mut HandlePrsDimChamf2dDimension>;
     /// Dereference Handle to get *const PrsDim_Chamf2dDimension
     pub fn HandlePrsDimChamf2dDimension_get(
         handle: *const HandlePrsDimChamf2dDimension,
@@ -29001,6 +29245,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimChamf3dDimension>;
     /// Destroy Handle<PrsDim_Chamf3dDimension>
     pub fn HandlePrsDimChamf3dDimension_destructor(self_: *mut HandlePrsDimChamf3dDimension);
+    /// Clone Handle<PrsDim_Chamf3dDimension> (increments reference count)
+    pub fn HandlePrsDimChamf3dDimension_clone(
+        self_: *const HandlePrsDimChamf3dDimension,
+    ) -> crate::OcctResult<*mut HandlePrsDimChamf3dDimension>;
     /// Dereference Handle to get *const PrsDim_Chamf3dDimension
     pub fn HandlePrsDimChamf3dDimension_get(
         handle: *const HandlePrsDimChamf3dDimension,
@@ -29764,6 +30012,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimConcentricRelation>;
     /// Destroy Handle<PrsDim_ConcentricRelation>
     pub fn HandlePrsDimConcentricRelation_destructor(self_: *mut HandlePrsDimConcentricRelation);
+    /// Clone Handle<PrsDim_ConcentricRelation> (increments reference count)
+    pub fn HandlePrsDimConcentricRelation_clone(
+        self_: *const HandlePrsDimConcentricRelation,
+    ) -> crate::OcctResult<*mut HandlePrsDimConcentricRelation>;
     /// Dereference Handle to get *const PrsDim_ConcentricRelation
     pub fn HandlePrsDimConcentricRelation_get(
         handle: *const HandlePrsDimConcentricRelation,
@@ -30596,6 +30848,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimDiameterDimension>;
     /// Destroy Handle<PrsDim_DiameterDimension>
     pub fn HandlePrsDimDiameterDimension_destructor(self_: *mut HandlePrsDimDiameterDimension);
+    /// Clone Handle<PrsDim_DiameterDimension> (increments reference count)
+    pub fn HandlePrsDimDiameterDimension_clone(
+        self_: *const HandlePrsDimDiameterDimension,
+    ) -> crate::OcctResult<*mut HandlePrsDimDiameterDimension>;
     /// Dereference Handle to get *const PrsDim_DiameterDimension
     pub fn HandlePrsDimDiameterDimension_get(
         handle: *const HandlePrsDimDiameterDimension,
@@ -31459,6 +31715,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PrsDim_Dimension>
     pub fn HandlePrsDimDimension_destructor(self_: *mut HandlePrsDimDimension);
+    /// Clone Handle<PrsDim_Dimension> (increments reference count)
+    pub fn HandlePrsDimDimension_clone(
+        self_: *const HandlePrsDimDimension,
+    ) -> crate::OcctResult<*mut HandlePrsDimDimension>;
     /// Dereference Handle to get *const PrsDim_Dimension
     pub fn HandlePrsDimDimension_get(
         handle: *const HandlePrsDimDimension,
@@ -32120,6 +32380,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimDimensionOwner>;
     /// Destroy Handle<PrsDim_DimensionOwner>
     pub fn HandlePrsDimDimensionOwner_destructor(self_: *mut HandlePrsDimDimensionOwner);
+    /// Clone Handle<PrsDim_DimensionOwner> (increments reference count)
+    pub fn HandlePrsDimDimensionOwner_clone(
+        self_: *const HandlePrsDimDimensionOwner,
+    ) -> crate::OcctResult<*mut HandlePrsDimDimensionOwner>;
     /// Dereference Handle to get *const PrsDim_DimensionOwner
     pub fn HandlePrsDimDimensionOwner_get(
         handle: *const HandlePrsDimDimensionOwner,
@@ -32337,6 +32601,10 @@ extern "C" {
     pub fn HandlePrsDimEllipseRadiusDimension_destructor(
         self_: *mut HandlePrsDimEllipseRadiusDimension,
     );
+    /// Clone Handle<PrsDim_EllipseRadiusDimension> (increments reference count)
+    pub fn HandlePrsDimEllipseRadiusDimension_clone(
+        self_: *const HandlePrsDimEllipseRadiusDimension,
+    ) -> crate::OcctResult<*mut HandlePrsDimEllipseRadiusDimension>;
     /// Dereference Handle to get *const PrsDim_EllipseRadiusDimension
     pub fn HandlePrsDimEllipseRadiusDimension_get(
         handle: *const HandlePrsDimEllipseRadiusDimension,
@@ -33191,6 +33459,10 @@ extern "C" {
     pub fn HandlePrsDimEqualDistanceRelation_destructor(
         self_: *mut HandlePrsDimEqualDistanceRelation,
     );
+    /// Clone Handle<PrsDim_EqualDistanceRelation> (increments reference count)
+    pub fn HandlePrsDimEqualDistanceRelation_clone(
+        self_: *const HandlePrsDimEqualDistanceRelation,
+    ) -> crate::OcctResult<*mut HandlePrsDimEqualDistanceRelation>;
     /// Dereference Handle to get *const PrsDim_EqualDistanceRelation
     pub fn HandlePrsDimEqualDistanceRelation_get(
         handle: *const HandlePrsDimEqualDistanceRelation,
@@ -33962,6 +34234,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimEqualRadiusRelation>;
     /// Destroy Handle<PrsDim_EqualRadiusRelation>
     pub fn HandlePrsDimEqualRadiusRelation_destructor(self_: *mut HandlePrsDimEqualRadiusRelation);
+    /// Clone Handle<PrsDim_EqualRadiusRelation> (increments reference count)
+    pub fn HandlePrsDimEqualRadiusRelation_clone(
+        self_: *const HandlePrsDimEqualRadiusRelation,
+    ) -> crate::OcctResult<*mut HandlePrsDimEqualRadiusRelation>;
     /// Dereference Handle to get *const PrsDim_EqualRadiusRelation
     pub fn HandlePrsDimEqualRadiusRelation_get(
         handle: *const HandlePrsDimEqualRadiusRelation,
@@ -34765,6 +35041,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimFixRelation>;
     /// Destroy Handle<PrsDim_FixRelation>
     pub fn HandlePrsDimFixRelation_destructor(self_: *mut HandlePrsDimFixRelation);
+    /// Clone Handle<PrsDim_FixRelation> (increments reference count)
+    pub fn HandlePrsDimFixRelation_clone(
+        self_: *const HandlePrsDimFixRelation,
+    ) -> crate::OcctResult<*mut HandlePrsDimFixRelation>;
     /// Dereference Handle to get *const PrsDim_FixRelation
     pub fn HandlePrsDimFixRelation_get(
         handle: *const HandlePrsDimFixRelation,
@@ -35553,6 +35833,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimIdenticRelation>;
     /// Destroy Handle<PrsDim_IdenticRelation>
     pub fn HandlePrsDimIdenticRelation_destructor(self_: *mut HandlePrsDimIdenticRelation);
+    /// Clone Handle<PrsDim_IdenticRelation> (increments reference count)
+    pub fn HandlePrsDimIdenticRelation_clone(
+        self_: *const HandlePrsDimIdenticRelation,
+    ) -> crate::OcctResult<*mut HandlePrsDimIdenticRelation>;
     /// Dereference Handle to get *const PrsDim_IdenticRelation
     pub fn HandlePrsDimIdenticRelation_get(
         handle: *const HandlePrsDimIdenticRelation,
@@ -36423,6 +36707,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimLengthDimension>;
     /// Destroy Handle<PrsDim_LengthDimension>
     pub fn HandlePrsDimLengthDimension_destructor(self_: *mut HandlePrsDimLengthDimension);
+    /// Clone Handle<PrsDim_LengthDimension> (increments reference count)
+    pub fn HandlePrsDimLengthDimension_clone(
+        self_: *const HandlePrsDimLengthDimension,
+    ) -> crate::OcctResult<*mut HandlePrsDimLengthDimension>;
     /// Dereference Handle to get *const PrsDim_LengthDimension
     pub fn HandlePrsDimLengthDimension_get(
         handle: *const HandlePrsDimLengthDimension,
@@ -37194,6 +37482,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimMaxRadiusDimension>;
     /// Destroy Handle<PrsDim_MaxRadiusDimension>
     pub fn HandlePrsDimMaxRadiusDimension_destructor(self_: *mut HandlePrsDimMaxRadiusDimension);
+    /// Clone Handle<PrsDim_MaxRadiusDimension> (increments reference count)
+    pub fn HandlePrsDimMaxRadiusDimension_clone(
+        self_: *const HandlePrsDimMaxRadiusDimension,
+    ) -> crate::OcctResult<*mut HandlePrsDimMaxRadiusDimension>;
     /// Dereference Handle to get *const PrsDim_MaxRadiusDimension
     pub fn HandlePrsDimMaxRadiusDimension_get(
         handle: *const HandlePrsDimMaxRadiusDimension,
@@ -37987,6 +38279,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimMidPointRelation>;
     /// Destroy Handle<PrsDim_MidPointRelation>
     pub fn HandlePrsDimMidPointRelation_destructor(self_: *mut HandlePrsDimMidPointRelation);
+    /// Clone Handle<PrsDim_MidPointRelation> (increments reference count)
+    pub fn HandlePrsDimMidPointRelation_clone(
+        self_: *const HandlePrsDimMidPointRelation,
+    ) -> crate::OcctResult<*mut HandlePrsDimMidPointRelation>;
     /// Dereference Handle to get *const PrsDim_MidPointRelation
     pub fn HandlePrsDimMidPointRelation_get(
         handle: *const HandlePrsDimMidPointRelation,
@@ -38771,6 +39067,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimMinRadiusDimension>;
     /// Destroy Handle<PrsDim_MinRadiusDimension>
     pub fn HandlePrsDimMinRadiusDimension_destructor(self_: *mut HandlePrsDimMinRadiusDimension);
+    /// Clone Handle<PrsDim_MinRadiusDimension> (increments reference count)
+    pub fn HandlePrsDimMinRadiusDimension_clone(
+        self_: *const HandlePrsDimMinRadiusDimension,
+    ) -> crate::OcctResult<*mut HandlePrsDimMinRadiusDimension>;
     /// Dereference Handle to get *const PrsDim_MinRadiusDimension
     pub fn HandlePrsDimMinRadiusDimension_get(
         handle: *const HandlePrsDimMinRadiusDimension,
@@ -39564,6 +39864,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimOffsetDimension>;
     /// Destroy Handle<PrsDim_OffsetDimension>
     pub fn HandlePrsDimOffsetDimension_destructor(self_: *mut HandlePrsDimOffsetDimension);
+    /// Clone Handle<PrsDim_OffsetDimension> (increments reference count)
+    pub fn HandlePrsDimOffsetDimension_clone(
+        self_: *const HandlePrsDimOffsetDimension,
+    ) -> crate::OcctResult<*mut HandlePrsDimOffsetDimension>;
     /// Dereference Handle to get *const PrsDim_OffsetDimension
     pub fn HandlePrsDimOffsetDimension_get(
         handle: *const HandlePrsDimOffsetDimension,
@@ -40340,6 +40644,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimParallelRelation>;
     /// Destroy Handle<PrsDim_ParallelRelation>
     pub fn HandlePrsDimParallelRelation_destructor(self_: *mut HandlePrsDimParallelRelation);
+    /// Clone Handle<PrsDim_ParallelRelation> (increments reference count)
+    pub fn HandlePrsDimParallelRelation_clone(
+        self_: *const HandlePrsDimParallelRelation,
+    ) -> crate::OcctResult<*mut HandlePrsDimParallelRelation>;
     /// Dereference Handle to get *const PrsDim_ParallelRelation
     pub fn HandlePrsDimParallelRelation_get(
         handle: *const HandlePrsDimParallelRelation,
@@ -41114,6 +41422,10 @@ extern "C" {
     pub fn HandlePrsDimPerpendicularRelation_destructor(
         self_: *mut HandlePrsDimPerpendicularRelation,
     );
+    /// Clone Handle<PrsDim_PerpendicularRelation> (increments reference count)
+    pub fn HandlePrsDimPerpendicularRelation_clone(
+        self_: *const HandlePrsDimPerpendicularRelation,
+    ) -> crate::OcctResult<*mut HandlePrsDimPerpendicularRelation>;
     /// Dereference Handle to get *const PrsDim_PerpendicularRelation
     pub fn HandlePrsDimPerpendicularRelation_get(
         handle: *const HandlePrsDimPerpendicularRelation,
@@ -41955,6 +42267,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimRadiusDimension>;
     /// Destroy Handle<PrsDim_RadiusDimension>
     pub fn HandlePrsDimRadiusDimension_destructor(self_: *mut HandlePrsDimRadiusDimension);
+    /// Clone Handle<PrsDim_RadiusDimension> (increments reference count)
+    pub fn HandlePrsDimRadiusDimension_clone(
+        self_: *const HandlePrsDimRadiusDimension,
+    ) -> crate::OcctResult<*mut HandlePrsDimRadiusDimension>;
     /// Dereference Handle to get *const PrsDim_RadiusDimension
     pub fn HandlePrsDimRadiusDimension_get(
         handle: *const HandlePrsDimRadiusDimension,
@@ -42804,6 +43120,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PrsDim_Relation>
     pub fn HandlePrsDimRelation_destructor(self_: *mut HandlePrsDimRelation);
+    /// Clone Handle<PrsDim_Relation> (increments reference count)
+    pub fn HandlePrsDimRelation_clone(
+        self_: *const HandlePrsDimRelation,
+    ) -> crate::OcctResult<*mut HandlePrsDimRelation>;
     /// Dereference Handle to get *const PrsDim_Relation
     pub fn HandlePrsDimRelation_get(
         handle: *const HandlePrsDimRelation,
@@ -43524,6 +43844,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimSymmetricRelation>;
     /// Destroy Handle<PrsDim_SymmetricRelation>
     pub fn HandlePrsDimSymmetricRelation_destructor(self_: *mut HandlePrsDimSymmetricRelation);
+    /// Clone Handle<PrsDim_SymmetricRelation> (increments reference count)
+    pub fn HandlePrsDimSymmetricRelation_clone(
+        self_: *const HandlePrsDimSymmetricRelation,
+    ) -> crate::OcctResult<*mut HandlePrsDimSymmetricRelation>;
     /// Dereference Handle to get *const PrsDim_SymmetricRelation
     pub fn HandlePrsDimSymmetricRelation_get(
         handle: *const HandlePrsDimSymmetricRelation,
@@ -44301,6 +44625,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsDimTangentRelation>;
     /// Destroy Handle<PrsDim_TangentRelation>
     pub fn HandlePrsDimTangentRelation_destructor(self_: *mut HandlePrsDimTangentRelation);
+    /// Clone Handle<PrsDim_TangentRelation> (increments reference count)
+    pub fn HandlePrsDimTangentRelation_clone(
+        self_: *const HandlePrsDimTangentRelation,
+    ) -> crate::OcctResult<*mut HandlePrsDimTangentRelation>;
     /// Dereference Handle to get *const PrsDim_TangentRelation
     pub fn HandlePrsDimTangentRelation_get(
         handle: *const HandlePrsDimTangentRelation,
@@ -45399,6 +45727,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PrsMgr_PresentableObject>
     pub fn HandlePrsMgrPresentableObject_destructor(self_: *mut HandlePrsMgrPresentableObject);
+    /// Clone Handle<PrsMgr_PresentableObject> (increments reference count)
+    pub fn HandlePrsMgrPresentableObject_clone(
+        self_: *const HandlePrsMgrPresentableObject,
+    ) -> crate::OcctResult<*mut HandlePrsMgrPresentableObject>;
     /// Dereference Handle to get *const PrsMgr_PresentableObject
     pub fn HandlePrsMgrPresentableObject_get(
         handle: *const HandlePrsMgrPresentableObject,
@@ -45678,6 +46010,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsMgrPresentation>;
     /// Destroy Handle<PrsMgr_Presentation>
     pub fn HandlePrsMgrPresentation_destructor(self_: *mut HandlePrsMgrPresentation);
+    /// Clone Handle<PrsMgr_Presentation> (increments reference count)
+    pub fn HandlePrsMgrPresentation_clone(
+        self_: *const HandlePrsMgrPresentation,
+    ) -> crate::OcctResult<*mut HandlePrsMgrPresentation>;
     /// Dereference Handle to get *const PrsMgr_Presentation
     pub fn HandlePrsMgrPresentation_get(
         handle: *const HandlePrsMgrPresentation,
@@ -46133,6 +46469,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePrsMgrPresentationManager>;
     /// Destroy Handle<PrsMgr_PresentationManager>
     pub fn HandlePrsMgrPresentationManager_destructor(self_: *mut HandlePrsMgrPresentationManager);
+    /// Clone Handle<PrsMgr_PresentationManager> (increments reference count)
+    pub fn HandlePrsMgrPresentationManager_clone(
+        self_: *const HandlePrsMgrPresentationManager,
+    ) -> crate::OcctResult<*mut HandlePrsMgrPresentationManager>;
     /// Dereference Handle to get *const PrsMgr_PresentationManager
     pub fn HandlePrsMgrPresentationManager_get(
         handle: *const HandlePrsMgrPresentationManager,
@@ -46253,6 +46593,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DBVHIndexBuffer>;
     /// Destroy Handle<Select3D_BVHIndexBuffer>
     pub fn HandleSelect3DBVHIndexBuffer_destructor(self_: *mut HandleSelect3DBVHIndexBuffer);
+    /// Clone Handle<Select3D_BVHIndexBuffer> (increments reference count)
+    pub fn HandleSelect3DBVHIndexBuffer_clone(
+        self_: *const HandleSelect3DBVHIndexBuffer,
+    ) -> crate::OcctResult<*mut HandleSelect3DBVHIndexBuffer>;
     /// Dereference Handle to get *const Select3D_BVHIndexBuffer
     pub fn HandleSelect3DBVHIndexBuffer_get(
         handle: *const HandleSelect3DBVHIndexBuffer,
@@ -46470,6 +46814,10 @@ extern "C" {
     pub fn HandleSelect3DInteriorSensitivePointSet_destructor(
         self_: *mut HandleSelect3DInteriorSensitivePointSet,
     );
+    /// Clone Handle<Select3D_InteriorSensitivePointSet> (increments reference count)
+    pub fn HandleSelect3DInteriorSensitivePointSet_clone(
+        self_: *const HandleSelect3DInteriorSensitivePointSet,
+    ) -> crate::OcctResult<*mut HandleSelect3DInteriorSensitivePointSet>;
     /// Dereference Handle to get *const Select3D_InteriorSensitivePointSet
     pub fn HandleSelect3DInteriorSensitivePointSet_get(
         handle: *const HandleSelect3DInteriorSensitivePointSet,
@@ -46701,6 +47049,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveBox>;
     /// Destroy Handle<Select3D_SensitiveBox>
     pub fn HandleSelect3DSensitiveBox_destructor(self_: *mut HandleSelect3DSensitiveBox);
+    /// Clone Handle<Select3D_SensitiveBox> (increments reference count)
+    pub fn HandleSelect3DSensitiveBox_clone(
+        self_: *const HandleSelect3DSensitiveBox,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveBox>;
     /// Dereference Handle to get *const Select3D_SensitiveBox
     pub fn HandleSelect3DSensitiveBox_get(
         handle: *const HandleSelect3DSensitiveBox,
@@ -46867,6 +47219,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveCircle>;
     /// Destroy Handle<Select3D_SensitiveCircle>
     pub fn HandleSelect3DSensitiveCircle_destructor(self_: *mut HandleSelect3DSensitiveCircle);
+    /// Clone Handle<Select3D_SensitiveCircle> (increments reference count)
+    pub fn HandleSelect3DSensitiveCircle_clone(
+        self_: *const HandleSelect3DSensitiveCircle,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveCircle>;
     /// Dereference Handle to get *const Select3D_SensitiveCircle
     pub fn HandleSelect3DSensitiveCircle_get(
         handle: *const HandleSelect3DSensitiveCircle,
@@ -47025,6 +47381,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveCurve>;
     /// Destroy Handle<Select3D_SensitiveCurve>
     pub fn HandleSelect3DSensitiveCurve_destructor(self_: *mut HandleSelect3DSensitiveCurve);
+    /// Clone Handle<Select3D_SensitiveCurve> (increments reference count)
+    pub fn HandleSelect3DSensitiveCurve_clone(
+        self_: *const HandleSelect3DSensitiveCurve,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveCurve>;
     /// Dereference Handle to get *const Select3D_SensitiveCurve
     pub fn HandleSelect3DSensitiveCurve_get(
         handle: *const HandleSelect3DSensitiveCurve,
@@ -47282,6 +47642,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveCylinder>;
     /// Destroy Handle<Select3D_SensitiveCylinder>
     pub fn HandleSelect3DSensitiveCylinder_destructor(self_: *mut HandleSelect3DSensitiveCylinder);
+    /// Clone Handle<Select3D_SensitiveCylinder> (increments reference count)
+    pub fn HandleSelect3DSensitiveCylinder_clone(
+        self_: *const HandleSelect3DSensitiveCylinder,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveCylinder>;
     /// Dereference Handle to get *const Select3D_SensitiveCylinder
     pub fn HandleSelect3DSensitiveCylinder_get(
         handle: *const HandleSelect3DSensitiveCylinder,
@@ -47461,6 +47825,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Select3D_SensitiveEntity>
     pub fn HandleSelect3DSensitiveEntity_destructor(self_: *mut HandleSelect3DSensitiveEntity);
+    /// Clone Handle<Select3D_SensitiveEntity> (increments reference count)
+    pub fn HandleSelect3DSensitiveEntity_clone(
+        self_: *const HandleSelect3DSensitiveEntity,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveEntity>;
     /// Dereference Handle to get *const Select3D_SensitiveEntity
     pub fn HandleSelect3DSensitiveEntity_get(
         handle: *const HandleSelect3DSensitiveEntity,
@@ -47675,6 +48043,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveFace>;
     /// Destroy Handle<Select3D_SensitiveFace>
     pub fn HandleSelect3DSensitiveFace_destructor(self_: *mut HandleSelect3DSensitiveFace);
+    /// Clone Handle<Select3D_SensitiveFace> (increments reference count)
+    pub fn HandleSelect3DSensitiveFace_clone(
+        self_: *const HandleSelect3DSensitiveFace,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveFace>;
     /// Dereference Handle to get *const Select3D_SensitiveFace
     pub fn HandleSelect3DSensitiveFace_get(
         handle: *const HandleSelect3DSensitiveFace,
@@ -47923,6 +48295,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveGroup>;
     /// Destroy Handle<Select3D_SensitiveGroup>
     pub fn HandleSelect3DSensitiveGroup_destructor(self_: *mut HandleSelect3DSensitiveGroup);
+    /// Clone Handle<Select3D_SensitiveGroup> (increments reference count)
+    pub fn HandleSelect3DSensitiveGroup_clone(
+        self_: *const HandleSelect3DSensitiveGroup,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveGroup>;
     /// Dereference Handle to get *const Select3D_SensitiveGroup
     pub fn HandleSelect3DSensitiveGroup_get(
         handle: *const HandleSelect3DSensitiveGroup,
@@ -48092,6 +48468,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitivePoint>;
     /// Destroy Handle<Select3D_SensitivePoint>
     pub fn HandleSelect3DSensitivePoint_destructor(self_: *mut HandleSelect3DSensitivePoint);
+    /// Clone Handle<Select3D_SensitivePoint> (increments reference count)
+    pub fn HandleSelect3DSensitivePoint_clone(
+        self_: *const HandleSelect3DSensitivePoint,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitivePoint>;
     /// Dereference Handle to get *const Select3D_SensitivePoint
     pub fn HandleSelect3DSensitivePoint_get(
         handle: *const HandleSelect3DSensitivePoint,
@@ -48304,6 +48684,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitivePoly>;
     /// Destroy Handle<Select3D_SensitivePoly>
     pub fn HandleSelect3DSensitivePoly_destructor(self_: *mut HandleSelect3DSensitivePoly);
+    /// Clone Handle<Select3D_SensitivePoly> (increments reference count)
+    pub fn HandleSelect3DSensitivePoly_clone(
+        self_: *const HandleSelect3DSensitivePoly,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitivePoly>;
     /// Dereference Handle to get *const Select3D_SensitivePoly
     pub fn HandleSelect3DSensitivePoly_get(
         handle: *const HandleSelect3DSensitivePoly,
@@ -48677,6 +49061,10 @@ extern "C" {
     pub fn HandleSelect3DSensitivePrimitiveArray_destructor(
         self_: *mut HandleSelect3DSensitivePrimitiveArray,
     );
+    /// Clone Handle<Select3D_SensitivePrimitiveArray> (increments reference count)
+    pub fn HandleSelect3DSensitivePrimitiveArray_clone(
+        self_: *const HandleSelect3DSensitivePrimitiveArray,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitivePrimitiveArray>;
     /// Dereference Handle to get *const Select3D_SensitivePrimitiveArray
     pub fn HandleSelect3DSensitivePrimitiveArray_get(
         handle: *const HandleSelect3DSensitivePrimitiveArray,
@@ -48867,6 +49255,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveSegment>;
     /// Destroy Handle<Select3D_SensitiveSegment>
     pub fn HandleSelect3DSensitiveSegment_destructor(self_: *mut HandleSelect3DSensitiveSegment);
+    /// Clone Handle<Select3D_SensitiveSegment> (increments reference count)
+    pub fn HandleSelect3DSensitiveSegment_clone(
+        self_: *const HandleSelect3DSensitiveSegment,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveSegment>;
     /// Dereference Handle to get *const Select3D_SensitiveSegment
     pub fn HandleSelect3DSensitiveSegment_get(
         handle: *const HandleSelect3DSensitiveSegment,
@@ -49054,6 +49446,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Select3D_SensitiveSet>
     pub fn HandleSelect3DSensitiveSet_destructor(self_: *mut HandleSelect3DSensitiveSet);
+    /// Clone Handle<Select3D_SensitiveSet> (increments reference count)
+    pub fn HandleSelect3DSensitiveSet_clone(
+        self_: *const HandleSelect3DSensitiveSet,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveSet>;
     /// Dereference Handle to get *const Select3D_SensitiveSet
     pub fn HandleSelect3DSensitiveSet_get(
         handle: *const HandleSelect3DSensitiveSet,
@@ -49256,6 +49652,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveSphere>;
     /// Destroy Handle<Select3D_SensitiveSphere>
     pub fn HandleSelect3DSensitiveSphere_destructor(self_: *mut HandleSelect3DSensitiveSphere);
+    /// Clone Handle<Select3D_SensitiveSphere> (increments reference count)
+    pub fn HandleSelect3DSensitiveSphere_clone(
+        self_: *const HandleSelect3DSensitiveSphere,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveSphere>;
     /// Dereference Handle to get *const Select3D_SensitiveSphere
     pub fn HandleSelect3DSensitiveSphere_get(
         handle: *const HandleSelect3DSensitiveSphere,
@@ -49423,6 +49823,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveTriangle>;
     /// Destroy Handle<Select3D_SensitiveTriangle>
     pub fn HandleSelect3DSensitiveTriangle_destructor(self_: *mut HandleSelect3DSensitiveTriangle);
+    /// Clone Handle<Select3D_SensitiveTriangle> (increments reference count)
+    pub fn HandleSelect3DSensitiveTriangle_clone(
+        self_: *const HandleSelect3DSensitiveTriangle,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveTriangle>;
     /// Dereference Handle to get *const Select3D_SensitiveTriangle
     pub fn HandleSelect3DSensitiveTriangle_get(
         handle: *const HandleSelect3DSensitiveTriangle,
@@ -49646,6 +50050,10 @@ extern "C" {
     pub fn HandleSelect3DSensitiveTriangulation_destructor(
         self_: *mut HandleSelect3DSensitiveTriangulation,
     );
+    /// Clone Handle<Select3D_SensitiveTriangulation> (increments reference count)
+    pub fn HandleSelect3DSensitiveTriangulation_clone(
+        self_: *const HandleSelect3DSensitiveTriangulation,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveTriangulation>;
     /// Dereference Handle to get *const Select3D_SensitiveTriangulation
     pub fn HandleSelect3DSensitiveTriangulation_get(
         handle: *const HandleSelect3DSensitiveTriangulation,
@@ -49848,6 +50256,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveWire>;
     /// Destroy Handle<Select3D_SensitiveWire>
     pub fn HandleSelect3DSensitiveWire_destructor(self_: *mut HandleSelect3DSensitiveWire);
+    /// Clone Handle<Select3D_SensitiveWire> (increments reference count)
+    pub fn HandleSelect3DSensitiveWire_clone(
+        self_: *const HandleSelect3DSensitiveWire,
+    ) -> crate::OcctResult<*mut HandleSelect3DSensitiveWire>;
     /// Dereference Handle to get *const Select3D_SensitiveWire
     pub fn HandleSelect3DSensitiveWire_get(
         handle: *const HandleSelect3DSensitiveWire,
@@ -50219,6 +50631,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelectMgrAndFilter>;
     /// Destroy Handle<SelectMgr_AndFilter>
     pub fn HandleSelectMgrAndFilter_destructor(self_: *mut HandleSelectMgrAndFilter);
+    /// Clone Handle<SelectMgr_AndFilter> (increments reference count)
+    pub fn HandleSelectMgrAndFilter_clone(
+        self_: *const HandleSelectMgrAndFilter,
+    ) -> crate::OcctResult<*mut HandleSelectMgrAndFilter>;
     /// Dereference Handle to get *const SelectMgr_AndFilter
     pub fn HandleSelectMgrAndFilter_get(
         handle: *const HandleSelectMgrAndFilter,
@@ -50360,6 +50776,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelectMgrAndOrFilter>;
     /// Destroy Handle<SelectMgr_AndOrFilter>
     pub fn HandleSelectMgrAndOrFilter_destructor(self_: *mut HandleSelectMgrAndOrFilter);
+    /// Clone Handle<SelectMgr_AndOrFilter> (increments reference count)
+    pub fn HandleSelectMgrAndOrFilter_clone(
+        self_: *const HandleSelectMgrAndOrFilter,
+    ) -> crate::OcctResult<*mut HandleSelectMgrAndOrFilter>;
     /// Dereference Handle to get *const SelectMgr_AndOrFilter
     pub fn HandleSelectMgrAndOrFilter_get(
         handle: *const HandleSelectMgrAndOrFilter,
@@ -50626,6 +51046,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelectMgrAxisIntersector>;
     /// Destroy Handle<SelectMgr_AxisIntersector>
     pub fn HandleSelectMgrAxisIntersector_destructor(self_: *mut HandleSelectMgrAxisIntersector);
+    /// Clone Handle<SelectMgr_AxisIntersector> (increments reference count)
+    pub fn HandleSelectMgrAxisIntersector_clone(
+        self_: *const HandleSelectMgrAxisIntersector,
+    ) -> crate::OcctResult<*mut HandleSelectMgrAxisIntersector>;
     /// Dereference Handle to get *const SelectMgr_AxisIntersector
     pub fn HandleSelectMgrAxisIntersector_get(
         handle: *const HandleSelectMgrAxisIntersector,
@@ -50791,6 +51215,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelectMgrBVHThreadPool>;
     /// Destroy Handle<SelectMgr_BVHThreadPool>
     pub fn HandleSelectMgrBVHThreadPool_destructor(self_: *mut HandleSelectMgrBVHThreadPool);
+    /// Clone Handle<SelectMgr_BVHThreadPool> (increments reference count)
+    pub fn HandleSelectMgrBVHThreadPool_clone(
+        self_: *const HandleSelectMgrBVHThreadPool,
+    ) -> crate::OcctResult<*mut HandleSelectMgrBVHThreadPool>;
     /// Dereference Handle to get *const SelectMgr_BVHThreadPool
     pub fn HandleSelectMgrBVHThreadPool_get(
         handle: *const HandleSelectMgrBVHThreadPool,
@@ -50858,7 +51286,7 @@ extern "C" {
         self_: *mut SelectMgr_BVHThreadPool_BVHThread,
     ) -> crate::OcctResult<*mut OSD_Thread>;
     /// Clone via copy constructor
-    pub fn SelectMgr_BVHThreadPool_BVHThread_to_owned(
+    pub fn SelectMgr_BVHThreadPool_BVHThread_clone(
         self_: *const SelectMgr_BVHThreadPool_BVHThread,
     ) -> crate::OcctResult<*mut SelectMgr_BVHThreadPool_BVHThread>;
     /// Inherited: **Source:** `OSD_Thread.hxx`:55 - `OSD_Thread::SetPriority()`
@@ -50899,7 +51327,7 @@ extern "C" {
         self_: *mut SelectMgr_BVHThreadPool_Sentry,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn SelectMgr_BVHThreadPool_Sentry_to_owned(
+    pub fn SelectMgr_BVHThreadPool_Sentry_clone(
         self_: *const SelectMgr_BVHThreadPool_Sentry,
     ) -> crate::OcctResult<*mut SelectMgr_BVHThreadPool_Sentry>;
     // ======================== SelectMgr_BaseFrustum ========================
@@ -50975,6 +51403,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<SelectMgr_BaseFrustum>
     pub fn HandleSelectMgrBaseFrustum_destructor(self_: *mut HandleSelectMgrBaseFrustum);
+    /// Clone Handle<SelectMgr_BaseFrustum> (increments reference count)
+    pub fn HandleSelectMgrBaseFrustum_clone(
+        self_: *const HandleSelectMgrBaseFrustum,
+    ) -> crate::OcctResult<*mut HandleSelectMgrBaseFrustum>;
     /// Dereference Handle to get *const SelectMgr_BaseFrustum
     pub fn HandleSelectMgrBaseFrustum_get(
         handle: *const HandleSelectMgrBaseFrustum,
@@ -51430,6 +51862,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<SelectMgr_BaseIntersector>
     pub fn HandleSelectMgrBaseIntersector_destructor(self_: *mut HandleSelectMgrBaseIntersector);
+    /// Clone Handle<SelectMgr_BaseIntersector> (increments reference count)
+    pub fn HandleSelectMgrBaseIntersector_clone(
+        self_: *const HandleSelectMgrBaseIntersector,
+    ) -> crate::OcctResult<*mut HandleSelectMgrBaseIntersector>;
     /// Dereference Handle to get *const SelectMgr_BaseIntersector
     pub fn HandleSelectMgrBaseIntersector_get(
         handle: *const HandleSelectMgrBaseIntersector,
@@ -51547,6 +51983,10 @@ extern "C" {
     pub fn HandleSelectMgrCompositionFilter_destructor(
         self_: *mut HandleSelectMgrCompositionFilter,
     );
+    /// Clone Handle<SelectMgr_CompositionFilter> (increments reference count)
+    pub fn HandleSelectMgrCompositionFilter_clone(
+        self_: *const HandleSelectMgrCompositionFilter,
+    ) -> crate::OcctResult<*mut HandleSelectMgrCompositionFilter>;
     /// Dereference Handle to get *const SelectMgr_CompositionFilter
     pub fn HandleSelectMgrCompositionFilter_get(
         handle: *const HandleSelectMgrCompositionFilter,
@@ -51771,6 +52211,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelectMgrEntityOwner>;
     /// Destroy Handle<SelectMgr_EntityOwner>
     pub fn HandleSelectMgrEntityOwner_destructor(self_: *mut HandleSelectMgrEntityOwner);
+    /// Clone Handle<SelectMgr_EntityOwner> (increments reference count)
+    pub fn HandleSelectMgrEntityOwner_clone(
+        self_: *const HandleSelectMgrEntityOwner,
+    ) -> crate::OcctResult<*mut HandleSelectMgrEntityOwner>;
     /// Dereference Handle to get *const SelectMgr_EntityOwner
     pub fn HandleSelectMgrEntityOwner_get(
         handle: *const HandleSelectMgrEntityOwner,
@@ -51879,6 +52323,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<SelectMgr_Filter>
     pub fn HandleSelectMgrFilter_destructor(self_: *mut HandleSelectMgrFilter);
+    /// Clone Handle<SelectMgr_Filter> (increments reference count)
+    pub fn HandleSelectMgrFilter_clone(
+        self_: *const HandleSelectMgrFilter,
+    ) -> crate::OcctResult<*mut HandleSelectMgrFilter>;
     /// Dereference Handle to get *const SelectMgr_Filter
     pub fn HandleSelectMgrFilter_get(
         handle: *const HandleSelectMgrFilter,
@@ -52046,6 +52494,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelectMgrFrustumBuilder>;
     /// Destroy Handle<SelectMgr_FrustumBuilder>
     pub fn HandleSelectMgrFrustumBuilder_destructor(self_: *mut HandleSelectMgrFrustumBuilder);
+    /// Clone Handle<SelectMgr_FrustumBuilder> (increments reference count)
+    pub fn HandleSelectMgrFrustumBuilder_clone(
+        self_: *const HandleSelectMgrFrustumBuilder,
+    ) -> crate::OcctResult<*mut HandleSelectMgrFrustumBuilder>;
     /// Dereference Handle to get *const SelectMgr_FrustumBuilder
     pub fn HandleSelectMgrFrustumBuilder_get(
         handle: *const HandleSelectMgrFrustumBuilder,
@@ -52135,6 +52587,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelectMgrOrFilter>;
     /// Destroy Handle<SelectMgr_OrFilter>
     pub fn HandleSelectMgrOrFilter_destructor(self_: *mut HandleSelectMgrOrFilter);
+    /// Clone Handle<SelectMgr_OrFilter> (increments reference count)
+    pub fn HandleSelectMgrOrFilter_clone(
+        self_: *const HandleSelectMgrOrFilter,
+    ) -> crate::OcctResult<*mut HandleSelectMgrOrFilter>;
     /// Dereference Handle to get *const SelectMgr_OrFilter
     pub fn HandleSelectMgrOrFilter_get(
         handle: *const HandleSelectMgrOrFilter,
@@ -52609,6 +53065,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<SelectMgr_SelectableObject>
     pub fn HandleSelectMgrSelectableObject_destructor(self_: *mut HandleSelectMgrSelectableObject);
+    /// Clone Handle<SelectMgr_SelectableObject> (increments reference count)
+    pub fn HandleSelectMgrSelectableObject_clone(
+        self_: *const HandleSelectMgrSelectableObject,
+    ) -> crate::OcctResult<*mut HandleSelectMgrSelectableObject>;
     /// Dereference Handle to get *const SelectMgr_SelectableObject
     pub fn HandleSelectMgrSelectableObject_get(
         handle: *const HandleSelectMgrSelectableObject,
@@ -53639,6 +54099,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelectMgrSelection>;
     /// Destroy Handle<SelectMgr_Selection>
     pub fn HandleSelectMgrSelection_destructor(self_: *mut HandleSelectMgrSelection);
+    /// Clone Handle<SelectMgr_Selection> (increments reference count)
+    pub fn HandleSelectMgrSelection_clone(
+        self_: *const HandleSelectMgrSelection,
+    ) -> crate::OcctResult<*mut HandleSelectMgrSelection>;
     /// Dereference Handle to get *const SelectMgr_Selection
     pub fn HandleSelectMgrSelection_get(
         handle: *const HandleSelectMgrSelection,
@@ -53712,6 +54176,10 @@ extern "C" {
     pub fn HandleSelectMgrSelectionImageFiller_destructor(
         self_: *mut HandleSelectMgrSelectionImageFiller,
     );
+    /// Clone Handle<SelectMgr_SelectionImageFiller> (increments reference count)
+    pub fn HandleSelectMgrSelectionImageFiller_clone(
+        self_: *const HandleSelectMgrSelectionImageFiller,
+    ) -> crate::OcctResult<*mut HandleSelectMgrSelectionImageFiller>;
     /// Dereference Handle to get *const SelectMgr_SelectionImageFiller
     pub fn HandleSelectMgrSelectionImageFiller_get(
         handle: *const HandleSelectMgrSelectionImageFiller,
@@ -53875,6 +54343,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelectMgrSelectionManager>;
     /// Destroy Handle<SelectMgr_SelectionManager>
     pub fn HandleSelectMgrSelectionManager_destructor(self_: *mut HandleSelectMgrSelectionManager);
+    /// Clone Handle<SelectMgr_SelectionManager> (increments reference count)
+    pub fn HandleSelectMgrSelectionManager_clone(
+        self_: *const HandleSelectMgrSelectionManager,
+    ) -> crate::OcctResult<*mut HandleSelectMgrSelectionManager>;
     /// Dereference Handle to get *const SelectMgr_SelectionManager
     pub fn HandleSelectMgrSelectionManager_get(
         handle: *const HandleSelectMgrSelectionManager,
@@ -53966,6 +54438,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelectMgrSensitiveEntity>;
     /// Destroy Handle<SelectMgr_SensitiveEntity>
     pub fn HandleSelectMgrSensitiveEntity_destructor(self_: *mut HandleSelectMgrSensitiveEntity);
+    /// Clone Handle<SelectMgr_SensitiveEntity> (increments reference count)
+    pub fn HandleSelectMgrSensitiveEntity_clone(
+        self_: *const HandleSelectMgrSensitiveEntity,
+    ) -> crate::OcctResult<*mut HandleSelectMgrSensitiveEntity>;
     /// Dereference Handle to get *const SelectMgr_SensitiveEntity
     pub fn HandleSelectMgrSensitiveEntity_get(
         handle: *const HandleSelectMgrSensitiveEntity,
@@ -54084,6 +54560,10 @@ extern "C" {
     pub fn HandleSelectMgrSensitiveEntitySet_destructor(
         self_: *mut HandleSelectMgrSensitiveEntitySet,
     );
+    /// Clone Handle<SelectMgr_SensitiveEntitySet> (increments reference count)
+    pub fn HandleSelectMgrSensitiveEntitySet_clone(
+        self_: *const HandleSelectMgrSensitiveEntitySet,
+    ) -> crate::OcctResult<*mut HandleSelectMgrSensitiveEntitySet>;
     /// Dereference Handle to get *const SelectMgr_SensitiveEntitySet
     pub fn HandleSelectMgrSensitiveEntitySet_get(
         handle: *const HandleSelectMgrSensitiveEntitySet,
@@ -54302,6 +54782,10 @@ extern "C" {
     pub fn HandleSelectMgrTriangularFrustum_destructor(
         self_: *mut HandleSelectMgrTriangularFrustum,
     );
+    /// Clone Handle<SelectMgr_TriangularFrustum> (increments reference count)
+    pub fn HandleSelectMgrTriangularFrustum_clone(
+        self_: *const HandleSelectMgrTriangularFrustum,
+    ) -> crate::OcctResult<*mut HandleSelectMgrTriangularFrustum>;
     /// Dereference Handle to get *const SelectMgr_TriangularFrustum
     pub fn HandleSelectMgrTriangularFrustum_get(
         handle: *const HandleSelectMgrTriangularFrustum,
@@ -54500,6 +54984,10 @@ extern "C" {
     pub fn HandleSelectMgrTriangularFrustumSet_destructor(
         self_: *mut HandleSelectMgrTriangularFrustumSet,
     );
+    /// Clone Handle<SelectMgr_TriangularFrustumSet> (increments reference count)
+    pub fn HandleSelectMgrTriangularFrustumSet_clone(
+        self_: *const HandleSelectMgrTriangularFrustumSet,
+    ) -> crate::OcctResult<*mut HandleSelectMgrTriangularFrustumSet>;
     /// Dereference Handle to get *const SelectMgr_TriangularFrustumSet
     pub fn HandleSelectMgrTriangularFrustumSet_get(
         handle: *const HandleSelectMgrTriangularFrustumSet,
@@ -54987,6 +55475,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleSelectMgrViewerSelector>;
     /// Destroy Handle<SelectMgr_ViewerSelector>
     pub fn HandleSelectMgrViewerSelector_destructor(self_: *mut HandleSelectMgrViewerSelector);
+    /// Clone Handle<SelectMgr_ViewerSelector> (increments reference count)
+    pub fn HandleSelectMgrViewerSelector_clone(
+        self_: *const HandleSelectMgrViewerSelector,
+    ) -> crate::OcctResult<*mut HandleSelectMgrViewerSelector>;
     /// Dereference Handle to get *const SelectMgr_ViewerSelector
     pub fn HandleSelectMgrViewerSelector_get(
         handle: *const HandleSelectMgrViewerSelector,
@@ -55154,6 +55646,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdPrsBRepFont>;
     /// Destroy Handle<StdPrs_BRepFont>
     pub fn HandleStdPrsBRepFont_destructor(self_: *mut HandleStdPrsBRepFont);
+    /// Clone Handle<StdPrs_BRepFont> (increments reference count)
+    pub fn HandleStdPrsBRepFont_clone(
+        self_: *const HandleStdPrsBRepFont,
+    ) -> crate::OcctResult<*mut HandleStdPrsBRepFont>;
     /// Dereference Handle to get *const StdPrs_BRepFont
     pub fn HandleStdPrsBRepFont_get(
         handle: *const HandleStdPrsBRepFont,
@@ -55431,6 +55927,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdPrsHLRPolyShape>;
     /// Destroy Handle<StdPrs_HLRPolyShape>
     pub fn HandleStdPrsHLRPolyShape_destructor(self_: *mut HandleStdPrsHLRPolyShape);
+    /// Clone Handle<StdPrs_HLRPolyShape> (increments reference count)
+    pub fn HandleStdPrsHLRPolyShape_clone(
+        self_: *const HandleStdPrsHLRPolyShape,
+    ) -> crate::OcctResult<*mut HandleStdPrsHLRPolyShape>;
     /// Dereference Handle to get *const StdPrs_HLRPolyShape
     pub fn HandleStdPrsHLRPolyShape_get(
         handle: *const HandleStdPrsHLRPolyShape,
@@ -55519,6 +56019,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdPrsHLRShape>;
     /// Destroy Handle<StdPrs_HLRShape>
     pub fn HandleStdPrsHLRShape_destructor(self_: *mut HandleStdPrsHLRShape);
+    /// Clone Handle<StdPrs_HLRShape> (increments reference count)
+    pub fn HandleStdPrsHLRShape_clone(
+        self_: *const HandleStdPrsHLRShape,
+    ) -> crate::OcctResult<*mut HandleStdPrsHLRShape>;
     /// Dereference Handle to get *const StdPrs_HLRShape
     pub fn HandleStdPrsHLRShape_get(
         handle: *const HandleStdPrsHLRShape,
@@ -55593,6 +56097,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<StdPrs_HLRShapeI>
     pub fn HandleStdPrsHLRShapeI_destructor(self_: *mut HandleStdPrsHLRShapeI);
+    /// Clone Handle<StdPrs_HLRShapeI> (increments reference count)
+    pub fn HandleStdPrsHLRShapeI_clone(
+        self_: *const HandleStdPrsHLRShapeI,
+    ) -> crate::OcctResult<*mut HandleStdPrsHLRShapeI>;
     /// Dereference Handle to get *const StdPrs_HLRShapeI
     pub fn HandleStdPrsHLRShapeI_get(
         handle: *const HandleStdPrsHLRShapeI,
@@ -56398,6 +56906,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdSelectBRepOwner>;
     /// Destroy Handle<StdSelect_BRepOwner>
     pub fn HandleStdSelectBRepOwner_destructor(self_: *mut HandleStdSelectBRepOwner);
+    /// Clone Handle<StdSelect_BRepOwner> (increments reference count)
+    pub fn HandleStdSelectBRepOwner_clone(
+        self_: *const HandleStdSelectBRepOwner,
+    ) -> crate::OcctResult<*mut HandleStdSelectBRepOwner>;
     /// Dereference Handle to get *const StdSelect_BRepOwner
     pub fn HandleStdSelectBRepOwner_get(
         handle: *const HandleStdSelectBRepOwner,
@@ -56659,6 +57171,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdSelectEdgeFilter>;
     /// Destroy Handle<StdSelect_EdgeFilter>
     pub fn HandleStdSelectEdgeFilter_destructor(self_: *mut HandleStdSelectEdgeFilter);
+    /// Clone Handle<StdSelect_EdgeFilter> (increments reference count)
+    pub fn HandleStdSelectEdgeFilter_clone(
+        self_: *const HandleStdSelectEdgeFilter,
+    ) -> crate::OcctResult<*mut HandleStdSelectEdgeFilter>;
     /// Dereference Handle to get *const StdSelect_EdgeFilter
     pub fn HandleStdSelectEdgeFilter_get(
         handle: *const HandleStdSelectEdgeFilter,
@@ -56759,6 +57275,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdSelectFaceFilter>;
     /// Destroy Handle<StdSelect_FaceFilter>
     pub fn HandleStdSelectFaceFilter_destructor(self_: *mut HandleStdSelectFaceFilter);
+    /// Clone Handle<StdSelect_FaceFilter> (increments reference count)
+    pub fn HandleStdSelectFaceFilter_clone(
+        self_: *const HandleStdSelectFaceFilter,
+    ) -> crate::OcctResult<*mut HandleStdSelectFaceFilter>;
     /// Dereference Handle to get *const StdSelect_FaceFilter
     pub fn HandleStdSelectFaceFilter_get(
         handle: *const HandleStdSelectFaceFilter,
@@ -56858,6 +57378,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdSelectShape>;
     /// Destroy Handle<StdSelect_Shape>
     pub fn HandleStdSelectShape_destructor(self_: *mut HandleStdSelectShape);
+    /// Clone Handle<StdSelect_Shape> (increments reference count)
+    pub fn HandleStdSelectShape_clone(
+        self_: *const HandleStdSelectShape,
+    ) -> crate::OcctResult<*mut HandleStdSelectShape>;
     /// Dereference Handle to get *const StdSelect_Shape
     pub fn HandleStdSelectShape_get(
         handle: *const HandleStdSelectShape,
@@ -57315,6 +57839,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdSelectShapeTypeFilter>;
     /// Destroy Handle<StdSelect_ShapeTypeFilter>
     pub fn HandleStdSelectShapeTypeFilter_destructor(self_: *mut HandleStdSelectShapeTypeFilter);
+    /// Clone Handle<StdSelect_ShapeTypeFilter> (increments reference count)
+    pub fn HandleStdSelectShapeTypeFilter_clone(
+        self_: *const HandleStdSelectShapeTypeFilter,
+    ) -> crate::OcctResult<*mut HandleStdSelectShapeTypeFilter>;
     /// Dereference Handle to get *const StdSelect_ShapeTypeFilter
     pub fn HandleStdSelectShapeTypeFilter_get(
         handle: *const HandleStdSelectShapeTypeFilter,
@@ -57397,6 +57925,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleV3dAmbientLight>;
     /// Destroy Handle<V3d_AmbientLight>
     pub fn HandleV3dAmbientLight_destructor(self_: *mut HandleV3dAmbientLight);
+    /// Clone Handle<V3d_AmbientLight> (increments reference count)
+    pub fn HandleV3dAmbientLight_clone(
+        self_: *const HandleV3dAmbientLight,
+    ) -> crate::OcctResult<*mut HandleV3dAmbientLight>;
     /// Dereference Handle to get *const V3d_AmbientLight
     pub fn HandleV3dAmbientLight_get(
         handle: *const HandleV3dAmbientLight,
@@ -57626,6 +58158,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleV3dBadValue>;
     /// Destroy Handle<V3d_BadValue>
     pub fn HandleV3dBadValue_destructor(self_: *mut HandleV3dBadValue);
+    /// Clone Handle<V3d_BadValue> (increments reference count)
+    pub fn HandleV3dBadValue_clone(
+        self_: *const HandleV3dBadValue,
+    ) -> crate::OcctResult<*mut HandleV3dBadValue>;
     /// Dereference Handle to get *const V3d_BadValue
     pub fn HandleV3dBadValue_get(
         handle: *const HandleV3dBadValue,
@@ -57761,6 +58297,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleV3dCircularGrid>;
     /// Destroy Handle<V3d_CircularGrid>
     pub fn HandleV3dCircularGrid_destructor(self_: *mut HandleV3dCircularGrid);
+    /// Clone Handle<V3d_CircularGrid> (increments reference count)
+    pub fn HandleV3dCircularGrid_clone(
+        self_: *const HandleV3dCircularGrid,
+    ) -> crate::OcctResult<*mut HandleV3dCircularGrid>;
     /// Dereference Handle to get *const V3d_CircularGrid
     pub fn HandleV3dCircularGrid_get(
         handle: *const HandleV3dCircularGrid,
@@ -57979,6 +58519,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleV3dDirectionalLight>;
     /// Destroy Handle<V3d_DirectionalLight>
     pub fn HandleV3dDirectionalLight_destructor(self_: *mut HandleV3dDirectionalLight);
+    /// Clone Handle<V3d_DirectionalLight> (increments reference count)
+    pub fn HandleV3dDirectionalLight_clone(
+        self_: *const HandleV3dDirectionalLight,
+    ) -> crate::OcctResult<*mut HandleV3dDirectionalLight>;
     /// Dereference Handle to get *const V3d_DirectionalLight
     pub fn HandleV3dDirectionalLight_get(
         handle: *const HandleV3dDirectionalLight,
@@ -58223,6 +58767,10 @@ extern "C" {
     pub fn V3d_Plane_to_handle(obj: *mut V3d_Plane) -> crate::OcctResult<*mut HandleV3dPlane>;
     /// Destroy Handle<V3d_Plane>
     pub fn HandleV3dPlane_destructor(self_: *mut HandleV3dPlane);
+    /// Clone Handle<V3d_Plane> (increments reference count)
+    pub fn HandleV3dPlane_clone(
+        self_: *const HandleV3dPlane,
+    ) -> crate::OcctResult<*mut HandleV3dPlane>;
     /// Dereference Handle to get *const V3d_Plane
     pub fn HandleV3dPlane_get(handle: *const HandleV3dPlane)
         -> crate::OcctResult<*const V3d_Plane>;
@@ -58290,6 +58838,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleV3dPositionLight>;
     /// Destroy Handle<V3d_PositionLight>
     pub fn HandleV3dPositionLight_destructor(self_: *mut HandleV3dPositionLight);
+    /// Clone Handle<V3d_PositionLight> (increments reference count)
+    pub fn HandleV3dPositionLight_clone(
+        self_: *const HandleV3dPositionLight,
+    ) -> crate::OcctResult<*mut HandleV3dPositionLight>;
     /// Dereference Handle to get *const V3d_PositionLight
     pub fn HandleV3dPositionLight_get(
         handle: *const HandleV3dPositionLight,
@@ -58567,6 +59119,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleV3dPositionalLight>;
     /// Destroy Handle<V3d_PositionalLight>
     pub fn HandleV3dPositionalLight_destructor(self_: *mut HandleV3dPositionalLight);
+    /// Clone Handle<V3d_PositionalLight> (increments reference count)
+    pub fn HandleV3dPositionalLight_clone(
+        self_: *const HandleV3dPositionalLight,
+    ) -> crate::OcctResult<*mut HandleV3dPositionalLight>;
     /// Dereference Handle to get *const V3d_PositionalLight
     pub fn HandleV3dPositionalLight_get(
         handle: *const HandleV3dPositionalLight,
@@ -58838,6 +59394,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleV3dRectangularGrid>;
     /// Destroy Handle<V3d_RectangularGrid>
     pub fn HandleV3dRectangularGrid_destructor(self_: *mut HandleV3dRectangularGrid);
+    /// Clone Handle<V3d_RectangularGrid> (increments reference count)
+    pub fn HandleV3dRectangularGrid_clone(
+        self_: *const HandleV3dRectangularGrid,
+    ) -> crate::OcctResult<*mut HandleV3dRectangularGrid>;
     /// Dereference Handle to get *const V3d_RectangularGrid
     pub fn HandleV3dRectangularGrid_get(
         handle: *const HandleV3dRectangularGrid,
@@ -59071,6 +59631,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleV3dSpotLight>;
     /// Destroy Handle<V3d_SpotLight>
     pub fn HandleV3dSpotLight_destructor(self_: *mut HandleV3dSpotLight);
+    /// Clone Handle<V3d_SpotLight> (increments reference count)
+    pub fn HandleV3dSpotLight_clone(
+        self_: *const HandleV3dSpotLight,
+    ) -> crate::OcctResult<*mut HandleV3dSpotLight>;
     /// Dereference Handle to get *const V3d_SpotLight
     pub fn HandleV3dSpotLight_get(
         handle: *const HandleV3dSpotLight,
@@ -59407,6 +59971,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleV3dTrihedron>;
     /// Destroy Handle<V3d_Trihedron>
     pub fn HandleV3dTrihedron_destructor(self_: *mut HandleV3dTrihedron);
+    /// Clone Handle<V3d_Trihedron> (increments reference count)
+    pub fn HandleV3dTrihedron_clone(
+        self_: *const HandleV3dTrihedron,
+    ) -> crate::OcctResult<*mut HandleV3dTrihedron>;
     /// Dereference Handle to get *const V3d_Trihedron
     pub fn HandleV3dTrihedron_get(
         handle: *const HandleV3dTrihedron,
@@ -59514,6 +60082,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleV3dUnMapped>;
     /// Destroy Handle<V3d_UnMapped>
     pub fn HandleV3dUnMapped_destructor(self_: *mut HandleV3dUnMapped);
+    /// Clone Handle<V3d_UnMapped> (increments reference count)
+    pub fn HandleV3dUnMapped_clone(
+        self_: *const HandleV3dUnMapped,
+    ) -> crate::OcctResult<*mut HandleV3dUnMapped>;
     /// Dereference Handle to get *const V3d_UnMapped
     pub fn HandleV3dUnMapped_get(
         handle: *const HandleV3dUnMapped,
@@ -60470,6 +61042,10 @@ extern "C" {
     pub fn V3d_View_to_handle(obj: *mut V3d_View) -> crate::OcctResult<*mut HandleV3dView>;
     /// Destroy Handle<V3d_View>
     pub fn HandleV3dView_destructor(self_: *mut HandleV3dView);
+    /// Clone Handle<V3d_View> (increments reference count)
+    pub fn HandleV3dView_clone(
+        self_: *const HandleV3dView,
+    ) -> crate::OcctResult<*mut HandleV3dView>;
     /// Dereference Handle to get *const V3d_View
     pub fn HandleV3dView_get(handle: *const HandleV3dView) -> crate::OcctResult<*const V3d_View>;
     /// Dereference Handle to get *mut V3d_View
@@ -60883,6 +61459,10 @@ extern "C" {
     pub fn V3d_Viewer_to_handle(obj: *mut V3d_Viewer) -> crate::OcctResult<*mut HandleV3dViewer>;
     /// Destroy Handle<V3d_Viewer>
     pub fn HandleV3dViewer_destructor(self_: *mut HandleV3dViewer);
+    /// Clone Handle<V3d_Viewer> (increments reference count)
+    pub fn HandleV3dViewer_clone(
+        self_: *const HandleV3dViewer,
+    ) -> crate::OcctResult<*mut HandleV3dViewer>;
     /// Dereference Handle to get *const V3d_Viewer
     pub fn HandleV3dViewer_get(
         handle: *const HandleV3dViewer,

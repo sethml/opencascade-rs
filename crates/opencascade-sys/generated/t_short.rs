@@ -250,6 +250,12 @@ unsafe impl crate::CppDeletable for HandleTShortHArray1OfShortReal {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTShortHArray1OfShortReal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTShortHArray1OfShortReal_clone(ptr))
+    }
+}
+
 impl HandleTShortHArray1OfShortReal {
     /// Dereference this Handle to access the underlying TShort_HArray1OfShortReal
     pub fn get(&self) -> &crate::ffi_types::TShort_HArray1OfShortReal {
@@ -503,6 +509,12 @@ pub use crate::ffi_types::HandleTShortHArray2OfShortReal;
 unsafe impl crate::CppDeletable for HandleTShortHArray2OfShortReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTShortHArray2OfShortReal_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTShortHArray2OfShortReal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTShortHArray2OfShortReal_clone(ptr))
     }
 }
 
@@ -763,6 +775,12 @@ pub use crate::ffi_types::HandleTShortHSequenceOfShortReal;
 unsafe impl crate::CppDeletable for HandleTShortHSequenceOfShortReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTShortHSequenceOfShortReal_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTShortHSequenceOfShortReal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTShortHSequenceOfShortReal_clone(ptr))
     }
 }
 

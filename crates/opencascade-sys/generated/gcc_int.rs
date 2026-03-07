@@ -284,6 +284,12 @@ unsafe impl crate::CppDeletable for HandleGccIntBCirc {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGccIntBCirc {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBCirc_clone(ptr))
+    }
+}
+
 impl HandleGccIntBCirc {
     /// Dereference this Handle to access the underlying GccInt_BCirc
     pub fn get(&self) -> &crate::ffi_types::GccInt_BCirc {
@@ -572,6 +578,12 @@ pub use crate::ffi_types::HandleGccIntBElips;
 unsafe impl crate::CppDeletable for HandleGccIntBElips {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleGccIntBElips_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGccIntBElips {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBElips_clone(ptr))
     }
 }
 
@@ -864,6 +876,12 @@ unsafe impl crate::CppDeletable for HandleGccIntBHyper {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGccIntBHyper {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBHyper_clone(ptr))
+    }
+}
+
 impl HandleGccIntBHyper {
     /// Dereference this Handle to access the underlying GccInt_BHyper
     pub fn get(&self) -> &crate::ffi_types::GccInt_BHyper {
@@ -1146,6 +1164,12 @@ pub use crate::ffi_types::HandleGccIntBLine;
 unsafe impl crate::CppDeletable for HandleGccIntBLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleGccIntBLine_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGccIntBLine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBLine_clone(ptr))
     }
 }
 
@@ -1440,6 +1464,12 @@ unsafe impl crate::CppDeletable for HandleGccIntBParab {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGccIntBParab {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBParab_clone(ptr))
+    }
+}
+
 impl HandleGccIntBParab {
     /// Dereference this Handle to access the underlying GccInt_BParab
     pub fn get(&self) -> &crate::ffi_types::GccInt_BParab {
@@ -1730,6 +1760,12 @@ unsafe impl crate::CppDeletable for HandleGccIntBPoint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGccIntBPoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBPoint_clone(ptr))
+    }
+}
+
 impl HandleGccIntBPoint {
     /// Dereference this Handle to access the underlying GccInt_BPoint
     pub fn get(&self) -> &crate::ffi_types::GccInt_BPoint {
@@ -2002,6 +2038,12 @@ pub use crate::ffi_types::HandleGccIntBisec;
 unsafe impl crate::CppDeletable for HandleGccIntBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGccIntBisec {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_clone(ptr))
     }
 }
 

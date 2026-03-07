@@ -82,6 +82,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprAbsolute>;
     /// Destroy Handle<Expr_Absolute>
     pub fn HandleExprAbsolute_destructor(self_: *mut HandleExprAbsolute);
+    /// Clone Handle<Expr_Absolute> (increments reference count)
+    pub fn HandleExprAbsolute_clone(
+        self_: *const HandleExprAbsolute,
+    ) -> crate::OcctResult<*mut HandleExprAbsolute>;
     /// Dereference Handle to get *const Expr_Absolute
     pub fn HandleExprAbsolute_get(
         handle: *const HandleExprAbsolute,
@@ -255,6 +259,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprArcCosine>;
     /// Destroy Handle<Expr_ArcCosine>
     pub fn HandleExprArcCosine_destructor(self_: *mut HandleExprArcCosine);
+    /// Clone Handle<Expr_ArcCosine> (increments reference count)
+    pub fn HandleExprArcCosine_clone(
+        self_: *const HandleExprArcCosine,
+    ) -> crate::OcctResult<*mut HandleExprArcCosine>;
     /// Dereference Handle to get *const Expr_ArcCosine
     pub fn HandleExprArcCosine_get(
         handle: *const HandleExprArcCosine,
@@ -429,6 +437,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprArcSine>;
     /// Destroy Handle<Expr_ArcSine>
     pub fn HandleExprArcSine_destructor(self_: *mut HandleExprArcSine);
+    /// Clone Handle<Expr_ArcSine> (increments reference count)
+    pub fn HandleExprArcSine_clone(
+        self_: *const HandleExprArcSine,
+    ) -> crate::OcctResult<*mut HandleExprArcSine>;
     /// Dereference Handle to get *const Expr_ArcSine
     pub fn HandleExprArcSine_get(
         handle: *const HandleExprArcSine,
@@ -601,6 +613,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprArcTangent>;
     /// Destroy Handle<Expr_ArcTangent>
     pub fn HandleExprArcTangent_destructor(self_: *mut HandleExprArcTangent);
+    /// Clone Handle<Expr_ArcTangent> (increments reference count)
+    pub fn HandleExprArcTangent_clone(
+        self_: *const HandleExprArcTangent,
+    ) -> crate::OcctResult<*mut HandleExprArcTangent>;
     /// Dereference Handle to get *const Expr_ArcTangent
     pub fn HandleExprArcTangent_get(
         handle: *const HandleExprArcTangent,
@@ -776,6 +792,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprArgCosh>;
     /// Destroy Handle<Expr_ArgCosh>
     pub fn HandleExprArgCosh_destructor(self_: *mut HandleExprArgCosh);
+    /// Clone Handle<Expr_ArgCosh> (increments reference count)
+    pub fn HandleExprArgCosh_clone(
+        self_: *const HandleExprArgCosh,
+    ) -> crate::OcctResult<*mut HandleExprArgCosh>;
     /// Dereference Handle to get *const Expr_ArgCosh
     pub fn HandleExprArgCosh_get(
         handle: *const HandleExprArgCosh,
@@ -948,6 +968,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprArgSinh>;
     /// Destroy Handle<Expr_ArgSinh>
     pub fn HandleExprArgSinh_destructor(self_: *mut HandleExprArgSinh);
+    /// Clone Handle<Expr_ArgSinh> (increments reference count)
+    pub fn HandleExprArgSinh_clone(
+        self_: *const HandleExprArgSinh,
+    ) -> crate::OcctResult<*mut HandleExprArgSinh>;
     /// Dereference Handle to get *const Expr_ArgSinh
     pub fn HandleExprArgSinh_get(
         handle: *const HandleExprArgSinh,
@@ -1120,6 +1144,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprArgTanh>;
     /// Destroy Handle<Expr_ArgTanh>
     pub fn HandleExprArgTanh_destructor(self_: *mut HandleExprArgTanh);
+    /// Clone Handle<Expr_ArgTanh> (increments reference count)
+    pub fn HandleExprArgTanh_clone(
+        self_: *const HandleExprArgTanh,
+    ) -> crate::OcctResult<*mut HandleExprArgTanh>;
     /// Dereference Handle to get *const Expr_ArgTanh
     pub fn HandleExprArgTanh_get(
         handle: *const HandleExprArgTanh,
@@ -1293,6 +1321,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_BinaryExpression>
     pub fn HandleExprBinaryExpression_destructor(self_: *mut HandleExprBinaryExpression);
+    /// Clone Handle<Expr_BinaryExpression> (increments reference count)
+    pub fn HandleExprBinaryExpression_clone(
+        self_: *const HandleExprBinaryExpression,
+    ) -> crate::OcctResult<*mut HandleExprBinaryExpression>;
     /// Dereference Handle to get *const Expr_BinaryExpression
     pub fn HandleExprBinaryExpression_get(
         handle: *const HandleExprBinaryExpression,
@@ -1483,6 +1515,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprBinaryFunction>;
     /// Destroy Handle<Expr_BinaryFunction>
     pub fn HandleExprBinaryFunction_destructor(self_: *mut HandleExprBinaryFunction);
+    /// Clone Handle<Expr_BinaryFunction> (increments reference count)
+    pub fn HandleExprBinaryFunction_clone(
+        self_: *const HandleExprBinaryFunction,
+    ) -> crate::OcctResult<*mut HandleExprBinaryFunction>;
     /// Dereference Handle to get *const Expr_BinaryFunction
     pub fn HandleExprBinaryFunction_get(
         handle: *const HandleExprBinaryFunction,
@@ -1665,6 +1701,10 @@ extern "C" {
     pub fn Expr_Cosh_to_handle(obj: *mut Expr_Cosh) -> crate::OcctResult<*mut HandleExprCosh>;
     /// Destroy Handle<Expr_Cosh>
     pub fn HandleExprCosh_destructor(self_: *mut HandleExprCosh);
+    /// Clone Handle<Expr_Cosh> (increments reference count)
+    pub fn HandleExprCosh_clone(
+        self_: *const HandleExprCosh,
+    ) -> crate::OcctResult<*mut HandleExprCosh>;
     /// Dereference Handle to get *const Expr_Cosh
     pub fn HandleExprCosh_get(handle: *const HandleExprCosh)
         -> crate::OcctResult<*const Expr_Cosh>;
@@ -1825,6 +1865,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleExprCosine>;
     /// Destroy Handle<Expr_Cosine>
     pub fn HandleExprCosine_destructor(self_: *mut HandleExprCosine);
+    /// Clone Handle<Expr_Cosine> (increments reference count)
+    pub fn HandleExprCosine_clone(
+        self_: *const HandleExprCosine,
+    ) -> crate::OcctResult<*mut HandleExprCosine>;
     /// Dereference Handle to get *const Expr_Cosine
     pub fn HandleExprCosine_get(
         handle: *const HandleExprCosine,
@@ -2001,6 +2045,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprDifference>;
     /// Destroy Handle<Expr_Difference>
     pub fn HandleExprDifference_destructor(self_: *mut HandleExprDifference);
+    /// Clone Handle<Expr_Difference> (increments reference count)
+    pub fn HandleExprDifference_clone(
+        self_: *const HandleExprDifference,
+    ) -> crate::OcctResult<*mut HandleExprDifference>;
     /// Dereference Handle to get *const Expr_Difference
     pub fn HandleExprDifference_get(
         handle: *const HandleExprDifference,
@@ -2166,6 +2214,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprDifferent>;
     /// Destroy Handle<Expr_Different>
     pub fn HandleExprDifferent_destructor(self_: *mut HandleExprDifferent);
+    /// Clone Handle<Expr_Different> (increments reference count)
+    pub fn HandleExprDifferent_clone(
+        self_: *const HandleExprDifferent,
+    ) -> crate::OcctResult<*mut HandleExprDifferent>;
     /// Dereference Handle to get *const Expr_Different
     pub fn HandleExprDifferent_get(
         handle: *const HandleExprDifferent,
@@ -2336,6 +2388,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprDivision>;
     /// Destroy Handle<Expr_Division>
     pub fn HandleExprDivision_destructor(self_: *mut HandleExprDivision);
+    /// Clone Handle<Expr_Division> (increments reference count)
+    pub fn HandleExprDivision_clone(
+        self_: *const HandleExprDivision,
+    ) -> crate::OcctResult<*mut HandleExprDivision>;
     /// Dereference Handle to get *const Expr_Division
     pub fn HandleExprDivision_get(
         handle: *const HandleExprDivision,
@@ -2503,6 +2559,10 @@ extern "C" {
     pub fn Expr_Equal_to_handle(obj: *mut Expr_Equal) -> crate::OcctResult<*mut HandleExprEqual>;
     /// Destroy Handle<Expr_Equal>
     pub fn HandleExprEqual_destructor(self_: *mut HandleExprEqual);
+    /// Clone Handle<Expr_Equal> (increments reference count)
+    pub fn HandleExprEqual_clone(
+        self_: *const HandleExprEqual,
+    ) -> crate::OcctResult<*mut HandleExprEqual>;
     /// Dereference Handle to get *const Expr_Equal
     pub fn HandleExprEqual_get(
         handle: *const HandleExprEqual,
@@ -2667,6 +2727,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprExponential>;
     /// Destroy Handle<Expr_Exponential>
     pub fn HandleExprExponential_destructor(self_: *mut HandleExprExponential);
+    /// Clone Handle<Expr_Exponential> (increments reference count)
+    pub fn HandleExprExponential_clone(
+        self_: *const HandleExprExponential,
+    ) -> crate::OcctResult<*mut HandleExprExponential>;
     /// Dereference Handle to get *const Expr_Exponential
     pub fn HandleExprExponential_get(
         handle: *const HandleExprExponential,
@@ -2843,6 +2907,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprExponentiate>;
     /// Destroy Handle<Expr_Exponentiate>
     pub fn HandleExprExponentiate_destructor(self_: *mut HandleExprExponentiate);
+    /// Clone Handle<Expr_Exponentiate> (increments reference count)
+    pub fn HandleExprExponentiate_clone(
+        self_: *const HandleExprExponentiate,
+    ) -> crate::OcctResult<*mut HandleExprExponentiate>;
     /// Dereference Handle to get *const Expr_Exponentiate
     pub fn HandleExprExponentiate_get(
         handle: *const HandleExprExponentiate,
@@ -3013,6 +3081,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprExprFailure>;
     /// Destroy Handle<Expr_ExprFailure>
     pub fn HandleExprExprFailure_destructor(self_: *mut HandleExprExprFailure);
+    /// Clone Handle<Expr_ExprFailure> (increments reference count)
+    pub fn HandleExprExprFailure_clone(
+        self_: *const HandleExprExprFailure,
+    ) -> crate::OcctResult<*mut HandleExprExprFailure>;
     /// Dereference Handle to get *const Expr_ExprFailure
     pub fn HandleExprExprFailure_get(
         handle: *const HandleExprExprFailure,
@@ -3194,6 +3266,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprFunctionDerivative>;
     /// Destroy Handle<Expr_FunctionDerivative>
     pub fn HandleExprFunctionDerivative_destructor(self_: *mut HandleExprFunctionDerivative);
+    /// Clone Handle<Expr_FunctionDerivative> (increments reference count)
+    pub fn HandleExprFunctionDerivative_clone(
+        self_: *const HandleExprFunctionDerivative,
+    ) -> crate::OcctResult<*mut HandleExprFunctionDerivative>;
     /// Dereference Handle to get *const Expr_FunctionDerivative
     pub fn HandleExprFunctionDerivative_get(
         handle: *const HandleExprFunctionDerivative,
@@ -3335,6 +3411,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_GeneralExpression>
     pub fn HandleExprGeneralExpression_destructor(self_: *mut HandleExprGeneralExpression);
+    /// Clone Handle<Expr_GeneralExpression> (increments reference count)
+    pub fn HandleExprGeneralExpression_clone(
+        self_: *const HandleExprGeneralExpression,
+    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
     /// Dereference Handle to get *const Expr_GeneralExpression
     pub fn HandleExprGeneralExpression_get(
         handle: *const HandleExprGeneralExpression,
@@ -3581,6 +3661,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_GeneralFunction>
     pub fn HandleExprGeneralFunction_destructor(self_: *mut HandleExprGeneralFunction);
+    /// Clone Handle<Expr_GeneralFunction> (increments reference count)
+    pub fn HandleExprGeneralFunction_clone(
+        self_: *const HandleExprGeneralFunction,
+    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
     /// Dereference Handle to get *const Expr_GeneralFunction
     pub fn HandleExprGeneralFunction_get(
         handle: *const HandleExprGeneralFunction,
@@ -3699,6 +3783,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_GeneralRelation>
     pub fn HandleExprGeneralRelation_destructor(self_: *mut HandleExprGeneralRelation);
+    /// Clone Handle<Expr_GeneralRelation> (increments reference count)
+    pub fn HandleExprGeneralRelation_clone(
+        self_: *const HandleExprGeneralRelation,
+    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
     /// Dereference Handle to get *const Expr_GeneralRelation
     pub fn HandleExprGeneralRelation_get(
         handle: *const HandleExprGeneralRelation,
@@ -3835,6 +3923,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprGreaterThan>;
     /// Destroy Handle<Expr_GreaterThan>
     pub fn HandleExprGreaterThan_destructor(self_: *mut HandleExprGreaterThan);
+    /// Clone Handle<Expr_GreaterThan> (increments reference count)
+    pub fn HandleExprGreaterThan_clone(
+        self_: *const HandleExprGreaterThan,
+    ) -> crate::OcctResult<*mut HandleExprGreaterThan>;
     /// Dereference Handle to get *const Expr_GreaterThan
     pub fn HandleExprGreaterThan_get(
         handle: *const HandleExprGreaterThan,
@@ -3997,6 +4089,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprGreaterThanOrEqual>;
     /// Destroy Handle<Expr_GreaterThanOrEqual>
     pub fn HandleExprGreaterThanOrEqual_destructor(self_: *mut HandleExprGreaterThanOrEqual);
+    /// Clone Handle<Expr_GreaterThanOrEqual> (increments reference count)
+    pub fn HandleExprGreaterThanOrEqual_clone(
+        self_: *const HandleExprGreaterThanOrEqual,
+    ) -> crate::OcctResult<*mut HandleExprGreaterThanOrEqual>;
     /// Dereference Handle to get *const Expr_GreaterThanOrEqual
     pub fn HandleExprGreaterThanOrEqual_get(
         handle: *const HandleExprGreaterThanOrEqual,
@@ -4162,6 +4258,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprInvalidAssignment>;
     /// Destroy Handle<Expr_InvalidAssignment>
     pub fn HandleExprInvalidAssignment_destructor(self_: *mut HandleExprInvalidAssignment);
+    /// Clone Handle<Expr_InvalidAssignment> (increments reference count)
+    pub fn HandleExprInvalidAssignment_clone(
+        self_: *const HandleExprInvalidAssignment,
+    ) -> crate::OcctResult<*mut HandleExprInvalidAssignment>;
     /// Dereference Handle to get *const Expr_InvalidAssignment
     pub fn HandleExprInvalidAssignment_get(
         handle: *const HandleExprInvalidAssignment,
@@ -4293,6 +4393,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprInvalidFunction>;
     /// Destroy Handle<Expr_InvalidFunction>
     pub fn HandleExprInvalidFunction_destructor(self_: *mut HandleExprInvalidFunction);
+    /// Clone Handle<Expr_InvalidFunction> (increments reference count)
+    pub fn HandleExprInvalidFunction_clone(
+        self_: *const HandleExprInvalidFunction,
+    ) -> crate::OcctResult<*mut HandleExprInvalidFunction>;
     /// Dereference Handle to get *const Expr_InvalidFunction
     pub fn HandleExprInvalidFunction_get(
         handle: *const HandleExprInvalidFunction,
@@ -4424,6 +4528,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprInvalidOperand>;
     /// Destroy Handle<Expr_InvalidOperand>
     pub fn HandleExprInvalidOperand_destructor(self_: *mut HandleExprInvalidOperand);
+    /// Clone Handle<Expr_InvalidOperand> (increments reference count)
+    pub fn HandleExprInvalidOperand_clone(
+        self_: *const HandleExprInvalidOperand,
+    ) -> crate::OcctResult<*mut HandleExprInvalidOperand>;
     /// Dereference Handle to get *const Expr_InvalidOperand
     pub fn HandleExprInvalidOperand_get(
         handle: *const HandleExprInvalidOperand,
@@ -4548,6 +4656,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprLessThan>;
     /// Destroy Handle<Expr_LessThan>
     pub fn HandleExprLessThan_destructor(self_: *mut HandleExprLessThan);
+    /// Clone Handle<Expr_LessThan> (increments reference count)
+    pub fn HandleExprLessThan_clone(
+        self_: *const HandleExprLessThan,
+    ) -> crate::OcctResult<*mut HandleExprLessThan>;
     /// Dereference Handle to get *const Expr_LessThan
     pub fn HandleExprLessThan_get(
         handle: *const HandleExprLessThan,
@@ -4706,6 +4818,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprLessThanOrEqual>;
     /// Destroy Handle<Expr_LessThanOrEqual>
     pub fn HandleExprLessThanOrEqual_destructor(self_: *mut HandleExprLessThanOrEqual);
+    /// Clone Handle<Expr_LessThanOrEqual> (increments reference count)
+    pub fn HandleExprLessThanOrEqual_clone(
+        self_: *const HandleExprLessThanOrEqual,
+    ) -> crate::OcctResult<*mut HandleExprLessThanOrEqual>;
     /// Dereference Handle to get *const Expr_LessThanOrEqual
     pub fn HandleExprLessThanOrEqual_get(
         handle: *const HandleExprLessThanOrEqual,
@@ -4876,6 +4992,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprLogOf10>;
     /// Destroy Handle<Expr_LogOf10>
     pub fn HandleExprLogOf10_destructor(self_: *mut HandleExprLogOf10);
+    /// Clone Handle<Expr_LogOf10> (increments reference count)
+    pub fn HandleExprLogOf10_clone(
+        self_: *const HandleExprLogOf10,
+    ) -> crate::OcctResult<*mut HandleExprLogOf10>;
     /// Dereference Handle to get *const Expr_LogOf10
     pub fn HandleExprLogOf10_get(
         handle: *const HandleExprLogOf10,
@@ -5047,6 +5167,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleExprLogOfe>;
     /// Destroy Handle<Expr_LogOfe>
     pub fn HandleExprLogOfe_destructor(self_: *mut HandleExprLogOfe);
+    /// Clone Handle<Expr_LogOfe> (increments reference count)
+    pub fn HandleExprLogOfe_clone(
+        self_: *const HandleExprLogOfe,
+    ) -> crate::OcctResult<*mut HandleExprLogOfe>;
     /// Dereference Handle to get *const Expr_LogOfe
     pub fn HandleExprLogOfe_get(
         handle: *const HandleExprLogOfe,
@@ -5247,6 +5371,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprNamedConstant>;
     /// Destroy Handle<Expr_NamedConstant>
     pub fn HandleExprNamedConstant_destructor(self_: *mut HandleExprNamedConstant);
+    /// Clone Handle<Expr_NamedConstant> (increments reference count)
+    pub fn HandleExprNamedConstant_clone(
+        self_: *const HandleExprNamedConstant,
+    ) -> crate::OcctResult<*mut HandleExprNamedConstant>;
     /// Dereference Handle to get *const Expr_NamedConstant
     pub fn HandleExprNamedConstant_get(
         handle: *const HandleExprNamedConstant,
@@ -5373,6 +5501,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_NamedExpression>
     pub fn HandleExprNamedExpression_destructor(self_: *mut HandleExprNamedExpression);
+    /// Clone Handle<Expr_NamedExpression> (increments reference count)
+    pub fn HandleExprNamedExpression_clone(
+        self_: *const HandleExprNamedExpression,
+    ) -> crate::OcctResult<*mut HandleExprNamedExpression>;
     /// Dereference Handle to get *const Expr_NamedExpression
     pub fn HandleExprNamedExpression_get(
         handle: *const HandleExprNamedExpression,
@@ -5588,6 +5720,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprNamedFunction>;
     /// Destroy Handle<Expr_NamedFunction>
     pub fn HandleExprNamedFunction_destructor(self_: *mut HandleExprNamedFunction);
+    /// Clone Handle<Expr_NamedFunction> (increments reference count)
+    pub fn HandleExprNamedFunction_clone(
+        self_: *const HandleExprNamedFunction,
+    ) -> crate::OcctResult<*mut HandleExprNamedFunction>;
     /// Dereference Handle to get *const Expr_NamedFunction
     pub fn HandleExprNamedFunction_get(
         handle: *const HandleExprNamedFunction,
@@ -5742,6 +5878,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
     /// Destroy Handle<Expr_NamedUnknown>
     pub fn HandleExprNamedUnknown_destructor(self_: *mut HandleExprNamedUnknown);
+    /// Clone Handle<Expr_NamedUnknown> (increments reference count)
+    pub fn HandleExprNamedUnknown_clone(
+        self_: *const HandleExprNamedUnknown,
+    ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
     /// Dereference Handle to get *const Expr_NamedUnknown
     pub fn HandleExprNamedUnknown_get(
         handle: *const HandleExprNamedUnknown,
@@ -5892,6 +6032,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprNotAssigned>;
     /// Destroy Handle<Expr_NotAssigned>
     pub fn HandleExprNotAssigned_destructor(self_: *mut HandleExprNotAssigned);
+    /// Clone Handle<Expr_NotAssigned> (increments reference count)
+    pub fn HandleExprNotAssigned_clone(
+        self_: *const HandleExprNotAssigned,
+    ) -> crate::OcctResult<*mut HandleExprNotAssigned>;
     /// Dereference Handle to get *const Expr_NotAssigned
     pub fn HandleExprNotAssigned_get(
         handle: *const HandleExprNotAssigned,
@@ -6022,6 +6166,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprNotEvaluable>;
     /// Destroy Handle<Expr_NotEvaluable>
     pub fn HandleExprNotEvaluable_destructor(self_: *mut HandleExprNotEvaluable);
+    /// Clone Handle<Expr_NotEvaluable> (increments reference count)
+    pub fn HandleExprNotEvaluable_clone(
+        self_: *const HandleExprNotEvaluable,
+    ) -> crate::OcctResult<*mut HandleExprNotEvaluable>;
     /// Dereference Handle to get *const Expr_NotEvaluable
     pub fn HandleExprNotEvaluable_get(
         handle: *const HandleExprNotEvaluable,
@@ -6190,6 +6338,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprNumericValue>;
     /// Destroy Handle<Expr_NumericValue>
     pub fn HandleExprNumericValue_destructor(self_: *mut HandleExprNumericValue);
+    /// Clone Handle<Expr_NumericValue> (increments reference count)
+    pub fn HandleExprNumericValue_clone(
+        self_: *const HandleExprNumericValue,
+    ) -> crate::OcctResult<*mut HandleExprNumericValue>;
     /// Dereference Handle to get *const Expr_NumericValue
     pub fn HandleExprNumericValue_get(
         handle: *const HandleExprNumericValue,
@@ -6315,6 +6467,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_PolyExpression>
     pub fn HandleExprPolyExpression_destructor(self_: *mut HandleExprPolyExpression);
+    /// Clone Handle<Expr_PolyExpression> (increments reference count)
+    pub fn HandleExprPolyExpression_clone(
+        self_: *const HandleExprPolyExpression,
+    ) -> crate::OcctResult<*mut HandleExprPolyExpression>;
     /// Dereference Handle to get *const Expr_PolyExpression
     pub fn HandleExprPolyExpression_get(
         handle: *const HandleExprPolyExpression,
@@ -6498,6 +6654,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprPolyFunction>;
     /// Destroy Handle<Expr_PolyFunction>
     pub fn HandleExprPolyFunction_destructor(self_: *mut HandleExprPolyFunction);
+    /// Clone Handle<Expr_PolyFunction> (increments reference count)
+    pub fn HandleExprPolyFunction_clone(
+        self_: *const HandleExprPolyFunction,
+    ) -> crate::OcctResult<*mut HandleExprPolyFunction>;
     /// Dereference Handle to get *const Expr_PolyFunction
     pub fn HandleExprPolyFunction_get(
         handle: *const HandleExprPolyFunction,
@@ -6684,6 +6844,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprProduct>;
     /// Destroy Handle<Expr_Product>
     pub fn HandleExprProduct_destructor(self_: *mut HandleExprProduct);
+    /// Clone Handle<Expr_Product> (increments reference count)
+    pub fn HandleExprProduct_clone(
+        self_: *const HandleExprProduct,
+    ) -> crate::OcctResult<*mut HandleExprProduct>;
     /// Dereference Handle to get *const Expr_Product
     pub fn HandleExprProduct_get(
         handle: *const HandleExprProduct,
@@ -6889,6 +7053,10 @@ extern "C" {
     pub fn Expr_Sign_to_handle(obj: *mut Expr_Sign) -> crate::OcctResult<*mut HandleExprSign>;
     /// Destroy Handle<Expr_Sign>
     pub fn HandleExprSign_destructor(self_: *mut HandleExprSign);
+    /// Clone Handle<Expr_Sign> (increments reference count)
+    pub fn HandleExprSign_clone(
+        self_: *const HandleExprSign,
+    ) -> crate::OcctResult<*mut HandleExprSign>;
     /// Dereference Handle to get *const Expr_Sign
     pub fn HandleExprSign_get(handle: *const HandleExprSign)
         -> crate::OcctResult<*const Expr_Sign>;
@@ -7048,6 +7216,10 @@ extern "C" {
     pub fn Expr_Sine_to_handle(obj: *mut Expr_Sine) -> crate::OcctResult<*mut HandleExprSine>;
     /// Destroy Handle<Expr_Sine>
     pub fn HandleExprSine_destructor(self_: *mut HandleExprSine);
+    /// Clone Handle<Expr_Sine> (increments reference count)
+    pub fn HandleExprSine_clone(
+        self_: *const HandleExprSine,
+    ) -> crate::OcctResult<*mut HandleExprSine>;
     /// Dereference Handle to get *const Expr_Sine
     pub fn HandleExprSine_get(handle: *const HandleExprSine)
         -> crate::OcctResult<*const Expr_Sine>;
@@ -7209,6 +7381,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_SingleRelation>
     pub fn HandleExprSingleRelation_destructor(self_: *mut HandleExprSingleRelation);
+    /// Clone Handle<Expr_SingleRelation> (increments reference count)
+    pub fn HandleExprSingleRelation_clone(
+        self_: *const HandleExprSingleRelation,
+    ) -> crate::OcctResult<*mut HandleExprSingleRelation>;
     /// Dereference Handle to get *const Expr_SingleRelation
     pub fn HandleExprSingleRelation_get(
         handle: *const HandleExprSingleRelation,
@@ -7371,6 +7547,10 @@ extern "C" {
     pub fn Expr_Sinh_to_handle(obj: *mut Expr_Sinh) -> crate::OcctResult<*mut HandleExprSinh>;
     /// Destroy Handle<Expr_Sinh>
     pub fn HandleExprSinh_destructor(self_: *mut HandleExprSinh);
+    /// Clone Handle<Expr_Sinh> (increments reference count)
+    pub fn HandleExprSinh_clone(
+        self_: *const HandleExprSinh,
+    ) -> crate::OcctResult<*mut HandleExprSinh>;
     /// Dereference Handle to get *const Expr_Sinh
     pub fn HandleExprSinh_get(handle: *const HandleExprSinh)
         -> crate::OcctResult<*const Expr_Sinh>;
@@ -7531,6 +7711,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleExprSquare>;
     /// Destroy Handle<Expr_Square>
     pub fn HandleExprSquare_destructor(self_: *mut HandleExprSquare);
+    /// Clone Handle<Expr_Square> (increments reference count)
+    pub fn HandleExprSquare_clone(
+        self_: *const HandleExprSquare,
+    ) -> crate::OcctResult<*mut HandleExprSquare>;
     /// Dereference Handle to get *const Expr_Square
     pub fn HandleExprSquare_get(
         handle: *const HandleExprSquare,
@@ -7700,6 +7884,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprSquareRoot>;
     /// Destroy Handle<Expr_SquareRoot>
     pub fn HandleExprSquareRoot_destructor(self_: *mut HandleExprSquareRoot);
+    /// Clone Handle<Expr_SquareRoot> (increments reference count)
+    pub fn HandleExprSquareRoot_clone(
+        self_: *const HandleExprSquareRoot,
+    ) -> crate::OcctResult<*mut HandleExprSquareRoot>;
     /// Dereference Handle to get *const Expr_SquareRoot
     pub fn HandleExprSquareRoot_get(
         handle: *const HandleExprSquareRoot,
@@ -7884,6 +8072,10 @@ extern "C" {
     pub fn Expr_Sum_to_handle(obj: *mut Expr_Sum) -> crate::OcctResult<*mut HandleExprSum>;
     /// Destroy Handle<Expr_Sum>
     pub fn HandleExprSum_destructor(self_: *mut HandleExprSum);
+    /// Clone Handle<Expr_Sum> (increments reference count)
+    pub fn HandleExprSum_clone(
+        self_: *const HandleExprSum,
+    ) -> crate::OcctResult<*mut HandleExprSum>;
     /// Dereference Handle to get *const Expr_Sum
     pub fn HandleExprSum_get(handle: *const HandleExprSum) -> crate::OcctResult<*const Expr_Sum>;
     /// Dereference Handle to get *mut Expr_Sum
@@ -8056,6 +8248,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprSystemRelation>;
     /// Destroy Handle<Expr_SystemRelation>
     pub fn HandleExprSystemRelation_destructor(self_: *mut HandleExprSystemRelation);
+    /// Clone Handle<Expr_SystemRelation> (increments reference count)
+    pub fn HandleExprSystemRelation_clone(
+        self_: *const HandleExprSystemRelation,
+    ) -> crate::OcctResult<*mut HandleExprSystemRelation>;
     /// Dereference Handle to get *const Expr_SystemRelation
     pub fn HandleExprSystemRelation_get(
         handle: *const HandleExprSystemRelation,
@@ -8176,6 +8372,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprTangent>;
     /// Destroy Handle<Expr_Tangent>
     pub fn HandleExprTangent_destructor(self_: *mut HandleExprTangent);
+    /// Clone Handle<Expr_Tangent> (increments reference count)
+    pub fn HandleExprTangent_clone(
+        self_: *const HandleExprTangent,
+    ) -> crate::OcctResult<*mut HandleExprTangent>;
     /// Dereference Handle to get *const Expr_Tangent
     pub fn HandleExprTangent_get(
         handle: *const HandleExprTangent,
@@ -8346,6 +8546,10 @@ extern "C" {
     pub fn Expr_Tanh_to_handle(obj: *mut Expr_Tanh) -> crate::OcctResult<*mut HandleExprTanh>;
     /// Destroy Handle<Expr_Tanh>
     pub fn HandleExprTanh_destructor(self_: *mut HandleExprTanh);
+    /// Clone Handle<Expr_Tanh> (increments reference count)
+    pub fn HandleExprTanh_clone(
+        self_: *const HandleExprTanh,
+    ) -> crate::OcctResult<*mut HandleExprTanh>;
     /// Dereference Handle to get *const Expr_Tanh
     pub fn HandleExprTanh_get(handle: *const HandleExprTanh)
         -> crate::OcctResult<*const Expr_Tanh>;
@@ -8498,6 +8702,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_UnaryExpression>
     pub fn HandleExprUnaryExpression_destructor(self_: *mut HandleExprUnaryExpression);
+    /// Clone Handle<Expr_UnaryExpression> (increments reference count)
+    pub fn HandleExprUnaryExpression_clone(
+        self_: *const HandleExprUnaryExpression,
+    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
     /// Dereference Handle to get *const Expr_UnaryExpression
     pub fn HandleExprUnaryExpression_get(
         handle: *const HandleExprUnaryExpression,
@@ -8755,6 +8963,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprUnaryFunction>;
     /// Destroy Handle<Expr_UnaryFunction>
     pub fn HandleExprUnaryFunction_destructor(self_: *mut HandleExprUnaryFunction);
+    /// Clone Handle<Expr_UnaryFunction> (increments reference count)
+    pub fn HandleExprUnaryFunction_clone(
+        self_: *const HandleExprUnaryFunction,
+    ) -> crate::OcctResult<*mut HandleExprUnaryFunction>;
     /// Dereference Handle to get *const Expr_UnaryFunction
     pub fn HandleExprUnaryFunction_get(
         handle: *const HandleExprUnaryFunction,
@@ -8936,6 +9148,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprUnaryMinus>;
     /// Destroy Handle<Expr_UnaryMinus>
     pub fn HandleExprUnaryMinus_destructor(self_: *mut HandleExprUnaryMinus);
+    /// Clone Handle<Expr_UnaryMinus> (increments reference count)
+    pub fn HandleExprUnaryMinus_clone(
+        self_: *const HandleExprUnaryMinus,
+    ) -> crate::OcctResult<*mut HandleExprUnaryMinus>;
     /// Dereference Handle to get *const Expr_UnaryMinus
     pub fn HandleExprUnaryMinus_get(
         handle: *const HandleExprUnaryMinus,
@@ -9173,6 +9389,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprIntrpGenExp>;
     /// Destroy Handle<ExprIntrp_GenExp>
     pub fn HandleExprIntrpGenExp_destructor(self_: *mut HandleExprIntrpGenExp);
+    /// Clone Handle<ExprIntrp_GenExp> (increments reference count)
+    pub fn HandleExprIntrpGenExp_clone(
+        self_: *const HandleExprIntrpGenExp,
+    ) -> crate::OcctResult<*mut HandleExprIntrpGenExp>;
     /// Dereference Handle to get *const ExprIntrp_GenExp
     pub fn HandleExprIntrpGenExp_get(
         handle: *const HandleExprIntrpGenExp,
@@ -9278,6 +9498,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprIntrpGenFct>;
     /// Destroy Handle<ExprIntrp_GenFct>
     pub fn HandleExprIntrpGenFct_destructor(self_: *mut HandleExprIntrpGenFct);
+    /// Clone Handle<ExprIntrp_GenFct> (increments reference count)
+    pub fn HandleExprIntrpGenFct_clone(
+        self_: *const HandleExprIntrpGenFct,
+    ) -> crate::OcctResult<*mut HandleExprIntrpGenFct>;
     /// Dereference Handle to get *const ExprIntrp_GenFct
     pub fn HandleExprIntrpGenFct_get(
         handle: *const HandleExprIntrpGenFct,
@@ -9387,6 +9611,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprIntrpGenRel>;
     /// Destroy Handle<ExprIntrp_GenRel>
     pub fn HandleExprIntrpGenRel_destructor(self_: *mut HandleExprIntrpGenRel);
+    /// Clone Handle<ExprIntrp_GenRel> (increments reference count)
+    pub fn HandleExprIntrpGenRel_clone(
+        self_: *const HandleExprIntrpGenRel,
+    ) -> crate::OcctResult<*mut HandleExprIntrpGenRel>;
     /// Dereference Handle to get *const ExprIntrp_GenRel
     pub fn HandleExprIntrpGenRel_get(
         handle: *const HandleExprIntrpGenRel,
@@ -9503,6 +9731,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprIntrpGenerator>;
     /// Destroy Handle<ExprIntrp_Generator>
     pub fn HandleExprIntrpGenerator_destructor(self_: *mut HandleExprIntrpGenerator);
+    /// Clone Handle<ExprIntrp_Generator> (increments reference count)
+    pub fn HandleExprIntrpGenerator_clone(
+        self_: *const HandleExprIntrpGenerator,
+    ) -> crate::OcctResult<*mut HandleExprIntrpGenerator>;
     /// Dereference Handle to get *const ExprIntrp_Generator
     pub fn HandleExprIntrpGenerator_get(
         handle: *const HandleExprIntrpGenerator,
@@ -9618,6 +9850,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExprIntrpSyntaxError>;
     /// Destroy Handle<ExprIntrp_SyntaxError>
     pub fn HandleExprIntrpSyntaxError_destructor(self_: *mut HandleExprIntrpSyntaxError);
+    /// Clone Handle<ExprIntrp_SyntaxError> (increments reference count)
+    pub fn HandleExprIntrpSyntaxError_clone(
+        self_: *const HandleExprIntrpSyntaxError,
+    ) -> crate::OcctResult<*mut HandleExprIntrpSyntaxError>;
     /// Dereference Handle to get *const ExprIntrp_SyntaxError
     pub fn HandleExprIntrpSyntaxError_get(
         handle: *const HandleExprIntrpSyntaxError,

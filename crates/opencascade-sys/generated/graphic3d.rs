@@ -2831,6 +2831,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dArrayOfPoints {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfPoints {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dArrayOfPoints_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dArrayOfPoints {
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfPoints
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfPoints {
@@ -3700,6 +3706,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dArrayOfPolygons {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfPolygons {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dArrayOfPolygons_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dArrayOfPolygons {
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfPolygons
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfPolygons {
@@ -4525,6 +4537,12 @@ pub use crate::ffi_types::HandleGraphic3dArrayOfPolylines;
 unsafe impl crate::CppDeletable for HandleGraphic3dArrayOfPolylines {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dArrayOfPolylines_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfPolylines {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dArrayOfPolylines_clone(ptr))
     }
 }
 
@@ -6071,6 +6089,14 @@ unsafe impl crate::CppDeletable for HandleGraphic3dArrayOfPrimitives {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfPrimitives {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dArrayOfPrimitives_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleGraphic3dArrayOfPrimitives {
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfPrimitives
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfPrimitives {
@@ -6942,6 +6968,14 @@ unsafe impl crate::CppDeletable for HandleGraphic3dArrayOfQuadrangleStrips {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfQuadrangleStrips {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfQuadrangleStrips_clone(ptr),
+        )
+    }
+}
+
 impl HandleGraphic3dArrayOfQuadrangleStrips {
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfQuadrangleStrips
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfQuadrangleStrips {
@@ -7700,6 +7734,14 @@ unsafe impl crate::CppDeletable for HandleGraphic3dArrayOfQuadrangles {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfQuadrangles {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dArrayOfQuadrangles_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleGraphic3dArrayOfQuadrangles {
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfQuadrangles
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfQuadrangles {
@@ -8432,6 +8474,12 @@ pub use crate::ffi_types::HandleGraphic3dArrayOfSegments;
 unsafe impl crate::CppDeletable for HandleGraphic3dArrayOfSegments {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dArrayOfSegments_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfSegments {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dArrayOfSegments_clone(ptr))
     }
 }
 
@@ -9198,6 +9246,14 @@ pub use crate::ffi_types::HandleGraphic3dArrayOfTriangleFans;
 unsafe impl crate::CppDeletable for HandleGraphic3dArrayOfTriangleFans {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dArrayOfTriangleFans_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfTriangleFans {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dArrayOfTriangleFans_clone(
+            ptr,
+        ))
     }
 }
 
@@ -10038,6 +10094,14 @@ unsafe impl crate::CppDeletable for HandleGraphic3dArrayOfTriangleStrips {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfTriangleStrips {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfTriangleStrips_clone(ptr),
+        )
+    }
+}
+
 impl HandleGraphic3dArrayOfTriangleStrips {
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfTriangleStrips
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfTriangleStrips {
@@ -10831,6 +10895,12 @@ pub use crate::ffi_types::HandleGraphic3dArrayOfTriangles;
 unsafe impl crate::CppDeletable for HandleGraphic3dArrayOfTriangles {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dArrayOfTriangles_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfTriangles {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dArrayOfTriangles_clone(ptr))
     }
 }
 
@@ -11995,6 +12065,12 @@ pub use crate::ffi_types::HandleGraphic3dAspectFillArea3d;
 unsafe impl crate::CppDeletable for HandleGraphic3dAspectFillArea3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dAspectFillArea3d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dAspectFillArea3d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dAspectFillArea3d_clone(ptr))
     }
 }
 
@@ -13214,6 +13290,12 @@ pub use crate::ffi_types::HandleGraphic3dAspectLine3d;
 unsafe impl crate::CppDeletable for HandleGraphic3dAspectLine3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dAspectLine3d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dAspectLine3d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dAspectLine3d_clone(ptr))
     }
 }
 
@@ -14505,6 +14587,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dAspectMarker3d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dAspectMarker3d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dAspectMarker3d_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dAspectMarker3d {
     /// Dereference this Handle to access the underlying Graphic3d_AspectMarker3d
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_AspectMarker3d {
@@ -15783,6 +15871,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dAspectText3d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dAspectText3d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dAspectText3d_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dAspectText3d {
     /// Dereference this Handle to access the underlying Graphic3d_AspectText3d
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_AspectText3d {
@@ -17017,6 +17111,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dAspects {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dAspects {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dAspects_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dAspects {
     /// Dereference this Handle to access the underlying Graphic3d_Aspects
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Aspects {
@@ -17614,6 +17714,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dAttribBuffer {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dAttribBuffer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dAttribBuffer_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dAttribBuffer {
     /// Dereference this Handle to access the underlying Graphic3d_AttribBuffer
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_AttribBuffer {
@@ -18156,6 +18262,12 @@ pub use crate::ffi_types::HandleGraphic3dBoundBuffer;
 unsafe impl crate::CppDeletable for HandleGraphic3dBoundBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dBoundBuffer_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dBoundBuffer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dBoundBuffer_clone(ptr))
     }
 }
 
@@ -18731,6 +18843,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dBuffer {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dBuffer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dBuffer_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dBuffer {
     /// Dereference this Handle to access the underlying Graphic3d_Buffer
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Buffer {
@@ -19033,6 +19151,12 @@ pub use crate::ffi_types::HandleGraphic3dBvhCStructureSet;
 unsafe impl crate::CppDeletable for HandleGraphic3dBvhCStructureSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dBvhCStructureSet_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dBvhCStructureSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dBvhCStructureSet_clone(ptr))
     }
 }
 
@@ -19900,6 +20024,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dCLight {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dCLight {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dCLight_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dCLight {
     /// Dereference this Handle to access the underlying Graphic3d_CLight
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_CLight {
@@ -20581,6 +20711,12 @@ pub use crate::ffi_types::HandleGraphic3dCStructure;
 unsafe impl crate::CppDeletable for HandleGraphic3dCStructure {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dCStructure_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dCStructure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dCStructure_clone(ptr))
     }
 }
 
@@ -22240,6 +22376,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dCView {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dCView {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dCView_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dCView {
     /// Dereference this Handle to access the underlying Graphic3d_CView
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_CView {
@@ -23616,6 +23758,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dCamera {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dCamera {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dCamera_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dCamera {
     /// Dereference this Handle to access the underlying Graphic3d_Camera
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Camera {
@@ -24497,6 +24645,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dClipPlane {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dClipPlane {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dClipPlane_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dClipPlane {
     /// Dereference this Handle to access the underlying Graphic3d_ClipPlane
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ClipPlane {
@@ -25032,6 +25186,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dCubeMap {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dCubeMap {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dCubeMap_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dCubeMap {
     /// Dereference this Handle to access the underlying Graphic3d_CubeMap
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_CubeMap {
@@ -25392,15 +25552,18 @@ unsafe impl crate::CppDeletable for ValidatedCubeMapOrder {
     }
 }
 
-impl ValidatedCubeMapOrder {
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+unsafe impl crate::CppCopyable for ValidatedCubeMapOrder {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::Graphic3d_ValidatedCubeMapOrder_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for ValidatedCubeMapOrder {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKService::Graphic3d_ValidatedCubeMapOrder_to_owned(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
         }
     }
 }
@@ -25991,6 +26154,12 @@ pub use crate::ffi_types::HandleGraphic3dCubeMapPacked;
 unsafe impl crate::CppDeletable for HandleGraphic3dCubeMapPacked {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dCubeMapPacked_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dCubeMapPacked {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dCubeMapPacked_clone(ptr))
     }
 }
 
@@ -26645,6 +26814,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dCubeMapSeparate {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dCubeMapSeparate {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dCubeMapSeparate_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dCubeMapSeparate {
     /// Dereference this Handle to access the underlying Graphic3d_CubeMapSeparate
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_CubeMapSeparate {
@@ -27188,6 +27363,14 @@ unsafe impl crate::CppDeletable for HandleGraphic3dDataStructureManager {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dDataStructureManager {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dDataStructureManager_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleGraphic3dDataStructureManager {
     /// Dereference this Handle to access the underlying Graphic3d_DataStructureManager
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_DataStructureManager {
@@ -27631,6 +27814,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dFrameStats {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dFrameStats {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dFrameStats_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dFrameStats {
     /// Dereference this Handle to access the underlying Graphic3d_FrameStats
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_FrameStats {
@@ -27675,6 +27864,22 @@ pub use crate::ffi_types::Graphic3d_FrameStatsData as FrameStatsData;
 unsafe impl crate::CppDeletable for FrameStatsData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::Graphic3d_FrameStatsData_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for FrameStatsData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::Graphic3d_FrameStatsData_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for FrameStatsData {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -27774,15 +27979,6 @@ impl FrameStatsData {
                 theOther,
             )
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKService::Graphic3d_FrameStatsData_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -29258,6 +29454,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dGraphicDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dGraphicDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dGraphicDriver_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dGraphicDriver {
     /// Dereference this Handle to access the underlying Graphic3d_GraphicDriver
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_GraphicDriver {
@@ -29502,6 +29704,14 @@ pub use crate::ffi_types::HandleGraphic3dGraphicDriverFactory;
 unsafe impl crate::CppDeletable for HandleGraphic3dGraphicDriverFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dGraphicDriverFactory_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dGraphicDriverFactory {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dGraphicDriverFactory_clone(
+            ptr,
+        ))
     }
 }
 
@@ -30014,6 +30224,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dGroup {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dGroup {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dGroup_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dGroup {
     /// Dereference this Handle to access the underlying Graphic3d_Group
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Group {
@@ -30387,6 +30603,14 @@ unsafe impl crate::CppDeletable for HandleGraphic3dGroupDefinitionError {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dGroupDefinitionError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dGroupDefinitionError_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleGraphic3dGroupDefinitionError {
     /// Dereference this Handle to access the underlying Graphic3d_GroupDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_GroupDefinitionError {
@@ -30653,6 +30877,12 @@ pub use crate::ffi_types::HandleGraphic3dHatchStyle;
 unsafe impl crate::CppDeletable for HandleGraphic3dHatchStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dHatchStyle_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dHatchStyle {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dHatchStyle_clone(ptr))
     }
 }
 
@@ -31104,6 +31334,12 @@ pub use crate::ffi_types::HandleGraphic3dIndexBuffer;
 unsafe impl crate::CppDeletable for HandleGraphic3dIndexBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dIndexBuffer_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dIndexBuffer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dIndexBuffer_clone(ptr))
     }
 }
 
@@ -31643,6 +31879,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dLayer {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dLayer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dLayer_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dLayer {
     /// Dereference this Handle to access the underlying Graphic3d_Layer
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Layer {
@@ -32012,6 +32254,12 @@ pub use crate::ffi_types::HandleGraphic3dLightSet;
 unsafe impl crate::CppDeletable for HandleGraphic3dLightSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dLightSet_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dLightSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dLightSet_clone(ptr))
     }
 }
 
@@ -32422,6 +32670,12 @@ pub use crate::ffi_types::HandleGraphic3dMarkerImage;
 unsafe impl crate::CppDeletable for HandleGraphic3dMarkerImage {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dMarkerImage_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dMarkerImage {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dMarkerImage_clone(ptr))
     }
 }
 
@@ -33275,6 +33529,14 @@ unsafe impl crate::CppDeletable for HandleGraphic3dMaterialDefinitionError {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dMaterialDefinitionError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleGraphic3dMaterialDefinitionError_clone(ptr),
+        )
+    }
+}
+
 impl HandleGraphic3dMaterialDefinitionError {
     /// Dereference this Handle to access the underlying Graphic3d_MaterialDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_MaterialDefinitionError {
@@ -33862,6 +34124,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dMediaTexture {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dMediaTexture {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dMediaTexture_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dMediaTexture {
     /// Dereference this Handle to access the underlying Graphic3d_MediaTexture
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_MediaTexture {
@@ -34353,6 +34621,12 @@ pub use crate::ffi_types::HandleGraphic3dMediaTextureSet;
 unsafe impl crate::CppDeletable for HandleGraphic3dMediaTextureSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dMediaTextureSet_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dMediaTextureSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dMediaTextureSet_clone(ptr))
     }
 }
 
@@ -34862,6 +35136,14 @@ pub use crate::ffi_types::HandleGraphic3dMutableIndexBuffer;
 unsafe impl crate::CppDeletable for HandleGraphic3dMutableIndexBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dMutableIndexBuffer_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dMutableIndexBuffer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dMutableIndexBuffer_clone(
+            ptr,
+        ))
     }
 }
 
@@ -35541,6 +35823,14 @@ unsafe impl crate::CppDeletable for HandleGraphic3dPresentationAttributes {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dPresentationAttributes {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleGraphic3dPresentationAttributes_clone(ptr),
+        )
+    }
+}
+
 impl HandleGraphic3dPresentationAttributes {
     /// Dereference this Handle to access the underlying Graphic3d_PresentationAttributes
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_PresentationAttributes {
@@ -35922,6 +36212,14 @@ unsafe impl crate::CppDeletable for HandleGraphic3dPriorityDefinitionError {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dPriorityDefinitionError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleGraphic3dPriorityDefinitionError_clone(ptr),
+        )
+    }
+}
+
 impl HandleGraphic3dPriorityDefinitionError {
     /// Dereference this Handle to access the underlying Graphic3d_PriorityDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_PriorityDefinitionError {
@@ -36296,6 +36594,14 @@ unsafe impl crate::CppDeletable for HandleGraphic3dSequenceOfHClipPlane {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dSequenceOfHClipPlane {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dSequenceOfHClipPlane_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleGraphic3dSequenceOfHClipPlane {
     /// Dereference this Handle to access the underlying Graphic3d_SequenceOfHClipPlane
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_SequenceOfHClipPlane {
@@ -36574,6 +36880,12 @@ pub use crate::ffi_types::HandleGraphic3dShaderAttribute;
 unsafe impl crate::CppDeletable for HandleGraphic3dShaderAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dShaderAttribute_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dShaderAttribute {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dShaderAttribute_clone(ptr))
     }
 }
 
@@ -36924,6 +37236,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dShaderManager {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dShaderManager {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dShaderManager_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dShaderManager {
     /// Dereference this Handle to access the underlying Graphic3d_ShaderManager
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ShaderManager {
@@ -37213,6 +37531,12 @@ pub use crate::ffi_types::HandleGraphic3dShaderObject;
 unsafe impl crate::CppDeletable for HandleGraphic3dShaderObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dShaderObject_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dShaderObject {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dShaderObject_clone(ptr))
     }
 }
 
@@ -37938,6 +38262,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dShaderProgram {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dShaderProgram {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dShaderProgram_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dShaderProgram {
     /// Dereference this Handle to access the underlying Graphic3d_ShaderProgram
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ShaderProgram {
@@ -38179,6 +38509,12 @@ pub use crate::ffi_types::HandleGraphic3dShaderVariable;
 unsafe impl crate::CppDeletable for HandleGraphic3dShaderVariable {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dShaderVariable_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dShaderVariable {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dShaderVariable_clone(ptr))
     }
 }
 
@@ -39165,6 +39501,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dStructure {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dStructure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dStructure_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dStructure {
     /// Dereference this Handle to access the underlying Graphic3d_Structure
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Structure {
@@ -39541,6 +39883,14 @@ pub use crate::ffi_types::HandleGraphic3dStructureDefinitionError;
 unsafe impl crate::CppDeletable for HandleGraphic3dStructureDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dStructureDefinitionError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dStructureDefinitionError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleGraphic3dStructureDefinitionError_clone(ptr),
+        )
     }
 }
 
@@ -40174,6 +40524,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dStructureManager {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dStructureManager {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dStructureManager_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dStructureManager {
     /// Dereference this Handle to access the underlying Graphic3d_StructureManager
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_StructureManager {
@@ -40573,6 +40929,12 @@ pub use crate::ffi_types::HandleGraphic3dText;
 unsafe impl crate::CppDeletable for HandleGraphic3dText {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dText_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dText {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dText_clone(ptr))
     }
 }
 
@@ -41072,6 +41434,12 @@ pub use crate::ffi_types::HandleGraphic3dTexture1D;
 unsafe impl crate::CppDeletable for HandleGraphic3dTexture1D {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dTexture1D_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dTexture1D {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTexture1D_clone(ptr))
     }
 }
 
@@ -41688,6 +42056,12 @@ pub use crate::ffi_types::HandleGraphic3dTexture1Dmanual;
 unsafe impl crate::CppDeletable for HandleGraphic3dTexture1Dmanual {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dTexture1Dmanual_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dTexture1Dmanual {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTexture1Dmanual_clone(ptr))
     }
 }
 
@@ -42317,6 +42691,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dTexture1Dsegment {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dTexture1Dsegment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTexture1Dsegment_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dTexture1Dsegment {
     /// Dereference this Handle to access the underlying Graphic3d_Texture1Dsegment
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Texture1Dsegment {
@@ -42887,6 +43267,12 @@ pub use crate::ffi_types::HandleGraphic3dTexture2D;
 unsafe impl crate::CppDeletable for HandleGraphic3dTexture2D {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dTexture2D_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dTexture2D {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTexture2D_clone(ptr))
     }
 }
 
@@ -43740,6 +44126,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dTexture2Dplane {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dTexture2Dplane {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTexture2Dplane_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dTexture2Dplane {
     /// Dereference this Handle to access the underlying Graphic3d_Texture2Dplane
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Texture2Dplane {
@@ -44283,6 +44675,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dTexture3D {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dTexture3D {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTexture3D_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dTexture3D {
     /// Dereference this Handle to access the underlying Graphic3d_Texture3D
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Texture3D {
@@ -44726,6 +45124,12 @@ pub use crate::ffi_types::HandleGraphic3dTextureEnv;
 unsafe impl crate::CppDeletable for HandleGraphic3dTextureEnv {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dTextureEnv_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dTextureEnv {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTextureEnv_clone(ptr))
     }
 }
 
@@ -45186,6 +45590,12 @@ pub use crate::ffi_types::HandleGraphic3dTextureMap;
 unsafe impl crate::CppDeletable for HandleGraphic3dTextureMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dTextureMap_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dTextureMap {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTextureMap_clone(ptr))
     }
 }
 
@@ -45825,6 +46235,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dTextureParams {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dTextureParams {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTextureParams_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dTextureParams {
     /// Dereference this Handle to access the underlying Graphic3d_TextureParams
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_TextureParams {
@@ -46204,6 +46620,12 @@ pub use crate::ffi_types::HandleGraphic3dTextureRoot;
 unsafe impl crate::CppDeletable for HandleGraphic3dTextureRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dTextureRoot_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dTextureRoot {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTextureRoot_clone(ptr))
     }
 }
 
@@ -46702,6 +47124,12 @@ pub use crate::ffi_types::HandleGraphic3dTextureSet;
 unsafe impl crate::CppDeletable for HandleGraphic3dTextureSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dTextureSet_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dTextureSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTextureSet_clone(ptr))
     }
 }
 
@@ -47262,6 +47690,12 @@ unsafe impl crate::CppDeletable for HandleGraphic3dTransformPers {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dTransformPers {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dTransformPers_clone(ptr))
+    }
+}
+
 impl HandleGraphic3dTransformPers {
     /// Dereference this Handle to access the underlying Graphic3d_TransformPers
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_TransformPers {
@@ -47656,6 +48090,14 @@ unsafe impl crate::CppDeletable for HandleGraphic3dTransformPersScaledAbove {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGraphic3dTransformPersScaledAbove {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleGraphic3dTransformPersScaledAbove_clone(ptr),
+        )
+    }
+}
+
 impl HandleGraphic3dTransformPersScaledAbove {
     /// Dereference this Handle to access the underlying Graphic3d_TransformPersScaledAbove
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_TransformPersScaledAbove {
@@ -47913,6 +48355,12 @@ pub use crate::ffi_types::HandleGraphic3dViewAffinity;
 unsafe impl crate::CppDeletable for HandleGraphic3dViewAffinity {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleGraphic3dViewAffinity_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGraphic3dViewAffinity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleGraphic3dViewAffinity_clone(ptr))
     }
 }
 

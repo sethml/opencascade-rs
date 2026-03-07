@@ -91,6 +91,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepAlgoAsDes>;
     /// Destroy Handle<BRepAlgo_AsDes>
     pub fn HandleBRepAlgoAsDes_destructor(self_: *mut HandleBRepAlgoAsDes);
+    /// Clone Handle<BRepAlgo_AsDes> (increments reference count)
+    pub fn HandleBRepAlgoAsDes_clone(
+        self_: *const HandleBRepAlgoAsDes,
+    ) -> crate::OcctResult<*mut HandleBRepAlgoAsDes>;
     /// Dereference Handle to get *const BRepAlgo_AsDes
     pub fn HandleBRepAlgoAsDes_get(
         handle: *const HandleBRepAlgoAsDes,
@@ -462,6 +466,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepFillACRLaw>;
     /// Destroy Handle<BRepFill_ACRLaw>
     pub fn HandleBRepFillACRLaw_destructor(self_: *mut HandleBRepFillACRLaw);
+    /// Clone Handle<BRepFill_ACRLaw> (increments reference count)
+    pub fn HandleBRepFillACRLaw_clone(
+        self_: *const HandleBRepFillACRLaw,
+    ) -> crate::OcctResult<*mut HandleBRepFillACRLaw>;
     /// Dereference Handle to get *const BRepFill_ACRLaw
     pub fn HandleBRepFillACRLaw_get(
         handle: *const HandleBRepFillACRLaw,
@@ -856,6 +864,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepFillCurveConstraint>;
     /// Destroy Handle<BRepFill_CurveConstraint>
     pub fn HandleBRepFillCurveConstraint_destructor(self_: *mut HandleBRepFillCurveConstraint);
+    /// Clone Handle<BRepFill_CurveConstraint> (increments reference count)
+    pub fn HandleBRepFillCurveConstraint_clone(
+        self_: *const HandleBRepFillCurveConstraint,
+    ) -> crate::OcctResult<*mut HandleBRepFillCurveConstraint>;
     /// Dereference Handle to get *const BRepFill_CurveConstraint
     pub fn HandleBRepFillCurveConstraint_get(
         handle: *const HandleBRepFillCurveConstraint,
@@ -1118,6 +1130,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepFillDraftLaw>;
     /// Destroy Handle<BRepFill_DraftLaw>
     pub fn HandleBRepFillDraftLaw_destructor(self_: *mut HandleBRepFillDraftLaw);
+    /// Clone Handle<BRepFill_DraftLaw> (increments reference count)
+    pub fn HandleBRepFillDraftLaw_clone(
+        self_: *const HandleBRepFillDraftLaw,
+    ) -> crate::OcctResult<*mut HandleBRepFillDraftLaw>;
     /// Dereference Handle to get *const BRepFill_DraftLaw
     pub fn HandleBRepFillDraftLaw_get(
         handle: *const HandleBRepFillDraftLaw,
@@ -1301,6 +1317,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepFillEdge3DLaw>;
     /// Destroy Handle<BRepFill_Edge3DLaw>
     pub fn HandleBRepFillEdge3DLaw_destructor(self_: *mut HandleBRepFillEdge3DLaw);
+    /// Clone Handle<BRepFill_Edge3DLaw> (increments reference count)
+    pub fn HandleBRepFillEdge3DLaw_clone(
+        self_: *const HandleBRepFillEdge3DLaw,
+    ) -> crate::OcctResult<*mut HandleBRepFillEdge3DLaw>;
     /// Dereference Handle to get *const BRepFill_Edge3DLaw
     pub fn HandleBRepFillEdge3DLaw_get(
         handle: *const HandleBRepFillEdge3DLaw,
@@ -1499,6 +1519,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepFillEdgeOnSurfLaw>;
     /// Destroy Handle<BRepFill_EdgeOnSurfLaw>
     pub fn HandleBRepFillEdgeOnSurfLaw_destructor(self_: *mut HandleBRepFillEdgeOnSurfLaw);
+    /// Clone Handle<BRepFill_EdgeOnSurfLaw> (increments reference count)
+    pub fn HandleBRepFillEdgeOnSurfLaw_clone(
+        self_: *const HandleBRepFillEdgeOnSurfLaw,
+    ) -> crate::OcctResult<*mut HandleBRepFillEdgeOnSurfLaw>;
     /// Dereference Handle to get *const BRepFill_EdgeOnSurfLaw
     pub fn HandleBRepFillEdgeOnSurfLaw_get(
         handle: *const HandleBRepFillEdgeOnSurfLaw,
@@ -1984,6 +2008,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepFillLocationLaw>;
     /// Destroy Handle<BRepFill_LocationLaw>
     pub fn HandleBRepFillLocationLaw_destructor(self_: *mut HandleBRepFillLocationLaw);
+    /// Clone Handle<BRepFill_LocationLaw> (increments reference count)
+    pub fn HandleBRepFillLocationLaw_clone(
+        self_: *const HandleBRepFillLocationLaw,
+    ) -> crate::OcctResult<*mut HandleBRepFillLocationLaw>;
     /// Dereference Handle to get *const BRepFill_LocationLaw
     pub fn HandleBRepFillLocationLaw_get(
         handle: *const HandleBRepFillLocationLaw,
@@ -2227,6 +2255,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepFillNSections>;
     /// Destroy Handle<BRepFill_NSections>
     pub fn HandleBRepFillNSections_destructor(self_: *mut HandleBRepFillNSections);
+    /// Clone Handle<BRepFill_NSections> (increments reference count)
+    pub fn HandleBRepFillNSections_clone(
+        self_: *const HandleBRepFillNSections,
+    ) -> crate::OcctResult<*mut HandleBRepFillNSections>;
     /// Dereference Handle to get *const BRepFill_NSections
     pub fn HandleBRepFillNSections_get(
         handle: *const HandleBRepFillNSections,
@@ -2627,6 +2659,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepFillPipeShell>;
     /// Destroy Handle<BRepFill_PipeShell>
     pub fn HandleBRepFillPipeShell_destructor(self_: *mut HandleBRepFillPipeShell);
+    /// Clone Handle<BRepFill_PipeShell> (increments reference count)
+    pub fn HandleBRepFillPipeShell_clone(
+        self_: *const HandleBRepFillPipeShell,
+    ) -> crate::OcctResult<*mut HandleBRepFillPipeShell>;
     /// Dereference Handle to get *const BRepFill_PipeShell
     pub fn HandleBRepFillPipeShell_get(
         handle: *const HandleBRepFillPipeShell,
@@ -2802,6 +2838,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepFill_SectionLaw>
     pub fn HandleBRepFillSectionLaw_destructor(self_: *mut HandleBRepFillSectionLaw);
+    /// Clone Handle<BRepFill_SectionLaw> (increments reference count)
+    pub fn HandleBRepFillSectionLaw_clone(
+        self_: *const HandleBRepFillSectionLaw,
+    ) -> crate::OcctResult<*mut HandleBRepFillSectionLaw>;
     /// Dereference Handle to get *const BRepFill_SectionLaw
     pub fn HandleBRepFillSectionLaw_get(
         handle: *const HandleBRepFillSectionLaw,
@@ -2964,6 +3004,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepFillShapeLaw>;
     /// Destroy Handle<BRepFill_ShapeLaw>
     pub fn HandleBRepFillShapeLaw_destructor(self_: *mut HandleBRepFillShapeLaw);
+    /// Clone Handle<BRepFill_ShapeLaw> (increments reference count)
+    pub fn HandleBRepFillShapeLaw_clone(
+        self_: *const HandleBRepFillShapeLaw,
+    ) -> crate::OcctResult<*mut HandleBRepFillShapeLaw>;
     /// Dereference Handle to get *const BRepFill_ShapeLaw
     pub fn HandleBRepFillShapeLaw_get(
         handle: *const HandleBRepFillShapeLaw,
@@ -3630,6 +3674,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepFFDumper>;
     /// Destroy Handle<TopOpeBRep_FFDumper>
     pub fn HandleTopOpeBRepFFDumper_destructor(self_: *mut HandleTopOpeBRepFFDumper);
+    /// Clone Handle<TopOpeBRep_FFDumper> (increments reference count)
+    pub fn HandleTopOpeBRepFFDumper_clone(
+        self_: *const HandleTopOpeBRepFFDumper,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepFFDumper>;
     /// Dereference Handle to get *const TopOpeBRep_FFDumper
     pub fn HandleTopOpeBRepFFDumper_get(
         handle: *const HandleTopOpeBRepFFDumper,
@@ -4266,6 +4314,10 @@ extern "C" {
     pub fn HandleTopOpeBRepHArray1OfLineInter_destructor(
         self_: *mut HandleTopOpeBRepHArray1OfLineInter,
     );
+    /// Clone Handle<TopOpeBRep_HArray1OfLineInter> (increments reference count)
+    pub fn HandleTopOpeBRepHArray1OfLineInter_clone(
+        self_: *const HandleTopOpeBRepHArray1OfLineInter,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepHArray1OfLineInter>;
     /// Dereference Handle to get *const TopOpeBRep_HArray1OfLineInter
     pub fn HandleTopOpeBRepHArray1OfLineInter_get(
         handle: *const HandleTopOpeBRepHArray1OfLineInter,
@@ -4369,6 +4421,10 @@ extern "C" {
     pub fn HandleTopOpeBRepHArray1OfVPointInter_destructor(
         self_: *mut HandleTopOpeBRepHArray1OfVPointInter,
     );
+    /// Clone Handle<TopOpeBRep_HArray1OfVPointInter> (increments reference count)
+    pub fn HandleTopOpeBRepHArray1OfVPointInter_clone(
+        self_: *const HandleTopOpeBRepHArray1OfVPointInter,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepHArray1OfVPointInter>;
     /// Dereference Handle to get *const TopOpeBRep_HArray1OfVPointInter
     pub fn HandleTopOpeBRepHArray1OfVPointInter_get(
         handle: *const HandleTopOpeBRepHArray1OfVPointInter,
@@ -4460,6 +4516,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepHctxee2d>;
     /// Destroy Handle<TopOpeBRep_Hctxee2d>
     pub fn HandleTopOpeBRepHctxee2d_destructor(self_: *mut HandleTopOpeBRepHctxee2d);
+    /// Clone Handle<TopOpeBRep_Hctxee2d> (increments reference count)
+    pub fn HandleTopOpeBRepHctxee2d_clone(
+        self_: *const HandleTopOpeBRepHctxee2d,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepHctxee2d>;
     /// Dereference Handle to get *const TopOpeBRep_Hctxee2d
     pub fn HandleTopOpeBRepHctxee2d_get(
         handle: *const HandleTopOpeBRepHctxee2d,
@@ -4579,6 +4639,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepHctxff2d>;
     /// Destroy Handle<TopOpeBRep_Hctxff2d>
     pub fn HandleTopOpeBRepHctxff2d_destructor(self_: *mut HandleTopOpeBRepHctxff2d);
+    /// Clone Handle<TopOpeBRep_Hctxff2d> (increments reference count)
+    pub fn HandleTopOpeBRepHctxff2d_clone(
+        self_: *const HandleTopOpeBRepHctxff2d,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepHctxff2d>;
     /// Dereference Handle to get *const TopOpeBRep_Hctxff2d
     pub fn HandleTopOpeBRepHctxff2d_get(
         handle: *const HandleTopOpeBRepHctxff2d,
@@ -9077,6 +9141,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildHBuilder>;
     /// Destroy Handle<TopOpeBRepBuild_HBuilder>
     pub fn HandleTopOpeBRepBuildHBuilder_destructor(self_: *mut HandleTopOpeBRepBuildHBuilder);
+    /// Clone Handle<TopOpeBRepBuild_HBuilder> (increments reference count)
+    pub fn HandleTopOpeBRepBuildHBuilder_clone(
+        self_: *const HandleTopOpeBRepBuildHBuilder,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildHBuilder>;
     /// Dereference Handle to get *const TopOpeBRepBuild_HBuilder
     pub fn HandleTopOpeBRepBuildHBuilder_get(
         handle: *const HandleTopOpeBRepBuildHBuilder,
@@ -9166,6 +9234,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildLoop>;
     /// Destroy Handle<TopOpeBRepBuild_Loop>
     pub fn HandleTopOpeBRepBuildLoop_destructor(self_: *mut HandleTopOpeBRepBuildLoop);
+    /// Clone Handle<TopOpeBRepBuild_Loop> (increments reference count)
+    pub fn HandleTopOpeBRepBuildLoop_clone(
+        self_: *const HandleTopOpeBRepBuildLoop,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildLoop>;
     /// Dereference Handle to get *const TopOpeBRepBuild_Loop
     pub fn HandleTopOpeBRepBuildLoop_get(
         handle: *const HandleTopOpeBRepBuildLoop,
@@ -9332,6 +9404,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildPave>;
     /// Destroy Handle<TopOpeBRepBuild_Pave>
     pub fn HandleTopOpeBRepBuildPave_destructor(self_: *mut HandleTopOpeBRepBuildPave);
+    /// Clone Handle<TopOpeBRepBuild_Pave> (increments reference count)
+    pub fn HandleTopOpeBRepBuildPave_clone(
+        self_: *const HandleTopOpeBRepBuildPave,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildPave>;
     /// Dereference Handle to get *const TopOpeBRepBuild_Pave
     pub fn HandleTopOpeBRepBuildPave_get(
         handle: *const HandleTopOpeBRepBuildPave,
@@ -10668,6 +10744,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSAssociation>;
     /// Destroy Handle<TopOpeBRepDS_Association>
     pub fn HandleTopOpeBRepDSAssociation_destructor(self_: *mut HandleTopOpeBRepDSAssociation);
+    /// Clone Handle<TopOpeBRepDS_Association> (increments reference count)
+    pub fn HandleTopOpeBRepDSAssociation_clone(
+        self_: *const HandleTopOpeBRepDSAssociation,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSAssociation>;
     /// Dereference Handle to get *const TopOpeBRepDS_Association
     pub fn HandleTopOpeBRepDSAssociation_get(
         handle: *const HandleTopOpeBRepDSAssociation,
@@ -11077,6 +11157,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSCheck>;
     /// Destroy Handle<TopOpeBRepDS_Check>
     pub fn HandleTopOpeBRepDSCheck_destructor(self_: *mut HandleTopOpeBRepDSCheck);
+    /// Clone Handle<TopOpeBRepDS_Check> (increments reference count)
+    pub fn HandleTopOpeBRepDSCheck_clone(
+        self_: *const HandleTopOpeBRepDSCheck,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSCheck>;
     /// Dereference Handle to get *const TopOpeBRepDS_Check
     pub fn HandleTopOpeBRepDSCheck_get(
         handle: *const HandleTopOpeBRepDSCheck,
@@ -11481,6 +11565,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSCurvePointInterference_destructor(
         self_: *mut HandleTopOpeBRepDSCurvePointInterference,
     );
+    /// Clone Handle<TopOpeBRepDS_CurvePointInterference> (increments reference count)
+    pub fn HandleTopOpeBRepDSCurvePointInterference_clone(
+        self_: *const HandleTopOpeBRepDSCurvePointInterference,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSCurvePointInterference>;
     /// Dereference Handle to get *const TopOpeBRepDS_CurvePointInterference
     pub fn HandleTopOpeBRepDSCurvePointInterference_get(
         handle: *const HandleTopOpeBRepDSCurvePointInterference,
@@ -12273,6 +12361,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSEdgeVertexInterference_destructor(
         self_: *mut HandleTopOpeBRepDSEdgeVertexInterference,
     );
+    /// Clone Handle<TopOpeBRepDS_EdgeVertexInterference> (increments reference count)
+    pub fn HandleTopOpeBRepDSEdgeVertexInterference_clone(
+        self_: *const HandleTopOpeBRepDSEdgeVertexInterference,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSEdgeVertexInterference>;
     /// Dereference Handle to get *const TopOpeBRepDS_EdgeVertexInterference
     pub fn HandleTopOpeBRepDSEdgeVertexInterference_get(
         handle: *const HandleTopOpeBRepDSEdgeVertexInterference,
@@ -12494,6 +12586,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSFaceEdgeInterference_destructor(
         self_: *mut HandleTopOpeBRepDSFaceEdgeInterference,
     );
+    /// Clone Handle<TopOpeBRepDS_FaceEdgeInterference> (increments reference count)
+    pub fn HandleTopOpeBRepDSFaceEdgeInterference_clone(
+        self_: *const HandleTopOpeBRepDSFaceEdgeInterference,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSFaceEdgeInterference>;
     /// Dereference Handle to get *const TopOpeBRepDS_FaceEdgeInterference
     pub fn HandleTopOpeBRepDSFaceEdgeInterference_get(
         handle: *const HandleTopOpeBRepDSFaceEdgeInterference,
@@ -12852,6 +12948,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSGapTool>;
     /// Destroy Handle<TopOpeBRepDS_GapTool>
     pub fn HandleTopOpeBRepDSGapTool_destructor(self_: *mut HandleTopOpeBRepDSGapTool);
+    /// Clone Handle<TopOpeBRepDS_GapTool> (increments reference count)
+    pub fn HandleTopOpeBRepDSGapTool_clone(
+        self_: *const HandleTopOpeBRepDSGapTool,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSGapTool>;
     /// Dereference Handle to get *const TopOpeBRepDS_GapTool
     pub fn HandleTopOpeBRepDSGapTool_get(
         handle: *const HandleTopOpeBRepDSGapTool,
@@ -12917,7 +13017,7 @@ extern "C" {
         I: *const HandleTopOpeBRepDSInterference,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn TopOpeBRepDS_GeometryData_to_owned(
+    pub fn TopOpeBRepDS_GeometryData_clone(
         self_: *const TopOpeBRepDS_GeometryData,
     ) -> crate::OcctResult<*mut TopOpeBRepDS_GeometryData>;
     // ======================== TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference ========================
@@ -12983,6 +13083,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_destructor(
         self_: *mut HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference,
     );
+    /// Clone Handle<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference> (increments reference count)
+    pub fn HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_clone(
+        self_: *const HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference>;
     /// Dereference Handle to get *const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference
     pub fn HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_get(
         handle: *const HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference,
@@ -13303,6 +13407,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSHDataStructure_destructor(
         self_: *mut HandleTopOpeBRepDSHDataStructure,
     );
+    /// Clone Handle<TopOpeBRepDS_HDataStructure> (increments reference count)
+    pub fn HandleTopOpeBRepDSHDataStructure_clone(
+        self_: *const HandleTopOpeBRepDSHDataStructure,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSHDataStructure>;
     /// Dereference Handle to get *const TopOpeBRepDS_HDataStructure
     pub fn HandleTopOpeBRepDSHDataStructure_get(
         handle: *const HandleTopOpeBRepDSHDataStructure,
@@ -13456,6 +13564,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSInterference>;
     /// Destroy Handle<TopOpeBRepDS_Interference>
     pub fn HandleTopOpeBRepDSInterference_destructor(self_: *mut HandleTopOpeBRepDSInterference);
+    /// Clone Handle<TopOpeBRepDS_Interference> (increments reference count)
+    pub fn HandleTopOpeBRepDSInterference_clone(
+        self_: *const HandleTopOpeBRepDSInterference,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSInterference>;
     /// Dereference Handle to get *const TopOpeBRepDS_Interference
     pub fn HandleTopOpeBRepDSInterference_get(
         handle: *const HandleTopOpeBRepDSInterference,
@@ -13728,6 +13840,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSMarker>;
     /// Destroy Handle<TopOpeBRepDS_Marker>
     pub fn HandleTopOpeBRepDSMarker_destructor(self_: *mut HandleTopOpeBRepDSMarker);
+    /// Clone Handle<TopOpeBRepDS_Marker> (increments reference count)
+    pub fn HandleTopOpeBRepDSMarker_clone(
+        self_: *const HandleTopOpeBRepDSMarker,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSMarker>;
     /// Dereference Handle to get *const TopOpeBRepDS_Marker
     pub fn HandleTopOpeBRepDSMarker_get(
         handle: *const HandleTopOpeBRepDSMarker,
@@ -14102,6 +14218,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSShapeShapeInterference_destructor(
         self_: *mut HandleTopOpeBRepDSShapeShapeInterference,
     );
+    /// Clone Handle<TopOpeBRepDS_ShapeShapeInterference> (increments reference count)
+    pub fn HandleTopOpeBRepDSShapeShapeInterference_clone(
+        self_: *const HandleTopOpeBRepDSShapeShapeInterference,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSShapeShapeInterference>;
     /// Dereference Handle to get *const TopOpeBRepDS_ShapeShapeInterference
     pub fn HandleTopOpeBRepDSShapeShapeInterference_get(
         handle: *const HandleTopOpeBRepDSShapeShapeInterference,
@@ -14280,6 +14400,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSSolidSurfaceInterference_destructor(
         self_: *mut HandleTopOpeBRepDSSolidSurfaceInterference,
     );
+    /// Clone Handle<TopOpeBRepDS_SolidSurfaceInterference> (increments reference count)
+    pub fn HandleTopOpeBRepDSSolidSurfaceInterference_clone(
+        self_: *const HandleTopOpeBRepDSSolidSurfaceInterference,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSSolidSurfaceInterference>;
     /// Dereference Handle to get *const TopOpeBRepDS_SolidSurfaceInterference
     pub fn HandleTopOpeBRepDSSolidSurfaceInterference_get(
         handle: *const HandleTopOpeBRepDSSolidSurfaceInterference,
@@ -14401,7 +14525,7 @@ extern "C" {
         theToKeep: bool,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn TopOpeBRepDS_Surface_to_owned(
+    pub fn TopOpeBRepDS_Surface_clone(
         self_: *const TopOpeBRepDS_Surface,
     ) -> crate::OcctResult<*mut TopOpeBRepDS_Surface>;
     // ======================== TopOpeBRepDS_SurfaceCurveInterference ========================
@@ -14467,6 +14591,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSSurfaceCurveInterference_destructor(
         self_: *mut HandleTopOpeBRepDSSurfaceCurveInterference,
     );
+    /// Clone Handle<TopOpeBRepDS_SurfaceCurveInterference> (increments reference count)
+    pub fn HandleTopOpeBRepDSSurfaceCurveInterference_clone(
+        self_: *const HandleTopOpeBRepDSSurfaceCurveInterference,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepDSSurfaceCurveInterference>;
     /// Dereference Handle to get *const TopOpeBRepDS_SurfaceCurveInterference
     pub fn HandleTopOpeBRepDSSurfaceCurveInterference_get(
         handle: *const HandleTopOpeBRepDSSurfaceCurveInterference,
@@ -15546,6 +15674,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopOpeBRepToolHBoxTool>;
     /// Destroy Handle<TopOpeBRepTool_HBoxTool>
     pub fn HandleTopOpeBRepToolHBoxTool_destructor(self_: *mut HandleTopOpeBRepToolHBoxTool);
+    /// Clone Handle<TopOpeBRepTool_HBoxTool> (increments reference count)
+    pub fn HandleTopOpeBRepToolHBoxTool_clone(
+        self_: *const HandleTopOpeBRepToolHBoxTool,
+    ) -> crate::OcctResult<*mut HandleTopOpeBRepToolHBoxTool>;
     /// Dereference Handle to get *const TopOpeBRepTool_HBoxTool
     pub fn HandleTopOpeBRepToolHBoxTool_get(
         handle: *const HandleTopOpeBRepToolHBoxTool,

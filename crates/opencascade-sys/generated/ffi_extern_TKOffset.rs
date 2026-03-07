@@ -749,6 +749,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepOffsetSimpleOffset>;
     /// Destroy Handle<BRepOffset_SimpleOffset>
     pub fn HandleBRepOffsetSimpleOffset_destructor(self_: *mut HandleBRepOffsetSimpleOffset);
+    /// Clone Handle<BRepOffset_SimpleOffset> (increments reference count)
+    pub fn HandleBRepOffsetSimpleOffset_clone(
+        self_: *const HandleBRepOffsetSimpleOffset,
+    ) -> crate::OcctResult<*mut HandleBRepOffsetSimpleOffset>;
     /// Dereference Handle to get *const BRepOffset_SimpleOffset
     pub fn HandleBRepOffsetSimpleOffset_get(
         handle: *const HandleBRepOffsetSimpleOffset,
@@ -2613,6 +2617,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBiTgteCurveOnEdge>;
     /// Destroy Handle<BiTgte_CurveOnEdge>
     pub fn HandleBiTgteCurveOnEdge_destructor(self_: *mut HandleBiTgteCurveOnEdge);
+    /// Clone Handle<BiTgte_CurveOnEdge> (increments reference count)
+    pub fn HandleBiTgteCurveOnEdge_clone(
+        self_: *const HandleBiTgteCurveOnEdge,
+    ) -> crate::OcctResult<*mut HandleBiTgteCurveOnEdge>;
     /// Dereference Handle to get *const BiTgte_CurveOnEdge
     pub fn HandleBiTgteCurveOnEdge_get(
         handle: *const HandleBiTgteCurveOnEdge,
@@ -2844,6 +2852,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBiTgteCurveOnVertex>;
     /// Destroy Handle<BiTgte_CurveOnVertex>
     pub fn HandleBiTgteCurveOnVertex_destructor(self_: *mut HandleBiTgteCurveOnVertex);
+    /// Clone Handle<BiTgte_CurveOnVertex> (increments reference count)
+    pub fn HandleBiTgteCurveOnVertex_clone(
+        self_: *const HandleBiTgteCurveOnVertex,
+    ) -> crate::OcctResult<*mut HandleBiTgteCurveOnVertex>;
     /// Dereference Handle to get *const BiTgte_CurveOnVertex
     pub fn HandleBiTgteCurveOnVertex_get(
         handle: *const HandleBiTgteCurveOnVertex,
@@ -3153,6 +3165,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDraftModification>;
     /// Destroy Handle<Draft_Modification>
     pub fn HandleDraftModification_destructor(self_: *mut HandleDraftModification);
+    /// Clone Handle<Draft_Modification> (increments reference count)
+    pub fn HandleDraftModification_clone(
+        self_: *const HandleDraftModification,
+    ) -> crate::OcctResult<*mut HandleDraftModification>;
     /// Dereference Handle to get *const Draft_Modification
     pub fn HandleDraftModification_get(
         handle: *const HandleDraftModification,

@@ -37,6 +37,22 @@ unsafe impl crate::CppDeletable for AsciiString {
     }
 }
 
+unsafe impl crate::CppCopyable for AsciiString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::TCollection_AsciiString_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for AsciiString {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl AsciiString {
     /// **Source:** `TCollection_AsciiString.hxx`:53 - `TCollection_AsciiString::TCollection_AsciiString()`
     /// Initializes a AsciiString to an empty AsciiString.
@@ -1267,15 +1283,6 @@ impl AsciiString {
             )
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::TCollection_AsciiString_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ── Skipped symbols for AsciiString (2 total) ──
@@ -1316,6 +1323,22 @@ pub use crate::ffi_types::TCollection_ExtendedString as ExtendedString;
 unsafe impl crate::CppDeletable for ExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::TCollection_ExtendedString_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for ExtendedString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::TCollection_ExtendedString_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for ExtendedString {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -1899,15 +1922,6 @@ impl ExtendedString {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::TCollection_ExtendedString_is_equal(theString1, theString2)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::TCollection_ExtendedString_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -3057,6 +3071,12 @@ unsafe impl crate::CppDeletable for HandleTCollectionHAsciiString {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTCollectionHAsciiString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTCollectionHAsciiString_clone(ptr))
+    }
+}
+
 impl HandleTCollectionHAsciiString {
     /// Dereference this Handle to access the underlying TCollection_HAsciiString
     pub fn get(&self) -> &crate::ffi_types::TCollection_HAsciiString {
@@ -3683,6 +3703,12 @@ pub use crate::ffi_types::HandleTCollectionHExtendedString;
 unsafe impl crate::CppDeletable for HandleTCollectionHExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTCollectionHExtendedString_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTCollectionHExtendedString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTCollectionHExtendedString_clone(ptr))
     }
 }
 

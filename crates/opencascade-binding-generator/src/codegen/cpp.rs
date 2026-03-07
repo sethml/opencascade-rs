@@ -753,8 +753,8 @@ pub fn generate_wrappers(
         }
         writeln!(output).unwrap();
 
-        // Handle type destructors
-        writeln!(output, "// Handle type destructors").unwrap();
+        // Handle type destructors and clone functions
+        writeln!(output, "// Handle type destructors and clone functions").unwrap();
         for (_inner_class, handle_name) in &handle_types {
             writeln!(
                 output,
@@ -762,6 +762,10 @@ pub fn generate_wrappers(
                 handle_name, handle_name
             )
             .unwrap();
+            writeln!(output, "extern \"C\" OcctResult<{}*> {}_clone(const {}* self_) {{", handle_name, handle_name, handle_name).unwrap();
+            writeln!(output, "    try {{ return {{new {}(*self_), nullptr}}; }}", handle_name).unwrap();
+            writeln!(output, "    OCCT_CATCH_RETURN").unwrap();
+            writeln!(output, "}}").unwrap();
         }
         writeln!(output).unwrap();
     }
@@ -965,10 +969,14 @@ pub fn generate_wrappers_for_group(
         }
         writeln!(output).unwrap();
 
-        writeln!(output, "// Handle type destructors").unwrap();
+        writeln!(output, "// Handle type destructors and clone functions").unwrap();
         for (inner_class, handle_name) in &handle_types {
             if own_class_names.contains(inner_class) {
                 writeln!(output, "extern \"C\" void {}_destructor({}* self_) {{ delete self_; }}", handle_name, handle_name).unwrap();
+                writeln!(output, "extern \"C\" OcctResult<{}*> {}_clone(const {}* self_) {{", handle_name, handle_name, handle_name).unwrap();
+                writeln!(output, "    try {{ return {{new {}(*self_), nullptr}}; }}", handle_name).unwrap();
+                writeln!(output, "    OCCT_CATCH_RETURN").unwrap();
+                writeln!(output, "}}").unwrap();
             }
         }
         writeln!(output).unwrap();

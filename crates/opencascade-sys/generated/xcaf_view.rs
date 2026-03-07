@@ -491,6 +491,12 @@ unsafe impl crate::CppDeletable for HandleXCAFViewObject {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFViewObject {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFViewObject_clone(ptr))
+    }
+}
+
 impl HandleXCAFViewObject {
     /// Dereference this Handle to access the underlying XCAFView_Object
     pub fn get(&self) -> &crate::ffi_types::XCAFView_Object {

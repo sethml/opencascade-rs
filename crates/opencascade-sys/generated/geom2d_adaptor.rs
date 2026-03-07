@@ -579,6 +579,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dAdaptorCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dAdaptorCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dAdaptorCurve_clone(ptr))
+    }
+}
+
 impl HandleGeom2dAdaptorCurve {
     /// Dereference this Handle to access the underlying Geom2dAdaptor_Curve
     pub fn get(&self) -> &crate::ffi_types::Geom2dAdaptor_Curve {

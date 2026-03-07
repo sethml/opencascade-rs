@@ -304,6 +304,22 @@ unsafe impl crate::CppDeletable for Ax1 {
     }
 }
 
+unsafe impl crate::CppCopyable for Ax1 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Ax1_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Ax1 {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Ax1 {
     /// **Source:** `gp_Ax1.hxx`:44 - `gp_Ax1::gp_Ax1()`
     /// Creates an axis object representing Z axis of
@@ -617,15 +633,6 @@ impl Ax1 {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Ax1_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -666,6 +673,22 @@ pub use crate::ffi_types::gp_Ax2 as Ax2;
 unsafe impl crate::CppDeletable for Ax2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Ax2_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Ax2 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Ax2_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Ax2 {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -1103,15 +1126,6 @@ impl Ax2 {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Ax2_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -1141,6 +1155,22 @@ pub use crate::ffi_types::gp_Ax22d as Ax22d;
 unsafe impl crate::CppDeletable for Ax22d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Ax22d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Ax22d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Ax22d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Ax22d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -1483,15 +1513,6 @@ impl Ax22d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Ax22d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -1522,6 +1543,22 @@ pub use crate::ffi_types::gp_Ax2d as Ax2d;
 unsafe impl crate::CppDeletable for Ax2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Ax2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Ax2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Ax2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Ax2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -1799,15 +1836,6 @@ impl Ax2d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Ax2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -1854,6 +1882,22 @@ pub use crate::ffi_types::gp_Ax3 as Ax3;
 unsafe impl crate::CppDeletable for Ax3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Ax3_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Ax3 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Ax3_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Ax3 {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -2289,15 +2333,6 @@ impl Ax3 {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Ax3_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -2336,6 +2371,22 @@ pub use crate::ffi_types::gp_Circ as Circ;
 unsafe impl crate::CppDeletable for Circ {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Circ_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Circ {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Circ_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Circ {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -2656,15 +2707,6 @@ impl Circ {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Circ_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -2701,6 +2743,22 @@ pub use crate::ffi_types::gp_Circ2d as Circ2d;
 unsafe impl crate::CppDeletable for Circ2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Circ2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Circ2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Circ2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Circ2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -3096,15 +3154,6 @@ impl Circ2d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Circ2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -3146,6 +3195,22 @@ pub use crate::ffi_types::gp_Cone as Cone;
 unsafe impl crate::CppDeletable for Cone {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Cone_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Cone {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Cone_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Cone {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -3505,15 +3570,6 @@ impl Cone {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Cone_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -3546,6 +3602,22 @@ pub use crate::ffi_types::gp_Cylinder as Cylinder;
 unsafe impl crate::CppDeletable for Cylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Cylinder_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Cylinder {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Cylinder_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Cylinder {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -3872,15 +3944,6 @@ impl Cylinder {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Cylinder_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -3900,6 +3963,22 @@ pub use crate::ffi_types::gp_Dir as Dir;
 unsafe impl crate::CppDeletable for Dir {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Dir_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Dir {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Dir_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Dir {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -4323,15 +4402,6 @@ impl Dir {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Dir_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -4352,6 +4422,22 @@ pub use crate::ffi_types::gp_Dir2d as Dir2d;
 unsafe impl crate::CppDeletable for Dir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Dir2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Dir2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Dir2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Dir2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -4721,15 +4807,6 @@ impl Dir2d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Dir2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -4767,6 +4844,22 @@ pub use crate::ffi_types::gp_Elips as Elips;
 unsafe impl crate::CppDeletable for Elips {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Elips_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Elips {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Elips_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Elips {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -5169,15 +5262,6 @@ impl Elips {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Elips_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -5210,6 +5294,22 @@ pub use crate::ffi_types::gp_Elips2d as Elips2d;
 unsafe impl crate::CppDeletable for Elips2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Elips2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Elips2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Elips2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Elips2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -5682,15 +5782,6 @@ impl Elips2d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Elips2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -5728,6 +5819,22 @@ pub use crate::ffi_types::gp_GTrsf as GTrsf;
 unsafe impl crate::CppDeletable for GTrsf {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_GTrsf_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for GTrsf {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_GTrsf_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for GTrsf {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -6044,15 +6151,6 @@ impl GTrsf {
             )))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_GTrsf_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -6089,6 +6187,22 @@ pub use crate::ffi_types::gp_GTrsf2d as GTrsf2d;
 unsafe impl crate::CppDeletable for GTrsf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_GTrsf2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for GTrsf2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_GTrsf2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for GTrsf2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -6371,15 +6485,6 @@ impl GTrsf2d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_GTrsf2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -6438,6 +6543,22 @@ pub use crate::ffi_types::gp_Hypr as Hypr;
 unsafe impl crate::CppDeletable for Hypr {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Hypr_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Hypr {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Hypr_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Hypr {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -6896,15 +7017,6 @@ impl Hypr {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Hypr_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -6957,6 +7069,22 @@ pub use crate::ffi_types::gp_Hypr2d as Hypr2d;
 unsafe impl crate::CppDeletable for Hypr2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Hypr2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Hypr2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Hypr2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Hypr2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -7506,15 +7634,6 @@ impl Hypr2d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Hypr2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -7541,6 +7660,22 @@ pub use crate::ffi_types::gp_Lin as Lin;
 unsafe impl crate::CppDeletable for Lin {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Lin_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Lin {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Lin_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Lin {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -7860,15 +7995,6 @@ impl Lin {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Lin_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -7899,6 +8025,22 @@ pub use crate::ffi_types::gp_Lin2d as Lin2d;
 unsafe impl crate::CppDeletable for Lin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Lin2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Lin2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Lin2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Lin2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -8228,15 +8370,6 @@ impl Lin2d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Lin2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -8251,6 +8384,22 @@ pub use crate::ffi_types::gp_Mat as Mat;
 unsafe impl crate::CppDeletable for Mat {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Mat_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Mat {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Mat_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Mat {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -8653,15 +8802,6 @@ impl Mat {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Mat_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -8676,6 +8816,22 @@ pub use crate::ffi_types::gp_Mat2d as Mat2d;
 unsafe impl crate::CppDeletable for Mat2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Mat2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Mat2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Mat2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Mat2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -9031,15 +9187,6 @@ impl Mat2d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Mat2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -9079,6 +9226,22 @@ pub use crate::ffi_types::gp_Parab as Parab;
 unsafe impl crate::CppDeletable for Parab {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Parab_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Parab {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Parab_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Parab {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -9415,15 +9578,6 @@ impl Parab {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Parab_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -9460,6 +9614,22 @@ pub use crate::ffi_types::gp_Parab2d as Parab2d;
 unsafe impl crate::CppDeletable for Parab2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Parab2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Parab2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Parab2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Parab2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -9874,15 +10044,6 @@ impl Parab2d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Parab2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -9916,6 +10077,22 @@ pub use crate::ffi_types::gp_Pln as Pln;
 unsafe impl crate::CppDeletable for Pln {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Pln_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Pln {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Pln_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Pln {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -10334,15 +10511,6 @@ impl Pln {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Pln_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -10356,6 +10524,22 @@ pub use crate::ffi_types::gp_Pnt as Pnt;
 unsafe impl crate::CppDeletable for Pnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Pnt_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Pnt {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Pnt_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Pnt {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -10690,15 +10874,6 @@ impl Pnt {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Pnt_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -10712,6 +10887,22 @@ pub use crate::ffi_types::gp_Pnt2d as Pnt2d;
 unsafe impl crate::CppDeletable for Pnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Pnt2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Pnt2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Pnt2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Pnt2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -11008,15 +11199,6 @@ impl Pnt2d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Pnt2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -11036,6 +11218,22 @@ pub use crate::ffi_types::gp_Quaternion as Quaternion;
 unsafe impl crate::CppDeletable for Quaternion {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Quaternion_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Quaternion {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Quaternion_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Quaternion {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -11499,15 +11697,6 @@ impl Quaternion {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Quaternion_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -11522,6 +11711,22 @@ pub use crate::ffi_types::gp_QuaternionNLerp as QuaternionNLerp;
 unsafe impl crate::CppDeletable for QuaternionNLerp {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_QuaternionNLerp_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for QuaternionNLerp {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_QuaternionNLerp_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for QuaternionNLerp {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -11597,15 +11802,6 @@ impl QuaternionNLerp {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_QuaternionNLerp_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -11620,6 +11816,22 @@ pub use crate::ffi_types::gp_QuaternionSLerp as QuaternionSLerp;
 unsafe impl crate::CppDeletable for QuaternionSLerp {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_QuaternionSLerp_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for QuaternionSLerp {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_QuaternionSLerp_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for QuaternionSLerp {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -11695,15 +11907,6 @@ impl QuaternionSLerp {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_QuaternionSLerp_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -11736,6 +11939,22 @@ pub use crate::ffi_types::gp_Sphere as Sphere;
 unsafe impl crate::CppDeletable for Sphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Sphere_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Sphere {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Sphere_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Sphere {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -12068,15 +12287,6 @@ impl Sphere {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Sphere_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -12121,6 +12331,22 @@ pub use crate::ffi_types::gp_Torus as Torus;
 unsafe impl crate::CppDeletable for Torus {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Torus_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Torus {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Torus_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Torus {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -12486,15 +12712,6 @@ impl Torus {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Torus_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -12526,6 +12743,22 @@ pub use crate::ffi_types::gp_Trsf as Trsf;
 unsafe impl crate::CppDeletable for Trsf {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Trsf_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Trsf {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Trsf_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Trsf {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -13017,15 +13250,6 @@ impl Trsf {
             crate::ffi_extern_TKMath::gp_Trsf_transforms_xyz(self as *const Self, theCoord)
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Trsf_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -13054,6 +13278,22 @@ pub use crate::ffi_types::gp_Trsf2d as Trsf2d;
 unsafe impl crate::CppDeletable for Trsf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Trsf2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Trsf2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Trsf2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Trsf2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -13372,15 +13612,6 @@ impl Trsf2d {
             )
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Trsf2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -13394,6 +13625,22 @@ pub use crate::ffi_types::gp_Vec as Vec;
 unsafe impl crate::CppDeletable for Vec {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Vec_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Vec {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Vec_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Vec {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -14075,15 +14322,6 @@ impl Vec {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Vec_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -14097,6 +14335,22 @@ pub use crate::ffi_types::gp_Vec2d as Vec2d;
 unsafe impl crate::CppDeletable for Vec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_Vec2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Vec2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_Vec2d_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Vec2d {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -14648,15 +14902,6 @@ impl Vec2d {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_Vec2d_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -14971,6 +15216,12 @@ unsafe impl crate::CppDeletable for HandlegpVectorWithNullMagnitude {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlegpVectorWithNullMagnitude {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlegpVectorWithNullMagnitude_clone(ptr))
+    }
+}
+
 impl HandlegpVectorWithNullMagnitude {
     /// Dereference this Handle to access the underlying gp_VectorWithNullMagnitude
     pub fn get(&self) -> &crate::ffi_types::gp_VectorWithNullMagnitude {
@@ -15038,6 +15289,22 @@ pub use crate::ffi_types::gp_XY as XY;
 unsafe impl crate::CppDeletable for XY {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_XY_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for XY {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_XY_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for XY {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -15463,15 +15730,6 @@ impl XY {
             ))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_XY_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -15490,6 +15748,22 @@ pub use crate::ffi_types::gp_XYZ as XYZ;
 unsafe impl crate::CppDeletable for XYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::gp_XYZ_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for XYZ {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::gp_XYZ_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for XYZ {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -16066,15 +16340,6 @@ impl XYZ {
                 theXYZ2,
             )
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::gp_XYZ_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 

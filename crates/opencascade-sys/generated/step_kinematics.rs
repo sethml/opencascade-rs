@@ -345,6 +345,16 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsActuatedKinPairAndOrderK
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsActuatedKinPairAndOrderKinPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsActuatedKinPairAndOrderKinPair_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepKinematicsActuatedKinPairAndOrderKinPair {
     /// Dereference this Handle to access the underlying StepKinematics_ActuatedKinPairAndOrderKinPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_ActuatedKinPairAndOrderKinPair {
@@ -900,6 +910,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsActuatedKinematicPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsActuatedKinematicPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsActuatedKinematicPair_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsActuatedKinematicPair {
     /// Dereference this Handle to access the underlying StepKinematics_ActuatedKinematicPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_ActuatedKinematicPair {
@@ -1148,6 +1166,12 @@ unsafe impl crate::CppDeletable
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsContextDependentKinematicLinkRepresentation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsContextDependentKinematicLinkRepresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsContextDependentKinematicLinkRepresentation_clone(ptr))
     }
 }
 
@@ -1622,6 +1646,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsCylindricalPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsCylindricalPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsCylindricalPair_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepKinematicsCylindricalPair {
     /// Dereference this Handle to access the underlying StepKinematics_CylindricalPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_CylindricalPair {
@@ -2016,6 +2048,14 @@ pub use crate::ffi_types::HandleStepKinematicsCylindricalPairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsCylindricalPairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsCylindricalPairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsCylindricalPairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsCylindricalPairValue_clone(ptr),
+        )
     }
 }
 
@@ -2636,6 +2676,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsCylindricalPairWithRange
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsCylindricalPairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsCylindricalPairWithRange_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsCylindricalPairWithRange {
     /// Dereference this Handle to access the underlying StepKinematics_CylindricalPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_CylindricalPairWithRange {
@@ -3149,6 +3197,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsFullyConstrainedPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsFullyConstrainedPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsFullyConstrainedPair_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsFullyConstrainedPair {
     /// Dereference this Handle to access the underlying StepKinematics_FullyConstrainedPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_FullyConstrainedPair {
@@ -3658,6 +3714,12 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsGearPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsGearPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsGearPair_clone(ptr))
+    }
+}
+
 impl HandleStepKinematicsGearPair {
     /// Dereference this Handle to access the underlying StepKinematics_GearPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_GearPair {
@@ -4046,6 +4108,14 @@ pub use crate::ffi_types::HandleStepKinematicsGearPairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsGearPairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsGearPairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsGearPairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsGearPairValue_clone(
+            ptr,
+        ))
     }
 }
 
@@ -4595,6 +4665,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsGearPairWithRange {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsGearPairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsGearPairWithRange_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsGearPairWithRange {
     /// Dereference this Handle to access the underlying StepKinematics_GearPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_GearPairWithRange {
@@ -4964,6 +5042,14 @@ pub use crate::ffi_types::HandleStepKinematicsHighOrderKinematicPair;
 unsafe impl crate::CppDeletable for HandleStepKinematicsHighOrderKinematicPair {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsHighOrderKinematicPair_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsHighOrderKinematicPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsHighOrderKinematicPair_clone(ptr),
+        )
     }
 }
 
@@ -5728,6 +5814,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsHomokineticPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsHomokineticPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsHomokineticPair_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepKinematicsHomokineticPair {
     /// Dereference this Handle to access the underlying StepKinematics_HomokineticPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_HomokineticPair {
@@ -6112,6 +6206,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsKinematicJoint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicJoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicJoint_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepKinematicsKinematicJoint {
     /// Dereference this Handle to access the underlying StepKinematics_KinematicJoint
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicJoint {
@@ -6424,6 +6526,14 @@ pub use crate::ffi_types::HandleStepKinematicsKinematicLink;
 unsafe impl crate::CppDeletable for HandleStepKinematicsKinematicLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicLink_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicLink {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicLink_clone(
+            ptr,
+        ))
     }
 }
 
@@ -6759,6 +6869,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsKinematicLinkRepresentat
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicLinkRepresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicLinkRepresentation_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsKinematicLinkRepresentation {
     /// Dereference this Handle to access the underlying StepKinematics_KinematicLinkRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicLinkRepresentation {
@@ -7061,6 +7179,12 @@ pub use crate::ffi_types::HandleStepKinematicsKinematicLinkRepresentationAssocia
 unsafe impl crate::CppDeletable for HandleStepKinematicsKinematicLinkRepresentationAssociation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicLinkRepresentationAssociation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicLinkRepresentationAssociation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicLinkRepresentationAssociation_clone(ptr))
     }
 }
 
@@ -7393,6 +7517,14 @@ pub use crate::ffi_types::HandleStepKinematicsKinematicPair;
 unsafe impl crate::CppDeletable for HandleStepKinematicsKinematicPair {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicPair_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicPair_clone(
+            ptr,
+        ))
     }
 }
 
@@ -8344,6 +8476,12 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsKinematicPropertyDefinit
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicPropertyDefinitionRepresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicPropertyDefinitionRepresentation_clone(ptr))
+    }
+}
+
 impl HandleStepKinematicsKinematicPropertyDefinitionRepresentation {
     /// Dereference this Handle to access the underlying StepKinematics_KinematicPropertyDefinitionRepresentation
     pub fn get(
@@ -8639,6 +8777,12 @@ pub use crate::ffi_types::HandleStepKinematicsKinematicPropertyMechanismRepresen
 unsafe impl crate::CppDeletable for HandleStepKinematicsKinematicPropertyMechanismRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicPropertyMechanismRepresentation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicPropertyMechanismRepresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicPropertyMechanismRepresentation_clone(ptr))
     }
 }
 
@@ -8954,6 +9098,12 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsKinematicTopologyDirecte
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicTopologyDirectedStructure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicTopologyDirectedStructure_clone(ptr))
+    }
+}
+
 impl HandleStepKinematicsKinematicTopologyDirectedStructure {
     /// Dereference this Handle to access the underlying StepKinematics_KinematicTopologyDirectedStructure
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicTopologyDirectedStructure {
@@ -9253,6 +9403,16 @@ pub use crate::ffi_types::HandleStepKinematicsKinematicTopologyNetworkStructure;
 unsafe impl crate::CppDeletable for HandleStepKinematicsKinematicTopologyNetworkStructure {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicTopologyNetworkStructure_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicTopologyNetworkStructure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicTopologyNetworkStructure_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -9761,6 +9921,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsKinematicTopologyStructu
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicTopologyStructure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicTopologyStructure_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsKinematicTopologyStructure {
     /// Dereference this Handle to access the underlying StepKinematics_KinematicTopologyStructure
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicTopologyStructure {
@@ -10110,6 +10278,14 @@ pub use crate::ffi_types::HandleStepKinematicsLinearFlexibleAndPinionPair;
 unsafe impl crate::CppDeletable for HandleStepKinematicsLinearFlexibleAndPinionPair {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsLinearFlexibleAndPinionPair_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsLinearFlexibleAndPinionPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLinearFlexibleAndPinionPair_clone(ptr),
+        )
     }
 }
 
@@ -10492,6 +10668,16 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsLinearFlexibleAndPlanarC
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsLinearFlexibleAndPlanarCurvePair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLinearFlexibleAndPlanarCurvePair_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepKinematicsLinearFlexibleAndPlanarCurvePair {
     /// Dereference this Handle to access the underlying StepKinematics_LinearFlexibleAndPlanarCurvePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_LinearFlexibleAndPlanarCurvePair {
@@ -10816,6 +11002,16 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsLinearFlexibleLinkRepres
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsLinearFlexibleLinkRepresentation_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsLinearFlexibleLinkRepresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLinearFlexibleLinkRepresentation_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -11280,6 +11476,14 @@ pub use crate::ffi_types::HandleStepKinematicsLowOrderKinematicPair;
 unsafe impl crate::CppDeletable for HandleStepKinematicsLowOrderKinematicPair {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsLowOrderKinematicPair_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsLowOrderKinematicPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLowOrderKinematicPair_clone(ptr),
+        )
     }
 }
 
@@ -12002,6 +12206,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsLowOrderKinematicPairVal
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsLowOrderKinematicPairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLowOrderKinematicPairValue_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsLowOrderKinematicPairValue {
     /// Dereference this Handle to access the underlying StepKinematics_LowOrderKinematicPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_LowOrderKinematicPairValue {
@@ -12302,6 +12514,12 @@ pub use crate::ffi_types::HandleStepKinematicsLowOrderKinematicPairWithMotionCou
 unsafe impl crate::CppDeletable for HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling_clone(ptr))
     }
 }
 
@@ -13190,6 +13408,16 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsLowOrderKinematicPairWit
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsLowOrderKinematicPairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLowOrderKinematicPairWithRange_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepKinematicsLowOrderKinematicPairWithRange {
     /// Dereference this Handle to access the underlying StepKinematics_LowOrderKinematicPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_LowOrderKinematicPairWithRange {
@@ -13553,6 +13781,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsMechanismRepresentation 
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsMechanismRepresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsMechanismRepresentation_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsMechanismRepresentation {
     /// Dereference this Handle to access the underlying StepKinematics_MechanismRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_MechanismRepresentation {
@@ -13862,6 +14098,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsMechanismStateRepresenta
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsMechanismStateRepresentation_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsMechanismStateRepresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsMechanismStateRepresentation_clone(ptr),
+        )
     }
 }
 
@@ -14269,6 +14513,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsOrientedJoint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsOrientedJoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsOrientedJoint_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepKinematicsOrientedJoint {
     /// Dereference this Handle to access the underlying StepKinematics_OrientedJoint
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_OrientedJoint {
@@ -14567,6 +14819,16 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsPairRepresentationRelati
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsPairRepresentationRelationship_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsPairRepresentationRelationship {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPairRepresentationRelationship_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -14889,6 +15151,12 @@ pub use crate::ffi_types::HandleStepKinematicsPairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsPairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsPairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsPairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsPairValue_clone(ptr))
     }
 }
 
@@ -15608,6 +15876,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsPlanarCurvePair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsPlanarCurvePair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsPlanarCurvePair_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepKinematicsPlanarCurvePair {
     /// Dereference this Handle to access the underlying StepKinematics_PlanarCurvePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PlanarCurvePair {
@@ -16172,6 +16448,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsPlanarCurvePairRange {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsPlanarCurvePairRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPlanarCurvePairRange_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsPlanarCurvePairRange {
     /// Dereference this Handle to access the underlying StepKinematics_PlanarCurvePairRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PlanarCurvePairRange {
@@ -16682,6 +16966,12 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsPlanarPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsPlanarPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsPlanarPair_clone(ptr))
+    }
+}
+
 impl HandleStepKinematicsPlanarPair {
     /// Dereference this Handle to access the underlying StepKinematics_PlanarPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PlanarPair {
@@ -17110,6 +17400,14 @@ pub use crate::ffi_types::HandleStepKinematicsPlanarPairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsPlanarPairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsPlanarPairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsPlanarPairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsPlanarPairValue_clone(
+            ptr,
+        ))
     }
 }
 
@@ -17791,6 +18089,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsPlanarPairWithRange {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsPlanarPairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPlanarPairWithRange_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsPlanarPairWithRange {
     /// Dereference this Handle to access the underlying StepKinematics_PlanarPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PlanarPairWithRange {
@@ -18224,6 +18530,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsPointOnPlanarCurvePair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnPlanarCurvePair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnPlanarCurvePair_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsPointOnPlanarCurvePair {
     /// Dereference this Handle to access the underlying StepKinematics_PointOnPlanarCurvePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PointOnPlanarCurvePair {
@@ -18594,6 +18908,14 @@ pub use crate::ffi_types::HandleStepKinematicsPointOnPlanarCurvePairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsPointOnPlanarCurvePairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnPlanarCurvePairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnPlanarCurvePairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnPlanarCurvePairValue_clone(ptr),
+        )
     }
 }
 
@@ -19164,6 +19486,16 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsPointOnPlanarCurvePairWi
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnPlanarCurvePairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnPlanarCurvePairWithRange_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepKinematicsPointOnPlanarCurvePairWithRange {
     /// Dereference this Handle to access the underlying StepKinematics_PointOnPlanarCurvePairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PointOnPlanarCurvePairWithRange {
@@ -19578,6 +19910,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsPointOnSurfacePair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnSurfacePair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnSurfacePair_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsPointOnSurfacePair {
     /// Dereference this Handle to access the underlying StepKinematics_PointOnSurfacePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PointOnSurfacePair {
@@ -19967,6 +20307,14 @@ pub use crate::ffi_types::HandleStepKinematicsPointOnSurfacePairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsPointOnSurfacePairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnSurfacePairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnSurfacePairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnSurfacePairValue_clone(ptr),
+        )
     }
 }
 
@@ -20546,6 +20894,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsPointOnSurfacePairWithRa
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnSurfacePairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnSurfacePairWithRange_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsPointOnSurfacePairWithRange {
     /// Dereference this Handle to access the underlying StepKinematics_PointOnSurfacePairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PointOnSurfacePairWithRange {
@@ -21068,6 +21424,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsPrismaticPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsPrismaticPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsPrismaticPair_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepKinematicsPrismaticPair {
     /// Dereference this Handle to access the underlying StepKinematics_PrismaticPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PrismaticPair {
@@ -21444,6 +21808,14 @@ pub use crate::ffi_types::HandleStepKinematicsPrismaticPairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsPrismaticPairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsPrismaticPairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsPrismaticPairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPrismaticPairValue_clone(ptr),
+        )
     }
 }
 
@@ -22010,6 +22382,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsPrismaticPairWithRange {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsPrismaticPairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPrismaticPairWithRange_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsPrismaticPairWithRange {
     /// Dereference this Handle to access the underlying StepKinematics_PrismaticPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PrismaticPairWithRange {
@@ -22323,6 +22703,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsProductDefinitionKinemat
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsProductDefinitionKinematics {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsProductDefinitionKinematics_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsProductDefinitionKinematics {
     /// Dereference this Handle to access the underlying StepKinematics_ProductDefinitionKinematics
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_ProductDefinitionKinematics {
@@ -22575,6 +22963,12 @@ pub use crate::ffi_types::HandleStepKinematicsProductDefinitionRelationshipKinem
 unsafe impl crate::CppDeletable for HandleStepKinematicsProductDefinitionRelationshipKinematics {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsProductDefinitionRelationshipKinematics_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsProductDefinitionRelationshipKinematics {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsProductDefinitionRelationshipKinematics_clone(ptr))
     }
 }
 
@@ -22954,6 +23348,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsRackAndPinionPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsRackAndPinionPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRackAndPinionPair_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsRackAndPinionPair {
     /// Dereference this Handle to access the underlying StepKinematics_RackAndPinionPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RackAndPinionPair {
@@ -23321,6 +23723,14 @@ pub use crate::ffi_types::HandleStepKinematicsRackAndPinionPairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsRackAndPinionPairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsRackAndPinionPairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsRackAndPinionPairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRackAndPinionPairValue_clone(ptr),
+        )
     }
 }
 
@@ -23766,6 +24176,14 @@ pub use crate::ffi_types::HandleStepKinematicsRackAndPinionPairWithRange;
 unsafe impl crate::CppDeletable for HandleStepKinematicsRackAndPinionPairWithRange {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsRackAndPinionPairWithRange_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsRackAndPinionPairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRackAndPinionPairWithRange_clone(ptr),
+        )
     }
 }
 
@@ -24293,6 +24711,12 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsRevolutePair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsRevolutePair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsRevolutePair_clone(ptr))
+    }
+}
+
 impl HandleStepKinematicsRevolutePair {
     /// Dereference this Handle to access the underlying StepKinematics_RevolutePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RevolutePair {
@@ -24667,6 +25091,14 @@ pub use crate::ffi_types::HandleStepKinematicsRevolutePairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsRevolutePairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsRevolutePairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsRevolutePairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRevolutePairValue_clone(ptr),
+        )
     }
 }
 
@@ -25233,6 +25665,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsRevolutePairWithRange {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsRevolutePairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRevolutePairWithRange_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsRevolutePairWithRange {
     /// Dereference this Handle to access the underlying StepKinematics_RevolutePairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RevolutePairWithRange {
@@ -25617,6 +26057,14 @@ pub use crate::ffi_types::HandleStepKinematicsRigidLinkRepresentation;
 unsafe impl crate::CppDeletable for HandleStepKinematicsRigidLinkRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsRigidLinkRepresentation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsRigidLinkRepresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRigidLinkRepresentation_clone(ptr),
+        )
     }
 }
 
@@ -26324,6 +26772,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsRollingCurvePair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsRollingCurvePair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsRollingCurvePair_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepKinematicsRollingCurvePair {
     /// Dereference this Handle to access the underlying StepKinematics_RollingCurvePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RollingCurvePair {
@@ -26684,6 +27140,14 @@ pub use crate::ffi_types::HandleStepKinematicsRollingCurvePairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsRollingCurvePairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsRollingCurvePairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsRollingCurvePairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRollingCurvePairValue_clone(ptr),
+        )
     }
 }
 
@@ -27140,6 +27604,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsRollingSurfacePair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsRollingSurfacePair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRollingSurfacePair_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsRollingSurfacePair {
     /// Dereference this Handle to access the underlying StepKinematics_RollingSurfacePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RollingSurfacePair {
@@ -27526,6 +27998,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsRollingSurfacePairValue 
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsRollingSurfacePairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRollingSurfacePairValue_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsRollingSurfacePairValue {
     /// Dereference this Handle to access the underlying StepKinematics_RollingSurfacePairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RollingSurfacePairValue {
@@ -27861,6 +28341,14 @@ pub use crate::ffi_types::HandleStepKinematicsRotationAboutDirection;
 unsafe impl crate::CppDeletable for HandleStepKinematicsRotationAboutDirection {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsRotationAboutDirection_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsRotationAboutDirection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRotationAboutDirection_clone(ptr),
+        )
     }
 }
 
@@ -28263,6 +28751,12 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsScrewPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsScrewPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsScrewPair_clone(ptr))
+    }
+}
+
 impl HandleStepKinematicsScrewPair {
     /// Dereference this Handle to access the underlying StepKinematics_ScrewPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_ScrewPair {
@@ -28649,6 +29143,14 @@ pub use crate::ffi_types::HandleStepKinematicsScrewPairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsScrewPairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsScrewPairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsScrewPairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsScrewPairValue_clone(
+            ptr,
+        ))
     }
 }
 
@@ -29117,6 +29619,14 @@ pub use crate::ffi_types::HandleStepKinematicsScrewPairWithRange;
 unsafe impl crate::CppDeletable for HandleStepKinematicsScrewPairWithRange {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsScrewPairWithRange_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsScrewPairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsScrewPairWithRange_clone(ptr),
+        )
     }
 }
 
@@ -29593,6 +30103,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsSlidingCurvePair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsSlidingCurvePair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsSlidingCurvePair_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepKinematicsSlidingCurvePair {
     /// Dereference this Handle to access the underlying StepKinematics_SlidingCurvePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SlidingCurvePair {
@@ -29976,6 +30494,14 @@ pub use crate::ffi_types::HandleStepKinematicsSlidingCurvePairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsSlidingCurvePairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsSlidingCurvePairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsSlidingCurvePairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSlidingCurvePairValue_clone(ptr),
+        )
     }
 }
 
@@ -30432,6 +30958,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsSlidingSurfacePair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsSlidingSurfacePair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSlidingSurfacePair_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsSlidingSurfacePair {
     /// Dereference this Handle to access the underlying StepKinematics_SlidingSurfacePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SlidingSurfacePair {
@@ -30838,6 +31372,14 @@ pub use crate::ffi_types::HandleStepKinematicsSlidingSurfacePairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsSlidingSurfacePairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsSlidingSurfacePairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsSlidingSurfacePairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSlidingSurfacePairValue_clone(ptr),
+        )
     }
 }
 
@@ -31605,6 +32147,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsSphericalPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsSphericalPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPair_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepKinematicsSphericalPair {
     /// Dereference this Handle to access the underlying StepKinematics_SphericalPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SphericalPair {
@@ -32236,6 +32786,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsSphericalPairValue {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsSphericalPairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPairValue_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsSphericalPairValue {
     /// Dereference this Handle to access the underlying StepKinematics_SphericalPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SphericalPairValue {
@@ -32728,6 +33286,14 @@ pub use crate::ffi_types::HandleStepKinematicsSphericalPairWithPin;
 unsafe impl crate::CppDeletable for HandleStepKinematicsSphericalPairWithPin {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPairWithPin_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsSphericalPairWithPin {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPairWithPin_clone(ptr),
+        )
     }
 }
 
@@ -33352,6 +33918,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsSphericalPairWithPinAndR
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPairWithPinAndRange_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsSphericalPairWithPinAndRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPairWithPinAndRange_clone(ptr),
+        )
     }
 }
 
@@ -34088,6 +34662,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsSphericalPairWithRange {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsSphericalPairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPairWithRange_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsSphericalPairWithRange {
     /// Dereference this Handle to access the underlying StepKinematics_SphericalPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SphericalPairWithRange {
@@ -34553,6 +35135,12 @@ pub use crate::ffi_types::HandleStepKinematicsSurfacePair;
 unsafe impl crate::CppDeletable for HandleStepKinematicsSurfacePair {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsSurfacePair_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsSurfacePair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsSurfacePair_clone(ptr))
     }
 }
 
@@ -35178,6 +35766,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsSurfacePairWithRange {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsSurfacePairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSurfacePairWithRange_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsSurfacePairWithRange {
     /// Dereference this Handle to access the underlying StepKinematics_SurfacePairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SurfacePairWithRange {
@@ -35694,6 +36290,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsUnconstrainedPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsUnconstrainedPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsUnconstrainedPair_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepKinematicsUnconstrainedPair {
     /// Dereference this Handle to access the underlying StepKinematics_UnconstrainedPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_UnconstrainedPair {
@@ -36052,6 +36656,14 @@ pub use crate::ffi_types::HandleStepKinematicsUnconstrainedPairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsUnconstrainedPairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsUnconstrainedPairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsUnconstrainedPairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsUnconstrainedPairValue_clone(ptr),
+        )
     }
 }
 
@@ -36595,6 +37207,14 @@ unsafe impl crate::CppDeletable for HandleStepKinematicsUniversalPair {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepKinematicsUniversalPair {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepKinematicsUniversalPair_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepKinematicsUniversalPair {
     /// Dereference this Handle to access the underlying StepKinematics_UniversalPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_UniversalPair {
@@ -37010,6 +37630,14 @@ pub use crate::ffi_types::HandleStepKinematicsUniversalPairValue;
 unsafe impl crate::CppDeletable for HandleStepKinematicsUniversalPairValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsUniversalPairValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsUniversalPairValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsUniversalPairValue_clone(ptr),
+        )
     }
 }
 
@@ -37654,6 +38282,14 @@ pub use crate::ffi_types::HandleStepKinematicsUniversalPairWithRange;
 unsafe impl crate::CppDeletable for HandleStepKinematicsUniversalPairWithRange {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepKinematicsUniversalPairWithRange_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepKinematicsUniversalPairWithRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsUniversalPairWithRange_clone(ptr),
+        )
     }
 }
 

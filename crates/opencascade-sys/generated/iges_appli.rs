@@ -973,6 +973,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliDrilledHole {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliDrilledHole {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliDrilledHole_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliDrilledHole {
     /// Dereference this Handle to access the underlying IGESAppli_DrilledHole
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_DrilledHole {
@@ -2174,6 +2180,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliElementResults {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliElementResults {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliElementResults_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliElementResults {
     /// Dereference this Handle to access the underlying IGESAppli_ElementResults
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_ElementResults {
@@ -3144,6 +3156,12 @@ pub use crate::ffi_types::HandleIGESAppliFiniteElement;
 unsafe impl crate::CppDeletable for HandleIGESAppliFiniteElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESAppliFiniteElement_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESAppliFiniteElement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliFiniteElement_clone(ptr))
     }
 }
 
@@ -4203,6 +4221,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliFlow {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliFlow {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliFlow_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliFlow {
     /// Dereference this Handle to access the underlying IGESAppli_Flow
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_Flow {
@@ -5172,6 +5196,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliFlowLineSpec {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliFlowLineSpec {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliFlowLineSpec_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliFlowLineSpec {
     /// Dereference this Handle to access the underlying IGESAppli_FlowLineSpec
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_FlowLineSpec {
@@ -5821,6 +5851,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliGeneralModule {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliGeneralModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliGeneralModule_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliGeneralModule {
     /// Dereference this Handle to access the underlying IGESAppli_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_GeneralModule {
@@ -6099,6 +6135,14 @@ unsafe impl crate::CppDeletable for HandleIGESAppliHArray1OfFiniteElement {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliHArray1OfFiniteElement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliHArray1OfFiniteElement_clone(ptr),
+        )
+    }
+}
+
 impl HandleIGESAppliHArray1OfFiniteElement {
     /// Dereference this Handle to access the underlying IGESAppli_HArray1OfFiniteElement
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_HArray1OfFiniteElement {
@@ -6367,6 +6411,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliHArray1OfFlow {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliHArray1OfFlow {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliHArray1OfFlow_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliHArray1OfFlow {
     /// Dereference this Handle to access the underlying IGESAppli_HArray1OfFlow
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_HArray1OfFlow {
@@ -6632,6 +6682,12 @@ pub use crate::ffi_types::HandleIGESAppliHArray1OfNode;
 unsafe impl crate::CppDeletable for HandleIGESAppliHArray1OfNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESAppliHArray1OfNode_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESAppliHArray1OfNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliHArray1OfNode_clone(ptr))
     }
 }
 
@@ -7595,6 +7651,12 @@ pub use crate::ffi_types::HandleIGESAppliLevelFunction;
 unsafe impl crate::CppDeletable for HandleIGESAppliLevelFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESAppliLevelFunction_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESAppliLevelFunction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliLevelFunction_clone(ptr))
     }
 }
 
@@ -8611,6 +8673,14 @@ unsafe impl crate::CppDeletable for HandleIGESAppliLevelToPWBLayerMap {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliLevelToPWBLayerMap {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliLevelToPWBLayerMap_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESAppliLevelToPWBLayerMap {
     /// Dereference this Handle to access the underlying IGESAppli_LevelToPWBLayerMap
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_LevelToPWBLayerMap {
@@ -9624,6 +9694,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliLineWidening {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliLineWidening {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliLineWidening_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliLineWidening {
     /// Dereference this Handle to access the underlying IGESAppli_LineWidening
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_LineWidening {
@@ -10608,6 +10684,12 @@ pub use crate::ffi_types::HandleIGESAppliNodalConstraint;
 unsafe impl crate::CppDeletable for HandleIGESAppliNodalConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESAppliNodalConstraint_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESAppliNodalConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliNodalConstraint_clone(ptr))
     }
 }
 
@@ -11656,6 +11738,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliNodalDisplAndRot {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliNodalDisplAndRot {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliNodalDisplAndRot_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliNodalDisplAndRot {
     /// Dereference this Handle to access the underlying IGESAppli_NodalDisplAndRot
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_NodalDisplAndRot {
@@ -12692,6 +12780,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliNodalResults {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliNodalResults {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliNodalResults_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliNodalResults {
     /// Dereference this Handle to access the underlying IGESAppli_NodalResults
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_NodalResults {
@@ -13586,6 +13680,12 @@ pub use crate::ffi_types::HandleIGESAppliNode;
 unsafe impl crate::CppDeletable for HandleIGESAppliNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESAppliNode_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESAppliNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliNode_clone(ptr))
     }
 }
 
@@ -14573,6 +14673,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliPWBArtworkStackup {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliPWBArtworkStackup {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliPWBArtworkStackup_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliPWBArtworkStackup {
     /// Dereference this Handle to access the underlying IGESAppli_PWBArtworkStackup
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_PWBArtworkStackup {
@@ -15541,6 +15647,12 @@ pub use crate::ffi_types::HandleIGESAppliPWBDrilledHole;
 unsafe impl crate::CppDeletable for HandleIGESAppliPWBDrilledHole {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESAppliPWBDrilledHole_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESAppliPWBDrilledHole {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliPWBDrilledHole_clone(ptr))
     }
 }
 
@@ -16530,6 +16642,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliPartNumber {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliPartNumber {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliPartNumber_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliPartNumber {
     /// Dereference this Handle to access the underlying IGESAppli_PartNumber
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_PartNumber {
@@ -17463,6 +17581,12 @@ pub use crate::ffi_types::HandleIGESAppliPinNumber;
 unsafe impl crate::CppDeletable for HandleIGESAppliPinNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESAppliPinNumber_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESAppliPinNumber {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliPinNumber_clone(ptr))
     }
 }
 
@@ -18579,6 +18703,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliPipingFlow {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliPipingFlow {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliPipingFlow_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliPipingFlow {
     /// Dereference this Handle to access the underlying IGESAppli_PipingFlow
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_PipingFlow {
@@ -18970,6 +19100,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliProtocol {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliProtocol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliProtocol_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliProtocol {
     /// Dereference this Handle to access the underlying IGESAppli_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_Protocol {
@@ -19345,6 +19481,12 @@ pub use crate::ffi_types::HandleIGESAppliReadWriteModule;
 unsafe impl crate::CppDeletable for HandleIGESAppliReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESAppliReadWriteModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESAppliReadWriteModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliReadWriteModule_clone(ptr))
     }
 }
 
@@ -20294,6 +20436,14 @@ pub use crate::ffi_types::HandleIGESAppliReferenceDesignator;
 unsafe impl crate::CppDeletable for HandleIGESAppliReferenceDesignator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESAppliReferenceDesignator_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESAppliReferenceDesignator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliReferenceDesignator_clone(
+            ptr,
+        ))
     }
 }
 
@@ -21267,6 +21417,12 @@ unsafe impl crate::CppDeletable for HandleIGESAppliRegionRestriction {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESAppliRegionRestriction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliRegionRestriction_clone(ptr))
+    }
+}
+
 impl HandleIGESAppliRegionRestriction {
     /// Dereference this Handle to access the underlying IGESAppli_RegionRestriction
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_RegionRestriction {
@@ -21531,6 +21687,12 @@ pub use crate::ffi_types::HandleIGESAppliSpecificModule;
 unsafe impl crate::CppDeletable for HandleIGESAppliSpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESAppliSpecificModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESAppliSpecificModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESAppliSpecificModule_clone(ptr))
     }
 }
 

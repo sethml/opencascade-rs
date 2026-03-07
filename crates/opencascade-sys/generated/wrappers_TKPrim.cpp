@@ -71,7 +71,7 @@ typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
 typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
 typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 
 // ========================
 // BRepPreviewAPI_MakeBox wrappers

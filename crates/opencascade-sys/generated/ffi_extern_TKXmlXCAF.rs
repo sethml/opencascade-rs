@@ -68,6 +68,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocAssemblyItemRefDriver_destructor(
         self_: *mut HandleXmlMXCAFDocAssemblyItemRefDriver,
     );
+    /// Clone Handle<XmlMXCAFDoc_AssemblyItemRefDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocAssemblyItemRefDriver_clone(
+        self_: *const HandleXmlMXCAFDocAssemblyItemRefDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocAssemblyItemRefDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_AssemblyItemRefDriver
     pub fn HandleXmlMXCAFDocAssemblyItemRefDriver_get(
         handle: *const HandleXmlMXCAFDocAssemblyItemRefDriver,
@@ -189,6 +193,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocCentroidDriver>;
     /// Destroy Handle<XmlMXCAFDoc_CentroidDriver>
     pub fn HandleXmlMXCAFDocCentroidDriver_destructor(self_: *mut HandleXmlMXCAFDocCentroidDriver);
+    /// Clone Handle<XmlMXCAFDoc_CentroidDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocCentroidDriver_clone(
+        self_: *const HandleXmlMXCAFDocCentroidDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocCentroidDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_CentroidDriver
     pub fn HandleXmlMXCAFDocCentroidDriver_get(
         handle: *const HandleXmlMXCAFDocCentroidDriver,
@@ -310,6 +318,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocColorDriver>;
     /// Destroy Handle<XmlMXCAFDoc_ColorDriver>
     pub fn HandleXmlMXCAFDocColorDriver_destructor(self_: *mut HandleXmlMXCAFDocColorDriver);
+    /// Clone Handle<XmlMXCAFDoc_ColorDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocColorDriver_clone(
+        self_: *const HandleXmlMXCAFDocColorDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocColorDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_ColorDriver
     pub fn HandleXmlMXCAFDocColorDriver_get(
         handle: *const HandleXmlMXCAFDocColorDriver,
@@ -431,6 +443,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocDatumDriver>;
     /// Destroy Handle<XmlMXCAFDoc_DatumDriver>
     pub fn HandleXmlMXCAFDocDatumDriver_destructor(self_: *mut HandleXmlMXCAFDocDatumDriver);
+    /// Clone Handle<XmlMXCAFDoc_DatumDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocDatumDriver_clone(
+        self_: *const HandleXmlMXCAFDocDatumDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocDatumDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_DatumDriver
     pub fn HandleXmlMXCAFDocDatumDriver_get(
         handle: *const HandleXmlMXCAFDocDatumDriver,
@@ -552,6 +568,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocDimTolDriver>;
     /// Destroy Handle<XmlMXCAFDoc_DimTolDriver>
     pub fn HandleXmlMXCAFDocDimTolDriver_destructor(self_: *mut HandleXmlMXCAFDocDimTolDriver);
+    /// Clone Handle<XmlMXCAFDoc_DimTolDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocDimTolDriver_clone(
+        self_: *const HandleXmlMXCAFDocDimTolDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocDimTolDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_DimTolDriver
     pub fn HandleXmlMXCAFDocDimTolDriver_get(
         handle: *const HandleXmlMXCAFDocDimTolDriver,
@@ -675,6 +695,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocGraphNodeDriver_destructor(
         self_: *mut HandleXmlMXCAFDocGraphNodeDriver,
     );
+    /// Clone Handle<XmlMXCAFDoc_GraphNodeDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocGraphNodeDriver_clone(
+        self_: *const HandleXmlMXCAFDocGraphNodeDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocGraphNodeDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_GraphNodeDriver
     pub fn HandleXmlMXCAFDocGraphNodeDriver_get(
         handle: *const HandleXmlMXCAFDocGraphNodeDriver,
@@ -798,6 +822,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocLengthUnitDriver_destructor(
         self_: *mut HandleXmlMXCAFDocLengthUnitDriver,
     );
+    /// Clone Handle<XmlMXCAFDoc_LengthUnitDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocLengthUnitDriver_clone(
+        self_: *const HandleXmlMXCAFDocLengthUnitDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocLengthUnitDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_LengthUnitDriver
     pub fn HandleXmlMXCAFDocLengthUnitDriver_get(
         handle: *const HandleXmlMXCAFDocLengthUnitDriver,
@@ -938,6 +966,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocLocationDriver>;
     /// Destroy Handle<XmlMXCAFDoc_LocationDriver>
     pub fn HandleXmlMXCAFDocLocationDriver_destructor(self_: *mut HandleXmlMXCAFDocLocationDriver);
+    /// Clone Handle<XmlMXCAFDoc_LocationDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocLocationDriver_clone(
+        self_: *const HandleXmlMXCAFDocLocationDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocLocationDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_LocationDriver
     pub fn HandleXmlMXCAFDocLocationDriver_get(
         handle: *const HandleXmlMXCAFDocLocationDriver,
@@ -1059,6 +1091,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocMaterialDriver>;
     /// Destroy Handle<XmlMXCAFDoc_MaterialDriver>
     pub fn HandleXmlMXCAFDocMaterialDriver_destructor(self_: *mut HandleXmlMXCAFDocMaterialDriver);
+    /// Clone Handle<XmlMXCAFDoc_MaterialDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocMaterialDriver_clone(
+        self_: *const HandleXmlMXCAFDocMaterialDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocMaterialDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_MaterialDriver
     pub fn HandleXmlMXCAFDocMaterialDriver_get(
         handle: *const HandleXmlMXCAFDocMaterialDriver,
@@ -1191,6 +1227,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocNoteBinDataDriver_destructor(
         self_: *mut HandleXmlMXCAFDocNoteBinDataDriver,
     );
+    /// Clone Handle<XmlMXCAFDoc_NoteBinDataDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocNoteBinDataDriver_clone(
+        self_: *const HandleXmlMXCAFDocNoteBinDataDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocNoteBinDataDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_NoteBinDataDriver
     pub fn HandleXmlMXCAFDocNoteBinDataDriver_get(
         handle: *const HandleXmlMXCAFDocNoteBinDataDriver,
@@ -1327,6 +1367,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocNoteCommentDriver_destructor(
         self_: *mut HandleXmlMXCAFDocNoteCommentDriver,
     );
+    /// Clone Handle<XmlMXCAFDoc_NoteCommentDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocNoteCommentDriver_clone(
+        self_: *const HandleXmlMXCAFDocNoteCommentDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocNoteCommentDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_NoteCommentDriver
     pub fn HandleXmlMXCAFDocNoteCommentDriver_get(
         handle: *const HandleXmlMXCAFDocNoteCommentDriver,
@@ -1440,6 +1484,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<XmlMXCAFDoc_NoteDriver>
     pub fn HandleXmlMXCAFDocNoteDriver_destructor(self_: *mut HandleXmlMXCAFDocNoteDriver);
+    /// Clone Handle<XmlMXCAFDoc_NoteDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocNoteDriver_clone(
+        self_: *const HandleXmlMXCAFDocNoteDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocNoteDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_NoteDriver
     pub fn HandleXmlMXCAFDocNoteDriver_get(
         handle: *const HandleXmlMXCAFDocNoteDriver,
@@ -1576,6 +1624,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocVisMaterialDriver_destructor(
         self_: *mut HandleXmlMXCAFDocVisMaterialDriver,
     );
+    /// Clone Handle<XmlMXCAFDoc_VisMaterialDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocVisMaterialDriver_clone(
+        self_: *const HandleXmlMXCAFDocVisMaterialDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocVisMaterialDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_VisMaterialDriver
     pub fn HandleXmlMXCAFDocVisMaterialDriver_get(
         handle: *const HandleXmlMXCAFDocVisMaterialDriver,
@@ -1702,6 +1754,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocVisMaterialToolDriver_destructor(
         self_: *mut HandleXmlMXCAFDocVisMaterialToolDriver,
     );
+    /// Clone Handle<XmlMXCAFDoc_VisMaterialToolDriver> (increments reference count)
+    pub fn HandleXmlMXCAFDocVisMaterialToolDriver_clone(
+        self_: *const HandleXmlMXCAFDocVisMaterialToolDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMXCAFDocVisMaterialToolDriver>;
     /// Dereference Handle to get *const XmlMXCAFDoc_VisMaterialToolDriver
     pub fn HandleXmlMXCAFDocVisMaterialToolDriver_get(
         handle: *const HandleXmlMXCAFDocVisMaterialToolDriver,
@@ -1838,6 +1894,10 @@ extern "C" {
     pub fn HandleXmlXCAFDriversDocumentRetrievalDriver_destructor(
         self_: *mut HandleXmlXCAFDriversDocumentRetrievalDriver,
     );
+    /// Clone Handle<XmlXCAFDrivers_DocumentRetrievalDriver> (increments reference count)
+    pub fn HandleXmlXCAFDriversDocumentRetrievalDriver_clone(
+        self_: *const HandleXmlXCAFDriversDocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut HandleXmlXCAFDriversDocumentRetrievalDriver>;
     /// Dereference Handle to get *const XmlXCAFDrivers_DocumentRetrievalDriver
     pub fn HandleXmlXCAFDriversDocumentRetrievalDriver_get(
         handle: *const HandleXmlXCAFDriversDocumentRetrievalDriver,
@@ -2001,6 +2061,10 @@ extern "C" {
     pub fn HandleXmlXCAFDriversDocumentStorageDriver_destructor(
         self_: *mut HandleXmlXCAFDriversDocumentStorageDriver,
     );
+    /// Clone Handle<XmlXCAFDrivers_DocumentStorageDriver> (increments reference count)
+    pub fn HandleXmlXCAFDriversDocumentStorageDriver_clone(
+        self_: *const HandleXmlXCAFDriversDocumentStorageDriver,
+    ) -> crate::OcctResult<*mut HandleXmlXCAFDriversDocumentStorageDriver>;
     /// Dereference Handle to get *const XmlXCAFDrivers_DocumentStorageDriver
     pub fn HandleXmlXCAFDriversDocumentStorageDriver_get(
         handle: *const HandleXmlXCAFDriversDocumentStorageDriver,

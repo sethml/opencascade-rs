@@ -166,6 +166,12 @@ unsafe impl crate::CppDeletable for HandleIntStartSITopolTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIntStartSITopolTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntStartSITopolTool_clone(ptr))
+    }
+}
+
 impl HandleIntStartSITopolTool {
     /// Dereference this Handle to access the underlying IntStart_SITopolTool
     pub fn get(&self) -> &crate::ffi_types::IntStart_SITopolTool {

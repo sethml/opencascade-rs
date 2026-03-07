@@ -251,6 +251,12 @@ unsafe impl crate::CppDeletable for HandleBinMDFADriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDFADriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDFADriver_clone(ptr))
+    }
+}
+
 impl HandleBinMDFADriver {
     /// Dereference this Handle to access the underlying BinMDF_ADriver
     pub fn get(&self) -> &crate::ffi_types::BinMDF_ADriver {
@@ -1481,6 +1487,12 @@ unsafe impl crate::CppDeletable for HandleBinMDFADriverTable {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDFADriverTable {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDFADriverTable_clone(ptr))
+    }
+}
+
 impl HandleBinMDFADriverTable {
     /// Dereference this Handle to access the underlying BinMDF_ADriverTable
     pub fn get(&self) -> &crate::ffi_types::BinMDF_ADriverTable {
@@ -1769,6 +1781,12 @@ pub use crate::ffi_types::HandleBinMDFDerivedDriver;
 unsafe impl crate::CppDeletable for HandleBinMDFDerivedDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDFDerivedDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDFDerivedDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDFDerivedDriver_clone(ptr))
     }
 }
 
@@ -2071,6 +2089,12 @@ unsafe impl crate::CppDeletable for HandleBinMDFReferenceDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDFReferenceDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDFReferenceDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMDFReferenceDriver {
     /// Dereference this Handle to access the underlying BinMDF_ReferenceDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDF_ReferenceDriver {
@@ -2367,6 +2391,12 @@ pub use crate::ffi_types::HandleBinMDFTagSourceDriver;
 unsafe impl crate::CppDeletable for HandleBinMDFTagSourceDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDFTagSourceDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDFTagSourceDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDFTagSourceDriver_clone(ptr))
     }
 }
 

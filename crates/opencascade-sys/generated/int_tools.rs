@@ -375,6 +375,22 @@ unsafe impl crate::CppDeletable for CommonPrt {
     }
 }
 
+unsafe impl crate::CppCopyable for CommonPrt {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::IntTools_CommonPrt_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for CommonPrt {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl CommonPrt {
     /// **Source:** `IntTools_CommonPrt.hxx`:37 - `IntTools_CommonPrt::IntTools_CommonPrt()`
     /// Empty constructor
@@ -608,15 +624,6 @@ impl CommonPrt {
                 aP2,
             )
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::IntTools_CommonPrt_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -1360,6 +1367,12 @@ pub use crate::ffi_types::HandleIntToolsContext;
 unsafe impl crate::CppDeletable for HandleIntToolsContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleIntToolsContext_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIntToolsContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsContext_clone(ptr))
     }
 }
 
@@ -3401,6 +3414,22 @@ unsafe impl crate::CppDeletable for SurfaceRangeLocalizeData {
     }
 }
 
+unsafe impl crate::CppCopyable for SurfaceRangeLocalizeData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for SurfaceRangeLocalizeData {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl SurfaceRangeLocalizeData {
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:38 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -3766,17 +3795,6 @@ impl SurfaceRangeLocalizeData {
             crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_clear_grid(self as *mut Self)
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_to_owned(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -3790,6 +3808,22 @@ pub use crate::ffi_types::IntTools_SurfaceRangeSample as SurfaceRangeSample;
 unsafe impl crate::CppDeletable for SurfaceRangeSample {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::IntTools_SurfaceRangeSample_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for SurfaceRangeSample {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::IntTools_SurfaceRangeSample_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for SurfaceRangeSample {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -4077,15 +4111,6 @@ impl SurfaceRangeSample {
                 theNbSampleV,
             )
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::IntTools_SurfaceRangeSample_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -4868,6 +4893,12 @@ pub use crate::ffi_types::HandleIntToolsTopolTool;
 unsafe impl crate::CppDeletable for HandleIntToolsTopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleIntToolsTopolTool_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIntToolsTopolTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsTopolTool_clone(ptr))
     }
 }
 

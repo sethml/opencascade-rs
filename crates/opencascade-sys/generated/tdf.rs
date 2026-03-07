@@ -792,6 +792,12 @@ unsafe impl crate::CppDeletable for HandleTDFAttribute {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDFAttribute {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFAttribute_clone(ptr))
+    }
+}
+
 impl HandleTDFAttribute {
     /// Dereference this Handle to access the underlying TDF_Attribute
     pub fn get(&self) -> &crate::ffi_types::TDF_Attribute {
@@ -2665,6 +2671,12 @@ unsafe impl crate::CppDeletable for HandleTDFAttributeDelta {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDFAttributeDelta {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFAttributeDelta_clone(ptr))
+    }
+}
+
 impl HandleTDFAttributeDelta {
     /// Dereference this Handle to access the underlying TDF_AttributeDelta
     pub fn get(&self) -> &crate::ffi_types::TDF_AttributeDelta {
@@ -4122,6 +4134,12 @@ unsafe impl crate::CppDeletable for HandleTDFData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDFData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFData_clone(ptr))
+    }
+}
+
 impl HandleTDFData {
     /// Dereference this Handle to access the underlying TDF_Data
     pub fn get(&self) -> &crate::ffi_types::TDF_Data {
@@ -4412,6 +4430,12 @@ unsafe impl crate::CppDeletable for HandleTDFDataSet {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDFDataSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFDataSet_clone(ptr))
+    }
+}
+
 impl HandleTDFDataSet {
     /// Dereference this Handle to access the underlying TDF_DataSet
     pub fn get(&self) -> &crate::ffi_types::TDF_DataSet {
@@ -4699,6 +4723,14 @@ pub use crate::ffi_types::HandleTDFDefaultDeltaOnModification;
 unsafe impl crate::CppDeletable for HandleTDFDefaultDeltaOnModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKLCAF::HandleTDFDefaultDeltaOnModification_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDFDefaultDeltaOnModification {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFDefaultDeltaOnModification_clone(
+            ptr,
+        ))
     }
 }
 
@@ -5013,6 +5045,12 @@ unsafe impl crate::CppDeletable for HandleTDFDefaultDeltaOnRemoval {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDFDefaultDeltaOnRemoval {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFDefaultDeltaOnRemoval_clone(ptr))
+    }
+}
+
 impl HandleTDFDefaultDeltaOnRemoval {
     /// Dereference this Handle to access the underlying TDF_DefaultDeltaOnRemoval
     pub fn get(&self) -> &crate::ffi_types::TDF_DefaultDeltaOnRemoval {
@@ -5299,6 +5337,12 @@ unsafe impl crate::CppDeletable for HandleTDFDelta {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDFDelta {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFDelta_clone(ptr))
+    }
+}
+
 impl HandleTDFDelta {
     /// Dereference this Handle to access the underlying TDF_Delta
     pub fn get(&self) -> &crate::ffi_types::TDF_Delta {
@@ -5575,6 +5619,12 @@ unsafe impl crate::CppDeletable for HandleTDFDeltaOnAddition {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDFDeltaOnAddition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFDeltaOnAddition_clone(ptr))
+    }
+}
+
 impl HandleTDFDeltaOnAddition {
     /// Dereference this Handle to access the underlying TDF_DeltaOnAddition
     pub fn get(&self) -> &crate::ffi_types::TDF_DeltaOnAddition {
@@ -5848,6 +5898,12 @@ unsafe impl crate::CppDeletable for HandleTDFDeltaOnForget {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDFDeltaOnForget {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFDeltaOnForget_clone(ptr))
+    }
+}
+
 impl HandleTDFDeltaOnForget {
     /// Dereference this Handle to access the underlying TDF_DeltaOnForget
     pub fn get(&self) -> &crate::ffi_types::TDF_DeltaOnForget {
@@ -6112,6 +6168,12 @@ pub use crate::ffi_types::HandleTDFDeltaOnModification;
 unsafe impl crate::CppDeletable for HandleTDFDeltaOnModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKLCAF::HandleTDFDeltaOnModification_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDFDeltaOnModification {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFDeltaOnModification_clone(ptr))
     }
 }
 
@@ -6481,6 +6543,12 @@ unsafe impl crate::CppDeletable for HandleTDFDeltaOnRemoval {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDFDeltaOnRemoval {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFDeltaOnRemoval_clone(ptr))
+    }
+}
+
 impl HandleTDFDeltaOnRemoval {
     /// Dereference this Handle to access the underlying TDF_DeltaOnRemoval
     pub fn get(&self) -> &crate::ffi_types::TDF_DeltaOnRemoval {
@@ -6783,6 +6851,12 @@ pub use crate::ffi_types::HandleTDFDeltaOnResume;
 unsafe impl crate::CppDeletable for HandleTDFDeltaOnResume {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKLCAF::HandleTDFDeltaOnResume_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDFDeltaOnResume {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFDeltaOnResume_clone(ptr))
     }
 }
 
@@ -7138,6 +7212,12 @@ pub use crate::ffi_types::HandleTDFHAttributeArray1;
 unsafe impl crate::CppDeletable for HandleTDFHAttributeArray1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKLCAF::HandleTDFHAttributeArray1_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDFHAttributeArray1 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFHAttributeArray1_clone(ptr))
     }
 }
 
@@ -8371,6 +8451,12 @@ unsafe impl crate::CppDeletable for HandleTDFReference {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDFReference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFReference_clone(ptr))
+    }
+}
+
 impl HandleTDFReference {
     /// Dereference this Handle to access the underlying TDF_Reference
     pub fn get(&self) -> &crate::ffi_types::TDF_Reference {
@@ -8842,6 +8928,12 @@ pub use crate::ffi_types::HandleTDFRelocationTable;
 unsafe impl crate::CppDeletable for HandleTDFRelocationTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKLCAF::HandleTDFRelocationTable_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDFRelocationTable {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFRelocationTable_clone(ptr))
     }
 }
 
@@ -9440,6 +9532,12 @@ pub use crate::ffi_types::HandleTDFTagSource;
 unsafe impl crate::CppDeletable for HandleTDFTagSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKLCAF::HandleTDFTagSource_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDFTagSource {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDFTagSource_clone(ptr))
     }
 }
 

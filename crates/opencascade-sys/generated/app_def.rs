@@ -2586,6 +2586,14 @@ unsafe impl crate::CppDeletable for HandleAppDefHArray1OfMultiPointConstraint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAppDefHArray1OfMultiPointConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKGeomBase::HandleAppDefHArray1OfMultiPointConstraint_clone(ptr),
+        )
+    }
+}
+
 impl HandleAppDefHArray1OfMultiPointConstraint {
     /// Dereference this Handle to access the underlying AppDef_HArray1OfMultiPointConstraint
     pub fn get(&self) -> &crate::ffi_types::AppDef_HArray1OfMultiPointConstraint {
@@ -3029,6 +3037,12 @@ pub use crate::ffi_types::HandleAppDefLinearCriteria;
 unsafe impl crate::CppDeletable for HandleAppDefLinearCriteria {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAppDefLinearCriteria {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_clone(ptr))
     }
 }
 
@@ -6811,6 +6825,12 @@ pub use crate::ffi_types::HandleAppDefSmoothCriterion;
 unsafe impl crate::CppDeletable for HandleAppDefSmoothCriterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAppDefSmoothCriterion {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_clone(ptr))
     }
 }
 

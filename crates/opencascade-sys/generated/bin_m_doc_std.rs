@@ -275,6 +275,12 @@ unsafe impl crate::CppDeletable for HandleBinMDocStdXLinkDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDocStdXLinkDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDocStdXLinkDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMDocStdXLinkDriver {
     /// Dereference this Handle to access the underlying BinMDocStd_XLinkDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDocStd_XLinkDriver {

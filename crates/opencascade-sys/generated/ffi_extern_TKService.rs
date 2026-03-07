@@ -99,6 +99,10 @@ extern "C" {
     pub fn HandleAspectAspectFillAreaDefinitionError_destructor(
         self_: *mut HandleAspectAspectFillAreaDefinitionError,
     );
+    /// Clone Handle<Aspect_AspectFillAreaDefinitionError> (increments reference count)
+    pub fn HandleAspectAspectFillAreaDefinitionError_clone(
+        self_: *const HandleAspectAspectFillAreaDefinitionError,
+    ) -> crate::OcctResult<*mut HandleAspectAspectFillAreaDefinitionError>;
     /// Dereference Handle to get *const Aspect_AspectFillAreaDefinitionError
     pub fn HandleAspectAspectFillAreaDefinitionError_get(
         handle: *const HandleAspectAspectFillAreaDefinitionError,
@@ -261,6 +265,10 @@ extern "C" {
     pub fn HandleAspectAspectLineDefinitionError_destructor(
         self_: *mut HandleAspectAspectLineDefinitionError,
     );
+    /// Clone Handle<Aspect_AspectLineDefinitionError> (increments reference count)
+    pub fn HandleAspectAspectLineDefinitionError_clone(
+        self_: *const HandleAspectAspectLineDefinitionError,
+    ) -> crate::OcctResult<*mut HandleAspectAspectLineDefinitionError>;
     /// Dereference Handle to get *const Aspect_AspectLineDefinitionError
     pub fn HandleAspectAspectLineDefinitionError_get(
         handle: *const HandleAspectAspectLineDefinitionError,
@@ -423,6 +431,10 @@ extern "C" {
     pub fn HandleAspectAspectMarkerDefinitionError_destructor(
         self_: *mut HandleAspectAspectMarkerDefinitionError,
     );
+    /// Clone Handle<Aspect_AspectMarkerDefinitionError> (increments reference count)
+    pub fn HandleAspectAspectMarkerDefinitionError_clone(
+        self_: *const HandleAspectAspectMarkerDefinitionError,
+    ) -> crate::OcctResult<*mut HandleAspectAspectMarkerDefinitionError>;
     /// Dereference Handle to get *const Aspect_AspectMarkerDefinitionError
     pub fn HandleAspectAspectMarkerDefinitionError_get(
         handle: *const HandleAspectAspectMarkerDefinitionError,
@@ -576,6 +588,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Aspect_CircularGrid>
     pub fn HandleAspectCircularGrid_destructor(self_: *mut HandleAspectCircularGrid);
+    /// Clone Handle<Aspect_CircularGrid> (increments reference count)
+    pub fn HandleAspectCircularGrid_clone(
+        self_: *const HandleAspectCircularGrid,
+    ) -> crate::OcctResult<*mut HandleAspectCircularGrid>;
     /// Dereference Handle to get *const Aspect_CircularGrid
     pub fn HandleAspectCircularGrid_get(
         handle: *const HandleAspectCircularGrid,
@@ -761,6 +777,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAspectDisplayConnection>;
     /// Destroy Handle<Aspect_DisplayConnection>
     pub fn HandleAspectDisplayConnection_destructor(self_: *mut HandleAspectDisplayConnection);
+    /// Clone Handle<Aspect_DisplayConnection> (increments reference count)
+    pub fn HandleAspectDisplayConnection_clone(
+        self_: *const HandleAspectDisplayConnection,
+    ) -> crate::OcctResult<*mut HandleAspectDisplayConnection>;
     /// Dereference Handle to get *const Aspect_DisplayConnection
     pub fn HandleAspectDisplayConnection_get(
         handle: *const HandleAspectDisplayConnection,
@@ -894,6 +914,10 @@ extern "C" {
     pub fn HandleAspectDisplayConnectionDefinitionError_destructor(
         self_: *mut HandleAspectDisplayConnectionDefinitionError,
     );
+    /// Clone Handle<Aspect_DisplayConnectionDefinitionError> (increments reference count)
+    pub fn HandleAspectDisplayConnectionDefinitionError_clone(
+        self_: *const HandleAspectDisplayConnectionDefinitionError,
+    ) -> crate::OcctResult<*mut HandleAspectDisplayConnectionDefinitionError>;
     /// Dereference Handle to get *const Aspect_DisplayConnectionDefinitionError
     pub fn HandleAspectDisplayConnectionDefinitionError_get(
         handle: *const HandleAspectDisplayConnectionDefinitionError,
@@ -1128,6 +1152,10 @@ extern "C" {
     pub fn HandleAspectGraphicDeviceDefinitionError_destructor(
         self_: *mut HandleAspectGraphicDeviceDefinitionError,
     );
+    /// Clone Handle<Aspect_GraphicDeviceDefinitionError> (increments reference count)
+    pub fn HandleAspectGraphicDeviceDefinitionError_clone(
+        self_: *const HandleAspectGraphicDeviceDefinitionError,
+    ) -> crate::OcctResult<*mut HandleAspectGraphicDeviceDefinitionError>;
     /// Dereference Handle to get *const Aspect_GraphicDeviceDefinitionError
     pub fn HandleAspectGraphicDeviceDefinitionError_get(
         handle: *const HandleAspectGraphicDeviceDefinitionError,
@@ -1297,6 +1325,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Aspect_Grid>
     pub fn HandleAspectGrid_destructor(self_: *mut HandleAspectGrid);
+    /// Clone Handle<Aspect_Grid> (increments reference count)
+    pub fn HandleAspectGrid_clone(
+        self_: *const HandleAspectGrid,
+    ) -> crate::OcctResult<*mut HandleAspectGrid>;
     /// Dereference Handle to get *const Aspect_Grid
     pub fn HandleAspectGrid_get(
         handle: *const HandleAspectGrid,
@@ -1438,6 +1470,10 @@ extern "C" {
     pub fn HandleAspectIdentDefinitionError_destructor(
         self_: *mut HandleAspectIdentDefinitionError,
     );
+    /// Clone Handle<Aspect_IdentDefinitionError> (increments reference count)
+    pub fn HandleAspectIdentDefinitionError_clone(
+        self_: *const HandleAspectIdentDefinitionError,
+    ) -> crate::OcctResult<*mut HandleAspectIdentDefinitionError>;
     /// Dereference Handle to get *const Aspect_IdentDefinitionError
     pub fn HandleAspectIdentDefinitionError_get(
         handle: *const HandleAspectIdentDefinitionError,
@@ -1611,6 +1647,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAspectNeutralWindow>;
     /// Destroy Handle<Aspect_NeutralWindow>
     pub fn HandleAspectNeutralWindow_destructor(self_: *mut HandleAspectNeutralWindow);
+    /// Clone Handle<Aspect_NeutralWindow> (increments reference count)
+    pub fn HandleAspectNeutralWindow_clone(
+        self_: *const HandleAspectNeutralWindow,
+    ) -> crate::OcctResult<*mut HandleAspectNeutralWindow>;
     /// Dereference Handle to get *const Aspect_NeutralWindow
     pub fn HandleAspectNeutralWindow_get(
         handle: *const HandleAspectNeutralWindow,
@@ -1829,6 +1869,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAspectOpenVRSession>;
     /// Destroy Handle<Aspect_OpenVRSession>
     pub fn HandleAspectOpenVRSession_destructor(self_: *mut HandleAspectOpenVRSession);
+    /// Clone Handle<Aspect_OpenVRSession> (increments reference count)
+    pub fn HandleAspectOpenVRSession_clone(
+        self_: *const HandleAspectOpenVRSession,
+    ) -> crate::OcctResult<*mut HandleAspectOpenVRSession>;
     /// Dereference Handle to get *const Aspect_OpenVRSession
     pub fn HandleAspectOpenVRSession_get(
         handle: *const HandleAspectOpenVRSession,
@@ -2040,6 +2084,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Aspect_RectangularGrid>
     pub fn HandleAspectRectangularGrid_destructor(self_: *mut HandleAspectRectangularGrid);
+    /// Clone Handle<Aspect_RectangularGrid> (increments reference count)
+    pub fn HandleAspectRectangularGrid_clone(
+        self_: *const HandleAspectRectangularGrid,
+    ) -> crate::OcctResult<*mut HandleAspectRectangularGrid>;
     /// Dereference Handle to get *const Aspect_RectangularGrid
     pub fn HandleAspectRectangularGrid_get(
         handle: *const HandleAspectRectangularGrid,
@@ -2374,6 +2422,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAspectVKeySet>;
     /// Destroy Handle<Aspect_VKeySet>
     pub fn HandleAspectVKeySet_destructor(self_: *mut HandleAspectVKeySet);
+    /// Clone Handle<Aspect_VKeySet> (increments reference count)
+    pub fn HandleAspectVKeySet_clone(
+        self_: *const HandleAspectVKeySet,
+    ) -> crate::OcctResult<*mut HandleAspectVKeySet>;
     /// Dereference Handle to get *const Aspect_VKeySet
     pub fn HandleAspectVKeySet_get(
         handle: *const HandleAspectVKeySet,
@@ -2544,6 +2596,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Aspect_Window>
     pub fn HandleAspectWindow_destructor(self_: *mut HandleAspectWindow);
+    /// Clone Handle<Aspect_Window> (increments reference count)
+    pub fn HandleAspectWindow_clone(
+        self_: *const HandleAspectWindow,
+    ) -> crate::OcctResult<*mut HandleAspectWindow>;
     /// Dereference Handle to get *const Aspect_Window
     pub fn HandleAspectWindow_get(
         handle: *const HandleAspectWindow,
@@ -2676,6 +2732,10 @@ extern "C" {
     pub fn HandleAspectWindowDefinitionError_destructor(
         self_: *mut HandleAspectWindowDefinitionError,
     );
+    /// Clone Handle<Aspect_WindowDefinitionError> (increments reference count)
+    pub fn HandleAspectWindowDefinitionError_clone(
+        self_: *const HandleAspectWindowDefinitionError,
+    ) -> crate::OcctResult<*mut HandleAspectWindowDefinitionError>;
     /// Dereference Handle to get *const Aspect_WindowDefinitionError
     pub fn HandleAspectWindowDefinitionError_get(
         handle: *const HandleAspectWindowDefinitionError,
@@ -2831,6 +2891,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAspectWindowError>;
     /// Destroy Handle<Aspect_WindowError>
     pub fn HandleAspectWindowError_destructor(self_: *mut HandleAspectWindowError);
+    /// Clone Handle<Aspect_WindowError> (increments reference count)
+    pub fn HandleAspectWindowError_clone(
+        self_: *const HandleAspectWindowError,
+    ) -> crate::OcctResult<*mut HandleAspectWindowError>;
     /// Dereference Handle to get *const Aspect_WindowError
     pub fn HandleAspectWindowError_get(
         handle: *const HandleAspectWindowError,
@@ -3122,6 +3186,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAspectXRAction>;
     /// Destroy Handle<Aspect_XRAction>
     pub fn HandleAspectXRAction_destructor(self_: *mut HandleAspectXRAction);
+    /// Clone Handle<Aspect_XRAction> (increments reference count)
+    pub fn HandleAspectXRAction_clone(
+        self_: *const HandleAspectXRAction,
+    ) -> crate::OcctResult<*mut HandleAspectXRAction>;
     /// Dereference Handle to get *const Aspect_XRAction
     pub fn HandleAspectXRAction_get(
         handle: *const HandleAspectXRAction,
@@ -3214,6 +3282,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAspectXRActionSet>;
     /// Destroy Handle<Aspect_XRActionSet>
     pub fn HandleAspectXRActionSet_destructor(self_: *mut HandleAspectXRActionSet);
+    /// Clone Handle<Aspect_XRActionSet> (increments reference count)
+    pub fn HandleAspectXRActionSet_clone(
+        self_: *const HandleAspectXRActionSet,
+    ) -> crate::OcctResult<*mut HandleAspectXRActionSet>;
     /// Dereference Handle to get *const Aspect_XRActionSet
     pub fn HandleAspectXRActionSet_get(
         handle: *const HandleAspectXRActionSet,
@@ -3446,6 +3518,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Aspect_XRSession>
     pub fn HandleAspectXRSession_destructor(self_: *mut HandleAspectXRSession);
+    /// Clone Handle<Aspect_XRSession> (increments reference count)
+    pub fn HandleAspectXRSession_clone(
+        self_: *const HandleAspectXRSession,
+    ) -> crate::OcctResult<*mut HandleAspectXRSession>;
     /// Dereference Handle to get *const Aspect_XRSession
     pub fn HandleAspectXRSession_get(
         handle: *const HandleAspectXRSession,
@@ -3672,6 +3748,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleFontFTFont>;
     /// Destroy Handle<Font_FTFont>
     pub fn HandleFontFTFont_destructor(self_: *mut HandleFontFTFont);
+    /// Clone Handle<Font_FTFont> (increments reference count)
+    pub fn HandleFontFTFont_clone(
+        self_: *const HandleFontFTFont,
+    ) -> crate::OcctResult<*mut HandleFontFTFont>;
     /// Dereference Handle to get *const Font_FTFont
     pub fn HandleFontFTFont_get(
         handle: *const HandleFontFTFont,
@@ -3738,6 +3818,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleFontFTLibrary>;
     /// Destroy Handle<Font_FTLibrary>
     pub fn HandleFontFTLibrary_destructor(self_: *mut HandleFontFTLibrary);
+    /// Clone Handle<Font_FTLibrary> (increments reference count)
+    pub fn HandleFontFTLibrary_clone(
+        self_: *const HandleFontFTLibrary,
+    ) -> crate::OcctResult<*mut HandleFontFTLibrary>;
     /// Dereference Handle to get *const Font_FTLibrary
     pub fn HandleFontFTLibrary_get(
         handle: *const HandleFontFTLibrary,
@@ -3916,6 +4000,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleFontFontMgr>;
     /// Destroy Handle<Font_FontMgr>
     pub fn HandleFontFontMgr_destructor(self_: *mut HandleFontFontMgr);
+    /// Clone Handle<Font_FontMgr> (increments reference count)
+    pub fn HandleFontFontMgr_clone(
+        self_: *const HandleFontFontMgr,
+    ) -> crate::OcctResult<*mut HandleFontFontMgr>;
     /// Dereference Handle to get *const Font_FontMgr
     pub fn HandleFontFontMgr_get(
         handle: *const HandleFontFontMgr,
@@ -4041,6 +4129,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleFontSystemFont>;
     /// Destroy Handle<Font_SystemFont>
     pub fn HandleFontSystemFont_destructor(self_: *mut HandleFontSystemFont);
+    /// Clone Handle<Font_SystemFont> (increments reference count)
+    pub fn HandleFontSystemFont_clone(
+        self_: *const HandleFontSystemFont,
+    ) -> crate::OcctResult<*mut HandleFontSystemFont>;
     /// Dereference Handle to get *const Font_SystemFont
     pub fn HandleFontSystemFont_get(
         handle: *const HandleFontSystemFont,
@@ -4229,6 +4321,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleFontTextFormatter>;
     /// Destroy Handle<Font_TextFormatter>
     pub fn HandleFontTextFormatter_destructor(self_: *mut HandleFontTextFormatter);
+    /// Clone Handle<Font_TextFormatter> (increments reference count)
+    pub fn HandleFontTextFormatter_clone(
+        self_: *const HandleFontTextFormatter,
+    ) -> crate::OcctResult<*mut HandleFontTextFormatter>;
     /// Dereference Handle to get *const Font_TextFormatter
     pub fn HandleFontTextFormatter_get(
         handle: *const HandleFontTextFormatter,
@@ -4350,6 +4446,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfPoints>;
     /// Destroy Handle<Graphic3d_ArrayOfPoints>
     pub fn HandleGraphic3dArrayOfPoints_destructor(self_: *mut HandleGraphic3dArrayOfPoints);
+    /// Clone Handle<Graphic3d_ArrayOfPoints> (increments reference count)
+    pub fn HandleGraphic3dArrayOfPoints_clone(
+        self_: *const HandleGraphic3dArrayOfPoints,
+    ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfPoints>;
     /// Dereference Handle to get *const Graphic3d_ArrayOfPoints
     pub fn HandleGraphic3dArrayOfPoints_get(
         handle: *const HandleGraphic3dArrayOfPoints,
@@ -4645,6 +4745,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfPolygons>;
     /// Destroy Handle<Graphic3d_ArrayOfPolygons>
     pub fn HandleGraphic3dArrayOfPolygons_destructor(self_: *mut HandleGraphic3dArrayOfPolygons);
+    /// Clone Handle<Graphic3d_ArrayOfPolygons> (increments reference count)
+    pub fn HandleGraphic3dArrayOfPolygons_clone(
+        self_: *const HandleGraphic3dArrayOfPolygons,
+    ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfPolygons>;
     /// Dereference Handle to get *const Graphic3d_ArrayOfPolygons
     pub fn HandleGraphic3dArrayOfPolygons_get(
         handle: *const HandleGraphic3dArrayOfPolygons,
@@ -4938,6 +5042,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfPolylines>;
     /// Destroy Handle<Graphic3d_ArrayOfPolylines>
     pub fn HandleGraphic3dArrayOfPolylines_destructor(self_: *mut HandleGraphic3dArrayOfPolylines);
+    /// Clone Handle<Graphic3d_ArrayOfPolylines> (increments reference count)
+    pub fn HandleGraphic3dArrayOfPolylines_clone(
+        self_: *const HandleGraphic3dArrayOfPolylines,
+    ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfPolylines>;
     /// Dereference Handle to get *const Graphic3d_ArrayOfPolylines
     pub fn HandleGraphic3dArrayOfPolylines_get(
         handle: *const HandleGraphic3dArrayOfPolylines,
@@ -5706,6 +5814,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfPrimitives_destructor(
         self_: *mut HandleGraphic3dArrayOfPrimitives,
     );
+    /// Clone Handle<Graphic3d_ArrayOfPrimitives> (increments reference count)
+    pub fn HandleGraphic3dArrayOfPrimitives_clone(
+        self_: *const HandleGraphic3dArrayOfPrimitives,
+    ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfPrimitives>;
     /// Dereference Handle to get *const Graphic3d_ArrayOfPrimitives
     pub fn HandleGraphic3dArrayOfPrimitives_get(
         handle: *const HandleGraphic3dArrayOfPrimitives,
@@ -5837,6 +5949,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfQuadrangleStrips_destructor(
         self_: *mut HandleGraphic3dArrayOfQuadrangleStrips,
     );
+    /// Clone Handle<Graphic3d_ArrayOfQuadrangleStrips> (increments reference count)
+    pub fn HandleGraphic3dArrayOfQuadrangleStrips_clone(
+        self_: *const HandleGraphic3dArrayOfQuadrangleStrips,
+    ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfQuadrangleStrips>;
     /// Dereference Handle to get *const Graphic3d_ArrayOfQuadrangleStrips
     pub fn HandleGraphic3dArrayOfQuadrangleStrips_get(
         handle: *const HandleGraphic3dArrayOfQuadrangleStrips,
@@ -6131,6 +6247,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfQuadrangles_destructor(
         self_: *mut HandleGraphic3dArrayOfQuadrangles,
     );
+    /// Clone Handle<Graphic3d_ArrayOfQuadrangles> (increments reference count)
+    pub fn HandleGraphic3dArrayOfQuadrangles_clone(
+        self_: *const HandleGraphic3dArrayOfQuadrangles,
+    ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfQuadrangles>;
     /// Dereference Handle to get *const Graphic3d_ArrayOfQuadrangles
     pub fn HandleGraphic3dArrayOfQuadrangles_get(
         handle: *const HandleGraphic3dArrayOfQuadrangles,
@@ -6421,6 +6541,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfSegments>;
     /// Destroy Handle<Graphic3d_ArrayOfSegments>
     pub fn HandleGraphic3dArrayOfSegments_destructor(self_: *mut HandleGraphic3dArrayOfSegments);
+    /// Clone Handle<Graphic3d_ArrayOfSegments> (increments reference count)
+    pub fn HandleGraphic3dArrayOfSegments_clone(
+        self_: *const HandleGraphic3dArrayOfSegments,
+    ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfSegments>;
     /// Dereference Handle to get *const Graphic3d_ArrayOfSegments
     pub fn HandleGraphic3dArrayOfSegments_get(
         handle: *const HandleGraphic3dArrayOfSegments,
@@ -6717,6 +6841,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfTriangleFans_destructor(
         self_: *mut HandleGraphic3dArrayOfTriangleFans,
     );
+    /// Clone Handle<Graphic3d_ArrayOfTriangleFans> (increments reference count)
+    pub fn HandleGraphic3dArrayOfTriangleFans_clone(
+        self_: *const HandleGraphic3dArrayOfTriangleFans,
+    ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfTriangleFans>;
     /// Dereference Handle to get *const Graphic3d_ArrayOfTriangleFans
     pub fn HandleGraphic3dArrayOfTriangleFans_get(
         handle: *const HandleGraphic3dArrayOfTriangleFans,
@@ -7013,6 +7141,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfTriangleStrips_destructor(
         self_: *mut HandleGraphic3dArrayOfTriangleStrips,
     );
+    /// Clone Handle<Graphic3d_ArrayOfTriangleStrips> (increments reference count)
+    pub fn HandleGraphic3dArrayOfTriangleStrips_clone(
+        self_: *const HandleGraphic3dArrayOfTriangleStrips,
+    ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfTriangleStrips>;
     /// Dereference Handle to get *const Graphic3d_ArrayOfTriangleStrips
     pub fn HandleGraphic3dArrayOfTriangleStrips_get(
         handle: *const HandleGraphic3dArrayOfTriangleStrips,
@@ -7305,6 +7437,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfTriangles>;
     /// Destroy Handle<Graphic3d_ArrayOfTriangles>
     pub fn HandleGraphic3dArrayOfTriangles_destructor(self_: *mut HandleGraphic3dArrayOfTriangles);
+    /// Clone Handle<Graphic3d_ArrayOfTriangles> (increments reference count)
+    pub fn HandleGraphic3dArrayOfTriangles_clone(
+        self_: *const HandleGraphic3dArrayOfTriangles,
+    ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfTriangles>;
     /// Dereference Handle to get *const Graphic3d_ArrayOfTriangles
     pub fn HandleGraphic3dArrayOfTriangles_get(
         handle: *const HandleGraphic3dArrayOfTriangles,
@@ -7595,6 +7731,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dAspectFillArea3d>;
     /// Destroy Handle<Graphic3d_AspectFillArea3d>
     pub fn HandleGraphic3dAspectFillArea3d_destructor(self_: *mut HandleGraphic3dAspectFillArea3d);
+    /// Clone Handle<Graphic3d_AspectFillArea3d> (increments reference count)
+    pub fn HandleGraphic3dAspectFillArea3d_clone(
+        self_: *const HandleGraphic3dAspectFillArea3d,
+    ) -> crate::OcctResult<*mut HandleGraphic3dAspectFillArea3d>;
     /// Dereference Handle to get *const Graphic3d_AspectFillArea3d
     pub fn HandleGraphic3dAspectFillArea3d_get(
         handle: *const HandleGraphic3dAspectFillArea3d,
@@ -8109,6 +8249,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dAspectLine3d>;
     /// Destroy Handle<Graphic3d_AspectLine3d>
     pub fn HandleGraphic3dAspectLine3d_destructor(self_: *mut HandleGraphic3dAspectLine3d);
+    /// Clone Handle<Graphic3d_AspectLine3d> (increments reference count)
+    pub fn HandleGraphic3dAspectLine3d_clone(
+        self_: *const HandleGraphic3dAspectLine3d,
+    ) -> crate::OcctResult<*mut HandleGraphic3dAspectLine3d>;
     /// Dereference Handle to get *const Graphic3d_AspectLine3d
     pub fn HandleGraphic3dAspectLine3d_get(
         handle: *const HandleGraphic3dAspectLine3d,
@@ -8651,6 +8795,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dAspectMarker3d>;
     /// Destroy Handle<Graphic3d_AspectMarker3d>
     pub fn HandleGraphic3dAspectMarker3d_destructor(self_: *mut HandleGraphic3dAspectMarker3d);
+    /// Clone Handle<Graphic3d_AspectMarker3d> (increments reference count)
+    pub fn HandleGraphic3dAspectMarker3d_clone(
+        self_: *const HandleGraphic3dAspectMarker3d,
+    ) -> crate::OcctResult<*mut HandleGraphic3dAspectMarker3d>;
     /// Dereference Handle to get *const Graphic3d_AspectMarker3d
     pub fn HandleGraphic3dAspectMarker3d_get(
         handle: *const HandleGraphic3dAspectMarker3d,
@@ -9212,6 +9360,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dAspectText3d>;
     /// Destroy Handle<Graphic3d_AspectText3d>
     pub fn HandleGraphic3dAspectText3d_destructor(self_: *mut HandleGraphic3dAspectText3d);
+    /// Clone Handle<Graphic3d_AspectText3d> (increments reference count)
+    pub fn HandleGraphic3dAspectText3d_clone(
+        self_: *const HandleGraphic3dAspectText3d,
+    ) -> crate::OcctResult<*mut HandleGraphic3dAspectText3d>;
     /// Dereference Handle to get *const Graphic3d_AspectText3d
     pub fn HandleGraphic3dAspectText3d_get(
         handle: *const HandleGraphic3dAspectText3d,
@@ -10093,6 +10245,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dAspects>;
     /// Destroy Handle<Graphic3d_Aspects>
     pub fn HandleGraphic3dAspects_destructor(self_: *mut HandleGraphic3dAspects);
+    /// Clone Handle<Graphic3d_Aspects> (increments reference count)
+    pub fn HandleGraphic3dAspects_clone(
+        self_: *const HandleGraphic3dAspects,
+    ) -> crate::OcctResult<*mut HandleGraphic3dAspects>;
     /// Dereference Handle to get *const Graphic3d_Aspects
     pub fn HandleGraphic3dAspects_get(
         handle: *const HandleGraphic3dAspects,
@@ -10262,6 +10418,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dAttribBuffer>;
     /// Destroy Handle<Graphic3d_AttribBuffer>
     pub fn HandleGraphic3dAttribBuffer_destructor(self_: *mut HandleGraphic3dAttribBuffer);
+    /// Clone Handle<Graphic3d_AttribBuffer> (increments reference count)
+    pub fn HandleGraphic3dAttribBuffer_clone(
+        self_: *const HandleGraphic3dAttribBuffer,
+    ) -> crate::OcctResult<*mut HandleGraphic3dAttribBuffer>;
     /// Dereference Handle to get *const Graphic3d_AttribBuffer
     pub fn HandleGraphic3dAttribBuffer_get(
         handle: *const HandleGraphic3dAttribBuffer,
@@ -10480,6 +10640,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dBoundBuffer>;
     /// Destroy Handle<Graphic3d_BoundBuffer>
     pub fn HandleGraphic3dBoundBuffer_destructor(self_: *mut HandleGraphic3dBoundBuffer);
+    /// Clone Handle<Graphic3d_BoundBuffer> (increments reference count)
+    pub fn HandleGraphic3dBoundBuffer_clone(
+        self_: *const HandleGraphic3dBoundBuffer,
+    ) -> crate::OcctResult<*mut HandleGraphic3dBoundBuffer>;
     /// Dereference Handle to get *const Graphic3d_BoundBuffer
     pub fn HandleGraphic3dBoundBuffer_get(
         handle: *const HandleGraphic3dBoundBuffer,
@@ -10690,6 +10854,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dBuffer>;
     /// Destroy Handle<Graphic3d_Buffer>
     pub fn HandleGraphic3dBuffer_destructor(self_: *mut HandleGraphic3dBuffer);
+    /// Clone Handle<Graphic3d_Buffer> (increments reference count)
+    pub fn HandleGraphic3dBuffer_clone(
+        self_: *const HandleGraphic3dBuffer,
+    ) -> crate::OcctResult<*mut HandleGraphic3dBuffer>;
     /// Dereference Handle to get *const Graphic3d_Buffer
     pub fn HandleGraphic3dBuffer_get(
         handle: *const HandleGraphic3dBuffer,
@@ -10843,6 +11011,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dBvhCStructureSet>;
     /// Destroy Handle<Graphic3d_BvhCStructureSet>
     pub fn HandleGraphic3dBvhCStructureSet_destructor(self_: *mut HandleGraphic3dBvhCStructureSet);
+    /// Clone Handle<Graphic3d_BvhCStructureSet> (increments reference count)
+    pub fn HandleGraphic3dBvhCStructureSet_clone(
+        self_: *const HandleGraphic3dBvhCStructureSet,
+    ) -> crate::OcctResult<*mut HandleGraphic3dBvhCStructureSet>;
     /// Dereference Handle to get *const Graphic3d_BvhCStructureSet
     pub fn HandleGraphic3dBvhCStructureSet_get(
         handle: *const HandleGraphic3dBvhCStructureSet,
@@ -11145,6 +11317,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dCLight>;
     /// Destroy Handle<Graphic3d_CLight>
     pub fn HandleGraphic3dCLight_destructor(self_: *mut HandleGraphic3dCLight);
+    /// Clone Handle<Graphic3d_CLight> (increments reference count)
+    pub fn HandleGraphic3dCLight_clone(
+        self_: *const HandleGraphic3dCLight,
+    ) -> crate::OcctResult<*mut HandleGraphic3dCLight>;
     /// Dereference Handle to get *const Graphic3d_CLight
     pub fn HandleGraphic3dCLight_get(
         handle: *const HandleGraphic3dCLight,
@@ -11393,6 +11569,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Graphic3d_CStructure>
     pub fn HandleGraphic3dCStructure_destructor(self_: *mut HandleGraphic3dCStructure);
+    /// Clone Handle<Graphic3d_CStructure> (increments reference count)
+    pub fn HandleGraphic3dCStructure_clone(
+        self_: *const HandleGraphic3dCStructure,
+    ) -> crate::OcctResult<*mut HandleGraphic3dCStructure>;
     /// Dereference Handle to get *const Graphic3d_CStructure
     pub fn HandleGraphic3dCStructure_get(
         handle: *const HandleGraphic3dCStructure,
@@ -12006,6 +12186,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Graphic3d_CView>
     pub fn HandleGraphic3dCView_destructor(self_: *mut HandleGraphic3dCView);
+    /// Clone Handle<Graphic3d_CView> (increments reference count)
+    pub fn HandleGraphic3dCView_clone(
+        self_: *const HandleGraphic3dCView,
+    ) -> crate::OcctResult<*mut HandleGraphic3dCView>;
     /// Dereference Handle to get *const Graphic3d_CView
     pub fn HandleGraphic3dCView_get(
         handle: *const HandleGraphic3dCView,
@@ -12476,6 +12660,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dCamera>;
     /// Destroy Handle<Graphic3d_Camera>
     pub fn HandleGraphic3dCamera_destructor(self_: *mut HandleGraphic3dCamera);
+    /// Clone Handle<Graphic3d_Camera> (increments reference count)
+    pub fn HandleGraphic3dCamera_clone(
+        self_: *const HandleGraphic3dCamera,
+    ) -> crate::OcctResult<*mut HandleGraphic3dCamera>;
     /// Dereference Handle to get *const Graphic3d_Camera
     pub fn HandleGraphic3dCamera_get(
         handle: *const HandleGraphic3dCamera,
@@ -12785,6 +12973,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dClipPlane>;
     /// Destroy Handle<Graphic3d_ClipPlane>
     pub fn HandleGraphic3dClipPlane_destructor(self_: *mut HandleGraphic3dClipPlane);
+    /// Clone Handle<Graphic3d_ClipPlane> (increments reference count)
+    pub fn HandleGraphic3dClipPlane_clone(
+        self_: *const HandleGraphic3dClipPlane,
+    ) -> crate::OcctResult<*mut HandleGraphic3dClipPlane>;
     /// Dereference Handle to get *const Graphic3d_ClipPlane
     pub fn HandleGraphic3dClipPlane_get(
         handle: *const HandleGraphic3dClipPlane,
@@ -12903,6 +13095,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Graphic3d_CubeMap>
     pub fn HandleGraphic3dCubeMap_destructor(self_: *mut HandleGraphic3dCubeMap);
+    /// Clone Handle<Graphic3d_CubeMap> (increments reference count)
+    pub fn HandleGraphic3dCubeMap_clone(
+        self_: *const HandleGraphic3dCubeMap,
+    ) -> crate::OcctResult<*mut HandleGraphic3dCubeMap>;
     /// Dereference Handle to get *const Graphic3d_CubeMap
     pub fn HandleGraphic3dCubeMap_get(
         handle: *const HandleGraphic3dCubeMap,
@@ -13146,7 +13342,7 @@ extern "C" {
     // ======================== Graphic3d_ValidatedCubeMapOrder ========================
     pub fn Graphic3d_ValidatedCubeMapOrder_destructor(self_: *mut Graphic3d_ValidatedCubeMapOrder);
     /// Clone via copy constructor
-    pub fn Graphic3d_ValidatedCubeMapOrder_to_owned(
+    pub fn Graphic3d_ValidatedCubeMapOrder_clone(
         self_: *const Graphic3d_ValidatedCubeMapOrder,
     ) -> crate::OcctResult<*mut Graphic3d_ValidatedCubeMapOrder>;
     // ======================== Graphic3d_CubeMapPacked ========================
@@ -13218,6 +13414,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dCubeMapPacked>;
     /// Destroy Handle<Graphic3d_CubeMapPacked>
     pub fn HandleGraphic3dCubeMapPacked_destructor(self_: *mut HandleGraphic3dCubeMapPacked);
+    /// Clone Handle<Graphic3d_CubeMapPacked> (increments reference count)
+    pub fn HandleGraphic3dCubeMapPacked_clone(
+        self_: *const HandleGraphic3dCubeMapPacked,
+    ) -> crate::OcctResult<*mut HandleGraphic3dCubeMapPacked>;
     /// Dereference Handle to get *const Graphic3d_CubeMapPacked
     pub fn HandleGraphic3dCubeMapPacked_get(
         handle: *const HandleGraphic3dCubeMapPacked,
@@ -13478,6 +13678,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dCubeMapSeparate>;
     /// Destroy Handle<Graphic3d_CubeMapSeparate>
     pub fn HandleGraphic3dCubeMapSeparate_destructor(self_: *mut HandleGraphic3dCubeMapSeparate);
+    /// Clone Handle<Graphic3d_CubeMapSeparate> (increments reference count)
+    pub fn HandleGraphic3dCubeMapSeparate_clone(
+        self_: *const HandleGraphic3dCubeMapSeparate,
+    ) -> crate::OcctResult<*mut HandleGraphic3dCubeMapSeparate>;
     /// Dereference Handle to get *const Graphic3d_CubeMapSeparate
     pub fn HandleGraphic3dCubeMapSeparate_get(
         handle: *const HandleGraphic3dCubeMapSeparate,
@@ -13792,6 +13996,10 @@ extern "C" {
     pub fn HandleGraphic3dDataStructureManager_destructor(
         self_: *mut HandleGraphic3dDataStructureManager,
     );
+    /// Clone Handle<Graphic3d_DataStructureManager> (increments reference count)
+    pub fn HandleGraphic3dDataStructureManager_clone(
+        self_: *const HandleGraphic3dDataStructureManager,
+    ) -> crate::OcctResult<*mut HandleGraphic3dDataStructureManager>;
     /// Dereference Handle to get *const Graphic3d_DataStructureManager
     pub fn HandleGraphic3dDataStructureManager_get(
         handle: *const HandleGraphic3dDataStructureManager,
@@ -13955,6 +14163,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Graphic3d_FrameStats>
     pub fn HandleGraphic3dFrameStats_destructor(self_: *mut HandleGraphic3dFrameStats);
+    /// Clone Handle<Graphic3d_FrameStats> (increments reference count)
+    pub fn HandleGraphic3dFrameStats_clone(
+        self_: *const HandleGraphic3dFrameStats,
+    ) -> crate::OcctResult<*mut HandleGraphic3dFrameStats>;
     /// Dereference Handle to get *const Graphic3d_FrameStats
     pub fn HandleGraphic3dFrameStats_get(
         handle: *const HandleGraphic3dFrameStats,
@@ -14037,7 +14249,7 @@ extern "C" {
         theOther: *const Graphic3d_FrameStatsData,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn Graphic3d_FrameStatsData_to_owned(
+    pub fn Graphic3d_FrameStatsData_clone(
         self_: *const Graphic3d_FrameStatsData,
     ) -> crate::OcctResult<*mut Graphic3d_FrameStatsData>;
     // ======================== Graphic3d_FrameStatsDataTmp ========================
@@ -14526,6 +14738,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Graphic3d_GraphicDriver>
     pub fn HandleGraphic3dGraphicDriver_destructor(self_: *mut HandleGraphic3dGraphicDriver);
+    /// Clone Handle<Graphic3d_GraphicDriver> (increments reference count)
+    pub fn HandleGraphic3dGraphicDriver_clone(
+        self_: *const HandleGraphic3dGraphicDriver,
+    ) -> crate::OcctResult<*mut HandleGraphic3dGraphicDriver>;
     /// Dereference Handle to get *const Graphic3d_GraphicDriver
     pub fn HandleGraphic3dGraphicDriver_get(
         handle: *const HandleGraphic3dGraphicDriver,
@@ -14616,6 +14832,10 @@ extern "C" {
     pub fn HandleGraphic3dGraphicDriverFactory_destructor(
         self_: *mut HandleGraphic3dGraphicDriverFactory,
     );
+    /// Clone Handle<Graphic3d_GraphicDriverFactory> (increments reference count)
+    pub fn HandleGraphic3dGraphicDriverFactory_clone(
+        self_: *const HandleGraphic3dGraphicDriverFactory,
+    ) -> crate::OcctResult<*mut HandleGraphic3dGraphicDriverFactory>;
     /// Dereference Handle to get *const Graphic3d_GraphicDriverFactory
     pub fn HandleGraphic3dGraphicDriverFactory_get(
         handle: *const HandleGraphic3dGraphicDriverFactory,
@@ -14801,6 +15021,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Graphic3d_Group>
     pub fn HandleGraphic3dGroup_destructor(self_: *mut HandleGraphic3dGroup);
+    /// Clone Handle<Graphic3d_Group> (increments reference count)
+    pub fn HandleGraphic3dGroup_clone(
+        self_: *const HandleGraphic3dGroup,
+    ) -> crate::OcctResult<*mut HandleGraphic3dGroup>;
     /// Dereference Handle to get *const Graphic3d_Group
     pub fn HandleGraphic3dGroup_get(
         handle: *const HandleGraphic3dGroup,
@@ -14932,6 +15156,10 @@ extern "C" {
     pub fn HandleGraphic3dGroupDefinitionError_destructor(
         self_: *mut HandleGraphic3dGroupDefinitionError,
     );
+    /// Clone Handle<Graphic3d_GroupDefinitionError> (increments reference count)
+    pub fn HandleGraphic3dGroupDefinitionError_clone(
+        self_: *const HandleGraphic3dGroupDefinitionError,
+    ) -> crate::OcctResult<*mut HandleGraphic3dGroupDefinitionError>;
     /// Dereference Handle to get *const Graphic3d_GroupDefinitionError
     pub fn HandleGraphic3dGroupDefinitionError_get(
         handle: *const HandleGraphic3dGroupDefinitionError,
@@ -15043,6 +15271,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dHatchStyle>;
     /// Destroy Handle<Graphic3d_HatchStyle>
     pub fn HandleGraphic3dHatchStyle_destructor(self_: *mut HandleGraphic3dHatchStyle);
+    /// Clone Handle<Graphic3d_HatchStyle> (increments reference count)
+    pub fn HandleGraphic3dHatchStyle_clone(
+        self_: *const HandleGraphic3dHatchStyle,
+    ) -> crate::OcctResult<*mut HandleGraphic3dHatchStyle>;
     /// Dereference Handle to get *const Graphic3d_HatchStyle
     pub fn HandleGraphic3dHatchStyle_get(
         handle: *const HandleGraphic3dHatchStyle,
@@ -15146,6 +15378,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dIndexBuffer>;
     /// Destroy Handle<Graphic3d_IndexBuffer>
     pub fn HandleGraphic3dIndexBuffer_destructor(self_: *mut HandleGraphic3dIndexBuffer);
+    /// Clone Handle<Graphic3d_IndexBuffer> (increments reference count)
+    pub fn HandleGraphic3dIndexBuffer_clone(
+        self_: *const HandleGraphic3dIndexBuffer,
+    ) -> crate::OcctResult<*mut HandleGraphic3dIndexBuffer>;
     /// Dereference Handle to get *const Graphic3d_IndexBuffer
     pub fn HandleGraphic3dIndexBuffer_get(
         handle: *const HandleGraphic3dIndexBuffer,
@@ -15411,6 +15647,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dLayer>;
     /// Destroy Handle<Graphic3d_Layer>
     pub fn HandleGraphic3dLayer_destructor(self_: *mut HandleGraphic3dLayer);
+    /// Clone Handle<Graphic3d_Layer> (increments reference count)
+    pub fn HandleGraphic3dLayer_clone(
+        self_: *const HandleGraphic3dLayer,
+    ) -> crate::OcctResult<*mut HandleGraphic3dLayer>;
     /// Dereference Handle to get *const Graphic3d_Layer
     pub fn HandleGraphic3dLayer_get(
         handle: *const HandleGraphic3dLayer,
@@ -15546,6 +15786,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dLightSet>;
     /// Destroy Handle<Graphic3d_LightSet>
     pub fn HandleGraphic3dLightSet_destructor(self_: *mut HandleGraphic3dLightSet);
+    /// Clone Handle<Graphic3d_LightSet> (increments reference count)
+    pub fn HandleGraphic3dLightSet_clone(
+        self_: *const HandleGraphic3dLightSet,
+    ) -> crate::OcctResult<*mut HandleGraphic3dLightSet>;
     /// Dereference Handle to get *const Graphic3d_LightSet
     pub fn HandleGraphic3dLightSet_get(
         handle: *const HandleGraphic3dLightSet,
@@ -15688,6 +15932,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dMarkerImage>;
     /// Destroy Handle<Graphic3d_MarkerImage>
     pub fn HandleGraphic3dMarkerImage_destructor(self_: *mut HandleGraphic3dMarkerImage);
+    /// Clone Handle<Graphic3d_MarkerImage> (increments reference count)
+    pub fn HandleGraphic3dMarkerImage_clone(
+        self_: *const HandleGraphic3dMarkerImage,
+    ) -> crate::OcctResult<*mut HandleGraphic3dMarkerImage>;
     /// Dereference Handle to get *const Graphic3d_MarkerImage
     pub fn HandleGraphic3dMarkerImage_get(
         handle: *const HandleGraphic3dMarkerImage,
@@ -16004,6 +16252,10 @@ extern "C" {
     pub fn HandleGraphic3dMaterialDefinitionError_destructor(
         self_: *mut HandleGraphic3dMaterialDefinitionError,
     );
+    /// Clone Handle<Graphic3d_MaterialDefinitionError> (increments reference count)
+    pub fn HandleGraphic3dMaterialDefinitionError_clone(
+        self_: *const HandleGraphic3dMaterialDefinitionError,
+    ) -> crate::OcctResult<*mut HandleGraphic3dMaterialDefinitionError>;
     /// Dereference Handle to get *const Graphic3d_MaterialDefinitionError
     pub fn HandleGraphic3dMaterialDefinitionError_get(
         handle: *const HandleGraphic3dMaterialDefinitionError,
@@ -16142,6 +16394,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dMediaTexture>;
     /// Destroy Handle<Graphic3d_MediaTexture>
     pub fn HandleGraphic3dMediaTexture_destructor(self_: *mut HandleGraphic3dMediaTexture);
+    /// Clone Handle<Graphic3d_MediaTexture> (increments reference count)
+    pub fn HandleGraphic3dMediaTexture_clone(
+        self_: *const HandleGraphic3dMediaTexture,
+    ) -> crate::OcctResult<*mut HandleGraphic3dMediaTexture>;
     /// Dereference Handle to get *const Graphic3d_MediaTexture
     pub fn HandleGraphic3dMediaTexture_get(
         handle: *const HandleGraphic3dMediaTexture,
@@ -16400,6 +16656,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dMediaTextureSet>;
     /// Destroy Handle<Graphic3d_MediaTextureSet>
     pub fn HandleGraphic3dMediaTextureSet_destructor(self_: *mut HandleGraphic3dMediaTextureSet);
+    /// Clone Handle<Graphic3d_MediaTextureSet> (increments reference count)
+    pub fn HandleGraphic3dMediaTextureSet_clone(
+        self_: *const HandleGraphic3dMediaTextureSet,
+    ) -> crate::OcctResult<*mut HandleGraphic3dMediaTextureSet>;
     /// Dereference Handle to get *const Graphic3d_MediaTextureSet
     pub fn HandleGraphic3dMediaTextureSet_get(
         handle: *const HandleGraphic3dMediaTextureSet,
@@ -16564,6 +16824,10 @@ extern "C" {
     pub fn HandleGraphic3dMutableIndexBuffer_destructor(
         self_: *mut HandleGraphic3dMutableIndexBuffer,
     );
+    /// Clone Handle<Graphic3d_MutableIndexBuffer> (increments reference count)
+    pub fn HandleGraphic3dMutableIndexBuffer_clone(
+        self_: *const HandleGraphic3dMutableIndexBuffer,
+    ) -> crate::OcctResult<*mut HandleGraphic3dMutableIndexBuffer>;
     /// Dereference Handle to get *const Graphic3d_MutableIndexBuffer
     pub fn HandleGraphic3dMutableIndexBuffer_get(
         handle: *const HandleGraphic3dMutableIndexBuffer,
@@ -16891,6 +17155,10 @@ extern "C" {
     pub fn HandleGraphic3dPresentationAttributes_destructor(
         self_: *mut HandleGraphic3dPresentationAttributes,
     );
+    /// Clone Handle<Graphic3d_PresentationAttributes> (increments reference count)
+    pub fn HandleGraphic3dPresentationAttributes_clone(
+        self_: *const HandleGraphic3dPresentationAttributes,
+    ) -> crate::OcctResult<*mut HandleGraphic3dPresentationAttributes>;
     /// Dereference Handle to get *const Graphic3d_PresentationAttributes
     pub fn HandleGraphic3dPresentationAttributes_get(
         handle: *const HandleGraphic3dPresentationAttributes,
@@ -17032,6 +17300,10 @@ extern "C" {
     pub fn HandleGraphic3dPriorityDefinitionError_destructor(
         self_: *mut HandleGraphic3dPriorityDefinitionError,
     );
+    /// Clone Handle<Graphic3d_PriorityDefinitionError> (increments reference count)
+    pub fn HandleGraphic3dPriorityDefinitionError_clone(
+        self_: *const HandleGraphic3dPriorityDefinitionError,
+    ) -> crate::OcctResult<*mut HandleGraphic3dPriorityDefinitionError>;
     /// Dereference Handle to get *const Graphic3d_PriorityDefinitionError
     pub fn HandleGraphic3dPriorityDefinitionError_get(
         handle: *const HandleGraphic3dPriorityDefinitionError,
@@ -17182,6 +17454,10 @@ extern "C" {
     pub fn HandleGraphic3dSequenceOfHClipPlane_destructor(
         self_: *mut HandleGraphic3dSequenceOfHClipPlane,
     );
+    /// Clone Handle<Graphic3d_SequenceOfHClipPlane> (increments reference count)
+    pub fn HandleGraphic3dSequenceOfHClipPlane_clone(
+        self_: *const HandleGraphic3dSequenceOfHClipPlane,
+    ) -> crate::OcctResult<*mut HandleGraphic3dSequenceOfHClipPlane>;
     /// Dereference Handle to get *const Graphic3d_SequenceOfHClipPlane
     pub fn HandleGraphic3dSequenceOfHClipPlane_get(
         handle: *const HandleGraphic3dSequenceOfHClipPlane,
@@ -17287,6 +17563,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dShaderAttribute>;
     /// Destroy Handle<Graphic3d_ShaderAttribute>
     pub fn HandleGraphic3dShaderAttribute_destructor(self_: *mut HandleGraphic3dShaderAttribute);
+    /// Clone Handle<Graphic3d_ShaderAttribute> (increments reference count)
+    pub fn HandleGraphic3dShaderAttribute_clone(
+        self_: *const HandleGraphic3dShaderAttribute,
+    ) -> crate::OcctResult<*mut HandleGraphic3dShaderAttribute>;
     /// Dereference Handle to get *const Graphic3d_ShaderAttribute
     pub fn HandleGraphic3dShaderAttribute_get(
         handle: *const HandleGraphic3dShaderAttribute,
@@ -17421,6 +17701,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dShaderManager>;
     /// Destroy Handle<Graphic3d_ShaderManager>
     pub fn HandleGraphic3dShaderManager_destructor(self_: *mut HandleGraphic3dShaderManager);
+    /// Clone Handle<Graphic3d_ShaderManager> (increments reference count)
+    pub fn HandleGraphic3dShaderManager_clone(
+        self_: *const HandleGraphic3dShaderManager,
+    ) -> crate::OcctResult<*mut HandleGraphic3dShaderManager>;
     /// Dereference Handle to get *const Graphic3d_ShaderManager
     pub fn HandleGraphic3dShaderManager_get(
         handle: *const HandleGraphic3dShaderManager,
@@ -17528,6 +17812,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dShaderObject>;
     /// Destroy Handle<Graphic3d_ShaderObject>
     pub fn HandleGraphic3dShaderObject_destructor(self_: *mut HandleGraphic3dShaderObject);
+    /// Clone Handle<Graphic3d_ShaderObject> (increments reference count)
+    pub fn HandleGraphic3dShaderObject_clone(
+        self_: *const HandleGraphic3dShaderObject,
+    ) -> crate::OcctResult<*mut HandleGraphic3dShaderObject>;
     /// Dereference Handle to get *const Graphic3d_ShaderObject
     pub fn HandleGraphic3dShaderObject_get(
         handle: *const HandleGraphic3dShaderObject,
@@ -17799,6 +18087,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dShaderProgram>;
     /// Destroy Handle<Graphic3d_ShaderProgram>
     pub fn HandleGraphic3dShaderProgram_destructor(self_: *mut HandleGraphic3dShaderProgram);
+    /// Clone Handle<Graphic3d_ShaderProgram> (increments reference count)
+    pub fn HandleGraphic3dShaderProgram_clone(
+        self_: *const HandleGraphic3dShaderProgram,
+    ) -> crate::OcctResult<*mut HandleGraphic3dShaderProgram>;
     /// Dereference Handle to get *const Graphic3d_ShaderProgram
     pub fn HandleGraphic3dShaderProgram_get(
         handle: *const HandleGraphic3dShaderProgram,
@@ -17884,6 +18176,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dShaderVariable>;
     /// Destroy Handle<Graphic3d_ShaderVariable>
     pub fn HandleGraphic3dShaderVariable_destructor(self_: *mut HandleGraphic3dShaderVariable);
+    /// Clone Handle<Graphic3d_ShaderVariable> (increments reference count)
+    pub fn HandleGraphic3dShaderVariable_clone(
+        self_: *const HandleGraphic3dShaderVariable,
+    ) -> crate::OcctResult<*mut HandleGraphic3dShaderVariable>;
     /// Dereference Handle to get *const Graphic3d_ShaderVariable
     pub fn HandleGraphic3dShaderVariable_get(
         handle: *const HandleGraphic3dShaderVariable,
@@ -18256,6 +18552,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dStructure>;
     /// Destroy Handle<Graphic3d_Structure>
     pub fn HandleGraphic3dStructure_destructor(self_: *mut HandleGraphic3dStructure);
+    /// Clone Handle<Graphic3d_Structure> (increments reference count)
+    pub fn HandleGraphic3dStructure_clone(
+        self_: *const HandleGraphic3dStructure,
+    ) -> crate::OcctResult<*mut HandleGraphic3dStructure>;
     /// Dereference Handle to get *const Graphic3d_Structure
     pub fn HandleGraphic3dStructure_get(
         handle: *const HandleGraphic3dStructure,
@@ -18397,6 +18697,10 @@ extern "C" {
     pub fn HandleGraphic3dStructureDefinitionError_destructor(
         self_: *mut HandleGraphic3dStructureDefinitionError,
     );
+    /// Clone Handle<Graphic3d_StructureDefinitionError> (increments reference count)
+    pub fn HandleGraphic3dStructureDefinitionError_clone(
+        self_: *const HandleGraphic3dStructureDefinitionError,
+    ) -> crate::OcctResult<*mut HandleGraphic3dStructureDefinitionError>;
     /// Dereference Handle to get *const Graphic3d_StructureDefinitionError
     pub fn HandleGraphic3dStructureDefinitionError_get(
         handle: *const HandleGraphic3dStructureDefinitionError,
@@ -18652,6 +18956,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dStructureManager>;
     /// Destroy Handle<Graphic3d_StructureManager>
     pub fn HandleGraphic3dStructureManager_destructor(self_: *mut HandleGraphic3dStructureManager);
+    /// Clone Handle<Graphic3d_StructureManager> (increments reference count)
+    pub fn HandleGraphic3dStructureManager_clone(
+        self_: *const HandleGraphic3dStructureManager,
+    ) -> crate::OcctResult<*mut HandleGraphic3dStructureManager>;
     /// Dereference Handle to get *const Graphic3d_StructureManager
     pub fn HandleGraphic3dStructureManager_get(
         handle: *const HandleGraphic3dStructureManager,
@@ -18804,6 +19112,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dText>;
     /// Destroy Handle<Graphic3d_Text>
     pub fn HandleGraphic3dText_destructor(self_: *mut HandleGraphic3dText);
+    /// Clone Handle<Graphic3d_Text> (increments reference count)
+    pub fn HandleGraphic3dText_clone(
+        self_: *const HandleGraphic3dText,
+    ) -> crate::OcctResult<*mut HandleGraphic3dText>;
     /// Dereference Handle to get *const Graphic3d_Text
     pub fn HandleGraphic3dText_get(
         handle: *const HandleGraphic3dText,
@@ -18893,6 +19205,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture1D>;
     /// Destroy Handle<Graphic3d_Texture1D>
     pub fn HandleGraphic3dTexture1D_destructor(self_: *mut HandleGraphic3dTexture1D);
+    /// Clone Handle<Graphic3d_Texture1D> (increments reference count)
+    pub fn HandleGraphic3dTexture1D_clone(
+        self_: *const HandleGraphic3dTexture1D,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTexture1D>;
     /// Dereference Handle to get *const Graphic3d_Texture1D
     pub fn HandleGraphic3dTexture1D_get(
         handle: *const HandleGraphic3dTexture1D,
@@ -19117,6 +19433,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture1Dmanual>;
     /// Destroy Handle<Graphic3d_Texture1Dmanual>
     pub fn HandleGraphic3dTexture1Dmanual_destructor(self_: *mut HandleGraphic3dTexture1Dmanual);
+    /// Clone Handle<Graphic3d_Texture1Dmanual> (increments reference count)
+    pub fn HandleGraphic3dTexture1Dmanual_clone(
+        self_: *const HandleGraphic3dTexture1Dmanual,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTexture1Dmanual>;
     /// Dereference Handle to get *const Graphic3d_Texture1Dmanual
     pub fn HandleGraphic3dTexture1Dmanual_get(
         handle: *const HandleGraphic3dTexture1Dmanual,
@@ -19361,6 +19681,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture1Dsegment>;
     /// Destroy Handle<Graphic3d_Texture1Dsegment>
     pub fn HandleGraphic3dTexture1Dsegment_destructor(self_: *mut HandleGraphic3dTexture1Dsegment);
+    /// Clone Handle<Graphic3d_Texture1Dsegment> (increments reference count)
+    pub fn HandleGraphic3dTexture1Dsegment_clone(
+        self_: *const HandleGraphic3dTexture1Dsegment,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTexture1Dsegment>;
     /// Dereference Handle to get *const Graphic3d_Texture1Dsegment
     pub fn HandleGraphic3dTexture1Dsegment_get(
         handle: *const HandleGraphic3dTexture1Dsegment,
@@ -19589,6 +19913,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture2D>;
     /// Destroy Handle<Graphic3d_Texture2D>
     pub fn HandleGraphic3dTexture2D_destructor(self_: *mut HandleGraphic3dTexture2D);
+    /// Clone Handle<Graphic3d_Texture2D> (increments reference count)
+    pub fn HandleGraphic3dTexture2D_clone(
+        self_: *const HandleGraphic3dTexture2D,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTexture2D>;
     /// Dereference Handle to get *const Graphic3d_Texture2D
     pub fn HandleGraphic3dTexture2D_get(
         handle: *const HandleGraphic3dTexture2D,
@@ -19908,6 +20236,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture2Dplane>;
     /// Destroy Handle<Graphic3d_Texture2Dplane>
     pub fn HandleGraphic3dTexture2Dplane_destructor(self_: *mut HandleGraphic3dTexture2Dplane);
+    /// Clone Handle<Graphic3d_Texture2Dplane> (increments reference count)
+    pub fn HandleGraphic3dTexture2Dplane_clone(
+        self_: *const HandleGraphic3dTexture2Dplane,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTexture2Dplane>;
     /// Dereference Handle to get *const Graphic3d_Texture2Dplane
     pub fn HandleGraphic3dTexture2Dplane_get(
         handle: *const HandleGraphic3dTexture2Dplane,
@@ -20138,6 +20470,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture3D>;
     /// Destroy Handle<Graphic3d_Texture3D>
     pub fn HandleGraphic3dTexture3D_destructor(self_: *mut HandleGraphic3dTexture3D);
+    /// Clone Handle<Graphic3d_Texture3D> (increments reference count)
+    pub fn HandleGraphic3dTexture3D_clone(
+        self_: *const HandleGraphic3dTexture3D,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTexture3D>;
     /// Dereference Handle to get *const Graphic3d_Texture3D
     pub fn HandleGraphic3dTexture3D_get(
         handle: *const HandleGraphic3dTexture3D,
@@ -20340,6 +20676,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTextureEnv>;
     /// Destroy Handle<Graphic3d_TextureEnv>
     pub fn HandleGraphic3dTextureEnv_destructor(self_: *mut HandleGraphic3dTextureEnv);
+    /// Clone Handle<Graphic3d_TextureEnv> (increments reference count)
+    pub fn HandleGraphic3dTextureEnv_clone(
+        self_: *const HandleGraphic3dTextureEnv,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTextureEnv>;
     /// Dereference Handle to get *const Graphic3d_TextureEnv
     pub fn HandleGraphic3dTextureEnv_get(
         handle: *const HandleGraphic3dTextureEnv,
@@ -20523,6 +20863,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTextureMap>;
     /// Destroy Handle<Graphic3d_TextureMap>
     pub fn HandleGraphic3dTextureMap_destructor(self_: *mut HandleGraphic3dTextureMap);
+    /// Clone Handle<Graphic3d_TextureMap> (increments reference count)
+    pub fn HandleGraphic3dTextureMap_clone(
+        self_: *const HandleGraphic3dTextureMap,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTextureMap>;
     /// Dereference Handle to get *const Graphic3d_TextureMap
     pub fn HandleGraphic3dTextureMap_get(
         handle: *const HandleGraphic3dTextureMap,
@@ -20805,6 +21149,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTextureParams>;
     /// Destroy Handle<Graphic3d_TextureParams>
     pub fn HandleGraphic3dTextureParams_destructor(self_: *mut HandleGraphic3dTextureParams);
+    /// Clone Handle<Graphic3d_TextureParams> (increments reference count)
+    pub fn HandleGraphic3dTextureParams_clone(
+        self_: *const HandleGraphic3dTextureParams,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTextureParams>;
     /// Dereference Handle to get *const Graphic3d_TextureParams
     pub fn HandleGraphic3dTextureParams_get(
         handle: *const HandleGraphic3dTextureParams,
@@ -20934,6 +21282,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTextureRoot>;
     /// Destroy Handle<Graphic3d_TextureRoot>
     pub fn HandleGraphic3dTextureRoot_destructor(self_: *mut HandleGraphic3dTextureRoot);
+    /// Clone Handle<Graphic3d_TextureRoot> (increments reference count)
+    pub fn HandleGraphic3dTextureRoot_clone(
+        self_: *const HandleGraphic3dTextureRoot,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTextureRoot>;
     /// Dereference Handle to get *const Graphic3d_TextureRoot
     pub fn HandleGraphic3dTextureRoot_get(
         handle: *const HandleGraphic3dTextureRoot,
@@ -21090,6 +21442,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTextureSet>;
     /// Destroy Handle<Graphic3d_TextureSet>
     pub fn HandleGraphic3dTextureSet_destructor(self_: *mut HandleGraphic3dTextureSet);
+    /// Clone Handle<Graphic3d_TextureSet> (increments reference count)
+    pub fn HandleGraphic3dTextureSet_clone(
+        self_: *const HandleGraphic3dTextureSet,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTextureSet>;
     /// Dereference Handle to get *const Graphic3d_TextureSet
     pub fn HandleGraphic3dTextureSet_get(
         handle: *const HandleGraphic3dTextureSet,
@@ -21286,6 +21642,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dTransformPers>;
     /// Destroy Handle<Graphic3d_TransformPers>
     pub fn HandleGraphic3dTransformPers_destructor(self_: *mut HandleGraphic3dTransformPers);
+    /// Clone Handle<Graphic3d_TransformPers> (increments reference count)
+    pub fn HandleGraphic3dTransformPers_clone(
+        self_: *const HandleGraphic3dTransformPers,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTransformPers>;
     /// Dereference Handle to get *const Graphic3d_TransformPers
     pub fn HandleGraphic3dTransformPers_get(
         handle: *const HandleGraphic3dTransformPers,
@@ -21382,6 +21742,10 @@ extern "C" {
     pub fn HandleGraphic3dTransformPersScaledAbove_destructor(
         self_: *mut HandleGraphic3dTransformPersScaledAbove,
     );
+    /// Clone Handle<Graphic3d_TransformPersScaledAbove> (increments reference count)
+    pub fn HandleGraphic3dTransformPersScaledAbove_clone(
+        self_: *const HandleGraphic3dTransformPersScaledAbove,
+    ) -> crate::OcctResult<*mut HandleGraphic3dTransformPersScaledAbove>;
     /// Dereference Handle to get *const Graphic3d_TransformPersScaledAbove
     pub fn HandleGraphic3dTransformPersScaledAbove_get(
         handle: *const HandleGraphic3dTransformPersScaledAbove,
@@ -21546,6 +21910,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGraphic3dViewAffinity>;
     /// Destroy Handle<Graphic3d_ViewAffinity>
     pub fn HandleGraphic3dViewAffinity_destructor(self_: *mut HandleGraphic3dViewAffinity);
+    /// Clone Handle<Graphic3d_ViewAffinity> (increments reference count)
+    pub fn HandleGraphic3dViewAffinity_clone(
+        self_: *const HandleGraphic3dViewAffinity,
+    ) -> crate::OcctResult<*mut HandleGraphic3dViewAffinity>;
     /// Dereference Handle to get *const Graphic3d_ViewAffinity
     pub fn HandleGraphic3dViewAffinity_get(
         handle: *const HandleGraphic3dViewAffinity,
@@ -21879,6 +22247,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleImageAlienPixMap>;
     /// Destroy Handle<Image_AlienPixMap>
     pub fn HandleImageAlienPixMap_destructor(self_: *mut HandleImageAlienPixMap);
+    /// Clone Handle<Image_AlienPixMap> (increments reference count)
+    pub fn HandleImageAlienPixMap_clone(
+        self_: *const HandleImageAlienPixMap,
+    ) -> crate::OcctResult<*mut HandleImageAlienPixMap>;
     /// Dereference Handle to get *const Image_AlienPixMap
     pub fn HandleImageAlienPixMap_get(
         handle: *const HandleImageAlienPixMap,
@@ -22153,6 +22525,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleImageCompressedPixMap>;
     /// Destroy Handle<Image_CompressedPixMap>
     pub fn HandleImageCompressedPixMap_destructor(self_: *mut HandleImageCompressedPixMap);
+    /// Clone Handle<Image_CompressedPixMap> (increments reference count)
+    pub fn HandleImageCompressedPixMap_clone(
+        self_: *const HandleImageCompressedPixMap,
+    ) -> crate::OcctResult<*mut HandleImageCompressedPixMap>;
     /// Dereference Handle to get *const Image_CompressedPixMap
     pub fn HandleImageCompressedPixMap_get(
         handle: *const HandleImageCompressedPixMap,
@@ -22276,6 +22652,10 @@ extern "C" {
     pub fn Image_Diff_to_handle(obj: *mut Image_Diff) -> crate::OcctResult<*mut HandleImageDiff>;
     /// Destroy Handle<Image_Diff>
     pub fn HandleImageDiff_destructor(self_: *mut HandleImageDiff);
+    /// Clone Handle<Image_Diff> (increments reference count)
+    pub fn HandleImageDiff_clone(
+        self_: *const HandleImageDiff,
+    ) -> crate::OcctResult<*mut HandleImageDiff>;
     /// Dereference Handle to get *const Image_Diff
     pub fn HandleImageDiff_get(
         handle: *const HandleImageDiff,
@@ -22581,6 +22961,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleImagePixMap>;
     /// Destroy Handle<Image_PixMap>
     pub fn HandleImagePixMap_destructor(self_: *mut HandleImagePixMap);
+    /// Clone Handle<Image_PixMap> (increments reference count)
+    pub fn HandleImagePixMap_clone(
+        self_: *const HandleImagePixMap,
+    ) -> crate::OcctResult<*mut HandleImagePixMap>;
     /// Dereference Handle to get *const Image_PixMap
     pub fn HandleImagePixMap_get(
         handle: *const HandleImagePixMap,
@@ -22758,6 +23142,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleImagePixMapData>;
     /// Destroy Handle<Image_PixMapData>
     pub fn HandleImagePixMapData_destructor(self_: *mut HandleImagePixMapData);
+    /// Clone Handle<Image_PixMapData> (increments reference count)
+    pub fn HandleImagePixMapData_clone(
+        self_: *const HandleImagePixMapData,
+    ) -> crate::OcctResult<*mut HandleImagePixMapData>;
     /// Dereference Handle to get *const Image_PixMapData
     pub fn HandleImagePixMapData_get(
         handle: *const HandleImagePixMapData,
@@ -22884,6 +23272,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleImageSupportedFormats>;
     /// Destroy Handle<Image_SupportedFormats>
     pub fn HandleImageSupportedFormats_destructor(self_: *mut HandleImageSupportedFormats);
+    /// Clone Handle<Image_SupportedFormats> (increments reference count)
+    pub fn HandleImageSupportedFormats_clone(
+        self_: *const HandleImageSupportedFormats,
+    ) -> crate::OcctResult<*mut HandleImageSupportedFormats>;
     /// Dereference Handle to get *const Image_SupportedFormats
     pub fn HandleImageSupportedFormats_get(
         handle: *const HandleImageSupportedFormats,
@@ -23010,6 +23402,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleImageTexture>;
     /// Destroy Handle<Image_Texture>
     pub fn HandleImageTexture_destructor(self_: *mut HandleImageTexture);
+    /// Clone Handle<Image_Texture> (increments reference count)
+    pub fn HandleImageTexture_clone(
+        self_: *const HandleImageTexture,
+    ) -> crate::OcctResult<*mut HandleImageTexture>;
     /// Dereference Handle to get *const Image_Texture
     pub fn HandleImageTexture_get(
         handle: *const HandleImageTexture,
@@ -23111,6 +23507,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleImageVideoRecorder>;
     /// Destroy Handle<Image_VideoRecorder>
     pub fn HandleImageVideoRecorder_destructor(self_: *mut HandleImageVideoRecorder);
+    /// Clone Handle<Image_VideoRecorder> (increments reference count)
+    pub fn HandleImageVideoRecorder_clone(
+        self_: *const HandleImageVideoRecorder,
+    ) -> crate::OcctResult<*mut HandleImageVideoRecorder>;
     /// Dereference Handle to get *const Image_VideoRecorder
     pub fn HandleImageVideoRecorder_get(
         handle: *const HandleImageVideoRecorder,
@@ -23188,6 +23588,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMediaBufferPool>;
     /// Destroy Handle<Media_BufferPool>
     pub fn HandleMediaBufferPool_destructor(self_: *mut HandleMediaBufferPool);
+    /// Clone Handle<Media_BufferPool> (increments reference count)
+    pub fn HandleMediaBufferPool_clone(
+        self_: *const HandleMediaBufferPool,
+    ) -> crate::OcctResult<*mut HandleMediaBufferPool>;
     /// Dereference Handle to get *const Media_BufferPool
     pub fn HandleMediaBufferPool_get(
         handle: *const HandleMediaBufferPool,
@@ -23283,6 +23687,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMediaCodecContext>;
     /// Destroy Handle<Media_CodecContext>
     pub fn HandleMediaCodecContext_destructor(self_: *mut HandleMediaCodecContext);
+    /// Clone Handle<Media_CodecContext> (increments reference count)
+    pub fn HandleMediaCodecContext_clone(
+        self_: *const HandleMediaCodecContext,
+    ) -> crate::OcctResult<*mut HandleMediaCodecContext>;
     /// Dereference Handle to get *const Media_CodecContext
     pub fn HandleMediaCodecContext_get(
         handle: *const HandleMediaCodecContext,
@@ -23406,6 +23814,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMediaFormatContext>;
     /// Destroy Handle<Media_FormatContext>
     pub fn HandleMediaFormatContext_destructor(self_: *mut HandleMediaFormatContext);
+    /// Clone Handle<Media_FormatContext> (increments reference count)
+    pub fn HandleMediaFormatContext_clone(
+        self_: *const HandleMediaFormatContext,
+    ) -> crate::OcctResult<*mut HandleMediaFormatContext>;
     /// Dereference Handle to get *const Media_FormatContext
     pub fn HandleMediaFormatContext_get(
         handle: *const HandleMediaFormatContext,
@@ -23531,6 +23943,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleMediaFrame>;
     /// Destroy Handle<Media_Frame>
     pub fn HandleMediaFrame_destructor(self_: *mut HandleMediaFrame);
+    /// Clone Handle<Media_Frame> (increments reference count)
+    pub fn HandleMediaFrame_clone(
+        self_: *const HandleMediaFrame,
+    ) -> crate::OcctResult<*mut HandleMediaFrame>;
     /// Dereference Handle to get *const Media_Frame
     pub fn HandleMediaFrame_get(
         handle: *const HandleMediaFrame,
@@ -23633,6 +24049,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMediaPacket>;
     /// Destroy Handle<Media_Packet>
     pub fn HandleMediaPacket_destructor(self_: *mut HandleMediaPacket);
+    /// Clone Handle<Media_Packet> (increments reference count)
+    pub fn HandleMediaPacket_clone(
+        self_: *const HandleMediaPacket,
+    ) -> crate::OcctResult<*mut HandleMediaPacket>;
     /// Dereference Handle to get *const Media_Packet
     pub fn HandleMediaPacket_get(
         handle: *const HandleMediaPacket,
@@ -23750,6 +24170,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMediaPlayerContext>;
     /// Destroy Handle<Media_PlayerContext>
     pub fn HandleMediaPlayerContext_destructor(self_: *mut HandleMediaPlayerContext);
+    /// Clone Handle<Media_PlayerContext> (increments reference count)
+    pub fn HandleMediaPlayerContext_clone(
+        self_: *const HandleMediaPlayerContext,
+    ) -> crate::OcctResult<*mut HandleMediaPlayerContext>;
     /// Dereference Handle to get *const Media_PlayerContext
     pub fn HandleMediaPlayerContext_get(
         handle: *const HandleMediaPlayerContext,
@@ -23836,6 +24260,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMediaScaler>;
     /// Destroy Handle<Media_Scaler>
     pub fn HandleMediaScaler_destructor(self_: *mut HandleMediaScaler);
+    /// Clone Handle<Media_Scaler> (increments reference count)
+    pub fn HandleMediaScaler_clone(
+        self_: *const HandleMediaScaler,
+    ) -> crate::OcctResult<*mut HandleMediaScaler>;
     /// Dereference Handle to get *const Media_Scaler
     pub fn HandleMediaScaler_get(
         handle: *const HandleMediaScaler,
@@ -23919,6 +24347,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleMediaTimer>;
     /// Destroy Handle<Media_Timer>
     pub fn HandleMediaTimer_destructor(self_: *mut HandleMediaTimer);
+    /// Clone Handle<Media_Timer> (increments reference count)
+    pub fn HandleMediaTimer_clone(
+        self_: *const HandleMediaTimer,
+    ) -> crate::OcctResult<*mut HandleMediaTimer>;
     /// Dereference Handle to get *const Media_Timer
     pub fn HandleMediaTimer_get(
         handle: *const HandleMediaTimer,

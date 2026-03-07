@@ -89,6 +89,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDESTLConfigurationNode>;
     /// Destroy Handle<DESTL_ConfigurationNode>
     pub fn HandleDESTLConfigurationNode_destructor(self_: *mut HandleDESTLConfigurationNode);
+    /// Clone Handle<DESTL_ConfigurationNode> (increments reference count)
+    pub fn HandleDESTLConfigurationNode_clone(
+        self_: *const HandleDESTLConfigurationNode,
+    ) -> crate::OcctResult<*mut HandleDESTLConfigurationNode>;
     /// Dereference Handle to get *const DESTL_ConfigurationNode
     pub fn HandleDESTLConfigurationNode_get(
         handle: *const HandleDESTLConfigurationNode,
@@ -271,6 +275,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDESTLProvider>;
     /// Destroy Handle<DESTL_Provider>
     pub fn HandleDESTLProvider_destructor(self_: *mut HandleDESTLProvider);
+    /// Clone Handle<DESTL_Provider> (increments reference count)
+    pub fn HandleDESTLProvider_clone(
+        self_: *const HandleDESTLProvider,
+    ) -> crate::OcctResult<*mut HandleDESTLProvider>;
     /// Dereference Handle to get *const DESTL_Provider
     pub fn HandleDESTLProvider_get(
         handle: *const HandleDESTLProvider,
@@ -391,6 +399,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<RWStl_Reader>
     pub fn HandleRWStlReader_destructor(self_: *mut HandleRWStlReader);
+    /// Clone Handle<RWStl_Reader> (increments reference count)
+    pub fn HandleRWStlReader_clone(
+        self_: *const HandleRWStlReader,
+    ) -> crate::OcctResult<*mut HandleRWStlReader>;
     /// Dereference Handle to get *const RWStl_Reader
     pub fn HandleRWStlReader_get(
         handle: *const HandleRWStlReader,

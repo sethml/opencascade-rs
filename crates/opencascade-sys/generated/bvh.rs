@@ -309,6 +309,12 @@ unsafe impl crate::CppDeletable for HandleBVHBuildThread {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBVHBuildThread {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleBVHBuildThread_clone(ptr))
+    }
+}
+
 impl HandleBVHBuildThread {
     /// Dereference this Handle to access the underlying BVH_BuildThread
     pub fn get(&self) -> &crate::ffi_types::BVH_BuildThread {
@@ -529,6 +535,12 @@ pub use crate::ffi_types::HandleBVHBuilderTransient;
 unsafe impl crate::CppDeletable for HandleBVHBuilderTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleBVHBuilderTransient_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBVHBuilderTransient {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleBVHBuilderTransient_clone(ptr))
     }
 }
 
@@ -755,6 +767,12 @@ unsafe impl crate::CppDeletable for HandleBVHObjectTransient {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBVHObjectTransient {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleBVHObjectTransient_clone(ptr))
+    }
+}
+
 impl HandleBVHObjectTransient {
     /// Dereference this Handle to access the underlying BVH_ObjectTransient
     pub fn get(&self) -> &crate::ffi_types::BVH_ObjectTransient {
@@ -919,6 +937,12 @@ pub use crate::ffi_types::HandleBVHProperties;
 unsafe impl crate::CppDeletable for HandleBVHProperties {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleBVHProperties_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBVHProperties {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleBVHProperties_clone(ptr))
     }
 }
 
@@ -1107,6 +1131,12 @@ pub use crate::ffi_types::HandleBVHTreeBaseTransient;
 unsafe impl crate::CppDeletable for HandleBVHTreeBaseTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleBVHTreeBaseTransient_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBVHTreeBaseTransient {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleBVHTreeBaseTransient_clone(ptr))
     }
 }
 

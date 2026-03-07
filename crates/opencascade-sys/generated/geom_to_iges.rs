@@ -276,6 +276,22 @@ unsafe impl crate::CppDeletable for GeomEntity {
     }
 }
 
+unsafe impl crate::CppCopyable for GeomEntity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for GeomEntity {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl GeomEntity {
     /// **Source:** `GeomToIGES_GeomEntity.hxx`:34 - `GeomToIGES_GeomEntity::GeomToIGES_GeomEntity()`
     /// Creates a tool GeomEntity
@@ -320,15 +336,6 @@ impl GeomEntity {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_get_unit(self as *const Self)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 

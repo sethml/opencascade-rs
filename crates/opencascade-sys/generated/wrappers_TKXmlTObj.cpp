@@ -52,14 +52,42 @@ typedef opencascade::handle<XmlTObjDrivers_ObjectDriver> HandleXmlTObjDriversObj
 typedef opencascade::handle<XmlTObjDrivers_ReferenceDriver> HandleXmlTObjDriversReferenceDriver;
 typedef opencascade::handle<XmlTObjDrivers_XYZDriver> HandleXmlTObjDriversXYZDriver;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleXmlTObjDriversDocumentRetrievalDriver_destructor(HandleXmlTObjDriversDocumentRetrievalDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlTObjDriversDocumentRetrievalDriver*> HandleXmlTObjDriversDocumentRetrievalDriver_clone(const HandleXmlTObjDriversDocumentRetrievalDriver* self_) {
+    try { return {new HandleXmlTObjDriversDocumentRetrievalDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlTObjDriversDocumentStorageDriver_destructor(HandleXmlTObjDriversDocumentStorageDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlTObjDriversDocumentStorageDriver*> HandleXmlTObjDriversDocumentStorageDriver_clone(const HandleXmlTObjDriversDocumentStorageDriver* self_) {
+    try { return {new HandleXmlTObjDriversDocumentStorageDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlTObjDriversIntSparseArrayDriver_destructor(HandleXmlTObjDriversIntSparseArrayDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlTObjDriversIntSparseArrayDriver*> HandleXmlTObjDriversIntSparseArrayDriver_clone(const HandleXmlTObjDriversIntSparseArrayDriver* self_) {
+    try { return {new HandleXmlTObjDriversIntSparseArrayDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlTObjDriversModelDriver_destructor(HandleXmlTObjDriversModelDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlTObjDriversModelDriver*> HandleXmlTObjDriversModelDriver_clone(const HandleXmlTObjDriversModelDriver* self_) {
+    try { return {new HandleXmlTObjDriversModelDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlTObjDriversObjectDriver_destructor(HandleXmlTObjDriversObjectDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlTObjDriversObjectDriver*> HandleXmlTObjDriversObjectDriver_clone(const HandleXmlTObjDriversObjectDriver* self_) {
+    try { return {new HandleXmlTObjDriversObjectDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlTObjDriversReferenceDriver_destructor(HandleXmlTObjDriversReferenceDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlTObjDriversReferenceDriver*> HandleXmlTObjDriversReferenceDriver_clone(const HandleXmlTObjDriversReferenceDriver* self_) {
+    try { return {new HandleXmlTObjDriversReferenceDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlTObjDriversXYZDriver_destructor(HandleXmlTObjDriversXYZDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlTObjDriversXYZDriver*> HandleXmlTObjDriversXYZDriver_clone(const HandleXmlTObjDriversXYZDriver* self_) {
+    try { return {new HandleXmlTObjDriversXYZDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // XmlTObjDrivers_DocumentRetrievalDriver wrappers

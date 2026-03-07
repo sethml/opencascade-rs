@@ -603,6 +603,12 @@ unsafe impl crate::CppDeletable for HandleIntPatchALine {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIntPatchALine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_clone(ptr))
+    }
+}
+
 impl HandleIntPatchALine {
     /// Dereference this Handle to access the underlying IntPatch_ALine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_ALine {
@@ -1969,6 +1975,12 @@ pub use crate::ffi_types::HandleIntPatchGLine;
 unsafe impl crate::CppDeletable for HandleIntPatchGLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIntPatchGLine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_clone(ptr))
     }
 }
 
@@ -3730,6 +3742,12 @@ unsafe impl crate::CppDeletable for HandleIntPatchLine {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIntPatchLine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_clone(ptr))
+    }
+}
+
 impl HandleIntPatchLine {
     /// Dereference this Handle to access the underlying IntPatch_Line
     pub fn get(&self) -> &crate::ffi_types::IntPatch_Line {
@@ -4741,6 +4759,12 @@ pub use crate::ffi_types::HandleIntPatchPointLine;
 unsafe impl crate::CppDeletable for HandleIntPatchPointLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIntPatchPointLine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_clone(ptr))
     }
 }
 
@@ -6982,6 +7006,12 @@ unsafe impl crate::CppDeletable for HandleIntPatchRLine {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIntPatchRLine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_clone(ptr))
+    }
+}
+
 impl HandleIntPatchRLine {
     /// Dereference this Handle to access the underlying IntPatch_RLine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_RLine {
@@ -7747,6 +7777,14 @@ pub use crate::ffi_types::HandleIntPatchTheIWLineOfTheIWalking;
 unsafe impl crate::CppDeletable for HandleIntPatchTheIWLineOfTheIWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIntPatchTheIWLineOfTheIWalking {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_clone(ptr),
+        )
     }
 }
 
@@ -9379,6 +9417,12 @@ pub use crate::ffi_types::HandleIntPatchWLine;
 unsafe impl crate::CppDeletable for HandleIntPatchWLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIntPatchWLine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_clone(ptr))
     }
 }
 

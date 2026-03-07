@@ -129,6 +129,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBSplCLibCache>;
     /// Destroy Handle<BSplCLib_Cache>
     pub fn HandleBSplCLibCache_destructor(self_: *mut HandleBSplCLibCache);
+    /// Clone Handle<BSplCLib_Cache> (increments reference count)
+    pub fn HandleBSplCLibCache_clone(
+        self_: *const HandleBSplCLibCache,
+    ) -> crate::OcctResult<*mut HandleBSplCLibCache>;
     /// Dereference Handle to get *const BSplCLib_Cache
     pub fn HandleBSplCLibCache_get(
         handle: *const HandleBSplCLibCache,
@@ -262,6 +266,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBSplSLibCache>;
     /// Destroy Handle<BSplSLib_Cache>
     pub fn HandleBSplSLibCache_destructor(self_: *mut HandleBSplSLibCache);
+    /// Clone Handle<BSplSLib_Cache> (increments reference count)
+    pub fn HandleBSplSLibCache_clone(
+        self_: *const HandleBSplSLibCache,
+    ) -> crate::OcctResult<*mut HandleBSplSLibCache>;
     /// Dereference Handle to get *const BSplSLib_Cache
     pub fn HandleBSplSLibCache_get(
         handle: *const HandleBSplSLibCache,
@@ -372,6 +380,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBVHBuildThread>;
     /// Destroy Handle<BVH_BuildThread>
     pub fn HandleBVHBuildThread_destructor(self_: *mut HandleBVHBuildThread);
+    /// Clone Handle<BVH_BuildThread> (increments reference count)
+    pub fn HandleBVHBuildThread_clone(
+        self_: *const HandleBVHBuildThread,
+    ) -> crate::OcctResult<*mut HandleBVHBuildThread>;
     /// Dereference Handle to get *const BVH_BuildThread
     pub fn HandleBVHBuildThread_get(
         handle: *const HandleBVHBuildThread,
@@ -455,6 +467,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBVHBuilderTransient>;
     /// Destroy Handle<BVH_BuilderTransient>
     pub fn HandleBVHBuilderTransient_destructor(self_: *mut HandleBVHBuilderTransient);
+    /// Clone Handle<BVH_BuilderTransient> (increments reference count)
+    pub fn HandleBVHBuilderTransient_clone(
+        self_: *const HandleBVHBuilderTransient,
+    ) -> crate::OcctResult<*mut HandleBVHBuilderTransient>;
     /// Dereference Handle to get *const BVH_BuilderTransient
     pub fn HandleBVHBuilderTransient_get(
         handle: *const HandleBVHBuilderTransient,
@@ -538,6 +554,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBVHObjectTransient>;
     /// Destroy Handle<BVH_ObjectTransient>
     pub fn HandleBVHObjectTransient_destructor(self_: *mut HandleBVHObjectTransient);
+    /// Clone Handle<BVH_ObjectTransient> (increments reference count)
+    pub fn HandleBVHObjectTransient_clone(
+        self_: *const HandleBVHObjectTransient,
+    ) -> crate::OcctResult<*mut HandleBVHObjectTransient>;
     /// Dereference Handle to get *const BVH_ObjectTransient
     pub fn HandleBVHObjectTransient_get(
         handle: *const HandleBVHObjectTransient,
@@ -600,6 +620,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BVH_Properties>
     pub fn HandleBVHProperties_destructor(self_: *mut HandleBVHProperties);
+    /// Clone Handle<BVH_Properties> (increments reference count)
+    pub fn HandleBVHProperties_clone(
+        self_: *const HandleBVHProperties,
+    ) -> crate::OcctResult<*mut HandleBVHProperties>;
     /// Dereference Handle to get *const BVH_Properties
     pub fn HandleBVHProperties_get(
         handle: *const HandleBVHProperties,
@@ -666,6 +690,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBVHTreeBaseTransient>;
     /// Destroy Handle<BVH_TreeBaseTransient>
     pub fn HandleBVHTreeBaseTransient_destructor(self_: *mut HandleBVHTreeBaseTransient);
+    /// Clone Handle<BVH_TreeBaseTransient> (increments reference count)
+    pub fn HandleBVHTreeBaseTransient_clone(
+        self_: *const HandleBVHTreeBaseTransient,
+    ) -> crate::OcctResult<*mut HandleBVHTreeBaseTransient>;
     /// Dereference Handle to get *const BVH_TreeBaseTransient
     pub fn HandleBVHTreeBaseTransient_get(
         handle: *const HandleBVHTreeBaseTransient,
@@ -804,7 +832,7 @@ extern "C" {
         theHSize: *const gp_XY,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn Bnd_B2d_to_owned(self_: *const Bnd_B2d) -> crate::OcctResult<*mut Bnd_B2d>;
+    pub fn Bnd_B2d_clone(self_: *const Bnd_B2d) -> crate::OcctResult<*mut Bnd_B2d>;
     // ======================== Bnd_B2f ========================
     pub fn Bnd_B2f_destructor(self_: *mut Bnd_B2f);
     /// **Source:** `Bnd_B2f.hxx`:37 - `Bnd_B2f::Bnd_B2f()`
@@ -901,7 +929,7 @@ extern "C" {
         theHSize: *const gp_XY,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn Bnd_B2f_to_owned(self_: *const Bnd_B2f) -> crate::OcctResult<*mut Bnd_B2f>;
+    pub fn Bnd_B2f_clone(self_: *const Bnd_B2f) -> crate::OcctResult<*mut Bnd_B2f>;
     // ======================== Bnd_B3d ========================
     pub fn Bnd_B3d_destructor(self_: *mut Bnd_B3d);
     /// **Source:** `Bnd_B3d.hxx`:39 - `Bnd_B3d::Bnd_B3d()`
@@ -996,7 +1024,7 @@ extern "C" {
         theHSize: *const gp_XYZ,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn Bnd_B3d_to_owned(self_: *const Bnd_B3d) -> crate::OcctResult<*mut Bnd_B3d>;
+    pub fn Bnd_B3d_clone(self_: *const Bnd_B3d) -> crate::OcctResult<*mut Bnd_B3d>;
     // ======================== Bnd_B3f ========================
     pub fn Bnd_B3f_destructor(self_: *mut Bnd_B3f);
     /// **Source:** `Bnd_B3f.hxx`:35 - `Bnd_B3f::Bnd_B3f()`
@@ -1091,7 +1119,7 @@ extern "C" {
         theHSize: *const gp_XYZ,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn Bnd_B3f_to_owned(self_: *const Bnd_B3f) -> crate::OcctResult<*mut Bnd_B3f>;
+    pub fn Bnd_B3f_clone(self_: *const Bnd_B3f) -> crate::OcctResult<*mut Bnd_B3f>;
     // ======================== Bnd_BoundSortBox ========================
     pub fn Bnd_BoundSortBox_destructor(self_: *mut Bnd_BoundSortBox);
     /// **Source:** `Bnd_BoundSortBox.hxx`:45 - `Bnd_BoundSortBox::Bnd_BoundSortBox()`
@@ -1134,7 +1162,7 @@ extern "C" {
     /// **Source:** `Bnd_BoundSortBox.hxx`:97 - `Bnd_BoundSortBox::Destroy()`
     pub fn Bnd_BoundSortBox_destroy(self_: *mut Bnd_BoundSortBox) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn Bnd_BoundSortBox_to_owned(
+    pub fn Bnd_BoundSortBox_clone(
         self_: *const Bnd_BoundSortBox,
     ) -> crate::OcctResult<*mut Bnd_BoundSortBox>;
     // ======================== Bnd_Box ========================
@@ -1293,7 +1321,7 @@ extern "C" {
     /// **Source:** `Bnd_Box.hxx`:307 - `Bnd_Box::HasFinitePart()`
     pub fn Bnd_Box_has_finite_part(self_: *const Bnd_Box) -> crate::OcctResult<bool>;
     /// Clone via copy constructor
-    pub fn Bnd_Box_to_owned(self_: *const Bnd_Box) -> crate::OcctResult<*mut Bnd_Box>;
+    pub fn Bnd_Box_clone(self_: *const Bnd_Box) -> crate::OcctResult<*mut Bnd_Box>;
     // ======================== Bnd_Box2d ========================
     pub fn Bnd_Box2d_destructor(self_: *mut Bnd_Box2d);
     /// **Source:** `Bnd_Box2d.hxx`:58 - `Bnd_Box2d::Bnd_Box2d()`
@@ -1423,7 +1451,7 @@ extern "C" {
     /// **Source:** `Bnd_Box2d.hxx`:226 - `Bnd_Box2d::SquareExtent()`
     pub fn Bnd_Box2d_square_extent(self_: *const Bnd_Box2d) -> crate::OcctResult<f64>;
     /// Clone via copy constructor
-    pub fn Bnd_Box2d_to_owned(self_: *const Bnd_Box2d) -> crate::OcctResult<*mut Bnd_Box2d>;
+    pub fn Bnd_Box2d_clone(self_: *const Bnd_Box2d) -> crate::OcctResult<*mut Bnd_Box2d>;
     // ======================== Bnd_HArray1OfBox ========================
     pub fn Bnd_HArray1OfBox_destructor(self_: *mut Bnd_HArray1OfBox);
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
@@ -1480,6 +1508,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBndHArray1OfBox>;
     /// Destroy Handle<Bnd_HArray1OfBox>
     pub fn HandleBndHArray1OfBox_destructor(self_: *mut HandleBndHArray1OfBox);
+    /// Clone Handle<Bnd_HArray1OfBox> (increments reference count)
+    pub fn HandleBndHArray1OfBox_clone(
+        self_: *const HandleBndHArray1OfBox,
+    ) -> crate::OcctResult<*mut HandleBndHArray1OfBox>;
     /// Dereference Handle to get *const Bnd_HArray1OfBox
     pub fn HandleBndHArray1OfBox_get(
         handle: *const HandleBndHArray1OfBox,
@@ -1578,6 +1610,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBndHArray1OfBox2d>;
     /// Destroy Handle<Bnd_HArray1OfBox2d>
     pub fn HandleBndHArray1OfBox2d_destructor(self_: *mut HandleBndHArray1OfBox2d);
+    /// Clone Handle<Bnd_HArray1OfBox2d> (increments reference count)
+    pub fn HandleBndHArray1OfBox2d_clone(
+        self_: *const HandleBndHArray1OfBox2d,
+    ) -> crate::OcctResult<*mut HandleBndHArray1OfBox2d>;
     /// Dereference Handle to get *const Bnd_HArray1OfBox2d
     pub fn HandleBndHArray1OfBox2d_get(
         handle: *const HandleBndHArray1OfBox2d,
@@ -1676,6 +1712,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBndHArray1OfSphere>;
     /// Destroy Handle<Bnd_HArray1OfSphere>
     pub fn HandleBndHArray1OfSphere_destructor(self_: *mut HandleBndHArray1OfSphere);
+    /// Clone Handle<Bnd_HArray1OfSphere> (increments reference count)
+    pub fn HandleBndHArray1OfSphere_clone(
+        self_: *const HandleBndHArray1OfSphere,
+    ) -> crate::OcctResult<*mut HandleBndHArray1OfSphere>;
     /// Dereference Handle to get *const Bnd_HArray1OfSphere
     pub fn HandleBndHArray1OfSphere_get(
         handle: *const HandleBndHArray1OfSphere,
@@ -1818,7 +1858,7 @@ extern "C" {
     /// **Source:** `Bnd_OBB.hxx`:257 - `Bnd_OBB::Add()`
     pub fn Bnd_OBB_add_pnt(self_: *mut Bnd_OBB, theP: *const gp_Pnt) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn Bnd_OBB_to_owned(self_: *const Bnd_OBB) -> crate::OcctResult<*mut Bnd_OBB>;
+    pub fn Bnd_OBB_clone(self_: *const Bnd_OBB) -> crate::OcctResult<*mut Bnd_OBB>;
     // ======================== Bnd_Range ========================
     pub fn Bnd_Range_destructor(self_: *mut Bnd_Range);
     /// **Source:** `Bnd_Range.hxx`:30 - `Bnd_Range::Bnd_Range()`
@@ -1899,7 +1939,7 @@ extern "C" {
         theRange: *const Bnd_Range,
     ) -> crate::OcctResult<bool>;
     /// Clone via copy constructor
-    pub fn Bnd_Range_to_owned(self_: *const Bnd_Range) -> crate::OcctResult<*mut Bnd_Range>;
+    pub fn Bnd_Range_clone(self_: *const Bnd_Range) -> crate::OcctResult<*mut Bnd_Range>;
     // ======================== Bnd_Sphere ========================
     pub fn Bnd_Sphere_destructor(self_: *mut Bnd_Sphere);
     /// **Source:** `Bnd_Sphere.hxx`:35 - `Bnd_Sphere::Bnd_Sphere()`
@@ -1974,7 +2014,7 @@ extern "C" {
     /// **Source:** `Bnd_Sphere.hxx`:92 - `Bnd_Sphere::SquareExtent()`
     pub fn Bnd_Sphere_square_extent(self_: *const Bnd_Sphere) -> crate::OcctResult<f64>;
     /// Clone via copy constructor
-    pub fn Bnd_Sphere_to_owned(self_: *const Bnd_Sphere) -> crate::OcctResult<*mut Bnd_Sphere>;
+    pub fn Bnd_Sphere_clone(self_: *const Bnd_Sphere) -> crate::OcctResult<*mut Bnd_Sphere>;
     // ======================== Bnd_Tools ========================
     pub fn Bnd_Tools_destructor(self_: *mut Bnd_Tools);
     /// **Source:** `Bnd_Tools.hxx` - `Bnd_Tools::Bnd_Tools()`
@@ -1988,7 +2028,7 @@ extern "C" {
         theBox: *const Bnd_Box,
     ) -> crate::OcctResult<*mut Select3D_BndBox3d>;
     /// Clone via copy constructor
-    pub fn Bnd_Tools_to_owned(self_: *const Bnd_Tools) -> crate::OcctResult<*mut Bnd_Tools>;
+    pub fn Bnd_Tools_clone(self_: *const Bnd_Tools) -> crate::OcctResult<*mut Bnd_Tools>;
     // ======================== CSLib_Class2d ========================
     pub fn CSLib_Class2d_destructor(self_: *mut CSLib_Class2d);
     /// **Source:** `CSLib_Class2d.hxx`:46 - `CSLib_Class2d::CSLib_Class2d()`
@@ -3140,6 +3180,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PLib_Base>
     pub fn HandlePLibBase_destructor(self_: *mut HandlePLibBase);
+    /// Clone Handle<PLib_Base> (increments reference count)
+    pub fn HandlePLibBase_clone(
+        self_: *const HandlePLibBase,
+    ) -> crate::OcctResult<*mut HandlePLibBase>;
     /// Dereference Handle to get *const PLib_Base
     pub fn HandlePLibBase_get(handle: *const HandlePLibBase)
         -> crate::OcctResult<*const PLib_Base>;
@@ -3375,6 +3419,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePLibHermitJacobi>;
     /// Destroy Handle<PLib_HermitJacobi>
     pub fn HandlePLibHermitJacobi_destructor(self_: *mut HandlePLibHermitJacobi);
+    /// Clone Handle<PLib_HermitJacobi> (increments reference count)
+    pub fn HandlePLibHermitJacobi_clone(
+        self_: *const HandlePLibHermitJacobi,
+    ) -> crate::OcctResult<*mut HandlePLibHermitJacobi>;
     /// Dereference Handle to get *const PLib_HermitJacobi
     pub fn HandlePLibHermitJacobi_get(
         handle: *const HandlePLibHermitJacobi,
@@ -3546,6 +3594,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePLibJacobiPolynomial>;
     /// Destroy Handle<PLib_JacobiPolynomial>
     pub fn HandlePLibJacobiPolynomial_destructor(self_: *mut HandlePLibJacobiPolynomial);
+    /// Clone Handle<PLib_JacobiPolynomial> (increments reference count)
+    pub fn HandlePLibJacobiPolynomial_clone(
+        self_: *const HandlePLibJacobiPolynomial,
+    ) -> crate::OcctResult<*mut HandlePLibJacobiPolynomial>;
     /// Dereference Handle to get *const PLib_JacobiPolynomial
     pub fn HandlePLibJacobiPolynomial_get(
         handle: *const HandlePLibJacobiPolynomial,
@@ -3639,7 +3691,7 @@ extern "C" {
         theValue: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn Poly_ArrayOfNodes_to_owned(
+    pub fn Poly_ArrayOfNodes_clone(
         self_: *const Poly_ArrayOfNodes,
     ) -> crate::OcctResult<*mut Poly_ArrayOfNodes>;
     // ======================== Poly_ArrayOfUVNodes ========================
@@ -3691,7 +3743,7 @@ extern "C" {
         theValue: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn Poly_ArrayOfUVNodes_to_owned(
+    pub fn Poly_ArrayOfUVNodes_clone(
         self_: *const Poly_ArrayOfUVNodes,
     ) -> crate::OcctResult<*mut Poly_ArrayOfUVNodes>;
     // ======================== Poly_CoherentLink ========================
@@ -4260,6 +4312,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePolyCoherentTriangulation>;
     /// Destroy Handle<Poly_CoherentTriangulation>
     pub fn HandlePolyCoherentTriangulation_destructor(self_: *mut HandlePolyCoherentTriangulation);
+    /// Clone Handle<Poly_CoherentTriangulation> (increments reference count)
+    pub fn HandlePolyCoherentTriangulation_clone(
+        self_: *const HandlePolyCoherentTriangulation,
+    ) -> crate::OcctResult<*mut HandlePolyCoherentTriangulation>;
     /// Dereference Handle to get *const Poly_CoherentTriangulation
     pub fn HandlePolyCoherentTriangulation_get(
         handle: *const HandlePolyCoherentTriangulation,
@@ -4443,6 +4499,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePolyHArray1OfTriangle>;
     /// Destroy Handle<Poly_HArray1OfTriangle>
     pub fn HandlePolyHArray1OfTriangle_destructor(self_: *mut HandlePolyHArray1OfTriangle);
+    /// Clone Handle<Poly_HArray1OfTriangle> (increments reference count)
+    pub fn HandlePolyHArray1OfTriangle_clone(
+        self_: *const HandlePolyHArray1OfTriangle,
+    ) -> crate::OcctResult<*mut HandlePolyHArray1OfTriangle>;
     /// Dereference Handle to get *const Poly_HArray1OfTriangle
     pub fn HandlePolyHArray1OfTriangle_get(
         handle: *const HandlePolyHArray1OfTriangle,
@@ -4946,6 +5006,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePolyMergeNodesTool>;
     /// Destroy Handle<Poly_MergeNodesTool>
     pub fn HandlePolyMergeNodesTool_destructor(self_: *mut HandlePolyMergeNodesTool);
+    /// Clone Handle<Poly_MergeNodesTool> (increments reference count)
+    pub fn HandlePolyMergeNodesTool_clone(
+        self_: *const HandlePolyMergeNodesTool,
+    ) -> crate::OcctResult<*mut HandlePolyMergeNodesTool>;
     /// Dereference Handle to get *const Poly_MergeNodesTool
     pub fn HandlePolyMergeNodesTool_get(
         handle: *const HandlePolyMergeNodesTool,
@@ -5035,6 +5099,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePolyPolygon2D>;
     /// Destroy Handle<Poly_Polygon2D>
     pub fn HandlePolyPolygon2D_destructor(self_: *mut HandlePolyPolygon2D);
+    /// Clone Handle<Poly_Polygon2D> (increments reference count)
+    pub fn HandlePolyPolygon2D_clone(
+        self_: *const HandlePolyPolygon2D,
+    ) -> crate::OcctResult<*mut HandlePolyPolygon2D>;
     /// Dereference Handle to get *const Poly_Polygon2D
     pub fn HandlePolyPolygon2D_get(
         handle: *const HandlePolyPolygon2D,
@@ -5145,6 +5213,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePolyPolygon3D>;
     /// Destroy Handle<Poly_Polygon3D>
     pub fn HandlePolyPolygon3D_destructor(self_: *mut HandlePolyPolygon3D);
+    /// Clone Handle<Poly_Polygon3D> (increments reference count)
+    pub fn HandlePolyPolygon3D_clone(
+        self_: *const HandlePolyPolygon3D,
+    ) -> crate::OcctResult<*mut HandlePolyPolygon3D>;
     /// Dereference Handle to get *const Poly_Polygon3D
     pub fn HandlePolyPolygon3D_get(
         handle: *const HandlePolyPolygon3D,
@@ -5283,6 +5355,10 @@ extern "C" {
     pub fn HandlePolyPolygonOnTriangulation_destructor(
         self_: *mut HandlePolyPolygonOnTriangulation,
     );
+    /// Clone Handle<Poly_PolygonOnTriangulation> (increments reference count)
+    pub fn HandlePolyPolygonOnTriangulation_clone(
+        self_: *const HandlePolyPolygonOnTriangulation,
+    ) -> crate::OcctResult<*mut HandlePolyPolygonOnTriangulation>;
     /// Dereference Handle to get *const Poly_PolygonOnTriangulation
     pub fn HandlePolyPolygonOnTriangulation_get(
         handle: *const HandlePolyPolygonOnTriangulation,
@@ -5643,6 +5719,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
     /// Destroy Handle<Poly_Triangulation>
     pub fn HandlePolyTriangulation_destructor(self_: *mut HandlePolyTriangulation);
+    /// Clone Handle<Poly_Triangulation> (increments reference count)
+    pub fn HandlePolyTriangulation_clone(
+        self_: *const HandlePolyTriangulation,
+    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
     /// Dereference Handle to get *const Poly_Triangulation
     pub fn HandlePolyTriangulation_get(
         handle: *const HandlePolyTriangulation,
@@ -5750,6 +5830,10 @@ extern "C" {
     pub fn HandlePolyTriangulationParameters_destructor(
         self_: *mut HandlePolyTriangulationParameters,
     );
+    /// Clone Handle<Poly_TriangulationParameters> (increments reference count)
+    pub fn HandlePolyTriangulationParameters_clone(
+        self_: *const HandlePolyTriangulationParameters,
+    ) -> crate::OcctResult<*mut HandlePolyTriangulationParameters>;
     /// Dereference Handle to get *const Poly_TriangulationParameters
     pub fn HandlePolyTriangulationParameters_get(
         handle: *const HandlePolyTriangulationParameters,
@@ -5857,6 +5941,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfCirc2d>;
     /// Destroy Handle<TColgp_HArray1OfCirc2d>
     pub fn HandleTColgpHArray1OfCirc2d_destructor(self_: *mut HandleTColgpHArray1OfCirc2d);
+    /// Clone Handle<TColgp_HArray1OfCirc2d> (increments reference count)
+    pub fn HandleTColgpHArray1OfCirc2d_clone(
+        self_: *const HandleTColgpHArray1OfCirc2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfCirc2d>;
     /// Dereference Handle to get *const TColgp_HArray1OfCirc2d
     pub fn HandleTColgpHArray1OfCirc2d_get(
         handle: *const HandleTColgpHArray1OfCirc2d,
@@ -5963,6 +6051,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfDir>;
     /// Destroy Handle<TColgp_HArray1OfDir>
     pub fn HandleTColgpHArray1OfDir_destructor(self_: *mut HandleTColgpHArray1OfDir);
+    /// Clone Handle<TColgp_HArray1OfDir> (increments reference count)
+    pub fn HandleTColgpHArray1OfDir_clone(
+        self_: *const HandleTColgpHArray1OfDir,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfDir>;
     /// Dereference Handle to get *const TColgp_HArray1OfDir
     pub fn HandleTColgpHArray1OfDir_get(
         handle: *const HandleTColgpHArray1OfDir,
@@ -6070,6 +6162,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfDir2d>;
     /// Destroy Handle<TColgp_HArray1OfDir2d>
     pub fn HandleTColgpHArray1OfDir2d_destructor(self_: *mut HandleTColgpHArray1OfDir2d);
+    /// Clone Handle<TColgp_HArray1OfDir2d> (increments reference count)
+    pub fn HandleTColgpHArray1OfDir2d_clone(
+        self_: *const HandleTColgpHArray1OfDir2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfDir2d>;
     /// Dereference Handle to get *const TColgp_HArray1OfDir2d
     pub fn HandleTColgpHArray1OfDir2d_get(
         handle: *const HandleTColgpHArray1OfDir2d,
@@ -6177,6 +6273,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfLin2d>;
     /// Destroy Handle<TColgp_HArray1OfLin2d>
     pub fn HandleTColgpHArray1OfLin2d_destructor(self_: *mut HandleTColgpHArray1OfLin2d);
+    /// Clone Handle<TColgp_HArray1OfLin2d> (increments reference count)
+    pub fn HandleTColgpHArray1OfLin2d_clone(
+        self_: *const HandleTColgpHArray1OfLin2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfLin2d>;
     /// Dereference Handle to get *const TColgp_HArray1OfLin2d
     pub fn HandleTColgpHArray1OfLin2d_get(
         handle: *const HandleTColgpHArray1OfLin2d,
@@ -6283,6 +6383,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfPnt>;
     /// Destroy Handle<TColgp_HArray1OfPnt>
     pub fn HandleTColgpHArray1OfPnt_destructor(self_: *mut HandleTColgpHArray1OfPnt);
+    /// Clone Handle<TColgp_HArray1OfPnt> (increments reference count)
+    pub fn HandleTColgpHArray1OfPnt_clone(
+        self_: *const HandleTColgpHArray1OfPnt,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfPnt>;
     /// Dereference Handle to get *const TColgp_HArray1OfPnt
     pub fn HandleTColgpHArray1OfPnt_get(
         handle: *const HandleTColgpHArray1OfPnt,
@@ -6390,6 +6494,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfPnt2d>;
     /// Destroy Handle<TColgp_HArray1OfPnt2d>
     pub fn HandleTColgpHArray1OfPnt2d_destructor(self_: *mut HandleTColgpHArray1OfPnt2d);
+    /// Clone Handle<TColgp_HArray1OfPnt2d> (increments reference count)
+    pub fn HandleTColgpHArray1OfPnt2d_clone(
+        self_: *const HandleTColgpHArray1OfPnt2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfPnt2d>;
     /// Dereference Handle to get *const TColgp_HArray1OfPnt2d
     pub fn HandleTColgpHArray1OfPnt2d_get(
         handle: *const HandleTColgpHArray1OfPnt2d,
@@ -6496,6 +6604,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfVec>;
     /// Destroy Handle<TColgp_HArray1OfVec>
     pub fn HandleTColgpHArray1OfVec_destructor(self_: *mut HandleTColgpHArray1OfVec);
+    /// Clone Handle<TColgp_HArray1OfVec> (increments reference count)
+    pub fn HandleTColgpHArray1OfVec_clone(
+        self_: *const HandleTColgpHArray1OfVec,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfVec>;
     /// Dereference Handle to get *const TColgp_HArray1OfVec
     pub fn HandleTColgpHArray1OfVec_get(
         handle: *const HandleTColgpHArray1OfVec,
@@ -6603,6 +6715,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfVec2d>;
     /// Destroy Handle<TColgp_HArray1OfVec2d>
     pub fn HandleTColgpHArray1OfVec2d_destructor(self_: *mut HandleTColgpHArray1OfVec2d);
+    /// Clone Handle<TColgp_HArray1OfVec2d> (increments reference count)
+    pub fn HandleTColgpHArray1OfVec2d_clone(
+        self_: *const HandleTColgpHArray1OfVec2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfVec2d>;
     /// Dereference Handle to get *const TColgp_HArray1OfVec2d
     pub fn HandleTColgpHArray1OfVec2d_get(
         handle: *const HandleTColgpHArray1OfVec2d,
@@ -6709,6 +6825,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfXY>;
     /// Destroy Handle<TColgp_HArray1OfXY>
     pub fn HandleTColgpHArray1OfXY_destructor(self_: *mut HandleTColgpHArray1OfXY);
+    /// Clone Handle<TColgp_HArray1OfXY> (increments reference count)
+    pub fn HandleTColgpHArray1OfXY_clone(
+        self_: *const HandleTColgpHArray1OfXY,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfXY>;
     /// Dereference Handle to get *const TColgp_HArray1OfXY
     pub fn HandleTColgpHArray1OfXY_get(
         handle: *const HandleTColgpHArray1OfXY,
@@ -6815,6 +6935,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfXYZ>;
     /// Destroy Handle<TColgp_HArray1OfXYZ>
     pub fn HandleTColgpHArray1OfXYZ_destructor(self_: *mut HandleTColgpHArray1OfXYZ);
+    /// Clone Handle<TColgp_HArray1OfXYZ> (increments reference count)
+    pub fn HandleTColgpHArray1OfXYZ_clone(
+        self_: *const HandleTColgpHArray1OfXYZ,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfXYZ>;
     /// Dereference Handle to get *const TColgp_HArray1OfXYZ
     pub fn HandleTColgpHArray1OfXYZ_get(
         handle: *const HandleTColgpHArray1OfXYZ,
@@ -6917,6 +7041,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfCirc2d>;
     /// Destroy Handle<TColgp_HArray2OfCirc2d>
     pub fn HandleTColgpHArray2OfCirc2d_destructor(self_: *mut HandleTColgpHArray2OfCirc2d);
+    /// Clone Handle<TColgp_HArray2OfCirc2d> (increments reference count)
+    pub fn HandleTColgpHArray2OfCirc2d_clone(
+        self_: *const HandleTColgpHArray2OfCirc2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray2OfCirc2d>;
     /// Dereference Handle to get *const TColgp_HArray2OfCirc2d
     pub fn HandleTColgpHArray2OfCirc2d_get(
         handle: *const HandleTColgpHArray2OfCirc2d,
@@ -7018,6 +7146,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfDir>;
     /// Destroy Handle<TColgp_HArray2OfDir>
     pub fn HandleTColgpHArray2OfDir_destructor(self_: *mut HandleTColgpHArray2OfDir);
+    /// Clone Handle<TColgp_HArray2OfDir> (increments reference count)
+    pub fn HandleTColgpHArray2OfDir_clone(
+        self_: *const HandleTColgpHArray2OfDir,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray2OfDir>;
     /// Dereference Handle to get *const TColgp_HArray2OfDir
     pub fn HandleTColgpHArray2OfDir_get(
         handle: *const HandleTColgpHArray2OfDir,
@@ -7120,6 +7252,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfDir2d>;
     /// Destroy Handle<TColgp_HArray2OfDir2d>
     pub fn HandleTColgpHArray2OfDir2d_destructor(self_: *mut HandleTColgpHArray2OfDir2d);
+    /// Clone Handle<TColgp_HArray2OfDir2d> (increments reference count)
+    pub fn HandleTColgpHArray2OfDir2d_clone(
+        self_: *const HandleTColgpHArray2OfDir2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray2OfDir2d>;
     /// Dereference Handle to get *const TColgp_HArray2OfDir2d
     pub fn HandleTColgpHArray2OfDir2d_get(
         handle: *const HandleTColgpHArray2OfDir2d,
@@ -7222,6 +7358,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfLin2d>;
     /// Destroy Handle<TColgp_HArray2OfLin2d>
     pub fn HandleTColgpHArray2OfLin2d_destructor(self_: *mut HandleTColgpHArray2OfLin2d);
+    /// Clone Handle<TColgp_HArray2OfLin2d> (increments reference count)
+    pub fn HandleTColgpHArray2OfLin2d_clone(
+        self_: *const HandleTColgpHArray2OfLin2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray2OfLin2d>;
     /// Dereference Handle to get *const TColgp_HArray2OfLin2d
     pub fn HandleTColgpHArray2OfLin2d_get(
         handle: *const HandleTColgpHArray2OfLin2d,
@@ -7323,6 +7463,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfPnt>;
     /// Destroy Handle<TColgp_HArray2OfPnt>
     pub fn HandleTColgpHArray2OfPnt_destructor(self_: *mut HandleTColgpHArray2OfPnt);
+    /// Clone Handle<TColgp_HArray2OfPnt> (increments reference count)
+    pub fn HandleTColgpHArray2OfPnt_clone(
+        self_: *const HandleTColgpHArray2OfPnt,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray2OfPnt>;
     /// Dereference Handle to get *const TColgp_HArray2OfPnt
     pub fn HandleTColgpHArray2OfPnt_get(
         handle: *const HandleTColgpHArray2OfPnt,
@@ -7425,6 +7569,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfPnt2d>;
     /// Destroy Handle<TColgp_HArray2OfPnt2d>
     pub fn HandleTColgpHArray2OfPnt2d_destructor(self_: *mut HandleTColgpHArray2OfPnt2d);
+    /// Clone Handle<TColgp_HArray2OfPnt2d> (increments reference count)
+    pub fn HandleTColgpHArray2OfPnt2d_clone(
+        self_: *const HandleTColgpHArray2OfPnt2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray2OfPnt2d>;
     /// Dereference Handle to get *const TColgp_HArray2OfPnt2d
     pub fn HandleTColgpHArray2OfPnt2d_get(
         handle: *const HandleTColgpHArray2OfPnt2d,
@@ -7526,6 +7674,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfVec>;
     /// Destroy Handle<TColgp_HArray2OfVec>
     pub fn HandleTColgpHArray2OfVec_destructor(self_: *mut HandleTColgpHArray2OfVec);
+    /// Clone Handle<TColgp_HArray2OfVec> (increments reference count)
+    pub fn HandleTColgpHArray2OfVec_clone(
+        self_: *const HandleTColgpHArray2OfVec,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray2OfVec>;
     /// Dereference Handle to get *const TColgp_HArray2OfVec
     pub fn HandleTColgpHArray2OfVec_get(
         handle: *const HandleTColgpHArray2OfVec,
@@ -7628,6 +7780,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfVec2d>;
     /// Destroy Handle<TColgp_HArray2OfVec2d>
     pub fn HandleTColgpHArray2OfVec2d_destructor(self_: *mut HandleTColgpHArray2OfVec2d);
+    /// Clone Handle<TColgp_HArray2OfVec2d> (increments reference count)
+    pub fn HandleTColgpHArray2OfVec2d_clone(
+        self_: *const HandleTColgpHArray2OfVec2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray2OfVec2d>;
     /// Dereference Handle to get *const TColgp_HArray2OfVec2d
     pub fn HandleTColgpHArray2OfVec2d_get(
         handle: *const HandleTColgpHArray2OfVec2d,
@@ -7729,6 +7885,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfXY>;
     /// Destroy Handle<TColgp_HArray2OfXY>
     pub fn HandleTColgpHArray2OfXY_destructor(self_: *mut HandleTColgpHArray2OfXY);
+    /// Clone Handle<TColgp_HArray2OfXY> (increments reference count)
+    pub fn HandleTColgpHArray2OfXY_clone(
+        self_: *const HandleTColgpHArray2OfXY,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray2OfXY>;
     /// Dereference Handle to get *const TColgp_HArray2OfXY
     pub fn HandleTColgpHArray2OfXY_get(
         handle: *const HandleTColgpHArray2OfXY,
@@ -7830,6 +7990,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfXYZ>;
     /// Destroy Handle<TColgp_HArray2OfXYZ>
     pub fn HandleTColgpHArray2OfXYZ_destructor(self_: *mut HandleTColgpHArray2OfXYZ);
+    /// Clone Handle<TColgp_HArray2OfXYZ> (increments reference count)
+    pub fn HandleTColgpHArray2OfXYZ_clone(
+        self_: *const HandleTColgpHArray2OfXYZ,
+    ) -> crate::OcctResult<*mut HandleTColgpHArray2OfXYZ>;
     /// Dereference Handle to get *const TColgp_HArray2OfXYZ
     pub fn HandleTColgpHArray2OfXYZ_get(
         handle: *const HandleTColgpHArray2OfXYZ,
@@ -7921,6 +8085,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfDir>;
     /// Destroy Handle<TColgp_HSequenceOfDir>
     pub fn HandleTColgpHSequenceOfDir_destructor(self_: *mut HandleTColgpHSequenceOfDir);
+    /// Clone Handle<TColgp_HSequenceOfDir> (increments reference count)
+    pub fn HandleTColgpHSequenceOfDir_clone(
+        self_: *const HandleTColgpHSequenceOfDir,
+    ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfDir>;
     /// Dereference Handle to get *const TColgp_HSequenceOfDir
     pub fn HandleTColgpHSequenceOfDir_get(
         handle: *const HandleTColgpHSequenceOfDir,
@@ -8012,6 +8180,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfDir2d>;
     /// Destroy Handle<TColgp_HSequenceOfDir2d>
     pub fn HandleTColgpHSequenceOfDir2d_destructor(self_: *mut HandleTColgpHSequenceOfDir2d);
+    /// Clone Handle<TColgp_HSequenceOfDir2d> (increments reference count)
+    pub fn HandleTColgpHSequenceOfDir2d_clone(
+        self_: *const HandleTColgpHSequenceOfDir2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfDir2d>;
     /// Dereference Handle to get *const TColgp_HSequenceOfDir2d
     pub fn HandleTColgpHSequenceOfDir2d_get(
         handle: *const HandleTColgpHSequenceOfDir2d,
@@ -8103,6 +8275,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfPnt>;
     /// Destroy Handle<TColgp_HSequenceOfPnt>
     pub fn HandleTColgpHSequenceOfPnt_destructor(self_: *mut HandleTColgpHSequenceOfPnt);
+    /// Clone Handle<TColgp_HSequenceOfPnt> (increments reference count)
+    pub fn HandleTColgpHSequenceOfPnt_clone(
+        self_: *const HandleTColgpHSequenceOfPnt,
+    ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfPnt>;
     /// Dereference Handle to get *const TColgp_HSequenceOfPnt
     pub fn HandleTColgpHSequenceOfPnt_get(
         handle: *const HandleTColgpHSequenceOfPnt,
@@ -8194,6 +8370,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfPnt2d>;
     /// Destroy Handle<TColgp_HSequenceOfPnt2d>
     pub fn HandleTColgpHSequenceOfPnt2d_destructor(self_: *mut HandleTColgpHSequenceOfPnt2d);
+    /// Clone Handle<TColgp_HSequenceOfPnt2d> (increments reference count)
+    pub fn HandleTColgpHSequenceOfPnt2d_clone(
+        self_: *const HandleTColgpHSequenceOfPnt2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfPnt2d>;
     /// Dereference Handle to get *const TColgp_HSequenceOfPnt2d
     pub fn HandleTColgpHSequenceOfPnt2d_get(
         handle: *const HandleTColgpHSequenceOfPnt2d,
@@ -8285,6 +8465,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfVec>;
     /// Destroy Handle<TColgp_HSequenceOfVec>
     pub fn HandleTColgpHSequenceOfVec_destructor(self_: *mut HandleTColgpHSequenceOfVec);
+    /// Clone Handle<TColgp_HSequenceOfVec> (increments reference count)
+    pub fn HandleTColgpHSequenceOfVec_clone(
+        self_: *const HandleTColgpHSequenceOfVec,
+    ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfVec>;
     /// Dereference Handle to get *const TColgp_HSequenceOfVec
     pub fn HandleTColgpHSequenceOfVec_get(
         handle: *const HandleTColgpHSequenceOfVec,
@@ -8376,6 +8560,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfVec2d>;
     /// Destroy Handle<TColgp_HSequenceOfVec2d>
     pub fn HandleTColgpHSequenceOfVec2d_destructor(self_: *mut HandleTColgpHSequenceOfVec2d);
+    /// Clone Handle<TColgp_HSequenceOfVec2d> (increments reference count)
+    pub fn HandleTColgpHSequenceOfVec2d_clone(
+        self_: *const HandleTColgpHSequenceOfVec2d,
+    ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfVec2d>;
     /// Dereference Handle to get *const TColgp_HSequenceOfVec2d
     pub fn HandleTColgpHSequenceOfVec2d_get(
         handle: *const HandleTColgpHSequenceOfVec2d,
@@ -8466,6 +8654,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfXY>;
     /// Destroy Handle<TColgp_HSequenceOfXY>
     pub fn HandleTColgpHSequenceOfXY_destructor(self_: *mut HandleTColgpHSequenceOfXY);
+    /// Clone Handle<TColgp_HSequenceOfXY> (increments reference count)
+    pub fn HandleTColgpHSequenceOfXY_clone(
+        self_: *const HandleTColgpHSequenceOfXY,
+    ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfXY>;
     /// Dereference Handle to get *const TColgp_HSequenceOfXY
     pub fn HandleTColgpHSequenceOfXY_get(
         handle: *const HandleTColgpHSequenceOfXY,
@@ -8557,6 +8749,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfXYZ>;
     /// Destroy Handle<TColgp_HSequenceOfXYZ>
     pub fn HandleTColgpHSequenceOfXYZ_destructor(self_: *mut HandleTColgpHSequenceOfXYZ);
+    /// Clone Handle<TColgp_HSequenceOfXYZ> (increments reference count)
+    pub fn HandleTColgpHSequenceOfXYZ_clone(
+        self_: *const HandleTColgpHSequenceOfXYZ,
+    ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfXYZ>;
     /// Dereference Handle to get *const TColgp_HSequenceOfXYZ
     pub fn HandleTColgpHSequenceOfXYZ_get(
         handle: *const HandleTColgpHSequenceOfXYZ,
@@ -8640,6 +8836,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopLocDatum3D>;
     /// Destroy Handle<TopLoc_Datum3D>
     pub fn HandleTopLocDatum3D_destructor(self_: *mut HandleTopLocDatum3D);
+    /// Clone Handle<TopLoc_Datum3D> (increments reference count)
+    pub fn HandleTopLocDatum3D_clone(
+        self_: *const HandleTopLocDatum3D,
+    ) -> crate::OcctResult<*mut HandleTopLocDatum3D>;
     /// Dereference Handle to get *const TopLoc_Datum3D
     pub fn HandleTopLocDatum3D_get(
         handle: *const HandleTopLocDatum3D,
@@ -8689,7 +8889,7 @@ extern "C" {
         P: i32,
     ) -> crate::OcctResult<*mut TopLoc_ItemLocation>;
     /// Clone via copy constructor
-    pub fn TopLoc_ItemLocation_to_owned(
+    pub fn TopLoc_ItemLocation_clone(
         self_: *const TopLoc_ItemLocation,
     ) -> crate::OcctResult<*mut TopLoc_ItemLocation>;
     // ======================== TopLoc_Location ========================
@@ -8766,7 +8966,7 @@ extern "C" {
     /// **Source:** `TopLoc_Location.hxx`:146 - `TopLoc_Location::ScalePrec()`
     pub fn TopLoc_Location_scale_prec() -> crate::OcctResult<f64>;
     /// Clone via copy constructor
-    pub fn TopLoc_Location_to_owned(
+    pub fn TopLoc_Location_clone(
         self_: *const TopLoc_Location,
     ) -> crate::OcctResult<*mut TopLoc_Location>;
     // ======================== TopLoc_SListNodeOfItemLocation ========================
@@ -8810,6 +9010,10 @@ extern "C" {
     pub fn HandleTopLocSListNodeOfItemLocation_destructor(
         self_: *mut HandleTopLocSListNodeOfItemLocation,
     );
+    /// Clone Handle<TopLoc_SListNodeOfItemLocation> (increments reference count)
+    pub fn HandleTopLocSListNodeOfItemLocation_clone(
+        self_: *const HandleTopLocSListNodeOfItemLocation,
+    ) -> crate::OcctResult<*mut HandleTopLocSListNodeOfItemLocation>;
     /// Dereference Handle to get *const TopLoc_SListNodeOfItemLocation
     pub fn HandleTopLocSListNodeOfItemLocation_get(
         handle: *const HandleTopLocSListNodeOfItemLocation,
@@ -8900,7 +9104,7 @@ extern "C" {
         self_: *mut TopLoc_SListOfItemLocation,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn TopLoc_SListOfItemLocation_to_owned(
+    pub fn TopLoc_SListOfItemLocation_clone(
         self_: *const TopLoc_SListOfItemLocation,
     ) -> crate::OcctResult<*mut TopLoc_SListOfItemLocation>;
     // ======================== gp_Ax1 ========================
@@ -9025,7 +9229,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Ax1>;
     /// Clone via copy constructor
-    pub fn gp_Ax1_to_owned(self_: *const gp_Ax1) -> crate::OcctResult<*mut gp_Ax1>;
+    pub fn gp_Ax1_clone(self_: *const gp_Ax1) -> crate::OcctResult<*mut gp_Ax1>;
     // ======================== gp_Ax2 ========================
     pub fn gp_Ax2_destructor(self_: *mut gp_Ax2);
     /// **Source:** `gp_Ax2.hxx`:60 - `gp_Ax2::gp_Ax2()`
@@ -9156,7 +9360,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Ax2>;
     /// Clone via copy constructor
-    pub fn gp_Ax2_to_owned(self_: *const gp_Ax2) -> crate::OcctResult<*mut gp_Ax2>;
+    pub fn gp_Ax2_clone(self_: *const gp_Ax2) -> crate::OcctResult<*mut gp_Ax2>;
     // ======================== gp_Ax22d ========================
     pub fn gp_Ax22d_destructor(self_: *mut gp_Ax22d);
     /// **Source:** `gp_Ax22d.hxx`:48 - `gp_Ax22d::gp_Ax22d()`
@@ -9295,7 +9499,7 @@ extern "C" {
         theP2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Ax22d>;
     /// Clone via copy constructor
-    pub fn gp_Ax22d_to_owned(self_: *const gp_Ax22d) -> crate::OcctResult<*mut gp_Ax22d>;
+    pub fn gp_Ax22d_clone(self_: *const gp_Ax22d) -> crate::OcctResult<*mut gp_Ax22d>;
     // ======================== gp_Ax2d ========================
     pub fn gp_Ax2d_destructor(self_: *mut gp_Ax2d);
     /// **Source:** `gp_Ax2d.hxx`:48 - `gp_Ax2d::gp_Ax2d()`
@@ -9423,7 +9627,7 @@ extern "C" {
         theP2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Ax2d>;
     /// Clone via copy constructor
-    pub fn gp_Ax2d_to_owned(self_: *const gp_Ax2d) -> crate::OcctResult<*mut gp_Ax2d>;
+    pub fn gp_Ax2d_clone(self_: *const gp_Ax2d) -> crate::OcctResult<*mut gp_Ax2d>;
     // ======================== gp_Ax3 ========================
     pub fn gp_Ax3_destructor(self_: *mut gp_Ax3);
     /// **Source:** `gp_Ax3.hxx`:69 - `gp_Ax3::gp_Ax3()`
@@ -9567,7 +9771,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Ax3>;
     /// Clone via copy constructor
-    pub fn gp_Ax3_to_owned(self_: *const gp_Ax3) -> crate::OcctResult<*mut gp_Ax3>;
+    pub fn gp_Ax3_clone(self_: *const gp_Ax3) -> crate::OcctResult<*mut gp_Ax3>;
     // ======================== gp_Circ ========================
     pub fn gp_Circ_destructor(self_: *mut gp_Circ);
     /// **Source:** `gp_Circ.hxx`:57 - `gp_Circ::gp_Circ()`
@@ -9697,7 +9901,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Circ>;
     /// Clone via copy constructor
-    pub fn gp_Circ_to_owned(self_: *const gp_Circ) -> crate::OcctResult<*mut gp_Circ>;
+    pub fn gp_Circ_clone(self_: *const gp_Circ) -> crate::OcctResult<*mut gp_Circ>;
     // ======================== gp_Circ2d ========================
     pub fn gp_Circ2d_destructor(self_: *mut gp_Circ2d);
     /// **Source:** `gp_Circ2d.hxx`:55 - `gp_Circ2d::gp_Circ2d()`
@@ -9860,7 +10064,7 @@ extern "C" {
         theP2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Circ2d>;
     /// Clone via copy constructor
-    pub fn gp_Circ2d_to_owned(self_: *const gp_Circ2d) -> crate::OcctResult<*mut gp_Circ2d>;
+    pub fn gp_Circ2d_clone(self_: *const gp_Circ2d) -> crate::OcctResult<*mut gp_Circ2d>;
     // ======================== gp_Cone ========================
     pub fn gp_Cone_destructor(self_: *mut gp_Cone);
     /// **Source:** `gp_Cone.hxx`:57 - `gp_Cone::gp_Cone()`
@@ -10000,7 +10204,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Cone>;
     /// Clone via copy constructor
-    pub fn gp_Cone_to_owned(self_: *const gp_Cone) -> crate::OcctResult<*mut gp_Cone>;
+    pub fn gp_Cone_clone(self_: *const gp_Cone) -> crate::OcctResult<*mut gp_Cone>;
     // ======================== gp_Cylinder ========================
     pub fn gp_Cylinder_destructor(self_: *mut gp_Cylinder);
     /// **Source:** `gp_Cylinder.hxx`:47 - `gp_Cylinder::gp_Cylinder()`
@@ -10146,7 +10350,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Cylinder>;
     /// Clone via copy constructor
-    pub fn gp_Cylinder_to_owned(self_: *const gp_Cylinder) -> crate::OcctResult<*mut gp_Cylinder>;
+    pub fn gp_Cylinder_clone(self_: *const gp_Cylinder) -> crate::OcctResult<*mut gp_Cylinder>;
     // ======================== gp_Dir ========================
     pub fn gp_Dir_destructor(self_: *mut gp_Dir);
     /// **Source:** `gp_Dir.hxx`:41 - `gp_Dir::gp_Dir()`
@@ -10299,7 +10503,7 @@ extern "C" {
         theT: *const gp_Trsf,
     ) -> crate::OcctResult<*mut gp_Dir>;
     /// Clone via copy constructor
-    pub fn gp_Dir_to_owned(self_: *const gp_Dir) -> crate::OcctResult<*mut gp_Dir>;
+    pub fn gp_Dir_clone(self_: *const gp_Dir) -> crate::OcctResult<*mut gp_Dir>;
     // ======================== gp_Dir2d ========================
     pub fn gp_Dir2d_destructor(self_: *mut gp_Dir2d);
     /// **Source:** `gp_Dir2d.hxx`:41 - `gp_Dir2d::gp_Dir2d()`
@@ -10424,7 +10628,7 @@ extern "C" {
         theT: *const gp_Trsf2d,
     ) -> crate::OcctResult<*mut gp_Dir2d>;
     /// Clone via copy constructor
-    pub fn gp_Dir2d_to_owned(self_: *const gp_Dir2d) -> crate::OcctResult<*mut gp_Dir2d>;
+    pub fn gp_Dir2d_clone(self_: *const gp_Dir2d) -> crate::OcctResult<*mut gp_Dir2d>;
     // ======================== gp_Elips ========================
     pub fn gp_Elips_destructor(self_: *mut gp_Elips);
     /// **Source:** `gp_Elips.hxx`:55 - `gp_Elips::gp_Elips()`
@@ -10575,7 +10779,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Elips>;
     /// Clone via copy constructor
-    pub fn gp_Elips_to_owned(self_: *const gp_Elips) -> crate::OcctResult<*mut gp_Elips>;
+    pub fn gp_Elips_clone(self_: *const gp_Elips) -> crate::OcctResult<*mut gp_Elips>;
     // ======================== gp_Elips2d ========================
     pub fn gp_Elips2d_destructor(self_: *mut gp_Elips2d);
     /// **Source:** `gp_Elips2d.hxx`:50 - `gp_Elips2d::gp_Elips2d()`
@@ -10744,7 +10948,7 @@ extern "C" {
         theP2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Elips2d>;
     /// Clone via copy constructor
-    pub fn gp_Elips2d_to_owned(self_: *const gp_Elips2d) -> crate::OcctResult<*mut gp_Elips2d>;
+    pub fn gp_Elips2d_clone(self_: *const gp_Elips2d) -> crate::OcctResult<*mut gp_Elips2d>;
     // ======================== gp_GTrsf ========================
     pub fn gp_GTrsf_destructor(self_: *mut gp_GTrsf);
     /// **Source:** `gp_GTrsf.hxx`:63 - `gp_GTrsf::gp_GTrsf()`
@@ -10844,7 +11048,7 @@ extern "C" {
     /// **Source:** `gp_GTrsf.hxx`:261 - `gp_GTrsf::Trsf()`
     pub fn gp_GTrsf_trsf(self_: *const gp_GTrsf) -> crate::OcctResult<*mut gp_Trsf>;
     /// Clone via copy constructor
-    pub fn gp_GTrsf_to_owned(self_: *const gp_GTrsf) -> crate::OcctResult<*mut gp_GTrsf>;
+    pub fn gp_GTrsf_clone(self_: *const gp_GTrsf) -> crate::OcctResult<*mut gp_GTrsf>;
     // ======================== gp_GTrsf2d ========================
     pub fn gp_GTrsf2d_destructor(self_: *mut gp_GTrsf2d);
     /// **Source:** `gp_GTrsf2d.hxx`:54 - `gp_GTrsf2d::gp_GTrsf2d()`
@@ -10948,7 +11152,7 @@ extern "C" {
     /// **Source:** `gp_GTrsf2d.hxx`:227 - `gp_GTrsf2d::Trsf2d()`
     pub fn gp_GTrsf2d_trsf2d(self_: *const gp_GTrsf2d) -> crate::OcctResult<*mut gp_Trsf2d>;
     /// Clone via copy constructor
-    pub fn gp_GTrsf2d_to_owned(self_: *const gp_GTrsf2d) -> crate::OcctResult<*mut gp_GTrsf2d>;
+    pub fn gp_GTrsf2d_clone(self_: *const gp_GTrsf2d) -> crate::OcctResult<*mut gp_GTrsf2d>;
     // ======================== gp_Hypr ========================
     pub fn gp_Hypr_destructor(self_: *mut gp_Hypr);
     /// **Source:** `gp_Hypr.hxx`:77 - `gp_Hypr::gp_Hypr()`
@@ -11096,7 +11300,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Hypr>;
     /// Clone via copy constructor
-    pub fn gp_Hypr_to_owned(self_: *const gp_Hypr) -> crate::OcctResult<*mut gp_Hypr>;
+    pub fn gp_Hypr_clone(self_: *const gp_Hypr) -> crate::OcctResult<*mut gp_Hypr>;
     // ======================== gp_Hypr2d ========================
     pub fn gp_Hypr2d_destructor(self_: *mut gp_Hypr2d);
     /// **Source:** `gp_Hypr2d.hxx`:71 - `gp_Hypr2d::gp_Hypr2d()`
@@ -11277,7 +11481,7 @@ extern "C" {
         theP2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Hypr2d>;
     /// Clone via copy constructor
-    pub fn gp_Hypr2d_to_owned(self_: *const gp_Hypr2d) -> crate::OcctResult<*mut gp_Hypr2d>;
+    pub fn gp_Hypr2d_clone(self_: *const gp_Hypr2d) -> crate::OcctResult<*mut gp_Hypr2d>;
     // ======================== gp_Lin ========================
     pub fn gp_Lin_destructor(self_: *mut gp_Lin);
     /// **Source:** `gp_Lin.hxx`:46 - `gp_Lin::gp_Lin()`
@@ -11411,7 +11615,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Lin>;
     /// Clone via copy constructor
-    pub fn gp_Lin_to_owned(self_: *const gp_Lin) -> crate::OcctResult<*mut gp_Lin>;
+    pub fn gp_Lin_clone(self_: *const gp_Lin) -> crate::OcctResult<*mut gp_Lin>;
     // ======================== gp_Lin2d ========================
     pub fn gp_Lin2d_destructor(self_: *mut gp_Lin2d);
     /// **Source:** `gp_Lin2d.hxx`:45 - `gp_Lin2d::gp_Lin2d()`
@@ -11571,7 +11775,7 @@ extern "C" {
         theP2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Lin2d>;
     /// Clone via copy constructor
-    pub fn gp_Lin2d_to_owned(self_: *const gp_Lin2d) -> crate::OcctResult<*mut gp_Lin2d>;
+    pub fn gp_Lin2d_clone(self_: *const gp_Lin2d) -> crate::OcctResult<*mut gp_Lin2d>;
     // ======================== gp_Mat ========================
     pub fn gp_Mat_destructor(self_: *mut gp_Mat);
     /// **Source:** `gp_Mat.hxx`:33 - `gp_Mat::gp_Mat()`
@@ -11723,7 +11927,7 @@ extern "C" {
     /// **Source:** `gp_Mat.hxx`:290 - `gp_Mat::Transposed()`
     pub fn gp_Mat_transposed(self_: *const gp_Mat) -> crate::OcctResult<*mut gp_Mat>;
     /// Clone via copy constructor
-    pub fn gp_Mat_to_owned(self_: *const gp_Mat) -> crate::OcctResult<*mut gp_Mat>;
+    pub fn gp_Mat_clone(self_: *const gp_Mat) -> crate::OcctResult<*mut gp_Mat>;
     // ======================== gp_Mat2d ========================
     pub fn gp_Mat2d_destructor(self_: *mut gp_Mat2d);
     /// **Source:** `gp_Mat2d.hxx`:32 - `gp_Mat2d::gp_Mat2d()`
@@ -11857,7 +12061,7 @@ extern "C" {
     /// **Source:** `gp_Mat2d.hxx`:259 - `gp_Mat2d::Transposed()`
     pub fn gp_Mat2d_transposed(self_: *const gp_Mat2d) -> crate::OcctResult<*mut gp_Mat2d>;
     /// Clone via copy constructor
-    pub fn gp_Mat2d_to_owned(self_: *const gp_Mat2d) -> crate::OcctResult<*mut gp_Mat2d>;
+    pub fn gp_Mat2d_clone(self_: *const gp_Mat2d) -> crate::OcctResult<*mut gp_Mat2d>;
     // ======================== gp_Parab ========================
     pub fn gp_Parab_destructor(self_: *mut gp_Parab);
     /// **Source:** `gp_Parab.hxx`:56 - `gp_Parab::gp_Parab()`
@@ -11992,7 +12196,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Parab>;
     /// Clone via copy constructor
-    pub fn gp_Parab_to_owned(self_: *const gp_Parab) -> crate::OcctResult<*mut gp_Parab>;
+    pub fn gp_Parab_clone(self_: *const gp_Parab) -> crate::OcctResult<*mut gp_Parab>;
     // ======================== gp_Parab2d ========================
     pub fn gp_Parab2d_destructor(self_: *mut gp_Parab2d);
     /// **Source:** `gp_Parab2d.hxx`:53 - `gp_Parab2d::gp_Parab2d()`
@@ -12138,7 +12342,7 @@ extern "C" {
         theP2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Parab2d>;
     /// Clone via copy constructor
-    pub fn gp_Parab2d_to_owned(self_: *const gp_Parab2d) -> crate::OcctResult<*mut gp_Parab2d>;
+    pub fn gp_Parab2d_clone(self_: *const gp_Parab2d) -> crate::OcctResult<*mut gp_Parab2d>;
     // ======================== gp_Pln ========================
     pub fn gp_Pln_destructor(self_: *mut gp_Pln);
     /// **Source:** `gp_Pln.hxx`:53 - `gp_Pln::gp_Pln()`
@@ -12303,7 +12507,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Pln>;
     /// Clone via copy constructor
-    pub fn gp_Pln_to_owned(self_: *const gp_Pln) -> crate::OcctResult<*mut gp_Pln>;
+    pub fn gp_Pln_clone(self_: *const gp_Pln) -> crate::OcctResult<*mut gp_Pln>;
     // ======================== gp_Pnt ========================
     pub fn gp_Pnt_destructor(self_: *mut gp_Pnt);
     /// **Source:** `gp_Pnt.hxx`:37 - `gp_Pnt::gp_Pnt()`
@@ -12448,7 +12652,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Pnt>;
     /// Clone via copy constructor
-    pub fn gp_Pnt_to_owned(self_: *const gp_Pnt) -> crate::OcctResult<*mut gp_Pnt>;
+    pub fn gp_Pnt_clone(self_: *const gp_Pnt) -> crate::OcctResult<*mut gp_Pnt>;
     // ======================== gp_Pnt2d ========================
     pub fn gp_Pnt2d_destructor(self_: *mut gp_Pnt2d);
     /// **Source:** `gp_Pnt2d.hxx`:37 - `gp_Pnt2d::gp_Pnt2d()`
@@ -12587,7 +12791,7 @@ extern "C" {
         theP2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
     /// Clone via copy constructor
-    pub fn gp_Pnt2d_to_owned(self_: *const gp_Pnt2d) -> crate::OcctResult<*mut gp_Pnt2d>;
+    pub fn gp_Pnt2d_clone(self_: *const gp_Pnt2d) -> crate::OcctResult<*mut gp_Pnt2d>;
     // ======================== gp_Quaternion ========================
     pub fn gp_Quaternion_destructor(self_: *mut gp_Quaternion);
     /// **Source:** `gp_Quaternion.hxx`:36 - `gp_Quaternion::gp_Quaternion()`
@@ -12772,7 +12976,7 @@ extern "C" {
         theVec: *const gp_Vec,
     ) -> crate::OcctResult<*mut gp_Vec>;
     /// Clone via copy constructor
-    pub fn gp_Quaternion_to_owned(
+    pub fn gp_Quaternion_clone(
         self_: *const gp_Quaternion,
     ) -> crate::OcctResult<*mut gp_Quaternion>;
     // ======================== gp_QuaternionNLerp ========================
@@ -12809,7 +13013,7 @@ extern "C" {
         theT: f64,
     ) -> crate::OcctResult<*mut gp_Quaternion>;
     /// Clone via copy constructor
-    pub fn gp_QuaternionNLerp_to_owned(
+    pub fn gp_QuaternionNLerp_clone(
         self_: *const gp_QuaternionNLerp,
     ) -> crate::OcctResult<*mut gp_QuaternionNLerp>;
     // ======================== gp_QuaternionSLerp ========================
@@ -12846,7 +13050,7 @@ extern "C" {
         theT: f64,
     ) -> crate::OcctResult<*mut gp_Quaternion>;
     /// Clone via copy constructor
-    pub fn gp_QuaternionSLerp_to_owned(
+    pub fn gp_QuaternionSLerp_clone(
         self_: *const gp_QuaternionSLerp,
     ) -> crate::OcctResult<*mut gp_QuaternionSLerp>;
     // ======================== gp_Sphere ========================
@@ -12991,7 +13195,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Sphere>;
     /// Clone via copy constructor
-    pub fn gp_Sphere_to_owned(self_: *const gp_Sphere) -> crate::OcctResult<*mut gp_Sphere>;
+    pub fn gp_Sphere_clone(self_: *const gp_Sphere) -> crate::OcctResult<*mut gp_Sphere>;
     // ======================== gp_Torus ========================
     pub fn gp_Torus_destructor(self_: *mut gp_Torus);
     /// **Source:** `gp_Torus.hxx`:61 - `gp_Torus::gp_Torus()`
@@ -13141,7 +13345,7 @@ extern "C" {
         theP2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut gp_Torus>;
     /// Clone via copy constructor
-    pub fn gp_Torus_to_owned(self_: *const gp_Torus) -> crate::OcctResult<*mut gp_Torus>;
+    pub fn gp_Torus_clone(self_: *const gp_Torus) -> crate::OcctResult<*mut gp_Torus>;
     // ======================== gp_Trsf ========================
     pub fn gp_Trsf_destructor(self_: *mut gp_Trsf);
     /// **Source:** `gp_Trsf.hxx`:64 - `gp_Trsf::gp_Trsf()`
@@ -13300,7 +13504,7 @@ extern "C" {
         theCoord: *mut gp_XYZ,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn gp_Trsf_to_owned(self_: *const gp_Trsf) -> crate::OcctResult<*mut gp_Trsf>;
+    pub fn gp_Trsf_clone(self_: *const gp_Trsf) -> crate::OcctResult<*mut gp_Trsf>;
     // ======================== gp_Trsf2d ========================
     pub fn gp_Trsf2d_destructor(self_: *mut gp_Trsf2d);
     /// **Source:** `gp_Trsf2d.hxx`:50 - `gp_Trsf2d::gp_Trsf2d()`
@@ -13426,7 +13630,7 @@ extern "C" {
         a23: f64,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn gp_Trsf2d_to_owned(self_: *const gp_Trsf2d) -> crate::OcctResult<*mut gp_Trsf2d>;
+    pub fn gp_Trsf2d_clone(self_: *const gp_Trsf2d) -> crate::OcctResult<*mut gp_Trsf2d>;
     // ======================== gp_Vec ========================
     pub fn gp_Vec_destructor(self_: *mut gp_Vec);
     /// **Source:** `gp_Vec.hxx`:35 - `gp_Vec::gp_Vec()`
@@ -13683,7 +13887,7 @@ extern "C" {
         theT: *const gp_Trsf,
     ) -> crate::OcctResult<*mut gp_Vec>;
     /// Clone via copy constructor
-    pub fn gp_Vec_to_owned(self_: *const gp_Vec) -> crate::OcctResult<*mut gp_Vec>;
+    pub fn gp_Vec_clone(self_: *const gp_Vec) -> crate::OcctResult<*mut gp_Vec>;
     // ======================== gp_Vec2d ========================
     pub fn gp_Vec2d_destructor(self_: *mut gp_Vec2d);
     /// **Source:** `gp_Vec2d.hxx`:33 - `gp_Vec2d::gp_Vec2d()`
@@ -13900,7 +14104,7 @@ extern "C" {
         theT: *const gp_Trsf2d,
     ) -> crate::OcctResult<*mut gp_Vec2d>;
     /// Clone via copy constructor
-    pub fn gp_Vec2d_to_owned(self_: *const gp_Vec2d) -> crate::OcctResult<*mut gp_Vec2d>;
+    pub fn gp_Vec2d_clone(self_: *const gp_Vec2d) -> crate::OcctResult<*mut gp_Vec2d>;
     // ======================== gp_VectorWithNullMagnitude ========================
     pub fn gp_VectorWithNullMagnitude_destructor(self_: *mut gp_VectorWithNullMagnitude);
     /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
@@ -13970,6 +14174,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlegpVectorWithNullMagnitude>;
     /// Destroy Handle<gp_VectorWithNullMagnitude>
     pub fn HandlegpVectorWithNullMagnitude_destructor(self_: *mut HandlegpVectorWithNullMagnitude);
+    /// Clone Handle<gp_VectorWithNullMagnitude> (increments reference count)
+    pub fn HandlegpVectorWithNullMagnitude_clone(
+        self_: *const HandlegpVectorWithNullMagnitude,
+    ) -> crate::OcctResult<*mut HandlegpVectorWithNullMagnitude>;
     /// Dereference Handle to get *const gp_VectorWithNullMagnitude
     pub fn HandlegpVectorWithNullMagnitude_get(
         handle: *const HandlegpVectorWithNullMagnitude,
@@ -14174,7 +14382,7 @@ extern "C" {
         theOther: *const gp_XY,
     ) -> crate::OcctResult<*mut gp_XY>;
     /// Clone via copy constructor
-    pub fn gp_XY_to_owned(self_: *const gp_XY) -> crate::OcctResult<*mut gp_XY>;
+    pub fn gp_XY_clone(self_: *const gp_XY) -> crate::OcctResult<*mut gp_XY>;
     // ======================== gp_XYZ ========================
     pub fn gp_XYZ_destructor(self_: *mut gp_XYZ);
     /// **Source:** `gp_XYZ.hxx`:37 - `gp_XYZ::gp_XYZ()`
@@ -14373,7 +14581,7 @@ extern "C" {
         theXYZ2: *const gp_XYZ,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn gp_XYZ_to_owned(self_: *const gp_XYZ) -> crate::OcctResult<*mut gp_XYZ>;
+    pub fn gp_XYZ_clone(self_: *const gp_XYZ) -> crate::OcctResult<*mut gp_XYZ>;
     // ======================== math_BFGS ========================
     pub fn math_BFGS_destructor(self_: *mut math_BFGS);
     /// **Source:** `math_BFGS.hxx`:49 - `math_BFGS::math_BFGS()`
@@ -14782,7 +14990,7 @@ extern "C" {
     /// **Source:** `math_DoubleTab.hxx`:60 - `math_DoubleTab::Free()`
     pub fn math_DoubleTab_free(self_: *mut math_DoubleTab) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn math_DoubleTab_to_owned(
+    pub fn math_DoubleTab_clone(
         self_: *const math_DoubleTab,
     ) -> crate::OcctResult<*mut math_DoubleTab>;
     // ======================== math_EigenValuesSearcher ========================
@@ -15746,7 +15954,7 @@ extern "C" {
         o: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn math_Matrix_to_owned(self_: *const math_Matrix) -> crate::OcctResult<*mut math_Matrix>;
+    pub fn math_Matrix_clone(self_: *const math_Matrix) -> crate::OcctResult<*mut math_Matrix>;
     // ======================== math_MultipleVarFunction ========================
     pub fn math_MultipleVarFunction_destructor(self_: *mut math_MultipleVarFunction);
     /// **Source:** `math_MultipleVarFunction.hxx`:33 - `math_MultipleVarFunction::NbVariables()`
@@ -16140,6 +16348,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlemathNotSquare>;
     /// Destroy Handle<math_NotSquare>
     pub fn HandlemathNotSquare_destructor(self_: *mut HandlemathNotSquare);
+    /// Clone Handle<math_NotSquare> (increments reference count)
+    pub fn HandlemathNotSquare_clone(
+        self_: *const HandlemathNotSquare,
+    ) -> crate::OcctResult<*mut HandlemathNotSquare>;
     /// Dereference Handle to get *const math_NotSquare
     pub fn HandlemathNotSquare_get(
         handle: *const HandlemathNotSquare,
@@ -16378,6 +16590,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlemathSingularMatrix>;
     /// Destroy Handle<math_SingularMatrix>
     pub fn HandlemathSingularMatrix_destructor(self_: *mut HandlemathSingularMatrix);
+    /// Clone Handle<math_SingularMatrix> (increments reference count)
+    pub fn HandlemathSingularMatrix_clone(
+        self_: *const HandlemathSingularMatrix,
+    ) -> crate::OcctResult<*mut HandlemathSingularMatrix>;
     /// Dereference Handle to get *const math_SingularMatrix
     pub fn HandlemathSingularMatrix_get(
         handle: *const HandlemathSingularMatrix,

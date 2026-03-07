@@ -70,11 +70,27 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
 typedef opencascade::handle<VrmlAPI_CafReader> HandleVrmlAPICafReader;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleRWMeshCafReader_destructor(HandleRWMeshCafReader* self_) { delete self_; }
+extern "C" OcctResult<HandleRWMeshCafReader*> HandleRWMeshCafReader_clone(const HandleRWMeshCafReader* self_) {
+    try { return {new HandleRWMeshCafReader(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWMeshMaterialMap_destructor(HandleRWMeshMaterialMap* self_) { delete self_; }
+extern "C" OcctResult<HandleRWMeshMaterialMap*> HandleRWMeshMaterialMap_clone(const HandleRWMeshMaterialMap* self_) {
+    try { return {new HandleRWMeshMaterialMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWMeshTriangulationReader_destructor(HandleRWMeshTriangulationReader* self_) { delete self_; }
+extern "C" OcctResult<HandleRWMeshTriangulationReader*> HandleRWMeshTriangulationReader_clone(const HandleRWMeshTriangulationReader* self_) {
+    try { return {new HandleRWMeshTriangulationReader(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWMeshTriangulationSource_destructor(HandleRWMeshTriangulationSource* self_) { delete self_; }
+extern "C" OcctResult<HandleRWMeshTriangulationSource*> HandleRWMeshTriangulationSource_clone(const HandleRWMeshTriangulationSource* self_) {
+    try { return {new HandleRWMeshTriangulationSource(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // RWMesh_CafReader wrappers

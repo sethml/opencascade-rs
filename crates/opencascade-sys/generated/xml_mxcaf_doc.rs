@@ -282,6 +282,14 @@ unsafe impl crate::CppDeletable for HandleXmlMXCAFDocAssemblyItemRefDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocAssemblyItemRefDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocAssemblyItemRefDriver_clone(ptr),
+        )
+    }
+}
+
 impl HandleXmlMXCAFDocAssemblyItemRefDriver {
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_AssemblyItemRefDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_AssemblyItemRefDriver {
@@ -602,6 +610,12 @@ pub use crate::ffi_types::HandleXmlMXCAFDocCentroidDriver;
 unsafe impl crate::CppDeletable for HandleXmlMXCAFDocCentroidDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocCentroidDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocCentroidDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocCentroidDriver_clone(ptr))
     }
 }
 
@@ -928,6 +942,12 @@ unsafe impl crate::CppDeletable for HandleXmlMXCAFDocColorDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocColorDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocColorDriver_clone(ptr))
+    }
+}
+
 impl HandleXmlMXCAFDocColorDriver {
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_ColorDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_ColorDriver {
@@ -1248,6 +1268,12 @@ pub use crate::ffi_types::HandleXmlMXCAFDocDatumDriver;
 unsafe impl crate::CppDeletable for HandleXmlMXCAFDocDatumDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocDatumDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocDatumDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocDatumDriver_clone(ptr))
     }
 }
 
@@ -1576,6 +1602,12 @@ unsafe impl crate::CppDeletable for HandleXmlMXCAFDocDimTolDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocDimTolDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocDimTolDriver_clone(ptr))
+    }
+}
+
 impl HandleXmlMXCAFDocDimTolDriver {
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_DimTolDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_DimTolDriver {
@@ -1897,6 +1929,14 @@ unsafe impl crate::CppDeletable for HandleXmlMXCAFDocGraphNodeDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocGraphNodeDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocGraphNodeDriver_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleXmlMXCAFDocGraphNodeDriver {
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_GraphNodeDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_GraphNodeDriver {
@@ -2213,6 +2253,14 @@ pub use crate::ffi_types::HandleXmlMXCAFDocLengthUnitDriver;
 unsafe impl crate::CppDeletable for HandleXmlMXCAFDocLengthUnitDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocLengthUnitDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocLengthUnitDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocLengthUnitDriver_clone(
+            ptr,
+        ))
     }
 }
 
@@ -2578,6 +2626,12 @@ unsafe impl crate::CppDeletable for HandleXmlMXCAFDocLocationDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocLocationDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocLocationDriver_clone(ptr))
+    }
+}
+
 impl HandleXmlMXCAFDocLocationDriver {
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_LocationDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_LocationDriver {
@@ -2900,6 +2954,12 @@ pub use crate::ffi_types::HandleXmlMXCAFDocMaterialDriver;
 unsafe impl crate::CppDeletable for HandleXmlMXCAFDocMaterialDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocMaterialDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocMaterialDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocMaterialDriver_clone(ptr))
     }
 }
 
@@ -3233,6 +3293,14 @@ pub use crate::ffi_types::HandleXmlMXCAFDocNoteBinDataDriver;
 unsafe impl crate::CppDeletable for HandleXmlMXCAFDocNoteBinDataDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocNoteBinDataDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocNoteBinDataDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocNoteBinDataDriver_clone(
+            ptr,
+        ))
     }
 }
 
@@ -3576,6 +3644,14 @@ unsafe impl crate::CppDeletable for HandleXmlMXCAFDocNoteCommentDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocNoteCommentDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocNoteCommentDriver_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleXmlMXCAFDocNoteCommentDriver {
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_NoteCommentDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_NoteCommentDriver {
@@ -3881,6 +3957,12 @@ pub use crate::ffi_types::HandleXmlMXCAFDocNoteDriver;
 unsafe impl crate::CppDeletable for HandleXmlMXCAFDocNoteDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocNoteDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocNoteDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocNoteDriver_clone(ptr))
     }
 }
 
@@ -4241,6 +4323,14 @@ unsafe impl crate::CppDeletable for HandleXmlMXCAFDocVisMaterialDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocVisMaterialDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocVisMaterialDriver_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleXmlMXCAFDocVisMaterialDriver {
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_VisMaterialDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_VisMaterialDriver {
@@ -4544,6 +4634,14 @@ pub use crate::ffi_types::HandleXmlMXCAFDocVisMaterialToolDriver;
 unsafe impl crate::CppDeletable for HandleXmlMXCAFDocVisMaterialToolDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocVisMaterialToolDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMXCAFDocVisMaterialToolDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocVisMaterialToolDriver_clone(ptr),
+        )
     }
 }
 

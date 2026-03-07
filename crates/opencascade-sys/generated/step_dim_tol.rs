@@ -610,6 +610,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolAngularityTolerance {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolAngularityTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolAngularityTolerance_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepDimTolAngularityTolerance {
     /// Dereference this Handle to access the underlying StepDimTol_AngularityTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_AngularityTolerance {
@@ -986,6 +994,14 @@ pub use crate::ffi_types::HandleStepDimTolCircularRunoutTolerance;
 unsafe impl crate::CppDeletable for HandleStepDimTolCircularRunoutTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolCircularRunoutTolerance_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolCircularRunoutTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolCircularRunoutTolerance_clone(ptr),
+        )
     }
 }
 
@@ -1380,6 +1396,14 @@ pub use crate::ffi_types::HandleStepDimTolCoaxialityTolerance;
 unsafe impl crate::CppDeletable for HandleStepDimTolCoaxialityTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolCoaxialityTolerance_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolCoaxialityTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolCoaxialityTolerance_clone(
+            ptr,
+        ))
     }
 }
 
@@ -1787,6 +1811,12 @@ unsafe impl crate::CppDeletable for HandleStepDimTolCommonDatum {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolCommonDatum {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolCommonDatum_clone(ptr))
+    }
+}
+
 impl HandleStepDimTolCommonDatum {
     /// Dereference this Handle to access the underlying StepDimTol_CommonDatum
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_CommonDatum {
@@ -2176,6 +2206,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolConcentricityTolerance {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolConcentricityTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolConcentricityTolerance_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolConcentricityTolerance {
     /// Dereference this Handle to access the underlying StepDimTol_ConcentricityTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ConcentricityTolerance {
@@ -2508,6 +2546,14 @@ pub use crate::ffi_types::HandleStepDimTolCylindricityTolerance;
 unsafe impl crate::CppDeletable for HandleStepDimTolCylindricityTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolCylindricityTolerance_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolCylindricityTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolCylindricityTolerance_clone(ptr),
+        )
     }
 }
 
@@ -2869,6 +2915,12 @@ unsafe impl crate::CppDeletable for HandleStepDimTolDatum {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolDatum {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolDatum_clone(ptr))
+    }
+}
+
 impl HandleStepDimTolDatum {
     /// Dereference this Handle to access the underlying StepDimTol_Datum
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_Datum {
@@ -3214,6 +3266,12 @@ pub use crate::ffi_types::HandleStepDimTolDatumFeature;
 unsafe impl crate::CppDeletable for HandleStepDimTolDatumFeature {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumFeature_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolDatumFeature {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumFeature_clone(ptr))
     }
 }
 
@@ -3750,6 +3808,12 @@ unsafe impl crate::CppDeletable for HandleStepDimTolDatumReference {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolDatumReference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumReference_clone(ptr))
+    }
+}
+
 impl HandleStepDimTolDatumReference {
     /// Dereference this Handle to access the underlying StepDimTol_DatumReference
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_DatumReference {
@@ -4133,6 +4197,14 @@ pub use crate::ffi_types::HandleStepDimTolDatumReferenceCompartment;
 unsafe impl crate::CppDeletable for HandleStepDimTolDatumReferenceCompartment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumReferenceCompartment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolDatumReferenceCompartment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumReferenceCompartment_clone(ptr),
+        )
     }
 }
 
@@ -4556,6 +4628,14 @@ pub use crate::ffi_types::HandleStepDimTolDatumReferenceElement;
 unsafe impl crate::CppDeletable for HandleStepDimTolDatumReferenceElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumReferenceElement_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolDatumReferenceElement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumReferenceElement_clone(ptr),
+        )
     }
 }
 
@@ -5067,6 +5147,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolDatumReferenceModifierWithVa
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolDatumReferenceModifierWithValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumReferenceModifierWithValue_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolDatumReferenceModifierWithValue {
     /// Dereference this Handle to access the underlying StepDimTol_DatumReferenceModifierWithValue
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_DatumReferenceModifierWithValue {
@@ -5462,6 +5550,12 @@ pub use crate::ffi_types::HandleStepDimTolDatumSystem;
 unsafe impl crate::CppDeletable for HandleStepDimTolDatumSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumSystem_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolDatumSystem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumSystem_clone(ptr))
     }
 }
 
@@ -6087,6 +6181,12 @@ unsafe impl crate::CppDeletable for HandleStepDimTolDatumTarget {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolDatumTarget {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumTarget_clone(ptr))
+    }
+}
+
 impl HandleStepDimTolDatumTarget {
     /// Dereference this Handle to access the underlying StepDimTol_DatumTarget
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_DatumTarget {
@@ -6431,6 +6531,14 @@ pub use crate::ffi_types::HandleStepDimTolFlatnessTolerance;
 unsafe impl crate::CppDeletable for HandleStepDimTolFlatnessTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolFlatnessTolerance_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolFlatnessTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolFlatnessTolerance_clone(
+            ptr,
+        ))
     }
 }
 
@@ -6859,6 +6967,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeneralDatumReference {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolGeneralDatumReference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeneralDatumReference_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolGeneralDatumReference {
     /// Dereference this Handle to access the underlying StepDimTol_GeneralDatumReference
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeneralDatumReference {
@@ -7258,6 +7374,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthDatRef {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthDatRef {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRef_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolGeoTolAndGeoTolWthDatRef {
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRef
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeoTolAndGeoTolWthDatRef {
@@ -7651,6 +7775,12 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndG
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_clone(ptr))
+    }
+}
+
 impl HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
@@ -7993,6 +8123,12 @@ pub use crate::ffi_types::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMo
 unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_clone(ptr))
     }
 }
 
@@ -8349,6 +8485,12 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndM
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_clone(ptr))
+    }
+}
+
 impl HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol
     pub fn get(
@@ -8695,6 +8837,12 @@ pub use crate::ffi_types::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoT
 unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_clone(ptr))
     }
 }
 
@@ -9104,6 +9252,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthMaxTol {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthMaxTol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthMaxTol_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolGeoTolAndGeoTolWthMaxTol {
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthMaxTol
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeoTolAndGeoTolWthMaxTol {
@@ -9486,6 +9642,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeoTolAndGeoTolWthMod {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthMod {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthMod_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolGeoTolAndGeoTolWthMod {
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthMod
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeoTolAndGeoTolWthMod {
@@ -9847,6 +10011,14 @@ pub use crate::ffi_types::HandleStepDimTolGeometricTolerance;
 unsafe impl crate::CppDeletable for HandleStepDimTolGeometricTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricTolerance_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolGeometricTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricTolerance_clone(
+            ptr,
+        ))
     }
 }
 
@@ -10634,6 +10806,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceRelationsh
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceRelationship {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceRelationship_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolGeometricToleranceRelationship {
     /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceRelationship
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricToleranceRelationship {
@@ -11227,6 +11407,16 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceWithDatumR
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceWithDatumReference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceWithDatumReference_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepDimTolGeometricToleranceWithDatumReference {
     /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithDatumReference
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricToleranceWithDatumReference {
@@ -11716,6 +11906,16 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceWithDefine
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceWithDefinedAreaUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepDimTolGeometricToleranceWithDefinedAreaUnit {
     /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithDefinedAreaUnit
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricToleranceWithDefinedAreaUnit {
@@ -12033,6 +12233,16 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceWithDefine
         crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceWithDefinedUnit_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceWithDefinedUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceWithDefinedUnit_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -12413,6 +12623,12 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceWithMaximu
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceWithMaximumTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceWithMaximumTolerance_clone(ptr))
+    }
+}
+
 impl HandleStepDimTolGeometricToleranceWithMaximumTolerance {
     /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithMaximumTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricToleranceWithMaximumTolerance {
@@ -12770,6 +12986,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolGeometricToleranceWithModifi
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceWithModifiers {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceWithModifiers_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolGeometricToleranceWithModifiers {
     /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithModifiers
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricToleranceWithModifiers {
@@ -13054,6 +13278,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfDatumReference {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfDatumReference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumReference_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolHArray1OfDatumReference {
     /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumReference
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_HArray1OfDatumReference {
@@ -13283,6 +13515,16 @@ unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfDatumReferenceCompa
         crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumReferenceCompartment_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfDatumReferenceCompartment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumReferenceCompartment_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -13536,6 +13778,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfDatumReferenceEleme
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfDatumReferenceElement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumReferenceElement_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolHArray1OfDatumReferenceElement {
     /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumReferenceElement
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_HArray1OfDatumReferenceElement {
@@ -13772,6 +14022,14 @@ pub use crate::ffi_types::HandleStepDimTolHArray1OfDatumReferenceModifier;
 unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfDatumReferenceModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumReferenceModifier_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfDatumReferenceModifier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumReferenceModifier_clone(ptr),
+        )
     }
 }
 
@@ -14014,6 +14272,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfDatumSystemOrRefere
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfDatumSystemOrReference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumSystemOrReference_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolHArray1OfDatumSystemOrReference {
     /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumSystemOrReference
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_HArray1OfDatumSystemOrReference {
@@ -14236,6 +14502,16 @@ unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfGeometricToleranceM
         crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfGeometricToleranceModifier_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfGeometricToleranceModifier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfGeometricToleranceModifier_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -14488,6 +14764,14 @@ pub use crate::ffi_types::HandleStepDimTolHArray1OfToleranceZoneTarget;
 unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfToleranceZoneTarget {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfToleranceZoneTarget_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfToleranceZoneTarget {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfToleranceZoneTarget_clone(ptr),
+        )
     }
 }
 
@@ -14804,6 +15088,14 @@ pub use crate::ffi_types::HandleStepDimTolLineProfileTolerance;
 unsafe impl crate::CppDeletable for HandleStepDimTolLineProfileTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolLineProfileTolerance_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolLineProfileTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolLineProfileTolerance_clone(
+            ptr,
+        ))
     }
 }
 
@@ -15148,6 +15440,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolModifiedGeometricTolerance {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolModifiedGeometricTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolModifiedGeometricTolerance_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolModifiedGeometricTolerance {
     /// Dereference this Handle to access the underlying StepDimTol_ModifiedGeometricTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ModifiedGeometricTolerance {
@@ -15450,6 +15750,14 @@ pub use crate::ffi_types::HandleStepDimTolNonUniformZoneDefinition;
 unsafe impl crate::CppDeletable for HandleStepDimTolNonUniformZoneDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolNonUniformZoneDefinition_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolNonUniformZoneDefinition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolNonUniformZoneDefinition_clone(ptr),
+        )
     }
 }
 
@@ -15833,6 +16141,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolParallelismTolerance {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolParallelismTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolParallelismTolerance_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepDimTolParallelismTolerance {
     /// Dereference this Handle to access the underlying StepDimTol_ParallelismTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ParallelismTolerance {
@@ -16199,6 +16515,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolPerpendicularityTolerance {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolPerpendicularityTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolPerpendicularityTolerance_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolPerpendicularityTolerance {
     /// Dereference this Handle to access the underlying StepDimTol_PerpendicularityTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_PerpendicularityTolerance {
@@ -16561,6 +16885,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolPlacedDatumTargetFeature {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolPlacedDatumTargetFeature {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolPlacedDatumTargetFeature_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolPlacedDatumTargetFeature {
     /// Dereference this Handle to access the underlying StepDimTol_PlacedDatumTargetFeature
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_PlacedDatumTargetFeature {
@@ -16898,6 +17230,14 @@ pub use crate::ffi_types::HandleStepDimTolPositionTolerance;
 unsafe impl crate::CppDeletable for HandleStepDimTolPositionTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolPositionTolerance_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolPositionTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolPositionTolerance_clone(
+            ptr,
+        ))
     }
 }
 
@@ -17269,6 +17609,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolProjectedZoneDefinition {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolProjectedZoneDefinition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolProjectedZoneDefinition_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolProjectedZoneDefinition {
     /// Dereference this Handle to access the underlying StepDimTol_ProjectedZoneDefinition
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ProjectedZoneDefinition {
@@ -17597,6 +17945,14 @@ pub use crate::ffi_types::HandleStepDimTolRoundnessTolerance;
 unsafe impl crate::CppDeletable for HandleStepDimTolRoundnessTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolRoundnessTolerance_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolRoundnessTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolRoundnessTolerance_clone(
+            ptr,
+        ))
     }
 }
 
@@ -17947,6 +18303,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolRunoutZoneDefinition {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolRunoutZoneDefinition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolRunoutZoneDefinition_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepDimTolRunoutZoneDefinition {
     /// Dereference this Handle to access the underlying StepDimTol_RunoutZoneDefinition
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_RunoutZoneDefinition {
@@ -18188,6 +18552,14 @@ pub use crate::ffi_types::HandleStepDimTolRunoutZoneOrientation;
 unsafe impl crate::CppDeletable for HandleStepDimTolRunoutZoneOrientation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolRunoutZoneOrientation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolRunoutZoneOrientation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolRunoutZoneOrientation_clone(ptr),
+        )
     }
 }
 
@@ -18833,6 +19205,16 @@ unsafe impl crate::CppDeletable for HandleStepDimTolSimpleDatumReferenceModifier
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolSimpleDatumReferenceModifierMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolSimpleDatumReferenceModifierMember_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepDimTolSimpleDatumReferenceModifierMember {
     /// Dereference this Handle to access the underlying StepDimTol_SimpleDatumReferenceModifierMember
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_SimpleDatumReferenceModifierMember {
@@ -19165,6 +19547,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolStraightnessTolerance {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolStraightnessTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolStraightnessTolerance_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolStraightnessTolerance {
     /// Dereference this Handle to access the underlying StepDimTol_StraightnessTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_StraightnessTolerance {
@@ -19480,6 +19870,14 @@ pub use crate::ffi_types::HandleStepDimTolSurfaceProfileTolerance;
 unsafe impl crate::CppDeletable for HandleStepDimTolSurfaceProfileTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolSurfaceProfileTolerance_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolSurfaceProfileTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolSurfaceProfileTolerance_clone(ptr),
+        )
     }
 }
 
@@ -19870,6 +20268,14 @@ pub use crate::ffi_types::HandleStepDimTolSymmetryTolerance;
 unsafe impl crate::CppDeletable for HandleStepDimTolSymmetryTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolSymmetryTolerance_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolSymmetryTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolSymmetryTolerance_clone(
+            ptr,
+        ))
     }
 }
 
@@ -20316,6 +20722,12 @@ unsafe impl crate::CppDeletable for HandleStepDimTolToleranceZone {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolToleranceZone {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolToleranceZone_clone(ptr))
+    }
+}
+
 impl HandleStepDimTolToleranceZone {
     /// Dereference this Handle to access the underlying StepDimTol_ToleranceZone
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ToleranceZone {
@@ -20626,6 +21038,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolToleranceZoneDefinition {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolToleranceZoneDefinition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolToleranceZoneDefinition_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepDimTolToleranceZoneDefinition {
     /// Dereference this Handle to access the underlying StepDimTol_ToleranceZoneDefinition
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ToleranceZoneDefinition {
@@ -20905,6 +21325,14 @@ pub use crate::ffi_types::HandleStepDimTolToleranceZoneForm;
 unsafe impl crate::CppDeletable for HandleStepDimTolToleranceZoneForm {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepDimTolToleranceZoneForm_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolToleranceZoneForm {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolToleranceZoneForm_clone(
+            ptr,
+        ))
     }
 }
 
@@ -21571,6 +21999,14 @@ unsafe impl crate::CppDeletable for HandleStepDimTolTotalRunoutTolerance {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepDimTolTotalRunoutTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDimTolTotalRunoutTolerance_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepDimTolTotalRunoutTolerance {
     /// Dereference this Handle to access the underlying StepDimTol_TotalRunoutTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_TotalRunoutTolerance {
@@ -21877,6 +22313,16 @@ unsafe impl crate::CppDeletable for HandleStepDimTolUnequallyDisposedGeometricTo
         crate::ffi_extern_TKDESTEP::HandleStepDimTolUnequallyDisposedGeometricTolerance_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepDimTolUnequallyDisposedGeometricTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolUnequallyDisposedGeometricTolerance_clone(
+                ptr,
+            ),
+        )
     }
 }
 

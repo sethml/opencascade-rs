@@ -285,6 +285,12 @@ unsafe impl crate::CppDeletable for HandleBinMDataStdAsciiStringDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDataStdAsciiStringDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdAsciiStringDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMDataStdAsciiStringDriver {
     /// Dereference this Handle to access the underlying BinMDataStd_AsciiStringDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_AsciiStringDriver {
@@ -582,6 +588,14 @@ pub use crate::ffi_types::HandleBinMDataStdBooleanArrayDriver;
 unsafe impl crate::CppDeletable for HandleBinMDataStdBooleanArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDataStdBooleanArrayDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDataStdBooleanArrayDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdBooleanArrayDriver_clone(
+            ptr,
+        ))
     }
 }
 
@@ -887,6 +901,12 @@ unsafe impl crate::CppDeletable for HandleBinMDataStdBooleanListDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDataStdBooleanListDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdBooleanListDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMDataStdBooleanListDriver {
     /// Dereference this Handle to access the underlying BinMDataStd_BooleanListDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_BooleanListDriver {
@@ -1188,6 +1208,12 @@ pub use crate::ffi_types::HandleBinMDataStdByteArrayDriver;
 unsafe impl crate::CppDeletable for HandleBinMDataStdByteArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDataStdByteArrayDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDataStdByteArrayDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdByteArrayDriver_clone(ptr))
     }
 }
 
@@ -1496,6 +1522,12 @@ unsafe impl crate::CppDeletable for HandleBinMDataStdExpressionDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDataStdExpressionDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdExpressionDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMDataStdExpressionDriver {
     /// Dereference this Handle to access the underlying BinMDataStd_ExpressionDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_ExpressionDriver {
@@ -1795,6 +1827,14 @@ unsafe impl crate::CppDeletable for HandleBinMDataStdExtStringArrayDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDataStdExtStringArrayDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdExtStringArrayDriver_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleBinMDataStdExtStringArrayDriver {
     /// Dereference this Handle to access the underlying BinMDataStd_ExtStringArrayDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_ExtStringArrayDriver {
@@ -2090,6 +2130,14 @@ pub use crate::ffi_types::HandleBinMDataStdExtStringListDriver;
 unsafe impl crate::CppDeletable for HandleBinMDataStdExtStringListDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDataStdExtStringListDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDataStdExtStringListDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdExtStringListDriver_clone(
+            ptr,
+        ))
     }
 }
 
@@ -2392,6 +2440,14 @@ unsafe impl crate::CppDeletable for HandleBinMDataStdGenericEmptyDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDataStdGenericEmptyDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdGenericEmptyDriver_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleBinMDataStdGenericEmptyDriver {
     /// Dereference this Handle to access the underlying BinMDataStd_GenericEmptyDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_GenericEmptyDriver {
@@ -2680,6 +2736,14 @@ pub use crate::ffi_types::HandleBinMDataStdGenericExtStringDriver;
 unsafe impl crate::CppDeletable for HandleBinMDataStdGenericExtStringDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDataStdGenericExtStringDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDataStdGenericExtStringDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBinL::HandleBinMDataStdGenericExtStringDriver_clone(ptr),
+        )
     }
 }
 
@@ -2984,6 +3048,14 @@ unsafe impl crate::CppDeletable for HandleBinMDataStdIntPackedMapDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDataStdIntPackedMapDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdIntPackedMapDriver_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleBinMDataStdIntPackedMapDriver {
     /// Dereference this Handle to access the underlying BinMDataStd_IntPackedMapDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_IntPackedMapDriver {
@@ -3280,6 +3352,14 @@ pub use crate::ffi_types::HandleBinMDataStdIntegerArrayDriver;
 unsafe impl crate::CppDeletable for HandleBinMDataStdIntegerArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDataStdIntegerArrayDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDataStdIntegerArrayDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdIntegerArrayDriver_clone(
+            ptr,
+        ))
     }
 }
 
@@ -3581,6 +3661,12 @@ pub use crate::ffi_types::HandleBinMDataStdIntegerDriver;
 unsafe impl crate::CppDeletable for HandleBinMDataStdIntegerDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDataStdIntegerDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDataStdIntegerDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdIntegerDriver_clone(ptr))
     }
 }
 
@@ -3890,6 +3976,12 @@ unsafe impl crate::CppDeletable for HandleBinMDataStdIntegerListDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDataStdIntegerListDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdIntegerListDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMDataStdIntegerListDriver {
     /// Dereference this Handle to access the underlying BinMDataStd_IntegerListDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_IntegerListDriver {
@@ -4191,6 +4283,12 @@ pub use crate::ffi_types::HandleBinMDataStdNamedDataDriver;
 unsafe impl crate::CppDeletable for HandleBinMDataStdNamedDataDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDataStdNamedDataDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDataStdNamedDataDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdNamedDataDriver_clone(ptr))
     }
 }
 
@@ -4499,6 +4597,12 @@ unsafe impl crate::CppDeletable for HandleBinMDataStdRealArrayDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDataStdRealArrayDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdRealArrayDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMDataStdRealArrayDriver {
     /// Dereference this Handle to access the underlying BinMDataStd_RealArrayDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_RealArrayDriver {
@@ -4793,6 +4897,12 @@ pub use crate::ffi_types::HandleBinMDataStdRealDriver;
 unsafe impl crate::CppDeletable for HandleBinMDataStdRealDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDataStdRealDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDataStdRealDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdRealDriver_clone(ptr))
     }
 }
 
@@ -5100,6 +5210,12 @@ unsafe impl crate::CppDeletable for HandleBinMDataStdRealListDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDataStdRealListDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdRealListDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMDataStdRealListDriver {
     /// Dereference this Handle to access the underlying BinMDataStd_RealListDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_RealListDriver {
@@ -5395,6 +5511,14 @@ pub use crate::ffi_types::HandleBinMDataStdReferenceArrayDriver;
 unsafe impl crate::CppDeletable for HandleBinMDataStdReferenceArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDataStdReferenceArrayDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDataStdReferenceArrayDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdReferenceArrayDriver_clone(
+            ptr,
+        ))
     }
 }
 
@@ -5696,6 +5820,14 @@ unsafe impl crate::CppDeletable for HandleBinMDataStdReferenceListDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDataStdReferenceListDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdReferenceListDriver_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleBinMDataStdReferenceListDriver {
     /// Dereference this Handle to access the underlying BinMDataStd_ReferenceListDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_ReferenceListDriver {
@@ -5994,6 +6126,12 @@ pub use crate::ffi_types::HandleBinMDataStdTreeNodeDriver;
 unsafe impl crate::CppDeletable for HandleBinMDataStdTreeNodeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDataStdTreeNodeDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDataStdTreeNodeDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdTreeNodeDriver_clone(ptr))
     }
 }
 
@@ -6302,6 +6440,12 @@ unsafe impl crate::CppDeletable for HandleBinMDataStdUAttributeDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMDataStdUAttributeDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdUAttributeDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMDataStdUAttributeDriver {
     /// Dereference this Handle to access the underlying BinMDataStd_UAttributeDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_UAttributeDriver {
@@ -6602,6 +6746,12 @@ pub use crate::ffi_types::HandleBinMDataStdVariableDriver;
 unsafe impl crate::CppDeletable for HandleBinMDataStdVariableDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMDataStdVariableDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMDataStdVariableDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDataStdVariableDriver_clone(ptr))
     }
 }
 

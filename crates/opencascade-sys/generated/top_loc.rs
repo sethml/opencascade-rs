@@ -216,6 +216,12 @@ unsafe impl crate::CppDeletable for HandleTopLocDatum3D {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopLocDatum3D {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTopLocDatum3D_clone(ptr))
+    }
+}
+
 impl HandleTopLocDatum3D {
     /// Dereference this Handle to access the underlying TopLoc_Datum3D
     pub fn get(&self) -> &crate::ffi_types::TopLoc_Datum3D {
@@ -272,6 +278,22 @@ unsafe impl crate::CppDeletable for ItemLocation {
     }
 }
 
+unsafe impl crate::CppCopyable for ItemLocation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::TopLoc_ItemLocation_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for ItemLocation {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl ItemLocation {
     /// **Source:** `TopLoc_ItemLocation.hxx`:46 - `TopLoc_ItemLocation::TopLoc_ItemLocation()`
     /// Sets the elementary Datum to <D>
@@ -283,15 +305,6 @@ impl ItemLocation {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKMath::TopLoc_ItemLocation_ctor_handletoplocdatum3d_int(D, P),
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::TopLoc_ItemLocation_to_owned(self as *const Self),
             ))
         }
     }
@@ -311,6 +324,22 @@ pub use crate::ffi_types::TopLoc_Location as Location;
 unsafe impl crate::CppDeletable for Location {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::TopLoc_Location_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Location {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::TopLoc_Location_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Location {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -526,15 +555,6 @@ impl Location {
     pub fn scale_prec() -> f64 {
         crate::check_result(unsafe { crate::ffi_extern_TKMath::TopLoc_Location_scale_prec() })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::TopLoc_Location_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -724,6 +744,14 @@ unsafe impl crate::CppDeletable for HandleTopLocSListNodeOfItemLocation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopLocSListNodeOfItemLocation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTopLocSListNodeOfItemLocation_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleTopLocSListNodeOfItemLocation {
     /// Dereference this Handle to access the underlying TopLoc_SListNodeOfItemLocation
     pub fn get(&self) -> &crate::ffi_types::TopLoc_SListNodeOfItemLocation {
@@ -782,6 +810,22 @@ pub use crate::ffi_types::TopLoc_SListOfItemLocation as SListOfItemLocation;
 unsafe impl crate::CppDeletable for SListOfItemLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for SListOfItemLocation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for SListOfItemLocation {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -901,14 +945,5 @@ impl SListOfItemLocation {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_next(self as *mut Self)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_to_owned(self as *const Self),
-            ))
-        }
     }
 }

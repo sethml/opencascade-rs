@@ -758,6 +758,12 @@ unsafe impl crate::CppDeletable for HandleStdSelectBRepOwner {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdSelectBRepOwner {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectBRepOwner_clone(ptr))
+    }
+}
+
 impl HandleStdSelectBRepOwner {
     /// Dereference this Handle to access the underlying StdSelect_BRepOwner
     pub fn get(&self) -> &crate::ffi_types::StdSelect_BRepOwner {
@@ -1285,6 +1291,12 @@ unsafe impl crate::CppDeletable for HandleStdSelectEdgeFilter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdSelectEdgeFilter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectEdgeFilter_clone(ptr))
+    }
+}
+
 impl HandleStdSelectEdgeFilter {
     /// Dereference this Handle to access the underlying StdSelect_EdgeFilter
     pub fn get(&self) -> &crate::ffi_types::StdSelect_EdgeFilter {
@@ -1554,6 +1566,12 @@ pub use crate::ffi_types::HandleStdSelectFaceFilter;
 unsafe impl crate::CppDeletable for HandleStdSelectFaceFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStdSelectFaceFilter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_clone(ptr))
     }
 }
 
@@ -2570,6 +2588,12 @@ unsafe impl crate::CppDeletable for HandleStdSelectShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdSelectShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectShape_clone(ptr))
+    }
+}
+
 impl HandleStdSelectShape {
     /// Dereference this Handle to access the underlying StdSelect_Shape
     pub fn get(&self) -> &crate::ffi_types::StdSelect_Shape {
@@ -2829,6 +2853,12 @@ pub use crate::ffi_types::HandleStdSelectShapeTypeFilter;
 unsafe impl crate::CppDeletable for HandleStdSelectShapeTypeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStdSelectShapeTypeFilter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_clone(ptr))
     }
 }
 

@@ -78,23 +78,87 @@ typedef opencascade::handle<XmlMXCAFDoc_VisMaterialToolDriver> HandleXmlMXCAFDoc
 typedef opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver> HandleXmlXCAFDriversDocumentRetrievalDriver;
 typedef opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver> HandleXmlXCAFDriversDocumentStorageDriver;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleXmlMXCAFDocAssemblyItemRefDriver_destructor(HandleXmlMXCAFDocAssemblyItemRefDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocAssemblyItemRefDriver*> HandleXmlMXCAFDocAssemblyItemRefDriver_clone(const HandleXmlMXCAFDocAssemblyItemRefDriver* self_) {
+    try { return {new HandleXmlMXCAFDocAssemblyItemRefDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocCentroidDriver_destructor(HandleXmlMXCAFDocCentroidDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocCentroidDriver*> HandleXmlMXCAFDocCentroidDriver_clone(const HandleXmlMXCAFDocCentroidDriver* self_) {
+    try { return {new HandleXmlMXCAFDocCentroidDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocColorDriver_destructor(HandleXmlMXCAFDocColorDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocColorDriver*> HandleXmlMXCAFDocColorDriver_clone(const HandleXmlMXCAFDocColorDriver* self_) {
+    try { return {new HandleXmlMXCAFDocColorDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocDatumDriver_destructor(HandleXmlMXCAFDocDatumDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocDatumDriver*> HandleXmlMXCAFDocDatumDriver_clone(const HandleXmlMXCAFDocDatumDriver* self_) {
+    try { return {new HandleXmlMXCAFDocDatumDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocDimTolDriver_destructor(HandleXmlMXCAFDocDimTolDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocDimTolDriver*> HandleXmlMXCAFDocDimTolDriver_clone(const HandleXmlMXCAFDocDimTolDriver* self_) {
+    try { return {new HandleXmlMXCAFDocDimTolDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocGraphNodeDriver_destructor(HandleXmlMXCAFDocGraphNodeDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocGraphNodeDriver*> HandleXmlMXCAFDocGraphNodeDriver_clone(const HandleXmlMXCAFDocGraphNodeDriver* self_) {
+    try { return {new HandleXmlMXCAFDocGraphNodeDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocLengthUnitDriver_destructor(HandleXmlMXCAFDocLengthUnitDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocLengthUnitDriver*> HandleXmlMXCAFDocLengthUnitDriver_clone(const HandleXmlMXCAFDocLengthUnitDriver* self_) {
+    try { return {new HandleXmlMXCAFDocLengthUnitDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocLocationDriver_destructor(HandleXmlMXCAFDocLocationDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocLocationDriver*> HandleXmlMXCAFDocLocationDriver_clone(const HandleXmlMXCAFDocLocationDriver* self_) {
+    try { return {new HandleXmlMXCAFDocLocationDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocMaterialDriver_destructor(HandleXmlMXCAFDocMaterialDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocMaterialDriver*> HandleXmlMXCAFDocMaterialDriver_clone(const HandleXmlMXCAFDocMaterialDriver* self_) {
+    try { return {new HandleXmlMXCAFDocMaterialDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocNoteBinDataDriver_destructor(HandleXmlMXCAFDocNoteBinDataDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocNoteBinDataDriver*> HandleXmlMXCAFDocNoteBinDataDriver_clone(const HandleXmlMXCAFDocNoteBinDataDriver* self_) {
+    try { return {new HandleXmlMXCAFDocNoteBinDataDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocNoteCommentDriver_destructor(HandleXmlMXCAFDocNoteCommentDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocNoteCommentDriver*> HandleXmlMXCAFDocNoteCommentDriver_clone(const HandleXmlMXCAFDocNoteCommentDriver* self_) {
+    try { return {new HandleXmlMXCAFDocNoteCommentDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocNoteDriver_destructor(HandleXmlMXCAFDocNoteDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocNoteDriver*> HandleXmlMXCAFDocNoteDriver_clone(const HandleXmlMXCAFDocNoteDriver* self_) {
+    try { return {new HandleXmlMXCAFDocNoteDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocVisMaterialDriver_destructor(HandleXmlMXCAFDocVisMaterialDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocVisMaterialDriver*> HandleXmlMXCAFDocVisMaterialDriver_clone(const HandleXmlMXCAFDocVisMaterialDriver* self_) {
+    try { return {new HandleXmlMXCAFDocVisMaterialDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMXCAFDocVisMaterialToolDriver_destructor(HandleXmlMXCAFDocVisMaterialToolDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMXCAFDocVisMaterialToolDriver*> HandleXmlMXCAFDocVisMaterialToolDriver_clone(const HandleXmlMXCAFDocVisMaterialToolDriver* self_) {
+    try { return {new HandleXmlMXCAFDocVisMaterialToolDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlXCAFDriversDocumentRetrievalDriver_destructor(HandleXmlXCAFDriversDocumentRetrievalDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlXCAFDriversDocumentRetrievalDriver*> HandleXmlXCAFDriversDocumentRetrievalDriver_clone(const HandleXmlXCAFDriversDocumentRetrievalDriver* self_) {
+    try { return {new HandleXmlXCAFDriversDocumentRetrievalDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlXCAFDriversDocumentStorageDriver_destructor(HandleXmlXCAFDriversDocumentStorageDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlXCAFDriversDocumentStorageDriver*> HandleXmlXCAFDriversDocumentStorageDriver_clone(const HandleXmlXCAFDriversDocumentStorageDriver* self_) {
+    try { return {new HandleXmlXCAFDriversDocumentStorageDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // XmlMXCAFDoc_AssemblyItemRefDriver wrappers

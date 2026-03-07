@@ -56,14 +56,42 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleDEOBJConfigurationNode_destructor(HandleDEOBJConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<HandleDEOBJConfigurationNode*> HandleDEOBJConfigurationNode_clone(const HandleDEOBJConfigurationNode* self_) {
+    try { return {new HandleDEOBJConfigurationNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDEOBJProvider_destructor(HandleDEOBJProvider* self_) { delete self_; }
+extern "C" OcctResult<HandleDEOBJProvider*> HandleDEOBJProvider_clone(const HandleDEOBJProvider* self_) {
+    try { return {new HandleDEOBJProvider(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWObjCafReader_destructor(HandleRWObjCafReader* self_) { delete self_; }
+extern "C" OcctResult<HandleRWObjCafReader*> HandleRWObjCafReader_clone(const HandleRWObjCafReader* self_) {
+    try { return {new HandleRWObjCafReader(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWObjCafWriter_destructor(HandleRWObjCafWriter* self_) { delete self_; }
+extern "C" OcctResult<HandleRWObjCafWriter*> HandleRWObjCafWriter_clone(const HandleRWObjCafWriter* self_) {
+    try { return {new HandleRWObjCafWriter(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWObjObjMaterialMap_destructor(HandleRWObjObjMaterialMap* self_) { delete self_; }
+extern "C" OcctResult<HandleRWObjObjMaterialMap*> HandleRWObjObjMaterialMap_clone(const HandleRWObjObjMaterialMap* self_) {
+    try { return {new HandleRWObjObjMaterialMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWObjReader_destructor(HandleRWObjReader* self_) { delete self_; }
+extern "C" OcctResult<HandleRWObjReader*> HandleRWObjReader_clone(const HandleRWObjReader* self_) {
+    try { return {new HandleRWObjReader(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWObjTriangulationReader_destructor(HandleRWObjTriangulationReader* self_) { delete self_; }
+extern "C" OcctResult<HandleRWObjTriangulationReader*> HandleRWObjTriangulationReader_clone(const HandleRWObjTriangulationReader* self_) {
+    try { return {new HandleRWObjTriangulationReader(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // DEOBJ_ConfigurationNode wrappers

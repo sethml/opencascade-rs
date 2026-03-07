@@ -597,6 +597,12 @@ unsafe impl crate::CppDeletable for HandleResourceManager {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleResourceManager {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleResourceManager_clone(ptr))
+    }
+}
+
 impl HandleResourceManager {
     /// Dereference this Handle to access the underlying Resource_Manager
     pub fn get(&self) -> &crate::ffi_types::Resource_Manager {
@@ -955,6 +961,12 @@ pub use crate::ffi_types::HandleResourceNoSuchResource;
 unsafe impl crate::CppDeletable for HandleResourceNoSuchResource {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleResourceNoSuchResource_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleResourceNoSuchResource {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleResourceNoSuchResource_clone(ptr))
     }
 }
 

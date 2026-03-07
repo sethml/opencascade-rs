@@ -84,6 +84,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEOBJConfigurationNode>;
     /// Destroy Handle<DEOBJ_ConfigurationNode>
     pub fn HandleDEOBJConfigurationNode_destructor(self_: *mut HandleDEOBJConfigurationNode);
+    /// Clone Handle<DEOBJ_ConfigurationNode> (increments reference count)
+    pub fn HandleDEOBJConfigurationNode_clone(
+        self_: *const HandleDEOBJConfigurationNode,
+    ) -> crate::OcctResult<*mut HandleDEOBJConfigurationNode>;
     /// Dereference Handle to get *const DEOBJ_ConfigurationNode
     pub fn HandleDEOBJConfigurationNode_get(
         handle: *const HandleDEOBJConfigurationNode,
@@ -273,6 +277,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEOBJProvider>;
     /// Destroy Handle<DEOBJ_Provider>
     pub fn HandleDEOBJProvider_destructor(self_: *mut HandleDEOBJProvider);
+    /// Clone Handle<DEOBJ_Provider> (increments reference count)
+    pub fn HandleDEOBJProvider_clone(
+        self_: *const HandleDEOBJProvider,
+    ) -> crate::OcctResult<*mut HandleDEOBJProvider>;
     /// Dereference Handle to get *const DEOBJ_Provider
     pub fn HandleDEOBJProvider_get(
         handle: *const HandleDEOBJProvider,
@@ -370,6 +378,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleRWObjCafReader>;
     /// Destroy Handle<RWObj_CafReader>
     pub fn HandleRWObjCafReader_destructor(self_: *mut HandleRWObjCafReader);
+    /// Clone Handle<RWObj_CafReader> (increments reference count)
+    pub fn HandleRWObjCafReader_clone(
+        self_: *const HandleRWObjCafReader,
+    ) -> crate::OcctResult<*mut HandleRWObjCafReader>;
     /// Dereference Handle to get *const RWObj_CafReader
     pub fn HandleRWObjCafReader_get(
         handle: *const HandleRWObjCafReader,
@@ -599,6 +611,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleRWObjCafWriter>;
     /// Destroy Handle<RWObj_CafWriter>
     pub fn HandleRWObjCafWriter_destructor(self_: *mut HandleRWObjCafWriter);
+    /// Clone Handle<RWObj_CafWriter> (increments reference count)
+    pub fn HandleRWObjCafWriter_clone(
+        self_: *const HandleRWObjCafWriter,
+    ) -> crate::OcctResult<*mut HandleRWObjCafWriter>;
     /// Dereference Handle to get *const RWObj_CafWriter
     pub fn HandleRWObjCafWriter_get(
         handle: *const HandleRWObjCafWriter,
@@ -705,6 +721,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleRWObjObjMaterialMap>;
     /// Destroy Handle<RWObj_ObjMaterialMap>
     pub fn HandleRWObjObjMaterialMap_destructor(self_: *mut HandleRWObjObjMaterialMap);
+    /// Clone Handle<RWObj_ObjMaterialMap> (increments reference count)
+    pub fn HandleRWObjObjMaterialMap_clone(
+        self_: *const HandleRWObjObjMaterialMap,
+    ) -> crate::OcctResult<*mut HandleRWObjObjMaterialMap>;
     /// Dereference Handle to get *const RWObj_ObjMaterialMap
     pub fn HandleRWObjObjMaterialMap_get(
         handle: *const HandleRWObjObjMaterialMap,
@@ -945,6 +965,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<RWObj_Reader>
     pub fn HandleRWObjReader_destructor(self_: *mut HandleRWObjReader);
+    /// Clone Handle<RWObj_Reader> (increments reference count)
+    pub fn HandleRWObjReader_clone(
+        self_: *const HandleRWObjReader,
+    ) -> crate::OcctResult<*mut HandleRWObjReader>;
     /// Dereference Handle to get *const RWObj_Reader
     pub fn HandleRWObjReader_get(
         handle: *const HandleRWObjReader,
@@ -1055,6 +1079,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleRWObjTriangulationReader>;
     /// Destroy Handle<RWObj_TriangulationReader>
     pub fn HandleRWObjTriangulationReader_destructor(self_: *mut HandleRWObjTriangulationReader);
+    /// Clone Handle<RWObj_TriangulationReader> (increments reference count)
+    pub fn HandleRWObjTriangulationReader_clone(
+        self_: *const HandleRWObjTriangulationReader,
+    ) -> crate::OcctResult<*mut HandleRWObjTriangulationReader>;
     /// Dereference Handle to get *const RWObj_TriangulationReader
     pub fn HandleRWObjTriangulationReader_get(
         handle: *const HandleRWObjTriangulationReader,

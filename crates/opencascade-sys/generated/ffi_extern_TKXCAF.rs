@@ -67,6 +67,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFAppApplication>;
     /// Destroy Handle<XCAFApp_Application>
     pub fn HandleXCAFAppApplication_destructor(self_: *mut HandleXCAFAppApplication);
+    /// Clone Handle<XCAFApp_Application> (increments reference count)
+    pub fn HandleXCAFAppApplication_clone(
+        self_: *const HandleXCAFAppApplication,
+    ) -> crate::OcctResult<*mut HandleXCAFAppApplication>;
     /// Dereference Handle to get *const XCAFApp_Application
     pub fn HandleXCAFAppApplication_get(
         handle: *const HandleXCAFAppApplication,
@@ -499,6 +503,10 @@ extern "C" {
     pub fn HandleXCAFDimTolObjectsDatumObject_destructor(
         self_: *mut HandleXCAFDimTolObjectsDatumObject,
     );
+    /// Clone Handle<XCAFDimTolObjects_DatumObject> (increments reference count)
+    pub fn HandleXCAFDimTolObjectsDatumObject_clone(
+        self_: *const HandleXCAFDimTolObjectsDatumObject,
+    ) -> crate::OcctResult<*mut HandleXCAFDimTolObjectsDatumObject>;
     /// Dereference Handle to get *const XCAFDimTolObjects_DatumObject
     pub fn HandleXCAFDimTolObjectsDatumObject_get(
         handle: *const HandleXCAFDimTolObjectsDatumObject,
@@ -842,6 +850,10 @@ extern "C" {
     pub fn HandleXCAFDimTolObjectsDimensionObject_destructor(
         self_: *mut HandleXCAFDimTolObjectsDimensionObject,
     );
+    /// Clone Handle<XCAFDimTolObjects_DimensionObject> (increments reference count)
+    pub fn HandleXCAFDimTolObjectsDimensionObject_clone(
+        self_: *const HandleXCAFDimTolObjectsDimensionObject,
+    ) -> crate::OcctResult<*mut HandleXCAFDimTolObjectsDimensionObject>;
     /// Dereference Handle to get *const XCAFDimTolObjects_DimensionObject
     pub fn HandleXCAFDimTolObjectsDimensionObject_get(
         handle: *const HandleXCAFDimTolObjectsDimensionObject,
@@ -1101,6 +1113,10 @@ extern "C" {
     pub fn HandleXCAFDimTolObjectsGeomToleranceObject_destructor(
         self_: *mut HandleXCAFDimTolObjectsGeomToleranceObject,
     );
+    /// Clone Handle<XCAFDimTolObjects_GeomToleranceObject> (increments reference count)
+    pub fn HandleXCAFDimTolObjectsGeomToleranceObject_clone(
+        self_: *const HandleXCAFDimTolObjectsGeomToleranceObject,
+    ) -> crate::OcctResult<*mut HandleXCAFDimTolObjectsGeomToleranceObject>;
     /// Dereference Handle to get *const XCAFDimTolObjects_GeomToleranceObject
     pub fn HandleXCAFDimTolObjectsGeomToleranceObject_get(
         handle: *const HandleXCAFDimTolObjectsGeomToleranceObject,
@@ -1250,6 +1266,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocArea>;
     /// Destroy Handle<XCAFDoc_Area>
     pub fn HandleXCAFDocArea_destructor(self_: *mut HandleXCAFDocArea);
+    /// Clone Handle<XCAFDoc_Area> (increments reference count)
+    pub fn HandleXCAFDocArea_clone(
+        self_: *const HandleXCAFDocArea,
+    ) -> crate::OcctResult<*mut HandleXCAFDocArea>;
     /// Dereference Handle to get *const XCAFDoc_Area
     pub fn HandleXCAFDocArea_get(
         handle: *const HandleXCAFDocArea,
@@ -1521,6 +1541,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocAssemblyGraph>;
     /// Destroy Handle<XCAFDoc_AssemblyGraph>
     pub fn HandleXCAFDocAssemblyGraph_destructor(self_: *mut HandleXCAFDocAssemblyGraph);
+    /// Clone Handle<XCAFDoc_AssemblyGraph> (increments reference count)
+    pub fn HandleXCAFDocAssemblyGraph_clone(
+        self_: *const HandleXCAFDocAssemblyGraph,
+    ) -> crate::OcctResult<*mut HandleXCAFDocAssemblyGraph>;
     /// Dereference Handle to get *const XCAFDoc_AssemblyGraph
     pub fn HandleXCAFDocAssemblyGraph_get(
         handle: *const HandleXCAFDocAssemblyGraph,
@@ -1778,6 +1802,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocAssemblyItemRef>;
     /// Destroy Handle<XCAFDoc_AssemblyItemRef>
     pub fn HandleXCAFDocAssemblyItemRef_destructor(self_: *mut HandleXCAFDocAssemblyItemRef);
+    /// Clone Handle<XCAFDoc_AssemblyItemRef> (increments reference count)
+    pub fn HandleXCAFDocAssemblyItemRef_clone(
+        self_: *const HandleXCAFDocAssemblyItemRef,
+    ) -> crate::OcctResult<*mut HandleXCAFDocAssemblyItemRef>;
     /// Dereference Handle to get *const XCAFDoc_AssemblyItemRef
     pub fn HandleXCAFDocAssemblyItemRef_get(
         handle: *const HandleXCAFDocAssemblyItemRef,
@@ -2068,6 +2096,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocCentroid>;
     /// Destroy Handle<XCAFDoc_Centroid>
     pub fn HandleXCAFDocCentroid_destructor(self_: *mut HandleXCAFDocCentroid);
+    /// Clone Handle<XCAFDoc_Centroid> (increments reference count)
+    pub fn HandleXCAFDocCentroid_clone(
+        self_: *const HandleXCAFDocCentroid,
+    ) -> crate::OcctResult<*mut HandleXCAFDocCentroid>;
     /// Dereference Handle to get *const XCAFDoc_Centroid
     pub fn HandleXCAFDocCentroid_get(
         handle: *const HandleXCAFDocCentroid,
@@ -2398,6 +2430,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocClippingPlaneTool>;
     /// Destroy Handle<XCAFDoc_ClippingPlaneTool>
     pub fn HandleXCAFDocClippingPlaneTool_destructor(self_: *mut HandleXCAFDocClippingPlaneTool);
+    /// Clone Handle<XCAFDoc_ClippingPlaneTool> (increments reference count)
+    pub fn HandleXCAFDocClippingPlaneTool_clone(
+        self_: *const HandleXCAFDocClippingPlaneTool,
+    ) -> crate::OcctResult<*mut HandleXCAFDocClippingPlaneTool>;
     /// Dereference Handle to get *const XCAFDoc_ClippingPlaneTool
     pub fn HandleXCAFDocClippingPlaneTool_get(
         handle: *const HandleXCAFDocClippingPlaneTool,
@@ -2720,6 +2756,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocColor>;
     /// Destroy Handle<XCAFDoc_Color>
     pub fn HandleXCAFDocColor_destructor(self_: *mut HandleXCAFDocColor);
+    /// Clone Handle<XCAFDoc_Color> (increments reference count)
+    pub fn HandleXCAFDocColor_clone(
+        self_: *const HandleXCAFDocColor,
+    ) -> crate::OcctResult<*mut HandleXCAFDocColor>;
     /// Dereference Handle to get *const XCAFDoc_Color
     pub fn HandleXCAFDocColor_get(
         handle: *const HandleXCAFDocColor,
@@ -3188,6 +3228,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocColorTool>;
     /// Destroy Handle<XCAFDoc_ColorTool>
     pub fn HandleXCAFDocColorTool_destructor(self_: *mut HandleXCAFDocColorTool);
+    /// Clone Handle<XCAFDoc_ColorTool> (increments reference count)
+    pub fn HandleXCAFDocColorTool_clone(
+        self_: *const HandleXCAFDocColorTool,
+    ) -> crate::OcctResult<*mut HandleXCAFDocColorTool>;
     /// Dereference Handle to get *const XCAFDoc_ColorTool
     pub fn HandleXCAFDocColorTool_get(
         handle: *const HandleXCAFDocColorTool,
@@ -3484,6 +3528,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocDatum>;
     /// Destroy Handle<XCAFDoc_Datum>
     pub fn HandleXCAFDocDatum_destructor(self_: *mut HandleXCAFDocDatum);
+    /// Clone Handle<XCAFDoc_Datum> (increments reference count)
+    pub fn HandleXCAFDocDatum_clone(
+        self_: *const HandleXCAFDocDatum,
+    ) -> crate::OcctResult<*mut HandleXCAFDocDatum>;
     /// Dereference Handle to get *const XCAFDoc_Datum
     pub fn HandleXCAFDocDatum_get(
         handle: *const HandleXCAFDocDatum,
@@ -3749,6 +3797,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocDimTol>;
     /// Destroy Handle<XCAFDoc_DimTol>
     pub fn HandleXCAFDocDimTol_destructor(self_: *mut HandleXCAFDocDimTol);
+    /// Clone Handle<XCAFDoc_DimTol> (increments reference count)
+    pub fn HandleXCAFDocDimTol_clone(
+        self_: *const HandleXCAFDocDimTol,
+    ) -> crate::OcctResult<*mut HandleXCAFDocDimTol>;
     /// Dereference Handle to get *const XCAFDoc_DimTol
     pub fn HandleXCAFDocDimTol_get(
         handle: *const HandleXCAFDocDimTol,
@@ -4238,6 +4290,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocDimTolTool>;
     /// Destroy Handle<XCAFDoc_DimTolTool>
     pub fn HandleXCAFDocDimTolTool_destructor(self_: *mut HandleXCAFDocDimTolTool);
+    /// Clone Handle<XCAFDoc_DimTolTool> (increments reference count)
+    pub fn HandleXCAFDocDimTolTool_clone(
+        self_: *const HandleXCAFDocDimTolTool,
+    ) -> crate::OcctResult<*mut HandleXCAFDocDimTolTool>;
     /// Dereference Handle to get *const XCAFDoc_DimTolTool
     pub fn HandleXCAFDocDimTolTool_get(
         handle: *const HandleXCAFDocDimTolTool,
@@ -4506,6 +4562,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocDimension>;
     /// Destroy Handle<XCAFDoc_Dimension>
     pub fn HandleXCAFDocDimension_destructor(self_: *mut HandleXCAFDocDimension);
+    /// Clone Handle<XCAFDoc_Dimension> (increments reference count)
+    pub fn HandleXCAFDocDimension_clone(
+        self_: *const HandleXCAFDocDimension,
+    ) -> crate::OcctResult<*mut HandleXCAFDocDimension>;
     /// Dereference Handle to get *const XCAFDoc_Dimension
     pub fn HandleXCAFDocDimension_get(
         handle: *const HandleXCAFDocDimension,
@@ -4912,6 +4972,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocDocumentTool>;
     /// Destroy Handle<XCAFDoc_DocumentTool>
     pub fn HandleXCAFDocDocumentTool_destructor(self_: *mut HandleXCAFDocDocumentTool);
+    /// Clone Handle<XCAFDoc_DocumentTool> (increments reference count)
+    pub fn HandleXCAFDocDocumentTool_clone(
+        self_: *const HandleXCAFDocDocumentTool,
+    ) -> crate::OcctResult<*mut HandleXCAFDocDocumentTool>;
     /// Dereference Handle to get *const XCAFDoc_DocumentTool
     pub fn HandleXCAFDocDocumentTool_get(
         handle: *const HandleXCAFDocDocumentTool,
@@ -5246,6 +5310,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocGeomTolerance>;
     /// Destroy Handle<XCAFDoc_GeomTolerance>
     pub fn HandleXCAFDocGeomTolerance_destructor(self_: *mut HandleXCAFDocGeomTolerance);
+    /// Clone Handle<XCAFDoc_GeomTolerance> (increments reference count)
+    pub fn HandleXCAFDocGeomTolerance_clone(
+        self_: *const HandleXCAFDocGeomTolerance,
+    ) -> crate::OcctResult<*mut HandleXCAFDocGeomTolerance>;
     /// Dereference Handle to get *const XCAFDoc_GeomTolerance
     pub fn HandleXCAFDocGeomTolerance_get(
         handle: *const HandleXCAFDocGeomTolerance,
@@ -5602,6 +5670,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocGraphNode>;
     /// Destroy Handle<XCAFDoc_GraphNode>
     pub fn HandleXCAFDocGraphNode_destructor(self_: *mut HandleXCAFDocGraphNode);
+    /// Clone Handle<XCAFDoc_GraphNode> (increments reference count)
+    pub fn HandleXCAFDocGraphNode_clone(
+        self_: *const HandleXCAFDocGraphNode,
+    ) -> crate::OcctResult<*mut HandleXCAFDocGraphNode>;
     /// Dereference Handle to get *const XCAFDoc_GraphNode
     pub fn HandleXCAFDocGraphNode_get(
         handle: *const HandleXCAFDocGraphNode,
@@ -6026,6 +6098,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocLayerTool>;
     /// Destroy Handle<XCAFDoc_LayerTool>
     pub fn HandleXCAFDocLayerTool_destructor(self_: *mut HandleXCAFDocLayerTool);
+    /// Clone Handle<XCAFDoc_LayerTool> (increments reference count)
+    pub fn HandleXCAFDocLayerTool_clone(
+        self_: *const HandleXCAFDocLayerTool,
+    ) -> crate::OcctResult<*mut HandleXCAFDocLayerTool>;
     /// Dereference Handle to get *const XCAFDoc_LayerTool
     pub fn HandleXCAFDocLayerTool_get(
         handle: *const HandleXCAFDocLayerTool,
@@ -6324,6 +6400,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocLengthUnit>;
     /// Destroy Handle<XCAFDoc_LengthUnit>
     pub fn HandleXCAFDocLengthUnit_destructor(self_: *mut HandleXCAFDocLengthUnit);
+    /// Clone Handle<XCAFDoc_LengthUnit> (increments reference count)
+    pub fn HandleXCAFDocLengthUnit_clone(
+        self_: *const HandleXCAFDocLengthUnit,
+    ) -> crate::OcctResult<*mut HandleXCAFDocLengthUnit>;
     /// Dereference Handle to get *const XCAFDoc_LengthUnit
     pub fn HandleXCAFDocLengthUnit_get(
         handle: *const HandleXCAFDocLengthUnit,
@@ -6581,6 +6661,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocLocation>;
     /// Destroy Handle<XCAFDoc_Location>
     pub fn HandleXCAFDocLocation_destructor(self_: *mut HandleXCAFDocLocation);
+    /// Clone Handle<XCAFDoc_Location> (increments reference count)
+    pub fn HandleXCAFDocLocation_clone(
+        self_: *const HandleXCAFDocLocation,
+    ) -> crate::OcctResult<*mut HandleXCAFDocLocation>;
     /// Dereference Handle to get *const XCAFDoc_Location
     pub fn HandleXCAFDocLocation_get(
         handle: *const HandleXCAFDocLocation,
@@ -6860,6 +6944,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocMaterial>;
     /// Destroy Handle<XCAFDoc_Material>
     pub fn HandleXCAFDocMaterial_destructor(self_: *mut HandleXCAFDocMaterial);
+    /// Clone Handle<XCAFDoc_Material> (increments reference count)
+    pub fn HandleXCAFDocMaterial_clone(
+        self_: *const HandleXCAFDocMaterial,
+    ) -> crate::OcctResult<*mut HandleXCAFDocMaterial>;
     /// Dereference Handle to get *const XCAFDoc_Material
     pub fn HandleXCAFDocMaterial_get(
         handle: *const HandleXCAFDocMaterial,
@@ -7160,6 +7248,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocMaterialTool>;
     /// Destroy Handle<XCAFDoc_MaterialTool>
     pub fn HandleXCAFDocMaterialTool_destructor(self_: *mut HandleXCAFDocMaterialTool);
+    /// Clone Handle<XCAFDoc_MaterialTool> (increments reference count)
+    pub fn HandleXCAFDocMaterialTool_clone(
+        self_: *const HandleXCAFDocMaterialTool,
+    ) -> crate::OcctResult<*mut HandleXCAFDocMaterialTool>;
     /// Dereference Handle to get *const XCAFDoc_MaterialTool
     pub fn HandleXCAFDocMaterialTool_get(
         handle: *const HandleXCAFDocMaterialTool,
@@ -7438,6 +7530,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<XCAFDoc_Note>
     pub fn HandleXCAFDocNote_destructor(self_: *mut HandleXCAFDocNote);
+    /// Clone Handle<XCAFDoc_Note> (increments reference count)
+    pub fn HandleXCAFDocNote_clone(
+        self_: *const HandleXCAFDocNote,
+    ) -> crate::OcctResult<*mut HandleXCAFDocNote>;
     /// Dereference Handle to get *const XCAFDoc_Note
     pub fn HandleXCAFDocNote_get(
         handle: *const HandleXCAFDocNote,
@@ -7703,6 +7799,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocNoteBalloon>;
     /// Destroy Handle<XCAFDoc_NoteBalloon>
     pub fn HandleXCAFDocNoteBalloon_destructor(self_: *mut HandleXCAFDocNoteBalloon);
+    /// Clone Handle<XCAFDoc_NoteBalloon> (increments reference count)
+    pub fn HandleXCAFDocNoteBalloon_clone(
+        self_: *const HandleXCAFDocNoteBalloon,
+    ) -> crate::OcctResult<*mut HandleXCAFDocNoteBalloon>;
     /// Dereference Handle to get *const XCAFDoc_NoteBalloon
     pub fn HandleXCAFDocNoteBalloon_get(
         handle: *const HandleXCAFDocNoteBalloon,
@@ -8053,6 +8153,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocNoteBinData>;
     /// Destroy Handle<XCAFDoc_NoteBinData>
     pub fn HandleXCAFDocNoteBinData_destructor(self_: *mut HandleXCAFDocNoteBinData);
+    /// Clone Handle<XCAFDoc_NoteBinData> (increments reference count)
+    pub fn HandleXCAFDocNoteBinData_clone(
+        self_: *const HandleXCAFDocNoteBinData,
+    ) -> crate::OcctResult<*mut HandleXCAFDocNoteBinData>;
     /// Dereference Handle to get *const XCAFDoc_NoteBinData
     pub fn HandleXCAFDocNoteBinData_get(
         handle: *const HandleXCAFDocNoteBinData,
@@ -8354,6 +8458,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocNoteComment>;
     /// Destroy Handle<XCAFDoc_NoteComment>
     pub fn HandleXCAFDocNoteComment_destructor(self_: *mut HandleXCAFDocNoteComment);
+    /// Clone Handle<XCAFDoc_NoteComment> (increments reference count)
+    pub fn HandleXCAFDocNoteComment_clone(
+        self_: *const HandleXCAFDocNoteComment,
+    ) -> crate::OcctResult<*mut HandleXCAFDocNoteComment>;
     /// Dereference Handle to get *const XCAFDoc_NoteComment
     pub fn HandleXCAFDocNoteComment_get(
         handle: *const HandleXCAFDocNoteComment,
@@ -8911,6 +9019,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocNotesTool>;
     /// Destroy Handle<XCAFDoc_NotesTool>
     pub fn HandleXCAFDocNotesTool_destructor(self_: *mut HandleXCAFDocNotesTool);
+    /// Clone Handle<XCAFDoc_NotesTool> (increments reference count)
+    pub fn HandleXCAFDocNotesTool_clone(
+        self_: *const HandleXCAFDocNotesTool,
+    ) -> crate::OcctResult<*mut HandleXCAFDocNotesTool>;
     /// Dereference Handle to get *const XCAFDoc_NotesTool
     pub fn HandleXCAFDocNotesTool_get(
         handle: *const HandleXCAFDocNotesTool,
@@ -9187,6 +9299,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocShapeMapTool>;
     /// Destroy Handle<XCAFDoc_ShapeMapTool>
     pub fn HandleXCAFDocShapeMapTool_destructor(self_: *mut HandleXCAFDocShapeMapTool);
+    /// Clone Handle<XCAFDoc_ShapeMapTool> (increments reference count)
+    pub fn HandleXCAFDocShapeMapTool_clone(
+        self_: *const HandleXCAFDocShapeMapTool,
+    ) -> crate::OcctResult<*mut HandleXCAFDocShapeMapTool>;
     /// Dereference Handle to get *const XCAFDoc_ShapeMapTool
     pub fn HandleXCAFDocShapeMapTool_get(
         handle: *const HandleXCAFDocShapeMapTool,
@@ -9759,6 +9875,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocShapeTool>;
     /// Destroy Handle<XCAFDoc_ShapeTool>
     pub fn HandleXCAFDocShapeTool_destructor(self_: *mut HandleXCAFDocShapeTool);
+    /// Clone Handle<XCAFDoc_ShapeTool> (increments reference count)
+    pub fn HandleXCAFDocShapeTool_clone(
+        self_: *const HandleXCAFDocShapeTool,
+    ) -> crate::OcctResult<*mut HandleXCAFDocShapeTool>;
     /// Dereference Handle to get *const XCAFDoc_ShapeTool
     pub fn HandleXCAFDocShapeTool_get(
         handle: *const HandleXCAFDocShapeTool,
@@ -10025,6 +10145,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocView>;
     /// Destroy Handle<XCAFDoc_View>
     pub fn HandleXCAFDocView_destructor(self_: *mut HandleXCAFDocView);
+    /// Clone Handle<XCAFDoc_View> (increments reference count)
+    pub fn HandleXCAFDocView_clone(
+        self_: *const HandleXCAFDocView,
+    ) -> crate::OcctResult<*mut HandleXCAFDocView>;
     /// Dereference Handle to get *const XCAFDoc_View
     pub fn HandleXCAFDocView_get(
         handle: *const HandleXCAFDocView,
@@ -10399,6 +10523,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocViewTool>;
     /// Destroy Handle<XCAFDoc_ViewTool>
     pub fn HandleXCAFDocViewTool_destructor(self_: *mut HandleXCAFDocViewTool);
+    /// Clone Handle<XCAFDoc_ViewTool> (increments reference count)
+    pub fn HandleXCAFDocViewTool_clone(
+        self_: *const HandleXCAFDocViewTool,
+    ) -> crate::OcctResult<*mut HandleXCAFDocViewTool>;
     /// Dereference Handle to get *const XCAFDoc_ViewTool
     pub fn HandleXCAFDocViewTool_get(
         handle: *const HandleXCAFDocViewTool,
@@ -10754,6 +10882,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocVisMaterial>;
     /// Destroy Handle<XCAFDoc_VisMaterial>
     pub fn HandleXCAFDocVisMaterial_destructor(self_: *mut HandleXCAFDocVisMaterial);
+    /// Clone Handle<XCAFDoc_VisMaterial> (increments reference count)
+    pub fn HandleXCAFDocVisMaterial_clone(
+        self_: *const HandleXCAFDocVisMaterial,
+    ) -> crate::OcctResult<*mut HandleXCAFDocVisMaterial>;
     /// Dereference Handle to get *const XCAFDoc_VisMaterial
     pub fn HandleXCAFDocVisMaterial_get(
         handle: *const HandleXCAFDocVisMaterial,
@@ -11110,6 +11242,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocVisMaterialTool>;
     /// Destroy Handle<XCAFDoc_VisMaterialTool>
     pub fn HandleXCAFDocVisMaterialTool_destructor(self_: *mut HandleXCAFDocVisMaterialTool);
+    /// Clone Handle<XCAFDoc_VisMaterialTool> (increments reference count)
+    pub fn HandleXCAFDocVisMaterialTool_clone(
+        self_: *const HandleXCAFDocVisMaterialTool,
+    ) -> crate::OcctResult<*mut HandleXCAFDocVisMaterialTool>;
     /// Dereference Handle to get *const XCAFDoc_VisMaterialTool
     pub fn HandleXCAFDocVisMaterialTool_get(
         handle: *const HandleXCAFDocVisMaterialTool,
@@ -11369,6 +11505,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFDocVolume>;
     /// Destroy Handle<XCAFDoc_Volume>
     pub fn HandleXCAFDocVolume_destructor(self_: *mut HandleXCAFDocVolume);
+    /// Clone Handle<XCAFDoc_Volume> (increments reference count)
+    pub fn HandleXCAFDocVolume_clone(
+        self_: *const HandleXCAFDocVolume,
+    ) -> crate::OcctResult<*mut HandleXCAFDocVolume>;
     /// Dereference Handle to get *const XCAFDoc_Volume
     pub fn HandleXCAFDocVolume_get(
         handle: *const HandleXCAFDocVolume,
@@ -11654,6 +11794,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFNoteObjectsNoteObject>;
     /// Destroy Handle<XCAFNoteObjects_NoteObject>
     pub fn HandleXCAFNoteObjectsNoteObject_destructor(self_: *mut HandleXCAFNoteObjectsNoteObject);
+    /// Clone Handle<XCAFNoteObjects_NoteObject> (increments reference count)
+    pub fn HandleXCAFNoteObjectsNoteObject_clone(
+        self_: *const HandleXCAFNoteObjectsNoteObject,
+    ) -> crate::OcctResult<*mut HandleXCAFNoteObjectsNoteObject>;
     /// Dereference Handle to get *const XCAFNoteObjects_NoteObject
     pub fn HandleXCAFNoteObjectsNoteObject_get(
         handle: *const HandleXCAFNoteObjectsNoteObject,
@@ -11783,6 +11927,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFPrsAISObject>;
     /// Destroy Handle<XCAFPrs_AISObject>
     pub fn HandleXCAFPrsAISObject_destructor(self_: *mut HandleXCAFPrsAISObject);
+    /// Clone Handle<XCAFPrs_AISObject> (increments reference count)
+    pub fn HandleXCAFPrsAISObject_clone(
+        self_: *const HandleXCAFPrsAISObject,
+    ) -> crate::OcctResult<*mut HandleXCAFPrsAISObject>;
     /// Dereference Handle to get *const XCAFPrs_AISObject
     pub fn HandleXCAFPrsAISObject_get(
         handle: *const HandleXCAFPrsAISObject,
@@ -12650,6 +12798,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFPrsDriver>;
     /// Destroy Handle<XCAFPrs_Driver>
     pub fn HandleXCAFPrsDriver_destructor(self_: *mut HandleXCAFPrsDriver);
+    /// Clone Handle<XCAFPrs_Driver> (increments reference count)
+    pub fn HandleXCAFPrsDriver_clone(
+        self_: *const HandleXCAFPrsDriver,
+    ) -> crate::OcctResult<*mut HandleXCAFPrsDriver>;
     /// Dereference Handle to get *const XCAFPrs_Driver
     pub fn HandleXCAFPrsDriver_get(
         handle: *const HandleXCAFPrsDriver,
@@ -12828,6 +12980,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFPrsTexture>;
     /// Destroy Handle<XCAFPrs_Texture>
     pub fn HandleXCAFPrsTexture_destructor(self_: *mut HandleXCAFPrsTexture);
+    /// Clone Handle<XCAFPrs_Texture> (increments reference count)
+    pub fn HandleXCAFPrsTexture_clone(
+        self_: *const HandleXCAFPrsTexture,
+    ) -> crate::OcctResult<*mut HandleXCAFPrsTexture>;
     /// Dereference Handle to get *const XCAFPrs_Texture
     pub fn HandleXCAFPrsTexture_get(
         handle: *const HandleXCAFPrsTexture,
@@ -13152,6 +13308,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXCAFViewObject>;
     /// Destroy Handle<XCAFView_Object>
     pub fn HandleXCAFViewObject_destructor(self_: *mut HandleXCAFViewObject);
+    /// Clone Handle<XCAFView_Object> (increments reference count)
+    pub fn HandleXCAFViewObject_clone(
+        self_: *const HandleXCAFViewObject,
+    ) -> crate::OcctResult<*mut HandleXCAFViewObject>;
     /// Dereference Handle to get *const XCAFView_Object
     pub fn HandleXCAFViewObject_get(
         handle: *const HandleXCAFViewObject,

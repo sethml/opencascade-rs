@@ -874,6 +874,12 @@ unsafe impl crate::CppDeletable for HandleApproxCurvlinFunc {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleApproxCurvlinFunc {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxCurvlinFunc_clone(ptr))
+    }
+}
+
 impl HandleApproxCurvlinFunc {
     /// Dereference this Handle to access the underlying Approx_CurvlinFunc
     pub fn get(&self) -> &crate::ffi_types::Approx_CurvlinFunc {
@@ -1565,6 +1571,14 @@ unsafe impl crate::CppDeletable for HandleApproxHArray1OfAdHSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleApproxHArray1OfAdHSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfAdHSurface_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleApproxHArray1OfAdHSurface {
     /// Dereference this Handle to access the underlying Approx_HArray1OfAdHSurface
     pub fn get(&self) -> &crate::ffi_types::Approx_HArray1OfAdHSurface {
@@ -1836,6 +1850,12 @@ pub use crate::ffi_types::HandleApproxHArray1OfGTrsf2d;
 unsafe impl crate::CppDeletable for HandleApproxHArray1OfGTrsf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfGTrsf2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleApproxHArray1OfGTrsf2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfGTrsf2d_clone(ptr))
     }
 }
 
@@ -2876,6 +2896,12 @@ pub use crate::ffi_types::HandleApproxSweepFunction;
 unsafe impl crate::CppDeletable for HandleApproxSweepFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleApproxSweepFunction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_clone(ptr))
     }
 }
 

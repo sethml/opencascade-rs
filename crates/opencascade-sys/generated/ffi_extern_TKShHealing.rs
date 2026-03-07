@@ -132,6 +132,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeAlgoAlgoContainer>;
     /// Destroy Handle<ShapeAlgo_AlgoContainer>
     pub fn HandleShapeAlgoAlgoContainer_destructor(self_: *mut HandleShapeAlgoAlgoContainer);
+    /// Clone Handle<ShapeAlgo_AlgoContainer> (increments reference count)
+    pub fn HandleShapeAlgoAlgoContainer_clone(
+        self_: *const HandleShapeAlgoAlgoContainer,
+    ) -> crate::OcctResult<*mut HandleShapeAlgoAlgoContainer>;
     /// Dereference Handle to get *const ShapeAlgo_AlgoContainer
     pub fn HandleShapeAlgoAlgoContainer_get(
         handle: *const HandleShapeAlgoAlgoContainer,
@@ -209,6 +213,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeAlgoToolContainer>;
     /// Destroy Handle<ShapeAlgo_ToolContainer>
     pub fn HandleShapeAlgoToolContainer_destructor(self_: *mut HandleShapeAlgoToolContainer);
+    /// Clone Handle<ShapeAlgo_ToolContainer> (increments reference count)
+    pub fn HandleShapeAlgoToolContainer_clone(
+        self_: *const HandleShapeAlgoToolContainer,
+    ) -> crate::OcctResult<*mut HandleShapeAlgoToolContainer>;
     /// Dereference Handle to get *const ShapeAlgo_ToolContainer
     pub fn HandleShapeAlgoToolContainer_get(
         handle: *const HandleShapeAlgoToolContainer,
@@ -987,6 +995,10 @@ extern "C" {
     pub fn HandleShapeAnalysisFreeBoundData_destructor(
         self_: *mut HandleShapeAnalysisFreeBoundData,
     );
+    /// Clone Handle<ShapeAnalysis_FreeBoundData> (increments reference count)
+    pub fn HandleShapeAnalysisFreeBoundData_clone(
+        self_: *const HandleShapeAnalysisFreeBoundData,
+    ) -> crate::OcctResult<*mut HandleShapeAnalysisFreeBoundData>;
     /// Dereference Handle to get *const ShapeAnalysis_FreeBoundData
     pub fn HandleShapeAnalysisFreeBoundData_get(
         handle: *const HandleShapeAnalysisFreeBoundData,
@@ -1279,6 +1291,10 @@ extern "C" {
     pub fn HandleShapeAnalysisHSequenceOfFreeBounds_destructor(
         self_: *mut HandleShapeAnalysisHSequenceOfFreeBounds,
     );
+    /// Clone Handle<ShapeAnalysis_HSequenceOfFreeBounds> (increments reference count)
+    pub fn HandleShapeAnalysisHSequenceOfFreeBounds_clone(
+        self_: *const HandleShapeAnalysisHSequenceOfFreeBounds,
+    ) -> crate::OcctResult<*mut HandleShapeAnalysisHSequenceOfFreeBounds>;
     /// Dereference Handle to get *const ShapeAnalysis_HSequenceOfFreeBounds
     pub fn HandleShapeAnalysisHSequenceOfFreeBounds_get(
         handle: *const HandleShapeAnalysisHSequenceOfFreeBounds,
@@ -1827,6 +1843,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeAnalysisSurface>;
     /// Destroy Handle<ShapeAnalysis_Surface>
     pub fn HandleShapeAnalysisSurface_destructor(self_: *mut HandleShapeAnalysisSurface);
+    /// Clone Handle<ShapeAnalysis_Surface> (increments reference count)
+    pub fn HandleShapeAnalysisSurface_clone(
+        self_: *const HandleShapeAnalysisSurface,
+    ) -> crate::OcctResult<*mut HandleShapeAnalysisSurface>;
     /// Dereference Handle to get *const ShapeAnalysis_Surface
     pub fn HandleShapeAnalysisSurface_get(
         handle: *const HandleShapeAnalysisSurface,
@@ -1942,6 +1962,10 @@ extern "C" {
     pub fn HandleShapeAnalysisTransferParameters_destructor(
         self_: *mut HandleShapeAnalysisTransferParameters,
     );
+    /// Clone Handle<ShapeAnalysis_TransferParameters> (increments reference count)
+    pub fn HandleShapeAnalysisTransferParameters_clone(
+        self_: *const HandleShapeAnalysisTransferParameters,
+    ) -> crate::OcctResult<*mut HandleShapeAnalysisTransferParameters>;
     /// Dereference Handle to get *const ShapeAnalysis_TransferParameters
     pub fn HandleShapeAnalysisTransferParameters_get(
         handle: *const HandleShapeAnalysisTransferParameters,
@@ -2080,6 +2104,10 @@ extern "C" {
     pub fn HandleShapeAnalysisTransferParametersProj_destructor(
         self_: *mut HandleShapeAnalysisTransferParametersProj,
     );
+    /// Clone Handle<ShapeAnalysis_TransferParametersProj> (increments reference count)
+    pub fn HandleShapeAnalysisTransferParametersProj_clone(
+        self_: *const HandleShapeAnalysisTransferParametersProj,
+    ) -> crate::OcctResult<*mut HandleShapeAnalysisTransferParametersProj>;
     /// Dereference Handle to get *const ShapeAnalysis_TransferParametersProj
     pub fn HandleShapeAnalysisTransferParametersProj_get(
         handle: *const HandleShapeAnalysisTransferParametersProj,
@@ -2544,6 +2572,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeAnalysisWire>;
     /// Destroy Handle<ShapeAnalysis_Wire>
     pub fn HandleShapeAnalysisWire_destructor(self_: *mut HandleShapeAnalysisWire);
+    /// Clone Handle<ShapeAnalysis_Wire> (increments reference count)
+    pub fn HandleShapeAnalysisWire_clone(
+        self_: *const HandleShapeAnalysisWire,
+    ) -> crate::OcctResult<*mut HandleShapeAnalysisWire>;
     /// Dereference Handle to get *const ShapeAnalysis_Wire
     pub fn HandleShapeAnalysisWire_get(
         handle: *const HandleShapeAnalysisWire,
@@ -3040,6 +3072,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeBuildReShape>;
     /// Destroy Handle<ShapeBuild_ReShape>
     pub fn HandleShapeBuildReShape_destructor(self_: *mut HandleShapeBuildReShape);
+    /// Clone Handle<ShapeBuild_ReShape> (increments reference count)
+    pub fn HandleShapeBuildReShape_clone(
+        self_: *const HandleShapeBuildReShape,
+    ) -> crate::OcctResult<*mut HandleShapeBuildReShape>;
     /// Dereference Handle to get *const ShapeBuild_ReShape
     pub fn HandleShapeBuildReShape_get(
         handle: *const HandleShapeBuildReShape,
@@ -3351,6 +3387,10 @@ extern "C" {
     pub fn HandleShapeConstructProjectCurveOnSurface_destructor(
         self_: *mut HandleShapeConstructProjectCurveOnSurface,
     );
+    /// Clone Handle<ShapeConstruct_ProjectCurveOnSurface> (increments reference count)
+    pub fn HandleShapeConstructProjectCurveOnSurface_clone(
+        self_: *const HandleShapeConstructProjectCurveOnSurface,
+    ) -> crate::OcctResult<*mut HandleShapeConstructProjectCurveOnSurface>;
     /// Dereference Handle to get *const ShapeConstruct_ProjectCurveOnSurface
     pub fn HandleShapeConstructProjectCurveOnSurface_get(
         handle: *const HandleShapeConstructProjectCurveOnSurface,
@@ -3638,6 +3678,10 @@ extern "C" {
     pub fn HandleShapeCustomBSplineRestriction_destructor(
         self_: *mut HandleShapeCustomBSplineRestriction,
     );
+    /// Clone Handle<ShapeCustom_BSplineRestriction> (increments reference count)
+    pub fn HandleShapeCustomBSplineRestriction_clone(
+        self_: *const HandleShapeCustomBSplineRestriction,
+    ) -> crate::OcctResult<*mut HandleShapeCustomBSplineRestriction>;
     /// Dereference Handle to get *const ShapeCustom_BSplineRestriction
     pub fn HandleShapeCustomBSplineRestriction_get(
         handle: *const HandleShapeCustomBSplineRestriction,
@@ -3842,6 +3886,10 @@ extern "C" {
     pub fn HandleShapeCustomConvertToBSpline_destructor(
         self_: *mut HandleShapeCustomConvertToBSpline,
     );
+    /// Clone Handle<ShapeCustom_ConvertToBSpline> (increments reference count)
+    pub fn HandleShapeCustomConvertToBSpline_clone(
+        self_: *const HandleShapeCustomConvertToBSpline,
+    ) -> crate::OcctResult<*mut HandleShapeCustomConvertToBSpline>;
     /// Dereference Handle to get *const ShapeCustom_ConvertToBSpline
     pub fn HandleShapeCustomConvertToBSpline_get(
         handle: *const HandleShapeCustomConvertToBSpline,
@@ -4027,6 +4075,10 @@ extern "C" {
     pub fn HandleShapeCustomConvertToRevolution_destructor(
         self_: *mut HandleShapeCustomConvertToRevolution,
     );
+    /// Clone Handle<ShapeCustom_ConvertToRevolution> (increments reference count)
+    pub fn HandleShapeCustomConvertToRevolution_clone(
+        self_: *const HandleShapeCustomConvertToRevolution,
+    ) -> crate::OcctResult<*mut HandleShapeCustomConvertToRevolution>;
     /// Dereference Handle to get *const ShapeCustom_ConvertToRevolution
     pub fn HandleShapeCustomConvertToRevolution_get(
         handle: *const HandleShapeCustomConvertToRevolution,
@@ -4256,6 +4308,10 @@ extern "C" {
     pub fn HandleShapeCustomDirectModification_destructor(
         self_: *mut HandleShapeCustomDirectModification,
     );
+    /// Clone Handle<ShapeCustom_DirectModification> (increments reference count)
+    pub fn HandleShapeCustomDirectModification_clone(
+        self_: *const HandleShapeCustomDirectModification,
+    ) -> crate::OcctResult<*mut HandleShapeCustomDirectModification>;
     /// Dereference Handle to get *const ShapeCustom_DirectModification
     pub fn HandleShapeCustomDirectModification_get(
         handle: *const HandleShapeCustomDirectModification,
@@ -4386,6 +4442,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<ShapeCustom_Modification>
     pub fn HandleShapeCustomModification_destructor(self_: *mut HandleShapeCustomModification);
+    /// Clone Handle<ShapeCustom_Modification> (increments reference count)
+    pub fn HandleShapeCustomModification_clone(
+        self_: *const HandleShapeCustomModification,
+    ) -> crate::OcctResult<*mut HandleShapeCustomModification>;
     /// Dereference Handle to get *const ShapeCustom_Modification
     pub fn HandleShapeCustomModification_get(
         handle: *const HandleShapeCustomModification,
@@ -4621,6 +4681,10 @@ extern "C" {
     pub fn HandleShapeCustomRestrictionParameters_destructor(
         self_: *mut HandleShapeCustomRestrictionParameters,
     );
+    /// Clone Handle<ShapeCustom_RestrictionParameters> (increments reference count)
+    pub fn HandleShapeCustomRestrictionParameters_clone(
+        self_: *const HandleShapeCustomRestrictionParameters,
+    ) -> crate::OcctResult<*mut HandleShapeCustomRestrictionParameters>;
     /// Dereference Handle to get *const ShapeCustom_RestrictionParameters
     pub fn HandleShapeCustomRestrictionParameters_get(
         handle: *const HandleShapeCustomRestrictionParameters,
@@ -4790,6 +4854,10 @@ extern "C" {
     pub fn HandleShapeCustomSweptToElementary_destructor(
         self_: *mut HandleShapeCustomSweptToElementary,
     );
+    /// Clone Handle<ShapeCustom_SweptToElementary> (increments reference count)
+    pub fn HandleShapeCustomSweptToElementary_clone(
+        self_: *const HandleShapeCustomSweptToElementary,
+    ) -> crate::OcctResult<*mut HandleShapeCustomSweptToElementary>;
     /// Dereference Handle to get *const ShapeCustom_SweptToElementary
     pub fn HandleShapeCustomSweptToElementary_get(
         handle: *const HandleShapeCustomSweptToElementary,
@@ -4965,6 +5033,10 @@ extern "C" {
     pub fn HandleShapeCustomTrsfModification_destructor(
         self_: *mut HandleShapeCustomTrsfModification,
     );
+    /// Clone Handle<ShapeCustom_TrsfModification> (increments reference count)
+    pub fn HandleShapeCustomTrsfModification_clone(
+        self_: *const HandleShapeCustomTrsfModification,
+    ) -> crate::OcctResult<*mut HandleShapeCustomTrsfModification>;
     /// Dereference Handle to get *const ShapeCustom_TrsfModification
     pub fn HandleShapeCustomTrsfModification_get(
         handle: *const HandleShapeCustomTrsfModification,
@@ -5103,6 +5175,10 @@ extern "C" {
     pub fn HandleShapeExtendBasicMsgRegistrator_destructor(
         self_: *mut HandleShapeExtendBasicMsgRegistrator,
     );
+    /// Clone Handle<ShapeExtend_BasicMsgRegistrator> (increments reference count)
+    pub fn HandleShapeExtendBasicMsgRegistrator_clone(
+        self_: *const HandleShapeExtendBasicMsgRegistrator,
+    ) -> crate::OcctResult<*mut HandleShapeExtendBasicMsgRegistrator>;
     /// Dereference Handle to get *const ShapeExtend_BasicMsgRegistrator
     pub fn HandleShapeExtendBasicMsgRegistrator_get(
         handle: *const HandleShapeExtendBasicMsgRegistrator,
@@ -5288,6 +5364,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<ShapeExtend_ComplexCurve>
     pub fn HandleShapeExtendComplexCurve_destructor(self_: *mut HandleShapeExtendComplexCurve);
+    /// Clone Handle<ShapeExtend_ComplexCurve> (increments reference count)
+    pub fn HandleShapeExtendComplexCurve_clone(
+        self_: *const HandleShapeExtendComplexCurve,
+    ) -> crate::OcctResult<*mut HandleShapeExtendComplexCurve>;
     /// Dereference Handle to get *const ShapeExtend_ComplexCurve
     pub fn HandleShapeExtendComplexCurve_get(
         handle: *const HandleShapeExtendComplexCurve,
@@ -5765,6 +5845,10 @@ extern "C" {
     pub fn HandleShapeExtendCompositeSurface_destructor(
         self_: *mut HandleShapeExtendCompositeSurface,
     );
+    /// Clone Handle<ShapeExtend_CompositeSurface> (increments reference count)
+    pub fn HandleShapeExtendCompositeSurface_clone(
+        self_: *const HandleShapeExtendCompositeSurface,
+    ) -> crate::OcctResult<*mut HandleShapeExtendCompositeSurface>;
     /// Dereference Handle to get *const ShapeExtend_CompositeSurface
     pub fn HandleShapeExtendCompositeSurface_get(
         handle: *const HandleShapeExtendCompositeSurface,
@@ -6003,6 +6087,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeExtendMsgRegistrator>;
     /// Destroy Handle<ShapeExtend_MsgRegistrator>
     pub fn HandleShapeExtendMsgRegistrator_destructor(self_: *mut HandleShapeExtendMsgRegistrator);
+    /// Clone Handle<ShapeExtend_MsgRegistrator> (increments reference count)
+    pub fn HandleShapeExtendMsgRegistrator_clone(
+        self_: *const HandleShapeExtendMsgRegistrator,
+    ) -> crate::OcctResult<*mut HandleShapeExtendMsgRegistrator>;
     /// Dereference Handle to get *const ShapeExtend_MsgRegistrator
     pub fn HandleShapeExtendMsgRegistrator_get(
         handle: *const HandleShapeExtendMsgRegistrator,
@@ -6215,6 +6303,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeExtendWireData>;
     /// Destroy Handle<ShapeExtend_WireData>
     pub fn HandleShapeExtendWireData_destructor(self_: *mut HandleShapeExtendWireData);
+    /// Clone Handle<ShapeExtend_WireData> (increments reference count)
+    pub fn HandleShapeExtendWireData_clone(
+        self_: *const HandleShapeExtendWireData,
+    ) -> crate::OcctResult<*mut HandleShapeExtendWireData>;
     /// Dereference Handle to get *const ShapeExtend_WireData
     pub fn HandleShapeExtendWireData_get(
         handle: *const HandleShapeExtendWireData,
@@ -6336,6 +6428,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixComposeShell>;
     /// Destroy Handle<ShapeFix_ComposeShell>
     pub fn HandleShapeFixComposeShell_destructor(self_: *mut HandleShapeFixComposeShell);
+    /// Clone Handle<ShapeFix_ComposeShell> (increments reference count)
+    pub fn HandleShapeFixComposeShell_clone(
+        self_: *const HandleShapeFixComposeShell,
+    ) -> crate::OcctResult<*mut HandleShapeFixComposeShell>;
     /// Dereference Handle to get *const ShapeFix_ComposeShell
     pub fn HandleShapeFixComposeShell_get(
         handle: *const HandleShapeFixComposeShell,
@@ -6596,6 +6692,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixEdge>;
     /// Destroy Handle<ShapeFix_Edge>
     pub fn HandleShapeFixEdge_destructor(self_: *mut HandleShapeFixEdge);
+    /// Clone Handle<ShapeFix_Edge> (increments reference count)
+    pub fn HandleShapeFixEdge_clone(
+        self_: *const HandleShapeFixEdge,
+    ) -> crate::OcctResult<*mut HandleShapeFixEdge>;
     /// Dereference Handle to get *const ShapeFix_Edge
     pub fn HandleShapeFixEdge_get(
         handle: *const HandleShapeFixEdge,
@@ -6718,6 +6818,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixEdgeProjAux>;
     /// Destroy Handle<ShapeFix_EdgeProjAux>
     pub fn HandleShapeFixEdgeProjAux_destructor(self_: *mut HandleShapeFixEdgeProjAux);
+    /// Clone Handle<ShapeFix_EdgeProjAux> (increments reference count)
+    pub fn HandleShapeFixEdgeProjAux_clone(
+        self_: *const HandleShapeFixEdgeProjAux,
+    ) -> crate::OcctResult<*mut HandleShapeFixEdgeProjAux>;
     /// Dereference Handle to get *const ShapeFix_EdgeProjAux
     pub fn HandleShapeFixEdgeProjAux_get(
         handle: *const HandleShapeFixEdgeProjAux,
@@ -6943,6 +7047,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixFace>;
     /// Destroy Handle<ShapeFix_Face>
     pub fn HandleShapeFixFace_destructor(self_: *mut HandleShapeFixFace);
+    /// Clone Handle<ShapeFix_Face> (increments reference count)
+    pub fn HandleShapeFixFace_clone(
+        self_: *const HandleShapeFixFace,
+    ) -> crate::OcctResult<*mut HandleShapeFixFace>;
     /// Dereference Handle to get *const ShapeFix_Face
     pub fn HandleShapeFixFace_get(
         handle: *const HandleShapeFixFace,
@@ -7174,6 +7282,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixFixSmallFace>;
     /// Destroy Handle<ShapeFix_FixSmallFace>
     pub fn HandleShapeFixFixSmallFace_destructor(self_: *mut HandleShapeFixFixSmallFace);
+    /// Clone Handle<ShapeFix_FixSmallFace> (increments reference count)
+    pub fn HandleShapeFixFixSmallFace_clone(
+        self_: *const HandleShapeFixFixSmallFace,
+    ) -> crate::OcctResult<*mut HandleShapeFixFixSmallFace>;
     /// Dereference Handle to get *const ShapeFix_FixSmallFace
     pub fn HandleShapeFixFixSmallFace_get(
         handle: *const HandleShapeFixFixSmallFace,
@@ -7356,6 +7468,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixFixSmallSolid>;
     /// Destroy Handle<ShapeFix_FixSmallSolid>
     pub fn HandleShapeFixFixSmallSolid_destructor(self_: *mut HandleShapeFixFixSmallSolid);
+    /// Clone Handle<ShapeFix_FixSmallSolid> (increments reference count)
+    pub fn HandleShapeFixFixSmallSolid_clone(
+        self_: *const HandleShapeFixFixSmallSolid,
+    ) -> crate::OcctResult<*mut HandleShapeFixFixSmallSolid>;
     /// Dereference Handle to get *const ShapeFix_FixSmallSolid
     pub fn HandleShapeFixFixSmallSolid_get(
         handle: *const HandleShapeFixFixSmallSolid,
@@ -7663,6 +7779,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixRoot>;
     /// Destroy Handle<ShapeFix_Root>
     pub fn HandleShapeFixRoot_destructor(self_: *mut HandleShapeFixRoot);
+    /// Clone Handle<ShapeFix_Root> (increments reference count)
+    pub fn HandleShapeFixRoot_clone(
+        self_: *const HandleShapeFixRoot,
+    ) -> crate::OcctResult<*mut HandleShapeFixRoot>;
     /// Dereference Handle to get *const ShapeFix_Root
     pub fn HandleShapeFixRoot_get(
         handle: *const HandleShapeFixRoot,
@@ -7867,6 +7987,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixShape>;
     /// Destroy Handle<ShapeFix_Shape>
     pub fn HandleShapeFixShape_destructor(self_: *mut HandleShapeFixShape);
+    /// Clone Handle<ShapeFix_Shape> (increments reference count)
+    pub fn HandleShapeFixShape_clone(
+        self_: *const HandleShapeFixShape,
+    ) -> crate::OcctResult<*mut HandleShapeFixShape>;
     /// Dereference Handle to get *const ShapeFix_Shape
     pub fn HandleShapeFixShape_get(
         handle: *const HandleShapeFixShape,
@@ -8092,6 +8216,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixShell>;
     /// Destroy Handle<ShapeFix_Shell>
     pub fn HandleShapeFixShell_destructor(self_: *mut HandleShapeFixShell);
+    /// Clone Handle<ShapeFix_Shell> (increments reference count)
+    pub fn HandleShapeFixShell_clone(
+        self_: *const HandleShapeFixShell,
+    ) -> crate::OcctResult<*mut HandleShapeFixShell>;
     /// Dereference Handle to get *const ShapeFix_Shell
     pub fn HandleShapeFixShell_get(
         handle: *const HandleShapeFixShell,
@@ -8291,6 +8419,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixSolid>;
     /// Destroy Handle<ShapeFix_Solid>
     pub fn HandleShapeFixSolid_destructor(self_: *mut HandleShapeFixSolid);
+    /// Clone Handle<ShapeFix_Solid> (increments reference count)
+    pub fn HandleShapeFixSolid_clone(
+        self_: *const HandleShapeFixSolid,
+    ) -> crate::OcctResult<*mut HandleShapeFixSolid>;
     /// Dereference Handle to get *const ShapeFix_Solid
     pub fn HandleShapeFixSolid_get(
         handle: *const HandleShapeFixSolid,
@@ -8438,6 +8570,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixSplitCommonVertex>;
     /// Destroy Handle<ShapeFix_SplitCommonVertex>
     pub fn HandleShapeFixSplitCommonVertex_destructor(self_: *mut HandleShapeFixSplitCommonVertex);
+    /// Clone Handle<ShapeFix_SplitCommonVertex> (increments reference count)
+    pub fn HandleShapeFixSplitCommonVertex_clone(
+        self_: *const HandleShapeFixSplitCommonVertex,
+    ) -> crate::OcctResult<*mut HandleShapeFixSplitCommonVertex>;
     /// Dereference Handle to get *const ShapeFix_SplitCommonVertex
     pub fn HandleShapeFixSplitCommonVertex_get(
         handle: *const HandleShapeFixSplitCommonVertex,
@@ -8996,6 +9132,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixWire>;
     /// Destroy Handle<ShapeFix_Wire>
     pub fn HandleShapeFixWire_destructor(self_: *mut HandleShapeFixWire);
+    /// Clone Handle<ShapeFix_Wire> (increments reference count)
+    pub fn HandleShapeFixWire_clone(
+        self_: *const HandleShapeFixWire,
+    ) -> crate::OcctResult<*mut HandleShapeFixWire>;
     /// Dereference Handle to get *const ShapeFix_Wire
     pub fn HandleShapeFixWire_get(
         handle: *const HandleShapeFixWire,
@@ -9382,6 +9522,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeFixWireframe>;
     /// Destroy Handle<ShapeFix_Wireframe>
     pub fn HandleShapeFixWireframe_destructor(self_: *mut HandleShapeFixWireframe);
+    /// Clone Handle<ShapeFix_Wireframe> (increments reference count)
+    pub fn HandleShapeFixWireframe_clone(
+        self_: *const HandleShapeFixWireframe,
+    ) -> crate::OcctResult<*mut HandleShapeFixWireframe>;
     /// Dereference Handle to get *const ShapeFix_Wireframe
     pub fn HandleShapeFixWireframe_get(
         handle: *const HandleShapeFixWireframe,
@@ -9628,6 +9772,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeProcessContext>;
     /// Destroy Handle<ShapeProcess_Context>
     pub fn HandleShapeProcessContext_destructor(self_: *mut HandleShapeProcessContext);
+    /// Clone Handle<ShapeProcess_Context> (increments reference count)
+    pub fn HandleShapeProcessContext_clone(
+        self_: *const HandleShapeProcessContext,
+    ) -> crate::OcctResult<*mut HandleShapeProcessContext>;
     /// Dereference Handle to get *const ShapeProcess_Context
     pub fn HandleShapeProcessContext_get(
         handle: *const HandleShapeProcessContext,
@@ -9716,6 +9864,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<ShapeProcess_Operator>
     pub fn HandleShapeProcessOperator_destructor(self_: *mut HandleShapeProcessOperator);
+    /// Clone Handle<ShapeProcess_Operator> (increments reference count)
+    pub fn HandleShapeProcessOperator_clone(
+        self_: *const HandleShapeProcessOperator,
+    ) -> crate::OcctResult<*mut HandleShapeProcessOperator>;
     /// Dereference Handle to get *const ShapeProcess_Operator
     pub fn HandleShapeProcessOperator_get(
         handle: *const HandleShapeProcessOperator,
@@ -9901,6 +10053,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeProcessShapeContext>;
     /// Destroy Handle<ShapeProcess_ShapeContext>
     pub fn HandleShapeProcessShapeContext_destructor(self_: *mut HandleShapeProcessShapeContext);
+    /// Clone Handle<ShapeProcess_ShapeContext> (increments reference count)
+    pub fn HandleShapeProcessShapeContext_clone(
+        self_: *const HandleShapeProcessShapeContext,
+    ) -> crate::OcctResult<*mut HandleShapeProcessShapeContext>;
     /// Dereference Handle to get *const ShapeProcess_ShapeContext
     pub fn HandleShapeProcessShapeContext_get(
         handle: *const HandleShapeProcessShapeContext,
@@ -10016,6 +10172,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeProcessUOperator>;
     /// Destroy Handle<ShapeProcess_UOperator>
     pub fn HandleShapeProcessUOperator_destructor(self_: *mut HandleShapeProcessUOperator);
+    /// Clone Handle<ShapeProcess_UOperator> (increments reference count)
+    pub fn HandleShapeProcessUOperator_clone(
+        self_: *const HandleShapeProcessUOperator,
+    ) -> crate::OcctResult<*mut HandleShapeProcessUOperator>;
     /// Dereference Handle to get *const ShapeProcess_UOperator
     pub fn HandleShapeProcessUOperator_get(
         handle: *const HandleShapeProcessUOperator,
@@ -10145,6 +10305,10 @@ extern "C" {
     pub fn HandleShapeUpgradeClosedEdgeDivide_destructor(
         self_: *mut HandleShapeUpgradeClosedEdgeDivide,
     );
+    /// Clone Handle<ShapeUpgrade_ClosedEdgeDivide> (increments reference count)
+    pub fn HandleShapeUpgradeClosedEdgeDivide_clone(
+        self_: *const HandleShapeUpgradeClosedEdgeDivide,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeClosedEdgeDivide>;
     /// Dereference Handle to get *const ShapeUpgrade_ClosedEdgeDivide
     pub fn HandleShapeUpgradeClosedEdgeDivide_get(
         handle: *const HandleShapeUpgradeClosedEdgeDivide,
@@ -10349,6 +10513,10 @@ extern "C" {
     pub fn HandleShapeUpgradeClosedFaceDivide_destructor(
         self_: *mut HandleShapeUpgradeClosedFaceDivide,
     );
+    /// Clone Handle<ShapeUpgrade_ClosedFaceDivide> (increments reference count)
+    pub fn HandleShapeUpgradeClosedFaceDivide_clone(
+        self_: *const HandleShapeUpgradeClosedFaceDivide,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeClosedFaceDivide>;
     /// Dereference Handle to get *const ShapeUpgrade_ClosedFaceDivide
     pub fn HandleShapeUpgradeClosedFaceDivide_get(
         handle: *const HandleShapeUpgradeClosedFaceDivide,
@@ -10553,6 +10721,10 @@ extern "C" {
     pub fn HandleShapeUpgradeConvertCurve2dToBezier_destructor(
         self_: *mut HandleShapeUpgradeConvertCurve2dToBezier,
     );
+    /// Clone Handle<ShapeUpgrade_ConvertCurve2dToBezier> (increments reference count)
+    pub fn HandleShapeUpgradeConvertCurve2dToBezier_clone(
+        self_: *const HandleShapeUpgradeConvertCurve2dToBezier,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeConvertCurve2dToBezier>;
     /// Dereference Handle to get *const ShapeUpgrade_ConvertCurve2dToBezier
     pub fn HandleShapeUpgradeConvertCurve2dToBezier_get(
         handle: *const HandleShapeUpgradeConvertCurve2dToBezier,
@@ -10720,6 +10892,10 @@ extern "C" {
     pub fn HandleShapeUpgradeConvertCurve3dToBezier_destructor(
         self_: *mut HandleShapeUpgradeConvertCurve3dToBezier,
     );
+    /// Clone Handle<ShapeUpgrade_ConvertCurve3dToBezier> (increments reference count)
+    pub fn HandleShapeUpgradeConvertCurve3dToBezier_clone(
+        self_: *const HandleShapeUpgradeConvertCurve3dToBezier,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeConvertCurve3dToBezier>;
     /// Dereference Handle to get *const ShapeUpgrade_ConvertCurve3dToBezier
     pub fn HandleShapeUpgradeConvertCurve3dToBezier_get(
         handle: *const HandleShapeUpgradeConvertCurve3dToBezier,
@@ -10889,6 +11065,10 @@ extern "C" {
     pub fn HandleShapeUpgradeConvertSurfaceToBezierBasis_destructor(
         self_: *mut HandleShapeUpgradeConvertSurfaceToBezierBasis,
     );
+    /// Clone Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> (increments reference count)
+    pub fn HandleShapeUpgradeConvertSurfaceToBezierBasis_clone(
+        self_: *const HandleShapeUpgradeConvertSurfaceToBezierBasis,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeConvertSurfaceToBezierBasis>;
     /// Dereference Handle to get *const ShapeUpgrade_ConvertSurfaceToBezierBasis
     pub fn HandleShapeUpgradeConvertSurfaceToBezierBasis_get(
         handle: *const HandleShapeUpgradeConvertSurfaceToBezierBasis,
@@ -11055,6 +11235,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeUpgradeEdgeDivide>;
     /// Destroy Handle<ShapeUpgrade_EdgeDivide>
     pub fn HandleShapeUpgradeEdgeDivide_destructor(self_: *mut HandleShapeUpgradeEdgeDivide);
+    /// Clone Handle<ShapeUpgrade_EdgeDivide> (increments reference count)
+    pub fn HandleShapeUpgradeEdgeDivide_clone(
+        self_: *const HandleShapeUpgradeEdgeDivide,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeEdgeDivide>;
     /// Dereference Handle to get *const ShapeUpgrade_EdgeDivide
     pub fn HandleShapeUpgradeEdgeDivide_get(
         handle: *const HandleShapeUpgradeEdgeDivide,
@@ -11241,6 +11425,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeUpgradeFaceDivide>;
     /// Destroy Handle<ShapeUpgrade_FaceDivide>
     pub fn HandleShapeUpgradeFaceDivide_destructor(self_: *mut HandleShapeUpgradeFaceDivide);
+    /// Clone Handle<ShapeUpgrade_FaceDivide> (increments reference count)
+    pub fn HandleShapeUpgradeFaceDivide_clone(
+        self_: *const HandleShapeUpgradeFaceDivide,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeFaceDivide>;
     /// Dereference Handle to get *const ShapeUpgrade_FaceDivide
     pub fn HandleShapeUpgradeFaceDivide_get(
         handle: *const HandleShapeUpgradeFaceDivide,
@@ -11414,6 +11602,10 @@ extern "C" {
     pub fn HandleShapeUpgradeFaceDivideArea_destructor(
         self_: *mut HandleShapeUpgradeFaceDivideArea,
     );
+    /// Clone Handle<ShapeUpgrade_FaceDivideArea> (increments reference count)
+    pub fn HandleShapeUpgradeFaceDivideArea_clone(
+        self_: *const HandleShapeUpgradeFaceDivideArea,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeFaceDivideArea>;
     /// Dereference Handle to get *const ShapeUpgrade_FaceDivideArea
     pub fn HandleShapeUpgradeFaceDivideArea_get(
         handle: *const HandleShapeUpgradeFaceDivideArea,
@@ -11614,6 +11806,10 @@ extern "C" {
     pub fn HandleShapeUpgradeFixSmallBezierCurves_destructor(
         self_: *mut HandleShapeUpgradeFixSmallBezierCurves,
     );
+    /// Clone Handle<ShapeUpgrade_FixSmallBezierCurves> (increments reference count)
+    pub fn HandleShapeUpgradeFixSmallBezierCurves_clone(
+        self_: *const HandleShapeUpgradeFixSmallBezierCurves,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeFixSmallBezierCurves>;
     /// Dereference Handle to get *const ShapeUpgrade_FixSmallBezierCurves
     pub fn HandleShapeUpgradeFixSmallBezierCurves_get(
         handle: *const HandleShapeUpgradeFixSmallBezierCurves,
@@ -11798,6 +11994,10 @@ extern "C" {
     pub fn HandleShapeUpgradeFixSmallCurves_destructor(
         self_: *mut HandleShapeUpgradeFixSmallCurves,
     );
+    /// Clone Handle<ShapeUpgrade_FixSmallCurves> (increments reference count)
+    pub fn HandleShapeUpgradeFixSmallCurves_clone(
+        self_: *const HandleShapeUpgradeFixSmallCurves,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeFixSmallCurves>;
     /// Dereference Handle to get *const ShapeUpgrade_FixSmallCurves
     pub fn HandleShapeUpgradeFixSmallCurves_get(
         handle: *const HandleShapeUpgradeFixSmallCurves,
@@ -11978,6 +12178,10 @@ extern "C" {
     pub fn HandleShapeUpgradeRemoveInternalWires_destructor(
         self_: *mut HandleShapeUpgradeRemoveInternalWires,
     );
+    /// Clone Handle<ShapeUpgrade_RemoveInternalWires> (increments reference count)
+    pub fn HandleShapeUpgradeRemoveInternalWires_clone(
+        self_: *const HandleShapeUpgradeRemoveInternalWires,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeRemoveInternalWires>;
     /// Dereference Handle to get *const ShapeUpgrade_RemoveInternalWires
     pub fn HandleShapeUpgradeRemoveInternalWires_get(
         handle: *const HandleShapeUpgradeRemoveInternalWires,
@@ -12127,6 +12331,10 @@ extern "C" {
     pub fn HandleShapeUpgradeRemoveLocations_destructor(
         self_: *mut HandleShapeUpgradeRemoveLocations,
     );
+    /// Clone Handle<ShapeUpgrade_RemoveLocations> (increments reference count)
+    pub fn HandleShapeUpgradeRemoveLocations_clone(
+        self_: *const HandleShapeUpgradeRemoveLocations,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeRemoveLocations>;
     /// Dereference Handle to get *const ShapeUpgrade_RemoveLocations
     pub fn HandleShapeUpgradeRemoveLocations_get(
         handle: *const HandleShapeUpgradeRemoveLocations,
@@ -13028,6 +13236,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve>;
     /// Destroy Handle<ShapeUpgrade_SplitCurve>
     pub fn HandleShapeUpgradeSplitCurve_destructor(self_: *mut HandleShapeUpgradeSplitCurve);
+    /// Clone Handle<ShapeUpgrade_SplitCurve> (increments reference count)
+    pub fn HandleShapeUpgradeSplitCurve_clone(
+        self_: *const HandleShapeUpgradeSplitCurve,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve>;
     /// Dereference Handle to get *const ShapeUpgrade_SplitCurve
     pub fn HandleShapeUpgradeSplitCurve_get(
         handle: *const HandleShapeUpgradeSplitCurve,
@@ -13150,6 +13362,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve2d>;
     /// Destroy Handle<ShapeUpgrade_SplitCurve2d>
     pub fn HandleShapeUpgradeSplitCurve2d_destructor(self_: *mut HandleShapeUpgradeSplitCurve2d);
+    /// Clone Handle<ShapeUpgrade_SplitCurve2d> (increments reference count)
+    pub fn HandleShapeUpgradeSplitCurve2d_clone(
+        self_: *const HandleShapeUpgradeSplitCurve2d,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve2d>;
     /// Dereference Handle to get *const ShapeUpgrade_SplitCurve2d
     pub fn HandleShapeUpgradeSplitCurve2d_get(
         handle: *const HandleShapeUpgradeSplitCurve2d,
@@ -13290,6 +13506,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitCurve2dContinuity_destructor(
         self_: *mut HandleShapeUpgradeSplitCurve2dContinuity,
     );
+    /// Clone Handle<ShapeUpgrade_SplitCurve2dContinuity> (increments reference count)
+    pub fn HandleShapeUpgradeSplitCurve2dContinuity_clone(
+        self_: *const HandleShapeUpgradeSplitCurve2dContinuity,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve2dContinuity>;
     /// Dereference Handle to get *const ShapeUpgrade_SplitCurve2dContinuity
     pub fn HandleShapeUpgradeSplitCurve2dContinuity_get(
         handle: *const HandleShapeUpgradeSplitCurve2dContinuity,
@@ -13429,6 +13649,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve3d>;
     /// Destroy Handle<ShapeUpgrade_SplitCurve3d>
     pub fn HandleShapeUpgradeSplitCurve3d_destructor(self_: *mut HandleShapeUpgradeSplitCurve3d);
+    /// Clone Handle<ShapeUpgrade_SplitCurve3d> (increments reference count)
+    pub fn HandleShapeUpgradeSplitCurve3d_clone(
+        self_: *const HandleShapeUpgradeSplitCurve3d,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve3d>;
     /// Dereference Handle to get *const ShapeUpgrade_SplitCurve3d
     pub fn HandleShapeUpgradeSplitCurve3d_get(
         handle: *const HandleShapeUpgradeSplitCurve3d,
@@ -13573,6 +13797,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitCurve3dContinuity_destructor(
         self_: *mut HandleShapeUpgradeSplitCurve3dContinuity,
     );
+    /// Clone Handle<ShapeUpgrade_SplitCurve3dContinuity> (increments reference count)
+    pub fn HandleShapeUpgradeSplitCurve3dContinuity_clone(
+        self_: *const HandleShapeUpgradeSplitCurve3dContinuity,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve3dContinuity>;
     /// Dereference Handle to get *const ShapeUpgrade_SplitCurve3dContinuity
     pub fn HandleShapeUpgradeSplitCurve3dContinuity_get(
         handle: *const HandleShapeUpgradeSplitCurve3dContinuity,
@@ -13740,6 +13968,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitSurface>;
     /// Destroy Handle<ShapeUpgrade_SplitSurface>
     pub fn HandleShapeUpgradeSplitSurface_destructor(self_: *mut HandleShapeUpgradeSplitSurface);
+    /// Clone Handle<ShapeUpgrade_SplitSurface> (increments reference count)
+    pub fn HandleShapeUpgradeSplitSurface_clone(
+        self_: *const HandleShapeUpgradeSplitSurface,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitSurface>;
     /// Dereference Handle to get *const ShapeUpgrade_SplitSurface
     pub fn HandleShapeUpgradeSplitSurface_get(
         handle: *const HandleShapeUpgradeSplitSurface,
@@ -13852,6 +14084,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitSurfaceAngle_destructor(
         self_: *mut HandleShapeUpgradeSplitSurfaceAngle,
     );
+    /// Clone Handle<ShapeUpgrade_SplitSurfaceAngle> (increments reference count)
+    pub fn HandleShapeUpgradeSplitSurfaceAngle_clone(
+        self_: *const HandleShapeUpgradeSplitSurfaceAngle,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitSurfaceAngle>;
     /// Dereference Handle to get *const ShapeUpgrade_SplitSurfaceAngle
     pub fn HandleShapeUpgradeSplitSurfaceAngle_get(
         handle: *const HandleShapeUpgradeSplitSurfaceAngle,
@@ -13999,6 +14235,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitSurfaceArea_destructor(
         self_: *mut HandleShapeUpgradeSplitSurfaceArea,
     );
+    /// Clone Handle<ShapeUpgrade_SplitSurfaceArea> (increments reference count)
+    pub fn HandleShapeUpgradeSplitSurfaceArea_clone(
+        self_: *const HandleShapeUpgradeSplitSurfaceArea,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitSurfaceArea>;
     /// Dereference Handle to get *const ShapeUpgrade_SplitSurfaceArea
     pub fn HandleShapeUpgradeSplitSurfaceArea_get(
         handle: *const HandleShapeUpgradeSplitSurfaceArea,
@@ -14143,6 +14383,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitSurfaceContinuity_destructor(
         self_: *mut HandleShapeUpgradeSplitSurfaceContinuity,
     );
+    /// Clone Handle<ShapeUpgrade_SplitSurfaceContinuity> (increments reference count)
+    pub fn HandleShapeUpgradeSplitSurfaceContinuity_clone(
+        self_: *const HandleShapeUpgradeSplitSurfaceContinuity,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitSurfaceContinuity>;
     /// Dereference Handle to get *const ShapeUpgrade_SplitSurfaceContinuity
     pub fn HandleShapeUpgradeSplitSurfaceContinuity_get(
         handle: *const HandleShapeUpgradeSplitSurfaceContinuity,
@@ -14301,6 +14545,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeUpgradeTool>;
     /// Destroy Handle<ShapeUpgrade_Tool>
     pub fn HandleShapeUpgradeTool_destructor(self_: *mut HandleShapeUpgradeTool);
+    /// Clone Handle<ShapeUpgrade_Tool> (increments reference count)
+    pub fn HandleShapeUpgradeTool_clone(
+        self_: *const HandleShapeUpgradeTool,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeTool>;
     /// Dereference Handle to get *const ShapeUpgrade_Tool
     pub fn HandleShapeUpgradeTool_get(
         handle: *const HandleShapeUpgradeTool,
@@ -14470,6 +14718,10 @@ extern "C" {
     pub fn HandleShapeUpgradeUnifySameDomain_destructor(
         self_: *mut HandleShapeUpgradeUnifySameDomain,
     );
+    /// Clone Handle<ShapeUpgrade_UnifySameDomain> (increments reference count)
+    pub fn HandleShapeUpgradeUnifySameDomain_clone(
+        self_: *const HandleShapeUpgradeUnifySameDomain,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeUnifySameDomain>;
     /// Dereference Handle to get *const ShapeUpgrade_UnifySameDomain
     pub fn HandleShapeUpgradeUnifySameDomain_get(
         handle: *const HandleShapeUpgradeUnifySameDomain,
@@ -14640,6 +14892,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleShapeUpgradeWireDivide>;
     /// Destroy Handle<ShapeUpgrade_WireDivide>
     pub fn HandleShapeUpgradeWireDivide_destructor(self_: *mut HandleShapeUpgradeWireDivide);
+    /// Clone Handle<ShapeUpgrade_WireDivide> (increments reference count)
+    pub fn HandleShapeUpgradeWireDivide_clone(
+        self_: *const HandleShapeUpgradeWireDivide,
+    ) -> crate::OcctResult<*mut HandleShapeUpgradeWireDivide>;
     /// Dereference Handle to get *const ShapeUpgrade_WireDivide
     pub fn HandleShapeUpgradeWireDivide_get(
         handle: *const HandleShapeUpgradeWireDivide,

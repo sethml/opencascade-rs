@@ -297,6 +297,14 @@ unsafe impl crate::CppDeletable for HandleBinTObjDriversDocumentRetrievalDriver 
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinTObjDriversDocumentRetrievalDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentRetrievalDriver_clone(ptr),
+        )
+    }
+}
+
 impl HandleBinTObjDriversDocumentRetrievalDriver {
     /// Dereference this Handle to access the underlying BinTObjDrivers_DocumentRetrievalDriver
     pub fn get(&self) -> &crate::ffi_types::BinTObjDrivers_DocumentRetrievalDriver {
@@ -677,6 +685,14 @@ unsafe impl crate::CppDeletable for HandleBinTObjDriversDocumentStorageDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinTObjDriversDocumentStorageDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentStorageDriver_clone(ptr),
+        )
+    }
+}
+
 impl HandleBinTObjDriversDocumentStorageDriver {
     /// Dereference this Handle to access the underlying BinTObjDrivers_DocumentStorageDriver
     pub fn get(&self) -> &crate::ffi_types::BinTObjDrivers_DocumentStorageDriver {
@@ -966,6 +982,14 @@ pub use crate::ffi_types::HandleBinTObjDriversIntSparseArrayDriver;
 unsafe impl crate::CppDeletable for HandleBinTObjDriversIntSparseArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinTObj::HandleBinTObjDriversIntSparseArrayDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinTObjDriversIntSparseArrayDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversIntSparseArrayDriver_clone(ptr),
+        )
     }
 }
 
@@ -1271,6 +1295,12 @@ unsafe impl crate::CppDeletable for HandleBinTObjDriversModelDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinTObjDriversModelDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinTObj::HandleBinTObjDriversModelDriver_clone(ptr))
+    }
+}
+
 impl HandleBinTObjDriversModelDriver {
     /// Dereference this Handle to access the underlying BinTObjDrivers_ModelDriver
     pub fn get(&self) -> &crate::ffi_types::BinTObjDrivers_ModelDriver {
@@ -1571,6 +1601,14 @@ unsafe impl crate::CppDeletable for HandleBinTObjDriversObjectDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinTObjDriversObjectDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinTObj::HandleBinTObjDriversObjectDriver_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleBinTObjDriversObjectDriver {
     /// Dereference this Handle to access the underlying BinTObjDrivers_ObjectDriver
     pub fn get(&self) -> &crate::ffi_types::BinTObjDrivers_ObjectDriver {
@@ -1860,6 +1898,14 @@ pub use crate::ffi_types::HandleBinTObjDriversReferenceDriver;
 unsafe impl crate::CppDeletable for HandleBinTObjDriversReferenceDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinTObj::HandleBinTObjDriversReferenceDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinTObjDriversReferenceDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinTObj::HandleBinTObjDriversReferenceDriver_clone(
+            ptr,
+        ))
     }
 }
 
@@ -2162,6 +2208,12 @@ pub use crate::ffi_types::HandleBinTObjDriversXYZDriver;
 unsafe impl crate::CppDeletable for HandleBinTObjDriversXYZDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinTObj::HandleBinTObjDriversXYZDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinTObjDriversXYZDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinTObj::HandleBinTObjDriversXYZDriver_clone(ptr))
     }
 }
 

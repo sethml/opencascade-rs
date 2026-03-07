@@ -486,6 +486,14 @@ unsafe impl crate::CppDeletable for HandleRWHeaderSectionGeneralModule {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleRWHeaderSectionGeneralModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionGeneralModule_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleRWHeaderSectionGeneralModule {
     /// Dereference this Handle to access the underlying RWHeaderSection_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::RWHeaderSection_GeneralModule {
@@ -1073,6 +1081,14 @@ pub use crate::ffi_types::HandleRWHeaderSectionReadWriteModule;
 unsafe impl crate::CppDeletable for HandleRWHeaderSectionReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionReadWriteModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleRWHeaderSectionReadWriteModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionReadWriteModule_clone(
+            ptr,
+        ))
     }
 }
 

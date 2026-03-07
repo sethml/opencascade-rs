@@ -303,6 +303,12 @@ unsafe impl crate::CppDeletable for HandleXmlMFunctionFunctionDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMFunctionFunctionDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMFunctionFunctionDriver_clone(ptr))
+    }
+}
+
 impl HandleXmlMFunctionFunctionDriver {
     /// Dereference this Handle to access the underlying XmlMFunction_FunctionDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMFunction_FunctionDriver {
@@ -628,6 +634,12 @@ unsafe impl crate::CppDeletable for HandleXmlMFunctionGraphNodeDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMFunctionGraphNodeDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMFunctionGraphNodeDriver_clone(ptr))
+    }
+}
+
 impl HandleXmlMFunctionGraphNodeDriver {
     /// Dereference this Handle to access the underlying XmlMFunction_GraphNodeDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMFunction_GraphNodeDriver {
@@ -946,6 +958,12 @@ pub use crate::ffi_types::HandleXmlMFunctionScopeDriver;
 unsafe impl crate::CppDeletable for HandleXmlMFunctionScopeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXmlL::HandleXmlMFunctionScopeDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMFunctionScopeDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMFunctionScopeDriver_clone(ptr))
     }
 }
 

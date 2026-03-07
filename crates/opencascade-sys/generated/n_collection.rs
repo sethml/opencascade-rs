@@ -275,6 +275,12 @@ unsafe impl crate::CppDeletable for HandleNCollectionAccAllocator {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleNCollectionAccAllocator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionAccAllocator_clone(ptr))
+    }
+}
+
 impl HandleNCollectionAccAllocator {
     /// Dereference this Handle to access the underlying NCollection_AccAllocator
     pub fn get(&self) -> &crate::ffi_types::NCollection_AccAllocator {
@@ -533,6 +539,12 @@ unsafe impl crate::CppDeletable for HandleNCollectionAlignedAllocator {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleNCollectionAlignedAllocator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionAlignedAllocator_clone(ptr))
+    }
+}
+
 impl HandleNCollectionAlignedAllocator {
     /// Dereference this Handle to access the underlying NCollection_AlignedAllocator
     pub fn get(&self) -> &crate::ffi_types::NCollection_AlignedAllocator {
@@ -780,6 +792,12 @@ pub use crate::ffi_types::HandleNCollectionBaseAllocator;
 unsafe impl crate::CppDeletable for HandleNCollectionBaseAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleNCollectionBaseAllocator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_clone(ptr))
     }
 }
 
@@ -1122,6 +1140,22 @@ unsafe impl crate::CppDeletable for BasePointerVector {
     }
 }
 
+unsafe impl crate::CppCopyable for BasePointerVector {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::NCollection_BasePointerVector_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for BasePointerVector {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl BasePointerVector {
     /// **Source:** `NCollection_BasePointerVector.hxx`:38 - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
     /// Default constructor
@@ -1219,17 +1253,6 @@ impl BasePointerVector {
                 thePnt,
             )
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::NCollection_BasePointerVector_to_owned(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -1555,6 +1578,12 @@ pub use crate::ffi_types::HandleNCollectionBuffer;
 unsafe impl crate::CppDeletable for HandleNCollectionBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleNCollectionBuffer_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleNCollectionBuffer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionBuffer_clone(ptr))
     }
 }
 
@@ -1922,6 +1951,12 @@ unsafe impl crate::CppDeletable for HandleNCollectionHeapAllocator {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleNCollectionHeapAllocator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionHeapAllocator_clone(ptr))
+    }
+}
+
 impl HandleNCollectionHeapAllocator {
     /// Dereference this Handle to access the underlying NCollection_HeapAllocator
     pub fn get(&self) -> &crate::ffi_types::NCollection_HeapAllocator {
@@ -2232,6 +2267,12 @@ pub use crate::ffi_types::HandleNCollectionIncAllocator;
 unsafe impl crate::CppDeletable for HandleNCollectionIncAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleNCollectionIncAllocator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_clone(ptr))
     }
 }
 
@@ -2633,6 +2674,12 @@ pub use crate::ffi_types::HandleNCollectionWinHeapAllocator;
 unsafe impl crate::CppDeletable for HandleNCollectionWinHeapAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleNCollectionWinHeapAllocator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_clone(ptr))
     }
 }
 

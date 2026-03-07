@@ -283,6 +283,12 @@ unsafe impl crate::CppDeletable for HandleBinMFunctionFunctionDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMFunctionFunctionDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMFunctionFunctionDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMFunctionFunctionDriver {
     /// Dereference this Handle to access the underlying BinMFunction_FunctionDriver
     pub fn get(&self) -> &crate::ffi_types::BinMFunction_FunctionDriver {
@@ -588,6 +594,12 @@ unsafe impl crate::CppDeletable for HandleBinMFunctionGraphNodeDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMFunctionGraphNodeDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMFunctionGraphNodeDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMFunctionGraphNodeDriver {
     /// Dereference this Handle to access the underlying BinMFunction_GraphNodeDriver
     pub fn get(&self) -> &crate::ffi_types::BinMFunction_GraphNodeDriver {
@@ -886,6 +898,12 @@ pub use crate::ffi_types::HandleBinMFunctionScopeDriver;
 unsafe impl crate::CppDeletable for HandleBinMFunctionScopeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinMFunctionScopeDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMFunctionScopeDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMFunctionScopeDriver_clone(ptr))
     }
 }
 

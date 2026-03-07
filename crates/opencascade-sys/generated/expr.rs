@@ -433,6 +433,12 @@ unsafe impl crate::CppDeletable for HandleExprAbsolute {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprAbsolute {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprAbsolute_clone(ptr))
+    }
+}
+
 impl HandleExprAbsolute {
     /// Dereference this Handle to access the underlying Expr_Absolute
     pub fn get(&self) -> &crate::ffi_types::Expr_Absolute {
@@ -889,6 +895,12 @@ unsafe impl crate::CppDeletable for HandleExprArcCosine {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprArcCosine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprArcCosine_clone(ptr))
+    }
+}
+
 impl HandleExprArcCosine {
     /// Dereference this Handle to access the underlying Expr_ArcCosine
     pub fn get(&self) -> &crate::ffi_types::Expr_ArcCosine {
@@ -1331,6 +1343,12 @@ pub use crate::ffi_types::HandleExprArcSine;
 unsafe impl crate::CppDeletable for HandleExprArcSine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprArcSine_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprArcSine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprArcSine_clone(ptr))
     }
 }
 
@@ -1798,6 +1816,12 @@ unsafe impl crate::CppDeletable for HandleExprArcTangent {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprArcTangent {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprArcTangent_clone(ptr))
+    }
+}
+
 impl HandleExprArcTangent {
     /// Dereference this Handle to access the underlying Expr_ArcTangent
     pub fn get(&self) -> &crate::ffi_types::Expr_ArcTangent {
@@ -2240,6 +2264,12 @@ pub use crate::ffi_types::HandleExprArgCosh;
 unsafe impl crate::CppDeletable for HandleExprArgCosh {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprArgCosh_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprArgCosh {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprArgCosh_clone(ptr))
     }
 }
 
@@ -2688,6 +2718,12 @@ unsafe impl crate::CppDeletable for HandleExprArgSinh {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprArgSinh {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprArgSinh_clone(ptr))
+    }
+}
+
 impl HandleExprArgSinh {
     /// Dereference this Handle to access the underlying Expr_ArgSinh
     pub fn get(&self) -> &crate::ffi_types::Expr_ArgSinh {
@@ -3130,6 +3166,12 @@ pub use crate::ffi_types::HandleExprArgTanh;
 unsafe impl crate::CppDeletable for HandleExprArgTanh {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprArgTanh_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprArgTanh {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprArgTanh_clone(ptr))
     }
 }
 
@@ -3592,6 +3634,12 @@ pub use crate::ffi_types::HandleExprBinaryExpression;
 unsafe impl crate::CppDeletable for HandleExprBinaryExpression {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprBinaryExpression_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprBinaryExpression {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprBinaryExpression_clone(ptr))
     }
 }
 
@@ -4157,6 +4205,12 @@ unsafe impl crate::CppDeletable for HandleExprBinaryFunction {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprBinaryFunction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprBinaryFunction_clone(ptr))
+    }
+}
+
 impl HandleExprBinaryFunction {
     /// Dereference this Handle to access the underlying Expr_BinaryFunction
     pub fn get(&self) -> &crate::ffi_types::Expr_BinaryFunction {
@@ -4575,6 +4629,12 @@ pub use crate::ffi_types::HandleExprCosh;
 unsafe impl crate::CppDeletable for HandleExprCosh {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprCosh_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprCosh {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprCosh_clone(ptr))
     }
 }
 
@@ -5010,6 +5070,12 @@ pub use crate::ffi_types::HandleExprCosine;
 unsafe impl crate::CppDeletable for HandleExprCosine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprCosine_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprCosine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprCosine_clone(ptr))
     }
 }
 
@@ -5505,6 +5571,12 @@ unsafe impl crate::CppDeletable for HandleExprDifference {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprDifference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprDifference_clone(ptr))
+    }
+}
+
 impl HandleExprDifference {
     /// Dereference this Handle to access the underlying Expr_Difference
     pub fn get(&self) -> &crate::ffi_types::Expr_Difference {
@@ -5924,6 +5996,12 @@ pub use crate::ffi_types::HandleExprDifferent;
 unsafe impl crate::CppDeletable for HandleExprDifferent {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprDifferent_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprDifferent {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprDifferent_clone(ptr))
     }
 }
 
@@ -6408,6 +6486,12 @@ unsafe impl crate::CppDeletable for HandleExprDivision {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprDivision {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprDivision_clone(ptr))
+    }
+}
+
 impl HandleExprDivision {
     /// Dereference this Handle to access the underlying Expr_Division
     pub fn get(&self) -> &crate::ffi_types::Expr_Division {
@@ -6798,6 +6882,12 @@ pub use crate::ffi_types::HandleExprEqual;
 unsafe impl crate::CppDeletable for HandleExprEqual {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprEqual_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprEqual {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprEqual_clone(ptr))
     }
 }
 
@@ -7264,6 +7354,12 @@ pub use crate::ffi_types::HandleExprExponential;
 unsafe impl crate::CppDeletable for HandleExprExponential {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprExponential_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprExponential {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprExponential_clone(ptr))
     }
 }
 
@@ -7761,6 +7857,12 @@ unsafe impl crate::CppDeletable for HandleExprExponentiate {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprExponentiate {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprExponentiate_clone(ptr))
+    }
+}
+
 impl HandleExprExponentiate {
     /// Dereference this Handle to access the underlying Expr_Exponentiate
     pub fn get(&self) -> &crate::ffi_types::Expr_Exponentiate {
@@ -8093,6 +8195,12 @@ pub use crate::ffi_types::HandleExprExprFailure;
 unsafe impl crate::CppDeletable for HandleExprExprFailure {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprExprFailure_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprExprFailure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprExprFailure_clone(ptr))
     }
 }
 
@@ -8587,6 +8695,12 @@ unsafe impl crate::CppDeletable for HandleExprFunctionDerivative {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprFunctionDerivative {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprFunctionDerivative_clone(ptr))
+    }
+}
+
 impl HandleExprFunctionDerivative {
     /// Dereference this Handle to access the underlying Expr_FunctionDerivative
     pub fn get(&self) -> &crate::ffi_types::Expr_FunctionDerivative {
@@ -8983,6 +9097,12 @@ pub use crate::ffi_types::HandleExprGeneralExpression;
 unsafe impl crate::CppDeletable for HandleExprGeneralExpression {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprGeneralExpression_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprGeneralExpression {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprGeneralExpression_clone(ptr))
     }
 }
 
@@ -9866,6 +9986,12 @@ unsafe impl crate::CppDeletable for HandleExprGeneralFunction {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprGeneralFunction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprGeneralFunction_clone(ptr))
+    }
+}
+
 impl HandleExprGeneralFunction {
     /// Dereference this Handle to access the underlying Expr_GeneralFunction
     pub fn get(&self) -> &crate::ffi_types::Expr_GeneralFunction {
@@ -10190,6 +10316,12 @@ pub use crate::ffi_types::HandleExprGeneralRelation;
 unsafe impl crate::CppDeletable for HandleExprGeneralRelation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprGeneralRelation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprGeneralRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprGeneralRelation_clone(ptr))
     }
 }
 
@@ -10725,6 +10857,12 @@ unsafe impl crate::CppDeletable for HandleExprGreaterThan {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprGreaterThan {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprGreaterThan_clone(ptr))
+    }
+}
+
 impl HandleExprGreaterThan {
     /// Dereference this Handle to access the underlying Expr_GreaterThan
     pub fn get(&self) -> &crate::ffi_types::Expr_GreaterThan {
@@ -11157,6 +11295,12 @@ unsafe impl crate::CppDeletable for HandleExprGreaterThanOrEqual {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprGreaterThanOrEqual {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprGreaterThanOrEqual_clone(ptr))
+    }
+}
+
 impl HandleExprGreaterThanOrEqual {
     /// Dereference this Handle to access the underlying Expr_GreaterThanOrEqual
     pub fn get(&self) -> &crate::ffi_types::Expr_GreaterThanOrEqual {
@@ -11511,6 +11655,12 @@ pub use crate::ffi_types::HandleExprInvalidAssignment;
 unsafe impl crate::CppDeletable for HandleExprInvalidAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprInvalidAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprInvalidAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprInvalidAssignment_clone(ptr))
     }
 }
 
@@ -11875,6 +12025,12 @@ unsafe impl crate::CppDeletable for HandleExprInvalidFunction {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprInvalidFunction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprInvalidFunction_clone(ptr))
+    }
+}
+
 impl HandleExprInvalidFunction {
     /// Dereference this Handle to access the underlying Expr_InvalidFunction
     pub fn get(&self) -> &crate::ffi_types::Expr_InvalidFunction {
@@ -12231,6 +12387,12 @@ pub use crate::ffi_types::HandleExprInvalidOperand;
 unsafe impl crate::CppDeletable for HandleExprInvalidOperand {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprInvalidOperand_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprInvalidOperand {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprInvalidOperand_clone(ptr))
     }
 }
 
@@ -12646,6 +12808,12 @@ pub use crate::ffi_types::HandleExprLessThan;
 unsafe impl crate::CppDeletable for HandleExprLessThan {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprLessThan_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprLessThan {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprLessThan_clone(ptr))
     }
 }
 
@@ -13076,6 +13244,12 @@ pub use crate::ffi_types::HandleExprLessThanOrEqual;
 unsafe impl crate::CppDeletable for HandleExprLessThanOrEqual {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprLessThanOrEqual_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprLessThanOrEqual {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprLessThanOrEqual_clone(ptr))
     }
 }
 
@@ -13524,6 +13698,12 @@ unsafe impl crate::CppDeletable for HandleExprLogOf10 {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprLogOf10 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprLogOf10_clone(ptr))
+    }
+}
+
 impl HandleExprLogOf10 {
     /// Dereference this Handle to access the underlying Expr_LogOf10
     pub fn get(&self) -> &crate::ffi_types::Expr_LogOf10 {
@@ -13956,6 +14136,12 @@ pub use crate::ffi_types::HandleExprLogOfe;
 unsafe impl crate::CppDeletable for HandleExprLogOfe {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprLogOfe_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprLogOfe {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprLogOfe_clone(ptr))
     }
 }
 
@@ -14440,6 +14626,12 @@ unsafe impl crate::CppDeletable for HandleExprNamedConstant {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprNamedConstant {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprNamedConstant_clone(ptr))
+    }
+}
+
 impl HandleExprNamedConstant {
     /// Dereference this Handle to access the underlying Expr_NamedConstant
     pub fn get(&self) -> &crate::ffi_types::Expr_NamedConstant {
@@ -14873,6 +15065,12 @@ unsafe impl crate::CppDeletable for HandleExprNamedExpression {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprNamedExpression {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprNamedExpression_clone(ptr))
+    }
+}
+
 impl HandleExprNamedExpression {
     /// Dereference this Handle to access the underlying Expr_NamedExpression
     pub fn get(&self) -> &crate::ffi_types::Expr_NamedExpression {
@@ -15283,6 +15481,12 @@ pub use crate::ffi_types::HandleExprNamedFunction;
 unsafe impl crate::CppDeletable for HandleExprNamedFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprNamedFunction_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprNamedFunction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprNamedFunction_clone(ptr))
     }
 }
 
@@ -15777,6 +15981,12 @@ unsafe impl crate::CppDeletable for HandleExprNamedUnknown {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprNamedUnknown {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprNamedUnknown_clone(ptr))
+    }
+}
+
 impl HandleExprNamedUnknown {
     /// Dereference this Handle to access the underlying Expr_NamedUnknown
     pub fn get(&self) -> &crate::ffi_types::Expr_NamedUnknown {
@@ -16134,6 +16344,12 @@ unsafe impl crate::CppDeletable for HandleExprNotAssigned {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprNotAssigned {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprNotAssigned_clone(ptr))
+    }
+}
+
 impl HandleExprNotAssigned {
     /// Dereference this Handle to access the underlying Expr_NotAssigned
     pub fn get(&self) -> &crate::ffi_types::Expr_NotAssigned {
@@ -16488,6 +16704,12 @@ pub use crate::ffi_types::HandleExprNotEvaluable;
 unsafe impl crate::CppDeletable for HandleExprNotEvaluable {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprNotEvaluable_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprNotEvaluable {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprNotEvaluable_clone(ptr))
     }
 }
 
@@ -16924,6 +17146,12 @@ unsafe impl crate::CppDeletable for HandleExprNumericValue {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprNumericValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprNumericValue_clone(ptr))
+    }
+}
+
 impl HandleExprNumericValue {
     /// Dereference this Handle to access the underlying Expr_NumericValue
     pub fn get(&self) -> &crate::ffi_types::Expr_NumericValue {
@@ -17346,6 +17574,12 @@ pub use crate::ffi_types::HandleExprPolyExpression;
 unsafe impl crate::CppDeletable for HandleExprPolyExpression {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprPolyExpression_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprPolyExpression {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprPolyExpression_clone(ptr))
     }
 }
 
@@ -17874,6 +18108,12 @@ unsafe impl crate::CppDeletable for HandleExprPolyFunction {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprPolyFunction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprPolyFunction_clone(ptr))
+    }
+}
+
 impl HandleExprPolyFunction {
     /// Dereference this Handle to access the underlying Expr_PolyFunction
     pub fn get(&self) -> &crate::ffi_types::Expr_PolyFunction {
@@ -18341,6 +18581,12 @@ pub use crate::ffi_types::HandleExprProduct;
 unsafe impl crate::CppDeletable for HandleExprProduct {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprProduct_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprProduct {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprProduct_clone(ptr))
     }
 }
 
@@ -18880,6 +19126,12 @@ unsafe impl crate::CppDeletable for HandleExprSign {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprSign {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprSign_clone(ptr))
+    }
+}
+
 impl HandleExprSign {
     /// Dereference this Handle to access the underlying Expr_Sign
     pub fn get(&self) -> &crate::ffi_types::Expr_Sign {
@@ -19305,6 +19557,12 @@ unsafe impl crate::CppDeletable for HandleExprSine {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprSine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprSine_clone(ptr))
+    }
+}
+
 impl HandleExprSine {
     /// Dereference this Handle to access the underlying Expr_Sine
     pub fn get(&self) -> &crate::ffi_types::Expr_Sine {
@@ -19682,6 +19940,12 @@ pub use crate::ffi_types::HandleExprSingleRelation;
 unsafe impl crate::CppDeletable for HandleExprSingleRelation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprSingleRelation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprSingleRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprSingleRelation_clone(ptr))
     }
 }
 
@@ -20199,6 +20463,12 @@ unsafe impl crate::CppDeletable for HandleExprSinh {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprSinh {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprSinh_clone(ptr))
+    }
+}
+
 impl HandleExprSinh {
     /// Dereference this Handle to access the underlying Expr_Sinh
     pub fn get(&self) -> &crate::ffi_types::Expr_Sinh {
@@ -20631,6 +20901,12 @@ pub use crate::ffi_types::HandleExprSquare;
 unsafe impl crate::CppDeletable for HandleExprSquare {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprSquare_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprSquare {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprSquare_clone(ptr))
     }
 }
 
@@ -21098,6 +21374,12 @@ unsafe impl crate::CppDeletable for HandleExprSquareRoot {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprSquareRoot {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprSquareRoot_clone(ptr))
+    }
+}
+
 impl HandleExprSquareRoot {
     /// Dereference this Handle to access the underlying Expr_SquareRoot
     pub fn get(&self) -> &crate::ffi_types::Expr_SquareRoot {
@@ -21541,6 +21823,12 @@ unsafe impl crate::CppDeletable for HandleExprSum {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprSum {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprSum_clone(ptr))
+    }
+}
+
 impl HandleExprSum {
     /// Dereference this Handle to access the underlying Expr_Sum
     pub fn get(&self) -> &crate::ffi_types::Expr_Sum {
@@ -21915,6 +22203,12 @@ pub use crate::ffi_types::HandleExprSystemRelation;
 unsafe impl crate::CppDeletable for HandleExprSystemRelation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprSystemRelation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprSystemRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprSystemRelation_clone(ptr))
     }
 }
 
@@ -22350,6 +22644,12 @@ unsafe impl crate::CppDeletable for HandleExprTangent {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprTangent {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprTangent_clone(ptr))
+    }
+}
+
 impl HandleExprTangent {
     /// Dereference this Handle to access the underlying Expr_Tangent
     pub fn get(&self) -> &crate::ffi_types::Expr_Tangent {
@@ -22772,6 +23072,12 @@ pub use crate::ffi_types::HandleExprTanh;
 unsafe impl crate::CppDeletable for HandleExprTanh {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprTanh_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprTanh {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprTanh_clone(ptr))
     }
 }
 
@@ -23201,6 +23507,12 @@ pub use crate::ffi_types::HandleExprUnaryExpression;
 unsafe impl crate::CppDeletable for HandleExprUnaryExpression {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprUnaryExpression_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprUnaryExpression {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprUnaryExpression_clone(ptr))
     }
 }
 
@@ -24039,6 +24351,12 @@ unsafe impl crate::CppDeletable for HandleExprUnaryFunction {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprUnaryFunction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprUnaryFunction_clone(ptr))
+    }
+}
+
 impl HandleExprUnaryFunction {
     /// Dereference this Handle to access the underlying Expr_UnaryFunction
     pub fn get(&self) -> &crate::ffi_types::Expr_UnaryFunction {
@@ -24502,6 +24820,12 @@ pub use crate::ffi_types::HandleExprUnaryMinus;
 unsafe impl crate::CppDeletable for HandleExprUnaryMinus {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprUnaryMinus_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprUnaryMinus {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprUnaryMinus_clone(ptr))
     }
 }
 

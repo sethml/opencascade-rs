@@ -70,6 +70,10 @@ extern "C" {
     pub fn HandleXmlTObjDriversDocumentRetrievalDriver_destructor(
         self_: *mut HandleXmlTObjDriversDocumentRetrievalDriver,
     );
+    /// Clone Handle<XmlTObjDrivers_DocumentRetrievalDriver> (increments reference count)
+    pub fn HandleXmlTObjDriversDocumentRetrievalDriver_clone(
+        self_: *const HandleXmlTObjDriversDocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut HandleXmlTObjDriversDocumentRetrievalDriver>;
     /// Dereference Handle to get *const XmlTObjDrivers_DocumentRetrievalDriver
     pub fn HandleXmlTObjDriversDocumentRetrievalDriver_get(
         handle: *const HandleXmlTObjDriversDocumentRetrievalDriver,
@@ -209,6 +213,10 @@ extern "C" {
     pub fn HandleXmlTObjDriversDocumentStorageDriver_destructor(
         self_: *mut HandleXmlTObjDriversDocumentStorageDriver,
     );
+    /// Clone Handle<XmlTObjDrivers_DocumentStorageDriver> (increments reference count)
+    pub fn HandleXmlTObjDriversDocumentStorageDriver_clone(
+        self_: *const HandleXmlTObjDriversDocumentStorageDriver,
+    ) -> crate::OcctResult<*mut HandleXmlTObjDriversDocumentStorageDriver>;
     /// Dereference Handle to get *const XmlTObjDrivers_DocumentStorageDriver
     pub fn HandleXmlTObjDriversDocumentStorageDriver_get(
         handle: *const HandleXmlTObjDriversDocumentStorageDriver,
@@ -362,6 +370,10 @@ extern "C" {
     pub fn HandleXmlTObjDriversIntSparseArrayDriver_destructor(
         self_: *mut HandleXmlTObjDriversIntSparseArrayDriver,
     );
+    /// Clone Handle<XmlTObjDrivers_IntSparseArrayDriver> (increments reference count)
+    pub fn HandleXmlTObjDriversIntSparseArrayDriver_clone(
+        self_: *const HandleXmlTObjDriversIntSparseArrayDriver,
+    ) -> crate::OcctResult<*mut HandleXmlTObjDriversIntSparseArrayDriver>;
     /// Dereference Handle to get *const XmlTObjDrivers_IntSparseArrayDriver
     pub fn HandleXmlTObjDriversIntSparseArrayDriver_get(
         handle: *const HandleXmlTObjDriversIntSparseArrayDriver,
@@ -483,6 +495,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlTObjDriversModelDriver>;
     /// Destroy Handle<XmlTObjDrivers_ModelDriver>
     pub fn HandleXmlTObjDriversModelDriver_destructor(self_: *mut HandleXmlTObjDriversModelDriver);
+    /// Clone Handle<XmlTObjDrivers_ModelDriver> (increments reference count)
+    pub fn HandleXmlTObjDriversModelDriver_clone(
+        self_: *const HandleXmlTObjDriversModelDriver,
+    ) -> crate::OcctResult<*mut HandleXmlTObjDriversModelDriver>;
     /// Dereference Handle to get *const XmlTObjDrivers_ModelDriver
     pub fn HandleXmlTObjDriversModelDriver_get(
         handle: *const HandleXmlTObjDriversModelDriver,
@@ -606,6 +622,10 @@ extern "C" {
     pub fn HandleXmlTObjDriversObjectDriver_destructor(
         self_: *mut HandleXmlTObjDriversObjectDriver,
     );
+    /// Clone Handle<XmlTObjDrivers_ObjectDriver> (increments reference count)
+    pub fn HandleXmlTObjDriversObjectDriver_clone(
+        self_: *const HandleXmlTObjDriversObjectDriver,
+    ) -> crate::OcctResult<*mut HandleXmlTObjDriversObjectDriver>;
     /// Dereference Handle to get *const XmlTObjDrivers_ObjectDriver
     pub fn HandleXmlTObjDriversObjectDriver_get(
         handle: *const HandleXmlTObjDriversObjectDriver,
@@ -730,6 +750,10 @@ extern "C" {
     pub fn HandleXmlTObjDriversReferenceDriver_destructor(
         self_: *mut HandleXmlTObjDriversReferenceDriver,
     );
+    /// Clone Handle<XmlTObjDrivers_ReferenceDriver> (increments reference count)
+    pub fn HandleXmlTObjDriversReferenceDriver_clone(
+        self_: *const HandleXmlTObjDriversReferenceDriver,
+    ) -> crate::OcctResult<*mut HandleXmlTObjDriversReferenceDriver>;
     /// Dereference Handle to get *const XmlTObjDrivers_ReferenceDriver
     pub fn HandleXmlTObjDriversReferenceDriver_get(
         handle: *const HandleXmlTObjDriversReferenceDriver,
@@ -851,6 +875,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlTObjDriversXYZDriver>;
     /// Destroy Handle<XmlTObjDrivers_XYZDriver>
     pub fn HandleXmlTObjDriversXYZDriver_destructor(self_: *mut HandleXmlTObjDriversXYZDriver);
+    /// Clone Handle<XmlTObjDrivers_XYZDriver> (increments reference count)
+    pub fn HandleXmlTObjDriversXYZDriver_clone(
+        self_: *const HandleXmlTObjDriversXYZDriver,
+    ) -> crate::OcctResult<*mut HandleXmlTObjDriversXYZDriver>;
     /// Dereference Handle to get *const XmlTObjDrivers_XYZDriver
     pub fn HandleXmlTObjDriversXYZDriver_get(
         handle: *const HandleXmlTObjDriversXYZDriver,

@@ -317,6 +317,14 @@ unsafe impl crate::CppDeletable for HandleStepAP242DraughtingModelItemAssociatio
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP242DraughtingModelItemAssociation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepAP242DraughtingModelItemAssociation {
     /// Dereference this Handle to access the underlying StepAP242_DraughtingModelItemAssociation
     pub fn get(&self) -> &crate::ffi_types::StepAP242_DraughtingModelItemAssociation {
@@ -674,6 +682,14 @@ unsafe impl crate::CppDeletable for HandleStepAP242GeometricItemSpecificUsage {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP242GeometricItemSpecificUsage {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepAP242GeometricItemSpecificUsage {
     /// Dereference this Handle to access the underlying StepAP242_GeometricItemSpecificUsage
     pub fn get(&self) -> &crate::ffi_types::StepAP242_GeometricItemSpecificUsage {
@@ -944,6 +960,12 @@ pub use crate::ffi_types::HandleStepAP242IdAttribute;
 unsafe impl crate::CppDeletable for HandleStepAP242IdAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP242IdAttribute {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_clone(ptr))
     }
 }
 
@@ -1676,6 +1698,14 @@ unsafe impl crate::CppDeletable for HandleStepAP242ItemIdentifiedRepresentationU
         crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP242ItemIdentifiedRepresentationUsage {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_clone(ptr),
+        )
     }
 }
 

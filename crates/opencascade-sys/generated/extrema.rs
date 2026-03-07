@@ -5715,6 +5715,12 @@ unsafe impl crate::CppDeletable for HandleExtremaExtPExtS {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExtremaExtPExtS {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_clone(ptr))
+    }
+}
+
 impl HandleExtremaExtPExtS {
     /// Dereference this Handle to access the underlying Extrema_ExtPExtS
     pub fn get(&self) -> &crate::ffi_types::Extrema_ExtPExtS {
@@ -6009,6 +6015,12 @@ pub use crate::ffi_types::HandleExtremaExtPRevS;
 unsafe impl crate::CppDeletable for HandleExtremaExtPRevS {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExtremaExtPRevS {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_clone(ptr))
     }
 }
 
@@ -9186,6 +9198,12 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnCurv {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnCurv {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_clone(ptr))
+    }
+}
+
 impl HandleExtremaHArray1OfPOnCurv {
     /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnCurv
     pub fn get(&self) -> &crate::ffi_types::Extrema_HArray1OfPOnCurv {
@@ -9459,6 +9477,14 @@ pub use crate::ffi_types::HandleExtremaHArray1OfPOnCurv2d;
 unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnCurv2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnCurv2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_clone(
+            ptr,
+        ))
     }
 }
 
@@ -9738,6 +9764,12 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnSurf {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnSurf {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_clone(ptr))
+    }
+}
+
 impl HandleExtremaHArray1OfPOnSurf {
     /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnSurf
     pub fn get(&self) -> &crate::ffi_types::Extrema_HArray1OfPOnSurf {
@@ -9991,6 +10023,12 @@ pub use crate::ffi_types::HandleExtremaHArray2OfPOnCurv;
 unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnCurv {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnCurv {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_clone(ptr))
     }
 }
 
@@ -10252,6 +10290,14 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnCurv2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnCurv2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleExtremaHArray2OfPOnCurv2d {
     /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnCurv2d
     pub fn get(&self) -> &crate::ffi_types::Extrema_HArray2OfPOnCurv2d {
@@ -10507,6 +10553,12 @@ pub use crate::ffi_types::HandleExtremaHArray2OfPOnSurf;
 unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnSurf {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_clone(ptr))
     }
 }
 

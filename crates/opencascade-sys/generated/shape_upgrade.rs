@@ -435,6 +435,14 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeClosedEdgeDivide {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeUpgradeClosedEdgeDivide {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedEdgeDivide_clone(ptr),
+        )
+    }
+}
+
 impl HandleShapeUpgradeClosedEdgeDivide {
     /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedEdgeDivide
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ClosedEdgeDivide {
@@ -922,6 +930,14 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeClosedFaceDivide {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeUpgradeClosedFaceDivide {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedFaceDivide_clone(ptr),
+        )
+    }
+}
+
 impl HandleShapeUpgradeClosedFaceDivide {
     /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedFaceDivide
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ClosedFaceDivide {
@@ -1243,6 +1259,14 @@ pub use crate::ffi_types::HandleShapeUpgradeConvertCurve2dToBezier;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertCurve2dToBezier {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve2dToBezier_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeConvertCurve2dToBezier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve2dToBezier_clone(ptr),
+        )
     }
 }
 
@@ -1635,6 +1659,14 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertCurve3dToBezier {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeUpgradeConvertCurve3dToBezier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve3dToBezier_clone(ptr),
+        )
+    }
+}
+
 impl HandleShapeUpgradeConvertCurve3dToBezier {
     /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertCurve3dToBezier
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ConvertCurve3dToBezier {
@@ -2012,6 +2044,14 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertSurfaceToBezierBasi
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertSurfaceToBezierBasis_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeConvertSurfaceToBezierBasis {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertSurfaceToBezierBasis_clone(ptr),
+        )
     }
 }
 
@@ -2449,6 +2489,12 @@ pub use crate::ffi_types::HandleShapeUpgradeEdgeDivide;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeEdgeDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeEdgeDivide_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeEdgeDivide {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeEdgeDivide_clone(ptr))
     }
 }
 
@@ -2962,6 +3008,12 @@ pub use crate::ffi_types::HandleShapeUpgradeFaceDivide;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeFaceDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivide_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeFaceDivide {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivide_clone(ptr))
     }
 }
 
@@ -3510,6 +3562,14 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeFaceDivideArea {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeUpgradeFaceDivideArea {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivideArea_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleShapeUpgradeFaceDivideArea {
     /// Dereference this Handle to access the underlying ShapeUpgrade_FaceDivideArea
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_FaceDivideArea {
@@ -3891,6 +3951,14 @@ pub use crate::ffi_types::HandleShapeUpgradeFixSmallBezierCurves;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeFixSmallBezierCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallBezierCurves_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeFixSmallBezierCurves {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallBezierCurves_clone(ptr),
+        )
     }
 }
 
@@ -4301,6 +4369,14 @@ pub use crate::ffi_types::HandleShapeUpgradeFixSmallCurves;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeFixSmallCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallCurves_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeFixSmallCurves {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallCurves_clone(
+            ptr,
+        ))
     }
 }
 
@@ -4754,6 +4830,14 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeRemoveInternalWires {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeUpgradeRemoveInternalWires {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveInternalWires_clone(ptr),
+        )
+    }
+}
+
 impl HandleShapeUpgradeRemoveInternalWires {
     /// Dereference this Handle to access the underlying ShapeUpgrade_RemoveInternalWires
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_RemoveInternalWires {
@@ -5032,6 +5116,14 @@ pub use crate::ffi_types::HandleShapeUpgradeRemoveLocations;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeRemoveLocations {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveLocations_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeRemoveLocations {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveLocations_clone(
+            ptr,
+        ))
     }
 }
 
@@ -7193,6 +7285,12 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_clone(ptr))
+    }
+}
+
 impl HandleShapeUpgradeSplitCurve {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve {
@@ -7615,6 +7713,14 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitCurve2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2d_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleShapeUpgradeSplitCurve2d {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve2d
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve2d {
@@ -7974,6 +8080,14 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve2dContinuity {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitCurve2dContinuity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2dContinuity_clone(ptr),
+        )
+    }
+}
+
 impl HandleShapeUpgradeSplitCurve2dContinuity {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve2dContinuity
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve2dContinuity {
@@ -8317,6 +8431,14 @@ pub use crate::ffi_types::HandleShapeUpgradeSplitCurve3d;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitCurve3d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3d_clone(
+            ptr,
+        ))
     }
 }
 
@@ -8687,6 +8809,14 @@ pub use crate::ffi_types::HandleShapeUpgradeSplitCurve3dContinuity;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve3dContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3dContinuity_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitCurve3dContinuity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3dContinuity_clone(ptr),
+        )
     }
 }
 
@@ -9061,6 +9191,14 @@ pub use crate::ffi_types::HandleShapeUpgradeSplitSurface;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurface_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurface_clone(
+            ptr,
+        ))
     }
 }
 
@@ -9460,6 +9598,14 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceAngle {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitSurfaceAngle {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceAngle_clone(ptr),
+        )
+    }
+}
+
 impl HandleShapeUpgradeSplitSurfaceAngle {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceAngle
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitSurfaceAngle {
@@ -9823,6 +9969,14 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceArea {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitSurfaceArea {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceArea_clone(ptr),
+        )
+    }
+}
+
 impl HandleShapeUpgradeSplitSurfaceArea {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceArea
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitSurfaceArea {
@@ -10148,6 +10302,14 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceContinuity {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitSurfaceContinuity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceContinuity_clone(ptr),
+        )
+    }
+}
+
 impl HandleShapeUpgradeSplitSurfaceContinuity {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceContinuity
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitSurfaceContinuity {
@@ -10445,6 +10607,12 @@ pub use crate::ffi_types::HandleShapeUpgradeTool;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_clone(ptr))
     }
 }
 
@@ -11009,6 +11177,14 @@ pub use crate::ffi_types::HandleShapeUpgradeUnifySameDomain;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeUnifySameDomain {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeUnifySameDomain_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeUnifySameDomain {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeUnifySameDomain_clone(
+            ptr,
+        ))
     }
 }
 
@@ -11583,6 +11759,12 @@ pub use crate::ffi_types::HandleShapeUpgradeWireDivide;
 unsafe impl crate::CppDeletable for HandleShapeUpgradeWireDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeUpgradeWireDivide_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeUpgradeWireDivide {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeWireDivide_clone(ptr))
     }
 }
 

@@ -468,6 +468,12 @@ unsafe impl crate::CppDeletable for HandleFEmToolCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleFEmToolCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolCurve_clone(ptr))
+    }
+}
+
 impl HandleFEmToolCurve {
     /// Dereference this Handle to access the underlying FEmTool_Curve
     pub fn get(&self) -> &crate::ffi_types::FEmTool_Curve {
@@ -724,6 +730,14 @@ pub use crate::ffi_types::HandleFEmToolElementaryCriterion;
 unsafe impl crate::CppDeletable for HandleFEmToolElementaryCriterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleFEmToolElementaryCriterion {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_clone(
+            ptr,
+        ))
     }
 }
 
@@ -1133,6 +1147,12 @@ unsafe impl crate::CppDeletable for HandleFEmToolHAssemblyTable {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleFEmToolHAssemblyTable {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolHAssemblyTable_clone(ptr))
+    }
+}
+
 impl HandleFEmToolHAssemblyTable {
     /// Dereference this Handle to access the underlying FEmTool_HAssemblyTable
     pub fn get(&self) -> &crate::ffi_types::FEmTool_HAssemblyTable {
@@ -1407,6 +1427,12 @@ pub use crate::ffi_types::HandleFEmToolLinearFlexion;
 unsafe impl crate::CppDeletable for HandleFEmToolLinearFlexion {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleFEmToolLinearFlexion {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_clone(ptr))
     }
 }
 
@@ -1690,6 +1716,12 @@ pub use crate::ffi_types::HandleFEmToolLinearJerk;
 unsafe impl crate::CppDeletable for HandleFEmToolLinearJerk {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleFEmToolLinearJerk {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_clone(ptr))
     }
 }
 
@@ -1978,6 +2010,12 @@ pub use crate::ffi_types::HandleFEmToolLinearTension;
 unsafe impl crate::CppDeletable for HandleFEmToolLinearTension {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleFEmToolLinearTension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_clone(ptr))
     }
 }
 
@@ -2353,6 +2391,12 @@ unsafe impl crate::CppDeletable for HandleFEmToolProfileMatrix {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleFEmToolProfileMatrix {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolProfileMatrix_clone(ptr))
+    }
+}
+
 impl HandleFEmToolProfileMatrix {
     /// Dereference this Handle to access the underlying FEmTool_ProfileMatrix
     pub fn get(&self) -> &crate::ffi_types::FEmTool_ProfileMatrix {
@@ -2648,6 +2692,12 @@ pub use crate::ffi_types::HandleFEmToolSparseMatrix;
 unsafe impl crate::CppDeletable for HandleFEmToolSparseMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleFEmToolSparseMatrix {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_clone(ptr))
     }
 }
 

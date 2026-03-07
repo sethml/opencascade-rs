@@ -84,6 +84,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEVRMLConfigurationNode>;
     /// Destroy Handle<DEVRML_ConfigurationNode>
     pub fn HandleDEVRMLConfigurationNode_destructor(self_: *mut HandleDEVRMLConfigurationNode);
+    /// Clone Handle<DEVRML_ConfigurationNode> (increments reference count)
+    pub fn HandleDEVRMLConfigurationNode_clone(
+        self_: *const HandleDEVRMLConfigurationNode,
+    ) -> crate::OcctResult<*mut HandleDEVRMLConfigurationNode>;
     /// Dereference Handle to get *const DEVRML_ConfigurationNode
     pub fn HandleDEVRMLConfigurationNode_get(
         handle: *const HandleDEVRMLConfigurationNode,
@@ -273,6 +277,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEVRMLProvider>;
     /// Destroy Handle<DEVRML_Provider>
     pub fn HandleDEVRMLProvider_destructor(self_: *mut HandleDEVRMLProvider);
+    /// Clone Handle<DEVRML_Provider> (increments reference count)
+    pub fn HandleDEVRMLProvider_clone(
+        self_: *const HandleDEVRMLProvider,
+    ) -> crate::OcctResult<*mut HandleDEVRMLProvider>;
     /// Dereference Handle to get *const DEVRML_Provider
     pub fn HandleDEVRMLProvider_get(
         handle: *const HandleDEVRMLProvider,
@@ -396,6 +404,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlAsciiText>;
     /// Destroy Handle<Vrml_AsciiText>
     pub fn HandleVrmlAsciiText_destructor(self_: *mut HandleVrmlAsciiText);
+    /// Clone Handle<Vrml_AsciiText> (increments reference count)
+    pub fn HandleVrmlAsciiText_clone(
+        self_: *const HandleVrmlAsciiText,
+    ) -> crate::OcctResult<*mut HandleVrmlAsciiText>;
     /// Dereference Handle to get *const Vrml_AsciiText
     pub fn HandleVrmlAsciiText_get(
         handle: *const HandleVrmlAsciiText,
@@ -509,6 +521,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlCoordinate3>;
     /// Destroy Handle<Vrml_Coordinate3>
     pub fn HandleVrmlCoordinate3_destructor(self_: *mut HandleVrmlCoordinate3);
+    /// Clone Handle<Vrml_Coordinate3> (increments reference count)
+    pub fn HandleVrmlCoordinate3_clone(
+        self_: *const HandleVrmlCoordinate3,
+    ) -> crate::OcctResult<*mut HandleVrmlCoordinate3>;
     /// Dereference Handle to get *const Vrml_Coordinate3
     pub fn HandleVrmlCoordinate3_get(
         handle: *const HandleVrmlCoordinate3,
@@ -779,6 +795,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlIndexedFaceSet>;
     /// Destroy Handle<Vrml_IndexedFaceSet>
     pub fn HandleVrmlIndexedFaceSet_destructor(self_: *mut HandleVrmlIndexedFaceSet);
+    /// Clone Handle<Vrml_IndexedFaceSet> (increments reference count)
+    pub fn HandleVrmlIndexedFaceSet_clone(
+        self_: *const HandleVrmlIndexedFaceSet,
+    ) -> crate::OcctResult<*mut HandleVrmlIndexedFaceSet>;
     /// Dereference Handle to get *const Vrml_IndexedFaceSet
     pub fn HandleVrmlIndexedFaceSet_get(
         handle: *const HandleVrmlIndexedFaceSet,
@@ -895,6 +915,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlIndexedLineSet>;
     /// Destroy Handle<Vrml_IndexedLineSet>
     pub fn HandleVrmlIndexedLineSet_destructor(self_: *mut HandleVrmlIndexedLineSet);
+    /// Clone Handle<Vrml_IndexedLineSet> (increments reference count)
+    pub fn HandleVrmlIndexedLineSet_clone(
+        self_: *const HandleVrmlIndexedLineSet,
+    ) -> crate::OcctResult<*mut HandleVrmlIndexedLineSet>;
     /// Dereference Handle to get *const Vrml_IndexedLineSet
     pub fn HandleVrmlIndexedLineSet_get(
         handle: *const HandleVrmlIndexedLineSet,
@@ -1023,6 +1047,10 @@ extern "C" {
     pub fn Vrml_LOD_to_handle(obj: *mut Vrml_LOD) -> crate::OcctResult<*mut HandleVrmlLOD>;
     /// Destroy Handle<Vrml_LOD>
     pub fn HandleVrmlLOD_destructor(self_: *mut HandleVrmlLOD);
+    /// Clone Handle<Vrml_LOD> (increments reference count)
+    pub fn HandleVrmlLOD_clone(
+        self_: *const HandleVrmlLOD,
+    ) -> crate::OcctResult<*mut HandleVrmlLOD>;
     /// Dereference Handle to get *const Vrml_LOD
     pub fn HandleVrmlLOD_get(handle: *const HandleVrmlLOD) -> crate::OcctResult<*const Vrml_LOD>;
     /// Dereference Handle to get *mut Vrml_LOD
@@ -1147,6 +1175,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
     /// Destroy Handle<Vrml_Material>
     pub fn HandleVrmlMaterial_destructor(self_: *mut HandleVrmlMaterial);
+    /// Clone Handle<Vrml_Material> (increments reference count)
+    pub fn HandleVrmlMaterial_clone(
+        self_: *const HandleVrmlMaterial,
+    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
     /// Dereference Handle to get *const Vrml_Material
     pub fn HandleVrmlMaterial_get(
         handle: *const HandleVrmlMaterial,
@@ -1273,6 +1305,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleVrmlNormal>;
     /// Destroy Handle<Vrml_Normal>
     pub fn HandleVrmlNormal_destructor(self_: *mut HandleVrmlNormal);
+    /// Clone Handle<Vrml_Normal> (increments reference count)
+    pub fn HandleVrmlNormal_clone(
+        self_: *const HandleVrmlNormal,
+    ) -> crate::OcctResult<*mut HandleVrmlNormal>;
     /// Dereference Handle to get *const Vrml_Normal
     pub fn HandleVrmlNormal_get(
         handle: *const HandleVrmlNormal,
@@ -1594,6 +1630,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlSFImage>;
     /// Destroy Handle<Vrml_SFImage>
     pub fn HandleVrmlSFImage_destructor(self_: *mut HandleVrmlSFImage);
+    /// Clone Handle<Vrml_SFImage> (increments reference count)
+    pub fn HandleVrmlSFImage_clone(
+        self_: *const HandleVrmlSFImage,
+    ) -> crate::OcctResult<*mut HandleVrmlSFImage>;
     /// Dereference Handle to get *const Vrml_SFImage
     pub fn HandleVrmlSFImage_get(
         handle: *const HandleVrmlSFImage,
@@ -1999,6 +2039,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlTextureCoordinate2>;
     /// Destroy Handle<Vrml_TextureCoordinate2>
     pub fn HandleVrmlTextureCoordinate2_destructor(self_: *mut HandleVrmlTextureCoordinate2);
+    /// Clone Handle<Vrml_TextureCoordinate2> (increments reference count)
+    pub fn HandleVrmlTextureCoordinate2_clone(
+        self_: *const HandleVrmlTextureCoordinate2,
+    ) -> crate::OcctResult<*mut HandleVrmlTextureCoordinate2>;
     /// Dereference Handle to get *const Vrml_TextureCoordinate2
     pub fn HandleVrmlTextureCoordinate2_get(
         handle: *const HandleVrmlTextureCoordinate2,
@@ -2243,6 +2287,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlAPICafReader>;
     /// Destroy Handle<VrmlAPI_CafReader>
     pub fn HandleVrmlAPICafReader_destructor(self_: *mut HandleVrmlAPICafReader);
+    /// Clone Handle<VrmlAPI_CafReader> (increments reference count)
+    pub fn HandleVrmlAPICafReader_clone(
+        self_: *const HandleVrmlAPICafReader,
+    ) -> crate::OcctResult<*mut HandleVrmlAPICafReader>;
     /// Dereference Handle to get *const VrmlAPI_CafReader
     pub fn HandleVrmlAPICafReader_get(
         handle: *const HandleVrmlAPICafReader,
@@ -2796,6 +2844,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlConverterDrawer>;
     /// Destroy Handle<VrmlConverter_Drawer>
     pub fn HandleVrmlConverterDrawer_destructor(self_: *mut HandleVrmlConverterDrawer);
+    /// Clone Handle<VrmlConverter_Drawer> (increments reference count)
+    pub fn HandleVrmlConverterDrawer_clone(
+        self_: *const HandleVrmlConverterDrawer,
+    ) -> crate::OcctResult<*mut HandleVrmlConverterDrawer>;
     /// Dereference Handle to get *const VrmlConverter_Drawer
     pub fn HandleVrmlConverterDrawer_get(
         handle: *const HandleVrmlConverterDrawer,
@@ -2899,6 +2951,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlConverterIsoAspect>;
     /// Destroy Handle<VrmlConverter_IsoAspect>
     pub fn HandleVrmlConverterIsoAspect_destructor(self_: *mut HandleVrmlConverterIsoAspect);
+    /// Clone Handle<VrmlConverter_IsoAspect> (increments reference count)
+    pub fn HandleVrmlConverterIsoAspect_clone(
+        self_: *const HandleVrmlConverterIsoAspect,
+    ) -> crate::OcctResult<*mut HandleVrmlConverterIsoAspect>;
     /// Dereference Handle to get *const VrmlConverter_IsoAspect
     pub fn HandleVrmlConverterIsoAspect_get(
         handle: *const HandleVrmlConverterIsoAspect,
@@ -3013,6 +3069,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
     /// Destroy Handle<VrmlConverter_LineAspect>
     pub fn HandleVrmlConverterLineAspect_destructor(self_: *mut HandleVrmlConverterLineAspect);
+    /// Clone Handle<VrmlConverter_LineAspect> (increments reference count)
+    pub fn HandleVrmlConverterLineAspect_clone(
+        self_: *const HandleVrmlConverterLineAspect,
+    ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
     /// Dereference Handle to get *const VrmlConverter_LineAspect
     pub fn HandleVrmlConverterLineAspect_get(
         handle: *const HandleVrmlConverterLineAspect,
@@ -3109,6 +3169,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlConverterPointAspect>;
     /// Destroy Handle<VrmlConverter_PointAspect>
     pub fn HandleVrmlConverterPointAspect_destructor(self_: *mut HandleVrmlConverterPointAspect);
+    /// Clone Handle<VrmlConverter_PointAspect> (increments reference count)
+    pub fn HandleVrmlConverterPointAspect_clone(
+        self_: *const HandleVrmlConverterPointAspect,
+    ) -> crate::OcctResult<*mut HandleVrmlConverterPointAspect>;
     /// Dereference Handle to get *const VrmlConverter_PointAspect
     pub fn HandleVrmlConverterPointAspect_get(
         handle: *const HandleVrmlConverterPointAspect,
@@ -3216,6 +3280,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlConverterProjector>;
     /// Destroy Handle<VrmlConverter_Projector>
     pub fn HandleVrmlConverterProjector_destructor(self_: *mut HandleVrmlConverterProjector);
+    /// Clone Handle<VrmlConverter_Projector> (increments reference count)
+    pub fn HandleVrmlConverterProjector_clone(
+        self_: *const HandleVrmlConverterProjector,
+    ) -> crate::OcctResult<*mut HandleVrmlConverterProjector>;
     /// Dereference Handle to get *const VrmlConverter_Projector
     pub fn HandleVrmlConverterProjector_get(
         handle: *const HandleVrmlConverterProjector,
@@ -3339,6 +3407,10 @@ extern "C" {
     pub fn HandleVrmlConverterShadingAspect_destructor(
         self_: *mut HandleVrmlConverterShadingAspect,
     );
+    /// Clone Handle<VrmlConverter_ShadingAspect> (increments reference count)
+    pub fn HandleVrmlConverterShadingAspect_clone(
+        self_: *const HandleVrmlConverterShadingAspect,
+    ) -> crate::OcctResult<*mut HandleVrmlConverterShadingAspect>;
     /// Dereference Handle to get *const VrmlConverter_ShadingAspect
     pub fn HandleVrmlConverterShadingAspect_get(
         handle: *const HandleVrmlConverterShadingAspect,
@@ -3556,6 +3628,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataAppearance>;
     /// Destroy Handle<VrmlData_Appearance>
     pub fn HandleVrmlDataAppearance_destructor(self_: *mut HandleVrmlDataAppearance);
+    /// Clone Handle<VrmlData_Appearance> (increments reference count)
+    pub fn HandleVrmlDataAppearance_clone(
+        self_: *const HandleVrmlDataAppearance,
+    ) -> crate::OcctResult<*mut HandleVrmlDataAppearance>;
     /// Dereference Handle to get *const VrmlData_Appearance
     pub fn HandleVrmlDataAppearance_get(
         handle: *const HandleVrmlDataAppearance,
@@ -3681,6 +3757,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_ArrayVec3d>
     pub fn HandleVrmlDataArrayVec3d_destructor(self_: *mut HandleVrmlDataArrayVec3d);
+    /// Clone Handle<VrmlData_ArrayVec3d> (increments reference count)
+    pub fn HandleVrmlDataArrayVec3d_clone(
+        self_: *const HandleVrmlDataArrayVec3d,
+    ) -> crate::OcctResult<*mut HandleVrmlDataArrayVec3d>;
     /// Dereference Handle to get *const VrmlData_ArrayVec3d
     pub fn HandleVrmlDataArrayVec3d_get(
         handle: *const HandleVrmlDataArrayVec3d,
@@ -3840,6 +3920,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataBox>;
     /// Destroy Handle<VrmlData_Box>
     pub fn HandleVrmlDataBox_destructor(self_: *mut HandleVrmlDataBox);
+    /// Clone Handle<VrmlData_Box> (increments reference count)
+    pub fn HandleVrmlDataBox_clone(
+        self_: *const HandleVrmlDataBox,
+    ) -> crate::OcctResult<*mut HandleVrmlDataBox>;
     /// Dereference Handle to get *const VrmlData_Box
     pub fn HandleVrmlDataBox_get(
         handle: *const HandleVrmlDataBox,
@@ -3979,6 +4063,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataColor>;
     /// Destroy Handle<VrmlData_Color>
     pub fn HandleVrmlDataColor_destructor(self_: *mut HandleVrmlDataColor);
+    /// Clone Handle<VrmlData_Color> (increments reference count)
+    pub fn HandleVrmlDataColor_clone(
+        self_: *const HandleVrmlDataColor,
+    ) -> crate::OcctResult<*mut HandleVrmlDataColor>;
     /// Dereference Handle to get *const VrmlData_Color
     pub fn HandleVrmlDataColor_get(
         handle: *const HandleVrmlDataColor,
@@ -4158,6 +4246,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataCone>;
     /// Destroy Handle<VrmlData_Cone>
     pub fn HandleVrmlDataCone_destructor(self_: *mut HandleVrmlDataCone);
+    /// Clone Handle<VrmlData_Cone> (increments reference count)
+    pub fn HandleVrmlDataCone_clone(
+        self_: *const HandleVrmlDataCone,
+    ) -> crate::OcctResult<*mut HandleVrmlDataCone>;
     /// Dereference Handle to get *const VrmlData_Cone
     pub fn HandleVrmlDataCone_get(
         handle: *const HandleVrmlDataCone,
@@ -4294,6 +4386,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataCoordinate>;
     /// Destroy Handle<VrmlData_Coordinate>
     pub fn HandleVrmlDataCoordinate_destructor(self_: *mut HandleVrmlDataCoordinate);
+    /// Clone Handle<VrmlData_Coordinate> (increments reference count)
+    pub fn HandleVrmlDataCoordinate_clone(
+        self_: *const HandleVrmlDataCoordinate,
+    ) -> crate::OcctResult<*mut HandleVrmlDataCoordinate>;
     /// Dereference Handle to get *const VrmlData_Coordinate
     pub fn HandleVrmlDataCoordinate_get(
         handle: *const HandleVrmlDataCoordinate,
@@ -4478,6 +4574,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataCylinder>;
     /// Destroy Handle<VrmlData_Cylinder>
     pub fn HandleVrmlDataCylinder_destructor(self_: *mut HandleVrmlDataCylinder);
+    /// Clone Handle<VrmlData_Cylinder> (increments reference count)
+    pub fn HandleVrmlDataCylinder_clone(
+        self_: *const HandleVrmlDataCylinder,
+    ) -> crate::OcctResult<*mut HandleVrmlDataCylinder>;
     /// Dereference Handle to get *const VrmlData_Cylinder
     pub fn HandleVrmlDataCylinder_get(
         handle: *const HandleVrmlDataCylinder,
@@ -4611,6 +4711,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_Faceted>
     pub fn HandleVrmlDataFaceted_destructor(self_: *mut HandleVrmlDataFaceted);
+    /// Clone Handle<VrmlData_Faceted> (increments reference count)
+    pub fn HandleVrmlDataFaceted_clone(
+        self_: *const HandleVrmlDataFaceted,
+    ) -> crate::OcctResult<*mut HandleVrmlDataFaceted>;
     /// Dereference Handle to get *const VrmlData_Faceted
     pub fn HandleVrmlDataFaceted_get(
         handle: *const HandleVrmlDataFaceted,
@@ -4730,6 +4834,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_Geometry>
     pub fn HandleVrmlDataGeometry_destructor(self_: *mut HandleVrmlDataGeometry);
+    /// Clone Handle<VrmlData_Geometry> (increments reference count)
+    pub fn HandleVrmlDataGeometry_clone(
+        self_: *const HandleVrmlDataGeometry,
+    ) -> crate::OcctResult<*mut HandleVrmlDataGeometry>;
     /// Dereference Handle to get *const VrmlData_Geometry
     pub fn HandleVrmlDataGeometry_get(
         handle: *const HandleVrmlDataGeometry,
@@ -4932,6 +5040,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataGroup>;
     /// Destroy Handle<VrmlData_Group>
     pub fn HandleVrmlDataGroup_destructor(self_: *mut HandleVrmlDataGroup);
+    /// Clone Handle<VrmlData_Group> (increments reference count)
+    pub fn HandleVrmlDataGroup_clone(
+        self_: *const HandleVrmlDataGroup,
+    ) -> crate::OcctResult<*mut HandleVrmlDataGroup>;
     /// Dereference Handle to get *const VrmlData_Group
     pub fn HandleVrmlDataGroup_get(
         handle: *const HandleVrmlDataGroup,
@@ -5066,6 +5178,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataImageTexture>;
     /// Destroy Handle<VrmlData_ImageTexture>
     pub fn HandleVrmlDataImageTexture_destructor(self_: *mut HandleVrmlDataImageTexture);
+    /// Clone Handle<VrmlData_ImageTexture> (increments reference count)
+    pub fn HandleVrmlDataImageTexture_clone(
+        self_: *const HandleVrmlDataImageTexture,
+    ) -> crate::OcctResult<*mut HandleVrmlDataImageTexture>;
     /// Dereference Handle to get *const VrmlData_ImageTexture
     pub fn HandleVrmlDataImageTexture_get(
         handle: *const HandleVrmlDataImageTexture,
@@ -5356,6 +5472,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataIndexedFaceSet>;
     /// Destroy Handle<VrmlData_IndexedFaceSet>
     pub fn HandleVrmlDataIndexedFaceSet_destructor(self_: *mut HandleVrmlDataIndexedFaceSet);
+    /// Clone Handle<VrmlData_IndexedFaceSet> (increments reference count)
+    pub fn HandleVrmlDataIndexedFaceSet_clone(
+        self_: *const HandleVrmlDataIndexedFaceSet,
+    ) -> crate::OcctResult<*mut HandleVrmlDataIndexedFaceSet>;
     /// Dereference Handle to get *const VrmlData_IndexedFaceSet
     pub fn HandleVrmlDataIndexedFaceSet_get(
         handle: *const HandleVrmlDataIndexedFaceSet,
@@ -5590,6 +5710,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataIndexedLineSet>;
     /// Destroy Handle<VrmlData_IndexedLineSet>
     pub fn HandleVrmlDataIndexedLineSet_destructor(self_: *mut HandleVrmlDataIndexedLineSet);
+    /// Clone Handle<VrmlData_IndexedLineSet> (increments reference count)
+    pub fn HandleVrmlDataIndexedLineSet_clone(
+        self_: *const HandleVrmlDataIndexedLineSet,
+    ) -> crate::OcctResult<*mut HandleVrmlDataIndexedLineSet>;
     /// Dereference Handle to get *const VrmlData_IndexedLineSet
     pub fn HandleVrmlDataIndexedLineSet_get(
         handle: *const HandleVrmlDataIndexedLineSet,
@@ -5776,6 +5900,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataMaterial>;
     /// Destroy Handle<VrmlData_Material>
     pub fn HandleVrmlDataMaterial_destructor(self_: *mut HandleVrmlDataMaterial);
+    /// Clone Handle<VrmlData_Material> (increments reference count)
+    pub fn HandleVrmlDataMaterial_clone(
+        self_: *const HandleVrmlDataMaterial,
+    ) -> crate::OcctResult<*mut HandleVrmlDataMaterial>;
     /// Dereference Handle to get *const VrmlData_Material
     pub fn HandleVrmlDataMaterial_get(
         handle: *const HandleVrmlDataMaterial,
@@ -5920,6 +6048,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_Node>
     pub fn HandleVrmlDataNode_destructor(self_: *mut HandleVrmlDataNode);
+    /// Clone Handle<VrmlData_Node> (increments reference count)
+    pub fn HandleVrmlDataNode_clone(
+        self_: *const HandleVrmlDataNode,
+    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
     /// Dereference Handle to get *const VrmlData_Node
     pub fn HandleVrmlDataNode_get(
         handle: *const HandleVrmlDataNode,
@@ -6113,6 +6245,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataNormal>;
     /// Destroy Handle<VrmlData_Normal>
     pub fn HandleVrmlDataNormal_destructor(self_: *mut HandleVrmlDataNormal);
+    /// Clone Handle<VrmlData_Normal> (increments reference count)
+    pub fn HandleVrmlDataNormal_clone(
+        self_: *const HandleVrmlDataNormal,
+    ) -> crate::OcctResult<*mut HandleVrmlDataNormal>;
     /// Dereference Handle to get *const VrmlData_Normal
     pub fn HandleVrmlDataNormal_get(
         handle: *const HandleVrmlDataNormal,
@@ -6448,6 +6584,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataShapeNode>;
     /// Destroy Handle<VrmlData_ShapeNode>
     pub fn HandleVrmlDataShapeNode_destructor(self_: *mut HandleVrmlDataShapeNode);
+    /// Clone Handle<VrmlData_ShapeNode> (increments reference count)
+    pub fn HandleVrmlDataShapeNode_clone(
+        self_: *const HandleVrmlDataShapeNode,
+    ) -> crate::OcctResult<*mut HandleVrmlDataShapeNode>;
     /// Dereference Handle to get *const VrmlData_ShapeNode
     pub fn HandleVrmlDataShapeNode_get(
         handle: *const HandleVrmlDataShapeNode,
@@ -6583,6 +6723,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataSphere>;
     /// Destroy Handle<VrmlData_Sphere>
     pub fn HandleVrmlDataSphere_destructor(self_: *mut HandleVrmlDataSphere);
+    /// Clone Handle<VrmlData_Sphere> (increments reference count)
+    pub fn HandleVrmlDataSphere_clone(
+        self_: *const HandleVrmlDataSphere,
+    ) -> crate::OcctResult<*mut HandleVrmlDataSphere>;
     /// Dereference Handle to get *const VrmlData_Sphere
     pub fn HandleVrmlDataSphere_get(
         handle: *const HandleVrmlDataSphere,
@@ -6694,6 +6838,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_Texture>
     pub fn HandleVrmlDataTexture_destructor(self_: *mut HandleVrmlDataTexture);
+    /// Clone Handle<VrmlData_Texture> (increments reference count)
+    pub fn HandleVrmlDataTexture_clone(
+        self_: *const HandleVrmlDataTexture,
+    ) -> crate::OcctResult<*mut HandleVrmlDataTexture>;
     /// Dereference Handle to get *const VrmlData_Texture
     pub fn HandleVrmlDataTexture_get(
         handle: *const HandleVrmlDataTexture,
@@ -6844,6 +6992,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataTextureCoordinate>;
     /// Destroy Handle<VrmlData_TextureCoordinate>
     pub fn HandleVrmlDataTextureCoordinate_destructor(self_: *mut HandleVrmlDataTextureCoordinate);
+    /// Clone Handle<VrmlData_TextureCoordinate> (increments reference count)
+    pub fn HandleVrmlDataTextureCoordinate_clone(
+        self_: *const HandleVrmlDataTextureCoordinate,
+    ) -> crate::OcctResult<*mut HandleVrmlDataTextureCoordinate>;
     /// Dereference Handle to get *const VrmlData_TextureCoordinate
     pub fn HandleVrmlDataTextureCoordinate_get(
         handle: *const HandleVrmlDataTextureCoordinate,
@@ -6974,6 +7126,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_TextureTransform>
     pub fn HandleVrmlDataTextureTransform_destructor(self_: *mut HandleVrmlDataTextureTransform);
+    /// Clone Handle<VrmlData_TextureTransform> (increments reference count)
+    pub fn HandleVrmlDataTextureTransform_clone(
+        self_: *const HandleVrmlDataTextureTransform,
+    ) -> crate::OcctResult<*mut HandleVrmlDataTextureTransform>;
     /// Dereference Handle to get *const VrmlData_TextureTransform
     pub fn HandleVrmlDataTextureTransform_get(
         handle: *const HandleVrmlDataTextureTransform,
@@ -7102,6 +7258,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataUnknownNode>;
     /// Destroy Handle<VrmlData_UnknownNode>
     pub fn HandleVrmlDataUnknownNode_destructor(self_: *mut HandleVrmlDataUnknownNode);
+    /// Clone Handle<VrmlData_UnknownNode> (increments reference count)
+    pub fn HandleVrmlDataUnknownNode_clone(
+        self_: *const HandleVrmlDataUnknownNode,
+    ) -> crate::OcctResult<*mut HandleVrmlDataUnknownNode>;
     /// Dereference Handle to get *const VrmlData_UnknownNode
     pub fn HandleVrmlDataUnknownNode_get(
         handle: *const HandleVrmlDataUnknownNode,
@@ -7241,6 +7401,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleVrmlDataWorldInfo>;
     /// Destroy Handle<VrmlData_WorldInfo>
     pub fn HandleVrmlDataWorldInfo_destructor(self_: *mut HandleVrmlDataWorldInfo);
+    /// Clone Handle<VrmlData_WorldInfo> (increments reference count)
+    pub fn HandleVrmlDataWorldInfo_clone(
+        self_: *const HandleVrmlDataWorldInfo,
+    ) -> crate::OcctResult<*mut HandleVrmlDataWorldInfo>;
     /// Dereference Handle to get *const VrmlData_WorldInfo
     pub fn HandleVrmlDataWorldInfo_get(
         handle: *const HandleVrmlDataWorldInfo,

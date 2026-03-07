@@ -1053,6 +1053,12 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepFFDumper {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopOpeBRepFFDumper {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepFFDumper_clone(ptr))
+    }
+}
+
 impl HandleTopOpeBRepFFDumper {
     /// Dereference this Handle to access the underlying TopOpeBRep_FFDumper
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_FFDumper {
@@ -2664,6 +2670,12 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepHArray1OfLineInter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopOpeBRepHArray1OfLineInter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfLineInter_clone(ptr))
+    }
+}
+
 impl HandleTopOpeBRepHArray1OfLineInter {
     /// Dereference this Handle to access the underlying TopOpeBRep_HArray1OfLineInter
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_HArray1OfLineInter {
@@ -2936,6 +2948,14 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepHArray1OfVPointInter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopOpeBRepHArray1OfVPointInter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfVPointInter_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleTopOpeBRepHArray1OfVPointInter {
     /// Dereference this Handle to access the underlying TopOpeBRep_HArray1OfVPointInter
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_HArray1OfVPointInter {
@@ -3175,6 +3195,12 @@ pub use crate::ffi_types::HandleTopOpeBRepHctxee2d;
 unsafe impl crate::CppDeletable for HandleTopOpeBRepHctxee2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleTopOpeBRepHctxee2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopOpeBRepHctxee2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepHctxee2d_clone(ptr))
     }
 }
 
@@ -3460,6 +3486,12 @@ pub use crate::ffi_types::HandleTopOpeBRepHctxff2d;
 unsafe impl crate::CppDeletable for HandleTopOpeBRepHctxff2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleTopOpeBRepHctxff2d_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopOpeBRepHctxff2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepHctxff2d_clone(ptr))
     }
 }
 

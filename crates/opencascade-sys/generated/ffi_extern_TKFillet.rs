@@ -69,6 +69,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepBlendAppFunc>;
     /// Destroy Handle<BRepBlend_AppFunc>
     pub fn HandleBRepBlendAppFunc_destructor(self_: *mut HandleBRepBlendAppFunc);
+    /// Clone Handle<BRepBlend_AppFunc> (increments reference count)
+    pub fn HandleBRepBlendAppFunc_clone(
+        self_: *const HandleBRepBlendAppFunc,
+    ) -> crate::OcctResult<*mut HandleBRepBlendAppFunc>;
     /// Dereference Handle to get *const BRepBlend_AppFunc
     pub fn HandleBRepBlendAppFunc_get(
         handle: *const HandleBRepBlendAppFunc,
@@ -394,6 +398,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepBlend_AppFuncRoot>
     pub fn HandleBRepBlendAppFuncRoot_destructor(self_: *mut HandleBRepBlendAppFuncRoot);
+    /// Clone Handle<BRepBlend_AppFuncRoot> (increments reference count)
+    pub fn HandleBRepBlendAppFuncRoot_clone(
+        self_: *const HandleBRepBlendAppFuncRoot,
+    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRoot>;
     /// Dereference Handle to get *const BRepBlend_AppFuncRoot
     pub fn HandleBRepBlendAppFuncRoot_get(
         handle: *const HandleBRepBlendAppFuncRoot,
@@ -513,6 +521,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRst>;
     /// Destroy Handle<BRepBlend_AppFuncRst>
     pub fn HandleBRepBlendAppFuncRst_destructor(self_: *mut HandleBRepBlendAppFuncRst);
+    /// Clone Handle<BRepBlend_AppFuncRst> (increments reference count)
+    pub fn HandleBRepBlendAppFuncRst_clone(
+        self_: *const HandleBRepBlendAppFuncRst,
+    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRst>;
     /// Dereference Handle to get *const BRepBlend_AppFuncRst
     pub fn HandleBRepBlendAppFuncRst_get(
         handle: *const HandleBRepBlendAppFuncRst,
@@ -741,6 +753,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRstRst>;
     /// Destroy Handle<BRepBlend_AppFuncRstRst>
     pub fn HandleBRepBlendAppFuncRstRst_destructor(self_: *mut HandleBRepBlendAppFuncRstRst);
+    /// Clone Handle<BRepBlend_AppFuncRstRst> (increments reference count)
+    pub fn HandleBRepBlendAppFuncRstRst_clone(
+        self_: *const HandleBRepBlendAppFuncRstRst,
+    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRstRst>;
     /// Dereference Handle to get *const BRepBlend_AppFuncRstRst
     pub fn HandleBRepBlendAppFuncRstRst_get(
         handle: *const HandleBRepBlendAppFuncRstRst,
@@ -1880,6 +1896,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepBlendLine>;
     /// Destroy Handle<BRepBlend_Line>
     pub fn HandleBRepBlendLine_destructor(self_: *mut HandleBRepBlendLine);
+    /// Clone Handle<BRepBlend_Line> (increments reference count)
+    pub fn HandleBRepBlendLine_clone(
+        self_: *const HandleBRepBlendLine,
+    ) -> crate::OcctResult<*mut HandleBRepBlendLine>;
     /// Dereference Handle to get *const BRepBlend_Line
     pub fn HandleBRepBlendLine_get(
         handle: *const HandleBRepBlendLine,
@@ -11245,6 +11265,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleChFiDSChamfSpine>;
     /// Destroy Handle<ChFiDS_ChamfSpine>
     pub fn HandleChFiDSChamfSpine_destructor(self_: *mut HandleChFiDSChamfSpine);
+    /// Clone Handle<ChFiDS_ChamfSpine> (increments reference count)
+    pub fn HandleChFiDSChamfSpine_clone(
+        self_: *const HandleChFiDSChamfSpine,
+    ) -> crate::OcctResult<*mut HandleChFiDSChamfSpine>;
     /// Dereference Handle to get *const ChFiDS_ChamfSpine
     pub fn HandleChFiDSChamfSpine_get(
         handle: *const HandleChFiDSChamfSpine,
@@ -11907,6 +11931,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleChFiDSElSpine>;
     /// Destroy Handle<ChFiDS_ElSpine>
     pub fn HandleChFiDSElSpine_destructor(self_: *mut HandleChFiDSElSpine);
+    /// Clone Handle<ChFiDS_ElSpine> (increments reference count)
+    pub fn HandleChFiDSElSpine_clone(
+        self_: *const HandleChFiDSElSpine,
+    ) -> crate::OcctResult<*mut HandleChFiDSElSpine>;
     /// Dereference Handle to get *const ChFiDS_ElSpine
     pub fn HandleChFiDSElSpine_get(
         handle: *const HandleChFiDSElSpine,
@@ -12171,6 +12199,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleChFiDSFilSpine>;
     /// Destroy Handle<ChFiDS_FilSpine>
     pub fn HandleChFiDSFilSpine_destructor(self_: *mut HandleChFiDSFilSpine);
+    /// Clone Handle<ChFiDS_FilSpine> (increments reference count)
+    pub fn HandleChFiDSFilSpine_clone(
+        self_: *const HandleChFiDSFilSpine,
+    ) -> crate::OcctResult<*mut HandleChFiDSFilSpine>;
     /// Dereference Handle to get *const ChFiDS_FilSpine
     pub fn HandleChFiDSFilSpine_get(
         handle: *const HandleChFiDSFilSpine,
@@ -12532,6 +12564,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleChFiDSHData>;
     /// Destroy Handle<ChFiDS_HData>
     pub fn HandleChFiDSHData_destructor(self_: *mut HandleChFiDSHData);
+    /// Clone Handle<ChFiDS_HData> (increments reference count)
+    pub fn HandleChFiDSHData_clone(
+        self_: *const HandleChFiDSHData,
+    ) -> crate::OcctResult<*mut HandleChFiDSHData>;
     /// Dereference Handle to get *const ChFiDS_HData
     pub fn HandleChFiDSHData_get(
         handle: *const HandleChFiDSHData,
@@ -12681,6 +12717,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleChFiDSSecHArray1>;
     /// Destroy Handle<ChFiDS_SecHArray1>
     pub fn HandleChFiDSSecHArray1_destructor(self_: *mut HandleChFiDSSecHArray1);
+    /// Clone Handle<ChFiDS_SecHArray1> (increments reference count)
+    pub fn HandleChFiDSSecHArray1_clone(
+        self_: *const HandleChFiDSSecHArray1,
+    ) -> crate::OcctResult<*mut HandleChFiDSSecHArray1>;
     /// Dereference Handle to get *const ChFiDS_SecHArray1
     pub fn HandleChFiDSSecHArray1_get(
         handle: *const HandleChFiDSSecHArray1,
@@ -13030,6 +13070,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
     /// Destroy Handle<ChFiDS_Spine>
     pub fn HandleChFiDSSpine_destructor(self_: *mut HandleChFiDSSpine);
+    /// Clone Handle<ChFiDS_Spine> (increments reference count)
+    pub fn HandleChFiDSSpine_clone(
+        self_: *const HandleChFiDSSpine,
+    ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
     /// Dereference Handle to get *const ChFiDS_Spine
     pub fn HandleChFiDSSpine_get(
         handle: *const HandleChFiDSSpine,
@@ -13336,6 +13380,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleChFiDSStripe>;
     /// Destroy Handle<ChFiDS_Stripe>
     pub fn HandleChFiDSStripe_destructor(self_: *mut HandleChFiDSStripe);
+    /// Clone Handle<ChFiDS_Stripe> (increments reference count)
+    pub fn HandleChFiDSStripe_clone(
+        self_: *const HandleChFiDSStripe,
+    ) -> crate::OcctResult<*mut HandleChFiDSStripe>;
     /// Dereference Handle to get *const ChFiDS_Stripe
     pub fn HandleChFiDSStripe_get(
         handle: *const HandleChFiDSStripe,
@@ -13647,6 +13695,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleChFiDSSurfData>;
     /// Destroy Handle<ChFiDS_SurfData>
     pub fn HandleChFiDSSurfData_destructor(self_: *mut HandleChFiDSSurfData);
+    /// Clone Handle<ChFiDS_SurfData> (increments reference count)
+    pub fn HandleChFiDSSurfData_clone(
+        self_: *const HandleChFiDSSurfData,
+    ) -> crate::OcctResult<*mut HandleChFiDSSurfData>;
     /// Dereference Handle to get *const ChFiDS_SurfData
     pub fn HandleChFiDSSurfData_get(
         handle: *const HandleChFiDSSurfData,

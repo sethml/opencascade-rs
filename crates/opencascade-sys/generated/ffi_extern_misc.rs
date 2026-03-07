@@ -48,7 +48,7 @@ extern "C" {
         anOther: *const LDOMBasicString,
     ) -> crate::OcctResult<bool>;
     /// Clone via copy constructor
-    pub fn LDOMBasicString_to_owned(
+    pub fn LDOMBasicString_clone(
         self_: *const LDOMBasicString,
     ) -> crate::OcctResult<*mut LDOMBasicString>;
     // ======================== LDOMParser ========================
@@ -94,7 +94,7 @@ extern "C" {
         self_: *const LDOMString,
     ) -> crate::OcctResult<*const LDOM_MemManager>;
     /// Clone via copy constructor
-    pub fn LDOMString_to_owned(self_: *const LDOMString) -> crate::OcctResult<*mut LDOMString>;
+    pub fn LDOMString_clone(self_: *const LDOMString) -> crate::OcctResult<*mut LDOMString>;
 
     // Free functions
     /// **Source:** `NCollection_Primes.hxx`:34 - `NCollection_Primes::NextPrimeForMap`

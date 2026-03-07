@@ -831,6 +831,12 @@ unsafe impl crate::CppDeletable for HandleHLRTopoBRepOutLiner {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleHLRTopoBRepOutLiner {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRTopoBRepOutLiner_clone(ptr))
+    }
+}
+
 impl HandleHLRTopoBRepOutLiner {
     /// Dereference this Handle to access the underlying HLRTopoBRep_OutLiner
     pub fn get(&self) -> &crate::ffi_types::HLRTopoBRep_OutLiner {

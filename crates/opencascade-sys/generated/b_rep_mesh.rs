@@ -264,6 +264,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshBaseMeshAlgo {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshBaseMeshAlgo {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshBaseMeshAlgo_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshBaseMeshAlgo {
     /// Dereference this Handle to access the underlying BRepMesh_BaseMeshAlgo
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_BaseMeshAlgo {
@@ -1071,6 +1077,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshClassifier {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshClassifier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshClassifier_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshClassifier {
     /// Dereference this Handle to access the underlying BRepMesh_Classifier
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_Classifier {
@@ -1515,6 +1527,14 @@ pub use crate::ffi_types::HandleBRepMeshConstrainedBaseMeshAlgo;
 unsafe impl crate::CppDeletable for HandleBRepMeshConstrainedBaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleBRepMeshConstrainedBaseMeshAlgo_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepMeshConstrainedBaseMeshAlgo {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshConstrainedBaseMeshAlgo_clone(
+            ptr,
+        ))
     }
 }
 
@@ -2048,6 +2068,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshContext {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshContext_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshContext {
     /// Dereference this Handle to access the underlying BRepMesh_Context
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_Context {
@@ -2365,6 +2391,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshCurveTessellator {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshCurveTessellator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshCurveTessellator_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshCurveTessellator {
     /// Dereference this Handle to access the underlying BRepMesh_CurveTessellator
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_CurveTessellator {
@@ -2629,6 +2661,12 @@ pub use crate::ffi_types::HandleBRepMeshCustomBaseMeshAlgo;
 unsafe impl crate::CppDeletable for HandleBRepMeshCustomBaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleBRepMeshCustomBaseMeshAlgo_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepMeshCustomBaseMeshAlgo {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshCustomBaseMeshAlgo_clone(ptr))
     }
 }
 
@@ -3450,6 +3488,14 @@ unsafe impl crate::CppDeletable for HandleBRepMeshDataStructureOfDelaun {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshDataStructureOfDelaun {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDataStructureOfDelaun_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleBRepMeshDataStructureOfDelaun {
     /// Dereference this Handle to access the underlying BRepMesh_DataStructureOfDelaun
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_DataStructureOfDelaun {
@@ -3920,6 +3966,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshDeflection {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshDeflection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDeflection_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshDeflection {
     /// Dereference this Handle to access the underlying BRepMesh_Deflection
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_Deflection {
@@ -4209,6 +4261,14 @@ unsafe impl crate::CppDeletable for HandleBRepMeshDelabellaBaseMeshAlgo {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshDelabellaBaseMeshAlgo {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaBaseMeshAlgo_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleBRepMeshDelabellaBaseMeshAlgo {
     /// Dereference this Handle to access the underlying BRepMesh_DelabellaBaseMeshAlgo
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_DelabellaBaseMeshAlgo {
@@ -4474,6 +4534,14 @@ pub use crate::ffi_types::HandleBRepMeshDelabellaMeshAlgoFactory;
 unsafe impl crate::CppDeletable for HandleBRepMeshDelabellaMeshAlgoFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaMeshAlgoFactory_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepMeshDelabellaMeshAlgoFactory {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaMeshAlgoFactory_clone(
+            ptr,
+        ))
     }
 }
 
@@ -5031,6 +5099,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshDelaunayBaseMeshAlgo {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshDelaunayBaseMeshAlgo {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDelaunayBaseMeshAlgo_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshDelaunayBaseMeshAlgo {
     /// Dereference this Handle to access the underlying BRepMesh_DelaunayBaseMeshAlgo
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_DelaunayBaseMeshAlgo {
@@ -5392,6 +5466,12 @@ pub use crate::ffi_types::HandleBRepMeshDiscretRoot;
 unsafe impl crate::CppDeletable for HandleBRepMeshDiscretRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleBRepMeshDiscretRoot_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepMeshDiscretRoot {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDiscretRoot_clone(ptr))
     }
 }
 
@@ -5837,6 +5917,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshEdgeDiscret {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshEdgeDiscret {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshEdgeDiscret_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshEdgeDiscret {
     /// Dereference this Handle to access the underlying BRepMesh_EdgeDiscret
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_EdgeDiscret {
@@ -6094,6 +6180,14 @@ pub use crate::ffi_types::HandleBRepMeshEdgeTessellationExtractor;
 unsafe impl crate::CppDeletable for HandleBRepMeshEdgeTessellationExtractor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleBRepMeshEdgeTessellationExtractor_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepMeshEdgeTessellationExtractor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKMesh::HandleBRepMeshEdgeTessellationExtractor_clone(ptr),
+        )
     }
 }
 
@@ -6559,6 +6653,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshFaceChecker {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshFaceChecker {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshFaceChecker_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshFaceChecker {
     /// Dereference this Handle to access the underlying BRepMesh_FaceChecker
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_FaceChecker {
@@ -6834,6 +6934,12 @@ pub use crate::ffi_types::HandleBRepMeshFaceDiscret;
 unsafe impl crate::CppDeletable for HandleBRepMeshFaceDiscret {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleBRepMeshFaceDiscret_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepMeshFaceDiscret {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshFaceDiscret_clone(ptr))
     }
 }
 
@@ -7604,6 +7710,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshIncrementalMesh {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshIncrementalMesh {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshIncrementalMesh_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshIncrementalMesh {
     /// Dereference this Handle to access the underlying BRepMesh_IncrementalMesh
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_IncrementalMesh {
@@ -7850,6 +7962,12 @@ pub use crate::ffi_types::HandleBRepMeshMeshAlgoFactory;
 unsafe impl crate::CppDeletable for HandleBRepMeshMeshAlgoFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleBRepMeshMeshAlgoFactory_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepMeshMeshAlgoFactory {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshMeshAlgoFactory_clone(ptr))
     }
 }
 
@@ -8237,6 +8355,12 @@ pub use crate::ffi_types::HandleBRepMeshMeshTool;
 unsafe impl crate::CppDeletable for HandleBRepMeshMeshTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleBRepMeshMeshTool_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepMeshMeshTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshMeshTool_clone(ptr))
     }
 }
 
@@ -8663,6 +8787,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshModelBuilder {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshModelBuilder {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelBuilder_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshModelBuilder {
     /// Dereference this Handle to access the underlying BRepMesh_ModelBuilder
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_ModelBuilder {
@@ -8930,6 +9060,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshModelHealer {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshModelHealer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelHealer_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshModelHealer {
     /// Dereference this Handle to access the underlying BRepMesh_ModelHealer
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_ModelHealer {
@@ -9186,6 +9322,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshModelPostProcessor {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshModelPostProcessor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelPostProcessor_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshModelPostProcessor {
     /// Dereference this Handle to access the underlying BRepMesh_ModelPostProcessor
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_ModelPostProcessor {
@@ -9434,6 +9576,12 @@ pub use crate::ffi_types::HandleBRepMeshModelPreProcessor;
 unsafe impl crate::CppDeletable for HandleBRepMeshModelPreProcessor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleBRepMeshModelPreProcessor_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepMeshModelPreProcessor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelPreProcessor_clone(ptr))
     }
 }
 
@@ -10215,6 +10363,14 @@ unsafe impl crate::CppDeletable for HandleBRepMeshSelectorOfDataStructureOfDelau
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshSelectorOfDataStructureOfDelaun {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKMesh::HandleBRepMeshSelectorOfDataStructureOfDelaun_clone(ptr),
+        )
+    }
+}
+
 impl HandleBRepMeshSelectorOfDataStructureOfDelaun {
     /// Dereference this Handle to access the underlying BRepMesh_SelectorOfDataStructureOfDelaun
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_SelectorOfDataStructureOfDelaun {
@@ -10623,6 +10779,12 @@ unsafe impl crate::CppDeletable for HandleBRepMeshShapeTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepMeshShapeTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshShapeTool_clone(ptr))
+    }
+}
+
 impl HandleBRepMeshShapeTool {
     /// Dereference this Handle to access the underlying BRepMesh_ShapeTool
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_ShapeTool {
@@ -10860,6 +11022,12 @@ pub use crate::ffi_types::HandleBRepMeshShapeVisitor;
 unsafe impl crate::CppDeletable for HandleBRepMeshShapeVisitor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleBRepMeshShapeVisitor_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepMeshShapeVisitor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshShapeVisitor_clone(ptr))
     }
 }
 
@@ -12499,6 +12667,12 @@ pub use crate::ffi_types::HandleBRepMeshVertexTool;
 unsafe impl crate::CppDeletable for HandleBRepMeshVertexTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleBRepMeshVertexTool_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepMeshVertexTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshVertexTool_clone(ptr))
     }
 }
 

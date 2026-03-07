@@ -480,6 +480,12 @@ unsafe impl crate::CppDeletable for HandleShapeProcessContext {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeProcessContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessContext_clone(ptr))
+    }
+}
+
 impl HandleShapeProcessContext {
     /// Dereference this Handle to access the underlying ShapeProcess_Context
     pub fn get(&self) -> &crate::ffi_types::ShapeProcess_Context {
@@ -771,6 +777,12 @@ pub use crate::ffi_types::HandleShapeProcessOperator;
 unsafe impl crate::CppDeletable for HandleShapeProcessOperator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeProcessOperator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_clone(ptr))
     }
 }
 
@@ -1347,6 +1359,14 @@ unsafe impl crate::CppDeletable for HandleShapeProcessShapeContext {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeProcessShapeContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessShapeContext_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleShapeProcessShapeContext {
     /// Dereference this Handle to access the underlying ShapeProcess_ShapeContext
     pub fn get(&self) -> &crate::ffi_types::ShapeProcess_ShapeContext {
@@ -1597,6 +1617,12 @@ pub use crate::ffi_types::HandleShapeProcessUOperator;
 unsafe impl crate::CppDeletable for HandleShapeProcessUOperator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeProcessUOperator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_clone(ptr))
     }
 }
 

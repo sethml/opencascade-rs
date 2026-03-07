@@ -325,6 +325,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dEvaluatorCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dEvaluatorCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorCurve_clone(ptr))
+    }
+}
+
 impl HandleGeom2dEvaluatorCurve {
     /// Dereference this Handle to access the underlying Geom2dEvaluator_Curve
     pub fn get(&self) -> &crate::ffi_types::Geom2dEvaluator_Curve {
@@ -682,6 +688,12 @@ pub use crate::ffi_types::HandleGeom2dEvaluatorOffsetCurve;
 unsafe impl crate::CppDeletable for HandleGeom2dEvaluatorOffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorOffsetCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dEvaluatorOffsetCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorOffsetCurve_clone(ptr))
     }
 }
 

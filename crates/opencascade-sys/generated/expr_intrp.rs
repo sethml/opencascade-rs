@@ -450,6 +450,12 @@ unsafe impl crate::CppDeletable for HandleExprIntrpGenExp {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprIntrpGenExp {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenExp_clone(ptr))
+    }
+}
+
 impl HandleExprIntrpGenExp {
     /// Dereference this Handle to access the underlying ExprIntrp_GenExp
     pub fn get(&self) -> &crate::ffi_types::ExprIntrp_GenExp {
@@ -736,6 +742,12 @@ pub use crate::ffi_types::HandleExprIntrpGenFct;
 unsafe impl crate::CppDeletable for HandleExprIntrpGenFct {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprIntrpGenFct {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_clone(ptr))
     }
 }
 
@@ -1041,6 +1053,12 @@ unsafe impl crate::CppDeletable for HandleExprIntrpGenRel {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleExprIntrpGenRel {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenRel_clone(ptr))
+    }
+}
+
 impl HandleExprIntrpGenRel {
     /// Dereference this Handle to access the underlying ExprIntrp_GenRel
     pub fn get(&self) -> &crate::ffi_types::ExprIntrp_GenRel {
@@ -1319,6 +1337,12 @@ pub use crate::ffi_types::HandleExprIntrpGenerator;
 unsafe impl crate::CppDeletable for HandleExprIntrpGenerator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprIntrpGenerator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_clone(ptr))
     }
 }
 
@@ -1690,6 +1714,12 @@ pub use crate::ffi_types::HandleExprIntrpSyntaxError;
 unsafe impl crate::CppDeletable for HandleExprIntrpSyntaxError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleExprIntrpSyntaxError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_clone(ptr))
     }
 }
 

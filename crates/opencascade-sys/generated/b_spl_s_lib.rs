@@ -431,6 +431,12 @@ unsafe impl crate::CppDeletable for HandleBSplSLibCache {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBSplSLibCache {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleBSplSLibCache_clone(ptr))
+    }
+}
+
 impl HandleBSplSLibCache {
     /// Dereference this Handle to access the underlying BSplSLib_Cache
     pub fn get(&self) -> &crate::ffi_types::BSplSLib_Cache {

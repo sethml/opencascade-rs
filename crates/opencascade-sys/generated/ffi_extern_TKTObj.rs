@@ -114,6 +114,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjApplication>;
     /// Destroy Handle<TObj_Application>
     pub fn HandleTObjApplication_destructor(self_: *mut HandleTObjApplication);
+    /// Clone Handle<TObj_Application> (increments reference count)
+    pub fn HandleTObjApplication_clone(
+        self_: *const HandleTObjApplication,
+    ) -> crate::OcctResult<*mut HandleTObjApplication>;
     /// Dereference Handle to get *const TObj_Application
     pub fn HandleTObjApplication_get(
         handle: *const HandleTObjApplication,
@@ -426,6 +430,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjCheckModel>;
     /// Destroy Handle<TObj_CheckModel>
     pub fn HandleTObjCheckModel_destructor(self_: *mut HandleTObjCheckModel);
+    /// Clone Handle<TObj_CheckModel> (increments reference count)
+    pub fn HandleTObjCheckModel_clone(
+        self_: *const HandleTObjCheckModel,
+    ) -> crate::OcctResult<*mut HandleTObjCheckModel>;
     /// Dereference Handle to get *const TObj_CheckModel
     pub fn HandleTObjCheckModel_get(
         handle: *const HandleTObjCheckModel,
@@ -574,6 +582,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjHiddenPartition>;
     /// Destroy Handle<TObj_HiddenPartition>
     pub fn HandleTObjHiddenPartition_destructor(self_: *mut HandleTObjHiddenPartition);
+    /// Clone Handle<TObj_HiddenPartition> (increments reference count)
+    pub fn HandleTObjHiddenPartition_clone(
+        self_: *const HandleTObjHiddenPartition,
+    ) -> crate::OcctResult<*mut HandleTObjHiddenPartition>;
     /// Dereference Handle to get *const TObj_HiddenPartition
     pub fn HandleTObjHiddenPartition_get(
         handle: *const HandleTObjHiddenPartition,
@@ -893,6 +905,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TObj_LabelIterator>
     pub fn HandleTObjLabelIterator_destructor(self_: *mut HandleTObjLabelIterator);
+    /// Clone Handle<TObj_LabelIterator> (increments reference count)
+    pub fn HandleTObjLabelIterator_clone(
+        self_: *const HandleTObjLabelIterator,
+    ) -> crate::OcctResult<*mut HandleTObjLabelIterator>;
     /// Dereference Handle to get *const TObj_LabelIterator
     pub fn HandleTObjLabelIterator_get(
         handle: *const HandleTObjLabelIterator,
@@ -1121,6 +1137,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TObj_Model>
     pub fn HandleTObjModel_destructor(self_: *mut HandleTObjModel);
+    /// Clone Handle<TObj_Model> (increments reference count)
+    pub fn HandleTObjModel_clone(
+        self_: *const HandleTObjModel,
+    ) -> crate::OcctResult<*mut HandleTObjModel>;
     /// Dereference Handle to get *const TObj_Model
     pub fn HandleTObjModel_get(
         handle: *const HandleTObjModel,
@@ -1177,6 +1197,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjModelIterator>;
     /// Destroy Handle<TObj_ModelIterator>
     pub fn HandleTObjModelIterator_destructor(self_: *mut HandleTObjModelIterator);
+    /// Clone Handle<TObj_ModelIterator> (increments reference count)
+    pub fn HandleTObjModelIterator_clone(
+        self_: *const HandleTObjModelIterator,
+    ) -> crate::OcctResult<*mut HandleTObjModelIterator>;
     /// Dereference Handle to get *const TObj_ModelIterator
     pub fn HandleTObjModelIterator_get(
         handle: *const HandleTObjModelIterator,
@@ -1453,6 +1477,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleTObjObject>;
     /// Destroy Handle<TObj_Object>
     pub fn HandleTObjObject_destructor(self_: *mut HandleTObjObject);
+    /// Clone Handle<TObj_Object> (increments reference count)
+    pub fn HandleTObjObject_clone(
+        self_: *const HandleTObjObject,
+    ) -> crate::OcctResult<*mut HandleTObjObject>;
     /// Dereference Handle to get *const TObj_Object
     pub fn HandleTObjObject_get(
         handle: *const HandleTObjObject,
@@ -1533,6 +1561,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjObjectIterator>;
     /// Destroy Handle<TObj_ObjectIterator>
     pub fn HandleTObjObjectIterator_destructor(self_: *mut HandleTObjObjectIterator);
+    /// Clone Handle<TObj_ObjectIterator> (increments reference count)
+    pub fn HandleTObjObjectIterator_clone(
+        self_: *const HandleTObjObjectIterator,
+    ) -> crate::OcctResult<*mut HandleTObjObjectIterator>;
     /// Dereference Handle to get *const TObj_ObjectIterator
     pub fn HandleTObjObjectIterator_get(
         handle: *const HandleTObjObjectIterator,
@@ -1639,6 +1671,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjOcafObjectIterator>;
     /// Destroy Handle<TObj_OcafObjectIterator>
     pub fn HandleTObjOcafObjectIterator_destructor(self_: *mut HandleTObjOcafObjectIterator);
+    /// Clone Handle<TObj_OcafObjectIterator> (increments reference count)
+    pub fn HandleTObjOcafObjectIterator_clone(
+        self_: *const HandleTObjOcafObjectIterator,
+    ) -> crate::OcctResult<*mut HandleTObjOcafObjectIterator>;
     /// Dereference Handle to get *const TObj_OcafObjectIterator
     pub fn HandleTObjOcafObjectIterator_get(
         handle: *const HandleTObjOcafObjectIterator,
@@ -1780,6 +1816,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjPartition>;
     /// Destroy Handle<TObj_Partition>
     pub fn HandleTObjPartition_destructor(self_: *mut HandleTObjPartition);
+    /// Clone Handle<TObj_Partition> (increments reference count)
+    pub fn HandleTObjPartition_clone(
+        self_: *const HandleTObjPartition,
+    ) -> crate::OcctResult<*mut HandleTObjPartition>;
     /// Dereference Handle to get *const TObj_Partition
     pub fn HandleTObjPartition_get(
         handle: *const HandleTObjPartition,
@@ -2081,6 +2121,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjReferenceIterator>;
     /// Destroy Handle<TObj_ReferenceIterator>
     pub fn HandleTObjReferenceIterator_destructor(self_: *mut HandleTObjReferenceIterator);
+    /// Clone Handle<TObj_ReferenceIterator> (increments reference count)
+    pub fn HandleTObjReferenceIterator_clone(
+        self_: *const HandleTObjReferenceIterator,
+    ) -> crate::OcctResult<*mut HandleTObjReferenceIterator>;
     /// Dereference Handle to get *const TObj_ReferenceIterator
     pub fn HandleTObjReferenceIterator_get(
         handle: *const HandleTObjReferenceIterator,
@@ -2196,6 +2240,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjSequenceIterator>;
     /// Destroy Handle<TObj_SequenceIterator>
     pub fn HandleTObjSequenceIterator_destructor(self_: *mut HandleTObjSequenceIterator);
+    /// Clone Handle<TObj_SequenceIterator> (increments reference count)
+    pub fn HandleTObjSequenceIterator_clone(
+        self_: *const HandleTObjSequenceIterator,
+    ) -> crate::OcctResult<*mut HandleTObjSequenceIterator>;
     /// Dereference Handle to get *const TObj_SequenceIterator
     pub fn HandleTObjSequenceIterator_get(
         handle: *const HandleTObjSequenceIterator,
@@ -2291,6 +2339,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjHSequenceOfObject>;
     /// Destroy Handle<TObj_HSequenceOfObject>
     pub fn HandleTObjHSequenceOfObject_destructor(self_: *mut HandleTObjHSequenceOfObject);
+    /// Clone Handle<TObj_HSequenceOfObject> (increments reference count)
+    pub fn HandleTObjHSequenceOfObject_clone(
+        self_: *const HandleTObjHSequenceOfObject,
+    ) -> crate::OcctResult<*mut HandleTObjHSequenceOfObject>;
     /// Dereference Handle to get *const TObj_HSequenceOfObject
     pub fn HandleTObjHSequenceOfObject_get(
         handle: *const HandleTObjHSequenceOfObject,
@@ -2451,6 +2503,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjTIntSparseArray>;
     /// Destroy Handle<TObj_TIntSparseArray>
     pub fn HandleTObjTIntSparseArray_destructor(self_: *mut HandleTObjTIntSparseArray);
+    /// Clone Handle<TObj_TIntSparseArray> (increments reference count)
+    pub fn HandleTObjTIntSparseArray_clone(
+        self_: *const HandleTObjTIntSparseArray,
+    ) -> crate::OcctResult<*mut HandleTObjTIntSparseArray>;
     /// Dereference Handle to get *const TObj_TIntSparseArray
     pub fn HandleTObjTIntSparseArray_get(
         handle: *const HandleTObjTIntSparseArray,
@@ -2679,6 +2735,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleTObjTModel>;
     /// Destroy Handle<TObj_TModel>
     pub fn HandleTObjTModel_destructor(self_: *mut HandleTObjTModel);
+    /// Clone Handle<TObj_TModel> (increments reference count)
+    pub fn HandleTObjTModel_clone(
+        self_: *const HandleTObjTModel,
+    ) -> crate::OcctResult<*mut HandleTObjTModel>;
     /// Dereference Handle to get *const TObj_TModel
     pub fn HandleTObjTModel_get(
         handle: *const HandleTObjTModel,
@@ -2929,6 +2989,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjTNameContainer>;
     /// Destroy Handle<TObj_TNameContainer>
     pub fn HandleTObjTNameContainer_destructor(self_: *mut HandleTObjTNameContainer);
+    /// Clone Handle<TObj_TNameContainer> (increments reference count)
+    pub fn HandleTObjTNameContainer_clone(
+        self_: *const HandleTObjTNameContainer,
+    ) -> crate::OcctResult<*mut HandleTObjTNameContainer>;
     /// Dereference Handle to get *const TObj_TNameContainer
     pub fn HandleTObjTNameContainer_get(
         handle: *const HandleTObjTNameContainer,
@@ -3191,6 +3255,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjTObject>;
     /// Destroy Handle<TObj_TObject>
     pub fn HandleTObjTObject_destructor(self_: *mut HandleTObjTObject);
+    /// Clone Handle<TObj_TObject> (increments reference count)
+    pub fn HandleTObjTObject_clone(
+        self_: *const HandleTObjTObject,
+    ) -> crate::OcctResult<*mut HandleTObjTObject>;
     /// Dereference Handle to get *const TObj_TObject
     pub fn HandleTObjTObject_get(
         handle: *const HandleTObjTObject,
@@ -3462,6 +3530,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTObjTReference>;
     /// Destroy Handle<TObj_TReference>
     pub fn HandleTObjTReference_destructor(self_: *mut HandleTObjTReference);
+    /// Clone Handle<TObj_TReference> (increments reference count)
+    pub fn HandleTObjTReference_clone(
+        self_: *const HandleTObjTReference,
+    ) -> crate::OcctResult<*mut HandleTObjTReference>;
     /// Dereference Handle to get *const TObj_TReference
     pub fn HandleTObjTReference_get(
         handle: *const HandleTObjTReference,
@@ -3689,6 +3761,10 @@ extern "C" {
     pub fn TObj_TXYZ_to_handle(obj: *mut TObj_TXYZ) -> crate::OcctResult<*mut HandleTObjTXYZ>;
     /// Destroy Handle<TObj_TXYZ>
     pub fn HandleTObjTXYZ_destructor(self_: *mut HandleTObjTXYZ);
+    /// Clone Handle<TObj_TXYZ> (increments reference count)
+    pub fn HandleTObjTXYZ_clone(
+        self_: *const HandleTObjTXYZ,
+    ) -> crate::OcctResult<*mut HandleTObjTXYZ>;
     /// Dereference Handle to get *const TObj_TXYZ
     pub fn HandleTObjTXYZ_get(handle: *const HandleTObjTXYZ)
         -> crate::OcctResult<*const TObj_TXYZ>;

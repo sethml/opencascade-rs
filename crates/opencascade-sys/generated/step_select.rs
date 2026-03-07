@@ -224,6 +224,12 @@ unsafe impl crate::CppDeletable for HandleStepSelectActivator {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepSelectActivator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepSelectActivator_clone(ptr))
+    }
+}
+
 impl HandleStepSelectActivator {
     /// Dereference this Handle to access the underlying StepSelect_Activator
     pub fn get(&self) -> &crate::ffi_types::StepSelect_Activator {
@@ -550,6 +556,12 @@ pub use crate::ffi_types::HandleStepSelectFileModifier;
 unsafe impl crate::CppDeletable for HandleStepSelectFileModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepSelectFileModifier_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepSelectFileModifier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepSelectFileModifier_clone(ptr))
     }
 }
 
@@ -1025,6 +1037,12 @@ unsafe impl crate::CppDeletable for HandleStepSelectFloatFormat {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepSelectFloatFormat {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepSelectFloatFormat_clone(ptr))
+    }
+}
+
 impl HandleStepSelectFloatFormat {
     /// Dereference this Handle to access the underlying StepSelect_FloatFormat
     pub fn get(&self) -> &crate::ffi_types::StepSelect_FloatFormat {
@@ -1417,6 +1435,12 @@ pub use crate::ffi_types::HandleStepSelectModelModifier;
 unsafe impl crate::CppDeletable for HandleStepSelectModelModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepSelectModelModifier_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepSelectModelModifier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepSelectModelModifier_clone(ptr))
     }
 }
 
@@ -1848,6 +1872,12 @@ unsafe impl crate::CppDeletable for HandleStepSelectStepType {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepSelectStepType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepSelectStepType_clone(ptr))
+    }
+}
+
 impl HandleStepSelectStepType {
     /// Dereference this Handle to access the underlying StepSelect_StepType
     pub fn get(&self) -> &crate::ffi_types::StepSelect_StepType {
@@ -2269,6 +2299,12 @@ pub use crate::ffi_types::HandleStepSelectWorkLibrary;
 unsafe impl crate::CppDeletable for HandleStepSelectWorkLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepSelectWorkLibrary_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepSelectWorkLibrary {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepSelectWorkLibrary_clone(ptr))
     }
 }
 

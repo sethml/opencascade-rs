@@ -154,6 +154,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
     /// Destroy Handle<Adaptor3d_Curve>
     pub fn HandleAdaptor3dCurve_destructor(self_: *mut HandleAdaptor3dCurve);
+    /// Clone Handle<Adaptor3d_Curve> (increments reference count)
+    pub fn HandleAdaptor3dCurve_clone(
+        self_: *const HandleAdaptor3dCurve,
+    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
     /// Dereference Handle to get *const Adaptor3d_Curve
     pub fn HandleAdaptor3dCurve_get(
         handle: *const HandleAdaptor3dCurve,
@@ -452,6 +456,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdaptor3dCurveOnSurface>;
     /// Destroy Handle<Adaptor3d_CurveOnSurface>
     pub fn HandleAdaptor3dCurveOnSurface_destructor(self_: *mut HandleAdaptor3dCurveOnSurface);
+    /// Clone Handle<Adaptor3d_CurveOnSurface> (increments reference count)
+    pub fn HandleAdaptor3dCurveOnSurface_clone(
+        self_: *const HandleAdaptor3dCurveOnSurface,
+    ) -> crate::OcctResult<*mut HandleAdaptor3dCurveOnSurface>;
     /// Dereference Handle to get *const Adaptor3d_CurveOnSurface
     pub fn HandleAdaptor3dCurveOnSurface_get(
         handle: *const HandleAdaptor3dCurveOnSurface,
@@ -781,6 +789,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdaptor3dHVertex>;
     /// Destroy Handle<Adaptor3d_HVertex>
     pub fn HandleAdaptor3dHVertex_destructor(self_: *mut HandleAdaptor3dHVertex);
+    /// Clone Handle<Adaptor3d_HVertex> (increments reference count)
+    pub fn HandleAdaptor3dHVertex_clone(
+        self_: *const HandleAdaptor3dHVertex,
+    ) -> crate::OcctResult<*mut HandleAdaptor3dHVertex>;
     /// Dereference Handle to get *const Adaptor3d_HVertex
     pub fn HandleAdaptor3dHVertex_get(
         handle: *const HandleAdaptor3dHVertex,
@@ -1084,6 +1096,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdaptor3dIsoCurve>;
     /// Destroy Handle<Adaptor3d_IsoCurve>
     pub fn HandleAdaptor3dIsoCurve_destructor(self_: *mut HandleAdaptor3dIsoCurve);
+    /// Clone Handle<Adaptor3d_IsoCurve> (increments reference count)
+    pub fn HandleAdaptor3dIsoCurve_clone(
+        self_: *const HandleAdaptor3dIsoCurve,
+    ) -> crate::OcctResult<*mut HandleAdaptor3dIsoCurve>;
     /// Dereference Handle to get *const Adaptor3d_IsoCurve
     pub fn HandleAdaptor3dIsoCurve_get(
         handle: *const HandleAdaptor3dIsoCurve,
@@ -1382,6 +1398,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdaptor3dSurface>;
     /// Destroy Handle<Adaptor3d_Surface>
     pub fn HandleAdaptor3dSurface_destructor(self_: *mut HandleAdaptor3dSurface);
+    /// Clone Handle<Adaptor3d_Surface> (increments reference count)
+    pub fn HandleAdaptor3dSurface_clone(
+        self_: *const HandleAdaptor3dSurface,
+    ) -> crate::OcctResult<*mut HandleAdaptor3dSurface>;
     /// Dereference Handle to get *const Adaptor3d_Surface
     pub fn HandleAdaptor3dSurface_get(
         handle: *const HandleAdaptor3dSurface,
@@ -1622,6 +1642,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdaptor3dTopolTool>;
     /// Destroy Handle<Adaptor3d_TopolTool>
     pub fn HandleAdaptor3dTopolTool_destructor(self_: *mut HandleAdaptor3dTopolTool);
+    /// Clone Handle<Adaptor3d_TopolTool> (increments reference count)
+    pub fn HandleAdaptor3dTopolTool_clone(
+        self_: *const HandleAdaptor3dTopolTool,
+    ) -> crate::OcctResult<*mut HandleAdaptor3dTopolTool>;
     /// Dereference Handle to get *const Adaptor3d_TopolTool
     pub fn HandleAdaptor3dTopolTool_get(
         handle: *const HandleAdaptor3dTopolTool,
@@ -2016,7 +2040,7 @@ extern "C" {
         self_: *mut GProp_CelGProps,
     ) -> crate::OcctResult<*mut GProp_GProps>;
     /// Clone via copy constructor
-    pub fn GProp_CelGProps_to_owned(
+    pub fn GProp_CelGProps_clone(
         self_: *const GProp_CelGProps,
     ) -> crate::OcctResult<*mut GProp_CelGProps>;
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
@@ -2102,9 +2126,7 @@ extern "C" {
         A: *const gp_Ax1,
     ) -> crate::OcctResult<f64>;
     /// Clone via copy constructor
-    pub fn GProp_GProps_to_owned(
-        self_: *const GProp_GProps,
-    ) -> crate::OcctResult<*mut GProp_GProps>;
+    pub fn GProp_GProps_clone(self_: *const GProp_GProps) -> crate::OcctResult<*mut GProp_GProps>;
     // ======================== GProp_PEquation ========================
     pub fn GProp_PEquation_destructor(self_: *mut GProp_PEquation);
     /// **Source:** `GProp_PEquation.hxx`:54 - `GProp_PEquation::GProp_PEquation()`
@@ -2135,7 +2157,7 @@ extern "C" {
         V3: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn GProp_PEquation_to_owned(
+    pub fn GProp_PEquation_clone(
         self_: *const GProp_PEquation,
     ) -> crate::OcctResult<*mut GProp_PEquation>;
     // ======================== GProp_PGProps ========================
@@ -2202,7 +2224,7 @@ extern "C" {
         self_: *mut GProp_PGProps,
     ) -> crate::OcctResult<*mut GProp_GProps>;
     /// Clone via copy constructor
-    pub fn GProp_PGProps_to_owned(
+    pub fn GProp_PGProps_clone(
         self_: *const GProp_PGProps,
     ) -> crate::OcctResult<*mut GProp_PGProps>;
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
@@ -2291,7 +2313,7 @@ extern "C" {
         Rzz: *mut f64,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn GProp_PrincipalProps_to_owned(
+    pub fn GProp_PrincipalProps_clone(
         self_: *const GProp_PrincipalProps,
     ) -> crate::OcctResult<*mut GProp_PrincipalProps>;
     // ======================== GProp_SelGProps ========================
@@ -2384,7 +2406,7 @@ extern "C" {
         self_: *mut GProp_SelGProps,
     ) -> crate::OcctResult<*mut GProp_GProps>;
     /// Clone via copy constructor
-    pub fn GProp_SelGProps_to_owned(
+    pub fn GProp_SelGProps_clone(
         self_: *const GProp_SelGProps,
     ) -> crate::OcctResult<*mut GProp_SelGProps>;
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
@@ -2492,6 +2514,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGPropUndefinedAxis>;
     /// Destroy Handle<GProp_UndefinedAxis>
     pub fn HandleGPropUndefinedAxis_destructor(self_: *mut HandleGPropUndefinedAxis);
+    /// Clone Handle<GProp_UndefinedAxis> (increments reference count)
+    pub fn HandleGPropUndefinedAxis_clone(
+        self_: *const HandleGPropUndefinedAxis,
+    ) -> crate::OcctResult<*mut HandleGPropUndefinedAxis>;
     /// Dereference Handle to get *const GProp_UndefinedAxis
     pub fn HandleGPropUndefinedAxis_get(
         handle: *const HandleGPropUndefinedAxis,
@@ -2645,7 +2671,7 @@ extern "C" {
         self_: *mut GProp_VelGProps,
     ) -> crate::OcctResult<*mut GProp_GProps>;
     /// Clone via copy constructor
-    pub fn GProp_VelGProps_to_owned(
+    pub fn GProp_VelGProps_clone(
         self_: *const GProp_VelGProps,
     ) -> crate::OcctResult<*mut GProp_VelGProps>;
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
@@ -2758,6 +2784,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomAxis1Placement>;
     /// Destroy Handle<Geom_Axis1Placement>
     pub fn HandleGeomAxis1Placement_destructor(self_: *mut HandleGeomAxis1Placement);
+    /// Clone Handle<Geom_Axis1Placement> (increments reference count)
+    pub fn HandleGeomAxis1Placement_clone(
+        self_: *const HandleGeomAxis1Placement,
+    ) -> crate::OcctResult<*mut HandleGeomAxis1Placement>;
     /// Dereference Handle to get *const Geom_Axis1Placement
     pub fn HandleGeomAxis1Placement_get(
         handle: *const HandleGeomAxis1Placement,
@@ -2975,6 +3005,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomAxis2Placement>;
     /// Destroy Handle<Geom_Axis2Placement>
     pub fn HandleGeomAxis2Placement_destructor(self_: *mut HandleGeomAxis2Placement);
+    /// Clone Handle<Geom_Axis2Placement> (increments reference count)
+    pub fn HandleGeomAxis2Placement_clone(
+        self_: *const HandleGeomAxis2Placement,
+    ) -> crate::OcctResult<*mut HandleGeomAxis2Placement>;
     /// Dereference Handle to get *const Geom_Axis2Placement
     pub fn HandleGeomAxis2Placement_get(
         handle: *const HandleGeomAxis2Placement,
@@ -3161,6 +3195,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom_AxisPlacement>
     pub fn HandleGeomAxisPlacement_destructor(self_: *mut HandleGeomAxisPlacement);
+    /// Clone Handle<Geom_AxisPlacement> (increments reference count)
+    pub fn HandleGeomAxisPlacement_clone(
+        self_: *const HandleGeomAxisPlacement,
+    ) -> crate::OcctResult<*mut HandleGeomAxisPlacement>;
     /// Dereference Handle to get *const Geom_AxisPlacement
     pub fn HandleGeomAxisPlacement_get(
         handle: *const HandleGeomAxisPlacement,
@@ -3726,6 +3764,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomBSplineCurve>;
     /// Destroy Handle<Geom_BSplineCurve>
     pub fn HandleGeomBSplineCurve_destructor(self_: *mut HandleGeomBSplineCurve);
+    /// Clone Handle<Geom_BSplineCurve> (increments reference count)
+    pub fn HandleGeomBSplineCurve_clone(
+        self_: *const HandleGeomBSplineCurve,
+    ) -> crate::OcctResult<*mut HandleGeomBSplineCurve>;
     /// Dereference Handle to get *const Geom_BSplineCurve
     pub fn HandleGeomBSplineCurve_get(
         handle: *const HandleGeomBSplineCurve,
@@ -4593,6 +4635,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomBSplineSurface>;
     /// Destroy Handle<Geom_BSplineSurface>
     pub fn HandleGeomBSplineSurface_destructor(self_: *mut HandleGeomBSplineSurface);
+    /// Clone Handle<Geom_BSplineSurface> (increments reference count)
+    pub fn HandleGeomBSplineSurface_clone(
+        self_: *const HandleGeomBSplineSurface,
+    ) -> crate::OcctResult<*mut HandleGeomBSplineSurface>;
     /// Dereference Handle to get *const Geom_BSplineSurface
     pub fn HandleGeomBSplineSurface_get(
         handle: *const HandleGeomBSplineSurface,
@@ -4969,6 +5015,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomBezierCurve>;
     /// Destroy Handle<Geom_BezierCurve>
     pub fn HandleGeomBezierCurve_destructor(self_: *mut HandleGeomBezierCurve);
+    /// Clone Handle<Geom_BezierCurve> (increments reference count)
+    pub fn HandleGeomBezierCurve_clone(
+        self_: *const HandleGeomBezierCurve,
+    ) -> crate::OcctResult<*mut HandleGeomBezierCurve>;
     /// Dereference Handle to get *const Geom_BezierCurve
     pub fn HandleGeomBezierCurve_get(
         handle: *const HandleGeomBezierCurve,
@@ -5475,6 +5525,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomBezierSurface>;
     /// Destroy Handle<Geom_BezierSurface>
     pub fn HandleGeomBezierSurface_destructor(self_: *mut HandleGeomBezierSurface);
+    /// Clone Handle<Geom_BezierSurface> (increments reference count)
+    pub fn HandleGeomBezierSurface_clone(
+        self_: *const HandleGeomBezierSurface,
+    ) -> crate::OcctResult<*mut HandleGeomBezierSurface>;
     /// Dereference Handle to get *const Geom_BezierSurface
     pub fn HandleGeomBezierSurface_get(
         handle: *const HandleGeomBezierSurface,
@@ -5656,6 +5710,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom_BoundedCurve>
     pub fn HandleGeomBoundedCurve_destructor(self_: *mut HandleGeomBoundedCurve);
+    /// Clone Handle<Geom_BoundedCurve> (increments reference count)
+    pub fn HandleGeomBoundedCurve_clone(
+        self_: *const HandleGeomBoundedCurve,
+    ) -> crate::OcctResult<*mut HandleGeomBoundedCurve>;
     /// Dereference Handle to get *const Geom_BoundedCurve
     pub fn HandleGeomBoundedCurve_get(
         handle: *const HandleGeomBoundedCurve,
@@ -5906,6 +5964,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom_BoundedSurface>
     pub fn HandleGeomBoundedSurface_destructor(self_: *mut HandleGeomBoundedSurface);
+    /// Clone Handle<Geom_BoundedSurface> (increments reference count)
+    pub fn HandleGeomBoundedSurface_clone(
+        self_: *const HandleGeomBoundedSurface,
+    ) -> crate::OcctResult<*mut HandleGeomBoundedSurface>;
     /// Dereference Handle to get *const Geom_BoundedSurface
     pub fn HandleGeomBoundedSurface_get(
         handle: *const HandleGeomBoundedSurface,
@@ -6281,6 +6343,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomCartesianPoint>;
     /// Destroy Handle<Geom_CartesianPoint>
     pub fn HandleGeomCartesianPoint_destructor(self_: *mut HandleGeomCartesianPoint);
+    /// Clone Handle<Geom_CartesianPoint> (increments reference count)
+    pub fn HandleGeomCartesianPoint_clone(
+        self_: *const HandleGeomCartesianPoint,
+    ) -> crate::OcctResult<*mut HandleGeomCartesianPoint>;
     /// Dereference Handle to get *const Geom_CartesianPoint
     pub fn HandleGeomCartesianPoint_get(
         handle: *const HandleGeomCartesianPoint,
@@ -6515,6 +6581,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleGeomCircle>;
     /// Destroy Handle<Geom_Circle>
     pub fn HandleGeomCircle_destructor(self_: *mut HandleGeomCircle);
+    /// Clone Handle<Geom_Circle> (increments reference count)
+    pub fn HandleGeomCircle_clone(
+        self_: *const HandleGeomCircle,
+    ) -> crate::OcctResult<*mut HandleGeomCircle>;
     /// Dereference Handle to get *const Geom_Circle
     pub fn HandleGeomCircle_get(
         handle: *const HandleGeomCircle,
@@ -6750,6 +6820,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom_Conic>
     pub fn HandleGeomConic_destructor(self_: *mut HandleGeomConic);
+    /// Clone Handle<Geom_Conic> (increments reference count)
+    pub fn HandleGeomConic_clone(
+        self_: *const HandleGeomConic,
+    ) -> crate::OcctResult<*mut HandleGeomConic>;
     /// Dereference Handle to get *const Geom_Conic
     pub fn HandleGeomConic_get(
         handle: *const HandleGeomConic,
@@ -7160,6 +7234,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomConicalSurface>;
     /// Destroy Handle<Geom_ConicalSurface>
     pub fn HandleGeomConicalSurface_destructor(self_: *mut HandleGeomConicalSurface);
+    /// Clone Handle<Geom_ConicalSurface> (increments reference count)
+    pub fn HandleGeomConicalSurface_clone(
+        self_: *const HandleGeomConicalSurface,
+    ) -> crate::OcctResult<*mut HandleGeomConicalSurface>;
     /// Dereference Handle to get *const Geom_ConicalSurface
     pub fn HandleGeomConicalSurface_get(
         handle: *const HandleGeomConicalSurface,
@@ -7431,6 +7509,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom_Curve>
     pub fn HandleGeomCurve_destructor(self_: *mut HandleGeomCurve);
+    /// Clone Handle<Geom_Curve> (increments reference count)
+    pub fn HandleGeomCurve_clone(
+        self_: *const HandleGeomCurve,
+    ) -> crate::OcctResult<*mut HandleGeomCurve>;
     /// Dereference Handle to get *const Geom_Curve
     pub fn HandleGeomCurve_get(
         handle: *const HandleGeomCurve,
@@ -7774,6 +7856,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomCylindricalSurface>;
     /// Destroy Handle<Geom_CylindricalSurface>
     pub fn HandleGeomCylindricalSurface_destructor(self_: *mut HandleGeomCylindricalSurface);
+    /// Clone Handle<Geom_CylindricalSurface> (increments reference count)
+    pub fn HandleGeomCylindricalSurface_clone(
+        self_: *const HandleGeomCylindricalSurface,
+    ) -> crate::OcctResult<*mut HandleGeomCylindricalSurface>;
     /// Dereference Handle to get *const Geom_CylindricalSurface
     pub fn HandleGeomCylindricalSurface_get(
         handle: *const HandleGeomCylindricalSurface,
@@ -8051,6 +8137,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomDirection>;
     /// Destroy Handle<Geom_Direction>
     pub fn HandleGeomDirection_destructor(self_: *mut HandleGeomDirection);
+    /// Clone Handle<Geom_Direction> (increments reference count)
+    pub fn HandleGeomDirection_clone(
+        self_: *const HandleGeomDirection,
+    ) -> crate::OcctResult<*mut HandleGeomDirection>;
     /// Dereference Handle to get *const Geom_Direction
     pub fn HandleGeomDirection_get(
         handle: *const HandleGeomDirection,
@@ -8290,6 +8380,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom_ElementarySurface>
     pub fn HandleGeomElementarySurface_destructor(self_: *mut HandleGeomElementarySurface);
+    /// Clone Handle<Geom_ElementarySurface> (increments reference count)
+    pub fn HandleGeomElementarySurface_clone(
+        self_: *const HandleGeomElementarySurface,
+    ) -> crate::OcctResult<*mut HandleGeomElementarySurface>;
     /// Dereference Handle to get *const Geom_ElementarySurface
     pub fn HandleGeomElementarySurface_get(
         handle: *const HandleGeomElementarySurface,
@@ -8687,6 +8781,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomEllipse>;
     /// Destroy Handle<Geom_Ellipse>
     pub fn HandleGeomEllipse_destructor(self_: *mut HandleGeomEllipse);
+    /// Clone Handle<Geom_Ellipse> (increments reference count)
+    pub fn HandleGeomEllipse_clone(
+        self_: *const HandleGeomEllipse,
+    ) -> crate::OcctResult<*mut HandleGeomEllipse>;
     /// Dereference Handle to get *const Geom_Ellipse
     pub fn HandleGeomEllipse_get(
         handle: *const HandleGeomEllipse,
@@ -8963,6 +9061,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom_Geometry>
     pub fn HandleGeomGeometry_destructor(self_: *mut HandleGeomGeometry);
+    /// Clone Handle<Geom_Geometry> (increments reference count)
+    pub fn HandleGeomGeometry_clone(
+        self_: *const HandleGeomGeometry,
+    ) -> crate::OcctResult<*mut HandleGeomGeometry>;
     /// Dereference Handle to get *const Geom_Geometry
     pub fn HandleGeomGeometry_get(
         handle: *const HandleGeomGeometry,
@@ -9172,6 +9274,10 @@ extern "C" {
     pub fn HandleGeomHSequenceOfBSplineSurface_destructor(
         self_: *mut HandleGeomHSequenceOfBSplineSurface,
     );
+    /// Clone Handle<Geom_HSequenceOfBSplineSurface> (increments reference count)
+    pub fn HandleGeomHSequenceOfBSplineSurface_clone(
+        self_: *const HandleGeomHSequenceOfBSplineSurface,
+    ) -> crate::OcctResult<*mut HandleGeomHSequenceOfBSplineSurface>;
     /// Dereference Handle to get *const Geom_HSequenceOfBSplineSurface
     pub fn HandleGeomHSequenceOfBSplineSurface_get(
         handle: *const HandleGeomHSequenceOfBSplineSurface,
@@ -9387,6 +9493,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomHyperbola>;
     /// Destroy Handle<Geom_Hyperbola>
     pub fn HandleGeomHyperbola_destructor(self_: *mut HandleGeomHyperbola);
+    /// Clone Handle<Geom_Hyperbola> (increments reference count)
+    pub fn HandleGeomHyperbola_clone(
+        self_: *const HandleGeomHyperbola,
+    ) -> crate::OcctResult<*mut HandleGeomHyperbola>;
     /// Dereference Handle to get *const Geom_Hyperbola
     pub fn HandleGeomHyperbola_get(
         handle: *const HandleGeomHyperbola,
@@ -9684,6 +9794,10 @@ extern "C" {
     pub fn Geom_Line_to_handle(obj: *mut Geom_Line) -> crate::OcctResult<*mut HandleGeomLine>;
     /// Destroy Handle<Geom_Line>
     pub fn HandleGeomLine_destructor(self_: *mut HandleGeomLine);
+    /// Clone Handle<Geom_Line> (increments reference count)
+    pub fn HandleGeomLine_clone(
+        self_: *const HandleGeomLine,
+    ) -> crate::OcctResult<*mut HandleGeomLine>;
     /// Dereference Handle to get *const Geom_Line
     pub fn HandleGeomLine_get(handle: *const HandleGeomLine)
         -> crate::OcctResult<*const Geom_Line>;
@@ -9948,6 +10062,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomOffsetCurve>;
     /// Destroy Handle<Geom_OffsetCurve>
     pub fn HandleGeomOffsetCurve_destructor(self_: *mut HandleGeomOffsetCurve);
+    /// Clone Handle<Geom_OffsetCurve> (increments reference count)
+    pub fn HandleGeomOffsetCurve_clone(
+        self_: *const HandleGeomOffsetCurve,
+    ) -> crate::OcctResult<*mut HandleGeomOffsetCurve>;
     /// Dereference Handle to get *const Geom_OffsetCurve
     pub fn HandleGeomOffsetCurve_get(
         handle: *const HandleGeomOffsetCurve,
@@ -10286,6 +10404,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomOffsetSurface>;
     /// Destroy Handle<Geom_OffsetSurface>
     pub fn HandleGeomOffsetSurface_destructor(self_: *mut HandleGeomOffsetSurface);
+    /// Clone Handle<Geom_OffsetSurface> (increments reference count)
+    pub fn HandleGeomOffsetSurface_clone(
+        self_: *const HandleGeomOffsetSurface,
+    ) -> crate::OcctResult<*mut HandleGeomOffsetSurface>;
     /// Dereference Handle to get *const Geom_OffsetSurface
     pub fn HandleGeomOffsetSurface_get(
         handle: *const HandleGeomOffsetSurface,
@@ -10461,6 +10583,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomOsculatingSurface>;
     /// Destroy Handle<Geom_OsculatingSurface>
     pub fn HandleGeomOsculatingSurface_destructor(self_: *mut HandleGeomOsculatingSurface);
+    /// Clone Handle<Geom_OsculatingSurface> (increments reference count)
+    pub fn HandleGeomOsculatingSurface_clone(
+        self_: *const HandleGeomOsculatingSurface,
+    ) -> crate::OcctResult<*mut HandleGeomOsculatingSurface>;
     /// Dereference Handle to get *const Geom_OsculatingSurface
     pub fn HandleGeomOsculatingSurface_get(
         handle: *const HandleGeomOsculatingSurface,
@@ -10654,6 +10780,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomParabola>;
     /// Destroy Handle<Geom_Parabola>
     pub fn HandleGeomParabola_destructor(self_: *mut HandleGeomParabola);
+    /// Clone Handle<Geom_Parabola> (increments reference count)
+    pub fn HandleGeomParabola_clone(
+        self_: *const HandleGeomParabola,
+    ) -> crate::OcctResult<*mut HandleGeomParabola>;
     /// Dereference Handle to get *const Geom_Parabola
     pub fn HandleGeomParabola_get(
         handle: *const HandleGeomParabola,
@@ -10998,6 +11128,10 @@ extern "C" {
     pub fn Geom_Plane_to_handle(obj: *mut Geom_Plane) -> crate::OcctResult<*mut HandleGeomPlane>;
     /// Destroy Handle<Geom_Plane>
     pub fn HandleGeomPlane_destructor(self_: *mut HandleGeomPlane);
+    /// Clone Handle<Geom_Plane> (increments reference count)
+    pub fn HandleGeomPlane_clone(
+        self_: *const HandleGeomPlane,
+    ) -> crate::OcctResult<*mut HandleGeomPlane>;
     /// Dereference Handle to get *const Geom_Plane
     pub fn HandleGeomPlane_get(
         handle: *const HandleGeomPlane,
@@ -11199,6 +11333,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom_Point>
     pub fn HandleGeomPoint_destructor(self_: *mut HandleGeomPoint);
+    /// Clone Handle<Geom_Point> (increments reference count)
+    pub fn HandleGeomPoint_clone(
+        self_: *const HandleGeomPoint,
+    ) -> crate::OcctResult<*mut HandleGeomPoint>;
     /// Dereference Handle to get *const Geom_Point
     pub fn HandleGeomPoint_get(
         handle: *const HandleGeomPoint,
@@ -11542,6 +11680,10 @@ extern "C" {
     pub fn HandleGeomRectangularTrimmedSurface_destructor(
         self_: *mut HandleGeomRectangularTrimmedSurface,
     );
+    /// Clone Handle<Geom_RectangularTrimmedSurface> (increments reference count)
+    pub fn HandleGeomRectangularTrimmedSurface_clone(
+        self_: *const HandleGeomRectangularTrimmedSurface,
+    ) -> crate::OcctResult<*mut HandleGeomRectangularTrimmedSurface>;
     /// Dereference Handle to get *const Geom_RectangularTrimmedSurface
     pub fn HandleGeomRectangularTrimmedSurface_get(
         handle: *const HandleGeomRectangularTrimmedSurface,
@@ -11862,6 +12004,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomSphericalSurface>;
     /// Destroy Handle<Geom_SphericalSurface>
     pub fn HandleGeomSphericalSurface_destructor(self_: *mut HandleGeomSphericalSurface);
+    /// Clone Handle<Geom_SphericalSurface> (increments reference count)
+    pub fn HandleGeomSphericalSurface_clone(
+        self_: *const HandleGeomSphericalSurface,
+    ) -> crate::OcctResult<*mut HandleGeomSphericalSurface>;
     /// Dereference Handle to get *const Geom_SphericalSurface
     pub fn HandleGeomSphericalSurface_get(
         handle: *const HandleGeomSphericalSurface,
@@ -12204,6 +12350,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom_Surface>
     pub fn HandleGeomSurface_destructor(self_: *mut HandleGeomSurface);
+    /// Clone Handle<Geom_Surface> (increments reference count)
+    pub fn HandleGeomSurface_clone(
+        self_: *const HandleGeomSurface,
+    ) -> crate::OcctResult<*mut HandleGeomSurface>;
     /// Dereference Handle to get *const Geom_Surface
     pub fn HandleGeomSurface_get(
         handle: *const HandleGeomSurface,
@@ -12567,6 +12717,10 @@ extern "C" {
     pub fn HandleGeomSurfaceOfLinearExtrusion_destructor(
         self_: *mut HandleGeomSurfaceOfLinearExtrusion,
     );
+    /// Clone Handle<Geom_SurfaceOfLinearExtrusion> (increments reference count)
+    pub fn HandleGeomSurfaceOfLinearExtrusion_clone(
+        self_: *const HandleGeomSurfaceOfLinearExtrusion,
+    ) -> crate::OcctResult<*mut HandleGeomSurfaceOfLinearExtrusion>;
     /// Dereference Handle to get *const Geom_SurfaceOfLinearExtrusion
     pub fn HandleGeomSurfaceOfLinearExtrusion_get(
         handle: *const HandleGeomSurfaceOfLinearExtrusion,
@@ -12925,6 +13079,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomSurfaceOfRevolution>;
     /// Destroy Handle<Geom_SurfaceOfRevolution>
     pub fn HandleGeomSurfaceOfRevolution_destructor(self_: *mut HandleGeomSurfaceOfRevolution);
+    /// Clone Handle<Geom_SurfaceOfRevolution> (increments reference count)
+    pub fn HandleGeomSurfaceOfRevolution_clone(
+        self_: *const HandleGeomSurfaceOfRevolution,
+    ) -> crate::OcctResult<*mut HandleGeomSurfaceOfRevolution>;
     /// Dereference Handle to get *const Geom_SurfaceOfRevolution
     pub fn HandleGeomSurfaceOfRevolution_get(
         handle: *const HandleGeomSurfaceOfRevolution,
@@ -13108,6 +13266,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom_SweptSurface>
     pub fn HandleGeomSweptSurface_destructor(self_: *mut HandleGeomSweptSurface);
+    /// Clone Handle<Geom_SweptSurface> (increments reference count)
+    pub fn HandleGeomSweptSurface_clone(
+        self_: *const HandleGeomSweptSurface,
+    ) -> crate::OcctResult<*mut HandleGeomSweptSurface>;
     /// Dereference Handle to get *const Geom_SweptSurface
     pub fn HandleGeomSweptSurface_get(
         handle: *const HandleGeomSweptSurface,
@@ -13573,6 +13735,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomToroidalSurface>;
     /// Destroy Handle<Geom_ToroidalSurface>
     pub fn HandleGeomToroidalSurface_destructor(self_: *mut HandleGeomToroidalSurface);
+    /// Clone Handle<Geom_ToroidalSurface> (increments reference count)
+    pub fn HandleGeomToroidalSurface_clone(
+        self_: *const HandleGeomToroidalSurface,
+    ) -> crate::OcctResult<*mut HandleGeomToroidalSurface>;
     /// Dereference Handle to get *const Geom_ToroidalSurface
     pub fn HandleGeomToroidalSurface_get(
         handle: *const HandleGeomToroidalSurface,
@@ -13905,6 +14071,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomTransformation>;
     /// Destroy Handle<Geom_Transformation>
     pub fn HandleGeomTransformation_destructor(self_: *mut HandleGeomTransformation);
+    /// Clone Handle<Geom_Transformation> (increments reference count)
+    pub fn HandleGeomTransformation_clone(
+        self_: *const HandleGeomTransformation,
+    ) -> crate::OcctResult<*mut HandleGeomTransformation>;
     /// Dereference Handle to get *const Geom_Transformation
     pub fn HandleGeomTransformation_get(
         handle: *const HandleGeomTransformation,
@@ -14109,6 +14279,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomTrimmedCurve>;
     /// Destroy Handle<Geom_TrimmedCurve>
     pub fn HandleGeomTrimmedCurve_destructor(self_: *mut HandleGeomTrimmedCurve);
+    /// Clone Handle<Geom_TrimmedCurve> (increments reference count)
+    pub fn HandleGeomTrimmedCurve_clone(
+        self_: *const HandleGeomTrimmedCurve,
+    ) -> crate::OcctResult<*mut HandleGeomTrimmedCurve>;
     /// Dereference Handle to get *const Geom_TrimmedCurve
     pub fn HandleGeomTrimmedCurve_get(
         handle: *const HandleGeomTrimmedCurve,
@@ -14290,6 +14464,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomUndefinedDerivative>;
     /// Destroy Handle<Geom_UndefinedDerivative>
     pub fn HandleGeomUndefinedDerivative_destructor(self_: *mut HandleGeomUndefinedDerivative);
+    /// Clone Handle<Geom_UndefinedDerivative> (increments reference count)
+    pub fn HandleGeomUndefinedDerivative_clone(
+        self_: *const HandleGeomUndefinedDerivative,
+    ) -> crate::OcctResult<*mut HandleGeomUndefinedDerivative>;
     /// Dereference Handle to get *const Geom_UndefinedDerivative
     pub fn HandleGeomUndefinedDerivative_get(
         handle: *const HandleGeomUndefinedDerivative,
@@ -14421,6 +14599,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomUndefinedValue>;
     /// Destroy Handle<Geom_UndefinedValue>
     pub fn HandleGeomUndefinedValue_destructor(self_: *mut HandleGeomUndefinedValue);
+    /// Clone Handle<Geom_UndefinedValue> (increments reference count)
+    pub fn HandleGeomUndefinedValue_clone(
+        self_: *const HandleGeomUndefinedValue,
+    ) -> crate::OcctResult<*mut HandleGeomUndefinedValue>;
     /// Dereference Handle to get *const Geom_UndefinedValue
     pub fn HandleGeomUndefinedValue_get(
         handle: *const HandleGeomUndefinedValue,
@@ -14581,6 +14763,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom_Vector>
     pub fn HandleGeomVector_destructor(self_: *mut HandleGeomVector);
+    /// Clone Handle<Geom_Vector> (increments reference count)
+    pub fn HandleGeomVector_clone(
+        self_: *const HandleGeomVector,
+    ) -> crate::OcctResult<*mut HandleGeomVector>;
     /// Dereference Handle to get *const Geom_Vector
     pub fn HandleGeomVector_get(
         handle: *const HandleGeomVector,
@@ -14859,6 +15045,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomVectorWithMagnitude>;
     /// Destroy Handle<Geom_VectorWithMagnitude>
     pub fn HandleGeomVectorWithMagnitude_destructor(self_: *mut HandleGeomVectorWithMagnitude);
+    /// Clone Handle<Geom_VectorWithMagnitude> (increments reference count)
+    pub fn HandleGeomVectorWithMagnitude_clone(
+        self_: *const HandleGeomVectorWithMagnitude,
+    ) -> crate::OcctResult<*mut HandleGeomVectorWithMagnitude>;
     /// Dereference Handle to get *const Geom_VectorWithMagnitude
     pub fn HandleGeomVectorWithMagnitude_get(
         handle: *const HandleGeomVectorWithMagnitude,
@@ -15203,6 +15393,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomAdaptorCurve>;
     /// Destroy Handle<GeomAdaptor_Curve>
     pub fn HandleGeomAdaptorCurve_destructor(self_: *mut HandleGeomAdaptorCurve);
+    /// Clone Handle<GeomAdaptor_Curve> (increments reference count)
+    pub fn HandleGeomAdaptorCurve_clone(
+        self_: *const HandleGeomAdaptorCurve,
+    ) -> crate::OcctResult<*mut HandleGeomAdaptorCurve>;
     /// Dereference Handle to get *const GeomAdaptor_Curve
     pub fn HandleGeomAdaptorCurve_get(
         handle: *const HandleGeomAdaptorCurve,
@@ -15557,6 +15751,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomAdaptorSurface>;
     /// Destroy Handle<GeomAdaptor_Surface>
     pub fn HandleGeomAdaptorSurface_destructor(self_: *mut HandleGeomAdaptorSurface);
+    /// Clone Handle<GeomAdaptor_Surface> (increments reference count)
+    pub fn HandleGeomAdaptorSurface_clone(
+        self_: *const HandleGeomAdaptorSurface,
+    ) -> crate::OcctResult<*mut HandleGeomAdaptorSurface>;
     /// Dereference Handle to get *const GeomAdaptor_Surface
     pub fn HandleGeomAdaptorSurface_get(
         handle: *const HandleGeomAdaptorSurface,
@@ -15837,6 +16035,10 @@ extern "C" {
     pub fn HandleGeomAdaptorSurfaceOfLinearExtrusion_destructor(
         self_: *mut HandleGeomAdaptorSurfaceOfLinearExtrusion,
     );
+    /// Clone Handle<GeomAdaptor_SurfaceOfLinearExtrusion> (increments reference count)
+    pub fn HandleGeomAdaptorSurfaceOfLinearExtrusion_clone(
+        self_: *const HandleGeomAdaptorSurfaceOfLinearExtrusion,
+    ) -> crate::OcctResult<*mut HandleGeomAdaptorSurfaceOfLinearExtrusion>;
     /// Dereference Handle to get *const GeomAdaptor_SurfaceOfLinearExtrusion
     pub fn HandleGeomAdaptorSurfaceOfLinearExtrusion_get(
         handle: *const HandleGeomAdaptorSurfaceOfLinearExtrusion,
@@ -16201,6 +16403,10 @@ extern "C" {
     pub fn HandleGeomAdaptorSurfaceOfRevolution_destructor(
         self_: *mut HandleGeomAdaptorSurfaceOfRevolution,
     );
+    /// Clone Handle<GeomAdaptor_SurfaceOfRevolution> (increments reference count)
+    pub fn HandleGeomAdaptorSurfaceOfRevolution_clone(
+        self_: *const HandleGeomAdaptorSurfaceOfRevolution,
+    ) -> crate::OcctResult<*mut HandleGeomAdaptorSurfaceOfRevolution>;
     /// Dereference Handle to get *const GeomAdaptor_SurfaceOfRevolution
     pub fn HandleGeomAdaptorSurfaceOfRevolution_get(
         handle: *const HandleGeomAdaptorSurfaceOfRevolution,
@@ -16397,6 +16603,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<GeomEvaluator_Curve>
     pub fn HandleGeomEvaluatorCurve_destructor(self_: *mut HandleGeomEvaluatorCurve);
+    /// Clone Handle<GeomEvaluator_Curve> (increments reference count)
+    pub fn HandleGeomEvaluatorCurve_clone(
+        self_: *const HandleGeomEvaluatorCurve,
+    ) -> crate::OcctResult<*mut HandleGeomEvaluatorCurve>;
     /// Dereference Handle to get *const GeomEvaluator_Curve
     pub fn HandleGeomEvaluatorCurve_get(
         handle: *const HandleGeomEvaluatorCurve,
@@ -16538,6 +16748,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeomEvaluatorOffsetCurve>;
     /// Destroy Handle<GeomEvaluator_OffsetCurve>
     pub fn HandleGeomEvaluatorOffsetCurve_destructor(self_: *mut HandleGeomEvaluatorOffsetCurve);
+    /// Clone Handle<GeomEvaluator_OffsetCurve> (increments reference count)
+    pub fn HandleGeomEvaluatorOffsetCurve_clone(
+        self_: *const HandleGeomEvaluatorOffsetCurve,
+    ) -> crate::OcctResult<*mut HandleGeomEvaluatorOffsetCurve>;
     /// Dereference Handle to get *const GeomEvaluator_OffsetCurve
     pub fn HandleGeomEvaluatorOffsetCurve_get(
         handle: *const HandleGeomEvaluatorOffsetCurve,
@@ -16692,6 +16906,10 @@ extern "C" {
     pub fn HandleGeomEvaluatorOffsetSurface_destructor(
         self_: *mut HandleGeomEvaluatorOffsetSurface,
     );
+    /// Clone Handle<GeomEvaluator_OffsetSurface> (increments reference count)
+    pub fn HandleGeomEvaluatorOffsetSurface_clone(
+        self_: *const HandleGeomEvaluatorOffsetSurface,
+    ) -> crate::OcctResult<*mut HandleGeomEvaluatorOffsetSurface>;
     /// Dereference Handle to get *const GeomEvaluator_OffsetSurface
     pub fn HandleGeomEvaluatorOffsetSurface_get(
         handle: *const HandleGeomEvaluatorOffsetSurface,
@@ -16815,6 +17033,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<GeomEvaluator_Surface>
     pub fn HandleGeomEvaluatorSurface_destructor(self_: *mut HandleGeomEvaluatorSurface);
+    /// Clone Handle<GeomEvaluator_Surface> (increments reference count)
+    pub fn HandleGeomEvaluatorSurface_clone(
+        self_: *const HandleGeomEvaluatorSurface,
+    ) -> crate::OcctResult<*mut HandleGeomEvaluatorSurface>;
     /// Dereference Handle to get *const GeomEvaluator_Surface
     pub fn HandleGeomEvaluatorSurface_get(
         handle: *const HandleGeomEvaluatorSurface,
@@ -16978,6 +17200,10 @@ extern "C" {
     pub fn HandleGeomEvaluatorSurfaceOfExtrusion_destructor(
         self_: *mut HandleGeomEvaluatorSurfaceOfExtrusion,
     );
+    /// Clone Handle<GeomEvaluator_SurfaceOfExtrusion> (increments reference count)
+    pub fn HandleGeomEvaluatorSurfaceOfExtrusion_clone(
+        self_: *const HandleGeomEvaluatorSurfaceOfExtrusion,
+    ) -> crate::OcctResult<*mut HandleGeomEvaluatorSurfaceOfExtrusion>;
     /// Dereference Handle to get *const GeomEvaluator_SurfaceOfExtrusion
     pub fn HandleGeomEvaluatorSurfaceOfExtrusion_get(
         handle: *const HandleGeomEvaluatorSurfaceOfExtrusion,
@@ -17145,6 +17371,10 @@ extern "C" {
     pub fn HandleGeomEvaluatorSurfaceOfRevolution_destructor(
         self_: *mut HandleGeomEvaluatorSurfaceOfRevolution,
     );
+    /// Clone Handle<GeomEvaluator_SurfaceOfRevolution> (increments reference count)
+    pub fn HandleGeomEvaluatorSurfaceOfRevolution_clone(
+        self_: *const HandleGeomEvaluatorSurfaceOfRevolution,
+    ) -> crate::OcctResult<*mut HandleGeomEvaluatorSurfaceOfRevolution>;
     /// Dereference Handle to get *const GeomEvaluator_SurfaceOfRevolution
     pub fn HandleGeomEvaluatorSurfaceOfRevolution_get(
         handle: *const HandleGeomEvaluatorSurfaceOfRevolution,
@@ -17754,6 +17984,10 @@ extern "C" {
     pub fn HandleTColGeomHArray1OfBSplineCurve_destructor(
         self_: *mut HandleTColGeomHArray1OfBSplineCurve,
     );
+    /// Clone Handle<TColGeom_HArray1OfBSplineCurve> (increments reference count)
+    pub fn HandleTColGeomHArray1OfBSplineCurve_clone(
+        self_: *const HandleTColGeomHArray1OfBSplineCurve,
+    ) -> crate::OcctResult<*mut HandleTColGeomHArray1OfBSplineCurve>;
     /// Dereference Handle to get *const TColGeom_HArray1OfBSplineCurve
     pub fn HandleTColGeomHArray1OfBSplineCurve_get(
         handle: *const HandleTColGeomHArray1OfBSplineCurve,
@@ -17857,6 +18091,10 @@ extern "C" {
     pub fn HandleTColGeomHArray1OfBezierCurve_destructor(
         self_: *mut HandleTColGeomHArray1OfBezierCurve,
     );
+    /// Clone Handle<TColGeom_HArray1OfBezierCurve> (increments reference count)
+    pub fn HandleTColGeomHArray1OfBezierCurve_clone(
+        self_: *const HandleTColGeomHArray1OfBezierCurve,
+    ) -> crate::OcctResult<*mut HandleTColGeomHArray1OfBezierCurve>;
     /// Dereference Handle to get *const TColGeom_HArray1OfBezierCurve
     pub fn HandleTColGeomHArray1OfBezierCurve_get(
         handle: *const HandleTColGeomHArray1OfBezierCurve,
@@ -17956,6 +18194,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColGeomHArray1OfCurve>;
     /// Destroy Handle<TColGeom_HArray1OfCurve>
     pub fn HandleTColGeomHArray1OfCurve_destructor(self_: *mut HandleTColGeomHArray1OfCurve);
+    /// Clone Handle<TColGeom_HArray1OfCurve> (increments reference count)
+    pub fn HandleTColGeomHArray1OfCurve_clone(
+        self_: *const HandleTColGeomHArray1OfCurve,
+    ) -> crate::OcctResult<*mut HandleTColGeomHArray1OfCurve>;
     /// Dereference Handle to get *const TColGeom_HArray1OfCurve
     pub fn HandleTColGeomHArray1OfCurve_get(
         handle: *const HandleTColGeomHArray1OfCurve,
@@ -18055,6 +18297,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColGeomHArray1OfSurface>;
     /// Destroy Handle<TColGeom_HArray1OfSurface>
     pub fn HandleTColGeomHArray1OfSurface_destructor(self_: *mut HandleTColGeomHArray1OfSurface);
+    /// Clone Handle<TColGeom_HArray1OfSurface> (increments reference count)
+    pub fn HandleTColGeomHArray1OfSurface_clone(
+        self_: *const HandleTColGeomHArray1OfSurface,
+    ) -> crate::OcctResult<*mut HandleTColGeomHArray1OfSurface>;
     /// Dereference Handle to get *const TColGeom_HArray1OfSurface
     pub fn HandleTColGeomHArray1OfSurface_get(
         handle: *const HandleTColGeomHArray1OfSurface,
@@ -18149,6 +18395,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColGeomHArray2OfSurface>;
     /// Destroy Handle<TColGeom_HArray2OfSurface>
     pub fn HandleTColGeomHArray2OfSurface_destructor(self_: *mut HandleTColGeomHArray2OfSurface);
+    /// Clone Handle<TColGeom_HArray2OfSurface> (increments reference count)
+    pub fn HandleTColGeomHArray2OfSurface_clone(
+        self_: *const HandleTColGeomHArray2OfSurface,
+    ) -> crate::OcctResult<*mut HandleTColGeomHArray2OfSurface>;
     /// Dereference Handle to get *const TColGeom_HArray2OfSurface
     pub fn HandleTColGeomHArray2OfSurface_get(
         handle: *const HandleTColGeomHArray2OfSurface,
@@ -18246,6 +18496,10 @@ extern "C" {
     pub fn HandleTColGeomHSequenceOfBoundedCurve_destructor(
         self_: *mut HandleTColGeomHSequenceOfBoundedCurve,
     );
+    /// Clone Handle<TColGeom_HSequenceOfBoundedCurve> (increments reference count)
+    pub fn HandleTColGeomHSequenceOfBoundedCurve_clone(
+        self_: *const HandleTColGeomHSequenceOfBoundedCurve,
+    ) -> crate::OcctResult<*mut HandleTColGeomHSequenceOfBoundedCurve>;
     /// Dereference Handle to get *const TColGeom_HSequenceOfBoundedCurve
     pub fn HandleTColGeomHSequenceOfBoundedCurve_get(
         handle: *const HandleTColGeomHSequenceOfBoundedCurve,
@@ -18337,6 +18591,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColGeomHSequenceOfCurve>;
     /// Destroy Handle<TColGeom_HSequenceOfCurve>
     pub fn HandleTColGeomHSequenceOfCurve_destructor(self_: *mut HandleTColGeomHSequenceOfCurve);
+    /// Clone Handle<TColGeom_HSequenceOfCurve> (increments reference count)
+    pub fn HandleTColGeomHSequenceOfCurve_clone(
+        self_: *const HandleTColGeomHSequenceOfCurve,
+    ) -> crate::OcctResult<*mut HandleTColGeomHSequenceOfCurve>;
     /// Dereference Handle to get *const TColGeom_HSequenceOfCurve
     pub fn HandleTColGeomHSequenceOfCurve_get(
         handle: *const HandleTColGeomHSequenceOfCurve,

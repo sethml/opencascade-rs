@@ -167,6 +167,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<RWMesh_CafReader>
     pub fn HandleRWMeshCafReader_destructor(self_: *mut HandleRWMeshCafReader);
+    /// Clone Handle<RWMesh_CafReader> (increments reference count)
+    pub fn HandleRWMeshCafReader_clone(
+        self_: *const HandleRWMeshCafReader,
+    ) -> crate::OcctResult<*mut HandleRWMeshCafReader>;
     /// Dereference Handle to get *const RWMesh_CafReader
     pub fn HandleRWMeshCafReader_get(
         handle: *const HandleRWMeshCafReader,
@@ -610,6 +614,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<RWMesh_MaterialMap>
     pub fn HandleRWMeshMaterialMap_destructor(self_: *mut HandleRWMeshMaterialMap);
+    /// Clone Handle<RWMesh_MaterialMap> (increments reference count)
+    pub fn HandleRWMeshMaterialMap_clone(
+        self_: *const HandleRWMeshMaterialMap,
+    ) -> crate::OcctResult<*mut HandleRWMeshMaterialMap>;
     /// Dereference Handle to get *const RWMesh_MaterialMap
     pub fn HandleRWMeshMaterialMap_get(
         handle: *const HandleRWMeshMaterialMap,
@@ -805,6 +813,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<RWMesh_TriangulationReader>
     pub fn HandleRWMeshTriangulationReader_destructor(self_: *mut HandleRWMeshTriangulationReader);
+    /// Clone Handle<RWMesh_TriangulationReader> (increments reference count)
+    pub fn HandleRWMeshTriangulationReader_clone(
+        self_: *const HandleRWMeshTriangulationReader,
+    ) -> crate::OcctResult<*mut HandleRWMeshTriangulationReader>;
     /// Dereference Handle to get *const RWMesh_TriangulationReader
     pub fn HandleRWMeshTriangulationReader_get(
         handle: *const HandleRWMeshTriangulationReader,
@@ -955,6 +967,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleRWMeshTriangulationSource>;
     /// Destroy Handle<RWMesh_TriangulationSource>
     pub fn HandleRWMeshTriangulationSource_destructor(self_: *mut HandleRWMeshTriangulationSource);
+    /// Clone Handle<RWMesh_TriangulationSource> (increments reference count)
+    pub fn HandleRWMeshTriangulationSource_clone(
+        self_: *const HandleRWMeshTriangulationSource,
+    ) -> crate::OcctResult<*mut HandleRWMeshTriangulationSource>;
     /// Dereference Handle to get *const RWMesh_TriangulationSource
     pub fn HandleRWMeshTriangulationSource_get(
         handle: *const HandleRWMeshTriangulationSource,

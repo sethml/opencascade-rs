@@ -412,6 +412,12 @@ unsafe impl crate::CppDeletable for HandleDESTEPConfigurationNode {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleDESTEPConfigurationNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleDESTEPConfigurationNode_clone(ptr))
+    }
+}
+
 impl HandleDESTEPConfigurationNode {
     /// Dereference this Handle to access the underlying DESTEP_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DESTEP_ConfigurationNode {
@@ -920,6 +926,12 @@ pub use crate::ffi_types::HandleDESTEPProvider;
 unsafe impl crate::CppDeletable for HandleDESTEPProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleDESTEPProvider_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleDESTEPProvider {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleDESTEPProvider_clone(ptr))
     }
 }
 

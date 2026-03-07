@@ -910,6 +910,12 @@ unsafe impl crate::CppDeletable for HandleTPrsStdAISPresentation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTPrsStdAISPresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_clone(ptr))
+    }
+}
+
 impl HandleTPrsStdAISPresentation {
     /// Dereference this Handle to access the underlying TPrsStd_AISPresentation
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_AISPresentation {
@@ -1601,6 +1607,12 @@ unsafe impl crate::CppDeletable for HandleTPrsStdAISViewer {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTPrsStdAISViewer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_clone(ptr))
+    }
+}
+
 impl HandleTPrsStdAISViewer {
     /// Dereference this Handle to access the underlying TPrsStd_AISViewer
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_AISViewer {
@@ -1843,6 +1855,12 @@ pub use crate::ffi_types::HandleTPrsStdAxisDriver;
 unsafe impl crate::CppDeletable for HandleTPrsStdAxisDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTPrsStdAxisDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_clone(ptr))
     }
 }
 
@@ -2096,6 +2114,12 @@ pub use crate::ffi_types::HandleTPrsStdConstraintDriver;
 unsafe impl crate::CppDeletable for HandleTPrsStdConstraintDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTPrsStdConstraintDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_clone(ptr))
     }
 }
 
@@ -2565,6 +2589,12 @@ unsafe impl crate::CppDeletable for HandleTPrsStdDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTPrsStdDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_clone(ptr))
+    }
+}
+
 impl HandleTPrsStdDriver {
     /// Dereference this Handle to access the underlying TPrsStd_Driver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_Driver {
@@ -2960,6 +2990,12 @@ unsafe impl crate::CppDeletable for HandleTPrsStdDriverTable {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTPrsStdDriverTable {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_clone(ptr))
+    }
+}
+
 impl HandleTPrsStdDriverTable {
     /// Dereference this Handle to access the underlying TPrsStd_DriverTable
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_DriverTable {
@@ -3195,6 +3231,12 @@ pub use crate::ffi_types::HandleTPrsStdGeometryDriver;
 unsafe impl crate::CppDeletable for HandleTPrsStdGeometryDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTPrsStdGeometryDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_clone(ptr))
     }
 }
 
@@ -3451,6 +3493,12 @@ unsafe impl crate::CppDeletable for HandleTPrsStdNamedShapeDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTPrsStdNamedShapeDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_clone(ptr))
+    }
+}
+
 impl HandleTPrsStdNamedShapeDriver {
     /// Dereference this Handle to access the underlying TPrsStd_NamedShapeDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_NamedShapeDriver {
@@ -3696,6 +3744,12 @@ unsafe impl crate::CppDeletable for HandleTPrsStdPlaneDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTPrsStdPlaneDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_clone(ptr))
+    }
+}
+
 impl HandleTPrsStdPlaneDriver {
     /// Dereference this Handle to access the underlying TPrsStd_PlaneDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_PlaneDriver {
@@ -3938,6 +3992,12 @@ pub use crate::ffi_types::HandleTPrsStdPointDriver;
 unsafe impl crate::CppDeletable for HandleTPrsStdPointDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTPrsStdPointDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_clone(ptr))
     }
 }
 

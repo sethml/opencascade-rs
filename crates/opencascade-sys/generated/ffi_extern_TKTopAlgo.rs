@@ -120,6 +120,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepApproxApproxLine>;
     /// Destroy Handle<BRepApprox_ApproxLine>
     pub fn HandleBRepApproxApproxLine_destructor(self_: *mut HandleBRepApproxApproxLine);
+    /// Clone Handle<BRepApprox_ApproxLine> (increments reference count)
+    pub fn HandleBRepApproxApproxLine_clone(
+        self_: *const HandleBRepApproxApproxLine,
+    ) -> crate::OcctResult<*mut HandleBRepApproxApproxLine>;
     /// Dereference Handle to get *const BRepApprox_ApproxLine
     pub fn HandleBRepApproxApproxLine_get(
         handle: *const HandleBRepApproxApproxLine,
@@ -2652,6 +2656,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepBuilderAPIFastSewing>;
     /// Destroy Handle<BRepBuilderAPI_FastSewing>
     pub fn HandleBRepBuilderAPIFastSewing_destructor(self_: *mut HandleBRepBuilderAPIFastSewing);
+    /// Clone Handle<BRepBuilderAPI_FastSewing> (increments reference count)
+    pub fn HandleBRepBuilderAPIFastSewing_clone(
+        self_: *const HandleBRepBuilderAPIFastSewing,
+    ) -> crate::OcctResult<*mut HandleBRepBuilderAPIFastSewing>;
     /// Dereference Handle to get *const BRepBuilderAPI_FastSewing
     pub fn HandleBRepBuilderAPIFastSewing_get(
         handle: *const HandleBRepBuilderAPIFastSewing,
@@ -4469,6 +4477,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepBuilderAPISewing>;
     /// Destroy Handle<BRepBuilderAPI_Sewing>
     pub fn HandleBRepBuilderAPISewing_destructor(self_: *mut HandleBRepBuilderAPISewing);
+    /// Clone Handle<BRepBuilderAPI_Sewing> (increments reference count)
+    pub fn HandleBRepBuilderAPISewing_clone(
+        self_: *const HandleBRepBuilderAPISewing,
+    ) -> crate::OcctResult<*mut HandleBRepBuilderAPISewing>;
     /// Dereference Handle to get *const BRepBuilderAPI_Sewing
     pub fn HandleBRepBuilderAPISewing_get(
         handle: *const HandleBRepBuilderAPISewing,
@@ -4706,6 +4718,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepCheckEdge>;
     /// Destroy Handle<BRepCheck_Edge>
     pub fn HandleBRepCheckEdge_destructor(self_: *mut HandleBRepCheckEdge);
+    /// Clone Handle<BRepCheck_Edge> (increments reference count)
+    pub fn HandleBRepCheckEdge_clone(
+        self_: *const HandleBRepCheckEdge,
+    ) -> crate::OcctResult<*mut HandleBRepCheckEdge>;
     /// Dereference Handle to get *const BRepCheck_Edge
     pub fn HandleBRepCheckEdge_get(
         handle: *const HandleBRepCheckEdge,
@@ -4881,6 +4897,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepCheckFace>;
     /// Destroy Handle<BRepCheck_Face>
     pub fn HandleBRepCheckFace_destructor(self_: *mut HandleBRepCheckFace);
+    /// Clone Handle<BRepCheck_Face> (increments reference count)
+    pub fn HandleBRepCheckFace_clone(
+        self_: *const HandleBRepCheckFace,
+    ) -> crate::OcctResult<*mut HandleBRepCheckFace>;
     /// Dereference Handle to get *const BRepCheck_Face
     pub fn HandleBRepCheckFace_get(
         handle: *const HandleBRepCheckFace,
@@ -5060,6 +5080,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepCheck_Result>
     pub fn HandleBRepCheckResult_destructor(self_: *mut HandleBRepCheckResult);
+    /// Clone Handle<BRepCheck_Result> (increments reference count)
+    pub fn HandleBRepCheckResult_clone(
+        self_: *const HandleBRepCheckResult,
+    ) -> crate::OcctResult<*mut HandleBRepCheckResult>;
     /// Dereference Handle to get *const BRepCheck_Result
     pub fn HandleBRepCheckResult_get(
         handle: *const HandleBRepCheckResult,
@@ -5193,6 +5217,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepCheckShell>;
     /// Destroy Handle<BRepCheck_Shell>
     pub fn HandleBRepCheckShell_destructor(self_: *mut HandleBRepCheckShell);
+    /// Clone Handle<BRepCheck_Shell> (increments reference count)
+    pub fn HandleBRepCheckShell_clone(
+        self_: *const HandleBRepCheckShell,
+    ) -> crate::OcctResult<*mut HandleBRepCheckShell>;
     /// Dereference Handle to get *const BRepCheck_Shell
     pub fn HandleBRepCheckShell_get(
         handle: *const HandleBRepCheckShell,
@@ -5336,6 +5364,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepCheckSolid>;
     /// Destroy Handle<BRepCheck_Solid>
     pub fn HandleBRepCheckSolid_destructor(self_: *mut HandleBRepCheckSolid);
+    /// Clone Handle<BRepCheck_Solid> (increments reference count)
+    pub fn HandleBRepCheckSolid_clone(
+        self_: *const HandleBRepCheckSolid,
+    ) -> crate::OcctResult<*mut HandleBRepCheckSolid>;
     /// Dereference Handle to get *const BRepCheck_Solid
     pub fn HandleBRepCheckSolid_get(
         handle: *const HandleBRepCheckSolid,
@@ -5481,6 +5513,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepCheckVertex>;
     /// Destroy Handle<BRepCheck_Vertex>
     pub fn HandleBRepCheckVertex_destructor(self_: *mut HandleBRepCheckVertex);
+    /// Clone Handle<BRepCheck_Vertex> (increments reference count)
+    pub fn HandleBRepCheckVertex_clone(
+        self_: *const HandleBRepCheckVertex,
+    ) -> crate::OcctResult<*mut HandleBRepCheckVertex>;
     /// Dereference Handle to get *const BRepCheck_Vertex
     pub fn HandleBRepCheckVertex_get(
         handle: *const HandleBRepCheckVertex,
@@ -5663,6 +5699,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepCheckWire>;
     /// Destroy Handle<BRepCheck_Wire>
     pub fn HandleBRepCheckWire_destructor(self_: *mut HandleBRepCheckWire);
+    /// Clone Handle<BRepCheck_Wire> (increments reference count)
+    pub fn HandleBRepCheckWire_clone(
+        self_: *const HandleBRepCheckWire,
+    ) -> crate::OcctResult<*mut HandleBRepCheckWire>;
     /// Dereference Handle to get *const BRepCheck_Wire
     pub fn HandleBRepCheckWire_get(
         handle: *const HandleBRepCheckWire,
@@ -7610,6 +7650,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepExtremaTriangleSet>;
     /// Destroy Handle<BRepExtrema_TriangleSet>
     pub fn HandleBRepExtremaTriangleSet_destructor(self_: *mut HandleBRepExtremaTriangleSet);
+    /// Clone Handle<BRepExtrema_TriangleSet> (increments reference count)
+    pub fn HandleBRepExtremaTriangleSet_clone(
+        self_: *const HandleBRepExtremaTriangleSet,
+    ) -> crate::OcctResult<*mut HandleBRepExtremaTriangleSet>;
     /// Dereference Handle to get *const BRepExtrema_TriangleSet
     pub fn HandleBRepExtremaTriangleSet_get(
         handle: *const HandleBRepExtremaTriangleSet,
@@ -7691,6 +7735,10 @@ extern "C" {
     pub fn HandleBRepExtremaUnCompatibleShape_destructor(
         self_: *mut HandleBRepExtremaUnCompatibleShape,
     );
+    /// Clone Handle<BRepExtrema_UnCompatibleShape> (increments reference count)
+    pub fn HandleBRepExtremaUnCompatibleShape_clone(
+        self_: *const HandleBRepExtremaUnCompatibleShape,
+    ) -> crate::OcctResult<*mut HandleBRepExtremaUnCompatibleShape>;
     /// Dereference Handle to get *const BRepExtrema_UnCompatibleShape
     pub fn HandleBRepExtremaUnCompatibleShape_get(
         handle: *const HandleBRepExtremaUnCompatibleShape,
@@ -10771,6 +10819,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepTopAdaptorHVertex>;
     /// Destroy Handle<BRepTopAdaptor_HVertex>
     pub fn HandleBRepTopAdaptorHVertex_destructor(self_: *mut HandleBRepTopAdaptorHVertex);
+    /// Clone Handle<BRepTopAdaptor_HVertex> (increments reference count)
+    pub fn HandleBRepTopAdaptorHVertex_clone(
+        self_: *const HandleBRepTopAdaptorHVertex,
+    ) -> crate::OcctResult<*mut HandleBRepTopAdaptorHVertex>;
     /// Dereference Handle to get *const BRepTopAdaptor_HVertex
     pub fn HandleBRepTopAdaptorHVertex_get(
         handle: *const HandleBRepTopAdaptorHVertex,
@@ -11021,6 +11073,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepTopAdaptorTopolTool>;
     /// Destroy Handle<BRepTopAdaptor_TopolTool>
     pub fn HandleBRepTopAdaptorTopolTool_destructor(self_: *mut HandleBRepTopAdaptorTopolTool);
+    /// Clone Handle<BRepTopAdaptor_TopolTool> (increments reference count)
+    pub fn HandleBRepTopAdaptorTopolTool_clone(
+        self_: *const HandleBRepTopAdaptorTopolTool,
+    ) -> crate::OcctResult<*mut HandleBRepTopAdaptorTopolTool>;
     /// Dereference Handle to get *const BRepTopAdaptor_TopolTool
     pub fn HandleBRepTopAdaptorTopolTool_get(
         handle: *const HandleBRepTopAdaptorTopolTool,
@@ -11395,6 +11451,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBisectorBisecAna>;
     /// Destroy Handle<Bisector_BisecAna>
     pub fn HandleBisectorBisecAna_destructor(self_: *mut HandleBisectorBisecAna);
+    /// Clone Handle<Bisector_BisecAna> (increments reference count)
+    pub fn HandleBisectorBisecAna_clone(
+        self_: *const HandleBisectorBisecAna,
+    ) -> crate::OcctResult<*mut HandleBisectorBisecAna>;
     /// Dereference Handle to get *const Bisector_BisecAna
     pub fn HandleBisectorBisecAna_get(
         handle: *const HandleBisectorBisecAna,
@@ -11738,6 +11798,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBisectorBisecCC>;
     /// Destroy Handle<Bisector_BisecCC>
     pub fn HandleBisectorBisecCC_destructor(self_: *mut HandleBisectorBisecCC);
+    /// Clone Handle<Bisector_BisecCC> (increments reference count)
+    pub fn HandleBisectorBisecCC_clone(
+        self_: *const HandleBisectorBisecCC,
+    ) -> crate::OcctResult<*mut HandleBisectorBisecCC>;
     /// Dereference Handle to get *const Bisector_BisecCC
     pub fn HandleBisectorBisecCC_get(
         handle: *const HandleBisectorBisecCC,
@@ -12061,6 +12125,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBisectorBisecPC>;
     /// Destroy Handle<Bisector_BisecPC>
     pub fn HandleBisectorBisecPC_destructor(self_: *mut HandleBisectorBisecPC);
+    /// Clone Handle<Bisector_BisecPC> (increments reference count)
+    pub fn HandleBisectorBisecPC_clone(
+        self_: *const HandleBisectorBisecPC,
+    ) -> crate::OcctResult<*mut HandleBisectorBisecPC>;
     /// Dereference Handle to get *const Bisector_BisecPC
     pub fn HandleBisectorBisecPC_get(
         handle: *const HandleBisectorBisecPC,
@@ -12248,6 +12316,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Bisector_Curve>
     pub fn HandleBisectorCurve_destructor(self_: *mut HandleBisectorCurve);
+    /// Clone Handle<Bisector_Curve> (increments reference count)
+    pub fn HandleBisectorCurve_clone(
+        self_: *const HandleBisectorCurve,
+    ) -> crate::OcctResult<*mut HandleBisectorCurve>;
     /// Dereference Handle to get *const Bisector_Curve
     pub fn HandleBisectorCurve_get(
         handle: *const HandleBisectorCurve,
@@ -12841,6 +12913,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIntCurvesFaceIntersector>;
     /// Destroy Handle<IntCurvesFace_Intersector>
     pub fn HandleIntCurvesFaceIntersector_destructor(self_: *mut HandleIntCurvesFaceIntersector);
+    /// Clone Handle<IntCurvesFace_Intersector> (increments reference count)
+    pub fn HandleIntCurvesFaceIntersector_clone(
+        self_: *const HandleIntCurvesFaceIntersector,
+    ) -> crate::OcctResult<*mut HandleIntCurvesFaceIntersector>;
     /// Dereference Handle to get *const IntCurvesFace_Intersector
     pub fn HandleIntCurvesFaceIntersector_get(
         handle: *const HandleIntCurvesFaceIntersector,
@@ -13067,6 +13143,8 @@ extern "C" {
     pub fn MAT_Arc_to_handle(obj: *mut MAT_Arc) -> crate::OcctResult<*mut HandleMATArc>;
     /// Destroy Handle<MAT_Arc>
     pub fn HandleMATArc_destructor(self_: *mut HandleMATArc);
+    /// Clone Handle<MAT_Arc> (increments reference count)
+    pub fn HandleMATArc_clone(self_: *const HandleMATArc) -> crate::OcctResult<*mut HandleMATArc>;
     /// Dereference Handle to get *const MAT_Arc
     pub fn HandleMATArc_get(handle: *const HandleMATArc) -> crate::OcctResult<*const MAT_Arc>;
     /// Dereference Handle to get *mut MAT_Arc
@@ -13154,6 +13232,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMATBasicElt>;
     /// Destroy Handle<MAT_BasicElt>
     pub fn HandleMATBasicElt_destructor(self_: *mut HandleMATBasicElt);
+    /// Clone Handle<MAT_BasicElt> (increments reference count)
+    pub fn HandleMATBasicElt_clone(
+        self_: *const HandleMATBasicElt,
+    ) -> crate::OcctResult<*mut HandleMATBasicElt>;
     /// Dereference Handle to get *const MAT_BasicElt
     pub fn HandleMATBasicElt_get(
         handle: *const HandleMATBasicElt,
@@ -13330,6 +13412,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMATBisector>;
     /// Destroy Handle<MAT_Bisector>
     pub fn HandleMATBisector_destructor(self_: *mut HandleMATBisector);
+    /// Clone Handle<MAT_Bisector> (increments reference count)
+    pub fn HandleMATBisector_clone(
+        self_: *const HandleMATBisector,
+    ) -> crate::OcctResult<*mut HandleMATBisector>;
     /// Dereference Handle to get *const MAT_Bisector
     pub fn HandleMATBisector_get(
         handle: *const HandleMATBisector,
@@ -13432,6 +13518,10 @@ extern "C" {
     pub fn MAT_Edge_to_handle(obj: *mut MAT_Edge) -> crate::OcctResult<*mut HandleMATEdge>;
     /// Destroy Handle<MAT_Edge>
     pub fn HandleMATEdge_destructor(self_: *mut HandleMATEdge);
+    /// Clone Handle<MAT_Edge> (increments reference count)
+    pub fn HandleMATEdge_clone(
+        self_: *const HandleMATEdge,
+    ) -> crate::OcctResult<*mut HandleMATEdge>;
     /// Dereference Handle to get *const MAT_Edge
     pub fn HandleMATEdge_get(handle: *const HandleMATEdge) -> crate::OcctResult<*const MAT_Edge>;
     /// Dereference Handle to get *mut MAT_Edge
@@ -13543,6 +13633,10 @@ extern "C" {
     pub fn MAT_Graph_to_handle(obj: *mut MAT_Graph) -> crate::OcctResult<*mut HandleMATGraph>;
     /// Destroy Handle<MAT_Graph>
     pub fn HandleMATGraph_destructor(self_: *mut HandleMATGraph);
+    /// Clone Handle<MAT_Graph> (increments reference count)
+    pub fn HandleMATGraph_clone(
+        self_: *const HandleMATGraph,
+    ) -> crate::OcctResult<*mut HandleMATGraph>;
     /// Dereference Handle to get *const MAT_Graph
     pub fn HandleMATGraph_get(handle: *const HandleMATGraph)
         -> crate::OcctResult<*const MAT_Graph>;
@@ -13688,6 +13782,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMATListOfBisector>;
     /// Destroy Handle<MAT_ListOfBisector>
     pub fn HandleMATListOfBisector_destructor(self_: *mut HandleMATListOfBisector);
+    /// Clone Handle<MAT_ListOfBisector> (increments reference count)
+    pub fn HandleMATListOfBisector_clone(
+        self_: *const HandleMATListOfBisector,
+    ) -> crate::OcctResult<*mut HandleMATListOfBisector>;
     /// Dereference Handle to get *const MAT_ListOfBisector
     pub fn HandleMATListOfBisector_get(
         handle: *const HandleMATListOfBisector,
@@ -13839,6 +13937,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMATListOfEdge>;
     /// Destroy Handle<MAT_ListOfEdge>
     pub fn HandleMATListOfEdge_destructor(self_: *mut HandleMATListOfEdge);
+    /// Clone Handle<MAT_ListOfEdge> (increments reference count)
+    pub fn HandleMATListOfEdge_clone(
+        self_: *const HandleMATListOfEdge,
+    ) -> crate::OcctResult<*mut HandleMATListOfEdge>;
     /// Dereference Handle to get *const MAT_ListOfEdge
     pub fn HandleMATListOfEdge_get(
         handle: *const HandleMATListOfEdge,
@@ -13937,6 +14039,10 @@ extern "C" {
     pub fn MAT_Node_to_handle(obj: *mut MAT_Node) -> crate::OcctResult<*mut HandleMATNode>;
     /// Destroy Handle<MAT_Node>
     pub fn HandleMATNode_destructor(self_: *mut HandleMATNode);
+    /// Clone Handle<MAT_Node> (increments reference count)
+    pub fn HandleMATNode_clone(
+        self_: *const HandleMATNode,
+    ) -> crate::OcctResult<*mut HandleMATNode>;
     /// Dereference Handle to get *const MAT_Node
     pub fn HandleMATNode_get(handle: *const HandleMATNode) -> crate::OcctResult<*const MAT_Node>;
     /// Dereference Handle to get *mut MAT_Node
@@ -14033,6 +14139,10 @@ extern "C" {
     pub fn HandleMATTListNodeOfListOfBisector_destructor(
         self_: *mut HandleMATTListNodeOfListOfBisector,
     );
+    /// Clone Handle<MAT_TListNodeOfListOfBisector> (increments reference count)
+    pub fn HandleMATTListNodeOfListOfBisector_clone(
+        self_: *const HandleMATTListNodeOfListOfBisector,
+    ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfBisector>;
     /// Dereference Handle to get *const MAT_TListNodeOfListOfBisector
     pub fn HandleMATTListNodeOfListOfBisector_get(
         handle: *const HandleMATTListNodeOfListOfBisector,
@@ -14137,6 +14247,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfEdge>;
     /// Destroy Handle<MAT_TListNodeOfListOfEdge>
     pub fn HandleMATTListNodeOfListOfEdge_destructor(self_: *mut HandleMATTListNodeOfListOfEdge);
+    /// Clone Handle<MAT_TListNodeOfListOfEdge> (increments reference count)
+    pub fn HandleMATTListNodeOfListOfEdge_clone(
+        self_: *const HandleMATTListNodeOfListOfEdge,
+    ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfEdge>;
     /// Dereference Handle to get *const MAT_TListNodeOfListOfEdge
     pub fn HandleMATTListNodeOfListOfEdge_get(
         handle: *const HandleMATTListNodeOfListOfEdge,
@@ -14223,6 +14337,10 @@ extern "C" {
     pub fn MAT_Zone_to_handle(obj: *mut MAT_Zone) -> crate::OcctResult<*mut HandleMATZone>;
     /// Destroy Handle<MAT_Zone>
     pub fn HandleMATZone_destructor(self_: *mut HandleMATZone);
+    /// Clone Handle<MAT_Zone> (increments reference count)
+    pub fn HandleMATZone_clone(
+        self_: *const HandleMATZone,
+    ) -> crate::OcctResult<*mut HandleMATZone>;
     /// Dereference Handle to get *const MAT_Zone
     pub fn HandleMATZone_get(handle: *const HandleMATZone) -> crate::OcctResult<*const MAT_Zone>;
     /// Dereference Handle to get *mut MAT_Zone
@@ -14339,6 +14457,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMAT2dCircuit>;
     /// Destroy Handle<MAT2d_Circuit>
     pub fn HandleMAT2dCircuit_destructor(self_: *mut HandleMAT2dCircuit);
+    /// Clone Handle<MAT2d_Circuit> (increments reference count)
+    pub fn HandleMAT2dCircuit_clone(
+        self_: *const HandleMAT2dCircuit,
+    ) -> crate::OcctResult<*mut HandleMAT2dCircuit>;
     /// Dereference Handle to get *const MAT2d_Circuit
     pub fn HandleMAT2dCircuit_get(
         handle: *const HandleMAT2dCircuit,
@@ -14512,6 +14634,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMAT2dConnexion>;
     /// Destroy Handle<MAT2d_Connexion>
     pub fn HandleMAT2dConnexion_destructor(self_: *mut HandleMAT2dConnexion);
+    /// Clone Handle<MAT2d_Connexion> (increments reference count)
+    pub fn HandleMAT2dConnexion_clone(
+        self_: *const HandleMAT2dConnexion,
+    ) -> crate::OcctResult<*mut HandleMAT2dConnexion>;
     /// Dereference Handle to get *const MAT2d_Connexion
     pub fn HandleMAT2dConnexion_get(
         handle: *const HandleMAT2dConnexion,

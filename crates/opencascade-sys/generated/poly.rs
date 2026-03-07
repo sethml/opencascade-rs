@@ -256,6 +256,22 @@ unsafe impl crate::CppDeletable for ArrayOfNodes {
     }
 }
 
+unsafe impl crate::CppCopyable for ArrayOfNodes {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::Poly_ArrayOfNodes_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for ArrayOfNodes {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl ArrayOfNodes {
     /// **Source:** `Poly_ArrayOfNodes.hxx`:27 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
     /// Empty constructor of double-precision array.
@@ -378,15 +394,6 @@ impl ArrayOfNodes {
             )
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::Poly_ArrayOfNodes_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -400,6 +407,22 @@ pub use crate::ffi_types::Poly_ArrayOfUVNodes as ArrayOfUVNodes;
 unsafe impl crate::CppDeletable for ArrayOfUVNodes {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::Poly_ArrayOfUVNodes_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for ArrayOfUVNodes {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::Poly_ArrayOfUVNodes_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for ArrayOfUVNodes {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -524,15 +547,6 @@ impl ArrayOfUVNodes {
                 theValue,
             )
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::Poly_ArrayOfUVNodes_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -2239,6 +2253,12 @@ unsafe impl crate::CppDeletable for HandlePolyCoherentTriangulation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePolyCoherentTriangulation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlePolyCoherentTriangulation_clone(ptr))
+    }
+}
+
 impl HandlePolyCoherentTriangulation {
     /// Dereference this Handle to access the underlying Poly_CoherentTriangulation
     pub fn get(&self) -> &crate::ffi_types::Poly_CoherentTriangulation {
@@ -2798,6 +2818,12 @@ pub use crate::ffi_types::HandlePolyHArray1OfTriangle;
 unsafe impl crate::CppDeletable for HandlePolyHArray1OfTriangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandlePolyHArray1OfTriangle_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePolyHArray1OfTriangle {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlePolyHArray1OfTriangle_clone(ptr))
     }
 }
 
@@ -4069,6 +4095,12 @@ unsafe impl crate::CppDeletable for HandlePolyMergeNodesTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePolyMergeNodesTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlePolyMergeNodesTool_clone(ptr))
+    }
+}
+
 impl HandlePolyMergeNodesTool {
     /// Dereference this Handle to access the underlying Poly_MergeNodesTool
     pub fn get(&self) -> &crate::ffi_types::Poly_MergeNodesTool {
@@ -4336,6 +4368,12 @@ pub use crate::ffi_types::HandlePolyPolygon2D;
 unsafe impl crate::CppDeletable for HandlePolyPolygon2D {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandlePolyPolygon2D_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePolyPolygon2D {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlePolyPolygon2D_clone(ptr))
     }
 }
 
@@ -4650,6 +4688,12 @@ pub use crate::ffi_types::HandlePolyPolygon3D;
 unsafe impl crate::CppDeletable for HandlePolyPolygon3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandlePolyPolygon3D_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePolyPolygon3D {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlePolyPolygon3D_clone(ptr))
     }
 }
 
@@ -5036,6 +5080,12 @@ pub use crate::ffi_types::HandlePolyPolygonOnTriangulation;
 unsafe impl crate::CppDeletable for HandlePolyPolygonOnTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandlePolyPolygonOnTriangulation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePolyPolygonOnTriangulation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlePolyPolygonOnTriangulation_clone(ptr))
     }
 }
 
@@ -6017,6 +6067,12 @@ unsafe impl crate::CppDeletable for HandlePolyTriangulation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePolyTriangulation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlePolyTriangulation_clone(ptr))
+    }
+}
+
 impl HandlePolyTriangulation {
     /// Dereference this Handle to access the underlying Poly_Triangulation
     pub fn get(&self) -> &crate::ffi_types::Poly_Triangulation {
@@ -6337,6 +6393,12 @@ pub use crate::ffi_types::HandlePolyTriangulationParameters;
 unsafe impl crate::CppDeletable for HandlePolyTriangulationParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandlePolyTriangulationParameters_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePolyTriangulationParameters {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlePolyTriangulationParameters_clone(ptr))
     }
 }
 

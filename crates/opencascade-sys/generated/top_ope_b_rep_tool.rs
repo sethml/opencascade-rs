@@ -1650,6 +1650,12 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepToolHBoxTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopOpeBRepToolHBoxTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_clone(ptr))
+    }
+}
+
 impl HandleTopOpeBRepToolHBoxTool {
     /// Dereference this Handle to access the underlying TopOpeBRepTool_HBoxTool
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepTool_HBoxTool {

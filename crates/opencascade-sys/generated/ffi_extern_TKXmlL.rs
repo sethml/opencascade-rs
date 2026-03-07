@@ -81,6 +81,10 @@ extern "C" {
     pub fn HandleXmlLDriversDocumentRetrievalDriver_destructor(
         self_: *mut HandleXmlLDriversDocumentRetrievalDriver,
     );
+    /// Clone Handle<XmlLDrivers_DocumentRetrievalDriver> (increments reference count)
+    pub fn HandleXmlLDriversDocumentRetrievalDriver_clone(
+        self_: *const HandleXmlLDriversDocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut HandleXmlLDriversDocumentRetrievalDriver>;
     /// Dereference Handle to get *const XmlLDrivers_DocumentRetrievalDriver
     pub fn HandleXmlLDriversDocumentRetrievalDriver_get(
         handle: *const HandleXmlLDriversDocumentRetrievalDriver,
@@ -225,6 +229,10 @@ extern "C" {
     pub fn HandleXmlLDriversDocumentStorageDriver_destructor(
         self_: *mut HandleXmlLDriversDocumentStorageDriver,
     );
+    /// Clone Handle<XmlLDrivers_DocumentStorageDriver> (increments reference count)
+    pub fn HandleXmlLDriversDocumentStorageDriver_clone(
+        self_: *const HandleXmlLDriversDocumentStorageDriver,
+    ) -> crate::OcctResult<*mut HandleXmlLDriversDocumentStorageDriver>;
     /// Dereference Handle to get *const XmlLDrivers_DocumentStorageDriver
     pub fn HandleXmlLDriversDocumentStorageDriver_get(
         handle: *const HandleXmlLDriversDocumentStorageDriver,
@@ -392,6 +400,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<XmlMDF_ADriver>
     pub fn HandleXmlMDFADriver_destructor(self_: *mut HandleXmlMDFADriver);
+    /// Clone Handle<XmlMDF_ADriver> (increments reference count)
+    pub fn HandleXmlMDFADriver_clone(
+        self_: *const HandleXmlMDFADriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDFADriver>;
     /// Dereference Handle to get *const XmlMDF_ADriver
     pub fn HandleXmlMDFADriver_get(
         handle: *const HandleXmlMDFADriver,
@@ -709,6 +721,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDFADriverTable>;
     /// Destroy Handle<XmlMDF_ADriverTable>
     pub fn HandleXmlMDFADriverTable_destructor(self_: *mut HandleXmlMDFADriverTable);
+    /// Clone Handle<XmlMDF_ADriverTable> (increments reference count)
+    pub fn HandleXmlMDFADriverTable_clone(
+        self_: *const HandleXmlMDFADriverTable,
+    ) -> crate::OcctResult<*mut HandleXmlMDFADriverTable>;
     /// Dereference Handle to get *const XmlMDF_ADriverTable
     pub fn HandleXmlMDFADriverTable_get(
         handle: *const HandleXmlMDFADriverTable,
@@ -810,6 +826,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDFDerivedDriver>;
     /// Destroy Handle<XmlMDF_DerivedDriver>
     pub fn HandleXmlMDFDerivedDriver_destructor(self_: *mut HandleXmlMDFDerivedDriver);
+    /// Clone Handle<XmlMDF_DerivedDriver> (increments reference count)
+    pub fn HandleXmlMDFDerivedDriver_clone(
+        self_: *const HandleXmlMDFDerivedDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDFDerivedDriver>;
     /// Dereference Handle to get *const XmlMDF_DerivedDriver
     pub fn HandleXmlMDFDerivedDriver_get(
         handle: *const HandleXmlMDFDerivedDriver,
@@ -927,6 +947,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDFReferenceDriver>;
     /// Destroy Handle<XmlMDF_ReferenceDriver>
     pub fn HandleXmlMDFReferenceDriver_destructor(self_: *mut HandleXmlMDFReferenceDriver);
+    /// Clone Handle<XmlMDF_ReferenceDriver> (increments reference count)
+    pub fn HandleXmlMDFReferenceDriver_clone(
+        self_: *const HandleXmlMDFReferenceDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDFReferenceDriver>;
     /// Dereference Handle to get *const XmlMDF_ReferenceDriver
     pub fn HandleXmlMDFReferenceDriver_get(
         handle: *const HandleXmlMDFReferenceDriver,
@@ -1048,6 +1072,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDFTagSourceDriver>;
     /// Destroy Handle<XmlMDF_TagSourceDriver>
     pub fn HandleXmlMDFTagSourceDriver_destructor(self_: *mut HandleXmlMDFTagSourceDriver);
+    /// Clone Handle<XmlMDF_TagSourceDriver> (increments reference count)
+    pub fn HandleXmlMDFTagSourceDriver_clone(
+        self_: *const HandleXmlMDFTagSourceDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDFTagSourceDriver>;
     /// Dereference Handle to get *const XmlMDF_TagSourceDriver
     pub fn HandleXmlMDFTagSourceDriver_get(
         handle: *const HandleXmlMDFTagSourceDriver,
@@ -1172,6 +1200,10 @@ extern "C" {
     pub fn HandleXmlMDataStdAsciiStringDriver_destructor(
         self_: *mut HandleXmlMDataStdAsciiStringDriver,
     );
+    /// Clone Handle<XmlMDataStd_AsciiStringDriver> (increments reference count)
+    pub fn HandleXmlMDataStdAsciiStringDriver_clone(
+        self_: *const HandleXmlMDataStdAsciiStringDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdAsciiStringDriver>;
     /// Dereference Handle to get *const XmlMDataStd_AsciiStringDriver
     pub fn HandleXmlMDataStdAsciiStringDriver_get(
         handle: *const HandleXmlMDataStdAsciiStringDriver,
@@ -1296,6 +1328,10 @@ extern "C" {
     pub fn HandleXmlMDataStdBooleanArrayDriver_destructor(
         self_: *mut HandleXmlMDataStdBooleanArrayDriver,
     );
+    /// Clone Handle<XmlMDataStd_BooleanArrayDriver> (increments reference count)
+    pub fn HandleXmlMDataStdBooleanArrayDriver_clone(
+        self_: *const HandleXmlMDataStdBooleanArrayDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdBooleanArrayDriver>;
     /// Dereference Handle to get *const XmlMDataStd_BooleanArrayDriver
     pub fn HandleXmlMDataStdBooleanArrayDriver_get(
         handle: *const HandleXmlMDataStdBooleanArrayDriver,
@@ -1420,6 +1456,10 @@ extern "C" {
     pub fn HandleXmlMDataStdBooleanListDriver_destructor(
         self_: *mut HandleXmlMDataStdBooleanListDriver,
     );
+    /// Clone Handle<XmlMDataStd_BooleanListDriver> (increments reference count)
+    pub fn HandleXmlMDataStdBooleanListDriver_clone(
+        self_: *const HandleXmlMDataStdBooleanListDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdBooleanListDriver>;
     /// Dereference Handle to get *const XmlMDataStd_BooleanListDriver
     pub fn HandleXmlMDataStdBooleanListDriver_get(
         handle: *const HandleXmlMDataStdBooleanListDriver,
@@ -1543,6 +1583,10 @@ extern "C" {
     pub fn HandleXmlMDataStdByteArrayDriver_destructor(
         self_: *mut HandleXmlMDataStdByteArrayDriver,
     );
+    /// Clone Handle<XmlMDataStd_ByteArrayDriver> (increments reference count)
+    pub fn HandleXmlMDataStdByteArrayDriver_clone(
+        self_: *const HandleXmlMDataStdByteArrayDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdByteArrayDriver>;
     /// Dereference Handle to get *const XmlMDataStd_ByteArrayDriver
     pub fn HandleXmlMDataStdByteArrayDriver_get(
         handle: *const HandleXmlMDataStdByteArrayDriver,
@@ -1666,6 +1710,10 @@ extern "C" {
     pub fn HandleXmlMDataStdExpressionDriver_destructor(
         self_: *mut HandleXmlMDataStdExpressionDriver,
     );
+    /// Clone Handle<XmlMDataStd_ExpressionDriver> (increments reference count)
+    pub fn HandleXmlMDataStdExpressionDriver_clone(
+        self_: *const HandleXmlMDataStdExpressionDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdExpressionDriver>;
     /// Dereference Handle to get *const XmlMDataStd_ExpressionDriver
     pub fn HandleXmlMDataStdExpressionDriver_get(
         handle: *const HandleXmlMDataStdExpressionDriver,
@@ -1792,6 +1840,10 @@ extern "C" {
     pub fn HandleXmlMDataStdExtStringArrayDriver_destructor(
         self_: *mut HandleXmlMDataStdExtStringArrayDriver,
     );
+    /// Clone Handle<XmlMDataStd_ExtStringArrayDriver> (increments reference count)
+    pub fn HandleXmlMDataStdExtStringArrayDriver_clone(
+        self_: *const HandleXmlMDataStdExtStringArrayDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdExtStringArrayDriver>;
     /// Dereference Handle to get *const XmlMDataStd_ExtStringArrayDriver
     pub fn HandleXmlMDataStdExtStringArrayDriver_get(
         handle: *const HandleXmlMDataStdExtStringArrayDriver,
@@ -1916,6 +1968,10 @@ extern "C" {
     pub fn HandleXmlMDataStdExtStringListDriver_destructor(
         self_: *mut HandleXmlMDataStdExtStringListDriver,
     );
+    /// Clone Handle<XmlMDataStd_ExtStringListDriver> (increments reference count)
+    pub fn HandleXmlMDataStdExtStringListDriver_clone(
+        self_: *const HandleXmlMDataStdExtStringListDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdExtStringListDriver>;
     /// Dereference Handle to get *const XmlMDataStd_ExtStringListDriver
     pub fn HandleXmlMDataStdExtStringListDriver_get(
         handle: *const HandleXmlMDataStdExtStringListDriver,
@@ -2044,6 +2100,10 @@ extern "C" {
     pub fn HandleXmlMDataStdGenericEmptyDriver_destructor(
         self_: *mut HandleXmlMDataStdGenericEmptyDriver,
     );
+    /// Clone Handle<XmlMDataStd_GenericEmptyDriver> (increments reference count)
+    pub fn HandleXmlMDataStdGenericEmptyDriver_clone(
+        self_: *const HandleXmlMDataStdGenericEmptyDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdGenericEmptyDriver>;
     /// Dereference Handle to get *const XmlMDataStd_GenericEmptyDriver
     pub fn HandleXmlMDataStdGenericEmptyDriver_get(
         handle: *const HandleXmlMDataStdGenericEmptyDriver,
@@ -2170,6 +2230,10 @@ extern "C" {
     pub fn HandleXmlMDataStdGenericExtStringDriver_destructor(
         self_: *mut HandleXmlMDataStdGenericExtStringDriver,
     );
+    /// Clone Handle<XmlMDataStd_GenericExtStringDriver> (increments reference count)
+    pub fn HandleXmlMDataStdGenericExtStringDriver_clone(
+        self_: *const HandleXmlMDataStdGenericExtStringDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdGenericExtStringDriver>;
     /// Dereference Handle to get *const XmlMDataStd_GenericExtStringDriver
     pub fn HandleXmlMDataStdGenericExtStringDriver_get(
         handle: *const HandleXmlMDataStdGenericExtStringDriver,
@@ -2290,6 +2354,10 @@ extern "C" {
     pub fn HandleXmlMDataStdIntPackedMapDriver_destructor(
         self_: *mut HandleXmlMDataStdIntPackedMapDriver,
     );
+    /// Clone Handle<XmlMDataStd_IntPackedMapDriver> (increments reference count)
+    pub fn HandleXmlMDataStdIntPackedMapDriver_clone(
+        self_: *const HandleXmlMDataStdIntPackedMapDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdIntPackedMapDriver>;
     /// Dereference Handle to get *const XmlMDataStd_IntPackedMapDriver
     pub fn HandleXmlMDataStdIntPackedMapDriver_get(
         handle: *const HandleXmlMDataStdIntPackedMapDriver,
@@ -2414,6 +2482,10 @@ extern "C" {
     pub fn HandleXmlMDataStdIntegerArrayDriver_destructor(
         self_: *mut HandleXmlMDataStdIntegerArrayDriver,
     );
+    /// Clone Handle<XmlMDataStd_IntegerArrayDriver> (increments reference count)
+    pub fn HandleXmlMDataStdIntegerArrayDriver_clone(
+        self_: *const HandleXmlMDataStdIntegerArrayDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdIntegerArrayDriver>;
     /// Dereference Handle to get *const XmlMDataStd_IntegerArrayDriver
     pub fn HandleXmlMDataStdIntegerArrayDriver_get(
         handle: *const HandleXmlMDataStdIntegerArrayDriver,
@@ -2535,6 +2607,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDataStdIntegerDriver>;
     /// Destroy Handle<XmlMDataStd_IntegerDriver>
     pub fn HandleXmlMDataStdIntegerDriver_destructor(self_: *mut HandleXmlMDataStdIntegerDriver);
+    /// Clone Handle<XmlMDataStd_IntegerDriver> (increments reference count)
+    pub fn HandleXmlMDataStdIntegerDriver_clone(
+        self_: *const HandleXmlMDataStdIntegerDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdIntegerDriver>;
     /// Dereference Handle to get *const XmlMDataStd_IntegerDriver
     pub fn HandleXmlMDataStdIntegerDriver_get(
         handle: *const HandleXmlMDataStdIntegerDriver,
@@ -2659,6 +2735,10 @@ extern "C" {
     pub fn HandleXmlMDataStdIntegerListDriver_destructor(
         self_: *mut HandleXmlMDataStdIntegerListDriver,
     );
+    /// Clone Handle<XmlMDataStd_IntegerListDriver> (increments reference count)
+    pub fn HandleXmlMDataStdIntegerListDriver_clone(
+        self_: *const HandleXmlMDataStdIntegerListDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdIntegerListDriver>;
     /// Dereference Handle to get *const XmlMDataStd_IntegerListDriver
     pub fn HandleXmlMDataStdIntegerListDriver_get(
         handle: *const HandleXmlMDataStdIntegerListDriver,
@@ -2782,6 +2862,10 @@ extern "C" {
     pub fn HandleXmlMDataStdNamedDataDriver_destructor(
         self_: *mut HandleXmlMDataStdNamedDataDriver,
     );
+    /// Clone Handle<XmlMDataStd_NamedDataDriver> (increments reference count)
+    pub fn HandleXmlMDataStdNamedDataDriver_clone(
+        self_: *const HandleXmlMDataStdNamedDataDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdNamedDataDriver>;
     /// Dereference Handle to get *const XmlMDataStd_NamedDataDriver
     pub fn HandleXmlMDataStdNamedDataDriver_get(
         handle: *const HandleXmlMDataStdNamedDataDriver,
@@ -2905,6 +2989,10 @@ extern "C" {
     pub fn HandleXmlMDataStdRealArrayDriver_destructor(
         self_: *mut HandleXmlMDataStdRealArrayDriver,
     );
+    /// Clone Handle<XmlMDataStd_RealArrayDriver> (increments reference count)
+    pub fn HandleXmlMDataStdRealArrayDriver_clone(
+        self_: *const HandleXmlMDataStdRealArrayDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdRealArrayDriver>;
     /// Dereference Handle to get *const XmlMDataStd_RealArrayDriver
     pub fn HandleXmlMDataStdRealArrayDriver_get(
         handle: *const HandleXmlMDataStdRealArrayDriver,
@@ -3026,6 +3114,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDataStdRealDriver>;
     /// Destroy Handle<XmlMDataStd_RealDriver>
     pub fn HandleXmlMDataStdRealDriver_destructor(self_: *mut HandleXmlMDataStdRealDriver);
+    /// Clone Handle<XmlMDataStd_RealDriver> (increments reference count)
+    pub fn HandleXmlMDataStdRealDriver_clone(
+        self_: *const HandleXmlMDataStdRealDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdRealDriver>;
     /// Dereference Handle to get *const XmlMDataStd_RealDriver
     pub fn HandleXmlMDataStdRealDriver_get(
         handle: *const HandleXmlMDataStdRealDriver,
@@ -3147,6 +3239,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDataStdRealListDriver>;
     /// Destroy Handle<XmlMDataStd_RealListDriver>
     pub fn HandleXmlMDataStdRealListDriver_destructor(self_: *mut HandleXmlMDataStdRealListDriver);
+    /// Clone Handle<XmlMDataStd_RealListDriver> (increments reference count)
+    pub fn HandleXmlMDataStdRealListDriver_clone(
+        self_: *const HandleXmlMDataStdRealListDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdRealListDriver>;
     /// Dereference Handle to get *const XmlMDataStd_RealListDriver
     pub fn HandleXmlMDataStdRealListDriver_get(
         handle: *const HandleXmlMDataStdRealListDriver,
@@ -3273,6 +3369,10 @@ extern "C" {
     pub fn HandleXmlMDataStdReferenceArrayDriver_destructor(
         self_: *mut HandleXmlMDataStdReferenceArrayDriver,
     );
+    /// Clone Handle<XmlMDataStd_ReferenceArrayDriver> (increments reference count)
+    pub fn HandleXmlMDataStdReferenceArrayDriver_clone(
+        self_: *const HandleXmlMDataStdReferenceArrayDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdReferenceArrayDriver>;
     /// Dereference Handle to get *const XmlMDataStd_ReferenceArrayDriver
     pub fn HandleXmlMDataStdReferenceArrayDriver_get(
         handle: *const HandleXmlMDataStdReferenceArrayDriver,
@@ -3397,6 +3497,10 @@ extern "C" {
     pub fn HandleXmlMDataStdReferenceListDriver_destructor(
         self_: *mut HandleXmlMDataStdReferenceListDriver,
     );
+    /// Clone Handle<XmlMDataStd_ReferenceListDriver> (increments reference count)
+    pub fn HandleXmlMDataStdReferenceListDriver_clone(
+        self_: *const HandleXmlMDataStdReferenceListDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdReferenceListDriver>;
     /// Dereference Handle to get *const XmlMDataStd_ReferenceListDriver
     pub fn HandleXmlMDataStdReferenceListDriver_get(
         handle: *const HandleXmlMDataStdReferenceListDriver,
@@ -3518,6 +3622,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDataStdTreeNodeDriver>;
     /// Destroy Handle<XmlMDataStd_TreeNodeDriver>
     pub fn HandleXmlMDataStdTreeNodeDriver_destructor(self_: *mut HandleXmlMDataStdTreeNodeDriver);
+    /// Clone Handle<XmlMDataStd_TreeNodeDriver> (increments reference count)
+    pub fn HandleXmlMDataStdTreeNodeDriver_clone(
+        self_: *const HandleXmlMDataStdTreeNodeDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdTreeNodeDriver>;
     /// Dereference Handle to get *const XmlMDataStd_TreeNodeDriver
     pub fn HandleXmlMDataStdTreeNodeDriver_get(
         handle: *const HandleXmlMDataStdTreeNodeDriver,
@@ -3641,6 +3749,10 @@ extern "C" {
     pub fn HandleXmlMDataStdUAttributeDriver_destructor(
         self_: *mut HandleXmlMDataStdUAttributeDriver,
     );
+    /// Clone Handle<XmlMDataStd_UAttributeDriver> (increments reference count)
+    pub fn HandleXmlMDataStdUAttributeDriver_clone(
+        self_: *const HandleXmlMDataStdUAttributeDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdUAttributeDriver>;
     /// Dereference Handle to get *const XmlMDataStd_UAttributeDriver
     pub fn HandleXmlMDataStdUAttributeDriver_get(
         handle: *const HandleXmlMDataStdUAttributeDriver,
@@ -3762,6 +3874,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDataStdVariableDriver>;
     /// Destroy Handle<XmlMDataStd_VariableDriver>
     pub fn HandleXmlMDataStdVariableDriver_destructor(self_: *mut HandleXmlMDataStdVariableDriver);
+    /// Clone Handle<XmlMDataStd_VariableDriver> (increments reference count)
+    pub fn HandleXmlMDataStdVariableDriver_clone(
+        self_: *const HandleXmlMDataStdVariableDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataStdVariableDriver>;
     /// Dereference Handle to get *const XmlMDataStd_VariableDriver
     pub fn HandleXmlMDataStdVariableDriver_get(
         handle: *const HandleXmlMDataStdVariableDriver,
@@ -3883,6 +3999,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDocStdXLinkDriver>;
     /// Destroy Handle<XmlMDocStd_XLinkDriver>
     pub fn HandleXmlMDocStdXLinkDriver_destructor(self_: *mut HandleXmlMDocStdXLinkDriver);
+    /// Clone Handle<XmlMDocStd_XLinkDriver> (increments reference count)
+    pub fn HandleXmlMDocStdXLinkDriver_clone(
+        self_: *const HandleXmlMDocStdXLinkDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDocStdXLinkDriver>;
     /// Dereference Handle to get *const XmlMDocStd_XLinkDriver
     pub fn HandleXmlMDocStdXLinkDriver_get(
         handle: *const HandleXmlMDocStdXLinkDriver,
@@ -4006,6 +4126,10 @@ extern "C" {
     pub fn HandleXmlMFunctionFunctionDriver_destructor(
         self_: *mut HandleXmlMFunctionFunctionDriver,
     );
+    /// Clone Handle<XmlMFunction_FunctionDriver> (increments reference count)
+    pub fn HandleXmlMFunctionFunctionDriver_clone(
+        self_: *const HandleXmlMFunctionFunctionDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMFunctionFunctionDriver>;
     /// Dereference Handle to get *const XmlMFunction_FunctionDriver
     pub fn HandleXmlMFunctionFunctionDriver_get(
         handle: *const HandleXmlMFunctionFunctionDriver,
@@ -4129,6 +4253,10 @@ extern "C" {
     pub fn HandleXmlMFunctionGraphNodeDriver_destructor(
         self_: *mut HandleXmlMFunctionGraphNodeDriver,
     );
+    /// Clone Handle<XmlMFunction_GraphNodeDriver> (increments reference count)
+    pub fn HandleXmlMFunctionGraphNodeDriver_clone(
+        self_: *const HandleXmlMFunctionGraphNodeDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMFunctionGraphNodeDriver>;
     /// Dereference Handle to get *const XmlMFunction_GraphNodeDriver
     pub fn HandleXmlMFunctionGraphNodeDriver_get(
         handle: *const HandleXmlMFunctionGraphNodeDriver,
@@ -4250,6 +4378,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMFunctionScopeDriver>;
     /// Destroy Handle<XmlMFunction_ScopeDriver>
     pub fn HandleXmlMFunctionScopeDriver_destructor(self_: *mut HandleXmlMFunctionScopeDriver);
+    /// Clone Handle<XmlMFunction_ScopeDriver> (increments reference count)
+    pub fn HandleXmlMFunctionScopeDriver_clone(
+        self_: *const HandleXmlMFunctionScopeDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMFunctionScopeDriver>;
     /// Dereference Handle to get *const XmlMFunction_ScopeDriver
     pub fn HandleXmlMFunctionScopeDriver_get(
         handle: *const HandleXmlMFunctionScopeDriver,

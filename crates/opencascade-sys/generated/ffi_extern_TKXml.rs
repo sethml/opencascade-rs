@@ -82,6 +82,10 @@ extern "C" {
     pub fn HandleXmlDriversDocumentRetrievalDriver_destructor(
         self_: *mut HandleXmlDriversDocumentRetrievalDriver,
     );
+    /// Clone Handle<XmlDrivers_DocumentRetrievalDriver> (increments reference count)
+    pub fn HandleXmlDriversDocumentRetrievalDriver_clone(
+        self_: *const HandleXmlDriversDocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut HandleXmlDriversDocumentRetrievalDriver>;
     /// Dereference Handle to get *const XmlDrivers_DocumentRetrievalDriver
     pub fn HandleXmlDriversDocumentRetrievalDriver_get(
         handle: *const HandleXmlDriversDocumentRetrievalDriver,
@@ -232,6 +236,10 @@ extern "C" {
     pub fn HandleXmlDriversDocumentStorageDriver_destructor(
         self_: *mut HandleXmlDriversDocumentStorageDriver,
     );
+    /// Clone Handle<XmlDrivers_DocumentStorageDriver> (increments reference count)
+    pub fn HandleXmlDriversDocumentStorageDriver_clone(
+        self_: *const HandleXmlDriversDocumentStorageDriver,
+    ) -> crate::OcctResult<*mut HandleXmlDriversDocumentStorageDriver>;
     /// Dereference Handle to get *const XmlDrivers_DocumentStorageDriver
     pub fn HandleXmlDriversDocumentStorageDriver_get(
         handle: *const HandleXmlDriversDocumentStorageDriver,
@@ -386,6 +394,10 @@ extern "C" {
     pub fn HandleXmlMDataXtdConstraintDriver_destructor(
         self_: *mut HandleXmlMDataXtdConstraintDriver,
     );
+    /// Clone Handle<XmlMDataXtd_ConstraintDriver> (increments reference count)
+    pub fn HandleXmlMDataXtdConstraintDriver_clone(
+        self_: *const HandleXmlMDataXtdConstraintDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataXtdConstraintDriver>;
     /// Dereference Handle to get *const XmlMDataXtd_ConstraintDriver
     pub fn HandleXmlMDataXtdConstraintDriver_get(
         handle: *const HandleXmlMDataXtdConstraintDriver,
@@ -507,6 +519,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDataXtdGeometryDriver>;
     /// Destroy Handle<XmlMDataXtd_GeometryDriver>
     pub fn HandleXmlMDataXtdGeometryDriver_destructor(self_: *mut HandleXmlMDataXtdGeometryDriver);
+    /// Clone Handle<XmlMDataXtd_GeometryDriver> (increments reference count)
+    pub fn HandleXmlMDataXtdGeometryDriver_clone(
+        self_: *const HandleXmlMDataXtdGeometryDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataXtdGeometryDriver>;
     /// Dereference Handle to get *const XmlMDataXtd_GeometryDriver
     pub fn HandleXmlMDataXtdGeometryDriver_get(
         handle: *const HandleXmlMDataXtdGeometryDriver,
@@ -630,6 +646,10 @@ extern "C" {
     pub fn HandleXmlMDataXtdPatternStdDriver_destructor(
         self_: *mut HandleXmlMDataXtdPatternStdDriver,
     );
+    /// Clone Handle<XmlMDataXtd_PatternStdDriver> (increments reference count)
+    pub fn HandleXmlMDataXtdPatternStdDriver_clone(
+        self_: *const HandleXmlMDataXtdPatternStdDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataXtdPatternStdDriver>;
     /// Dereference Handle to get *const XmlMDataXtd_PatternStdDriver
     pub fn HandleXmlMDataXtdPatternStdDriver_get(
         handle: *const HandleXmlMDataXtdPatternStdDriver,
@@ -751,6 +771,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMDataXtdPositionDriver>;
     /// Destroy Handle<XmlMDataXtd_PositionDriver>
     pub fn HandleXmlMDataXtdPositionDriver_destructor(self_: *mut HandleXmlMDataXtdPositionDriver);
+    /// Clone Handle<XmlMDataXtd_PositionDriver> (increments reference count)
+    pub fn HandleXmlMDataXtdPositionDriver_clone(
+        self_: *const HandleXmlMDataXtdPositionDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataXtdPositionDriver>;
     /// Dereference Handle to get *const XmlMDataXtd_PositionDriver
     pub fn HandleXmlMDataXtdPositionDriver_get(
         handle: *const HandleXmlMDataXtdPositionDriver,
@@ -875,6 +899,10 @@ extern "C" {
     pub fn HandleXmlMDataXtdPresentationDriver_destructor(
         self_: *mut HandleXmlMDataXtdPresentationDriver,
     );
+    /// Clone Handle<XmlMDataXtd_PresentationDriver> (increments reference count)
+    pub fn HandleXmlMDataXtdPresentationDriver_clone(
+        self_: *const HandleXmlMDataXtdPresentationDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataXtdPresentationDriver>;
     /// Dereference Handle to get *const XmlMDataXtd_PresentationDriver
     pub fn HandleXmlMDataXtdPresentationDriver_get(
         handle: *const HandleXmlMDataXtdPresentationDriver,
@@ -999,6 +1027,10 @@ extern "C" {
     pub fn HandleXmlMDataXtdTriangulationDriver_destructor(
         self_: *mut HandleXmlMDataXtdTriangulationDriver,
     );
+    /// Clone Handle<XmlMDataXtd_TriangulationDriver> (increments reference count)
+    pub fn HandleXmlMDataXtdTriangulationDriver_clone(
+        self_: *const HandleXmlMDataXtdTriangulationDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMDataXtdTriangulationDriver>;
     /// Dereference Handle to get *const XmlMDataXtd_TriangulationDriver
     pub fn HandleXmlMDataXtdTriangulationDriver_get(
         handle: *const HandleXmlMDataXtdTriangulationDriver,
@@ -1143,6 +1175,10 @@ extern "C" {
     pub fn HandleXmlMNamingNamedShapeDriver_destructor(
         self_: *mut HandleXmlMNamingNamedShapeDriver,
     );
+    /// Clone Handle<XmlMNaming_NamedShapeDriver> (increments reference count)
+    pub fn HandleXmlMNamingNamedShapeDriver_clone(
+        self_: *const HandleXmlMNamingNamedShapeDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMNamingNamedShapeDriver>;
     /// Dereference Handle to get *const XmlMNaming_NamedShapeDriver
     pub fn HandleXmlMNamingNamedShapeDriver_get(
         handle: *const HandleXmlMNamingNamedShapeDriver,
@@ -1264,6 +1300,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXmlMNamingNamingDriver>;
     /// Destroy Handle<XmlMNaming_NamingDriver>
     pub fn HandleXmlMNamingNamingDriver_destructor(self_: *mut HandleXmlMNamingNamingDriver);
+    /// Clone Handle<XmlMNaming_NamingDriver> (increments reference count)
+    pub fn HandleXmlMNamingNamingDriver_clone(
+        self_: *const HandleXmlMNamingNamingDriver,
+    ) -> crate::OcctResult<*mut HandleXmlMNamingNamingDriver>;
     /// Dereference Handle to get *const XmlMNaming_NamingDriver
     pub fn HandleXmlMNamingNamingDriver_get(
         handle: *const HandleXmlMNamingNamingDriver,

@@ -638,6 +638,12 @@ unsafe impl crate::CppDeletable for HandleStepAP203CcDesignApproval {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP203CcDesignApproval {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignApproval_clone(ptr))
+    }
+}
+
 impl HandleStepAP203CcDesignApproval {
     /// Dereference this Handle to access the underlying StepAP203_CcDesignApproval
     pub fn get(&self) -> &crate::ffi_types::StepAP203_CcDesignApproval {
@@ -917,6 +923,14 @@ pub use crate::ffi_types::HandleStepAP203CcDesignCertification;
 unsafe impl crate::CppDeletable for HandleStepAP203CcDesignCertification {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignCertification_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP203CcDesignCertification {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignCertification_clone(
+            ptr,
+        ))
     }
 }
 
@@ -1208,6 +1222,12 @@ pub use crate::ffi_types::HandleStepAP203CcDesignContract;
 unsafe impl crate::CppDeletable for HandleStepAP203CcDesignContract {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignContract_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP203CcDesignContract {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignContract_clone(ptr))
     }
 }
 
@@ -1506,6 +1526,14 @@ unsafe impl crate::CppDeletable for HandleStepAP203CcDesignDateAndTimeAssignment
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP203CcDesignDateAndTimeAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignDateAndTimeAssignment_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepAP203CcDesignDateAndTimeAssignment {
     /// Dereference this Handle to access the underlying StepAP203_CcDesignDateAndTimeAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP203_CcDesignDateAndTimeAssignment {
@@ -1783,6 +1811,12 @@ unsafe impl crate::CppDeletable for HandleStepAP203CcDesignPersonAndOrganization
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP203CcDesignPersonAndOrganizationAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignPersonAndOrganizationAssignment_clone(ptr))
+    }
+}
+
 impl HandleStepAP203CcDesignPersonAndOrganizationAssignment {
     /// Dereference this Handle to access the underlying StepAP203_CcDesignPersonAndOrganizationAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP203_CcDesignPersonAndOrganizationAssignment {
@@ -2048,6 +2082,14 @@ pub use crate::ffi_types::HandleStepAP203CcDesignSecurityClassification;
 unsafe impl crate::CppDeletable for HandleStepAP203CcDesignSecurityClassification {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignSecurityClassification_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP203CcDesignSecurityClassification {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignSecurityClassification_clone(ptr),
+        )
     }
 }
 
@@ -2352,6 +2394,14 @@ pub use crate::ffi_types::HandleStepAP203CcDesignSpecificationReference;
 unsafe impl crate::CppDeletable for HandleStepAP203CcDesignSpecificationReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignSpecificationReference_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP203CcDesignSpecificationReference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignSpecificationReference_clone(ptr),
+        )
     }
 }
 
@@ -2884,6 +2934,12 @@ unsafe impl crate::CppDeletable for HandleStepAP203Change {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP203Change {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP203Change_clone(ptr))
+    }
+}
+
 impl HandleStepAP203Change {
     /// Dereference this Handle to access the underlying StepAP203_Change
     pub fn get(&self) -> &crate::ffi_types::StepAP203_Change {
@@ -3176,6 +3232,12 @@ pub use crate::ffi_types::HandleStepAP203ChangeRequest;
 unsafe impl crate::CppDeletable for HandleStepAP203ChangeRequest {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP203ChangeRequest_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP203ChangeRequest {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP203ChangeRequest_clone(ptr))
     }
 }
 
@@ -4550,6 +4612,14 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfApprovedItem {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfApprovedItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfApprovedItem_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepAP203HArray1OfApprovedItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfApprovedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfApprovedItem {
@@ -4810,6 +4880,14 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfCertifiedItem {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfCertifiedItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfCertifiedItem_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepAP203HArray1OfCertifiedItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfCertifiedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfCertifiedItem {
@@ -5061,6 +5139,14 @@ pub use crate::ffi_types::HandleStepAP203HArray1OfChangeRequestItem;
 unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfChangeRequestItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfChangeRequestItem_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfChangeRequestItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfChangeRequestItem_clone(ptr),
+        )
     }
 }
 
@@ -5324,6 +5410,14 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfClassifiedItem {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfClassifiedItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfClassifiedItem_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepAP203HArray1OfClassifiedItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfClassifiedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfClassifiedItem {
@@ -5581,6 +5675,14 @@ pub use crate::ffi_types::HandleStepAP203HArray1OfContractedItem;
 unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfContractedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfContractedItem_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfContractedItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfContractedItem_clone(ptr),
+        )
     }
 }
 
@@ -5848,6 +5950,14 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfDateTimeItem {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfDateTimeItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfDateTimeItem_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepAP203HArray1OfDateTimeItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfDateTimeItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfDateTimeItem {
@@ -6097,6 +6207,14 @@ pub use crate::ffi_types::HandleStepAP203HArray1OfPersonOrganizationItem;
 unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfPersonOrganizationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfPersonOrganizationItem_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfPersonOrganizationItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfPersonOrganizationItem_clone(ptr),
+        )
     }
 }
 
@@ -6360,6 +6478,14 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfSpecifiedItem {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfSpecifiedItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfSpecifiedItem_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepAP203HArray1OfSpecifiedItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfSpecifiedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfSpecifiedItem {
@@ -6614,6 +6740,14 @@ pub use crate::ffi_types::HandleStepAP203HArray1OfStartRequestItem;
 unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfStartRequestItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfStartRequestItem_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfStartRequestItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfStartRequestItem_clone(ptr),
+        )
     }
 }
 
@@ -6890,6 +7024,12 @@ pub use crate::ffi_types::HandleStepAP203HArray1OfWorkItem;
 unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfWorkItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfWorkItem_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfWorkItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfWorkItem_clone(ptr))
     }
 }
 
@@ -7796,6 +7936,12 @@ unsafe impl crate::CppDeletable for HandleStepAP203StartRequest {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepAP203StartRequest {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP203StartRequest_clone(ptr))
+    }
+}
+
 impl HandleStepAP203StartRequest {
     /// Dereference this Handle to access the underlying StepAP203_StartRequest
     pub fn get(&self) -> &crate::ffi_types::StepAP203_StartRequest {
@@ -8333,6 +8479,12 @@ pub use crate::ffi_types::HandleStepAP203StartWork;
 unsafe impl crate::CppDeletable for HandleStepAP203StartWork {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepAP203StartWork_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepAP203StartWork {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP203StartWork_clone(ptr))
     }
 }
 

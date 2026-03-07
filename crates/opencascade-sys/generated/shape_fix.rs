@@ -605,6 +605,12 @@ unsafe impl crate::CppDeletable for HandleShapeFixComposeShell {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeFixComposeShell {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixComposeShell_clone(ptr))
+    }
+}
+
 impl HandleShapeFixComposeShell {
     /// Dereference this Handle to access the underlying ShapeFix_ComposeShell
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_ComposeShell {
@@ -1166,6 +1172,12 @@ unsafe impl crate::CppDeletable for HandleShapeFixEdge {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeFixEdge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixEdge_clone(ptr))
+    }
+}
+
 impl HandleShapeFixEdge {
     /// Dereference this Handle to access the underlying ShapeFix_Edge
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Edge {
@@ -1495,6 +1507,12 @@ pub use crate::ffi_types::HandleShapeFixEdgeProjAux;
 unsafe impl crate::CppDeletable for HandleShapeFixEdgeProjAux {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeFixEdgeProjAux_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeFixEdgeProjAux {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixEdgeProjAux_clone(ptr))
     }
 }
 
@@ -2286,6 +2304,12 @@ unsafe impl crate::CppDeletable for HandleShapeFixFace {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeFixFace {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixFace_clone(ptr))
+    }
+}
+
 impl HandleShapeFixFace {
     /// Dereference this Handle to access the underlying ShapeFix_Face
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Face {
@@ -2921,6 +2945,12 @@ unsafe impl crate::CppDeletable for HandleShapeFixFixSmallFace {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeFixFixSmallFace {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallFace_clone(ptr))
+    }
+}
+
 impl HandleShapeFixFixSmallFace {
     /// Dereference this Handle to access the underlying ShapeFix_FixSmallFace
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_FixSmallFace {
@@ -3387,6 +3417,12 @@ pub use crate::ffi_types::HandleShapeFixFixSmallSolid;
 unsafe impl crate::CppDeletable for HandleShapeFixFixSmallSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallSolid_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeFixFixSmallSolid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallSolid_clone(ptr))
     }
 }
 
@@ -4060,6 +4096,12 @@ pub use crate::ffi_types::HandleShapeFixRoot;
 unsafe impl crate::CppDeletable for HandleShapeFixRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeFixRoot_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeFixRoot {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixRoot_clone(ptr))
     }
 }
 
@@ -4799,6 +4841,12 @@ unsafe impl crate::CppDeletable for HandleShapeFixShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeFixShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixShape_clone(ptr))
+    }
+}
+
 impl HandleShapeFixShape {
     /// Dereference this Handle to access the underlying ShapeFix_Shape
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Shape {
@@ -5417,6 +5465,12 @@ unsafe impl crate::CppDeletable for HandleShapeFixShell {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeFixShell {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixShell_clone(ptr))
+    }
+}
+
 impl HandleShapeFixShell {
     /// Dereference this Handle to access the underlying ShapeFix_Shell
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Shell {
@@ -5927,6 +5981,12 @@ unsafe impl crate::CppDeletable for HandleShapeFixSolid {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeFixSolid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixSolid_clone(ptr))
+    }
+}
+
 impl HandleShapeFixSolid {
     /// Dereference this Handle to access the underlying ShapeFix_Solid
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Solid {
@@ -6347,6 +6407,14 @@ pub use crate::ffi_types::HandleShapeFixSplitCommonVertex;
 unsafe impl crate::CppDeletable for HandleShapeFixSplitCommonVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeFixSplitCommonVertex_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeFixSplitCommonVertex {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixSplitCommonVertex_clone(
+            ptr,
+        ))
     }
 }
 
@@ -7874,6 +7942,12 @@ unsafe impl crate::CppDeletable for HandleShapeFixWire {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeFixWire {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixWire_clone(ptr))
+    }
+}
+
 impl HandleShapeFixWire {
     /// Dereference this Handle to access the underlying ShapeFix_Wire
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Wire {
@@ -8891,6 +8965,12 @@ pub use crate::ffi_types::HandleShapeFixWireframe;
 unsafe impl crate::CppDeletable for HandleShapeFixWireframe {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeFixWireframe_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeFixWireframe {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixWireframe_clone(ptr))
     }
 }
 

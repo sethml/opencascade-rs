@@ -415,6 +415,12 @@ unsafe impl crate::CppDeletable for HandleBinMNamingNamedShapeDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinMNamingNamedShapeDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBin::HandleBinMNamingNamedShapeDriver_clone(ptr))
+    }
+}
+
 impl HandleBinMNamingNamedShapeDriver {
     /// Dereference this Handle to access the underlying BinMNaming_NamedShapeDriver
     pub fn get(&self) -> &crate::ffi_types::BinMNaming_NamedShapeDriver {
@@ -709,6 +715,12 @@ pub use crate::ffi_types::HandleBinMNamingNamingDriver;
 unsafe impl crate::CppDeletable for HandleBinMNamingNamingDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinMNamingNamingDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_clone(ptr))
     }
 }
 

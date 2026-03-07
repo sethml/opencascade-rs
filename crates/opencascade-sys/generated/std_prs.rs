@@ -499,6 +499,12 @@ unsafe impl crate::CppDeletable for HandleStdPrsBRepFont {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdPrsBRepFont {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsBRepFont_clone(ptr))
+    }
+}
+
 impl HandleStdPrsBRepFont {
     /// Dereference this Handle to access the underlying StdPrs_BRepFont
     pub fn get(&self) -> &crate::ffi_types::StdPrs_BRepFont {
@@ -1242,6 +1248,12 @@ unsafe impl crate::CppDeletable for HandleStdPrsHLRPolyShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdPrsHLRPolyShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRPolyShape_clone(ptr))
+    }
+}
+
 impl HandleStdPrsHLRPolyShape {
     /// Dereference this Handle to access the underlying StdPrs_HLRPolyShape
     pub fn get(&self) -> &crate::ffi_types::StdPrs_HLRPolyShape {
@@ -1482,6 +1494,12 @@ unsafe impl crate::CppDeletable for HandleStdPrsHLRShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdPrsHLRShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRShape_clone(ptr))
+    }
+}
+
 impl HandleStdPrsHLRShape {
     /// Dereference this Handle to access the underlying StdPrs_HLRShape
     pub fn get(&self) -> &crate::ffi_types::StdPrs_HLRShape {
@@ -1680,6 +1698,12 @@ pub use crate::ffi_types::HandleStdPrsHLRShapeI;
 unsafe impl crate::CppDeletable for HandleStdPrsHLRShapeI {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStdPrsHLRShapeI {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_clone(ptr))
     }
 }
 

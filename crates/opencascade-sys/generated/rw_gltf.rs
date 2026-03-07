@@ -998,6 +998,12 @@ unsafe impl crate::CppDeletable for HandleRWGltfCafReader {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleRWGltfCafReader {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfCafReader_clone(ptr))
+    }
+}
+
 impl HandleRWGltfCafReader {
     /// Dereference this Handle to access the underlying RWGltf_CafReader
     pub fn get(&self) -> &crate::ffi_types::RWGltf_CafReader {
@@ -1221,6 +1227,12 @@ pub use crate::ffi_types::HandleRWGltfGltfFace;
 unsafe impl crate::CppDeletable for HandleRWGltfGltfFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfFace_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleRWGltfGltfFace {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfFace_clone(ptr))
     }
 }
 
@@ -2221,6 +2233,14 @@ unsafe impl crate::CppDeletable for HandleRWGltfGltfLatePrimitiveArray {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleRWGltfGltfLatePrimitiveArray {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfLatePrimitiveArray_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleRWGltfGltfLatePrimitiveArray {
     /// Dereference this Handle to access the underlying RWGltf_GltfLatePrimitiveArray
     pub fn get(&self) -> &crate::ffi_types::RWGltf_GltfLatePrimitiveArray {
@@ -2585,6 +2605,12 @@ unsafe impl crate::CppDeletable for HandleRWGltfGltfMaterialMap {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleRWGltfGltfMaterialMap {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfMaterialMap_clone(ptr))
+    }
+}
+
 impl HandleRWGltfGltfMaterialMap {
     /// Dereference this Handle to access the underlying RWGltf_GltfMaterialMap
     pub fn get(&self) -> &crate::ffi_types::RWGltf_GltfMaterialMap {
@@ -2880,6 +2906,12 @@ unsafe impl crate::CppDeletable for HandleRWGltfMaterialCommon {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleRWGltfMaterialCommon {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialCommon_clone(ptr))
+    }
+}
+
 impl HandleRWGltfMaterialCommon {
     /// Dereference this Handle to access the underlying RWGltf_MaterialCommon
     pub fn get(&self) -> &crate::ffi_types::RWGltf_MaterialCommon {
@@ -3053,6 +3085,14 @@ pub use crate::ffi_types::HandleRWGltfMaterialMetallicRoughness;
 unsafe impl crate::CppDeletable for HandleRWGltfMaterialMetallicRoughness {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialMetallicRoughness_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleRWGltfMaterialMetallicRoughness {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialMetallicRoughness_clone(ptr),
+        )
     }
 }
 
@@ -3429,6 +3469,12 @@ pub use crate::ffi_types::HandleRWGltfTriangulationReader;
 unsafe impl crate::CppDeletable for HandleRWGltfTriangulationReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEGLTF::HandleRWGltfTriangulationReader_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleRWGltfTriangulationReader {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfTriangulationReader_clone(ptr))
     }
 }
 

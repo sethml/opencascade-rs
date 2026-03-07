@@ -731,6 +731,12 @@ unsafe impl crate::CppDeletable for HandleTDataXtdAxis {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDataXtdAxis {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdAxis_clone(ptr))
+    }
+}
+
 impl HandleTDataXtdAxis {
     /// Dereference this Handle to access the underlying TDataXtd_Axis
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Axis {
@@ -1637,6 +1643,12 @@ unsafe impl crate::CppDeletable for HandleTDataXtdConstraint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDataXtdConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdConstraint_clone(ptr))
+    }
+}
+
 impl HandleTDataXtdConstraint {
     /// Dereference this Handle to access the underlying TDataXtd_Constraint
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Constraint {
@@ -2428,6 +2440,12 @@ unsafe impl crate::CppDeletable for HandleTDataXtdGeometry {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDataXtdGeometry {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdGeometry_clone(ptr))
+    }
+}
+
 impl HandleTDataXtdGeometry {
     /// Dereference this Handle to access the underlying TDataXtd_Geometry
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Geometry {
@@ -2700,6 +2718,12 @@ pub use crate::ffi_types::HandleTDataXtdHArray1OfTrsf;
 unsafe impl crate::CppDeletable for HandleTDataXtdHArray1OfTrsf {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCAF::HandleTDataXtdHArray1OfTrsf_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDataXtdHArray1OfTrsf {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdHArray1OfTrsf_clone(ptr))
     }
 }
 
@@ -3264,6 +3288,12 @@ pub use crate::ffi_types::HandleTDataXtdPattern;
 unsafe impl crate::CppDeletable for HandleTDataXtdPattern {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCAF::HandleTDataXtdPattern_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDataXtdPattern {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdPattern_clone(ptr))
     }
 }
 
@@ -4128,6 +4158,12 @@ unsafe impl crate::CppDeletable for HandleTDataXtdPatternStd {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDataXtdPatternStd {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdPatternStd_clone(ptr))
+    }
+}
+
 impl HandleTDataXtdPatternStd {
     /// Dereference this Handle to access the underlying TDataXtd_PatternStd
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_PatternStd {
@@ -4767,6 +4803,12 @@ pub use crate::ffi_types::HandleTDataXtdPlacement;
 unsafe impl crate::CppDeletable for HandleTDataXtdPlacement {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCAF::HandleTDataXtdPlacement_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDataXtdPlacement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdPlacement_clone(ptr))
     }
 }
 
@@ -5410,6 +5452,12 @@ unsafe impl crate::CppDeletable for HandleTDataXtdPlane {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDataXtdPlane {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdPlane_clone(ptr))
+    }
+}
+
 impl HandleTDataXtdPlane {
     /// Dereference this Handle to access the underlying TDataXtd_Plane
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Plane {
@@ -6050,6 +6098,12 @@ unsafe impl crate::CppDeletable for HandleTDataXtdPoint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDataXtdPoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdPoint_clone(ptr))
+    }
+}
+
 impl HandleTDataXtdPoint {
     /// Dereference this Handle to access the underlying TDataXtd_Point
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Point {
@@ -6687,6 +6741,12 @@ pub use crate::ffi_types::HandleTDataXtdPosition;
 unsafe impl crate::CppDeletable for HandleTDataXtdPosition {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCAF::HandleTDataXtdPosition_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDataXtdPosition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdPosition_clone(ptr))
     }
 }
 
@@ -7584,6 +7644,12 @@ unsafe impl crate::CppDeletable for HandleTDataXtdPresentation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTDataXtdPresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdPresentation_clone(ptr))
+    }
+}
+
 impl HandleTDataXtdPresentation {
     /// Dereference this Handle to access the underlying TDataXtd_Presentation
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Presentation {
@@ -8221,6 +8287,12 @@ pub use crate::ffi_types::HandleTDataXtdShape;
 unsafe impl crate::CppDeletable for HandleTDataXtdShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCAF::HandleTDataXtdShape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDataXtdShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdShape_clone(ptr))
     }
 }
 
@@ -9066,6 +9138,12 @@ pub use crate::ffi_types::HandleTDataXtdTriangulation;
 unsafe impl crate::CppDeletable for HandleTDataXtdTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCAF::HandleTDataXtdTriangulation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTDataXtdTriangulation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTDataXtdTriangulation_clone(ptr))
     }
 }
 

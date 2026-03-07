@@ -618,6 +618,12 @@ unsafe impl crate::CppDeletable for HandleBRepAdaptorCompCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepAdaptorCompCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepAdaptorCompCurve_clone(ptr))
+    }
+}
+
 impl HandleBRepAdaptorCompCurve {
     /// Dereference this Handle to access the underlying BRepAdaptor_CompCurve
     pub fn get(&self) -> &crate::ffi_types::BRepAdaptor_CompCurve {
@@ -1283,6 +1289,12 @@ unsafe impl crate::CppDeletable for HandleBRepAdaptorCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepAdaptorCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepAdaptorCurve_clone(ptr))
+    }
+}
+
 impl HandleBRepAdaptorCurve {
     /// Dereference this Handle to access the underlying BRepAdaptor_Curve
     pub fn get(&self) -> &crate::ffi_types::BRepAdaptor_Curve {
@@ -1913,6 +1925,12 @@ unsafe impl crate::CppDeletable for HandleBRepAdaptorCurve2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepAdaptorCurve2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepAdaptorCurve2d_clone(ptr))
+    }
+}
+
 impl HandleBRepAdaptorCurve2d {
     /// Dereference this Handle to access the underlying BRepAdaptor_Curve2d
     pub fn get(&self) -> &crate::ffi_types::BRepAdaptor_Curve2d {
@@ -2200,6 +2218,12 @@ pub use crate::ffi_types::HandleBRepAdaptorHArray1OfCurve;
 unsafe impl crate::CppDeletable for HandleBRepAdaptorHArray1OfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::HandleBRepAdaptorHArray1OfCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepAdaptorHArray1OfCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepAdaptorHArray1OfCurve_clone(ptr))
     }
 }
 
@@ -3034,6 +3058,12 @@ pub use crate::ffi_types::HandleBRepAdaptorSurface;
 unsafe impl crate::CppDeletable for HandleBRepAdaptorSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::HandleBRepAdaptorSurface_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepAdaptorSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepAdaptorSurface_clone(ptr))
     }
 }
 

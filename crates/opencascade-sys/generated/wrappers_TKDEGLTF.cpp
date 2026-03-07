@@ -72,16 +72,52 @@ typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
 typedef opencascade::handle<XCAFDoc_VisMaterial> HandleXCAFDocVisMaterial;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleDEGLTFConfigurationNode_destructor(HandleDEGLTFConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<HandleDEGLTFConfigurationNode*> HandleDEGLTFConfigurationNode_clone(const HandleDEGLTFConfigurationNode* self_) {
+    try { return {new HandleDEGLTFConfigurationNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDEGLTFProvider_destructor(HandleDEGLTFProvider* self_) { delete self_; }
+extern "C" OcctResult<HandleDEGLTFProvider*> HandleDEGLTFProvider_clone(const HandleDEGLTFProvider* self_) {
+    try { return {new HandleDEGLTFProvider(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWGltfCafReader_destructor(HandleRWGltfCafReader* self_) { delete self_; }
+extern "C" OcctResult<HandleRWGltfCafReader*> HandleRWGltfCafReader_clone(const HandleRWGltfCafReader* self_) {
+    try { return {new HandleRWGltfCafReader(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWGltfGltfFace_destructor(HandleRWGltfGltfFace* self_) { delete self_; }
+extern "C" OcctResult<HandleRWGltfGltfFace*> HandleRWGltfGltfFace_clone(const HandleRWGltfGltfFace* self_) {
+    try { return {new HandleRWGltfGltfFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWGltfGltfLatePrimitiveArray_destructor(HandleRWGltfGltfLatePrimitiveArray* self_) { delete self_; }
+extern "C" OcctResult<HandleRWGltfGltfLatePrimitiveArray*> HandleRWGltfGltfLatePrimitiveArray_clone(const HandleRWGltfGltfLatePrimitiveArray* self_) {
+    try { return {new HandleRWGltfGltfLatePrimitiveArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWGltfGltfMaterialMap_destructor(HandleRWGltfGltfMaterialMap* self_) { delete self_; }
+extern "C" OcctResult<HandleRWGltfGltfMaterialMap*> HandleRWGltfGltfMaterialMap_clone(const HandleRWGltfGltfMaterialMap* self_) {
+    try { return {new HandleRWGltfGltfMaterialMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWGltfMaterialCommon_destructor(HandleRWGltfMaterialCommon* self_) { delete self_; }
+extern "C" OcctResult<HandleRWGltfMaterialCommon*> HandleRWGltfMaterialCommon_clone(const HandleRWGltfMaterialCommon* self_) {
+    try { return {new HandleRWGltfMaterialCommon(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWGltfMaterialMetallicRoughness_destructor(HandleRWGltfMaterialMetallicRoughness* self_) { delete self_; }
+extern "C" OcctResult<HandleRWGltfMaterialMetallicRoughness*> HandleRWGltfMaterialMetallicRoughness_clone(const HandleRWGltfMaterialMetallicRoughness* self_) {
+    try { return {new HandleRWGltfMaterialMetallicRoughness(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWGltfTriangulationReader_destructor(HandleRWGltfTriangulationReader* self_) { delete self_; }
+extern "C" OcctResult<HandleRWGltfTriangulationReader*> HandleRWGltfTriangulationReader_clone(const HandleRWGltfTriangulationReader* self_) {
+    try { return {new HandleRWGltfTriangulationReader(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // DEGLTF_ConfigurationNode wrappers

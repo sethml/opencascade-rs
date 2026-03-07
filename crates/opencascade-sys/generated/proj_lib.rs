@@ -1174,6 +1174,14 @@ unsafe impl crate::CppDeletable for HandleProjLibCompProjectedCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleProjLibCompProjectedCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleProjLibCompProjectedCurve {
     /// Dereference this Handle to access the underlying ProjLib_CompProjectedCurve
     pub fn get(&self) -> &crate::ffi_types::ProjLib_CompProjectedCurve {
@@ -2387,6 +2395,14 @@ unsafe impl crate::CppDeletable for HandleProjLibHSequenceOfHSequenceOfPnt {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleProjLibHSequenceOfHSequenceOfPnt {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_clone(ptr),
+        )
+    }
+}
+
 impl HandleProjLibHSequenceOfHSequenceOfPnt {
     /// Dereference this Handle to access the underlying ProjLib_HSequenceOfHSequenceOfPnt
     pub fn get(&self) -> &crate::ffi_types::ProjLib_HSequenceOfHSequenceOfPnt {
@@ -3559,6 +3575,12 @@ unsafe impl crate::CppDeletable for HandleProjLibProjectOnPlane {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleProjLibProjectOnPlane {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_clone(ptr))
+    }
+}
+
 impl HandleProjLibProjectOnPlane {
     /// Dereference this Handle to access the underlying ProjLib_ProjectOnPlane
     pub fn get(&self) -> &crate::ffi_types::ProjLib_ProjectOnPlane {
@@ -4375,6 +4397,12 @@ pub use crate::ffi_types::HandleProjLibProjectedCurve;
 unsafe impl crate::CppDeletable for HandleProjLibProjectedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleProjLibProjectedCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_clone(ptr))
     }
 }
 

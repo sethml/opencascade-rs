@@ -322,61 +322,277 @@ typedef opencascade::handle<gp_VectorWithNullMagnitude> HandlegpVectorWithNullMa
 typedef opencascade::handle<math_NotSquare> HandlemathNotSquare;
 typedef opencascade::handle<math_SingularMatrix> HandlemathSingularMatrix;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleBSplCLibCache_destructor(HandleBSplCLibCache* self_) { delete self_; }
+extern "C" OcctResult<HandleBSplCLibCache*> HandleBSplCLibCache_clone(const HandleBSplCLibCache* self_) {
+    try { return {new HandleBSplCLibCache(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBSplSLibCache_destructor(HandleBSplSLibCache* self_) { delete self_; }
+extern "C" OcctResult<HandleBSplSLibCache*> HandleBSplSLibCache_clone(const HandleBSplSLibCache* self_) {
+    try { return {new HandleBSplSLibCache(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBVHBuildThread_destructor(HandleBVHBuildThread* self_) { delete self_; }
+extern "C" OcctResult<HandleBVHBuildThread*> HandleBVHBuildThread_clone(const HandleBVHBuildThread* self_) {
+    try { return {new HandleBVHBuildThread(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBVHBuilderTransient_destructor(HandleBVHBuilderTransient* self_) { delete self_; }
+extern "C" OcctResult<HandleBVHBuilderTransient*> HandleBVHBuilderTransient_clone(const HandleBVHBuilderTransient* self_) {
+    try { return {new HandleBVHBuilderTransient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBVHObjectTransient_destructor(HandleBVHObjectTransient* self_) { delete self_; }
+extern "C" OcctResult<HandleBVHObjectTransient*> HandleBVHObjectTransient_clone(const HandleBVHObjectTransient* self_) {
+    try { return {new HandleBVHObjectTransient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBVHProperties_destructor(HandleBVHProperties* self_) { delete self_; }
+extern "C" OcctResult<HandleBVHProperties*> HandleBVHProperties_clone(const HandleBVHProperties* self_) {
+    try { return {new HandleBVHProperties(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBVHTreeBaseTransient_destructor(HandleBVHTreeBaseTransient* self_) { delete self_; }
+extern "C" OcctResult<HandleBVHTreeBaseTransient*> HandleBVHTreeBaseTransient_clone(const HandleBVHTreeBaseTransient* self_) {
+    try { return {new HandleBVHTreeBaseTransient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBndHArray1OfBox_destructor(HandleBndHArray1OfBox* self_) { delete self_; }
+extern "C" OcctResult<HandleBndHArray1OfBox*> HandleBndHArray1OfBox_clone(const HandleBndHArray1OfBox* self_) {
+    try { return {new HandleBndHArray1OfBox(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBndHArray1OfBox2d_destructor(HandleBndHArray1OfBox2d* self_) { delete self_; }
+extern "C" OcctResult<HandleBndHArray1OfBox2d*> HandleBndHArray1OfBox2d_clone(const HandleBndHArray1OfBox2d* self_) {
+    try { return {new HandleBndHArray1OfBox2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBndHArray1OfSphere_destructor(HandleBndHArray1OfSphere* self_) { delete self_; }
+extern "C" OcctResult<HandleBndHArray1OfSphere*> HandleBndHArray1OfSphere_clone(const HandleBndHArray1OfSphere* self_) {
+    try { return {new HandleBndHArray1OfSphere(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePLibBase_destructor(HandlePLibBase* self_) { delete self_; }
+extern "C" OcctResult<HandlePLibBase*> HandlePLibBase_clone(const HandlePLibBase* self_) {
+    try { return {new HandlePLibBase(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePLibHermitJacobi_destructor(HandlePLibHermitJacobi* self_) { delete self_; }
+extern "C" OcctResult<HandlePLibHermitJacobi*> HandlePLibHermitJacobi_clone(const HandlePLibHermitJacobi* self_) {
+    try { return {new HandlePLibHermitJacobi(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePLibJacobiPolynomial_destructor(HandlePLibJacobiPolynomial* self_) { delete self_; }
+extern "C" OcctResult<HandlePLibJacobiPolynomial*> HandlePLibJacobiPolynomial_clone(const HandlePLibJacobiPolynomial* self_) {
+    try { return {new HandlePLibJacobiPolynomial(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePolyCoherentTriangulation_destructor(HandlePolyCoherentTriangulation* self_) { delete self_; }
+extern "C" OcctResult<HandlePolyCoherentTriangulation*> HandlePolyCoherentTriangulation_clone(const HandlePolyCoherentTriangulation* self_) {
+    try { return {new HandlePolyCoherentTriangulation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePolyHArray1OfTriangle_destructor(HandlePolyHArray1OfTriangle* self_) { delete self_; }
+extern "C" OcctResult<HandlePolyHArray1OfTriangle*> HandlePolyHArray1OfTriangle_clone(const HandlePolyHArray1OfTriangle* self_) {
+    try { return {new HandlePolyHArray1OfTriangle(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePolyMergeNodesTool_destructor(HandlePolyMergeNodesTool* self_) { delete self_; }
+extern "C" OcctResult<HandlePolyMergeNodesTool*> HandlePolyMergeNodesTool_clone(const HandlePolyMergeNodesTool* self_) {
+    try { return {new HandlePolyMergeNodesTool(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePolyPolygon2D_destructor(HandlePolyPolygon2D* self_) { delete self_; }
+extern "C" OcctResult<HandlePolyPolygon2D*> HandlePolyPolygon2D_clone(const HandlePolyPolygon2D* self_) {
+    try { return {new HandlePolyPolygon2D(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePolyPolygon3D_destructor(HandlePolyPolygon3D* self_) { delete self_; }
+extern "C" OcctResult<HandlePolyPolygon3D*> HandlePolyPolygon3D_clone(const HandlePolyPolygon3D* self_) {
+    try { return {new HandlePolyPolygon3D(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePolyPolygonOnTriangulation_destructor(HandlePolyPolygonOnTriangulation* self_) { delete self_; }
+extern "C" OcctResult<HandlePolyPolygonOnTriangulation*> HandlePolyPolygonOnTriangulation_clone(const HandlePolyPolygonOnTriangulation* self_) {
+    try { return {new HandlePolyPolygonOnTriangulation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePolyTriangulation_destructor(HandlePolyTriangulation* self_) { delete self_; }
+extern "C" OcctResult<HandlePolyTriangulation*> HandlePolyTriangulation_clone(const HandlePolyTriangulation* self_) {
+    try { return {new HandlePolyTriangulation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePolyTriangulationParameters_destructor(HandlePolyTriangulationParameters* self_) { delete self_; }
+extern "C" OcctResult<HandlePolyTriangulationParameters*> HandlePolyTriangulationParameters_clone(const HandlePolyTriangulationParameters* self_) {
+    try { return {new HandlePolyTriangulationParameters(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray1OfCirc2d_destructor(HandleTColgpHArray1OfCirc2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray1OfCirc2d*> HandleTColgpHArray1OfCirc2d_clone(const HandleTColgpHArray1OfCirc2d* self_) {
+    try { return {new HandleTColgpHArray1OfCirc2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray1OfDir_destructor(HandleTColgpHArray1OfDir* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray1OfDir*> HandleTColgpHArray1OfDir_clone(const HandleTColgpHArray1OfDir* self_) {
+    try { return {new HandleTColgpHArray1OfDir(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray1OfDir2d_destructor(HandleTColgpHArray1OfDir2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray1OfDir2d*> HandleTColgpHArray1OfDir2d_clone(const HandleTColgpHArray1OfDir2d* self_) {
+    try { return {new HandleTColgpHArray1OfDir2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray1OfLin2d_destructor(HandleTColgpHArray1OfLin2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray1OfLin2d*> HandleTColgpHArray1OfLin2d_clone(const HandleTColgpHArray1OfLin2d* self_) {
+    try { return {new HandleTColgpHArray1OfLin2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray1OfPnt_destructor(HandleTColgpHArray1OfPnt* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray1OfPnt*> HandleTColgpHArray1OfPnt_clone(const HandleTColgpHArray1OfPnt* self_) {
+    try { return {new HandleTColgpHArray1OfPnt(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray1OfPnt2d_destructor(HandleTColgpHArray1OfPnt2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray1OfPnt2d*> HandleTColgpHArray1OfPnt2d_clone(const HandleTColgpHArray1OfPnt2d* self_) {
+    try { return {new HandleTColgpHArray1OfPnt2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray1OfVec_destructor(HandleTColgpHArray1OfVec* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray1OfVec*> HandleTColgpHArray1OfVec_clone(const HandleTColgpHArray1OfVec* self_) {
+    try { return {new HandleTColgpHArray1OfVec(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray1OfVec2d_destructor(HandleTColgpHArray1OfVec2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray1OfVec2d*> HandleTColgpHArray1OfVec2d_clone(const HandleTColgpHArray1OfVec2d* self_) {
+    try { return {new HandleTColgpHArray1OfVec2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray1OfXY_destructor(HandleTColgpHArray1OfXY* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray1OfXY*> HandleTColgpHArray1OfXY_clone(const HandleTColgpHArray1OfXY* self_) {
+    try { return {new HandleTColgpHArray1OfXY(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray1OfXYZ_destructor(HandleTColgpHArray1OfXYZ* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray1OfXYZ*> HandleTColgpHArray1OfXYZ_clone(const HandleTColgpHArray1OfXYZ* self_) {
+    try { return {new HandleTColgpHArray1OfXYZ(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray2OfCirc2d_destructor(HandleTColgpHArray2OfCirc2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray2OfCirc2d*> HandleTColgpHArray2OfCirc2d_clone(const HandleTColgpHArray2OfCirc2d* self_) {
+    try { return {new HandleTColgpHArray2OfCirc2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray2OfDir_destructor(HandleTColgpHArray2OfDir* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray2OfDir*> HandleTColgpHArray2OfDir_clone(const HandleTColgpHArray2OfDir* self_) {
+    try { return {new HandleTColgpHArray2OfDir(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray2OfDir2d_destructor(HandleTColgpHArray2OfDir2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray2OfDir2d*> HandleTColgpHArray2OfDir2d_clone(const HandleTColgpHArray2OfDir2d* self_) {
+    try { return {new HandleTColgpHArray2OfDir2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray2OfLin2d_destructor(HandleTColgpHArray2OfLin2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray2OfLin2d*> HandleTColgpHArray2OfLin2d_clone(const HandleTColgpHArray2OfLin2d* self_) {
+    try { return {new HandleTColgpHArray2OfLin2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray2OfPnt_destructor(HandleTColgpHArray2OfPnt* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray2OfPnt*> HandleTColgpHArray2OfPnt_clone(const HandleTColgpHArray2OfPnt* self_) {
+    try { return {new HandleTColgpHArray2OfPnt(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray2OfPnt2d_destructor(HandleTColgpHArray2OfPnt2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray2OfPnt2d*> HandleTColgpHArray2OfPnt2d_clone(const HandleTColgpHArray2OfPnt2d* self_) {
+    try { return {new HandleTColgpHArray2OfPnt2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray2OfVec_destructor(HandleTColgpHArray2OfVec* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray2OfVec*> HandleTColgpHArray2OfVec_clone(const HandleTColgpHArray2OfVec* self_) {
+    try { return {new HandleTColgpHArray2OfVec(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray2OfVec2d_destructor(HandleTColgpHArray2OfVec2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray2OfVec2d*> HandleTColgpHArray2OfVec2d_clone(const HandleTColgpHArray2OfVec2d* self_) {
+    try { return {new HandleTColgpHArray2OfVec2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray2OfXY_destructor(HandleTColgpHArray2OfXY* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray2OfXY*> HandleTColgpHArray2OfXY_clone(const HandleTColgpHArray2OfXY* self_) {
+    try { return {new HandleTColgpHArray2OfXY(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHArray2OfXYZ_destructor(HandleTColgpHArray2OfXYZ* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHArray2OfXYZ*> HandleTColgpHArray2OfXYZ_clone(const HandleTColgpHArray2OfXYZ* self_) {
+    try { return {new HandleTColgpHArray2OfXYZ(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHSequenceOfDir_destructor(HandleTColgpHSequenceOfDir* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHSequenceOfDir*> HandleTColgpHSequenceOfDir_clone(const HandleTColgpHSequenceOfDir* self_) {
+    try { return {new HandleTColgpHSequenceOfDir(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHSequenceOfDir2d_destructor(HandleTColgpHSequenceOfDir2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHSequenceOfDir2d*> HandleTColgpHSequenceOfDir2d_clone(const HandleTColgpHSequenceOfDir2d* self_) {
+    try { return {new HandleTColgpHSequenceOfDir2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHSequenceOfPnt_destructor(HandleTColgpHSequenceOfPnt* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHSequenceOfPnt*> HandleTColgpHSequenceOfPnt_clone(const HandleTColgpHSequenceOfPnt* self_) {
+    try { return {new HandleTColgpHSequenceOfPnt(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHSequenceOfPnt2d_destructor(HandleTColgpHSequenceOfPnt2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHSequenceOfPnt2d*> HandleTColgpHSequenceOfPnt2d_clone(const HandleTColgpHSequenceOfPnt2d* self_) {
+    try { return {new HandleTColgpHSequenceOfPnt2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHSequenceOfVec_destructor(HandleTColgpHSequenceOfVec* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHSequenceOfVec*> HandleTColgpHSequenceOfVec_clone(const HandleTColgpHSequenceOfVec* self_) {
+    try { return {new HandleTColgpHSequenceOfVec(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHSequenceOfVec2d_destructor(HandleTColgpHSequenceOfVec2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHSequenceOfVec2d*> HandleTColgpHSequenceOfVec2d_clone(const HandleTColgpHSequenceOfVec2d* self_) {
+    try { return {new HandleTColgpHSequenceOfVec2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHSequenceOfXY_destructor(HandleTColgpHSequenceOfXY* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHSequenceOfXY*> HandleTColgpHSequenceOfXY_clone(const HandleTColgpHSequenceOfXY* self_) {
+    try { return {new HandleTColgpHSequenceOfXY(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColgpHSequenceOfXYZ_destructor(HandleTColgpHSequenceOfXYZ* self_) { delete self_; }
+extern "C" OcctResult<HandleTColgpHSequenceOfXYZ*> HandleTColgpHSequenceOfXYZ_clone(const HandleTColgpHSequenceOfXYZ* self_) {
+    try { return {new HandleTColgpHSequenceOfXYZ(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopLocDatum3D_destructor(HandleTopLocDatum3D* self_) { delete self_; }
+extern "C" OcctResult<HandleTopLocDatum3D*> HandleTopLocDatum3D_clone(const HandleTopLocDatum3D* self_) {
+    try { return {new HandleTopLocDatum3D(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopLocSListNodeOfItemLocation_destructor(HandleTopLocSListNodeOfItemLocation* self_) { delete self_; }
+extern "C" OcctResult<HandleTopLocSListNodeOfItemLocation*> HandleTopLocSListNodeOfItemLocation_clone(const HandleTopLocSListNodeOfItemLocation* self_) {
+    try { return {new HandleTopLocSListNodeOfItemLocation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlegpVectorWithNullMagnitude_destructor(HandlegpVectorWithNullMagnitude* self_) { delete self_; }
+extern "C" OcctResult<HandlegpVectorWithNullMagnitude*> HandlegpVectorWithNullMagnitude_clone(const HandlegpVectorWithNullMagnitude* self_) {
+    try { return {new HandlegpVectorWithNullMagnitude(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlemathNotSquare_destructor(HandlemathNotSquare* self_) { delete self_; }
+extern "C" OcctResult<HandlemathNotSquare*> HandlemathNotSquare_clone(const HandlemathNotSquare* self_) {
+    try { return {new HandlemathNotSquare(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlemathSingularMatrix_destructor(HandlemathSingularMatrix* self_) { delete self_; }
+extern "C" OcctResult<HandlemathSingularMatrix*> HandlemathSingularMatrix_clone(const HandlemathSingularMatrix* self_) {
+    try { return {new HandlemathSingularMatrix(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // BSplCLib_Cache wrappers
@@ -1098,7 +1314,7 @@ extern "C" const char* Bnd_B2d_set_h_size(Bnd_B2d* self_, gp_XY const* theHSize)
     try { self_->SetHSize(*theHSize); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Bnd_B2d*> Bnd_B2d_to_owned(const Bnd_B2d* self_) {
+extern "C" OcctResult<Bnd_B2d*> Bnd_B2d_clone(const Bnd_B2d* self_) {
     try { return {new Bnd_B2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1200,7 +1416,7 @@ extern "C" const char* Bnd_B2f_set_h_size(Bnd_B2f* self_, gp_XY const* theHSize)
     try { self_->SetHSize(*theHSize); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Bnd_B2f*> Bnd_B2f_to_owned(const Bnd_B2f* self_) {
+extern "C" OcctResult<Bnd_B2f*> Bnd_B2f_clone(const Bnd_B2f* self_) {
     try { return {new Bnd_B2f(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1302,7 +1518,7 @@ extern "C" const char* Bnd_B3d_set_h_size(Bnd_B3d* self_, gp_XYZ const* theHSize
     try { self_->SetHSize(*theHSize); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Bnd_B3d*> Bnd_B3d_to_owned(const Bnd_B3d* self_) {
+extern "C" OcctResult<Bnd_B3d*> Bnd_B3d_clone(const Bnd_B3d* self_) {
     try { return {new Bnd_B3d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1404,7 +1620,7 @@ extern "C" const char* Bnd_B3f_set_h_size(Bnd_B3f* self_, gp_XYZ const* theHSize
     try { self_->SetHSize(*theHSize); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Bnd_B3f*> Bnd_B3f_to_owned(const Bnd_B3f* self_) {
+extern "C" OcctResult<Bnd_B3f*> Bnd_B3f_clone(const Bnd_B3f* self_) {
     try { return {new Bnd_B3f(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1450,7 +1666,7 @@ extern "C" const char* Bnd_BoundSortBox_destroy(Bnd_BoundSortBox* self_) {
     try { self_->Destroy(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Bnd_BoundSortBox*> Bnd_BoundSortBox_to_owned(const Bnd_BoundSortBox* self_) {
+extern "C" OcctResult<Bnd_BoundSortBox*> Bnd_BoundSortBox_clone(const Bnd_BoundSortBox* self_) {
     try { return {new Bnd_BoundSortBox(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1660,7 +1876,7 @@ extern "C" OcctResult<bool> Bnd_Box_has_finite_part(const Bnd_Box* self_) {
     try { return {self_->HasFinitePart(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Bnd_Box*> Bnd_Box_to_owned(const Bnd_Box* self_) {
+extern "C" OcctResult<Bnd_Box*> Bnd_Box_clone(const Bnd_Box* self_) {
     try { return {new Bnd_Box(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1806,7 +2022,7 @@ extern "C" OcctResult<double> Bnd_Box2d_square_extent(const Bnd_Box2d* self_) {
     try { return {self_->SquareExtent(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Bnd_Box2d*> Bnd_Box2d_to_owned(const Bnd_Box2d* self_) {
+extern "C" OcctResult<Bnd_Box2d*> Bnd_Box2d_clone(const Bnd_Box2d* self_) {
     try { return {new Bnd_Box2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2204,7 +2420,7 @@ extern "C" const char* Bnd_OBB_add_pnt(Bnd_OBB* self_, gp_Pnt const* theP) {
     try { self_->Add(*theP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Bnd_OBB*> Bnd_OBB_to_owned(const Bnd_OBB* self_) {
+extern "C" OcctResult<Bnd_OBB*> Bnd_OBB_clone(const Bnd_OBB* self_) {
     try { return {new Bnd_OBB(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2302,7 +2518,7 @@ extern "C" OcctResult<bool> Bnd_Range_is_out_range(const Bnd_Range* self_, Bnd_R
     try { return {self_->IsOut(*theRange), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Bnd_Range*> Bnd_Range_to_owned(const Bnd_Range* self_) {
+extern "C" OcctResult<Bnd_Range*> Bnd_Range_clone(const Bnd_Range* self_) {
     try { return {new Bnd_Range(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2380,7 +2596,7 @@ extern "C" OcctResult<double> Bnd_Sphere_square_extent(const Bnd_Sphere* self_) 
     try { return {self_->SquareExtent(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Bnd_Sphere*> Bnd_Sphere_to_owned(const Bnd_Sphere* self_) {
+extern "C" OcctResult<Bnd_Sphere*> Bnd_Sphere_clone(const Bnd_Sphere* self_) {
     try { return {new Bnd_Sphere(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2402,7 +2618,7 @@ extern "C" OcctResult<Select3D_BndBox3d*> Bnd_Tools_bnd2_bvh_box(Bnd_Box const* 
     try { return {new Select3D_BndBox3d(Bnd_Tools::Bnd2BVH(*theBox)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Bnd_Tools*> Bnd_Tools_to_owned(const Bnd_Tools* self_) {
+extern "C" OcctResult<Bnd_Tools*> Bnd_Tools_clone(const Bnd_Tools* self_) {
     try { return {new Bnd_Tools(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3702,7 +3918,7 @@ extern "C" const char* Poly_ArrayOfNodes_set_value(Poly_ArrayOfNodes* self_, int
     try { self_->SetValue(theIndex, *theValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Poly_ArrayOfNodes*> Poly_ArrayOfNodes_to_owned(const Poly_ArrayOfNodes* self_) {
+extern "C" OcctResult<Poly_ArrayOfNodes*> Poly_ArrayOfNodes_clone(const Poly_ArrayOfNodes* self_) {
     try { return {new Poly_ArrayOfNodes(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3752,7 +3968,7 @@ extern "C" const char* Poly_ArrayOfUVNodes_set_value(Poly_ArrayOfUVNodes* self_,
     try { self_->SetValue(theIndex, *theValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Poly_ArrayOfUVNodes*> Poly_ArrayOfUVNodes_to_owned(const Poly_ArrayOfUVNodes* self_) {
+extern "C" OcctResult<Poly_ArrayOfUVNodes*> Poly_ArrayOfUVNodes_clone(const Poly_ArrayOfUVNodes* self_) {
     try { return {new Poly_ArrayOfUVNodes(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8285,7 +8501,7 @@ extern "C" OcctResult<TopLoc_ItemLocation*> TopLoc_ItemLocation_ctor_handletoplo
     try { return {new TopLoc_ItemLocation(*D, P), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopLoc_ItemLocation*> TopLoc_ItemLocation_to_owned(const TopLoc_ItemLocation* self_) {
+extern "C" OcctResult<TopLoc_ItemLocation*> TopLoc_ItemLocation_clone(const TopLoc_ItemLocation* self_) {
     try { return {new TopLoc_ItemLocation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8375,7 +8591,7 @@ extern "C" OcctResult<double> TopLoc_Location_scale_prec() {
     try { return {TopLoc_Location::ScalePrec(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopLoc_Location*> TopLoc_Location_to_owned(const TopLoc_Location* self_) {
+extern "C" OcctResult<TopLoc_Location*> TopLoc_Location_clone(const TopLoc_Location* self_) {
     try { return {new TopLoc_Location(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8505,7 +8721,7 @@ extern "C" const char* TopLoc_SListOfItemLocation_next(TopLoc_SListOfItemLocatio
     try { self_->Next(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopLoc_SListOfItemLocation*> TopLoc_SListOfItemLocation_to_owned(const TopLoc_SListOfItemLocation* self_) {
+extern "C" OcctResult<TopLoc_SListOfItemLocation*> TopLoc_SListOfItemLocation_clone(const TopLoc_SListOfItemLocation* self_) {
     try { return {new TopLoc_SListOfItemLocation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8631,7 +8847,7 @@ extern "C" const char* gp_Ax1_translate_pnt2(gp_Ax1* self_, gp_Pnt const* theP1,
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Ax1*> gp_Ax1_to_owned(const gp_Ax1* self_) {
+extern "C" OcctResult<gp_Ax1*> gp_Ax1_clone(const gp_Ax1* self_) {
     try { return {new gp_Ax1(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8769,7 +8985,7 @@ extern "C" const char* gp_Ax2_translate_pnt2(gp_Ax2* self_, gp_Pnt const* theP1,
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Ax2*> gp_Ax2_to_owned(const gp_Ax2* self_) {
+extern "C" OcctResult<gp_Ax2*> gp_Ax2_clone(const gp_Ax2* self_) {
     try { return {new gp_Ax2(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8895,7 +9111,7 @@ extern "C" const char* gp_Ax22d_translate_pnt2d2(gp_Ax22d* self_, gp_Pnt2d const
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Ax22d*> gp_Ax22d_to_owned(const gp_Ax22d* self_) {
+extern "C" OcctResult<gp_Ax22d*> gp_Ax22d_clone(const gp_Ax22d* self_) {
     try { return {new gp_Ax22d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9013,7 +9229,7 @@ extern "C" const char* gp_Ax2d_translate_pnt2d2(gp_Ax2d* self_, gp_Pnt2d const* 
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Ax2d*> gp_Ax2d_to_owned(const gp_Ax2d* self_) {
+extern "C" OcctResult<gp_Ax2d*> gp_Ax2d_clone(const gp_Ax2d* self_) {
     try { return {new gp_Ax2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9175,7 +9391,7 @@ extern "C" const char* gp_Ax3_translate_pnt2(gp_Ax3* self_, gp_Pnt const* theP1,
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Ax3*> gp_Ax3_to_owned(const gp_Ax3* self_) {
+extern "C" OcctResult<gp_Ax3*> gp_Ax3_clone(const gp_Ax3* self_) {
     try { return {new gp_Ax3(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9317,7 +9533,7 @@ extern "C" const char* gp_Circ_translate_pnt2(gp_Circ* self_, gp_Pnt const* theP
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Circ*> gp_Circ_to_owned(const gp_Circ* self_) {
+extern "C" OcctResult<gp_Circ*> gp_Circ_clone(const gp_Circ* self_) {
     try { return {new gp_Circ(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9475,7 +9691,7 @@ extern "C" const char* gp_Circ2d_translate_pnt2d2(gp_Circ2d* self_, gp_Pnt2d con
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Circ2d*> gp_Circ2d_to_owned(const gp_Circ2d* self_) {
+extern "C" OcctResult<gp_Circ2d*> gp_Circ2d_clone(const gp_Circ2d* self_) {
     try { return {new gp_Circ2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9625,7 +9841,7 @@ extern "C" const char* gp_Cone_translate_pnt2(gp_Cone* self_, gp_Pnt const* theP
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Cone*> gp_Cone_to_owned(const gp_Cone* self_) {
+extern "C" OcctResult<gp_Cone*> gp_Cone_clone(const gp_Cone* self_) {
     try { return {new gp_Cone(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9763,7 +9979,7 @@ extern "C" const char* gp_Cylinder_translate_pnt2(gp_Cylinder* self_, gp_Pnt con
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Cylinder*> gp_Cylinder_to_owned(const gp_Cylinder* self_) {
+extern "C" OcctResult<gp_Cylinder*> gp_Cylinder_clone(const gp_Cylinder* self_) {
     try { return {new gp_Cylinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9933,7 +10149,7 @@ extern "C" const char* gp_Dir_transform(gp_Dir* self_, gp_Trsf const* theT) {
     try { self_->Transform(*theT); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Dir*> gp_Dir_to_owned(const gp_Dir* self_) {
+extern "C" OcctResult<gp_Dir*> gp_Dir_clone(const gp_Dir* self_) {
     try { return {new gp_Dir(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10067,7 +10283,7 @@ extern "C" const char* gp_Dir2d_transform(gp_Dir2d* self_, gp_Trsf2d const* theT
     try { self_->Transform(*theT); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Dir2d*> gp_Dir2d_to_owned(const gp_Dir2d* self_) {
+extern "C" OcctResult<gp_Dir2d*> gp_Dir2d_clone(const gp_Dir2d* self_) {
     try { return {new gp_Dir2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10229,7 +10445,7 @@ extern "C" const char* gp_Elips_translate_pnt2(gp_Elips* self_, gp_Pnt const* th
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Elips*> gp_Elips_to_owned(const gp_Elips* self_) {
+extern "C" OcctResult<gp_Elips*> gp_Elips_clone(const gp_Elips* self_) {
     try { return {new gp_Elips(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10403,7 +10619,7 @@ extern "C" const char* gp_Elips2d_translate_pnt2d2(gp_Elips2d* self_, gp_Pnt2d c
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Elips2d*> gp_Elips2d_to_owned(const gp_Elips2d* self_) {
+extern "C" OcctResult<gp_Elips2d*> gp_Elips2d_clone(const gp_Elips2d* self_) {
     try { return {new gp_Elips2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10517,7 +10733,7 @@ extern "C" const char* gp_GTrsf_transforms_real3(const gp_GTrsf* self_, double* 
     try { self_->Transforms(*theX, *theY, *theZ); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_GTrsf*> gp_GTrsf_to_owned(const gp_GTrsf* self_) {
+extern "C" OcctResult<gp_GTrsf*> gp_GTrsf_clone(const gp_GTrsf* self_) {
     try { return {new gp_GTrsf(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10627,7 +10843,7 @@ extern "C" const char* gp_GTrsf2d_transforms_real2(const gp_GTrsf2d* self_, doub
     try { self_->Transforms(*theX, *theY); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_GTrsf2d*> gp_GTrsf2d_to_owned(const gp_GTrsf2d* self_) {
+extern "C" OcctResult<gp_GTrsf2d*> gp_GTrsf2d_clone(const gp_GTrsf2d* self_) {
     try { return {new gp_GTrsf2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10805,7 +11021,7 @@ extern "C" const char* gp_Hypr_translate_pnt2(gp_Hypr* self_, gp_Pnt const* theP
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Hypr*> gp_Hypr_to_owned(const gp_Hypr* self_) {
+extern "C" OcctResult<gp_Hypr*> gp_Hypr_clone(const gp_Hypr* self_) {
     try { return {new gp_Hypr(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10995,7 +11211,7 @@ extern "C" const char* gp_Hypr2d_translate_pnt2d2(gp_Hypr2d* self_, gp_Pnt2d con
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Hypr2d*> gp_Hypr2d_to_owned(const gp_Hypr2d* self_) {
+extern "C" OcctResult<gp_Hypr2d*> gp_Hypr2d_clone(const gp_Hypr2d* self_) {
     try { return {new gp_Hypr2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11141,7 +11357,7 @@ extern "C" const char* gp_Lin_translate_pnt2(gp_Lin* self_, gp_Pnt const* theP1,
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Lin*> gp_Lin_to_owned(const gp_Lin* self_) {
+extern "C" OcctResult<gp_Lin*> gp_Lin_clone(const gp_Lin* self_) {
     try { return {new gp_Lin(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11287,7 +11503,7 @@ extern "C" const char* gp_Lin2d_translate_pnt2d2(gp_Lin2d* self_, gp_Pnt2d const
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Lin2d*> gp_Lin2d_to_owned(const gp_Lin2d* self_) {
+extern "C" OcctResult<gp_Lin2d*> gp_Lin2d_clone(const gp_Lin2d* self_) {
     try { return {new gp_Lin2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11449,7 +11665,7 @@ extern "C" const char* gp_Mat_transpose(gp_Mat* self_) {
     try { self_->Transpose(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Mat*> gp_Mat_to_owned(const gp_Mat* self_) {
+extern "C" OcctResult<gp_Mat*> gp_Mat_clone(const gp_Mat* self_) {
     try { return {new gp_Mat(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11599,7 +11815,7 @@ extern "C" const char* gp_Mat2d_transpose(gp_Mat2d* self_) {
     try { self_->Transpose(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Mat2d*> gp_Mat2d_to_owned(const gp_Mat2d* self_) {
+extern "C" OcctResult<gp_Mat2d*> gp_Mat2d_clone(const gp_Mat2d* self_) {
     try { return {new gp_Mat2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11737,7 +11953,7 @@ extern "C" const char* gp_Parab_translate_pnt2(gp_Parab* self_, gp_Pnt const* th
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Parab*> gp_Parab_to_owned(const gp_Parab* self_) {
+extern "C" OcctResult<gp_Parab*> gp_Parab_clone(const gp_Parab* self_) {
     try { return {new gp_Parab(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11879,7 +12095,7 @@ extern "C" const char* gp_Parab2d_translate_pnt2d2(gp_Parab2d* self_, gp_Pnt2d c
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Parab2d*> gp_Parab2d_to_owned(const gp_Parab2d* self_) {
+extern "C" OcctResult<gp_Parab2d*> gp_Parab2d_clone(const gp_Parab2d* self_) {
     try { return {new gp_Parab2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12049,7 +12265,7 @@ extern "C" const char* gp_Pln_translate_pnt2(gp_Pln* self_, gp_Pnt const* theP1,
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Pln*> gp_Pln_to_owned(const gp_Pln* self_) {
+extern "C" OcctResult<gp_Pln*> gp_Pln_clone(const gp_Pln* self_) {
     try { return {new gp_Pln(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12207,7 +12423,7 @@ extern "C" const char* gp_Pnt_translate_pnt2(gp_Pnt* self_, gp_Pnt const* theP1,
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Pnt*> gp_Pnt_to_owned(const gp_Pnt* self_) {
+extern "C" OcctResult<gp_Pnt*> gp_Pnt_clone(const gp_Pnt* self_) {
     try { return {new gp_Pnt(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12345,7 +12561,7 @@ extern "C" const char* gp_Pnt2d_translate_pnt2d2(gp_Pnt2d* self_, gp_Pnt2d const
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Pnt2d*> gp_Pnt2d_to_owned(const gp_Pnt2d* self_) {
+extern "C" OcctResult<gp_Pnt2d*> gp_Pnt2d_clone(const gp_Pnt2d* self_) {
     try { return {new gp_Pnt2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12527,7 +12743,7 @@ extern "C" OcctResult<double> gp_Quaternion_get_rotation_angle(const gp_Quaterni
     try { return {self_->GetRotationAngle(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Quaternion*> gp_Quaternion_to_owned(const gp_Quaternion* self_) {
+extern "C" OcctResult<gp_Quaternion*> gp_Quaternion_clone(const gp_Quaternion* self_) {
     try { return {new gp_Quaternion(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12561,7 +12777,7 @@ extern "C" OcctResult<gp_Quaternion*> gp_QuaternionNLerp_interpolate_quaternion2
     try { return {new gp_Quaternion(gp_QuaternionNLerp::Interpolate(*theQStart, *theQEnd, theT)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_QuaternionNLerp*> gp_QuaternionNLerp_to_owned(const gp_QuaternionNLerp* self_) {
+extern "C" OcctResult<gp_QuaternionNLerp*> gp_QuaternionNLerp_clone(const gp_QuaternionNLerp* self_) {
     try { return {new gp_QuaternionNLerp(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12595,7 +12811,7 @@ extern "C" OcctResult<gp_Quaternion*> gp_QuaternionSLerp_interpolate_quaternion2
     try { return {new gp_Quaternion(gp_QuaternionSLerp::Interpolate(*theQStart, *theQEnd, theT)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_QuaternionSLerp*> gp_QuaternionSLerp_to_owned(const gp_QuaternionSLerp* self_) {
+extern "C" OcctResult<gp_QuaternionSLerp*> gp_QuaternionSLerp_clone(const gp_QuaternionSLerp* self_) {
     try { return {new gp_QuaternionSLerp(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12733,7 +12949,7 @@ extern "C" const char* gp_Sphere_translate_pnt2(gp_Sphere* self_, gp_Pnt const* 
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Sphere*> gp_Sphere_to_owned(const gp_Sphere* self_) {
+extern "C" OcctResult<gp_Sphere*> gp_Sphere_clone(const gp_Sphere* self_) {
     try { return {new gp_Sphere(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12887,7 +13103,7 @@ extern "C" const char* gp_Torus_translate_pnt2(gp_Torus* self_, gp_Pnt const* th
     try { self_->Translate(*theP1, *theP2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Torus*> gp_Torus_to_owned(const gp_Torus* self_) {
+extern "C" OcctResult<gp_Torus*> gp_Torus_clone(const gp_Torus* self_) {
     try { return {new gp_Torus(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13045,7 +13261,7 @@ extern "C" const char* gp_Trsf_transforms_xyz(const gp_Trsf* self_, gp_XYZ* theC
     try { self_->Transforms(*theCoord); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Trsf*> gp_Trsf_to_owned(const gp_Trsf* self_) {
+extern "C" OcctResult<gp_Trsf*> gp_Trsf_clone(const gp_Trsf* self_) {
     try { return {new gp_Trsf(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13175,7 +13391,7 @@ extern "C" const char* gp_Trsf2d_set_values(gp_Trsf2d* self_, double a11, double
     try { self_->SetValues(a11, a12, a13, a21, a22, a23); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Trsf2d*> gp_Trsf2d_to_owned(const gp_Trsf2d* self_) {
+extern "C" OcctResult<gp_Trsf2d*> gp_Trsf2d_clone(const gp_Trsf2d* self_) {
     try { return {new gp_Trsf2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13437,7 +13653,7 @@ extern "C" const char* gp_Vec_transform(gp_Vec* self_, gp_Trsf const* theT) {
     try { self_->Transform(*theT); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Vec*> gp_Vec_to_owned(const gp_Vec* self_) {
+extern "C" OcctResult<gp_Vec*> gp_Vec_clone(const gp_Vec* self_) {
     try { return {new gp_Vec(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13659,7 +13875,7 @@ extern "C" const char* gp_Vec2d_transform(gp_Vec2d* self_, gp_Trsf2d const* theT
     try { self_->Transform(*theT); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Vec2d*> gp_Vec2d_to_owned(const gp_Vec2d* self_) {
+extern "C" OcctResult<gp_Vec2d*> gp_Vec2d_clone(const gp_Vec2d* self_) {
     try { return {new gp_Vec2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13937,7 +14153,7 @@ extern "C" const char* gp_XY_subtract(gp_XY* self_, gp_XY const* theOther) {
     try { self_->Subtract(*theOther); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_XY*> gp_XY_to_owned(const gp_XY* self_) {
+extern "C" OcctResult<gp_XY*> gp_XY_clone(const gp_XY* self_) {
     try { return {new gp_XY(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14139,7 +14355,7 @@ extern "C" const char* gp_XYZ_set_linear_form_xyz2(gp_XYZ* self_, gp_XYZ const* 
     try { self_->SetLinearForm(*theXYZ1, *theXYZ2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_XYZ*> gp_XYZ_to_owned(const gp_XYZ* self_) {
+extern "C" OcctResult<gp_XYZ*> gp_XYZ_clone(const gp_XYZ* self_) {
     try { return {new gp_XYZ(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14541,7 +14757,7 @@ extern "C" const char* math_DoubleTab_free(math_DoubleTab* self_) {
     try { self_->Free(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<math_DoubleTab*> math_DoubleTab_to_owned(const math_DoubleTab* self_) {
+extern "C" OcctResult<math_DoubleTab*> math_DoubleTab_clone(const math_DoubleTab* self_) {
     try { return {new math_DoubleTab(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -15431,7 +15647,7 @@ extern "C" const char* math_Matrix_dump(const math_Matrix* self_, Standard_OStre
     try { self_->Dump(*o); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<math_Matrix*> math_Matrix_to_owned(const math_Matrix* self_) {
+extern "C" OcctResult<math_Matrix*> math_Matrix_clone(const math_Matrix* self_) {
     try { return {new math_Matrix(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }

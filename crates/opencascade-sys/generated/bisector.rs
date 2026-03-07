@@ -871,6 +871,12 @@ unsafe impl crate::CppDeletable for HandleBisectorBisecAna {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBisectorBisecAna {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_clone(ptr))
+    }
+}
+
 impl HandleBisectorBisecAna {
     /// Dereference this Handle to access the underlying Bisector_BisecAna
     pub fn get(&self) -> &crate::ffi_types::Bisector_BisecAna {
@@ -1704,6 +1710,12 @@ unsafe impl crate::CppDeletable for HandleBisectorBisecCC {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBisectorBisecCC {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_clone(ptr))
+    }
+}
+
 impl HandleBisectorBisecCC {
     /// Dereference this Handle to access the underlying Bisector_BisecCC
     pub fn get(&self) -> &crate::ffi_types::Bisector_BisecCC {
@@ -2484,6 +2496,12 @@ unsafe impl crate::CppDeletable for HandleBisectorBisecPC {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBisectorBisecPC {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_clone(ptr))
+    }
+}
+
 impl HandleBisectorBisecPC {
     /// Dereference this Handle to access the underlying Bisector_BisecPC
     pub fn get(&self) -> &crate::ffi_types::Bisector_BisecPC {
@@ -3070,6 +3088,12 @@ pub use crate::ffi_types::HandleBisectorCurve;
 unsafe impl crate::CppDeletable for HandleBisectorCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBisectorCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_clone(ptr))
     }
 }
 

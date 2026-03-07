@@ -513,6 +513,12 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSAssociation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSAssociation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSAssociation_clone(ptr))
+    }
+}
+
 impl HandleTopOpeBRepDSAssociation {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_Association
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_Association {
@@ -1490,6 +1496,12 @@ pub use crate::ffi_types::HandleTopOpeBRepDSCheck;
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSCheck {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleTopOpeBRepDSCheck_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSCheck {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSCheck_clone(ptr))
     }
 }
 
@@ -2516,6 +2528,14 @@ pub use crate::ffi_types::HandleTopOpeBRepDSCurvePointInterference;
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSCurvePointInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleTopOpeBRepDSCurvePointInterference_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSCurvePointInterference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSCurvePointInterference_clone(ptr),
+        )
     }
 }
 
@@ -4437,6 +4457,14 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSEdgeVertexInterference {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSEdgeVertexInterference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSEdgeVertexInterference_clone(ptr),
+        )
+    }
+}
+
 impl HandleTopOpeBRepDSEdgeVertexInterference {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_EdgeVertexInterference
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_EdgeVertexInterference {
@@ -4977,6 +5005,14 @@ pub use crate::ffi_types::HandleTopOpeBRepDSFaceEdgeInterference;
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSFaceEdgeInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleTopOpeBRepDSFaceEdgeInterference_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSFaceEdgeInterference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSFaceEdgeInterference_clone(
+            ptr,
+        ))
     }
 }
 
@@ -5753,6 +5789,12 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSGapTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSGapTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSGapTool_clone(ptr))
+    }
+}
+
 impl HandleTopOpeBRepDSGapTool {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_GapTool
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_GapTool {
@@ -5797,6 +5839,22 @@ pub use crate::ffi_types::TopOpeBRepDS_GeometryData as GeometryData;
 unsafe impl crate::CppDeletable for GeometryData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::TopOpeBRepDS_GeometryData_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for GeometryData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_GeometryData_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for GeometryData {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -5849,15 +5907,6 @@ impl GeometryData {
                 I,
             )
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::TopOpeBRepDS_GeometryData_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -6045,6 +6094,12 @@ pub use crate::ffi_types::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInter
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_clone(ptr))
     }
 }
 
@@ -6818,6 +6873,12 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSHDataStructure {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSHDataStructure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSHDataStructure_clone(ptr))
+    }
+}
+
 impl HandleTopOpeBRepDSHDataStructure {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_HDataStructure
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_HDataStructure {
@@ -7208,6 +7269,12 @@ pub use crate::ffi_types::HandleTopOpeBRepDSInterference;
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleTopOpeBRepDSInterference_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSInterference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSInterference_clone(ptr))
     }
 }
 
@@ -7933,6 +8000,12 @@ pub use crate::ffi_types::HandleTopOpeBRepDSMarker;
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSMarker {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleTopOpeBRepDSMarker_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSMarker {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSMarker_clone(ptr))
     }
 }
 
@@ -8938,6 +9011,14 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSShapeShapeInterference {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSShapeShapeInterference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSShapeShapeInterference_clone(ptr),
+        )
+    }
+}
+
 impl HandleTopOpeBRepDSShapeShapeInterference {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_ShapeShapeInterference
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_ShapeShapeInterference {
@@ -9370,6 +9451,14 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSSolidSurfaceInterference {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSSolidSurfaceInterference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSSolidSurfaceInterference_clone(ptr),
+        )
+    }
+}
+
 impl HandleTopOpeBRepDSSolidSurfaceInterference {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_SolidSurfaceInterference
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_SolidSurfaceInterference {
@@ -9423,6 +9512,22 @@ pub use crate::ffi_types::TopOpeBRepDS_Surface as Surface;
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::TopOpeBRepDS_Surface_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Surface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_Surface_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Surface {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -9491,15 +9596,6 @@ impl Surface {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepDS_Surface_change_keep(self as *mut Self, theToKeep)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::TopOpeBRepDS_Surface_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -9800,6 +9896,14 @@ pub use crate::ffi_types::HandleTopOpeBRepDSSurfaceCurveInterference;
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSSurfaceCurveInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleTopOpeBRepDSSurfaceCurveInterference_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopOpeBRepDSSurfaceCurveInterference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSSurfaceCurveInterference_clone(ptr),
+        )
     }
 }
 

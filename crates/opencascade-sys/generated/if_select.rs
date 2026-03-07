@@ -540,6 +540,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectAct {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectAct {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectAct_clone(ptr))
+    }
+}
+
 impl HandleIFSelectAct {
     /// Dereference this Handle to access the underlying IFSelect_Act
     pub fn get(&self) -> &crate::ffi_types::IFSelect_Act {
@@ -917,6 +923,12 @@ pub use crate::ffi_types::HandleIFSelectActivator;
 unsafe impl crate::CppDeletable for HandleIFSelectActivator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectActivator_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectActivator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectActivator_clone(ptr))
     }
 }
 
@@ -1301,6 +1313,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectAppliedModifiers {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectAppliedModifiers {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectAppliedModifiers_clone(ptr))
+    }
+}
+
 impl HandleIFSelectAppliedModifiers {
     /// Dereference this Handle to access the underlying IFSelect_AppliedModifiers
     pub fn get(&self) -> &crate::ffi_types::IFSelect_AppliedModifiers {
@@ -1564,6 +1582,12 @@ pub use crate::ffi_types::HandleIFSelectBasicDumper;
 unsafe impl crate::CppDeletable for HandleIFSelectBasicDumper {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectBasicDumper_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectBasicDumper {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectBasicDumper_clone(ptr))
     }
 }
 
@@ -1930,6 +1954,12 @@ pub use crate::ffi_types::HandleIFSelectCheckCounter;
 unsafe impl crate::CppDeletable for HandleIFSelectCheckCounter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectCheckCounter_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectCheckCounter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectCheckCounter_clone(ptr))
     }
 }
 
@@ -3063,6 +3093,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectDispGlobal {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectDispGlobal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectDispGlobal_clone(ptr))
+    }
+}
+
 impl HandleIFSelectDispGlobal {
     /// Dereference this Handle to access the underlying IFSelect_DispGlobal
     pub fn get(&self) -> &crate::ffi_types::IFSelect_DispGlobal {
@@ -3474,6 +3510,12 @@ pub use crate::ffi_types::HandleIFSelectDispPerCount;
 unsafe impl crate::CppDeletable for HandleIFSelectDispPerCount {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectDispPerCount_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectDispPerCount {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectDispPerCount_clone(ptr))
     }
 }
 
@@ -3895,6 +3937,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectDispPerFiles {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectDispPerFiles {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectDispPerFiles_clone(ptr))
+    }
+}
+
 impl HandleIFSelectDispPerFiles {
     /// Dereference this Handle to access the underlying IFSelect_DispPerFiles
     pub fn get(&self) -> &crate::ffi_types::IFSelect_DispPerFiles {
@@ -4275,6 +4323,12 @@ pub use crate::ffi_types::HandleIFSelectDispPerOne;
 unsafe impl crate::CppDeletable for HandleIFSelectDispPerOne {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectDispPerOne_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectDispPerOne {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectDispPerOne_clone(ptr))
     }
 }
 
@@ -4711,6 +4765,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectDispPerSignature {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectDispPerSignature {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectDispPerSignature_clone(ptr))
+    }
+}
+
 impl HandleIFSelectDispPerSignature {
     /// Dereference this Handle to access the underlying IFSelect_DispPerSignature
     pub fn get(&self) -> &crate::ffi_types::IFSelect_DispPerSignature {
@@ -5068,6 +5128,12 @@ pub use crate::ffi_types::HandleIFSelectDispatch;
 unsafe impl crate::CppDeletable for HandleIFSelectDispatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectDispatch_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectDispatch {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectDispatch_clone(ptr))
     }
 }
 
@@ -5974,6 +6040,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectEditForm {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectEditForm {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectEditForm_clone(ptr))
+    }
+}
+
 impl HandleIFSelectEditForm {
     /// Dereference this Handle to access the underlying IFSelect_EditForm
     pub fn get(&self) -> &crate::ffi_types::IFSelect_EditForm {
@@ -6457,6 +6529,12 @@ pub use crate::ffi_types::HandleIFSelectEditor;
 unsafe impl crate::CppDeletable for HandleIFSelectEditor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectEditor_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectEditor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectEditor_clone(ptr))
     }
 }
 
@@ -6983,6 +7061,12 @@ pub use crate::ffi_types::HandleIFSelectGeneralModifier;
 unsafe impl crate::CppDeletable for HandleIFSelectGeneralModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectGeneralModifier_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectGeneralModifier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectGeneralModifier_clone(ptr))
     }
 }
 
@@ -7823,6 +7907,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectGraphCounter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectGraphCounter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectGraphCounter_clone(ptr))
+    }
+}
+
 impl HandleIFSelectGraphCounter {
     /// Dereference this Handle to access the underlying IFSelect_GraphCounter
     pub fn get(&self) -> &crate::ffi_types::IFSelect_GraphCounter {
@@ -8103,6 +8193,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectHSeqOfSelection {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectHSeqOfSelection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectHSeqOfSelection_clone(ptr))
+    }
+}
+
 impl HandleIFSelectHSeqOfSelection {
     /// Dereference this Handle to access the underlying IFSelect_HSeqOfSelection
     pub fn get(&self) -> &crate::ffi_types::IFSelect_HSeqOfSelection {
@@ -8357,6 +8453,12 @@ pub use crate::ffi_types::HandleIFSelectIntParam;
 unsafe impl crate::CppDeletable for HandleIFSelectIntParam {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectIntParam_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectIntParam {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectIntParam_clone(ptr))
     }
 }
 
@@ -8784,6 +8886,12 @@ pub use crate::ffi_types::HandleIFSelectListEditor;
 unsafe impl crate::CppDeletable for HandleIFSelectListEditor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectListEditor_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectListEditor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectListEditor_clone(ptr))
     }
 }
 
@@ -9376,6 +9484,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectModelCopier {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectModelCopier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectModelCopier_clone(ptr))
+    }
+}
+
 impl HandleIFSelectModelCopier {
     /// Dereference this Handle to access the underlying IFSelect_ModelCopier
     pub fn get(&self) -> &crate::ffi_types::IFSelect_ModelCopier {
@@ -9741,6 +9855,12 @@ pub use crate::ffi_types::HandleIFSelectModifEditForm;
 unsafe impl crate::CppDeletable for HandleIFSelectModifEditForm {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectModifEditForm_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectModifEditForm {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectModifEditForm_clone(ptr))
     }
 }
 
@@ -10132,6 +10252,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectModifReorder {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectModifReorder {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectModifReorder_clone(ptr))
+    }
+}
+
 impl HandleIFSelectModifReorder {
     /// Dereference this Handle to access the underlying IFSelect_ModifReorder
     pub fn get(&self) -> &crate::ffi_types::IFSelect_ModifReorder {
@@ -10469,6 +10595,12 @@ pub use crate::ffi_types::HandleIFSelectModifier;
 unsafe impl crate::CppDeletable for HandleIFSelectModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectModifier_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectModifier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectModifier_clone(ptr))
     }
 }
 
@@ -11096,6 +11228,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectPacketList {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectPacketList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectPacketList_clone(ptr))
+    }
+}
+
 impl HandleIFSelectPacketList {
     /// Dereference this Handle to access the underlying IFSelect_PacketList
     pub fn get(&self) -> &crate::ffi_types::IFSelect_PacketList {
@@ -11628,6 +11766,12 @@ pub use crate::ffi_types::HandleIFSelectParamEditor;
 unsafe impl crate::CppDeletable for HandleIFSelectParamEditor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectParamEditor_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectParamEditor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectParamEditor_clone(ptr))
     }
 }
 
@@ -12176,6 +12320,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectAnyList {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectAnyList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectAnyList_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectAnyList {
     /// Dereference this Handle to access the underlying IFSelect_SelectAnyList
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectAnyList {
@@ -12656,6 +12806,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectAnyType {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectAnyType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectAnyType_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectAnyType {
     /// Dereference this Handle to access the underlying IFSelect_SelectAnyType
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectAnyType {
@@ -12964,6 +13120,12 @@ pub use crate::ffi_types::HandleIFSelectSelectBase;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectBase {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectBase_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectBase {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectBase_clone(ptr))
     }
 }
 
@@ -13382,6 +13544,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectCombine {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectCombine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectCombine_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectCombine {
     /// Dereference this Handle to access the underlying IFSelect_SelectCombine
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectCombine {
@@ -13763,6 +13931,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectControl {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectControl {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectControl_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectControl {
     /// Dereference this Handle to access the underlying IFSelect_SelectControl
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectControl {
@@ -14138,6 +14312,12 @@ pub use crate::ffi_types::HandleIFSelectSelectDeduct;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectDeduct {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectDeduct_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectDeduct {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectDeduct_clone(ptr))
     }
 }
 
@@ -15071,6 +15251,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectDiff {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectDiff {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectDiff_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectDiff {
     /// Dereference this Handle to access the underlying IFSelect_SelectDiff
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectDiff {
@@ -15433,6 +15619,12 @@ pub use crate::ffi_types::HandleIFSelectSelectEntityNumber;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectEntityNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectEntityNumber_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectEntityNumber {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectEntityNumber_clone(ptr))
     }
 }
 
@@ -15915,6 +16107,14 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectErrorEntities {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectErrorEntities {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectErrorEntities_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIFSelectSelectErrorEntities {
     /// Dereference this Handle to access the underlying IFSelect_SelectErrorEntities
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectErrorEntities {
@@ -16365,6 +16565,12 @@ pub use crate::ffi_types::HandleIFSelectSelectExplore;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectExplore {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectExplore_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectExplore {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectExplore_clone(ptr))
     }
 }
 
@@ -17018,6 +17224,12 @@ pub use crate::ffi_types::HandleIFSelectSelectExtract;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectExtract {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectExtract_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectExtract {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectExtract_clone(ptr))
     }
 }
 
@@ -17776,6 +17988,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectFlag {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectFlag {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectFlag_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectFlag {
     /// Dereference this Handle to access the underlying IFSelect_SelectFlag
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectFlag {
@@ -18390,6 +18608,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectInList {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectInList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectInList_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectInList {
     /// Dereference this Handle to access the underlying IFSelect_SelectInList
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectInList {
@@ -18877,6 +19101,14 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectIncorrectEntities {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectIncorrectEntities {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectIncorrectEntities_clone(ptr),
+        )
+    }
+}
+
 impl HandleIFSelectSelectIncorrectEntities {
     /// Dereference this Handle to access the underlying IFSelect_SelectIncorrectEntities
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectIncorrectEntities {
@@ -19276,6 +19508,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectIntersection {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectIntersection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectIntersection_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectIntersection {
     /// Dereference this Handle to access the underlying IFSelect_SelectIntersection
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectIntersection {
@@ -19606,6 +19844,14 @@ pub use crate::ffi_types::HandleIFSelectSelectModelEntities;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectModelEntities {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectModelEntities_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectModelEntities {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectModelEntities_clone(
+            ptr,
+        ))
     }
 }
 
@@ -19941,6 +20187,12 @@ pub use crate::ffi_types::HandleIFSelectSelectModelRoots;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectModelRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectModelRoots_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectModelRoots {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectModelRoots_clone(ptr))
     }
 }
 
@@ -20434,6 +20686,12 @@ pub use crate::ffi_types::HandleIFSelectSelectPointed;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectPointed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectPointed_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectPointed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectPointed_clone(ptr))
     }
 }
 
@@ -21014,6 +21272,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectRange {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectRange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectRange_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectRange {
     /// Dereference this Handle to access the underlying IFSelect_SelectRange
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectRange {
@@ -21527,6 +21791,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectRootComps {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectRootComps {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectRootComps_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectRootComps {
     /// Dereference this Handle to access the underlying IFSelect_SelectRootComps
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectRootComps {
@@ -22009,6 +22279,12 @@ pub use crate::ffi_types::HandleIFSelectSelectRoots;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectRoots_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectRoots {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectRoots_clone(ptr))
     }
 }
 
@@ -22570,6 +22846,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectSent {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectSent {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectSent_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectSent {
     /// Dereference this Handle to access the underlying IFSelect_SelectSent
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectSent {
@@ -22985,6 +23267,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectShared {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectShared {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectShared_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectShared {
     /// Dereference this Handle to access the underlying IFSelect_SelectShared
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectShared {
@@ -23384,6 +23672,12 @@ pub use crate::ffi_types::HandleIFSelectSelectSharing;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectSharing {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectSharing_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectSharing {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectSharing_clone(ptr))
     }
 }
 
@@ -24004,6 +24298,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectSignature {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectSignature {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectSignature_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectSignature {
     /// Dereference this Handle to access the underlying IFSelect_SelectSignature
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectSignature {
@@ -24525,6 +24825,12 @@ pub use crate::ffi_types::HandleIFSelectSelectSignedShared;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectSignedShared {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectSignedShared_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectSignedShared {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectSignedShared_clone(ptr))
     }
 }
 
@@ -25052,6 +25358,14 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectSignedSharing {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectSignedSharing {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectSignedSharing_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIFSelectSelectSignedSharing {
     /// Dereference this Handle to access the underlying IFSelect_SelectSignedSharing
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectSignedSharing {
@@ -25526,6 +25840,12 @@ pub use crate::ffi_types::HandleIFSelectSelectSuite;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectSuite {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectSuite_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectSuite {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectSuite_clone(ptr))
     }
 }
 
@@ -26063,6 +26383,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectType {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectType_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSelectType {
     /// Dereference this Handle to access the underlying IFSelect_SelectType
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectType {
@@ -26471,6 +26797,12 @@ pub use crate::ffi_types::HandleIFSelectSelectUnion;
 unsafe impl crate::CppDeletable for HandleIFSelectSelectUnion {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelectUnion_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelectUnion {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectUnion_clone(ptr))
     }
 }
 
@@ -26946,6 +27278,14 @@ unsafe impl crate::CppDeletable for HandleIFSelectSelectUnknownEntities {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSelectUnknownEntities {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelectUnknownEntities_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIFSelectSelectUnknownEntities {
     /// Dereference this Handle to access the underlying IFSelect_SelectUnknownEntities
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectUnknownEntities {
@@ -27228,6 +27568,12 @@ pub use crate::ffi_types::HandleIFSelectSelection;
 unsafe impl crate::CppDeletable for HandleIFSelectSelection {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSelection_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSelection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSelection_clone(ptr))
     }
 }
 
@@ -28345,6 +28691,12 @@ pub use crate::ffi_types::HandleIFSelectSessionDumper;
 unsafe impl crate::CppDeletable for HandleIFSelectSessionDumper {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSessionDumper_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSessionDumper {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSessionDumper_clone(ptr))
     }
 }
 
@@ -29471,6 +29823,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSessionPilot {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSessionPilot {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSessionPilot_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSessionPilot {
     /// Dereference this Handle to access the underlying IFSelect_SessionPilot
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SessionPilot {
@@ -30100,6 +30458,12 @@ pub use crate::ffi_types::HandleIFSelectShareOut;
 unsafe impl crate::CppDeletable for HandleIFSelectShareOut {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectShareOut_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectShareOut {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectShareOut_clone(ptr))
     }
 }
 
@@ -30761,6 +31125,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSignAncestor {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSignAncestor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSignAncestor_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSignAncestor {
     /// Dereference this Handle to access the underlying IFSelect_SignAncestor
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignAncestor {
@@ -31202,6 +31572,12 @@ pub use crate::ffi_types::HandleIFSelectSignCategory;
 unsafe impl crate::CppDeletable for HandleIFSelectSignCategory {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSignCategory_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSignCategory {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSignCategory_clone(ptr))
     }
 }
 
@@ -31846,6 +32222,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSignCounter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSignCounter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSignCounter_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSignCounter {
     /// Dereference this Handle to access the underlying IFSelect_SignCounter
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignCounter {
@@ -32312,6 +32694,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSignMultiple {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSignMultiple {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSignMultiple_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSignMultiple {
     /// Dereference this Handle to access the underlying IFSelect_SignMultiple
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignMultiple {
@@ -32746,6 +33134,12 @@ pub use crate::ffi_types::HandleIFSelectSignType;
 unsafe impl crate::CppDeletable for HandleIFSelectSignType {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSignType_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSignType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSignType_clone(ptr))
     }
 }
 
@@ -33216,6 +33610,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSignValidity {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSignValidity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSignValidity_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSignValidity {
     /// Dereference this Handle to access the underlying IFSelect_SignValidity
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignValidity {
@@ -33653,6 +34053,12 @@ pub use crate::ffi_types::HandleIFSelectSignature;
 unsafe impl crate::CppDeletable for HandleIFSelectSignature {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectSignature_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectSignature {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSignature_clone(ptr))
     }
 }
 
@@ -34337,6 +34743,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectSignatureList {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectSignatureList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectSignatureList_clone(ptr))
+    }
+}
+
 impl HandleIFSelectSignatureList {
     /// Dereference this Handle to access the underlying IFSelect_SignatureList
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignatureList {
@@ -34922,6 +35334,12 @@ unsafe impl crate::CppDeletable for HandleIFSelectTransformStandard {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIFSelectTransformStandard {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectTransformStandard_clone(ptr))
+    }
+}
+
 impl HandleIFSelectTransformStandard {
     /// Dereference this Handle to access the underlying IFSelect_TransformStandard
     pub fn get(&self) -> &crate::ffi_types::IFSelect_TransformStandard {
@@ -35206,6 +35624,12 @@ pub use crate::ffi_types::HandleIFSelectTransformer;
 unsafe impl crate::CppDeletable for HandleIFSelectTransformer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectTransformer_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectTransformer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectTransformer_clone(ptr))
     }
 }
 
@@ -35615,6 +36039,12 @@ pub use crate::ffi_types::HandleIFSelectWorkLibrary;
 unsafe impl crate::CppDeletable for HandleIFSelectWorkLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectWorkLibrary_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectWorkLibrary {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectWorkLibrary_clone(ptr))
     }
 }
 
@@ -38555,6 +38985,12 @@ pub use crate::ffi_types::HandleIFSelectWorkSession;
 unsafe impl crate::CppDeletable for HandleIFSelectWorkSession {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleIFSelectWorkSession_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIFSelectWorkSession {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleIFSelectWorkSession_clone(ptr))
     }
 }
 

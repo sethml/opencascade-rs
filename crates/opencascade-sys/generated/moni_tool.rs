@@ -76,6 +76,22 @@ unsafe impl crate::CppDeletable for AttrList {
     }
 }
 
+unsafe impl crate::CppCopyable for AttrList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::MoniTool_AttrList_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for AttrList {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl AttrList {
     /// **Source:** `MoniTool_AttrList.hxx`:40 - `MoniTool_AttrList::MoniTool_AttrList()`
     /// Creates an AttrList, empty
@@ -343,15 +359,6 @@ impl AttrList {
                 copied,
             )
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::MoniTool_AttrList_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -1124,6 +1131,12 @@ unsafe impl crate::CppDeletable for HandleMoniToolCaseData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleMoniToolCaseData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolCaseData_clone(ptr))
+    }
+}
+
 impl HandleMoniToolCaseData {
     /// Dereference this Handle to access the underlying MoniTool_CaseData
     pub fn get(&self) -> &crate::ffi_types::MoniTool_CaseData {
@@ -1420,6 +1433,12 @@ unsafe impl crate::CppDeletable for HandleMoniToolElement {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleMoniToolElement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolElement_clone(ptr))
+    }
+}
+
 impl HandleMoniToolElement {
     /// Dereference this Handle to access the underlying MoniTool_Element
     pub fn get(&self) -> &crate::ffi_types::MoniTool_Element {
@@ -1698,6 +1717,12 @@ unsafe impl crate::CppDeletable for HandleMoniToolHSequenceOfElement {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleMoniToolHSequenceOfElement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolHSequenceOfElement_clone(ptr))
+    }
+}
+
 impl HandleMoniToolHSequenceOfElement {
     /// Dereference this Handle to access the underlying MoniTool_HSequenceOfElement
     pub fn get(&self) -> &crate::ffi_types::MoniTool_HSequenceOfElement {
@@ -1908,6 +1933,12 @@ pub use crate::ffi_types::HandleMoniToolIntVal;
 unsafe impl crate::CppDeletable for HandleMoniToolIntVal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleMoniToolIntVal_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMoniToolIntVal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolIntVal_clone(ptr))
     }
 }
 
@@ -2123,6 +2154,12 @@ pub use crate::ffi_types::HandleMoniToolRealVal;
 unsafe impl crate::CppDeletable for HandleMoniToolRealVal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleMoniToolRealVal_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMoniToolRealVal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolRealVal_clone(ptr))
     }
 }
 
@@ -2391,6 +2428,12 @@ unsafe impl crate::CppDeletable for HandleMoniToolSignShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleMoniToolSignShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolSignShape_clone(ptr))
+    }
+}
+
 impl HandleMoniToolSignShape {
     /// Dereference this Handle to access the underlying MoniTool_SignShape
     pub fn get(&self) -> &crate::ffi_types::MoniTool_SignShape {
@@ -2627,6 +2670,12 @@ pub use crate::ffi_types::HandleMoniToolSignText;
 unsafe impl crate::CppDeletable for HandleMoniToolSignText {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleMoniToolSignText_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMoniToolSignText {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolSignText_clone(ptr))
     }
 }
 
@@ -2980,6 +3029,22 @@ unsafe impl crate::CppDeletable for Stat {
     }
 }
 
+unsafe impl crate::CppCopyable for Stat {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::MoniTool_Stat_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Stat {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Stat {
     /// **Source:** `MoniTool_Stat.hxx`:72 - `MoniTool_Stat::MoniTool_Stat()`
     /// Creates a Stat form. At start, one default phase is defined,
@@ -3061,15 +3126,6 @@ impl Stat {
     /// **Source:** `MoniTool_Stat.hxx`:77 - `MoniTool_Stat::Current()`
     pub fn current() -> &'static mut Stat {
         unsafe { &mut *(crate::check_result(crate::ffi_extern_TKXSBase::MoniTool_Stat_current())) }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::MoniTool_Stat_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -3396,6 +3452,12 @@ pub use crate::ffi_types::HandleMoniToolTimer;
 unsafe impl crate::CppDeletable for HandleMoniToolTimer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleMoniToolTimer_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMoniToolTimer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolTimer_clone(ptr))
     }
 }
 
@@ -3770,6 +3832,12 @@ pub use crate::ffi_types::HandleMoniToolTransientElem;
 unsafe impl crate::CppDeletable for HandleMoniToolTransientElem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleMoniToolTransientElem_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMoniToolTransientElem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolTransientElem_clone(ptr))
     }
 }
 
@@ -4697,6 +4765,12 @@ pub use crate::ffi_types::HandleMoniToolTypedValue;
 unsafe impl crate::CppDeletable for HandleMoniToolTypedValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleMoniToolTypedValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMoniToolTypedValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolTypedValue_clone(ptr))
     }
 }
 

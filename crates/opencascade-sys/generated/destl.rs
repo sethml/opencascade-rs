@@ -384,6 +384,12 @@ unsafe impl crate::CppDeletable for HandleDESTLConfigurationNode {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleDESTLConfigurationNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTL::HandleDESTLConfigurationNode_clone(ptr))
+    }
+}
+
 impl HandleDESTLConfigurationNode {
     /// Dereference this Handle to access the underlying DESTL_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DESTL_ConfigurationNode {
@@ -819,6 +825,12 @@ pub use crate::ffi_types::HandleDESTLProvider;
 unsafe impl crate::CppDeletable for HandleDESTLProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTL::HandleDESTLProvider_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleDESTLProvider {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTL::HandleDESTLProvider_clone(ptr))
     }
 }
 

@@ -4863,6 +4863,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dGccIsParallel {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dGccIsParallel {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_clone(ptr))
+    }
+}
+
 impl HandleGeom2dGccIsParallel {
     /// Dereference this Handle to access the underlying Geom2dGcc_IsParallel
     pub fn get(&self) -> &crate::ffi_types::Geom2dGcc_IsParallel {

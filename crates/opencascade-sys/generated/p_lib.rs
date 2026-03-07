@@ -703,6 +703,12 @@ unsafe impl crate::CppDeletable for HandlePLibBase {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePLibBase {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlePLibBase_clone(ptr))
+    }
+}
+
 impl HandlePLibBase {
     /// Dereference this Handle to access the underlying PLib_Base
     pub fn get(&self) -> &crate::ffi_types::PLib_Base {
@@ -1374,6 +1380,12 @@ unsafe impl crate::CppDeletable for HandlePLibHermitJacobi {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePLibHermitJacobi {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlePLibHermitJacobi_clone(ptr))
+    }
+}
+
 impl HandlePLibHermitJacobi {
     /// Dereference this Handle to access the underlying PLib_HermitJacobi
     pub fn get(&self) -> &crate::ffi_types::PLib_HermitJacobi {
@@ -1853,6 +1865,12 @@ pub use crate::ffi_types::HandlePLibJacobiPolynomial;
 unsafe impl crate::CppDeletable for HandlePLibJacobiPolynomial {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandlePLibJacobiPolynomial_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePLibJacobiPolynomial {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlePLibJacobiPolynomial_clone(ptr))
     }
 }
 

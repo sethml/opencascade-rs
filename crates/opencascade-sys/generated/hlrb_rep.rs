@@ -466,6 +466,12 @@ unsafe impl crate::CppDeletable for HandleHLRBRepAlgo {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleHLRBRepAlgo {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepAlgo_clone(ptr))
+    }
+}
+
 impl HandleHLRBRepAlgo {
     /// Dereference this Handle to access the underlying HLRBRep_Algo
     pub fn get(&self) -> &crate::ffi_types::HLRBRep_Algo {
@@ -828,6 +834,12 @@ pub use crate::ffi_types::HandleHLRBRepAreaLimit;
 unsafe impl crate::CppDeletable for HandleHLRBRepAreaLimit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKHLR::HandleHLRBRepAreaLimit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleHLRBRepAreaLimit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepAreaLimit_clone(ptr))
     }
 }
 
@@ -3851,6 +3863,12 @@ unsafe impl crate::CppDeletable for HandleHLRBRepData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleHLRBRepData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepData_clone(ptr))
+    }
+}
+
 impl HandleHLRBRepData {
     /// Dereference this Handle to access the underlying HLRBRep_Data
     pub fn get(&self) -> &crate::ffi_types::HLRBRep_Data {
@@ -6473,6 +6491,12 @@ unsafe impl crate::CppDeletable for HandleHLRBRepInternalAlgo {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleHLRBRepInternalAlgo {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepInternalAlgo_clone(ptr))
+    }
+}
+
 impl HandleHLRBRepInternalAlgo {
     /// Dereference this Handle to access the underlying HLRBRep_InternalAlgo
     pub fn get(&self) -> &crate::ffi_types::HLRBRep_InternalAlgo {
@@ -7760,6 +7784,12 @@ pub use crate::ffi_types::HandleHLRBRepPolyAlgo;
 unsafe impl crate::CppDeletable for HandleHLRBRepPolyAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKHLR::HandleHLRBRepPolyAlgo_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleHLRBRepPolyAlgo {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepPolyAlgo_clone(ptr))
     }
 }
 

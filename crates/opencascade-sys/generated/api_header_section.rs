@@ -453,6 +453,12 @@ unsafe impl crate::CppDeletable for HandleAPIHeaderSectionEditHeader {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAPIHeaderSectionEditHeader {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_clone(ptr))
+    }
+}
+
 impl HandleAPIHeaderSectionEditHeader {
     /// Dereference this Handle to access the underlying APIHeaderSection_EditHeader
     pub fn get(&self) -> &crate::ffi_types::APIHeaderSection_EditHeader {

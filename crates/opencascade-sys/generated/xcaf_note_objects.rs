@@ -309,6 +309,12 @@ unsafe impl crate::CppDeletable for HandleXCAFNoteObjectsNoteObject {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFNoteObjectsNoteObject {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_clone(ptr))
+    }
+}
+
 impl HandleXCAFNoteObjectsNoteObject {
     /// Dereference this Handle to access the underlying XCAFNoteObjects_NoteObject
     pub fn get(&self) -> &crate::ffi_types::XCAFNoteObjects_NoteObject {

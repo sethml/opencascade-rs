@@ -868,6 +868,12 @@ unsafe impl crate::CppDeletable for HandleDraftModification {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleDraftModification {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKOffset::HandleDraftModification_clone(ptr))
+    }
+}
+
 impl HandleDraftModification {
     /// Dereference this Handle to access the underlying Draft_Modification
     pub fn get(&self) -> &crate::ffi_types::Draft_Modification {

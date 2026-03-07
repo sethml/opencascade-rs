@@ -381,6 +381,12 @@ unsafe impl crate::CppDeletable for HandleDEOBJConfigurationNode {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleDEOBJConfigurationNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEOBJ::HandleDEOBJConfigurationNode_clone(ptr))
+    }
+}
+
 impl HandleDEOBJConfigurationNode {
     /// Dereference this Handle to access the underlying DEOBJ_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEOBJ_ConfigurationNode {
@@ -828,6 +834,12 @@ pub use crate::ffi_types::HandleDEOBJProvider;
 unsafe impl crate::CppDeletable for HandleDEOBJProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEOBJ::HandleDEOBJProvider_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleDEOBJProvider {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEOBJ::HandleDEOBJProvider_clone(ptr))
     }
 }
 

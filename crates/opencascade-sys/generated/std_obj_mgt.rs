@@ -302,6 +302,12 @@ unsafe impl crate::CppDeletable for HandleStdObjMgtPersistent {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdObjMgtPersistent {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKStdL::HandleStdObjMgtPersistent_clone(ptr))
+    }
+}
+
 impl HandleStdObjMgtPersistent {
     /// Dereference this Handle to access the underlying StdObjMgt_Persistent
     pub fn get(&self) -> &crate::ffi_types::StdObjMgt_Persistent {

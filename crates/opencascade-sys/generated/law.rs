@@ -381,6 +381,12 @@ unsafe impl crate::CppDeletable for HandleLawBSpFunc {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleLawBSpFunc {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_clone(ptr))
+    }
+}
+
 impl HandleLawBSpFunc {
     /// Dereference this Handle to access the underlying Law_BSpFunc
     pub fn get(&self) -> &crate::ffi_types::Law_BSpFunc {
@@ -1569,6 +1575,12 @@ unsafe impl crate::CppDeletable for HandleLawBSpline {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleLawBSpline {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_clone(ptr))
+    }
+}
+
 impl HandleLawBSpline {
     /// Dereference this Handle to access the underlying Law_BSpline
     pub fn get(&self) -> &crate::ffi_types::Law_BSpline {
@@ -2015,6 +2027,12 @@ unsafe impl crate::CppDeletable for HandleLawComposite {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleLawComposite {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawComposite_clone(ptr))
+    }
+}
+
 impl HandleLawComposite {
     /// Dereference this Handle to access the underlying Law_Composite
     pub fn get(&self) -> &crate::ffi_types::Law_Composite {
@@ -2322,6 +2340,12 @@ unsafe impl crate::CppDeletable for HandleLawConstant {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleLawConstant {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawConstant_clone(ptr))
+    }
+}
+
 impl HandleLawConstant {
     /// Dereference this Handle to access the underlying Law_Constant
     pub fn get(&self) -> &crate::ffi_types::Law_Constant {
@@ -2590,6 +2614,12 @@ pub use crate::ffi_types::HandleLawFunction;
 unsafe impl crate::CppDeletable for HandleLawFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleLawFunction_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleLawFunction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawFunction_clone(ptr))
     }
 }
 
@@ -3130,6 +3160,12 @@ unsafe impl crate::CppDeletable for HandleLawInterpol {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleLawInterpol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_clone(ptr))
+    }
+}
+
 impl HandleLawInterpol {
     /// Dereference this Handle to access the underlying Law_Interpol
     pub fn get(&self) -> &crate::ffi_types::Law_Interpol {
@@ -3576,6 +3612,12 @@ unsafe impl crate::CppDeletable for HandleLawLinear {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleLawLinear {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawLinear_clone(ptr))
+    }
+}
+
 impl HandleLawLinear {
     /// Dereference this Handle to access the underlying Law_Linear
     pub fn get(&self) -> &crate::ffi_types::Law_Linear {
@@ -3938,6 +3980,12 @@ pub use crate::ffi_types::HandleLawS;
 unsafe impl crate::CppDeletable for HandleLawS {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleLawS_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleLawS {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawS_clone(ptr))
     }
 }
 

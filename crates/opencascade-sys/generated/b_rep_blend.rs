@@ -486,6 +486,12 @@ unsafe impl crate::CppDeletable for HandleBRepBlendAppFunc {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepBlendAppFunc {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendAppFunc_clone(ptr))
+    }
+}
+
 impl HandleBRepBlendAppFunc {
     /// Dereference this Handle to access the underlying BRepBlend_AppFunc
     pub fn get(&self) -> &crate::ffi_types::BRepBlend_AppFunc {
@@ -1009,6 +1015,12 @@ pub use crate::ffi_types::HandleBRepBlendAppFuncRoot;
 unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRoot_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepBlendAppFuncRoot {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRoot_clone(ptr))
     }
 }
 
@@ -1588,6 +1600,12 @@ unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRst {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepBlendAppFuncRst {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRst_clone(ptr))
+    }
+}
+
 impl HandleBRepBlendAppFuncRst {
     /// Dereference this Handle to access the underlying BRepBlend_AppFuncRst
     pub fn get(&self) -> &crate::ffi_types::BRepBlend_AppFuncRst {
@@ -2132,6 +2150,12 @@ pub use crate::ffi_types::HandleBRepBlendAppFuncRstRst;
 unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRstRst {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRstRst_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepBlendAppFuncRstRst {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRstRst_clone(ptr))
     }
 }
 
@@ -4613,6 +4637,12 @@ pub use crate::ffi_types::HandleBRepBlendLine;
 unsafe impl crate::CppDeletable for HandleBRepBlendLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKFillet::HandleBRepBlendLine_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepBlendLine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendLine_clone(ptr))
     }
 }
 

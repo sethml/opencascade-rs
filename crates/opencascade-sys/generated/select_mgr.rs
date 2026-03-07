@@ -565,6 +565,12 @@ unsafe impl crate::CppDeletable for HandleSelectMgrAndFilter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSelectMgrAndFilter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrAndFilter_clone(ptr))
+    }
+}
+
 impl HandleSelectMgrAndFilter {
     /// Dereference this Handle to access the underlying SelectMgr_AndFilter
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_AndFilter {
@@ -919,6 +925,12 @@ pub use crate::ffi_types::HandleSelectMgrAndOrFilter;
 unsafe impl crate::CppDeletable for HandleSelectMgrAndOrFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleSelectMgrAndOrFilter_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSelectMgrAndOrFilter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrAndOrFilter_clone(ptr))
     }
 }
 
@@ -1680,6 +1692,12 @@ unsafe impl crate::CppDeletable for HandleSelectMgrAxisIntersector {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSelectMgrAxisIntersector {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrAxisIntersector_clone(ptr))
+    }
+}
+
 impl HandleSelectMgrAxisIntersector {
     /// Dereference this Handle to access the underlying SelectMgr_AxisIntersector
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_AxisIntersector {
@@ -1914,6 +1932,12 @@ unsafe impl crate::CppDeletable for HandleSelectMgrBVHThreadPool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSelectMgrBVHThreadPool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrBVHThreadPool_clone(ptr))
+    }
+}
+
 impl HandleSelectMgrBVHThreadPool {
     /// Dereference this Handle to access the underlying SelectMgr_BVHThreadPool
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_BVHThreadPool {
@@ -1961,6 +1985,22 @@ pub use crate::ffi_types::SelectMgr_BVHThreadPool_BVHThread as BVHThreadPool_BVH
 unsafe impl crate::CppDeletable for BVHThreadPool_BVHThread {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for BVHThreadPool_BVHThread {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for BVHThreadPool_BVHThread {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -2016,17 +2056,6 @@ impl BVHThreadPool_BVHThread {
                     self as *mut Self,
                 ),
             )
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_to_owned(
-                    self as *const Self,
-                ),
-            ))
         }
     }
 
@@ -2089,6 +2118,22 @@ unsafe impl crate::CppDeletable for BVHThreadPool_Sentry {
     }
 }
 
+unsafe impl crate::CppCopyable for BVHThreadPool_Sentry {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_Sentry_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for BVHThreadPool_Sentry {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl BVHThreadPool_Sentry {
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:109 - `SelectMgr_BVHThreadPool_Sentry::SelectMgr_BVHThreadPool_Sentry()`
     /// Constructor - initializes the sentry object and locks list of mutexes immediately
@@ -2114,17 +2159,6 @@ impl BVHThreadPool_Sentry {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_Sentry_unlock(self as *mut Self)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_Sentry_to_owned(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -2761,6 +2795,12 @@ pub use crate::ffi_types::HandleSelectMgrBaseFrustum;
 unsafe impl crate::CppDeletable for HandleSelectMgrBaseFrustum {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleSelectMgrBaseFrustum_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSelectMgrBaseFrustum {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrBaseFrustum_clone(ptr))
     }
 }
 
@@ -3540,6 +3580,12 @@ unsafe impl crate::CppDeletable for HandleSelectMgrBaseIntersector {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSelectMgrBaseIntersector {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrBaseIntersector_clone(ptr))
+    }
+}
+
 impl HandleSelectMgrBaseIntersector {
     /// Dereference this Handle to access the underlying SelectMgr_BaseIntersector
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_BaseIntersector {
@@ -3863,6 +3909,12 @@ pub use crate::ffi_types::HandleSelectMgrCompositionFilter;
 unsafe impl crate::CppDeletable for HandleSelectMgrCompositionFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleSelectMgrCompositionFilter_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSelectMgrCompositionFilter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrCompositionFilter_clone(ptr))
     }
 }
 
@@ -4485,6 +4537,12 @@ unsafe impl crate::CppDeletable for HandleSelectMgrEntityOwner {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSelectMgrEntityOwner {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_clone(ptr))
+    }
+}
+
 impl HandleSelectMgrEntityOwner {
     /// Dereference this Handle to access the underlying SelectMgr_EntityOwner
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_EntityOwner {
@@ -4846,6 +4904,12 @@ pub use crate::ffi_types::HandleSelectMgrFilter;
 unsafe impl crate::CppDeletable for HandleSelectMgrFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleSelectMgrFilter_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSelectMgrFilter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrFilter_clone(ptr))
     }
 }
 
@@ -5384,6 +5448,12 @@ unsafe impl crate::CppDeletable for HandleSelectMgrFrustumBuilder {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSelectMgrFrustumBuilder {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrFrustumBuilder_clone(ptr))
+    }
+}
+
 impl HandleSelectMgrFrustumBuilder {
     /// Dereference this Handle to access the underlying SelectMgr_FrustumBuilder
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_FrustumBuilder {
@@ -5682,6 +5752,12 @@ pub use crate::ffi_types::HandleSelectMgrOrFilter;
 unsafe impl crate::CppDeletable for HandleSelectMgrOrFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleSelectMgrOrFilter_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSelectMgrOrFilter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrOrFilter_clone(ptr))
     }
 }
 
@@ -7661,6 +7737,12 @@ pub use crate::ffi_types::HandleSelectMgrSelectableObject;
 unsafe impl crate::CppDeletable for HandleSelectMgrSelectableObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSelectMgrSelectableObject {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_clone(ptr))
     }
 }
 
@@ -9794,6 +9876,12 @@ unsafe impl crate::CppDeletable for HandleSelectMgrSelection {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSelectMgrSelection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSelection_clone(ptr))
+    }
+}
+
 impl HandleSelectMgrSelection {
     /// Dereference this Handle to access the underlying SelectMgr_Selection
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_Selection {
@@ -9993,6 +10081,12 @@ pub use crate::ffi_types::HandleSelectMgrSelectionImageFiller;
 unsafe impl crate::CppDeletable for HandleSelectMgrSelectionImageFiller {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleSelectMgrSelectionImageFiller_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSelectMgrSelectionImageFiller {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSelectionImageFiller_clone(ptr))
     }
 }
 
@@ -10430,6 +10524,12 @@ unsafe impl crate::CppDeletable for HandleSelectMgrSelectionManager {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSelectMgrSelectionManager {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSelectionManager_clone(ptr))
+    }
+}
+
 impl HandleSelectMgrSelectionManager {
     /// Dereference this Handle to access the underlying SelectMgr_SelectionManager
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_SelectionManager {
@@ -10683,6 +10783,12 @@ unsafe impl crate::CppDeletable for HandleSelectMgrSensitiveEntity {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSelectMgrSensitiveEntity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntity_clone(ptr))
+    }
+}
+
 impl HandleSelectMgrSensitiveEntity {
     /// Dereference this Handle to access the underlying SelectMgr_SensitiveEntity
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_SensitiveEntity {
@@ -10927,6 +11033,12 @@ pub use crate::ffi_types::HandleSelectMgrSensitiveEntitySet;
 unsafe impl crate::CppDeletable for HandleSelectMgrSensitiveEntitySet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntitySet_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSelectMgrSensitiveEntitySet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntitySet_clone(ptr))
     }
 }
 
@@ -11493,6 +11605,12 @@ pub use crate::ffi_types::HandleSelectMgrTriangularFrustum;
 unsafe impl crate::CppDeletable for HandleSelectMgrTriangularFrustum {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustum_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSelectMgrTriangularFrustum {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustum_clone(ptr))
     }
 }
 
@@ -12261,6 +12379,12 @@ pub use crate::ffi_types::HandleSelectMgrTriangularFrustumSet;
 unsafe impl crate::CppDeletable for HandleSelectMgrTriangularFrustumSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustumSet_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSelectMgrTriangularFrustumSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustumSet_clone(ptr))
     }
 }
 
@@ -13304,6 +13428,12 @@ pub use crate::ffi_types::HandleSelectMgrViewerSelector;
 unsafe impl crate::CppDeletable for HandleSelectMgrViewerSelector {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandleSelectMgrViewerSelector_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSelectMgrViewerSelector {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrViewerSelector_clone(ptr))
     }
 }
 

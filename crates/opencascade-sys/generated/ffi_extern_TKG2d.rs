@@ -162,6 +162,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdaptor2dCurve2d>;
     /// Destroy Handle<Adaptor2d_Curve2d>
     pub fn HandleAdaptor2dCurve2d_destructor(self_: *mut HandleAdaptor2dCurve2d);
+    /// Clone Handle<Adaptor2d_Curve2d> (increments reference count)
+    pub fn HandleAdaptor2dCurve2d_clone(
+        self_: *const HandleAdaptor2dCurve2d,
+    ) -> crate::OcctResult<*mut HandleAdaptor2dCurve2d>;
     /// Dereference Handle to get *const Adaptor2d_Curve2d
     pub fn HandleAdaptor2dCurve2d_get(
         handle: *const HandleAdaptor2dCurve2d,
@@ -403,6 +407,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdaptor2dLine2d>;
     /// Destroy Handle<Adaptor2d_Line2d>
     pub fn HandleAdaptor2dLine2d_destructor(self_: *mut HandleAdaptor2dLine2d);
+    /// Clone Handle<Adaptor2d_Line2d> (increments reference count)
+    pub fn HandleAdaptor2dLine2d_clone(
+        self_: *const HandleAdaptor2dLine2d,
+    ) -> crate::OcctResult<*mut HandleAdaptor2dLine2d>;
     /// Dereference Handle to get *const Adaptor2d_Line2d
     pub fn HandleAdaptor2dLine2d_get(
         handle: *const HandleAdaptor2dLine2d,
@@ -673,6 +681,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdaptor2dOffsetCurve>;
     /// Destroy Handle<Adaptor2d_OffsetCurve>
     pub fn HandleAdaptor2dOffsetCurve_destructor(self_: *mut HandleAdaptor2dOffsetCurve);
+    /// Clone Handle<Adaptor2d_OffsetCurve> (increments reference count)
+    pub fn HandleAdaptor2dOffsetCurve_clone(
+        self_: *const HandleAdaptor2dOffsetCurve,
+    ) -> crate::OcctResult<*mut HandleAdaptor2dOffsetCurve>;
     /// Dereference Handle to get *const Adaptor2d_OffsetCurve
     pub fn HandleAdaptor2dOffsetCurve_get(
         handle: *const HandleAdaptor2dOffsetCurve,
@@ -809,6 +821,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dAxisPlacement>;
     /// Destroy Handle<Geom2d_AxisPlacement>
     pub fn HandleGeom2dAxisPlacement_destructor(self_: *mut HandleGeom2dAxisPlacement);
+    /// Clone Handle<Geom2d_AxisPlacement> (increments reference count)
+    pub fn HandleGeom2dAxisPlacement_clone(
+        self_: *const HandleGeom2dAxisPlacement,
+    ) -> crate::OcctResult<*mut HandleGeom2dAxisPlacement>;
     /// Dereference Handle to get *const Geom2d_AxisPlacement
     pub fn HandleGeom2dAxisPlacement_get(
         handle: *const HandleGeom2dAxisPlacement,
@@ -1371,6 +1387,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dBSplineCurve>;
     /// Destroy Handle<Geom2d_BSplineCurve>
     pub fn HandleGeom2dBSplineCurve_destructor(self_: *mut HandleGeom2dBSplineCurve);
+    /// Clone Handle<Geom2d_BSplineCurve> (increments reference count)
+    pub fn HandleGeom2dBSplineCurve_clone(
+        self_: *const HandleGeom2dBSplineCurve,
+    ) -> crate::OcctResult<*mut HandleGeom2dBSplineCurve>;
     /// Dereference Handle to get *const Geom2d_BSplineCurve
     pub fn HandleGeom2dBSplineCurve_get(
         handle: *const HandleGeom2dBSplineCurve,
@@ -1733,6 +1753,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dBezierCurve>;
     /// Destroy Handle<Geom2d_BezierCurve>
     pub fn HandleGeom2dBezierCurve_destructor(self_: *mut HandleGeom2dBezierCurve);
+    /// Clone Handle<Geom2d_BezierCurve> (increments reference count)
+    pub fn HandleGeom2dBezierCurve_clone(
+        self_: *const HandleGeom2dBezierCurve,
+    ) -> crate::OcctResult<*mut HandleGeom2dBezierCurve>;
     /// Dereference Handle to get *const Geom2d_BezierCurve
     pub fn HandleGeom2dBezierCurve_get(
         handle: *const HandleGeom2dBezierCurve,
@@ -1904,6 +1928,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom2d_BoundedCurve>
     pub fn HandleGeom2dBoundedCurve_destructor(self_: *mut HandleGeom2dBoundedCurve);
+    /// Clone Handle<Geom2d_BoundedCurve> (increments reference count)
+    pub fn HandleGeom2dBoundedCurve_clone(
+        self_: *const HandleGeom2dBoundedCurve,
+    ) -> crate::OcctResult<*mut HandleGeom2dBoundedCurve>;
     /// Dereference Handle to get *const Geom2d_BoundedCurve
     pub fn HandleGeom2dBoundedCurve_get(
         handle: *const HandleGeom2dBoundedCurve,
@@ -2212,6 +2240,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dCartesianPoint>;
     /// Destroy Handle<Geom2d_CartesianPoint>
     pub fn HandleGeom2dCartesianPoint_destructor(self_: *mut HandleGeom2dCartesianPoint);
+    /// Clone Handle<Geom2d_CartesianPoint> (increments reference count)
+    pub fn HandleGeom2dCartesianPoint_clone(
+        self_: *const HandleGeom2dCartesianPoint,
+    ) -> crate::OcctResult<*mut HandleGeom2dCartesianPoint>;
     /// Dereference Handle to get *const Geom2d_CartesianPoint
     pub fn HandleGeom2dCartesianPoint_get(
         handle: *const HandleGeom2dCartesianPoint,
@@ -2453,6 +2485,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dCircle>;
     /// Destroy Handle<Geom2d_Circle>
     pub fn HandleGeom2dCircle_destructor(self_: *mut HandleGeom2dCircle);
+    /// Clone Handle<Geom2d_Circle> (increments reference count)
+    pub fn HandleGeom2dCircle_clone(
+        self_: *const HandleGeom2dCircle,
+    ) -> crate::OcctResult<*mut HandleGeom2dCircle>;
     /// Dereference Handle to get *const Geom2d_Circle
     pub fn HandleGeom2dCircle_get(
         handle: *const HandleGeom2dCircle,
@@ -2700,6 +2736,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom2d_Conic>
     pub fn HandleGeom2dConic_destructor(self_: *mut HandleGeom2dConic);
+    /// Clone Handle<Geom2d_Conic> (increments reference count)
+    pub fn HandleGeom2dConic_clone(
+        self_: *const HandleGeom2dConic,
+    ) -> crate::OcctResult<*mut HandleGeom2dConic>;
     /// Dereference Handle to get *const Geom2d_Conic
     pub fn HandleGeom2dConic_get(
         handle: *const HandleGeom2dConic,
@@ -2997,6 +3037,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom2d_Curve>
     pub fn HandleGeom2dCurve_destructor(self_: *mut HandleGeom2dCurve);
+    /// Clone Handle<Geom2d_Curve> (increments reference count)
+    pub fn HandleGeom2dCurve_clone(
+        self_: *const HandleGeom2dCurve,
+    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
     /// Dereference Handle to get *const Geom2d_Curve
     pub fn HandleGeom2dCurve_get(
         handle: *const HandleGeom2dCurve,
@@ -3231,6 +3275,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dDirection>;
     /// Destroy Handle<Geom2d_Direction>
     pub fn HandleGeom2dDirection_destructor(self_: *mut HandleGeom2dDirection);
+    /// Clone Handle<Geom2d_Direction> (increments reference count)
+    pub fn HandleGeom2dDirection_clone(
+        self_: *const HandleGeom2dDirection,
+    ) -> crate::OcctResult<*mut HandleGeom2dDirection>;
     /// Dereference Handle to get *const Geom2d_Direction
     pub fn HandleGeom2dDirection_get(
         handle: *const HandleGeom2dDirection,
@@ -3526,6 +3574,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dEllipse>;
     /// Destroy Handle<Geom2d_Ellipse>
     pub fn HandleGeom2dEllipse_destructor(self_: *mut HandleGeom2dEllipse);
+    /// Clone Handle<Geom2d_Ellipse> (increments reference count)
+    pub fn HandleGeom2dEllipse_clone(
+        self_: *const HandleGeom2dEllipse,
+    ) -> crate::OcctResult<*mut HandleGeom2dEllipse>;
     /// Dereference Handle to get *const Geom2d_Ellipse
     pub fn HandleGeom2dEllipse_get(
         handle: *const HandleGeom2dEllipse,
@@ -3797,6 +3849,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom2d_Geometry>
     pub fn HandleGeom2dGeometry_destructor(self_: *mut HandleGeom2dGeometry);
+    /// Clone Handle<Geom2d_Geometry> (increments reference count)
+    pub fn HandleGeom2dGeometry_clone(
+        self_: *const HandleGeom2dGeometry,
+    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
     /// Dereference Handle to get *const Geom2d_Geometry
     pub fn HandleGeom2dGeometry_get(
         handle: *const HandleGeom2dGeometry,
@@ -4095,6 +4151,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dHyperbola>;
     /// Destroy Handle<Geom2d_Hyperbola>
     pub fn HandleGeom2dHyperbola_destructor(self_: *mut HandleGeom2dHyperbola);
+    /// Clone Handle<Geom2d_Hyperbola> (increments reference count)
+    pub fn HandleGeom2dHyperbola_clone(
+        self_: *const HandleGeom2dHyperbola,
+    ) -> crate::OcctResult<*mut HandleGeom2dHyperbola>;
     /// Dereference Handle to get *const Geom2d_Hyperbola
     pub fn HandleGeom2dHyperbola_get(
         handle: *const HandleGeom2dHyperbola,
@@ -4427,6 +4487,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleGeom2dLine>;
     /// Destroy Handle<Geom2d_Line>
     pub fn HandleGeom2dLine_destructor(self_: *mut HandleGeom2dLine);
+    /// Clone Handle<Geom2d_Line> (increments reference count)
+    pub fn HandleGeom2dLine_clone(
+        self_: *const HandleGeom2dLine,
+    ) -> crate::OcctResult<*mut HandleGeom2dLine>;
     /// Dereference Handle to get *const Geom2d_Line
     pub fn HandleGeom2dLine_get(
         handle: *const HandleGeom2dLine,
@@ -4690,6 +4754,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dOffsetCurve>;
     /// Destroy Handle<Geom2d_OffsetCurve>
     pub fn HandleGeom2dOffsetCurve_destructor(self_: *mut HandleGeom2dOffsetCurve);
+    /// Clone Handle<Geom2d_OffsetCurve> (increments reference count)
+    pub fn HandleGeom2dOffsetCurve_clone(
+        self_: *const HandleGeom2dOffsetCurve,
+    ) -> crate::OcctResult<*mut HandleGeom2dOffsetCurve>;
     /// Dereference Handle to get *const Geom2d_OffsetCurve
     pub fn HandleGeom2dOffsetCurve_get(
         handle: *const HandleGeom2dOffsetCurve,
@@ -4963,6 +5031,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dParabola>;
     /// Destroy Handle<Geom2d_Parabola>
     pub fn HandleGeom2dParabola_destructor(self_: *mut HandleGeom2dParabola);
+    /// Clone Handle<Geom2d_Parabola> (increments reference count)
+    pub fn HandleGeom2dParabola_clone(
+        self_: *const HandleGeom2dParabola,
+    ) -> crate::OcctResult<*mut HandleGeom2dParabola>;
     /// Dereference Handle to get *const Geom2d_Parabola
     pub fn HandleGeom2dParabola_get(
         handle: *const HandleGeom2dParabola,
@@ -5178,6 +5250,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom2d_Point>
     pub fn HandleGeom2dPoint_destructor(self_: *mut HandleGeom2dPoint);
+    /// Clone Handle<Geom2d_Point> (increments reference count)
+    pub fn HandleGeom2dPoint_clone(
+        self_: *const HandleGeom2dPoint,
+    ) -> crate::OcctResult<*mut HandleGeom2dPoint>;
     /// Dereference Handle to get *const Geom2d_Point
     pub fn HandleGeom2dPoint_get(
         handle: *const HandleGeom2dPoint,
@@ -5428,6 +5504,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dTransformation>;
     /// Destroy Handle<Geom2d_Transformation>
     pub fn HandleGeom2dTransformation_destructor(self_: *mut HandleGeom2dTransformation);
+    /// Clone Handle<Geom2d_Transformation> (increments reference count)
+    pub fn HandleGeom2dTransformation_clone(
+        self_: *const HandleGeom2dTransformation,
+    ) -> crate::OcctResult<*mut HandleGeom2dTransformation>;
     /// Dereference Handle to get *const Geom2d_Transformation
     pub fn HandleGeom2dTransformation_get(
         handle: *const HandleGeom2dTransformation,
@@ -5636,6 +5716,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dTrimmedCurve>;
     /// Destroy Handle<Geom2d_TrimmedCurve>
     pub fn HandleGeom2dTrimmedCurve_destructor(self_: *mut HandleGeom2dTrimmedCurve);
+    /// Clone Handle<Geom2d_TrimmedCurve> (increments reference count)
+    pub fn HandleGeom2dTrimmedCurve_clone(
+        self_: *const HandleGeom2dTrimmedCurve,
+    ) -> crate::OcctResult<*mut HandleGeom2dTrimmedCurve>;
     /// Dereference Handle to get *const Geom2d_TrimmedCurve
     pub fn HandleGeom2dTrimmedCurve_get(
         handle: *const HandleGeom2dTrimmedCurve,
@@ -5817,6 +5901,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dUndefinedDerivative>;
     /// Destroy Handle<Geom2d_UndefinedDerivative>
     pub fn HandleGeom2dUndefinedDerivative_destructor(self_: *mut HandleGeom2dUndefinedDerivative);
+    /// Clone Handle<Geom2d_UndefinedDerivative> (increments reference count)
+    pub fn HandleGeom2dUndefinedDerivative_clone(
+        self_: *const HandleGeom2dUndefinedDerivative,
+    ) -> crate::OcctResult<*mut HandleGeom2dUndefinedDerivative>;
     /// Dereference Handle to get *const Geom2d_UndefinedDerivative
     pub fn HandleGeom2dUndefinedDerivative_get(
         handle: *const HandleGeom2dUndefinedDerivative,
@@ -5949,6 +6037,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dUndefinedValue>;
     /// Destroy Handle<Geom2d_UndefinedValue>
     pub fn HandleGeom2dUndefinedValue_destructor(self_: *mut HandleGeom2dUndefinedValue);
+    /// Clone Handle<Geom2d_UndefinedValue> (increments reference count)
+    pub fn HandleGeom2dUndefinedValue_clone(
+        self_: *const HandleGeom2dUndefinedValue,
+    ) -> crate::OcctResult<*mut HandleGeom2dUndefinedValue>;
     /// Dereference Handle to get *const Geom2d_UndefinedValue
     pub fn HandleGeom2dUndefinedValue_get(
         handle: *const HandleGeom2dUndefinedValue,
@@ -6077,6 +6169,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom2d_Vector>
     pub fn HandleGeom2dVector_destructor(self_: *mut HandleGeom2dVector);
+    /// Clone Handle<Geom2d_Vector> (increments reference count)
+    pub fn HandleGeom2dVector_clone(
+        self_: *const HandleGeom2dVector,
+    ) -> crate::OcctResult<*mut HandleGeom2dVector>;
     /// Dereference Handle to get *const Geom2d_Vector
     pub fn HandleGeom2dVector_get(
         handle: *const HandleGeom2dVector,
@@ -6333,6 +6429,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dVectorWithMagnitude>;
     /// Destroy Handle<Geom2d_VectorWithMagnitude>
     pub fn HandleGeom2dVectorWithMagnitude_destructor(self_: *mut HandleGeom2dVectorWithMagnitude);
+    /// Clone Handle<Geom2d_VectorWithMagnitude> (increments reference count)
+    pub fn HandleGeom2dVectorWithMagnitude_clone(
+        self_: *const HandleGeom2dVectorWithMagnitude,
+    ) -> crate::OcctResult<*mut HandleGeom2dVectorWithMagnitude>;
     /// Dereference Handle to get *const Geom2d_VectorWithMagnitude
     pub fn HandleGeom2dVectorWithMagnitude_get(
         handle: *const HandleGeom2dVectorWithMagnitude,
@@ -6670,6 +6770,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleGeom2dAdaptorCurve>;
     /// Destroy Handle<Geom2dAdaptor_Curve>
     pub fn HandleGeom2dAdaptorCurve_destructor(self_: *mut HandleGeom2dAdaptorCurve);
+    /// Clone Handle<Geom2dAdaptor_Curve> (increments reference count)
+    pub fn HandleGeom2dAdaptorCurve_clone(
+        self_: *const HandleGeom2dAdaptorCurve,
+    ) -> crate::OcctResult<*mut HandleGeom2dAdaptorCurve>;
     /// Dereference Handle to get *const Geom2dAdaptor_Curve
     pub fn HandleGeom2dAdaptorCurve_get(
         handle: *const HandleGeom2dAdaptorCurve,
@@ -6781,6 +6885,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Geom2dEvaluator_Curve>
     pub fn HandleGeom2dEvaluatorCurve_destructor(self_: *mut HandleGeom2dEvaluatorCurve);
+    /// Clone Handle<Geom2dEvaluator_Curve> (increments reference count)
+    pub fn HandleGeom2dEvaluatorCurve_clone(
+        self_: *const HandleGeom2dEvaluatorCurve,
+    ) -> crate::OcctResult<*mut HandleGeom2dEvaluatorCurve>;
     /// Dereference Handle to get *const Geom2dEvaluator_Curve
     pub fn HandleGeom2dEvaluatorCurve_get(
         handle: *const HandleGeom2dEvaluatorCurve,
@@ -6917,6 +7025,10 @@ extern "C" {
     pub fn HandleGeom2dEvaluatorOffsetCurve_destructor(
         self_: *mut HandleGeom2dEvaluatorOffsetCurve,
     );
+    /// Clone Handle<Geom2dEvaluator_OffsetCurve> (increments reference count)
+    pub fn HandleGeom2dEvaluatorOffsetCurve_clone(
+        self_: *const HandleGeom2dEvaluatorOffsetCurve,
+    ) -> crate::OcctResult<*mut HandleGeom2dEvaluatorOffsetCurve>;
     /// Dereference Handle to get *const Geom2dEvaluator_OffsetCurve
     pub fn HandleGeom2dEvaluatorOffsetCurve_get(
         handle: *const HandleGeom2dEvaluatorOffsetCurve,
@@ -7346,6 +7458,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleLPropBadContinuity>;
     /// Destroy Handle<LProp_BadContinuity>
     pub fn HandleLPropBadContinuity_destructor(self_: *mut HandleLPropBadContinuity);
+    /// Clone Handle<LProp_BadContinuity> (increments reference count)
+    pub fn HandleLPropBadContinuity_clone(
+        self_: *const HandleLPropBadContinuity,
+    ) -> crate::OcctResult<*mut HandleLPropBadContinuity>;
     /// Dereference Handle to get *const LProp_BadContinuity
     pub fn HandleLPropBadContinuity_get(
         handle: *const HandleLPropBadContinuity,
@@ -7493,6 +7609,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleLPropNotDefined>;
     /// Destroy Handle<LProp_NotDefined>
     pub fn HandleLPropNotDefined_destructor(self_: *mut HandleLPropNotDefined);
+    /// Clone Handle<LProp_NotDefined> (increments reference count)
+    pub fn HandleLPropNotDefined_clone(
+        self_: *const HandleLPropNotDefined,
+    ) -> crate::OcctResult<*mut HandleLPropNotDefined>;
     /// Dereference Handle to get *const LProp_NotDefined
     pub fn HandleLPropNotDefined_get(
         handle: *const HandleLPropNotDefined,
@@ -7614,6 +7734,10 @@ extern "C" {
     pub fn HandleTColGeom2dHArray1OfBSplineCurve_destructor(
         self_: *mut HandleTColGeom2dHArray1OfBSplineCurve,
     );
+    /// Clone Handle<TColGeom2d_HArray1OfBSplineCurve> (increments reference count)
+    pub fn HandleTColGeom2dHArray1OfBSplineCurve_clone(
+        self_: *const HandleTColGeom2dHArray1OfBSplineCurve,
+    ) -> crate::OcctResult<*mut HandleTColGeom2dHArray1OfBSplineCurve>;
     /// Dereference Handle to get *const TColGeom2d_HArray1OfBSplineCurve
     pub fn HandleTColGeom2dHArray1OfBSplineCurve_get(
         handle: *const HandleTColGeom2dHArray1OfBSplineCurve,
@@ -7717,6 +7841,10 @@ extern "C" {
     pub fn HandleTColGeom2dHArray1OfBezierCurve_destructor(
         self_: *mut HandleTColGeom2dHArray1OfBezierCurve,
     );
+    /// Clone Handle<TColGeom2d_HArray1OfBezierCurve> (increments reference count)
+    pub fn HandleTColGeom2dHArray1OfBezierCurve_clone(
+        self_: *const HandleTColGeom2dHArray1OfBezierCurve,
+    ) -> crate::OcctResult<*mut HandleTColGeom2dHArray1OfBezierCurve>;
     /// Dereference Handle to get *const TColGeom2d_HArray1OfBezierCurve
     pub fn HandleTColGeom2dHArray1OfBezierCurve_get(
         handle: *const HandleTColGeom2dHArray1OfBezierCurve,
@@ -7816,6 +7944,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTColGeom2dHArray1OfCurve>;
     /// Destroy Handle<TColGeom2d_HArray1OfCurve>
     pub fn HandleTColGeom2dHArray1OfCurve_destructor(self_: *mut HandleTColGeom2dHArray1OfCurve);
+    /// Clone Handle<TColGeom2d_HArray1OfCurve> (increments reference count)
+    pub fn HandleTColGeom2dHArray1OfCurve_clone(
+        self_: *const HandleTColGeom2dHArray1OfCurve,
+    ) -> crate::OcctResult<*mut HandleTColGeom2dHArray1OfCurve>;
     /// Dereference Handle to get *const TColGeom2d_HArray1OfCurve
     pub fn HandleTColGeom2dHArray1OfCurve_get(
         handle: *const HandleTColGeom2dHArray1OfCurve,
@@ -7913,6 +8045,10 @@ extern "C" {
     pub fn HandleTColGeom2dHSequenceOfBoundedCurve_destructor(
         self_: *mut HandleTColGeom2dHSequenceOfBoundedCurve,
     );
+    /// Clone Handle<TColGeom2d_HSequenceOfBoundedCurve> (increments reference count)
+    pub fn HandleTColGeom2dHSequenceOfBoundedCurve_clone(
+        self_: *const HandleTColGeom2dHSequenceOfBoundedCurve,
+    ) -> crate::OcctResult<*mut HandleTColGeom2dHSequenceOfBoundedCurve>;
     /// Dereference Handle to get *const TColGeom2d_HSequenceOfBoundedCurve
     pub fn HandleTColGeom2dHSequenceOfBoundedCurve_get(
         handle: *const HandleTColGeom2dHSequenceOfBoundedCurve,
@@ -8006,6 +8142,10 @@ extern "C" {
     pub fn HandleTColGeom2dHSequenceOfCurve_destructor(
         self_: *mut HandleTColGeom2dHSequenceOfCurve,
     );
+    /// Clone Handle<TColGeom2d_HSequenceOfCurve> (increments reference count)
+    pub fn HandleTColGeom2dHSequenceOfCurve_clone(
+        self_: *const HandleTColGeom2dHSequenceOfCurve,
+    ) -> crate::OcctResult<*mut HandleTColGeom2dHSequenceOfCurve>;
     /// Dereference Handle to get *const TColGeom2d_HSequenceOfCurve
     pub fn HandleTColGeom2dHSequenceOfCurve_get(
         handle: *const HandleTColGeom2dHSequenceOfCurve,

@@ -19,6 +19,22 @@ unsafe impl crate::CppDeletable for LDOMBasicString {
     }
 }
 
+unsafe impl crate::CppCopyable for LDOMBasicString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_misc::LDOMBasicString_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for LDOMBasicString {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl LDOMBasicString {
     /// **Source:** `LDOMBasicString.hxx`:89 - `LDOMBasicString::LDOMBasicString()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -114,14 +130,5 @@ impl LDOMBasicString {
         crate::check_result(unsafe {
             crate::ffi_extern_misc::LDOMBasicString_equals(self as *const Self, anOther)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_misc::LDOMBasicString_to_owned(self as *const Self),
-            ))
-        }
     }
 }

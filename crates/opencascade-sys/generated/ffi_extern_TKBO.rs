@@ -43,6 +43,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUserBreak>;
     /// Destroy Handle<BOPAlgo_AlertUserBreak>
     pub fn HandleBOPAlgoAlertUserBreak_destructor(self_: *mut HandleBOPAlgoAlertUserBreak);
+    /// Clone Handle<BOPAlgo_AlertUserBreak> (increments reference count)
+    pub fn HandleBOPAlgoAlertUserBreak_clone(
+        self_: *const HandleBOPAlgoAlertUserBreak,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUserBreak>;
     /// Dereference Handle to get *const BOPAlgo_AlertUserBreak
     pub fn HandleBOPAlgoAlertUserBreak_get(
         handle: *const HandleBOPAlgoAlertUserBreak,
@@ -133,6 +137,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBOPNotAllowed>;
     /// Destroy Handle<BOPAlgo_AlertBOPNotAllowed>
     pub fn HandleBOPAlgoAlertBOPNotAllowed_destructor(self_: *mut HandleBOPAlgoAlertBOPNotAllowed);
+    /// Clone Handle<BOPAlgo_AlertBOPNotAllowed> (increments reference count)
+    pub fn HandleBOPAlgoAlertBOPNotAllowed_clone(
+        self_: *const HandleBOPAlgoAlertBOPNotAllowed,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBOPNotAllowed>;
     /// Dereference Handle to get *const BOPAlgo_AlertBOPNotAllowed
     pub fn HandleBOPAlgoAlertBOPNotAllowed_get(
         handle: *const HandleBOPAlgoAlertBOPNotAllowed,
@@ -223,6 +231,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBOPNotSet>;
     /// Destroy Handle<BOPAlgo_AlertBOPNotSet>
     pub fn HandleBOPAlgoAlertBOPNotSet_destructor(self_: *mut HandleBOPAlgoAlertBOPNotSet);
+    /// Clone Handle<BOPAlgo_AlertBOPNotSet> (increments reference count)
+    pub fn HandleBOPAlgoAlertBOPNotSet_clone(
+        self_: *const HandleBOPAlgoAlertBOPNotSet,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBOPNotSet>;
     /// Dereference Handle to get *const BOPAlgo_AlertBOPNotSet
     pub fn HandleBOPAlgoAlertBOPNotSet_get(
         handle: *const HandleBOPAlgoAlertBOPNotSet,
@@ -313,6 +325,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBuilderFailed>;
     /// Destroy Handle<BOPAlgo_AlertBuilderFailed>
     pub fn HandleBOPAlgoAlertBuilderFailed_destructor(self_: *mut HandleBOPAlgoAlertBuilderFailed);
+    /// Clone Handle<BOPAlgo_AlertBuilderFailed> (increments reference count)
+    pub fn HandleBOPAlgoAlertBuilderFailed_clone(
+        self_: *const HandleBOPAlgoAlertBuilderFailed,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBuilderFailed>;
     /// Dereference Handle to get *const BOPAlgo_AlertBuilderFailed
     pub fn HandleBOPAlgoAlertBuilderFailed_get(
         handle: *const HandleBOPAlgoAlertBuilderFailed,
@@ -407,6 +423,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertIntersectionFailed_destructor(
         self_: *mut HandleBOPAlgoAlertIntersectionFailed,
     );
+    /// Clone Handle<BOPAlgo_AlertIntersectionFailed> (increments reference count)
+    pub fn HandleBOPAlgoAlertIntersectionFailed_clone(
+        self_: *const HandleBOPAlgoAlertIntersectionFailed,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertIntersectionFailed>;
     /// Dereference Handle to get *const BOPAlgo_AlertIntersectionFailed
     pub fn HandleBOPAlgoAlertIntersectionFailed_get(
         handle: *const HandleBOPAlgoAlertIntersectionFailed,
@@ -501,6 +521,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertMultipleArguments_destructor(
         self_: *mut HandleBOPAlgoAlertMultipleArguments,
     );
+    /// Clone Handle<BOPAlgo_AlertMultipleArguments> (increments reference count)
+    pub fn HandleBOPAlgoAlertMultipleArguments_clone(
+        self_: *const HandleBOPAlgoAlertMultipleArguments,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertMultipleArguments>;
     /// Dereference Handle to get *const BOPAlgo_AlertMultipleArguments
     pub fn HandleBOPAlgoAlertMultipleArguments_get(
         handle: *const HandleBOPAlgoAlertMultipleArguments,
@@ -591,6 +615,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNoFiller>;
     /// Destroy Handle<BOPAlgo_AlertNoFiller>
     pub fn HandleBOPAlgoAlertNoFiller_destructor(self_: *mut HandleBOPAlgoAlertNoFiller);
+    /// Clone Handle<BOPAlgo_AlertNoFiller> (increments reference count)
+    pub fn HandleBOPAlgoAlertNoFiller_clone(
+        self_: *const HandleBOPAlgoAlertNoFiller,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNoFiller>;
     /// Dereference Handle to get *const BOPAlgo_AlertNoFiller
     pub fn HandleBOPAlgoAlertNoFiller_get(
         handle: *const HandleBOPAlgoAlertNoFiller,
@@ -684,6 +712,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertNullInputShapes_destructor(
         self_: *mut HandleBOPAlgoAlertNullInputShapes,
     );
+    /// Clone Handle<BOPAlgo_AlertNullInputShapes> (increments reference count)
+    pub fn HandleBOPAlgoAlertNullInputShapes_clone(
+        self_: *const HandleBOPAlgoAlertNullInputShapes,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNullInputShapes>;
     /// Dereference Handle to get *const BOPAlgo_AlertNullInputShapes
     pub fn HandleBOPAlgoAlertNullInputShapes_get(
         handle: *const HandleBOPAlgoAlertNullInputShapes,
@@ -774,6 +806,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPAlgoAlertPostTreatFF>;
     /// Destroy Handle<BOPAlgo_AlertPostTreatFF>
     pub fn HandleBOPAlgoAlertPostTreatFF_destructor(self_: *mut HandleBOPAlgoAlertPostTreatFF);
+    /// Clone Handle<BOPAlgo_AlertPostTreatFF> (increments reference count)
+    pub fn HandleBOPAlgoAlertPostTreatFF_clone(
+        self_: *const HandleBOPAlgoAlertPostTreatFF,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertPostTreatFF>;
     /// Dereference Handle to get *const BOPAlgo_AlertPostTreatFF
     pub fn HandleBOPAlgoAlertPostTreatFF_get(
         handle: *const HandleBOPAlgoAlertPostTreatFF,
@@ -868,6 +904,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertSolidBuilderFailed_destructor(
         self_: *mut HandleBOPAlgoAlertSolidBuilderFailed,
     );
+    /// Clone Handle<BOPAlgo_AlertSolidBuilderFailed> (increments reference count)
+    pub fn HandleBOPAlgoAlertSolidBuilderFailed_clone(
+        self_: *const HandleBOPAlgoAlertSolidBuilderFailed,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertSolidBuilderFailed>;
     /// Dereference Handle to get *const BOPAlgo_AlertSolidBuilderFailed
     pub fn HandleBOPAlgoAlertSolidBuilderFailed_get(
         handle: *const HandleBOPAlgoAlertSolidBuilderFailed,
@@ -961,6 +1001,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertTooFewArguments_destructor(
         self_: *mut HandleBOPAlgoAlertTooFewArguments,
     );
+    /// Clone Handle<BOPAlgo_AlertTooFewArguments> (increments reference count)
+    pub fn HandleBOPAlgoAlertTooFewArguments_clone(
+        self_: *const HandleBOPAlgoAlertTooFewArguments,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertTooFewArguments>;
     /// Dereference Handle to get *const BOPAlgo_AlertTooFewArguments
     pub fn HandleBOPAlgoAlertTooFewArguments_get(
         handle: *const HandleBOPAlgoAlertTooFewArguments,
@@ -1063,6 +1107,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertBadPositioning_destructor(
         self_: *mut HandleBOPAlgoAlertBadPositioning,
     );
+    /// Clone Handle<BOPAlgo_AlertBadPositioning> (increments reference count)
+    pub fn HandleBOPAlgoAlertBadPositioning_clone(
+        self_: *const HandleBOPAlgoAlertBadPositioning,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBadPositioning>;
     /// Dereference Handle to get *const BOPAlgo_AlertBadPositioning
     pub fn HandleBOPAlgoAlertBadPositioning_get(
         handle: *const HandleBOPAlgoAlertBadPositioning,
@@ -1176,6 +1224,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPAlgoAlertEmptyShape>;
     /// Destroy Handle<BOPAlgo_AlertEmptyShape>
     pub fn HandleBOPAlgoAlertEmptyShape_destructor(self_: *mut HandleBOPAlgoAlertEmptyShape);
+    /// Clone Handle<BOPAlgo_AlertEmptyShape> (increments reference count)
+    pub fn HandleBOPAlgoAlertEmptyShape_clone(
+        self_: *const HandleBOPAlgoAlertEmptyShape,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertEmptyShape>;
     /// Dereference Handle to get *const BOPAlgo_AlertEmptyShape
     pub fn HandleBOPAlgoAlertEmptyShape_get(
         handle: *const HandleBOPAlgoAlertEmptyShape,
@@ -1292,6 +1344,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertNotSplittableEdge_destructor(
         self_: *mut HandleBOPAlgoAlertNotSplittableEdge,
     );
+    /// Clone Handle<BOPAlgo_AlertNotSplittableEdge> (increments reference count)
+    pub fn HandleBOPAlgoAlertNotSplittableEdge_clone(
+        self_: *const HandleBOPAlgoAlertNotSplittableEdge,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNotSplittableEdge>;
     /// Dereference Handle to get *const BOPAlgo_AlertNotSplittableEdge
     pub fn HandleBOPAlgoAlertNotSplittableEdge_get(
         handle: *const HandleBOPAlgoAlertNotSplittableEdge,
@@ -1410,6 +1466,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_destructor(
         self_: *mut HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
     );
+    /// Clone Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> (increments reference count)
+    pub fn HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_clone(
+        self_: *const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForEdgesFailed>;
     /// Dereference Handle to get *const BOPAlgo_AlertRemovalOfIBForEdgesFailed
     pub fn HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_get(
         handle: *const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
@@ -1528,6 +1588,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertRemovalOfIBForFacesFailed_destructor(
         self_: *mut HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
     );
+    /// Clone Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> (increments reference count)
+    pub fn HandleBOPAlgoAlertRemovalOfIBForFacesFailed_clone(
+        self_: *const HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForFacesFailed>;
     /// Dereference Handle to get *const BOPAlgo_AlertRemovalOfIBForFacesFailed
     pub fn HandleBOPAlgoAlertRemovalOfIBForFacesFailed_get(
         handle: *const HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
@@ -1646,6 +1710,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertRemovalOfIBForMDimShapes_destructor(
         self_: *mut HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
     );
+    /// Clone Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> (increments reference count)
+    pub fn HandleBOPAlgoAlertRemovalOfIBForMDimShapes_clone(
+        self_: *const HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForMDimShapes>;
     /// Dereference Handle to get *const BOPAlgo_AlertRemovalOfIBForMDimShapes
     pub fn HandleBOPAlgoAlertRemovalOfIBForMDimShapes_get(
         handle: *const HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
@@ -1764,6 +1832,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_destructor(
         self_: *mut HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
     );
+    /// Clone Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> (increments reference count)
+    pub fn HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_clone(
+        self_: *const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForSolidsFailed>;
     /// Dereference Handle to get *const BOPAlgo_AlertRemovalOfIBForSolidsFailed
     pub fn HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_get(
         handle: *const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
@@ -1882,6 +1954,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertSelfInterferingShape_destructor(
         self_: *mut HandleBOPAlgoAlertSelfInterferingShape,
     );
+    /// Clone Handle<BOPAlgo_AlertSelfInterferingShape> (increments reference count)
+    pub fn HandleBOPAlgoAlertSelfInterferingShape_clone(
+        self_: *const HandleBOPAlgoAlertSelfInterferingShape,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertSelfInterferingShape>;
     /// Dereference Handle to get *const BOPAlgo_AlertSelfInterferingShape
     pub fn HandleBOPAlgoAlertSelfInterferingShape_get(
         handle: *const HandleBOPAlgoAlertSelfInterferingShape,
@@ -2000,6 +2076,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertShellSplitterFailed_destructor(
         self_: *mut HandleBOPAlgoAlertShellSplitterFailed,
     );
+    /// Clone Handle<BOPAlgo_AlertShellSplitterFailed> (increments reference count)
+    pub fn HandleBOPAlgoAlertShellSplitterFailed_clone(
+        self_: *const HandleBOPAlgoAlertShellSplitterFailed,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertShellSplitterFailed>;
     /// Dereference Handle to get *const BOPAlgo_AlertShellSplitterFailed
     pub fn HandleBOPAlgoAlertShellSplitterFailed_get(
         handle: *const HandleBOPAlgoAlertShellSplitterFailed,
@@ -2113,6 +2193,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPAlgoAlertTooSmallEdge>;
     /// Destroy Handle<BOPAlgo_AlertTooSmallEdge>
     pub fn HandleBOPAlgoAlertTooSmallEdge_destructor(self_: *mut HandleBOPAlgoAlertTooSmallEdge);
+    /// Clone Handle<BOPAlgo_AlertTooSmallEdge> (increments reference count)
+    pub fn HandleBOPAlgoAlertTooSmallEdge_clone(
+        self_: *const HandleBOPAlgoAlertTooSmallEdge,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertTooSmallEdge>;
     /// Dereference Handle to get *const BOPAlgo_AlertTooSmallEdge
     pub fn HandleBOPAlgoAlertTooSmallEdge_get(
         handle: *const HandleBOPAlgoAlertTooSmallEdge,
@@ -2231,6 +2315,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_destructor(
         self_: *mut HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
     );
+    /// Clone Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> (increments reference count)
+    pub fn HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_clone(
+        self_: *const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed>;
     /// Dereference Handle to get *const BOPAlgo_AlertIntersectionOfPairOfShapesFailed
     pub fn HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_get(
         handle: *const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
@@ -2349,6 +2437,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertBuildingPCurveFailed_destructor(
         self_: *mut HandleBOPAlgoAlertBuildingPCurveFailed,
     );
+    /// Clone Handle<BOPAlgo_AlertBuildingPCurveFailed> (increments reference count)
+    pub fn HandleBOPAlgoAlertBuildingPCurveFailed_clone(
+        self_: *const HandleBOPAlgoAlertBuildingPCurveFailed,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBuildingPCurveFailed>;
     /// Dereference Handle to get *const BOPAlgo_AlertBuildingPCurveFailed
     pub fn HandleBOPAlgoAlertBuildingPCurveFailed_get(
         handle: *const HandleBOPAlgoAlertBuildingPCurveFailed,
@@ -2467,6 +2559,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertAcquiredSelfIntersection_destructor(
         self_: *mut HandleBOPAlgoAlertAcquiredSelfIntersection,
     );
+    /// Clone Handle<BOPAlgo_AlertAcquiredSelfIntersection> (increments reference count)
+    pub fn HandleBOPAlgoAlertAcquiredSelfIntersection_clone(
+        self_: *const HandleBOPAlgoAlertAcquiredSelfIntersection,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertAcquiredSelfIntersection>;
     /// Dereference Handle to get *const BOPAlgo_AlertAcquiredSelfIntersection
     pub fn HandleBOPAlgoAlertAcquiredSelfIntersection_get(
         handle: *const HandleBOPAlgoAlertAcquiredSelfIntersection,
@@ -2582,6 +2678,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertUnsupportedType_destructor(
         self_: *mut HandleBOPAlgoAlertUnsupportedType,
     );
+    /// Clone Handle<BOPAlgo_AlertUnsupportedType> (increments reference count)
+    pub fn HandleBOPAlgoAlertUnsupportedType_clone(
+        self_: *const HandleBOPAlgoAlertUnsupportedType,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnsupportedType>;
     /// Dereference Handle to get *const BOPAlgo_AlertUnsupportedType
     pub fn HandleBOPAlgoAlertUnsupportedType_get(
         handle: *const HandleBOPAlgoAlertUnsupportedType,
@@ -2688,6 +2788,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertNoFacesToRemove_destructor(
         self_: *mut HandleBOPAlgoAlertNoFacesToRemove,
     );
+    /// Clone Handle<BOPAlgo_AlertNoFacesToRemove> (increments reference count)
+    pub fn HandleBOPAlgoAlertNoFacesToRemove_clone(
+        self_: *const HandleBOPAlgoAlertNoFacesToRemove,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNoFacesToRemove>;
     /// Dereference Handle to get *const BOPAlgo_AlertNoFacesToRemove
     pub fn HandleBOPAlgoAlertNoFacesToRemove_get(
         handle: *const HandleBOPAlgoAlertNoFacesToRemove,
@@ -2793,6 +2897,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertUnableToRemoveTheFeature_destructor(
         self_: *mut HandleBOPAlgoAlertUnableToRemoveTheFeature,
     );
+    /// Clone Handle<BOPAlgo_AlertUnableToRemoveTheFeature> (increments reference count)
+    pub fn HandleBOPAlgoAlertUnableToRemoveTheFeature_clone(
+        self_: *const HandleBOPAlgoAlertUnableToRemoveTheFeature,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToRemoveTheFeature>;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToRemoveTheFeature
     pub fn HandleBOPAlgoAlertUnableToRemoveTheFeature_get(
         handle: *const HandleBOPAlgoAlertUnableToRemoveTheFeature,
@@ -2902,6 +3010,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertRemoveFeaturesFailed_destructor(
         self_: *mut HandleBOPAlgoAlertRemoveFeaturesFailed,
     );
+    /// Clone Handle<BOPAlgo_AlertRemoveFeaturesFailed> (increments reference count)
+    pub fn HandleBOPAlgoAlertRemoveFeaturesFailed_clone(
+        self_: *const HandleBOPAlgoAlertRemoveFeaturesFailed,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemoveFeaturesFailed>;
     /// Dereference Handle to get *const BOPAlgo_AlertRemoveFeaturesFailed
     pub fn HandleBOPAlgoAlertRemoveFeaturesFailed_get(
         handle: *const HandleBOPAlgoAlertRemoveFeaturesFailed,
@@ -3007,6 +3119,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertSolidBuilderUnusedFaces_destructor(
         self_: *mut HandleBOPAlgoAlertSolidBuilderUnusedFaces,
     );
+    /// Clone Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> (increments reference count)
+    pub fn HandleBOPAlgoAlertSolidBuilderUnusedFaces_clone(
+        self_: *const HandleBOPAlgoAlertSolidBuilderUnusedFaces,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertSolidBuilderUnusedFaces>;
     /// Dereference Handle to get *const BOPAlgo_AlertSolidBuilderUnusedFaces
     pub fn HandleBOPAlgoAlertSolidBuilderUnusedFaces_get(
         handle: *const HandleBOPAlgoAlertSolidBuilderUnusedFaces,
@@ -3125,6 +3241,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertFaceBuilderUnusedEdges_destructor(
         self_: *mut HandleBOPAlgoAlertFaceBuilderUnusedEdges,
     );
+    /// Clone Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> (increments reference count)
+    pub fn HandleBOPAlgoAlertFaceBuilderUnusedEdges_clone(
+        self_: *const HandleBOPAlgoAlertFaceBuilderUnusedEdges,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertFaceBuilderUnusedEdges>;
     /// Dereference Handle to get *const BOPAlgo_AlertFaceBuilderUnusedEdges
     pub fn HandleBOPAlgoAlertFaceBuilderUnusedEdges_get(
         handle: *const HandleBOPAlgoAlertFaceBuilderUnusedEdges,
@@ -3243,6 +3363,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertUnableToOrientTheShape_destructor(
         self_: *mut HandleBOPAlgoAlertUnableToOrientTheShape,
     );
+    /// Clone Handle<BOPAlgo_AlertUnableToOrientTheShape> (increments reference count)
+    pub fn HandleBOPAlgoAlertUnableToOrientTheShape_clone(
+        self_: *const HandleBOPAlgoAlertUnableToOrientTheShape,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToOrientTheShape>;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToOrientTheShape
     pub fn HandleBOPAlgoAlertUnableToOrientTheShape_get(
         handle: *const HandleBOPAlgoAlertUnableToOrientTheShape,
@@ -3356,6 +3480,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnknownShape>;
     /// Destroy Handle<BOPAlgo_AlertUnknownShape>
     pub fn HandleBOPAlgoAlertUnknownShape_destructor(self_: *mut HandleBOPAlgoAlertUnknownShape);
+    /// Clone Handle<BOPAlgo_AlertUnknownShape> (increments reference count)
+    pub fn HandleBOPAlgoAlertUnknownShape_clone(
+        self_: *const HandleBOPAlgoAlertUnknownShape,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnknownShape>;
     /// Dereference Handle to get *const BOPAlgo_AlertUnknownShape
     pub fn HandleBOPAlgoAlertUnknownShape_get(
         handle: *const HandleBOPAlgoAlertUnknownShape,
@@ -3465,6 +3593,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertNoPeriodicityRequired_destructor(
         self_: *mut HandleBOPAlgoAlertNoPeriodicityRequired,
     );
+    /// Clone Handle<BOPAlgo_AlertNoPeriodicityRequired> (increments reference count)
+    pub fn HandleBOPAlgoAlertNoPeriodicityRequired_clone(
+        self_: *const HandleBOPAlgoAlertNoPeriodicityRequired,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNoPeriodicityRequired>;
     /// Dereference Handle to get *const BOPAlgo_AlertNoPeriodicityRequired
     pub fn HandleBOPAlgoAlertNoPeriodicityRequired_get(
         handle: *const HandleBOPAlgoAlertNoPeriodicityRequired,
@@ -3565,6 +3697,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToTrim>;
     /// Destroy Handle<BOPAlgo_AlertUnableToTrim>
     pub fn HandleBOPAlgoAlertUnableToTrim_destructor(self_: *mut HandleBOPAlgoAlertUnableToTrim);
+    /// Clone Handle<BOPAlgo_AlertUnableToTrim> (increments reference count)
+    pub fn HandleBOPAlgoAlertUnableToTrim_clone(
+        self_: *const HandleBOPAlgoAlertUnableToTrim,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToTrim>;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToTrim
     pub fn HandleBOPAlgoAlertUnableToTrim_get(
         handle: *const HandleBOPAlgoAlertUnableToTrim,
@@ -3683,6 +3819,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertUnableToMakeIdentical_destructor(
         self_: *mut HandleBOPAlgoAlertUnableToMakeIdentical,
     );
+    /// Clone Handle<BOPAlgo_AlertUnableToMakeIdentical> (increments reference count)
+    pub fn HandleBOPAlgoAlertUnableToMakeIdentical_clone(
+        self_: *const HandleBOPAlgoAlertUnableToMakeIdentical,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToMakeIdentical>;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToMakeIdentical
     pub fn HandleBOPAlgoAlertUnableToMakeIdentical_get(
         handle: *const HandleBOPAlgoAlertUnableToMakeIdentical,
@@ -3798,6 +3938,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertUnableToRepeat_destructor(
         self_: *mut HandleBOPAlgoAlertUnableToRepeat,
     );
+    /// Clone Handle<BOPAlgo_AlertUnableToRepeat> (increments reference count)
+    pub fn HandleBOPAlgoAlertUnableToRepeat_clone(
+        self_: *const HandleBOPAlgoAlertUnableToRepeat,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToRepeat>;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToRepeat
     pub fn HandleBOPAlgoAlertUnableToRepeat_get(
         handle: *const HandleBOPAlgoAlertUnableToRepeat,
@@ -3907,6 +4051,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertMultiDimensionalArguments_destructor(
         self_: *mut HandleBOPAlgoAlertMultiDimensionalArguments,
     );
+    /// Clone Handle<BOPAlgo_AlertMultiDimensionalArguments> (increments reference count)
+    pub fn HandleBOPAlgoAlertMultiDimensionalArguments_clone(
+        self_: *const HandleBOPAlgoAlertMultiDimensionalArguments,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertMultiDimensionalArguments>;
     /// Dereference Handle to get *const BOPAlgo_AlertMultiDimensionalArguments
     pub fn HandleBOPAlgoAlertMultiDimensionalArguments_get(
         handle: *const HandleBOPAlgoAlertMultiDimensionalArguments,
@@ -4012,6 +4160,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertUnableToMakePeriodic_destructor(
         self_: *mut HandleBOPAlgoAlertUnableToMakePeriodic,
     );
+    /// Clone Handle<BOPAlgo_AlertUnableToMakePeriodic> (increments reference count)
+    pub fn HandleBOPAlgoAlertUnableToMakePeriodic_clone(
+        self_: *const HandleBOPAlgoAlertUnableToMakePeriodic,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToMakePeriodic>;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToMakePeriodic
     pub fn HandleBOPAlgoAlertUnableToMakePeriodic_get(
         handle: *const HandleBOPAlgoAlertUnableToMakePeriodic,
@@ -4125,6 +4277,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToGlue>;
     /// Destroy Handle<BOPAlgo_AlertUnableToGlue>
     pub fn HandleBOPAlgoAlertUnableToGlue_destructor(self_: *mut HandleBOPAlgoAlertUnableToGlue);
+    /// Clone Handle<BOPAlgo_AlertUnableToGlue> (increments reference count)
+    pub fn HandleBOPAlgoAlertUnableToGlue_clone(
+        self_: *const HandleBOPAlgoAlertUnableToGlue,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToGlue>;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToGlue
     pub fn HandleBOPAlgoAlertUnableToGlue_get(
         handle: *const HandleBOPAlgoAlertUnableToGlue,
@@ -4241,6 +4397,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertShapeIsNotPeriodic_destructor(
         self_: *mut HandleBOPAlgoAlertShapeIsNotPeriodic,
     );
+    /// Clone Handle<BOPAlgo_AlertShapeIsNotPeriodic> (increments reference count)
+    pub fn HandleBOPAlgoAlertShapeIsNotPeriodic_clone(
+        self_: *const HandleBOPAlgoAlertShapeIsNotPeriodic,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertShapeIsNotPeriodic>;
     /// Dereference Handle to get *const BOPAlgo_AlertShapeIsNotPeriodic
     pub fn HandleBOPAlgoAlertShapeIsNotPeriodic_get(
         handle: *const HandleBOPAlgoAlertShapeIsNotPeriodic,
@@ -4359,6 +4519,10 @@ extern "C" {
     pub fn HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_destructor(
         self_: *mut HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
     );
+    /// Clone Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> (increments reference count)
+    pub fn HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_clone(
+        self_: *const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
+    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace>;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace
     pub fn HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_get(
         handle: *const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
@@ -8667,6 +8831,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPDSCommonBlock>;
     /// Destroy Handle<BOPDS_CommonBlock>
     pub fn HandleBOPDSCommonBlock_destructor(self_: *mut HandleBOPDSCommonBlock);
+    /// Clone Handle<BOPDS_CommonBlock> (increments reference count)
+    pub fn HandleBOPDSCommonBlock_clone(
+        self_: *const HandleBOPDSCommonBlock,
+    ) -> crate::OcctResult<*mut HandleBOPDSCommonBlock>;
     /// Dereference Handle to get *const BOPDS_CommonBlock
     pub fn HandleBOPDSCommonBlock_get(
         handle: *const HandleBOPDSCommonBlock,
@@ -10398,6 +10566,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBOPDSPaveBlock>;
     /// Destroy Handle<BOPDS_PaveBlock>
     pub fn HandleBOPDSPaveBlock_destructor(self_: *mut HandleBOPDSPaveBlock);
+    /// Clone Handle<BOPDS_PaveBlock> (increments reference count)
+    pub fn HandleBOPDSPaveBlock_clone(
+        self_: *const HandleBOPDSPaveBlock,
+    ) -> crate::OcctResult<*mut HandleBOPDSPaveBlock>;
     /// Dereference Handle to get *const BOPDS_PaveBlock
     pub fn HandleBOPDSPaveBlock_get(
         handle: *const HandleBOPDSPaveBlock,
@@ -11342,9 +11514,7 @@ extern "C" {
     /// **Source:** `BOPTools_Set.hxx`:54 - `BOPTools_Set::GetSum()`
     pub fn BOPTools_Set_get_sum(self_: *const BOPTools_Set) -> crate::OcctResult<usize>;
     /// Clone via copy constructor
-    pub fn BOPTools_Set_to_owned(
-        self_: *const BOPTools_Set,
-    ) -> crate::OcctResult<*mut BOPTools_Set>;
+    pub fn BOPTools_Set_clone(self_: *const BOPTools_Set) -> crate::OcctResult<*mut BOPTools_Set>;
     // ======================== BRepAlgoAPI_Algo ========================
     /// **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn BRepAlgoAPI_Algo_shape(
@@ -13100,7 +13270,7 @@ extern "C" {
         aP2: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn IntTools_CommonPrt_to_owned(
+    pub fn IntTools_CommonPrt_clone(
         self_: *const IntTools_CommonPrt,
     ) -> crate::OcctResult<*mut IntTools_CommonPrt>;
     // ======================== IntTools_Context ========================
@@ -13314,6 +13484,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIntToolsContext>;
     /// Destroy Handle<IntTools_Context>
     pub fn HandleIntToolsContext_destructor(self_: *mut HandleIntToolsContext);
+    /// Clone Handle<IntTools_Context> (increments reference count)
+    pub fn HandleIntToolsContext_clone(
+        self_: *const HandleIntToolsContext,
+    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
     /// Dereference Handle to get *const IntTools_Context
     pub fn HandleIntToolsContext_get(
         handle: *const HandleIntToolsContext,
@@ -14289,7 +14463,7 @@ extern "C" {
         self_: *mut IntTools_SurfaceRangeLocalizeData,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn IntTools_SurfaceRangeLocalizeData_to_owned(
+    pub fn IntTools_SurfaceRangeLocalizeData_clone(
         self_: *const IntTools_SurfaceRangeLocalizeData,
     ) -> crate::OcctResult<*mut IntTools_SurfaceRangeLocalizeData>;
     // ======================== IntTools_SurfaceRangeSample ========================
@@ -14427,7 +14601,7 @@ extern "C" {
         theNbSampleV: i32,
     ) -> crate::OcctResult<i32>;
     /// Clone via copy constructor
-    pub fn IntTools_SurfaceRangeSample_to_owned(
+    pub fn IntTools_SurfaceRangeSample_clone(
         self_: *const IntTools_SurfaceRangeSample,
     ) -> crate::OcctResult<*mut IntTools_SurfaceRangeSample>;
     // ======================== IntTools_Tools ========================
@@ -14648,6 +14822,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIntToolsTopolTool>;
     /// Destroy Handle<IntTools_TopolTool>
     pub fn HandleIntToolsTopolTool_destructor(self_: *mut HandleIntToolsTopolTool);
+    /// Clone Handle<IntTools_TopolTool> (increments reference count)
+    pub fn HandleIntToolsTopolTool_clone(
+        self_: *const HandleIntToolsTopolTool,
+    ) -> crate::OcctResult<*mut HandleIntToolsTopolTool>;
     /// Dereference Handle to get *const IntTools_TopolTool
     pub fn HandleIntToolsTopolTool_get(
         handle: *const HandleIntToolsTopolTool,

@@ -431,6 +431,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dAxisPlacement {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dAxisPlacement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dAxisPlacement_clone(ptr))
+    }
+}
+
 impl HandleGeom2dAxisPlacement {
     /// Dereference this Handle to access the underlying Geom2d_AxisPlacement
     pub fn get(&self) -> &crate::ffi_types::Geom2d_AxisPlacement {
@@ -2302,6 +2308,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dBSplineCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dBSplineCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dBSplineCurve_clone(ptr))
+    }
+}
+
 impl HandleGeom2dBSplineCurve {
     /// Dereference this Handle to access the underlying Geom2d_BSplineCurve
     pub fn get(&self) -> &crate::ffi_types::Geom2d_BSplineCurve {
@@ -3238,6 +3250,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dBezierCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dBezierCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dBezierCurve_clone(ptr))
+    }
+}
+
 impl HandleGeom2dBezierCurve {
     /// Dereference this Handle to access the underlying Geom2d_BezierCurve
     pub fn get(&self) -> &crate::ffi_types::Geom2d_BezierCurve {
@@ -3829,6 +3847,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dBoundedCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dBoundedCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dBoundedCurve_clone(ptr))
+    }
+}
+
 impl HandleGeom2dBoundedCurve {
     /// Dereference this Handle to access the underlying Geom2d_BoundedCurve
     pub fn get(&self) -> &crate::ffi_types::Geom2d_BoundedCurve {
@@ -4367,6 +4391,12 @@ pub use crate::ffi_types::HandleGeom2dCartesianPoint;
 unsafe impl crate::CppDeletable for HandleGeom2dCartesianPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dCartesianPoint_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dCartesianPoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dCartesianPoint_clone(ptr))
     }
 }
 
@@ -5092,6 +5122,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dCircle {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dCircle {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dCircle_clone(ptr))
+    }
+}
+
 impl HandleGeom2dCircle {
     /// Dereference this Handle to access the underlying Geom2d_Circle
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Circle {
@@ -5709,6 +5745,12 @@ pub use crate::ffi_types::HandleGeom2dConic;
 unsafe impl crate::CppDeletable for HandleGeom2dConic {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dConic_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dConic {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dConic_clone(ptr))
     }
 }
 
@@ -6373,6 +6415,12 @@ pub use crate::ffi_types::HandleGeom2dCurve;
 unsafe impl crate::CppDeletable for HandleGeom2dCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dCurve_clone(ptr))
     }
 }
 
@@ -7098,6 +7146,12 @@ pub use crate::ffi_types::HandleGeom2dDirection;
 unsafe impl crate::CppDeletable for HandleGeom2dDirection {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dDirection_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dDirection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dDirection_clone(ptr))
     }
 }
 
@@ -7985,6 +8039,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dEllipse {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dEllipse {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dEllipse_clone(ptr))
+    }
+}
+
 impl HandleGeom2dEllipse {
     /// Dereference this Handle to access the underlying Geom2d_Ellipse
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Ellipse {
@@ -8371,6 +8431,12 @@ pub use crate::ffi_types::HandleGeom2dGeometry;
 unsafe impl crate::CppDeletable for HandleGeom2dGeometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dGeometry_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dGeometry {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dGeometry_clone(ptr))
     }
 }
 
@@ -9609,6 +9675,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dHyperbola {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dHyperbola {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dHyperbola_clone(ptr))
+    }
+}
+
 impl HandleGeom2dHyperbola {
     /// Dereference this Handle to access the underlying Geom2d_Hyperbola
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Hyperbola {
@@ -10263,6 +10335,12 @@ pub use crate::ffi_types::HandleGeom2dLine;
 unsafe impl crate::CppDeletable for HandleGeom2dLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dLine_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dLine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dLine_clone(ptr))
     }
 }
 
@@ -11055,6 +11133,12 @@ pub use crate::ffi_types::HandleGeom2dOffsetCurve;
 unsafe impl crate::CppDeletable for HandleGeom2dOffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dOffsetCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dOffsetCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dOffsetCurve_clone(ptr))
     }
 }
 
@@ -11866,6 +11950,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dParabola {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dParabola {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dParabola_clone(ptr))
+    }
+}
+
 impl HandleGeom2dParabola {
     /// Dereference this Handle to access the underlying Geom2d_Parabola
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Parabola {
@@ -12231,6 +12321,12 @@ pub use crate::ffi_types::HandleGeom2dPoint;
 unsafe impl crate::CppDeletable for HandleGeom2dPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dPoint_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dPoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dPoint_clone(ptr))
     }
 }
 
@@ -12759,6 +12855,12 @@ pub use crate::ffi_types::HandleGeom2dTransformation;
 unsafe impl crate::CppDeletable for HandleGeom2dTransformation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dTransformation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dTransformation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dTransformation_clone(ptr))
     }
 }
 
@@ -13584,6 +13686,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dTrimmedCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dTrimmedCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dTrimmedCurve_clone(ptr))
+    }
+}
+
 impl HandleGeom2dTrimmedCurve {
     /// Dereference this Handle to access the underlying Geom2d_TrimmedCurve
     pub fn get(&self) -> &crate::ffi_types::Geom2d_TrimmedCurve {
@@ -13960,6 +14068,12 @@ unsafe impl crate::CppDeletable for HandleGeom2dUndefinedDerivative {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeom2dUndefinedDerivative {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dUndefinedDerivative_clone(ptr))
+    }
+}
+
 impl HandleGeom2dUndefinedDerivative {
     /// Dereference this Handle to access the underlying Geom2d_UndefinedDerivative
     pub fn get(&self) -> &crate::ffi_types::Geom2d_UndefinedDerivative {
@@ -14310,6 +14424,12 @@ pub use crate::ffi_types::HandleGeom2dUndefinedValue;
 unsafe impl crate::CppDeletable for HandleGeom2dUndefinedValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dUndefinedValue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dUndefinedValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dUndefinedValue_clone(ptr))
     }
 }
 
@@ -14727,6 +14847,12 @@ pub use crate::ffi_types::HandleGeom2dVector;
 unsafe impl crate::CppDeletable for HandleGeom2dVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dVector_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dVector {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dVector_clone(ptr))
     }
 }
 
@@ -15438,6 +15564,12 @@ pub use crate::ffi_types::HandleGeom2dVectorWithMagnitude;
 unsafe impl crate::CppDeletable for HandleGeom2dVectorWithMagnitude {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleGeom2dVectorWithMagnitude_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleGeom2dVectorWithMagnitude {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dVectorWithMagnitude_clone(ptr))
     }
 }
 

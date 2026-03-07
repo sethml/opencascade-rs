@@ -257,6 +257,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTPrsStdAISPresentation>;
     /// Destroy Handle<TPrsStd_AISPresentation>
     pub fn HandleTPrsStdAISPresentation_destructor(self_: *mut HandleTPrsStdAISPresentation);
+    /// Clone Handle<TPrsStd_AISPresentation> (increments reference count)
+    pub fn HandleTPrsStdAISPresentation_clone(
+        self_: *const HandleTPrsStdAISPresentation,
+    ) -> crate::OcctResult<*mut HandleTPrsStdAISPresentation>;
     /// Dereference Handle to get *const TPrsStd_AISPresentation
     pub fn HandleTPrsStdAISPresentation_get(
         handle: *const HandleTPrsStdAISPresentation,
@@ -508,6 +512,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTPrsStdAISViewer>;
     /// Destroy Handle<TPrsStd_AISViewer>
     pub fn HandleTPrsStdAISViewer_destructor(self_: *mut HandleTPrsStdAISViewer);
+    /// Clone Handle<TPrsStd_AISViewer> (increments reference count)
+    pub fn HandleTPrsStdAISViewer_clone(
+        self_: *const HandleTPrsStdAISViewer,
+    ) -> crate::OcctResult<*mut HandleTPrsStdAISViewer>;
     /// Dereference Handle to get *const TPrsStd_AISViewer
     pub fn HandleTPrsStdAISViewer_get(
         handle: *const HandleTPrsStdAISViewer,
@@ -736,6 +744,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTPrsStdAxisDriver>;
     /// Destroy Handle<TPrsStd_AxisDriver>
     pub fn HandleTPrsStdAxisDriver_destructor(self_: *mut HandleTPrsStdAxisDriver);
+    /// Clone Handle<TPrsStd_AxisDriver> (increments reference count)
+    pub fn HandleTPrsStdAxisDriver_clone(
+        self_: *const HandleTPrsStdAxisDriver,
+    ) -> crate::OcctResult<*mut HandleTPrsStdAxisDriver>;
     /// Dereference Handle to get *const TPrsStd_AxisDriver
     pub fn HandleTPrsStdAxisDriver_get(
         handle: *const HandleTPrsStdAxisDriver,
@@ -823,6 +835,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTPrsStdConstraintDriver>;
     /// Destroy Handle<TPrsStd_ConstraintDriver>
     pub fn HandleTPrsStdConstraintDriver_destructor(self_: *mut HandleTPrsStdConstraintDriver);
+    /// Clone Handle<TPrsStd_ConstraintDriver> (increments reference count)
+    pub fn HandleTPrsStdConstraintDriver_clone(
+        self_: *const HandleTPrsStdConstraintDriver,
+    ) -> crate::OcctResult<*mut HandleTPrsStdConstraintDriver>;
     /// Dereference Handle to get *const TPrsStd_ConstraintDriver
     pub fn HandleTPrsStdConstraintDriver_get(
         handle: *const HandleTPrsStdConstraintDriver,
@@ -1016,6 +1032,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TPrsStd_Driver>
     pub fn HandleTPrsStdDriver_destructor(self_: *mut HandleTPrsStdDriver);
+    /// Clone Handle<TPrsStd_Driver> (increments reference count)
+    pub fn HandleTPrsStdDriver_clone(
+        self_: *const HandleTPrsStdDriver,
+    ) -> crate::OcctResult<*mut HandleTPrsStdDriver>;
     /// Dereference Handle to get *const TPrsStd_Driver
     pub fn HandleTPrsStdDriver_get(
         handle: *const HandleTPrsStdDriver,
@@ -1136,6 +1156,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTPrsStdDriverTable>;
     /// Destroy Handle<TPrsStd_DriverTable>
     pub fn HandleTPrsStdDriverTable_destructor(self_: *mut HandleTPrsStdDriverTable);
+    /// Clone Handle<TPrsStd_DriverTable> (increments reference count)
+    pub fn HandleTPrsStdDriverTable_clone(
+        self_: *const HandleTPrsStdDriverTable,
+    ) -> crate::OcctResult<*mut HandleTPrsStdDriverTable>;
     /// Dereference Handle to get *const TPrsStd_DriverTable
     pub fn HandleTPrsStdDriverTable_get(
         handle: *const HandleTPrsStdDriverTable,
@@ -1219,6 +1243,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTPrsStdGeometryDriver>;
     /// Destroy Handle<TPrsStd_GeometryDriver>
     pub fn HandleTPrsStdGeometryDriver_destructor(self_: *mut HandleTPrsStdGeometryDriver);
+    /// Clone Handle<TPrsStd_GeometryDriver> (increments reference count)
+    pub fn HandleTPrsStdGeometryDriver_clone(
+        self_: *const HandleTPrsStdGeometryDriver,
+    ) -> crate::OcctResult<*mut HandleTPrsStdGeometryDriver>;
     /// Dereference Handle to get *const TPrsStd_GeometryDriver
     pub fn HandleTPrsStdGeometryDriver_get(
         handle: *const HandleTPrsStdGeometryDriver,
@@ -1306,6 +1334,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTPrsStdNamedShapeDriver>;
     /// Destroy Handle<TPrsStd_NamedShapeDriver>
     pub fn HandleTPrsStdNamedShapeDriver_destructor(self_: *mut HandleTPrsStdNamedShapeDriver);
+    /// Clone Handle<TPrsStd_NamedShapeDriver> (increments reference count)
+    pub fn HandleTPrsStdNamedShapeDriver_clone(
+        self_: *const HandleTPrsStdNamedShapeDriver,
+    ) -> crate::OcctResult<*mut HandleTPrsStdNamedShapeDriver>;
     /// Dereference Handle to get *const TPrsStd_NamedShapeDriver
     pub fn HandleTPrsStdNamedShapeDriver_get(
         handle: *const HandleTPrsStdNamedShapeDriver,
@@ -1392,6 +1424,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTPrsStdPlaneDriver>;
     /// Destroy Handle<TPrsStd_PlaneDriver>
     pub fn HandleTPrsStdPlaneDriver_destructor(self_: *mut HandleTPrsStdPlaneDriver);
+    /// Clone Handle<TPrsStd_PlaneDriver> (increments reference count)
+    pub fn HandleTPrsStdPlaneDriver_clone(
+        self_: *const HandleTPrsStdPlaneDriver,
+    ) -> crate::OcctResult<*mut HandleTPrsStdPlaneDriver>;
     /// Dereference Handle to get *const TPrsStd_PlaneDriver
     pub fn HandleTPrsStdPlaneDriver_get(
         handle: *const HandleTPrsStdPlaneDriver,
@@ -1478,6 +1514,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTPrsStdPointDriver>;
     /// Destroy Handle<TPrsStd_PointDriver>
     pub fn HandleTPrsStdPointDriver_destructor(self_: *mut HandleTPrsStdPointDriver);
+    /// Clone Handle<TPrsStd_PointDriver> (increments reference count)
+    pub fn HandleTPrsStdPointDriver_clone(
+        self_: *const HandleTPrsStdPointDriver,
+    ) -> crate::OcctResult<*mut HandleTPrsStdPointDriver>;
     /// Dereference Handle to get *const TPrsStd_PointDriver
     pub fn HandleTPrsStdPointDriver_get(
         handle: *const HandleTPrsStdPointDriver,

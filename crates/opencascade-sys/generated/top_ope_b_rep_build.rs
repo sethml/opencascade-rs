@@ -8261,6 +8261,12 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildHBuilder {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildHBuilder {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_clone(ptr))
+    }
+}
+
 impl HandleTopOpeBRepBuildHBuilder {
     /// Dereference this Handle to access the underlying TopOpeBRepBuild_HBuilder
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepBuild_HBuilder {
@@ -8497,6 +8503,12 @@ pub use crate::ffi_types::HandleTopOpeBRepBuildLoop;
 unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildLoop {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_clone(ptr))
     }
 }
 
@@ -8944,6 +8956,12 @@ pub use crate::ffi_types::HandleTopOpeBRepBuildPave;
 unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildPave {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildPave {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_clone(ptr))
     }
 }
 

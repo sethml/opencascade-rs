@@ -62,6 +62,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAppStdLApplication>;
     /// Destroy Handle<AppStdL_Application>
     pub fn HandleAppStdLApplication_destructor(self_: *mut HandleAppStdLApplication);
+    /// Clone Handle<AppStdL_Application> (increments reference count)
+    pub fn HandleAppStdLApplication_clone(
+        self_: *const HandleAppStdLApplication,
+    ) -> crate::OcctResult<*mut HandleAppStdLApplication>;
     /// Dereference Handle to get *const AppStdL_Application
     pub fn HandleAppStdLApplication_get(
         handle: *const HandleAppStdLApplication,
@@ -459,6 +463,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TDF_Attribute>
     pub fn HandleTDFAttribute_destructor(self_: *mut HandleTDFAttribute);
+    /// Clone Handle<TDF_Attribute> (increments reference count)
+    pub fn HandleTDFAttribute_clone(
+        self_: *const HandleTDFAttribute,
+    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
     /// Dereference Handle to get *const TDF_Attribute
     pub fn HandleTDFAttribute_get(
         handle: *const HandleTDFAttribute,
@@ -902,6 +910,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TDF_AttributeDelta>
     pub fn HandleTDFAttributeDelta_destructor(self_: *mut HandleTDFAttributeDelta);
+    /// Clone Handle<TDF_AttributeDelta> (increments reference count)
+    pub fn HandleTDFAttributeDelta_clone(
+        self_: *const HandleTDFAttributeDelta,
+    ) -> crate::OcctResult<*mut HandleTDFAttributeDelta>;
     /// Dereference Handle to get *const TDF_AttributeDelta
     pub fn HandleTDFAttributeDelta_get(
         handle: *const HandleTDFAttributeDelta,
@@ -1303,6 +1315,10 @@ extern "C" {
     pub fn TDF_Data_to_handle(obj: *mut TDF_Data) -> crate::OcctResult<*mut HandleTDFData>;
     /// Destroy Handle<TDF_Data>
     pub fn HandleTDFData_destructor(self_: *mut HandleTDFData);
+    /// Clone Handle<TDF_Data> (increments reference count)
+    pub fn HandleTDFData_clone(
+        self_: *const HandleTDFData,
+    ) -> crate::OcctResult<*mut HandleTDFData>;
     /// Dereference Handle to get *const TDF_Data
     pub fn HandleTDFData_get(handle: *const HandleTDFData) -> crate::OcctResult<*const TDF_Data>;
     /// Dereference Handle to get *mut TDF_Data
@@ -1400,6 +1416,10 @@ extern "C" {
         -> crate::OcctResult<*mut HandleTDFDataSet>;
     /// Destroy Handle<TDF_DataSet>
     pub fn HandleTDFDataSet_destructor(self_: *mut HandleTDFDataSet);
+    /// Clone Handle<TDF_DataSet> (increments reference count)
+    pub fn HandleTDFDataSet_clone(
+        self_: *const HandleTDFDataSet,
+    ) -> crate::OcctResult<*mut HandleTDFDataSet>;
     /// Dereference Handle to get *const TDF_DataSet
     pub fn HandleTDFDataSet_get(
         handle: *const HandleTDFDataSet,
@@ -1490,6 +1510,10 @@ extern "C" {
     pub fn HandleTDFDefaultDeltaOnModification_destructor(
         self_: *mut HandleTDFDefaultDeltaOnModification,
     );
+    /// Clone Handle<TDF_DefaultDeltaOnModification> (increments reference count)
+    pub fn HandleTDFDefaultDeltaOnModification_clone(
+        self_: *const HandleTDFDefaultDeltaOnModification,
+    ) -> crate::OcctResult<*mut HandleTDFDefaultDeltaOnModification>;
     /// Dereference Handle to get *const TDF_DefaultDeltaOnModification
     pub fn HandleTDFDefaultDeltaOnModification_get(
         handle: *const HandleTDFDefaultDeltaOnModification,
@@ -1601,6 +1625,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDFDefaultDeltaOnRemoval>;
     /// Destroy Handle<TDF_DefaultDeltaOnRemoval>
     pub fn HandleTDFDefaultDeltaOnRemoval_destructor(self_: *mut HandleTDFDefaultDeltaOnRemoval);
+    /// Clone Handle<TDF_DefaultDeltaOnRemoval> (increments reference count)
+    pub fn HandleTDFDefaultDeltaOnRemoval_clone(
+        self_: *const HandleTDFDefaultDeltaOnRemoval,
+    ) -> crate::OcctResult<*mut HandleTDFDefaultDeltaOnRemoval>;
     /// Dereference Handle to get *const TDF_DefaultDeltaOnRemoval
     pub fn HandleTDFDefaultDeltaOnRemoval_get(
         handle: *const HandleTDFDefaultDeltaOnRemoval,
@@ -1721,6 +1749,10 @@ extern "C" {
     pub fn TDF_Delta_to_handle(obj: *mut TDF_Delta) -> crate::OcctResult<*mut HandleTDFDelta>;
     /// Destroy Handle<TDF_Delta>
     pub fn HandleTDFDelta_destructor(self_: *mut HandleTDFDelta);
+    /// Clone Handle<TDF_Delta> (increments reference count)
+    pub fn HandleTDFDelta_clone(
+        self_: *const HandleTDFDelta,
+    ) -> crate::OcctResult<*mut HandleTDFDelta>;
     /// Dereference Handle to get *const TDF_Delta
     pub fn HandleTDFDelta_get(handle: *const HandleTDFDelta)
         -> crate::OcctResult<*const TDF_Delta>;
@@ -1798,6 +1830,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
     /// Destroy Handle<TDF_DeltaOnAddition>
     pub fn HandleTDFDeltaOnAddition_destructor(self_: *mut HandleTDFDeltaOnAddition);
+    /// Clone Handle<TDF_DeltaOnAddition> (increments reference count)
+    pub fn HandleTDFDeltaOnAddition_clone(
+        self_: *const HandleTDFDeltaOnAddition,
+    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
     /// Dereference Handle to get *const TDF_DeltaOnAddition
     pub fn HandleTDFDeltaOnAddition_get(
         handle: *const HandleTDFDeltaOnAddition,
@@ -1894,6 +1930,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
     /// Destroy Handle<TDF_DeltaOnForget>
     pub fn HandleTDFDeltaOnForget_destructor(self_: *mut HandleTDFDeltaOnForget);
+    /// Clone Handle<TDF_DeltaOnForget> (increments reference count)
+    pub fn HandleTDFDeltaOnForget_clone(
+        self_: *const HandleTDFDeltaOnForget,
+    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
     /// Dereference Handle to get *const TDF_DeltaOnForget
     pub fn HandleTDFDeltaOnForget_get(
         handle: *const HandleTDFDeltaOnForget,
@@ -1989,6 +2029,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
     /// Destroy Handle<TDF_DeltaOnModification>
     pub fn HandleTDFDeltaOnModification_destructor(self_: *mut HandleTDFDeltaOnModification);
+    /// Clone Handle<TDF_DeltaOnModification> (increments reference count)
+    pub fn HandleTDFDeltaOnModification_clone(
+        self_: *const HandleTDFDeltaOnModification,
+    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
     /// Dereference Handle to get *const TDF_DeltaOnModification
     pub fn HandleTDFDeltaOnModification_get(
         handle: *const HandleTDFDeltaOnModification,
@@ -2103,6 +2147,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TDF_DeltaOnRemoval>
     pub fn HandleTDFDeltaOnRemoval_destructor(self_: *mut HandleTDFDeltaOnRemoval);
+    /// Clone Handle<TDF_DeltaOnRemoval> (increments reference count)
+    pub fn HandleTDFDeltaOnRemoval_clone(
+        self_: *const HandleTDFDeltaOnRemoval,
+    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
     /// Dereference Handle to get *const TDF_DeltaOnRemoval
     pub fn HandleTDFDeltaOnRemoval_get(
         handle: *const HandleTDFDeltaOnRemoval,
@@ -2211,6 +2259,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
     /// Destroy Handle<TDF_DeltaOnResume>
     pub fn HandleTDFDeltaOnResume_destructor(self_: *mut HandleTDFDeltaOnResume);
+    /// Clone Handle<TDF_DeltaOnResume> (increments reference count)
+    pub fn HandleTDFDeltaOnResume_clone(
+        self_: *const HandleTDFDeltaOnResume,
+    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
     /// Dereference Handle to get *const TDF_DeltaOnResume
     pub fn HandleTDFDeltaOnResume_get(
         handle: *const HandleTDFDeltaOnResume,
@@ -2347,6 +2399,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDFHAttributeArray1>;
     /// Destroy Handle<TDF_HAttributeArray1>
     pub fn HandleTDFHAttributeArray1_destructor(self_: *mut HandleTDFHAttributeArray1);
+    /// Clone Handle<TDF_HAttributeArray1> (increments reference count)
+    pub fn HandleTDFHAttributeArray1_clone(
+        self_: *const HandleTDFHAttributeArray1,
+    ) -> crate::OcctResult<*mut HandleTDFHAttributeArray1>;
     /// Dereference Handle to get *const TDF_HAttributeArray1
     pub fn HandleTDFHAttributeArray1_get(
         handle: *const HandleTDFHAttributeArray1,
@@ -2668,6 +2724,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDFReference>;
     /// Destroy Handle<TDF_Reference>
     pub fn HandleTDFReference_destructor(self_: *mut HandleTDFReference);
+    /// Clone Handle<TDF_Reference> (increments reference count)
+    pub fn HandleTDFReference_clone(
+        self_: *const HandleTDFReference,
+    ) -> crate::OcctResult<*mut HandleTDFReference>;
     /// Dereference Handle to get *const TDF_Reference
     pub fn HandleTDFReference_get(
         handle: *const HandleTDFReference,
@@ -2957,6 +3017,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDFRelocationTable>;
     /// Destroy Handle<TDF_RelocationTable>
     pub fn HandleTDFRelocationTable_destructor(self_: *mut HandleTDFRelocationTable);
+    /// Clone Handle<TDF_RelocationTable> (increments reference count)
+    pub fn HandleTDFRelocationTable_clone(
+        self_: *const HandleTDFRelocationTable,
+    ) -> crate::OcctResult<*mut HandleTDFRelocationTable>;
     /// Dereference Handle to get *const TDF_RelocationTable
     pub fn HandleTDFRelocationTable_get(
         handle: *const HandleTDFRelocationTable,
@@ -3067,6 +3131,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDFTagSource>;
     /// Destroy Handle<TDF_TagSource>
     pub fn HandleTDFTagSource_destructor(self_: *mut HandleTDFTagSource);
+    /// Clone Handle<TDF_TagSource> (increments reference count)
+    pub fn HandleTDFTagSource_clone(
+        self_: *const HandleTDFTagSource,
+    ) -> crate::OcctResult<*mut HandleTDFTagSource>;
     /// Dereference Handle to get *const TDF_TagSource
     pub fn HandleTDFTagSource_get(
         handle: *const HandleTDFTagSource,
@@ -3496,6 +3564,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdAsciiString>;
     /// Destroy Handle<TDataStd_AsciiString>
     pub fn HandleTDataStdAsciiString_destructor(self_: *mut HandleTDataStdAsciiString);
+    /// Clone Handle<TDataStd_AsciiString> (increments reference count)
+    pub fn HandleTDataStdAsciiString_clone(
+        self_: *const HandleTDataStdAsciiString,
+    ) -> crate::OcctResult<*mut HandleTDataStdAsciiString>;
     /// Dereference Handle to get *const TDataStd_AsciiString
     pub fn HandleTDataStdAsciiString_get(
         handle: *const HandleTDataStdAsciiString,
@@ -3800,6 +3872,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdBooleanArray>;
     /// Destroy Handle<TDataStd_BooleanArray>
     pub fn HandleTDataStdBooleanArray_destructor(self_: *mut HandleTDataStdBooleanArray);
+    /// Clone Handle<TDataStd_BooleanArray> (increments reference count)
+    pub fn HandleTDataStdBooleanArray_clone(
+        self_: *const HandleTDataStdBooleanArray,
+    ) -> crate::OcctResult<*mut HandleTDataStdBooleanArray>;
     /// Dereference Handle to get *const TDataStd_BooleanArray
     pub fn HandleTDataStdBooleanArray_get(
         handle: *const HandleTDataStdBooleanArray,
@@ -4108,6 +4184,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdBooleanList>;
     /// Destroy Handle<TDataStd_BooleanList>
     pub fn HandleTDataStdBooleanList_destructor(self_: *mut HandleTDataStdBooleanList);
+    /// Clone Handle<TDataStd_BooleanList> (increments reference count)
+    pub fn HandleTDataStdBooleanList_clone(
+        self_: *const HandleTDataStdBooleanList,
+    ) -> crate::OcctResult<*mut HandleTDataStdBooleanList>;
     /// Dereference Handle to get *const TDataStd_BooleanList
     pub fn HandleTDataStdBooleanList_get(
         handle: *const HandleTDataStdBooleanList,
@@ -4420,6 +4500,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdByteArray>;
     /// Destroy Handle<TDataStd_ByteArray>
     pub fn HandleTDataStdByteArray_destructor(self_: *mut HandleTDataStdByteArray);
+    /// Clone Handle<TDataStd_ByteArray> (increments reference count)
+    pub fn HandleTDataStdByteArray_clone(
+        self_: *const HandleTDataStdByteArray,
+    ) -> crate::OcctResult<*mut HandleTDataStdByteArray>;
     /// Dereference Handle to get *const TDataStd_ByteArray
     pub fn HandleTDataStdByteArray_get(
         handle: *const HandleTDataStdByteArray,
@@ -4703,6 +4787,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdComment>;
     /// Destroy Handle<TDataStd_Comment>
     pub fn HandleTDataStdComment_destructor(self_: *mut HandleTDataStdComment);
+    /// Clone Handle<TDataStd_Comment> (increments reference count)
+    pub fn HandleTDataStdComment_clone(
+        self_: *const HandleTDataStdComment,
+    ) -> crate::OcctResult<*mut HandleTDataStdComment>;
     /// Dereference Handle to get *const TDataStd_Comment
     pub fn HandleTDataStdComment_get(
         handle: *const HandleTDataStdComment,
@@ -4984,6 +5072,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdCurrent>;
     /// Destroy Handle<TDataStd_Current>
     pub fn HandleTDataStdCurrent_destructor(self_: *mut HandleTDataStdCurrent);
+    /// Clone Handle<TDataStd_Current> (increments reference count)
+    pub fn HandleTDataStdCurrent_clone(
+        self_: *const HandleTDataStdCurrent,
+    ) -> crate::OcctResult<*mut HandleTDataStdCurrent>;
     /// Dereference Handle to get *const TDataStd_Current
     pub fn HandleTDataStdCurrent_get(
         handle: *const HandleTDataStdCurrent,
@@ -5226,6 +5318,10 @@ extern "C" {
     pub fn HandleTDataStdDeltaOnModificationOfByteArray_destructor(
         self_: *mut HandleTDataStdDeltaOnModificationOfByteArray,
     );
+    /// Clone Handle<TDataStd_DeltaOnModificationOfByteArray> (increments reference count)
+    pub fn HandleTDataStdDeltaOnModificationOfByteArray_clone(
+        self_: *const HandleTDataStdDeltaOnModificationOfByteArray,
+    ) -> crate::OcctResult<*mut HandleTDataStdDeltaOnModificationOfByteArray>;
     /// Dereference Handle to get *const TDataStd_DeltaOnModificationOfByteArray
     pub fn HandleTDataStdDeltaOnModificationOfByteArray_get(
         handle: *const HandleTDataStdDeltaOnModificationOfByteArray,
@@ -5342,6 +5438,10 @@ extern "C" {
     pub fn HandleTDataStdDeltaOnModificationOfExtStringArray_destructor(
         self_: *mut HandleTDataStdDeltaOnModificationOfExtStringArray,
     );
+    /// Clone Handle<TDataStd_DeltaOnModificationOfExtStringArray> (increments reference count)
+    pub fn HandleTDataStdDeltaOnModificationOfExtStringArray_clone(
+        self_: *const HandleTDataStdDeltaOnModificationOfExtStringArray,
+    ) -> crate::OcctResult<*mut HandleTDataStdDeltaOnModificationOfExtStringArray>;
     /// Dereference Handle to get *const TDataStd_DeltaOnModificationOfExtStringArray
     pub fn HandleTDataStdDeltaOnModificationOfExtStringArray_get(
         handle: *const HandleTDataStdDeltaOnModificationOfExtStringArray,
@@ -5458,6 +5558,10 @@ extern "C" {
     pub fn HandleTDataStdDeltaOnModificationOfIntArray_destructor(
         self_: *mut HandleTDataStdDeltaOnModificationOfIntArray,
     );
+    /// Clone Handle<TDataStd_DeltaOnModificationOfIntArray> (increments reference count)
+    pub fn HandleTDataStdDeltaOnModificationOfIntArray_clone(
+        self_: *const HandleTDataStdDeltaOnModificationOfIntArray,
+    ) -> crate::OcctResult<*mut HandleTDataStdDeltaOnModificationOfIntArray>;
     /// Dereference Handle to get *const TDataStd_DeltaOnModificationOfIntArray
     pub fn HandleTDataStdDeltaOnModificationOfIntArray_get(
         handle: *const HandleTDataStdDeltaOnModificationOfIntArray,
@@ -5574,6 +5678,10 @@ extern "C" {
     pub fn HandleTDataStdDeltaOnModificationOfIntPackedMap_destructor(
         self_: *mut HandleTDataStdDeltaOnModificationOfIntPackedMap,
     );
+    /// Clone Handle<TDataStd_DeltaOnModificationOfIntPackedMap> (increments reference count)
+    pub fn HandleTDataStdDeltaOnModificationOfIntPackedMap_clone(
+        self_: *const HandleTDataStdDeltaOnModificationOfIntPackedMap,
+    ) -> crate::OcctResult<*mut HandleTDataStdDeltaOnModificationOfIntPackedMap>;
     /// Dereference Handle to get *const TDataStd_DeltaOnModificationOfIntPackedMap
     pub fn HandleTDataStdDeltaOnModificationOfIntPackedMap_get(
         handle: *const HandleTDataStdDeltaOnModificationOfIntPackedMap,
@@ -5690,6 +5798,10 @@ extern "C" {
     pub fn HandleTDataStdDeltaOnModificationOfRealArray_destructor(
         self_: *mut HandleTDataStdDeltaOnModificationOfRealArray,
     );
+    /// Clone Handle<TDataStd_DeltaOnModificationOfRealArray> (increments reference count)
+    pub fn HandleTDataStdDeltaOnModificationOfRealArray_clone(
+        self_: *const HandleTDataStdDeltaOnModificationOfRealArray,
+    ) -> crate::OcctResult<*mut HandleTDataStdDeltaOnModificationOfRealArray>;
     /// Dereference Handle to get *const TDataStd_DeltaOnModificationOfRealArray
     pub fn HandleTDataStdDeltaOnModificationOfRealArray_get(
         handle: *const HandleTDataStdDeltaOnModificationOfRealArray,
@@ -5826,6 +5938,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdDirectory>;
     /// Destroy Handle<TDataStd_Directory>
     pub fn HandleTDataStdDirectory_destructor(self_: *mut HandleTDataStdDirectory);
+    /// Clone Handle<TDataStd_Directory> (increments reference count)
+    pub fn HandleTDataStdDirectory_clone(
+        self_: *const HandleTDataStdDirectory,
+    ) -> crate::OcctResult<*mut HandleTDataStdDirectory>;
     /// Dereference Handle to get *const TDataStd_Directory
     pub fn HandleTDataStdDirectory_get(
         handle: *const HandleTDataStdDirectory,
@@ -6110,6 +6226,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdExpression>;
     /// Destroy Handle<TDataStd_Expression>
     pub fn HandleTDataStdExpression_destructor(self_: *mut HandleTDataStdExpression);
+    /// Clone Handle<TDataStd_Expression> (increments reference count)
+    pub fn HandleTDataStdExpression_clone(
+        self_: *const HandleTDataStdExpression,
+    ) -> crate::OcctResult<*mut HandleTDataStdExpression>;
     /// Dereference Handle to get *const TDataStd_Expression
     pub fn HandleTDataStdExpression_get(
         handle: *const HandleTDataStdExpression,
@@ -6440,6 +6560,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdExtStringArray>;
     /// Destroy Handle<TDataStd_ExtStringArray>
     pub fn HandleTDataStdExtStringArray_destructor(self_: *mut HandleTDataStdExtStringArray);
+    /// Clone Handle<TDataStd_ExtStringArray> (increments reference count)
+    pub fn HandleTDataStdExtStringArray_clone(
+        self_: *const HandleTDataStdExtStringArray,
+    ) -> crate::OcctResult<*mut HandleTDataStdExtStringArray>;
     /// Dereference Handle to get *const TDataStd_ExtStringArray
     pub fn HandleTDataStdExtStringArray_get(
         handle: *const HandleTDataStdExtStringArray,
@@ -6765,6 +6889,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdExtStringList>;
     /// Destroy Handle<TDataStd_ExtStringList>
     pub fn HandleTDataStdExtStringList_destructor(self_: *mut HandleTDataStdExtStringList);
+    /// Clone Handle<TDataStd_ExtStringList> (increments reference count)
+    pub fn HandleTDataStdExtStringList_clone(
+        self_: *const HandleTDataStdExtStringList,
+    ) -> crate::OcctResult<*mut HandleTDataStdExtStringList>;
     /// Dereference Handle to get *const TDataStd_ExtStringList
     pub fn HandleTDataStdExtStringList_get(
         handle: *const HandleTDataStdExtStringList,
@@ -6988,6 +7116,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TDataStd_GenericEmpty>
     pub fn HandleTDataStdGenericEmpty_destructor(self_: *mut HandleTDataStdGenericEmpty);
+    /// Clone Handle<TDataStd_GenericEmpty> (increments reference count)
+    pub fn HandleTDataStdGenericEmpty_clone(
+        self_: *const HandleTDataStdGenericEmpty,
+    ) -> crate::OcctResult<*mut HandleTDataStdGenericEmpty>;
     /// Dereference Handle to get *const TDataStd_GenericEmpty
     pub fn HandleTDataStdGenericEmpty_get(
         handle: *const HandleTDataStdGenericEmpty,
@@ -7322,6 +7454,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TDataStd_GenericExtString>
     pub fn HandleTDataStdGenericExtString_destructor(self_: *mut HandleTDataStdGenericExtString);
+    /// Clone Handle<TDataStd_GenericExtString> (increments reference count)
+    pub fn HandleTDataStdGenericExtString_clone(
+        self_: *const HandleTDataStdGenericExtString,
+    ) -> crate::OcctResult<*mut HandleTDataStdGenericExtString>;
     /// Dereference Handle to get *const TDataStd_GenericExtString
     pub fn HandleTDataStdGenericExtString_get(
         handle: *const HandleTDataStdGenericExtString,
@@ -7561,6 +7697,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringByte_destructor(
         self_: *mut HandleTDataStdHDataMapOfStringByte,
     );
+    /// Clone Handle<TDataStd_HDataMapOfStringByte> (increments reference count)
+    pub fn HandleTDataStdHDataMapOfStringByte_clone(
+        self_: *const HandleTDataStdHDataMapOfStringByte,
+    ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringByte>;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringByte
     pub fn HandleTDataStdHDataMapOfStringByte_get(
         handle: *const HandleTDataStdHDataMapOfStringByte,
@@ -7649,6 +7789,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringHArray1OfInteger_destructor(
         self_: *mut HandleTDataStdHDataMapOfStringHArray1OfInteger,
     );
+    /// Clone Handle<TDataStd_HDataMapOfStringHArray1OfInteger> (increments reference count)
+    pub fn HandleTDataStdHDataMapOfStringHArray1OfInteger_clone(
+        self_: *const HandleTDataStdHDataMapOfStringHArray1OfInteger,
+    ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringHArray1OfInteger>;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringHArray1OfInteger
     pub fn HandleTDataStdHDataMapOfStringHArray1OfInteger_get(
         handle: *const HandleTDataStdHDataMapOfStringHArray1OfInteger,
@@ -7737,6 +7881,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringHArray1OfReal_destructor(
         self_: *mut HandleTDataStdHDataMapOfStringHArray1OfReal,
     );
+    /// Clone Handle<TDataStd_HDataMapOfStringHArray1OfReal> (increments reference count)
+    pub fn HandleTDataStdHDataMapOfStringHArray1OfReal_clone(
+        self_: *const HandleTDataStdHDataMapOfStringHArray1OfReal,
+    ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringHArray1OfReal>;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringHArray1OfReal
     pub fn HandleTDataStdHDataMapOfStringHArray1OfReal_get(
         handle: *const HandleTDataStdHDataMapOfStringHArray1OfReal,
@@ -7825,6 +7973,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringInteger_destructor(
         self_: *mut HandleTDataStdHDataMapOfStringInteger,
     );
+    /// Clone Handle<TDataStd_HDataMapOfStringInteger> (increments reference count)
+    pub fn HandleTDataStdHDataMapOfStringInteger_clone(
+        self_: *const HandleTDataStdHDataMapOfStringInteger,
+    ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringInteger>;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringInteger
     pub fn HandleTDataStdHDataMapOfStringInteger_get(
         handle: *const HandleTDataStdHDataMapOfStringInteger,
@@ -7911,6 +8063,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringReal_destructor(
         self_: *mut HandleTDataStdHDataMapOfStringReal,
     );
+    /// Clone Handle<TDataStd_HDataMapOfStringReal> (increments reference count)
+    pub fn HandleTDataStdHDataMapOfStringReal_clone(
+        self_: *const HandleTDataStdHDataMapOfStringReal,
+    ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringReal>;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringReal
     pub fn HandleTDataStdHDataMapOfStringReal_get(
         handle: *const HandleTDataStdHDataMapOfStringReal,
@@ -7997,6 +8153,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringString_destructor(
         self_: *mut HandleTDataStdHDataMapOfStringString,
     );
+    /// Clone Handle<TDataStd_HDataMapOfStringString> (increments reference count)
+    pub fn HandleTDataStdHDataMapOfStringString_clone(
+        self_: *const HandleTDataStdHDataMapOfStringString,
+    ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringString>;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringString
     pub fn HandleTDataStdHDataMapOfStringString_get(
         handle: *const HandleTDataStdHDataMapOfStringString,
@@ -8096,6 +8256,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdHLabelArray1>;
     /// Destroy Handle<TDataStd_HLabelArray1>
     pub fn HandleTDataStdHLabelArray1_destructor(self_: *mut HandleTDataStdHLabelArray1);
+    /// Clone Handle<TDataStd_HLabelArray1> (increments reference count)
+    pub fn HandleTDataStdHLabelArray1_clone(
+        self_: *const HandleTDataStdHLabelArray1,
+    ) -> crate::OcctResult<*mut HandleTDataStdHLabelArray1>;
     /// Dereference Handle to get *const TDataStd_HLabelArray1
     pub fn HandleTDataStdHLabelArray1_get(
         handle: *const HandleTDataStdHLabelArray1,
@@ -8263,6 +8427,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdIntPackedMap>;
     /// Destroy Handle<TDataStd_IntPackedMap>
     pub fn HandleTDataStdIntPackedMap_destructor(self_: *mut HandleTDataStdIntPackedMap);
+    /// Clone Handle<TDataStd_IntPackedMap> (increments reference count)
+    pub fn HandleTDataStdIntPackedMap_clone(
+        self_: *const HandleTDataStdIntPackedMap,
+    ) -> crate::OcctResult<*mut HandleTDataStdIntPackedMap>;
     /// Dereference Handle to get *const TDataStd_IntPackedMap
     pub fn HandleTDataStdIntPackedMap_get(
         handle: *const HandleTDataStdIntPackedMap,
@@ -8530,6 +8698,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdInteger>;
     /// Destroy Handle<TDataStd_Integer>
     pub fn HandleTDataStdInteger_destructor(self_: *mut HandleTDataStdInteger);
+    /// Clone Handle<TDataStd_Integer> (increments reference count)
+    pub fn HandleTDataStdInteger_clone(
+        self_: *const HandleTDataStdInteger,
+    ) -> crate::OcctResult<*mut HandleTDataStdInteger>;
     /// Dereference Handle to get *const TDataStd_Integer
     pub fn HandleTDataStdInteger_get(
         handle: *const HandleTDataStdInteger,
@@ -8851,6 +9023,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdIntegerArray>;
     /// Destroy Handle<TDataStd_IntegerArray>
     pub fn HandleTDataStdIntegerArray_destructor(self_: *mut HandleTDataStdIntegerArray);
+    /// Clone Handle<TDataStd_IntegerArray> (increments reference count)
+    pub fn HandleTDataStdIntegerArray_clone(
+        self_: *const HandleTDataStdIntegerArray,
+    ) -> crate::OcctResult<*mut HandleTDataStdIntegerArray>;
     /// Dereference Handle to get *const TDataStd_IntegerArray
     pub fn HandleTDataStdIntegerArray_get(
         handle: *const HandleTDataStdIntegerArray,
@@ -9169,6 +9345,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdIntegerList>;
     /// Destroy Handle<TDataStd_IntegerList>
     pub fn HandleTDataStdIntegerList_destructor(self_: *mut HandleTDataStdIntegerList);
+    /// Clone Handle<TDataStd_IntegerList> (increments reference count)
+    pub fn HandleTDataStdIntegerList_clone(
+        self_: *const HandleTDataStdIntegerList,
+    ) -> crate::OcctResult<*mut HandleTDataStdIntegerList>;
     /// Dereference Handle to get *const TDataStd_IntegerList
     pub fn HandleTDataStdIntegerList_get(
         handle: *const HandleTDataStdIntegerList,
@@ -9428,6 +9608,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdName>;
     /// Destroy Handle<TDataStd_Name>
     pub fn HandleTDataStdName_destructor(self_: *mut HandleTDataStdName);
+    /// Clone Handle<TDataStd_Name> (increments reference count)
+    pub fn HandleTDataStdName_clone(
+        self_: *const HandleTDataStdName,
+    ) -> crate::OcctResult<*mut HandleTDataStdName>;
     /// Dereference Handle to get *const TDataStd_Name
     pub fn HandleTDataStdName_get(
         handle: *const HandleTDataStdName,
@@ -9917,6 +10101,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdNamedData>;
     /// Destroy Handle<TDataStd_NamedData>
     pub fn HandleTDataStdNamedData_destructor(self_: *mut HandleTDataStdNamedData);
+    /// Clone Handle<TDataStd_NamedData> (increments reference count)
+    pub fn HandleTDataStdNamedData_clone(
+        self_: *const HandleTDataStdNamedData,
+    ) -> crate::OcctResult<*mut HandleTDataStdNamedData>;
     /// Dereference Handle to get *const TDataStd_NamedData
     pub fn HandleTDataStdNamedData_get(
         handle: *const HandleTDataStdNamedData,
@@ -10183,6 +10371,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdNoteBook>;
     /// Destroy Handle<TDataStd_NoteBook>
     pub fn HandleTDataStdNoteBook_destructor(self_: *mut HandleTDataStdNoteBook);
+    /// Clone Handle<TDataStd_NoteBook> (increments reference count)
+    pub fn HandleTDataStdNoteBook_clone(
+        self_: *const HandleTDataStdNoteBook,
+    ) -> crate::OcctResult<*mut HandleTDataStdNoteBook>;
     /// Dereference Handle to get *const TDataStd_NoteBook
     pub fn HandleTDataStdNoteBook_get(
         handle: *const HandleTDataStdNoteBook,
@@ -10469,6 +10661,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdReal>;
     /// Destroy Handle<TDataStd_Real>
     pub fn HandleTDataStdReal_destructor(self_: *mut HandleTDataStdReal);
+    /// Clone Handle<TDataStd_Real> (increments reference count)
+    pub fn HandleTDataStdReal_clone(
+        self_: *const HandleTDataStdReal,
+    ) -> crate::OcctResult<*mut HandleTDataStdReal>;
     /// Dereference Handle to get *const TDataStd_Real
     pub fn HandleTDataStdReal_get(
         handle: *const HandleTDataStdReal,
@@ -10781,6 +10977,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdRealArray>;
     /// Destroy Handle<TDataStd_RealArray>
     pub fn HandleTDataStdRealArray_destructor(self_: *mut HandleTDataStdRealArray);
+    /// Clone Handle<TDataStd_RealArray> (increments reference count)
+    pub fn HandleTDataStdRealArray_clone(
+        self_: *const HandleTDataStdRealArray,
+    ) -> crate::OcctResult<*mut HandleTDataStdRealArray>;
     /// Dereference Handle to get *const TDataStd_RealArray
     pub fn HandleTDataStdRealArray_get(
         handle: *const HandleTDataStdRealArray,
@@ -11093,6 +11293,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdRealList>;
     /// Destroy Handle<TDataStd_RealList>
     pub fn HandleTDataStdRealList_destructor(self_: *mut HandleTDataStdRealList);
+    /// Clone Handle<TDataStd_RealList> (increments reference count)
+    pub fn HandleTDataStdRealList_clone(
+        self_: *const HandleTDataStdRealList,
+    ) -> crate::OcctResult<*mut HandleTDataStdRealList>;
     /// Dereference Handle to get *const TDataStd_RealList
     pub fn HandleTDataStdRealList_get(
         handle: *const HandleTDataStdRealList,
@@ -11403,6 +11607,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdReferenceArray>;
     /// Destroy Handle<TDataStd_ReferenceArray>
     pub fn HandleTDataStdReferenceArray_destructor(self_: *mut HandleTDataStdReferenceArray);
+    /// Clone Handle<TDataStd_ReferenceArray> (increments reference count)
+    pub fn HandleTDataStdReferenceArray_clone(
+        self_: *const HandleTDataStdReferenceArray,
+    ) -> crate::OcctResult<*mut HandleTDataStdReferenceArray>;
     /// Dereference Handle to get *const TDataStd_ReferenceArray
     pub fn HandleTDataStdReferenceArray_get(
         handle: *const HandleTDataStdReferenceArray,
@@ -11733,6 +11941,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdReferenceList>;
     /// Destroy Handle<TDataStd_ReferenceList>
     pub fn HandleTDataStdReferenceList_destructor(self_: *mut HandleTDataStdReferenceList);
+    /// Clone Handle<TDataStd_ReferenceList> (increments reference count)
+    pub fn HandleTDataStdReferenceList_clone(
+        self_: *const HandleTDataStdReferenceList,
+    ) -> crate::OcctResult<*mut HandleTDataStdReferenceList>;
     /// Dereference Handle to get *const TDataStd_ReferenceList
     pub fn HandleTDataStdReferenceList_get(
         handle: *const HandleTDataStdReferenceList,
@@ -11981,6 +12193,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdRelation>;
     /// Destroy Handle<TDataStd_Relation>
     pub fn HandleTDataStdRelation_destructor(self_: *mut HandleTDataStdRelation);
+    /// Clone Handle<TDataStd_Relation> (increments reference count)
+    pub fn HandleTDataStdRelation_clone(
+        self_: *const HandleTDataStdRelation,
+    ) -> crate::OcctResult<*mut HandleTDataStdRelation>;
     /// Dereference Handle to get *const TDataStd_Relation
     pub fn HandleTDataStdRelation_get(
         handle: *const HandleTDataStdRelation,
@@ -12260,6 +12476,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdTick>;
     /// Destroy Handle<TDataStd_Tick>
     pub fn HandleTDataStdTick_destructor(self_: *mut HandleTDataStdTick);
+    /// Clone Handle<TDataStd_Tick> (increments reference count)
+    pub fn HandleTDataStdTick_clone(
+        self_: *const HandleTDataStdTick,
+    ) -> crate::OcctResult<*mut HandleTDataStdTick>;
     /// Dereference Handle to get *const TDataStd_Tick
     pub fn HandleTDataStdTick_get(
         handle: *const HandleTDataStdTick,
@@ -12679,6 +12899,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdTreeNode>;
     /// Destroy Handle<TDataStd_TreeNode>
     pub fn HandleTDataStdTreeNode_destructor(self_: *mut HandleTDataStdTreeNode);
+    /// Clone Handle<TDataStd_TreeNode> (increments reference count)
+    pub fn HandleTDataStdTreeNode_clone(
+        self_: *const HandleTDataStdTreeNode,
+    ) -> crate::OcctResult<*mut HandleTDataStdTreeNode>;
     /// Dereference Handle to get *const TDataStd_TreeNode
     pub fn HandleTDataStdTreeNode_get(
         handle: *const HandleTDataStdTreeNode,
@@ -12911,6 +13135,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdUAttribute>;
     /// Destroy Handle<TDataStd_UAttribute>
     pub fn HandleTDataStdUAttribute_destructor(self_: *mut HandleTDataStdUAttribute);
+    /// Clone Handle<TDataStd_UAttribute> (increments reference count)
+    pub fn HandleTDataStdUAttribute_clone(
+        self_: *const HandleTDataStdUAttribute,
+    ) -> crate::OcctResult<*mut HandleTDataStdUAttribute>;
     /// Dereference Handle to get *const TDataStd_UAttribute
     pub fn HandleTDataStdUAttribute_get(
         handle: *const HandleTDataStdUAttribute,
@@ -13216,6 +13444,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataStdVariable>;
     /// Destroy Handle<TDataStd_Variable>
     pub fn HandleTDataStdVariable_destructor(self_: *mut HandleTDataStdVariable);
+    /// Clone Handle<TDataStd_Variable> (increments reference count)
+    pub fn HandleTDataStdVariable_clone(
+        self_: *const HandleTDataStdVariable,
+    ) -> crate::OcctResult<*mut HandleTDataStdVariable>;
     /// Dereference Handle to get *const TDataStd_Variable
     pub fn HandleTDataStdVariable_get(
         handle: *const HandleTDataStdVariable,
@@ -13597,6 +13829,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDocStdApplication>;
     /// Destroy Handle<TDocStd_Application>
     pub fn HandleTDocStdApplication_destructor(self_: *mut HandleTDocStdApplication);
+    /// Clone Handle<TDocStd_Application> (increments reference count)
+    pub fn HandleTDocStdApplication_clone(
+        self_: *const HandleTDocStdApplication,
+    ) -> crate::OcctResult<*mut HandleTDocStdApplication>;
     /// Dereference Handle to get *const TDocStd_Application
     pub fn HandleTDocStdApplication_get(
         handle: *const HandleTDocStdApplication,
@@ -13789,6 +14025,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDocStdApplicationDelta>;
     /// Destroy Handle<TDocStd_ApplicationDelta>
     pub fn HandleTDocStdApplicationDelta_destructor(self_: *mut HandleTDocStdApplicationDelta);
+    /// Clone Handle<TDocStd_ApplicationDelta> (increments reference count)
+    pub fn HandleTDocStdApplicationDelta_clone(
+        self_: *const HandleTDocStdApplicationDelta,
+    ) -> crate::OcctResult<*mut HandleTDocStdApplicationDelta>;
     /// Dereference Handle to get *const TDocStd_ApplicationDelta
     pub fn HandleTDocStdApplicationDelta_get(
         handle: *const HandleTDocStdApplicationDelta,
@@ -13866,6 +14106,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDocStdCompoundDelta>;
     /// Destroy Handle<TDocStd_CompoundDelta>
     pub fn HandleTDocStdCompoundDelta_destructor(self_: *mut HandleTDocStdCompoundDelta);
+    /// Clone Handle<TDocStd_CompoundDelta> (increments reference count)
+    pub fn HandleTDocStdCompoundDelta_clone(
+        self_: *const HandleTDocStdCompoundDelta,
+    ) -> crate::OcctResult<*mut HandleTDocStdCompoundDelta>;
     /// Dereference Handle to get *const TDocStd_CompoundDelta
     pub fn HandleTDocStdCompoundDelta_get(
         handle: *const HandleTDocStdCompoundDelta,
@@ -14178,6 +14422,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDocStdDocument>;
     /// Destroy Handle<TDocStd_Document>
     pub fn HandleTDocStdDocument_destructor(self_: *mut HandleTDocStdDocument);
+    /// Clone Handle<TDocStd_Document> (increments reference count)
+    pub fn HandleTDocStdDocument_clone(
+        self_: *const HandleTDocStdDocument,
+    ) -> crate::OcctResult<*mut HandleTDocStdDocument>;
     /// Dereference Handle to get *const TDocStd_Document
     pub fn HandleTDocStdDocument_get(
         handle: *const HandleTDocStdDocument,
@@ -14589,6 +14837,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDocStdModified>;
     /// Destroy Handle<TDocStd_Modified>
     pub fn HandleTDocStdModified_destructor(self_: *mut HandleTDocStdModified);
+    /// Clone Handle<TDocStd_Modified> (increments reference count)
+    pub fn HandleTDocStdModified_clone(
+        self_: *const HandleTDocStdModified,
+    ) -> crate::OcctResult<*mut HandleTDocStdModified>;
     /// Dereference Handle to get *const TDocStd_Modified
     pub fn HandleTDocStdModified_get(
         handle: *const HandleTDocStdModified,
@@ -14903,6 +15155,10 @@ extern "C" {
     pub fn HandleTDocStdMultiTransactionManager_destructor(
         self_: *mut HandleTDocStdMultiTransactionManager,
     );
+    /// Clone Handle<TDocStd_MultiTransactionManager> (increments reference count)
+    pub fn HandleTDocStdMultiTransactionManager_clone(
+        self_: *const HandleTDocStdMultiTransactionManager,
+    ) -> crate::OcctResult<*mut HandleTDocStdMultiTransactionManager>;
     /// Dereference Handle to get *const TDocStd_MultiTransactionManager
     pub fn HandleTDocStdMultiTransactionManager_get(
         handle: *const HandleTDocStdMultiTransactionManager,
@@ -15032,6 +15288,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDocStdOwner>;
     /// Destroy Handle<TDocStd_Owner>
     pub fn HandleTDocStdOwner_destructor(self_: *mut HandleTDocStdOwner);
+    /// Clone Handle<TDocStd_Owner> (increments reference count)
+    pub fn HandleTDocStdOwner_clone(
+        self_: *const HandleTDocStdOwner,
+    ) -> crate::OcctResult<*mut HandleTDocStdOwner>;
     /// Dereference Handle to get *const TDocStd_Owner
     pub fn HandleTDocStdOwner_get(
         handle: *const HandleTDocStdOwner,
@@ -15348,6 +15608,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDocStdXLink>;
     /// Destroy Handle<TDocStd_XLink>
     pub fn HandleTDocStdXLink_destructor(self_: *mut HandleTDocStdXLink);
+    /// Clone Handle<TDocStd_XLink> (increments reference count)
+    pub fn HandleTDocStdXLink_clone(
+        self_: *const HandleTDocStdXLink,
+    ) -> crate::OcctResult<*mut HandleTDocStdXLink>;
     /// Dereference Handle to get *const TDocStd_XLink
     pub fn HandleTDocStdXLink_get(
         handle: *const HandleTDocStdXLink,
@@ -15602,6 +15866,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDocStdXLinkRoot>;
     /// Destroy Handle<TDocStd_XLinkRoot>
     pub fn HandleTDocStdXLinkRoot_destructor(self_: *mut HandleTDocStdXLinkRoot);
+    /// Clone Handle<TDocStd_XLinkRoot> (increments reference count)
+    pub fn HandleTDocStdXLinkRoot_clone(
+        self_: *const HandleTDocStdXLinkRoot,
+    ) -> crate::OcctResult<*mut HandleTDocStdXLinkRoot>;
     /// Dereference Handle to get *const TDocStd_XLinkRoot
     pub fn HandleTDocStdXLinkRoot_get(
         handle: *const HandleTDocStdXLinkRoot,
@@ -15871,6 +16139,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TFunction_Driver>
     pub fn HandleTFunctionDriver_destructor(self_: *mut HandleTFunctionDriver);
+    /// Clone Handle<TFunction_Driver> (increments reference count)
+    pub fn HandleTFunctionDriver_clone(
+        self_: *const HandleTFunctionDriver,
+    ) -> crate::OcctResult<*mut HandleTFunctionDriver>;
     /// Dereference Handle to get *const TFunction_Driver
     pub fn HandleTFunctionDriver_get(
         handle: *const HandleTFunctionDriver,
@@ -15977,6 +16249,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTFunctionDriverTable>;
     /// Destroy Handle<TFunction_DriverTable>
     pub fn HandleTFunctionDriverTable_destructor(self_: *mut HandleTFunctionDriverTable);
+    /// Clone Handle<TFunction_DriverTable> (increments reference count)
+    pub fn HandleTFunctionDriverTable_clone(
+        self_: *const HandleTFunctionDriverTable,
+    ) -> crate::OcctResult<*mut HandleTFunctionDriverTable>;
     /// Dereference Handle to get *const TFunction_DriverTable
     pub fn HandleTFunctionDriverTable_get(
         handle: *const HandleTFunctionDriverTable,
@@ -16113,6 +16389,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTFunctionFunction>;
     /// Destroy Handle<TFunction_Function>
     pub fn HandleTFunctionFunction_destructor(self_: *mut HandleTFunctionFunction);
+    /// Clone Handle<TFunction_Function> (increments reference count)
+    pub fn HandleTFunctionFunction_clone(
+        self_: *const HandleTFunctionFunction,
+    ) -> crate::OcctResult<*mut HandleTFunctionFunction>;
     /// Dereference Handle to get *const TFunction_Function
     pub fn HandleTFunctionFunction_get(
         handle: *const HandleTFunctionFunction,
@@ -16430,6 +16710,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTFunctionGraphNode>;
     /// Destroy Handle<TFunction_GraphNode>
     pub fn HandleTFunctionGraphNode_destructor(self_: *mut HandleTFunctionGraphNode);
+    /// Clone Handle<TFunction_GraphNode> (increments reference count)
+    pub fn HandleTFunctionGraphNode_clone(
+        self_: *const HandleTFunctionGraphNode,
+    ) -> crate::OcctResult<*mut HandleTFunctionGraphNode>;
     /// Dereference Handle to get *const TFunction_GraphNode
     pub fn HandleTFunctionGraphNode_get(
         handle: *const HandleTFunctionGraphNode,
@@ -16676,6 +16960,10 @@ extern "C" {
     pub fn HandleTFunctionHArray1OfDataMapOfGUIDDriver_destructor(
         self_: *mut HandleTFunctionHArray1OfDataMapOfGUIDDriver,
     );
+    /// Clone Handle<TFunction_HArray1OfDataMapOfGUIDDriver> (increments reference count)
+    pub fn HandleTFunctionHArray1OfDataMapOfGUIDDriver_clone(
+        self_: *const HandleTFunctionHArray1OfDataMapOfGUIDDriver,
+    ) -> crate::OcctResult<*mut HandleTFunctionHArray1OfDataMapOfGUIDDriver>;
     /// Dereference Handle to get *const TFunction_HArray1OfDataMapOfGUIDDriver
     pub fn HandleTFunctionHArray1OfDataMapOfGUIDDriver_get(
         handle: *const HandleTFunctionHArray1OfDataMapOfGUIDDriver,
@@ -16958,6 +17246,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTFunctionLogbook>;
     /// Destroy Handle<TFunction_Logbook>
     pub fn HandleTFunctionLogbook_destructor(self_: *mut HandleTFunctionLogbook);
+    /// Clone Handle<TFunction_Logbook> (increments reference count)
+    pub fn HandleTFunctionLogbook_clone(
+        self_: *const HandleTFunctionLogbook,
+    ) -> crate::OcctResult<*mut HandleTFunctionLogbook>;
     /// Dereference Handle to get *const TFunction_Logbook
     pub fn HandleTFunctionLogbook_get(
         handle: *const HandleTFunctionLogbook,
@@ -17272,6 +17564,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTFunctionScope>;
     /// Destroy Handle<TFunction_Scope>
     pub fn HandleTFunctionScope_destructor(self_: *mut HandleTFunctionScope);
+    /// Clone Handle<TFunction_Scope> (increments reference count)
+    pub fn HandleTFunctionScope_clone(
+        self_: *const HandleTFunctionScope,
+    ) -> crate::OcctResult<*mut HandleTFunctionScope>;
     /// Dereference Handle to get *const TFunction_Scope
     pub fn HandleTFunctionScope_get(
         handle: *const HandleTFunctionScope,

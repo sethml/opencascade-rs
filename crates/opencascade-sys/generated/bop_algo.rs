@@ -360,6 +360,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUserBreak {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUserBreak {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUserBreak_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertUserBreak {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUserBreak
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUserBreak {
@@ -609,6 +615,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBOPNotAllowed {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBOPNotAllowed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotAllowed_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertBOPNotAllowed {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBOPNotAllowed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBOPNotAllowed {
@@ -849,6 +861,12 @@ pub use crate::ffi_types::HandleBOPAlgoAlertBOPNotSet;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBOPNotSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotSet_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBOPNotSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotSet_clone(ptr))
     }
 }
 
@@ -1098,6 +1116,12 @@ pub use crate::ffi_types::HandleBOPAlgoAlertBuilderFailed;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBuilderFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuilderFailed_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBuilderFailed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuilderFailed_clone(ptr))
     }
 }
 
@@ -1352,6 +1376,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertIntersectionFailed {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertIntersectionFailed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionFailed_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertIntersectionFailed {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertIntersectionFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertIntersectionFailed {
@@ -1601,6 +1631,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertMultipleArguments {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertMultipleArguments {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultipleArguments_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertMultipleArguments {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertMultipleArguments
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertMultipleArguments {
@@ -1837,6 +1873,12 @@ pub use crate::ffi_types::HandleBOPAlgoAlertNoFiller;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNoFiller {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFiller_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNoFiller {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFiller_clone(ptr))
     }
 }
 
@@ -2091,6 +2133,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNullInputShapes {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNullInputShapes {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNullInputShapes_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertNullInputShapes {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertNullInputShapes
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNullInputShapes {
@@ -2331,6 +2379,12 @@ pub use crate::ffi_types::HandleBOPAlgoAlertPostTreatFF;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertPostTreatFF {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertPostTreatFF_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertPostTreatFF {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertPostTreatFF_clone(ptr))
     }
 }
 
@@ -2585,6 +2639,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertSolidBuilderFailed {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertSolidBuilderFailed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderFailed_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertSolidBuilderFailed {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertSolidBuilderFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertSolidBuilderFailed {
@@ -2831,6 +2891,12 @@ pub use crate::ffi_types::HandleBOPAlgoAlertTooFewArguments;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertTooFewArguments {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooFewArguments_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertTooFewArguments {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooFewArguments_clone(ptr))
     }
 }
 
@@ -3126,6 +3192,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBadPositioning {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBadPositioning {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBadPositioning_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertBadPositioning {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBadPositioning
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBadPositioning {
@@ -3418,6 +3490,12 @@ pub use crate::ffi_types::HandleBOPAlgoAlertEmptyShape;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertEmptyShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertEmptyShape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertEmptyShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertEmptyShape_clone(ptr))
     }
 }
 
@@ -3728,6 +3806,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNotSplittableEdge {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNotSplittableEdge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNotSplittableEdge_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertNotSplittableEdge {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertNotSplittableEdge
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNotSplittableEdge {
@@ -4012,6 +4096,14 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForEdgesFailed 
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_clone(ptr),
+        )
+    }
+}
+
 impl HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertRemovalOfIBForEdgesFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemovalOfIBForEdgesFailed {
@@ -4291,6 +4383,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForFacesFailed;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_clone(ptr),
+        )
     }
 }
 
@@ -4579,6 +4679,14 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_clone(ptr),
+        )
+    }
+}
+
 impl HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertRemovalOfIBForMDimShapes
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemovalOfIBForMDimShapes {
@@ -4856,6 +4964,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_clone(ptr),
+        )
     }
 }
 
@@ -5154,6 +5270,14 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertSelfInterferingShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertSelfInterferingShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertSelfInterferingShape_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleBOPAlgoAlertSelfInterferingShape {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertSelfInterferingShape
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertSelfInterferingShape {
@@ -5446,6 +5570,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertShellSplitterFailed;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertShellSplitterFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertShellSplitterFailed_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertShellSplitterFailed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertShellSplitterFailed_clone(
+            ptr,
+        ))
     }
 }
 
@@ -5748,6 +5880,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertTooSmallEdge {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertTooSmallEdge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooSmallEdge_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertTooSmallEdge {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertTooSmallEdge
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertTooSmallEdge {
@@ -6012,6 +6150,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_clone(ptr),
+        )
     }
 }
 
@@ -6312,6 +6458,14 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBuildingPCurveFailed {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBuildingPCurveFailed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuildingPCurveFailed_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleBOPAlgoAlertBuildingPCurveFailed {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBuildingPCurveFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBuildingPCurveFailed {
@@ -6596,6 +6750,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertAcquiredSelfIntersection;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertAcquiredSelfIntersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertAcquiredSelfIntersection_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertAcquiredSelfIntersection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertAcquiredSelfIntersection_clone(ptr),
+        )
     }
 }
 
@@ -6898,6 +7060,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnsupportedType {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnsupportedType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnsupportedType_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertUnsupportedType {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnsupportedType
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnsupportedType {
@@ -7153,6 +7321,12 @@ pub use crate::ffi_types::HandleBOPAlgoAlertNoFacesToRemove;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNoFacesToRemove {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFacesToRemove_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNoFacesToRemove {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFacesToRemove_clone(ptr))
     }
 }
 
@@ -7434,6 +7608,14 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToRemoveTheFeature {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToRemoveTheFeature {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRemoveTheFeature_clone(ptr),
+        )
+    }
+}
+
 impl HandleBOPAlgoAlertUnableToRemoveTheFeature {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToRemoveTheFeature
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToRemoveTheFeature {
@@ -7687,6 +7869,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertRemoveFeaturesFailed;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemoveFeaturesFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemoveFeaturesFailed_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemoveFeaturesFailed {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemoveFeaturesFailed_clone(
+            ptr,
+        ))
     }
 }
 
@@ -7965,6 +8155,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertSolidBuilderUnusedFaces;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertSolidBuilderUnusedFaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderUnusedFaces_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertSolidBuilderUnusedFaces {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderUnusedFaces_clone(ptr),
+        )
     }
 }
 
@@ -8255,6 +8453,14 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertFaceBuilderUnusedEdges {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertFaceBuilderUnusedEdges {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertFaceBuilderUnusedEdges_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleBOPAlgoAlertFaceBuilderUnusedEdges {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertFaceBuilderUnusedEdges
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertFaceBuilderUnusedEdges {
@@ -8537,6 +8743,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertUnableToOrientTheShape;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToOrientTheShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToOrientTheShape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToOrientTheShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToOrientTheShape_clone(
+            ptr,
+        ))
     }
 }
 
@@ -8835,6 +9049,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnknownShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnknownShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnknownShape_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertUnknownShape {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnknownShape
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnknownShape {
@@ -9090,6 +9310,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertNoPeriodicityRequired;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNoPeriodicityRequired {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoPeriodicityRequired_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNoPeriodicityRequired {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoPeriodicityRequired_clone(
+            ptr,
+        ))
     }
 }
 
@@ -9376,6 +9604,12 @@ pub use crate::ffi_types::HandleBOPAlgoAlertUnableToTrim;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToTrim {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToTrim_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToTrim {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToTrim_clone(ptr))
     }
 }
 
@@ -9673,6 +9907,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertUnableToMakeIdentical;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToMakeIdentical {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeIdentical_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToMakeIdentical {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeIdentical_clone(
+            ptr,
+        ))
     }
 }
 
@@ -9975,6 +10217,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToRepeat {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToRepeat {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRepeat_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertUnableToRepeat {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToRepeat
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToRepeat {
@@ -10223,6 +10471,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertMultiDimensionalArguments;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertMultiDimensionalArguments {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultiDimensionalArguments_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertMultiDimensionalArguments {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultiDimensionalArguments_clone(ptr),
+        )
     }
 }
 
@@ -10509,6 +10765,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertUnableToMakePeriodic;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToMakePeriodic {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakePeriodic_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToMakePeriodic {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakePeriodic_clone(
+            ptr,
+        ))
     }
 }
 
@@ -10804,6 +11068,12 @@ pub use crate::ffi_types::HandleBOPAlgoAlertUnableToGlue;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToGlue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToGlue_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToGlue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToGlue_clone(ptr))
     }
 }
 
@@ -11106,6 +11376,12 @@ unsafe impl crate::CppDeletable for HandleBOPAlgoAlertShapeIsNotPeriodic {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertShapeIsNotPeriodic {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertShapeIsNotPeriodic_clone(ptr))
+    }
+}
+
 impl HandleBOPAlgoAlertShapeIsNotPeriodic {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertShapeIsNotPeriodic
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertShapeIsNotPeriodic {
@@ -11376,6 +11652,14 @@ pub use crate::ffi_types::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace;
 unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_clone(ptr),
+        )
     }
 }
 

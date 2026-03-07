@@ -812,6 +812,12 @@ unsafe impl crate::CppDeletable for HandleTopToolsHArray1OfListOfShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopToolsHArray1OfListOfShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfListOfShape_clone(ptr))
+    }
+}
+
 impl HandleTopToolsHArray1OfListOfShape {
     /// Dereference this Handle to access the underlying TopTools_HArray1OfListOfShape
     pub fn get(&self) -> &crate::ffi_types::TopTools_HArray1OfListOfShape {
@@ -1076,6 +1082,12 @@ unsafe impl crate::CppDeletable for HandleTopToolsHArray1OfShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopToolsHArray1OfShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfShape_clone(ptr))
+    }
+}
+
 impl HandleTopToolsHArray1OfShape {
     /// Dereference this Handle to access the underlying TopTools_HArray1OfShape
     pub fn get(&self) -> &crate::ffi_types::TopTools_HArray1OfShape {
@@ -1323,6 +1335,12 @@ pub use crate::ffi_types::HandleTopToolsHArray2OfShape;
 unsafe impl crate::CppDeletable for HandleTopToolsHArray2OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::HandleTopToolsHArray2OfShape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopToolsHArray2OfShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray2OfShape_clone(ptr))
     }
 }
 
@@ -1600,6 +1618,12 @@ pub use crate::ffi_types::HandleTopToolsHSequenceOfShape;
 unsafe impl crate::CppDeletable for HandleTopToolsHSequenceOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::HandleTopToolsHSequenceOfShape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopToolsHSequenceOfShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHSequenceOfShape_clone(ptr))
     }
 }
 

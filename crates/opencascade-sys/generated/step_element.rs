@@ -546,6 +546,16 @@ unsafe impl crate::CppDeletable for HandleStepElementAnalysisItemWithinRepresent
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementAnalysisItemWithinRepresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementAnalysisItemWithinRepresentation_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepElementAnalysisItemWithinRepresentation {
     /// Dereference this Handle to access the underlying StepElement_AnalysisItemWithinRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepElement_AnalysisItemWithinRepresentation {
@@ -826,6 +836,14 @@ unsafe impl crate::CppDeletable for HandleStepElementCurve3dElementDescriptor {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementCurve3dElementDescriptor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementCurve3dElementDescriptor_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepElementCurve3dElementDescriptor {
     /// Dereference this Handle to access the underlying StepElement_Curve3dElementDescriptor
     pub fn get(&self) -> &crate::ffi_types::StepElement_Curve3dElementDescriptor {
@@ -1068,6 +1086,14 @@ pub use crate::ffi_types::HandleStepElementCurveElementEndReleasePacket;
 unsafe impl crate::CppDeletable for HandleStepElementCurveElementEndReleasePacket {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementEndReleasePacket_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementCurveElementEndReleasePacket {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementEndReleasePacket_clone(ptr),
+        )
     }
 }
 
@@ -1769,6 +1795,14 @@ pub use crate::ffi_types::HandleStepElementCurveElementFreedomMember;
 unsafe impl crate::CppDeletable for HandleStepElementCurveElementFreedomMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementFreedomMember_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementCurveElementFreedomMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementFreedomMember_clone(ptr),
+        )
     }
 }
 
@@ -2491,6 +2525,14 @@ unsafe impl crate::CppDeletable for HandleStepElementCurveElementPurposeMember {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementCurveElementPurposeMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementPurposeMember_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepElementCurveElementPurposeMember {
     /// Dereference this Handle to access the underlying StepElement_CurveElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_CurveElementPurposeMember {
@@ -2756,6 +2798,14 @@ pub use crate::ffi_types::HandleStepElementCurveElementSectionDefinition;
 unsafe impl crate::CppDeletable for HandleStepElementCurveElementSectionDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDefinition_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementCurveElementSectionDefinition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDefinition_clone(ptr),
+        )
     }
 }
 
@@ -3215,6 +3265,12 @@ pub use crate::ffi_types::HandleStepElementCurveElementSectionDerivedDefinitions
 unsafe impl crate::CppDeletable for HandleStepElementCurveElementSectionDerivedDefinitions {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDerivedDefinitions_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementCurveElementSectionDerivedDefinitions {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDerivedDefinitions_clone(ptr))
     }
 }
 
@@ -4098,6 +4154,14 @@ unsafe impl crate::CppDeletable for HandleStepElementElementAspectMember {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementElementAspectMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementElementAspectMember_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepElementElementAspectMember {
     /// Dereference this Handle to access the underlying StepElement_ElementAspectMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_ElementAspectMember {
@@ -4380,6 +4444,14 @@ pub use crate::ffi_types::HandleStepElementElementDescriptor;
 unsafe impl crate::CppDeletable for HandleStepElementElementDescriptor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementElementDescriptor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_clone(
+            ptr,
+        ))
     }
 }
 
@@ -4734,6 +4806,12 @@ unsafe impl crate::CppDeletable for HandleStepElementElementMaterial {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementElementMaterial {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementElementMaterial_clone(ptr))
+    }
+}
+
 impl HandleStepElementElementMaterial {
     /// Dereference this Handle to access the underlying StepElement_ElementMaterial
     pub fn get(&self) -> &crate::ffi_types::StepElement_ElementMaterial {
@@ -4954,6 +5032,12 @@ unsafe impl crate::CppDeletable for HandleStepElementHArray1OfCurveElementEndRel
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementHArray1OfCurveElementEndReleasePacket {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementEndReleasePacket_clone(ptr))
+    }
+}
+
 impl HandleStepElementHArray1OfCurveElementEndReleasePacket {
     /// Dereference this Handle to access the underlying StepElement_HArray1OfCurveElementEndReleasePacket
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfCurveElementEndReleasePacket {
@@ -5170,6 +5254,12 @@ unsafe impl crate::CppDeletable for HandleStepElementHArray1OfCurveElementSectio
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementHArray1OfCurveElementSectionDefinition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementSectionDefinition_clone(ptr))
+    }
+}
+
 impl HandleStepElementHArray1OfCurveElementSectionDefinition {
     /// Dereference this Handle to access the underlying StepElement_HArray1OfCurveElementSectionDefinition
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfCurveElementSectionDefinition {
@@ -5381,6 +5471,12 @@ pub use crate::ffi_types::HandleStepElementHArray1OfHSequenceOfCurveElementPurpo
 unsafe impl crate::CppDeletable for HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_clone(ptr))
     }
 }
 
@@ -5602,6 +5698,14 @@ unsafe impl crate::CppDeletable
     }
 }
 
+unsafe impl crate::CppCopyable
+    for HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_clone(ptr))
+    }
+}
+
 impl HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember {
     /// Dereference this Handle to access the underlying StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember
     pub fn get(
@@ -5820,6 +5924,16 @@ unsafe impl crate::CppDeletable for HandleStepElementHArray1OfMeasureOrUnspecifi
         crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfMeasureOrUnspecifiedValue_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementHArray1OfMeasureOrUnspecifiedValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfMeasureOrUnspecifiedValue_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -6078,6 +6192,14 @@ unsafe impl crate::CppDeletable for HandleStepElementHArray1OfSurfaceSection {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementHArray1OfSurfaceSection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfSurfaceSection_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepElementHArray1OfSurfaceSection {
     /// Dereference this Handle to access the underlying StepElement_HArray1OfSurfaceSection
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfSurfaceSection {
@@ -6330,6 +6452,14 @@ unsafe impl crate::CppDeletable for HandleStepElementHArray1OfVolumeElementPurpo
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementHArray1OfVolumeElementPurpose {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurpose_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepElementHArray1OfVolumeElementPurpose {
     /// Dereference this Handle to access the underlying StepElement_HArray1OfVolumeElementPurpose
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfVolumeElementPurpose {
@@ -6555,6 +6685,16 @@ unsafe impl crate::CppDeletable for HandleStepElementHArray1OfVolumeElementPurpo
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementHArray1OfVolumeElementPurposeMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurposeMember_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepElementHArray1OfVolumeElementPurposeMember {
     /// Dereference this Handle to access the underlying StepElement_HArray1OfVolumeElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfVolumeElementPurposeMember {
@@ -6757,6 +6897,16 @@ unsafe impl crate::CppDeletable for HandleStepElementHArray2OfCurveElementPurpos
         crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfCurveElementPurposeMember_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementHArray2OfCurveElementPurposeMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfCurveElementPurposeMember_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -6983,6 +7133,14 @@ unsafe impl crate::CppDeletable for HandleStepElementHArray2OfSurfaceElementPurp
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementHArray2OfSurfaceElementPurpose {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurpose_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepElementHArray2OfSurfaceElementPurpose {
     /// Dereference this Handle to access the underlying StepElement_HArray2OfSurfaceElementPurpose
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray2OfSurfaceElementPurpose {
@@ -7194,6 +7352,16 @@ unsafe impl crate::CppDeletable for HandleStepElementHArray2OfSurfaceElementPurp
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementHArray2OfSurfaceElementPurposeMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurposeMember_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepElementHArray2OfSurfaceElementPurposeMember {
     /// Dereference this Handle to access the underlying StepElement_HArray2OfSurfaceElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray2OfSurfaceElementPurposeMember {
@@ -7399,6 +7567,16 @@ unsafe impl crate::CppDeletable for HandleStepElementHSequenceOfCurveElementPurp
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfCurveElementPurposeMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementPurposeMember_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepElementHSequenceOfCurveElementPurposeMember {
     /// Dereference this Handle to access the underlying StepElement_HSequenceOfCurveElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_HSequenceOfCurveElementPurposeMember {
@@ -7601,6 +7779,12 @@ pub use crate::ffi_types::HandleStepElementHSequenceOfCurveElementSectionDefinit
 unsafe impl crate::CppDeletable for HandleStepElementHSequenceOfCurveElementSectionDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementSectionDefinition_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfCurveElementSectionDefinition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementSectionDefinition_clone(ptr))
     }
 }
 
@@ -7840,6 +8024,14 @@ unsafe impl crate::CppDeletable for HandleStepElementHSequenceOfElementMaterial 
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfElementMaterial {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfElementMaterial_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepElementHSequenceOfElementMaterial {
     /// Dereference this Handle to access the underlying StepElement_HSequenceOfElementMaterial
     pub fn get(&self) -> &crate::ffi_types::StepElement_HSequenceOfElementMaterial {
@@ -8049,6 +8241,12 @@ pub use crate::ffi_types::HandleStepElementHSequenceOfSurfaceElementPurposeMembe
 unsafe impl crate::CppDeletable for HandleStepElementHSequenceOfSurfaceElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfSurfaceElementPurposeMember_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfSurfaceElementPurposeMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfSurfaceElementPurposeMember_clone(ptr))
     }
 }
 
@@ -8685,6 +8883,14 @@ unsafe impl crate::CppDeletable for HandleStepElementMeasureOrUnspecifiedValueMe
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementMeasureOrUnspecifiedValueMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementMeasureOrUnspecifiedValueMember_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepElementMeasureOrUnspecifiedValueMember {
     /// Dereference this Handle to access the underlying StepElement_MeasureOrUnspecifiedValueMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_MeasureOrUnspecifiedValueMember {
@@ -9007,6 +9213,14 @@ unsafe impl crate::CppDeletable for HandleStepElementSurface3dElementDescriptor 
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementSurface3dElementDescriptor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurface3dElementDescriptor_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepElementSurface3dElementDescriptor {
     /// Dereference this Handle to access the underlying StepElement_Surface3dElementDescriptor
     pub fn get(&self) -> &crate::ffi_types::StepElement_Surface3dElementDescriptor {
@@ -9305,6 +9519,14 @@ pub use crate::ffi_types::HandleStepElementSurfaceElementProperty;
 unsafe impl crate::CppDeletable for HandleStepElementSurfaceElementProperty {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementProperty_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementSurfaceElementProperty {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementProperty_clone(ptr),
+        )
     }
 }
 
@@ -9999,6 +10221,14 @@ unsafe impl crate::CppDeletable for HandleStepElementSurfaceElementPurposeMember
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementSurfaceElementPurposeMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementPurposeMember_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepElementSurfaceElementPurposeMember {
     /// Dereference this Handle to access the underlying StepElement_SurfaceElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceElementPurposeMember {
@@ -10308,6 +10538,12 @@ unsafe impl crate::CppDeletable for HandleStepElementSurfaceSection {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementSurfaceSection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSection_clone(ptr))
+    }
+}
+
 impl HandleStepElementSurfaceSection {
     /// Dereference this Handle to access the underlying StepElement_SurfaceSection
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceSection {
@@ -10516,6 +10752,14 @@ pub use crate::ffi_types::HandleStepElementSurfaceSectionField;
 unsafe impl crate::CppDeletable for HandleStepElementSurfaceSectionField {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionField_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementSurfaceSectionField {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionField_clone(
+            ptr,
+        ))
     }
 }
 
@@ -10793,6 +11037,14 @@ unsafe impl crate::CppDeletable for HandleStepElementSurfaceSectionFieldConstant
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementSurfaceSectionFieldConstant {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldConstant_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepElementSurfaceSectionFieldConstant {
     /// Dereference this Handle to access the underlying StepElement_SurfaceSectionFieldConstant
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceSectionFieldConstant {
@@ -11064,6 +11316,14 @@ pub use crate::ffi_types::HandleStepElementSurfaceSectionFieldVarying;
 unsafe impl crate::CppDeletable for HandleStepElementSurfaceSectionFieldVarying {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldVarying_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementSurfaceSectionFieldVarying {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldVarying_clone(ptr),
+        )
     }
 }
 
@@ -11430,6 +11690,14 @@ unsafe impl crate::CppDeletable for HandleStepElementUniformSurfaceSection {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepElementUniformSurfaceSection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementUniformSurfaceSection_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepElementUniformSurfaceSection {
     /// Dereference this Handle to access the underlying StepElement_UniformSurfaceSection
     pub fn get(&self) -> &crate::ffi_types::StepElement_UniformSurfaceSection {
@@ -11741,6 +12009,14 @@ pub use crate::ffi_types::HandleStepElementVolume3dElementDescriptor;
 unsafe impl crate::CppDeletable for HandleStepElementVolume3dElementDescriptor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementVolume3dElementDescriptor_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementVolume3dElementDescriptor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementVolume3dElementDescriptor_clone(ptr),
+        )
     }
 }
 
@@ -12451,6 +12727,14 @@ pub use crate::ffi_types::HandleStepElementVolumeElementPurposeMember;
 unsafe impl crate::CppDeletable for HandleStepElementVolumeElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepElementVolumeElementPurposeMember_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepElementVolumeElementPurposeMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepElementVolumeElementPurposeMember_clone(ptr),
+        )
     }
 }
 

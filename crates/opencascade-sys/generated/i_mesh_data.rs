@@ -299,6 +299,12 @@ unsafe impl crate::CppDeletable for HandleIMeshDataCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIMeshDataCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataCurve_clone(ptr))
+    }
+}
+
 impl HandleIMeshDataCurve {
     /// Dereference this Handle to access the underlying IMeshData_Curve
     pub fn get(&self) -> &crate::ffi_types::IMeshData_Curve {
@@ -751,6 +757,12 @@ unsafe impl crate::CppDeletable for HandleIMeshDataEdge {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIMeshDataEdge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataEdge_clone(ptr))
+    }
+}
+
 impl HandleIMeshDataEdge {
     /// Dereference this Handle to access the underlying IMeshData_Edge
     pub fn get(&self) -> &crate::ffi_types::IMeshData_Edge {
@@ -1164,6 +1176,12 @@ unsafe impl crate::CppDeletable for HandleIMeshDataFace {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIMeshDataFace {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataFace_clone(ptr))
+    }
+}
+
 impl HandleIMeshDataFace {
     /// Dereference this Handle to access the underlying IMeshData_Face
     pub fn get(&self) -> &crate::ffi_types::IMeshData_Face {
@@ -1477,6 +1495,12 @@ pub use crate::ffi_types::HandleIMeshDataModel;
 unsafe impl crate::CppDeletable for HandleIMeshDataModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleIMeshDataModel_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIMeshDataModel {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataModel_clone(ptr))
     }
 }
 
@@ -1798,6 +1822,12 @@ unsafe impl crate::CppDeletable for HandleIMeshDataPCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIMeshDataPCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataPCurve_clone(ptr))
+    }
+}
+
 impl HandleIMeshDataPCurve {
     /// Dereference this Handle to access the underlying IMeshData_PCurve
     pub fn get(&self) -> &crate::ffi_types::IMeshData_PCurve {
@@ -2030,6 +2060,12 @@ unsafe impl crate::CppDeletable for HandleIMeshDataParametersList {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIMeshDataParametersList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataParametersList_clone(ptr))
+    }
+}
+
 impl HandleIMeshDataParametersList {
     /// Dereference this Handle to access the underlying IMeshData_ParametersList
     pub fn get(&self) -> &crate::ffi_types::IMeshData_ParametersList {
@@ -2225,6 +2261,12 @@ pub use crate::ffi_types::HandleIMeshDataShape;
 unsafe impl crate::CppDeletable for HandleIMeshDataShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleIMeshDataShape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIMeshDataShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataShape_clone(ptr))
     }
 }
 
@@ -2612,6 +2654,12 @@ unsafe impl crate::CppDeletable for HandleIMeshDataTessellatedShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIMeshDataTessellatedShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataTessellatedShape_clone(ptr))
+    }
+}
+
 impl HandleIMeshDataTessellatedShape {
     /// Dereference this Handle to access the underlying IMeshData_TessellatedShape
     pub fn get(&self) -> &crate::ffi_types::IMeshData_TessellatedShape {
@@ -2955,6 +3003,12 @@ pub use crate::ffi_types::HandleIMeshDataWire;
 unsafe impl crate::CppDeletable for HandleIMeshDataWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMesh::HandleIMeshDataWire_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIMeshDataWire {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataWire_clone(ptr))
     }
 }
 

@@ -1806,6 +1806,14 @@ unsafe impl crate::CppDeletable for HandleAspectAspectFillAreaDefinitionError {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAspectAspectFillAreaDefinitionError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleAspectAspectFillAreaDefinitionError_clone(ptr),
+        )
+    }
+}
+
 impl HandleAspectAspectFillAreaDefinitionError {
     /// Dereference this Handle to access the underlying Aspect_AspectFillAreaDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Aspect_AspectFillAreaDefinitionError {
@@ -2197,6 +2205,14 @@ unsafe impl crate::CppDeletable for HandleAspectAspectLineDefinitionError {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAspectAspectLineDefinitionError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleAspectAspectLineDefinitionError_clone(ptr),
+        )
+    }
+}
+
 impl HandleAspectAspectLineDefinitionError {
     /// Dereference this Handle to access the underlying Aspect_AspectLineDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Aspect_AspectLineDefinitionError {
@@ -2575,6 +2591,14 @@ pub use crate::ffi_types::HandleAspectAspectMarkerDefinitionError;
 unsafe impl crate::CppDeletable for HandleAspectAspectMarkerDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleAspectAspectMarkerDefinitionError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAspectAspectMarkerDefinitionError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleAspectAspectMarkerDefinitionError_clone(ptr),
+        )
     }
 }
 
@@ -3122,6 +3146,12 @@ unsafe impl crate::CppDeletable for HandleAspectCircularGrid {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAspectCircularGrid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectCircularGrid_clone(ptr))
+    }
+}
+
 impl HandleAspectCircularGrid {
     /// Dereference this Handle to access the underlying Aspect_CircularGrid
     pub fn get(&self) -> &crate::ffi_types::Aspect_CircularGrid {
@@ -3407,6 +3437,12 @@ pub use crate::ffi_types::HandleAspectDisplayConnection;
 unsafe impl crate::CppDeletable for HandleAspectDisplayConnection {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleAspectDisplayConnection_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAspectDisplayConnection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectDisplayConnection_clone(ptr))
     }
 }
 
@@ -3777,6 +3813,14 @@ pub use crate::ffi_types::HandleAspectDisplayConnectionDefinitionError;
 unsafe impl crate::CppDeletable for HandleAspectDisplayConnectionDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleAspectDisplayConnectionDefinitionError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAspectDisplayConnectionDefinitionError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleAspectDisplayConnectionDefinitionError_clone(ptr),
+        )
     }
 }
 
@@ -4387,6 +4431,14 @@ unsafe impl crate::CppDeletable for HandleAspectGraphicDeviceDefinitionError {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAspectGraphicDeviceDefinitionError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKService::HandleAspectGraphicDeviceDefinitionError_clone(ptr),
+        )
+    }
+}
+
 impl HandleAspectGraphicDeviceDefinitionError {
     /// Dereference this Handle to access the underlying Aspect_GraphicDeviceDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Aspect_GraphicDeviceDefinitionError {
@@ -4782,6 +4834,12 @@ pub use crate::ffi_types::HandleAspectGrid;
 unsafe impl crate::CppDeletable for HandleAspectGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleAspectGrid_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAspectGrid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectGrid_clone(ptr))
     }
 }
 
@@ -5241,6 +5299,14 @@ pub use crate::ffi_types::HandleAspectIdentDefinitionError;
 unsafe impl crate::CppDeletable for HandleAspectIdentDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleAspectIdentDefinitionError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAspectIdentDefinitionError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectIdentDefinitionError_clone(
+            ptr,
+        ))
     }
 }
 
@@ -5803,6 +5869,12 @@ pub use crate::ffi_types::HandleAspectNeutralWindow;
 unsafe impl crate::CppDeletable for HandleAspectNeutralWindow {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleAspectNeutralWindow_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAspectNeutralWindow {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectNeutralWindow_clone(ptr))
     }
 }
 
@@ -6480,6 +6552,12 @@ unsafe impl crate::CppDeletable for HandleAspectOpenVRSession {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAspectOpenVRSession {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectOpenVRSession_clone(ptr))
+    }
+}
+
 impl HandleAspectOpenVRSession {
     /// Dereference this Handle to access the underlying Aspect_OpenVRSession
     pub fn get(&self) -> &crate::ffi_types::Aspect_OpenVRSession {
@@ -6986,6 +7064,12 @@ pub use crate::ffi_types::HandleAspectRectangularGrid;
 unsafe impl crate::CppDeletable for HandleAspectRectangularGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleAspectRectangularGrid_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAspectRectangularGrid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectRectangularGrid_clone(ptr))
     }
 }
 
@@ -7690,6 +7774,12 @@ unsafe impl crate::CppDeletable for HandleAspectVKeySet {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAspectVKeySet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectVKeySet_clone(ptr))
+    }
+}
+
 impl HandleAspectVKeySet {
     /// Dereference this Handle to access the underlying Aspect_VKeySet
     pub fn get(&self) -> &crate::ffi_types::Aspect_VKeySet {
@@ -8139,6 +8229,12 @@ unsafe impl crate::CppDeletable for HandleAspectWindow {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAspectWindow {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectWindow_clone(ptr))
+    }
+}
+
 impl HandleAspectWindow {
     /// Dereference this Handle to access the underlying Aspect_Window
     pub fn get(&self) -> &crate::ffi_types::Aspect_Window {
@@ -8540,6 +8636,14 @@ pub use crate::ffi_types::HandleAspectWindowDefinitionError;
 unsafe impl crate::CppDeletable for HandleAspectWindowDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleAspectWindowDefinitionError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAspectWindowDefinitionError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectWindowDefinitionError_clone(
+            ptr,
+        ))
     }
 }
 
@@ -8951,6 +9055,12 @@ pub use crate::ffi_types::HandleAspectWindowError;
 unsafe impl crate::CppDeletable for HandleAspectWindowError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleAspectWindowError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAspectWindowError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectWindowError_clone(ptr))
     }
 }
 
@@ -9764,6 +9874,12 @@ unsafe impl crate::CppDeletable for HandleAspectXRAction {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAspectXRAction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectXRAction_clone(ptr))
+    }
+}
+
 impl HandleAspectXRAction {
     /// Dereference this Handle to access the underlying Aspect_XRAction
     pub fn get(&self) -> &crate::ffi_types::Aspect_XRAction {
@@ -10005,6 +10121,12 @@ pub use crate::ffi_types::HandleAspectXRActionSet;
 unsafe impl crate::CppDeletable for HandleAspectXRActionSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleAspectXRActionSet_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAspectXRActionSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectXRActionSet_clone(ptr))
     }
 }
 
@@ -10716,6 +10838,12 @@ pub use crate::ffi_types::HandleAspectXRSession;
 unsafe impl crate::CppDeletable for HandleAspectXRSession {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKService::HandleAspectXRSession_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAspectXRSession {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKService::HandleAspectXRSession_clone(ptr))
     }
 }
 

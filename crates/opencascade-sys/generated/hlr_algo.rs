@@ -1126,6 +1126,12 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoEdgesBlock {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleHLRAlgoEdgesBlock {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_clone(ptr))
+    }
+}
+
 impl HandleHLRAlgoEdgesBlock {
     /// Dereference this Handle to access the underlying HLRAlgo_EdgesBlock
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_EdgesBlock {
@@ -1399,6 +1405,12 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPHDat {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPHDat {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_clone(ptr))
+    }
+}
+
 impl HandleHLRAlgoHArray1OfPHDat {
     /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPHDat
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_HArray1OfPHDat {
@@ -1652,6 +1664,12 @@ pub use crate::ffi_types::HandleHLRAlgoHArray1OfPINod;
 unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPINod {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPINod {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_clone(ptr))
     }
 }
 
@@ -1919,6 +1937,12 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPISeg {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPISeg {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_clone(ptr))
+    }
+}
+
 impl HandleHLRAlgoHArray1OfPISeg {
     /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPISeg
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_HArray1OfPISeg {
@@ -2180,6 +2204,12 @@ pub use crate::ffi_types::HandleHLRAlgoHArray1OfTData;
 unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfTData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfTData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_clone(ptr))
     }
 }
 
@@ -2805,6 +2835,12 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoPolyAlgo {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleHLRAlgoPolyAlgo {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_clone(ptr))
+    }
+}
+
 impl HandleHLRAlgoPolyAlgo {
     /// Dereference this Handle to access the underlying HLRAlgo_PolyAlgo
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyAlgo {
@@ -3099,6 +3135,12 @@ pub use crate::ffi_types::HandleHLRAlgoPolyData;
 unsafe impl crate::CppDeletable for HandleHLRAlgoPolyData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleHLRAlgoPolyData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_clone(ptr))
     }
 }
 
@@ -3633,6 +3675,12 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoPolyInternalData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleHLRAlgoPolyInternalData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_clone(ptr))
+    }
+}
+
 impl HandleHLRAlgoPolyInternalData {
     /// Dereference this Handle to access the underlying HLRAlgo_PolyInternalData
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyInternalData {
@@ -3846,6 +3894,12 @@ pub use crate::ffi_types::HandleHLRAlgoPolyInternalNode;
 unsafe impl crate::CppDeletable for HandleHLRAlgoPolyInternalNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleHLRAlgoPolyInternalNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_clone(ptr))
     }
 }
 
@@ -4152,6 +4206,12 @@ pub use crate::ffi_types::HandleHLRAlgoPolyShellData;
 unsafe impl crate::CppDeletable for HandleHLRAlgoPolyShellData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleHLRAlgoPolyShellData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_clone(ptr))
     }
 }
 
@@ -4655,6 +4715,12 @@ pub use crate::ffi_types::HandleHLRAlgoWiresBlock;
 unsafe impl crate::CppDeletable for HandleHLRAlgoWiresBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleHLRAlgoWiresBlock {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_clone(ptr))
     }
 }
 

@@ -338,6 +338,14 @@ unsafe impl crate::CppDeletable for HandleBinLDriversDocumentRetrievalDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinLDriversDocumentRetrievalDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKBinL::HandleBinLDriversDocumentRetrievalDriver_clone(ptr),
+        )
+    }
+}
+
 impl HandleBinLDriversDocumentRetrievalDriver {
     /// Dereference this Handle to access the underlying BinLDrivers_DocumentRetrievalDriver
     pub fn get(&self) -> &crate::ffi_types::BinLDrivers_DocumentRetrievalDriver {
@@ -930,6 +938,14 @@ pub use crate::ffi_types::HandleBinLDriversDocumentStorageDriver;
 unsafe impl crate::CppDeletable for HandleBinLDriversDocumentStorageDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBinL::HandleBinLDriversDocumentStorageDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBinLDriversDocumentStorageDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinLDriversDocumentStorageDriver_clone(
+            ptr,
+        ))
     }
 }
 

@@ -130,6 +130,22 @@ unsafe impl crate::CppDeletable for CelGProps {
     }
 }
 
+unsafe impl crate::CppCopyable for CelGProps {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::GProp_CelGProps_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for CelGProps {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl CelGProps {
     /// **Source:** `GProp_CelGProps.hxx`:37 - `GProp_CelGProps::GProp_CelGProps()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -217,15 +233,6 @@ impl CelGProps {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKG3d::GProp_CelGProps_as_GProp_GProps_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GProp_CelGProps_to_owned(self as *const Self),
             ))
         }
     }
@@ -389,6 +396,22 @@ pub use crate::ffi_types::GProp_GProps as GProps;
 unsafe impl crate::CppDeletable for GProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG3d::GProp_GProps_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for GProps {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::GProp_GProps_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for GProps {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -594,15 +617,6 @@ impl GProps {
             crate::ffi_extern_TKG3d::GProp_GProps_radius_of_gyration(self as *const Self, A)
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GProp_GProps_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -621,6 +635,22 @@ pub use crate::ffi_types::GProp_PEquation as PEquation;
 unsafe impl crate::CppDeletable for PEquation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG3d::GProp_PEquation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for PEquation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::GProp_PEquation_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for PEquation {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -772,15 +802,6 @@ impl PEquation {
             crate::ffi_extern_TKG3d::GProp_PEquation_box_(self as *const Self, P, V1, V2, V3)
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GProp_PEquation_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -812,6 +833,22 @@ pub use crate::ffi_types::GProp_PGProps as PGProps;
 unsafe impl crate::CppDeletable for PGProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG3d::GProp_PGProps_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for PGProps {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::GProp_PGProps_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for PGProps {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -1014,15 +1051,6 @@ impl PGProps {
         }
     }
 
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GProp_PGProps_to_owned(self as *const Self),
-            ))
-        }
-    }
-
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &GProps, Density: f64) {
         crate::check_void_result(unsafe {
@@ -1126,6 +1154,22 @@ pub use crate::ffi_types::GProp_PrincipalProps as PrincipalProps;
 unsafe impl crate::CppDeletable for PrincipalProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG3d::GProp_PrincipalProps_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for PrincipalProps {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::GProp_PrincipalProps_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for PrincipalProps {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -1295,15 +1339,6 @@ impl PrincipalProps {
             )
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GProp_PrincipalProps_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -1318,6 +1353,22 @@ pub use crate::ffi_types::GProp_SelGProps as SelGProps;
 unsafe impl crate::CppDeletable for SelGProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG3d::GProp_SelGProps_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for SelGProps {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::GProp_SelGProps_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for SelGProps {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -1508,15 +1559,6 @@ impl SelGProps {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKG3d::GProp_SelGProps_as_GProp_GProps_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GProp_SelGProps_to_owned(self as *const Self),
             ))
         }
     }
@@ -1899,6 +1941,12 @@ unsafe impl crate::CppDeletable for HandleGPropUndefinedAxis {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGPropUndefinedAxis {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::HandleGPropUndefinedAxis_clone(ptr))
+    }
+}
+
 impl HandleGPropUndefinedAxis {
     /// Dereference this Handle to access the underlying GProp_UndefinedAxis
     pub fn get(&self) -> &crate::ffi_types::GProp_UndefinedAxis {
@@ -1969,6 +2017,22 @@ pub use crate::ffi_types::GProp_VelGProps as VelGProps;
 unsafe impl crate::CppDeletable for VelGProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG3d::GProp_VelGProps_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for VelGProps {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::GProp_VelGProps_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for VelGProps {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -2159,15 +2223,6 @@ impl VelGProps {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKG3d::GProp_VelGProps_as_GProp_GProps_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GProp_VelGProps_to_owned(self as *const Self),
             ))
         }
     }

@@ -617,6 +617,12 @@ unsafe impl crate::CppDeletable for HandleUnitsDimensions {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleUnitsDimensions {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsDimensions_clone(ptr))
+    }
+}
+
 impl HandleUnitsDimensions {
     /// Dereference this Handle to access the underlying Units_Dimensions
     pub fn get(&self) -> &crate::ffi_types::Units_Dimensions {
@@ -1079,6 +1085,12 @@ pub use crate::ffi_types::HandleUnitsLexicon;
 unsafe impl crate::CppDeletable for HandleUnitsLexicon {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleUnitsLexicon_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleUnitsLexicon {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsLexicon_clone(ptr))
     }
 }
 
@@ -1766,6 +1778,12 @@ unsafe impl crate::CppDeletable for HandleUnitsNoSuchType {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleUnitsNoSuchType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsNoSuchType_clone(ptr))
+    }
+}
+
 impl HandleUnitsNoSuchType {
     /// Dereference this Handle to access the underlying Units_NoSuchType
     pub fn get(&self) -> &crate::ffi_types::Units_NoSuchType {
@@ -2154,6 +2172,12 @@ unsafe impl crate::CppDeletable for HandleUnitsNoSuchUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleUnitsNoSuchUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsNoSuchUnit_clone(ptr))
+    }
+}
+
 impl HandleUnitsNoSuchUnit {
     /// Dereference this Handle to access the underlying Units_NoSuchUnit
     pub fn get(&self) -> &crate::ffi_types::Units_NoSuchUnit {
@@ -2443,6 +2467,12 @@ unsafe impl crate::CppDeletable for HandleUnitsQuantitiesSequence {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleUnitsQuantitiesSequence {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsQuantitiesSequence_clone(ptr))
+    }
+}
+
 impl HandleUnitsQuantitiesSequence {
     /// Dereference this Handle to access the underlying Units_QuantitiesSequence
     pub fn get(&self) -> &crate::ffi_types::Units_QuantitiesSequence {
@@ -2689,6 +2719,12 @@ pub use crate::ffi_types::HandleUnitsQuantity;
 unsafe impl crate::CppDeletable for HandleUnitsQuantity {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleUnitsQuantity_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleUnitsQuantity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsQuantity_clone(ptr))
     }
 }
 
@@ -3194,6 +3230,12 @@ unsafe impl crate::CppDeletable for HandleUnitsShiftedToken {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleUnitsShiftedToken {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsShiftedToken_clone(ptr))
+    }
+}
+
 impl HandleUnitsShiftedToken {
     /// Dereference this Handle to access the underlying Units_ShiftedToken
     pub fn get(&self) -> &crate::ffi_types::Units_ShiftedToken {
@@ -3535,6 +3577,12 @@ pub use crate::ffi_types::HandleUnitsShiftedUnit;
 unsafe impl crate::CppDeletable for HandleUnitsShiftedUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleUnitsShiftedUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleUnitsShiftedUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsShiftedUnit_clone(ptr))
     }
 }
 
@@ -4164,6 +4212,12 @@ unsafe impl crate::CppDeletable for HandleUnitsToken {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleUnitsToken {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsToken_clone(ptr))
+    }
+}
+
 impl HandleUnitsToken {
     /// Dereference this Handle to access the underlying Units_Token
     pub fn get(&self) -> &crate::ffi_types::Units_Token {
@@ -4423,6 +4477,12 @@ pub use crate::ffi_types::HandleUnitsTokensSequence;
 unsafe impl crate::CppDeletable for HandleUnitsTokensSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleUnitsTokensSequence_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleUnitsTokensSequence {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsTokensSequence_clone(ptr))
     }
 }
 
@@ -4748,6 +4808,12 @@ pub use crate::ffi_types::HandleUnitsUnit;
 unsafe impl crate::CppDeletable for HandleUnitsUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleUnitsUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleUnitsUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnit_clone(ptr))
     }
 }
 
@@ -5165,6 +5231,12 @@ unsafe impl crate::CppDeletable for HandleUnitsUnitsDictionary {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleUnitsUnitsDictionary {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsDictionary_clone(ptr))
+    }
+}
+
 impl HandleUnitsUnitsDictionary {
     /// Dereference this Handle to access the underlying Units_UnitsDictionary
     pub fn get(&self) -> &crate::ffi_types::Units_UnitsDictionary {
@@ -5409,6 +5481,12 @@ pub use crate::ffi_types::HandleUnitsUnitsLexicon;
 unsafe impl crate::CppDeletable for HandleUnitsUnitsLexicon {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleUnitsUnitsLexicon_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleUnitsUnitsLexicon {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsLexicon_clone(ptr))
     }
 }
 
@@ -5664,6 +5742,12 @@ pub use crate::ffi_types::HandleUnitsUnitsSequence;
 unsafe impl crate::CppDeletable for HandleUnitsUnitsSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleUnitsUnitsSequence_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleUnitsUnitsSequence {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsSequence_clone(ptr))
     }
 }
 
@@ -6057,6 +6141,12 @@ pub use crate::ffi_types::HandleUnitsUnitsSystem;
 unsafe impl crate::CppDeletable for HandleUnitsUnitsSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleUnitsUnitsSystem_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleUnitsUnitsSystem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsSystem_clone(ptr))
     }
 }
 

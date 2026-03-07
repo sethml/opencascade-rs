@@ -131,42 +131,182 @@ typedef opencascade::handle<TColGeom2d_HArray1OfCurve> HandleTColGeom2dHArray1Of
 typedef opencascade::handle<TColGeom2d_HSequenceOfBoundedCurve> HandleTColGeom2dHSequenceOfBoundedCurve;
 typedef opencascade::handle<TColGeom2d_HSequenceOfCurve> HandleTColGeom2dHSequenceOfCurve;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleAdaptor2dCurve2d_destructor(HandleAdaptor2dCurve2d* self_) { delete self_; }
+extern "C" OcctResult<HandleAdaptor2dCurve2d*> HandleAdaptor2dCurve2d_clone(const HandleAdaptor2dCurve2d* self_) {
+    try { return {new HandleAdaptor2dCurve2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAdaptor2dLine2d_destructor(HandleAdaptor2dLine2d* self_) { delete self_; }
+extern "C" OcctResult<HandleAdaptor2dLine2d*> HandleAdaptor2dLine2d_clone(const HandleAdaptor2dLine2d* self_) {
+    try { return {new HandleAdaptor2dLine2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAdaptor2dOffsetCurve_destructor(HandleAdaptor2dOffsetCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleAdaptor2dOffsetCurve*> HandleAdaptor2dOffsetCurve_clone(const HandleAdaptor2dOffsetCurve* self_) {
+    try { return {new HandleAdaptor2dOffsetCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dAdaptorCurve_destructor(HandleGeom2dAdaptorCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dAdaptorCurve*> HandleGeom2dAdaptorCurve_clone(const HandleGeom2dAdaptorCurve* self_) {
+    try { return {new HandleGeom2dAdaptorCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dEvaluatorCurve_destructor(HandleGeom2dEvaluatorCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dEvaluatorCurve*> HandleGeom2dEvaluatorCurve_clone(const HandleGeom2dEvaluatorCurve* self_) {
+    try { return {new HandleGeom2dEvaluatorCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dEvaluatorOffsetCurve_destructor(HandleGeom2dEvaluatorOffsetCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dEvaluatorOffsetCurve*> HandleGeom2dEvaluatorOffsetCurve_clone(const HandleGeom2dEvaluatorOffsetCurve* self_) {
+    try { return {new HandleGeom2dEvaluatorOffsetCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dAxisPlacement_destructor(HandleGeom2dAxisPlacement* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dAxisPlacement*> HandleGeom2dAxisPlacement_clone(const HandleGeom2dAxisPlacement* self_) {
+    try { return {new HandleGeom2dAxisPlacement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dBSplineCurve_destructor(HandleGeom2dBSplineCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dBSplineCurve*> HandleGeom2dBSplineCurve_clone(const HandleGeom2dBSplineCurve* self_) {
+    try { return {new HandleGeom2dBSplineCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dBezierCurve_destructor(HandleGeom2dBezierCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dBezierCurve*> HandleGeom2dBezierCurve_clone(const HandleGeom2dBezierCurve* self_) {
+    try { return {new HandleGeom2dBezierCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dBoundedCurve_destructor(HandleGeom2dBoundedCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dBoundedCurve*> HandleGeom2dBoundedCurve_clone(const HandleGeom2dBoundedCurve* self_) {
+    try { return {new HandleGeom2dBoundedCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dCartesianPoint_destructor(HandleGeom2dCartesianPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dCartesianPoint*> HandleGeom2dCartesianPoint_clone(const HandleGeom2dCartesianPoint* self_) {
+    try { return {new HandleGeom2dCartesianPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dCircle_destructor(HandleGeom2dCircle* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dCircle*> HandleGeom2dCircle_clone(const HandleGeom2dCircle* self_) {
+    try { return {new HandleGeom2dCircle(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dConic_destructor(HandleGeom2dConic* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dConic*> HandleGeom2dConic_clone(const HandleGeom2dConic* self_) {
+    try { return {new HandleGeom2dConic(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dCurve_destructor(HandleGeom2dCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dCurve_clone(const HandleGeom2dCurve* self_) {
+    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dDirection_destructor(HandleGeom2dDirection* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dDirection*> HandleGeom2dDirection_clone(const HandleGeom2dDirection* self_) {
+    try { return {new HandleGeom2dDirection(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dEllipse_destructor(HandleGeom2dEllipse* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dEllipse*> HandleGeom2dEllipse_clone(const HandleGeom2dEllipse* self_) {
+    try { return {new HandleGeom2dEllipse(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dGeometry_destructor(HandleGeom2dGeometry* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dGeometry_clone(const HandleGeom2dGeometry* self_) {
+    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dHyperbola_destructor(HandleGeom2dHyperbola* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dHyperbola*> HandleGeom2dHyperbola_clone(const HandleGeom2dHyperbola* self_) {
+    try { return {new HandleGeom2dHyperbola(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dLine_destructor(HandleGeom2dLine* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dLine*> HandleGeom2dLine_clone(const HandleGeom2dLine* self_) {
+    try { return {new HandleGeom2dLine(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dOffsetCurve_destructor(HandleGeom2dOffsetCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dOffsetCurve*> HandleGeom2dOffsetCurve_clone(const HandleGeom2dOffsetCurve* self_) {
+    try { return {new HandleGeom2dOffsetCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dParabola_destructor(HandleGeom2dParabola* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dParabola*> HandleGeom2dParabola_clone(const HandleGeom2dParabola* self_) {
+    try { return {new HandleGeom2dParabola(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dPoint_destructor(HandleGeom2dPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dPoint*> HandleGeom2dPoint_clone(const HandleGeom2dPoint* self_) {
+    try { return {new HandleGeom2dPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dTransformation_destructor(HandleGeom2dTransformation* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dTransformation*> HandleGeom2dTransformation_clone(const HandleGeom2dTransformation* self_) {
+    try { return {new HandleGeom2dTransformation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dTrimmedCurve_destructor(HandleGeom2dTrimmedCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dTrimmedCurve*> HandleGeom2dTrimmedCurve_clone(const HandleGeom2dTrimmedCurve* self_) {
+    try { return {new HandleGeom2dTrimmedCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dUndefinedDerivative_destructor(HandleGeom2dUndefinedDerivative* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dUndefinedDerivative*> HandleGeom2dUndefinedDerivative_clone(const HandleGeom2dUndefinedDerivative* self_) {
+    try { return {new HandleGeom2dUndefinedDerivative(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dUndefinedValue_destructor(HandleGeom2dUndefinedValue* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dUndefinedValue*> HandleGeom2dUndefinedValue_clone(const HandleGeom2dUndefinedValue* self_) {
+    try { return {new HandleGeom2dUndefinedValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dVector_destructor(HandleGeom2dVector* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dVector*> HandleGeom2dVector_clone(const HandleGeom2dVector* self_) {
+    try { return {new HandleGeom2dVector(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGeom2dVectorWithMagnitude_destructor(HandleGeom2dVectorWithMagnitude* self_) { delete self_; }
+extern "C" OcctResult<HandleGeom2dVectorWithMagnitude*> HandleGeom2dVectorWithMagnitude_clone(const HandleGeom2dVectorWithMagnitude* self_) {
+    try { return {new HandleGeom2dVectorWithMagnitude(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleLPropBadContinuity_destructor(HandleLPropBadContinuity* self_) { delete self_; }
+extern "C" OcctResult<HandleLPropBadContinuity*> HandleLPropBadContinuity_clone(const HandleLPropBadContinuity* self_) {
+    try { return {new HandleLPropBadContinuity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleLPropNotDefined_destructor(HandleLPropNotDefined* self_) { delete self_; }
+extern "C" OcctResult<HandleLPropNotDefined*> HandleLPropNotDefined_clone(const HandleLPropNotDefined* self_) {
+    try { return {new HandleLPropNotDefined(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColGeom2dHArray1OfBSplineCurve_destructor(HandleTColGeom2dHArray1OfBSplineCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleTColGeom2dHArray1OfBSplineCurve*> HandleTColGeom2dHArray1OfBSplineCurve_clone(const HandleTColGeom2dHArray1OfBSplineCurve* self_) {
+    try { return {new HandleTColGeom2dHArray1OfBSplineCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColGeom2dHArray1OfBezierCurve_destructor(HandleTColGeom2dHArray1OfBezierCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleTColGeom2dHArray1OfBezierCurve*> HandleTColGeom2dHArray1OfBezierCurve_clone(const HandleTColGeom2dHArray1OfBezierCurve* self_) {
+    try { return {new HandleTColGeom2dHArray1OfBezierCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColGeom2dHArray1OfCurve_destructor(HandleTColGeom2dHArray1OfCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleTColGeom2dHArray1OfCurve*> HandleTColGeom2dHArray1OfCurve_clone(const HandleTColGeom2dHArray1OfCurve* self_) {
+    try { return {new HandleTColGeom2dHArray1OfCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColGeom2dHSequenceOfBoundedCurve_destructor(HandleTColGeom2dHSequenceOfBoundedCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleTColGeom2dHSequenceOfBoundedCurve*> HandleTColGeom2dHSequenceOfBoundedCurve_clone(const HandleTColGeom2dHSequenceOfBoundedCurve* self_) {
+    try { return {new HandleTColGeom2dHSequenceOfBoundedCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTColGeom2dHSequenceOfCurve_destructor(HandleTColGeom2dHSequenceOfCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleTColGeom2dHSequenceOfCurve*> HandleTColGeom2dHSequenceOfCurve_clone(const HandleTColGeom2dHSequenceOfCurve* self_) {
+    try { return {new HandleTColGeom2dHSequenceOfCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // Adaptor2d_Curve2d wrappers

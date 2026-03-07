@@ -37,10 +37,22 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleDESTLConfigurationNode_destructor(HandleDESTLConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<HandleDESTLConfigurationNode*> HandleDESTLConfigurationNode_clone(const HandleDESTLConfigurationNode* self_) {
+    try { return {new HandleDESTLConfigurationNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDESTLProvider_destructor(HandleDESTLProvider* self_) { delete self_; }
+extern "C" OcctResult<HandleDESTLProvider*> HandleDESTLProvider_clone(const HandleDESTLProvider* self_) {
+    try { return {new HandleDESTLProvider(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWStlReader_destructor(HandleRWStlReader* self_) { delete self_; }
+extern "C" OcctResult<HandleRWStlReader*> HandleRWStlReader_clone(const HandleRWStlReader* self_) {
+    try { return {new HandleRWStlReader(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // DESTL_ConfigurationNode wrappers

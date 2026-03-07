@@ -834,6 +834,12 @@ unsafe impl crate::CppDeletable for HandlePrs3dArrowAspect {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrs3dArrowAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dArrowAspect_clone(ptr))
+    }
+}
+
 impl HandlePrs3dArrowAspect {
     /// Dereference this Handle to access the underlying Prs3d_ArrowAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_ArrowAspect {
@@ -1015,6 +1021,12 @@ pub use crate::ffi_types::HandlePrs3dBasicAspect;
 unsafe impl crate::CppDeletable for HandlePrs3dBasicAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrs3dBasicAspect_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrs3dBasicAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dBasicAspect_clone(ptr))
     }
 }
 
@@ -1765,6 +1777,12 @@ unsafe impl crate::CppDeletable for HandlePrs3dDatumAspect {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrs3dDatumAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dDatumAspect_clone(ptr))
+    }
+}
+
 impl HandlePrs3dDatumAspect {
     /// Dereference this Handle to access the underlying Prs3d_DatumAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_DatumAspect {
@@ -2280,6 +2298,12 @@ unsafe impl crate::CppDeletable for HandlePrs3dDimensionAspect {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrs3dDimensionAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dDimensionAspect_clone(ptr))
+    }
+}
+
 impl HandlePrs3dDimensionAspect {
     /// Dereference this Handle to access the underlying Prs3d_DimensionAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_DimensionAspect {
@@ -2342,6 +2366,22 @@ unsafe impl crate::CppDeletable for DimensionUnits {
     }
 }
 
+unsafe impl crate::CppCopyable for DimensionUnits {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::Prs3d_DimensionUnits_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for DimensionUnits {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl DimensionUnits {
     /// **Source:** `Prs3d_DimensionUnits.hxx`:29 - `Prs3d_DimensionUnits::Prs3d_DimensionUnits()`
     /// Default constructor. Sets meters as default length units
@@ -2393,15 +2433,6 @@ impl DimensionUnits {
             &*(crate::check_result(crate::ffi_extern_TKV3d::Prs3d_DimensionUnits_get_length_units(
                 self as *const Self,
             )))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKV3d::Prs3d_DimensionUnits_to_owned(self as *const Self),
-            ))
         }
     }
 }
@@ -4322,6 +4353,12 @@ unsafe impl crate::CppDeletable for HandlePrs3dDrawer {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrs3dDrawer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dDrawer_clone(ptr))
+    }
+}
+
 impl HandlePrs3dDrawer {
     /// Dereference this Handle to access the underlying Prs3d_Drawer
     pub fn get(&self) -> &crate::ffi_types::Prs3d_Drawer {
@@ -4704,6 +4741,12 @@ unsafe impl crate::CppDeletable for HandlePrs3dInvalidAngle {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrs3dInvalidAngle {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dInvalidAngle_clone(ptr))
+    }
+}
+
 impl HandlePrs3dInvalidAngle {
     /// Dereference this Handle to access the underlying Prs3d_InvalidAngle
     pub fn get(&self) -> &crate::ffi_types::Prs3d_InvalidAngle {
@@ -5045,6 +5088,12 @@ unsafe impl crate::CppDeletable for HandlePrs3dIsoAspect {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrs3dIsoAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dIsoAspect_clone(ptr))
+    }
+}
+
 impl HandlePrs3dIsoAspect {
     /// Dereference this Handle to access the underlying Prs3d_IsoAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_IsoAspect {
@@ -5357,6 +5406,12 @@ pub use crate::ffi_types::HandlePrs3dLineAspect;
 unsafe impl crate::CppDeletable for HandlePrs3dLineAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrs3dLineAspect_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrs3dLineAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dLineAspect_clone(ptr))
     }
 }
 
@@ -5798,6 +5853,12 @@ unsafe impl crate::CppDeletable for HandlePrs3dPlaneAspect {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrs3dPlaneAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dPlaneAspect_clone(ptr))
+    }
+}
+
 impl HandlePrs3dPlaneAspect {
     /// Dereference this Handle to access the underlying Prs3d_PlaneAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_PlaneAspect {
@@ -6122,6 +6183,12 @@ pub use crate::ffi_types::HandlePrs3dPointAspect;
 unsafe impl crate::CppDeletable for HandlePrs3dPointAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrs3dPointAspect_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrs3dPointAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dPointAspect_clone(ptr))
     }
 }
 
@@ -6975,6 +7042,12 @@ unsafe impl crate::CppDeletable for HandlePrs3dPresentationShadow {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrs3dPresentationShadow {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dPresentationShadow_clone(ptr))
+    }
+}
+
 impl HandlePrs3dPresentationShadow {
     /// Dereference this Handle to access the underlying Prs3d_PresentationShadow
     pub fn get(&self) -> &crate::ffi_types::Prs3d_PresentationShadow {
@@ -7318,6 +7391,12 @@ pub use crate::ffi_types::HandlePrs3dShadingAspect;
 unsafe impl crate::CppDeletable for HandlePrs3dShadingAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrs3dShadingAspect_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrs3dShadingAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dShadingAspect_clone(ptr))
     }
 }
 
@@ -7773,6 +7852,12 @@ pub use crate::ffi_types::HandlePrs3dTextAspect;
 unsafe impl crate::CppDeletable for HandlePrs3dTextAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrs3dTextAspect_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrs3dTextAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dTextAspect_clone(ptr))
     }
 }
 

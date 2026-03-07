@@ -62,6 +62,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAppStdApplication>;
     /// Destroy Handle<AppStd_Application>
     pub fn HandleAppStdApplication_destructor(self_: *mut HandleAppStdApplication);
+    /// Clone Handle<AppStd_Application> (increments reference count)
+    pub fn HandleAppStdApplication_clone(
+        self_: *const HandleAppStdApplication,
+    ) -> crate::OcctResult<*mut HandleAppStdApplication>;
     /// Dereference Handle to get *const AppStd_Application
     pub fn HandleAppStdApplication_get(
         handle: *const HandleAppStdApplication,
@@ -356,6 +360,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdAxis>;
     /// Destroy Handle<TDataXtd_Axis>
     pub fn HandleTDataXtdAxis_destructor(self_: *mut HandleTDataXtdAxis);
+    /// Clone Handle<TDataXtd_Axis> (increments reference count)
+    pub fn HandleTDataXtdAxis_clone(
+        self_: *const HandleTDataXtdAxis,
+    ) -> crate::OcctResult<*mut HandleTDataXtdAxis>;
     /// Dereference Handle to get *const TDataXtd_Axis
     pub fn HandleTDataXtdAxis_get(
         handle: *const HandleTDataXtdAxis,
@@ -736,6 +744,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdConstraint>;
     /// Destroy Handle<TDataXtd_Constraint>
     pub fn HandleTDataXtdConstraint_destructor(self_: *mut HandleTDataXtdConstraint);
+    /// Clone Handle<TDataXtd_Constraint> (increments reference count)
+    pub fn HandleTDataXtdConstraint_clone(
+        self_: *const HandleTDataXtdConstraint,
+    ) -> crate::OcctResult<*mut HandleTDataXtdConstraint>;
     /// Dereference Handle to get *const TDataXtd_Constraint
     pub fn HandleTDataXtdConstraint_get(
         handle: *const HandleTDataXtdConstraint,
@@ -1066,6 +1078,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdGeometry>;
     /// Destroy Handle<TDataXtd_Geometry>
     pub fn HandleTDataXtdGeometry_destructor(self_: *mut HandleTDataXtdGeometry);
+    /// Clone Handle<TDataXtd_Geometry> (increments reference count)
+    pub fn HandleTDataXtdGeometry_clone(
+        self_: *const HandleTDataXtdGeometry,
+    ) -> crate::OcctResult<*mut HandleTDataXtdGeometry>;
     /// Dereference Handle to get *const TDataXtd_Geometry
     pub fn HandleTDataXtdGeometry_get(
         handle: *const HandleTDataXtdGeometry,
@@ -1311,6 +1327,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdHArray1OfTrsf>;
     /// Destroy Handle<TDataXtd_HArray1OfTrsf>
     pub fn HandleTDataXtdHArray1OfTrsf_destructor(self_: *mut HandleTDataXtdHArray1OfTrsf);
+    /// Clone Handle<TDataXtd_HArray1OfTrsf> (increments reference count)
+    pub fn HandleTDataXtdHArray1OfTrsf_clone(
+        self_: *const HandleTDataXtdHArray1OfTrsf,
+    ) -> crate::OcctResult<*mut HandleTDataXtdHArray1OfTrsf>;
     /// Dereference Handle to get *const TDataXtd_HArray1OfTrsf
     pub fn HandleTDataXtdHArray1OfTrsf_get(
         handle: *const HandleTDataXtdHArray1OfTrsf,
@@ -1398,6 +1418,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TDataXtd_Pattern>
     pub fn HandleTDataXtdPattern_destructor(self_: *mut HandleTDataXtdPattern);
+    /// Clone Handle<TDataXtd_Pattern> (increments reference count)
+    pub fn HandleTDataXtdPattern_clone(
+        self_: *const HandleTDataXtdPattern,
+    ) -> crate::OcctResult<*mut HandleTDataXtdPattern>;
     /// Dereference Handle to get *const TDataXtd_Pattern
     pub fn HandleTDataXtdPattern_get(
         handle: *const HandleTDataXtdPattern,
@@ -1781,6 +1805,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdPatternStd>;
     /// Destroy Handle<TDataXtd_PatternStd>
     pub fn HandleTDataXtdPatternStd_destructor(self_: *mut HandleTDataXtdPatternStd);
+    /// Clone Handle<TDataXtd_PatternStd> (increments reference count)
+    pub fn HandleTDataXtdPatternStd_clone(
+        self_: *const HandleTDataXtdPatternStd,
+    ) -> crate::OcctResult<*mut HandleTDataXtdPatternStd>;
     /// Dereference Handle to get *const TDataXtd_PatternStd
     pub fn HandleTDataXtdPatternStd_get(
         handle: *const HandleTDataXtdPatternStd,
@@ -2033,6 +2061,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdPlacement>;
     /// Destroy Handle<TDataXtd_Placement>
     pub fn HandleTDataXtdPlacement_destructor(self_: *mut HandleTDataXtdPlacement);
+    /// Clone Handle<TDataXtd_Placement> (increments reference count)
+    pub fn HandleTDataXtdPlacement_clone(
+        self_: *const HandleTDataXtdPlacement,
+    ) -> crate::OcctResult<*mut HandleTDataXtdPlacement>;
     /// Dereference Handle to get *const TDataXtd_Placement
     pub fn HandleTDataXtdPlacement_get(
         handle: *const HandleTDataXtdPlacement,
@@ -2302,6 +2334,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdPlane>;
     /// Destroy Handle<TDataXtd_Plane>
     pub fn HandleTDataXtdPlane_destructor(self_: *mut HandleTDataXtdPlane);
+    /// Clone Handle<TDataXtd_Plane> (increments reference count)
+    pub fn HandleTDataXtdPlane_clone(
+        self_: *const HandleTDataXtdPlane,
+    ) -> crate::OcctResult<*mut HandleTDataXtdPlane>;
     /// Dereference Handle to get *const TDataXtd_Plane
     pub fn HandleTDataXtdPlane_get(
         handle: *const HandleTDataXtdPlane,
@@ -2566,6 +2602,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdPoint>;
     /// Destroy Handle<TDataXtd_Point>
     pub fn HandleTDataXtdPoint_destructor(self_: *mut HandleTDataXtdPoint);
+    /// Clone Handle<TDataXtd_Point> (increments reference count)
+    pub fn HandleTDataXtdPoint_clone(
+        self_: *const HandleTDataXtdPoint,
+    ) -> crate::OcctResult<*mut HandleTDataXtdPoint>;
     /// Dereference Handle to get *const TDataXtd_Point
     pub fn HandleTDataXtdPoint_get(
         handle: *const HandleTDataXtdPoint,
@@ -2842,6 +2882,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdPosition>;
     /// Destroy Handle<TDataXtd_Position>
     pub fn HandleTDataXtdPosition_destructor(self_: *mut HandleTDataXtdPosition);
+    /// Clone Handle<TDataXtd_Position> (increments reference count)
+    pub fn HandleTDataXtdPosition_clone(
+        self_: *const HandleTDataXtdPosition,
+    ) -> crate::OcctResult<*mut HandleTDataXtdPosition>;
     /// Dereference Handle to get *const TDataXtd_Position
     pub fn HandleTDataXtdPosition_get(
         handle: *const HandleTDataXtdPosition,
@@ -3237,6 +3281,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdPresentation>;
     /// Destroy Handle<TDataXtd_Presentation>
     pub fn HandleTDataXtdPresentation_destructor(self_: *mut HandleTDataXtdPresentation);
+    /// Clone Handle<TDataXtd_Presentation> (increments reference count)
+    pub fn HandleTDataXtdPresentation_clone(
+        self_: *const HandleTDataXtdPresentation,
+    ) -> crate::OcctResult<*mut HandleTDataXtdPresentation>;
     /// Dereference Handle to get *const TDataXtd_Presentation
     pub fn HandleTDataXtdPresentation_get(
         handle: *const HandleTDataXtdPresentation,
@@ -3499,6 +3547,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdShape>;
     /// Destroy Handle<TDataXtd_Shape>
     pub fn HandleTDataXtdShape_destructor(self_: *mut HandleTDataXtdShape);
+    /// Clone Handle<TDataXtd_Shape> (increments reference count)
+    pub fn HandleTDataXtdShape_clone(
+        self_: *const HandleTDataXtdShape,
+    ) -> crate::OcctResult<*mut HandleTDataXtdShape>;
     /// Dereference Handle to get *const TDataXtd_Shape
     pub fn HandleTDataXtdShape_get(
         handle: *const HandleTDataXtdShape,
@@ -3844,6 +3896,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTDataXtdTriangulation>;
     /// Destroy Handle<TDataXtd_Triangulation>
     pub fn HandleTDataXtdTriangulation_destructor(self_: *mut HandleTDataXtdTriangulation);
+    /// Clone Handle<TDataXtd_Triangulation> (increments reference count)
+    pub fn HandleTDataXtdTriangulation_clone(
+        self_: *const HandleTDataXtdTriangulation,
+    ) -> crate::OcctResult<*mut HandleTDataXtdTriangulation>;
     /// Dereference Handle to get *const TDataXtd_Triangulation
     pub fn HandleTDataXtdTriangulation_get(
         handle: *const HandleTDataXtdTriangulation,
@@ -4143,6 +4199,10 @@ extern "C" {
     pub fn HandleTNamingDeltaOnModification_destructor(
         self_: *mut HandleTNamingDeltaOnModification,
     );
+    /// Clone Handle<TNaming_DeltaOnModification> (increments reference count)
+    pub fn HandleTNamingDeltaOnModification_clone(
+        self_: *const HandleTNamingDeltaOnModification,
+    ) -> crate::OcctResult<*mut HandleTNamingDeltaOnModification>;
     /// Dereference Handle to get *const TNaming_DeltaOnModification
     pub fn HandleTNamingDeltaOnModification_get(
         handle: *const HandleTNamingDeltaOnModification,
@@ -4254,6 +4314,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTNamingDeltaOnRemoval>;
     /// Destroy Handle<TNaming_DeltaOnRemoval>
     pub fn HandleTNamingDeltaOnRemoval_destructor(self_: *mut HandleTNamingDeltaOnRemoval);
+    /// Clone Handle<TNaming_DeltaOnRemoval> (increments reference count)
+    pub fn HandleTNamingDeltaOnRemoval_clone(
+        self_: *const HandleTNamingDeltaOnRemoval,
+    ) -> crate::OcctResult<*mut HandleTNamingDeltaOnRemoval>;
     /// Dereference Handle to get *const TNaming_DeltaOnRemoval
     pub fn HandleTNamingDeltaOnRemoval_get(
         handle: *const HandleTNamingDeltaOnRemoval,
@@ -4716,6 +4780,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
     /// Destroy Handle<TNaming_NamedShape>
     pub fn HandleTNamingNamedShape_destructor(self_: *mut HandleTNamingNamedShape);
+    /// Clone Handle<TNaming_NamedShape> (increments reference count)
+    pub fn HandleTNamingNamedShape_clone(
+        self_: *const HandleTNamingNamedShape,
+    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
     /// Dereference Handle to get *const TNaming_NamedShape
     pub fn HandleTNamingNamedShape_get(
         handle: *const HandleTNamingNamedShape,
@@ -4975,6 +5043,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTNamingNaming>;
     /// Destroy Handle<TNaming_Naming>
     pub fn HandleTNamingNaming_destructor(self_: *mut HandleTNamingNaming);
+    /// Clone Handle<TNaming_Naming> (increments reference count)
+    pub fn HandleTNamingNaming_clone(
+        self_: *const HandleTNamingNaming,
+    ) -> crate::OcctResult<*mut HandleTNamingNaming>;
     /// Dereference Handle to get *const TNaming_Naming
     pub fn HandleTNamingNaming_get(
         handle: *const HandleTNamingNaming,
@@ -5212,7 +5284,7 @@ extern "C" {
         self_: *const TNaming_NewShapeIterator,
     ) -> crate::OcctResult<bool>;
     /// Clone via copy constructor
-    pub fn TNaming_NewShapeIterator_to_owned(
+    pub fn TNaming_NewShapeIterator_clone(
         self_: *const TNaming_NewShapeIterator,
     ) -> crate::OcctResult<*mut TNaming_NewShapeIterator>;
     // ======================== TNaming_OldShapeIterator ========================
@@ -5257,7 +5329,7 @@ extern "C" {
         self_: *const TNaming_OldShapeIterator,
     ) -> crate::OcctResult<bool>;
     /// Clone via copy constructor
-    pub fn TNaming_OldShapeIterator_to_owned(
+    pub fn TNaming_OldShapeIterator_clone(
         self_: *const TNaming_OldShapeIterator,
     ) -> crate::OcctResult<*mut TNaming_OldShapeIterator>;
     // ======================== TNaming_RefShape ========================
@@ -5633,6 +5705,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTNamingTranslateTool>;
     /// Destroy Handle<TNaming_TranslateTool>
     pub fn HandleTNamingTranslateTool_destructor(self_: *mut HandleTNamingTranslateTool);
+    /// Clone Handle<TNaming_TranslateTool> (increments reference count)
+    pub fn HandleTNamingTranslateTool_clone(
+        self_: *const HandleTNamingTranslateTool,
+    ) -> crate::OcctResult<*mut HandleTNamingTranslateTool>;
     /// Dereference Handle to get *const TNaming_TranslateTool
     pub fn HandleTNamingTranslateTool_get(
         handle: *const HandleTNamingTranslateTool,
@@ -5793,6 +5869,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTNamingUsedShapes>;
     /// Destroy Handle<TNaming_UsedShapes>
     pub fn HandleTNamingUsedShapes_destructor(self_: *mut HandleTNamingUsedShapes);
+    /// Clone Handle<TNaming_UsedShapes> (increments reference count)
+    pub fn HandleTNamingUsedShapes_clone(
+        self_: *const HandleTNamingUsedShapes,
+    ) -> crate::OcctResult<*mut HandleTNamingUsedShapes>;
     /// Dereference Handle to get *const TNaming_UsedShapes
     pub fn HandleTNamingUsedShapes_get(
         handle: *const HandleTNamingUsedShapes,

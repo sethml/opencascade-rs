@@ -313,6 +313,12 @@ unsafe impl crate::CppDeletable for HandleXmlMDataXtdConstraintDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMDataXtdConstraintDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXml::HandleXmlMDataXtdConstraintDriver_clone(ptr))
+    }
+}
+
 impl HandleXmlMDataXtdConstraintDriver {
     /// Dereference this Handle to access the underlying XmlMDataXtd_ConstraintDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataXtd_ConstraintDriver {
@@ -633,6 +639,12 @@ pub use crate::ffi_types::HandleXmlMDataXtdGeometryDriver;
 unsafe impl crate::CppDeletable for HandleXmlMDataXtdGeometryDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXml::HandleXmlMDataXtdGeometryDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMDataXtdGeometryDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXml::HandleXmlMDataXtdGeometryDriver_clone(ptr))
     }
 }
 
@@ -963,6 +975,12 @@ unsafe impl crate::CppDeletable for HandleXmlMDataXtdPatternStdDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMDataXtdPatternStdDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXml::HandleXmlMDataXtdPatternStdDriver_clone(ptr))
+    }
+}
+
 impl HandleXmlMDataXtdPatternStdDriver {
     /// Dereference this Handle to access the underlying XmlMDataXtd_PatternStdDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataXtd_PatternStdDriver {
@@ -1283,6 +1301,12 @@ pub use crate::ffi_types::HandleXmlMDataXtdPositionDriver;
 unsafe impl crate::CppDeletable for HandleXmlMDataXtdPositionDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXml::HandleXmlMDataXtdPositionDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMDataXtdPositionDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXml::HandleXmlMDataXtdPositionDriver_clone(ptr))
     }
 }
 
@@ -1613,6 +1637,12 @@ unsafe impl crate::CppDeletable for HandleXmlMDataXtdPresentationDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMDataXtdPresentationDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXml::HandleXmlMDataXtdPresentationDriver_clone(ptr))
+    }
+}
+
 impl HandleXmlMDataXtdPresentationDriver {
     /// Dereference this Handle to access the underlying XmlMDataXtd_PresentationDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataXtd_PresentationDriver {
@@ -1931,6 +1961,14 @@ pub use crate::ffi_types::HandleXmlMDataXtdTriangulationDriver;
 unsafe impl crate::CppDeletable for HandleXmlMDataXtdTriangulationDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXml::HandleXmlMDataXtdTriangulationDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMDataXtdTriangulationDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXml::HandleXmlMDataXtdTriangulationDriver_clone(
+            ptr,
+        ))
     }
 }
 

@@ -24,6 +24,22 @@ unsafe impl crate::CppDeletable for D1 {
     }
 }
 
+unsafe impl crate::CppCopyable for D1 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_D1_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for D1 {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl D1 {
     /// **Source:** `Plate_D1.hxx`:33 - `Plate_D1::Plate_D1()`
     pub fn new_xyz2(du: &crate::gp::XYZ, dv: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
@@ -47,15 +63,6 @@ impl D1 {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_D1_dv(self as *const Self)))
         }
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Plate_D1_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -73,6 +80,22 @@ unsafe impl crate::CppDeletable for D2 {
     }
 }
 
+unsafe impl crate::CppCopyable for D2 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_D2_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for D2 {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl D2 {
     /// **Source:** `Plate_D2.hxx`:33 - `Plate_D2::Plate_D2()`
     pub fn new_xyz3(
@@ -83,15 +106,6 @@ impl D2 {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Plate_D2_ctor_xyz3(duu, duv, dvv),
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Plate_D2_to_owned(self as *const Self),
             ))
         }
     }
@@ -112,6 +126,22 @@ unsafe impl crate::CppDeletable for D3 {
     }
 }
 
+unsafe impl crate::CppCopyable for D3 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_D3_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for D3 {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl D3 {
     /// **Source:** `Plate_D3.hxx`:33 - `Plate_D3::Plate_D3()`
     pub fn new_xyz4(
@@ -123,15 +153,6 @@ impl D3 {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Plate_D3_ctor_xyz4(duuu, duuv, duvv, dvvv),
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Plate_D3_to_owned(self as *const Self),
             ))
         }
     }
@@ -386,6 +407,22 @@ unsafe impl crate::CppDeletable for GtoCConstraint {
     }
 }
 
+unsafe impl crate::CppCopyable for GtoCConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for GtoCConstraint {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl GtoCConstraint {
     /// **Source:** `Plate_GtoCConstraint.hxx`:39 - `Plate_GtoCConstraint::Plate_GtoCConstraint()`
     pub fn new_xy_d12(point2d: &crate::gp::XY, D1S: &D1, D1T: &D1) -> crate::OwnedPtr<Self> {
@@ -512,15 +549,6 @@ impl GtoCConstraint {
                 crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_d1_surf_init(
                     self as *const Self,
                 ),
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_to_owned(self as *const Self),
             ))
         }
     }
@@ -747,6 +775,14 @@ pub use crate::ffi_types::HandlePlateHArray1OfPinpointConstraint;
 unsafe impl crate::CppDeletable for HandlePlateHArray1OfPinpointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandlePlateHArray1OfPinpointConstraint_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePlateHArray1OfPinpointConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::HandlePlateHArray1OfPinpointConstraint_clone(ptr),
+        )
     }
 }
 
@@ -1229,6 +1265,22 @@ unsafe impl crate::CppDeletable for Plate {
     }
 }
 
+unsafe impl crate::CppCopyable for Plate {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_Plate_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Plate {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Plate {
     /// **Source:** `Plate_Plate.hxx`:53 - `Plate_Plate::Plate_Plate()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -1453,15 +1505,6 @@ impl Plate {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Plate_Plate_uv_constraints(self as *const Self, Seq)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Plate_Plate_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 

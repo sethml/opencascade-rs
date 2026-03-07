@@ -983,6 +983,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidBlock {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidBlock {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidBlock_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidBlock {
     /// Dereference this Handle to access the underlying IGESSolid_Block
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Block {
@@ -1953,6 +1959,12 @@ pub use crate::ffi_types::HandleIGESSolidBooleanTree;
 unsafe impl crate::CppDeletable for HandleIGESSolidBooleanTree {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidBooleanTree_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidBooleanTree {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidBooleanTree_clone(ptr))
     }
 }
 
@@ -2961,6 +2973,12 @@ pub use crate::ffi_types::HandleIGESSolidConeFrustum;
 unsafe impl crate::CppDeletable for HandleIGESSolidConeFrustum {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidConeFrustum_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidConeFrustum {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidConeFrustum_clone(ptr))
     }
 }
 
@@ -3976,6 +3994,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidConicalSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidConicalSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidConicalSurface_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidConicalSurface {
     /// Dereference this Handle to access the underlying IGESSolid_ConicalSurface
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_ConicalSurface {
@@ -4939,6 +4963,12 @@ pub use crate::ffi_types::HandleIGESSolidCylinder;
 unsafe impl crate::CppDeletable for HandleIGESSolidCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidCylinder_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidCylinder {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidCylinder_clone(ptr))
     }
 }
 
@@ -5925,6 +5955,14 @@ pub use crate::ffi_types::HandleIGESSolidCylindricalSurface;
 unsafe impl crate::CppDeletable for HandleIGESSolidCylindricalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidCylindricalSurface_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidCylindricalSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidCylindricalSurface_clone(
+            ptr,
+        ))
     }
 }
 
@@ -6921,6 +6959,12 @@ pub use crate::ffi_types::HandleIGESSolidEdgeList;
 unsafe impl crate::CppDeletable for HandleIGESSolidEdgeList {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidEdgeList_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidEdgeList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidEdgeList_clone(ptr))
     }
 }
 
@@ -7977,6 +8021,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidEllipsoid {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidEllipsoid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidEllipsoid_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidEllipsoid {
     /// Dereference this Handle to access the underlying IGESSolid_Ellipsoid
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Ellipsoid {
@@ -8873,6 +8923,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidFace {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidFace {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidFace_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidFace {
     /// Dereference this Handle to access the underlying IGESSolid_Face
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Face {
@@ -9520,6 +9576,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidGeneralModule {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidGeneralModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidGeneralModule_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidGeneralModule {
     /// Dereference this Handle to access the underlying IGESSolid_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_GeneralModule {
@@ -9806,6 +9868,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidHArray1OfFace {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidHArray1OfFace {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidHArray1OfFace_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidHArray1OfFace {
     /// Dereference this Handle to access the underlying IGESSolid_HArray1OfFace
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_HArray1OfFace {
@@ -10071,6 +10139,12 @@ pub use crate::ffi_types::HandleIGESSolidHArray1OfLoop;
 unsafe impl crate::CppDeletable for HandleIGESSolidHArray1OfLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidHArray1OfLoop_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidHArray1OfLoop {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidHArray1OfLoop_clone(ptr))
     }
 }
 
@@ -10342,6 +10416,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidHArray1OfShell {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidHArray1OfShell {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidHArray1OfShell_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidHArray1OfShell {
     /// Dereference this Handle to access the underlying IGESSolid_HArray1OfShell
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_HArray1OfShell {
@@ -10607,6 +10687,14 @@ pub use crate::ffi_types::HandleIGESSolidHArray1OfVertexList;
 unsafe impl crate::CppDeletable for HandleIGESSolidHArray1OfVertexList {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidHArray1OfVertexList_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidHArray1OfVertexList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidHArray1OfVertexList_clone(
+            ptr,
+        ))
     }
 }
 
@@ -11583,6 +11671,12 @@ pub use crate::ffi_types::HandleIGESSolidLoop;
 unsafe impl crate::CppDeletable for HandleIGESSolidLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidLoop_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidLoop {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidLoop_clone(ptr))
     }
 }
 
@@ -12587,6 +12681,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidManifoldSolid {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidManifoldSolid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidManifoldSolid_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidManifoldSolid {
     /// Dereference this Handle to access the underlying IGESSolid_ManifoldSolid
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_ManifoldSolid {
@@ -13564,6 +13664,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidPlaneSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidPlaneSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidPlaneSurface_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidPlaneSurface {
     /// Dereference this Handle to access the underlying IGESSolid_PlaneSurface
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_PlaneSurface {
@@ -13955,6 +14061,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidProtocol {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidProtocol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidProtocol_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidProtocol {
     /// Dereference this Handle to access the underlying IGESSolid_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Protocol {
@@ -14330,6 +14442,12 @@ pub use crate::ffi_types::HandleIGESSolidReadWriteModule;
 unsafe impl crate::CppDeletable for HandleIGESSolidReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidReadWriteModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidReadWriteModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidReadWriteModule_clone(ptr))
     }
 }
 
@@ -15417,6 +15535,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidRightAngularWedge {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidRightAngularWedge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidRightAngularWedge_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidRightAngularWedge {
     /// Dereference this Handle to access the underlying IGESSolid_RightAngularWedge
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_RightAngularWedge {
@@ -16379,6 +16503,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidSelectedComponent {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidSelectedComponent {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidSelectedComponent_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidSelectedComponent {
     /// Dereference this Handle to access the underlying IGESSolid_SelectedComponent
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_SelectedComponent {
@@ -17289,6 +17419,12 @@ pub use crate::ffi_types::HandleIGESSolidShell;
 unsafe impl crate::CppDeletable for HandleIGESSolidShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidShell_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidShell {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidShell_clone(ptr))
     }
 }
 
@@ -18291,6 +18427,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidSolidAssembly {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidSolidAssembly {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidSolidAssembly_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidSolidAssembly {
     /// Dereference this Handle to access the underlying IGESSolid_SolidAssembly
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_SolidAssembly {
@@ -19244,6 +19386,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidSolidInstance {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidSolidInstance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidSolidInstance_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidSolidInstance {
     /// Dereference this Handle to access the underlying IGESSolid_SolidInstance
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_SolidInstance {
@@ -20170,6 +20318,14 @@ pub use crate::ffi_types::HandleIGESSolidSolidOfLinearExtrusion;
 unsafe impl crate::CppDeletable for HandleIGESSolidSolidOfLinearExtrusion {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidSolidOfLinearExtrusion_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidSolidOfLinearExtrusion {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidSolidOfLinearExtrusion_clone(ptr),
+        )
     }
 }
 
@@ -21197,6 +21353,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidSolidOfRevolution {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidSolidOfRevolution {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidSolidOfRevolution_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidSolidOfRevolution {
     /// Dereference this Handle to access the underlying IGESSolid_SolidOfRevolution
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_SolidOfRevolution {
@@ -21459,6 +21621,12 @@ pub use crate::ffi_types::HandleIGESSolidSpecificModule;
 unsafe impl crate::CppDeletable for HandleIGESSolidSpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidSpecificModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidSpecificModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidSpecificModule_clone(ptr))
     }
 }
 
@@ -22361,6 +22529,12 @@ pub use crate::ffi_types::HandleIGESSolidSphere;
 unsafe impl crate::CppDeletable for HandleIGESSolidSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidSphere_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidSphere {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidSphere_clone(ptr))
     }
 }
 
@@ -23371,6 +23545,12 @@ pub use crate::ffi_types::HandleIGESSolidSphericalSurface;
 unsafe impl crate::CppDeletable for HandleIGESSolidSphericalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidSphericalSurface_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidSphericalSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidSphericalSurface_clone(ptr))
     }
 }
 
@@ -28314,6 +28494,12 @@ unsafe impl crate::CppDeletable for HandleIGESSolidToroidalSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSolidToroidalSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidToroidalSurface_clone(ptr))
+    }
+}
+
 impl HandleIGESSolidToroidalSurface {
     /// Dereference this Handle to access the underlying IGESSolid_ToroidalSurface
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_ToroidalSurface {
@@ -29238,6 +29424,12 @@ pub use crate::ffi_types::HandleIGESSolidTorus;
 unsafe impl crate::CppDeletable for HandleIGESSolidTorus {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidTorus_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidTorus {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidTorus_clone(ptr))
     }
 }
 
@@ -30169,6 +30361,12 @@ pub use crate::ffi_types::HandleIGESSolidVertexList;
 unsafe impl crate::CppDeletable for HandleIGESSolidVertexList {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSolidVertexList_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSolidVertexList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSolidVertexList_clone(ptr))
     }
 }
 

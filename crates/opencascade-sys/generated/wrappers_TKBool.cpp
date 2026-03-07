@@ -349,40 +349,172 @@ typedef opencascade::handle<TopOpeBRep_Hctxee2d> HandleTopOpeBRepHctxee2d;
 typedef opencascade::handle<TopOpeBRep_Hctxff2d> HandleTopOpeBRepHctxff2d;
 typedef opencascade::handle<TopTools_HArray2OfShape> HandleTopToolsHArray2OfShape;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleBRepAlgoAsDes_destructor(HandleBRepAlgoAsDes* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepAlgoAsDes*> HandleBRepAlgoAsDes_clone(const HandleBRepAlgoAsDes* self_) {
+    try { return {new HandleBRepAlgoAsDes(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepFillACRLaw_destructor(HandleBRepFillACRLaw* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepFillACRLaw*> HandleBRepFillACRLaw_clone(const HandleBRepFillACRLaw* self_) {
+    try { return {new HandleBRepFillACRLaw(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepFillCurveConstraint_destructor(HandleBRepFillCurveConstraint* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepFillCurveConstraint*> HandleBRepFillCurveConstraint_clone(const HandleBRepFillCurveConstraint* self_) {
+    try { return {new HandleBRepFillCurveConstraint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepFillDraftLaw_destructor(HandleBRepFillDraftLaw* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepFillDraftLaw*> HandleBRepFillDraftLaw_clone(const HandleBRepFillDraftLaw* self_) {
+    try { return {new HandleBRepFillDraftLaw(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepFillEdge3DLaw_destructor(HandleBRepFillEdge3DLaw* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepFillEdge3DLaw*> HandleBRepFillEdge3DLaw_clone(const HandleBRepFillEdge3DLaw* self_) {
+    try { return {new HandleBRepFillEdge3DLaw(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepFillEdgeOnSurfLaw_destructor(HandleBRepFillEdgeOnSurfLaw* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepFillEdgeOnSurfLaw*> HandleBRepFillEdgeOnSurfLaw_clone(const HandleBRepFillEdgeOnSurfLaw* self_) {
+    try { return {new HandleBRepFillEdgeOnSurfLaw(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepFillLocationLaw_destructor(HandleBRepFillLocationLaw* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepFillLocationLaw*> HandleBRepFillLocationLaw_clone(const HandleBRepFillLocationLaw* self_) {
+    try { return {new HandleBRepFillLocationLaw(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepFillNSections_destructor(HandleBRepFillNSections* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepFillNSections*> HandleBRepFillNSections_clone(const HandleBRepFillNSections* self_) {
+    try { return {new HandleBRepFillNSections(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepFillPipeShell_destructor(HandleBRepFillPipeShell* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepFillPipeShell*> HandleBRepFillPipeShell_clone(const HandleBRepFillPipeShell* self_) {
+    try { return {new HandleBRepFillPipeShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepFillSectionLaw_destructor(HandleBRepFillSectionLaw* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepFillSectionLaw*> HandleBRepFillSectionLaw_clone(const HandleBRepFillSectionLaw* self_) {
+    try { return {new HandleBRepFillSectionLaw(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepFillShapeLaw_destructor(HandleBRepFillShapeLaw* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepFillShapeLaw*> HandleBRepFillShapeLaw_clone(const HandleBRepFillShapeLaw* self_) {
+    try { return {new HandleBRepFillShapeLaw(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepBuildHBuilder_destructor(HandleTopOpeBRepBuildHBuilder* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepBuildHBuilder*> HandleTopOpeBRepBuildHBuilder_clone(const HandleTopOpeBRepBuildHBuilder* self_) {
+    try { return {new HandleTopOpeBRepBuildHBuilder(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepBuildLoop_destructor(HandleTopOpeBRepBuildLoop* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepBuildLoop*> HandleTopOpeBRepBuildLoop_clone(const HandleTopOpeBRepBuildLoop* self_) {
+    try { return {new HandleTopOpeBRepBuildLoop(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepBuildPave_destructor(HandleTopOpeBRepBuildPave* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepBuildPave*> HandleTopOpeBRepBuildPave_clone(const HandleTopOpeBRepBuildPave* self_) {
+    try { return {new HandleTopOpeBRepBuildPave(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSAssociation_destructor(HandleTopOpeBRepDSAssociation* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSAssociation*> HandleTopOpeBRepDSAssociation_clone(const HandleTopOpeBRepDSAssociation* self_) {
+    try { return {new HandleTopOpeBRepDSAssociation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSCheck_destructor(HandleTopOpeBRepDSCheck* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSCheck*> HandleTopOpeBRepDSCheck_clone(const HandleTopOpeBRepDSCheck* self_) {
+    try { return {new HandleTopOpeBRepDSCheck(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSCurvePointInterference_destructor(HandleTopOpeBRepDSCurvePointInterference* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSCurvePointInterference*> HandleTopOpeBRepDSCurvePointInterference_clone(const HandleTopOpeBRepDSCurvePointInterference* self_) {
+    try { return {new HandleTopOpeBRepDSCurvePointInterference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSEdgeVertexInterference_destructor(HandleTopOpeBRepDSEdgeVertexInterference* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSEdgeVertexInterference*> HandleTopOpeBRepDSEdgeVertexInterference_clone(const HandleTopOpeBRepDSEdgeVertexInterference* self_) {
+    try { return {new HandleTopOpeBRepDSEdgeVertexInterference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSFaceEdgeInterference_destructor(HandleTopOpeBRepDSFaceEdgeInterference* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSFaceEdgeInterference*> HandleTopOpeBRepDSFaceEdgeInterference_clone(const HandleTopOpeBRepDSFaceEdgeInterference* self_) {
+    try { return {new HandleTopOpeBRepDSFaceEdgeInterference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSGapTool_destructor(HandleTopOpeBRepDSGapTool* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSGapTool*> HandleTopOpeBRepDSGapTool_clone(const HandleTopOpeBRepDSGapTool* self_) {
+    try { return {new HandleTopOpeBRepDSGapTool(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_destructor(HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference*> HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_clone(const HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference* self_) {
+    try { return {new HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSHDataStructure_destructor(HandleTopOpeBRepDSHDataStructure* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSHDataStructure*> HandleTopOpeBRepDSHDataStructure_clone(const HandleTopOpeBRepDSHDataStructure* self_) {
+    try { return {new HandleTopOpeBRepDSHDataStructure(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSInterference_destructor(HandleTopOpeBRepDSInterference* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSInterference*> HandleTopOpeBRepDSInterference_clone(const HandleTopOpeBRepDSInterference* self_) {
+    try { return {new HandleTopOpeBRepDSInterference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSMarker_destructor(HandleTopOpeBRepDSMarker* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSMarker*> HandleTopOpeBRepDSMarker_clone(const HandleTopOpeBRepDSMarker* self_) {
+    try { return {new HandleTopOpeBRepDSMarker(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSShapeShapeInterference_destructor(HandleTopOpeBRepDSShapeShapeInterference* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSShapeShapeInterference*> HandleTopOpeBRepDSShapeShapeInterference_clone(const HandleTopOpeBRepDSShapeShapeInterference* self_) {
+    try { return {new HandleTopOpeBRepDSShapeShapeInterference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSSolidSurfaceInterference_destructor(HandleTopOpeBRepDSSolidSurfaceInterference* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSSolidSurfaceInterference*> HandleTopOpeBRepDSSolidSurfaceInterference_clone(const HandleTopOpeBRepDSSolidSurfaceInterference* self_) {
+    try { return {new HandleTopOpeBRepDSSolidSurfaceInterference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepDSSurfaceCurveInterference_destructor(HandleTopOpeBRepDSSurfaceCurveInterference* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepDSSurfaceCurveInterference*> HandleTopOpeBRepDSSurfaceCurveInterference_clone(const HandleTopOpeBRepDSSurfaceCurveInterference* self_) {
+    try { return {new HandleTopOpeBRepDSSurfaceCurveInterference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepToolHBoxTool_destructor(HandleTopOpeBRepToolHBoxTool* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepToolHBoxTool*> HandleTopOpeBRepToolHBoxTool_clone(const HandleTopOpeBRepToolHBoxTool* self_) {
+    try { return {new HandleTopOpeBRepToolHBoxTool(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepFFDumper_destructor(HandleTopOpeBRepFFDumper* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepFFDumper*> HandleTopOpeBRepFFDumper_clone(const HandleTopOpeBRepFFDumper* self_) {
+    try { return {new HandleTopOpeBRepFFDumper(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepHArray1OfLineInter_destructor(HandleTopOpeBRepHArray1OfLineInter* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepHArray1OfLineInter*> HandleTopOpeBRepHArray1OfLineInter_clone(const HandleTopOpeBRepHArray1OfLineInter* self_) {
+    try { return {new HandleTopOpeBRepHArray1OfLineInter(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepHArray1OfVPointInter_destructor(HandleTopOpeBRepHArray1OfVPointInter* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepHArray1OfVPointInter*> HandleTopOpeBRepHArray1OfVPointInter_clone(const HandleTopOpeBRepHArray1OfVPointInter* self_) {
+    try { return {new HandleTopOpeBRepHArray1OfVPointInter(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepHctxee2d_destructor(HandleTopOpeBRepHctxee2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepHctxee2d*> HandleTopOpeBRepHctxee2d_clone(const HandleTopOpeBRepHctxee2d* self_) {
+    try { return {new HandleTopOpeBRepHctxee2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTopOpeBRepHctxff2d_destructor(HandleTopOpeBRepHctxff2d* self_) { delete self_; }
+extern "C" OcctResult<HandleTopOpeBRepHctxff2d*> HandleTopOpeBRepHctxff2d_clone(const HandleTopOpeBRepHctxff2d* self_) {
+    try { return {new HandleTopOpeBRepHctxff2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // BRepAlgo_AsDes wrappers
@@ -11132,7 +11264,7 @@ extern "C" const char* TopOpeBRepDS_GeometryData_add_interference(TopOpeBRepDS_G
     try { self_->AddInterference(*I); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopOpeBRepDS_GeometryData*> TopOpeBRepDS_GeometryData_to_owned(const TopOpeBRepDS_GeometryData* self_) {
+extern "C" OcctResult<TopOpeBRepDS_GeometryData*> TopOpeBRepDS_GeometryData_clone(const TopOpeBRepDS_GeometryData* self_) {
     try { return {new TopOpeBRepDS_GeometryData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12490,7 +12622,7 @@ extern "C" const char* TopOpeBRepDS_Surface_change_keep(TopOpeBRepDS_Surface* se
     try { self_->ChangeKeep(theToKeep); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopOpeBRepDS_Surface*> TopOpeBRepDS_Surface_to_owned(const TopOpeBRepDS_Surface* self_) {
+extern "C" OcctResult<TopOpeBRepDS_Surface*> TopOpeBRepDS_Surface_clone(const TopOpeBRepDS_Surface* self_) {
     try { return {new TopOpeBRepDS_Surface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }

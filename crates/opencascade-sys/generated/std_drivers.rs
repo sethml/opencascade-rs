@@ -305,6 +305,14 @@ unsafe impl crate::CppDeletable for HandleStdDriversDocumentRetrievalDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdDriversDocumentRetrievalDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKStd::HandleStdDriversDocumentRetrievalDriver_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStdDriversDocumentRetrievalDriver {
     /// Dereference this Handle to access the underlying StdDrivers_DocumentRetrievalDriver
     pub fn get(&self) -> &crate::ffi_types::StdDrivers_DocumentRetrievalDriver {

@@ -32,11 +32,27 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleDEBREPConfigurationNode_destructor(HandleDEBREPConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<HandleDEBREPConfigurationNode*> HandleDEBREPConfigurationNode_clone(const HandleDEBREPConfigurationNode* self_) {
+    try { return {new HandleDEBREPConfigurationNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDEBREPProvider_destructor(HandleDEBREPProvider* self_) { delete self_; }
+extern "C" OcctResult<HandleDEBREPProvider*> HandleDEBREPProvider_clone(const HandleDEBREPProvider* self_) {
+    try { return {new HandleDEBREPProvider(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDEXCAFConfigurationNode_destructor(HandleDEXCAFConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<HandleDEXCAFConfigurationNode*> HandleDEXCAFConfigurationNode_clone(const HandleDEXCAFConfigurationNode* self_) {
+    try { return {new HandleDEXCAFConfigurationNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDEXCAFProvider_destructor(HandleDEXCAFProvider* self_) { delete self_; }
+extern "C" OcctResult<HandleDEXCAFProvider*> HandleDEXCAFProvider_clone(const HandleDEXCAFProvider* self_) {
+    try { return {new HandleDEXCAFProvider(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // DEBREP_ConfigurationNode wrappers

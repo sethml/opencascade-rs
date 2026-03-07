@@ -1365,6 +1365,12 @@ unsafe impl crate::CppDeletable for HandleFSDBinaryFile {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleFSDBinaryFile {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleFSDBinaryFile_clone(ptr))
+    }
+}
+
 impl HandleFSDBinaryFile {
     /// Dereference this Handle to access the underlying FSD_BinaryFile
     pub fn get(&self) -> &crate::ffi_types::FSD_BinaryFile {
@@ -2285,6 +2291,12 @@ pub use crate::ffi_types::HandleFSDCmpFile;
 unsafe impl crate::CppDeletable for HandleFSDCmpFile {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleFSDCmpFile_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleFSDCmpFile {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleFSDCmpFile_clone(ptr))
     }
 }
 
@@ -3272,6 +3284,12 @@ pub use crate::ffi_types::HandleFSDFile;
 unsafe impl crate::CppDeletable for HandleFSDFile {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleFSDFile_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleFSDFile {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleFSDFile_clone(ptr))
     }
 }
 

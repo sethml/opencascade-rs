@@ -667,6 +667,12 @@ unsafe impl crate::CppDeletable for HandleIntSurfLineOn2S {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIntSurfLineOn2S {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_clone(ptr))
+    }
+}
+
 impl HandleIntSurfLineOn2S {
     /// Dereference this Handle to access the underlying IntSurf_LineOn2S
     pub fn get(&self) -> &crate::ffi_types::IntSurf_LineOn2S {

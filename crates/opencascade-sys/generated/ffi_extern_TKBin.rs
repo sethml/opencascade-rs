@@ -94,6 +94,10 @@ extern "C" {
     pub fn HandleBinDriversDocumentRetrievalDriver_destructor(
         self_: *mut HandleBinDriversDocumentRetrievalDriver,
     );
+    /// Clone Handle<BinDrivers_DocumentRetrievalDriver> (increments reference count)
+    pub fn HandleBinDriversDocumentRetrievalDriver_clone(
+        self_: *const HandleBinDriversDocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut HandleBinDriversDocumentRetrievalDriver>;
     /// Dereference Handle to get *const BinDrivers_DocumentRetrievalDriver
     pub fn HandleBinDriversDocumentRetrievalDriver_get(
         handle: *const HandleBinDriversDocumentRetrievalDriver,
@@ -274,6 +278,10 @@ extern "C" {
     pub fn HandleBinDriversDocumentStorageDriver_destructor(
         self_: *mut HandleBinDriversDocumentStorageDriver,
     );
+    /// Clone Handle<BinDrivers_DocumentStorageDriver> (increments reference count)
+    pub fn HandleBinDriversDocumentStorageDriver_clone(
+        self_: *const HandleBinDriversDocumentStorageDriver,
+    ) -> crate::OcctResult<*mut HandleBinDriversDocumentStorageDriver>;
     /// Dereference Handle to get *const BinDrivers_DocumentStorageDriver
     pub fn HandleBinDriversDocumentStorageDriver_get(
         handle: *const HandleBinDriversDocumentStorageDriver,
@@ -439,6 +447,10 @@ extern "C" {
     pub fn HandleBinMDataXtdConstraintDriver_destructor(
         self_: *mut HandleBinMDataXtdConstraintDriver,
     );
+    /// Clone Handle<BinMDataXtd_ConstraintDriver> (increments reference count)
+    pub fn HandleBinMDataXtdConstraintDriver_clone(
+        self_: *const HandleBinMDataXtdConstraintDriver,
+    ) -> crate::OcctResult<*mut HandleBinMDataXtdConstraintDriver>;
     /// Dereference Handle to get *const BinMDataXtd_ConstraintDriver
     pub fn HandleBinMDataXtdConstraintDriver_get(
         handle: *const HandleBinMDataXtdConstraintDriver,
@@ -552,6 +564,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBinMDataXtdGeometryDriver>;
     /// Destroy Handle<BinMDataXtd_GeometryDriver>
     pub fn HandleBinMDataXtdGeometryDriver_destructor(self_: *mut HandleBinMDataXtdGeometryDriver);
+    /// Clone Handle<BinMDataXtd_GeometryDriver> (increments reference count)
+    pub fn HandleBinMDataXtdGeometryDriver_clone(
+        self_: *const HandleBinMDataXtdGeometryDriver,
+    ) -> crate::OcctResult<*mut HandleBinMDataXtdGeometryDriver>;
     /// Dereference Handle to get *const BinMDataXtd_GeometryDriver
     pub fn HandleBinMDataXtdGeometryDriver_get(
         handle: *const HandleBinMDataXtdGeometryDriver,
@@ -667,6 +683,10 @@ extern "C" {
     pub fn HandleBinMDataXtdPatternStdDriver_destructor(
         self_: *mut HandleBinMDataXtdPatternStdDriver,
     );
+    /// Clone Handle<BinMDataXtd_PatternStdDriver> (increments reference count)
+    pub fn HandleBinMDataXtdPatternStdDriver_clone(
+        self_: *const HandleBinMDataXtdPatternStdDriver,
+    ) -> crate::OcctResult<*mut HandleBinMDataXtdPatternStdDriver>;
     /// Dereference Handle to get *const BinMDataXtd_PatternStdDriver
     pub fn HandleBinMDataXtdPatternStdDriver_get(
         handle: *const HandleBinMDataXtdPatternStdDriver,
@@ -780,6 +800,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBinMDataXtdPositionDriver>;
     /// Destroy Handle<BinMDataXtd_PositionDriver>
     pub fn HandleBinMDataXtdPositionDriver_destructor(self_: *mut HandleBinMDataXtdPositionDriver);
+    /// Clone Handle<BinMDataXtd_PositionDriver> (increments reference count)
+    pub fn HandleBinMDataXtdPositionDriver_clone(
+        self_: *const HandleBinMDataXtdPositionDriver,
+    ) -> crate::OcctResult<*mut HandleBinMDataXtdPositionDriver>;
     /// Dereference Handle to get *const BinMDataXtd_PositionDriver
     pub fn HandleBinMDataXtdPositionDriver_get(
         handle: *const HandleBinMDataXtdPositionDriver,
@@ -896,6 +920,10 @@ extern "C" {
     pub fn HandleBinMDataXtdPresentationDriver_destructor(
         self_: *mut HandleBinMDataXtdPresentationDriver,
     );
+    /// Clone Handle<BinMDataXtd_PresentationDriver> (increments reference count)
+    pub fn HandleBinMDataXtdPresentationDriver_clone(
+        self_: *const HandleBinMDataXtdPresentationDriver,
+    ) -> crate::OcctResult<*mut HandleBinMDataXtdPresentationDriver>;
     /// Dereference Handle to get *const BinMDataXtd_PresentationDriver
     pub fn HandleBinMDataXtdPresentationDriver_get(
         handle: *const HandleBinMDataXtdPresentationDriver,
@@ -1012,6 +1040,10 @@ extern "C" {
     pub fn HandleBinMDataXtdTriangulationDriver_destructor(
         self_: *mut HandleBinMDataXtdTriangulationDriver,
     );
+    /// Clone Handle<BinMDataXtd_TriangulationDriver> (increments reference count)
+    pub fn HandleBinMDataXtdTriangulationDriver_clone(
+        self_: *const HandleBinMDataXtdTriangulationDriver,
+    ) -> crate::OcctResult<*mut HandleBinMDataXtdTriangulationDriver>;
     /// Dereference Handle to get *const BinMDataXtd_TriangulationDriver
     pub fn HandleBinMDataXtdTriangulationDriver_get(
         handle: *const HandleBinMDataXtdTriangulationDriver,
@@ -1180,6 +1212,10 @@ extern "C" {
     pub fn HandleBinMNamingNamedShapeDriver_destructor(
         self_: *mut HandleBinMNamingNamedShapeDriver,
     );
+    /// Clone Handle<BinMNaming_NamedShapeDriver> (increments reference count)
+    pub fn HandleBinMNamingNamedShapeDriver_clone(
+        self_: *const HandleBinMNamingNamedShapeDriver,
+    ) -> crate::OcctResult<*mut HandleBinMNamingNamedShapeDriver>;
     /// Dereference Handle to get *const BinMNaming_NamedShapeDriver
     pub fn HandleBinMNamingNamedShapeDriver_get(
         handle: *const HandleBinMNamingNamedShapeDriver,
@@ -1293,6 +1329,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBinMNamingNamingDriver>;
     /// Destroy Handle<BinMNaming_NamingDriver>
     pub fn HandleBinMNamingNamingDriver_destructor(self_: *mut HandleBinMNamingNamingDriver);
+    /// Clone Handle<BinMNaming_NamingDriver> (increments reference count)
+    pub fn HandleBinMNamingNamingDriver_clone(
+        self_: *const HandleBinMNamingNamingDriver,
+    ) -> crate::OcctResult<*mut HandleBinMNamingNamingDriver>;
     /// Dereference Handle to get *const BinMNaming_NamingDriver
     pub fn HandleBinMNamingNamingDriver_get(
         handle: *const HandleBinMNamingNamingDriver,

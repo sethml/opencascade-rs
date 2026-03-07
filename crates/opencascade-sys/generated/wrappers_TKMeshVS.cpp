@@ -124,28 +124,112 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
 typedef opencascade::handle<TColStd_HPackedMapOfInteger> HandleTColStdHPackedMapOfInteger;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleMeshVSCommonSensitiveEntity_destructor(HandleMeshVSCommonSensitiveEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSCommonSensitiveEntity*> HandleMeshVSCommonSensitiveEntity_clone(const HandleMeshVSCommonSensitiveEntity* self_) {
+    try { return {new HandleMeshVSCommonSensitiveEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSDataSource_destructor(HandleMeshVSDataSource* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSDataSource*> HandleMeshVSDataSource_clone(const HandleMeshVSDataSource* self_) {
+    try { return {new HandleMeshVSDataSource(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSDataSource3D_destructor(HandleMeshVSDataSource3D* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSDataSource3D*> HandleMeshVSDataSource3D_clone(const HandleMeshVSDataSource3D* self_) {
+    try { return {new HandleMeshVSDataSource3D(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSDeformedDataSource_destructor(HandleMeshVSDeformedDataSource* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSDeformedDataSource*> HandleMeshVSDeformedDataSource_clone(const HandleMeshVSDeformedDataSource* self_) {
+    try { return {new HandleMeshVSDeformedDataSource(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSDrawer_destructor(HandleMeshVSDrawer* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSDrawer*> HandleMeshVSDrawer_clone(const HandleMeshVSDrawer* self_) {
+    try { return {new HandleMeshVSDrawer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSDummySensitiveEntity_destructor(HandleMeshVSDummySensitiveEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSDummySensitiveEntity*> HandleMeshVSDummySensitiveEntity_clone(const HandleMeshVSDummySensitiveEntity* self_) {
+    try { return {new HandleMeshVSDummySensitiveEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSElementalColorPrsBuilder_destructor(HandleMeshVSElementalColorPrsBuilder* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSElementalColorPrsBuilder*> HandleMeshVSElementalColorPrsBuilder_clone(const HandleMeshVSElementalColorPrsBuilder* self_) {
+    try { return {new HandleMeshVSElementalColorPrsBuilder(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSHArray1OfSequenceOfInteger_destructor(HandleMeshVSHArray1OfSequenceOfInteger* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSHArray1OfSequenceOfInteger*> HandleMeshVSHArray1OfSequenceOfInteger_clone(const HandleMeshVSHArray1OfSequenceOfInteger* self_) {
+    try { return {new HandleMeshVSHArray1OfSequenceOfInteger(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSMesh_destructor(HandleMeshVSMesh* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSMesh*> HandleMeshVSMesh_clone(const HandleMeshVSMesh* self_) {
+    try { return {new HandleMeshVSMesh(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSMeshEntityOwner_destructor(HandleMeshVSMeshEntityOwner* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSMeshEntityOwner*> HandleMeshVSMeshEntityOwner_clone(const HandleMeshVSMeshEntityOwner* self_) {
+    try { return {new HandleMeshVSMeshEntityOwner(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSMeshOwner_destructor(HandleMeshVSMeshOwner* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSMeshOwner*> HandleMeshVSMeshOwner_clone(const HandleMeshVSMeshOwner* self_) {
+    try { return {new HandleMeshVSMeshOwner(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSMeshPrsBuilder_destructor(HandleMeshVSMeshPrsBuilder* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSMeshPrsBuilder*> HandleMeshVSMeshPrsBuilder_clone(const HandleMeshVSMeshPrsBuilder* self_) {
+    try { return {new HandleMeshVSMeshPrsBuilder(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSNodalColorPrsBuilder_destructor(HandleMeshVSNodalColorPrsBuilder* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSNodalColorPrsBuilder*> HandleMeshVSNodalColorPrsBuilder_clone(const HandleMeshVSNodalColorPrsBuilder* self_) {
+    try { return {new HandleMeshVSNodalColorPrsBuilder(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSPrsBuilder_destructor(HandleMeshVSPrsBuilder* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSPrsBuilder*> HandleMeshVSPrsBuilder_clone(const HandleMeshVSPrsBuilder* self_) {
+    try { return {new HandleMeshVSPrsBuilder(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSSensitiveFace_destructor(HandleMeshVSSensitiveFace* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSSensitiveFace*> HandleMeshVSSensitiveFace_clone(const HandleMeshVSSensitiveFace* self_) {
+    try { return {new HandleMeshVSSensitiveFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSSensitiveMesh_destructor(HandleMeshVSSensitiveMesh* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSSensitiveMesh*> HandleMeshVSSensitiveMesh_clone(const HandleMeshVSSensitiveMesh* self_) {
+    try { return {new HandleMeshVSSensitiveMesh(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSSensitivePolyhedron_destructor(HandleMeshVSSensitivePolyhedron* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSSensitivePolyhedron*> HandleMeshVSSensitivePolyhedron_clone(const HandleMeshVSSensitivePolyhedron* self_) {
+    try { return {new HandleMeshVSSensitivePolyhedron(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSSensitiveQuad_destructor(HandleMeshVSSensitiveQuad* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSSensitiveQuad*> HandleMeshVSSensitiveQuad_clone(const HandleMeshVSSensitiveQuad* self_) {
+    try { return {new HandleMeshVSSensitiveQuad(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSSensitiveSegment_destructor(HandleMeshVSSensitiveSegment* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSSensitiveSegment*> HandleMeshVSSensitiveSegment_clone(const HandleMeshVSSensitiveSegment* self_) {
+    try { return {new HandleMeshVSSensitiveSegment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSTextPrsBuilder_destructor(HandleMeshVSTextPrsBuilder* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSTextPrsBuilder*> HandleMeshVSTextPrsBuilder_clone(const HandleMeshVSTextPrsBuilder* self_) {
+    try { return {new HandleMeshVSTextPrsBuilder(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMeshVSVectorPrsBuilder_destructor(HandleMeshVSVectorPrsBuilder* self_) { delete self_; }
+extern "C" OcctResult<HandleMeshVSVectorPrsBuilder*> HandleMeshVSVectorPrsBuilder_clone(const HandleMeshVSVectorPrsBuilder* self_) {
+    try { return {new HandleMeshVSVectorPrsBuilder(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // MeshVS_Buffer wrappers

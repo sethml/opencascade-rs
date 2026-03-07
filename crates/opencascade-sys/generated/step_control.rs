@@ -569,6 +569,12 @@ unsafe impl crate::CppDeletable for HandleSTEPControlActorRead {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSTEPControlActorRead {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_clone(ptr))
+    }
+}
+
 impl HandleSTEPControlActorRead {
     /// Dereference this Handle to access the underlying STEPControl_ActorRead
     pub fn get(&self) -> &crate::ffi_types::STEPControl_ActorRead {
@@ -1155,6 +1161,12 @@ unsafe impl crate::CppDeletable for HandleSTEPControlActorWrite {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSTEPControlActorWrite {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_clone(ptr))
+    }
+}
+
 impl HandleSTEPControlActorWrite {
     /// Dereference this Handle to access the underlying STEPControl_ActorWrite
     pub fn get(&self) -> &crate::ffi_types::STEPControl_ActorWrite {
@@ -1618,6 +1630,12 @@ pub use crate::ffi_types::HandleSTEPControlController;
 unsafe impl crate::CppDeletable for HandleSTEPControlController {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleSTEPControlController_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSTEPControlController {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlController_clone(ptr))
     }
 }
 

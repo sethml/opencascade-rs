@@ -1735,6 +1735,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray1OfCirc2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray1OfCirc2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfCirc2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray1OfCirc2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfCirc2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfCirc2d {
@@ -2016,6 +2022,12 @@ pub use crate::ffi_types::HandleTColgpHArray1OfDir;
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHArray1OfDir {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir_clone(ptr))
     }
 }
 
@@ -2305,6 +2317,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray1OfDir2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray1OfDir2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray1OfDir2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfDir2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfDir2d {
@@ -2591,6 +2609,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray1OfLin2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray1OfLin2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfLin2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray1OfLin2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfLin2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfLin2d {
@@ -2872,6 +2896,12 @@ pub use crate::ffi_types::HandleTColgpHArray1OfPnt;
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHArray1OfPnt {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt_clone(ptr))
     }
 }
 
@@ -3161,6 +3191,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray1OfPnt2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray1OfPnt2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray1OfPnt2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfPnt2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfPnt2d {
@@ -3442,6 +3478,12 @@ pub use crate::ffi_types::HandleTColgpHArray1OfVec;
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHArray1OfVec {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec_clone(ptr))
     }
 }
 
@@ -3731,6 +3773,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray1OfVec2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray1OfVec2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray1OfVec2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfVec2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfVec2d {
@@ -4010,6 +4058,12 @@ pub use crate::ffi_types::HandleTColgpHArray1OfXY;
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHArray1OfXY_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHArray1OfXY {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfXY_clone(ptr))
     }
 }
 
@@ -4297,6 +4351,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray1OfXYZ {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray1OfXYZ {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfXYZ_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray1OfXYZ {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfXYZ
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfXYZ {
@@ -4567,6 +4627,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray2OfCirc2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray2OfCirc2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfCirc2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray2OfCirc2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfCirc2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfCirc2d {
@@ -4832,6 +4898,12 @@ pub use crate::ffi_types::HandleTColgpHArray2OfDir;
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHArray2OfDir {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir_clone(ptr))
     }
 }
 
@@ -5105,6 +5177,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray2OfDir2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray2OfDir2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray2OfDir2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfDir2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfDir2d {
@@ -5375,6 +5453,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray2OfLin2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray2OfLin2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfLin2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray2OfLin2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfLin2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfLin2d {
@@ -5640,6 +5724,12 @@ pub use crate::ffi_types::HandleTColgpHArray2OfPnt;
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHArray2OfPnt {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt_clone(ptr))
     }
 }
 
@@ -5913,6 +6003,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray2OfPnt2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray2OfPnt2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray2OfPnt2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfPnt2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfPnt2d {
@@ -6178,6 +6274,12 @@ pub use crate::ffi_types::HandleTColgpHArray2OfVec;
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHArray2OfVec {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec_clone(ptr))
     }
 }
 
@@ -6451,6 +6553,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray2OfVec2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray2OfVec2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray2OfVec2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfVec2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfVec2d {
@@ -6714,6 +6822,12 @@ pub use crate::ffi_types::HandleTColgpHArray2OfXY;
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHArray2OfXY_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHArray2OfXY {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfXY_clone(ptr))
     }
 }
 
@@ -6985,6 +7099,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHArray2OfXYZ {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHArray2OfXYZ {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfXYZ_clone(ptr))
+    }
+}
+
 impl HandleTColgpHArray2OfXYZ {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfXYZ
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfXYZ {
@@ -7226,6 +7346,12 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfDir;
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfDir {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir_clone(ptr))
     }
 }
 
@@ -7480,6 +7606,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfDir2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfDir2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHSequenceOfDir2d {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfDir2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfDir2d {
@@ -7721,6 +7853,12 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfPnt;
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfPnt {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt_clone(ptr))
     }
 }
 
@@ -7975,6 +8113,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfPnt2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfPnt2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHSequenceOfPnt2d {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfPnt2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfPnt2d {
@@ -8216,6 +8360,12 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfVec;
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfVec {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec_clone(ptr))
     }
 }
 
@@ -8470,6 +8620,12 @@ unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfVec2d {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfVec2d {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec2d_clone(ptr))
+    }
+}
+
 impl HandleTColgpHSequenceOfVec2d {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfVec2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfVec2d {
@@ -8708,6 +8864,12 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfXY;
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXY_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfXY {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXY_clone(ptr))
     }
 }
 
@@ -8952,6 +9114,12 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfXYZ;
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXYZ_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfXYZ {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXYZ_clone(ptr))
     }
 }
 

@@ -393,115 +393,547 @@ typedef opencascade::handle<V3d_RectangularGrid> HandleV3dRectangularGrid;
 typedef opencascade::handle<V3d_SpotLight> HandleV3dSpotLight;
 typedef opencascade::handle<XCAFPrs_Texture> HandleXCAFPrsTexture;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleAspectAspectFillAreaDefinitionError_destructor(HandleAspectAspectFillAreaDefinitionError* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectAspectFillAreaDefinitionError*> HandleAspectAspectFillAreaDefinitionError_clone(const HandleAspectAspectFillAreaDefinitionError* self_) {
+    try { return {new HandleAspectAspectFillAreaDefinitionError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectAspectLineDefinitionError_destructor(HandleAspectAspectLineDefinitionError* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectAspectLineDefinitionError*> HandleAspectAspectLineDefinitionError_clone(const HandleAspectAspectLineDefinitionError* self_) {
+    try { return {new HandleAspectAspectLineDefinitionError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectAspectMarkerDefinitionError_destructor(HandleAspectAspectMarkerDefinitionError* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectAspectMarkerDefinitionError*> HandleAspectAspectMarkerDefinitionError_clone(const HandleAspectAspectMarkerDefinitionError* self_) {
+    try { return {new HandleAspectAspectMarkerDefinitionError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectCircularGrid_destructor(HandleAspectCircularGrid* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectCircularGrid*> HandleAspectCircularGrid_clone(const HandleAspectCircularGrid* self_) {
+    try { return {new HandleAspectCircularGrid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectDisplayConnection_destructor(HandleAspectDisplayConnection* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectDisplayConnection*> HandleAspectDisplayConnection_clone(const HandleAspectDisplayConnection* self_) {
+    try { return {new HandleAspectDisplayConnection(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectDisplayConnectionDefinitionError_destructor(HandleAspectDisplayConnectionDefinitionError* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectDisplayConnectionDefinitionError*> HandleAspectDisplayConnectionDefinitionError_clone(const HandleAspectDisplayConnectionDefinitionError* self_) {
+    try { return {new HandleAspectDisplayConnectionDefinitionError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectGraphicDeviceDefinitionError_destructor(HandleAspectGraphicDeviceDefinitionError* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectGraphicDeviceDefinitionError*> HandleAspectGraphicDeviceDefinitionError_clone(const HandleAspectGraphicDeviceDefinitionError* self_) {
+    try { return {new HandleAspectGraphicDeviceDefinitionError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectGrid_destructor(HandleAspectGrid* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectGrid*> HandleAspectGrid_clone(const HandleAspectGrid* self_) {
+    try { return {new HandleAspectGrid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectIdentDefinitionError_destructor(HandleAspectIdentDefinitionError* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectIdentDefinitionError*> HandleAspectIdentDefinitionError_clone(const HandleAspectIdentDefinitionError* self_) {
+    try { return {new HandleAspectIdentDefinitionError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectNeutralWindow_destructor(HandleAspectNeutralWindow* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectNeutralWindow*> HandleAspectNeutralWindow_clone(const HandleAspectNeutralWindow* self_) {
+    try { return {new HandleAspectNeutralWindow(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectOpenVRSession_destructor(HandleAspectOpenVRSession* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectOpenVRSession*> HandleAspectOpenVRSession_clone(const HandleAspectOpenVRSession* self_) {
+    try { return {new HandleAspectOpenVRSession(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectRectangularGrid_destructor(HandleAspectRectangularGrid* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectRectangularGrid*> HandleAspectRectangularGrid_clone(const HandleAspectRectangularGrid* self_) {
+    try { return {new HandleAspectRectangularGrid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectVKeySet_destructor(HandleAspectVKeySet* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectVKeySet*> HandleAspectVKeySet_clone(const HandleAspectVKeySet* self_) {
+    try { return {new HandleAspectVKeySet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectWindow_destructor(HandleAspectWindow* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectWindow*> HandleAspectWindow_clone(const HandleAspectWindow* self_) {
+    try { return {new HandleAspectWindow(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectWindowDefinitionError_destructor(HandleAspectWindowDefinitionError* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectWindowDefinitionError*> HandleAspectWindowDefinitionError_clone(const HandleAspectWindowDefinitionError* self_) {
+    try { return {new HandleAspectWindowDefinitionError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectWindowError_destructor(HandleAspectWindowError* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectWindowError*> HandleAspectWindowError_clone(const HandleAspectWindowError* self_) {
+    try { return {new HandleAspectWindowError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectXRAction_destructor(HandleAspectXRAction* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectXRAction*> HandleAspectXRAction_clone(const HandleAspectXRAction* self_) {
+    try { return {new HandleAspectXRAction(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectXRActionSet_destructor(HandleAspectXRActionSet* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectXRActionSet*> HandleAspectXRActionSet_clone(const HandleAspectXRActionSet* self_) {
+    try { return {new HandleAspectXRActionSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleAspectXRSession_destructor(HandleAspectXRSession* self_) { delete self_; }
+extern "C" OcctResult<HandleAspectXRSession*> HandleAspectXRSession_clone(const HandleAspectXRSession* self_) {
+    try { return {new HandleAspectXRSession(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleFontFTFont_destructor(HandleFontFTFont* self_) { delete self_; }
+extern "C" OcctResult<HandleFontFTFont*> HandleFontFTFont_clone(const HandleFontFTFont* self_) {
+    try { return {new HandleFontFTFont(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleFontFTLibrary_destructor(HandleFontFTLibrary* self_) { delete self_; }
+extern "C" OcctResult<HandleFontFTLibrary*> HandleFontFTLibrary_clone(const HandleFontFTLibrary* self_) {
+    try { return {new HandleFontFTLibrary(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleFontFontMgr_destructor(HandleFontFontMgr* self_) { delete self_; }
+extern "C" OcctResult<HandleFontFontMgr*> HandleFontFontMgr_clone(const HandleFontFontMgr* self_) {
+    try { return {new HandleFontFontMgr(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleFontSystemFont_destructor(HandleFontSystemFont* self_) { delete self_; }
+extern "C" OcctResult<HandleFontSystemFont*> HandleFontSystemFont_clone(const HandleFontSystemFont* self_) {
+    try { return {new HandleFontSystemFont(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleFontTextFormatter_destructor(HandleFontTextFormatter* self_) { delete self_; }
+extern "C" OcctResult<HandleFontTextFormatter*> HandleFontTextFormatter_clone(const HandleFontTextFormatter* self_) {
+    try { return {new HandleFontTextFormatter(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dArrayOfPoints_destructor(HandleGraphic3dArrayOfPoints* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dArrayOfPoints*> HandleGraphic3dArrayOfPoints_clone(const HandleGraphic3dArrayOfPoints* self_) {
+    try { return {new HandleGraphic3dArrayOfPoints(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dArrayOfPolygons_destructor(HandleGraphic3dArrayOfPolygons* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dArrayOfPolygons*> HandleGraphic3dArrayOfPolygons_clone(const HandleGraphic3dArrayOfPolygons* self_) {
+    try { return {new HandleGraphic3dArrayOfPolygons(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dArrayOfPolylines_destructor(HandleGraphic3dArrayOfPolylines* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dArrayOfPolylines*> HandleGraphic3dArrayOfPolylines_clone(const HandleGraphic3dArrayOfPolylines* self_) {
+    try { return {new HandleGraphic3dArrayOfPolylines(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dArrayOfPrimitives_destructor(HandleGraphic3dArrayOfPrimitives* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dArrayOfPrimitives*> HandleGraphic3dArrayOfPrimitives_clone(const HandleGraphic3dArrayOfPrimitives* self_) {
+    try { return {new HandleGraphic3dArrayOfPrimitives(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dArrayOfQuadrangleStrips_destructor(HandleGraphic3dArrayOfQuadrangleStrips* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dArrayOfQuadrangleStrips*> HandleGraphic3dArrayOfQuadrangleStrips_clone(const HandleGraphic3dArrayOfQuadrangleStrips* self_) {
+    try { return {new HandleGraphic3dArrayOfQuadrangleStrips(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dArrayOfQuadrangles_destructor(HandleGraphic3dArrayOfQuadrangles* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dArrayOfQuadrangles*> HandleGraphic3dArrayOfQuadrangles_clone(const HandleGraphic3dArrayOfQuadrangles* self_) {
+    try { return {new HandleGraphic3dArrayOfQuadrangles(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dArrayOfSegments_destructor(HandleGraphic3dArrayOfSegments* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dArrayOfSegments*> HandleGraphic3dArrayOfSegments_clone(const HandleGraphic3dArrayOfSegments* self_) {
+    try { return {new HandleGraphic3dArrayOfSegments(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dArrayOfTriangleFans_destructor(HandleGraphic3dArrayOfTriangleFans* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dArrayOfTriangleFans*> HandleGraphic3dArrayOfTriangleFans_clone(const HandleGraphic3dArrayOfTriangleFans* self_) {
+    try { return {new HandleGraphic3dArrayOfTriangleFans(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dArrayOfTriangleStrips_destructor(HandleGraphic3dArrayOfTriangleStrips* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dArrayOfTriangleStrips*> HandleGraphic3dArrayOfTriangleStrips_clone(const HandleGraphic3dArrayOfTriangleStrips* self_) {
+    try { return {new HandleGraphic3dArrayOfTriangleStrips(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dArrayOfTriangles_destructor(HandleGraphic3dArrayOfTriangles* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dArrayOfTriangles*> HandleGraphic3dArrayOfTriangles_clone(const HandleGraphic3dArrayOfTriangles* self_) {
+    try { return {new HandleGraphic3dArrayOfTriangles(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dAspectFillArea3d_destructor(HandleGraphic3dAspectFillArea3d* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dAspectFillArea3d*> HandleGraphic3dAspectFillArea3d_clone(const HandleGraphic3dAspectFillArea3d* self_) {
+    try { return {new HandleGraphic3dAspectFillArea3d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dAspectLine3d_destructor(HandleGraphic3dAspectLine3d* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dAspectLine3d*> HandleGraphic3dAspectLine3d_clone(const HandleGraphic3dAspectLine3d* self_) {
+    try { return {new HandleGraphic3dAspectLine3d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dAspectMarker3d_destructor(HandleGraphic3dAspectMarker3d* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dAspectMarker3d*> HandleGraphic3dAspectMarker3d_clone(const HandleGraphic3dAspectMarker3d* self_) {
+    try { return {new HandleGraphic3dAspectMarker3d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dAspectText3d_destructor(HandleGraphic3dAspectText3d* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dAspectText3d*> HandleGraphic3dAspectText3d_clone(const HandleGraphic3dAspectText3d* self_) {
+    try { return {new HandleGraphic3dAspectText3d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dAspects_destructor(HandleGraphic3dAspects* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dAspects*> HandleGraphic3dAspects_clone(const HandleGraphic3dAspects* self_) {
+    try { return {new HandleGraphic3dAspects(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dAttribBuffer_destructor(HandleGraphic3dAttribBuffer* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dAttribBuffer*> HandleGraphic3dAttribBuffer_clone(const HandleGraphic3dAttribBuffer* self_) {
+    try { return {new HandleGraphic3dAttribBuffer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dBoundBuffer_destructor(HandleGraphic3dBoundBuffer* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dBoundBuffer*> HandleGraphic3dBoundBuffer_clone(const HandleGraphic3dBoundBuffer* self_) {
+    try { return {new HandleGraphic3dBoundBuffer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dBuffer_destructor(HandleGraphic3dBuffer* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dBuffer*> HandleGraphic3dBuffer_clone(const HandleGraphic3dBuffer* self_) {
+    try { return {new HandleGraphic3dBuffer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dBvhCStructureSet_destructor(HandleGraphic3dBvhCStructureSet* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dBvhCStructureSet*> HandleGraphic3dBvhCStructureSet_clone(const HandleGraphic3dBvhCStructureSet* self_) {
+    try { return {new HandleGraphic3dBvhCStructureSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dCLight_destructor(HandleGraphic3dCLight* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dCLight*> HandleGraphic3dCLight_clone(const HandleGraphic3dCLight* self_) {
+    try { return {new HandleGraphic3dCLight(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dCStructure_destructor(HandleGraphic3dCStructure* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dCStructure*> HandleGraphic3dCStructure_clone(const HandleGraphic3dCStructure* self_) {
+    try { return {new HandleGraphic3dCStructure(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dCView_destructor(HandleGraphic3dCView* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dCView*> HandleGraphic3dCView_clone(const HandleGraphic3dCView* self_) {
+    try { return {new HandleGraphic3dCView(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dCamera_destructor(HandleGraphic3dCamera* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dCamera*> HandleGraphic3dCamera_clone(const HandleGraphic3dCamera* self_) {
+    try { return {new HandleGraphic3dCamera(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dClipPlane_destructor(HandleGraphic3dClipPlane* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dClipPlane*> HandleGraphic3dClipPlane_clone(const HandleGraphic3dClipPlane* self_) {
+    try { return {new HandleGraphic3dClipPlane(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dCubeMap_destructor(HandleGraphic3dCubeMap* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dCubeMap*> HandleGraphic3dCubeMap_clone(const HandleGraphic3dCubeMap* self_) {
+    try { return {new HandleGraphic3dCubeMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dCubeMapPacked_destructor(HandleGraphic3dCubeMapPacked* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dCubeMapPacked*> HandleGraphic3dCubeMapPacked_clone(const HandleGraphic3dCubeMapPacked* self_) {
+    try { return {new HandleGraphic3dCubeMapPacked(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dCubeMapSeparate_destructor(HandleGraphic3dCubeMapSeparate* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dCubeMapSeparate*> HandleGraphic3dCubeMapSeparate_clone(const HandleGraphic3dCubeMapSeparate* self_) {
+    try { return {new HandleGraphic3dCubeMapSeparate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dDataStructureManager_destructor(HandleGraphic3dDataStructureManager* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dDataStructureManager*> HandleGraphic3dDataStructureManager_clone(const HandleGraphic3dDataStructureManager* self_) {
+    try { return {new HandleGraphic3dDataStructureManager(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dFrameStats_destructor(HandleGraphic3dFrameStats* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dFrameStats*> HandleGraphic3dFrameStats_clone(const HandleGraphic3dFrameStats* self_) {
+    try { return {new HandleGraphic3dFrameStats(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dGraphicDriver_destructor(HandleGraphic3dGraphicDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dGraphicDriver*> HandleGraphic3dGraphicDriver_clone(const HandleGraphic3dGraphicDriver* self_) {
+    try { return {new HandleGraphic3dGraphicDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dGraphicDriverFactory_destructor(HandleGraphic3dGraphicDriverFactory* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dGraphicDriverFactory*> HandleGraphic3dGraphicDriverFactory_clone(const HandleGraphic3dGraphicDriverFactory* self_) {
+    try { return {new HandleGraphic3dGraphicDriverFactory(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dGroup_destructor(HandleGraphic3dGroup* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dGroup*> HandleGraphic3dGroup_clone(const HandleGraphic3dGroup* self_) {
+    try { return {new HandleGraphic3dGroup(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dGroupDefinitionError_destructor(HandleGraphic3dGroupDefinitionError* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dGroupDefinitionError*> HandleGraphic3dGroupDefinitionError_clone(const HandleGraphic3dGroupDefinitionError* self_) {
+    try { return {new HandleGraphic3dGroupDefinitionError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dHatchStyle_destructor(HandleGraphic3dHatchStyle* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dHatchStyle*> HandleGraphic3dHatchStyle_clone(const HandleGraphic3dHatchStyle* self_) {
+    try { return {new HandleGraphic3dHatchStyle(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dIndexBuffer_destructor(HandleGraphic3dIndexBuffer* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dIndexBuffer*> HandleGraphic3dIndexBuffer_clone(const HandleGraphic3dIndexBuffer* self_) {
+    try { return {new HandleGraphic3dIndexBuffer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dLayer_destructor(HandleGraphic3dLayer* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dLayer*> HandleGraphic3dLayer_clone(const HandleGraphic3dLayer* self_) {
+    try { return {new HandleGraphic3dLayer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dLightSet_destructor(HandleGraphic3dLightSet* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dLightSet*> HandleGraphic3dLightSet_clone(const HandleGraphic3dLightSet* self_) {
+    try { return {new HandleGraphic3dLightSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dMarkerImage_destructor(HandleGraphic3dMarkerImage* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dMarkerImage*> HandleGraphic3dMarkerImage_clone(const HandleGraphic3dMarkerImage* self_) {
+    try { return {new HandleGraphic3dMarkerImage(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dMaterialDefinitionError_destructor(HandleGraphic3dMaterialDefinitionError* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dMaterialDefinitionError*> HandleGraphic3dMaterialDefinitionError_clone(const HandleGraphic3dMaterialDefinitionError* self_) {
+    try { return {new HandleGraphic3dMaterialDefinitionError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dMediaTexture_destructor(HandleGraphic3dMediaTexture* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dMediaTexture*> HandleGraphic3dMediaTexture_clone(const HandleGraphic3dMediaTexture* self_) {
+    try { return {new HandleGraphic3dMediaTexture(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dMediaTextureSet_destructor(HandleGraphic3dMediaTextureSet* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dMediaTextureSet*> HandleGraphic3dMediaTextureSet_clone(const HandleGraphic3dMediaTextureSet* self_) {
+    try { return {new HandleGraphic3dMediaTextureSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dMutableIndexBuffer_destructor(HandleGraphic3dMutableIndexBuffer* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dMutableIndexBuffer*> HandleGraphic3dMutableIndexBuffer_clone(const HandleGraphic3dMutableIndexBuffer* self_) {
+    try { return {new HandleGraphic3dMutableIndexBuffer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dPresentationAttributes_destructor(HandleGraphic3dPresentationAttributes* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dPresentationAttributes*> HandleGraphic3dPresentationAttributes_clone(const HandleGraphic3dPresentationAttributes* self_) {
+    try { return {new HandleGraphic3dPresentationAttributes(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dPriorityDefinitionError_destructor(HandleGraphic3dPriorityDefinitionError* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dPriorityDefinitionError*> HandleGraphic3dPriorityDefinitionError_clone(const HandleGraphic3dPriorityDefinitionError* self_) {
+    try { return {new HandleGraphic3dPriorityDefinitionError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dSequenceOfHClipPlane_destructor(HandleGraphic3dSequenceOfHClipPlane* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dSequenceOfHClipPlane*> HandleGraphic3dSequenceOfHClipPlane_clone(const HandleGraphic3dSequenceOfHClipPlane* self_) {
+    try { return {new HandleGraphic3dSequenceOfHClipPlane(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dShaderAttribute_destructor(HandleGraphic3dShaderAttribute* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dShaderAttribute*> HandleGraphic3dShaderAttribute_clone(const HandleGraphic3dShaderAttribute* self_) {
+    try { return {new HandleGraphic3dShaderAttribute(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dShaderManager_destructor(HandleGraphic3dShaderManager* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dShaderManager*> HandleGraphic3dShaderManager_clone(const HandleGraphic3dShaderManager* self_) {
+    try { return {new HandleGraphic3dShaderManager(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dShaderObject_destructor(HandleGraphic3dShaderObject* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dShaderObject*> HandleGraphic3dShaderObject_clone(const HandleGraphic3dShaderObject* self_) {
+    try { return {new HandleGraphic3dShaderObject(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dShaderProgram_destructor(HandleGraphic3dShaderProgram* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dShaderProgram*> HandleGraphic3dShaderProgram_clone(const HandleGraphic3dShaderProgram* self_) {
+    try { return {new HandleGraphic3dShaderProgram(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dShaderVariable_destructor(HandleGraphic3dShaderVariable* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dShaderVariable*> HandleGraphic3dShaderVariable_clone(const HandleGraphic3dShaderVariable* self_) {
+    try { return {new HandleGraphic3dShaderVariable(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dStructure_destructor(HandleGraphic3dStructure* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dStructure*> HandleGraphic3dStructure_clone(const HandleGraphic3dStructure* self_) {
+    try { return {new HandleGraphic3dStructure(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dStructureDefinitionError_destructor(HandleGraphic3dStructureDefinitionError* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dStructureDefinitionError*> HandleGraphic3dStructureDefinitionError_clone(const HandleGraphic3dStructureDefinitionError* self_) {
+    try { return {new HandleGraphic3dStructureDefinitionError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dStructureManager_destructor(HandleGraphic3dStructureManager* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dStructureManager*> HandleGraphic3dStructureManager_clone(const HandleGraphic3dStructureManager* self_) {
+    try { return {new HandleGraphic3dStructureManager(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dText_destructor(HandleGraphic3dText* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dText*> HandleGraphic3dText_clone(const HandleGraphic3dText* self_) {
+    try { return {new HandleGraphic3dText(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTexture1D_destructor(HandleGraphic3dTexture1D* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTexture1D*> HandleGraphic3dTexture1D_clone(const HandleGraphic3dTexture1D* self_) {
+    try { return {new HandleGraphic3dTexture1D(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTexture1Dmanual_destructor(HandleGraphic3dTexture1Dmanual* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTexture1Dmanual*> HandleGraphic3dTexture1Dmanual_clone(const HandleGraphic3dTexture1Dmanual* self_) {
+    try { return {new HandleGraphic3dTexture1Dmanual(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTexture1Dsegment_destructor(HandleGraphic3dTexture1Dsegment* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTexture1Dsegment*> HandleGraphic3dTexture1Dsegment_clone(const HandleGraphic3dTexture1Dsegment* self_) {
+    try { return {new HandleGraphic3dTexture1Dsegment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTexture2D_destructor(HandleGraphic3dTexture2D* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTexture2D*> HandleGraphic3dTexture2D_clone(const HandleGraphic3dTexture2D* self_) {
+    try { return {new HandleGraphic3dTexture2D(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTexture2Dplane_destructor(HandleGraphic3dTexture2Dplane* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTexture2Dplane*> HandleGraphic3dTexture2Dplane_clone(const HandleGraphic3dTexture2Dplane* self_) {
+    try { return {new HandleGraphic3dTexture2Dplane(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTexture3D_destructor(HandleGraphic3dTexture3D* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTexture3D*> HandleGraphic3dTexture3D_clone(const HandleGraphic3dTexture3D* self_) {
+    try { return {new HandleGraphic3dTexture3D(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTextureEnv_destructor(HandleGraphic3dTextureEnv* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTextureEnv*> HandleGraphic3dTextureEnv_clone(const HandleGraphic3dTextureEnv* self_) {
+    try { return {new HandleGraphic3dTextureEnv(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTextureMap_destructor(HandleGraphic3dTextureMap* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTextureMap*> HandleGraphic3dTextureMap_clone(const HandleGraphic3dTextureMap* self_) {
+    try { return {new HandleGraphic3dTextureMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTextureParams_destructor(HandleGraphic3dTextureParams* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTextureParams*> HandleGraphic3dTextureParams_clone(const HandleGraphic3dTextureParams* self_) {
+    try { return {new HandleGraphic3dTextureParams(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTextureRoot_destructor(HandleGraphic3dTextureRoot* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTextureRoot*> HandleGraphic3dTextureRoot_clone(const HandleGraphic3dTextureRoot* self_) {
+    try { return {new HandleGraphic3dTextureRoot(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTextureSet_destructor(HandleGraphic3dTextureSet* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTextureSet*> HandleGraphic3dTextureSet_clone(const HandleGraphic3dTextureSet* self_) {
+    try { return {new HandleGraphic3dTextureSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTransformPers_destructor(HandleGraphic3dTransformPers* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTransformPers*> HandleGraphic3dTransformPers_clone(const HandleGraphic3dTransformPers* self_) {
+    try { return {new HandleGraphic3dTransformPers(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dTransformPersScaledAbove_destructor(HandleGraphic3dTransformPersScaledAbove* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dTransformPersScaledAbove*> HandleGraphic3dTransformPersScaledAbove_clone(const HandleGraphic3dTransformPersScaledAbove* self_) {
+    try { return {new HandleGraphic3dTransformPersScaledAbove(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleGraphic3dViewAffinity_destructor(HandleGraphic3dViewAffinity* self_) { delete self_; }
+extern "C" OcctResult<HandleGraphic3dViewAffinity*> HandleGraphic3dViewAffinity_clone(const HandleGraphic3dViewAffinity* self_) {
+    try { return {new HandleGraphic3dViewAffinity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleImageAlienPixMap_destructor(HandleImageAlienPixMap* self_) { delete self_; }
+extern "C" OcctResult<HandleImageAlienPixMap*> HandleImageAlienPixMap_clone(const HandleImageAlienPixMap* self_) {
+    try { return {new HandleImageAlienPixMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleImageCompressedPixMap_destructor(HandleImageCompressedPixMap* self_) { delete self_; }
+extern "C" OcctResult<HandleImageCompressedPixMap*> HandleImageCompressedPixMap_clone(const HandleImageCompressedPixMap* self_) {
+    try { return {new HandleImageCompressedPixMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleImageDiff_destructor(HandleImageDiff* self_) { delete self_; }
+extern "C" OcctResult<HandleImageDiff*> HandleImageDiff_clone(const HandleImageDiff* self_) {
+    try { return {new HandleImageDiff(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleImagePixMap_destructor(HandleImagePixMap* self_) { delete self_; }
+extern "C" OcctResult<HandleImagePixMap*> HandleImagePixMap_clone(const HandleImagePixMap* self_) {
+    try { return {new HandleImagePixMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleImagePixMapData_destructor(HandleImagePixMapData* self_) { delete self_; }
+extern "C" OcctResult<HandleImagePixMapData*> HandleImagePixMapData_clone(const HandleImagePixMapData* self_) {
+    try { return {new HandleImagePixMapData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleImageSupportedFormats_destructor(HandleImageSupportedFormats* self_) { delete self_; }
+extern "C" OcctResult<HandleImageSupportedFormats*> HandleImageSupportedFormats_clone(const HandleImageSupportedFormats* self_) {
+    try { return {new HandleImageSupportedFormats(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleImageTexture_destructor(HandleImageTexture* self_) { delete self_; }
+extern "C" OcctResult<HandleImageTexture*> HandleImageTexture_clone(const HandleImageTexture* self_) {
+    try { return {new HandleImageTexture(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleImageVideoRecorder_destructor(HandleImageVideoRecorder* self_) { delete self_; }
+extern "C" OcctResult<HandleImageVideoRecorder*> HandleImageVideoRecorder_clone(const HandleImageVideoRecorder* self_) {
+    try { return {new HandleImageVideoRecorder(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMediaBufferPool_destructor(HandleMediaBufferPool* self_) { delete self_; }
+extern "C" OcctResult<HandleMediaBufferPool*> HandleMediaBufferPool_clone(const HandleMediaBufferPool* self_) {
+    try { return {new HandleMediaBufferPool(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMediaCodecContext_destructor(HandleMediaCodecContext* self_) { delete self_; }
+extern "C" OcctResult<HandleMediaCodecContext*> HandleMediaCodecContext_clone(const HandleMediaCodecContext* self_) {
+    try { return {new HandleMediaCodecContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMediaFormatContext_destructor(HandleMediaFormatContext* self_) { delete self_; }
+extern "C" OcctResult<HandleMediaFormatContext*> HandleMediaFormatContext_clone(const HandleMediaFormatContext* self_) {
+    try { return {new HandleMediaFormatContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMediaFrame_destructor(HandleMediaFrame* self_) { delete self_; }
+extern "C" OcctResult<HandleMediaFrame*> HandleMediaFrame_clone(const HandleMediaFrame* self_) {
+    try { return {new HandleMediaFrame(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMediaPacket_destructor(HandleMediaPacket* self_) { delete self_; }
+extern "C" OcctResult<HandleMediaPacket*> HandleMediaPacket_clone(const HandleMediaPacket* self_) {
+    try { return {new HandleMediaPacket(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMediaPlayerContext_destructor(HandleMediaPlayerContext* self_) { delete self_; }
+extern "C" OcctResult<HandleMediaPlayerContext*> HandleMediaPlayerContext_clone(const HandleMediaPlayerContext* self_) {
+    try { return {new HandleMediaPlayerContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMediaScaler_destructor(HandleMediaScaler* self_) { delete self_; }
+extern "C" OcctResult<HandleMediaScaler*> HandleMediaScaler_clone(const HandleMediaScaler* self_) {
+    try { return {new HandleMediaScaler(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMediaTimer_destructor(HandleMediaTimer* self_) { delete self_; }
+extern "C" OcctResult<HandleMediaTimer*> HandleMediaTimer_clone(const HandleMediaTimer* self_) {
+    try { return {new HandleMediaTimer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // Aspect_AspectFillAreaDefinitionError wrappers
@@ -12153,7 +12585,7 @@ extern "C" void Graphic3d_CubeMapOrder_destructor(Graphic3d_CubeMapOrder* self_)
 // Graphic3d_ValidatedCubeMapOrder wrappers
 // ========================
 
-extern "C" OcctResult<Graphic3d_ValidatedCubeMapOrder*> Graphic3d_ValidatedCubeMapOrder_to_owned(const Graphic3d_ValidatedCubeMapOrder* self_) {
+extern "C" OcctResult<Graphic3d_ValidatedCubeMapOrder*> Graphic3d_ValidatedCubeMapOrder_clone(const Graphic3d_ValidatedCubeMapOrder* self_) {
     try { return {new Graphic3d_ValidatedCubeMapOrder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12951,7 +13383,7 @@ extern "C" const char* Graphic3d_FrameStatsData_fill_max(Graphic3d_FrameStatsDat
     try { self_->FillMax(*theOther); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Graphic3d_FrameStatsData*> Graphic3d_FrameStatsData_to_owned(const Graphic3d_FrameStatsData* self_) {
+extern "C" OcctResult<Graphic3d_FrameStatsData*> Graphic3d_FrameStatsData_clone(const Graphic3d_FrameStatsData* self_) {
     try { return {new Graphic3d_FrameStatsData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }

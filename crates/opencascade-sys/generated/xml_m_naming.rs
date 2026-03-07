@@ -354,6 +354,12 @@ unsafe impl crate::CppDeletable for HandleXmlMNamingNamedShapeDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXmlMNamingNamedShapeDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_clone(ptr))
+    }
+}
+
 impl HandleXmlMNamingNamedShapeDriver {
     /// Dereference this Handle to access the underlying XmlMNaming_NamedShapeDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMNaming_NamedShapeDriver {
@@ -667,6 +673,12 @@ pub use crate::ffi_types::HandleXmlMNamingNamingDriver;
 unsafe impl crate::CppDeletable for HandleXmlMNamingNamingDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXmlMNamingNamingDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_clone(ptr))
     }
 }
 

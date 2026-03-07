@@ -123,6 +123,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEConfigurationContext>;
     /// Destroy Handle<DE_ConfigurationContext>
     pub fn HandleDEConfigurationContext_destructor(self_: *mut HandleDEConfigurationContext);
+    /// Clone Handle<DE_ConfigurationContext> (increments reference count)
+    pub fn HandleDEConfigurationContext_clone(
+        self_: *const HandleDEConfigurationContext,
+    ) -> crate::OcctResult<*mut HandleDEConfigurationContext>;
     /// Dereference Handle to get *const DE_ConfigurationContext
     pub fn HandleDEConfigurationContext_get(
         handle: *const HandleDEConfigurationContext,
@@ -262,6 +266,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<DE_ConfigurationNode>
     pub fn HandleDEConfigurationNode_destructor(self_: *mut HandleDEConfigurationNode);
+    /// Clone Handle<DE_ConfigurationNode> (increments reference count)
+    pub fn HandleDEConfigurationNode_clone(
+        self_: *const HandleDEConfigurationNode,
+    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
     /// Dereference Handle to get *const DE_ConfigurationNode
     pub fn HandleDEConfigurationNode_get(
         handle: *const HandleDEConfigurationNode,
@@ -446,6 +454,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<DE_Provider>
     pub fn HandleDEProvider_destructor(self_: *mut HandleDEProvider);
+    /// Clone Handle<DE_Provider> (increments reference count)
+    pub fn HandleDEProvider_clone(
+        self_: *const HandleDEProvider,
+    ) -> crate::OcctResult<*mut HandleDEProvider>;
     /// Dereference Handle to get *const DE_Provider
     pub fn HandleDEProvider_get(
         handle: *const HandleDEProvider,
@@ -560,6 +572,10 @@ extern "C" {
     pub fn HandleDEShapeFixConfigurationNode_destructor(
         self_: *mut HandleDEShapeFixConfigurationNode,
     );
+    /// Clone Handle<DE_ShapeFixConfigurationNode> (increments reference count)
+    pub fn HandleDEShapeFixConfigurationNode_clone(
+        self_: *const HandleDEShapeFixConfigurationNode,
+    ) -> crate::OcctResult<*mut HandleDEShapeFixConfigurationNode>;
     /// Dereference Handle to get *const DE_ShapeFixConfigurationNode
     pub fn HandleDEShapeFixConfigurationNode_get(
         handle: *const HandleDEShapeFixConfigurationNode,
@@ -854,6 +870,10 @@ extern "C" {
     pub fn DE_Wrapper_to_handle(obj: *mut DE_Wrapper) -> crate::OcctResult<*mut HandleDEWrapper>;
     /// Destroy Handle<DE_Wrapper>
     pub fn HandleDEWrapper_destructor(self_: *mut HandleDEWrapper);
+    /// Clone Handle<DE_Wrapper> (increments reference count)
+    pub fn HandleDEWrapper_clone(
+        self_: *const HandleDEWrapper,
+    ) -> crate::OcctResult<*mut HandleDEWrapper>;
     /// Dereference Handle to get *const DE_Wrapper
     pub fn HandleDEWrapper_get(
         handle: *const HandleDEWrapper,

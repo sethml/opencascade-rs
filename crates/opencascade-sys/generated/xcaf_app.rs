@@ -670,6 +670,12 @@ unsafe impl crate::CppDeletable for HandleXCAFAppApplication {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFAppApplication {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFAppApplication_clone(ptr))
+    }
+}
+
 impl HandleXCAFAppApplication {
     /// Dereference this Handle to access the underlying XCAFApp_Application
     pub fn get(&self) -> &crate::ffi_types::XCAFApp_Application {

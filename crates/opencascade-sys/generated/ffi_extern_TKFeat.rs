@@ -2302,6 +2302,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<LocOpe_GeneratedShape>
     pub fn HandleLocOpeGeneratedShape_destructor(self_: *mut HandleLocOpeGeneratedShape);
+    /// Clone Handle<LocOpe_GeneratedShape> (increments reference count)
+    pub fn HandleLocOpeGeneratedShape_clone(
+        self_: *const HandleLocOpeGeneratedShape,
+    ) -> crate::OcctResult<*mut HandleLocOpeGeneratedShape>;
     /// Dereference Handle to get *const LocOpe_GeneratedShape
     pub fn HandleLocOpeGeneratedShape_get(
         handle: *const HandleLocOpeGeneratedShape,
@@ -2447,6 +2451,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleLocOpeGluedShape>;
     /// Destroy Handle<LocOpe_GluedShape>
     pub fn HandleLocOpeGluedShape_destructor(self_: *mut HandleLocOpeGluedShape);
+    /// Clone Handle<LocOpe_GluedShape> (increments reference count)
+    pub fn HandleLocOpeGluedShape_clone(
+        self_: *const HandleLocOpeGluedShape,
+    ) -> crate::OcctResult<*mut HandleLocOpeGluedShape>;
     /// Dereference Handle to get *const LocOpe_GluedShape
     pub fn HandleLocOpeGluedShape_get(
         handle: *const HandleLocOpeGluedShape,
@@ -3084,6 +3092,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleLocOpeWiresOnShape>;
     /// Destroy Handle<LocOpe_WiresOnShape>
     pub fn HandleLocOpeWiresOnShape_destructor(self_: *mut HandleLocOpeWiresOnShape);
+    /// Clone Handle<LocOpe_WiresOnShape> (increments reference count)
+    pub fn HandleLocOpeWiresOnShape_clone(
+        self_: *const HandleLocOpeWiresOnShape,
+    ) -> crate::OcctResult<*mut HandleLocOpeWiresOnShape>;
     /// Dereference Handle to get *const LocOpe_WiresOnShape
     pub fn HandleLocOpeWiresOnShape_get(
         handle: *const HandleLocOpeWiresOnShape,

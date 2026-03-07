@@ -1794,6 +1794,22 @@ unsafe impl crate::CppDeletable for Set {
     }
 }
 
+unsafe impl crate::CppCopyable for Set {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::BOPTools_Set_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Set {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Set {
     /// **Source:** `BOPTools_Set.hxx`:32 - `BOPTools_Set::BOPTools_Set()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -1866,15 +1882,6 @@ impl Set {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPTools_Set_get_sum(self as *const Self)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPTools_Set_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 

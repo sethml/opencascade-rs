@@ -673,6 +673,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEIGESConfigurationNode>;
     /// Destroy Handle<DEIGES_ConfigurationNode>
     pub fn HandleDEIGESConfigurationNode_destructor(self_: *mut HandleDEIGESConfigurationNode);
+    /// Clone Handle<DEIGES_ConfigurationNode> (increments reference count)
+    pub fn HandleDEIGESConfigurationNode_clone(
+        self_: *const HandleDEIGESConfigurationNode,
+    ) -> crate::OcctResult<*mut HandleDEIGESConfigurationNode>;
     /// Dereference Handle to get *const DEIGES_ConfigurationNode
     pub fn HandleDEIGESConfigurationNode_get(
         handle: *const HandleDEIGESConfigurationNode,
@@ -867,6 +871,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEIGESProvider>;
     /// Destroy Handle<DEIGES_Provider>
     pub fn HandleDEIGESProvider_destructor(self_: *mut HandleDEIGESProvider);
+    /// Clone Handle<DEIGES_Provider> (increments reference count)
+    pub fn HandleDEIGESProvider_clone(
+        self_: *const HandleDEIGESProvider,
+    ) -> crate::OcctResult<*mut HandleDEIGESProvider>;
     /// Dereference Handle to get *const DEIGES_Provider
     pub fn HandleDEIGESProvider_get(
         handle: *const HandleDEIGESProvider,
@@ -986,7 +994,7 @@ extern "C" {
         self_: *const Geom2dToIGES_Geom2dEntity,
     ) -> crate::OcctResult<f64>;
     /// Clone via copy constructor
-    pub fn Geom2dToIGES_Geom2dEntity_to_owned(
+    pub fn Geom2dToIGES_Geom2dEntity_clone(
         self_: *const Geom2dToIGES_Geom2dEntity,
     ) -> crate::OcctResult<*mut Geom2dToIGES_Geom2dEntity>;
     // ======================== Geom2dToIGES_Geom2dPoint ========================
@@ -1223,7 +1231,7 @@ extern "C" {
         self_: *const GeomToIGES_GeomEntity,
     ) -> crate::OcctResult<f64>;
     /// Clone via copy constructor
-    pub fn GeomToIGES_GeomEntity_to_owned(
+    pub fn GeomToIGES_GeomEntity_clone(
         self_: *const GeomToIGES_GeomEntity,
     ) -> crate::OcctResult<*mut GeomToIGES_GeomEntity>;
     // ======================== GeomToIGES_GeomPoint ========================
@@ -1624,6 +1632,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliDrilledHole>;
     /// Destroy Handle<IGESAppli_DrilledHole>
     pub fn HandleIGESAppliDrilledHole_destructor(self_: *mut HandleIGESAppliDrilledHole);
+    /// Clone Handle<IGESAppli_DrilledHole> (increments reference count)
+    pub fn HandleIGESAppliDrilledHole_clone(
+        self_: *const HandleIGESAppliDrilledHole,
+    ) -> crate::OcctResult<*mut HandleIGESAppliDrilledHole>;
     /// Dereference Handle to get *const IGESAppli_DrilledHole
     pub fn HandleIGESAppliDrilledHole_get(
         handle: *const HandleIGESAppliDrilledHole,
@@ -2107,6 +2119,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliElementResults>;
     /// Destroy Handle<IGESAppli_ElementResults>
     pub fn HandleIGESAppliElementResults_destructor(self_: *mut HandleIGESAppliElementResults);
+    /// Clone Handle<IGESAppli_ElementResults> (increments reference count)
+    pub fn HandleIGESAppliElementResults_clone(
+        self_: *const HandleIGESAppliElementResults,
+    ) -> crate::OcctResult<*mut HandleIGESAppliElementResults>;
     /// Dereference Handle to get *const IGESAppli_ElementResults
     pub fn HandleIGESAppliElementResults_get(
         handle: *const HandleIGESAppliElementResults,
@@ -2500,6 +2516,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliFiniteElement>;
     /// Destroy Handle<IGESAppli_FiniteElement>
     pub fn HandleIGESAppliFiniteElement_destructor(self_: *mut HandleIGESAppliFiniteElement);
+    /// Clone Handle<IGESAppli_FiniteElement> (increments reference count)
+    pub fn HandleIGESAppliFiniteElement_clone(
+        self_: *const HandleIGESAppliFiniteElement,
+    ) -> crate::OcctResult<*mut HandleIGESAppliFiniteElement>;
     /// Dereference Handle to get *const IGESAppli_FiniteElement
     pub fn HandleIGESAppliFiniteElement_get(
         handle: *const HandleIGESAppliFiniteElement,
@@ -2938,6 +2958,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliFlow>;
     /// Destroy Handle<IGESAppli_Flow>
     pub fn HandleIGESAppliFlow_destructor(self_: *mut HandleIGESAppliFlow);
+    /// Clone Handle<IGESAppli_Flow> (increments reference count)
+    pub fn HandleIGESAppliFlow_clone(
+        self_: *const HandleIGESAppliFlow,
+    ) -> crate::OcctResult<*mut HandleIGESAppliFlow>;
     /// Dereference Handle to get *const IGESAppli_Flow
     pub fn HandleIGESAppliFlow_get(
         handle: *const HandleIGESAppliFlow,
@@ -3320,6 +3344,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliFlowLineSpec>;
     /// Destroy Handle<IGESAppli_FlowLineSpec>
     pub fn HandleIGESAppliFlowLineSpec_destructor(self_: *mut HandleIGESAppliFlowLineSpec);
+    /// Clone Handle<IGESAppli_FlowLineSpec> (increments reference count)
+    pub fn HandleIGESAppliFlowLineSpec_clone(
+        self_: *const HandleIGESAppliFlowLineSpec,
+    ) -> crate::OcctResult<*mut HandleIGESAppliFlowLineSpec>;
     /// Dereference Handle to get *const IGESAppli_FlowLineSpec
     pub fn HandleIGESAppliFlowLineSpec_get(
         handle: *const HandleIGESAppliFlowLineSpec,
@@ -3739,6 +3767,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliGeneralModule>;
     /// Destroy Handle<IGESAppli_GeneralModule>
     pub fn HandleIGESAppliGeneralModule_destructor(self_: *mut HandleIGESAppliGeneralModule);
+    /// Clone Handle<IGESAppli_GeneralModule> (increments reference count)
+    pub fn HandleIGESAppliGeneralModule_clone(
+        self_: *const HandleIGESAppliGeneralModule,
+    ) -> crate::OcctResult<*mut HandleIGESAppliGeneralModule>;
     /// Dereference Handle to get *const IGESAppli_GeneralModule
     pub fn HandleIGESAppliGeneralModule_get(
         handle: *const HandleIGESAppliGeneralModule,
@@ -3969,6 +4001,10 @@ extern "C" {
     pub fn HandleIGESAppliHArray1OfFiniteElement_destructor(
         self_: *mut HandleIGESAppliHArray1OfFiniteElement,
     );
+    /// Clone Handle<IGESAppli_HArray1OfFiniteElement> (increments reference count)
+    pub fn HandleIGESAppliHArray1OfFiniteElement_clone(
+        self_: *const HandleIGESAppliHArray1OfFiniteElement,
+    ) -> crate::OcctResult<*mut HandleIGESAppliHArray1OfFiniteElement>;
     /// Dereference Handle to get *const IGESAppli_HArray1OfFiniteElement
     pub fn HandleIGESAppliHArray1OfFiniteElement_get(
         handle: *const HandleIGESAppliHArray1OfFiniteElement,
@@ -4068,6 +4104,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliHArray1OfFlow>;
     /// Destroy Handle<IGESAppli_HArray1OfFlow>
     pub fn HandleIGESAppliHArray1OfFlow_destructor(self_: *mut HandleIGESAppliHArray1OfFlow);
+    /// Clone Handle<IGESAppli_HArray1OfFlow> (increments reference count)
+    pub fn HandleIGESAppliHArray1OfFlow_clone(
+        self_: *const HandleIGESAppliHArray1OfFlow,
+    ) -> crate::OcctResult<*mut HandleIGESAppliHArray1OfFlow>;
     /// Dereference Handle to get *const IGESAppli_HArray1OfFlow
     pub fn HandleIGESAppliHArray1OfFlow_get(
         handle: *const HandleIGESAppliHArray1OfFlow,
@@ -4167,6 +4207,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliHArray1OfNode>;
     /// Destroy Handle<IGESAppli_HArray1OfNode>
     pub fn HandleIGESAppliHArray1OfNode_destructor(self_: *mut HandleIGESAppliHArray1OfNode);
+    /// Clone Handle<IGESAppli_HArray1OfNode> (increments reference count)
+    pub fn HandleIGESAppliHArray1OfNode_clone(
+        self_: *const HandleIGESAppliHArray1OfNode,
+    ) -> crate::OcctResult<*mut HandleIGESAppliHArray1OfNode>;
     /// Dereference Handle to get *const IGESAppli_HArray1OfNode
     pub fn HandleIGESAppliHArray1OfNode_get(
         handle: *const HandleIGESAppliHArray1OfNode,
@@ -4263,6 +4307,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliLevelFunction>;
     /// Destroy Handle<IGESAppli_LevelFunction>
     pub fn HandleIGESAppliLevelFunction_destructor(self_: *mut HandleIGESAppliLevelFunction);
+    /// Clone Handle<IGESAppli_LevelFunction> (increments reference count)
+    pub fn HandleIGESAppliLevelFunction_clone(
+        self_: *const HandleIGESAppliLevelFunction,
+    ) -> crate::OcctResult<*mut HandleIGESAppliLevelFunction>;
     /// Dereference Handle to get *const IGESAppli_LevelFunction
     pub fn HandleIGESAppliLevelFunction_get(
         handle: *const HandleIGESAppliLevelFunction,
@@ -4672,6 +4720,10 @@ extern "C" {
     pub fn HandleIGESAppliLevelToPWBLayerMap_destructor(
         self_: *mut HandleIGESAppliLevelToPWBLayerMap,
     );
+    /// Clone Handle<IGESAppli_LevelToPWBLayerMap> (increments reference count)
+    pub fn HandleIGESAppliLevelToPWBLayerMap_clone(
+        self_: *const HandleIGESAppliLevelToPWBLayerMap,
+    ) -> crate::OcctResult<*mut HandleIGESAppliLevelToPWBLayerMap>;
     /// Dereference Handle to get *const IGESAppli_LevelToPWBLayerMap
     pub fn HandleIGESAppliLevelToPWBLayerMap_get(
         handle: *const HandleIGESAppliLevelToPWBLayerMap,
@@ -5075,6 +5127,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliLineWidening>;
     /// Destroy Handle<IGESAppli_LineWidening>
     pub fn HandleIGESAppliLineWidening_destructor(self_: *mut HandleIGESAppliLineWidening);
+    /// Clone Handle<IGESAppli_LineWidening> (increments reference count)
+    pub fn HandleIGESAppliLineWidening_clone(
+        self_: *const HandleIGESAppliLineWidening,
+    ) -> crate::OcctResult<*mut HandleIGESAppliLineWidening>;
     /// Dereference Handle to get *const IGESAppli_LineWidening
     pub fn HandleIGESAppliLineWidening_get(
         handle: *const HandleIGESAppliLineWidening,
@@ -5468,6 +5524,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliNodalConstraint>;
     /// Destroy Handle<IGESAppli_NodalConstraint>
     pub fn HandleIGESAppliNodalConstraint_destructor(self_: *mut HandleIGESAppliNodalConstraint);
+    /// Clone Handle<IGESAppli_NodalConstraint> (increments reference count)
+    pub fn HandleIGESAppliNodalConstraint_clone(
+        self_: *const HandleIGESAppliNodalConstraint,
+    ) -> crate::OcctResult<*mut HandleIGESAppliNodalConstraint>;
     /// Dereference Handle to get *const IGESAppli_NodalConstraint
     pub fn HandleIGESAppliNodalConstraint_get(
         handle: *const HandleIGESAppliNodalConstraint,
@@ -5881,6 +5941,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliNodalDisplAndRot>;
     /// Destroy Handle<IGESAppli_NodalDisplAndRot>
     pub fn HandleIGESAppliNodalDisplAndRot_destructor(self_: *mut HandleIGESAppliNodalDisplAndRot);
+    /// Clone Handle<IGESAppli_NodalDisplAndRot> (increments reference count)
+    pub fn HandleIGESAppliNodalDisplAndRot_clone(
+        self_: *const HandleIGESAppliNodalDisplAndRot,
+    ) -> crate::OcctResult<*mut HandleIGESAppliNodalDisplAndRot>;
     /// Dereference Handle to get *const IGESAppli_NodalDisplAndRot
     pub fn HandleIGESAppliNodalDisplAndRot_get(
         handle: *const HandleIGESAppliNodalDisplAndRot,
@@ -6301,6 +6365,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliNodalResults>;
     /// Destroy Handle<IGESAppli_NodalResults>
     pub fn HandleIGESAppliNodalResults_destructor(self_: *mut HandleIGESAppliNodalResults);
+    /// Clone Handle<IGESAppli_NodalResults> (increments reference count)
+    pub fn HandleIGESAppliNodalResults_clone(
+        self_: *const HandleIGESAppliNodalResults,
+    ) -> crate::OcctResult<*mut HandleIGESAppliNodalResults>;
     /// Dereference Handle to get *const IGESAppli_NodalResults
     pub fn HandleIGESAppliNodalResults_get(
         handle: *const HandleIGESAppliNodalResults,
@@ -6687,6 +6755,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliNode>;
     /// Destroy Handle<IGESAppli_Node>
     pub fn HandleIGESAppliNode_destructor(self_: *mut HandleIGESAppliNode);
+    /// Clone Handle<IGESAppli_Node> (increments reference count)
+    pub fn HandleIGESAppliNode_clone(
+        self_: *const HandleIGESAppliNode,
+    ) -> crate::OcctResult<*mut HandleIGESAppliNode>;
     /// Dereference Handle to get *const IGESAppli_Node
     pub fn HandleIGESAppliNode_get(
         handle: *const HandleIGESAppliNode,
@@ -7077,6 +7149,10 @@ extern "C" {
     pub fn HandleIGESAppliPWBArtworkStackup_destructor(
         self_: *mut HandleIGESAppliPWBArtworkStackup,
     );
+    /// Clone Handle<IGESAppli_PWBArtworkStackup> (increments reference count)
+    pub fn HandleIGESAppliPWBArtworkStackup_clone(
+        self_: *const HandleIGESAppliPWBArtworkStackup,
+    ) -> crate::OcctResult<*mut HandleIGESAppliPWBArtworkStackup>;
     /// Dereference Handle to get *const IGESAppli_PWBArtworkStackup
     pub fn HandleIGESAppliPWBArtworkStackup_get(
         handle: *const HandleIGESAppliPWBArtworkStackup,
@@ -7470,6 +7546,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliPWBDrilledHole>;
     /// Destroy Handle<IGESAppli_PWBDrilledHole>
     pub fn HandleIGESAppliPWBDrilledHole_destructor(self_: *mut HandleIGESAppliPWBDrilledHole);
+    /// Clone Handle<IGESAppli_PWBDrilledHole> (increments reference count)
+    pub fn HandleIGESAppliPWBDrilledHole_clone(
+        self_: *const HandleIGESAppliPWBDrilledHole,
+    ) -> crate::OcctResult<*mut HandleIGESAppliPWBDrilledHole>;
     /// Dereference Handle to get *const IGESAppli_PWBDrilledHole
     pub fn HandleIGESAppliPWBDrilledHole_get(
         handle: *const HandleIGESAppliPWBDrilledHole,
@@ -7867,6 +7947,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliPartNumber>;
     /// Destroy Handle<IGESAppli_PartNumber>
     pub fn HandleIGESAppliPartNumber_destructor(self_: *mut HandleIGESAppliPartNumber);
+    /// Clone Handle<IGESAppli_PartNumber> (increments reference count)
+    pub fn HandleIGESAppliPartNumber_clone(
+        self_: *const HandleIGESAppliPartNumber,
+    ) -> crate::OcctResult<*mut HandleIGESAppliPartNumber>;
     /// Dereference Handle to get *const IGESAppli_PartNumber
     pub fn HandleIGESAppliPartNumber_get(
         handle: *const HandleIGESAppliPartNumber,
@@ -8249,6 +8333,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliPinNumber>;
     /// Destroy Handle<IGESAppli_PinNumber>
     pub fn HandleIGESAppliPinNumber_destructor(self_: *mut HandleIGESAppliPinNumber);
+    /// Clone Handle<IGESAppli_PinNumber> (increments reference count)
+    pub fn HandleIGESAppliPinNumber_clone(
+        self_: *const HandleIGESAppliPinNumber,
+    ) -> crate::OcctResult<*mut HandleIGESAppliPinNumber>;
     /// Dereference Handle to get *const IGESAppli_PinNumber
     pub fn HandleIGESAppliPinNumber_get(
         handle: *const HandleIGESAppliPinNumber,
@@ -8695,6 +8783,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliPipingFlow>;
     /// Destroy Handle<IGESAppli_PipingFlow>
     pub fn HandleIGESAppliPipingFlow_destructor(self_: *mut HandleIGESAppliPipingFlow);
+    /// Clone Handle<IGESAppli_PipingFlow> (increments reference count)
+    pub fn HandleIGESAppliPipingFlow_clone(
+        self_: *const HandleIGESAppliPipingFlow,
+    ) -> crate::OcctResult<*mut HandleIGESAppliPipingFlow>;
     /// Dereference Handle to get *const IGESAppli_PipingFlow
     pub fn HandleIGESAppliPipingFlow_get(
         handle: *const HandleIGESAppliPipingFlow,
@@ -9085,6 +9177,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliProtocol>;
     /// Destroy Handle<IGESAppli_Protocol>
     pub fn HandleIGESAppliProtocol_destructor(self_: *mut HandleIGESAppliProtocol);
+    /// Clone Handle<IGESAppli_Protocol> (increments reference count)
+    pub fn HandleIGESAppliProtocol_clone(
+        self_: *const HandleIGESAppliProtocol,
+    ) -> crate::OcctResult<*mut HandleIGESAppliProtocol>;
     /// Dereference Handle to get *const IGESAppli_Protocol
     pub fn HandleIGESAppliProtocol_get(
         handle: *const HandleIGESAppliProtocol,
@@ -9244,6 +9340,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliReadWriteModule>;
     /// Destroy Handle<IGESAppli_ReadWriteModule>
     pub fn HandleIGESAppliReadWriteModule_destructor(self_: *mut HandleIGESAppliReadWriteModule);
+    /// Clone Handle<IGESAppli_ReadWriteModule> (increments reference count)
+    pub fn HandleIGESAppliReadWriteModule_clone(
+        self_: *const HandleIGESAppliReadWriteModule,
+    ) -> crate::OcctResult<*mut HandleIGESAppliReadWriteModule>;
     /// Dereference Handle to get *const IGESAppli_ReadWriteModule
     pub fn HandleIGESAppliReadWriteModule_get(
         handle: *const HandleIGESAppliReadWriteModule,
@@ -9371,6 +9471,10 @@ extern "C" {
     pub fn HandleIGESAppliReferenceDesignator_destructor(
         self_: *mut HandleIGESAppliReferenceDesignator,
     );
+    /// Clone Handle<IGESAppli_ReferenceDesignator> (increments reference count)
+    pub fn HandleIGESAppliReferenceDesignator_clone(
+        self_: *const HandleIGESAppliReferenceDesignator,
+    ) -> crate::OcctResult<*mut HandleIGESAppliReferenceDesignator>;
     /// Dereference Handle to get *const IGESAppli_ReferenceDesignator
     pub fn HandleIGESAppliReferenceDesignator_get(
         handle: *const HandleIGESAppliReferenceDesignator,
@@ -9766,6 +9870,10 @@ extern "C" {
     pub fn HandleIGESAppliRegionRestriction_destructor(
         self_: *mut HandleIGESAppliRegionRestriction,
     );
+    /// Clone Handle<IGESAppli_RegionRestriction> (increments reference count)
+    pub fn HandleIGESAppliRegionRestriction_clone(
+        self_: *const HandleIGESAppliRegionRestriction,
+    ) -> crate::OcctResult<*mut HandleIGESAppliRegionRestriction>;
     /// Dereference Handle to get *const IGESAppli_RegionRestriction
     pub fn HandleIGESAppliRegionRestriction_get(
         handle: *const HandleIGESAppliRegionRestriction,
@@ -10150,6 +10258,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESAppliSpecificModule>;
     /// Destroy Handle<IGESAppli_SpecificModule>
     pub fn HandleIGESAppliSpecificModule_destructor(self_: *mut HandleIGESAppliSpecificModule);
+    /// Clone Handle<IGESAppli_SpecificModule> (increments reference count)
+    pub fn HandleIGESAppliSpecificModule_clone(
+        self_: *const HandleIGESAppliSpecificModule,
+    ) -> crate::OcctResult<*mut HandleIGESAppliSpecificModule>;
     /// Dereference Handle to get *const IGESAppli_SpecificModule
     pub fn HandleIGESAppliSpecificModule_get(
         handle: *const HandleIGESAppliSpecificModule,
@@ -11262,6 +11374,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicAssocGroupType>;
     /// Destroy Handle<IGESBasic_AssocGroupType>
     pub fn HandleIGESBasicAssocGroupType_destructor(self_: *mut HandleIGESBasicAssocGroupType);
+    /// Clone Handle<IGESBasic_AssocGroupType> (increments reference count)
+    pub fn HandleIGESBasicAssocGroupType_clone(
+        self_: *const HandleIGESBasicAssocGroupType,
+    ) -> crate::OcctResult<*mut HandleIGESBasicAssocGroupType>;
     /// Dereference Handle to get *const IGESBasic_AssocGroupType
     pub fn HandleIGESBasicAssocGroupType_get(
         handle: *const HandleIGESBasicAssocGroupType,
@@ -11640,6 +11756,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefFile>;
     /// Destroy Handle<IGESBasic_ExternalRefFile>
     pub fn HandleIGESBasicExternalRefFile_destructor(self_: *mut HandleIGESBasicExternalRefFile);
+    /// Clone Handle<IGESBasic_ExternalRefFile> (increments reference count)
+    pub fn HandleIGESBasicExternalRefFile_clone(
+        self_: *const HandleIGESBasicExternalRefFile,
+    ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefFile>;
     /// Dereference Handle to get *const IGESBasic_ExternalRefFile
     pub fn HandleIGESBasicExternalRefFile_get(
         handle: *const HandleIGESBasicExternalRefFile,
@@ -12033,6 +12153,10 @@ extern "C" {
     pub fn HandleIGESBasicExternalRefFileIndex_destructor(
         self_: *mut HandleIGESBasicExternalRefFileIndex,
     );
+    /// Clone Handle<IGESBasic_ExternalRefFileIndex> (increments reference count)
+    pub fn HandleIGESBasicExternalRefFileIndex_clone(
+        self_: *const HandleIGESBasicExternalRefFileIndex,
+    ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefFileIndex>;
     /// Dereference Handle to get *const IGESBasic_ExternalRefFileIndex
     pub fn HandleIGESBasicExternalRefFileIndex_get(
         handle: *const HandleIGESBasicExternalRefFileIndex,
@@ -12425,6 +12549,10 @@ extern "C" {
     pub fn HandleIGESBasicExternalRefFileName_destructor(
         self_: *mut HandleIGESBasicExternalRefFileName,
     );
+    /// Clone Handle<IGESBasic_ExternalRefFileName> (increments reference count)
+    pub fn HandleIGESBasicExternalRefFileName_clone(
+        self_: *const HandleIGESBasicExternalRefFileName,
+    ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefFileName>;
     /// Dereference Handle to get *const IGESBasic_ExternalRefFileName
     pub fn HandleIGESBasicExternalRefFileName_get(
         handle: *const HandleIGESBasicExternalRefFileName,
@@ -12811,6 +12939,10 @@ extern "C" {
     pub fn HandleIGESBasicExternalRefLibName_destructor(
         self_: *mut HandleIGESBasicExternalRefLibName,
     );
+    /// Clone Handle<IGESBasic_ExternalRefLibName> (increments reference count)
+    pub fn HandleIGESBasicExternalRefLibName_clone(
+        self_: *const HandleIGESBasicExternalRefLibName,
+    ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefLibName>;
     /// Dereference Handle to get *const IGESBasic_ExternalRefLibName
     pub fn HandleIGESBasicExternalRefLibName_get(
         handle: *const HandleIGESBasicExternalRefLibName,
@@ -13189,6 +13321,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefName>;
     /// Destroy Handle<IGESBasic_ExternalRefName>
     pub fn HandleIGESBasicExternalRefName_destructor(self_: *mut HandleIGESBasicExternalRefName);
+    /// Clone Handle<IGESBasic_ExternalRefName> (increments reference count)
+    pub fn HandleIGESBasicExternalRefName_clone(
+        self_: *const HandleIGESBasicExternalRefName,
+    ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefName>;
     /// Dereference Handle to get *const IGESBasic_ExternalRefName
     pub fn HandleIGESBasicExternalRefName_get(
         handle: *const HandleIGESBasicExternalRefName,
@@ -13576,6 +13712,10 @@ extern "C" {
     pub fn HandleIGESBasicExternalReferenceFile_destructor(
         self_: *mut HandleIGESBasicExternalReferenceFile,
     );
+    /// Clone Handle<IGESBasic_ExternalReferenceFile> (increments reference count)
+    pub fn HandleIGESBasicExternalReferenceFile_clone(
+        self_: *const HandleIGESBasicExternalReferenceFile,
+    ) -> crate::OcctResult<*mut HandleIGESBasicExternalReferenceFile>;
     /// Dereference Handle to get *const IGESBasic_ExternalReferenceFile
     pub fn HandleIGESBasicExternalReferenceFile_get(
         handle: *const HandleIGESBasicExternalReferenceFile,
@@ -13995,6 +14135,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicGeneralModule>;
     /// Destroy Handle<IGESBasic_GeneralModule>
     pub fn HandleIGESBasicGeneralModule_destructor(self_: *mut HandleIGESBasicGeneralModule);
+    /// Clone Handle<IGESBasic_GeneralModule> (increments reference count)
+    pub fn HandleIGESBasicGeneralModule_clone(
+        self_: *const HandleIGESBasicGeneralModule,
+    ) -> crate::OcctResult<*mut HandleIGESBasicGeneralModule>;
     /// Dereference Handle to get *const IGESBasic_GeneralModule
     pub fn HandleIGESBasicGeneralModule_get(
         handle: *const HandleIGESBasicGeneralModule,
@@ -14245,6 +14389,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicGroup>;
     /// Destroy Handle<IGESBasic_Group>
     pub fn HandleIGESBasicGroup_destructor(self_: *mut HandleIGESBasicGroup);
+    /// Clone Handle<IGESBasic_Group> (increments reference count)
+    pub fn HandleIGESBasicGroup_clone(
+        self_: *const HandleIGESBasicGroup,
+    ) -> crate::OcctResult<*mut HandleIGESBasicGroup>;
     /// Dereference Handle to get *const IGESBasic_Group
     pub fn HandleIGESBasicGroup_get(
         handle: *const HandleIGESBasicGroup,
@@ -14635,6 +14783,10 @@ extern "C" {
     pub fn HandleIGESBasicGroupWithoutBackP_destructor(
         self_: *mut HandleIGESBasicGroupWithoutBackP,
     );
+    /// Clone Handle<IGESBasic_GroupWithoutBackP> (increments reference count)
+    pub fn HandleIGESBasicGroupWithoutBackP_clone(
+        self_: *const HandleIGESBasicGroupWithoutBackP,
+    ) -> crate::OcctResult<*mut HandleIGESBasicGroupWithoutBackP>;
     /// Dereference Handle to get *const IGESBasic_GroupWithoutBackP
     pub fn HandleIGESBasicGroupWithoutBackP_get(
         handle: *const HandleIGESBasicGroupWithoutBackP,
@@ -15085,6 +15237,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfHArray1OfIGESEntity_destructor(
         self_: *mut HandleIGESBasicHArray1OfHArray1OfIGESEntity,
     );
+    /// Clone Handle<IGESBasic_HArray1OfHArray1OfIGESEntity> (increments reference count)
+    pub fn HandleIGESBasicHArray1OfHArray1OfIGESEntity_clone(
+        self_: *const HandleIGESBasicHArray1OfHArray1OfIGESEntity,
+    ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfHArray1OfIGESEntity>;
     /// Dereference Handle to get *const IGESBasic_HArray1OfHArray1OfIGESEntity
     pub fn HandleIGESBasicHArray1OfHArray1OfIGESEntity_get(
         handle: *const HandleIGESBasicHArray1OfHArray1OfIGESEntity,
@@ -15185,6 +15341,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfHArray1OfInteger_destructor(
         self_: *mut HandleIGESBasicHArray1OfHArray1OfInteger,
     );
+    /// Clone Handle<IGESBasic_HArray1OfHArray1OfInteger> (increments reference count)
+    pub fn HandleIGESBasicHArray1OfHArray1OfInteger_clone(
+        self_: *const HandleIGESBasicHArray1OfHArray1OfInteger,
+    ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfHArray1OfInteger>;
     /// Dereference Handle to get *const IGESBasic_HArray1OfHArray1OfInteger
     pub fn HandleIGESBasicHArray1OfHArray1OfInteger_get(
         handle: *const HandleIGESBasicHArray1OfHArray1OfInteger,
@@ -15285,6 +15445,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfHArray1OfReal_destructor(
         self_: *mut HandleIGESBasicHArray1OfHArray1OfReal,
     );
+    /// Clone Handle<IGESBasic_HArray1OfHArray1OfReal> (increments reference count)
+    pub fn HandleIGESBasicHArray1OfHArray1OfReal_clone(
+        self_: *const HandleIGESBasicHArray1OfHArray1OfReal,
+    ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfHArray1OfReal>;
     /// Dereference Handle to get *const IGESBasic_HArray1OfHArray1OfReal
     pub fn HandleIGESBasicHArray1OfHArray1OfReal_get(
         handle: *const HandleIGESBasicHArray1OfHArray1OfReal,
@@ -15383,6 +15547,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfHArray1OfXY_destructor(
         self_: *mut HandleIGESBasicHArray1OfHArray1OfXY,
     );
+    /// Clone Handle<IGESBasic_HArray1OfHArray1OfXY> (increments reference count)
+    pub fn HandleIGESBasicHArray1OfHArray1OfXY_clone(
+        self_: *const HandleIGESBasicHArray1OfHArray1OfXY,
+    ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfHArray1OfXY>;
     /// Dereference Handle to get *const IGESBasic_HArray1OfHArray1OfXY
     pub fn HandleIGESBasicHArray1OfHArray1OfXY_get(
         handle: *const HandleIGESBasicHArray1OfHArray1OfXY,
@@ -15481,6 +15649,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfHArray1OfXYZ_destructor(
         self_: *mut HandleIGESBasicHArray1OfHArray1OfXYZ,
     );
+    /// Clone Handle<IGESBasic_HArray1OfHArray1OfXYZ> (increments reference count)
+    pub fn HandleIGESBasicHArray1OfHArray1OfXYZ_clone(
+        self_: *const HandleIGESBasicHArray1OfHArray1OfXYZ,
+    ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfHArray1OfXYZ>;
     /// Dereference Handle to get *const IGESBasic_HArray1OfHArray1OfXYZ
     pub fn HandleIGESBasicHArray1OfHArray1OfXYZ_get(
         handle: *const HandleIGESBasicHArray1OfHArray1OfXYZ,
@@ -15586,6 +15758,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfLineFontEntity_destructor(
         self_: *mut HandleIGESBasicHArray1OfLineFontEntity,
     );
+    /// Clone Handle<IGESBasic_HArray1OfLineFontEntity> (increments reference count)
+    pub fn HandleIGESBasicHArray1OfLineFontEntity_clone(
+        self_: *const HandleIGESBasicHArray1OfLineFontEntity,
+    ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfLineFontEntity>;
     /// Dereference Handle to get *const IGESBasic_HArray1OfLineFontEntity
     pub fn HandleIGESBasicHArray1OfLineFontEntity_get(
         handle: *const HandleIGESBasicHArray1OfLineFontEntity,
@@ -15685,6 +15861,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray2OfHArray1OfReal_destructor(
         self_: *mut HandleIGESBasicHArray2OfHArray1OfReal,
     );
+    /// Clone Handle<IGESBasic_HArray2OfHArray1OfReal> (increments reference count)
+    pub fn HandleIGESBasicHArray2OfHArray1OfReal_clone(
+        self_: *const HandleIGESBasicHArray2OfHArray1OfReal,
+    ) -> crate::OcctResult<*mut HandleIGESBasicHArray2OfHArray1OfReal>;
     /// Dereference Handle to get *const IGESBasic_HArray2OfHArray1OfReal
     pub fn HandleIGESBasicHArray2OfHArray1OfReal_get(
         handle: *const HandleIGESBasicHArray2OfHArray1OfReal,
@@ -15800,6 +15980,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicHierarchy>;
     /// Destroy Handle<IGESBasic_Hierarchy>
     pub fn HandleIGESBasicHierarchy_destructor(self_: *mut HandleIGESBasicHierarchy);
+    /// Clone Handle<IGESBasic_Hierarchy> (increments reference count)
+    pub fn HandleIGESBasicHierarchy_clone(
+        self_: *const HandleIGESBasicHierarchy,
+    ) -> crate::OcctResult<*mut HandleIGESBasicHierarchy>;
     /// Dereference Handle to get *const IGESBasic_Hierarchy
     pub fn HandleIGESBasicHierarchy_get(
         handle: *const HandleIGESBasicHierarchy,
@@ -16190,6 +16374,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicName>;
     /// Destroy Handle<IGESBasic_Name>
     pub fn HandleIGESBasicName_destructor(self_: *mut HandleIGESBasicName);
+    /// Clone Handle<IGESBasic_Name> (increments reference count)
+    pub fn HandleIGESBasicName_clone(
+        self_: *const HandleIGESBasicName,
+    ) -> crate::OcctResult<*mut HandleIGESBasicName>;
     /// Dereference Handle to get *const IGESBasic_Name
     pub fn HandleIGESBasicName_get(
         handle: *const HandleIGESBasicName,
@@ -16566,6 +16754,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicOrderedGroup>;
     /// Destroy Handle<IGESBasic_OrderedGroup>
     pub fn HandleIGESBasicOrderedGroup_destructor(self_: *mut HandleIGESBasicOrderedGroup);
+    /// Clone Handle<IGESBasic_OrderedGroup> (increments reference count)
+    pub fn HandleIGESBasicOrderedGroup_clone(
+        self_: *const HandleIGESBasicOrderedGroup,
+    ) -> crate::OcctResult<*mut HandleIGESBasicOrderedGroup>;
     /// Dereference Handle to get *const IGESBasic_OrderedGroup
     pub fn HandleIGESBasicOrderedGroup_get(
         handle: *const HandleIGESBasicOrderedGroup,
@@ -17007,6 +17199,10 @@ extern "C" {
     pub fn HandleIGESBasicOrderedGroupWithoutBackP_destructor(
         self_: *mut HandleIGESBasicOrderedGroupWithoutBackP,
     );
+    /// Clone Handle<IGESBasic_OrderedGroupWithoutBackP> (increments reference count)
+    pub fn HandleIGESBasicOrderedGroupWithoutBackP_clone(
+        self_: *const HandleIGESBasicOrderedGroupWithoutBackP,
+    ) -> crate::OcctResult<*mut HandleIGESBasicOrderedGroupWithoutBackP>;
     /// Dereference Handle to get *const IGESBasic_OrderedGroupWithoutBackP
     pub fn HandleIGESBasicOrderedGroupWithoutBackP_get(
         handle: *const HandleIGESBasicOrderedGroupWithoutBackP,
@@ -17455,6 +17651,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicProtocol>;
     /// Destroy Handle<IGESBasic_Protocol>
     pub fn HandleIGESBasicProtocol_destructor(self_: *mut HandleIGESBasicProtocol);
+    /// Clone Handle<IGESBasic_Protocol> (increments reference count)
+    pub fn HandleIGESBasicProtocol_clone(
+        self_: *const HandleIGESBasicProtocol,
+    ) -> crate::OcctResult<*mut HandleIGESBasicProtocol>;
     /// Dereference Handle to get *const IGESBasic_Protocol
     pub fn HandleIGESBasicProtocol_get(
         handle: *const HandleIGESBasicProtocol,
@@ -17614,6 +17814,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicReadWriteModule>;
     /// Destroy Handle<IGESBasic_ReadWriteModule>
     pub fn HandleIGESBasicReadWriteModule_destructor(self_: *mut HandleIGESBasicReadWriteModule);
+    /// Clone Handle<IGESBasic_ReadWriteModule> (increments reference count)
+    pub fn HandleIGESBasicReadWriteModule_clone(
+        self_: *const HandleIGESBasicReadWriteModule,
+    ) -> crate::OcctResult<*mut HandleIGESBasicReadWriteModule>;
     /// Dereference Handle to get *const IGESBasic_ReadWriteModule
     pub fn HandleIGESBasicReadWriteModule_get(
         handle: *const HandleIGESBasicReadWriteModule,
@@ -17755,6 +17959,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicSingleParent>;
     /// Destroy Handle<IGESBasic_SingleParent>
     pub fn HandleIGESBasicSingleParent_destructor(self_: *mut HandleIGESBasicSingleParent);
+    /// Clone Handle<IGESBasic_SingleParent> (increments reference count)
+    pub fn HandleIGESBasicSingleParent_clone(
+        self_: *const HandleIGESBasicSingleParent,
+    ) -> crate::OcctResult<*mut HandleIGESBasicSingleParent>;
     /// Dereference Handle to get *const IGESBasic_SingleParent
     pub fn HandleIGESBasicSingleParent_get(
         handle: *const HandleIGESBasicSingleParent,
@@ -18158,6 +18366,10 @@ extern "C" {
     pub fn HandleIGESBasicSingularSubfigure_destructor(
         self_: *mut HandleIGESBasicSingularSubfigure,
     );
+    /// Clone Handle<IGESBasic_SingularSubfigure> (increments reference count)
+    pub fn HandleIGESBasicSingularSubfigure_clone(
+        self_: *const HandleIGESBasicSingularSubfigure,
+    ) -> crate::OcctResult<*mut HandleIGESBasicSingularSubfigure>;
     /// Dereference Handle to get *const IGESBasic_SingularSubfigure
     pub fn HandleIGESBasicSingularSubfigure_get(
         handle: *const HandleIGESBasicSingularSubfigure,
@@ -18542,6 +18754,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicSpecificModule>;
     /// Destroy Handle<IGESBasic_SpecificModule>
     pub fn HandleIGESBasicSpecificModule_destructor(self_: *mut HandleIGESBasicSpecificModule);
+    /// Clone Handle<IGESBasic_SpecificModule> (increments reference count)
+    pub fn HandleIGESBasicSpecificModule_clone(
+        self_: *const HandleIGESBasicSpecificModule,
+    ) -> crate::OcctResult<*mut HandleIGESBasicSpecificModule>;
     /// Dereference Handle to get *const IGESBasic_SpecificModule
     pub fn HandleIGESBasicSpecificModule_get(
         handle: *const HandleIGESBasicSpecificModule,
@@ -18652,6 +18868,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESBasicSubfigureDef>;
     /// Destroy Handle<IGESBasic_SubfigureDef>
     pub fn HandleIGESBasicSubfigureDef_destructor(self_: *mut HandleIGESBasicSubfigureDef);
+    /// Clone Handle<IGESBasic_SubfigureDef> (increments reference count)
+    pub fn HandleIGESBasicSubfigureDef_clone(
+        self_: *const HandleIGESBasicSubfigureDef,
+    ) -> crate::OcctResult<*mut HandleIGESBasicSubfigureDef>;
     /// Dereference Handle to get *const IGESBasic_SubfigureDef
     pub fn HandleIGESBasicSubfigureDef_get(
         handle: *const HandleIGESBasicSubfigureDef,
@@ -20243,6 +20463,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESControlActorWrite>;
     /// Destroy Handle<IGESControl_ActorWrite>
     pub fn HandleIGESControlActorWrite_destructor(self_: *mut HandleIGESControlActorWrite);
+    /// Clone Handle<IGESControl_ActorWrite> (increments reference count)
+    pub fn HandleIGESControlActorWrite_clone(
+        self_: *const HandleIGESControlActorWrite,
+    ) -> crate::OcctResult<*mut HandleIGESControlActorWrite>;
     /// Dereference Handle to get *const IGESControl_ActorWrite
     pub fn HandleIGESControlActorWrite_get(
         handle: *const HandleIGESControlActorWrite,
@@ -20391,6 +20615,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESControlAlgoContainer>;
     /// Destroy Handle<IGESControl_AlgoContainer>
     pub fn HandleIGESControlAlgoContainer_destructor(self_: *mut HandleIGESControlAlgoContainer);
+    /// Clone Handle<IGESControl_AlgoContainer> (increments reference count)
+    pub fn HandleIGESControlAlgoContainer_clone(
+        self_: *const HandleIGESControlAlgoContainer,
+    ) -> crate::OcctResult<*mut HandleIGESControlAlgoContainer>;
     /// Dereference Handle to get *const IGESControl_AlgoContainer
     pub fn HandleIGESControlAlgoContainer_get(
         handle: *const HandleIGESControlAlgoContainer,
@@ -20508,6 +20736,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESControlController>;
     /// Destroy Handle<IGESControl_Controller>
     pub fn HandleIGESControlController_destructor(self_: *mut HandleIGESControlController);
+    /// Clone Handle<IGESControl_Controller> (increments reference count)
+    pub fn HandleIGESControlController_clone(
+        self_: *const HandleIGESControlController,
+    ) -> crate::OcctResult<*mut HandleIGESControlController>;
     /// Dereference Handle to get *const IGESControl_Controller
     pub fn HandleIGESControlController_get(
         handle: *const HandleIGESControlController,
@@ -20662,6 +20894,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESControlIGESBoundary>;
     /// Destroy Handle<IGESControl_IGESBoundary>
     pub fn HandleIGESControlIGESBoundary_destructor(self_: *mut HandleIGESControlIGESBoundary);
+    /// Clone Handle<IGESControl_IGESBoundary> (increments reference count)
+    pub fn HandleIGESControlIGESBoundary_clone(
+        self_: *const HandleIGESControlIGESBoundary,
+    ) -> crate::OcctResult<*mut HandleIGESControlIGESBoundary>;
     /// Dereference Handle to get *const IGESControl_IGESBoundary
     pub fn HandleIGESControlIGESBoundary_get(
         handle: *const HandleIGESControlIGESBoundary,
@@ -20918,6 +21154,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESControlToolContainer>;
     /// Destroy Handle<IGESControl_ToolContainer>
     pub fn HandleIGESControlToolContainer_destructor(self_: *mut HandleIGESControlToolContainer);
+    /// Clone Handle<IGESControl_ToolContainer> (increments reference count)
+    pub fn HandleIGESControlToolContainer_clone(
+        self_: *const HandleIGESControlToolContainer,
+    ) -> crate::OcctResult<*mut HandleIGESControlToolContainer>;
     /// Dereference Handle to get *const IGESControl_ToolContainer
     pub fn HandleIGESControlToolContainer_get(
         handle: *const HandleIGESControlToolContainer,
@@ -21253,6 +21493,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataColorEntity>;
     /// Destroy Handle<IGESData_ColorEntity>
     pub fn HandleIGESDataColorEntity_destructor(self_: *mut HandleIGESDataColorEntity);
+    /// Clone Handle<IGESData_ColorEntity> (increments reference count)
+    pub fn HandleIGESDataColorEntity_clone(
+        self_: *const HandleIGESDataColorEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataColorEntity>;
     /// Dereference Handle to get *const IGESData_ColorEntity
     pub fn HandleIGESDataColorEntity_get(
         handle: *const HandleIGESDataColorEntity,
@@ -21688,6 +21932,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataDefaultGeneral>;
     /// Destroy Handle<IGESData_DefaultGeneral>
     pub fn HandleIGESDataDefaultGeneral_destructor(self_: *mut HandleIGESDataDefaultGeneral);
+    /// Clone Handle<IGESData_DefaultGeneral> (increments reference count)
+    pub fn HandleIGESDataDefaultGeneral_clone(
+        self_: *const HandleIGESDataDefaultGeneral,
+    ) -> crate::OcctResult<*mut HandleIGESDataDefaultGeneral>;
     /// Dereference Handle to get *const IGESData_DefaultGeneral
     pub fn HandleIGESDataDefaultGeneral_get(
         handle: *const HandleIGESDataDefaultGeneral,
@@ -21906,6 +22154,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataDefaultSpecific>;
     /// Destroy Handle<IGESData_DefaultSpecific>
     pub fn HandleIGESDataDefaultSpecific_destructor(self_: *mut HandleIGESDataDefaultSpecific);
+    /// Clone Handle<IGESData_DefaultSpecific> (increments reference count)
+    pub fn HandleIGESDataDefaultSpecific_clone(
+        self_: *const HandleIGESDataDefaultSpecific,
+    ) -> crate::OcctResult<*mut HandleIGESDataDefaultSpecific>;
     /// Dereference Handle to get *const IGESData_DefaultSpecific
     pub fn HandleIGESDataDefaultSpecific_get(
         handle: *const HandleIGESDataDefaultSpecific,
@@ -22175,6 +22427,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataFileProtocol>;
     /// Destroy Handle<IGESData_FileProtocol>
     pub fn HandleIGESDataFileProtocol_destructor(self_: *mut HandleIGESDataFileProtocol);
+    /// Clone Handle<IGESData_FileProtocol> (increments reference count)
+    pub fn HandleIGESDataFileProtocol_clone(
+        self_: *const HandleIGESDataFileProtocol,
+    ) -> crate::OcctResult<*mut HandleIGESDataFileProtocol>;
     /// Dereference Handle to get *const IGESData_FileProtocol
     pub fn HandleIGESDataFileProtocol_get(
         handle: *const HandleIGESDataFileProtocol,
@@ -22311,6 +22567,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IGESData_FileRecognizer>
     pub fn HandleIGESDataFileRecognizer_destructor(self_: *mut HandleIGESDataFileRecognizer);
+    /// Clone Handle<IGESData_FileRecognizer> (increments reference count)
+    pub fn HandleIGESDataFileRecognizer_clone(
+        self_: *const HandleIGESDataFileRecognizer,
+    ) -> crate::OcctResult<*mut HandleIGESDataFileRecognizer>;
     /// Dereference Handle to get *const IGESData_FileRecognizer
     pub fn HandleIGESDataFileRecognizer_get(
         handle: *const HandleIGESDataFileRecognizer,
@@ -22485,6 +22745,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataFreeFormatEntity>;
     /// Destroy Handle<IGESData_FreeFormatEntity>
     pub fn HandleIGESDataFreeFormatEntity_destructor(self_: *mut HandleIGESDataFreeFormatEntity);
+    /// Clone Handle<IGESData_FreeFormatEntity> (increments reference count)
+    pub fn HandleIGESDataFreeFormatEntity_clone(
+        self_: *const HandleIGESDataFreeFormatEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataFreeFormatEntity>;
     /// Dereference Handle to get *const IGESData_FreeFormatEntity
     pub fn HandleIGESDataFreeFormatEntity_get(
         handle: *const HandleIGESDataFreeFormatEntity,
@@ -23004,6 +23268,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IGESData_GeneralModule>
     pub fn HandleIGESDataGeneralModule_destructor(self_: *mut HandleIGESDataGeneralModule);
+    /// Clone Handle<IGESData_GeneralModule> (increments reference count)
+    pub fn HandleIGESDataGeneralModule_clone(
+        self_: *const HandleIGESDataGeneralModule,
+    ) -> crate::OcctResult<*mut HandleIGESDataGeneralModule>;
     /// Dereference Handle to get *const IGESData_GeneralModule
     pub fn HandleIGESDataGeneralModule_get(
         handle: *const HandleIGESDataGeneralModule,
@@ -23182,6 +23450,10 @@ extern "C" {
     pub fn HandleIGESDataGlobalNodeOfSpecificLib_destructor(
         self_: *mut HandleIGESDataGlobalNodeOfSpecificLib,
     );
+    /// Clone Handle<IGESData_GlobalNodeOfSpecificLib> (increments reference count)
+    pub fn HandleIGESDataGlobalNodeOfSpecificLib_clone(
+        self_: *const HandleIGESDataGlobalNodeOfSpecificLib,
+    ) -> crate::OcctResult<*mut HandleIGESDataGlobalNodeOfSpecificLib>;
     /// Dereference Handle to get *const IGESData_GlobalNodeOfSpecificLib
     pub fn HandleIGESDataGlobalNodeOfSpecificLib_get(
         handle: *const HandleIGESDataGlobalNodeOfSpecificLib,
@@ -23273,6 +23545,10 @@ extern "C" {
     pub fn HandleIGESDataGlobalNodeOfWriterLib_destructor(
         self_: *mut HandleIGESDataGlobalNodeOfWriterLib,
     );
+    /// Clone Handle<IGESData_GlobalNodeOfWriterLib> (increments reference count)
+    pub fn HandleIGESDataGlobalNodeOfWriterLib_clone(
+        self_: *const HandleIGESDataGlobalNodeOfWriterLib,
+    ) -> crate::OcctResult<*mut HandleIGESDataGlobalNodeOfWriterLib>;
     /// Dereference Handle to get *const IGESData_GlobalNodeOfWriterLib
     pub fn HandleIGESDataGlobalNodeOfWriterLib_get(
         handle: *const HandleIGESDataGlobalNodeOfWriterLib,
@@ -23686,6 +23962,10 @@ extern "C" {
     pub fn HandleIGESDataHArray1OfIGESEntity_destructor(
         self_: *mut HandleIGESDataHArray1OfIGESEntity,
     );
+    /// Clone Handle<IGESData_HArray1OfIGESEntity> (increments reference count)
+    pub fn HandleIGESDataHArray1OfIGESEntity_clone(
+        self_: *const HandleIGESDataHArray1OfIGESEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataHArray1OfIGESEntity>;
     /// Dereference Handle to get *const IGESData_HArray1OfIGESEntity
     pub fn HandleIGESDataHArray1OfIGESEntity_get(
         handle: *const HandleIGESDataHArray1OfIGESEntity,
@@ -24078,6 +24358,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataIGESEntity>;
     /// Destroy Handle<IGESData_IGESEntity>
     pub fn HandleIGESDataIGESEntity_destructor(self_: *mut HandleIGESDataIGESEntity);
+    /// Clone Handle<IGESData_IGESEntity> (increments reference count)
+    pub fn HandleIGESDataIGESEntity_clone(
+        self_: *const HandleIGESDataIGESEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataIGESEntity>;
     /// Dereference Handle to get *const IGESData_IGESEntity
     pub fn HandleIGESDataIGESEntity_get(
         handle: *const HandleIGESDataIGESEntity,
@@ -24847,6 +25131,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataIGESModel>;
     /// Destroy Handle<IGESData_IGESModel>
     pub fn HandleIGESDataIGESModel_destructor(self_: *mut HandleIGESDataIGESModel);
+    /// Clone Handle<IGESData_IGESModel> (increments reference count)
+    pub fn HandleIGESDataIGESModel_clone(
+        self_: *const HandleIGESDataIGESModel,
+    ) -> crate::OcctResult<*mut HandleIGESDataIGESModel>;
     /// Dereference Handle to get *const IGESData_IGESModel
     pub fn HandleIGESDataIGESModel_get(
         handle: *const HandleIGESDataIGESModel,
@@ -25258,6 +25546,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataIGESReaderData>;
     /// Destroy Handle<IGESData_IGESReaderData>
     pub fn HandleIGESDataIGESReaderData_destructor(self_: *mut HandleIGESDataIGESReaderData);
+    /// Clone Handle<IGESData_IGESReaderData> (increments reference count)
+    pub fn HandleIGESDataIGESReaderData_clone(
+        self_: *const HandleIGESDataIGESReaderData,
+    ) -> crate::OcctResult<*mut HandleIGESDataIGESReaderData>;
     /// Dereference Handle to get *const IGESData_IGESReaderData
     pub fn HandleIGESDataIGESReaderData_get(
         handle: *const HandleIGESDataIGESReaderData,
@@ -25700,7 +25992,7 @@ extern "C" {
         S: *mut Standard_OStream,
     ) -> crate::OcctResult<bool>;
     /// Clone via copy constructor
-    pub fn IGESData_IGESWriter_to_owned(
+    pub fn IGESData_IGESWriter_clone(
         self_: *const IGESData_IGESWriter,
     ) -> crate::OcctResult<*mut IGESData_IGESWriter>;
     // ======================== IGESData_LabelDisplayEntity ========================
@@ -25740,6 +26032,10 @@ extern "C" {
     pub fn HandleIGESDataLabelDisplayEntity_destructor(
         self_: *mut HandleIGESDataLabelDisplayEntity,
     );
+    /// Clone Handle<IGESData_LabelDisplayEntity> (increments reference count)
+    pub fn HandleIGESDataLabelDisplayEntity_clone(
+        self_: *const HandleIGESDataLabelDisplayEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataLabelDisplayEntity>;
     /// Dereference Handle to get *const IGESData_LabelDisplayEntity
     pub fn HandleIGESDataLabelDisplayEntity_get(
         handle: *const HandleIGESDataLabelDisplayEntity,
@@ -26121,6 +26417,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IGESData_LevelListEntity>
     pub fn HandleIGESDataLevelListEntity_destructor(self_: *mut HandleIGESDataLevelListEntity);
+    /// Clone Handle<IGESData_LevelListEntity> (increments reference count)
+    pub fn HandleIGESDataLevelListEntity_clone(
+        self_: *const HandleIGESDataLevelListEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataLevelListEntity>;
     /// Dereference Handle to get *const IGESData_LevelListEntity
     pub fn HandleIGESDataLevelListEntity_get(
         handle: *const HandleIGESDataLevelListEntity,
@@ -26494,6 +26794,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataLineFontEntity>;
     /// Destroy Handle<IGESData_LineFontEntity>
     pub fn HandleIGESDataLineFontEntity_destructor(self_: *mut HandleIGESDataLineFontEntity);
+    /// Clone Handle<IGESData_LineFontEntity> (increments reference count)
+    pub fn HandleIGESDataLineFontEntity_clone(
+        self_: *const HandleIGESDataLineFontEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataLineFontEntity>;
     /// Dereference Handle to get *const IGESData_LineFontEntity
     pub fn HandleIGESDataLineFontEntity_get(
         handle: *const HandleIGESDataLineFontEntity,
@@ -26868,6 +27172,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IGESData_NameEntity>
     pub fn HandleIGESDataNameEntity_destructor(self_: *mut HandleIGESDataNameEntity);
+    /// Clone Handle<IGESData_NameEntity> (increments reference count)
+    pub fn HandleIGESDataNameEntity_clone(
+        self_: *const HandleIGESDataNameEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataNameEntity>;
     /// Dereference Handle to get *const IGESData_NameEntity
     pub fn HandleIGESDataNameEntity_get(
         handle: *const HandleIGESDataNameEntity,
@@ -27250,6 +27558,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataNodeOfSpecificLib>;
     /// Destroy Handle<IGESData_NodeOfSpecificLib>
     pub fn HandleIGESDataNodeOfSpecificLib_destructor(self_: *mut HandleIGESDataNodeOfSpecificLib);
+    /// Clone Handle<IGESData_NodeOfSpecificLib> (increments reference count)
+    pub fn HandleIGESDataNodeOfSpecificLib_clone(
+        self_: *const HandleIGESDataNodeOfSpecificLib,
+    ) -> crate::OcctResult<*mut HandleIGESDataNodeOfSpecificLib>;
     /// Dereference Handle to get *const IGESData_NodeOfSpecificLib
     pub fn HandleIGESDataNodeOfSpecificLib_get(
         handle: *const HandleIGESDataNodeOfSpecificLib,
@@ -27336,6 +27648,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataNodeOfWriterLib>;
     /// Destroy Handle<IGESData_NodeOfWriterLib>
     pub fn HandleIGESDataNodeOfWriterLib_destructor(self_: *mut HandleIGESDataNodeOfWriterLib);
+    /// Clone Handle<IGESData_NodeOfWriterLib> (increments reference count)
+    pub fn HandleIGESDataNodeOfWriterLib_clone(
+        self_: *const HandleIGESDataNodeOfWriterLib,
+    ) -> crate::OcctResult<*mut HandleIGESDataNodeOfWriterLib>;
     /// Dereference Handle to get *const IGESData_NodeOfWriterLib
     pub fn HandleIGESDataNodeOfWriterLib_get(
         handle: *const HandleIGESDataNodeOfWriterLib,
@@ -27877,6 +28193,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataProtocol>;
     /// Destroy Handle<IGESData_Protocol>
     pub fn HandleIGESDataProtocol_destructor(self_: *mut HandleIGESDataProtocol);
+    /// Clone Handle<IGESData_Protocol> (increments reference count)
+    pub fn HandleIGESDataProtocol_clone(
+        self_: *const HandleIGESDataProtocol,
+    ) -> crate::OcctResult<*mut HandleIGESDataProtocol>;
     /// Dereference Handle to get *const IGESData_Protocol
     pub fn HandleIGESDataProtocol_get(
         handle: *const HandleIGESDataProtocol,
@@ -28051,6 +28371,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IGESData_ReadWriteModule>
     pub fn HandleIGESDataReadWriteModule_destructor(self_: *mut HandleIGESDataReadWriteModule);
+    /// Clone Handle<IGESData_ReadWriteModule> (increments reference count)
+    pub fn HandleIGESDataReadWriteModule_clone(
+        self_: *const HandleIGESDataReadWriteModule,
+    ) -> crate::OcctResult<*mut HandleIGESDataReadWriteModule>;
     /// Dereference Handle to get *const IGESData_ReadWriteModule
     pub fn HandleIGESDataReadWriteModule_get(
         handle: *const HandleIGESDataReadWriteModule,
@@ -28182,6 +28506,10 @@ extern "C" {
     pub fn HandleIGESDataSingleParentEntity_destructor(
         self_: *mut HandleIGESDataSingleParentEntity,
     );
+    /// Clone Handle<IGESData_SingleParentEntity> (increments reference count)
+    pub fn HandleIGESDataSingleParentEntity_clone(
+        self_: *const HandleIGESDataSingleParentEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataSingleParentEntity>;
     /// Dereference Handle to get *const IGESData_SingleParentEntity
     pub fn HandleIGESDataSingleParentEntity_get(
         handle: *const HandleIGESDataSingleParentEntity,
@@ -28602,6 +28930,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IGESData_SpecificModule>
     pub fn HandleIGESDataSpecificModule_destructor(self_: *mut HandleIGESDataSpecificModule);
+    /// Clone Handle<IGESData_SpecificModule> (increments reference count)
+    pub fn HandleIGESDataSpecificModule_clone(
+        self_: *const HandleIGESDataSpecificModule,
+    ) -> crate::OcctResult<*mut HandleIGESDataSpecificModule>;
     /// Dereference Handle to get *const IGESData_SpecificModule
     pub fn HandleIGESDataSpecificModule_get(
         handle: *const HandleIGESDataSpecificModule,
@@ -28803,6 +29135,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataToolLocation>;
     /// Destroy Handle<IGESData_ToolLocation>
     pub fn HandleIGESDataToolLocation_destructor(self_: *mut HandleIGESDataToolLocation);
+    /// Clone Handle<IGESData_ToolLocation> (increments reference count)
+    pub fn HandleIGESDataToolLocation_clone(
+        self_: *const HandleIGESDataToolLocation,
+    ) -> crate::OcctResult<*mut HandleIGESDataToolLocation>;
     /// Dereference Handle to get *const IGESData_ToolLocation
     pub fn HandleIGESDataToolLocation_get(
         handle: *const HandleIGESDataToolLocation,
@@ -28878,6 +29214,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IGESData_TransfEntity>
     pub fn HandleIGESDataTransfEntity_destructor(self_: *mut HandleIGESDataTransfEntity);
+    /// Clone Handle<IGESData_TransfEntity> (increments reference count)
+    pub fn HandleIGESDataTransfEntity_clone(
+        self_: *const HandleIGESDataTransfEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataTransfEntity>;
     /// Dereference Handle to get *const IGESData_TransfEntity
     pub fn HandleIGESDataTransfEntity_get(
         handle: *const HandleIGESDataTransfEntity,
@@ -29314,6 +29654,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDataUndefinedEntity>;
     /// Destroy Handle<IGESData_UndefinedEntity>
     pub fn HandleIGESDataUndefinedEntity_destructor(self_: *mut HandleIGESDataUndefinedEntity);
+    /// Clone Handle<IGESData_UndefinedEntity> (increments reference count)
+    pub fn HandleIGESDataUndefinedEntity_clone(
+        self_: *const HandleIGESDataUndefinedEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataUndefinedEntity>;
     /// Dereference Handle to get *const IGESData_UndefinedEntity
     pub fn HandleIGESDataUndefinedEntity_get(
         handle: *const HandleIGESDataUndefinedEntity,
@@ -29674,6 +30018,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IGESData_ViewKindEntity>
     pub fn HandleIGESDataViewKindEntity_destructor(self_: *mut HandleIGESDataViewKindEntity);
+    /// Clone Handle<IGESData_ViewKindEntity> (increments reference count)
+    pub fn HandleIGESDataViewKindEntity_clone(
+        self_: *const HandleIGESDataViewKindEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDataViewKindEntity>;
     /// Dereference Handle to get *const IGESData_ViewKindEntity
     pub fn HandleIGESDataViewKindEntity_get(
         handle: *const HandleIGESDataViewKindEntity,
@@ -30156,6 +30504,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDefsAssociativityDef>;
     /// Destroy Handle<IGESDefs_AssociativityDef>
     pub fn HandleIGESDefsAssociativityDef_destructor(self_: *mut HandleIGESDefsAssociativityDef);
+    /// Clone Handle<IGESDefs_AssociativityDef> (increments reference count)
+    pub fn HandleIGESDefsAssociativityDef_clone(
+        self_: *const HandleIGESDefsAssociativityDef,
+    ) -> crate::OcctResult<*mut HandleIGESDefsAssociativityDef>;
     /// Dereference Handle to get *const IGESDefs_AssociativityDef
     pub fn HandleIGESDefsAssociativityDef_get(
         handle: *const HandleIGESDefsAssociativityDef,
@@ -30616,6 +30968,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDefsAttributeDef>;
     /// Destroy Handle<IGESDefs_AttributeDef>
     pub fn HandleIGESDefsAttributeDef_destructor(self_: *mut HandleIGESDefsAttributeDef);
+    /// Clone Handle<IGESDefs_AttributeDef> (increments reference count)
+    pub fn HandleIGESDefsAttributeDef_clone(
+        self_: *const HandleIGESDefsAttributeDef,
+    ) -> crate::OcctResult<*mut HandleIGESDefsAttributeDef>;
     /// Dereference Handle to get *const IGESDefs_AttributeDef
     pub fn HandleIGESDefsAttributeDef_get(
         handle: *const HandleIGESDefsAttributeDef,
@@ -31058,6 +31414,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDefsAttributeTable>;
     /// Destroy Handle<IGESDefs_AttributeTable>
     pub fn HandleIGESDefsAttributeTable_destructor(self_: *mut HandleIGESDefsAttributeTable);
+    /// Clone Handle<IGESDefs_AttributeTable> (increments reference count)
+    pub fn HandleIGESDefsAttributeTable_clone(
+        self_: *const HandleIGESDefsAttributeTable,
+    ) -> crate::OcctResult<*mut HandleIGESDefsAttributeTable>;
     /// Dereference Handle to get *const IGESDefs_AttributeTable
     pub fn HandleIGESDefsAttributeTable_get(
         handle: *const HandleIGESDefsAttributeTable,
@@ -31477,6 +31837,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDefsGeneralModule>;
     /// Destroy Handle<IGESDefs_GeneralModule>
     pub fn HandleIGESDefsGeneralModule_destructor(self_: *mut HandleIGESDefsGeneralModule);
+    /// Clone Handle<IGESDefs_GeneralModule> (increments reference count)
+    pub fn HandleIGESDefsGeneralModule_clone(
+        self_: *const HandleIGESDefsGeneralModule,
+    ) -> crate::OcctResult<*mut HandleIGESDefsGeneralModule>;
     /// Dereference Handle to get *const IGESDefs_GeneralModule
     pub fn HandleIGESDefsGeneralModule_get(
         handle: *const HandleIGESDefsGeneralModule,
@@ -31733,6 +32097,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDefsGenericData>;
     /// Destroy Handle<IGESDefs_GenericData>
     pub fn HandleIGESDefsGenericData_destructor(self_: *mut HandleIGESDefsGenericData);
+    /// Clone Handle<IGESDefs_GenericData> (increments reference count)
+    pub fn HandleIGESDefsGenericData_clone(
+        self_: *const HandleIGESDefsGenericData,
+    ) -> crate::OcctResult<*mut HandleIGESDefsGenericData>;
     /// Dereference Handle to get *const IGESDefs_GenericData
     pub fn HandleIGESDefsGenericData_get(
         handle: *const HandleIGESDefsGenericData,
@@ -32125,6 +32493,10 @@ extern "C" {
     pub fn HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate_destructor(
         self_: *mut HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate,
     );
+    /// Clone Handle<IGESDefs_HArray1OfHArray1OfTextDisplayTemplate> (increments reference count)
+    pub fn HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate_clone(
+        self_: *const HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate,
+    ) -> crate::OcctResult<*mut HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate>;
     /// Dereference Handle to get *const IGESDefs_HArray1OfHArray1OfTextDisplayTemplate
     pub fn HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate_get(
         handle: *const HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate,
@@ -32228,6 +32600,10 @@ extern "C" {
     pub fn HandleIGESDefsHArray1OfTabularData_destructor(
         self_: *mut HandleIGESDefsHArray1OfTabularData,
     );
+    /// Clone Handle<IGESDefs_HArray1OfTabularData> (increments reference count)
+    pub fn HandleIGESDefsHArray1OfTabularData_clone(
+        self_: *const HandleIGESDefsHArray1OfTabularData,
+    ) -> crate::OcctResult<*mut HandleIGESDefsHArray1OfTabularData>;
     /// Dereference Handle to get *const IGESDefs_HArray1OfTabularData
     pub fn HandleIGESDefsHArray1OfTabularData_get(
         handle: *const HandleIGESDefsHArray1OfTabularData,
@@ -32333,6 +32709,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDefsMacroDef>;
     /// Destroy Handle<IGESDefs_MacroDef>
     pub fn HandleIGESDefsMacroDef_destructor(self_: *mut HandleIGESDefsMacroDef);
+    /// Clone Handle<IGESDefs_MacroDef> (increments reference count)
+    pub fn HandleIGESDefsMacroDef_clone(
+        self_: *const HandleIGESDefsMacroDef,
+    ) -> crate::OcctResult<*mut HandleIGESDefsMacroDef>;
     /// Dereference Handle to get *const IGESDefs_MacroDef
     pub fn HandleIGESDefsMacroDef_get(
         handle: *const HandleIGESDefsMacroDef,
@@ -32723,6 +33103,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDefsProtocol>;
     /// Destroy Handle<IGESDefs_Protocol>
     pub fn HandleIGESDefsProtocol_destructor(self_: *mut HandleIGESDefsProtocol);
+    /// Clone Handle<IGESDefs_Protocol> (increments reference count)
+    pub fn HandleIGESDefsProtocol_clone(
+        self_: *const HandleIGESDefsProtocol,
+    ) -> crate::OcctResult<*mut HandleIGESDefsProtocol>;
     /// Dereference Handle to get *const IGESDefs_Protocol
     pub fn HandleIGESDefsProtocol_get(
         handle: *const HandleIGESDefsProtocol,
@@ -32882,6 +33266,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDefsReadWriteModule>;
     /// Destroy Handle<IGESDefs_ReadWriteModule>
     pub fn HandleIGESDefsReadWriteModule_destructor(self_: *mut HandleIGESDefsReadWriteModule);
+    /// Clone Handle<IGESDefs_ReadWriteModule> (increments reference count)
+    pub fn HandleIGESDefsReadWriteModule_clone(
+        self_: *const HandleIGESDefsReadWriteModule,
+    ) -> crate::OcctResult<*mut HandleIGESDefsReadWriteModule>;
     /// Dereference Handle to get *const IGESDefs_ReadWriteModule
     pub fn HandleIGESDefsReadWriteModule_get(
         handle: *const HandleIGESDefsReadWriteModule,
@@ -33000,6 +33388,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDefsSpecificModule>;
     /// Destroy Handle<IGESDefs_SpecificModule>
     pub fn HandleIGESDefsSpecificModule_destructor(self_: *mut HandleIGESDefsSpecificModule);
+    /// Clone Handle<IGESDefs_SpecificModule> (increments reference count)
+    pub fn HandleIGESDefsSpecificModule_clone(
+        self_: *const HandleIGESDefsSpecificModule,
+    ) -> crate::OcctResult<*mut HandleIGESDefsSpecificModule>;
     /// Dereference Handle to get *const IGESDefs_SpecificModule
     pub fn HandleIGESDefsSpecificModule_get(
         handle: *const HandleIGESDefsSpecificModule,
@@ -33147,6 +33539,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDefsTabularData>;
     /// Destroy Handle<IGESDefs_TabularData>
     pub fn HandleIGESDefsTabularData_destructor(self_: *mut HandleIGESDefsTabularData);
+    /// Clone Handle<IGESDefs_TabularData> (increments reference count)
+    pub fn HandleIGESDefsTabularData_clone(
+        self_: *const HandleIGESDefsTabularData,
+    ) -> crate::OcctResult<*mut HandleIGESDefsTabularData>;
     /// Dereference Handle to get *const IGESDefs_TabularData
     pub fn HandleIGESDefsTabularData_get(
         handle: *const HandleIGESDefsTabularData,
@@ -33890,6 +34286,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDefsUnitsData>;
     /// Destroy Handle<IGESDefs_UnitsData>
     pub fn HandleIGESDefsUnitsData_destructor(self_: *mut HandleIGESDefsUnitsData);
+    /// Clone Handle<IGESDefs_UnitsData> (increments reference count)
+    pub fn HandleIGESDefsUnitsData_clone(
+        self_: *const HandleIGESDefsUnitsData,
+    ) -> crate::OcctResult<*mut HandleIGESDefsUnitsData>;
     /// Dereference Handle to get *const IGESDefs_UnitsData
     pub fn HandleIGESDefsUnitsData_get(
         handle: *const HandleIGESDefsUnitsData,
@@ -34310,6 +34710,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenAngularDimension>;
     /// Destroy Handle<IGESDimen_AngularDimension>
     pub fn HandleIGESDimenAngularDimension_destructor(self_: *mut HandleIGESDimenAngularDimension);
+    /// Clone Handle<IGESDimen_AngularDimension> (increments reference count)
+    pub fn HandleIGESDimenAngularDimension_clone(
+        self_: *const HandleIGESDimenAngularDimension,
+    ) -> crate::OcctResult<*mut HandleIGESDimenAngularDimension>;
     /// Dereference Handle to get *const IGESDimen_AngularDimension
     pub fn HandleIGESDimenAngularDimension_get(
         handle: *const HandleIGESDimenAngularDimension,
@@ -34708,6 +35112,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenBasicDimension>;
     /// Destroy Handle<IGESDimen_BasicDimension>
     pub fn HandleIGESDimenBasicDimension_destructor(self_: *mut HandleIGESDimenBasicDimension);
+    /// Clone Handle<IGESDimen_BasicDimension> (increments reference count)
+    pub fn HandleIGESDimenBasicDimension_clone(
+        self_: *const HandleIGESDimenBasicDimension,
+    ) -> crate::OcctResult<*mut HandleIGESDimenBasicDimension>;
     /// Dereference Handle to get *const IGESDimen_BasicDimension
     pub fn HandleIGESDimenBasicDimension_get(
         handle: *const HandleIGESDimenBasicDimension,
@@ -35114,6 +35522,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenCenterLine>;
     /// Destroy Handle<IGESDimen_CenterLine>
     pub fn HandleIGESDimenCenterLine_destructor(self_: *mut HandleIGESDimenCenterLine);
+    /// Clone Handle<IGESDimen_CenterLine> (increments reference count)
+    pub fn HandleIGESDimenCenterLine_clone(
+        self_: *const HandleIGESDimenCenterLine,
+    ) -> crate::OcctResult<*mut HandleIGESDimenCenterLine>;
     /// Dereference Handle to get *const IGESDimen_CenterLine
     pub fn HandleIGESDimenCenterLine_get(
         handle: *const HandleIGESDimenCenterLine,
@@ -35534,6 +35946,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenCurveDimension>;
     /// Destroy Handle<IGESDimen_CurveDimension>
     pub fn HandleIGESDimenCurveDimension_destructor(self_: *mut HandleIGESDimenCurveDimension);
+    /// Clone Handle<IGESDimen_CurveDimension> (increments reference count)
+    pub fn HandleIGESDimenCurveDimension_clone(
+        self_: *const HandleIGESDimenCurveDimension,
+    ) -> crate::OcctResult<*mut HandleIGESDimenCurveDimension>;
     /// Dereference Handle to get *const IGESDimen_CurveDimension
     pub fn HandleIGESDimenCurveDimension_get(
         handle: *const HandleIGESDimenCurveDimension,
@@ -35937,6 +36353,10 @@ extern "C" {
     pub fn HandleIGESDimenDiameterDimension_destructor(
         self_: *mut HandleIGESDimenDiameterDimension,
     );
+    /// Clone Handle<IGESDimen_DiameterDimension> (increments reference count)
+    pub fn HandleIGESDimenDiameterDimension_clone(
+        self_: *const HandleIGESDimenDiameterDimension,
+    ) -> crate::OcctResult<*mut HandleIGESDimenDiameterDimension>;
     /// Dereference Handle to get *const IGESDimen_DiameterDimension
     pub fn HandleIGESDimenDiameterDimension_get(
         handle: *const HandleIGESDimenDiameterDimension,
@@ -36396,6 +36816,10 @@ extern "C" {
     pub fn HandleIGESDimenDimensionDisplayData_destructor(
         self_: *mut HandleIGESDimenDimensionDisplayData,
     );
+    /// Clone Handle<IGESDimen_DimensionDisplayData> (increments reference count)
+    pub fn HandleIGESDimenDimensionDisplayData_clone(
+        self_: *const HandleIGESDimenDimensionDisplayData,
+    ) -> crate::OcctResult<*mut HandleIGESDimenDimensionDisplayData>;
     /// Dereference Handle to get *const IGESDimen_DimensionDisplayData
     pub fn HandleIGESDimenDimensionDisplayData_get(
         handle: *const HandleIGESDimenDimensionDisplayData,
@@ -36817,6 +37241,10 @@ extern "C" {
     pub fn HandleIGESDimenDimensionTolerance_destructor(
         self_: *mut HandleIGESDimenDimensionTolerance,
     );
+    /// Clone Handle<IGESDimen_DimensionTolerance> (increments reference count)
+    pub fn HandleIGESDimenDimensionTolerance_clone(
+        self_: *const HandleIGESDimenDimensionTolerance,
+    ) -> crate::OcctResult<*mut HandleIGESDimenDimensionTolerance>;
     /// Dereference Handle to get *const IGESDimen_DimensionTolerance
     pub fn HandleIGESDimenDimensionTolerance_get(
         handle: *const HandleIGESDimenDimensionTolerance,
@@ -37225,6 +37653,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenDimensionUnits>;
     /// Destroy Handle<IGESDimen_DimensionUnits>
     pub fn HandleIGESDimenDimensionUnits_destructor(self_: *mut HandleIGESDimenDimensionUnits);
+    /// Clone Handle<IGESDimen_DimensionUnits> (increments reference count)
+    pub fn HandleIGESDimenDimensionUnits_clone(
+        self_: *const HandleIGESDimenDimensionUnits,
+    ) -> crate::OcctResult<*mut HandleIGESDimenDimensionUnits>;
     /// Dereference Handle to get *const IGESDimen_DimensionUnits
     pub fn HandleIGESDimenDimensionUnits_get(
         handle: *const HandleIGESDimenDimensionUnits,
@@ -37622,6 +38054,10 @@ extern "C" {
     pub fn HandleIGESDimenDimensionedGeometry_destructor(
         self_: *mut HandleIGESDimenDimensionedGeometry,
     );
+    /// Clone Handle<IGESDimen_DimensionedGeometry> (increments reference count)
+    pub fn HandleIGESDimenDimensionedGeometry_clone(
+        self_: *const HandleIGESDimenDimensionedGeometry,
+    ) -> crate::OcctResult<*mut HandleIGESDimenDimensionedGeometry>;
     /// Dereference Handle to get *const IGESDimen_DimensionedGeometry
     pub fn HandleIGESDimenDimensionedGeometry_get(
         handle: *const HandleIGESDimenDimensionedGeometry,
@@ -38037,6 +38473,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenFlagNote>;
     /// Destroy Handle<IGESDimen_FlagNote>
     pub fn HandleIGESDimenFlagNote_destructor(self_: *mut HandleIGESDimenFlagNote);
+    /// Clone Handle<IGESDimen_FlagNote> (increments reference count)
+    pub fn HandleIGESDimenFlagNote_clone(
+        self_: *const HandleIGESDimenFlagNote,
+    ) -> crate::OcctResult<*mut HandleIGESDimenFlagNote>;
     /// Dereference Handle to get *const IGESDimen_FlagNote
     pub fn HandleIGESDimenFlagNote_get(
         handle: *const HandleIGESDimenFlagNote,
@@ -38425,6 +38865,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenGeneralLabel>;
     /// Destroy Handle<IGESDimen_GeneralLabel>
     pub fn HandleIGESDimenGeneralLabel_destructor(self_: *mut HandleIGESDimenGeneralLabel);
+    /// Clone Handle<IGESDimen_GeneralLabel> (increments reference count)
+    pub fn HandleIGESDimenGeneralLabel_clone(
+        self_: *const HandleIGESDimenGeneralLabel,
+    ) -> crate::OcctResult<*mut HandleIGESDimenGeneralLabel>;
     /// Dereference Handle to get *const IGESDimen_GeneralLabel
     pub fn HandleIGESDimenGeneralLabel_get(
         handle: *const HandleIGESDimenGeneralLabel,
@@ -38844,6 +39288,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenGeneralModule>;
     /// Destroy Handle<IGESDimen_GeneralModule>
     pub fn HandleIGESDimenGeneralModule_destructor(self_: *mut HandleIGESDimenGeneralModule);
+    /// Clone Handle<IGESDimen_GeneralModule> (increments reference count)
+    pub fn HandleIGESDimenGeneralModule_clone(
+        self_: *const HandleIGESDimenGeneralModule,
+    ) -> crate::OcctResult<*mut HandleIGESDimenGeneralModule>;
     /// Dereference Handle to get *const IGESDimen_GeneralModule
     pub fn HandleIGESDimenGeneralModule_get(
         handle: *const HandleIGESDimenGeneralModule,
@@ -39140,6 +39588,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenGeneralNote>;
     /// Destroy Handle<IGESDimen_GeneralNote>
     pub fn HandleIGESDimenGeneralNote_destructor(self_: *mut HandleIGESDimenGeneralNote);
+    /// Clone Handle<IGESDimen_GeneralNote> (increments reference count)
+    pub fn HandleIGESDimenGeneralNote_clone(
+        self_: *const HandleIGESDimenGeneralNote,
+    ) -> crate::OcctResult<*mut HandleIGESDimenGeneralNote>;
     /// Dereference Handle to get *const IGESDimen_GeneralNote
     pub fn HandleIGESDimenGeneralNote_get(
         handle: *const HandleIGESDimenGeneralNote,
@@ -39547,6 +39999,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenGeneralSymbol>;
     /// Destroy Handle<IGESDimen_GeneralSymbol>
     pub fn HandleIGESDimenGeneralSymbol_destructor(self_: *mut HandleIGESDimenGeneralSymbol);
+    /// Clone Handle<IGESDimen_GeneralSymbol> (increments reference count)
+    pub fn HandleIGESDimenGeneralSymbol_clone(
+        self_: *const HandleIGESDimenGeneralSymbol,
+    ) -> crate::OcctResult<*mut HandleIGESDimenGeneralSymbol>;
     /// Dereference Handle to get *const IGESDimen_GeneralSymbol
     pub fn HandleIGESDimenGeneralSymbol_get(
         handle: *const HandleIGESDimenGeneralSymbol,
@@ -39942,6 +40398,10 @@ extern "C" {
     pub fn HandleIGESDimenHArray1OfGeneralNote_destructor(
         self_: *mut HandleIGESDimenHArray1OfGeneralNote,
     );
+    /// Clone Handle<IGESDimen_HArray1OfGeneralNote> (increments reference count)
+    pub fn HandleIGESDimenHArray1OfGeneralNote_clone(
+        self_: *const HandleIGESDimenHArray1OfGeneralNote,
+    ) -> crate::OcctResult<*mut HandleIGESDimenHArray1OfGeneralNote>;
     /// Dereference Handle to get *const IGESDimen_HArray1OfGeneralNote
     pub fn HandleIGESDimenHArray1OfGeneralNote_get(
         handle: *const HandleIGESDimenHArray1OfGeneralNote,
@@ -40045,6 +40505,10 @@ extern "C" {
     pub fn HandleIGESDimenHArray1OfLeaderArrow_destructor(
         self_: *mut HandleIGESDimenHArray1OfLeaderArrow,
     );
+    /// Clone Handle<IGESDimen_HArray1OfLeaderArrow> (increments reference count)
+    pub fn HandleIGESDimenHArray1OfLeaderArrow_clone(
+        self_: *const HandleIGESDimenHArray1OfLeaderArrow,
+    ) -> crate::OcctResult<*mut HandleIGESDimenHArray1OfLeaderArrow>;
     /// Dereference Handle to get *const IGESDimen_HArray1OfLeaderArrow
     pub fn HandleIGESDimenHArray1OfLeaderArrow_get(
         handle: *const HandleIGESDimenHArray1OfLeaderArrow,
@@ -40170,6 +40634,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenLeaderArrow>;
     /// Destroy Handle<IGESDimen_LeaderArrow>
     pub fn HandleIGESDimenLeaderArrow_destructor(self_: *mut HandleIGESDimenLeaderArrow);
+    /// Clone Handle<IGESDimen_LeaderArrow> (increments reference count)
+    pub fn HandleIGESDimenLeaderArrow_clone(
+        self_: *const HandleIGESDimenLeaderArrow,
+    ) -> crate::OcctResult<*mut HandleIGESDimenLeaderArrow>;
     /// Dereference Handle to get *const IGESDimen_LeaderArrow
     pub fn HandleIGESDimenLeaderArrow_get(
         handle: *const HandleIGESDimenLeaderArrow,
@@ -40581,6 +41049,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenLinearDimension>;
     /// Destroy Handle<IGESDimen_LinearDimension>
     pub fn HandleIGESDimenLinearDimension_destructor(self_: *mut HandleIGESDimenLinearDimension);
+    /// Clone Handle<IGESDimen_LinearDimension> (increments reference count)
+    pub fn HandleIGESDimenLinearDimension_clone(
+        self_: *const HandleIGESDimenLinearDimension,
+    ) -> crate::OcctResult<*mut HandleIGESDimenLinearDimension>;
     /// Dereference Handle to get *const IGESDimen_LinearDimension
     pub fn HandleIGESDimenLinearDimension_get(
         handle: *const HandleIGESDimenLinearDimension,
@@ -41007,6 +41479,10 @@ extern "C" {
     pub fn HandleIGESDimenNewDimensionedGeometry_destructor(
         self_: *mut HandleIGESDimenNewDimensionedGeometry,
     );
+    /// Clone Handle<IGESDimen_NewDimensionedGeometry> (increments reference count)
+    pub fn HandleIGESDimenNewDimensionedGeometry_clone(
+        self_: *const HandleIGESDimenNewDimensionedGeometry,
+    ) -> crate::OcctResult<*mut HandleIGESDimenNewDimensionedGeometry>;
     /// Dereference Handle to get *const IGESDimen_NewDimensionedGeometry
     pub fn HandleIGESDimenNewDimensionedGeometry_get(
         handle: *const HandleIGESDimenNewDimensionedGeometry,
@@ -41574,6 +42050,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenNewGeneralNote>;
     /// Destroy Handle<IGESDimen_NewGeneralNote>
     pub fn HandleIGESDimenNewGeneralNote_destructor(self_: *mut HandleIGESDimenNewGeneralNote);
+    /// Clone Handle<IGESDimen_NewGeneralNote> (increments reference count)
+    pub fn HandleIGESDimenNewGeneralNote_clone(
+        self_: *const HandleIGESDimenNewGeneralNote,
+    ) -> crate::OcctResult<*mut HandleIGESDimenNewGeneralNote>;
     /// Dereference Handle to get *const IGESDimen_NewGeneralNote
     pub fn HandleIGESDimenNewGeneralNote_get(
         handle: *const HandleIGESDimenNewGeneralNote,
@@ -41973,6 +42453,10 @@ extern "C" {
     pub fn HandleIGESDimenOrdinateDimension_destructor(
         self_: *mut HandleIGESDimenOrdinateDimension,
     );
+    /// Clone Handle<IGESDimen_OrdinateDimension> (increments reference count)
+    pub fn HandleIGESDimenOrdinateDimension_clone(
+        self_: *const HandleIGESDimenOrdinateDimension,
+    ) -> crate::OcctResult<*mut HandleIGESDimenOrdinateDimension>;
     /// Dereference Handle to get *const IGESDimen_OrdinateDimension
     pub fn HandleIGESDimenOrdinateDimension_get(
         handle: *const HandleIGESDimenOrdinateDimension,
@@ -42373,6 +42857,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenPointDimension>;
     /// Destroy Handle<IGESDimen_PointDimension>
     pub fn HandleIGESDimenPointDimension_destructor(self_: *mut HandleIGESDimenPointDimension);
+    /// Clone Handle<IGESDimen_PointDimension> (increments reference count)
+    pub fn HandleIGESDimenPointDimension_clone(
+        self_: *const HandleIGESDimenPointDimension,
+    ) -> crate::OcctResult<*mut HandleIGESDimenPointDimension>;
     /// Dereference Handle to get *const IGESDimen_PointDimension
     pub fn HandleIGESDimenPointDimension_get(
         handle: *const HandleIGESDimenPointDimension,
@@ -42763,6 +43251,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenProtocol>;
     /// Destroy Handle<IGESDimen_Protocol>
     pub fn HandleIGESDimenProtocol_destructor(self_: *mut HandleIGESDimenProtocol);
+    /// Clone Handle<IGESDimen_Protocol> (increments reference count)
+    pub fn HandleIGESDimenProtocol_clone(
+        self_: *const HandleIGESDimenProtocol,
+    ) -> crate::OcctResult<*mut HandleIGESDimenProtocol>;
     /// Dereference Handle to get *const IGESDimen_Protocol
     pub fn HandleIGESDimenProtocol_get(
         handle: *const HandleIGESDimenProtocol,
@@ -42930,6 +43422,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenRadiusDimension>;
     /// Destroy Handle<IGESDimen_RadiusDimension>
     pub fn HandleIGESDimenRadiusDimension_destructor(self_: *mut HandleIGESDimenRadiusDimension);
+    /// Clone Handle<IGESDimen_RadiusDimension> (increments reference count)
+    pub fn HandleIGESDimenRadiusDimension_clone(
+        self_: *const HandleIGESDimenRadiusDimension,
+    ) -> crate::OcctResult<*mut HandleIGESDimenRadiusDimension>;
     /// Dereference Handle to get *const IGESDimen_RadiusDimension
     pub fn HandleIGESDimenRadiusDimension_get(
         handle: *const HandleIGESDimenRadiusDimension,
@@ -43328,6 +43824,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenReadWriteModule>;
     /// Destroy Handle<IGESDimen_ReadWriteModule>
     pub fn HandleIGESDimenReadWriteModule_destructor(self_: *mut HandleIGESDimenReadWriteModule);
+    /// Clone Handle<IGESDimen_ReadWriteModule> (increments reference count)
+    pub fn HandleIGESDimenReadWriteModule_clone(
+        self_: *const HandleIGESDimenReadWriteModule,
+    ) -> crate::OcctResult<*mut HandleIGESDimenReadWriteModule>;
     /// Dereference Handle to get *const IGESDimen_ReadWriteModule
     pub fn HandleIGESDimenReadWriteModule_get(
         handle: *const HandleIGESDimenReadWriteModule,
@@ -43466,6 +43966,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenSection>;
     /// Destroy Handle<IGESDimen_Section>
     pub fn HandleIGESDimenSection_destructor(self_: *mut HandleIGESDimenSection);
+    /// Clone Handle<IGESDimen_Section> (increments reference count)
+    pub fn HandleIGESDimenSection_clone(
+        self_: *const HandleIGESDimenSection,
+    ) -> crate::OcctResult<*mut HandleIGESDimenSection>;
     /// Dereference Handle to get *const IGESDimen_Section
     pub fn HandleIGESDimenSection_get(
         handle: *const HandleIGESDimenSection,
@@ -43891,6 +44395,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenSectionedArea>;
     /// Destroy Handle<IGESDimen_SectionedArea>
     pub fn HandleIGESDimenSectionedArea_destructor(self_: *mut HandleIGESDimenSectionedArea);
+    /// Clone Handle<IGESDimen_SectionedArea> (increments reference count)
+    pub fn HandleIGESDimenSectionedArea_clone(
+        self_: *const HandleIGESDimenSectionedArea,
+    ) -> crate::OcctResult<*mut HandleIGESDimenSectionedArea>;
     /// Dereference Handle to get *const IGESDimen_SectionedArea
     pub fn HandleIGESDimenSectionedArea_get(
         handle: *const HandleIGESDimenSectionedArea,
@@ -44275,6 +44783,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenSpecificModule>;
     /// Destroy Handle<IGESDimen_SpecificModule>
     pub fn HandleIGESDimenSpecificModule_destructor(self_: *mut HandleIGESDimenSpecificModule);
+    /// Clone Handle<IGESDimen_SpecificModule> (increments reference count)
+    pub fn HandleIGESDimenSpecificModule_clone(
+        self_: *const HandleIGESDimenSpecificModule,
+    ) -> crate::OcctResult<*mut HandleIGESDimenSpecificModule>;
     /// Dereference Handle to get *const IGESDimen_SpecificModule
     pub fn HandleIGESDimenSpecificModule_get(
         handle: *const HandleIGESDimenSpecificModule,
@@ -45602,6 +46114,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDimenWitnessLine>;
     /// Destroy Handle<IGESDimen_WitnessLine>
     pub fn HandleIGESDimenWitnessLine_destructor(self_: *mut HandleIGESDimenWitnessLine);
+    /// Clone Handle<IGESDimen_WitnessLine> (increments reference count)
+    pub fn HandleIGESDimenWitnessLine_clone(
+        self_: *const HandleIGESDimenWitnessLine,
+    ) -> crate::OcctResult<*mut HandleIGESDimenWitnessLine>;
     /// Dereference Handle to get *const IGESDimen_WitnessLine
     pub fn HandleIGESDimenWitnessLine_get(
         handle: *const HandleIGESDimenWitnessLine,
@@ -46035,6 +46551,10 @@ extern "C" {
     pub fn HandleIGESDrawCircArraySubfigure_destructor(
         self_: *mut HandleIGESDrawCircArraySubfigure,
     );
+    /// Clone Handle<IGESDraw_CircArraySubfigure> (increments reference count)
+    pub fn HandleIGESDrawCircArraySubfigure_clone(
+        self_: *const HandleIGESDrawCircArraySubfigure,
+    ) -> crate::OcctResult<*mut HandleIGESDrawCircArraySubfigure>;
     /// Dereference Handle to get *const IGESDraw_CircArraySubfigure
     pub fn HandleIGESDrawCircArraySubfigure_get(
         handle: *const HandleIGESDrawCircArraySubfigure,
@@ -46488,6 +47008,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawConnectPoint>;
     /// Destroy Handle<IGESDraw_ConnectPoint>
     pub fn HandleIGESDrawConnectPoint_destructor(self_: *mut HandleIGESDrawConnectPoint);
+    /// Clone Handle<IGESDraw_ConnectPoint> (increments reference count)
+    pub fn HandleIGESDrawConnectPoint_clone(
+        self_: *const HandleIGESDrawConnectPoint,
+    ) -> crate::OcctResult<*mut HandleIGESDrawConnectPoint>;
     /// Dereference Handle to get *const IGESDraw_ConnectPoint
     pub fn HandleIGESDrawConnectPoint_get(
         handle: *const HandleIGESDrawConnectPoint,
@@ -46901,6 +47425,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawDrawing>;
     /// Destroy Handle<IGESDraw_Drawing>
     pub fn HandleIGESDrawDrawing_destructor(self_: *mut HandleIGESDrawDrawing);
+    /// Clone Handle<IGESDraw_Drawing> (increments reference count)
+    pub fn HandleIGESDrawDrawing_clone(
+        self_: *const HandleIGESDrawDrawing,
+    ) -> crate::OcctResult<*mut HandleIGESDrawDrawing>;
     /// Dereference Handle to get *const IGESDraw_Drawing
     pub fn HandleIGESDrawDrawing_get(
         handle: *const HandleIGESDrawDrawing,
@@ -47326,6 +47854,10 @@ extern "C" {
     pub fn HandleIGESDrawDrawingWithRotation_destructor(
         self_: *mut HandleIGESDrawDrawingWithRotation,
     );
+    /// Clone Handle<IGESDraw_DrawingWithRotation> (increments reference count)
+    pub fn HandleIGESDrawDrawingWithRotation_clone(
+        self_: *const HandleIGESDrawDrawingWithRotation,
+    ) -> crate::OcctResult<*mut HandleIGESDrawDrawingWithRotation>;
     /// Dereference Handle to get *const IGESDraw_DrawingWithRotation
     pub fn HandleIGESDrawDrawingWithRotation_get(
         handle: *const HandleIGESDrawDrawingWithRotation,
@@ -47766,6 +48298,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawGeneralModule>;
     /// Destroy Handle<IGESDraw_GeneralModule>
     pub fn HandleIGESDrawGeneralModule_destructor(self_: *mut HandleIGESDrawGeneralModule);
+    /// Clone Handle<IGESDraw_GeneralModule> (increments reference count)
+    pub fn HandleIGESDrawGeneralModule_clone(
+        self_: *const HandleIGESDrawGeneralModule,
+    ) -> crate::OcctResult<*mut HandleIGESDrawGeneralModule>;
     /// Dereference Handle to get *const IGESDraw_GeneralModule
     pub fn HandleIGESDrawGeneralModule_get(
         handle: *const HandleIGESDrawGeneralModule,
@@ -47973,6 +48509,10 @@ extern "C" {
     pub fn HandleIGESDrawHArray1OfConnectPoint_destructor(
         self_: *mut HandleIGESDrawHArray1OfConnectPoint,
     );
+    /// Clone Handle<IGESDraw_HArray1OfConnectPoint> (increments reference count)
+    pub fn HandleIGESDrawHArray1OfConnectPoint_clone(
+        self_: *const HandleIGESDrawHArray1OfConnectPoint,
+    ) -> crate::OcctResult<*mut HandleIGESDrawHArray1OfConnectPoint>;
     /// Dereference Handle to get *const IGESDraw_HArray1OfConnectPoint
     pub fn HandleIGESDrawHArray1OfConnectPoint_get(
         handle: *const HandleIGESDrawHArray1OfConnectPoint,
@@ -48078,6 +48618,10 @@ extern "C" {
     pub fn HandleIGESDrawHArray1OfViewKindEntity_destructor(
         self_: *mut HandleIGESDrawHArray1OfViewKindEntity,
     );
+    /// Clone Handle<IGESDraw_HArray1OfViewKindEntity> (increments reference count)
+    pub fn HandleIGESDrawHArray1OfViewKindEntity_clone(
+        self_: *const HandleIGESDrawHArray1OfViewKindEntity,
+    ) -> crate::OcctResult<*mut HandleIGESDrawHArray1OfViewKindEntity>;
     /// Dereference Handle to get *const IGESDraw_HArray1OfViewKindEntity
     pub fn HandleIGESDrawHArray1OfViewKindEntity_get(
         handle: *const HandleIGESDrawHArray1OfViewKindEntity,
@@ -48206,6 +48750,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawLabelDisplay>;
     /// Destroy Handle<IGESDraw_LabelDisplay>
     pub fn HandleIGESDrawLabelDisplay_destructor(self_: *mut HandleIGESDrawLabelDisplay);
+    /// Clone Handle<IGESDraw_LabelDisplay> (increments reference count)
+    pub fn HandleIGESDrawLabelDisplay_clone(
+        self_: *const HandleIGESDrawLabelDisplay,
+    ) -> crate::OcctResult<*mut HandleIGESDrawLabelDisplay>;
     /// Dereference Handle to get *const IGESDraw_LabelDisplay
     pub fn HandleIGESDrawLabelDisplay_get(
         handle: *const HandleIGESDrawLabelDisplay,
@@ -48631,6 +49179,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawNetworkSubfigure>;
     /// Destroy Handle<IGESDraw_NetworkSubfigure>
     pub fn HandleIGESDrawNetworkSubfigure_destructor(self_: *mut HandleIGESDrawNetworkSubfigure);
+    /// Clone Handle<IGESDraw_NetworkSubfigure> (increments reference count)
+    pub fn HandleIGESDrawNetworkSubfigure_clone(
+        self_: *const HandleIGESDrawNetworkSubfigure,
+    ) -> crate::OcctResult<*mut HandleIGESDrawNetworkSubfigure>;
     /// Dereference Handle to get *const IGESDraw_NetworkSubfigure
     pub fn HandleIGESDrawNetworkSubfigure_get(
         handle: *const HandleIGESDrawNetworkSubfigure,
@@ -49061,6 +49613,10 @@ extern "C" {
     pub fn HandleIGESDrawNetworkSubfigureDef_destructor(
         self_: *mut HandleIGESDrawNetworkSubfigureDef,
     );
+    /// Clone Handle<IGESDraw_NetworkSubfigureDef> (increments reference count)
+    pub fn HandleIGESDrawNetworkSubfigureDef_clone(
+        self_: *const HandleIGESDrawNetworkSubfigureDef,
+    ) -> crate::OcctResult<*mut HandleIGESDrawNetworkSubfigureDef>;
     /// Dereference Handle to get *const IGESDraw_NetworkSubfigureDef
     pub fn HandleIGESDrawNetworkSubfigureDef_get(
         handle: *const HandleIGESDrawNetworkSubfigureDef,
@@ -49524,6 +50080,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawPerspectiveView>;
     /// Destroy Handle<IGESDraw_PerspectiveView>
     pub fn HandleIGESDrawPerspectiveView_destructor(self_: *mut HandleIGESDrawPerspectiveView);
+    /// Clone Handle<IGESDraw_PerspectiveView> (increments reference count)
+    pub fn HandleIGESDrawPerspectiveView_clone(
+        self_: *const HandleIGESDrawPerspectiveView,
+    ) -> crate::OcctResult<*mut HandleIGESDrawPerspectiveView>;
     /// Dereference Handle to get *const IGESDraw_PerspectiveView
     pub fn HandleIGESDrawPerspectiveView_get(
         handle: *const HandleIGESDrawPerspectiveView,
@@ -49920,6 +50480,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawPlanar>;
     /// Destroy Handle<IGESDraw_Planar>
     pub fn HandleIGESDrawPlanar_destructor(self_: *mut HandleIGESDrawPlanar);
+    /// Clone Handle<IGESDraw_Planar> (increments reference count)
+    pub fn HandleIGESDrawPlanar_clone(
+        self_: *const HandleIGESDrawPlanar,
+    ) -> crate::OcctResult<*mut HandleIGESDrawPlanar>;
     /// Dereference Handle to get *const IGESDraw_Planar
     pub fn HandleIGESDrawPlanar_get(
         handle: *const HandleIGESDrawPlanar,
@@ -50309,6 +50873,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawProtocol>;
     /// Destroy Handle<IGESDraw_Protocol>
     pub fn HandleIGESDrawProtocol_destructor(self_: *mut HandleIGESDrawProtocol);
+    /// Clone Handle<IGESDraw_Protocol> (increments reference count)
+    pub fn HandleIGESDrawProtocol_clone(
+        self_: *const HandleIGESDrawProtocol,
+    ) -> crate::OcctResult<*mut HandleIGESDrawProtocol>;
     /// Dereference Handle to get *const IGESDraw_Protocol
     pub fn HandleIGESDrawProtocol_get(
         handle: *const HandleIGESDrawProtocol,
@@ -50468,6 +51036,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawReadWriteModule>;
     /// Destroy Handle<IGESDraw_ReadWriteModule>
     pub fn HandleIGESDrawReadWriteModule_destructor(self_: *mut HandleIGESDrawReadWriteModule);
+    /// Clone Handle<IGESDraw_ReadWriteModule> (increments reference count)
+    pub fn HandleIGESDrawReadWriteModule_clone(
+        self_: *const HandleIGESDrawReadWriteModule,
+    ) -> crate::OcctResult<*mut HandleIGESDrawReadWriteModule>;
     /// Dereference Handle to get *const IGESDraw_ReadWriteModule
     pub fn HandleIGESDrawReadWriteModule_get(
         handle: *const HandleIGESDrawReadWriteModule,
@@ -50651,6 +51223,10 @@ extern "C" {
     pub fn HandleIGESDrawRectArraySubfigure_destructor(
         self_: *mut HandleIGESDrawRectArraySubfigure,
     );
+    /// Clone Handle<IGESDraw_RectArraySubfigure> (increments reference count)
+    pub fn HandleIGESDrawRectArraySubfigure_clone(
+        self_: *const HandleIGESDrawRectArraySubfigure,
+    ) -> crate::OcctResult<*mut HandleIGESDrawRectArraySubfigure>;
     /// Dereference Handle to get *const IGESDraw_RectArraySubfigure
     pub fn HandleIGESDrawRectArraySubfigure_get(
         handle: *const HandleIGESDrawRectArraySubfigure,
@@ -51106,6 +51682,10 @@ extern "C" {
     pub fn HandleIGESDrawSegmentedViewsVisible_destructor(
         self_: *mut HandleIGESDrawSegmentedViewsVisible,
     );
+    /// Clone Handle<IGESDraw_SegmentedViewsVisible> (increments reference count)
+    pub fn HandleIGESDrawSegmentedViewsVisible_clone(
+        self_: *const HandleIGESDrawSegmentedViewsVisible,
+    ) -> crate::OcctResult<*mut HandleIGESDrawSegmentedViewsVisible>;
     /// Dereference Handle to get *const IGESDraw_SegmentedViewsVisible
     pub fn HandleIGESDrawSegmentedViewsVisible_get(
         handle: *const HandleIGESDrawSegmentedViewsVisible,
@@ -51494,6 +52074,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawSpecificModule>;
     /// Destroy Handle<IGESDraw_SpecificModule>
     pub fn HandleIGESDrawSpecificModule_destructor(self_: *mut HandleIGESDrawSpecificModule);
+    /// Clone Handle<IGESDraw_SpecificModule> (increments reference count)
+    pub fn HandleIGESDrawSpecificModule_clone(
+        self_: *const HandleIGESDrawSpecificModule,
+    ) -> crate::OcctResult<*mut HandleIGESDrawSpecificModule>;
     /// Dereference Handle to get *const IGESDraw_SpecificModule
     pub fn HandleIGESDrawSpecificModule_get(
         handle: *const HandleIGESDrawSpecificModule,
@@ -52429,6 +53013,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawView>;
     /// Destroy Handle<IGESDraw_View>
     pub fn HandleIGESDrawView_destructor(self_: *mut HandleIGESDrawView);
+    /// Clone Handle<IGESDraw_View> (increments reference count)
+    pub fn HandleIGESDrawView_clone(
+        self_: *const HandleIGESDrawView,
+    ) -> crate::OcctResult<*mut HandleIGESDrawView>;
     /// Dereference Handle to get *const IGESDraw_View
     pub fn HandleIGESDrawView_get(
         handle: *const HandleIGESDrawView,
@@ -52828,6 +53416,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESDrawViewsVisible>;
     /// Destroy Handle<IGESDraw_ViewsVisible>
     pub fn HandleIGESDrawViewsVisible_destructor(self_: *mut HandleIGESDrawViewsVisible);
+    /// Clone Handle<IGESDraw_ViewsVisible> (increments reference count)
+    pub fn HandleIGESDrawViewsVisible_clone(
+        self_: *const HandleIGESDrawViewsVisible,
+    ) -> crate::OcctResult<*mut HandleIGESDrawViewsVisible>;
     /// Dereference Handle to get *const IGESDraw_ViewsVisible
     pub fn HandleIGESDrawViewsVisible_get(
         handle: *const HandleIGESDrawViewsVisible,
@@ -53286,6 +53878,10 @@ extern "C" {
     pub fn HandleIGESDrawViewsVisibleWithAttr_destructor(
         self_: *mut HandleIGESDrawViewsVisibleWithAttr,
     );
+    /// Clone Handle<IGESDraw_ViewsVisibleWithAttr> (increments reference count)
+    pub fn HandleIGESDrawViewsVisibleWithAttr_clone(
+        self_: *const HandleIGESDrawViewsVisibleWithAttr,
+    ) -> crate::OcctResult<*mut HandleIGESDrawViewsVisibleWithAttr>;
     /// Dereference Handle to get *const IGESDraw_ViewsVisibleWithAttr
     pub fn HandleIGESDrawViewsVisibleWithAttr_get(
         handle: *const HandleIGESDrawViewsVisibleWithAttr,
@@ -53745,6 +54341,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomBSplineCurve>;
     /// Destroy Handle<IGESGeom_BSplineCurve>
     pub fn HandleIGESGeomBSplineCurve_destructor(self_: *mut HandleIGESGeomBSplineCurve);
+    /// Clone Handle<IGESGeom_BSplineCurve> (increments reference count)
+    pub fn HandleIGESGeomBSplineCurve_clone(
+        self_: *const HandleIGESGeomBSplineCurve,
+    ) -> crate::OcctResult<*mut HandleIGESGeomBSplineCurve>;
     /// Dereference Handle to get *const IGESGeom_BSplineCurve
     pub fn HandleIGESGeomBSplineCurve_get(
         handle: *const HandleIGESGeomBSplineCurve,
@@ -54237,6 +54837,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomBSplineSurface>;
     /// Destroy Handle<IGESGeom_BSplineSurface>
     pub fn HandleIGESGeomBSplineSurface_destructor(self_: *mut HandleIGESGeomBSplineSurface);
+    /// Clone Handle<IGESGeom_BSplineSurface> (increments reference count)
+    pub fn HandleIGESGeomBSplineSurface_clone(
+        self_: *const HandleIGESGeomBSplineSurface,
+    ) -> crate::OcctResult<*mut HandleIGESGeomBSplineSurface>;
     /// Dereference Handle to get *const IGESGeom_BSplineSurface
     pub fn HandleIGESGeomBSplineSurface_get(
         handle: *const HandleIGESGeomBSplineSurface,
@@ -54657,6 +55261,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomBoundary>;
     /// Destroy Handle<IGESGeom_Boundary>
     pub fn HandleIGESGeomBoundary_destructor(self_: *mut HandleIGESGeomBoundary);
+    /// Clone Handle<IGESGeom_Boundary> (increments reference count)
+    pub fn HandleIGESGeomBoundary_clone(
+        self_: *const HandleIGESGeomBoundary,
+    ) -> crate::OcctResult<*mut HandleIGESGeomBoundary>;
     /// Dereference Handle to get *const IGESGeom_Boundary
     pub fn HandleIGESGeomBoundary_get(
         handle: *const HandleIGESGeomBoundary,
@@ -55050,6 +55658,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomBoundedSurface>;
     /// Destroy Handle<IGESGeom_BoundedSurface>
     pub fn HandleIGESGeomBoundedSurface_destructor(self_: *mut HandleIGESGeomBoundedSurface);
+    /// Clone Handle<IGESGeom_BoundedSurface> (increments reference count)
+    pub fn HandleIGESGeomBoundedSurface_clone(
+        self_: *const HandleIGESGeomBoundedSurface,
+    ) -> crate::OcctResult<*mut HandleIGESGeomBoundedSurface>;
     /// Dereference Handle to get *const IGESGeom_BoundedSurface
     pub fn HandleIGESGeomBoundedSurface_get(
         handle: *const HandleIGESGeomBoundedSurface,
@@ -55473,6 +56085,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomCircularArc>;
     /// Destroy Handle<IGESGeom_CircularArc>
     pub fn HandleIGESGeomCircularArc_destructor(self_: *mut HandleIGESGeomCircularArc);
+    /// Clone Handle<IGESGeom_CircularArc> (increments reference count)
+    pub fn HandleIGESGeomCircularArc_clone(
+        self_: *const HandleIGESGeomCircularArc,
+    ) -> crate::OcctResult<*mut HandleIGESGeomCircularArc>;
     /// Dereference Handle to get *const IGESGeom_CircularArc
     pub fn HandleIGESGeomCircularArc_get(
         handle: *const HandleIGESGeomCircularArc,
@@ -55856,6 +56472,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomCompositeCurve>;
     /// Destroy Handle<IGESGeom_CompositeCurve>
     pub fn HandleIGESGeomCompositeCurve_destructor(self_: *mut HandleIGESGeomCompositeCurve);
+    /// Clone Handle<IGESGeom_CompositeCurve> (increments reference count)
+    pub fn HandleIGESGeomCompositeCurve_clone(
+        self_: *const HandleIGESGeomCompositeCurve,
+    ) -> crate::OcctResult<*mut HandleIGESGeomCompositeCurve>;
     /// Dereference Handle to get *const IGESGeom_CompositeCurve
     pub fn HandleIGESGeomCompositeCurve_get(
         handle: *const HandleIGESGeomCompositeCurve,
@@ -56319,6 +56939,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomConicArc>;
     /// Destroy Handle<IGESGeom_ConicArc>
     pub fn HandleIGESGeomConicArc_destructor(self_: *mut HandleIGESGeomConicArc);
+    /// Clone Handle<IGESGeom_ConicArc> (increments reference count)
+    pub fn HandleIGESGeomConicArc_clone(
+        self_: *const HandleIGESGeomConicArc,
+    ) -> crate::OcctResult<*mut HandleIGESGeomConicArc>;
     /// Dereference Handle to get *const IGESGeom_ConicArc
     pub fn HandleIGESGeomConicArc_get(
         handle: *const HandleIGESGeomConicArc,
@@ -56753,6 +57377,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomCopiousData>;
     /// Destroy Handle<IGESGeom_CopiousData>
     pub fn HandleIGESGeomCopiousData_destructor(self_: *mut HandleIGESGeomCopiousData);
+    /// Clone Handle<IGESGeom_CopiousData> (increments reference count)
+    pub fn HandleIGESGeomCopiousData_clone(
+        self_: *const HandleIGESGeomCopiousData,
+    ) -> crate::OcctResult<*mut HandleIGESGeomCopiousData>;
     /// Dereference Handle to get *const IGESGeom_CopiousData
     pub fn HandleIGESGeomCopiousData_get(
         handle: *const HandleIGESGeomCopiousData,
@@ -57151,6 +57779,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomCurveOnSurface>;
     /// Destroy Handle<IGESGeom_CurveOnSurface>
     pub fn HandleIGESGeomCurveOnSurface_destructor(self_: *mut HandleIGESGeomCurveOnSurface);
+    /// Clone Handle<IGESGeom_CurveOnSurface> (increments reference count)
+    pub fn HandleIGESGeomCurveOnSurface_clone(
+        self_: *const HandleIGESGeomCurveOnSurface,
+    ) -> crate::OcctResult<*mut HandleIGESGeomCurveOnSurface>;
     /// Dereference Handle to get *const IGESGeom_CurveOnSurface
     pub fn HandleIGESGeomCurveOnSurface_get(
         handle: *const HandleIGESGeomCurveOnSurface,
@@ -57532,6 +58164,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomDirection>;
     /// Destroy Handle<IGESGeom_Direction>
     pub fn HandleIGESGeomDirection_destructor(self_: *mut HandleIGESGeomDirection);
+    /// Clone Handle<IGESGeom_Direction> (increments reference count)
+    pub fn HandleIGESGeomDirection_clone(
+        self_: *const HandleIGESGeomDirection,
+    ) -> crate::OcctResult<*mut HandleIGESGeomDirection>;
     /// Dereference Handle to get *const IGESGeom_Direction
     pub fn HandleIGESGeomDirection_get(
         handle: *const HandleIGESGeomDirection,
@@ -57936,6 +58572,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomFlash>;
     /// Destroy Handle<IGESGeom_Flash>
     pub fn HandleIGESGeomFlash_destructor(self_: *mut HandleIGESGeomFlash);
+    /// Clone Handle<IGESGeom_Flash> (increments reference count)
+    pub fn HandleIGESGeomFlash_clone(
+        self_: *const HandleIGESGeomFlash,
+    ) -> crate::OcctResult<*mut HandleIGESGeomFlash>;
     /// Dereference Handle to get *const IGESGeom_Flash
     pub fn HandleIGESGeomFlash_get(
         handle: *const HandleIGESGeomFlash,
@@ -58350,6 +58990,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomGeneralModule>;
     /// Destroy Handle<IGESGeom_GeneralModule>
     pub fn HandleIGESGeomGeneralModule_destructor(self_: *mut HandleIGESGeomGeneralModule);
+    /// Clone Handle<IGESGeom_GeneralModule> (increments reference count)
+    pub fn HandleIGESGeomGeneralModule_clone(
+        self_: *const HandleIGESGeomGeneralModule,
+    ) -> crate::OcctResult<*mut HandleIGESGeomGeneralModule>;
     /// Dereference Handle to get *const IGESGeom_GeneralModule
     pub fn HandleIGESGeomGeneralModule_get(
         handle: *const HandleIGESGeomGeneralModule,
@@ -58574,6 +59218,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomHArray1OfBoundary>;
     /// Destroy Handle<IGESGeom_HArray1OfBoundary>
     pub fn HandleIGESGeomHArray1OfBoundary_destructor(self_: *mut HandleIGESGeomHArray1OfBoundary);
+    /// Clone Handle<IGESGeom_HArray1OfBoundary> (increments reference count)
+    pub fn HandleIGESGeomHArray1OfBoundary_clone(
+        self_: *const HandleIGESGeomHArray1OfBoundary,
+    ) -> crate::OcctResult<*mut HandleIGESGeomHArray1OfBoundary>;
     /// Dereference Handle to get *const IGESGeom_HArray1OfBoundary
     pub fn HandleIGESGeomHArray1OfBoundary_get(
         handle: *const HandleIGESGeomHArray1OfBoundary,
@@ -58679,6 +59327,10 @@ extern "C" {
     pub fn HandleIGESGeomHArray1OfCurveOnSurface_destructor(
         self_: *mut HandleIGESGeomHArray1OfCurveOnSurface,
     );
+    /// Clone Handle<IGESGeom_HArray1OfCurveOnSurface> (increments reference count)
+    pub fn HandleIGESGeomHArray1OfCurveOnSurface_clone(
+        self_: *const HandleIGESGeomHArray1OfCurveOnSurface,
+    ) -> crate::OcctResult<*mut HandleIGESGeomHArray1OfCurveOnSurface>;
     /// Dereference Handle to get *const IGESGeom_HArray1OfCurveOnSurface
     pub fn HandleIGESGeomHArray1OfCurveOnSurface_get(
         handle: *const HandleIGESGeomHArray1OfCurveOnSurface,
@@ -58784,6 +59436,10 @@ extern "C" {
     pub fn HandleIGESGeomHArray1OfTransformationMatrix_destructor(
         self_: *mut HandleIGESGeomHArray1OfTransformationMatrix,
     );
+    /// Clone Handle<IGESGeom_HArray1OfTransformationMatrix> (increments reference count)
+    pub fn HandleIGESGeomHArray1OfTransformationMatrix_clone(
+        self_: *const HandleIGESGeomHArray1OfTransformationMatrix,
+    ) -> crate::OcctResult<*mut HandleIGESGeomHArray1OfTransformationMatrix>;
     /// Dereference Handle to get *const IGESGeom_HArray1OfTransformationMatrix
     pub fn HandleIGESGeomHArray1OfTransformationMatrix_get(
         handle: *const HandleIGESGeomHArray1OfTransformationMatrix,
@@ -58886,6 +59542,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomLine>;
     /// Destroy Handle<IGESGeom_Line>
     pub fn HandleIGESGeomLine_destructor(self_: *mut HandleIGESGeomLine);
+    /// Clone Handle<IGESGeom_Line> (increments reference count)
+    pub fn HandleIGESGeomLine_clone(
+        self_: *const HandleIGESGeomLine,
+    ) -> crate::OcctResult<*mut HandleIGESGeomLine>;
     /// Dereference Handle to get *const IGESGeom_Line
     pub fn HandleIGESGeomLine_get(
         handle: *const HandleIGESGeomLine,
@@ -59317,6 +59977,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomOffsetCurve>;
     /// Destroy Handle<IGESGeom_OffsetCurve>
     pub fn HandleIGESGeomOffsetCurve_destructor(self_: *mut HandleIGESGeomOffsetCurve);
+    /// Clone Handle<IGESGeom_OffsetCurve> (increments reference count)
+    pub fn HandleIGESGeomOffsetCurve_clone(
+        self_: *const HandleIGESGeomOffsetCurve,
+    ) -> crate::OcctResult<*mut HandleIGESGeomOffsetCurve>;
     /// Dereference Handle to get *const IGESGeom_OffsetCurve
     pub fn HandleIGESGeomOffsetCurve_get(
         handle: *const HandleIGESGeomOffsetCurve,
@@ -59709,6 +60373,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomOffsetSurface>;
     /// Destroy Handle<IGESGeom_OffsetSurface>
     pub fn HandleIGESGeomOffsetSurface_destructor(self_: *mut HandleIGESGeomOffsetSurface);
+    /// Clone Handle<IGESGeom_OffsetSurface> (increments reference count)
+    pub fn HandleIGESGeomOffsetSurface_clone(
+        self_: *const HandleIGESGeomOffsetSurface,
+    ) -> crate::OcctResult<*mut HandleIGESGeomOffsetSurface>;
     /// Dereference Handle to get *const IGESGeom_OffsetSurface
     pub fn HandleIGESGeomOffsetSurface_get(
         handle: *const HandleIGESGeomOffsetSurface,
@@ -60135,6 +60803,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomPlane>;
     /// Destroy Handle<IGESGeom_Plane>
     pub fn HandleIGESGeomPlane_destructor(self_: *mut HandleIGESGeomPlane);
+    /// Clone Handle<IGESGeom_Plane> (increments reference count)
+    pub fn HandleIGESGeomPlane_clone(
+        self_: *const HandleIGESGeomPlane,
+    ) -> crate::OcctResult<*mut HandleIGESGeomPlane>;
     /// Dereference Handle to get *const IGESGeom_Plane
     pub fn HandleIGESGeomPlane_get(
         handle: *const HandleIGESGeomPlane,
@@ -60518,6 +61190,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomPoint>;
     /// Destroy Handle<IGESGeom_Point>
     pub fn HandleIGESGeomPoint_destructor(self_: *mut HandleIGESGeomPoint);
+    /// Clone Handle<IGESGeom_Point> (increments reference count)
+    pub fn HandleIGESGeomPoint_clone(
+        self_: *const HandleIGESGeomPoint,
+    ) -> crate::OcctResult<*mut HandleIGESGeomPoint>;
     /// Dereference Handle to get *const IGESGeom_Point
     pub fn HandleIGESGeomPoint_get(
         handle: *const HandleIGESGeomPoint,
@@ -60903,6 +61579,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomProtocol>;
     /// Destroy Handle<IGESGeom_Protocol>
     pub fn HandleIGESGeomProtocol_destructor(self_: *mut HandleIGESGeomProtocol);
+    /// Clone Handle<IGESGeom_Protocol> (increments reference count)
+    pub fn HandleIGESGeomProtocol_clone(
+        self_: *const HandleIGESGeomProtocol,
+    ) -> crate::OcctResult<*mut HandleIGESGeomProtocol>;
     /// Dereference Handle to get *const IGESGeom_Protocol
     pub fn HandleIGESGeomProtocol_get(
         handle: *const HandleIGESGeomProtocol,
@@ -61062,6 +61742,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomReadWriteModule>;
     /// Destroy Handle<IGESGeom_ReadWriteModule>
     pub fn HandleIGESGeomReadWriteModule_destructor(self_: *mut HandleIGESGeomReadWriteModule);
+    /// Clone Handle<IGESGeom_ReadWriteModule> (increments reference count)
+    pub fn HandleIGESGeomReadWriteModule_clone(
+        self_: *const HandleIGESGeomReadWriteModule,
+    ) -> crate::OcctResult<*mut HandleIGESGeomReadWriteModule>;
     /// Dereference Handle to get *const IGESGeom_ReadWriteModule
     pub fn HandleIGESGeomReadWriteModule_get(
         handle: *const HandleIGESGeomReadWriteModule,
@@ -61204,6 +61888,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomRuledSurface>;
     /// Destroy Handle<IGESGeom_RuledSurface>
     pub fn HandleIGESGeomRuledSurface_destructor(self_: *mut HandleIGESGeomRuledSurface);
+    /// Clone Handle<IGESGeom_RuledSurface> (increments reference count)
+    pub fn HandleIGESGeomRuledSurface_clone(
+        self_: *const HandleIGESGeomRuledSurface,
+    ) -> crate::OcctResult<*mut HandleIGESGeomRuledSurface>;
     /// Dereference Handle to get *const IGESGeom_RuledSurface
     pub fn HandleIGESGeomRuledSurface_get(
         handle: *const HandleIGESGeomRuledSurface,
@@ -61588,6 +62276,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomSpecificModule>;
     /// Destroy Handle<IGESGeom_SpecificModule>
     pub fn HandleIGESGeomSpecificModule_destructor(self_: *mut HandleIGESGeomSpecificModule);
+    /// Clone Handle<IGESGeom_SpecificModule> (increments reference count)
+    pub fn HandleIGESGeomSpecificModule_clone(
+        self_: *const HandleIGESGeomSpecificModule,
+    ) -> crate::OcctResult<*mut HandleIGESGeomSpecificModule>;
     /// Dereference Handle to get *const IGESGeom_SpecificModule
     pub fn HandleIGESGeomSpecificModule_get(
         handle: *const HandleIGESGeomSpecificModule,
@@ -61754,6 +62446,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomSplineCurve>;
     /// Destroy Handle<IGESGeom_SplineCurve>
     pub fn HandleIGESGeomSplineCurve_destructor(self_: *mut HandleIGESGeomSplineCurve);
+    /// Clone Handle<IGESGeom_SplineCurve> (increments reference count)
+    pub fn HandleIGESGeomSplineCurve_clone(
+        self_: *const HandleIGESGeomSplineCurve,
+    ) -> crate::OcctResult<*mut HandleIGESGeomSplineCurve>;
     /// Dereference Handle to get *const IGESGeom_SplineCurve
     pub fn HandleIGESGeomSplineCurve_get(
         handle: *const HandleIGESGeomSplineCurve,
@@ -62185,6 +62881,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomSplineSurface>;
     /// Destroy Handle<IGESGeom_SplineSurface>
     pub fn HandleIGESGeomSplineSurface_destructor(self_: *mut HandleIGESGeomSplineSurface);
+    /// Clone Handle<IGESGeom_SplineSurface> (increments reference count)
+    pub fn HandleIGESGeomSplineSurface_clone(
+        self_: *const HandleIGESGeomSplineSurface,
+    ) -> crate::OcctResult<*mut HandleIGESGeomSplineSurface>;
     /// Dereference Handle to get *const IGESGeom_SplineSurface
     pub fn HandleIGESGeomSplineSurface_get(
         handle: *const HandleIGESGeomSplineSurface,
@@ -62581,6 +63281,10 @@ extern "C" {
     pub fn HandleIGESGeomSurfaceOfRevolution_destructor(
         self_: *mut HandleIGESGeomSurfaceOfRevolution,
     );
+    /// Clone Handle<IGESGeom_SurfaceOfRevolution> (increments reference count)
+    pub fn HandleIGESGeomSurfaceOfRevolution_clone(
+        self_: *const HandleIGESGeomSurfaceOfRevolution,
+    ) -> crate::OcctResult<*mut HandleIGESGeomSurfaceOfRevolution>;
     /// Dereference Handle to get *const IGESGeom_SurfaceOfRevolution
     pub fn HandleIGESGeomSurfaceOfRevolution_get(
         handle: *const HandleIGESGeomSurfaceOfRevolution,
@@ -62968,6 +63672,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomTabulatedCylinder>;
     /// Destroy Handle<IGESGeom_TabulatedCylinder>
     pub fn HandleIGESGeomTabulatedCylinder_destructor(self_: *mut HandleIGESGeomTabulatedCylinder);
+    /// Clone Handle<IGESGeom_TabulatedCylinder> (increments reference count)
+    pub fn HandleIGESGeomTabulatedCylinder_clone(
+        self_: *const HandleIGESGeomTabulatedCylinder,
+    ) -> crate::OcctResult<*mut HandleIGESGeomTabulatedCylinder>;
     /// Dereference Handle to get *const IGESGeom_TabulatedCylinder
     pub fn HandleIGESGeomTabulatedCylinder_get(
         handle: *const HandleIGESGeomTabulatedCylinder,
@@ -64556,6 +65264,10 @@ extern "C" {
     pub fn HandleIGESGeomTransformationMatrix_destructor(
         self_: *mut HandleIGESGeomTransformationMatrix,
     );
+    /// Clone Handle<IGESGeom_TransformationMatrix> (increments reference count)
+    pub fn HandleIGESGeomTransformationMatrix_clone(
+        self_: *const HandleIGESGeomTransformationMatrix,
+    ) -> crate::OcctResult<*mut HandleIGESGeomTransformationMatrix>;
     /// Dereference Handle to get *const IGESGeom_TransformationMatrix
     pub fn HandleIGESGeomTransformationMatrix_get(
         handle: *const HandleIGESGeomTransformationMatrix,
@@ -64962,6 +65674,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGeomTrimmedSurface>;
     /// Destroy Handle<IGESGeom_TrimmedSurface>
     pub fn HandleIGESGeomTrimmedSurface_destructor(self_: *mut HandleIGESGeomTrimmedSurface);
+    /// Clone Handle<IGESGeom_TrimmedSurface> (increments reference count)
+    pub fn HandleIGESGeomTrimmedSurface_clone(
+        self_: *const HandleIGESGeomTrimmedSurface,
+    ) -> crate::OcctResult<*mut HandleIGESGeomTrimmedSurface>;
     /// Dereference Handle to get *const IGESGeom_TrimmedSurface
     pub fn HandleIGESGeomTrimmedSurface_get(
         handle: *const HandleIGESGeomTrimmedSurface,
@@ -65374,6 +66090,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphColor>;
     /// Destroy Handle<IGESGraph_Color>
     pub fn HandleIGESGraphColor_destructor(self_: *mut HandleIGESGraphColor);
+    /// Clone Handle<IGESGraph_Color> (increments reference count)
+    pub fn HandleIGESGraphColor_clone(
+        self_: *const HandleIGESGraphColor,
+    ) -> crate::OcctResult<*mut HandleIGESGraphColor>;
     /// Dereference Handle to get *const IGESGraph_Color
     pub fn HandleIGESGraphColor_get(
         handle: *const HandleIGESGraphColor,
@@ -65772,6 +66492,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphDefinitionLevel>;
     /// Destroy Handle<IGESGraph_DefinitionLevel>
     pub fn HandleIGESGraphDefinitionLevel_destructor(self_: *mut HandleIGESGraphDefinitionLevel);
+    /// Clone Handle<IGESGraph_DefinitionLevel> (increments reference count)
+    pub fn HandleIGESGraphDefinitionLevel_clone(
+        self_: *const HandleIGESGraphDefinitionLevel,
+    ) -> crate::OcctResult<*mut HandleIGESGraphDefinitionLevel>;
     /// Dereference Handle to get *const IGESGraph_DefinitionLevel
     pub fn HandleIGESGraphDefinitionLevel_get(
         handle: *const HandleIGESGraphDefinitionLevel,
@@ -66169,6 +66893,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphDrawingSize>;
     /// Destroy Handle<IGESGraph_DrawingSize>
     pub fn HandleIGESGraphDrawingSize_destructor(self_: *mut HandleIGESGraphDrawingSize);
+    /// Clone Handle<IGESGraph_DrawingSize> (increments reference count)
+    pub fn HandleIGESGraphDrawingSize_clone(
+        self_: *const HandleIGESGraphDrawingSize,
+    ) -> crate::OcctResult<*mut HandleIGESGraphDrawingSize>;
     /// Dereference Handle to get *const IGESGraph_DrawingSize
     pub fn HandleIGESGraphDrawingSize_get(
         handle: *const HandleIGESGraphDrawingSize,
@@ -66561,6 +67289,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphDrawingUnits>;
     /// Destroy Handle<IGESGraph_DrawingUnits>
     pub fn HandleIGESGraphDrawingUnits_destructor(self_: *mut HandleIGESGraphDrawingUnits);
+    /// Clone Handle<IGESGraph_DrawingUnits> (increments reference count)
+    pub fn HandleIGESGraphDrawingUnits_clone(
+        self_: *const HandleIGESGraphDrawingUnits,
+    ) -> crate::OcctResult<*mut HandleIGESGraphDrawingUnits>;
     /// Dereference Handle to get *const IGESGraph_DrawingUnits
     pub fn HandleIGESGraphDrawingUnits_get(
         handle: *const HandleIGESGraphDrawingUnits,
@@ -66980,6 +67712,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphGeneralModule>;
     /// Destroy Handle<IGESGraph_GeneralModule>
     pub fn HandleIGESGraphGeneralModule_destructor(self_: *mut HandleIGESGraphGeneralModule);
+    /// Clone Handle<IGESGraph_GeneralModule> (increments reference count)
+    pub fn HandleIGESGraphGeneralModule_clone(
+        self_: *const HandleIGESGraphGeneralModule,
+    ) -> crate::OcctResult<*mut HandleIGESGraphGeneralModule>;
     /// Dereference Handle to get *const IGESGraph_GeneralModule
     pub fn HandleIGESGraphGeneralModule_get(
         handle: *const HandleIGESGraphGeneralModule,
@@ -67204,6 +67940,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphHArray1OfColor>;
     /// Destroy Handle<IGESGraph_HArray1OfColor>
     pub fn HandleIGESGraphHArray1OfColor_destructor(self_: *mut HandleIGESGraphHArray1OfColor);
+    /// Clone Handle<IGESGraph_HArray1OfColor> (increments reference count)
+    pub fn HandleIGESGraphHArray1OfColor_clone(
+        self_: *const HandleIGESGraphHArray1OfColor,
+    ) -> crate::OcctResult<*mut HandleIGESGraphHArray1OfColor>;
     /// Dereference Handle to get *const IGESGraph_HArray1OfColor
     pub fn HandleIGESGraphHArray1OfColor_get(
         handle: *const HandleIGESGraphHArray1OfColor,
@@ -67309,6 +68049,10 @@ extern "C" {
     pub fn HandleIGESGraphHArray1OfTextDisplayTemplate_destructor(
         self_: *mut HandleIGESGraphHArray1OfTextDisplayTemplate,
     );
+    /// Clone Handle<IGESGraph_HArray1OfTextDisplayTemplate> (increments reference count)
+    pub fn HandleIGESGraphHArray1OfTextDisplayTemplate_clone(
+        self_: *const HandleIGESGraphHArray1OfTextDisplayTemplate,
+    ) -> crate::OcctResult<*mut HandleIGESGraphHArray1OfTextDisplayTemplate>;
     /// Dereference Handle to get *const IGESGraph_HArray1OfTextDisplayTemplate
     pub fn HandleIGESGraphHArray1OfTextDisplayTemplate_get(
         handle: *const HandleIGESGraphHArray1OfTextDisplayTemplate,
@@ -67412,6 +68156,10 @@ extern "C" {
     pub fn HandleIGESGraphHArray1OfTextFontDef_destructor(
         self_: *mut HandleIGESGraphHArray1OfTextFontDef,
     );
+    /// Clone Handle<IGESGraph_HArray1OfTextFontDef> (increments reference count)
+    pub fn HandleIGESGraphHArray1OfTextFontDef_clone(
+        self_: *const HandleIGESGraphHArray1OfTextFontDef,
+    ) -> crate::OcctResult<*mut HandleIGESGraphHArray1OfTextFontDef>;
     /// Dereference Handle to get *const IGESGraph_HArray1OfTextFontDef
     pub fn HandleIGESGraphHArray1OfTextFontDef_get(
         handle: *const HandleIGESGraphHArray1OfTextFontDef,
@@ -67506,6 +68254,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphHighLight>;
     /// Destroy Handle<IGESGraph_HighLight>
     pub fn HandleIGESGraphHighLight_destructor(self_: *mut HandleIGESGraphHighLight);
+    /// Clone Handle<IGESGraph_HighLight> (increments reference count)
+    pub fn HandleIGESGraphHighLight_clone(
+        self_: *const HandleIGESGraphHighLight,
+    ) -> crate::OcctResult<*mut HandleIGESGraphHighLight>;
     /// Dereference Handle to get *const IGESGraph_HighLight
     pub fn HandleIGESGraphHighLight_get(
         handle: *const HandleIGESGraphHighLight,
@@ -67893,6 +68645,10 @@ extern "C" {
     pub fn HandleIGESGraphIntercharacterSpacing_destructor(
         self_: *mut HandleIGESGraphIntercharacterSpacing,
     );
+    /// Clone Handle<IGESGraph_IntercharacterSpacing> (increments reference count)
+    pub fn HandleIGESGraphIntercharacterSpacing_clone(
+        self_: *const HandleIGESGraphIntercharacterSpacing,
+    ) -> crate::OcctResult<*mut HandleIGESGraphIntercharacterSpacing>;
     /// Dereference Handle to get *const IGESGraph_IntercharacterSpacing
     pub fn HandleIGESGraphIntercharacterSpacing_get(
         handle: *const HandleIGESGraphIntercharacterSpacing,
@@ -68297,6 +69053,10 @@ extern "C" {
     pub fn HandleIGESGraphLineFontDefPattern_destructor(
         self_: *mut HandleIGESGraphLineFontDefPattern,
     );
+    /// Clone Handle<IGESGraph_LineFontDefPattern> (increments reference count)
+    pub fn HandleIGESGraphLineFontDefPattern_clone(
+        self_: *const HandleIGESGraphLineFontDefPattern,
+    ) -> crate::OcctResult<*mut HandleIGESGraphLineFontDefPattern>;
     /// Dereference Handle to get *const IGESGraph_LineFontDefPattern
     pub fn HandleIGESGraphLineFontDefPattern_get(
         handle: *const HandleIGESGraphLineFontDefPattern,
@@ -68706,6 +69466,10 @@ extern "C" {
     pub fn HandleIGESGraphLineFontDefTemplate_destructor(
         self_: *mut HandleIGESGraphLineFontDefTemplate,
     );
+    /// Clone Handle<IGESGraph_LineFontDefTemplate> (increments reference count)
+    pub fn HandleIGESGraphLineFontDefTemplate_clone(
+        self_: *const HandleIGESGraphLineFontDefTemplate,
+    ) -> crate::OcctResult<*mut HandleIGESGraphLineFontDefTemplate>;
     /// Dereference Handle to get *const IGESGraph_LineFontDefTemplate
     pub fn HandleIGESGraphLineFontDefTemplate_get(
         handle: *const HandleIGESGraphLineFontDefTemplate,
@@ -69096,6 +69860,10 @@ extern "C" {
     pub fn HandleIGESGraphLineFontPredefined_destructor(
         self_: *mut HandleIGESGraphLineFontPredefined,
     );
+    /// Clone Handle<IGESGraph_LineFontPredefined> (increments reference count)
+    pub fn HandleIGESGraphLineFontPredefined_clone(
+        self_: *const HandleIGESGraphLineFontPredefined,
+    ) -> crate::OcctResult<*mut HandleIGESGraphLineFontPredefined>;
     /// Dereference Handle to get *const IGESGraph_LineFontPredefined
     pub fn HandleIGESGraphLineFontPredefined_get(
         handle: *const HandleIGESGraphLineFontPredefined,
@@ -69493,6 +70261,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphNominalSize>;
     /// Destroy Handle<IGESGraph_NominalSize>
     pub fn HandleIGESGraphNominalSize_destructor(self_: *mut HandleIGESGraphNominalSize);
+    /// Clone Handle<IGESGraph_NominalSize> (increments reference count)
+    pub fn HandleIGESGraphNominalSize_clone(
+        self_: *const HandleIGESGraphNominalSize,
+    ) -> crate::OcctResult<*mut HandleIGESGraphNominalSize>;
     /// Dereference Handle to get *const IGESGraph_NominalSize
     pub fn HandleIGESGraphNominalSize_get(
         handle: *const HandleIGESGraphNominalSize,
@@ -69875,6 +70647,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphPick>;
     /// Destroy Handle<IGESGraph_Pick>
     pub fn HandleIGESGraphPick_destructor(self_: *mut HandleIGESGraphPick);
+    /// Clone Handle<IGESGraph_Pick> (increments reference count)
+    pub fn HandleIGESGraphPick_clone(
+        self_: *const HandleIGESGraphPick,
+    ) -> crate::OcctResult<*mut HandleIGESGraphPick>;
     /// Dereference Handle to get *const IGESGraph_Pick
     pub fn HandleIGESGraphPick_get(
         handle: *const HandleIGESGraphPick,
@@ -70260,6 +71036,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphProtocol>;
     /// Destroy Handle<IGESGraph_Protocol>
     pub fn HandleIGESGraphProtocol_destructor(self_: *mut HandleIGESGraphProtocol);
+    /// Clone Handle<IGESGraph_Protocol> (increments reference count)
+    pub fn HandleIGESGraphProtocol_clone(
+        self_: *const HandleIGESGraphProtocol,
+    ) -> crate::OcctResult<*mut HandleIGESGraphProtocol>;
     /// Dereference Handle to get *const IGESGraph_Protocol
     pub fn HandleIGESGraphProtocol_get(
         handle: *const HandleIGESGraphProtocol,
@@ -70419,6 +71199,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphReadWriteModule>;
     /// Destroy Handle<IGESGraph_ReadWriteModule>
     pub fn HandleIGESGraphReadWriteModule_destructor(self_: *mut HandleIGESGraphReadWriteModule);
+    /// Clone Handle<IGESGraph_ReadWriteModule> (increments reference count)
+    pub fn HandleIGESGraphReadWriteModule_clone(
+        self_: *const HandleIGESGraphReadWriteModule,
+    ) -> crate::OcctResult<*mut HandleIGESGraphReadWriteModule>;
     /// Dereference Handle to get *const IGESGraph_ReadWriteModule
     pub fn HandleIGESGraphReadWriteModule_get(
         handle: *const HandleIGESGraphReadWriteModule,
@@ -70543,6 +71327,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphSpecificModule>;
     /// Destroy Handle<IGESGraph_SpecificModule>
     pub fn HandleIGESGraphSpecificModule_destructor(self_: *mut HandleIGESGraphSpecificModule);
+    /// Clone Handle<IGESGraph_SpecificModule> (increments reference count)
+    pub fn HandleIGESGraphSpecificModule_clone(
+        self_: *const HandleIGESGraphSpecificModule,
+    ) -> crate::OcctResult<*mut HandleIGESGraphSpecificModule>;
     /// Dereference Handle to get *const IGESGraph_SpecificModule
     pub fn HandleIGESGraphSpecificModule_get(
         handle: *const HandleIGESGraphSpecificModule,
@@ -70694,6 +71482,10 @@ extern "C" {
     pub fn HandleIGESGraphTextDisplayTemplate_destructor(
         self_: *mut HandleIGESGraphTextDisplayTemplate,
     );
+    /// Clone Handle<IGESGraph_TextDisplayTemplate> (increments reference count)
+    pub fn HandleIGESGraphTextDisplayTemplate_clone(
+        self_: *const HandleIGESGraphTextDisplayTemplate,
+    ) -> crate::OcctResult<*mut HandleIGESGraphTextDisplayTemplate>;
     /// Dereference Handle to get *const IGESGraph_TextDisplayTemplate
     pub fn HandleIGESGraphTextDisplayTemplate_get(
         handle: *const HandleIGESGraphTextDisplayTemplate,
@@ -71138,6 +71930,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphTextFontDef>;
     /// Destroy Handle<IGESGraph_TextFontDef>
     pub fn HandleIGESGraphTextFontDef_destructor(self_: *mut HandleIGESGraphTextFontDef);
+    /// Clone Handle<IGESGraph_TextFontDef> (increments reference count)
+    pub fn HandleIGESGraphTextFontDef_clone(
+        self_: *const HandleIGESGraphTextFontDef,
+    ) -> crate::OcctResult<*mut HandleIGESGraphTextFontDef>;
     /// Dereference Handle to get *const IGESGraph_TextFontDef
     pub fn HandleIGESGraphTextFontDef_get(
         handle: *const HandleIGESGraphTextFontDef,
@@ -72308,6 +73104,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESGraphUniformRectGrid>;
     /// Destroy Handle<IGESGraph_UniformRectGrid>
     pub fn HandleIGESGraphUniformRectGrid_destructor(self_: *mut HandleIGESGraphUniformRectGrid);
+    /// Clone Handle<IGESGraph_UniformRectGrid> (increments reference count)
+    pub fn HandleIGESGraphUniformRectGrid_clone(
+        self_: *const HandleIGESGraphUniformRectGrid,
+    ) -> crate::OcctResult<*mut HandleIGESGraphUniformRectGrid>;
     /// Dereference Handle to get *const IGESGraph_UniformRectGrid
     pub fn HandleIGESGraphUniformRectGrid_get(
         handle: *const HandleIGESGraphUniformRectGrid,
@@ -72687,6 +73487,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectActivator>;
     /// Destroy Handle<IGESSelect_Activator>
     pub fn HandleIGESSelectActivator_destructor(self_: *mut HandleIGESSelectActivator);
+    /// Clone Handle<IGESSelect_Activator> (increments reference count)
+    pub fn HandleIGESSelectActivator_clone(
+        self_: *const HandleIGESSelectActivator,
+    ) -> crate::OcctResult<*mut HandleIGESSelectActivator>;
     /// Dereference Handle to get *const IGESSelect_Activator
     pub fn HandleIGESSelectActivator_get(
         handle: *const HandleIGESSelectActivator,
@@ -72813,6 +73617,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectAddFileComment>;
     /// Destroy Handle<IGESSelect_AddFileComment>
     pub fn HandleIGESSelectAddFileComment_destructor(self_: *mut HandleIGESSelectAddFileComment);
+    /// Clone Handle<IGESSelect_AddFileComment> (increments reference count)
+    pub fn HandleIGESSelectAddFileComment_clone(
+        self_: *const HandleIGESSelectAddFileComment,
+    ) -> crate::OcctResult<*mut HandleIGESSelectAddFileComment>;
     /// Dereference Handle to get *const IGESSelect_AddFileComment
     pub fn HandleIGESSelectAddFileComment_get(
         handle: *const HandleIGESSelectAddFileComment,
@@ -72959,6 +73767,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectAddGroup>;
     /// Destroy Handle<IGESSelect_AddGroup>
     pub fn HandleIGESSelectAddGroup_destructor(self_: *mut HandleIGESSelectAddGroup);
+    /// Clone Handle<IGESSelect_AddGroup> (increments reference count)
+    pub fn HandleIGESSelectAddGroup_clone(
+        self_: *const HandleIGESSelectAddGroup,
+    ) -> crate::OcctResult<*mut HandleIGESSelectAddGroup>;
     /// Dereference Handle to get *const IGESSelect_AddGroup
     pub fn HandleIGESSelectAddGroup_get(
         handle: *const HandleIGESSelectAddGroup,
@@ -73126,6 +73938,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectAutoCorrect>;
     /// Destroy Handle<IGESSelect_AutoCorrect>
     pub fn HandleIGESSelectAutoCorrect_destructor(self_: *mut HandleIGESSelectAutoCorrect);
+    /// Clone Handle<IGESSelect_AutoCorrect> (increments reference count)
+    pub fn HandleIGESSelectAutoCorrect_clone(
+        self_: *const HandleIGESSelectAutoCorrect,
+    ) -> crate::OcctResult<*mut HandleIGESSelectAutoCorrect>;
     /// Dereference Handle to get *const IGESSelect_AutoCorrect
     pub fn HandleIGESSelectAutoCorrect_get(
         handle: *const HandleIGESSelectAutoCorrect,
@@ -73319,6 +74135,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectChangeLevelList>;
     /// Destroy Handle<IGESSelect_ChangeLevelList>
     pub fn HandleIGESSelectChangeLevelList_destructor(self_: *mut HandleIGESSelectChangeLevelList);
+    /// Clone Handle<IGESSelect_ChangeLevelList> (increments reference count)
+    pub fn HandleIGESSelectChangeLevelList_clone(
+        self_: *const HandleIGESSelectChangeLevelList,
+    ) -> crate::OcctResult<*mut HandleIGESSelectChangeLevelList>;
     /// Dereference Handle to get *const IGESSelect_ChangeLevelList
     pub fn HandleIGESSelectChangeLevelList_get(
         handle: *const HandleIGESSelectChangeLevelList,
@@ -73511,6 +74331,10 @@ extern "C" {
     pub fn HandleIGESSelectChangeLevelNumber_destructor(
         self_: *mut HandleIGESSelectChangeLevelNumber,
     );
+    /// Clone Handle<IGESSelect_ChangeLevelNumber> (increments reference count)
+    pub fn HandleIGESSelectChangeLevelNumber_clone(
+        self_: *const HandleIGESSelectChangeLevelNumber,
+    ) -> crate::OcctResult<*mut HandleIGESSelectChangeLevelNumber>;
     /// Dereference Handle to get *const IGESSelect_ChangeLevelNumber
     pub fn HandleIGESSelectChangeLevelNumber_get(
         handle: *const HandleIGESSelectChangeLevelNumber,
@@ -73678,6 +74502,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectComputeStatus>;
     /// Destroy Handle<IGESSelect_ComputeStatus>
     pub fn HandleIGESSelectComputeStatus_destructor(self_: *mut HandleIGESSelectComputeStatus);
+    /// Clone Handle<IGESSelect_ComputeStatus> (increments reference count)
+    pub fn HandleIGESSelectComputeStatus_clone(
+        self_: *const HandleIGESSelectComputeStatus,
+    ) -> crate::OcctResult<*mut HandleIGESSelectComputeStatus>;
     /// Dereference Handle to get *const IGESSelect_ComputeStatus
     pub fn HandleIGESSelectComputeStatus_get(
         handle: *const HandleIGESSelectComputeStatus,
@@ -73872,6 +74700,10 @@ extern "C" {
     pub fn HandleIGESSelectCounterOfLevelNumber_destructor(
         self_: *mut HandleIGESSelectCounterOfLevelNumber,
     );
+    /// Clone Handle<IGESSelect_CounterOfLevelNumber> (increments reference count)
+    pub fn HandleIGESSelectCounterOfLevelNumber_clone(
+        self_: *const HandleIGESSelectCounterOfLevelNumber,
+    ) -> crate::OcctResult<*mut HandleIGESSelectCounterOfLevelNumber>;
     /// Dereference Handle to get *const IGESSelect_CounterOfLevelNumber
     pub fn HandleIGESSelectCounterOfLevelNumber_get(
         handle: *const HandleIGESSelectCounterOfLevelNumber,
@@ -74067,6 +74899,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectDispPerDrawing>;
     /// Destroy Handle<IGESSelect_DispPerDrawing>
     pub fn HandleIGESSelectDispPerDrawing_destructor(self_: *mut HandleIGESSelectDispPerDrawing);
+    /// Clone Handle<IGESSelect_DispPerDrawing> (increments reference count)
+    pub fn HandleIGESSelectDispPerDrawing_clone(
+        self_: *const HandleIGESSelectDispPerDrawing,
+    ) -> crate::OcctResult<*mut HandleIGESSelectDispPerDrawing>;
     /// Dereference Handle to get *const IGESSelect_DispPerDrawing
     pub fn HandleIGESSelectDispPerDrawing_get(
         handle: *const HandleIGESSelectDispPerDrawing,
@@ -74212,6 +75048,10 @@ extern "C" {
     pub fn HandleIGESSelectDispPerSingleView_destructor(
         self_: *mut HandleIGESSelectDispPerSingleView,
     );
+    /// Clone Handle<IGESSelect_DispPerSingleView> (increments reference count)
+    pub fn HandleIGESSelectDispPerSingleView_clone(
+        self_: *const HandleIGESSelectDispPerSingleView,
+    ) -> crate::OcctResult<*mut HandleIGESSelectDispPerSingleView>;
     /// Dereference Handle to get *const IGESSelect_DispPerSingleView
     pub fn HandleIGESSelectDispPerSingleView_get(
         handle: *const HandleIGESSelectDispPerSingleView,
@@ -74347,6 +75187,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectDumper>;
     /// Destroy Handle<IGESSelect_Dumper>
     pub fn HandleIGESSelectDumper_destructor(self_: *mut HandleIGESSelectDumper);
+    /// Clone Handle<IGESSelect_Dumper> (increments reference count)
+    pub fn HandleIGESSelectDumper_clone(
+        self_: *const HandleIGESSelectDumper,
+    ) -> crate::OcctResult<*mut HandleIGESSelectDumper>;
     /// Dereference Handle to get *const IGESSelect_Dumper
     pub fn HandleIGESSelectDumper_get(
         handle: *const HandleIGESSelectDumper,
@@ -74469,6 +75313,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectEditDirPart>;
     /// Destroy Handle<IGESSelect_EditDirPart>
     pub fn HandleIGESSelectEditDirPart_destructor(self_: *mut HandleIGESSelectEditDirPart);
+    /// Clone Handle<IGESSelect_EditDirPart> (increments reference count)
+    pub fn HandleIGESSelectEditDirPart_clone(
+        self_: *const HandleIGESSelectEditDirPart,
+    ) -> crate::OcctResult<*mut HandleIGESSelectEditDirPart>;
     /// Dereference Handle to get *const IGESSelect_EditDirPart
     pub fn HandleIGESSelectEditDirPart_get(
         handle: *const HandleIGESSelectEditDirPart,
@@ -74658,6 +75506,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectEditHeader>;
     /// Destroy Handle<IGESSelect_EditHeader>
     pub fn HandleIGESSelectEditHeader_destructor(self_: *mut HandleIGESSelectEditHeader);
+    /// Clone Handle<IGESSelect_EditHeader> (increments reference count)
+    pub fn HandleIGESSelectEditHeader_clone(
+        self_: *const HandleIGESSelectEditHeader,
+    ) -> crate::OcctResult<*mut HandleIGESSelectEditHeader>;
     /// Dereference Handle to get *const IGESSelect_EditHeader
     pub fn HandleIGESSelectEditHeader_get(
         handle: *const HandleIGESSelectEditHeader,
@@ -74810,6 +75662,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IGESSelect_FileModifier>
     pub fn HandleIGESSelectFileModifier_destructor(self_: *mut HandleIGESSelectFileModifier);
+    /// Clone Handle<IGESSelect_FileModifier> (increments reference count)
+    pub fn HandleIGESSelectFileModifier_clone(
+        self_: *const HandleIGESSelectFileModifier,
+    ) -> crate::OcctResult<*mut HandleIGESSelectFileModifier>;
     /// Dereference Handle to get *const IGESSelect_FileModifier
     pub fn HandleIGESSelectFileModifier_get(
         handle: *const HandleIGESSelectFileModifier,
@@ -74988,6 +75844,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectFloatFormat>;
     /// Destroy Handle<IGESSelect_FloatFormat>
     pub fn HandleIGESSelectFloatFormat_destructor(self_: *mut HandleIGESSelectFloatFormat);
+    /// Clone Handle<IGESSelect_FloatFormat> (increments reference count)
+    pub fn HandleIGESSelectFloatFormat_clone(
+        self_: *const HandleIGESSelectFloatFormat,
+    ) -> crate::OcctResult<*mut HandleIGESSelectFloatFormat>;
     /// Dereference Handle to get *const IGESSelect_FloatFormat
     pub fn HandleIGESSelectFloatFormat_get(
         handle: *const HandleIGESSelectFloatFormat,
@@ -75129,6 +75989,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectIGESName>;
     /// Destroy Handle<IGESSelect_IGESName>
     pub fn HandleIGESSelectIGESName_destructor(self_: *mut HandleIGESSelectIGESName);
+    /// Clone Handle<IGESSelect_IGESName> (increments reference count)
+    pub fn HandleIGESSelectIGESName_clone(
+        self_: *const HandleIGESSelectIGESName,
+    ) -> crate::OcctResult<*mut HandleIGESSelectIGESName>;
     /// Dereference Handle to get *const IGESSelect_IGESName
     pub fn HandleIGESSelectIGESName_get(
         handle: *const HandleIGESSelectIGESName,
@@ -75290,6 +76154,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectIGESTypeForm>;
     /// Destroy Handle<IGESSelect_IGESTypeForm>
     pub fn HandleIGESSelectIGESTypeForm_destructor(self_: *mut HandleIGESSelectIGESTypeForm);
+    /// Clone Handle<IGESSelect_IGESTypeForm> (increments reference count)
+    pub fn HandleIGESSelectIGESTypeForm_clone(
+        self_: *const HandleIGESSelectIGESTypeForm,
+    ) -> crate::OcctResult<*mut HandleIGESSelectIGESTypeForm>;
     /// Dereference Handle to get *const IGESSelect_IGESTypeForm
     pub fn HandleIGESSelectIGESTypeForm_get(
         handle: *const HandleIGESSelectIGESTypeForm,
@@ -75447,6 +76315,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IGESSelect_ModelModifier>
     pub fn HandleIGESSelectModelModifier_destructor(self_: *mut HandleIGESSelectModelModifier);
+    /// Clone Handle<IGESSelect_ModelModifier> (increments reference count)
+    pub fn HandleIGESSelectModelModifier_clone(
+        self_: *const HandleIGESSelectModelModifier,
+    ) -> crate::OcctResult<*mut HandleIGESSelectModelModifier>;
     /// Dereference Handle to get *const IGESSelect_ModelModifier
     pub fn HandleIGESSelectModelModifier_get(
         handle: *const HandleIGESSelectModelModifier,
@@ -75654,6 +76526,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectRebuildDrawings>;
     /// Destroy Handle<IGESSelect_RebuildDrawings>
     pub fn HandleIGESSelectRebuildDrawings_destructor(self_: *mut HandleIGESSelectRebuildDrawings);
+    /// Clone Handle<IGESSelect_RebuildDrawings> (increments reference count)
+    pub fn HandleIGESSelectRebuildDrawings_clone(
+        self_: *const HandleIGESSelectRebuildDrawings,
+    ) -> crate::OcctResult<*mut HandleIGESSelectRebuildDrawings>;
     /// Dereference Handle to get *const IGESSelect_RebuildDrawings
     pub fn HandleIGESSelectRebuildDrawings_get(
         handle: *const HandleIGESSelectRebuildDrawings,
@@ -75821,6 +76697,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectRebuildGroups>;
     /// Destroy Handle<IGESSelect_RebuildGroups>
     pub fn HandleIGESSelectRebuildGroups_destructor(self_: *mut HandleIGESSelectRebuildGroups);
+    /// Clone Handle<IGESSelect_RebuildGroups> (increments reference count)
+    pub fn HandleIGESSelectRebuildGroups_clone(
+        self_: *const HandleIGESSelectRebuildGroups,
+    ) -> crate::OcctResult<*mut HandleIGESSelectRebuildGroups>;
     /// Dereference Handle to get *const IGESSelect_RebuildGroups
     pub fn HandleIGESSelectRebuildGroups_get(
         handle: *const HandleIGESSelectRebuildGroups,
@@ -75990,6 +76870,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectRemoveCurves>;
     /// Destroy Handle<IGESSelect_RemoveCurves>
     pub fn HandleIGESSelectRemoveCurves_destructor(self_: *mut HandleIGESSelectRemoveCurves);
+    /// Clone Handle<IGESSelect_RemoveCurves> (increments reference count)
+    pub fn HandleIGESSelectRemoveCurves_clone(
+        self_: *const HandleIGESSelectRemoveCurves,
+    ) -> crate::OcctResult<*mut HandleIGESSelectRemoveCurves>;
     /// Dereference Handle to get *const IGESSelect_RemoveCurves
     pub fn HandleIGESSelectRemoveCurves_get(
         handle: *const HandleIGESSelectRemoveCurves,
@@ -76169,6 +77053,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectBasicGeom>;
     /// Destroy Handle<IGESSelect_SelectBasicGeom>
     pub fn HandleIGESSelectSelectBasicGeom_destructor(self_: *mut HandleIGESSelectSelectBasicGeom);
+    /// Clone Handle<IGESSelect_SelectBasicGeom> (increments reference count)
+    pub fn HandleIGESSelectSelectBasicGeom_clone(
+        self_: *const HandleIGESSelectSelectBasicGeom,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectBasicGeom>;
     /// Dereference Handle to get *const IGESSelect_SelectBasicGeom
     pub fn HandleIGESSelectSelectBasicGeom_get(
         handle: *const HandleIGESSelectSelectBasicGeom,
@@ -76344,6 +77232,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectBypassGroup_destructor(
         self_: *mut HandleIGESSelectSelectBypassGroup,
     );
+    /// Clone Handle<IGESSelect_SelectBypassGroup> (increments reference count)
+    pub fn HandleIGESSelectSelectBypassGroup_clone(
+        self_: *const HandleIGESSelectSelectBypassGroup,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectBypassGroup>;
     /// Dereference Handle to get *const IGESSelect_SelectBypassGroup
     pub fn HandleIGESSelectSelectBypassGroup_get(
         handle: *const HandleIGESSelectSelectBypassGroup,
@@ -76522,6 +77414,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectBypassSubfigure_destructor(
         self_: *mut HandleIGESSelectSelectBypassSubfigure,
     );
+    /// Clone Handle<IGESSelect_SelectBypassSubfigure> (increments reference count)
+    pub fn HandleIGESSelectSelectBypassSubfigure_clone(
+        self_: *const HandleIGESSelectSelectBypassSubfigure,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectBypassSubfigure>;
     /// Dereference Handle to get *const IGESSelect_SelectBypassSubfigure
     pub fn HandleIGESSelectSelectBypassSubfigure_get(
         handle: *const HandleIGESSelectSelectBypassSubfigure,
@@ -76685,6 +77581,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectDrawingFrom_destructor(
         self_: *mut HandleIGESSelectSelectDrawingFrom,
     );
+    /// Clone Handle<IGESSelect_SelectDrawingFrom> (increments reference count)
+    pub fn HandleIGESSelectSelectDrawingFrom_clone(
+        self_: *const HandleIGESSelectSelectDrawingFrom,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectDrawingFrom>;
     /// Dereference Handle to get *const IGESSelect_SelectDrawingFrom
     pub fn HandleIGESSelectSelectDrawingFrom_get(
         handle: *const HandleIGESSelectSelectDrawingFrom,
@@ -76839,6 +77739,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectFaces>;
     /// Destroy Handle<IGESSelect_SelectFaces>
     pub fn HandleIGESSelectSelectFaces_destructor(self_: *mut HandleIGESSelectSelectFaces);
+    /// Clone Handle<IGESSelect_SelectFaces> (increments reference count)
+    pub fn HandleIGESSelectSelectFaces_clone(
+        self_: *const HandleIGESSelectSelectFaces,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectFaces>;
     /// Dereference Handle to get *const IGESSelect_SelectFaces
     pub fn HandleIGESSelectSelectFaces_get(
         handle: *const HandleIGESSelectSelectFaces,
@@ -77002,6 +77906,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectFromDrawing_destructor(
         self_: *mut HandleIGESSelectSelectFromDrawing,
     );
+    /// Clone Handle<IGESSelect_SelectFromDrawing> (increments reference count)
+    pub fn HandleIGESSelectSelectFromDrawing_clone(
+        self_: *const HandleIGESSelectSelectFromDrawing,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectFromDrawing>;
     /// Dereference Handle to get *const IGESSelect_SelectFromDrawing
     pub fn HandleIGESSelectSelectFromDrawing_get(
         handle: *const HandleIGESSelectSelectFromDrawing,
@@ -77149,6 +78057,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectFromSingleView_destructor(
         self_: *mut HandleIGESSelectSelectFromSingleView,
     );
+    /// Clone Handle<IGESSelect_SelectFromSingleView> (increments reference count)
+    pub fn HandleIGESSelectSelectFromSingleView_clone(
+        self_: *const HandleIGESSelectSelectFromSingleView,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectFromSingleView>;
     /// Dereference Handle to get *const IGESSelect_SelectFromSingleView
     pub fn HandleIGESSelectSelectFromSingleView_get(
         handle: *const HandleIGESSelectSelectFromSingleView,
@@ -77314,6 +78226,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectLevelNumber_destructor(
         self_: *mut HandleIGESSelectSelectLevelNumber,
     );
+    /// Clone Handle<IGESSelect_SelectLevelNumber> (increments reference count)
+    pub fn HandleIGESSelectSelectLevelNumber_clone(
+        self_: *const HandleIGESSelectSelectLevelNumber,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectLevelNumber>;
     /// Dereference Handle to get *const IGESSelect_SelectLevelNumber
     pub fn HandleIGESSelectSelectLevelNumber_get(
         handle: *const HandleIGESSelectSelectLevelNumber,
@@ -77505,6 +78421,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectName>;
     /// Destroy Handle<IGESSelect_SelectName>
     pub fn HandleIGESSelectSelectName_destructor(self_: *mut HandleIGESSelectSelectName);
+    /// Clone Handle<IGESSelect_SelectName> (increments reference count)
+    pub fn HandleIGESSelectSelectName_clone(
+        self_: *const HandleIGESSelectSelectName,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectName>;
     /// Dereference Handle to get *const IGESSelect_SelectName
     pub fn HandleIGESSelectSelectName_get(
         handle: *const HandleIGESSelectSelectName,
@@ -77690,6 +78610,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectPCurves>;
     /// Destroy Handle<IGESSelect_SelectPCurves>
     pub fn HandleIGESSelectSelectPCurves_destructor(self_: *mut HandleIGESSelectSelectPCurves);
+    /// Clone Handle<IGESSelect_SelectPCurves> (increments reference count)
+    pub fn HandleIGESSelectSelectPCurves_clone(
+        self_: *const HandleIGESSelectSelectPCurves,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectPCurves>;
     /// Dereference Handle to get *const IGESSelect_SelectPCurves
     pub fn HandleIGESSelectSelectPCurves_get(
         handle: *const HandleIGESSelectSelectPCurves,
@@ -77854,6 +78778,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectSingleViewFrom_destructor(
         self_: *mut HandleIGESSelectSelectSingleViewFrom,
     );
+    /// Clone Handle<IGESSelect_SelectSingleViewFrom> (increments reference count)
+    pub fn HandleIGESSelectSelectSingleViewFrom_clone(
+        self_: *const HandleIGESSelectSelectSingleViewFrom,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectSingleViewFrom>;
     /// Dereference Handle to get *const IGESSelect_SelectSingleViewFrom
     pub fn HandleIGESSelectSelectSingleViewFrom_get(
         handle: *const HandleIGESSelectSelectSingleViewFrom,
@@ -78015,6 +78943,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectSubordinate_destructor(
         self_: *mut HandleIGESSelectSelectSubordinate,
     );
+    /// Clone Handle<IGESSelect_SelectSubordinate> (increments reference count)
+    pub fn HandleIGESSelectSelectSubordinate_clone(
+        self_: *const HandleIGESSelectSelectSubordinate,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectSubordinate>;
     /// Dereference Handle to get *const IGESSelect_SelectSubordinate
     pub fn HandleIGESSelectSelectSubordinate_get(
         handle: *const HandleIGESSelectSelectSubordinate,
@@ -78201,6 +79133,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectVisibleStatus_destructor(
         self_: *mut HandleIGESSelectSelectVisibleStatus,
     );
+    /// Clone Handle<IGESSelect_SelectVisibleStatus> (increments reference count)
+    pub fn HandleIGESSelectSelectVisibleStatus_clone(
+        self_: *const HandleIGESSelectSelectVisibleStatus,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSelectVisibleStatus>;
     /// Dereference Handle to get *const IGESSelect_SelectVisibleStatus
     pub fn HandleIGESSelectSelectVisibleStatus_get(
         handle: *const HandleIGESSelectSelectVisibleStatus,
@@ -78401,6 +79337,10 @@ extern "C" {
     pub fn HandleIGESSelectSetGlobalParameter_destructor(
         self_: *mut HandleIGESSelectSetGlobalParameter,
     );
+    /// Clone Handle<IGESSelect_SetGlobalParameter> (increments reference count)
+    pub fn HandleIGESSelectSetGlobalParameter_clone(
+        self_: *const HandleIGESSelectSetGlobalParameter,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSetGlobalParameter>;
     /// Dereference Handle to get *const IGESSelect_SetGlobalParameter
     pub fn HandleIGESSelectSetGlobalParameter_get(
         handle: *const HandleIGESSelectSetGlobalParameter,
@@ -78570,6 +79510,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectSetLabel>;
     /// Destroy Handle<IGESSelect_SetLabel>
     pub fn HandleIGESSelectSetLabel_destructor(self_: *mut HandleIGESSelectSetLabel);
+    /// Clone Handle<IGESSelect_SetLabel> (increments reference count)
+    pub fn HandleIGESSelectSetLabel_clone(
+        self_: *const HandleIGESSelectSetLabel,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSetLabel>;
     /// Dereference Handle to get *const IGESSelect_SetLabel
     pub fn HandleIGESSelectSetLabel_get(
         handle: *const HandleIGESSelectSetLabel,
@@ -78737,6 +79681,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectSetVersion5>;
     /// Destroy Handle<IGESSelect_SetVersion5>
     pub fn HandleIGESSelectSetVersion5_destructor(self_: *mut HandleIGESSelectSetVersion5);
+    /// Clone Handle<IGESSelect_SetVersion5> (increments reference count)
+    pub fn HandleIGESSelectSetVersion5_clone(
+        self_: *const HandleIGESSelectSetVersion5,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSetVersion5>;
     /// Dereference Handle to get *const IGESSelect_SetVersion5
     pub fn HandleIGESSelectSetVersion5_get(
         handle: *const HandleIGESSelectSetVersion5,
@@ -78899,6 +79847,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectSignColor>;
     /// Destroy Handle<IGESSelect_SignColor>
     pub fn HandleIGESSelectSignColor_destructor(self_: *mut HandleIGESSelectSignColor);
+    /// Clone Handle<IGESSelect_SignColor> (increments reference count)
+    pub fn HandleIGESSelectSignColor_clone(
+        self_: *const HandleIGESSelectSignColor,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSignColor>;
     /// Dereference Handle to get *const IGESSelect_SignColor
     pub fn HandleIGESSelectSignColor_get(
         handle: *const HandleIGESSelectSignColor,
@@ -79055,6 +80007,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectSignLevelNumber>;
     /// Destroy Handle<IGESSelect_SignLevelNumber>
     pub fn HandleIGESSelectSignLevelNumber_destructor(self_: *mut HandleIGESSelectSignLevelNumber);
+    /// Clone Handle<IGESSelect_SignLevelNumber> (increments reference count)
+    pub fn HandleIGESSelectSignLevelNumber_clone(
+        self_: *const HandleIGESSelectSignLevelNumber,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSignLevelNumber>;
     /// Dereference Handle to get *const IGESSelect_SignLevelNumber
     pub fn HandleIGESSelectSignLevelNumber_get(
         handle: *const HandleIGESSelectSignLevelNumber,
@@ -79217,6 +80173,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectSignStatus>;
     /// Destroy Handle<IGESSelect_SignStatus>
     pub fn HandleIGESSelectSignStatus_destructor(self_: *mut HandleIGESSelectSignStatus);
+    /// Clone Handle<IGESSelect_SignStatus> (increments reference count)
+    pub fn HandleIGESSelectSignStatus_clone(
+        self_: *const HandleIGESSelectSignStatus,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSignStatus>;
     /// Dereference Handle to get *const IGESSelect_SignStatus
     pub fn HandleIGESSelectSignStatus_get(
         handle: *const HandleIGESSelectSignStatus,
@@ -79365,6 +80325,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectSplineToBSpline>;
     /// Destroy Handle<IGESSelect_SplineToBSpline>
     pub fn HandleIGESSelectSplineToBSpline_destructor(self_: *mut HandleIGESSelectSplineToBSpline);
+    /// Clone Handle<IGESSelect_SplineToBSpline> (increments reference count)
+    pub fn HandleIGESSelectSplineToBSpline_clone(
+        self_: *const HandleIGESSelectSplineToBSpline,
+    ) -> crate::OcctResult<*mut HandleIGESSelectSplineToBSpline>;
     /// Dereference Handle to get *const IGESSelect_SplineToBSpline
     pub fn HandleIGESSelectSplineToBSpline_get(
         handle: *const HandleIGESSelectSplineToBSpline,
@@ -79482,6 +80446,10 @@ extern "C" {
     pub fn HandleIGESSelectUpdateCreationDate_destructor(
         self_: *mut HandleIGESSelectUpdateCreationDate,
     );
+    /// Clone Handle<IGESSelect_UpdateCreationDate> (increments reference count)
+    pub fn HandleIGESSelectUpdateCreationDate_clone(
+        self_: *const HandleIGESSelectUpdateCreationDate,
+    ) -> crate::OcctResult<*mut HandleIGESSelectUpdateCreationDate>;
     /// Dereference Handle to get *const IGESSelect_UpdateCreationDate
     pub fn HandleIGESSelectUpdateCreationDate_get(
         handle: *const HandleIGESSelectUpdateCreationDate,
@@ -79649,6 +80617,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectUpdateFileName>;
     /// Destroy Handle<IGESSelect_UpdateFileName>
     pub fn HandleIGESSelectUpdateFileName_destructor(self_: *mut HandleIGESSelectUpdateFileName);
+    /// Clone Handle<IGESSelect_UpdateFileName> (increments reference count)
+    pub fn HandleIGESSelectUpdateFileName_clone(
+        self_: *const HandleIGESSelectUpdateFileName,
+    ) -> crate::OcctResult<*mut HandleIGESSelectUpdateFileName>;
     /// Dereference Handle to get *const IGESSelect_UpdateFileName
     pub fn HandleIGESSelectUpdateFileName_get(
         handle: *const HandleIGESSelectUpdateFileName,
@@ -79818,6 +80790,10 @@ extern "C" {
     pub fn HandleIGESSelectUpdateLastChange_destructor(
         self_: *mut HandleIGESSelectUpdateLastChange,
     );
+    /// Clone Handle<IGESSelect_UpdateLastChange> (increments reference count)
+    pub fn HandleIGESSelectUpdateLastChange_clone(
+        self_: *const HandleIGESSelectUpdateLastChange,
+    ) -> crate::OcctResult<*mut HandleIGESSelectUpdateLastChange>;
     /// Dereference Handle to get *const IGESSelect_UpdateLastChange
     pub fn HandleIGESSelectUpdateLastChange_get(
         handle: *const HandleIGESSelectUpdateLastChange,
@@ -80009,6 +80985,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectViewSorter>;
     /// Destroy Handle<IGESSelect_ViewSorter>
     pub fn HandleIGESSelectViewSorter_destructor(self_: *mut HandleIGESSelectViewSorter);
+    /// Clone Handle<IGESSelect_ViewSorter> (increments reference count)
+    pub fn HandleIGESSelectViewSorter_clone(
+        self_: *const HandleIGESSelectViewSorter,
+    ) -> crate::OcctResult<*mut HandleIGESSelectViewSorter>;
     /// Dereference Handle to get *const IGESSelect_ViewSorter
     pub fn HandleIGESSelectViewSorter_get(
         handle: *const HandleIGESSelectViewSorter,
@@ -80111,6 +81091,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSelectWorkLibrary>;
     /// Destroy Handle<IGESSelect_WorkLibrary>
     pub fn HandleIGESSelectWorkLibrary_destructor(self_: *mut HandleIGESSelectWorkLibrary);
+    /// Clone Handle<IGESSelect_WorkLibrary> (increments reference count)
+    pub fn HandleIGESSelectWorkLibrary_clone(
+        self_: *const HandleIGESSelectWorkLibrary,
+    ) -> crate::OcctResult<*mut HandleIGESSelectWorkLibrary>;
     /// Dereference Handle to get *const IGESSelect_WorkLibrary
     pub fn HandleIGESSelectWorkLibrary_get(
         handle: *const HandleIGESSelectWorkLibrary,
@@ -80251,6 +81235,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidBlock>;
     /// Destroy Handle<IGESSolid_Block>
     pub fn HandleIGESSolidBlock_destructor(self_: *mut HandleIGESSolidBlock);
+    /// Clone Handle<IGESSolid_Block> (increments reference count)
+    pub fn HandleIGESSolidBlock_clone(
+        self_: *const HandleIGESSolidBlock,
+    ) -> crate::OcctResult<*mut HandleIGESSolidBlock>;
     /// Dereference Handle to get *const IGESSolid_Block
     pub fn HandleIGESSolidBlock_get(
         handle: *const HandleIGESSolidBlock,
@@ -80644,6 +81632,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidBooleanTree>;
     /// Destroy Handle<IGESSolid_BooleanTree>
     pub fn HandleIGESSolidBooleanTree_destructor(self_: *mut HandleIGESSolidBooleanTree);
+    /// Clone Handle<IGESSolid_BooleanTree> (increments reference count)
+    pub fn HandleIGESSolidBooleanTree_clone(
+        self_: *const HandleIGESSolidBooleanTree,
+    ) -> crate::OcctResult<*mut HandleIGESSolidBooleanTree>;
     /// Dereference Handle to get *const IGESSolid_BooleanTree
     pub fn HandleIGESSolidBooleanTree_get(
         handle: *const HandleIGESSolidBooleanTree,
@@ -81050,6 +82042,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidConeFrustum>;
     /// Destroy Handle<IGESSolid_ConeFrustum>
     pub fn HandleIGESSolidConeFrustum_destructor(self_: *mut HandleIGESSolidConeFrustum);
+    /// Clone Handle<IGESSolid_ConeFrustum> (increments reference count)
+    pub fn HandleIGESSolidConeFrustum_clone(
+        self_: *const HandleIGESSolidConeFrustum,
+    ) -> crate::OcctResult<*mut HandleIGESSolidConeFrustum>;
     /// Dereference Handle to get *const IGESSolid_ConeFrustum
     pub fn HandleIGESSolidConeFrustum_get(
         handle: *const HandleIGESSolidConeFrustum,
@@ -81452,6 +82448,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidConicalSurface>;
     /// Destroy Handle<IGESSolid_ConicalSurface>
     pub fn HandleIGESSolidConicalSurface_destructor(self_: *mut HandleIGESSolidConicalSurface);
+    /// Clone Handle<IGESSolid_ConicalSurface> (increments reference count)
+    pub fn HandleIGESSolidConicalSurface_clone(
+        self_: *const HandleIGESSolidConicalSurface,
+    ) -> crate::OcctResult<*mut HandleIGESSolidConicalSurface>;
     /// Dereference Handle to get *const IGESSolid_ConicalSurface
     pub fn HandleIGESSolidConicalSurface_get(
         handle: *const HandleIGESSolidConicalSurface,
@@ -81848,6 +82848,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidCylinder>;
     /// Destroy Handle<IGESSolid_Cylinder>
     pub fn HandleIGESSolidCylinder_destructor(self_: *mut HandleIGESSolidCylinder);
+    /// Clone Handle<IGESSolid_Cylinder> (increments reference count)
+    pub fn HandleIGESSolidCylinder_clone(
+        self_: *const HandleIGESSolidCylinder,
+    ) -> crate::OcctResult<*mut HandleIGESSolidCylinder>;
     /// Dereference Handle to get *const IGESSolid_Cylinder
     pub fn HandleIGESSolidCylinder_get(
         handle: *const HandleIGESSolidCylinder,
@@ -82248,6 +83252,10 @@ extern "C" {
     pub fn HandleIGESSolidCylindricalSurface_destructor(
         self_: *mut HandleIGESSolidCylindricalSurface,
     );
+    /// Clone Handle<IGESSolid_CylindricalSurface> (increments reference count)
+    pub fn HandleIGESSolidCylindricalSurface_clone(
+        self_: *const HandleIGESSolidCylindricalSurface,
+    ) -> crate::OcctResult<*mut HandleIGESSolidCylindricalSurface>;
     /// Dereference Handle to get *const IGESSolid_CylindricalSurface
     pub fn HandleIGESSolidCylindricalSurface_get(
         handle: *const HandleIGESSolidCylindricalSurface,
@@ -82652,6 +83660,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidEdgeList>;
     /// Destroy Handle<IGESSolid_EdgeList>
     pub fn HandleIGESSolidEdgeList_destructor(self_: *mut HandleIGESSolidEdgeList);
+    /// Clone Handle<IGESSolid_EdgeList> (increments reference count)
+    pub fn HandleIGESSolidEdgeList_clone(
+        self_: *const HandleIGESSolidEdgeList,
+    ) -> crate::OcctResult<*mut HandleIGESSolidEdgeList>;
     /// Dereference Handle to get *const IGESSolid_EdgeList
     pub fn HandleIGESSolidEdgeList_get(
         handle: *const HandleIGESSolidEdgeList,
@@ -83076,6 +84088,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidEllipsoid>;
     /// Destroy Handle<IGESSolid_Ellipsoid>
     pub fn HandleIGESSolidEllipsoid_destructor(self_: *mut HandleIGESSolidEllipsoid);
+    /// Clone Handle<IGESSolid_Ellipsoid> (increments reference count)
+    pub fn HandleIGESSolidEllipsoid_clone(
+        self_: *const HandleIGESSolidEllipsoid,
+    ) -> crate::OcctResult<*mut HandleIGESSolidEllipsoid>;
     /// Dereference Handle to get *const IGESSolid_Ellipsoid
     pub fn HandleIGESSolidEllipsoid_get(
         handle: *const HandleIGESSolidEllipsoid,
@@ -83464,6 +84480,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidFace>;
     /// Destroy Handle<IGESSolid_Face>
     pub fn HandleIGESSolidFace_destructor(self_: *mut HandleIGESSolidFace);
+    /// Clone Handle<IGESSolid_Face> (increments reference count)
+    pub fn HandleIGESSolidFace_clone(
+        self_: *const HandleIGESSolidFace,
+    ) -> crate::OcctResult<*mut HandleIGESSolidFace>;
     /// Dereference Handle to get *const IGESSolid_Face
     pub fn HandleIGESSolidFace_get(
         handle: *const HandleIGESSolidFace,
@@ -83878,6 +84898,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidGeneralModule>;
     /// Destroy Handle<IGESSolid_GeneralModule>
     pub fn HandleIGESSolidGeneralModule_destructor(self_: *mut HandleIGESSolidGeneralModule);
+    /// Clone Handle<IGESSolid_GeneralModule> (increments reference count)
+    pub fn HandleIGESSolidGeneralModule_clone(
+        self_: *const HandleIGESSolidGeneralModule,
+    ) -> crate::OcctResult<*mut HandleIGESSolidGeneralModule>;
     /// Dereference Handle to get *const IGESSolid_GeneralModule
     pub fn HandleIGESSolidGeneralModule_get(
         handle: *const HandleIGESSolidGeneralModule,
@@ -84102,6 +85126,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidHArray1OfFace>;
     /// Destroy Handle<IGESSolid_HArray1OfFace>
     pub fn HandleIGESSolidHArray1OfFace_destructor(self_: *mut HandleIGESSolidHArray1OfFace);
+    /// Clone Handle<IGESSolid_HArray1OfFace> (increments reference count)
+    pub fn HandleIGESSolidHArray1OfFace_clone(
+        self_: *const HandleIGESSolidHArray1OfFace,
+    ) -> crate::OcctResult<*mut HandleIGESSolidHArray1OfFace>;
     /// Dereference Handle to get *const IGESSolid_HArray1OfFace
     pub fn HandleIGESSolidHArray1OfFace_get(
         handle: *const HandleIGESSolidHArray1OfFace,
@@ -84201,6 +85229,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidHArray1OfLoop>;
     /// Destroy Handle<IGESSolid_HArray1OfLoop>
     pub fn HandleIGESSolidHArray1OfLoop_destructor(self_: *mut HandleIGESSolidHArray1OfLoop);
+    /// Clone Handle<IGESSolid_HArray1OfLoop> (increments reference count)
+    pub fn HandleIGESSolidHArray1OfLoop_clone(
+        self_: *const HandleIGESSolidHArray1OfLoop,
+    ) -> crate::OcctResult<*mut HandleIGESSolidHArray1OfLoop>;
     /// Dereference Handle to get *const IGESSolid_HArray1OfLoop
     pub fn HandleIGESSolidHArray1OfLoop_get(
         handle: *const HandleIGESSolidHArray1OfLoop,
@@ -84300,6 +85332,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidHArray1OfShell>;
     /// Destroy Handle<IGESSolid_HArray1OfShell>
     pub fn HandleIGESSolidHArray1OfShell_destructor(self_: *mut HandleIGESSolidHArray1OfShell);
+    /// Clone Handle<IGESSolid_HArray1OfShell> (increments reference count)
+    pub fn HandleIGESSolidHArray1OfShell_clone(
+        self_: *const HandleIGESSolidHArray1OfShell,
+    ) -> crate::OcctResult<*mut HandleIGESSolidHArray1OfShell>;
     /// Dereference Handle to get *const IGESSolid_HArray1OfShell
     pub fn HandleIGESSolidHArray1OfShell_get(
         handle: *const HandleIGESSolidHArray1OfShell,
@@ -84403,6 +85439,10 @@ extern "C" {
     pub fn HandleIGESSolidHArray1OfVertexList_destructor(
         self_: *mut HandleIGESSolidHArray1OfVertexList,
     );
+    /// Clone Handle<IGESSolid_HArray1OfVertexList> (increments reference count)
+    pub fn HandleIGESSolidHArray1OfVertexList_clone(
+        self_: *const HandleIGESSolidHArray1OfVertexList,
+    ) -> crate::OcctResult<*mut HandleIGESSolidHArray1OfVertexList>;
     /// Dereference Handle to get *const IGESSolid_HArray1OfVertexList
     pub fn HandleIGESSolidHArray1OfVertexList_get(
         handle: *const HandleIGESSolidHArray1OfVertexList,
@@ -84536,6 +85576,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidLoop>;
     /// Destroy Handle<IGESSolid_Loop>
     pub fn HandleIGESSolidLoop_destructor(self_: *mut HandleIGESSolidLoop);
+    /// Clone Handle<IGESSolid_Loop> (increments reference count)
+    pub fn HandleIGESSolidLoop_clone(
+        self_: *const HandleIGESSolidLoop,
+    ) -> crate::OcctResult<*mut HandleIGESSolidLoop>;
     /// Dereference Handle to get *const IGESSolid_Loop
     pub fn HandleIGESSolidLoop_get(
         handle: *const HandleIGESSolidLoop,
@@ -84930,6 +85974,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidManifoldSolid>;
     /// Destroy Handle<IGESSolid_ManifoldSolid>
     pub fn HandleIGESSolidManifoldSolid_destructor(self_: *mut HandleIGESSolidManifoldSolid);
+    /// Clone Handle<IGESSolid_ManifoldSolid> (increments reference count)
+    pub fn HandleIGESSolidManifoldSolid_clone(
+        self_: *const HandleIGESSolidManifoldSolid,
+    ) -> crate::OcctResult<*mut HandleIGESSolidManifoldSolid>;
     /// Dereference Handle to get *const IGESSolid_ManifoldSolid
     pub fn HandleIGESSolidManifoldSolid_get(
         handle: *const HandleIGESSolidManifoldSolid,
@@ -85322,6 +86370,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidPlaneSurface>;
     /// Destroy Handle<IGESSolid_PlaneSurface>
     pub fn HandleIGESSolidPlaneSurface_destructor(self_: *mut HandleIGESSolidPlaneSurface);
+    /// Clone Handle<IGESSolid_PlaneSurface> (increments reference count)
+    pub fn HandleIGESSolidPlaneSurface_clone(
+        self_: *const HandleIGESSolidPlaneSurface,
+    ) -> crate::OcctResult<*mut HandleIGESSolidPlaneSurface>;
     /// Dereference Handle to get *const IGESSolid_PlaneSurface
     pub fn HandleIGESSolidPlaneSurface_get(
         handle: *const HandleIGESSolidPlaneSurface,
@@ -85712,6 +86764,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidProtocol>;
     /// Destroy Handle<IGESSolid_Protocol>
     pub fn HandleIGESSolidProtocol_destructor(self_: *mut HandleIGESSolidProtocol);
+    /// Clone Handle<IGESSolid_Protocol> (increments reference count)
+    pub fn HandleIGESSolidProtocol_clone(
+        self_: *const HandleIGESSolidProtocol,
+    ) -> crate::OcctResult<*mut HandleIGESSolidProtocol>;
     /// Dereference Handle to get *const IGESSolid_Protocol
     pub fn HandleIGESSolidProtocol_get(
         handle: *const HandleIGESSolidProtocol,
@@ -85871,6 +86927,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidReadWriteModule>;
     /// Destroy Handle<IGESSolid_ReadWriteModule>
     pub fn HandleIGESSolidReadWriteModule_destructor(self_: *mut HandleIGESSolidReadWriteModule);
+    /// Clone Handle<IGESSolid_ReadWriteModule> (increments reference count)
+    pub fn HandleIGESSolidReadWriteModule_clone(
+        self_: *const HandleIGESSolidReadWriteModule,
+    ) -> crate::OcctResult<*mut HandleIGESSolidReadWriteModule>;
     /// Dereference Handle to get *const IGESSolid_ReadWriteModule
     pub fn HandleIGESSolidReadWriteModule_get(
         handle: *const HandleIGESSolidReadWriteModule,
@@ -86043,6 +87103,10 @@ extern "C" {
     pub fn HandleIGESSolidRightAngularWedge_destructor(
         self_: *mut HandleIGESSolidRightAngularWedge,
     );
+    /// Clone Handle<IGESSolid_RightAngularWedge> (increments reference count)
+    pub fn HandleIGESSolidRightAngularWedge_clone(
+        self_: *const HandleIGESSolidRightAngularWedge,
+    ) -> crate::OcctResult<*mut HandleIGESSolidRightAngularWedge>;
     /// Dereference Handle to get *const IGESSolid_RightAngularWedge
     pub fn HandleIGESSolidRightAngularWedge_get(
         handle: *const HandleIGESSolidRightAngularWedge,
@@ -86432,6 +87496,10 @@ extern "C" {
     pub fn HandleIGESSolidSelectedComponent_destructor(
         self_: *mut HandleIGESSolidSelectedComponent,
     );
+    /// Clone Handle<IGESSolid_SelectedComponent> (increments reference count)
+    pub fn HandleIGESSolidSelectedComponent_clone(
+        self_: *const HandleIGESSolidSelectedComponent,
+    ) -> crate::OcctResult<*mut HandleIGESSolidSelectedComponent>;
     /// Dereference Handle to get *const IGESSolid_SelectedComponent
     pub fn HandleIGESSolidSelectedComponent_get(
         handle: *const HandleIGESSolidSelectedComponent,
@@ -86825,6 +87893,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidShell>;
     /// Destroy Handle<IGESSolid_Shell>
     pub fn HandleIGESSolidShell_destructor(self_: *mut HandleIGESSolidShell);
+    /// Clone Handle<IGESSolid_Shell> (increments reference count)
+    pub fn HandleIGESSolidShell_clone(
+        self_: *const HandleIGESSolidShell,
+    ) -> crate::OcctResult<*mut HandleIGESSolidShell>;
     /// Dereference Handle to get *const IGESSolid_Shell
     pub fn HandleIGESSolidShell_get(
         handle: *const HandleIGESSolidShell,
@@ -87222,6 +88294,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidSolidAssembly>;
     /// Destroy Handle<IGESSolid_SolidAssembly>
     pub fn HandleIGESSolidSolidAssembly_destructor(self_: *mut HandleIGESSolidSolidAssembly);
+    /// Clone Handle<IGESSolid_SolidAssembly> (increments reference count)
+    pub fn HandleIGESSolidSolidAssembly_clone(
+        self_: *const HandleIGESSolidSolidAssembly,
+    ) -> crate::OcctResult<*mut HandleIGESSolidSolidAssembly>;
     /// Dereference Handle to get *const IGESSolid_SolidAssembly
     pub fn HandleIGESSolidSolidAssembly_get(
         handle: *const HandleIGESSolidSolidAssembly,
@@ -87609,6 +88685,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidSolidInstance>;
     /// Destroy Handle<IGESSolid_SolidInstance>
     pub fn HandleIGESSolidSolidInstance_destructor(self_: *mut HandleIGESSolidSolidInstance);
+    /// Clone Handle<IGESSolid_SolidInstance> (increments reference count)
+    pub fn HandleIGESSolidSolidInstance_clone(
+        self_: *const HandleIGESSolidSolidInstance,
+    ) -> crate::OcctResult<*mut HandleIGESSolidSolidInstance>;
     /// Dereference Handle to get *const IGESSolid_SolidInstance
     pub fn HandleIGESSolidSolidInstance_get(
         handle: *const HandleIGESSolidSolidInstance,
@@ -88007,6 +89087,10 @@ extern "C" {
     pub fn HandleIGESSolidSolidOfLinearExtrusion_destructor(
         self_: *mut HandleIGESSolidSolidOfLinearExtrusion,
     );
+    /// Clone Handle<IGESSolid_SolidOfLinearExtrusion> (increments reference count)
+    pub fn HandleIGESSolidSolidOfLinearExtrusion_clone(
+        self_: *const HandleIGESSolidSolidOfLinearExtrusion,
+    ) -> crate::OcctResult<*mut HandleIGESSolidSolidOfLinearExtrusion>;
     /// Dereference Handle to get *const IGESSolid_SolidOfLinearExtrusion
     pub fn HandleIGESSolidSolidOfLinearExtrusion_get(
         handle: *const HandleIGESSolidSolidOfLinearExtrusion,
@@ -88419,6 +89503,10 @@ extern "C" {
     pub fn HandleIGESSolidSolidOfRevolution_destructor(
         self_: *mut HandleIGESSolidSolidOfRevolution,
     );
+    /// Clone Handle<IGESSolid_SolidOfRevolution> (increments reference count)
+    pub fn HandleIGESSolidSolidOfRevolution_clone(
+        self_: *const HandleIGESSolidSolidOfRevolution,
+    ) -> crate::OcctResult<*mut HandleIGESSolidSolidOfRevolution>;
     /// Dereference Handle to get *const IGESSolid_SolidOfRevolution
     pub fn HandleIGESSolidSolidOfRevolution_get(
         handle: *const HandleIGESSolidSolidOfRevolution,
@@ -88797,6 +89885,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidSpecificModule>;
     /// Destroy Handle<IGESSolid_SpecificModule>
     pub fn HandleIGESSolidSpecificModule_destructor(self_: *mut HandleIGESSolidSpecificModule);
+    /// Clone Handle<IGESSolid_SpecificModule> (increments reference count)
+    pub fn HandleIGESSolidSpecificModule_clone(
+        self_: *const HandleIGESSolidSpecificModule,
+    ) -> crate::OcctResult<*mut HandleIGESSolidSpecificModule>;
     /// Dereference Handle to get *const IGESSolid_SpecificModule
     pub fn HandleIGESSolidSpecificModule_get(
         handle: *const HandleIGESSolidSpecificModule,
@@ -88899,6 +89991,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidSphere>;
     /// Destroy Handle<IGESSolid_Sphere>
     pub fn HandleIGESSolidSphere_destructor(self_: *mut HandleIGESSolidSphere);
+    /// Clone Handle<IGESSolid_Sphere> (increments reference count)
+    pub fn HandleIGESSolidSphere_clone(
+        self_: *const HandleIGESSolidSphere,
+    ) -> crate::OcctResult<*mut HandleIGESSolidSphere>;
     /// Dereference Handle to get *const IGESSolid_Sphere
     pub fn HandleIGESSolidSphere_get(
         handle: *const HandleIGESSolidSphere,
@@ -89300,6 +90396,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidSphericalSurface>;
     /// Destroy Handle<IGESSolid_SphericalSurface>
     pub fn HandleIGESSolidSphericalSurface_destructor(self_: *mut HandleIGESSolidSphericalSurface);
+    /// Clone Handle<IGESSolid_SphericalSurface> (increments reference count)
+    pub fn HandleIGESSolidSphericalSurface_clone(
+        self_: *const HandleIGESSolidSphericalSurface,
+    ) -> crate::OcctResult<*mut HandleIGESSolidSphericalSurface>;
     /// Dereference Handle to get *const IGESSolid_SphericalSurface
     pub fn HandleIGESSolidSphericalSurface_get(
         handle: *const HandleIGESSolidSphericalSurface,
@@ -91036,6 +92136,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidToroidalSurface>;
     /// Destroy Handle<IGESSolid_ToroidalSurface>
     pub fn HandleIGESSolidToroidalSurface_destructor(self_: *mut HandleIGESSolidToroidalSurface);
+    /// Clone Handle<IGESSolid_ToroidalSurface> (increments reference count)
+    pub fn HandleIGESSolidToroidalSurface_clone(
+        self_: *const HandleIGESSolidToroidalSurface,
+    ) -> crate::OcctResult<*mut HandleIGESSolidToroidalSurface>;
     /// Dereference Handle to get *const IGESSolid_ToroidalSurface
     pub fn HandleIGESSolidToroidalSurface_get(
         handle: *const HandleIGESSolidToroidalSurface,
@@ -91430,6 +92534,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidTorus>;
     /// Destroy Handle<IGESSolid_Torus>
     pub fn HandleIGESSolidTorus_destructor(self_: *mut HandleIGESSolidTorus);
+    /// Clone Handle<IGESSolid_Torus> (increments reference count)
+    pub fn HandleIGESSolidTorus_clone(
+        self_: *const HandleIGESSolidTorus,
+    ) -> crate::OcctResult<*mut HandleIGESSolidTorus>;
     /// Dereference Handle to get *const IGESSolid_Torus
     pub fn HandleIGESSolidTorus_get(
         handle: *const HandleIGESSolidTorus,
@@ -91811,6 +92919,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESSolidVertexList>;
     /// Destroy Handle<IGESSolid_VertexList>
     pub fn HandleIGESSolidVertexList_destructor(self_: *mut HandleIGESSolidVertexList);
+    /// Clone Handle<IGESSolid_VertexList> (increments reference count)
+    pub fn HandleIGESSolidVertexList_clone(
+        self_: *const HandleIGESSolidVertexList,
+    ) -> crate::OcctResult<*mut HandleIGESSolidVertexList>;
     /// Dereference Handle to get *const IGESSolid_VertexList
     pub fn HandleIGESSolidVertexList_get(
         handle: *const HandleIGESSolidVertexList,
@@ -92217,6 +93329,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESToBRepActor>;
     /// Destroy Handle<IGESToBRep_Actor>
     pub fn HandleIGESToBRepActor_destructor(self_: *mut HandleIGESToBRepActor);
+    /// Clone Handle<IGESToBRep_Actor> (increments reference count)
+    pub fn HandleIGESToBRepActor_clone(
+        self_: *const HandleIGESToBRepActor,
+    ) -> crate::OcctResult<*mut HandleIGESToBRepActor>;
     /// Dereference Handle to get *const IGESToBRep_Actor
     pub fn HandleIGESToBRepActor_get(
         handle: *const HandleIGESToBRepActor,
@@ -92362,6 +93478,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESToBRepAlgoContainer>;
     /// Destroy Handle<IGESToBRep_AlgoContainer>
     pub fn HandleIGESToBRepAlgoContainer_destructor(self_: *mut HandleIGESToBRepAlgoContainer);
+    /// Clone Handle<IGESToBRep_AlgoContainer> (increments reference count)
+    pub fn HandleIGESToBRepAlgoContainer_clone(
+        self_: *const HandleIGESToBRepAlgoContainer,
+    ) -> crate::OcctResult<*mut HandleIGESToBRepAlgoContainer>;
     /// Dereference Handle to get *const IGESToBRep_AlgoContainer
     pub fn HandleIGESToBRepAlgoContainer_get(
         handle: *const HandleIGESToBRepAlgoContainer,
@@ -93504,6 +94624,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESToBRepIGESBoundary>;
     /// Destroy Handle<IGESToBRep_IGESBoundary>
     pub fn HandleIGESToBRepIGESBoundary_destructor(self_: *mut HandleIGESToBRepIGESBoundary);
+    /// Clone Handle<IGESToBRep_IGESBoundary> (increments reference count)
+    pub fn HandleIGESToBRepIGESBoundary_clone(
+        self_: *const HandleIGESToBRepIGESBoundary,
+    ) -> crate::OcctResult<*mut HandleIGESToBRepIGESBoundary>;
     /// Dereference Handle to get *const IGESToBRep_IGESBoundary
     pub fn HandleIGESToBRepIGESBoundary_get(
         handle: *const HandleIGESToBRepIGESBoundary,
@@ -93672,6 +94796,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIGESToBRepToolContainer>;
     /// Destroy Handle<IGESToBRep_ToolContainer>
     pub fn HandleIGESToBRepToolContainer_destructor(self_: *mut HandleIGESToBRepToolContainer);
+    /// Clone Handle<IGESToBRep_ToolContainer> (increments reference count)
+    pub fn HandleIGESToBRepToolContainer_clone(
+        self_: *const HandleIGESToBRepToolContainer,
+    ) -> crate::OcctResult<*mut HandleIGESToBRepToolContainer>;
     /// Dereference Handle to get *const IGESToBRep_ToolContainer
     pub fn HandleIGESToBRepToolContainer_get(
         handle: *const HandleIGESToBRepToolContainer,
@@ -93870,7 +94998,7 @@ extern "C" {
         self_: *mut IGESToBRep_TopoCurve,
     ) -> crate::OcctResult<*mut IGESToBRep_CurveAndSurface>;
     /// Clone via copy constructor
-    pub fn IGESToBRep_TopoCurve_to_owned(
+    pub fn IGESToBRep_TopoCurve_clone(
         self_: *const IGESToBRep_TopoCurve,
     ) -> crate::OcctResult<*mut IGESToBRep_TopoCurve>;
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`

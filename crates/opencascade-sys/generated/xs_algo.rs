@@ -303,6 +303,12 @@ unsafe impl crate::CppDeletable for HandleXSAlgoAlgoContainer {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXSAlgoAlgoContainer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleXSAlgoAlgoContainer_clone(ptr))
+    }
+}
+
 impl HandleXSAlgoAlgoContainer {
     /// Dereference this Handle to access the underlying XSAlgo_AlgoContainer
     pub fn get(&self) -> &crate::ffi_types::XSAlgo_AlgoContainer {

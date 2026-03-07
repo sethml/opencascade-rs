@@ -175,6 +175,22 @@ unsafe impl crate::CppDeletable for BitMap {
     }
 }
 
+unsafe impl crate::CppCopyable for BitMap {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::Interface_BitMap_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for BitMap {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl BitMap {
     /// **Source:** `Interface_BitMap.hxx`:46 - `Interface_BitMap::Interface_BitMap()`
     /// Creates a empty BitMap
@@ -413,15 +429,6 @@ impl BitMap {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_BitMap_clear(self as *mut Self)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_BitMap_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -1317,6 +1324,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceCheck {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceCheck {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCheck_clone(ptr))
+    }
+}
+
 impl HandleInterfaceCheck {
     /// Dereference this Handle to access the underlying Interface_Check
     pub fn get(&self) -> &crate::ffi_types::Interface_Check {
@@ -1653,6 +1666,12 @@ pub use crate::ffi_types::HandleInterfaceCheckFailure;
 unsafe impl crate::CppDeletable for HandleInterfaceCheckFailure {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceCheckFailure_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceCheckFailure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCheckFailure_clone(ptr))
     }
 }
 
@@ -2533,6 +2552,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceCopyControl {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceCopyControl {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCopyControl_clone(ptr))
+    }
+}
+
 impl HandleInterfaceCopyControl {
     /// Dereference this Handle to access the underlying Interface_CopyControl
     pub fn get(&self) -> &crate::ffi_types::Interface_CopyControl {
@@ -2832,6 +2857,12 @@ pub use crate::ffi_types::HandleInterfaceCopyMap;
 unsafe impl crate::CppDeletable for HandleInterfaceCopyMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceCopyMap_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceCopyMap {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCopyMap_clone(ptr))
     }
 }
 
@@ -3472,6 +3503,12 @@ pub use crate::ffi_types::HandleInterfaceEntityCluster;
 unsafe impl crate::CppDeletable for HandleInterfaceEntityCluster {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceEntityCluster_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceEntityCluster {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceEntityCluster_clone(ptr))
     }
 }
 
@@ -4461,6 +4498,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceFileReaderData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceFileReaderData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceFileReaderData_clone(ptr))
+    }
+}
+
 impl HandleInterfaceFileReaderData {
     /// Dereference this Handle to access the underlying Interface_FileReaderData
     pub fn get(&self) -> &crate::ffi_types::Interface_FileReaderData {
@@ -5394,6 +5437,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceGTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceGTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceGTool_clone(ptr))
+    }
+}
+
 impl HandleInterfaceGTool {
     /// Dereference this Handle to access the underlying Interface_GTool
     pub fn get(&self) -> &crate::ffi_types::Interface_GTool {
@@ -6097,6 +6146,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceGeneralModule {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceGeneralModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_clone(ptr))
+    }
+}
+
 impl HandleInterfaceGeneralModule {
     /// Dereference this Handle to access the underlying Interface_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::Interface_GeneralModule {
@@ -6525,6 +6580,14 @@ unsafe impl crate::CppDeletable for HandleInterfaceGlobalNodeOfGeneralLib {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceGlobalNodeOfGeneralLib {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfGeneralLib_clone(ptr),
+        )
+    }
+}
+
 impl HandleInterfaceGlobalNodeOfGeneralLib {
     /// Dereference this Handle to access the underlying Interface_GlobalNodeOfGeneralLib
     pub fn get(&self) -> &crate::ffi_types::Interface_GlobalNodeOfGeneralLib {
@@ -6777,6 +6840,14 @@ unsafe impl crate::CppDeletable for HandleInterfaceGlobalNodeOfReaderLib {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceGlobalNodeOfReaderLib {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfReaderLib_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleInterfaceGlobalNodeOfReaderLib {
     /// Dereference this Handle to access the underlying Interface_GlobalNodeOfReaderLib
     pub fn get(&self) -> &crate::ffi_types::Interface_GlobalNodeOfReaderLib {
@@ -6839,6 +6910,22 @@ pub use crate::ffi_types::Interface_Graph as Graph;
 unsafe impl crate::CppDeletable for Graph {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::Interface_Graph_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Graph {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::Interface_Graph_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Graph {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -7337,15 +7424,6 @@ impl Graph {
             crate::ffi_extern_TKXSBase::Interface_Graph_mode_stat(self as *const Self)
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_Graph_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -7840,6 +7918,14 @@ unsafe impl crate::CppDeletable for HandleInterfaceHArray1OfHAsciiString {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceHArray1OfHAsciiString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceHArray1OfHAsciiString_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleInterfaceHArray1OfHAsciiString {
     /// Dereference this Handle to access the underlying Interface_HArray1OfHAsciiString
     pub fn get(&self) -> &crate::ffi_types::Interface_HArray1OfHAsciiString {
@@ -8148,6 +8234,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceHGraph {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceHGraph {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceHGraph_clone(ptr))
+    }
+}
+
 impl HandleInterfaceHGraph {
     /// Dereference this Handle to access the underlying Interface_HGraph
     pub fn get(&self) -> &crate::ffi_types::Interface_HGraph {
@@ -8407,6 +8499,12 @@ pub use crate::ffi_types::HandleInterfaceHSequenceOfCheck;
 unsafe impl crate::CppDeletable for HandleInterfaceHSequenceOfCheck {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceHSequenceOfCheck_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceHSequenceOfCheck {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceHSequenceOfCheck_clone(ptr))
     }
 }
 
@@ -8848,6 +8946,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceIntVal {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceIntVal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceIntVal_clone(ptr))
+    }
+}
+
 impl HandleInterfaceIntVal {
     /// Dereference this Handle to access the underlying Interface_IntVal
     pub fn get(&self) -> &crate::ffi_types::Interface_IntVal {
@@ -9168,6 +9272,12 @@ pub use crate::ffi_types::HandleInterfaceInterfaceError;
 unsafe impl crate::CppDeletable for HandleInterfaceInterfaceError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceInterfaceError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_clone(ptr))
     }
 }
 
@@ -9584,6 +9694,12 @@ pub use crate::ffi_types::HandleInterfaceInterfaceMismatch;
 unsafe impl crate::CppDeletable for HandleInterfaceInterfaceMismatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceMismatch_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceInterfaceMismatch {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceMismatch_clone(ptr))
     }
 }
 
@@ -10670,6 +10786,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceInterfaceModel {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceInterfaceModel {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceModel_clone(ptr))
+    }
+}
+
 impl HandleInterfaceInterfaceModel {
     /// Dereference this Handle to access the underlying Interface_InterfaceModel
     pub fn get(&self) -> &crate::ffi_types::Interface_InterfaceModel {
@@ -11559,6 +11681,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceNodeOfGeneralLib {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceNodeOfGeneralLib {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfGeneralLib_clone(ptr))
+    }
+}
+
 impl HandleInterfaceNodeOfGeneralLib {
     /// Dereference this Handle to access the underlying Interface_NodeOfGeneralLib
     pub fn get(&self) -> &crate::ffi_types::Interface_NodeOfGeneralLib {
@@ -11796,6 +11924,12 @@ pub use crate::ffi_types::HandleInterfaceNodeOfReaderLib;
 unsafe impl crate::CppDeletable for HandleInterfaceNodeOfReaderLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfReaderLib_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceNodeOfReaderLib {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfReaderLib_clone(ptr))
     }
 }
 
@@ -12067,6 +12201,12 @@ pub use crate::ffi_types::HandleInterfaceParamList;
 unsafe impl crate::CppDeletable for HandleInterfaceParamList {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceParamList_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceParamList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceParamList_clone(ptr))
     }
 }
 
@@ -12379,6 +12519,12 @@ pub use crate::ffi_types::HandleInterfaceParamSet;
 unsafe impl crate::CppDeletable for HandleInterfaceParamSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceParamSet_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceParamSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceParamSet_clone(ptr))
     }
 }
 
@@ -12730,6 +12876,12 @@ pub use crate::ffi_types::HandleInterfaceProtocol;
 unsafe impl crate::CppDeletable for HandleInterfaceProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceProtocol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_clone(ptr))
     }
 }
 
@@ -13395,6 +13547,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceReaderModule {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceReaderModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_clone(ptr))
+    }
+}
+
 impl HandleInterfaceReaderModule {
     /// Dereference this Handle to access the underlying Interface_ReaderModule
     pub fn get(&self) -> &crate::ffi_types::Interface_ReaderModule {
@@ -13873,6 +14031,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceReportEntity {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceReportEntity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceReportEntity_clone(ptr))
+    }
+}
+
 impl HandleInterfaceReportEntity {
     /// Dereference this Handle to access the underlying Interface_ReportEntity
     pub fn get(&self) -> &crate::ffi_types::Interface_ReportEntity {
@@ -13967,6 +14131,22 @@ pub use crate::ffi_types::Interface_STAT as STAT;
 unsafe impl crate::CppDeletable for STAT {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::Interface_STAT_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for STAT {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::Interface_STAT_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for STAT {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -14197,15 +14377,6 @@ impl STAT {
     /// <phase> False (D) : relative to the whole process
     pub fn percent(phase: bool) -> i32 {
         crate::check_result(unsafe { crate::ffi_extern_TKXSBase::Interface_STAT_percent(phase) })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_STAT_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -14797,6 +14968,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceSignLabel {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceSignLabel {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceSignLabel_clone(ptr))
+    }
+}
+
 impl HandleInterfaceSignLabel {
     /// Dereference this Handle to access the underlying Interface_SignLabel
     pub fn get(&self) -> &crate::ffi_types::Interface_SignLabel {
@@ -15077,6 +15254,12 @@ pub use crate::ffi_types::HandleInterfaceSignType;
 unsafe impl crate::CppDeletable for HandleInterfaceSignType {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceSignType_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceSignType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceSignType_clone(ptr))
     }
 }
 
@@ -16286,6 +16469,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceStatic {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceStatic {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceStatic_clone(ptr))
+    }
+}
+
 impl HandleInterfaceStatic {
     /// Dereference this Handle to access the underlying Interface_Static
     pub fn get(&self) -> &crate::ffi_types::Interface_Static {
@@ -16899,6 +17088,12 @@ unsafe impl crate::CppDeletable for HandleInterfaceTypedValue {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleInterfaceTypedValue {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceTypedValue_clone(ptr))
+    }
+}
+
 impl HandleInterfaceTypedValue {
     /// Dereference this Handle to access the underlying Interface_TypedValue
     pub fn get(&self) -> &crate::ffi_types::Interface_TypedValue {
@@ -17382,6 +17577,12 @@ pub use crate::ffi_types::HandleInterfaceUndefinedContent;
 unsafe impl crate::CppDeletable for HandleInterfaceUndefinedContent {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXSBase::HandleInterfaceUndefinedContent_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleInterfaceUndefinedContent {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceUndefinedContent_clone(ptr))
     }
 }
 

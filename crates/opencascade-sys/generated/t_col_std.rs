@@ -252,6 +252,12 @@ unsafe impl crate::CppDeletable for HandleTColStdHArray1OfAsciiString {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHArray1OfAsciiString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray1OfAsciiString_clone(ptr))
+    }
+}
+
 impl HandleTColStdHArray1OfAsciiString {
     /// Dereference this Handle to access the underlying TColStd_HArray1OfAsciiString
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfAsciiString {
@@ -522,6 +528,12 @@ unsafe impl crate::CppDeletable for HandleTColStdHArray1OfBoolean {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHArray1OfBoolean {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray1OfBoolean_clone(ptr))
+    }
+}
+
 impl HandleTColStdHArray1OfBoolean {
     /// Dereference this Handle to access the underlying TColStd_HArray1OfBoolean
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfBoolean {
@@ -783,6 +795,12 @@ pub use crate::ffi_types::HandleTColStdHArray1OfByte;
 unsafe impl crate::CppDeletable for HandleTColStdHArray1OfByte {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTColStdHArray1OfByte_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColStdHArray1OfByte {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray1OfByte_clone(ptr))
     }
 }
 
@@ -1060,6 +1078,12 @@ unsafe impl crate::CppDeletable for HandleTColStdHArray1OfCharacter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHArray1OfCharacter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray1OfCharacter_clone(ptr))
+    }
+}
+
 impl HandleTColStdHArray1OfCharacter {
     /// Dereference this Handle to access the underlying TColStd_HArray1OfCharacter
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfCharacter {
@@ -1323,6 +1347,14 @@ pub use crate::ffi_types::HandleTColStdHArray1OfExtendedString;
 unsafe impl crate::CppDeletable for HandleTColStdHArray1OfExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTColStdHArray1OfExtendedString_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColStdHArray1OfExtendedString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray1OfExtendedString_clone(
+            ptr,
+        ))
     }
 }
 
@@ -1595,6 +1627,12 @@ pub use crate::ffi_types::HandleTColStdHArray1OfInteger;
 unsafe impl crate::CppDeletable for HandleTColStdHArray1OfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTColStdHArray1OfInteger_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColStdHArray1OfInteger {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray1OfInteger_clone(ptr))
     }
 }
 
@@ -1872,6 +1910,14 @@ unsafe impl crate::CppDeletable for HandleTColStdHArray1OfListOfInteger {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHArray1OfListOfInteger {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray1OfListOfInteger_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleTColStdHArray1OfListOfInteger {
     /// Dereference this Handle to access the underlying TColStd_HArray1OfListOfInteger
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfListOfInteger {
@@ -2133,6 +2179,12 @@ pub use crate::ffi_types::HandleTColStdHArray1OfReal;
 unsafe impl crate::CppDeletable for HandleTColStdHArray1OfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTColStdHArray1OfReal_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColStdHArray1OfReal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray1OfReal_clone(ptr))
     }
 }
 
@@ -2402,6 +2454,12 @@ unsafe impl crate::CppDeletable for HandleTColStdHArray1OfTransient {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHArray1OfTransient {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray1OfTransient_clone(ptr))
+    }
+}
+
 impl HandleTColStdHArray1OfTransient {
     /// Dereference this Handle to access the underlying TColStd_HArray1OfTransient
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfTransient {
@@ -2653,6 +2711,12 @@ pub use crate::ffi_types::HandleTColStdHArray2OfBoolean;
 unsafe impl crate::CppDeletable for HandleTColStdHArray2OfBoolean {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTColStdHArray2OfBoolean_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColStdHArray2OfBoolean {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray2OfBoolean_clone(ptr))
     }
 }
 
@@ -2914,6 +2978,12 @@ unsafe impl crate::CppDeletable for HandleTColStdHArray2OfCharacter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHArray2OfCharacter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray2OfCharacter_clone(ptr))
+    }
+}
+
 impl HandleTColStdHArray2OfCharacter {
     /// Dereference this Handle to access the underlying TColStd_HArray2OfCharacter
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray2OfCharacter {
@@ -3168,6 +3238,12 @@ unsafe impl crate::CppDeletable for HandleTColStdHArray2OfInteger {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHArray2OfInteger {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray2OfInteger_clone(ptr))
+    }
+}
+
 impl HandleTColStdHArray2OfInteger {
     /// Dereference this Handle to access the underlying TColStd_HArray2OfInteger
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray2OfInteger {
@@ -3413,6 +3489,12 @@ pub use crate::ffi_types::HandleTColStdHArray2OfReal;
 unsafe impl crate::CppDeletable for HandleTColStdHArray2OfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTColStdHArray2OfReal_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColStdHArray2OfReal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray2OfReal_clone(ptr))
     }
 }
 
@@ -3670,6 +3752,12 @@ unsafe impl crate::CppDeletable for HandleTColStdHArray2OfTransient {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHArray2OfTransient {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHArray2OfTransient_clone(ptr))
+    }
+}
+
 impl HandleTColStdHArray2OfTransient {
     /// Dereference this Handle to access the underlying TColStd_HArray2OfTransient
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray2OfTransient {
@@ -3905,6 +3993,12 @@ pub use crate::ffi_types::HandleTColStdHPackedMapOfInteger;
 unsafe impl crate::CppDeletable for HandleTColStdHPackedMapOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTColStdHPackedMapOfInteger_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColStdHPackedMapOfInteger {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHPackedMapOfInteger_clone(ptr))
     }
 }
 
@@ -4161,6 +4255,14 @@ unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfAsciiString {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfAsciiString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHSequenceOfAsciiString_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleTColStdHSequenceOfAsciiString {
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfAsciiString
     pub fn get(&self) -> &crate::ffi_types::TColStd_HSequenceOfAsciiString {
@@ -4404,6 +4506,14 @@ pub use crate::ffi_types::HandleTColStdHSequenceOfExtendedString;
 unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTColStdHSequenceOfExtendedString_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfExtendedString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKernel::HandleTColStdHSequenceOfExtendedString_clone(ptr),
+        )
     }
 }
 
@@ -4660,6 +4770,14 @@ unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfHAsciiString {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfHAsciiString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHSequenceOfHAsciiString_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleTColStdHSequenceOfHAsciiString {
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfHAsciiString
     pub fn get(&self) -> &crate::ffi_types::TColStd_HSequenceOfHAsciiString {
@@ -4903,6 +5021,14 @@ pub use crate::ffi_types::HandleTColStdHSequenceOfHExtendedString;
 unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfHExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTColStdHSequenceOfHExtendedString_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfHExtendedString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKernel::HandleTColStdHSequenceOfHExtendedString_clone(ptr),
+        )
     }
 }
 
@@ -5166,6 +5292,12 @@ unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfInteger {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfInteger {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHSequenceOfInteger_clone(ptr))
+    }
+}
+
 impl HandleTColStdHSequenceOfInteger {
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfInteger
     pub fn get(&self) -> &crate::ffi_types::TColStd_HSequenceOfInteger {
@@ -5414,6 +5546,12 @@ pub use crate::ffi_types::HandleTColStdHSequenceOfReal;
 unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleTColStdHSequenceOfReal_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfReal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHSequenceOfReal_clone(ptr))
     }
 }
 
@@ -5679,6 +5817,12 @@ unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfTransient {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfTransient {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleTColStdHSequenceOfTransient_clone(ptr))
+    }
+}
+
 impl HandleTColStdHSequenceOfTransient {
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfTransient
     pub fn get(&self) -> &crate::ffi_types::TColStd_HSequenceOfTransient {
@@ -5722,6 +5866,22 @@ pub use crate::ffi_types::TColStd_PackedMapOfInteger as PackedMapOfInteger;
 unsafe impl crate::CppDeletable for PackedMapOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::TColStd_PackedMapOfInteger_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for PackedMapOfInteger {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::TColStd_PackedMapOfInteger_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for PackedMapOfInteger {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -6013,15 +6173,6 @@ impl PackedMapOfInteger {
                 arg0,
             )
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::TColStd_PackedMapOfInteger_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 

@@ -89,6 +89,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEPLYConfigurationNode>;
     /// Destroy Handle<DEPLY_ConfigurationNode>
     pub fn HandleDEPLYConfigurationNode_destructor(self_: *mut HandleDEPLYConfigurationNode);
+    /// Clone Handle<DEPLY_ConfigurationNode> (increments reference count)
+    pub fn HandleDEPLYConfigurationNode_clone(
+        self_: *const HandleDEPLYConfigurationNode,
+    ) -> crate::OcctResult<*mut HandleDEPLYConfigurationNode>;
     /// Dereference Handle to get *const DEPLY_ConfigurationNode
     pub fn HandleDEPLYConfigurationNode_get(
         handle: *const HandleDEPLYConfigurationNode,
@@ -243,6 +247,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEPLYProvider>;
     /// Destroy Handle<DEPLY_Provider>
     pub fn HandleDEPLYProvider_destructor(self_: *mut HandleDEPLYProvider);
+    /// Clone Handle<DEPLY_Provider> (increments reference count)
+    pub fn HandleDEPLYProvider_clone(
+        self_: *const HandleDEPLYProvider,
+    ) -> crate::OcctResult<*mut HandleDEPLYProvider>;
     /// Dereference Handle to get *const DEPLY_Provider
     pub fn HandleDEPLYProvider_get(
         handle: *const HandleDEPLYProvider,
@@ -416,6 +424,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleRWPlyCafWriter>;
     /// Destroy Handle<RWPly_CafWriter>
     pub fn HandleRWPlyCafWriter_destructor(self_: *mut HandleRWPlyCafWriter);
+    /// Clone Handle<RWPly_CafWriter> (increments reference count)
+    pub fn HandleRWPlyCafWriter_clone(
+        self_: *const HandleRWPlyCafWriter,
+    ) -> crate::OcctResult<*mut HandleRWPlyCafWriter>;
     /// Dereference Handle to get *const RWPly_CafWriter
     pub fn HandleRWPlyCafWriter_get(
         handle: *const HandleRWPlyCafWriter,

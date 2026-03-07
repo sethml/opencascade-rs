@@ -3112,6 +3112,12 @@ unsafe impl crate::CppDeletable for HandleGccAnaNoSolution {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGccAnaNoSolution {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_clone(ptr))
+    }
+}
+
 impl HandleGccAnaNoSolution {
     /// Dereference this Handle to access the underlying GccAna_NoSolution
     pub fn get(&self) -> &crate::ffi_types::GccAna_NoSolution {

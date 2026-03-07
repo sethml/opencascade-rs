@@ -377,6 +377,12 @@ unsafe impl crate::CppDeletable for HandleRWPlyCafWriter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleRWPlyCafWriter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_clone(ptr))
+    }
+}
+
 impl HandleRWPlyCafWriter {
     /// Dereference this Handle to access the underlying RWPly_CafWriter
     pub fn get(&self) -> &crate::ffi_types::RWPly_CafWriter {

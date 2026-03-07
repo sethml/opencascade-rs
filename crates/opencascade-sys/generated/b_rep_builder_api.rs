@@ -1016,6 +1016,12 @@ unsafe impl crate::CppDeletable for HandleBRepBuilderAPIFastSewing {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepBuilderAPIFastSewing {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_clone(ptr))
+    }
+}
+
 impl HandleBRepBuilderAPIFastSewing {
     /// Dereference this Handle to access the underlying BRepBuilderAPI_FastSewing
     pub fn get(&self) -> &crate::ffi_types::BRepBuilderAPI_FastSewing {
@@ -6287,6 +6293,12 @@ pub use crate::ffi_types::HandleBRepBuilderAPISewing;
 unsafe impl crate::CppDeletable for HandleBRepBuilderAPISewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepBuilderAPISewing {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_clone(ptr))
     }
 }
 

@@ -430,6 +430,12 @@ unsafe impl crate::CppDeletable for HandleTopoDSAlertAttribute {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopoDSAlertAttribute {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_clone(ptr))
+    }
+}
+
 impl HandleTopoDSAlertAttribute {
     /// Dereference this Handle to access the underlying TopoDS_AlertAttribute
     pub fn get(&self) -> &crate::ffi_types::TopoDS_AlertAttribute {
@@ -698,6 +704,12 @@ pub use crate::ffi_types::HandleTopoDSAlertWithShape;
 unsafe impl crate::CppDeletable for HandleTopoDSAlertWithShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopoDSAlertWithShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_clone(ptr))
     }
 }
 
@@ -1218,6 +1230,22 @@ unsafe impl crate::CppDeletable for Builder {
     }
 }
 
+unsafe impl crate::CppCopyable for Builder {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Builder_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Builder {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Builder {
     /// **Source:** `TopoDS_Builder.hxx` - `TopoDS_Builder::TopoDS_Builder()`
     /// Default constructor
@@ -1289,15 +1317,6 @@ impl Builder {
             crate::ffi_extern_TKBRep::TopoDS_Builder_remove(self as *const Self, S, C)
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_Builder_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -1319,6 +1338,22 @@ pub use crate::ffi_types::TopoDS_CompSolid as CompSolid;
 unsafe impl crate::CppDeletable for CompSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::TopoDS_CompSolid_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for CompSolid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_CompSolid_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for CompSolid {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -1348,15 +1383,6 @@ impl CompSolid {
             &mut *crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_CompSolid_as_TopoDS_Shape_mut(self as *mut Self),
             )
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_CompSolid_to_owned(self as *const Self),
-            ))
         }
     }
 
@@ -1665,6 +1691,22 @@ unsafe impl crate::CppDeletable for Compound {
     }
 }
 
+unsafe impl crate::CppCopyable for Compound {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Compound_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Compound {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Compound {
     /// **Source:** `TopoDS_Compound.hxx`:37 - `TopoDS_Compound::TopoDS_Compound()`
     /// Constructs an Undefined Compound.
@@ -1691,15 +1733,6 @@ impl Compound {
             &mut *crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_Compound_as_TopoDS_Shape_mut(self as *mut Self),
             )
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_Compound_to_owned(self as *const Self),
-            ))
         }
     }
 
@@ -2007,6 +2040,22 @@ unsafe impl crate::CppDeletable for Edge {
     }
 }
 
+unsafe impl crate::CppCopyable for Edge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Edge_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Edge {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Edge {
     /// **Source:** `TopoDS_Edge.hxx`:36 - `TopoDS_Edge::TopoDS_Edge()`
     /// Undefined Edge.
@@ -2032,15 +2081,6 @@ impl Edge {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Edge_as_TopoDS_Shape_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_Edge_to_owned(self as *const Self),
             ))
         }
     }
@@ -2335,6 +2375,22 @@ unsafe impl crate::CppDeletable for Face {
     }
 }
 
+unsafe impl crate::CppCopyable for Face {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Face_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Face {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Face {
     /// **Source:** `TopoDS_Face.hxx`:35 - `TopoDS_Face::TopoDS_Face()`
     /// Undefined Face.
@@ -2360,15 +2416,6 @@ impl Face {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Face_as_TopoDS_Shape_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_Face_to_owned(self as *const Self),
             ))
         }
     }
@@ -2941,6 +2988,12 @@ unsafe impl crate::CppDeletable for HandleTopoDSFrozenShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopoDSFrozenShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_clone(ptr))
+    }
+}
+
 impl HandleTopoDSFrozenShape {
     /// Dereference this Handle to access the underlying TopoDS_FrozenShape
     pub fn get(&self) -> &crate::ffi_types::TopoDS_FrozenShape {
@@ -3192,6 +3245,12 @@ unsafe impl crate::CppDeletable for HandleTopoDSHShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopoDSHShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSHShape_clone(ptr))
+    }
+}
+
 impl HandleTopoDSHShape {
     /// Dereference this Handle to access the underlying TopoDS_HShape
     pub fn get(&self) -> &crate::ffi_types::TopoDS_HShape {
@@ -3240,6 +3299,22 @@ pub use crate::ffi_types::TopoDS_Iterator as Iterator;
 unsafe impl crate::CppDeletable for Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::TopoDS_Iterator_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Iterator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Iterator_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Iterator {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -3343,15 +3418,6 @@ impl Iterator {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Iterator_value(
                 self as *const Self,
             )))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_Iterator_to_owned(self as *const Self),
-            ))
         }
     }
 }
@@ -3654,6 +3720,12 @@ unsafe impl crate::CppDeletable for HandleTopoDSLockedShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopoDSLockedShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_clone(ptr))
+    }
+}
+
 impl HandleTopoDSLockedShape {
     /// Dereference this Handle to access the underlying TopoDS_LockedShape
     pub fn get(&self) -> &crate::ffi_types::TopoDS_LockedShape {
@@ -3731,6 +3803,22 @@ pub use crate::ffi_types::TopoDS_Shape as Shape;
 unsafe impl crate::CppDeletable for Shape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::TopoDS_Shape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Shape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Shape_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Shape {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -4177,15 +4265,6 @@ impl Shape {
             )
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_Shape_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -4205,6 +4284,22 @@ pub use crate::ffi_types::TopoDS_Shell as Shell;
 unsafe impl crate::CppDeletable for Shell {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::TopoDS_Shell_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Shell {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Shell_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Shell {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -4233,15 +4328,6 @@ impl Shell {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Shell_as_TopoDS_Shape_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_Shell_to_owned(self as *const Self),
             ))
         }
     }
@@ -4540,6 +4626,22 @@ unsafe impl crate::CppDeletable for Solid {
     }
 }
 
+unsafe impl crate::CppCopyable for Solid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Solid_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Solid {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Solid {
     /// **Source:** `TopoDS_Solid.hxx`:36 - `TopoDS_Solid::TopoDS_Solid()`
     /// Constructs an Undefined Solid.
@@ -4565,15 +4667,6 @@ impl Solid {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Solid_as_TopoDS_Shape_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_Solid_to_owned(self as *const Self),
             ))
         }
     }
@@ -5113,6 +5206,12 @@ unsafe impl crate::CppDeletable for HandleTopoDSTCompSolid {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopoDSTCompSolid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_clone(ptr))
+    }
+}
+
 impl HandleTopoDSTCompSolid {
     /// Dereference this Handle to access the underlying TopoDS_TCompSolid
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TCompSolid {
@@ -5415,6 +5514,12 @@ unsafe impl crate::CppDeletable for HandleTopoDSTCompound {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopoDSTCompound {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompound_clone(ptr))
+    }
+}
+
 impl HandleTopoDSTCompound {
     /// Dereference this Handle to access the underlying TopoDS_TCompound
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TCompound {
@@ -5684,6 +5789,12 @@ pub use crate::ffi_types::HandleTopoDSTEdge;
 unsafe impl crate::CppDeletable for HandleTopoDSTEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::HandleTopoDSTEdge_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopoDSTEdge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTEdge_clone(ptr))
     }
 }
 
@@ -5995,6 +6106,12 @@ pub use crate::ffi_types::HandleTopoDSTFace;
 unsafe impl crate::CppDeletable for HandleTopoDSTFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::HandleTopoDSTFace_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopoDSTFace {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTFace_clone(ptr))
     }
 }
 
@@ -6369,6 +6486,12 @@ pub use crate::ffi_types::HandleTopoDSTShape;
 unsafe impl crate::CppDeletable for HandleTopoDSTShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::HandleTopoDSTShape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopoDSTShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShape_clone(ptr))
     }
 }
 
@@ -6854,6 +6977,12 @@ unsafe impl crate::CppDeletable for HandleTopoDSTShell {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopoDSTShell {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShell_clone(ptr))
+    }
+}
+
 impl HandleTopoDSTShell {
     /// Dereference this Handle to access the underlying TopoDS_TShell
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TShell {
@@ -7150,6 +7279,12 @@ unsafe impl crate::CppDeletable for HandleTopoDSTSolid {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopoDSTSolid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTSolid_clone(ptr))
+    }
+}
+
 impl HandleTopoDSTSolid {
     /// Dereference this Handle to access the underlying TopoDS_TSolid
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TSolid {
@@ -7425,6 +7560,12 @@ pub use crate::ffi_types::HandleTopoDSTVertex;
 unsafe impl crate::CppDeletable for HandleTopoDSTVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::HandleTopoDSTVertex_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopoDSTVertex {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTVertex_clone(ptr))
     }
 }
 
@@ -7736,6 +7877,12 @@ pub use crate::ffi_types::HandleTopoDSTWire;
 unsafe impl crate::CppDeletable for HandleTopoDSTWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBRep::HandleTopoDSTWire_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTopoDSTWire {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTWire_clone(ptr))
     }
 }
 
@@ -8092,6 +8239,12 @@ unsafe impl crate::CppDeletable for HandleTopoDSUnCompatibleShapes {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTopoDSUnCompatibleShapes {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_clone(ptr))
+    }
+}
+
 impl HandleTopoDSUnCompatibleShapes {
     /// Dereference this Handle to access the underlying TopoDS_UnCompatibleShapes
     pub fn get(&self) -> &crate::ffi_types::TopoDS_UnCompatibleShapes {
@@ -8166,6 +8319,22 @@ unsafe impl crate::CppDeletable for Vertex {
     }
 }
 
+unsafe impl crate::CppCopyable for Vertex {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Vertex_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Vertex {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Vertex {
     /// **Source:** `TopoDS_Vertex.hxx`:36 - `TopoDS_Vertex::TopoDS_Vertex()`
     /// Undefined Vertex.
@@ -8191,15 +8360,6 @@ impl Vertex {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Vertex_as_TopoDS_Shape_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_Vertex_to_owned(self as *const Self),
             ))
         }
     }
@@ -8497,6 +8657,22 @@ unsafe impl crate::CppDeletable for Wire {
     }
 }
 
+unsafe impl crate::CppCopyable for Wire {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Wire_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Wire {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Wire {
     /// **Source:** `TopoDS_Wire.hxx`:35 - `TopoDS_Wire::TopoDS_Wire()`
     /// Undefined Wire.
@@ -8522,15 +8698,6 @@ impl Wire {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Wire_as_TopoDS_Shape_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_Wire_to_owned(self as *const Self),
             ))
         }
     }

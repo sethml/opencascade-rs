@@ -391,6 +391,12 @@ unsafe impl crate::CppDeletable for HandleMATArc {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleMATArc {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATArc_clone(ptr))
+    }
+}
+
 impl HandleMATArc {
     /// Dereference this Handle to access the underlying MAT_Arc
     pub fn get(&self) -> &crate::ffi_types::MAT_Arc {
@@ -643,6 +649,12 @@ pub use crate::ffi_types::HandleMATBasicElt;
 unsafe impl crate::CppDeletable for HandleMATBasicElt {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKTopAlgo::HandleMATBasicElt_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMATBasicElt {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATBasicElt_clone(ptr))
     }
 }
 
@@ -1063,6 +1075,12 @@ unsafe impl crate::CppDeletable for HandleMATBisector {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleMATBisector {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATBisector_clone(ptr))
+    }
+}
+
 impl HandleMATBisector {
     /// Dereference this Handle to access the underlying MAT_Bisector
     pub fn get(&self) -> &crate::ffi_types::MAT_Bisector {
@@ -1330,6 +1348,12 @@ pub use crate::ffi_types::HandleMATEdge;
 unsafe impl crate::CppDeletable for HandleMATEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKTopAlgo::HandleMATEdge_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMATEdge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATEdge_clone(ptr))
     }
 }
 
@@ -1677,6 +1701,12 @@ pub use crate::ffi_types::HandleMATGraph;
 unsafe impl crate::CppDeletable for HandleMATGraph {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKTopAlgo::HandleMATGraph_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMATGraph {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATGraph_clone(ptr))
     }
 }
 
@@ -2064,6 +2094,12 @@ unsafe impl crate::CppDeletable for HandleMATListOfBisector {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleMATListOfBisector {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATListOfBisector_clone(ptr))
+    }
+}
+
 impl HandleMATListOfBisector {
     /// Dereference this Handle to access the underlying MAT_ListOfBisector
     pub fn get(&self) -> &crate::ffi_types::MAT_ListOfBisector {
@@ -2440,6 +2476,12 @@ unsafe impl crate::CppDeletable for HandleMATListOfEdge {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleMATListOfEdge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATListOfEdge_clone(ptr))
+    }
+}
+
 impl HandleMATListOfEdge {
     /// Dereference this Handle to access the underlying MAT_ListOfEdge
     pub fn get(&self) -> &crate::ffi_types::MAT_ListOfEdge {
@@ -2702,6 +2744,12 @@ pub use crate::ffi_types::HandleMATNode;
 unsafe impl crate::CppDeletable for HandleMATNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKTopAlgo::HandleMATNode_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMATNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATNode_clone(ptr))
     }
 }
 
@@ -2989,6 +3037,14 @@ unsafe impl crate::CppDeletable for HandleMATTListNodeOfListOfBisector {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleMATTListNodeOfListOfBisector {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfBisector_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleMATTListNodeOfListOfBisector {
     /// Dereference this Handle to access the underlying MAT_TListNodeOfListOfBisector
     pub fn get(&self) -> &crate::ffi_types::MAT_TListNodeOfListOfBisector {
@@ -3267,6 +3323,12 @@ unsafe impl crate::CppDeletable for HandleMATTListNodeOfListOfEdge {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleMATTListNodeOfListOfEdge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfEdge_clone(ptr))
+    }
+}
+
 impl HandleMATTListNodeOfListOfEdge {
     /// Dereference this Handle to access the underlying MAT_TListNodeOfListOfEdge
     pub fn get(&self) -> &crate::ffi_types::MAT_TListNodeOfListOfEdge {
@@ -3498,6 +3560,12 @@ pub use crate::ffi_types::HandleMATZone;
 unsafe impl crate::CppDeletable for HandleMATZone {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKTopAlgo::HandleMATZone_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMATZone {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATZone_clone(ptr))
     }
 }
 

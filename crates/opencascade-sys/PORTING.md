@@ -117,6 +117,25 @@ let handle_cyl = geom::CylindricalSurface::to_handle(cyl);
 // `cyl` is now consumed and cannot be used
 ```
 
+### Cloning Handles
+
+Handle types implement `Clone` via the `CppCopyable` trait. Cloning a handle
+increments the reference count — both handles point to the same underlying
+object:
+
+```rust
+let handle_clone = handle_cyl.clone();
+// handle_cyl and handle_clone both reference the same Geom_CylindricalSurface
+```
+
+This also works with methods that return `&HandleT` — use `.to_owned()`
+(from the `ToOwned` trait) to create an independently-owned `OwnedPtr`:
+
+```rust
+let curve_ref: &HandleGeomCurve = geom_api_obj.line(1);  // borrowed
+let owned_curve = curve_ref.to_owned();                    // OwnedPtr<HandleGeomCurve>
+```
+
 ### Handle Upcasting
 
 Use `to_handle_*()` methods to upcast handles in the inheritance hierarchy:

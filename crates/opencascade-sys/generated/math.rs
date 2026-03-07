@@ -1232,6 +1232,22 @@ unsafe impl crate::CppDeletable for DoubleTab {
     }
 }
 
+unsafe impl crate::CppCopyable for DoubleTab {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::math_DoubleTab_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for DoubleTab {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl DoubleTab {
     /// **Source:** `math_DoubleTab.hxx`:32 - `math_DoubleTab::math_DoubleTab()`
     pub fn new_int4(
@@ -1310,15 +1326,6 @@ impl DoubleTab {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::math_DoubleTab_free(self as *mut Self)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::math_DoubleTab_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -3904,6 +3911,22 @@ unsafe impl crate::CppDeletable for Matrix {
     }
 }
 
+unsafe impl crate::CppCopyable for Matrix {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::math_Matrix_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Matrix {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Matrix {
     /// **Source:** `math_Matrix.hxx`:88 - `math_Matrix::math_Matrix()`
     /// Constructs a non-initialized  matrix of range [LowerRow..UpperRow,
@@ -4467,15 +4490,6 @@ impl Matrix {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::math_Matrix_dump(self as *const Self, o)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::math_Matrix_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -5754,6 +5768,12 @@ unsafe impl crate::CppDeletable for HandlemathNotSquare {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlemathNotSquare {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlemathNotSquare_clone(ptr))
+    }
+}
+
 impl HandlemathNotSquare {
     /// Dereference this Handle to access the underlying math_NotSquare
     pub fn get(&self) -> &crate::ffi_types::math_NotSquare {
@@ -6606,6 +6626,12 @@ pub use crate::ffi_types::HandlemathSingularMatrix;
 unsafe impl crate::CppDeletable for HandlemathSingularMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKMath::HandlemathSingularMatrix_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlemathSingularMatrix {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKMath::HandlemathSingularMatrix_clone(ptr))
     }
 }
 

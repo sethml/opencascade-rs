@@ -320,6 +320,12 @@ unsafe impl crate::CppDeletable for HandleStdLPersistentData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdLPersistentData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentData_clone(ptr))
+    }
+}
+
 impl HandleStdLPersistentData {
     /// Dereference this Handle to access the underlying StdLPersistent_Data
     pub fn get(&self) -> &crate::ffi_types::StdLPersistent_Data {
@@ -669,6 +675,12 @@ pub use crate::ffi_types::HandleStdLPersistentDocument;
 unsafe impl crate::CppDeletable for HandleStdLPersistentDocument {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStdLPersistentDocument {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_clone(ptr))
     }
 }
 
@@ -1027,6 +1039,14 @@ unsafe impl crate::CppDeletable for HandleStdLPersistentHArray1OfPersistent {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdLPersistentHArray1OfPersistent {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_clone(ptr),
+        )
+    }
+}
+
 impl HandleStdLPersistentHArray1OfPersistent {
     /// Dereference this Handle to access the underlying StdLPersistent_HArray1OfPersistent
     pub fn get(&self) -> &crate::ffi_types::StdLPersistent_HArray1OfPersistent {
@@ -1274,6 +1294,14 @@ pub use crate::ffi_types::HandleStdLPersistentHArray2OfPersistent;
 unsafe impl crate::CppDeletable for HandleStdLPersistentHArray2OfPersistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStdLPersistentHArray2OfPersistent {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_clone(ptr),
+        )
     }
 }
 

@@ -265,6 +265,12 @@ unsafe impl crate::CppDeletable for HandleCDMApplication {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleCDMApplication {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandleCDMApplication_clone(ptr))
+    }
+}
+
 impl HandleCDMApplication {
     /// Dereference this Handle to access the underlying CDM_Application
     pub fn get(&self) -> &crate::ffi_types::CDM_Application {
@@ -1272,6 +1278,12 @@ unsafe impl crate::CppDeletable for HandleCDMDocument {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleCDMDocument {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandleCDMDocument_clone(ptr))
+    }
+}
+
 impl HandleCDMDocument {
     /// Dereference this Handle to access the underlying CDM_Document
     pub fn get(&self) -> &crate::ffi_types::CDM_Document {
@@ -1610,6 +1622,12 @@ unsafe impl crate::CppDeletable for HandleCDMMetaData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleCDMMetaData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandleCDMMetaData_clone(ptr))
+    }
+}
+
 impl HandleCDMMetaData {
     /// Dereference this Handle to access the underlying CDM_MetaData
     pub fn get(&self) -> &crate::ffi_types::CDM_MetaData {
@@ -1817,6 +1835,12 @@ pub use crate::ffi_types::HandleCDMReference;
 unsafe impl crate::CppDeletable for HandleCDMReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCDF::HandleCDMReference_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleCDMReference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandleCDMReference_clone(ptr))
     }
 }
 

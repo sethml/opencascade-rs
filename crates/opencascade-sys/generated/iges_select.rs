@@ -254,6 +254,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectActivator {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectActivator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectActivator {
     /// Dereference this Handle to access the underlying IGESSelect_Activator
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_Activator {
@@ -681,6 +687,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectAddFileComment {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectAddFileComment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectAddFileComment {
     /// Dereference this Handle to access the underlying IGESSelect_AddFileComment
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_AddFileComment {
@@ -1104,6 +1116,12 @@ pub use crate::ffi_types::HandleIGESSelectAddGroup;
 unsafe impl crate::CppDeletable for HandleIGESSelectAddGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectAddGroup {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_clone(ptr))
     }
 }
 
@@ -1568,6 +1586,12 @@ pub use crate::ffi_types::HandleIGESSelectAutoCorrect;
 unsafe impl crate::CppDeletable for HandleIGESSelectAutoCorrect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectAutoCorrect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_clone(ptr))
     }
 }
 
@@ -2098,6 +2122,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectChangeLevelList {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectChangeLevelList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectChangeLevelList {
     /// Dereference this Handle to access the underlying IGESSelect_ChangeLevelList
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ChangeLevelList {
@@ -2595,6 +2625,14 @@ unsafe impl crate::CppDeletable for HandleIGESSelectChangeLevelNumber {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectChangeLevelNumber {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESSelectChangeLevelNumber {
     /// Dereference this Handle to access the underlying IGESSelect_ChangeLevelNumber
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ChangeLevelNumber {
@@ -3033,6 +3071,12 @@ pub use crate::ffi_types::HandleIGESSelectComputeStatus;
 unsafe impl crate::CppDeletable for HandleIGESSelectComputeStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectComputeStatus {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_clone(ptr))
     }
 }
 
@@ -3633,6 +3677,14 @@ unsafe impl crate::CppDeletable for HandleIGESSelectCounterOfLevelNumber {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectCounterOfLevelNumber {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESSelectCounterOfLevelNumber {
     /// Dereference this Handle to access the underlying IGESSelect_CounterOfLevelNumber
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_CounterOfLevelNumber {
@@ -4038,6 +4090,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectDispPerDrawing {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectDispPerDrawing {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectDispPerDrawing {
     /// Dereference this Handle to access the underlying IGESSelect_DispPerDrawing
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_DispPerDrawing {
@@ -4430,6 +4488,14 @@ unsafe impl crate::CppDeletable for HandleIGESSelectDispPerSingleView {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectDispPerSingleView {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESSelectDispPerSingleView {
     /// Dereference this Handle to access the underlying IGESSelect_DispPerSingleView
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_DispPerSingleView {
@@ -4694,6 +4760,12 @@ pub use crate::ffi_types::HandleIGESSelectDumper;
 unsafe impl crate::CppDeletable for HandleIGESSelectDumper {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectDumper {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_clone(ptr))
     }
 }
 
@@ -5184,6 +5256,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectEditDirPart {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectEditDirPart {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectEditDirPart {
     /// Dereference this Handle to access the underlying IGESSelect_EditDirPart
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_EditDirPart {
@@ -5667,6 +5745,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectEditHeader {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectEditHeader {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectEditHeader {
     /// Dereference this Handle to access the underlying IGESSelect_EditHeader
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_EditHeader {
@@ -5991,6 +6075,12 @@ pub use crate::ffi_types::HandleIGESSelectFileModifier;
 unsafe impl crate::CppDeletable for HandleIGESSelectFileModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectFileModifier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_clone(ptr))
     }
 }
 
@@ -6482,6 +6572,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectFloatFormat {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectFloatFormat {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectFloatFormat {
     /// Dereference this Handle to access the underlying IGESSelect_FloatFormat
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_FloatFormat {
@@ -6892,6 +6988,12 @@ pub use crate::ffi_types::HandleIGESSelectIGESName;
 unsafe impl crate::CppDeletable for HandleIGESSelectIGESName {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectIGESName {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_clone(ptr))
     }
 }
 
@@ -7352,6 +7454,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectIGESTypeForm {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectIGESTypeForm {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectIGESTypeForm {
     /// Dereference this Handle to access the underlying IGESSelect_IGESTypeForm
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_IGESTypeForm {
@@ -7763,6 +7871,12 @@ pub use crate::ffi_types::HandleIGESSelectModelModifier;
 unsafe impl crate::CppDeletable for HandleIGESSelectModelModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectModelModifier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_clone(ptr))
     }
 }
 
@@ -8424,6 +8538,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectRebuildDrawings {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectRebuildDrawings {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectRebuildDrawings {
     /// Dereference this Handle to access the underlying IGESSelect_RebuildDrawings
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_RebuildDrawings {
@@ -8860,6 +8980,12 @@ pub use crate::ffi_types::HandleIGESSelectRebuildGroups;
 unsafe impl crate::CppDeletable for HandleIGESSelectRebuildGroups {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectRebuildGroups {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_clone(ptr))
     }
 }
 
@@ -9305,6 +9431,12 @@ pub use crate::ffi_types::HandleIGESSelectRemoveCurves;
 unsafe impl crate::CppDeletable for HandleIGESSelectRemoveCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectRemoveCurves {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_clone(ptr))
     }
 }
 
@@ -9815,6 +9947,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectBasicGeom {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectBasicGeom {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectSelectBasicGeom {
     /// Dereference this Handle to access the underlying IGESSelect_SelectBasicGeom
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectBasicGeom {
@@ -10289,6 +10427,14 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectBypassGroup {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectBypassGroup {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESSelectSelectBypassGroup {
     /// Dereference this Handle to access the underlying IGESSelect_SelectBypassGroup
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectBypassGroup {
@@ -10748,6 +10894,14 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectBypassSubfigure {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectBypassSubfigure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_clone(ptr),
+        )
+    }
+}
+
 impl HandleIGESSelectSelectBypassSubfigure {
     /// Dereference this Handle to access the underlying IGESSelect_SelectBypassSubfigure
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectBypassSubfigure {
@@ -11149,6 +11303,14 @@ pub use crate::ffi_types::HandleIGESSelectSelectDrawingFrom;
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectDrawingFrom {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectDrawingFrom {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_clone(
+            ptr,
+        ))
     }
 }
 
@@ -11616,6 +11778,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectFaces {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectFaces {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectSelectFaces {
     /// Dereference this Handle to access the underlying IGESSelect_SelectFaces
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectFaces {
@@ -12025,6 +12193,14 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectFromDrawing {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectFromDrawing {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESSelectSelectFromDrawing {
     /// Dereference this Handle to access the underlying IGESSelect_SelectFromDrawing
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectFromDrawing {
@@ -12401,6 +12577,14 @@ pub use crate::ffi_types::HandleIGESSelectSelectFromSingleView;
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectFromSingleView {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectFromSingleView {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_clone(
+            ptr,
+        ))
     }
 }
 
@@ -12913,6 +13097,14 @@ pub use crate::ffi_types::HandleIGESSelectSelectLevelNumber;
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectLevelNumber {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_clone(
+            ptr,
+        ))
     }
 }
 
@@ -13430,6 +13622,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectName {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectName {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectSelectName {
     /// Dereference this Handle to access the underlying IGESSelect_SelectName
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectName {
@@ -13909,6 +14107,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectPCurves {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectPCurves {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectSelectPCurves {
     /// Dereference this Handle to access the underlying IGESSelect_SelectPCurves
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectPCurves {
@@ -14291,6 +14495,14 @@ pub use crate::ffi_types::HandleIGESSelectSelectSingleViewFrom;
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectSingleViewFrom {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectSingleViewFrom {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_clone(
+            ptr,
+        ))
     }
 }
 
@@ -14790,6 +15002,14 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectSubordinate {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectSubordinate {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESSelectSelectSubordinate {
     /// Dereference this Handle to access the underlying IGESSelect_SelectSubordinate
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectSubordinate {
@@ -15267,6 +15487,14 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectVisibleStatus {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSelectVisibleStatus {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESSelectSelectVisibleStatus {
     /// Dereference this Handle to access the underlying IGESSelect_SelectVisibleStatus
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectVisibleStatus {
@@ -15741,6 +15969,14 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSetGlobalParameter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSetGlobalParameter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESSelectSetGlobalParameter {
     /// Dereference this Handle to access the underlying IGESSelect_SetGlobalParameter
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SetGlobalParameter {
@@ -16179,6 +16415,12 @@ pub use crate::ffi_types::HandleIGESSelectSetLabel;
 unsafe impl crate::CppDeletable for HandleIGESSelectSetLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectSetLabel {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_clone(ptr))
     }
 }
 
@@ -16631,6 +16873,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSetVersion5 {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSetVersion5 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectSetVersion5 {
     /// Dereference this Handle to access the underlying IGESSelect_SetVersion5
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SetVersion5 {
@@ -17060,6 +17308,12 @@ pub use crate::ffi_types::HandleIGESSelectSignColor;
 unsafe impl crate::CppDeletable for HandleIGESSelectSignColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectSignColor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_clone(ptr))
     }
 }
 
@@ -17504,6 +17758,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSignLevelNumber {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSignLevelNumber {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectSignLevelNumber {
     /// Dereference this Handle to access the underlying IGESSelect_SignLevelNumber
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SignLevelNumber {
@@ -17932,6 +18192,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSignStatus {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectSignStatus {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectSignStatus {
     /// Dereference this Handle to access the underlying IGESSelect_SignStatus
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SignStatus {
@@ -18282,6 +18548,12 @@ pub use crate::ffi_types::HandleIGESSelectSplineToBSpline;
 unsafe impl crate::CppDeletable for HandleIGESSelectSplineToBSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectSplineToBSpline {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_clone(ptr))
     }
 }
 
@@ -18695,6 +18967,14 @@ pub use crate::ffi_types::HandleIGESSelectUpdateCreationDate;
 unsafe impl crate::CppDeletable for HandleIGESSelectUpdateCreationDate {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectUpdateCreationDate {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_clone(
+            ptr,
+        ))
     }
 }
 
@@ -19137,6 +19417,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectUpdateFileName {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectUpdateFileName {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectUpdateFileName {
     /// Dereference this Handle to access the underlying IGESSelect_UpdateFileName
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_UpdateFileName {
@@ -19575,6 +19861,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectUpdateLastChange {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectUpdateLastChange {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectUpdateLastChange {
     /// Dereference this Handle to access the underlying IGESSelect_UpdateLastChange
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_UpdateLastChange {
@@ -19946,6 +20238,12 @@ unsafe impl crate::CppDeletable for HandleIGESSelectViewSorter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESSelectViewSorter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_clone(ptr))
+    }
+}
+
 impl HandleIGESSelectViewSorter {
     /// Dereference this Handle to access the underlying IGESSelect_ViewSorter
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ViewSorter {
@@ -20279,6 +20577,12 @@ pub use crate::ffi_types::HandleIGESSelectWorkLibrary;
 unsafe impl crate::CppDeletable for HandleIGESSelectWorkLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESSelectWorkLibrary {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_clone(ptr))
     }
 }
 

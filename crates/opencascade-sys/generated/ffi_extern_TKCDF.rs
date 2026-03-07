@@ -141,6 +141,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<CDF_Application>
     pub fn HandleCDFApplication_destructor(self_: *mut HandleCDFApplication);
+    /// Clone Handle<CDF_Application> (increments reference count)
+    pub fn HandleCDFApplication_clone(
+        self_: *const HandleCDFApplication,
+    ) -> crate::OcctResult<*mut HandleCDFApplication>;
     /// Dereference Handle to get *const CDF_Application
     pub fn HandleCDFApplication_get(
         handle: *const HandleCDFApplication,
@@ -288,6 +292,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleCDFDirectory>;
     /// Destroy Handle<CDF_Directory>
     pub fn HandleCDFDirectory_destructor(self_: *mut HandleCDFDirectory);
+    /// Clone Handle<CDF_Directory> (increments reference count)
+    pub fn HandleCDFDirectory_clone(
+        self_: *const HandleCDFDirectory,
+    ) -> crate::OcctResult<*mut HandleCDFDirectory>;
     /// Dereference Handle to get *const CDF_Directory
     pub fn HandleCDFDirectory_get(
         handle: *const HandleCDFDirectory,
@@ -418,6 +426,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleCDFFWOSDriver>;
     /// Destroy Handle<CDF_FWOSDriver>
     pub fn HandleCDFFWOSDriver_destructor(self_: *mut HandleCDFFWOSDriver);
+    /// Clone Handle<CDF_FWOSDriver> (increments reference count)
+    pub fn HandleCDFFWOSDriver_clone(
+        self_: *const HandleCDFFWOSDriver,
+    ) -> crate::OcctResult<*mut HandleCDFFWOSDriver>;
     /// Dereference Handle to get *const CDF_FWOSDriver
     pub fn HandleCDFFWOSDriver_get(
         handle: *const HandleCDFFWOSDriver,
@@ -610,6 +622,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<CDF_MetaDataDriver>
     pub fn HandleCDFMetaDataDriver_destructor(self_: *mut HandleCDFMetaDataDriver);
+    /// Clone Handle<CDF_MetaDataDriver> (increments reference count)
+    pub fn HandleCDFMetaDataDriver_clone(
+        self_: *const HandleCDFMetaDataDriver,
+    ) -> crate::OcctResult<*mut HandleCDFMetaDataDriver>;
     /// Dereference Handle to get *const CDF_MetaDataDriver
     pub fn HandleCDFMetaDataDriver_get(
         handle: *const HandleCDFMetaDataDriver,
@@ -681,6 +697,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<CDF_MetaDataDriverFactory>
     pub fn HandleCDFMetaDataDriverFactory_destructor(self_: *mut HandleCDFMetaDataDriverFactory);
+    /// Clone Handle<CDF_MetaDataDriverFactory> (increments reference count)
+    pub fn HandleCDFMetaDataDriverFactory_clone(
+        self_: *const HandleCDFMetaDataDriverFactory,
+    ) -> crate::OcctResult<*mut HandleCDFMetaDataDriverFactory>;
     /// Dereference Handle to get *const CDF_MetaDataDriverFactory
     pub fn HandleCDFMetaDataDriverFactory_get(
         handle: *const HandleCDFMetaDataDriverFactory,
@@ -864,6 +884,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleCDFStoreList>;
     /// Destroy Handle<CDF_StoreList>
     pub fn HandleCDFStoreList_destructor(self_: *mut HandleCDFStoreList);
+    /// Clone Handle<CDF_StoreList> (increments reference count)
+    pub fn HandleCDFStoreList_clone(
+        self_: *const HandleCDFStoreList,
+    ) -> crate::OcctResult<*mut HandleCDFStoreList>;
     /// Dereference Handle to get *const CDF_StoreList
     pub fn HandleCDFStoreList_get(
         handle: *const HandleCDFStoreList,
@@ -961,6 +985,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<CDM_Application>
     pub fn HandleCDMApplication_destructor(self_: *mut HandleCDMApplication);
+    /// Clone Handle<CDM_Application> (increments reference count)
+    pub fn HandleCDMApplication_clone(
+        self_: *const HandleCDMApplication,
+    ) -> crate::OcctResult<*mut HandleCDMApplication>;
     /// Dereference Handle to get *const CDM_Application
     pub fn HandleCDMApplication_get(
         handle: *const HandleCDMApplication,
@@ -1336,6 +1364,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<CDM_Document>
     pub fn HandleCDMDocument_destructor(self_: *mut HandleCDMDocument);
+    /// Clone Handle<CDM_Document> (increments reference count)
+    pub fn HandleCDMDocument_clone(
+        self_: *const HandleCDMDocument,
+    ) -> crate::OcctResult<*mut HandleCDMDocument>;
     /// Dereference Handle to get *const CDM_Document
     pub fn HandleCDMDocument_get(
         handle: *const HandleCDMDocument,
@@ -1436,6 +1468,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleCDMMetaData>;
     /// Destroy Handle<CDM_MetaData>
     pub fn HandleCDMMetaData_destructor(self_: *mut HandleCDMMetaData);
+    /// Clone Handle<CDM_MetaData> (increments reference count)
+    pub fn HandleCDMMetaData_clone(
+        self_: *const HandleCDMMetaData,
+    ) -> crate::OcctResult<*mut HandleCDMMetaData>;
     /// Dereference Handle to get *const CDM_MetaData
     pub fn HandleCDMMetaData_get(
         handle: *const HandleCDMMetaData,
@@ -1513,6 +1549,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleCDMReference>;
     /// Destroy Handle<CDM_Reference>
     pub fn HandleCDMReference_destructor(self_: *mut HandleCDMReference);
+    /// Clone Handle<CDM_Reference> (increments reference count)
+    pub fn HandleCDMReference_clone(
+        self_: *const HandleCDMReference,
+    ) -> crate::OcctResult<*mut HandleCDMReference>;
     /// Dereference Handle to get *const CDM_Reference
     pub fn HandleCDMReference_get(
         handle: *const HandleCDMReference,
@@ -1596,7 +1636,7 @@ extern "C" {
     /// Upcast LDOM_Attr to LDOM_Node (mutable)
     pub fn LDOM_Attr_as_LDOM_Node_mut(self_: *mut LDOM_Attr) -> crate::OcctResult<*mut LDOM_Node>;
     /// Clone via copy constructor
-    pub fn LDOM_Attr_to_owned(self_: *const LDOM_Attr) -> crate::OcctResult<*mut LDOM_Attr>;
+    pub fn LDOM_Attr_clone(self_: *const LDOM_Attr) -> crate::OcctResult<*mut LDOM_Attr>;
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
     pub fn LDOM_Attr_inherited_getOwnerDocument(
         self_: *const LDOM_Attr,
@@ -1801,7 +1841,7 @@ extern "C" {
         self_: *mut LDOM_CDATASection,
     ) -> crate::OcctResult<*mut LDOM_Node>;
     /// Clone via copy constructor
-    pub fn LDOM_CDATASection_to_owned(
+    pub fn LDOM_CDATASection_clone(
         self_: *const LDOM_CDATASection,
     ) -> crate::OcctResult<*mut LDOM_CDATASection>;
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
@@ -1908,7 +1948,7 @@ extern "C" {
         self_: *mut LDOM_CharacterData,
     ) -> crate::OcctResult<*mut LDOM_Node>;
     /// Clone via copy constructor
-    pub fn LDOM_CharacterData_to_owned(
+    pub fn LDOM_CharacterData_clone(
         self_: *const LDOM_CharacterData,
     ) -> crate::OcctResult<*mut LDOM_CharacterData>;
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
@@ -1982,9 +2022,7 @@ extern "C" {
         self_: *mut LDOM_Comment,
     ) -> crate::OcctResult<*mut LDOM_Node>;
     /// Clone via copy constructor
-    pub fn LDOM_Comment_to_owned(
-        self_: *const LDOM_Comment,
-    ) -> crate::OcctResult<*mut LDOM_Comment>;
+    pub fn LDOM_Comment_clone(self_: *const LDOM_Comment) -> crate::OcctResult<*mut LDOM_Comment>;
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
     pub fn LDOM_Comment_inherited_getData(
         self_: *const LDOM_Comment,
@@ -2157,9 +2195,7 @@ extern "C" {
         self_: *mut LDOM_Element,
     ) -> crate::OcctResult<*mut LDOM_Node>;
     /// Clone via copy constructor
-    pub fn LDOM_Element_to_owned(
-        self_: *const LDOM_Element,
-    ) -> crate::OcctResult<*mut LDOM_Element>;
+    pub fn LDOM_Element_clone(self_: *const LDOM_Element) -> crate::OcctResult<*mut LDOM_Element>;
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
     pub fn LDOM_Element_inherited_getOwnerDocument(
         self_: *const LDOM_Element,
@@ -2282,6 +2318,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleLDOMMemManager>;
     /// Destroy Handle<LDOM_MemManager>
     pub fn HandleLDOMMemManager_destructor(self_: *mut HandleLDOMMemManager);
+    /// Clone Handle<LDOM_MemManager> (increments reference count)
+    pub fn HandleLDOMMemManager_clone(
+        self_: *const HandleLDOMMemManager,
+    ) -> crate::OcctResult<*mut HandleLDOMMemManager>;
     /// Dereference Handle to get *const LDOM_MemManager
     pub fn HandleLDOMMemManager_get(
         handle: *const HandleLDOMMemManager,
@@ -2364,7 +2404,7 @@ extern "C" {
     /// **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn LDOM_Node_set_value_clear(self_: *const LDOM_Node) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn LDOM_Node_to_owned(self_: *const LDOM_Node) -> crate::OcctResult<*mut LDOM_Node>;
+    pub fn LDOM_Node_clone(self_: *const LDOM_Node) -> crate::OcctResult<*mut LDOM_Node>;
     // ======================== LDOM_NodeList ========================
     pub fn LDOM_NodeList_destructor(self_: *mut LDOM_NodeList);
     /// **Source:** `LDOM_NodeList.hxx`:32 - `LDOM_NodeList::LDOM_NodeList()`
@@ -2377,7 +2417,7 @@ extern "C" {
     /// **Source:** `LDOM_NodeList.hxx`:53 - `LDOM_NodeList::getLength()`
     pub fn LDOM_NodeList_get_length(self_: *const LDOM_NodeList) -> crate::OcctResult<i32>;
     /// Clone via copy constructor
-    pub fn LDOM_NodeList_to_owned(
+    pub fn LDOM_NodeList_clone(
         self_: *const LDOM_NodeList,
     ) -> crate::OcctResult<*mut LDOM_NodeList>;
     // ======================== LDOM_SBuffer ========================
@@ -2433,7 +2473,7 @@ extern "C" {
     /// Upcast LDOM_Text to LDOM_Node (mutable)
     pub fn LDOM_Text_as_LDOM_Node_mut(self_: *mut LDOM_Text) -> crate::OcctResult<*mut LDOM_Node>;
     /// Clone via copy constructor
-    pub fn LDOM_Text_to_owned(self_: *const LDOM_Text) -> crate::OcctResult<*mut LDOM_Text>;
+    pub fn LDOM_Text_clone(self_: *const LDOM_Text) -> crate::OcctResult<*mut LDOM_Text>;
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
     pub fn LDOM_Text_inherited_getData(
         self_: *const LDOM_Text,
@@ -2607,6 +2647,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePCDMDocument>;
     /// Destroy Handle<PCDM_Document>
     pub fn HandlePCDMDocument_destructor(self_: *mut HandlePCDMDocument);
+    /// Clone Handle<PCDM_Document> (increments reference count)
+    pub fn HandlePCDMDocument_clone(
+        self_: *const HandlePCDMDocument,
+    ) -> crate::OcctResult<*mut HandlePCDMDocument>;
     /// Dereference Handle to get *const PCDM_Document
     pub fn HandlePCDMDocument_get(
         handle: *const HandlePCDMDocument,
@@ -2715,6 +2759,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePCDMDriverError>;
     /// Destroy Handle<PCDM_DriverError>
     pub fn HandlePCDMDriverError_destructor(self_: *mut HandlePCDMDriverError);
+    /// Clone Handle<PCDM_DriverError> (increments reference count)
+    pub fn HandlePCDMDriverError_clone(
+        self_: *const HandlePCDMDriverError,
+    ) -> crate::OcctResult<*mut HandlePCDMDriverError>;
     /// Dereference Handle to get *const PCDM_DriverError
     pub fn HandlePCDMDriverError_get(
         handle: *const HandlePCDMDriverError,
@@ -2874,6 +2922,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PCDM_ReadWriter>
     pub fn HandlePCDMReadWriter_destructor(self_: *mut HandlePCDMReadWriter);
+    /// Clone Handle<PCDM_ReadWriter> (increments reference count)
+    pub fn HandlePCDMReadWriter_clone(
+        self_: *const HandlePCDMReadWriter,
+    ) -> crate::OcctResult<*mut HandlePCDMReadWriter>;
     /// Dereference Handle to get *const PCDM_ReadWriter
     pub fn HandlePCDMReadWriter_get(
         handle: *const HandlePCDMReadWriter,
@@ -3009,6 +3061,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePCDMReadWriter1>;
     /// Destroy Handle<PCDM_ReadWriter_1>
     pub fn HandlePCDMReadWriter1_destructor(self_: *mut HandlePCDMReadWriter1);
+    /// Clone Handle<PCDM_ReadWriter_1> (increments reference count)
+    pub fn HandlePCDMReadWriter1_clone(
+        self_: *const HandlePCDMReadWriter1,
+    ) -> crate::OcctResult<*mut HandlePCDMReadWriter1>;
     /// Dereference Handle to get *const PCDM_ReadWriter_1
     pub fn HandlePCDMReadWriter1_get(
         handle: *const HandlePCDMReadWriter1,
@@ -3096,6 +3152,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PCDM_Reader>
     pub fn HandlePCDMReader_destructor(self_: *mut HandlePCDMReader);
+    /// Clone Handle<PCDM_Reader> (increments reference count)
+    pub fn HandlePCDMReader_clone(
+        self_: *const HandlePCDMReader,
+    ) -> crate::OcctResult<*mut HandlePCDMReader>;
     /// Dereference Handle to get *const PCDM_Reader
     pub fn HandlePCDMReader_get(
         handle: *const HandlePCDMReader,
@@ -3291,6 +3351,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePCDMReaderFilter>;
     /// Destroy Handle<PCDM_ReaderFilter>
     pub fn HandlePCDMReaderFilter_destructor(self_: *mut HandlePCDMReaderFilter);
+    /// Clone Handle<PCDM_ReaderFilter> (increments reference count)
+    pub fn HandlePCDMReaderFilter_clone(
+        self_: *const HandlePCDMReaderFilter,
+    ) -> crate::OcctResult<*mut HandlePCDMReaderFilter>;
     /// Dereference Handle to get *const PCDM_ReaderFilter
     pub fn HandlePCDMReaderFilter_get(
         handle: *const HandlePCDMReaderFilter,
@@ -3395,6 +3459,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePCDMReferenceIterator>;
     /// Destroy Handle<PCDM_ReferenceIterator>
     pub fn HandlePCDMReferenceIterator_destructor(self_: *mut HandlePCDMReferenceIterator);
+    /// Clone Handle<PCDM_ReferenceIterator> (increments reference count)
+    pub fn HandlePCDMReferenceIterator_clone(
+        self_: *const HandlePCDMReferenceIterator,
+    ) -> crate::OcctResult<*mut HandlePCDMReferenceIterator>;
     /// Dereference Handle to get *const PCDM_ReferenceIterator
     pub fn HandlePCDMReferenceIterator_get(
         handle: *const HandlePCDMReferenceIterator,
@@ -3484,6 +3552,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PCDM_RetrievalDriver>
     pub fn HandlePCDMRetrievalDriver_destructor(self_: *mut HandlePCDMRetrievalDriver);
+    /// Clone Handle<PCDM_RetrievalDriver> (increments reference count)
+    pub fn HandlePCDMRetrievalDriver_clone(
+        self_: *const HandlePCDMRetrievalDriver,
+    ) -> crate::OcctResult<*mut HandlePCDMRetrievalDriver>;
     /// Dereference Handle to get *const PCDM_RetrievalDriver
     pub fn HandlePCDMRetrievalDriver_get(
         handle: *const HandlePCDMRetrievalDriver,
@@ -3668,6 +3740,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandlePCDMStorageDriver>;
     /// Destroy Handle<PCDM_StorageDriver>
     pub fn HandlePCDMStorageDriver_destructor(self_: *mut HandlePCDMStorageDriver);
+    /// Clone Handle<PCDM_StorageDriver> (increments reference count)
+    pub fn HandlePCDMStorageDriver_clone(
+        self_: *const HandlePCDMStorageDriver,
+    ) -> crate::OcctResult<*mut HandlePCDMStorageDriver>;
     /// Dereference Handle to get *const PCDM_StorageDriver
     pub fn HandlePCDMStorageDriver_get(
         handle: *const HandlePCDMStorageDriver,
@@ -3780,6 +3856,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PCDM_Writer>
     pub fn HandlePCDMWriter_destructor(self_: *mut HandlePCDMWriter);
+    /// Clone Handle<PCDM_Writer> (increments reference count)
+    pub fn HandlePCDMWriter_clone(
+        self_: *const HandlePCDMWriter,
+    ) -> crate::OcctResult<*mut HandlePCDMWriter>;
     /// Dereference Handle to get *const PCDM_Writer
     pub fn HandlePCDMWriter_get(
         handle: *const HandlePCDMWriter,

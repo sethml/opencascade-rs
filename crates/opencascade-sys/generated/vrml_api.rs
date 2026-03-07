@@ -521,6 +521,12 @@ unsafe impl crate::CppDeletable for HandleVrmlAPICafReader {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleVrmlAPICafReader {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_clone(ptr))
+    }
+}
+
 impl HandleVrmlAPICafReader {
     /// Dereference this Handle to access the underlying VrmlAPI_CafReader
     pub fn get(&self) -> &crate::ffi_types::VrmlAPI_CafReader {

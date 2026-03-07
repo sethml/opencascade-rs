@@ -1319,6 +1319,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectAct>;
     /// Destroy Handle<IFSelect_Act>
     pub fn HandleIFSelectAct_destructor(self_: *mut HandleIFSelectAct);
+    /// Clone Handle<IFSelect_Act> (increments reference count)
+    pub fn HandleIFSelectAct_clone(
+        self_: *const HandleIFSelectAct,
+    ) -> crate::OcctResult<*mut HandleIFSelectAct>;
     /// Dereference Handle to get *const IFSelect_Act
     pub fn HandleIFSelectAct_get(
         handle: *const HandleIFSelectAct,
@@ -1441,6 +1445,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_Activator>
     pub fn HandleIFSelectActivator_destructor(self_: *mut HandleIFSelectActivator);
+    /// Clone Handle<IFSelect_Activator> (increments reference count)
+    pub fn HandleIFSelectActivator_clone(
+        self_: *const HandleIFSelectActivator,
+    ) -> crate::OcctResult<*mut HandleIFSelectActivator>;
     /// Dereference Handle to get *const IFSelect_Activator
     pub fn HandleIFSelectActivator_get(
         handle: *const HandleIFSelectActivator,
@@ -1563,6 +1571,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectAppliedModifiers>;
     /// Destroy Handle<IFSelect_AppliedModifiers>
     pub fn HandleIFSelectAppliedModifiers_destructor(self_: *mut HandleIFSelectAppliedModifiers);
+    /// Clone Handle<IFSelect_AppliedModifiers> (increments reference count)
+    pub fn HandleIFSelectAppliedModifiers_clone(
+        self_: *const HandleIFSelectAppliedModifiers,
+    ) -> crate::OcctResult<*mut HandleIFSelectAppliedModifiers>;
     /// Dereference Handle to get *const IFSelect_AppliedModifiers
     pub fn HandleIFSelectAppliedModifiers_get(
         handle: *const HandleIFSelectAppliedModifiers,
@@ -1652,6 +1664,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectBasicDumper>;
     /// Destroy Handle<IFSelect_BasicDumper>
     pub fn HandleIFSelectBasicDumper_destructor(self_: *mut HandleIFSelectBasicDumper);
+    /// Clone Handle<IFSelect_BasicDumper> (increments reference count)
+    pub fn HandleIFSelectBasicDumper_clone(
+        self_: *const HandleIFSelectBasicDumper,
+    ) -> crate::OcctResult<*mut HandleIFSelectBasicDumper>;
     /// Dereference Handle to get *const IFSelect_BasicDumper
     pub fn HandleIFSelectBasicDumper_get(
         handle: *const HandleIFSelectBasicDumper,
@@ -1756,6 +1772,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectCheckCounter>;
     /// Destroy Handle<IFSelect_CheckCounter>
     pub fn HandleIFSelectCheckCounter_destructor(self_: *mut HandleIFSelectCheckCounter);
+    /// Clone Handle<IFSelect_CheckCounter> (increments reference count)
+    pub fn HandleIFSelectCheckCounter_clone(
+        self_: *const HandleIFSelectCheckCounter,
+    ) -> crate::OcctResult<*mut HandleIFSelectCheckCounter>;
     /// Dereference Handle to get *const IFSelect_CheckCounter
     pub fn HandleIFSelectCheckCounter_get(
         handle: *const HandleIFSelectCheckCounter,
@@ -2144,6 +2164,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectDispGlobal>;
     /// Destroy Handle<IFSelect_DispGlobal>
     pub fn HandleIFSelectDispGlobal_destructor(self_: *mut HandleIFSelectDispGlobal);
+    /// Clone Handle<IFSelect_DispGlobal> (increments reference count)
+    pub fn HandleIFSelectDispGlobal_clone(
+        self_: *const HandleIFSelectDispGlobal,
+    ) -> crate::OcctResult<*mut HandleIFSelectDispGlobal>;
     /// Dereference Handle to get *const IFSelect_DispGlobal
     pub fn HandleIFSelectDispGlobal_get(
         handle: *const HandleIFSelectDispGlobal,
@@ -2299,6 +2323,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectDispPerCount>;
     /// Destroy Handle<IFSelect_DispPerCount>
     pub fn HandleIFSelectDispPerCount_destructor(self_: *mut HandleIFSelectDispPerCount);
+    /// Clone Handle<IFSelect_DispPerCount> (increments reference count)
+    pub fn HandleIFSelectDispPerCount_clone(
+        self_: *const HandleIFSelectDispPerCount,
+    ) -> crate::OcctResult<*mut HandleIFSelectDispPerCount>;
     /// Dereference Handle to get *const IFSelect_DispPerCount
     pub fn HandleIFSelectDispPerCount_get(
         handle: *const HandleIFSelectDispPerCount,
@@ -2454,6 +2482,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectDispPerFiles>;
     /// Destroy Handle<IFSelect_DispPerFiles>
     pub fn HandleIFSelectDispPerFiles_destructor(self_: *mut HandleIFSelectDispPerFiles);
+    /// Clone Handle<IFSelect_DispPerFiles> (increments reference count)
+    pub fn HandleIFSelectDispPerFiles_clone(
+        self_: *const HandleIFSelectDispPerFiles,
+    ) -> crate::OcctResult<*mut HandleIFSelectDispPerFiles>;
     /// Dereference Handle to get *const IFSelect_DispPerFiles
     pub fn HandleIFSelectDispPerFiles_get(
         handle: *const HandleIFSelectDispPerFiles,
@@ -2595,6 +2627,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectDispPerOne>;
     /// Destroy Handle<IFSelect_DispPerOne>
     pub fn HandleIFSelectDispPerOne_destructor(self_: *mut HandleIFSelectDispPerOne);
+    /// Clone Handle<IFSelect_DispPerOne> (increments reference count)
+    pub fn HandleIFSelectDispPerOne_clone(
+        self_: *const HandleIFSelectDispPerOne,
+    ) -> crate::OcctResult<*mut HandleIFSelectDispPerOne>;
     /// Dereference Handle to get *const IFSelect_DispPerOne
     pub fn HandleIFSelectDispPerOne_get(
         handle: *const HandleIFSelectDispPerOne,
@@ -2750,6 +2786,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectDispPerSignature>;
     /// Destroy Handle<IFSelect_DispPerSignature>
     pub fn HandleIFSelectDispPerSignature_destructor(self_: *mut HandleIFSelectDispPerSignature);
+    /// Clone Handle<IFSelect_DispPerSignature> (increments reference count)
+    pub fn HandleIFSelectDispPerSignature_clone(
+        self_: *const HandleIFSelectDispPerSignature,
+    ) -> crate::OcctResult<*mut HandleIFSelectDispPerSignature>;
     /// Dereference Handle to get *const IFSelect_DispPerSignature
     pub fn HandleIFSelectDispPerSignature_get(
         handle: *const HandleIFSelectDispPerSignature,
@@ -2922,6 +2962,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_Dispatch>
     pub fn HandleIFSelectDispatch_destructor(self_: *mut HandleIFSelectDispatch);
+    /// Clone Handle<IFSelect_Dispatch> (increments reference count)
+    pub fn HandleIFSelectDispatch_clone(
+        self_: *const HandleIFSelectDispatch,
+    ) -> crate::OcctResult<*mut HandleIFSelectDispatch>;
     /// Dereference Handle to get *const IFSelect_Dispatch
     pub fn HandleIFSelectDispatch_get(
         handle: *const HandleIFSelectDispatch,
@@ -3233,6 +3277,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectEditForm>;
     /// Destroy Handle<IFSelect_EditForm>
     pub fn HandleIFSelectEditForm_destructor(self_: *mut HandleIFSelectEditForm);
+    /// Clone Handle<IFSelect_EditForm> (increments reference count)
+    pub fn HandleIFSelectEditForm_clone(
+        self_: *const HandleIFSelectEditForm,
+    ) -> crate::OcctResult<*mut HandleIFSelectEditForm>;
     /// Dereference Handle to get *const IFSelect_EditForm
     pub fn HandleIFSelectEditForm_get(
         handle: *const HandleIFSelectEditForm,
@@ -3420,6 +3468,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_Editor>
     pub fn HandleIFSelectEditor_destructor(self_: *mut HandleIFSelectEditor);
+    /// Clone Handle<IFSelect_Editor> (increments reference count)
+    pub fn HandleIFSelectEditor_clone(
+        self_: *const HandleIFSelectEditor,
+    ) -> crate::OcctResult<*mut HandleIFSelectEditor>;
     /// Dereference Handle to get *const IFSelect_Editor
     pub fn HandleIFSelectEditor_get(
         handle: *const HandleIFSelectEditor,
@@ -3574,6 +3626,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_GeneralModifier>
     pub fn HandleIFSelectGeneralModifier_destructor(self_: *mut HandleIFSelectGeneralModifier);
+    /// Clone Handle<IFSelect_GeneralModifier> (increments reference count)
+    pub fn HandleIFSelectGeneralModifier_clone(
+        self_: *const HandleIFSelectGeneralModifier,
+    ) -> crate::OcctResult<*mut HandleIFSelectGeneralModifier>;
     /// Dereference Handle to get *const IFSelect_GeneralModifier
     pub fn HandleIFSelectGeneralModifier_get(
         handle: *const HandleIFSelectGeneralModifier,
@@ -3753,6 +3809,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectGraphCounter>;
     /// Destroy Handle<IFSelect_GraphCounter>
     pub fn HandleIFSelectGraphCounter_destructor(self_: *mut HandleIFSelectGraphCounter);
+    /// Clone Handle<IFSelect_GraphCounter> (increments reference count)
+    pub fn HandleIFSelectGraphCounter_clone(
+        self_: *const HandleIFSelectGraphCounter,
+    ) -> crate::OcctResult<*mut HandleIFSelectGraphCounter>;
     /// Dereference Handle to get *const IFSelect_GraphCounter
     pub fn HandleIFSelectGraphCounter_get(
         handle: *const HandleIFSelectGraphCounter,
@@ -3958,6 +4018,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectHSeqOfSelection>;
     /// Destroy Handle<IFSelect_HSeqOfSelection>
     pub fn HandleIFSelectHSeqOfSelection_destructor(self_: *mut HandleIFSelectHSeqOfSelection);
+    /// Clone Handle<IFSelect_HSeqOfSelection> (increments reference count)
+    pub fn HandleIFSelectHSeqOfSelection_clone(
+        self_: *const HandleIFSelectHSeqOfSelection,
+    ) -> crate::OcctResult<*mut HandleIFSelectHSeqOfSelection>;
     /// Dereference Handle to get *const IFSelect_HSeqOfSelection
     pub fn HandleIFSelectHSeqOfSelection_get(
         handle: *const HandleIFSelectHSeqOfSelection,
@@ -4042,6 +4106,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectIntParam>;
     /// Destroy Handle<IFSelect_IntParam>
     pub fn HandleIFSelectIntParam_destructor(self_: *mut HandleIFSelectIntParam);
+    /// Clone Handle<IFSelect_IntParam> (increments reference count)
+    pub fn HandleIFSelectIntParam_clone(
+        self_: *const HandleIFSelectIntParam,
+    ) -> crate::OcctResult<*mut HandleIFSelectIntParam>;
     /// Dereference Handle to get *const IFSelect_IntParam
     pub fn HandleIFSelectIntParam_get(
         handle: *const HandleIFSelectIntParam,
@@ -4194,6 +4262,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectListEditor>;
     /// Destroy Handle<IFSelect_ListEditor>
     pub fn HandleIFSelectListEditor_destructor(self_: *mut HandleIFSelectListEditor);
+    /// Clone Handle<IFSelect_ListEditor> (increments reference count)
+    pub fn HandleIFSelectListEditor_clone(
+        self_: *const HandleIFSelectListEditor,
+    ) -> crate::OcctResult<*mut HandleIFSelectListEditor>;
     /// Dereference Handle to get *const IFSelect_ListEditor
     pub fn HandleIFSelectListEditor_get(
         handle: *const HandleIFSelectListEditor,
@@ -4383,6 +4455,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectModelCopier>;
     /// Destroy Handle<IFSelect_ModelCopier>
     pub fn HandleIFSelectModelCopier_destructor(self_: *mut HandleIFSelectModelCopier);
+    /// Clone Handle<IFSelect_ModelCopier> (increments reference count)
+    pub fn HandleIFSelectModelCopier_clone(
+        self_: *const HandleIFSelectModelCopier,
+    ) -> crate::OcctResult<*mut HandleIFSelectModelCopier>;
     /// Dereference Handle to get *const IFSelect_ModelCopier
     pub fn HandleIFSelectModelCopier_get(
         handle: *const HandleIFSelectModelCopier,
@@ -4486,6 +4562,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectModifEditForm>;
     /// Destroy Handle<IFSelect_ModifEditForm>
     pub fn HandleIFSelectModifEditForm_destructor(self_: *mut HandleIFSelectModifEditForm);
+    /// Clone Handle<IFSelect_ModifEditForm> (increments reference count)
+    pub fn HandleIFSelectModifEditForm_clone(
+        self_: *const HandleIFSelectModifEditForm,
+    ) -> crate::OcctResult<*mut HandleIFSelectModifEditForm>;
     /// Dereference Handle to get *const IFSelect_ModifEditForm
     pub fn HandleIFSelectModifEditForm_get(
         handle: *const HandleIFSelectModifEditForm,
@@ -4628,6 +4708,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectModifReorder>;
     /// Destroy Handle<IFSelect_ModifReorder>
     pub fn HandleIFSelectModifReorder_destructor(self_: *mut HandleIFSelectModifReorder);
+    /// Clone Handle<IFSelect_ModifReorder> (increments reference count)
+    pub fn HandleIFSelectModifReorder_clone(
+        self_: *const HandleIFSelectModifReorder,
+    ) -> crate::OcctResult<*mut HandleIFSelectModifReorder>;
     /// Dereference Handle to get *const IFSelect_ModifReorder
     pub fn HandleIFSelectModifReorder_get(
         handle: *const HandleIFSelectModifReorder,
@@ -4749,6 +4833,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_Modifier>
     pub fn HandleIFSelectModifier_destructor(self_: *mut HandleIFSelectModifier);
+    /// Clone Handle<IFSelect_Modifier> (increments reference count)
+    pub fn HandleIFSelectModifier_clone(
+        self_: *const HandleIFSelectModifier,
+    ) -> crate::OcctResult<*mut HandleIFSelectModifier>;
     /// Dereference Handle to get *const IFSelect_Modifier
     pub fn HandleIFSelectModifier_get(
         handle: *const HandleIFSelectModifier,
@@ -4983,6 +5071,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectPacketList>;
     /// Destroy Handle<IFSelect_PacketList>
     pub fn HandleIFSelectPacketList_destructor(self_: *mut HandleIFSelectPacketList);
+    /// Clone Handle<IFSelect_PacketList> (increments reference count)
+    pub fn HandleIFSelectPacketList_clone(
+        self_: *const HandleIFSelectPacketList,
+    ) -> crate::OcctResult<*mut HandleIFSelectPacketList>;
     /// Dereference Handle to get *const IFSelect_PacketList
     pub fn HandleIFSelectPacketList_get(
         handle: *const HandleIFSelectPacketList,
@@ -5109,6 +5201,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectParamEditor>;
     /// Destroy Handle<IFSelect_ParamEditor>
     pub fn HandleIFSelectParamEditor_destructor(self_: *mut HandleIFSelectParamEditor);
+    /// Clone Handle<IFSelect_ParamEditor> (increments reference count)
+    pub fn HandleIFSelectParamEditor_clone(
+        self_: *const HandleIFSelectParamEditor,
+    ) -> crate::OcctResult<*mut HandleIFSelectParamEditor>;
     /// Dereference Handle to get *const IFSelect_ParamEditor
     pub fn HandleIFSelectParamEditor_get(
         handle: *const HandleIFSelectParamEditor,
@@ -5347,6 +5443,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_SelectAnyList>
     pub fn HandleIFSelectSelectAnyList_destructor(self_: *mut HandleIFSelectSelectAnyList);
+    /// Clone Handle<IFSelect_SelectAnyList> (increments reference count)
+    pub fn HandleIFSelectSelectAnyList_clone(
+        self_: *const HandleIFSelectSelectAnyList,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectAnyList>;
     /// Dereference Handle to get *const IFSelect_SelectAnyList
     pub fn HandleIFSelectSelectAnyList_get(
         handle: *const HandleIFSelectSelectAnyList,
@@ -5494,6 +5594,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_SelectAnyType>
     pub fn HandleIFSelectSelectAnyType_destructor(self_: *mut HandleIFSelectSelectAnyType);
+    /// Clone Handle<IFSelect_SelectAnyType> (increments reference count)
+    pub fn HandleIFSelectSelectAnyType_clone(
+        self_: *const HandleIFSelectSelectAnyType,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectAnyType>;
     /// Dereference Handle to get *const IFSelect_SelectAnyType
     pub fn HandleIFSelectSelectAnyType_get(
         handle: *const HandleIFSelectSelectAnyType,
@@ -5655,6 +5759,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_SelectBase>
     pub fn HandleIFSelectSelectBase_destructor(self_: *mut HandleIFSelectSelectBase);
+    /// Clone Handle<IFSelect_SelectBase> (increments reference count)
+    pub fn HandleIFSelectSelectBase_clone(
+        self_: *const HandleIFSelectSelectBase,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectBase>;
     /// Dereference Handle to get *const IFSelect_SelectBase
     pub fn HandleIFSelectSelectBase_get(
         handle: *const HandleIFSelectSelectBase,
@@ -5800,6 +5908,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_SelectCombine>
     pub fn HandleIFSelectSelectCombine_destructor(self_: *mut HandleIFSelectSelectCombine);
+    /// Clone Handle<IFSelect_SelectCombine> (increments reference count)
+    pub fn HandleIFSelectSelectCombine_clone(
+        self_: *const HandleIFSelectSelectCombine,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectCombine>;
     /// Dereference Handle to get *const IFSelect_SelectCombine
     pub fn HandleIFSelectSelectCombine_get(
         handle: *const HandleIFSelectSelectCombine,
@@ -5929,6 +6041,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_SelectControl>
     pub fn HandleIFSelectSelectControl_destructor(self_: *mut HandleIFSelectSelectControl);
+    /// Clone Handle<IFSelect_SelectControl> (increments reference count)
+    pub fn HandleIFSelectSelectControl_clone(
+        self_: *const HandleIFSelectSelectControl,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectControl>;
     /// Dereference Handle to get *const IFSelect_SelectControl
     pub fn HandleIFSelectSelectControl_get(
         handle: *const HandleIFSelectSelectControl,
@@ -6058,6 +6174,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_SelectDeduct>
     pub fn HandleIFSelectSelectDeduct_destructor(self_: *mut HandleIFSelectSelectDeduct);
+    /// Clone Handle<IFSelect_SelectDeduct> (increments reference count)
+    pub fn HandleIFSelectSelectDeduct_clone(
+        self_: *const HandleIFSelectSelectDeduct,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectDeduct>;
     /// Dereference Handle to get *const IFSelect_SelectDeduct
     pub fn HandleIFSelectSelectDeduct_get(
         handle: *const HandleIFSelectSelectDeduct,
@@ -6314,6 +6434,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectDiff>;
     /// Destroy Handle<IFSelect_SelectDiff>
     pub fn HandleIFSelectSelectDiff_destructor(self_: *mut HandleIFSelectSelectDiff);
+    /// Clone Handle<IFSelect_SelectDiff> (increments reference count)
+    pub fn HandleIFSelectSelectDiff_clone(
+        self_: *const HandleIFSelectSelectDiff,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectDiff>;
     /// Dereference Handle to get *const IFSelect_SelectDiff
     pub fn HandleIFSelectSelectDiff_get(
         handle: *const HandleIFSelectSelectDiff,
@@ -6464,6 +6588,10 @@ extern "C" {
     pub fn HandleIFSelectSelectEntityNumber_destructor(
         self_: *mut HandleIFSelectSelectEntityNumber,
     );
+    /// Clone Handle<IFSelect_SelectEntityNumber> (increments reference count)
+    pub fn HandleIFSelectSelectEntityNumber_clone(
+        self_: *const HandleIFSelectSelectEntityNumber,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectEntityNumber>;
     /// Dereference Handle to get *const IFSelect_SelectEntityNumber
     pub fn HandleIFSelectSelectEntityNumber_get(
         handle: *const HandleIFSelectSelectEntityNumber,
@@ -6594,6 +6722,10 @@ extern "C" {
     pub fn HandleIFSelectSelectErrorEntities_destructor(
         self_: *mut HandleIFSelectSelectErrorEntities,
     );
+    /// Clone Handle<IFSelect_SelectErrorEntities> (increments reference count)
+    pub fn HandleIFSelectSelectErrorEntities_clone(
+        self_: *const HandleIFSelectSelectErrorEntities,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectErrorEntities>;
     /// Dereference Handle to get *const IFSelect_SelectErrorEntities
     pub fn HandleIFSelectSelectErrorEntities_get(
         handle: *const HandleIFSelectSelectErrorEntities,
@@ -6776,6 +6908,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_SelectExplore>
     pub fn HandleIFSelectSelectExplore_destructor(self_: *mut HandleIFSelectSelectExplore);
+    /// Clone Handle<IFSelect_SelectExplore> (increments reference count)
+    pub fn HandleIFSelectSelectExplore_clone(
+        self_: *const HandleIFSelectSelectExplore,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectExplore>;
     /// Dereference Handle to get *const IFSelect_SelectExplore
     pub fn HandleIFSelectSelectExplore_get(
         handle: *const HandleIFSelectSelectExplore,
@@ -6988,6 +7124,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_SelectExtract>
     pub fn HandleIFSelectSelectExtract_destructor(self_: *mut HandleIFSelectSelectExtract);
+    /// Clone Handle<IFSelect_SelectExtract> (increments reference count)
+    pub fn HandleIFSelectSelectExtract_clone(
+        self_: *const HandleIFSelectSelectExtract,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectExtract>;
     /// Dereference Handle to get *const IFSelect_SelectExtract
     pub fn HandleIFSelectSelectExtract_get(
         handle: *const HandleIFSelectSelectExtract,
@@ -7215,6 +7355,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectFlag>;
     /// Destroy Handle<IFSelect_SelectFlag>
     pub fn HandleIFSelectSelectFlag_destructor(self_: *mut HandleIFSelectSelectFlag);
+    /// Clone Handle<IFSelect_SelectFlag> (increments reference count)
+    pub fn HandleIFSelectSelectFlag_clone(
+        self_: *const HandleIFSelectSelectFlag,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectFlag>;
     /// Dereference Handle to get *const IFSelect_SelectFlag
     pub fn HandleIFSelectSelectFlag_get(
         handle: *const HandleIFSelectSelectFlag,
@@ -7393,6 +7537,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_SelectInList>
     pub fn HandleIFSelectSelectInList_destructor(self_: *mut HandleIFSelectSelectInList);
+    /// Clone Handle<IFSelect_SelectInList> (increments reference count)
+    pub fn HandleIFSelectSelectInList_clone(
+        self_: *const HandleIFSelectSelectInList,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectInList>;
     /// Dereference Handle to get *const IFSelect_SelectInList
     pub fn HandleIFSelectSelectInList_get(
         handle: *const HandleIFSelectSelectInList,
@@ -7621,6 +7769,10 @@ extern "C" {
     pub fn HandleIFSelectSelectIncorrectEntities_destructor(
         self_: *mut HandleIFSelectSelectIncorrectEntities,
     );
+    /// Clone Handle<IFSelect_SelectIncorrectEntities> (increments reference count)
+    pub fn HandleIFSelectSelectIncorrectEntities_clone(
+        self_: *const HandleIFSelectSelectIncorrectEntities,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectIncorrectEntities>;
     /// Dereference Handle to get *const IFSelect_SelectIncorrectEntities
     pub fn HandleIFSelectSelectIncorrectEntities_get(
         handle: *const HandleIFSelectSelectIncorrectEntities,
@@ -7810,6 +7962,10 @@ extern "C" {
     pub fn HandleIFSelectSelectIntersection_destructor(
         self_: *mut HandleIFSelectSelectIntersection,
     );
+    /// Clone Handle<IFSelect_SelectIntersection> (increments reference count)
+    pub fn HandleIFSelectSelectIntersection_clone(
+        self_: *const HandleIFSelectSelectIntersection,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectIntersection>;
     /// Dereference Handle to get *const IFSelect_SelectIntersection
     pub fn HandleIFSelectSelectIntersection_get(
         handle: *const HandleIFSelectSelectIntersection,
@@ -7960,6 +8116,10 @@ extern "C" {
     pub fn HandleIFSelectSelectModelEntities_destructor(
         self_: *mut HandleIFSelectSelectModelEntities,
     );
+    /// Clone Handle<IFSelect_SelectModelEntities> (increments reference count)
+    pub fn HandleIFSelectSelectModelEntities_clone(
+        self_: *const HandleIFSelectSelectModelEntities,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectModelEntities>;
     /// Dereference Handle to get *const IFSelect_SelectModelEntities
     pub fn HandleIFSelectSelectModelEntities_get(
         handle: *const HandleIFSelectSelectModelEntities,
@@ -8072,6 +8232,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectModelRoots>;
     /// Destroy Handle<IFSelect_SelectModelRoots>
     pub fn HandleIFSelectSelectModelRoots_destructor(self_: *mut HandleIFSelectSelectModelRoots);
+    /// Clone Handle<IFSelect_SelectModelRoots> (increments reference count)
+    pub fn HandleIFSelectSelectModelRoots_clone(
+        self_: *const HandleIFSelectSelectModelRoots,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectModelRoots>;
     /// Dereference Handle to get *const IFSelect_SelectModelRoots
     pub fn HandleIFSelectSelectModelRoots_get(
         handle: *const HandleIFSelectSelectModelRoots,
@@ -8261,6 +8425,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectPointed>;
     /// Destroy Handle<IFSelect_SelectPointed>
     pub fn HandleIFSelectSelectPointed_destructor(self_: *mut HandleIFSelectSelectPointed);
+    /// Clone Handle<IFSelect_SelectPointed> (increments reference count)
+    pub fn HandleIFSelectSelectPointed_clone(
+        self_: *const HandleIFSelectSelectPointed,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectPointed>;
     /// Dereference Handle to get *const IFSelect_SelectPointed
     pub fn HandleIFSelectSelectPointed_get(
         handle: *const HandleIFSelectSelectPointed,
@@ -8432,6 +8600,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectRange>;
     /// Destroy Handle<IFSelect_SelectRange>
     pub fn HandleIFSelectSelectRange_destructor(self_: *mut HandleIFSelectSelectRange);
+    /// Clone Handle<IFSelect_SelectRange> (increments reference count)
+    pub fn HandleIFSelectSelectRange_clone(
+        self_: *const HandleIFSelectSelectRange,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectRange>;
     /// Dereference Handle to get *const IFSelect_SelectRange
     pub fn HandleIFSelectSelectRange_get(
         handle: *const HandleIFSelectSelectRange,
@@ -8619,6 +8791,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectRootComps>;
     /// Destroy Handle<IFSelect_SelectRootComps>
     pub fn HandleIFSelectSelectRootComps_destructor(self_: *mut HandleIFSelectSelectRootComps);
+    /// Clone Handle<IFSelect_SelectRootComps> (increments reference count)
+    pub fn HandleIFSelectSelectRootComps_clone(
+        self_: *const HandleIFSelectSelectRootComps,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectRootComps>;
     /// Dereference Handle to get *const IFSelect_SelectRootComps
     pub fn HandleIFSelectSelectRootComps_get(
         handle: *const HandleIFSelectSelectRootComps,
@@ -8800,6 +8976,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectRoots>;
     /// Destroy Handle<IFSelect_SelectRoots>
     pub fn HandleIFSelectSelectRoots_destructor(self_: *mut HandleIFSelectSelectRoots);
+    /// Clone Handle<IFSelect_SelectRoots> (increments reference count)
+    pub fn HandleIFSelectSelectRoots_clone(
+        self_: *const HandleIFSelectSelectRoots,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectRoots>;
     /// Dereference Handle to get *const IFSelect_SelectRoots
     pub fn HandleIFSelectSelectRoots_get(
         handle: *const HandleIFSelectSelectRoots,
@@ -8992,6 +9172,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectSent>;
     /// Destroy Handle<IFSelect_SelectSent>
     pub fn HandleIFSelectSelectSent_destructor(self_: *mut HandleIFSelectSelectSent);
+    /// Clone Handle<IFSelect_SelectSent> (increments reference count)
+    pub fn HandleIFSelectSelectSent_clone(
+        self_: *const HandleIFSelectSelectSent,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectSent>;
     /// Dereference Handle to get *const IFSelect_SelectSent
     pub fn HandleIFSelectSelectSent_get(
         handle: *const HandleIFSelectSelectSent,
@@ -9159,6 +9343,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectShared>;
     /// Destroy Handle<IFSelect_SelectShared>
     pub fn HandleIFSelectSelectShared_destructor(self_: *mut HandleIFSelectSelectShared);
+    /// Clone Handle<IFSelect_SelectShared> (increments reference count)
+    pub fn HandleIFSelectSelectShared_clone(
+        self_: *const HandleIFSelectSelectShared,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectShared>;
     /// Dereference Handle to get *const IFSelect_SelectShared
     pub fn HandleIFSelectSelectShared_get(
         handle: *const HandleIFSelectSelectShared,
@@ -9302,6 +9490,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectSharing>;
     /// Destroy Handle<IFSelect_SelectSharing>
     pub fn HandleIFSelectSelectSharing_destructor(self_: *mut HandleIFSelectSelectSharing);
+    /// Clone Handle<IFSelect_SelectSharing> (increments reference count)
+    pub fn HandleIFSelectSelectSharing_clone(
+        self_: *const HandleIFSelectSelectSharing,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectSharing>;
     /// Dereference Handle to get *const IFSelect_SelectSharing
     pub fn HandleIFSelectSelectSharing_get(
         handle: *const HandleIFSelectSelectSharing,
@@ -9494,6 +9686,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectSignature>;
     /// Destroy Handle<IFSelect_SelectSignature>
     pub fn HandleIFSelectSelectSignature_destructor(self_: *mut HandleIFSelectSelectSignature);
+    /// Clone Handle<IFSelect_SelectSignature> (increments reference count)
+    pub fn HandleIFSelectSelectSignature_clone(
+        self_: *const HandleIFSelectSelectSignature,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectSignature>;
     /// Dereference Handle to get *const IFSelect_SelectSignature
     pub fn HandleIFSelectSelectSignature_get(
         handle: *const HandleIFSelectSelectSignature,
@@ -9689,6 +9885,10 @@ extern "C" {
     pub fn HandleIFSelectSelectSignedShared_destructor(
         self_: *mut HandleIFSelectSelectSignedShared,
     );
+    /// Clone Handle<IFSelect_SelectSignedShared> (increments reference count)
+    pub fn HandleIFSelectSelectSignedShared_clone(
+        self_: *const HandleIFSelectSelectSignedShared,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectSignedShared>;
     /// Dereference Handle to get *const IFSelect_SelectSignedShared
     pub fn HandleIFSelectSelectSignedShared_get(
         handle: *const HandleIFSelectSelectSignedShared,
@@ -9879,6 +10079,10 @@ extern "C" {
     pub fn HandleIFSelectSelectSignedSharing_destructor(
         self_: *mut HandleIFSelectSelectSignedSharing,
     );
+    /// Clone Handle<IFSelect_SelectSignedSharing> (increments reference count)
+    pub fn HandleIFSelectSelectSignedSharing_clone(
+        self_: *const HandleIFSelectSelectSignedSharing,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectSignedSharing>;
     /// Dereference Handle to get *const IFSelect_SelectSignedSharing
     pub fn HandleIFSelectSelectSignedSharing_get(
         handle: *const HandleIFSelectSelectSignedSharing,
@@ -10067,6 +10271,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectSuite>;
     /// Destroy Handle<IFSelect_SelectSuite>
     pub fn HandleIFSelectSelectSuite_destructor(self_: *mut HandleIFSelectSelectSuite);
+    /// Clone Handle<IFSelect_SelectSuite> (increments reference count)
+    pub fn HandleIFSelectSelectSuite_clone(
+        self_: *const HandleIFSelectSelectSuite,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectSuite>;
     /// Dereference Handle to get *const IFSelect_SelectSuite
     pub fn HandleIFSelectSelectSuite_get(
         handle: *const HandleIFSelectSelectSuite,
@@ -10233,6 +10441,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectType>;
     /// Destroy Handle<IFSelect_SelectType>
     pub fn HandleIFSelectSelectType_destructor(self_: *mut HandleIFSelectSelectType);
+    /// Clone Handle<IFSelect_SelectType> (increments reference count)
+    pub fn HandleIFSelectSelectType_clone(
+        self_: *const HandleIFSelectSelectType,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectType>;
     /// Dereference Handle to get *const IFSelect_SelectType
     pub fn HandleIFSelectSelectType_get(
         handle: *const HandleIFSelectSelectType,
@@ -10415,6 +10627,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSelectUnion>;
     /// Destroy Handle<IFSelect_SelectUnion>
     pub fn HandleIFSelectSelectUnion_destructor(self_: *mut HandleIFSelectSelectUnion);
+    /// Clone Handle<IFSelect_SelectUnion> (increments reference count)
+    pub fn HandleIFSelectSelectUnion_clone(
+        self_: *const HandleIFSelectSelectUnion,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectUnion>;
     /// Dereference Handle to get *const IFSelect_SelectUnion
     pub fn HandleIFSelectSelectUnion_get(
         handle: *const HandleIFSelectSelectUnion,
@@ -10571,6 +10787,10 @@ extern "C" {
     pub fn HandleIFSelectSelectUnknownEntities_destructor(
         self_: *mut HandleIFSelectSelectUnknownEntities,
     );
+    /// Clone Handle<IFSelect_SelectUnknownEntities> (increments reference count)
+    pub fn HandleIFSelectSelectUnknownEntities_clone(
+        self_: *const HandleIFSelectSelectUnknownEntities,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelectUnknownEntities>;
     /// Dereference Handle to get *const IFSelect_SelectUnknownEntities
     pub fn HandleIFSelectSelectUnknownEntities_get(
         handle: *const HandleIFSelectSelectUnknownEntities,
@@ -10735,6 +10955,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_Selection>
     pub fn HandleIFSelectSelection_destructor(self_: *mut HandleIFSelectSelection);
+    /// Clone Handle<IFSelect_Selection> (increments reference count)
+    pub fn HandleIFSelectSelection_clone(
+        self_: *const HandleIFSelectSelection,
+    ) -> crate::OcctResult<*mut HandleIFSelectSelection>;
     /// Dereference Handle to get *const IFSelect_Selection
     pub fn HandleIFSelectSelection_get(
         handle: *const HandleIFSelectSelection,
@@ -11036,6 +11260,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_SessionDumper>
     pub fn HandleIFSelectSessionDumper_destructor(self_: *mut HandleIFSelectSessionDumper);
+    /// Clone Handle<IFSelect_SessionDumper> (increments reference count)
+    pub fn HandleIFSelectSessionDumper_clone(
+        self_: *const HandleIFSelectSessionDumper,
+    ) -> crate::OcctResult<*mut HandleIFSelectSessionDumper>;
     /// Dereference Handle to get *const IFSelect_SessionDumper
     pub fn HandleIFSelectSessionDumper_get(
         handle: *const HandleIFSelectSessionDumper,
@@ -11423,6 +11651,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSessionPilot>;
     /// Destroy Handle<IFSelect_SessionPilot>
     pub fn HandleIFSelectSessionPilot_destructor(self_: *mut HandleIFSelectSessionPilot);
+    /// Clone Handle<IFSelect_SessionPilot> (increments reference count)
+    pub fn HandleIFSelectSessionPilot_clone(
+        self_: *const HandleIFSelectSessionPilot,
+    ) -> crate::OcctResult<*mut HandleIFSelectSessionPilot>;
     /// Dereference Handle to get *const IFSelect_SessionPilot
     pub fn HandleIFSelectSessionPilot_get(
         handle: *const HandleIFSelectSessionPilot,
@@ -11650,6 +11882,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectShareOut>;
     /// Destroy Handle<IFSelect_ShareOut>
     pub fn HandleIFSelectShareOut_destructor(self_: *mut HandleIFSelectShareOut);
+    /// Clone Handle<IFSelect_ShareOut> (increments reference count)
+    pub fn HandleIFSelectShareOut_clone(
+        self_: *const HandleIFSelectShareOut,
+    ) -> crate::OcctResult<*mut HandleIFSelectShareOut>;
     /// Dereference Handle to get *const IFSelect_ShareOut
     pub fn HandleIFSelectShareOut_get(
         handle: *const HandleIFSelectShareOut,
@@ -11850,6 +12086,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSignAncestor>;
     /// Destroy Handle<IFSelect_SignAncestor>
     pub fn HandleIFSelectSignAncestor_destructor(self_: *mut HandleIFSelectSignAncestor);
+    /// Clone Handle<IFSelect_SignAncestor> (increments reference count)
+    pub fn HandleIFSelectSignAncestor_clone(
+        self_: *const HandleIFSelectSignAncestor,
+    ) -> crate::OcctResult<*mut HandleIFSelectSignAncestor>;
     /// Dereference Handle to get *const IFSelect_SignAncestor
     pub fn HandleIFSelectSignAncestor_get(
         handle: *const HandleIFSelectSignAncestor,
@@ -12000,6 +12240,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSignCategory>;
     /// Destroy Handle<IFSelect_SignCategory>
     pub fn HandleIFSelectSignCategory_destructor(self_: *mut HandleIFSelectSignCategory);
+    /// Clone Handle<IFSelect_SignCategory> (increments reference count)
+    pub fn HandleIFSelectSignCategory_clone(
+        self_: *const HandleIFSelectSignCategory,
+    ) -> crate::OcctResult<*mut HandleIFSelectSignCategory>;
     /// Dereference Handle to get *const IFSelect_SignCategory
     pub fn HandleIFSelectSignCategory_get(
         handle: *const HandleIFSelectSignCategory,
@@ -12220,6 +12464,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSignCounter>;
     /// Destroy Handle<IFSelect_SignCounter>
     pub fn HandleIFSelectSignCounter_destructor(self_: *mut HandleIFSelectSignCounter);
+    /// Clone Handle<IFSelect_SignCounter> (increments reference count)
+    pub fn HandleIFSelectSignCounter_clone(
+        self_: *const HandleIFSelectSignCounter,
+    ) -> crate::OcctResult<*mut HandleIFSelectSignCounter>;
     /// Dereference Handle to get *const IFSelect_SignCounter
     pub fn HandleIFSelectSignCounter_get(
         handle: *const HandleIFSelectSignCounter,
@@ -12386,6 +12634,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSignMultiple>;
     /// Destroy Handle<IFSelect_SignMultiple>
     pub fn HandleIFSelectSignMultiple_destructor(self_: *mut HandleIFSelectSignMultiple);
+    /// Clone Handle<IFSelect_SignMultiple> (increments reference count)
+    pub fn HandleIFSelectSignMultiple_clone(
+        self_: *const HandleIFSelectSignMultiple,
+    ) -> crate::OcctResult<*mut HandleIFSelectSignMultiple>;
     /// Dereference Handle to get *const IFSelect_SignMultiple
     pub fn HandleIFSelectSignMultiple_get(
         handle: *const HandleIFSelectSignMultiple,
@@ -12531,6 +12783,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSignType>;
     /// Destroy Handle<IFSelect_SignType>
     pub fn HandleIFSelectSignType_destructor(self_: *mut HandleIFSelectSignType);
+    /// Clone Handle<IFSelect_SignType> (increments reference count)
+    pub fn HandleIFSelectSignType_clone(
+        self_: *const HandleIFSelectSignType,
+    ) -> crate::OcctResult<*mut HandleIFSelectSignType>;
     /// Dereference Handle to get *const IFSelect_SignType
     pub fn HandleIFSelectSignType_get(
         handle: *const HandleIFSelectSignType,
@@ -12694,6 +12950,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSignValidity>;
     /// Destroy Handle<IFSelect_SignValidity>
     pub fn HandleIFSelectSignValidity_destructor(self_: *mut HandleIFSelectSignValidity);
+    /// Clone Handle<IFSelect_SignValidity> (increments reference count)
+    pub fn HandleIFSelectSignValidity_clone(
+        self_: *const HandleIFSelectSignValidity,
+    ) -> crate::OcctResult<*mut HandleIFSelectSignValidity>;
     /// Dereference Handle to get *const IFSelect_SignValidity
     pub fn HandleIFSelectSignValidity_get(
         handle: *const HandleIFSelectSignValidity,
@@ -12876,6 +13136,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_Signature>
     pub fn HandleIFSelectSignature_destructor(self_: *mut HandleIFSelectSignature);
+    /// Clone Handle<IFSelect_Signature> (increments reference count)
+    pub fn HandleIFSelectSignature_clone(
+        self_: *const HandleIFSelectSignature,
+    ) -> crate::OcctResult<*mut HandleIFSelectSignature>;
     /// Dereference Handle to get *const IFSelect_Signature
     pub fn HandleIFSelectSignature_get(
         handle: *const HandleIFSelectSignature,
@@ -13098,6 +13362,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectSignatureList>;
     /// Destroy Handle<IFSelect_SignatureList>
     pub fn HandleIFSelectSignatureList_destructor(self_: *mut HandleIFSelectSignatureList);
+    /// Clone Handle<IFSelect_SignatureList> (increments reference count)
+    pub fn HandleIFSelectSignatureList_clone(
+        self_: *const HandleIFSelectSignatureList,
+    ) -> crate::OcctResult<*mut HandleIFSelectSignatureList>;
     /// Dereference Handle to get *const IFSelect_SignatureList
     pub fn HandleIFSelectSignatureList_get(
         handle: *const HandleIFSelectSignatureList,
@@ -13287,6 +13555,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectTransformStandard>;
     /// Destroy Handle<IFSelect_TransformStandard>
     pub fn HandleIFSelectTransformStandard_destructor(self_: *mut HandleIFSelectTransformStandard);
+    /// Clone Handle<IFSelect_TransformStandard> (increments reference count)
+    pub fn HandleIFSelectTransformStandard_clone(
+        self_: *const HandleIFSelectTransformStandard,
+    ) -> crate::OcctResult<*mut HandleIFSelectTransformStandard>;
     /// Dereference Handle to get *const IFSelect_TransformStandard
     pub fn HandleIFSelectTransformStandard_get(
         handle: *const HandleIFSelectTransformStandard,
@@ -13381,6 +13653,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_Transformer>
     pub fn HandleIFSelectTransformer_destructor(self_: *mut HandleIFSelectTransformer);
+    /// Clone Handle<IFSelect_Transformer> (increments reference count)
+    pub fn HandleIFSelectTransformer_clone(
+        self_: *const HandleIFSelectTransformer,
+    ) -> crate::OcctResult<*mut HandleIFSelectTransformer>;
     /// Dereference Handle to get *const IFSelect_Transformer
     pub fn HandleIFSelectTransformer_get(
         handle: *const HandleIFSelectTransformer,
@@ -13519,6 +13795,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IFSelect_WorkLibrary>
     pub fn HandleIFSelectWorkLibrary_destructor(self_: *mut HandleIFSelectWorkLibrary);
+    /// Clone Handle<IFSelect_WorkLibrary> (increments reference count)
+    pub fn HandleIFSelectWorkLibrary_clone(
+        self_: *const HandleIFSelectWorkLibrary,
+    ) -> crate::OcctResult<*mut HandleIFSelectWorkLibrary>;
     /// Dereference Handle to get *const IFSelect_WorkLibrary
     pub fn HandleIFSelectWorkLibrary_get(
         handle: *const HandleIFSelectWorkLibrary,
@@ -14447,6 +14727,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIFSelectWorkSession>;
     /// Destroy Handle<IFSelect_WorkSession>
     pub fn HandleIFSelectWorkSession_destructor(self_: *mut HandleIFSelectWorkSession);
+    /// Clone Handle<IFSelect_WorkSession> (increments reference count)
+    pub fn HandleIFSelectWorkSession_clone(
+        self_: *const HandleIFSelectWorkSession,
+    ) -> crate::OcctResult<*mut HandleIFSelectWorkSession>;
     /// Dereference Handle to get *const IFSelect_WorkSession
     pub fn HandleIFSelectWorkSession_get(
         handle: *const HandleIFSelectWorkSession,
@@ -14605,7 +14889,7 @@ extern "C" {
     /// **Source:** `Interface_BitMap.hxx`:144 - `Interface_BitMap::Clear()`
     pub fn Interface_BitMap_clear(self_: *mut Interface_BitMap) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn Interface_BitMap_to_owned(
+    pub fn Interface_BitMap_clone(
         self_: *const Interface_BitMap,
     ) -> crate::OcctResult<*mut Interface_BitMap>;
     // ======================== Interface_Category ========================
@@ -14882,6 +15166,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceCheck>;
     /// Destroy Handle<Interface_Check>
     pub fn HandleInterfaceCheck_destructor(self_: *mut HandleInterfaceCheck);
+    /// Clone Handle<Interface_Check> (increments reference count)
+    pub fn HandleInterfaceCheck_clone(
+        self_: *const HandleInterfaceCheck,
+    ) -> crate::OcctResult<*mut HandleInterfaceCheck>;
     /// Dereference Handle to get *const Interface_Check
     pub fn HandleInterfaceCheck_get(
         handle: *const HandleInterfaceCheck,
@@ -14993,6 +15281,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceCheckFailure>;
     /// Destroy Handle<Interface_CheckFailure>
     pub fn HandleInterfaceCheckFailure_destructor(self_: *mut HandleInterfaceCheckFailure);
+    /// Clone Handle<Interface_CheckFailure> (increments reference count)
+    pub fn HandleInterfaceCheckFailure_clone(
+        self_: *const HandleInterfaceCheckFailure,
+    ) -> crate::OcctResult<*mut HandleInterfaceCheckFailure>;
     /// Dereference Handle to get *const Interface_CheckFailure
     pub fn HandleInterfaceCheckFailure_get(
         handle: *const HandleInterfaceCheckFailure,
@@ -15304,6 +15596,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Interface_CopyControl>
     pub fn HandleInterfaceCopyControl_destructor(self_: *mut HandleInterfaceCopyControl);
+    /// Clone Handle<Interface_CopyControl> (increments reference count)
+    pub fn HandleInterfaceCopyControl_clone(
+        self_: *const HandleInterfaceCopyControl,
+    ) -> crate::OcctResult<*mut HandleInterfaceCopyControl>;
     /// Dereference Handle to get *const Interface_CopyControl
     pub fn HandleInterfaceCopyControl_get(
         handle: *const HandleInterfaceCopyControl,
@@ -15408,6 +15704,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceCopyMap>;
     /// Destroy Handle<Interface_CopyMap>
     pub fn HandleInterfaceCopyMap_destructor(self_: *mut HandleInterfaceCopyMap);
+    /// Clone Handle<Interface_CopyMap> (increments reference count)
+    pub fn HandleInterfaceCopyMap_clone(
+        self_: *const HandleInterfaceCopyMap,
+    ) -> crate::OcctResult<*mut HandleInterfaceCopyMap>;
     /// Dereference Handle to get *const Interface_CopyMap
     pub fn HandleInterfaceCopyMap_get(
         handle: *const HandleInterfaceCopyMap,
@@ -15620,6 +15920,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceEntityCluster>;
     /// Destroy Handle<Interface_EntityCluster>
     pub fn HandleInterfaceEntityCluster_destructor(self_: *mut HandleInterfaceEntityCluster);
+    /// Clone Handle<Interface_EntityCluster> (increments reference count)
+    pub fn HandleInterfaceEntityCluster_clone(
+        self_: *const HandleInterfaceEntityCluster,
+    ) -> crate::OcctResult<*mut HandleInterfaceEntityCluster>;
     /// Dereference Handle to get *const Interface_EntityCluster
     pub fn HandleInterfaceEntityCluster_get(
         handle: *const HandleInterfaceEntityCluster,
@@ -15986,6 +16290,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Interface_FileReaderData>
     pub fn HandleInterfaceFileReaderData_destructor(self_: *mut HandleInterfaceFileReaderData);
+    /// Clone Handle<Interface_FileReaderData> (increments reference count)
+    pub fn HandleInterfaceFileReaderData_clone(
+        self_: *const HandleInterfaceFileReaderData,
+    ) -> crate::OcctResult<*mut HandleInterfaceFileReaderData>;
     /// Dereference Handle to get *const Interface_FileReaderData
     pub fn HandleInterfaceFileReaderData_get(
         handle: *const HandleInterfaceFileReaderData,
@@ -16288,6 +16596,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceGTool>;
     /// Destroy Handle<Interface_GTool>
     pub fn HandleInterfaceGTool_destructor(self_: *mut HandleInterfaceGTool);
+    /// Clone Handle<Interface_GTool> (increments reference count)
+    pub fn HandleInterfaceGTool_clone(
+        self_: *const HandleInterfaceGTool,
+    ) -> crate::OcctResult<*mut HandleInterfaceGTool>;
     /// Dereference Handle to get *const Interface_GTool
     pub fn HandleInterfaceGTool_get(
         handle: *const HandleInterfaceGTool,
@@ -16506,6 +16818,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Interface_GeneralModule>
     pub fn HandleInterfaceGeneralModule_destructor(self_: *mut HandleInterfaceGeneralModule);
+    /// Clone Handle<Interface_GeneralModule> (increments reference count)
+    pub fn HandleInterfaceGeneralModule_clone(
+        self_: *const HandleInterfaceGeneralModule,
+    ) -> crate::OcctResult<*mut HandleInterfaceGeneralModule>;
     /// Dereference Handle to get *const Interface_GeneralModule
     pub fn HandleInterfaceGeneralModule_get(
         handle: *const HandleInterfaceGeneralModule,
@@ -16643,6 +16959,10 @@ extern "C" {
     pub fn HandleInterfaceGlobalNodeOfGeneralLib_destructor(
         self_: *mut HandleInterfaceGlobalNodeOfGeneralLib,
     );
+    /// Clone Handle<Interface_GlobalNodeOfGeneralLib> (increments reference count)
+    pub fn HandleInterfaceGlobalNodeOfGeneralLib_clone(
+        self_: *const HandleInterfaceGlobalNodeOfGeneralLib,
+    ) -> crate::OcctResult<*mut HandleInterfaceGlobalNodeOfGeneralLib>;
     /// Dereference Handle to get *const Interface_GlobalNodeOfGeneralLib
     pub fn HandleInterfaceGlobalNodeOfGeneralLib_get(
         handle: *const HandleInterfaceGlobalNodeOfGeneralLib,
@@ -16734,6 +17054,10 @@ extern "C" {
     pub fn HandleInterfaceGlobalNodeOfReaderLib_destructor(
         self_: *mut HandleInterfaceGlobalNodeOfReaderLib,
     );
+    /// Clone Handle<Interface_GlobalNodeOfReaderLib> (increments reference count)
+    pub fn HandleInterfaceGlobalNodeOfReaderLib_clone(
+        self_: *const HandleInterfaceGlobalNodeOfReaderLib,
+    ) -> crate::OcctResult<*mut HandleInterfaceGlobalNodeOfReaderLib>;
     /// Dereference Handle to get *const Interface_GlobalNodeOfReaderLib
     pub fn HandleInterfaceGlobalNodeOfReaderLib_get(
         handle: *const HandleInterfaceGlobalNodeOfReaderLib,
@@ -16958,7 +17282,7 @@ extern "C" {
     /// **Source:** `Interface_Graph.hxx`:253 - `Interface_Graph::ModeStat()`
     pub fn Interface_Graph_mode_stat(self_: *const Interface_Graph) -> crate::OcctResult<bool>;
     /// Clone via copy constructor
-    pub fn Interface_Graph_to_owned(
+    pub fn Interface_Graph_clone(
         self_: *const Interface_Graph,
     ) -> crate::OcctResult<*mut Interface_Graph>;
     // ======================== Interface_GraphContent ========================
@@ -17130,6 +17454,10 @@ extern "C" {
     pub fn HandleInterfaceHArray1OfHAsciiString_destructor(
         self_: *mut HandleInterfaceHArray1OfHAsciiString,
     );
+    /// Clone Handle<Interface_HArray1OfHAsciiString> (increments reference count)
+    pub fn HandleInterfaceHArray1OfHAsciiString_clone(
+        self_: *const HandleInterfaceHArray1OfHAsciiString,
+    ) -> crate::OcctResult<*mut HandleInterfaceHArray1OfHAsciiString>;
     /// Dereference Handle to get *const Interface_HArray1OfHAsciiString
     pub fn HandleInterfaceHArray1OfHAsciiString_get(
         handle: *const HandleInterfaceHArray1OfHAsciiString,
@@ -17231,6 +17559,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceHGraph>;
     /// Destroy Handle<Interface_HGraph>
     pub fn HandleInterfaceHGraph_destructor(self_: *mut HandleInterfaceHGraph);
+    /// Clone Handle<Interface_HGraph> (increments reference count)
+    pub fn HandleInterfaceHGraph_clone(
+        self_: *const HandleInterfaceHGraph,
+    ) -> crate::OcctResult<*mut HandleInterfaceHGraph>;
     /// Dereference Handle to get *const Interface_HGraph
     pub fn HandleInterfaceHGraph_get(
         handle: *const HandleInterfaceHGraph,
@@ -17322,6 +17654,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceHSequenceOfCheck>;
     /// Destroy Handle<Interface_HSequenceOfCheck>
     pub fn HandleInterfaceHSequenceOfCheck_destructor(self_: *mut HandleInterfaceHSequenceOfCheck);
+    /// Clone Handle<Interface_HSequenceOfCheck> (increments reference count)
+    pub fn HandleInterfaceHSequenceOfCheck_clone(
+        self_: *const HandleInterfaceHSequenceOfCheck,
+    ) -> crate::OcctResult<*mut HandleInterfaceHSequenceOfCheck>;
     /// Dereference Handle to get *const Interface_HSequenceOfCheck
     pub fn HandleInterfaceHSequenceOfCheck_get(
         handle: *const HandleInterfaceHSequenceOfCheck,
@@ -17477,6 +17813,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceIntVal>;
     /// Destroy Handle<Interface_IntVal>
     pub fn HandleInterfaceIntVal_destructor(self_: *mut HandleInterfaceIntVal);
+    /// Clone Handle<Interface_IntVal> (increments reference count)
+    pub fn HandleInterfaceIntVal_clone(
+        self_: *const HandleInterfaceIntVal,
+    ) -> crate::OcctResult<*mut HandleInterfaceIntVal>;
     /// Dereference Handle to get *const Interface_IntVal
     pub fn HandleInterfaceIntVal_get(
         handle: *const HandleInterfaceIntVal,
@@ -17580,6 +17920,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceInterfaceError>;
     /// Destroy Handle<Interface_InterfaceError>
     pub fn HandleInterfaceInterfaceError_destructor(self_: *mut HandleInterfaceInterfaceError);
+    /// Clone Handle<Interface_InterfaceError> (increments reference count)
+    pub fn HandleInterfaceInterfaceError_clone(
+        self_: *const HandleInterfaceInterfaceError,
+    ) -> crate::OcctResult<*mut HandleInterfaceInterfaceError>;
     /// Dereference Handle to get *const Interface_InterfaceError
     pub fn HandleInterfaceInterfaceError_get(
         handle: *const HandleInterfaceInterfaceError,
@@ -17726,6 +18070,10 @@ extern "C" {
     pub fn HandleInterfaceInterfaceMismatch_destructor(
         self_: *mut HandleInterfaceInterfaceMismatch,
     );
+    /// Clone Handle<Interface_InterfaceMismatch> (increments reference count)
+    pub fn HandleInterfaceInterfaceMismatch_clone(
+        self_: *const HandleInterfaceInterfaceMismatch,
+    ) -> crate::OcctResult<*mut HandleInterfaceInterfaceMismatch>;
     /// Dereference Handle to get *const Interface_InterfaceMismatch
     pub fn HandleInterfaceInterfaceMismatch_get(
         handle: *const HandleInterfaceInterfaceMismatch,
@@ -18119,6 +18467,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Interface_InterfaceModel>
     pub fn HandleInterfaceInterfaceModel_destructor(self_: *mut HandleInterfaceInterfaceModel);
+    /// Clone Handle<Interface_InterfaceModel> (increments reference count)
+    pub fn HandleInterfaceInterfaceModel_clone(
+        self_: *const HandleInterfaceInterfaceModel,
+    ) -> crate::OcctResult<*mut HandleInterfaceInterfaceModel>;
     /// Dereference Handle to get *const Interface_InterfaceModel
     pub fn HandleInterfaceInterfaceModel_get(
         handle: *const HandleInterfaceInterfaceModel,
@@ -18399,6 +18751,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceNodeOfGeneralLib>;
     /// Destroy Handle<Interface_NodeOfGeneralLib>
     pub fn HandleInterfaceNodeOfGeneralLib_destructor(self_: *mut HandleInterfaceNodeOfGeneralLib);
+    /// Clone Handle<Interface_NodeOfGeneralLib> (increments reference count)
+    pub fn HandleInterfaceNodeOfGeneralLib_clone(
+        self_: *const HandleInterfaceNodeOfGeneralLib,
+    ) -> crate::OcctResult<*mut HandleInterfaceNodeOfGeneralLib>;
     /// Dereference Handle to get *const Interface_NodeOfGeneralLib
     pub fn HandleInterfaceNodeOfGeneralLib_get(
         handle: *const HandleInterfaceNodeOfGeneralLib,
@@ -18485,6 +18841,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceNodeOfReaderLib>;
     /// Destroy Handle<Interface_NodeOfReaderLib>
     pub fn HandleInterfaceNodeOfReaderLib_destructor(self_: *mut HandleInterfaceNodeOfReaderLib);
+    /// Clone Handle<Interface_NodeOfReaderLib> (increments reference count)
+    pub fn HandleInterfaceNodeOfReaderLib_clone(
+        self_: *const HandleInterfaceNodeOfReaderLib,
+    ) -> crate::OcctResult<*mut HandleInterfaceNodeOfReaderLib>;
     /// Dereference Handle to get *const Interface_NodeOfReaderLib
     pub fn HandleInterfaceNodeOfReaderLib_get(
         handle: *const HandleInterfaceNodeOfReaderLib,
@@ -18579,6 +18939,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceParamList>;
     /// Destroy Handle<Interface_ParamList>
     pub fn HandleInterfaceParamList_destructor(self_: *mut HandleInterfaceParamList);
+    /// Clone Handle<Interface_ParamList> (increments reference count)
+    pub fn HandleInterfaceParamList_clone(
+        self_: *const HandleInterfaceParamList,
+    ) -> crate::OcctResult<*mut HandleInterfaceParamList>;
     /// Dereference Handle to get *const Interface_ParamList
     pub fn HandleInterfaceParamList_get(
         handle: *const HandleInterfaceParamList,
@@ -18690,6 +19054,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceParamSet>;
     /// Destroy Handle<Interface_ParamSet>
     pub fn HandleInterfaceParamSet_destructor(self_: *mut HandleInterfaceParamSet);
+    /// Clone Handle<Interface_ParamSet> (increments reference count)
+    pub fn HandleInterfaceParamSet_clone(
+        self_: *const HandleInterfaceParamSet,
+    ) -> crate::OcctResult<*mut HandleInterfaceParamSet>;
     /// Dereference Handle to get *const Interface_ParamSet
     pub fn HandleInterfaceParamSet_get(
         handle: *const HandleInterfaceParamSet,
@@ -18819,6 +19187,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Interface_Protocol>
     pub fn HandleInterfaceProtocol_destructor(self_: *mut HandleInterfaceProtocol);
+    /// Clone Handle<Interface_Protocol> (increments reference count)
+    pub fn HandleInterfaceProtocol_clone(
+        self_: *const HandleInterfaceProtocol,
+    ) -> crate::OcctResult<*mut HandleInterfaceProtocol>;
     /// Dereference Handle to get *const Interface_Protocol
     pub fn HandleInterfaceProtocol_get(
         handle: *const HandleInterfaceProtocol,
@@ -19007,6 +19379,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Interface_ReaderModule>
     pub fn HandleInterfaceReaderModule_destructor(self_: *mut HandleInterfaceReaderModule);
+    /// Clone Handle<Interface_ReaderModule> (increments reference count)
+    pub fn HandleInterfaceReaderModule_clone(
+        self_: *const HandleInterfaceReaderModule,
+    ) -> crate::OcctResult<*mut HandleInterfaceReaderModule>;
     /// Dereference Handle to get *const Interface_ReaderModule
     pub fn HandleInterfaceReaderModule_get(
         handle: *const HandleInterfaceReaderModule,
@@ -19156,6 +19532,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceReportEntity>;
     /// Destroy Handle<Interface_ReportEntity>
     pub fn HandleInterfaceReportEntity_destructor(self_: *mut HandleInterfaceReportEntity);
+    /// Clone Handle<Interface_ReportEntity> (increments reference count)
+    pub fn HandleInterfaceReportEntity_clone(
+        self_: *const HandleInterfaceReportEntity,
+    ) -> crate::OcctResult<*mut HandleInterfaceReportEntity>;
     /// Dereference Handle to get *const Interface_ReportEntity
     pub fn HandleInterfaceReportEntity_get(
         handle: *const HandleInterfaceReportEntity,
@@ -19272,7 +19652,7 @@ extern "C" {
     /// **Source:** `Interface_STAT.hxx`:204 - `Interface_STAT::Percent()`
     pub fn Interface_STAT_percent(phase: bool) -> crate::OcctResult<i32>;
     /// Clone via copy constructor
-    pub fn Interface_STAT_to_owned(
+    pub fn Interface_STAT_clone(
         self_: *const Interface_STAT,
     ) -> crate::OcctResult<*mut Interface_STAT>;
     // ======================== Interface_ShareFlags ========================
@@ -19446,6 +19826,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceSignLabel>;
     /// Destroy Handle<Interface_SignLabel>
     pub fn HandleInterfaceSignLabel_destructor(self_: *mut HandleInterfaceSignLabel);
+    /// Clone Handle<Interface_SignLabel> (increments reference count)
+    pub fn HandleInterfaceSignLabel_clone(
+        self_: *const HandleInterfaceSignLabel,
+    ) -> crate::OcctResult<*mut HandleInterfaceSignLabel>;
     /// Dereference Handle to get *const Interface_SignLabel
     pub fn HandleInterfaceSignLabel_get(
         handle: *const HandleInterfaceSignLabel,
@@ -19541,6 +19925,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Interface_SignType>
     pub fn HandleInterfaceSignType_destructor(self_: *mut HandleInterfaceSignType);
+    /// Clone Handle<Interface_SignType> (increments reference count)
+    pub fn HandleInterfaceSignType_clone(
+        self_: *const HandleInterfaceSignType,
+    ) -> crate::OcctResult<*mut HandleInterfaceSignType>;
     /// Dereference Handle to get *const Interface_SignType
     pub fn HandleInterfaceSignType_get(
         handle: *const HandleInterfaceSignType,
@@ -19796,6 +20184,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceStatic>;
     /// Destroy Handle<Interface_Static>
     pub fn HandleInterfaceStatic_destructor(self_: *mut HandleInterfaceStatic);
+    /// Clone Handle<Interface_Static> (increments reference count)
+    pub fn HandleInterfaceStatic_clone(
+        self_: *const HandleInterfaceStatic,
+    ) -> crate::OcctResult<*mut HandleInterfaceStatic>;
     /// Dereference Handle to get *const Interface_Static
     pub fn HandleInterfaceStatic_get(
         handle: *const HandleInterfaceStatic,
@@ -20037,6 +20429,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceTypedValue>;
     /// Destroy Handle<Interface_TypedValue>
     pub fn HandleInterfaceTypedValue_destructor(self_: *mut HandleInterfaceTypedValue);
+    /// Clone Handle<Interface_TypedValue> (increments reference count)
+    pub fn HandleInterfaceTypedValue_clone(
+        self_: *const HandleInterfaceTypedValue,
+    ) -> crate::OcctResult<*mut HandleInterfaceTypedValue>;
     /// Dereference Handle to get *const Interface_TypedValue
     pub fn HandleInterfaceTypedValue_get(
         handle: *const HandleInterfaceTypedValue,
@@ -20345,6 +20741,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleInterfaceUndefinedContent>;
     /// Destroy Handle<Interface_UndefinedContent>
     pub fn HandleInterfaceUndefinedContent_destructor(self_: *mut HandleInterfaceUndefinedContent);
+    /// Clone Handle<Interface_UndefinedContent> (increments reference count)
+    pub fn HandleInterfaceUndefinedContent_clone(
+        self_: *const HandleInterfaceUndefinedContent,
+    ) -> crate::OcctResult<*mut HandleInterfaceUndefinedContent>;
     /// Dereference Handle to get *const Interface_UndefinedContent
     pub fn HandleInterfaceUndefinedContent_get(
         handle: *const HandleInterfaceUndefinedContent,
@@ -20487,7 +20887,7 @@ extern "C" {
         copied: bool,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn MoniTool_AttrList_to_owned(
+    pub fn MoniTool_AttrList_clone(
         self_: *const MoniTool_AttrList,
     ) -> crate::OcctResult<*mut MoniTool_AttrList>;
     // ======================== MoniTool_CaseData ========================
@@ -20746,6 +21146,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMoniToolCaseData>;
     /// Destroy Handle<MoniTool_CaseData>
     pub fn HandleMoniToolCaseData_destructor(self_: *mut HandleMoniToolCaseData);
+    /// Clone Handle<MoniTool_CaseData> (increments reference count)
+    pub fn HandleMoniToolCaseData_clone(
+        self_: *const HandleMoniToolCaseData,
+    ) -> crate::OcctResult<*mut HandleMoniToolCaseData>;
     /// Dereference Handle to get *const MoniTool_CaseData
     pub fn HandleMoniToolCaseData_get(
         handle: *const HandleMoniToolCaseData,
@@ -20845,6 +21249,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<MoniTool_Element>
     pub fn HandleMoniToolElement_destructor(self_: *mut HandleMoniToolElement);
+    /// Clone Handle<MoniTool_Element> (increments reference count)
+    pub fn HandleMoniToolElement_clone(
+        self_: *const HandleMoniToolElement,
+    ) -> crate::OcctResult<*mut HandleMoniToolElement>;
     /// Dereference Handle to get *const MoniTool_Element
     pub fn HandleMoniToolElement_get(
         handle: *const HandleMoniToolElement,
@@ -20942,6 +21350,10 @@ extern "C" {
     pub fn HandleMoniToolHSequenceOfElement_destructor(
         self_: *mut HandleMoniToolHSequenceOfElement,
     );
+    /// Clone Handle<MoniTool_HSequenceOfElement> (increments reference count)
+    pub fn HandleMoniToolHSequenceOfElement_clone(
+        self_: *const HandleMoniToolHSequenceOfElement,
+    ) -> crate::OcctResult<*mut HandleMoniToolHSequenceOfElement>;
     /// Dereference Handle to get *const MoniTool_HSequenceOfElement
     pub fn HandleMoniToolHSequenceOfElement_get(
         handle: *const HandleMoniToolHSequenceOfElement,
@@ -21014,6 +21426,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMoniToolIntVal>;
     /// Destroy Handle<MoniTool_IntVal>
     pub fn HandleMoniToolIntVal_destructor(self_: *mut HandleMoniToolIntVal);
+    /// Clone Handle<MoniTool_IntVal> (increments reference count)
+    pub fn HandleMoniToolIntVal_clone(
+        self_: *const HandleMoniToolIntVal,
+    ) -> crate::OcctResult<*mut HandleMoniToolIntVal>;
     /// Dereference Handle to get *const MoniTool_IntVal
     pub fn HandleMoniToolIntVal_get(
         handle: *const HandleMoniToolIntVal,
@@ -21086,6 +21502,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMoniToolRealVal>;
     /// Destroy Handle<MoniTool_RealVal>
     pub fn HandleMoniToolRealVal_destructor(self_: *mut HandleMoniToolRealVal);
+    /// Clone Handle<MoniTool_RealVal> (increments reference count)
+    pub fn HandleMoniToolRealVal_clone(
+        self_: *const HandleMoniToolRealVal,
+    ) -> crate::OcctResult<*mut HandleMoniToolRealVal>;
     /// Dereference Handle to get *const MoniTool_RealVal
     pub fn HandleMoniToolRealVal_get(
         handle: *const HandleMoniToolRealVal,
@@ -21172,6 +21592,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMoniToolSignShape>;
     /// Destroy Handle<MoniTool_SignShape>
     pub fn HandleMoniToolSignShape_destructor(self_: *mut HandleMoniToolSignShape);
+    /// Clone Handle<MoniTool_SignShape> (increments reference count)
+    pub fn HandleMoniToolSignShape_clone(
+        self_: *const HandleMoniToolSignShape,
+    ) -> crate::OcctResult<*mut HandleMoniToolSignShape>;
     /// Dereference Handle to get *const MoniTool_SignShape
     pub fn HandleMoniToolSignShape_get(
         handle: *const HandleMoniToolSignShape,
@@ -21258,6 +21682,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<MoniTool_SignText>
     pub fn HandleMoniToolSignText_destructor(self_: *mut HandleMoniToolSignText);
+    /// Clone Handle<MoniTool_SignText> (increments reference count)
+    pub fn HandleMoniToolSignText_clone(
+        self_: *const HandleMoniToolSignText,
+    ) -> crate::OcctResult<*mut HandleMoniToolSignText>;
     /// Dereference Handle to get *const MoniTool_SignText
     pub fn HandleMoniToolSignText_get(
         handle: *const HandleMoniToolSignText,
@@ -21396,7 +21824,7 @@ extern "C" {
     /// **Source:** `MoniTool_Stat.hxx`:77 - `MoniTool_Stat::Current()`
     pub fn MoniTool_Stat_current() -> crate::OcctResult<*mut MoniTool_Stat>;
     /// Clone via copy constructor
-    pub fn MoniTool_Stat_to_owned(
+    pub fn MoniTool_Stat_clone(
         self_: *const MoniTool_Stat,
     ) -> crate::OcctResult<*mut MoniTool_Stat>;
     // ======================== MoniTool_Timer ========================
@@ -21475,6 +21903,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMoniToolTimer>;
     /// Destroy Handle<MoniTool_Timer>
     pub fn HandleMoniToolTimer_destructor(self_: *mut HandleMoniToolTimer);
+    /// Clone Handle<MoniTool_Timer> (increments reference count)
+    pub fn HandleMoniToolTimer_clone(
+        self_: *const HandleMoniToolTimer,
+    ) -> crate::OcctResult<*mut HandleMoniToolTimer>;
     /// Dereference Handle to get *const MoniTool_Timer
     pub fn HandleMoniToolTimer_get(
         handle: *const HandleMoniToolTimer,
@@ -21586,6 +22018,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMoniToolTransientElem>;
     /// Destroy Handle<MoniTool_TransientElem>
     pub fn HandleMoniToolTransientElem_destructor(self_: *mut HandleMoniToolTransientElem);
+    /// Clone Handle<MoniTool_TransientElem> (increments reference count)
+    pub fn HandleMoniToolTransientElem_clone(
+        self_: *const HandleMoniToolTransientElem,
+    ) -> crate::OcctResult<*mut HandleMoniToolTransientElem>;
     /// Dereference Handle to get *const MoniTool_TransientElem
     pub fn HandleMoniToolTransientElem_get(
         handle: *const HandleMoniToolTransientElem,
@@ -21933,6 +22369,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleMoniToolTypedValue>;
     /// Destroy Handle<MoniTool_TypedValue>
     pub fn HandleMoniToolTypedValue_destructor(self_: *mut HandleMoniToolTypedValue);
+    /// Clone Handle<MoniTool_TypedValue> (increments reference count)
+    pub fn HandleMoniToolTypedValue_clone(
+        self_: *const HandleMoniToolTypedValue,
+    ) -> crate::OcctResult<*mut HandleMoniToolTypedValue>;
     /// Dereference Handle to get *const MoniTool_TypedValue
     pub fn HandleMoniToolTypedValue_get(
         handle: *const HandleMoniToolTypedValue,
@@ -22054,6 +22494,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferActorDispatch>;
     /// Destroy Handle<Transfer_ActorDispatch>
     pub fn HandleTransferActorDispatch_destructor(self_: *mut HandleTransferActorDispatch);
+    /// Clone Handle<Transfer_ActorDispatch> (increments reference count)
+    pub fn HandleTransferActorDispatch_clone(
+        self_: *const HandleTransferActorDispatch,
+    ) -> crate::OcctResult<*mut HandleTransferActorDispatch>;
     /// Dereference Handle to get *const Transfer_ActorDispatch
     pub fn HandleTransferActorDispatch_get(
         handle: *const HandleTransferActorDispatch,
@@ -22256,6 +22700,10 @@ extern "C" {
     pub fn HandleTransferActorOfFinderProcess_destructor(
         self_: *mut HandleTransferActorOfFinderProcess,
     );
+    /// Clone Handle<Transfer_ActorOfFinderProcess> (increments reference count)
+    pub fn HandleTransferActorOfFinderProcess_clone(
+        self_: *const HandleTransferActorOfFinderProcess,
+    ) -> crate::OcctResult<*mut HandleTransferActorOfFinderProcess>;
     /// Dereference Handle to get *const Transfer_ActorOfFinderProcess
     pub fn HandleTransferActorOfFinderProcess_get(
         handle: *const HandleTransferActorOfFinderProcess,
@@ -22418,6 +22866,10 @@ extern "C" {
     pub fn HandleTransferActorOfProcessForFinder_destructor(
         self_: *mut HandleTransferActorOfProcessForFinder,
     );
+    /// Clone Handle<Transfer_ActorOfProcessForFinder> (increments reference count)
+    pub fn HandleTransferActorOfProcessForFinder_clone(
+        self_: *const HandleTransferActorOfProcessForFinder,
+    ) -> crate::OcctResult<*mut HandleTransferActorOfProcessForFinder>;
     /// Dereference Handle to get *const Transfer_ActorOfProcessForFinder
     pub fn HandleTransferActorOfProcessForFinder_get(
         handle: *const HandleTransferActorOfProcessForFinder,
@@ -22548,6 +23000,10 @@ extern "C" {
     pub fn HandleTransferActorOfProcessForTransient_destructor(
         self_: *mut HandleTransferActorOfProcessForTransient,
     );
+    /// Clone Handle<Transfer_ActorOfProcessForTransient> (increments reference count)
+    pub fn HandleTransferActorOfProcessForTransient_clone(
+        self_: *const HandleTransferActorOfProcessForTransient,
+    ) -> crate::OcctResult<*mut HandleTransferActorOfProcessForTransient>;
     /// Dereference Handle to get *const Transfer_ActorOfProcessForTransient
     pub fn HandleTransferActorOfProcessForTransient_get(
         handle: *const HandleTransferActorOfProcessForTransient,
@@ -22692,6 +23148,10 @@ extern "C" {
     pub fn HandleTransferActorOfTransientProcess_destructor(
         self_: *mut HandleTransferActorOfTransientProcess,
     );
+    /// Clone Handle<Transfer_ActorOfTransientProcess> (increments reference count)
+    pub fn HandleTransferActorOfTransientProcess_clone(
+        self_: *const HandleTransferActorOfTransientProcess,
+    ) -> crate::OcctResult<*mut HandleTransferActorOfTransientProcess>;
     /// Dereference Handle to get *const Transfer_ActorOfTransientProcess
     pub fn HandleTransferActorOfTransientProcess_get(
         handle: *const HandleTransferActorOfTransientProcess,
@@ -22860,6 +23320,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Transfer_Binder>
     pub fn HandleTransferBinder_destructor(self_: *mut HandleTransferBinder);
+    /// Clone Handle<Transfer_Binder> (increments reference count)
+    pub fn HandleTransferBinder_clone(
+        self_: *const HandleTransferBinder,
+    ) -> crate::OcctResult<*mut HandleTransferBinder>;
     /// Dereference Handle to get *const Transfer_Binder
     pub fn HandleTransferBinder_get(
         handle: *const HandleTransferBinder,
@@ -22992,6 +23456,10 @@ extern "C" {
     pub fn HandleTransferBinderOfTransientInteger_destructor(
         self_: *mut HandleTransferBinderOfTransientInteger,
     );
+    /// Clone Handle<Transfer_BinderOfTransientInteger> (increments reference count)
+    pub fn HandleTransferBinderOfTransientInteger_clone(
+        self_: *const HandleTransferBinderOfTransientInteger,
+    ) -> crate::OcctResult<*mut HandleTransferBinderOfTransientInteger>;
     /// Dereference Handle to get *const Transfer_BinderOfTransientInteger
     pub fn HandleTransferBinderOfTransientInteger_get(
         handle: *const HandleTransferBinderOfTransientInteger,
@@ -23176,6 +23644,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferDispatchControl>;
     /// Destroy Handle<Transfer_DispatchControl>
     pub fn HandleTransferDispatchControl_destructor(self_: *mut HandleTransferDispatchControl);
+    /// Clone Handle<Transfer_DispatchControl> (increments reference count)
+    pub fn HandleTransferDispatchControl_clone(
+        self_: *const HandleTransferDispatchControl,
+    ) -> crate::OcctResult<*mut HandleTransferDispatchControl>;
     /// Dereference Handle to get *const Transfer_DispatchControl
     pub fn HandleTransferDispatchControl_get(
         handle: *const HandleTransferDispatchControl,
@@ -23353,6 +23825,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Transfer_Finder>
     pub fn HandleTransferFinder_destructor(self_: *mut HandleTransferFinder);
+    /// Clone Handle<Transfer_Finder> (increments reference count)
+    pub fn HandleTransferFinder_clone(
+        self_: *const HandleTransferFinder,
+    ) -> crate::OcctResult<*mut HandleTransferFinder>;
     /// Dereference Handle to get *const Transfer_Finder
     pub fn HandleTransferFinder_get(
         handle: *const HandleTransferFinder,
@@ -23472,6 +23948,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferFinderProcess>;
     /// Destroy Handle<Transfer_FinderProcess>
     pub fn HandleTransferFinderProcess_destructor(self_: *mut HandleTransferFinderProcess);
+    /// Clone Handle<Transfer_FinderProcess> (increments reference count)
+    pub fn HandleTransferFinderProcess_clone(
+        self_: *const HandleTransferFinderProcess,
+    ) -> crate::OcctResult<*mut HandleTransferFinderProcess>;
     /// Dereference Handle to get *const Transfer_FinderProcess
     pub fn HandleTransferFinderProcess_get(
         handle: *const HandleTransferFinderProcess,
@@ -23845,6 +24325,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferHSequenceOfBinder>;
     /// Destroy Handle<Transfer_HSequenceOfBinder>
     pub fn HandleTransferHSequenceOfBinder_destructor(self_: *mut HandleTransferHSequenceOfBinder);
+    /// Clone Handle<Transfer_HSequenceOfBinder> (increments reference count)
+    pub fn HandleTransferHSequenceOfBinder_clone(
+        self_: *const HandleTransferHSequenceOfBinder,
+    ) -> crate::OcctResult<*mut HandleTransferHSequenceOfBinder>;
     /// Dereference Handle to get *const Transfer_HSequenceOfBinder
     pub fn HandleTransferHSequenceOfBinder_get(
         handle: *const HandleTransferHSequenceOfBinder,
@@ -23936,6 +24420,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferHSequenceOfFinder>;
     /// Destroy Handle<Transfer_HSequenceOfFinder>
     pub fn HandleTransferHSequenceOfFinder_destructor(self_: *mut HandleTransferHSequenceOfFinder);
+    /// Clone Handle<Transfer_HSequenceOfFinder> (increments reference count)
+    pub fn HandleTransferHSequenceOfFinder_clone(
+        self_: *const HandleTransferHSequenceOfFinder,
+    ) -> crate::OcctResult<*mut HandleTransferHSequenceOfFinder>;
     /// Dereference Handle to get *const Transfer_HSequenceOfFinder
     pub fn HandleTransferHSequenceOfFinder_get(
         handle: *const HandleTransferHSequenceOfFinder,
@@ -24264,6 +24752,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferMapContainer>;
     /// Destroy Handle<Transfer_MapContainer>
     pub fn HandleTransferMapContainer_destructor(self_: *mut HandleTransferMapContainer);
+    /// Clone Handle<Transfer_MapContainer> (increments reference count)
+    pub fn HandleTransferMapContainer_clone(
+        self_: *const HandleTransferMapContainer,
+    ) -> crate::OcctResult<*mut HandleTransferMapContainer>;
     /// Dereference Handle to get *const Transfer_MapContainer
     pub fn HandleTransferMapContainer_get(
         handle: *const HandleTransferMapContainer,
@@ -24376,6 +24868,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferMultipleBinder>;
     /// Destroy Handle<Transfer_MultipleBinder>
     pub fn HandleTransferMultipleBinder_destructor(self_: *mut HandleTransferMultipleBinder);
+    /// Clone Handle<Transfer_MultipleBinder> (increments reference count)
+    pub fn HandleTransferMultipleBinder_clone(
+        self_: *const HandleTransferMultipleBinder,
+    ) -> crate::OcctResult<*mut HandleTransferMultipleBinder>;
     /// Dereference Handle to get *const Transfer_MultipleBinder
     pub fn HandleTransferMultipleBinder_get(
         handle: *const HandleTransferMultipleBinder,
@@ -24822,6 +25318,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferProcessForFinder>;
     /// Destroy Handle<Transfer_ProcessForFinder>
     pub fn HandleTransferProcessForFinder_destructor(self_: *mut HandleTransferProcessForFinder);
+    /// Clone Handle<Transfer_ProcessForFinder> (increments reference count)
+    pub fn HandleTransferProcessForFinder_clone(
+        self_: *const HandleTransferProcessForFinder,
+    ) -> crate::OcctResult<*mut HandleTransferProcessForFinder>;
     /// Dereference Handle to get *const Transfer_ProcessForFinder
     pub fn HandleTransferProcessForFinder_get(
         handle: *const HandleTransferProcessForFinder,
@@ -25232,6 +25732,10 @@ extern "C" {
     pub fn HandleTransferProcessForTransient_destructor(
         self_: *mut HandleTransferProcessForTransient,
     );
+    /// Clone Handle<Transfer_ProcessForTransient> (increments reference count)
+    pub fn HandleTransferProcessForTransient_clone(
+        self_: *const HandleTransferProcessForTransient,
+    ) -> crate::OcctResult<*mut HandleTransferProcessForTransient>;
     /// Dereference Handle to get *const Transfer_ProcessForTransient
     pub fn HandleTransferProcessForTransient_get(
         handle: *const HandleTransferProcessForTransient,
@@ -25396,6 +25900,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferResultFromModel>;
     /// Destroy Handle<Transfer_ResultFromModel>
     pub fn HandleTransferResultFromModel_destructor(self_: *mut HandleTransferResultFromModel);
+    /// Clone Handle<Transfer_ResultFromModel> (increments reference count)
+    pub fn HandleTransferResultFromModel_clone(
+        self_: *const HandleTransferResultFromModel,
+    ) -> crate::OcctResult<*mut HandleTransferResultFromModel>;
     /// Dereference Handle to get *const Transfer_ResultFromModel
     pub fn HandleTransferResultFromModel_get(
         handle: *const HandleTransferResultFromModel,
@@ -25540,6 +26048,10 @@ extern "C" {
     pub fn HandleTransferResultFromTransient_destructor(
         self_: *mut HandleTransferResultFromTransient,
     );
+    /// Clone Handle<Transfer_ResultFromTransient> (increments reference count)
+    pub fn HandleTransferResultFromTransient_clone(
+        self_: *const HandleTransferResultFromTransient,
+    ) -> crate::OcctResult<*mut HandleTransferResultFromTransient>;
     /// Dereference Handle to get *const Transfer_ResultFromTransient
     pub fn HandleTransferResultFromTransient_get(
         handle: *const HandleTransferResultFromTransient,
@@ -25646,6 +26158,10 @@ extern "C" {
     pub fn HandleTransferSimpleBinderOfTransient_destructor(
         self_: *mut HandleTransferSimpleBinderOfTransient,
     );
+    /// Clone Handle<Transfer_SimpleBinderOfTransient> (increments reference count)
+    pub fn HandleTransferSimpleBinderOfTransient_clone(
+        self_: *const HandleTransferSimpleBinderOfTransient,
+    ) -> crate::OcctResult<*mut HandleTransferSimpleBinderOfTransient>;
     /// Dereference Handle to get *const Transfer_SimpleBinderOfTransient
     pub fn HandleTransferSimpleBinderOfTransient_get(
         handle: *const HandleTransferSimpleBinderOfTransient,
@@ -25820,6 +26336,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferTransferDeadLoop>;
     /// Destroy Handle<Transfer_TransferDeadLoop>
     pub fn HandleTransferTransferDeadLoop_destructor(self_: *mut HandleTransferTransferDeadLoop);
+    /// Clone Handle<Transfer_TransferDeadLoop> (increments reference count)
+    pub fn HandleTransferTransferDeadLoop_clone(
+        self_: *const HandleTransferTransferDeadLoop,
+    ) -> crate::OcctResult<*mut HandleTransferTransferDeadLoop>;
     /// Dereference Handle to get *const Transfer_TransferDeadLoop
     pub fn HandleTransferTransferDeadLoop_get(
         handle: *const HandleTransferTransferDeadLoop,
@@ -26061,6 +26581,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferTransferFailure>;
     /// Destroy Handle<Transfer_TransferFailure>
     pub fn HandleTransferTransferFailure_destructor(self_: *mut HandleTransferTransferFailure);
+    /// Clone Handle<Transfer_TransferFailure> (increments reference count)
+    pub fn HandleTransferTransferFailure_clone(
+        self_: *const HandleTransferTransferFailure,
+    ) -> crate::OcctResult<*mut HandleTransferTransferFailure>;
     /// Dereference Handle to get *const Transfer_TransferFailure
     pub fn HandleTransferTransferFailure_get(
         handle: *const HandleTransferTransferFailure,
@@ -26387,6 +26911,10 @@ extern "C" {
     pub fn HandleTransferTransientListBinder_destructor(
         self_: *mut HandleTransferTransientListBinder,
     );
+    /// Clone Handle<Transfer_TransientListBinder> (increments reference count)
+    pub fn HandleTransferTransientListBinder_clone(
+        self_: *const HandleTransferTransientListBinder,
+    ) -> crate::OcctResult<*mut HandleTransferTransientListBinder>;
     /// Dereference Handle to get *const Transfer_TransientListBinder
     pub fn HandleTransferTransientListBinder_get(
         handle: *const HandleTransferTransientListBinder,
@@ -26525,6 +27053,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferTransientMapper>;
     /// Destroy Handle<Transfer_TransientMapper>
     pub fn HandleTransferTransientMapper_destructor(self_: *mut HandleTransferTransientMapper);
+    /// Clone Handle<Transfer_TransientMapper> (increments reference count)
+    pub fn HandleTransferTransientMapper_clone(
+        self_: *const HandleTransferTransientMapper,
+    ) -> crate::OcctResult<*mut HandleTransferTransientMapper>;
     /// Dereference Handle to get *const Transfer_TransientMapper
     pub fn HandleTransferTransientMapper_get(
         handle: *const HandleTransferTransientMapper,
@@ -26701,6 +27233,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferTransientProcess>;
     /// Destroy Handle<Transfer_TransientProcess>
     pub fn HandleTransferTransientProcess_destructor(self_: *mut HandleTransferTransientProcess);
+    /// Clone Handle<Transfer_TransientProcess> (increments reference count)
+    pub fn HandleTransferTransientProcess_clone(
+        self_: *const HandleTransferTransientProcess,
+    ) -> crate::OcctResult<*mut HandleTransferTransientProcess>;
     /// Dereference Handle to get *const Transfer_TransientProcess
     pub fn HandleTransferTransientProcess_get(
         handle: *const HandleTransferTransientProcess,
@@ -27062,6 +27598,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferVoidBinder>;
     /// Destroy Handle<Transfer_VoidBinder>
     pub fn HandleTransferVoidBinder_destructor(self_: *mut HandleTransferVoidBinder);
+    /// Clone Handle<Transfer_VoidBinder> (increments reference count)
+    pub fn HandleTransferVoidBinder_clone(
+        self_: *const HandleTransferVoidBinder,
+    ) -> crate::OcctResult<*mut HandleTransferVoidBinder>;
     /// Dereference Handle to get *const Transfer_VoidBinder
     pub fn HandleTransferVoidBinder_get(
         handle: *const HandleTransferVoidBinder,
@@ -27215,6 +27755,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferBRepBinderOfShape>;
     /// Destroy Handle<TransferBRep_BinderOfShape>
     pub fn HandleTransferBRepBinderOfShape_destructor(self_: *mut HandleTransferBRepBinderOfShape);
+    /// Clone Handle<TransferBRep_BinderOfShape> (increments reference count)
+    pub fn HandleTransferBRepBinderOfShape_clone(
+        self_: *const HandleTransferBRepBinderOfShape,
+    ) -> crate::OcctResult<*mut HandleTransferBRepBinderOfShape>;
     /// Dereference Handle to get *const TransferBRep_BinderOfShape
     pub fn HandleTransferBRepBinderOfShape_get(
         handle: *const HandleTransferBRepBinderOfShape,
@@ -27367,6 +27911,10 @@ extern "C" {
     pub fn HandleTransferBRepHSequenceOfTransferResultInfo_destructor(
         self_: *mut HandleTransferBRepHSequenceOfTransferResultInfo,
     );
+    /// Clone Handle<TransferBRep_HSequenceOfTransferResultInfo> (increments reference count)
+    pub fn HandleTransferBRepHSequenceOfTransferResultInfo_clone(
+        self_: *const HandleTransferBRepHSequenceOfTransferResultInfo,
+    ) -> crate::OcctResult<*mut HandleTransferBRepHSequenceOfTransferResultInfo>;
     /// Dereference Handle to get *const TransferBRep_HSequenceOfTransferResultInfo
     pub fn HandleTransferBRepHSequenceOfTransferResultInfo_get(
         handle: *const HandleTransferBRepHSequenceOfTransferResultInfo,
@@ -27636,6 +28184,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferBRepShapeBinder>;
     /// Destroy Handle<TransferBRep_ShapeBinder>
     pub fn HandleTransferBRepShapeBinder_destructor(self_: *mut HandleTransferBRepShapeBinder);
+    /// Clone Handle<TransferBRep_ShapeBinder> (increments reference count)
+    pub fn HandleTransferBRepShapeBinder_clone(
+        self_: *const HandleTransferBRepShapeBinder,
+    ) -> crate::OcctResult<*mut HandleTransferBRepShapeBinder>;
     /// Dereference Handle to get *const TransferBRep_ShapeBinder
     pub fn HandleTransferBRepShapeBinder_get(
         handle: *const HandleTransferBRepShapeBinder,
@@ -27885,6 +28437,10 @@ extern "C" {
     pub fn HandleTransferBRepShapeListBinder_destructor(
         self_: *mut HandleTransferBRepShapeListBinder,
     );
+    /// Clone Handle<TransferBRep_ShapeListBinder> (increments reference count)
+    pub fn HandleTransferBRepShapeListBinder_clone(
+        self_: *const HandleTransferBRepShapeListBinder,
+    ) -> crate::OcctResult<*mut HandleTransferBRepShapeListBinder>;
     /// Dereference Handle to get *const TransferBRep_ShapeListBinder
     pub fn HandleTransferBRepShapeListBinder_get(
         handle: *const HandleTransferBRepShapeListBinder,
@@ -28023,6 +28579,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTransferBRepShapeMapper>;
     /// Destroy Handle<TransferBRep_ShapeMapper>
     pub fn HandleTransferBRepShapeMapper_destructor(self_: *mut HandleTransferBRepShapeMapper);
+    /// Clone Handle<TransferBRep_ShapeMapper> (increments reference count)
+    pub fn HandleTransferBRepShapeMapper_clone(
+        self_: *const HandleTransferBRepShapeMapper,
+    ) -> crate::OcctResult<*mut HandleTransferBRepShapeMapper>;
     /// Dereference Handle to get *const TransferBRep_ShapeMapper
     pub fn HandleTransferBRepShapeMapper_get(
         handle: *const HandleTransferBRepShapeMapper,
@@ -28149,6 +28709,10 @@ extern "C" {
     pub fn HandleTransferBRepTransferResultInfo_destructor(
         self_: *mut HandleTransferBRepTransferResultInfo,
     );
+    /// Clone Handle<TransferBRep_TransferResultInfo> (increments reference count)
+    pub fn HandleTransferBRepTransferResultInfo_clone(
+        self_: *const HandleTransferBRepTransferResultInfo,
+    ) -> crate::OcctResult<*mut HandleTransferBRepTransferResultInfo>;
     /// Dereference Handle to get *const TransferBRep_TransferResultInfo
     pub fn HandleTransferBRepTransferResultInfo_get(
         handle: *const HandleTransferBRepTransferResultInfo,
@@ -28255,6 +28819,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXSAlgoAlgoContainer>;
     /// Destroy Handle<XSAlgo_AlgoContainer>
     pub fn HandleXSAlgoAlgoContainer_destructor(self_: *mut HandleXSAlgoAlgoContainer);
+    /// Clone Handle<XSAlgo_AlgoContainer> (increments reference count)
+    pub fn HandleXSAlgoAlgoContainer_clone(
+        self_: *const HandleXSAlgoAlgoContainer,
+    ) -> crate::OcctResult<*mut HandleXSAlgoAlgoContainer>;
     /// Dereference Handle to get *const XSAlgo_AlgoContainer
     pub fn HandleXSAlgoAlgoContainer_get(
         handle: *const HandleXSAlgoAlgoContainer,
@@ -28468,6 +29036,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXSControlConnectedShapes>;
     /// Destroy Handle<XSControl_ConnectedShapes>
     pub fn HandleXSControlConnectedShapes_destructor(self_: *mut HandleXSControlConnectedShapes);
+    /// Clone Handle<XSControl_ConnectedShapes> (increments reference count)
+    pub fn HandleXSControlConnectedShapes_clone(
+        self_: *const HandleXSControlConnectedShapes,
+    ) -> crate::OcctResult<*mut HandleXSControlConnectedShapes>;
     /// Dereference Handle to get *const XSControl_ConnectedShapes
     pub fn HandleXSControlConnectedShapes_get(
         handle: *const HandleXSControlConnectedShapes,
@@ -28725,6 +29297,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<XSControl_Controller>
     pub fn HandleXSControlController_destructor(self_: *mut HandleXSControlController);
+    /// Clone Handle<XSControl_Controller> (increments reference count)
+    pub fn HandleXSControlController_clone(
+        self_: *const HandleXSControlController,
+    ) -> crate::OcctResult<*mut HandleXSControlController>;
     /// Dereference Handle to get *const XSControl_Controller
     pub fn HandleXSControlController_get(
         handle: *const HandleXSControlController,
@@ -29069,6 +29645,10 @@ extern "C" {
     pub fn HandleXSControlSelectForTransfer_destructor(
         self_: *mut HandleXSControlSelectForTransfer,
     );
+    /// Clone Handle<XSControl_SelectForTransfer> (increments reference count)
+    pub fn HandleXSControlSelectForTransfer_clone(
+        self_: *const HandleXSControlSelectForTransfer,
+    ) -> crate::OcctResult<*mut HandleXSControlSelectForTransfer>;
     /// Dereference Handle to get *const XSControl_SelectForTransfer
     pub fn HandleXSControlSelectForTransfer_get(
         handle: *const HandleXSControlSelectForTransfer,
@@ -29275,6 +29855,10 @@ extern "C" {
     pub fn HandleXSControlSignTransferStatus_destructor(
         self_: *mut HandleXSControlSignTransferStatus,
     );
+    /// Clone Handle<XSControl_SignTransferStatus> (increments reference count)
+    pub fn HandleXSControlSignTransferStatus_clone(
+        self_: *const HandleXSControlSignTransferStatus,
+    ) -> crate::OcctResult<*mut HandleXSControlSignTransferStatus>;
     /// Dereference Handle to get *const XSControl_SignTransferStatus
     pub fn HandleXSControlSignTransferStatus_get(
         handle: *const HandleXSControlSignTransferStatus,
@@ -29643,6 +30227,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXSControlTransferReader>;
     /// Destroy Handle<XSControl_TransferReader>
     pub fn HandleXSControlTransferReader_destructor(self_: *mut HandleXSControlTransferReader);
+    /// Clone Handle<XSControl_TransferReader> (increments reference count)
+    pub fn HandleXSControlTransferReader_clone(
+        self_: *const HandleXSControlTransferReader,
+    ) -> crate::OcctResult<*mut HandleXSControlTransferReader>;
     /// Dereference Handle to get *const XSControl_TransferReader
     pub fn HandleXSControlTransferReader_get(
         handle: *const HandleXSControlTransferReader,
@@ -29783,6 +30371,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXSControlTransferWriter>;
     /// Destroy Handle<XSControl_TransferWriter>
     pub fn HandleXSControlTransferWriter_destructor(self_: *mut HandleXSControlTransferWriter);
+    /// Clone Handle<XSControl_TransferWriter> (increments reference count)
+    pub fn HandleXSControlTransferWriter_clone(
+        self_: *const HandleXSControlTransferWriter,
+    ) -> crate::OcctResult<*mut HandleXSControlTransferWriter>;
     /// Dereference Handle to get *const XSControl_TransferWriter
     pub fn HandleXSControlTransferWriter_get(
         handle: *const HandleXSControlTransferWriter,
@@ -30135,6 +30727,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXSControlVars>;
     /// Destroy Handle<XSControl_Vars>
     pub fn HandleXSControlVars_destructor(self_: *mut HandleXSControlVars);
+    /// Clone Handle<XSControl_Vars> (increments reference count)
+    pub fn HandleXSControlVars_clone(
+        self_: *const HandleXSControlVars,
+    ) -> crate::OcctResult<*mut HandleXSControlVars>;
     /// Dereference Handle to get *const XSControl_Vars
     pub fn HandleXSControlVars_get(
         handle: *const HandleXSControlVars,
@@ -30328,6 +30924,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleXSControlWorkSession>;
     /// Destroy Handle<XSControl_WorkSession>
     pub fn HandleXSControlWorkSession_destructor(self_: *mut HandleXSControlWorkSession);
+    /// Clone Handle<XSControl_WorkSession> (increments reference count)
+    pub fn HandleXSControlWorkSession_clone(
+        self_: *const HandleXSControlWorkSession,
+    ) -> crate::OcctResult<*mut HandleXSControlWorkSession>;
     /// Dereference Handle to get *const XSControl_WorkSession
     pub fn HandleXSControlWorkSession_get(
         handle: *const HandleXSControlWorkSession,

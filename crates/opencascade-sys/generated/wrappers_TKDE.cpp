@@ -66,12 +66,32 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleDEConfigurationContext_destructor(HandleDEConfigurationContext* self_) { delete self_; }
+extern "C" OcctResult<HandleDEConfigurationContext*> HandleDEConfigurationContext_clone(const HandleDEConfigurationContext* self_) {
+    try { return {new HandleDEConfigurationContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDEConfigurationNode_destructor(HandleDEConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<HandleDEConfigurationNode*> HandleDEConfigurationNode_clone(const HandleDEConfigurationNode* self_) {
+    try { return {new HandleDEConfigurationNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDEProvider_destructor(HandleDEProvider* self_) { delete self_; }
+extern "C" OcctResult<HandleDEProvider*> HandleDEProvider_clone(const HandleDEProvider* self_) {
+    try { return {new HandleDEProvider(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDEShapeFixConfigurationNode_destructor(HandleDEShapeFixConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<HandleDEShapeFixConfigurationNode*> HandleDEShapeFixConfigurationNode_clone(const HandleDEShapeFixConfigurationNode* self_) {
+    try { return {new HandleDEShapeFixConfigurationNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDEWrapper_destructor(HandleDEWrapper* self_) { delete self_; }
+extern "C" OcctResult<HandleDEWrapper*> HandleDEWrapper_clone(const HandleDEWrapper* self_) {
+    try { return {new HandleDEWrapper(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // DE_ConfigurationContext wrappers

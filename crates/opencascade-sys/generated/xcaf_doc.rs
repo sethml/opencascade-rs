@@ -855,6 +855,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocArea {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocArea {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocArea_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocArea {
     /// Dereference this Handle to access the underlying XCAFDoc_Area
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_Area {
@@ -1217,6 +1223,12 @@ pub use crate::ffi_types::HandleXCAFDocAssemblyGraph;
 unsafe impl crate::CppDeletable for HandleXCAFDocAssemblyGraph {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocAssemblyGraph_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocAssemblyGraph {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocAssemblyGraph_clone(ptr))
     }
 }
 
@@ -2259,6 +2271,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocAssemblyItemRef {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocAssemblyItemRef {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocAssemblyItemRef_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocAssemblyItemRef {
     /// Dereference this Handle to access the underlying XCAFDoc_AssemblyItemRef
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_AssemblyItemRef {
@@ -2958,6 +2976,12 @@ pub use crate::ffi_types::HandleXCAFDocCentroid;
 unsafe impl crate::CppDeletable for HandleXCAFDocCentroid {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocCentroid_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocCentroid {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocCentroid_clone(ptr))
     }
 }
 
@@ -3805,6 +3829,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocClippingPlaneTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocClippingPlaneTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocClippingPlaneTool_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocClippingPlaneTool {
     /// Dereference this Handle to access the underlying XCAFDoc_ClippingPlaneTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_ClippingPlaneTool {
@@ -4482,6 +4512,12 @@ pub use crate::ffi_types::HandleXCAFDocColor;
 unsafe impl crate::CppDeletable for HandleXCAFDocColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocColor_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocColor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocColor_clone(ptr))
     }
 }
 
@@ -5732,6 +5768,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocColorTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocColorTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocColorTool_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocColorTool {
     /// Dereference this Handle to access the underlying XCAFDoc_ColorTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_ColorTool {
@@ -6397,6 +6439,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocDatum {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocDatum {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocDatum_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocDatum {
     /// Dereference this Handle to access the underlying XCAFDoc_Datum
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_Datum {
@@ -7021,6 +7069,12 @@ pub use crate::ffi_types::HandleXCAFDocDimTol;
 unsafe impl crate::CppDeletable for HandleXCAFDocDimTol {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocDimTol_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocDimTol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocDimTol_clone(ptr))
     }
 }
 
@@ -8223,6 +8277,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocDimTolTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocDimTolTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocDimTolTool_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocDimTolTool {
     /// Dereference this Handle to access the underlying XCAFDoc_DimTolTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_DimTolTool {
@@ -8869,6 +8929,12 @@ pub use crate::ffi_types::HandleXCAFDocDimension;
 unsafe impl crate::CppDeletable for HandleXCAFDocDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocDimension_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocDimension_clone(ptr))
     }
 }
 
@@ -9872,6 +9938,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocDocumentTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocDocumentTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocDocumentTool_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocDocumentTool {
     /// Dereference this Handle to access the underlying XCAFDoc_DocumentTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_DocumentTool {
@@ -10800,6 +10872,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocGeomTolerance {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocGeomTolerance {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocGeomTolerance_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocGeomTolerance {
     /// Dereference this Handle to access the underlying XCAFDoc_GeomTolerance
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_GeomTolerance {
@@ -11600,6 +11678,12 @@ pub use crate::ffi_types::HandleXCAFDocGraphNode;
 unsafe impl crate::CppDeletable for HandleXCAFDocGraphNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocGraphNode_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocGraphNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocGraphNode_clone(ptr))
     }
 }
 
@@ -12705,6 +12789,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocLayerTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocLayerTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocLayerTool_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocLayerTool {
     /// Dereference this Handle to access the underlying XCAFDoc_LayerTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_LayerTool {
@@ -13408,6 +13498,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocLengthUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocLengthUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocLengthUnit_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocLengthUnit {
     /// Dereference this Handle to access the underlying XCAFDoc_LengthUnit
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_LengthUnit {
@@ -14006,6 +14102,12 @@ pub use crate::ffi_types::HandleXCAFDocLocation;
 unsafe impl crate::CppDeletable for HandleXCAFDocLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocLocation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocLocation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocLocation_clone(ptr))
     }
 }
 
@@ -14656,6 +14758,12 @@ pub use crate::ffi_types::HandleXCAFDocMaterial;
 unsafe impl crate::CppDeletable for HandleXCAFDocMaterial {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocMaterial_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocMaterial {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocMaterial_clone(ptr))
     }
 }
 
@@ -15412,6 +15520,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocMaterialTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocMaterialTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocMaterialTool_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocMaterialTool {
     /// Dereference this Handle to access the underlying XCAFDoc_MaterialTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_MaterialTool {
@@ -16040,6 +16154,12 @@ pub use crate::ffi_types::HandleXCAFDocNote;
 unsafe impl crate::CppDeletable for HandleXCAFDocNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocNote_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocNote {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocNote_clone(ptr))
     }
 }
 
@@ -16815,6 +16935,12 @@ pub use crate::ffi_types::HandleXCAFDocNoteBalloon;
 unsafe impl crate::CppDeletable for HandleXCAFDocNoteBalloon {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocNoteBalloon_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocNoteBalloon {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocNoteBalloon_clone(ptr))
     }
 }
 
@@ -17639,6 +17765,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocNoteBinData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocNoteBinData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocNoteBinData_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocNoteBinData {
     /// Dereference this Handle to access the underlying XCAFDoc_NoteBinData
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_NoteBinData {
@@ -18369,6 +18501,12 @@ pub use crate::ffi_types::HandleXCAFDocNoteComment;
 unsafe impl crate::CppDeletable for HandleXCAFDocNoteComment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocNoteComment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocNoteComment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocNoteComment_clone(ptr))
     }
 }
 
@@ -19921,6 +20059,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocNotesTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocNotesTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocNotesTool_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocNotesTool {
     /// Dereference this Handle to access the underlying XCAFDoc_NotesTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_NotesTool {
@@ -20552,6 +20696,12 @@ pub use crate::ffi_types::HandleXCAFDocShapeMapTool;
 unsafe impl crate::CppDeletable for HandleXCAFDocShapeMapTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocShapeMapTool_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocShapeMapTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocShapeMapTool_clone(ptr))
     }
 }
 
@@ -22162,6 +22312,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocShapeTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocShapeTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocShapeTool_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocShapeTool {
     /// Dereference this Handle to access the underlying XCAFDoc_ShapeTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_ShapeTool {
@@ -22763,6 +22919,12 @@ pub use crate::ffi_types::HandleXCAFDocView;
 unsafe impl crate::CppDeletable for HandleXCAFDocView {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocView_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocView {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocView_clone(ptr))
     }
 }
 
@@ -23702,6 +23864,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocViewTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocViewTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocViewTool_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocViewTool {
     /// Dereference this Handle to access the underlying XCAFDoc_ViewTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_ViewTool {
@@ -24545,6 +24713,12 @@ pub use crate::ffi_types::HandleXCAFDocVisMaterial;
 unsafe impl crate::CppDeletable for HandleXCAFDocVisMaterial {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocVisMaterial_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocVisMaterial {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocVisMaterial_clone(ptr))
     }
 }
 
@@ -25486,6 +25660,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDocVisMaterialTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDocVisMaterialTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocVisMaterialTool_clone(ptr))
+    }
+}
+
 impl HandleXCAFDocVisMaterialTool {
     /// Dereference this Handle to access the underlying XCAFDoc_VisMaterialTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_VisMaterialTool {
@@ -26125,6 +26305,12 @@ pub use crate::ffi_types::HandleXCAFDocVolume;
 unsafe impl crate::CppDeletable for HandleXCAFDocVolume {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDocVolume_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDocVolume {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDocVolume_clone(ptr))
     }
 }
 

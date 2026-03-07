@@ -45,7 +45,7 @@ pub struct ClassBindings {
     pub wrapper_methods: Vec<WrapperMethodBinding>,
     pub static_methods: Vec<StaticMethodBinding>,
     pub upcasts: Vec<UpcastBinding>,
-    pub has_to_owned: bool,
+    pub is_copyable: bool,
     pub has_to_handle: bool,
     /// Whether Handle_get/get_mut should be generated (true for all handle types, including abstract)
     pub has_handle_get: bool,
@@ -2076,7 +2076,7 @@ pub fn compute_class_bindings(
             }
         }
     };
-    let has_to_owned = is_copyable
+    let is_cloneable = is_copyable
         && !class.has_protected_destructor
         && !effectively_abstract;
 
@@ -2162,7 +2162,7 @@ pub fn compute_class_bindings(
         wrapper_methods,
         static_methods,
         upcasts,
-        has_to_owned,
+        is_copyable: is_cloneable,
         has_to_handle,
         has_handle_get,
         handle_upcasts,
@@ -4148,9 +4148,9 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         .unwrap();
     }
 
-    // 7. to_owned wrapper
-    if bindings.has_to_owned {
-        let fn_name = format!("{ffi_cn}_to_owned");
+    // 7. Clone wrapper (copy constructor) for value types
+    if bindings.is_copyable {
+        let fn_name = format!("{ffi_cn}_clone");
         writeln!(
             output,
             "extern \"C\" OcctResult<{cn}*> {fn_name}(const {cn}* self_) {{"
@@ -4873,12 +4873,16 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         ));
     }
 
-    // 5. to_owned
-    if bindings.has_to_owned {
-        let ffi_fn_name = format!("{}_to_owned", cn);
-        impl_methods.push(format!(
-            "    /// Clone into a new OwnedPtr via copy constructor\n    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::{}(self as *const Self))) }}\n    }}\n",
-            ffi_fn_name
+    // 5. CppCopyable + ToOwned for value types (enables Clone on OwnedPtr<T> and .to_owned() on &T)
+    if bindings.is_copyable {
+        let ffi_fn_name = format!("{}_clone", cn);
+        output.push_str(&format!(
+            "unsafe impl crate::CppCopyable for {} {{\n    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {{\n        crate::check_result(crate::ffi::{}(ptr))\n    }}\n}}\n\n",
+            short_name, ffi_fn_name
+        ));
+        output.push_str(&format!(
+            "impl std::borrow::ToOwned for {} {{\n    type Owned = crate::OwnedPtr<Self>;\n    fn to_owned(&self) -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self)) }}\n    }}\n}}\n\n",
+            short_name
         ));
     }
 
@@ -4981,6 +4985,12 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         // CppDeletable for handle type
         output.push_str(&format!(
             "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        crate::ffi::{}_destructor(ptr);\n    }}\n}}\n\n",
+            handle_type_name, handle_type_name
+        ));
+
+        // CppCopyable for handle type (enables Clone on OwnedPtr<HandleT>)
+        output.push_str(&format!(
+            "unsafe impl crate::CppCopyable for {} {{\n    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {{\n        crate::check_result(crate::ffi::{}_clone(ptr))\n    }}\n}}\n\n",
             handle_type_name, handle_type_name
         ));
 
@@ -5252,10 +5262,10 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
         writeln!(out, "    pub fn {}(self_: *mut {}) -> crate::OcctResult<*mut {}>;", up.ffi_fn_name_mut, cn, up.base_class).unwrap();
     }
 
-    // ── to_owned ────────────────────────────────────────────────────────────────
-    if bindings.has_to_owned {
+    // ── Clone (copy constructor for value types) ────────────────────────────────
+    if bindings.is_copyable {
         writeln!(out, "    /// Clone via copy constructor").unwrap();
-        writeln!(out, "    pub fn {}_to_owned(self_: *const {}) -> crate::OcctResult<*mut {}>;", cn, cn, cn).unwrap();
+        writeln!(out, "    pub fn {}_clone(self_: *const {}) -> crate::OcctResult<*mut {}>;", cn, cn, cn).unwrap();
     }
 
     // ── to_handle ───────────────────────────────────────────────────────────────
@@ -5265,11 +5275,13 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
         writeln!(out, "    pub fn {}_to_handle(obj: *mut {}) -> crate::OcctResult<*mut {}>;", cn, cn, handle_type_name).unwrap();
     }
 
-    // ── Handle get (dereference) ───────────────────────────────────────────────
+    // ── Handle get (dereference) and clone ──────────────────────────────────
     if bindings.has_handle_get {
         let handle_type_name = type_mapping::handle_type_name(cn);
         writeln!(out, "    /// Destroy Handle<{}>", cn).unwrap();
         writeln!(out, "    pub fn {}_destructor(self_: *mut {});", handle_type_name, handle_type_name).unwrap();
+        writeln!(out, "    /// Clone Handle<{}> (increments reference count)", cn).unwrap();
+        writeln!(out, "    pub fn {}_clone(self_: *const {}) -> crate::OcctResult<*mut {}>;", handle_type_name, handle_type_name, handle_type_name).unwrap();
         writeln!(out, "    /// Dereference Handle to get *const {}", cn).unwrap();
         writeln!(out, "    pub fn {}_get(handle: *const {}) -> crate::OcctResult<*const {}>;", handle_type_name, handle_type_name, cn).unwrap();
         writeln!(out, "    /// Dereference Handle to get *mut {}", cn).unwrap();
@@ -5438,7 +5450,7 @@ mod tests {
         assert!(bindings.static_methods.is_empty());
         assert!(!bindings.has_to_handle);
         // gp module is copyable, and class is not abstract/protected
-        assert!(bindings.has_to_owned);
+        assert!(bindings.is_copyable);
     }
 
     /// Test that abstract classes don't get constructors
@@ -5519,7 +5531,7 @@ mod tests {
         );
 
         assert!(bindings.constructors.is_empty());
-        assert!(!bindings.has_to_owned);
+        assert!(!bindings.is_copyable);
         assert!(!bindings.has_to_handle); // abstract
     }
 

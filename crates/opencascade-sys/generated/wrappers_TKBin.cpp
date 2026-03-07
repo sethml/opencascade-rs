@@ -70,17 +70,57 @@ typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleBinDriversDocumentRetrievalDriver_destructor(HandleBinDriversDocumentRetrievalDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleBinDriversDocumentRetrievalDriver*> HandleBinDriversDocumentRetrievalDriver_clone(const HandleBinDriversDocumentRetrievalDriver* self_) {
+    try { return {new HandleBinDriversDocumentRetrievalDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBinDriversDocumentStorageDriver_destructor(HandleBinDriversDocumentStorageDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleBinDriversDocumentStorageDriver*> HandleBinDriversDocumentStorageDriver_clone(const HandleBinDriversDocumentStorageDriver* self_) {
+    try { return {new HandleBinDriversDocumentStorageDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBinMDataXtdConstraintDriver_destructor(HandleBinMDataXtdConstraintDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleBinMDataXtdConstraintDriver*> HandleBinMDataXtdConstraintDriver_clone(const HandleBinMDataXtdConstraintDriver* self_) {
+    try { return {new HandleBinMDataXtdConstraintDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBinMDataXtdGeometryDriver_destructor(HandleBinMDataXtdGeometryDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleBinMDataXtdGeometryDriver*> HandleBinMDataXtdGeometryDriver_clone(const HandleBinMDataXtdGeometryDriver* self_) {
+    try { return {new HandleBinMDataXtdGeometryDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBinMDataXtdPatternStdDriver_destructor(HandleBinMDataXtdPatternStdDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleBinMDataXtdPatternStdDriver*> HandleBinMDataXtdPatternStdDriver_clone(const HandleBinMDataXtdPatternStdDriver* self_) {
+    try { return {new HandleBinMDataXtdPatternStdDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBinMDataXtdPositionDriver_destructor(HandleBinMDataXtdPositionDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleBinMDataXtdPositionDriver*> HandleBinMDataXtdPositionDriver_clone(const HandleBinMDataXtdPositionDriver* self_) {
+    try { return {new HandleBinMDataXtdPositionDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBinMDataXtdPresentationDriver_destructor(HandleBinMDataXtdPresentationDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleBinMDataXtdPresentationDriver*> HandleBinMDataXtdPresentationDriver_clone(const HandleBinMDataXtdPresentationDriver* self_) {
+    try { return {new HandleBinMDataXtdPresentationDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBinMDataXtdTriangulationDriver_destructor(HandleBinMDataXtdTriangulationDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleBinMDataXtdTriangulationDriver*> HandleBinMDataXtdTriangulationDriver_clone(const HandleBinMDataXtdTriangulationDriver* self_) {
+    try { return {new HandleBinMDataXtdTriangulationDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBinMNamingNamedShapeDriver_destructor(HandleBinMNamingNamedShapeDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleBinMNamingNamedShapeDriver*> HandleBinMNamingNamedShapeDriver_clone(const HandleBinMNamingNamedShapeDriver* self_) {
+    try { return {new HandleBinMNamingNamedShapeDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBinMNamingNamingDriver_destructor(HandleBinMNamingNamingDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleBinMNamingNamingDriver*> HandleBinMNamingNamingDriver_clone(const HandleBinMNamingNamingDriver* self_) {
+    try { return {new HandleBinMNamingNamingDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // BinDrivers_DocumentRetrievalDriver wrappers

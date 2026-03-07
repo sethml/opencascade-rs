@@ -414,6 +414,12 @@ unsafe impl crate::CppDeletable for HandleIGESControlActorWrite {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESControlActorWrite {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESControlActorWrite_clone(ptr))
+    }
+}
+
 impl HandleIGESControlActorWrite {
     /// Dereference this Handle to access the underlying IGESControl_ActorWrite
     pub fn get(&self) -> &crate::ffi_types::IGESControl_ActorWrite {
@@ -674,6 +680,12 @@ pub use crate::ffi_types::HandleIGESControlAlgoContainer;
 unsafe impl crate::CppDeletable for HandleIGESControlAlgoContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESControlAlgoContainer_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESControlAlgoContainer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESControlAlgoContainer_clone(ptr))
     }
 }
 
@@ -1129,6 +1141,12 @@ unsafe impl crate::CppDeletable for HandleIGESControlController {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESControlController {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESControlController_clone(ptr))
+    }
+}
+
 impl HandleIGESControlController {
     /// Dereference this Handle to access the underlying IGESControl_Controller
     pub fn get(&self) -> &crate::ffi_types::IGESControl_Controller {
@@ -1453,6 +1471,12 @@ pub use crate::ffi_types::HandleIGESControlIGESBoundary;
 unsafe impl crate::CppDeletable for HandleIGESControlIGESBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESControlIGESBoundary_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESControlIGESBoundary {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESControlIGESBoundary_clone(ptr))
     }
 }
 
@@ -2106,6 +2130,12 @@ pub use crate::ffi_types::HandleIGESControlToolContainer;
 unsafe impl crate::CppDeletable for HandleIGESControlToolContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESControlToolContainer_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESControlToolContainer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESControlToolContainer_clone(ptr))
     }
 }
 

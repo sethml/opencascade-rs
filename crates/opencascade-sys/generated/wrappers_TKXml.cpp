@@ -70,17 +70,57 @@ typedef opencascade::handle<XmlMNaming_NamingDriver> HandleXmlMNamingNamingDrive
 typedef opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver> HandleXmlXCAFDriversDocumentRetrievalDriver;
 typedef opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver> HandleXmlXCAFDriversDocumentStorageDriver;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleXmlDriversDocumentRetrievalDriver_destructor(HandleXmlDriversDocumentRetrievalDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlDriversDocumentRetrievalDriver*> HandleXmlDriversDocumentRetrievalDriver_clone(const HandleXmlDriversDocumentRetrievalDriver* self_) {
+    try { return {new HandleXmlDriversDocumentRetrievalDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlDriversDocumentStorageDriver_destructor(HandleXmlDriversDocumentStorageDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlDriversDocumentStorageDriver*> HandleXmlDriversDocumentStorageDriver_clone(const HandleXmlDriversDocumentStorageDriver* self_) {
+    try { return {new HandleXmlDriversDocumentStorageDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMDataXtdConstraintDriver_destructor(HandleXmlMDataXtdConstraintDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMDataXtdConstraintDriver*> HandleXmlMDataXtdConstraintDriver_clone(const HandleXmlMDataXtdConstraintDriver* self_) {
+    try { return {new HandleXmlMDataXtdConstraintDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMDataXtdGeometryDriver_destructor(HandleXmlMDataXtdGeometryDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMDataXtdGeometryDriver*> HandleXmlMDataXtdGeometryDriver_clone(const HandleXmlMDataXtdGeometryDriver* self_) {
+    try { return {new HandleXmlMDataXtdGeometryDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMDataXtdPatternStdDriver_destructor(HandleXmlMDataXtdPatternStdDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMDataXtdPatternStdDriver*> HandleXmlMDataXtdPatternStdDriver_clone(const HandleXmlMDataXtdPatternStdDriver* self_) {
+    try { return {new HandleXmlMDataXtdPatternStdDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMDataXtdPositionDriver_destructor(HandleXmlMDataXtdPositionDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMDataXtdPositionDriver*> HandleXmlMDataXtdPositionDriver_clone(const HandleXmlMDataXtdPositionDriver* self_) {
+    try { return {new HandleXmlMDataXtdPositionDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMDataXtdPresentationDriver_destructor(HandleXmlMDataXtdPresentationDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMDataXtdPresentationDriver*> HandleXmlMDataXtdPresentationDriver_clone(const HandleXmlMDataXtdPresentationDriver* self_) {
+    try { return {new HandleXmlMDataXtdPresentationDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMDataXtdTriangulationDriver_destructor(HandleXmlMDataXtdTriangulationDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMDataXtdTriangulationDriver*> HandleXmlMDataXtdTriangulationDriver_clone(const HandleXmlMDataXtdTriangulationDriver* self_) {
+    try { return {new HandleXmlMDataXtdTriangulationDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMNamingNamedShapeDriver_destructor(HandleXmlMNamingNamedShapeDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMNamingNamedShapeDriver*> HandleXmlMNamingNamedShapeDriver_clone(const HandleXmlMNamingNamedShapeDriver* self_) {
+    try { return {new HandleXmlMNamingNamedShapeDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleXmlMNamingNamingDriver_destructor(HandleXmlMNamingNamingDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleXmlMNamingNamingDriver*> HandleXmlMNamingNamingDriver_clone(const HandleXmlMNamingNamingDriver* self_) {
+    try { return {new HandleXmlMNamingNamingDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // XmlDrivers_DocumentRetrievalDriver wrappers

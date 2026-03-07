@@ -999,6 +999,12 @@ unsafe impl crate::CppDeletable for HandleBinObjMgtPosition {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBinObjMgtPosition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_clone(ptr))
+    }
+}
+
 impl HandleBinObjMgtPosition {
     /// Dereference this Handle to access the underlying BinObjMgt_Position
     pub fn get(&self) -> &crate::ffi_types::BinObjMgt_Position {

@@ -1021,6 +1021,12 @@ unsafe impl crate::CppDeletable for HandleIGESDefsAssociativityDef {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDefsAssociativityDef {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsAssociativityDef_clone(ptr))
+    }
+}
+
 impl HandleIGESDefsAssociativityDef {
     /// Dereference this Handle to access the underlying IGESDefs_AssociativityDef
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_AssociativityDef {
@@ -2149,6 +2155,12 @@ unsafe impl crate::CppDeletable for HandleIGESDefsAttributeDef {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDefsAttributeDef {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsAttributeDef_clone(ptr))
+    }
+}
+
 impl HandleIGESDefsAttributeDef {
     /// Dereference this Handle to access the underlying IGESDefs_AttributeDef
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_AttributeDef {
@@ -3245,6 +3257,12 @@ unsafe impl crate::CppDeletable for HandleIGESDefsAttributeTable {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDefsAttributeTable {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsAttributeTable_clone(ptr))
+    }
+}
+
 impl HandleIGESDefsAttributeTable {
     /// Dereference this Handle to access the underlying IGESDefs_AttributeTable
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_AttributeTable {
@@ -3883,6 +3901,12 @@ pub use crate::ffi_types::HandleIGESDefsGeneralModule;
 unsafe impl crate::CppDeletable for HandleIGESDefsGeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDefsGeneralModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDefsGeneralModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsGeneralModule_clone(ptr))
     }
 }
 
@@ -4940,6 +4964,12 @@ unsafe impl crate::CppDeletable for HandleIGESDefsGenericData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDefsGenericData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsGenericData_clone(ptr))
+    }
+}
+
 impl HandleIGESDefsGenericData {
     /// Dereference this Handle to access the underlying IGESDefs_GenericData
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_GenericData {
@@ -5171,6 +5201,16 @@ unsafe impl crate::CppDeletable for HandleIGESDefsHArray1OfHArray1OfTextDisplayT
         crate::ffi_extern_TKDEIGES::HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -5439,6 +5479,14 @@ pub use crate::ffi_types::HandleIGESDefsHArray1OfTabularData;
 unsafe impl crate::CppDeletable for HandleIGESDefsHArray1OfTabularData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDefsHArray1OfTabularData_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDefsHArray1OfTabularData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsHArray1OfTabularData_clone(
+            ptr,
+        ))
     }
 }
 
@@ -6382,6 +6430,12 @@ unsafe impl crate::CppDeletable for HandleIGESDefsMacroDef {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDefsMacroDef {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsMacroDef_clone(ptr))
+    }
+}
+
 impl HandleIGESDefsMacroDef {
     /// Dereference this Handle to access the underlying IGESDefs_MacroDef
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_MacroDef {
@@ -6771,6 +6825,12 @@ unsafe impl crate::CppDeletable for HandleIGESDefsProtocol {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDefsProtocol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsProtocol_clone(ptr))
+    }
+}
+
 impl HandleIGESDefsProtocol {
     /// Dereference this Handle to access the underlying IGESDefs_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_Protocol {
@@ -7149,6 +7209,12 @@ unsafe impl crate::CppDeletable for HandleIGESDefsReadWriteModule {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESDefsReadWriteModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsReadWriteModule_clone(ptr))
+    }
+}
+
 impl HandleIGESDefsReadWriteModule {
     /// Dereference this Handle to access the underlying IGESDefs_ReadWriteModule
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_ReadWriteModule {
@@ -7420,6 +7486,12 @@ pub use crate::ffi_types::HandleIGESDefsSpecificModule;
 unsafe impl crate::CppDeletable for HandleIGESDefsSpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDefsSpecificModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDefsSpecificModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsSpecificModule_clone(ptr))
     }
 }
 
@@ -8458,6 +8530,12 @@ pub use crate::ffi_types::HandleIGESDefsTabularData;
 unsafe impl crate::CppDeletable for HandleIGESDefsTabularData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDefsTabularData_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDefsTabularData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsTabularData_clone(ptr))
     }
 }
 
@@ -10480,6 +10558,12 @@ pub use crate::ffi_types::HandleIGESDefsUnitsData;
 unsafe impl crate::CppDeletable for HandleIGESDefsUnitsData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESDefsUnitsData_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESDefsUnitsData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDefsUnitsData_clone(ptr))
     }
 }
 

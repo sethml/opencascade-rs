@@ -2107,6 +2107,12 @@ unsafe impl crate::CppDeletable for HandleContapTheHSequenceOfPoint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleContapTheHSequenceOfPoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleContapTheHSequenceOfPoint_clone(ptr))
+    }
+}
+
 impl HandleContapTheHSequenceOfPoint {
     /// Dereference this Handle to access the underlying Contap_TheHSequenceOfPoint
     pub fn get(&self) -> &crate::ffi_types::Contap_TheHSequenceOfPoint {
@@ -2612,6 +2618,12 @@ pub use crate::ffi_types::HandleContapTheIWLineOfTheIWalking;
 unsafe impl crate::CppDeletable for HandleContapTheIWLineOfTheIWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleContapTheIWLineOfTheIWalking {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_clone(ptr))
     }
 }
 

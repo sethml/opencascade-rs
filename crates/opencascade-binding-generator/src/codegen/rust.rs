@@ -473,7 +473,7 @@ fn generate_handle_declarations(
     }
 
     // For extra handle types (not from parsed classes), generate standalone
-    // CppDeletable impls and destructor FFI declarations.
+    // CppDeletable/CppCopyable impls and destructor/clone FFI declarations.
     // Parsed classes get these in their module files instead.
     let extra_handles: Vec<_> = handles.iter()
         .filter(|name| !defined_handles.contains(*name))
@@ -484,6 +484,7 @@ fn generate_handle_declarations(
         for class_name in &extra_handles {
             let handle_type_name = type_mapping::handle_type_name(class_name);
             writeln!(out, "    pub fn {}_destructor(ptr: *mut {});", handle_type_name, handle_type_name).unwrap();
+            writeln!(out, "    pub fn {}_clone(ptr: *const {}) -> crate::OcctResult<*mut {}>;", handle_type_name, handle_type_name, handle_type_name).unwrap();
         }
         writeln!(out, "}}").unwrap();
         writeln!(out).unwrap();
@@ -492,6 +493,11 @@ fn generate_handle_declarations(
             writeln!(out, "unsafe impl crate::CppDeletable for {} {{", handle_type_name).unwrap();
             writeln!(out, "    unsafe fn cpp_delete(ptr: *mut Self) {{").unwrap();
             writeln!(out, "        {}_destructor(ptr);", handle_type_name).unwrap();
+            writeln!(out, "    }}").unwrap();
+            writeln!(out, "}}").unwrap();
+            writeln!(out, "unsafe impl crate::CppCopyable for {} {{", handle_type_name).unwrap();
+            writeln!(out, "    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {{").unwrap();
+            writeln!(out, "        crate::check_result({}_clone(ptr))", handle_type_name).unwrap();
             writeln!(out, "    }}").unwrap();
             writeln!(out, "}}").unwrap();
         }

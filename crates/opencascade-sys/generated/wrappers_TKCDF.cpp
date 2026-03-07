@@ -161,28 +161,112 @@ typedef opencascade::handle<XmlTObjDrivers_DocumentStorageDriver> HandleXmlTObjD
 typedef opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver> HandleXmlXCAFDriversDocumentRetrievalDriver;
 typedef opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver> HandleXmlXCAFDriversDocumentStorageDriver;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleCDFApplication_destructor(HandleCDFApplication* self_) { delete self_; }
+extern "C" OcctResult<HandleCDFApplication*> HandleCDFApplication_clone(const HandleCDFApplication* self_) {
+    try { return {new HandleCDFApplication(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleCDFDirectory_destructor(HandleCDFDirectory* self_) { delete self_; }
+extern "C" OcctResult<HandleCDFDirectory*> HandleCDFDirectory_clone(const HandleCDFDirectory* self_) {
+    try { return {new HandleCDFDirectory(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleCDFFWOSDriver_destructor(HandleCDFFWOSDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleCDFFWOSDriver*> HandleCDFFWOSDriver_clone(const HandleCDFFWOSDriver* self_) {
+    try { return {new HandleCDFFWOSDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleCDFMetaDataDriver_destructor(HandleCDFMetaDataDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleCDFMetaDataDriver*> HandleCDFMetaDataDriver_clone(const HandleCDFMetaDataDriver* self_) {
+    try { return {new HandleCDFMetaDataDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleCDFMetaDataDriverFactory_destructor(HandleCDFMetaDataDriverFactory* self_) { delete self_; }
+extern "C" OcctResult<HandleCDFMetaDataDriverFactory*> HandleCDFMetaDataDriverFactory_clone(const HandleCDFMetaDataDriverFactory* self_) {
+    try { return {new HandleCDFMetaDataDriverFactory(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleCDFStoreList_destructor(HandleCDFStoreList* self_) { delete self_; }
+extern "C" OcctResult<HandleCDFStoreList*> HandleCDFStoreList_clone(const HandleCDFStoreList* self_) {
+    try { return {new HandleCDFStoreList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleCDMApplication_destructor(HandleCDMApplication* self_) { delete self_; }
+extern "C" OcctResult<HandleCDMApplication*> HandleCDMApplication_clone(const HandleCDMApplication* self_) {
+    try { return {new HandleCDMApplication(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleCDMDocument_destructor(HandleCDMDocument* self_) { delete self_; }
+extern "C" OcctResult<HandleCDMDocument*> HandleCDMDocument_clone(const HandleCDMDocument* self_) {
+    try { return {new HandleCDMDocument(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleCDMMetaData_destructor(HandleCDMMetaData* self_) { delete self_; }
+extern "C" OcctResult<HandleCDMMetaData*> HandleCDMMetaData_clone(const HandleCDMMetaData* self_) {
+    try { return {new HandleCDMMetaData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleCDMReference_destructor(HandleCDMReference* self_) { delete self_; }
+extern "C" OcctResult<HandleCDMReference*> HandleCDMReference_clone(const HandleCDMReference* self_) {
+    try { return {new HandleCDMReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleLDOMMemManager_destructor(HandleLDOMMemManager* self_) { delete self_; }
+extern "C" OcctResult<HandleLDOMMemManager*> HandleLDOMMemManager_clone(const HandleLDOMMemManager* self_) {
+    try { return {new HandleLDOMMemManager(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePCDMDocument_destructor(HandlePCDMDocument* self_) { delete self_; }
+extern "C" OcctResult<HandlePCDMDocument*> HandlePCDMDocument_clone(const HandlePCDMDocument* self_) {
+    try { return {new HandlePCDMDocument(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePCDMDriverError_destructor(HandlePCDMDriverError* self_) { delete self_; }
+extern "C" OcctResult<HandlePCDMDriverError*> HandlePCDMDriverError_clone(const HandlePCDMDriverError* self_) {
+    try { return {new HandlePCDMDriverError(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePCDMReadWriter_destructor(HandlePCDMReadWriter* self_) { delete self_; }
+extern "C" OcctResult<HandlePCDMReadWriter*> HandlePCDMReadWriter_clone(const HandlePCDMReadWriter* self_) {
+    try { return {new HandlePCDMReadWriter(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePCDMReadWriter1_destructor(HandlePCDMReadWriter1* self_) { delete self_; }
+extern "C" OcctResult<HandlePCDMReadWriter1*> HandlePCDMReadWriter1_clone(const HandlePCDMReadWriter1* self_) {
+    try { return {new HandlePCDMReadWriter1(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePCDMReader_destructor(HandlePCDMReader* self_) { delete self_; }
+extern "C" OcctResult<HandlePCDMReader*> HandlePCDMReader_clone(const HandlePCDMReader* self_) {
+    try { return {new HandlePCDMReader(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePCDMReaderFilter_destructor(HandlePCDMReaderFilter* self_) { delete self_; }
+extern "C" OcctResult<HandlePCDMReaderFilter*> HandlePCDMReaderFilter_clone(const HandlePCDMReaderFilter* self_) {
+    try { return {new HandlePCDMReaderFilter(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePCDMReferenceIterator_destructor(HandlePCDMReferenceIterator* self_) { delete self_; }
+extern "C" OcctResult<HandlePCDMReferenceIterator*> HandlePCDMReferenceIterator_clone(const HandlePCDMReferenceIterator* self_) {
+    try { return {new HandlePCDMReferenceIterator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePCDMRetrievalDriver_destructor(HandlePCDMRetrievalDriver* self_) { delete self_; }
+extern "C" OcctResult<HandlePCDMRetrievalDriver*> HandlePCDMRetrievalDriver_clone(const HandlePCDMRetrievalDriver* self_) {
+    try { return {new HandlePCDMRetrievalDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePCDMStorageDriver_destructor(HandlePCDMStorageDriver* self_) { delete self_; }
+extern "C" OcctResult<HandlePCDMStorageDriver*> HandlePCDMStorageDriver_clone(const HandlePCDMStorageDriver* self_) {
+    try { return {new HandlePCDMStorageDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandlePCDMWriter_destructor(HandlePCDMWriter* self_) { delete self_; }
+extern "C" OcctResult<HandlePCDMWriter*> HandlePCDMWriter_clone(const HandlePCDMWriter* self_) {
+    try { return {new HandlePCDMWriter(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // CDF_Application wrappers
@@ -1751,7 +1835,7 @@ extern "C" const char* LDOM_Attr_set_value(LDOM_Attr* self_, LDOMString const* a
 }
 extern "C" OcctResult<const LDOM_Node*> LDOM_Attr_as_LDOM_Node(const LDOM_Attr* self_) { return {static_cast<const LDOM_Node*>(self_), nullptr}; }
 extern "C" OcctResult<LDOM_Node*> LDOM_Attr_as_LDOM_Node_mut(LDOM_Attr* self_) { return {static_cast<LDOM_Node*>(self_), nullptr}; }
-extern "C" OcctResult<LDOM_Attr*> LDOM_Attr_to_owned(const LDOM_Attr* self_) {
+extern "C" OcctResult<LDOM_Attr*> LDOM_Attr_clone(const LDOM_Attr* self_) {
     try { return {new LDOM_Attr(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1949,7 +2033,7 @@ extern "C" OcctResult<const LDOM_CharacterData*> LDOM_CDATASection_as_LDOM_Chara
 extern "C" OcctResult<LDOM_CharacterData*> LDOM_CDATASection_as_LDOM_CharacterData_mut(LDOM_CDATASection* self_) { return {static_cast<LDOM_CharacterData*>(self_), nullptr}; }
 extern "C" OcctResult<const LDOM_Node*> LDOM_CDATASection_as_LDOM_Node(const LDOM_CDATASection* self_) { return {static_cast<const LDOM_Node*>(self_), nullptr}; }
 extern "C" OcctResult<LDOM_Node*> LDOM_CDATASection_as_LDOM_Node_mut(LDOM_CDATASection* self_) { return {static_cast<LDOM_Node*>(self_), nullptr}; }
-extern "C" OcctResult<LDOM_CDATASection*> LDOM_CDATASection_to_owned(const LDOM_CDATASection* self_) {
+extern "C" OcctResult<LDOM_CDATASection*> LDOM_CDATASection_clone(const LDOM_CDATASection* self_) {
     try { return {new LDOM_CDATASection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2055,7 +2139,7 @@ extern "C" OcctResult<int32_t> LDOM_CharacterData_get_length(const LDOM_Characte
 }
 extern "C" OcctResult<const LDOM_Node*> LDOM_CharacterData_as_LDOM_Node(const LDOM_CharacterData* self_) { return {static_cast<const LDOM_Node*>(self_), nullptr}; }
 extern "C" OcctResult<LDOM_Node*> LDOM_CharacterData_as_LDOM_Node_mut(LDOM_CharacterData* self_) { return {static_cast<LDOM_Node*>(self_), nullptr}; }
-extern "C" OcctResult<LDOM_CharacterData*> LDOM_CharacterData_to_owned(const LDOM_CharacterData* self_) {
+extern "C" OcctResult<LDOM_CharacterData*> LDOM_CharacterData_clone(const LDOM_CharacterData* self_) {
     try { return {new LDOM_CharacterData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2121,7 +2205,7 @@ extern "C" OcctResult<const LDOM_CharacterData*> LDOM_Comment_as_LDOM_CharacterD
 extern "C" OcctResult<LDOM_CharacterData*> LDOM_Comment_as_LDOM_CharacterData_mut(LDOM_Comment* self_) { return {static_cast<LDOM_CharacterData*>(self_), nullptr}; }
 extern "C" OcctResult<const LDOM_Node*> LDOM_Comment_as_LDOM_Node(const LDOM_Comment* self_) { return {static_cast<const LDOM_Node*>(self_), nullptr}; }
 extern "C" OcctResult<LDOM_Node*> LDOM_Comment_as_LDOM_Node_mut(LDOM_Comment* self_) { return {static_cast<LDOM_Node*>(self_), nullptr}; }
-extern "C" OcctResult<LDOM_Comment*> LDOM_Comment_to_owned(const LDOM_Comment* self_) {
+extern "C" OcctResult<LDOM_Comment*> LDOM_Comment_clone(const LDOM_Comment* self_) {
     try { return {new LDOM_Comment(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2297,7 +2381,7 @@ extern "C" const char* LDOM_Element_replace_element(LDOM_Element* self_, LDOM_El
 }
 extern "C" OcctResult<const LDOM_Node*> LDOM_Element_as_LDOM_Node(const LDOM_Element* self_) { return {static_cast<const LDOM_Node*>(self_), nullptr}; }
 extern "C" OcctResult<LDOM_Node*> LDOM_Element_as_LDOM_Node_mut(LDOM_Element* self_) { return {static_cast<LDOM_Node*>(self_), nullptr}; }
-extern "C" OcctResult<LDOM_Element*> LDOM_Element_to_owned(const LDOM_Element* self_) {
+extern "C" OcctResult<LDOM_Element*> LDOM_Element_clone(const LDOM_Element* self_) {
     try { return {new LDOM_Element(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2517,7 +2601,7 @@ extern "C" const char* LDOM_Node_set_value_clear(const LDOM_Node* self_) {
     try { self_->SetValueClear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<LDOM_Node*> LDOM_Node_to_owned(const LDOM_Node* self_) {
+extern "C" OcctResult<LDOM_Node*> LDOM_Node_clone(const LDOM_Node* self_) {
     try { return {new LDOM_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2539,7 +2623,7 @@ extern "C" OcctResult<int32_t> LDOM_NodeList_get_length(const LDOM_NodeList* sel
     try { return {self_->getLength(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<LDOM_NodeList*> LDOM_NodeList_to_owned(const LDOM_NodeList* self_) {
+extern "C" OcctResult<LDOM_NodeList*> LDOM_NodeList_clone(const LDOM_NodeList* self_) {
     try { return {new LDOM_NodeList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2611,7 +2695,7 @@ extern "C" OcctResult<const LDOM_CharacterData*> LDOM_Text_as_LDOM_CharacterData
 extern "C" OcctResult<LDOM_CharacterData*> LDOM_Text_as_LDOM_CharacterData_mut(LDOM_Text* self_) { return {static_cast<LDOM_CharacterData*>(self_), nullptr}; }
 extern "C" OcctResult<const LDOM_Node*> LDOM_Text_as_LDOM_Node(const LDOM_Text* self_) { return {static_cast<const LDOM_Node*>(self_), nullptr}; }
 extern "C" OcctResult<LDOM_Node*> LDOM_Text_as_LDOM_Node_mut(LDOM_Text* self_) { return {static_cast<LDOM_Node*>(self_), nullptr}; }
-extern "C" OcctResult<LDOM_Text*> LDOM_Text_to_owned(const LDOM_Text* self_) {
+extern "C" OcctResult<LDOM_Text*> LDOM_Text_clone(const LDOM_Text* self_) {
     try { return {new LDOM_Text(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }

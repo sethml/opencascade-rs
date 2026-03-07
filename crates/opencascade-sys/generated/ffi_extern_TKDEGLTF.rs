@@ -84,6 +84,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEGLTFConfigurationNode>;
     /// Destroy Handle<DEGLTF_ConfigurationNode>
     pub fn HandleDEGLTFConfigurationNode_destructor(self_: *mut HandleDEGLTFConfigurationNode);
+    /// Clone Handle<DEGLTF_ConfigurationNode> (increments reference count)
+    pub fn HandleDEGLTFConfigurationNode_clone(
+        self_: *const HandleDEGLTFConfigurationNode,
+    ) -> crate::OcctResult<*mut HandleDEGLTFConfigurationNode>;
     /// Dereference Handle to get *const DEGLTF_ConfigurationNode
     pub fn HandleDEGLTFConfigurationNode_get(
         handle: *const HandleDEGLTFConfigurationNode,
@@ -273,6 +277,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEGLTFProvider>;
     /// Destroy Handle<DEGLTF_Provider>
     pub fn HandleDEGLTFProvider_destructor(self_: *mut HandleDEGLTFProvider);
+    /// Clone Handle<DEGLTF_Provider> (increments reference count)
+    pub fn HandleDEGLTFProvider_clone(
+        self_: *const HandleDEGLTFProvider,
+    ) -> crate::OcctResult<*mut HandleDEGLTFProvider>;
     /// Dereference Handle to get *const DEGLTF_Provider
     pub fn HandleDEGLTFProvider_get(
         handle: *const HandleDEGLTFProvider,
@@ -432,6 +440,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleRWGltfCafReader>;
     /// Destroy Handle<RWGltf_CafReader>
     pub fn HandleRWGltfCafReader_destructor(self_: *mut HandleRWGltfCafReader);
+    /// Clone Handle<RWGltf_CafReader> (increments reference count)
+    pub fn HandleRWGltfCafReader_clone(
+        self_: *const HandleRWGltfCafReader,
+    ) -> crate::OcctResult<*mut HandleRWGltfCafReader>;
     /// Dereference Handle to get *const RWGltf_CafReader
     pub fn HandleRWGltfCafReader_get(
         handle: *const HandleRWGltfCafReader,
@@ -620,6 +632,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleRWGltfGltfFace>;
     /// Destroy Handle<RWGltf_GltfFace>
     pub fn HandleRWGltfGltfFace_destructor(self_: *mut HandleRWGltfGltfFace);
+    /// Clone Handle<RWGltf_GltfFace> (increments reference count)
+    pub fn HandleRWGltfGltfFace_clone(
+        self_: *const HandleRWGltfGltfFace,
+    ) -> crate::OcctResult<*mut HandleRWGltfGltfFace>;
     /// Dereference Handle to get *const RWGltf_GltfFace
     pub fn HandleRWGltfGltfFace_get(
         handle: *const HandleRWGltfGltfFace,
@@ -780,6 +796,10 @@ extern "C" {
     pub fn HandleRWGltfGltfLatePrimitiveArray_destructor(
         self_: *mut HandleRWGltfGltfLatePrimitiveArray,
     );
+    /// Clone Handle<RWGltf_GltfLatePrimitiveArray> (increments reference count)
+    pub fn HandleRWGltfGltfLatePrimitiveArray_clone(
+        self_: *const HandleRWGltfGltfLatePrimitiveArray,
+    ) -> crate::OcctResult<*mut HandleRWGltfGltfLatePrimitiveArray>;
     /// Dereference Handle to get *const RWGltf_GltfLatePrimitiveArray
     pub fn HandleRWGltfGltfLatePrimitiveArray_get(
         handle: *const HandleRWGltfGltfLatePrimitiveArray,
@@ -1146,6 +1166,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleRWGltfGltfMaterialMap>;
     /// Destroy Handle<RWGltf_GltfMaterialMap>
     pub fn HandleRWGltfGltfMaterialMap_destructor(self_: *mut HandleRWGltfGltfMaterialMap);
+    /// Clone Handle<RWGltf_GltfMaterialMap> (increments reference count)
+    pub fn HandleRWGltfGltfMaterialMap_clone(
+        self_: *const HandleRWGltfGltfMaterialMap,
+    ) -> crate::OcctResult<*mut HandleRWGltfGltfMaterialMap>;
     /// Dereference Handle to get *const RWGltf_GltfMaterialMap
     pub fn HandleRWGltfGltfMaterialMap_get(
         handle: *const HandleRWGltfGltfMaterialMap,
@@ -1256,6 +1280,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleRWGltfMaterialCommon>;
     /// Destroy Handle<RWGltf_MaterialCommon>
     pub fn HandleRWGltfMaterialCommon_destructor(self_: *mut HandleRWGltfMaterialCommon);
+    /// Clone Handle<RWGltf_MaterialCommon> (increments reference count)
+    pub fn HandleRWGltfMaterialCommon_clone(
+        self_: *const HandleRWGltfMaterialCommon,
+    ) -> crate::OcctResult<*mut HandleRWGltfMaterialCommon>;
     /// Dereference Handle to get *const RWGltf_MaterialCommon
     pub fn HandleRWGltfMaterialCommon_get(
         handle: *const HandleRWGltfMaterialCommon,
@@ -1325,6 +1353,10 @@ extern "C" {
     pub fn HandleRWGltfMaterialMetallicRoughness_destructor(
         self_: *mut HandleRWGltfMaterialMetallicRoughness,
     );
+    /// Clone Handle<RWGltf_MaterialMetallicRoughness> (increments reference count)
+    pub fn HandleRWGltfMaterialMetallicRoughness_clone(
+        self_: *const HandleRWGltfMaterialMetallicRoughness,
+    ) -> crate::OcctResult<*mut HandleRWGltfMaterialMetallicRoughness>;
     /// Dereference Handle to get *const RWGltf_MaterialMetallicRoughness
     pub fn HandleRWGltfMaterialMetallicRoughness_get(
         handle: *const HandleRWGltfMaterialMetallicRoughness,
@@ -1412,6 +1444,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleRWGltfTriangulationReader>;
     /// Destroy Handle<RWGltf_TriangulationReader>
     pub fn HandleRWGltfTriangulationReader_destructor(self_: *mut HandleRWGltfTriangulationReader);
+    /// Clone Handle<RWGltf_TriangulationReader> (increments reference count)
+    pub fn HandleRWGltfTriangulationReader_clone(
+        self_: *const HandleRWGltfTriangulationReader,
+    ) -> crate::OcctResult<*mut HandleRWGltfTriangulationReader>;
     /// Dereference Handle to get *const RWGltf_TriangulationReader
     pub fn HandleRWGltfTriangulationReader_get(
         handle: *const HandleRWGltfTriangulationReader,

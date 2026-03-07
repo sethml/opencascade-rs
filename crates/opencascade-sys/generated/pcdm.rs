@@ -492,6 +492,12 @@ unsafe impl crate::CppDeletable for HandlePCDMDocument {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePCDMDocument {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMDocument_clone(ptr))
+    }
+}
+
 impl HandlePCDMDocument {
     /// Dereference this Handle to access the underlying PCDM_Document
     pub fn get(&self) -> &crate::ffi_types::PCDM_Document {
@@ -802,6 +808,12 @@ pub use crate::ffi_types::HandlePCDMDriverError;
 unsafe impl crate::CppDeletable for HandlePCDMDriverError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCDF::HandlePCDMDriverError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePCDMDriverError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMDriverError_clone(ptr))
     }
 }
 
@@ -1191,6 +1203,12 @@ unsafe impl crate::CppDeletable for HandlePCDMReadWriter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePCDMReadWriter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReadWriter_clone(ptr))
+    }
+}
+
 impl HandlePCDMReadWriter {
     /// Dereference this Handle to access the underlying PCDM_ReadWriter
     pub fn get(&self) -> &crate::ffi_types::PCDM_ReadWriter {
@@ -1554,6 +1572,12 @@ unsafe impl crate::CppDeletable for HandlePCDMReadWriter1 {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePCDMReadWriter1 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReadWriter1_clone(ptr))
+    }
+}
+
 impl HandlePCDMReadWriter1 {
     /// Dereference this Handle to access the underlying PCDM_ReadWriter_1
     pub fn get(&self) -> &crate::ffi_types::PCDM_ReadWriter_1 {
@@ -1757,6 +1781,12 @@ pub use crate::ffi_types::HandlePCDMReader;
 unsafe impl crate::CppDeletable for HandlePCDMReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCDF::HandlePCDMReader_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePCDMReader {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReader_clone(ptr))
     }
 }
 
@@ -2353,6 +2383,12 @@ unsafe impl crate::CppDeletable for HandlePCDMReaderFilter {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePCDMReaderFilter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReaderFilter_clone(ptr))
+    }
+}
+
 impl HandlePCDMReaderFilter {
     /// Dereference this Handle to access the underlying PCDM_ReaderFilter
     pub fn get(&self) -> &crate::ffi_types::PCDM_ReaderFilter {
@@ -2643,6 +2679,12 @@ unsafe impl crate::CppDeletable for HandlePCDMReferenceIterator {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePCDMReferenceIterator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReferenceIterator_clone(ptr))
+    }
+}
+
 impl HandlePCDMReferenceIterator {
     /// Dereference this Handle to access the underlying PCDM_ReferenceIterator
     pub fn get(&self) -> &crate::ffi_types::PCDM_ReferenceIterator {
@@ -2902,6 +2944,12 @@ pub use crate::ffi_types::HandlePCDMRetrievalDriver;
 unsafe impl crate::CppDeletable for HandlePCDMRetrievalDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePCDMRetrievalDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_clone(ptr))
     }
 }
 
@@ -3418,6 +3466,12 @@ unsafe impl crate::CppDeletable for HandlePCDMStorageDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePCDMStorageDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_clone(ptr))
+    }
+}
+
 impl HandlePCDMStorageDriver {
     /// Dereference this Handle to access the underlying PCDM_StorageDriver
     pub fn get(&self) -> &crate::ffi_types::PCDM_StorageDriver {
@@ -3741,6 +3795,12 @@ pub use crate::ffi_types::HandlePCDMWriter;
 unsafe impl crate::CppDeletable for HandlePCDMWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCDF::HandlePCDMWriter_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePCDMWriter {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMWriter_clone(ptr))
     }
 }
 

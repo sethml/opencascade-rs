@@ -1120,6 +1120,12 @@ unsafe impl crate::CppDeletable for HandleLocOpeGeneratedShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleLocOpeGeneratedShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeGeneratedShape_clone(ptr))
+    }
+}
+
 impl HandleLocOpeGeneratedShape {
     /// Dereference this Handle to access the underlying LocOpe_GeneratedShape
     pub fn get(&self) -> &crate::ffi_types::LocOpe_GeneratedShape {
@@ -1521,6 +1527,12 @@ pub use crate::ffi_types::HandleLocOpeGluedShape;
 unsafe impl crate::CppDeletable for HandleLocOpeGluedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleLocOpeGluedShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_clone(ptr))
     }
 }
 
@@ -3268,6 +3280,12 @@ pub use crate::ffi_types::HandleLocOpeWiresOnShape;
 unsafe impl crate::CppDeletable for HandleLocOpeWiresOnShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKFeat::HandleLocOpeWiresOnShape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleLocOpeWiresOnShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeWiresOnShape_clone(ptr))
     }
 }
 

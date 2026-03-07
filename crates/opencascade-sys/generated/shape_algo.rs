@@ -456,6 +456,12 @@ unsafe impl crate::CppDeletable for HandleShapeAlgoAlgoContainer {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeAlgoAlgoContainer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAlgoAlgoContainer_clone(ptr))
+    }
+}
+
 impl HandleShapeAlgoAlgoContainer {
     /// Dereference this Handle to access the underlying ShapeAlgo_AlgoContainer
     pub fn get(&self) -> &crate::ffi_types::ShapeAlgo_AlgoContainer {
@@ -678,6 +684,12 @@ pub use crate::ffi_types::HandleShapeAlgoToolContainer;
 unsafe impl crate::CppDeletable for HandleShapeAlgoToolContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeAlgoToolContainer_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeAlgoToolContainer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAlgoToolContainer_clone(ptr))
     }
 }
 

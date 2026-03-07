@@ -148,6 +148,22 @@ unsafe impl crate::CppDeletable for Geom2dEntity {
     }
 }
 
+unsafe impl crate::CppCopyable for Geom2dEntity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Geom2dEntity {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Geom2dEntity {
     /// **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:33 - `Geom2dToIGES_Geom2dEntity::Geom2dToIGES_Geom2dEntity()`
     /// Creates a tool Geom2dEntity
@@ -197,15 +213,6 @@ impl Geom2dEntity {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_get_unit(self as *const Self)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 

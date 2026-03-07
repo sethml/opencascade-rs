@@ -752,6 +752,12 @@ unsafe impl crate::CppDeletable for HandleTNamingDeltaOnModification {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTNamingDeltaOnModification {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_clone(ptr))
+    }
+}
+
 impl HandleTNamingDeltaOnModification {
     /// Dereference this Handle to access the underlying TNaming_DeltaOnModification
     pub fn get(&self) -> &crate::ffi_types::TNaming_DeltaOnModification {
@@ -1046,6 +1052,12 @@ pub use crate::ffi_types::HandleTNamingDeltaOnRemoval;
 unsafe impl crate::CppDeletable for HandleTNamingDeltaOnRemoval {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTNamingDeltaOnRemoval {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_clone(ptr))
     }
 }
 
@@ -2475,6 +2487,12 @@ unsafe impl crate::CppDeletable for HandleTNamingNamedShape {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTNamingNamedShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingNamedShape_clone(ptr))
+    }
+}
+
 impl HandleTNamingNamedShape {
     /// Dereference this Handle to access the underlying TNaming_NamedShape
     pub fn get(&self) -> &crate::ffi_types::TNaming_NamedShape {
@@ -3137,6 +3155,12 @@ unsafe impl crate::CppDeletable for HandleTNamingNaming {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTNamingNaming {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingNaming_clone(ptr))
+    }
+}
+
 impl HandleTNamingNaming {
     /// Dereference this Handle to access the underlying TNaming_Naming
     pub fn get(&self) -> &crate::ffi_types::TNaming_Naming {
@@ -3257,6 +3281,22 @@ unsafe impl crate::CppDeletable for NewShapeIterator {
     }
 }
 
+unsafe impl crate::CppCopyable for NewShapeIterator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for NewShapeIterator {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl NewShapeIterator {
     /// **Source:** `TNaming_NewShapeIterator.hxx`:43 - `TNaming_NewShapeIterator::TNaming_NewShapeIterator()`
     pub fn new_shape_int_label(
@@ -3347,15 +3387,6 @@ impl NewShapeIterator {
             crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_is_modification(self as *const Self)
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -3369,6 +3400,22 @@ pub use crate::ffi_types::TNaming_OldShapeIterator as OldShapeIterator;
 unsafe impl crate::CppDeletable for OldShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for OldShapeIterator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for OldShapeIterator {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -3460,15 +3507,6 @@ impl OldShapeIterator {
         crate::check_result(unsafe {
             crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_is_modification(self as *const Self)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -4572,6 +4610,12 @@ unsafe impl crate::CppDeletable for HandleTNamingTranslateTool {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTNamingTranslateTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingTranslateTool_clone(ptr))
+    }
+}
+
 impl HandleTNamingTranslateTool {
     /// Dereference this Handle to access the underlying TNaming_TranslateTool
     pub fn get(&self) -> &crate::ffi_types::TNaming_TranslateTool {
@@ -5259,6 +5303,12 @@ pub use crate::ffi_types::HandleTNamingUsedShapes;
 unsafe impl crate::CppDeletable for HandleTNamingUsedShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTNamingUsedShapes {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_clone(ptr))
     }
 }
 

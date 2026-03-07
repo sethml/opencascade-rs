@@ -2495,927 +2495,4607 @@ typedef opencascade::handle<XSControl_SelectForTransfer> HandleXSControlSelectFo
 typedef opencascade::handle<XSControl_TransferReader> HandleXSControlTransferReader;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleAPIHeaderSectionEditHeader_destructor(HandleAPIHeaderSectionEditHeader* self_) { delete self_; }
+extern "C" OcctResult<HandleAPIHeaderSectionEditHeader*> HandleAPIHeaderSectionEditHeader_clone(const HandleAPIHeaderSectionEditHeader* self_) {
+    try { return {new HandleAPIHeaderSectionEditHeader(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDESTEPConfigurationNode_destructor(HandleDESTEPConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<HandleDESTEPConfigurationNode*> HandleDESTEPConfigurationNode_clone(const HandleDESTEPConfigurationNode* self_) {
+    try { return {new HandleDESTEPConfigurationNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDESTEPProvider_destructor(HandleDESTEPProvider* self_) { delete self_; }
+extern "C" OcctResult<HandleDESTEPProvider*> HandleDESTEPProvider_clone(const HandleDESTEPProvider* self_) {
+    try { return {new HandleDESTEPProvider(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleHeaderSectionFileDescription_destructor(HandleHeaderSectionFileDescription* self_) { delete self_; }
+extern "C" OcctResult<HandleHeaderSectionFileDescription*> HandleHeaderSectionFileDescription_clone(const HandleHeaderSectionFileDescription* self_) {
+    try { return {new HandleHeaderSectionFileDescription(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleHeaderSectionFileName_destructor(HandleHeaderSectionFileName* self_) { delete self_; }
+extern "C" OcctResult<HandleHeaderSectionFileName*> HandleHeaderSectionFileName_clone(const HandleHeaderSectionFileName* self_) {
+    try { return {new HandleHeaderSectionFileName(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleHeaderSectionFileSchema_destructor(HandleHeaderSectionFileSchema* self_) { delete self_; }
+extern "C" OcctResult<HandleHeaderSectionFileSchema*> HandleHeaderSectionFileSchema_clone(const HandleHeaderSectionFileSchema* self_) {
+    try { return {new HandleHeaderSectionFileSchema(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleHeaderSectionProtocol_destructor(HandleHeaderSectionProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleHeaderSectionProtocol*> HandleHeaderSectionProtocol_clone(const HandleHeaderSectionProtocol* self_) {
+    try { return {new HandleHeaderSectionProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWHeaderSectionGeneralModule_destructor(HandleRWHeaderSectionGeneralModule* self_) { delete self_; }
+extern "C" OcctResult<HandleRWHeaderSectionGeneralModule*> HandleRWHeaderSectionGeneralModule_clone(const HandleRWHeaderSectionGeneralModule* self_) {
+    try { return {new HandleRWHeaderSectionGeneralModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleRWHeaderSectionReadWriteModule_destructor(HandleRWHeaderSectionReadWriteModule* self_) { delete self_; }
+extern "C" OcctResult<HandleRWHeaderSectionReadWriteModule*> HandleRWHeaderSectionReadWriteModule_clone(const HandleRWHeaderSectionReadWriteModule* self_) {
+    try { return {new HandleRWHeaderSectionReadWriteModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPCAFControlActorWrite_destructor(HandleSTEPCAFControlActorWrite* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPCAFControlActorWrite*> HandleSTEPCAFControlActorWrite_clone(const HandleSTEPCAFControlActorWrite* self_) {
+    try { return {new HandleSTEPCAFControlActorWrite(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPCAFControlController_destructor(HandleSTEPCAFControlController* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPCAFControlController*> HandleSTEPCAFControlController_clone(const HandleSTEPCAFControlController* self_) {
+    try { return {new HandleSTEPCAFControlController(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPCAFControlExternFile_destructor(HandleSTEPCAFControlExternFile* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPCAFControlExternFile*> HandleSTEPCAFControlExternFile_clone(const HandleSTEPCAFControlExternFile* self_) {
+    try { return {new HandleSTEPCAFControlExternFile(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPControlActorRead_destructor(HandleSTEPControlActorRead* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPControlActorRead*> HandleSTEPControlActorRead_clone(const HandleSTEPControlActorRead* self_) {
+    try { return {new HandleSTEPControlActorRead(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPControlActorWrite_destructor(HandleSTEPControlActorWrite* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPControlActorWrite*> HandleSTEPControlActorWrite_clone(const HandleSTEPControlActorWrite* self_) {
+    try { return {new HandleSTEPControlActorWrite(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPControlController_destructor(HandleSTEPControlController* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPControlController*> HandleSTEPControlController_clone(const HandleSTEPControlController* self_) {
+    try { return {new HandleSTEPControlController(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPEditEditContext_destructor(HandleSTEPEditEditContext* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPEditEditContext*> HandleSTEPEditEditContext_clone(const HandleSTEPEditEditContext* self_) {
+    try { return {new HandleSTEPEditEditContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPEditEditSDR_destructor(HandleSTEPEditEditSDR* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPEditEditSDR*> HandleSTEPEditEditSDR_clone(const HandleSTEPEditEditSDR* self_) {
+    try { return {new HandleSTEPEditEditSDR(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPSelectionsAssemblyComponent_destructor(HandleSTEPSelectionsAssemblyComponent* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPSelectionsAssemblyComponent*> HandleSTEPSelectionsAssemblyComponent_clone(const HandleSTEPSelectionsAssemblyComponent* self_) {
+    try { return {new HandleSTEPSelectionsAssemblyComponent(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPSelectionsAssemblyLink_destructor(HandleSTEPSelectionsAssemblyLink* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPSelectionsAssemblyLink*> HandleSTEPSelectionsAssemblyLink_clone(const HandleSTEPSelectionsAssemblyLink* self_) {
+    try { return {new HandleSTEPSelectionsAssemblyLink(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPSelectionsHSequenceOfAssemblyLink_destructor(HandleSTEPSelectionsHSequenceOfAssemblyLink* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPSelectionsHSequenceOfAssemblyLink*> HandleSTEPSelectionsHSequenceOfAssemblyLink_clone(const HandleSTEPSelectionsHSequenceOfAssemblyLink* self_) {
+    try { return {new HandleSTEPSelectionsHSequenceOfAssemblyLink(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPSelectionsSelectAssembly_destructor(HandleSTEPSelectionsSelectAssembly* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPSelectionsSelectAssembly*> HandleSTEPSelectionsSelectAssembly_clone(const HandleSTEPSelectionsSelectAssembly* self_) {
+    try { return {new HandleSTEPSelectionsSelectAssembly(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPSelectionsSelectDerived_destructor(HandleSTEPSelectionsSelectDerived* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPSelectionsSelectDerived*> HandleSTEPSelectionsSelectDerived_clone(const HandleSTEPSelectionsSelectDerived* self_) {
+    try { return {new HandleSTEPSelectionsSelectDerived(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPSelectionsSelectFaces_destructor(HandleSTEPSelectionsSelectFaces* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPSelectionsSelectFaces*> HandleSTEPSelectionsSelectFaces_clone(const HandleSTEPSelectionsSelectFaces* self_) {
+    try { return {new HandleSTEPSelectionsSelectFaces(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPSelectionsSelectForTransfer_destructor(HandleSTEPSelectionsSelectForTransfer* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPSelectionsSelectForTransfer*> HandleSTEPSelectionsSelectForTransfer_clone(const HandleSTEPSelectionsSelectForTransfer* self_) {
+    try { return {new HandleSTEPSelectionsSelectForTransfer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPSelectionsSelectGSCurves_destructor(HandleSTEPSelectionsSelectGSCurves* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPSelectionsSelectGSCurves*> HandleSTEPSelectionsSelectGSCurves_clone(const HandleSTEPSelectionsSelectGSCurves* self_) {
+    try { return {new HandleSTEPSelectionsSelectGSCurves(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleSTEPSelectionsSelectInstances_destructor(HandleSTEPSelectionsSelectInstances* self_) { delete self_; }
+extern "C" OcctResult<HandleSTEPSelectionsSelectInstances*> HandleSTEPSelectionsSelectInstances_clone(const HandleSTEPSelectionsSelectInstances* self_) {
+    try { return {new HandleSTEPSelectionsSelectInstances(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203CcDesignApproval_destructor(HandleStepAP203CcDesignApproval* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203CcDesignApproval*> HandleStepAP203CcDesignApproval_clone(const HandleStepAP203CcDesignApproval* self_) {
+    try { return {new HandleStepAP203CcDesignApproval(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203CcDesignCertification_destructor(HandleStepAP203CcDesignCertification* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203CcDesignCertification*> HandleStepAP203CcDesignCertification_clone(const HandleStepAP203CcDesignCertification* self_) {
+    try { return {new HandleStepAP203CcDesignCertification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203CcDesignContract_destructor(HandleStepAP203CcDesignContract* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203CcDesignContract*> HandleStepAP203CcDesignContract_clone(const HandleStepAP203CcDesignContract* self_) {
+    try { return {new HandleStepAP203CcDesignContract(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203CcDesignDateAndTimeAssignment_destructor(HandleStepAP203CcDesignDateAndTimeAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203CcDesignDateAndTimeAssignment*> HandleStepAP203CcDesignDateAndTimeAssignment_clone(const HandleStepAP203CcDesignDateAndTimeAssignment* self_) {
+    try { return {new HandleStepAP203CcDesignDateAndTimeAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203CcDesignPersonAndOrganizationAssignment_destructor(HandleStepAP203CcDesignPersonAndOrganizationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203CcDesignPersonAndOrganizationAssignment*> HandleStepAP203CcDesignPersonAndOrganizationAssignment_clone(const HandleStepAP203CcDesignPersonAndOrganizationAssignment* self_) {
+    try { return {new HandleStepAP203CcDesignPersonAndOrganizationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203CcDesignSecurityClassification_destructor(HandleStepAP203CcDesignSecurityClassification* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203CcDesignSecurityClassification*> HandleStepAP203CcDesignSecurityClassification_clone(const HandleStepAP203CcDesignSecurityClassification* self_) {
+    try { return {new HandleStepAP203CcDesignSecurityClassification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203CcDesignSpecificationReference_destructor(HandleStepAP203CcDesignSpecificationReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203CcDesignSpecificationReference*> HandleStepAP203CcDesignSpecificationReference_clone(const HandleStepAP203CcDesignSpecificationReference* self_) {
+    try { return {new HandleStepAP203CcDesignSpecificationReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203Change_destructor(HandleStepAP203Change* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203Change*> HandleStepAP203Change_clone(const HandleStepAP203Change* self_) {
+    try { return {new HandleStepAP203Change(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203ChangeRequest_destructor(HandleStepAP203ChangeRequest* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203ChangeRequest*> HandleStepAP203ChangeRequest_clone(const HandleStepAP203ChangeRequest* self_) {
+    try { return {new HandleStepAP203ChangeRequest(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203HArray1OfApprovedItem_destructor(HandleStepAP203HArray1OfApprovedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203HArray1OfApprovedItem*> HandleStepAP203HArray1OfApprovedItem_clone(const HandleStepAP203HArray1OfApprovedItem* self_) {
+    try { return {new HandleStepAP203HArray1OfApprovedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203HArray1OfCertifiedItem_destructor(HandleStepAP203HArray1OfCertifiedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203HArray1OfCertifiedItem*> HandleStepAP203HArray1OfCertifiedItem_clone(const HandleStepAP203HArray1OfCertifiedItem* self_) {
+    try { return {new HandleStepAP203HArray1OfCertifiedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203HArray1OfChangeRequestItem_destructor(HandleStepAP203HArray1OfChangeRequestItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203HArray1OfChangeRequestItem*> HandleStepAP203HArray1OfChangeRequestItem_clone(const HandleStepAP203HArray1OfChangeRequestItem* self_) {
+    try { return {new HandleStepAP203HArray1OfChangeRequestItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203HArray1OfClassifiedItem_destructor(HandleStepAP203HArray1OfClassifiedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203HArray1OfClassifiedItem*> HandleStepAP203HArray1OfClassifiedItem_clone(const HandleStepAP203HArray1OfClassifiedItem* self_) {
+    try { return {new HandleStepAP203HArray1OfClassifiedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203HArray1OfContractedItem_destructor(HandleStepAP203HArray1OfContractedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203HArray1OfContractedItem*> HandleStepAP203HArray1OfContractedItem_clone(const HandleStepAP203HArray1OfContractedItem* self_) {
+    try { return {new HandleStepAP203HArray1OfContractedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203HArray1OfDateTimeItem_destructor(HandleStepAP203HArray1OfDateTimeItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203HArray1OfDateTimeItem*> HandleStepAP203HArray1OfDateTimeItem_clone(const HandleStepAP203HArray1OfDateTimeItem* self_) {
+    try { return {new HandleStepAP203HArray1OfDateTimeItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203HArray1OfPersonOrganizationItem_destructor(HandleStepAP203HArray1OfPersonOrganizationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203HArray1OfPersonOrganizationItem*> HandleStepAP203HArray1OfPersonOrganizationItem_clone(const HandleStepAP203HArray1OfPersonOrganizationItem* self_) {
+    try { return {new HandleStepAP203HArray1OfPersonOrganizationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203HArray1OfSpecifiedItem_destructor(HandleStepAP203HArray1OfSpecifiedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203HArray1OfSpecifiedItem*> HandleStepAP203HArray1OfSpecifiedItem_clone(const HandleStepAP203HArray1OfSpecifiedItem* self_) {
+    try { return {new HandleStepAP203HArray1OfSpecifiedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203HArray1OfStartRequestItem_destructor(HandleStepAP203HArray1OfStartRequestItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203HArray1OfStartRequestItem*> HandleStepAP203HArray1OfStartRequestItem_clone(const HandleStepAP203HArray1OfStartRequestItem* self_) {
+    try { return {new HandleStepAP203HArray1OfStartRequestItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203HArray1OfWorkItem_destructor(HandleStepAP203HArray1OfWorkItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203HArray1OfWorkItem*> HandleStepAP203HArray1OfWorkItem_clone(const HandleStepAP203HArray1OfWorkItem* self_) {
+    try { return {new HandleStepAP203HArray1OfWorkItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203StartRequest_destructor(HandleStepAP203StartRequest* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203StartRequest*> HandleStepAP203StartRequest_clone(const HandleStepAP203StartRequest* self_) {
+    try { return {new HandleStepAP203StartRequest(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP203StartWork_destructor(HandleStepAP203StartWork* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP203StartWork*> HandleStepAP203StartWork_clone(const HandleStepAP203StartWork* self_) {
+    try { return {new HandleStepAP203StartWork(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AppliedApprovalAssignment_destructor(HandleStepAP214AppliedApprovalAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AppliedApprovalAssignment*> HandleStepAP214AppliedApprovalAssignment_clone(const HandleStepAP214AppliedApprovalAssignment* self_) {
+    try { return {new HandleStepAP214AppliedApprovalAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AppliedDateAndTimeAssignment_destructor(HandleStepAP214AppliedDateAndTimeAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AppliedDateAndTimeAssignment*> HandleStepAP214AppliedDateAndTimeAssignment_clone(const HandleStepAP214AppliedDateAndTimeAssignment* self_) {
+    try { return {new HandleStepAP214AppliedDateAndTimeAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AppliedDateAssignment_destructor(HandleStepAP214AppliedDateAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AppliedDateAssignment*> HandleStepAP214AppliedDateAssignment_clone(const HandleStepAP214AppliedDateAssignment* self_) {
+    try { return {new HandleStepAP214AppliedDateAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AppliedDocumentReference_destructor(HandleStepAP214AppliedDocumentReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AppliedDocumentReference*> HandleStepAP214AppliedDocumentReference_clone(const HandleStepAP214AppliedDocumentReference* self_) {
+    try { return {new HandleStepAP214AppliedDocumentReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AppliedExternalIdentificationAssignment_destructor(HandleStepAP214AppliedExternalIdentificationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AppliedExternalIdentificationAssignment*> HandleStepAP214AppliedExternalIdentificationAssignment_clone(const HandleStepAP214AppliedExternalIdentificationAssignment* self_) {
+    try { return {new HandleStepAP214AppliedExternalIdentificationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AppliedGroupAssignment_destructor(HandleStepAP214AppliedGroupAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AppliedGroupAssignment*> HandleStepAP214AppliedGroupAssignment_clone(const HandleStepAP214AppliedGroupAssignment* self_) {
+    try { return {new HandleStepAP214AppliedGroupAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AppliedOrganizationAssignment_destructor(HandleStepAP214AppliedOrganizationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AppliedOrganizationAssignment*> HandleStepAP214AppliedOrganizationAssignment_clone(const HandleStepAP214AppliedOrganizationAssignment* self_) {
+    try { return {new HandleStepAP214AppliedOrganizationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AppliedPersonAndOrganizationAssignment_destructor(HandleStepAP214AppliedPersonAndOrganizationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AppliedPersonAndOrganizationAssignment*> HandleStepAP214AppliedPersonAndOrganizationAssignment_clone(const HandleStepAP214AppliedPersonAndOrganizationAssignment* self_) {
+    try { return {new HandleStepAP214AppliedPersonAndOrganizationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AppliedPresentedItem_destructor(HandleStepAP214AppliedPresentedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AppliedPresentedItem*> HandleStepAP214AppliedPresentedItem_clone(const HandleStepAP214AppliedPresentedItem* self_) {
+    try { return {new HandleStepAP214AppliedPresentedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AppliedSecurityClassificationAssignment_destructor(HandleStepAP214AppliedSecurityClassificationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AppliedSecurityClassificationAssignment*> HandleStepAP214AppliedSecurityClassificationAssignment_clone(const HandleStepAP214AppliedSecurityClassificationAssignment* self_) {
+    try { return {new HandleStepAP214AppliedSecurityClassificationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignActualDateAndTimeAssignment_destructor(HandleStepAP214AutoDesignActualDateAndTimeAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignActualDateAndTimeAssignment*> HandleStepAP214AutoDesignActualDateAndTimeAssignment_clone(const HandleStepAP214AutoDesignActualDateAndTimeAssignment* self_) {
+    try { return {new HandleStepAP214AutoDesignActualDateAndTimeAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignActualDateAssignment_destructor(HandleStepAP214AutoDesignActualDateAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignActualDateAssignment*> HandleStepAP214AutoDesignActualDateAssignment_clone(const HandleStepAP214AutoDesignActualDateAssignment* self_) {
+    try { return {new HandleStepAP214AutoDesignActualDateAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignApprovalAssignment_destructor(HandleStepAP214AutoDesignApprovalAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignApprovalAssignment*> HandleStepAP214AutoDesignApprovalAssignment_clone(const HandleStepAP214AutoDesignApprovalAssignment* self_) {
+    try { return {new HandleStepAP214AutoDesignApprovalAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignDateAndPersonAssignment_destructor(HandleStepAP214AutoDesignDateAndPersonAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignDateAndPersonAssignment*> HandleStepAP214AutoDesignDateAndPersonAssignment_clone(const HandleStepAP214AutoDesignDateAndPersonAssignment* self_) {
+    try { return {new HandleStepAP214AutoDesignDateAndPersonAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignDocumentReference_destructor(HandleStepAP214AutoDesignDocumentReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignDocumentReference*> HandleStepAP214AutoDesignDocumentReference_clone(const HandleStepAP214AutoDesignDocumentReference* self_) {
+    try { return {new HandleStepAP214AutoDesignDocumentReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignGroupAssignment_destructor(HandleStepAP214AutoDesignGroupAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignGroupAssignment*> HandleStepAP214AutoDesignGroupAssignment_clone(const HandleStepAP214AutoDesignGroupAssignment* self_) {
+    try { return {new HandleStepAP214AutoDesignGroupAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignNominalDateAndTimeAssignment_destructor(HandleStepAP214AutoDesignNominalDateAndTimeAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignNominalDateAndTimeAssignment*> HandleStepAP214AutoDesignNominalDateAndTimeAssignment_clone(const HandleStepAP214AutoDesignNominalDateAndTimeAssignment* self_) {
+    try { return {new HandleStepAP214AutoDesignNominalDateAndTimeAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignNominalDateAssignment_destructor(HandleStepAP214AutoDesignNominalDateAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignNominalDateAssignment*> HandleStepAP214AutoDesignNominalDateAssignment_clone(const HandleStepAP214AutoDesignNominalDateAssignment* self_) {
+    try { return {new HandleStepAP214AutoDesignNominalDateAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignOrganizationAssignment_destructor(HandleStepAP214AutoDesignOrganizationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignOrganizationAssignment*> HandleStepAP214AutoDesignOrganizationAssignment_clone(const HandleStepAP214AutoDesignOrganizationAssignment* self_) {
+    try { return {new HandleStepAP214AutoDesignOrganizationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignPersonAndOrganizationAssignment_destructor(HandleStepAP214AutoDesignPersonAndOrganizationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignPersonAndOrganizationAssignment*> HandleStepAP214AutoDesignPersonAndOrganizationAssignment_clone(const HandleStepAP214AutoDesignPersonAndOrganizationAssignment* self_) {
+    try { return {new HandleStepAP214AutoDesignPersonAndOrganizationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignPresentedItem_destructor(HandleStepAP214AutoDesignPresentedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignPresentedItem*> HandleStepAP214AutoDesignPresentedItem_clone(const HandleStepAP214AutoDesignPresentedItem* self_) {
+    try { return {new HandleStepAP214AutoDesignPresentedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214AutoDesignSecurityClassificationAssignment_destructor(HandleStepAP214AutoDesignSecurityClassificationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214AutoDesignSecurityClassificationAssignment*> HandleStepAP214AutoDesignSecurityClassificationAssignment_clone(const HandleStepAP214AutoDesignSecurityClassificationAssignment* self_) {
+    try { return {new HandleStepAP214AutoDesignSecurityClassificationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214Class_destructor(HandleStepAP214Class* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214Class*> HandleStepAP214Class_clone(const HandleStepAP214Class* self_) {
+    try { return {new HandleStepAP214Class(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214ExternallyDefinedClass_destructor(HandleStepAP214ExternallyDefinedClass* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214ExternallyDefinedClass*> HandleStepAP214ExternallyDefinedClass_clone(const HandleStepAP214ExternallyDefinedClass* self_) {
+    try { return {new HandleStepAP214ExternallyDefinedClass(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214ExternallyDefinedGeneralProperty_destructor(HandleStepAP214ExternallyDefinedGeneralProperty* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214ExternallyDefinedGeneralProperty*> HandleStepAP214ExternallyDefinedGeneralProperty_clone(const HandleStepAP214ExternallyDefinedGeneralProperty* self_) {
+    try { return {new HandleStepAP214ExternallyDefinedGeneralProperty(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfApprovalItem_destructor(HandleStepAP214HArray1OfApprovalItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfApprovalItem*> HandleStepAP214HArray1OfApprovalItem_clone(const HandleStepAP214HArray1OfApprovalItem* self_) {
+    try { return {new HandleStepAP214HArray1OfApprovalItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfAutoDesignDateAndPersonItem_destructor(HandleStepAP214HArray1OfAutoDesignDateAndPersonItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfAutoDesignDateAndPersonItem*> HandleStepAP214HArray1OfAutoDesignDateAndPersonItem_clone(const HandleStepAP214HArray1OfAutoDesignDateAndPersonItem* self_) {
+    try { return {new HandleStepAP214HArray1OfAutoDesignDateAndPersonItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfAutoDesignDateAndTimeItem_destructor(HandleStepAP214HArray1OfAutoDesignDateAndTimeItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfAutoDesignDateAndTimeItem*> HandleStepAP214HArray1OfAutoDesignDateAndTimeItem_clone(const HandleStepAP214HArray1OfAutoDesignDateAndTimeItem* self_) {
+    try { return {new HandleStepAP214HArray1OfAutoDesignDateAndTimeItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfAutoDesignDatedItem_destructor(HandleStepAP214HArray1OfAutoDesignDatedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfAutoDesignDatedItem*> HandleStepAP214HArray1OfAutoDesignDatedItem_clone(const HandleStepAP214HArray1OfAutoDesignDatedItem* self_) {
+    try { return {new HandleStepAP214HArray1OfAutoDesignDatedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfAutoDesignGeneralOrgItem_destructor(HandleStepAP214HArray1OfAutoDesignGeneralOrgItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfAutoDesignGeneralOrgItem*> HandleStepAP214HArray1OfAutoDesignGeneralOrgItem_clone(const HandleStepAP214HArray1OfAutoDesignGeneralOrgItem* self_) {
+    try { return {new HandleStepAP214HArray1OfAutoDesignGeneralOrgItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfAutoDesignGroupedItem_destructor(HandleStepAP214HArray1OfAutoDesignGroupedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfAutoDesignGroupedItem*> HandleStepAP214HArray1OfAutoDesignGroupedItem_clone(const HandleStepAP214HArray1OfAutoDesignGroupedItem* self_) {
+    try { return {new HandleStepAP214HArray1OfAutoDesignGroupedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfAutoDesignPresentedItemSelect_destructor(HandleStepAP214HArray1OfAutoDesignPresentedItemSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfAutoDesignPresentedItemSelect*> HandleStepAP214HArray1OfAutoDesignPresentedItemSelect_clone(const HandleStepAP214HArray1OfAutoDesignPresentedItemSelect* self_) {
+    try { return {new HandleStepAP214HArray1OfAutoDesignPresentedItemSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfAutoDesignReferencingItem_destructor(HandleStepAP214HArray1OfAutoDesignReferencingItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfAutoDesignReferencingItem*> HandleStepAP214HArray1OfAutoDesignReferencingItem_clone(const HandleStepAP214HArray1OfAutoDesignReferencingItem* self_) {
+    try { return {new HandleStepAP214HArray1OfAutoDesignReferencingItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfDateAndTimeItem_destructor(HandleStepAP214HArray1OfDateAndTimeItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfDateAndTimeItem*> HandleStepAP214HArray1OfDateAndTimeItem_clone(const HandleStepAP214HArray1OfDateAndTimeItem* self_) {
+    try { return {new HandleStepAP214HArray1OfDateAndTimeItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfDateItem_destructor(HandleStepAP214HArray1OfDateItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfDateItem*> HandleStepAP214HArray1OfDateItem_clone(const HandleStepAP214HArray1OfDateItem* self_) {
+    try { return {new HandleStepAP214HArray1OfDateItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfDocumentReferenceItem_destructor(HandleStepAP214HArray1OfDocumentReferenceItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfDocumentReferenceItem*> HandleStepAP214HArray1OfDocumentReferenceItem_clone(const HandleStepAP214HArray1OfDocumentReferenceItem* self_) {
+    try { return {new HandleStepAP214HArray1OfDocumentReferenceItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfExternalIdentificationItem_destructor(HandleStepAP214HArray1OfExternalIdentificationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfExternalIdentificationItem*> HandleStepAP214HArray1OfExternalIdentificationItem_clone(const HandleStepAP214HArray1OfExternalIdentificationItem* self_) {
+    try { return {new HandleStepAP214HArray1OfExternalIdentificationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfGroupItem_destructor(HandleStepAP214HArray1OfGroupItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfGroupItem*> HandleStepAP214HArray1OfGroupItem_clone(const HandleStepAP214HArray1OfGroupItem* self_) {
+    try { return {new HandleStepAP214HArray1OfGroupItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfOrganizationItem_destructor(HandleStepAP214HArray1OfOrganizationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfOrganizationItem*> HandleStepAP214HArray1OfOrganizationItem_clone(const HandleStepAP214HArray1OfOrganizationItem* self_) {
+    try { return {new HandleStepAP214HArray1OfOrganizationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfPersonAndOrganizationItem_destructor(HandleStepAP214HArray1OfPersonAndOrganizationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfPersonAndOrganizationItem*> HandleStepAP214HArray1OfPersonAndOrganizationItem_clone(const HandleStepAP214HArray1OfPersonAndOrganizationItem* self_) {
+    try { return {new HandleStepAP214HArray1OfPersonAndOrganizationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfPresentedItemSelect_destructor(HandleStepAP214HArray1OfPresentedItemSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfPresentedItemSelect*> HandleStepAP214HArray1OfPresentedItemSelect_clone(const HandleStepAP214HArray1OfPresentedItemSelect* self_) {
+    try { return {new HandleStepAP214HArray1OfPresentedItemSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214HArray1OfSecurityClassificationItem_destructor(HandleStepAP214HArray1OfSecurityClassificationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214HArray1OfSecurityClassificationItem*> HandleStepAP214HArray1OfSecurityClassificationItem_clone(const HandleStepAP214HArray1OfSecurityClassificationItem* self_) {
+    try { return {new HandleStepAP214HArray1OfSecurityClassificationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214Protocol_destructor(HandleStepAP214Protocol* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214Protocol*> HandleStepAP214Protocol_clone(const HandleStepAP214Protocol* self_) {
+    try { return {new HandleStepAP214Protocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP214RepItemGroup_destructor(HandleStepAP214RepItemGroup* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP214RepItemGroup*> HandleStepAP214RepItemGroup_clone(const HandleStepAP214RepItemGroup* self_) {
+    try { return {new HandleStepAP214RepItemGroup(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP242DraughtingModelItemAssociation_destructor(HandleStepAP242DraughtingModelItemAssociation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP242DraughtingModelItemAssociation*> HandleStepAP242DraughtingModelItemAssociation_clone(const HandleStepAP242DraughtingModelItemAssociation* self_) {
+    try { return {new HandleStepAP242DraughtingModelItemAssociation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP242GeometricItemSpecificUsage_destructor(HandleStepAP242GeometricItemSpecificUsage* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP242GeometricItemSpecificUsage*> HandleStepAP242GeometricItemSpecificUsage_clone(const HandleStepAP242GeometricItemSpecificUsage* self_) {
+    try { return {new HandleStepAP242GeometricItemSpecificUsage(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP242IdAttribute_destructor(HandleStepAP242IdAttribute* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP242IdAttribute*> HandleStepAP242IdAttribute_clone(const HandleStepAP242IdAttribute* self_) {
+    try { return {new HandleStepAP242IdAttribute(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepAP242ItemIdentifiedRepresentationUsage_destructor(HandleStepAP242ItemIdentifiedRepresentationUsage* self_) { delete self_; }
+extern "C" OcctResult<HandleStepAP242ItemIdentifiedRepresentationUsage*> HandleStepAP242ItemIdentifiedRepresentationUsage_clone(const HandleStepAP242ItemIdentifiedRepresentationUsage* self_) {
+    try { return {new HandleStepAP242ItemIdentifiedRepresentationUsage(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicAction_destructor(HandleStepBasicAction* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicAction*> HandleStepBasicAction_clone(const HandleStepBasicAction* self_) {
+    try { return {new HandleStepBasicAction(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicActionAssignment_destructor(HandleStepBasicActionAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicActionAssignment*> HandleStepBasicActionAssignment_clone(const HandleStepBasicActionAssignment* self_) {
+    try { return {new HandleStepBasicActionAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicActionMethod_destructor(HandleStepBasicActionMethod* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicActionMethod*> HandleStepBasicActionMethod_clone(const HandleStepBasicActionMethod* self_) {
+    try { return {new HandleStepBasicActionMethod(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicActionRequestAssignment_destructor(HandleStepBasicActionRequestAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicActionRequestAssignment*> HandleStepBasicActionRequestAssignment_clone(const HandleStepBasicActionRequestAssignment* self_) {
+    try { return {new HandleStepBasicActionRequestAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicActionRequestSolution_destructor(HandleStepBasicActionRequestSolution* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicActionRequestSolution*> HandleStepBasicActionRequestSolution_clone(const HandleStepBasicActionRequestSolution* self_) {
+    try { return {new HandleStepBasicActionRequestSolution(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicAddress_destructor(HandleStepBasicAddress* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicAddress*> HandleStepBasicAddress_clone(const HandleStepBasicAddress* self_) {
+    try { return {new HandleStepBasicAddress(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicApplicationContext_destructor(HandleStepBasicApplicationContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicApplicationContext*> HandleStepBasicApplicationContext_clone(const HandleStepBasicApplicationContext* self_) {
+    try { return {new HandleStepBasicApplicationContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicApplicationContextElement_destructor(HandleStepBasicApplicationContextElement* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicApplicationContextElement*> HandleStepBasicApplicationContextElement_clone(const HandleStepBasicApplicationContextElement* self_) {
+    try { return {new HandleStepBasicApplicationContextElement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicApplicationProtocolDefinition_destructor(HandleStepBasicApplicationProtocolDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicApplicationProtocolDefinition*> HandleStepBasicApplicationProtocolDefinition_clone(const HandleStepBasicApplicationProtocolDefinition* self_) {
+    try { return {new HandleStepBasicApplicationProtocolDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicApproval_destructor(HandleStepBasicApproval* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicApproval*> HandleStepBasicApproval_clone(const HandleStepBasicApproval* self_) {
+    try { return {new HandleStepBasicApproval(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicApprovalAssignment_destructor(HandleStepBasicApprovalAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicApprovalAssignment*> HandleStepBasicApprovalAssignment_clone(const HandleStepBasicApprovalAssignment* self_) {
+    try { return {new HandleStepBasicApprovalAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicApprovalDateTime_destructor(HandleStepBasicApprovalDateTime* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicApprovalDateTime*> HandleStepBasicApprovalDateTime_clone(const HandleStepBasicApprovalDateTime* self_) {
+    try { return {new HandleStepBasicApprovalDateTime(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicApprovalPersonOrganization_destructor(HandleStepBasicApprovalPersonOrganization* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicApprovalPersonOrganization*> HandleStepBasicApprovalPersonOrganization_clone(const HandleStepBasicApprovalPersonOrganization* self_) {
+    try { return {new HandleStepBasicApprovalPersonOrganization(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicApprovalRelationship_destructor(HandleStepBasicApprovalRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicApprovalRelationship*> HandleStepBasicApprovalRelationship_clone(const HandleStepBasicApprovalRelationship* self_) {
+    try { return {new HandleStepBasicApprovalRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicApprovalRole_destructor(HandleStepBasicApprovalRole* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicApprovalRole*> HandleStepBasicApprovalRole_clone(const HandleStepBasicApprovalRole* self_) {
+    try { return {new HandleStepBasicApprovalRole(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicApprovalStatus_destructor(HandleStepBasicApprovalStatus* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicApprovalStatus*> HandleStepBasicApprovalStatus_clone(const HandleStepBasicApprovalStatus* self_) {
+    try { return {new HandleStepBasicApprovalStatus(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicAreaUnit_destructor(HandleStepBasicAreaUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicAreaUnit*> HandleStepBasicAreaUnit_clone(const HandleStepBasicAreaUnit* self_) {
+    try { return {new HandleStepBasicAreaUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicCalendarDate_destructor(HandleStepBasicCalendarDate* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicCalendarDate*> HandleStepBasicCalendarDate_clone(const HandleStepBasicCalendarDate* self_) {
+    try { return {new HandleStepBasicCalendarDate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicCertification_destructor(HandleStepBasicCertification* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicCertification*> HandleStepBasicCertification_clone(const HandleStepBasicCertification* self_) {
+    try { return {new HandleStepBasicCertification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicCertificationAssignment_destructor(HandleStepBasicCertificationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicCertificationAssignment*> HandleStepBasicCertificationAssignment_clone(const HandleStepBasicCertificationAssignment* self_) {
+    try { return {new HandleStepBasicCertificationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicCertificationType_destructor(HandleStepBasicCertificationType* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicCertificationType*> HandleStepBasicCertificationType_clone(const HandleStepBasicCertificationType* self_) {
+    try { return {new HandleStepBasicCertificationType(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicCharacterizedObject_destructor(HandleStepBasicCharacterizedObject* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicCharacterizedObject*> HandleStepBasicCharacterizedObject_clone(const HandleStepBasicCharacterizedObject* self_) {
+    try { return {new HandleStepBasicCharacterizedObject(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicContract_destructor(HandleStepBasicContract* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicContract*> HandleStepBasicContract_clone(const HandleStepBasicContract* self_) {
+    try { return {new HandleStepBasicContract(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicContractAssignment_destructor(HandleStepBasicContractAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicContractAssignment*> HandleStepBasicContractAssignment_clone(const HandleStepBasicContractAssignment* self_) {
+    try { return {new HandleStepBasicContractAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicContractType_destructor(HandleStepBasicContractType* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicContractType*> HandleStepBasicContractType_clone(const HandleStepBasicContractType* self_) {
+    try { return {new HandleStepBasicContractType(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicConversionBasedUnit_destructor(HandleStepBasicConversionBasedUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicConversionBasedUnit*> HandleStepBasicConversionBasedUnit_clone(const HandleStepBasicConversionBasedUnit* self_) {
+    try { return {new HandleStepBasicConversionBasedUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicConversionBasedUnitAndAreaUnit_destructor(HandleStepBasicConversionBasedUnitAndAreaUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicConversionBasedUnitAndAreaUnit*> HandleStepBasicConversionBasedUnitAndAreaUnit_clone(const HandleStepBasicConversionBasedUnitAndAreaUnit* self_) {
+    try { return {new HandleStepBasicConversionBasedUnitAndAreaUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicConversionBasedUnitAndLengthUnit_destructor(HandleStepBasicConversionBasedUnitAndLengthUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicConversionBasedUnitAndLengthUnit*> HandleStepBasicConversionBasedUnitAndLengthUnit_clone(const HandleStepBasicConversionBasedUnitAndLengthUnit* self_) {
+    try { return {new HandleStepBasicConversionBasedUnitAndLengthUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicConversionBasedUnitAndMassUnit_destructor(HandleStepBasicConversionBasedUnitAndMassUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicConversionBasedUnitAndMassUnit*> HandleStepBasicConversionBasedUnitAndMassUnit_clone(const HandleStepBasicConversionBasedUnitAndMassUnit* self_) {
+    try { return {new HandleStepBasicConversionBasedUnitAndMassUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicConversionBasedUnitAndPlaneAngleUnit_destructor(HandleStepBasicConversionBasedUnitAndPlaneAngleUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicConversionBasedUnitAndPlaneAngleUnit*> HandleStepBasicConversionBasedUnitAndPlaneAngleUnit_clone(const HandleStepBasicConversionBasedUnitAndPlaneAngleUnit* self_) {
+    try { return {new HandleStepBasicConversionBasedUnitAndPlaneAngleUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicConversionBasedUnitAndRatioUnit_destructor(HandleStepBasicConversionBasedUnitAndRatioUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicConversionBasedUnitAndRatioUnit*> HandleStepBasicConversionBasedUnitAndRatioUnit_clone(const HandleStepBasicConversionBasedUnitAndRatioUnit* self_) {
+    try { return {new HandleStepBasicConversionBasedUnitAndRatioUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicConversionBasedUnitAndSolidAngleUnit_destructor(HandleStepBasicConversionBasedUnitAndSolidAngleUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicConversionBasedUnitAndSolidAngleUnit*> HandleStepBasicConversionBasedUnitAndSolidAngleUnit_clone(const HandleStepBasicConversionBasedUnitAndSolidAngleUnit* self_) {
+    try { return {new HandleStepBasicConversionBasedUnitAndSolidAngleUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicConversionBasedUnitAndTimeUnit_destructor(HandleStepBasicConversionBasedUnitAndTimeUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicConversionBasedUnitAndTimeUnit*> HandleStepBasicConversionBasedUnitAndTimeUnit_clone(const HandleStepBasicConversionBasedUnitAndTimeUnit* self_) {
+    try { return {new HandleStepBasicConversionBasedUnitAndTimeUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicConversionBasedUnitAndVolumeUnit_destructor(HandleStepBasicConversionBasedUnitAndVolumeUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicConversionBasedUnitAndVolumeUnit*> HandleStepBasicConversionBasedUnitAndVolumeUnit_clone(const HandleStepBasicConversionBasedUnitAndVolumeUnit* self_) {
+    try { return {new HandleStepBasicConversionBasedUnitAndVolumeUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicCoordinatedUniversalTimeOffset_destructor(HandleStepBasicCoordinatedUniversalTimeOffset* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicCoordinatedUniversalTimeOffset*> HandleStepBasicCoordinatedUniversalTimeOffset_clone(const HandleStepBasicCoordinatedUniversalTimeOffset* self_) {
+    try { return {new HandleStepBasicCoordinatedUniversalTimeOffset(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDate_destructor(HandleStepBasicDate* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDate*> HandleStepBasicDate_clone(const HandleStepBasicDate* self_) {
+    try { return {new HandleStepBasicDate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDateAndTime_destructor(HandleStepBasicDateAndTime* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDateAndTime*> HandleStepBasicDateAndTime_clone(const HandleStepBasicDateAndTime* self_) {
+    try { return {new HandleStepBasicDateAndTime(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDateAndTimeAssignment_destructor(HandleStepBasicDateAndTimeAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDateAndTimeAssignment*> HandleStepBasicDateAndTimeAssignment_clone(const HandleStepBasicDateAndTimeAssignment* self_) {
+    try { return {new HandleStepBasicDateAndTimeAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDateAssignment_destructor(HandleStepBasicDateAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDateAssignment*> HandleStepBasicDateAssignment_clone(const HandleStepBasicDateAssignment* self_) {
+    try { return {new HandleStepBasicDateAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDateRole_destructor(HandleStepBasicDateRole* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDateRole*> HandleStepBasicDateRole_clone(const HandleStepBasicDateRole* self_) {
+    try { return {new HandleStepBasicDateRole(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDateTimeRole_destructor(HandleStepBasicDateTimeRole* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDateTimeRole*> HandleStepBasicDateTimeRole_clone(const HandleStepBasicDateTimeRole* self_) {
+    try { return {new HandleStepBasicDateTimeRole(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDerivedUnit_destructor(HandleStepBasicDerivedUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDerivedUnit*> HandleStepBasicDerivedUnit_clone(const HandleStepBasicDerivedUnit* self_) {
+    try { return {new HandleStepBasicDerivedUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDerivedUnitElement_destructor(HandleStepBasicDerivedUnitElement* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDerivedUnitElement*> HandleStepBasicDerivedUnitElement_clone(const HandleStepBasicDerivedUnitElement* self_) {
+    try { return {new HandleStepBasicDerivedUnitElement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDesignContext_destructor(HandleStepBasicDesignContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDesignContext*> HandleStepBasicDesignContext_clone(const HandleStepBasicDesignContext* self_) {
+    try { return {new HandleStepBasicDesignContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDigitalDocument_destructor(HandleStepBasicDigitalDocument* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDigitalDocument*> HandleStepBasicDigitalDocument_clone(const HandleStepBasicDigitalDocument* self_) {
+    try { return {new HandleStepBasicDigitalDocument(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDimensionalExponents_destructor(HandleStepBasicDimensionalExponents* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDimensionalExponents*> HandleStepBasicDimensionalExponents_clone(const HandleStepBasicDimensionalExponents* self_) {
+    try { return {new HandleStepBasicDimensionalExponents(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDocument_destructor(HandleStepBasicDocument* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDocument*> HandleStepBasicDocument_clone(const HandleStepBasicDocument* self_) {
+    try { return {new HandleStepBasicDocument(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDocumentFile_destructor(HandleStepBasicDocumentFile* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDocumentFile*> HandleStepBasicDocumentFile_clone(const HandleStepBasicDocumentFile* self_) {
+    try { return {new HandleStepBasicDocumentFile(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDocumentProductAssociation_destructor(HandleStepBasicDocumentProductAssociation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDocumentProductAssociation*> HandleStepBasicDocumentProductAssociation_clone(const HandleStepBasicDocumentProductAssociation* self_) {
+    try { return {new HandleStepBasicDocumentProductAssociation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDocumentProductEquivalence_destructor(HandleStepBasicDocumentProductEquivalence* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDocumentProductEquivalence*> HandleStepBasicDocumentProductEquivalence_clone(const HandleStepBasicDocumentProductEquivalence* self_) {
+    try { return {new HandleStepBasicDocumentProductEquivalence(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDocumentReference_destructor(HandleStepBasicDocumentReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDocumentReference*> HandleStepBasicDocumentReference_clone(const HandleStepBasicDocumentReference* self_) {
+    try { return {new HandleStepBasicDocumentReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDocumentRelationship_destructor(HandleStepBasicDocumentRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDocumentRelationship*> HandleStepBasicDocumentRelationship_clone(const HandleStepBasicDocumentRelationship* self_) {
+    try { return {new HandleStepBasicDocumentRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDocumentRepresentationType_destructor(HandleStepBasicDocumentRepresentationType* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDocumentRepresentationType*> HandleStepBasicDocumentRepresentationType_clone(const HandleStepBasicDocumentRepresentationType* self_) {
+    try { return {new HandleStepBasicDocumentRepresentationType(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDocumentType_destructor(HandleStepBasicDocumentType* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDocumentType*> HandleStepBasicDocumentType_clone(const HandleStepBasicDocumentType* self_) {
+    try { return {new HandleStepBasicDocumentType(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicDocumentUsageConstraint_destructor(HandleStepBasicDocumentUsageConstraint* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicDocumentUsageConstraint*> HandleStepBasicDocumentUsageConstraint_clone(const HandleStepBasicDocumentUsageConstraint* self_) {
+    try { return {new HandleStepBasicDocumentUsageConstraint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicEffectivity_destructor(HandleStepBasicEffectivity* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicEffectivity*> HandleStepBasicEffectivity_clone(const HandleStepBasicEffectivity* self_) {
+    try { return {new HandleStepBasicEffectivity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicEffectivityAssignment_destructor(HandleStepBasicEffectivityAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicEffectivityAssignment*> HandleStepBasicEffectivityAssignment_clone(const HandleStepBasicEffectivityAssignment* self_) {
+    try { return {new HandleStepBasicEffectivityAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicEulerAngles_destructor(HandleStepBasicEulerAngles* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicEulerAngles*> HandleStepBasicEulerAngles_clone(const HandleStepBasicEulerAngles* self_) {
+    try { return {new HandleStepBasicEulerAngles(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicExternalIdentificationAssignment_destructor(HandleStepBasicExternalIdentificationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicExternalIdentificationAssignment*> HandleStepBasicExternalIdentificationAssignment_clone(const HandleStepBasicExternalIdentificationAssignment* self_) {
+    try { return {new HandleStepBasicExternalIdentificationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicExternalSource_destructor(HandleStepBasicExternalSource* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicExternalSource*> HandleStepBasicExternalSource_clone(const HandleStepBasicExternalSource* self_) {
+    try { return {new HandleStepBasicExternalSource(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicExternallyDefinedItem_destructor(HandleStepBasicExternallyDefinedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicExternallyDefinedItem*> HandleStepBasicExternallyDefinedItem_clone(const HandleStepBasicExternallyDefinedItem* self_) {
+    try { return {new HandleStepBasicExternallyDefinedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicGeneralProperty_destructor(HandleStepBasicGeneralProperty* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicGeneralProperty*> HandleStepBasicGeneralProperty_clone(const HandleStepBasicGeneralProperty* self_) {
+    try { return {new HandleStepBasicGeneralProperty(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicGeneralPropertyAssociation_destructor(HandleStepBasicGeneralPropertyAssociation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicGeneralPropertyAssociation*> HandleStepBasicGeneralPropertyAssociation_clone(const HandleStepBasicGeneralPropertyAssociation* self_) {
+    try { return {new HandleStepBasicGeneralPropertyAssociation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicGeneralPropertyRelationship_destructor(HandleStepBasicGeneralPropertyRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicGeneralPropertyRelationship*> HandleStepBasicGeneralPropertyRelationship_clone(const HandleStepBasicGeneralPropertyRelationship* self_) {
+    try { return {new HandleStepBasicGeneralPropertyRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicGroup_destructor(HandleStepBasicGroup* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicGroup*> HandleStepBasicGroup_clone(const HandleStepBasicGroup* self_) {
+    try { return {new HandleStepBasicGroup(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicGroupAssignment_destructor(HandleStepBasicGroupAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicGroupAssignment*> HandleStepBasicGroupAssignment_clone(const HandleStepBasicGroupAssignment* self_) {
+    try { return {new HandleStepBasicGroupAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicGroupRelationship_destructor(HandleStepBasicGroupRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicGroupRelationship*> HandleStepBasicGroupRelationship_clone(const HandleStepBasicGroupRelationship* self_) {
+    try { return {new HandleStepBasicGroupRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicHArray1OfApproval_destructor(HandleStepBasicHArray1OfApproval* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicHArray1OfApproval*> HandleStepBasicHArray1OfApproval_clone(const HandleStepBasicHArray1OfApproval* self_) {
+    try { return {new HandleStepBasicHArray1OfApproval(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicHArray1OfDerivedUnitElement_destructor(HandleStepBasicHArray1OfDerivedUnitElement* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicHArray1OfDerivedUnitElement*> HandleStepBasicHArray1OfDerivedUnitElement_clone(const HandleStepBasicHArray1OfDerivedUnitElement* self_) {
+    try { return {new HandleStepBasicHArray1OfDerivedUnitElement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicHArray1OfDocument_destructor(HandleStepBasicHArray1OfDocument* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicHArray1OfDocument*> HandleStepBasicHArray1OfDocument_clone(const HandleStepBasicHArray1OfDocument* self_) {
+    try { return {new HandleStepBasicHArray1OfDocument(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicHArray1OfNamedUnit_destructor(HandleStepBasicHArray1OfNamedUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicHArray1OfNamedUnit*> HandleStepBasicHArray1OfNamedUnit_clone(const HandleStepBasicHArray1OfNamedUnit* self_) {
+    try { return {new HandleStepBasicHArray1OfNamedUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicHArray1OfOrganization_destructor(HandleStepBasicHArray1OfOrganization* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicHArray1OfOrganization*> HandleStepBasicHArray1OfOrganization_clone(const HandleStepBasicHArray1OfOrganization* self_) {
+    try { return {new HandleStepBasicHArray1OfOrganization(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicHArray1OfPerson_destructor(HandleStepBasicHArray1OfPerson* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicHArray1OfPerson*> HandleStepBasicHArray1OfPerson_clone(const HandleStepBasicHArray1OfPerson* self_) {
+    try { return {new HandleStepBasicHArray1OfPerson(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicHArray1OfProduct_destructor(HandleStepBasicHArray1OfProduct* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicHArray1OfProduct*> HandleStepBasicHArray1OfProduct_clone(const HandleStepBasicHArray1OfProduct* self_) {
+    try { return {new HandleStepBasicHArray1OfProduct(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicHArray1OfProductContext_destructor(HandleStepBasicHArray1OfProductContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicHArray1OfProductContext*> HandleStepBasicHArray1OfProductContext_clone(const HandleStepBasicHArray1OfProductContext* self_) {
+    try { return {new HandleStepBasicHArray1OfProductContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicHArray1OfProductDefinition_destructor(HandleStepBasicHArray1OfProductDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicHArray1OfProductDefinition*> HandleStepBasicHArray1OfProductDefinition_clone(const HandleStepBasicHArray1OfProductDefinition* self_) {
+    try { return {new HandleStepBasicHArray1OfProductDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicHArray1OfUncertaintyMeasureWithUnit_destructor(HandleStepBasicHArray1OfUncertaintyMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicHArray1OfUncertaintyMeasureWithUnit*> HandleStepBasicHArray1OfUncertaintyMeasureWithUnit_clone(const HandleStepBasicHArray1OfUncertaintyMeasureWithUnit* self_) {
+    try { return {new HandleStepBasicHArray1OfUncertaintyMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicIdentificationAssignment_destructor(HandleStepBasicIdentificationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicIdentificationAssignment*> HandleStepBasicIdentificationAssignment_clone(const HandleStepBasicIdentificationAssignment* self_) {
+    try { return {new HandleStepBasicIdentificationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicIdentificationRole_destructor(HandleStepBasicIdentificationRole* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicIdentificationRole*> HandleStepBasicIdentificationRole_clone(const HandleStepBasicIdentificationRole* self_) {
+    try { return {new HandleStepBasicIdentificationRole(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicLengthMeasureWithUnit_destructor(HandleStepBasicLengthMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicLengthMeasureWithUnit*> HandleStepBasicLengthMeasureWithUnit_clone(const HandleStepBasicLengthMeasureWithUnit* self_) {
+    try { return {new HandleStepBasicLengthMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicLengthUnit_destructor(HandleStepBasicLengthUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicLengthUnit*> HandleStepBasicLengthUnit_clone(const HandleStepBasicLengthUnit* self_) {
+    try { return {new HandleStepBasicLengthUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicLocalTime_destructor(HandleStepBasicLocalTime* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicLocalTime*> HandleStepBasicLocalTime_clone(const HandleStepBasicLocalTime* self_) {
+    try { return {new HandleStepBasicLocalTime(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicMassMeasureWithUnit_destructor(HandleStepBasicMassMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicMassMeasureWithUnit*> HandleStepBasicMassMeasureWithUnit_clone(const HandleStepBasicMassMeasureWithUnit* self_) {
+    try { return {new HandleStepBasicMassMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicMassUnit_destructor(HandleStepBasicMassUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicMassUnit*> HandleStepBasicMassUnit_clone(const HandleStepBasicMassUnit* self_) {
+    try { return {new HandleStepBasicMassUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicMeasureValueMember_destructor(HandleStepBasicMeasureValueMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicMeasureValueMember*> HandleStepBasicMeasureValueMember_clone(const HandleStepBasicMeasureValueMember* self_) {
+    try { return {new HandleStepBasicMeasureValueMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicMeasureWithUnit_destructor(HandleStepBasicMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicMeasureWithUnit*> HandleStepBasicMeasureWithUnit_clone(const HandleStepBasicMeasureWithUnit* self_) {
+    try { return {new HandleStepBasicMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicMechanicalContext_destructor(HandleStepBasicMechanicalContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicMechanicalContext*> HandleStepBasicMechanicalContext_clone(const HandleStepBasicMechanicalContext* self_) {
+    try { return {new HandleStepBasicMechanicalContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicNameAssignment_destructor(HandleStepBasicNameAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicNameAssignment*> HandleStepBasicNameAssignment_clone(const HandleStepBasicNameAssignment* self_) {
+    try { return {new HandleStepBasicNameAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicNamedUnit_destructor(HandleStepBasicNamedUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicNamedUnit*> HandleStepBasicNamedUnit_clone(const HandleStepBasicNamedUnit* self_) {
+    try { return {new HandleStepBasicNamedUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicObjectRole_destructor(HandleStepBasicObjectRole* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicObjectRole*> HandleStepBasicObjectRole_clone(const HandleStepBasicObjectRole* self_) {
+    try { return {new HandleStepBasicObjectRole(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicOrdinalDate_destructor(HandleStepBasicOrdinalDate* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicOrdinalDate*> HandleStepBasicOrdinalDate_clone(const HandleStepBasicOrdinalDate* self_) {
+    try { return {new HandleStepBasicOrdinalDate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicOrganization_destructor(HandleStepBasicOrganization* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicOrganization*> HandleStepBasicOrganization_clone(const HandleStepBasicOrganization* self_) {
+    try { return {new HandleStepBasicOrganization(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicOrganizationAssignment_destructor(HandleStepBasicOrganizationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicOrganizationAssignment*> HandleStepBasicOrganizationAssignment_clone(const HandleStepBasicOrganizationAssignment* self_) {
+    try { return {new HandleStepBasicOrganizationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicOrganizationRole_destructor(HandleStepBasicOrganizationRole* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicOrganizationRole*> HandleStepBasicOrganizationRole_clone(const HandleStepBasicOrganizationRole* self_) {
+    try { return {new HandleStepBasicOrganizationRole(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicOrganizationalAddress_destructor(HandleStepBasicOrganizationalAddress* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicOrganizationalAddress*> HandleStepBasicOrganizationalAddress_clone(const HandleStepBasicOrganizationalAddress* self_) {
+    try { return {new HandleStepBasicOrganizationalAddress(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicPerson_destructor(HandleStepBasicPerson* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicPerson*> HandleStepBasicPerson_clone(const HandleStepBasicPerson* self_) {
+    try { return {new HandleStepBasicPerson(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicPersonAndOrganization_destructor(HandleStepBasicPersonAndOrganization* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicPersonAndOrganization*> HandleStepBasicPersonAndOrganization_clone(const HandleStepBasicPersonAndOrganization* self_) {
+    try { return {new HandleStepBasicPersonAndOrganization(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicPersonAndOrganizationAssignment_destructor(HandleStepBasicPersonAndOrganizationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicPersonAndOrganizationAssignment*> HandleStepBasicPersonAndOrganizationAssignment_clone(const HandleStepBasicPersonAndOrganizationAssignment* self_) {
+    try { return {new HandleStepBasicPersonAndOrganizationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicPersonAndOrganizationRole_destructor(HandleStepBasicPersonAndOrganizationRole* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicPersonAndOrganizationRole*> HandleStepBasicPersonAndOrganizationRole_clone(const HandleStepBasicPersonAndOrganizationRole* self_) {
+    try { return {new HandleStepBasicPersonAndOrganizationRole(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicPersonalAddress_destructor(HandleStepBasicPersonalAddress* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicPersonalAddress*> HandleStepBasicPersonalAddress_clone(const HandleStepBasicPersonalAddress* self_) {
+    try { return {new HandleStepBasicPersonalAddress(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicPhysicallyModeledProductDefinition_destructor(HandleStepBasicPhysicallyModeledProductDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicPhysicallyModeledProductDefinition*> HandleStepBasicPhysicallyModeledProductDefinition_clone(const HandleStepBasicPhysicallyModeledProductDefinition* self_) {
+    try { return {new HandleStepBasicPhysicallyModeledProductDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicPlaneAngleMeasureWithUnit_destructor(HandleStepBasicPlaneAngleMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicPlaneAngleMeasureWithUnit*> HandleStepBasicPlaneAngleMeasureWithUnit_clone(const HandleStepBasicPlaneAngleMeasureWithUnit* self_) {
+    try { return {new HandleStepBasicPlaneAngleMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicPlaneAngleUnit_destructor(HandleStepBasicPlaneAngleUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicPlaneAngleUnit*> HandleStepBasicPlaneAngleUnit_clone(const HandleStepBasicPlaneAngleUnit* self_) {
+    try { return {new HandleStepBasicPlaneAngleUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProduct_destructor(HandleStepBasicProduct* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProduct*> HandleStepBasicProduct_clone(const HandleStepBasicProduct* self_) {
+    try { return {new HandleStepBasicProduct(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductCategory_destructor(HandleStepBasicProductCategory* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductCategory*> HandleStepBasicProductCategory_clone(const HandleStepBasicProductCategory* self_) {
+    try { return {new HandleStepBasicProductCategory(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductCategoryRelationship_destructor(HandleStepBasicProductCategoryRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductCategoryRelationship*> HandleStepBasicProductCategoryRelationship_clone(const HandleStepBasicProductCategoryRelationship* self_) {
+    try { return {new HandleStepBasicProductCategoryRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductConceptContext_destructor(HandleStepBasicProductConceptContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductConceptContext*> HandleStepBasicProductConceptContext_clone(const HandleStepBasicProductConceptContext* self_) {
+    try { return {new HandleStepBasicProductConceptContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductContext_destructor(HandleStepBasicProductContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductContext*> HandleStepBasicProductContext_clone(const HandleStepBasicProductContext* self_) {
+    try { return {new HandleStepBasicProductContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductDefinition_destructor(HandleStepBasicProductDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductDefinition*> HandleStepBasicProductDefinition_clone(const HandleStepBasicProductDefinition* self_) {
+    try { return {new HandleStepBasicProductDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductDefinitionContext_destructor(HandleStepBasicProductDefinitionContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductDefinitionContext*> HandleStepBasicProductDefinitionContext_clone(const HandleStepBasicProductDefinitionContext* self_) {
+    try { return {new HandleStepBasicProductDefinitionContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductDefinitionEffectivity_destructor(HandleStepBasicProductDefinitionEffectivity* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductDefinitionEffectivity*> HandleStepBasicProductDefinitionEffectivity_clone(const HandleStepBasicProductDefinitionEffectivity* self_) {
+    try { return {new HandleStepBasicProductDefinitionEffectivity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductDefinitionFormation_destructor(HandleStepBasicProductDefinitionFormation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductDefinitionFormation*> HandleStepBasicProductDefinitionFormation_clone(const HandleStepBasicProductDefinitionFormation* self_) {
+    try { return {new HandleStepBasicProductDefinitionFormation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductDefinitionFormationRelationship_destructor(HandleStepBasicProductDefinitionFormationRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductDefinitionFormationRelationship*> HandleStepBasicProductDefinitionFormationRelationship_clone(const HandleStepBasicProductDefinitionFormationRelationship* self_) {
+    try { return {new HandleStepBasicProductDefinitionFormationRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductDefinitionFormationWithSpecifiedSource_destructor(HandleStepBasicProductDefinitionFormationWithSpecifiedSource* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductDefinitionFormationWithSpecifiedSource*> HandleStepBasicProductDefinitionFormationWithSpecifiedSource_clone(const HandleStepBasicProductDefinitionFormationWithSpecifiedSource* self_) {
+    try { return {new HandleStepBasicProductDefinitionFormationWithSpecifiedSource(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductDefinitionReference_destructor(HandleStepBasicProductDefinitionReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductDefinitionReference*> HandleStepBasicProductDefinitionReference_clone(const HandleStepBasicProductDefinitionReference* self_) {
+    try { return {new HandleStepBasicProductDefinitionReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductDefinitionReferenceWithLocalRepresentation_destructor(HandleStepBasicProductDefinitionReferenceWithLocalRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductDefinitionReferenceWithLocalRepresentation*> HandleStepBasicProductDefinitionReferenceWithLocalRepresentation_clone(const HandleStepBasicProductDefinitionReferenceWithLocalRepresentation* self_) {
+    try { return {new HandleStepBasicProductDefinitionReferenceWithLocalRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductDefinitionRelationship_destructor(HandleStepBasicProductDefinitionRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductDefinitionRelationship*> HandleStepBasicProductDefinitionRelationship_clone(const HandleStepBasicProductDefinitionRelationship* self_) {
+    try { return {new HandleStepBasicProductDefinitionRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductDefinitionWithAssociatedDocuments_destructor(HandleStepBasicProductDefinitionWithAssociatedDocuments* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductDefinitionWithAssociatedDocuments*> HandleStepBasicProductDefinitionWithAssociatedDocuments_clone(const HandleStepBasicProductDefinitionWithAssociatedDocuments* self_) {
+    try { return {new HandleStepBasicProductDefinitionWithAssociatedDocuments(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductRelatedProductCategory_destructor(HandleStepBasicProductRelatedProductCategory* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductRelatedProductCategory*> HandleStepBasicProductRelatedProductCategory_clone(const HandleStepBasicProductRelatedProductCategory* self_) {
+    try { return {new HandleStepBasicProductRelatedProductCategory(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicProductType_destructor(HandleStepBasicProductType* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicProductType*> HandleStepBasicProductType_clone(const HandleStepBasicProductType* self_) {
+    try { return {new HandleStepBasicProductType(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicRatioMeasureWithUnit_destructor(HandleStepBasicRatioMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicRatioMeasureWithUnit*> HandleStepBasicRatioMeasureWithUnit_clone(const HandleStepBasicRatioMeasureWithUnit* self_) {
+    try { return {new HandleStepBasicRatioMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicRatioUnit_destructor(HandleStepBasicRatioUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicRatioUnit*> HandleStepBasicRatioUnit_clone(const HandleStepBasicRatioUnit* self_) {
+    try { return {new HandleStepBasicRatioUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicRoleAssociation_destructor(HandleStepBasicRoleAssociation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicRoleAssociation*> HandleStepBasicRoleAssociation_clone(const HandleStepBasicRoleAssociation* self_) {
+    try { return {new HandleStepBasicRoleAssociation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSecurityClassification_destructor(HandleStepBasicSecurityClassification* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSecurityClassification*> HandleStepBasicSecurityClassification_clone(const HandleStepBasicSecurityClassification* self_) {
+    try { return {new HandleStepBasicSecurityClassification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSecurityClassificationAssignment_destructor(HandleStepBasicSecurityClassificationAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSecurityClassificationAssignment*> HandleStepBasicSecurityClassificationAssignment_clone(const HandleStepBasicSecurityClassificationAssignment* self_) {
+    try { return {new HandleStepBasicSecurityClassificationAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSecurityClassificationLevel_destructor(HandleStepBasicSecurityClassificationLevel* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSecurityClassificationLevel*> HandleStepBasicSecurityClassificationLevel_clone(const HandleStepBasicSecurityClassificationLevel* self_) {
+    try { return {new HandleStepBasicSecurityClassificationLevel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSiUnit_destructor(HandleStepBasicSiUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSiUnit*> HandleStepBasicSiUnit_clone(const HandleStepBasicSiUnit* self_) {
+    try { return {new HandleStepBasicSiUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSiUnitAndAreaUnit_destructor(HandleStepBasicSiUnitAndAreaUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSiUnitAndAreaUnit*> HandleStepBasicSiUnitAndAreaUnit_clone(const HandleStepBasicSiUnitAndAreaUnit* self_) {
+    try { return {new HandleStepBasicSiUnitAndAreaUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSiUnitAndLengthUnit_destructor(HandleStepBasicSiUnitAndLengthUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSiUnitAndLengthUnit*> HandleStepBasicSiUnitAndLengthUnit_clone(const HandleStepBasicSiUnitAndLengthUnit* self_) {
+    try { return {new HandleStepBasicSiUnitAndLengthUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSiUnitAndMassUnit_destructor(HandleStepBasicSiUnitAndMassUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSiUnitAndMassUnit*> HandleStepBasicSiUnitAndMassUnit_clone(const HandleStepBasicSiUnitAndMassUnit* self_) {
+    try { return {new HandleStepBasicSiUnitAndMassUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSiUnitAndPlaneAngleUnit_destructor(HandleStepBasicSiUnitAndPlaneAngleUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSiUnitAndPlaneAngleUnit*> HandleStepBasicSiUnitAndPlaneAngleUnit_clone(const HandleStepBasicSiUnitAndPlaneAngleUnit* self_) {
+    try { return {new HandleStepBasicSiUnitAndPlaneAngleUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSiUnitAndRatioUnit_destructor(HandleStepBasicSiUnitAndRatioUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSiUnitAndRatioUnit*> HandleStepBasicSiUnitAndRatioUnit_clone(const HandleStepBasicSiUnitAndRatioUnit* self_) {
+    try { return {new HandleStepBasicSiUnitAndRatioUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSiUnitAndSolidAngleUnit_destructor(HandleStepBasicSiUnitAndSolidAngleUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSiUnitAndSolidAngleUnit*> HandleStepBasicSiUnitAndSolidAngleUnit_clone(const HandleStepBasicSiUnitAndSolidAngleUnit* self_) {
+    try { return {new HandleStepBasicSiUnitAndSolidAngleUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSiUnitAndThermodynamicTemperatureUnit_destructor(HandleStepBasicSiUnitAndThermodynamicTemperatureUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSiUnitAndThermodynamicTemperatureUnit*> HandleStepBasicSiUnitAndThermodynamicTemperatureUnit_clone(const HandleStepBasicSiUnitAndThermodynamicTemperatureUnit* self_) {
+    try { return {new HandleStepBasicSiUnitAndThermodynamicTemperatureUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSiUnitAndTimeUnit_destructor(HandleStepBasicSiUnitAndTimeUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSiUnitAndTimeUnit*> HandleStepBasicSiUnitAndTimeUnit_clone(const HandleStepBasicSiUnitAndTimeUnit* self_) {
+    try { return {new HandleStepBasicSiUnitAndTimeUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSiUnitAndVolumeUnit_destructor(HandleStepBasicSiUnitAndVolumeUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSiUnitAndVolumeUnit*> HandleStepBasicSiUnitAndVolumeUnit_clone(const HandleStepBasicSiUnitAndVolumeUnit* self_) {
+    try { return {new HandleStepBasicSiUnitAndVolumeUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSizeMember_destructor(HandleStepBasicSizeMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSizeMember*> HandleStepBasicSizeMember_clone(const HandleStepBasicSizeMember* self_) {
+    try { return {new HandleStepBasicSizeMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSolidAngleMeasureWithUnit_destructor(HandleStepBasicSolidAngleMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSolidAngleMeasureWithUnit*> HandleStepBasicSolidAngleMeasureWithUnit_clone(const HandleStepBasicSolidAngleMeasureWithUnit* self_) {
+    try { return {new HandleStepBasicSolidAngleMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicSolidAngleUnit_destructor(HandleStepBasicSolidAngleUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicSolidAngleUnit*> HandleStepBasicSolidAngleUnit_clone(const HandleStepBasicSolidAngleUnit* self_) {
+    try { return {new HandleStepBasicSolidAngleUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicThermodynamicTemperatureUnit_destructor(HandleStepBasicThermodynamicTemperatureUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicThermodynamicTemperatureUnit*> HandleStepBasicThermodynamicTemperatureUnit_clone(const HandleStepBasicThermodynamicTemperatureUnit* self_) {
+    try { return {new HandleStepBasicThermodynamicTemperatureUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicTimeMeasureWithUnit_destructor(HandleStepBasicTimeMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicTimeMeasureWithUnit*> HandleStepBasicTimeMeasureWithUnit_clone(const HandleStepBasicTimeMeasureWithUnit* self_) {
+    try { return {new HandleStepBasicTimeMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicTimeUnit_destructor(HandleStepBasicTimeUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicTimeUnit*> HandleStepBasicTimeUnit_clone(const HandleStepBasicTimeUnit* self_) {
+    try { return {new HandleStepBasicTimeUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicUncertaintyMeasureWithUnit_destructor(HandleStepBasicUncertaintyMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicUncertaintyMeasureWithUnit*> HandleStepBasicUncertaintyMeasureWithUnit_clone(const HandleStepBasicUncertaintyMeasureWithUnit* self_) {
+    try { return {new HandleStepBasicUncertaintyMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicVersionedActionRequest_destructor(HandleStepBasicVersionedActionRequest* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicVersionedActionRequest*> HandleStepBasicVersionedActionRequest_clone(const HandleStepBasicVersionedActionRequest* self_) {
+    try { return {new HandleStepBasicVersionedActionRequest(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicVolumeUnit_destructor(HandleStepBasicVolumeUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicVolumeUnit*> HandleStepBasicVolumeUnit_clone(const HandleStepBasicVolumeUnit* self_) {
+    try { return {new HandleStepBasicVolumeUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepBasicWeekOfYearAndDayDate_destructor(HandleStepBasicWeekOfYearAndDayDate* self_) { delete self_; }
+extern "C" OcctResult<HandleStepBasicWeekOfYearAndDayDate*> HandleStepBasicWeekOfYearAndDayDate_clone(const HandleStepBasicWeekOfYearAndDayDate* self_) {
+    try { return {new HandleStepBasicWeekOfYearAndDayDate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataDefaultGeneral_destructor(HandleStepDataDefaultGeneral* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataDefaultGeneral*> HandleStepDataDefaultGeneral_clone(const HandleStepDataDefaultGeneral* self_) {
+    try { return {new HandleStepDataDefaultGeneral(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataDescribed_destructor(HandleStepDataDescribed* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataDescribed*> HandleStepDataDescribed_clone(const HandleStepDataDescribed* self_) {
+    try { return {new HandleStepDataDescribed(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataECDescr_destructor(HandleStepDataECDescr* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataECDescr*> HandleStepDataECDescr_clone(const HandleStepDataECDescr* self_) {
+    try { return {new HandleStepDataECDescr(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataEDescr_destructor(HandleStepDataEDescr* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataEDescr*> HandleStepDataEDescr_clone(const HandleStepDataEDescr* self_) {
+    try { return {new HandleStepDataEDescr(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataESDescr_destructor(HandleStepDataESDescr* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataESDescr*> HandleStepDataESDescr_clone(const HandleStepDataESDescr* self_) {
+    try { return {new HandleStepDataESDescr(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataFileProtocol_destructor(HandleStepDataFileProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataFileProtocol*> HandleStepDataFileProtocol_clone(const HandleStepDataFileProtocol* self_) {
+    try { return {new HandleStepDataFileProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataFileRecognizer_destructor(HandleStepDataFileRecognizer* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataFileRecognizer*> HandleStepDataFileRecognizer_clone(const HandleStepDataFileRecognizer* self_) {
+    try { return {new HandleStepDataFileRecognizer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataFreeFormEntity_destructor(HandleStepDataFreeFormEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataFreeFormEntity*> HandleStepDataFreeFormEntity_clone(const HandleStepDataFreeFormEntity* self_) {
+    try { return {new HandleStepDataFreeFormEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataGeneralModule_destructor(HandleStepDataGeneralModule* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataGeneralModule*> HandleStepDataGeneralModule_clone(const HandleStepDataGeneralModule* self_) {
+    try { return {new HandleStepDataGeneralModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataGlobalNodeOfWriterLib_destructor(HandleStepDataGlobalNodeOfWriterLib* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataGlobalNodeOfWriterLib*> HandleStepDataGlobalNodeOfWriterLib_clone(const HandleStepDataGlobalNodeOfWriterLib* self_) {
+    try { return {new HandleStepDataGlobalNodeOfWriterLib(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataHArray1OfField_destructor(HandleStepDataHArray1OfField* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataHArray1OfField*> HandleStepDataHArray1OfField_clone(const HandleStepDataHArray1OfField* self_) {
+    try { return {new HandleStepDataHArray1OfField(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataNodeOfWriterLib_destructor(HandleStepDataNodeOfWriterLib* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataNodeOfWriterLib*> HandleStepDataNodeOfWriterLib_clone(const HandleStepDataNodeOfWriterLib* self_) {
+    try { return {new HandleStepDataNodeOfWriterLib(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataPDescr_destructor(HandleStepDataPDescr* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataPDescr*> HandleStepDataPDescr_clone(const HandleStepDataPDescr* self_) {
+    try { return {new HandleStepDataPDescr(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataPlex_destructor(HandleStepDataPlex* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataPlex*> HandleStepDataPlex_clone(const HandleStepDataPlex* self_) {
+    try { return {new HandleStepDataPlex(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataProtocol_destructor(HandleStepDataProtocol* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataProtocol*> HandleStepDataProtocol_clone(const HandleStepDataProtocol* self_) {
+    try { return {new HandleStepDataProtocol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataReadWriteModule_destructor(HandleStepDataReadWriteModule* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataReadWriteModule*> HandleStepDataReadWriteModule_clone(const HandleStepDataReadWriteModule* self_) {
+    try { return {new HandleStepDataReadWriteModule(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataSelectArrReal_destructor(HandleStepDataSelectArrReal* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataSelectArrReal*> HandleStepDataSelectArrReal_clone(const HandleStepDataSelectArrReal* self_) {
+    try { return {new HandleStepDataSelectArrReal(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataSelectInt_destructor(HandleStepDataSelectInt* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataSelectInt*> HandleStepDataSelectInt_clone(const HandleStepDataSelectInt* self_) {
+    try { return {new HandleStepDataSelectInt(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataSelectMember_destructor(HandleStepDataSelectMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataSelectMember*> HandleStepDataSelectMember_clone(const HandleStepDataSelectMember* self_) {
+    try { return {new HandleStepDataSelectMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataSelectNamed_destructor(HandleStepDataSelectNamed* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataSelectNamed*> HandleStepDataSelectNamed_clone(const HandleStepDataSelectNamed* self_) {
+    try { return {new HandleStepDataSelectNamed(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataSelectReal_destructor(HandleStepDataSelectReal* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataSelectReal*> HandleStepDataSelectReal_clone(const HandleStepDataSelectReal* self_) {
+    try { return {new HandleStepDataSelectReal(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataSimple_destructor(HandleStepDataSimple* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataSimple*> HandleStepDataSimple_clone(const HandleStepDataSimple* self_) {
+    try { return {new HandleStepDataSimple(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataStepModel_destructor(HandleStepDataStepModel* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataStepModel*> HandleStepDataStepModel_clone(const HandleStepDataStepModel* self_) {
+    try { return {new HandleStepDataStepModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataStepReaderData_destructor(HandleStepDataStepReaderData* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataStepReaderData*> HandleStepDataStepReaderData_clone(const HandleStepDataStepReaderData* self_) {
+    try { return {new HandleStepDataStepReaderData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDataUndefinedEntity_destructor(HandleStepDataUndefinedEntity* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDataUndefinedEntity*> HandleStepDataUndefinedEntity_clone(const HandleStepDataUndefinedEntity* self_) {
+    try { return {new HandleStepDataUndefinedEntity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolAngularityTolerance_destructor(HandleStepDimTolAngularityTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolAngularityTolerance*> HandleStepDimTolAngularityTolerance_clone(const HandleStepDimTolAngularityTolerance* self_) {
+    try { return {new HandleStepDimTolAngularityTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolCircularRunoutTolerance_destructor(HandleStepDimTolCircularRunoutTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolCircularRunoutTolerance*> HandleStepDimTolCircularRunoutTolerance_clone(const HandleStepDimTolCircularRunoutTolerance* self_) {
+    try { return {new HandleStepDimTolCircularRunoutTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolCoaxialityTolerance_destructor(HandleStepDimTolCoaxialityTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolCoaxialityTolerance*> HandleStepDimTolCoaxialityTolerance_clone(const HandleStepDimTolCoaxialityTolerance* self_) {
+    try { return {new HandleStepDimTolCoaxialityTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolCommonDatum_destructor(HandleStepDimTolCommonDatum* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolCommonDatum*> HandleStepDimTolCommonDatum_clone(const HandleStepDimTolCommonDatum* self_) {
+    try { return {new HandleStepDimTolCommonDatum(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolConcentricityTolerance_destructor(HandleStepDimTolConcentricityTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolConcentricityTolerance*> HandleStepDimTolConcentricityTolerance_clone(const HandleStepDimTolConcentricityTolerance* self_) {
+    try { return {new HandleStepDimTolConcentricityTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolCylindricityTolerance_destructor(HandleStepDimTolCylindricityTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolCylindricityTolerance*> HandleStepDimTolCylindricityTolerance_clone(const HandleStepDimTolCylindricityTolerance* self_) {
+    try { return {new HandleStepDimTolCylindricityTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolDatum_destructor(HandleStepDimTolDatum* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolDatum*> HandleStepDimTolDatum_clone(const HandleStepDimTolDatum* self_) {
+    try { return {new HandleStepDimTolDatum(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolDatumFeature_destructor(HandleStepDimTolDatumFeature* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolDatumFeature*> HandleStepDimTolDatumFeature_clone(const HandleStepDimTolDatumFeature* self_) {
+    try { return {new HandleStepDimTolDatumFeature(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolDatumReference_destructor(HandleStepDimTolDatumReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolDatumReference*> HandleStepDimTolDatumReference_clone(const HandleStepDimTolDatumReference* self_) {
+    try { return {new HandleStepDimTolDatumReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolDatumReferenceCompartment_destructor(HandleStepDimTolDatumReferenceCompartment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolDatumReferenceCompartment*> HandleStepDimTolDatumReferenceCompartment_clone(const HandleStepDimTolDatumReferenceCompartment* self_) {
+    try { return {new HandleStepDimTolDatumReferenceCompartment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolDatumReferenceElement_destructor(HandleStepDimTolDatumReferenceElement* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolDatumReferenceElement*> HandleStepDimTolDatumReferenceElement_clone(const HandleStepDimTolDatumReferenceElement* self_) {
+    try { return {new HandleStepDimTolDatumReferenceElement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolDatumReferenceModifierWithValue_destructor(HandleStepDimTolDatumReferenceModifierWithValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolDatumReferenceModifierWithValue*> HandleStepDimTolDatumReferenceModifierWithValue_clone(const HandleStepDimTolDatumReferenceModifierWithValue* self_) {
+    try { return {new HandleStepDimTolDatumReferenceModifierWithValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolDatumSystem_destructor(HandleStepDimTolDatumSystem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolDatumSystem*> HandleStepDimTolDatumSystem_clone(const HandleStepDimTolDatumSystem* self_) {
+    try { return {new HandleStepDimTolDatumSystem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolDatumTarget_destructor(HandleStepDimTolDatumTarget* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolDatumTarget*> HandleStepDimTolDatumTarget_clone(const HandleStepDimTolDatumTarget* self_) {
+    try { return {new HandleStepDimTolDatumTarget(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolFlatnessTolerance_destructor(HandleStepDimTolFlatnessTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolFlatnessTolerance*> HandleStepDimTolFlatnessTolerance_clone(const HandleStepDimTolFlatnessTolerance* self_) {
+    try { return {new HandleStepDimTolFlatnessTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeneralDatumReference_destructor(HandleStepDimTolGeneralDatumReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeneralDatumReference*> HandleStepDimTolGeneralDatumReference_clone(const HandleStepDimTolGeneralDatumReference* self_) {
+    try { return {new HandleStepDimTolGeneralDatumReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeoTolAndGeoTolWthDatRef_destructor(HandleStepDimTolGeoTolAndGeoTolWthDatRef* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeoTolAndGeoTolWthDatRef*> HandleStepDimTolGeoTolAndGeoTolWthDatRef_clone(const HandleStepDimTolGeoTolAndGeoTolWthDatRef* self_) {
+    try { return {new HandleStepDimTolGeoTolAndGeoTolWthDatRef(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_destructor(HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol*> HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_clone(const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol* self_) {
+    try { return {new HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_destructor(HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod*> HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_clone(const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod* self_) {
+    try { return {new HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_destructor(HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol*> HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_clone(const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol* self_) {
+    try { return {new HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_destructor(HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol*> HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_clone(const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol* self_) {
+    try { return {new HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeoTolAndGeoTolWthMaxTol_destructor(HandleStepDimTolGeoTolAndGeoTolWthMaxTol* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeoTolAndGeoTolWthMaxTol*> HandleStepDimTolGeoTolAndGeoTolWthMaxTol_clone(const HandleStepDimTolGeoTolAndGeoTolWthMaxTol* self_) {
+    try { return {new HandleStepDimTolGeoTolAndGeoTolWthMaxTol(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeoTolAndGeoTolWthMod_destructor(HandleStepDimTolGeoTolAndGeoTolWthMod* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeoTolAndGeoTolWthMod*> HandleStepDimTolGeoTolAndGeoTolWthMod_clone(const HandleStepDimTolGeoTolAndGeoTolWthMod* self_) {
+    try { return {new HandleStepDimTolGeoTolAndGeoTolWthMod(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeometricTolerance_destructor(HandleStepDimTolGeometricTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeometricTolerance*> HandleStepDimTolGeometricTolerance_clone(const HandleStepDimTolGeometricTolerance* self_) {
+    try { return {new HandleStepDimTolGeometricTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeometricToleranceRelationship_destructor(HandleStepDimTolGeometricToleranceRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeometricToleranceRelationship*> HandleStepDimTolGeometricToleranceRelationship_clone(const HandleStepDimTolGeometricToleranceRelationship* self_) {
+    try { return {new HandleStepDimTolGeometricToleranceRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeometricToleranceWithDatumReference_destructor(HandleStepDimTolGeometricToleranceWithDatumReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeometricToleranceWithDatumReference*> HandleStepDimTolGeometricToleranceWithDatumReference_clone(const HandleStepDimTolGeometricToleranceWithDatumReference* self_) {
+    try { return {new HandleStepDimTolGeometricToleranceWithDatumReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_destructor(HandleStepDimTolGeometricToleranceWithDefinedAreaUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeometricToleranceWithDefinedAreaUnit*> HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_clone(const HandleStepDimTolGeometricToleranceWithDefinedAreaUnit* self_) {
+    try { return {new HandleStepDimTolGeometricToleranceWithDefinedAreaUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeometricToleranceWithDefinedUnit_destructor(HandleStepDimTolGeometricToleranceWithDefinedUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeometricToleranceWithDefinedUnit*> HandleStepDimTolGeometricToleranceWithDefinedUnit_clone(const HandleStepDimTolGeometricToleranceWithDefinedUnit* self_) {
+    try { return {new HandleStepDimTolGeometricToleranceWithDefinedUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeometricToleranceWithMaximumTolerance_destructor(HandleStepDimTolGeometricToleranceWithMaximumTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeometricToleranceWithMaximumTolerance*> HandleStepDimTolGeometricToleranceWithMaximumTolerance_clone(const HandleStepDimTolGeometricToleranceWithMaximumTolerance* self_) {
+    try { return {new HandleStepDimTolGeometricToleranceWithMaximumTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolGeometricToleranceWithModifiers_destructor(HandleStepDimTolGeometricToleranceWithModifiers* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolGeometricToleranceWithModifiers*> HandleStepDimTolGeometricToleranceWithModifiers_clone(const HandleStepDimTolGeometricToleranceWithModifiers* self_) {
+    try { return {new HandleStepDimTolGeometricToleranceWithModifiers(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolHArray1OfDatumReference_destructor(HandleStepDimTolHArray1OfDatumReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolHArray1OfDatumReference*> HandleStepDimTolHArray1OfDatumReference_clone(const HandleStepDimTolHArray1OfDatumReference* self_) {
+    try { return {new HandleStepDimTolHArray1OfDatumReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolHArray1OfDatumReferenceCompartment_destructor(HandleStepDimTolHArray1OfDatumReferenceCompartment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolHArray1OfDatumReferenceCompartment*> HandleStepDimTolHArray1OfDatumReferenceCompartment_clone(const HandleStepDimTolHArray1OfDatumReferenceCompartment* self_) {
+    try { return {new HandleStepDimTolHArray1OfDatumReferenceCompartment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolHArray1OfDatumReferenceElement_destructor(HandleStepDimTolHArray1OfDatumReferenceElement* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolHArray1OfDatumReferenceElement*> HandleStepDimTolHArray1OfDatumReferenceElement_clone(const HandleStepDimTolHArray1OfDatumReferenceElement* self_) {
+    try { return {new HandleStepDimTolHArray1OfDatumReferenceElement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolHArray1OfDatumReferenceModifier_destructor(HandleStepDimTolHArray1OfDatumReferenceModifier* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolHArray1OfDatumReferenceModifier*> HandleStepDimTolHArray1OfDatumReferenceModifier_clone(const HandleStepDimTolHArray1OfDatumReferenceModifier* self_) {
+    try { return {new HandleStepDimTolHArray1OfDatumReferenceModifier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolHArray1OfDatumSystemOrReference_destructor(HandleStepDimTolHArray1OfDatumSystemOrReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolHArray1OfDatumSystemOrReference*> HandleStepDimTolHArray1OfDatumSystemOrReference_clone(const HandleStepDimTolHArray1OfDatumSystemOrReference* self_) {
+    try { return {new HandleStepDimTolHArray1OfDatumSystemOrReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolHArray1OfGeometricToleranceModifier_destructor(HandleStepDimTolHArray1OfGeometricToleranceModifier* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolHArray1OfGeometricToleranceModifier*> HandleStepDimTolHArray1OfGeometricToleranceModifier_clone(const HandleStepDimTolHArray1OfGeometricToleranceModifier* self_) {
+    try { return {new HandleStepDimTolHArray1OfGeometricToleranceModifier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolHArray1OfToleranceZoneTarget_destructor(HandleStepDimTolHArray1OfToleranceZoneTarget* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolHArray1OfToleranceZoneTarget*> HandleStepDimTolHArray1OfToleranceZoneTarget_clone(const HandleStepDimTolHArray1OfToleranceZoneTarget* self_) {
+    try { return {new HandleStepDimTolHArray1OfToleranceZoneTarget(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolLineProfileTolerance_destructor(HandleStepDimTolLineProfileTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolLineProfileTolerance*> HandleStepDimTolLineProfileTolerance_clone(const HandleStepDimTolLineProfileTolerance* self_) {
+    try { return {new HandleStepDimTolLineProfileTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolModifiedGeometricTolerance_destructor(HandleStepDimTolModifiedGeometricTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolModifiedGeometricTolerance*> HandleStepDimTolModifiedGeometricTolerance_clone(const HandleStepDimTolModifiedGeometricTolerance* self_) {
+    try { return {new HandleStepDimTolModifiedGeometricTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolNonUniformZoneDefinition_destructor(HandleStepDimTolNonUniformZoneDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolNonUniformZoneDefinition*> HandleStepDimTolNonUniformZoneDefinition_clone(const HandleStepDimTolNonUniformZoneDefinition* self_) {
+    try { return {new HandleStepDimTolNonUniformZoneDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolParallelismTolerance_destructor(HandleStepDimTolParallelismTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolParallelismTolerance*> HandleStepDimTolParallelismTolerance_clone(const HandleStepDimTolParallelismTolerance* self_) {
+    try { return {new HandleStepDimTolParallelismTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolPerpendicularityTolerance_destructor(HandleStepDimTolPerpendicularityTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolPerpendicularityTolerance*> HandleStepDimTolPerpendicularityTolerance_clone(const HandleStepDimTolPerpendicularityTolerance* self_) {
+    try { return {new HandleStepDimTolPerpendicularityTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolPlacedDatumTargetFeature_destructor(HandleStepDimTolPlacedDatumTargetFeature* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolPlacedDatumTargetFeature*> HandleStepDimTolPlacedDatumTargetFeature_clone(const HandleStepDimTolPlacedDatumTargetFeature* self_) {
+    try { return {new HandleStepDimTolPlacedDatumTargetFeature(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolPositionTolerance_destructor(HandleStepDimTolPositionTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolPositionTolerance*> HandleStepDimTolPositionTolerance_clone(const HandleStepDimTolPositionTolerance* self_) {
+    try { return {new HandleStepDimTolPositionTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolProjectedZoneDefinition_destructor(HandleStepDimTolProjectedZoneDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolProjectedZoneDefinition*> HandleStepDimTolProjectedZoneDefinition_clone(const HandleStepDimTolProjectedZoneDefinition* self_) {
+    try { return {new HandleStepDimTolProjectedZoneDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolRoundnessTolerance_destructor(HandleStepDimTolRoundnessTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolRoundnessTolerance*> HandleStepDimTolRoundnessTolerance_clone(const HandleStepDimTolRoundnessTolerance* self_) {
+    try { return {new HandleStepDimTolRoundnessTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolRunoutZoneDefinition_destructor(HandleStepDimTolRunoutZoneDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolRunoutZoneDefinition*> HandleStepDimTolRunoutZoneDefinition_clone(const HandleStepDimTolRunoutZoneDefinition* self_) {
+    try { return {new HandleStepDimTolRunoutZoneDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolRunoutZoneOrientation_destructor(HandleStepDimTolRunoutZoneOrientation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolRunoutZoneOrientation*> HandleStepDimTolRunoutZoneOrientation_clone(const HandleStepDimTolRunoutZoneOrientation* self_) {
+    try { return {new HandleStepDimTolRunoutZoneOrientation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolSimpleDatumReferenceModifierMember_destructor(HandleStepDimTolSimpleDatumReferenceModifierMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolSimpleDatumReferenceModifierMember*> HandleStepDimTolSimpleDatumReferenceModifierMember_clone(const HandleStepDimTolSimpleDatumReferenceModifierMember* self_) {
+    try { return {new HandleStepDimTolSimpleDatumReferenceModifierMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolStraightnessTolerance_destructor(HandleStepDimTolStraightnessTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolStraightnessTolerance*> HandleStepDimTolStraightnessTolerance_clone(const HandleStepDimTolStraightnessTolerance* self_) {
+    try { return {new HandleStepDimTolStraightnessTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolSurfaceProfileTolerance_destructor(HandleStepDimTolSurfaceProfileTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolSurfaceProfileTolerance*> HandleStepDimTolSurfaceProfileTolerance_clone(const HandleStepDimTolSurfaceProfileTolerance* self_) {
+    try { return {new HandleStepDimTolSurfaceProfileTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolSymmetryTolerance_destructor(HandleStepDimTolSymmetryTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolSymmetryTolerance*> HandleStepDimTolSymmetryTolerance_clone(const HandleStepDimTolSymmetryTolerance* self_) {
+    try { return {new HandleStepDimTolSymmetryTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolToleranceZone_destructor(HandleStepDimTolToleranceZone* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolToleranceZone*> HandleStepDimTolToleranceZone_clone(const HandleStepDimTolToleranceZone* self_) {
+    try { return {new HandleStepDimTolToleranceZone(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolToleranceZoneDefinition_destructor(HandleStepDimTolToleranceZoneDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolToleranceZoneDefinition*> HandleStepDimTolToleranceZoneDefinition_clone(const HandleStepDimTolToleranceZoneDefinition* self_) {
+    try { return {new HandleStepDimTolToleranceZoneDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolToleranceZoneForm_destructor(HandleStepDimTolToleranceZoneForm* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolToleranceZoneForm*> HandleStepDimTolToleranceZoneForm_clone(const HandleStepDimTolToleranceZoneForm* self_) {
+    try { return {new HandleStepDimTolToleranceZoneForm(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolTotalRunoutTolerance_destructor(HandleStepDimTolTotalRunoutTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolTotalRunoutTolerance*> HandleStepDimTolTotalRunoutTolerance_clone(const HandleStepDimTolTotalRunoutTolerance* self_) {
+    try { return {new HandleStepDimTolTotalRunoutTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepDimTolUnequallyDisposedGeometricTolerance_destructor(HandleStepDimTolUnequallyDisposedGeometricTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepDimTolUnequallyDisposedGeometricTolerance*> HandleStepDimTolUnequallyDisposedGeometricTolerance_clone(const HandleStepDimTolUnequallyDisposedGeometricTolerance* self_) {
+    try { return {new HandleStepDimTolUnequallyDisposedGeometricTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementAnalysisItemWithinRepresentation_destructor(HandleStepElementAnalysisItemWithinRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementAnalysisItemWithinRepresentation*> HandleStepElementAnalysisItemWithinRepresentation_clone(const HandleStepElementAnalysisItemWithinRepresentation* self_) {
+    try { return {new HandleStepElementAnalysisItemWithinRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementCurve3dElementDescriptor_destructor(HandleStepElementCurve3dElementDescriptor* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementCurve3dElementDescriptor*> HandleStepElementCurve3dElementDescriptor_clone(const HandleStepElementCurve3dElementDescriptor* self_) {
+    try { return {new HandleStepElementCurve3dElementDescriptor(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementCurveElementEndReleasePacket_destructor(HandleStepElementCurveElementEndReleasePacket* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementCurveElementEndReleasePacket*> HandleStepElementCurveElementEndReleasePacket_clone(const HandleStepElementCurveElementEndReleasePacket* self_) {
+    try { return {new HandleStepElementCurveElementEndReleasePacket(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementCurveElementFreedomMember_destructor(HandleStepElementCurveElementFreedomMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementCurveElementFreedomMember*> HandleStepElementCurveElementFreedomMember_clone(const HandleStepElementCurveElementFreedomMember* self_) {
+    try { return {new HandleStepElementCurveElementFreedomMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementCurveElementPurposeMember_destructor(HandleStepElementCurveElementPurposeMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementCurveElementPurposeMember*> HandleStepElementCurveElementPurposeMember_clone(const HandleStepElementCurveElementPurposeMember* self_) {
+    try { return {new HandleStepElementCurveElementPurposeMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementCurveElementSectionDefinition_destructor(HandleStepElementCurveElementSectionDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementCurveElementSectionDefinition*> HandleStepElementCurveElementSectionDefinition_clone(const HandleStepElementCurveElementSectionDefinition* self_) {
+    try { return {new HandleStepElementCurveElementSectionDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementCurveElementSectionDerivedDefinitions_destructor(HandleStepElementCurveElementSectionDerivedDefinitions* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementCurveElementSectionDerivedDefinitions*> HandleStepElementCurveElementSectionDerivedDefinitions_clone(const HandleStepElementCurveElementSectionDerivedDefinitions* self_) {
+    try { return {new HandleStepElementCurveElementSectionDerivedDefinitions(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementElementAspectMember_destructor(HandleStepElementElementAspectMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementElementAspectMember*> HandleStepElementElementAspectMember_clone(const HandleStepElementElementAspectMember* self_) {
+    try { return {new HandleStepElementElementAspectMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementElementDescriptor_destructor(HandleStepElementElementDescriptor* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementElementDescriptor*> HandleStepElementElementDescriptor_clone(const HandleStepElementElementDescriptor* self_) {
+    try { return {new HandleStepElementElementDescriptor(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementElementMaterial_destructor(HandleStepElementElementMaterial* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementElementMaterial*> HandleStepElementElementMaterial_clone(const HandleStepElementElementMaterial* self_) {
+    try { return {new HandleStepElementElementMaterial(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHArray1OfCurveElementEndReleasePacket_destructor(HandleStepElementHArray1OfCurveElementEndReleasePacket* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHArray1OfCurveElementEndReleasePacket*> HandleStepElementHArray1OfCurveElementEndReleasePacket_clone(const HandleStepElementHArray1OfCurveElementEndReleasePacket* self_) {
+    try { return {new HandleStepElementHArray1OfCurveElementEndReleasePacket(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHArray1OfCurveElementSectionDefinition_destructor(HandleStepElementHArray1OfCurveElementSectionDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHArray1OfCurveElementSectionDefinition*> HandleStepElementHArray1OfCurveElementSectionDefinition_clone(const HandleStepElementHArray1OfCurveElementSectionDefinition* self_) {
+    try { return {new HandleStepElementHArray1OfCurveElementSectionDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_destructor(HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember*> HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_clone(const HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember* self_) {
+    try { return {new HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_destructor(HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember*> HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_clone(const HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember* self_) {
+    try { return {new HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHArray1OfMeasureOrUnspecifiedValue_destructor(HandleStepElementHArray1OfMeasureOrUnspecifiedValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHArray1OfMeasureOrUnspecifiedValue*> HandleStepElementHArray1OfMeasureOrUnspecifiedValue_clone(const HandleStepElementHArray1OfMeasureOrUnspecifiedValue* self_) {
+    try { return {new HandleStepElementHArray1OfMeasureOrUnspecifiedValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHArray1OfSurfaceSection_destructor(HandleStepElementHArray1OfSurfaceSection* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHArray1OfSurfaceSection*> HandleStepElementHArray1OfSurfaceSection_clone(const HandleStepElementHArray1OfSurfaceSection* self_) {
+    try { return {new HandleStepElementHArray1OfSurfaceSection(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHArray1OfVolumeElementPurpose_destructor(HandleStepElementHArray1OfVolumeElementPurpose* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHArray1OfVolumeElementPurpose*> HandleStepElementHArray1OfVolumeElementPurpose_clone(const HandleStepElementHArray1OfVolumeElementPurpose* self_) {
+    try { return {new HandleStepElementHArray1OfVolumeElementPurpose(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHArray1OfVolumeElementPurposeMember_destructor(HandleStepElementHArray1OfVolumeElementPurposeMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHArray1OfVolumeElementPurposeMember*> HandleStepElementHArray1OfVolumeElementPurposeMember_clone(const HandleStepElementHArray1OfVolumeElementPurposeMember* self_) {
+    try { return {new HandleStepElementHArray1OfVolumeElementPurposeMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHArray2OfCurveElementPurposeMember_destructor(HandleStepElementHArray2OfCurveElementPurposeMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHArray2OfCurveElementPurposeMember*> HandleStepElementHArray2OfCurveElementPurposeMember_clone(const HandleStepElementHArray2OfCurveElementPurposeMember* self_) {
+    try { return {new HandleStepElementHArray2OfCurveElementPurposeMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHArray2OfSurfaceElementPurpose_destructor(HandleStepElementHArray2OfSurfaceElementPurpose* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHArray2OfSurfaceElementPurpose*> HandleStepElementHArray2OfSurfaceElementPurpose_clone(const HandleStepElementHArray2OfSurfaceElementPurpose* self_) {
+    try { return {new HandleStepElementHArray2OfSurfaceElementPurpose(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHArray2OfSurfaceElementPurposeMember_destructor(HandleStepElementHArray2OfSurfaceElementPurposeMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHArray2OfSurfaceElementPurposeMember*> HandleStepElementHArray2OfSurfaceElementPurposeMember_clone(const HandleStepElementHArray2OfSurfaceElementPurposeMember* self_) {
+    try { return {new HandleStepElementHArray2OfSurfaceElementPurposeMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHSequenceOfCurveElementPurposeMember_destructor(HandleStepElementHSequenceOfCurveElementPurposeMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHSequenceOfCurveElementPurposeMember*> HandleStepElementHSequenceOfCurveElementPurposeMember_clone(const HandleStepElementHSequenceOfCurveElementPurposeMember* self_) {
+    try { return {new HandleStepElementHSequenceOfCurveElementPurposeMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHSequenceOfCurveElementSectionDefinition_destructor(HandleStepElementHSequenceOfCurveElementSectionDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHSequenceOfCurveElementSectionDefinition*> HandleStepElementHSequenceOfCurveElementSectionDefinition_clone(const HandleStepElementHSequenceOfCurveElementSectionDefinition* self_) {
+    try { return {new HandleStepElementHSequenceOfCurveElementSectionDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHSequenceOfElementMaterial_destructor(HandleStepElementHSequenceOfElementMaterial* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHSequenceOfElementMaterial*> HandleStepElementHSequenceOfElementMaterial_clone(const HandleStepElementHSequenceOfElementMaterial* self_) {
+    try { return {new HandleStepElementHSequenceOfElementMaterial(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementHSequenceOfSurfaceElementPurposeMember_destructor(HandleStepElementHSequenceOfSurfaceElementPurposeMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementHSequenceOfSurfaceElementPurposeMember*> HandleStepElementHSequenceOfSurfaceElementPurposeMember_clone(const HandleStepElementHSequenceOfSurfaceElementPurposeMember* self_) {
+    try { return {new HandleStepElementHSequenceOfSurfaceElementPurposeMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementMeasureOrUnspecifiedValueMember_destructor(HandleStepElementMeasureOrUnspecifiedValueMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementMeasureOrUnspecifiedValueMember*> HandleStepElementMeasureOrUnspecifiedValueMember_clone(const HandleStepElementMeasureOrUnspecifiedValueMember* self_) {
+    try { return {new HandleStepElementMeasureOrUnspecifiedValueMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementSurface3dElementDescriptor_destructor(HandleStepElementSurface3dElementDescriptor* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementSurface3dElementDescriptor*> HandleStepElementSurface3dElementDescriptor_clone(const HandleStepElementSurface3dElementDescriptor* self_) {
+    try { return {new HandleStepElementSurface3dElementDescriptor(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementSurfaceElementProperty_destructor(HandleStepElementSurfaceElementProperty* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementSurfaceElementProperty*> HandleStepElementSurfaceElementProperty_clone(const HandleStepElementSurfaceElementProperty* self_) {
+    try { return {new HandleStepElementSurfaceElementProperty(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementSurfaceElementPurposeMember_destructor(HandleStepElementSurfaceElementPurposeMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementSurfaceElementPurposeMember*> HandleStepElementSurfaceElementPurposeMember_clone(const HandleStepElementSurfaceElementPurposeMember* self_) {
+    try { return {new HandleStepElementSurfaceElementPurposeMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementSurfaceSection_destructor(HandleStepElementSurfaceSection* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementSurfaceSection*> HandleStepElementSurfaceSection_clone(const HandleStepElementSurfaceSection* self_) {
+    try { return {new HandleStepElementSurfaceSection(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementSurfaceSectionField_destructor(HandleStepElementSurfaceSectionField* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementSurfaceSectionField*> HandleStepElementSurfaceSectionField_clone(const HandleStepElementSurfaceSectionField* self_) {
+    try { return {new HandleStepElementSurfaceSectionField(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementSurfaceSectionFieldConstant_destructor(HandleStepElementSurfaceSectionFieldConstant* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementSurfaceSectionFieldConstant*> HandleStepElementSurfaceSectionFieldConstant_clone(const HandleStepElementSurfaceSectionFieldConstant* self_) {
+    try { return {new HandleStepElementSurfaceSectionFieldConstant(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementSurfaceSectionFieldVarying_destructor(HandleStepElementSurfaceSectionFieldVarying* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementSurfaceSectionFieldVarying*> HandleStepElementSurfaceSectionFieldVarying_clone(const HandleStepElementSurfaceSectionFieldVarying* self_) {
+    try { return {new HandleStepElementSurfaceSectionFieldVarying(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementUniformSurfaceSection_destructor(HandleStepElementUniformSurfaceSection* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementUniformSurfaceSection*> HandleStepElementUniformSurfaceSection_clone(const HandleStepElementUniformSurfaceSection* self_) {
+    try { return {new HandleStepElementUniformSurfaceSection(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementVolume3dElementDescriptor_destructor(HandleStepElementVolume3dElementDescriptor* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementVolume3dElementDescriptor*> HandleStepElementVolume3dElementDescriptor_clone(const HandleStepElementVolume3dElementDescriptor* self_) {
+    try { return {new HandleStepElementVolume3dElementDescriptor(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepElementVolumeElementPurposeMember_destructor(HandleStepElementVolumeElementPurposeMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepElementVolumeElementPurposeMember*> HandleStepElementVolumeElementPurposeMember_clone(const HandleStepElementVolumeElementPurposeMember* self_) {
+    try { return {new HandleStepElementVolumeElementPurposeMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAAlignedCurve3dElementCoordinateSystem_destructor(HandleStepFEAAlignedCurve3dElementCoordinateSystem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAAlignedCurve3dElementCoordinateSystem*> HandleStepFEAAlignedCurve3dElementCoordinateSystem_clone(const HandleStepFEAAlignedCurve3dElementCoordinateSystem* self_) {
+    try { return {new HandleStepFEAAlignedCurve3dElementCoordinateSystem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAAlignedSurface3dElementCoordinateSystem_destructor(HandleStepFEAAlignedSurface3dElementCoordinateSystem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAAlignedSurface3dElementCoordinateSystem*> HandleStepFEAAlignedSurface3dElementCoordinateSystem_clone(const HandleStepFEAAlignedSurface3dElementCoordinateSystem* self_) {
+    try { return {new HandleStepFEAAlignedSurface3dElementCoordinateSystem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAArbitraryVolume3dElementCoordinateSystem_destructor(HandleStepFEAArbitraryVolume3dElementCoordinateSystem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAArbitraryVolume3dElementCoordinateSystem*> HandleStepFEAArbitraryVolume3dElementCoordinateSystem_clone(const HandleStepFEAArbitraryVolume3dElementCoordinateSystem* self_) {
+    try { return {new HandleStepFEAArbitraryVolume3dElementCoordinateSystem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAConstantSurface3dElementCoordinateSystem_destructor(HandleStepFEAConstantSurface3dElementCoordinateSystem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAConstantSurface3dElementCoordinateSystem*> HandleStepFEAConstantSurface3dElementCoordinateSystem_clone(const HandleStepFEAConstantSurface3dElementCoordinateSystem* self_) {
+    try { return {new HandleStepFEAConstantSurface3dElementCoordinateSystem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEACurve3dElementProperty_destructor(HandleStepFEACurve3dElementProperty* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEACurve3dElementProperty*> HandleStepFEACurve3dElementProperty_clone(const HandleStepFEACurve3dElementProperty* self_) {
+    try { return {new HandleStepFEACurve3dElementProperty(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEACurve3dElementRepresentation_destructor(HandleStepFEACurve3dElementRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEACurve3dElementRepresentation*> HandleStepFEACurve3dElementRepresentation_clone(const HandleStepFEACurve3dElementRepresentation* self_) {
+    try { return {new HandleStepFEACurve3dElementRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEACurveElementEndOffset_destructor(HandleStepFEACurveElementEndOffset* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEACurveElementEndOffset*> HandleStepFEACurveElementEndOffset_clone(const HandleStepFEACurveElementEndOffset* self_) {
+    try { return {new HandleStepFEACurveElementEndOffset(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEACurveElementEndRelease_destructor(HandleStepFEACurveElementEndRelease* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEACurveElementEndRelease*> HandleStepFEACurveElementEndRelease_clone(const HandleStepFEACurveElementEndRelease* self_) {
+    try { return {new HandleStepFEACurveElementEndRelease(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEACurveElementInterval_destructor(HandleStepFEACurveElementInterval* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEACurveElementInterval*> HandleStepFEACurveElementInterval_clone(const HandleStepFEACurveElementInterval* self_) {
+    try { return {new HandleStepFEACurveElementInterval(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEACurveElementIntervalConstant_destructor(HandleStepFEACurveElementIntervalConstant* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEACurveElementIntervalConstant*> HandleStepFEACurveElementIntervalConstant_clone(const HandleStepFEACurveElementIntervalConstant* self_) {
+    try { return {new HandleStepFEACurveElementIntervalConstant(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEACurveElementIntervalLinearlyVarying_destructor(HandleStepFEACurveElementIntervalLinearlyVarying* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEACurveElementIntervalLinearlyVarying*> HandleStepFEACurveElementIntervalLinearlyVarying_clone(const HandleStepFEACurveElementIntervalLinearlyVarying* self_) {
+    try { return {new HandleStepFEACurveElementIntervalLinearlyVarying(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEACurveElementLocation_destructor(HandleStepFEACurveElementLocation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEACurveElementLocation*> HandleStepFEACurveElementLocation_clone(const HandleStepFEACurveElementLocation* self_) {
+    try { return {new HandleStepFEACurveElementLocation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEADegreeOfFreedomMember_destructor(HandleStepFEADegreeOfFreedomMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEADegreeOfFreedomMember*> HandleStepFEADegreeOfFreedomMember_clone(const HandleStepFEADegreeOfFreedomMember* self_) {
+    try { return {new HandleStepFEADegreeOfFreedomMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEADummyNode_destructor(HandleStepFEADummyNode* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEADummyNode*> HandleStepFEADummyNode_clone(const HandleStepFEADummyNode* self_) {
+    try { return {new HandleStepFEADummyNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAElementGeometricRelationship_destructor(HandleStepFEAElementGeometricRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAElementGeometricRelationship*> HandleStepFEAElementGeometricRelationship_clone(const HandleStepFEAElementGeometricRelationship* self_) {
+    try { return {new HandleStepFEAElementGeometricRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAElementGroup_destructor(HandleStepFEAElementGroup* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAElementGroup*> HandleStepFEAElementGroup_clone(const HandleStepFEAElementGroup* self_) {
+    try { return {new HandleStepFEAElementGroup(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAElementRepresentation_destructor(HandleStepFEAElementRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAElementRepresentation*> HandleStepFEAElementRepresentation_clone(const HandleStepFEAElementRepresentation* self_) {
+    try { return {new HandleStepFEAElementRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaAreaDensity_destructor(HandleStepFEAFeaAreaDensity* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaAreaDensity*> HandleStepFEAFeaAreaDensity_clone(const HandleStepFEAFeaAreaDensity* self_) {
+    try { return {new HandleStepFEAFeaAreaDensity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaAxis2Placement3d_destructor(HandleStepFEAFeaAxis2Placement3d* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaAxis2Placement3d*> HandleStepFEAFeaAxis2Placement3d_clone(const HandleStepFEAFeaAxis2Placement3d* self_) {
+    try { return {new HandleStepFEAFeaAxis2Placement3d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaCurveSectionGeometricRelationship_destructor(HandleStepFEAFeaCurveSectionGeometricRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaCurveSectionGeometricRelationship*> HandleStepFEAFeaCurveSectionGeometricRelationship_clone(const HandleStepFEAFeaCurveSectionGeometricRelationship* self_) {
+    try { return {new HandleStepFEAFeaCurveSectionGeometricRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaGroup_destructor(HandleStepFEAFeaGroup* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaGroup*> HandleStepFEAFeaGroup_clone(const HandleStepFEAFeaGroup* self_) {
+    try { return {new HandleStepFEAFeaGroup(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaLinearElasticity_destructor(HandleStepFEAFeaLinearElasticity* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaLinearElasticity*> HandleStepFEAFeaLinearElasticity_clone(const HandleStepFEAFeaLinearElasticity* self_) {
+    try { return {new HandleStepFEAFeaLinearElasticity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaMassDensity_destructor(HandleStepFEAFeaMassDensity* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaMassDensity*> HandleStepFEAFeaMassDensity_clone(const HandleStepFEAFeaMassDensity* self_) {
+    try { return {new HandleStepFEAFeaMassDensity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaMaterialPropertyRepresentation_destructor(HandleStepFEAFeaMaterialPropertyRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaMaterialPropertyRepresentation*> HandleStepFEAFeaMaterialPropertyRepresentation_clone(const HandleStepFEAFeaMaterialPropertyRepresentation* self_) {
+    try { return {new HandleStepFEAFeaMaterialPropertyRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaMaterialPropertyRepresentationItem_destructor(HandleStepFEAFeaMaterialPropertyRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaMaterialPropertyRepresentationItem*> HandleStepFEAFeaMaterialPropertyRepresentationItem_clone(const HandleStepFEAFeaMaterialPropertyRepresentationItem* self_) {
+    try { return {new HandleStepFEAFeaMaterialPropertyRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaModel_destructor(HandleStepFEAFeaModel* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaModel*> HandleStepFEAFeaModel_clone(const HandleStepFEAFeaModel* self_) {
+    try { return {new HandleStepFEAFeaModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaModel3d_destructor(HandleStepFEAFeaModel3d* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaModel3d*> HandleStepFEAFeaModel3d_clone(const HandleStepFEAFeaModel3d* self_) {
+    try { return {new HandleStepFEAFeaModel3d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaModelDefinition_destructor(HandleStepFEAFeaModelDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaModelDefinition*> HandleStepFEAFeaModelDefinition_clone(const HandleStepFEAFeaModelDefinition* self_) {
+    try { return {new HandleStepFEAFeaModelDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaMoistureAbsorption_destructor(HandleStepFEAFeaMoistureAbsorption* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaMoistureAbsorption*> HandleStepFEAFeaMoistureAbsorption_clone(const HandleStepFEAFeaMoistureAbsorption* self_) {
+    try { return {new HandleStepFEAFeaMoistureAbsorption(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaParametricPoint_destructor(HandleStepFEAFeaParametricPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaParametricPoint*> HandleStepFEAFeaParametricPoint_clone(const HandleStepFEAFeaParametricPoint* self_) {
+    try { return {new HandleStepFEAFeaParametricPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaRepresentationItem_destructor(HandleStepFEAFeaRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaRepresentationItem*> HandleStepFEAFeaRepresentationItem_clone(const HandleStepFEAFeaRepresentationItem* self_) {
+    try { return {new HandleStepFEAFeaRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion_destructor(HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion*> HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion_clone(const HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion* self_) {
+    try { return {new HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaShellBendingStiffness_destructor(HandleStepFEAFeaShellBendingStiffness* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaShellBendingStiffness*> HandleStepFEAFeaShellBendingStiffness_clone(const HandleStepFEAFeaShellBendingStiffness* self_) {
+    try { return {new HandleStepFEAFeaShellBendingStiffness(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaShellMembraneBendingCouplingStiffness_destructor(HandleStepFEAFeaShellMembraneBendingCouplingStiffness* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaShellMembraneBendingCouplingStiffness*> HandleStepFEAFeaShellMembraneBendingCouplingStiffness_clone(const HandleStepFEAFeaShellMembraneBendingCouplingStiffness* self_) {
+    try { return {new HandleStepFEAFeaShellMembraneBendingCouplingStiffness(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaShellMembraneStiffness_destructor(HandleStepFEAFeaShellMembraneStiffness* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaShellMembraneStiffness*> HandleStepFEAFeaShellMembraneStiffness_clone(const HandleStepFEAFeaShellMembraneStiffness* self_) {
+    try { return {new HandleStepFEAFeaShellMembraneStiffness(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaShellShearStiffness_destructor(HandleStepFEAFeaShellShearStiffness* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaShellShearStiffness*> HandleStepFEAFeaShellShearStiffness_clone(const HandleStepFEAFeaShellShearStiffness* self_) {
+    try { return {new HandleStepFEAFeaShellShearStiffness(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaSurfaceSectionGeometricRelationship_destructor(HandleStepFEAFeaSurfaceSectionGeometricRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaSurfaceSectionGeometricRelationship*> HandleStepFEAFeaSurfaceSectionGeometricRelationship_clone(const HandleStepFEAFeaSurfaceSectionGeometricRelationship* self_) {
+    try { return {new HandleStepFEAFeaSurfaceSectionGeometricRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion_destructor(HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion*> HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion_clone(const HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion* self_) {
+    try { return {new HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFreedomAndCoefficient_destructor(HandleStepFEAFreedomAndCoefficient* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFreedomAndCoefficient*> HandleStepFEAFreedomAndCoefficient_clone(const HandleStepFEAFreedomAndCoefficient* self_) {
+    try { return {new HandleStepFEAFreedomAndCoefficient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAFreedomsList_destructor(HandleStepFEAFreedomsList* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAFreedomsList*> HandleStepFEAFreedomsList_clone(const HandleStepFEAFreedomsList* self_) {
+    try { return {new HandleStepFEAFreedomsList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAGeometricNode_destructor(HandleStepFEAGeometricNode* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAGeometricNode*> HandleStepFEAGeometricNode_clone(const HandleStepFEAGeometricNode* self_) {
+    try { return {new HandleStepFEAGeometricNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAHArray1OfCurveElementEndOffset_destructor(HandleStepFEAHArray1OfCurveElementEndOffset* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAHArray1OfCurveElementEndOffset*> HandleStepFEAHArray1OfCurveElementEndOffset_clone(const HandleStepFEAHArray1OfCurveElementEndOffset* self_) {
+    try { return {new HandleStepFEAHArray1OfCurveElementEndOffset(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAHArray1OfCurveElementEndRelease_destructor(HandleStepFEAHArray1OfCurveElementEndRelease* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAHArray1OfCurveElementEndRelease*> HandleStepFEAHArray1OfCurveElementEndRelease_clone(const HandleStepFEAHArray1OfCurveElementEndRelease* self_) {
+    try { return {new HandleStepFEAHArray1OfCurveElementEndRelease(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAHArray1OfCurveElementInterval_destructor(HandleStepFEAHArray1OfCurveElementInterval* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAHArray1OfCurveElementInterval*> HandleStepFEAHArray1OfCurveElementInterval_clone(const HandleStepFEAHArray1OfCurveElementInterval* self_) {
+    try { return {new HandleStepFEAHArray1OfCurveElementInterval(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAHArray1OfDegreeOfFreedom_destructor(HandleStepFEAHArray1OfDegreeOfFreedom* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAHArray1OfDegreeOfFreedom*> HandleStepFEAHArray1OfDegreeOfFreedom_clone(const HandleStepFEAHArray1OfDegreeOfFreedom* self_) {
+    try { return {new HandleStepFEAHArray1OfDegreeOfFreedom(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAHArray1OfElementRepresentation_destructor(HandleStepFEAHArray1OfElementRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAHArray1OfElementRepresentation*> HandleStepFEAHArray1OfElementRepresentation_clone(const HandleStepFEAHArray1OfElementRepresentation* self_) {
+    try { return {new HandleStepFEAHArray1OfElementRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAHArray1OfNodeRepresentation_destructor(HandleStepFEAHArray1OfNodeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAHArray1OfNodeRepresentation*> HandleStepFEAHArray1OfNodeRepresentation_clone(const HandleStepFEAHArray1OfNodeRepresentation* self_) {
+    try { return {new HandleStepFEAHArray1OfNodeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAHSequenceOfCurve3dElementProperty_destructor(HandleStepFEAHSequenceOfCurve3dElementProperty* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAHSequenceOfCurve3dElementProperty*> HandleStepFEAHSequenceOfCurve3dElementProperty_clone(const HandleStepFEAHSequenceOfCurve3dElementProperty* self_) {
+    try { return {new HandleStepFEAHSequenceOfCurve3dElementProperty(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAHSequenceOfElementGeometricRelationship_destructor(HandleStepFEAHSequenceOfElementGeometricRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAHSequenceOfElementGeometricRelationship*> HandleStepFEAHSequenceOfElementGeometricRelationship_clone(const HandleStepFEAHSequenceOfElementGeometricRelationship* self_) {
+    try { return {new HandleStepFEAHSequenceOfElementGeometricRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAHSequenceOfElementRepresentation_destructor(HandleStepFEAHSequenceOfElementRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAHSequenceOfElementRepresentation*> HandleStepFEAHSequenceOfElementRepresentation_clone(const HandleStepFEAHSequenceOfElementRepresentation* self_) {
+    try { return {new HandleStepFEAHSequenceOfElementRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAHSequenceOfNodeRepresentation_destructor(HandleStepFEAHSequenceOfNodeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAHSequenceOfNodeRepresentation*> HandleStepFEAHSequenceOfNodeRepresentation_clone(const HandleStepFEAHSequenceOfNodeRepresentation* self_) {
+    try { return {new HandleStepFEAHSequenceOfNodeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEANode_destructor(HandleStepFEANode* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEANode*> HandleStepFEANode_clone(const HandleStepFEANode* self_) {
+    try { return {new HandleStepFEANode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEANodeDefinition_destructor(HandleStepFEANodeDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEANodeDefinition*> HandleStepFEANodeDefinition_clone(const HandleStepFEANodeDefinition* self_) {
+    try { return {new HandleStepFEANodeDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEANodeGroup_destructor(HandleStepFEANodeGroup* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEANodeGroup*> HandleStepFEANodeGroup_clone(const HandleStepFEANodeGroup* self_) {
+    try { return {new HandleStepFEANodeGroup(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEANodeRepresentation_destructor(HandleStepFEANodeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEANodeRepresentation*> HandleStepFEANodeRepresentation_clone(const HandleStepFEANodeRepresentation* self_) {
+    try { return {new HandleStepFEANodeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEANodeSet_destructor(HandleStepFEANodeSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEANodeSet*> HandleStepFEANodeSet_clone(const HandleStepFEANodeSet* self_) {
+    try { return {new HandleStepFEANodeSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEANodeWithSolutionCoordinateSystem_destructor(HandleStepFEANodeWithSolutionCoordinateSystem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEANodeWithSolutionCoordinateSystem*> HandleStepFEANodeWithSolutionCoordinateSystem_clone(const HandleStepFEANodeWithSolutionCoordinateSystem* self_) {
+    try { return {new HandleStepFEANodeWithSolutionCoordinateSystem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEANodeWithVector_destructor(HandleStepFEANodeWithVector* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEANodeWithVector*> HandleStepFEANodeWithVector_clone(const HandleStepFEANodeWithVector* self_) {
+    try { return {new HandleStepFEANodeWithVector(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAParametricCurve3dElementCoordinateDirection_destructor(HandleStepFEAParametricCurve3dElementCoordinateDirection* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAParametricCurve3dElementCoordinateDirection*> HandleStepFEAParametricCurve3dElementCoordinateDirection_clone(const HandleStepFEAParametricCurve3dElementCoordinateDirection* self_) {
+    try { return {new HandleStepFEAParametricCurve3dElementCoordinateDirection(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAParametricCurve3dElementCoordinateSystem_destructor(HandleStepFEAParametricCurve3dElementCoordinateSystem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAParametricCurve3dElementCoordinateSystem*> HandleStepFEAParametricCurve3dElementCoordinateSystem_clone(const HandleStepFEAParametricCurve3dElementCoordinateSystem* self_) {
+    try { return {new HandleStepFEAParametricCurve3dElementCoordinateSystem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAParametricSurface3dElementCoordinateSystem_destructor(HandleStepFEAParametricSurface3dElementCoordinateSystem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAParametricSurface3dElementCoordinateSystem*> HandleStepFEAParametricSurface3dElementCoordinateSystem_clone(const HandleStepFEAParametricSurface3dElementCoordinateSystem* self_) {
+    try { return {new HandleStepFEAParametricSurface3dElementCoordinateSystem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEASurface3dElementRepresentation_destructor(HandleStepFEASurface3dElementRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEASurface3dElementRepresentation*> HandleStepFEASurface3dElementRepresentation_clone(const HandleStepFEASurface3dElementRepresentation* self_) {
+    try { return {new HandleStepFEASurface3dElementRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEASymmetricTensor23dMember_destructor(HandleStepFEASymmetricTensor23dMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEASymmetricTensor23dMember*> HandleStepFEASymmetricTensor23dMember_clone(const HandleStepFEASymmetricTensor23dMember* self_) {
+    try { return {new HandleStepFEASymmetricTensor23dMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEASymmetricTensor43dMember_destructor(HandleStepFEASymmetricTensor43dMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEASymmetricTensor43dMember*> HandleStepFEASymmetricTensor43dMember_clone(const HandleStepFEASymmetricTensor43dMember* self_) {
+    try { return {new HandleStepFEASymmetricTensor43dMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepFEAVolume3dElementRepresentation_destructor(HandleStepFEAVolume3dElementRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepFEAVolume3dElementRepresentation*> HandleStepFEAVolume3dElementRepresentation_clone(const HandleStepFEAVolume3dElementRepresentation* self_) {
+    try { return {new HandleStepFEAVolume3dElementRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomAxis1Placement_destructor(HandleStepGeomAxis1Placement* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomAxis1Placement*> HandleStepGeomAxis1Placement_clone(const HandleStepGeomAxis1Placement* self_) {
+    try { return {new HandleStepGeomAxis1Placement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomAxis2Placement2d_destructor(HandleStepGeomAxis2Placement2d* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomAxis2Placement2d*> HandleStepGeomAxis2Placement2d_clone(const HandleStepGeomAxis2Placement2d* self_) {
+    try { return {new HandleStepGeomAxis2Placement2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomAxis2Placement3d_destructor(HandleStepGeomAxis2Placement3d* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomAxis2Placement3d*> HandleStepGeomAxis2Placement3d_clone(const HandleStepGeomAxis2Placement3d* self_) {
+    try { return {new HandleStepGeomAxis2Placement3d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBSplineCurve_destructor(HandleStepGeomBSplineCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBSplineCurve*> HandleStepGeomBSplineCurve_clone(const HandleStepGeomBSplineCurve* self_) {
+    try { return {new HandleStepGeomBSplineCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBSplineCurveWithKnots_destructor(HandleStepGeomBSplineCurveWithKnots* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBSplineCurveWithKnots*> HandleStepGeomBSplineCurveWithKnots_clone(const HandleStepGeomBSplineCurveWithKnots* self_) {
+    try { return {new HandleStepGeomBSplineCurveWithKnots(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve_destructor(HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve*> HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve_clone(const HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve* self_) {
+    try { return {new HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBSplineSurface_destructor(HandleStepGeomBSplineSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBSplineSurface*> HandleStepGeomBSplineSurface_clone(const HandleStepGeomBSplineSurface* self_) {
+    try { return {new HandleStepGeomBSplineSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBSplineSurfaceWithKnots_destructor(HandleStepGeomBSplineSurfaceWithKnots* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBSplineSurfaceWithKnots*> HandleStepGeomBSplineSurfaceWithKnots_clone(const HandleStepGeomBSplineSurfaceWithKnots* self_) {
+    try { return {new HandleStepGeomBSplineSurfaceWithKnots(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface_destructor(HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface*> HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface_clone(const HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface* self_) {
+    try { return {new HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBezierCurve_destructor(HandleStepGeomBezierCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBezierCurve*> HandleStepGeomBezierCurve_clone(const HandleStepGeomBezierCurve* self_) {
+    try { return {new HandleStepGeomBezierCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBezierCurveAndRationalBSplineCurve_destructor(HandleStepGeomBezierCurveAndRationalBSplineCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBezierCurveAndRationalBSplineCurve*> HandleStepGeomBezierCurveAndRationalBSplineCurve_clone(const HandleStepGeomBezierCurveAndRationalBSplineCurve* self_) {
+    try { return {new HandleStepGeomBezierCurveAndRationalBSplineCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBezierSurface_destructor(HandleStepGeomBezierSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBezierSurface*> HandleStepGeomBezierSurface_clone(const HandleStepGeomBezierSurface* self_) {
+    try { return {new HandleStepGeomBezierSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBezierSurfaceAndRationalBSplineSurface_destructor(HandleStepGeomBezierSurfaceAndRationalBSplineSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBezierSurfaceAndRationalBSplineSurface*> HandleStepGeomBezierSurfaceAndRationalBSplineSurface_clone(const HandleStepGeomBezierSurfaceAndRationalBSplineSurface* self_) {
+    try { return {new HandleStepGeomBezierSurfaceAndRationalBSplineSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBoundaryCurve_destructor(HandleStepGeomBoundaryCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBoundaryCurve*> HandleStepGeomBoundaryCurve_clone(const HandleStepGeomBoundaryCurve* self_) {
+    try { return {new HandleStepGeomBoundaryCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBoundedCurve_destructor(HandleStepGeomBoundedCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBoundedCurve*> HandleStepGeomBoundedCurve_clone(const HandleStepGeomBoundedCurve* self_) {
+    try { return {new HandleStepGeomBoundedCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomBoundedSurface_destructor(HandleStepGeomBoundedSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomBoundedSurface*> HandleStepGeomBoundedSurface_clone(const HandleStepGeomBoundedSurface* self_) {
+    try { return {new HandleStepGeomBoundedSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCartesianPoint_destructor(HandleStepGeomCartesianPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCartesianPoint*> HandleStepGeomCartesianPoint_clone(const HandleStepGeomCartesianPoint* self_) {
+    try { return {new HandleStepGeomCartesianPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCartesianTransformationOperator_destructor(HandleStepGeomCartesianTransformationOperator* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCartesianTransformationOperator*> HandleStepGeomCartesianTransformationOperator_clone(const HandleStepGeomCartesianTransformationOperator* self_) {
+    try { return {new HandleStepGeomCartesianTransformationOperator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCartesianTransformationOperator2d_destructor(HandleStepGeomCartesianTransformationOperator2d* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCartesianTransformationOperator2d*> HandleStepGeomCartesianTransformationOperator2d_clone(const HandleStepGeomCartesianTransformationOperator2d* self_) {
+    try { return {new HandleStepGeomCartesianTransformationOperator2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCartesianTransformationOperator3d_destructor(HandleStepGeomCartesianTransformationOperator3d* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCartesianTransformationOperator3d*> HandleStepGeomCartesianTransformationOperator3d_clone(const HandleStepGeomCartesianTransformationOperator3d* self_) {
+    try { return {new HandleStepGeomCartesianTransformationOperator3d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCircle_destructor(HandleStepGeomCircle* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCircle*> HandleStepGeomCircle_clone(const HandleStepGeomCircle* self_) {
+    try { return {new HandleStepGeomCircle(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCompositeCurve_destructor(HandleStepGeomCompositeCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCompositeCurve*> HandleStepGeomCompositeCurve_clone(const HandleStepGeomCompositeCurve* self_) {
+    try { return {new HandleStepGeomCompositeCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCompositeCurveOnSurface_destructor(HandleStepGeomCompositeCurveOnSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCompositeCurveOnSurface*> HandleStepGeomCompositeCurveOnSurface_clone(const HandleStepGeomCompositeCurveOnSurface* self_) {
+    try { return {new HandleStepGeomCompositeCurveOnSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCompositeCurveSegment_destructor(HandleStepGeomCompositeCurveSegment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCompositeCurveSegment*> HandleStepGeomCompositeCurveSegment_clone(const HandleStepGeomCompositeCurveSegment* self_) {
+    try { return {new HandleStepGeomCompositeCurveSegment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomConic_destructor(HandleStepGeomConic* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomConic*> HandleStepGeomConic_clone(const HandleStepGeomConic* self_) {
+    try { return {new HandleStepGeomConic(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomConicalSurface_destructor(HandleStepGeomConicalSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomConicalSurface*> HandleStepGeomConicalSurface_clone(const HandleStepGeomConicalSurface* self_) {
+    try { return {new HandleStepGeomConicalSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCurve_destructor(HandleStepGeomCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCurve*> HandleStepGeomCurve_clone(const HandleStepGeomCurve* self_) {
+    try { return {new HandleStepGeomCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCurveBoundedSurface_destructor(HandleStepGeomCurveBoundedSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCurveBoundedSurface*> HandleStepGeomCurveBoundedSurface_clone(const HandleStepGeomCurveBoundedSurface* self_) {
+    try { return {new HandleStepGeomCurveBoundedSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCurveReplica_destructor(HandleStepGeomCurveReplica* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCurveReplica*> HandleStepGeomCurveReplica_clone(const HandleStepGeomCurveReplica* self_) {
+    try { return {new HandleStepGeomCurveReplica(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomCylindricalSurface_destructor(HandleStepGeomCylindricalSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomCylindricalSurface*> HandleStepGeomCylindricalSurface_clone(const HandleStepGeomCylindricalSurface* self_) {
+    try { return {new HandleStepGeomCylindricalSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomDegeneratePcurve_destructor(HandleStepGeomDegeneratePcurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomDegeneratePcurve*> HandleStepGeomDegeneratePcurve_clone(const HandleStepGeomDegeneratePcurve* self_) {
+    try { return {new HandleStepGeomDegeneratePcurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomDegenerateToroidalSurface_destructor(HandleStepGeomDegenerateToroidalSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomDegenerateToroidalSurface*> HandleStepGeomDegenerateToroidalSurface_clone(const HandleStepGeomDegenerateToroidalSurface* self_) {
+    try { return {new HandleStepGeomDegenerateToroidalSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomDirection_destructor(HandleStepGeomDirection* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomDirection*> HandleStepGeomDirection_clone(const HandleStepGeomDirection* self_) {
+    try { return {new HandleStepGeomDirection(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomElementarySurface_destructor(HandleStepGeomElementarySurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomElementarySurface*> HandleStepGeomElementarySurface_clone(const HandleStepGeomElementarySurface* self_) {
+    try { return {new HandleStepGeomElementarySurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomEllipse_destructor(HandleStepGeomEllipse* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomEllipse*> HandleStepGeomEllipse_clone(const HandleStepGeomEllipse* self_) {
+    try { return {new HandleStepGeomEllipse(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomEvaluatedDegeneratePcurve_destructor(HandleStepGeomEvaluatedDegeneratePcurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomEvaluatedDegeneratePcurve*> HandleStepGeomEvaluatedDegeneratePcurve_clone(const HandleStepGeomEvaluatedDegeneratePcurve* self_) {
+    try { return {new HandleStepGeomEvaluatedDegeneratePcurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_destructor(HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx*> HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_clone(const HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_) {
+    try { return {new HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomGeometricRepresentationContext_destructor(HandleStepGeomGeometricRepresentationContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomGeometricRepresentationContext*> HandleStepGeomGeometricRepresentationContext_clone(const HandleStepGeomGeometricRepresentationContext* self_) {
+    try { return {new HandleStepGeomGeometricRepresentationContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext_destructor(HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext*> HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext_clone(const HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext* self_) {
+    try { return {new HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext_destructor(HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext*> HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext_clone(const HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext* self_) {
+    try { return {new HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomGeometricRepresentationItem_destructor(HandleStepGeomGeometricRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomGeometricRepresentationItem*> HandleStepGeomGeometricRepresentationItem_clone(const HandleStepGeomGeometricRepresentationItem* self_) {
+    try { return {new HandleStepGeomGeometricRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomHArray1OfBoundaryCurve_destructor(HandleStepGeomHArray1OfBoundaryCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomHArray1OfBoundaryCurve*> HandleStepGeomHArray1OfBoundaryCurve_clone(const HandleStepGeomHArray1OfBoundaryCurve* self_) {
+    try { return {new HandleStepGeomHArray1OfBoundaryCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomHArray1OfCartesianPoint_destructor(HandleStepGeomHArray1OfCartesianPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomHArray1OfCartesianPoint*> HandleStepGeomHArray1OfCartesianPoint_clone(const HandleStepGeomHArray1OfCartesianPoint* self_) {
+    try { return {new HandleStepGeomHArray1OfCartesianPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomHArray1OfCompositeCurveSegment_destructor(HandleStepGeomHArray1OfCompositeCurveSegment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomHArray1OfCompositeCurveSegment*> HandleStepGeomHArray1OfCompositeCurveSegment_clone(const HandleStepGeomHArray1OfCompositeCurveSegment* self_) {
+    try { return {new HandleStepGeomHArray1OfCompositeCurveSegment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomHArray1OfCurve_destructor(HandleStepGeomHArray1OfCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomHArray1OfCurve*> HandleStepGeomHArray1OfCurve_clone(const HandleStepGeomHArray1OfCurve* self_) {
+    try { return {new HandleStepGeomHArray1OfCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomHArray1OfPcurveOrSurface_destructor(HandleStepGeomHArray1OfPcurveOrSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomHArray1OfPcurveOrSurface*> HandleStepGeomHArray1OfPcurveOrSurface_clone(const HandleStepGeomHArray1OfPcurveOrSurface* self_) {
+    try { return {new HandleStepGeomHArray1OfPcurveOrSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomHArray1OfSurfaceBoundary_destructor(HandleStepGeomHArray1OfSurfaceBoundary* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomHArray1OfSurfaceBoundary*> HandleStepGeomHArray1OfSurfaceBoundary_clone(const HandleStepGeomHArray1OfSurfaceBoundary* self_) {
+    try { return {new HandleStepGeomHArray1OfSurfaceBoundary(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomHArray1OfTrimmingSelect_destructor(HandleStepGeomHArray1OfTrimmingSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomHArray1OfTrimmingSelect*> HandleStepGeomHArray1OfTrimmingSelect_clone(const HandleStepGeomHArray1OfTrimmingSelect* self_) {
+    try { return {new HandleStepGeomHArray1OfTrimmingSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomHArray2OfCartesianPoint_destructor(HandleStepGeomHArray2OfCartesianPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomHArray2OfCartesianPoint*> HandleStepGeomHArray2OfCartesianPoint_clone(const HandleStepGeomHArray2OfCartesianPoint* self_) {
+    try { return {new HandleStepGeomHArray2OfCartesianPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomHArray2OfSurfacePatch_destructor(HandleStepGeomHArray2OfSurfacePatch* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomHArray2OfSurfacePatch*> HandleStepGeomHArray2OfSurfacePatch_clone(const HandleStepGeomHArray2OfSurfacePatch* self_) {
+    try { return {new HandleStepGeomHArray2OfSurfacePatch(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomHyperbola_destructor(HandleStepGeomHyperbola* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomHyperbola*> HandleStepGeomHyperbola_clone(const HandleStepGeomHyperbola* self_) {
+    try { return {new HandleStepGeomHyperbola(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomIntersectionCurve_destructor(HandleStepGeomIntersectionCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomIntersectionCurve*> HandleStepGeomIntersectionCurve_clone(const HandleStepGeomIntersectionCurve* self_) {
+    try { return {new HandleStepGeomIntersectionCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomLine_destructor(HandleStepGeomLine* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomLine*> HandleStepGeomLine_clone(const HandleStepGeomLine* self_) {
+    try { return {new HandleStepGeomLine(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomOffsetCurve3d_destructor(HandleStepGeomOffsetCurve3d* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomOffsetCurve3d*> HandleStepGeomOffsetCurve3d_clone(const HandleStepGeomOffsetCurve3d* self_) {
+    try { return {new HandleStepGeomOffsetCurve3d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomOffsetSurface_destructor(HandleStepGeomOffsetSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomOffsetSurface*> HandleStepGeomOffsetSurface_clone(const HandleStepGeomOffsetSurface* self_) {
+    try { return {new HandleStepGeomOffsetSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomOrientedSurface_destructor(HandleStepGeomOrientedSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomOrientedSurface*> HandleStepGeomOrientedSurface_clone(const HandleStepGeomOrientedSurface* self_) {
+    try { return {new HandleStepGeomOrientedSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomOuterBoundaryCurve_destructor(HandleStepGeomOuterBoundaryCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomOuterBoundaryCurve*> HandleStepGeomOuterBoundaryCurve_clone(const HandleStepGeomOuterBoundaryCurve* self_) {
+    try { return {new HandleStepGeomOuterBoundaryCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomParabola_destructor(HandleStepGeomParabola* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomParabola*> HandleStepGeomParabola_clone(const HandleStepGeomParabola* self_) {
+    try { return {new HandleStepGeomParabola(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomPcurve_destructor(HandleStepGeomPcurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomPcurve*> HandleStepGeomPcurve_clone(const HandleStepGeomPcurve* self_) {
+    try { return {new HandleStepGeomPcurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomPlacement_destructor(HandleStepGeomPlacement* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomPlacement*> HandleStepGeomPlacement_clone(const HandleStepGeomPlacement* self_) {
+    try { return {new HandleStepGeomPlacement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomPlane_destructor(HandleStepGeomPlane* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomPlane*> HandleStepGeomPlane_clone(const HandleStepGeomPlane* self_) {
+    try { return {new HandleStepGeomPlane(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomPoint_destructor(HandleStepGeomPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomPoint*> HandleStepGeomPoint_clone(const HandleStepGeomPoint* self_) {
+    try { return {new HandleStepGeomPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomPointOnCurve_destructor(HandleStepGeomPointOnCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomPointOnCurve*> HandleStepGeomPointOnCurve_clone(const HandleStepGeomPointOnCurve* self_) {
+    try { return {new HandleStepGeomPointOnCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomPointOnSurface_destructor(HandleStepGeomPointOnSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomPointOnSurface*> HandleStepGeomPointOnSurface_clone(const HandleStepGeomPointOnSurface* self_) {
+    try { return {new HandleStepGeomPointOnSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomPointReplica_destructor(HandleStepGeomPointReplica* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomPointReplica*> HandleStepGeomPointReplica_clone(const HandleStepGeomPointReplica* self_) {
+    try { return {new HandleStepGeomPointReplica(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomPolyline_destructor(HandleStepGeomPolyline* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomPolyline*> HandleStepGeomPolyline_clone(const HandleStepGeomPolyline* self_) {
+    try { return {new HandleStepGeomPolyline(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomQuasiUniformCurve_destructor(HandleStepGeomQuasiUniformCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomQuasiUniformCurve*> HandleStepGeomQuasiUniformCurve_clone(const HandleStepGeomQuasiUniformCurve* self_) {
+    try { return {new HandleStepGeomQuasiUniformCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve_destructor(HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve*> HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve_clone(const HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve* self_) {
+    try { return {new HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomQuasiUniformSurface_destructor(HandleStepGeomQuasiUniformSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomQuasiUniformSurface*> HandleStepGeomQuasiUniformSurface_clone(const HandleStepGeomQuasiUniformSurface* self_) {
+    try { return {new HandleStepGeomQuasiUniformSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface_destructor(HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface*> HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface_clone(const HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface* self_) {
+    try { return {new HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomRationalBSplineCurve_destructor(HandleStepGeomRationalBSplineCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomRationalBSplineCurve*> HandleStepGeomRationalBSplineCurve_clone(const HandleStepGeomRationalBSplineCurve* self_) {
+    try { return {new HandleStepGeomRationalBSplineCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomRationalBSplineSurface_destructor(HandleStepGeomRationalBSplineSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomRationalBSplineSurface*> HandleStepGeomRationalBSplineSurface_clone(const HandleStepGeomRationalBSplineSurface* self_) {
+    try { return {new HandleStepGeomRationalBSplineSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomRectangularCompositeSurface_destructor(HandleStepGeomRectangularCompositeSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomRectangularCompositeSurface*> HandleStepGeomRectangularCompositeSurface_clone(const HandleStepGeomRectangularCompositeSurface* self_) {
+    try { return {new HandleStepGeomRectangularCompositeSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomRectangularTrimmedSurface_destructor(HandleStepGeomRectangularTrimmedSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomRectangularTrimmedSurface*> HandleStepGeomRectangularTrimmedSurface_clone(const HandleStepGeomRectangularTrimmedSurface* self_) {
+    try { return {new HandleStepGeomRectangularTrimmedSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomReparametrisedCompositeCurveSegment_destructor(HandleStepGeomReparametrisedCompositeCurveSegment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomReparametrisedCompositeCurveSegment*> HandleStepGeomReparametrisedCompositeCurveSegment_clone(const HandleStepGeomReparametrisedCompositeCurveSegment* self_) {
+    try { return {new HandleStepGeomReparametrisedCompositeCurveSegment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomSeamCurve_destructor(HandleStepGeomSeamCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomSeamCurve*> HandleStepGeomSeamCurve_clone(const HandleStepGeomSeamCurve* self_) {
+    try { return {new HandleStepGeomSeamCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomSphericalSurface_destructor(HandleStepGeomSphericalSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomSphericalSurface*> HandleStepGeomSphericalSurface_clone(const HandleStepGeomSphericalSurface* self_) {
+    try { return {new HandleStepGeomSphericalSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomSuParameters_destructor(HandleStepGeomSuParameters* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomSuParameters*> HandleStepGeomSuParameters_clone(const HandleStepGeomSuParameters* self_) {
+    try { return {new HandleStepGeomSuParameters(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomSurface_destructor(HandleStepGeomSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomSurface*> HandleStepGeomSurface_clone(const HandleStepGeomSurface* self_) {
+    try { return {new HandleStepGeomSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomSurfaceCurve_destructor(HandleStepGeomSurfaceCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomSurfaceCurve*> HandleStepGeomSurfaceCurve_clone(const HandleStepGeomSurfaceCurve* self_) {
+    try { return {new HandleStepGeomSurfaceCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomSurfaceCurveAndBoundedCurve_destructor(HandleStepGeomSurfaceCurveAndBoundedCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomSurfaceCurveAndBoundedCurve*> HandleStepGeomSurfaceCurveAndBoundedCurve_clone(const HandleStepGeomSurfaceCurveAndBoundedCurve* self_) {
+    try { return {new HandleStepGeomSurfaceCurveAndBoundedCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomSurfaceOfLinearExtrusion_destructor(HandleStepGeomSurfaceOfLinearExtrusion* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomSurfaceOfLinearExtrusion*> HandleStepGeomSurfaceOfLinearExtrusion_clone(const HandleStepGeomSurfaceOfLinearExtrusion* self_) {
+    try { return {new HandleStepGeomSurfaceOfLinearExtrusion(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomSurfaceOfRevolution_destructor(HandleStepGeomSurfaceOfRevolution* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomSurfaceOfRevolution*> HandleStepGeomSurfaceOfRevolution_clone(const HandleStepGeomSurfaceOfRevolution* self_) {
+    try { return {new HandleStepGeomSurfaceOfRevolution(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomSurfacePatch_destructor(HandleStepGeomSurfacePatch* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomSurfacePatch*> HandleStepGeomSurfacePatch_clone(const HandleStepGeomSurfacePatch* self_) {
+    try { return {new HandleStepGeomSurfacePatch(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomSurfaceReplica_destructor(HandleStepGeomSurfaceReplica* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomSurfaceReplica*> HandleStepGeomSurfaceReplica_clone(const HandleStepGeomSurfaceReplica* self_) {
+    try { return {new HandleStepGeomSurfaceReplica(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomSweptSurface_destructor(HandleStepGeomSweptSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomSweptSurface*> HandleStepGeomSweptSurface_clone(const HandleStepGeomSweptSurface* self_) {
+    try { return {new HandleStepGeomSweptSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomToroidalSurface_destructor(HandleStepGeomToroidalSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomToroidalSurface*> HandleStepGeomToroidalSurface_clone(const HandleStepGeomToroidalSurface* self_) {
+    try { return {new HandleStepGeomToroidalSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomTrimmedCurve_destructor(HandleStepGeomTrimmedCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomTrimmedCurve*> HandleStepGeomTrimmedCurve_clone(const HandleStepGeomTrimmedCurve* self_) {
+    try { return {new HandleStepGeomTrimmedCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomTrimmingMember_destructor(HandleStepGeomTrimmingMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomTrimmingMember*> HandleStepGeomTrimmingMember_clone(const HandleStepGeomTrimmingMember* self_) {
+    try { return {new HandleStepGeomTrimmingMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomUniformCurve_destructor(HandleStepGeomUniformCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomUniformCurve*> HandleStepGeomUniformCurve_clone(const HandleStepGeomUniformCurve* self_) {
+    try { return {new HandleStepGeomUniformCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomUniformCurveAndRationalBSplineCurve_destructor(HandleStepGeomUniformCurveAndRationalBSplineCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomUniformCurveAndRationalBSplineCurve*> HandleStepGeomUniformCurveAndRationalBSplineCurve_clone(const HandleStepGeomUniformCurveAndRationalBSplineCurve* self_) {
+    try { return {new HandleStepGeomUniformCurveAndRationalBSplineCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomUniformSurface_destructor(HandleStepGeomUniformSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomUniformSurface*> HandleStepGeomUniformSurface_clone(const HandleStepGeomUniformSurface* self_) {
+    try { return {new HandleStepGeomUniformSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomUniformSurfaceAndRationalBSplineSurface_destructor(HandleStepGeomUniformSurfaceAndRationalBSplineSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomUniformSurfaceAndRationalBSplineSurface*> HandleStepGeomUniformSurfaceAndRationalBSplineSurface_clone(const HandleStepGeomUniformSurfaceAndRationalBSplineSurface* self_) {
+    try { return {new HandleStepGeomUniformSurfaceAndRationalBSplineSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepGeomVector_destructor(HandleStepGeomVector* self_) { delete self_; }
+extern "C" OcctResult<HandleStepGeomVector*> HandleStepGeomVector_clone(const HandleStepGeomVector* self_) {
+    try { return {new HandleStepGeomVector(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsActuatedKinPairAndOrderKinPair_destructor(HandleStepKinematicsActuatedKinPairAndOrderKinPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsActuatedKinPairAndOrderKinPair*> HandleStepKinematicsActuatedKinPairAndOrderKinPair_clone(const HandleStepKinematicsActuatedKinPairAndOrderKinPair* self_) {
+    try { return {new HandleStepKinematicsActuatedKinPairAndOrderKinPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsActuatedKinematicPair_destructor(HandleStepKinematicsActuatedKinematicPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsActuatedKinematicPair*> HandleStepKinematicsActuatedKinematicPair_clone(const HandleStepKinematicsActuatedKinematicPair* self_) {
+    try { return {new HandleStepKinematicsActuatedKinematicPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsContextDependentKinematicLinkRepresentation_destructor(HandleStepKinematicsContextDependentKinematicLinkRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsContextDependentKinematicLinkRepresentation*> HandleStepKinematicsContextDependentKinematicLinkRepresentation_clone(const HandleStepKinematicsContextDependentKinematicLinkRepresentation* self_) {
+    try { return {new HandleStepKinematicsContextDependentKinematicLinkRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsCylindricalPair_destructor(HandleStepKinematicsCylindricalPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsCylindricalPair*> HandleStepKinematicsCylindricalPair_clone(const HandleStepKinematicsCylindricalPair* self_) {
+    try { return {new HandleStepKinematicsCylindricalPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsCylindricalPairValue_destructor(HandleStepKinematicsCylindricalPairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsCylindricalPairValue*> HandleStepKinematicsCylindricalPairValue_clone(const HandleStepKinematicsCylindricalPairValue* self_) {
+    try { return {new HandleStepKinematicsCylindricalPairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsCylindricalPairWithRange_destructor(HandleStepKinematicsCylindricalPairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsCylindricalPairWithRange*> HandleStepKinematicsCylindricalPairWithRange_clone(const HandleStepKinematicsCylindricalPairWithRange* self_) {
+    try { return {new HandleStepKinematicsCylindricalPairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsFullyConstrainedPair_destructor(HandleStepKinematicsFullyConstrainedPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsFullyConstrainedPair*> HandleStepKinematicsFullyConstrainedPair_clone(const HandleStepKinematicsFullyConstrainedPair* self_) {
+    try { return {new HandleStepKinematicsFullyConstrainedPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsGearPair_destructor(HandleStepKinematicsGearPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsGearPair*> HandleStepKinematicsGearPair_clone(const HandleStepKinematicsGearPair* self_) {
+    try { return {new HandleStepKinematicsGearPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsGearPairValue_destructor(HandleStepKinematicsGearPairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsGearPairValue*> HandleStepKinematicsGearPairValue_clone(const HandleStepKinematicsGearPairValue* self_) {
+    try { return {new HandleStepKinematicsGearPairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsGearPairWithRange_destructor(HandleStepKinematicsGearPairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsGearPairWithRange*> HandleStepKinematicsGearPairWithRange_clone(const HandleStepKinematicsGearPairWithRange* self_) {
+    try { return {new HandleStepKinematicsGearPairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsHighOrderKinematicPair_destructor(HandleStepKinematicsHighOrderKinematicPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsHighOrderKinematicPair*> HandleStepKinematicsHighOrderKinematicPair_clone(const HandleStepKinematicsHighOrderKinematicPair* self_) {
+    try { return {new HandleStepKinematicsHighOrderKinematicPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsHomokineticPair_destructor(HandleStepKinematicsHomokineticPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsHomokineticPair*> HandleStepKinematicsHomokineticPair_clone(const HandleStepKinematicsHomokineticPair* self_) {
+    try { return {new HandleStepKinematicsHomokineticPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsKinematicJoint_destructor(HandleStepKinematicsKinematicJoint* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsKinematicJoint*> HandleStepKinematicsKinematicJoint_clone(const HandleStepKinematicsKinematicJoint* self_) {
+    try { return {new HandleStepKinematicsKinematicJoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsKinematicLink_destructor(HandleStepKinematicsKinematicLink* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsKinematicLink*> HandleStepKinematicsKinematicLink_clone(const HandleStepKinematicsKinematicLink* self_) {
+    try { return {new HandleStepKinematicsKinematicLink(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsKinematicLinkRepresentation_destructor(HandleStepKinematicsKinematicLinkRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsKinematicLinkRepresentation*> HandleStepKinematicsKinematicLinkRepresentation_clone(const HandleStepKinematicsKinematicLinkRepresentation* self_) {
+    try { return {new HandleStepKinematicsKinematicLinkRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsKinematicLinkRepresentationAssociation_destructor(HandleStepKinematicsKinematicLinkRepresentationAssociation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsKinematicLinkRepresentationAssociation*> HandleStepKinematicsKinematicLinkRepresentationAssociation_clone(const HandleStepKinematicsKinematicLinkRepresentationAssociation* self_) {
+    try { return {new HandleStepKinematicsKinematicLinkRepresentationAssociation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsKinematicPair_destructor(HandleStepKinematicsKinematicPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsKinematicPair*> HandleStepKinematicsKinematicPair_clone(const HandleStepKinematicsKinematicPair* self_) {
+    try { return {new HandleStepKinematicsKinematicPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsKinematicPropertyDefinitionRepresentation_destructor(HandleStepKinematicsKinematicPropertyDefinitionRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsKinematicPropertyDefinitionRepresentation*> HandleStepKinematicsKinematicPropertyDefinitionRepresentation_clone(const HandleStepKinematicsKinematicPropertyDefinitionRepresentation* self_) {
+    try { return {new HandleStepKinematicsKinematicPropertyDefinitionRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsKinematicPropertyMechanismRepresentation_destructor(HandleStepKinematicsKinematicPropertyMechanismRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsKinematicPropertyMechanismRepresentation*> HandleStepKinematicsKinematicPropertyMechanismRepresentation_clone(const HandleStepKinematicsKinematicPropertyMechanismRepresentation* self_) {
+    try { return {new HandleStepKinematicsKinematicPropertyMechanismRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsKinematicTopologyDirectedStructure_destructor(HandleStepKinematicsKinematicTopologyDirectedStructure* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsKinematicTopologyDirectedStructure*> HandleStepKinematicsKinematicTopologyDirectedStructure_clone(const HandleStepKinematicsKinematicTopologyDirectedStructure* self_) {
+    try { return {new HandleStepKinematicsKinematicTopologyDirectedStructure(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsKinematicTopologyNetworkStructure_destructor(HandleStepKinematicsKinematicTopologyNetworkStructure* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsKinematicTopologyNetworkStructure*> HandleStepKinematicsKinematicTopologyNetworkStructure_clone(const HandleStepKinematicsKinematicTopologyNetworkStructure* self_) {
+    try { return {new HandleStepKinematicsKinematicTopologyNetworkStructure(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsKinematicTopologyStructure_destructor(HandleStepKinematicsKinematicTopologyStructure* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsKinematicTopologyStructure*> HandleStepKinematicsKinematicTopologyStructure_clone(const HandleStepKinematicsKinematicTopologyStructure* self_) {
+    try { return {new HandleStepKinematicsKinematicTopologyStructure(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsLinearFlexibleAndPinionPair_destructor(HandleStepKinematicsLinearFlexibleAndPinionPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsLinearFlexibleAndPinionPair*> HandleStepKinematicsLinearFlexibleAndPinionPair_clone(const HandleStepKinematicsLinearFlexibleAndPinionPair* self_) {
+    try { return {new HandleStepKinematicsLinearFlexibleAndPinionPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsLinearFlexibleAndPlanarCurvePair_destructor(HandleStepKinematicsLinearFlexibleAndPlanarCurvePair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsLinearFlexibleAndPlanarCurvePair*> HandleStepKinematicsLinearFlexibleAndPlanarCurvePair_clone(const HandleStepKinematicsLinearFlexibleAndPlanarCurvePair* self_) {
+    try { return {new HandleStepKinematicsLinearFlexibleAndPlanarCurvePair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsLinearFlexibleLinkRepresentation_destructor(HandleStepKinematicsLinearFlexibleLinkRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsLinearFlexibleLinkRepresentation*> HandleStepKinematicsLinearFlexibleLinkRepresentation_clone(const HandleStepKinematicsLinearFlexibleLinkRepresentation* self_) {
+    try { return {new HandleStepKinematicsLinearFlexibleLinkRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsLowOrderKinematicPair_destructor(HandleStepKinematicsLowOrderKinematicPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsLowOrderKinematicPair*> HandleStepKinematicsLowOrderKinematicPair_clone(const HandleStepKinematicsLowOrderKinematicPair* self_) {
+    try { return {new HandleStepKinematicsLowOrderKinematicPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsLowOrderKinematicPairValue_destructor(HandleStepKinematicsLowOrderKinematicPairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsLowOrderKinematicPairValue*> HandleStepKinematicsLowOrderKinematicPairValue_clone(const HandleStepKinematicsLowOrderKinematicPairValue* self_) {
+    try { return {new HandleStepKinematicsLowOrderKinematicPairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling_destructor(HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling*> HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling_clone(const HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling* self_) {
+    try { return {new HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsLowOrderKinematicPairWithRange_destructor(HandleStepKinematicsLowOrderKinematicPairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsLowOrderKinematicPairWithRange*> HandleStepKinematicsLowOrderKinematicPairWithRange_clone(const HandleStepKinematicsLowOrderKinematicPairWithRange* self_) {
+    try { return {new HandleStepKinematicsLowOrderKinematicPairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsMechanismRepresentation_destructor(HandleStepKinematicsMechanismRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsMechanismRepresentation*> HandleStepKinematicsMechanismRepresentation_clone(const HandleStepKinematicsMechanismRepresentation* self_) {
+    try { return {new HandleStepKinematicsMechanismRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsMechanismStateRepresentation_destructor(HandleStepKinematicsMechanismStateRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsMechanismStateRepresentation*> HandleStepKinematicsMechanismStateRepresentation_clone(const HandleStepKinematicsMechanismStateRepresentation* self_) {
+    try { return {new HandleStepKinematicsMechanismStateRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsOrientedJoint_destructor(HandleStepKinematicsOrientedJoint* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsOrientedJoint*> HandleStepKinematicsOrientedJoint_clone(const HandleStepKinematicsOrientedJoint* self_) {
+    try { return {new HandleStepKinematicsOrientedJoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPairRepresentationRelationship_destructor(HandleStepKinematicsPairRepresentationRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPairRepresentationRelationship*> HandleStepKinematicsPairRepresentationRelationship_clone(const HandleStepKinematicsPairRepresentationRelationship* self_) {
+    try { return {new HandleStepKinematicsPairRepresentationRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPairValue_destructor(HandleStepKinematicsPairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPairValue*> HandleStepKinematicsPairValue_clone(const HandleStepKinematicsPairValue* self_) {
+    try { return {new HandleStepKinematicsPairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPlanarCurvePair_destructor(HandleStepKinematicsPlanarCurvePair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPlanarCurvePair*> HandleStepKinematicsPlanarCurvePair_clone(const HandleStepKinematicsPlanarCurvePair* self_) {
+    try { return {new HandleStepKinematicsPlanarCurvePair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPlanarCurvePairRange_destructor(HandleStepKinematicsPlanarCurvePairRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPlanarCurvePairRange*> HandleStepKinematicsPlanarCurvePairRange_clone(const HandleStepKinematicsPlanarCurvePairRange* self_) {
+    try { return {new HandleStepKinematicsPlanarCurvePairRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPlanarPair_destructor(HandleStepKinematicsPlanarPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPlanarPair*> HandleStepKinematicsPlanarPair_clone(const HandleStepKinematicsPlanarPair* self_) {
+    try { return {new HandleStepKinematicsPlanarPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPlanarPairValue_destructor(HandleStepKinematicsPlanarPairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPlanarPairValue*> HandleStepKinematicsPlanarPairValue_clone(const HandleStepKinematicsPlanarPairValue* self_) {
+    try { return {new HandleStepKinematicsPlanarPairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPlanarPairWithRange_destructor(HandleStepKinematicsPlanarPairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPlanarPairWithRange*> HandleStepKinematicsPlanarPairWithRange_clone(const HandleStepKinematicsPlanarPairWithRange* self_) {
+    try { return {new HandleStepKinematicsPlanarPairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPointOnPlanarCurvePair_destructor(HandleStepKinematicsPointOnPlanarCurvePair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPointOnPlanarCurvePair*> HandleStepKinematicsPointOnPlanarCurvePair_clone(const HandleStepKinematicsPointOnPlanarCurvePair* self_) {
+    try { return {new HandleStepKinematicsPointOnPlanarCurvePair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPointOnPlanarCurvePairValue_destructor(HandleStepKinematicsPointOnPlanarCurvePairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPointOnPlanarCurvePairValue*> HandleStepKinematicsPointOnPlanarCurvePairValue_clone(const HandleStepKinematicsPointOnPlanarCurvePairValue* self_) {
+    try { return {new HandleStepKinematicsPointOnPlanarCurvePairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPointOnPlanarCurvePairWithRange_destructor(HandleStepKinematicsPointOnPlanarCurvePairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPointOnPlanarCurvePairWithRange*> HandleStepKinematicsPointOnPlanarCurvePairWithRange_clone(const HandleStepKinematicsPointOnPlanarCurvePairWithRange* self_) {
+    try { return {new HandleStepKinematicsPointOnPlanarCurvePairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPointOnSurfacePair_destructor(HandleStepKinematicsPointOnSurfacePair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPointOnSurfacePair*> HandleStepKinematicsPointOnSurfacePair_clone(const HandleStepKinematicsPointOnSurfacePair* self_) {
+    try { return {new HandleStepKinematicsPointOnSurfacePair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPointOnSurfacePairValue_destructor(HandleStepKinematicsPointOnSurfacePairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPointOnSurfacePairValue*> HandleStepKinematicsPointOnSurfacePairValue_clone(const HandleStepKinematicsPointOnSurfacePairValue* self_) {
+    try { return {new HandleStepKinematicsPointOnSurfacePairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPointOnSurfacePairWithRange_destructor(HandleStepKinematicsPointOnSurfacePairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPointOnSurfacePairWithRange*> HandleStepKinematicsPointOnSurfacePairWithRange_clone(const HandleStepKinematicsPointOnSurfacePairWithRange* self_) {
+    try { return {new HandleStepKinematicsPointOnSurfacePairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPrismaticPair_destructor(HandleStepKinematicsPrismaticPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPrismaticPair*> HandleStepKinematicsPrismaticPair_clone(const HandleStepKinematicsPrismaticPair* self_) {
+    try { return {new HandleStepKinematicsPrismaticPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPrismaticPairValue_destructor(HandleStepKinematicsPrismaticPairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPrismaticPairValue*> HandleStepKinematicsPrismaticPairValue_clone(const HandleStepKinematicsPrismaticPairValue* self_) {
+    try { return {new HandleStepKinematicsPrismaticPairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsPrismaticPairWithRange_destructor(HandleStepKinematicsPrismaticPairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsPrismaticPairWithRange*> HandleStepKinematicsPrismaticPairWithRange_clone(const HandleStepKinematicsPrismaticPairWithRange* self_) {
+    try { return {new HandleStepKinematicsPrismaticPairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsProductDefinitionKinematics_destructor(HandleStepKinematicsProductDefinitionKinematics* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsProductDefinitionKinematics*> HandleStepKinematicsProductDefinitionKinematics_clone(const HandleStepKinematicsProductDefinitionKinematics* self_) {
+    try { return {new HandleStepKinematicsProductDefinitionKinematics(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsProductDefinitionRelationshipKinematics_destructor(HandleStepKinematicsProductDefinitionRelationshipKinematics* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsProductDefinitionRelationshipKinematics*> HandleStepKinematicsProductDefinitionRelationshipKinematics_clone(const HandleStepKinematicsProductDefinitionRelationshipKinematics* self_) {
+    try { return {new HandleStepKinematicsProductDefinitionRelationshipKinematics(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRackAndPinionPair_destructor(HandleStepKinematicsRackAndPinionPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRackAndPinionPair*> HandleStepKinematicsRackAndPinionPair_clone(const HandleStepKinematicsRackAndPinionPair* self_) {
+    try { return {new HandleStepKinematicsRackAndPinionPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRackAndPinionPairValue_destructor(HandleStepKinematicsRackAndPinionPairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRackAndPinionPairValue*> HandleStepKinematicsRackAndPinionPairValue_clone(const HandleStepKinematicsRackAndPinionPairValue* self_) {
+    try { return {new HandleStepKinematicsRackAndPinionPairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRackAndPinionPairWithRange_destructor(HandleStepKinematicsRackAndPinionPairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRackAndPinionPairWithRange*> HandleStepKinematicsRackAndPinionPairWithRange_clone(const HandleStepKinematicsRackAndPinionPairWithRange* self_) {
+    try { return {new HandleStepKinematicsRackAndPinionPairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRevolutePair_destructor(HandleStepKinematicsRevolutePair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRevolutePair*> HandleStepKinematicsRevolutePair_clone(const HandleStepKinematicsRevolutePair* self_) {
+    try { return {new HandleStepKinematicsRevolutePair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRevolutePairValue_destructor(HandleStepKinematicsRevolutePairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRevolutePairValue*> HandleStepKinematicsRevolutePairValue_clone(const HandleStepKinematicsRevolutePairValue* self_) {
+    try { return {new HandleStepKinematicsRevolutePairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRevolutePairWithRange_destructor(HandleStepKinematicsRevolutePairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRevolutePairWithRange*> HandleStepKinematicsRevolutePairWithRange_clone(const HandleStepKinematicsRevolutePairWithRange* self_) {
+    try { return {new HandleStepKinematicsRevolutePairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRigidLinkRepresentation_destructor(HandleStepKinematicsRigidLinkRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRigidLinkRepresentation*> HandleStepKinematicsRigidLinkRepresentation_clone(const HandleStepKinematicsRigidLinkRepresentation* self_) {
+    try { return {new HandleStepKinematicsRigidLinkRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRollingCurvePair_destructor(HandleStepKinematicsRollingCurvePair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRollingCurvePair*> HandleStepKinematicsRollingCurvePair_clone(const HandleStepKinematicsRollingCurvePair* self_) {
+    try { return {new HandleStepKinematicsRollingCurvePair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRollingCurvePairValue_destructor(HandleStepKinematicsRollingCurvePairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRollingCurvePairValue*> HandleStepKinematicsRollingCurvePairValue_clone(const HandleStepKinematicsRollingCurvePairValue* self_) {
+    try { return {new HandleStepKinematicsRollingCurvePairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRollingSurfacePair_destructor(HandleStepKinematicsRollingSurfacePair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRollingSurfacePair*> HandleStepKinematicsRollingSurfacePair_clone(const HandleStepKinematicsRollingSurfacePair* self_) {
+    try { return {new HandleStepKinematicsRollingSurfacePair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRollingSurfacePairValue_destructor(HandleStepKinematicsRollingSurfacePairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRollingSurfacePairValue*> HandleStepKinematicsRollingSurfacePairValue_clone(const HandleStepKinematicsRollingSurfacePairValue* self_) {
+    try { return {new HandleStepKinematicsRollingSurfacePairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsRotationAboutDirection_destructor(HandleStepKinematicsRotationAboutDirection* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsRotationAboutDirection*> HandleStepKinematicsRotationAboutDirection_clone(const HandleStepKinematicsRotationAboutDirection* self_) {
+    try { return {new HandleStepKinematicsRotationAboutDirection(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsScrewPair_destructor(HandleStepKinematicsScrewPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsScrewPair*> HandleStepKinematicsScrewPair_clone(const HandleStepKinematicsScrewPair* self_) {
+    try { return {new HandleStepKinematicsScrewPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsScrewPairValue_destructor(HandleStepKinematicsScrewPairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsScrewPairValue*> HandleStepKinematicsScrewPairValue_clone(const HandleStepKinematicsScrewPairValue* self_) {
+    try { return {new HandleStepKinematicsScrewPairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsScrewPairWithRange_destructor(HandleStepKinematicsScrewPairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsScrewPairWithRange*> HandleStepKinematicsScrewPairWithRange_clone(const HandleStepKinematicsScrewPairWithRange* self_) {
+    try { return {new HandleStepKinematicsScrewPairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsSlidingCurvePair_destructor(HandleStepKinematicsSlidingCurvePair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsSlidingCurvePair*> HandleStepKinematicsSlidingCurvePair_clone(const HandleStepKinematicsSlidingCurvePair* self_) {
+    try { return {new HandleStepKinematicsSlidingCurvePair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsSlidingCurvePairValue_destructor(HandleStepKinematicsSlidingCurvePairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsSlidingCurvePairValue*> HandleStepKinematicsSlidingCurvePairValue_clone(const HandleStepKinematicsSlidingCurvePairValue* self_) {
+    try { return {new HandleStepKinematicsSlidingCurvePairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsSlidingSurfacePair_destructor(HandleStepKinematicsSlidingSurfacePair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsSlidingSurfacePair*> HandleStepKinematicsSlidingSurfacePair_clone(const HandleStepKinematicsSlidingSurfacePair* self_) {
+    try { return {new HandleStepKinematicsSlidingSurfacePair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsSlidingSurfacePairValue_destructor(HandleStepKinematicsSlidingSurfacePairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsSlidingSurfacePairValue*> HandleStepKinematicsSlidingSurfacePairValue_clone(const HandleStepKinematicsSlidingSurfacePairValue* self_) {
+    try { return {new HandleStepKinematicsSlidingSurfacePairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsSphericalPair_destructor(HandleStepKinematicsSphericalPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsSphericalPair*> HandleStepKinematicsSphericalPair_clone(const HandleStepKinematicsSphericalPair* self_) {
+    try { return {new HandleStepKinematicsSphericalPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsSphericalPairValue_destructor(HandleStepKinematicsSphericalPairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsSphericalPairValue*> HandleStepKinematicsSphericalPairValue_clone(const HandleStepKinematicsSphericalPairValue* self_) {
+    try { return {new HandleStepKinematicsSphericalPairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsSphericalPairWithPin_destructor(HandleStepKinematicsSphericalPairWithPin* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsSphericalPairWithPin*> HandleStepKinematicsSphericalPairWithPin_clone(const HandleStepKinematicsSphericalPairWithPin* self_) {
+    try { return {new HandleStepKinematicsSphericalPairWithPin(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsSphericalPairWithPinAndRange_destructor(HandleStepKinematicsSphericalPairWithPinAndRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsSphericalPairWithPinAndRange*> HandleStepKinematicsSphericalPairWithPinAndRange_clone(const HandleStepKinematicsSphericalPairWithPinAndRange* self_) {
+    try { return {new HandleStepKinematicsSphericalPairWithPinAndRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsSphericalPairWithRange_destructor(HandleStepKinematicsSphericalPairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsSphericalPairWithRange*> HandleStepKinematicsSphericalPairWithRange_clone(const HandleStepKinematicsSphericalPairWithRange* self_) {
+    try { return {new HandleStepKinematicsSphericalPairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsSurfacePair_destructor(HandleStepKinematicsSurfacePair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsSurfacePair*> HandleStepKinematicsSurfacePair_clone(const HandleStepKinematicsSurfacePair* self_) {
+    try { return {new HandleStepKinematicsSurfacePair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsSurfacePairWithRange_destructor(HandleStepKinematicsSurfacePairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsSurfacePairWithRange*> HandleStepKinematicsSurfacePairWithRange_clone(const HandleStepKinematicsSurfacePairWithRange* self_) {
+    try { return {new HandleStepKinematicsSurfacePairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsUnconstrainedPair_destructor(HandleStepKinematicsUnconstrainedPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsUnconstrainedPair*> HandleStepKinematicsUnconstrainedPair_clone(const HandleStepKinematicsUnconstrainedPair* self_) {
+    try { return {new HandleStepKinematicsUnconstrainedPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsUnconstrainedPairValue_destructor(HandleStepKinematicsUnconstrainedPairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsUnconstrainedPairValue*> HandleStepKinematicsUnconstrainedPairValue_clone(const HandleStepKinematicsUnconstrainedPairValue* self_) {
+    try { return {new HandleStepKinematicsUnconstrainedPairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsUniversalPair_destructor(HandleStepKinematicsUniversalPair* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsUniversalPair*> HandleStepKinematicsUniversalPair_clone(const HandleStepKinematicsUniversalPair* self_) {
+    try { return {new HandleStepKinematicsUniversalPair(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsUniversalPairValue_destructor(HandleStepKinematicsUniversalPairValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsUniversalPairValue*> HandleStepKinematicsUniversalPairValue_clone(const HandleStepKinematicsUniversalPairValue* self_) {
+    try { return {new HandleStepKinematicsUniversalPairValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepKinematicsUniversalPairWithRange_destructor(HandleStepKinematicsUniversalPairWithRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepKinematicsUniversalPairWithRange*> HandleStepKinematicsUniversalPairWithRange_clone(const HandleStepKinematicsUniversalPairWithRange* self_) {
+    try { return {new HandleStepKinematicsUniversalPairWithRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprAllAroundShapeAspect_destructor(HandleStepReprAllAroundShapeAspect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprAllAroundShapeAspect*> HandleStepReprAllAroundShapeAspect_clone(const HandleStepReprAllAroundShapeAspect* self_) {
+    try { return {new HandleStepReprAllAroundShapeAspect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprApex_destructor(HandleStepReprApex* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprApex*> HandleStepReprApex_clone(const HandleStepReprApex* self_) {
+    try { return {new HandleStepReprApex(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprAssemblyComponentUsage_destructor(HandleStepReprAssemblyComponentUsage* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprAssemblyComponentUsage*> HandleStepReprAssemblyComponentUsage_clone(const HandleStepReprAssemblyComponentUsage* self_) {
+    try { return {new HandleStepReprAssemblyComponentUsage(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprAssemblyComponentUsageSubstitute_destructor(HandleStepReprAssemblyComponentUsageSubstitute* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprAssemblyComponentUsageSubstitute*> HandleStepReprAssemblyComponentUsageSubstitute_clone(const HandleStepReprAssemblyComponentUsageSubstitute* self_) {
+    try { return {new HandleStepReprAssemblyComponentUsageSubstitute(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprBetweenShapeAspect_destructor(HandleStepReprBetweenShapeAspect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprBetweenShapeAspect*> HandleStepReprBetweenShapeAspect_clone(const HandleStepReprBetweenShapeAspect* self_) {
+    try { return {new HandleStepReprBetweenShapeAspect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprBooleanRepresentationItem_destructor(HandleStepReprBooleanRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprBooleanRepresentationItem*> HandleStepReprBooleanRepresentationItem_clone(const HandleStepReprBooleanRepresentationItem* self_) {
+    try { return {new HandleStepReprBooleanRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprCentreOfSymmetry_destructor(HandleStepReprCentreOfSymmetry* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprCentreOfSymmetry*> HandleStepReprCentreOfSymmetry_clone(const HandleStepReprCentreOfSymmetry* self_) {
+    try { return {new HandleStepReprCentreOfSymmetry(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprCharacterizedRepresentation_destructor(HandleStepReprCharacterizedRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprCharacterizedRepresentation*> HandleStepReprCharacterizedRepresentation_clone(const HandleStepReprCharacterizedRepresentation* self_) {
+    try { return {new HandleStepReprCharacterizedRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp_destructor(HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp*> HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp_clone(const HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp* self_) {
+    try { return {new HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprCompShAspAndDatumFeatAndShAsp_destructor(HandleStepReprCompShAspAndDatumFeatAndShAsp* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprCompShAspAndDatumFeatAndShAsp*> HandleStepReprCompShAspAndDatumFeatAndShAsp_clone(const HandleStepReprCompShAspAndDatumFeatAndShAsp* self_) {
+    try { return {new HandleStepReprCompShAspAndDatumFeatAndShAsp(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprCompositeGroupShapeAspect_destructor(HandleStepReprCompositeGroupShapeAspect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprCompositeGroupShapeAspect*> HandleStepReprCompositeGroupShapeAspect_clone(const HandleStepReprCompositeGroupShapeAspect* self_) {
+    try { return {new HandleStepReprCompositeGroupShapeAspect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprCompositeShapeAspect_destructor(HandleStepReprCompositeShapeAspect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprCompositeShapeAspect*> HandleStepReprCompositeShapeAspect_clone(const HandleStepReprCompositeShapeAspect* self_) {
+    try { return {new HandleStepReprCompositeShapeAspect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprCompoundRepresentationItem_destructor(HandleStepReprCompoundRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprCompoundRepresentationItem*> HandleStepReprCompoundRepresentationItem_clone(const HandleStepReprCompoundRepresentationItem* self_) {
+    try { return {new HandleStepReprCompoundRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprConfigurationDesign_destructor(HandleStepReprConfigurationDesign* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprConfigurationDesign*> HandleStepReprConfigurationDesign_clone(const HandleStepReprConfigurationDesign* self_) {
+    try { return {new HandleStepReprConfigurationDesign(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprConfigurationEffectivity_destructor(HandleStepReprConfigurationEffectivity* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprConfigurationEffectivity*> HandleStepReprConfigurationEffectivity_clone(const HandleStepReprConfigurationEffectivity* self_) {
+    try { return {new HandleStepReprConfigurationEffectivity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprConfigurationItem_destructor(HandleStepReprConfigurationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprConfigurationItem*> HandleStepReprConfigurationItem_clone(const HandleStepReprConfigurationItem* self_) {
+    try { return {new HandleStepReprConfigurationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprConstructiveGeometryRepresentation_destructor(HandleStepReprConstructiveGeometryRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprConstructiveGeometryRepresentation*> HandleStepReprConstructiveGeometryRepresentation_clone(const HandleStepReprConstructiveGeometryRepresentation* self_) {
+    try { return {new HandleStepReprConstructiveGeometryRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprConstructiveGeometryRepresentationRelationship_destructor(HandleStepReprConstructiveGeometryRepresentationRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprConstructiveGeometryRepresentationRelationship*> HandleStepReprConstructiveGeometryRepresentationRelationship_clone(const HandleStepReprConstructiveGeometryRepresentationRelationship* self_) {
+    try { return {new HandleStepReprConstructiveGeometryRepresentationRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprContinuosShapeAspect_destructor(HandleStepReprContinuosShapeAspect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprContinuosShapeAspect*> HandleStepReprContinuosShapeAspect_clone(const HandleStepReprContinuosShapeAspect* self_) {
+    try { return {new HandleStepReprContinuosShapeAspect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprDataEnvironment_destructor(HandleStepReprDataEnvironment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprDataEnvironment*> HandleStepReprDataEnvironment_clone(const HandleStepReprDataEnvironment* self_) {
+    try { return {new HandleStepReprDataEnvironment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprDefinitionalRepresentation_destructor(HandleStepReprDefinitionalRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprDefinitionalRepresentation*> HandleStepReprDefinitionalRepresentation_clone(const HandleStepReprDefinitionalRepresentation* self_) {
+    try { return {new HandleStepReprDefinitionalRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprDerivedShapeAspect_destructor(HandleStepReprDerivedShapeAspect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprDerivedShapeAspect*> HandleStepReprDerivedShapeAspect_clone(const HandleStepReprDerivedShapeAspect* self_) {
+    try { return {new HandleStepReprDerivedShapeAspect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprDescriptiveRepresentationItem_destructor(HandleStepReprDescriptiveRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprDescriptiveRepresentationItem*> HandleStepReprDescriptiveRepresentationItem_clone(const HandleStepReprDescriptiveRepresentationItem* self_) {
+    try { return {new HandleStepReprDescriptiveRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprExtension_destructor(HandleStepReprExtension* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprExtension*> HandleStepReprExtension_clone(const HandleStepReprExtension* self_) {
+    try { return {new HandleStepReprExtension(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprExternallyDefinedRepresentation_destructor(HandleStepReprExternallyDefinedRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprExternallyDefinedRepresentation*> HandleStepReprExternallyDefinedRepresentation_clone(const HandleStepReprExternallyDefinedRepresentation* self_) {
+    try { return {new HandleStepReprExternallyDefinedRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprFeatureForDatumTargetRelationship_destructor(HandleStepReprFeatureForDatumTargetRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprFeatureForDatumTargetRelationship*> HandleStepReprFeatureForDatumTargetRelationship_clone(const HandleStepReprFeatureForDatumTargetRelationship* self_) {
+    try { return {new HandleStepReprFeatureForDatumTargetRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprFunctionallyDefinedTransformation_destructor(HandleStepReprFunctionallyDefinedTransformation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprFunctionallyDefinedTransformation*> HandleStepReprFunctionallyDefinedTransformation_clone(const HandleStepReprFunctionallyDefinedTransformation* self_) {
+    try { return {new HandleStepReprFunctionallyDefinedTransformation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprGeometricAlignment_destructor(HandleStepReprGeometricAlignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprGeometricAlignment*> HandleStepReprGeometricAlignment_clone(const HandleStepReprGeometricAlignment* self_) {
+    try { return {new HandleStepReprGeometricAlignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprGlobalUncertaintyAssignedContext_destructor(HandleStepReprGlobalUncertaintyAssignedContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprGlobalUncertaintyAssignedContext*> HandleStepReprGlobalUncertaintyAssignedContext_clone(const HandleStepReprGlobalUncertaintyAssignedContext* self_) {
+    try { return {new HandleStepReprGlobalUncertaintyAssignedContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprGlobalUnitAssignedContext_destructor(HandleStepReprGlobalUnitAssignedContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprGlobalUnitAssignedContext*> HandleStepReprGlobalUnitAssignedContext_clone(const HandleStepReprGlobalUnitAssignedContext* self_) {
+    try { return {new HandleStepReprGlobalUnitAssignedContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprHArray1OfMaterialPropertyRepresentation_destructor(HandleStepReprHArray1OfMaterialPropertyRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprHArray1OfMaterialPropertyRepresentation*> HandleStepReprHArray1OfMaterialPropertyRepresentation_clone(const HandleStepReprHArray1OfMaterialPropertyRepresentation* self_) {
+    try { return {new HandleStepReprHArray1OfMaterialPropertyRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprHArray1OfPropertyDefinitionRepresentation_destructor(HandleStepReprHArray1OfPropertyDefinitionRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprHArray1OfPropertyDefinitionRepresentation*> HandleStepReprHArray1OfPropertyDefinitionRepresentation_clone(const HandleStepReprHArray1OfPropertyDefinitionRepresentation* self_) {
+    try { return {new HandleStepReprHArray1OfPropertyDefinitionRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprHArray1OfRepresentationItem_destructor(HandleStepReprHArray1OfRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprHArray1OfRepresentationItem*> HandleStepReprHArray1OfRepresentationItem_clone(const HandleStepReprHArray1OfRepresentationItem* self_) {
+    try { return {new HandleStepReprHArray1OfRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprHArray1OfShapeAspect_destructor(HandleStepReprHArray1OfShapeAspect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprHArray1OfShapeAspect*> HandleStepReprHArray1OfShapeAspect_clone(const HandleStepReprHArray1OfShapeAspect* self_) {
+    try { return {new HandleStepReprHArray1OfShapeAspect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprHSequenceOfMaterialPropertyRepresentation_destructor(HandleStepReprHSequenceOfMaterialPropertyRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprHSequenceOfMaterialPropertyRepresentation*> HandleStepReprHSequenceOfMaterialPropertyRepresentation_clone(const HandleStepReprHSequenceOfMaterialPropertyRepresentation* self_) {
+    try { return {new HandleStepReprHSequenceOfMaterialPropertyRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprHSequenceOfRepresentationItem_destructor(HandleStepReprHSequenceOfRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprHSequenceOfRepresentationItem*> HandleStepReprHSequenceOfRepresentationItem_clone(const HandleStepReprHSequenceOfRepresentationItem* self_) {
+    try { return {new HandleStepReprHSequenceOfRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprIntegerRepresentationItem_destructor(HandleStepReprIntegerRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprIntegerRepresentationItem*> HandleStepReprIntegerRepresentationItem_clone(const HandleStepReprIntegerRepresentationItem* self_) {
+    try { return {new HandleStepReprIntegerRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprItemDefinedTransformation_destructor(HandleStepReprItemDefinedTransformation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprItemDefinedTransformation*> HandleStepReprItemDefinedTransformation_clone(const HandleStepReprItemDefinedTransformation* self_) {
+    try { return {new HandleStepReprItemDefinedTransformation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprMakeFromUsageOption_destructor(HandleStepReprMakeFromUsageOption* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprMakeFromUsageOption*> HandleStepReprMakeFromUsageOption_clone(const HandleStepReprMakeFromUsageOption* self_) {
+    try { return {new HandleStepReprMakeFromUsageOption(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprMappedItem_destructor(HandleStepReprMappedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprMappedItem*> HandleStepReprMappedItem_clone(const HandleStepReprMappedItem* self_) {
+    try { return {new HandleStepReprMappedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprMaterialDesignation_destructor(HandleStepReprMaterialDesignation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprMaterialDesignation*> HandleStepReprMaterialDesignation_clone(const HandleStepReprMaterialDesignation* self_) {
+    try { return {new HandleStepReprMaterialDesignation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprMaterialProperty_destructor(HandleStepReprMaterialProperty* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprMaterialProperty*> HandleStepReprMaterialProperty_clone(const HandleStepReprMaterialProperty* self_) {
+    try { return {new HandleStepReprMaterialProperty(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprMaterialPropertyRepresentation_destructor(HandleStepReprMaterialPropertyRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprMaterialPropertyRepresentation*> HandleStepReprMaterialPropertyRepresentation_clone(const HandleStepReprMaterialPropertyRepresentation* self_) {
+    try { return {new HandleStepReprMaterialPropertyRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprMeasureRepresentationItem_destructor(HandleStepReprMeasureRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprMeasureRepresentationItem*> HandleStepReprMeasureRepresentationItem_clone(const HandleStepReprMeasureRepresentationItem* self_) {
+    try { return {new HandleStepReprMeasureRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprMechanicalDesignAndDraughtingRelationship_destructor(HandleStepReprMechanicalDesignAndDraughtingRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprMechanicalDesignAndDraughtingRelationship*> HandleStepReprMechanicalDesignAndDraughtingRelationship_clone(const HandleStepReprMechanicalDesignAndDraughtingRelationship* self_) {
+    try { return {new HandleStepReprMechanicalDesignAndDraughtingRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprNextAssemblyUsageOccurrence_destructor(HandleStepReprNextAssemblyUsageOccurrence* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprNextAssemblyUsageOccurrence*> HandleStepReprNextAssemblyUsageOccurrence_clone(const HandleStepReprNextAssemblyUsageOccurrence* self_) {
+    try { return {new HandleStepReprNextAssemblyUsageOccurrence(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprParallelOffset_destructor(HandleStepReprParallelOffset* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprParallelOffset*> HandleStepReprParallelOffset_clone(const HandleStepReprParallelOffset* self_) {
+    try { return {new HandleStepReprParallelOffset(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprParametricRepresentationContext_destructor(HandleStepReprParametricRepresentationContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprParametricRepresentationContext*> HandleStepReprParametricRepresentationContext_clone(const HandleStepReprParametricRepresentationContext* self_) {
+    try { return {new HandleStepReprParametricRepresentationContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprPerpendicularTo_destructor(HandleStepReprPerpendicularTo* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprPerpendicularTo*> HandleStepReprPerpendicularTo_clone(const HandleStepReprPerpendicularTo* self_) {
+    try { return {new HandleStepReprPerpendicularTo(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprProductConcept_destructor(HandleStepReprProductConcept* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprProductConcept*> HandleStepReprProductConcept_clone(const HandleStepReprProductConcept* self_) {
+    try { return {new HandleStepReprProductConcept(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprProductDefinitionShape_destructor(HandleStepReprProductDefinitionShape* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprProductDefinitionShape*> HandleStepReprProductDefinitionShape_clone(const HandleStepReprProductDefinitionShape* self_) {
+    try { return {new HandleStepReprProductDefinitionShape(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprProductDefinitionUsage_destructor(HandleStepReprProductDefinitionUsage* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprProductDefinitionUsage*> HandleStepReprProductDefinitionUsage_clone(const HandleStepReprProductDefinitionUsage* self_) {
+    try { return {new HandleStepReprProductDefinitionUsage(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprPromissoryUsageOccurrence_destructor(HandleStepReprPromissoryUsageOccurrence* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprPromissoryUsageOccurrence*> HandleStepReprPromissoryUsageOccurrence_clone(const HandleStepReprPromissoryUsageOccurrence* self_) {
+    try { return {new HandleStepReprPromissoryUsageOccurrence(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprPropertyDefinition_destructor(HandleStepReprPropertyDefinition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprPropertyDefinition*> HandleStepReprPropertyDefinition_clone(const HandleStepReprPropertyDefinition* self_) {
+    try { return {new HandleStepReprPropertyDefinition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprPropertyDefinitionRelationship_destructor(HandleStepReprPropertyDefinitionRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprPropertyDefinitionRelationship*> HandleStepReprPropertyDefinitionRelationship_clone(const HandleStepReprPropertyDefinitionRelationship* self_) {
+    try { return {new HandleStepReprPropertyDefinitionRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprPropertyDefinitionRepresentation_destructor(HandleStepReprPropertyDefinitionRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprPropertyDefinitionRepresentation*> HandleStepReprPropertyDefinitionRepresentation_clone(const HandleStepReprPropertyDefinitionRepresentation* self_) {
+    try { return {new HandleStepReprPropertyDefinitionRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprQuantifiedAssemblyComponentUsage_destructor(HandleStepReprQuantifiedAssemblyComponentUsage* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprQuantifiedAssemblyComponentUsage*> HandleStepReprQuantifiedAssemblyComponentUsage_clone(const HandleStepReprQuantifiedAssemblyComponentUsage* self_) {
+    try { return {new HandleStepReprQuantifiedAssemblyComponentUsage(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprRealRepresentationItem_destructor(HandleStepReprRealRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprRealRepresentationItem*> HandleStepReprRealRepresentationItem_clone(const HandleStepReprRealRepresentationItem* self_) {
+    try { return {new HandleStepReprRealRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprReprItemAndLengthMeasureWithUnit_destructor(HandleStepReprReprItemAndLengthMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprReprItemAndLengthMeasureWithUnit*> HandleStepReprReprItemAndLengthMeasureWithUnit_clone(const HandleStepReprReprItemAndLengthMeasureWithUnit* self_) {
+    try { return {new HandleStepReprReprItemAndLengthMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI_destructor(HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI*> HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI_clone(const HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI* self_) {
+    try { return {new HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprReprItemAndMeasureWithUnit_destructor(HandleStepReprReprItemAndMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprReprItemAndMeasureWithUnit*> HandleStepReprReprItemAndMeasureWithUnit_clone(const HandleStepReprReprItemAndMeasureWithUnit* self_) {
+    try { return {new HandleStepReprReprItemAndMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprReprItemAndMeasureWithUnitAndQRI_destructor(HandleStepReprReprItemAndMeasureWithUnitAndQRI* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprReprItemAndMeasureWithUnitAndQRI*> HandleStepReprReprItemAndMeasureWithUnitAndQRI_clone(const HandleStepReprReprItemAndMeasureWithUnitAndQRI* self_) {
+    try { return {new HandleStepReprReprItemAndMeasureWithUnitAndQRI(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprReprItemAndPlaneAngleMeasureWithUnit_destructor(HandleStepReprReprItemAndPlaneAngleMeasureWithUnit* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprReprItemAndPlaneAngleMeasureWithUnit*> HandleStepReprReprItemAndPlaneAngleMeasureWithUnit_clone(const HandleStepReprReprItemAndPlaneAngleMeasureWithUnit* self_) {
+    try { return {new HandleStepReprReprItemAndPlaneAngleMeasureWithUnit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI_destructor(HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI*> HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI_clone(const HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI* self_) {
+    try { return {new HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprRepresentation_destructor(HandleStepReprRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprRepresentation*> HandleStepReprRepresentation_clone(const HandleStepReprRepresentation* self_) {
+    try { return {new HandleStepReprRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprRepresentationContext_destructor(HandleStepReprRepresentationContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprRepresentationContext*> HandleStepReprRepresentationContext_clone(const HandleStepReprRepresentationContext* self_) {
+    try { return {new HandleStepReprRepresentationContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprRepresentationContextReference_destructor(HandleStepReprRepresentationContextReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprRepresentationContextReference*> HandleStepReprRepresentationContextReference_clone(const HandleStepReprRepresentationContextReference* self_) {
+    try { return {new HandleStepReprRepresentationContextReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprRepresentationItem_destructor(HandleStepReprRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprRepresentationItem*> HandleStepReprRepresentationItem_clone(const HandleStepReprRepresentationItem* self_) {
+    try { return {new HandleStepReprRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprRepresentationMap_destructor(HandleStepReprRepresentationMap* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprRepresentationMap*> HandleStepReprRepresentationMap_clone(const HandleStepReprRepresentationMap* self_) {
+    try { return {new HandleStepReprRepresentationMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprRepresentationReference_destructor(HandleStepReprRepresentationReference* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprRepresentationReference*> HandleStepReprRepresentationReference_clone(const HandleStepReprRepresentationReference* self_) {
+    try { return {new HandleStepReprRepresentationReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprRepresentationRelationship_destructor(HandleStepReprRepresentationRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprRepresentationRelationship*> HandleStepReprRepresentationRelationship_clone(const HandleStepReprRepresentationRelationship* self_) {
+    try { return {new HandleStepReprRepresentationRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprRepresentationRelationshipWithTransformation_destructor(HandleStepReprRepresentationRelationshipWithTransformation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprRepresentationRelationshipWithTransformation*> HandleStepReprRepresentationRelationshipWithTransformation_clone(const HandleStepReprRepresentationRelationshipWithTransformation* self_) {
+    try { return {new HandleStepReprRepresentationRelationshipWithTransformation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprShapeAspect_destructor(HandleStepReprShapeAspect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprShapeAspect*> HandleStepReprShapeAspect_clone(const HandleStepReprShapeAspect* self_) {
+    try { return {new HandleStepReprShapeAspect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprShapeAspectDerivingRelationship_destructor(HandleStepReprShapeAspectDerivingRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprShapeAspectDerivingRelationship*> HandleStepReprShapeAspectDerivingRelationship_clone(const HandleStepReprShapeAspectDerivingRelationship* self_) {
+    try { return {new HandleStepReprShapeAspectDerivingRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprShapeAspectRelationship_destructor(HandleStepReprShapeAspectRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprShapeAspectRelationship*> HandleStepReprShapeAspectRelationship_clone(const HandleStepReprShapeAspectRelationship* self_) {
+    try { return {new HandleStepReprShapeAspectRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprShapeAspectTransition_destructor(HandleStepReprShapeAspectTransition* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprShapeAspectTransition*> HandleStepReprShapeAspectTransition_clone(const HandleStepReprShapeAspectTransition* self_) {
+    try { return {new HandleStepReprShapeAspectTransition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprShapeRepresentationRelationship_destructor(HandleStepReprShapeRepresentationRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprShapeRepresentationRelationship*> HandleStepReprShapeRepresentationRelationship_clone(const HandleStepReprShapeRepresentationRelationship* self_) {
+    try { return {new HandleStepReprShapeRepresentationRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprShapeRepresentationRelationshipWithTransformation_destructor(HandleStepReprShapeRepresentationRelationshipWithTransformation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprShapeRepresentationRelationshipWithTransformation*> HandleStepReprShapeRepresentationRelationshipWithTransformation_clone(const HandleStepReprShapeRepresentationRelationshipWithTransformation* self_) {
+    try { return {new HandleStepReprShapeRepresentationRelationshipWithTransformation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprSpecifiedHigherUsageOccurrence_destructor(HandleStepReprSpecifiedHigherUsageOccurrence* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprSpecifiedHigherUsageOccurrence*> HandleStepReprSpecifiedHigherUsageOccurrence_clone(const HandleStepReprSpecifiedHigherUsageOccurrence* self_) {
+    try { return {new HandleStepReprSpecifiedHigherUsageOccurrence(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprStructuralResponseProperty_destructor(HandleStepReprStructuralResponseProperty* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprStructuralResponseProperty*> HandleStepReprStructuralResponseProperty_clone(const HandleStepReprStructuralResponseProperty* self_) {
+    try { return {new HandleStepReprStructuralResponseProperty(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprStructuralResponsePropertyDefinitionRepresentation_destructor(HandleStepReprStructuralResponsePropertyDefinitionRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprStructuralResponsePropertyDefinitionRepresentation*> HandleStepReprStructuralResponsePropertyDefinitionRepresentation_clone(const HandleStepReprStructuralResponsePropertyDefinitionRepresentation* self_) {
+    try { return {new HandleStepReprStructuralResponsePropertyDefinitionRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprSuppliedPartRelationship_destructor(HandleStepReprSuppliedPartRelationship* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprSuppliedPartRelationship*> HandleStepReprSuppliedPartRelationship_clone(const HandleStepReprSuppliedPartRelationship* self_) {
+    try { return {new HandleStepReprSuppliedPartRelationship(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprTangent_destructor(HandleStepReprTangent* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprTangent*> HandleStepReprTangent_clone(const HandleStepReprTangent* self_) {
+    try { return {new HandleStepReprTangent(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprValueRange_destructor(HandleStepReprValueRange* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprValueRange*> HandleStepReprValueRange_clone(const HandleStepReprValueRange* self_) {
+    try { return {new HandleStepReprValueRange(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepReprValueRepresentationItem_destructor(HandleStepReprValueRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepReprValueRepresentationItem*> HandleStepReprValueRepresentationItem_clone(const HandleStepReprValueRepresentationItem* self_) {
+    try { return {new HandleStepReprValueRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepSelectActivator_destructor(HandleStepSelectActivator* self_) { delete self_; }
+extern "C" OcctResult<HandleStepSelectActivator*> HandleStepSelectActivator_clone(const HandleStepSelectActivator* self_) {
+    try { return {new HandleStepSelectActivator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepSelectFileModifier_destructor(HandleStepSelectFileModifier* self_) { delete self_; }
+extern "C" OcctResult<HandleStepSelectFileModifier*> HandleStepSelectFileModifier_clone(const HandleStepSelectFileModifier* self_) {
+    try { return {new HandleStepSelectFileModifier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepSelectFloatFormat_destructor(HandleStepSelectFloatFormat* self_) { delete self_; }
+extern "C" OcctResult<HandleStepSelectFloatFormat*> HandleStepSelectFloatFormat_clone(const HandleStepSelectFloatFormat* self_) {
+    try { return {new HandleStepSelectFloatFormat(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepSelectModelModifier_destructor(HandleStepSelectModelModifier* self_) { delete self_; }
+extern "C" OcctResult<HandleStepSelectModelModifier*> HandleStepSelectModelModifier_clone(const HandleStepSelectModelModifier* self_) {
+    try { return {new HandleStepSelectModelModifier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepSelectStepType_destructor(HandleStepSelectStepType* self_) { delete self_; }
+extern "C" OcctResult<HandleStepSelectStepType*> HandleStepSelectStepType_clone(const HandleStepSelectStepType* self_) {
+    try { return {new HandleStepSelectStepType(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepSelectWorkLibrary_destructor(HandleStepSelectWorkLibrary* self_) { delete self_; }
+extern "C" OcctResult<HandleStepSelectWorkLibrary*> HandleStepSelectWorkLibrary_clone(const HandleStepSelectWorkLibrary* self_) {
+    try { return {new HandleStepSelectWorkLibrary(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeAdvancedBrepShapeRepresentation_destructor(HandleStepShapeAdvancedBrepShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeAdvancedBrepShapeRepresentation*> HandleStepShapeAdvancedBrepShapeRepresentation_clone(const HandleStepShapeAdvancedBrepShapeRepresentation* self_) {
+    try { return {new HandleStepShapeAdvancedBrepShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeAdvancedFace_destructor(HandleStepShapeAdvancedFace* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeAdvancedFace*> HandleStepShapeAdvancedFace_clone(const HandleStepShapeAdvancedFace* self_) {
+    try { return {new HandleStepShapeAdvancedFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeAngularLocation_destructor(HandleStepShapeAngularLocation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeAngularLocation*> HandleStepShapeAngularLocation_clone(const HandleStepShapeAngularLocation* self_) {
+    try { return {new HandleStepShapeAngularLocation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeAngularSize_destructor(HandleStepShapeAngularSize* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeAngularSize*> HandleStepShapeAngularSize_clone(const HandleStepShapeAngularSize* self_) {
+    try { return {new HandleStepShapeAngularSize(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeBlock_destructor(HandleStepShapeBlock* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeBlock*> HandleStepShapeBlock_clone(const HandleStepShapeBlock* self_) {
+    try { return {new HandleStepShapeBlock(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeBooleanResult_destructor(HandleStepShapeBooleanResult* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeBooleanResult*> HandleStepShapeBooleanResult_clone(const HandleStepShapeBooleanResult* self_) {
+    try { return {new HandleStepShapeBooleanResult(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeBoxDomain_destructor(HandleStepShapeBoxDomain* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeBoxDomain*> HandleStepShapeBoxDomain_clone(const HandleStepShapeBoxDomain* self_) {
+    try { return {new HandleStepShapeBoxDomain(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeBoxedHalfSpace_destructor(HandleStepShapeBoxedHalfSpace* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeBoxedHalfSpace*> HandleStepShapeBoxedHalfSpace_clone(const HandleStepShapeBoxedHalfSpace* self_) {
+    try { return {new HandleStepShapeBoxedHalfSpace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeBrepWithVoids_destructor(HandleStepShapeBrepWithVoids* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeBrepWithVoids*> HandleStepShapeBrepWithVoids_clone(const HandleStepShapeBrepWithVoids* self_) {
+    try { return {new HandleStepShapeBrepWithVoids(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeClosedShell_destructor(HandleStepShapeClosedShell* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeClosedShell*> HandleStepShapeClosedShell_clone(const HandleStepShapeClosedShell* self_) {
+    try { return {new HandleStepShapeClosedShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeCompoundShapeRepresentation_destructor(HandleStepShapeCompoundShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeCompoundShapeRepresentation*> HandleStepShapeCompoundShapeRepresentation_clone(const HandleStepShapeCompoundShapeRepresentation* self_) {
+    try { return {new HandleStepShapeCompoundShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeConnectedEdgeSet_destructor(HandleStepShapeConnectedEdgeSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeConnectedEdgeSet*> HandleStepShapeConnectedEdgeSet_clone(const HandleStepShapeConnectedEdgeSet* self_) {
+    try { return {new HandleStepShapeConnectedEdgeSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeConnectedFaceSet_destructor(HandleStepShapeConnectedFaceSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeConnectedFaceSet*> HandleStepShapeConnectedFaceSet_clone(const HandleStepShapeConnectedFaceSet* self_) {
+    try { return {new HandleStepShapeConnectedFaceSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeConnectedFaceShapeRepresentation_destructor(HandleStepShapeConnectedFaceShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeConnectedFaceShapeRepresentation*> HandleStepShapeConnectedFaceShapeRepresentation_clone(const HandleStepShapeConnectedFaceShapeRepresentation* self_) {
+    try { return {new HandleStepShapeConnectedFaceShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeConnectedFaceSubSet_destructor(HandleStepShapeConnectedFaceSubSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeConnectedFaceSubSet*> HandleStepShapeConnectedFaceSubSet_clone(const HandleStepShapeConnectedFaceSubSet* self_) {
+    try { return {new HandleStepShapeConnectedFaceSubSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeContextDependentShapeRepresentation_destructor(HandleStepShapeContextDependentShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeContextDependentShapeRepresentation*> HandleStepShapeContextDependentShapeRepresentation_clone(const HandleStepShapeContextDependentShapeRepresentation* self_) {
+    try { return {new HandleStepShapeContextDependentShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeCsgShapeRepresentation_destructor(HandleStepShapeCsgShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeCsgShapeRepresentation*> HandleStepShapeCsgShapeRepresentation_clone(const HandleStepShapeCsgShapeRepresentation* self_) {
+    try { return {new HandleStepShapeCsgShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeCsgSolid_destructor(HandleStepShapeCsgSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeCsgSolid*> HandleStepShapeCsgSolid_clone(const HandleStepShapeCsgSolid* self_) {
+    try { return {new HandleStepShapeCsgSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeDefinitionalRepresentationAndShapeRepresentation_destructor(HandleStepShapeDefinitionalRepresentationAndShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeDefinitionalRepresentationAndShapeRepresentation*> HandleStepShapeDefinitionalRepresentationAndShapeRepresentation_clone(const HandleStepShapeDefinitionalRepresentationAndShapeRepresentation* self_) {
+    try { return {new HandleStepShapeDefinitionalRepresentationAndShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeDimensionalCharacteristicRepresentation_destructor(HandleStepShapeDimensionalCharacteristicRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeDimensionalCharacteristicRepresentation*> HandleStepShapeDimensionalCharacteristicRepresentation_clone(const HandleStepShapeDimensionalCharacteristicRepresentation* self_) {
+    try { return {new HandleStepShapeDimensionalCharacteristicRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeDimensionalLocation_destructor(HandleStepShapeDimensionalLocation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeDimensionalLocation*> HandleStepShapeDimensionalLocation_clone(const HandleStepShapeDimensionalLocation* self_) {
+    try { return {new HandleStepShapeDimensionalLocation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeDimensionalLocationWithPath_destructor(HandleStepShapeDimensionalLocationWithPath* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeDimensionalLocationWithPath*> HandleStepShapeDimensionalLocationWithPath_clone(const HandleStepShapeDimensionalLocationWithPath* self_) {
+    try { return {new HandleStepShapeDimensionalLocationWithPath(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeDimensionalSize_destructor(HandleStepShapeDimensionalSize* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeDimensionalSize*> HandleStepShapeDimensionalSize_clone(const HandleStepShapeDimensionalSize* self_) {
+    try { return {new HandleStepShapeDimensionalSize(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeDimensionalSizeWithPath_destructor(HandleStepShapeDimensionalSizeWithPath* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeDimensionalSizeWithPath*> HandleStepShapeDimensionalSizeWithPath_clone(const HandleStepShapeDimensionalSizeWithPath* self_) {
+    try { return {new HandleStepShapeDimensionalSizeWithPath(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeDirectedDimensionalLocation_destructor(HandleStepShapeDirectedDimensionalLocation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeDirectedDimensionalLocation*> HandleStepShapeDirectedDimensionalLocation_clone(const HandleStepShapeDirectedDimensionalLocation* self_) {
+    try { return {new HandleStepShapeDirectedDimensionalLocation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeEdge_destructor(HandleStepShapeEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeEdge*> HandleStepShapeEdge_clone(const HandleStepShapeEdge* self_) {
+    try { return {new HandleStepShapeEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeEdgeBasedWireframeModel_destructor(HandleStepShapeEdgeBasedWireframeModel* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeEdgeBasedWireframeModel*> HandleStepShapeEdgeBasedWireframeModel_clone(const HandleStepShapeEdgeBasedWireframeModel* self_) {
+    try { return {new HandleStepShapeEdgeBasedWireframeModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeEdgeBasedWireframeShapeRepresentation_destructor(HandleStepShapeEdgeBasedWireframeShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeEdgeBasedWireframeShapeRepresentation*> HandleStepShapeEdgeBasedWireframeShapeRepresentation_clone(const HandleStepShapeEdgeBasedWireframeShapeRepresentation* self_) {
+    try { return {new HandleStepShapeEdgeBasedWireframeShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeEdgeCurve_destructor(HandleStepShapeEdgeCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeEdgeCurve*> HandleStepShapeEdgeCurve_clone(const HandleStepShapeEdgeCurve* self_) {
+    try { return {new HandleStepShapeEdgeCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeEdgeLoop_destructor(HandleStepShapeEdgeLoop* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeEdgeLoop*> HandleStepShapeEdgeLoop_clone(const HandleStepShapeEdgeLoop* self_) {
+    try { return {new HandleStepShapeEdgeLoop(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeExtrudedAreaSolid_destructor(HandleStepShapeExtrudedAreaSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeExtrudedAreaSolid*> HandleStepShapeExtrudedAreaSolid_clone(const HandleStepShapeExtrudedAreaSolid* self_) {
+    try { return {new HandleStepShapeExtrudedAreaSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeExtrudedFaceSolid_destructor(HandleStepShapeExtrudedFaceSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeExtrudedFaceSolid*> HandleStepShapeExtrudedFaceSolid_clone(const HandleStepShapeExtrudedFaceSolid* self_) {
+    try { return {new HandleStepShapeExtrudedFaceSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeFace_destructor(HandleStepShapeFace* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeFace*> HandleStepShapeFace_clone(const HandleStepShapeFace* self_) {
+    try { return {new HandleStepShapeFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeFaceBasedSurfaceModel_destructor(HandleStepShapeFaceBasedSurfaceModel* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeFaceBasedSurfaceModel*> HandleStepShapeFaceBasedSurfaceModel_clone(const HandleStepShapeFaceBasedSurfaceModel* self_) {
+    try { return {new HandleStepShapeFaceBasedSurfaceModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeFaceBound_destructor(HandleStepShapeFaceBound* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeFaceBound*> HandleStepShapeFaceBound_clone(const HandleStepShapeFaceBound* self_) {
+    try { return {new HandleStepShapeFaceBound(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeFaceOuterBound_destructor(HandleStepShapeFaceOuterBound* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeFaceOuterBound*> HandleStepShapeFaceOuterBound_clone(const HandleStepShapeFaceOuterBound* self_) {
+    try { return {new HandleStepShapeFaceOuterBound(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeFaceSurface_destructor(HandleStepShapeFaceSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeFaceSurface*> HandleStepShapeFaceSurface_clone(const HandleStepShapeFaceSurface* self_) {
+    try { return {new HandleStepShapeFaceSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeFacetedBrep_destructor(HandleStepShapeFacetedBrep* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeFacetedBrep*> HandleStepShapeFacetedBrep_clone(const HandleStepShapeFacetedBrep* self_) {
+    try { return {new HandleStepShapeFacetedBrep(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeFacetedBrepAndBrepWithVoids_destructor(HandleStepShapeFacetedBrepAndBrepWithVoids* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeFacetedBrepAndBrepWithVoids*> HandleStepShapeFacetedBrepAndBrepWithVoids_clone(const HandleStepShapeFacetedBrepAndBrepWithVoids* self_) {
+    try { return {new HandleStepShapeFacetedBrepAndBrepWithVoids(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeFacetedBrepShapeRepresentation_destructor(HandleStepShapeFacetedBrepShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeFacetedBrepShapeRepresentation*> HandleStepShapeFacetedBrepShapeRepresentation_clone(const HandleStepShapeFacetedBrepShapeRepresentation* self_) {
+    try { return {new HandleStepShapeFacetedBrepShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeGeometricCurveSet_destructor(HandleStepShapeGeometricCurveSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeGeometricCurveSet*> HandleStepShapeGeometricCurveSet_clone(const HandleStepShapeGeometricCurveSet* self_) {
+    try { return {new HandleStepShapeGeometricCurveSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeGeometricSet_destructor(HandleStepShapeGeometricSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeGeometricSet*> HandleStepShapeGeometricSet_clone(const HandleStepShapeGeometricSet* self_) {
+    try { return {new HandleStepShapeGeometricSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation_destructor(HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation*> HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation_clone(const HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation* self_) {
+    try { return {new HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation_destructor(HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation*> HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation_clone(const HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation* self_) {
+    try { return {new HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHArray1OfConnectedEdgeSet_destructor(HandleStepShapeHArray1OfConnectedEdgeSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHArray1OfConnectedEdgeSet*> HandleStepShapeHArray1OfConnectedEdgeSet_clone(const HandleStepShapeHArray1OfConnectedEdgeSet* self_) {
+    try { return {new HandleStepShapeHArray1OfConnectedEdgeSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHArray1OfConnectedFaceSet_destructor(HandleStepShapeHArray1OfConnectedFaceSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHArray1OfConnectedFaceSet*> HandleStepShapeHArray1OfConnectedFaceSet_clone(const HandleStepShapeHArray1OfConnectedFaceSet* self_) {
+    try { return {new HandleStepShapeHArray1OfConnectedFaceSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHArray1OfEdge_destructor(HandleStepShapeHArray1OfEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHArray1OfEdge*> HandleStepShapeHArray1OfEdge_clone(const HandleStepShapeHArray1OfEdge* self_) {
+    try { return {new HandleStepShapeHArray1OfEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHArray1OfFace_destructor(HandleStepShapeHArray1OfFace* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHArray1OfFace*> HandleStepShapeHArray1OfFace_clone(const HandleStepShapeHArray1OfFace* self_) {
+    try { return {new HandleStepShapeHArray1OfFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHArray1OfFaceBound_destructor(HandleStepShapeHArray1OfFaceBound* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHArray1OfFaceBound*> HandleStepShapeHArray1OfFaceBound_clone(const HandleStepShapeHArray1OfFaceBound* self_) {
+    try { return {new HandleStepShapeHArray1OfFaceBound(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHArray1OfGeometricSetSelect_destructor(HandleStepShapeHArray1OfGeometricSetSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHArray1OfGeometricSetSelect*> HandleStepShapeHArray1OfGeometricSetSelect_clone(const HandleStepShapeHArray1OfGeometricSetSelect* self_) {
+    try { return {new HandleStepShapeHArray1OfGeometricSetSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHArray1OfOrientedClosedShell_destructor(HandleStepShapeHArray1OfOrientedClosedShell* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHArray1OfOrientedClosedShell*> HandleStepShapeHArray1OfOrientedClosedShell_clone(const HandleStepShapeHArray1OfOrientedClosedShell* self_) {
+    try { return {new HandleStepShapeHArray1OfOrientedClosedShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHArray1OfOrientedEdge_destructor(HandleStepShapeHArray1OfOrientedEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHArray1OfOrientedEdge*> HandleStepShapeHArray1OfOrientedEdge_clone(const HandleStepShapeHArray1OfOrientedEdge* self_) {
+    try { return {new HandleStepShapeHArray1OfOrientedEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHArray1OfShapeDimensionRepresentationItem_destructor(HandleStepShapeHArray1OfShapeDimensionRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHArray1OfShapeDimensionRepresentationItem*> HandleStepShapeHArray1OfShapeDimensionRepresentationItem_clone(const HandleStepShapeHArray1OfShapeDimensionRepresentationItem* self_) {
+    try { return {new HandleStepShapeHArray1OfShapeDimensionRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHArray1OfShell_destructor(HandleStepShapeHArray1OfShell* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHArray1OfShell*> HandleStepShapeHArray1OfShell_clone(const HandleStepShapeHArray1OfShell* self_) {
+    try { return {new HandleStepShapeHArray1OfShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHArray1OfValueQualifier_destructor(HandleStepShapeHArray1OfValueQualifier* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHArray1OfValueQualifier*> HandleStepShapeHArray1OfValueQualifier_clone(const HandleStepShapeHArray1OfValueQualifier* self_) {
+    try { return {new HandleStepShapeHArray1OfValueQualifier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeHalfSpaceSolid_destructor(HandleStepShapeHalfSpaceSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeHalfSpaceSolid*> HandleStepShapeHalfSpaceSolid_clone(const HandleStepShapeHalfSpaceSolid* self_) {
+    try { return {new HandleStepShapeHalfSpaceSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeLimitsAndFits_destructor(HandleStepShapeLimitsAndFits* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeLimitsAndFits*> HandleStepShapeLimitsAndFits_clone(const HandleStepShapeLimitsAndFits* self_) {
+    try { return {new HandleStepShapeLimitsAndFits(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeLoop_destructor(HandleStepShapeLoop* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeLoop*> HandleStepShapeLoop_clone(const HandleStepShapeLoop* self_) {
+    try { return {new HandleStepShapeLoop(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeLoopAndPath_destructor(HandleStepShapeLoopAndPath* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeLoopAndPath*> HandleStepShapeLoopAndPath_clone(const HandleStepShapeLoopAndPath* self_) {
+    try { return {new HandleStepShapeLoopAndPath(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeManifoldSolidBrep_destructor(HandleStepShapeManifoldSolidBrep* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeManifoldSolidBrep*> HandleStepShapeManifoldSolidBrep_clone(const HandleStepShapeManifoldSolidBrep* self_) {
+    try { return {new HandleStepShapeManifoldSolidBrep(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeManifoldSurfaceShapeRepresentation_destructor(HandleStepShapeManifoldSurfaceShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeManifoldSurfaceShapeRepresentation*> HandleStepShapeManifoldSurfaceShapeRepresentation_clone(const HandleStepShapeManifoldSurfaceShapeRepresentation* self_) {
+    try { return {new HandleStepShapeManifoldSurfaceShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeMeasureQualification_destructor(HandleStepShapeMeasureQualification* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeMeasureQualification*> HandleStepShapeMeasureQualification_clone(const HandleStepShapeMeasureQualification* self_) {
+    try { return {new HandleStepShapeMeasureQualification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem_destructor(HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem*> HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem_clone(const HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem* self_) {
+    try { return {new HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeNonManifoldSurfaceShapeRepresentation_destructor(HandleStepShapeNonManifoldSurfaceShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeNonManifoldSurfaceShapeRepresentation*> HandleStepShapeNonManifoldSurfaceShapeRepresentation_clone(const HandleStepShapeNonManifoldSurfaceShapeRepresentation* self_) {
+    try { return {new HandleStepShapeNonManifoldSurfaceShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeOpenShell_destructor(HandleStepShapeOpenShell* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeOpenShell*> HandleStepShapeOpenShell_clone(const HandleStepShapeOpenShell* self_) {
+    try { return {new HandleStepShapeOpenShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeOrientedClosedShell_destructor(HandleStepShapeOrientedClosedShell* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeOrientedClosedShell*> HandleStepShapeOrientedClosedShell_clone(const HandleStepShapeOrientedClosedShell* self_) {
+    try { return {new HandleStepShapeOrientedClosedShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeOrientedEdge_destructor(HandleStepShapeOrientedEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeOrientedEdge*> HandleStepShapeOrientedEdge_clone(const HandleStepShapeOrientedEdge* self_) {
+    try { return {new HandleStepShapeOrientedEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeOrientedFace_destructor(HandleStepShapeOrientedFace* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeOrientedFace*> HandleStepShapeOrientedFace_clone(const HandleStepShapeOrientedFace* self_) {
+    try { return {new HandleStepShapeOrientedFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeOrientedOpenShell_destructor(HandleStepShapeOrientedOpenShell* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeOrientedOpenShell*> HandleStepShapeOrientedOpenShell_clone(const HandleStepShapeOrientedOpenShell* self_) {
+    try { return {new HandleStepShapeOrientedOpenShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeOrientedPath_destructor(HandleStepShapeOrientedPath* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeOrientedPath*> HandleStepShapeOrientedPath_clone(const HandleStepShapeOrientedPath* self_) {
+    try { return {new HandleStepShapeOrientedPath(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapePath_destructor(HandleStepShapePath* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapePath*> HandleStepShapePath_clone(const HandleStepShapePath* self_) {
+    try { return {new HandleStepShapePath(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapePlusMinusTolerance_destructor(HandleStepShapePlusMinusTolerance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapePlusMinusTolerance*> HandleStepShapePlusMinusTolerance_clone(const HandleStepShapePlusMinusTolerance* self_) {
+    try { return {new HandleStepShapePlusMinusTolerance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapePointRepresentation_destructor(HandleStepShapePointRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapePointRepresentation*> HandleStepShapePointRepresentation_clone(const HandleStepShapePointRepresentation* self_) {
+    try { return {new HandleStepShapePointRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapePolyLoop_destructor(HandleStepShapePolyLoop* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapePolyLoop*> HandleStepShapePolyLoop_clone(const HandleStepShapePolyLoop* self_) {
+    try { return {new HandleStepShapePolyLoop(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapePrecisionQualifier_destructor(HandleStepShapePrecisionQualifier* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapePrecisionQualifier*> HandleStepShapePrecisionQualifier_clone(const HandleStepShapePrecisionQualifier* self_) {
+    try { return {new HandleStepShapePrecisionQualifier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeQualifiedRepresentationItem_destructor(HandleStepShapeQualifiedRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeQualifiedRepresentationItem*> HandleStepShapeQualifiedRepresentationItem_clone(const HandleStepShapeQualifiedRepresentationItem* self_) {
+    try { return {new HandleStepShapeQualifiedRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeRevolvedAreaSolid_destructor(HandleStepShapeRevolvedAreaSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeRevolvedAreaSolid*> HandleStepShapeRevolvedAreaSolid_clone(const HandleStepShapeRevolvedAreaSolid* self_) {
+    try { return {new HandleStepShapeRevolvedAreaSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeRevolvedFaceSolid_destructor(HandleStepShapeRevolvedFaceSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeRevolvedFaceSolid*> HandleStepShapeRevolvedFaceSolid_clone(const HandleStepShapeRevolvedFaceSolid* self_) {
+    try { return {new HandleStepShapeRevolvedFaceSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeRightAngularWedge_destructor(HandleStepShapeRightAngularWedge* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeRightAngularWedge*> HandleStepShapeRightAngularWedge_clone(const HandleStepShapeRightAngularWedge* self_) {
+    try { return {new HandleStepShapeRightAngularWedge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeRightCircularCone_destructor(HandleStepShapeRightCircularCone* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeRightCircularCone*> HandleStepShapeRightCircularCone_clone(const HandleStepShapeRightCircularCone* self_) {
+    try { return {new HandleStepShapeRightCircularCone(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeRightCircularCylinder_destructor(HandleStepShapeRightCircularCylinder* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeRightCircularCylinder*> HandleStepShapeRightCircularCylinder_clone(const HandleStepShapeRightCircularCylinder* self_) {
+    try { return {new HandleStepShapeRightCircularCylinder(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeSeamEdge_destructor(HandleStepShapeSeamEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeSeamEdge*> HandleStepShapeSeamEdge_clone(const HandleStepShapeSeamEdge* self_) {
+    try { return {new HandleStepShapeSeamEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeShapeDefinitionRepresentation_destructor(HandleStepShapeShapeDefinitionRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeShapeDefinitionRepresentation*> HandleStepShapeShapeDefinitionRepresentation_clone(const HandleStepShapeShapeDefinitionRepresentation* self_) {
+    try { return {new HandleStepShapeShapeDefinitionRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeShapeDimensionRepresentation_destructor(HandleStepShapeShapeDimensionRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeShapeDimensionRepresentation*> HandleStepShapeShapeDimensionRepresentation_clone(const HandleStepShapeShapeDimensionRepresentation* self_) {
+    try { return {new HandleStepShapeShapeDimensionRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeShapeRepresentation_destructor(HandleStepShapeShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeShapeRepresentation*> HandleStepShapeShapeRepresentation_clone(const HandleStepShapeShapeRepresentation* self_) {
+    try { return {new HandleStepShapeShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeShapeRepresentationWithParameters_destructor(HandleStepShapeShapeRepresentationWithParameters* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeShapeRepresentationWithParameters*> HandleStepShapeShapeRepresentationWithParameters_clone(const HandleStepShapeShapeRepresentationWithParameters* self_) {
+    try { return {new HandleStepShapeShapeRepresentationWithParameters(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeShellBasedSurfaceModel_destructor(HandleStepShapeShellBasedSurfaceModel* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeShellBasedSurfaceModel*> HandleStepShapeShellBasedSurfaceModel_clone(const HandleStepShapeShellBasedSurfaceModel* self_) {
+    try { return {new HandleStepShapeShellBasedSurfaceModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeSolidModel_destructor(HandleStepShapeSolidModel* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeSolidModel*> HandleStepShapeSolidModel_clone(const HandleStepShapeSolidModel* self_) {
+    try { return {new HandleStepShapeSolidModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeSolidReplica_destructor(HandleStepShapeSolidReplica* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeSolidReplica*> HandleStepShapeSolidReplica_clone(const HandleStepShapeSolidReplica* self_) {
+    try { return {new HandleStepShapeSolidReplica(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeSphere_destructor(HandleStepShapeSphere* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeSphere*> HandleStepShapeSphere_clone(const HandleStepShapeSphere* self_) {
+    try { return {new HandleStepShapeSphere(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeSubedge_destructor(HandleStepShapeSubedge* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeSubedge*> HandleStepShapeSubedge_clone(const HandleStepShapeSubedge* self_) {
+    try { return {new HandleStepShapeSubedge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeSubface_destructor(HandleStepShapeSubface* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeSubface*> HandleStepShapeSubface_clone(const HandleStepShapeSubface* self_) {
+    try { return {new HandleStepShapeSubface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeSweptAreaSolid_destructor(HandleStepShapeSweptAreaSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeSweptAreaSolid*> HandleStepShapeSweptAreaSolid_clone(const HandleStepShapeSweptAreaSolid* self_) {
+    try { return {new HandleStepShapeSweptAreaSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeSweptFaceSolid_destructor(HandleStepShapeSweptFaceSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeSweptFaceSolid*> HandleStepShapeSweptFaceSolid_clone(const HandleStepShapeSweptFaceSolid* self_) {
+    try { return {new HandleStepShapeSweptFaceSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeToleranceValue_destructor(HandleStepShapeToleranceValue* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeToleranceValue*> HandleStepShapeToleranceValue_clone(const HandleStepShapeToleranceValue* self_) {
+    try { return {new HandleStepShapeToleranceValue(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeTopologicalRepresentationItem_destructor(HandleStepShapeTopologicalRepresentationItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeTopologicalRepresentationItem*> HandleStepShapeTopologicalRepresentationItem_clone(const HandleStepShapeTopologicalRepresentationItem* self_) {
+    try { return {new HandleStepShapeTopologicalRepresentationItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeTorus_destructor(HandleStepShapeTorus* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeTorus*> HandleStepShapeTorus_clone(const HandleStepShapeTorus* self_) {
+    try { return {new HandleStepShapeTorus(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeTransitionalShapeRepresentation_destructor(HandleStepShapeTransitionalShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeTransitionalShapeRepresentation*> HandleStepShapeTransitionalShapeRepresentation_clone(const HandleStepShapeTransitionalShapeRepresentation* self_) {
+    try { return {new HandleStepShapeTransitionalShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeTypeQualifier_destructor(HandleStepShapeTypeQualifier* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeTypeQualifier*> HandleStepShapeTypeQualifier_clone(const HandleStepShapeTypeQualifier* self_) {
+    try { return {new HandleStepShapeTypeQualifier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeValueFormatTypeQualifier_destructor(HandleStepShapeValueFormatTypeQualifier* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeValueFormatTypeQualifier*> HandleStepShapeValueFormatTypeQualifier_clone(const HandleStepShapeValueFormatTypeQualifier* self_) {
+    try { return {new HandleStepShapeValueFormatTypeQualifier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeVertex_destructor(HandleStepShapeVertex* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeVertex*> HandleStepShapeVertex_clone(const HandleStepShapeVertex* self_) {
+    try { return {new HandleStepShapeVertex(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeVertexLoop_destructor(HandleStepShapeVertexLoop* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeVertexLoop*> HandleStepShapeVertexLoop_clone(const HandleStepShapeVertexLoop* self_) {
+    try { return {new HandleStepShapeVertexLoop(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepShapeVertexPoint_destructor(HandleStepShapeVertexPoint* self_) { delete self_; }
+extern "C" OcctResult<HandleStepShapeVertexPoint*> HandleStepShapeVertexPoint_clone(const HandleStepShapeVertexPoint* self_) {
+    try { return {new HandleStepShapeVertexPoint(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualAnnotationCurveOccurrence_destructor(HandleStepVisualAnnotationCurveOccurrence* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualAnnotationCurveOccurrence*> HandleStepVisualAnnotationCurveOccurrence_clone(const HandleStepVisualAnnotationCurveOccurrence* self_) {
+    try { return {new HandleStepVisualAnnotationCurveOccurrence(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem_destructor(HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem*> HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem_clone(const HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem* self_) {
+    try { return {new HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualAnnotationFillArea_destructor(HandleStepVisualAnnotationFillArea* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualAnnotationFillArea*> HandleStepVisualAnnotationFillArea_clone(const HandleStepVisualAnnotationFillArea* self_) {
+    try { return {new HandleStepVisualAnnotationFillArea(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualAnnotationFillAreaOccurrence_destructor(HandleStepVisualAnnotationFillAreaOccurrence* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualAnnotationFillAreaOccurrence*> HandleStepVisualAnnotationFillAreaOccurrence_clone(const HandleStepVisualAnnotationFillAreaOccurrence* self_) {
+    try { return {new HandleStepVisualAnnotationFillAreaOccurrence(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualAnnotationOccurrence_destructor(HandleStepVisualAnnotationOccurrence* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualAnnotationOccurrence*> HandleStepVisualAnnotationOccurrence_clone(const HandleStepVisualAnnotationOccurrence* self_) {
+    try { return {new HandleStepVisualAnnotationOccurrence(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualAnnotationPlane_destructor(HandleStepVisualAnnotationPlane* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualAnnotationPlane*> HandleStepVisualAnnotationPlane_clone(const HandleStepVisualAnnotationPlane* self_) {
+    try { return {new HandleStepVisualAnnotationPlane(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualAnnotationText_destructor(HandleStepVisualAnnotationText* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualAnnotationText*> HandleStepVisualAnnotationText_clone(const HandleStepVisualAnnotationText* self_) {
+    try { return {new HandleStepVisualAnnotationText(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualAnnotationTextOccurrence_destructor(HandleStepVisualAnnotationTextOccurrence* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualAnnotationTextOccurrence*> HandleStepVisualAnnotationTextOccurrence_clone(const HandleStepVisualAnnotationTextOccurrence* self_) {
+    try { return {new HandleStepVisualAnnotationTextOccurrence(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualAreaInSet_destructor(HandleStepVisualAreaInSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualAreaInSet*> HandleStepVisualAreaInSet_clone(const HandleStepVisualAreaInSet* self_) {
+    try { return {new HandleStepVisualAreaInSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualBackgroundColour_destructor(HandleStepVisualBackgroundColour* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualBackgroundColour*> HandleStepVisualBackgroundColour_clone(const HandleStepVisualBackgroundColour* self_) {
+    try { return {new HandleStepVisualBackgroundColour(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCameraImage_destructor(HandleStepVisualCameraImage* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCameraImage*> HandleStepVisualCameraImage_clone(const HandleStepVisualCameraImage* self_) {
+    try { return {new HandleStepVisualCameraImage(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCameraImage2dWithScale_destructor(HandleStepVisualCameraImage2dWithScale* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCameraImage2dWithScale*> HandleStepVisualCameraImage2dWithScale_clone(const HandleStepVisualCameraImage2dWithScale* self_) {
+    try { return {new HandleStepVisualCameraImage2dWithScale(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCameraImage3dWithScale_destructor(HandleStepVisualCameraImage3dWithScale* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCameraImage3dWithScale*> HandleStepVisualCameraImage3dWithScale_clone(const HandleStepVisualCameraImage3dWithScale* self_) {
+    try { return {new HandleStepVisualCameraImage3dWithScale(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCameraModel_destructor(HandleStepVisualCameraModel* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCameraModel*> HandleStepVisualCameraModel_clone(const HandleStepVisualCameraModel* self_) {
+    try { return {new HandleStepVisualCameraModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCameraModelD2_destructor(HandleStepVisualCameraModelD2* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCameraModelD2*> HandleStepVisualCameraModelD2_clone(const HandleStepVisualCameraModelD2* self_) {
+    try { return {new HandleStepVisualCameraModelD2(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCameraModelD3_destructor(HandleStepVisualCameraModelD3* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCameraModelD3*> HandleStepVisualCameraModelD3_clone(const HandleStepVisualCameraModelD3* self_) {
+    try { return {new HandleStepVisualCameraModelD3(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCameraModelD3MultiClipping_destructor(HandleStepVisualCameraModelD3MultiClipping* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCameraModelD3MultiClipping*> HandleStepVisualCameraModelD3MultiClipping_clone(const HandleStepVisualCameraModelD3MultiClipping* self_) {
+    try { return {new HandleStepVisualCameraModelD3MultiClipping(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCameraModelD3MultiClippingIntersection_destructor(HandleStepVisualCameraModelD3MultiClippingIntersection* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCameraModelD3MultiClippingIntersection*> HandleStepVisualCameraModelD3MultiClippingIntersection_clone(const HandleStepVisualCameraModelD3MultiClippingIntersection* self_) {
+    try { return {new HandleStepVisualCameraModelD3MultiClippingIntersection(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCameraModelD3MultiClippingUnion_destructor(HandleStepVisualCameraModelD3MultiClippingUnion* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCameraModelD3MultiClippingUnion*> HandleStepVisualCameraModelD3MultiClippingUnion_clone(const HandleStepVisualCameraModelD3MultiClippingUnion* self_) {
+    try { return {new HandleStepVisualCameraModelD3MultiClippingUnion(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCameraUsage_destructor(HandleStepVisualCameraUsage* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCameraUsage*> HandleStepVisualCameraUsage_clone(const HandleStepVisualCameraUsage* self_) {
+    try { return {new HandleStepVisualCameraUsage(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel_destructor(HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel*> HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel_clone(const HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel* self_) {
+    try { return {new HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualColour_destructor(HandleStepVisualColour* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualColour*> HandleStepVisualColour_clone(const HandleStepVisualColour* self_) {
+    try { return {new HandleStepVisualColour(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualColourRgb_destructor(HandleStepVisualColourRgb* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualColourRgb*> HandleStepVisualColourRgb_clone(const HandleStepVisualColourRgb* self_) {
+    try { return {new HandleStepVisualColourRgb(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualColourSpecification_destructor(HandleStepVisualColourSpecification* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualColourSpecification*> HandleStepVisualColourSpecification_clone(const HandleStepVisualColourSpecification* self_) {
+    try { return {new HandleStepVisualColourSpecification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualComplexTriangulatedFace_destructor(HandleStepVisualComplexTriangulatedFace* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualComplexTriangulatedFace*> HandleStepVisualComplexTriangulatedFace_clone(const HandleStepVisualComplexTriangulatedFace* self_) {
+    try { return {new HandleStepVisualComplexTriangulatedFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualComplexTriangulatedSurfaceSet_destructor(HandleStepVisualComplexTriangulatedSurfaceSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualComplexTriangulatedSurfaceSet*> HandleStepVisualComplexTriangulatedSurfaceSet_clone(const HandleStepVisualComplexTriangulatedSurfaceSet* self_) {
+    try { return {new HandleStepVisualComplexTriangulatedSurfaceSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCompositeText_destructor(HandleStepVisualCompositeText* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCompositeText*> HandleStepVisualCompositeText_clone(const HandleStepVisualCompositeText* self_) {
+    try { return {new HandleStepVisualCompositeText(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCompositeTextWithExtent_destructor(HandleStepVisualCompositeTextWithExtent* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCompositeTextWithExtent*> HandleStepVisualCompositeTextWithExtent_clone(const HandleStepVisualCompositeTextWithExtent* self_) {
+    try { return {new HandleStepVisualCompositeTextWithExtent(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualContextDependentInvisibility_destructor(HandleStepVisualContextDependentInvisibility* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualContextDependentInvisibility*> HandleStepVisualContextDependentInvisibility_clone(const HandleStepVisualContextDependentInvisibility* self_) {
+    try { return {new HandleStepVisualContextDependentInvisibility(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualContextDependentOverRidingStyledItem_destructor(HandleStepVisualContextDependentOverRidingStyledItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualContextDependentOverRidingStyledItem*> HandleStepVisualContextDependentOverRidingStyledItem_clone(const HandleStepVisualContextDependentOverRidingStyledItem* self_) {
+    try { return {new HandleStepVisualContextDependentOverRidingStyledItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCoordinatesList_destructor(HandleStepVisualCoordinatesList* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCoordinatesList*> HandleStepVisualCoordinatesList_clone(const HandleStepVisualCoordinatesList* self_) {
+    try { return {new HandleStepVisualCoordinatesList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCubicBezierTessellatedEdge_destructor(HandleStepVisualCubicBezierTessellatedEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCubicBezierTessellatedEdge*> HandleStepVisualCubicBezierTessellatedEdge_clone(const HandleStepVisualCubicBezierTessellatedEdge* self_) {
+    try { return {new HandleStepVisualCubicBezierTessellatedEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCubicBezierTriangulatedFace_destructor(HandleStepVisualCubicBezierTriangulatedFace* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCubicBezierTriangulatedFace*> HandleStepVisualCubicBezierTriangulatedFace_clone(const HandleStepVisualCubicBezierTriangulatedFace* self_) {
+    try { return {new HandleStepVisualCubicBezierTriangulatedFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCurveStyle_destructor(HandleStepVisualCurveStyle* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCurveStyle*> HandleStepVisualCurveStyle_clone(const HandleStepVisualCurveStyle* self_) {
+    try { return {new HandleStepVisualCurveStyle(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCurveStyleFont_destructor(HandleStepVisualCurveStyleFont* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCurveStyleFont*> HandleStepVisualCurveStyleFont_clone(const HandleStepVisualCurveStyleFont* self_) {
+    try { return {new HandleStepVisualCurveStyleFont(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualCurveStyleFontPattern_destructor(HandleStepVisualCurveStyleFontPattern* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualCurveStyleFontPattern*> HandleStepVisualCurveStyleFontPattern_clone(const HandleStepVisualCurveStyleFontPattern* self_) {
+    try { return {new HandleStepVisualCurveStyleFontPattern(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualDraughtingAnnotationOccurrence_destructor(HandleStepVisualDraughtingAnnotationOccurrence* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualDraughtingAnnotationOccurrence*> HandleStepVisualDraughtingAnnotationOccurrence_clone(const HandleStepVisualDraughtingAnnotationOccurrence* self_) {
+    try { return {new HandleStepVisualDraughtingAnnotationOccurrence(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualDraughtingCallout_destructor(HandleStepVisualDraughtingCallout* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualDraughtingCallout*> HandleStepVisualDraughtingCallout_clone(const HandleStepVisualDraughtingCallout* self_) {
+    try { return {new HandleStepVisualDraughtingCallout(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualDraughtingModel_destructor(HandleStepVisualDraughtingModel* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualDraughtingModel*> HandleStepVisualDraughtingModel_clone(const HandleStepVisualDraughtingModel* self_) {
+    try { return {new HandleStepVisualDraughtingModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualDraughtingPreDefinedColour_destructor(HandleStepVisualDraughtingPreDefinedColour* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualDraughtingPreDefinedColour*> HandleStepVisualDraughtingPreDefinedColour_clone(const HandleStepVisualDraughtingPreDefinedColour* self_) {
+    try { return {new HandleStepVisualDraughtingPreDefinedColour(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualDraughtingPreDefinedCurveFont_destructor(HandleStepVisualDraughtingPreDefinedCurveFont* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualDraughtingPreDefinedCurveFont*> HandleStepVisualDraughtingPreDefinedCurveFont_clone(const HandleStepVisualDraughtingPreDefinedCurveFont* self_) {
+    try { return {new HandleStepVisualDraughtingPreDefinedCurveFont(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualExternallyDefinedCurveFont_destructor(HandleStepVisualExternallyDefinedCurveFont* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualExternallyDefinedCurveFont*> HandleStepVisualExternallyDefinedCurveFont_clone(const HandleStepVisualExternallyDefinedCurveFont* self_) {
+    try { return {new HandleStepVisualExternallyDefinedCurveFont(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualExternallyDefinedTextFont_destructor(HandleStepVisualExternallyDefinedTextFont* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualExternallyDefinedTextFont*> HandleStepVisualExternallyDefinedTextFont_clone(const HandleStepVisualExternallyDefinedTextFont* self_) {
+    try { return {new HandleStepVisualExternallyDefinedTextFont(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualFillAreaStyle_destructor(HandleStepVisualFillAreaStyle* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualFillAreaStyle*> HandleStepVisualFillAreaStyle_clone(const HandleStepVisualFillAreaStyle* self_) {
+    try { return {new HandleStepVisualFillAreaStyle(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualFillAreaStyleColour_destructor(HandleStepVisualFillAreaStyleColour* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualFillAreaStyleColour*> HandleStepVisualFillAreaStyleColour_clone(const HandleStepVisualFillAreaStyleColour* self_) {
+    try { return {new HandleStepVisualFillAreaStyleColour(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfAnnotationPlaneElement_destructor(HandleStepVisualHArray1OfAnnotationPlaneElement* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfAnnotationPlaneElement*> HandleStepVisualHArray1OfAnnotationPlaneElement_clone(const HandleStepVisualHArray1OfAnnotationPlaneElement* self_) {
+    try { return {new HandleStepVisualHArray1OfAnnotationPlaneElement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfBoxCharacteristicSelect_destructor(HandleStepVisualHArray1OfBoxCharacteristicSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfBoxCharacteristicSelect*> HandleStepVisualHArray1OfBoxCharacteristicSelect_clone(const HandleStepVisualHArray1OfBoxCharacteristicSelect* self_) {
+    try { return {new HandleStepVisualHArray1OfBoxCharacteristicSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect_destructor(HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect*> HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect_clone(const HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect* self_) {
+    try { return {new HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect_destructor(HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect*> HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect_clone(const HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect* self_) {
+    try { return {new HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfCurveStyleFontPattern_destructor(HandleStepVisualHArray1OfCurveStyleFontPattern* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfCurveStyleFontPattern*> HandleStepVisualHArray1OfCurveStyleFontPattern_clone(const HandleStepVisualHArray1OfCurveStyleFontPattern* self_) {
+    try { return {new HandleStepVisualHArray1OfCurveStyleFontPattern(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfDirectionCountSelect_destructor(HandleStepVisualHArray1OfDirectionCountSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfDirectionCountSelect*> HandleStepVisualHArray1OfDirectionCountSelect_clone(const HandleStepVisualHArray1OfDirectionCountSelect* self_) {
+    try { return {new HandleStepVisualHArray1OfDirectionCountSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfDraughtingCalloutElement_destructor(HandleStepVisualHArray1OfDraughtingCalloutElement* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfDraughtingCalloutElement*> HandleStepVisualHArray1OfDraughtingCalloutElement_clone(const HandleStepVisualHArray1OfDraughtingCalloutElement* self_) {
+    try { return {new HandleStepVisualHArray1OfDraughtingCalloutElement(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfFillStyleSelect_destructor(HandleStepVisualHArray1OfFillStyleSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfFillStyleSelect*> HandleStepVisualHArray1OfFillStyleSelect_clone(const HandleStepVisualHArray1OfFillStyleSelect* self_) {
+    try { return {new HandleStepVisualHArray1OfFillStyleSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfInvisibleItem_destructor(HandleStepVisualHArray1OfInvisibleItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfInvisibleItem*> HandleStepVisualHArray1OfInvisibleItem_clone(const HandleStepVisualHArray1OfInvisibleItem* self_) {
+    try { return {new HandleStepVisualHArray1OfInvisibleItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfLayeredItem_destructor(HandleStepVisualHArray1OfLayeredItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfLayeredItem*> HandleStepVisualHArray1OfLayeredItem_clone(const HandleStepVisualHArray1OfLayeredItem* self_) {
+    try { return {new HandleStepVisualHArray1OfLayeredItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfPresentationStyleAssignment_destructor(HandleStepVisualHArray1OfPresentationStyleAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfPresentationStyleAssignment*> HandleStepVisualHArray1OfPresentationStyleAssignment_clone(const HandleStepVisualHArray1OfPresentationStyleAssignment* self_) {
+    try { return {new HandleStepVisualHArray1OfPresentationStyleAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfPresentationStyleSelect_destructor(HandleStepVisualHArray1OfPresentationStyleSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfPresentationStyleSelect*> HandleStepVisualHArray1OfPresentationStyleSelect_clone(const HandleStepVisualHArray1OfPresentationStyleSelect* self_) {
+    try { return {new HandleStepVisualHArray1OfPresentationStyleSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfRenderingPropertiesSelect_destructor(HandleStepVisualHArray1OfRenderingPropertiesSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfRenderingPropertiesSelect*> HandleStepVisualHArray1OfRenderingPropertiesSelect_clone(const HandleStepVisualHArray1OfRenderingPropertiesSelect* self_) {
+    try { return {new HandleStepVisualHArray1OfRenderingPropertiesSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfStyleContextSelect_destructor(HandleStepVisualHArray1OfStyleContextSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfStyleContextSelect*> HandleStepVisualHArray1OfStyleContextSelect_clone(const HandleStepVisualHArray1OfStyleContextSelect* self_) {
+    try { return {new HandleStepVisualHArray1OfStyleContextSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfSurfaceStyleElementSelect_destructor(HandleStepVisualHArray1OfSurfaceStyleElementSelect* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfSurfaceStyleElementSelect*> HandleStepVisualHArray1OfSurfaceStyleElementSelect_clone(const HandleStepVisualHArray1OfSurfaceStyleElementSelect* self_) {
+    try { return {new HandleStepVisualHArray1OfSurfaceStyleElementSelect(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfTessellatedEdgeOrVertex_destructor(HandleStepVisualHArray1OfTessellatedEdgeOrVertex* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfTessellatedEdgeOrVertex*> HandleStepVisualHArray1OfTessellatedEdgeOrVertex_clone(const HandleStepVisualHArray1OfTessellatedEdgeOrVertex* self_) {
+    try { return {new HandleStepVisualHArray1OfTessellatedEdgeOrVertex(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfTessellatedStructuredItem_destructor(HandleStepVisualHArray1OfTessellatedStructuredItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfTessellatedStructuredItem*> HandleStepVisualHArray1OfTessellatedStructuredItem_clone(const HandleStepVisualHArray1OfTessellatedStructuredItem* self_) {
+    try { return {new HandleStepVisualHArray1OfTessellatedStructuredItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualHArray1OfTextOrCharacter_destructor(HandleStepVisualHArray1OfTextOrCharacter* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualHArray1OfTextOrCharacter*> HandleStepVisualHArray1OfTextOrCharacter_clone(const HandleStepVisualHArray1OfTextOrCharacter* self_) {
+    try { return {new HandleStepVisualHArray1OfTextOrCharacter(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualInvisibility_destructor(HandleStepVisualInvisibility* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualInvisibility*> HandleStepVisualInvisibility_clone(const HandleStepVisualInvisibility* self_) {
+    try { return {new HandleStepVisualInvisibility(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualMarkerMember_destructor(HandleStepVisualMarkerMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualMarkerMember*> HandleStepVisualMarkerMember_clone(const HandleStepVisualMarkerMember* self_) {
+    try { return {new HandleStepVisualMarkerMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualMechanicalDesignGeometricPresentationArea_destructor(HandleStepVisualMechanicalDesignGeometricPresentationArea* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualMechanicalDesignGeometricPresentationArea*> HandleStepVisualMechanicalDesignGeometricPresentationArea_clone(const HandleStepVisualMechanicalDesignGeometricPresentationArea* self_) {
+    try { return {new HandleStepVisualMechanicalDesignGeometricPresentationArea(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualMechanicalDesignGeometricPresentationRepresentation_destructor(HandleStepVisualMechanicalDesignGeometricPresentationRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualMechanicalDesignGeometricPresentationRepresentation*> HandleStepVisualMechanicalDesignGeometricPresentationRepresentation_clone(const HandleStepVisualMechanicalDesignGeometricPresentationRepresentation* self_) {
+    try { return {new HandleStepVisualMechanicalDesignGeometricPresentationRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualNullStyleMember_destructor(HandleStepVisualNullStyleMember* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualNullStyleMember*> HandleStepVisualNullStyleMember_clone(const HandleStepVisualNullStyleMember* self_) {
+    try { return {new HandleStepVisualNullStyleMember(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualOverRidingStyledItem_destructor(HandleStepVisualOverRidingStyledItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualOverRidingStyledItem*> HandleStepVisualOverRidingStyledItem_clone(const HandleStepVisualOverRidingStyledItem* self_) {
+    try { return {new HandleStepVisualOverRidingStyledItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPlanarBox_destructor(HandleStepVisualPlanarBox* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPlanarBox*> HandleStepVisualPlanarBox_clone(const HandleStepVisualPlanarBox* self_) {
+    try { return {new HandleStepVisualPlanarBox(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPlanarExtent_destructor(HandleStepVisualPlanarExtent* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPlanarExtent*> HandleStepVisualPlanarExtent_clone(const HandleStepVisualPlanarExtent* self_) {
+    try { return {new HandleStepVisualPlanarExtent(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPointStyle_destructor(HandleStepVisualPointStyle* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPointStyle*> HandleStepVisualPointStyle_clone(const HandleStepVisualPointStyle* self_) {
+    try { return {new HandleStepVisualPointStyle(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPreDefinedColour_destructor(HandleStepVisualPreDefinedColour* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPreDefinedColour*> HandleStepVisualPreDefinedColour_clone(const HandleStepVisualPreDefinedColour* self_) {
+    try { return {new HandleStepVisualPreDefinedColour(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPreDefinedCurveFont_destructor(HandleStepVisualPreDefinedCurveFont* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPreDefinedCurveFont*> HandleStepVisualPreDefinedCurveFont_clone(const HandleStepVisualPreDefinedCurveFont* self_) {
+    try { return {new HandleStepVisualPreDefinedCurveFont(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPreDefinedItem_destructor(HandleStepVisualPreDefinedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPreDefinedItem*> HandleStepVisualPreDefinedItem_clone(const HandleStepVisualPreDefinedItem* self_) {
+    try { return {new HandleStepVisualPreDefinedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPreDefinedTextFont_destructor(HandleStepVisualPreDefinedTextFont* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPreDefinedTextFont*> HandleStepVisualPreDefinedTextFont_clone(const HandleStepVisualPreDefinedTextFont* self_) {
+    try { return {new HandleStepVisualPreDefinedTextFont(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPresentationArea_destructor(HandleStepVisualPresentationArea* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPresentationArea*> HandleStepVisualPresentationArea_clone(const HandleStepVisualPresentationArea* self_) {
+    try { return {new HandleStepVisualPresentationArea(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPresentationLayerAssignment_destructor(HandleStepVisualPresentationLayerAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPresentationLayerAssignment*> HandleStepVisualPresentationLayerAssignment_clone(const HandleStepVisualPresentationLayerAssignment* self_) {
+    try { return {new HandleStepVisualPresentationLayerAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPresentationLayerUsage_destructor(HandleStepVisualPresentationLayerUsage* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPresentationLayerUsage*> HandleStepVisualPresentationLayerUsage_clone(const HandleStepVisualPresentationLayerUsage* self_) {
+    try { return {new HandleStepVisualPresentationLayerUsage(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPresentationRepresentation_destructor(HandleStepVisualPresentationRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPresentationRepresentation*> HandleStepVisualPresentationRepresentation_clone(const HandleStepVisualPresentationRepresentation* self_) {
+    try { return {new HandleStepVisualPresentationRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPresentationSet_destructor(HandleStepVisualPresentationSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPresentationSet*> HandleStepVisualPresentationSet_clone(const HandleStepVisualPresentationSet* self_) {
+    try { return {new HandleStepVisualPresentationSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPresentationSize_destructor(HandleStepVisualPresentationSize* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPresentationSize*> HandleStepVisualPresentationSize_clone(const HandleStepVisualPresentationSize* self_) {
+    try { return {new HandleStepVisualPresentationSize(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPresentationStyleAssignment_destructor(HandleStepVisualPresentationStyleAssignment* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPresentationStyleAssignment*> HandleStepVisualPresentationStyleAssignment_clone(const HandleStepVisualPresentationStyleAssignment* self_) {
+    try { return {new HandleStepVisualPresentationStyleAssignment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPresentationStyleByContext_destructor(HandleStepVisualPresentationStyleByContext* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPresentationStyleByContext*> HandleStepVisualPresentationStyleByContext_clone(const HandleStepVisualPresentationStyleByContext* self_) {
+    try { return {new HandleStepVisualPresentationStyleByContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPresentationView_destructor(HandleStepVisualPresentationView* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPresentationView*> HandleStepVisualPresentationView_clone(const HandleStepVisualPresentationView* self_) {
+    try { return {new HandleStepVisualPresentationView(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPresentedItem_destructor(HandleStepVisualPresentedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPresentedItem*> HandleStepVisualPresentedItem_clone(const HandleStepVisualPresentedItem* self_) {
+    try { return {new HandleStepVisualPresentedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualPresentedItemRepresentation_destructor(HandleStepVisualPresentedItemRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualPresentedItemRepresentation*> HandleStepVisualPresentedItemRepresentation_clone(const HandleStepVisualPresentedItemRepresentation* self_) {
+    try { return {new HandleStepVisualPresentedItemRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualRepositionedTessellatedGeometricSet_destructor(HandleStepVisualRepositionedTessellatedGeometricSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualRepositionedTessellatedGeometricSet*> HandleStepVisualRepositionedTessellatedGeometricSet_clone(const HandleStepVisualRepositionedTessellatedGeometricSet* self_) {
+    try { return {new HandleStepVisualRepositionedTessellatedGeometricSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualRepositionedTessellatedItem_destructor(HandleStepVisualRepositionedTessellatedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualRepositionedTessellatedItem*> HandleStepVisualRepositionedTessellatedItem_clone(const HandleStepVisualRepositionedTessellatedItem* self_) {
+    try { return {new HandleStepVisualRepositionedTessellatedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualStyledItem_destructor(HandleStepVisualStyledItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualStyledItem*> HandleStepVisualStyledItem_clone(const HandleStepVisualStyledItem* self_) {
+    try { return {new HandleStepVisualStyledItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceSideStyle_destructor(HandleStepVisualSurfaceSideStyle* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceSideStyle*> HandleStepVisualSurfaceSideStyle_clone(const HandleStepVisualSurfaceSideStyle* self_) {
+    try { return {new HandleStepVisualSurfaceSideStyle(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceStyleBoundary_destructor(HandleStepVisualSurfaceStyleBoundary* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceStyleBoundary*> HandleStepVisualSurfaceStyleBoundary_clone(const HandleStepVisualSurfaceStyleBoundary* self_) {
+    try { return {new HandleStepVisualSurfaceStyleBoundary(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceStyleControlGrid_destructor(HandleStepVisualSurfaceStyleControlGrid* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceStyleControlGrid*> HandleStepVisualSurfaceStyleControlGrid_clone(const HandleStepVisualSurfaceStyleControlGrid* self_) {
+    try { return {new HandleStepVisualSurfaceStyleControlGrid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceStyleFillArea_destructor(HandleStepVisualSurfaceStyleFillArea* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceStyleFillArea*> HandleStepVisualSurfaceStyleFillArea_clone(const HandleStepVisualSurfaceStyleFillArea* self_) {
+    try { return {new HandleStepVisualSurfaceStyleFillArea(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceStyleParameterLine_destructor(HandleStepVisualSurfaceStyleParameterLine* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceStyleParameterLine*> HandleStepVisualSurfaceStyleParameterLine_clone(const HandleStepVisualSurfaceStyleParameterLine* self_) {
+    try { return {new HandleStepVisualSurfaceStyleParameterLine(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceStyleReflectanceAmbient_destructor(HandleStepVisualSurfaceStyleReflectanceAmbient* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceStyleReflectanceAmbient*> HandleStepVisualSurfaceStyleReflectanceAmbient_clone(const HandleStepVisualSurfaceStyleReflectanceAmbient* self_) {
+    try { return {new HandleStepVisualSurfaceStyleReflectanceAmbient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceStyleRendering_destructor(HandleStepVisualSurfaceStyleRendering* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceStyleRendering*> HandleStepVisualSurfaceStyleRendering_clone(const HandleStepVisualSurfaceStyleRendering* self_) {
+    try { return {new HandleStepVisualSurfaceStyleRendering(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceStyleRenderingWithProperties_destructor(HandleStepVisualSurfaceStyleRenderingWithProperties* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceStyleRenderingWithProperties*> HandleStepVisualSurfaceStyleRenderingWithProperties_clone(const HandleStepVisualSurfaceStyleRenderingWithProperties* self_) {
+    try { return {new HandleStepVisualSurfaceStyleRenderingWithProperties(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceStyleSegmentationCurve_destructor(HandleStepVisualSurfaceStyleSegmentationCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceStyleSegmentationCurve*> HandleStepVisualSurfaceStyleSegmentationCurve_clone(const HandleStepVisualSurfaceStyleSegmentationCurve* self_) {
+    try { return {new HandleStepVisualSurfaceStyleSegmentationCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceStyleSilhouette_destructor(HandleStepVisualSurfaceStyleSilhouette* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceStyleSilhouette*> HandleStepVisualSurfaceStyleSilhouette_clone(const HandleStepVisualSurfaceStyleSilhouette* self_) {
+    try { return {new HandleStepVisualSurfaceStyleSilhouette(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceStyleTransparent_destructor(HandleStepVisualSurfaceStyleTransparent* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceStyleTransparent*> HandleStepVisualSurfaceStyleTransparent_clone(const HandleStepVisualSurfaceStyleTransparent* self_) {
+    try { return {new HandleStepVisualSurfaceStyleTransparent(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualSurfaceStyleUsage_destructor(HandleStepVisualSurfaceStyleUsage* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualSurfaceStyleUsage*> HandleStepVisualSurfaceStyleUsage_clone(const HandleStepVisualSurfaceStyleUsage* self_) {
+    try { return {new HandleStepVisualSurfaceStyleUsage(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTemplate_destructor(HandleStepVisualTemplate* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTemplate*> HandleStepVisualTemplate_clone(const HandleStepVisualTemplate* self_) {
+    try { return {new HandleStepVisualTemplate(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTemplateInstance_destructor(HandleStepVisualTemplateInstance* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTemplateInstance*> HandleStepVisualTemplateInstance_clone(const HandleStepVisualTemplateInstance* self_) {
+    try { return {new HandleStepVisualTemplateInstance(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedAnnotationOccurrence_destructor(HandleStepVisualTessellatedAnnotationOccurrence* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedAnnotationOccurrence*> HandleStepVisualTessellatedAnnotationOccurrence_clone(const HandleStepVisualTessellatedAnnotationOccurrence* self_) {
+    try { return {new HandleStepVisualTessellatedAnnotationOccurrence(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedConnectingEdge_destructor(HandleStepVisualTessellatedConnectingEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedConnectingEdge*> HandleStepVisualTessellatedConnectingEdge_clone(const HandleStepVisualTessellatedConnectingEdge* self_) {
+    try { return {new HandleStepVisualTessellatedConnectingEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedCurveSet_destructor(HandleStepVisualTessellatedCurveSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedCurveSet*> HandleStepVisualTessellatedCurveSet_clone(const HandleStepVisualTessellatedCurveSet* self_) {
+    try { return {new HandleStepVisualTessellatedCurveSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedEdge_destructor(HandleStepVisualTessellatedEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedEdge*> HandleStepVisualTessellatedEdge_clone(const HandleStepVisualTessellatedEdge* self_) {
+    try { return {new HandleStepVisualTessellatedEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedFace_destructor(HandleStepVisualTessellatedFace* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedFace*> HandleStepVisualTessellatedFace_clone(const HandleStepVisualTessellatedFace* self_) {
+    try { return {new HandleStepVisualTessellatedFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedGeometricSet_destructor(HandleStepVisualTessellatedGeometricSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedGeometricSet*> HandleStepVisualTessellatedGeometricSet_clone(const HandleStepVisualTessellatedGeometricSet* self_) {
+    try { return {new HandleStepVisualTessellatedGeometricSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedItem_destructor(HandleStepVisualTessellatedItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedItem*> HandleStepVisualTessellatedItem_clone(const HandleStepVisualTessellatedItem* self_) {
+    try { return {new HandleStepVisualTessellatedItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedPointSet_destructor(HandleStepVisualTessellatedPointSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedPointSet*> HandleStepVisualTessellatedPointSet_clone(const HandleStepVisualTessellatedPointSet* self_) {
+    try { return {new HandleStepVisualTessellatedPointSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedShapeRepresentation_destructor(HandleStepVisualTessellatedShapeRepresentation* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedShapeRepresentation*> HandleStepVisualTessellatedShapeRepresentation_clone(const HandleStepVisualTessellatedShapeRepresentation* self_) {
+    try { return {new HandleStepVisualTessellatedShapeRepresentation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters_destructor(HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters*> HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters_clone(const HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters* self_) {
+    try { return {new HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedShell_destructor(HandleStepVisualTessellatedShell* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedShell*> HandleStepVisualTessellatedShell_clone(const HandleStepVisualTessellatedShell* self_) {
+    try { return {new HandleStepVisualTessellatedShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedSolid_destructor(HandleStepVisualTessellatedSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedSolid*> HandleStepVisualTessellatedSolid_clone(const HandleStepVisualTessellatedSolid* self_) {
+    try { return {new HandleStepVisualTessellatedSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedStructuredItem_destructor(HandleStepVisualTessellatedStructuredItem* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedStructuredItem*> HandleStepVisualTessellatedStructuredItem_clone(const HandleStepVisualTessellatedStructuredItem* self_) {
+    try { return {new HandleStepVisualTessellatedStructuredItem(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedSurfaceSet_destructor(HandleStepVisualTessellatedSurfaceSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedSurfaceSet*> HandleStepVisualTessellatedSurfaceSet_clone(const HandleStepVisualTessellatedSurfaceSet* self_) {
+    try { return {new HandleStepVisualTessellatedSurfaceSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedVertex_destructor(HandleStepVisualTessellatedVertex* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedVertex*> HandleStepVisualTessellatedVertex_clone(const HandleStepVisualTessellatedVertex* self_) {
+    try { return {new HandleStepVisualTessellatedVertex(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTessellatedWire_destructor(HandleStepVisualTessellatedWire* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTessellatedWire*> HandleStepVisualTessellatedWire_clone(const HandleStepVisualTessellatedWire* self_) {
+    try { return {new HandleStepVisualTessellatedWire(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTextLiteral_destructor(HandleStepVisualTextLiteral* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTextLiteral*> HandleStepVisualTextLiteral_clone(const HandleStepVisualTextLiteral* self_) {
+    try { return {new HandleStepVisualTextLiteral(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTextStyle_destructor(HandleStepVisualTextStyle* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTextStyle*> HandleStepVisualTextStyle_clone(const HandleStepVisualTextStyle* self_) {
+    try { return {new HandleStepVisualTextStyle(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTextStyleForDefinedFont_destructor(HandleStepVisualTextStyleForDefinedFont* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTextStyleForDefinedFont*> HandleStepVisualTextStyleForDefinedFont_clone(const HandleStepVisualTextStyleForDefinedFont* self_) {
+    try { return {new HandleStepVisualTextStyleForDefinedFont(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTextStyleWithBoxCharacteristics_destructor(HandleStepVisualTextStyleWithBoxCharacteristics* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTextStyleWithBoxCharacteristics*> HandleStepVisualTextStyleWithBoxCharacteristics_clone(const HandleStepVisualTextStyleWithBoxCharacteristics* self_) {
+    try { return {new HandleStepVisualTextStyleWithBoxCharacteristics(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTriangulatedFace_destructor(HandleStepVisualTriangulatedFace* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTriangulatedFace*> HandleStepVisualTriangulatedFace_clone(const HandleStepVisualTriangulatedFace* self_) {
+    try { return {new HandleStepVisualTriangulatedFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualTriangulatedSurfaceSet_destructor(HandleStepVisualTriangulatedSurfaceSet* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualTriangulatedSurfaceSet*> HandleStepVisualTriangulatedSurfaceSet_clone(const HandleStepVisualTriangulatedSurfaceSet* self_) {
+    try { return {new HandleStepVisualTriangulatedSurfaceSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleStepVisualViewVolume_destructor(HandleStepVisualViewVolume* self_) { delete self_; }
+extern "C" OcctResult<HandleStepVisualViewVolume*> HandleStepVisualViewVolume_clone(const HandleStepVisualViewVolume* self_) {
+    try { return {new HandleStepVisualViewVolume(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // APIHeaderSection_EditHeader wrappers
@@ -38602,7 +42282,7 @@ extern "C" OcctResult<char const*> StepData_Field_enum_text(const StepData_Field
     try { return {self_->EnumText(n1, n2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<StepData_Field*> StepData_Field_to_owned(const StepData_Field* self_) {
+extern "C" OcctResult<StepData_Field*> StepData_Field_clone(const StepData_Field* self_) {
     try { return {new StepData_Field(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }

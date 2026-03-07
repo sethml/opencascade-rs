@@ -390,6 +390,12 @@ unsafe impl crate::CppDeletable for HandleDEGLTFConfigurationNode {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleDEGLTFConfigurationNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleDEGLTFConfigurationNode_clone(ptr))
+    }
+}
+
 impl HandleDEGLTFConfigurationNode {
     /// Dereference this Handle to access the underlying DEGLTF_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEGLTF_ConfigurationNode {
@@ -845,6 +851,12 @@ pub use crate::ffi_types::HandleDEGLTFProvider;
 unsafe impl crate::CppDeletable for HandleDEGLTFProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEGLTF::HandleDEGLTFProvider_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleDEGLTFProvider {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleDEGLTFProvider_clone(ptr))
     }
 }
 

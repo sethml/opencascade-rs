@@ -397,6 +397,12 @@ unsafe impl crate::CppDeletable for HandleBOPDSCommonBlock {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBOPDSCommonBlock {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPDSCommonBlock_clone(ptr))
+    }
+}
+
 impl HandleBOPDSCommonBlock {
     /// Dereference this Handle to access the underlying BOPDS_CommonBlock
     pub fn get(&self) -> &crate::ffi_types::BOPDS_CommonBlock {
@@ -4960,6 +4966,12 @@ pub use crate::ffi_types::HandleBOPDSPaveBlock;
 unsafe impl crate::CppDeletable for HandleBOPDSPaveBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBO::HandleBOPDSPaveBlock_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBOPDSPaveBlock {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBO::HandleBOPDSPaveBlock_clone(ptr))
     }
 }
 

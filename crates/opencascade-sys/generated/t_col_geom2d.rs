@@ -246,6 +246,14 @@ unsafe impl crate::CppDeletable for HandleTColGeom2dHArray1OfBSplineCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColGeom2dHArray1OfBSplineCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfBSplineCurve_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleTColGeom2dHArray1OfBSplineCurve {
     /// Dereference this Handle to access the underlying TColGeom2d_HArray1OfBSplineCurve
     pub fn get(&self) -> &crate::ffi_types::TColGeom2d_HArray1OfBSplineCurve {
@@ -513,6 +521,14 @@ pub use crate::ffi_types::HandleTColGeom2dHArray1OfBezierCurve;
 unsafe impl crate::CppDeletable for HandleTColGeom2dHArray1OfBezierCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfBezierCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColGeom2dHArray1OfBezierCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfBezierCurve_clone(
+            ptr,
+        ))
     }
 }
 
@@ -784,6 +800,12 @@ unsafe impl crate::CppDeletable for HandleTColGeom2dHArray1OfCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleTColGeom2dHArray1OfCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfCurve_clone(ptr))
+    }
+}
+
 impl HandleTColGeom2dHArray1OfCurve {
     /// Dereference this Handle to access the underlying TColGeom2d_HArray1OfCurve
     pub fn get(&self) -> &crate::ffi_types::TColGeom2d_HArray1OfCurve {
@@ -1027,6 +1049,14 @@ pub use crate::ffi_types::HandleTColGeom2dHSequenceOfBoundedCurve;
 unsafe impl crate::CppDeletable for HandleTColGeom2dHSequenceOfBoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfBoundedCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColGeom2dHSequenceOfBoundedCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfBoundedCurve_clone(
+            ptr,
+        ))
     }
 }
 
@@ -1282,6 +1312,12 @@ pub use crate::ffi_types::HandleTColGeom2dHSequenceOfCurve;
 unsafe impl crate::CppDeletable for HandleTColGeom2dHSequenceOfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleTColGeom2dHSequenceOfCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfCurve_clone(ptr))
     }
 }
 

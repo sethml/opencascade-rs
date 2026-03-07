@@ -1106,6 +1106,12 @@ unsafe impl crate::CppDeletable for HandleStorageBaseDriver {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageBaseDriver {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageBaseDriver_clone(ptr))
+    }
+}
+
 impl HandleStorageBaseDriver {
     /// Dereference this Handle to access the underlying Storage_BaseDriver
     pub fn get(&self) -> &crate::ffi_types::Storage_BaseDriver {
@@ -1560,6 +1566,12 @@ pub use crate::ffi_types::HandleStorageCallBack;
 unsafe impl crate::CppDeletable for HandleStorageCallBack {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStorageCallBack_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStorageCallBack {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageCallBack_clone(ptr))
     }
 }
 
@@ -2161,6 +2173,12 @@ unsafe impl crate::CppDeletable for HandleStorageData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageData_clone(ptr))
+    }
+}
+
 impl HandleStorageData {
     /// Dereference this Handle to access the underlying Storage_Data
     pub fn get(&self) -> &crate::ffi_types::Storage_Data {
@@ -2437,6 +2455,12 @@ pub use crate::ffi_types::HandleStorageDefaultCallBack;
 unsafe impl crate::CppDeletable for HandleStorageDefaultCallBack {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStorageDefaultCallBack_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStorageDefaultCallBack {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageDefaultCallBack_clone(ptr))
     }
 }
 
@@ -2719,6 +2743,12 @@ unsafe impl crate::CppDeletable for HandleStorageHArrayOfCallBack {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageHArrayOfCallBack {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageHArrayOfCallBack_clone(ptr))
+    }
+}
+
 impl HandleStorageHArrayOfCallBack {
     /// Dereference this Handle to access the underlying Storage_HArrayOfCallBack
     pub fn get(&self) -> &crate::ffi_types::Storage_HArrayOfCallBack {
@@ -2981,6 +3011,12 @@ unsafe impl crate::CppDeletable for HandleStorageHArrayOfSchema {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageHArrayOfSchema {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageHArrayOfSchema_clone(ptr))
+    }
+}
+
 impl HandleStorageHArrayOfSchema {
     /// Dereference this Handle to access the underlying Storage_HArrayOfSchema
     pub fn get(&self) -> &crate::ffi_types::Storage_HArrayOfSchema {
@@ -3237,6 +3273,12 @@ unsafe impl crate::CppDeletable for HandleStorageHPArray {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageHPArray {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageHPArray_clone(ptr))
+    }
+}
+
 impl HandleStorageHPArray {
     /// Dereference this Handle to access the underlying Storage_HPArray
     pub fn get(&self) -> &crate::ffi_types::Storage_HPArray {
@@ -3474,6 +3516,12 @@ pub use crate::ffi_types::HandleStorageHSeqOfRoot;
 unsafe impl crate::CppDeletable for HandleStorageHSeqOfRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStorageHSeqOfRoot_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStorageHSeqOfRoot {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageHSeqOfRoot_clone(ptr))
     }
 }
 
@@ -3914,6 +3962,12 @@ unsafe impl crate::CppDeletable for HandleStorageHeaderData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageHeaderData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageHeaderData_clone(ptr))
+    }
+}
+
 impl HandleStorageHeaderData {
     /// Dereference this Handle to access the underlying Storage_HeaderData
     pub fn get(&self) -> &crate::ffi_types::Storage_HeaderData {
@@ -4122,6 +4176,12 @@ pub use crate::ffi_types::HandleStorageInternalData;
 unsafe impl crate::CppDeletable for HandleStorageInternalData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStorageInternalData_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStorageInternalData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageInternalData_clone(ptr))
     }
 }
 
@@ -4427,6 +4487,12 @@ unsafe impl crate::CppDeletable for HandleStorageRoot {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageRoot {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageRoot_clone(ptr))
+    }
+}
+
 impl HandleStorageRoot {
     /// Dereference this Handle to access the underlying Storage_Root
     pub fn get(&self) -> &crate::ffi_types::Storage_Root {
@@ -4716,6 +4782,12 @@ pub use crate::ffi_types::HandleStorageRootData;
 unsafe impl crate::CppDeletable for HandleStorageRootData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStorageRootData_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStorageRootData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageRootData_clone(ptr))
     }
 }
 
@@ -5188,6 +5260,12 @@ unsafe impl crate::CppDeletable for HandleStorageSchema {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageSchema {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageSchema_clone(ptr))
+    }
+}
+
 impl HandleStorageSchema {
     /// Dereference this Handle to access the underlying Storage_Schema
     pub fn get(&self) -> &crate::ffi_types::Storage_Schema {
@@ -5518,6 +5596,14 @@ pub use crate::ffi_types::HandleStorageStreamExtCharParityError;
 unsafe impl crate::CppDeletable for HandleStorageStreamExtCharParityError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStorageStreamExtCharParityError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStorageStreamExtCharParityError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageStreamExtCharParityError_clone(
+            ptr,
+        ))
     }
 }
 
@@ -5860,6 +5946,12 @@ unsafe impl crate::CppDeletable for HandleStorageStreamFormatError {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageStreamFormatError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageStreamFormatError_clone(ptr))
+    }
+}
+
 impl HandleStorageStreamFormatError {
     /// Dereference this Handle to access the underlying Storage_StreamFormatError
     pub fn get(&self) -> &crate::ffi_types::Storage_StreamFormatError {
@@ -6183,6 +6275,12 @@ pub use crate::ffi_types::HandleStorageStreamModeError;
 unsafe impl crate::CppDeletable for HandleStorageStreamModeError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStorageStreamModeError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStorageStreamModeError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageStreamModeError_clone(ptr))
     }
 }
 
@@ -6511,6 +6609,12 @@ pub use crate::ffi_types::HandleStorageStreamReadError;
 unsafe impl crate::CppDeletable for HandleStorageStreamReadError {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStorageStreamReadError_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStorageStreamReadError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageStreamReadError_clone(ptr))
     }
 }
 
@@ -6910,6 +7014,14 @@ unsafe impl crate::CppDeletable for HandleStorageStreamTypeMismatchError {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageStreamTypeMismatchError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageStreamTypeMismatchError_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStorageStreamTypeMismatchError {
     /// Dereference this Handle to access the underlying Storage_StreamTypeMismatchError
     pub fn get(&self) -> &crate::ffi_types::Storage_StreamTypeMismatchError {
@@ -7265,6 +7377,14 @@ unsafe impl crate::CppDeletable for HandleStorageStreamUnknownTypeError {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageStreamUnknownTypeError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageStreamUnknownTypeError_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStorageStreamUnknownTypeError {
     /// Dereference this Handle to access the underlying Storage_StreamUnknownTypeError
     pub fn get(&self) -> &crate::ffi_types::Storage_StreamUnknownTypeError {
@@ -7600,6 +7720,12 @@ unsafe impl crate::CppDeletable for HandleStorageStreamWriteError {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageStreamWriteError {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageStreamWriteError_clone(ptr))
+    }
+}
+
 impl HandleStorageStreamWriteError {
     /// Dereference this Handle to access the underlying Storage_StreamWriteError
     pub fn get(&self) -> &crate::ffi_types::Storage_StreamWriteError {
@@ -7896,6 +8022,12 @@ unsafe impl crate::CppDeletable for HandleStorageTypeData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStorageTypeData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageTypeData_clone(ptr))
+    }
+}
+
 impl HandleStorageTypeData {
     /// Dereference this Handle to access the underlying Storage_TypeData
     pub fn get(&self) -> &crate::ffi_types::Storage_TypeData {
@@ -8147,6 +8279,12 @@ pub use crate::ffi_types::HandleStorageTypedCallBack;
 unsafe impl crate::CppDeletable for HandleStorageTypedCallBack {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::HandleStorageTypedCallBack_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStorageTypedCallBack {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandleStorageTypedCallBack_clone(ptr))
     }
 }
 

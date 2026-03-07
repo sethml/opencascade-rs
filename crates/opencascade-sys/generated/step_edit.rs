@@ -512,6 +512,12 @@ unsafe impl crate::CppDeletable for HandleSTEPEditEditContext {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleSTEPEditEditContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPEditEditContext_clone(ptr))
+    }
+}
+
 impl HandleSTEPEditEditContext {
     /// Dereference this Handle to access the underlying STEPEdit_EditContext
     pub fn get(&self) -> &crate::ffi_types::STEPEdit_EditContext {
@@ -973,6 +979,12 @@ pub use crate::ffi_types::HandleSTEPEditEditSDR;
 unsafe impl crate::CppDeletable for HandleSTEPEditEditSDR {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleSTEPEditEditSDR_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleSTEPEditEditSDR {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPEditEditSDR_clone(ptr))
     }
 }
 

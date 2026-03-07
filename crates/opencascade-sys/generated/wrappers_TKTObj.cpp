@@ -87,26 +87,102 @@ typedef opencascade::handle<TObj_TObject> HandleTObjTObject;
 typedef opencascade::handle<TObj_TReference> HandleTObjTReference;
 typedef opencascade::handle<TObj_TXYZ> HandleTObjTXYZ;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleTObjApplication_destructor(HandleTObjApplication* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjApplication*> HandleTObjApplication_clone(const HandleTObjApplication* self_) {
+    try { return {new HandleTObjApplication(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjCheckModel_destructor(HandleTObjCheckModel* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjCheckModel*> HandleTObjCheckModel_clone(const HandleTObjCheckModel* self_) {
+    try { return {new HandleTObjCheckModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjHSequenceOfObject_destructor(HandleTObjHSequenceOfObject* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjHSequenceOfObject*> HandleTObjHSequenceOfObject_clone(const HandleTObjHSequenceOfObject* self_) {
+    try { return {new HandleTObjHSequenceOfObject(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjHiddenPartition_destructor(HandleTObjHiddenPartition* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjHiddenPartition*> HandleTObjHiddenPartition_clone(const HandleTObjHiddenPartition* self_) {
+    try { return {new HandleTObjHiddenPartition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjLabelIterator_destructor(HandleTObjLabelIterator* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjLabelIterator*> HandleTObjLabelIterator_clone(const HandleTObjLabelIterator* self_) {
+    try { return {new HandleTObjLabelIterator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjModel_destructor(HandleTObjModel* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjModel*> HandleTObjModel_clone(const HandleTObjModel* self_) {
+    try { return {new HandleTObjModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjModelIterator_destructor(HandleTObjModelIterator* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjModelIterator*> HandleTObjModelIterator_clone(const HandleTObjModelIterator* self_) {
+    try { return {new HandleTObjModelIterator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjObject_destructor(HandleTObjObject* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjObject*> HandleTObjObject_clone(const HandleTObjObject* self_) {
+    try { return {new HandleTObjObject(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjObjectIterator_destructor(HandleTObjObjectIterator* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjObjectIterator*> HandleTObjObjectIterator_clone(const HandleTObjObjectIterator* self_) {
+    try { return {new HandleTObjObjectIterator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjOcafObjectIterator_destructor(HandleTObjOcafObjectIterator* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjOcafObjectIterator*> HandleTObjOcafObjectIterator_clone(const HandleTObjOcafObjectIterator* self_) {
+    try { return {new HandleTObjOcafObjectIterator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjPartition_destructor(HandleTObjPartition* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjPartition*> HandleTObjPartition_clone(const HandleTObjPartition* self_) {
+    try { return {new HandleTObjPartition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjReferenceIterator_destructor(HandleTObjReferenceIterator* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjReferenceIterator*> HandleTObjReferenceIterator_clone(const HandleTObjReferenceIterator* self_) {
+    try { return {new HandleTObjReferenceIterator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjSequenceIterator_destructor(HandleTObjSequenceIterator* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjSequenceIterator*> HandleTObjSequenceIterator_clone(const HandleTObjSequenceIterator* self_) {
+    try { return {new HandleTObjSequenceIterator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjTIntSparseArray_destructor(HandleTObjTIntSparseArray* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjTIntSparseArray*> HandleTObjTIntSparseArray_clone(const HandleTObjTIntSparseArray* self_) {
+    try { return {new HandleTObjTIntSparseArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjTModel_destructor(HandleTObjTModel* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjTModel*> HandleTObjTModel_clone(const HandleTObjTModel* self_) {
+    try { return {new HandleTObjTModel(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjTNameContainer_destructor(HandleTObjTNameContainer* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjTNameContainer*> HandleTObjTNameContainer_clone(const HandleTObjTNameContainer* self_) {
+    try { return {new HandleTObjTNameContainer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjTObject_destructor(HandleTObjTObject* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjTObject*> HandleTObjTObject_clone(const HandleTObjTObject* self_) {
+    try { return {new HandleTObjTObject(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjTReference_destructor(HandleTObjTReference* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjTReference*> HandleTObjTReference_clone(const HandleTObjTReference* self_) {
+    try { return {new HandleTObjTReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTObjTXYZ_destructor(HandleTObjTXYZ* self_) { delete self_; }
+extern "C" OcctResult<HandleTObjTXYZ*> HandleTObjTXYZ_clone(const HandleTObjTXYZ* self_) {
+    try { return {new HandleTObjTXYZ(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // TObj_Application wrappers

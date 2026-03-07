@@ -1135,6 +1135,12 @@ unsafe impl crate::CppDeletable for HandlePrsMgrPresentableObject {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsMgrPresentableObject {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsMgrPresentableObject_clone(ptr))
+    }
+}
+
 impl HandlePrsMgrPresentableObject {
     /// Dereference this Handle to access the underlying PrsMgr_PresentableObject
     pub fn get(&self) -> &crate::ffi_types::PrsMgr_PresentableObject {
@@ -2747,6 +2753,12 @@ unsafe impl crate::CppDeletable for HandlePrsMgrPresentation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsMgrPresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsMgrPresentation_clone(ptr))
+    }
+}
+
 impl HandlePrsMgrPresentation {
     /// Dereference this Handle to access the underlying PrsMgr_Presentation
     pub fn get(&self) -> &crate::ffi_types::PrsMgr_Presentation {
@@ -3375,6 +3387,12 @@ pub use crate::ffi_types::HandlePrsMgrPresentationManager;
 unsafe impl crate::CppDeletable for HandlePrsMgrPresentationManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsMgrPresentationManager_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsMgrPresentationManager {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsMgrPresentationManager_clone(ptr))
     }
 }
 

@@ -357,6 +357,12 @@ unsafe impl crate::CppDeletable for HandleNLPlateHGPPConstraint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleNLPlateHGPPConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_clone(ptr))
+    }
+}
+
 impl HandleNLPlateHGPPConstraint {
     /// Dereference this Handle to access the underlying NLPlate_HGPPConstraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HGPPConstraint {
@@ -912,6 +918,12 @@ unsafe impl crate::CppDeletable for HandleNLPlateHPG0Constraint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleNLPlateHPG0Constraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_clone(ptr))
+    }
+}
+
 impl HandleNLPlateHPG0Constraint {
     /// Dereference this Handle to access the underlying NLPlate_HPG0Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG0Constraint {
@@ -1428,6 +1440,12 @@ pub use crate::ffi_types::HandleNLPlateHPG0G1Constraint;
 unsafe impl crate::CppDeletable for HandleNLPlateHPG0G1Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleNLPlateHPG0G1Constraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_clone(ptr))
     }
 }
 
@@ -1961,6 +1979,12 @@ pub use crate::ffi_types::HandleNLPlateHPG0G2Constraint;
 unsafe impl crate::CppDeletable for HandleNLPlateHPG0G2Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleNLPlateHPG0G2Constraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_clone(ptr))
     }
 }
 
@@ -2509,6 +2533,12 @@ unsafe impl crate::CppDeletable for HandleNLPlateHPG0G3Constraint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleNLPlateHPG0G3Constraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_clone(ptr))
+    }
+}
+
 impl HandleNLPlateHPG0G3Constraint {
     /// Dereference this Handle to access the underlying NLPlate_HPG0G3Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG0G3Constraint {
@@ -2983,6 +3013,12 @@ pub use crate::ffi_types::HandleNLPlateHPG1Constraint;
 unsafe impl crate::CppDeletable for HandleNLPlateHPG1Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleNLPlateHPG1Constraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_clone(ptr))
     }
 }
 
@@ -3493,6 +3529,12 @@ pub use crate::ffi_types::HandleNLPlateHPG2Constraint;
 unsafe impl crate::CppDeletable for HandleNLPlateHPG2Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleNLPlateHPG2Constraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_clone(ptr))
     }
 }
 
@@ -4021,6 +4063,12 @@ pub use crate::ffi_types::HandleNLPlateHPG3Constraint;
 unsafe impl crate::CppDeletable for HandleNLPlateHPG3Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleNLPlateHPG3Constraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_clone(ptr))
     }
 }
 

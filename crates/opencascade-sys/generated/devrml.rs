@@ -390,6 +390,12 @@ unsafe impl crate::CppDeletable for HandleDEVRMLConfigurationNode {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleDEVRMLConfigurationNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleDEVRMLConfigurationNode_clone(ptr))
+    }
+}
+
 impl HandleDEVRMLConfigurationNode {
     /// Dereference this Handle to access the underlying DEVRML_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEVRML_ConfigurationNode {
@@ -845,6 +851,12 @@ pub use crate::ffi_types::HandleDEVRMLProvider;
 unsafe impl crate::CppDeletable for HandleDEVRMLProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEVRML::HandleDEVRMLProvider_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleDEVRMLProvider {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleDEVRMLProvider_clone(ptr))
     }
 }
 

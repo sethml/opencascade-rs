@@ -82,10 +82,22 @@ typedef opencascade::handle<LocOpe_WiresOnShape> HandleLocOpeWiresOnShape;
 typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleLocOpeGeneratedShape_destructor(HandleLocOpeGeneratedShape* self_) { delete self_; }
+extern "C" OcctResult<HandleLocOpeGeneratedShape*> HandleLocOpeGeneratedShape_clone(const HandleLocOpeGeneratedShape* self_) {
+    try { return {new HandleLocOpeGeneratedShape(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleLocOpeGluedShape_destructor(HandleLocOpeGluedShape* self_) { delete self_; }
+extern "C" OcctResult<HandleLocOpeGluedShape*> HandleLocOpeGluedShape_clone(const HandleLocOpeGluedShape* self_) {
+    try { return {new HandleLocOpeGluedShape(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleLocOpeWiresOnShape_destructor(HandleLocOpeWiresOnShape* self_) { delete self_; }
+extern "C" OcctResult<HandleLocOpeWiresOnShape*> HandleLocOpeWiresOnShape_clone(const HandleLocOpeWiresOnShape* self_) {
+    try { return {new HandleLocOpeWiresOnShape(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // BRepFeat_Builder wrappers

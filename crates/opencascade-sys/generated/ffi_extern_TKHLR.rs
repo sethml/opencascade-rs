@@ -845,6 +845,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleContapTheHSequenceOfPoint>;
     /// Destroy Handle<Contap_TheHSequenceOfPoint>
     pub fn HandleContapTheHSequenceOfPoint_destructor(self_: *mut HandleContapTheHSequenceOfPoint);
+    /// Clone Handle<Contap_TheHSequenceOfPoint> (increments reference count)
+    pub fn HandleContapTheHSequenceOfPoint_clone(
+        self_: *const HandleContapTheHSequenceOfPoint,
+    ) -> crate::OcctResult<*mut HandleContapTheHSequenceOfPoint>;
     /// Dereference Handle to get *const Contap_TheHSequenceOfPoint
     pub fn HandleContapTheHSequenceOfPoint_get(
         handle: *const HandleContapTheHSequenceOfPoint,
@@ -1052,6 +1056,10 @@ extern "C" {
     pub fn HandleContapTheIWLineOfTheIWalking_destructor(
         self_: *mut HandleContapTheIWLineOfTheIWalking,
     );
+    /// Clone Handle<Contap_TheIWLineOfTheIWalking> (increments reference count)
+    pub fn HandleContapTheIWLineOfTheIWalking_clone(
+        self_: *const HandleContapTheIWLineOfTheIWalking,
+    ) -> crate::OcctResult<*mut HandleContapTheIWLineOfTheIWalking>;
     /// Dereference Handle to get *const Contap_TheIWLineOfTheIWalking
     pub fn HandleContapTheIWLineOfTheIWalking_get(
         handle: *const HandleContapTheIWLineOfTheIWalking,
@@ -1755,6 +1763,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRAlgoEdgesBlock>;
     /// Destroy Handle<HLRAlgo_EdgesBlock>
     pub fn HandleHLRAlgoEdgesBlock_destructor(self_: *mut HandleHLRAlgoEdgesBlock);
+    /// Clone Handle<HLRAlgo_EdgesBlock> (increments reference count)
+    pub fn HandleHLRAlgoEdgesBlock_clone(
+        self_: *const HandleHLRAlgoEdgesBlock,
+    ) -> crate::OcctResult<*mut HandleHLRAlgoEdgesBlock>;
     /// Dereference Handle to get *const HLRAlgo_EdgesBlock
     pub fn HandleHLRAlgoEdgesBlock_get(
         handle: *const HandleHLRAlgoEdgesBlock,
@@ -1859,6 +1871,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPHDat>;
     /// Destroy Handle<HLRAlgo_HArray1OfPHDat>
     pub fn HandleHLRAlgoHArray1OfPHDat_destructor(self_: *mut HandleHLRAlgoHArray1OfPHDat);
+    /// Clone Handle<HLRAlgo_HArray1OfPHDat> (increments reference count)
+    pub fn HandleHLRAlgoHArray1OfPHDat_clone(
+        self_: *const HandleHLRAlgoHArray1OfPHDat,
+    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPHDat>;
     /// Dereference Handle to get *const HLRAlgo_HArray1OfPHDat
     pub fn HandleHLRAlgoHArray1OfPHDat_get(
         handle: *const HandleHLRAlgoHArray1OfPHDat,
@@ -1958,6 +1974,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPINod>;
     /// Destroy Handle<HLRAlgo_HArray1OfPINod>
     pub fn HandleHLRAlgoHArray1OfPINod_destructor(self_: *mut HandleHLRAlgoHArray1OfPINod);
+    /// Clone Handle<HLRAlgo_HArray1OfPINod> (increments reference count)
+    pub fn HandleHLRAlgoHArray1OfPINod_clone(
+        self_: *const HandleHLRAlgoHArray1OfPINod,
+    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPINod>;
     /// Dereference Handle to get *const HLRAlgo_HArray1OfPINod
     pub fn HandleHLRAlgoHArray1OfPINod_get(
         handle: *const HandleHLRAlgoHArray1OfPINod,
@@ -2057,6 +2077,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPISeg>;
     /// Destroy Handle<HLRAlgo_HArray1OfPISeg>
     pub fn HandleHLRAlgoHArray1OfPISeg_destructor(self_: *mut HandleHLRAlgoHArray1OfPISeg);
+    /// Clone Handle<HLRAlgo_HArray1OfPISeg> (increments reference count)
+    pub fn HandleHLRAlgoHArray1OfPISeg_clone(
+        self_: *const HandleHLRAlgoHArray1OfPISeg,
+    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPISeg>;
     /// Dereference Handle to get *const HLRAlgo_HArray1OfPISeg
     pub fn HandleHLRAlgoHArray1OfPISeg_get(
         handle: *const HandleHLRAlgoHArray1OfPISeg,
@@ -2156,6 +2180,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfTData>;
     /// Destroy Handle<HLRAlgo_HArray1OfTData>
     pub fn HandleHLRAlgoHArray1OfTData_destructor(self_: *mut HandleHLRAlgoHArray1OfTData);
+    /// Clone Handle<HLRAlgo_HArray1OfTData> (increments reference count)
+    pub fn HandleHLRAlgoHArray1OfTData_clone(
+        self_: *const HandleHLRAlgoHArray1OfTData,
+    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfTData>;
     /// Dereference Handle to get *const HLRAlgo_HArray1OfTData
     pub fn HandleHLRAlgoHArray1OfTData_get(
         handle: *const HandleHLRAlgoHArray1OfTData,
@@ -2411,6 +2439,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRAlgoPolyAlgo>;
     /// Destroy Handle<HLRAlgo_PolyAlgo>
     pub fn HandleHLRAlgoPolyAlgo_destructor(self_: *mut HandleHLRAlgoPolyAlgo);
+    /// Clone Handle<HLRAlgo_PolyAlgo> (increments reference count)
+    pub fn HandleHLRAlgoPolyAlgo_clone(
+        self_: *const HandleHLRAlgoPolyAlgo,
+    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyAlgo>;
     /// Dereference Handle to get *const HLRAlgo_PolyAlgo
     pub fn HandleHLRAlgoPolyAlgo_get(
         handle: *const HandleHLRAlgoPolyAlgo,
@@ -2533,6 +2565,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRAlgoPolyData>;
     /// Destroy Handle<HLRAlgo_PolyData>
     pub fn HandleHLRAlgoPolyData_destructor(self_: *mut HandleHLRAlgoPolyData);
+    /// Clone Handle<HLRAlgo_PolyData> (increments reference count)
+    pub fn HandleHLRAlgoPolyData_clone(
+        self_: *const HandleHLRAlgoPolyData,
+    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyData>;
     /// Dereference Handle to get *const HLRAlgo_PolyData
     pub fn HandleHLRAlgoPolyData_get(
         handle: *const HandleHLRAlgoPolyData,
@@ -2756,6 +2792,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRAlgoPolyInternalData>;
     /// Destroy Handle<HLRAlgo_PolyInternalData>
     pub fn HandleHLRAlgoPolyInternalData_destructor(self_: *mut HandleHLRAlgoPolyInternalData);
+    /// Clone Handle<HLRAlgo_PolyInternalData> (increments reference count)
+    pub fn HandleHLRAlgoPolyInternalData_clone(
+        self_: *const HandleHLRAlgoPolyInternalData,
+    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyInternalData>;
     /// Dereference Handle to get *const HLRAlgo_PolyInternalData
     pub fn HandleHLRAlgoPolyInternalData_get(
         handle: *const HandleHLRAlgoPolyInternalData,
@@ -2833,6 +2873,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRAlgoPolyInternalNode>;
     /// Destroy Handle<HLRAlgo_PolyInternalNode>
     pub fn HandleHLRAlgoPolyInternalNode_destructor(self_: *mut HandleHLRAlgoPolyInternalNode);
+    /// Clone Handle<HLRAlgo_PolyInternalNode> (increments reference count)
+    pub fn HandleHLRAlgoPolyInternalNode_clone(
+        self_: *const HandleHLRAlgoPolyInternalNode,
+    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyInternalNode>;
     /// Dereference Handle to get *const HLRAlgo_PolyInternalNode
     pub fn HandleHLRAlgoPolyInternalNode_get(
         handle: *const HandleHLRAlgoPolyInternalNode,
@@ -2949,6 +2993,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRAlgoPolyShellData>;
     /// Destroy Handle<HLRAlgo_PolyShellData>
     pub fn HandleHLRAlgoPolyShellData_destructor(self_: *mut HandleHLRAlgoPolyShellData);
+    /// Clone Handle<HLRAlgo_PolyShellData> (increments reference count)
+    pub fn HandleHLRAlgoPolyShellData_clone(
+        self_: *const HandleHLRAlgoPolyShellData,
+    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyShellData>;
     /// Dereference Handle to get *const HLRAlgo_PolyShellData
     pub fn HandleHLRAlgoPolyShellData_get(
         handle: *const HandleHLRAlgoPolyShellData,
@@ -3150,6 +3198,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRAlgoWiresBlock>;
     /// Destroy Handle<HLRAlgo_WiresBlock>
     pub fn HandleHLRAlgoWiresBlock_destructor(self_: *mut HandleHLRAlgoWiresBlock);
+    /// Clone Handle<HLRAlgo_WiresBlock> (increments reference count)
+    pub fn HandleHLRAlgoWiresBlock_clone(
+        self_: *const HandleHLRAlgoWiresBlock,
+    ) -> crate::OcctResult<*mut HandleHLRAlgoWiresBlock>;
     /// Dereference Handle to get *const HLRAlgo_WiresBlock
     pub fn HandleHLRAlgoWiresBlock_get(
         handle: *const HandleHLRAlgoWiresBlock,
@@ -3286,6 +3338,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRBRepAlgo>;
     /// Destroy Handle<HLRBRep_Algo>
     pub fn HandleHLRBRepAlgo_destructor(self_: *mut HandleHLRBRepAlgo);
+    /// Clone Handle<HLRBRep_Algo> (increments reference count)
+    pub fn HandleHLRBRepAlgo_clone(
+        self_: *const HandleHLRBRepAlgo,
+    ) -> crate::OcctResult<*mut HandleHLRBRepAlgo>;
     /// Dereference Handle to get *const HLRBRep_Algo
     pub fn HandleHLRBRepAlgo_get(
         handle: *const HandleHLRBRepAlgo,
@@ -3496,6 +3552,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRBRepAreaLimit>;
     /// Destroy Handle<HLRBRep_AreaLimit>
     pub fn HandleHLRBRepAreaLimit_destructor(self_: *mut HandleHLRBRepAreaLimit);
+    /// Clone Handle<HLRBRep_AreaLimit> (increments reference count)
+    pub fn HandleHLRBRepAreaLimit_clone(
+        self_: *const HandleHLRBRepAreaLimit,
+    ) -> crate::OcctResult<*mut HandleHLRBRepAreaLimit>;
     /// Dereference Handle to get *const HLRBRep_AreaLimit
     pub fn HandleHLRBRepAreaLimit_get(
         handle: *const HandleHLRBRepAreaLimit,
@@ -4785,6 +4845,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRBRepData>;
     /// Destroy Handle<HLRBRep_Data>
     pub fn HandleHLRBRepData_destructor(self_: *mut HandleHLRBRepData);
+    /// Clone Handle<HLRBRep_Data> (increments reference count)
+    pub fn HandleHLRBRepData_clone(
+        self_: *const HandleHLRBRepData,
+    ) -> crate::OcctResult<*mut HandleHLRBRepData>;
     /// Dereference Handle to get *const HLRBRep_Data
     pub fn HandleHLRBRepData_get(
         handle: *const HandleHLRBRepData,
@@ -5912,6 +5976,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRBRepInternalAlgo>;
     /// Destroy Handle<HLRBRep_InternalAlgo>
     pub fn HandleHLRBRepInternalAlgo_destructor(self_: *mut HandleHLRBRepInternalAlgo);
+    /// Clone Handle<HLRBRep_InternalAlgo> (increments reference count)
+    pub fn HandleHLRBRepInternalAlgo_clone(
+        self_: *const HandleHLRBRepInternalAlgo,
+    ) -> crate::OcctResult<*mut HandleHLRBRepInternalAlgo>;
     /// Dereference Handle to get *const HLRBRep_InternalAlgo
     pub fn HandleHLRBRepInternalAlgo_get(
         handle: *const HandleHLRBRepInternalAlgo,
@@ -6422,6 +6490,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRBRepPolyAlgo>;
     /// Destroy Handle<HLRBRep_PolyAlgo>
     pub fn HandleHLRBRepPolyAlgo_destructor(self_: *mut HandleHLRBRepPolyAlgo);
+    /// Clone Handle<HLRBRep_PolyAlgo> (increments reference count)
+    pub fn HandleHLRBRepPolyAlgo_clone(
+        self_: *const HandleHLRBRepPolyAlgo,
+    ) -> crate::OcctResult<*mut HandleHLRBRepPolyAlgo>;
     /// Dereference Handle to get *const HLRBRep_PolyAlgo
     pub fn HandleHLRBRepPolyAlgo_get(
         handle: *const HandleHLRBRepPolyAlgo,
@@ -8755,6 +8827,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleHLRTopoBRepOutLiner>;
     /// Destroy Handle<HLRTopoBRep_OutLiner>
     pub fn HandleHLRTopoBRepOutLiner_destructor(self_: *mut HandleHLRTopoBRepOutLiner);
+    /// Clone Handle<HLRTopoBRep_OutLiner> (increments reference count)
+    pub fn HandleHLRTopoBRepOutLiner_clone(
+        self_: *const HandleHLRTopoBRepOutLiner,
+    ) -> crate::OcctResult<*mut HandleHLRTopoBRepOutLiner>;
     /// Dereference Handle to get *const HLRTopoBRep_OutLiner
     pub fn HandleHLRTopoBRepOutLiner_get(
         handle: *const HandleHLRTopoBRepOutLiner,

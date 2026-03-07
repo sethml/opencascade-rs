@@ -44,6 +44,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepMesh_BaseMeshAlgo>
     pub fn HandleBRepMeshBaseMeshAlgo_destructor(self_: *mut HandleBRepMeshBaseMeshAlgo);
+    /// Clone Handle<BRepMesh_BaseMeshAlgo> (increments reference count)
+    pub fn HandleBRepMeshBaseMeshAlgo_clone(
+        self_: *const HandleBRepMeshBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut HandleBRepMeshBaseMeshAlgo>;
     /// Dereference Handle to get *const BRepMesh_BaseMeshAlgo
     pub fn HandleBRepMeshBaseMeshAlgo_get(
         handle: *const HandleBRepMeshBaseMeshAlgo,
@@ -338,6 +342,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshClassifier>;
     /// Destroy Handle<BRepMesh_Classifier>
     pub fn HandleBRepMeshClassifier_destructor(self_: *mut HandleBRepMeshClassifier);
+    /// Clone Handle<BRepMesh_Classifier> (increments reference count)
+    pub fn HandleBRepMeshClassifier_clone(
+        self_: *const HandleBRepMeshClassifier,
+    ) -> crate::OcctResult<*mut HandleBRepMeshClassifier>;
     /// Dereference Handle to get *const BRepMesh_Classifier
     pub fn HandleBRepMeshClassifier_get(
         handle: *const HandleBRepMeshClassifier,
@@ -499,6 +507,10 @@ extern "C" {
     pub fn HandleBRepMeshConstrainedBaseMeshAlgo_destructor(
         self_: *mut HandleBRepMeshConstrainedBaseMeshAlgo,
     );
+    /// Clone Handle<BRepMesh_ConstrainedBaseMeshAlgo> (increments reference count)
+    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_clone(
+        self_: *const HandleBRepMeshConstrainedBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut HandleBRepMeshConstrainedBaseMeshAlgo>;
     /// Dereference Handle to get *const BRepMesh_ConstrainedBaseMeshAlgo
     pub fn HandleBRepMeshConstrainedBaseMeshAlgo_get(
         handle: *const HandleBRepMeshConstrainedBaseMeshAlgo,
@@ -608,6 +620,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshContext>;
     /// Destroy Handle<BRepMesh_Context>
     pub fn HandleBRepMeshContext_destructor(self_: *mut HandleBRepMeshContext);
+    /// Clone Handle<BRepMesh_Context> (increments reference count)
+    pub fn HandleBRepMeshContext_clone(
+        self_: *const HandleBRepMeshContext,
+    ) -> crate::OcctResult<*mut HandleBRepMeshContext>;
     /// Dereference Handle to get *const BRepMesh_Context
     pub fn HandleBRepMeshContext_get(
         handle: *const HandleBRepMeshContext,
@@ -820,6 +836,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshCurveTessellator>;
     /// Destroy Handle<BRepMesh_CurveTessellator>
     pub fn HandleBRepMeshCurveTessellator_destructor(self_: *mut HandleBRepMeshCurveTessellator);
+    /// Clone Handle<BRepMesh_CurveTessellator> (increments reference count)
+    pub fn HandleBRepMeshCurveTessellator_clone(
+        self_: *const HandleBRepMeshCurveTessellator,
+    ) -> crate::OcctResult<*mut HandleBRepMeshCurveTessellator>;
     /// Dereference Handle to get *const BRepMesh_CurveTessellator
     pub fn HandleBRepMeshCurveTessellator_get(
         handle: *const HandleBRepMeshCurveTessellator,
@@ -913,6 +933,10 @@ extern "C" {
     pub fn HandleBRepMeshCustomBaseMeshAlgo_destructor(
         self_: *mut HandleBRepMeshCustomBaseMeshAlgo,
     );
+    /// Clone Handle<BRepMesh_CustomBaseMeshAlgo> (increments reference count)
+    pub fn HandleBRepMeshCustomBaseMeshAlgo_clone(
+        self_: *const HandleBRepMeshCustomBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut HandleBRepMeshCustomBaseMeshAlgo>;
     /// Dereference Handle to get *const BRepMesh_CustomBaseMeshAlgo
     pub fn HandleBRepMeshCustomBaseMeshAlgo_get(
         handle: *const HandleBRepMeshCustomBaseMeshAlgo,
@@ -1221,6 +1245,10 @@ extern "C" {
     pub fn HandleBRepMeshDataStructureOfDelaun_destructor(
         self_: *mut HandleBRepMeshDataStructureOfDelaun,
     );
+    /// Clone Handle<BRepMesh_DataStructureOfDelaun> (increments reference count)
+    pub fn HandleBRepMeshDataStructureOfDelaun_clone(
+        self_: *const HandleBRepMeshDataStructureOfDelaun,
+    ) -> crate::OcctResult<*mut HandleBRepMeshDataStructureOfDelaun>;
     /// Dereference Handle to get *const BRepMesh_DataStructureOfDelaun
     pub fn HandleBRepMeshDataStructureOfDelaun_get(
         handle: *const HandleBRepMeshDataStructureOfDelaun,
@@ -1382,6 +1410,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshDeflection>;
     /// Destroy Handle<BRepMesh_Deflection>
     pub fn HandleBRepMeshDeflection_destructor(self_: *mut HandleBRepMeshDeflection);
+    /// Clone Handle<BRepMesh_Deflection> (increments reference count)
+    pub fn HandleBRepMeshDeflection_clone(
+        self_: *const HandleBRepMeshDeflection,
+    ) -> crate::OcctResult<*mut HandleBRepMeshDeflection>;
     /// Dereference Handle to get *const BRepMesh_Deflection
     pub fn HandleBRepMeshDeflection_get(
         handle: *const HandleBRepMeshDeflection,
@@ -1487,6 +1519,10 @@ extern "C" {
     pub fn HandleBRepMeshDelabellaBaseMeshAlgo_destructor(
         self_: *mut HandleBRepMeshDelabellaBaseMeshAlgo,
     );
+    /// Clone Handle<BRepMesh_DelabellaBaseMeshAlgo> (increments reference count)
+    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_clone(
+        self_: *const HandleBRepMeshDelabellaBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaBaseMeshAlgo>;
     /// Dereference Handle to get *const BRepMesh_DelabellaBaseMeshAlgo
     pub fn HandleBRepMeshDelabellaBaseMeshAlgo_get(
         handle: *const HandleBRepMeshDelabellaBaseMeshAlgo,
@@ -1599,6 +1635,10 @@ extern "C" {
     pub fn HandleBRepMeshDelabellaMeshAlgoFactory_destructor(
         self_: *mut HandleBRepMeshDelabellaMeshAlgoFactory,
     );
+    /// Clone Handle<BRepMesh_DelabellaMeshAlgoFactory> (increments reference count)
+    pub fn HandleBRepMeshDelabellaMeshAlgoFactory_clone(
+        self_: *const HandleBRepMeshDelabellaMeshAlgoFactory,
+    ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaMeshAlgoFactory>;
     /// Dereference Handle to get *const BRepMesh_DelabellaMeshAlgoFactory
     pub fn HandleBRepMeshDelabellaMeshAlgoFactory_get(
         handle: *const HandleBRepMeshDelabellaMeshAlgoFactory,
@@ -1813,6 +1853,10 @@ extern "C" {
     pub fn HandleBRepMeshDelaunayBaseMeshAlgo_destructor(
         self_: *mut HandleBRepMeshDelaunayBaseMeshAlgo,
     );
+    /// Clone Handle<BRepMesh_DelaunayBaseMeshAlgo> (increments reference count)
+    pub fn HandleBRepMeshDelaunayBaseMeshAlgo_clone(
+        self_: *const HandleBRepMeshDelaunayBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut HandleBRepMeshDelaunayBaseMeshAlgo>;
     /// Dereference Handle to get *const BRepMesh_DelaunayBaseMeshAlgo
     pub fn HandleBRepMeshDelaunayBaseMeshAlgo_get(
         handle: *const HandleBRepMeshDelaunayBaseMeshAlgo,
@@ -1954,6 +1998,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepMesh_DiscretRoot>
     pub fn HandleBRepMeshDiscretRoot_destructor(self_: *mut HandleBRepMeshDiscretRoot);
+    /// Clone Handle<BRepMesh_DiscretRoot> (increments reference count)
+    pub fn HandleBRepMeshDiscretRoot_clone(
+        self_: *const HandleBRepMeshDiscretRoot,
+    ) -> crate::OcctResult<*mut HandleBRepMeshDiscretRoot>;
     /// Dereference Handle to get *const BRepMesh_DiscretRoot
     pub fn HandleBRepMeshDiscretRoot_get(
         handle: *const HandleBRepMeshDiscretRoot,
@@ -2104,6 +2152,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshEdgeDiscret>;
     /// Destroy Handle<BRepMesh_EdgeDiscret>
     pub fn HandleBRepMeshEdgeDiscret_destructor(self_: *mut HandleBRepMeshEdgeDiscret);
+    /// Clone Handle<BRepMesh_EdgeDiscret> (increments reference count)
+    pub fn HandleBRepMeshEdgeDiscret_clone(
+        self_: *const HandleBRepMeshEdgeDiscret,
+    ) -> crate::OcctResult<*mut HandleBRepMeshEdgeDiscret>;
     /// Dereference Handle to get *const BRepMesh_EdgeDiscret
     pub fn HandleBRepMeshEdgeDiscret_get(
         handle: *const HandleBRepMeshEdgeDiscret,
@@ -2211,6 +2263,10 @@ extern "C" {
     pub fn HandleBRepMeshEdgeTessellationExtractor_destructor(
         self_: *mut HandleBRepMeshEdgeTessellationExtractor,
     );
+    /// Clone Handle<BRepMesh_EdgeTessellationExtractor> (increments reference count)
+    pub fn HandleBRepMeshEdgeTessellationExtractor_clone(
+        self_: *const HandleBRepMeshEdgeTessellationExtractor,
+    ) -> crate::OcctResult<*mut HandleBRepMeshEdgeTessellationExtractor>;
     /// Dereference Handle to get *const BRepMesh_EdgeTessellationExtractor
     pub fn HandleBRepMeshEdgeTessellationExtractor_get(
         handle: *const HandleBRepMeshEdgeTessellationExtractor,
@@ -2386,6 +2442,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshFaceChecker>;
     /// Destroy Handle<BRepMesh_FaceChecker>
     pub fn HandleBRepMeshFaceChecker_destructor(self_: *mut HandleBRepMeshFaceChecker);
+    /// Clone Handle<BRepMesh_FaceChecker> (increments reference count)
+    pub fn HandleBRepMeshFaceChecker_clone(
+        self_: *const HandleBRepMeshFaceChecker,
+    ) -> crate::OcctResult<*mut HandleBRepMeshFaceChecker>;
     /// Dereference Handle to get *const BRepMesh_FaceChecker
     pub fn HandleBRepMeshFaceChecker_get(
         handle: *const HandleBRepMeshFaceChecker,
@@ -2469,6 +2529,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshFaceDiscret>;
     /// Destroy Handle<BRepMesh_FaceDiscret>
     pub fn HandleBRepMeshFaceDiscret_destructor(self_: *mut HandleBRepMeshFaceDiscret);
+    /// Clone Handle<BRepMesh_FaceDiscret> (increments reference count)
+    pub fn HandleBRepMeshFaceDiscret_clone(
+        self_: *const HandleBRepMeshFaceDiscret,
+    ) -> crate::OcctResult<*mut HandleBRepMeshFaceDiscret>;
     /// Dereference Handle to get *const BRepMesh_FaceDiscret
     pub fn HandleBRepMeshFaceDiscret_get(
         handle: *const HandleBRepMeshFaceDiscret,
@@ -2702,6 +2766,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshIncrementalMesh>;
     /// Destroy Handle<BRepMesh_IncrementalMesh>
     pub fn HandleBRepMeshIncrementalMesh_destructor(self_: *mut HandleBRepMeshIncrementalMesh);
+    /// Clone Handle<BRepMesh_IncrementalMesh> (increments reference count)
+    pub fn HandleBRepMeshIncrementalMesh_clone(
+        self_: *const HandleBRepMeshIncrementalMesh,
+    ) -> crate::OcctResult<*mut HandleBRepMeshIncrementalMesh>;
     /// Dereference Handle to get *const BRepMesh_IncrementalMesh
     pub fn HandleBRepMeshIncrementalMesh_get(
         handle: *const HandleBRepMeshIncrementalMesh,
@@ -2802,6 +2870,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshMeshAlgoFactory>;
     /// Destroy Handle<BRepMesh_MeshAlgoFactory>
     pub fn HandleBRepMeshMeshAlgoFactory_destructor(self_: *mut HandleBRepMeshMeshAlgoFactory);
+    /// Clone Handle<BRepMesh_MeshAlgoFactory> (increments reference count)
+    pub fn HandleBRepMeshMeshAlgoFactory_clone(
+        self_: *const HandleBRepMeshMeshAlgoFactory,
+    ) -> crate::OcctResult<*mut HandleBRepMeshMeshAlgoFactory>;
     /// Dereference Handle to get *const BRepMesh_MeshAlgoFactory
     pub fn HandleBRepMeshMeshAlgoFactory_get(
         handle: *const HandleBRepMeshMeshAlgoFactory,
@@ -2949,6 +3021,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshMeshTool>;
     /// Destroy Handle<BRepMesh_MeshTool>
     pub fn HandleBRepMeshMeshTool_destructor(self_: *mut HandleBRepMeshMeshTool);
+    /// Clone Handle<BRepMesh_MeshTool> (increments reference count)
+    pub fn HandleBRepMeshMeshTool_clone(
+        self_: *const HandleBRepMeshMeshTool,
+    ) -> crate::OcctResult<*mut HandleBRepMeshMeshTool>;
     /// Dereference Handle to get *const BRepMesh_MeshTool
     pub fn HandleBRepMeshMeshTool_get(
         handle: *const HandleBRepMeshMeshTool,
@@ -3048,6 +3124,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshModelBuilder>;
     /// Destroy Handle<BRepMesh_ModelBuilder>
     pub fn HandleBRepMeshModelBuilder_destructor(self_: *mut HandleBRepMeshModelBuilder);
+    /// Clone Handle<BRepMesh_ModelBuilder> (increments reference count)
+    pub fn HandleBRepMeshModelBuilder_clone(
+        self_: *const HandleBRepMeshModelBuilder,
+    ) -> crate::OcctResult<*mut HandleBRepMeshModelBuilder>;
     /// Dereference Handle to get *const BRepMesh_ModelBuilder
     pub fn HandleBRepMeshModelBuilder_get(
         handle: *const HandleBRepMeshModelBuilder,
@@ -3192,6 +3272,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshModelHealer>;
     /// Destroy Handle<BRepMesh_ModelHealer>
     pub fn HandleBRepMeshModelHealer_destructor(self_: *mut HandleBRepMeshModelHealer);
+    /// Clone Handle<BRepMesh_ModelHealer> (increments reference count)
+    pub fn HandleBRepMeshModelHealer_clone(
+        self_: *const HandleBRepMeshModelHealer,
+    ) -> crate::OcctResult<*mut HandleBRepMeshModelHealer>;
     /// Dereference Handle to get *const BRepMesh_ModelHealer
     pub fn HandleBRepMeshModelHealer_get(
         handle: *const HandleBRepMeshModelHealer,
@@ -3282,6 +3366,10 @@ extern "C" {
     pub fn HandleBRepMeshModelPostProcessor_destructor(
         self_: *mut HandleBRepMeshModelPostProcessor,
     );
+    /// Clone Handle<BRepMesh_ModelPostProcessor> (increments reference count)
+    pub fn HandleBRepMeshModelPostProcessor_clone(
+        self_: *const HandleBRepMeshModelPostProcessor,
+    ) -> crate::OcctResult<*mut HandleBRepMeshModelPostProcessor>;
     /// Dereference Handle to get *const BRepMesh_ModelPostProcessor
     pub fn HandleBRepMeshModelPostProcessor_get(
         handle: *const HandleBRepMeshModelPostProcessor,
@@ -3370,6 +3458,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshModelPreProcessor>;
     /// Destroy Handle<BRepMesh_ModelPreProcessor>
     pub fn HandleBRepMeshModelPreProcessor_destructor(self_: *mut HandleBRepMeshModelPreProcessor);
+    /// Clone Handle<BRepMesh_ModelPreProcessor> (increments reference count)
+    pub fn HandleBRepMeshModelPreProcessor_clone(
+        self_: *const HandleBRepMeshModelPreProcessor,
+    ) -> crate::OcctResult<*mut HandleBRepMeshModelPreProcessor>;
     /// Dereference Handle to get *const BRepMesh_ModelPreProcessor
     pub fn HandleBRepMeshModelPreProcessor_get(
         handle: *const HandleBRepMeshModelPreProcessor,
@@ -3682,6 +3774,10 @@ extern "C" {
     pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_destructor(
         self_: *mut HandleBRepMeshSelectorOfDataStructureOfDelaun,
     );
+    /// Clone Handle<BRepMesh_SelectorOfDataStructureOfDelaun> (increments reference count)
+    pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_clone(
+        self_: *const HandleBRepMeshSelectorOfDataStructureOfDelaun,
+    ) -> crate::OcctResult<*mut HandleBRepMeshSelectorOfDataStructureOfDelaun>;
     /// Dereference Handle to get *const BRepMesh_SelectorOfDataStructureOfDelaun
     pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_get(
         handle: *const HandleBRepMeshSelectorOfDataStructureOfDelaun,
@@ -3832,6 +3928,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshShapeTool>;
     /// Destroy Handle<BRepMesh_ShapeTool>
     pub fn HandleBRepMeshShapeTool_destructor(self_: *mut HandleBRepMeshShapeTool);
+    /// Clone Handle<BRepMesh_ShapeTool> (increments reference count)
+    pub fn HandleBRepMeshShapeTool_clone(
+        self_: *const HandleBRepMeshShapeTool,
+    ) -> crate::OcctResult<*mut HandleBRepMeshShapeTool>;
     /// Dereference Handle to get *const BRepMesh_ShapeTool
     pub fn HandleBRepMeshShapeTool_get(
         handle: *const HandleBRepMeshShapeTool,
@@ -3921,6 +4021,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshShapeVisitor>;
     /// Destroy Handle<BRepMesh_ShapeVisitor>
     pub fn HandleBRepMeshShapeVisitor_destructor(self_: *mut HandleBRepMeshShapeVisitor);
+    /// Clone Handle<BRepMesh_ShapeVisitor> (increments reference count)
+    pub fn HandleBRepMeshShapeVisitor_clone(
+        self_: *const HandleBRepMeshShapeVisitor,
+    ) -> crate::OcctResult<*mut HandleBRepMeshShapeVisitor>;
     /// Dereference Handle to get *const BRepMesh_ShapeVisitor
     pub fn HandleBRepMeshShapeVisitor_get(
         handle: *const HandleBRepMeshShapeVisitor,
@@ -4521,6 +4625,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepMeshVertexTool>;
     /// Destroy Handle<BRepMesh_VertexTool>
     pub fn HandleBRepMeshVertexTool_destructor(self_: *mut HandleBRepMeshVertexTool);
+    /// Clone Handle<BRepMesh_VertexTool> (increments reference count)
+    pub fn HandleBRepMeshVertexTool_clone(
+        self_: *const HandleBRepMeshVertexTool,
+    ) -> crate::OcctResult<*mut HandleBRepMeshVertexTool>;
     /// Dereference Handle to get *const BRepMesh_VertexTool
     pub fn HandleBRepMeshVertexTool_get(
         handle: *const HandleBRepMeshVertexTool,
@@ -4614,6 +4722,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_Curve>
     pub fn HandleIMeshDataCurve_destructor(self_: *mut HandleIMeshDataCurve);
+    /// Clone Handle<IMeshData_Curve> (increments reference count)
+    pub fn HandleIMeshDataCurve_clone(
+        self_: *const HandleIMeshDataCurve,
+    ) -> crate::OcctResult<*mut HandleIMeshDataCurve>;
     /// Dereference Handle to get *const IMeshData_Curve
     pub fn HandleIMeshDataCurve_get(
         handle: *const HandleIMeshDataCurve,
@@ -4775,6 +4887,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_Edge>
     pub fn HandleIMeshDataEdge_destructor(self_: *mut HandleIMeshDataEdge);
+    /// Clone Handle<IMeshData_Edge> (increments reference count)
+    pub fn HandleIMeshDataEdge_clone(
+        self_: *const HandleIMeshDataEdge,
+    ) -> crate::OcctResult<*mut HandleIMeshDataEdge>;
     /// Dereference Handle to get *const IMeshData_Edge
     pub fn HandleIMeshDataEdge_get(
         handle: *const HandleIMeshDataEdge,
@@ -4933,6 +5049,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_Face>
     pub fn HandleIMeshDataFace_destructor(self_: *mut HandleIMeshDataFace);
+    /// Clone Handle<IMeshData_Face> (increments reference count)
+    pub fn HandleIMeshDataFace_clone(
+        self_: *const HandleIMeshDataFace,
+    ) -> crate::OcctResult<*mut HandleIMeshDataFace>;
     /// Dereference Handle to get *const IMeshData_Face
     pub fn HandleIMeshDataFace_get(
         handle: *const HandleIMeshDataFace,
@@ -5078,6 +5198,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_Model>
     pub fn HandleIMeshDataModel_destructor(self_: *mut HandleIMeshDataModel);
+    /// Clone Handle<IMeshData_Model> (increments reference count)
+    pub fn HandleIMeshDataModel_clone(
+        self_: *const HandleIMeshDataModel,
+    ) -> crate::OcctResult<*mut HandleIMeshDataModel>;
     /// Dereference Handle to get *const IMeshData_Model
     pub fn HandleIMeshDataModel_get(
         handle: *const HandleIMeshDataModel,
@@ -5197,6 +5321,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_PCurve>
     pub fn HandleIMeshDataPCurve_destructor(self_: *mut HandleIMeshDataPCurve);
+    /// Clone Handle<IMeshData_PCurve> (increments reference count)
+    pub fn HandleIMeshDataPCurve_clone(
+        self_: *const HandleIMeshDataPCurve,
+    ) -> crate::OcctResult<*mut HandleIMeshDataPCurve>;
     /// Dereference Handle to get *const IMeshData_PCurve
     pub fn HandleIMeshDataPCurve_get(
         handle: *const HandleIMeshDataPCurve,
@@ -5292,6 +5420,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_ParametersList>
     pub fn HandleIMeshDataParametersList_destructor(self_: *mut HandleIMeshDataParametersList);
+    /// Clone Handle<IMeshData_ParametersList> (increments reference count)
+    pub fn HandleIMeshDataParametersList_clone(
+        self_: *const HandleIMeshDataParametersList,
+    ) -> crate::OcctResult<*mut HandleIMeshDataParametersList>;
     /// Dereference Handle to get *const IMeshData_ParametersList
     pub fn HandleIMeshDataParametersList_get(
         handle: *const HandleIMeshDataParametersList,
@@ -5367,6 +5499,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
     /// Destroy Handle<IMeshData_Shape>
     pub fn HandleIMeshDataShape_destructor(self_: *mut HandleIMeshDataShape);
+    /// Clone Handle<IMeshData_Shape> (increments reference count)
+    pub fn HandleIMeshDataShape_clone(
+        self_: *const HandleIMeshDataShape,
+    ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
     /// Dereference Handle to get *const IMeshData_Shape
     pub fn HandleIMeshDataShape_get(
         handle: *const HandleIMeshDataShape,
@@ -5493,6 +5629,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIMeshDataTessellatedShape>;
     /// Destroy Handle<IMeshData_TessellatedShape>
     pub fn HandleIMeshDataTessellatedShape_destructor(self_: *mut HandleIMeshDataTessellatedShape);
+    /// Clone Handle<IMeshData_TessellatedShape> (increments reference count)
+    pub fn HandleIMeshDataTessellatedShape_clone(
+        self_: *const HandleIMeshDataTessellatedShape,
+    ) -> crate::OcctResult<*mut HandleIMeshDataTessellatedShape>;
     /// Dereference Handle to get *const IMeshData_TessellatedShape
     pub fn HandleIMeshDataTessellatedShape_get(
         handle: *const HandleIMeshDataTessellatedShape,
@@ -5603,6 +5743,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_Wire>
     pub fn HandleIMeshDataWire_destructor(self_: *mut HandleIMeshDataWire);
+    /// Clone Handle<IMeshData_Wire> (increments reference count)
+    pub fn HandleIMeshDataWire_clone(
+        self_: *const HandleIMeshDataWire,
+    ) -> crate::OcctResult<*mut HandleIMeshDataWire>;
     /// Dereference Handle to get *const IMeshData_Wire
     pub fn HandleIMeshDataWire_get(
         handle: *const HandleIMeshDataWire,
@@ -5820,6 +5964,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIMeshToolsContext>;
     /// Destroy Handle<IMeshTools_Context>
     pub fn HandleIMeshToolsContext_destructor(self_: *mut HandleIMeshToolsContext);
+    /// Clone Handle<IMeshTools_Context> (increments reference count)
+    pub fn HandleIMeshToolsContext_clone(
+        self_: *const HandleIMeshToolsContext,
+    ) -> crate::OcctResult<*mut HandleIMeshToolsContext>;
     /// Dereference Handle to get *const IMeshTools_Context
     pub fn HandleIMeshToolsContext_get(
         handle: *const HandleIMeshToolsContext,
@@ -5913,6 +6061,10 @@ extern "C" {
     pub fn HandleIMeshToolsCurveTessellator_destructor(
         self_: *mut HandleIMeshToolsCurveTessellator,
     );
+    /// Clone Handle<IMeshTools_CurveTessellator> (increments reference count)
+    pub fn HandleIMeshToolsCurveTessellator_clone(
+        self_: *const HandleIMeshToolsCurveTessellator,
+    ) -> crate::OcctResult<*mut HandleIMeshToolsCurveTessellator>;
     /// Dereference Handle to get *const IMeshTools_CurveTessellator
     pub fn HandleIMeshToolsCurveTessellator_get(
         handle: *const HandleIMeshToolsCurveTessellator,
@@ -5990,6 +6142,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshTools_MeshAlgo>
     pub fn HandleIMeshToolsMeshAlgo_destructor(self_: *mut HandleIMeshToolsMeshAlgo);
+    /// Clone Handle<IMeshTools_MeshAlgo> (increments reference count)
+    pub fn HandleIMeshToolsMeshAlgo_clone(
+        self_: *const HandleIMeshToolsMeshAlgo,
+    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgo>;
     /// Dereference Handle to get *const IMeshTools_MeshAlgo
     pub fn HandleIMeshToolsMeshAlgo_get(
         handle: *const HandleIMeshToolsMeshAlgo,
@@ -6071,6 +6227,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshTools_MeshAlgoFactory>
     pub fn HandleIMeshToolsMeshAlgoFactory_destructor(self_: *mut HandleIMeshToolsMeshAlgoFactory);
+    /// Clone Handle<IMeshTools_MeshAlgoFactory> (increments reference count)
+    pub fn HandleIMeshToolsMeshAlgoFactory_clone(
+        self_: *const HandleIMeshToolsMeshAlgoFactory,
+    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgoFactory>;
     /// Dereference Handle to get *const IMeshTools_MeshAlgoFactory
     pub fn HandleIMeshToolsMeshAlgoFactory_get(
         handle: *const HandleIMeshToolsMeshAlgoFactory,
@@ -6174,6 +6334,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIMeshToolsMeshBuilder>;
     /// Destroy Handle<IMeshTools_MeshBuilder>
     pub fn HandleIMeshToolsMeshBuilder_destructor(self_: *mut HandleIMeshToolsMeshBuilder);
+    /// Clone Handle<IMeshTools_MeshBuilder> (increments reference count)
+    pub fn HandleIMeshToolsMeshBuilder_clone(
+        self_: *const HandleIMeshToolsMeshBuilder,
+    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshBuilder>;
     /// Dereference Handle to get *const IMeshTools_MeshBuilder
     pub fn HandleIMeshToolsMeshBuilder_get(
         handle: *const HandleIMeshToolsMeshBuilder,
@@ -6301,6 +6465,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshTools_ModelAlgo>
     pub fn HandleIMeshToolsModelAlgo_destructor(self_: *mut HandleIMeshToolsModelAlgo);
+    /// Clone Handle<IMeshTools_ModelAlgo> (increments reference count)
+    pub fn HandleIMeshToolsModelAlgo_clone(
+        self_: *const HandleIMeshToolsModelAlgo,
+    ) -> crate::OcctResult<*mut HandleIMeshToolsModelAlgo>;
     /// Dereference Handle to get *const IMeshTools_ModelAlgo
     pub fn HandleIMeshToolsModelAlgo_get(
         handle: *const HandleIMeshToolsModelAlgo,
@@ -6398,6 +6566,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshTools_ModelBuilder>
     pub fn HandleIMeshToolsModelBuilder_destructor(self_: *mut HandleIMeshToolsModelBuilder);
+    /// Clone Handle<IMeshTools_ModelBuilder> (increments reference count)
+    pub fn HandleIMeshToolsModelBuilder_clone(
+        self_: *const HandleIMeshToolsModelBuilder,
+    ) -> crate::OcctResult<*mut HandleIMeshToolsModelBuilder>;
     /// Dereference Handle to get *const IMeshTools_ModelBuilder
     pub fn HandleIMeshToolsModelBuilder_get(
         handle: *const HandleIMeshToolsModelBuilder,
@@ -6550,6 +6722,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleIMeshToolsShapeExplorer>;
     /// Destroy Handle<IMeshTools_ShapeExplorer>
     pub fn HandleIMeshToolsShapeExplorer_destructor(self_: *mut HandleIMeshToolsShapeExplorer);
+    /// Clone Handle<IMeshTools_ShapeExplorer> (increments reference count)
+    pub fn HandleIMeshToolsShapeExplorer_clone(
+        self_: *const HandleIMeshToolsShapeExplorer,
+    ) -> crate::OcctResult<*mut HandleIMeshToolsShapeExplorer>;
     /// Dereference Handle to get *const IMeshTools_ShapeExplorer
     pub fn HandleIMeshToolsShapeExplorer_get(
         handle: *const HandleIMeshToolsShapeExplorer,
@@ -6636,6 +6812,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshTools_ShapeVisitor>
     pub fn HandleIMeshToolsShapeVisitor_destructor(self_: *mut HandleIMeshToolsShapeVisitor);
+    /// Clone Handle<IMeshTools_ShapeVisitor> (increments reference count)
+    pub fn HandleIMeshToolsShapeVisitor_clone(
+        self_: *const HandleIMeshToolsShapeVisitor,
+    ) -> crate::OcctResult<*mut HandleIMeshToolsShapeVisitor>;
     /// Dereference Handle to get *const IMeshTools_ShapeVisitor
     pub fn HandleIMeshToolsShapeVisitor_get(
         handle: *const HandleIMeshToolsShapeVisitor,

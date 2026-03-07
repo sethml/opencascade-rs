@@ -517,6 +517,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepCurve3D>;
     /// Destroy Handle<BRep_Curve3D>
     pub fn HandleBRepCurve3D_destructor(self_: *mut HandleBRepCurve3D);
+    /// Clone Handle<BRep_Curve3D> (increments reference count)
+    pub fn HandleBRepCurve3D_clone(
+        self_: *const HandleBRepCurve3D,
+    ) -> crate::OcctResult<*mut HandleBRepCurve3D>;
     /// Dereference Handle to get *const BRep_Curve3D
     pub fn HandleBRepCurve3D_get(
         handle: *const HandleBRepCurve3D,
@@ -748,6 +752,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepCurveOn2Surfaces>;
     /// Destroy Handle<BRep_CurveOn2Surfaces>
     pub fn HandleBRepCurveOn2Surfaces_destructor(self_: *mut HandleBRepCurveOn2Surfaces);
+    /// Clone Handle<BRep_CurveOn2Surfaces> (increments reference count)
+    pub fn HandleBRepCurveOn2Surfaces_clone(
+        self_: *const HandleBRepCurveOn2Surfaces,
+    ) -> crate::OcctResult<*mut HandleBRepCurveOn2Surfaces>;
     /// Dereference Handle to get *const BRep_CurveOn2Surfaces
     pub fn HandleBRepCurveOn2Surfaces_get(
         handle: *const HandleBRepCurveOn2Surfaces,
@@ -985,6 +993,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepCurveOnClosedSurface>;
     /// Destroy Handle<BRep_CurveOnClosedSurface>
     pub fn HandleBRepCurveOnClosedSurface_destructor(self_: *mut HandleBRepCurveOnClosedSurface);
+    /// Clone Handle<BRep_CurveOnClosedSurface> (increments reference count)
+    pub fn HandleBRepCurveOnClosedSurface_clone(
+        self_: *const HandleBRepCurveOnClosedSurface,
+    ) -> crate::OcctResult<*mut HandleBRepCurveOnClosedSurface>;
     /// Dereference Handle to get *const BRep_CurveOnClosedSurface
     pub fn HandleBRepCurveOnClosedSurface_get(
         handle: *const HandleBRepCurveOnClosedSurface,
@@ -1238,6 +1250,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepCurveOnSurface>;
     /// Destroy Handle<BRep_CurveOnSurface>
     pub fn HandleBRepCurveOnSurface_destructor(self_: *mut HandleBRepCurveOnSurface);
+    /// Clone Handle<BRep_CurveOnSurface> (increments reference count)
+    pub fn HandleBRepCurveOnSurface_clone(
+        self_: *const HandleBRepCurveOnSurface,
+    ) -> crate::OcctResult<*mut HandleBRepCurveOnSurface>;
     /// Dereference Handle to get *const BRep_CurveOnSurface
     pub fn HandleBRepCurveOnSurface_get(
         handle: *const HandleBRepCurveOnSurface,
@@ -1585,6 +1601,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRep_CurveRepresentation>
     pub fn HandleBRepCurveRepresentation_destructor(self_: *mut HandleBRepCurveRepresentation);
+    /// Clone Handle<BRep_CurveRepresentation> (increments reference count)
+    pub fn HandleBRepCurveRepresentation_clone(
+        self_: *const HandleBRepCurveRepresentation,
+    ) -> crate::OcctResult<*mut HandleBRepCurveRepresentation>;
     /// Dereference Handle to get *const BRep_CurveRepresentation
     pub fn HandleBRepCurveRepresentation_get(
         handle: *const HandleBRepCurveRepresentation,
@@ -1719,6 +1739,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRep_GCurve>
     pub fn HandleBRepGCurve_destructor(self_: *mut HandleBRepGCurve);
+    /// Clone Handle<BRep_GCurve> (increments reference count)
+    pub fn HandleBRepGCurve_clone(
+        self_: *const HandleBRepGCurve,
+    ) -> crate::OcctResult<*mut HandleBRepGCurve>;
     /// Dereference Handle to get *const BRep_GCurve
     pub fn HandleBRepGCurve_get(
         handle: *const HandleBRepGCurve,
@@ -1919,6 +1943,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepPointOnCurve>;
     /// Destroy Handle<BRep_PointOnCurve>
     pub fn HandleBRepPointOnCurve_destructor(self_: *mut HandleBRepPointOnCurve);
+    /// Clone Handle<BRep_PointOnCurve> (increments reference count)
+    pub fn HandleBRepPointOnCurve_clone(
+        self_: *const HandleBRepPointOnCurve,
+    ) -> crate::OcctResult<*mut HandleBRepPointOnCurve>;
     /// Dereference Handle to get *const BRep_PointOnCurve
     pub fn HandleBRepPointOnCurve_get(
         handle: *const HandleBRepPointOnCurve,
@@ -2061,6 +2089,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepPointOnCurveOnSurface>;
     /// Destroy Handle<BRep_PointOnCurveOnSurface>
     pub fn HandleBRepPointOnCurveOnSurface_destructor(self_: *mut HandleBRepPointOnCurveOnSurface);
+    /// Clone Handle<BRep_PointOnCurveOnSurface> (increments reference count)
+    pub fn HandleBRepPointOnCurveOnSurface_clone(
+        self_: *const HandleBRepPointOnCurveOnSurface,
+    ) -> crate::OcctResult<*mut HandleBRepPointOnCurveOnSurface>;
     /// Dereference Handle to get *const BRep_PointOnCurveOnSurface
     pub fn HandleBRepPointOnCurveOnSurface_get(
         handle: *const HandleBRepPointOnCurveOnSurface,
@@ -2205,6 +2237,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepPointOnSurface>;
     /// Destroy Handle<BRep_PointOnSurface>
     pub fn HandleBRepPointOnSurface_destructor(self_: *mut HandleBRepPointOnSurface);
+    /// Clone Handle<BRep_PointOnSurface> (increments reference count)
+    pub fn HandleBRepPointOnSurface_clone(
+        self_: *const HandleBRepPointOnSurface,
+    ) -> crate::OcctResult<*mut HandleBRepPointOnSurface>;
     /// Dereference Handle to get *const BRep_PointOnSurface
     pub fn HandleBRepPointOnSurface_get(
         handle: *const HandleBRepPointOnSurface,
@@ -2393,6 +2429,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepPointRepresentation>;
     /// Destroy Handle<BRep_PointRepresentation>
     pub fn HandleBRepPointRepresentation_destructor(self_: *mut HandleBRepPointRepresentation);
+    /// Clone Handle<BRep_PointRepresentation> (increments reference count)
+    pub fn HandleBRepPointRepresentation_clone(
+        self_: *const HandleBRepPointRepresentation,
+    ) -> crate::OcctResult<*mut HandleBRepPointRepresentation>;
     /// Dereference Handle to get *const BRep_PointRepresentation
     pub fn HandleBRepPointRepresentation_get(
         handle: *const HandleBRepPointRepresentation,
@@ -2492,6 +2532,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepPointsOnSurface>;
     /// Destroy Handle<BRep_PointsOnSurface>
     pub fn HandleBRepPointsOnSurface_destructor(self_: *mut HandleBRepPointsOnSurface);
+    /// Clone Handle<BRep_PointsOnSurface> (increments reference count)
+    pub fn HandleBRepPointsOnSurface_clone(
+        self_: *const HandleBRepPointsOnSurface,
+    ) -> crate::OcctResult<*mut HandleBRepPointsOnSurface>;
     /// Dereference Handle to get *const BRep_PointsOnSurface
     pub fn HandleBRepPointsOnSurface_get(
         handle: *const HandleBRepPointsOnSurface,
@@ -2630,6 +2674,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepPolygon3D>;
     /// Destroy Handle<BRep_Polygon3D>
     pub fn HandleBRepPolygon3D_destructor(self_: *mut HandleBRepPolygon3D);
+    /// Clone Handle<BRep_Polygon3D> (increments reference count)
+    pub fn HandleBRepPolygon3D_clone(
+        self_: *const HandleBRepPolygon3D,
+    ) -> crate::OcctResult<*mut HandleBRepPolygon3D>;
     /// Dereference Handle to get *const BRep_Polygon3D
     pub fn HandleBRepPolygon3D_get(
         handle: *const HandleBRepPolygon3D,
@@ -2826,6 +2874,10 @@ extern "C" {
     pub fn HandleBRepPolygonOnClosedSurface_destructor(
         self_: *mut HandleBRepPolygonOnClosedSurface,
     );
+    /// Clone Handle<BRep_PolygonOnClosedSurface> (increments reference count)
+    pub fn HandleBRepPolygonOnClosedSurface_clone(
+        self_: *const HandleBRepPolygonOnClosedSurface,
+    ) -> crate::OcctResult<*mut HandleBRepPolygonOnClosedSurface>;
     /// Dereference Handle to get *const BRep_PolygonOnClosedSurface
     pub fn HandleBRepPolygonOnClosedSurface_get(
         handle: *const HandleBRepPolygonOnClosedSurface,
@@ -3030,6 +3082,10 @@ extern "C" {
     pub fn HandleBRepPolygonOnClosedTriangulation_destructor(
         self_: *mut HandleBRepPolygonOnClosedTriangulation,
     );
+    /// Clone Handle<BRep_PolygonOnClosedTriangulation> (increments reference count)
+    pub fn HandleBRepPolygonOnClosedTriangulation_clone(
+        self_: *const HandleBRepPolygonOnClosedTriangulation,
+    ) -> crate::OcctResult<*mut HandleBRepPolygonOnClosedTriangulation>;
     /// Dereference Handle to get *const BRep_PolygonOnClosedTriangulation
     pub fn HandleBRepPolygonOnClosedTriangulation_get(
         handle: *const HandleBRepPolygonOnClosedTriangulation,
@@ -3231,6 +3287,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepPolygonOnSurface>;
     /// Destroy Handle<BRep_PolygonOnSurface>
     pub fn HandleBRepPolygonOnSurface_destructor(self_: *mut HandleBRepPolygonOnSurface);
+    /// Clone Handle<BRep_PolygonOnSurface> (increments reference count)
+    pub fn HandleBRepPolygonOnSurface_clone(
+        self_: *const HandleBRepPolygonOnSurface,
+    ) -> crate::OcctResult<*mut HandleBRepPolygonOnSurface>;
     /// Dereference Handle to get *const BRep_PolygonOnSurface
     pub fn HandleBRepPolygonOnSurface_get(
         handle: *const HandleBRepPolygonOnSurface,
@@ -3429,6 +3489,10 @@ extern "C" {
     pub fn HandleBRepPolygonOnTriangulation_destructor(
         self_: *mut HandleBRepPolygonOnTriangulation,
     );
+    /// Clone Handle<BRep_PolygonOnTriangulation> (increments reference count)
+    pub fn HandleBRepPolygonOnTriangulation_clone(
+        self_: *const HandleBRepPolygonOnTriangulation,
+    ) -> crate::OcctResult<*mut HandleBRepPolygonOnTriangulation>;
     /// Dereference Handle to get *const BRep_PolygonOnTriangulation
     pub fn HandleBRepPolygonOnTriangulation_get(
         handle: *const HandleBRepPolygonOnTriangulation,
@@ -3632,6 +3696,10 @@ extern "C" {
     pub fn BRep_TEdge_to_handle(obj: *mut BRep_TEdge) -> crate::OcctResult<*mut HandleBRepTEdge>;
     /// Destroy Handle<BRep_TEdge>
     pub fn HandleBRepTEdge_destructor(self_: *mut HandleBRepTEdge);
+    /// Clone Handle<BRep_TEdge> (increments reference count)
+    pub fn HandleBRepTEdge_clone(
+        self_: *const HandleBRepTEdge,
+    ) -> crate::OcctResult<*mut HandleBRepTEdge>;
     /// Dereference Handle to get *const BRep_TEdge
     pub fn HandleBRepTEdge_get(
         handle: *const HandleBRepTEdge,
@@ -3801,6 +3869,10 @@ extern "C" {
     pub fn BRep_TFace_to_handle(obj: *mut BRep_TFace) -> crate::OcctResult<*mut HandleBRepTFace>;
     /// Destroy Handle<BRep_TFace>
     pub fn HandleBRepTFace_destructor(self_: *mut HandleBRepTFace);
+    /// Clone Handle<BRep_TFace> (increments reference count)
+    pub fn HandleBRepTFace_clone(
+        self_: *const HandleBRepTFace,
+    ) -> crate::OcctResult<*mut HandleBRepTFace>;
     /// Dereference Handle to get *const BRep_TFace
     pub fn HandleBRepTFace_get(
         handle: *const HandleBRepTFace,
@@ -3938,6 +4010,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepTVertex>;
     /// Destroy Handle<BRep_TVertex>
     pub fn HandleBRepTVertex_destructor(self_: *mut HandleBRepTVertex);
+    /// Clone Handle<BRep_TVertex> (increments reference count)
+    pub fn HandleBRepTVertex_clone(
+        self_: *const HandleBRepTVertex,
+    ) -> crate::OcctResult<*mut HandleBRepTVertex>;
     /// Dereference Handle to get *const BRep_TVertex
     pub fn HandleBRepTVertex_get(
         handle: *const HandleBRepTVertex,
@@ -4509,6 +4585,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepAdaptorCompCurve>;
     /// Destroy Handle<BRepAdaptor_CompCurve>
     pub fn HandleBRepAdaptorCompCurve_destructor(self_: *mut HandleBRepAdaptorCompCurve);
+    /// Clone Handle<BRepAdaptor_CompCurve> (increments reference count)
+    pub fn HandleBRepAdaptorCompCurve_clone(
+        self_: *const HandleBRepAdaptorCompCurve,
+    ) -> crate::OcctResult<*mut HandleBRepAdaptorCompCurve>;
     /// Dereference Handle to get *const BRepAdaptor_CompCurve
     pub fn HandleBRepAdaptorCompCurve_get(
         handle: *const HandleBRepAdaptorCompCurve,
@@ -4771,6 +4851,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepAdaptorCurve>;
     /// Destroy Handle<BRepAdaptor_Curve>
     pub fn HandleBRepAdaptorCurve_destructor(self_: *mut HandleBRepAdaptorCurve);
+    /// Clone Handle<BRepAdaptor_Curve> (increments reference count)
+    pub fn HandleBRepAdaptorCurve_clone(
+        self_: *const HandleBRepAdaptorCurve,
+    ) -> crate::OcctResult<*mut HandleBRepAdaptorCurve>;
     /// Dereference Handle to get *const BRepAdaptor_Curve
     pub fn HandleBRepAdaptorCurve_get(
         handle: *const HandleBRepAdaptorCurve,
@@ -4882,6 +4966,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepAdaptorCurve2d>;
     /// Destroy Handle<BRepAdaptor_Curve2d>
     pub fn HandleBRepAdaptorCurve2d_destructor(self_: *mut HandleBRepAdaptorCurve2d);
+    /// Clone Handle<BRepAdaptor_Curve2d> (increments reference count)
+    pub fn HandleBRepAdaptorCurve2d_clone(
+        self_: *const HandleBRepAdaptorCurve2d,
+    ) -> crate::OcctResult<*mut HandleBRepAdaptorCurve2d>;
     /// Dereference Handle to get *const BRepAdaptor_Curve2d
     pub fn HandleBRepAdaptorCurve2d_get(
         handle: *const HandleBRepAdaptorCurve2d,
@@ -5142,6 +5230,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepAdaptorHArray1OfCurve>;
     /// Destroy Handle<BRepAdaptor_HArray1OfCurve>
     pub fn HandleBRepAdaptorHArray1OfCurve_destructor(self_: *mut HandleBRepAdaptorHArray1OfCurve);
+    /// Clone Handle<BRepAdaptor_HArray1OfCurve> (increments reference count)
+    pub fn HandleBRepAdaptorHArray1OfCurve_clone(
+        self_: *const HandleBRepAdaptorHArray1OfCurve,
+    ) -> crate::OcctResult<*mut HandleBRepAdaptorHArray1OfCurve>;
     /// Dereference Handle to get *const BRepAdaptor_HArray1OfCurve
     pub fn HandleBRepAdaptorHArray1OfCurve_get(
         handle: *const HandleBRepAdaptorHArray1OfCurve,
@@ -5489,6 +5581,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepAdaptorSurface>;
     /// Destroy Handle<BRepAdaptor_Surface>
     pub fn HandleBRepAdaptorSurface_destructor(self_: *mut HandleBRepAdaptorSurface);
+    /// Clone Handle<BRepAdaptor_Surface> (increments reference count)
+    pub fn HandleBRepAdaptorSurface_clone(
+        self_: *const HandleBRepAdaptorSurface,
+    ) -> crate::OcctResult<*mut HandleBRepAdaptorSurface>;
     /// Dereference Handle to get *const BRepAdaptor_Surface
     pub fn HandleBRepAdaptorSurface_get(
         handle: *const HandleBRepAdaptorSurface,
@@ -5905,6 +6001,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepToolsCopyModification>;
     /// Destroy Handle<BRepTools_CopyModification>
     pub fn HandleBRepToolsCopyModification_destructor(self_: *mut HandleBRepToolsCopyModification);
+    /// Clone Handle<BRepTools_CopyModification> (increments reference count)
+    pub fn HandleBRepToolsCopyModification_clone(
+        self_: *const HandleBRepToolsCopyModification,
+    ) -> crate::OcctResult<*mut HandleBRepToolsCopyModification>;
     /// Dereference Handle to get *const BRepTools_CopyModification
     pub fn HandleBRepToolsCopyModification_get(
         handle: *const HandleBRepToolsCopyModification,
@@ -6070,6 +6170,10 @@ extern "C" {
     pub fn HandleBRepToolsGTrsfModification_destructor(
         self_: *mut HandleBRepToolsGTrsfModification,
     );
+    /// Clone Handle<BRepTools_GTrsfModification> (increments reference count)
+    pub fn HandleBRepToolsGTrsfModification_clone(
+        self_: *const HandleBRepToolsGTrsfModification,
+    ) -> crate::OcctResult<*mut HandleBRepToolsGTrsfModification>;
     /// Dereference Handle to get *const BRepTools_GTrsfModification
     pub fn HandleBRepToolsGTrsfModification_get(
         handle: *const HandleBRepToolsGTrsfModification,
@@ -6219,6 +6323,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
     /// Destroy Handle<BRepTools_History>
     pub fn HandleBRepToolsHistory_destructor(self_: *mut HandleBRepToolsHistory);
+    /// Clone Handle<BRepTools_History> (increments reference count)
+    pub fn HandleBRepToolsHistory_clone(
+        self_: *const HandleBRepToolsHistory,
+    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
     /// Dereference Handle to get *const BRepTools_History
     pub fn HandleBRepToolsHistory_get(
         handle: *const HandleBRepToolsHistory,
@@ -6354,6 +6462,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepTools_Modification>
     pub fn HandleBRepToolsModification_destructor(self_: *mut HandleBRepToolsModification);
+    /// Clone Handle<BRepTools_Modification> (increments reference count)
+    pub fn HandleBRepToolsModification_clone(
+        self_: *const HandleBRepToolsModification,
+    ) -> crate::OcctResult<*mut HandleBRepToolsModification>;
     /// Dereference Handle to get *const BRepTools_Modification
     pub fn HandleBRepToolsModification_get(
         handle: *const HandleBRepToolsModification,
@@ -6615,6 +6727,10 @@ extern "C" {
     pub fn HandleBRepToolsNurbsConvertModification_destructor(
         self_: *mut HandleBRepToolsNurbsConvertModification,
     );
+    /// Clone Handle<BRepTools_NurbsConvertModification> (increments reference count)
+    pub fn HandleBRepToolsNurbsConvertModification_clone(
+        self_: *const HandleBRepToolsNurbsConvertModification,
+    ) -> crate::OcctResult<*mut HandleBRepToolsNurbsConvertModification>;
     /// Dereference Handle to get *const BRepTools_NurbsConvertModification
     pub fn HandleBRepToolsNurbsConvertModification_get(
         handle: *const HandleBRepToolsNurbsConvertModification,
@@ -6810,6 +6926,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepToolsReShape>;
     /// Destroy Handle<BRepTools_ReShape>
     pub fn HandleBRepToolsReShape_destructor(self_: *mut HandleBRepToolsReShape);
+    /// Clone Handle<BRepTools_ReShape> (increments reference count)
+    pub fn HandleBRepToolsReShape_clone(
+        self_: *const HandleBRepToolsReShape,
+    ) -> crate::OcctResult<*mut HandleBRepToolsReShape>;
     /// Dereference Handle to get *const BRepTools_ReShape
     pub fn HandleBRepToolsReShape_get(
         handle: *const HandleBRepToolsReShape,
@@ -7208,6 +7328,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleBRepToolsTrsfModification>;
     /// Destroy Handle<BRepTools_TrsfModification>
     pub fn HandleBRepToolsTrsfModification_destructor(self_: *mut HandleBRepToolsTrsfModification);
+    /// Clone Handle<BRepTools_TrsfModification> (increments reference count)
+    pub fn HandleBRepToolsTrsfModification_clone(
+        self_: *const HandleBRepToolsTrsfModification,
+    ) -> crate::OcctResult<*mut HandleBRepToolsTrsfModification>;
     /// Dereference Handle to get *const BRepTools_TrsfModification
     pub fn HandleBRepToolsTrsfModification_get(
         handle: *const HandleBRepToolsTrsfModification,
@@ -8044,6 +8168,10 @@ extern "C" {
     pub fn HandleTopToolsHArray1OfListOfShape_destructor(
         self_: *mut HandleTopToolsHArray1OfListOfShape,
     );
+    /// Clone Handle<TopTools_HArray1OfListOfShape> (increments reference count)
+    pub fn HandleTopToolsHArray1OfListOfShape_clone(
+        self_: *const HandleTopToolsHArray1OfListOfShape,
+    ) -> crate::OcctResult<*mut HandleTopToolsHArray1OfListOfShape>;
     /// Dereference Handle to get *const TopTools_HArray1OfListOfShape
     pub fn HandleTopToolsHArray1OfListOfShape_get(
         handle: *const HandleTopToolsHArray1OfListOfShape,
@@ -8143,6 +8271,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopToolsHArray1OfShape>;
     /// Destroy Handle<TopTools_HArray1OfShape>
     pub fn HandleTopToolsHArray1OfShape_destructor(self_: *mut HandleTopToolsHArray1OfShape);
+    /// Clone Handle<TopTools_HArray1OfShape> (increments reference count)
+    pub fn HandleTopToolsHArray1OfShape_clone(
+        self_: *const HandleTopToolsHArray1OfShape,
+    ) -> crate::OcctResult<*mut HandleTopToolsHArray1OfShape>;
     /// Dereference Handle to get *const TopTools_HArray1OfShape
     pub fn HandleTopToolsHArray1OfShape_get(
         handle: *const HandleTopToolsHArray1OfShape,
@@ -8237,6 +8369,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopToolsHArray2OfShape>;
     /// Destroy Handle<TopTools_HArray2OfShape>
     pub fn HandleTopToolsHArray2OfShape_destructor(self_: *mut HandleTopToolsHArray2OfShape);
+    /// Clone Handle<TopTools_HArray2OfShape> (increments reference count)
+    pub fn HandleTopToolsHArray2OfShape_clone(
+        self_: *const HandleTopToolsHArray2OfShape,
+    ) -> crate::OcctResult<*mut HandleTopToolsHArray2OfShape>;
     /// Dereference Handle to get *const TopTools_HArray2OfShape
     pub fn HandleTopToolsHArray2OfShape_get(
         handle: *const HandleTopToolsHArray2OfShape,
@@ -8336,6 +8472,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopToolsHSequenceOfShape>;
     /// Destroy Handle<TopTools_HSequenceOfShape>
     pub fn HandleTopToolsHSequenceOfShape_destructor(self_: *mut HandleTopToolsHSequenceOfShape);
+    /// Clone Handle<TopTools_HSequenceOfShape> (increments reference count)
+    pub fn HandleTopToolsHSequenceOfShape_clone(
+        self_: *const HandleTopToolsHSequenceOfShape,
+    ) -> crate::OcctResult<*mut HandleTopToolsHSequenceOfShape>;
     /// Dereference Handle to get *const TopTools_HSequenceOfShape
     pub fn HandleTopToolsHSequenceOfShape_get(
         handle: *const HandleTopToolsHSequenceOfShape,
@@ -8632,6 +8772,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSAlertAttribute>;
     /// Destroy Handle<TopoDS_AlertAttribute>
     pub fn HandleTopoDSAlertAttribute_destructor(self_: *mut HandleTopoDSAlertAttribute);
+    /// Clone Handle<TopoDS_AlertAttribute> (increments reference count)
+    pub fn HandleTopoDSAlertAttribute_clone(
+        self_: *const HandleTopoDSAlertAttribute,
+    ) -> crate::OcctResult<*mut HandleTopoDSAlertAttribute>;
     /// Dereference Handle to get *const TopoDS_AlertAttribute
     pub fn HandleTopoDSAlertAttribute_get(
         handle: *const HandleTopoDSAlertAttribute,
@@ -8755,6 +8899,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
     /// Destroy Handle<TopoDS_AlertWithShape>
     pub fn HandleTopoDSAlertWithShape_destructor(self_: *mut HandleTopoDSAlertWithShape);
+    /// Clone Handle<TopoDS_AlertWithShape> (increments reference count)
+    pub fn HandleTopoDSAlertWithShape_clone(
+        self_: *const HandleTopoDSAlertWithShape,
+    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
     /// Dereference Handle to get *const TopoDS_AlertWithShape
     pub fn HandleTopoDSAlertWithShape_get(
         handle: *const HandleTopoDSAlertWithShape,
@@ -8947,7 +9095,7 @@ extern "C" {
         C: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn TopoDS_Builder_to_owned(
+    pub fn TopoDS_Builder_clone(
         self_: *const TopoDS_Builder,
     ) -> crate::OcctResult<*mut TopoDS_Builder>;
     // ======================== TopoDS_CompSolid ========================
@@ -8963,7 +9111,7 @@ extern "C" {
         self_: *mut TopoDS_CompSolid,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     /// Clone via copy constructor
-    pub fn TopoDS_CompSolid_to_owned(
+    pub fn TopoDS_CompSolid_clone(
         self_: *const TopoDS_CompSolid,
     ) -> crate::OcctResult<*mut TopoDS_CompSolid>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
@@ -9116,7 +9264,7 @@ extern "C" {
         self_: *mut TopoDS_Compound,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     /// Clone via copy constructor
-    pub fn TopoDS_Compound_to_owned(
+    pub fn TopoDS_Compound_clone(
         self_: *const TopoDS_Compound,
     ) -> crate::OcctResult<*mut TopoDS_Compound>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
@@ -9268,7 +9416,7 @@ extern "C" {
         self_: *mut TopoDS_Edge,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     /// Clone via copy constructor
-    pub fn TopoDS_Edge_to_owned(self_: *const TopoDS_Edge) -> crate::OcctResult<*mut TopoDS_Edge>;
+    pub fn TopoDS_Edge_clone(self_: *const TopoDS_Edge) -> crate::OcctResult<*mut TopoDS_Edge>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
     pub fn TopoDS_Edge_inherited_IsNull(self_: *const TopoDS_Edge) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
@@ -9387,7 +9535,7 @@ extern "C" {
         self_: *mut TopoDS_Face,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     /// Clone via copy constructor
-    pub fn TopoDS_Face_to_owned(self_: *const TopoDS_Face) -> crate::OcctResult<*mut TopoDS_Face>;
+    pub fn TopoDS_Face_clone(self_: *const TopoDS_Face) -> crate::OcctResult<*mut TopoDS_Face>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
     pub fn TopoDS_Face_inherited_IsNull(self_: *const TopoDS_Face) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
@@ -9561,6 +9709,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSFrozenShape>;
     /// Destroy Handle<TopoDS_FrozenShape>
     pub fn HandleTopoDSFrozenShape_destructor(self_: *mut HandleTopoDSFrozenShape);
+    /// Clone Handle<TopoDS_FrozenShape> (increments reference count)
+    pub fn HandleTopoDSFrozenShape_clone(
+        self_: *const HandleTopoDSFrozenShape,
+    ) -> crate::OcctResult<*mut HandleTopoDSFrozenShape>;
     /// Dereference Handle to get *const TopoDS_FrozenShape
     pub fn HandleTopoDSFrozenShape_get(
         handle: *const HandleTopoDSFrozenShape,
@@ -9667,6 +9819,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSHShape>;
     /// Destroy Handle<TopoDS_HShape>
     pub fn HandleTopoDSHShape_destructor(self_: *mut HandleTopoDSHShape);
+    /// Clone Handle<TopoDS_HShape> (increments reference count)
+    pub fn HandleTopoDSHShape_clone(
+        self_: *const HandleTopoDSHShape,
+    ) -> crate::OcctResult<*mut HandleTopoDSHShape>;
     /// Dereference Handle to get *const TopoDS_HShape
     pub fn HandleTopoDSHShape_get(
         handle: *const HandleTopoDSHShape,
@@ -9733,7 +9889,7 @@ extern "C" {
         self_: *const TopoDS_Iterator,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
     /// Clone via copy constructor
-    pub fn TopoDS_Iterator_to_owned(
+    pub fn TopoDS_Iterator_clone(
         self_: *const TopoDS_Iterator,
     ) -> crate::OcctResult<*mut TopoDS_Iterator>;
     // ======================== TopoDS_LockedShape ========================
@@ -9804,6 +9960,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSLockedShape>;
     /// Destroy Handle<TopoDS_LockedShape>
     pub fn HandleTopoDSLockedShape_destructor(self_: *mut HandleTopoDSLockedShape);
+    /// Clone Handle<TopoDS_LockedShape> (increments reference count)
+    pub fn HandleTopoDSLockedShape_clone(
+        self_: *const HandleTopoDSLockedShape,
+    ) -> crate::OcctResult<*mut HandleTopoDSLockedShape>;
     /// Dereference Handle to get *const TopoDS_LockedShape
     pub fn HandleTopoDSLockedShape_get(
         handle: *const HandleTopoDSLockedShape,
@@ -10033,9 +10193,7 @@ extern "C" {
         theTShape: *const HandleTopoDSTShape,
     ) -> *const std::ffi::c_char;
     /// Clone via copy constructor
-    pub fn TopoDS_Shape_to_owned(
-        self_: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*mut TopoDS_Shape>;
+    pub fn TopoDS_Shape_clone(self_: *const TopoDS_Shape) -> crate::OcctResult<*mut TopoDS_Shape>;
     // ======================== TopoDS_Shell ========================
     pub fn TopoDS_Shell_destructor(self_: *mut TopoDS_Shell);
     /// **Source:** `TopoDS_Shell.hxx`:35 - `TopoDS_Shell::TopoDS_Shell()`
@@ -10049,9 +10207,7 @@ extern "C" {
         self_: *mut TopoDS_Shell,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     /// Clone via copy constructor
-    pub fn TopoDS_Shell_to_owned(
-        self_: *const TopoDS_Shell,
-    ) -> crate::OcctResult<*mut TopoDS_Shell>;
+    pub fn TopoDS_Shell_clone(self_: *const TopoDS_Shell) -> crate::OcctResult<*mut TopoDS_Shell>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
     pub fn TopoDS_Shell_inherited_IsNull(self_: *const TopoDS_Shell) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
@@ -10172,9 +10328,7 @@ extern "C" {
         self_: *mut TopoDS_Solid,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     /// Clone via copy constructor
-    pub fn TopoDS_Solid_to_owned(
-        self_: *const TopoDS_Solid,
-    ) -> crate::OcctResult<*mut TopoDS_Solid>;
+    pub fn TopoDS_Solid_clone(self_: *const TopoDS_Solid) -> crate::OcctResult<*mut TopoDS_Solid>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
     pub fn TopoDS_Solid_inherited_IsNull(self_: *const TopoDS_Solid) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
@@ -10322,6 +10476,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSTCompSolid>;
     /// Destroy Handle<TopoDS_TCompSolid>
     pub fn HandleTopoDSTCompSolid_destructor(self_: *mut HandleTopoDSTCompSolid);
+    /// Clone Handle<TopoDS_TCompSolid> (increments reference count)
+    pub fn HandleTopoDSTCompSolid_clone(
+        self_: *const HandleTopoDSTCompSolid,
+    ) -> crate::OcctResult<*mut HandleTopoDSTCompSolid>;
     /// Dereference Handle to get *const TopoDS_TCompSolid
     pub fn HandleTopoDSTCompSolid_get(
         handle: *const HandleTopoDSTCompSolid,
@@ -10444,6 +10602,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSTCompound>;
     /// Destroy Handle<TopoDS_TCompound>
     pub fn HandleTopoDSTCompound_destructor(self_: *mut HandleTopoDSTCompound);
+    /// Clone Handle<TopoDS_TCompound> (increments reference count)
+    pub fn HandleTopoDSTCompound_clone(
+        self_: *const HandleTopoDSTCompound,
+    ) -> crate::OcctResult<*mut HandleTopoDSTCompound>;
     /// Dereference Handle to get *const TopoDS_TCompound
     pub fn HandleTopoDSTCompound_get(
         handle: *const HandleTopoDSTCompound,
@@ -10556,6 +10718,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TopoDS_TEdge>
     pub fn HandleTopoDSTEdge_destructor(self_: *mut HandleTopoDSTEdge);
+    /// Clone Handle<TopoDS_TEdge> (increments reference count)
+    pub fn HandleTopoDSTEdge_clone(
+        self_: *const HandleTopoDSTEdge,
+    ) -> crate::OcctResult<*mut HandleTopoDSTEdge>;
     /// Dereference Handle to get *const TopoDS_TEdge
     pub fn HandleTopoDSTEdge_get(
         handle: *const HandleTopoDSTEdge,
@@ -10666,6 +10832,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSTFace>;
     /// Destroy Handle<TopoDS_TFace>
     pub fn HandleTopoDSTFace_destructor(self_: *mut HandleTopoDSTFace);
+    /// Clone Handle<TopoDS_TFace> (increments reference count)
+    pub fn HandleTopoDSTFace_clone(
+        self_: *const HandleTopoDSTFace,
+    ) -> crate::OcctResult<*mut HandleTopoDSTFace>;
     /// Dereference Handle to get *const TopoDS_TFace
     pub fn HandleTopoDSTFace_get(
         handle: *const HandleTopoDSTFace,
@@ -10816,6 +10986,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TopoDS_TShape>
     pub fn HandleTopoDSTShape_destructor(self_: *mut HandleTopoDSTShape);
+    /// Clone Handle<TopoDS_TShape> (increments reference count)
+    pub fn HandleTopoDSTShape_clone(
+        self_: *const HandleTopoDSTShape,
+    ) -> crate::OcctResult<*mut HandleTopoDSTShape>;
     /// Dereference Handle to get *const TopoDS_TShape
     pub fn HandleTopoDSTShape_get(
         handle: *const HandleTopoDSTShape,
@@ -10940,6 +11114,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSTShell>;
     /// Destroy Handle<TopoDS_TShell>
     pub fn HandleTopoDSTShell_destructor(self_: *mut HandleTopoDSTShell);
+    /// Clone Handle<TopoDS_TShell> (increments reference count)
+    pub fn HandleTopoDSTShell_clone(
+        self_: *const HandleTopoDSTShell,
+    ) -> crate::OcctResult<*mut HandleTopoDSTShell>;
     /// Dereference Handle to get *const TopoDS_TShell
     pub fn HandleTopoDSTShell_get(
         handle: *const HandleTopoDSTShell,
@@ -11048,6 +11226,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSTSolid>;
     /// Destroy Handle<TopoDS_TSolid>
     pub fn HandleTopoDSTSolid_destructor(self_: *mut HandleTopoDSTSolid);
+    /// Clone Handle<TopoDS_TSolid> (increments reference count)
+    pub fn HandleTopoDSTSolid_clone(
+        self_: *const HandleTopoDSTSolid,
+    ) -> crate::OcctResult<*mut HandleTopoDSTSolid>;
     /// Dereference Handle to get *const TopoDS_TSolid
     pub fn HandleTopoDSTSolid_get(
         handle: *const HandleTopoDSTSolid,
@@ -11146,6 +11328,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TopoDS_TVertex>
     pub fn HandleTopoDSTVertex_destructor(self_: *mut HandleTopoDSTVertex);
+    /// Clone Handle<TopoDS_TVertex> (increments reference count)
+    pub fn HandleTopoDSTVertex_clone(
+        self_: *const HandleTopoDSTVertex,
+    ) -> crate::OcctResult<*mut HandleTopoDSTVertex>;
     /// Dereference Handle to get *const TopoDS_TVertex
     pub fn HandleTopoDSTVertex_get(
         handle: *const HandleTopoDSTVertex,
@@ -11270,6 +11456,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSTWire>;
     /// Destroy Handle<TopoDS_TWire>
     pub fn HandleTopoDSTWire_destructor(self_: *mut HandleTopoDSTWire);
+    /// Clone Handle<TopoDS_TWire> (increments reference count)
+    pub fn HandleTopoDSTWire_clone(
+        self_: *const HandleTopoDSTWire,
+    ) -> crate::OcctResult<*mut HandleTopoDSTWire>;
     /// Dereference Handle to get *const TopoDS_TWire
     pub fn HandleTopoDSTWire_get(
         handle: *const HandleTopoDSTWire,
@@ -11401,6 +11591,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleTopoDSUnCompatibleShapes>;
     /// Destroy Handle<TopoDS_UnCompatibleShapes>
     pub fn HandleTopoDSUnCompatibleShapes_destructor(self_: *mut HandleTopoDSUnCompatibleShapes);
+    /// Clone Handle<TopoDS_UnCompatibleShapes> (increments reference count)
+    pub fn HandleTopoDSUnCompatibleShapes_clone(
+        self_: *const HandleTopoDSUnCompatibleShapes,
+    ) -> crate::OcctResult<*mut HandleTopoDSUnCompatibleShapes>;
     /// Dereference Handle to get *const TopoDS_UnCompatibleShapes
     pub fn HandleTopoDSUnCompatibleShapes_get(
         handle: *const HandleTopoDSUnCompatibleShapes,
@@ -11477,7 +11671,7 @@ extern "C" {
         self_: *mut TopoDS_Vertex,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     /// Clone via copy constructor
-    pub fn TopoDS_Vertex_to_owned(
+    pub fn TopoDS_Vertex_clone(
         self_: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
@@ -11608,7 +11802,7 @@ extern "C" {
         self_: *mut TopoDS_Wire,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     /// Clone via copy constructor
-    pub fn TopoDS_Wire_to_owned(self_: *const TopoDS_Wire) -> crate::OcctResult<*mut TopoDS_Wire>;
+    pub fn TopoDS_Wire_clone(self_: *const TopoDS_Wire) -> crate::OcctResult<*mut TopoDS_Wire>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
     pub fn TopoDS_Wire_inherited_IsNull(self_: *const TopoDS_Wire) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`

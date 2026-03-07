@@ -527,6 +527,12 @@ unsafe impl crate::CppDeletable for HandleIGESToBRepActor {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESToBRepActor {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_clone(ptr))
+    }
+}
+
 impl HandleIGESToBRepActor {
     /// Dereference this Handle to access the underlying IGESToBRep_Actor
     pub fn get(&self) -> &crate::ffi_types::IGESToBRep_Actor {
@@ -769,6 +775,12 @@ pub use crate::ffi_types::HandleIGESToBRepAlgoContainer;
 unsafe impl crate::CppDeletable for HandleIGESToBRepAlgoContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESToBRepAlgoContainer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_clone(ptr))
     }
 }
 
@@ -3715,6 +3727,12 @@ unsafe impl crate::CppDeletable for HandleIGESToBRepIGESBoundary {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESToBRepIGESBoundary {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepIGESBoundary_clone(ptr))
+    }
+}
+
 impl HandleIGESToBRepIGESBoundary {
     /// Dereference this Handle to access the underlying IGESToBRep_IGESBoundary
     pub fn get(&self) -> &crate::ffi_types::IGESToBRep_IGESBoundary {
@@ -4227,6 +4245,12 @@ unsafe impl crate::CppDeletable for HandleIGESToBRepToolContainer {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESToBRepToolContainer {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepToolContainer_clone(ptr))
+    }
+}
+
 impl HandleIGESToBRepToolContainer {
     /// Dereference this Handle to access the underlying IGESToBRep_ToolContainer
     pub fn get(&self) -> &crate::ffi_types::IGESToBRep_ToolContainer {
@@ -4286,6 +4310,22 @@ pub use crate::ffi_types::IGESToBRep_TopoCurve as TopoCurve;
 unsafe impl crate::CppDeletable for TopoCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for TopoCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for TopoCurve {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -4676,15 +4716,6 @@ impl TopoCurve {
                     self as *mut Self,
                 ),
             )
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_to_owned(self as *const Self),
-            ))
         }
     }
 

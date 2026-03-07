@@ -321,6 +321,12 @@ unsafe impl crate::CppDeletable for HandleMAT2dCircuit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleMAT2dCircuit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMAT2dCircuit_clone(ptr))
+    }
+}
+
 impl HandleMAT2dCircuit {
     /// Dereference this Handle to access the underlying MAT2d_Circuit
     pub fn get(&self) -> &crate::ffi_types::MAT2d_Circuit {
@@ -747,6 +753,12 @@ pub use crate::ffi_types::HandleMAT2dConnexion;
 unsafe impl crate::CppDeletable for HandleMAT2dConnexion {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKTopAlgo::HandleMAT2dConnexion_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleMAT2dConnexion {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMAT2dConnexion_clone(ptr))
     }
 }
 

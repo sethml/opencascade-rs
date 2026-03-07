@@ -2325,6 +2325,12 @@ unsafe impl crate::CppDeletable for HandleBRepOffsetSimpleOffset {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepOffsetSimpleOffset {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKOffset::HandleBRepOffsetSimpleOffset_clone(ptr))
+    }
+}
+
 impl HandleBRepOffsetSimpleOffset {
     /// Dereference this Handle to access the underlying BRepOffset_SimpleOffset
     pub fn get(&self) -> &crate::ffi_types::BRepOffset_SimpleOffset {

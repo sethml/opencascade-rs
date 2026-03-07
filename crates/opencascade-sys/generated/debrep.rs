@@ -393,6 +393,12 @@ unsafe impl crate::CppDeletable for HandleDEBREPConfigurationNode {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleDEBREPConfigurationNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDECascade::HandleDEBREPConfigurationNode_clone(ptr))
+    }
+}
+
 impl HandleDEBREPConfigurationNode {
     /// Dereference this Handle to access the underlying DEBREP_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEBREP_ConfigurationNode {
@@ -859,6 +865,12 @@ pub use crate::ffi_types::HandleDEBREPProvider;
 unsafe impl crate::CppDeletable for HandleDEBREPProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDECascade::HandleDEBREPProvider_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleDEBREPProvider {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDECascade::HandleDEBREPProvider_clone(ptr))
     }
 }
 

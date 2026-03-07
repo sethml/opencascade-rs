@@ -366,81 +366,377 @@ typedef opencascade::handle<XCAFDoc_VisMaterial> HandleXCAFDocVisMaterial;
 typedef opencascade::handle<XCAFDoc_VisMaterialTool> HandleXCAFDocVisMaterialTool;
 typedef opencascade::handle<XCAFDoc_Volume> HandleXCAFDocVolume;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleAppStdLApplication_destructor(HandleAppStdLApplication* self_) { delete self_; }
+extern "C" OcctResult<HandleAppStdLApplication*> HandleAppStdLApplication_clone(const HandleAppStdLApplication* self_) {
+    try { return {new HandleAppStdLApplication(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFAttribute_destructor(HandleTDFAttribute* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFAttribute*> HandleTDFAttribute_clone(const HandleTDFAttribute* self_) {
+    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFAttributeDelta_destructor(HandleTDFAttributeDelta* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDFAttributeDelta_clone(const HandleTDFAttributeDelta* self_) {
+    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFData_destructor(HandleTDFData* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFData*> HandleTDFData_clone(const HandleTDFData* self_) {
+    try { return {new HandleTDFData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFDataSet_destructor(HandleTDFDataSet* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFDataSet*> HandleTDFDataSet_clone(const HandleTDFDataSet* self_) {
+    try { return {new HandleTDFDataSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFDefaultDeltaOnModification_destructor(HandleTDFDefaultDeltaOnModification* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFDefaultDeltaOnModification*> HandleTDFDefaultDeltaOnModification_clone(const HandleTDFDefaultDeltaOnModification* self_) {
+    try { return {new HandleTDFDefaultDeltaOnModification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFDefaultDeltaOnRemoval_destructor(HandleTDFDefaultDeltaOnRemoval* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFDefaultDeltaOnRemoval*> HandleTDFDefaultDeltaOnRemoval_clone(const HandleTDFDefaultDeltaOnRemoval* self_) {
+    try { return {new HandleTDFDefaultDeltaOnRemoval(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFDelta_destructor(HandleTDFDelta* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFDelta*> HandleTDFDelta_clone(const HandleTDFDelta* self_) {
+    try { return {new HandleTDFDelta(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFDeltaOnAddition_destructor(HandleTDFDeltaOnAddition* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFDeltaOnAddition*> HandleTDFDeltaOnAddition_clone(const HandleTDFDeltaOnAddition* self_) {
+    try { return {new HandleTDFDeltaOnAddition(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFDeltaOnForget_destructor(HandleTDFDeltaOnForget* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFDeltaOnForget*> HandleTDFDeltaOnForget_clone(const HandleTDFDeltaOnForget* self_) {
+    try { return {new HandleTDFDeltaOnForget(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFDeltaOnModification_destructor(HandleTDFDeltaOnModification* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFDeltaOnModification*> HandleTDFDeltaOnModification_clone(const HandleTDFDeltaOnModification* self_) {
+    try { return {new HandleTDFDeltaOnModification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFDeltaOnRemoval_destructor(HandleTDFDeltaOnRemoval* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFDeltaOnRemoval*> HandleTDFDeltaOnRemoval_clone(const HandleTDFDeltaOnRemoval* self_) {
+    try { return {new HandleTDFDeltaOnRemoval(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFDeltaOnResume_destructor(HandleTDFDeltaOnResume* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFDeltaOnResume*> HandleTDFDeltaOnResume_clone(const HandleTDFDeltaOnResume* self_) {
+    try { return {new HandleTDFDeltaOnResume(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFHAttributeArray1_destructor(HandleTDFHAttributeArray1* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFHAttributeArray1*> HandleTDFHAttributeArray1_clone(const HandleTDFHAttributeArray1* self_) {
+    try { return {new HandleTDFHAttributeArray1(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFReference_destructor(HandleTDFReference* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFReference*> HandleTDFReference_clone(const HandleTDFReference* self_) {
+    try { return {new HandleTDFReference(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFRelocationTable_destructor(HandleTDFRelocationTable* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFRelocationTable*> HandleTDFRelocationTable_clone(const HandleTDFRelocationTable* self_) {
+    try { return {new HandleTDFRelocationTable(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDFTagSource_destructor(HandleTDFTagSource* self_) { delete self_; }
+extern "C" OcctResult<HandleTDFTagSource*> HandleTDFTagSource_clone(const HandleTDFTagSource* self_) {
+    try { return {new HandleTDFTagSource(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdAsciiString_destructor(HandleTDataStdAsciiString* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdAsciiString*> HandleTDataStdAsciiString_clone(const HandleTDataStdAsciiString* self_) {
+    try { return {new HandleTDataStdAsciiString(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdBooleanArray_destructor(HandleTDataStdBooleanArray* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdBooleanArray*> HandleTDataStdBooleanArray_clone(const HandleTDataStdBooleanArray* self_) {
+    try { return {new HandleTDataStdBooleanArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdBooleanList_destructor(HandleTDataStdBooleanList* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdBooleanList*> HandleTDataStdBooleanList_clone(const HandleTDataStdBooleanList* self_) {
+    try { return {new HandleTDataStdBooleanList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdByteArray_destructor(HandleTDataStdByteArray* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdByteArray*> HandleTDataStdByteArray_clone(const HandleTDataStdByteArray* self_) {
+    try { return {new HandleTDataStdByteArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdComment_destructor(HandleTDataStdComment* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdComment*> HandleTDataStdComment_clone(const HandleTDataStdComment* self_) {
+    try { return {new HandleTDataStdComment(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdCurrent_destructor(HandleTDataStdCurrent* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdCurrent*> HandleTDataStdCurrent_clone(const HandleTDataStdCurrent* self_) {
+    try { return {new HandleTDataStdCurrent(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdDeltaOnModificationOfByteArray_destructor(HandleTDataStdDeltaOnModificationOfByteArray* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfByteArray*> HandleTDataStdDeltaOnModificationOfByteArray_clone(const HandleTDataStdDeltaOnModificationOfByteArray* self_) {
+    try { return {new HandleTDataStdDeltaOnModificationOfByteArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdDeltaOnModificationOfExtStringArray_destructor(HandleTDataStdDeltaOnModificationOfExtStringArray* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfExtStringArray*> HandleTDataStdDeltaOnModificationOfExtStringArray_clone(const HandleTDataStdDeltaOnModificationOfExtStringArray* self_) {
+    try { return {new HandleTDataStdDeltaOnModificationOfExtStringArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdDeltaOnModificationOfIntArray_destructor(HandleTDataStdDeltaOnModificationOfIntArray* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfIntArray*> HandleTDataStdDeltaOnModificationOfIntArray_clone(const HandleTDataStdDeltaOnModificationOfIntArray* self_) {
+    try { return {new HandleTDataStdDeltaOnModificationOfIntArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdDeltaOnModificationOfIntPackedMap_destructor(HandleTDataStdDeltaOnModificationOfIntPackedMap* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfIntPackedMap*> HandleTDataStdDeltaOnModificationOfIntPackedMap_clone(const HandleTDataStdDeltaOnModificationOfIntPackedMap* self_) {
+    try { return {new HandleTDataStdDeltaOnModificationOfIntPackedMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdDeltaOnModificationOfRealArray_destructor(HandleTDataStdDeltaOnModificationOfRealArray* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfRealArray*> HandleTDataStdDeltaOnModificationOfRealArray_clone(const HandleTDataStdDeltaOnModificationOfRealArray* self_) {
+    try { return {new HandleTDataStdDeltaOnModificationOfRealArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdDirectory_destructor(HandleTDataStdDirectory* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdDirectory*> HandleTDataStdDirectory_clone(const HandleTDataStdDirectory* self_) {
+    try { return {new HandleTDataStdDirectory(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdExpression_destructor(HandleTDataStdExpression* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdExpression*> HandleTDataStdExpression_clone(const HandleTDataStdExpression* self_) {
+    try { return {new HandleTDataStdExpression(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdExtStringArray_destructor(HandleTDataStdExtStringArray* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdExtStringArray*> HandleTDataStdExtStringArray_clone(const HandleTDataStdExtStringArray* self_) {
+    try { return {new HandleTDataStdExtStringArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdExtStringList_destructor(HandleTDataStdExtStringList* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdExtStringList*> HandleTDataStdExtStringList_clone(const HandleTDataStdExtStringList* self_) {
+    try { return {new HandleTDataStdExtStringList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdGenericEmpty_destructor(HandleTDataStdGenericEmpty* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleTDataStdGenericEmpty_clone(const HandleTDataStdGenericEmpty* self_) {
+    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdGenericExtString_destructor(HandleTDataStdGenericExtString* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdGenericExtString*> HandleTDataStdGenericExtString_clone(const HandleTDataStdGenericExtString* self_) {
+    try { return {new HandleTDataStdGenericExtString(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdHDataMapOfStringByte_destructor(HandleTDataStdHDataMapOfStringByte* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdHDataMapOfStringByte*> HandleTDataStdHDataMapOfStringByte_clone(const HandleTDataStdHDataMapOfStringByte* self_) {
+    try { return {new HandleTDataStdHDataMapOfStringByte(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdHDataMapOfStringHArray1OfInteger_destructor(HandleTDataStdHDataMapOfStringHArray1OfInteger* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdHDataMapOfStringHArray1OfInteger*> HandleTDataStdHDataMapOfStringHArray1OfInteger_clone(const HandleTDataStdHDataMapOfStringHArray1OfInteger* self_) {
+    try { return {new HandleTDataStdHDataMapOfStringHArray1OfInteger(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdHDataMapOfStringHArray1OfReal_destructor(HandleTDataStdHDataMapOfStringHArray1OfReal* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdHDataMapOfStringHArray1OfReal*> HandleTDataStdHDataMapOfStringHArray1OfReal_clone(const HandleTDataStdHDataMapOfStringHArray1OfReal* self_) {
+    try { return {new HandleTDataStdHDataMapOfStringHArray1OfReal(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdHDataMapOfStringInteger_destructor(HandleTDataStdHDataMapOfStringInteger* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdHDataMapOfStringInteger*> HandleTDataStdHDataMapOfStringInteger_clone(const HandleTDataStdHDataMapOfStringInteger* self_) {
+    try { return {new HandleTDataStdHDataMapOfStringInteger(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdHDataMapOfStringReal_destructor(HandleTDataStdHDataMapOfStringReal* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdHDataMapOfStringReal*> HandleTDataStdHDataMapOfStringReal_clone(const HandleTDataStdHDataMapOfStringReal* self_) {
+    try { return {new HandleTDataStdHDataMapOfStringReal(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdHDataMapOfStringString_destructor(HandleTDataStdHDataMapOfStringString* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdHDataMapOfStringString*> HandleTDataStdHDataMapOfStringString_clone(const HandleTDataStdHDataMapOfStringString* self_) {
+    try { return {new HandleTDataStdHDataMapOfStringString(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdHLabelArray1_destructor(HandleTDataStdHLabelArray1* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdHLabelArray1*> HandleTDataStdHLabelArray1_clone(const HandleTDataStdHLabelArray1* self_) {
+    try { return {new HandleTDataStdHLabelArray1(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdIntPackedMap_destructor(HandleTDataStdIntPackedMap* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdIntPackedMap*> HandleTDataStdIntPackedMap_clone(const HandleTDataStdIntPackedMap* self_) {
+    try { return {new HandleTDataStdIntPackedMap(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdInteger_destructor(HandleTDataStdInteger* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdInteger*> HandleTDataStdInteger_clone(const HandleTDataStdInteger* self_) {
+    try { return {new HandleTDataStdInteger(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdIntegerArray_destructor(HandleTDataStdIntegerArray* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdIntegerArray*> HandleTDataStdIntegerArray_clone(const HandleTDataStdIntegerArray* self_) {
+    try { return {new HandleTDataStdIntegerArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdIntegerList_destructor(HandleTDataStdIntegerList* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdIntegerList*> HandleTDataStdIntegerList_clone(const HandleTDataStdIntegerList* self_) {
+    try { return {new HandleTDataStdIntegerList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdName_destructor(HandleTDataStdName* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdName*> HandleTDataStdName_clone(const HandleTDataStdName* self_) {
+    try { return {new HandleTDataStdName(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdNamedData_destructor(HandleTDataStdNamedData* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdNamedData*> HandleTDataStdNamedData_clone(const HandleTDataStdNamedData* self_) {
+    try { return {new HandleTDataStdNamedData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdNoteBook_destructor(HandleTDataStdNoteBook* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdNoteBook*> HandleTDataStdNoteBook_clone(const HandleTDataStdNoteBook* self_) {
+    try { return {new HandleTDataStdNoteBook(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdReal_destructor(HandleTDataStdReal* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdReal*> HandleTDataStdReal_clone(const HandleTDataStdReal* self_) {
+    try { return {new HandleTDataStdReal(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdRealArray_destructor(HandleTDataStdRealArray* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdRealArray*> HandleTDataStdRealArray_clone(const HandleTDataStdRealArray* self_) {
+    try { return {new HandleTDataStdRealArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdRealList_destructor(HandleTDataStdRealList* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdRealList*> HandleTDataStdRealList_clone(const HandleTDataStdRealList* self_) {
+    try { return {new HandleTDataStdRealList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdReferenceArray_destructor(HandleTDataStdReferenceArray* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdReferenceArray*> HandleTDataStdReferenceArray_clone(const HandleTDataStdReferenceArray* self_) {
+    try { return {new HandleTDataStdReferenceArray(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdReferenceList_destructor(HandleTDataStdReferenceList* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdReferenceList*> HandleTDataStdReferenceList_clone(const HandleTDataStdReferenceList* self_) {
+    try { return {new HandleTDataStdReferenceList(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdRelation_destructor(HandleTDataStdRelation* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdRelation*> HandleTDataStdRelation_clone(const HandleTDataStdRelation* self_) {
+    try { return {new HandleTDataStdRelation(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdTick_destructor(HandleTDataStdTick* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdTick*> HandleTDataStdTick_clone(const HandleTDataStdTick* self_) {
+    try { return {new HandleTDataStdTick(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdTreeNode_destructor(HandleTDataStdTreeNode* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdTreeNode*> HandleTDataStdTreeNode_clone(const HandleTDataStdTreeNode* self_) {
+    try { return {new HandleTDataStdTreeNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdUAttribute_destructor(HandleTDataStdUAttribute* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdUAttribute*> HandleTDataStdUAttribute_clone(const HandleTDataStdUAttribute* self_) {
+    try { return {new HandleTDataStdUAttribute(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDataStdVariable_destructor(HandleTDataStdVariable* self_) { delete self_; }
+extern "C" OcctResult<HandleTDataStdVariable*> HandleTDataStdVariable_clone(const HandleTDataStdVariable* self_) {
+    try { return {new HandleTDataStdVariable(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDocStdApplication_destructor(HandleTDocStdApplication* self_) { delete self_; }
+extern "C" OcctResult<HandleTDocStdApplication*> HandleTDocStdApplication_clone(const HandleTDocStdApplication* self_) {
+    try { return {new HandleTDocStdApplication(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDocStdApplicationDelta_destructor(HandleTDocStdApplicationDelta* self_) { delete self_; }
+extern "C" OcctResult<HandleTDocStdApplicationDelta*> HandleTDocStdApplicationDelta_clone(const HandleTDocStdApplicationDelta* self_) {
+    try { return {new HandleTDocStdApplicationDelta(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDocStdCompoundDelta_destructor(HandleTDocStdCompoundDelta* self_) { delete self_; }
+extern "C" OcctResult<HandleTDocStdCompoundDelta*> HandleTDocStdCompoundDelta_clone(const HandleTDocStdCompoundDelta* self_) {
+    try { return {new HandleTDocStdCompoundDelta(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDocStdDocument_destructor(HandleTDocStdDocument* self_) { delete self_; }
+extern "C" OcctResult<HandleTDocStdDocument*> HandleTDocStdDocument_clone(const HandleTDocStdDocument* self_) {
+    try { return {new HandleTDocStdDocument(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDocStdModified_destructor(HandleTDocStdModified* self_) { delete self_; }
+extern "C" OcctResult<HandleTDocStdModified*> HandleTDocStdModified_clone(const HandleTDocStdModified* self_) {
+    try { return {new HandleTDocStdModified(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDocStdMultiTransactionManager_destructor(HandleTDocStdMultiTransactionManager* self_) { delete self_; }
+extern "C" OcctResult<HandleTDocStdMultiTransactionManager*> HandleTDocStdMultiTransactionManager_clone(const HandleTDocStdMultiTransactionManager* self_) {
+    try { return {new HandleTDocStdMultiTransactionManager(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDocStdOwner_destructor(HandleTDocStdOwner* self_) { delete self_; }
+extern "C" OcctResult<HandleTDocStdOwner*> HandleTDocStdOwner_clone(const HandleTDocStdOwner* self_) {
+    try { return {new HandleTDocStdOwner(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDocStdXLink_destructor(HandleTDocStdXLink* self_) { delete self_; }
+extern "C" OcctResult<HandleTDocStdXLink*> HandleTDocStdXLink_clone(const HandleTDocStdXLink* self_) {
+    try { return {new HandleTDocStdXLink(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTDocStdXLinkRoot_destructor(HandleTDocStdXLinkRoot* self_) { delete self_; }
+extern "C" OcctResult<HandleTDocStdXLinkRoot*> HandleTDocStdXLinkRoot_clone(const HandleTDocStdXLinkRoot* self_) {
+    try { return {new HandleTDocStdXLinkRoot(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTFunctionDriver_destructor(HandleTFunctionDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleTFunctionDriver*> HandleTFunctionDriver_clone(const HandleTFunctionDriver* self_) {
+    try { return {new HandleTFunctionDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTFunctionDriverTable_destructor(HandleTFunctionDriverTable* self_) { delete self_; }
+extern "C" OcctResult<HandleTFunctionDriverTable*> HandleTFunctionDriverTable_clone(const HandleTFunctionDriverTable* self_) {
+    try { return {new HandleTFunctionDriverTable(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTFunctionFunction_destructor(HandleTFunctionFunction* self_) { delete self_; }
+extern "C" OcctResult<HandleTFunctionFunction*> HandleTFunctionFunction_clone(const HandleTFunctionFunction* self_) {
+    try { return {new HandleTFunctionFunction(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTFunctionGraphNode_destructor(HandleTFunctionGraphNode* self_) { delete self_; }
+extern "C" OcctResult<HandleTFunctionGraphNode*> HandleTFunctionGraphNode_clone(const HandleTFunctionGraphNode* self_) {
+    try { return {new HandleTFunctionGraphNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTFunctionHArray1OfDataMapOfGUIDDriver_destructor(HandleTFunctionHArray1OfDataMapOfGUIDDriver* self_) { delete self_; }
+extern "C" OcctResult<HandleTFunctionHArray1OfDataMapOfGUIDDriver*> HandleTFunctionHArray1OfDataMapOfGUIDDriver_clone(const HandleTFunctionHArray1OfDataMapOfGUIDDriver* self_) {
+    try { return {new HandleTFunctionHArray1OfDataMapOfGUIDDriver(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTFunctionLogbook_destructor(HandleTFunctionLogbook* self_) { delete self_; }
+extern "C" OcctResult<HandleTFunctionLogbook*> HandleTFunctionLogbook_clone(const HandleTFunctionLogbook* self_) {
+    try { return {new HandleTFunctionLogbook(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleTFunctionScope_destructor(HandleTFunctionScope* self_) { delete self_; }
+extern "C" OcctResult<HandleTFunctionScope*> HandleTFunctionScope_clone(const HandleTFunctionScope* self_) {
+    try { return {new HandleTFunctionScope(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // AppStdL_Application wrappers

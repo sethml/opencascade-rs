@@ -89,6 +89,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEBREPConfigurationNode>;
     /// Destroy Handle<DEBREP_ConfigurationNode>
     pub fn HandleDEBREPConfigurationNode_destructor(self_: *mut HandleDEBREPConfigurationNode);
+    /// Clone Handle<DEBREP_ConfigurationNode> (increments reference count)
+    pub fn HandleDEBREPConfigurationNode_clone(
+        self_: *const HandleDEBREPConfigurationNode,
+    ) -> crate::OcctResult<*mut HandleDEBREPConfigurationNode>;
     /// Dereference Handle to get *const DEBREP_ConfigurationNode
     pub fn HandleDEBREPConfigurationNode_get(
         handle: *const HandleDEBREPConfigurationNode,
@@ -273,6 +277,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEBREPProvider>;
     /// Destroy Handle<DEBREP_Provider>
     pub fn HandleDEBREPProvider_destructor(self_: *mut HandleDEBREPProvider);
+    /// Clone Handle<DEBREP_Provider> (increments reference count)
+    pub fn HandleDEBREPProvider_clone(
+        self_: *const HandleDEBREPProvider,
+    ) -> crate::OcctResult<*mut HandleDEBREPProvider>;
     /// Dereference Handle to get *const DEBREP_Provider
     pub fn HandleDEBREPProvider_get(
         handle: *const HandleDEBREPProvider,
@@ -409,6 +417,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEXCAFConfigurationNode>;
     /// Destroy Handle<DEXCAF_ConfigurationNode>
     pub fn HandleDEXCAFConfigurationNode_destructor(self_: *mut HandleDEXCAFConfigurationNode);
+    /// Clone Handle<DEXCAF_ConfigurationNode> (increments reference count)
+    pub fn HandleDEXCAFConfigurationNode_clone(
+        self_: *const HandleDEXCAFConfigurationNode,
+    ) -> crate::OcctResult<*mut HandleDEXCAFConfigurationNode>;
     /// Dereference Handle to get *const DEXCAF_ConfigurationNode
     pub fn HandleDEXCAFConfigurationNode_get(
         handle: *const HandleDEXCAFConfigurationNode,
@@ -593,6 +605,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleDEXCAFProvider>;
     /// Destroy Handle<DEXCAF_Provider>
     pub fn HandleDEXCAFProvider_destructor(self_: *mut HandleDEXCAFProvider);
+    /// Clone Handle<DEXCAF_Provider> (increments reference count)
+    pub fn HandleDEXCAFProvider_clone(
+        self_: *const HandleDEXCAFProvider,
+    ) -> crate::OcctResult<*mut HandleDEXCAFProvider>;
     /// Dereference Handle to get *const DEXCAF_Provider
     pub fn HandleDEXCAFProvider_get(
         handle: *const HandleDEXCAFProvider,

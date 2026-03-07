@@ -22,6 +22,22 @@ unsafe impl crate::CppDeletable for Attr {
     }
 }
 
+unsafe impl crate::CppCopyable for Attr {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::LDOM_Attr_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Attr {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Attr {
     /// **Source:** `LDOM_Attr.hxx`:31 - `LDOM_Attr::LDOM_Attr()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -71,15 +87,6 @@ impl Attr {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_Attr_as_LDOM_Node_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCDF::LDOM_Attr_to_owned(self as *const Self),
             ))
         }
     }
@@ -592,6 +599,22 @@ unsafe impl crate::CppDeletable for CDATASection {
     }
 }
 
+unsafe impl crate::CppCopyable for CDATASection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::LDOM_CDATASection_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for CDATASection {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl CDATASection {
     /// **Source:** `LDOM_CDATASection.hxx`:28 - `LDOM_CDATASection::LDOM_CDATASection()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -654,15 +677,6 @@ impl CDATASection {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_CDATASection_as_LDOM_Node_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCDF::LDOM_CDATASection_to_owned(self as *const Self),
             ))
         }
     }
@@ -870,6 +884,22 @@ unsafe impl crate::CppDeletable for CharacterData {
     }
 }
 
+unsafe impl crate::CppCopyable for CharacterData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::LDOM_CharacterData_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for CharacterData {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl CharacterData {
     /// **Source:** `LDOM_CharacterData.hxx`:31 - `LDOM_CharacterData::LDOM_CharacterData()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -917,15 +947,6 @@ impl CharacterData {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_CharacterData_as_LDOM_Node_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCDF::LDOM_CharacterData_to_owned(self as *const Self),
             ))
         }
     }
@@ -1062,6 +1083,22 @@ unsafe impl crate::CppDeletable for Comment {
     }
 }
 
+unsafe impl crate::CppCopyable for Comment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::LDOM_Comment_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Comment {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Comment {
     /// **Source:** `LDOM_Comment.hxx`:28 - `LDOM_Comment::LDOM_Comment()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -1104,15 +1141,6 @@ impl Comment {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_Comment_as_LDOM_Node_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCDF::LDOM_Comment_to_owned(self as *const Self),
             ))
         }
     }
@@ -1407,6 +1435,22 @@ unsafe impl crate::CppDeletable for Element {
     }
 }
 
+unsafe impl crate::CppCopyable for Element {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::LDOM_Element_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Element {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Element {
     /// **Source:** `LDOM_Element.hxx`:32 - `LDOM_Element::LDOM_Element()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -1547,15 +1591,6 @@ impl Element {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_Element_as_LDOM_Node_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCDF::LDOM_Element_to_owned(self as *const Self),
             ))
         }
     }
@@ -1947,6 +1982,12 @@ unsafe impl crate::CppDeletable for HandleLDOMMemManager {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleLDOMMemManager {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::HandleLDOMMemManager_clone(ptr))
+    }
+}
+
 impl HandleLDOMMemManager {
     /// Dereference this Handle to access the underlying LDOM_MemManager
     pub fn get(&self) -> &crate::ffi_types::LDOM_MemManager {
@@ -1990,6 +2031,22 @@ pub use crate::ffi_types::LDOM_Node as Node;
 unsafe impl crate::CppDeletable for Node {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCDF::LDOM_Node_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for Node {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::LDOM_Node_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Node {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -2100,15 +2157,6 @@ impl Node {
             crate::ffi_extern_TKCDF::LDOM_Node_set_value_clear(self as *const Self)
         })
     }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCDF::LDOM_Node_to_owned(self as *const Self),
-            ))
-        }
-    }
 }
 
 // ========================
@@ -2121,6 +2169,22 @@ pub use crate::ffi_types::LDOM_NodeList as NodeList;
 unsafe impl crate::CppDeletable for NodeList {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKCDF::LDOM_NodeList_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for NodeList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::LDOM_NodeList_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for NodeList {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
     }
 }
 
@@ -2148,15 +2212,6 @@ impl NodeList {
         crate::check_result(unsafe {
             crate::ffi_extern_TKCDF::LDOM_NodeList_get_length(self as *const Self)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCDF::LDOM_NodeList_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -2326,6 +2381,22 @@ unsafe impl crate::CppDeletable for Text {
     }
 }
 
+unsafe impl crate::CppCopyable for Text {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKCDF::LDOM_Text_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Text {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Text {
     /// **Source:** `LDOM_Text.hxx`:28 - `LDOM_Text::LDOM_Text()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -2368,15 +2439,6 @@ impl Text {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_Text_as_LDOM_Node_mut(
                 self as *mut Self,
-            ))
-        }
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCDF::LDOM_Text_to_owned(self as *const Self),
             ))
         }
     }

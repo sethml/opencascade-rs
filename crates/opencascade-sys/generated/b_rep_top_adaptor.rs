@@ -355,6 +355,12 @@ unsafe impl crate::CppDeletable for HandleBRepTopAdaptorHVertex {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepTopAdaptorHVertex {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorHVertex_clone(ptr))
+    }
+}
+
 impl HandleBRepTopAdaptorHVertex {
     /// Dereference this Handle to access the underlying BRepTopAdaptor_HVertex
     pub fn get(&self) -> &crate::ffi_types::BRepTopAdaptor_HVertex {
@@ -1054,6 +1060,12 @@ pub use crate::ffi_types::HandleBRepTopAdaptorTopolTool;
 unsafe impl crate::CppDeletable for HandleBRepTopAdaptorTopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorTopolTool_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepTopAdaptorTopolTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorTopolTool_clone(ptr))
     }
 }
 

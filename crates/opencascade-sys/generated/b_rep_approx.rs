@@ -365,6 +365,12 @@ unsafe impl crate::CppDeletable for HandleBRepApproxApproxLine {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepApproxApproxLine {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepApproxApproxLine_clone(ptr))
+    }
+}
+
 impl HandleBRepApproxApproxLine {
     /// Dereference this Handle to access the underlying BRepApprox_ApproxLine
     pub fn get(&self) -> &crate::ffi_types::BRepApprox_ApproxLine {

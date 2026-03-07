@@ -454,6 +454,12 @@ unsafe impl crate::CppDeletable for HandleDEConfigurationContext {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleDEConfigurationContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationContext_clone(ptr))
+    }
+}
+
 impl HandleDEConfigurationContext {
     /// Dereference this Handle to access the underlying DE_ConfigurationContext
     pub fn get(&self) -> &crate::ffi_types::DE_ConfigurationContext {
@@ -849,6 +855,12 @@ pub use crate::ffi_types::HandleDEConfigurationNode;
 unsafe impl crate::CppDeletable for HandleDEConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDE::HandleDEConfigurationNode_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleDEConfigurationNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationNode_clone(ptr))
     }
 }
 
@@ -1396,6 +1408,12 @@ unsafe impl crate::CppDeletable for HandleDEProvider {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleDEProvider {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDE::HandleDEProvider_clone(ptr))
+    }
+}
+
 impl HandleDEProvider {
     /// Dereference this Handle to access the underlying DE_Provider
     pub fn get(&self) -> &crate::ffi_types::DE_Provider {
@@ -1914,6 +1932,12 @@ pub use crate::ffi_types::HandleDEShapeFixConfigurationNode;
 unsafe impl crate::CppDeletable for HandleDEShapeFixConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleDEShapeFixConfigurationNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_clone(ptr))
     }
 }
 
@@ -2614,6 +2638,12 @@ pub use crate::ffi_types::HandleDEWrapper;
 unsafe impl crate::CppDeletable for HandleDEWrapper {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDE::HandleDEWrapper_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleDEWrapper {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDE::HandleDEWrapper_clone(ptr))
     }
 }
 

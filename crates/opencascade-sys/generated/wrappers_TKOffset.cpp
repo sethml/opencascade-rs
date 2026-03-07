@@ -112,11 +112,27 @@ typedef opencascade::handle<Law_Function> HandleLawFunction;
 typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleBRepOffsetSimpleOffset_destructor(HandleBRepOffsetSimpleOffset* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepOffsetSimpleOffset*> HandleBRepOffsetSimpleOffset_clone(const HandleBRepOffsetSimpleOffset* self_) {
+    try { return {new HandleBRepOffsetSimpleOffset(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBiTgteCurveOnEdge_destructor(HandleBiTgteCurveOnEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleBiTgteCurveOnEdge*> HandleBiTgteCurveOnEdge_clone(const HandleBiTgteCurveOnEdge* self_) {
+    try { return {new HandleBiTgteCurveOnEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBiTgteCurveOnVertex_destructor(HandleBiTgteCurveOnVertex* self_) { delete self_; }
+extern "C" OcctResult<HandleBiTgteCurveOnVertex*> HandleBiTgteCurveOnVertex_clone(const HandleBiTgteCurveOnVertex* self_) {
+    try { return {new HandleBiTgteCurveOnVertex(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleDraftModification_destructor(HandleDraftModification* self_) { delete self_; }
+extern "C" OcctResult<HandleDraftModification*> HandleDraftModification_clone(const HandleDraftModification* self_) {
+    try { return {new HandleDraftModification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // BRepOffset_Analyse wrappers

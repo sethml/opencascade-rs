@@ -1362,6 +1362,12 @@ unsafe impl crate::CppDeletable for HandleXCAFDimTolObjectsDatumObject {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsDatumObject {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_clone(ptr))
+    }
+}
+
 impl HandleXCAFDimTolObjectsDatumObject {
     /// Dereference this Handle to access the underlying XCAFDimTolObjects_DatumObject
     pub fn get(&self) -> &crate::ffi_types::XCAFDimTolObjects_DatumObject {
@@ -2255,6 +2261,14 @@ unsafe impl crate::CppDeletable for HandleXCAFDimTolObjectsDimensionObject {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsDimensionObject {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleXCAFDimTolObjectsDimensionObject {
     /// Dereference this Handle to access the underlying XCAFDimTolObjects_DimensionObject
     pub fn get(&self) -> &crate::ffi_types::XCAFDimTolObjects_DimensionObject {
@@ -2894,6 +2908,14 @@ pub use crate::ffi_types::HandleXCAFDimTolObjectsGeomToleranceObject;
 unsafe impl crate::CppDeletable for HandleXCAFDimTolObjectsGeomToleranceObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsGeomToleranceObject {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_clone(ptr),
+        )
     }
 }
 

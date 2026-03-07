@@ -213,6 +213,22 @@ unsafe impl crate::CppDeletable for Elements {
     }
 }
 
+unsafe impl crate::CppCopyable for Elements {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for Elements {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl Elements {
     /// **Source:** `Geom2dHatch_Elements.hxx`:38 - `Geom2dHatch_Elements::Geom2dHatch_Elements()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -395,15 +411,6 @@ impl Elements {
             )
         });
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 

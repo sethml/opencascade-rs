@@ -393,6 +393,12 @@ unsafe impl crate::CppDeletable for HandleDEXCAFConfigurationNode {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleDEXCAFConfigurationNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDECascade::HandleDEXCAFConfigurationNode_clone(ptr))
+    }
+}
+
 impl HandleDEXCAFConfigurationNode {
     /// Dereference this Handle to access the underlying DEXCAF_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEXCAF_ConfigurationNode {
@@ -856,6 +862,12 @@ pub use crate::ffi_types::HandleDEXCAFProvider;
 unsafe impl crate::CppDeletable for HandleDEXCAFProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDECascade::HandleDEXCAFProvider_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleDEXCAFProvider {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDECascade::HandleDEXCAFProvider_clone(ptr))
     }
 }
 

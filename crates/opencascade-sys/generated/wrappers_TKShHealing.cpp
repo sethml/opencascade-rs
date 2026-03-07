@@ -292,71 +292,327 @@ typedef opencascade::handle<TColStd_HSequenceOfReal> HandleTColStdHSequenceOfRea
 typedef opencascade::handle<TopTools_HArray1OfShape> HandleTopToolsHArray1OfShape;
 typedef opencascade::handle<TopTools_HSequenceOfShape> HandleTopToolsHSequenceOfShape;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleShapeAlgoAlgoContainer_destructor(HandleShapeAlgoAlgoContainer* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeAlgoAlgoContainer*> HandleShapeAlgoAlgoContainer_clone(const HandleShapeAlgoAlgoContainer* self_) {
+    try { return {new HandleShapeAlgoAlgoContainer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeAlgoToolContainer_destructor(HandleShapeAlgoToolContainer* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeAlgoToolContainer*> HandleShapeAlgoToolContainer_clone(const HandleShapeAlgoToolContainer* self_) {
+    try { return {new HandleShapeAlgoToolContainer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeAnalysisFreeBoundData_destructor(HandleShapeAnalysisFreeBoundData* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeAnalysisFreeBoundData*> HandleShapeAnalysisFreeBoundData_clone(const HandleShapeAnalysisFreeBoundData* self_) {
+    try { return {new HandleShapeAnalysisFreeBoundData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeAnalysisHSequenceOfFreeBounds_destructor(HandleShapeAnalysisHSequenceOfFreeBounds* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeAnalysisHSequenceOfFreeBounds*> HandleShapeAnalysisHSequenceOfFreeBounds_clone(const HandleShapeAnalysisHSequenceOfFreeBounds* self_) {
+    try { return {new HandleShapeAnalysisHSequenceOfFreeBounds(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeAnalysisSurface_destructor(HandleShapeAnalysisSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeAnalysisSurface*> HandleShapeAnalysisSurface_clone(const HandleShapeAnalysisSurface* self_) {
+    try { return {new HandleShapeAnalysisSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeAnalysisTransferParameters_destructor(HandleShapeAnalysisTransferParameters* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeAnalysisTransferParameters*> HandleShapeAnalysisTransferParameters_clone(const HandleShapeAnalysisTransferParameters* self_) {
+    try { return {new HandleShapeAnalysisTransferParameters(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeAnalysisTransferParametersProj_destructor(HandleShapeAnalysisTransferParametersProj* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeAnalysisTransferParametersProj*> HandleShapeAnalysisTransferParametersProj_clone(const HandleShapeAnalysisTransferParametersProj* self_) {
+    try { return {new HandleShapeAnalysisTransferParametersProj(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeAnalysisWire_destructor(HandleShapeAnalysisWire* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeAnalysisWire*> HandleShapeAnalysisWire_clone(const HandleShapeAnalysisWire* self_) {
+    try { return {new HandleShapeAnalysisWire(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeBuildReShape_destructor(HandleShapeBuildReShape* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeBuildReShape*> HandleShapeBuildReShape_clone(const HandleShapeBuildReShape* self_) {
+    try { return {new HandleShapeBuildReShape(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeConstructProjectCurveOnSurface_destructor(HandleShapeConstructProjectCurveOnSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeConstructProjectCurveOnSurface*> HandleShapeConstructProjectCurveOnSurface_clone(const HandleShapeConstructProjectCurveOnSurface* self_) {
+    try { return {new HandleShapeConstructProjectCurveOnSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeCustomBSplineRestriction_destructor(HandleShapeCustomBSplineRestriction* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeCustomBSplineRestriction*> HandleShapeCustomBSplineRestriction_clone(const HandleShapeCustomBSplineRestriction* self_) {
+    try { return {new HandleShapeCustomBSplineRestriction(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeCustomConvertToBSpline_destructor(HandleShapeCustomConvertToBSpline* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeCustomConvertToBSpline*> HandleShapeCustomConvertToBSpline_clone(const HandleShapeCustomConvertToBSpline* self_) {
+    try { return {new HandleShapeCustomConvertToBSpline(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeCustomConvertToRevolution_destructor(HandleShapeCustomConvertToRevolution* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeCustomConvertToRevolution*> HandleShapeCustomConvertToRevolution_clone(const HandleShapeCustomConvertToRevolution* self_) {
+    try { return {new HandleShapeCustomConvertToRevolution(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeCustomDirectModification_destructor(HandleShapeCustomDirectModification* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeCustomDirectModification*> HandleShapeCustomDirectModification_clone(const HandleShapeCustomDirectModification* self_) {
+    try { return {new HandleShapeCustomDirectModification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeCustomModification_destructor(HandleShapeCustomModification* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeCustomModification*> HandleShapeCustomModification_clone(const HandleShapeCustomModification* self_) {
+    try { return {new HandleShapeCustomModification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeCustomRestrictionParameters_destructor(HandleShapeCustomRestrictionParameters* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeCustomRestrictionParameters*> HandleShapeCustomRestrictionParameters_clone(const HandleShapeCustomRestrictionParameters* self_) {
+    try { return {new HandleShapeCustomRestrictionParameters(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeCustomSweptToElementary_destructor(HandleShapeCustomSweptToElementary* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeCustomSweptToElementary*> HandleShapeCustomSweptToElementary_clone(const HandleShapeCustomSweptToElementary* self_) {
+    try { return {new HandleShapeCustomSweptToElementary(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeCustomTrsfModification_destructor(HandleShapeCustomTrsfModification* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeCustomTrsfModification*> HandleShapeCustomTrsfModification_clone(const HandleShapeCustomTrsfModification* self_) {
+    try { return {new HandleShapeCustomTrsfModification(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeExtendBasicMsgRegistrator_destructor(HandleShapeExtendBasicMsgRegistrator* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeExtendBasicMsgRegistrator*> HandleShapeExtendBasicMsgRegistrator_clone(const HandleShapeExtendBasicMsgRegistrator* self_) {
+    try { return {new HandleShapeExtendBasicMsgRegistrator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeExtendComplexCurve_destructor(HandleShapeExtendComplexCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeExtendComplexCurve*> HandleShapeExtendComplexCurve_clone(const HandleShapeExtendComplexCurve* self_) {
+    try { return {new HandleShapeExtendComplexCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeExtendCompositeSurface_destructor(HandleShapeExtendCompositeSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeExtendCompositeSurface*> HandleShapeExtendCompositeSurface_clone(const HandleShapeExtendCompositeSurface* self_) {
+    try { return {new HandleShapeExtendCompositeSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeExtendMsgRegistrator_destructor(HandleShapeExtendMsgRegistrator* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeExtendMsgRegistrator*> HandleShapeExtendMsgRegistrator_clone(const HandleShapeExtendMsgRegistrator* self_) {
+    try { return {new HandleShapeExtendMsgRegistrator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeExtendWireData_destructor(HandleShapeExtendWireData* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeExtendWireData*> HandleShapeExtendWireData_clone(const HandleShapeExtendWireData* self_) {
+    try { return {new HandleShapeExtendWireData(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixComposeShell_destructor(HandleShapeFixComposeShell* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixComposeShell*> HandleShapeFixComposeShell_clone(const HandleShapeFixComposeShell* self_) {
+    try { return {new HandleShapeFixComposeShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixEdge_destructor(HandleShapeFixEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixEdge*> HandleShapeFixEdge_clone(const HandleShapeFixEdge* self_) {
+    try { return {new HandleShapeFixEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixEdgeProjAux_destructor(HandleShapeFixEdgeProjAux* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixEdgeProjAux*> HandleShapeFixEdgeProjAux_clone(const HandleShapeFixEdgeProjAux* self_) {
+    try { return {new HandleShapeFixEdgeProjAux(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixFace_destructor(HandleShapeFixFace* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixFace*> HandleShapeFixFace_clone(const HandleShapeFixFace* self_) {
+    try { return {new HandleShapeFixFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixFixSmallFace_destructor(HandleShapeFixFixSmallFace* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixFixSmallFace*> HandleShapeFixFixSmallFace_clone(const HandleShapeFixFixSmallFace* self_) {
+    try { return {new HandleShapeFixFixSmallFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixFixSmallSolid_destructor(HandleShapeFixFixSmallSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixFixSmallSolid*> HandleShapeFixFixSmallSolid_clone(const HandleShapeFixFixSmallSolid* self_) {
+    try { return {new HandleShapeFixFixSmallSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixRoot_destructor(HandleShapeFixRoot* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixRoot_clone(const HandleShapeFixRoot* self_) {
+    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixShape_destructor(HandleShapeFixShape* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixShape*> HandleShapeFixShape_clone(const HandleShapeFixShape* self_) {
+    try { return {new HandleShapeFixShape(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixShell_destructor(HandleShapeFixShell* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixShell*> HandleShapeFixShell_clone(const HandleShapeFixShell* self_) {
+    try { return {new HandleShapeFixShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixSolid_destructor(HandleShapeFixSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixSolid*> HandleShapeFixSolid_clone(const HandleShapeFixSolid* self_) {
+    try { return {new HandleShapeFixSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixSplitCommonVertex_destructor(HandleShapeFixSplitCommonVertex* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixSplitCommonVertex*> HandleShapeFixSplitCommonVertex_clone(const HandleShapeFixSplitCommonVertex* self_) {
+    try { return {new HandleShapeFixSplitCommonVertex(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixWire_destructor(HandleShapeFixWire* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixWire*> HandleShapeFixWire_clone(const HandleShapeFixWire* self_) {
+    try { return {new HandleShapeFixWire(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeFixWireframe_destructor(HandleShapeFixWireframe* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeFixWireframe*> HandleShapeFixWireframe_clone(const HandleShapeFixWireframe* self_) {
+    try { return {new HandleShapeFixWireframe(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeProcessContext_destructor(HandleShapeProcessContext* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeProcessContext*> HandleShapeProcessContext_clone(const HandleShapeProcessContext* self_) {
+    try { return {new HandleShapeProcessContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeProcessOperator_destructor(HandleShapeProcessOperator* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeProcessOperator*> HandleShapeProcessOperator_clone(const HandleShapeProcessOperator* self_) {
+    try { return {new HandleShapeProcessOperator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeProcessShapeContext_destructor(HandleShapeProcessShapeContext* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeProcessShapeContext*> HandleShapeProcessShapeContext_clone(const HandleShapeProcessShapeContext* self_) {
+    try { return {new HandleShapeProcessShapeContext(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeProcessUOperator_destructor(HandleShapeProcessUOperator* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeProcessUOperator*> HandleShapeProcessUOperator_clone(const HandleShapeProcessUOperator* self_) {
+    try { return {new HandleShapeProcessUOperator(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeClosedEdgeDivide_destructor(HandleShapeUpgradeClosedEdgeDivide* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeClosedEdgeDivide*> HandleShapeUpgradeClosedEdgeDivide_clone(const HandleShapeUpgradeClosedEdgeDivide* self_) {
+    try { return {new HandleShapeUpgradeClosedEdgeDivide(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeClosedFaceDivide_destructor(HandleShapeUpgradeClosedFaceDivide* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeClosedFaceDivide*> HandleShapeUpgradeClosedFaceDivide_clone(const HandleShapeUpgradeClosedFaceDivide* self_) {
+    try { return {new HandleShapeUpgradeClosedFaceDivide(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeConvertCurve2dToBezier_destructor(HandleShapeUpgradeConvertCurve2dToBezier* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeConvertCurve2dToBezier*> HandleShapeUpgradeConvertCurve2dToBezier_clone(const HandleShapeUpgradeConvertCurve2dToBezier* self_) {
+    try { return {new HandleShapeUpgradeConvertCurve2dToBezier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeConvertCurve3dToBezier_destructor(HandleShapeUpgradeConvertCurve3dToBezier* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeConvertCurve3dToBezier*> HandleShapeUpgradeConvertCurve3dToBezier_clone(const HandleShapeUpgradeConvertCurve3dToBezier* self_) {
+    try { return {new HandleShapeUpgradeConvertCurve3dToBezier(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeConvertSurfaceToBezierBasis_destructor(HandleShapeUpgradeConvertSurfaceToBezierBasis* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeConvertSurfaceToBezierBasis*> HandleShapeUpgradeConvertSurfaceToBezierBasis_clone(const HandleShapeUpgradeConvertSurfaceToBezierBasis* self_) {
+    try { return {new HandleShapeUpgradeConvertSurfaceToBezierBasis(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeEdgeDivide_destructor(HandleShapeUpgradeEdgeDivide* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeEdgeDivide*> HandleShapeUpgradeEdgeDivide_clone(const HandleShapeUpgradeEdgeDivide* self_) {
+    try { return {new HandleShapeUpgradeEdgeDivide(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeFaceDivide_destructor(HandleShapeUpgradeFaceDivide* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeFaceDivide*> HandleShapeUpgradeFaceDivide_clone(const HandleShapeUpgradeFaceDivide* self_) {
+    try { return {new HandleShapeUpgradeFaceDivide(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeFaceDivideArea_destructor(HandleShapeUpgradeFaceDivideArea* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeFaceDivideArea*> HandleShapeUpgradeFaceDivideArea_clone(const HandleShapeUpgradeFaceDivideArea* self_) {
+    try { return {new HandleShapeUpgradeFaceDivideArea(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeFixSmallBezierCurves_destructor(HandleShapeUpgradeFixSmallBezierCurves* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeFixSmallBezierCurves*> HandleShapeUpgradeFixSmallBezierCurves_clone(const HandleShapeUpgradeFixSmallBezierCurves* self_) {
+    try { return {new HandleShapeUpgradeFixSmallBezierCurves(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeFixSmallCurves_destructor(HandleShapeUpgradeFixSmallCurves* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeFixSmallCurves*> HandleShapeUpgradeFixSmallCurves_clone(const HandleShapeUpgradeFixSmallCurves* self_) {
+    try { return {new HandleShapeUpgradeFixSmallCurves(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeRemoveInternalWires_destructor(HandleShapeUpgradeRemoveInternalWires* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeRemoveInternalWires*> HandleShapeUpgradeRemoveInternalWires_clone(const HandleShapeUpgradeRemoveInternalWires* self_) {
+    try { return {new HandleShapeUpgradeRemoveInternalWires(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeRemoveLocations_destructor(HandleShapeUpgradeRemoveLocations* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeRemoveLocations*> HandleShapeUpgradeRemoveLocations_clone(const HandleShapeUpgradeRemoveLocations* self_) {
+    try { return {new HandleShapeUpgradeRemoveLocations(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeSplitCurve_destructor(HandleShapeUpgradeSplitCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeSplitCurve*> HandleShapeUpgradeSplitCurve_clone(const HandleShapeUpgradeSplitCurve* self_) {
+    try { return {new HandleShapeUpgradeSplitCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeSplitCurve2d_destructor(HandleShapeUpgradeSplitCurve2d* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeSplitCurve2d*> HandleShapeUpgradeSplitCurve2d_clone(const HandleShapeUpgradeSplitCurve2d* self_) {
+    try { return {new HandleShapeUpgradeSplitCurve2d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeSplitCurve2dContinuity_destructor(HandleShapeUpgradeSplitCurve2dContinuity* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeSplitCurve2dContinuity*> HandleShapeUpgradeSplitCurve2dContinuity_clone(const HandleShapeUpgradeSplitCurve2dContinuity* self_) {
+    try { return {new HandleShapeUpgradeSplitCurve2dContinuity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeSplitCurve3d_destructor(HandleShapeUpgradeSplitCurve3d* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeSplitCurve3d*> HandleShapeUpgradeSplitCurve3d_clone(const HandleShapeUpgradeSplitCurve3d* self_) {
+    try { return {new HandleShapeUpgradeSplitCurve3d(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeSplitCurve3dContinuity_destructor(HandleShapeUpgradeSplitCurve3dContinuity* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeSplitCurve3dContinuity*> HandleShapeUpgradeSplitCurve3dContinuity_clone(const HandleShapeUpgradeSplitCurve3dContinuity* self_) {
+    try { return {new HandleShapeUpgradeSplitCurve3dContinuity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeSplitSurface_destructor(HandleShapeUpgradeSplitSurface* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeSplitSurface*> HandleShapeUpgradeSplitSurface_clone(const HandleShapeUpgradeSplitSurface* self_) {
+    try { return {new HandleShapeUpgradeSplitSurface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeSplitSurfaceAngle_destructor(HandleShapeUpgradeSplitSurfaceAngle* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceAngle*> HandleShapeUpgradeSplitSurfaceAngle_clone(const HandleShapeUpgradeSplitSurfaceAngle* self_) {
+    try { return {new HandleShapeUpgradeSplitSurfaceAngle(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeSplitSurfaceArea_destructor(HandleShapeUpgradeSplitSurfaceArea* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceArea*> HandleShapeUpgradeSplitSurfaceArea_clone(const HandleShapeUpgradeSplitSurfaceArea* self_) {
+    try { return {new HandleShapeUpgradeSplitSurfaceArea(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeSplitSurfaceContinuity_destructor(HandleShapeUpgradeSplitSurfaceContinuity* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceContinuity*> HandleShapeUpgradeSplitSurfaceContinuity_clone(const HandleShapeUpgradeSplitSurfaceContinuity* self_) {
+    try { return {new HandleShapeUpgradeSplitSurfaceContinuity(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeTool_destructor(HandleShapeUpgradeTool* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeTool*> HandleShapeUpgradeTool_clone(const HandleShapeUpgradeTool* self_) {
+    try { return {new HandleShapeUpgradeTool(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeUnifySameDomain_destructor(HandleShapeUpgradeUnifySameDomain* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeUnifySameDomain*> HandleShapeUpgradeUnifySameDomain_clone(const HandleShapeUpgradeUnifySameDomain* self_) {
+    try { return {new HandleShapeUpgradeUnifySameDomain(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleShapeUpgradeWireDivide_destructor(HandleShapeUpgradeWireDivide* self_) { delete self_; }
+extern "C" OcctResult<HandleShapeUpgradeWireDivide*> HandleShapeUpgradeWireDivide_clone(const HandleShapeUpgradeWireDivide* self_) {
+    try { return {new HandleShapeUpgradeWireDivide(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // ShapeAlgo_AlgoContainer wrappers

@@ -482,6 +482,12 @@ unsafe impl crate::CppDeletable for HandleGccEntBadQualifier {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGccEntBadQualifier {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccEntBadQualifier_clone(ptr))
+    }
+}
+
 impl HandleGccEntBadQualifier {
     /// Dereference this Handle to access the underlying GccEnt_BadQualifier
     pub fn get(&self) -> &crate::ffi_types::GccEnt_BadQualifier {

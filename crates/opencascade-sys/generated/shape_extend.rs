@@ -380,6 +380,14 @@ unsafe impl crate::CppDeletable for HandleShapeExtendBasicMsgRegistrator {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeExtendBasicMsgRegistrator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeExtendBasicMsgRegistrator_clone(ptr),
+        )
+    }
+}
+
 impl HandleShapeExtendBasicMsgRegistrator {
     /// Dereference this Handle to access the underlying ShapeExtend_BasicMsgRegistrator
     pub fn get(&self) -> &crate::ffi_types::ShapeExtend_BasicMsgRegistrator {
@@ -1025,6 +1033,12 @@ pub use crate::ffi_types::HandleShapeExtendComplexCurve;
 unsafe impl crate::CppDeletable for HandleShapeExtendComplexCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeExtendComplexCurve_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeExtendComplexCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendComplexCurve_clone(ptr))
     }
 }
 
@@ -2233,6 +2247,14 @@ unsafe impl crate::CppDeletable for HandleShapeExtendCompositeSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeExtendCompositeSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendCompositeSurface_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleShapeExtendCompositeSurface {
     /// Dereference this Handle to access the underlying ShapeExtend_CompositeSurface
     pub fn get(&self) -> &crate::ffi_types::ShapeExtend_CompositeSurface {
@@ -2719,6 +2741,14 @@ pub use crate::ffi_types::HandleShapeExtendMsgRegistrator;
 unsafe impl crate::CppDeletable for HandleShapeExtendMsgRegistrator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeExtendMsgRegistrator_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeExtendMsgRegistrator {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendMsgRegistrator_clone(
+            ptr,
+        ))
     }
 }
 
@@ -3347,6 +3377,12 @@ pub use crate::ffi_types::HandleShapeExtendWireData;
 unsafe impl crate::CppDeletable for HandleShapeExtendWireData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeExtendWireData_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeExtendWireData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendWireData_clone(ptr))
     }
 }
 

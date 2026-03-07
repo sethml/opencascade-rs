@@ -2829,6 +2829,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimAngleDimension {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimAngleDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimAngleDimension_clone(ptr))
+    }
+}
+
 impl HandlePrsDimAngleDimension {
     /// Dereference this Handle to access the underlying PrsDim_AngleDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_AngleDimension {
@@ -4673,6 +4679,12 @@ pub use crate::ffi_types::HandlePrsDimChamf2dDimension;
 unsafe impl crate::CppDeletable for HandlePrsDimChamf2dDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsDimChamf2dDimension_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsDimChamf2dDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimChamf2dDimension_clone(ptr))
     }
 }
 
@@ -6524,6 +6536,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimChamf3dDimension {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimChamf3dDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimChamf3dDimension_clone(ptr))
+    }
+}
+
 impl HandlePrsDimChamf3dDimension {
     /// Dereference this Handle to access the underlying PrsDim_Chamf3dDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_Chamf3dDimension {
@@ -8346,6 +8364,12 @@ pub use crate::ffi_types::HandlePrsDimConcentricRelation;
 unsafe impl crate::CppDeletable for HandlePrsDimConcentricRelation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsDimConcentricRelation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsDimConcentricRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimConcentricRelation_clone(ptr))
     }
 }
 
@@ -10329,6 +10353,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimDiameterDimension {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimDiameterDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimDiameterDimension_clone(ptr))
+    }
+}
+
 impl HandlePrsDimDiameterDimension {
     /// Dereference this Handle to access the underlying PrsDim_DiameterDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_DiameterDimension {
@@ -12208,6 +12238,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimDimension {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimDimension_clone(ptr))
+    }
+}
+
 impl HandlePrsDimDimension {
     /// Dereference this Handle to access the underlying PrsDim_Dimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_Dimension {
@@ -12849,6 +12885,12 @@ pub use crate::ffi_types::HandlePrsDimDimensionOwner;
 unsafe impl crate::CppDeletable for HandlePrsDimDimensionOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsDimDimensionOwner_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsDimDimensionOwner {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimDimensionOwner_clone(ptr))
     }
 }
 
@@ -14608,6 +14650,12 @@ pub use crate::ffi_types::HandlePrsDimEllipseRadiusDimension;
 unsafe impl crate::CppDeletable for HandlePrsDimEllipseRadiusDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsDimEllipseRadiusDimension_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsDimEllipseRadiusDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimEllipseRadiusDimension_clone(ptr))
     }
 }
 
@@ -16626,6 +16674,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimEqualDistanceRelation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimEqualDistanceRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimEqualDistanceRelation_clone(ptr))
+    }
+}
+
 impl HandlePrsDimEqualDistanceRelation {
     /// Dereference this Handle to access the underlying PrsDim_EqualDistanceRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_EqualDistanceRelation {
@@ -18428,6 +18482,12 @@ pub use crate::ffi_types::HandlePrsDimEqualRadiusRelation;
 unsafe impl crate::CppDeletable for HandlePrsDimEqualRadiusRelation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsDimEqualRadiusRelation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsDimEqualRadiusRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimEqualRadiusRelation_clone(ptr))
     }
 }
 
@@ -20302,6 +20362,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimFixRelation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimFixRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimFixRelation_clone(ptr))
+    }
+}
+
 impl HandlePrsDimFixRelation {
     /// Dereference this Handle to access the underlying PrsDim_FixRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_FixRelation {
@@ -22139,6 +22205,12 @@ pub use crate::ffi_types::HandlePrsDimIdenticRelation;
 unsafe impl crate::CppDeletable for HandlePrsDimIdenticRelation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsDimIdenticRelation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsDimIdenticRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimIdenticRelation_clone(ptr))
     }
 }
 
@@ -24241,6 +24313,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimLengthDimension {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimLengthDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimLengthDimension_clone(ptr))
+    }
+}
+
 impl HandlePrsDimLengthDimension {
     /// Dereference this Handle to access the underlying PrsDim_LengthDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_LengthDimension {
@@ -26118,6 +26196,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimMaxRadiusDimension {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimMaxRadiusDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimMaxRadiusDimension_clone(ptr))
+    }
+}
+
 impl HandlePrsDimMaxRadiusDimension {
     /// Dereference this Handle to access the underlying PrsDim_MaxRadiusDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_MaxRadiusDimension {
@@ -27948,6 +28032,12 @@ pub use crate::ffi_types::HandlePrsDimMidPointRelation;
 unsafe impl crate::CppDeletable for HandlePrsDimMidPointRelation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsDimMidPointRelation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsDimMidPointRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimMidPointRelation_clone(ptr))
     }
 }
 
@@ -29828,6 +29918,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimMinRadiusDimension {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimMinRadiusDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimMinRadiusDimension_clone(ptr))
+    }
+}
+
 impl HandlePrsDimMinRadiusDimension {
     /// Dereference this Handle to access the underlying PrsDim_MinRadiusDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_MinRadiusDimension {
@@ -31646,6 +31742,12 @@ pub use crate::ffi_types::HandlePrsDimOffsetDimension;
 unsafe impl crate::CppDeletable for HandlePrsDimOffsetDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsDimOffsetDimension_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsDimOffsetDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimOffsetDimension_clone(ptr))
     }
 }
 
@@ -33497,6 +33599,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimParallelRelation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimParallelRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimParallelRelation_clone(ptr))
+    }
+}
+
 impl HandlePrsDimParallelRelation {
     /// Dereference this Handle to access the underlying PrsDim_ParallelRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_ParallelRelation {
@@ -35319,6 +35427,12 @@ pub use crate::ffi_types::HandlePrsDimPerpendicularRelation;
 unsafe impl crate::CppDeletable for HandlePrsDimPerpendicularRelation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsDimPerpendicularRelation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsDimPerpendicularRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimPerpendicularRelation_clone(ptr))
     }
 }
 
@@ -37296,6 +37410,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimRadiusDimension {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimRadiusDimension {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimRadiusDimension_clone(ptr))
+    }
+}
+
 impl HandlePrsDimRadiusDimension {
     /// Dereference this Handle to access the underlying PrsDim_RadiusDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_RadiusDimension {
@@ -39012,6 +39132,12 @@ pub use crate::ffi_types::HandlePrsDimRelation;
 unsafe impl crate::CppDeletable for HandlePrsDimRelation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsDimRelation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsDimRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimRelation_clone(ptr))
     }
 }
 
@@ -41151,6 +41277,12 @@ unsafe impl crate::CppDeletable for HandlePrsDimSymmetricRelation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePrsDimSymmetricRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimSymmetricRelation_clone(ptr))
+    }
+}
+
 impl HandlePrsDimSymmetricRelation {
     /// Dereference this Handle to access the underlying PrsDim_SymmetricRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_SymmetricRelation {
@@ -42990,6 +43122,12 @@ pub use crate::ffi_types::HandlePrsDimTangentRelation;
 unsafe impl crate::CppDeletable for HandlePrsDimTangentRelation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKV3d::HandlePrsDimTangentRelation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandlePrsDimTangentRelation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKV3d::HandlePrsDimTangentRelation_clone(ptr))
     }
 }
 

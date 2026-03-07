@@ -518,6 +518,12 @@ unsafe impl crate::CppDeletable for HandleBRepFillACRLaw {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepFillACRLaw {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillACRLaw_clone(ptr))
+    }
+}
+
 impl HandleBRepFillACRLaw {
     /// Dereference this Handle to access the underlying BRepFill_ACRLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_ACRLaw {
@@ -1644,6 +1650,12 @@ unsafe impl crate::CppDeletable for HandleBRepFillCurveConstraint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepFillCurveConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_clone(ptr))
+    }
+}
+
 impl HandleBRepFillCurveConstraint {
     /// Dereference this Handle to access the underlying BRepFill_CurveConstraint
     pub fn get(&self) -> &crate::ffi_types::BRepFill_CurveConstraint {
@@ -2223,6 +2235,12 @@ unsafe impl crate::CppDeletable for HandleBRepFillDraftLaw {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepFillDraftLaw {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_clone(ptr))
+    }
+}
+
 impl HandleBRepFillDraftLaw {
     /// Dereference this Handle to access the underlying BRepFill_DraftLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_DraftLaw {
@@ -2654,6 +2672,12 @@ pub use crate::ffi_types::HandleBRepFillEdge3DLaw;
 unsafe impl crate::CppDeletable for HandleBRepFillEdge3DLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepFillEdge3DLaw {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_clone(ptr))
     }
 }
 
@@ -3153,6 +3177,12 @@ pub use crate::ffi_types::HandleBRepFillEdgeOnSurfLaw;
 unsafe impl crate::CppDeletable for HandleBRepFillEdgeOnSurfLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepFillEdgeOnSurfLaw {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_clone(ptr))
     }
 }
 
@@ -4479,6 +4509,12 @@ unsafe impl crate::CppDeletable for HandleBRepFillLocationLaw {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepFillLocationLaw {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_clone(ptr))
+    }
+}
+
 impl HandleBRepFillLocationLaw {
     /// Dereference this Handle to access the underlying BRepFill_LocationLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_LocationLaw {
@@ -5180,6 +5216,12 @@ pub use crate::ffi_types::HandleBRepFillNSections;
 unsafe impl crate::CppDeletable for HandleBRepFillNSections {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleBRepFillNSections_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepFillNSections {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillNSections_clone(ptr))
     }
 }
 
@@ -6210,6 +6252,12 @@ unsafe impl crate::CppDeletable for HandleBRepFillPipeShell {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepFillPipeShell {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillPipeShell_clone(ptr))
+    }
+}
+
 impl HandleBRepFillPipeShell {
     /// Dereference this Handle to access the underlying BRepFill_PipeShell
     pub fn get(&self) -> &crate::ffi_types::BRepFill_PipeShell {
@@ -6630,6 +6678,12 @@ pub use crate::ffi_types::HandleBRepFillSectionLaw;
 unsafe impl crate::CppDeletable for HandleBRepFillSectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepFillSectionLaw {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_clone(ptr))
     }
 }
 
@@ -7169,6 +7223,12 @@ pub use crate::ffi_types::HandleBRepFillShapeLaw;
 unsafe impl crate::CppDeletable for HandleBRepFillShapeLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepFillShapeLaw {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_clone(ptr))
     }
 }
 

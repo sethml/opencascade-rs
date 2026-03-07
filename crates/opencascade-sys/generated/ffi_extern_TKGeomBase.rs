@@ -791,6 +791,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdvApp2VarIso>;
     /// Destroy Handle<AdvApp2Var_Iso>
     pub fn HandleAdvApp2VarIso_destructor(self_: *mut HandleAdvApp2VarIso);
+    /// Clone Handle<AdvApp2Var_Iso> (increments reference count)
+    pub fn HandleAdvApp2VarIso_clone(
+        self_: *const HandleAdvApp2VarIso,
+    ) -> crate::OcctResult<*mut HandleAdvApp2VarIso>;
     /// Dereference Handle to get *const AdvApp2Var_Iso
     pub fn HandleAdvApp2VarIso_get(
         handle: *const HandleAdvApp2VarIso,
@@ -1316,6 +1320,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdvApp2VarNode>;
     /// Destroy Handle<AdvApp2Var_Node>
     pub fn HandleAdvApp2VarNode_destructor(self_: *mut HandleAdvApp2VarNode);
+    /// Clone Handle<AdvApp2Var_Node> (increments reference count)
+    pub fn HandleAdvApp2VarNode_clone(
+        self_: *const HandleAdvApp2VarNode,
+    ) -> crate::OcctResult<*mut HandleAdvApp2VarNode>;
     /// Dereference Handle to get *const AdvApp2Var_Node
     pub fn HandleAdvApp2VarNode_get(
         handle: *const HandleAdvApp2VarNode,
@@ -1505,6 +1513,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAdvApp2VarPatch>;
     /// Destroy Handle<AdvApp2Var_Patch>
     pub fn HandleAdvApp2VarPatch_destructor(self_: *mut HandleAdvApp2VarPatch);
+    /// Clone Handle<AdvApp2Var_Patch> (increments reference count)
+    pub fn HandleAdvApp2VarPatch_clone(
+        self_: *const HandleAdvApp2VarPatch,
+    ) -> crate::OcctResult<*mut HandleAdvApp2VarPatch>;
     /// Dereference Handle to get *const AdvApp2Var_Patch
     pub fn HandleAdvApp2VarPatch_get(
         handle: *const HandleAdvApp2VarPatch,
@@ -2574,6 +2586,10 @@ extern "C" {
     pub fn HandleAppDefHArray1OfMultiPointConstraint_destructor(
         self_: *mut HandleAppDefHArray1OfMultiPointConstraint,
     );
+    /// Clone Handle<AppDef_HArray1OfMultiPointConstraint> (increments reference count)
+    pub fn HandleAppDefHArray1OfMultiPointConstraint_clone(
+        self_: *const HandleAppDefHArray1OfMultiPointConstraint,
+    ) -> crate::OcctResult<*mut HandleAppDefHArray1OfMultiPointConstraint>;
     /// Dereference Handle to get *const AppDef_HArray1OfMultiPointConstraint
     pub fn HandleAppDefHArray1OfMultiPointConstraint_get(
         handle: *const HandleAppDefHArray1OfMultiPointConstraint,
@@ -2754,6 +2770,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleAppDefLinearCriteria>;
     /// Destroy Handle<AppDef_LinearCriteria>
     pub fn HandleAppDefLinearCriteria_destructor(self_: *mut HandleAppDefLinearCriteria);
+    /// Clone Handle<AppDef_LinearCriteria> (increments reference count)
+    pub fn HandleAppDefLinearCriteria_clone(
+        self_: *const HandleAppDefLinearCriteria,
+    ) -> crate::OcctResult<*mut HandleAppDefLinearCriteria>;
     /// Dereference Handle to get *const AppDef_LinearCriteria
     pub fn HandleAppDefLinearCriteria_get(
         handle: *const HandleAppDefLinearCriteria,
@@ -4183,6 +4203,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<AppDef_SmoothCriterion>
     pub fn HandleAppDefSmoothCriterion_destructor(self_: *mut HandleAppDefSmoothCriterion);
+    /// Clone Handle<AppDef_SmoothCriterion> (increments reference count)
+    pub fn HandleAppDefSmoothCriterion_clone(
+        self_: *const HandleAppDefSmoothCriterion,
+    ) -> crate::OcctResult<*mut HandleAppDefSmoothCriterion>;
     /// Dereference Handle to get *const AppDef_SmoothCriterion
     pub fn HandleAppDefSmoothCriterion_get(
         handle: *const HandleAppDefSmoothCriterion,
@@ -4788,6 +4812,10 @@ extern "C" {
     pub fn HandleAppParCurvesHArray1OfConstraintCouple_destructor(
         self_: *mut HandleAppParCurvesHArray1OfConstraintCouple,
     );
+    /// Clone Handle<AppParCurves_HArray1OfConstraintCouple> (increments reference count)
+    pub fn HandleAppParCurvesHArray1OfConstraintCouple_clone(
+        self_: *const HandleAppParCurvesHArray1OfConstraintCouple,
+    ) -> crate::OcctResult<*mut HandleAppParCurvesHArray1OfConstraintCouple>;
     /// Dereference Handle to get *const AppParCurves_HArray1OfConstraintCouple
     pub fn HandleAppParCurvesHArray1OfConstraintCouple_get(
         handle: *const HandleAppParCurvesHArray1OfConstraintCouple,
@@ -4893,6 +4921,10 @@ extern "C" {
     pub fn HandleAppParCurvesHArray1OfMultiBSpCurve_destructor(
         self_: *mut HandleAppParCurvesHArray1OfMultiBSpCurve,
     );
+    /// Clone Handle<AppParCurves_HArray1OfMultiBSpCurve> (increments reference count)
+    pub fn HandleAppParCurvesHArray1OfMultiBSpCurve_clone(
+        self_: *const HandleAppParCurvesHArray1OfMultiBSpCurve,
+    ) -> crate::OcctResult<*mut HandleAppParCurvesHArray1OfMultiBSpCurve>;
     /// Dereference Handle to get *const AppParCurves_HArray1OfMultiBSpCurve
     pub fn HandleAppParCurvesHArray1OfMultiBSpCurve_get(
         handle: *const HandleAppParCurvesHArray1OfMultiBSpCurve,
@@ -4998,6 +5030,10 @@ extern "C" {
     pub fn HandleAppParCurvesHArray1OfMultiCurve_destructor(
         self_: *mut HandleAppParCurvesHArray1OfMultiCurve,
     );
+    /// Clone Handle<AppParCurves_HArray1OfMultiCurve> (increments reference count)
+    pub fn HandleAppParCurvesHArray1OfMultiCurve_clone(
+        self_: *const HandleAppParCurvesHArray1OfMultiCurve,
+    ) -> crate::OcctResult<*mut HandleAppParCurvesHArray1OfMultiCurve>;
     /// Dereference Handle to get *const AppParCurves_HArray1OfMultiCurve
     pub fn HandleAppParCurvesHArray1OfMultiCurve_get(
         handle: *const HandleAppParCurvesHArray1OfMultiCurve,
@@ -5103,6 +5139,10 @@ extern "C" {
     pub fn HandleAppParCurvesHArray1OfMultiPoint_destructor(
         self_: *mut HandleAppParCurvesHArray1OfMultiPoint,
     );
+    /// Clone Handle<AppParCurves_HArray1OfMultiPoint> (increments reference count)
+    pub fn HandleAppParCurvesHArray1OfMultiPoint_clone(
+        self_: *const HandleAppParCurvesHArray1OfMultiPoint,
+    ) -> crate::OcctResult<*mut HandleAppParCurvesHArray1OfMultiPoint>;
     /// Dereference Handle to get *const AppParCurves_HArray1OfMultiPoint
     pub fn HandleAppParCurvesHArray1OfMultiPoint_get(
         handle: *const HandleAppParCurvesHArray1OfMultiPoint,
@@ -5818,6 +5858,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleApproxCurvlinFunc>;
     /// Destroy Handle<Approx_CurvlinFunc>
     pub fn HandleApproxCurvlinFunc_destructor(self_: *mut HandleApproxCurvlinFunc);
+    /// Clone Handle<Approx_CurvlinFunc> (increments reference count)
+    pub fn HandleApproxCurvlinFunc_clone(
+        self_: *const HandleApproxCurvlinFunc,
+    ) -> crate::OcctResult<*mut HandleApproxCurvlinFunc>;
     /// Dereference Handle to get *const Approx_CurvlinFunc
     pub fn HandleApproxCurvlinFunc_get(
         handle: *const HandleApproxCurvlinFunc,
@@ -6101,6 +6145,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleApproxHArray1OfAdHSurface>;
     /// Destroy Handle<Approx_HArray1OfAdHSurface>
     pub fn HandleApproxHArray1OfAdHSurface_destructor(self_: *mut HandleApproxHArray1OfAdHSurface);
+    /// Clone Handle<Approx_HArray1OfAdHSurface> (increments reference count)
+    pub fn HandleApproxHArray1OfAdHSurface_clone(
+        self_: *const HandleApproxHArray1OfAdHSurface,
+    ) -> crate::OcctResult<*mut HandleApproxHArray1OfAdHSurface>;
     /// Dereference Handle to get *const Approx_HArray1OfAdHSurface
     pub fn HandleApproxHArray1OfAdHSurface_get(
         handle: *const HandleApproxHArray1OfAdHSurface,
@@ -6200,6 +6248,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleApproxHArray1OfGTrsf2d>;
     /// Destroy Handle<Approx_HArray1OfGTrsf2d>
     pub fn HandleApproxHArray1OfGTrsf2d_destructor(self_: *mut HandleApproxHArray1OfGTrsf2d);
+    /// Clone Handle<Approx_HArray1OfGTrsf2d> (increments reference count)
+    pub fn HandleApproxHArray1OfGTrsf2d_clone(
+        self_: *const HandleApproxHArray1OfGTrsf2d,
+    ) -> crate::OcctResult<*mut HandleApproxHArray1OfGTrsf2d>;
     /// Dereference Handle to get *const Approx_HArray1OfGTrsf2d
     pub fn HandleApproxHArray1OfGTrsf2d_get(
         handle: *const HandleApproxHArray1OfGTrsf2d,
@@ -6603,6 +6655,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Approx_SweepFunction>
     pub fn HandleApproxSweepFunction_destructor(self_: *mut HandleApproxSweepFunction);
+    /// Clone Handle<Approx_SweepFunction> (increments reference count)
+    pub fn HandleApproxSweepFunction_clone(
+        self_: *const HandleApproxSweepFunction,
+    ) -> crate::OcctResult<*mut HandleApproxSweepFunction>;
     /// Dereference Handle to get *const Approx_SweepFunction
     pub fn HandleApproxSweepFunction_get(
         handle: *const HandleApproxSweepFunction,
@@ -9228,6 +9284,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExtremaExtPExtS>;
     /// Destroy Handle<Extrema_ExtPExtS>
     pub fn HandleExtremaExtPExtS_destructor(self_: *mut HandleExtremaExtPExtS);
+    /// Clone Handle<Extrema_ExtPExtS> (increments reference count)
+    pub fn HandleExtremaExtPExtS_clone(
+        self_: *const HandleExtremaExtPExtS,
+    ) -> crate::OcctResult<*mut HandleExtremaExtPExtS>;
     /// Dereference Handle to get *const Extrema_ExtPExtS
     pub fn HandleExtremaExtPExtS_get(
         handle: *const HandleExtremaExtPExtS,
@@ -9344,6 +9404,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExtremaExtPRevS>;
     /// Destroy Handle<Extrema_ExtPRevS>
     pub fn HandleExtremaExtPRevS_destructor(self_: *mut HandleExtremaExtPRevS);
+    /// Clone Handle<Extrema_ExtPRevS> (increments reference count)
+    pub fn HandleExtremaExtPRevS_clone(
+        self_: *const HandleExtremaExtPRevS,
+    ) -> crate::OcctResult<*mut HandleExtremaExtPRevS>;
     /// Dereference Handle to get *const Extrema_ExtPRevS
     pub fn HandleExtremaExtPRevS_get(
         handle: *const HandleExtremaExtPRevS,
@@ -10580,6 +10644,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExtremaHArray1OfPOnCurv>;
     /// Destroy Handle<Extrema_HArray1OfPOnCurv>
     pub fn HandleExtremaHArray1OfPOnCurv_destructor(self_: *mut HandleExtremaHArray1OfPOnCurv);
+    /// Clone Handle<Extrema_HArray1OfPOnCurv> (increments reference count)
+    pub fn HandleExtremaHArray1OfPOnCurv_clone(
+        self_: *const HandleExtremaHArray1OfPOnCurv,
+    ) -> crate::OcctResult<*mut HandleExtremaHArray1OfPOnCurv>;
     /// Dereference Handle to get *const Extrema_HArray1OfPOnCurv
     pub fn HandleExtremaHArray1OfPOnCurv_get(
         handle: *const HandleExtremaHArray1OfPOnCurv,
@@ -10679,6 +10747,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExtremaHArray1OfPOnCurv2d>;
     /// Destroy Handle<Extrema_HArray1OfPOnCurv2d>
     pub fn HandleExtremaHArray1OfPOnCurv2d_destructor(self_: *mut HandleExtremaHArray1OfPOnCurv2d);
+    /// Clone Handle<Extrema_HArray1OfPOnCurv2d> (increments reference count)
+    pub fn HandleExtremaHArray1OfPOnCurv2d_clone(
+        self_: *const HandleExtremaHArray1OfPOnCurv2d,
+    ) -> crate::OcctResult<*mut HandleExtremaHArray1OfPOnCurv2d>;
     /// Dereference Handle to get *const Extrema_HArray1OfPOnCurv2d
     pub fn HandleExtremaHArray1OfPOnCurv2d_get(
         handle: *const HandleExtremaHArray1OfPOnCurv2d,
@@ -10778,6 +10850,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExtremaHArray1OfPOnSurf>;
     /// Destroy Handle<Extrema_HArray1OfPOnSurf>
     pub fn HandleExtremaHArray1OfPOnSurf_destructor(self_: *mut HandleExtremaHArray1OfPOnSurf);
+    /// Clone Handle<Extrema_HArray1OfPOnSurf> (increments reference count)
+    pub fn HandleExtremaHArray1OfPOnSurf_clone(
+        self_: *const HandleExtremaHArray1OfPOnSurf,
+    ) -> crate::OcctResult<*mut HandleExtremaHArray1OfPOnSurf>;
     /// Dereference Handle to get *const Extrema_HArray1OfPOnSurf
     pub fn HandleExtremaHArray1OfPOnSurf_get(
         handle: *const HandleExtremaHArray1OfPOnSurf,
@@ -10872,6 +10948,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExtremaHArray2OfPOnCurv>;
     /// Destroy Handle<Extrema_HArray2OfPOnCurv>
     pub fn HandleExtremaHArray2OfPOnCurv_destructor(self_: *mut HandleExtremaHArray2OfPOnCurv);
+    /// Clone Handle<Extrema_HArray2OfPOnCurv> (increments reference count)
+    pub fn HandleExtremaHArray2OfPOnCurv_clone(
+        self_: *const HandleExtremaHArray2OfPOnCurv,
+    ) -> crate::OcctResult<*mut HandleExtremaHArray2OfPOnCurv>;
     /// Dereference Handle to get *const Extrema_HArray2OfPOnCurv
     pub fn HandleExtremaHArray2OfPOnCurv_get(
         handle: *const HandleExtremaHArray2OfPOnCurv,
@@ -10966,6 +11046,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExtremaHArray2OfPOnCurv2d>;
     /// Destroy Handle<Extrema_HArray2OfPOnCurv2d>
     pub fn HandleExtremaHArray2OfPOnCurv2d_destructor(self_: *mut HandleExtremaHArray2OfPOnCurv2d);
+    /// Clone Handle<Extrema_HArray2OfPOnCurv2d> (increments reference count)
+    pub fn HandleExtremaHArray2OfPOnCurv2d_clone(
+        self_: *const HandleExtremaHArray2OfPOnCurv2d,
+    ) -> crate::OcctResult<*mut HandleExtremaHArray2OfPOnCurv2d>;
     /// Dereference Handle to get *const Extrema_HArray2OfPOnCurv2d
     pub fn HandleExtremaHArray2OfPOnCurv2d_get(
         handle: *const HandleExtremaHArray2OfPOnCurv2d,
@@ -11060,6 +11144,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleExtremaHArray2OfPOnSurf>;
     /// Destroy Handle<Extrema_HArray2OfPOnSurf>
     pub fn HandleExtremaHArray2OfPOnSurf_destructor(self_: *mut HandleExtremaHArray2OfPOnSurf);
+    /// Clone Handle<Extrema_HArray2OfPOnSurf> (increments reference count)
+    pub fn HandleExtremaHArray2OfPOnSurf_clone(
+        self_: *const HandleExtremaHArray2OfPOnSurf,
+    ) -> crate::OcctResult<*mut HandleExtremaHArray2OfPOnSurf>;
     /// Dereference Handle to get *const Extrema_HArray2OfPOnSurf
     pub fn HandleExtremaHArray2OfPOnSurf_get(
         handle: *const HandleExtremaHArray2OfPOnSurf,
@@ -12221,6 +12309,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleFEmToolCurve>;
     /// Destroy Handle<FEmTool_Curve>
     pub fn HandleFEmToolCurve_destructor(self_: *mut HandleFEmToolCurve);
+    /// Clone Handle<FEmTool_Curve> (increments reference count)
+    pub fn HandleFEmToolCurve_clone(
+        self_: *const HandleFEmToolCurve,
+    ) -> crate::OcctResult<*mut HandleFEmToolCurve>;
     /// Dereference Handle to get *const FEmTool_Curve
     pub fn HandleFEmToolCurve_get(
         handle: *const HandleFEmToolCurve,
@@ -12316,6 +12408,10 @@ extern "C" {
     pub fn HandleFEmToolElementaryCriterion_destructor(
         self_: *mut HandleFEmToolElementaryCriterion,
     );
+    /// Clone Handle<FEmTool_ElementaryCriterion> (increments reference count)
+    pub fn HandleFEmToolElementaryCriterion_clone(
+        self_: *const HandleFEmToolElementaryCriterion,
+    ) -> crate::OcctResult<*mut HandleFEmToolElementaryCriterion>;
     /// Dereference Handle to get *const FEmTool_ElementaryCriterion
     pub fn HandleFEmToolElementaryCriterion_get(
         handle: *const HandleFEmToolElementaryCriterion,
@@ -12455,6 +12551,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleFEmToolHAssemblyTable>;
     /// Destroy Handle<FEmTool_HAssemblyTable>
     pub fn HandleFEmToolHAssemblyTable_destructor(self_: *mut HandleFEmToolHAssemblyTable);
+    /// Clone Handle<FEmTool_HAssemblyTable> (increments reference count)
+    pub fn HandleFEmToolHAssemblyTable_clone(
+        self_: *const HandleFEmToolHAssemblyTable,
+    ) -> crate::OcctResult<*mut HandleFEmToolHAssemblyTable>;
     /// Dereference Handle to get *const FEmTool_HAssemblyTable
     pub fn HandleFEmToolHAssemblyTable_get(
         handle: *const HandleFEmToolHAssemblyTable,
@@ -12555,6 +12655,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleFEmToolLinearFlexion>;
     /// Destroy Handle<FEmTool_LinearFlexion>
     pub fn HandleFEmToolLinearFlexion_destructor(self_: *mut HandleFEmToolLinearFlexion);
+    /// Clone Handle<FEmTool_LinearFlexion> (increments reference count)
+    pub fn HandleFEmToolLinearFlexion_clone(
+        self_: *const HandleFEmToolLinearFlexion,
+    ) -> crate::OcctResult<*mut HandleFEmToolLinearFlexion>;
     /// Dereference Handle to get *const FEmTool_LinearFlexion
     pub fn HandleFEmToolLinearFlexion_get(
         handle: *const HandleFEmToolLinearFlexion,
@@ -12662,6 +12766,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleFEmToolLinearJerk>;
     /// Destroy Handle<FEmTool_LinearJerk>
     pub fn HandleFEmToolLinearJerk_destructor(self_: *mut HandleFEmToolLinearJerk);
+    /// Clone Handle<FEmTool_LinearJerk> (increments reference count)
+    pub fn HandleFEmToolLinearJerk_clone(
+        self_: *const HandleFEmToolLinearJerk,
+    ) -> crate::OcctResult<*mut HandleFEmToolLinearJerk>;
     /// Dereference Handle to get *const FEmTool_LinearJerk
     pub fn HandleFEmToolLinearJerk_get(
         handle: *const HandleFEmToolLinearJerk,
@@ -12771,6 +12879,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleFEmToolLinearTension>;
     /// Destroy Handle<FEmTool_LinearTension>
     pub fn HandleFEmToolLinearTension_destructor(self_: *mut HandleFEmToolLinearTension);
+    /// Clone Handle<FEmTool_LinearTension> (increments reference count)
+    pub fn HandleFEmToolLinearTension_clone(
+        self_: *const HandleFEmToolLinearTension,
+    ) -> crate::OcctResult<*mut HandleFEmToolLinearTension>;
     /// Dereference Handle to get *const FEmTool_LinearTension
     pub fn HandleFEmToolLinearTension_get(
         handle: *const HandleFEmToolLinearTension,
@@ -12922,6 +13034,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleFEmToolProfileMatrix>;
     /// Destroy Handle<FEmTool_ProfileMatrix>
     pub fn HandleFEmToolProfileMatrix_destructor(self_: *mut HandleFEmToolProfileMatrix);
+    /// Clone Handle<FEmTool_ProfileMatrix> (increments reference count)
+    pub fn HandleFEmToolProfileMatrix_clone(
+        self_: *const HandleFEmToolProfileMatrix,
+    ) -> crate::OcctResult<*mut HandleFEmToolProfileMatrix>;
     /// Dereference Handle to get *const FEmTool_ProfileMatrix
     pub fn HandleFEmToolProfileMatrix_get(
         handle: *const HandleFEmToolProfileMatrix,
@@ -13037,6 +13153,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<FEmTool_SparseMatrix>
     pub fn HandleFEmToolSparseMatrix_destructor(self_: *mut HandleFEmToolSparseMatrix);
+    /// Clone Handle<FEmTool_SparseMatrix> (increments reference count)
+    pub fn HandleFEmToolSparseMatrix_clone(
+        self_: *const HandleFEmToolSparseMatrix,
+    ) -> crate::OcctResult<*mut HandleFEmToolSparseMatrix>;
     /// Dereference Handle to get *const FEmTool_SparseMatrix
     pub fn HandleFEmToolSparseMatrix_get(
         handle: *const HandleFEmToolSparseMatrix,
@@ -14456,7 +14576,7 @@ extern "C" {
         self_: *mut GCPnts_DistFunction,
     ) -> crate::OcctResult<*mut math_Function>;
     /// Clone via copy constructor
-    pub fn GCPnts_DistFunction_to_owned(
+    pub fn GCPnts_DistFunction_clone(
         self_: *const GCPnts_DistFunction,
     ) -> crate::OcctResult<*mut GCPnts_DistFunction>;
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -14514,7 +14634,7 @@ extern "C" {
         self_: *mut GCPnts_DistFunction2d,
     ) -> crate::OcctResult<*mut math_Function>;
     /// Clone via copy constructor
-    pub fn GCPnts_DistFunction2d_to_owned(
+    pub fn GCPnts_DistFunction2d_clone(
         self_: *const GCPnts_DistFunction2d,
     ) -> crate::OcctResult<*mut GCPnts_DistFunction2d>;
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -16432,6 +16552,10 @@ extern "C" {
     pub fn HandleGeomToolsUndefinedTypeHandler_destructor(
         self_: *mut HandleGeomToolsUndefinedTypeHandler,
     );
+    /// Clone Handle<GeomTools_UndefinedTypeHandler> (increments reference count)
+    pub fn HandleGeomToolsUndefinedTypeHandler_clone(
+        self_: *const HandleGeomToolsUndefinedTypeHandler,
+    ) -> crate::OcctResult<*mut HandleGeomToolsUndefinedTypeHandler>;
     /// Dereference Handle to get *const GeomTools_UndefinedTypeHandler
     pub fn HandleGeomToolsUndefinedTypeHandler_get(
         handle: *const HandleGeomToolsUndefinedTypeHandler,
@@ -17720,6 +17844,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleProjLibCompProjectedCurve>;
     /// Destroy Handle<ProjLib_CompProjectedCurve>
     pub fn HandleProjLibCompProjectedCurve_destructor(self_: *mut HandleProjLibCompProjectedCurve);
+    /// Clone Handle<ProjLib_CompProjectedCurve> (increments reference count)
+    pub fn HandleProjLibCompProjectedCurve_clone(
+        self_: *const HandleProjLibCompProjectedCurve,
+    ) -> crate::OcctResult<*mut HandleProjLibCompProjectedCurve>;
     /// Dereference Handle to get *const ProjLib_CompProjectedCurve
     pub fn HandleProjLibCompProjectedCurve_get(
         handle: *const HandleProjLibCompProjectedCurve,
@@ -18303,6 +18431,10 @@ extern "C" {
     pub fn HandleProjLibHSequenceOfHSequenceOfPnt_destructor(
         self_: *mut HandleProjLibHSequenceOfHSequenceOfPnt,
     );
+    /// Clone Handle<ProjLib_HSequenceOfHSequenceOfPnt> (increments reference count)
+    pub fn HandleProjLibHSequenceOfHSequenceOfPnt_clone(
+        self_: *const HandleProjLibHSequenceOfHSequenceOfPnt,
+    ) -> crate::OcctResult<*mut HandleProjLibHSequenceOfHSequenceOfPnt>;
     /// Dereference Handle to get *const ProjLib_HSequenceOfHSequenceOfPnt
     pub fn HandleProjLibHSequenceOfHSequenceOfPnt_get(
         handle: *const HandleProjLibHSequenceOfHSequenceOfPnt,
@@ -18767,6 +18899,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleProjLibProjectOnPlane>;
     /// Destroy Handle<ProjLib_ProjectOnPlane>
     pub fn HandleProjLibProjectOnPlane_destructor(self_: *mut HandleProjLibProjectOnPlane);
+    /// Clone Handle<ProjLib_ProjectOnPlane> (increments reference count)
+    pub fn HandleProjLibProjectOnPlane_clone(
+        self_: *const HandleProjLibProjectOnPlane,
+    ) -> crate::OcctResult<*mut HandleProjLibProjectOnPlane>;
     /// Dereference Handle to get *const ProjLib_ProjectOnPlane
     pub fn HandleProjLibProjectOnPlane_get(
         handle: *const HandleProjLibProjectOnPlane,
@@ -19086,6 +19222,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleProjLibProjectedCurve>;
     /// Destroy Handle<ProjLib_ProjectedCurve>
     pub fn HandleProjLibProjectedCurve_destructor(self_: *mut HandleProjLibProjectedCurve);
+    /// Clone Handle<ProjLib_ProjectedCurve> (increments reference count)
+    pub fn HandleProjLibProjectedCurve_clone(
+        self_: *const HandleProjLibProjectedCurve,
+    ) -> crate::OcctResult<*mut HandleProjLibProjectedCurve>;
     /// Dereference Handle to get *const ProjLib_ProjectedCurve
     pub fn HandleProjLibProjectedCurve_get(
         handle: *const HandleProjLibProjectedCurve,

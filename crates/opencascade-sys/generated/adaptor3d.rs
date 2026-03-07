@@ -482,6 +482,12 @@ unsafe impl crate::CppDeletable for HandleAdaptor3dCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAdaptor3dCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_clone(ptr))
+    }
+}
+
 impl HandleAdaptor3dCurve {
     /// Dereference this Handle to access the underlying Adaptor3d_Curve
     pub fn get(&self) -> &crate::ffi_types::Adaptor3d_Curve {
@@ -1294,6 +1300,12 @@ unsafe impl crate::CppDeletable for HandleAdaptor3dCurveOnSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAdaptor3dCurveOnSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dCurveOnSurface_clone(ptr))
+    }
+}
+
 impl HandleAdaptor3dCurveOnSurface {
     /// Dereference this Handle to access the underlying Adaptor3d_CurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::Adaptor3d_CurveOnSurface {
@@ -2032,6 +2044,12 @@ pub use crate::ffi_types::HandleAdaptor3dHVertex;
 unsafe impl crate::CppDeletable for HandleAdaptor3dHVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG3d::HandleAdaptor3dHVertex_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAdaptor3dHVertex {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dHVertex_clone(ptr))
     }
 }
 
@@ -2803,6 +2821,12 @@ unsafe impl crate::CppDeletable for HandleAdaptor3dIsoCurve {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAdaptor3dIsoCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dIsoCurve_clone(ptr))
+    }
+}
+
 impl HandleAdaptor3dIsoCurve {
     /// Dereference this Handle to access the underlying Adaptor3d_IsoCurve
     pub fn get(&self) -> &crate::ffi_types::Adaptor3d_IsoCurve {
@@ -3523,6 +3547,12 @@ unsafe impl crate::CppDeletable for HandleAdaptor3dSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleAdaptor3dSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dSurface_clone(ptr))
+    }
+}
+
 impl HandleAdaptor3dSurface {
     /// Dereference this Handle to access the underlying Adaptor3d_Surface
     pub fn get(&self) -> &crate::ffi_types::Adaptor3d_Surface {
@@ -4159,6 +4189,12 @@ pub use crate::ffi_types::HandleAdaptor3dTopolTool;
 unsafe impl crate::CppDeletable for HandleAdaptor3dTopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKG3d::HandleAdaptor3dTopolTool_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleAdaptor3dTopolTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dTopolTool_clone(ptr))
     }
 }
 

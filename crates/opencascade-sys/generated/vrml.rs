@@ -671,6 +671,12 @@ unsafe impl crate::CppDeletable for HandleVrmlAsciiText {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleVrmlAsciiText {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlAsciiText_clone(ptr))
+    }
+}
+
 impl HandleVrmlAsciiText {
     /// Dereference this Handle to access the underlying Vrml_AsciiText
     pub fn get(&self) -> &crate::ffi_types::Vrml_AsciiText {
@@ -1030,6 +1036,12 @@ pub use crate::ffi_types::HandleVrmlCoordinate3;
 unsafe impl crate::CppDeletable for HandleVrmlCoordinate3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEVRML::HandleVrmlCoordinate3_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleVrmlCoordinate3 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlCoordinate3_clone(ptr))
     }
 }
 
@@ -1866,6 +1878,12 @@ unsafe impl crate::CppDeletable for HandleVrmlIndexedFaceSet {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleVrmlIndexedFaceSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlIndexedFaceSet_clone(ptr))
+    }
+}
+
 impl HandleVrmlIndexedFaceSet {
     /// Dereference this Handle to access the underlying Vrml_IndexedFaceSet
     pub fn get(&self) -> &crate::ffi_types::Vrml_IndexedFaceSet {
@@ -2203,6 +2221,12 @@ pub use crate::ffi_types::HandleVrmlIndexedLineSet;
 unsafe impl crate::CppDeletable for HandleVrmlIndexedLineSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEVRML::HandleVrmlIndexedLineSet_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleVrmlIndexedLineSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlIndexedLineSet_clone(ptr))
     }
 }
 
@@ -2607,6 +2631,12 @@ unsafe impl crate::CppDeletable for HandleVrmlLOD {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleVrmlLOD {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlLOD_clone(ptr))
+    }
+}
+
 impl HandleVrmlLOD {
     /// Dereference this Handle to access the underlying Vrml_LOD
     pub fn get(&self) -> &crate::ffi_types::Vrml_LOD {
@@ -2959,6 +2989,12 @@ pub use crate::ffi_types::HandleVrmlMaterial;
 unsafe impl crate::CppDeletable for HandleVrmlMaterial {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEVRML::HandleVrmlMaterial_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleVrmlMaterial {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlMaterial_clone(ptr))
     }
 }
 
@@ -3352,6 +3388,12 @@ pub use crate::ffi_types::HandleVrmlNormal;
 unsafe impl crate::CppDeletable for HandleVrmlNormal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEVRML::HandleVrmlNormal_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleVrmlNormal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlNormal_clone(ptr))
     }
 }
 
@@ -4258,6 +4300,12 @@ pub use crate::ffi_types::HandleVrmlSFImage;
 unsafe impl crate::CppDeletable for HandleVrmlSFImage {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEVRML::HandleVrmlSFImage_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleVrmlSFImage {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlSFImage_clone(ptr))
     }
 }
 
@@ -5538,6 +5586,12 @@ pub use crate::ffi_types::HandleVrmlTextureCoordinate2;
 unsafe impl crate::CppDeletable for HandleVrmlTextureCoordinate2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEVRML::HandleVrmlTextureCoordinate2_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleVrmlTextureCoordinate2 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlTextureCoordinate2_clone(ptr))
     }
 }
 

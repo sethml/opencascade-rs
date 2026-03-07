@@ -484,6 +484,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicAction {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicAction {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicAction_clone(ptr))
+    }
+}
+
 impl HandleStepBasicAction {
     /// Dereference this Handle to access the underlying StepBasic_Action
     pub fn get(&self) -> &crate::ffi_types::StepBasic_Action {
@@ -721,6 +727,12 @@ pub use crate::ffi_types::HandleStepBasicActionAssignment;
 unsafe impl crate::CppDeletable for HandleStepBasicActionAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicActionAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicActionAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicActionAssignment_clone(ptr))
     }
 }
 
@@ -1072,6 +1084,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicActionMethod {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicActionMethod {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicActionMethod_clone(ptr))
+    }
+}
+
 impl HandleStepBasicActionMethod {
     /// Dereference this Handle to access the underlying StepBasic_ActionMethod
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ActionMethod {
@@ -1301,6 +1319,14 @@ pub use crate::ffi_types::HandleStepBasicActionRequestAssignment;
 unsafe impl crate::CppDeletable for HandleStepBasicActionRequestAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicActionRequestAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicActionRequestAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicActionRequestAssignment_clone(ptr),
+        )
     }
 }
 
@@ -1597,6 +1623,14 @@ pub use crate::ffi_types::HandleStepBasicActionRequestSolution;
 unsafe impl crate::CppDeletable for HandleStepBasicActionRequestSolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicActionRequestSolution_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicActionRequestSolution {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicActionRequestSolution_clone(
+            ptr,
+        ))
     }
 }
 
@@ -2278,6 +2312,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicAddress {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicAddress {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicAddress_clone(ptr))
+    }
+}
+
 impl HandleStepBasicAddress {
     /// Dereference this Handle to access the underlying StepBasic_Address
     pub fn get(&self) -> &crate::ffi_types::StepBasic_Address {
@@ -2546,6 +2586,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicApplicationContext {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicApplicationContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicApplicationContext_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicApplicationContext {
     /// Dereference this Handle to access the underlying StepBasic_ApplicationContext
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ApplicationContext {
@@ -2798,6 +2846,14 @@ pub use crate::ffi_types::HandleStepBasicApplicationContextElement;
 unsafe impl crate::CppDeletable for HandleStepBasicApplicationContextElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicApplicationContextElement_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicApplicationContextElement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicApplicationContextElement_clone(ptr),
+        )
     }
 }
 
@@ -3168,6 +3224,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicApplicationProtocolDefinition
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicApplicationProtocolDefinition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicApplicationProtocolDefinition_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicApplicationProtocolDefinition {
     /// Dereference this Handle to access the underlying StepBasic_ApplicationProtocolDefinition
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ApplicationProtocolDefinition {
@@ -3407,6 +3471,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicApproval {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicApproval {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicApproval_clone(ptr))
+    }
+}
+
 impl HandleStepBasicApproval {
     /// Dereference this Handle to access the underlying StepBasic_Approval
     pub fn get(&self) -> &crate::ffi_types::StepBasic_Approval {
@@ -3640,6 +3710,14 @@ pub use crate::ffi_types::HandleStepBasicApprovalAssignment;
 unsafe impl crate::CppDeletable for HandleStepBasicApprovalAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicApprovalAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicApprovalAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicApprovalAssignment_clone(
+            ptr,
+        ))
     }
 }
 
@@ -3954,6 +4032,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicApprovalDateTime {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicApprovalDateTime {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicApprovalDateTime_clone(ptr))
+    }
+}
+
 impl HandleStepBasicApprovalDateTime {
     /// Dereference this Handle to access the underlying StepBasic_ApprovalDateTime
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ApprovalDateTime {
@@ -4216,6 +4300,14 @@ pub use crate::ffi_types::HandleStepBasicApprovalPersonOrganization;
 unsafe impl crate::CppDeletable for HandleStepBasicApprovalPersonOrganization {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicApprovalPersonOrganization_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicApprovalPersonOrganization {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicApprovalPersonOrganization_clone(ptr),
+        )
     }
 }
 
@@ -4531,6 +4623,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicApprovalRelationship {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicApprovalRelationship {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicApprovalRelationship_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicApprovalRelationship {
     /// Dereference this Handle to access the underlying StepBasic_ApprovalRelationship
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ApprovalRelationship {
@@ -4751,6 +4851,12 @@ pub use crate::ffi_types::HandleStepBasicApprovalRole;
 unsafe impl crate::CppDeletable for HandleStepBasicApprovalRole {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicApprovalRole_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicApprovalRole {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicApprovalRole_clone(ptr))
     }
 }
 
@@ -4976,6 +5082,12 @@ pub use crate::ffi_types::HandleStepBasicApprovalStatus;
 unsafe impl crate::CppDeletable for HandleStepBasicApprovalStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicApprovalStatus_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicApprovalStatus {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicApprovalStatus_clone(ptr))
     }
 }
 
@@ -5227,6 +5339,12 @@ pub use crate::ffi_types::HandleStepBasicAreaUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicAreaUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicAreaUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicAreaUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicAreaUnit_clone(ptr))
     }
 }
 
@@ -5530,6 +5648,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicCalendarDate {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicCalendarDate {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicCalendarDate_clone(ptr))
+    }
+}
+
 impl HandleStepBasicCalendarDate {
     /// Dereference this Handle to access the underlying StepBasic_CalendarDate
     pub fn get(&self) -> &crate::ffi_types::StepBasic_CalendarDate {
@@ -5819,6 +5943,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicCertification {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicCertification {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicCertification_clone(ptr))
+    }
+}
+
 impl HandleStepBasicCertification {
     /// Dereference this Handle to access the underlying StepBasic_Certification
     pub fn get(&self) -> &crate::ffi_types::StepBasic_Certification {
@@ -6051,6 +6181,14 @@ pub use crate::ffi_types::HandleStepBasicCertificationAssignment;
 unsafe impl crate::CppDeletable for HandleStepBasicCertificationAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicCertificationAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicCertificationAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicCertificationAssignment_clone(ptr),
+        )
     }
 }
 
@@ -6307,6 +6445,12 @@ pub use crate::ffi_types::HandleStepBasicCertificationType;
 unsafe impl crate::CppDeletable for HandleStepBasicCertificationType {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicCertificationType_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicCertificationType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicCertificationType_clone(ptr))
     }
 }
 
@@ -6586,6 +6730,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicCharacterizedObject {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicCharacterizedObject {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicCharacterizedObject_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicCharacterizedObject {
     /// Dereference this Handle to access the underlying StepBasic_CharacterizedObject
     pub fn get(&self) -> &crate::ffi_types::StepBasic_CharacterizedObject {
@@ -6855,6 +7007,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicContract {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicContract {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicContract_clone(ptr))
+    }
+}
+
 impl HandleStepBasicContract {
     /// Dereference this Handle to access the underlying StepBasic_Contract
     pub fn get(&self) -> &crate::ffi_types::StepBasic_Contract {
@@ -7092,6 +7250,14 @@ pub use crate::ffi_types::HandleStepBasicContractAssignment;
 unsafe impl crate::CppDeletable for HandleStepBasicContractAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicContractAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicContractAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicContractAssignment_clone(
+            ptr,
+        ))
     }
 }
 
@@ -7341,6 +7507,12 @@ pub use crate::ffi_types::HandleStepBasicContractType;
 unsafe impl crate::CppDeletable for HandleStepBasicContractType {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicContractType_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicContractType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicContractType_clone(ptr))
     }
 }
 
@@ -7649,6 +7821,14 @@ pub use crate::ffi_types::HandleStepBasicConversionBasedUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicConversionBasedUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicConversionBasedUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnit_clone(
+            ptr,
+        ))
     }
 }
 
@@ -8110,6 +8290,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicConversionBasedUnitAndAreaUni
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicConversionBasedUnitAndAreaUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnitAndAreaUnit_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicConversionBasedUnitAndAreaUnit {
     /// Dereference this Handle to access the underlying StepBasic_ConversionBasedUnitAndAreaUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ConversionBasedUnitAndAreaUnit {
@@ -8423,6 +8611,14 @@ pub use crate::ffi_types::HandleStepBasicConversionBasedUnitAndLengthUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicConversionBasedUnitAndLengthUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnitAndLengthUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicConversionBasedUnitAndLengthUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnitAndLengthUnit_clone(ptr),
+        )
     }
 }
 
@@ -8755,6 +8951,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicConversionBasedUnitAndMassUni
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicConversionBasedUnitAndMassUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnitAndMassUnit_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicConversionBasedUnitAndMassUnit {
     /// Dereference this Handle to access the underlying StepBasic_ConversionBasedUnitAndMassUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ConversionBasedUnitAndMassUnit {
@@ -9053,6 +9257,16 @@ unsafe impl crate::CppDeletable for HandleStepBasicConversionBasedUnitAndPlaneAn
         crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnitAndPlaneAngleUnit_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicConversionBasedUnitAndPlaneAngleUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnitAndPlaneAngleUnit_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -9379,6 +9593,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicConversionBasedUnitAndRatioUn
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicConversionBasedUnitAndRatioUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnitAndRatioUnit_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicConversionBasedUnitAndRatioUnit {
     /// Dereference this Handle to access the underlying StepBasic_ConversionBasedUnitAndRatioUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ConversionBasedUnitAndRatioUnit {
@@ -9677,6 +9899,16 @@ unsafe impl crate::CppDeletable for HandleStepBasicConversionBasedUnitAndSolidAn
         crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnitAndSolidAngleUnit_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicConversionBasedUnitAndSolidAngleUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnitAndSolidAngleUnit_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -10007,6 +10239,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicConversionBasedUnitAndTimeUni
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicConversionBasedUnitAndTimeUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnitAndTimeUnit_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicConversionBasedUnitAndTimeUnit {
     /// Dereference this Handle to access the underlying StepBasic_ConversionBasedUnitAndTimeUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ConversionBasedUnitAndTimeUnit {
@@ -10323,6 +10563,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicConversionBasedUnitAndVolumeU
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicConversionBasedUnitAndVolumeUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicConversionBasedUnitAndVolumeUnit_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicConversionBasedUnitAndVolumeUnit {
     /// Dereference this Handle to access the underlying StepBasic_ConversionBasedUnitAndVolumeUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ConversionBasedUnitAndVolumeUnit {
@@ -10620,6 +10868,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicCoordinatedUniversalTimeOffse
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicCoordinatedUniversalTimeOffset {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicCoordinatedUniversalTimeOffset_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicCoordinatedUniversalTimeOffset {
     /// Dereference this Handle to access the underlying StepBasic_CoordinatedUniversalTimeOffset
     pub fn get(&self) -> &crate::ffi_types::StepBasic_CoordinatedUniversalTimeOffset {
@@ -10831,6 +11087,12 @@ pub use crate::ffi_types::HandleStepBasicDate;
 unsafe impl crate::CppDeletable for HandleStepBasicDate {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicDate_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicDate {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDate_clone(ptr))
     }
 }
 
@@ -11144,6 +11406,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicDateAndTime {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDateAndTime {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDateAndTime_clone(ptr))
+    }
+}
+
 impl HandleStepBasicDateAndTime {
     /// Dereference this Handle to access the underlying StepBasic_DateAndTime
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DateAndTime {
@@ -11399,6 +11667,14 @@ pub use crate::ffi_types::HandleStepBasicDateAndTimeAssignment;
 unsafe impl crate::CppDeletable for HandleStepBasicDateAndTimeAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicDateAndTimeAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicDateAndTimeAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDateAndTimeAssignment_clone(
+            ptr,
+        ))
     }
 }
 
@@ -11726,6 +12002,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicDateAssignment {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDateAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDateAssignment_clone(ptr))
+    }
+}
+
 impl HandleStepBasicDateAssignment {
     /// Dereference this Handle to access the underlying StepBasic_DateAssignment
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DateAssignment {
@@ -11993,6 +12275,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicDateRole {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDateRole {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDateRole_clone(ptr))
+    }
+}
+
 impl HandleStepBasicDateRole {
     /// Dereference this Handle to access the underlying StepBasic_DateRole
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DateRole {
@@ -12213,6 +12501,12 @@ pub use crate::ffi_types::HandleStepBasicDateTimeRole;
 unsafe impl crate::CppDeletable for HandleStepBasicDateTimeRole {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicDateTimeRole_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicDateTimeRole {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDateTimeRole_clone(ptr))
     }
 }
 
@@ -12736,6 +13030,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicDerivedUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDerivedUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDerivedUnit_clone(ptr))
+    }
+}
+
 impl HandleStepBasicDerivedUnit {
     /// Dereference this Handle to access the underlying StepBasic_DerivedUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DerivedUnit {
@@ -12982,6 +13282,14 @@ pub use crate::ffi_types::HandleStepBasicDerivedUnitElement;
 unsafe impl crate::CppDeletable for HandleStepBasicDerivedUnitElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicDerivedUnitElement_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicDerivedUnitElement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDerivedUnitElement_clone(
+            ptr,
+        ))
     }
 }
 
@@ -13302,6 +13610,12 @@ pub use crate::ffi_types::HandleStepBasicDesignContext;
 unsafe impl crate::CppDeletable for HandleStepBasicDesignContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicDesignContext_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicDesignContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDesignContext_clone(ptr))
     }
 }
 
@@ -13663,6 +13977,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicDigitalDocument {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDigitalDocument {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDigitalDocument_clone(ptr))
+    }
+}
+
 impl HandleStepBasicDigitalDocument {
     /// Dereference this Handle to access the underlying StepBasic_DigitalDocument
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DigitalDocument {
@@ -14018,6 +14338,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicDimensionalExponents {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDimensionalExponents {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDimensionalExponents_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicDimensionalExponents {
     /// Dereference this Handle to access the underlying StepBasic_DimensionalExponents
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DimensionalExponents {
@@ -14320,6 +14648,12 @@ pub use crate::ffi_types::HandleStepBasicDocument;
 unsafe impl crate::CppDeletable for HandleStepBasicDocument {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicDocument_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicDocument {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDocument_clone(ptr))
     }
 }
 
@@ -14730,6 +15064,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicDocumentFile {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDocumentFile {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDocumentFile_clone(ptr))
+    }
+}
+
 impl HandleStepBasicDocumentFile {
     /// Dereference this Handle to access the underlying StepBasic_DocumentFile
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DocumentFile {
@@ -15062,6 +15402,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicDocumentProductAssociation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDocumentProductAssociation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicDocumentProductAssociation_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicDocumentProductAssociation {
     /// Dereference this Handle to access the underlying StepBasic_DocumentProductAssociation
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DocumentProductAssociation {
@@ -15380,6 +15728,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicDocumentProductEquivalence {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDocumentProductEquivalence {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicDocumentProductEquivalence_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicDocumentProductEquivalence {
     /// Dereference this Handle to access the underlying StepBasic_DocumentProductEquivalence
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DocumentProductEquivalence {
@@ -15646,6 +16002,12 @@ pub use crate::ffi_types::HandleStepBasicDocumentReference;
 unsafe impl crate::CppDeletable for HandleStepBasicDocumentReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicDocumentReference_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicDocumentReference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDocumentReference_clone(ptr))
     }
 }
 
@@ -16001,6 +16363,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicDocumentRelationship {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDocumentRelationship {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDocumentRelationship_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicDocumentRelationship {
     /// Dereference this Handle to access the underlying StepBasic_DocumentRelationship
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DocumentRelationship {
@@ -16252,6 +16622,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicDocumentRepresentationType {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDocumentRepresentationType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicDocumentRepresentationType_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicDocumentRepresentationType {
     /// Dereference this Handle to access the underlying StepBasic_DocumentRepresentationType
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DocumentRepresentationType {
@@ -16481,6 +16859,12 @@ pub use crate::ffi_types::HandleStepBasicDocumentType;
 unsafe impl crate::CppDeletable for HandleStepBasicDocumentType {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicDocumentType_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicDocumentType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicDocumentType_clone(ptr))
     }
 }
 
@@ -16766,6 +17150,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicDocumentUsageConstraint {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicDocumentUsageConstraint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicDocumentUsageConstraint_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicDocumentUsageConstraint {
     /// Dereference this Handle to access the underlying StepBasic_DocumentUsageConstraint
     pub fn get(&self) -> &crate::ffi_types::StepBasic_DocumentUsageConstraint {
@@ -16983,6 +17375,12 @@ pub use crate::ffi_types::HandleStepBasicEffectivity;
 unsafe impl crate::CppDeletable for HandleStepBasicEffectivity {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicEffectivity_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicEffectivity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicEffectivity_clone(ptr))
     }
 }
 
@@ -17255,6 +17653,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicEffectivityAssignment {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicEffectivityAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicEffectivityAssignment_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicEffectivityAssignment {
     /// Dereference this Handle to access the underlying StepBasic_EffectivityAssignment
     pub fn get(&self) -> &crate::ffi_types::StepBasic_EffectivityAssignment {
@@ -17477,6 +17883,12 @@ pub use crate::ffi_types::HandleStepBasicEulerAngles;
 unsafe impl crate::CppDeletable for HandleStepBasicEulerAngles {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicEulerAngles_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicEulerAngles {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicEulerAngles_clone(ptr))
     }
 }
 
@@ -17747,6 +18159,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicExternalIdentificationAssignm
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicExternalIdentificationAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicExternalIdentificationAssignment_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicExternalIdentificationAssignment {
     /// Dereference this Handle to access the underlying StepBasic_ExternalIdentificationAssignment
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ExternalIdentificationAssignment {
@@ -18006,6 +18426,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicExternalSource {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicExternalSource {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicExternalSource_clone(ptr))
+    }
+}
+
 impl HandleStepBasicExternalSource {
     /// Dereference this Handle to access the underlying StepBasic_ExternalSource
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ExternalSource {
@@ -18260,6 +18686,14 @@ pub use crate::ffi_types::HandleStepBasicExternallyDefinedItem;
 unsafe impl crate::CppDeletable for HandleStepBasicExternallyDefinedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicExternallyDefinedItem_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicExternallyDefinedItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicExternallyDefinedItem_clone(
+            ptr,
+        ))
     }
 }
 
@@ -18590,6 +19024,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicGeneralProperty {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicGeneralProperty {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicGeneralProperty_clone(ptr))
+    }
+}
+
 impl HandleStepBasicGeneralProperty {
     /// Dereference this Handle to access the underlying StepBasic_GeneralProperty
     pub fn get(&self) -> &crate::ffi_types::StepBasic_GeneralProperty {
@@ -18917,6 +19357,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicGeneralPropertyAssociation {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicGeneralPropertyAssociation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicGeneralPropertyAssociation_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicGeneralPropertyAssociation {
     /// Dereference this Handle to access the underlying StepBasic_GeneralPropertyAssociation
     pub fn get(&self) -> &crate::ffi_types::StepBasic_GeneralPropertyAssociation {
@@ -19231,6 +19679,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicGeneralPropertyRelationship {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicGeneralPropertyRelationship {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicGeneralPropertyRelationship_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicGeneralPropertyRelationship {
     /// Dereference this Handle to access the underlying StepBasic_GeneralPropertyRelationship
     pub fn get(&self) -> &crate::ffi_types::StepBasic_GeneralPropertyRelationship {
@@ -19491,6 +19947,12 @@ pub use crate::ffi_types::HandleStepBasicGroup;
 unsafe impl crate::CppDeletable for HandleStepBasicGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicGroup_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicGroup {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicGroup_clone(ptr))
     }
 }
 
@@ -19834,6 +20296,12 @@ pub use crate::ffi_types::HandleStepBasicGroupAssignment;
 unsafe impl crate::CppDeletable for HandleStepBasicGroupAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicGroupAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicGroupAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicGroupAssignment_clone(ptr))
     }
 }
 
@@ -20195,6 +20663,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicGroupRelationship {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicGroupRelationship {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicGroupRelationship_clone(ptr))
+    }
+}
+
 impl HandleStepBasicGroupRelationship {
     /// Dereference this Handle to access the underlying StepBasic_GroupRelationship
     pub fn get(&self) -> &crate::ffi_types::StepBasic_GroupRelationship {
@@ -20461,6 +20935,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicHArray1OfApproval {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicHArray1OfApproval {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfApproval_clone(ptr))
+    }
+}
+
 impl HandleStepBasicHArray1OfApproval {
     /// Dereference this Handle to access the underlying StepBasic_HArray1OfApproval
     pub fn get(&self) -> &crate::ffi_types::StepBasic_HArray1OfApproval {
@@ -20710,6 +21190,14 @@ pub use crate::ffi_types::HandleStepBasicHArray1OfDerivedUnitElement;
 unsafe impl crate::CppDeletable for HandleStepBasicHArray1OfDerivedUnitElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfDerivedUnitElement_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicHArray1OfDerivedUnitElement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfDerivedUnitElement_clone(ptr),
+        )
     }
 }
 
@@ -20981,6 +21469,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicHArray1OfDocument {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicHArray1OfDocument {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfDocument_clone(ptr))
+    }
+}
+
 impl HandleStepBasicHArray1OfDocument {
     /// Dereference this Handle to access the underlying StepBasic_HArray1OfDocument
     pub fn get(&self) -> &crate::ffi_types::StepBasic_HArray1OfDocument {
@@ -21249,6 +21743,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicHArray1OfNamedUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicHArray1OfNamedUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfNamedUnit_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicHArray1OfNamedUnit {
     /// Dereference this Handle to access the underlying StepBasic_HArray1OfNamedUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_HArray1OfNamedUnit {
@@ -21506,6 +22008,14 @@ pub use crate::ffi_types::HandleStepBasicHArray1OfOrganization;
 unsafe impl crate::CppDeletable for HandleStepBasicHArray1OfOrganization {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfOrganization_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicHArray1OfOrganization {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfOrganization_clone(
+            ptr,
+        ))
     }
 }
 
@@ -21770,6 +22280,12 @@ pub use crate::ffi_types::HandleStepBasicHArray1OfPerson;
 unsafe impl crate::CppDeletable for HandleStepBasicHArray1OfPerson {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfPerson_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicHArray1OfPerson {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfPerson_clone(ptr))
     }
 }
 
@@ -22039,6 +22555,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicHArray1OfProduct {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicHArray1OfProduct {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfProduct_clone(ptr))
+    }
+}
+
 impl HandleStepBasicHArray1OfProduct {
     /// Dereference this Handle to access the underlying StepBasic_HArray1OfProduct
     pub fn get(&self) -> &crate::ffi_types::StepBasic_HArray1OfProduct {
@@ -22297,6 +22819,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicHArray1OfProductContext {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicHArray1OfProductContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfProductContext_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicHArray1OfProductContext {
     /// Dereference this Handle to access the underlying StepBasic_HArray1OfProductContext
     pub fn get(&self) -> &crate::ffi_types::StepBasic_HArray1OfProductContext {
@@ -22551,6 +23081,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicHArray1OfProductDefinition {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicHArray1OfProductDefinition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfProductDefinition_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicHArray1OfProductDefinition {
     /// Dereference this Handle to access the underlying StepBasic_HArray1OfProductDefinition
     pub fn get(&self) -> &crate::ffi_types::StepBasic_HArray1OfProductDefinition {
@@ -22780,6 +23318,16 @@ unsafe impl crate::CppDeletable for HandleStepBasicHArray1OfUncertaintyMeasureWi
         crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfUncertaintyMeasureWithUnit_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicHArray1OfUncertaintyMeasureWithUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicHArray1OfUncertaintyMeasureWithUnit_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -23037,6 +23585,14 @@ pub use crate::ffi_types::HandleStepBasicIdentificationAssignment;
 unsafe impl crate::CppDeletable for HandleStepBasicIdentificationAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicIdentificationAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicIdentificationAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicIdentificationAssignment_clone(ptr),
+        )
     }
 }
 
@@ -23353,6 +23909,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicIdentificationRole {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicIdentificationRole {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicIdentificationRole_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicIdentificationRole {
     /// Dereference this Handle to access the underlying StepBasic_IdentificationRole
     pub fn get(&self) -> &crate::ffi_types::StepBasic_IdentificationRole {
@@ -23637,6 +24201,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicLengthMeasureWithUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicLengthMeasureWithUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicLengthMeasureWithUnit_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicLengthMeasureWithUnit {
     /// Dereference this Handle to access the underlying StepBasic_LengthMeasureWithUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_LengthMeasureWithUnit {
@@ -23897,6 +24469,12 @@ pub use crate::ffi_types::HandleStepBasicLengthUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicLengthUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicLengthUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicLengthUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicLengthUnit_clone(ptr))
     }
 }
 
@@ -24240,6 +24818,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicLocalTime {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicLocalTime {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicLocalTime_clone(ptr))
+    }
+}
+
 impl HandleStepBasicLocalTime {
     /// Dereference this Handle to access the underlying StepBasic_LocalTime
     pub fn get(&self) -> &crate::ffi_types::StepBasic_LocalTime {
@@ -24530,6 +25114,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicMassMeasureWithUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicMassMeasureWithUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicMassMeasureWithUnit_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicMassMeasureWithUnit {
     /// Dereference this Handle to access the underlying StepBasic_MassMeasureWithUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_MassMeasureWithUnit {
@@ -24791,6 +25383,12 @@ pub use crate::ffi_types::HandleStepBasicMassUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicMassUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicMassUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicMassUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicMassUnit_clone(ptr))
     }
 }
 
@@ -25217,6 +25815,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicMeasureValueMember {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicMeasureValueMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicMeasureValueMember_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicMeasureValueMember {
     /// Dereference this Handle to access the underlying StepBasic_MeasureValueMember
     pub fn get(&self) -> &crate::ffi_types::StepBasic_MeasureValueMember {
@@ -25515,6 +26121,12 @@ pub use crate::ffi_types::HandleStepBasicMeasureWithUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicMeasureWithUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicMeasureWithUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicMeasureWithUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicMeasureWithUnit_clone(ptr))
     }
 }
 
@@ -25952,6 +26564,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicMechanicalContext {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicMechanicalContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicMechanicalContext_clone(ptr))
+    }
+}
+
 impl HandleStepBasicMechanicalContext {
     /// Dereference this Handle to access the underlying StepBasic_MechanicalContext
     pub fn get(&self) -> &crate::ffi_types::StepBasic_MechanicalContext {
@@ -26210,6 +26828,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicNameAssignment {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicNameAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicNameAssignment_clone(ptr))
+    }
+}
+
 impl HandleStepBasicNameAssignment {
     /// Dereference this Handle to access the underlying StepBasic_NameAssignment
     pub fn get(&self) -> &crate::ffi_types::StepBasic_NameAssignment {
@@ -26432,6 +27056,12 @@ pub use crate::ffi_types::HandleStepBasicNamedUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicNamedUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicNamedUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicNamedUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicNamedUnit_clone(ptr))
     }
 }
 
@@ -27169,6 +27799,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicObjectRole {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicObjectRole {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicObjectRole_clone(ptr))
+    }
+}
+
 impl HandleStepBasicObjectRole {
     /// Dereference this Handle to access the underlying StepBasic_ObjectRole
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ObjectRole {
@@ -27433,6 +28069,12 @@ pub use crate::ffi_types::HandleStepBasicOrdinalDate;
 unsafe impl crate::CppDeletable for HandleStepBasicOrdinalDate {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicOrdinalDate_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicOrdinalDate {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicOrdinalDate_clone(ptr))
     }
 }
 
@@ -27734,6 +28376,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicOrganization {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicOrganization {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicOrganization_clone(ptr))
+    }
+}
+
 impl HandleStepBasicOrganization {
     /// Dereference this Handle to access the underlying StepBasic_Organization
     pub fn get(&self) -> &crate::ffi_types::StepBasic_Organization {
@@ -27989,6 +28637,14 @@ pub use crate::ffi_types::HandleStepBasicOrganizationAssignment;
 unsafe impl crate::CppDeletable for HandleStepBasicOrganizationAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicOrganizationAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicOrganizationAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicOrganizationAssignment_clone(ptr),
+        )
     }
 }
 
@@ -28251,6 +28907,12 @@ pub use crate::ffi_types::HandleStepBasicOrganizationRole;
 unsafe impl crate::CppDeletable for HandleStepBasicOrganizationRole {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicOrganizationRole_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicOrganizationRole {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicOrganizationRole_clone(ptr))
     }
 }
 
@@ -29068,6 +29730,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicOrganizationalAddress {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicOrganizationalAddress {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicOrganizationalAddress_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicOrganizationalAddress {
     /// Dereference this Handle to access the underlying StepBasic_OrganizationalAddress
     pub fn get(&self) -> &crate::ffi_types::StepBasic_OrganizationalAddress {
@@ -29561,6 +30231,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicPerson {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicPerson {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicPerson_clone(ptr))
+    }
+}
+
 impl HandleStepBasicPerson {
     /// Dereference this Handle to access the underlying StepBasic_Person
     pub fn get(&self) -> &crate::ffi_types::StepBasic_Person {
@@ -29819,6 +30495,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicPersonAndOrganization {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicPersonAndOrganization {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicPersonAndOrganization_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicPersonAndOrganization {
     /// Dereference this Handle to access the underlying StepBasic_PersonAndOrganization
     pub fn get(&self) -> &crate::ffi_types::StepBasic_PersonAndOrganization {
@@ -30059,6 +30743,14 @@ pub use crate::ffi_types::HandleStepBasicPersonAndOrganizationAssignment;
 unsafe impl crate::CppDeletable for HandleStepBasicPersonAndOrganizationAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicPersonAndOrganizationAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicPersonAndOrganizationAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicPersonAndOrganizationAssignment_clone(ptr),
+        )
     }
 }
 
@@ -30354,6 +31046,14 @@ pub use crate::ffi_types::HandleStepBasicPersonAndOrganizationRole;
 unsafe impl crate::CppDeletable for HandleStepBasicPersonAndOrganizationRole {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicPersonAndOrganizationRole_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicPersonAndOrganizationRole {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicPersonAndOrganizationRole_clone(ptr),
+        )
     }
 }
 
@@ -31463,6 +32163,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicPersonalAddress {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicPersonalAddress {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicPersonalAddress_clone(ptr))
+    }
+}
+
 impl HandleStepBasicPersonalAddress {
     /// Dereference this Handle to access the underlying StepBasic_PersonalAddress
     pub fn get(&self) -> &crate::ffi_types::StepBasic_PersonalAddress {
@@ -31739,6 +32445,16 @@ unsafe impl crate::CppDeletable for HandleStepBasicPhysicallyModeledProductDefin
         crate::ffi_extern_TKDESTEP::HandleStepBasicPhysicallyModeledProductDefinition_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicPhysicallyModeledProductDefinition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicPhysicallyModeledProductDefinition_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -32020,6 +32736,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicPlaneAngleMeasureWithUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicPlaneAngleMeasureWithUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicPlaneAngleMeasureWithUnit_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicPlaneAngleMeasureWithUnit {
     /// Dereference this Handle to access the underlying StepBasic_PlaneAngleMeasureWithUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_PlaneAngleMeasureWithUnit {
@@ -32286,6 +33010,12 @@ pub use crate::ffi_types::HandleStepBasicPlaneAngleUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicPlaneAngleUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicPlaneAngleUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicPlaneAngleUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicPlaneAngleUnit_clone(ptr))
     }
 }
 
@@ -32611,6 +33341,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicProduct {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicProduct {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicProduct_clone(ptr))
+    }
+}
+
 impl HandleStepBasicProduct {
     /// Dereference this Handle to access the underlying StepBasic_Product
     pub fn get(&self) -> &crate::ffi_types::StepBasic_Product {
@@ -32885,6 +33621,12 @@ pub use crate::ffi_types::HandleStepBasicProductCategory;
 unsafe impl crate::CppDeletable for HandleStepBasicProductCategory {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicProductCategory_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicProductCategory {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicProductCategory_clone(ptr))
     }
 }
 
@@ -33242,6 +33984,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicProductCategoryRelationship {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicProductCategoryRelationship {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicProductCategoryRelationship_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicProductCategoryRelationship {
     /// Dereference this Handle to access the underlying StepBasic_ProductCategoryRelationship
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ProductCategoryRelationship {
@@ -33536,6 +34286,14 @@ pub use crate::ffi_types::HandleStepBasicProductConceptContext;
 unsafe impl crate::CppDeletable for HandleStepBasicProductConceptContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicProductConceptContext_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicProductConceptContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicProductConceptContext_clone(
+            ptr,
+        ))
     }
 }
 
@@ -33851,6 +34609,12 @@ pub use crate::ffi_types::HandleStepBasicProductContext;
 unsafe impl crate::CppDeletable for HandleStepBasicProductContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicProductContext_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicProductContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicProductContext_clone(ptr))
     }
 }
 
@@ -34187,6 +34951,12 @@ pub use crate::ffi_types::HandleStepBasicProductDefinition;
 unsafe impl crate::CppDeletable for HandleStepBasicProductDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinition_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicProductDefinition {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinition_clone(ptr))
     }
 }
 
@@ -34533,6 +35303,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicProductDefinitionContext {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicProductDefinitionContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionContext_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicProductDefinitionContext {
     /// Dereference this Handle to access the underlying StepBasic_ProductDefinitionContext
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ProductDefinitionContext {
@@ -34820,6 +35598,14 @@ pub use crate::ffi_types::HandleStepBasicProductDefinitionEffectivity;
 unsafe impl crate::CppDeletable for HandleStepBasicProductDefinitionEffectivity {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionEffectivity_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicProductDefinitionEffectivity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionEffectivity_clone(ptr),
+        )
     }
 }
 
@@ -35118,6 +35904,14 @@ pub use crate::ffi_types::HandleStepBasicProductDefinitionFormation;
 unsafe impl crate::CppDeletable for HandleStepBasicProductDefinitionFormation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionFormation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicProductDefinitionFormation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionFormation_clone(ptr),
+        )
     }
 }
 
@@ -35438,6 +36232,16 @@ unsafe impl crate::CppDeletable for HandleStepBasicProductDefinitionFormationRel
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicProductDefinitionFormationRelationship {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionFormationRelationship_clone(
+                ptr,
+            ),
+        )
+    }
+}
+
 impl HandleStepBasicProductDefinitionFormationRelationship {
     /// Dereference this Handle to access the underlying StepBasic_ProductDefinitionFormationRelationship
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ProductDefinitionFormationRelationship {
@@ -35683,6 +36487,12 @@ pub use crate::ffi_types::HandleStepBasicProductDefinitionFormationWithSpecified
 unsafe impl crate::CppDeletable for HandleStepBasicProductDefinitionFormationWithSpecifiedSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionFormationWithSpecifiedSource_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicProductDefinitionFormationWithSpecifiedSource {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionFormationWithSpecifiedSource_clone(ptr))
     }
 }
 
@@ -36286,6 +37096,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicProductDefinitionReference {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicProductDefinitionReference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionReference_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicProductDefinitionReference {
     /// Dereference this Handle to access the underlying StepBasic_ProductDefinitionReference
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ProductDefinitionReference {
@@ -36562,6 +37380,14 @@ unsafe impl crate::CppDeletable
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionReferenceWithLocalRepresentation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable
+    for HandleStepBasicProductDefinitionReferenceWithLocalRepresentation
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionReferenceWithLocalRepresentation_clone(ptr))
     }
 }
 
@@ -36954,6 +37780,14 @@ pub use crate::ffi_types::HandleStepBasicProductDefinitionRelationship;
 unsafe impl crate::CppDeletable for HandleStepBasicProductDefinitionRelationship {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionRelationship_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicProductDefinitionRelationship {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionRelationship_clone(ptr),
+        )
     }
 }
 
@@ -37397,6 +38231,12 @@ pub use crate::ffi_types::HandleStepBasicProductDefinitionWithAssociatedDocument
 unsafe impl crate::CppDeletable for HandleStepBasicProductDefinitionWithAssociatedDocuments {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionWithAssociatedDocuments_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicProductDefinitionWithAssociatedDocuments {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicProductDefinitionWithAssociatedDocuments_clone(ptr))
     }
 }
 
@@ -37965,6 +38805,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicProductRelatedProductCategory
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicProductRelatedProductCategory {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicProductRelatedProductCategory_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicProductRelatedProductCategory {
     /// Dereference this Handle to access the underlying StepBasic_ProductRelatedProductCategory
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ProductRelatedProductCategory {
@@ -38353,6 +39201,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicProductType {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicProductType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicProductType_clone(ptr))
+    }
+}
+
 impl HandleStepBasicProductType {
     /// Dereference this Handle to access the underlying StepBasic_ProductType
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ProductType {
@@ -38659,6 +39513,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicRatioMeasureWithUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicRatioMeasureWithUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicRatioMeasureWithUnit_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicRatioMeasureWithUnit {
     /// Dereference this Handle to access the underlying StepBasic_RatioMeasureWithUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_RatioMeasureWithUnit {
@@ -38919,6 +39781,12 @@ pub use crate::ffi_types::HandleStepBasicRatioUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicRatioUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicRatioUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicRatioUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicRatioUnit_clone(ptr))
     }
 }
 
@@ -39192,6 +40060,12 @@ pub use crate::ffi_types::HandleStepBasicRoleAssociation;
 unsafe impl crate::CppDeletable for HandleStepBasicRoleAssociation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicRoleAssociation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicRoleAssociation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicRoleAssociation_clone(ptr))
     }
 }
 
@@ -39859,6 +40733,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicSecurityClassification {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicSecurityClassification {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicSecurityClassification_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicSecurityClassification {
     /// Dereference this Handle to access the underlying StepBasic_SecurityClassification
     pub fn get(&self) -> &crate::ffi_types::StepBasic_SecurityClassification {
@@ -40065,6 +40947,14 @@ pub use crate::ffi_types::HandleStepBasicSecurityClassificationAssignment;
 unsafe impl crate::CppDeletable for HandleStepBasicSecurityClassificationAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicSecurityClassificationAssignment_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicSecurityClassificationAssignment {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicSecurityClassificationAssignment_clone(ptr),
+        )
     }
 }
 
@@ -40341,6 +41231,14 @@ pub use crate::ffi_types::HandleStepBasicSecurityClassificationLevel;
 unsafe impl crate::CppDeletable for HandleStepBasicSecurityClassificationLevel {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicSecurityClassificationLevel_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicSecurityClassificationLevel {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicSecurityClassificationLevel_clone(ptr),
+        )
     }
 }
 
@@ -40645,6 +41543,12 @@ pub use crate::ffi_types::HandleStepBasicSiUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicSiUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicSiUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnit_clone(ptr))
     }
 }
 
@@ -41175,6 +42079,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicSiUnitAndAreaUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicSiUnitAndAreaUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndAreaUnit_clone(ptr))
+    }
+}
+
 impl HandleStepBasicSiUnitAndAreaUnit {
     /// Dereference this Handle to access the underlying StepBasic_SiUnitAndAreaUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_SiUnitAndAreaUnit {
@@ -41550,6 +42460,14 @@ pub use crate::ffi_types::HandleStepBasicSiUnitAndLengthUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicSiUnitAndLengthUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndLengthUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicSiUnitAndLengthUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndLengthUnit_clone(
+            ptr,
+        ))
     }
 }
 
@@ -41937,6 +42855,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicSiUnitAndMassUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicSiUnitAndMassUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndMassUnit_clone(ptr))
+    }
+}
+
 impl HandleStepBasicSiUnitAndMassUnit {
     /// Dereference this Handle to access the underlying StepBasic_SiUnitAndMassUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_SiUnitAndMassUnit {
@@ -42303,6 +43227,14 @@ pub use crate::ffi_types::HandleStepBasicSiUnitAndPlaneAngleUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicSiUnitAndPlaneAngleUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndPlaneAngleUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicSiUnitAndPlaneAngleUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndPlaneAngleUnit_clone(ptr),
+        )
     }
 }
 
@@ -42690,6 +43622,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicSiUnitAndRatioUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicSiUnitAndRatioUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndRatioUnit_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicSiUnitAndRatioUnit {
     /// Dereference this Handle to access the underlying StepBasic_SiUnitAndRatioUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_SiUnitAndRatioUnit {
@@ -43061,6 +44001,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicSiUnitAndSolidAngleUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicSiUnitAndSolidAngleUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndSolidAngleUnit_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicSiUnitAndSolidAngleUnit {
     /// Dereference this Handle to access the underlying StepBasic_SiUnitAndSolidAngleUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_SiUnitAndSolidAngleUnit {
@@ -43362,6 +44310,16 @@ unsafe impl crate::CppDeletable for HandleStepBasicSiUnitAndThermodynamicTempera
         crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndThermodynamicTemperatureUnit_destructor(
             ptr,
         );
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicSiUnitAndThermodynamicTemperatureUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndThermodynamicTemperatureUnit_clone(
+                ptr,
+            ),
+        )
     }
 }
 
@@ -43743,6 +44701,12 @@ unsafe impl crate::CppDeletable for HandleStepBasicSiUnitAndTimeUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicSiUnitAndTimeUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndTimeUnit_clone(ptr))
+    }
+}
+
 impl HandleStepBasicSiUnitAndTimeUnit {
     /// Dereference this Handle to access the underlying StepBasic_SiUnitAndTimeUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_SiUnitAndTimeUnit {
@@ -44118,6 +45082,14 @@ pub use crate::ffi_types::HandleStepBasicSiUnitAndVolumeUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicSiUnitAndVolumeUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndVolumeUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicSiUnitAndVolumeUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicSiUnitAndVolumeUnit_clone(
+            ptr,
+        ))
     }
 }
 
@@ -44524,6 +45496,12 @@ pub use crate::ffi_types::HandleStepBasicSizeMember;
 unsafe impl crate::CppDeletable for HandleStepBasicSizeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicSizeMember_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicSizeMember {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicSizeMember_clone(ptr))
     }
 }
 
@@ -45061,6 +46039,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicSolidAngleMeasureWithUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicSolidAngleMeasureWithUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicSolidAngleMeasureWithUnit_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicSolidAngleMeasureWithUnit {
     /// Dereference this Handle to access the underlying StepBasic_SolidAngleMeasureWithUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_SolidAngleMeasureWithUnit {
@@ -45327,6 +46313,12 @@ pub use crate::ffi_types::HandleStepBasicSolidAngleUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicSolidAngleUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicSolidAngleUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicSolidAngleUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicSolidAngleUnit_clone(ptr))
     }
 }
 
@@ -45800,6 +46792,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicThermodynamicTemperatureUnit 
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicThermodynamicTemperatureUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicThermodynamicTemperatureUnit_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicThermodynamicTemperatureUnit {
     /// Dereference this Handle to access the underlying StepBasic_ThermodynamicTemperatureUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_ThermodynamicTemperatureUnit {
@@ -46099,6 +47099,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicTimeMeasureWithUnit {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicTimeMeasureWithUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicTimeMeasureWithUnit_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleStepBasicTimeMeasureWithUnit {
     /// Dereference this Handle to access the underlying StepBasic_TimeMeasureWithUnit
     pub fn get(&self) -> &crate::ffi_types::StepBasic_TimeMeasureWithUnit {
@@ -46359,6 +47367,12 @@ pub use crate::ffi_types::HandleStepBasicTimeUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicTimeUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicTimeUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicTimeUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicTimeUnit_clone(ptr))
     }
 }
 
@@ -46687,6 +47701,14 @@ pub use crate::ffi_types::HandleStepBasicUncertaintyMeasureWithUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicUncertaintyMeasureWithUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicUncertaintyMeasureWithUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicUncertaintyMeasureWithUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicUncertaintyMeasureWithUnit_clone(ptr),
+        )
     }
 }
 
@@ -47240,6 +48262,14 @@ unsafe impl crate::CppDeletable for HandleStepBasicVersionedActionRequest {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStepBasicVersionedActionRequest {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDESTEP::HandleStepBasicVersionedActionRequest_clone(ptr),
+        )
+    }
+}
+
 impl HandleStepBasicVersionedActionRequest {
     /// Dereference this Handle to access the underlying StepBasic_VersionedActionRequest
     pub fn get(&self) -> &crate::ffi_types::StepBasic_VersionedActionRequest {
@@ -47490,6 +48520,12 @@ pub use crate::ffi_types::HandleStepBasicVolumeUnit;
 unsafe impl crate::CppDeletable for HandleStepBasicVolumeUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicVolumeUnit_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicVolumeUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicVolumeUnit_clone(ptr))
     }
 }
 
@@ -47819,6 +48855,14 @@ pub use crate::ffi_types::HandleStepBasicWeekOfYearAndDayDate;
 unsafe impl crate::CppDeletable for HandleStepBasicWeekOfYearAndDayDate {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleStepBasicWeekOfYearAndDayDate_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStepBasicWeekOfYearAndDayDate {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepBasicWeekOfYearAndDayDate_clone(
+            ptr,
+        ))
     }
 }
 

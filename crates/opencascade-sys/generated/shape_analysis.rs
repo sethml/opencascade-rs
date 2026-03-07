@@ -2056,6 +2056,14 @@ unsafe impl crate::CppDeletable for HandleShapeAnalysisFreeBoundData {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeAnalysisFreeBoundData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisFreeBoundData_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleShapeAnalysisFreeBoundData {
     /// Dereference this Handle to access the underlying ShapeAnalysis_FreeBoundData
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_FreeBoundData {
@@ -3037,6 +3045,14 @@ pub use crate::ffi_types::HandleShapeAnalysisHSequenceOfFreeBounds;
 unsafe impl crate::CppDeletable for HandleShapeAnalysisHSequenceOfFreeBounds {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeAnalysisHSequenceOfFreeBounds_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeAnalysisHSequenceOfFreeBounds {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeAnalysisHSequenceOfFreeBounds_clone(ptr),
+        )
     }
 }
 
@@ -4580,6 +4596,12 @@ unsafe impl crate::CppDeletable for HandleShapeAnalysisSurface {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleShapeAnalysisSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisSurface_clone(ptr))
+    }
+}
+
 impl HandleShapeAnalysisSurface {
     /// Dereference this Handle to access the underlying ShapeAnalysis_Surface
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_Surface {
@@ -4880,6 +4902,14 @@ pub use crate::ffi_types::HandleShapeAnalysisTransferParameters;
 unsafe impl crate::CppDeletable for HandleShapeAnalysisTransferParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParameters_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeAnalysisTransferParameters {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParameters_clone(ptr),
+        )
     }
 }
 
@@ -5231,6 +5261,14 @@ pub use crate::ffi_types::HandleShapeAnalysisTransferParametersProj;
 unsafe impl crate::CppDeletable for HandleShapeAnalysisTransferParametersProj {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParametersProj_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeAnalysisTransferParametersProj {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParametersProj_clone(ptr),
+        )
     }
 }
 
@@ -6521,6 +6559,12 @@ pub use crate::ffi_types::HandleShapeAnalysisWire;
 unsafe impl crate::CppDeletable for HandleShapeAnalysisWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKShHealing::HandleShapeAnalysisWire_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleShapeAnalysisWire {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisWire_clone(ptr))
     }
 }
 

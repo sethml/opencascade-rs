@@ -363,39 +363,167 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
 typedef opencascade::handle<TColgp_HArray1OfPnt> HandleTColgpHArray1OfPnt;
 
-// Handle type destructors
+// Handle type destructors and clone functions
 extern "C" void HandleBRepApproxApproxLine_destructor(HandleBRepApproxApproxLine* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepApproxApproxLine*> HandleBRepApproxApproxLine_clone(const HandleBRepApproxApproxLine* self_) {
+    try { return {new HandleBRepApproxApproxLine(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepBuilderAPIFastSewing_destructor(HandleBRepBuilderAPIFastSewing* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepBuilderAPIFastSewing*> HandleBRepBuilderAPIFastSewing_clone(const HandleBRepBuilderAPIFastSewing* self_) {
+    try { return {new HandleBRepBuilderAPIFastSewing(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepBuilderAPISewing_destructor(HandleBRepBuilderAPISewing* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepBuilderAPISewing*> HandleBRepBuilderAPISewing_clone(const HandleBRepBuilderAPISewing* self_) {
+    try { return {new HandleBRepBuilderAPISewing(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepCheckEdge_destructor(HandleBRepCheckEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepCheckEdge*> HandleBRepCheckEdge_clone(const HandleBRepCheckEdge* self_) {
+    try { return {new HandleBRepCheckEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepCheckFace_destructor(HandleBRepCheckFace* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepCheckFace*> HandleBRepCheckFace_clone(const HandleBRepCheckFace* self_) {
+    try { return {new HandleBRepCheckFace(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepCheckResult_destructor(HandleBRepCheckResult* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepCheckResult*> HandleBRepCheckResult_clone(const HandleBRepCheckResult* self_) {
+    try { return {new HandleBRepCheckResult(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepCheckShell_destructor(HandleBRepCheckShell* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepCheckShell*> HandleBRepCheckShell_clone(const HandleBRepCheckShell* self_) {
+    try { return {new HandleBRepCheckShell(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepCheckSolid_destructor(HandleBRepCheckSolid* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepCheckSolid*> HandleBRepCheckSolid_clone(const HandleBRepCheckSolid* self_) {
+    try { return {new HandleBRepCheckSolid(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepCheckVertex_destructor(HandleBRepCheckVertex* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepCheckVertex*> HandleBRepCheckVertex_clone(const HandleBRepCheckVertex* self_) {
+    try { return {new HandleBRepCheckVertex(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepCheckWire_destructor(HandleBRepCheckWire* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepCheckWire*> HandleBRepCheckWire_clone(const HandleBRepCheckWire* self_) {
+    try { return {new HandleBRepCheckWire(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepExtremaTriangleSet_destructor(HandleBRepExtremaTriangleSet* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepExtremaTriangleSet*> HandleBRepExtremaTriangleSet_clone(const HandleBRepExtremaTriangleSet* self_) {
+    try { return {new HandleBRepExtremaTriangleSet(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepExtremaUnCompatibleShape_destructor(HandleBRepExtremaUnCompatibleShape* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepExtremaUnCompatibleShape*> HandleBRepExtremaUnCompatibleShape_clone(const HandleBRepExtremaUnCompatibleShape* self_) {
+    try { return {new HandleBRepExtremaUnCompatibleShape(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepTopAdaptorHVertex_destructor(HandleBRepTopAdaptorHVertex* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepTopAdaptorHVertex*> HandleBRepTopAdaptorHVertex_clone(const HandleBRepTopAdaptorHVertex* self_) {
+    try { return {new HandleBRepTopAdaptorHVertex(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBRepTopAdaptorTopolTool_destructor(HandleBRepTopAdaptorTopolTool* self_) { delete self_; }
+extern "C" OcctResult<HandleBRepTopAdaptorTopolTool*> HandleBRepTopAdaptorTopolTool_clone(const HandleBRepTopAdaptorTopolTool* self_) {
+    try { return {new HandleBRepTopAdaptorTopolTool(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBisectorBisecAna_destructor(HandleBisectorBisecAna* self_) { delete self_; }
+extern "C" OcctResult<HandleBisectorBisecAna*> HandleBisectorBisecAna_clone(const HandleBisectorBisecAna* self_) {
+    try { return {new HandleBisectorBisecAna(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBisectorBisecCC_destructor(HandleBisectorBisecCC* self_) { delete self_; }
+extern "C" OcctResult<HandleBisectorBisecCC*> HandleBisectorBisecCC_clone(const HandleBisectorBisecCC* self_) {
+    try { return {new HandleBisectorBisecCC(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBisectorBisecPC_destructor(HandleBisectorBisecPC* self_) { delete self_; }
+extern "C" OcctResult<HandleBisectorBisecPC*> HandleBisectorBisecPC_clone(const HandleBisectorBisecPC* self_) {
+    try { return {new HandleBisectorBisecPC(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleBisectorCurve_destructor(HandleBisectorCurve* self_) { delete self_; }
+extern "C" OcctResult<HandleBisectorCurve*> HandleBisectorCurve_clone(const HandleBisectorCurve* self_) {
+    try { return {new HandleBisectorCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleIntCurvesFaceIntersector_destructor(HandleIntCurvesFaceIntersector* self_) { delete self_; }
+extern "C" OcctResult<HandleIntCurvesFaceIntersector*> HandleIntCurvesFaceIntersector_clone(const HandleIntCurvesFaceIntersector* self_) {
+    try { return {new HandleIntCurvesFaceIntersector(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMAT2dCircuit_destructor(HandleMAT2dCircuit* self_) { delete self_; }
+extern "C" OcctResult<HandleMAT2dCircuit*> HandleMAT2dCircuit_clone(const HandleMAT2dCircuit* self_) {
+    try { return {new HandleMAT2dCircuit(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMAT2dConnexion_destructor(HandleMAT2dConnexion* self_) { delete self_; }
+extern "C" OcctResult<HandleMAT2dConnexion*> HandleMAT2dConnexion_clone(const HandleMAT2dConnexion* self_) {
+    try { return {new HandleMAT2dConnexion(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMATArc_destructor(HandleMATArc* self_) { delete self_; }
+extern "C" OcctResult<HandleMATArc*> HandleMATArc_clone(const HandleMATArc* self_) {
+    try { return {new HandleMATArc(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMATBasicElt_destructor(HandleMATBasicElt* self_) { delete self_; }
+extern "C" OcctResult<HandleMATBasicElt*> HandleMATBasicElt_clone(const HandleMATBasicElt* self_) {
+    try { return {new HandleMATBasicElt(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMATBisector_destructor(HandleMATBisector* self_) { delete self_; }
+extern "C" OcctResult<HandleMATBisector*> HandleMATBisector_clone(const HandleMATBisector* self_) {
+    try { return {new HandleMATBisector(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMATEdge_destructor(HandleMATEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleMATEdge*> HandleMATEdge_clone(const HandleMATEdge* self_) {
+    try { return {new HandleMATEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMATGraph_destructor(HandleMATGraph* self_) { delete self_; }
+extern "C" OcctResult<HandleMATGraph*> HandleMATGraph_clone(const HandleMATGraph* self_) {
+    try { return {new HandleMATGraph(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMATListOfBisector_destructor(HandleMATListOfBisector* self_) { delete self_; }
+extern "C" OcctResult<HandleMATListOfBisector*> HandleMATListOfBisector_clone(const HandleMATListOfBisector* self_) {
+    try { return {new HandleMATListOfBisector(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMATListOfEdge_destructor(HandleMATListOfEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleMATListOfEdge*> HandleMATListOfEdge_clone(const HandleMATListOfEdge* self_) {
+    try { return {new HandleMATListOfEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMATNode_destructor(HandleMATNode* self_) { delete self_; }
+extern "C" OcctResult<HandleMATNode*> HandleMATNode_clone(const HandleMATNode* self_) {
+    try { return {new HandleMATNode(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMATTListNodeOfListOfBisector_destructor(HandleMATTListNodeOfListOfBisector* self_) { delete self_; }
+extern "C" OcctResult<HandleMATTListNodeOfListOfBisector*> HandleMATTListNodeOfListOfBisector_clone(const HandleMATTListNodeOfListOfBisector* self_) {
+    try { return {new HandleMATTListNodeOfListOfBisector(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMATTListNodeOfListOfEdge_destructor(HandleMATTListNodeOfListOfEdge* self_) { delete self_; }
+extern "C" OcctResult<HandleMATTListNodeOfListOfEdge*> HandleMATTListNodeOfListOfEdge_clone(const HandleMATTListNodeOfListOfEdge* self_) {
+    try { return {new HandleMATTListNodeOfListOfEdge(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void HandleMATZone_destructor(HandleMATZone* self_) { delete self_; }
+extern "C" OcctResult<HandleMATZone*> HandleMATZone_clone(const HandleMATZone* self_) {
+    try { return {new HandleMATZone(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 // ========================
 // BRepApprox_Approx wrappers

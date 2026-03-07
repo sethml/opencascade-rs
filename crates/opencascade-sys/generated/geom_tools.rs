@@ -804,6 +804,14 @@ unsafe impl crate::CppDeletable for HandleGeomToolsUndefinedTypeHandler {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleGeomToolsUndefinedTypeHandler {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKGeomBase::HandleGeomToolsUndefinedTypeHandler_clone(ptr),
+        )
+    }
+}
+
 impl HandleGeomToolsUndefinedTypeHandler {
     /// Dereference this Handle to access the underlying GeomTools_UndefinedTypeHandler
     pub fn get(&self) -> &crate::ffi_types::GeomTools_UndefinedTypeHandler {

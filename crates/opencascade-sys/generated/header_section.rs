@@ -281,6 +281,14 @@ unsafe impl crate::CppDeletable for HandleHeaderSectionFileDescription {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleHeaderSectionFileDescription {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileDescription_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleHeaderSectionFileDescription {
     /// Dereference this Handle to access the underlying HeaderSection_FileDescription
     pub fn get(&self) -> &crate::ffi_types::HeaderSection_FileDescription {
@@ -710,6 +718,12 @@ unsafe impl crate::CppDeletable for HandleHeaderSectionFileName {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleHeaderSectionFileName {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileName_clone(ptr))
+    }
+}
+
 impl HandleHeaderSectionFileName {
     /// Dereference this Handle to access the underlying HeaderSection_FileName
     pub fn get(&self) -> &crate::ffi_types::HeaderSection_FileName {
@@ -972,6 +986,12 @@ pub use crate::ffi_types::HandleHeaderSectionFileSchema;
 unsafe impl crate::CppDeletable for HandleHeaderSectionFileSchema {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileSchema_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleHeaderSectionFileSchema {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileSchema_clone(ptr))
     }
 }
 
@@ -1450,6 +1470,12 @@ pub use crate::ffi_types::HandleHeaderSectionProtocol;
 unsafe impl crate::CppDeletable for HandleHeaderSectionProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDESTEP::HandleHeaderSectionProtocol_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleHeaderSectionProtocol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDESTEP::HandleHeaderSectionProtocol_clone(ptr))
     }
 }
 

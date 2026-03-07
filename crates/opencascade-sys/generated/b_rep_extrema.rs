@@ -2665,6 +2665,12 @@ unsafe impl crate::CppDeletable for HandleBRepExtremaTriangleSet {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepExtremaTriangleSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepExtremaTriangleSet_clone(ptr))
+    }
+}
+
 impl HandleBRepExtremaTriangleSet {
     /// Dereference this Handle to access the underlying BRepExtrema_TriangleSet
     pub fn get(&self) -> &crate::ffi_types::BRepExtrema_TriangleSet {
@@ -2992,6 +2998,14 @@ pub use crate::ffi_types::HandleBRepExtremaUnCompatibleShape;
 unsafe impl crate::CppDeletable for HandleBRepExtremaUnCompatibleShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleBRepExtremaUnCompatibleShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_clone(
+            ptr,
+        ))
     }
 }
 

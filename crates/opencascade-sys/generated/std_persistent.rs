@@ -511,6 +511,12 @@ unsafe impl crate::CppDeletable for HandleStdPersistentHArray1OfShape1 {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdPersistentHArray1OfShape1 {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKStd::HandleStdPersistentHArray1OfShape1_clone(ptr))
+    }
+}
+
 impl HandleStdPersistentHArray1OfShape1 {
     /// Dereference this Handle to access the underlying StdPersistent_HArray1OfShape1
     pub fn get(&self) -> &crate::ffi_types::StdPersistent_HArray1OfShape1 {
@@ -968,6 +974,12 @@ pub use crate::ffi_types::HandleStdPersistentNamingName;
 unsafe impl crate::CppDeletable for HandleStdPersistentNamingName {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKStd::HandleStdPersistentNamingName_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStdPersistentNamingName {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKStd::HandleStdPersistentNamingName_clone(ptr))
     }
 }
 
@@ -1555,6 +1567,12 @@ unsafe impl crate::CppDeletable for HandleStdPersistentTopLocDatum3D {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleStdPersistentTopLocDatum3D {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKStd::HandleStdPersistentTopLocDatum3D_clone(ptr))
+    }
+}
+
 impl HandleStdPersistentTopLocDatum3D {
     /// Dereference this Handle to access the underlying StdPersistent_TopLoc_Datum3D
     pub fn get(&self) -> &crate::ffi_types::StdPersistent_TopLoc_Datum3D {
@@ -1891,6 +1909,14 @@ pub use crate::ffi_types::HandleStdPersistentTopLocItemLocation;
 unsafe impl crate::CppDeletable for HandleStdPersistentTopLocItemLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKStd::HandleStdPersistentTopLocItemLocation_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleStdPersistentTopLocItemLocation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKStd::HandleStdPersistentTopLocItemLocation_clone(
+            ptr,
+        ))
     }
 }
 

@@ -76,6 +76,10 @@ extern "C" {
     pub fn HandleStdLDriversDocumentRetrievalDriver_destructor(
         self_: *mut HandleStdLDriversDocumentRetrievalDriver,
     );
+    /// Clone Handle<StdLDrivers_DocumentRetrievalDriver> (increments reference count)
+    pub fn HandleStdLDriversDocumentRetrievalDriver_clone(
+        self_: *const HandleStdLDriversDocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut HandleStdLDriversDocumentRetrievalDriver>;
     /// Dereference Handle to get *const StdLDrivers_DocumentRetrievalDriver
     pub fn HandleStdLDriversDocumentRetrievalDriver_get(
         handle: *const HandleStdLDriversDocumentRetrievalDriver,
@@ -192,6 +196,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdLPersistentData>;
     /// Destroy Handle<StdLPersistent_Data>
     pub fn HandleStdLPersistentData_destructor(self_: *mut HandleStdLPersistentData);
+    /// Clone Handle<StdLPersistent_Data> (increments reference count)
+    pub fn HandleStdLPersistentData_clone(
+        self_: *const HandleStdLPersistentData,
+    ) -> crate::OcctResult<*mut HandleStdLPersistentData>;
     /// Dereference Handle to get *const StdLPersistent_Data
     pub fn HandleStdLPersistentData_get(
         handle: *const HandleStdLPersistentData,
@@ -330,6 +338,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdLPersistentDocument>;
     /// Destroy Handle<StdLPersistent_Document>
     pub fn HandleStdLPersistentDocument_destructor(self_: *mut HandleStdLPersistentDocument);
+    /// Clone Handle<StdLPersistent_Document> (increments reference count)
+    pub fn HandleStdLPersistentDocument_clone(
+        self_: *const HandleStdLPersistentDocument,
+    ) -> crate::OcctResult<*mut HandleStdLPersistentDocument>;
     /// Dereference Handle to get *const StdLPersistent_Document
     pub fn HandleStdLPersistentDocument_get(
         handle: *const HandleStdLPersistentDocument,
@@ -504,6 +516,10 @@ extern "C" {
     pub fn HandleStdLPersistentHArray1OfPersistent_destructor(
         self_: *mut HandleStdLPersistentHArray1OfPersistent,
     );
+    /// Clone Handle<StdLPersistent_HArray1OfPersistent> (increments reference count)
+    pub fn HandleStdLPersistentHArray1OfPersistent_clone(
+        self_: *const HandleStdLPersistentHArray1OfPersistent,
+    ) -> crate::OcctResult<*mut HandleStdLPersistentHArray1OfPersistent>;
     /// Dereference Handle to get *const StdLPersistent_HArray1OfPersistent
     pub fn HandleStdLPersistentHArray1OfPersistent_get(
         handle: *const HandleStdLPersistentHArray1OfPersistent,
@@ -603,6 +619,10 @@ extern "C" {
     pub fn HandleStdLPersistentHArray2OfPersistent_destructor(
         self_: *mut HandleStdLPersistentHArray2OfPersistent,
     );
+    /// Clone Handle<StdLPersistent_HArray2OfPersistent> (increments reference count)
+    pub fn HandleStdLPersistentHArray2OfPersistent_clone(
+        self_: *const HandleStdLPersistentHArray2OfPersistent,
+    ) -> crate::OcctResult<*mut HandleStdLPersistentHArray2OfPersistent>;
     /// Dereference Handle to get *const StdLPersistent_HArray2OfPersistent
     pub fn HandleStdLPersistentHArray2OfPersistent_get(
         handle: *const HandleStdLPersistentHArray2OfPersistent,
@@ -981,6 +1001,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<StdObjMgt_Persistent>
     pub fn HandleStdObjMgtPersistent_destructor(self_: *mut HandleStdObjMgtPersistent);
+    /// Clone Handle<StdObjMgt_Persistent> (increments reference count)
+    pub fn HandleStdObjMgtPersistent_clone(
+        self_: *const HandleStdObjMgtPersistent,
+    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
     /// Dereference Handle to get *const StdObjMgt_Persistent
     pub fn HandleStdObjMgtPersistent_get(
         handle: *const HandleStdObjMgtPersistent,

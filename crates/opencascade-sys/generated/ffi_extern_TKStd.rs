@@ -171,6 +171,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPointRepresentation_destructor(
         self_: *mut HandleShapePersistentBRepPointRepresentation,
     );
+    /// Clone Handle<ShapePersistent_BRep_PointRepresentation> (increments reference count)
+    pub fn HandleShapePersistentBRepPointRepresentation_clone(
+        self_: *const HandleShapePersistentBRepPointRepresentation,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointRepresentation>;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointRepresentation
     pub fn HandleShapePersistentBRepPointRepresentation_get(
         handle: *const HandleShapePersistentBRepPointRepresentation,
@@ -297,6 +301,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPointOnCurve_destructor(
         self_: *mut HandleShapePersistentBRepPointOnCurve,
     );
+    /// Clone Handle<ShapePersistent_BRep_PointOnCurve> (increments reference count)
+    pub fn HandleShapePersistentBRepPointOnCurve_clone(
+        self_: *const HandleShapePersistentBRepPointOnCurve,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnCurve>;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointOnCurve
     pub fn HandleShapePersistentBRepPointOnCurve_get(
         handle: *const HandleShapePersistentBRepPointOnCurve,
@@ -369,6 +377,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPointOnCurveOnSurface_destructor(
         self_: *mut HandleShapePersistentBRepPointOnCurveOnSurface,
     );
+    /// Clone Handle<ShapePersistent_BRep_PointOnCurveOnSurface> (increments reference count)
+    pub fn HandleShapePersistentBRepPointOnCurveOnSurface_clone(
+        self_: *const HandleShapePersistentBRepPointOnCurveOnSurface,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnCurveOnSurface>;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointOnCurveOnSurface
     pub fn HandleShapePersistentBRepPointOnCurveOnSurface_get(
         handle: *const HandleShapePersistentBRepPointOnCurveOnSurface,
@@ -410,6 +422,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPointOnSurface_destructor(
         self_: *mut HandleShapePersistentBRepPointOnSurface,
     );
+    /// Clone Handle<ShapePersistent_BRep_PointOnSurface> (increments reference count)
+    pub fn HandleShapePersistentBRepPointOnSurface_clone(
+        self_: *const HandleShapePersistentBRepPointOnSurface,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnSurface>;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointOnSurface
     pub fn HandleShapePersistentBRepPointOnSurface_get(
         handle: *const HandleShapePersistentBRepPointOnSurface,
@@ -473,6 +489,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepCurveRepresentation_destructor(
         self_: *mut HandleShapePersistentBRepCurveRepresentation,
     );
+    /// Clone Handle<ShapePersistent_BRep_CurveRepresentation> (increments reference count)
+    pub fn HandleShapePersistentBRepCurveRepresentation_clone(
+        self_: *const HandleShapePersistentBRepCurveRepresentation,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveRepresentation>;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveRepresentation
     pub fn HandleShapePersistentBRepCurveRepresentation_get(
         handle: *const HandleShapePersistentBRepCurveRepresentation,
@@ -615,6 +635,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepCurve3D_destructor(
         self_: *mut HandleShapePersistentBRepCurve3D,
     );
+    /// Clone Handle<ShapePersistent_BRep_Curve3D> (increments reference count)
+    pub fn HandleShapePersistentBRepCurve3D_clone(
+        self_: *const HandleShapePersistentBRepCurve3D,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurve3D>;
     /// Dereference Handle to get *const ShapePersistent_BRep_Curve3D
     pub fn HandleShapePersistentBRepCurve3D_get(
         handle: *const HandleShapePersistentBRepCurve3D,
@@ -661,6 +685,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepCurveOnSurface_destructor(
         self_: *mut HandleShapePersistentBRepCurveOnSurface,
     );
+    /// Clone Handle<ShapePersistent_BRep_CurveOnSurface> (increments reference count)
+    pub fn HandleShapePersistentBRepCurveOnSurface_clone(
+        self_: *const HandleShapePersistentBRepCurveOnSurface,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOnSurface>;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveOnSurface
     pub fn HandleShapePersistentBRepCurveOnSurface_get(
         handle: *const HandleShapePersistentBRepCurveOnSurface,
@@ -707,6 +735,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepCurveOnClosedSurface_destructor(
         self_: *mut HandleShapePersistentBRepCurveOnClosedSurface,
     );
+    /// Clone Handle<ShapePersistent_BRep_CurveOnClosedSurface> (increments reference count)
+    pub fn HandleShapePersistentBRepCurveOnClosedSurface_clone(
+        self_: *const HandleShapePersistentBRepCurveOnClosedSurface,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOnClosedSurface>;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveOnClosedSurface
     pub fn HandleShapePersistentBRepCurveOnClosedSurface_get(
         handle: *const HandleShapePersistentBRepCurveOnClosedSurface,
@@ -751,6 +783,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPolygon3D_destructor(
         self_: *mut HandleShapePersistentBRepPolygon3D,
     );
+    /// Clone Handle<ShapePersistent_BRep_Polygon3D> (increments reference count)
+    pub fn HandleShapePersistentBRepPolygon3D_clone(
+        self_: *const HandleShapePersistentBRepPolygon3D,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygon3D>;
     /// Dereference Handle to get *const ShapePersistent_BRep_Polygon3D
     pub fn HandleShapePersistentBRepPolygon3D_get(
         handle: *const HandleShapePersistentBRepPolygon3D,
@@ -797,6 +833,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPolygonOnTriangulation_destructor(
         self_: *mut HandleShapePersistentBRepPolygonOnTriangulation,
     );
+    /// Clone Handle<ShapePersistent_BRep_PolygonOnTriangulation> (increments reference count)
+    pub fn HandleShapePersistentBRepPolygonOnTriangulation_clone(
+        self_: *const HandleShapePersistentBRepPolygonOnTriangulation,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnTriangulation>;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnTriangulation
     pub fn HandleShapePersistentBRepPolygonOnTriangulation_get(
         handle: *const HandleShapePersistentBRepPolygonOnTriangulation,
@@ -843,6 +883,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPolygonOnClosedTriangulation_destructor(
         self_: *mut HandleShapePersistentBRepPolygonOnClosedTriangulation,
     );
+    /// Clone Handle<ShapePersistent_BRep_PolygonOnClosedTriangulation> (increments reference count)
+    pub fn HandleShapePersistentBRepPolygonOnClosedTriangulation_clone(
+        self_: *const HandleShapePersistentBRepPolygonOnClosedTriangulation,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnClosedTriangulation>;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnClosedTriangulation
     pub fn HandleShapePersistentBRepPolygonOnClosedTriangulation_get(
         handle: *const HandleShapePersistentBRepPolygonOnClosedTriangulation,
@@ -889,6 +933,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPolygonOnSurface_destructor(
         self_: *mut HandleShapePersistentBRepPolygonOnSurface,
     );
+    /// Clone Handle<ShapePersistent_BRep_PolygonOnSurface> (increments reference count)
+    pub fn HandleShapePersistentBRepPolygonOnSurface_clone(
+        self_: *const HandleShapePersistentBRepPolygonOnSurface,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnSurface>;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnSurface
     pub fn HandleShapePersistentBRepPolygonOnSurface_get(
         handle: *const HandleShapePersistentBRepPolygonOnSurface,
@@ -935,6 +983,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPolygonOnClosedSurface_destructor(
         self_: *mut HandleShapePersistentBRepPolygonOnClosedSurface,
     );
+    /// Clone Handle<ShapePersistent_BRep_PolygonOnClosedSurface> (increments reference count)
+    pub fn HandleShapePersistentBRepPolygonOnClosedSurface_clone(
+        self_: *const HandleShapePersistentBRepPolygonOnClosedSurface,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnClosedSurface>;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnClosedSurface
     pub fn HandleShapePersistentBRepPolygonOnClosedSurface_get(
         handle: *const HandleShapePersistentBRepPolygonOnClosedSurface,
@@ -981,6 +1033,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepCurveOn2Surfaces_destructor(
         self_: *mut HandleShapePersistentBRepCurveOn2Surfaces,
     );
+    /// Clone Handle<ShapePersistent_BRep_CurveOn2Surfaces> (increments reference count)
+    pub fn HandleShapePersistentBRepCurveOn2Surfaces_clone(
+        self_: *const HandleShapePersistentBRepCurveOn2Surfaces,
+    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOn2Surfaces>;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveOn2Surfaces
     pub fn HandleShapePersistentBRepCurveOn2Surfaces_get(
         handle: *const HandleShapePersistentBRepCurveOn2Surfaces,
@@ -1051,6 +1107,10 @@ extern "C" {
     pub fn HandleShapePersistentGeomGeometry_destructor(
         self_: *mut HandleShapePersistentGeomGeometry,
     );
+    /// Clone Handle<ShapePersistent_Geom_Geometry> (increments reference count)
+    pub fn HandleShapePersistentGeomGeometry_clone(
+        self_: *const HandleShapePersistentGeomGeometry,
+    ) -> crate::OcctResult<*mut HandleShapePersistentGeomGeometry>;
     /// Dereference Handle to get *const ShapePersistent_Geom_Geometry
     pub fn HandleShapePersistentGeomGeometry_get(
         handle: *const HandleShapePersistentGeomGeometry,
@@ -1401,6 +1461,10 @@ extern "C" {
     pub fn HandleShapePersistentTopoDSHShape_destructor(
         self_: *mut HandleShapePersistentTopoDSHShape,
     );
+    /// Clone Handle<ShapePersistent_TopoDS_HShape> (increments reference count)
+    pub fn HandleShapePersistentTopoDSHShape_clone(
+        self_: *const HandleShapePersistentTopoDSHShape,
+    ) -> crate::OcctResult<*mut HandleShapePersistentTopoDSHShape>;
     /// Dereference Handle to get *const ShapePersistent_TopoDS_HShape
     pub fn HandleShapePersistentTopoDSHShape_get(
         handle: *const HandleShapePersistentTopoDSHShape,
@@ -1550,6 +1614,10 @@ extern "C" {
     pub fn HandleStdDriversDocumentRetrievalDriver_destructor(
         self_: *mut HandleStdDriversDocumentRetrievalDriver,
     );
+    /// Clone Handle<StdDrivers_DocumentRetrievalDriver> (increments reference count)
+    pub fn HandleStdDriversDocumentRetrievalDriver_clone(
+        self_: *const HandleStdDriversDocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut HandleStdDriversDocumentRetrievalDriver>;
     /// Dereference Handle to get *const StdDrivers_DocumentRetrievalDriver
     pub fn HandleStdDriversDocumentRetrievalDriver_get(
         handle: *const HandleStdDriversDocumentRetrievalDriver,
@@ -1802,6 +1870,10 @@ extern "C" {
     pub fn HandleStdPersistentHArray1OfShape1_destructor(
         self_: *mut HandleStdPersistentHArray1OfShape1,
     );
+    /// Clone Handle<StdPersistent_HArray1OfShape1> (increments reference count)
+    pub fn HandleStdPersistentHArray1OfShape1_clone(
+        self_: *const HandleStdPersistentHArray1OfShape1,
+    ) -> crate::OcctResult<*mut HandleStdPersistentHArray1OfShape1>;
     /// Dereference Handle to get *const StdPersistent_HArray1OfShape1
     pub fn HandleStdPersistentHArray1OfShape1_get(
         handle: *const HandleStdPersistentHArray1OfShape1,
@@ -1928,6 +2000,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdPersistentNamingName>;
     /// Destroy Handle<StdPersistent_Naming_Name>
     pub fn HandleStdPersistentNamingName_destructor(self_: *mut HandleStdPersistentNamingName);
+    /// Clone Handle<StdPersistent_Naming_Name> (increments reference count)
+    pub fn HandleStdPersistentNamingName_clone(
+        self_: *const HandleStdPersistentNamingName,
+    ) -> crate::OcctResult<*mut HandleStdPersistentNamingName>;
     /// Dereference Handle to get *const StdPersistent_Naming_Name
     pub fn HandleStdPersistentNamingName_get(
         handle: *const HandleStdPersistentNamingName,
@@ -2198,6 +2274,10 @@ extern "C" {
     pub fn HandleStdPersistentTopLocDatum3D_destructor(
         self_: *mut HandleStdPersistentTopLocDatum3D,
     );
+    /// Clone Handle<StdPersistent_TopLoc_Datum3D> (increments reference count)
+    pub fn HandleStdPersistentTopLocDatum3D_clone(
+        self_: *const HandleStdPersistentTopLocDatum3D,
+    ) -> crate::OcctResult<*mut HandleStdPersistentTopLocDatum3D>;
     /// Dereference Handle to get *const StdPersistent_TopLoc_Datum3D
     pub fn HandleStdPersistentTopLocDatum3D_get(
         handle: *const HandleStdPersistentTopLocDatum3D,
@@ -2260,6 +2340,10 @@ extern "C" {
     pub fn HandleStdPersistentTopLocItemLocation_destructor(
         self_: *mut HandleStdPersistentTopLocItemLocation,
     );
+    /// Clone Handle<StdPersistent_TopLoc_ItemLocation> (increments reference count)
+    pub fn HandleStdPersistentTopLocItemLocation_clone(
+        self_: *const HandleStdPersistentTopLocItemLocation,
+    ) -> crate::OcctResult<*mut HandleStdPersistentTopLocItemLocation>;
     /// Dereference Handle to get *const StdPersistent_TopLoc_ItemLocation
     pub fn HandleStdPersistentTopLocItemLocation_get(
         handle: *const HandleStdPersistentTopLocItemLocation,
@@ -2442,6 +2526,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdStorageData>;
     /// Destroy Handle<StdStorage_Data>
     pub fn HandleStdStorageData_destructor(self_: *mut HandleStdStorageData);
+    /// Clone Handle<StdStorage_Data> (increments reference count)
+    pub fn HandleStdStorageData_clone(
+        self_: *const HandleStdStorageData,
+    ) -> crate::OcctResult<*mut HandleStdStorageData>;
     /// Dereference Handle to get *const StdStorage_Data
     pub fn HandleStdStorageData_get(
         handle: *const HandleStdStorageData,
@@ -2539,6 +2627,10 @@ extern "C" {
     pub fn HandleStdStorageHSequenceOfRoots_destructor(
         self_: *mut HandleStdStorageHSequenceOfRoots,
     );
+    /// Clone Handle<StdStorage_HSequenceOfRoots> (increments reference count)
+    pub fn HandleStdStorageHSequenceOfRoots_clone(
+        self_: *const HandleStdStorageHSequenceOfRoots,
+    ) -> crate::OcctResult<*mut HandleStdStorageHSequenceOfRoots>;
     /// Dereference Handle to get *const StdStorage_HSequenceOfRoots
     pub fn HandleStdStorageHSequenceOfRoots_get(
         handle: *const HandleStdStorageHSequenceOfRoots,
@@ -2714,6 +2806,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdStorageHeaderData>;
     /// Destroy Handle<StdStorage_HeaderData>
     pub fn HandleStdStorageHeaderData_destructor(self_: *mut HandleStdStorageHeaderData);
+    /// Clone Handle<StdStorage_HeaderData> (increments reference count)
+    pub fn HandleStdStorageHeaderData_clone(
+        self_: *const HandleStdStorageHeaderData,
+    ) -> crate::OcctResult<*mut HandleStdStorageHeaderData>;
     /// Dereference Handle to get *const StdStorage_HeaderData
     pub fn HandleStdStorageHeaderData_get(
         handle: *const HandleStdStorageHeaderData,
@@ -2816,6 +2912,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdStorageRoot>;
     /// Destroy Handle<StdStorage_Root>
     pub fn HandleStdStorageRoot_destructor(self_: *mut HandleStdStorageRoot);
+    /// Clone Handle<StdStorage_Root> (increments reference count)
+    pub fn HandleStdStorageRoot_clone(
+        self_: *const HandleStdStorageRoot,
+    ) -> crate::OcctResult<*mut HandleStdStorageRoot>;
     /// Dereference Handle to get *const StdStorage_Root
     pub fn HandleStdStorageRoot_get(
         handle: *const HandleStdStorageRoot,
@@ -2934,6 +3034,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdStorageRootData>;
     /// Destroy Handle<StdStorage_RootData>
     pub fn HandleStdStorageRootData_destructor(self_: *mut HandleStdStorageRootData);
+    /// Clone Handle<StdStorage_RootData> (increments reference count)
+    pub fn HandleStdStorageRootData_clone(
+        self_: *const HandleStdStorageRootData,
+    ) -> crate::OcctResult<*mut HandleStdStorageRootData>;
     /// Dereference Handle to get *const StdStorage_RootData
     pub fn HandleStdStorageRootData_get(
         handle: *const HandleStdStorageRootData,
@@ -3063,6 +3167,10 @@ extern "C" {
     ) -> crate::OcctResult<*mut HandleStdStorageTypeData>;
     /// Destroy Handle<StdStorage_TypeData>
     pub fn HandleStdStorageTypeData_destructor(self_: *mut HandleStdStorageTypeData);
+    /// Clone Handle<StdStorage_TypeData> (increments reference count)
+    pub fn HandleStdStorageTypeData_clone(
+        self_: *const HandleStdStorageTypeData,
+    ) -> crate::OcctResult<*mut HandleStdStorageTypeData>;
     /// Dereference Handle to get *const StdStorage_TypeData
     pub fn HandleStdStorageTypeData_get(
         handle: *const HandleStdStorageTypeData,

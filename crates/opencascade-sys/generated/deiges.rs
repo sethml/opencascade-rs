@@ -412,6 +412,12 @@ unsafe impl crate::CppDeletable for HandleDEIGESConfigurationNode {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleDEIGESConfigurationNode {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleDEIGESConfigurationNode_clone(ptr))
+    }
+}
+
 impl HandleDEIGESConfigurationNode {
     /// Dereference this Handle to access the underlying DEIGES_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEIGES_ConfigurationNode {
@@ -905,6 +911,12 @@ pub use crate::ffi_types::HandleDEIGESProvider;
 unsafe impl crate::CppDeletable for HandleDEIGESProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleDEIGESProvider_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleDEIGESProvider {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleDEIGESProvider_clone(ptr))
     }
 }
 

@@ -21,6 +21,22 @@ unsafe impl crate::CppDeletable for IConicTool {
     }
 }
 
+unsafe impl crate::CppCopyable for IConicTool {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for IConicTool {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl IConicTool {
     /// **Source:** `IntCurve_IConicTool.hxx`:41 - `IntCurve_IConicTool::IntCurve_IConicTool()`
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -137,15 +153,6 @@ impl IConicTool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_find_parameter(self as *const Self, P)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 
@@ -1134,6 +1141,22 @@ unsafe impl crate::CppDeletable for PConic {
     }
 }
 
+unsafe impl crate::CppCopyable for PConic {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_clone(ptr))
+    }
+}
+
+impl std::borrow::ToOwned for PConic {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
 impl PConic {
     /// **Source:** `IntCurve_PConic.hxx`:42 - `IntCurve_PConic::IntCurve_PConic()`
     pub fn new_elips2d(E: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
@@ -1245,15 +1268,6 @@ impl PConic {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_param2(self as *const Self)
         })
-    }
-
-    /// Clone into a new OwnedPtr via copy constructor
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_to_owned(self as *const Self),
-            ))
-        }
     }
 }
 

@@ -950,6 +950,12 @@ unsafe impl crate::CppDeletable for HandleIGESBasicAssocGroupType {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicAssocGroupType {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicAssocGroupType_clone(ptr))
+    }
+}
+
 impl HandleIGESBasicAssocGroupType {
     /// Dereference this Handle to access the underlying IGESBasic_AssocGroupType
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_AssocGroupType {
@@ -1880,6 +1886,12 @@ pub use crate::ffi_types::HandleIGESBasicExternalRefFile;
 unsafe impl crate::CppDeletable for HandleIGESBasicExternalRefFile {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefFile_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESBasicExternalRefFile {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefFile_clone(ptr))
     }
 }
 
@@ -2833,6 +2845,14 @@ pub use crate::ffi_types::HandleIGESBasicExternalRefFileIndex;
 unsafe impl crate::CppDeletable for HandleIGESBasicExternalRefFileIndex {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefFileIndex_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESBasicExternalRefFileIndex {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefFileIndex_clone(
+            ptr,
+        ))
     }
 }
 
@@ -3791,6 +3811,14 @@ unsafe impl crate::CppDeletable for HandleIGESBasicExternalRefFileName {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicExternalRefFileName {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefFileName_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESBasicExternalRefFileName {
     /// Dereference this Handle to access the underlying IGESBasic_ExternalRefFileName
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_ExternalRefFileName {
@@ -4743,6 +4771,14 @@ unsafe impl crate::CppDeletable for HandleIGESBasicExternalRefLibName {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicExternalRefLibName {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefLibName_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESBasicExternalRefLibName {
     /// Dereference this Handle to access the underlying IGESBasic_ExternalRefLibName
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_ExternalRefLibName {
@@ -5680,6 +5716,12 @@ unsafe impl crate::CppDeletable for HandleIGESBasicExternalRefName {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicExternalRefName {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefName_clone(ptr))
+    }
+}
+
 impl HandleIGESBasicExternalRefName {
     /// Dereference this Handle to access the underlying IGESBasic_ExternalRefName
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_ExternalRefName {
@@ -6593,6 +6635,14 @@ unsafe impl crate::CppDeletable for HandleIGESBasicExternalReferenceFile {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicExternalReferenceFile {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalReferenceFile_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESBasicExternalReferenceFile {
     /// Dereference this Handle to access the underlying IGESBasic_ExternalReferenceFile
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_ExternalReferenceFile {
@@ -7235,6 +7285,12 @@ pub use crate::ffi_types::HandleIGESBasicGeneralModule;
 unsafe impl crate::CppDeletable for HandleIGESBasicGeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESBasicGeneralModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESBasicGeneralModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicGeneralModule_clone(ptr))
     }
 }
 
@@ -8214,6 +8270,12 @@ pub use crate::ffi_types::HandleIGESBasicGroup;
 unsafe impl crate::CppDeletable for HandleIGESBasicGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESBasicGroup_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESBasicGroup {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicGroup_clone(ptr))
     }
 }
 
@@ -9318,6 +9380,12 @@ unsafe impl crate::CppDeletable for HandleIGESBasicGroupWithoutBackP {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicGroupWithoutBackP {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicGroupWithoutBackP_clone(ptr))
+    }
+}
+
 impl HandleIGESBasicGroupWithoutBackP {
     /// Dereference this Handle to access the underlying IGESBasic_GroupWithoutBackP
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_GroupWithoutBackP {
@@ -9580,6 +9648,14 @@ unsafe impl crate::CppDeletable for HandleIGESBasicHArray1OfHArray1OfIGESEntity 
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfHArray1OfIGESEntity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfIGESEntity_clone(ptr),
+        )
+    }
+}
+
 impl HandleIGESBasicHArray1OfHArray1OfIGESEntity {
     /// Dereference this Handle to access the underlying IGESBasic_HArray1OfHArray1OfIGESEntity
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_HArray1OfHArray1OfIGESEntity {
@@ -9825,6 +9901,14 @@ unsafe impl crate::CppDeletable for HandleIGESBasicHArray1OfHArray1OfInteger {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfHArray1OfInteger {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfInteger_clone(ptr),
+        )
+    }
+}
+
 impl HandleIGESBasicHArray1OfHArray1OfInteger {
     /// Dereference this Handle to access the underlying IGESBasic_HArray1OfHArray1OfInteger
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_HArray1OfHArray1OfInteger {
@@ -10061,6 +10145,14 @@ pub use crate::ffi_types::HandleIGESBasicHArray1OfHArray1OfReal;
 unsafe impl crate::CppDeletable for HandleIGESBasicHArray1OfHArray1OfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfReal_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfHArray1OfReal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfReal_clone(ptr),
+        )
     }
 }
 
@@ -10307,6 +10399,14 @@ unsafe impl crate::CppDeletable for HandleIGESBasicHArray1OfHArray1OfXY {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfHArray1OfXY {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfXY_clone(
+            ptr,
+        ))
+    }
+}
+
 impl HandleIGESBasicHArray1OfHArray1OfXY {
     /// Dereference this Handle to access the underlying IGESBasic_HArray1OfHArray1OfXY
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_HArray1OfHArray1OfXY {
@@ -10543,6 +10643,14 @@ pub use crate::ffi_types::HandleIGESBasicHArray1OfHArray1OfXYZ;
 unsafe impl crate::CppDeletable for HandleIGESBasicHArray1OfHArray1OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfXYZ_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfHArray1OfXYZ {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfXYZ_clone(
+            ptr,
+        ))
     }
 }
 
@@ -10806,6 +10914,14 @@ unsafe impl crate::CppDeletable for HandleIGESBasicHArray1OfLineFontEntity {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfLineFontEntity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfLineFontEntity_clone(ptr),
+        )
+    }
+}
+
 impl HandleIGESBasicHArray1OfLineFontEntity {
     /// Dereference this Handle to access the underlying IGESBasic_HArray1OfLineFontEntity
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_HArray1OfLineFontEntity {
@@ -11049,6 +11165,14 @@ pub use crate::ffi_types::HandleIGESBasicHArray2OfHArray1OfReal;
 unsafe impl crate::CppDeletable for HandleIGESBasicHArray2OfHArray1OfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray2OfHArray1OfReal_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESBasicHArray2OfHArray1OfReal {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray2OfHArray1OfReal_clone(ptr),
+        )
     }
 }
 
@@ -12030,6 +12154,12 @@ unsafe impl crate::CppDeletable for HandleIGESBasicHierarchy {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicHierarchy {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicHierarchy_clone(ptr))
+    }
+}
+
 impl HandleIGESBasicHierarchy {
     /// Dereference this Handle to access the underlying IGESBasic_Hierarchy
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_Hierarchy {
@@ -12919,6 +13049,12 @@ pub use crate::ffi_types::HandleIGESBasicName;
 unsafe impl crate::CppDeletable for HandleIGESBasicName {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESBasicName_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESBasicName {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicName_clone(ptr))
     }
 }
 
@@ -13991,6 +14127,12 @@ unsafe impl crate::CppDeletable for HandleIGESBasicOrderedGroup {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicOrderedGroup {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicOrderedGroup_clone(ptr))
+    }
+}
+
 impl HandleIGESBasicOrderedGroup {
     /// Dereference this Handle to access the underlying IGESBasic_OrderedGroup
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_OrderedGroup {
@@ -14982,6 +15124,14 @@ unsafe impl crate::CppDeletable for HandleIGESBasicOrderedGroupWithoutBackP {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicOrderedGroupWithoutBackP {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicOrderedGroupWithoutBackP_clone(ptr),
+        )
+    }
+}
+
 impl HandleIGESBasicOrderedGroupWithoutBackP {
     /// Dereference this Handle to access the underlying IGESBasic_OrderedGroupWithoutBackP
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_OrderedGroupWithoutBackP {
@@ -15376,6 +15526,12 @@ unsafe impl crate::CppDeletable for HandleIGESBasicProtocol {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicProtocol {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicProtocol_clone(ptr))
+    }
+}
+
 impl HandleIGESBasicProtocol {
     /// Dereference this Handle to access the underlying IGESBasic_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_Protocol {
@@ -15751,6 +15907,12 @@ pub use crate::ffi_types::HandleIGESBasicReadWriteModule;
 unsafe impl crate::CppDeletable for HandleIGESBasicReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESBasicReadWriteModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESBasicReadWriteModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicReadWriteModule_clone(ptr))
     }
 }
 
@@ -16759,6 +16921,12 @@ unsafe impl crate::CppDeletable for HandleIGESBasicSingleParent {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicSingleParent {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicSingleParent_clone(ptr))
+    }
+}
+
 impl HandleIGESBasicSingleParent {
     /// Dereference this Handle to access the underlying IGESBasic_SingleParent
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_SingleParent {
@@ -17763,6 +17931,12 @@ unsafe impl crate::CppDeletable for HandleIGESBasicSingularSubfigure {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleIGESBasicSingularSubfigure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicSingularSubfigure_clone(ptr))
+    }
+}
+
 impl HandleIGESBasicSingularSubfigure {
     /// Dereference this Handle to access the underlying IGESBasic_SingularSubfigure
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_SingularSubfigure {
@@ -18028,6 +18202,12 @@ pub use crate::ffi_types::HandleIGESBasicSpecificModule;
 unsafe impl crate::CppDeletable for HandleIGESBasicSpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESBasicSpecificModule_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESBasicSpecificModule {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicSpecificModule_clone(ptr))
     }
 }
 
@@ -19018,6 +19198,12 @@ pub use crate::ffi_types::HandleIGESBasicSubfigureDef;
 unsafe impl crate::CppDeletable for HandleIGESBasicSubfigureDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKDEIGES::HandleIGESBasicSubfigureDef_destructor(ptr);
+    }
+}
+
+unsafe impl crate::CppCopyable for HandleIGESBasicSubfigureDef {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESBasicSubfigureDef_clone(ptr))
     }
 }
 

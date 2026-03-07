@@ -407,6 +407,12 @@ unsafe impl crate::CppDeletable for HandleBRepAlgoAsDes {
     }
 }
 
+unsafe impl crate::CppCopyable for HandleBRepAlgoAsDes {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKBool::HandleBRepAlgoAsDes_clone(ptr))
+    }
+}
+
 impl HandleBRepAlgoAsDes {
     /// Dereference this Handle to access the underlying BRepAlgo_AsDes
     pub fn get(&self) -> &crate::ffi_types::BRepAlgo_AsDes {

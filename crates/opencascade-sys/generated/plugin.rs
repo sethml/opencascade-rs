@@ -288,6 +288,12 @@ unsafe impl crate::CppDeletable for HandlePluginFailure {
     }
 }
 
+unsafe impl crate::CppCopyable for HandlePluginFailure {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        crate::check_result(crate::ffi_extern_TKernel::HandlePluginFailure_clone(ptr))
+    }
+}
+
 impl HandlePluginFailure {
     /// Dereference this Handle to access the underlying Plugin_Failure
     pub fn get(&self) -> &crate::ffi_types::Plugin_Failure {

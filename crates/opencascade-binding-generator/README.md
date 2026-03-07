@@ -66,8 +66,9 @@ let mirrored: OwnedPtr<Pnt> = p.mirrored_pnt(&origin);
 let rotated = p.rotated(&axis, std::f64::consts::FRAC_PI_2);
 let transformed = p.transformed(&trsf);
 
-// Copy into a new OwnedPtr
-let p_copy = p.to_owned();
+// Clone into a new OwnedPtr
+let p_copy = p.clone();
+
 ```
 
 ### Topology Types and Inheritance
@@ -89,7 +90,8 @@ let edge: OwnedPtr<Edge> = topo_ds::edge(&some_shape);       // const
 let face: OwnedPtr<Face> = topo_ds::face_mut(&mut shape);    // mutable
 
 // Copy semantics (TopoDS shapes are reference-counted internally)
-let shape_copy = shape.to_owned();
+let shape_copy = shape.clone();
+
 ```
 
 ### Primitive Shape Construction (Builder Pattern)
@@ -138,7 +140,7 @@ BRepBndLib::add(&shape, &mut bbox, true);
 
 ### Handle Types (Reference-Counted Smart Pointers)
 
-OCCT uses `Handle<T>` (an intrusive reference-counted pointer) for objects inheriting from `Standard_Transient`. The generator produces `to_handle()` to wrap an object, and upcast methods to convert between Handle types in the inheritance hierarchy.
+OCCT uses `Handle<T>` (an intrusive reference-counted pointer) for objects inheriting from `Standard_Transient`. The generator produces `to_handle()` to wrap an object, upcast methods to convert between Handle types in the inheritance hierarchy, and `Clone` / `ToOwned` support for copying handles.
 
 ```rust
 use opencascade_sys::geom::{BezierCurve, BSplineCurve};
@@ -147,6 +149,9 @@ use opencascade_sys::geom::{BezierCurve, BSplineCurve};
 let curve: OwnedPtr<BezierCurve> = /* ... */;
 let handle = BezierCurve::to_handle(curve);
 // handle is OwnedPtr<HandleGeomBezierCurve>
+
+// Clone a handle (invokes C++ copy constructor)
+let handle2 = handle.clone();
 
 // Methods that return Handles
 let copy = some_curve.copy();
@@ -353,9 +358,11 @@ All methods use extern "C" C++ wrapper functions, since there is no direct Rust�
 
 Classes inheriting from `Standard_Transient` get:
 - `ClassName::to_handle(obj)` — wrap in `Handle<T>`
+- `handle.clone()` — copy the handle (via C++ copy constructor)
 - `handle.to_handle_base()` — upcast Handle to base type
 - `handle.downcast_to_derived()` — type-checked downcast
 - `handle.get()` / `handle.get_mut()` — dereference handle to contained object
+
 
 ### Collection Types
 
