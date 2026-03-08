@@ -440,6 +440,11 @@ unsafe impl crate::CppCopyable for HandleExprAbsolute {
 }
 
 impl HandleExprAbsolute {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprAbsolute_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Absolute
     pub fn get(&self) -> &crate::ffi_types::Expr_Absolute {
         unsafe {
@@ -902,6 +907,11 @@ unsafe impl crate::CppCopyable for HandleExprArcCosine {
 }
 
 impl HandleExprArcCosine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprArcCosine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_ArcCosine
     pub fn get(&self) -> &crate::ffi_types::Expr_ArcCosine {
         unsafe {
@@ -1353,6 +1363,11 @@ unsafe impl crate::CppCopyable for HandleExprArcSine {
 }
 
 impl HandleExprArcSine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprArcSine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_ArcSine
     pub fn get(&self) -> &crate::ffi_types::Expr_ArcSine {
         unsafe {
@@ -1823,6 +1838,11 @@ unsafe impl crate::CppCopyable for HandleExprArcTangent {
 }
 
 impl HandleExprArcTangent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprArcTangent_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_ArcTangent
     pub fn get(&self) -> &crate::ffi_types::Expr_ArcTangent {
         unsafe {
@@ -2274,6 +2294,11 @@ unsafe impl crate::CppCopyable for HandleExprArgCosh {
 }
 
 impl HandleExprArgCosh {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprArgCosh_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_ArgCosh
     pub fn get(&self) -> &crate::ffi_types::Expr_ArgCosh {
         unsafe {
@@ -2725,6 +2750,11 @@ unsafe impl crate::CppCopyable for HandleExprArgSinh {
 }
 
 impl HandleExprArgSinh {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprArgSinh_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_ArgSinh
     pub fn get(&self) -> &crate::ffi_types::Expr_ArgSinh {
         unsafe {
@@ -3176,6 +3206,11 @@ unsafe impl crate::CppCopyable for HandleExprArgTanh {
 }
 
 impl HandleExprArgTanh {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprArgTanh_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_ArgTanh
     pub fn get(&self) -> &crate::ffi_types::Expr_ArgTanh {
         unsafe {
@@ -3644,6 +3679,13 @@ unsafe impl crate::CppCopyable for HandleExprBinaryExpression {
 }
 
 impl HandleExprBinaryExpression {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprBinaryExpression_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_BinaryExpression
     pub fn get(&self) -> &crate::ffi_types::Expr_BinaryExpression {
         unsafe {
@@ -4212,6 +4254,13 @@ unsafe impl crate::CppCopyable for HandleExprBinaryFunction {
 }
 
 impl HandleExprBinaryFunction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprBinaryFunction_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_BinaryFunction
     pub fn get(&self) -> &crate::ffi_types::Expr_BinaryFunction {
         unsafe {
@@ -4639,6 +4688,11 @@ unsafe impl crate::CppCopyable for HandleExprCosh {
 }
 
 impl HandleExprCosh {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprCosh_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Cosh
     pub fn get(&self) -> &crate::ffi_types::Expr_Cosh {
         unsafe {
@@ -5080,6 +5134,11 @@ unsafe impl crate::CppCopyable for HandleExprCosine {
 }
 
 impl HandleExprCosine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprCosine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Cosine
     pub fn get(&self) -> &crate::ffi_types::Expr_Cosine {
         unsafe {
@@ -5578,6 +5637,11 @@ unsafe impl crate::CppCopyable for HandleExprDifference {
 }
 
 impl HandleExprDifference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprDifference_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Difference
     pub fn get(&self) -> &crate::ffi_types::Expr_Difference {
         unsafe {
@@ -6006,6 +6070,11 @@ unsafe impl crate::CppCopyable for HandleExprDifferent {
 }
 
 impl HandleExprDifferent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprDifferent_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Different
     pub fn get(&self) -> &crate::ffi_types::Expr_Different {
         unsafe {
@@ -6493,6 +6562,11 @@ unsafe impl crate::CppCopyable for HandleExprDivision {
 }
 
 impl HandleExprDivision {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprDivision_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Division
     pub fn get(&self) -> &crate::ffi_types::Expr_Division {
         unsafe {
@@ -6892,6 +6966,11 @@ unsafe impl crate::CppCopyable for HandleExprEqual {
 }
 
 impl HandleExprEqual {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprEqual_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Equal
     pub fn get(&self) -> &crate::ffi_types::Expr_Equal {
         unsafe {
@@ -7364,6 +7443,11 @@ unsafe impl crate::CppCopyable for HandleExprExponential {
 }
 
 impl HandleExprExponential {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprExponential_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Exponential
     pub fn get(&self) -> &crate::ffi_types::Expr_Exponential {
         unsafe {
@@ -7864,6 +7948,11 @@ unsafe impl crate::CppCopyable for HandleExprExponentiate {
 }
 
 impl HandleExprExponentiate {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprExponentiate_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Exponentiate
     pub fn get(&self) -> &crate::ffi_types::Expr_Exponentiate {
         unsafe {
@@ -8205,6 +8294,11 @@ unsafe impl crate::CppCopyable for HandleExprExprFailure {
 }
 
 impl HandleExprExprFailure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprExprFailure_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_ExprFailure
     pub fn get(&self) -> &crate::ffi_types::Expr_ExprFailure {
         unsafe {
@@ -8702,6 +8796,13 @@ unsafe impl crate::CppCopyable for HandleExprFunctionDerivative {
 }
 
 impl HandleExprFunctionDerivative {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprFunctionDerivative_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_FunctionDerivative
     pub fn get(&self) -> &crate::ffi_types::Expr_FunctionDerivative {
         unsafe {
@@ -9107,6 +9208,13 @@ unsafe impl crate::CppCopyable for HandleExprGeneralExpression {
 }
 
 impl HandleExprGeneralExpression {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprGeneralExpression_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_GeneralExpression
     pub fn get(&self) -> &crate::ffi_types::Expr_GeneralExpression {
         unsafe {
@@ -9993,6 +10101,13 @@ unsafe impl crate::CppCopyable for HandleExprGeneralFunction {
 }
 
 impl HandleExprGeneralFunction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprGeneralFunction_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_GeneralFunction
     pub fn get(&self) -> &crate::ffi_types::Expr_GeneralFunction {
         unsafe {
@@ -10326,6 +10441,13 @@ unsafe impl crate::CppCopyable for HandleExprGeneralRelation {
 }
 
 impl HandleExprGeneralRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprGeneralRelation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_GeneralRelation
     pub fn get(&self) -> &crate::ffi_types::Expr_GeneralRelation {
         unsafe {
@@ -10864,6 +10986,11 @@ unsafe impl crate::CppCopyable for HandleExprGreaterThan {
 }
 
 impl HandleExprGreaterThan {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprGreaterThan_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_GreaterThan
     pub fn get(&self) -> &crate::ffi_types::Expr_GreaterThan {
         unsafe {
@@ -11302,6 +11429,13 @@ unsafe impl crate::CppCopyable for HandleExprGreaterThanOrEqual {
 }
 
 impl HandleExprGreaterThanOrEqual {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprGreaterThanOrEqual_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_GreaterThanOrEqual
     pub fn get(&self) -> &crate::ffi_types::Expr_GreaterThanOrEqual {
         unsafe {
@@ -11665,6 +11799,13 @@ unsafe impl crate::CppCopyable for HandleExprInvalidAssignment {
 }
 
 impl HandleExprInvalidAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprInvalidAssignment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_InvalidAssignment
     pub fn get(&self) -> &crate::ffi_types::Expr_InvalidAssignment {
         unsafe {
@@ -12032,6 +12173,13 @@ unsafe impl crate::CppCopyable for HandleExprInvalidFunction {
 }
 
 impl HandleExprInvalidFunction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprInvalidFunction_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_InvalidFunction
     pub fn get(&self) -> &crate::ffi_types::Expr_InvalidFunction {
         unsafe {
@@ -12397,6 +12545,13 @@ unsafe impl crate::CppCopyable for HandleExprInvalidOperand {
 }
 
 impl HandleExprInvalidOperand {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprInvalidOperand_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_InvalidOperand
     pub fn get(&self) -> &crate::ffi_types::Expr_InvalidOperand {
         unsafe {
@@ -12818,6 +12973,11 @@ unsafe impl crate::CppCopyable for HandleExprLessThan {
 }
 
 impl HandleExprLessThan {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprLessThan_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_LessThan
     pub fn get(&self) -> &crate::ffi_types::Expr_LessThan {
         unsafe {
@@ -13254,6 +13414,13 @@ unsafe impl crate::CppCopyable for HandleExprLessThanOrEqual {
 }
 
 impl HandleExprLessThanOrEqual {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprLessThanOrEqual_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_LessThanOrEqual
     pub fn get(&self) -> &crate::ffi_types::Expr_LessThanOrEqual {
         unsafe {
@@ -13705,6 +13872,11 @@ unsafe impl crate::CppCopyable for HandleExprLogOf10 {
 }
 
 impl HandleExprLogOf10 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprLogOf10_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_LogOf10
     pub fn get(&self) -> &crate::ffi_types::Expr_LogOf10 {
         unsafe {
@@ -14146,6 +14318,11 @@ unsafe impl crate::CppCopyable for HandleExprLogOfe {
 }
 
 impl HandleExprLogOfe {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprLogOfe_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_LogOfe
     pub fn get(&self) -> &crate::ffi_types::Expr_LogOfe {
         unsafe {
@@ -14633,6 +14810,11 @@ unsafe impl crate::CppCopyable for HandleExprNamedConstant {
 }
 
 impl HandleExprNamedConstant {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprNamedConstant_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_NamedConstant
     pub fn get(&self) -> &crate::ffi_types::Expr_NamedConstant {
         unsafe {
@@ -15072,6 +15254,13 @@ unsafe impl crate::CppCopyable for HandleExprNamedExpression {
 }
 
 impl HandleExprNamedExpression {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprNamedExpression_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_NamedExpression
     pub fn get(&self) -> &crate::ffi_types::Expr_NamedExpression {
         unsafe {
@@ -15491,6 +15680,11 @@ unsafe impl crate::CppCopyable for HandleExprNamedFunction {
 }
 
 impl HandleExprNamedFunction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprNamedFunction_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_NamedFunction
     pub fn get(&self) -> &crate::ffi_types::Expr_NamedFunction {
         unsafe {
@@ -15988,6 +16182,11 @@ unsafe impl crate::CppCopyable for HandleExprNamedUnknown {
 }
 
 impl HandleExprNamedUnknown {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprNamedUnknown_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_NamedUnknown
     pub fn get(&self) -> &crate::ffi_types::Expr_NamedUnknown {
         unsafe {
@@ -16351,6 +16550,11 @@ unsafe impl crate::CppCopyable for HandleExprNotAssigned {
 }
 
 impl HandleExprNotAssigned {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprNotAssigned_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_NotAssigned
     pub fn get(&self) -> &crate::ffi_types::Expr_NotAssigned {
         unsafe {
@@ -16714,6 +16918,11 @@ unsafe impl crate::CppCopyable for HandleExprNotEvaluable {
 }
 
 impl HandleExprNotEvaluable {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprNotEvaluable_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_NotEvaluable
     pub fn get(&self) -> &crate::ffi_types::Expr_NotEvaluable {
         unsafe {
@@ -17153,6 +17362,11 @@ unsafe impl crate::CppCopyable for HandleExprNumericValue {
 }
 
 impl HandleExprNumericValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprNumericValue_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_NumericValue
     pub fn get(&self) -> &crate::ffi_types::Expr_NumericValue {
         unsafe {
@@ -17584,6 +17798,13 @@ unsafe impl crate::CppCopyable for HandleExprPolyExpression {
 }
 
 impl HandleExprPolyExpression {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprPolyExpression_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_PolyExpression
     pub fn get(&self) -> &crate::ffi_types::Expr_PolyExpression {
         unsafe {
@@ -18115,6 +18336,11 @@ unsafe impl crate::CppCopyable for HandleExprPolyFunction {
 }
 
 impl HandleExprPolyFunction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprPolyFunction_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_PolyFunction
     pub fn get(&self) -> &crate::ffi_types::Expr_PolyFunction {
         unsafe {
@@ -18591,6 +18817,11 @@ unsafe impl crate::CppCopyable for HandleExprProduct {
 }
 
 impl HandleExprProduct {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprProduct_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Product
     pub fn get(&self) -> &crate::ffi_types::Expr_Product {
         unsafe {
@@ -19133,6 +19364,11 @@ unsafe impl crate::CppCopyable for HandleExprSign {
 }
 
 impl HandleExprSign {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprSign_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Sign
     pub fn get(&self) -> &crate::ffi_types::Expr_Sign {
         unsafe {
@@ -19564,6 +19800,11 @@ unsafe impl crate::CppCopyable for HandleExprSine {
 }
 
 impl HandleExprSine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprSine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Sine
     pub fn get(&self) -> &crate::ffi_types::Expr_Sine {
         unsafe {
@@ -19950,6 +20191,13 @@ unsafe impl crate::CppCopyable for HandleExprSingleRelation {
 }
 
 impl HandleExprSingleRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprSingleRelation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_SingleRelation
     pub fn get(&self) -> &crate::ffi_types::Expr_SingleRelation {
         unsafe {
@@ -20470,6 +20718,11 @@ unsafe impl crate::CppCopyable for HandleExprSinh {
 }
 
 impl HandleExprSinh {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprSinh_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Sinh
     pub fn get(&self) -> &crate::ffi_types::Expr_Sinh {
         unsafe {
@@ -20911,6 +21164,11 @@ unsafe impl crate::CppCopyable for HandleExprSquare {
 }
 
 impl HandleExprSquare {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprSquare_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Square
     pub fn get(&self) -> &crate::ffi_types::Expr_Square {
         unsafe {
@@ -21381,6 +21639,11 @@ unsafe impl crate::CppCopyable for HandleExprSquareRoot {
 }
 
 impl HandleExprSquareRoot {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprSquareRoot_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_SquareRoot
     pub fn get(&self) -> &crate::ffi_types::Expr_SquareRoot {
         unsafe {
@@ -21830,6 +22093,11 @@ unsafe impl crate::CppCopyable for HandleExprSum {
 }
 
 impl HandleExprSum {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprSum_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Sum
     pub fn get(&self) -> &crate::ffi_types::Expr_Sum {
         unsafe {
@@ -22213,6 +22481,13 @@ unsafe impl crate::CppCopyable for HandleExprSystemRelation {
 }
 
 impl HandleExprSystemRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprSystemRelation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_SystemRelation
     pub fn get(&self) -> &crate::ffi_types::Expr_SystemRelation {
         unsafe {
@@ -22651,6 +22926,11 @@ unsafe impl crate::CppCopyable for HandleExprTangent {
 }
 
 impl HandleExprTangent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprTangent_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Tangent
     pub fn get(&self) -> &crate::ffi_types::Expr_Tangent {
         unsafe {
@@ -23082,6 +23362,11 @@ unsafe impl crate::CppCopyable for HandleExprTanh {
 }
 
 impl HandleExprTanh {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprTanh_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_Tanh
     pub fn get(&self) -> &crate::ffi_types::Expr_Tanh {
         unsafe {
@@ -23517,6 +23802,13 @@ unsafe impl crate::CppCopyable for HandleExprUnaryExpression {
 }
 
 impl HandleExprUnaryExpression {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprUnaryExpression_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Expr_UnaryExpression
     pub fn get(&self) -> &crate::ffi_types::Expr_UnaryExpression {
         unsafe {
@@ -24358,6 +24650,11 @@ unsafe impl crate::CppCopyable for HandleExprUnaryFunction {
 }
 
 impl HandleExprUnaryFunction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprUnaryFunction_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_UnaryFunction
     pub fn get(&self) -> &crate::ffi_types::Expr_UnaryFunction {
         unsafe {
@@ -24830,6 +25127,11 @@ unsafe impl crate::CppCopyable for HandleExprUnaryMinus {
 }
 
 impl HandleExprUnaryMinus {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprUnaryMinus_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Expr_UnaryMinus
     pub fn get(&self) -> &crate::ffi_types::Expr_UnaryMinus {
         unsafe {

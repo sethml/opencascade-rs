@@ -86,6 +86,10 @@ extern "C" {
     pub fn HandleXmlDriversDocumentRetrievalDriver_clone(
         self_: *const HandleXmlDriversDocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut HandleXmlDriversDocumentRetrievalDriver>;
+    /// Check if Handle<XmlDrivers_DocumentRetrievalDriver> is null
+    pub fn HandleXmlDriversDocumentRetrievalDriver_is_null(
+        self_: *const HandleXmlDriversDocumentRetrievalDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlDrivers_DocumentRetrievalDriver
     pub fn HandleXmlDriversDocumentRetrievalDriver_get(
         handle: *const HandleXmlDriversDocumentRetrievalDriver,
@@ -240,6 +244,10 @@ extern "C" {
     pub fn HandleXmlDriversDocumentStorageDriver_clone(
         self_: *const HandleXmlDriversDocumentStorageDriver,
     ) -> crate::OcctResult<*mut HandleXmlDriversDocumentStorageDriver>;
+    /// Check if Handle<XmlDrivers_DocumentStorageDriver> is null
+    pub fn HandleXmlDriversDocumentStorageDriver_is_null(
+        self_: *const HandleXmlDriversDocumentStorageDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlDrivers_DocumentStorageDriver
     pub fn HandleXmlDriversDocumentStorageDriver_get(
         handle: *const HandleXmlDriversDocumentStorageDriver,
@@ -398,6 +406,10 @@ extern "C" {
     pub fn HandleXmlMDataXtdConstraintDriver_clone(
         self_: *const HandleXmlMDataXtdConstraintDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataXtdConstraintDriver>;
+    /// Check if Handle<XmlMDataXtd_ConstraintDriver> is null
+    pub fn HandleXmlMDataXtdConstraintDriver_is_null(
+        self_: *const HandleXmlMDataXtdConstraintDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_ConstraintDriver
     pub fn HandleXmlMDataXtdConstraintDriver_get(
         handle: *const HandleXmlMDataXtdConstraintDriver,
@@ -523,6 +535,10 @@ extern "C" {
     pub fn HandleXmlMDataXtdGeometryDriver_clone(
         self_: *const HandleXmlMDataXtdGeometryDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataXtdGeometryDriver>;
+    /// Check if Handle<XmlMDataXtd_GeometryDriver> is null
+    pub fn HandleXmlMDataXtdGeometryDriver_is_null(
+        self_: *const HandleXmlMDataXtdGeometryDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_GeometryDriver
     pub fn HandleXmlMDataXtdGeometryDriver_get(
         handle: *const HandleXmlMDataXtdGeometryDriver,
@@ -650,6 +666,10 @@ extern "C" {
     pub fn HandleXmlMDataXtdPatternStdDriver_clone(
         self_: *const HandleXmlMDataXtdPatternStdDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataXtdPatternStdDriver>;
+    /// Check if Handle<XmlMDataXtd_PatternStdDriver> is null
+    pub fn HandleXmlMDataXtdPatternStdDriver_is_null(
+        self_: *const HandleXmlMDataXtdPatternStdDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_PatternStdDriver
     pub fn HandleXmlMDataXtdPatternStdDriver_get(
         handle: *const HandleXmlMDataXtdPatternStdDriver,
@@ -775,6 +795,10 @@ extern "C" {
     pub fn HandleXmlMDataXtdPositionDriver_clone(
         self_: *const HandleXmlMDataXtdPositionDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataXtdPositionDriver>;
+    /// Check if Handle<XmlMDataXtd_PositionDriver> is null
+    pub fn HandleXmlMDataXtdPositionDriver_is_null(
+        self_: *const HandleXmlMDataXtdPositionDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_PositionDriver
     pub fn HandleXmlMDataXtdPositionDriver_get(
         handle: *const HandleXmlMDataXtdPositionDriver,
@@ -903,6 +927,10 @@ extern "C" {
     pub fn HandleXmlMDataXtdPresentationDriver_clone(
         self_: *const HandleXmlMDataXtdPresentationDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataXtdPresentationDriver>;
+    /// Check if Handle<XmlMDataXtd_PresentationDriver> is null
+    pub fn HandleXmlMDataXtdPresentationDriver_is_null(
+        self_: *const HandleXmlMDataXtdPresentationDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_PresentationDriver
     pub fn HandleXmlMDataXtdPresentationDriver_get(
         handle: *const HandleXmlMDataXtdPresentationDriver,
@@ -1031,6 +1059,10 @@ extern "C" {
     pub fn HandleXmlMDataXtdTriangulationDriver_clone(
         self_: *const HandleXmlMDataXtdTriangulationDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataXtdTriangulationDriver>;
+    /// Check if Handle<XmlMDataXtd_TriangulationDriver> is null
+    pub fn HandleXmlMDataXtdTriangulationDriver_is_null(
+        self_: *const HandleXmlMDataXtdTriangulationDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_TriangulationDriver
     pub fn HandleXmlMDataXtdTriangulationDriver_get(
         handle: *const HandleXmlMDataXtdTriangulationDriver,
@@ -1179,6 +1211,10 @@ extern "C" {
     pub fn HandleXmlMNamingNamedShapeDriver_clone(
         self_: *const HandleXmlMNamingNamedShapeDriver,
     ) -> crate::OcctResult<*mut HandleXmlMNamingNamedShapeDriver>;
+    /// Check if Handle<XmlMNaming_NamedShapeDriver> is null
+    pub fn HandleXmlMNamingNamedShapeDriver_is_null(
+        self_: *const HandleXmlMNamingNamedShapeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMNaming_NamedShapeDriver
     pub fn HandleXmlMNamingNamedShapeDriver_get(
         handle: *const HandleXmlMNamingNamedShapeDriver,
@@ -1304,6 +1340,9 @@ extern "C" {
     pub fn HandleXmlMNamingNamingDriver_clone(
         self_: *const HandleXmlMNamingNamingDriver,
     ) -> crate::OcctResult<*mut HandleXmlMNamingNamingDriver>;
+    /// Check if Handle<XmlMNaming_NamingDriver> is null
+    pub fn HandleXmlMNamingNamingDriver_is_null(self_: *const HandleXmlMNamingNamingDriver)
+        -> bool;
     /// Dereference Handle to get *const XmlMNaming_NamingDriver
     pub fn HandleXmlMNamingNamingDriver_get(
         handle: *const HandleXmlMNamingNamingDriver,

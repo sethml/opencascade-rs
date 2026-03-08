@@ -314,6 +314,15 @@ unsafe impl crate::CppCopyable for HandleStdDriversDocumentRetrievalDriver {
 }
 
 impl HandleStdDriversDocumentRetrievalDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleStdDriversDocumentRetrievalDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdDrivers_DocumentRetrievalDriver
     pub fn get(&self) -> &crate::ffi_types::StdDrivers_DocumentRetrievalDriver {
         unsafe {

@@ -1372,6 +1372,11 @@ unsafe impl crate::CppCopyable for HandleFSDBinaryFile {
 }
 
 impl HandleFSDBinaryFile {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleFSDBinaryFile_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying FSD_BinaryFile
     pub fn get(&self) -> &crate::ffi_types::FSD_BinaryFile {
         unsafe {
@@ -2301,6 +2306,11 @@ unsafe impl crate::CppCopyable for HandleFSDCmpFile {
 }
 
 impl HandleFSDCmpFile {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleFSDCmpFile_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying FSD_CmpFile
     pub fn get(&self) -> &crate::ffi_types::FSD_CmpFile {
         unsafe {
@@ -3294,6 +3304,11 @@ unsafe impl crate::CppCopyable for HandleFSDFile {
 }
 
 impl HandleFSDFile {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleFSDFile_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying FSD_File
     pub fn get(&self) -> &crate::ffi_types::FSD_File {
         unsafe {

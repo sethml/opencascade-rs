@@ -308,6 +308,13 @@ unsafe impl crate::CppCopyable for HandleStdFailInfiniteSolutions {
 }
 
 impl HandleStdFailInfiniteSolutions {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdFail_InfiniteSolutions
     pub fn get(&self) -> &crate::ffi_types::StdFail_InfiniteSolutions {
         unsafe {
@@ -626,6 +633,11 @@ unsafe impl crate::CppCopyable for HandleStdFailNotDone {
 }
 
 impl HandleStdFailNotDone {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStdFailNotDone_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdFail_NotDone
     pub fn get(&self) -> &crate::ffi_types::StdFail_NotDone {
         unsafe {
@@ -950,6 +962,11 @@ unsafe impl crate::CppCopyable for HandleStdFailUndefined {
 }
 
 impl HandleStdFailUndefined {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStdFailUndefined_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdFail_Undefined
     pub fn get(&self) -> &crate::ffi_types::StdFail_Undefined {
         unsafe {
@@ -1312,6 +1329,13 @@ unsafe impl crate::CppCopyable for HandleStdFailUndefinedDerivative {
 }
 
 impl HandleStdFailUndefinedDerivative {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdFail_UndefinedDerivative
     pub fn get(&self) -> &crate::ffi_types::StdFail_UndefinedDerivative {
         unsafe {
@@ -1669,6 +1693,13 @@ unsafe impl crate::CppCopyable for HandleStdFailUndefinedValue {
 }
 
 impl HandleStdFailUndefinedValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdFail_UndefinedValue
     pub fn get(&self) -> &crate::ffi_types::StdFail_UndefinedValue {
         unsafe {

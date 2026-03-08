@@ -504,6 +504,11 @@ unsafe impl crate::CppCopyable for HandleIMeshToolsContext {
 }
 
 impl HandleIMeshToolsContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleIMeshToolsContext_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IMeshTools_Context
     pub fn get(&self) -> &crate::ffi_types::IMeshTools_Context {
         unsafe {
@@ -751,6 +756,13 @@ unsafe impl crate::CppCopyable for HandleIMeshToolsCurveTessellator {
 }
 
 impl HandleIMeshToolsCurveTessellator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsCurveTessellator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IMeshTools_CurveTessellator
     pub fn get(&self) -> &crate::ffi_types::IMeshTools_CurveTessellator {
         unsafe {
@@ -979,6 +991,11 @@ unsafe impl crate::CppCopyable for HandleIMeshToolsMeshAlgo {
 }
 
 impl HandleIMeshToolsMeshAlgo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleIMeshToolsMeshAlgo_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IMeshTools_MeshAlgo
     pub fn get(&self) -> &crate::ffi_types::IMeshTools_MeshAlgo {
         unsafe {
@@ -1234,6 +1251,13 @@ unsafe impl crate::CppCopyable for HandleIMeshToolsMeshAlgoFactory {
 }
 
 impl HandleIMeshToolsMeshAlgoFactory {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsMeshAlgoFactory_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IMeshTools_MeshAlgoFactory
     pub fn get(&self) -> &crate::ffi_types::IMeshTools_MeshAlgoFactory {
         unsafe {
@@ -1677,6 +1701,13 @@ unsafe impl crate::CppCopyable for HandleIMeshToolsMeshBuilder {
 }
 
 impl HandleIMeshToolsMeshBuilder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsMeshBuilder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IMeshTools_MeshBuilder
     pub fn get(&self) -> &crate::ffi_types::IMeshTools_MeshBuilder {
         unsafe {
@@ -1888,6 +1919,11 @@ unsafe impl crate::CppCopyable for HandleIMeshToolsModelAlgo {
 }
 
 impl HandleIMeshToolsModelAlgo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleIMeshToolsModelAlgo_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IMeshTools_ModelAlgo
     pub fn get(&self) -> &crate::ffi_types::IMeshTools_ModelAlgo {
         unsafe {
@@ -2328,6 +2364,13 @@ unsafe impl crate::CppCopyable for HandleIMeshToolsModelBuilder {
 }
 
 impl HandleIMeshToolsModelBuilder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsModelBuilder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IMeshTools_ModelBuilder
     pub fn get(&self) -> &crate::ffi_types::IMeshTools_ModelBuilder {
         unsafe {
@@ -2648,6 +2691,13 @@ unsafe impl crate::CppCopyable for HandleIMeshToolsShapeExplorer {
 }
 
 impl HandleIMeshToolsShapeExplorer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsShapeExplorer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IMeshTools_ShapeExplorer
     pub fn get(&self) -> &crate::ffi_types::IMeshTools_ShapeExplorer {
         unsafe {
@@ -2859,6 +2909,13 @@ unsafe impl crate::CppCopyable for HandleIMeshToolsShapeVisitor {
 }
 
 impl HandleIMeshToolsShapeVisitor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsShapeVisitor_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IMeshTools_ShapeVisitor
     pub fn get(&self) -> &crate::ffi_types::IMeshTools_ShapeVisitor {
         unsafe {

@@ -312,6 +312,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdAsciiStringDriver {
 }
 
 impl HandleXmlMDataStdAsciiStringDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdAsciiStringDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_AsciiStringDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_AsciiStringDriver {
         unsafe {
@@ -640,6 +649,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdBooleanArrayDriver {
 }
 
 impl HandleXmlMDataStdBooleanArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdBooleanArrayDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_BooleanArrayDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_BooleanArrayDriver {
         unsafe {
@@ -968,6 +986,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdBooleanListDriver {
 }
 
 impl HandleXmlMDataStdBooleanListDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdBooleanListDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_BooleanListDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_BooleanListDriver {
         unsafe {
@@ -1298,6 +1325,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdByteArrayDriver {
 }
 
 impl HandleXmlMDataStdByteArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdByteArrayDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_ByteArrayDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_ByteArrayDriver {
         unsafe {
@@ -1629,6 +1663,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdExpressionDriver {
 }
 
 impl HandleXmlMDataStdExpressionDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdExpressionDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_ExpressionDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_ExpressionDriver {
         unsafe {
@@ -1956,6 +1997,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdExtStringArrayDriver {
 }
 
 impl HandleXmlMDataStdExtStringArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdExtStringArrayDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_ExtStringArrayDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_ExtStringArrayDriver {
         unsafe {
@@ -2282,6 +2332,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdExtStringListDriver {
 }
 
 impl HandleXmlMDataStdExtStringListDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdExtStringListDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_ExtStringListDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_ExtStringListDriver {
         unsafe {
@@ -2608,6 +2667,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdGenericEmptyDriver {
 }
 
 impl HandleXmlMDataStdGenericEmptyDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdGenericEmptyDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_GenericEmptyDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_GenericEmptyDriver {
         unsafe {
@@ -2925,6 +2993,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdGenericExtStringDriver {
 }
 
 impl HandleXmlMDataStdGenericExtStringDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdGenericExtStringDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_GenericExtStringDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_GenericExtStringDriver {
         unsafe {
@@ -3254,6 +3331,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdIntPackedMapDriver {
 }
 
 impl HandleXmlMDataStdIntPackedMapDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntPackedMapDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_IntPackedMapDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_IntPackedMapDriver {
         unsafe {
@@ -3581,6 +3667,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdIntegerArrayDriver {
 }
 
 impl HandleXmlMDataStdIntegerArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerArrayDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_IntegerArrayDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_IntegerArrayDriver {
         unsafe {
@@ -3908,6 +4003,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdIntegerDriver {
 }
 
 impl HandleXmlMDataStdIntegerDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_IntegerDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_IntegerDriver {
         unsafe {
@@ -4240,6 +4342,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdIntegerListDriver {
 }
 
 impl HandleXmlMDataStdIntegerListDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerListDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_IntegerListDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_IntegerListDriver {
         unsafe {
@@ -4570,6 +4681,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdNamedDataDriver {
 }
 
 impl HandleXmlMDataStdNamedDataDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdNamedDataDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_NamedDataDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_NamedDataDriver {
         unsafe {
@@ -4901,6 +5019,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdRealArrayDriver {
 }
 
 impl HandleXmlMDataStdRealArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealArrayDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_RealArrayDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_RealArrayDriver {
         unsafe {
@@ -5224,6 +5349,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdRealDriver {
 }
 
 impl HandleXmlMDataStdRealDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_RealDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_RealDriver {
         unsafe {
@@ -5554,6 +5686,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdRealListDriver {
 }
 
 impl HandleXmlMDataStdRealListDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealListDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_RealListDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_RealListDriver {
         unsafe {
@@ -5880,6 +6019,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdReferenceArrayDriver {
 }
 
 impl HandleXmlMDataStdReferenceArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdReferenceArrayDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_ReferenceArrayDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_ReferenceArrayDriver {
         unsafe {
@@ -6206,6 +6354,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdReferenceListDriver {
 }
 
 impl HandleXmlMDataStdReferenceListDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdReferenceListDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_ReferenceListDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_ReferenceListDriver {
         unsafe {
@@ -6533,6 +6690,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdTreeNodeDriver {
 }
 
 impl HandleXmlMDataStdTreeNodeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdTreeNodeDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_TreeNodeDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_TreeNodeDriver {
         unsafe {
@@ -6864,6 +7028,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdUAttributeDriver {
 }
 
 impl HandleXmlMDataStdUAttributeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdUAttributeDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_UAttributeDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_UAttributeDriver {
         unsafe {
@@ -7193,6 +7364,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataStdVariableDriver {
 }
 
 impl HandleXmlMDataStdVariableDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdVariableDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataStd_VariableDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataStd_VariableDriver {
         unsafe {

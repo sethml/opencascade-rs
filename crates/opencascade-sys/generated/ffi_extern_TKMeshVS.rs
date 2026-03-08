@@ -102,6 +102,10 @@ extern "C" {
     pub fn HandleMeshVSCommonSensitiveEntity_clone(
         self_: *const HandleMeshVSCommonSensitiveEntity,
     ) -> crate::OcctResult<*mut HandleMeshVSCommonSensitiveEntity>;
+    /// Check if Handle<MeshVS_CommonSensitiveEntity> is null
+    pub fn HandleMeshVSCommonSensitiveEntity_is_null(
+        self_: *const HandleMeshVSCommonSensitiveEntity,
+    ) -> bool;
     /// Dereference Handle to get *const MeshVS_CommonSensitiveEntity
     pub fn HandleMeshVSCommonSensitiveEntity_get(
         handle: *const HandleMeshVSCommonSensitiveEntity,
@@ -377,6 +381,8 @@ extern "C" {
     pub fn HandleMeshVSDataSource_clone(
         self_: *const HandleMeshVSDataSource,
     ) -> crate::OcctResult<*mut HandleMeshVSDataSource>;
+    /// Check if Handle<MeshVS_DataSource> is null
+    pub fn HandleMeshVSDataSource_is_null(self_: *const HandleMeshVSDataSource) -> bool;
     /// Dereference Handle to get *const MeshVS_DataSource
     pub fn HandleMeshVSDataSource_get(
         handle: *const HandleMeshVSDataSource,
@@ -477,6 +483,8 @@ extern "C" {
     pub fn HandleMeshVSDataSource3D_clone(
         self_: *const HandleMeshVSDataSource3D,
     ) -> crate::OcctResult<*mut HandleMeshVSDataSource3D>;
+    /// Check if Handle<MeshVS_DataSource3D> is null
+    pub fn HandleMeshVSDataSource3D_is_null(self_: *const HandleMeshVSDataSource3D) -> bool;
     /// Dereference Handle to get *const MeshVS_DataSource3D
     pub fn HandleMeshVSDataSource3D_get(
         handle: *const HandleMeshVSDataSource3D,
@@ -720,6 +728,10 @@ extern "C" {
     pub fn HandleMeshVSDeformedDataSource_clone(
         self_: *const HandleMeshVSDeformedDataSource,
     ) -> crate::OcctResult<*mut HandleMeshVSDeformedDataSource>;
+    /// Check if Handle<MeshVS_DeformedDataSource> is null
+    pub fn HandleMeshVSDeformedDataSource_is_null(
+        self_: *const HandleMeshVSDeformedDataSource,
+    ) -> bool;
     /// Dereference Handle to get *const MeshVS_DeformedDataSource
     pub fn HandleMeshVSDeformedDataSource_get(
         handle: *const HandleMeshVSDeformedDataSource,
@@ -953,6 +965,8 @@ extern "C" {
     pub fn HandleMeshVSDrawer_clone(
         self_: *const HandleMeshVSDrawer,
     ) -> crate::OcctResult<*mut HandleMeshVSDrawer>;
+    /// Check if Handle<MeshVS_Drawer> is null
+    pub fn HandleMeshVSDrawer_is_null(self_: *const HandleMeshVSDrawer) -> bool;
     /// Dereference Handle to get *const MeshVS_Drawer
     pub fn HandleMeshVSDrawer_get(
         handle: *const HandleMeshVSDrawer,
@@ -1074,6 +1088,10 @@ extern "C" {
     pub fn HandleMeshVSDummySensitiveEntity_clone(
         self_: *const HandleMeshVSDummySensitiveEntity,
     ) -> crate::OcctResult<*mut HandleMeshVSDummySensitiveEntity>;
+    /// Check if Handle<MeshVS_DummySensitiveEntity> is null
+    pub fn HandleMeshVSDummySensitiveEntity_is_null(
+        self_: *const HandleMeshVSDummySensitiveEntity,
+    ) -> bool;
     /// Dereference Handle to get *const MeshVS_DummySensitiveEntity
     pub fn HandleMeshVSDummySensitiveEntity_get(
         handle: *const HandleMeshVSDummySensitiveEntity,
@@ -1272,6 +1290,10 @@ extern "C" {
     pub fn HandleMeshVSElementalColorPrsBuilder_clone(
         self_: *const HandleMeshVSElementalColorPrsBuilder,
     ) -> crate::OcctResult<*mut HandleMeshVSElementalColorPrsBuilder>;
+    /// Check if Handle<MeshVS_ElementalColorPrsBuilder> is null
+    pub fn HandleMeshVSElementalColorPrsBuilder_is_null(
+        self_: *const HandleMeshVSElementalColorPrsBuilder,
+    ) -> bool;
     /// Dereference Handle to get *const MeshVS_ElementalColorPrsBuilder
     pub fn HandleMeshVSElementalColorPrsBuilder_get(
         handle: *const HandleMeshVSElementalColorPrsBuilder,
@@ -1452,6 +1474,10 @@ extern "C" {
     pub fn HandleMeshVSHArray1OfSequenceOfInteger_clone(
         self_: *const HandleMeshVSHArray1OfSequenceOfInteger,
     ) -> crate::OcctResult<*mut HandleMeshVSHArray1OfSequenceOfInteger>;
+    /// Check if Handle<MeshVS_HArray1OfSequenceOfInteger> is null
+    pub fn HandleMeshVSHArray1OfSequenceOfInteger_is_null(
+        self_: *const HandleMeshVSHArray1OfSequenceOfInteger,
+    ) -> bool;
     /// Dereference Handle to get *const MeshVS_HArray1OfSequenceOfInteger
     pub fn HandleMeshVSHArray1OfSequenceOfInteger_get(
         handle: *const HandleMeshVSHArray1OfSequenceOfInteger,
@@ -1719,6 +1745,8 @@ extern "C" {
     pub fn HandleMeshVSMesh_clone(
         self_: *const HandleMeshVSMesh,
     ) -> crate::OcctResult<*mut HandleMeshVSMesh>;
+    /// Check if Handle<MeshVS_Mesh> is null
+    pub fn HandleMeshVSMesh_is_null(self_: *const HandleMeshVSMesh) -> bool;
     /// Dereference Handle to get *const MeshVS_Mesh
     pub fn HandleMeshVSMesh_get(
         handle: *const HandleMeshVSMesh,
@@ -2335,6 +2363,8 @@ extern "C" {
     pub fn HandleMeshVSMeshEntityOwner_clone(
         self_: *const HandleMeshVSMeshEntityOwner,
     ) -> crate::OcctResult<*mut HandleMeshVSMeshEntityOwner>;
+    /// Check if Handle<MeshVS_MeshEntityOwner> is null
+    pub fn HandleMeshVSMeshEntityOwner_is_null(self_: *const HandleMeshVSMeshEntityOwner) -> bool;
     /// Dereference Handle to get *const MeshVS_MeshEntityOwner
     pub fn HandleMeshVSMeshEntityOwner_get(
         handle: *const HandleMeshVSMeshEntityOwner,
@@ -2573,6 +2603,8 @@ extern "C" {
     pub fn HandleMeshVSMeshOwner_clone(
         self_: *const HandleMeshVSMeshOwner,
     ) -> crate::OcctResult<*mut HandleMeshVSMeshOwner>;
+    /// Check if Handle<MeshVS_MeshOwner> is null
+    pub fn HandleMeshVSMeshOwner_is_null(self_: *const HandleMeshVSMeshOwner) -> bool;
     /// Dereference Handle to get *const MeshVS_MeshOwner
     pub fn HandleMeshVSMeshOwner_get(
         handle: *const HandleMeshVSMeshOwner,
@@ -2821,6 +2853,8 @@ extern "C" {
     pub fn HandleMeshVSMeshPrsBuilder_clone(
         self_: *const HandleMeshVSMeshPrsBuilder,
     ) -> crate::OcctResult<*mut HandleMeshVSMeshPrsBuilder>;
+    /// Check if Handle<MeshVS_MeshPrsBuilder> is null
+    pub fn HandleMeshVSMeshPrsBuilder_is_null(self_: *const HandleMeshVSMeshPrsBuilder) -> bool;
     /// Dereference Handle to get *const MeshVS_MeshPrsBuilder
     pub fn HandleMeshVSMeshPrsBuilder_get(
         handle: *const HandleMeshVSMeshPrsBuilder,
@@ -3074,6 +3108,10 @@ extern "C" {
     pub fn HandleMeshVSNodalColorPrsBuilder_clone(
         self_: *const HandleMeshVSNodalColorPrsBuilder,
     ) -> crate::OcctResult<*mut HandleMeshVSNodalColorPrsBuilder>;
+    /// Check if Handle<MeshVS_NodalColorPrsBuilder> is null
+    pub fn HandleMeshVSNodalColorPrsBuilder_is_null(
+        self_: *const HandleMeshVSNodalColorPrsBuilder,
+    ) -> bool;
     /// Dereference Handle to get *const MeshVS_NodalColorPrsBuilder
     pub fn HandleMeshVSNodalColorPrsBuilder_get(
         handle: *const HandleMeshVSNodalColorPrsBuilder,
@@ -3283,6 +3321,8 @@ extern "C" {
     pub fn HandleMeshVSPrsBuilder_clone(
         self_: *const HandleMeshVSPrsBuilder,
     ) -> crate::OcctResult<*mut HandleMeshVSPrsBuilder>;
+    /// Check if Handle<MeshVS_PrsBuilder> is null
+    pub fn HandleMeshVSPrsBuilder_is_null(self_: *const HandleMeshVSPrsBuilder) -> bool;
     /// Dereference Handle to get *const MeshVS_PrsBuilder
     pub fn HandleMeshVSPrsBuilder_get(
         handle: *const HandleMeshVSPrsBuilder,
@@ -3395,6 +3435,8 @@ extern "C" {
     pub fn HandleMeshVSSensitiveFace_clone(
         self_: *const HandleMeshVSSensitiveFace,
     ) -> crate::OcctResult<*mut HandleMeshVSSensitiveFace>;
+    /// Check if Handle<MeshVS_SensitiveFace> is null
+    pub fn HandleMeshVSSensitiveFace_is_null(self_: *const HandleMeshVSSensitiveFace) -> bool;
     /// Dereference Handle to get *const MeshVS_SensitiveFace
     pub fn HandleMeshVSSensitiveFace_get(
         handle: *const HandleMeshVSSensitiveFace,
@@ -3586,6 +3628,8 @@ extern "C" {
     pub fn HandleMeshVSSensitiveMesh_clone(
         self_: *const HandleMeshVSSensitiveMesh,
     ) -> crate::OcctResult<*mut HandleMeshVSSensitiveMesh>;
+    /// Check if Handle<MeshVS_SensitiveMesh> is null
+    pub fn HandleMeshVSSensitiveMesh_is_null(self_: *const HandleMeshVSSensitiveMesh) -> bool;
     /// Dereference Handle to get *const MeshVS_SensitiveMesh
     pub fn HandleMeshVSSensitiveMesh_get(
         handle: *const HandleMeshVSSensitiveMesh,
@@ -3744,6 +3788,10 @@ extern "C" {
     pub fn HandleMeshVSSensitivePolyhedron_clone(
         self_: *const HandleMeshVSSensitivePolyhedron,
     ) -> crate::OcctResult<*mut HandleMeshVSSensitivePolyhedron>;
+    /// Check if Handle<MeshVS_SensitivePolyhedron> is null
+    pub fn HandleMeshVSSensitivePolyhedron_is_null(
+        self_: *const HandleMeshVSSensitivePolyhedron,
+    ) -> bool;
     /// Dereference Handle to get *const MeshVS_SensitivePolyhedron
     pub fn HandleMeshVSSensitivePolyhedron_get(
         handle: *const HandleMeshVSSensitivePolyhedron,
@@ -3908,6 +3956,8 @@ extern "C" {
     pub fn HandleMeshVSSensitiveQuad_clone(
         self_: *const HandleMeshVSSensitiveQuad,
     ) -> crate::OcctResult<*mut HandleMeshVSSensitiveQuad>;
+    /// Check if Handle<MeshVS_SensitiveQuad> is null
+    pub fn HandleMeshVSSensitiveQuad_is_null(self_: *const HandleMeshVSSensitiveQuad) -> bool;
     /// Dereference Handle to get *const MeshVS_SensitiveQuad
     pub fn HandleMeshVSSensitiveQuad_get(
         handle: *const HandleMeshVSSensitiveQuad,
@@ -4052,6 +4102,9 @@ extern "C" {
     pub fn HandleMeshVSSensitiveSegment_clone(
         self_: *const HandleMeshVSSensitiveSegment,
     ) -> crate::OcctResult<*mut HandleMeshVSSensitiveSegment>;
+    /// Check if Handle<MeshVS_SensitiveSegment> is null
+    pub fn HandleMeshVSSensitiveSegment_is_null(self_: *const HandleMeshVSSensitiveSegment)
+        -> bool;
     /// Dereference Handle to get *const MeshVS_SensitiveSegment
     pub fn HandleMeshVSSensitiveSegment_get(
         handle: *const HandleMeshVSSensitiveSegment,
@@ -4275,6 +4328,8 @@ extern "C" {
     pub fn HandleMeshVSTextPrsBuilder_clone(
         self_: *const HandleMeshVSTextPrsBuilder,
     ) -> crate::OcctResult<*mut HandleMeshVSTextPrsBuilder>;
+    /// Check if Handle<MeshVS_TextPrsBuilder> is null
+    pub fn HandleMeshVSTextPrsBuilder_is_null(self_: *const HandleMeshVSTextPrsBuilder) -> bool;
     /// Dereference Handle to get *const MeshVS_TextPrsBuilder
     pub fn HandleMeshVSTextPrsBuilder_get(
         handle: *const HandleMeshVSTextPrsBuilder,
@@ -4557,6 +4612,9 @@ extern "C" {
     pub fn HandleMeshVSVectorPrsBuilder_clone(
         self_: *const HandleMeshVSVectorPrsBuilder,
     ) -> crate::OcctResult<*mut HandleMeshVSVectorPrsBuilder>;
+    /// Check if Handle<MeshVS_VectorPrsBuilder> is null
+    pub fn HandleMeshVSVectorPrsBuilder_is_null(self_: *const HandleMeshVSVectorPrsBuilder)
+        -> bool;
     /// Dereference Handle to get *const MeshVS_VectorPrsBuilder
     pub fn HandleMeshVSVectorPrsBuilder_get(
         handle: *const HandleMeshVSVectorPrsBuilder,

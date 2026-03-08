@@ -957,6 +957,13 @@ unsafe impl crate::CppCopyable for HandleIGESBasicAssocGroupType {
 }
 
 impl HandleIGESBasicAssocGroupType {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicAssocGroupType_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_AssocGroupType
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_AssocGroupType {
         unsafe {
@@ -1896,6 +1903,13 @@ unsafe impl crate::CppCopyable for HandleIGESBasicExternalRefFile {
 }
 
 impl HandleIGESBasicExternalRefFile {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefFile_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_ExternalRefFile
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_ExternalRefFile {
         unsafe {
@@ -2857,6 +2871,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicExternalRefFileIndex {
 }
 
 impl HandleIGESBasicExternalRefFileIndex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefFileIndex_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_ExternalRefFileIndex
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_ExternalRefFileIndex {
         unsafe {
@@ -3820,6 +3843,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicExternalRefFileName {
 }
 
 impl HandleIGESBasicExternalRefFileName {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefFileName_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_ExternalRefFileName
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_ExternalRefFileName {
         unsafe {
@@ -4780,6 +4812,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicExternalRefLibName {
 }
 
 impl HandleIGESBasicExternalRefLibName {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefLibName_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_ExternalRefLibName
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_ExternalRefLibName {
         unsafe {
@@ -5723,6 +5764,13 @@ unsafe impl crate::CppCopyable for HandleIGESBasicExternalRefName {
 }
 
 impl HandleIGESBasicExternalRefName {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalRefName_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_ExternalRefName
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_ExternalRefName {
         unsafe {
@@ -6644,6 +6692,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicExternalReferenceFile {
 }
 
 impl HandleIGESBasicExternalReferenceFile {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicExternalReferenceFile_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_ExternalReferenceFile
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_ExternalReferenceFile {
         unsafe {
@@ -7295,6 +7352,13 @@ unsafe impl crate::CppCopyable for HandleIGESBasicGeneralModule {
 }
 
 impl HandleIGESBasicGeneralModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicGeneralModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_GeneralModule {
         unsafe {
@@ -8280,6 +8344,11 @@ unsafe impl crate::CppCopyable for HandleIGESBasicGroup {
 }
 
 impl HandleIGESBasicGroup {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESBasicGroup_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_Group
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_Group {
         unsafe {
@@ -9387,6 +9456,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicGroupWithoutBackP {
 }
 
 impl HandleIGESBasicGroupWithoutBackP {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicGroupWithoutBackP_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_GroupWithoutBackP
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_GroupWithoutBackP {
         unsafe {
@@ -9657,6 +9735,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfHArray1OfIGESEntity {
 }
 
 impl HandleIGESBasicHArray1OfHArray1OfIGESEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfIGESEntity_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_HArray1OfHArray1OfIGESEntity
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_HArray1OfHArray1OfIGESEntity {
         unsafe {
@@ -9910,6 +9997,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfHArray1OfInteger {
 }
 
 impl HandleIGESBasicHArray1OfHArray1OfInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfInteger_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_HArray1OfHArray1OfInteger
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_HArray1OfHArray1OfInteger {
         unsafe {
@@ -10157,6 +10253,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfHArray1OfReal {
 }
 
 impl HandleIGESBasicHArray1OfHArray1OfReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfReal_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_HArray1OfHArray1OfReal
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_HArray1OfHArray1OfReal {
         unsafe {
@@ -10408,6 +10513,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfHArray1OfXY {
 }
 
 impl HandleIGESBasicHArray1OfHArray1OfXY {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfXY_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_HArray1OfHArray1OfXY
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_HArray1OfHArray1OfXY {
         unsafe {
@@ -10655,6 +10769,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfHArray1OfXYZ {
 }
 
 impl HandleIGESBasicHArray1OfHArray1OfXYZ {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfHArray1OfXYZ_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_HArray1OfHArray1OfXYZ
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_HArray1OfHArray1OfXYZ {
         unsafe {
@@ -10923,6 +11046,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicHArray1OfLineFontEntity {
 }
 
 impl HandleIGESBasicHArray1OfLineFontEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray1OfLineFontEntity_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_HArray1OfLineFontEntity
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_HArray1OfLineFontEntity {
         unsafe {
@@ -11177,6 +11309,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicHArray2OfHArray1OfReal {
 }
 
 impl HandleIGESBasicHArray2OfHArray1OfReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicHArray2OfHArray1OfReal_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_HArray2OfHArray1OfReal
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_HArray2OfHArray1OfReal {
         unsafe {
@@ -12161,6 +12302,11 @@ unsafe impl crate::CppCopyable for HandleIGESBasicHierarchy {
 }
 
 impl HandleIGESBasicHierarchy {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESBasicHierarchy_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_Hierarchy
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_Hierarchy {
         unsafe {
@@ -13059,6 +13205,11 @@ unsafe impl crate::CppCopyable for HandleIGESBasicName {
 }
 
 impl HandleIGESBasicName {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESBasicName_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_Name
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_Name {
         unsafe {
@@ -14134,6 +14285,13 @@ unsafe impl crate::CppCopyable for HandleIGESBasicOrderedGroup {
 }
 
 impl HandleIGESBasicOrderedGroup {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicOrderedGroup_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_OrderedGroup
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_OrderedGroup {
         unsafe {
@@ -15133,6 +15291,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicOrderedGroupWithoutBackP {
 }
 
 impl HandleIGESBasicOrderedGroupWithoutBackP {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicOrderedGroupWithoutBackP_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_OrderedGroupWithoutBackP
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_OrderedGroupWithoutBackP {
         unsafe {
@@ -15533,6 +15700,11 @@ unsafe impl crate::CppCopyable for HandleIGESBasicProtocol {
 }
 
 impl HandleIGESBasicProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESBasicProtocol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_Protocol {
         unsafe {
@@ -15917,6 +16089,13 @@ unsafe impl crate::CppCopyable for HandleIGESBasicReadWriteModule {
 }
 
 impl HandleIGESBasicReadWriteModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicReadWriteModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_ReadWriteModule
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_ReadWriteModule {
         unsafe {
@@ -16928,6 +17107,13 @@ unsafe impl crate::CppCopyable for HandleIGESBasicSingleParent {
 }
 
 impl HandleIGESBasicSingleParent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicSingleParent_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_SingleParent
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_SingleParent {
         unsafe {
@@ -17938,6 +18124,15 @@ unsafe impl crate::CppCopyable for HandleIGESBasicSingularSubfigure {
 }
 
 impl HandleIGESBasicSingularSubfigure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicSingularSubfigure_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_SingularSubfigure
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_SingularSubfigure {
         unsafe {
@@ -18212,6 +18407,13 @@ unsafe impl crate::CppCopyable for HandleIGESBasicSpecificModule {
 }
 
 impl HandleIGESBasicSpecificModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicSpecificModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_SpecificModule
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_SpecificModule {
         unsafe {
@@ -19208,6 +19410,13 @@ unsafe impl crate::CppCopyable for HandleIGESBasicSubfigureDef {
 }
 
 impl HandleIGESBasicSubfigureDef {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESBasicSubfigureDef_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESBasic_SubfigureDef
     pub fn get(&self) -> &crate::ffi_types::IGESBasic_SubfigureDef {
         unsafe {

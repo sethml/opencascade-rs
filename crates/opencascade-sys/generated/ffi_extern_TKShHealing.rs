@@ -136,6 +136,9 @@ extern "C" {
     pub fn HandleShapeAlgoAlgoContainer_clone(
         self_: *const HandleShapeAlgoAlgoContainer,
     ) -> crate::OcctResult<*mut HandleShapeAlgoAlgoContainer>;
+    /// Check if Handle<ShapeAlgo_AlgoContainer> is null
+    pub fn HandleShapeAlgoAlgoContainer_is_null(self_: *const HandleShapeAlgoAlgoContainer)
+        -> bool;
     /// Dereference Handle to get *const ShapeAlgo_AlgoContainer
     pub fn HandleShapeAlgoAlgoContainer_get(
         handle: *const HandleShapeAlgoAlgoContainer,
@@ -217,6 +220,9 @@ extern "C" {
     pub fn HandleShapeAlgoToolContainer_clone(
         self_: *const HandleShapeAlgoToolContainer,
     ) -> crate::OcctResult<*mut HandleShapeAlgoToolContainer>;
+    /// Check if Handle<ShapeAlgo_ToolContainer> is null
+    pub fn HandleShapeAlgoToolContainer_is_null(self_: *const HandleShapeAlgoToolContainer)
+        -> bool;
     /// Dereference Handle to get *const ShapeAlgo_ToolContainer
     pub fn HandleShapeAlgoToolContainer_get(
         handle: *const HandleShapeAlgoToolContainer,
@@ -999,6 +1005,10 @@ extern "C" {
     pub fn HandleShapeAnalysisFreeBoundData_clone(
         self_: *const HandleShapeAnalysisFreeBoundData,
     ) -> crate::OcctResult<*mut HandleShapeAnalysisFreeBoundData>;
+    /// Check if Handle<ShapeAnalysis_FreeBoundData> is null
+    pub fn HandleShapeAnalysisFreeBoundData_is_null(
+        self_: *const HandleShapeAnalysisFreeBoundData,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeAnalysis_FreeBoundData
     pub fn HandleShapeAnalysisFreeBoundData_get(
         handle: *const HandleShapeAnalysisFreeBoundData,
@@ -1295,6 +1305,10 @@ extern "C" {
     pub fn HandleShapeAnalysisHSequenceOfFreeBounds_clone(
         self_: *const HandleShapeAnalysisHSequenceOfFreeBounds,
     ) -> crate::OcctResult<*mut HandleShapeAnalysisHSequenceOfFreeBounds>;
+    /// Check if Handle<ShapeAnalysis_HSequenceOfFreeBounds> is null
+    pub fn HandleShapeAnalysisHSequenceOfFreeBounds_is_null(
+        self_: *const HandleShapeAnalysisHSequenceOfFreeBounds,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeAnalysis_HSequenceOfFreeBounds
     pub fn HandleShapeAnalysisHSequenceOfFreeBounds_get(
         handle: *const HandleShapeAnalysisHSequenceOfFreeBounds,
@@ -1847,6 +1861,8 @@ extern "C" {
     pub fn HandleShapeAnalysisSurface_clone(
         self_: *const HandleShapeAnalysisSurface,
     ) -> crate::OcctResult<*mut HandleShapeAnalysisSurface>;
+    /// Check if Handle<ShapeAnalysis_Surface> is null
+    pub fn HandleShapeAnalysisSurface_is_null(self_: *const HandleShapeAnalysisSurface) -> bool;
     /// Dereference Handle to get *const ShapeAnalysis_Surface
     pub fn HandleShapeAnalysisSurface_get(
         handle: *const HandleShapeAnalysisSurface,
@@ -1966,6 +1982,10 @@ extern "C" {
     pub fn HandleShapeAnalysisTransferParameters_clone(
         self_: *const HandleShapeAnalysisTransferParameters,
     ) -> crate::OcctResult<*mut HandleShapeAnalysisTransferParameters>;
+    /// Check if Handle<ShapeAnalysis_TransferParameters> is null
+    pub fn HandleShapeAnalysisTransferParameters_is_null(
+        self_: *const HandleShapeAnalysisTransferParameters,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeAnalysis_TransferParameters
     pub fn HandleShapeAnalysisTransferParameters_get(
         handle: *const HandleShapeAnalysisTransferParameters,
@@ -2108,6 +2128,10 @@ extern "C" {
     pub fn HandleShapeAnalysisTransferParametersProj_clone(
         self_: *const HandleShapeAnalysisTransferParametersProj,
     ) -> crate::OcctResult<*mut HandleShapeAnalysisTransferParametersProj>;
+    /// Check if Handle<ShapeAnalysis_TransferParametersProj> is null
+    pub fn HandleShapeAnalysisTransferParametersProj_is_null(
+        self_: *const HandleShapeAnalysisTransferParametersProj,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeAnalysis_TransferParametersProj
     pub fn HandleShapeAnalysisTransferParametersProj_get(
         handle: *const HandleShapeAnalysisTransferParametersProj,
@@ -2576,6 +2600,8 @@ extern "C" {
     pub fn HandleShapeAnalysisWire_clone(
         self_: *const HandleShapeAnalysisWire,
     ) -> crate::OcctResult<*mut HandleShapeAnalysisWire>;
+    /// Check if Handle<ShapeAnalysis_Wire> is null
+    pub fn HandleShapeAnalysisWire_is_null(self_: *const HandleShapeAnalysisWire) -> bool;
     /// Dereference Handle to get *const ShapeAnalysis_Wire
     pub fn HandleShapeAnalysisWire_get(
         handle: *const HandleShapeAnalysisWire,
@@ -3076,6 +3102,8 @@ extern "C" {
     pub fn HandleShapeBuildReShape_clone(
         self_: *const HandleShapeBuildReShape,
     ) -> crate::OcctResult<*mut HandleShapeBuildReShape>;
+    /// Check if Handle<ShapeBuild_ReShape> is null
+    pub fn HandleShapeBuildReShape_is_null(self_: *const HandleShapeBuildReShape) -> bool;
     /// Dereference Handle to get *const ShapeBuild_ReShape
     pub fn HandleShapeBuildReShape_get(
         handle: *const HandleShapeBuildReShape,
@@ -3391,6 +3419,10 @@ extern "C" {
     pub fn HandleShapeConstructProjectCurveOnSurface_clone(
         self_: *const HandleShapeConstructProjectCurveOnSurface,
     ) -> crate::OcctResult<*mut HandleShapeConstructProjectCurveOnSurface>;
+    /// Check if Handle<ShapeConstruct_ProjectCurveOnSurface> is null
+    pub fn HandleShapeConstructProjectCurveOnSurface_is_null(
+        self_: *const HandleShapeConstructProjectCurveOnSurface,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeConstruct_ProjectCurveOnSurface
     pub fn HandleShapeConstructProjectCurveOnSurface_get(
         handle: *const HandleShapeConstructProjectCurveOnSurface,
@@ -3682,6 +3714,10 @@ extern "C" {
     pub fn HandleShapeCustomBSplineRestriction_clone(
         self_: *const HandleShapeCustomBSplineRestriction,
     ) -> crate::OcctResult<*mut HandleShapeCustomBSplineRestriction>;
+    /// Check if Handle<ShapeCustom_BSplineRestriction> is null
+    pub fn HandleShapeCustomBSplineRestriction_is_null(
+        self_: *const HandleShapeCustomBSplineRestriction,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeCustom_BSplineRestriction
     pub fn HandleShapeCustomBSplineRestriction_get(
         handle: *const HandleShapeCustomBSplineRestriction,
@@ -3890,6 +3926,10 @@ extern "C" {
     pub fn HandleShapeCustomConvertToBSpline_clone(
         self_: *const HandleShapeCustomConvertToBSpline,
     ) -> crate::OcctResult<*mut HandleShapeCustomConvertToBSpline>;
+    /// Check if Handle<ShapeCustom_ConvertToBSpline> is null
+    pub fn HandleShapeCustomConvertToBSpline_is_null(
+        self_: *const HandleShapeCustomConvertToBSpline,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeCustom_ConvertToBSpline
     pub fn HandleShapeCustomConvertToBSpline_get(
         handle: *const HandleShapeCustomConvertToBSpline,
@@ -4079,6 +4119,10 @@ extern "C" {
     pub fn HandleShapeCustomConvertToRevolution_clone(
         self_: *const HandleShapeCustomConvertToRevolution,
     ) -> crate::OcctResult<*mut HandleShapeCustomConvertToRevolution>;
+    /// Check if Handle<ShapeCustom_ConvertToRevolution> is null
+    pub fn HandleShapeCustomConvertToRevolution_is_null(
+        self_: *const HandleShapeCustomConvertToRevolution,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeCustom_ConvertToRevolution
     pub fn HandleShapeCustomConvertToRevolution_get(
         handle: *const HandleShapeCustomConvertToRevolution,
@@ -4312,6 +4356,10 @@ extern "C" {
     pub fn HandleShapeCustomDirectModification_clone(
         self_: *const HandleShapeCustomDirectModification,
     ) -> crate::OcctResult<*mut HandleShapeCustomDirectModification>;
+    /// Check if Handle<ShapeCustom_DirectModification> is null
+    pub fn HandleShapeCustomDirectModification_is_null(
+        self_: *const HandleShapeCustomDirectModification,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeCustom_DirectModification
     pub fn HandleShapeCustomDirectModification_get(
         handle: *const HandleShapeCustomDirectModification,
@@ -4446,6 +4494,10 @@ extern "C" {
     pub fn HandleShapeCustomModification_clone(
         self_: *const HandleShapeCustomModification,
     ) -> crate::OcctResult<*mut HandleShapeCustomModification>;
+    /// Check if Handle<ShapeCustom_Modification> is null
+    pub fn HandleShapeCustomModification_is_null(
+        self_: *const HandleShapeCustomModification,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeCustom_Modification
     pub fn HandleShapeCustomModification_get(
         handle: *const HandleShapeCustomModification,
@@ -4685,6 +4737,10 @@ extern "C" {
     pub fn HandleShapeCustomRestrictionParameters_clone(
         self_: *const HandleShapeCustomRestrictionParameters,
     ) -> crate::OcctResult<*mut HandleShapeCustomRestrictionParameters>;
+    /// Check if Handle<ShapeCustom_RestrictionParameters> is null
+    pub fn HandleShapeCustomRestrictionParameters_is_null(
+        self_: *const HandleShapeCustomRestrictionParameters,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeCustom_RestrictionParameters
     pub fn HandleShapeCustomRestrictionParameters_get(
         handle: *const HandleShapeCustomRestrictionParameters,
@@ -4858,6 +4914,10 @@ extern "C" {
     pub fn HandleShapeCustomSweptToElementary_clone(
         self_: *const HandleShapeCustomSweptToElementary,
     ) -> crate::OcctResult<*mut HandleShapeCustomSweptToElementary>;
+    /// Check if Handle<ShapeCustom_SweptToElementary> is null
+    pub fn HandleShapeCustomSweptToElementary_is_null(
+        self_: *const HandleShapeCustomSweptToElementary,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeCustom_SweptToElementary
     pub fn HandleShapeCustomSweptToElementary_get(
         handle: *const HandleShapeCustomSweptToElementary,
@@ -5037,6 +5097,10 @@ extern "C" {
     pub fn HandleShapeCustomTrsfModification_clone(
         self_: *const HandleShapeCustomTrsfModification,
     ) -> crate::OcctResult<*mut HandleShapeCustomTrsfModification>;
+    /// Check if Handle<ShapeCustom_TrsfModification> is null
+    pub fn HandleShapeCustomTrsfModification_is_null(
+        self_: *const HandleShapeCustomTrsfModification,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeCustom_TrsfModification
     pub fn HandleShapeCustomTrsfModification_get(
         handle: *const HandleShapeCustomTrsfModification,
@@ -5179,6 +5243,10 @@ extern "C" {
     pub fn HandleShapeExtendBasicMsgRegistrator_clone(
         self_: *const HandleShapeExtendBasicMsgRegistrator,
     ) -> crate::OcctResult<*mut HandleShapeExtendBasicMsgRegistrator>;
+    /// Check if Handle<ShapeExtend_BasicMsgRegistrator> is null
+    pub fn HandleShapeExtendBasicMsgRegistrator_is_null(
+        self_: *const HandleShapeExtendBasicMsgRegistrator,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeExtend_BasicMsgRegistrator
     pub fn HandleShapeExtendBasicMsgRegistrator_get(
         handle: *const HandleShapeExtendBasicMsgRegistrator,
@@ -5368,6 +5436,10 @@ extern "C" {
     pub fn HandleShapeExtendComplexCurve_clone(
         self_: *const HandleShapeExtendComplexCurve,
     ) -> crate::OcctResult<*mut HandleShapeExtendComplexCurve>;
+    /// Check if Handle<ShapeExtend_ComplexCurve> is null
+    pub fn HandleShapeExtendComplexCurve_is_null(
+        self_: *const HandleShapeExtendComplexCurve,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeExtend_ComplexCurve
     pub fn HandleShapeExtendComplexCurve_get(
         handle: *const HandleShapeExtendComplexCurve,
@@ -5849,6 +5921,10 @@ extern "C" {
     pub fn HandleShapeExtendCompositeSurface_clone(
         self_: *const HandleShapeExtendCompositeSurface,
     ) -> crate::OcctResult<*mut HandleShapeExtendCompositeSurface>;
+    /// Check if Handle<ShapeExtend_CompositeSurface> is null
+    pub fn HandleShapeExtendCompositeSurface_is_null(
+        self_: *const HandleShapeExtendCompositeSurface,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeExtend_CompositeSurface
     pub fn HandleShapeExtendCompositeSurface_get(
         handle: *const HandleShapeExtendCompositeSurface,
@@ -6091,6 +6167,10 @@ extern "C" {
     pub fn HandleShapeExtendMsgRegistrator_clone(
         self_: *const HandleShapeExtendMsgRegistrator,
     ) -> crate::OcctResult<*mut HandleShapeExtendMsgRegistrator>;
+    /// Check if Handle<ShapeExtend_MsgRegistrator> is null
+    pub fn HandleShapeExtendMsgRegistrator_is_null(
+        self_: *const HandleShapeExtendMsgRegistrator,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeExtend_MsgRegistrator
     pub fn HandleShapeExtendMsgRegistrator_get(
         handle: *const HandleShapeExtendMsgRegistrator,
@@ -6307,6 +6387,8 @@ extern "C" {
     pub fn HandleShapeExtendWireData_clone(
         self_: *const HandleShapeExtendWireData,
     ) -> crate::OcctResult<*mut HandleShapeExtendWireData>;
+    /// Check if Handle<ShapeExtend_WireData> is null
+    pub fn HandleShapeExtendWireData_is_null(self_: *const HandleShapeExtendWireData) -> bool;
     /// Dereference Handle to get *const ShapeExtend_WireData
     pub fn HandleShapeExtendWireData_get(
         handle: *const HandleShapeExtendWireData,
@@ -6432,6 +6514,8 @@ extern "C" {
     pub fn HandleShapeFixComposeShell_clone(
         self_: *const HandleShapeFixComposeShell,
     ) -> crate::OcctResult<*mut HandleShapeFixComposeShell>;
+    /// Check if Handle<ShapeFix_ComposeShell> is null
+    pub fn HandleShapeFixComposeShell_is_null(self_: *const HandleShapeFixComposeShell) -> bool;
     /// Dereference Handle to get *const ShapeFix_ComposeShell
     pub fn HandleShapeFixComposeShell_get(
         handle: *const HandleShapeFixComposeShell,
@@ -6696,6 +6780,8 @@ extern "C" {
     pub fn HandleShapeFixEdge_clone(
         self_: *const HandleShapeFixEdge,
     ) -> crate::OcctResult<*mut HandleShapeFixEdge>;
+    /// Check if Handle<ShapeFix_Edge> is null
+    pub fn HandleShapeFixEdge_is_null(self_: *const HandleShapeFixEdge) -> bool;
     /// Dereference Handle to get *const ShapeFix_Edge
     pub fn HandleShapeFixEdge_get(
         handle: *const HandleShapeFixEdge,
@@ -6822,6 +6908,8 @@ extern "C" {
     pub fn HandleShapeFixEdgeProjAux_clone(
         self_: *const HandleShapeFixEdgeProjAux,
     ) -> crate::OcctResult<*mut HandleShapeFixEdgeProjAux>;
+    /// Check if Handle<ShapeFix_EdgeProjAux> is null
+    pub fn HandleShapeFixEdgeProjAux_is_null(self_: *const HandleShapeFixEdgeProjAux) -> bool;
     /// Dereference Handle to get *const ShapeFix_EdgeProjAux
     pub fn HandleShapeFixEdgeProjAux_get(
         handle: *const HandleShapeFixEdgeProjAux,
@@ -7051,6 +7139,8 @@ extern "C" {
     pub fn HandleShapeFixFace_clone(
         self_: *const HandleShapeFixFace,
     ) -> crate::OcctResult<*mut HandleShapeFixFace>;
+    /// Check if Handle<ShapeFix_Face> is null
+    pub fn HandleShapeFixFace_is_null(self_: *const HandleShapeFixFace) -> bool;
     /// Dereference Handle to get *const ShapeFix_Face
     pub fn HandleShapeFixFace_get(
         handle: *const HandleShapeFixFace,
@@ -7286,6 +7376,8 @@ extern "C" {
     pub fn HandleShapeFixFixSmallFace_clone(
         self_: *const HandleShapeFixFixSmallFace,
     ) -> crate::OcctResult<*mut HandleShapeFixFixSmallFace>;
+    /// Check if Handle<ShapeFix_FixSmallFace> is null
+    pub fn HandleShapeFixFixSmallFace_is_null(self_: *const HandleShapeFixFixSmallFace) -> bool;
     /// Dereference Handle to get *const ShapeFix_FixSmallFace
     pub fn HandleShapeFixFixSmallFace_get(
         handle: *const HandleShapeFixFixSmallFace,
@@ -7472,6 +7564,8 @@ extern "C" {
     pub fn HandleShapeFixFixSmallSolid_clone(
         self_: *const HandleShapeFixFixSmallSolid,
     ) -> crate::OcctResult<*mut HandleShapeFixFixSmallSolid>;
+    /// Check if Handle<ShapeFix_FixSmallSolid> is null
+    pub fn HandleShapeFixFixSmallSolid_is_null(self_: *const HandleShapeFixFixSmallSolid) -> bool;
     /// Dereference Handle to get *const ShapeFix_FixSmallSolid
     pub fn HandleShapeFixFixSmallSolid_get(
         handle: *const HandleShapeFixFixSmallSolid,
@@ -7783,6 +7877,8 @@ extern "C" {
     pub fn HandleShapeFixRoot_clone(
         self_: *const HandleShapeFixRoot,
     ) -> crate::OcctResult<*mut HandleShapeFixRoot>;
+    /// Check if Handle<ShapeFix_Root> is null
+    pub fn HandleShapeFixRoot_is_null(self_: *const HandleShapeFixRoot) -> bool;
     /// Dereference Handle to get *const ShapeFix_Root
     pub fn HandleShapeFixRoot_get(
         handle: *const HandleShapeFixRoot,
@@ -7991,6 +8087,8 @@ extern "C" {
     pub fn HandleShapeFixShape_clone(
         self_: *const HandleShapeFixShape,
     ) -> crate::OcctResult<*mut HandleShapeFixShape>;
+    /// Check if Handle<ShapeFix_Shape> is null
+    pub fn HandleShapeFixShape_is_null(self_: *const HandleShapeFixShape) -> bool;
     /// Dereference Handle to get *const ShapeFix_Shape
     pub fn HandleShapeFixShape_get(
         handle: *const HandleShapeFixShape,
@@ -8220,6 +8318,8 @@ extern "C" {
     pub fn HandleShapeFixShell_clone(
         self_: *const HandleShapeFixShell,
     ) -> crate::OcctResult<*mut HandleShapeFixShell>;
+    /// Check if Handle<ShapeFix_Shell> is null
+    pub fn HandleShapeFixShell_is_null(self_: *const HandleShapeFixShell) -> bool;
     /// Dereference Handle to get *const ShapeFix_Shell
     pub fn HandleShapeFixShell_get(
         handle: *const HandleShapeFixShell,
@@ -8423,6 +8523,8 @@ extern "C" {
     pub fn HandleShapeFixSolid_clone(
         self_: *const HandleShapeFixSolid,
     ) -> crate::OcctResult<*mut HandleShapeFixSolid>;
+    /// Check if Handle<ShapeFix_Solid> is null
+    pub fn HandleShapeFixSolid_is_null(self_: *const HandleShapeFixSolid) -> bool;
     /// Dereference Handle to get *const ShapeFix_Solid
     pub fn HandleShapeFixSolid_get(
         handle: *const HandleShapeFixSolid,
@@ -8574,6 +8676,10 @@ extern "C" {
     pub fn HandleShapeFixSplitCommonVertex_clone(
         self_: *const HandleShapeFixSplitCommonVertex,
     ) -> crate::OcctResult<*mut HandleShapeFixSplitCommonVertex>;
+    /// Check if Handle<ShapeFix_SplitCommonVertex> is null
+    pub fn HandleShapeFixSplitCommonVertex_is_null(
+        self_: *const HandleShapeFixSplitCommonVertex,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeFix_SplitCommonVertex
     pub fn HandleShapeFixSplitCommonVertex_get(
         handle: *const HandleShapeFixSplitCommonVertex,
@@ -9136,6 +9242,8 @@ extern "C" {
     pub fn HandleShapeFixWire_clone(
         self_: *const HandleShapeFixWire,
     ) -> crate::OcctResult<*mut HandleShapeFixWire>;
+    /// Check if Handle<ShapeFix_Wire> is null
+    pub fn HandleShapeFixWire_is_null(self_: *const HandleShapeFixWire) -> bool;
     /// Dereference Handle to get *const ShapeFix_Wire
     pub fn HandleShapeFixWire_get(
         handle: *const HandleShapeFixWire,
@@ -9526,6 +9634,8 @@ extern "C" {
     pub fn HandleShapeFixWireframe_clone(
         self_: *const HandleShapeFixWireframe,
     ) -> crate::OcctResult<*mut HandleShapeFixWireframe>;
+    /// Check if Handle<ShapeFix_Wireframe> is null
+    pub fn HandleShapeFixWireframe_is_null(self_: *const HandleShapeFixWireframe) -> bool;
     /// Dereference Handle to get *const ShapeFix_Wireframe
     pub fn HandleShapeFixWireframe_get(
         handle: *const HandleShapeFixWireframe,
@@ -9776,6 +9886,8 @@ extern "C" {
     pub fn HandleShapeProcessContext_clone(
         self_: *const HandleShapeProcessContext,
     ) -> crate::OcctResult<*mut HandleShapeProcessContext>;
+    /// Check if Handle<ShapeProcess_Context> is null
+    pub fn HandleShapeProcessContext_is_null(self_: *const HandleShapeProcessContext) -> bool;
     /// Dereference Handle to get *const ShapeProcess_Context
     pub fn HandleShapeProcessContext_get(
         handle: *const HandleShapeProcessContext,
@@ -9868,6 +9980,8 @@ extern "C" {
     pub fn HandleShapeProcessOperator_clone(
         self_: *const HandleShapeProcessOperator,
     ) -> crate::OcctResult<*mut HandleShapeProcessOperator>;
+    /// Check if Handle<ShapeProcess_Operator> is null
+    pub fn HandleShapeProcessOperator_is_null(self_: *const HandleShapeProcessOperator) -> bool;
     /// Dereference Handle to get *const ShapeProcess_Operator
     pub fn HandleShapeProcessOperator_get(
         handle: *const HandleShapeProcessOperator,
@@ -10057,6 +10171,10 @@ extern "C" {
     pub fn HandleShapeProcessShapeContext_clone(
         self_: *const HandleShapeProcessShapeContext,
     ) -> crate::OcctResult<*mut HandleShapeProcessShapeContext>;
+    /// Check if Handle<ShapeProcess_ShapeContext> is null
+    pub fn HandleShapeProcessShapeContext_is_null(
+        self_: *const HandleShapeProcessShapeContext,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeProcess_ShapeContext
     pub fn HandleShapeProcessShapeContext_get(
         handle: *const HandleShapeProcessShapeContext,
@@ -10176,6 +10294,8 @@ extern "C" {
     pub fn HandleShapeProcessUOperator_clone(
         self_: *const HandleShapeProcessUOperator,
     ) -> crate::OcctResult<*mut HandleShapeProcessUOperator>;
+    /// Check if Handle<ShapeProcess_UOperator> is null
+    pub fn HandleShapeProcessUOperator_is_null(self_: *const HandleShapeProcessUOperator) -> bool;
     /// Dereference Handle to get *const ShapeProcess_UOperator
     pub fn HandleShapeProcessUOperator_get(
         handle: *const HandleShapeProcessUOperator,
@@ -10309,6 +10429,10 @@ extern "C" {
     pub fn HandleShapeUpgradeClosedEdgeDivide_clone(
         self_: *const HandleShapeUpgradeClosedEdgeDivide,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeClosedEdgeDivide>;
+    /// Check if Handle<ShapeUpgrade_ClosedEdgeDivide> is null
+    pub fn HandleShapeUpgradeClosedEdgeDivide_is_null(
+        self_: *const HandleShapeUpgradeClosedEdgeDivide,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_ClosedEdgeDivide
     pub fn HandleShapeUpgradeClosedEdgeDivide_get(
         handle: *const HandleShapeUpgradeClosedEdgeDivide,
@@ -10517,6 +10641,10 @@ extern "C" {
     pub fn HandleShapeUpgradeClosedFaceDivide_clone(
         self_: *const HandleShapeUpgradeClosedFaceDivide,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeClosedFaceDivide>;
+    /// Check if Handle<ShapeUpgrade_ClosedFaceDivide> is null
+    pub fn HandleShapeUpgradeClosedFaceDivide_is_null(
+        self_: *const HandleShapeUpgradeClosedFaceDivide,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_ClosedFaceDivide
     pub fn HandleShapeUpgradeClosedFaceDivide_get(
         handle: *const HandleShapeUpgradeClosedFaceDivide,
@@ -10725,6 +10853,10 @@ extern "C" {
     pub fn HandleShapeUpgradeConvertCurve2dToBezier_clone(
         self_: *const HandleShapeUpgradeConvertCurve2dToBezier,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeConvertCurve2dToBezier>;
+    /// Check if Handle<ShapeUpgrade_ConvertCurve2dToBezier> is null
+    pub fn HandleShapeUpgradeConvertCurve2dToBezier_is_null(
+        self_: *const HandleShapeUpgradeConvertCurve2dToBezier,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_ConvertCurve2dToBezier
     pub fn HandleShapeUpgradeConvertCurve2dToBezier_get(
         handle: *const HandleShapeUpgradeConvertCurve2dToBezier,
@@ -10896,6 +11028,10 @@ extern "C" {
     pub fn HandleShapeUpgradeConvertCurve3dToBezier_clone(
         self_: *const HandleShapeUpgradeConvertCurve3dToBezier,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeConvertCurve3dToBezier>;
+    /// Check if Handle<ShapeUpgrade_ConvertCurve3dToBezier> is null
+    pub fn HandleShapeUpgradeConvertCurve3dToBezier_is_null(
+        self_: *const HandleShapeUpgradeConvertCurve3dToBezier,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_ConvertCurve3dToBezier
     pub fn HandleShapeUpgradeConvertCurve3dToBezier_get(
         handle: *const HandleShapeUpgradeConvertCurve3dToBezier,
@@ -11069,6 +11205,10 @@ extern "C" {
     pub fn HandleShapeUpgradeConvertSurfaceToBezierBasis_clone(
         self_: *const HandleShapeUpgradeConvertSurfaceToBezierBasis,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeConvertSurfaceToBezierBasis>;
+    /// Check if Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> is null
+    pub fn HandleShapeUpgradeConvertSurfaceToBezierBasis_is_null(
+        self_: *const HandleShapeUpgradeConvertSurfaceToBezierBasis,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_ConvertSurfaceToBezierBasis
     pub fn HandleShapeUpgradeConvertSurfaceToBezierBasis_get(
         handle: *const HandleShapeUpgradeConvertSurfaceToBezierBasis,
@@ -11239,6 +11379,9 @@ extern "C" {
     pub fn HandleShapeUpgradeEdgeDivide_clone(
         self_: *const HandleShapeUpgradeEdgeDivide,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeEdgeDivide>;
+    /// Check if Handle<ShapeUpgrade_EdgeDivide> is null
+    pub fn HandleShapeUpgradeEdgeDivide_is_null(self_: *const HandleShapeUpgradeEdgeDivide)
+        -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_EdgeDivide
     pub fn HandleShapeUpgradeEdgeDivide_get(
         handle: *const HandleShapeUpgradeEdgeDivide,
@@ -11429,6 +11572,9 @@ extern "C" {
     pub fn HandleShapeUpgradeFaceDivide_clone(
         self_: *const HandleShapeUpgradeFaceDivide,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeFaceDivide>;
+    /// Check if Handle<ShapeUpgrade_FaceDivide> is null
+    pub fn HandleShapeUpgradeFaceDivide_is_null(self_: *const HandleShapeUpgradeFaceDivide)
+        -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_FaceDivide
     pub fn HandleShapeUpgradeFaceDivide_get(
         handle: *const HandleShapeUpgradeFaceDivide,
@@ -11606,6 +11752,10 @@ extern "C" {
     pub fn HandleShapeUpgradeFaceDivideArea_clone(
         self_: *const HandleShapeUpgradeFaceDivideArea,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeFaceDivideArea>;
+    /// Check if Handle<ShapeUpgrade_FaceDivideArea> is null
+    pub fn HandleShapeUpgradeFaceDivideArea_is_null(
+        self_: *const HandleShapeUpgradeFaceDivideArea,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_FaceDivideArea
     pub fn HandleShapeUpgradeFaceDivideArea_get(
         handle: *const HandleShapeUpgradeFaceDivideArea,
@@ -11810,6 +11960,10 @@ extern "C" {
     pub fn HandleShapeUpgradeFixSmallBezierCurves_clone(
         self_: *const HandleShapeUpgradeFixSmallBezierCurves,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeFixSmallBezierCurves>;
+    /// Check if Handle<ShapeUpgrade_FixSmallBezierCurves> is null
+    pub fn HandleShapeUpgradeFixSmallBezierCurves_is_null(
+        self_: *const HandleShapeUpgradeFixSmallBezierCurves,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_FixSmallBezierCurves
     pub fn HandleShapeUpgradeFixSmallBezierCurves_get(
         handle: *const HandleShapeUpgradeFixSmallBezierCurves,
@@ -11998,6 +12152,10 @@ extern "C" {
     pub fn HandleShapeUpgradeFixSmallCurves_clone(
         self_: *const HandleShapeUpgradeFixSmallCurves,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeFixSmallCurves>;
+    /// Check if Handle<ShapeUpgrade_FixSmallCurves> is null
+    pub fn HandleShapeUpgradeFixSmallCurves_is_null(
+        self_: *const HandleShapeUpgradeFixSmallCurves,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_FixSmallCurves
     pub fn HandleShapeUpgradeFixSmallCurves_get(
         handle: *const HandleShapeUpgradeFixSmallCurves,
@@ -12182,6 +12340,10 @@ extern "C" {
     pub fn HandleShapeUpgradeRemoveInternalWires_clone(
         self_: *const HandleShapeUpgradeRemoveInternalWires,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeRemoveInternalWires>;
+    /// Check if Handle<ShapeUpgrade_RemoveInternalWires> is null
+    pub fn HandleShapeUpgradeRemoveInternalWires_is_null(
+        self_: *const HandleShapeUpgradeRemoveInternalWires,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_RemoveInternalWires
     pub fn HandleShapeUpgradeRemoveInternalWires_get(
         handle: *const HandleShapeUpgradeRemoveInternalWires,
@@ -12335,6 +12497,10 @@ extern "C" {
     pub fn HandleShapeUpgradeRemoveLocations_clone(
         self_: *const HandleShapeUpgradeRemoveLocations,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeRemoveLocations>;
+    /// Check if Handle<ShapeUpgrade_RemoveLocations> is null
+    pub fn HandleShapeUpgradeRemoveLocations_is_null(
+        self_: *const HandleShapeUpgradeRemoveLocations,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_RemoveLocations
     pub fn HandleShapeUpgradeRemoveLocations_get(
         handle: *const HandleShapeUpgradeRemoveLocations,
@@ -13240,6 +13406,9 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitCurve_clone(
         self_: *const HandleShapeUpgradeSplitCurve,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve>;
+    /// Check if Handle<ShapeUpgrade_SplitCurve> is null
+    pub fn HandleShapeUpgradeSplitCurve_is_null(self_: *const HandleShapeUpgradeSplitCurve)
+        -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_SplitCurve
     pub fn HandleShapeUpgradeSplitCurve_get(
         handle: *const HandleShapeUpgradeSplitCurve,
@@ -13366,6 +13535,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitCurve2d_clone(
         self_: *const HandleShapeUpgradeSplitCurve2d,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve2d>;
+    /// Check if Handle<ShapeUpgrade_SplitCurve2d> is null
+    pub fn HandleShapeUpgradeSplitCurve2d_is_null(
+        self_: *const HandleShapeUpgradeSplitCurve2d,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_SplitCurve2d
     pub fn HandleShapeUpgradeSplitCurve2d_get(
         handle: *const HandleShapeUpgradeSplitCurve2d,
@@ -13510,6 +13683,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitCurve2dContinuity_clone(
         self_: *const HandleShapeUpgradeSplitCurve2dContinuity,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve2dContinuity>;
+    /// Check if Handle<ShapeUpgrade_SplitCurve2dContinuity> is null
+    pub fn HandleShapeUpgradeSplitCurve2dContinuity_is_null(
+        self_: *const HandleShapeUpgradeSplitCurve2dContinuity,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_SplitCurve2dContinuity
     pub fn HandleShapeUpgradeSplitCurve2dContinuity_get(
         handle: *const HandleShapeUpgradeSplitCurve2dContinuity,
@@ -13653,6 +13830,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitCurve3d_clone(
         self_: *const HandleShapeUpgradeSplitCurve3d,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve3d>;
+    /// Check if Handle<ShapeUpgrade_SplitCurve3d> is null
+    pub fn HandleShapeUpgradeSplitCurve3d_is_null(
+        self_: *const HandleShapeUpgradeSplitCurve3d,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_SplitCurve3d
     pub fn HandleShapeUpgradeSplitCurve3d_get(
         handle: *const HandleShapeUpgradeSplitCurve3d,
@@ -13801,6 +13982,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitCurve3dContinuity_clone(
         self_: *const HandleShapeUpgradeSplitCurve3dContinuity,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitCurve3dContinuity>;
+    /// Check if Handle<ShapeUpgrade_SplitCurve3dContinuity> is null
+    pub fn HandleShapeUpgradeSplitCurve3dContinuity_is_null(
+        self_: *const HandleShapeUpgradeSplitCurve3dContinuity,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_SplitCurve3dContinuity
     pub fn HandleShapeUpgradeSplitCurve3dContinuity_get(
         handle: *const HandleShapeUpgradeSplitCurve3dContinuity,
@@ -13972,6 +14157,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitSurface_clone(
         self_: *const HandleShapeUpgradeSplitSurface,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitSurface>;
+    /// Check if Handle<ShapeUpgrade_SplitSurface> is null
+    pub fn HandleShapeUpgradeSplitSurface_is_null(
+        self_: *const HandleShapeUpgradeSplitSurface,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_SplitSurface
     pub fn HandleShapeUpgradeSplitSurface_get(
         handle: *const HandleShapeUpgradeSplitSurface,
@@ -14088,6 +14277,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitSurfaceAngle_clone(
         self_: *const HandleShapeUpgradeSplitSurfaceAngle,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitSurfaceAngle>;
+    /// Check if Handle<ShapeUpgrade_SplitSurfaceAngle> is null
+    pub fn HandleShapeUpgradeSplitSurfaceAngle_is_null(
+        self_: *const HandleShapeUpgradeSplitSurfaceAngle,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_SplitSurfaceAngle
     pub fn HandleShapeUpgradeSplitSurfaceAngle_get(
         handle: *const HandleShapeUpgradeSplitSurfaceAngle,
@@ -14239,6 +14432,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitSurfaceArea_clone(
         self_: *const HandleShapeUpgradeSplitSurfaceArea,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitSurfaceArea>;
+    /// Check if Handle<ShapeUpgrade_SplitSurfaceArea> is null
+    pub fn HandleShapeUpgradeSplitSurfaceArea_is_null(
+        self_: *const HandleShapeUpgradeSplitSurfaceArea,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_SplitSurfaceArea
     pub fn HandleShapeUpgradeSplitSurfaceArea_get(
         handle: *const HandleShapeUpgradeSplitSurfaceArea,
@@ -14387,6 +14584,10 @@ extern "C" {
     pub fn HandleShapeUpgradeSplitSurfaceContinuity_clone(
         self_: *const HandleShapeUpgradeSplitSurfaceContinuity,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeSplitSurfaceContinuity>;
+    /// Check if Handle<ShapeUpgrade_SplitSurfaceContinuity> is null
+    pub fn HandleShapeUpgradeSplitSurfaceContinuity_is_null(
+        self_: *const HandleShapeUpgradeSplitSurfaceContinuity,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_SplitSurfaceContinuity
     pub fn HandleShapeUpgradeSplitSurfaceContinuity_get(
         handle: *const HandleShapeUpgradeSplitSurfaceContinuity,
@@ -14549,6 +14750,8 @@ extern "C" {
     pub fn HandleShapeUpgradeTool_clone(
         self_: *const HandleShapeUpgradeTool,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeTool>;
+    /// Check if Handle<ShapeUpgrade_Tool> is null
+    pub fn HandleShapeUpgradeTool_is_null(self_: *const HandleShapeUpgradeTool) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_Tool
     pub fn HandleShapeUpgradeTool_get(
         handle: *const HandleShapeUpgradeTool,
@@ -14722,6 +14925,10 @@ extern "C" {
     pub fn HandleShapeUpgradeUnifySameDomain_clone(
         self_: *const HandleShapeUpgradeUnifySameDomain,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeUnifySameDomain>;
+    /// Check if Handle<ShapeUpgrade_UnifySameDomain> is null
+    pub fn HandleShapeUpgradeUnifySameDomain_is_null(
+        self_: *const HandleShapeUpgradeUnifySameDomain,
+    ) -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_UnifySameDomain
     pub fn HandleShapeUpgradeUnifySameDomain_get(
         handle: *const HandleShapeUpgradeUnifySameDomain,
@@ -14896,6 +15103,9 @@ extern "C" {
     pub fn HandleShapeUpgradeWireDivide_clone(
         self_: *const HandleShapeUpgradeWireDivide,
     ) -> crate::OcctResult<*mut HandleShapeUpgradeWireDivide>;
+    /// Check if Handle<ShapeUpgrade_WireDivide> is null
+    pub fn HandleShapeUpgradeWireDivide_is_null(self_: *const HandleShapeUpgradeWireDivide)
+        -> bool;
     /// Dereference Handle to get *const ShapeUpgrade_WireDivide
     pub fn HandleShapeUpgradeWireDivide_get(
         handle: *const HandleShapeUpgradeWireDivide,

@@ -511,6 +511,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualAnnotationCurveOccurrence {
 }
 
 impl HandleStepVisualAnnotationCurveOccurrence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationCurveOccurrence_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_AnnotationCurveOccurrence
     pub fn get(&self) -> &crate::ffi_types::StepVisual_AnnotationCurveOccurrence {
         unsafe {
@@ -870,6 +879,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualAnnotationCurveOccurrenceAndG
 }
 
 impl HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_AnnotationCurveOccurrenceAndGeomReprItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_AnnotationCurveOccurrenceAndGeomReprItem {
         unsafe {
@@ -1264,6 +1280,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualAnnotationFillArea {
 }
 
 impl HandleStepVisualAnnotationFillArea {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationFillArea_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_AnnotationFillArea
     pub fn get(&self) -> &crate::ffi_types::StepVisual_AnnotationFillArea {
         unsafe {
@@ -1671,6 +1696,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualAnnotationFillAreaOccurrence 
 }
 
 impl HandleStepVisualAnnotationFillAreaOccurrence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationFillAreaOccurrence_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_AnnotationFillAreaOccurrence
     pub fn get(&self) -> &crate::ffi_types::StepVisual_AnnotationFillAreaOccurrence {
         unsafe {
@@ -2052,6 +2086,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualAnnotationOccurrence {
 }
 
 impl HandleStepVisualAnnotationOccurrence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationOccurrence_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_AnnotationOccurrence
     pub fn get(&self) -> &crate::ffi_types::StepVisual_AnnotationOccurrence {
         unsafe {
@@ -2613,6 +2656,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualAnnotationPlane {
 }
 
 impl HandleStepVisualAnnotationPlane {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationPlane_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_AnnotationPlane
     pub fn get(&self) -> &crate::ffi_types::StepVisual_AnnotationPlane {
         unsafe {
@@ -3230,6 +3280,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualAnnotationText {
 }
 
 impl HandleStepVisualAnnotationText {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationText_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_AnnotationText
     pub fn get(&self) -> &crate::ffi_types::StepVisual_AnnotationText {
         unsafe {
@@ -3606,6 +3663,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualAnnotationTextOccurrence {
 }
 
 impl HandleStepVisualAnnotationTextOccurrence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationTextOccurrence_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_AnnotationTextOccurrence
     pub fn get(&self) -> &crate::ffi_types::StepVisual_AnnotationTextOccurrence {
         unsafe {
@@ -3878,6 +3944,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualAreaInSet {
 }
 
 impl HandleStepVisualAreaInSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAreaInSet_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_AreaInSet
     pub fn get(&self) -> &crate::ffi_types::StepVisual_AreaInSet {
         unsafe {
@@ -4388,6 +4461,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualBackgroundColour {
 }
 
 impl HandleStepVisualBackgroundColour {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualBackgroundColour_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_BackgroundColour
     pub fn get(&self) -> &crate::ffi_types::StepVisual_BackgroundColour {
         unsafe {
@@ -4793,6 +4875,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualCameraImage {
 }
 
 impl HandleStepVisualCameraImage {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CameraImage
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CameraImage {
         unsafe {
@@ -5176,6 +5265,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualCameraImage2dWithScale {
 }
 
 impl HandleStepVisualCameraImage2dWithScale {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage2dWithScale_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CameraImage2dWithScale
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CameraImage2dWithScale {
         unsafe {
@@ -5532,6 +5630,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualCameraImage3dWithScale {
 }
 
 impl HandleStepVisualCameraImage3dWithScale {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage3dWithScale_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CameraImage3dWithScale
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CameraImage3dWithScale {
         unsafe {
@@ -5834,6 +5941,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualCameraModel {
 }
 
 impl HandleStepVisualCameraModel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModel_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CameraModel
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CameraModel {
         unsafe {
@@ -6246,6 +6360,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualCameraModelD2 {
 }
 
 impl HandleStepVisualCameraModelD2 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD2_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CameraModelD2
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CameraModelD2 {
         unsafe {
@@ -6629,6 +6750,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualCameraModelD3 {
 }
 
 impl HandleStepVisualCameraModelD3 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CameraModelD3
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CameraModelD3 {
         unsafe {
@@ -7036,6 +7164,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualCameraModelD3MultiClipping {
 }
 
 impl HandleStepVisualCameraModelD3MultiClipping {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClipping_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CameraModelD3MultiClipping
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CameraModelD3MultiClipping {
         unsafe {
@@ -7520,6 +7657,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualCameraModelD3MultiClippingInt
 }
 
 impl HandleStepVisualCameraModelD3MultiClippingIntersection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClippingIntersection_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CameraModelD3MultiClippingIntersection
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CameraModelD3MultiClippingIntersection {
         unsafe {
@@ -7804,6 +7948,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualCameraModelD3MultiClippingUni
 }
 
 impl HandleStepVisualCameraModelD3MultiClippingUnion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClippingUnion_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CameraModelD3MultiClippingUnion
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CameraModelD3MultiClippingUnion {
         unsafe {
@@ -8317,6 +8470,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualCameraUsage {
 }
 
 impl HandleStepVisualCameraUsage {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraUsage_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CameraUsage
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CameraUsage {
         unsafe {
@@ -8611,6 +8771,13 @@ unsafe impl crate::CppCopyable
 }
 
 impl HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel
     pub fn get(
         &self,
@@ -8825,6 +8992,11 @@ unsafe impl crate::CppCopyable for HandleStepVisualColour {
 }
 
 impl HandleStepVisualColour {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepVisualColour_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_Colour
     pub fn get(&self) -> &crate::ffi_types::StepVisual_Colour {
         unsafe {
@@ -9231,6 +9403,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualColourRgb {
 }
 
 impl HandleStepVisualColourRgb {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualColourRgb_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_ColourRgb
     pub fn get(&self) -> &crate::ffi_types::StepVisual_ColourRgb {
         unsafe {
@@ -9512,6 +9691,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualColourSpecification {
 }
 
 impl HandleStepVisualColourSpecification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualColourSpecification_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_ColourSpecification
     pub fn get(&self) -> &crate::ffi_types::StepVisual_ColourSpecification {
         unsafe {
@@ -10076,6 +10264,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualComplexTriangulatedFace {
 }
 
 impl HandleStepVisualComplexTriangulatedFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualComplexTriangulatedFace_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_ComplexTriangulatedFace
     pub fn get(&self) -> &crate::ffi_types::StepVisual_ComplexTriangulatedFace {
         unsafe {
@@ -10602,6 +10799,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualComplexTriangulatedSurfaceSet
 }
 
 impl HandleStepVisualComplexTriangulatedSurfaceSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualComplexTriangulatedSurfaceSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_ComplexTriangulatedSurfaceSet
     pub fn get(&self) -> &crate::ffi_types::StepVisual_ComplexTriangulatedSurfaceSet {
         unsafe {
@@ -10967,6 +11173,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualCompositeText {
 }
 
 impl HandleStepVisualCompositeText {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCompositeText_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CompositeText
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CompositeText {
         unsafe {
@@ -11342,6 +11555,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualCompositeTextWithExtent {
 }
 
 impl HandleStepVisualCompositeTextWithExtent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCompositeTextWithExtent_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CompositeTextWithExtent
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CompositeTextWithExtent {
         unsafe {
@@ -11641,6 +11863,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualContextDependentInvisibility 
 }
 
 impl HandleStepVisualContextDependentInvisibility {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualContextDependentInvisibility_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_ContextDependentInvisibility
     pub fn get(&self) -> &crate::ffi_types::StepVisual_ContextDependentInvisibility {
         unsafe {
@@ -12015,6 +12246,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualContextDependentOverRidingSty
 }
 
 impl HandleStepVisualContextDependentOverRidingStyledItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualContextDependentOverRidingStyledItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_ContextDependentOverRidingStyledItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_ContextDependentOverRidingStyledItem {
         unsafe {
@@ -12337,6 +12577,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualCoordinatesList {
 }
 
 impl HandleStepVisualCoordinatesList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCoordinatesList_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CoordinatesList
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CoordinatesList {
         unsafe {
@@ -12755,6 +13002,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualCubicBezierTessellatedEdge {
 }
 
 impl HandleStepVisualCubicBezierTessellatedEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCubicBezierTessellatedEdge_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CubicBezierTessellatedEdge
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CubicBezierTessellatedEdge {
         unsafe {
@@ -13243,6 +13499,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualCubicBezierTriangulatedFace {
 }
 
 impl HandleStepVisualCubicBezierTriangulatedFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCubicBezierTriangulatedFace_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CubicBezierTriangulatedFace
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CubicBezierTriangulatedFace {
         unsafe {
@@ -13584,6 +13849,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualCurveStyle {
 }
 
 impl HandleStepVisualCurveStyle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyle_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CurveStyle
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CurveStyle {
         unsafe {
@@ -13873,6 +14145,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualCurveStyleFont {
 }
 
 impl HandleStepVisualCurveStyleFont {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyleFont_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CurveStyleFont
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CurveStyleFont {
         unsafe {
@@ -14121,6 +14400,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualCurveStyleFontPattern {
 }
 
 impl HandleStepVisualCurveStyleFontPattern {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyleFontPattern_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_CurveStyleFontPattern
     pub fn get(&self) -> &crate::ffi_types::StepVisual_CurveStyleFontPattern {
         unsafe {
@@ -14809,6 +15097,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualDraughtingAnnotationOccurrenc
 }
 
 impl HandleStepVisualDraughtingAnnotationOccurrence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingAnnotationOccurrence_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_DraughtingAnnotationOccurrence
     pub fn get(&self) -> &crate::ffi_types::StepVisual_DraughtingAnnotationOccurrence {
         unsafe {
@@ -15180,6 +15477,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualDraughtingCallout {
 }
 
 impl HandleStepVisualDraughtingCallout {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingCallout_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_DraughtingCallout
     pub fn get(&self) -> &crate::ffi_types::StepVisual_DraughtingCallout {
         unsafe {
@@ -15807,6 +16113,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualDraughtingModel {
 }
 
 impl HandleStepVisualDraughtingModel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingModel_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_DraughtingModel
     pub fn get(&self) -> &crate::ffi_types::StepVisual_DraughtingModel {
         unsafe {
@@ -16077,6 +16390,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualDraughtingPreDefinedColour {
 }
 
 impl HandleStepVisualDraughtingPreDefinedColour {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingPreDefinedColour_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_DraughtingPreDefinedColour
     pub fn get(&self) -> &crate::ffi_types::StepVisual_DraughtingPreDefinedColour {
         unsafe {
@@ -16346,6 +16668,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualDraughtingPreDefinedCurveFont
 }
 
 impl HandleStepVisualDraughtingPreDefinedCurveFont {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingPreDefinedCurveFont_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_DraughtingPreDefinedCurveFont
     pub fn get(&self) -> &crate::ffi_types::StepVisual_DraughtingPreDefinedCurveFont {
         unsafe {
@@ -16885,6 +17216,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualExternallyDefinedCurveFont {
 }
 
 impl HandleStepVisualExternallyDefinedCurveFont {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualExternallyDefinedCurveFont_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_ExternallyDefinedCurveFont
     pub fn get(&self) -> &crate::ffi_types::StepVisual_ExternallyDefinedCurveFont {
         unsafe {
@@ -17168,6 +17508,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualExternallyDefinedTextFont {
 }
 
 impl HandleStepVisualExternallyDefinedTextFont {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualExternallyDefinedTextFont_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_ExternallyDefinedTextFont
     pub fn get(&self) -> &crate::ffi_types::StepVisual_ExternallyDefinedTextFont {
         unsafe {
@@ -17712,6 +18061,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualFillAreaStyle {
 }
 
 impl HandleStepVisualFillAreaStyle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualFillAreaStyle_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_FillAreaStyle
     pub fn get(&self) -> &crate::ffi_types::StepVisual_FillAreaStyle {
         unsafe {
@@ -17975,6 +18331,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualFillAreaStyleColour {
 }
 
 impl HandleStepVisualFillAreaStyleColour {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualFillAreaStyleColour_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_FillAreaStyleColour
     pub fn get(&self) -> &crate::ffi_types::StepVisual_FillAreaStyleColour {
         unsafe {
@@ -18726,6 +19091,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfAnnotationPlaneEleme
 }
 
 impl HandleStepVisualHArray1OfAnnotationPlaneElement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfAnnotationPlaneElement_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfAnnotationPlaneElement
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfAnnotationPlaneElement {
         unsafe {
@@ -18971,6 +19345,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfBoxCharacteristicSel
 }
 
 impl HandleStepVisualHArray1OfBoxCharacteristicSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfBoxCharacteristicSelect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfBoxCharacteristicSelect
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfBoxCharacteristicSelect {
         unsafe {
@@ -19199,6 +19582,13 @@ unsafe impl crate::CppCopyable
 }
 
 impl HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
     pub fn get(
         &self,
@@ -19422,6 +19812,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfCameraModelD3MultiCl
 }
 
 impl HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect
     pub fn get(
         &self,
@@ -19678,6 +20075,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfCurveStyleFontPatter
 }
 
 impl HandleStepVisualHArray1OfCurveStyleFontPattern {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCurveStyleFontPattern_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfCurveStyleFontPattern
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfCurveStyleFontPattern {
         unsafe {
@@ -19938,6 +20344,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfDirectionCountSelect
 }
 
 impl HandleStepVisualHArray1OfDirectionCountSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfDirectionCountSelect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfDirectionCountSelect
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfDirectionCountSelect {
         unsafe {
@@ -20180,6 +20595,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfDraughtingCalloutEle
 }
 
 impl HandleStepVisualHArray1OfDraughtingCalloutElement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfDraughtingCalloutElement_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfDraughtingCalloutElement
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfDraughtingCalloutElement {
         unsafe {
@@ -20443,6 +20867,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfFillStyleSelect {
 }
 
 impl HandleStepVisualHArray1OfFillStyleSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfFillStyleSelect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfFillStyleSelect
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfFillStyleSelect {
         unsafe {
@@ -20711,6 +21144,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfInvisibleItem {
 }
 
 impl HandleStepVisualHArray1OfInvisibleItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfInvisibleItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfInvisibleItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfInvisibleItem {
         unsafe {
@@ -20983,6 +21425,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfLayeredItem {
 }
 
 impl HandleStepVisualHArray1OfLayeredItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfLayeredItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfLayeredItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfLayeredItem {
         unsafe {
@@ -21218,6 +21669,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfPresentationStyleAss
 }
 
 impl HandleStepVisualHArray1OfPresentationStyleAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfPresentationStyleAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfPresentationStyleAssignment
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfPresentationStyleAssignment {
         unsafe {
@@ -21457,6 +21917,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfPresentationStyleSel
 }
 
 impl HandleStepVisualHArray1OfPresentationStyleSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfPresentationStyleSelect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfPresentationStyleSelect
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfPresentationStyleSelect {
         unsafe {
@@ -21697,6 +22166,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfRenderingPropertiesS
 }
 
 impl HandleStepVisualHArray1OfRenderingPropertiesSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfRenderingPropertiesSelect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfRenderingPropertiesSelect
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfRenderingPropertiesSelect {
         unsafe {
@@ -21959,6 +22437,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfStyleContextSelect {
 }
 
 impl HandleStepVisualHArray1OfStyleContextSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfStyleContextSelect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfStyleContextSelect
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfStyleContextSelect {
         unsafe {
@@ -22201,6 +22688,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfSurfaceStyleElementS
 }
 
 impl HandleStepVisualHArray1OfSurfaceStyleElementSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfSurfaceStyleElementSelect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfSurfaceStyleElementSelect
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfSurfaceStyleElementSelect {
         unsafe {
@@ -22444,6 +22940,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfTessellatedEdgeOrVer
 }
 
 impl HandleStepVisualHArray1OfTessellatedEdgeOrVertex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTessellatedEdgeOrVertex_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfTessellatedEdgeOrVertex
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfTessellatedEdgeOrVertex {
         unsafe {
@@ -22684,6 +23189,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfTessellatedStructure
 }
 
 impl HandleStepVisualHArray1OfTessellatedStructuredItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTessellatedStructuredItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfTessellatedStructuredItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfTessellatedStructuredItem {
         unsafe {
@@ -22947,6 +23461,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfTextOrCharacter {
 }
 
 impl HandleStepVisualHArray1OfTextOrCharacter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTextOrCharacter_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_HArray1OfTextOrCharacter
     pub fn get(&self) -> &crate::ffi_types::StepVisual_HArray1OfTextOrCharacter {
         unsafe {
@@ -23215,6 +23738,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualInvisibility {
 }
 
 impl HandleStepVisualInvisibility {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualInvisibility_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_Invisibility
     pub fn get(&self) -> &crate::ffi_types::StepVisual_Invisibility {
         unsafe {
@@ -24481,6 +25011,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualMarkerMember {
 }
 
 impl HandleStepVisualMarkerMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualMarkerMember_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_MarkerMember
     pub fn get(&self) -> &crate::ffi_types::StepVisual_MarkerMember {
         unsafe {
@@ -25033,6 +25570,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualMechanicalDesignGeometricPres
 }
 
 impl HandleStepVisualMechanicalDesignGeometricPresentationArea {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualMechanicalDesignGeometricPresentationArea_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_MechanicalDesignGeometricPresentationArea
     pub fn get(&self) -> &crate::ffi_types::StepVisual_MechanicalDesignGeometricPresentationArea {
         unsafe {
@@ -25337,6 +25881,13 @@ unsafe impl crate::CppCopyable
 }
 
 impl HandleStepVisualMechanicalDesignGeometricPresentationRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualMechanicalDesignGeometricPresentationRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_MechanicalDesignGeometricPresentationRepresentation
     pub fn get(
         &self,
@@ -25808,6 +26359,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualNullStyleMember {
 }
 
 impl HandleStepVisualNullStyleMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualNullStyleMember_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_NullStyleMember
     pub fn get(&self) -> &crate::ffi_types::StepVisual_NullStyleMember {
         unsafe {
@@ -26206,6 +26764,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualOverRidingStyledItem {
 }
 
 impl HandleStepVisualOverRidingStyledItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualOverRidingStyledItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_OverRidingStyledItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_OverRidingStyledItem {
         unsafe {
@@ -26861,6 +27428,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualPlanarBox {
 }
 
 impl HandleStepVisualPlanarBox {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPlanarBox_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PlanarBox
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PlanarBox {
         unsafe {
@@ -27206,6 +27780,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualPlanarExtent {
 }
 
 impl HandleStepVisualPlanarExtent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPlanarExtent_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PlanarExtent
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PlanarExtent {
         unsafe {
@@ -27535,6 +28116,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualPointStyle {
 }
 
 impl HandleStepVisualPointStyle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPointStyle_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PointStyle
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PointStyle {
         unsafe {
@@ -27791,6 +28379,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPreDefinedColour {
 }
 
 impl HandleStepVisualPreDefinedColour {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedColour_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PreDefinedColour
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PreDefinedColour {
         unsafe {
@@ -28065,6 +28662,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPreDefinedCurveFont {
 }
 
 impl HandleStepVisualPreDefinedCurveFont {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedCurveFont_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PreDefinedCurveFont
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PreDefinedCurveFont {
         unsafe {
@@ -28322,6 +28928,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualPreDefinedItem {
 }
 
 impl HandleStepVisualPreDefinedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedItem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PreDefinedItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PreDefinedItem {
         unsafe {
@@ -28624,6 +29237,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPreDefinedTextFont {
 }
 
 impl HandleStepVisualPreDefinedTextFont {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedTextFont_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PreDefinedTextFont
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PreDefinedTextFont {
         unsafe {
@@ -28987,6 +29609,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPresentationArea {
 }
 
 impl HandleStepVisualPresentationArea {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationArea_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PresentationArea
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PresentationArea {
         unsafe {
@@ -29325,6 +29956,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPresentationLayerAssignment {
 }
 
 impl HandleStepVisualPresentationLayerAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationLayerAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PresentationLayerAssignment
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PresentationLayerAssignment {
         unsafe {
@@ -29596,6 +30236,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPresentationLayerUsage {
 }
 
 impl HandleStepVisualPresentationLayerUsage {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationLayerUsage_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PresentationLayerUsage
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PresentationLayerUsage {
         unsafe {
@@ -29910,6 +30559,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPresentationRepresentation {
 }
 
 impl HandleStepVisualPresentationRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PresentationRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PresentationRepresentation {
         unsafe {
@@ -30405,6 +31063,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualPresentationSet {
 }
 
 impl HandleStepVisualPresentationSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationSet_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PresentationSet
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PresentationSet {
         unsafe {
@@ -30664,6 +31329,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPresentationSize {
 }
 
 impl HandleStepVisualPresentationSize {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationSize_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PresentationSize
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PresentationSize {
         unsafe {
@@ -31139,6 +31813,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPresentationStyleAssignment {
 }
 
 impl HandleStepVisualPresentationStyleAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationStyleAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PresentationStyleAssignment
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PresentationStyleAssignment {
         unsafe {
@@ -31445,6 +32128,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPresentationStyleByContext {
 }
 
 impl HandleStepVisualPresentationStyleByContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationStyleByContext_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PresentationStyleByContext
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PresentationStyleByContext {
         unsafe {
@@ -32089,6 +32781,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPresentationView {
 }
 
 impl HandleStepVisualPresentationView {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationView_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PresentationView
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PresentationView {
         unsafe {
@@ -32313,6 +33014,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualPresentedItem {
 }
 
 impl HandleStepVisualPresentedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentedItem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PresentedItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PresentedItem {
         unsafe {
@@ -32598,6 +33306,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualPresentedItemRepresentation {
 }
 
 impl HandleStepVisualPresentedItemRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentedItemRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_PresentedItemRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepVisual_PresentedItemRepresentation {
         unsafe {
@@ -33145,6 +33862,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualRepositionedTessellatedGeomet
 }
 
 impl HandleStepVisualRepositionedTessellatedGeometricSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualRepositionedTessellatedGeometricSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_RepositionedTessellatedGeometricSet
     pub fn get(&self) -> &crate::ffi_types::StepVisual_RepositionedTessellatedGeometricSet {
         unsafe {
@@ -33486,6 +34212,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualRepositionedTessellatedItem {
 }
 
 impl HandleStepVisualRepositionedTessellatedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualRepositionedTessellatedItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_RepositionedTessellatedItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_RepositionedTessellatedItem {
         unsafe {
@@ -34131,6 +34866,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualStyledItem {
 }
 
 impl HandleStepVisualStyledItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualStyledItem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_StyledItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_StyledItem {
         unsafe {
@@ -34878,6 +35620,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceSideStyle {
 }
 
 impl HandleStepVisualSurfaceSideStyle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceSideStyle_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceSideStyle
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceSideStyle {
         unsafe {
@@ -35116,6 +35867,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleBoundary {
 }
 
 impl HandleStepVisualSurfaceStyleBoundary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleBoundary_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceStyleBoundary
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceStyleBoundary {
         unsafe {
@@ -35349,6 +36109,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleControlGrid {
 }
 
 impl HandleStepVisualSurfaceStyleControlGrid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleControlGrid_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceStyleControlGrid
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceStyleControlGrid {
         unsafe {
@@ -35851,6 +36620,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleFillArea {
 }
 
 impl HandleStepVisualSurfaceStyleFillArea {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleFillArea_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceStyleFillArea
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceStyleFillArea {
         unsafe {
@@ -36125,6 +36903,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleParameterLine {
 }
 
 impl HandleStepVisualSurfaceStyleParameterLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleParameterLine_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceStyleParameterLine
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceStyleParameterLine {
         unsafe {
@@ -36347,6 +37134,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleReflectanceAmbien
 }
 
 impl HandleStepVisualSurfaceStyleReflectanceAmbient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleReflectanceAmbient_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceStyleReflectanceAmbient
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceStyleReflectanceAmbient {
         unsafe {
@@ -36619,6 +37415,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleRendering {
 }
 
 impl HandleStepVisualSurfaceStyleRendering {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleRendering_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceStyleRendering
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceStyleRendering {
         unsafe {
@@ -36900,6 +37705,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleRenderingWithProp
 }
 
 impl HandleStepVisualSurfaceStyleRenderingWithProperties {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleRenderingWithProperties_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceStyleRenderingWithProperties
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceStyleRenderingWithProperties {
         unsafe {
@@ -37133,6 +37947,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleSegmentationCurve
 }
 
 impl HandleStepVisualSurfaceStyleSegmentationCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleSegmentationCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceStyleSegmentationCurve
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceStyleSegmentationCurve {
         unsafe {
@@ -37373,6 +38196,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleSilhouette {
 }
 
 impl HandleStepVisualSurfaceStyleSilhouette {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleSilhouette_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceStyleSilhouette
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceStyleSilhouette {
         unsafe {
@@ -37607,6 +38439,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleTransparent {
 }
 
 impl HandleStepVisualSurfaceStyleTransparent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleTransparent_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceStyleTransparent
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceStyleTransparent {
         unsafe {
@@ -37869,6 +38710,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleUsage {
 }
 
 impl HandleStepVisualSurfaceStyleUsage {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleUsage_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_SurfaceStyleUsage
     pub fn get(&self) -> &crate::ffi_types::StepVisual_SurfaceStyleUsage {
         unsafe {
@@ -38203,6 +39053,11 @@ unsafe impl crate::CppCopyable for HandleStepVisualTemplate {
 }
 
 impl HandleStepVisualTemplate {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepVisualTemplate_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_Template
     pub fn get(&self) -> &crate::ffi_types::StepVisual_Template {
         unsafe {
@@ -38548,6 +39403,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTemplateInstance {
 }
 
 impl HandleStepVisualTemplateInstance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTemplateInstance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TemplateInstance
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TemplateInstance {
         unsafe {
@@ -38873,6 +39737,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedAnnotationOccurren
 }
 
 impl HandleStepVisualTessellatedAnnotationOccurrence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedAnnotationOccurrence_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedAnnotationOccurrence
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedAnnotationOccurrence {
         unsafe {
@@ -39461,6 +40334,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedConnectingEdge {
 }
 
 impl HandleStepVisualTessellatedConnectingEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedConnectingEdge_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedConnectingEdge
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedConnectingEdge {
         unsafe {
@@ -39825,6 +40707,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedCurveSet {
 }
 
 impl HandleStepVisualTessellatedCurveSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedCurveSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedCurveSet
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedCurveSet {
         unsafe {
@@ -40274,6 +41165,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedEdge {
 }
 
 impl HandleStepVisualTessellatedEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedEdge_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedEdge
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedEdge {
         unsafe {
@@ -41019,6 +41917,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedFace {
 }
 
 impl HandleStepVisualTessellatedFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedFace_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedFace
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedFace {
         unsafe {
@@ -41401,6 +42306,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedGeometricSet {
 }
 
 impl HandleStepVisualTessellatedGeometricSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedGeometricSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedGeometricSet
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedGeometricSet {
         unsafe {
@@ -41719,6 +42633,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedItem {
 }
 
 impl HandleStepVisualTessellatedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedItem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedItem {
         unsafe {
@@ -42447,6 +43368,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedPointSet {
 }
 
 impl HandleStepVisualTessellatedPointSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedPointSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedPointSet
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedPointSet {
         unsafe {
@@ -42793,6 +43723,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedShapeRepresentatio
 }
 
 impl HandleStepVisualTessellatedShapeRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShapeRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedShapeRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedShapeRepresentation {
         unsafe {
@@ -43172,6 +44111,13 @@ unsafe impl crate::CppCopyable
 }
 
 impl HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedShapeRepresentationWithAccuracyParameters
     pub fn get(
         &self,
@@ -43582,6 +44528,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedShell {
 }
 
 impl HandleStepVisualTessellatedShell {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShell_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedShell
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedShell {
         unsafe {
@@ -43993,6 +44948,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedSolid {
 }
 
 impl HandleStepVisualTessellatedSolid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedSolid_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedSolid
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedSolid {
         unsafe {
@@ -44296,6 +45260,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedStructuredItem {
 }
 
 impl HandleStepVisualTessellatedStructuredItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedStructuredItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedStructuredItem
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedStructuredItem {
         unsafe {
@@ -44826,6 +45799,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedSurfaceSet {
 }
 
 impl HandleStepVisualTessellatedSurfaceSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedSurfaceSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedSurfaceSet
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedSurfaceSet {
         unsafe {
@@ -45289,6 +46271,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedVertex {
 }
 
 impl HandleStepVisualTessellatedVertex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedVertex_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedVertex
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedVertex {
         unsafe {
@@ -45703,6 +46694,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualTessellatedWire {
 }
 
 impl HandleStepVisualTessellatedWire {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedWire_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TessellatedWire
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TessellatedWire {
         unsafe {
@@ -46107,6 +47105,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualTextLiteral {
 }
 
 impl HandleStepVisualTextLiteral {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTextLiteral_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TextLiteral
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TextLiteral {
         unsafe {
@@ -46663,6 +47668,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualTextStyle {
 }
 
 impl HandleStepVisualTextStyle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyle_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TextStyle
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TextStyle {
         unsafe {
@@ -46912,6 +47924,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTextStyleForDefinedFont {
 }
 
 impl HandleStepVisualTextStyleForDefinedFont {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyleForDefinedFont_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TextStyleForDefinedFont
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TextStyleForDefinedFont {
         unsafe {
@@ -47197,6 +48218,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTextStyleWithBoxCharacteristi
 }
 
 impl HandleStepVisualTextStyleWithBoxCharacteristics {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyleWithBoxCharacteristics_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TextStyleWithBoxCharacteristics
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TextStyleWithBoxCharacteristics {
         unsafe {
@@ -47723,6 +48753,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTriangulatedFace {
 }
 
 impl HandleStepVisualTriangulatedFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTriangulatedFace_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TriangulatedFace
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TriangulatedFace {
         unsafe {
@@ -48233,6 +49272,15 @@ unsafe impl crate::CppCopyable for HandleStepVisualTriangulatedSurfaceSet {
 }
 
 impl HandleStepVisualTriangulatedSurfaceSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTriangulatedSurfaceSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_TriangulatedSurfaceSet
     pub fn get(&self) -> &crate::ffi_types::StepVisual_TriangulatedSurfaceSet {
         unsafe {
@@ -48679,6 +49727,13 @@ unsafe impl crate::CppCopyable for HandleStepVisualViewVolume {
 }
 
 impl HandleStepVisualViewVolume {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualViewVolume_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepVisual_ViewVolume
     pub fn get(&self) -> &crate::ffi_types::StepVisual_ViewVolume {
         unsafe {

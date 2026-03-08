@@ -88,6 +88,9 @@ extern "C" {
     pub fn HandleDEOBJConfigurationNode_clone(
         self_: *const HandleDEOBJConfigurationNode,
     ) -> crate::OcctResult<*mut HandleDEOBJConfigurationNode>;
+    /// Check if Handle<DEOBJ_ConfigurationNode> is null
+    pub fn HandleDEOBJConfigurationNode_is_null(self_: *const HandleDEOBJConfigurationNode)
+        -> bool;
     /// Dereference Handle to get *const DEOBJ_ConfigurationNode
     pub fn HandleDEOBJConfigurationNode_get(
         handle: *const HandleDEOBJConfigurationNode,
@@ -281,6 +284,8 @@ extern "C" {
     pub fn HandleDEOBJProvider_clone(
         self_: *const HandleDEOBJProvider,
     ) -> crate::OcctResult<*mut HandleDEOBJProvider>;
+    /// Check if Handle<DEOBJ_Provider> is null
+    pub fn HandleDEOBJProvider_is_null(self_: *const HandleDEOBJProvider) -> bool;
     /// Dereference Handle to get *const DEOBJ_Provider
     pub fn HandleDEOBJProvider_get(
         handle: *const HandleDEOBJProvider,
@@ -382,6 +387,8 @@ extern "C" {
     pub fn HandleRWObjCafReader_clone(
         self_: *const HandleRWObjCafReader,
     ) -> crate::OcctResult<*mut HandleRWObjCafReader>;
+    /// Check if Handle<RWObj_CafReader> is null
+    pub fn HandleRWObjCafReader_is_null(self_: *const HandleRWObjCafReader) -> bool;
     /// Dereference Handle to get *const RWObj_CafReader
     pub fn HandleRWObjCafReader_get(
         handle: *const HandleRWObjCafReader,
@@ -615,6 +622,8 @@ extern "C" {
     pub fn HandleRWObjCafWriter_clone(
         self_: *const HandleRWObjCafWriter,
     ) -> crate::OcctResult<*mut HandleRWObjCafWriter>;
+    /// Check if Handle<RWObj_CafWriter> is null
+    pub fn HandleRWObjCafWriter_is_null(self_: *const HandleRWObjCafWriter) -> bool;
     /// Dereference Handle to get *const RWObj_CafWriter
     pub fn HandleRWObjCafWriter_get(
         handle: *const HandleRWObjCafWriter,
@@ -725,6 +734,8 @@ extern "C" {
     pub fn HandleRWObjObjMaterialMap_clone(
         self_: *const HandleRWObjObjMaterialMap,
     ) -> crate::OcctResult<*mut HandleRWObjObjMaterialMap>;
+    /// Check if Handle<RWObj_ObjMaterialMap> is null
+    pub fn HandleRWObjObjMaterialMap_is_null(self_: *const HandleRWObjObjMaterialMap) -> bool;
     /// Dereference Handle to get *const RWObj_ObjMaterialMap
     pub fn HandleRWObjObjMaterialMap_get(
         handle: *const HandleRWObjObjMaterialMap,
@@ -969,6 +980,8 @@ extern "C" {
     pub fn HandleRWObjReader_clone(
         self_: *const HandleRWObjReader,
     ) -> crate::OcctResult<*mut HandleRWObjReader>;
+    /// Check if Handle<RWObj_Reader> is null
+    pub fn HandleRWObjReader_is_null(self_: *const HandleRWObjReader) -> bool;
     /// Dereference Handle to get *const RWObj_Reader
     pub fn HandleRWObjReader_get(
         handle: *const HandleRWObjReader,
@@ -1083,6 +1096,10 @@ extern "C" {
     pub fn HandleRWObjTriangulationReader_clone(
         self_: *const HandleRWObjTriangulationReader,
     ) -> crate::OcctResult<*mut HandleRWObjTriangulationReader>;
+    /// Check if Handle<RWObj_TriangulationReader> is null
+    pub fn HandleRWObjTriangulationReader_is_null(
+        self_: *const HandleRWObjTriangulationReader,
+    ) -> bool;
     /// Dereference Handle to get *const RWObj_TriangulationReader
     pub fn HandleRWObjTriangulationReader_get(
         handle: *const HandleRWObjTriangulationReader,

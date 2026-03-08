@@ -80,6 +80,10 @@ extern "C" {
     pub fn HandleStdLDriversDocumentRetrievalDriver_clone(
         self_: *const HandleStdLDriversDocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut HandleStdLDriversDocumentRetrievalDriver>;
+    /// Check if Handle<StdLDrivers_DocumentRetrievalDriver> is null
+    pub fn HandleStdLDriversDocumentRetrievalDriver_is_null(
+        self_: *const HandleStdLDriversDocumentRetrievalDriver,
+    ) -> bool;
     /// Dereference Handle to get *const StdLDrivers_DocumentRetrievalDriver
     pub fn HandleStdLDriversDocumentRetrievalDriver_get(
         handle: *const HandleStdLDriversDocumentRetrievalDriver,
@@ -200,6 +204,8 @@ extern "C" {
     pub fn HandleStdLPersistentData_clone(
         self_: *const HandleStdLPersistentData,
     ) -> crate::OcctResult<*mut HandleStdLPersistentData>;
+    /// Check if Handle<StdLPersistent_Data> is null
+    pub fn HandleStdLPersistentData_is_null(self_: *const HandleStdLPersistentData) -> bool;
     /// Dereference Handle to get *const StdLPersistent_Data
     pub fn HandleStdLPersistentData_get(
         handle: *const HandleStdLPersistentData,
@@ -342,6 +348,9 @@ extern "C" {
     pub fn HandleStdLPersistentDocument_clone(
         self_: *const HandleStdLPersistentDocument,
     ) -> crate::OcctResult<*mut HandleStdLPersistentDocument>;
+    /// Check if Handle<StdLPersistent_Document> is null
+    pub fn HandleStdLPersistentDocument_is_null(self_: *const HandleStdLPersistentDocument)
+        -> bool;
     /// Dereference Handle to get *const StdLPersistent_Document
     pub fn HandleStdLPersistentDocument_get(
         handle: *const HandleStdLPersistentDocument,
@@ -520,6 +529,10 @@ extern "C" {
     pub fn HandleStdLPersistentHArray1OfPersistent_clone(
         self_: *const HandleStdLPersistentHArray1OfPersistent,
     ) -> crate::OcctResult<*mut HandleStdLPersistentHArray1OfPersistent>;
+    /// Check if Handle<StdLPersistent_HArray1OfPersistent> is null
+    pub fn HandleStdLPersistentHArray1OfPersistent_is_null(
+        self_: *const HandleStdLPersistentHArray1OfPersistent,
+    ) -> bool;
     /// Dereference Handle to get *const StdLPersistent_HArray1OfPersistent
     pub fn HandleStdLPersistentHArray1OfPersistent_get(
         handle: *const HandleStdLPersistentHArray1OfPersistent,
@@ -623,6 +636,10 @@ extern "C" {
     pub fn HandleStdLPersistentHArray2OfPersistent_clone(
         self_: *const HandleStdLPersistentHArray2OfPersistent,
     ) -> crate::OcctResult<*mut HandleStdLPersistentHArray2OfPersistent>;
+    /// Check if Handle<StdLPersistent_HArray2OfPersistent> is null
+    pub fn HandleStdLPersistentHArray2OfPersistent_is_null(
+        self_: *const HandleStdLPersistentHArray2OfPersistent,
+    ) -> bool;
     /// Dereference Handle to get *const StdLPersistent_HArray2OfPersistent
     pub fn HandleStdLPersistentHArray2OfPersistent_get(
         handle: *const HandleStdLPersistentHArray2OfPersistent,
@@ -1005,6 +1022,8 @@ extern "C" {
     pub fn HandleStdObjMgtPersistent_clone(
         self_: *const HandleStdObjMgtPersistent,
     ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    /// Check if Handle<StdObjMgt_Persistent> is null
+    pub fn HandleStdObjMgtPersistent_is_null(self_: *const HandleStdObjMgtPersistent) -> bool;
     /// Dereference Handle to get *const StdObjMgt_Persistent
     pub fn HandleStdObjMgtPersistent_get(
         handle: *const HandleStdObjMgtPersistent,

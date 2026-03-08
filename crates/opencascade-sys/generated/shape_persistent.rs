@@ -560,6 +560,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepPointRepresentation 
 }
 
 impl HandleShapePersistentBRepPointRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepPointRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PointRepresentation
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PointRepresentation {
         unsafe {
@@ -709,6 +718,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepPointOnCurve {
 }
 
 impl HandleShapePersistentBRepPointOnCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PointOnCurve
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PointOnCurve {
         unsafe {
@@ -907,6 +925,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepPointOnCurveOnSurfac
 }
 
 impl HandleShapePersistentBRepPointOnCurveOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnCurveOnSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PointOnCurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PointOnCurveOnSurface {
         unsafe {
@@ -1024,6 +1051,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepPointOnSurface {
 }
 
 impl HandleShapePersistentBRepPointOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PointOnSurface
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PointOnSurface {
         unsafe {
@@ -1339,6 +1375,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepCurveRepresentation 
 }
 
 impl HandleShapePersistentBRepCurveRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_CurveRepresentation
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_CurveRepresentation {
         unsafe {
@@ -1531,6 +1576,13 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepCurve3D {
 }
 
 impl HandleShapePersistentBRepCurve3D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepCurve3D_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_Curve3D
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_Curve3D {
         unsafe {
@@ -1660,6 +1712,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepCurveOnSurface {
 }
 
 impl HandleShapePersistentBRepCurveOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOnSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_CurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_CurveOnSurface {
         unsafe {
@@ -1790,6 +1851,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepCurveOnClosedSurface
 }
 
 impl HandleShapePersistentBRepCurveOnClosedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOnClosedSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_CurveOnClosedSurface
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_CurveOnClosedSurface {
         unsafe {
@@ -1913,6 +1983,13 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepPolygon3D {
 }
 
 impl HandleShapePersistentBRepPolygon3D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygon3D_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_Polygon3D
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_Polygon3D {
         unsafe {
@@ -2042,6 +2119,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepPolygonOnTriangulati
 }
 
 impl HandleShapePersistentBRepPolygonOnTriangulation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnTriangulation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnTriangulation
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PolygonOnTriangulation {
         unsafe {
@@ -2176,6 +2262,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepPolygonOnClosedTrian
 }
 
 impl HandleShapePersistentBRepPolygonOnClosedTriangulation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnClosedTriangulation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnClosedTriangulation
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PolygonOnClosedTriangulation {
         unsafe {
@@ -2305,6 +2400,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepPolygonOnSurface {
 }
 
 impl HandleShapePersistentBRepPolygonOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnSurface
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PolygonOnSurface {
         unsafe {
@@ -2436,6 +2540,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepPolygonOnClosedSurfa
 }
 
 impl HandleShapePersistentBRepPolygonOnClosedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnClosedSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnClosedSurface
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PolygonOnClosedSurface {
         unsafe {
@@ -2568,6 +2681,15 @@ unsafe impl crate::CppCopyable for HandleShapePersistentBRepCurveOn2Surfaces {
 }
 
 impl HandleShapePersistentBRepCurveOn2Surfaces {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOn2Surfaces_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_CurveOn2Surfaces
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_CurveOn2Surfaces {
         unsafe {
@@ -2958,6 +3080,13 @@ unsafe impl crate::CppCopyable for HandleShapePersistentGeomGeometry {
 }
 
 impl HandleShapePersistentGeomGeometry {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentGeomGeometry_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_Geom_Geometry
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_Geom_Geometry {
         unsafe {
@@ -3938,6 +4067,13 @@ unsafe impl crate::CppCopyable for HandleShapePersistentTopoDSHShape {
 }
 
 impl HandleShapePersistentTopoDSHShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleShapePersistentTopoDSHShape_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapePersistent_TopoDS_HShape
     pub fn get(&self) -> &crate::ffi_types::ShapePersistent_TopoDS_HShape {
         unsafe {

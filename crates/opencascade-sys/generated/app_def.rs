@@ -2595,6 +2595,15 @@ unsafe impl crate::CppCopyable for HandleAppDefHArray1OfMultiPointConstraint {
 }
 
 impl HandleAppDefHArray1OfMultiPointConstraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppDefHArray1OfMultiPointConstraint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying AppDef_HArray1OfMultiPointConstraint
     pub fn get(&self) -> &crate::ffi_types::AppDef_HArray1OfMultiPointConstraint {
         unsafe {
@@ -3047,6 +3056,13 @@ unsafe impl crate::CppCopyable for HandleAppDefLinearCriteria {
 }
 
 impl HandleAppDefLinearCriteria {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying AppDef_LinearCriteria
     pub fn get(&self) -> &crate::ffi_types::AppDef_LinearCriteria {
         unsafe {
@@ -6835,6 +6851,13 @@ unsafe impl crate::CppCopyable for HandleAppDefSmoothCriterion {
 }
 
 impl HandleAppDefSmoothCriterion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying AppDef_SmoothCriterion
     pub fn get(&self) -> &crate::ffi_types::AppDef_SmoothCriterion {
         unsafe {

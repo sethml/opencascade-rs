@@ -4994,8 +4994,13 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             handle_type_name, handle_type_name
         ));
 
-        // Generate impl block with get(), get_mut(), and upcast methods
+        // Generate impl block with is_null(), get(), get_mut(), and upcast methods
         output.push_str(&format!("impl {} {{\n", handle_type_name));
+        // is_null() - check if handle is null
+        output.push_str(&format!(
+            "    /// Returns `true` if this Handle is null (doesn't point to any object).\n    pub fn is_null(&self) -> bool {{\n        unsafe {{ crate::ffi::{}_is_null(self as *const Self) }}\n    }}\n",
+            handle_type_name
+        ));
         // get() - dereference handle to &T
         output.push_str(&format!(
             "    /// Dereference this Handle to access the underlying {}\n    pub fn get(&self) -> &crate::ffi::{} {{\n        unsafe {{ &*crate::check_result(crate::ffi::{}_get(self as *const Self)) }}\n    }}\n",
@@ -5275,13 +5280,15 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
         writeln!(out, "    pub fn {}_to_handle(obj: *mut {}) -> crate::OcctResult<*mut {}>;", cn, cn, handle_type_name).unwrap();
     }
 
-    // ── Handle get (dereference) and clone ──────────────────────────────────
+    // ── Handle get (dereference), clone, and is_null ──────────────────────────
     if bindings.has_handle_get {
         let handle_type_name = type_mapping::handle_type_name(cn);
         writeln!(out, "    /// Destroy Handle<{}>", cn).unwrap();
         writeln!(out, "    pub fn {}_destructor(self_: *mut {});", handle_type_name, handle_type_name).unwrap();
         writeln!(out, "    /// Clone Handle<{}> (increments reference count)", cn).unwrap();
         writeln!(out, "    pub fn {}_clone(self_: *const {}) -> crate::OcctResult<*mut {}>;", handle_type_name, handle_type_name, handle_type_name).unwrap();
+        writeln!(out, "    /// Check if Handle<{}> is null", cn).unwrap();
+        writeln!(out, "    pub fn {}_is_null(self_: *const {}) -> bool;", handle_type_name, handle_type_name).unwrap();
         writeln!(out, "    /// Dereference Handle to get *const {}", cn).unwrap();
         writeln!(out, "    pub fn {}_get(handle: *const {}) -> crate::OcctResult<*const {}>;", handle_type_name, handle_type_name, cn).unwrap();
         writeln!(out, "    /// Dereference Handle to get *mut {}", cn).unwrap();

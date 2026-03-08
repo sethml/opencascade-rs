@@ -1054,6 +1054,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenAngularDimension {
 }
 
 impl HandleIGESDimenAngularDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenAngularDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_AngularDimension
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_AngularDimension {
         unsafe {
@@ -2052,6 +2059,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenBasicDimension {
 }
 
 impl HandleIGESDimenBasicDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenBasicDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_BasicDimension
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_BasicDimension {
         unsafe {
@@ -3040,6 +3054,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenCenterLine {
 }
 
 impl HandleIGESDimenCenterLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenCenterLine_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_CenterLine
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_CenterLine {
         unsafe {
@@ -4119,6 +4140,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenCurveDimension {
 }
 
 impl HandleIGESDimenCurveDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenCurveDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_CurveDimension
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_CurveDimension {
         unsafe {
@@ -5122,6 +5150,15 @@ unsafe impl crate::CppCopyable for HandleIGESDimenDiameterDimension {
 }
 
 impl HandleIGESDimenDiameterDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenDiameterDimension_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_DiameterDimension
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_DiameterDimension {
         unsafe {
@@ -6227,6 +6264,15 @@ unsafe impl crate::CppCopyable for HandleIGESDimenDimensionDisplayData {
 }
 
 impl HandleIGESDimenDimensionDisplayData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionDisplayData_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_DimensionDisplayData
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_DimensionDisplayData {
         unsafe {
@@ -7289,6 +7335,15 @@ unsafe impl crate::CppCopyable for HandleIGESDimenDimensionTolerance {
 }
 
 impl HandleIGESDimenDimensionTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_DimensionTolerance
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_DimensionTolerance {
         unsafe {
@@ -8327,6 +8382,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenDimensionUnits {
 }
 
 impl HandleIGESDimenDimensionUnits {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionUnits_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_DimensionUnits
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_DimensionUnits {
         unsafe {
@@ -9297,6 +9359,15 @@ unsafe impl crate::CppCopyable for HandleIGESDimenDimensionedGeometry {
 }
 
 impl HandleIGESDimenDimensionedGeometry {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionedGeometry_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_DimensionedGeometry
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_DimensionedGeometry {
         unsafe {
@@ -10319,6 +10390,11 @@ unsafe impl crate::CppCopyable for HandleIGESDimenFlagNote {
 }
 
 impl HandleIGESDimenFlagNote {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESDimenFlagNote_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_FlagNote
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_FlagNote {
         unsafe {
@@ -11293,6 +11369,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenGeneralLabel {
 }
 
 impl HandleIGESDimenGeneralLabel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralLabel_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_GeneralLabel
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_GeneralLabel {
         unsafe {
@@ -11946,6 +12029,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenGeneralModule {
 }
 
 impl HandleIGESDimenGeneralModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_GeneralModule {
         unsafe {
@@ -13109,6 +13199,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenGeneralNote {
 }
 
 impl HandleIGESDimenGeneralNote {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralNote_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_GeneralNote
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_GeneralNote {
         unsafe {
@@ -14137,6 +14234,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenGeneralSymbol {
 }
 
 impl HandleIGESDimenGeneralSymbol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralSymbol_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_GeneralSymbol
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_GeneralSymbol {
         unsafe {
@@ -14422,6 +14526,15 @@ unsafe impl crate::CppCopyable for HandleIGESDimenHArray1OfGeneralNote {
 }
 
 impl HandleIGESDimenHArray1OfGeneralNote {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenHArray1OfGeneralNote_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_HArray1OfGeneralNote
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_HArray1OfGeneralNote {
         unsafe {
@@ -14698,6 +14811,15 @@ unsafe impl crate::CppCopyable for HandleIGESDimenHArray1OfLeaderArrow {
 }
 
 impl HandleIGESDimenHArray1OfLeaderArrow {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenHArray1OfLeaderArrow_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_HArray1OfLeaderArrow
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_HArray1OfLeaderArrow {
         unsafe {
@@ -15721,6 +15843,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenLeaderArrow {
 }
 
 impl HandleIGESDimenLeaderArrow {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenLeaderArrow_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_LeaderArrow
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_LeaderArrow {
         unsafe {
@@ -16764,6 +16893,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenLinearDimension {
 }
 
 impl HandleIGESDimenLinearDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenLinearDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_LinearDimension
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_LinearDimension {
         unsafe {
@@ -17781,6 +17917,15 @@ unsafe impl crate::CppCopyable for HandleIGESDimenNewDimensionedGeometry {
 }
 
 impl HandleIGESDimenNewDimensionedGeometry {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenNewDimensionedGeometry_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_NewDimensionedGeometry
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_NewDimensionedGeometry {
         unsafe {
@@ -19242,6 +19387,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenNewGeneralNote {
 }
 
 impl HandleIGESDimenNewGeneralNote {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenNewGeneralNote_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_NewGeneralNote
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_NewGeneralNote {
         unsafe {
@@ -20223,6 +20375,15 @@ unsafe impl crate::CppCopyable for HandleIGESDimenOrdinateDimension {
 }
 
 impl HandleIGESDimenOrdinateDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenOrdinateDimension_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_OrdinateDimension
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_OrdinateDimension {
         unsafe {
@@ -21231,6 +21392,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenPointDimension {
 }
 
 impl HandleIGESDimenPointDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenPointDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_PointDimension
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_PointDimension {
         unsafe {
@@ -21622,6 +21790,11 @@ unsafe impl crate::CppCopyable for HandleIGESDimenProtocol {
 }
 
 impl HandleIGESDimenProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESDimenProtocol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_Protocol {
         unsafe {
@@ -22649,6 +22822,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenRadiusDimension {
 }
 
 impl HandleIGESDimenRadiusDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenRadiusDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_RadiusDimension
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_RadiusDimension {
         unsafe {
@@ -23014,6 +23194,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenReadWriteModule {
 }
 
 impl HandleIGESDimenReadWriteModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenReadWriteModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_ReadWriteModule
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_ReadWriteModule {
         unsafe {
@@ -23978,6 +24165,11 @@ unsafe impl crate::CppCopyable for HandleIGESDimenSection {
 }
 
 impl HandleIGESDimenSection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESDimenSection_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_Section
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_Section {
         unsafe {
@@ -25046,6 +25238,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenSectionedArea {
 }
 
 impl HandleIGESDimenSectionedArea {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenSectionedArea_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_SectionedArea
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_SectionedArea {
         unsafe {
@@ -25324,6 +25523,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenSpecificModule {
 }
 
 impl HandleIGESDimenSpecificModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenSpecificModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_SpecificModule
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_SpecificModule {
         unsafe {
@@ -29883,6 +30089,13 @@ unsafe impl crate::CppCopyable for HandleIGESDimenWitnessLine {
 }
 
 impl HandleIGESDimenWitnessLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenWitnessLine_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDimen_WitnessLine
     pub fn get(&self) -> &crate::ffi_types::IGESDimen_WitnessLine {
         unsafe {

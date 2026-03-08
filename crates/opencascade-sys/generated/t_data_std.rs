@@ -694,6 +694,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdAsciiString {
 }
 
 impl HandleTDataStdAsciiString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdAsciiString_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_AsciiString
     pub fn get(&self) -> &crate::ffi_types::TDataStd_AsciiString {
         unsafe {
@@ -1423,6 +1428,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdBooleanArray {
 }
 
 impl HandleTDataStdBooleanArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdBooleanArray_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_BooleanArray
     pub fn get(&self) -> &crate::ffi_types::TDataStd_BooleanArray {
         unsafe {
@@ -2161,6 +2171,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdBooleanList {
 }
 
 impl HandleTDataStdBooleanList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdBooleanList_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_BooleanList
     pub fn get(&self) -> &crate::ffi_types::TDataStd_BooleanList {
         unsafe {
@@ -2907,6 +2922,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdByteArray {
 }
 
 impl HandleTDataStdByteArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdByteArray_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_ByteArray
     pub fn get(&self) -> &crate::ffi_types::TDataStd_ByteArray {
         unsafe {
@@ -3692,6 +3712,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdComment {
 }
 
 impl HandleTDataStdComment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdComment_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_Comment
     pub fn get(&self) -> &crate::ffi_types::TDataStd_Comment {
         unsafe {
@@ -4340,6 +4365,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdCurrent {
 }
 
 impl HandleTDataStdCurrent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdCurrent_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_Current
     pub fn get(&self) -> &crate::ffi_types::TDataStd_Current {
         unsafe {
@@ -4618,6 +4648,15 @@ unsafe impl crate::CppCopyable for HandleTDataStdDeltaOnModificationOfByteArray 
 }
 
 impl HandleTDataStdDeltaOnModificationOfByteArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfByteArray_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_DeltaOnModificationOfByteArray
     pub fn get(&self) -> &crate::ffi_types::TDataStd_DeltaOnModificationOfByteArray {
         unsafe {
@@ -4886,6 +4925,15 @@ unsafe impl crate::CppCopyable for HandleTDataStdDeltaOnModificationOfExtStringA
 }
 
 impl HandleTDataStdDeltaOnModificationOfExtStringArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfExtStringArray_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_DeltaOnModificationOfExtStringArray
     pub fn get(&self) -> &crate::ffi_types::TDataStd_DeltaOnModificationOfExtStringArray {
         unsafe {
@@ -5173,6 +5221,15 @@ unsafe impl crate::CppCopyable for HandleTDataStdDeltaOnModificationOfIntArray {
 }
 
 impl HandleTDataStdDeltaOnModificationOfIntArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfIntArray_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_DeltaOnModificationOfIntArray
     pub fn get(&self) -> &crate::ffi_types::TDataStd_DeltaOnModificationOfIntArray {
         unsafe {
@@ -5450,6 +5507,15 @@ unsafe impl crate::CppCopyable for HandleTDataStdDeltaOnModificationOfIntPackedM
 }
 
 impl HandleTDataStdDeltaOnModificationOfIntPackedMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfIntPackedMap_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_DeltaOnModificationOfIntPackedMap
     pub fn get(&self) -> &crate::ffi_types::TDataStd_DeltaOnModificationOfIntPackedMap {
         unsafe {
@@ -5735,6 +5801,15 @@ unsafe impl crate::CppCopyable for HandleTDataStdDeltaOnModificationOfRealArray 
 }
 
 impl HandleTDataStdDeltaOnModificationOfRealArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfRealArray_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_DeltaOnModificationOfRealArray
     pub fn get(&self) -> &crate::ffi_types::TDataStd_DeltaOnModificationOfRealArray {
         unsafe {
@@ -6425,6 +6500,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdDirectory {
 }
 
 impl HandleTDataStdDirectory {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdDirectory_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_Directory
     pub fn get(&self) -> &crate::ffi_types::TDataStd_Directory {
         unsafe {
@@ -7093,6 +7173,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdExpression {
 }
 
 impl HandleTDataStdExpression {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdExpression_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_Expression
     pub fn get(&self) -> &crate::ffi_types::TDataStd_Expression {
         unsafe {
@@ -7893,6 +7978,13 @@ unsafe impl crate::CppCopyable for HandleTDataStdExtStringArray {
 }
 
 impl HandleTDataStdExtStringArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdExtStringArray_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_ExtStringArray
     pub fn get(&self) -> &crate::ffi_types::TDataStd_ExtStringArray {
         unsafe {
@@ -8696,6 +8788,13 @@ unsafe impl crate::CppCopyable for HandleTDataStdExtStringList {
 }
 
 impl HandleTDataStdExtStringList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdExtStringList_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_ExtStringList
     pub fn get(&self) -> &crate::ffi_types::TDataStd_ExtStringList {
         unsafe {
@@ -9268,6 +9367,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdGenericEmpty {
 }
 
 impl HandleTDataStdGenericEmpty {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdGenericEmpty_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_GenericEmpty
     pub fn get(&self) -> &crate::ffi_types::TDataStd_GenericEmpty {
         unsafe {
@@ -10224,6 +10328,13 @@ unsafe impl crate::CppCopyable for HandleTDataStdGenericExtString {
 }
 
 impl HandleTDataStdGenericExtString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdGenericExtString_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_GenericExtString
     pub fn get(&self) -> &crate::ffi_types::TDataStd_GenericExtString {
         unsafe {
@@ -10516,6 +10627,15 @@ unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringByte {
 }
 
 impl HandleTDataStdHDataMapOfStringByte {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringByte_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_HDataMapOfStringByte
     pub fn get(&self) -> &crate::ffi_types::TDataStd_HDataMapOfStringByte {
         unsafe {
@@ -10751,6 +10871,15 @@ unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringHArray1OfIntege
 }
 
 impl HandleTDataStdHDataMapOfStringHArray1OfInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringHArray1OfInteger_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_HDataMapOfStringHArray1OfInteger
     pub fn get(&self) -> &crate::ffi_types::TDataStd_HDataMapOfStringHArray1OfInteger {
         unsafe {
@@ -10988,6 +11117,15 @@ unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringHArray1OfReal {
 }
 
 impl HandleTDataStdHDataMapOfStringHArray1OfReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringHArray1OfReal_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_HDataMapOfStringHArray1OfReal
     pub fn get(&self) -> &crate::ffi_types::TDataStd_HDataMapOfStringHArray1OfReal {
         unsafe {
@@ -11231,6 +11369,15 @@ unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringInteger {
 }
 
 impl HandleTDataStdHDataMapOfStringInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringInteger_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_HDataMapOfStringInteger
     pub fn get(&self) -> &crate::ffi_types::TDataStd_HDataMapOfStringInteger {
         unsafe {
@@ -11478,6 +11625,15 @@ unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringReal {
 }
 
 impl HandleTDataStdHDataMapOfStringReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringReal_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_HDataMapOfStringReal
     pub fn get(&self) -> &crate::ffi_types::TDataStd_HDataMapOfStringReal {
         unsafe {
@@ -11721,6 +11877,15 @@ unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringString {
 }
 
 impl HandleTDataStdHDataMapOfStringString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringString_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_HDataMapOfStringString
     pub fn get(&self) -> &crate::ffi_types::TDataStd_HDataMapOfStringString {
         unsafe {
@@ -11991,6 +12156,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdHLabelArray1 {
 }
 
 impl HandleTDataStdHLabelArray1 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdHLabelArray1_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_HLabelArray1
     pub fn get(&self) -> &crate::ffi_types::TDataStd_HLabelArray1 {
         unsafe {
@@ -12715,6 +12885,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdIntPackedMap {
 }
 
 impl HandleTDataStdIntPackedMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdIntPackedMap_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_IntPackedMap
     pub fn get(&self) -> &crate::ffi_types::TDataStd_IntPackedMap {
         unsafe {
@@ -13372,6 +13547,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdInteger {
 }
 
 impl HandleTDataStdInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdInteger_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_Integer
     pub fn get(&self) -> &crate::ffi_types::TDataStd_Integer {
         unsafe {
@@ -14142,6 +14322,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdIntegerArray {
 }
 
 impl HandleTDataStdIntegerArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdIntegerArray_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_IntegerArray
     pub fn get(&self) -> &crate::ffi_types::TDataStd_IntegerArray {
         unsafe {
@@ -14910,6 +15095,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdIntegerList {
 }
 
 impl HandleTDataStdIntegerList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdIntegerList_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_IntegerList
     pub fn get(&self) -> &crate::ffi_types::TDataStd_IntegerList {
         unsafe {
@@ -15589,6 +15779,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdName {
 }
 
 impl HandleTDataStdName {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdName_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_Name
     pub fn get(&self) -> &crate::ffi_types::TDataStd_Name {
         unsafe {
@@ -16820,6 +17015,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdNamedData {
 }
 
 impl HandleTDataStdNamedData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdNamedData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_NamedData
     pub fn get(&self) -> &crate::ffi_types::TDataStd_NamedData {
         unsafe {
@@ -17509,6 +17709,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdNoteBook {
 }
 
 impl HandleTDataStdNoteBook {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdNoteBook_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_NoteBook
     pub fn get(&self) -> &crate::ffi_types::TDataStd_NoteBook {
         unsafe {
@@ -18167,6 +18372,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdReal {
 }
 
 impl HandleTDataStdReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdReal_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_Real
     pub fn get(&self) -> &crate::ffi_types::TDataStd_Real {
         unsafe {
@@ -18951,6 +19161,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdRealArray {
 }
 
 impl HandleTDataStdRealArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdRealArray_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_RealArray
     pub fn get(&self) -> &crate::ffi_types::TDataStd_RealArray {
         unsafe {
@@ -19707,6 +19922,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdRealList {
 }
 
 impl HandleTDataStdRealList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdRealList_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_RealList
     pub fn get(&self) -> &crate::ffi_types::TDataStd_RealList {
         unsafe {
@@ -20456,6 +20676,13 @@ unsafe impl crate::CppCopyable for HandleTDataStdReferenceArray {
 }
 
 impl HandleTDataStdReferenceArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdReferenceArray_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_ReferenceArray
     pub fn get(&self) -> &crate::ffi_types::TDataStd_ReferenceArray {
         unsafe {
@@ -21250,6 +21477,13 @@ unsafe impl crate::CppCopyable for HandleTDataStdReferenceList {
 }
 
 impl HandleTDataStdReferenceList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdReferenceList_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_ReferenceList
     pub fn get(&self) -> &crate::ffi_types::TDataStd_ReferenceList {
         unsafe {
@@ -21951,6 +22185,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdRelation {
 }
 
 impl HandleTDataStdRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdRelation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_Relation
     pub fn get(&self) -> &crate::ffi_types::TDataStd_Relation {
         unsafe {
@@ -22575,6 +22814,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdTick {
 }
 
 impl HandleTDataStdTick {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdTick_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_Tick
     pub fn get(&self) -> &crate::ffi_types::TDataStd_Tick {
         unsafe {
@@ -23512,6 +23756,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdTreeNode {
 }
 
 impl HandleTDataStdTreeNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdTreeNode_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_TreeNode
     pub fn get(&self) -> &crate::ffi_types::TDataStd_TreeNode {
         unsafe {
@@ -24118,6 +24367,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdUAttribute {
 }
 
 impl HandleTDataStdUAttribute {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdUAttribute_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_UAttribute
     pub fn get(&self) -> &crate::ffi_types::TDataStd_UAttribute {
         unsafe {
@@ -24880,6 +25134,11 @@ unsafe impl crate::CppCopyable for HandleTDataStdVariable {
 }
 
 impl HandleTDataStdVariable {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDataStdVariable_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataStd_Variable
     pub fn get(&self) -> &crate::ffi_types::TDataStd_Variable {
         unsafe {

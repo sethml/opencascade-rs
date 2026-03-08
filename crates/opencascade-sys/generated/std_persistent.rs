@@ -518,6 +518,13 @@ unsafe impl crate::CppCopyable for HandleStdPersistentHArray1OfShape1 {
 }
 
 impl HandleStdPersistentHArray1OfShape1 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleStdPersistentHArray1OfShape1_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdPersistent_HArray1OfShape1
     pub fn get(&self) -> &crate::ffi_types::StdPersistent_HArray1OfShape1 {
         unsafe {
@@ -984,6 +991,13 @@ unsafe impl crate::CppCopyable for HandleStdPersistentNamingName {
 }
 
 impl HandleStdPersistentNamingName {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleStdPersistentNamingName_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdPersistent_Naming_Name
     pub fn get(&self) -> &crate::ffi_types::StdPersistent_Naming_Name {
         unsafe {
@@ -1574,6 +1588,13 @@ unsafe impl crate::CppCopyable for HandleStdPersistentTopLocDatum3D {
 }
 
 impl HandleStdPersistentTopLocDatum3D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleStdPersistentTopLocDatum3D_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdPersistent_TopLoc_Datum3D
     pub fn get(&self) -> &crate::ffi_types::StdPersistent_TopLoc_Datum3D {
         unsafe {
@@ -1921,6 +1942,15 @@ unsafe impl crate::CppCopyable for HandleStdPersistentTopLocItemLocation {
 }
 
 impl HandleStdPersistentTopLocItemLocation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleStdPersistentTopLocItemLocation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdPersistent_TopLoc_ItemLocation
     pub fn get(&self) -> &crate::ffi_types::StdPersistent_TopLoc_ItemLocation {
         unsafe {

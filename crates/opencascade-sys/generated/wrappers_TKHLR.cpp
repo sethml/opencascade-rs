@@ -247,102 +247,121 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
 typedef opencascade::handle<TColgp_HArray1OfXYZ> HandleTColgpHArray1OfXYZ;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleContapTheHSequenceOfPoint_destructor(HandleContapTheHSequenceOfPoint* self_) { delete self_; }
 extern "C" OcctResult<HandleContapTheHSequenceOfPoint*> HandleContapTheHSequenceOfPoint_clone(const HandleContapTheHSequenceOfPoint* self_) {
     try { return {new HandleContapTheHSequenceOfPoint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleContapTheHSequenceOfPoint_is_null(const HandleContapTheHSequenceOfPoint* self_) { return self_->IsNull(); }
 extern "C" void HandleContapTheIWLineOfTheIWalking_destructor(HandleContapTheIWLineOfTheIWalking* self_) { delete self_; }
 extern "C" OcctResult<HandleContapTheIWLineOfTheIWalking*> HandleContapTheIWLineOfTheIWalking_clone(const HandleContapTheIWLineOfTheIWalking* self_) {
     try { return {new HandleContapTheIWLineOfTheIWalking(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleContapTheIWLineOfTheIWalking_is_null(const HandleContapTheIWLineOfTheIWalking* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRAlgoEdgesBlock_destructor(HandleHLRAlgoEdgesBlock* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRAlgoEdgesBlock*> HandleHLRAlgoEdgesBlock_clone(const HandleHLRAlgoEdgesBlock* self_) {
     try { return {new HandleHLRAlgoEdgesBlock(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRAlgoEdgesBlock_is_null(const HandleHLRAlgoEdgesBlock* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRAlgoHArray1OfPHDat_destructor(HandleHLRAlgoHArray1OfPHDat* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRAlgoHArray1OfPHDat*> HandleHLRAlgoHArray1OfPHDat_clone(const HandleHLRAlgoHArray1OfPHDat* self_) {
     try { return {new HandleHLRAlgoHArray1OfPHDat(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRAlgoHArray1OfPHDat_is_null(const HandleHLRAlgoHArray1OfPHDat* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRAlgoHArray1OfPINod_destructor(HandleHLRAlgoHArray1OfPINod* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRAlgoHArray1OfPINod*> HandleHLRAlgoHArray1OfPINod_clone(const HandleHLRAlgoHArray1OfPINod* self_) {
     try { return {new HandleHLRAlgoHArray1OfPINod(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRAlgoHArray1OfPINod_is_null(const HandleHLRAlgoHArray1OfPINod* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRAlgoHArray1OfPISeg_destructor(HandleHLRAlgoHArray1OfPISeg* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRAlgoHArray1OfPISeg*> HandleHLRAlgoHArray1OfPISeg_clone(const HandleHLRAlgoHArray1OfPISeg* self_) {
     try { return {new HandleHLRAlgoHArray1OfPISeg(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRAlgoHArray1OfPISeg_is_null(const HandleHLRAlgoHArray1OfPISeg* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRAlgoHArray1OfTData_destructor(HandleHLRAlgoHArray1OfTData* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRAlgoHArray1OfTData*> HandleHLRAlgoHArray1OfTData_clone(const HandleHLRAlgoHArray1OfTData* self_) {
     try { return {new HandleHLRAlgoHArray1OfTData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRAlgoHArray1OfTData_is_null(const HandleHLRAlgoHArray1OfTData* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRAlgoPolyAlgo_destructor(HandleHLRAlgoPolyAlgo* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRAlgoPolyAlgo*> HandleHLRAlgoPolyAlgo_clone(const HandleHLRAlgoPolyAlgo* self_) {
     try { return {new HandleHLRAlgoPolyAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRAlgoPolyAlgo_is_null(const HandleHLRAlgoPolyAlgo* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRAlgoPolyData_destructor(HandleHLRAlgoPolyData* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRAlgoPolyData*> HandleHLRAlgoPolyData_clone(const HandleHLRAlgoPolyData* self_) {
     try { return {new HandleHLRAlgoPolyData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRAlgoPolyData_is_null(const HandleHLRAlgoPolyData* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRAlgoPolyInternalData_destructor(HandleHLRAlgoPolyInternalData* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRAlgoPolyInternalData*> HandleHLRAlgoPolyInternalData_clone(const HandleHLRAlgoPolyInternalData* self_) {
     try { return {new HandleHLRAlgoPolyInternalData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRAlgoPolyInternalData_is_null(const HandleHLRAlgoPolyInternalData* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRAlgoPolyInternalNode_destructor(HandleHLRAlgoPolyInternalNode* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRAlgoPolyInternalNode*> HandleHLRAlgoPolyInternalNode_clone(const HandleHLRAlgoPolyInternalNode* self_) {
     try { return {new HandleHLRAlgoPolyInternalNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRAlgoPolyInternalNode_is_null(const HandleHLRAlgoPolyInternalNode* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRAlgoPolyShellData_destructor(HandleHLRAlgoPolyShellData* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRAlgoPolyShellData*> HandleHLRAlgoPolyShellData_clone(const HandleHLRAlgoPolyShellData* self_) {
     try { return {new HandleHLRAlgoPolyShellData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRAlgoPolyShellData_is_null(const HandleHLRAlgoPolyShellData* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRAlgoWiresBlock_destructor(HandleHLRAlgoWiresBlock* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRAlgoWiresBlock*> HandleHLRAlgoWiresBlock_clone(const HandleHLRAlgoWiresBlock* self_) {
     try { return {new HandleHLRAlgoWiresBlock(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRAlgoWiresBlock_is_null(const HandleHLRAlgoWiresBlock* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRBRepAlgo_destructor(HandleHLRBRepAlgo* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRBRepAlgo*> HandleHLRBRepAlgo_clone(const HandleHLRBRepAlgo* self_) {
     try { return {new HandleHLRBRepAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRBRepAlgo_is_null(const HandleHLRBRepAlgo* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRBRepAreaLimit_destructor(HandleHLRBRepAreaLimit* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRBRepAreaLimit*> HandleHLRBRepAreaLimit_clone(const HandleHLRBRepAreaLimit* self_) {
     try { return {new HandleHLRBRepAreaLimit(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRBRepAreaLimit_is_null(const HandleHLRBRepAreaLimit* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRBRepData_destructor(HandleHLRBRepData* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRBRepData*> HandleHLRBRepData_clone(const HandleHLRBRepData* self_) {
     try { return {new HandleHLRBRepData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRBRepData_is_null(const HandleHLRBRepData* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRBRepInternalAlgo_destructor(HandleHLRBRepInternalAlgo* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRBRepInternalAlgo*> HandleHLRBRepInternalAlgo_clone(const HandleHLRBRepInternalAlgo* self_) {
     try { return {new HandleHLRBRepInternalAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRBRepInternalAlgo_is_null(const HandleHLRBRepInternalAlgo* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRBRepPolyAlgo_destructor(HandleHLRBRepPolyAlgo* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRBRepPolyAlgo*> HandleHLRBRepPolyAlgo_clone(const HandleHLRBRepPolyAlgo* self_) {
     try { return {new HandleHLRBRepPolyAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRBRepPolyAlgo_is_null(const HandleHLRBRepPolyAlgo* self_) { return self_->IsNull(); }
 extern "C" void HandleHLRTopoBRepOutLiner_destructor(HandleHLRTopoBRepOutLiner* self_) { delete self_; }
 extern "C" OcctResult<HandleHLRTopoBRepOutLiner*> HandleHLRTopoBRepOutLiner_clone(const HandleHLRTopoBRepOutLiner* self_) {
     try { return {new HandleHLRTopoBRepOutLiner(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleHLRTopoBRepOutLiner_is_null(const HandleHLRTopoBRepOutLiner* self_) { return self_->IsNull(); }
 
 // ========================
 // Contap_ArcFunction wrappers

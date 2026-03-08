@@ -625,6 +625,11 @@ unsafe impl crate::CppCopyable for HandleBRepAdaptorCompCurve {
 }
 
 impl HandleBRepAdaptorCompCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepAdaptorCompCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepAdaptor_CompCurve
     pub fn get(&self) -> &crate::ffi_types::BRepAdaptor_CompCurve {
         unsafe {
@@ -1296,6 +1301,11 @@ unsafe impl crate::CppCopyable for HandleBRepAdaptorCurve {
 }
 
 impl HandleBRepAdaptorCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepAdaptorCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepAdaptor_Curve
     pub fn get(&self) -> &crate::ffi_types::BRepAdaptor_Curve {
         unsafe {
@@ -1932,6 +1942,11 @@ unsafe impl crate::CppCopyable for HandleBRepAdaptorCurve2d {
 }
 
 impl HandleBRepAdaptorCurve2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepAdaptorCurve2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepAdaptor_Curve2d
     pub fn get(&self) -> &crate::ffi_types::BRepAdaptor_Curve2d {
         unsafe {
@@ -2228,6 +2243,13 @@ unsafe impl crate::CppCopyable for HandleBRepAdaptorHArray1OfCurve {
 }
 
 impl HandleBRepAdaptorHArray1OfCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepAdaptorHArray1OfCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepAdaptor_HArray1OfCurve
     pub fn get(&self) -> &crate::ffi_types::BRepAdaptor_HArray1OfCurve {
         unsafe {
@@ -3068,6 +3090,11 @@ unsafe impl crate::CppCopyable for HandleBRepAdaptorSurface {
 }
 
 impl HandleBRepAdaptorSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepAdaptorSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepAdaptor_Surface
     pub fn get(&self) -> &crate::ffi_types::BRepAdaptor_Surface {
         unsafe {

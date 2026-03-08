@@ -389,6 +389,15 @@ unsafe impl crate::CppCopyable for HandleShapeExtendBasicMsgRegistrator {
 }
 
 impl HandleShapeExtendBasicMsgRegistrator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeExtendBasicMsgRegistrator_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeExtend_BasicMsgRegistrator
     pub fn get(&self) -> &crate::ffi_types::ShapeExtend_BasicMsgRegistrator {
         unsafe {
@@ -1043,6 +1052,15 @@ unsafe impl crate::CppCopyable for HandleShapeExtendComplexCurve {
 }
 
 impl HandleShapeExtendComplexCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeExtendComplexCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeExtend_ComplexCurve
     pub fn get(&self) -> &crate::ffi_types::ShapeExtend_ComplexCurve {
         unsafe {
@@ -2256,6 +2274,15 @@ unsafe impl crate::CppCopyable for HandleShapeExtendCompositeSurface {
 }
 
 impl HandleShapeExtendCompositeSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeExtendCompositeSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeExtend_CompositeSurface
     pub fn get(&self) -> &crate::ffi_types::ShapeExtend_CompositeSurface {
         unsafe {
@@ -2753,6 +2780,15 @@ unsafe impl crate::CppCopyable for HandleShapeExtendMsgRegistrator {
 }
 
 impl HandleShapeExtendMsgRegistrator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeExtendMsgRegistrator_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeExtend_MsgRegistrator
     pub fn get(&self) -> &crate::ffi_types::ShapeExtend_MsgRegistrator {
         unsafe {
@@ -3387,6 +3423,13 @@ unsafe impl crate::CppCopyable for HandleShapeExtendWireData {
 }
 
 impl HandleShapeExtendWireData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeExtendWireData_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeExtend_WireData
     pub fn get(&self) -> &crate::ffi_types::ShapeExtend_WireData {
         unsafe {

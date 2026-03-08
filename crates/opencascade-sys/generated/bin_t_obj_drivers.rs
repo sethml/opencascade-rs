@@ -306,6 +306,15 @@ unsafe impl crate::CppCopyable for HandleBinTObjDriversDocumentRetrievalDriver {
 }
 
 impl HandleBinTObjDriversDocumentRetrievalDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentRetrievalDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinTObjDrivers_DocumentRetrievalDriver
     pub fn get(&self) -> &crate::ffi_types::BinTObjDrivers_DocumentRetrievalDriver {
         unsafe {
@@ -694,6 +703,15 @@ unsafe impl crate::CppCopyable for HandleBinTObjDriversDocumentStorageDriver {
 }
 
 impl HandleBinTObjDriversDocumentStorageDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentStorageDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinTObjDrivers_DocumentStorageDriver
     pub fn get(&self) -> &crate::ffi_types::BinTObjDrivers_DocumentStorageDriver {
         unsafe {
@@ -994,6 +1012,15 @@ unsafe impl crate::CppCopyable for HandleBinTObjDriversIntSparseArrayDriver {
 }
 
 impl HandleBinTObjDriversIntSparseArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversIntSparseArrayDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinTObjDrivers_IntSparseArrayDriver
     pub fn get(&self) -> &crate::ffi_types::BinTObjDrivers_IntSparseArrayDriver {
         unsafe {
@@ -1302,6 +1329,15 @@ unsafe impl crate::CppCopyable for HandleBinTObjDriversModelDriver {
 }
 
 impl HandleBinTObjDriversModelDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversModelDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinTObjDrivers_ModelDriver
     pub fn get(&self) -> &crate::ffi_types::BinTObjDrivers_ModelDriver {
         unsafe {
@@ -1610,6 +1646,15 @@ unsafe impl crate::CppCopyable for HandleBinTObjDriversObjectDriver {
 }
 
 impl HandleBinTObjDriversObjectDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversObjectDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinTObjDrivers_ObjectDriver
     pub fn get(&self) -> &crate::ffi_types::BinTObjDrivers_ObjectDriver {
         unsafe {
@@ -1910,6 +1955,15 @@ unsafe impl crate::CppCopyable for HandleBinTObjDriversReferenceDriver {
 }
 
 impl HandleBinTObjDriversReferenceDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversReferenceDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinTObjDrivers_ReferenceDriver
     pub fn get(&self) -> &crate::ffi_types::BinTObjDrivers_ReferenceDriver {
         unsafe {
@@ -2218,6 +2272,13 @@ unsafe impl crate::CppCopyable for HandleBinTObjDriversXYZDriver {
 }
 
 impl HandleBinTObjDriversXYZDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversXYZDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinTObjDrivers_XYZDriver
     pub fn get(&self) -> &crate::ffi_types::BinTObjDrivers_XYZDriver {
         unsafe {

@@ -398,6 +398,11 @@ unsafe impl crate::CppCopyable for HandleMATArc {
 }
 
 impl HandleMATArc {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATArc_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MAT_Arc
     pub fn get(&self) -> &crate::ffi_types::MAT_Arc {
         unsafe {
@@ -659,6 +664,11 @@ unsafe impl crate::CppCopyable for HandleMATBasicElt {
 }
 
 impl HandleMATBasicElt {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATBasicElt_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MAT_BasicElt
     pub fn get(&self) -> &crate::ffi_types::MAT_BasicElt {
         unsafe {
@@ -1082,6 +1092,11 @@ unsafe impl crate::CppCopyable for HandleMATBisector {
 }
 
 impl HandleMATBisector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATBisector_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MAT_Bisector
     pub fn get(&self) -> &crate::ffi_types::MAT_Bisector {
         unsafe {
@@ -1358,6 +1373,11 @@ unsafe impl crate::CppCopyable for HandleMATEdge {
 }
 
 impl HandleMATEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATEdge_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MAT_Edge
     pub fn get(&self) -> &crate::ffi_types::MAT_Edge {
         unsafe {
@@ -1711,6 +1731,11 @@ unsafe impl crate::CppCopyable for HandleMATGraph {
 }
 
 impl HandleMATGraph {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATGraph_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MAT_Graph
     pub fn get(&self) -> &crate::ffi_types::MAT_Graph {
         unsafe {
@@ -2101,6 +2126,11 @@ unsafe impl crate::CppCopyable for HandleMATListOfBisector {
 }
 
 impl HandleMATListOfBisector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATListOfBisector_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MAT_ListOfBisector
     pub fn get(&self) -> &crate::ffi_types::MAT_ListOfBisector {
         unsafe {
@@ -2483,6 +2513,11 @@ unsafe impl crate::CppCopyable for HandleMATListOfEdge {
 }
 
 impl HandleMATListOfEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATListOfEdge_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MAT_ListOfEdge
     pub fn get(&self) -> &crate::ffi_types::MAT_ListOfEdge {
         unsafe {
@@ -2754,6 +2789,11 @@ unsafe impl crate::CppCopyable for HandleMATNode {
 }
 
 impl HandleMATNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATNode_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MAT_Node
     pub fn get(&self) -> &crate::ffi_types::MAT_Node {
         unsafe {
@@ -3046,6 +3086,15 @@ unsafe impl crate::CppCopyable for HandleMATTListNodeOfListOfBisector {
 }
 
 impl HandleMATTListNodeOfListOfBisector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfBisector_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying MAT_TListNodeOfListOfBisector
     pub fn get(&self) -> &crate::ffi_types::MAT_TListNodeOfListOfBisector {
         unsafe {
@@ -3330,6 +3379,13 @@ unsafe impl crate::CppCopyable for HandleMATTListNodeOfListOfEdge {
 }
 
 impl HandleMATTListNodeOfListOfEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfEdge_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MAT_TListNodeOfListOfEdge
     pub fn get(&self) -> &crate::ffi_types::MAT_TListNodeOfListOfEdge {
         unsafe {
@@ -3570,6 +3626,11 @@ unsafe impl crate::CppCopyable for HandleMATZone {
 }
 
 impl HandleMATZone {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATZone_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MAT_Zone
     pub fn get(&self) -> &crate::ffi_types::MAT_Zone {
         unsafe {

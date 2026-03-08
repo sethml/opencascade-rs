@@ -801,6 +801,15 @@ unsafe impl crate::CppCopyable for HandleMeshVSCommonSensitiveEntity {
 }
 
 impl HandleMeshVSCommonSensitiveEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSCommonSensitiveEntity_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_CommonSensitiveEntity
     pub fn get(&self) -> &crate::ffi_types::MeshVS_CommonSensitiveEntity {
         unsafe {
@@ -1365,6 +1374,11 @@ unsafe impl crate::CppCopyable for HandleMeshVSDataSource {
 }
 
 impl HandleMeshVSDataSource {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMeshVS::HandleMeshVSDataSource_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_DataSource
     pub fn get(&self) -> &crate::ffi_types::MeshVS_DataSource {
         unsafe {
@@ -1819,6 +1833,11 @@ unsafe impl crate::CppCopyable for HandleMeshVSDataSource3D {
 }
 
 impl HandleMeshVSDataSource3D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMeshVS::HandleMeshVSDataSource3D_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_DataSource3D
     pub fn get(&self) -> &crate::ffi_types::MeshVS_DataSource3D {
         unsafe {
@@ -2380,6 +2399,13 @@ unsafe impl crate::CppCopyable for HandleMeshVSDeformedDataSource {
 }
 
 impl HandleMeshVSDeformedDataSource {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSDeformedDataSource_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_DeformedDataSource
     pub fn get(&self) -> &crate::ffi_types::MeshVS_DeformedDataSource {
         unsafe {
@@ -2726,6 +2752,11 @@ unsafe impl crate::CppCopyable for HandleMeshVSDrawer {
 }
 
 impl HandleMeshVSDrawer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMeshVS::HandleMeshVSDrawer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_Drawer
     pub fn get(&self) -> &crate::ffi_types::MeshVS_Drawer {
         unsafe {
@@ -3114,6 +3145,15 @@ unsafe impl crate::CppCopyable for HandleMeshVSDummySensitiveEntity {
 }
 
 impl HandleMeshVSDummySensitiveEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSDummySensitiveEntity_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_DummySensitiveEntity
     pub fn get(&self) -> &crate::ffi_types::MeshVS_DummySensitiveEntity {
         unsafe {
@@ -3673,6 +3713,15 @@ unsafe impl crate::CppCopyable for HandleMeshVSElementalColorPrsBuilder {
 }
 
 impl HandleMeshVSElementalColorPrsBuilder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSElementalColorPrsBuilder_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_ElementalColorPrsBuilder
     pub fn get(&self) -> &crate::ffi_types::MeshVS_ElementalColorPrsBuilder {
         unsafe {
@@ -3958,6 +4007,15 @@ unsafe impl crate::CppCopyable for HandleMeshVSHArray1OfSequenceOfInteger {
 }
 
 impl HandleMeshVSHArray1OfSequenceOfInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSHArray1OfSequenceOfInteger_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_HArray1OfSequenceOfInteger
     pub fn get(&self) -> &crate::ffi_types::MeshVS_HArray1OfSequenceOfInteger {
         unsafe {
@@ -5732,6 +5790,11 @@ unsafe impl crate::CppCopyable for HandleMeshVSMesh {
 }
 
 impl HandleMeshVSMesh {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMeshVS::HandleMeshVSMesh_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_Mesh
     pub fn get(&self) -> &crate::ffi_types::MeshVS_Mesh {
         unsafe {
@@ -6336,6 +6399,13 @@ unsafe impl crate::CppCopyable for HandleMeshVSMeshEntityOwner {
 }
 
 impl HandleMeshVSMeshEntityOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSMeshEntityOwner_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_MeshEntityOwner
     pub fn get(&self) -> &crate::ffi_types::MeshVS_MeshEntityOwner {
         unsafe {
@@ -6940,6 +7010,11 @@ unsafe impl crate::CppCopyable for HandleMeshVSMeshOwner {
 }
 
 impl HandleMeshVSMeshOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMeshVS::HandleMeshVSMeshOwner_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_MeshOwner
     pub fn get(&self) -> &crate::ffi_types::MeshVS_MeshOwner {
         unsafe {
@@ -7465,6 +7540,13 @@ unsafe impl crate::CppCopyable for HandleMeshVSMeshPrsBuilder {
 }
 
 impl HandleMeshVSMeshPrsBuilder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSMeshPrsBuilder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_MeshPrsBuilder
     pub fn get(&self) -> &crate::ffi_types::MeshVS_MeshPrsBuilder {
         unsafe {
@@ -8095,6 +8177,15 @@ unsafe impl crate::CppCopyable for HandleMeshVSNodalColorPrsBuilder {
 }
 
 impl HandleMeshVSNodalColorPrsBuilder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSNodalColorPrsBuilder_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_NodalColorPrsBuilder
     pub fn get(&self) -> &crate::ffi_types::MeshVS_NodalColorPrsBuilder {
         unsafe {
@@ -8471,6 +8562,11 @@ unsafe impl crate::CppCopyable for HandleMeshVSPrsBuilder {
 }
 
 impl HandleMeshVSPrsBuilder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMeshVS::HandleMeshVSPrsBuilder_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_PrsBuilder
     pub fn get(&self) -> &crate::ffi_types::MeshVS_PrsBuilder {
         unsafe {
@@ -8975,6 +9071,13 @@ unsafe impl crate::CppCopyable for HandleMeshVSSensitiveFace {
 }
 
 impl HandleMeshVSSensitiveFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveFace_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_SensitiveFace
     pub fn get(&self) -> &crate::ffi_types::MeshVS_SensitiveFace {
         unsafe {
@@ -9396,6 +9499,13 @@ unsafe impl crate::CppCopyable for HandleMeshVSSensitiveMesh {
 }
 
 impl HandleMeshVSSensitiveMesh {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveMesh_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_SensitiveMesh
     pub fn get(&self) -> &crate::ffi_types::MeshVS_SensitiveMesh {
         unsafe {
@@ -9801,6 +9911,13 @@ unsafe impl crate::CppCopyable for HandleMeshVSSensitivePolyhedron {
 }
 
 impl HandleMeshVSSensitivePolyhedron {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSSensitivePolyhedron_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_SensitivePolyhedron
     pub fn get(&self) -> &crate::ffi_types::MeshVS_SensitivePolyhedron {
         unsafe {
@@ -10214,6 +10331,13 @@ unsafe impl crate::CppCopyable for HandleMeshVSSensitiveQuad {
 }
 
 impl HandleMeshVSSensitiveQuad {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveQuad_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_SensitiveQuad
     pub fn get(&self) -> &crate::ffi_types::MeshVS_SensitiveQuad {
         unsafe {
@@ -10683,6 +10807,13 @@ unsafe impl crate::CppCopyable for HandleMeshVSSensitiveSegment {
 }
 
 impl HandleMeshVSSensitiveSegment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveSegment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_SensitiveSegment
     pub fn get(&self) -> &crate::ffi_types::MeshVS_SensitiveSegment {
         unsafe {
@@ -11186,6 +11317,13 @@ unsafe impl crate::CppCopyable for HandleMeshVSTextPrsBuilder {
 }
 
 impl HandleMeshVSTextPrsBuilder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSTextPrsBuilder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_TextPrsBuilder
     pub fn get(&self) -> &crate::ffi_types::MeshVS_TextPrsBuilder {
         unsafe {
@@ -11939,6 +12077,13 @@ unsafe impl crate::CppCopyable for HandleMeshVSVectorPrsBuilder {
 }
 
 impl HandleMeshVSVectorPrsBuilder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSVectorPrsBuilder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MeshVS_VectorPrsBuilder
     pub fn get(&self) -> &crate::ffi_types::MeshVS_VectorPrsBuilder {
         unsafe {

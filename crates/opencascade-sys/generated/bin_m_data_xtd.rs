@@ -300,6 +300,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataXtdConstraintDriver {
 }
 
 impl HandleBinMDataXtdConstraintDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdConstraintDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataXtd_ConstraintDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataXtd_ConstraintDriver {
         unsafe {
@@ -609,6 +616,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataXtdGeometryDriver {
 }
 
 impl HandleBinMDataXtdGeometryDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdGeometryDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataXtd_GeometryDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataXtd_GeometryDriver {
         unsafe {
@@ -922,6 +936,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataXtdPatternStdDriver {
 }
 
 impl HandleBinMDataXtdPatternStdDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdPatternStdDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataXtd_PatternStdDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataXtd_PatternStdDriver {
         unsafe {
@@ -1231,6 +1252,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataXtdPositionDriver {
 }
 
 impl HandleBinMDataXtdPositionDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdPositionDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataXtd_PositionDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataXtd_PositionDriver {
         unsafe {
@@ -1544,6 +1572,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataXtdPresentationDriver {
 }
 
 impl HandleBinMDataXtdPresentationDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdPresentationDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataXtd_PresentationDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataXtd_PresentationDriver {
         unsafe {
@@ -1853,6 +1890,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataXtdTriangulationDriver {
 }
 
 impl HandleBinMDataXtdTriangulationDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdTriangulationDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataXtd_TriangulationDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataXtd_TriangulationDriver {
         unsafe {

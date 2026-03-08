@@ -421,6 +421,13 @@ unsafe impl crate::CppCopyable for HandleIGESControlActorWrite {
 }
 
 impl HandleIGESControlActorWrite {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESControlActorWrite_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESControl_ActorWrite
     pub fn get(&self) -> &crate::ffi_types::IGESControl_ActorWrite {
         unsafe {
@@ -690,6 +697,13 @@ unsafe impl crate::CppCopyable for HandleIGESControlAlgoContainer {
 }
 
 impl HandleIGESControlAlgoContainer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESControlAlgoContainer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESControl_AlgoContainer
     pub fn get(&self) -> &crate::ffi_types::IGESControl_AlgoContainer {
         unsafe {
@@ -1148,6 +1162,13 @@ unsafe impl crate::CppCopyable for HandleIGESControlController {
 }
 
 impl HandleIGESControlController {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESControlController_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESControl_Controller
     pub fn get(&self) -> &crate::ffi_types::IGESControl_Controller {
         unsafe {
@@ -1481,6 +1502,13 @@ unsafe impl crate::CppCopyable for HandleIGESControlIGESBoundary {
 }
 
 impl HandleIGESControlIGESBoundary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESControlIGESBoundary_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESControl_IGESBoundary
     pub fn get(&self) -> &crate::ffi_types::IGESControl_IGESBoundary {
         unsafe {
@@ -2140,6 +2168,13 @@ unsafe impl crate::CppCopyable for HandleIGESControlToolContainer {
 }
 
 impl HandleIGESControlToolContainer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESControlToolContainer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESControl_ToolContainer
     pub fn get(&self) -> &crate::ffi_types::IGESControl_ToolContainer {
         unsafe {

@@ -207,72 +207,85 @@ typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TopOpeBRepBuild_HBuilder> HandleTopOpeBRepBuildHBuilder;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleBRepBlendAppFunc_destructor(HandleBRepBlendAppFunc* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepBlendAppFunc*> HandleBRepBlendAppFunc_clone(const HandleBRepBlendAppFunc* self_) {
     try { return {new HandleBRepBlendAppFunc(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepBlendAppFunc_is_null(const HandleBRepBlendAppFunc* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepBlendAppFuncRoot_destructor(HandleBRepBlendAppFuncRoot* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepBlendAppFuncRoot*> HandleBRepBlendAppFuncRoot_clone(const HandleBRepBlendAppFuncRoot* self_) {
     try { return {new HandleBRepBlendAppFuncRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepBlendAppFuncRoot_is_null(const HandleBRepBlendAppFuncRoot* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepBlendAppFuncRst_destructor(HandleBRepBlendAppFuncRst* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepBlendAppFuncRst*> HandleBRepBlendAppFuncRst_clone(const HandleBRepBlendAppFuncRst* self_) {
     try { return {new HandleBRepBlendAppFuncRst(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepBlendAppFuncRst_is_null(const HandleBRepBlendAppFuncRst* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepBlendAppFuncRstRst_destructor(HandleBRepBlendAppFuncRstRst* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepBlendAppFuncRstRst*> HandleBRepBlendAppFuncRstRst_clone(const HandleBRepBlendAppFuncRstRst* self_) {
     try { return {new HandleBRepBlendAppFuncRstRst(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepBlendAppFuncRstRst_is_null(const HandleBRepBlendAppFuncRstRst* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepBlendLine_destructor(HandleBRepBlendLine* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepBlendLine*> HandleBRepBlendLine_clone(const HandleBRepBlendLine* self_) {
     try { return {new HandleBRepBlendLine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepBlendLine_is_null(const HandleBRepBlendLine* self_) { return self_->IsNull(); }
 extern "C" void HandleChFiDSChamfSpine_destructor(HandleChFiDSChamfSpine* self_) { delete self_; }
 extern "C" OcctResult<HandleChFiDSChamfSpine*> HandleChFiDSChamfSpine_clone(const HandleChFiDSChamfSpine* self_) {
     try { return {new HandleChFiDSChamfSpine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleChFiDSChamfSpine_is_null(const HandleChFiDSChamfSpine* self_) { return self_->IsNull(); }
 extern "C" void HandleChFiDSElSpine_destructor(HandleChFiDSElSpine* self_) { delete self_; }
 extern "C" OcctResult<HandleChFiDSElSpine*> HandleChFiDSElSpine_clone(const HandleChFiDSElSpine* self_) {
     try { return {new HandleChFiDSElSpine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleChFiDSElSpine_is_null(const HandleChFiDSElSpine* self_) { return self_->IsNull(); }
 extern "C" void HandleChFiDSFilSpine_destructor(HandleChFiDSFilSpine* self_) { delete self_; }
 extern "C" OcctResult<HandleChFiDSFilSpine*> HandleChFiDSFilSpine_clone(const HandleChFiDSFilSpine* self_) {
     try { return {new HandleChFiDSFilSpine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleChFiDSFilSpine_is_null(const HandleChFiDSFilSpine* self_) { return self_->IsNull(); }
 extern "C" void HandleChFiDSHData_destructor(HandleChFiDSHData* self_) { delete self_; }
 extern "C" OcctResult<HandleChFiDSHData*> HandleChFiDSHData_clone(const HandleChFiDSHData* self_) {
     try { return {new HandleChFiDSHData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleChFiDSHData_is_null(const HandleChFiDSHData* self_) { return self_->IsNull(); }
 extern "C" void HandleChFiDSSecHArray1_destructor(HandleChFiDSSecHArray1* self_) { delete self_; }
 extern "C" OcctResult<HandleChFiDSSecHArray1*> HandleChFiDSSecHArray1_clone(const HandleChFiDSSecHArray1* self_) {
     try { return {new HandleChFiDSSecHArray1(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleChFiDSSecHArray1_is_null(const HandleChFiDSSecHArray1* self_) { return self_->IsNull(); }
 extern "C" void HandleChFiDSSpine_destructor(HandleChFiDSSpine* self_) { delete self_; }
 extern "C" OcctResult<HandleChFiDSSpine*> HandleChFiDSSpine_clone(const HandleChFiDSSpine* self_) {
     try { return {new HandleChFiDSSpine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleChFiDSSpine_is_null(const HandleChFiDSSpine* self_) { return self_->IsNull(); }
 extern "C" void HandleChFiDSStripe_destructor(HandleChFiDSStripe* self_) { delete self_; }
 extern "C" OcctResult<HandleChFiDSStripe*> HandleChFiDSStripe_clone(const HandleChFiDSStripe* self_) {
     try { return {new HandleChFiDSStripe(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleChFiDSStripe_is_null(const HandleChFiDSStripe* self_) { return self_->IsNull(); }
 extern "C" void HandleChFiDSSurfData_destructor(HandleChFiDSSurfData* self_) { delete self_; }
 extern "C" OcctResult<HandleChFiDSSurfData*> HandleChFiDSSurfData_clone(const HandleChFiDSSurfData* self_) {
     try { return {new HandleChFiDSSurfData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleChFiDSSurfData_is_null(const HandleChFiDSSurfData* self_) { return self_->IsNull(); }
 
 // ========================
 // BRepBlend_AppFunc wrappers

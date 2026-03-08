@@ -438,6 +438,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dAxisPlacement {
 }
 
 impl HandleGeom2dAxisPlacement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dAxisPlacement_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_AxisPlacement
     pub fn get(&self) -> &crate::ffi_types::Geom2d_AxisPlacement {
         unsafe {
@@ -2315,6 +2320,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dBSplineCurve {
 }
 
 impl HandleGeom2dBSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dBSplineCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_BSplineCurve
     pub fn get(&self) -> &crate::ffi_types::Geom2d_BSplineCurve {
         unsafe {
@@ -3257,6 +3267,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dBezierCurve {
 }
 
 impl HandleGeom2dBezierCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dBezierCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_BezierCurve
     pub fn get(&self) -> &crate::ffi_types::Geom2d_BezierCurve {
         unsafe {
@@ -3854,6 +3869,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dBoundedCurve {
 }
 
 impl HandleGeom2dBoundedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dBoundedCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_BoundedCurve
     pub fn get(&self) -> &crate::ffi_types::Geom2d_BoundedCurve {
         unsafe {
@@ -4401,6 +4421,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dCartesianPoint {
 }
 
 impl HandleGeom2dCartesianPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dCartesianPoint_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_CartesianPoint
     pub fn get(&self) -> &crate::ffi_types::Geom2d_CartesianPoint {
         unsafe {
@@ -5129,6 +5154,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dCircle {
 }
 
 impl HandleGeom2dCircle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dCircle_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Circle
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Circle {
         unsafe {
@@ -5755,6 +5785,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dConic {
 }
 
 impl HandleGeom2dConic {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dConic_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Conic
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Conic {
         unsafe {
@@ -6425,6 +6460,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dCurve {
 }
 
 impl HandleGeom2dCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Curve
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Curve {
         unsafe {
@@ -7156,6 +7196,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dDirection {
 }
 
 impl HandleGeom2dDirection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dDirection_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Direction
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Direction {
         unsafe {
@@ -8046,6 +8091,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dEllipse {
 }
 
 impl HandleGeom2dEllipse {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dEllipse_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Ellipse
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Ellipse {
         unsafe {
@@ -8441,6 +8491,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dGeometry {
 }
 
 impl HandleGeom2dGeometry {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dGeometry_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Geometry
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Geometry {
         unsafe {
@@ -9682,6 +9737,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dHyperbola {
 }
 
 impl HandleGeom2dHyperbola {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dHyperbola_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Hyperbola
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Hyperbola {
         unsafe {
@@ -10345,6 +10405,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dLine {
 }
 
 impl HandleGeom2dLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Line
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Line {
         unsafe {
@@ -11143,6 +11208,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dOffsetCurve {
 }
 
 impl HandleGeom2dOffsetCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dOffsetCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_OffsetCurve
     pub fn get(&self) -> &crate::ffi_types::Geom2d_OffsetCurve {
         unsafe {
@@ -11957,6 +12027,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dParabola {
 }
 
 impl HandleGeom2dParabola {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dParabola_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Parabola
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Parabola {
         unsafe {
@@ -12331,6 +12406,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dPoint {
 }
 
 impl HandleGeom2dPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dPoint_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Point
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Point {
         unsafe {
@@ -12865,6 +12945,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dTransformation {
 }
 
 impl HandleGeom2dTransformation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dTransformation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Transformation
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Transformation {
         unsafe {
@@ -13693,6 +13778,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dTrimmedCurve {
 }
 
 impl HandleGeom2dTrimmedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dTrimmedCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_TrimmedCurve
     pub fn get(&self) -> &crate::ffi_types::Geom2d_TrimmedCurve {
         unsafe {
@@ -14075,6 +14165,13 @@ unsafe impl crate::CppCopyable for HandleGeom2dUndefinedDerivative {
 }
 
 impl HandleGeom2dUndefinedDerivative {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleGeom2dUndefinedDerivative_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_UndefinedDerivative
     pub fn get(&self) -> &crate::ffi_types::Geom2d_UndefinedDerivative {
         unsafe {
@@ -14434,6 +14531,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dUndefinedValue {
 }
 
 impl HandleGeom2dUndefinedValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dUndefinedValue_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_UndefinedValue
     pub fn get(&self) -> &crate::ffi_types::Geom2d_UndefinedValue {
         unsafe {
@@ -14857,6 +14959,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dVector {
 }
 
 impl HandleGeom2dVector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dVector_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_Vector
     pub fn get(&self) -> &crate::ffi_types::Geom2d_Vector {
         unsafe {
@@ -15574,6 +15681,13 @@ unsafe impl crate::CppCopyable for HandleGeom2dVectorWithMagnitude {
 }
 
 impl HandleGeom2dVectorWithMagnitude {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleGeom2dVectorWithMagnitude_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Geom2d_VectorWithMagnitude
     pub fn get(&self) -> &crate::ffi_types::Geom2d_VectorWithMagnitude {
         unsafe {

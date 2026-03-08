@@ -499,6 +499,13 @@ unsafe impl crate::CppCopyable for HandleXSControlConnectedShapes {
 }
 
 impl HandleXSControlConnectedShapes {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XSControl_ConnectedShapes
     pub fn get(&self) -> &crate::ffi_types::XSControl_ConnectedShapes {
         unsafe {
@@ -1077,6 +1084,13 @@ unsafe impl crate::CppCopyable for HandleXSControlController {
 }
 
 impl HandleXSControlController {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlController_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XSControl_Controller
     pub fn get(&self) -> &crate::ffi_types::XSControl_Controller {
         unsafe {
@@ -2423,6 +2437,15 @@ unsafe impl crate::CppCopyable for HandleXSControlSelectForTransfer {
 }
 
 impl HandleXSControlSelectForTransfer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XSControl_SelectForTransfer
     pub fn get(&self) -> &crate::ffi_types::XSControl_SelectForTransfer {
         unsafe {
@@ -2938,6 +2961,15 @@ unsafe impl crate::CppCopyable for HandleXSControlSignTransferStatus {
 }
 
 impl HandleXSControlSignTransferStatus {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XSControl_SignTransferStatus
     pub fn get(&self) -> &crate::ffi_types::XSControl_SignTransferStatus {
         unsafe {
@@ -3963,6 +3995,13 @@ unsafe impl crate::CppCopyable for HandleXSControlTransferReader {
 }
 
 impl HandleXSControlTransferReader {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlTransferReader_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XSControl_TransferReader
     pub fn get(&self) -> &crate::ffi_types::XSControl_TransferReader {
         unsafe {
@@ -4373,6 +4412,13 @@ unsafe impl crate::CppCopyable for HandleXSControlTransferWriter {
 }
 
 impl HandleXSControlTransferWriter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlTransferWriter_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XSControl_TransferWriter
     pub fn get(&self) -> &crate::ffi_types::XSControl_TransferWriter {
         unsafe {
@@ -5324,6 +5370,11 @@ unsafe impl crate::CppCopyable for HandleXSControlVars {
 }
 
 impl HandleXSControlVars {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleXSControlVars_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XSControl_Vars
     pub fn get(&self) -> &crate::ffi_types::XSControl_Vars {
         unsafe {
@@ -7494,6 +7545,13 @@ unsafe impl crate::CppCopyable for HandleXSControlWorkSession {
 }
 
 impl HandleXSControlWorkSession {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlWorkSession_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XSControl_WorkSession
     pub fn get(&self) -> &crate::ffi_types::XSControl_WorkSession {
         unsafe {

@@ -849,6 +849,10 @@ extern "C" {
     pub fn HandleContapTheHSequenceOfPoint_clone(
         self_: *const HandleContapTheHSequenceOfPoint,
     ) -> crate::OcctResult<*mut HandleContapTheHSequenceOfPoint>;
+    /// Check if Handle<Contap_TheHSequenceOfPoint> is null
+    pub fn HandleContapTheHSequenceOfPoint_is_null(
+        self_: *const HandleContapTheHSequenceOfPoint,
+    ) -> bool;
     /// Dereference Handle to get *const Contap_TheHSequenceOfPoint
     pub fn HandleContapTheHSequenceOfPoint_get(
         handle: *const HandleContapTheHSequenceOfPoint,
@@ -1060,6 +1064,10 @@ extern "C" {
     pub fn HandleContapTheIWLineOfTheIWalking_clone(
         self_: *const HandleContapTheIWLineOfTheIWalking,
     ) -> crate::OcctResult<*mut HandleContapTheIWLineOfTheIWalking>;
+    /// Check if Handle<Contap_TheIWLineOfTheIWalking> is null
+    pub fn HandleContapTheIWLineOfTheIWalking_is_null(
+        self_: *const HandleContapTheIWLineOfTheIWalking,
+    ) -> bool;
     /// Dereference Handle to get *const Contap_TheIWLineOfTheIWalking
     pub fn HandleContapTheIWLineOfTheIWalking_get(
         handle: *const HandleContapTheIWLineOfTheIWalking,
@@ -1767,6 +1775,8 @@ extern "C" {
     pub fn HandleHLRAlgoEdgesBlock_clone(
         self_: *const HandleHLRAlgoEdgesBlock,
     ) -> crate::OcctResult<*mut HandleHLRAlgoEdgesBlock>;
+    /// Check if Handle<HLRAlgo_EdgesBlock> is null
+    pub fn HandleHLRAlgoEdgesBlock_is_null(self_: *const HandleHLRAlgoEdgesBlock) -> bool;
     /// Dereference Handle to get *const HLRAlgo_EdgesBlock
     pub fn HandleHLRAlgoEdgesBlock_get(
         handle: *const HandleHLRAlgoEdgesBlock,
@@ -1875,6 +1885,8 @@ extern "C" {
     pub fn HandleHLRAlgoHArray1OfPHDat_clone(
         self_: *const HandleHLRAlgoHArray1OfPHDat,
     ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPHDat>;
+    /// Check if Handle<HLRAlgo_HArray1OfPHDat> is null
+    pub fn HandleHLRAlgoHArray1OfPHDat_is_null(self_: *const HandleHLRAlgoHArray1OfPHDat) -> bool;
     /// Dereference Handle to get *const HLRAlgo_HArray1OfPHDat
     pub fn HandleHLRAlgoHArray1OfPHDat_get(
         handle: *const HandleHLRAlgoHArray1OfPHDat,
@@ -1978,6 +1990,8 @@ extern "C" {
     pub fn HandleHLRAlgoHArray1OfPINod_clone(
         self_: *const HandleHLRAlgoHArray1OfPINod,
     ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPINod>;
+    /// Check if Handle<HLRAlgo_HArray1OfPINod> is null
+    pub fn HandleHLRAlgoHArray1OfPINod_is_null(self_: *const HandleHLRAlgoHArray1OfPINod) -> bool;
     /// Dereference Handle to get *const HLRAlgo_HArray1OfPINod
     pub fn HandleHLRAlgoHArray1OfPINod_get(
         handle: *const HandleHLRAlgoHArray1OfPINod,
@@ -2081,6 +2095,8 @@ extern "C" {
     pub fn HandleHLRAlgoHArray1OfPISeg_clone(
         self_: *const HandleHLRAlgoHArray1OfPISeg,
     ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPISeg>;
+    /// Check if Handle<HLRAlgo_HArray1OfPISeg> is null
+    pub fn HandleHLRAlgoHArray1OfPISeg_is_null(self_: *const HandleHLRAlgoHArray1OfPISeg) -> bool;
     /// Dereference Handle to get *const HLRAlgo_HArray1OfPISeg
     pub fn HandleHLRAlgoHArray1OfPISeg_get(
         handle: *const HandleHLRAlgoHArray1OfPISeg,
@@ -2184,6 +2200,8 @@ extern "C" {
     pub fn HandleHLRAlgoHArray1OfTData_clone(
         self_: *const HandleHLRAlgoHArray1OfTData,
     ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfTData>;
+    /// Check if Handle<HLRAlgo_HArray1OfTData> is null
+    pub fn HandleHLRAlgoHArray1OfTData_is_null(self_: *const HandleHLRAlgoHArray1OfTData) -> bool;
     /// Dereference Handle to get *const HLRAlgo_HArray1OfTData
     pub fn HandleHLRAlgoHArray1OfTData_get(
         handle: *const HandleHLRAlgoHArray1OfTData,
@@ -2443,6 +2461,8 @@ extern "C" {
     pub fn HandleHLRAlgoPolyAlgo_clone(
         self_: *const HandleHLRAlgoPolyAlgo,
     ) -> crate::OcctResult<*mut HandleHLRAlgoPolyAlgo>;
+    /// Check if Handle<HLRAlgo_PolyAlgo> is null
+    pub fn HandleHLRAlgoPolyAlgo_is_null(self_: *const HandleHLRAlgoPolyAlgo) -> bool;
     /// Dereference Handle to get *const HLRAlgo_PolyAlgo
     pub fn HandleHLRAlgoPolyAlgo_get(
         handle: *const HandleHLRAlgoPolyAlgo,
@@ -2569,6 +2589,8 @@ extern "C" {
     pub fn HandleHLRAlgoPolyData_clone(
         self_: *const HandleHLRAlgoPolyData,
     ) -> crate::OcctResult<*mut HandleHLRAlgoPolyData>;
+    /// Check if Handle<HLRAlgo_PolyData> is null
+    pub fn HandleHLRAlgoPolyData_is_null(self_: *const HandleHLRAlgoPolyData) -> bool;
     /// Dereference Handle to get *const HLRAlgo_PolyData
     pub fn HandleHLRAlgoPolyData_get(
         handle: *const HandleHLRAlgoPolyData,
@@ -2796,6 +2818,10 @@ extern "C" {
     pub fn HandleHLRAlgoPolyInternalData_clone(
         self_: *const HandleHLRAlgoPolyInternalData,
     ) -> crate::OcctResult<*mut HandleHLRAlgoPolyInternalData>;
+    /// Check if Handle<HLRAlgo_PolyInternalData> is null
+    pub fn HandleHLRAlgoPolyInternalData_is_null(
+        self_: *const HandleHLRAlgoPolyInternalData,
+    ) -> bool;
     /// Dereference Handle to get *const HLRAlgo_PolyInternalData
     pub fn HandleHLRAlgoPolyInternalData_get(
         handle: *const HandleHLRAlgoPolyInternalData,
@@ -2877,6 +2903,10 @@ extern "C" {
     pub fn HandleHLRAlgoPolyInternalNode_clone(
         self_: *const HandleHLRAlgoPolyInternalNode,
     ) -> crate::OcctResult<*mut HandleHLRAlgoPolyInternalNode>;
+    /// Check if Handle<HLRAlgo_PolyInternalNode> is null
+    pub fn HandleHLRAlgoPolyInternalNode_is_null(
+        self_: *const HandleHLRAlgoPolyInternalNode,
+    ) -> bool;
     /// Dereference Handle to get *const HLRAlgo_PolyInternalNode
     pub fn HandleHLRAlgoPolyInternalNode_get(
         handle: *const HandleHLRAlgoPolyInternalNode,
@@ -2997,6 +3027,8 @@ extern "C" {
     pub fn HandleHLRAlgoPolyShellData_clone(
         self_: *const HandleHLRAlgoPolyShellData,
     ) -> crate::OcctResult<*mut HandleHLRAlgoPolyShellData>;
+    /// Check if Handle<HLRAlgo_PolyShellData> is null
+    pub fn HandleHLRAlgoPolyShellData_is_null(self_: *const HandleHLRAlgoPolyShellData) -> bool;
     /// Dereference Handle to get *const HLRAlgo_PolyShellData
     pub fn HandleHLRAlgoPolyShellData_get(
         handle: *const HandleHLRAlgoPolyShellData,
@@ -3202,6 +3234,8 @@ extern "C" {
     pub fn HandleHLRAlgoWiresBlock_clone(
         self_: *const HandleHLRAlgoWiresBlock,
     ) -> crate::OcctResult<*mut HandleHLRAlgoWiresBlock>;
+    /// Check if Handle<HLRAlgo_WiresBlock> is null
+    pub fn HandleHLRAlgoWiresBlock_is_null(self_: *const HandleHLRAlgoWiresBlock) -> bool;
     /// Dereference Handle to get *const HLRAlgo_WiresBlock
     pub fn HandleHLRAlgoWiresBlock_get(
         handle: *const HandleHLRAlgoWiresBlock,
@@ -3342,6 +3376,8 @@ extern "C" {
     pub fn HandleHLRBRepAlgo_clone(
         self_: *const HandleHLRBRepAlgo,
     ) -> crate::OcctResult<*mut HandleHLRBRepAlgo>;
+    /// Check if Handle<HLRBRep_Algo> is null
+    pub fn HandleHLRBRepAlgo_is_null(self_: *const HandleHLRBRepAlgo) -> bool;
     /// Dereference Handle to get *const HLRBRep_Algo
     pub fn HandleHLRBRepAlgo_get(
         handle: *const HandleHLRBRepAlgo,
@@ -3556,6 +3592,8 @@ extern "C" {
     pub fn HandleHLRBRepAreaLimit_clone(
         self_: *const HandleHLRBRepAreaLimit,
     ) -> crate::OcctResult<*mut HandleHLRBRepAreaLimit>;
+    /// Check if Handle<HLRBRep_AreaLimit> is null
+    pub fn HandleHLRBRepAreaLimit_is_null(self_: *const HandleHLRBRepAreaLimit) -> bool;
     /// Dereference Handle to get *const HLRBRep_AreaLimit
     pub fn HandleHLRBRepAreaLimit_get(
         handle: *const HandleHLRBRepAreaLimit,
@@ -4849,6 +4887,8 @@ extern "C" {
     pub fn HandleHLRBRepData_clone(
         self_: *const HandleHLRBRepData,
     ) -> crate::OcctResult<*mut HandleHLRBRepData>;
+    /// Check if Handle<HLRBRep_Data> is null
+    pub fn HandleHLRBRepData_is_null(self_: *const HandleHLRBRepData) -> bool;
     /// Dereference Handle to get *const HLRBRep_Data
     pub fn HandleHLRBRepData_get(
         handle: *const HandleHLRBRepData,
@@ -5980,6 +6020,8 @@ extern "C" {
     pub fn HandleHLRBRepInternalAlgo_clone(
         self_: *const HandleHLRBRepInternalAlgo,
     ) -> crate::OcctResult<*mut HandleHLRBRepInternalAlgo>;
+    /// Check if Handle<HLRBRep_InternalAlgo> is null
+    pub fn HandleHLRBRepInternalAlgo_is_null(self_: *const HandleHLRBRepInternalAlgo) -> bool;
     /// Dereference Handle to get *const HLRBRep_InternalAlgo
     pub fn HandleHLRBRepInternalAlgo_get(
         handle: *const HandleHLRBRepInternalAlgo,
@@ -6494,6 +6536,8 @@ extern "C" {
     pub fn HandleHLRBRepPolyAlgo_clone(
         self_: *const HandleHLRBRepPolyAlgo,
     ) -> crate::OcctResult<*mut HandleHLRBRepPolyAlgo>;
+    /// Check if Handle<HLRBRep_PolyAlgo> is null
+    pub fn HandleHLRBRepPolyAlgo_is_null(self_: *const HandleHLRBRepPolyAlgo) -> bool;
     /// Dereference Handle to get *const HLRBRep_PolyAlgo
     pub fn HandleHLRBRepPolyAlgo_get(
         handle: *const HandleHLRBRepPolyAlgo,
@@ -8831,6 +8875,8 @@ extern "C" {
     pub fn HandleHLRTopoBRepOutLiner_clone(
         self_: *const HandleHLRTopoBRepOutLiner,
     ) -> crate::OcctResult<*mut HandleHLRTopoBRepOutLiner>;
+    /// Check if Handle<HLRTopoBRep_OutLiner> is null
+    pub fn HandleHLRTopoBRepOutLiner_is_null(self_: *const HandleHLRTopoBRepOutLiner) -> bool;
     /// Dereference Handle to get *const HLRTopoBRep_OutLiner
     pub fn HandleHLRTopoBRepOutLiner_get(
         handle: *const HandleHLRTopoBRepOutLiner,

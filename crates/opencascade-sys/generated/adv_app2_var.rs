@@ -2027,6 +2027,11 @@ unsafe impl crate::CppCopyable for HandleAdvApp2VarIso {
 }
 
 impl HandleAdvApp2VarIso {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomBase::HandleAdvApp2VarIso_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AdvApp2Var_Iso
     pub fn get(&self) -> &crate::ffi_types::AdvApp2Var_Iso {
         unsafe {
@@ -3066,6 +3071,11 @@ unsafe impl crate::CppCopyable for HandleAdvApp2VarNode {
 }
 
 impl HandleAdvApp2VarNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomBase::HandleAdvApp2VarNode_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AdvApp2Var_Node
     pub fn get(&self) -> &crate::ffi_types::AdvApp2Var_Node {
         unsafe {
@@ -3544,6 +3554,11 @@ unsafe impl crate::CppCopyable for HandleAdvApp2VarPatch {
 }
 
 impl HandleAdvApp2VarPatch {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomBase::HandleAdvApp2VarPatch_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AdvApp2Var_Patch
     pub fn get(&self) -> &crate::ffi_types::AdvApp2Var_Patch {
         unsafe {

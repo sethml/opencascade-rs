@@ -437,6 +437,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSAlertAttribute {
 }
 
 impl HandleTopoDSAlertAttribute {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_AlertAttribute
     pub fn get(&self) -> &crate::ffi_types::TopoDS_AlertAttribute {
         unsafe {
@@ -714,6 +719,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSAlertWithShape {
 }
 
 impl HandleTopoDSAlertWithShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_AlertWithShape
     pub fn get(&self) -> &crate::ffi_types::TopoDS_AlertWithShape {
         unsafe {
@@ -2995,6 +3005,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSFrozenShape {
 }
 
 impl HandleTopoDSFrozenShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_FrozenShape
     pub fn get(&self) -> &crate::ffi_types::TopoDS_FrozenShape {
         unsafe {
@@ -3252,6 +3267,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSHShape {
 }
 
 impl HandleTopoDSHShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSHShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_HShape
     pub fn get(&self) -> &crate::ffi_types::TopoDS_HShape {
         unsafe {
@@ -3727,6 +3747,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSLockedShape {
 }
 
 impl HandleTopoDSLockedShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_LockedShape
     pub fn get(&self) -> &crate::ffi_types::TopoDS_LockedShape {
         unsafe {
@@ -5213,6 +5238,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSTCompSolid {
 }
 
 impl HandleTopoDSTCompSolid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_TCompSolid
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TCompSolid {
         unsafe {
@@ -5521,6 +5551,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSTCompound {
 }
 
 impl HandleTopoDSTCompound {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTCompound_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_TCompound
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TCompound {
         unsafe {
@@ -5799,6 +5834,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSTEdge {
 }
 
 impl HandleTopoDSTEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTEdge_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_TEdge
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TEdge {
         unsafe {
@@ -6116,6 +6156,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSTFace {
 }
 
 impl HandleTopoDSTFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTFace_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_TFace
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TFace {
         unsafe {
@@ -6496,6 +6541,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSTShape {
 }
 
 impl HandleTopoDSTShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_TShape
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TShape {
         unsafe {
@@ -6984,6 +7034,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSTShell {
 }
 
 impl HandleTopoDSTShell {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTShell_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_TShell
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TShell {
         unsafe {
@@ -7286,6 +7341,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSTSolid {
 }
 
 impl HandleTopoDSTSolid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTSolid_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_TSolid
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TSolid {
         unsafe {
@@ -7570,6 +7630,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSTVertex {
 }
 
 impl HandleTopoDSTVertex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTVertex_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_TVertex
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TVertex {
         unsafe {
@@ -7887,6 +7952,11 @@ unsafe impl crate::CppCopyable for HandleTopoDSTWire {
 }
 
 impl HandleTopoDSTWire {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTWire_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_TWire
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TWire {
         unsafe {
@@ -8246,6 +8316,13 @@ unsafe impl crate::CppCopyable for HandleTopoDSUnCompatibleShapes {
 }
 
 impl HandleTopoDSUnCompatibleShapes {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopoDS_UnCompatibleShapes
     pub fn get(&self) -> &crate::ffi_types::TopoDS_UnCompatibleShapes {
         unsafe {

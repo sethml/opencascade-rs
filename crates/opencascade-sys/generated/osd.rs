@@ -912,6 +912,11 @@ unsafe impl crate::CppCopyable for HandleOSDCachedFileSystem {
 }
 
 impl HandleOSDCachedFileSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_CachedFileSystem
     pub fn get(&self) -> &crate::ffi_types::OSD_CachedFileSystem {
         unsafe {
@@ -2080,6 +2085,11 @@ unsafe impl crate::CppCopyable for HandleOSDException {
 }
 
 impl HandleOSDException {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDException_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception {
         unsafe {
@@ -2626,6 +2636,15 @@ unsafe impl crate::CppCopyable for HandleOSDExceptionACCESSVIOLATION {
 }
 
 impl HandleOSDExceptionACCESSVIOLATION {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception_ACCESS_VIOLATION
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception_ACCESS_VIOLATION {
         unsafe {
@@ -2979,6 +2998,15 @@ unsafe impl crate::CppCopyable for HandleOSDExceptionARRAYBOUNDSEXCEEDED {
 }
 
 impl HandleOSDExceptionARRAYBOUNDSEXCEEDED {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception_ARRAY_BOUNDS_EXCEEDED
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception_ARRAY_BOUNDS_EXCEEDED {
         unsafe {
@@ -3340,6 +3368,13 @@ unsafe impl crate::CppCopyable for HandleOSDExceptionCTRLBREAK {
 }
 
 impl HandleOSDExceptionCTRLBREAK {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception_CTRL_BREAK
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception_CTRL_BREAK {
         unsafe {
@@ -3707,6 +3742,15 @@ unsafe impl crate::CppCopyable for HandleOSDExceptionILLEGALINSTRUCTION {
 }
 
 impl HandleOSDExceptionILLEGALINSTRUCTION {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception_ILLEGAL_INSTRUCTION
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception_ILLEGAL_INSTRUCTION {
         unsafe {
@@ -4072,6 +4116,13 @@ unsafe impl crate::CppCopyable for HandleOSDExceptionINTOVERFLOW {
 }
 
 impl HandleOSDExceptionINTOVERFLOW {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception_INT_OVERFLOW
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception_INT_OVERFLOW {
         unsafe {
@@ -4439,6 +4490,15 @@ unsafe impl crate::CppCopyable for HandleOSDExceptionINVALIDDISPOSITION {
 }
 
 impl HandleOSDExceptionINVALIDDISPOSITION {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception_INVALID_DISPOSITION
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception_INVALID_DISPOSITION {
         unsafe {
@@ -4804,6 +4864,13 @@ unsafe impl crate::CppCopyable for HandleOSDExceptionINPAGEERROR {
 }
 
 impl HandleOSDExceptionINPAGEERROR {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception_IN_PAGE_ERROR
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception_IN_PAGE_ERROR {
         unsafe {
@@ -5150,6 +5217,15 @@ unsafe impl crate::CppCopyable for HandleOSDExceptionNONCONTINUABLEEXCEPTION {
 }
 
 impl HandleOSDExceptionNONCONTINUABLEEXCEPTION {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception_NONCONTINUABLE_EXCEPTION
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception_NONCONTINUABLE_EXCEPTION {
         unsafe {
@@ -5517,6 +5593,15 @@ unsafe impl crate::CppCopyable for HandleOSDExceptionPRIVINSTRUCTION {
 }
 
 impl HandleOSDExceptionPRIVINSTRUCTION {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception_PRIV_INSTRUCTION
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception_PRIV_INSTRUCTION {
         unsafe {
@@ -5886,6 +5971,13 @@ unsafe impl crate::CppCopyable for HandleOSDExceptionSTACKOVERFLOW {
 }
 
 impl HandleOSDExceptionSTACKOVERFLOW {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception_STACK_OVERFLOW
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception_STACK_OVERFLOW {
         unsafe {
@@ -6259,6 +6351,13 @@ unsafe impl crate::CppCopyable for HandleOSDExceptionSTATUSNOMEMORY {
 }
 
 impl HandleOSDExceptionSTATUSNOMEMORY {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Exception_STATUS_NO_MEMORY
     pub fn get(&self) -> &crate::ffi_types::OSD_Exception_STATUS_NO_MEMORY {
         unsafe {
@@ -7331,6 +7430,11 @@ unsafe impl crate::CppCopyable for HandleOSDFileSystem {
 }
 
 impl HandleOSDFileSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDFileSystem_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_FileSystem
     pub fn get(&self) -> &crate::ffi_types::OSD_FileSystem {
         unsafe {
@@ -7743,6 +7847,13 @@ unsafe impl crate::CppCopyable for HandleOSDFileSystemSelector {
 }
 
 impl HandleOSDFileSystemSelector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying OSD_FileSystemSelector
     pub fn get(&self) -> &crate::ffi_types::OSD_FileSystemSelector {
         unsafe {
@@ -8191,6 +8302,11 @@ unsafe impl crate::CppCopyable for HandleOSDLocalFileSystem {
 }
 
 impl HandleOSDLocalFileSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_LocalFileSystem
     pub fn get(&self) -> &crate::ffi_types::OSD_LocalFileSystem {
         unsafe {
@@ -8979,6 +9095,11 @@ unsafe impl crate::CppCopyable for HandleOSDOSDError {
 }
 
 impl HandleOSDOSDError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDOSDError_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_OSDError
     pub fn get(&self) -> &crate::ffi_types::OSD_OSDError {
         unsafe {
@@ -10449,6 +10570,11 @@ unsafe impl crate::CppCopyable for HandleOSDSIGBUS {
 }
 
 impl HandleOSDSIGBUS {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGBUS_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_SIGBUS
     pub fn get(&self) -> &crate::ffi_types::OSD_SIGBUS {
         unsafe {
@@ -10777,6 +10903,11 @@ unsafe impl crate::CppCopyable for HandleOSDSIGHUP {
 }
 
 impl HandleOSDSIGHUP {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGHUP_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_SIGHUP
     pub fn get(&self) -> &crate::ffi_types::OSD_SIGHUP {
         unsafe {
@@ -11105,6 +11236,11 @@ unsafe impl crate::CppCopyable for HandleOSDSIGILL {
 }
 
 impl HandleOSDSIGILL {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGILL_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_SIGILL
     pub fn get(&self) -> &crate::ffi_types::OSD_SIGILL {
         unsafe {
@@ -11433,6 +11569,11 @@ unsafe impl crate::CppCopyable for HandleOSDSIGINT {
 }
 
 impl HandleOSDSIGINT {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGINT_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_SIGINT
     pub fn get(&self) -> &crate::ffi_types::OSD_SIGINT {
         unsafe {
@@ -11764,6 +11905,11 @@ unsafe impl crate::CppCopyable for HandleOSDSIGKILL {
 }
 
 impl HandleOSDSIGKILL {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGKILL_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_SIGKILL
     pub fn get(&self) -> &crate::ffi_types::OSD_SIGKILL {
         unsafe {
@@ -12095,6 +12241,11 @@ unsafe impl crate::CppCopyable for HandleOSDSIGQUIT {
 }
 
 impl HandleOSDSIGQUIT {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGQUIT_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_SIGQUIT
     pub fn get(&self) -> &crate::ffi_types::OSD_SIGQUIT {
         unsafe {
@@ -12426,6 +12577,11 @@ unsafe impl crate::CppCopyable for HandleOSDSIGSEGV {
 }
 
 impl HandleOSDSIGSEGV {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGSEGV_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_SIGSEGV
     pub fn get(&self) -> &crate::ffi_types::OSD_SIGSEGV {
         unsafe {
@@ -12754,6 +12910,11 @@ unsafe impl crate::CppCopyable for HandleOSDSIGSYS {
 }
 
 impl HandleOSDSIGSYS {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGSYS_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_SIGSYS
     pub fn get(&self) -> &crate::ffi_types::OSD_SIGSYS {
         unsafe {
@@ -13198,6 +13359,11 @@ unsafe impl crate::CppCopyable for HandleOSDSignal {
 }
 
 impl HandleOSDSignal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDSignal_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_Signal
     pub fn get(&self) -> &crate::ffi_types::OSD_Signal {
         unsafe {
@@ -13822,6 +13988,11 @@ unsafe impl crate::CppCopyable for HandleOSDThreadPool {
 }
 
 impl HandleOSDThreadPool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleOSDThreadPool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying OSD_ThreadPool
     pub fn get(&self) -> &crate::ffi_types::OSD_ThreadPool {
         unsafe {

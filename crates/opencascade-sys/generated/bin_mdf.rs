@@ -258,6 +258,11 @@ unsafe impl crate::CppCopyable for HandleBinMDFADriver {
 }
 
 impl HandleBinMDFADriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBinL::HandleBinMDFADriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BinMDF_ADriver
     pub fn get(&self) -> &crate::ffi_types::BinMDF_ADriver {
         unsafe {
@@ -1494,6 +1499,11 @@ unsafe impl crate::CppCopyable for HandleBinMDFADriverTable {
 }
 
 impl HandleBinMDFADriverTable {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBinL::HandleBinMDFADriverTable_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BinMDF_ADriverTable
     pub fn get(&self) -> &crate::ffi_types::BinMDF_ADriverTable {
         unsafe {
@@ -1791,6 +1801,11 @@ unsafe impl crate::CppCopyable for HandleBinMDFDerivedDriver {
 }
 
 impl HandleBinMDFDerivedDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBinL::HandleBinMDFDerivedDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BinMDF_DerivedDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDF_DerivedDriver {
         unsafe {
@@ -2096,6 +2111,13 @@ unsafe impl crate::CppCopyable for HandleBinMDFReferenceDriver {
 }
 
 impl HandleBinMDFReferenceDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDFReferenceDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDF_ReferenceDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDF_ReferenceDriver {
         unsafe {
@@ -2401,6 +2423,13 @@ unsafe impl crate::CppCopyable for HandleBinMDFTagSourceDriver {
 }
 
 impl HandleBinMDFTagSourceDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDFTagSourceDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDF_TagSourceDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDF_TagSourceDriver {
         unsafe {

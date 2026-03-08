@@ -140,7 +140,7 @@ BRepBndLib::add(&shape, &mut bbox, true);
 
 ### Handle Types (Reference-Counted Smart Pointers)
 
-OCCT uses `Handle<T>` (an intrusive reference-counted pointer) for objects inheriting from `Standard_Transient`. The generator produces `to_handle()` to wrap an object, upcast methods to convert between Handle types in the inheritance hierarchy, and `Clone` / `ToOwned` support for copying handles.
+OCCT uses `Handle<T>` (an intrusive reference-counted pointer) for objects inheriting from `Standard_Transient`. The generator produces `to_handle()` to wrap an object, upcast methods to convert between Handle types in the inheritance hierarchy, `Clone` / `ToOwned` support for copying handles, and `is_null()` to check for null handles.
 
 ```rust
 use opencascade_sys::geom::{BezierCurve, BSplineCurve};
@@ -153,10 +153,16 @@ let handle = BezierCurve::to_handle(curve);
 // Clone a handle (invokes C++ copy constructor)
 let handle2 = handle.clone();
 
+// Check for null before dereferencing
+if !handle.is_null() {
+    let obj = handle.get();
+}
+
 // Methods that return Handles
 let copy = some_curve.copy();
 // copy is OwnedPtr<HandleGeomGeometry>
 ```
+
 
 ### const char* String Conversions
 
@@ -359,9 +365,11 @@ All methods use extern "C" C++ wrapper functions, since there is no direct Rust�
 Classes inheriting from `Standard_Transient` get:
 - `ClassName::to_handle(obj)` — wrap in `Handle<T>`
 - `handle.clone()` — copy the handle (via C++ copy constructor)
+- `handle.is_null()` — check if the handle is null
 - `handle.to_handle_base()` — upcast Handle to base type
 - `handle.downcast_to_derived()` — type-checked downcast
 - `handle.get()` / `handle.get_mut()` — dereference handle to contained object
+
 
 
 ### Collection Types

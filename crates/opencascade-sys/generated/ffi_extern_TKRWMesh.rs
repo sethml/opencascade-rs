@@ -171,6 +171,8 @@ extern "C" {
     pub fn HandleRWMeshCafReader_clone(
         self_: *const HandleRWMeshCafReader,
     ) -> crate::OcctResult<*mut HandleRWMeshCafReader>;
+    /// Check if Handle<RWMesh_CafReader> is null
+    pub fn HandleRWMeshCafReader_is_null(self_: *const HandleRWMeshCafReader) -> bool;
     /// Dereference Handle to get *const RWMesh_CafReader
     pub fn HandleRWMeshCafReader_get(
         handle: *const HandleRWMeshCafReader,
@@ -618,6 +620,8 @@ extern "C" {
     pub fn HandleRWMeshMaterialMap_clone(
         self_: *const HandleRWMeshMaterialMap,
     ) -> crate::OcctResult<*mut HandleRWMeshMaterialMap>;
+    /// Check if Handle<RWMesh_MaterialMap> is null
+    pub fn HandleRWMeshMaterialMap_is_null(self_: *const HandleRWMeshMaterialMap) -> bool;
     /// Dereference Handle to get *const RWMesh_MaterialMap
     pub fn HandleRWMeshMaterialMap_get(
         handle: *const HandleRWMeshMaterialMap,
@@ -817,6 +821,10 @@ extern "C" {
     pub fn HandleRWMeshTriangulationReader_clone(
         self_: *const HandleRWMeshTriangulationReader,
     ) -> crate::OcctResult<*mut HandleRWMeshTriangulationReader>;
+    /// Check if Handle<RWMesh_TriangulationReader> is null
+    pub fn HandleRWMeshTriangulationReader_is_null(
+        self_: *const HandleRWMeshTriangulationReader,
+    ) -> bool;
     /// Dereference Handle to get *const RWMesh_TriangulationReader
     pub fn HandleRWMeshTriangulationReader_get(
         handle: *const HandleRWMeshTriangulationReader,
@@ -971,6 +979,10 @@ extern "C" {
     pub fn HandleRWMeshTriangulationSource_clone(
         self_: *const HandleRWMeshTriangulationSource,
     ) -> crate::OcctResult<*mut HandleRWMeshTriangulationSource>;
+    /// Check if Handle<RWMesh_TriangulationSource> is null
+    pub fn HandleRWMeshTriangulationSource_is_null(
+        self_: *const HandleRWMeshTriangulationSource,
+    ) -> bool;
     /// Dereference Handle to get *const RWMesh_TriangulationSource
     pub fn HandleRWMeshTriangulationSource_get(
         handle: *const HandleRWMeshTriangulationSource,

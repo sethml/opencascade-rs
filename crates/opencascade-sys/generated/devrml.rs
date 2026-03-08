@@ -397,6 +397,13 @@ unsafe impl crate::CppCopyable for HandleDEVRMLConfigurationNode {
 }
 
 impl HandleDEVRMLConfigurationNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleDEVRMLConfigurationNode_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying DEVRML_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEVRML_ConfigurationNode {
         unsafe {
@@ -861,6 +868,11 @@ unsafe impl crate::CppCopyable for HandleDEVRMLProvider {
 }
 
 impl HandleDEVRMLProvider {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEVRML::HandleDEVRMLProvider_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying DEVRML_Provider
     pub fn get(&self) -> &crate::ffi_types::DEVRML_Provider {
         unsafe {

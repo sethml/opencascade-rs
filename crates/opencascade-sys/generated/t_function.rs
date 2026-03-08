@@ -266,6 +266,11 @@ unsafe impl crate::CppCopyable for HandleTFunctionDriver {
 }
 
 impl HandleTFunctionDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTFunctionDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TFunction_Driver
     pub fn get(&self) -> &crate::ffi_types::TFunction_Driver {
         unsafe {
@@ -569,6 +574,11 @@ unsafe impl crate::CppCopyable for HandleTFunctionDriverTable {
 }
 
 impl HandleTFunctionDriverTable {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTFunctionDriverTable_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TFunction_DriverTable
     pub fn get(&self) -> &crate::ffi_types::TFunction_DriverTable {
         unsafe {
@@ -1235,6 +1245,11 @@ unsafe impl crate::CppCopyable for HandleTFunctionFunction {
 }
 
 impl HandleTFunctionFunction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTFunctionFunction_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TFunction_Function
     pub fn get(&self) -> &crate::ffi_types::TFunction_Function {
         unsafe {
@@ -1982,6 +1997,11 @@ unsafe impl crate::CppCopyable for HandleTFunctionGraphNode {
 }
 
 impl HandleTFunctionGraphNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTFunctionGraphNode_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TFunction_GraphNode
     pub fn get(&self) -> &crate::ffi_types::TFunction_GraphNode {
         unsafe {
@@ -2261,6 +2281,15 @@ unsafe impl crate::CppCopyable for HandleTFunctionHArray1OfDataMapOfGUIDDriver {
 }
 
 impl HandleTFunctionHArray1OfDataMapOfGUIDDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTFunctionHArray1OfDataMapOfGUIDDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TFunction_HArray1OfDataMapOfGUIDDriver
     pub fn get(&self) -> &crate::ffi_types::TFunction_HArray1OfDataMapOfGUIDDriver {
         unsafe {
@@ -3326,6 +3355,11 @@ unsafe impl crate::CppCopyable for HandleTFunctionLogbook {
 }
 
 impl HandleTFunctionLogbook {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTFunctionLogbook_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TFunction_Logbook
     pub fn get(&self) -> &crate::ffi_types::TFunction_Logbook {
         unsafe {
@@ -4045,6 +4079,11 @@ unsafe impl crate::CppCopyable for HandleTFunctionScope {
 }
 
 impl HandleTFunctionScope {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTFunctionScope_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TFunction_Scope
     pub fn get(&self) -> &crate::ffi_types::TFunction_Scope {
         unsafe {

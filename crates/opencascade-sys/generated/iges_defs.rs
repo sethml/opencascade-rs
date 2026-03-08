@@ -1028,6 +1028,13 @@ unsafe impl crate::CppCopyable for HandleIGESDefsAssociativityDef {
 }
 
 impl HandleIGESDefsAssociativityDef {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDefsAssociativityDef_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_AssociativityDef
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_AssociativityDef {
         unsafe {
@@ -2162,6 +2169,13 @@ unsafe impl crate::CppCopyable for HandleIGESDefsAttributeDef {
 }
 
 impl HandleIGESDefsAttributeDef {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDefsAttributeDef_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_AttributeDef
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_AttributeDef {
         unsafe {
@@ -3264,6 +3278,13 @@ unsafe impl crate::CppCopyable for HandleIGESDefsAttributeTable {
 }
 
 impl HandleIGESDefsAttributeTable {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDefsAttributeTable_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_AttributeTable
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_AttributeTable {
         unsafe {
@@ -3911,6 +3932,13 @@ unsafe impl crate::CppCopyable for HandleIGESDefsGeneralModule {
 }
 
 impl HandleIGESDefsGeneralModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDefsGeneralModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_GeneralModule {
         unsafe {
@@ -4971,6 +4999,13 @@ unsafe impl crate::CppCopyable for HandleIGESDefsGenericData {
 }
 
 impl HandleIGESDefsGenericData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDefsGenericData_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_GenericData
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_GenericData {
         unsafe {
@@ -5215,6 +5250,15 @@ unsafe impl crate::CppCopyable for HandleIGESDefsHArray1OfHArray1OfTextDisplayTe
 }
 
 impl HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_HArray1OfHArray1OfTextDisplayTemplate
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_HArray1OfHArray1OfTextDisplayTemplate {
         unsafe {
@@ -5491,6 +5535,15 @@ unsafe impl crate::CppCopyable for HandleIGESDefsHArray1OfTabularData {
 }
 
 impl HandleIGESDefsHArray1OfTabularData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDefsHArray1OfTabularData_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_HArray1OfTabularData
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_HArray1OfTabularData {
         unsafe {
@@ -6437,6 +6490,11 @@ unsafe impl crate::CppCopyable for HandleIGESDefsMacroDef {
 }
 
 impl HandleIGESDefsMacroDef {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESDefsMacroDef_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_MacroDef
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_MacroDef {
         unsafe {
@@ -6832,6 +6890,11 @@ unsafe impl crate::CppCopyable for HandleIGESDefsProtocol {
 }
 
 impl HandleIGESDefsProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESDefsProtocol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_Protocol {
         unsafe {
@@ -7216,6 +7279,13 @@ unsafe impl crate::CppCopyable for HandleIGESDefsReadWriteModule {
 }
 
 impl HandleIGESDefsReadWriteModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDefsReadWriteModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_ReadWriteModule
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_ReadWriteModule {
         unsafe {
@@ -7496,6 +7566,13 @@ unsafe impl crate::CppCopyable for HandleIGESDefsSpecificModule {
 }
 
 impl HandleIGESDefsSpecificModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDefsSpecificModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_SpecificModule
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_SpecificModule {
         unsafe {
@@ -8540,6 +8617,13 @@ unsafe impl crate::CppCopyable for HandleIGESDefsTabularData {
 }
 
 impl HandleIGESDefsTabularData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDefsTabularData_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_TabularData
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_TabularData {
         unsafe {
@@ -10568,6 +10652,11 @@ unsafe impl crate::CppCopyable for HandleIGESDefsUnitsData {
 }
 
 impl HandleIGESDefsUnitsData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESDefsUnitsData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESDefs_UnitsData
     pub fn get(&self) -> &crate::ffi_types::IGESDefs_UnitsData {
         unsafe {

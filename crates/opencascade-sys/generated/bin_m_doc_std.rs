@@ -282,6 +282,13 @@ unsafe impl crate::CppCopyable for HandleBinMDocStdXLinkDriver {
 }
 
 impl HandleBinMDocStdXLinkDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDocStdXLinkDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDocStd_XLinkDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDocStd_XLinkDriver {
         unsafe {

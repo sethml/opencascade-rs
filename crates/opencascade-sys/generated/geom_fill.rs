@@ -1684,6 +1684,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillBoundWithSurf {
 }
 
 impl HandleGeomFillBoundWithSurf {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundWithSurf_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_BoundWithSurf
     pub fn get(&self) -> &crate::ffi_types::GeomFill_BoundWithSurf {
         unsafe {
@@ -1999,6 +2006,11 @@ unsafe impl crate::CppCopyable for HandleGeomFillBoundary {
 }
 
 impl HandleGeomFillBoundary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_Boundary
     pub fn get(&self) -> &crate::ffi_types::GeomFill_Boundary {
         unsafe {
@@ -2591,6 +2603,15 @@ unsafe impl crate::CppCopyable for HandleGeomFillCircularBlendFunc {
 }
 
 impl HandleGeomFillCircularBlendFunc {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillCircularBlendFunc_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_CircularBlendFunc
     pub fn get(&self) -> &crate::ffi_types::GeomFill_CircularBlendFunc {
         unsafe {
@@ -3028,6 +3049,15 @@ unsafe impl crate::CppCopyable for HandleGeomFillConstantBiNormal {
 }
 
 impl HandleGeomFillConstantBiNormal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillConstantBiNormal_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_ConstantBiNormal
     pub fn get(&self) -> &crate::ffi_types::GeomFill_ConstantBiNormal {
         unsafe {
@@ -3728,6 +3758,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillCoonsAlgPatch {
 }
 
 impl HandleGeomFillCoonsAlgPatch {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillCoonsAlgPatch_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_CoonsAlgPatch
     pub fn get(&self) -> &crate::ffi_types::GeomFill_CoonsAlgPatch {
         unsafe {
@@ -4284,6 +4321,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillCorrectedFrenet {
 }
 
 impl HandleGeomFillCorrectedFrenet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillCorrectedFrenet_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_CorrectedFrenet
     pub fn get(&self) -> &crate::ffi_types::GeomFill_CorrectedFrenet {
         unsafe {
@@ -4869,6 +4913,15 @@ unsafe impl crate::CppCopyable for HandleGeomFillCurveAndTrihedron {
 }
 
 impl HandleGeomFillCurveAndTrihedron {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillCurveAndTrihedron_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_CurveAndTrihedron
     pub fn get(&self) -> &crate::ffi_types::GeomFill_CurveAndTrihedron {
         unsafe {
@@ -5529,6 +5582,11 @@ unsafe impl crate::CppCopyable for HandleGeomFillDarboux {
 }
 
 impl HandleGeomFillDarboux {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGeomFillDarboux_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_Darboux
     pub fn get(&self) -> &crate::ffi_types::GeomFill_Darboux {
         unsafe {
@@ -5910,6 +5968,15 @@ unsafe impl crate::CppCopyable for HandleGeomFillDegeneratedBound {
 }
 
 impl HandleGeomFillDegeneratedBound {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillDegeneratedBound_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_DegeneratedBound
     pub fn get(&self) -> &crate::ffi_types::GeomFill_DegeneratedBound {
         unsafe {
@@ -6361,6 +6428,15 @@ unsafe impl crate::CppCopyable for HandleGeomFillDiscreteTrihedron {
 }
 
 impl HandleGeomFillDiscreteTrihedron {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillDiscreteTrihedron_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_DiscreteTrihedron
     pub fn get(&self) -> &crate::ffi_types::GeomFill_DiscreteTrihedron {
         unsafe {
@@ -6813,6 +6889,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillDraftTrihedron {
 }
 
 impl HandleGeomFillDraftTrihedron {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillDraftTrihedron_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_DraftTrihedron
     pub fn get(&self) -> &crate::ffi_types::GeomFill_DraftTrihedron {
         unsafe {
@@ -7387,6 +7470,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillEvolvedSection {
 }
 
 impl HandleGeomFillEvolvedSection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillEvolvedSection_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_EvolvedSection
     pub fn get(&self) -> &crate::ffi_types::GeomFill_EvolvedSection {
         unsafe {
@@ -7866,6 +7956,11 @@ unsafe impl crate::CppCopyable for HandleGeomFillFixed {
 }
 
 impl HandleGeomFillFixed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGeomFillFixed_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_Fixed
     pub fn get(&self) -> &crate::ffi_types::GeomFill_Fixed {
         unsafe {
@@ -8306,6 +8401,11 @@ unsafe impl crate::CppCopyable for HandleGeomFillFrenet {
 }
 
 impl HandleGeomFillFrenet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGeomFillFrenet_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_Frenet
     pub fn get(&self) -> &crate::ffi_types::GeomFill_Frenet {
         unsafe {
@@ -9386,6 +9486,15 @@ unsafe impl crate::CppCopyable for HandleGeomFillGuideTrihedronAC {
 }
 
 impl HandleGeomFillGuideTrihedronAC {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronAC_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_GuideTrihedronAC
     pub fn get(&self) -> &crate::ffi_types::GeomFill_GuideTrihedronAC {
         unsafe {
@@ -9886,6 +9995,15 @@ unsafe impl crate::CppCopyable for HandleGeomFillGuideTrihedronPlan {
 }
 
 impl HandleGeomFillGuideTrihedronPlan {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronPlan_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_GuideTrihedronPlan
     pub fn get(&self) -> &crate::ffi_types::GeomFill_GuideTrihedronPlan {
         unsafe {
@@ -10172,6 +10290,15 @@ unsafe impl crate::CppCopyable for HandleGeomFillHArray1OfLocationLaw {
 }
 
 impl HandleGeomFillHArray1OfLocationLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfLocationLaw_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_HArray1OfLocationLaw
     pub fn get(&self) -> &crate::ffi_types::GeomFill_HArray1OfLocationLaw {
         unsafe {
@@ -10448,6 +10575,15 @@ unsafe impl crate::CppCopyable for HandleGeomFillHArray1OfSectionLaw {
 }
 
 impl HandleGeomFillHArray1OfSectionLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfSectionLaw_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_HArray1OfSectionLaw
     pub fn get(&self) -> &crate::ffi_types::GeomFill_HArray1OfSectionLaw {
         unsafe {
@@ -10709,6 +10845,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillHSequenceOfAx2 {
 }
 
 impl HandleGeomFillHSequenceOfAx2 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillHSequenceOfAx2_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_HSequenceOfAx2
     pub fn get(&self) -> &crate::ffi_types::GeomFill_HSequenceOfAx2 {
         unsafe {
@@ -10930,6 +11073,11 @@ unsafe impl crate::CppCopyable for HandleGeomFillLine {
 }
 
 impl HandleGeomFillLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGeomFillLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_Line
     pub fn get(&self) -> &crate::ffi_types::GeomFill_Line {
         unsafe {
@@ -11638,6 +11786,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillLocationDraft {
 }
 
 impl HandleGeomFillLocationDraft {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationDraft_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_LocationDraft
     pub fn get(&self) -> &crate::ffi_types::GeomFill_LocationDraft {
         unsafe {
@@ -12300,6 +12455,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillLocationGuide {
 }
 
 impl HandleGeomFillLocationGuide {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationGuide_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_LocationGuide
     pub fn get(&self) -> &crate::ffi_types::GeomFill_LocationGuide {
         unsafe {
@@ -12842,6 +13004,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillLocationLaw {
 }
 
 impl HandleGeomFillLocationLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_LocationLaw
     pub fn get(&self) -> &crate::ffi_types::GeomFill_LocationLaw {
         unsafe {
@@ -13531,6 +13700,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillNSections {
 }
 
 impl HandleGeomFillNSections {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillNSections_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_NSections
     pub fn get(&self) -> &crate::ffi_types::GeomFill_NSections {
         unsafe {
@@ -15340,6 +15516,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillSectionLaw {
 }
 
 impl HandleGeomFillSectionLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_SectionLaw
     pub fn get(&self) -> &crate::ffi_types::GeomFill_SectionLaw {
         unsafe {
@@ -15938,6 +16121,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillSimpleBound {
 }
 
 impl HandleGeomFillSimpleBound {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillSimpleBound_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_SimpleBound
     pub fn get(&self) -> &crate::ffi_types::GeomFill_SimpleBound {
         unsafe {
@@ -16491,6 +16681,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillSnglrFunc {
 }
 
 impl HandleGeomFillSnglrFunc {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillSnglrFunc_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_SnglrFunc
     pub fn get(&self) -> &crate::ffi_types::GeomFill_SnglrFunc {
         unsafe {
@@ -17430,6 +17627,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillSweepFunction {
 }
 
 impl HandleGeomFillSweepFunction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillSweepFunction_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_SweepFunction
     pub fn get(&self) -> &crate::ffi_types::GeomFill_SweepFunction {
         unsafe {
@@ -18041,6 +18245,11 @@ unsafe impl crate::CppCopyable for HandleGeomFillTgtField {
 }
 
 impl HandleGeomFillTgtField {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtField_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_TgtField
     pub fn get(&self) -> &crate::ffi_types::GeomFill_TgtField {
         unsafe {
@@ -18340,6 +18549,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillTgtOnCoons {
 }
 
 impl HandleGeomFillTgtOnCoons {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtOnCoons_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_TgtOnCoons
     pub fn get(&self) -> &crate::ffi_types::GeomFill_TgtOnCoons {
         unsafe {
@@ -18749,6 +18965,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillTrihedronLaw {
 }
 
 impl HandleGeomFillTrihedronLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_TrihedronLaw
     pub fn get(&self) -> &crate::ffi_types::GeomFill_TrihedronLaw {
         unsafe {
@@ -19326,6 +19549,15 @@ unsafe impl crate::CppCopyable for HandleGeomFillTrihedronWithGuide {
 }
 
 impl HandleGeomFillTrihedronWithGuide {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_TrihedronWithGuide
     pub fn get(&self) -> &crate::ffi_types::GeomFill_TrihedronWithGuide {
         unsafe {
@@ -19959,6 +20191,13 @@ unsafe impl crate::CppCopyable for HandleGeomFillUniformSection {
 }
 
 impl HandleGeomFillUniformSection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillUniformSection_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomFill_UniformSection
     pub fn get(&self) -> &crate::ffi_types::GeomFill_UniformSection {
         unsafe {

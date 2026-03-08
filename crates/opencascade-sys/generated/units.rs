@@ -624,6 +624,11 @@ unsafe impl crate::CppCopyable for HandleUnitsDimensions {
 }
 
 impl HandleUnitsDimensions {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsDimensions_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_Dimensions
     pub fn get(&self) -> &crate::ffi_types::Units_Dimensions {
         unsafe {
@@ -1095,6 +1100,11 @@ unsafe impl crate::CppCopyable for HandleUnitsLexicon {
 }
 
 impl HandleUnitsLexicon {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsLexicon_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_Lexicon
     pub fn get(&self) -> &crate::ffi_types::Units_Lexicon {
         unsafe {
@@ -1785,6 +1795,11 @@ unsafe impl crate::CppCopyable for HandleUnitsNoSuchType {
 }
 
 impl HandleUnitsNoSuchType {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsNoSuchType_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_NoSuchType
     pub fn get(&self) -> &crate::ffi_types::Units_NoSuchType {
         unsafe {
@@ -2179,6 +2194,11 @@ unsafe impl crate::CppCopyable for HandleUnitsNoSuchUnit {
 }
 
 impl HandleUnitsNoSuchUnit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsNoSuchUnit_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_NoSuchUnit
     pub fn get(&self) -> &crate::ffi_types::Units_NoSuchUnit {
         unsafe {
@@ -2474,6 +2494,13 @@ unsafe impl crate::CppCopyable for HandleUnitsQuantitiesSequence {
 }
 
 impl HandleUnitsQuantitiesSequence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleUnitsQuantitiesSequence_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Units_QuantitiesSequence
     pub fn get(&self) -> &crate::ffi_types::Units_QuantitiesSequence {
         unsafe {
@@ -2729,6 +2756,11 @@ unsafe impl crate::CppCopyable for HandleUnitsQuantity {
 }
 
 impl HandleUnitsQuantity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsQuantity_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_Quantity
     pub fn get(&self) -> &crate::ffi_types::Units_Quantity {
         unsafe {
@@ -3237,6 +3269,11 @@ unsafe impl crate::CppCopyable for HandleUnitsShiftedToken {
 }
 
 impl HandleUnitsShiftedToken {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsShiftedToken_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_ShiftedToken
     pub fn get(&self) -> &crate::ffi_types::Units_ShiftedToken {
         unsafe {
@@ -3587,6 +3624,11 @@ unsafe impl crate::CppCopyable for HandleUnitsShiftedUnit {
 }
 
 impl HandleUnitsShiftedUnit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsShiftedUnit_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_ShiftedUnit
     pub fn get(&self) -> &crate::ffi_types::Units_ShiftedUnit {
         unsafe {
@@ -4219,6 +4261,11 @@ unsafe impl crate::CppCopyable for HandleUnitsToken {
 }
 
 impl HandleUnitsToken {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsToken_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_Token
     pub fn get(&self) -> &crate::ffi_types::Units_Token {
         unsafe {
@@ -4487,6 +4534,11 @@ unsafe impl crate::CppCopyable for HandleUnitsTokensSequence {
 }
 
 impl HandleUnitsTokensSequence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsTokensSequence_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_TokensSequence
     pub fn get(&self) -> &crate::ffi_types::Units_TokensSequence {
         unsafe {
@@ -4818,6 +4870,11 @@ unsafe impl crate::CppCopyable for HandleUnitsUnit {
 }
 
 impl HandleUnitsUnit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsUnit_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_Unit
     pub fn get(&self) -> &crate::ffi_types::Units_Unit {
         unsafe {
@@ -5238,6 +5295,13 @@ unsafe impl crate::CppCopyable for HandleUnitsUnitsDictionary {
 }
 
 impl HandleUnitsUnitsDictionary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleUnitsUnitsDictionary_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Units_UnitsDictionary
     pub fn get(&self) -> &crate::ffi_types::Units_UnitsDictionary {
         unsafe {
@@ -5491,6 +5555,11 @@ unsafe impl crate::CppCopyable for HandleUnitsUnitsLexicon {
 }
 
 impl HandleUnitsUnitsLexicon {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsUnitsLexicon_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_UnitsLexicon
     pub fn get(&self) -> &crate::ffi_types::Units_UnitsLexicon {
         unsafe {
@@ -5752,6 +5821,11 @@ unsafe impl crate::CppCopyable for HandleUnitsUnitsSequence {
 }
 
 impl HandleUnitsUnitsSequence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsUnitsSequence_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_UnitsSequence
     pub fn get(&self) -> &crate::ffi_types::Units_UnitsSequence {
         unsafe {
@@ -6151,6 +6225,11 @@ unsafe impl crate::CppCopyable for HandleUnitsUnitsSystem {
 }
 
 impl HandleUnitsUnitsSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleUnitsUnitsSystem_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Units_UnitsSystem
     pub fn get(&self) -> &crate::ffi_types::Units_UnitsSystem {
         unsafe {

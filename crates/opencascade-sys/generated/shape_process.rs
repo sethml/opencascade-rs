@@ -487,6 +487,13 @@ unsafe impl crate::CppCopyable for HandleShapeProcessContext {
 }
 
 impl HandleShapeProcessContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeProcessContext_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeProcess_Context
     pub fn get(&self) -> &crate::ffi_types::ShapeProcess_Context {
         unsafe {
@@ -787,6 +794,13 @@ unsafe impl crate::CppCopyable for HandleShapeProcessOperator {
 }
 
 impl HandleShapeProcessOperator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeProcess_Operator
     pub fn get(&self) -> &crate::ffi_types::ShapeProcess_Operator {
         unsafe {
@@ -1368,6 +1382,15 @@ unsafe impl crate::CppCopyable for HandleShapeProcessShapeContext {
 }
 
 impl HandleShapeProcessShapeContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeProcessShapeContext_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeProcess_ShapeContext
     pub fn get(&self) -> &crate::ffi_types::ShapeProcess_ShapeContext {
         unsafe {
@@ -1627,6 +1650,13 @@ unsafe impl crate::CppCopyable for HandleShapeProcessUOperator {
 }
 
 impl HandleShapeProcessUOperator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeProcess_UOperator
     pub fn get(&self) -> &crate::ffi_types::ShapeProcess_UOperator {
         unsafe {

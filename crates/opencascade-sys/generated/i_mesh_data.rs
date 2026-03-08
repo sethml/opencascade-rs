@@ -306,6 +306,11 @@ unsafe impl crate::CppCopyable for HandleIMeshDataCurve {
 }
 
 impl HandleIMeshDataCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleIMeshDataCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IMeshData_Curve
     pub fn get(&self) -> &crate::ffi_types::IMeshData_Curve {
         unsafe {
@@ -764,6 +769,11 @@ unsafe impl crate::CppCopyable for HandleIMeshDataEdge {
 }
 
 impl HandleIMeshDataEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleIMeshDataEdge_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IMeshData_Edge
     pub fn get(&self) -> &crate::ffi_types::IMeshData_Edge {
         unsafe {
@@ -1183,6 +1193,11 @@ unsafe impl crate::CppCopyable for HandleIMeshDataFace {
 }
 
 impl HandleIMeshDataFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleIMeshDataFace_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IMeshData_Face
     pub fn get(&self) -> &crate::ffi_types::IMeshData_Face {
         unsafe {
@@ -1505,6 +1520,11 @@ unsafe impl crate::CppCopyable for HandleIMeshDataModel {
 }
 
 impl HandleIMeshDataModel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleIMeshDataModel_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IMeshData_Model
     pub fn get(&self) -> &crate::ffi_types::IMeshData_Model {
         unsafe {
@@ -1829,6 +1849,11 @@ unsafe impl crate::CppCopyable for HandleIMeshDataPCurve {
 }
 
 impl HandleIMeshDataPCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleIMeshDataPCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IMeshData_PCurve
     pub fn get(&self) -> &crate::ffi_types::IMeshData_PCurve {
         unsafe {
@@ -2067,6 +2092,13 @@ unsafe impl crate::CppCopyable for HandleIMeshDataParametersList {
 }
 
 impl HandleIMeshDataParametersList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshDataParametersList_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IMeshData_ParametersList
     pub fn get(&self) -> &crate::ffi_types::IMeshData_ParametersList {
         unsafe {
@@ -2271,6 +2303,11 @@ unsafe impl crate::CppCopyable for HandleIMeshDataShape {
 }
 
 impl HandleIMeshDataShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleIMeshDataShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IMeshData_Shape
     pub fn get(&self) -> &crate::ffi_types::IMeshData_Shape {
         unsafe {
@@ -2661,6 +2698,13 @@ unsafe impl crate::CppCopyable for HandleIMeshDataTessellatedShape {
 }
 
 impl HandleIMeshDataTessellatedShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshDataTessellatedShape_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IMeshData_TessellatedShape
     pub fn get(&self) -> &crate::ffi_types::IMeshData_TessellatedShape {
         unsafe {
@@ -3013,6 +3057,11 @@ unsafe impl crate::CppCopyable for HandleIMeshDataWire {
 }
 
 impl HandleIMeshDataWire {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleIMeshDataWire_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IMeshData_Wire
     pub fn get(&self) -> &crate::ffi_types::IMeshData_Wire {
         unsafe {

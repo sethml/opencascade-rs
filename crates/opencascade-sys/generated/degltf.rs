@@ -397,6 +397,13 @@ unsafe impl crate::CppCopyable for HandleDEGLTFConfigurationNode {
 }
 
 impl HandleDEGLTFConfigurationNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleDEGLTFConfigurationNode_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying DEGLTF_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEGLTF_ConfigurationNode {
         unsafe {
@@ -861,6 +868,11 @@ unsafe impl crate::CppCopyable for HandleDEGLTFProvider {
 }
 
 impl HandleDEGLTFProvider {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEGLTF::HandleDEGLTFProvider_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying DEGLTF_Provider
     pub fn get(&self) -> &crate::ffi_types::DEGLTF_Provider {
         unsafe {

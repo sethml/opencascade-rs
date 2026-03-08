@@ -980,6 +980,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliDrilledHole {
 }
 
 impl HandleIGESAppliDrilledHole {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliDrilledHole_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_DrilledHole
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_DrilledHole {
         unsafe {
@@ -2187,6 +2194,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliElementResults {
 }
 
 impl HandleIGESAppliElementResults {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliElementResults_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_ElementResults
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_ElementResults {
         unsafe {
@@ -3166,6 +3180,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliFiniteElement {
 }
 
 impl HandleIGESAppliFiniteElement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliFiniteElement_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_FiniteElement
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_FiniteElement {
         unsafe {
@@ -4228,6 +4249,11 @@ unsafe impl crate::CppCopyable for HandleIGESAppliFlow {
 }
 
 impl HandleIGESAppliFlow {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESAppliFlow_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_Flow
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_Flow {
         unsafe {
@@ -5203,6 +5229,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliFlowLineSpec {
 }
 
 impl HandleIGESAppliFlowLineSpec {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliFlowLineSpec_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_FlowLineSpec
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_FlowLineSpec {
         unsafe {
@@ -5858,6 +5891,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliGeneralModule {
 }
 
 impl HandleIGESAppliGeneralModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliGeneralModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_GeneralModule {
         unsafe {
@@ -6144,6 +6184,15 @@ unsafe impl crate::CppCopyable for HandleIGESAppliHArray1OfFiniteElement {
 }
 
 impl HandleIGESAppliHArray1OfFiniteElement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliHArray1OfFiniteElement_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_HArray1OfFiniteElement
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_HArray1OfFiniteElement {
         unsafe {
@@ -6418,6 +6467,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliHArray1OfFlow {
 }
 
 impl HandleIGESAppliHArray1OfFlow {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliHArray1OfFlow_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_HArray1OfFlow
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_HArray1OfFlow {
         unsafe {
@@ -6692,6 +6748,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliHArray1OfNode {
 }
 
 impl HandleIGESAppliHArray1OfNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliHArray1OfNode_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_HArray1OfNode
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_HArray1OfNode {
         unsafe {
@@ -7661,6 +7724,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliLevelFunction {
 }
 
 impl HandleIGESAppliLevelFunction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliLevelFunction_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_LevelFunction
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_LevelFunction {
         unsafe {
@@ -8682,6 +8752,15 @@ unsafe impl crate::CppCopyable for HandleIGESAppliLevelToPWBLayerMap {
 }
 
 impl HandleIGESAppliLevelToPWBLayerMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliLevelToPWBLayerMap_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_LevelToPWBLayerMap
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_LevelToPWBLayerMap {
         unsafe {
@@ -9701,6 +9780,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliLineWidening {
 }
 
 impl HandleIGESAppliLineWidening {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliLineWidening_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_LineWidening
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_LineWidening {
         unsafe {
@@ -10694,6 +10780,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliNodalConstraint {
 }
 
 impl HandleIGESAppliNodalConstraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliNodalConstraint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_NodalConstraint
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_NodalConstraint {
         unsafe {
@@ -11745,6 +11838,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliNodalDisplAndRot {
 }
 
 impl HandleIGESAppliNodalDisplAndRot {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliNodalDisplAndRot_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_NodalDisplAndRot
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_NodalDisplAndRot {
         unsafe {
@@ -12787,6 +12887,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliNodalResults {
 }
 
 impl HandleIGESAppliNodalResults {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliNodalResults_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_NodalResults
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_NodalResults {
         unsafe {
@@ -13690,6 +13797,11 @@ unsafe impl crate::CppCopyable for HandleIGESAppliNode {
 }
 
 impl HandleIGESAppliNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESAppliNode_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_Node
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_Node {
         unsafe {
@@ -14680,6 +14792,15 @@ unsafe impl crate::CppCopyable for HandleIGESAppliPWBArtworkStackup {
 }
 
 impl HandleIGESAppliPWBArtworkStackup {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliPWBArtworkStackup_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_PWBArtworkStackup
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_PWBArtworkStackup {
         unsafe {
@@ -15657,6 +15778,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliPWBDrilledHole {
 }
 
 impl HandleIGESAppliPWBDrilledHole {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliPWBDrilledHole_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_PWBDrilledHole
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_PWBDrilledHole {
         unsafe {
@@ -16649,6 +16777,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliPartNumber {
 }
 
 impl HandleIGESAppliPartNumber {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliPartNumber_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_PartNumber
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_PartNumber {
         unsafe {
@@ -17591,6 +17726,11 @@ unsafe impl crate::CppCopyable for HandleIGESAppliPinNumber {
 }
 
 impl HandleIGESAppliPinNumber {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESAppliPinNumber_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_PinNumber
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_PinNumber {
         unsafe {
@@ -18710,6 +18850,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliPipingFlow {
 }
 
 impl HandleIGESAppliPipingFlow {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliPipingFlow_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_PipingFlow
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_PipingFlow {
         unsafe {
@@ -19107,6 +19254,11 @@ unsafe impl crate::CppCopyable for HandleIGESAppliProtocol {
 }
 
 impl HandleIGESAppliProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESAppliProtocol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_Protocol {
         unsafe {
@@ -19491,6 +19643,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliReadWriteModule {
 }
 
 impl HandleIGESAppliReadWriteModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliReadWriteModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_ReadWriteModule
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_ReadWriteModule {
         unsafe {
@@ -20448,6 +20607,15 @@ unsafe impl crate::CppCopyable for HandleIGESAppliReferenceDesignator {
 }
 
 impl HandleIGESAppliReferenceDesignator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliReferenceDesignator_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_ReferenceDesignator
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_ReferenceDesignator {
         unsafe {
@@ -21424,6 +21592,15 @@ unsafe impl crate::CppCopyable for HandleIGESAppliRegionRestriction {
 }
 
 impl HandleIGESAppliRegionRestriction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliRegionRestriction_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_RegionRestriction
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_RegionRestriction {
         unsafe {
@@ -21697,6 +21874,13 @@ unsafe impl crate::CppCopyable for HandleIGESAppliSpecificModule {
 }
 
 impl HandleIGESAppliSpecificModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESAppliSpecificModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESAppli_SpecificModule
     pub fn get(&self) -> &crate::ffi_types::IGESAppli_SpecificModule {
         unsafe {

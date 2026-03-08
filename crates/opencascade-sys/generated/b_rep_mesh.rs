@@ -271,6 +271,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshBaseMeshAlgo {
 }
 
 impl HandleBRepMeshBaseMeshAlgo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshBaseMeshAlgo_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_BaseMeshAlgo
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_BaseMeshAlgo {
         unsafe {
@@ -1084,6 +1089,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshClassifier {
 }
 
 impl HandleBRepMeshClassifier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshClassifier_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_Classifier
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_Classifier {
         unsafe {
@@ -1539,6 +1549,15 @@ unsafe impl crate::CppCopyable for HandleBRepMeshConstrainedBaseMeshAlgo {
 }
 
 impl HandleBRepMeshConstrainedBaseMeshAlgo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshConstrainedBaseMeshAlgo_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_ConstrainedBaseMeshAlgo
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_ConstrainedBaseMeshAlgo {
         unsafe {
@@ -2075,6 +2094,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshContext {
 }
 
 impl HandleBRepMeshContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshContext_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_Context
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_Context {
         unsafe {
@@ -2398,6 +2422,13 @@ unsafe impl crate::CppCopyable for HandleBRepMeshCurveTessellator {
 }
 
 impl HandleBRepMeshCurveTessellator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshCurveTessellator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_CurveTessellator
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_CurveTessellator {
         unsafe {
@@ -2671,6 +2702,13 @@ unsafe impl crate::CppCopyable for HandleBRepMeshCustomBaseMeshAlgo {
 }
 
 impl HandleBRepMeshCustomBaseMeshAlgo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshCustomBaseMeshAlgo_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_CustomBaseMeshAlgo
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_CustomBaseMeshAlgo {
         unsafe {
@@ -3497,6 +3535,15 @@ unsafe impl crate::CppCopyable for HandleBRepMeshDataStructureOfDelaun {
 }
 
 impl HandleBRepMeshDataStructureOfDelaun {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshDataStructureOfDelaun_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_DataStructureOfDelaun
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_DataStructureOfDelaun {
         unsafe {
@@ -3973,6 +4020,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshDeflection {
 }
 
 impl HandleBRepMeshDeflection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshDeflection_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_Deflection
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_Deflection {
         unsafe {
@@ -4270,6 +4322,15 @@ unsafe impl crate::CppCopyable for HandleBRepMeshDelabellaBaseMeshAlgo {
 }
 
 impl HandleBRepMeshDelabellaBaseMeshAlgo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaBaseMeshAlgo_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_DelabellaBaseMeshAlgo
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_DelabellaBaseMeshAlgo {
         unsafe {
@@ -4546,6 +4607,15 @@ unsafe impl crate::CppCopyable for HandleBRepMeshDelabellaMeshAlgoFactory {
 }
 
 impl HandleBRepMeshDelabellaMeshAlgoFactory {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaMeshAlgoFactory_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_DelabellaMeshAlgoFactory
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_DelabellaMeshAlgoFactory {
         unsafe {
@@ -5106,6 +5176,15 @@ unsafe impl crate::CppCopyable for HandleBRepMeshDelaunayBaseMeshAlgo {
 }
 
 impl HandleBRepMeshDelaunayBaseMeshAlgo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshDelaunayBaseMeshAlgo_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_DelaunayBaseMeshAlgo
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_DelaunayBaseMeshAlgo {
         unsafe {
@@ -5476,6 +5555,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshDiscretRoot {
 }
 
 impl HandleBRepMeshDiscretRoot {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshDiscretRoot_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_DiscretRoot
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_DiscretRoot {
         unsafe {
@@ -5924,6 +6008,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshEdgeDiscret {
 }
 
 impl HandleBRepMeshEdgeDiscret {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshEdgeDiscret_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_EdgeDiscret
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_EdgeDiscret {
         unsafe {
@@ -6192,6 +6281,15 @@ unsafe impl crate::CppCopyable for HandleBRepMeshEdgeTessellationExtractor {
 }
 
 impl HandleBRepMeshEdgeTessellationExtractor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshEdgeTessellationExtractor_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_EdgeTessellationExtractor
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_EdgeTessellationExtractor {
         unsafe {
@@ -6660,6 +6758,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshFaceChecker {
 }
 
 impl HandleBRepMeshFaceChecker {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshFaceChecker_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_FaceChecker
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_FaceChecker {
         unsafe {
@@ -6944,6 +7047,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshFaceDiscret {
 }
 
 impl HandleBRepMeshFaceDiscret {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshFaceDiscret_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_FaceDiscret
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_FaceDiscret {
         unsafe {
@@ -7717,6 +7825,13 @@ unsafe impl crate::CppCopyable for HandleBRepMeshIncrementalMesh {
 }
 
 impl HandleBRepMeshIncrementalMesh {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshIncrementalMesh_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_IncrementalMesh
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_IncrementalMesh {
         unsafe {
@@ -7972,6 +8087,13 @@ unsafe impl crate::CppCopyable for HandleBRepMeshMeshAlgoFactory {
 }
 
 impl HandleBRepMeshMeshAlgoFactory {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshMeshAlgoFactory_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_MeshAlgoFactory
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_MeshAlgoFactory {
         unsafe {
@@ -8365,6 +8487,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshMeshTool {
 }
 
 impl HandleBRepMeshMeshTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshMeshTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_MeshTool
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_MeshTool {
         unsafe {
@@ -8794,6 +8921,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshModelBuilder {
 }
 
 impl HandleBRepMeshModelBuilder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshModelBuilder_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_ModelBuilder
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_ModelBuilder {
         unsafe {
@@ -9067,6 +9199,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshModelHealer {
 }
 
 impl HandleBRepMeshModelHealer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshModelHealer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_ModelHealer
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_ModelHealer {
         unsafe {
@@ -9329,6 +9466,13 @@ unsafe impl crate::CppCopyable for HandleBRepMeshModelPostProcessor {
 }
 
 impl HandleBRepMeshModelPostProcessor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshModelPostProcessor_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_ModelPostProcessor
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_ModelPostProcessor {
         unsafe {
@@ -9586,6 +9730,13 @@ unsafe impl crate::CppCopyable for HandleBRepMeshModelPreProcessor {
 }
 
 impl HandleBRepMeshModelPreProcessor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshModelPreProcessor_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_ModelPreProcessor
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_ModelPreProcessor {
         unsafe {
@@ -10372,6 +10523,15 @@ unsafe impl crate::CppCopyable for HandleBRepMeshSelectorOfDataStructureOfDelaun
 }
 
 impl HandleBRepMeshSelectorOfDataStructureOfDelaun {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshSelectorOfDataStructureOfDelaun_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_SelectorOfDataStructureOfDelaun
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_SelectorOfDataStructureOfDelaun {
         unsafe {
@@ -10786,6 +10946,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshShapeTool {
 }
 
 impl HandleBRepMeshShapeTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshShapeTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_ShapeTool
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_ShapeTool {
         unsafe {
@@ -11032,6 +11197,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshShapeVisitor {
 }
 
 impl HandleBRepMeshShapeVisitor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshShapeVisitor_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_ShapeVisitor
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_ShapeVisitor {
         unsafe {
@@ -12677,6 +12847,11 @@ unsafe impl crate::CppCopyable for HandleBRepMeshVertexTool {
 }
 
 impl HandleBRepMeshVertexTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMesh::HandleBRepMeshVertexTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepMesh_VertexTool
     pub fn get(&self) -> &crate::ffi_types::BRepMesh_VertexTool {
         unsafe {

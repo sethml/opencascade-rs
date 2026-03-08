@@ -519,6 +519,13 @@ unsafe impl crate::CppCopyable for HandleSTEPEditEditContext {
 }
 
 impl HandleSTEPEditEditContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPEditEditContext_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPEdit_EditContext
     pub fn get(&self) -> &crate::ffi_types::STEPEdit_EditContext {
         unsafe {
@@ -989,6 +996,11 @@ unsafe impl crate::CppCopyable for HandleSTEPEditEditSDR {
 }
 
 impl HandleSTEPEditEditSDR {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleSTEPEditEditSDR_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying STEPEdit_EditSDR
     pub fn get(&self) -> &crate::ffi_types::STEPEdit_EditSDR {
         unsafe {

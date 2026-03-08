@@ -493,6 +493,11 @@ unsafe impl crate::CppCopyable for HandleBRepBlendAppFunc {
 }
 
 impl HandleBRepBlendAppFunc {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFillet::HandleBRepBlendAppFunc_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepBlend_AppFunc
     pub fn get(&self) -> &crate::ffi_types::BRepBlend_AppFunc {
         unsafe {
@@ -1025,6 +1030,13 @@ unsafe impl crate::CppCopyable for HandleBRepBlendAppFuncRoot {
 }
 
 impl HandleBRepBlendAppFuncRoot {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRoot_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepBlend_AppFuncRoot
     pub fn get(&self) -> &crate::ffi_types::BRepBlend_AppFuncRoot {
         unsafe {
@@ -1607,6 +1619,13 @@ unsafe impl crate::CppCopyable for HandleBRepBlendAppFuncRst {
 }
 
 impl HandleBRepBlendAppFuncRst {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRst_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepBlend_AppFuncRst
     pub fn get(&self) -> &crate::ffi_types::BRepBlend_AppFuncRst {
         unsafe {
@@ -2160,6 +2179,13 @@ unsafe impl crate::CppCopyable for HandleBRepBlendAppFuncRstRst {
 }
 
 impl HandleBRepBlendAppFuncRstRst {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRstRst_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepBlend_AppFuncRstRst
     pub fn get(&self) -> &crate::ffi_types::BRepBlend_AppFuncRstRst {
         unsafe {
@@ -4647,6 +4673,11 @@ unsafe impl crate::CppCopyable for HandleBRepBlendLine {
 }
 
 impl HandleBRepBlendLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFillet::HandleBRepBlendLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepBlend_Line
     pub fn get(&self) -> &crate::ffi_types::BRepBlend_Line {
         unsafe {

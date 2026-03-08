@@ -17,7 +17,7 @@
 // Handle type aliases
 typedef opencascade::handle<LDOM_MemManager> HandleLDOMMemManager;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 
 // ========================
 // LDOMBasicString wrappers

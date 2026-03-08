@@ -145,6 +145,8 @@ extern "C" {
     pub fn HandleCDFApplication_clone(
         self_: *const HandleCDFApplication,
     ) -> crate::OcctResult<*mut HandleCDFApplication>;
+    /// Check if Handle<CDF_Application> is null
+    pub fn HandleCDFApplication_is_null(self_: *const HandleCDFApplication) -> bool;
     /// Dereference Handle to get *const CDF_Application
     pub fn HandleCDFApplication_get(
         handle: *const HandleCDFApplication,
@@ -296,6 +298,8 @@ extern "C" {
     pub fn HandleCDFDirectory_clone(
         self_: *const HandleCDFDirectory,
     ) -> crate::OcctResult<*mut HandleCDFDirectory>;
+    /// Check if Handle<CDF_Directory> is null
+    pub fn HandleCDFDirectory_is_null(self_: *const HandleCDFDirectory) -> bool;
     /// Dereference Handle to get *const CDF_Directory
     pub fn HandleCDFDirectory_get(
         handle: *const HandleCDFDirectory,
@@ -430,6 +434,8 @@ extern "C" {
     pub fn HandleCDFFWOSDriver_clone(
         self_: *const HandleCDFFWOSDriver,
     ) -> crate::OcctResult<*mut HandleCDFFWOSDriver>;
+    /// Check if Handle<CDF_FWOSDriver> is null
+    pub fn HandleCDFFWOSDriver_is_null(self_: *const HandleCDFFWOSDriver) -> bool;
     /// Dereference Handle to get *const CDF_FWOSDriver
     pub fn HandleCDFFWOSDriver_get(
         handle: *const HandleCDFFWOSDriver,
@@ -626,6 +632,8 @@ extern "C" {
     pub fn HandleCDFMetaDataDriver_clone(
         self_: *const HandleCDFMetaDataDriver,
     ) -> crate::OcctResult<*mut HandleCDFMetaDataDriver>;
+    /// Check if Handle<CDF_MetaDataDriver> is null
+    pub fn HandleCDFMetaDataDriver_is_null(self_: *const HandleCDFMetaDataDriver) -> bool;
     /// Dereference Handle to get *const CDF_MetaDataDriver
     pub fn HandleCDFMetaDataDriver_get(
         handle: *const HandleCDFMetaDataDriver,
@@ -701,6 +709,10 @@ extern "C" {
     pub fn HandleCDFMetaDataDriverFactory_clone(
         self_: *const HandleCDFMetaDataDriverFactory,
     ) -> crate::OcctResult<*mut HandleCDFMetaDataDriverFactory>;
+    /// Check if Handle<CDF_MetaDataDriverFactory> is null
+    pub fn HandleCDFMetaDataDriverFactory_is_null(
+        self_: *const HandleCDFMetaDataDriverFactory,
+    ) -> bool;
     /// Dereference Handle to get *const CDF_MetaDataDriverFactory
     pub fn HandleCDFMetaDataDriverFactory_get(
         handle: *const HandleCDFMetaDataDriverFactory,
@@ -888,6 +900,8 @@ extern "C" {
     pub fn HandleCDFStoreList_clone(
         self_: *const HandleCDFStoreList,
     ) -> crate::OcctResult<*mut HandleCDFStoreList>;
+    /// Check if Handle<CDF_StoreList> is null
+    pub fn HandleCDFStoreList_is_null(self_: *const HandleCDFStoreList) -> bool;
     /// Dereference Handle to get *const CDF_StoreList
     pub fn HandleCDFStoreList_get(
         handle: *const HandleCDFStoreList,
@@ -989,6 +1003,8 @@ extern "C" {
     pub fn HandleCDMApplication_clone(
         self_: *const HandleCDMApplication,
     ) -> crate::OcctResult<*mut HandleCDMApplication>;
+    /// Check if Handle<CDM_Application> is null
+    pub fn HandleCDMApplication_is_null(self_: *const HandleCDMApplication) -> bool;
     /// Dereference Handle to get *const CDM_Application
     pub fn HandleCDMApplication_get(
         handle: *const HandleCDMApplication,
@@ -1368,6 +1384,8 @@ extern "C" {
     pub fn HandleCDMDocument_clone(
         self_: *const HandleCDMDocument,
     ) -> crate::OcctResult<*mut HandleCDMDocument>;
+    /// Check if Handle<CDM_Document> is null
+    pub fn HandleCDMDocument_is_null(self_: *const HandleCDMDocument) -> bool;
     /// Dereference Handle to get *const CDM_Document
     pub fn HandleCDMDocument_get(
         handle: *const HandleCDMDocument,
@@ -1472,6 +1490,8 @@ extern "C" {
     pub fn HandleCDMMetaData_clone(
         self_: *const HandleCDMMetaData,
     ) -> crate::OcctResult<*mut HandleCDMMetaData>;
+    /// Check if Handle<CDM_MetaData> is null
+    pub fn HandleCDMMetaData_is_null(self_: *const HandleCDMMetaData) -> bool;
     /// Dereference Handle to get *const CDM_MetaData
     pub fn HandleCDMMetaData_get(
         handle: *const HandleCDMMetaData,
@@ -1553,6 +1573,8 @@ extern "C" {
     pub fn HandleCDMReference_clone(
         self_: *const HandleCDMReference,
     ) -> crate::OcctResult<*mut HandleCDMReference>;
+    /// Check if Handle<CDM_Reference> is null
+    pub fn HandleCDMReference_is_null(self_: *const HandleCDMReference) -> bool;
     /// Dereference Handle to get *const CDM_Reference
     pub fn HandleCDMReference_get(
         handle: *const HandleCDMReference,
@@ -2322,6 +2344,8 @@ extern "C" {
     pub fn HandleLDOMMemManager_clone(
         self_: *const HandleLDOMMemManager,
     ) -> crate::OcctResult<*mut HandleLDOMMemManager>;
+    /// Check if Handle<LDOM_MemManager> is null
+    pub fn HandleLDOMMemManager_is_null(self_: *const HandleLDOMMemManager) -> bool;
     /// Dereference Handle to get *const LDOM_MemManager
     pub fn HandleLDOMMemManager_get(
         handle: *const HandleLDOMMemManager,
@@ -2651,6 +2675,8 @@ extern "C" {
     pub fn HandlePCDMDocument_clone(
         self_: *const HandlePCDMDocument,
     ) -> crate::OcctResult<*mut HandlePCDMDocument>;
+    /// Check if Handle<PCDM_Document> is null
+    pub fn HandlePCDMDocument_is_null(self_: *const HandlePCDMDocument) -> bool;
     /// Dereference Handle to get *const PCDM_Document
     pub fn HandlePCDMDocument_get(
         handle: *const HandlePCDMDocument,
@@ -2763,6 +2789,8 @@ extern "C" {
     pub fn HandlePCDMDriverError_clone(
         self_: *const HandlePCDMDriverError,
     ) -> crate::OcctResult<*mut HandlePCDMDriverError>;
+    /// Check if Handle<PCDM_DriverError> is null
+    pub fn HandlePCDMDriverError_is_null(self_: *const HandlePCDMDriverError) -> bool;
     /// Dereference Handle to get *const PCDM_DriverError
     pub fn HandlePCDMDriverError_get(
         handle: *const HandlePCDMDriverError,
@@ -2926,6 +2954,8 @@ extern "C" {
     pub fn HandlePCDMReadWriter_clone(
         self_: *const HandlePCDMReadWriter,
     ) -> crate::OcctResult<*mut HandlePCDMReadWriter>;
+    /// Check if Handle<PCDM_ReadWriter> is null
+    pub fn HandlePCDMReadWriter_is_null(self_: *const HandlePCDMReadWriter) -> bool;
     /// Dereference Handle to get *const PCDM_ReadWriter
     pub fn HandlePCDMReadWriter_get(
         handle: *const HandlePCDMReadWriter,
@@ -3065,6 +3095,8 @@ extern "C" {
     pub fn HandlePCDMReadWriter1_clone(
         self_: *const HandlePCDMReadWriter1,
     ) -> crate::OcctResult<*mut HandlePCDMReadWriter1>;
+    /// Check if Handle<PCDM_ReadWriter_1> is null
+    pub fn HandlePCDMReadWriter1_is_null(self_: *const HandlePCDMReadWriter1) -> bool;
     /// Dereference Handle to get *const PCDM_ReadWriter_1
     pub fn HandlePCDMReadWriter1_get(
         handle: *const HandlePCDMReadWriter1,
@@ -3156,6 +3188,8 @@ extern "C" {
     pub fn HandlePCDMReader_clone(
         self_: *const HandlePCDMReader,
     ) -> crate::OcctResult<*mut HandlePCDMReader>;
+    /// Check if Handle<PCDM_Reader> is null
+    pub fn HandlePCDMReader_is_null(self_: *const HandlePCDMReader) -> bool;
     /// Dereference Handle to get *const PCDM_Reader
     pub fn HandlePCDMReader_get(
         handle: *const HandlePCDMReader,
@@ -3355,6 +3389,8 @@ extern "C" {
     pub fn HandlePCDMReaderFilter_clone(
         self_: *const HandlePCDMReaderFilter,
     ) -> crate::OcctResult<*mut HandlePCDMReaderFilter>;
+    /// Check if Handle<PCDM_ReaderFilter> is null
+    pub fn HandlePCDMReaderFilter_is_null(self_: *const HandlePCDMReaderFilter) -> bool;
     /// Dereference Handle to get *const PCDM_ReaderFilter
     pub fn HandlePCDMReaderFilter_get(
         handle: *const HandlePCDMReaderFilter,
@@ -3463,6 +3499,8 @@ extern "C" {
     pub fn HandlePCDMReferenceIterator_clone(
         self_: *const HandlePCDMReferenceIterator,
     ) -> crate::OcctResult<*mut HandlePCDMReferenceIterator>;
+    /// Check if Handle<PCDM_ReferenceIterator> is null
+    pub fn HandlePCDMReferenceIterator_is_null(self_: *const HandlePCDMReferenceIterator) -> bool;
     /// Dereference Handle to get *const PCDM_ReferenceIterator
     pub fn HandlePCDMReferenceIterator_get(
         handle: *const HandlePCDMReferenceIterator,
@@ -3556,6 +3594,8 @@ extern "C" {
     pub fn HandlePCDMRetrievalDriver_clone(
         self_: *const HandlePCDMRetrievalDriver,
     ) -> crate::OcctResult<*mut HandlePCDMRetrievalDriver>;
+    /// Check if Handle<PCDM_RetrievalDriver> is null
+    pub fn HandlePCDMRetrievalDriver_is_null(self_: *const HandlePCDMRetrievalDriver) -> bool;
     /// Dereference Handle to get *const PCDM_RetrievalDriver
     pub fn HandlePCDMRetrievalDriver_get(
         handle: *const HandlePCDMRetrievalDriver,
@@ -3744,6 +3784,8 @@ extern "C" {
     pub fn HandlePCDMStorageDriver_clone(
         self_: *const HandlePCDMStorageDriver,
     ) -> crate::OcctResult<*mut HandlePCDMStorageDriver>;
+    /// Check if Handle<PCDM_StorageDriver> is null
+    pub fn HandlePCDMStorageDriver_is_null(self_: *const HandlePCDMStorageDriver) -> bool;
     /// Dereference Handle to get *const PCDM_StorageDriver
     pub fn HandlePCDMStorageDriver_get(
         handle: *const HandlePCDMStorageDriver,
@@ -3860,6 +3902,8 @@ extern "C" {
     pub fn HandlePCDMWriter_clone(
         self_: *const HandlePCDMWriter,
     ) -> crate::OcctResult<*mut HandlePCDMWriter>;
+    /// Check if Handle<PCDM_Writer> is null
+    pub fn HandlePCDMWriter_is_null(self_: *const HandlePCDMWriter) -> bool;
     /// Dereference Handle to get *const PCDM_Writer
     pub fn HandlePCDMWriter_get(
         handle: *const HandlePCDMWriter,

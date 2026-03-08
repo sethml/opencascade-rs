@@ -1575,6 +1575,15 @@ unsafe impl crate::CppCopyable for HandleStandardAbortiveTransaction {
 }
 
 impl HandleStandardAbortiveTransaction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardAbortiveTransaction_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_AbortiveTransaction
     pub fn get(&self) -> &crate::ffi_types::Standard_AbortiveTransaction {
         unsafe {
@@ -2140,6 +2149,13 @@ unsafe impl crate::CppCopyable for HandleStandardConstructionError {
 }
 
 impl HandleStandardConstructionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardConstructionError_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_ConstructionError
     pub fn get(&self) -> &crate::ffi_types::Standard_ConstructionError {
         unsafe {
@@ -2503,6 +2519,13 @@ unsafe impl crate::CppCopyable for HandleStandardDimensionError {
 }
 
 impl HandleStandardDimensionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardDimensionError_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_DimensionError
     pub fn get(&self) -> &crate::ffi_types::Standard_DimensionError {
         unsafe {
@@ -2926,6 +2949,13 @@ unsafe impl crate::CppCopyable for HandleStandardDimensionMismatch {
 }
 
 impl HandleStandardDimensionMismatch {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardDimensionMismatch_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_DimensionMismatch
     pub fn get(&self) -> &crate::ffi_types::Standard_DimensionMismatch {
         unsafe {
@@ -3294,6 +3324,13 @@ unsafe impl crate::CppCopyable for HandleStandardDivideByZero {
 }
 
 impl HandleStandardDivideByZero {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardDivideByZero_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_DivideByZero
     pub fn get(&self) -> &crate::ffi_types::Standard_DivideByZero {
         unsafe {
@@ -3635,6 +3672,11 @@ unsafe impl crate::CppCopyable for HandleStandardDomainError {
 }
 
 impl HandleStandardDomainError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardDomainError_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_DomainError
     pub fn get(&self) -> &crate::ffi_types::Standard_DomainError {
         unsafe {
@@ -5330,6 +5372,11 @@ unsafe impl crate::CppCopyable for HandleStandardFailure {
 }
 
 impl HandleStandardFailure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardFailure_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_Failure
     pub fn get(&self) -> &crate::ffi_types::Standard_Failure {
         unsafe {
@@ -7707,6 +7754,13 @@ unsafe impl crate::CppCopyable for HandleStandardImmutableObject {
 }
 
 impl HandleStandardImmutableObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardImmutableObject_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_ImmutableObject
     pub fn get(&self) -> &crate::ffi_types::Standard_ImmutableObject {
         unsafe {
@@ -8046,6 +8100,13 @@ unsafe impl crate::CppCopyable for HandleStandardLicenseError {
 }
 
 impl HandleStandardLicenseError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardLicenseError_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_LicenseError
     pub fn get(&self) -> &crate::ffi_types::Standard_LicenseError {
         unsafe {
@@ -8420,6 +8481,13 @@ unsafe impl crate::CppCopyable for HandleStandardLicenseNotFound {
 }
 
 impl HandleStandardLicenseNotFound {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardLicenseNotFound_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_LicenseNotFound
     pub fn get(&self) -> &crate::ffi_types::Standard_LicenseNotFound {
         unsafe {
@@ -9055,6 +9123,13 @@ unsafe impl crate::CppCopyable for HandleStandardMultiplyDefined {
 }
 
 impl HandleStandardMultiplyDefined {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardMultiplyDefined_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_MultiplyDefined
     pub fn get(&self) -> &crate::ffi_types::Standard_MultiplyDefined {
         unsafe {
@@ -9604,6 +9679,13 @@ unsafe impl crate::CppCopyable for HandleStandardNegativeValue {
 }
 
 impl HandleStandardNegativeValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardNegativeValue_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_NegativeValue
     pub fn get(&self) -> &crate::ffi_types::Standard_NegativeValue {
         unsafe {
@@ -9982,6 +10064,13 @@ unsafe impl crate::CppCopyable for HandleStandardNoMoreObject {
 }
 
 impl HandleStandardNoMoreObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardNoMoreObject_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_NoMoreObject
     pub fn get(&self) -> &crate::ffi_types::Standard_NoMoreObject {
         unsafe {
@@ -10347,6 +10436,13 @@ unsafe impl crate::CppCopyable for HandleStandardNoSuchObject {
 }
 
 impl HandleStandardNoSuchObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardNoSuchObject_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_NoSuchObject
     pub fn get(&self) -> &crate::ffi_types::Standard_NoSuchObject {
         unsafe {
@@ -10768,6 +10864,13 @@ unsafe impl crate::CppCopyable for HandleStandardNotImplemented {
 }
 
 impl HandleStandardNotImplemented {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardNotImplemented_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_NotImplemented
     pub fn get(&self) -> &crate::ffi_types::Standard_NotImplemented {
         unsafe {
@@ -11127,6 +11230,11 @@ unsafe impl crate::CppCopyable for HandleStandardNullObject {
 }
 
 impl HandleStandardNullObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardNullObject_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_NullObject
     pub fn get(&self) -> &crate::ffi_types::Standard_NullObject {
         unsafe {
@@ -11510,6 +11618,11 @@ unsafe impl crate::CppCopyable for HandleStandardNullValue {
 }
 
 impl HandleStandardNullValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardNullValue_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_NullValue
     pub fn get(&self) -> &crate::ffi_types::Standard_NullValue {
         unsafe {
@@ -11866,6 +11979,13 @@ unsafe impl crate::CppCopyable for HandleStandardNumericError {
 }
 
 impl HandleStandardNumericError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardNumericError_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_NumericError
     pub fn get(&self) -> &crate::ffi_types::Standard_NumericError {
         unsafe {
@@ -12287,6 +12407,11 @@ unsafe impl crate::CppCopyable for HandleStandardOutOfMemory {
 }
 
 impl HandleStandardOutOfMemory {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardOutOfMemory_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_OutOfMemory
     pub fn get(&self) -> &crate::ffi_types::Standard_OutOfMemory {
         unsafe {
@@ -12672,6 +12797,11 @@ unsafe impl crate::CppCopyable for HandleStandardOutOfRange {
 }
 
 impl HandleStandardOutOfRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardOutOfRange_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_OutOfRange
     pub fn get(&self) -> &crate::ffi_types::Standard_OutOfRange {
         unsafe {
@@ -13257,6 +13387,11 @@ unsafe impl crate::CppCopyable for HandleStandardOverflow {
 }
 
 impl HandleStandardOverflow {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardOverflow_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_Overflow
     pub fn get(&self) -> &crate::ffi_types::Standard_Overflow {
         unsafe {
@@ -13493,6 +13628,11 @@ unsafe impl crate::CppCopyable for HandleStandardPersistent {
 }
 
 impl HandleStandardPersistent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardPersistent_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_Persistent
     pub fn get(&self) -> &crate::ffi_types::Standard_Persistent {
         unsafe {
@@ -13830,6 +13970,13 @@ unsafe impl crate::CppCopyable for HandleStandardProgramError {
 }
 
 impl HandleStandardProgramError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardProgramError_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_ProgramError
     pub fn get(&self) -> &crate::ffi_types::Standard_ProgramError {
         unsafe {
@@ -14212,6 +14359,11 @@ unsafe impl crate::CppCopyable for HandleStandardRangeError {
 }
 
 impl HandleStandardRangeError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardRangeError_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_RangeError
     pub fn get(&self) -> &crate::ffi_types::Standard_RangeError {
         unsafe {
@@ -14890,6 +15042,11 @@ unsafe impl crate::CppCopyable for HandleStandardTransient {
 }
 
 impl HandleStandardTransient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardTransient_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_Transient
     pub fn get(&self) -> &crate::ffi_types::Standard_Transient {
         unsafe {
@@ -59748,6 +59905,11 @@ unsafe impl crate::CppCopyable for HandleStandardType {
 }
 
 impl HandleStandardType {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardType_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_Type
     pub fn get(&self) -> &crate::ffi_types::Standard_Type {
         unsafe {
@@ -60097,6 +60259,13 @@ unsafe impl crate::CppCopyable for HandleStandardTypeMismatch {
 }
 
 impl HandleStandardTypeMismatch {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStandardTypeMismatch_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Standard_TypeMismatch
     pub fn get(&self) -> &crate::ffi_types::Standard_TypeMismatch {
         unsafe {
@@ -60471,6 +60640,11 @@ unsafe impl crate::CppCopyable for HandleStandardUnderflow {
 }
 
 impl HandleStandardUnderflow {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStandardUnderflow_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Standard_Underflow
     pub fn get(&self) -> &crate::ffi_types::Standard_Underflow {
         unsafe {

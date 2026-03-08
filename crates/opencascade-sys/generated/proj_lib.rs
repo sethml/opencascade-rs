@@ -1183,6 +1183,15 @@ unsafe impl crate::CppCopyable for HandleProjLibCompProjectedCurve {
 }
 
 impl HandleProjLibCompProjectedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ProjLib_CompProjectedCurve
     pub fn get(&self) -> &crate::ffi_types::ProjLib_CompProjectedCurve {
         unsafe {
@@ -2404,6 +2413,15 @@ unsafe impl crate::CppCopyable for HandleProjLibHSequenceOfHSequenceOfPnt {
 }
 
 impl HandleProjLibHSequenceOfHSequenceOfPnt {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ProjLib_HSequenceOfHSequenceOfPnt
     pub fn get(&self) -> &crate::ffi_types::ProjLib_HSequenceOfHSequenceOfPnt {
         unsafe {
@@ -3582,6 +3600,13 @@ unsafe impl crate::CppCopyable for HandleProjLibProjectOnPlane {
 }
 
 impl HandleProjLibProjectOnPlane {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ProjLib_ProjectOnPlane
     pub fn get(&self) -> &crate::ffi_types::ProjLib_ProjectOnPlane {
         unsafe {
@@ -4407,6 +4432,13 @@ unsafe impl crate::CppCopyable for HandleProjLibProjectedCurve {
 }
 
 impl HandleProjLibProjectedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ProjLib_ProjectedCurve
     pub fn get(&self) -> &crate::ffi_types::ProjLib_ProjectedCurve {
         unsafe {

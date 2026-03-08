@@ -1060,6 +1060,11 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepFFDumper {
 }
 
 impl HandleTopOpeBRepFFDumper {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleTopOpeBRepFFDumper_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRep_FFDumper
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_FFDumper {
         unsafe {
@@ -2677,6 +2682,15 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepHArray1OfLineInter {
 }
 
 impl HandleTopOpeBRepHArray1OfLineInter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfLineInter_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRep_HArray1OfLineInter
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_HArray1OfLineInter {
         unsafe {
@@ -2957,6 +2971,15 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepHArray1OfVPointInter {
 }
 
 impl HandleTopOpeBRepHArray1OfVPointInter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfVPointInter_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRep_HArray1OfVPointInter
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_HArray1OfVPointInter {
         unsafe {
@@ -3205,6 +3228,11 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepHctxee2d {
 }
 
 impl HandleTopOpeBRepHctxee2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleTopOpeBRepHctxee2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRep_Hctxee2d
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_Hctxee2d {
         unsafe {
@@ -3496,6 +3524,11 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepHctxff2d {
 }
 
 impl HandleTopOpeBRepHctxff2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleTopOpeBRepHctxff2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRep_Hctxff2d
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_Hctxff2d {
         unsafe {

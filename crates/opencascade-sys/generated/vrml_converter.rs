@@ -964,6 +964,13 @@ unsafe impl crate::CppCopyable for HandleVrmlConverterDrawer {
 }
 
 impl HandleVrmlConverterDrawer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying VrmlConverter_Drawer
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_Drawer {
         unsafe {
@@ -1320,6 +1327,13 @@ unsafe impl crate::CppCopyable for HandleVrmlConverterIsoAspect {
 }
 
 impl HandleVrmlConverterIsoAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying VrmlConverter_IsoAspect
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_IsoAspect {
         unsafe {
@@ -1594,6 +1608,13 @@ unsafe impl crate::CppCopyable for HandleVrmlConverterLineAspect {
 }
 
 impl HandleVrmlConverterLineAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying VrmlConverter_LineAspect
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_LineAspect {
         unsafe {
@@ -1873,6 +1894,13 @@ unsafe impl crate::CppCopyable for HandleVrmlConverterPointAspect {
 }
 
 impl HandleVrmlConverterPointAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying VrmlConverter_PointAspect
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_PointAspect {
         unsafe {
@@ -2151,6 +2179,13 @@ unsafe impl crate::CppCopyable for HandleVrmlConverterProjector {
 }
 
 impl HandleVrmlConverterProjector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying VrmlConverter_Projector
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_Projector {
         unsafe {
@@ -2505,6 +2540,15 @@ unsafe impl crate::CppCopyable for HandleVrmlConverterShadingAspect {
 }
 
 impl HandleVrmlConverterShadingAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying VrmlConverter_ShadingAspect
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_ShadingAspect {
         unsafe {

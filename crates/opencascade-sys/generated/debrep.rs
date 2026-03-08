@@ -400,6 +400,15 @@ unsafe impl crate::CppCopyable for HandleDEBREPConfigurationNode {
 }
 
 impl HandleDEBREPConfigurationNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDECascade::HandleDEBREPConfigurationNode_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying DEBREP_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEBREP_ConfigurationNode {
         unsafe {
@@ -875,6 +884,11 @@ unsafe impl crate::CppCopyable for HandleDEBREPProvider {
 }
 
 impl HandleDEBREPProvider {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDECascade::HandleDEBREPProvider_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying DEBREP_Provider
     pub fn get(&self) -> &crate::ffi_types::DEBREP_Provider {
         unsafe {

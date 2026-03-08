@@ -66,6 +66,8 @@ extern "C" {
     pub fn HandleAppStdLApplication_clone(
         self_: *const HandleAppStdLApplication,
     ) -> crate::OcctResult<*mut HandleAppStdLApplication>;
+    /// Check if Handle<AppStdL_Application> is null
+    pub fn HandleAppStdLApplication_is_null(self_: *const HandleAppStdLApplication) -> bool;
     /// Dereference Handle to get *const AppStdL_Application
     pub fn HandleAppStdLApplication_get(
         handle: *const HandleAppStdLApplication,
@@ -467,6 +469,8 @@ extern "C" {
     pub fn HandleTDFAttribute_clone(
         self_: *const HandleTDFAttribute,
     ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    /// Check if Handle<TDF_Attribute> is null
+    pub fn HandleTDFAttribute_is_null(self_: *const HandleTDFAttribute) -> bool;
     /// Dereference Handle to get *const TDF_Attribute
     pub fn HandleTDFAttribute_get(
         handle: *const HandleTDFAttribute,
@@ -914,6 +918,8 @@ extern "C" {
     pub fn HandleTDFAttributeDelta_clone(
         self_: *const HandleTDFAttributeDelta,
     ) -> crate::OcctResult<*mut HandleTDFAttributeDelta>;
+    /// Check if Handle<TDF_AttributeDelta> is null
+    pub fn HandleTDFAttributeDelta_is_null(self_: *const HandleTDFAttributeDelta) -> bool;
     /// Dereference Handle to get *const TDF_AttributeDelta
     pub fn HandleTDFAttributeDelta_get(
         handle: *const HandleTDFAttributeDelta,
@@ -1319,6 +1325,8 @@ extern "C" {
     pub fn HandleTDFData_clone(
         self_: *const HandleTDFData,
     ) -> crate::OcctResult<*mut HandleTDFData>;
+    /// Check if Handle<TDF_Data> is null
+    pub fn HandleTDFData_is_null(self_: *const HandleTDFData) -> bool;
     /// Dereference Handle to get *const TDF_Data
     pub fn HandleTDFData_get(handle: *const HandleTDFData) -> crate::OcctResult<*const TDF_Data>;
     /// Dereference Handle to get *mut TDF_Data
@@ -1420,6 +1428,8 @@ extern "C" {
     pub fn HandleTDFDataSet_clone(
         self_: *const HandleTDFDataSet,
     ) -> crate::OcctResult<*mut HandleTDFDataSet>;
+    /// Check if Handle<TDF_DataSet> is null
+    pub fn HandleTDFDataSet_is_null(self_: *const HandleTDFDataSet) -> bool;
     /// Dereference Handle to get *const TDF_DataSet
     pub fn HandleTDFDataSet_get(
         handle: *const HandleTDFDataSet,
@@ -1514,6 +1524,10 @@ extern "C" {
     pub fn HandleTDFDefaultDeltaOnModification_clone(
         self_: *const HandleTDFDefaultDeltaOnModification,
     ) -> crate::OcctResult<*mut HandleTDFDefaultDeltaOnModification>;
+    /// Check if Handle<TDF_DefaultDeltaOnModification> is null
+    pub fn HandleTDFDefaultDeltaOnModification_is_null(
+        self_: *const HandleTDFDefaultDeltaOnModification,
+    ) -> bool;
     /// Dereference Handle to get *const TDF_DefaultDeltaOnModification
     pub fn HandleTDFDefaultDeltaOnModification_get(
         handle: *const HandleTDFDefaultDeltaOnModification,
@@ -1629,6 +1643,10 @@ extern "C" {
     pub fn HandleTDFDefaultDeltaOnRemoval_clone(
         self_: *const HandleTDFDefaultDeltaOnRemoval,
     ) -> crate::OcctResult<*mut HandleTDFDefaultDeltaOnRemoval>;
+    /// Check if Handle<TDF_DefaultDeltaOnRemoval> is null
+    pub fn HandleTDFDefaultDeltaOnRemoval_is_null(
+        self_: *const HandleTDFDefaultDeltaOnRemoval,
+    ) -> bool;
     /// Dereference Handle to get *const TDF_DefaultDeltaOnRemoval
     pub fn HandleTDFDefaultDeltaOnRemoval_get(
         handle: *const HandleTDFDefaultDeltaOnRemoval,
@@ -1753,6 +1771,8 @@ extern "C" {
     pub fn HandleTDFDelta_clone(
         self_: *const HandleTDFDelta,
     ) -> crate::OcctResult<*mut HandleTDFDelta>;
+    /// Check if Handle<TDF_Delta> is null
+    pub fn HandleTDFDelta_is_null(self_: *const HandleTDFDelta) -> bool;
     /// Dereference Handle to get *const TDF_Delta
     pub fn HandleTDFDelta_get(handle: *const HandleTDFDelta)
         -> crate::OcctResult<*const TDF_Delta>;
@@ -1834,6 +1854,8 @@ extern "C" {
     pub fn HandleTDFDeltaOnAddition_clone(
         self_: *const HandleTDFDeltaOnAddition,
     ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
+    /// Check if Handle<TDF_DeltaOnAddition> is null
+    pub fn HandleTDFDeltaOnAddition_is_null(self_: *const HandleTDFDeltaOnAddition) -> bool;
     /// Dereference Handle to get *const TDF_DeltaOnAddition
     pub fn HandleTDFDeltaOnAddition_get(
         handle: *const HandleTDFDeltaOnAddition,
@@ -1934,6 +1956,8 @@ extern "C" {
     pub fn HandleTDFDeltaOnForget_clone(
         self_: *const HandleTDFDeltaOnForget,
     ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
+    /// Check if Handle<TDF_DeltaOnForget> is null
+    pub fn HandleTDFDeltaOnForget_is_null(self_: *const HandleTDFDeltaOnForget) -> bool;
     /// Dereference Handle to get *const TDF_DeltaOnForget
     pub fn HandleTDFDeltaOnForget_get(
         handle: *const HandleTDFDeltaOnForget,
@@ -2033,6 +2057,9 @@ extern "C" {
     pub fn HandleTDFDeltaOnModification_clone(
         self_: *const HandleTDFDeltaOnModification,
     ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
+    /// Check if Handle<TDF_DeltaOnModification> is null
+    pub fn HandleTDFDeltaOnModification_is_null(self_: *const HandleTDFDeltaOnModification)
+        -> bool;
     /// Dereference Handle to get *const TDF_DeltaOnModification
     pub fn HandleTDFDeltaOnModification_get(
         handle: *const HandleTDFDeltaOnModification,
@@ -2151,6 +2178,8 @@ extern "C" {
     pub fn HandleTDFDeltaOnRemoval_clone(
         self_: *const HandleTDFDeltaOnRemoval,
     ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
+    /// Check if Handle<TDF_DeltaOnRemoval> is null
+    pub fn HandleTDFDeltaOnRemoval_is_null(self_: *const HandleTDFDeltaOnRemoval) -> bool;
     /// Dereference Handle to get *const TDF_DeltaOnRemoval
     pub fn HandleTDFDeltaOnRemoval_get(
         handle: *const HandleTDFDeltaOnRemoval,
@@ -2263,6 +2292,8 @@ extern "C" {
     pub fn HandleTDFDeltaOnResume_clone(
         self_: *const HandleTDFDeltaOnResume,
     ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
+    /// Check if Handle<TDF_DeltaOnResume> is null
+    pub fn HandleTDFDeltaOnResume_is_null(self_: *const HandleTDFDeltaOnResume) -> bool;
     /// Dereference Handle to get *const TDF_DeltaOnResume
     pub fn HandleTDFDeltaOnResume_get(
         handle: *const HandleTDFDeltaOnResume,
@@ -2403,6 +2434,8 @@ extern "C" {
     pub fn HandleTDFHAttributeArray1_clone(
         self_: *const HandleTDFHAttributeArray1,
     ) -> crate::OcctResult<*mut HandleTDFHAttributeArray1>;
+    /// Check if Handle<TDF_HAttributeArray1> is null
+    pub fn HandleTDFHAttributeArray1_is_null(self_: *const HandleTDFHAttributeArray1) -> bool;
     /// Dereference Handle to get *const TDF_HAttributeArray1
     pub fn HandleTDFHAttributeArray1_get(
         handle: *const HandleTDFHAttributeArray1,
@@ -2728,6 +2761,8 @@ extern "C" {
     pub fn HandleTDFReference_clone(
         self_: *const HandleTDFReference,
     ) -> crate::OcctResult<*mut HandleTDFReference>;
+    /// Check if Handle<TDF_Reference> is null
+    pub fn HandleTDFReference_is_null(self_: *const HandleTDFReference) -> bool;
     /// Dereference Handle to get *const TDF_Reference
     pub fn HandleTDFReference_get(
         handle: *const HandleTDFReference,
@@ -3021,6 +3056,8 @@ extern "C" {
     pub fn HandleTDFRelocationTable_clone(
         self_: *const HandleTDFRelocationTable,
     ) -> crate::OcctResult<*mut HandleTDFRelocationTable>;
+    /// Check if Handle<TDF_RelocationTable> is null
+    pub fn HandleTDFRelocationTable_is_null(self_: *const HandleTDFRelocationTable) -> bool;
     /// Dereference Handle to get *const TDF_RelocationTable
     pub fn HandleTDFRelocationTable_get(
         handle: *const HandleTDFRelocationTable,
@@ -3135,6 +3172,8 @@ extern "C" {
     pub fn HandleTDFTagSource_clone(
         self_: *const HandleTDFTagSource,
     ) -> crate::OcctResult<*mut HandleTDFTagSource>;
+    /// Check if Handle<TDF_TagSource> is null
+    pub fn HandleTDFTagSource_is_null(self_: *const HandleTDFTagSource) -> bool;
     /// Dereference Handle to get *const TDF_TagSource
     pub fn HandleTDFTagSource_get(
         handle: *const HandleTDFTagSource,
@@ -3568,6 +3607,8 @@ extern "C" {
     pub fn HandleTDataStdAsciiString_clone(
         self_: *const HandleTDataStdAsciiString,
     ) -> crate::OcctResult<*mut HandleTDataStdAsciiString>;
+    /// Check if Handle<TDataStd_AsciiString> is null
+    pub fn HandleTDataStdAsciiString_is_null(self_: *const HandleTDataStdAsciiString) -> bool;
     /// Dereference Handle to get *const TDataStd_AsciiString
     pub fn HandleTDataStdAsciiString_get(
         handle: *const HandleTDataStdAsciiString,
@@ -3876,6 +3917,8 @@ extern "C" {
     pub fn HandleTDataStdBooleanArray_clone(
         self_: *const HandleTDataStdBooleanArray,
     ) -> crate::OcctResult<*mut HandleTDataStdBooleanArray>;
+    /// Check if Handle<TDataStd_BooleanArray> is null
+    pub fn HandleTDataStdBooleanArray_is_null(self_: *const HandleTDataStdBooleanArray) -> bool;
     /// Dereference Handle to get *const TDataStd_BooleanArray
     pub fn HandleTDataStdBooleanArray_get(
         handle: *const HandleTDataStdBooleanArray,
@@ -4188,6 +4231,8 @@ extern "C" {
     pub fn HandleTDataStdBooleanList_clone(
         self_: *const HandleTDataStdBooleanList,
     ) -> crate::OcctResult<*mut HandleTDataStdBooleanList>;
+    /// Check if Handle<TDataStd_BooleanList> is null
+    pub fn HandleTDataStdBooleanList_is_null(self_: *const HandleTDataStdBooleanList) -> bool;
     /// Dereference Handle to get *const TDataStd_BooleanList
     pub fn HandleTDataStdBooleanList_get(
         handle: *const HandleTDataStdBooleanList,
@@ -4504,6 +4549,8 @@ extern "C" {
     pub fn HandleTDataStdByteArray_clone(
         self_: *const HandleTDataStdByteArray,
     ) -> crate::OcctResult<*mut HandleTDataStdByteArray>;
+    /// Check if Handle<TDataStd_ByteArray> is null
+    pub fn HandleTDataStdByteArray_is_null(self_: *const HandleTDataStdByteArray) -> bool;
     /// Dereference Handle to get *const TDataStd_ByteArray
     pub fn HandleTDataStdByteArray_get(
         handle: *const HandleTDataStdByteArray,
@@ -4791,6 +4838,8 @@ extern "C" {
     pub fn HandleTDataStdComment_clone(
         self_: *const HandleTDataStdComment,
     ) -> crate::OcctResult<*mut HandleTDataStdComment>;
+    /// Check if Handle<TDataStd_Comment> is null
+    pub fn HandleTDataStdComment_is_null(self_: *const HandleTDataStdComment) -> bool;
     /// Dereference Handle to get *const TDataStd_Comment
     pub fn HandleTDataStdComment_get(
         handle: *const HandleTDataStdComment,
@@ -5076,6 +5125,8 @@ extern "C" {
     pub fn HandleTDataStdCurrent_clone(
         self_: *const HandleTDataStdCurrent,
     ) -> crate::OcctResult<*mut HandleTDataStdCurrent>;
+    /// Check if Handle<TDataStd_Current> is null
+    pub fn HandleTDataStdCurrent_is_null(self_: *const HandleTDataStdCurrent) -> bool;
     /// Dereference Handle to get *const TDataStd_Current
     pub fn HandleTDataStdCurrent_get(
         handle: *const HandleTDataStdCurrent,
@@ -5322,6 +5373,10 @@ extern "C" {
     pub fn HandleTDataStdDeltaOnModificationOfByteArray_clone(
         self_: *const HandleTDataStdDeltaOnModificationOfByteArray,
     ) -> crate::OcctResult<*mut HandleTDataStdDeltaOnModificationOfByteArray>;
+    /// Check if Handle<TDataStd_DeltaOnModificationOfByteArray> is null
+    pub fn HandleTDataStdDeltaOnModificationOfByteArray_is_null(
+        self_: *const HandleTDataStdDeltaOnModificationOfByteArray,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_DeltaOnModificationOfByteArray
     pub fn HandleTDataStdDeltaOnModificationOfByteArray_get(
         handle: *const HandleTDataStdDeltaOnModificationOfByteArray,
@@ -5442,6 +5497,10 @@ extern "C" {
     pub fn HandleTDataStdDeltaOnModificationOfExtStringArray_clone(
         self_: *const HandleTDataStdDeltaOnModificationOfExtStringArray,
     ) -> crate::OcctResult<*mut HandleTDataStdDeltaOnModificationOfExtStringArray>;
+    /// Check if Handle<TDataStd_DeltaOnModificationOfExtStringArray> is null
+    pub fn HandleTDataStdDeltaOnModificationOfExtStringArray_is_null(
+        self_: *const HandleTDataStdDeltaOnModificationOfExtStringArray,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_DeltaOnModificationOfExtStringArray
     pub fn HandleTDataStdDeltaOnModificationOfExtStringArray_get(
         handle: *const HandleTDataStdDeltaOnModificationOfExtStringArray,
@@ -5562,6 +5621,10 @@ extern "C" {
     pub fn HandleTDataStdDeltaOnModificationOfIntArray_clone(
         self_: *const HandleTDataStdDeltaOnModificationOfIntArray,
     ) -> crate::OcctResult<*mut HandleTDataStdDeltaOnModificationOfIntArray>;
+    /// Check if Handle<TDataStd_DeltaOnModificationOfIntArray> is null
+    pub fn HandleTDataStdDeltaOnModificationOfIntArray_is_null(
+        self_: *const HandleTDataStdDeltaOnModificationOfIntArray,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_DeltaOnModificationOfIntArray
     pub fn HandleTDataStdDeltaOnModificationOfIntArray_get(
         handle: *const HandleTDataStdDeltaOnModificationOfIntArray,
@@ -5682,6 +5745,10 @@ extern "C" {
     pub fn HandleTDataStdDeltaOnModificationOfIntPackedMap_clone(
         self_: *const HandleTDataStdDeltaOnModificationOfIntPackedMap,
     ) -> crate::OcctResult<*mut HandleTDataStdDeltaOnModificationOfIntPackedMap>;
+    /// Check if Handle<TDataStd_DeltaOnModificationOfIntPackedMap> is null
+    pub fn HandleTDataStdDeltaOnModificationOfIntPackedMap_is_null(
+        self_: *const HandleTDataStdDeltaOnModificationOfIntPackedMap,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_DeltaOnModificationOfIntPackedMap
     pub fn HandleTDataStdDeltaOnModificationOfIntPackedMap_get(
         handle: *const HandleTDataStdDeltaOnModificationOfIntPackedMap,
@@ -5802,6 +5869,10 @@ extern "C" {
     pub fn HandleTDataStdDeltaOnModificationOfRealArray_clone(
         self_: *const HandleTDataStdDeltaOnModificationOfRealArray,
     ) -> crate::OcctResult<*mut HandleTDataStdDeltaOnModificationOfRealArray>;
+    /// Check if Handle<TDataStd_DeltaOnModificationOfRealArray> is null
+    pub fn HandleTDataStdDeltaOnModificationOfRealArray_is_null(
+        self_: *const HandleTDataStdDeltaOnModificationOfRealArray,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_DeltaOnModificationOfRealArray
     pub fn HandleTDataStdDeltaOnModificationOfRealArray_get(
         handle: *const HandleTDataStdDeltaOnModificationOfRealArray,
@@ -5942,6 +6013,8 @@ extern "C" {
     pub fn HandleTDataStdDirectory_clone(
         self_: *const HandleTDataStdDirectory,
     ) -> crate::OcctResult<*mut HandleTDataStdDirectory>;
+    /// Check if Handle<TDataStd_Directory> is null
+    pub fn HandleTDataStdDirectory_is_null(self_: *const HandleTDataStdDirectory) -> bool;
     /// Dereference Handle to get *const TDataStd_Directory
     pub fn HandleTDataStdDirectory_get(
         handle: *const HandleTDataStdDirectory,
@@ -6230,6 +6303,8 @@ extern "C" {
     pub fn HandleTDataStdExpression_clone(
         self_: *const HandleTDataStdExpression,
     ) -> crate::OcctResult<*mut HandleTDataStdExpression>;
+    /// Check if Handle<TDataStd_Expression> is null
+    pub fn HandleTDataStdExpression_is_null(self_: *const HandleTDataStdExpression) -> bool;
     /// Dereference Handle to get *const TDataStd_Expression
     pub fn HandleTDataStdExpression_get(
         handle: *const HandleTDataStdExpression,
@@ -6564,6 +6639,9 @@ extern "C" {
     pub fn HandleTDataStdExtStringArray_clone(
         self_: *const HandleTDataStdExtStringArray,
     ) -> crate::OcctResult<*mut HandleTDataStdExtStringArray>;
+    /// Check if Handle<TDataStd_ExtStringArray> is null
+    pub fn HandleTDataStdExtStringArray_is_null(self_: *const HandleTDataStdExtStringArray)
+        -> bool;
     /// Dereference Handle to get *const TDataStd_ExtStringArray
     pub fn HandleTDataStdExtStringArray_get(
         handle: *const HandleTDataStdExtStringArray,
@@ -6893,6 +6971,8 @@ extern "C" {
     pub fn HandleTDataStdExtStringList_clone(
         self_: *const HandleTDataStdExtStringList,
     ) -> crate::OcctResult<*mut HandleTDataStdExtStringList>;
+    /// Check if Handle<TDataStd_ExtStringList> is null
+    pub fn HandleTDataStdExtStringList_is_null(self_: *const HandleTDataStdExtStringList) -> bool;
     /// Dereference Handle to get *const TDataStd_ExtStringList
     pub fn HandleTDataStdExtStringList_get(
         handle: *const HandleTDataStdExtStringList,
@@ -7120,6 +7200,8 @@ extern "C" {
     pub fn HandleTDataStdGenericEmpty_clone(
         self_: *const HandleTDataStdGenericEmpty,
     ) -> crate::OcctResult<*mut HandleTDataStdGenericEmpty>;
+    /// Check if Handle<TDataStd_GenericEmpty> is null
+    pub fn HandleTDataStdGenericEmpty_is_null(self_: *const HandleTDataStdGenericEmpty) -> bool;
     /// Dereference Handle to get *const TDataStd_GenericEmpty
     pub fn HandleTDataStdGenericEmpty_get(
         handle: *const HandleTDataStdGenericEmpty,
@@ -7458,6 +7540,10 @@ extern "C" {
     pub fn HandleTDataStdGenericExtString_clone(
         self_: *const HandleTDataStdGenericExtString,
     ) -> crate::OcctResult<*mut HandleTDataStdGenericExtString>;
+    /// Check if Handle<TDataStd_GenericExtString> is null
+    pub fn HandleTDataStdGenericExtString_is_null(
+        self_: *const HandleTDataStdGenericExtString,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_GenericExtString
     pub fn HandleTDataStdGenericExtString_get(
         handle: *const HandleTDataStdGenericExtString,
@@ -7701,6 +7787,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringByte_clone(
         self_: *const HandleTDataStdHDataMapOfStringByte,
     ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringByte>;
+    /// Check if Handle<TDataStd_HDataMapOfStringByte> is null
+    pub fn HandleTDataStdHDataMapOfStringByte_is_null(
+        self_: *const HandleTDataStdHDataMapOfStringByte,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringByte
     pub fn HandleTDataStdHDataMapOfStringByte_get(
         handle: *const HandleTDataStdHDataMapOfStringByte,
@@ -7793,6 +7883,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringHArray1OfInteger_clone(
         self_: *const HandleTDataStdHDataMapOfStringHArray1OfInteger,
     ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringHArray1OfInteger>;
+    /// Check if Handle<TDataStd_HDataMapOfStringHArray1OfInteger> is null
+    pub fn HandleTDataStdHDataMapOfStringHArray1OfInteger_is_null(
+        self_: *const HandleTDataStdHDataMapOfStringHArray1OfInteger,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringHArray1OfInteger
     pub fn HandleTDataStdHDataMapOfStringHArray1OfInteger_get(
         handle: *const HandleTDataStdHDataMapOfStringHArray1OfInteger,
@@ -7885,6 +7979,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringHArray1OfReal_clone(
         self_: *const HandleTDataStdHDataMapOfStringHArray1OfReal,
     ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringHArray1OfReal>;
+    /// Check if Handle<TDataStd_HDataMapOfStringHArray1OfReal> is null
+    pub fn HandleTDataStdHDataMapOfStringHArray1OfReal_is_null(
+        self_: *const HandleTDataStdHDataMapOfStringHArray1OfReal,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringHArray1OfReal
     pub fn HandleTDataStdHDataMapOfStringHArray1OfReal_get(
         handle: *const HandleTDataStdHDataMapOfStringHArray1OfReal,
@@ -7977,6 +8075,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringInteger_clone(
         self_: *const HandleTDataStdHDataMapOfStringInteger,
     ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringInteger>;
+    /// Check if Handle<TDataStd_HDataMapOfStringInteger> is null
+    pub fn HandleTDataStdHDataMapOfStringInteger_is_null(
+        self_: *const HandleTDataStdHDataMapOfStringInteger,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringInteger
     pub fn HandleTDataStdHDataMapOfStringInteger_get(
         handle: *const HandleTDataStdHDataMapOfStringInteger,
@@ -8067,6 +8169,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringReal_clone(
         self_: *const HandleTDataStdHDataMapOfStringReal,
     ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringReal>;
+    /// Check if Handle<TDataStd_HDataMapOfStringReal> is null
+    pub fn HandleTDataStdHDataMapOfStringReal_is_null(
+        self_: *const HandleTDataStdHDataMapOfStringReal,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringReal
     pub fn HandleTDataStdHDataMapOfStringReal_get(
         handle: *const HandleTDataStdHDataMapOfStringReal,
@@ -8157,6 +8263,10 @@ extern "C" {
     pub fn HandleTDataStdHDataMapOfStringString_clone(
         self_: *const HandleTDataStdHDataMapOfStringString,
     ) -> crate::OcctResult<*mut HandleTDataStdHDataMapOfStringString>;
+    /// Check if Handle<TDataStd_HDataMapOfStringString> is null
+    pub fn HandleTDataStdHDataMapOfStringString_is_null(
+        self_: *const HandleTDataStdHDataMapOfStringString,
+    ) -> bool;
     /// Dereference Handle to get *const TDataStd_HDataMapOfStringString
     pub fn HandleTDataStdHDataMapOfStringString_get(
         handle: *const HandleTDataStdHDataMapOfStringString,
@@ -8260,6 +8370,8 @@ extern "C" {
     pub fn HandleTDataStdHLabelArray1_clone(
         self_: *const HandleTDataStdHLabelArray1,
     ) -> crate::OcctResult<*mut HandleTDataStdHLabelArray1>;
+    /// Check if Handle<TDataStd_HLabelArray1> is null
+    pub fn HandleTDataStdHLabelArray1_is_null(self_: *const HandleTDataStdHLabelArray1) -> bool;
     /// Dereference Handle to get *const TDataStd_HLabelArray1
     pub fn HandleTDataStdHLabelArray1_get(
         handle: *const HandleTDataStdHLabelArray1,
@@ -8431,6 +8543,8 @@ extern "C" {
     pub fn HandleTDataStdIntPackedMap_clone(
         self_: *const HandleTDataStdIntPackedMap,
     ) -> crate::OcctResult<*mut HandleTDataStdIntPackedMap>;
+    /// Check if Handle<TDataStd_IntPackedMap> is null
+    pub fn HandleTDataStdIntPackedMap_is_null(self_: *const HandleTDataStdIntPackedMap) -> bool;
     /// Dereference Handle to get *const TDataStd_IntPackedMap
     pub fn HandleTDataStdIntPackedMap_get(
         handle: *const HandleTDataStdIntPackedMap,
@@ -8702,6 +8816,8 @@ extern "C" {
     pub fn HandleTDataStdInteger_clone(
         self_: *const HandleTDataStdInteger,
     ) -> crate::OcctResult<*mut HandleTDataStdInteger>;
+    /// Check if Handle<TDataStd_Integer> is null
+    pub fn HandleTDataStdInteger_is_null(self_: *const HandleTDataStdInteger) -> bool;
     /// Dereference Handle to get *const TDataStd_Integer
     pub fn HandleTDataStdInteger_get(
         handle: *const HandleTDataStdInteger,
@@ -9027,6 +9143,8 @@ extern "C" {
     pub fn HandleTDataStdIntegerArray_clone(
         self_: *const HandleTDataStdIntegerArray,
     ) -> crate::OcctResult<*mut HandleTDataStdIntegerArray>;
+    /// Check if Handle<TDataStd_IntegerArray> is null
+    pub fn HandleTDataStdIntegerArray_is_null(self_: *const HandleTDataStdIntegerArray) -> bool;
     /// Dereference Handle to get *const TDataStd_IntegerArray
     pub fn HandleTDataStdIntegerArray_get(
         handle: *const HandleTDataStdIntegerArray,
@@ -9349,6 +9467,8 @@ extern "C" {
     pub fn HandleTDataStdIntegerList_clone(
         self_: *const HandleTDataStdIntegerList,
     ) -> crate::OcctResult<*mut HandleTDataStdIntegerList>;
+    /// Check if Handle<TDataStd_IntegerList> is null
+    pub fn HandleTDataStdIntegerList_is_null(self_: *const HandleTDataStdIntegerList) -> bool;
     /// Dereference Handle to get *const TDataStd_IntegerList
     pub fn HandleTDataStdIntegerList_get(
         handle: *const HandleTDataStdIntegerList,
@@ -9612,6 +9732,8 @@ extern "C" {
     pub fn HandleTDataStdName_clone(
         self_: *const HandleTDataStdName,
     ) -> crate::OcctResult<*mut HandleTDataStdName>;
+    /// Check if Handle<TDataStd_Name> is null
+    pub fn HandleTDataStdName_is_null(self_: *const HandleTDataStdName) -> bool;
     /// Dereference Handle to get *const TDataStd_Name
     pub fn HandleTDataStdName_get(
         handle: *const HandleTDataStdName,
@@ -10105,6 +10227,8 @@ extern "C" {
     pub fn HandleTDataStdNamedData_clone(
         self_: *const HandleTDataStdNamedData,
     ) -> crate::OcctResult<*mut HandleTDataStdNamedData>;
+    /// Check if Handle<TDataStd_NamedData> is null
+    pub fn HandleTDataStdNamedData_is_null(self_: *const HandleTDataStdNamedData) -> bool;
     /// Dereference Handle to get *const TDataStd_NamedData
     pub fn HandleTDataStdNamedData_get(
         handle: *const HandleTDataStdNamedData,
@@ -10375,6 +10499,8 @@ extern "C" {
     pub fn HandleTDataStdNoteBook_clone(
         self_: *const HandleTDataStdNoteBook,
     ) -> crate::OcctResult<*mut HandleTDataStdNoteBook>;
+    /// Check if Handle<TDataStd_NoteBook> is null
+    pub fn HandleTDataStdNoteBook_is_null(self_: *const HandleTDataStdNoteBook) -> bool;
     /// Dereference Handle to get *const TDataStd_NoteBook
     pub fn HandleTDataStdNoteBook_get(
         handle: *const HandleTDataStdNoteBook,
@@ -10665,6 +10791,8 @@ extern "C" {
     pub fn HandleTDataStdReal_clone(
         self_: *const HandleTDataStdReal,
     ) -> crate::OcctResult<*mut HandleTDataStdReal>;
+    /// Check if Handle<TDataStd_Real> is null
+    pub fn HandleTDataStdReal_is_null(self_: *const HandleTDataStdReal) -> bool;
     /// Dereference Handle to get *const TDataStd_Real
     pub fn HandleTDataStdReal_get(
         handle: *const HandleTDataStdReal,
@@ -10981,6 +11109,8 @@ extern "C" {
     pub fn HandleTDataStdRealArray_clone(
         self_: *const HandleTDataStdRealArray,
     ) -> crate::OcctResult<*mut HandleTDataStdRealArray>;
+    /// Check if Handle<TDataStd_RealArray> is null
+    pub fn HandleTDataStdRealArray_is_null(self_: *const HandleTDataStdRealArray) -> bool;
     /// Dereference Handle to get *const TDataStd_RealArray
     pub fn HandleTDataStdRealArray_get(
         handle: *const HandleTDataStdRealArray,
@@ -11297,6 +11427,8 @@ extern "C" {
     pub fn HandleTDataStdRealList_clone(
         self_: *const HandleTDataStdRealList,
     ) -> crate::OcctResult<*mut HandleTDataStdRealList>;
+    /// Check if Handle<TDataStd_RealList> is null
+    pub fn HandleTDataStdRealList_is_null(self_: *const HandleTDataStdRealList) -> bool;
     /// Dereference Handle to get *const TDataStd_RealList
     pub fn HandleTDataStdRealList_get(
         handle: *const HandleTDataStdRealList,
@@ -11611,6 +11743,9 @@ extern "C" {
     pub fn HandleTDataStdReferenceArray_clone(
         self_: *const HandleTDataStdReferenceArray,
     ) -> crate::OcctResult<*mut HandleTDataStdReferenceArray>;
+    /// Check if Handle<TDataStd_ReferenceArray> is null
+    pub fn HandleTDataStdReferenceArray_is_null(self_: *const HandleTDataStdReferenceArray)
+        -> bool;
     /// Dereference Handle to get *const TDataStd_ReferenceArray
     pub fn HandleTDataStdReferenceArray_get(
         handle: *const HandleTDataStdReferenceArray,
@@ -11945,6 +12080,8 @@ extern "C" {
     pub fn HandleTDataStdReferenceList_clone(
         self_: *const HandleTDataStdReferenceList,
     ) -> crate::OcctResult<*mut HandleTDataStdReferenceList>;
+    /// Check if Handle<TDataStd_ReferenceList> is null
+    pub fn HandleTDataStdReferenceList_is_null(self_: *const HandleTDataStdReferenceList) -> bool;
     /// Dereference Handle to get *const TDataStd_ReferenceList
     pub fn HandleTDataStdReferenceList_get(
         handle: *const HandleTDataStdReferenceList,
@@ -12197,6 +12334,8 @@ extern "C" {
     pub fn HandleTDataStdRelation_clone(
         self_: *const HandleTDataStdRelation,
     ) -> crate::OcctResult<*mut HandleTDataStdRelation>;
+    /// Check if Handle<TDataStd_Relation> is null
+    pub fn HandleTDataStdRelation_is_null(self_: *const HandleTDataStdRelation) -> bool;
     /// Dereference Handle to get *const TDataStd_Relation
     pub fn HandleTDataStdRelation_get(
         handle: *const HandleTDataStdRelation,
@@ -12480,6 +12619,8 @@ extern "C" {
     pub fn HandleTDataStdTick_clone(
         self_: *const HandleTDataStdTick,
     ) -> crate::OcctResult<*mut HandleTDataStdTick>;
+    /// Check if Handle<TDataStd_Tick> is null
+    pub fn HandleTDataStdTick_is_null(self_: *const HandleTDataStdTick) -> bool;
     /// Dereference Handle to get *const TDataStd_Tick
     pub fn HandleTDataStdTick_get(
         handle: *const HandleTDataStdTick,
@@ -12903,6 +13044,8 @@ extern "C" {
     pub fn HandleTDataStdTreeNode_clone(
         self_: *const HandleTDataStdTreeNode,
     ) -> crate::OcctResult<*mut HandleTDataStdTreeNode>;
+    /// Check if Handle<TDataStd_TreeNode> is null
+    pub fn HandleTDataStdTreeNode_is_null(self_: *const HandleTDataStdTreeNode) -> bool;
     /// Dereference Handle to get *const TDataStd_TreeNode
     pub fn HandleTDataStdTreeNode_get(
         handle: *const HandleTDataStdTreeNode,
@@ -13139,6 +13282,8 @@ extern "C" {
     pub fn HandleTDataStdUAttribute_clone(
         self_: *const HandleTDataStdUAttribute,
     ) -> crate::OcctResult<*mut HandleTDataStdUAttribute>;
+    /// Check if Handle<TDataStd_UAttribute> is null
+    pub fn HandleTDataStdUAttribute_is_null(self_: *const HandleTDataStdUAttribute) -> bool;
     /// Dereference Handle to get *const TDataStd_UAttribute
     pub fn HandleTDataStdUAttribute_get(
         handle: *const HandleTDataStdUAttribute,
@@ -13448,6 +13593,8 @@ extern "C" {
     pub fn HandleTDataStdVariable_clone(
         self_: *const HandleTDataStdVariable,
     ) -> crate::OcctResult<*mut HandleTDataStdVariable>;
+    /// Check if Handle<TDataStd_Variable> is null
+    pub fn HandleTDataStdVariable_is_null(self_: *const HandleTDataStdVariable) -> bool;
     /// Dereference Handle to get *const TDataStd_Variable
     pub fn HandleTDataStdVariable_get(
         handle: *const HandleTDataStdVariable,
@@ -13833,6 +13980,8 @@ extern "C" {
     pub fn HandleTDocStdApplication_clone(
         self_: *const HandleTDocStdApplication,
     ) -> crate::OcctResult<*mut HandleTDocStdApplication>;
+    /// Check if Handle<TDocStd_Application> is null
+    pub fn HandleTDocStdApplication_is_null(self_: *const HandleTDocStdApplication) -> bool;
     /// Dereference Handle to get *const TDocStd_Application
     pub fn HandleTDocStdApplication_get(
         handle: *const HandleTDocStdApplication,
@@ -14029,6 +14178,10 @@ extern "C" {
     pub fn HandleTDocStdApplicationDelta_clone(
         self_: *const HandleTDocStdApplicationDelta,
     ) -> crate::OcctResult<*mut HandleTDocStdApplicationDelta>;
+    /// Check if Handle<TDocStd_ApplicationDelta> is null
+    pub fn HandleTDocStdApplicationDelta_is_null(
+        self_: *const HandleTDocStdApplicationDelta,
+    ) -> bool;
     /// Dereference Handle to get *const TDocStd_ApplicationDelta
     pub fn HandleTDocStdApplicationDelta_get(
         handle: *const HandleTDocStdApplicationDelta,
@@ -14110,6 +14263,8 @@ extern "C" {
     pub fn HandleTDocStdCompoundDelta_clone(
         self_: *const HandleTDocStdCompoundDelta,
     ) -> crate::OcctResult<*mut HandleTDocStdCompoundDelta>;
+    /// Check if Handle<TDocStd_CompoundDelta> is null
+    pub fn HandleTDocStdCompoundDelta_is_null(self_: *const HandleTDocStdCompoundDelta) -> bool;
     /// Dereference Handle to get *const TDocStd_CompoundDelta
     pub fn HandleTDocStdCompoundDelta_get(
         handle: *const HandleTDocStdCompoundDelta,
@@ -14426,6 +14581,8 @@ extern "C" {
     pub fn HandleTDocStdDocument_clone(
         self_: *const HandleTDocStdDocument,
     ) -> crate::OcctResult<*mut HandleTDocStdDocument>;
+    /// Check if Handle<TDocStd_Document> is null
+    pub fn HandleTDocStdDocument_is_null(self_: *const HandleTDocStdDocument) -> bool;
     /// Dereference Handle to get *const TDocStd_Document
     pub fn HandleTDocStdDocument_get(
         handle: *const HandleTDocStdDocument,
@@ -14841,6 +14998,8 @@ extern "C" {
     pub fn HandleTDocStdModified_clone(
         self_: *const HandleTDocStdModified,
     ) -> crate::OcctResult<*mut HandleTDocStdModified>;
+    /// Check if Handle<TDocStd_Modified> is null
+    pub fn HandleTDocStdModified_is_null(self_: *const HandleTDocStdModified) -> bool;
     /// Dereference Handle to get *const TDocStd_Modified
     pub fn HandleTDocStdModified_get(
         handle: *const HandleTDocStdModified,
@@ -15159,6 +15318,10 @@ extern "C" {
     pub fn HandleTDocStdMultiTransactionManager_clone(
         self_: *const HandleTDocStdMultiTransactionManager,
     ) -> crate::OcctResult<*mut HandleTDocStdMultiTransactionManager>;
+    /// Check if Handle<TDocStd_MultiTransactionManager> is null
+    pub fn HandleTDocStdMultiTransactionManager_is_null(
+        self_: *const HandleTDocStdMultiTransactionManager,
+    ) -> bool;
     /// Dereference Handle to get *const TDocStd_MultiTransactionManager
     pub fn HandleTDocStdMultiTransactionManager_get(
         handle: *const HandleTDocStdMultiTransactionManager,
@@ -15292,6 +15455,8 @@ extern "C" {
     pub fn HandleTDocStdOwner_clone(
         self_: *const HandleTDocStdOwner,
     ) -> crate::OcctResult<*mut HandleTDocStdOwner>;
+    /// Check if Handle<TDocStd_Owner> is null
+    pub fn HandleTDocStdOwner_is_null(self_: *const HandleTDocStdOwner) -> bool;
     /// Dereference Handle to get *const TDocStd_Owner
     pub fn HandleTDocStdOwner_get(
         handle: *const HandleTDocStdOwner,
@@ -15612,6 +15777,8 @@ extern "C" {
     pub fn HandleTDocStdXLink_clone(
         self_: *const HandleTDocStdXLink,
     ) -> crate::OcctResult<*mut HandleTDocStdXLink>;
+    /// Check if Handle<TDocStd_XLink> is null
+    pub fn HandleTDocStdXLink_is_null(self_: *const HandleTDocStdXLink) -> bool;
     /// Dereference Handle to get *const TDocStd_XLink
     pub fn HandleTDocStdXLink_get(
         handle: *const HandleTDocStdXLink,
@@ -15870,6 +16037,8 @@ extern "C" {
     pub fn HandleTDocStdXLinkRoot_clone(
         self_: *const HandleTDocStdXLinkRoot,
     ) -> crate::OcctResult<*mut HandleTDocStdXLinkRoot>;
+    /// Check if Handle<TDocStd_XLinkRoot> is null
+    pub fn HandleTDocStdXLinkRoot_is_null(self_: *const HandleTDocStdXLinkRoot) -> bool;
     /// Dereference Handle to get *const TDocStd_XLinkRoot
     pub fn HandleTDocStdXLinkRoot_get(
         handle: *const HandleTDocStdXLinkRoot,
@@ -16143,6 +16312,8 @@ extern "C" {
     pub fn HandleTFunctionDriver_clone(
         self_: *const HandleTFunctionDriver,
     ) -> crate::OcctResult<*mut HandleTFunctionDriver>;
+    /// Check if Handle<TFunction_Driver> is null
+    pub fn HandleTFunctionDriver_is_null(self_: *const HandleTFunctionDriver) -> bool;
     /// Dereference Handle to get *const TFunction_Driver
     pub fn HandleTFunctionDriver_get(
         handle: *const HandleTFunctionDriver,
@@ -16253,6 +16424,8 @@ extern "C" {
     pub fn HandleTFunctionDriverTable_clone(
         self_: *const HandleTFunctionDriverTable,
     ) -> crate::OcctResult<*mut HandleTFunctionDriverTable>;
+    /// Check if Handle<TFunction_DriverTable> is null
+    pub fn HandleTFunctionDriverTable_is_null(self_: *const HandleTFunctionDriverTable) -> bool;
     /// Dereference Handle to get *const TFunction_DriverTable
     pub fn HandleTFunctionDriverTable_get(
         handle: *const HandleTFunctionDriverTable,
@@ -16393,6 +16566,8 @@ extern "C" {
     pub fn HandleTFunctionFunction_clone(
         self_: *const HandleTFunctionFunction,
     ) -> crate::OcctResult<*mut HandleTFunctionFunction>;
+    /// Check if Handle<TFunction_Function> is null
+    pub fn HandleTFunctionFunction_is_null(self_: *const HandleTFunctionFunction) -> bool;
     /// Dereference Handle to get *const TFunction_Function
     pub fn HandleTFunctionFunction_get(
         handle: *const HandleTFunctionFunction,
@@ -16714,6 +16889,8 @@ extern "C" {
     pub fn HandleTFunctionGraphNode_clone(
         self_: *const HandleTFunctionGraphNode,
     ) -> crate::OcctResult<*mut HandleTFunctionGraphNode>;
+    /// Check if Handle<TFunction_GraphNode> is null
+    pub fn HandleTFunctionGraphNode_is_null(self_: *const HandleTFunctionGraphNode) -> bool;
     /// Dereference Handle to get *const TFunction_GraphNode
     pub fn HandleTFunctionGraphNode_get(
         handle: *const HandleTFunctionGraphNode,
@@ -16964,6 +17141,10 @@ extern "C" {
     pub fn HandleTFunctionHArray1OfDataMapOfGUIDDriver_clone(
         self_: *const HandleTFunctionHArray1OfDataMapOfGUIDDriver,
     ) -> crate::OcctResult<*mut HandleTFunctionHArray1OfDataMapOfGUIDDriver>;
+    /// Check if Handle<TFunction_HArray1OfDataMapOfGUIDDriver> is null
+    pub fn HandleTFunctionHArray1OfDataMapOfGUIDDriver_is_null(
+        self_: *const HandleTFunctionHArray1OfDataMapOfGUIDDriver,
+    ) -> bool;
     /// Dereference Handle to get *const TFunction_HArray1OfDataMapOfGUIDDriver
     pub fn HandleTFunctionHArray1OfDataMapOfGUIDDriver_get(
         handle: *const HandleTFunctionHArray1OfDataMapOfGUIDDriver,
@@ -17250,6 +17431,8 @@ extern "C" {
     pub fn HandleTFunctionLogbook_clone(
         self_: *const HandleTFunctionLogbook,
     ) -> crate::OcctResult<*mut HandleTFunctionLogbook>;
+    /// Check if Handle<TFunction_Logbook> is null
+    pub fn HandleTFunctionLogbook_is_null(self_: *const HandleTFunctionLogbook) -> bool;
     /// Dereference Handle to get *const TFunction_Logbook
     pub fn HandleTFunctionLogbook_get(
         handle: *const HandleTFunctionLogbook,
@@ -17568,6 +17751,8 @@ extern "C" {
     pub fn HandleTFunctionScope_clone(
         self_: *const HandleTFunctionScope,
     ) -> crate::OcctResult<*mut HandleTFunctionScope>;
+    /// Check if Handle<TFunction_Scope> is null
+    pub fn HandleTFunctionScope_is_null(self_: *const HandleTFunctionScope) -> bool;
     /// Dereference Handle to get *const TFunction_Scope
     pub fn HandleTFunctionScope_get(
         handle: *const HandleTFunctionScope,

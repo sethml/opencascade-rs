@@ -663,6 +663,11 @@ unsafe impl crate::CppCopyable for HandleCDFApplication {
 }
 
 impl HandleCDFApplication {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandleCDFApplication_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying CDF_Application
     pub fn get(&self) -> &crate::ffi_types::CDF_Application {
         unsafe {
@@ -1005,6 +1010,11 @@ unsafe impl crate::CppCopyable for HandleCDFDirectory {
 }
 
 impl HandleCDFDirectory {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandleCDFDirectory_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying CDF_Directory
     pub fn get(&self) -> &crate::ffi_types::CDF_Directory {
         unsafe {
@@ -1453,6 +1463,11 @@ unsafe impl crate::CppCopyable for HandleCDFFWOSDriver {
 }
 
 impl HandleCDFFWOSDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandleCDFFWOSDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying CDF_FWOSDriver
     pub fn get(&self) -> &crate::ffi_types::CDF_FWOSDriver {
         unsafe {
@@ -1918,6 +1933,11 @@ unsafe impl crate::CppCopyable for HandleCDFMetaDataDriver {
 }
 
 impl HandleCDFMetaDataDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandleCDFMetaDataDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying CDF_MetaDataDriver
     pub fn get(&self) -> &crate::ffi_types::CDF_MetaDataDriver {
         unsafe {
@@ -2130,6 +2150,13 @@ unsafe impl crate::CppCopyable for HandleCDFMetaDataDriverFactory {
 }
 
 impl HandleCDFMetaDataDriverFactory {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKCDF::HandleCDFMetaDataDriverFactory_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying CDF_MetaDataDriverFactory
     pub fn get(&self) -> &crate::ffi_types::CDF_MetaDataDriverFactory {
         unsafe {
@@ -2631,6 +2658,11 @@ unsafe impl crate::CppCopyable for HandleCDFStoreList {
 }
 
 impl HandleCDFStoreList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandleCDFStoreList_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying CDF_StoreList
     pub fn get(&self) -> &crate::ffi_types::CDF_StoreList {
         unsafe {

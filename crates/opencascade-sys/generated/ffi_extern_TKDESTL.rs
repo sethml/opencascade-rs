@@ -93,6 +93,9 @@ extern "C" {
     pub fn HandleDESTLConfigurationNode_clone(
         self_: *const HandleDESTLConfigurationNode,
     ) -> crate::OcctResult<*mut HandleDESTLConfigurationNode>;
+    /// Check if Handle<DESTL_ConfigurationNode> is null
+    pub fn HandleDESTLConfigurationNode_is_null(self_: *const HandleDESTLConfigurationNode)
+        -> bool;
     /// Dereference Handle to get *const DESTL_ConfigurationNode
     pub fn HandleDESTLConfigurationNode_get(
         handle: *const HandleDESTLConfigurationNode,
@@ -279,6 +282,8 @@ extern "C" {
     pub fn HandleDESTLProvider_clone(
         self_: *const HandleDESTLProvider,
     ) -> crate::OcctResult<*mut HandleDESTLProvider>;
+    /// Check if Handle<DESTL_Provider> is null
+    pub fn HandleDESTLProvider_is_null(self_: *const HandleDESTLProvider) -> bool;
     /// Dereference Handle to get *const DESTL_Provider
     pub fn HandleDESTLProvider_get(
         handle: *const HandleDESTLProvider,
@@ -403,6 +408,8 @@ extern "C" {
     pub fn HandleRWStlReader_clone(
         self_: *const HandleRWStlReader,
     ) -> crate::OcctResult<*mut HandleRWStlReader>;
+    /// Check if Handle<RWStl_Reader> is null
+    pub fn HandleRWStlReader_is_null(self_: *const HandleRWStlReader) -> bool;
     /// Dereference Handle to get *const RWStl_Reader
     pub fn HandleRWStlReader_get(
         handle: *const HandleRWStlReader,

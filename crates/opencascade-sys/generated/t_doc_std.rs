@@ -989,6 +989,11 @@ unsafe impl crate::CppCopyable for HandleTDocStdApplication {
 }
 
 impl HandleTDocStdApplication {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDocStdApplication_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDocStd_Application
     pub fn get(&self) -> &crate::ffi_types::TDocStd_Application {
         unsafe {
@@ -1324,6 +1329,13 @@ unsafe impl crate::CppCopyable for HandleTDocStdApplicationDelta {
 }
 
 impl HandleTDocStdApplicationDelta {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDocStdApplicationDelta_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDocStd_ApplicationDelta
     pub fn get(&self) -> &crate::ffi_types::TDocStd_ApplicationDelta {
         unsafe {
@@ -1628,6 +1640,11 @@ unsafe impl crate::CppCopyable for HandleTDocStdCompoundDelta {
 }
 
 impl HandleTDocStdCompoundDelta {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDocStdCompoundDelta_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDocStd_CompoundDelta
     pub fn get(&self) -> &crate::ffi_types::TDocStd_CompoundDelta {
         unsafe {
@@ -3000,6 +3017,11 @@ unsafe impl crate::CppCopyable for HandleTDocStdDocument {
 }
 
 impl HandleTDocStdDocument {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDocStdDocument_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDocStd_Document
     pub fn get(&self) -> &crate::ffi_types::TDocStd_Document {
         unsafe {
@@ -3674,6 +3696,11 @@ unsafe impl crate::CppCopyable for HandleTDocStdModified {
 }
 
 impl HandleTDocStdModified {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDocStdModified_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDocStd_Modified
     pub fn get(&self) -> &crate::ffi_types::TDocStd_Modified {
         unsafe {
@@ -4158,6 +4185,15 @@ unsafe impl crate::CppCopyable for HandleTDocStdMultiTransactionManager {
 }
 
 impl HandleTDocStdMultiTransactionManager {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDocStdMultiTransactionManager_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDocStd_MultiTransactionManager
     pub fn get(&self) -> &crate::ffi_types::TDocStd_MultiTransactionManager {
         unsafe {
@@ -4797,6 +4833,11 @@ unsafe impl crate::CppCopyable for HandleTDocStdOwner {
 }
 
 impl HandleTDocStdOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDocStdOwner_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDocStd_Owner
     pub fn get(&self) -> &crate::ffi_types::TDocStd_Owner {
         unsafe {
@@ -5545,6 +5586,11 @@ unsafe impl crate::CppCopyable for HandleTDocStdXLink {
 }
 
 impl HandleTDocStdXLink {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDocStdXLink_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDocStd_XLink
     pub fn get(&self) -> &crate::ffi_types::TDocStd_XLink {
         unsafe {
@@ -6253,6 +6299,11 @@ unsafe impl crate::CppCopyable for HandleTDocStdXLinkRoot {
 }
 
 impl HandleTDocStdXLinkRoot {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDocStdXLinkRoot_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDocStd_XLinkRoot
     pub fn get(&self) -> &crate::ffi_types::TDocStd_XLinkRoot {
         unsafe {

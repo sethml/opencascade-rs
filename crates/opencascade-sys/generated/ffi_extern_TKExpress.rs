@@ -86,6 +86,8 @@ extern "C" {
     pub fn HandleExprAbsolute_clone(
         self_: *const HandleExprAbsolute,
     ) -> crate::OcctResult<*mut HandleExprAbsolute>;
+    /// Check if Handle<Expr_Absolute> is null
+    pub fn HandleExprAbsolute_is_null(self_: *const HandleExprAbsolute) -> bool;
     /// Dereference Handle to get *const Expr_Absolute
     pub fn HandleExprAbsolute_get(
         handle: *const HandleExprAbsolute,
@@ -263,6 +265,8 @@ extern "C" {
     pub fn HandleExprArcCosine_clone(
         self_: *const HandleExprArcCosine,
     ) -> crate::OcctResult<*mut HandleExprArcCosine>;
+    /// Check if Handle<Expr_ArcCosine> is null
+    pub fn HandleExprArcCosine_is_null(self_: *const HandleExprArcCosine) -> bool;
     /// Dereference Handle to get *const Expr_ArcCosine
     pub fn HandleExprArcCosine_get(
         handle: *const HandleExprArcCosine,
@@ -441,6 +445,8 @@ extern "C" {
     pub fn HandleExprArcSine_clone(
         self_: *const HandleExprArcSine,
     ) -> crate::OcctResult<*mut HandleExprArcSine>;
+    /// Check if Handle<Expr_ArcSine> is null
+    pub fn HandleExprArcSine_is_null(self_: *const HandleExprArcSine) -> bool;
     /// Dereference Handle to get *const Expr_ArcSine
     pub fn HandleExprArcSine_get(
         handle: *const HandleExprArcSine,
@@ -617,6 +623,8 @@ extern "C" {
     pub fn HandleExprArcTangent_clone(
         self_: *const HandleExprArcTangent,
     ) -> crate::OcctResult<*mut HandleExprArcTangent>;
+    /// Check if Handle<Expr_ArcTangent> is null
+    pub fn HandleExprArcTangent_is_null(self_: *const HandleExprArcTangent) -> bool;
     /// Dereference Handle to get *const Expr_ArcTangent
     pub fn HandleExprArcTangent_get(
         handle: *const HandleExprArcTangent,
@@ -796,6 +804,8 @@ extern "C" {
     pub fn HandleExprArgCosh_clone(
         self_: *const HandleExprArgCosh,
     ) -> crate::OcctResult<*mut HandleExprArgCosh>;
+    /// Check if Handle<Expr_ArgCosh> is null
+    pub fn HandleExprArgCosh_is_null(self_: *const HandleExprArgCosh) -> bool;
     /// Dereference Handle to get *const Expr_ArgCosh
     pub fn HandleExprArgCosh_get(
         handle: *const HandleExprArgCosh,
@@ -972,6 +982,8 @@ extern "C" {
     pub fn HandleExprArgSinh_clone(
         self_: *const HandleExprArgSinh,
     ) -> crate::OcctResult<*mut HandleExprArgSinh>;
+    /// Check if Handle<Expr_ArgSinh> is null
+    pub fn HandleExprArgSinh_is_null(self_: *const HandleExprArgSinh) -> bool;
     /// Dereference Handle to get *const Expr_ArgSinh
     pub fn HandleExprArgSinh_get(
         handle: *const HandleExprArgSinh,
@@ -1148,6 +1160,8 @@ extern "C" {
     pub fn HandleExprArgTanh_clone(
         self_: *const HandleExprArgTanh,
     ) -> crate::OcctResult<*mut HandleExprArgTanh>;
+    /// Check if Handle<Expr_ArgTanh> is null
+    pub fn HandleExprArgTanh_is_null(self_: *const HandleExprArgTanh) -> bool;
     /// Dereference Handle to get *const Expr_ArgTanh
     pub fn HandleExprArgTanh_get(
         handle: *const HandleExprArgTanh,
@@ -1325,6 +1339,8 @@ extern "C" {
     pub fn HandleExprBinaryExpression_clone(
         self_: *const HandleExprBinaryExpression,
     ) -> crate::OcctResult<*mut HandleExprBinaryExpression>;
+    /// Check if Handle<Expr_BinaryExpression> is null
+    pub fn HandleExprBinaryExpression_is_null(self_: *const HandleExprBinaryExpression) -> bool;
     /// Dereference Handle to get *const Expr_BinaryExpression
     pub fn HandleExprBinaryExpression_get(
         handle: *const HandleExprBinaryExpression,
@@ -1519,6 +1535,8 @@ extern "C" {
     pub fn HandleExprBinaryFunction_clone(
         self_: *const HandleExprBinaryFunction,
     ) -> crate::OcctResult<*mut HandleExprBinaryFunction>;
+    /// Check if Handle<Expr_BinaryFunction> is null
+    pub fn HandleExprBinaryFunction_is_null(self_: *const HandleExprBinaryFunction) -> bool;
     /// Dereference Handle to get *const Expr_BinaryFunction
     pub fn HandleExprBinaryFunction_get(
         handle: *const HandleExprBinaryFunction,
@@ -1705,6 +1723,8 @@ extern "C" {
     pub fn HandleExprCosh_clone(
         self_: *const HandleExprCosh,
     ) -> crate::OcctResult<*mut HandleExprCosh>;
+    /// Check if Handle<Expr_Cosh> is null
+    pub fn HandleExprCosh_is_null(self_: *const HandleExprCosh) -> bool;
     /// Dereference Handle to get *const Expr_Cosh
     pub fn HandleExprCosh_get(handle: *const HandleExprCosh)
         -> crate::OcctResult<*const Expr_Cosh>;
@@ -1869,6 +1889,8 @@ extern "C" {
     pub fn HandleExprCosine_clone(
         self_: *const HandleExprCosine,
     ) -> crate::OcctResult<*mut HandleExprCosine>;
+    /// Check if Handle<Expr_Cosine> is null
+    pub fn HandleExprCosine_is_null(self_: *const HandleExprCosine) -> bool;
     /// Dereference Handle to get *const Expr_Cosine
     pub fn HandleExprCosine_get(
         handle: *const HandleExprCosine,
@@ -2049,6 +2071,8 @@ extern "C" {
     pub fn HandleExprDifference_clone(
         self_: *const HandleExprDifference,
     ) -> crate::OcctResult<*mut HandleExprDifference>;
+    /// Check if Handle<Expr_Difference> is null
+    pub fn HandleExprDifference_is_null(self_: *const HandleExprDifference) -> bool;
     /// Dereference Handle to get *const Expr_Difference
     pub fn HandleExprDifference_get(
         handle: *const HandleExprDifference,
@@ -2218,6 +2242,8 @@ extern "C" {
     pub fn HandleExprDifferent_clone(
         self_: *const HandleExprDifferent,
     ) -> crate::OcctResult<*mut HandleExprDifferent>;
+    /// Check if Handle<Expr_Different> is null
+    pub fn HandleExprDifferent_is_null(self_: *const HandleExprDifferent) -> bool;
     /// Dereference Handle to get *const Expr_Different
     pub fn HandleExprDifferent_get(
         handle: *const HandleExprDifferent,
@@ -2392,6 +2418,8 @@ extern "C" {
     pub fn HandleExprDivision_clone(
         self_: *const HandleExprDivision,
     ) -> crate::OcctResult<*mut HandleExprDivision>;
+    /// Check if Handle<Expr_Division> is null
+    pub fn HandleExprDivision_is_null(self_: *const HandleExprDivision) -> bool;
     /// Dereference Handle to get *const Expr_Division
     pub fn HandleExprDivision_get(
         handle: *const HandleExprDivision,
@@ -2563,6 +2591,8 @@ extern "C" {
     pub fn HandleExprEqual_clone(
         self_: *const HandleExprEqual,
     ) -> crate::OcctResult<*mut HandleExprEqual>;
+    /// Check if Handle<Expr_Equal> is null
+    pub fn HandleExprEqual_is_null(self_: *const HandleExprEqual) -> bool;
     /// Dereference Handle to get *const Expr_Equal
     pub fn HandleExprEqual_get(
         handle: *const HandleExprEqual,
@@ -2731,6 +2761,8 @@ extern "C" {
     pub fn HandleExprExponential_clone(
         self_: *const HandleExprExponential,
     ) -> crate::OcctResult<*mut HandleExprExponential>;
+    /// Check if Handle<Expr_Exponential> is null
+    pub fn HandleExprExponential_is_null(self_: *const HandleExprExponential) -> bool;
     /// Dereference Handle to get *const Expr_Exponential
     pub fn HandleExprExponential_get(
         handle: *const HandleExprExponential,
@@ -2911,6 +2943,8 @@ extern "C" {
     pub fn HandleExprExponentiate_clone(
         self_: *const HandleExprExponentiate,
     ) -> crate::OcctResult<*mut HandleExprExponentiate>;
+    /// Check if Handle<Expr_Exponentiate> is null
+    pub fn HandleExprExponentiate_is_null(self_: *const HandleExprExponentiate) -> bool;
     /// Dereference Handle to get *const Expr_Exponentiate
     pub fn HandleExprExponentiate_get(
         handle: *const HandleExprExponentiate,
@@ -3085,6 +3119,8 @@ extern "C" {
     pub fn HandleExprExprFailure_clone(
         self_: *const HandleExprExprFailure,
     ) -> crate::OcctResult<*mut HandleExprExprFailure>;
+    /// Check if Handle<Expr_ExprFailure> is null
+    pub fn HandleExprExprFailure_is_null(self_: *const HandleExprExprFailure) -> bool;
     /// Dereference Handle to get *const Expr_ExprFailure
     pub fn HandleExprExprFailure_get(
         handle: *const HandleExprExprFailure,
@@ -3270,6 +3306,9 @@ extern "C" {
     pub fn HandleExprFunctionDerivative_clone(
         self_: *const HandleExprFunctionDerivative,
     ) -> crate::OcctResult<*mut HandleExprFunctionDerivative>;
+    /// Check if Handle<Expr_FunctionDerivative> is null
+    pub fn HandleExprFunctionDerivative_is_null(self_: *const HandleExprFunctionDerivative)
+        -> bool;
     /// Dereference Handle to get *const Expr_FunctionDerivative
     pub fn HandleExprFunctionDerivative_get(
         handle: *const HandleExprFunctionDerivative,
@@ -3415,6 +3454,8 @@ extern "C" {
     pub fn HandleExprGeneralExpression_clone(
         self_: *const HandleExprGeneralExpression,
     ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    /// Check if Handle<Expr_GeneralExpression> is null
+    pub fn HandleExprGeneralExpression_is_null(self_: *const HandleExprGeneralExpression) -> bool;
     /// Dereference Handle to get *const Expr_GeneralExpression
     pub fn HandleExprGeneralExpression_get(
         handle: *const HandleExprGeneralExpression,
@@ -3665,6 +3706,8 @@ extern "C" {
     pub fn HandleExprGeneralFunction_clone(
         self_: *const HandleExprGeneralFunction,
     ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
+    /// Check if Handle<Expr_GeneralFunction> is null
+    pub fn HandleExprGeneralFunction_is_null(self_: *const HandleExprGeneralFunction) -> bool;
     /// Dereference Handle to get *const Expr_GeneralFunction
     pub fn HandleExprGeneralFunction_get(
         handle: *const HandleExprGeneralFunction,
@@ -3787,6 +3830,8 @@ extern "C" {
     pub fn HandleExprGeneralRelation_clone(
         self_: *const HandleExprGeneralRelation,
     ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
+    /// Check if Handle<Expr_GeneralRelation> is null
+    pub fn HandleExprGeneralRelation_is_null(self_: *const HandleExprGeneralRelation) -> bool;
     /// Dereference Handle to get *const Expr_GeneralRelation
     pub fn HandleExprGeneralRelation_get(
         handle: *const HandleExprGeneralRelation,
@@ -3927,6 +3972,8 @@ extern "C" {
     pub fn HandleExprGreaterThan_clone(
         self_: *const HandleExprGreaterThan,
     ) -> crate::OcctResult<*mut HandleExprGreaterThan>;
+    /// Check if Handle<Expr_GreaterThan> is null
+    pub fn HandleExprGreaterThan_is_null(self_: *const HandleExprGreaterThan) -> bool;
     /// Dereference Handle to get *const Expr_GreaterThan
     pub fn HandleExprGreaterThan_get(
         handle: *const HandleExprGreaterThan,
@@ -4093,6 +4140,9 @@ extern "C" {
     pub fn HandleExprGreaterThanOrEqual_clone(
         self_: *const HandleExprGreaterThanOrEqual,
     ) -> crate::OcctResult<*mut HandleExprGreaterThanOrEqual>;
+    /// Check if Handle<Expr_GreaterThanOrEqual> is null
+    pub fn HandleExprGreaterThanOrEqual_is_null(self_: *const HandleExprGreaterThanOrEqual)
+        -> bool;
     /// Dereference Handle to get *const Expr_GreaterThanOrEqual
     pub fn HandleExprGreaterThanOrEqual_get(
         handle: *const HandleExprGreaterThanOrEqual,
@@ -4262,6 +4312,8 @@ extern "C" {
     pub fn HandleExprInvalidAssignment_clone(
         self_: *const HandleExprInvalidAssignment,
     ) -> crate::OcctResult<*mut HandleExprInvalidAssignment>;
+    /// Check if Handle<Expr_InvalidAssignment> is null
+    pub fn HandleExprInvalidAssignment_is_null(self_: *const HandleExprInvalidAssignment) -> bool;
     /// Dereference Handle to get *const Expr_InvalidAssignment
     pub fn HandleExprInvalidAssignment_get(
         handle: *const HandleExprInvalidAssignment,
@@ -4397,6 +4449,8 @@ extern "C" {
     pub fn HandleExprInvalidFunction_clone(
         self_: *const HandleExprInvalidFunction,
     ) -> crate::OcctResult<*mut HandleExprInvalidFunction>;
+    /// Check if Handle<Expr_InvalidFunction> is null
+    pub fn HandleExprInvalidFunction_is_null(self_: *const HandleExprInvalidFunction) -> bool;
     /// Dereference Handle to get *const Expr_InvalidFunction
     pub fn HandleExprInvalidFunction_get(
         handle: *const HandleExprInvalidFunction,
@@ -4532,6 +4586,8 @@ extern "C" {
     pub fn HandleExprInvalidOperand_clone(
         self_: *const HandleExprInvalidOperand,
     ) -> crate::OcctResult<*mut HandleExprInvalidOperand>;
+    /// Check if Handle<Expr_InvalidOperand> is null
+    pub fn HandleExprInvalidOperand_is_null(self_: *const HandleExprInvalidOperand) -> bool;
     /// Dereference Handle to get *const Expr_InvalidOperand
     pub fn HandleExprInvalidOperand_get(
         handle: *const HandleExprInvalidOperand,
@@ -4660,6 +4716,8 @@ extern "C" {
     pub fn HandleExprLessThan_clone(
         self_: *const HandleExprLessThan,
     ) -> crate::OcctResult<*mut HandleExprLessThan>;
+    /// Check if Handle<Expr_LessThan> is null
+    pub fn HandleExprLessThan_is_null(self_: *const HandleExprLessThan) -> bool;
     /// Dereference Handle to get *const Expr_LessThan
     pub fn HandleExprLessThan_get(
         handle: *const HandleExprLessThan,
@@ -4822,6 +4880,8 @@ extern "C" {
     pub fn HandleExprLessThanOrEqual_clone(
         self_: *const HandleExprLessThanOrEqual,
     ) -> crate::OcctResult<*mut HandleExprLessThanOrEqual>;
+    /// Check if Handle<Expr_LessThanOrEqual> is null
+    pub fn HandleExprLessThanOrEqual_is_null(self_: *const HandleExprLessThanOrEqual) -> bool;
     /// Dereference Handle to get *const Expr_LessThanOrEqual
     pub fn HandleExprLessThanOrEqual_get(
         handle: *const HandleExprLessThanOrEqual,
@@ -4996,6 +5056,8 @@ extern "C" {
     pub fn HandleExprLogOf10_clone(
         self_: *const HandleExprLogOf10,
     ) -> crate::OcctResult<*mut HandleExprLogOf10>;
+    /// Check if Handle<Expr_LogOf10> is null
+    pub fn HandleExprLogOf10_is_null(self_: *const HandleExprLogOf10) -> bool;
     /// Dereference Handle to get *const Expr_LogOf10
     pub fn HandleExprLogOf10_get(
         handle: *const HandleExprLogOf10,
@@ -5171,6 +5233,8 @@ extern "C" {
     pub fn HandleExprLogOfe_clone(
         self_: *const HandleExprLogOfe,
     ) -> crate::OcctResult<*mut HandleExprLogOfe>;
+    /// Check if Handle<Expr_LogOfe> is null
+    pub fn HandleExprLogOfe_is_null(self_: *const HandleExprLogOfe) -> bool;
     /// Dereference Handle to get *const Expr_LogOfe
     pub fn HandleExprLogOfe_get(
         handle: *const HandleExprLogOfe,
@@ -5375,6 +5439,8 @@ extern "C" {
     pub fn HandleExprNamedConstant_clone(
         self_: *const HandleExprNamedConstant,
     ) -> crate::OcctResult<*mut HandleExprNamedConstant>;
+    /// Check if Handle<Expr_NamedConstant> is null
+    pub fn HandleExprNamedConstant_is_null(self_: *const HandleExprNamedConstant) -> bool;
     /// Dereference Handle to get *const Expr_NamedConstant
     pub fn HandleExprNamedConstant_get(
         handle: *const HandleExprNamedConstant,
@@ -5505,6 +5571,8 @@ extern "C" {
     pub fn HandleExprNamedExpression_clone(
         self_: *const HandleExprNamedExpression,
     ) -> crate::OcctResult<*mut HandleExprNamedExpression>;
+    /// Check if Handle<Expr_NamedExpression> is null
+    pub fn HandleExprNamedExpression_is_null(self_: *const HandleExprNamedExpression) -> bool;
     /// Dereference Handle to get *const Expr_NamedExpression
     pub fn HandleExprNamedExpression_get(
         handle: *const HandleExprNamedExpression,
@@ -5724,6 +5792,8 @@ extern "C" {
     pub fn HandleExprNamedFunction_clone(
         self_: *const HandleExprNamedFunction,
     ) -> crate::OcctResult<*mut HandleExprNamedFunction>;
+    /// Check if Handle<Expr_NamedFunction> is null
+    pub fn HandleExprNamedFunction_is_null(self_: *const HandleExprNamedFunction) -> bool;
     /// Dereference Handle to get *const Expr_NamedFunction
     pub fn HandleExprNamedFunction_get(
         handle: *const HandleExprNamedFunction,
@@ -5882,6 +5952,8 @@ extern "C" {
     pub fn HandleExprNamedUnknown_clone(
         self_: *const HandleExprNamedUnknown,
     ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
+    /// Check if Handle<Expr_NamedUnknown> is null
+    pub fn HandleExprNamedUnknown_is_null(self_: *const HandleExprNamedUnknown) -> bool;
     /// Dereference Handle to get *const Expr_NamedUnknown
     pub fn HandleExprNamedUnknown_get(
         handle: *const HandleExprNamedUnknown,
@@ -6036,6 +6108,8 @@ extern "C" {
     pub fn HandleExprNotAssigned_clone(
         self_: *const HandleExprNotAssigned,
     ) -> crate::OcctResult<*mut HandleExprNotAssigned>;
+    /// Check if Handle<Expr_NotAssigned> is null
+    pub fn HandleExprNotAssigned_is_null(self_: *const HandleExprNotAssigned) -> bool;
     /// Dereference Handle to get *const Expr_NotAssigned
     pub fn HandleExprNotAssigned_get(
         handle: *const HandleExprNotAssigned,
@@ -6170,6 +6244,8 @@ extern "C" {
     pub fn HandleExprNotEvaluable_clone(
         self_: *const HandleExprNotEvaluable,
     ) -> crate::OcctResult<*mut HandleExprNotEvaluable>;
+    /// Check if Handle<Expr_NotEvaluable> is null
+    pub fn HandleExprNotEvaluable_is_null(self_: *const HandleExprNotEvaluable) -> bool;
     /// Dereference Handle to get *const Expr_NotEvaluable
     pub fn HandleExprNotEvaluable_get(
         handle: *const HandleExprNotEvaluable,
@@ -6342,6 +6418,8 @@ extern "C" {
     pub fn HandleExprNumericValue_clone(
         self_: *const HandleExprNumericValue,
     ) -> crate::OcctResult<*mut HandleExprNumericValue>;
+    /// Check if Handle<Expr_NumericValue> is null
+    pub fn HandleExprNumericValue_is_null(self_: *const HandleExprNumericValue) -> bool;
     /// Dereference Handle to get *const Expr_NumericValue
     pub fn HandleExprNumericValue_get(
         handle: *const HandleExprNumericValue,
@@ -6471,6 +6549,8 @@ extern "C" {
     pub fn HandleExprPolyExpression_clone(
         self_: *const HandleExprPolyExpression,
     ) -> crate::OcctResult<*mut HandleExprPolyExpression>;
+    /// Check if Handle<Expr_PolyExpression> is null
+    pub fn HandleExprPolyExpression_is_null(self_: *const HandleExprPolyExpression) -> bool;
     /// Dereference Handle to get *const Expr_PolyExpression
     pub fn HandleExprPolyExpression_get(
         handle: *const HandleExprPolyExpression,
@@ -6658,6 +6738,8 @@ extern "C" {
     pub fn HandleExprPolyFunction_clone(
         self_: *const HandleExprPolyFunction,
     ) -> crate::OcctResult<*mut HandleExprPolyFunction>;
+    /// Check if Handle<Expr_PolyFunction> is null
+    pub fn HandleExprPolyFunction_is_null(self_: *const HandleExprPolyFunction) -> bool;
     /// Dereference Handle to get *const Expr_PolyFunction
     pub fn HandleExprPolyFunction_get(
         handle: *const HandleExprPolyFunction,
@@ -6848,6 +6930,8 @@ extern "C" {
     pub fn HandleExprProduct_clone(
         self_: *const HandleExprProduct,
     ) -> crate::OcctResult<*mut HandleExprProduct>;
+    /// Check if Handle<Expr_Product> is null
+    pub fn HandleExprProduct_is_null(self_: *const HandleExprProduct) -> bool;
     /// Dereference Handle to get *const Expr_Product
     pub fn HandleExprProduct_get(
         handle: *const HandleExprProduct,
@@ -7057,6 +7141,8 @@ extern "C" {
     pub fn HandleExprSign_clone(
         self_: *const HandleExprSign,
     ) -> crate::OcctResult<*mut HandleExprSign>;
+    /// Check if Handle<Expr_Sign> is null
+    pub fn HandleExprSign_is_null(self_: *const HandleExprSign) -> bool;
     /// Dereference Handle to get *const Expr_Sign
     pub fn HandleExprSign_get(handle: *const HandleExprSign)
         -> crate::OcctResult<*const Expr_Sign>;
@@ -7220,6 +7306,8 @@ extern "C" {
     pub fn HandleExprSine_clone(
         self_: *const HandleExprSine,
     ) -> crate::OcctResult<*mut HandleExprSine>;
+    /// Check if Handle<Expr_Sine> is null
+    pub fn HandleExprSine_is_null(self_: *const HandleExprSine) -> bool;
     /// Dereference Handle to get *const Expr_Sine
     pub fn HandleExprSine_get(handle: *const HandleExprSine)
         -> crate::OcctResult<*const Expr_Sine>;
@@ -7385,6 +7473,8 @@ extern "C" {
     pub fn HandleExprSingleRelation_clone(
         self_: *const HandleExprSingleRelation,
     ) -> crate::OcctResult<*mut HandleExprSingleRelation>;
+    /// Check if Handle<Expr_SingleRelation> is null
+    pub fn HandleExprSingleRelation_is_null(self_: *const HandleExprSingleRelation) -> bool;
     /// Dereference Handle to get *const Expr_SingleRelation
     pub fn HandleExprSingleRelation_get(
         handle: *const HandleExprSingleRelation,
@@ -7551,6 +7641,8 @@ extern "C" {
     pub fn HandleExprSinh_clone(
         self_: *const HandleExprSinh,
     ) -> crate::OcctResult<*mut HandleExprSinh>;
+    /// Check if Handle<Expr_Sinh> is null
+    pub fn HandleExprSinh_is_null(self_: *const HandleExprSinh) -> bool;
     /// Dereference Handle to get *const Expr_Sinh
     pub fn HandleExprSinh_get(handle: *const HandleExprSinh)
         -> crate::OcctResult<*const Expr_Sinh>;
@@ -7715,6 +7807,8 @@ extern "C" {
     pub fn HandleExprSquare_clone(
         self_: *const HandleExprSquare,
     ) -> crate::OcctResult<*mut HandleExprSquare>;
+    /// Check if Handle<Expr_Square> is null
+    pub fn HandleExprSquare_is_null(self_: *const HandleExprSquare) -> bool;
     /// Dereference Handle to get *const Expr_Square
     pub fn HandleExprSquare_get(
         handle: *const HandleExprSquare,
@@ -7888,6 +7982,8 @@ extern "C" {
     pub fn HandleExprSquareRoot_clone(
         self_: *const HandleExprSquareRoot,
     ) -> crate::OcctResult<*mut HandleExprSquareRoot>;
+    /// Check if Handle<Expr_SquareRoot> is null
+    pub fn HandleExprSquareRoot_is_null(self_: *const HandleExprSquareRoot) -> bool;
     /// Dereference Handle to get *const Expr_SquareRoot
     pub fn HandleExprSquareRoot_get(
         handle: *const HandleExprSquareRoot,
@@ -8076,6 +8172,8 @@ extern "C" {
     pub fn HandleExprSum_clone(
         self_: *const HandleExprSum,
     ) -> crate::OcctResult<*mut HandleExprSum>;
+    /// Check if Handle<Expr_Sum> is null
+    pub fn HandleExprSum_is_null(self_: *const HandleExprSum) -> bool;
     /// Dereference Handle to get *const Expr_Sum
     pub fn HandleExprSum_get(handle: *const HandleExprSum) -> crate::OcctResult<*const Expr_Sum>;
     /// Dereference Handle to get *mut Expr_Sum
@@ -8252,6 +8350,8 @@ extern "C" {
     pub fn HandleExprSystemRelation_clone(
         self_: *const HandleExprSystemRelation,
     ) -> crate::OcctResult<*mut HandleExprSystemRelation>;
+    /// Check if Handle<Expr_SystemRelation> is null
+    pub fn HandleExprSystemRelation_is_null(self_: *const HandleExprSystemRelation) -> bool;
     /// Dereference Handle to get *const Expr_SystemRelation
     pub fn HandleExprSystemRelation_get(
         handle: *const HandleExprSystemRelation,
@@ -8376,6 +8476,8 @@ extern "C" {
     pub fn HandleExprTangent_clone(
         self_: *const HandleExprTangent,
     ) -> crate::OcctResult<*mut HandleExprTangent>;
+    /// Check if Handle<Expr_Tangent> is null
+    pub fn HandleExprTangent_is_null(self_: *const HandleExprTangent) -> bool;
     /// Dereference Handle to get *const Expr_Tangent
     pub fn HandleExprTangent_get(
         handle: *const HandleExprTangent,
@@ -8550,6 +8652,8 @@ extern "C" {
     pub fn HandleExprTanh_clone(
         self_: *const HandleExprTanh,
     ) -> crate::OcctResult<*mut HandleExprTanh>;
+    /// Check if Handle<Expr_Tanh> is null
+    pub fn HandleExprTanh_is_null(self_: *const HandleExprTanh) -> bool;
     /// Dereference Handle to get *const Expr_Tanh
     pub fn HandleExprTanh_get(handle: *const HandleExprTanh)
         -> crate::OcctResult<*const Expr_Tanh>;
@@ -8706,6 +8810,8 @@ extern "C" {
     pub fn HandleExprUnaryExpression_clone(
         self_: *const HandleExprUnaryExpression,
     ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    /// Check if Handle<Expr_UnaryExpression> is null
+    pub fn HandleExprUnaryExpression_is_null(self_: *const HandleExprUnaryExpression) -> bool;
     /// Dereference Handle to get *const Expr_UnaryExpression
     pub fn HandleExprUnaryExpression_get(
         handle: *const HandleExprUnaryExpression,
@@ -8967,6 +9073,8 @@ extern "C" {
     pub fn HandleExprUnaryFunction_clone(
         self_: *const HandleExprUnaryFunction,
     ) -> crate::OcctResult<*mut HandleExprUnaryFunction>;
+    /// Check if Handle<Expr_UnaryFunction> is null
+    pub fn HandleExprUnaryFunction_is_null(self_: *const HandleExprUnaryFunction) -> bool;
     /// Dereference Handle to get *const Expr_UnaryFunction
     pub fn HandleExprUnaryFunction_get(
         handle: *const HandleExprUnaryFunction,
@@ -9152,6 +9260,8 @@ extern "C" {
     pub fn HandleExprUnaryMinus_clone(
         self_: *const HandleExprUnaryMinus,
     ) -> crate::OcctResult<*mut HandleExprUnaryMinus>;
+    /// Check if Handle<Expr_UnaryMinus> is null
+    pub fn HandleExprUnaryMinus_is_null(self_: *const HandleExprUnaryMinus) -> bool;
     /// Dereference Handle to get *const Expr_UnaryMinus
     pub fn HandleExprUnaryMinus_get(
         handle: *const HandleExprUnaryMinus,
@@ -9393,6 +9503,8 @@ extern "C" {
     pub fn HandleExprIntrpGenExp_clone(
         self_: *const HandleExprIntrpGenExp,
     ) -> crate::OcctResult<*mut HandleExprIntrpGenExp>;
+    /// Check if Handle<ExprIntrp_GenExp> is null
+    pub fn HandleExprIntrpGenExp_is_null(self_: *const HandleExprIntrpGenExp) -> bool;
     /// Dereference Handle to get *const ExprIntrp_GenExp
     pub fn HandleExprIntrpGenExp_get(
         handle: *const HandleExprIntrpGenExp,
@@ -9502,6 +9614,8 @@ extern "C" {
     pub fn HandleExprIntrpGenFct_clone(
         self_: *const HandleExprIntrpGenFct,
     ) -> crate::OcctResult<*mut HandleExprIntrpGenFct>;
+    /// Check if Handle<ExprIntrp_GenFct> is null
+    pub fn HandleExprIntrpGenFct_is_null(self_: *const HandleExprIntrpGenFct) -> bool;
     /// Dereference Handle to get *const ExprIntrp_GenFct
     pub fn HandleExprIntrpGenFct_get(
         handle: *const HandleExprIntrpGenFct,
@@ -9615,6 +9729,8 @@ extern "C" {
     pub fn HandleExprIntrpGenRel_clone(
         self_: *const HandleExprIntrpGenRel,
     ) -> crate::OcctResult<*mut HandleExprIntrpGenRel>;
+    /// Check if Handle<ExprIntrp_GenRel> is null
+    pub fn HandleExprIntrpGenRel_is_null(self_: *const HandleExprIntrpGenRel) -> bool;
     /// Dereference Handle to get *const ExprIntrp_GenRel
     pub fn HandleExprIntrpGenRel_get(
         handle: *const HandleExprIntrpGenRel,
@@ -9735,6 +9851,8 @@ extern "C" {
     pub fn HandleExprIntrpGenerator_clone(
         self_: *const HandleExprIntrpGenerator,
     ) -> crate::OcctResult<*mut HandleExprIntrpGenerator>;
+    /// Check if Handle<ExprIntrp_Generator> is null
+    pub fn HandleExprIntrpGenerator_is_null(self_: *const HandleExprIntrpGenerator) -> bool;
     /// Dereference Handle to get *const ExprIntrp_Generator
     pub fn HandleExprIntrpGenerator_get(
         handle: *const HandleExprIntrpGenerator,
@@ -9854,6 +9972,8 @@ extern "C" {
     pub fn HandleExprIntrpSyntaxError_clone(
         self_: *const HandleExprIntrpSyntaxError,
     ) -> crate::OcctResult<*mut HandleExprIntrpSyntaxError>;
+    /// Check if Handle<ExprIntrp_SyntaxError> is null
+    pub fn HandleExprIntrpSyntaxError_is_null(self_: *const HandleExprIntrpSyntaxError) -> bool;
     /// Dereference Handle to get *const ExprIntrp_SyntaxError
     pub fn HandleExprIntrpSyntaxError_get(
         handle: *const HandleExprIntrpSyntaxError,

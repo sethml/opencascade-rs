@@ -95,6 +95,8 @@ extern "C" {
     pub fn HandleBRepAlgoAsDes_clone(
         self_: *const HandleBRepAlgoAsDes,
     ) -> crate::OcctResult<*mut HandleBRepAlgoAsDes>;
+    /// Check if Handle<BRepAlgo_AsDes> is null
+    pub fn HandleBRepAlgoAsDes_is_null(self_: *const HandleBRepAlgoAsDes) -> bool;
     /// Dereference Handle to get *const BRepAlgo_AsDes
     pub fn HandleBRepAlgoAsDes_get(
         handle: *const HandleBRepAlgoAsDes,
@@ -470,6 +472,8 @@ extern "C" {
     pub fn HandleBRepFillACRLaw_clone(
         self_: *const HandleBRepFillACRLaw,
     ) -> crate::OcctResult<*mut HandleBRepFillACRLaw>;
+    /// Check if Handle<BRepFill_ACRLaw> is null
+    pub fn HandleBRepFillACRLaw_is_null(self_: *const HandleBRepFillACRLaw) -> bool;
     /// Dereference Handle to get *const BRepFill_ACRLaw
     pub fn HandleBRepFillACRLaw_get(
         handle: *const HandleBRepFillACRLaw,
@@ -868,6 +872,10 @@ extern "C" {
     pub fn HandleBRepFillCurveConstraint_clone(
         self_: *const HandleBRepFillCurveConstraint,
     ) -> crate::OcctResult<*mut HandleBRepFillCurveConstraint>;
+    /// Check if Handle<BRepFill_CurveConstraint> is null
+    pub fn HandleBRepFillCurveConstraint_is_null(
+        self_: *const HandleBRepFillCurveConstraint,
+    ) -> bool;
     /// Dereference Handle to get *const BRepFill_CurveConstraint
     pub fn HandleBRepFillCurveConstraint_get(
         handle: *const HandleBRepFillCurveConstraint,
@@ -1134,6 +1142,8 @@ extern "C" {
     pub fn HandleBRepFillDraftLaw_clone(
         self_: *const HandleBRepFillDraftLaw,
     ) -> crate::OcctResult<*mut HandleBRepFillDraftLaw>;
+    /// Check if Handle<BRepFill_DraftLaw> is null
+    pub fn HandleBRepFillDraftLaw_is_null(self_: *const HandleBRepFillDraftLaw) -> bool;
     /// Dereference Handle to get *const BRepFill_DraftLaw
     pub fn HandleBRepFillDraftLaw_get(
         handle: *const HandleBRepFillDraftLaw,
@@ -1321,6 +1331,8 @@ extern "C" {
     pub fn HandleBRepFillEdge3DLaw_clone(
         self_: *const HandleBRepFillEdge3DLaw,
     ) -> crate::OcctResult<*mut HandleBRepFillEdge3DLaw>;
+    /// Check if Handle<BRepFill_Edge3DLaw> is null
+    pub fn HandleBRepFillEdge3DLaw_is_null(self_: *const HandleBRepFillEdge3DLaw) -> bool;
     /// Dereference Handle to get *const BRepFill_Edge3DLaw
     pub fn HandleBRepFillEdge3DLaw_get(
         handle: *const HandleBRepFillEdge3DLaw,
@@ -1523,6 +1535,8 @@ extern "C" {
     pub fn HandleBRepFillEdgeOnSurfLaw_clone(
         self_: *const HandleBRepFillEdgeOnSurfLaw,
     ) -> crate::OcctResult<*mut HandleBRepFillEdgeOnSurfLaw>;
+    /// Check if Handle<BRepFill_EdgeOnSurfLaw> is null
+    pub fn HandleBRepFillEdgeOnSurfLaw_is_null(self_: *const HandleBRepFillEdgeOnSurfLaw) -> bool;
     /// Dereference Handle to get *const BRepFill_EdgeOnSurfLaw
     pub fn HandleBRepFillEdgeOnSurfLaw_get(
         handle: *const HandleBRepFillEdgeOnSurfLaw,
@@ -2012,6 +2026,8 @@ extern "C" {
     pub fn HandleBRepFillLocationLaw_clone(
         self_: *const HandleBRepFillLocationLaw,
     ) -> crate::OcctResult<*mut HandleBRepFillLocationLaw>;
+    /// Check if Handle<BRepFill_LocationLaw> is null
+    pub fn HandleBRepFillLocationLaw_is_null(self_: *const HandleBRepFillLocationLaw) -> bool;
     /// Dereference Handle to get *const BRepFill_LocationLaw
     pub fn HandleBRepFillLocationLaw_get(
         handle: *const HandleBRepFillLocationLaw,
@@ -2259,6 +2275,8 @@ extern "C" {
     pub fn HandleBRepFillNSections_clone(
         self_: *const HandleBRepFillNSections,
     ) -> crate::OcctResult<*mut HandleBRepFillNSections>;
+    /// Check if Handle<BRepFill_NSections> is null
+    pub fn HandleBRepFillNSections_is_null(self_: *const HandleBRepFillNSections) -> bool;
     /// Dereference Handle to get *const BRepFill_NSections
     pub fn HandleBRepFillNSections_get(
         handle: *const HandleBRepFillNSections,
@@ -2663,6 +2681,8 @@ extern "C" {
     pub fn HandleBRepFillPipeShell_clone(
         self_: *const HandleBRepFillPipeShell,
     ) -> crate::OcctResult<*mut HandleBRepFillPipeShell>;
+    /// Check if Handle<BRepFill_PipeShell> is null
+    pub fn HandleBRepFillPipeShell_is_null(self_: *const HandleBRepFillPipeShell) -> bool;
     /// Dereference Handle to get *const BRepFill_PipeShell
     pub fn HandleBRepFillPipeShell_get(
         handle: *const HandleBRepFillPipeShell,
@@ -2842,6 +2862,8 @@ extern "C" {
     pub fn HandleBRepFillSectionLaw_clone(
         self_: *const HandleBRepFillSectionLaw,
     ) -> crate::OcctResult<*mut HandleBRepFillSectionLaw>;
+    /// Check if Handle<BRepFill_SectionLaw> is null
+    pub fn HandleBRepFillSectionLaw_is_null(self_: *const HandleBRepFillSectionLaw) -> bool;
     /// Dereference Handle to get *const BRepFill_SectionLaw
     pub fn HandleBRepFillSectionLaw_get(
         handle: *const HandleBRepFillSectionLaw,
@@ -3008,6 +3030,8 @@ extern "C" {
     pub fn HandleBRepFillShapeLaw_clone(
         self_: *const HandleBRepFillShapeLaw,
     ) -> crate::OcctResult<*mut HandleBRepFillShapeLaw>;
+    /// Check if Handle<BRepFill_ShapeLaw> is null
+    pub fn HandleBRepFillShapeLaw_is_null(self_: *const HandleBRepFillShapeLaw) -> bool;
     /// Dereference Handle to get *const BRepFill_ShapeLaw
     pub fn HandleBRepFillShapeLaw_get(
         handle: *const HandleBRepFillShapeLaw,
@@ -3678,6 +3702,8 @@ extern "C" {
     pub fn HandleTopOpeBRepFFDumper_clone(
         self_: *const HandleTopOpeBRepFFDumper,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepFFDumper>;
+    /// Check if Handle<TopOpeBRep_FFDumper> is null
+    pub fn HandleTopOpeBRepFFDumper_is_null(self_: *const HandleTopOpeBRepFFDumper) -> bool;
     /// Dereference Handle to get *const TopOpeBRep_FFDumper
     pub fn HandleTopOpeBRepFFDumper_get(
         handle: *const HandleTopOpeBRepFFDumper,
@@ -4318,6 +4344,10 @@ extern "C" {
     pub fn HandleTopOpeBRepHArray1OfLineInter_clone(
         self_: *const HandleTopOpeBRepHArray1OfLineInter,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepHArray1OfLineInter>;
+    /// Check if Handle<TopOpeBRep_HArray1OfLineInter> is null
+    pub fn HandleTopOpeBRepHArray1OfLineInter_is_null(
+        self_: *const HandleTopOpeBRepHArray1OfLineInter,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRep_HArray1OfLineInter
     pub fn HandleTopOpeBRepHArray1OfLineInter_get(
         handle: *const HandleTopOpeBRepHArray1OfLineInter,
@@ -4425,6 +4455,10 @@ extern "C" {
     pub fn HandleTopOpeBRepHArray1OfVPointInter_clone(
         self_: *const HandleTopOpeBRepHArray1OfVPointInter,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepHArray1OfVPointInter>;
+    /// Check if Handle<TopOpeBRep_HArray1OfVPointInter> is null
+    pub fn HandleTopOpeBRepHArray1OfVPointInter_is_null(
+        self_: *const HandleTopOpeBRepHArray1OfVPointInter,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRep_HArray1OfVPointInter
     pub fn HandleTopOpeBRepHArray1OfVPointInter_get(
         handle: *const HandleTopOpeBRepHArray1OfVPointInter,
@@ -4520,6 +4554,8 @@ extern "C" {
     pub fn HandleTopOpeBRepHctxee2d_clone(
         self_: *const HandleTopOpeBRepHctxee2d,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepHctxee2d>;
+    /// Check if Handle<TopOpeBRep_Hctxee2d> is null
+    pub fn HandleTopOpeBRepHctxee2d_is_null(self_: *const HandleTopOpeBRepHctxee2d) -> bool;
     /// Dereference Handle to get *const TopOpeBRep_Hctxee2d
     pub fn HandleTopOpeBRepHctxee2d_get(
         handle: *const HandleTopOpeBRepHctxee2d,
@@ -4643,6 +4679,8 @@ extern "C" {
     pub fn HandleTopOpeBRepHctxff2d_clone(
         self_: *const HandleTopOpeBRepHctxff2d,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepHctxff2d>;
+    /// Check if Handle<TopOpeBRep_Hctxff2d> is null
+    pub fn HandleTopOpeBRepHctxff2d_is_null(self_: *const HandleTopOpeBRepHctxff2d) -> bool;
     /// Dereference Handle to get *const TopOpeBRep_Hctxff2d
     pub fn HandleTopOpeBRepHctxff2d_get(
         handle: *const HandleTopOpeBRepHctxff2d,
@@ -9145,6 +9183,10 @@ extern "C" {
     pub fn HandleTopOpeBRepBuildHBuilder_clone(
         self_: *const HandleTopOpeBRepBuildHBuilder,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildHBuilder>;
+    /// Check if Handle<TopOpeBRepBuild_HBuilder> is null
+    pub fn HandleTopOpeBRepBuildHBuilder_is_null(
+        self_: *const HandleTopOpeBRepBuildHBuilder,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRepBuild_HBuilder
     pub fn HandleTopOpeBRepBuildHBuilder_get(
         handle: *const HandleTopOpeBRepBuildHBuilder,
@@ -9238,6 +9280,8 @@ extern "C" {
     pub fn HandleTopOpeBRepBuildLoop_clone(
         self_: *const HandleTopOpeBRepBuildLoop,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildLoop>;
+    /// Check if Handle<TopOpeBRepBuild_Loop> is null
+    pub fn HandleTopOpeBRepBuildLoop_is_null(self_: *const HandleTopOpeBRepBuildLoop) -> bool;
     /// Dereference Handle to get *const TopOpeBRepBuild_Loop
     pub fn HandleTopOpeBRepBuildLoop_get(
         handle: *const HandleTopOpeBRepBuildLoop,
@@ -9408,6 +9452,8 @@ extern "C" {
     pub fn HandleTopOpeBRepBuildPave_clone(
         self_: *const HandleTopOpeBRepBuildPave,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildPave>;
+    /// Check if Handle<TopOpeBRepBuild_Pave> is null
+    pub fn HandleTopOpeBRepBuildPave_is_null(self_: *const HandleTopOpeBRepBuildPave) -> bool;
     /// Dereference Handle to get *const TopOpeBRepBuild_Pave
     pub fn HandleTopOpeBRepBuildPave_get(
         handle: *const HandleTopOpeBRepBuildPave,
@@ -10748,6 +10794,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSAssociation_clone(
         self_: *const HandleTopOpeBRepDSAssociation,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSAssociation>;
+    /// Check if Handle<TopOpeBRepDS_Association> is null
+    pub fn HandleTopOpeBRepDSAssociation_is_null(
+        self_: *const HandleTopOpeBRepDSAssociation,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_Association
     pub fn HandleTopOpeBRepDSAssociation_get(
         handle: *const HandleTopOpeBRepDSAssociation,
@@ -11161,6 +11211,8 @@ extern "C" {
     pub fn HandleTopOpeBRepDSCheck_clone(
         self_: *const HandleTopOpeBRepDSCheck,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSCheck>;
+    /// Check if Handle<TopOpeBRepDS_Check> is null
+    pub fn HandleTopOpeBRepDSCheck_is_null(self_: *const HandleTopOpeBRepDSCheck) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_Check
     pub fn HandleTopOpeBRepDSCheck_get(
         handle: *const HandleTopOpeBRepDSCheck,
@@ -11569,6 +11621,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSCurvePointInterference_clone(
         self_: *const HandleTopOpeBRepDSCurvePointInterference,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSCurvePointInterference>;
+    /// Check if Handle<TopOpeBRepDS_CurvePointInterference> is null
+    pub fn HandleTopOpeBRepDSCurvePointInterference_is_null(
+        self_: *const HandleTopOpeBRepDSCurvePointInterference,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_CurvePointInterference
     pub fn HandleTopOpeBRepDSCurvePointInterference_get(
         handle: *const HandleTopOpeBRepDSCurvePointInterference,
@@ -12365,6 +12421,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSEdgeVertexInterference_clone(
         self_: *const HandleTopOpeBRepDSEdgeVertexInterference,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSEdgeVertexInterference>;
+    /// Check if Handle<TopOpeBRepDS_EdgeVertexInterference> is null
+    pub fn HandleTopOpeBRepDSEdgeVertexInterference_is_null(
+        self_: *const HandleTopOpeBRepDSEdgeVertexInterference,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_EdgeVertexInterference
     pub fn HandleTopOpeBRepDSEdgeVertexInterference_get(
         handle: *const HandleTopOpeBRepDSEdgeVertexInterference,
@@ -12590,6 +12650,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSFaceEdgeInterference_clone(
         self_: *const HandleTopOpeBRepDSFaceEdgeInterference,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSFaceEdgeInterference>;
+    /// Check if Handle<TopOpeBRepDS_FaceEdgeInterference> is null
+    pub fn HandleTopOpeBRepDSFaceEdgeInterference_is_null(
+        self_: *const HandleTopOpeBRepDSFaceEdgeInterference,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_FaceEdgeInterference
     pub fn HandleTopOpeBRepDSFaceEdgeInterference_get(
         handle: *const HandleTopOpeBRepDSFaceEdgeInterference,
@@ -12952,6 +13016,8 @@ extern "C" {
     pub fn HandleTopOpeBRepDSGapTool_clone(
         self_: *const HandleTopOpeBRepDSGapTool,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSGapTool>;
+    /// Check if Handle<TopOpeBRepDS_GapTool> is null
+    pub fn HandleTopOpeBRepDSGapTool_is_null(self_: *const HandleTopOpeBRepDSGapTool) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_GapTool
     pub fn HandleTopOpeBRepDSGapTool_get(
         handle: *const HandleTopOpeBRepDSGapTool,
@@ -13087,6 +13153,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_clone(
         self_: *const HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference>;
+    /// Check if Handle<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference> is null
+    pub fn HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_is_null(
+        self_: *const HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference
     pub fn HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_get(
         handle: *const HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference,
@@ -13411,6 +13481,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSHDataStructure_clone(
         self_: *const HandleTopOpeBRepDSHDataStructure,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSHDataStructure>;
+    /// Check if Handle<TopOpeBRepDS_HDataStructure> is null
+    pub fn HandleTopOpeBRepDSHDataStructure_is_null(
+        self_: *const HandleTopOpeBRepDSHDataStructure,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_HDataStructure
     pub fn HandleTopOpeBRepDSHDataStructure_get(
         handle: *const HandleTopOpeBRepDSHDataStructure,
@@ -13568,6 +13642,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSInterference_clone(
         self_: *const HandleTopOpeBRepDSInterference,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSInterference>;
+    /// Check if Handle<TopOpeBRepDS_Interference> is null
+    pub fn HandleTopOpeBRepDSInterference_is_null(
+        self_: *const HandleTopOpeBRepDSInterference,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_Interference
     pub fn HandleTopOpeBRepDSInterference_get(
         handle: *const HandleTopOpeBRepDSInterference,
@@ -13844,6 +13922,8 @@ extern "C" {
     pub fn HandleTopOpeBRepDSMarker_clone(
         self_: *const HandleTopOpeBRepDSMarker,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSMarker>;
+    /// Check if Handle<TopOpeBRepDS_Marker> is null
+    pub fn HandleTopOpeBRepDSMarker_is_null(self_: *const HandleTopOpeBRepDSMarker) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_Marker
     pub fn HandleTopOpeBRepDSMarker_get(
         handle: *const HandleTopOpeBRepDSMarker,
@@ -14222,6 +14302,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSShapeShapeInterference_clone(
         self_: *const HandleTopOpeBRepDSShapeShapeInterference,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSShapeShapeInterference>;
+    /// Check if Handle<TopOpeBRepDS_ShapeShapeInterference> is null
+    pub fn HandleTopOpeBRepDSShapeShapeInterference_is_null(
+        self_: *const HandleTopOpeBRepDSShapeShapeInterference,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_ShapeShapeInterference
     pub fn HandleTopOpeBRepDSShapeShapeInterference_get(
         handle: *const HandleTopOpeBRepDSShapeShapeInterference,
@@ -14404,6 +14488,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSSolidSurfaceInterference_clone(
         self_: *const HandleTopOpeBRepDSSolidSurfaceInterference,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSSolidSurfaceInterference>;
+    /// Check if Handle<TopOpeBRepDS_SolidSurfaceInterference> is null
+    pub fn HandleTopOpeBRepDSSolidSurfaceInterference_is_null(
+        self_: *const HandleTopOpeBRepDSSolidSurfaceInterference,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_SolidSurfaceInterference
     pub fn HandleTopOpeBRepDSSolidSurfaceInterference_get(
         handle: *const HandleTopOpeBRepDSSolidSurfaceInterference,
@@ -14595,6 +14683,10 @@ extern "C" {
     pub fn HandleTopOpeBRepDSSurfaceCurveInterference_clone(
         self_: *const HandleTopOpeBRepDSSurfaceCurveInterference,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepDSSurfaceCurveInterference>;
+    /// Check if Handle<TopOpeBRepDS_SurfaceCurveInterference> is null
+    pub fn HandleTopOpeBRepDSSurfaceCurveInterference_is_null(
+        self_: *const HandleTopOpeBRepDSSurfaceCurveInterference,
+    ) -> bool;
     /// Dereference Handle to get *const TopOpeBRepDS_SurfaceCurveInterference
     pub fn HandleTopOpeBRepDSSurfaceCurveInterference_get(
         handle: *const HandleTopOpeBRepDSSurfaceCurveInterference,
@@ -15678,6 +15770,9 @@ extern "C" {
     pub fn HandleTopOpeBRepToolHBoxTool_clone(
         self_: *const HandleTopOpeBRepToolHBoxTool,
     ) -> crate::OcctResult<*mut HandleTopOpeBRepToolHBoxTool>;
+    /// Check if Handle<TopOpeBRepTool_HBoxTool> is null
+    pub fn HandleTopOpeBRepToolHBoxTool_is_null(self_: *const HandleTopOpeBRepToolHBoxTool)
+        -> bool;
     /// Dereference Handle to get *const TopOpeBRepTool_HBoxTool
     pub fn HandleTopOpeBRepToolHBoxTool_get(
         handle: *const HandleTopOpeBRepToolHBoxTool,

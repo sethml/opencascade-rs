@@ -1611,6 +1611,15 @@ unsafe impl crate::CppCopyable for HandleGeomPlateCurveConstraint {
 }
 
 impl HandleGeomPlateCurveConstraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateCurveConstraint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomPlate_CurveConstraint
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_CurveConstraint {
         unsafe {
@@ -1899,6 +1908,15 @@ unsafe impl crate::CppCopyable for HandleGeomPlateHArray1OfHCurve {
 }
 
 impl HandleGeomPlateHArray1OfHCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfHCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomPlate_HArray1OfHCurve
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_HArray1OfHCurve {
         unsafe {
@@ -2170,6 +2188,15 @@ unsafe impl crate::CppCopyable for HandleGeomPlateHArray1OfSequenceOfReal {
 }
 
 impl HandleGeomPlateHArray1OfSequenceOfReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfSequenceOfReal_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomPlate_HArray1OfSequenceOfReal
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_HArray1OfSequenceOfReal {
         unsafe {
@@ -2420,6 +2447,15 @@ unsafe impl crate::CppCopyable for HandleGeomPlateHSequenceOfCurveConstraint {
 }
 
 impl HandleGeomPlateHSequenceOfCurveConstraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfCurveConstraint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomPlate_HSequenceOfCurveConstraint
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_HSequenceOfCurveConstraint {
         unsafe {
@@ -2670,6 +2706,15 @@ unsafe impl crate::CppCopyable for HandleGeomPlateHSequenceOfPointConstraint {
 }
 
 impl HandleGeomPlateHSequenceOfPointConstraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfPointConstraint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomPlate_HSequenceOfPointConstraint
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_HSequenceOfPointConstraint {
         unsafe {
@@ -3539,6 +3584,15 @@ unsafe impl crate::CppCopyable for HandleGeomPlatePointConstraint {
 }
 
 impl HandleGeomPlatePointConstraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlatePointConstraint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomPlate_PointConstraint
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_PointConstraint {
         unsafe {
@@ -4392,6 +4446,11 @@ unsafe impl crate::CppCopyable for HandleGeomPlateSurface {
 }
 
 impl HandleGeomPlateSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GeomPlate_Surface
     pub fn get(&self) -> &crate::ffi_types::GeomPlate_Surface {
         unsafe {

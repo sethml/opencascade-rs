@@ -310,6 +310,13 @@ unsafe impl crate::CppCopyable for HandleXSAlgoAlgoContainer {
 }
 
 impl HandleXSAlgoAlgoContainer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSAlgoAlgoContainer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XSAlgo_AlgoContainer
     pub fn get(&self) -> &crate::ffi_types::XSAlgo_AlgoContainer {
         unsafe {

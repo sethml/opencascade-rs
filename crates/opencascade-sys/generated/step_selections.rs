@@ -247,6 +247,15 @@ unsafe impl crate::CppCopyable for HandleSTEPSelectionsAssemblyComponent {
 }
 
 impl HandleSTEPSelectionsAssemblyComponent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsAssemblyComponent_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPSelections_AssemblyComponent
     pub fn get(&self) -> &crate::ffi_types::STEPSelections_AssemblyComponent {
         unsafe {
@@ -645,6 +654,15 @@ unsafe impl crate::CppCopyable for HandleSTEPSelectionsAssemblyLink {
 }
 
 impl HandleSTEPSelectionsAssemblyLink {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsAssemblyLink_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPSelections_AssemblyLink
     pub fn get(&self) -> &crate::ffi_types::STEPSelections_AssemblyLink {
         unsafe {
@@ -1033,6 +1051,15 @@ unsafe impl crate::CppCopyable for HandleSTEPSelectionsHSequenceOfAssemblyLink {
 }
 
 impl HandleSTEPSelectionsHSequenceOfAssemblyLink {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsHSequenceOfAssemblyLink_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPSelections_HSequenceOfAssemblyLink
     pub fn get(&self) -> &crate::ffi_types::STEPSelections_HSequenceOfAssemblyLink {
         unsafe {
@@ -1473,6 +1500,15 @@ unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectAssembly {
 }
 
 impl HandleSTEPSelectionsSelectAssembly {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectAssembly_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPSelections_SelectAssembly
     pub fn get(&self) -> &crate::ffi_types::STEPSelections_SelectAssembly {
         unsafe {
@@ -1914,6 +1950,15 @@ unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectDerived {
 }
 
 impl HandleSTEPSelectionsSelectDerived {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectDerived_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPSelections_SelectDerived
     pub fn get(&self) -> &crate::ffi_types::STEPSelections_SelectDerived {
         unsafe {
@@ -2391,6 +2436,13 @@ unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectFaces {
 }
 
 impl HandleSTEPSelectionsSelectFaces {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectFaces_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPSelections_SelectFaces
     pub fn get(&self) -> &crate::ffi_types::STEPSelections_SelectFaces {
         unsafe {
@@ -2924,6 +2976,15 @@ unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectForTransfer {
 }
 
 impl HandleSTEPSelectionsSelectForTransfer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectForTransfer_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPSelections_SelectForTransfer
     pub fn get(&self) -> &crate::ffi_types::STEPSelections_SelectForTransfer {
         unsafe {
@@ -3399,6 +3460,15 @@ unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectGSCurves {
 }
 
 impl HandleSTEPSelectionsSelectGSCurves {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectGSCurves_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPSelections_SelectGSCurves
     pub fn get(&self) -> &crate::ffi_types::STEPSelections_SelectGSCurves {
         unsafe {
@@ -3854,6 +3924,15 @@ unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectInstances {
 }
 
 impl HandleSTEPSelectionsSelectInstances {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectInstances_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPSelections_SelectInstances
     pub fn get(&self) -> &crate::ffi_types::STEPSelections_SelectInstances {
         unsafe {

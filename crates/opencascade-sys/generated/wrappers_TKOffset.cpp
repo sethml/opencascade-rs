@@ -112,27 +112,31 @@ typedef opencascade::handle<Law_Function> HandleLawFunction;
 typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleBRepOffsetSimpleOffset_destructor(HandleBRepOffsetSimpleOffset* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepOffsetSimpleOffset*> HandleBRepOffsetSimpleOffset_clone(const HandleBRepOffsetSimpleOffset* self_) {
     try { return {new HandleBRepOffsetSimpleOffset(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepOffsetSimpleOffset_is_null(const HandleBRepOffsetSimpleOffset* self_) { return self_->IsNull(); }
 extern "C" void HandleBiTgteCurveOnEdge_destructor(HandleBiTgteCurveOnEdge* self_) { delete self_; }
 extern "C" OcctResult<HandleBiTgteCurveOnEdge*> HandleBiTgteCurveOnEdge_clone(const HandleBiTgteCurveOnEdge* self_) {
     try { return {new HandleBiTgteCurveOnEdge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBiTgteCurveOnEdge_is_null(const HandleBiTgteCurveOnEdge* self_) { return self_->IsNull(); }
 extern "C" void HandleBiTgteCurveOnVertex_destructor(HandleBiTgteCurveOnVertex* self_) { delete self_; }
 extern "C" OcctResult<HandleBiTgteCurveOnVertex*> HandleBiTgteCurveOnVertex_clone(const HandleBiTgteCurveOnVertex* self_) {
     try { return {new HandleBiTgteCurveOnVertex(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBiTgteCurveOnVertex_is_null(const HandleBiTgteCurveOnVertex* self_) { return self_->IsNull(); }
 extern "C" void HandleDraftModification_destructor(HandleDraftModification* self_) { delete self_; }
 extern "C" OcctResult<HandleDraftModification*> HandleDraftModification_clone(const HandleDraftModification* self_) {
     try { return {new HandleDraftModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDraftModification_is_null(const HandleDraftModification* self_) { return self_->IsNull(); }
 
 // ========================
 // BRepOffset_Analyse wrappers

@@ -118,6 +118,8 @@ extern "C" {
     pub fn HandleTObjApplication_clone(
         self_: *const HandleTObjApplication,
     ) -> crate::OcctResult<*mut HandleTObjApplication>;
+    /// Check if Handle<TObj_Application> is null
+    pub fn HandleTObjApplication_is_null(self_: *const HandleTObjApplication) -> bool;
     /// Dereference Handle to get *const TObj_Application
     pub fn HandleTObjApplication_get(
         handle: *const HandleTObjApplication,
@@ -434,6 +436,8 @@ extern "C" {
     pub fn HandleTObjCheckModel_clone(
         self_: *const HandleTObjCheckModel,
     ) -> crate::OcctResult<*mut HandleTObjCheckModel>;
+    /// Check if Handle<TObj_CheckModel> is null
+    pub fn HandleTObjCheckModel_is_null(self_: *const HandleTObjCheckModel) -> bool;
     /// Dereference Handle to get *const TObj_CheckModel
     pub fn HandleTObjCheckModel_get(
         handle: *const HandleTObjCheckModel,
@@ -586,6 +590,8 @@ extern "C" {
     pub fn HandleTObjHiddenPartition_clone(
         self_: *const HandleTObjHiddenPartition,
     ) -> crate::OcctResult<*mut HandleTObjHiddenPartition>;
+    /// Check if Handle<TObj_HiddenPartition> is null
+    pub fn HandleTObjHiddenPartition_is_null(self_: *const HandleTObjHiddenPartition) -> bool;
     /// Dereference Handle to get *const TObj_HiddenPartition
     pub fn HandleTObjHiddenPartition_get(
         handle: *const HandleTObjHiddenPartition,
@@ -909,6 +915,8 @@ extern "C" {
     pub fn HandleTObjLabelIterator_clone(
         self_: *const HandleTObjLabelIterator,
     ) -> crate::OcctResult<*mut HandleTObjLabelIterator>;
+    /// Check if Handle<TObj_LabelIterator> is null
+    pub fn HandleTObjLabelIterator_is_null(self_: *const HandleTObjLabelIterator) -> bool;
     /// Dereference Handle to get *const TObj_LabelIterator
     pub fn HandleTObjLabelIterator_get(
         handle: *const HandleTObjLabelIterator,
@@ -1141,6 +1149,8 @@ extern "C" {
     pub fn HandleTObjModel_clone(
         self_: *const HandleTObjModel,
     ) -> crate::OcctResult<*mut HandleTObjModel>;
+    /// Check if Handle<TObj_Model> is null
+    pub fn HandleTObjModel_is_null(self_: *const HandleTObjModel) -> bool;
     /// Dereference Handle to get *const TObj_Model
     pub fn HandleTObjModel_get(
         handle: *const HandleTObjModel,
@@ -1201,6 +1211,8 @@ extern "C" {
     pub fn HandleTObjModelIterator_clone(
         self_: *const HandleTObjModelIterator,
     ) -> crate::OcctResult<*mut HandleTObjModelIterator>;
+    /// Check if Handle<TObj_ModelIterator> is null
+    pub fn HandleTObjModelIterator_is_null(self_: *const HandleTObjModelIterator) -> bool;
     /// Dereference Handle to get *const TObj_ModelIterator
     pub fn HandleTObjModelIterator_get(
         handle: *const HandleTObjModelIterator,
@@ -1481,6 +1493,8 @@ extern "C" {
     pub fn HandleTObjObject_clone(
         self_: *const HandleTObjObject,
     ) -> crate::OcctResult<*mut HandleTObjObject>;
+    /// Check if Handle<TObj_Object> is null
+    pub fn HandleTObjObject_is_null(self_: *const HandleTObjObject) -> bool;
     /// Dereference Handle to get *const TObj_Object
     pub fn HandleTObjObject_get(
         handle: *const HandleTObjObject,
@@ -1565,6 +1579,8 @@ extern "C" {
     pub fn HandleTObjObjectIterator_clone(
         self_: *const HandleTObjObjectIterator,
     ) -> crate::OcctResult<*mut HandleTObjObjectIterator>;
+    /// Check if Handle<TObj_ObjectIterator> is null
+    pub fn HandleTObjObjectIterator_is_null(self_: *const HandleTObjObjectIterator) -> bool;
     /// Dereference Handle to get *const TObj_ObjectIterator
     pub fn HandleTObjObjectIterator_get(
         handle: *const HandleTObjObjectIterator,
@@ -1675,6 +1691,9 @@ extern "C" {
     pub fn HandleTObjOcafObjectIterator_clone(
         self_: *const HandleTObjOcafObjectIterator,
     ) -> crate::OcctResult<*mut HandleTObjOcafObjectIterator>;
+    /// Check if Handle<TObj_OcafObjectIterator> is null
+    pub fn HandleTObjOcafObjectIterator_is_null(self_: *const HandleTObjOcafObjectIterator)
+        -> bool;
     /// Dereference Handle to get *const TObj_OcafObjectIterator
     pub fn HandleTObjOcafObjectIterator_get(
         handle: *const HandleTObjOcafObjectIterator,
@@ -1820,6 +1839,8 @@ extern "C" {
     pub fn HandleTObjPartition_clone(
         self_: *const HandleTObjPartition,
     ) -> crate::OcctResult<*mut HandleTObjPartition>;
+    /// Check if Handle<TObj_Partition> is null
+    pub fn HandleTObjPartition_is_null(self_: *const HandleTObjPartition) -> bool;
     /// Dereference Handle to get *const TObj_Partition
     pub fn HandleTObjPartition_get(
         handle: *const HandleTObjPartition,
@@ -2125,6 +2146,8 @@ extern "C" {
     pub fn HandleTObjReferenceIterator_clone(
         self_: *const HandleTObjReferenceIterator,
     ) -> crate::OcctResult<*mut HandleTObjReferenceIterator>;
+    /// Check if Handle<TObj_ReferenceIterator> is null
+    pub fn HandleTObjReferenceIterator_is_null(self_: *const HandleTObjReferenceIterator) -> bool;
     /// Dereference Handle to get *const TObj_ReferenceIterator
     pub fn HandleTObjReferenceIterator_get(
         handle: *const HandleTObjReferenceIterator,
@@ -2244,6 +2267,8 @@ extern "C" {
     pub fn HandleTObjSequenceIterator_clone(
         self_: *const HandleTObjSequenceIterator,
     ) -> crate::OcctResult<*mut HandleTObjSequenceIterator>;
+    /// Check if Handle<TObj_SequenceIterator> is null
+    pub fn HandleTObjSequenceIterator_is_null(self_: *const HandleTObjSequenceIterator) -> bool;
     /// Dereference Handle to get *const TObj_SequenceIterator
     pub fn HandleTObjSequenceIterator_get(
         handle: *const HandleTObjSequenceIterator,
@@ -2343,6 +2368,8 @@ extern "C" {
     pub fn HandleTObjHSequenceOfObject_clone(
         self_: *const HandleTObjHSequenceOfObject,
     ) -> crate::OcctResult<*mut HandleTObjHSequenceOfObject>;
+    /// Check if Handle<TObj_HSequenceOfObject> is null
+    pub fn HandleTObjHSequenceOfObject_is_null(self_: *const HandleTObjHSequenceOfObject) -> bool;
     /// Dereference Handle to get *const TObj_HSequenceOfObject
     pub fn HandleTObjHSequenceOfObject_get(
         handle: *const HandleTObjHSequenceOfObject,
@@ -2507,6 +2534,8 @@ extern "C" {
     pub fn HandleTObjTIntSparseArray_clone(
         self_: *const HandleTObjTIntSparseArray,
     ) -> crate::OcctResult<*mut HandleTObjTIntSparseArray>;
+    /// Check if Handle<TObj_TIntSparseArray> is null
+    pub fn HandleTObjTIntSparseArray_is_null(self_: *const HandleTObjTIntSparseArray) -> bool;
     /// Dereference Handle to get *const TObj_TIntSparseArray
     pub fn HandleTObjTIntSparseArray_get(
         handle: *const HandleTObjTIntSparseArray,
@@ -2739,6 +2768,8 @@ extern "C" {
     pub fn HandleTObjTModel_clone(
         self_: *const HandleTObjTModel,
     ) -> crate::OcctResult<*mut HandleTObjTModel>;
+    /// Check if Handle<TObj_TModel> is null
+    pub fn HandleTObjTModel_is_null(self_: *const HandleTObjTModel) -> bool;
     /// Dereference Handle to get *const TObj_TModel
     pub fn HandleTObjTModel_get(
         handle: *const HandleTObjTModel,
@@ -2993,6 +3024,8 @@ extern "C" {
     pub fn HandleTObjTNameContainer_clone(
         self_: *const HandleTObjTNameContainer,
     ) -> crate::OcctResult<*mut HandleTObjTNameContainer>;
+    /// Check if Handle<TObj_TNameContainer> is null
+    pub fn HandleTObjTNameContainer_is_null(self_: *const HandleTObjTNameContainer) -> bool;
     /// Dereference Handle to get *const TObj_TNameContainer
     pub fn HandleTObjTNameContainer_get(
         handle: *const HandleTObjTNameContainer,
@@ -3259,6 +3292,8 @@ extern "C" {
     pub fn HandleTObjTObject_clone(
         self_: *const HandleTObjTObject,
     ) -> crate::OcctResult<*mut HandleTObjTObject>;
+    /// Check if Handle<TObj_TObject> is null
+    pub fn HandleTObjTObject_is_null(self_: *const HandleTObjTObject) -> bool;
     /// Dereference Handle to get *const TObj_TObject
     pub fn HandleTObjTObject_get(
         handle: *const HandleTObjTObject,
@@ -3534,6 +3569,8 @@ extern "C" {
     pub fn HandleTObjTReference_clone(
         self_: *const HandleTObjTReference,
     ) -> crate::OcctResult<*mut HandleTObjTReference>;
+    /// Check if Handle<TObj_TReference> is null
+    pub fn HandleTObjTReference_is_null(self_: *const HandleTObjTReference) -> bool;
     /// Dereference Handle to get *const TObj_TReference
     pub fn HandleTObjTReference_get(
         handle: *const HandleTObjTReference,
@@ -3765,6 +3802,8 @@ extern "C" {
     pub fn HandleTObjTXYZ_clone(
         self_: *const HandleTObjTXYZ,
     ) -> crate::OcctResult<*mut HandleTObjTXYZ>;
+    /// Check if Handle<TObj_TXYZ> is null
+    pub fn HandleTObjTXYZ_is_null(self_: *const HandleTObjTXYZ) -> bool;
     /// Dereference Handle to get *const TObj_TXYZ
     pub fn HandleTObjTXYZ_get(handle: *const HandleTObjTXYZ)
         -> crate::OcctResult<*const TObj_TXYZ>;

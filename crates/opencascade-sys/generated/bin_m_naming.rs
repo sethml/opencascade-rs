@@ -422,6 +422,13 @@ unsafe impl crate::CppCopyable for HandleBinMNamingNamedShapeDriver {
 }
 
 impl HandleBinMNamingNamedShapeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMNamingNamedShapeDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMNaming_NamedShapeDriver
     pub fn get(&self) -> &crate::ffi_types::BinMNaming_NamedShapeDriver {
         unsafe {
@@ -725,6 +732,13 @@ unsafe impl crate::CppCopyable for HandleBinMNamingNamingDriver {
 }
 
 impl HandleBinMNamingNamingDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMNaming_NamingDriver
     pub fn get(&self) -> &crate::ffi_types::BinMNaming_NamingDriver {
         unsafe {

@@ -506,6 +506,11 @@ unsafe impl crate::CppCopyable for HandleStdPrsBRepFont {
 }
 
 impl HandleStdPrsBRepFont {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleStdPrsBRepFont_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdPrs_BRepFont
     pub fn get(&self) -> &crate::ffi_types::StdPrs_BRepFont {
         unsafe {
@@ -1255,6 +1260,11 @@ unsafe impl crate::CppCopyable for HandleStdPrsHLRPolyShape {
 }
 
 impl HandleStdPrsHLRPolyShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleStdPrsHLRPolyShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdPrs_HLRPolyShape
     pub fn get(&self) -> &crate::ffi_types::StdPrs_HLRPolyShape {
         unsafe {
@@ -1501,6 +1511,11 @@ unsafe impl crate::CppCopyable for HandleStdPrsHLRShape {
 }
 
 impl HandleStdPrsHLRShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleStdPrsHLRShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdPrs_HLRShape
     pub fn get(&self) -> &crate::ffi_types::StdPrs_HLRShape {
         unsafe {
@@ -1708,6 +1723,11 @@ unsafe impl crate::CppCopyable for HandleStdPrsHLRShapeI {
 }
 
 impl HandleStdPrsHLRShapeI {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdPrs_HLRShapeI
     pub fn get(&self) -> &crate::ffi_types::StdPrs_HLRShapeI {
         unsafe {

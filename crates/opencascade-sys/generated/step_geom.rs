@@ -594,6 +594,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomAxis1Placement {
 }
 
 impl HandleStepGeomAxis1Placement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomAxis1Placement_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Axis1Placement
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Axis1Placement {
         unsafe {
@@ -1242,6 +1249,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomAxis2Placement2d {
 }
 
 impl HandleStepGeomAxis2Placement2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomAxis2Placement2d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Axis2Placement2d
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Axis2Placement2d {
         unsafe {
@@ -1661,6 +1675,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomAxis2Placement3d {
 }
 
 impl HandleStepGeomAxis2Placement3d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomAxis2Placement3d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Axis2Placement3d
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Axis2Placement3d {
         unsafe {
@@ -2146,6 +2167,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomBSplineCurve {
 }
 
 impl HandleStepGeomBSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BSplineCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BSplineCurve {
         unsafe {
@@ -2902,6 +2930,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomBSplineCurveWithKnots {
 }
 
 impl HandleStepGeomBSplineCurveWithKnots {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurveWithKnots_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BSplineCurveWithKnots
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BSplineCurveWithKnots {
         unsafe {
@@ -3464,6 +3501,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomBSplineCurveWithKnotsAndRationa
 }
 
 impl HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve {
         unsafe {
@@ -4002,6 +4046,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomBSplineSurface {
 }
 
 impl HandleStepGeomBSplineSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BSplineSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BSplineSurface {
         unsafe {
@@ -4886,6 +4937,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomBSplineSurfaceWithKnots {
 }
 
 impl HandleStepGeomBSplineSurfaceWithKnots {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurfaceWithKnots_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BSplineSurfaceWithKnots
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BSplineSurfaceWithKnots {
         unsafe {
@@ -5557,6 +5617,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomBSplineSurfaceWithKnotsAndRatio
 }
 
 impl HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface
     pub fn get(
         &self,
@@ -6073,6 +6140,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomBezierCurve {
 }
 
 impl HandleStepGeomBezierCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBezierCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BezierCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BezierCurve {
         unsafe {
@@ -6590,6 +6664,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomBezierCurveAndRationalBSplineCu
 }
 
 impl HandleStepGeomBezierCurveAndRationalBSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBezierCurveAndRationalBSplineCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BezierCurveAndRationalBSplineCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BezierCurveAndRationalBSplineCurve {
         unsafe {
@@ -7164,6 +7247,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomBezierSurface {
 }
 
 impl HandleStepGeomBezierSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBezierSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BezierSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BezierSurface {
         unsafe {
@@ -7705,6 +7795,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomBezierSurfaceAndRationalBSpline
 }
 
 impl HandleStepGeomBezierSurfaceAndRationalBSplineSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBezierSurfaceAndRationalBSplineSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BezierSurfaceAndRationalBSplineSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BezierSurfaceAndRationalBSplineSurface {
         unsafe {
@@ -8170,6 +8269,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomBoundaryCurve {
 }
 
 impl HandleStepGeomBoundaryCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBoundaryCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BoundaryCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BoundaryCurve {
         unsafe {
@@ -8533,6 +8639,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomBoundedCurve {
 }
 
 impl HandleStepGeomBoundedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBoundedCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BoundedCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BoundedCurve {
         unsafe {
@@ -9121,6 +9234,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomBoundedSurface {
 }
 
 impl HandleStepGeomBoundedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBoundedSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_BoundedSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_BoundedSurface {
         unsafe {
@@ -9744,6 +9864,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomCartesianPoint {
 }
 
 impl HandleStepGeomCartesianPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianPoint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_CartesianPoint
     pub fn get(&self) -> &crate::ffi_types::StepGeom_CartesianPoint {
         unsafe {
@@ -10184,6 +10311,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomCartesianTransformationOperator
 }
 
 impl HandleStepGeomCartesianTransformationOperator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_CartesianTransformationOperator
     pub fn get(&self) -> &crate::ffi_types::StepGeom_CartesianTransformationOperator {
         unsafe {
@@ -10614,6 +10750,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomCartesianTransformationOperator
 }
 
 impl HandleStepGeomCartesianTransformationOperator2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator2d_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_CartesianTransformationOperator2d
     pub fn get(&self) -> &crate::ffi_types::StepGeom_CartesianTransformationOperator2d {
         unsafe {
@@ -11062,6 +11207,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomCartesianTransformationOperator
 }
 
 impl HandleStepGeomCartesianTransformationOperator3d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator3d_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_CartesianTransformationOperator3d
     pub fn get(&self) -> &crate::ffi_types::StepGeom_CartesianTransformationOperator3d {
         unsafe {
@@ -11437,6 +11591,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomCircle {
 }
 
 impl HandleStepGeomCircle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomCircle_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Circle
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Circle {
         unsafe {
@@ -11865,6 +12024,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomCompositeCurve {
 }
 
 impl HandleStepGeomCompositeCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_CompositeCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_CompositeCurve {
         unsafe {
@@ -12338,6 +12504,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomCompositeCurveOnSurface {
 }
 
 impl HandleStepGeomCompositeCurveOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurveOnSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_CompositeCurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_CompositeCurveOnSurface {
         unsafe {
@@ -12698,6 +12873,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomCompositeCurveSegment {
 }
 
 impl HandleStepGeomCompositeCurveSegment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurveSegment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_CompositeCurveSegment
     pub fn get(&self) -> &crate::ffi_types::StepGeom_CompositeCurveSegment {
         unsafe {
@@ -13014,6 +13198,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomConic {
 }
 
 impl HandleStepGeomConic {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomConic_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Conic
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Conic {
         unsafe {
@@ -13496,6 +13685,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomConicalSurface {
 }
 
 impl HandleStepGeomConicalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomConicalSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_ConicalSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_ConicalSurface {
         unsafe {
@@ -13795,6 +13991,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomCurve {
 }
 
 impl HandleStepGeomCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Curve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Curve {
         unsafe {
@@ -14737,6 +14938,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomCurveBoundedSurface {
 }
 
 impl HandleStepGeomCurveBoundedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCurveBoundedSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_CurveBoundedSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_CurveBoundedSurface {
         unsafe {
@@ -15380,6 +15590,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomCurveReplica {
 }
 
 impl HandleStepGeomCurveReplica {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCurveReplica_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_CurveReplica
     pub fn get(&self) -> &crate::ffi_types::StepGeom_CurveReplica {
         unsafe {
@@ -15759,6 +15976,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomCylindricalSurface {
 }
 
 impl HandleStepGeomCylindricalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCylindricalSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_CylindricalSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_CylindricalSurface {
         unsafe {
@@ -16136,6 +16362,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomDegeneratePcurve {
 }
 
 impl HandleStepGeomDegeneratePcurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomDegeneratePcurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_DegeneratePcurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_DegeneratePcurve {
         unsafe {
@@ -16576,6 +16809,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomDegenerateToroidalSurface {
 }
 
 impl HandleStepGeomDegenerateToroidalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomDegenerateToroidalSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_DegenerateToroidalSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_DegenerateToroidalSurface {
         unsafe {
@@ -16936,6 +17178,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomDirection {
 }
 
 impl HandleStepGeomDirection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomDirection_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Direction
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Direction {
         unsafe {
@@ -17271,6 +17518,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomElementarySurface {
 }
 
 impl HandleStepGeomElementarySurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomElementarySurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_ElementarySurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_ElementarySurface {
         unsafe {
@@ -17758,6 +18012,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomEllipse {
 }
 
 impl HandleStepGeomEllipse {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomEllipse_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Ellipse
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Ellipse {
         unsafe {
@@ -18163,6 +18422,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomEvaluatedDegeneratePcurve {
 }
 
 impl HandleStepGeomEvaluatedDegeneratePcurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomEvaluatedDegeneratePcurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_EvaluatedDegeneratePcurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_EvaluatedDegeneratePcurve {
         unsafe {
@@ -18588,6 +18856,13 @@ unsafe impl crate::CppCopyable
 }
 
 impl HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx
     pub fn get(
         &self,
@@ -18873,6 +19148,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomGeometricRepresentationContext 
 }
 
 impl HandleStepGeomGeometricRepresentationContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContext_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_GeometricRepresentationContext
     pub fn get(&self) -> &crate::ffi_types::StepGeom_GeometricRepresentationContext {
         unsafe {
@@ -19217,6 +19501,13 @@ unsafe impl crate::CppCopyable
 }
 
 impl HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext
     pub fn get(
         &self,
@@ -19525,6 +19816,13 @@ unsafe impl crate::CppCopyable
 }
 
 impl HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_GeometricRepresentationContextAndParametricRepresentationContext
     pub fn get(
         &self,
@@ -19774,6 +20072,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomGeometricRepresentationItem {
 }
 
 impl HandleStepGeomGeometricRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_GeometricRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepGeom_GeometricRepresentationItem {
         unsafe {
@@ -23383,6 +23690,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfBoundaryCurve {
 }
 
 impl HandleStepGeomHArray1OfBoundaryCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfBoundaryCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_HArray1OfBoundaryCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_HArray1OfBoundaryCurve {
         unsafe {
@@ -23651,6 +23967,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfCartesianPoint {
 }
 
 impl HandleStepGeomHArray1OfCartesianPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCartesianPoint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_HArray1OfCartesianPoint
     pub fn get(&self) -> &crate::ffi_types::StepGeom_HArray1OfCartesianPoint {
         unsafe {
@@ -23913,6 +24238,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfCompositeCurveSegment 
 }
 
 impl HandleStepGeomHArray1OfCompositeCurveSegment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCompositeCurveSegment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_HArray1OfCompositeCurveSegment
     pub fn get(&self) -> &crate::ffi_types::StepGeom_HArray1OfCompositeCurveSegment {
         unsafe {
@@ -24187,6 +24521,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfCurve {
 }
 
 impl HandleStepGeomHArray1OfCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_HArray1OfCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_HArray1OfCurve {
         unsafe {
@@ -24455,6 +24796,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfPcurveOrSurface {
 }
 
 impl HandleStepGeomHArray1OfPcurveOrSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfPcurveOrSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_HArray1OfPcurveOrSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_HArray1OfPcurveOrSurface {
         unsafe {
@@ -24723,6 +25073,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfSurfaceBoundary {
 }
 
 impl HandleStepGeomHArray1OfSurfaceBoundary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfSurfaceBoundary_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_HArray1OfSurfaceBoundary
     pub fn get(&self) -> &crate::ffi_types::StepGeom_HArray1OfSurfaceBoundary {
         unsafe {
@@ -24991,6 +25350,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfTrimmingSelect {
 }
 
 impl HandleStepGeomHArray1OfTrimmingSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfTrimmingSelect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_HArray1OfTrimmingSelect
     pub fn get(&self) -> &crate::ffi_types::StepGeom_HArray1OfTrimmingSelect {
         unsafe {
@@ -25245,6 +25613,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomHArray2OfCartesianPoint {
 }
 
 impl HandleStepGeomHArray2OfCartesianPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray2OfCartesianPoint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_HArray2OfCartesianPoint
     pub fn get(&self) -> &crate::ffi_types::StepGeom_HArray2OfCartesianPoint {
         unsafe {
@@ -25503,6 +25880,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomHArray2OfSurfacePatch {
 }
 
 impl HandleStepGeomHArray2OfSurfacePatch {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray2OfSurfacePatch_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_HArray2OfSurfacePatch
     pub fn get(&self) -> &crate::ffi_types::StepGeom_HArray2OfSurfacePatch {
         unsafe {
@@ -25876,6 +26262,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomHyperbola {
 }
 
 impl HandleStepGeomHyperbola {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomHyperbola_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Hyperbola
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Hyperbola {
         unsafe {
@@ -26319,6 +26710,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomIntersectionCurve {
 }
 
 impl HandleStepGeomIntersectionCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomIntersectionCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_IntersectionCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_IntersectionCurve {
         unsafe {
@@ -26668,6 +27066,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomLine {
 }
 
 impl HandleStepGeomLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Line
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Line {
         unsafe {
@@ -27080,6 +27483,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomOffsetCurve3d {
 }
 
 impl HandleStepGeomOffsetCurve3d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomOffsetCurve3d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_OffsetCurve3d
     pub fn get(&self) -> &crate::ffi_types::StepGeom_OffsetCurve3d {
         unsafe {
@@ -27467,6 +27877,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomOffsetSurface {
 }
 
 impl HandleStepGeomOffsetSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomOffsetSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_OffsetSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_OffsetSurface {
         unsafe {
@@ -27817,6 +28234,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomOrientedSurface {
 }
 
 impl HandleStepGeomOrientedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomOrientedSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_OrientedSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_OrientedSurface {
         unsafe {
@@ -28280,6 +28704,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomOuterBoundaryCurve {
 }
 
 impl HandleStepGeomOuterBoundaryCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomOuterBoundaryCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_OuterBoundaryCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_OuterBoundaryCurve {
         unsafe {
@@ -28695,6 +29128,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomParabola {
 }
 
 impl HandleStepGeomParabola {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomParabola_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Parabola
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Parabola {
         unsafe {
@@ -29073,6 +29511,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomPcurve {
 }
 
 impl HandleStepGeomPcurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomPcurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Pcurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Pcurve {
         unsafe {
@@ -29642,6 +30085,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomPlacement {
 }
 
 impl HandleStepGeomPlacement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomPlacement_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Placement
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Placement {
         unsafe {
@@ -30054,6 +30502,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomPlane {
 }
 
 impl HandleStepGeomPlane {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomPlane_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Plane
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Plane {
         unsafe {
@@ -30361,6 +30814,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomPoint {
 }
 
 impl HandleStepGeomPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomPoint_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Point
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Point {
         unsafe {
@@ -30837,6 +31295,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomPointOnCurve {
 }
 
 impl HandleStepGeomPointOnCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomPointOnCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_PointOnCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_PointOnCurve {
         unsafe {
@@ -31229,6 +31694,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomPointOnSurface {
 }
 
 impl HandleStepGeomPointOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomPointOnSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_PointOnSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_PointOnSurface {
         unsafe {
@@ -31601,6 +32073,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomPointReplica {
 }
 
 impl HandleStepGeomPointReplica {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomPointReplica_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_PointReplica
     pub fn get(&self) -> &crate::ffi_types::StepGeom_PointReplica {
         unsafe {
@@ -31983,6 +32462,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomPolyline {
 }
 
 impl HandleStepGeomPolyline {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomPolyline_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Polyline
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Polyline {
         unsafe {
@@ -32497,6 +32981,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomQuasiUniformCurve {
 }
 
 impl HandleStepGeomQuasiUniformCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_QuasiUniformCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_QuasiUniformCurve {
         unsafe {
@@ -32990,6 +33481,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomQuasiUniformCurveAndRationalBSp
 }
 
 impl HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_QuasiUniformCurveAndRationalBSplineCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_QuasiUniformCurveAndRationalBSplineCurve {
         unsafe {
@@ -33542,6 +34040,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomQuasiUniformSurface {
 }
 
 impl HandleStepGeomQuasiUniformSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_QuasiUniformSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_QuasiUniformSurface {
         unsafe {
@@ -34073,6 +34580,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomQuasiUniformSurfaceAndRationalB
 }
 
 impl HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface {
         unsafe {
@@ -34617,6 +35131,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomRationalBSplineCurve {
 }
 
 impl HandleStepGeomRationalBSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomRationalBSplineCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_RationalBSplineCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_RationalBSplineCurve {
         unsafe {
@@ -35209,6 +35732,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomRationalBSplineSurface {
 }
 
 impl HandleStepGeomRationalBSplineSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomRationalBSplineSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_RationalBSplineSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_RationalBSplineSurface {
         unsafe {
@@ -35605,6 +36137,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomRectangularCompositeSurface {
 }
 
 impl HandleStepGeomRectangularCompositeSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomRectangularCompositeSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_RectangularCompositeSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_RectangularCompositeSurface {
         unsafe {
@@ -36077,6 +36618,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomRectangularTrimmedSurface {
 }
 
 impl HandleStepGeomRectangularTrimmedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomRectangularTrimmedSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_RectangularTrimmedSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_RectangularTrimmedSurface {
         unsafe {
@@ -36380,6 +36930,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomReparametrisedCompositeCurveSeg
 }
 
 impl HandleStepGeomReparametrisedCompositeCurveSegment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomReparametrisedCompositeCurveSegment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_ReparametrisedCompositeCurveSegment
     pub fn get(&self) -> &crate::ffi_types::StepGeom_ReparametrisedCompositeCurveSegment {
         unsafe {
@@ -36800,6 +37359,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomSeamCurve {
 }
 
 impl HandleStepGeomSeamCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomSeamCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_SeamCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_SeamCurve {
         unsafe {
@@ -37196,6 +37760,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomSphericalSurface {
 }
 
 impl HandleStepGeomSphericalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSphericalSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_SphericalSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_SphericalSurface {
         unsafe {
@@ -37614,6 +38185,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomSuParameters {
 }
 
 impl HandleStepGeomSuParameters {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSuParameters_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_SuParameters
     pub fn get(&self) -> &crate::ffi_types::StepGeom_SuParameters {
         unsafe {
@@ -37893,6 +38471,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomSurface {
 }
 
 impl HandleStepGeomSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Surface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Surface {
         unsafe {
@@ -39008,6 +39591,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomSurfaceCurve {
 }
 
 impl HandleStepGeomSurfaceCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_SurfaceCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_SurfaceCurve {
         unsafe {
@@ -39468,6 +40058,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomSurfaceCurveAndBoundedCurve {
 }
 
 impl HandleStepGeomSurfaceCurveAndBoundedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceCurveAndBoundedCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_SurfaceCurveAndBoundedCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_SurfaceCurveAndBoundedCurve {
         unsafe {
@@ -39848,6 +40447,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomSurfaceOfLinearExtrusion {
 }
 
 impl HandleStepGeomSurfaceOfLinearExtrusion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceOfLinearExtrusion_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_SurfaceOfLinearExtrusion
     pub fn get(&self) -> &crate::ffi_types::StepGeom_SurfaceOfLinearExtrusion {
         unsafe {
@@ -40245,6 +40853,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomSurfaceOfRevolution {
 }
 
 impl HandleStepGeomSurfaceOfRevolution {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceOfRevolution_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_SurfaceOfRevolution
     pub fn get(&self) -> &crate::ffi_types::StepGeom_SurfaceOfRevolution {
         unsafe {
@@ -40600,6 +41217,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomSurfacePatch {
 }
 
 impl HandleStepGeomSurfacePatch {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfacePatch_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_SurfacePatch
     pub fn get(&self) -> &crate::ffi_types::StepGeom_SurfacePatch {
         unsafe {
@@ -40949,6 +41573,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomSurfaceReplica {
 }
 
 impl HandleStepGeomSurfaceReplica {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceReplica_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_SurfaceReplica
     pub fn get(&self) -> &crate::ffi_types::StepGeom_SurfaceReplica {
         unsafe {
@@ -41293,6 +41924,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomSweptSurface {
 }
 
 impl HandleStepGeomSweptSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSweptSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_SweptSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_SweptSurface {
         unsafe {
@@ -41731,6 +42369,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomToroidalSurface {
 }
 
 impl HandleStepGeomToroidalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomToroidalSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_ToroidalSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_ToroidalSurface {
         unsafe {
@@ -42242,6 +42887,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomTrimmedCurve {
 }
 
 impl HandleStepGeomTrimmedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomTrimmedCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_TrimmedCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_TrimmedCurve {
         unsafe {
@@ -42688,6 +43340,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomTrimmingMember {
 }
 
 impl HandleStepGeomTrimmingMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomTrimmingMember_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_TrimmingMember
     pub fn get(&self) -> &crate::ffi_types::StepGeom_TrimmingMember {
         unsafe {
@@ -43441,6 +44100,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomUniformCurve {
 }
 
 impl HandleStepGeomUniformCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomUniformCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_UniformCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_UniformCurve {
         unsafe {
@@ -43942,6 +44608,15 @@ unsafe impl crate::CppCopyable for HandleStepGeomUniformCurveAndRationalBSplineC
 }
 
 impl HandleStepGeomUniformCurveAndRationalBSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomUniformCurveAndRationalBSplineCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_UniformCurveAndRationalBSplineCurve
     pub fn get(&self) -> &crate::ffi_types::StepGeom_UniformCurveAndRationalBSplineCurve {
         unsafe {
@@ -44512,6 +45187,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomUniformSurface {
 }
 
 impl HandleStepGeomUniformSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomUniformSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_UniformSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_UniformSurface {
         unsafe {
@@ -45055,6 +45737,13 @@ unsafe impl crate::CppCopyable for HandleStepGeomUniformSurfaceAndRationalBSplin
 }
 
 impl HandleStepGeomUniformSurfaceAndRationalBSplineSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomUniformSurfaceAndRationalBSplineSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_UniformSurfaceAndRationalBSplineSurface
     pub fn get(&self) -> &crate::ffi_types::StepGeom_UniformSurfaceAndRationalBSplineSurface {
         unsafe {
@@ -45400,6 +46089,11 @@ unsafe impl crate::CppCopyable for HandleStepGeomVector {
 }
 
 impl HandleStepGeomVector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepGeomVector_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepGeom_Vector
     pub fn get(&self) -> &crate::ffi_types::StepGeom_Vector {
         unsafe {

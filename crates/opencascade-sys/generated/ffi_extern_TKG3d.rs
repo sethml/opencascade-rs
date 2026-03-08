@@ -158,6 +158,8 @@ extern "C" {
     pub fn HandleAdaptor3dCurve_clone(
         self_: *const HandleAdaptor3dCurve,
     ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
+    /// Check if Handle<Adaptor3d_Curve> is null
+    pub fn HandleAdaptor3dCurve_is_null(self_: *const HandleAdaptor3dCurve) -> bool;
     /// Dereference Handle to get *const Adaptor3d_Curve
     pub fn HandleAdaptor3dCurve_get(
         handle: *const HandleAdaptor3dCurve,
@@ -460,6 +462,10 @@ extern "C" {
     pub fn HandleAdaptor3dCurveOnSurface_clone(
         self_: *const HandleAdaptor3dCurveOnSurface,
     ) -> crate::OcctResult<*mut HandleAdaptor3dCurveOnSurface>;
+    /// Check if Handle<Adaptor3d_CurveOnSurface> is null
+    pub fn HandleAdaptor3dCurveOnSurface_is_null(
+        self_: *const HandleAdaptor3dCurveOnSurface,
+    ) -> bool;
     /// Dereference Handle to get *const Adaptor3d_CurveOnSurface
     pub fn HandleAdaptor3dCurveOnSurface_get(
         handle: *const HandleAdaptor3dCurveOnSurface,
@@ -793,6 +799,8 @@ extern "C" {
     pub fn HandleAdaptor3dHVertex_clone(
         self_: *const HandleAdaptor3dHVertex,
     ) -> crate::OcctResult<*mut HandleAdaptor3dHVertex>;
+    /// Check if Handle<Adaptor3d_HVertex> is null
+    pub fn HandleAdaptor3dHVertex_is_null(self_: *const HandleAdaptor3dHVertex) -> bool;
     /// Dereference Handle to get *const Adaptor3d_HVertex
     pub fn HandleAdaptor3dHVertex_get(
         handle: *const HandleAdaptor3dHVertex,
@@ -1100,6 +1108,8 @@ extern "C" {
     pub fn HandleAdaptor3dIsoCurve_clone(
         self_: *const HandleAdaptor3dIsoCurve,
     ) -> crate::OcctResult<*mut HandleAdaptor3dIsoCurve>;
+    /// Check if Handle<Adaptor3d_IsoCurve> is null
+    pub fn HandleAdaptor3dIsoCurve_is_null(self_: *const HandleAdaptor3dIsoCurve) -> bool;
     /// Dereference Handle to get *const Adaptor3d_IsoCurve
     pub fn HandleAdaptor3dIsoCurve_get(
         handle: *const HandleAdaptor3dIsoCurve,
@@ -1402,6 +1412,8 @@ extern "C" {
     pub fn HandleAdaptor3dSurface_clone(
         self_: *const HandleAdaptor3dSurface,
     ) -> crate::OcctResult<*mut HandleAdaptor3dSurface>;
+    /// Check if Handle<Adaptor3d_Surface> is null
+    pub fn HandleAdaptor3dSurface_is_null(self_: *const HandleAdaptor3dSurface) -> bool;
     /// Dereference Handle to get *const Adaptor3d_Surface
     pub fn HandleAdaptor3dSurface_get(
         handle: *const HandleAdaptor3dSurface,
@@ -1646,6 +1658,8 @@ extern "C" {
     pub fn HandleAdaptor3dTopolTool_clone(
         self_: *const HandleAdaptor3dTopolTool,
     ) -> crate::OcctResult<*mut HandleAdaptor3dTopolTool>;
+    /// Check if Handle<Adaptor3d_TopolTool> is null
+    pub fn HandleAdaptor3dTopolTool_is_null(self_: *const HandleAdaptor3dTopolTool) -> bool;
     /// Dereference Handle to get *const Adaptor3d_TopolTool
     pub fn HandleAdaptor3dTopolTool_get(
         handle: *const HandleAdaptor3dTopolTool,
@@ -2518,6 +2532,8 @@ extern "C" {
     pub fn HandleGPropUndefinedAxis_clone(
         self_: *const HandleGPropUndefinedAxis,
     ) -> crate::OcctResult<*mut HandleGPropUndefinedAxis>;
+    /// Check if Handle<GProp_UndefinedAxis> is null
+    pub fn HandleGPropUndefinedAxis_is_null(self_: *const HandleGPropUndefinedAxis) -> bool;
     /// Dereference Handle to get *const GProp_UndefinedAxis
     pub fn HandleGPropUndefinedAxis_get(
         handle: *const HandleGPropUndefinedAxis,
@@ -2788,6 +2804,8 @@ extern "C" {
     pub fn HandleGeomAxis1Placement_clone(
         self_: *const HandleGeomAxis1Placement,
     ) -> crate::OcctResult<*mut HandleGeomAxis1Placement>;
+    /// Check if Handle<Geom_Axis1Placement> is null
+    pub fn HandleGeomAxis1Placement_is_null(self_: *const HandleGeomAxis1Placement) -> bool;
     /// Dereference Handle to get *const Geom_Axis1Placement
     pub fn HandleGeomAxis1Placement_get(
         handle: *const HandleGeomAxis1Placement,
@@ -3009,6 +3027,8 @@ extern "C" {
     pub fn HandleGeomAxis2Placement_clone(
         self_: *const HandleGeomAxis2Placement,
     ) -> crate::OcctResult<*mut HandleGeomAxis2Placement>;
+    /// Check if Handle<Geom_Axis2Placement> is null
+    pub fn HandleGeomAxis2Placement_is_null(self_: *const HandleGeomAxis2Placement) -> bool;
     /// Dereference Handle to get *const Geom_Axis2Placement
     pub fn HandleGeomAxis2Placement_get(
         handle: *const HandleGeomAxis2Placement,
@@ -3199,6 +3219,8 @@ extern "C" {
     pub fn HandleGeomAxisPlacement_clone(
         self_: *const HandleGeomAxisPlacement,
     ) -> crate::OcctResult<*mut HandleGeomAxisPlacement>;
+    /// Check if Handle<Geom_AxisPlacement> is null
+    pub fn HandleGeomAxisPlacement_is_null(self_: *const HandleGeomAxisPlacement) -> bool;
     /// Dereference Handle to get *const Geom_AxisPlacement
     pub fn HandleGeomAxisPlacement_get(
         handle: *const HandleGeomAxisPlacement,
@@ -3768,6 +3790,8 @@ extern "C" {
     pub fn HandleGeomBSplineCurve_clone(
         self_: *const HandleGeomBSplineCurve,
     ) -> crate::OcctResult<*mut HandleGeomBSplineCurve>;
+    /// Check if Handle<Geom_BSplineCurve> is null
+    pub fn HandleGeomBSplineCurve_is_null(self_: *const HandleGeomBSplineCurve) -> bool;
     /// Dereference Handle to get *const Geom_BSplineCurve
     pub fn HandleGeomBSplineCurve_get(
         handle: *const HandleGeomBSplineCurve,
@@ -4639,6 +4663,8 @@ extern "C" {
     pub fn HandleGeomBSplineSurface_clone(
         self_: *const HandleGeomBSplineSurface,
     ) -> crate::OcctResult<*mut HandleGeomBSplineSurface>;
+    /// Check if Handle<Geom_BSplineSurface> is null
+    pub fn HandleGeomBSplineSurface_is_null(self_: *const HandleGeomBSplineSurface) -> bool;
     /// Dereference Handle to get *const Geom_BSplineSurface
     pub fn HandleGeomBSplineSurface_get(
         handle: *const HandleGeomBSplineSurface,
@@ -5019,6 +5045,8 @@ extern "C" {
     pub fn HandleGeomBezierCurve_clone(
         self_: *const HandleGeomBezierCurve,
     ) -> crate::OcctResult<*mut HandleGeomBezierCurve>;
+    /// Check if Handle<Geom_BezierCurve> is null
+    pub fn HandleGeomBezierCurve_is_null(self_: *const HandleGeomBezierCurve) -> bool;
     /// Dereference Handle to get *const Geom_BezierCurve
     pub fn HandleGeomBezierCurve_get(
         handle: *const HandleGeomBezierCurve,
@@ -5529,6 +5557,8 @@ extern "C" {
     pub fn HandleGeomBezierSurface_clone(
         self_: *const HandleGeomBezierSurface,
     ) -> crate::OcctResult<*mut HandleGeomBezierSurface>;
+    /// Check if Handle<Geom_BezierSurface> is null
+    pub fn HandleGeomBezierSurface_is_null(self_: *const HandleGeomBezierSurface) -> bool;
     /// Dereference Handle to get *const Geom_BezierSurface
     pub fn HandleGeomBezierSurface_get(
         handle: *const HandleGeomBezierSurface,
@@ -5714,6 +5744,8 @@ extern "C" {
     pub fn HandleGeomBoundedCurve_clone(
         self_: *const HandleGeomBoundedCurve,
     ) -> crate::OcctResult<*mut HandleGeomBoundedCurve>;
+    /// Check if Handle<Geom_BoundedCurve> is null
+    pub fn HandleGeomBoundedCurve_is_null(self_: *const HandleGeomBoundedCurve) -> bool;
     /// Dereference Handle to get *const Geom_BoundedCurve
     pub fn HandleGeomBoundedCurve_get(
         handle: *const HandleGeomBoundedCurve,
@@ -5968,6 +6000,8 @@ extern "C" {
     pub fn HandleGeomBoundedSurface_clone(
         self_: *const HandleGeomBoundedSurface,
     ) -> crate::OcctResult<*mut HandleGeomBoundedSurface>;
+    /// Check if Handle<Geom_BoundedSurface> is null
+    pub fn HandleGeomBoundedSurface_is_null(self_: *const HandleGeomBoundedSurface) -> bool;
     /// Dereference Handle to get *const Geom_BoundedSurface
     pub fn HandleGeomBoundedSurface_get(
         handle: *const HandleGeomBoundedSurface,
@@ -6347,6 +6381,8 @@ extern "C" {
     pub fn HandleGeomCartesianPoint_clone(
         self_: *const HandleGeomCartesianPoint,
     ) -> crate::OcctResult<*mut HandleGeomCartesianPoint>;
+    /// Check if Handle<Geom_CartesianPoint> is null
+    pub fn HandleGeomCartesianPoint_is_null(self_: *const HandleGeomCartesianPoint) -> bool;
     /// Dereference Handle to get *const Geom_CartesianPoint
     pub fn HandleGeomCartesianPoint_get(
         handle: *const HandleGeomCartesianPoint,
@@ -6585,6 +6621,8 @@ extern "C" {
     pub fn HandleGeomCircle_clone(
         self_: *const HandleGeomCircle,
     ) -> crate::OcctResult<*mut HandleGeomCircle>;
+    /// Check if Handle<Geom_Circle> is null
+    pub fn HandleGeomCircle_is_null(self_: *const HandleGeomCircle) -> bool;
     /// Dereference Handle to get *const Geom_Circle
     pub fn HandleGeomCircle_get(
         handle: *const HandleGeomCircle,
@@ -6824,6 +6862,8 @@ extern "C" {
     pub fn HandleGeomConic_clone(
         self_: *const HandleGeomConic,
     ) -> crate::OcctResult<*mut HandleGeomConic>;
+    /// Check if Handle<Geom_Conic> is null
+    pub fn HandleGeomConic_is_null(self_: *const HandleGeomConic) -> bool;
     /// Dereference Handle to get *const Geom_Conic
     pub fn HandleGeomConic_get(
         handle: *const HandleGeomConic,
@@ -7238,6 +7278,8 @@ extern "C" {
     pub fn HandleGeomConicalSurface_clone(
         self_: *const HandleGeomConicalSurface,
     ) -> crate::OcctResult<*mut HandleGeomConicalSurface>;
+    /// Check if Handle<Geom_ConicalSurface> is null
+    pub fn HandleGeomConicalSurface_is_null(self_: *const HandleGeomConicalSurface) -> bool;
     /// Dereference Handle to get *const Geom_ConicalSurface
     pub fn HandleGeomConicalSurface_get(
         handle: *const HandleGeomConicalSurface,
@@ -7513,6 +7555,8 @@ extern "C" {
     pub fn HandleGeomCurve_clone(
         self_: *const HandleGeomCurve,
     ) -> crate::OcctResult<*mut HandleGeomCurve>;
+    /// Check if Handle<Geom_Curve> is null
+    pub fn HandleGeomCurve_is_null(self_: *const HandleGeomCurve) -> bool;
     /// Dereference Handle to get *const Geom_Curve
     pub fn HandleGeomCurve_get(
         handle: *const HandleGeomCurve,
@@ -7860,6 +7904,9 @@ extern "C" {
     pub fn HandleGeomCylindricalSurface_clone(
         self_: *const HandleGeomCylindricalSurface,
     ) -> crate::OcctResult<*mut HandleGeomCylindricalSurface>;
+    /// Check if Handle<Geom_CylindricalSurface> is null
+    pub fn HandleGeomCylindricalSurface_is_null(self_: *const HandleGeomCylindricalSurface)
+        -> bool;
     /// Dereference Handle to get *const Geom_CylindricalSurface
     pub fn HandleGeomCylindricalSurface_get(
         handle: *const HandleGeomCylindricalSurface,
@@ -8141,6 +8188,8 @@ extern "C" {
     pub fn HandleGeomDirection_clone(
         self_: *const HandleGeomDirection,
     ) -> crate::OcctResult<*mut HandleGeomDirection>;
+    /// Check if Handle<Geom_Direction> is null
+    pub fn HandleGeomDirection_is_null(self_: *const HandleGeomDirection) -> bool;
     /// Dereference Handle to get *const Geom_Direction
     pub fn HandleGeomDirection_get(
         handle: *const HandleGeomDirection,
@@ -8384,6 +8433,8 @@ extern "C" {
     pub fn HandleGeomElementarySurface_clone(
         self_: *const HandleGeomElementarySurface,
     ) -> crate::OcctResult<*mut HandleGeomElementarySurface>;
+    /// Check if Handle<Geom_ElementarySurface> is null
+    pub fn HandleGeomElementarySurface_is_null(self_: *const HandleGeomElementarySurface) -> bool;
     /// Dereference Handle to get *const Geom_ElementarySurface
     pub fn HandleGeomElementarySurface_get(
         handle: *const HandleGeomElementarySurface,
@@ -8785,6 +8836,8 @@ extern "C" {
     pub fn HandleGeomEllipse_clone(
         self_: *const HandleGeomEllipse,
     ) -> crate::OcctResult<*mut HandleGeomEllipse>;
+    /// Check if Handle<Geom_Ellipse> is null
+    pub fn HandleGeomEllipse_is_null(self_: *const HandleGeomEllipse) -> bool;
     /// Dereference Handle to get *const Geom_Ellipse
     pub fn HandleGeomEllipse_get(
         handle: *const HandleGeomEllipse,
@@ -9065,6 +9118,8 @@ extern "C" {
     pub fn HandleGeomGeometry_clone(
         self_: *const HandleGeomGeometry,
     ) -> crate::OcctResult<*mut HandleGeomGeometry>;
+    /// Check if Handle<Geom_Geometry> is null
+    pub fn HandleGeomGeometry_is_null(self_: *const HandleGeomGeometry) -> bool;
     /// Dereference Handle to get *const Geom_Geometry
     pub fn HandleGeomGeometry_get(
         handle: *const HandleGeomGeometry,
@@ -9278,6 +9333,10 @@ extern "C" {
     pub fn HandleGeomHSequenceOfBSplineSurface_clone(
         self_: *const HandleGeomHSequenceOfBSplineSurface,
     ) -> crate::OcctResult<*mut HandleGeomHSequenceOfBSplineSurface>;
+    /// Check if Handle<Geom_HSequenceOfBSplineSurface> is null
+    pub fn HandleGeomHSequenceOfBSplineSurface_is_null(
+        self_: *const HandleGeomHSequenceOfBSplineSurface,
+    ) -> bool;
     /// Dereference Handle to get *const Geom_HSequenceOfBSplineSurface
     pub fn HandleGeomHSequenceOfBSplineSurface_get(
         handle: *const HandleGeomHSequenceOfBSplineSurface,
@@ -9497,6 +9556,8 @@ extern "C" {
     pub fn HandleGeomHyperbola_clone(
         self_: *const HandleGeomHyperbola,
     ) -> crate::OcctResult<*mut HandleGeomHyperbola>;
+    /// Check if Handle<Geom_Hyperbola> is null
+    pub fn HandleGeomHyperbola_is_null(self_: *const HandleGeomHyperbola) -> bool;
     /// Dereference Handle to get *const Geom_Hyperbola
     pub fn HandleGeomHyperbola_get(
         handle: *const HandleGeomHyperbola,
@@ -9798,6 +9859,8 @@ extern "C" {
     pub fn HandleGeomLine_clone(
         self_: *const HandleGeomLine,
     ) -> crate::OcctResult<*mut HandleGeomLine>;
+    /// Check if Handle<Geom_Line> is null
+    pub fn HandleGeomLine_is_null(self_: *const HandleGeomLine) -> bool;
     /// Dereference Handle to get *const Geom_Line
     pub fn HandleGeomLine_get(handle: *const HandleGeomLine)
         -> crate::OcctResult<*const Geom_Line>;
@@ -10066,6 +10129,8 @@ extern "C" {
     pub fn HandleGeomOffsetCurve_clone(
         self_: *const HandleGeomOffsetCurve,
     ) -> crate::OcctResult<*mut HandleGeomOffsetCurve>;
+    /// Check if Handle<Geom_OffsetCurve> is null
+    pub fn HandleGeomOffsetCurve_is_null(self_: *const HandleGeomOffsetCurve) -> bool;
     /// Dereference Handle to get *const Geom_OffsetCurve
     pub fn HandleGeomOffsetCurve_get(
         handle: *const HandleGeomOffsetCurve,
@@ -10408,6 +10473,8 @@ extern "C" {
     pub fn HandleGeomOffsetSurface_clone(
         self_: *const HandleGeomOffsetSurface,
     ) -> crate::OcctResult<*mut HandleGeomOffsetSurface>;
+    /// Check if Handle<Geom_OffsetSurface> is null
+    pub fn HandleGeomOffsetSurface_is_null(self_: *const HandleGeomOffsetSurface) -> bool;
     /// Dereference Handle to get *const Geom_OffsetSurface
     pub fn HandleGeomOffsetSurface_get(
         handle: *const HandleGeomOffsetSurface,
@@ -10587,6 +10654,8 @@ extern "C" {
     pub fn HandleGeomOsculatingSurface_clone(
         self_: *const HandleGeomOsculatingSurface,
     ) -> crate::OcctResult<*mut HandleGeomOsculatingSurface>;
+    /// Check if Handle<Geom_OsculatingSurface> is null
+    pub fn HandleGeomOsculatingSurface_is_null(self_: *const HandleGeomOsculatingSurface) -> bool;
     /// Dereference Handle to get *const Geom_OsculatingSurface
     pub fn HandleGeomOsculatingSurface_get(
         handle: *const HandleGeomOsculatingSurface,
@@ -10784,6 +10853,8 @@ extern "C" {
     pub fn HandleGeomParabola_clone(
         self_: *const HandleGeomParabola,
     ) -> crate::OcctResult<*mut HandleGeomParabola>;
+    /// Check if Handle<Geom_Parabola> is null
+    pub fn HandleGeomParabola_is_null(self_: *const HandleGeomParabola) -> bool;
     /// Dereference Handle to get *const Geom_Parabola
     pub fn HandleGeomParabola_get(
         handle: *const HandleGeomParabola,
@@ -11132,6 +11203,8 @@ extern "C" {
     pub fn HandleGeomPlane_clone(
         self_: *const HandleGeomPlane,
     ) -> crate::OcctResult<*mut HandleGeomPlane>;
+    /// Check if Handle<Geom_Plane> is null
+    pub fn HandleGeomPlane_is_null(self_: *const HandleGeomPlane) -> bool;
     /// Dereference Handle to get *const Geom_Plane
     pub fn HandleGeomPlane_get(
         handle: *const HandleGeomPlane,
@@ -11337,6 +11410,8 @@ extern "C" {
     pub fn HandleGeomPoint_clone(
         self_: *const HandleGeomPoint,
     ) -> crate::OcctResult<*mut HandleGeomPoint>;
+    /// Check if Handle<Geom_Point> is null
+    pub fn HandleGeomPoint_is_null(self_: *const HandleGeomPoint) -> bool;
     /// Dereference Handle to get *const Geom_Point
     pub fn HandleGeomPoint_get(
         handle: *const HandleGeomPoint,
@@ -11684,6 +11759,10 @@ extern "C" {
     pub fn HandleGeomRectangularTrimmedSurface_clone(
         self_: *const HandleGeomRectangularTrimmedSurface,
     ) -> crate::OcctResult<*mut HandleGeomRectangularTrimmedSurface>;
+    /// Check if Handle<Geom_RectangularTrimmedSurface> is null
+    pub fn HandleGeomRectangularTrimmedSurface_is_null(
+        self_: *const HandleGeomRectangularTrimmedSurface,
+    ) -> bool;
     /// Dereference Handle to get *const Geom_RectangularTrimmedSurface
     pub fn HandleGeomRectangularTrimmedSurface_get(
         handle: *const HandleGeomRectangularTrimmedSurface,
@@ -12008,6 +12087,8 @@ extern "C" {
     pub fn HandleGeomSphericalSurface_clone(
         self_: *const HandleGeomSphericalSurface,
     ) -> crate::OcctResult<*mut HandleGeomSphericalSurface>;
+    /// Check if Handle<Geom_SphericalSurface> is null
+    pub fn HandleGeomSphericalSurface_is_null(self_: *const HandleGeomSphericalSurface) -> bool;
     /// Dereference Handle to get *const Geom_SphericalSurface
     pub fn HandleGeomSphericalSurface_get(
         handle: *const HandleGeomSphericalSurface,
@@ -12354,6 +12435,8 @@ extern "C" {
     pub fn HandleGeomSurface_clone(
         self_: *const HandleGeomSurface,
     ) -> crate::OcctResult<*mut HandleGeomSurface>;
+    /// Check if Handle<Geom_Surface> is null
+    pub fn HandleGeomSurface_is_null(self_: *const HandleGeomSurface) -> bool;
     /// Dereference Handle to get *const Geom_Surface
     pub fn HandleGeomSurface_get(
         handle: *const HandleGeomSurface,
@@ -12721,6 +12804,10 @@ extern "C" {
     pub fn HandleGeomSurfaceOfLinearExtrusion_clone(
         self_: *const HandleGeomSurfaceOfLinearExtrusion,
     ) -> crate::OcctResult<*mut HandleGeomSurfaceOfLinearExtrusion>;
+    /// Check if Handle<Geom_SurfaceOfLinearExtrusion> is null
+    pub fn HandleGeomSurfaceOfLinearExtrusion_is_null(
+        self_: *const HandleGeomSurfaceOfLinearExtrusion,
+    ) -> bool;
     /// Dereference Handle to get *const Geom_SurfaceOfLinearExtrusion
     pub fn HandleGeomSurfaceOfLinearExtrusion_get(
         handle: *const HandleGeomSurfaceOfLinearExtrusion,
@@ -13083,6 +13170,10 @@ extern "C" {
     pub fn HandleGeomSurfaceOfRevolution_clone(
         self_: *const HandleGeomSurfaceOfRevolution,
     ) -> crate::OcctResult<*mut HandleGeomSurfaceOfRevolution>;
+    /// Check if Handle<Geom_SurfaceOfRevolution> is null
+    pub fn HandleGeomSurfaceOfRevolution_is_null(
+        self_: *const HandleGeomSurfaceOfRevolution,
+    ) -> bool;
     /// Dereference Handle to get *const Geom_SurfaceOfRevolution
     pub fn HandleGeomSurfaceOfRevolution_get(
         handle: *const HandleGeomSurfaceOfRevolution,
@@ -13270,6 +13361,8 @@ extern "C" {
     pub fn HandleGeomSweptSurface_clone(
         self_: *const HandleGeomSweptSurface,
     ) -> crate::OcctResult<*mut HandleGeomSweptSurface>;
+    /// Check if Handle<Geom_SweptSurface> is null
+    pub fn HandleGeomSweptSurface_is_null(self_: *const HandleGeomSweptSurface) -> bool;
     /// Dereference Handle to get *const Geom_SweptSurface
     pub fn HandleGeomSweptSurface_get(
         handle: *const HandleGeomSweptSurface,
@@ -13739,6 +13832,8 @@ extern "C" {
     pub fn HandleGeomToroidalSurface_clone(
         self_: *const HandleGeomToroidalSurface,
     ) -> crate::OcctResult<*mut HandleGeomToroidalSurface>;
+    /// Check if Handle<Geom_ToroidalSurface> is null
+    pub fn HandleGeomToroidalSurface_is_null(self_: *const HandleGeomToroidalSurface) -> bool;
     /// Dereference Handle to get *const Geom_ToroidalSurface
     pub fn HandleGeomToroidalSurface_get(
         handle: *const HandleGeomToroidalSurface,
@@ -14075,6 +14170,8 @@ extern "C" {
     pub fn HandleGeomTransformation_clone(
         self_: *const HandleGeomTransformation,
     ) -> crate::OcctResult<*mut HandleGeomTransformation>;
+    /// Check if Handle<Geom_Transformation> is null
+    pub fn HandleGeomTransformation_is_null(self_: *const HandleGeomTransformation) -> bool;
     /// Dereference Handle to get *const Geom_Transformation
     pub fn HandleGeomTransformation_get(
         handle: *const HandleGeomTransformation,
@@ -14283,6 +14380,8 @@ extern "C" {
     pub fn HandleGeomTrimmedCurve_clone(
         self_: *const HandleGeomTrimmedCurve,
     ) -> crate::OcctResult<*mut HandleGeomTrimmedCurve>;
+    /// Check if Handle<Geom_TrimmedCurve> is null
+    pub fn HandleGeomTrimmedCurve_is_null(self_: *const HandleGeomTrimmedCurve) -> bool;
     /// Dereference Handle to get *const Geom_TrimmedCurve
     pub fn HandleGeomTrimmedCurve_get(
         handle: *const HandleGeomTrimmedCurve,
@@ -14468,6 +14567,10 @@ extern "C" {
     pub fn HandleGeomUndefinedDerivative_clone(
         self_: *const HandleGeomUndefinedDerivative,
     ) -> crate::OcctResult<*mut HandleGeomUndefinedDerivative>;
+    /// Check if Handle<Geom_UndefinedDerivative> is null
+    pub fn HandleGeomUndefinedDerivative_is_null(
+        self_: *const HandleGeomUndefinedDerivative,
+    ) -> bool;
     /// Dereference Handle to get *const Geom_UndefinedDerivative
     pub fn HandleGeomUndefinedDerivative_get(
         handle: *const HandleGeomUndefinedDerivative,
@@ -14603,6 +14706,8 @@ extern "C" {
     pub fn HandleGeomUndefinedValue_clone(
         self_: *const HandleGeomUndefinedValue,
     ) -> crate::OcctResult<*mut HandleGeomUndefinedValue>;
+    /// Check if Handle<Geom_UndefinedValue> is null
+    pub fn HandleGeomUndefinedValue_is_null(self_: *const HandleGeomUndefinedValue) -> bool;
     /// Dereference Handle to get *const Geom_UndefinedValue
     pub fn HandleGeomUndefinedValue_get(
         handle: *const HandleGeomUndefinedValue,
@@ -14767,6 +14872,8 @@ extern "C" {
     pub fn HandleGeomVector_clone(
         self_: *const HandleGeomVector,
     ) -> crate::OcctResult<*mut HandleGeomVector>;
+    /// Check if Handle<Geom_Vector> is null
+    pub fn HandleGeomVector_is_null(self_: *const HandleGeomVector) -> bool;
     /// Dereference Handle to get *const Geom_Vector
     pub fn HandleGeomVector_get(
         handle: *const HandleGeomVector,
@@ -15049,6 +15156,10 @@ extern "C" {
     pub fn HandleGeomVectorWithMagnitude_clone(
         self_: *const HandleGeomVectorWithMagnitude,
     ) -> crate::OcctResult<*mut HandleGeomVectorWithMagnitude>;
+    /// Check if Handle<Geom_VectorWithMagnitude> is null
+    pub fn HandleGeomVectorWithMagnitude_is_null(
+        self_: *const HandleGeomVectorWithMagnitude,
+    ) -> bool;
     /// Dereference Handle to get *const Geom_VectorWithMagnitude
     pub fn HandleGeomVectorWithMagnitude_get(
         handle: *const HandleGeomVectorWithMagnitude,
@@ -15397,6 +15508,8 @@ extern "C" {
     pub fn HandleGeomAdaptorCurve_clone(
         self_: *const HandleGeomAdaptorCurve,
     ) -> crate::OcctResult<*mut HandleGeomAdaptorCurve>;
+    /// Check if Handle<GeomAdaptor_Curve> is null
+    pub fn HandleGeomAdaptorCurve_is_null(self_: *const HandleGeomAdaptorCurve) -> bool;
     /// Dereference Handle to get *const GeomAdaptor_Curve
     pub fn HandleGeomAdaptorCurve_get(
         handle: *const HandleGeomAdaptorCurve,
@@ -15755,6 +15868,8 @@ extern "C" {
     pub fn HandleGeomAdaptorSurface_clone(
         self_: *const HandleGeomAdaptorSurface,
     ) -> crate::OcctResult<*mut HandleGeomAdaptorSurface>;
+    /// Check if Handle<GeomAdaptor_Surface> is null
+    pub fn HandleGeomAdaptorSurface_is_null(self_: *const HandleGeomAdaptorSurface) -> bool;
     /// Dereference Handle to get *const GeomAdaptor_Surface
     pub fn HandleGeomAdaptorSurface_get(
         handle: *const HandleGeomAdaptorSurface,
@@ -16039,6 +16154,10 @@ extern "C" {
     pub fn HandleGeomAdaptorSurfaceOfLinearExtrusion_clone(
         self_: *const HandleGeomAdaptorSurfaceOfLinearExtrusion,
     ) -> crate::OcctResult<*mut HandleGeomAdaptorSurfaceOfLinearExtrusion>;
+    /// Check if Handle<GeomAdaptor_SurfaceOfLinearExtrusion> is null
+    pub fn HandleGeomAdaptorSurfaceOfLinearExtrusion_is_null(
+        self_: *const HandleGeomAdaptorSurfaceOfLinearExtrusion,
+    ) -> bool;
     /// Dereference Handle to get *const GeomAdaptor_SurfaceOfLinearExtrusion
     pub fn HandleGeomAdaptorSurfaceOfLinearExtrusion_get(
         handle: *const HandleGeomAdaptorSurfaceOfLinearExtrusion,
@@ -16407,6 +16526,10 @@ extern "C" {
     pub fn HandleGeomAdaptorSurfaceOfRevolution_clone(
         self_: *const HandleGeomAdaptorSurfaceOfRevolution,
     ) -> crate::OcctResult<*mut HandleGeomAdaptorSurfaceOfRevolution>;
+    /// Check if Handle<GeomAdaptor_SurfaceOfRevolution> is null
+    pub fn HandleGeomAdaptorSurfaceOfRevolution_is_null(
+        self_: *const HandleGeomAdaptorSurfaceOfRevolution,
+    ) -> bool;
     /// Dereference Handle to get *const GeomAdaptor_SurfaceOfRevolution
     pub fn HandleGeomAdaptorSurfaceOfRevolution_get(
         handle: *const HandleGeomAdaptorSurfaceOfRevolution,
@@ -16607,6 +16730,8 @@ extern "C" {
     pub fn HandleGeomEvaluatorCurve_clone(
         self_: *const HandleGeomEvaluatorCurve,
     ) -> crate::OcctResult<*mut HandleGeomEvaluatorCurve>;
+    /// Check if Handle<GeomEvaluator_Curve> is null
+    pub fn HandleGeomEvaluatorCurve_is_null(self_: *const HandleGeomEvaluatorCurve) -> bool;
     /// Dereference Handle to get *const GeomEvaluator_Curve
     pub fn HandleGeomEvaluatorCurve_get(
         handle: *const HandleGeomEvaluatorCurve,
@@ -16752,6 +16877,10 @@ extern "C" {
     pub fn HandleGeomEvaluatorOffsetCurve_clone(
         self_: *const HandleGeomEvaluatorOffsetCurve,
     ) -> crate::OcctResult<*mut HandleGeomEvaluatorOffsetCurve>;
+    /// Check if Handle<GeomEvaluator_OffsetCurve> is null
+    pub fn HandleGeomEvaluatorOffsetCurve_is_null(
+        self_: *const HandleGeomEvaluatorOffsetCurve,
+    ) -> bool;
     /// Dereference Handle to get *const GeomEvaluator_OffsetCurve
     pub fn HandleGeomEvaluatorOffsetCurve_get(
         handle: *const HandleGeomEvaluatorOffsetCurve,
@@ -16910,6 +17039,10 @@ extern "C" {
     pub fn HandleGeomEvaluatorOffsetSurface_clone(
         self_: *const HandleGeomEvaluatorOffsetSurface,
     ) -> crate::OcctResult<*mut HandleGeomEvaluatorOffsetSurface>;
+    /// Check if Handle<GeomEvaluator_OffsetSurface> is null
+    pub fn HandleGeomEvaluatorOffsetSurface_is_null(
+        self_: *const HandleGeomEvaluatorOffsetSurface,
+    ) -> bool;
     /// Dereference Handle to get *const GeomEvaluator_OffsetSurface
     pub fn HandleGeomEvaluatorOffsetSurface_get(
         handle: *const HandleGeomEvaluatorOffsetSurface,
@@ -17037,6 +17170,8 @@ extern "C" {
     pub fn HandleGeomEvaluatorSurface_clone(
         self_: *const HandleGeomEvaluatorSurface,
     ) -> crate::OcctResult<*mut HandleGeomEvaluatorSurface>;
+    /// Check if Handle<GeomEvaluator_Surface> is null
+    pub fn HandleGeomEvaluatorSurface_is_null(self_: *const HandleGeomEvaluatorSurface) -> bool;
     /// Dereference Handle to get *const GeomEvaluator_Surface
     pub fn HandleGeomEvaluatorSurface_get(
         handle: *const HandleGeomEvaluatorSurface,
@@ -17204,6 +17339,10 @@ extern "C" {
     pub fn HandleGeomEvaluatorSurfaceOfExtrusion_clone(
         self_: *const HandleGeomEvaluatorSurfaceOfExtrusion,
     ) -> crate::OcctResult<*mut HandleGeomEvaluatorSurfaceOfExtrusion>;
+    /// Check if Handle<GeomEvaluator_SurfaceOfExtrusion> is null
+    pub fn HandleGeomEvaluatorSurfaceOfExtrusion_is_null(
+        self_: *const HandleGeomEvaluatorSurfaceOfExtrusion,
+    ) -> bool;
     /// Dereference Handle to get *const GeomEvaluator_SurfaceOfExtrusion
     pub fn HandleGeomEvaluatorSurfaceOfExtrusion_get(
         handle: *const HandleGeomEvaluatorSurfaceOfExtrusion,
@@ -17375,6 +17514,10 @@ extern "C" {
     pub fn HandleGeomEvaluatorSurfaceOfRevolution_clone(
         self_: *const HandleGeomEvaluatorSurfaceOfRevolution,
     ) -> crate::OcctResult<*mut HandleGeomEvaluatorSurfaceOfRevolution>;
+    /// Check if Handle<GeomEvaluator_SurfaceOfRevolution> is null
+    pub fn HandleGeomEvaluatorSurfaceOfRevolution_is_null(
+        self_: *const HandleGeomEvaluatorSurfaceOfRevolution,
+    ) -> bool;
     /// Dereference Handle to get *const GeomEvaluator_SurfaceOfRevolution
     pub fn HandleGeomEvaluatorSurfaceOfRevolution_get(
         handle: *const HandleGeomEvaluatorSurfaceOfRevolution,
@@ -17988,6 +18131,10 @@ extern "C" {
     pub fn HandleTColGeomHArray1OfBSplineCurve_clone(
         self_: *const HandleTColGeomHArray1OfBSplineCurve,
     ) -> crate::OcctResult<*mut HandleTColGeomHArray1OfBSplineCurve>;
+    /// Check if Handle<TColGeom_HArray1OfBSplineCurve> is null
+    pub fn HandleTColGeomHArray1OfBSplineCurve_is_null(
+        self_: *const HandleTColGeomHArray1OfBSplineCurve,
+    ) -> bool;
     /// Dereference Handle to get *const TColGeom_HArray1OfBSplineCurve
     pub fn HandleTColGeomHArray1OfBSplineCurve_get(
         handle: *const HandleTColGeomHArray1OfBSplineCurve,
@@ -18095,6 +18242,10 @@ extern "C" {
     pub fn HandleTColGeomHArray1OfBezierCurve_clone(
         self_: *const HandleTColGeomHArray1OfBezierCurve,
     ) -> crate::OcctResult<*mut HandleTColGeomHArray1OfBezierCurve>;
+    /// Check if Handle<TColGeom_HArray1OfBezierCurve> is null
+    pub fn HandleTColGeomHArray1OfBezierCurve_is_null(
+        self_: *const HandleTColGeomHArray1OfBezierCurve,
+    ) -> bool;
     /// Dereference Handle to get *const TColGeom_HArray1OfBezierCurve
     pub fn HandleTColGeomHArray1OfBezierCurve_get(
         handle: *const HandleTColGeomHArray1OfBezierCurve,
@@ -18198,6 +18349,9 @@ extern "C" {
     pub fn HandleTColGeomHArray1OfCurve_clone(
         self_: *const HandleTColGeomHArray1OfCurve,
     ) -> crate::OcctResult<*mut HandleTColGeomHArray1OfCurve>;
+    /// Check if Handle<TColGeom_HArray1OfCurve> is null
+    pub fn HandleTColGeomHArray1OfCurve_is_null(self_: *const HandleTColGeomHArray1OfCurve)
+        -> bool;
     /// Dereference Handle to get *const TColGeom_HArray1OfCurve
     pub fn HandleTColGeomHArray1OfCurve_get(
         handle: *const HandleTColGeomHArray1OfCurve,
@@ -18301,6 +18455,10 @@ extern "C" {
     pub fn HandleTColGeomHArray1OfSurface_clone(
         self_: *const HandleTColGeomHArray1OfSurface,
     ) -> crate::OcctResult<*mut HandleTColGeomHArray1OfSurface>;
+    /// Check if Handle<TColGeom_HArray1OfSurface> is null
+    pub fn HandleTColGeomHArray1OfSurface_is_null(
+        self_: *const HandleTColGeomHArray1OfSurface,
+    ) -> bool;
     /// Dereference Handle to get *const TColGeom_HArray1OfSurface
     pub fn HandleTColGeomHArray1OfSurface_get(
         handle: *const HandleTColGeomHArray1OfSurface,
@@ -18399,6 +18557,10 @@ extern "C" {
     pub fn HandleTColGeomHArray2OfSurface_clone(
         self_: *const HandleTColGeomHArray2OfSurface,
     ) -> crate::OcctResult<*mut HandleTColGeomHArray2OfSurface>;
+    /// Check if Handle<TColGeom_HArray2OfSurface> is null
+    pub fn HandleTColGeomHArray2OfSurface_is_null(
+        self_: *const HandleTColGeomHArray2OfSurface,
+    ) -> bool;
     /// Dereference Handle to get *const TColGeom_HArray2OfSurface
     pub fn HandleTColGeomHArray2OfSurface_get(
         handle: *const HandleTColGeomHArray2OfSurface,
@@ -18500,6 +18662,10 @@ extern "C" {
     pub fn HandleTColGeomHSequenceOfBoundedCurve_clone(
         self_: *const HandleTColGeomHSequenceOfBoundedCurve,
     ) -> crate::OcctResult<*mut HandleTColGeomHSequenceOfBoundedCurve>;
+    /// Check if Handle<TColGeom_HSequenceOfBoundedCurve> is null
+    pub fn HandleTColGeomHSequenceOfBoundedCurve_is_null(
+        self_: *const HandleTColGeomHSequenceOfBoundedCurve,
+    ) -> bool;
     /// Dereference Handle to get *const TColGeom_HSequenceOfBoundedCurve
     pub fn HandleTColGeomHSequenceOfBoundedCurve_get(
         handle: *const HandleTColGeomHSequenceOfBoundedCurve,
@@ -18595,6 +18761,10 @@ extern "C" {
     pub fn HandleTColGeomHSequenceOfCurve_clone(
         self_: *const HandleTColGeomHSequenceOfCurve,
     ) -> crate::OcctResult<*mut HandleTColGeomHSequenceOfCurve>;
+    /// Check if Handle<TColGeom_HSequenceOfCurve> is null
+    pub fn HandleTColGeomHSequenceOfCurve_is_null(
+        self_: *const HandleTColGeomHSequenceOfCurve,
+    ) -> bool;
     /// Dereference Handle to get *const TColGeom_HSequenceOfCurve
     pub fn HandleTColGeomHSequenceOfCurve_get(
         handle: *const HandleTColGeomHSequenceOfCurve,

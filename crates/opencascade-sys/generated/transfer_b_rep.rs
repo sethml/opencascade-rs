@@ -660,6 +660,13 @@ unsafe impl crate::CppCopyable for HandleTransferBRepBinderOfShape {
 }
 
 impl HandleTransferBRepBinderOfShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TransferBRep_BinderOfShape
     pub fn get(&self) -> &crate::ffi_types::TransferBRep_BinderOfShape {
         unsafe {
@@ -918,6 +925,15 @@ unsafe impl crate::CppCopyable for HandleTransferBRepHSequenceOfTransferResultIn
 }
 
 impl HandleTransferBRepHSequenceOfTransferResultInfo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepHSequenceOfTransferResultInfo_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TransferBRep_HSequenceOfTransferResultInfo
     pub fn get(&self) -> &crate::ffi_types::TransferBRep_HSequenceOfTransferResultInfo {
         unsafe {
@@ -1813,6 +1829,13 @@ unsafe impl crate::CppCopyable for HandleTransferBRepShapeBinder {
 }
 
 impl HandleTransferBRepShapeBinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TransferBRep_ShapeBinder
     pub fn get(&self) -> &crate::ffi_types::TransferBRep_ShapeBinder {
         unsafe {
@@ -2410,6 +2433,15 @@ unsafe impl crate::CppCopyable for HandleTransferBRepShapeListBinder {
 }
 
 impl HandleTransferBRepShapeListBinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TransferBRep_ShapeListBinder
     pub fn get(&self) -> &crate::ffi_types::TransferBRep_ShapeListBinder {
         unsafe {
@@ -2727,6 +2759,13 @@ unsafe impl crate::CppCopyable for HandleTransferBRepShapeMapper {
 }
 
 impl HandleTransferBRepShapeMapper {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TransferBRep_ShapeMapper
     pub fn get(&self) -> &crate::ffi_types::TransferBRep_ShapeMapper {
         unsafe {
@@ -3046,6 +3085,15 @@ unsafe impl crate::CppCopyable for HandleTransferBRepTransferResultInfo {
 }
 
 impl HandleTransferBRepTransferResultInfo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepTransferResultInfo_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TransferBRep_TransferResultInfo
     pub fn get(&self) -> &crate::ffi_types::TransferBRep_TransferResultInfo {
         unsafe {

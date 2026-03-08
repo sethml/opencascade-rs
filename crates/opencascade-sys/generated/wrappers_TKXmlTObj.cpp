@@ -52,42 +52,49 @@ typedef opencascade::handle<XmlTObjDrivers_ObjectDriver> HandleXmlTObjDriversObj
 typedef opencascade::handle<XmlTObjDrivers_ReferenceDriver> HandleXmlTObjDriversReferenceDriver;
 typedef opencascade::handle<XmlTObjDrivers_XYZDriver> HandleXmlTObjDriversXYZDriver;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleXmlTObjDriversDocumentRetrievalDriver_destructor(HandleXmlTObjDriversDocumentRetrievalDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlTObjDriversDocumentRetrievalDriver*> HandleXmlTObjDriversDocumentRetrievalDriver_clone(const HandleXmlTObjDriversDocumentRetrievalDriver* self_) {
     try { return {new HandleXmlTObjDriversDocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlTObjDriversDocumentRetrievalDriver_is_null(const HandleXmlTObjDriversDocumentRetrievalDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlTObjDriversDocumentStorageDriver_destructor(HandleXmlTObjDriversDocumentStorageDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlTObjDriversDocumentStorageDriver*> HandleXmlTObjDriversDocumentStorageDriver_clone(const HandleXmlTObjDriversDocumentStorageDriver* self_) {
     try { return {new HandleXmlTObjDriversDocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlTObjDriversDocumentStorageDriver_is_null(const HandleXmlTObjDriversDocumentStorageDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlTObjDriversIntSparseArrayDriver_destructor(HandleXmlTObjDriversIntSparseArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlTObjDriversIntSparseArrayDriver*> HandleXmlTObjDriversIntSparseArrayDriver_clone(const HandleXmlTObjDriversIntSparseArrayDriver* self_) {
     try { return {new HandleXmlTObjDriversIntSparseArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlTObjDriversIntSparseArrayDriver_is_null(const HandleXmlTObjDriversIntSparseArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlTObjDriversModelDriver_destructor(HandleXmlTObjDriversModelDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlTObjDriversModelDriver*> HandleXmlTObjDriversModelDriver_clone(const HandleXmlTObjDriversModelDriver* self_) {
     try { return {new HandleXmlTObjDriversModelDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlTObjDriversModelDriver_is_null(const HandleXmlTObjDriversModelDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlTObjDriversObjectDriver_destructor(HandleXmlTObjDriversObjectDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlTObjDriversObjectDriver*> HandleXmlTObjDriversObjectDriver_clone(const HandleXmlTObjDriversObjectDriver* self_) {
     try { return {new HandleXmlTObjDriversObjectDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlTObjDriversObjectDriver_is_null(const HandleXmlTObjDriversObjectDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlTObjDriversReferenceDriver_destructor(HandleXmlTObjDriversReferenceDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlTObjDriversReferenceDriver*> HandleXmlTObjDriversReferenceDriver_clone(const HandleXmlTObjDriversReferenceDriver* self_) {
     try { return {new HandleXmlTObjDriversReferenceDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlTObjDriversReferenceDriver_is_null(const HandleXmlTObjDriversReferenceDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlTObjDriversXYZDriver_destructor(HandleXmlTObjDriversXYZDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlTObjDriversXYZDriver*> HandleXmlTObjDriversXYZDriver_clone(const HandleXmlTObjDriversXYZDriver* self_) {
     try { return {new HandleXmlTObjDriversXYZDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlTObjDriversXYZDriver_is_null(const HandleXmlTObjDriversXYZDriver* self_) { return self_->IsNull(); }
 
 // ========================
 // XmlTObjDrivers_DocumentRetrievalDriver wrappers

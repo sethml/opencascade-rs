@@ -384,6 +384,11 @@ unsafe impl crate::CppCopyable for HandleRWPlyCafWriter {
 }
 
 impl HandleRWPlyCafWriter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying RWPly_CafWriter
     pub fn get(&self) -> &crate::ffi_types::RWPly_CafWriter {
         unsafe {

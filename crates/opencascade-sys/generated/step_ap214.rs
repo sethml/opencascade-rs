@@ -287,6 +287,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AppliedApprovalAssignment {
 }
 
 impl HandleStepAP214AppliedApprovalAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AppliedApprovalAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AppliedApprovalAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AppliedApprovalAssignment {
         unsafe {
@@ -616,6 +625,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AppliedDateAndTimeAssignment {
 }
 
 impl HandleStepAP214AppliedDateAndTimeAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AppliedDateAndTimeAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AppliedDateAndTimeAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AppliedDateAndTimeAssignment {
         unsafe {
@@ -944,6 +962,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AppliedDateAssignment {
 }
 
 impl HandleStepAP214AppliedDateAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AppliedDateAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AppliedDateAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AppliedDateAssignment {
         unsafe {
@@ -1286,6 +1313,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AppliedDocumentReference {
 }
 
 impl HandleStepAP214AppliedDocumentReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AppliedDocumentReference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AppliedDocumentReference
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AppliedDocumentReference {
         unsafe {
@@ -1599,6 +1635,13 @@ unsafe impl crate::CppCopyable for HandleStepAP214AppliedExternalIdentificationA
 }
 
 impl HandleStepAP214AppliedExternalIdentificationAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AppliedExternalIdentificationAssignment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AppliedExternalIdentificationAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AppliedExternalIdentificationAssignment {
         unsafe {
@@ -1888,6 +1931,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AppliedGroupAssignment {
 }
 
 impl HandleStepAP214AppliedGroupAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AppliedGroupAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AppliedGroupAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AppliedGroupAssignment {
         unsafe {
@@ -2215,6 +2267,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AppliedOrganizationAssignment 
 }
 
 impl HandleStepAP214AppliedOrganizationAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AppliedOrganizationAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AppliedOrganizationAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AppliedOrganizationAssignment {
         unsafe {
@@ -2513,6 +2574,13 @@ unsafe impl crate::CppCopyable for HandleStepAP214AppliedPersonAndOrganizationAs
 }
 
 impl HandleStepAP214AppliedPersonAndOrganizationAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AppliedPersonAndOrganizationAssignment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AppliedPersonAndOrganizationAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AppliedPersonAndOrganizationAssignment {
         unsafe {
@@ -2793,6 +2861,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AppliedPresentedItem {
 }
 
 impl HandleStepAP214AppliedPresentedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AppliedPresentedItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AppliedPresentedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AppliedPresentedItem {
         unsafe {
@@ -3070,6 +3147,13 @@ unsafe impl crate::CppCopyable for HandleStepAP214AppliedSecurityClassificationA
 }
 
 impl HandleStepAP214AppliedSecurityClassificationAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AppliedSecurityClassificationAssignment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AppliedSecurityClassificationAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AppliedSecurityClassificationAssignment {
         unsafe {
@@ -3869,6 +3953,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignActualDateAndTimeAss
 }
 
 impl HandleStepAP214AutoDesignActualDateAndTimeAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignActualDateAndTimeAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignActualDateAndTimeAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignActualDateAndTimeAssignment {
         unsafe {
@@ -4179,6 +4272,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignActualDateAssignment
 }
 
 impl HandleStepAP214AutoDesignActualDateAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignActualDateAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignActualDateAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignActualDateAssignment {
         unsafe {
@@ -4481,6 +4583,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignApprovalAssignment {
 }
 
 impl HandleStepAP214AutoDesignApprovalAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignApprovalAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignApprovalAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignApprovalAssignment {
         unsafe {
@@ -4791,6 +4902,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignDateAndPersonAssignm
 }
 
 impl HandleStepAP214AutoDesignDateAndPersonAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignDateAndPersonAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignDateAndPersonAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignDateAndPersonAssignment {
         unsafe {
@@ -5964,6 +6084,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignDocumentReference {
 }
 
 impl HandleStepAP214AutoDesignDocumentReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignDocumentReference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignDocumentReference
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignDocumentReference {
         unsafe {
@@ -6588,6 +6717,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignGroupAssignment {
 }
 
 impl HandleStepAP214AutoDesignGroupAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignGroupAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignGroupAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignGroupAssignment {
         unsafe {
@@ -7259,6 +7397,13 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignNominalDateAndTimeAs
 }
 
 impl HandleStepAP214AutoDesignNominalDateAndTimeAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignNominalDateAndTimeAssignment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignNominalDateAndTimeAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignNominalDateAndTimeAssignment {
         unsafe {
@@ -7565,6 +7710,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignNominalDateAssignmen
 }
 
 impl HandleStepAP214AutoDesignNominalDateAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignNominalDateAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignNominalDateAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignNominalDateAssignment {
         unsafe {
@@ -7877,6 +8031,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignOrganizationAssignme
 }
 
 impl HandleStepAP214AutoDesignOrganizationAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignOrganizationAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignOrganizationAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignOrganizationAssignment {
         unsafe {
@@ -8488,6 +8651,13 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignPersonAndOrganizatio
 }
 
 impl HandleStepAP214AutoDesignPersonAndOrganizationAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignPersonAndOrganizationAssignment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignPersonAndOrganizationAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignPersonAndOrganizationAssignment {
         unsafe {
@@ -8770,6 +8940,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignPresentedItem {
 }
 
 impl HandleStepAP214AutoDesignPresentedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignPresentedItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignPresentedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignPresentedItem {
         unsafe {
@@ -9711,6 +9890,13 @@ unsafe impl crate::CppCopyable for HandleStepAP214AutoDesignSecurityClassificati
 }
 
 impl HandleStepAP214AutoDesignSecurityClassificationAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214AutoDesignSecurityClassificationAssignment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_AutoDesignSecurityClassificationAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP214_AutoDesignSecurityClassificationAssignment {
         unsafe {
@@ -10001,6 +10187,11 @@ unsafe impl crate::CppCopyable for HandleStepAP214Class {
 }
 
 impl HandleStepAP214Class {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepAP214Class_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_Class
     pub fn get(&self) -> &crate::ffi_types::StepAP214_Class {
         unsafe {
@@ -12345,6 +12536,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214ExternallyDefinedClass {
 }
 
 impl HandleStepAP214ExternallyDefinedClass {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214ExternallyDefinedClass_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_ExternallyDefinedClass
     pub fn get(&self) -> &crate::ffi_types::StepAP214_ExternallyDefinedClass {
         unsafe {
@@ -12668,6 +12868,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214ExternallyDefinedGeneralProper
 }
 
 impl HandleStepAP214ExternallyDefinedGeneralProperty {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214ExternallyDefinedGeneralProperty_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_ExternallyDefinedGeneralProperty
     pub fn get(&self) -> &crate::ffi_types::StepAP214_ExternallyDefinedGeneralProperty {
         unsafe {
@@ -13356,6 +13565,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfApprovalItem {
 }
 
 impl HandleStepAP214HArray1OfApprovalItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfApprovalItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfApprovalItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfApprovalItem {
         unsafe {
@@ -13591,6 +13809,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfAutoDesignDateAndPers
 }
 
 impl HandleStepAP214HArray1OfAutoDesignDateAndPersonItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfAutoDesignDateAndPersonItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfAutoDesignDateAndPersonItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfAutoDesignDateAndPersonItem {
         unsafe {
@@ -13831,6 +14058,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfAutoDesignDateAndTime
 }
 
 impl HandleStepAP214HArray1OfAutoDesignDateAndTimeItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfAutoDesignDateAndTimeItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfAutoDesignDateAndTimeItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfAutoDesignDateAndTimeItem {
         unsafe {
@@ -14093,6 +14329,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfAutoDesignDatedItem {
 }
 
 impl HandleStepAP214HArray1OfAutoDesignDatedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfAutoDesignDatedItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfAutoDesignDatedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfAutoDesignDatedItem {
         unsafe {
@@ -14338,6 +14583,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfAutoDesignGeneralOrgI
 }
 
 impl HandleStepAP214HArray1OfAutoDesignGeneralOrgItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfAutoDesignGeneralOrgItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfAutoDesignGeneralOrgItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfAutoDesignGeneralOrgItem {
         unsafe {
@@ -14596,6 +14850,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfAutoDesignGroupedItem
 }
 
 impl HandleStepAP214HArray1OfAutoDesignGroupedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfAutoDesignGroupedItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfAutoDesignGroupedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfAutoDesignGroupedItem {
         unsafe {
@@ -14831,6 +15094,13 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfAutoDesignPresentedIt
 }
 
 impl HandleStepAP214HArray1OfAutoDesignPresentedItemSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfAutoDesignPresentedItemSelect_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfAutoDesignPresentedItemSelect
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfAutoDesignPresentedItemSelect {
         unsafe {
@@ -15067,6 +15337,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfAutoDesignReferencing
 }
 
 impl HandleStepAP214HArray1OfAutoDesignReferencingItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfAutoDesignReferencingItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfAutoDesignReferencingItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfAutoDesignReferencingItem {
         unsafe {
@@ -15330,6 +15609,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfDateAndTimeItem {
 }
 
 impl HandleStepAP214HArray1OfDateAndTimeItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfDateAndTimeItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfDateAndTimeItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfDateAndTimeItem {
         unsafe {
@@ -15612,6 +15900,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfDateItem {
 }
 
 impl HandleStepAP214HArray1OfDateItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfDateItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfDateItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfDateItem {
         unsafe {
@@ -15870,6 +16167,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfDocumentReferenceItem
 }
 
 impl HandleStepAP214HArray1OfDocumentReferenceItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfDocumentReferenceItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfDocumentReferenceItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfDocumentReferenceItem {
         unsafe {
@@ -16112,6 +16418,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfExternalIdentificatio
 }
 
 impl HandleStepAP214HArray1OfExternalIdentificationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfExternalIdentificationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfExternalIdentificationItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfExternalIdentificationItem {
         unsafe {
@@ -16396,6 +16711,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfGroupItem {
 }
 
 impl HandleStepAP214HArray1OfGroupItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfGroupItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfGroupItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfGroupItem {
         unsafe {
@@ -16661,6 +16985,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfOrganizationItem {
 }
 
 impl HandleStepAP214HArray1OfOrganizationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfOrganizationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfOrganizationItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfOrganizationItem {
         unsafe {
@@ -16903,6 +17236,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfPersonAndOrganization
 }
 
 impl HandleStepAP214HArray1OfPersonAndOrganizationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfPersonAndOrganizationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfPersonAndOrganizationItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfPersonAndOrganizationItem {
         unsafe {
@@ -17165,6 +17507,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfPresentedItemSelect {
 }
 
 impl HandleStepAP214HArray1OfPresentedItemSelect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfPresentedItemSelect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfPresentedItemSelect
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfPresentedItemSelect {
         unsafe {
@@ -17407,6 +17758,15 @@ unsafe impl crate::CppCopyable for HandleStepAP214HArray1OfSecurityClassificatio
 }
 
 impl HandleStepAP214HArray1OfSecurityClassificationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214HArray1OfSecurityClassificationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_HArray1OfSecurityClassificationItem
     pub fn get(&self) -> &crate::ffi_types::StepAP214_HArray1OfSecurityClassificationItem {
         unsafe {
@@ -19133,6 +19493,11 @@ unsafe impl crate::CppCopyable for HandleStepAP214Protocol {
 }
 
 impl HandleStepAP214Protocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepAP214Protocol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_Protocol
     pub fn get(&self) -> &crate::ffi_types::StepAP214_Protocol {
         unsafe {
@@ -19490,6 +19855,13 @@ unsafe impl crate::CppCopyable for HandleStepAP214RepItemGroup {
 }
 
 impl HandleStepAP214RepItemGroup {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP214RepItemGroup_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP214_RepItemGroup
     pub fn get(&self) -> &crate::ffi_types::StepAP214_RepItemGroup {
         unsafe {

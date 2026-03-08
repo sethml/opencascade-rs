@@ -187,172 +187,205 @@ typedef opencascade::handle<XmlTObjDrivers_XYZDriver> HandleXmlTObjDriversXYZDri
 typedef opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver> HandleXmlXCAFDriversDocumentRetrievalDriver;
 typedef opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver> HandleXmlXCAFDriversDocumentStorageDriver;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleXmlLDriversDocumentRetrievalDriver_destructor(HandleXmlLDriversDocumentRetrievalDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlLDriversDocumentRetrievalDriver*> HandleXmlLDriversDocumentRetrievalDriver_clone(const HandleXmlLDriversDocumentRetrievalDriver* self_) {
     try { return {new HandleXmlLDriversDocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlLDriversDocumentRetrievalDriver_is_null(const HandleXmlLDriversDocumentRetrievalDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlLDriversDocumentStorageDriver_destructor(HandleXmlLDriversDocumentStorageDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlLDriversDocumentStorageDriver*> HandleXmlLDriversDocumentStorageDriver_clone(const HandleXmlLDriversDocumentStorageDriver* self_) {
     try { return {new HandleXmlLDriversDocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlLDriversDocumentStorageDriver_is_null(const HandleXmlLDriversDocumentStorageDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDFADriver_destructor(HandleXmlMDFADriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMDFADriver_clone(const HandleXmlMDFADriver* self_) {
     try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDFADriver_is_null(const HandleXmlMDFADriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDFADriverTable_destructor(HandleXmlMDFADriverTable* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDFADriverTable*> HandleXmlMDFADriverTable_clone(const HandleXmlMDFADriverTable* self_) {
     try { return {new HandleXmlMDFADriverTable(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDFADriverTable_is_null(const HandleXmlMDFADriverTable* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDFDerivedDriver_destructor(HandleXmlMDFDerivedDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDFDerivedDriver*> HandleXmlMDFDerivedDriver_clone(const HandleXmlMDFDerivedDriver* self_) {
     try { return {new HandleXmlMDFDerivedDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDFDerivedDriver_is_null(const HandleXmlMDFDerivedDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDFReferenceDriver_destructor(HandleXmlMDFReferenceDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDFReferenceDriver*> HandleXmlMDFReferenceDriver_clone(const HandleXmlMDFReferenceDriver* self_) {
     try { return {new HandleXmlMDFReferenceDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDFReferenceDriver_is_null(const HandleXmlMDFReferenceDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDFTagSourceDriver_destructor(HandleXmlMDFTagSourceDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDFTagSourceDriver*> HandleXmlMDFTagSourceDriver_clone(const HandleXmlMDFTagSourceDriver* self_) {
     try { return {new HandleXmlMDFTagSourceDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDFTagSourceDriver_is_null(const HandleXmlMDFTagSourceDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdAsciiStringDriver_destructor(HandleXmlMDataStdAsciiStringDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdAsciiStringDriver*> HandleXmlMDataStdAsciiStringDriver_clone(const HandleXmlMDataStdAsciiStringDriver* self_) {
     try { return {new HandleXmlMDataStdAsciiStringDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdAsciiStringDriver_is_null(const HandleXmlMDataStdAsciiStringDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdBooleanArrayDriver_destructor(HandleXmlMDataStdBooleanArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdBooleanArrayDriver*> HandleXmlMDataStdBooleanArrayDriver_clone(const HandleXmlMDataStdBooleanArrayDriver* self_) {
     try { return {new HandleXmlMDataStdBooleanArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdBooleanArrayDriver_is_null(const HandleXmlMDataStdBooleanArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdBooleanListDriver_destructor(HandleXmlMDataStdBooleanListDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdBooleanListDriver*> HandleXmlMDataStdBooleanListDriver_clone(const HandleXmlMDataStdBooleanListDriver* self_) {
     try { return {new HandleXmlMDataStdBooleanListDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdBooleanListDriver_is_null(const HandleXmlMDataStdBooleanListDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdByteArrayDriver_destructor(HandleXmlMDataStdByteArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdByteArrayDriver*> HandleXmlMDataStdByteArrayDriver_clone(const HandleXmlMDataStdByteArrayDriver* self_) {
     try { return {new HandleXmlMDataStdByteArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdByteArrayDriver_is_null(const HandleXmlMDataStdByteArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdExpressionDriver_destructor(HandleXmlMDataStdExpressionDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdExpressionDriver*> HandleXmlMDataStdExpressionDriver_clone(const HandleXmlMDataStdExpressionDriver* self_) {
     try { return {new HandleXmlMDataStdExpressionDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdExpressionDriver_is_null(const HandleXmlMDataStdExpressionDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdExtStringArrayDriver_destructor(HandleXmlMDataStdExtStringArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdExtStringArrayDriver*> HandleXmlMDataStdExtStringArrayDriver_clone(const HandleXmlMDataStdExtStringArrayDriver* self_) {
     try { return {new HandleXmlMDataStdExtStringArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdExtStringArrayDriver_is_null(const HandleXmlMDataStdExtStringArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdExtStringListDriver_destructor(HandleXmlMDataStdExtStringListDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdExtStringListDriver*> HandleXmlMDataStdExtStringListDriver_clone(const HandleXmlMDataStdExtStringListDriver* self_) {
     try { return {new HandleXmlMDataStdExtStringListDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdExtStringListDriver_is_null(const HandleXmlMDataStdExtStringListDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdGenericEmptyDriver_destructor(HandleXmlMDataStdGenericEmptyDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdGenericEmptyDriver*> HandleXmlMDataStdGenericEmptyDriver_clone(const HandleXmlMDataStdGenericEmptyDriver* self_) {
     try { return {new HandleXmlMDataStdGenericEmptyDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdGenericEmptyDriver_is_null(const HandleXmlMDataStdGenericEmptyDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdGenericExtStringDriver_destructor(HandleXmlMDataStdGenericExtStringDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdGenericExtStringDriver*> HandleXmlMDataStdGenericExtStringDriver_clone(const HandleXmlMDataStdGenericExtStringDriver* self_) {
     try { return {new HandleXmlMDataStdGenericExtStringDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdGenericExtStringDriver_is_null(const HandleXmlMDataStdGenericExtStringDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdIntPackedMapDriver_destructor(HandleXmlMDataStdIntPackedMapDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdIntPackedMapDriver*> HandleXmlMDataStdIntPackedMapDriver_clone(const HandleXmlMDataStdIntPackedMapDriver* self_) {
     try { return {new HandleXmlMDataStdIntPackedMapDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdIntPackedMapDriver_is_null(const HandleXmlMDataStdIntPackedMapDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdIntegerArrayDriver_destructor(HandleXmlMDataStdIntegerArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdIntegerArrayDriver*> HandleXmlMDataStdIntegerArrayDriver_clone(const HandleXmlMDataStdIntegerArrayDriver* self_) {
     try { return {new HandleXmlMDataStdIntegerArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdIntegerArrayDriver_is_null(const HandleXmlMDataStdIntegerArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdIntegerDriver_destructor(HandleXmlMDataStdIntegerDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdIntegerDriver*> HandleXmlMDataStdIntegerDriver_clone(const HandleXmlMDataStdIntegerDriver* self_) {
     try { return {new HandleXmlMDataStdIntegerDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdIntegerDriver_is_null(const HandleXmlMDataStdIntegerDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdIntegerListDriver_destructor(HandleXmlMDataStdIntegerListDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdIntegerListDriver*> HandleXmlMDataStdIntegerListDriver_clone(const HandleXmlMDataStdIntegerListDriver* self_) {
     try { return {new HandleXmlMDataStdIntegerListDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdIntegerListDriver_is_null(const HandleXmlMDataStdIntegerListDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdNamedDataDriver_destructor(HandleXmlMDataStdNamedDataDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdNamedDataDriver*> HandleXmlMDataStdNamedDataDriver_clone(const HandleXmlMDataStdNamedDataDriver* self_) {
     try { return {new HandleXmlMDataStdNamedDataDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdNamedDataDriver_is_null(const HandleXmlMDataStdNamedDataDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdRealArrayDriver_destructor(HandleXmlMDataStdRealArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdRealArrayDriver*> HandleXmlMDataStdRealArrayDriver_clone(const HandleXmlMDataStdRealArrayDriver* self_) {
     try { return {new HandleXmlMDataStdRealArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdRealArrayDriver_is_null(const HandleXmlMDataStdRealArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdRealDriver_destructor(HandleXmlMDataStdRealDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdRealDriver*> HandleXmlMDataStdRealDriver_clone(const HandleXmlMDataStdRealDriver* self_) {
     try { return {new HandleXmlMDataStdRealDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdRealDriver_is_null(const HandleXmlMDataStdRealDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdRealListDriver_destructor(HandleXmlMDataStdRealListDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdRealListDriver*> HandleXmlMDataStdRealListDriver_clone(const HandleXmlMDataStdRealListDriver* self_) {
     try { return {new HandleXmlMDataStdRealListDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdRealListDriver_is_null(const HandleXmlMDataStdRealListDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdReferenceArrayDriver_destructor(HandleXmlMDataStdReferenceArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdReferenceArrayDriver*> HandleXmlMDataStdReferenceArrayDriver_clone(const HandleXmlMDataStdReferenceArrayDriver* self_) {
     try { return {new HandleXmlMDataStdReferenceArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdReferenceArrayDriver_is_null(const HandleXmlMDataStdReferenceArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdReferenceListDriver_destructor(HandleXmlMDataStdReferenceListDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdReferenceListDriver*> HandleXmlMDataStdReferenceListDriver_clone(const HandleXmlMDataStdReferenceListDriver* self_) {
     try { return {new HandleXmlMDataStdReferenceListDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdReferenceListDriver_is_null(const HandleXmlMDataStdReferenceListDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdTreeNodeDriver_destructor(HandleXmlMDataStdTreeNodeDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdTreeNodeDriver*> HandleXmlMDataStdTreeNodeDriver_clone(const HandleXmlMDataStdTreeNodeDriver* self_) {
     try { return {new HandleXmlMDataStdTreeNodeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdTreeNodeDriver_is_null(const HandleXmlMDataStdTreeNodeDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdUAttributeDriver_destructor(HandleXmlMDataStdUAttributeDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdUAttributeDriver*> HandleXmlMDataStdUAttributeDriver_clone(const HandleXmlMDataStdUAttributeDriver* self_) {
     try { return {new HandleXmlMDataStdUAttributeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdUAttributeDriver_is_null(const HandleXmlMDataStdUAttributeDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDataStdVariableDriver_destructor(HandleXmlMDataStdVariableDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDataStdVariableDriver*> HandleXmlMDataStdVariableDriver_clone(const HandleXmlMDataStdVariableDriver* self_) {
     try { return {new HandleXmlMDataStdVariableDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDataStdVariableDriver_is_null(const HandleXmlMDataStdVariableDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMDocStdXLinkDriver_destructor(HandleXmlMDocStdXLinkDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMDocStdXLinkDriver*> HandleXmlMDocStdXLinkDriver_clone(const HandleXmlMDocStdXLinkDriver* self_) {
     try { return {new HandleXmlMDocStdXLinkDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMDocStdXLinkDriver_is_null(const HandleXmlMDocStdXLinkDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMFunctionFunctionDriver_destructor(HandleXmlMFunctionFunctionDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMFunctionFunctionDriver*> HandleXmlMFunctionFunctionDriver_clone(const HandleXmlMFunctionFunctionDriver* self_) {
     try { return {new HandleXmlMFunctionFunctionDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMFunctionFunctionDriver_is_null(const HandleXmlMFunctionFunctionDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMFunctionGraphNodeDriver_destructor(HandleXmlMFunctionGraphNodeDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMFunctionGraphNodeDriver*> HandleXmlMFunctionGraphNodeDriver_clone(const HandleXmlMFunctionGraphNodeDriver* self_) {
     try { return {new HandleXmlMFunctionGraphNodeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMFunctionGraphNodeDriver_is_null(const HandleXmlMFunctionGraphNodeDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXmlMFunctionScopeDriver_destructor(HandleXmlMFunctionScopeDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXmlMFunctionScopeDriver*> HandleXmlMFunctionScopeDriver_clone(const HandleXmlMFunctionScopeDriver* self_) {
     try { return {new HandleXmlMFunctionScopeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXmlMFunctionScopeDriver_is_null(const HandleXmlMFunctionScopeDriver* self_) { return self_->IsNull(); }
 
 // ========================
 // XmlLDrivers_DocumentRetrievalDriver wrappers

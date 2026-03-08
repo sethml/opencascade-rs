@@ -1023,6 +1023,13 @@ unsafe impl crate::CppCopyable for HandleBRepBuilderAPIFastSewing {
 }
 
 impl HandleBRepBuilderAPIFastSewing {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepBuilderAPI_FastSewing
     pub fn get(&self) -> &crate::ffi_types::BRepBuilderAPI_FastSewing {
         unsafe {
@@ -6303,6 +6310,13 @@ unsafe impl crate::CppCopyable for HandleBRepBuilderAPISewing {
 }
 
 impl HandleBRepBuilderAPISewing {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepBuilderAPI_Sewing
     pub fn get(&self) -> &crate::ffi_types::BRepBuilderAPI_Sewing {
         unsafe {

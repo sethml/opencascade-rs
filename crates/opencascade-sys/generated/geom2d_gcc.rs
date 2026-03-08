@@ -4870,6 +4870,13 @@ unsafe impl crate::CppCopyable for HandleGeom2dGccIsParallel {
 }
 
 impl HandleGeom2dGccIsParallel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Geom2dGcc_IsParallel
     pub fn get(&self) -> &crate::ffi_types::Geom2dGcc_IsParallel {
         unsafe {

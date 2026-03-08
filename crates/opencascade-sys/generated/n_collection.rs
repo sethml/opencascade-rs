@@ -282,6 +282,13 @@ unsafe impl crate::CppCopyable for HandleNCollectionAccAllocator {
 }
 
 impl HandleNCollectionAccAllocator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionAccAllocator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NCollection_AccAllocator
     pub fn get(&self) -> &crate::ffi_types::NCollection_AccAllocator {
         unsafe {
@@ -546,6 +553,15 @@ unsafe impl crate::CppCopyable for HandleNCollectionAlignedAllocator {
 }
 
 impl HandleNCollectionAlignedAllocator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionAlignedAllocator_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying NCollection_AlignedAllocator
     pub fn get(&self) -> &crate::ffi_types::NCollection_AlignedAllocator {
         unsafe {
@@ -802,6 +818,13 @@ unsafe impl crate::CppCopyable for HandleNCollectionBaseAllocator {
 }
 
 impl HandleNCollectionBaseAllocator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NCollection_BaseAllocator
     pub fn get(&self) -> &crate::ffi_types::NCollection_BaseAllocator {
         unsafe {
@@ -1588,6 +1611,11 @@ unsafe impl crate::CppCopyable for HandleNCollectionBuffer {
 }
 
 impl HandleNCollectionBuffer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleNCollectionBuffer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying NCollection_Buffer
     pub fn get(&self) -> &crate::ffi_types::NCollection_Buffer {
         unsafe {
@@ -1958,6 +1986,13 @@ unsafe impl crate::CppCopyable for HandleNCollectionHeapAllocator {
 }
 
 impl HandleNCollectionHeapAllocator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionHeapAllocator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NCollection_HeapAllocator
     pub fn get(&self) -> &crate::ffi_types::NCollection_HeapAllocator {
         unsafe {
@@ -2277,6 +2312,13 @@ unsafe impl crate::CppCopyable for HandleNCollectionIncAllocator {
 }
 
 impl HandleNCollectionIncAllocator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NCollection_IncAllocator
     pub fn get(&self) -> &crate::ffi_types::NCollection_IncAllocator {
         unsafe {
@@ -2684,6 +2726,15 @@ unsafe impl crate::CppCopyable for HandleNCollectionWinHeapAllocator {
 }
 
 impl HandleNCollectionWinHeapAllocator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying NCollection_WinHeapAllocator
     pub fn get(&self) -> &crate::ffi_types::NCollection_WinHeapAllocator {
         unsafe {

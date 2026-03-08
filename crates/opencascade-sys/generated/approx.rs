@@ -881,6 +881,13 @@ unsafe impl crate::CppCopyable for HandleApproxCurvlinFunc {
 }
 
 impl HandleApproxCurvlinFunc {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleApproxCurvlinFunc_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Approx_CurvlinFunc
     pub fn get(&self) -> &crate::ffi_types::Approx_CurvlinFunc {
         unsafe {
@@ -1580,6 +1587,15 @@ unsafe impl crate::CppCopyable for HandleApproxHArray1OfAdHSurface {
 }
 
 impl HandleApproxHArray1OfAdHSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfAdHSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Approx_HArray1OfAdHSurface
     pub fn get(&self) -> &crate::ffi_types::Approx_HArray1OfAdHSurface {
         unsafe {
@@ -1860,6 +1876,13 @@ unsafe impl crate::CppCopyable for HandleApproxHArray1OfGTrsf2d {
 }
 
 impl HandleApproxHArray1OfGTrsf2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfGTrsf2d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Approx_HArray1OfGTrsf2d
     pub fn get(&self) -> &crate::ffi_types::Approx_HArray1OfGTrsf2d {
         unsafe {
@@ -2906,6 +2929,13 @@ unsafe impl crate::CppCopyable for HandleApproxSweepFunction {
 }
 
 impl HandleApproxSweepFunction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Approx_SweepFunction
     pub fn get(&self) -> &crate::ffi_types::Approx_SweepFunction {
         unsafe {

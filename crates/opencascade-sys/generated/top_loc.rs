@@ -223,6 +223,11 @@ unsafe impl crate::CppCopyable for HandleTopLocDatum3D {
 }
 
 impl HandleTopLocDatum3D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTopLocDatum3D_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopLoc_Datum3D
     pub fn get(&self) -> &crate::ffi_types::TopLoc_Datum3D {
         unsafe {
@@ -753,6 +758,15 @@ unsafe impl crate::CppCopyable for HandleTopLocSListNodeOfItemLocation {
 }
 
 impl HandleTopLocSListNodeOfItemLocation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTopLocSListNodeOfItemLocation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopLoc_SListNodeOfItemLocation
     pub fn get(&self) -> &crate::ffi_types::TopLoc_SListNodeOfItemLocation {
         unsafe {

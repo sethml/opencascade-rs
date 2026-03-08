@@ -66,6 +66,8 @@ extern "C" {
     pub fn HandleAppStdApplication_clone(
         self_: *const HandleAppStdApplication,
     ) -> crate::OcctResult<*mut HandleAppStdApplication>;
+    /// Check if Handle<AppStd_Application> is null
+    pub fn HandleAppStdApplication_is_null(self_: *const HandleAppStdApplication) -> bool;
     /// Dereference Handle to get *const AppStd_Application
     pub fn HandleAppStdApplication_get(
         handle: *const HandleAppStdApplication,
@@ -364,6 +366,8 @@ extern "C" {
     pub fn HandleTDataXtdAxis_clone(
         self_: *const HandleTDataXtdAxis,
     ) -> crate::OcctResult<*mut HandleTDataXtdAxis>;
+    /// Check if Handle<TDataXtd_Axis> is null
+    pub fn HandleTDataXtdAxis_is_null(self_: *const HandleTDataXtdAxis) -> bool;
     /// Dereference Handle to get *const TDataXtd_Axis
     pub fn HandleTDataXtdAxis_get(
         handle: *const HandleTDataXtdAxis,
@@ -748,6 +752,8 @@ extern "C" {
     pub fn HandleTDataXtdConstraint_clone(
         self_: *const HandleTDataXtdConstraint,
     ) -> crate::OcctResult<*mut HandleTDataXtdConstraint>;
+    /// Check if Handle<TDataXtd_Constraint> is null
+    pub fn HandleTDataXtdConstraint_is_null(self_: *const HandleTDataXtdConstraint) -> bool;
     /// Dereference Handle to get *const TDataXtd_Constraint
     pub fn HandleTDataXtdConstraint_get(
         handle: *const HandleTDataXtdConstraint,
@@ -1082,6 +1088,8 @@ extern "C" {
     pub fn HandleTDataXtdGeometry_clone(
         self_: *const HandleTDataXtdGeometry,
     ) -> crate::OcctResult<*mut HandleTDataXtdGeometry>;
+    /// Check if Handle<TDataXtd_Geometry> is null
+    pub fn HandleTDataXtdGeometry_is_null(self_: *const HandleTDataXtdGeometry) -> bool;
     /// Dereference Handle to get *const TDataXtd_Geometry
     pub fn HandleTDataXtdGeometry_get(
         handle: *const HandleTDataXtdGeometry,
@@ -1331,6 +1339,8 @@ extern "C" {
     pub fn HandleTDataXtdHArray1OfTrsf_clone(
         self_: *const HandleTDataXtdHArray1OfTrsf,
     ) -> crate::OcctResult<*mut HandleTDataXtdHArray1OfTrsf>;
+    /// Check if Handle<TDataXtd_HArray1OfTrsf> is null
+    pub fn HandleTDataXtdHArray1OfTrsf_is_null(self_: *const HandleTDataXtdHArray1OfTrsf) -> bool;
     /// Dereference Handle to get *const TDataXtd_HArray1OfTrsf
     pub fn HandleTDataXtdHArray1OfTrsf_get(
         handle: *const HandleTDataXtdHArray1OfTrsf,
@@ -1422,6 +1432,8 @@ extern "C" {
     pub fn HandleTDataXtdPattern_clone(
         self_: *const HandleTDataXtdPattern,
     ) -> crate::OcctResult<*mut HandleTDataXtdPattern>;
+    /// Check if Handle<TDataXtd_Pattern> is null
+    pub fn HandleTDataXtdPattern_is_null(self_: *const HandleTDataXtdPattern) -> bool;
     /// Dereference Handle to get *const TDataXtd_Pattern
     pub fn HandleTDataXtdPattern_get(
         handle: *const HandleTDataXtdPattern,
@@ -1809,6 +1821,8 @@ extern "C" {
     pub fn HandleTDataXtdPatternStd_clone(
         self_: *const HandleTDataXtdPatternStd,
     ) -> crate::OcctResult<*mut HandleTDataXtdPatternStd>;
+    /// Check if Handle<TDataXtd_PatternStd> is null
+    pub fn HandleTDataXtdPatternStd_is_null(self_: *const HandleTDataXtdPatternStd) -> bool;
     /// Dereference Handle to get *const TDataXtd_PatternStd
     pub fn HandleTDataXtdPatternStd_get(
         handle: *const HandleTDataXtdPatternStd,
@@ -2065,6 +2079,8 @@ extern "C" {
     pub fn HandleTDataXtdPlacement_clone(
         self_: *const HandleTDataXtdPlacement,
     ) -> crate::OcctResult<*mut HandleTDataXtdPlacement>;
+    /// Check if Handle<TDataXtd_Placement> is null
+    pub fn HandleTDataXtdPlacement_is_null(self_: *const HandleTDataXtdPlacement) -> bool;
     /// Dereference Handle to get *const TDataXtd_Placement
     pub fn HandleTDataXtdPlacement_get(
         handle: *const HandleTDataXtdPlacement,
@@ -2338,6 +2354,8 @@ extern "C" {
     pub fn HandleTDataXtdPlane_clone(
         self_: *const HandleTDataXtdPlane,
     ) -> crate::OcctResult<*mut HandleTDataXtdPlane>;
+    /// Check if Handle<TDataXtd_Plane> is null
+    pub fn HandleTDataXtdPlane_is_null(self_: *const HandleTDataXtdPlane) -> bool;
     /// Dereference Handle to get *const TDataXtd_Plane
     pub fn HandleTDataXtdPlane_get(
         handle: *const HandleTDataXtdPlane,
@@ -2606,6 +2624,8 @@ extern "C" {
     pub fn HandleTDataXtdPoint_clone(
         self_: *const HandleTDataXtdPoint,
     ) -> crate::OcctResult<*mut HandleTDataXtdPoint>;
+    /// Check if Handle<TDataXtd_Point> is null
+    pub fn HandleTDataXtdPoint_is_null(self_: *const HandleTDataXtdPoint) -> bool;
     /// Dereference Handle to get *const TDataXtd_Point
     pub fn HandleTDataXtdPoint_get(
         handle: *const HandleTDataXtdPoint,
@@ -2886,6 +2906,8 @@ extern "C" {
     pub fn HandleTDataXtdPosition_clone(
         self_: *const HandleTDataXtdPosition,
     ) -> crate::OcctResult<*mut HandleTDataXtdPosition>;
+    /// Check if Handle<TDataXtd_Position> is null
+    pub fn HandleTDataXtdPosition_is_null(self_: *const HandleTDataXtdPosition) -> bool;
     /// Dereference Handle to get *const TDataXtd_Position
     pub fn HandleTDataXtdPosition_get(
         handle: *const HandleTDataXtdPosition,
@@ -3285,6 +3307,8 @@ extern "C" {
     pub fn HandleTDataXtdPresentation_clone(
         self_: *const HandleTDataXtdPresentation,
     ) -> crate::OcctResult<*mut HandleTDataXtdPresentation>;
+    /// Check if Handle<TDataXtd_Presentation> is null
+    pub fn HandleTDataXtdPresentation_is_null(self_: *const HandleTDataXtdPresentation) -> bool;
     /// Dereference Handle to get *const TDataXtd_Presentation
     pub fn HandleTDataXtdPresentation_get(
         handle: *const HandleTDataXtdPresentation,
@@ -3551,6 +3575,8 @@ extern "C" {
     pub fn HandleTDataXtdShape_clone(
         self_: *const HandleTDataXtdShape,
     ) -> crate::OcctResult<*mut HandleTDataXtdShape>;
+    /// Check if Handle<TDataXtd_Shape> is null
+    pub fn HandleTDataXtdShape_is_null(self_: *const HandleTDataXtdShape) -> bool;
     /// Dereference Handle to get *const TDataXtd_Shape
     pub fn HandleTDataXtdShape_get(
         handle: *const HandleTDataXtdShape,
@@ -3900,6 +3926,8 @@ extern "C" {
     pub fn HandleTDataXtdTriangulation_clone(
         self_: *const HandleTDataXtdTriangulation,
     ) -> crate::OcctResult<*mut HandleTDataXtdTriangulation>;
+    /// Check if Handle<TDataXtd_Triangulation> is null
+    pub fn HandleTDataXtdTriangulation_is_null(self_: *const HandleTDataXtdTriangulation) -> bool;
     /// Dereference Handle to get *const TDataXtd_Triangulation
     pub fn HandleTDataXtdTriangulation_get(
         handle: *const HandleTDataXtdTriangulation,
@@ -4203,6 +4231,10 @@ extern "C" {
     pub fn HandleTNamingDeltaOnModification_clone(
         self_: *const HandleTNamingDeltaOnModification,
     ) -> crate::OcctResult<*mut HandleTNamingDeltaOnModification>;
+    /// Check if Handle<TNaming_DeltaOnModification> is null
+    pub fn HandleTNamingDeltaOnModification_is_null(
+        self_: *const HandleTNamingDeltaOnModification,
+    ) -> bool;
     /// Dereference Handle to get *const TNaming_DeltaOnModification
     pub fn HandleTNamingDeltaOnModification_get(
         handle: *const HandleTNamingDeltaOnModification,
@@ -4318,6 +4350,8 @@ extern "C" {
     pub fn HandleTNamingDeltaOnRemoval_clone(
         self_: *const HandleTNamingDeltaOnRemoval,
     ) -> crate::OcctResult<*mut HandleTNamingDeltaOnRemoval>;
+    /// Check if Handle<TNaming_DeltaOnRemoval> is null
+    pub fn HandleTNamingDeltaOnRemoval_is_null(self_: *const HandleTNamingDeltaOnRemoval) -> bool;
     /// Dereference Handle to get *const TNaming_DeltaOnRemoval
     pub fn HandleTNamingDeltaOnRemoval_get(
         handle: *const HandleTNamingDeltaOnRemoval,
@@ -4784,6 +4818,8 @@ extern "C" {
     pub fn HandleTNamingNamedShape_clone(
         self_: *const HandleTNamingNamedShape,
     ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
+    /// Check if Handle<TNaming_NamedShape> is null
+    pub fn HandleTNamingNamedShape_is_null(self_: *const HandleTNamingNamedShape) -> bool;
     /// Dereference Handle to get *const TNaming_NamedShape
     pub fn HandleTNamingNamedShape_get(
         handle: *const HandleTNamingNamedShape,
@@ -5047,6 +5083,8 @@ extern "C" {
     pub fn HandleTNamingNaming_clone(
         self_: *const HandleTNamingNaming,
     ) -> crate::OcctResult<*mut HandleTNamingNaming>;
+    /// Check if Handle<TNaming_Naming> is null
+    pub fn HandleTNamingNaming_is_null(self_: *const HandleTNamingNaming) -> bool;
     /// Dereference Handle to get *const TNaming_Naming
     pub fn HandleTNamingNaming_get(
         handle: *const HandleTNamingNaming,
@@ -5709,6 +5747,8 @@ extern "C" {
     pub fn HandleTNamingTranslateTool_clone(
         self_: *const HandleTNamingTranslateTool,
     ) -> crate::OcctResult<*mut HandleTNamingTranslateTool>;
+    /// Check if Handle<TNaming_TranslateTool> is null
+    pub fn HandleTNamingTranslateTool_is_null(self_: *const HandleTNamingTranslateTool) -> bool;
     /// Dereference Handle to get *const TNaming_TranslateTool
     pub fn HandleTNamingTranslateTool_get(
         handle: *const HandleTNamingTranslateTool,
@@ -5873,6 +5913,8 @@ extern "C" {
     pub fn HandleTNamingUsedShapes_clone(
         self_: *const HandleTNamingUsedShapes,
     ) -> crate::OcctResult<*mut HandleTNamingUsedShapes>;
+    /// Check if Handle<TNaming_UsedShapes> is null
+    pub fn HandleTNamingUsedShapes_is_null(self_: *const HandleTNamingUsedShapes) -> bool;
     /// Dereference Handle to get *const TNaming_UsedShapes
     pub fn HandleTNamingUsedShapes_get(
         handle: *const HandleTNamingUsedShapes,

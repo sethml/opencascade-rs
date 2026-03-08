@@ -1833,6 +1833,11 @@ unsafe impl crate::CppCopyable for HandleXCAFPrsAISObject {
 }
 
 impl HandleXCAFPrsAISObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFPrsAISObject_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFPrs_AISObject
     pub fn get(&self) -> &crate::ffi_types::XCAFPrs_AISObject {
         unsafe {
@@ -2451,6 +2456,11 @@ unsafe impl crate::CppCopyable for HandleXCAFPrsDriver {
 }
 
 impl HandleXCAFPrsDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFPrsDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFPrs_Driver
     pub fn get(&self) -> &crate::ffi_types::XCAFPrs_Driver {
         unsafe {
@@ -3143,6 +3153,11 @@ unsafe impl crate::CppCopyable for HandleXCAFPrsTexture {
 }
 
 impl HandleXCAFPrsTexture {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFPrsTexture_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFPrs_Texture
     pub fn get(&self) -> &crate::ffi_types::XCAFPrs_Texture {
         unsafe {

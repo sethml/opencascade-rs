@@ -234,232 +234,277 @@ typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TopoDS_AlertWithShape> HandleTopoDSAlertWithShape;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleBOPAlgoAlertAcquiredSelfIntersection_destructor(HandleBOPAlgoAlertAcquiredSelfIntersection* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertAcquiredSelfIntersection*> HandleBOPAlgoAlertAcquiredSelfIntersection_clone(const HandleBOPAlgoAlertAcquiredSelfIntersection* self_) {
     try { return {new HandleBOPAlgoAlertAcquiredSelfIntersection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertAcquiredSelfIntersection_is_null(const HandleBOPAlgoAlertAcquiredSelfIntersection* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertBOPNotAllowed_destructor(HandleBOPAlgoAlertBOPNotAllowed* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertBOPNotAllowed*> HandleBOPAlgoAlertBOPNotAllowed_clone(const HandleBOPAlgoAlertBOPNotAllowed* self_) {
     try { return {new HandleBOPAlgoAlertBOPNotAllowed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertBOPNotAllowed_is_null(const HandleBOPAlgoAlertBOPNotAllowed* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertBOPNotSet_destructor(HandleBOPAlgoAlertBOPNotSet* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertBOPNotSet*> HandleBOPAlgoAlertBOPNotSet_clone(const HandleBOPAlgoAlertBOPNotSet* self_) {
     try { return {new HandleBOPAlgoAlertBOPNotSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertBOPNotSet_is_null(const HandleBOPAlgoAlertBOPNotSet* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertBadPositioning_destructor(HandleBOPAlgoAlertBadPositioning* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertBadPositioning*> HandleBOPAlgoAlertBadPositioning_clone(const HandleBOPAlgoAlertBadPositioning* self_) {
     try { return {new HandleBOPAlgoAlertBadPositioning(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertBadPositioning_is_null(const HandleBOPAlgoAlertBadPositioning* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertBuilderFailed_destructor(HandleBOPAlgoAlertBuilderFailed* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertBuilderFailed*> HandleBOPAlgoAlertBuilderFailed_clone(const HandleBOPAlgoAlertBuilderFailed* self_) {
     try { return {new HandleBOPAlgoAlertBuilderFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertBuilderFailed_is_null(const HandleBOPAlgoAlertBuilderFailed* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertBuildingPCurveFailed_destructor(HandleBOPAlgoAlertBuildingPCurveFailed* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertBuildingPCurveFailed*> HandleBOPAlgoAlertBuildingPCurveFailed_clone(const HandleBOPAlgoAlertBuildingPCurveFailed* self_) {
     try { return {new HandleBOPAlgoAlertBuildingPCurveFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertBuildingPCurveFailed_is_null(const HandleBOPAlgoAlertBuildingPCurveFailed* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertEmptyShape_destructor(HandleBOPAlgoAlertEmptyShape* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertEmptyShape*> HandleBOPAlgoAlertEmptyShape_clone(const HandleBOPAlgoAlertEmptyShape* self_) {
     try { return {new HandleBOPAlgoAlertEmptyShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertEmptyShape_is_null(const HandleBOPAlgoAlertEmptyShape* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertFaceBuilderUnusedEdges_destructor(HandleBOPAlgoAlertFaceBuilderUnusedEdges* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertFaceBuilderUnusedEdges*> HandleBOPAlgoAlertFaceBuilderUnusedEdges_clone(const HandleBOPAlgoAlertFaceBuilderUnusedEdges* self_) {
     try { return {new HandleBOPAlgoAlertFaceBuilderUnusedEdges(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertFaceBuilderUnusedEdges_is_null(const HandleBOPAlgoAlertFaceBuilderUnusedEdges* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertIntersectionFailed_destructor(HandleBOPAlgoAlertIntersectionFailed* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertIntersectionFailed*> HandleBOPAlgoAlertIntersectionFailed_clone(const HandleBOPAlgoAlertIntersectionFailed* self_) {
     try { return {new HandleBOPAlgoAlertIntersectionFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertIntersectionFailed_is_null(const HandleBOPAlgoAlertIntersectionFailed* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_destructor(HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed*> HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_clone(const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed* self_) {
     try { return {new HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_is_null(const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertMultiDimensionalArguments_destructor(HandleBOPAlgoAlertMultiDimensionalArguments* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertMultiDimensionalArguments*> HandleBOPAlgoAlertMultiDimensionalArguments_clone(const HandleBOPAlgoAlertMultiDimensionalArguments* self_) {
     try { return {new HandleBOPAlgoAlertMultiDimensionalArguments(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertMultiDimensionalArguments_is_null(const HandleBOPAlgoAlertMultiDimensionalArguments* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertMultipleArguments_destructor(HandleBOPAlgoAlertMultipleArguments* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertMultipleArguments*> HandleBOPAlgoAlertMultipleArguments_clone(const HandleBOPAlgoAlertMultipleArguments* self_) {
     try { return {new HandleBOPAlgoAlertMultipleArguments(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertMultipleArguments_is_null(const HandleBOPAlgoAlertMultipleArguments* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertNoFacesToRemove_destructor(HandleBOPAlgoAlertNoFacesToRemove* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertNoFacesToRemove*> HandleBOPAlgoAlertNoFacesToRemove_clone(const HandleBOPAlgoAlertNoFacesToRemove* self_) {
     try { return {new HandleBOPAlgoAlertNoFacesToRemove(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertNoFacesToRemove_is_null(const HandleBOPAlgoAlertNoFacesToRemove* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertNoFiller_destructor(HandleBOPAlgoAlertNoFiller* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertNoFiller*> HandleBOPAlgoAlertNoFiller_clone(const HandleBOPAlgoAlertNoFiller* self_) {
     try { return {new HandleBOPAlgoAlertNoFiller(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertNoFiller_is_null(const HandleBOPAlgoAlertNoFiller* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertNoPeriodicityRequired_destructor(HandleBOPAlgoAlertNoPeriodicityRequired* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertNoPeriodicityRequired*> HandleBOPAlgoAlertNoPeriodicityRequired_clone(const HandleBOPAlgoAlertNoPeriodicityRequired* self_) {
     try { return {new HandleBOPAlgoAlertNoPeriodicityRequired(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertNoPeriodicityRequired_is_null(const HandleBOPAlgoAlertNoPeriodicityRequired* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertNotSplittableEdge_destructor(HandleBOPAlgoAlertNotSplittableEdge* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertNotSplittableEdge*> HandleBOPAlgoAlertNotSplittableEdge_clone(const HandleBOPAlgoAlertNotSplittableEdge* self_) {
     try { return {new HandleBOPAlgoAlertNotSplittableEdge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertNotSplittableEdge_is_null(const HandleBOPAlgoAlertNotSplittableEdge* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertNullInputShapes_destructor(HandleBOPAlgoAlertNullInputShapes* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertNullInputShapes*> HandleBOPAlgoAlertNullInputShapes_clone(const HandleBOPAlgoAlertNullInputShapes* self_) {
     try { return {new HandleBOPAlgoAlertNullInputShapes(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertNullInputShapes_is_null(const HandleBOPAlgoAlertNullInputShapes* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertPostTreatFF_destructor(HandleBOPAlgoAlertPostTreatFF* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertPostTreatFF*> HandleBOPAlgoAlertPostTreatFF_clone(const HandleBOPAlgoAlertPostTreatFF* self_) {
     try { return {new HandleBOPAlgoAlertPostTreatFF(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertPostTreatFF_is_null(const HandleBOPAlgoAlertPostTreatFF* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_destructor(HandleBOPAlgoAlertRemovalOfIBForEdgesFailed* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForEdgesFailed*> HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_clone(const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed* self_) {
     try { return {new HandleBOPAlgoAlertRemovalOfIBForEdgesFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_is_null(const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertRemovalOfIBForFacesFailed_destructor(HandleBOPAlgoAlertRemovalOfIBForFacesFailed* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForFacesFailed*> HandleBOPAlgoAlertRemovalOfIBForFacesFailed_clone(const HandleBOPAlgoAlertRemovalOfIBForFacesFailed* self_) {
     try { return {new HandleBOPAlgoAlertRemovalOfIBForFacesFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertRemovalOfIBForFacesFailed_is_null(const HandleBOPAlgoAlertRemovalOfIBForFacesFailed* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertRemovalOfIBForMDimShapes_destructor(HandleBOPAlgoAlertRemovalOfIBForMDimShapes* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForMDimShapes*> HandleBOPAlgoAlertRemovalOfIBForMDimShapes_clone(const HandleBOPAlgoAlertRemovalOfIBForMDimShapes* self_) {
     try { return {new HandleBOPAlgoAlertRemovalOfIBForMDimShapes(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertRemovalOfIBForMDimShapes_is_null(const HandleBOPAlgoAlertRemovalOfIBForMDimShapes* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_destructor(HandleBOPAlgoAlertRemovalOfIBForSolidsFailed* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForSolidsFailed*> HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_clone(const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed* self_) {
     try { return {new HandleBOPAlgoAlertRemovalOfIBForSolidsFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_is_null(const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertRemoveFeaturesFailed_destructor(HandleBOPAlgoAlertRemoveFeaturesFailed* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertRemoveFeaturesFailed*> HandleBOPAlgoAlertRemoveFeaturesFailed_clone(const HandleBOPAlgoAlertRemoveFeaturesFailed* self_) {
     try { return {new HandleBOPAlgoAlertRemoveFeaturesFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertRemoveFeaturesFailed_is_null(const HandleBOPAlgoAlertRemoveFeaturesFailed* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertSelfInterferingShape_destructor(HandleBOPAlgoAlertSelfInterferingShape* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertSelfInterferingShape*> HandleBOPAlgoAlertSelfInterferingShape_clone(const HandleBOPAlgoAlertSelfInterferingShape* self_) {
     try { return {new HandleBOPAlgoAlertSelfInterferingShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertSelfInterferingShape_is_null(const HandleBOPAlgoAlertSelfInterferingShape* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertShapeIsNotPeriodic_destructor(HandleBOPAlgoAlertShapeIsNotPeriodic* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertShapeIsNotPeriodic*> HandleBOPAlgoAlertShapeIsNotPeriodic_clone(const HandleBOPAlgoAlertShapeIsNotPeriodic* self_) {
     try { return {new HandleBOPAlgoAlertShapeIsNotPeriodic(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertShapeIsNotPeriodic_is_null(const HandleBOPAlgoAlertShapeIsNotPeriodic* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertShellSplitterFailed_destructor(HandleBOPAlgoAlertShellSplitterFailed* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertShellSplitterFailed*> HandleBOPAlgoAlertShellSplitterFailed_clone(const HandleBOPAlgoAlertShellSplitterFailed* self_) {
     try { return {new HandleBOPAlgoAlertShellSplitterFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertShellSplitterFailed_is_null(const HandleBOPAlgoAlertShellSplitterFailed* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertSolidBuilderFailed_destructor(HandleBOPAlgoAlertSolidBuilderFailed* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertSolidBuilderFailed*> HandleBOPAlgoAlertSolidBuilderFailed_clone(const HandleBOPAlgoAlertSolidBuilderFailed* self_) {
     try { return {new HandleBOPAlgoAlertSolidBuilderFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertSolidBuilderFailed_is_null(const HandleBOPAlgoAlertSolidBuilderFailed* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertSolidBuilderUnusedFaces_destructor(HandleBOPAlgoAlertSolidBuilderUnusedFaces* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertSolidBuilderUnusedFaces*> HandleBOPAlgoAlertSolidBuilderUnusedFaces_clone(const HandleBOPAlgoAlertSolidBuilderUnusedFaces* self_) {
     try { return {new HandleBOPAlgoAlertSolidBuilderUnusedFaces(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertSolidBuilderUnusedFaces_is_null(const HandleBOPAlgoAlertSolidBuilderUnusedFaces* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertTooFewArguments_destructor(HandleBOPAlgoAlertTooFewArguments* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertTooFewArguments*> HandleBOPAlgoAlertTooFewArguments_clone(const HandleBOPAlgoAlertTooFewArguments* self_) {
     try { return {new HandleBOPAlgoAlertTooFewArguments(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertTooFewArguments_is_null(const HandleBOPAlgoAlertTooFewArguments* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertTooSmallEdge_destructor(HandleBOPAlgoAlertTooSmallEdge* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertTooSmallEdge*> HandleBOPAlgoAlertTooSmallEdge_clone(const HandleBOPAlgoAlertTooSmallEdge* self_) {
     try { return {new HandleBOPAlgoAlertTooSmallEdge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertTooSmallEdge_is_null(const HandleBOPAlgoAlertTooSmallEdge* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertUnableToGlue_destructor(HandleBOPAlgoAlertUnableToGlue* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertUnableToGlue*> HandleBOPAlgoAlertUnableToGlue_clone(const HandleBOPAlgoAlertUnableToGlue* self_) {
     try { return {new HandleBOPAlgoAlertUnableToGlue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertUnableToGlue_is_null(const HandleBOPAlgoAlertUnableToGlue* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_destructor(HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace*> HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_clone(const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace* self_) {
     try { return {new HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_is_null(const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertUnableToMakeIdentical_destructor(HandleBOPAlgoAlertUnableToMakeIdentical* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakeIdentical*> HandleBOPAlgoAlertUnableToMakeIdentical_clone(const HandleBOPAlgoAlertUnableToMakeIdentical* self_) {
     try { return {new HandleBOPAlgoAlertUnableToMakeIdentical(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertUnableToMakeIdentical_is_null(const HandleBOPAlgoAlertUnableToMakeIdentical* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertUnableToMakePeriodic_destructor(HandleBOPAlgoAlertUnableToMakePeriodic* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakePeriodic*> HandleBOPAlgoAlertUnableToMakePeriodic_clone(const HandleBOPAlgoAlertUnableToMakePeriodic* self_) {
     try { return {new HandleBOPAlgoAlertUnableToMakePeriodic(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertUnableToMakePeriodic_is_null(const HandleBOPAlgoAlertUnableToMakePeriodic* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertUnableToOrientTheShape_destructor(HandleBOPAlgoAlertUnableToOrientTheShape* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertUnableToOrientTheShape*> HandleBOPAlgoAlertUnableToOrientTheShape_clone(const HandleBOPAlgoAlertUnableToOrientTheShape* self_) {
     try { return {new HandleBOPAlgoAlertUnableToOrientTheShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertUnableToOrientTheShape_is_null(const HandleBOPAlgoAlertUnableToOrientTheShape* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertUnableToRemoveTheFeature_destructor(HandleBOPAlgoAlertUnableToRemoveTheFeature* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertUnableToRemoveTheFeature*> HandleBOPAlgoAlertUnableToRemoveTheFeature_clone(const HandleBOPAlgoAlertUnableToRemoveTheFeature* self_) {
     try { return {new HandleBOPAlgoAlertUnableToRemoveTheFeature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertUnableToRemoveTheFeature_is_null(const HandleBOPAlgoAlertUnableToRemoveTheFeature* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertUnableToRepeat_destructor(HandleBOPAlgoAlertUnableToRepeat* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertUnableToRepeat*> HandleBOPAlgoAlertUnableToRepeat_clone(const HandleBOPAlgoAlertUnableToRepeat* self_) {
     try { return {new HandleBOPAlgoAlertUnableToRepeat(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertUnableToRepeat_is_null(const HandleBOPAlgoAlertUnableToRepeat* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertUnableToTrim_destructor(HandleBOPAlgoAlertUnableToTrim* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertUnableToTrim*> HandleBOPAlgoAlertUnableToTrim_clone(const HandleBOPAlgoAlertUnableToTrim* self_) {
     try { return {new HandleBOPAlgoAlertUnableToTrim(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertUnableToTrim_is_null(const HandleBOPAlgoAlertUnableToTrim* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertUnknownShape_destructor(HandleBOPAlgoAlertUnknownShape* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertUnknownShape*> HandleBOPAlgoAlertUnknownShape_clone(const HandleBOPAlgoAlertUnknownShape* self_) {
     try { return {new HandleBOPAlgoAlertUnknownShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertUnknownShape_is_null(const HandleBOPAlgoAlertUnknownShape* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertUnsupportedType_destructor(HandleBOPAlgoAlertUnsupportedType* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertUnsupportedType*> HandleBOPAlgoAlertUnsupportedType_clone(const HandleBOPAlgoAlertUnsupportedType* self_) {
     try { return {new HandleBOPAlgoAlertUnsupportedType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertUnsupportedType_is_null(const HandleBOPAlgoAlertUnsupportedType* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPAlgoAlertUserBreak_destructor(HandleBOPAlgoAlertUserBreak* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPAlgoAlertUserBreak*> HandleBOPAlgoAlertUserBreak_clone(const HandleBOPAlgoAlertUserBreak* self_) {
     try { return {new HandleBOPAlgoAlertUserBreak(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPAlgoAlertUserBreak_is_null(const HandleBOPAlgoAlertUserBreak* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPDSCommonBlock_destructor(HandleBOPDSCommonBlock* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPDSCommonBlock*> HandleBOPDSCommonBlock_clone(const HandleBOPDSCommonBlock* self_) {
     try { return {new HandleBOPDSCommonBlock(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPDSCommonBlock_is_null(const HandleBOPDSCommonBlock* self_) { return self_->IsNull(); }
 extern "C" void HandleBOPDSPaveBlock_destructor(HandleBOPDSPaveBlock* self_) { delete self_; }
 extern "C" OcctResult<HandleBOPDSPaveBlock*> HandleBOPDSPaveBlock_clone(const HandleBOPDSPaveBlock* self_) {
     try { return {new HandleBOPDSPaveBlock(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBOPDSPaveBlock_is_null(const HandleBOPDSPaveBlock* self_) { return self_->IsNull(); }
 extern "C" void HandleIntToolsContext_destructor(HandleIntToolsContext* self_) { delete self_; }
 extern "C" OcctResult<HandleIntToolsContext*> HandleIntToolsContext_clone(const HandleIntToolsContext* self_) {
     try { return {new HandleIntToolsContext(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIntToolsContext_is_null(const HandleIntToolsContext* self_) { return self_->IsNull(); }
 extern "C" void HandleIntToolsTopolTool_destructor(HandleIntToolsTopolTool* self_) { delete self_; }
 extern "C" OcctResult<HandleIntToolsTopolTool*> HandleIntToolsTopolTool_clone(const HandleIntToolsTopolTool* self_) {
     try { return {new HandleIntToolsTopolTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIntToolsTopolTool_is_null(const HandleIntToolsTopolTool* self_) { return self_->IsNull(); }
 
 // ========================
 // BOPAlgo_AlertUserBreak wrappers

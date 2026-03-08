@@ -612,6 +612,13 @@ unsafe impl crate::CppCopyable for HandleShapeFixComposeShell {
 }
 
 impl HandleShapeFixComposeShell {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeFixComposeShell_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_ComposeShell
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_ComposeShell {
         unsafe {
@@ -1179,6 +1186,11 @@ unsafe impl crate::CppCopyable for HandleShapeFixEdge {
 }
 
 impl HandleShapeFixEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKShHealing::HandleShapeFixEdge_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_Edge
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Edge {
         unsafe {
@@ -1517,6 +1529,13 @@ unsafe impl crate::CppCopyable for HandleShapeFixEdgeProjAux {
 }
 
 impl HandleShapeFixEdgeProjAux {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeFixEdgeProjAux_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_EdgeProjAux
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_EdgeProjAux {
         unsafe {
@@ -2311,6 +2330,11 @@ unsafe impl crate::CppCopyable for HandleShapeFixFace {
 }
 
 impl HandleShapeFixFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKShHealing::HandleShapeFixFace_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_Face
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Face {
         unsafe {
@@ -2952,6 +2976,13 @@ unsafe impl crate::CppCopyable for HandleShapeFixFixSmallFace {
 }
 
 impl HandleShapeFixFixSmallFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallFace_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_FixSmallFace
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_FixSmallFace {
         unsafe {
@@ -3427,6 +3458,13 @@ unsafe impl crate::CppCopyable for HandleShapeFixFixSmallSolid {
 }
 
 impl HandleShapeFixFixSmallSolid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallSolid_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_FixSmallSolid
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_FixSmallSolid {
         unsafe {
@@ -4106,6 +4144,11 @@ unsafe impl crate::CppCopyable for HandleShapeFixRoot {
 }
 
 impl HandleShapeFixRoot {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKShHealing::HandleShapeFixRoot_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_Root
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Root {
         unsafe {
@@ -4848,6 +4891,11 @@ unsafe impl crate::CppCopyable for HandleShapeFixShape {
 }
 
 impl HandleShapeFixShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKShHealing::HandleShapeFixShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_Shape
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Shape {
         unsafe {
@@ -5472,6 +5520,11 @@ unsafe impl crate::CppCopyable for HandleShapeFixShell {
 }
 
 impl HandleShapeFixShell {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKShHealing::HandleShapeFixShell_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_Shell
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Shell {
         unsafe {
@@ -5988,6 +6041,11 @@ unsafe impl crate::CppCopyable for HandleShapeFixSolid {
 }
 
 impl HandleShapeFixSolid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKShHealing::HandleShapeFixSolid_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_Solid
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Solid {
         unsafe {
@@ -6419,6 +6477,15 @@ unsafe impl crate::CppCopyable for HandleShapeFixSplitCommonVertex {
 }
 
 impl HandleShapeFixSplitCommonVertex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeFixSplitCommonVertex_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_SplitCommonVertex
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_SplitCommonVertex {
         unsafe {
@@ -7949,6 +8016,11 @@ unsafe impl crate::CppCopyable for HandleShapeFixWire {
 }
 
 impl HandleShapeFixWire {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKShHealing::HandleShapeFixWire_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_Wire
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Wire {
         unsafe {
@@ -8975,6 +9047,13 @@ unsafe impl crate::CppCopyable for HandleShapeFixWireframe {
 }
 
 impl HandleShapeFixWireframe {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeFixWireframe_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeFix_Wireframe
     pub fn get(&self) -> &crate::ffi_types::ShapeFix_Wireframe {
         unsafe {

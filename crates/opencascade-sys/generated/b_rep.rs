@@ -1441,6 +1441,11 @@ unsafe impl crate::CppCopyable for HandleBRepCurve3D {
 }
 
 impl HandleBRepCurve3D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepCurve3D_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_Curve3D
     pub fn get(&self) -> &crate::ffi_types::BRep_Curve3D {
         unsafe {
@@ -1958,6 +1963,11 @@ unsafe impl crate::CppCopyable for HandleBRepCurveOn2Surfaces {
 }
 
 impl HandleBRepCurveOn2Surfaces {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepCurveOn2Surfaces_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_CurveOn2Surfaces
     pub fn get(&self) -> &crate::ffi_types::BRep_CurveOn2Surfaces {
         unsafe {
@@ -2608,6 +2618,13 @@ unsafe impl crate::CppCopyable for HandleBRepCurveOnClosedSurface {
 }
 
 impl HandleBRepCurveOnClosedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepCurveOnClosedSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRep_CurveOnClosedSurface
     pub fn get(&self) -> &crate::ffi_types::BRep_CurveOnClosedSurface {
         unsafe {
@@ -3202,6 +3219,11 @@ unsafe impl crate::CppCopyable for HandleBRepCurveOnSurface {
 }
 
 impl HandleBRepCurveOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepCurveOnSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_CurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::BRep_CurveOnSurface {
         unsafe {
@@ -3812,6 +3834,13 @@ unsafe impl crate::CppCopyable for HandleBRepCurveRepresentation {
 }
 
 impl HandleBRepCurveRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepCurveRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRep_CurveRepresentation
     pub fn get(&self) -> &crate::ffi_types::BRep_CurveRepresentation {
         unsafe {
@@ -4416,6 +4445,11 @@ unsafe impl crate::CppCopyable for HandleBRepGCurve {
 }
 
 impl HandleBRepGCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepGCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_GCurve
     pub fn get(&self) -> &crate::ffi_types::BRep_GCurve {
         unsafe {
@@ -4809,6 +4843,11 @@ unsafe impl crate::CppCopyable for HandleBRepPointOnCurve {
 }
 
 impl HandleBRepPointOnCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepPointOnCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_PointOnCurve
     pub fn get(&self) -> &crate::ffi_types::BRep_PointOnCurve {
         unsafe {
@@ -5184,6 +5223,13 @@ unsafe impl crate::CppCopyable for HandleBRepPointOnCurveOnSurface {
 }
 
 impl HandleBRepPointOnCurveOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPointOnCurveOnSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRep_PointOnCurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::BRep_PointOnCurveOnSurface {
         unsafe {
@@ -5548,6 +5594,11 @@ unsafe impl crate::CppCopyable for HandleBRepPointOnSurface {
 }
 
 impl HandleBRepPointOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepPointOnSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_PointOnSurface
     pub fn get(&self) -> &crate::ffi_types::BRep_PointOnSurface {
         unsafe {
@@ -5943,6 +5994,13 @@ unsafe impl crate::CppCopyable for HandleBRepPointRepresentation {
 }
 
 impl HandleBRepPointRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPointRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRep_PointRepresentation
     pub fn get(&self) -> &crate::ffi_types::BRep_PointRepresentation {
         unsafe {
@@ -6313,6 +6371,11 @@ unsafe impl crate::CppCopyable for HandleBRepPointsOnSurface {
 }
 
 impl HandleBRepPointsOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepPointsOnSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_PointsOnSurface
     pub fn get(&self) -> &crate::ffi_types::BRep_PointsOnSurface {
         unsafe {
@@ -6799,6 +6862,11 @@ unsafe impl crate::CppCopyable for HandleBRepPolygon3D {
 }
 
 impl HandleBRepPolygon3D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepPolygon3D_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_Polygon3D
     pub fn get(&self) -> &crate::ffi_types::BRep_Polygon3D {
         unsafe {
@@ -7307,6 +7375,13 @@ unsafe impl crate::CppCopyable for HandleBRepPolygonOnClosedSurface {
 }
 
 impl HandleBRepPolygonOnClosedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPolygonOnClosedSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRep_PolygonOnClosedSurface
     pub fn get(&self) -> &crate::ffi_types::BRep_PolygonOnClosedSurface {
         unsafe {
@@ -7803,6 +7878,15 @@ unsafe impl crate::CppCopyable for HandleBRepPolygonOnClosedTriangulation {
 }
 
 impl HandleBRepPolygonOnClosedTriangulation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPolygonOnClosedTriangulation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRep_PolygonOnClosedTriangulation
     pub fn get(&self) -> &crate::ffi_types::BRep_PolygonOnClosedTriangulation {
         unsafe {
@@ -8311,6 +8395,11 @@ unsafe impl crate::CppCopyable for HandleBRepPolygonOnSurface {
 }
 
 impl HandleBRepPolygonOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepPolygonOnSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_PolygonOnSurface
     pub fn get(&self) -> &crate::ffi_types::BRep_PolygonOnSurface {
         unsafe {
@@ -8828,6 +8917,13 @@ unsafe impl crate::CppCopyable for HandleBRepPolygonOnTriangulation {
 }
 
 impl HandleBRepPolygonOnTriangulation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPolygonOnTriangulation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRep_PolygonOnTriangulation
     pub fn get(&self) -> &crate::ffi_types::BRep_PolygonOnTriangulation {
         unsafe {
@@ -9249,6 +9345,11 @@ unsafe impl crate::CppCopyable for HandleBRepTEdge {
 }
 
 impl HandleBRepTEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepTEdge_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_TEdge
     pub fn get(&self) -> &crate::ffi_types::BRep_TEdge {
         unsafe {
@@ -9755,6 +9856,11 @@ unsafe impl crate::CppCopyable for HandleBRepTFace {
 }
 
 impl HandleBRepTFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepTFace_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_TFace
     pub fn get(&self) -> &crate::ffi_types::BRep_TFace {
         unsafe {
@@ -10137,6 +10243,11 @@ unsafe impl crate::CppCopyable for HandleBRepTVertex {
 }
 
 impl HandleBRepTVertex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepTVertex_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRep_TVertex
     pub fn get(&self) -> &crate::ffi_types::BRep_TVertex {
         unsafe {

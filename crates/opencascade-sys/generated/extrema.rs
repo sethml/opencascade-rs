@@ -5722,6 +5722,11 @@ unsafe impl crate::CppCopyable for HandleExtremaExtPExtS {
 }
 
 impl HandleExtremaExtPExtS {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Extrema_ExtPExtS
     pub fn get(&self) -> &crate::ffi_types::Extrema_ExtPExtS {
         unsafe {
@@ -6025,6 +6030,11 @@ unsafe impl crate::CppCopyable for HandleExtremaExtPRevS {
 }
 
 impl HandleExtremaExtPRevS {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Extrema_ExtPRevS
     pub fn get(&self) -> &crate::ffi_types::Extrema_ExtPRevS {
         unsafe {
@@ -9205,6 +9215,13 @@ unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnCurv {
 }
 
 impl HandleExtremaHArray1OfPOnCurv {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnCurv
     pub fn get(&self) -> &crate::ffi_types::Extrema_HArray1OfPOnCurv {
         unsafe {
@@ -9489,6 +9506,15 @@ unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnCurv2d {
 }
 
 impl HandleExtremaHArray1OfPOnCurv2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnCurv2d
     pub fn get(&self) -> &crate::ffi_types::Extrema_HArray1OfPOnCurv2d {
         unsafe {
@@ -9771,6 +9797,13 @@ unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnSurf {
 }
 
 impl HandleExtremaHArray1OfPOnSurf {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnSurf
     pub fn get(&self) -> &crate::ffi_types::Extrema_HArray1OfPOnSurf {
         unsafe {
@@ -10033,6 +10066,13 @@ unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnCurv {
 }
 
 impl HandleExtremaHArray2OfPOnCurv {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnCurv
     pub fn get(&self) -> &crate::ffi_types::Extrema_HArray2OfPOnCurv {
         unsafe {
@@ -10299,6 +10339,15 @@ unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnCurv2d {
 }
 
 impl HandleExtremaHArray2OfPOnCurv2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnCurv2d
     pub fn get(&self) -> &crate::ffi_types::Extrema_HArray2OfPOnCurv2d {
         unsafe {
@@ -10563,6 +10612,13 @@ unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnSurf {
 }
 
 impl HandleExtremaHArray2OfPOnSurf {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnSurf
     pub fn get(&self) -> &crate::ffi_types::Extrema_HArray2OfPOnSurf {
         unsafe {

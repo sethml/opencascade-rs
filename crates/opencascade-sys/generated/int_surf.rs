@@ -674,6 +674,11 @@ unsafe impl crate::CppCopyable for HandleIntSurfLineOn2S {
 }
 
 impl HandleIntSurfLineOn2S {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IntSurf_LineOn2S
     pub fn get(&self) -> &crate::ffi_types::IntSurf_LineOn2S {
         unsafe {

@@ -533,6 +533,11 @@ unsafe impl crate::CppCopyable for HandleRWObjCafReader {
 }
 
 impl HandleRWObjCafReader {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEOBJ::HandleRWObjCafReader_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying RWObj_CafReader
     pub fn get(&self) -> &crate::ffi_types::RWObj_CafReader {
         unsafe {
@@ -847,6 +852,11 @@ unsafe impl crate::CppCopyable for HandleRWObjCafWriter {
 }
 
 impl HandleRWObjCafWriter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEOBJ::HandleRWObjCafWriter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying RWObj_CafWriter
     pub fn get(&self) -> &crate::ffi_types::RWObj_CafWriter {
         unsafe {
@@ -1238,6 +1248,11 @@ unsafe impl crate::CppCopyable for HandleRWObjObjMaterialMap {
 }
 
 impl HandleRWObjObjMaterialMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEOBJ::HandleRWObjObjMaterialMap_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying RWObj_ObjMaterialMap
     pub fn get(&self) -> &crate::ffi_types::RWObj_ObjMaterialMap {
         unsafe {
@@ -1805,6 +1820,11 @@ unsafe impl crate::CppCopyable for HandleRWObjReader {
 }
 
 impl HandleRWObjReader {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEOBJ::HandleRWObjReader_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying RWObj_Reader
     pub fn get(&self) -> &crate::ffi_types::RWObj_Reader {
         unsafe {
@@ -2295,6 +2315,13 @@ unsafe impl crate::CppCopyable for HandleRWObjTriangulationReader {
 }
 
 impl HandleRWObjTriangulationReader {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEOBJ::HandleRWObjTriangulationReader_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying RWObj_TriangulationReader
     pub fn get(&self) -> &crate::ffi_types::RWObj_TriangulationReader {
         unsafe {

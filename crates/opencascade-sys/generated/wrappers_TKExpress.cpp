@@ -143,302 +143,361 @@ typedef opencascade::handle<Standard_Failure> HandleStandardFailure;
 typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleExprIntrpGenExp_destructor(HandleExprIntrpGenExp* self_) { delete self_; }
 extern "C" OcctResult<HandleExprIntrpGenExp*> HandleExprIntrpGenExp_clone(const HandleExprIntrpGenExp* self_) {
     try { return {new HandleExprIntrpGenExp(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprIntrpGenExp_is_null(const HandleExprIntrpGenExp* self_) { return self_->IsNull(); }
 extern "C" void HandleExprIntrpGenFct_destructor(HandleExprIntrpGenFct* self_) { delete self_; }
 extern "C" OcctResult<HandleExprIntrpGenFct*> HandleExprIntrpGenFct_clone(const HandleExprIntrpGenFct* self_) {
     try { return {new HandleExprIntrpGenFct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprIntrpGenFct_is_null(const HandleExprIntrpGenFct* self_) { return self_->IsNull(); }
 extern "C" void HandleExprIntrpGenRel_destructor(HandleExprIntrpGenRel* self_) { delete self_; }
 extern "C" OcctResult<HandleExprIntrpGenRel*> HandleExprIntrpGenRel_clone(const HandleExprIntrpGenRel* self_) {
     try { return {new HandleExprIntrpGenRel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprIntrpGenRel_is_null(const HandleExprIntrpGenRel* self_) { return self_->IsNull(); }
 extern "C" void HandleExprIntrpGenerator_destructor(HandleExprIntrpGenerator* self_) { delete self_; }
 extern "C" OcctResult<HandleExprIntrpGenerator*> HandleExprIntrpGenerator_clone(const HandleExprIntrpGenerator* self_) {
     try { return {new HandleExprIntrpGenerator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprIntrpGenerator_is_null(const HandleExprIntrpGenerator* self_) { return self_->IsNull(); }
 extern "C" void HandleExprIntrpSyntaxError_destructor(HandleExprIntrpSyntaxError* self_) { delete self_; }
 extern "C" OcctResult<HandleExprIntrpSyntaxError*> HandleExprIntrpSyntaxError_clone(const HandleExprIntrpSyntaxError* self_) {
     try { return {new HandleExprIntrpSyntaxError(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprIntrpSyntaxError_is_null(const HandleExprIntrpSyntaxError* self_) { return self_->IsNull(); }
 extern "C" void HandleExprAbsolute_destructor(HandleExprAbsolute* self_) { delete self_; }
 extern "C" OcctResult<HandleExprAbsolute*> HandleExprAbsolute_clone(const HandleExprAbsolute* self_) {
     try { return {new HandleExprAbsolute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprAbsolute_is_null(const HandleExprAbsolute* self_) { return self_->IsNull(); }
 extern "C" void HandleExprArcCosine_destructor(HandleExprArcCosine* self_) { delete self_; }
 extern "C" OcctResult<HandleExprArcCosine*> HandleExprArcCosine_clone(const HandleExprArcCosine* self_) {
     try { return {new HandleExprArcCosine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprArcCosine_is_null(const HandleExprArcCosine* self_) { return self_->IsNull(); }
 extern "C" void HandleExprArcSine_destructor(HandleExprArcSine* self_) { delete self_; }
 extern "C" OcctResult<HandleExprArcSine*> HandleExprArcSine_clone(const HandleExprArcSine* self_) {
     try { return {new HandleExprArcSine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprArcSine_is_null(const HandleExprArcSine* self_) { return self_->IsNull(); }
 extern "C" void HandleExprArcTangent_destructor(HandleExprArcTangent* self_) { delete self_; }
 extern "C" OcctResult<HandleExprArcTangent*> HandleExprArcTangent_clone(const HandleExprArcTangent* self_) {
     try { return {new HandleExprArcTangent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprArcTangent_is_null(const HandleExprArcTangent* self_) { return self_->IsNull(); }
 extern "C" void HandleExprArgCosh_destructor(HandleExprArgCosh* self_) { delete self_; }
 extern "C" OcctResult<HandleExprArgCosh*> HandleExprArgCosh_clone(const HandleExprArgCosh* self_) {
     try { return {new HandleExprArgCosh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprArgCosh_is_null(const HandleExprArgCosh* self_) { return self_->IsNull(); }
 extern "C" void HandleExprArgSinh_destructor(HandleExprArgSinh* self_) { delete self_; }
 extern "C" OcctResult<HandleExprArgSinh*> HandleExprArgSinh_clone(const HandleExprArgSinh* self_) {
     try { return {new HandleExprArgSinh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprArgSinh_is_null(const HandleExprArgSinh* self_) { return self_->IsNull(); }
 extern "C" void HandleExprArgTanh_destructor(HandleExprArgTanh* self_) { delete self_; }
 extern "C" OcctResult<HandleExprArgTanh*> HandleExprArgTanh_clone(const HandleExprArgTanh* self_) {
     try { return {new HandleExprArgTanh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprArgTanh_is_null(const HandleExprArgTanh* self_) { return self_->IsNull(); }
 extern "C" void HandleExprBinaryExpression_destructor(HandleExprBinaryExpression* self_) { delete self_; }
 extern "C" OcctResult<HandleExprBinaryExpression*> HandleExprBinaryExpression_clone(const HandleExprBinaryExpression* self_) {
     try { return {new HandleExprBinaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprBinaryExpression_is_null(const HandleExprBinaryExpression* self_) { return self_->IsNull(); }
 extern "C" void HandleExprBinaryFunction_destructor(HandleExprBinaryFunction* self_) { delete self_; }
 extern "C" OcctResult<HandleExprBinaryFunction*> HandleExprBinaryFunction_clone(const HandleExprBinaryFunction* self_) {
     try { return {new HandleExprBinaryFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprBinaryFunction_is_null(const HandleExprBinaryFunction* self_) { return self_->IsNull(); }
 extern "C" void HandleExprCosh_destructor(HandleExprCosh* self_) { delete self_; }
 extern "C" OcctResult<HandleExprCosh*> HandleExprCosh_clone(const HandleExprCosh* self_) {
     try { return {new HandleExprCosh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprCosh_is_null(const HandleExprCosh* self_) { return self_->IsNull(); }
 extern "C" void HandleExprCosine_destructor(HandleExprCosine* self_) { delete self_; }
 extern "C" OcctResult<HandleExprCosine*> HandleExprCosine_clone(const HandleExprCosine* self_) {
     try { return {new HandleExprCosine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprCosine_is_null(const HandleExprCosine* self_) { return self_->IsNull(); }
 extern "C" void HandleExprDifference_destructor(HandleExprDifference* self_) { delete self_; }
 extern "C" OcctResult<HandleExprDifference*> HandleExprDifference_clone(const HandleExprDifference* self_) {
     try { return {new HandleExprDifference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprDifference_is_null(const HandleExprDifference* self_) { return self_->IsNull(); }
 extern "C" void HandleExprDifferent_destructor(HandleExprDifferent* self_) { delete self_; }
 extern "C" OcctResult<HandleExprDifferent*> HandleExprDifferent_clone(const HandleExprDifferent* self_) {
     try { return {new HandleExprDifferent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprDifferent_is_null(const HandleExprDifferent* self_) { return self_->IsNull(); }
 extern "C" void HandleExprDivision_destructor(HandleExprDivision* self_) { delete self_; }
 extern "C" OcctResult<HandleExprDivision*> HandleExprDivision_clone(const HandleExprDivision* self_) {
     try { return {new HandleExprDivision(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprDivision_is_null(const HandleExprDivision* self_) { return self_->IsNull(); }
 extern "C" void HandleExprEqual_destructor(HandleExprEqual* self_) { delete self_; }
 extern "C" OcctResult<HandleExprEqual*> HandleExprEqual_clone(const HandleExprEqual* self_) {
     try { return {new HandleExprEqual(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprEqual_is_null(const HandleExprEqual* self_) { return self_->IsNull(); }
 extern "C" void HandleExprExponential_destructor(HandleExprExponential* self_) { delete self_; }
 extern "C" OcctResult<HandleExprExponential*> HandleExprExponential_clone(const HandleExprExponential* self_) {
     try { return {new HandleExprExponential(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprExponential_is_null(const HandleExprExponential* self_) { return self_->IsNull(); }
 extern "C" void HandleExprExponentiate_destructor(HandleExprExponentiate* self_) { delete self_; }
 extern "C" OcctResult<HandleExprExponentiate*> HandleExprExponentiate_clone(const HandleExprExponentiate* self_) {
     try { return {new HandleExprExponentiate(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprExponentiate_is_null(const HandleExprExponentiate* self_) { return self_->IsNull(); }
 extern "C" void HandleExprExprFailure_destructor(HandleExprExprFailure* self_) { delete self_; }
 extern "C" OcctResult<HandleExprExprFailure*> HandleExprExprFailure_clone(const HandleExprExprFailure* self_) {
     try { return {new HandleExprExprFailure(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprExprFailure_is_null(const HandleExprExprFailure* self_) { return self_->IsNull(); }
 extern "C" void HandleExprFunctionDerivative_destructor(HandleExprFunctionDerivative* self_) { delete self_; }
 extern "C" OcctResult<HandleExprFunctionDerivative*> HandleExprFunctionDerivative_clone(const HandleExprFunctionDerivative* self_) {
     try { return {new HandleExprFunctionDerivative(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprFunctionDerivative_is_null(const HandleExprFunctionDerivative* self_) { return self_->IsNull(); }
 extern "C" void HandleExprGeneralExpression_destructor(HandleExprGeneralExpression* self_) { delete self_; }
 extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprGeneralExpression_clone(const HandleExprGeneralExpression* self_) {
     try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprGeneralExpression_is_null(const HandleExprGeneralExpression* self_) { return self_->IsNull(); }
 extern "C" void HandleExprGeneralFunction_destructor(HandleExprGeneralFunction* self_) { delete self_; }
 extern "C" OcctResult<HandleExprGeneralFunction*> HandleExprGeneralFunction_clone(const HandleExprGeneralFunction* self_) {
     try { return {new HandleExprGeneralFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprGeneralFunction_is_null(const HandleExprGeneralFunction* self_) { return self_->IsNull(); }
 extern "C" void HandleExprGeneralRelation_destructor(HandleExprGeneralRelation* self_) { delete self_; }
 extern "C" OcctResult<HandleExprGeneralRelation*> HandleExprGeneralRelation_clone(const HandleExprGeneralRelation* self_) {
     try { return {new HandleExprGeneralRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprGeneralRelation_is_null(const HandleExprGeneralRelation* self_) { return self_->IsNull(); }
 extern "C" void HandleExprGreaterThan_destructor(HandleExprGreaterThan* self_) { delete self_; }
 extern "C" OcctResult<HandleExprGreaterThan*> HandleExprGreaterThan_clone(const HandleExprGreaterThan* self_) {
     try { return {new HandleExprGreaterThan(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprGreaterThan_is_null(const HandleExprGreaterThan* self_) { return self_->IsNull(); }
 extern "C" void HandleExprGreaterThanOrEqual_destructor(HandleExprGreaterThanOrEqual* self_) { delete self_; }
 extern "C" OcctResult<HandleExprGreaterThanOrEqual*> HandleExprGreaterThanOrEqual_clone(const HandleExprGreaterThanOrEqual* self_) {
     try { return {new HandleExprGreaterThanOrEqual(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprGreaterThanOrEqual_is_null(const HandleExprGreaterThanOrEqual* self_) { return self_->IsNull(); }
 extern "C" void HandleExprInvalidAssignment_destructor(HandleExprInvalidAssignment* self_) { delete self_; }
 extern "C" OcctResult<HandleExprInvalidAssignment*> HandleExprInvalidAssignment_clone(const HandleExprInvalidAssignment* self_) {
     try { return {new HandleExprInvalidAssignment(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprInvalidAssignment_is_null(const HandleExprInvalidAssignment* self_) { return self_->IsNull(); }
 extern "C" void HandleExprInvalidFunction_destructor(HandleExprInvalidFunction* self_) { delete self_; }
 extern "C" OcctResult<HandleExprInvalidFunction*> HandleExprInvalidFunction_clone(const HandleExprInvalidFunction* self_) {
     try { return {new HandleExprInvalidFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprInvalidFunction_is_null(const HandleExprInvalidFunction* self_) { return self_->IsNull(); }
 extern "C" void HandleExprInvalidOperand_destructor(HandleExprInvalidOperand* self_) { delete self_; }
 extern "C" OcctResult<HandleExprInvalidOperand*> HandleExprInvalidOperand_clone(const HandleExprInvalidOperand* self_) {
     try { return {new HandleExprInvalidOperand(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprInvalidOperand_is_null(const HandleExprInvalidOperand* self_) { return self_->IsNull(); }
 extern "C" void HandleExprLessThan_destructor(HandleExprLessThan* self_) { delete self_; }
 extern "C" OcctResult<HandleExprLessThan*> HandleExprLessThan_clone(const HandleExprLessThan* self_) {
     try { return {new HandleExprLessThan(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprLessThan_is_null(const HandleExprLessThan* self_) { return self_->IsNull(); }
 extern "C" void HandleExprLessThanOrEqual_destructor(HandleExprLessThanOrEqual* self_) { delete self_; }
 extern "C" OcctResult<HandleExprLessThanOrEqual*> HandleExprLessThanOrEqual_clone(const HandleExprLessThanOrEqual* self_) {
     try { return {new HandleExprLessThanOrEqual(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprLessThanOrEqual_is_null(const HandleExprLessThanOrEqual* self_) { return self_->IsNull(); }
 extern "C" void HandleExprLogOf10_destructor(HandleExprLogOf10* self_) { delete self_; }
 extern "C" OcctResult<HandleExprLogOf10*> HandleExprLogOf10_clone(const HandleExprLogOf10* self_) {
     try { return {new HandleExprLogOf10(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprLogOf10_is_null(const HandleExprLogOf10* self_) { return self_->IsNull(); }
 extern "C" void HandleExprLogOfe_destructor(HandleExprLogOfe* self_) { delete self_; }
 extern "C" OcctResult<HandleExprLogOfe*> HandleExprLogOfe_clone(const HandleExprLogOfe* self_) {
     try { return {new HandleExprLogOfe(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprLogOfe_is_null(const HandleExprLogOfe* self_) { return self_->IsNull(); }
 extern "C" void HandleExprNamedConstant_destructor(HandleExprNamedConstant* self_) { delete self_; }
 extern "C" OcctResult<HandleExprNamedConstant*> HandleExprNamedConstant_clone(const HandleExprNamedConstant* self_) {
     try { return {new HandleExprNamedConstant(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprNamedConstant_is_null(const HandleExprNamedConstant* self_) { return self_->IsNull(); }
 extern "C" void HandleExprNamedExpression_destructor(HandleExprNamedExpression* self_) { delete self_; }
 extern "C" OcctResult<HandleExprNamedExpression*> HandleExprNamedExpression_clone(const HandleExprNamedExpression* self_) {
     try { return {new HandleExprNamedExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprNamedExpression_is_null(const HandleExprNamedExpression* self_) { return self_->IsNull(); }
 extern "C" void HandleExprNamedFunction_destructor(HandleExprNamedFunction* self_) { delete self_; }
 extern "C" OcctResult<HandleExprNamedFunction*> HandleExprNamedFunction_clone(const HandleExprNamedFunction* self_) {
     try { return {new HandleExprNamedFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprNamedFunction_is_null(const HandleExprNamedFunction* self_) { return self_->IsNull(); }
 extern "C" void HandleExprNamedUnknown_destructor(HandleExprNamedUnknown* self_) { delete self_; }
 extern "C" OcctResult<HandleExprNamedUnknown*> HandleExprNamedUnknown_clone(const HandleExprNamedUnknown* self_) {
     try { return {new HandleExprNamedUnknown(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprNamedUnknown_is_null(const HandleExprNamedUnknown* self_) { return self_->IsNull(); }
 extern "C" void HandleExprNotAssigned_destructor(HandleExprNotAssigned* self_) { delete self_; }
 extern "C" OcctResult<HandleExprNotAssigned*> HandleExprNotAssigned_clone(const HandleExprNotAssigned* self_) {
     try { return {new HandleExprNotAssigned(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprNotAssigned_is_null(const HandleExprNotAssigned* self_) { return self_->IsNull(); }
 extern "C" void HandleExprNotEvaluable_destructor(HandleExprNotEvaluable* self_) { delete self_; }
 extern "C" OcctResult<HandleExprNotEvaluable*> HandleExprNotEvaluable_clone(const HandleExprNotEvaluable* self_) {
     try { return {new HandleExprNotEvaluable(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprNotEvaluable_is_null(const HandleExprNotEvaluable* self_) { return self_->IsNull(); }
 extern "C" void HandleExprNumericValue_destructor(HandleExprNumericValue* self_) { delete self_; }
 extern "C" OcctResult<HandleExprNumericValue*> HandleExprNumericValue_clone(const HandleExprNumericValue* self_) {
     try { return {new HandleExprNumericValue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprNumericValue_is_null(const HandleExprNumericValue* self_) { return self_->IsNull(); }
 extern "C" void HandleExprPolyExpression_destructor(HandleExprPolyExpression* self_) { delete self_; }
 extern "C" OcctResult<HandleExprPolyExpression*> HandleExprPolyExpression_clone(const HandleExprPolyExpression* self_) {
     try { return {new HandleExprPolyExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprPolyExpression_is_null(const HandleExprPolyExpression* self_) { return self_->IsNull(); }
 extern "C" void HandleExprPolyFunction_destructor(HandleExprPolyFunction* self_) { delete self_; }
 extern "C" OcctResult<HandleExprPolyFunction*> HandleExprPolyFunction_clone(const HandleExprPolyFunction* self_) {
     try { return {new HandleExprPolyFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprPolyFunction_is_null(const HandleExprPolyFunction* self_) { return self_->IsNull(); }
 extern "C" void HandleExprProduct_destructor(HandleExprProduct* self_) { delete self_; }
 extern "C" OcctResult<HandleExprProduct*> HandleExprProduct_clone(const HandleExprProduct* self_) {
     try { return {new HandleExprProduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprProduct_is_null(const HandleExprProduct* self_) { return self_->IsNull(); }
 extern "C" void HandleExprSign_destructor(HandleExprSign* self_) { delete self_; }
 extern "C" OcctResult<HandleExprSign*> HandleExprSign_clone(const HandleExprSign* self_) {
     try { return {new HandleExprSign(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprSign_is_null(const HandleExprSign* self_) { return self_->IsNull(); }
 extern "C" void HandleExprSine_destructor(HandleExprSine* self_) { delete self_; }
 extern "C" OcctResult<HandleExprSine*> HandleExprSine_clone(const HandleExprSine* self_) {
     try { return {new HandleExprSine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprSine_is_null(const HandleExprSine* self_) { return self_->IsNull(); }
 extern "C" void HandleExprSingleRelation_destructor(HandleExprSingleRelation* self_) { delete self_; }
 extern "C" OcctResult<HandleExprSingleRelation*> HandleExprSingleRelation_clone(const HandleExprSingleRelation* self_) {
     try { return {new HandleExprSingleRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprSingleRelation_is_null(const HandleExprSingleRelation* self_) { return self_->IsNull(); }
 extern "C" void HandleExprSinh_destructor(HandleExprSinh* self_) { delete self_; }
 extern "C" OcctResult<HandleExprSinh*> HandleExprSinh_clone(const HandleExprSinh* self_) {
     try { return {new HandleExprSinh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprSinh_is_null(const HandleExprSinh* self_) { return self_->IsNull(); }
 extern "C" void HandleExprSquare_destructor(HandleExprSquare* self_) { delete self_; }
 extern "C" OcctResult<HandleExprSquare*> HandleExprSquare_clone(const HandleExprSquare* self_) {
     try { return {new HandleExprSquare(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprSquare_is_null(const HandleExprSquare* self_) { return self_->IsNull(); }
 extern "C" void HandleExprSquareRoot_destructor(HandleExprSquareRoot* self_) { delete self_; }
 extern "C" OcctResult<HandleExprSquareRoot*> HandleExprSquareRoot_clone(const HandleExprSquareRoot* self_) {
     try { return {new HandleExprSquareRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprSquareRoot_is_null(const HandleExprSquareRoot* self_) { return self_->IsNull(); }
 extern "C" void HandleExprSum_destructor(HandleExprSum* self_) { delete self_; }
 extern "C" OcctResult<HandleExprSum*> HandleExprSum_clone(const HandleExprSum* self_) {
     try { return {new HandleExprSum(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprSum_is_null(const HandleExprSum* self_) { return self_->IsNull(); }
 extern "C" void HandleExprSystemRelation_destructor(HandleExprSystemRelation* self_) { delete self_; }
 extern "C" OcctResult<HandleExprSystemRelation*> HandleExprSystemRelation_clone(const HandleExprSystemRelation* self_) {
     try { return {new HandleExprSystemRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprSystemRelation_is_null(const HandleExprSystemRelation* self_) { return self_->IsNull(); }
 extern "C" void HandleExprTangent_destructor(HandleExprTangent* self_) { delete self_; }
 extern "C" OcctResult<HandleExprTangent*> HandleExprTangent_clone(const HandleExprTangent* self_) {
     try { return {new HandleExprTangent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprTangent_is_null(const HandleExprTangent* self_) { return self_->IsNull(); }
 extern "C" void HandleExprTanh_destructor(HandleExprTanh* self_) { delete self_; }
 extern "C" OcctResult<HandleExprTanh*> HandleExprTanh_clone(const HandleExprTanh* self_) {
     try { return {new HandleExprTanh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprTanh_is_null(const HandleExprTanh* self_) { return self_->IsNull(); }
 extern "C" void HandleExprUnaryExpression_destructor(HandleExprUnaryExpression* self_) { delete self_; }
 extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprUnaryExpression_clone(const HandleExprUnaryExpression* self_) {
     try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprUnaryExpression_is_null(const HandleExprUnaryExpression* self_) { return self_->IsNull(); }
 extern "C" void HandleExprUnaryFunction_destructor(HandleExprUnaryFunction* self_) { delete self_; }
 extern "C" OcctResult<HandleExprUnaryFunction*> HandleExprUnaryFunction_clone(const HandleExprUnaryFunction* self_) {
     try { return {new HandleExprUnaryFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprUnaryFunction_is_null(const HandleExprUnaryFunction* self_) { return self_->IsNull(); }
 extern "C" void HandleExprUnaryMinus_destructor(HandleExprUnaryMinus* self_) { delete self_; }
 extern "C" OcctResult<HandleExprUnaryMinus*> HandleExprUnaryMinus_clone(const HandleExprUnaryMinus* self_) {
     try { return {new HandleExprUnaryMinus(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExprUnaryMinus_is_null(const HandleExprUnaryMinus* self_) { return self_->IsNull(); }
 
 // ========================
 // Expr_Absolute wrappers

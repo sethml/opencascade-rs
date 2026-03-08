@@ -1113,6 +1113,11 @@ unsafe impl crate::CppCopyable for HandleStorageBaseDriver {
 }
 
 impl HandleStorageBaseDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStorageBaseDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Storage_BaseDriver
     pub fn get(&self) -> &crate::ffi_types::Storage_BaseDriver {
         unsafe {
@@ -1576,6 +1581,11 @@ unsafe impl crate::CppCopyable for HandleStorageCallBack {
 }
 
 impl HandleStorageCallBack {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStorageCallBack_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Storage_CallBack
     pub fn get(&self) -> &crate::ffi_types::Storage_CallBack {
         unsafe {
@@ -2180,6 +2190,11 @@ unsafe impl crate::CppCopyable for HandleStorageData {
 }
 
 impl HandleStorageData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStorageData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Storage_Data
     pub fn get(&self) -> &crate::ffi_types::Storage_Data {
         unsafe {
@@ -2465,6 +2480,13 @@ unsafe impl crate::CppCopyable for HandleStorageDefaultCallBack {
 }
 
 impl HandleStorageDefaultCallBack {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStorageDefaultCallBack_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Storage_DefaultCallBack
     pub fn get(&self) -> &crate::ffi_types::Storage_DefaultCallBack {
         unsafe {
@@ -2750,6 +2772,13 @@ unsafe impl crate::CppCopyable for HandleStorageHArrayOfCallBack {
 }
 
 impl HandleStorageHArrayOfCallBack {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStorageHArrayOfCallBack_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Storage_HArrayOfCallBack
     pub fn get(&self) -> &crate::ffi_types::Storage_HArrayOfCallBack {
         unsafe {
@@ -3018,6 +3047,13 @@ unsafe impl crate::CppCopyable for HandleStorageHArrayOfSchema {
 }
 
 impl HandleStorageHArrayOfSchema {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStorageHArrayOfSchema_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Storage_HArrayOfSchema
     pub fn get(&self) -> &crate::ffi_types::Storage_HArrayOfSchema {
         unsafe {
@@ -3280,6 +3316,11 @@ unsafe impl crate::CppCopyable for HandleStorageHPArray {
 }
 
 impl HandleStorageHPArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStorageHPArray_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Storage_HPArray
     pub fn get(&self) -> &crate::ffi_types::Storage_HPArray {
         unsafe {
@@ -3526,6 +3567,11 @@ unsafe impl crate::CppCopyable for HandleStorageHSeqOfRoot {
 }
 
 impl HandleStorageHSeqOfRoot {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStorageHSeqOfRoot_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Storage_HSeqOfRoot
     pub fn get(&self) -> &crate::ffi_types::Storage_HSeqOfRoot {
         unsafe {
@@ -3969,6 +4015,11 @@ unsafe impl crate::CppCopyable for HandleStorageHeaderData {
 }
 
 impl HandleStorageHeaderData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStorageHeaderData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Storage_HeaderData
     pub fn get(&self) -> &crate::ffi_types::Storage_HeaderData {
         unsafe {
@@ -4186,6 +4237,11 @@ unsafe impl crate::CppCopyable for HandleStorageInternalData {
 }
 
 impl HandleStorageInternalData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStorageInternalData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Storage_InternalData
     pub fn get(&self) -> &crate::ffi_types::Storage_InternalData {
         unsafe {
@@ -4494,6 +4550,11 @@ unsafe impl crate::CppCopyable for HandleStorageRoot {
 }
 
 impl HandleStorageRoot {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStorageRoot_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Storage_Root
     pub fn get(&self) -> &crate::ffi_types::Storage_Root {
         unsafe {
@@ -4792,6 +4853,11 @@ unsafe impl crate::CppCopyable for HandleStorageRootData {
 }
 
 impl HandleStorageRootData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStorageRootData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Storage_RootData
     pub fn get(&self) -> &crate::ffi_types::Storage_RootData {
         unsafe {
@@ -5267,6 +5333,11 @@ unsafe impl crate::CppCopyable for HandleStorageSchema {
 }
 
 impl HandleStorageSchema {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStorageSchema_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Storage_Schema
     pub fn get(&self) -> &crate::ffi_types::Storage_Schema {
         unsafe {
@@ -5608,6 +5679,15 @@ unsafe impl crate::CppCopyable for HandleStorageStreamExtCharParityError {
 }
 
 impl HandleStorageStreamExtCharParityError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStorageStreamExtCharParityError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Storage_StreamExtCharParityError
     pub fn get(&self) -> &crate::ffi_types::Storage_StreamExtCharParityError {
         unsafe {
@@ -5953,6 +6033,13 @@ unsafe impl crate::CppCopyable for HandleStorageStreamFormatError {
 }
 
 impl HandleStorageStreamFormatError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStorageStreamFormatError_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Storage_StreamFormatError
     pub fn get(&self) -> &crate::ffi_types::Storage_StreamFormatError {
         unsafe {
@@ -6285,6 +6372,13 @@ unsafe impl crate::CppCopyable for HandleStorageStreamModeError {
 }
 
 impl HandleStorageStreamModeError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStorageStreamModeError_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Storage_StreamModeError
     pub fn get(&self) -> &crate::ffi_types::Storage_StreamModeError {
         unsafe {
@@ -6619,6 +6713,13 @@ unsafe impl crate::CppCopyable for HandleStorageStreamReadError {
 }
 
 impl HandleStorageStreamReadError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStorageStreamReadError_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Storage_StreamReadError
     pub fn get(&self) -> &crate::ffi_types::Storage_StreamReadError {
         unsafe {
@@ -7023,6 +7124,15 @@ unsafe impl crate::CppCopyable for HandleStorageStreamTypeMismatchError {
 }
 
 impl HandleStorageStreamTypeMismatchError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStorageStreamTypeMismatchError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Storage_StreamTypeMismatchError
     pub fn get(&self) -> &crate::ffi_types::Storage_StreamTypeMismatchError {
         unsafe {
@@ -7386,6 +7496,15 @@ unsafe impl crate::CppCopyable for HandleStorageStreamUnknownTypeError {
 }
 
 impl HandleStorageStreamUnknownTypeError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStorageStreamUnknownTypeError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Storage_StreamUnknownTypeError
     pub fn get(&self) -> &crate::ffi_types::Storage_StreamUnknownTypeError {
         unsafe {
@@ -7727,6 +7846,13 @@ unsafe impl crate::CppCopyable for HandleStorageStreamWriteError {
 }
 
 impl HandleStorageStreamWriteError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStorageStreamWriteError_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Storage_StreamWriteError
     pub fn get(&self) -> &crate::ffi_types::Storage_StreamWriteError {
         unsafe {
@@ -8029,6 +8155,11 @@ unsafe impl crate::CppCopyable for HandleStorageTypeData {
 }
 
 impl HandleStorageTypeData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleStorageTypeData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Storage_TypeData
     pub fn get(&self) -> &crate::ffi_types::Storage_TypeData {
         unsafe {
@@ -8289,6 +8420,13 @@ unsafe impl crate::CppCopyable for HandleStorageTypedCallBack {
 }
 
 impl HandleStorageTypedCallBack {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStorageTypedCallBack_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Storage_TypedCallBack
     pub fn get(&self) -> &crate::ffi_types::Storage_TypedCallBack {
         unsafe {

@@ -226,207 +226,247 @@ typedef opencascade::handle<XCAFPrs_Driver> HandleXCAFPrsDriver;
 typedef opencascade::handle<XCAFPrs_Texture> HandleXCAFPrsTexture;
 typedef opencascade::handle<XCAFView_Object> HandleXCAFViewObject;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleXCAFAppApplication_destructor(HandleXCAFAppApplication* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFAppApplication*> HandleXCAFAppApplication_clone(const HandleXCAFAppApplication* self_) {
     try { return {new HandleXCAFAppApplication(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFAppApplication_is_null(const HandleXCAFAppApplication* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDimTolObjectsDatumObject_destructor(HandleXCAFDimTolObjectsDatumObject* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDimTolObjectsDatumObject*> HandleXCAFDimTolObjectsDatumObject_clone(const HandleXCAFDimTolObjectsDatumObject* self_) {
     try { return {new HandleXCAFDimTolObjectsDatumObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDimTolObjectsDatumObject_is_null(const HandleXCAFDimTolObjectsDatumObject* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDimTolObjectsDimensionObject_destructor(HandleXCAFDimTolObjectsDimensionObject* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDimTolObjectsDimensionObject*> HandleXCAFDimTolObjectsDimensionObject_clone(const HandleXCAFDimTolObjectsDimensionObject* self_) {
     try { return {new HandleXCAFDimTolObjectsDimensionObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDimTolObjectsDimensionObject_is_null(const HandleXCAFDimTolObjectsDimensionObject* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDimTolObjectsGeomToleranceObject_destructor(HandleXCAFDimTolObjectsGeomToleranceObject* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDimTolObjectsGeomToleranceObject*> HandleXCAFDimTolObjectsGeomToleranceObject_clone(const HandleXCAFDimTolObjectsGeomToleranceObject* self_) {
     try { return {new HandleXCAFDimTolObjectsGeomToleranceObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDimTolObjectsGeomToleranceObject_is_null(const HandleXCAFDimTolObjectsGeomToleranceObject* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocArea_destructor(HandleXCAFDocArea* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocArea*> HandleXCAFDocArea_clone(const HandleXCAFDocArea* self_) {
     try { return {new HandleXCAFDocArea(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocArea_is_null(const HandleXCAFDocArea* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocAssemblyGraph_destructor(HandleXCAFDocAssemblyGraph* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocAssemblyGraph*> HandleXCAFDocAssemblyGraph_clone(const HandleXCAFDocAssemblyGraph* self_) {
     try { return {new HandleXCAFDocAssemblyGraph(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocAssemblyGraph_is_null(const HandleXCAFDocAssemblyGraph* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocAssemblyItemRef_destructor(HandleXCAFDocAssemblyItemRef* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocAssemblyItemRef*> HandleXCAFDocAssemblyItemRef_clone(const HandleXCAFDocAssemblyItemRef* self_) {
     try { return {new HandleXCAFDocAssemblyItemRef(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocAssemblyItemRef_is_null(const HandleXCAFDocAssemblyItemRef* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocCentroid_destructor(HandleXCAFDocCentroid* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocCentroid*> HandleXCAFDocCentroid_clone(const HandleXCAFDocCentroid* self_) {
     try { return {new HandleXCAFDocCentroid(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocCentroid_is_null(const HandleXCAFDocCentroid* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocClippingPlaneTool_destructor(HandleXCAFDocClippingPlaneTool* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocClippingPlaneTool*> HandleXCAFDocClippingPlaneTool_clone(const HandleXCAFDocClippingPlaneTool* self_) {
     try { return {new HandleXCAFDocClippingPlaneTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocClippingPlaneTool_is_null(const HandleXCAFDocClippingPlaneTool* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocColor_destructor(HandleXCAFDocColor* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocColor*> HandleXCAFDocColor_clone(const HandleXCAFDocColor* self_) {
     try { return {new HandleXCAFDocColor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocColor_is_null(const HandleXCAFDocColor* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocColorTool_destructor(HandleXCAFDocColorTool* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocColorTool*> HandleXCAFDocColorTool_clone(const HandleXCAFDocColorTool* self_) {
     try { return {new HandleXCAFDocColorTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocColorTool_is_null(const HandleXCAFDocColorTool* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocDatum_destructor(HandleXCAFDocDatum* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocDatum*> HandleXCAFDocDatum_clone(const HandleXCAFDocDatum* self_) {
     try { return {new HandleXCAFDocDatum(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocDatum_is_null(const HandleXCAFDocDatum* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocDimTol_destructor(HandleXCAFDocDimTol* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocDimTol*> HandleXCAFDocDimTol_clone(const HandleXCAFDocDimTol* self_) {
     try { return {new HandleXCAFDocDimTol(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocDimTol_is_null(const HandleXCAFDocDimTol* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocDimTolTool_destructor(HandleXCAFDocDimTolTool* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocDimTolTool*> HandleXCAFDocDimTolTool_clone(const HandleXCAFDocDimTolTool* self_) {
     try { return {new HandleXCAFDocDimTolTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocDimTolTool_is_null(const HandleXCAFDocDimTolTool* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocDimension_destructor(HandleXCAFDocDimension* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocDimension*> HandleXCAFDocDimension_clone(const HandleXCAFDocDimension* self_) {
     try { return {new HandleXCAFDocDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocDimension_is_null(const HandleXCAFDocDimension* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocDocumentTool_destructor(HandleXCAFDocDocumentTool* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocDocumentTool*> HandleXCAFDocDocumentTool_clone(const HandleXCAFDocDocumentTool* self_) {
     try { return {new HandleXCAFDocDocumentTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocDocumentTool_is_null(const HandleXCAFDocDocumentTool* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocGeomTolerance_destructor(HandleXCAFDocGeomTolerance* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocGeomTolerance*> HandleXCAFDocGeomTolerance_clone(const HandleXCAFDocGeomTolerance* self_) {
     try { return {new HandleXCAFDocGeomTolerance(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocGeomTolerance_is_null(const HandleXCAFDocGeomTolerance* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocGraphNode_destructor(HandleXCAFDocGraphNode* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocGraphNode*> HandleXCAFDocGraphNode_clone(const HandleXCAFDocGraphNode* self_) {
     try { return {new HandleXCAFDocGraphNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocGraphNode_is_null(const HandleXCAFDocGraphNode* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocLayerTool_destructor(HandleXCAFDocLayerTool* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocLayerTool*> HandleXCAFDocLayerTool_clone(const HandleXCAFDocLayerTool* self_) {
     try { return {new HandleXCAFDocLayerTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocLayerTool_is_null(const HandleXCAFDocLayerTool* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocLengthUnit_destructor(HandleXCAFDocLengthUnit* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocLengthUnit*> HandleXCAFDocLengthUnit_clone(const HandleXCAFDocLengthUnit* self_) {
     try { return {new HandleXCAFDocLengthUnit(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocLengthUnit_is_null(const HandleXCAFDocLengthUnit* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocLocation_destructor(HandleXCAFDocLocation* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocLocation*> HandleXCAFDocLocation_clone(const HandleXCAFDocLocation* self_) {
     try { return {new HandleXCAFDocLocation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocLocation_is_null(const HandleXCAFDocLocation* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocMaterial_destructor(HandleXCAFDocMaterial* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocMaterial*> HandleXCAFDocMaterial_clone(const HandleXCAFDocMaterial* self_) {
     try { return {new HandleXCAFDocMaterial(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocMaterial_is_null(const HandleXCAFDocMaterial* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocMaterialTool_destructor(HandleXCAFDocMaterialTool* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocMaterialTool*> HandleXCAFDocMaterialTool_clone(const HandleXCAFDocMaterialTool* self_) {
     try { return {new HandleXCAFDocMaterialTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocMaterialTool_is_null(const HandleXCAFDocMaterialTool* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocNote_destructor(HandleXCAFDocNote* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocNote*> HandleXCAFDocNote_clone(const HandleXCAFDocNote* self_) {
     try { return {new HandleXCAFDocNote(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocNote_is_null(const HandleXCAFDocNote* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocNoteBalloon_destructor(HandleXCAFDocNoteBalloon* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocNoteBalloon*> HandleXCAFDocNoteBalloon_clone(const HandleXCAFDocNoteBalloon* self_) {
     try { return {new HandleXCAFDocNoteBalloon(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocNoteBalloon_is_null(const HandleXCAFDocNoteBalloon* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocNoteBinData_destructor(HandleXCAFDocNoteBinData* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocNoteBinData*> HandleXCAFDocNoteBinData_clone(const HandleXCAFDocNoteBinData* self_) {
     try { return {new HandleXCAFDocNoteBinData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocNoteBinData_is_null(const HandleXCAFDocNoteBinData* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocNoteComment_destructor(HandleXCAFDocNoteComment* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocNoteComment*> HandleXCAFDocNoteComment_clone(const HandleXCAFDocNoteComment* self_) {
     try { return {new HandleXCAFDocNoteComment(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocNoteComment_is_null(const HandleXCAFDocNoteComment* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocNotesTool_destructor(HandleXCAFDocNotesTool* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocNotesTool*> HandleXCAFDocNotesTool_clone(const HandleXCAFDocNotesTool* self_) {
     try { return {new HandleXCAFDocNotesTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocNotesTool_is_null(const HandleXCAFDocNotesTool* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocShapeMapTool_destructor(HandleXCAFDocShapeMapTool* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocShapeMapTool*> HandleXCAFDocShapeMapTool_clone(const HandleXCAFDocShapeMapTool* self_) {
     try { return {new HandleXCAFDocShapeMapTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocShapeMapTool_is_null(const HandleXCAFDocShapeMapTool* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocShapeTool_destructor(HandleXCAFDocShapeTool* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocShapeTool*> HandleXCAFDocShapeTool_clone(const HandleXCAFDocShapeTool* self_) {
     try { return {new HandleXCAFDocShapeTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocShapeTool_is_null(const HandleXCAFDocShapeTool* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocView_destructor(HandleXCAFDocView* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocView*> HandleXCAFDocView_clone(const HandleXCAFDocView* self_) {
     try { return {new HandleXCAFDocView(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocView_is_null(const HandleXCAFDocView* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocViewTool_destructor(HandleXCAFDocViewTool* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocViewTool*> HandleXCAFDocViewTool_clone(const HandleXCAFDocViewTool* self_) {
     try { return {new HandleXCAFDocViewTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocViewTool_is_null(const HandleXCAFDocViewTool* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocVisMaterial_destructor(HandleXCAFDocVisMaterial* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocVisMaterial*> HandleXCAFDocVisMaterial_clone(const HandleXCAFDocVisMaterial* self_) {
     try { return {new HandleXCAFDocVisMaterial(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocVisMaterial_is_null(const HandleXCAFDocVisMaterial* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocVisMaterialTool_destructor(HandleXCAFDocVisMaterialTool* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocVisMaterialTool*> HandleXCAFDocVisMaterialTool_clone(const HandleXCAFDocVisMaterialTool* self_) {
     try { return {new HandleXCAFDocVisMaterialTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocVisMaterialTool_is_null(const HandleXCAFDocVisMaterialTool* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFDocVolume_destructor(HandleXCAFDocVolume* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFDocVolume*> HandleXCAFDocVolume_clone(const HandleXCAFDocVolume* self_) {
     try { return {new HandleXCAFDocVolume(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFDocVolume_is_null(const HandleXCAFDocVolume* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFNoteObjectsNoteObject_destructor(HandleXCAFNoteObjectsNoteObject* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFNoteObjectsNoteObject*> HandleXCAFNoteObjectsNoteObject_clone(const HandleXCAFNoteObjectsNoteObject* self_) {
     try { return {new HandleXCAFNoteObjectsNoteObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFNoteObjectsNoteObject_is_null(const HandleXCAFNoteObjectsNoteObject* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFPrsAISObject_destructor(HandleXCAFPrsAISObject* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFPrsAISObject*> HandleXCAFPrsAISObject_clone(const HandleXCAFPrsAISObject* self_) {
     try { return {new HandleXCAFPrsAISObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFPrsAISObject_is_null(const HandleXCAFPrsAISObject* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFPrsDriver_destructor(HandleXCAFPrsDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFPrsDriver*> HandleXCAFPrsDriver_clone(const HandleXCAFPrsDriver* self_) {
     try { return {new HandleXCAFPrsDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFPrsDriver_is_null(const HandleXCAFPrsDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFPrsTexture_destructor(HandleXCAFPrsTexture* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFPrsTexture*> HandleXCAFPrsTexture_clone(const HandleXCAFPrsTexture* self_) {
     try { return {new HandleXCAFPrsTexture(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFPrsTexture_is_null(const HandleXCAFPrsTexture* self_) { return self_->IsNull(); }
 extern "C" void HandleXCAFViewObject_destructor(HandleXCAFViewObject* self_) { delete self_; }
 extern "C" OcctResult<HandleXCAFViewObject*> HandleXCAFViewObject_clone(const HandleXCAFViewObject* self_) {
     try { return {new HandleXCAFViewObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXCAFViewObject_is_null(const HandleXCAFViewObject* self_) { return self_->IsNull(); }
 
 // ========================
 // XCAFApp_Application wrappers

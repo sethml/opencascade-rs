@@ -1331,6 +1331,11 @@ unsafe impl crate::CppCopyable for HandleInterfaceCheck {
 }
 
 impl HandleInterfaceCheck {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceCheck_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Interface_Check
     pub fn get(&self) -> &crate::ffi_types::Interface_Check {
         unsafe {
@@ -1676,6 +1681,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceCheckFailure {
 }
 
 impl HandleInterfaceCheckFailure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceCheckFailure_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_CheckFailure
     pub fn get(&self) -> &crate::ffi_types::Interface_CheckFailure {
         unsafe {
@@ -2559,6 +2571,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceCopyControl {
 }
 
 impl HandleInterfaceCopyControl {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceCopyControl_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_CopyControl
     pub fn get(&self) -> &crate::ffi_types::Interface_CopyControl {
         unsafe {
@@ -2867,6 +2886,11 @@ unsafe impl crate::CppCopyable for HandleInterfaceCopyMap {
 }
 
 impl HandleInterfaceCopyMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceCopyMap_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Interface_CopyMap
     pub fn get(&self) -> &crate::ffi_types::Interface_CopyMap {
         unsafe {
@@ -3513,6 +3537,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceEntityCluster {
 }
 
 impl HandleInterfaceEntityCluster {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceEntityCluster_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_EntityCluster
     pub fn get(&self) -> &crate::ffi_types::Interface_EntityCluster {
         unsafe {
@@ -4505,6 +4536,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceFileReaderData {
 }
 
 impl HandleInterfaceFileReaderData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceFileReaderData_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_FileReaderData
     pub fn get(&self) -> &crate::ffi_types::Interface_FileReaderData {
         unsafe {
@@ -5444,6 +5482,11 @@ unsafe impl crate::CppCopyable for HandleInterfaceGTool {
 }
 
 impl HandleInterfaceGTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceGTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Interface_GTool
     pub fn get(&self) -> &crate::ffi_types::Interface_GTool {
         unsafe {
@@ -6153,6 +6196,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceGeneralModule {
 }
 
 impl HandleInterfaceGeneralModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::Interface_GeneralModule {
         unsafe {
@@ -6589,6 +6639,15 @@ unsafe impl crate::CppCopyable for HandleInterfaceGlobalNodeOfGeneralLib {
 }
 
 impl HandleInterfaceGlobalNodeOfGeneralLib {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfGeneralLib_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_GlobalNodeOfGeneralLib
     pub fn get(&self) -> &crate::ffi_types::Interface_GlobalNodeOfGeneralLib {
         unsafe {
@@ -6849,6 +6908,15 @@ unsafe impl crate::CppCopyable for HandleInterfaceGlobalNodeOfReaderLib {
 }
 
 impl HandleInterfaceGlobalNodeOfReaderLib {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfReaderLib_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_GlobalNodeOfReaderLib
     pub fn get(&self) -> &crate::ffi_types::Interface_GlobalNodeOfReaderLib {
         unsafe {
@@ -7927,6 +7995,15 @@ unsafe impl crate::CppCopyable for HandleInterfaceHArray1OfHAsciiString {
 }
 
 impl HandleInterfaceHArray1OfHAsciiString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceHArray1OfHAsciiString_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_HArray1OfHAsciiString
     pub fn get(&self) -> &crate::ffi_types::Interface_HArray1OfHAsciiString {
         unsafe {
@@ -8241,6 +8318,11 @@ unsafe impl crate::CppCopyable for HandleInterfaceHGraph {
 }
 
 impl HandleInterfaceHGraph {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceHGraph_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Interface_HGraph
     pub fn get(&self) -> &crate::ffi_types::Interface_HGraph {
         unsafe {
@@ -8509,6 +8591,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceHSequenceOfCheck {
 }
 
 impl HandleInterfaceHSequenceOfCheck {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceHSequenceOfCheck_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_HSequenceOfCheck
     pub fn get(&self) -> &crate::ffi_types::Interface_HSequenceOfCheck {
         unsafe {
@@ -8953,6 +9042,11 @@ unsafe impl crate::CppCopyable for HandleInterfaceIntVal {
 }
 
 impl HandleInterfaceIntVal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceIntVal_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Interface_IntVal
     pub fn get(&self) -> &crate::ffi_types::Interface_IntVal {
         unsafe {
@@ -9282,6 +9376,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceInterfaceError {
 }
 
 impl HandleInterfaceInterfaceError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_InterfaceError
     pub fn get(&self) -> &crate::ffi_types::Interface_InterfaceError {
         unsafe {
@@ -9704,6 +9805,15 @@ unsafe impl crate::CppCopyable for HandleInterfaceInterfaceMismatch {
 }
 
 impl HandleInterfaceInterfaceMismatch {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceMismatch_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_InterfaceMismatch
     pub fn get(&self) -> &crate::ffi_types::Interface_InterfaceMismatch {
         unsafe {
@@ -10793,6 +10903,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceInterfaceModel {
 }
 
 impl HandleInterfaceInterfaceModel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceModel_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_InterfaceModel
     pub fn get(&self) -> &crate::ffi_types::Interface_InterfaceModel {
         unsafe {
@@ -11688,6 +11805,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceNodeOfGeneralLib {
 }
 
 impl HandleInterfaceNodeOfGeneralLib {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfGeneralLib_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_NodeOfGeneralLib
     pub fn get(&self) -> &crate::ffi_types::Interface_NodeOfGeneralLib {
         unsafe {
@@ -11934,6 +12058,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceNodeOfReaderLib {
 }
 
 impl HandleInterfaceNodeOfReaderLib {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfReaderLib_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_NodeOfReaderLib
     pub fn get(&self) -> &crate::ffi_types::Interface_NodeOfReaderLib {
         unsafe {
@@ -12211,6 +12342,11 @@ unsafe impl crate::CppCopyable for HandleInterfaceParamList {
 }
 
 impl HandleInterfaceParamList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceParamList_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Interface_ParamList
     pub fn get(&self) -> &crate::ffi_types::Interface_ParamList {
         unsafe {
@@ -12529,6 +12665,11 @@ unsafe impl crate::CppCopyable for HandleInterfaceParamSet {
 }
 
 impl HandleInterfaceParamSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceParamSet_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Interface_ParamSet
     pub fn get(&self) -> &crate::ffi_types::Interface_ParamSet {
         unsafe {
@@ -12886,6 +13027,11 @@ unsafe impl crate::CppCopyable for HandleInterfaceProtocol {
 }
 
 impl HandleInterfaceProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Interface_Protocol
     pub fn get(&self) -> &crate::ffi_types::Interface_Protocol {
         unsafe {
@@ -13554,6 +13700,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceReaderModule {
 }
 
 impl HandleInterfaceReaderModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_ReaderModule
     pub fn get(&self) -> &crate::ffi_types::Interface_ReaderModule {
         unsafe {
@@ -14038,6 +14191,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceReportEntity {
 }
 
 impl HandleInterfaceReportEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceReportEntity_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_ReportEntity
     pub fn get(&self) -> &crate::ffi_types::Interface_ReportEntity {
         unsafe {
@@ -14975,6 +15135,11 @@ unsafe impl crate::CppCopyable for HandleInterfaceSignLabel {
 }
 
 impl HandleInterfaceSignLabel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceSignLabel_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Interface_SignLabel
     pub fn get(&self) -> &crate::ffi_types::Interface_SignLabel {
         unsafe {
@@ -15264,6 +15429,11 @@ unsafe impl crate::CppCopyable for HandleInterfaceSignType {
 }
 
 impl HandleInterfaceSignType {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceSignType_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Interface_SignType
     pub fn get(&self) -> &crate::ffi_types::Interface_SignType {
         unsafe {
@@ -16476,6 +16646,11 @@ unsafe impl crate::CppCopyable for HandleInterfaceStatic {
 }
 
 impl HandleInterfaceStatic {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceStatic_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Interface_Static
     pub fn get(&self) -> &crate::ffi_types::Interface_Static {
         unsafe {
@@ -17095,6 +17270,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceTypedValue {
 }
 
 impl HandleInterfaceTypedValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceTypedValue_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_TypedValue
     pub fn get(&self) -> &crate::ffi_types::Interface_TypedValue {
         unsafe {
@@ -17587,6 +17769,13 @@ unsafe impl crate::CppCopyable for HandleInterfaceUndefinedContent {
 }
 
 impl HandleInterfaceUndefinedContent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleInterfaceUndefinedContent_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Interface_UndefinedContent
     pub fn get(&self) -> &crate::ffi_types::Interface_UndefinedContent {
         unsafe {

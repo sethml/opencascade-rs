@@ -2332,6 +2332,13 @@ unsafe impl crate::CppCopyable for HandleBRepOffsetSimpleOffset {
 }
 
 impl HandleBRepOffsetSimpleOffset {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKOffset::HandleBRepOffsetSimpleOffset_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepOffset_SimpleOffset
     pub fn get(&self) -> &crate::ffi_types::BRepOffset_SimpleOffset {
         unsafe {

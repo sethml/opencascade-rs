@@ -307,6 +307,15 @@ unsafe impl crate::CppCopyable for HandleXmlTObjDriversDocumentRetrievalDriver {
 }
 
 impl HandleXmlTObjDriversDocumentRetrievalDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlTObj::HandleXmlTObjDriversDocumentRetrievalDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlTObjDrivers_DocumentRetrievalDriver
     pub fn get(&self) -> &crate::ffi_types::XmlTObjDrivers_DocumentRetrievalDriver {
         unsafe {
@@ -674,6 +683,15 @@ unsafe impl crate::CppCopyable for HandleXmlTObjDriversDocumentStorageDriver {
 }
 
 impl HandleXmlTObjDriversDocumentStorageDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlTObj::HandleXmlTObjDriversDocumentStorageDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlTObjDrivers_DocumentStorageDriver
     pub fn get(&self) -> &crate::ffi_types::XmlTObjDrivers_DocumentStorageDriver {
         unsafe {
@@ -990,6 +1008,15 @@ unsafe impl crate::CppCopyable for HandleXmlTObjDriversIntSparseArrayDriver {
 }
 
 impl HandleXmlTObjDriversIntSparseArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlTObj::HandleXmlTObjDriversIntSparseArrayDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlTObjDrivers_IntSparseArrayDriver
     pub fn get(&self) -> &crate::ffi_types::XmlTObjDrivers_IntSparseArrayDriver {
         unsafe {
@@ -1318,6 +1345,15 @@ unsafe impl crate::CppCopyable for HandleXmlTObjDriversModelDriver {
 }
 
 impl HandleXmlTObjDriversModelDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlTObj::HandleXmlTObjDriversModelDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlTObjDrivers_ModelDriver
     pub fn get(&self) -> &crate::ffi_types::XmlTObjDrivers_ModelDriver {
         unsafe {
@@ -1646,6 +1682,15 @@ unsafe impl crate::CppCopyable for HandleXmlTObjDriversObjectDriver {
 }
 
 impl HandleXmlTObjDriversObjectDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlTObj::HandleXmlTObjDriversObjectDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlTObjDrivers_ObjectDriver
     pub fn get(&self) -> &crate::ffi_types::XmlTObjDrivers_ObjectDriver {
         unsafe {
@@ -1966,6 +2011,15 @@ unsafe impl crate::CppCopyable for HandleXmlTObjDriversReferenceDriver {
 }
 
 impl HandleXmlTObjDriversReferenceDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlTObj::HandleXmlTObjDriversReferenceDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlTObjDrivers_ReferenceDriver
     pub fn get(&self) -> &crate::ffi_types::XmlTObjDrivers_ReferenceDriver {
         unsafe {
@@ -2294,6 +2348,13 @@ unsafe impl crate::CppCopyable for HandleXmlTObjDriversXYZDriver {
 }
 
 impl HandleXmlTObjDriversXYZDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlTObj::HandleXmlTObjDriversXYZDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlTObjDrivers_XYZDriver
     pub fn get(&self) -> &crate::ffi_types::XmlTObjDrivers_XYZDriver {
         unsafe {

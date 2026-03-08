@@ -133,6 +133,8 @@ extern "C" {
     pub fn HandleBSplCLibCache_clone(
         self_: *const HandleBSplCLibCache,
     ) -> crate::OcctResult<*mut HandleBSplCLibCache>;
+    /// Check if Handle<BSplCLib_Cache> is null
+    pub fn HandleBSplCLibCache_is_null(self_: *const HandleBSplCLibCache) -> bool;
     /// Dereference Handle to get *const BSplCLib_Cache
     pub fn HandleBSplCLibCache_get(
         handle: *const HandleBSplCLibCache,
@@ -270,6 +272,8 @@ extern "C" {
     pub fn HandleBSplSLibCache_clone(
         self_: *const HandleBSplSLibCache,
     ) -> crate::OcctResult<*mut HandleBSplSLibCache>;
+    /// Check if Handle<BSplSLib_Cache> is null
+    pub fn HandleBSplSLibCache_is_null(self_: *const HandleBSplSLibCache) -> bool;
     /// Dereference Handle to get *const BSplSLib_Cache
     pub fn HandleBSplSLibCache_get(
         handle: *const HandleBSplSLibCache,
@@ -384,6 +388,8 @@ extern "C" {
     pub fn HandleBVHBuildThread_clone(
         self_: *const HandleBVHBuildThread,
     ) -> crate::OcctResult<*mut HandleBVHBuildThread>;
+    /// Check if Handle<BVH_BuildThread> is null
+    pub fn HandleBVHBuildThread_is_null(self_: *const HandleBVHBuildThread) -> bool;
     /// Dereference Handle to get *const BVH_BuildThread
     pub fn HandleBVHBuildThread_get(
         handle: *const HandleBVHBuildThread,
@@ -471,6 +477,8 @@ extern "C" {
     pub fn HandleBVHBuilderTransient_clone(
         self_: *const HandleBVHBuilderTransient,
     ) -> crate::OcctResult<*mut HandleBVHBuilderTransient>;
+    /// Check if Handle<BVH_BuilderTransient> is null
+    pub fn HandleBVHBuilderTransient_is_null(self_: *const HandleBVHBuilderTransient) -> bool;
     /// Dereference Handle to get *const BVH_BuilderTransient
     pub fn HandleBVHBuilderTransient_get(
         handle: *const HandleBVHBuilderTransient,
@@ -558,6 +566,8 @@ extern "C" {
     pub fn HandleBVHObjectTransient_clone(
         self_: *const HandleBVHObjectTransient,
     ) -> crate::OcctResult<*mut HandleBVHObjectTransient>;
+    /// Check if Handle<BVH_ObjectTransient> is null
+    pub fn HandleBVHObjectTransient_is_null(self_: *const HandleBVHObjectTransient) -> bool;
     /// Dereference Handle to get *const BVH_ObjectTransient
     pub fn HandleBVHObjectTransient_get(
         handle: *const HandleBVHObjectTransient,
@@ -624,6 +634,8 @@ extern "C" {
     pub fn HandleBVHProperties_clone(
         self_: *const HandleBVHProperties,
     ) -> crate::OcctResult<*mut HandleBVHProperties>;
+    /// Check if Handle<BVH_Properties> is null
+    pub fn HandleBVHProperties_is_null(self_: *const HandleBVHProperties) -> bool;
     /// Dereference Handle to get *const BVH_Properties
     pub fn HandleBVHProperties_get(
         handle: *const HandleBVHProperties,
@@ -694,6 +706,8 @@ extern "C" {
     pub fn HandleBVHTreeBaseTransient_clone(
         self_: *const HandleBVHTreeBaseTransient,
     ) -> crate::OcctResult<*mut HandleBVHTreeBaseTransient>;
+    /// Check if Handle<BVH_TreeBaseTransient> is null
+    pub fn HandleBVHTreeBaseTransient_is_null(self_: *const HandleBVHTreeBaseTransient) -> bool;
     /// Dereference Handle to get *const BVH_TreeBaseTransient
     pub fn HandleBVHTreeBaseTransient_get(
         handle: *const HandleBVHTreeBaseTransient,
@@ -1512,6 +1526,8 @@ extern "C" {
     pub fn HandleBndHArray1OfBox_clone(
         self_: *const HandleBndHArray1OfBox,
     ) -> crate::OcctResult<*mut HandleBndHArray1OfBox>;
+    /// Check if Handle<Bnd_HArray1OfBox> is null
+    pub fn HandleBndHArray1OfBox_is_null(self_: *const HandleBndHArray1OfBox) -> bool;
     /// Dereference Handle to get *const Bnd_HArray1OfBox
     pub fn HandleBndHArray1OfBox_get(
         handle: *const HandleBndHArray1OfBox,
@@ -1614,6 +1630,8 @@ extern "C" {
     pub fn HandleBndHArray1OfBox2d_clone(
         self_: *const HandleBndHArray1OfBox2d,
     ) -> crate::OcctResult<*mut HandleBndHArray1OfBox2d>;
+    /// Check if Handle<Bnd_HArray1OfBox2d> is null
+    pub fn HandleBndHArray1OfBox2d_is_null(self_: *const HandleBndHArray1OfBox2d) -> bool;
     /// Dereference Handle to get *const Bnd_HArray1OfBox2d
     pub fn HandleBndHArray1OfBox2d_get(
         handle: *const HandleBndHArray1OfBox2d,
@@ -1716,6 +1734,8 @@ extern "C" {
     pub fn HandleBndHArray1OfSphere_clone(
         self_: *const HandleBndHArray1OfSphere,
     ) -> crate::OcctResult<*mut HandleBndHArray1OfSphere>;
+    /// Check if Handle<Bnd_HArray1OfSphere> is null
+    pub fn HandleBndHArray1OfSphere_is_null(self_: *const HandleBndHArray1OfSphere) -> bool;
     /// Dereference Handle to get *const Bnd_HArray1OfSphere
     pub fn HandleBndHArray1OfSphere_get(
         handle: *const HandleBndHArray1OfSphere,
@@ -3184,6 +3204,8 @@ extern "C" {
     pub fn HandlePLibBase_clone(
         self_: *const HandlePLibBase,
     ) -> crate::OcctResult<*mut HandlePLibBase>;
+    /// Check if Handle<PLib_Base> is null
+    pub fn HandlePLibBase_is_null(self_: *const HandlePLibBase) -> bool;
     /// Dereference Handle to get *const PLib_Base
     pub fn HandlePLibBase_get(handle: *const HandlePLibBase)
         -> crate::OcctResult<*const PLib_Base>;
@@ -3423,6 +3445,8 @@ extern "C" {
     pub fn HandlePLibHermitJacobi_clone(
         self_: *const HandlePLibHermitJacobi,
     ) -> crate::OcctResult<*mut HandlePLibHermitJacobi>;
+    /// Check if Handle<PLib_HermitJacobi> is null
+    pub fn HandlePLibHermitJacobi_is_null(self_: *const HandlePLibHermitJacobi) -> bool;
     /// Dereference Handle to get *const PLib_HermitJacobi
     pub fn HandlePLibHermitJacobi_get(
         handle: *const HandlePLibHermitJacobi,
@@ -3598,6 +3622,8 @@ extern "C" {
     pub fn HandlePLibJacobiPolynomial_clone(
         self_: *const HandlePLibJacobiPolynomial,
     ) -> crate::OcctResult<*mut HandlePLibJacobiPolynomial>;
+    /// Check if Handle<PLib_JacobiPolynomial> is null
+    pub fn HandlePLibJacobiPolynomial_is_null(self_: *const HandlePLibJacobiPolynomial) -> bool;
     /// Dereference Handle to get *const PLib_JacobiPolynomial
     pub fn HandlePLibJacobiPolynomial_get(
         handle: *const HandlePLibJacobiPolynomial,
@@ -4316,6 +4342,10 @@ extern "C" {
     pub fn HandlePolyCoherentTriangulation_clone(
         self_: *const HandlePolyCoherentTriangulation,
     ) -> crate::OcctResult<*mut HandlePolyCoherentTriangulation>;
+    /// Check if Handle<Poly_CoherentTriangulation> is null
+    pub fn HandlePolyCoherentTriangulation_is_null(
+        self_: *const HandlePolyCoherentTriangulation,
+    ) -> bool;
     /// Dereference Handle to get *const Poly_CoherentTriangulation
     pub fn HandlePolyCoherentTriangulation_get(
         handle: *const HandlePolyCoherentTriangulation,
@@ -4503,6 +4533,8 @@ extern "C" {
     pub fn HandlePolyHArray1OfTriangle_clone(
         self_: *const HandlePolyHArray1OfTriangle,
     ) -> crate::OcctResult<*mut HandlePolyHArray1OfTriangle>;
+    /// Check if Handle<Poly_HArray1OfTriangle> is null
+    pub fn HandlePolyHArray1OfTriangle_is_null(self_: *const HandlePolyHArray1OfTriangle) -> bool;
     /// Dereference Handle to get *const Poly_HArray1OfTriangle
     pub fn HandlePolyHArray1OfTriangle_get(
         handle: *const HandlePolyHArray1OfTriangle,
@@ -5010,6 +5042,8 @@ extern "C" {
     pub fn HandlePolyMergeNodesTool_clone(
         self_: *const HandlePolyMergeNodesTool,
     ) -> crate::OcctResult<*mut HandlePolyMergeNodesTool>;
+    /// Check if Handle<Poly_MergeNodesTool> is null
+    pub fn HandlePolyMergeNodesTool_is_null(self_: *const HandlePolyMergeNodesTool) -> bool;
     /// Dereference Handle to get *const Poly_MergeNodesTool
     pub fn HandlePolyMergeNodesTool_get(
         handle: *const HandlePolyMergeNodesTool,
@@ -5103,6 +5137,8 @@ extern "C" {
     pub fn HandlePolyPolygon2D_clone(
         self_: *const HandlePolyPolygon2D,
     ) -> crate::OcctResult<*mut HandlePolyPolygon2D>;
+    /// Check if Handle<Poly_Polygon2D> is null
+    pub fn HandlePolyPolygon2D_is_null(self_: *const HandlePolyPolygon2D) -> bool;
     /// Dereference Handle to get *const Poly_Polygon2D
     pub fn HandlePolyPolygon2D_get(
         handle: *const HandlePolyPolygon2D,
@@ -5217,6 +5253,8 @@ extern "C" {
     pub fn HandlePolyPolygon3D_clone(
         self_: *const HandlePolyPolygon3D,
     ) -> crate::OcctResult<*mut HandlePolyPolygon3D>;
+    /// Check if Handle<Poly_Polygon3D> is null
+    pub fn HandlePolyPolygon3D_is_null(self_: *const HandlePolyPolygon3D) -> bool;
     /// Dereference Handle to get *const Poly_Polygon3D
     pub fn HandlePolyPolygon3D_get(
         handle: *const HandlePolyPolygon3D,
@@ -5359,6 +5397,10 @@ extern "C" {
     pub fn HandlePolyPolygonOnTriangulation_clone(
         self_: *const HandlePolyPolygonOnTriangulation,
     ) -> crate::OcctResult<*mut HandlePolyPolygonOnTriangulation>;
+    /// Check if Handle<Poly_PolygonOnTriangulation> is null
+    pub fn HandlePolyPolygonOnTriangulation_is_null(
+        self_: *const HandlePolyPolygonOnTriangulation,
+    ) -> bool;
     /// Dereference Handle to get *const Poly_PolygonOnTriangulation
     pub fn HandlePolyPolygonOnTriangulation_get(
         handle: *const HandlePolyPolygonOnTriangulation,
@@ -5723,6 +5765,8 @@ extern "C" {
     pub fn HandlePolyTriangulation_clone(
         self_: *const HandlePolyTriangulation,
     ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
+    /// Check if Handle<Poly_Triangulation> is null
+    pub fn HandlePolyTriangulation_is_null(self_: *const HandlePolyTriangulation) -> bool;
     /// Dereference Handle to get *const Poly_Triangulation
     pub fn HandlePolyTriangulation_get(
         handle: *const HandlePolyTriangulation,
@@ -5834,6 +5878,10 @@ extern "C" {
     pub fn HandlePolyTriangulationParameters_clone(
         self_: *const HandlePolyTriangulationParameters,
     ) -> crate::OcctResult<*mut HandlePolyTriangulationParameters>;
+    /// Check if Handle<Poly_TriangulationParameters> is null
+    pub fn HandlePolyTriangulationParameters_is_null(
+        self_: *const HandlePolyTriangulationParameters,
+    ) -> bool;
     /// Dereference Handle to get *const Poly_TriangulationParameters
     pub fn HandlePolyTriangulationParameters_get(
         handle: *const HandlePolyTriangulationParameters,
@@ -5945,6 +5993,8 @@ extern "C" {
     pub fn HandleTColgpHArray1OfCirc2d_clone(
         self_: *const HandleTColgpHArray1OfCirc2d,
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfCirc2d>;
+    /// Check if Handle<TColgp_HArray1OfCirc2d> is null
+    pub fn HandleTColgpHArray1OfCirc2d_is_null(self_: *const HandleTColgpHArray1OfCirc2d) -> bool;
     /// Dereference Handle to get *const TColgp_HArray1OfCirc2d
     pub fn HandleTColgpHArray1OfCirc2d_get(
         handle: *const HandleTColgpHArray1OfCirc2d,
@@ -6055,6 +6105,8 @@ extern "C" {
     pub fn HandleTColgpHArray1OfDir_clone(
         self_: *const HandleTColgpHArray1OfDir,
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfDir>;
+    /// Check if Handle<TColgp_HArray1OfDir> is null
+    pub fn HandleTColgpHArray1OfDir_is_null(self_: *const HandleTColgpHArray1OfDir) -> bool;
     /// Dereference Handle to get *const TColgp_HArray1OfDir
     pub fn HandleTColgpHArray1OfDir_get(
         handle: *const HandleTColgpHArray1OfDir,
@@ -6166,6 +6218,8 @@ extern "C" {
     pub fn HandleTColgpHArray1OfDir2d_clone(
         self_: *const HandleTColgpHArray1OfDir2d,
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfDir2d>;
+    /// Check if Handle<TColgp_HArray1OfDir2d> is null
+    pub fn HandleTColgpHArray1OfDir2d_is_null(self_: *const HandleTColgpHArray1OfDir2d) -> bool;
     /// Dereference Handle to get *const TColgp_HArray1OfDir2d
     pub fn HandleTColgpHArray1OfDir2d_get(
         handle: *const HandleTColgpHArray1OfDir2d,
@@ -6277,6 +6331,8 @@ extern "C" {
     pub fn HandleTColgpHArray1OfLin2d_clone(
         self_: *const HandleTColgpHArray1OfLin2d,
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfLin2d>;
+    /// Check if Handle<TColgp_HArray1OfLin2d> is null
+    pub fn HandleTColgpHArray1OfLin2d_is_null(self_: *const HandleTColgpHArray1OfLin2d) -> bool;
     /// Dereference Handle to get *const TColgp_HArray1OfLin2d
     pub fn HandleTColgpHArray1OfLin2d_get(
         handle: *const HandleTColgpHArray1OfLin2d,
@@ -6387,6 +6443,8 @@ extern "C" {
     pub fn HandleTColgpHArray1OfPnt_clone(
         self_: *const HandleTColgpHArray1OfPnt,
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfPnt>;
+    /// Check if Handle<TColgp_HArray1OfPnt> is null
+    pub fn HandleTColgpHArray1OfPnt_is_null(self_: *const HandleTColgpHArray1OfPnt) -> bool;
     /// Dereference Handle to get *const TColgp_HArray1OfPnt
     pub fn HandleTColgpHArray1OfPnt_get(
         handle: *const HandleTColgpHArray1OfPnt,
@@ -6498,6 +6556,8 @@ extern "C" {
     pub fn HandleTColgpHArray1OfPnt2d_clone(
         self_: *const HandleTColgpHArray1OfPnt2d,
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfPnt2d>;
+    /// Check if Handle<TColgp_HArray1OfPnt2d> is null
+    pub fn HandleTColgpHArray1OfPnt2d_is_null(self_: *const HandleTColgpHArray1OfPnt2d) -> bool;
     /// Dereference Handle to get *const TColgp_HArray1OfPnt2d
     pub fn HandleTColgpHArray1OfPnt2d_get(
         handle: *const HandleTColgpHArray1OfPnt2d,
@@ -6608,6 +6668,8 @@ extern "C" {
     pub fn HandleTColgpHArray1OfVec_clone(
         self_: *const HandleTColgpHArray1OfVec,
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfVec>;
+    /// Check if Handle<TColgp_HArray1OfVec> is null
+    pub fn HandleTColgpHArray1OfVec_is_null(self_: *const HandleTColgpHArray1OfVec) -> bool;
     /// Dereference Handle to get *const TColgp_HArray1OfVec
     pub fn HandleTColgpHArray1OfVec_get(
         handle: *const HandleTColgpHArray1OfVec,
@@ -6719,6 +6781,8 @@ extern "C" {
     pub fn HandleTColgpHArray1OfVec2d_clone(
         self_: *const HandleTColgpHArray1OfVec2d,
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfVec2d>;
+    /// Check if Handle<TColgp_HArray1OfVec2d> is null
+    pub fn HandleTColgpHArray1OfVec2d_is_null(self_: *const HandleTColgpHArray1OfVec2d) -> bool;
     /// Dereference Handle to get *const TColgp_HArray1OfVec2d
     pub fn HandleTColgpHArray1OfVec2d_get(
         handle: *const HandleTColgpHArray1OfVec2d,
@@ -6829,6 +6893,8 @@ extern "C" {
     pub fn HandleTColgpHArray1OfXY_clone(
         self_: *const HandleTColgpHArray1OfXY,
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfXY>;
+    /// Check if Handle<TColgp_HArray1OfXY> is null
+    pub fn HandleTColgpHArray1OfXY_is_null(self_: *const HandleTColgpHArray1OfXY) -> bool;
     /// Dereference Handle to get *const TColgp_HArray1OfXY
     pub fn HandleTColgpHArray1OfXY_get(
         handle: *const HandleTColgpHArray1OfXY,
@@ -6939,6 +7005,8 @@ extern "C" {
     pub fn HandleTColgpHArray1OfXYZ_clone(
         self_: *const HandleTColgpHArray1OfXYZ,
     ) -> crate::OcctResult<*mut HandleTColgpHArray1OfXYZ>;
+    /// Check if Handle<TColgp_HArray1OfXYZ> is null
+    pub fn HandleTColgpHArray1OfXYZ_is_null(self_: *const HandleTColgpHArray1OfXYZ) -> bool;
     /// Dereference Handle to get *const TColgp_HArray1OfXYZ
     pub fn HandleTColgpHArray1OfXYZ_get(
         handle: *const HandleTColgpHArray1OfXYZ,
@@ -7045,6 +7113,8 @@ extern "C" {
     pub fn HandleTColgpHArray2OfCirc2d_clone(
         self_: *const HandleTColgpHArray2OfCirc2d,
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfCirc2d>;
+    /// Check if Handle<TColgp_HArray2OfCirc2d> is null
+    pub fn HandleTColgpHArray2OfCirc2d_is_null(self_: *const HandleTColgpHArray2OfCirc2d) -> bool;
     /// Dereference Handle to get *const TColgp_HArray2OfCirc2d
     pub fn HandleTColgpHArray2OfCirc2d_get(
         handle: *const HandleTColgpHArray2OfCirc2d,
@@ -7150,6 +7220,8 @@ extern "C" {
     pub fn HandleTColgpHArray2OfDir_clone(
         self_: *const HandleTColgpHArray2OfDir,
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfDir>;
+    /// Check if Handle<TColgp_HArray2OfDir> is null
+    pub fn HandleTColgpHArray2OfDir_is_null(self_: *const HandleTColgpHArray2OfDir) -> bool;
     /// Dereference Handle to get *const TColgp_HArray2OfDir
     pub fn HandleTColgpHArray2OfDir_get(
         handle: *const HandleTColgpHArray2OfDir,
@@ -7256,6 +7328,8 @@ extern "C" {
     pub fn HandleTColgpHArray2OfDir2d_clone(
         self_: *const HandleTColgpHArray2OfDir2d,
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfDir2d>;
+    /// Check if Handle<TColgp_HArray2OfDir2d> is null
+    pub fn HandleTColgpHArray2OfDir2d_is_null(self_: *const HandleTColgpHArray2OfDir2d) -> bool;
     /// Dereference Handle to get *const TColgp_HArray2OfDir2d
     pub fn HandleTColgpHArray2OfDir2d_get(
         handle: *const HandleTColgpHArray2OfDir2d,
@@ -7362,6 +7436,8 @@ extern "C" {
     pub fn HandleTColgpHArray2OfLin2d_clone(
         self_: *const HandleTColgpHArray2OfLin2d,
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfLin2d>;
+    /// Check if Handle<TColgp_HArray2OfLin2d> is null
+    pub fn HandleTColgpHArray2OfLin2d_is_null(self_: *const HandleTColgpHArray2OfLin2d) -> bool;
     /// Dereference Handle to get *const TColgp_HArray2OfLin2d
     pub fn HandleTColgpHArray2OfLin2d_get(
         handle: *const HandleTColgpHArray2OfLin2d,
@@ -7467,6 +7543,8 @@ extern "C" {
     pub fn HandleTColgpHArray2OfPnt_clone(
         self_: *const HandleTColgpHArray2OfPnt,
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfPnt>;
+    /// Check if Handle<TColgp_HArray2OfPnt> is null
+    pub fn HandleTColgpHArray2OfPnt_is_null(self_: *const HandleTColgpHArray2OfPnt) -> bool;
     /// Dereference Handle to get *const TColgp_HArray2OfPnt
     pub fn HandleTColgpHArray2OfPnt_get(
         handle: *const HandleTColgpHArray2OfPnt,
@@ -7573,6 +7651,8 @@ extern "C" {
     pub fn HandleTColgpHArray2OfPnt2d_clone(
         self_: *const HandleTColgpHArray2OfPnt2d,
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfPnt2d>;
+    /// Check if Handle<TColgp_HArray2OfPnt2d> is null
+    pub fn HandleTColgpHArray2OfPnt2d_is_null(self_: *const HandleTColgpHArray2OfPnt2d) -> bool;
     /// Dereference Handle to get *const TColgp_HArray2OfPnt2d
     pub fn HandleTColgpHArray2OfPnt2d_get(
         handle: *const HandleTColgpHArray2OfPnt2d,
@@ -7678,6 +7758,8 @@ extern "C" {
     pub fn HandleTColgpHArray2OfVec_clone(
         self_: *const HandleTColgpHArray2OfVec,
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfVec>;
+    /// Check if Handle<TColgp_HArray2OfVec> is null
+    pub fn HandleTColgpHArray2OfVec_is_null(self_: *const HandleTColgpHArray2OfVec) -> bool;
     /// Dereference Handle to get *const TColgp_HArray2OfVec
     pub fn HandleTColgpHArray2OfVec_get(
         handle: *const HandleTColgpHArray2OfVec,
@@ -7784,6 +7866,8 @@ extern "C" {
     pub fn HandleTColgpHArray2OfVec2d_clone(
         self_: *const HandleTColgpHArray2OfVec2d,
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfVec2d>;
+    /// Check if Handle<TColgp_HArray2OfVec2d> is null
+    pub fn HandleTColgpHArray2OfVec2d_is_null(self_: *const HandleTColgpHArray2OfVec2d) -> bool;
     /// Dereference Handle to get *const TColgp_HArray2OfVec2d
     pub fn HandleTColgpHArray2OfVec2d_get(
         handle: *const HandleTColgpHArray2OfVec2d,
@@ -7889,6 +7973,8 @@ extern "C" {
     pub fn HandleTColgpHArray2OfXY_clone(
         self_: *const HandleTColgpHArray2OfXY,
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfXY>;
+    /// Check if Handle<TColgp_HArray2OfXY> is null
+    pub fn HandleTColgpHArray2OfXY_is_null(self_: *const HandleTColgpHArray2OfXY) -> bool;
     /// Dereference Handle to get *const TColgp_HArray2OfXY
     pub fn HandleTColgpHArray2OfXY_get(
         handle: *const HandleTColgpHArray2OfXY,
@@ -7994,6 +8080,8 @@ extern "C" {
     pub fn HandleTColgpHArray2OfXYZ_clone(
         self_: *const HandleTColgpHArray2OfXYZ,
     ) -> crate::OcctResult<*mut HandleTColgpHArray2OfXYZ>;
+    /// Check if Handle<TColgp_HArray2OfXYZ> is null
+    pub fn HandleTColgpHArray2OfXYZ_is_null(self_: *const HandleTColgpHArray2OfXYZ) -> bool;
     /// Dereference Handle to get *const TColgp_HArray2OfXYZ
     pub fn HandleTColgpHArray2OfXYZ_get(
         handle: *const HandleTColgpHArray2OfXYZ,
@@ -8089,6 +8177,8 @@ extern "C" {
     pub fn HandleTColgpHSequenceOfDir_clone(
         self_: *const HandleTColgpHSequenceOfDir,
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfDir>;
+    /// Check if Handle<TColgp_HSequenceOfDir> is null
+    pub fn HandleTColgpHSequenceOfDir_is_null(self_: *const HandleTColgpHSequenceOfDir) -> bool;
     /// Dereference Handle to get *const TColgp_HSequenceOfDir
     pub fn HandleTColgpHSequenceOfDir_get(
         handle: *const HandleTColgpHSequenceOfDir,
@@ -8184,6 +8274,9 @@ extern "C" {
     pub fn HandleTColgpHSequenceOfDir2d_clone(
         self_: *const HandleTColgpHSequenceOfDir2d,
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfDir2d>;
+    /// Check if Handle<TColgp_HSequenceOfDir2d> is null
+    pub fn HandleTColgpHSequenceOfDir2d_is_null(self_: *const HandleTColgpHSequenceOfDir2d)
+        -> bool;
     /// Dereference Handle to get *const TColgp_HSequenceOfDir2d
     pub fn HandleTColgpHSequenceOfDir2d_get(
         handle: *const HandleTColgpHSequenceOfDir2d,
@@ -8279,6 +8372,8 @@ extern "C" {
     pub fn HandleTColgpHSequenceOfPnt_clone(
         self_: *const HandleTColgpHSequenceOfPnt,
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfPnt>;
+    /// Check if Handle<TColgp_HSequenceOfPnt> is null
+    pub fn HandleTColgpHSequenceOfPnt_is_null(self_: *const HandleTColgpHSequenceOfPnt) -> bool;
     /// Dereference Handle to get *const TColgp_HSequenceOfPnt
     pub fn HandleTColgpHSequenceOfPnt_get(
         handle: *const HandleTColgpHSequenceOfPnt,
@@ -8374,6 +8469,9 @@ extern "C" {
     pub fn HandleTColgpHSequenceOfPnt2d_clone(
         self_: *const HandleTColgpHSequenceOfPnt2d,
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfPnt2d>;
+    /// Check if Handle<TColgp_HSequenceOfPnt2d> is null
+    pub fn HandleTColgpHSequenceOfPnt2d_is_null(self_: *const HandleTColgpHSequenceOfPnt2d)
+        -> bool;
     /// Dereference Handle to get *const TColgp_HSequenceOfPnt2d
     pub fn HandleTColgpHSequenceOfPnt2d_get(
         handle: *const HandleTColgpHSequenceOfPnt2d,
@@ -8469,6 +8567,8 @@ extern "C" {
     pub fn HandleTColgpHSequenceOfVec_clone(
         self_: *const HandleTColgpHSequenceOfVec,
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfVec>;
+    /// Check if Handle<TColgp_HSequenceOfVec> is null
+    pub fn HandleTColgpHSequenceOfVec_is_null(self_: *const HandleTColgpHSequenceOfVec) -> bool;
     /// Dereference Handle to get *const TColgp_HSequenceOfVec
     pub fn HandleTColgpHSequenceOfVec_get(
         handle: *const HandleTColgpHSequenceOfVec,
@@ -8564,6 +8664,9 @@ extern "C" {
     pub fn HandleTColgpHSequenceOfVec2d_clone(
         self_: *const HandleTColgpHSequenceOfVec2d,
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfVec2d>;
+    /// Check if Handle<TColgp_HSequenceOfVec2d> is null
+    pub fn HandleTColgpHSequenceOfVec2d_is_null(self_: *const HandleTColgpHSequenceOfVec2d)
+        -> bool;
     /// Dereference Handle to get *const TColgp_HSequenceOfVec2d
     pub fn HandleTColgpHSequenceOfVec2d_get(
         handle: *const HandleTColgpHSequenceOfVec2d,
@@ -8658,6 +8761,8 @@ extern "C" {
     pub fn HandleTColgpHSequenceOfXY_clone(
         self_: *const HandleTColgpHSequenceOfXY,
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfXY>;
+    /// Check if Handle<TColgp_HSequenceOfXY> is null
+    pub fn HandleTColgpHSequenceOfXY_is_null(self_: *const HandleTColgpHSequenceOfXY) -> bool;
     /// Dereference Handle to get *const TColgp_HSequenceOfXY
     pub fn HandleTColgpHSequenceOfXY_get(
         handle: *const HandleTColgpHSequenceOfXY,
@@ -8753,6 +8858,8 @@ extern "C" {
     pub fn HandleTColgpHSequenceOfXYZ_clone(
         self_: *const HandleTColgpHSequenceOfXYZ,
     ) -> crate::OcctResult<*mut HandleTColgpHSequenceOfXYZ>;
+    /// Check if Handle<TColgp_HSequenceOfXYZ> is null
+    pub fn HandleTColgpHSequenceOfXYZ_is_null(self_: *const HandleTColgpHSequenceOfXYZ) -> bool;
     /// Dereference Handle to get *const TColgp_HSequenceOfXYZ
     pub fn HandleTColgpHSequenceOfXYZ_get(
         handle: *const HandleTColgpHSequenceOfXYZ,
@@ -8840,6 +8947,8 @@ extern "C" {
     pub fn HandleTopLocDatum3D_clone(
         self_: *const HandleTopLocDatum3D,
     ) -> crate::OcctResult<*mut HandleTopLocDatum3D>;
+    /// Check if Handle<TopLoc_Datum3D> is null
+    pub fn HandleTopLocDatum3D_is_null(self_: *const HandleTopLocDatum3D) -> bool;
     /// Dereference Handle to get *const TopLoc_Datum3D
     pub fn HandleTopLocDatum3D_get(
         handle: *const HandleTopLocDatum3D,
@@ -9014,6 +9123,10 @@ extern "C" {
     pub fn HandleTopLocSListNodeOfItemLocation_clone(
         self_: *const HandleTopLocSListNodeOfItemLocation,
     ) -> crate::OcctResult<*mut HandleTopLocSListNodeOfItemLocation>;
+    /// Check if Handle<TopLoc_SListNodeOfItemLocation> is null
+    pub fn HandleTopLocSListNodeOfItemLocation_is_null(
+        self_: *const HandleTopLocSListNodeOfItemLocation,
+    ) -> bool;
     /// Dereference Handle to get *const TopLoc_SListNodeOfItemLocation
     pub fn HandleTopLocSListNodeOfItemLocation_get(
         handle: *const HandleTopLocSListNodeOfItemLocation,
@@ -14178,6 +14291,10 @@ extern "C" {
     pub fn HandlegpVectorWithNullMagnitude_clone(
         self_: *const HandlegpVectorWithNullMagnitude,
     ) -> crate::OcctResult<*mut HandlegpVectorWithNullMagnitude>;
+    /// Check if Handle<gp_VectorWithNullMagnitude> is null
+    pub fn HandlegpVectorWithNullMagnitude_is_null(
+        self_: *const HandlegpVectorWithNullMagnitude,
+    ) -> bool;
     /// Dereference Handle to get *const gp_VectorWithNullMagnitude
     pub fn HandlegpVectorWithNullMagnitude_get(
         handle: *const HandlegpVectorWithNullMagnitude,
@@ -16352,6 +16469,8 @@ extern "C" {
     pub fn HandlemathNotSquare_clone(
         self_: *const HandlemathNotSquare,
     ) -> crate::OcctResult<*mut HandlemathNotSquare>;
+    /// Check if Handle<math_NotSquare> is null
+    pub fn HandlemathNotSquare_is_null(self_: *const HandlemathNotSquare) -> bool;
     /// Dereference Handle to get *const math_NotSquare
     pub fn HandlemathNotSquare_get(
         handle: *const HandlemathNotSquare,
@@ -16594,6 +16713,8 @@ extern "C" {
     pub fn HandlemathSingularMatrix_clone(
         self_: *const HandlemathSingularMatrix,
     ) -> crate::OcctResult<*mut HandlemathSingularMatrix>;
+    /// Check if Handle<math_SingularMatrix> is null
+    pub fn HandlemathSingularMatrix_is_null(self_: *const HandlemathSingularMatrix) -> bool;
     /// Dereference Handle to get *const math_SingularMatrix
     pub fn HandlemathSingularMatrix_get(
         handle: *const HandlemathSingularMatrix,

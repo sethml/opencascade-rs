@@ -328,6 +328,11 @@ unsafe impl crate::CppCopyable for HandleMAT2dCircuit {
 }
 
 impl HandleMAT2dCircuit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleMAT2dCircuit_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MAT2d_Circuit
     pub fn get(&self) -> &crate::ffi_types::MAT2d_Circuit {
         unsafe {
@@ -763,6 +768,11 @@ unsafe impl crate::CppCopyable for HandleMAT2dConnexion {
 }
 
 impl HandleMAT2dConnexion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleMAT2dConnexion_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MAT2d_Connexion
     pub fn get(&self) -> &crate::ffi_types::MAT2d_Connexion {
         unsafe {

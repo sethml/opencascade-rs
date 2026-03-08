@@ -71,6 +71,8 @@ extern "C" {
     pub fn HandleXCAFAppApplication_clone(
         self_: *const HandleXCAFAppApplication,
     ) -> crate::OcctResult<*mut HandleXCAFAppApplication>;
+    /// Check if Handle<XCAFApp_Application> is null
+    pub fn HandleXCAFAppApplication_is_null(self_: *const HandleXCAFAppApplication) -> bool;
     /// Dereference Handle to get *const XCAFApp_Application
     pub fn HandleXCAFAppApplication_get(
         handle: *const HandleXCAFAppApplication,
@@ -507,6 +509,10 @@ extern "C" {
     pub fn HandleXCAFDimTolObjectsDatumObject_clone(
         self_: *const HandleXCAFDimTolObjectsDatumObject,
     ) -> crate::OcctResult<*mut HandleXCAFDimTolObjectsDatumObject>;
+    /// Check if Handle<XCAFDimTolObjects_DatumObject> is null
+    pub fn HandleXCAFDimTolObjectsDatumObject_is_null(
+        self_: *const HandleXCAFDimTolObjectsDatumObject,
+    ) -> bool;
     /// Dereference Handle to get *const XCAFDimTolObjects_DatumObject
     pub fn HandleXCAFDimTolObjectsDatumObject_get(
         handle: *const HandleXCAFDimTolObjectsDatumObject,
@@ -854,6 +860,10 @@ extern "C" {
     pub fn HandleXCAFDimTolObjectsDimensionObject_clone(
         self_: *const HandleXCAFDimTolObjectsDimensionObject,
     ) -> crate::OcctResult<*mut HandleXCAFDimTolObjectsDimensionObject>;
+    /// Check if Handle<XCAFDimTolObjects_DimensionObject> is null
+    pub fn HandleXCAFDimTolObjectsDimensionObject_is_null(
+        self_: *const HandleXCAFDimTolObjectsDimensionObject,
+    ) -> bool;
     /// Dereference Handle to get *const XCAFDimTolObjects_DimensionObject
     pub fn HandleXCAFDimTolObjectsDimensionObject_get(
         handle: *const HandleXCAFDimTolObjectsDimensionObject,
@@ -1117,6 +1127,10 @@ extern "C" {
     pub fn HandleXCAFDimTolObjectsGeomToleranceObject_clone(
         self_: *const HandleXCAFDimTolObjectsGeomToleranceObject,
     ) -> crate::OcctResult<*mut HandleXCAFDimTolObjectsGeomToleranceObject>;
+    /// Check if Handle<XCAFDimTolObjects_GeomToleranceObject> is null
+    pub fn HandleXCAFDimTolObjectsGeomToleranceObject_is_null(
+        self_: *const HandleXCAFDimTolObjectsGeomToleranceObject,
+    ) -> bool;
     /// Dereference Handle to get *const XCAFDimTolObjects_GeomToleranceObject
     pub fn HandleXCAFDimTolObjectsGeomToleranceObject_get(
         handle: *const HandleXCAFDimTolObjectsGeomToleranceObject,
@@ -1270,6 +1284,8 @@ extern "C" {
     pub fn HandleXCAFDocArea_clone(
         self_: *const HandleXCAFDocArea,
     ) -> crate::OcctResult<*mut HandleXCAFDocArea>;
+    /// Check if Handle<XCAFDoc_Area> is null
+    pub fn HandleXCAFDocArea_is_null(self_: *const HandleXCAFDocArea) -> bool;
     /// Dereference Handle to get *const XCAFDoc_Area
     pub fn HandleXCAFDocArea_get(
         handle: *const HandleXCAFDocArea,
@@ -1545,6 +1561,8 @@ extern "C" {
     pub fn HandleXCAFDocAssemblyGraph_clone(
         self_: *const HandleXCAFDocAssemblyGraph,
     ) -> crate::OcctResult<*mut HandleXCAFDocAssemblyGraph>;
+    /// Check if Handle<XCAFDoc_AssemblyGraph> is null
+    pub fn HandleXCAFDocAssemblyGraph_is_null(self_: *const HandleXCAFDocAssemblyGraph) -> bool;
     /// Dereference Handle to get *const XCAFDoc_AssemblyGraph
     pub fn HandleXCAFDocAssemblyGraph_get(
         handle: *const HandleXCAFDocAssemblyGraph,
@@ -1806,6 +1824,9 @@ extern "C" {
     pub fn HandleXCAFDocAssemblyItemRef_clone(
         self_: *const HandleXCAFDocAssemblyItemRef,
     ) -> crate::OcctResult<*mut HandleXCAFDocAssemblyItemRef>;
+    /// Check if Handle<XCAFDoc_AssemblyItemRef> is null
+    pub fn HandleXCAFDocAssemblyItemRef_is_null(self_: *const HandleXCAFDocAssemblyItemRef)
+        -> bool;
     /// Dereference Handle to get *const XCAFDoc_AssemblyItemRef
     pub fn HandleXCAFDocAssemblyItemRef_get(
         handle: *const HandleXCAFDocAssemblyItemRef,
@@ -2100,6 +2121,8 @@ extern "C" {
     pub fn HandleXCAFDocCentroid_clone(
         self_: *const HandleXCAFDocCentroid,
     ) -> crate::OcctResult<*mut HandleXCAFDocCentroid>;
+    /// Check if Handle<XCAFDoc_Centroid> is null
+    pub fn HandleXCAFDocCentroid_is_null(self_: *const HandleXCAFDocCentroid) -> bool;
     /// Dereference Handle to get *const XCAFDoc_Centroid
     pub fn HandleXCAFDocCentroid_get(
         handle: *const HandleXCAFDocCentroid,
@@ -2434,6 +2457,10 @@ extern "C" {
     pub fn HandleXCAFDocClippingPlaneTool_clone(
         self_: *const HandleXCAFDocClippingPlaneTool,
     ) -> crate::OcctResult<*mut HandleXCAFDocClippingPlaneTool>;
+    /// Check if Handle<XCAFDoc_ClippingPlaneTool> is null
+    pub fn HandleXCAFDocClippingPlaneTool_is_null(
+        self_: *const HandleXCAFDocClippingPlaneTool,
+    ) -> bool;
     /// Dereference Handle to get *const XCAFDoc_ClippingPlaneTool
     pub fn HandleXCAFDocClippingPlaneTool_get(
         handle: *const HandleXCAFDocClippingPlaneTool,
@@ -2760,6 +2787,8 @@ extern "C" {
     pub fn HandleXCAFDocColor_clone(
         self_: *const HandleXCAFDocColor,
     ) -> crate::OcctResult<*mut HandleXCAFDocColor>;
+    /// Check if Handle<XCAFDoc_Color> is null
+    pub fn HandleXCAFDocColor_is_null(self_: *const HandleXCAFDocColor) -> bool;
     /// Dereference Handle to get *const XCAFDoc_Color
     pub fn HandleXCAFDocColor_get(
         handle: *const HandleXCAFDocColor,
@@ -3232,6 +3261,8 @@ extern "C" {
     pub fn HandleXCAFDocColorTool_clone(
         self_: *const HandleXCAFDocColorTool,
     ) -> crate::OcctResult<*mut HandleXCAFDocColorTool>;
+    /// Check if Handle<XCAFDoc_ColorTool> is null
+    pub fn HandleXCAFDocColorTool_is_null(self_: *const HandleXCAFDocColorTool) -> bool;
     /// Dereference Handle to get *const XCAFDoc_ColorTool
     pub fn HandleXCAFDocColorTool_get(
         handle: *const HandleXCAFDocColorTool,
@@ -3532,6 +3563,8 @@ extern "C" {
     pub fn HandleXCAFDocDatum_clone(
         self_: *const HandleXCAFDocDatum,
     ) -> crate::OcctResult<*mut HandleXCAFDocDatum>;
+    /// Check if Handle<XCAFDoc_Datum> is null
+    pub fn HandleXCAFDocDatum_is_null(self_: *const HandleXCAFDocDatum) -> bool;
     /// Dereference Handle to get *const XCAFDoc_Datum
     pub fn HandleXCAFDocDatum_get(
         handle: *const HandleXCAFDocDatum,
@@ -3801,6 +3834,8 @@ extern "C" {
     pub fn HandleXCAFDocDimTol_clone(
         self_: *const HandleXCAFDocDimTol,
     ) -> crate::OcctResult<*mut HandleXCAFDocDimTol>;
+    /// Check if Handle<XCAFDoc_DimTol> is null
+    pub fn HandleXCAFDocDimTol_is_null(self_: *const HandleXCAFDocDimTol) -> bool;
     /// Dereference Handle to get *const XCAFDoc_DimTol
     pub fn HandleXCAFDocDimTol_get(
         handle: *const HandleXCAFDocDimTol,
@@ -4294,6 +4329,8 @@ extern "C" {
     pub fn HandleXCAFDocDimTolTool_clone(
         self_: *const HandleXCAFDocDimTolTool,
     ) -> crate::OcctResult<*mut HandleXCAFDocDimTolTool>;
+    /// Check if Handle<XCAFDoc_DimTolTool> is null
+    pub fn HandleXCAFDocDimTolTool_is_null(self_: *const HandleXCAFDocDimTolTool) -> bool;
     /// Dereference Handle to get *const XCAFDoc_DimTolTool
     pub fn HandleXCAFDocDimTolTool_get(
         handle: *const HandleXCAFDocDimTolTool,
@@ -4566,6 +4603,8 @@ extern "C" {
     pub fn HandleXCAFDocDimension_clone(
         self_: *const HandleXCAFDocDimension,
     ) -> crate::OcctResult<*mut HandleXCAFDocDimension>;
+    /// Check if Handle<XCAFDoc_Dimension> is null
+    pub fn HandleXCAFDocDimension_is_null(self_: *const HandleXCAFDocDimension) -> bool;
     /// Dereference Handle to get *const XCAFDoc_Dimension
     pub fn HandleXCAFDocDimension_get(
         handle: *const HandleXCAFDocDimension,
@@ -4976,6 +5015,8 @@ extern "C" {
     pub fn HandleXCAFDocDocumentTool_clone(
         self_: *const HandleXCAFDocDocumentTool,
     ) -> crate::OcctResult<*mut HandleXCAFDocDocumentTool>;
+    /// Check if Handle<XCAFDoc_DocumentTool> is null
+    pub fn HandleXCAFDocDocumentTool_is_null(self_: *const HandleXCAFDocDocumentTool) -> bool;
     /// Dereference Handle to get *const XCAFDoc_DocumentTool
     pub fn HandleXCAFDocDocumentTool_get(
         handle: *const HandleXCAFDocDocumentTool,
@@ -5314,6 +5355,8 @@ extern "C" {
     pub fn HandleXCAFDocGeomTolerance_clone(
         self_: *const HandleXCAFDocGeomTolerance,
     ) -> crate::OcctResult<*mut HandleXCAFDocGeomTolerance>;
+    /// Check if Handle<XCAFDoc_GeomTolerance> is null
+    pub fn HandleXCAFDocGeomTolerance_is_null(self_: *const HandleXCAFDocGeomTolerance) -> bool;
     /// Dereference Handle to get *const XCAFDoc_GeomTolerance
     pub fn HandleXCAFDocGeomTolerance_get(
         handle: *const HandleXCAFDocGeomTolerance,
@@ -5674,6 +5717,8 @@ extern "C" {
     pub fn HandleXCAFDocGraphNode_clone(
         self_: *const HandleXCAFDocGraphNode,
     ) -> crate::OcctResult<*mut HandleXCAFDocGraphNode>;
+    /// Check if Handle<XCAFDoc_GraphNode> is null
+    pub fn HandleXCAFDocGraphNode_is_null(self_: *const HandleXCAFDocGraphNode) -> bool;
     /// Dereference Handle to get *const XCAFDoc_GraphNode
     pub fn HandleXCAFDocGraphNode_get(
         handle: *const HandleXCAFDocGraphNode,
@@ -6102,6 +6147,8 @@ extern "C" {
     pub fn HandleXCAFDocLayerTool_clone(
         self_: *const HandleXCAFDocLayerTool,
     ) -> crate::OcctResult<*mut HandleXCAFDocLayerTool>;
+    /// Check if Handle<XCAFDoc_LayerTool> is null
+    pub fn HandleXCAFDocLayerTool_is_null(self_: *const HandleXCAFDocLayerTool) -> bool;
     /// Dereference Handle to get *const XCAFDoc_LayerTool
     pub fn HandleXCAFDocLayerTool_get(
         handle: *const HandleXCAFDocLayerTool,
@@ -6404,6 +6451,8 @@ extern "C" {
     pub fn HandleXCAFDocLengthUnit_clone(
         self_: *const HandleXCAFDocLengthUnit,
     ) -> crate::OcctResult<*mut HandleXCAFDocLengthUnit>;
+    /// Check if Handle<XCAFDoc_LengthUnit> is null
+    pub fn HandleXCAFDocLengthUnit_is_null(self_: *const HandleXCAFDocLengthUnit) -> bool;
     /// Dereference Handle to get *const XCAFDoc_LengthUnit
     pub fn HandleXCAFDocLengthUnit_get(
         handle: *const HandleXCAFDocLengthUnit,
@@ -6665,6 +6714,8 @@ extern "C" {
     pub fn HandleXCAFDocLocation_clone(
         self_: *const HandleXCAFDocLocation,
     ) -> crate::OcctResult<*mut HandleXCAFDocLocation>;
+    /// Check if Handle<XCAFDoc_Location> is null
+    pub fn HandleXCAFDocLocation_is_null(self_: *const HandleXCAFDocLocation) -> bool;
     /// Dereference Handle to get *const XCAFDoc_Location
     pub fn HandleXCAFDocLocation_get(
         handle: *const HandleXCAFDocLocation,
@@ -6948,6 +6999,8 @@ extern "C" {
     pub fn HandleXCAFDocMaterial_clone(
         self_: *const HandleXCAFDocMaterial,
     ) -> crate::OcctResult<*mut HandleXCAFDocMaterial>;
+    /// Check if Handle<XCAFDoc_Material> is null
+    pub fn HandleXCAFDocMaterial_is_null(self_: *const HandleXCAFDocMaterial) -> bool;
     /// Dereference Handle to get *const XCAFDoc_Material
     pub fn HandleXCAFDocMaterial_get(
         handle: *const HandleXCAFDocMaterial,
@@ -7252,6 +7305,8 @@ extern "C" {
     pub fn HandleXCAFDocMaterialTool_clone(
         self_: *const HandleXCAFDocMaterialTool,
     ) -> crate::OcctResult<*mut HandleXCAFDocMaterialTool>;
+    /// Check if Handle<XCAFDoc_MaterialTool> is null
+    pub fn HandleXCAFDocMaterialTool_is_null(self_: *const HandleXCAFDocMaterialTool) -> bool;
     /// Dereference Handle to get *const XCAFDoc_MaterialTool
     pub fn HandleXCAFDocMaterialTool_get(
         handle: *const HandleXCAFDocMaterialTool,
@@ -7534,6 +7589,8 @@ extern "C" {
     pub fn HandleXCAFDocNote_clone(
         self_: *const HandleXCAFDocNote,
     ) -> crate::OcctResult<*mut HandleXCAFDocNote>;
+    /// Check if Handle<XCAFDoc_Note> is null
+    pub fn HandleXCAFDocNote_is_null(self_: *const HandleXCAFDocNote) -> bool;
     /// Dereference Handle to get *const XCAFDoc_Note
     pub fn HandleXCAFDocNote_get(
         handle: *const HandleXCAFDocNote,
@@ -7803,6 +7860,8 @@ extern "C" {
     pub fn HandleXCAFDocNoteBalloon_clone(
         self_: *const HandleXCAFDocNoteBalloon,
     ) -> crate::OcctResult<*mut HandleXCAFDocNoteBalloon>;
+    /// Check if Handle<XCAFDoc_NoteBalloon> is null
+    pub fn HandleXCAFDocNoteBalloon_is_null(self_: *const HandleXCAFDocNoteBalloon) -> bool;
     /// Dereference Handle to get *const XCAFDoc_NoteBalloon
     pub fn HandleXCAFDocNoteBalloon_get(
         handle: *const HandleXCAFDocNoteBalloon,
@@ -8157,6 +8216,8 @@ extern "C" {
     pub fn HandleXCAFDocNoteBinData_clone(
         self_: *const HandleXCAFDocNoteBinData,
     ) -> crate::OcctResult<*mut HandleXCAFDocNoteBinData>;
+    /// Check if Handle<XCAFDoc_NoteBinData> is null
+    pub fn HandleXCAFDocNoteBinData_is_null(self_: *const HandleXCAFDocNoteBinData) -> bool;
     /// Dereference Handle to get *const XCAFDoc_NoteBinData
     pub fn HandleXCAFDocNoteBinData_get(
         handle: *const HandleXCAFDocNoteBinData,
@@ -8462,6 +8523,8 @@ extern "C" {
     pub fn HandleXCAFDocNoteComment_clone(
         self_: *const HandleXCAFDocNoteComment,
     ) -> crate::OcctResult<*mut HandleXCAFDocNoteComment>;
+    /// Check if Handle<XCAFDoc_NoteComment> is null
+    pub fn HandleXCAFDocNoteComment_is_null(self_: *const HandleXCAFDocNoteComment) -> bool;
     /// Dereference Handle to get *const XCAFDoc_NoteComment
     pub fn HandleXCAFDocNoteComment_get(
         handle: *const HandleXCAFDocNoteComment,
@@ -9023,6 +9086,8 @@ extern "C" {
     pub fn HandleXCAFDocNotesTool_clone(
         self_: *const HandleXCAFDocNotesTool,
     ) -> crate::OcctResult<*mut HandleXCAFDocNotesTool>;
+    /// Check if Handle<XCAFDoc_NotesTool> is null
+    pub fn HandleXCAFDocNotesTool_is_null(self_: *const HandleXCAFDocNotesTool) -> bool;
     /// Dereference Handle to get *const XCAFDoc_NotesTool
     pub fn HandleXCAFDocNotesTool_get(
         handle: *const HandleXCAFDocNotesTool,
@@ -9303,6 +9368,8 @@ extern "C" {
     pub fn HandleXCAFDocShapeMapTool_clone(
         self_: *const HandleXCAFDocShapeMapTool,
     ) -> crate::OcctResult<*mut HandleXCAFDocShapeMapTool>;
+    /// Check if Handle<XCAFDoc_ShapeMapTool> is null
+    pub fn HandleXCAFDocShapeMapTool_is_null(self_: *const HandleXCAFDocShapeMapTool) -> bool;
     /// Dereference Handle to get *const XCAFDoc_ShapeMapTool
     pub fn HandleXCAFDocShapeMapTool_get(
         handle: *const HandleXCAFDocShapeMapTool,
@@ -9879,6 +9946,8 @@ extern "C" {
     pub fn HandleXCAFDocShapeTool_clone(
         self_: *const HandleXCAFDocShapeTool,
     ) -> crate::OcctResult<*mut HandleXCAFDocShapeTool>;
+    /// Check if Handle<XCAFDoc_ShapeTool> is null
+    pub fn HandleXCAFDocShapeTool_is_null(self_: *const HandleXCAFDocShapeTool) -> bool;
     /// Dereference Handle to get *const XCAFDoc_ShapeTool
     pub fn HandleXCAFDocShapeTool_get(
         handle: *const HandleXCAFDocShapeTool,
@@ -10149,6 +10218,8 @@ extern "C" {
     pub fn HandleXCAFDocView_clone(
         self_: *const HandleXCAFDocView,
     ) -> crate::OcctResult<*mut HandleXCAFDocView>;
+    /// Check if Handle<XCAFDoc_View> is null
+    pub fn HandleXCAFDocView_is_null(self_: *const HandleXCAFDocView) -> bool;
     /// Dereference Handle to get *const XCAFDoc_View
     pub fn HandleXCAFDocView_get(
         handle: *const HandleXCAFDocView,
@@ -10527,6 +10598,8 @@ extern "C" {
     pub fn HandleXCAFDocViewTool_clone(
         self_: *const HandleXCAFDocViewTool,
     ) -> crate::OcctResult<*mut HandleXCAFDocViewTool>;
+    /// Check if Handle<XCAFDoc_ViewTool> is null
+    pub fn HandleXCAFDocViewTool_is_null(self_: *const HandleXCAFDocViewTool) -> bool;
     /// Dereference Handle to get *const XCAFDoc_ViewTool
     pub fn HandleXCAFDocViewTool_get(
         handle: *const HandleXCAFDocViewTool,
@@ -10886,6 +10959,8 @@ extern "C" {
     pub fn HandleXCAFDocVisMaterial_clone(
         self_: *const HandleXCAFDocVisMaterial,
     ) -> crate::OcctResult<*mut HandleXCAFDocVisMaterial>;
+    /// Check if Handle<XCAFDoc_VisMaterial> is null
+    pub fn HandleXCAFDocVisMaterial_is_null(self_: *const HandleXCAFDocVisMaterial) -> bool;
     /// Dereference Handle to get *const XCAFDoc_VisMaterial
     pub fn HandleXCAFDocVisMaterial_get(
         handle: *const HandleXCAFDocVisMaterial,
@@ -11246,6 +11321,9 @@ extern "C" {
     pub fn HandleXCAFDocVisMaterialTool_clone(
         self_: *const HandleXCAFDocVisMaterialTool,
     ) -> crate::OcctResult<*mut HandleXCAFDocVisMaterialTool>;
+    /// Check if Handle<XCAFDoc_VisMaterialTool> is null
+    pub fn HandleXCAFDocVisMaterialTool_is_null(self_: *const HandleXCAFDocVisMaterialTool)
+        -> bool;
     /// Dereference Handle to get *const XCAFDoc_VisMaterialTool
     pub fn HandleXCAFDocVisMaterialTool_get(
         handle: *const HandleXCAFDocVisMaterialTool,
@@ -11509,6 +11587,8 @@ extern "C" {
     pub fn HandleXCAFDocVolume_clone(
         self_: *const HandleXCAFDocVolume,
     ) -> crate::OcctResult<*mut HandleXCAFDocVolume>;
+    /// Check if Handle<XCAFDoc_Volume> is null
+    pub fn HandleXCAFDocVolume_is_null(self_: *const HandleXCAFDocVolume) -> bool;
     /// Dereference Handle to get *const XCAFDoc_Volume
     pub fn HandleXCAFDocVolume_get(
         handle: *const HandleXCAFDocVolume,
@@ -11798,6 +11878,10 @@ extern "C" {
     pub fn HandleXCAFNoteObjectsNoteObject_clone(
         self_: *const HandleXCAFNoteObjectsNoteObject,
     ) -> crate::OcctResult<*mut HandleXCAFNoteObjectsNoteObject>;
+    /// Check if Handle<XCAFNoteObjects_NoteObject> is null
+    pub fn HandleXCAFNoteObjectsNoteObject_is_null(
+        self_: *const HandleXCAFNoteObjectsNoteObject,
+    ) -> bool;
     /// Dereference Handle to get *const XCAFNoteObjects_NoteObject
     pub fn HandleXCAFNoteObjectsNoteObject_get(
         handle: *const HandleXCAFNoteObjectsNoteObject,
@@ -11931,6 +12015,8 @@ extern "C" {
     pub fn HandleXCAFPrsAISObject_clone(
         self_: *const HandleXCAFPrsAISObject,
     ) -> crate::OcctResult<*mut HandleXCAFPrsAISObject>;
+    /// Check if Handle<XCAFPrs_AISObject> is null
+    pub fn HandleXCAFPrsAISObject_is_null(self_: *const HandleXCAFPrsAISObject) -> bool;
     /// Dereference Handle to get *const XCAFPrs_AISObject
     pub fn HandleXCAFPrsAISObject_get(
         handle: *const HandleXCAFPrsAISObject,
@@ -12802,6 +12888,8 @@ extern "C" {
     pub fn HandleXCAFPrsDriver_clone(
         self_: *const HandleXCAFPrsDriver,
     ) -> crate::OcctResult<*mut HandleXCAFPrsDriver>;
+    /// Check if Handle<XCAFPrs_Driver> is null
+    pub fn HandleXCAFPrsDriver_is_null(self_: *const HandleXCAFPrsDriver) -> bool;
     /// Dereference Handle to get *const XCAFPrs_Driver
     pub fn HandleXCAFPrsDriver_get(
         handle: *const HandleXCAFPrsDriver,
@@ -12984,6 +13072,8 @@ extern "C" {
     pub fn HandleXCAFPrsTexture_clone(
         self_: *const HandleXCAFPrsTexture,
     ) -> crate::OcctResult<*mut HandleXCAFPrsTexture>;
+    /// Check if Handle<XCAFPrs_Texture> is null
+    pub fn HandleXCAFPrsTexture_is_null(self_: *const HandleXCAFPrsTexture) -> bool;
     /// Dereference Handle to get *const XCAFPrs_Texture
     pub fn HandleXCAFPrsTexture_get(
         handle: *const HandleXCAFPrsTexture,
@@ -13312,6 +13402,8 @@ extern "C" {
     pub fn HandleXCAFViewObject_clone(
         self_: *const HandleXCAFViewObject,
     ) -> crate::OcctResult<*mut HandleXCAFViewObject>;
+    /// Check if Handle<XCAFView_Object> is null
+    pub fn HandleXCAFViewObject_is_null(self_: *const HandleXCAFViewObject) -> bool;
     /// Dereference Handle to get *const XCAFView_Object
     pub fn HandleXCAFViewObject_get(
         handle: *const HandleXCAFViewObject,

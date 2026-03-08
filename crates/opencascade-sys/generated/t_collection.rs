@@ -3078,6 +3078,13 @@ unsafe impl crate::CppCopyable for HandleTCollectionHAsciiString {
 }
 
 impl HandleTCollectionHAsciiString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTCollectionHAsciiString_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TCollection_HAsciiString
     pub fn get(&self) -> &crate::ffi_types::TCollection_HAsciiString {
         unsafe {
@@ -3713,6 +3720,13 @@ unsafe impl crate::CppCopyable for HandleTCollectionHExtendedString {
 }
 
 impl HandleTCollectionHExtendedString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTCollectionHExtendedString_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TCollection_HExtendedString
     pub fn get(&self) -> &crate::ffi_types::TCollection_HExtendedString {
         unsafe {

@@ -251,6 +251,15 @@ unsafe impl crate::CppCopyable for HandleTColGeomHArray1OfBSplineCurve {
 }
 
 impl HandleTColGeomHArray1OfBSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfBSplineCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColGeom_HArray1OfBSplineCurve
     pub fn get(&self) -> &crate::ffi_types::TColGeom_HArray1OfBSplineCurve {
         unsafe {
@@ -523,6 +532,13 @@ unsafe impl crate::CppCopyable for HandleTColGeomHArray1OfBezierCurve {
 }
 
 impl HandleTColGeomHArray1OfBezierCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfBezierCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColGeom_HArray1OfBezierCurve
     pub fn get(&self) -> &crate::ffi_types::TColGeom_HArray1OfBezierCurve {
         unsafe {
@@ -791,6 +807,13 @@ unsafe impl crate::CppCopyable for HandleTColGeomHArray1OfCurve {
 }
 
 impl HandleTColGeomHArray1OfCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColGeom_HArray1OfCurve
     pub fn get(&self) -> &crate::ffi_types::TColGeom_HArray1OfCurve {
         unsafe {
@@ -1065,6 +1088,13 @@ unsafe impl crate::CppCopyable for HandleTColGeomHArray1OfSurface {
 }
 
 impl HandleTColGeomHArray1OfSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColGeom_HArray1OfSurface
     pub fn get(&self) -> &crate::ffi_types::TColGeom_HArray1OfSurface {
         unsafe {
@@ -1323,6 +1353,13 @@ unsafe impl crate::CppCopyable for HandleTColGeomHArray2OfSurface {
 }
 
 impl HandleTColGeomHArray2OfSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHArray2OfSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColGeom_HArray2OfSurface
     pub fn get(&self) -> &crate::ffi_types::TColGeom_HArray2OfSurface {
         unsafe {
@@ -1589,6 +1626,15 @@ unsafe impl crate::CppCopyable for HandleTColGeomHSequenceOfBoundedCurve {
 }
 
 impl HandleTColGeomHSequenceOfBoundedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHSequenceOfBoundedCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColGeom_HSequenceOfBoundedCurve
     pub fn get(&self) -> &crate::ffi_types::TColGeom_HSequenceOfBoundedCurve {
         unsafe {
@@ -1848,6 +1894,13 @@ unsafe impl crate::CppCopyable for HandleTColGeomHSequenceOfCurve {
 }
 
 impl HandleTColGeomHSequenceOfCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHSequenceOfCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColGeom_HSequenceOfCurve
     pub fn get(&self) -> &crate::ffi_types::TColGeom_HSequenceOfCurve {
         unsafe {

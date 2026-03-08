@@ -924,6 +924,11 @@ unsafe impl crate::CppCopyable for HandleBiTgteCurveOnEdge {
 }
 
 impl HandleBiTgteCurveOnEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BiTgte_CurveOnEdge
     pub fn get(&self) -> &crate::ffi_types::BiTgte_CurveOnEdge {
         unsafe {
@@ -1495,6 +1500,13 @@ unsafe impl crate::CppCopyable for HandleBiTgteCurveOnVertex {
 }
 
 impl HandleBiTgteCurveOnVertex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BiTgte_CurveOnVertex
     pub fn get(&self) -> &crate::ffi_types::BiTgte_CurveOnVertex {
         unsafe {

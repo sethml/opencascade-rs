@@ -208,212 +208,253 @@ typedef opencascade::handle<Vrml_SFImage> HandleVrmlSFImage;
 typedef opencascade::handle<Vrml_TextureCoordinate2> HandleVrmlTextureCoordinate2;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleDEVRMLConfigurationNode_destructor(HandleDEVRMLConfigurationNode* self_) { delete self_; }
 extern "C" OcctResult<HandleDEVRMLConfigurationNode*> HandleDEVRMLConfigurationNode_clone(const HandleDEVRMLConfigurationNode* self_) {
     try { return {new HandleDEVRMLConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEVRMLConfigurationNode_is_null(const HandleDEVRMLConfigurationNode* self_) { return self_->IsNull(); }
 extern "C" void HandleDEVRMLProvider_destructor(HandleDEVRMLProvider* self_) { delete self_; }
 extern "C" OcctResult<HandleDEVRMLProvider*> HandleDEVRMLProvider_clone(const HandleDEVRMLProvider* self_) {
     try { return {new HandleDEVRMLProvider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEVRMLProvider_is_null(const HandleDEVRMLProvider* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlAPICafReader_destructor(HandleVrmlAPICafReader* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlAPICafReader*> HandleVrmlAPICafReader_clone(const HandleVrmlAPICafReader* self_) {
     try { return {new HandleVrmlAPICafReader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlAPICafReader_is_null(const HandleVrmlAPICafReader* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlConverterDrawer_destructor(HandleVrmlConverterDrawer* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlConverterDrawer*> HandleVrmlConverterDrawer_clone(const HandleVrmlConverterDrawer* self_) {
     try { return {new HandleVrmlConverterDrawer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlConverterDrawer_is_null(const HandleVrmlConverterDrawer* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlConverterIsoAspect_destructor(HandleVrmlConverterIsoAspect* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlConverterIsoAspect*> HandleVrmlConverterIsoAspect_clone(const HandleVrmlConverterIsoAspect* self_) {
     try { return {new HandleVrmlConverterIsoAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlConverterIsoAspect_is_null(const HandleVrmlConverterIsoAspect* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlConverterLineAspect_destructor(HandleVrmlConverterLineAspect* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlConverterLineAspect*> HandleVrmlConverterLineAspect_clone(const HandleVrmlConverterLineAspect* self_) {
     try { return {new HandleVrmlConverterLineAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlConverterLineAspect_is_null(const HandleVrmlConverterLineAspect* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlConverterPointAspect_destructor(HandleVrmlConverterPointAspect* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlConverterPointAspect*> HandleVrmlConverterPointAspect_clone(const HandleVrmlConverterPointAspect* self_) {
     try { return {new HandleVrmlConverterPointAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlConverterPointAspect_is_null(const HandleVrmlConverterPointAspect* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlConverterProjector_destructor(HandleVrmlConverterProjector* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlConverterProjector*> HandleVrmlConverterProjector_clone(const HandleVrmlConverterProjector* self_) {
     try { return {new HandleVrmlConverterProjector(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlConverterProjector_is_null(const HandleVrmlConverterProjector* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlConverterShadingAspect_destructor(HandleVrmlConverterShadingAspect* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlConverterShadingAspect*> HandleVrmlConverterShadingAspect_clone(const HandleVrmlConverterShadingAspect* self_) {
     try { return {new HandleVrmlConverterShadingAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlConverterShadingAspect_is_null(const HandleVrmlConverterShadingAspect* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataAppearance_destructor(HandleVrmlDataAppearance* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataAppearance*> HandleVrmlDataAppearance_clone(const HandleVrmlDataAppearance* self_) {
     try { return {new HandleVrmlDataAppearance(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataAppearance_is_null(const HandleVrmlDataAppearance* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataArrayVec3d_destructor(HandleVrmlDataArrayVec3d* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataArrayVec3d*> HandleVrmlDataArrayVec3d_clone(const HandleVrmlDataArrayVec3d* self_) {
     try { return {new HandleVrmlDataArrayVec3d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataArrayVec3d_is_null(const HandleVrmlDataArrayVec3d* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataBox_destructor(HandleVrmlDataBox* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataBox*> HandleVrmlDataBox_clone(const HandleVrmlDataBox* self_) {
     try { return {new HandleVrmlDataBox(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataBox_is_null(const HandleVrmlDataBox* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataColor_destructor(HandleVrmlDataColor* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataColor*> HandleVrmlDataColor_clone(const HandleVrmlDataColor* self_) {
     try { return {new HandleVrmlDataColor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataColor_is_null(const HandleVrmlDataColor* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataCone_destructor(HandleVrmlDataCone* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataCone*> HandleVrmlDataCone_clone(const HandleVrmlDataCone* self_) {
     try { return {new HandleVrmlDataCone(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataCone_is_null(const HandleVrmlDataCone* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataCoordinate_destructor(HandleVrmlDataCoordinate* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataCoordinate*> HandleVrmlDataCoordinate_clone(const HandleVrmlDataCoordinate* self_) {
     try { return {new HandleVrmlDataCoordinate(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataCoordinate_is_null(const HandleVrmlDataCoordinate* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataCylinder_destructor(HandleVrmlDataCylinder* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataCylinder*> HandleVrmlDataCylinder_clone(const HandleVrmlDataCylinder* self_) {
     try { return {new HandleVrmlDataCylinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataCylinder_is_null(const HandleVrmlDataCylinder* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataFaceted_destructor(HandleVrmlDataFaceted* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataFaceted*> HandleVrmlDataFaceted_clone(const HandleVrmlDataFaceted* self_) {
     try { return {new HandleVrmlDataFaceted(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataFaceted_is_null(const HandleVrmlDataFaceted* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataGeometry_destructor(HandleVrmlDataGeometry* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataGeometry*> HandleVrmlDataGeometry_clone(const HandleVrmlDataGeometry* self_) {
     try { return {new HandleVrmlDataGeometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataGeometry_is_null(const HandleVrmlDataGeometry* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataGroup_destructor(HandleVrmlDataGroup* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataGroup*> HandleVrmlDataGroup_clone(const HandleVrmlDataGroup* self_) {
     try { return {new HandleVrmlDataGroup(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataGroup_is_null(const HandleVrmlDataGroup* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataImageTexture_destructor(HandleVrmlDataImageTexture* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataImageTexture*> HandleVrmlDataImageTexture_clone(const HandleVrmlDataImageTexture* self_) {
     try { return {new HandleVrmlDataImageTexture(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataImageTexture_is_null(const HandleVrmlDataImageTexture* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataIndexedFaceSet_destructor(HandleVrmlDataIndexedFaceSet* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataIndexedFaceSet*> HandleVrmlDataIndexedFaceSet_clone(const HandleVrmlDataIndexedFaceSet* self_) {
     try { return {new HandleVrmlDataIndexedFaceSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataIndexedFaceSet_is_null(const HandleVrmlDataIndexedFaceSet* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataIndexedLineSet_destructor(HandleVrmlDataIndexedLineSet* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataIndexedLineSet*> HandleVrmlDataIndexedLineSet_clone(const HandleVrmlDataIndexedLineSet* self_) {
     try { return {new HandleVrmlDataIndexedLineSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataIndexedLineSet_is_null(const HandleVrmlDataIndexedLineSet* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataMaterial_destructor(HandleVrmlDataMaterial* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataMaterial*> HandleVrmlDataMaterial_clone(const HandleVrmlDataMaterial* self_) {
     try { return {new HandleVrmlDataMaterial(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataMaterial_is_null(const HandleVrmlDataMaterial* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataNode_destructor(HandleVrmlDataNode* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataNode_clone(const HandleVrmlDataNode* self_) {
     try { return {new HandleVrmlDataNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataNode_is_null(const HandleVrmlDataNode* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataNormal_destructor(HandleVrmlDataNormal* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataNormal*> HandleVrmlDataNormal_clone(const HandleVrmlDataNormal* self_) {
     try { return {new HandleVrmlDataNormal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataNormal_is_null(const HandleVrmlDataNormal* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataShapeNode_destructor(HandleVrmlDataShapeNode* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataShapeNode*> HandleVrmlDataShapeNode_clone(const HandleVrmlDataShapeNode* self_) {
     try { return {new HandleVrmlDataShapeNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataShapeNode_is_null(const HandleVrmlDataShapeNode* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataSphere_destructor(HandleVrmlDataSphere* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataSphere*> HandleVrmlDataSphere_clone(const HandleVrmlDataSphere* self_) {
     try { return {new HandleVrmlDataSphere(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataSphere_is_null(const HandleVrmlDataSphere* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataTexture_destructor(HandleVrmlDataTexture* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataTexture*> HandleVrmlDataTexture_clone(const HandleVrmlDataTexture* self_) {
     try { return {new HandleVrmlDataTexture(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataTexture_is_null(const HandleVrmlDataTexture* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataTextureCoordinate_destructor(HandleVrmlDataTextureCoordinate* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataTextureCoordinate*> HandleVrmlDataTextureCoordinate_clone(const HandleVrmlDataTextureCoordinate* self_) {
     try { return {new HandleVrmlDataTextureCoordinate(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataTextureCoordinate_is_null(const HandleVrmlDataTextureCoordinate* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataTextureTransform_destructor(HandleVrmlDataTextureTransform* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataTextureTransform*> HandleVrmlDataTextureTransform_clone(const HandleVrmlDataTextureTransform* self_) {
     try { return {new HandleVrmlDataTextureTransform(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataTextureTransform_is_null(const HandleVrmlDataTextureTransform* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataUnknownNode_destructor(HandleVrmlDataUnknownNode* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataUnknownNode*> HandleVrmlDataUnknownNode_clone(const HandleVrmlDataUnknownNode* self_) {
     try { return {new HandleVrmlDataUnknownNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataUnknownNode_is_null(const HandleVrmlDataUnknownNode* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlDataWorldInfo_destructor(HandleVrmlDataWorldInfo* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlDataWorldInfo*> HandleVrmlDataWorldInfo_clone(const HandleVrmlDataWorldInfo* self_) {
     try { return {new HandleVrmlDataWorldInfo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlDataWorldInfo_is_null(const HandleVrmlDataWorldInfo* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlAsciiText_destructor(HandleVrmlAsciiText* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlAsciiText*> HandleVrmlAsciiText_clone(const HandleVrmlAsciiText* self_) {
     try { return {new HandleVrmlAsciiText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlAsciiText_is_null(const HandleVrmlAsciiText* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlCoordinate3_destructor(HandleVrmlCoordinate3* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlCoordinate3*> HandleVrmlCoordinate3_clone(const HandleVrmlCoordinate3* self_) {
     try { return {new HandleVrmlCoordinate3(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlCoordinate3_is_null(const HandleVrmlCoordinate3* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlIndexedFaceSet_destructor(HandleVrmlIndexedFaceSet* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlIndexedFaceSet*> HandleVrmlIndexedFaceSet_clone(const HandleVrmlIndexedFaceSet* self_) {
     try { return {new HandleVrmlIndexedFaceSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlIndexedFaceSet_is_null(const HandleVrmlIndexedFaceSet* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlIndexedLineSet_destructor(HandleVrmlIndexedLineSet* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlIndexedLineSet*> HandleVrmlIndexedLineSet_clone(const HandleVrmlIndexedLineSet* self_) {
     try { return {new HandleVrmlIndexedLineSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlIndexedLineSet_is_null(const HandleVrmlIndexedLineSet* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlLOD_destructor(HandleVrmlLOD* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlLOD*> HandleVrmlLOD_clone(const HandleVrmlLOD* self_) {
     try { return {new HandleVrmlLOD(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlLOD_is_null(const HandleVrmlLOD* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlMaterial_destructor(HandleVrmlMaterial* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlMaterial*> HandleVrmlMaterial_clone(const HandleVrmlMaterial* self_) {
     try { return {new HandleVrmlMaterial(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlMaterial_is_null(const HandleVrmlMaterial* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlNormal_destructor(HandleVrmlNormal* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlNormal*> HandleVrmlNormal_clone(const HandleVrmlNormal* self_) {
     try { return {new HandleVrmlNormal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlNormal_is_null(const HandleVrmlNormal* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlSFImage_destructor(HandleVrmlSFImage* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlSFImage*> HandleVrmlSFImage_clone(const HandleVrmlSFImage* self_) {
     try { return {new HandleVrmlSFImage(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlSFImage_is_null(const HandleVrmlSFImage* self_) { return self_->IsNull(); }
 extern "C" void HandleVrmlTextureCoordinate2_destructor(HandleVrmlTextureCoordinate2* self_) { delete self_; }
 extern "C" OcctResult<HandleVrmlTextureCoordinate2*> HandleVrmlTextureCoordinate2_clone(const HandleVrmlTextureCoordinate2* self_) {
     try { return {new HandleVrmlTextureCoordinate2(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleVrmlTextureCoordinate2_is_null(const HandleVrmlTextureCoordinate2* self_) { return self_->IsNull(); }
 
 // ========================
 // DEVRML_ConfigurationNode wrappers

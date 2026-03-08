@@ -397,6 +397,11 @@ unsafe impl crate::CppCopyable for HandleLPropBadContinuity {
 }
 
 impl HandleLPropBadContinuity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleLPropBadContinuity_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying LProp_BadContinuity
     pub fn get(&self) -> &crate::ffi_types::LProp_BadContinuity {
         unsafe {
@@ -802,6 +807,11 @@ unsafe impl crate::CppCopyable for HandleLPropNotDefined {
 }
 
 impl HandleLPropNotDefined {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleLPropNotDefined_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying LProp_NotDefined
     pub fn get(&self) -> &crate::ffi_types::LProp_NotDefined {
         unsafe {

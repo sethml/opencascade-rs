@@ -521,6 +521,8 @@ extern "C" {
     pub fn HandleBRepCurve3D_clone(
         self_: *const HandleBRepCurve3D,
     ) -> crate::OcctResult<*mut HandleBRepCurve3D>;
+    /// Check if Handle<BRep_Curve3D> is null
+    pub fn HandleBRepCurve3D_is_null(self_: *const HandleBRepCurve3D) -> bool;
     /// Dereference Handle to get *const BRep_Curve3D
     pub fn HandleBRepCurve3D_get(
         handle: *const HandleBRepCurve3D,
@@ -756,6 +758,8 @@ extern "C" {
     pub fn HandleBRepCurveOn2Surfaces_clone(
         self_: *const HandleBRepCurveOn2Surfaces,
     ) -> crate::OcctResult<*mut HandleBRepCurveOn2Surfaces>;
+    /// Check if Handle<BRep_CurveOn2Surfaces> is null
+    pub fn HandleBRepCurveOn2Surfaces_is_null(self_: *const HandleBRepCurveOn2Surfaces) -> bool;
     /// Dereference Handle to get *const BRep_CurveOn2Surfaces
     pub fn HandleBRepCurveOn2Surfaces_get(
         handle: *const HandleBRepCurveOn2Surfaces,
@@ -997,6 +1001,10 @@ extern "C" {
     pub fn HandleBRepCurveOnClosedSurface_clone(
         self_: *const HandleBRepCurveOnClosedSurface,
     ) -> crate::OcctResult<*mut HandleBRepCurveOnClosedSurface>;
+    /// Check if Handle<BRep_CurveOnClosedSurface> is null
+    pub fn HandleBRepCurveOnClosedSurface_is_null(
+        self_: *const HandleBRepCurveOnClosedSurface,
+    ) -> bool;
     /// Dereference Handle to get *const BRep_CurveOnClosedSurface
     pub fn HandleBRepCurveOnClosedSurface_get(
         handle: *const HandleBRepCurveOnClosedSurface,
@@ -1254,6 +1262,8 @@ extern "C" {
     pub fn HandleBRepCurveOnSurface_clone(
         self_: *const HandleBRepCurveOnSurface,
     ) -> crate::OcctResult<*mut HandleBRepCurveOnSurface>;
+    /// Check if Handle<BRep_CurveOnSurface> is null
+    pub fn HandleBRepCurveOnSurface_is_null(self_: *const HandleBRepCurveOnSurface) -> bool;
     /// Dereference Handle to get *const BRep_CurveOnSurface
     pub fn HandleBRepCurveOnSurface_get(
         handle: *const HandleBRepCurveOnSurface,
@@ -1605,6 +1615,10 @@ extern "C" {
     pub fn HandleBRepCurveRepresentation_clone(
         self_: *const HandleBRepCurveRepresentation,
     ) -> crate::OcctResult<*mut HandleBRepCurveRepresentation>;
+    /// Check if Handle<BRep_CurveRepresentation> is null
+    pub fn HandleBRepCurveRepresentation_is_null(
+        self_: *const HandleBRepCurveRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const BRep_CurveRepresentation
     pub fn HandleBRepCurveRepresentation_get(
         handle: *const HandleBRepCurveRepresentation,
@@ -1743,6 +1757,8 @@ extern "C" {
     pub fn HandleBRepGCurve_clone(
         self_: *const HandleBRepGCurve,
     ) -> crate::OcctResult<*mut HandleBRepGCurve>;
+    /// Check if Handle<BRep_GCurve> is null
+    pub fn HandleBRepGCurve_is_null(self_: *const HandleBRepGCurve) -> bool;
     /// Dereference Handle to get *const BRep_GCurve
     pub fn HandleBRepGCurve_get(
         handle: *const HandleBRepGCurve,
@@ -1947,6 +1963,8 @@ extern "C" {
     pub fn HandleBRepPointOnCurve_clone(
         self_: *const HandleBRepPointOnCurve,
     ) -> crate::OcctResult<*mut HandleBRepPointOnCurve>;
+    /// Check if Handle<BRep_PointOnCurve> is null
+    pub fn HandleBRepPointOnCurve_is_null(self_: *const HandleBRepPointOnCurve) -> bool;
     /// Dereference Handle to get *const BRep_PointOnCurve
     pub fn HandleBRepPointOnCurve_get(
         handle: *const HandleBRepPointOnCurve,
@@ -2093,6 +2111,10 @@ extern "C" {
     pub fn HandleBRepPointOnCurveOnSurface_clone(
         self_: *const HandleBRepPointOnCurveOnSurface,
     ) -> crate::OcctResult<*mut HandleBRepPointOnCurveOnSurface>;
+    /// Check if Handle<BRep_PointOnCurveOnSurface> is null
+    pub fn HandleBRepPointOnCurveOnSurface_is_null(
+        self_: *const HandleBRepPointOnCurveOnSurface,
+    ) -> bool;
     /// Dereference Handle to get *const BRep_PointOnCurveOnSurface
     pub fn HandleBRepPointOnCurveOnSurface_get(
         handle: *const HandleBRepPointOnCurveOnSurface,
@@ -2241,6 +2263,8 @@ extern "C" {
     pub fn HandleBRepPointOnSurface_clone(
         self_: *const HandleBRepPointOnSurface,
     ) -> crate::OcctResult<*mut HandleBRepPointOnSurface>;
+    /// Check if Handle<BRep_PointOnSurface> is null
+    pub fn HandleBRepPointOnSurface_is_null(self_: *const HandleBRepPointOnSurface) -> bool;
     /// Dereference Handle to get *const BRep_PointOnSurface
     pub fn HandleBRepPointOnSurface_get(
         handle: *const HandleBRepPointOnSurface,
@@ -2433,6 +2457,10 @@ extern "C" {
     pub fn HandleBRepPointRepresentation_clone(
         self_: *const HandleBRepPointRepresentation,
     ) -> crate::OcctResult<*mut HandleBRepPointRepresentation>;
+    /// Check if Handle<BRep_PointRepresentation> is null
+    pub fn HandleBRepPointRepresentation_is_null(
+        self_: *const HandleBRepPointRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const BRep_PointRepresentation
     pub fn HandleBRepPointRepresentation_get(
         handle: *const HandleBRepPointRepresentation,
@@ -2536,6 +2564,8 @@ extern "C" {
     pub fn HandleBRepPointsOnSurface_clone(
         self_: *const HandleBRepPointsOnSurface,
     ) -> crate::OcctResult<*mut HandleBRepPointsOnSurface>;
+    /// Check if Handle<BRep_PointsOnSurface> is null
+    pub fn HandleBRepPointsOnSurface_is_null(self_: *const HandleBRepPointsOnSurface) -> bool;
     /// Dereference Handle to get *const BRep_PointsOnSurface
     pub fn HandleBRepPointsOnSurface_get(
         handle: *const HandleBRepPointsOnSurface,
@@ -2678,6 +2708,8 @@ extern "C" {
     pub fn HandleBRepPolygon3D_clone(
         self_: *const HandleBRepPolygon3D,
     ) -> crate::OcctResult<*mut HandleBRepPolygon3D>;
+    /// Check if Handle<BRep_Polygon3D> is null
+    pub fn HandleBRepPolygon3D_is_null(self_: *const HandleBRepPolygon3D) -> bool;
     /// Dereference Handle to get *const BRep_Polygon3D
     pub fn HandleBRepPolygon3D_get(
         handle: *const HandleBRepPolygon3D,
@@ -2878,6 +2910,10 @@ extern "C" {
     pub fn HandleBRepPolygonOnClosedSurface_clone(
         self_: *const HandleBRepPolygonOnClosedSurface,
     ) -> crate::OcctResult<*mut HandleBRepPolygonOnClosedSurface>;
+    /// Check if Handle<BRep_PolygonOnClosedSurface> is null
+    pub fn HandleBRepPolygonOnClosedSurface_is_null(
+        self_: *const HandleBRepPolygonOnClosedSurface,
+    ) -> bool;
     /// Dereference Handle to get *const BRep_PolygonOnClosedSurface
     pub fn HandleBRepPolygonOnClosedSurface_get(
         handle: *const HandleBRepPolygonOnClosedSurface,
@@ -3086,6 +3122,10 @@ extern "C" {
     pub fn HandleBRepPolygonOnClosedTriangulation_clone(
         self_: *const HandleBRepPolygonOnClosedTriangulation,
     ) -> crate::OcctResult<*mut HandleBRepPolygonOnClosedTriangulation>;
+    /// Check if Handle<BRep_PolygonOnClosedTriangulation> is null
+    pub fn HandleBRepPolygonOnClosedTriangulation_is_null(
+        self_: *const HandleBRepPolygonOnClosedTriangulation,
+    ) -> bool;
     /// Dereference Handle to get *const BRep_PolygonOnClosedTriangulation
     pub fn HandleBRepPolygonOnClosedTriangulation_get(
         handle: *const HandleBRepPolygonOnClosedTriangulation,
@@ -3291,6 +3331,8 @@ extern "C" {
     pub fn HandleBRepPolygonOnSurface_clone(
         self_: *const HandleBRepPolygonOnSurface,
     ) -> crate::OcctResult<*mut HandleBRepPolygonOnSurface>;
+    /// Check if Handle<BRep_PolygonOnSurface> is null
+    pub fn HandleBRepPolygonOnSurface_is_null(self_: *const HandleBRepPolygonOnSurface) -> bool;
     /// Dereference Handle to get *const BRep_PolygonOnSurface
     pub fn HandleBRepPolygonOnSurface_get(
         handle: *const HandleBRepPolygonOnSurface,
@@ -3493,6 +3535,10 @@ extern "C" {
     pub fn HandleBRepPolygonOnTriangulation_clone(
         self_: *const HandleBRepPolygonOnTriangulation,
     ) -> crate::OcctResult<*mut HandleBRepPolygonOnTriangulation>;
+    /// Check if Handle<BRep_PolygonOnTriangulation> is null
+    pub fn HandleBRepPolygonOnTriangulation_is_null(
+        self_: *const HandleBRepPolygonOnTriangulation,
+    ) -> bool;
     /// Dereference Handle to get *const BRep_PolygonOnTriangulation
     pub fn HandleBRepPolygonOnTriangulation_get(
         handle: *const HandleBRepPolygonOnTriangulation,
@@ -3700,6 +3746,8 @@ extern "C" {
     pub fn HandleBRepTEdge_clone(
         self_: *const HandleBRepTEdge,
     ) -> crate::OcctResult<*mut HandleBRepTEdge>;
+    /// Check if Handle<BRep_TEdge> is null
+    pub fn HandleBRepTEdge_is_null(self_: *const HandleBRepTEdge) -> bool;
     /// Dereference Handle to get *const BRep_TEdge
     pub fn HandleBRepTEdge_get(
         handle: *const HandleBRepTEdge,
@@ -3873,6 +3921,8 @@ extern "C" {
     pub fn HandleBRepTFace_clone(
         self_: *const HandleBRepTFace,
     ) -> crate::OcctResult<*mut HandleBRepTFace>;
+    /// Check if Handle<BRep_TFace> is null
+    pub fn HandleBRepTFace_is_null(self_: *const HandleBRepTFace) -> bool;
     /// Dereference Handle to get *const BRep_TFace
     pub fn HandleBRepTFace_get(
         handle: *const HandleBRepTFace,
@@ -4014,6 +4064,8 @@ extern "C" {
     pub fn HandleBRepTVertex_clone(
         self_: *const HandleBRepTVertex,
     ) -> crate::OcctResult<*mut HandleBRepTVertex>;
+    /// Check if Handle<BRep_TVertex> is null
+    pub fn HandleBRepTVertex_is_null(self_: *const HandleBRepTVertex) -> bool;
     /// Dereference Handle to get *const BRep_TVertex
     pub fn HandleBRepTVertex_get(
         handle: *const HandleBRepTVertex,
@@ -4589,6 +4641,8 @@ extern "C" {
     pub fn HandleBRepAdaptorCompCurve_clone(
         self_: *const HandleBRepAdaptorCompCurve,
     ) -> crate::OcctResult<*mut HandleBRepAdaptorCompCurve>;
+    /// Check if Handle<BRepAdaptor_CompCurve> is null
+    pub fn HandleBRepAdaptorCompCurve_is_null(self_: *const HandleBRepAdaptorCompCurve) -> bool;
     /// Dereference Handle to get *const BRepAdaptor_CompCurve
     pub fn HandleBRepAdaptorCompCurve_get(
         handle: *const HandleBRepAdaptorCompCurve,
@@ -4855,6 +4909,8 @@ extern "C" {
     pub fn HandleBRepAdaptorCurve_clone(
         self_: *const HandleBRepAdaptorCurve,
     ) -> crate::OcctResult<*mut HandleBRepAdaptorCurve>;
+    /// Check if Handle<BRepAdaptor_Curve> is null
+    pub fn HandleBRepAdaptorCurve_is_null(self_: *const HandleBRepAdaptorCurve) -> bool;
     /// Dereference Handle to get *const BRepAdaptor_Curve
     pub fn HandleBRepAdaptorCurve_get(
         handle: *const HandleBRepAdaptorCurve,
@@ -4970,6 +5026,8 @@ extern "C" {
     pub fn HandleBRepAdaptorCurve2d_clone(
         self_: *const HandleBRepAdaptorCurve2d,
     ) -> crate::OcctResult<*mut HandleBRepAdaptorCurve2d>;
+    /// Check if Handle<BRepAdaptor_Curve2d> is null
+    pub fn HandleBRepAdaptorCurve2d_is_null(self_: *const HandleBRepAdaptorCurve2d) -> bool;
     /// Dereference Handle to get *const BRepAdaptor_Curve2d
     pub fn HandleBRepAdaptorCurve2d_get(
         handle: *const HandleBRepAdaptorCurve2d,
@@ -5234,6 +5292,10 @@ extern "C" {
     pub fn HandleBRepAdaptorHArray1OfCurve_clone(
         self_: *const HandleBRepAdaptorHArray1OfCurve,
     ) -> crate::OcctResult<*mut HandleBRepAdaptorHArray1OfCurve>;
+    /// Check if Handle<BRepAdaptor_HArray1OfCurve> is null
+    pub fn HandleBRepAdaptorHArray1OfCurve_is_null(
+        self_: *const HandleBRepAdaptorHArray1OfCurve,
+    ) -> bool;
     /// Dereference Handle to get *const BRepAdaptor_HArray1OfCurve
     pub fn HandleBRepAdaptorHArray1OfCurve_get(
         handle: *const HandleBRepAdaptorHArray1OfCurve,
@@ -5585,6 +5647,8 @@ extern "C" {
     pub fn HandleBRepAdaptorSurface_clone(
         self_: *const HandleBRepAdaptorSurface,
     ) -> crate::OcctResult<*mut HandleBRepAdaptorSurface>;
+    /// Check if Handle<BRepAdaptor_Surface> is null
+    pub fn HandleBRepAdaptorSurface_is_null(self_: *const HandleBRepAdaptorSurface) -> bool;
     /// Dereference Handle to get *const BRepAdaptor_Surface
     pub fn HandleBRepAdaptorSurface_get(
         handle: *const HandleBRepAdaptorSurface,
@@ -6005,6 +6069,10 @@ extern "C" {
     pub fn HandleBRepToolsCopyModification_clone(
         self_: *const HandleBRepToolsCopyModification,
     ) -> crate::OcctResult<*mut HandleBRepToolsCopyModification>;
+    /// Check if Handle<BRepTools_CopyModification> is null
+    pub fn HandleBRepToolsCopyModification_is_null(
+        self_: *const HandleBRepToolsCopyModification,
+    ) -> bool;
     /// Dereference Handle to get *const BRepTools_CopyModification
     pub fn HandleBRepToolsCopyModification_get(
         handle: *const HandleBRepToolsCopyModification,
@@ -6174,6 +6242,10 @@ extern "C" {
     pub fn HandleBRepToolsGTrsfModification_clone(
         self_: *const HandleBRepToolsGTrsfModification,
     ) -> crate::OcctResult<*mut HandleBRepToolsGTrsfModification>;
+    /// Check if Handle<BRepTools_GTrsfModification> is null
+    pub fn HandleBRepToolsGTrsfModification_is_null(
+        self_: *const HandleBRepToolsGTrsfModification,
+    ) -> bool;
     /// Dereference Handle to get *const BRepTools_GTrsfModification
     pub fn HandleBRepToolsGTrsfModification_get(
         handle: *const HandleBRepToolsGTrsfModification,
@@ -6327,6 +6399,8 @@ extern "C" {
     pub fn HandleBRepToolsHistory_clone(
         self_: *const HandleBRepToolsHistory,
     ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
+    /// Check if Handle<BRepTools_History> is null
+    pub fn HandleBRepToolsHistory_is_null(self_: *const HandleBRepToolsHistory) -> bool;
     /// Dereference Handle to get *const BRepTools_History
     pub fn HandleBRepToolsHistory_get(
         handle: *const HandleBRepToolsHistory,
@@ -6466,6 +6540,8 @@ extern "C" {
     pub fn HandleBRepToolsModification_clone(
         self_: *const HandleBRepToolsModification,
     ) -> crate::OcctResult<*mut HandleBRepToolsModification>;
+    /// Check if Handle<BRepTools_Modification> is null
+    pub fn HandleBRepToolsModification_is_null(self_: *const HandleBRepToolsModification) -> bool;
     /// Dereference Handle to get *const BRepTools_Modification
     pub fn HandleBRepToolsModification_get(
         handle: *const HandleBRepToolsModification,
@@ -6731,6 +6807,10 @@ extern "C" {
     pub fn HandleBRepToolsNurbsConvertModification_clone(
         self_: *const HandleBRepToolsNurbsConvertModification,
     ) -> crate::OcctResult<*mut HandleBRepToolsNurbsConvertModification>;
+    /// Check if Handle<BRepTools_NurbsConvertModification> is null
+    pub fn HandleBRepToolsNurbsConvertModification_is_null(
+        self_: *const HandleBRepToolsNurbsConvertModification,
+    ) -> bool;
     /// Dereference Handle to get *const BRepTools_NurbsConvertModification
     pub fn HandleBRepToolsNurbsConvertModification_get(
         handle: *const HandleBRepToolsNurbsConvertModification,
@@ -6930,6 +7010,8 @@ extern "C" {
     pub fn HandleBRepToolsReShape_clone(
         self_: *const HandleBRepToolsReShape,
     ) -> crate::OcctResult<*mut HandleBRepToolsReShape>;
+    /// Check if Handle<BRepTools_ReShape> is null
+    pub fn HandleBRepToolsReShape_is_null(self_: *const HandleBRepToolsReShape) -> bool;
     /// Dereference Handle to get *const BRepTools_ReShape
     pub fn HandleBRepToolsReShape_get(
         handle: *const HandleBRepToolsReShape,
@@ -7332,6 +7414,10 @@ extern "C" {
     pub fn HandleBRepToolsTrsfModification_clone(
         self_: *const HandleBRepToolsTrsfModification,
     ) -> crate::OcctResult<*mut HandleBRepToolsTrsfModification>;
+    /// Check if Handle<BRepTools_TrsfModification> is null
+    pub fn HandleBRepToolsTrsfModification_is_null(
+        self_: *const HandleBRepToolsTrsfModification,
+    ) -> bool;
     /// Dereference Handle to get *const BRepTools_TrsfModification
     pub fn HandleBRepToolsTrsfModification_get(
         handle: *const HandleBRepToolsTrsfModification,
@@ -8172,6 +8258,10 @@ extern "C" {
     pub fn HandleTopToolsHArray1OfListOfShape_clone(
         self_: *const HandleTopToolsHArray1OfListOfShape,
     ) -> crate::OcctResult<*mut HandleTopToolsHArray1OfListOfShape>;
+    /// Check if Handle<TopTools_HArray1OfListOfShape> is null
+    pub fn HandleTopToolsHArray1OfListOfShape_is_null(
+        self_: *const HandleTopToolsHArray1OfListOfShape,
+    ) -> bool;
     /// Dereference Handle to get *const TopTools_HArray1OfListOfShape
     pub fn HandleTopToolsHArray1OfListOfShape_get(
         handle: *const HandleTopToolsHArray1OfListOfShape,
@@ -8275,6 +8365,9 @@ extern "C" {
     pub fn HandleTopToolsHArray1OfShape_clone(
         self_: *const HandleTopToolsHArray1OfShape,
     ) -> crate::OcctResult<*mut HandleTopToolsHArray1OfShape>;
+    /// Check if Handle<TopTools_HArray1OfShape> is null
+    pub fn HandleTopToolsHArray1OfShape_is_null(self_: *const HandleTopToolsHArray1OfShape)
+        -> bool;
     /// Dereference Handle to get *const TopTools_HArray1OfShape
     pub fn HandleTopToolsHArray1OfShape_get(
         handle: *const HandleTopToolsHArray1OfShape,
@@ -8373,6 +8466,9 @@ extern "C" {
     pub fn HandleTopToolsHArray2OfShape_clone(
         self_: *const HandleTopToolsHArray2OfShape,
     ) -> crate::OcctResult<*mut HandleTopToolsHArray2OfShape>;
+    /// Check if Handle<TopTools_HArray2OfShape> is null
+    pub fn HandleTopToolsHArray2OfShape_is_null(self_: *const HandleTopToolsHArray2OfShape)
+        -> bool;
     /// Dereference Handle to get *const TopTools_HArray2OfShape
     pub fn HandleTopToolsHArray2OfShape_get(
         handle: *const HandleTopToolsHArray2OfShape,
@@ -8476,6 +8572,10 @@ extern "C" {
     pub fn HandleTopToolsHSequenceOfShape_clone(
         self_: *const HandleTopToolsHSequenceOfShape,
     ) -> crate::OcctResult<*mut HandleTopToolsHSequenceOfShape>;
+    /// Check if Handle<TopTools_HSequenceOfShape> is null
+    pub fn HandleTopToolsHSequenceOfShape_is_null(
+        self_: *const HandleTopToolsHSequenceOfShape,
+    ) -> bool;
     /// Dereference Handle to get *const TopTools_HSequenceOfShape
     pub fn HandleTopToolsHSequenceOfShape_get(
         handle: *const HandleTopToolsHSequenceOfShape,
@@ -8776,6 +8876,8 @@ extern "C" {
     pub fn HandleTopoDSAlertAttribute_clone(
         self_: *const HandleTopoDSAlertAttribute,
     ) -> crate::OcctResult<*mut HandleTopoDSAlertAttribute>;
+    /// Check if Handle<TopoDS_AlertAttribute> is null
+    pub fn HandleTopoDSAlertAttribute_is_null(self_: *const HandleTopoDSAlertAttribute) -> bool;
     /// Dereference Handle to get *const TopoDS_AlertAttribute
     pub fn HandleTopoDSAlertAttribute_get(
         handle: *const HandleTopoDSAlertAttribute,
@@ -8903,6 +9005,8 @@ extern "C" {
     pub fn HandleTopoDSAlertWithShape_clone(
         self_: *const HandleTopoDSAlertWithShape,
     ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    /// Check if Handle<TopoDS_AlertWithShape> is null
+    pub fn HandleTopoDSAlertWithShape_is_null(self_: *const HandleTopoDSAlertWithShape) -> bool;
     /// Dereference Handle to get *const TopoDS_AlertWithShape
     pub fn HandleTopoDSAlertWithShape_get(
         handle: *const HandleTopoDSAlertWithShape,
@@ -9713,6 +9817,8 @@ extern "C" {
     pub fn HandleTopoDSFrozenShape_clone(
         self_: *const HandleTopoDSFrozenShape,
     ) -> crate::OcctResult<*mut HandleTopoDSFrozenShape>;
+    /// Check if Handle<TopoDS_FrozenShape> is null
+    pub fn HandleTopoDSFrozenShape_is_null(self_: *const HandleTopoDSFrozenShape) -> bool;
     /// Dereference Handle to get *const TopoDS_FrozenShape
     pub fn HandleTopoDSFrozenShape_get(
         handle: *const HandleTopoDSFrozenShape,
@@ -9823,6 +9929,8 @@ extern "C" {
     pub fn HandleTopoDSHShape_clone(
         self_: *const HandleTopoDSHShape,
     ) -> crate::OcctResult<*mut HandleTopoDSHShape>;
+    /// Check if Handle<TopoDS_HShape> is null
+    pub fn HandleTopoDSHShape_is_null(self_: *const HandleTopoDSHShape) -> bool;
     /// Dereference Handle to get *const TopoDS_HShape
     pub fn HandleTopoDSHShape_get(
         handle: *const HandleTopoDSHShape,
@@ -9964,6 +10072,8 @@ extern "C" {
     pub fn HandleTopoDSLockedShape_clone(
         self_: *const HandleTopoDSLockedShape,
     ) -> crate::OcctResult<*mut HandleTopoDSLockedShape>;
+    /// Check if Handle<TopoDS_LockedShape> is null
+    pub fn HandleTopoDSLockedShape_is_null(self_: *const HandleTopoDSLockedShape) -> bool;
     /// Dereference Handle to get *const TopoDS_LockedShape
     pub fn HandleTopoDSLockedShape_get(
         handle: *const HandleTopoDSLockedShape,
@@ -10480,6 +10590,8 @@ extern "C" {
     pub fn HandleTopoDSTCompSolid_clone(
         self_: *const HandleTopoDSTCompSolid,
     ) -> crate::OcctResult<*mut HandleTopoDSTCompSolid>;
+    /// Check if Handle<TopoDS_TCompSolid> is null
+    pub fn HandleTopoDSTCompSolid_is_null(self_: *const HandleTopoDSTCompSolid) -> bool;
     /// Dereference Handle to get *const TopoDS_TCompSolid
     pub fn HandleTopoDSTCompSolid_get(
         handle: *const HandleTopoDSTCompSolid,
@@ -10606,6 +10718,8 @@ extern "C" {
     pub fn HandleTopoDSTCompound_clone(
         self_: *const HandleTopoDSTCompound,
     ) -> crate::OcctResult<*mut HandleTopoDSTCompound>;
+    /// Check if Handle<TopoDS_TCompound> is null
+    pub fn HandleTopoDSTCompound_is_null(self_: *const HandleTopoDSTCompound) -> bool;
     /// Dereference Handle to get *const TopoDS_TCompound
     pub fn HandleTopoDSTCompound_get(
         handle: *const HandleTopoDSTCompound,
@@ -10722,6 +10836,8 @@ extern "C" {
     pub fn HandleTopoDSTEdge_clone(
         self_: *const HandleTopoDSTEdge,
     ) -> crate::OcctResult<*mut HandleTopoDSTEdge>;
+    /// Check if Handle<TopoDS_TEdge> is null
+    pub fn HandleTopoDSTEdge_is_null(self_: *const HandleTopoDSTEdge) -> bool;
     /// Dereference Handle to get *const TopoDS_TEdge
     pub fn HandleTopoDSTEdge_get(
         handle: *const HandleTopoDSTEdge,
@@ -10836,6 +10952,8 @@ extern "C" {
     pub fn HandleTopoDSTFace_clone(
         self_: *const HandleTopoDSTFace,
     ) -> crate::OcctResult<*mut HandleTopoDSTFace>;
+    /// Check if Handle<TopoDS_TFace> is null
+    pub fn HandleTopoDSTFace_is_null(self_: *const HandleTopoDSTFace) -> bool;
     /// Dereference Handle to get *const TopoDS_TFace
     pub fn HandleTopoDSTFace_get(
         handle: *const HandleTopoDSTFace,
@@ -10990,6 +11108,8 @@ extern "C" {
     pub fn HandleTopoDSTShape_clone(
         self_: *const HandleTopoDSTShape,
     ) -> crate::OcctResult<*mut HandleTopoDSTShape>;
+    /// Check if Handle<TopoDS_TShape> is null
+    pub fn HandleTopoDSTShape_is_null(self_: *const HandleTopoDSTShape) -> bool;
     /// Dereference Handle to get *const TopoDS_TShape
     pub fn HandleTopoDSTShape_get(
         handle: *const HandleTopoDSTShape,
@@ -11118,6 +11238,8 @@ extern "C" {
     pub fn HandleTopoDSTShell_clone(
         self_: *const HandleTopoDSTShell,
     ) -> crate::OcctResult<*mut HandleTopoDSTShell>;
+    /// Check if Handle<TopoDS_TShell> is null
+    pub fn HandleTopoDSTShell_is_null(self_: *const HandleTopoDSTShell) -> bool;
     /// Dereference Handle to get *const TopoDS_TShell
     pub fn HandleTopoDSTShell_get(
         handle: *const HandleTopoDSTShell,
@@ -11230,6 +11352,8 @@ extern "C" {
     pub fn HandleTopoDSTSolid_clone(
         self_: *const HandleTopoDSTSolid,
     ) -> crate::OcctResult<*mut HandleTopoDSTSolid>;
+    /// Check if Handle<TopoDS_TSolid> is null
+    pub fn HandleTopoDSTSolid_is_null(self_: *const HandleTopoDSTSolid) -> bool;
     /// Dereference Handle to get *const TopoDS_TSolid
     pub fn HandleTopoDSTSolid_get(
         handle: *const HandleTopoDSTSolid,
@@ -11332,6 +11456,8 @@ extern "C" {
     pub fn HandleTopoDSTVertex_clone(
         self_: *const HandleTopoDSTVertex,
     ) -> crate::OcctResult<*mut HandleTopoDSTVertex>;
+    /// Check if Handle<TopoDS_TVertex> is null
+    pub fn HandleTopoDSTVertex_is_null(self_: *const HandleTopoDSTVertex) -> bool;
     /// Dereference Handle to get *const TopoDS_TVertex
     pub fn HandleTopoDSTVertex_get(
         handle: *const HandleTopoDSTVertex,
@@ -11460,6 +11586,8 @@ extern "C" {
     pub fn HandleTopoDSTWire_clone(
         self_: *const HandleTopoDSTWire,
     ) -> crate::OcctResult<*mut HandleTopoDSTWire>;
+    /// Check if Handle<TopoDS_TWire> is null
+    pub fn HandleTopoDSTWire_is_null(self_: *const HandleTopoDSTWire) -> bool;
     /// Dereference Handle to get *const TopoDS_TWire
     pub fn HandleTopoDSTWire_get(
         handle: *const HandleTopoDSTWire,
@@ -11595,6 +11723,10 @@ extern "C" {
     pub fn HandleTopoDSUnCompatibleShapes_clone(
         self_: *const HandleTopoDSUnCompatibleShapes,
     ) -> crate::OcctResult<*mut HandleTopoDSUnCompatibleShapes>;
+    /// Check if Handle<TopoDS_UnCompatibleShapes> is null
+    pub fn HandleTopoDSUnCompatibleShapes_is_null(
+        self_: *const HandleTopoDSUnCompatibleShapes,
+    ) -> bool;
     /// Dereference Handle to get *const TopoDS_UnCompatibleShapes
     pub fn HandleTopoDSUnCompatibleShapes_get(
         handle: *const HandleTopoDSUnCompatibleShapes,

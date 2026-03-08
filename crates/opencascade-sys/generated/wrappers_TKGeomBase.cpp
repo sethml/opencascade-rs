@@ -523,182 +523,217 @@ typedef opencascade::handle<TColgp_HArray1OfXYZ> HandleTColgpHArray1OfXYZ;
 typedef opencascade::handle<TColgp_HArray2OfPnt> HandleTColgpHArray2OfPnt;
 typedef opencascade::handle<TColgp_HSequenceOfPnt> HandleTColgpHSequenceOfPnt;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleAdvApp2VarIso_destructor(HandleAdvApp2VarIso* self_) { delete self_; }
 extern "C" OcctResult<HandleAdvApp2VarIso*> HandleAdvApp2VarIso_clone(const HandleAdvApp2VarIso* self_) {
     try { return {new HandleAdvApp2VarIso(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAdvApp2VarIso_is_null(const HandleAdvApp2VarIso* self_) { return self_->IsNull(); }
 extern "C" void HandleAdvApp2VarNode_destructor(HandleAdvApp2VarNode* self_) { delete self_; }
 extern "C" OcctResult<HandleAdvApp2VarNode*> HandleAdvApp2VarNode_clone(const HandleAdvApp2VarNode* self_) {
     try { return {new HandleAdvApp2VarNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAdvApp2VarNode_is_null(const HandleAdvApp2VarNode* self_) { return self_->IsNull(); }
 extern "C" void HandleAdvApp2VarPatch_destructor(HandleAdvApp2VarPatch* self_) { delete self_; }
 extern "C" OcctResult<HandleAdvApp2VarPatch*> HandleAdvApp2VarPatch_clone(const HandleAdvApp2VarPatch* self_) {
     try { return {new HandleAdvApp2VarPatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAdvApp2VarPatch_is_null(const HandleAdvApp2VarPatch* self_) { return self_->IsNull(); }
 extern "C" void HandleAppDefHArray1OfMultiPointConstraint_destructor(HandleAppDefHArray1OfMultiPointConstraint* self_) { delete self_; }
 extern "C" OcctResult<HandleAppDefHArray1OfMultiPointConstraint*> HandleAppDefHArray1OfMultiPointConstraint_clone(const HandleAppDefHArray1OfMultiPointConstraint* self_) {
     try { return {new HandleAppDefHArray1OfMultiPointConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAppDefHArray1OfMultiPointConstraint_is_null(const HandleAppDefHArray1OfMultiPointConstraint* self_) { return self_->IsNull(); }
 extern "C" void HandleAppDefLinearCriteria_destructor(HandleAppDefLinearCriteria* self_) { delete self_; }
 extern "C" OcctResult<HandleAppDefLinearCriteria*> HandleAppDefLinearCriteria_clone(const HandleAppDefLinearCriteria* self_) {
     try { return {new HandleAppDefLinearCriteria(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAppDefLinearCriteria_is_null(const HandleAppDefLinearCriteria* self_) { return self_->IsNull(); }
 extern "C" void HandleAppDefSmoothCriterion_destructor(HandleAppDefSmoothCriterion* self_) { delete self_; }
 extern "C" OcctResult<HandleAppDefSmoothCriterion*> HandleAppDefSmoothCriterion_clone(const HandleAppDefSmoothCriterion* self_) {
     try { return {new HandleAppDefSmoothCriterion(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAppDefSmoothCriterion_is_null(const HandleAppDefSmoothCriterion* self_) { return self_->IsNull(); }
 extern "C" void HandleAppParCurvesHArray1OfConstraintCouple_destructor(HandleAppParCurvesHArray1OfConstraintCouple* self_) { delete self_; }
 extern "C" OcctResult<HandleAppParCurvesHArray1OfConstraintCouple*> HandleAppParCurvesHArray1OfConstraintCouple_clone(const HandleAppParCurvesHArray1OfConstraintCouple* self_) {
     try { return {new HandleAppParCurvesHArray1OfConstraintCouple(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAppParCurvesHArray1OfConstraintCouple_is_null(const HandleAppParCurvesHArray1OfConstraintCouple* self_) { return self_->IsNull(); }
 extern "C" void HandleAppParCurvesHArray1OfMultiBSpCurve_destructor(HandleAppParCurvesHArray1OfMultiBSpCurve* self_) { delete self_; }
 extern "C" OcctResult<HandleAppParCurvesHArray1OfMultiBSpCurve*> HandleAppParCurvesHArray1OfMultiBSpCurve_clone(const HandleAppParCurvesHArray1OfMultiBSpCurve* self_) {
     try { return {new HandleAppParCurvesHArray1OfMultiBSpCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAppParCurvesHArray1OfMultiBSpCurve_is_null(const HandleAppParCurvesHArray1OfMultiBSpCurve* self_) { return self_->IsNull(); }
 extern "C" void HandleAppParCurvesHArray1OfMultiCurve_destructor(HandleAppParCurvesHArray1OfMultiCurve* self_) { delete self_; }
 extern "C" OcctResult<HandleAppParCurvesHArray1OfMultiCurve*> HandleAppParCurvesHArray1OfMultiCurve_clone(const HandleAppParCurvesHArray1OfMultiCurve* self_) {
     try { return {new HandleAppParCurvesHArray1OfMultiCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAppParCurvesHArray1OfMultiCurve_is_null(const HandleAppParCurvesHArray1OfMultiCurve* self_) { return self_->IsNull(); }
 extern "C" void HandleAppParCurvesHArray1OfMultiPoint_destructor(HandleAppParCurvesHArray1OfMultiPoint* self_) { delete self_; }
 extern "C" OcctResult<HandleAppParCurvesHArray1OfMultiPoint*> HandleAppParCurvesHArray1OfMultiPoint_clone(const HandleAppParCurvesHArray1OfMultiPoint* self_) {
     try { return {new HandleAppParCurvesHArray1OfMultiPoint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAppParCurvesHArray1OfMultiPoint_is_null(const HandleAppParCurvesHArray1OfMultiPoint* self_) { return self_->IsNull(); }
 extern "C" void HandleApproxCurvlinFunc_destructor(HandleApproxCurvlinFunc* self_) { delete self_; }
 extern "C" OcctResult<HandleApproxCurvlinFunc*> HandleApproxCurvlinFunc_clone(const HandleApproxCurvlinFunc* self_) {
     try { return {new HandleApproxCurvlinFunc(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleApproxCurvlinFunc_is_null(const HandleApproxCurvlinFunc* self_) { return self_->IsNull(); }
 extern "C" void HandleApproxHArray1OfAdHSurface_destructor(HandleApproxHArray1OfAdHSurface* self_) { delete self_; }
 extern "C" OcctResult<HandleApproxHArray1OfAdHSurface*> HandleApproxHArray1OfAdHSurface_clone(const HandleApproxHArray1OfAdHSurface* self_) {
     try { return {new HandleApproxHArray1OfAdHSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleApproxHArray1OfAdHSurface_is_null(const HandleApproxHArray1OfAdHSurface* self_) { return self_->IsNull(); }
 extern "C" void HandleApproxHArray1OfGTrsf2d_destructor(HandleApproxHArray1OfGTrsf2d* self_) { delete self_; }
 extern "C" OcctResult<HandleApproxHArray1OfGTrsf2d*> HandleApproxHArray1OfGTrsf2d_clone(const HandleApproxHArray1OfGTrsf2d* self_) {
     try { return {new HandleApproxHArray1OfGTrsf2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleApproxHArray1OfGTrsf2d_is_null(const HandleApproxHArray1OfGTrsf2d* self_) { return self_->IsNull(); }
 extern "C" void HandleApproxSweepFunction_destructor(HandleApproxSweepFunction* self_) { delete self_; }
 extern "C" OcctResult<HandleApproxSweepFunction*> HandleApproxSweepFunction_clone(const HandleApproxSweepFunction* self_) {
     try { return {new HandleApproxSweepFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleApproxSweepFunction_is_null(const HandleApproxSweepFunction* self_) { return self_->IsNull(); }
 extern "C" void HandleExtremaExtPExtS_destructor(HandleExtremaExtPExtS* self_) { delete self_; }
 extern "C" OcctResult<HandleExtremaExtPExtS*> HandleExtremaExtPExtS_clone(const HandleExtremaExtPExtS* self_) {
     try { return {new HandleExtremaExtPExtS(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExtremaExtPExtS_is_null(const HandleExtremaExtPExtS* self_) { return self_->IsNull(); }
 extern "C" void HandleExtremaExtPRevS_destructor(HandleExtremaExtPRevS* self_) { delete self_; }
 extern "C" OcctResult<HandleExtremaExtPRevS*> HandleExtremaExtPRevS_clone(const HandleExtremaExtPRevS* self_) {
     try { return {new HandleExtremaExtPRevS(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExtremaExtPRevS_is_null(const HandleExtremaExtPRevS* self_) { return self_->IsNull(); }
 extern "C" void HandleExtremaHArray1OfPOnCurv_destructor(HandleExtremaHArray1OfPOnCurv* self_) { delete self_; }
 extern "C" OcctResult<HandleExtremaHArray1OfPOnCurv*> HandleExtremaHArray1OfPOnCurv_clone(const HandleExtremaHArray1OfPOnCurv* self_) {
     try { return {new HandleExtremaHArray1OfPOnCurv(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExtremaHArray1OfPOnCurv_is_null(const HandleExtremaHArray1OfPOnCurv* self_) { return self_->IsNull(); }
 extern "C" void HandleExtremaHArray1OfPOnCurv2d_destructor(HandleExtremaHArray1OfPOnCurv2d* self_) { delete self_; }
 extern "C" OcctResult<HandleExtremaHArray1OfPOnCurv2d*> HandleExtremaHArray1OfPOnCurv2d_clone(const HandleExtremaHArray1OfPOnCurv2d* self_) {
     try { return {new HandleExtremaHArray1OfPOnCurv2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExtremaHArray1OfPOnCurv2d_is_null(const HandleExtremaHArray1OfPOnCurv2d* self_) { return self_->IsNull(); }
 extern "C" void HandleExtremaHArray1OfPOnSurf_destructor(HandleExtremaHArray1OfPOnSurf* self_) { delete self_; }
 extern "C" OcctResult<HandleExtremaHArray1OfPOnSurf*> HandleExtremaHArray1OfPOnSurf_clone(const HandleExtremaHArray1OfPOnSurf* self_) {
     try { return {new HandleExtremaHArray1OfPOnSurf(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExtremaHArray1OfPOnSurf_is_null(const HandleExtremaHArray1OfPOnSurf* self_) { return self_->IsNull(); }
 extern "C" void HandleExtremaHArray2OfPOnCurv_destructor(HandleExtremaHArray2OfPOnCurv* self_) { delete self_; }
 extern "C" OcctResult<HandleExtremaHArray2OfPOnCurv*> HandleExtremaHArray2OfPOnCurv_clone(const HandleExtremaHArray2OfPOnCurv* self_) {
     try { return {new HandleExtremaHArray2OfPOnCurv(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExtremaHArray2OfPOnCurv_is_null(const HandleExtremaHArray2OfPOnCurv* self_) { return self_->IsNull(); }
 extern "C" void HandleExtremaHArray2OfPOnCurv2d_destructor(HandleExtremaHArray2OfPOnCurv2d* self_) { delete self_; }
 extern "C" OcctResult<HandleExtremaHArray2OfPOnCurv2d*> HandleExtremaHArray2OfPOnCurv2d_clone(const HandleExtremaHArray2OfPOnCurv2d* self_) {
     try { return {new HandleExtremaHArray2OfPOnCurv2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExtremaHArray2OfPOnCurv2d_is_null(const HandleExtremaHArray2OfPOnCurv2d* self_) { return self_->IsNull(); }
 extern "C" void HandleExtremaHArray2OfPOnSurf_destructor(HandleExtremaHArray2OfPOnSurf* self_) { delete self_; }
 extern "C" OcctResult<HandleExtremaHArray2OfPOnSurf*> HandleExtremaHArray2OfPOnSurf_clone(const HandleExtremaHArray2OfPOnSurf* self_) {
     try { return {new HandleExtremaHArray2OfPOnSurf(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleExtremaHArray2OfPOnSurf_is_null(const HandleExtremaHArray2OfPOnSurf* self_) { return self_->IsNull(); }
 extern "C" void HandleFEmToolCurve_destructor(HandleFEmToolCurve* self_) { delete self_; }
 extern "C" OcctResult<HandleFEmToolCurve*> HandleFEmToolCurve_clone(const HandleFEmToolCurve* self_) {
     try { return {new HandleFEmToolCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleFEmToolCurve_is_null(const HandleFEmToolCurve* self_) { return self_->IsNull(); }
 extern "C" void HandleFEmToolElementaryCriterion_destructor(HandleFEmToolElementaryCriterion* self_) { delete self_; }
 extern "C" OcctResult<HandleFEmToolElementaryCriterion*> HandleFEmToolElementaryCriterion_clone(const HandleFEmToolElementaryCriterion* self_) {
     try { return {new HandleFEmToolElementaryCriterion(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleFEmToolElementaryCriterion_is_null(const HandleFEmToolElementaryCriterion* self_) { return self_->IsNull(); }
 extern "C" void HandleFEmToolHAssemblyTable_destructor(HandleFEmToolHAssemblyTable* self_) { delete self_; }
 extern "C" OcctResult<HandleFEmToolHAssemblyTable*> HandleFEmToolHAssemblyTable_clone(const HandleFEmToolHAssemblyTable* self_) {
     try { return {new HandleFEmToolHAssemblyTable(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleFEmToolHAssemblyTable_is_null(const HandleFEmToolHAssemblyTable* self_) { return self_->IsNull(); }
 extern "C" void HandleFEmToolLinearFlexion_destructor(HandleFEmToolLinearFlexion* self_) { delete self_; }
 extern "C" OcctResult<HandleFEmToolLinearFlexion*> HandleFEmToolLinearFlexion_clone(const HandleFEmToolLinearFlexion* self_) {
     try { return {new HandleFEmToolLinearFlexion(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleFEmToolLinearFlexion_is_null(const HandleFEmToolLinearFlexion* self_) { return self_->IsNull(); }
 extern "C" void HandleFEmToolLinearJerk_destructor(HandleFEmToolLinearJerk* self_) { delete self_; }
 extern "C" OcctResult<HandleFEmToolLinearJerk*> HandleFEmToolLinearJerk_clone(const HandleFEmToolLinearJerk* self_) {
     try { return {new HandleFEmToolLinearJerk(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleFEmToolLinearJerk_is_null(const HandleFEmToolLinearJerk* self_) { return self_->IsNull(); }
 extern "C" void HandleFEmToolLinearTension_destructor(HandleFEmToolLinearTension* self_) { delete self_; }
 extern "C" OcctResult<HandleFEmToolLinearTension*> HandleFEmToolLinearTension_clone(const HandleFEmToolLinearTension* self_) {
     try { return {new HandleFEmToolLinearTension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleFEmToolLinearTension_is_null(const HandleFEmToolLinearTension* self_) { return self_->IsNull(); }
 extern "C" void HandleFEmToolProfileMatrix_destructor(HandleFEmToolProfileMatrix* self_) { delete self_; }
 extern "C" OcctResult<HandleFEmToolProfileMatrix*> HandleFEmToolProfileMatrix_clone(const HandleFEmToolProfileMatrix* self_) {
     try { return {new HandleFEmToolProfileMatrix(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleFEmToolProfileMatrix_is_null(const HandleFEmToolProfileMatrix* self_) { return self_->IsNull(); }
 extern "C" void HandleFEmToolSparseMatrix_destructor(HandleFEmToolSparseMatrix* self_) { delete self_; }
 extern "C" OcctResult<HandleFEmToolSparseMatrix*> HandleFEmToolSparseMatrix_clone(const HandleFEmToolSparseMatrix* self_) {
     try { return {new HandleFEmToolSparseMatrix(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleFEmToolSparseMatrix_is_null(const HandleFEmToolSparseMatrix* self_) { return self_->IsNull(); }
 extern "C" void HandleGeomToolsUndefinedTypeHandler_destructor(HandleGeomToolsUndefinedTypeHandler* self_) { delete self_; }
 extern "C" OcctResult<HandleGeomToolsUndefinedTypeHandler*> HandleGeomToolsUndefinedTypeHandler_clone(const HandleGeomToolsUndefinedTypeHandler* self_) {
     try { return {new HandleGeomToolsUndefinedTypeHandler(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleGeomToolsUndefinedTypeHandler_is_null(const HandleGeomToolsUndefinedTypeHandler* self_) { return self_->IsNull(); }
 extern "C" void HandleProjLibCompProjectedCurve_destructor(HandleProjLibCompProjectedCurve* self_) { delete self_; }
 extern "C" OcctResult<HandleProjLibCompProjectedCurve*> HandleProjLibCompProjectedCurve_clone(const HandleProjLibCompProjectedCurve* self_) {
     try { return {new HandleProjLibCompProjectedCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleProjLibCompProjectedCurve_is_null(const HandleProjLibCompProjectedCurve* self_) { return self_->IsNull(); }
 extern "C" void HandleProjLibHSequenceOfHSequenceOfPnt_destructor(HandleProjLibHSequenceOfHSequenceOfPnt* self_) { delete self_; }
 extern "C" OcctResult<HandleProjLibHSequenceOfHSequenceOfPnt*> HandleProjLibHSequenceOfHSequenceOfPnt_clone(const HandleProjLibHSequenceOfHSequenceOfPnt* self_) {
     try { return {new HandleProjLibHSequenceOfHSequenceOfPnt(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleProjLibHSequenceOfHSequenceOfPnt_is_null(const HandleProjLibHSequenceOfHSequenceOfPnt* self_) { return self_->IsNull(); }
 extern "C" void HandleProjLibProjectOnPlane_destructor(HandleProjLibProjectOnPlane* self_) { delete self_; }
 extern "C" OcctResult<HandleProjLibProjectOnPlane*> HandleProjLibProjectOnPlane_clone(const HandleProjLibProjectOnPlane* self_) {
     try { return {new HandleProjLibProjectOnPlane(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleProjLibProjectOnPlane_is_null(const HandleProjLibProjectOnPlane* self_) { return self_->IsNull(); }
 extern "C" void HandleProjLibProjectedCurve_destructor(HandleProjLibProjectedCurve* self_) { delete self_; }
 extern "C" OcctResult<HandleProjLibProjectedCurve*> HandleProjLibProjectedCurve_clone(const HandleProjLibProjectedCurve* self_) {
     try { return {new HandleProjLibProjectedCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleProjLibProjectedCurve_is_null(const HandleProjLibProjectedCurve* self_) { return self_->IsNull(); }
 
 // ========================
 // AdvApp2Var_ApproxAFunc2Var wrappers

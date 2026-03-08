@@ -662,757 +662,907 @@ typedef opencascade::handle<XSControl_TransferWriter> HandleXSControlTransferWri
 typedef opencascade::handle<XSControl_Vars> HandleXSControlVars;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleIFSelectAct_destructor(HandleIFSelectAct* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectAct*> HandleIFSelectAct_clone(const HandleIFSelectAct* self_) {
     try { return {new HandleIFSelectAct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectAct_is_null(const HandleIFSelectAct* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectActivator_destructor(HandleIFSelectActivator* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectActivator*> HandleIFSelectActivator_clone(const HandleIFSelectActivator* self_) {
     try { return {new HandleIFSelectActivator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectActivator_is_null(const HandleIFSelectActivator* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectAppliedModifiers_destructor(HandleIFSelectAppliedModifiers* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectAppliedModifiers*> HandleIFSelectAppliedModifiers_clone(const HandleIFSelectAppliedModifiers* self_) {
     try { return {new HandleIFSelectAppliedModifiers(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectAppliedModifiers_is_null(const HandleIFSelectAppliedModifiers* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectBasicDumper_destructor(HandleIFSelectBasicDumper* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectBasicDumper*> HandleIFSelectBasicDumper_clone(const HandleIFSelectBasicDumper* self_) {
     try { return {new HandleIFSelectBasicDumper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectBasicDumper_is_null(const HandleIFSelectBasicDumper* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectCheckCounter_destructor(HandleIFSelectCheckCounter* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectCheckCounter*> HandleIFSelectCheckCounter_clone(const HandleIFSelectCheckCounter* self_) {
     try { return {new HandleIFSelectCheckCounter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectCheckCounter_is_null(const HandleIFSelectCheckCounter* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectDispGlobal_destructor(HandleIFSelectDispGlobal* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectDispGlobal*> HandleIFSelectDispGlobal_clone(const HandleIFSelectDispGlobal* self_) {
     try { return {new HandleIFSelectDispGlobal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectDispGlobal_is_null(const HandleIFSelectDispGlobal* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectDispPerCount_destructor(HandleIFSelectDispPerCount* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectDispPerCount*> HandleIFSelectDispPerCount_clone(const HandleIFSelectDispPerCount* self_) {
     try { return {new HandleIFSelectDispPerCount(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectDispPerCount_is_null(const HandleIFSelectDispPerCount* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectDispPerFiles_destructor(HandleIFSelectDispPerFiles* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectDispPerFiles*> HandleIFSelectDispPerFiles_clone(const HandleIFSelectDispPerFiles* self_) {
     try { return {new HandleIFSelectDispPerFiles(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectDispPerFiles_is_null(const HandleIFSelectDispPerFiles* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectDispPerOne_destructor(HandleIFSelectDispPerOne* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectDispPerOne*> HandleIFSelectDispPerOne_clone(const HandleIFSelectDispPerOne* self_) {
     try { return {new HandleIFSelectDispPerOne(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectDispPerOne_is_null(const HandleIFSelectDispPerOne* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectDispPerSignature_destructor(HandleIFSelectDispPerSignature* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectDispPerSignature*> HandleIFSelectDispPerSignature_clone(const HandleIFSelectDispPerSignature* self_) {
     try { return {new HandleIFSelectDispPerSignature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectDispPerSignature_is_null(const HandleIFSelectDispPerSignature* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectDispatch_destructor(HandleIFSelectDispatch* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectDispatch*> HandleIFSelectDispatch_clone(const HandleIFSelectDispatch* self_) {
     try { return {new HandleIFSelectDispatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectDispatch_is_null(const HandleIFSelectDispatch* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectEditForm_destructor(HandleIFSelectEditForm* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectEditForm*> HandleIFSelectEditForm_clone(const HandleIFSelectEditForm* self_) {
     try { return {new HandleIFSelectEditForm(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectEditForm_is_null(const HandleIFSelectEditForm* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectEditor_destructor(HandleIFSelectEditor* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectEditor*> HandleIFSelectEditor_clone(const HandleIFSelectEditor* self_) {
     try { return {new HandleIFSelectEditor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectEditor_is_null(const HandleIFSelectEditor* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectGeneralModifier_destructor(HandleIFSelectGeneralModifier* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectGeneralModifier*> HandleIFSelectGeneralModifier_clone(const HandleIFSelectGeneralModifier* self_) {
     try { return {new HandleIFSelectGeneralModifier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectGeneralModifier_is_null(const HandleIFSelectGeneralModifier* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectGraphCounter_destructor(HandleIFSelectGraphCounter* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectGraphCounter*> HandleIFSelectGraphCounter_clone(const HandleIFSelectGraphCounter* self_) {
     try { return {new HandleIFSelectGraphCounter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectGraphCounter_is_null(const HandleIFSelectGraphCounter* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectHSeqOfSelection_destructor(HandleIFSelectHSeqOfSelection* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectHSeqOfSelection*> HandleIFSelectHSeqOfSelection_clone(const HandleIFSelectHSeqOfSelection* self_) {
     try { return {new HandleIFSelectHSeqOfSelection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectHSeqOfSelection_is_null(const HandleIFSelectHSeqOfSelection* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectIntParam_destructor(HandleIFSelectIntParam* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectIntParam*> HandleIFSelectIntParam_clone(const HandleIFSelectIntParam* self_) {
     try { return {new HandleIFSelectIntParam(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectIntParam_is_null(const HandleIFSelectIntParam* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectListEditor_destructor(HandleIFSelectListEditor* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectListEditor*> HandleIFSelectListEditor_clone(const HandleIFSelectListEditor* self_) {
     try { return {new HandleIFSelectListEditor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectListEditor_is_null(const HandleIFSelectListEditor* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectModelCopier_destructor(HandleIFSelectModelCopier* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectModelCopier*> HandleIFSelectModelCopier_clone(const HandleIFSelectModelCopier* self_) {
     try { return {new HandleIFSelectModelCopier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectModelCopier_is_null(const HandleIFSelectModelCopier* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectModifEditForm_destructor(HandleIFSelectModifEditForm* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectModifEditForm*> HandleIFSelectModifEditForm_clone(const HandleIFSelectModifEditForm* self_) {
     try { return {new HandleIFSelectModifEditForm(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectModifEditForm_is_null(const HandleIFSelectModifEditForm* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectModifReorder_destructor(HandleIFSelectModifReorder* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectModifReorder*> HandleIFSelectModifReorder_clone(const HandleIFSelectModifReorder* self_) {
     try { return {new HandleIFSelectModifReorder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectModifReorder_is_null(const HandleIFSelectModifReorder* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectModifier_destructor(HandleIFSelectModifier* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectModifier*> HandleIFSelectModifier_clone(const HandleIFSelectModifier* self_) {
     try { return {new HandleIFSelectModifier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectModifier_is_null(const HandleIFSelectModifier* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectPacketList_destructor(HandleIFSelectPacketList* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectPacketList*> HandleIFSelectPacketList_clone(const HandleIFSelectPacketList* self_) {
     try { return {new HandleIFSelectPacketList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectPacketList_is_null(const HandleIFSelectPacketList* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectParamEditor_destructor(HandleIFSelectParamEditor* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectParamEditor*> HandleIFSelectParamEditor_clone(const HandleIFSelectParamEditor* self_) {
     try { return {new HandleIFSelectParamEditor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectParamEditor_is_null(const HandleIFSelectParamEditor* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectAnyList_destructor(HandleIFSelectSelectAnyList* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectAnyList*> HandleIFSelectSelectAnyList_clone(const HandleIFSelectSelectAnyList* self_) {
     try { return {new HandleIFSelectSelectAnyList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectAnyList_is_null(const HandleIFSelectSelectAnyList* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectAnyType_destructor(HandleIFSelectSelectAnyType* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectAnyType*> HandleIFSelectSelectAnyType_clone(const HandleIFSelectSelectAnyType* self_) {
     try { return {new HandleIFSelectSelectAnyType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectAnyType_is_null(const HandleIFSelectSelectAnyType* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectBase_destructor(HandleIFSelectSelectBase* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectBase*> HandleIFSelectSelectBase_clone(const HandleIFSelectSelectBase* self_) {
     try { return {new HandleIFSelectSelectBase(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectBase_is_null(const HandleIFSelectSelectBase* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectCombine_destructor(HandleIFSelectSelectCombine* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectCombine*> HandleIFSelectSelectCombine_clone(const HandleIFSelectSelectCombine* self_) {
     try { return {new HandleIFSelectSelectCombine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectCombine_is_null(const HandleIFSelectSelectCombine* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectControl_destructor(HandleIFSelectSelectControl* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectControl*> HandleIFSelectSelectControl_clone(const HandleIFSelectSelectControl* self_) {
     try { return {new HandleIFSelectSelectControl(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectControl_is_null(const HandleIFSelectSelectControl* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectDeduct_destructor(HandleIFSelectSelectDeduct* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectDeduct_clone(const HandleIFSelectSelectDeduct* self_) {
     try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectDeduct_is_null(const HandleIFSelectSelectDeduct* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectDiff_destructor(HandleIFSelectSelectDiff* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectDiff*> HandleIFSelectSelectDiff_clone(const HandleIFSelectSelectDiff* self_) {
     try { return {new HandleIFSelectSelectDiff(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectDiff_is_null(const HandleIFSelectSelectDiff* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectEntityNumber_destructor(HandleIFSelectSelectEntityNumber* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectEntityNumber*> HandleIFSelectSelectEntityNumber_clone(const HandleIFSelectSelectEntityNumber* self_) {
     try { return {new HandleIFSelectSelectEntityNumber(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectEntityNumber_is_null(const HandleIFSelectSelectEntityNumber* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectErrorEntities_destructor(HandleIFSelectSelectErrorEntities* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectErrorEntities*> HandleIFSelectSelectErrorEntities_clone(const HandleIFSelectSelectErrorEntities* self_) {
     try { return {new HandleIFSelectSelectErrorEntities(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectErrorEntities_is_null(const HandleIFSelectSelectErrorEntities* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectExplore_destructor(HandleIFSelectSelectExplore* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectExplore*> HandleIFSelectSelectExplore_clone(const HandleIFSelectSelectExplore* self_) {
     try { return {new HandleIFSelectSelectExplore(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectExplore_is_null(const HandleIFSelectSelectExplore* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectExtract_destructor(HandleIFSelectSelectExtract* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectExtract_clone(const HandleIFSelectSelectExtract* self_) {
     try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectExtract_is_null(const HandleIFSelectSelectExtract* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectFlag_destructor(HandleIFSelectSelectFlag* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectFlag*> HandleIFSelectSelectFlag_clone(const HandleIFSelectSelectFlag* self_) {
     try { return {new HandleIFSelectSelectFlag(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectFlag_is_null(const HandleIFSelectSelectFlag* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectInList_destructor(HandleIFSelectSelectInList* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectInList*> HandleIFSelectSelectInList_clone(const HandleIFSelectSelectInList* self_) {
     try { return {new HandleIFSelectSelectInList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectInList_is_null(const HandleIFSelectSelectInList* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectIncorrectEntities_destructor(HandleIFSelectSelectIncorrectEntities* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectIncorrectEntities*> HandleIFSelectSelectIncorrectEntities_clone(const HandleIFSelectSelectIncorrectEntities* self_) {
     try { return {new HandleIFSelectSelectIncorrectEntities(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectIncorrectEntities_is_null(const HandleIFSelectSelectIncorrectEntities* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectIntersection_destructor(HandleIFSelectSelectIntersection* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectIntersection*> HandleIFSelectSelectIntersection_clone(const HandleIFSelectSelectIntersection* self_) {
     try { return {new HandleIFSelectSelectIntersection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectIntersection_is_null(const HandleIFSelectSelectIntersection* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectModelEntities_destructor(HandleIFSelectSelectModelEntities* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectModelEntities*> HandleIFSelectSelectModelEntities_clone(const HandleIFSelectSelectModelEntities* self_) {
     try { return {new HandleIFSelectSelectModelEntities(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectModelEntities_is_null(const HandleIFSelectSelectModelEntities* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectModelRoots_destructor(HandleIFSelectSelectModelRoots* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectModelRoots*> HandleIFSelectSelectModelRoots_clone(const HandleIFSelectSelectModelRoots* self_) {
     try { return {new HandleIFSelectSelectModelRoots(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectModelRoots_is_null(const HandleIFSelectSelectModelRoots* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectPointed_destructor(HandleIFSelectSelectPointed* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectPointed*> HandleIFSelectSelectPointed_clone(const HandleIFSelectSelectPointed* self_) {
     try { return {new HandleIFSelectSelectPointed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectPointed_is_null(const HandleIFSelectSelectPointed* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectRange_destructor(HandleIFSelectSelectRange* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectRange*> HandleIFSelectSelectRange_clone(const HandleIFSelectSelectRange* self_) {
     try { return {new HandleIFSelectSelectRange(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectRange_is_null(const HandleIFSelectSelectRange* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectRootComps_destructor(HandleIFSelectSelectRootComps* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectRootComps*> HandleIFSelectSelectRootComps_clone(const HandleIFSelectSelectRootComps* self_) {
     try { return {new HandleIFSelectSelectRootComps(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectRootComps_is_null(const HandleIFSelectSelectRootComps* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectRoots_destructor(HandleIFSelectSelectRoots* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectRoots*> HandleIFSelectSelectRoots_clone(const HandleIFSelectSelectRoots* self_) {
     try { return {new HandleIFSelectSelectRoots(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectRoots_is_null(const HandleIFSelectSelectRoots* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectSent_destructor(HandleIFSelectSelectSent* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectSent*> HandleIFSelectSelectSent_clone(const HandleIFSelectSelectSent* self_) {
     try { return {new HandleIFSelectSelectSent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectSent_is_null(const HandleIFSelectSelectSent* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectShared_destructor(HandleIFSelectSelectShared* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectShared*> HandleIFSelectSelectShared_clone(const HandleIFSelectSelectShared* self_) {
     try { return {new HandleIFSelectSelectShared(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectShared_is_null(const HandleIFSelectSelectShared* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectSharing_destructor(HandleIFSelectSelectSharing* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectSharing*> HandleIFSelectSelectSharing_clone(const HandleIFSelectSelectSharing* self_) {
     try { return {new HandleIFSelectSelectSharing(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectSharing_is_null(const HandleIFSelectSelectSharing* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectSignature_destructor(HandleIFSelectSelectSignature* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectSignature*> HandleIFSelectSelectSignature_clone(const HandleIFSelectSelectSignature* self_) {
     try { return {new HandleIFSelectSelectSignature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectSignature_is_null(const HandleIFSelectSelectSignature* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectSignedShared_destructor(HandleIFSelectSelectSignedShared* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectSignedShared*> HandleIFSelectSelectSignedShared_clone(const HandleIFSelectSelectSignedShared* self_) {
     try { return {new HandleIFSelectSelectSignedShared(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectSignedShared_is_null(const HandleIFSelectSelectSignedShared* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectSignedSharing_destructor(HandleIFSelectSelectSignedSharing* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectSignedSharing*> HandleIFSelectSelectSignedSharing_clone(const HandleIFSelectSelectSignedSharing* self_) {
     try { return {new HandleIFSelectSelectSignedSharing(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectSignedSharing_is_null(const HandleIFSelectSelectSignedSharing* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectSuite_destructor(HandleIFSelectSelectSuite* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectSuite*> HandleIFSelectSelectSuite_clone(const HandleIFSelectSelectSuite* self_) {
     try { return {new HandleIFSelectSelectSuite(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectSuite_is_null(const HandleIFSelectSelectSuite* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectType_destructor(HandleIFSelectSelectType* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectType*> HandleIFSelectSelectType_clone(const HandleIFSelectSelectType* self_) {
     try { return {new HandleIFSelectSelectType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectType_is_null(const HandleIFSelectSelectType* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectUnion_destructor(HandleIFSelectSelectUnion* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectUnion*> HandleIFSelectSelectUnion_clone(const HandleIFSelectSelectUnion* self_) {
     try { return {new HandleIFSelectSelectUnion(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectUnion_is_null(const HandleIFSelectSelectUnion* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelectUnknownEntities_destructor(HandleIFSelectSelectUnknownEntities* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelectUnknownEntities*> HandleIFSelectSelectUnknownEntities_clone(const HandleIFSelectSelectUnknownEntities* self_) {
     try { return {new HandleIFSelectSelectUnknownEntities(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelectUnknownEntities_is_null(const HandleIFSelectSelectUnknownEntities* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSelection_destructor(HandleIFSelectSelection* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelection_clone(const HandleIFSelectSelection* self_) {
     try { return {new HandleIFSelectSelection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSelection_is_null(const HandleIFSelectSelection* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSessionDumper_destructor(HandleIFSelectSessionDumper* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSessionDumper*> HandleIFSelectSessionDumper_clone(const HandleIFSelectSessionDumper* self_) {
     try { return {new HandleIFSelectSessionDumper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSessionDumper_is_null(const HandleIFSelectSessionDumper* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSessionPilot_destructor(HandleIFSelectSessionPilot* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSessionPilot*> HandleIFSelectSessionPilot_clone(const HandleIFSelectSessionPilot* self_) {
     try { return {new HandleIFSelectSessionPilot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSessionPilot_is_null(const HandleIFSelectSessionPilot* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectShareOut_destructor(HandleIFSelectShareOut* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectShareOut*> HandleIFSelectShareOut_clone(const HandleIFSelectShareOut* self_) {
     try { return {new HandleIFSelectShareOut(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectShareOut_is_null(const HandleIFSelectShareOut* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSignAncestor_destructor(HandleIFSelectSignAncestor* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSignAncestor*> HandleIFSelectSignAncestor_clone(const HandleIFSelectSignAncestor* self_) {
     try { return {new HandleIFSelectSignAncestor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSignAncestor_is_null(const HandleIFSelectSignAncestor* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSignCategory_destructor(HandleIFSelectSignCategory* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSignCategory*> HandleIFSelectSignCategory_clone(const HandleIFSelectSignCategory* self_) {
     try { return {new HandleIFSelectSignCategory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSignCategory_is_null(const HandleIFSelectSignCategory* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSignCounter_destructor(HandleIFSelectSignCounter* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSignCounter*> HandleIFSelectSignCounter_clone(const HandleIFSelectSignCounter* self_) {
     try { return {new HandleIFSelectSignCounter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSignCounter_is_null(const HandleIFSelectSignCounter* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSignMultiple_destructor(HandleIFSelectSignMultiple* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSignMultiple*> HandleIFSelectSignMultiple_clone(const HandleIFSelectSignMultiple* self_) {
     try { return {new HandleIFSelectSignMultiple(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSignMultiple_is_null(const HandleIFSelectSignMultiple* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSignType_destructor(HandleIFSelectSignType* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSignType*> HandleIFSelectSignType_clone(const HandleIFSelectSignType* self_) {
     try { return {new HandleIFSelectSignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSignType_is_null(const HandleIFSelectSignType* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSignValidity_destructor(HandleIFSelectSignValidity* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSignValidity*> HandleIFSelectSignValidity_clone(const HandleIFSelectSignValidity* self_) {
     try { return {new HandleIFSelectSignValidity(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSignValidity_is_null(const HandleIFSelectSignValidity* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSignature_destructor(HandleIFSelectSignature* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSignature*> HandleIFSelectSignature_clone(const HandleIFSelectSignature* self_) {
     try { return {new HandleIFSelectSignature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSignature_is_null(const HandleIFSelectSignature* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectSignatureList_destructor(HandleIFSelectSignatureList* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectSignatureList*> HandleIFSelectSignatureList_clone(const HandleIFSelectSignatureList* self_) {
     try { return {new HandleIFSelectSignatureList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectSignatureList_is_null(const HandleIFSelectSignatureList* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectTransformStandard_destructor(HandleIFSelectTransformStandard* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectTransformStandard*> HandleIFSelectTransformStandard_clone(const HandleIFSelectTransformStandard* self_) {
     try { return {new HandleIFSelectTransformStandard(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectTransformStandard_is_null(const HandleIFSelectTransformStandard* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectTransformer_destructor(HandleIFSelectTransformer* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectTransformer*> HandleIFSelectTransformer_clone(const HandleIFSelectTransformer* self_) {
     try { return {new HandleIFSelectTransformer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectTransformer_is_null(const HandleIFSelectTransformer* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectWorkLibrary_destructor(HandleIFSelectWorkLibrary* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectWorkLibrary*> HandleIFSelectWorkLibrary_clone(const HandleIFSelectWorkLibrary* self_) {
     try { return {new HandleIFSelectWorkLibrary(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectWorkLibrary_is_null(const HandleIFSelectWorkLibrary* self_) { return self_->IsNull(); }
 extern "C" void HandleIFSelectWorkSession_destructor(HandleIFSelectWorkSession* self_) { delete self_; }
 extern "C" OcctResult<HandleIFSelectWorkSession*> HandleIFSelectWorkSession_clone(const HandleIFSelectWorkSession* self_) {
     try { return {new HandleIFSelectWorkSession(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIFSelectWorkSession_is_null(const HandleIFSelectWorkSession* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceCheck_destructor(HandleInterfaceCheck* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceCheck*> HandleInterfaceCheck_clone(const HandleInterfaceCheck* self_) {
     try { return {new HandleInterfaceCheck(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceCheck_is_null(const HandleInterfaceCheck* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceCheckFailure_destructor(HandleInterfaceCheckFailure* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceCheckFailure*> HandleInterfaceCheckFailure_clone(const HandleInterfaceCheckFailure* self_) {
     try { return {new HandleInterfaceCheckFailure(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceCheckFailure_is_null(const HandleInterfaceCheckFailure* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceCopyControl_destructor(HandleInterfaceCopyControl* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceCopyControl*> HandleInterfaceCopyControl_clone(const HandleInterfaceCopyControl* self_) {
     try { return {new HandleInterfaceCopyControl(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceCopyControl_is_null(const HandleInterfaceCopyControl* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceCopyMap_destructor(HandleInterfaceCopyMap* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceCopyMap*> HandleInterfaceCopyMap_clone(const HandleInterfaceCopyMap* self_) {
     try { return {new HandleInterfaceCopyMap(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceCopyMap_is_null(const HandleInterfaceCopyMap* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceEntityCluster_destructor(HandleInterfaceEntityCluster* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceEntityCluster*> HandleInterfaceEntityCluster_clone(const HandleInterfaceEntityCluster* self_) {
     try { return {new HandleInterfaceEntityCluster(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceEntityCluster_is_null(const HandleInterfaceEntityCluster* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceFileReaderData_destructor(HandleInterfaceFileReaderData* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceFileReaderData*> HandleInterfaceFileReaderData_clone(const HandleInterfaceFileReaderData* self_) {
     try { return {new HandleInterfaceFileReaderData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceFileReaderData_is_null(const HandleInterfaceFileReaderData* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceGTool_destructor(HandleInterfaceGTool* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceGTool*> HandleInterfaceGTool_clone(const HandleInterfaceGTool* self_) {
     try { return {new HandleInterfaceGTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceGTool_is_null(const HandleInterfaceGTool* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceGeneralModule_destructor(HandleInterfaceGeneralModule* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceGeneralModule*> HandleInterfaceGeneralModule_clone(const HandleInterfaceGeneralModule* self_) {
     try { return {new HandleInterfaceGeneralModule(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceGeneralModule_is_null(const HandleInterfaceGeneralModule* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceGlobalNodeOfGeneralLib_destructor(HandleInterfaceGlobalNodeOfGeneralLib* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceGlobalNodeOfGeneralLib*> HandleInterfaceGlobalNodeOfGeneralLib_clone(const HandleInterfaceGlobalNodeOfGeneralLib* self_) {
     try { return {new HandleInterfaceGlobalNodeOfGeneralLib(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceGlobalNodeOfGeneralLib_is_null(const HandleInterfaceGlobalNodeOfGeneralLib* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceGlobalNodeOfReaderLib_destructor(HandleInterfaceGlobalNodeOfReaderLib* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceGlobalNodeOfReaderLib*> HandleInterfaceGlobalNodeOfReaderLib_clone(const HandleInterfaceGlobalNodeOfReaderLib* self_) {
     try { return {new HandleInterfaceGlobalNodeOfReaderLib(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceGlobalNodeOfReaderLib_is_null(const HandleInterfaceGlobalNodeOfReaderLib* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceHArray1OfHAsciiString_destructor(HandleInterfaceHArray1OfHAsciiString* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceHArray1OfHAsciiString*> HandleInterfaceHArray1OfHAsciiString_clone(const HandleInterfaceHArray1OfHAsciiString* self_) {
     try { return {new HandleInterfaceHArray1OfHAsciiString(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceHArray1OfHAsciiString_is_null(const HandleInterfaceHArray1OfHAsciiString* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceHGraph_destructor(HandleInterfaceHGraph* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceHGraph*> HandleInterfaceHGraph_clone(const HandleInterfaceHGraph* self_) {
     try { return {new HandleInterfaceHGraph(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceHGraph_is_null(const HandleInterfaceHGraph* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceHSequenceOfCheck_destructor(HandleInterfaceHSequenceOfCheck* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceHSequenceOfCheck*> HandleInterfaceHSequenceOfCheck_clone(const HandleInterfaceHSequenceOfCheck* self_) {
     try { return {new HandleInterfaceHSequenceOfCheck(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceHSequenceOfCheck_is_null(const HandleInterfaceHSequenceOfCheck* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceIntVal_destructor(HandleInterfaceIntVal* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceIntVal*> HandleInterfaceIntVal_clone(const HandleInterfaceIntVal* self_) {
     try { return {new HandleInterfaceIntVal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceIntVal_is_null(const HandleInterfaceIntVal* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceInterfaceError_destructor(HandleInterfaceInterfaceError* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceInterfaceError*> HandleInterfaceInterfaceError_clone(const HandleInterfaceInterfaceError* self_) {
     try { return {new HandleInterfaceInterfaceError(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceInterfaceError_is_null(const HandleInterfaceInterfaceError* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceInterfaceMismatch_destructor(HandleInterfaceInterfaceMismatch* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceInterfaceMismatch*> HandleInterfaceInterfaceMismatch_clone(const HandleInterfaceInterfaceMismatch* self_) {
     try { return {new HandleInterfaceInterfaceMismatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceInterfaceMismatch_is_null(const HandleInterfaceInterfaceMismatch* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceInterfaceModel_destructor(HandleInterfaceInterfaceModel* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceInterfaceModel*> HandleInterfaceInterfaceModel_clone(const HandleInterfaceInterfaceModel* self_) {
     try { return {new HandleInterfaceInterfaceModel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceInterfaceModel_is_null(const HandleInterfaceInterfaceModel* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceNodeOfGeneralLib_destructor(HandleInterfaceNodeOfGeneralLib* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceNodeOfGeneralLib*> HandleInterfaceNodeOfGeneralLib_clone(const HandleInterfaceNodeOfGeneralLib* self_) {
     try { return {new HandleInterfaceNodeOfGeneralLib(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceNodeOfGeneralLib_is_null(const HandleInterfaceNodeOfGeneralLib* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceNodeOfReaderLib_destructor(HandleInterfaceNodeOfReaderLib* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceNodeOfReaderLib*> HandleInterfaceNodeOfReaderLib_clone(const HandleInterfaceNodeOfReaderLib* self_) {
     try { return {new HandleInterfaceNodeOfReaderLib(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceNodeOfReaderLib_is_null(const HandleInterfaceNodeOfReaderLib* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceParamList_destructor(HandleInterfaceParamList* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceParamList*> HandleInterfaceParamList_clone(const HandleInterfaceParamList* self_) {
     try { return {new HandleInterfaceParamList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceParamList_is_null(const HandleInterfaceParamList* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceParamSet_destructor(HandleInterfaceParamSet* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceParamSet*> HandleInterfaceParamSet_clone(const HandleInterfaceParamSet* self_) {
     try { return {new HandleInterfaceParamSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceParamSet_is_null(const HandleInterfaceParamSet* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceProtocol_destructor(HandleInterfaceProtocol* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceProtocol*> HandleInterfaceProtocol_clone(const HandleInterfaceProtocol* self_) {
     try { return {new HandleInterfaceProtocol(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceProtocol_is_null(const HandleInterfaceProtocol* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceReaderModule_destructor(HandleInterfaceReaderModule* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceReaderModule*> HandleInterfaceReaderModule_clone(const HandleInterfaceReaderModule* self_) {
     try { return {new HandleInterfaceReaderModule(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceReaderModule_is_null(const HandleInterfaceReaderModule* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceReportEntity_destructor(HandleInterfaceReportEntity* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceReportEntity*> HandleInterfaceReportEntity_clone(const HandleInterfaceReportEntity* self_) {
     try { return {new HandleInterfaceReportEntity(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceReportEntity_is_null(const HandleInterfaceReportEntity* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceSignLabel_destructor(HandleInterfaceSignLabel* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceSignLabel*> HandleInterfaceSignLabel_clone(const HandleInterfaceSignLabel* self_) {
     try { return {new HandleInterfaceSignLabel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceSignLabel_is_null(const HandleInterfaceSignLabel* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceSignType_destructor(HandleInterfaceSignType* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceSignType*> HandleInterfaceSignType_clone(const HandleInterfaceSignType* self_) {
     try { return {new HandleInterfaceSignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceSignType_is_null(const HandleInterfaceSignType* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceStatic_destructor(HandleInterfaceStatic* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceStatic*> HandleInterfaceStatic_clone(const HandleInterfaceStatic* self_) {
     try { return {new HandleInterfaceStatic(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceStatic_is_null(const HandleInterfaceStatic* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceTypedValue_destructor(HandleInterfaceTypedValue* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceTypedValue*> HandleInterfaceTypedValue_clone(const HandleInterfaceTypedValue* self_) {
     try { return {new HandleInterfaceTypedValue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceTypedValue_is_null(const HandleInterfaceTypedValue* self_) { return self_->IsNull(); }
 extern "C" void HandleInterfaceUndefinedContent_destructor(HandleInterfaceUndefinedContent* self_) { delete self_; }
 extern "C" OcctResult<HandleInterfaceUndefinedContent*> HandleInterfaceUndefinedContent_clone(const HandleInterfaceUndefinedContent* self_) {
     try { return {new HandleInterfaceUndefinedContent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleInterfaceUndefinedContent_is_null(const HandleInterfaceUndefinedContent* self_) { return self_->IsNull(); }
 extern "C" void HandleMoniToolCaseData_destructor(HandleMoniToolCaseData* self_) { delete self_; }
 extern "C" OcctResult<HandleMoniToolCaseData*> HandleMoniToolCaseData_clone(const HandleMoniToolCaseData* self_) {
     try { return {new HandleMoniToolCaseData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleMoniToolCaseData_is_null(const HandleMoniToolCaseData* self_) { return self_->IsNull(); }
 extern "C" void HandleMoniToolElement_destructor(HandleMoniToolElement* self_) { delete self_; }
 extern "C" OcctResult<HandleMoniToolElement*> HandleMoniToolElement_clone(const HandleMoniToolElement* self_) {
     try { return {new HandleMoniToolElement(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleMoniToolElement_is_null(const HandleMoniToolElement* self_) { return self_->IsNull(); }
 extern "C" void HandleMoniToolHSequenceOfElement_destructor(HandleMoniToolHSequenceOfElement* self_) { delete self_; }
 extern "C" OcctResult<HandleMoniToolHSequenceOfElement*> HandleMoniToolHSequenceOfElement_clone(const HandleMoniToolHSequenceOfElement* self_) {
     try { return {new HandleMoniToolHSequenceOfElement(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleMoniToolHSequenceOfElement_is_null(const HandleMoniToolHSequenceOfElement* self_) { return self_->IsNull(); }
 extern "C" void HandleMoniToolIntVal_destructor(HandleMoniToolIntVal* self_) { delete self_; }
 extern "C" OcctResult<HandleMoniToolIntVal*> HandleMoniToolIntVal_clone(const HandleMoniToolIntVal* self_) {
     try { return {new HandleMoniToolIntVal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleMoniToolIntVal_is_null(const HandleMoniToolIntVal* self_) { return self_->IsNull(); }
 extern "C" void HandleMoniToolRealVal_destructor(HandleMoniToolRealVal* self_) { delete self_; }
 extern "C" OcctResult<HandleMoniToolRealVal*> HandleMoniToolRealVal_clone(const HandleMoniToolRealVal* self_) {
     try { return {new HandleMoniToolRealVal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleMoniToolRealVal_is_null(const HandleMoniToolRealVal* self_) { return self_->IsNull(); }
 extern "C" void HandleMoniToolSignShape_destructor(HandleMoniToolSignShape* self_) { delete self_; }
 extern "C" OcctResult<HandleMoniToolSignShape*> HandleMoniToolSignShape_clone(const HandleMoniToolSignShape* self_) {
     try { return {new HandleMoniToolSignShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleMoniToolSignShape_is_null(const HandleMoniToolSignShape* self_) { return self_->IsNull(); }
 extern "C" void HandleMoniToolSignText_destructor(HandleMoniToolSignText* self_) { delete self_; }
 extern "C" OcctResult<HandleMoniToolSignText*> HandleMoniToolSignText_clone(const HandleMoniToolSignText* self_) {
     try { return {new HandleMoniToolSignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleMoniToolSignText_is_null(const HandleMoniToolSignText* self_) { return self_->IsNull(); }
 extern "C" void HandleMoniToolTimer_destructor(HandleMoniToolTimer* self_) { delete self_; }
 extern "C" OcctResult<HandleMoniToolTimer*> HandleMoniToolTimer_clone(const HandleMoniToolTimer* self_) {
     try { return {new HandleMoniToolTimer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleMoniToolTimer_is_null(const HandleMoniToolTimer* self_) { return self_->IsNull(); }
 extern "C" void HandleMoniToolTransientElem_destructor(HandleMoniToolTransientElem* self_) { delete self_; }
 extern "C" OcctResult<HandleMoniToolTransientElem*> HandleMoniToolTransientElem_clone(const HandleMoniToolTransientElem* self_) {
     try { return {new HandleMoniToolTransientElem(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleMoniToolTransientElem_is_null(const HandleMoniToolTransientElem* self_) { return self_->IsNull(); }
 extern "C" void HandleMoniToolTypedValue_destructor(HandleMoniToolTypedValue* self_) { delete self_; }
 extern "C" OcctResult<HandleMoniToolTypedValue*> HandleMoniToolTypedValue_clone(const HandleMoniToolTypedValue* self_) {
     try { return {new HandleMoniToolTypedValue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleMoniToolTypedValue_is_null(const HandleMoniToolTypedValue* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferBRepBinderOfShape_destructor(HandleTransferBRepBinderOfShape* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferBRepBinderOfShape*> HandleTransferBRepBinderOfShape_clone(const HandleTransferBRepBinderOfShape* self_) {
     try { return {new HandleTransferBRepBinderOfShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferBRepBinderOfShape_is_null(const HandleTransferBRepBinderOfShape* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferBRepHSequenceOfTransferResultInfo_destructor(HandleTransferBRepHSequenceOfTransferResultInfo* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferBRepHSequenceOfTransferResultInfo*> HandleTransferBRepHSequenceOfTransferResultInfo_clone(const HandleTransferBRepHSequenceOfTransferResultInfo* self_) {
     try { return {new HandleTransferBRepHSequenceOfTransferResultInfo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferBRepHSequenceOfTransferResultInfo_is_null(const HandleTransferBRepHSequenceOfTransferResultInfo* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferBRepShapeBinder_destructor(HandleTransferBRepShapeBinder* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferBRepShapeBinder*> HandleTransferBRepShapeBinder_clone(const HandleTransferBRepShapeBinder* self_) {
     try { return {new HandleTransferBRepShapeBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferBRepShapeBinder_is_null(const HandleTransferBRepShapeBinder* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferBRepShapeListBinder_destructor(HandleTransferBRepShapeListBinder* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferBRepShapeListBinder*> HandleTransferBRepShapeListBinder_clone(const HandleTransferBRepShapeListBinder* self_) {
     try { return {new HandleTransferBRepShapeListBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferBRepShapeListBinder_is_null(const HandleTransferBRepShapeListBinder* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferBRepShapeMapper_destructor(HandleTransferBRepShapeMapper* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferBRepShapeMapper*> HandleTransferBRepShapeMapper_clone(const HandleTransferBRepShapeMapper* self_) {
     try { return {new HandleTransferBRepShapeMapper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferBRepShapeMapper_is_null(const HandleTransferBRepShapeMapper* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferBRepTransferResultInfo_destructor(HandleTransferBRepTransferResultInfo* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferBRepTransferResultInfo*> HandleTransferBRepTransferResultInfo_clone(const HandleTransferBRepTransferResultInfo* self_) {
     try { return {new HandleTransferBRepTransferResultInfo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferBRepTransferResultInfo_is_null(const HandleTransferBRepTransferResultInfo* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferActorDispatch_destructor(HandleTransferActorDispatch* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferActorDispatch*> HandleTransferActorDispatch_clone(const HandleTransferActorDispatch* self_) {
     try { return {new HandleTransferActorDispatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferActorDispatch_is_null(const HandleTransferActorDispatch* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferActorOfFinderProcess_destructor(HandleTransferActorOfFinderProcess* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferActorOfFinderProcess*> HandleTransferActorOfFinderProcess_clone(const HandleTransferActorOfFinderProcess* self_) {
     try { return {new HandleTransferActorOfFinderProcess(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferActorOfFinderProcess_is_null(const HandleTransferActorOfFinderProcess* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferActorOfProcessForFinder_destructor(HandleTransferActorOfProcessForFinder* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferActorOfProcessForFinder*> HandleTransferActorOfProcessForFinder_clone(const HandleTransferActorOfProcessForFinder* self_) {
     try { return {new HandleTransferActorOfProcessForFinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferActorOfProcessForFinder_is_null(const HandleTransferActorOfProcessForFinder* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferActorOfProcessForTransient_destructor(HandleTransferActorOfProcessForTransient* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferActorOfProcessForTransient*> HandleTransferActorOfProcessForTransient_clone(const HandleTransferActorOfProcessForTransient* self_) {
     try { return {new HandleTransferActorOfProcessForTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferActorOfProcessForTransient_is_null(const HandleTransferActorOfProcessForTransient* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferActorOfTransientProcess_destructor(HandleTransferActorOfTransientProcess* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferActorOfTransientProcess*> HandleTransferActorOfTransientProcess_clone(const HandleTransferActorOfTransientProcess* self_) {
     try { return {new HandleTransferActorOfTransientProcess(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferActorOfTransientProcess_is_null(const HandleTransferActorOfTransientProcess* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferBinder_destructor(HandleTransferBinder* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferBinder*> HandleTransferBinder_clone(const HandleTransferBinder* self_) {
     try { return {new HandleTransferBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferBinder_is_null(const HandleTransferBinder* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferBinderOfTransientInteger_destructor(HandleTransferBinderOfTransientInteger* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferBinderOfTransientInteger*> HandleTransferBinderOfTransientInteger_clone(const HandleTransferBinderOfTransientInteger* self_) {
     try { return {new HandleTransferBinderOfTransientInteger(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferBinderOfTransientInteger_is_null(const HandleTransferBinderOfTransientInteger* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferDispatchControl_destructor(HandleTransferDispatchControl* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferDispatchControl*> HandleTransferDispatchControl_clone(const HandleTransferDispatchControl* self_) {
     try { return {new HandleTransferDispatchControl(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferDispatchControl_is_null(const HandleTransferDispatchControl* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferFinder_destructor(HandleTransferFinder* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferFinder*> HandleTransferFinder_clone(const HandleTransferFinder* self_) {
     try { return {new HandleTransferFinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferFinder_is_null(const HandleTransferFinder* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferFinderProcess_destructor(HandleTransferFinderProcess* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferFinderProcess*> HandleTransferFinderProcess_clone(const HandleTransferFinderProcess* self_) {
     try { return {new HandleTransferFinderProcess(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferFinderProcess_is_null(const HandleTransferFinderProcess* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferHSequenceOfBinder_destructor(HandleTransferHSequenceOfBinder* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferHSequenceOfBinder*> HandleTransferHSequenceOfBinder_clone(const HandleTransferHSequenceOfBinder* self_) {
     try { return {new HandleTransferHSequenceOfBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferHSequenceOfBinder_is_null(const HandleTransferHSequenceOfBinder* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferHSequenceOfFinder_destructor(HandleTransferHSequenceOfFinder* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferHSequenceOfFinder*> HandleTransferHSequenceOfFinder_clone(const HandleTransferHSequenceOfFinder* self_) {
     try { return {new HandleTransferHSequenceOfFinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferHSequenceOfFinder_is_null(const HandleTransferHSequenceOfFinder* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferMapContainer_destructor(HandleTransferMapContainer* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferMapContainer*> HandleTransferMapContainer_clone(const HandleTransferMapContainer* self_) {
     try { return {new HandleTransferMapContainer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferMapContainer_is_null(const HandleTransferMapContainer* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferMultipleBinder_destructor(HandleTransferMultipleBinder* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferMultipleBinder*> HandleTransferMultipleBinder_clone(const HandleTransferMultipleBinder* self_) {
     try { return {new HandleTransferMultipleBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferMultipleBinder_is_null(const HandleTransferMultipleBinder* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferProcessForFinder_destructor(HandleTransferProcessForFinder* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferProcessForFinder*> HandleTransferProcessForFinder_clone(const HandleTransferProcessForFinder* self_) {
     try { return {new HandleTransferProcessForFinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferProcessForFinder_is_null(const HandleTransferProcessForFinder* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferProcessForTransient_destructor(HandleTransferProcessForTransient* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferProcessForTransient*> HandleTransferProcessForTransient_clone(const HandleTransferProcessForTransient* self_) {
     try { return {new HandleTransferProcessForTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferProcessForTransient_is_null(const HandleTransferProcessForTransient* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferResultFromModel_destructor(HandleTransferResultFromModel* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferResultFromModel*> HandleTransferResultFromModel_clone(const HandleTransferResultFromModel* self_) {
     try { return {new HandleTransferResultFromModel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferResultFromModel_is_null(const HandleTransferResultFromModel* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferResultFromTransient_destructor(HandleTransferResultFromTransient* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferResultFromTransient*> HandleTransferResultFromTransient_clone(const HandleTransferResultFromTransient* self_) {
     try { return {new HandleTransferResultFromTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferResultFromTransient_is_null(const HandleTransferResultFromTransient* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferSimpleBinderOfTransient_destructor(HandleTransferSimpleBinderOfTransient* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferSimpleBinderOfTransient*> HandleTransferSimpleBinderOfTransient_clone(const HandleTransferSimpleBinderOfTransient* self_) {
     try { return {new HandleTransferSimpleBinderOfTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferSimpleBinderOfTransient_is_null(const HandleTransferSimpleBinderOfTransient* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferTransferDeadLoop_destructor(HandleTransferTransferDeadLoop* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferTransferDeadLoop*> HandleTransferTransferDeadLoop_clone(const HandleTransferTransferDeadLoop* self_) {
     try { return {new HandleTransferTransferDeadLoop(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferTransferDeadLoop_is_null(const HandleTransferTransferDeadLoop* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferTransferFailure_destructor(HandleTransferTransferFailure* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferTransferFailure*> HandleTransferTransferFailure_clone(const HandleTransferTransferFailure* self_) {
     try { return {new HandleTransferTransferFailure(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferTransferFailure_is_null(const HandleTransferTransferFailure* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferTransientListBinder_destructor(HandleTransferTransientListBinder* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferTransientListBinder*> HandleTransferTransientListBinder_clone(const HandleTransferTransientListBinder* self_) {
     try { return {new HandleTransferTransientListBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferTransientListBinder_is_null(const HandleTransferTransientListBinder* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferTransientMapper_destructor(HandleTransferTransientMapper* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferTransientMapper*> HandleTransferTransientMapper_clone(const HandleTransferTransientMapper* self_) {
     try { return {new HandleTransferTransientMapper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferTransientMapper_is_null(const HandleTransferTransientMapper* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferTransientProcess_destructor(HandleTransferTransientProcess* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferTransientProcess*> HandleTransferTransientProcess_clone(const HandleTransferTransientProcess* self_) {
     try { return {new HandleTransferTransientProcess(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferTransientProcess_is_null(const HandleTransferTransientProcess* self_) { return self_->IsNull(); }
 extern "C" void HandleTransferVoidBinder_destructor(HandleTransferVoidBinder* self_) { delete self_; }
 extern "C" OcctResult<HandleTransferVoidBinder*> HandleTransferVoidBinder_clone(const HandleTransferVoidBinder* self_) {
     try { return {new HandleTransferVoidBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTransferVoidBinder_is_null(const HandleTransferVoidBinder* self_) { return self_->IsNull(); }
 extern "C" void HandleXSAlgoAlgoContainer_destructor(HandleXSAlgoAlgoContainer* self_) { delete self_; }
 extern "C" OcctResult<HandleXSAlgoAlgoContainer*> HandleXSAlgoAlgoContainer_clone(const HandleXSAlgoAlgoContainer* self_) {
     try { return {new HandleXSAlgoAlgoContainer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXSAlgoAlgoContainer_is_null(const HandleXSAlgoAlgoContainer* self_) { return self_->IsNull(); }
 extern "C" void HandleXSControlConnectedShapes_destructor(HandleXSControlConnectedShapes* self_) { delete self_; }
 extern "C" OcctResult<HandleXSControlConnectedShapes*> HandleXSControlConnectedShapes_clone(const HandleXSControlConnectedShapes* self_) {
     try { return {new HandleXSControlConnectedShapes(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXSControlConnectedShapes_is_null(const HandleXSControlConnectedShapes* self_) { return self_->IsNull(); }
 extern "C" void HandleXSControlController_destructor(HandleXSControlController* self_) { delete self_; }
 extern "C" OcctResult<HandleXSControlController*> HandleXSControlController_clone(const HandleXSControlController* self_) {
     try { return {new HandleXSControlController(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXSControlController_is_null(const HandleXSControlController* self_) { return self_->IsNull(); }
 extern "C" void HandleXSControlSelectForTransfer_destructor(HandleXSControlSelectForTransfer* self_) { delete self_; }
 extern "C" OcctResult<HandleXSControlSelectForTransfer*> HandleXSControlSelectForTransfer_clone(const HandleXSControlSelectForTransfer* self_) {
     try { return {new HandleXSControlSelectForTransfer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXSControlSelectForTransfer_is_null(const HandleXSControlSelectForTransfer* self_) { return self_->IsNull(); }
 extern "C" void HandleXSControlSignTransferStatus_destructor(HandleXSControlSignTransferStatus* self_) { delete self_; }
 extern "C" OcctResult<HandleXSControlSignTransferStatus*> HandleXSControlSignTransferStatus_clone(const HandleXSControlSignTransferStatus* self_) {
     try { return {new HandleXSControlSignTransferStatus(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXSControlSignTransferStatus_is_null(const HandleXSControlSignTransferStatus* self_) { return self_->IsNull(); }
 extern "C" void HandleXSControlTransferReader_destructor(HandleXSControlTransferReader* self_) { delete self_; }
 extern "C" OcctResult<HandleXSControlTransferReader*> HandleXSControlTransferReader_clone(const HandleXSControlTransferReader* self_) {
     try { return {new HandleXSControlTransferReader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXSControlTransferReader_is_null(const HandleXSControlTransferReader* self_) { return self_->IsNull(); }
 extern "C" void HandleXSControlTransferWriter_destructor(HandleXSControlTransferWriter* self_) { delete self_; }
 extern "C" OcctResult<HandleXSControlTransferWriter*> HandleXSControlTransferWriter_clone(const HandleXSControlTransferWriter* self_) {
     try { return {new HandleXSControlTransferWriter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXSControlTransferWriter_is_null(const HandleXSControlTransferWriter* self_) { return self_->IsNull(); }
 extern "C" void HandleXSControlVars_destructor(HandleXSControlVars* self_) { delete self_; }
 extern "C" OcctResult<HandleXSControlVars*> HandleXSControlVars_clone(const HandleXSControlVars* self_) {
     try { return {new HandleXSControlVars(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXSControlVars_is_null(const HandleXSControlVars* self_) { return self_->IsNull(); }
 extern "C" void HandleXSControlWorkSession_destructor(HandleXSControlWorkSession* self_) { delete self_; }
 extern "C" OcctResult<HandleXSControlWorkSession*> HandleXSControlWorkSession_clone(const HandleXSControlWorkSession* self_) {
     try { return {new HandleXSControlWorkSession(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleXSControlWorkSession_is_null(const HandleXSControlWorkSession* self_) { return self_->IsNull(); }
 
 // ========================
 // IFGraph_AllConnected wrappers

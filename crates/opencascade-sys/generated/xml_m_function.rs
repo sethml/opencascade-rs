@@ -310,6 +310,13 @@ unsafe impl crate::CppCopyable for HandleXmlMFunctionFunctionDriver {
 }
 
 impl HandleXmlMFunctionFunctionDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMFunctionFunctionDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMFunction_FunctionDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMFunction_FunctionDriver {
         unsafe {
@@ -641,6 +648,13 @@ unsafe impl crate::CppCopyable for HandleXmlMFunctionGraphNodeDriver {
 }
 
 impl HandleXmlMFunctionGraphNodeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMFunctionGraphNodeDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMFunction_GraphNodeDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMFunction_GraphNodeDriver {
         unsafe {
@@ -968,6 +982,13 @@ unsafe impl crate::CppCopyable for HandleXmlMFunctionScopeDriver {
 }
 
 impl HandleXmlMFunctionScopeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMFunctionScopeDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMFunction_ScopeDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMFunction_ScopeDriver {
         unsafe {

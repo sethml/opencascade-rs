@@ -1882,6 +1882,8 @@ extern "C" {
     pub fn HandleGccAnaNoSolution_clone(
         self_: *const HandleGccAnaNoSolution,
     ) -> crate::OcctResult<*mut HandleGccAnaNoSolution>;
+    /// Check if Handle<GccAna_NoSolution> is null
+    pub fn HandleGccAnaNoSolution_is_null(self_: *const HandleGccAnaNoSolution) -> bool;
     /// Dereference Handle to get *const GccAna_NoSolution
     pub fn HandleGccAnaNoSolution_get(
         handle: *const HandleGccAnaNoSolution,
@@ -2030,6 +2032,8 @@ extern "C" {
     pub fn HandleGccEntBadQualifier_clone(
         self_: *const HandleGccEntBadQualifier,
     ) -> crate::OcctResult<*mut HandleGccEntBadQualifier>;
+    /// Check if Handle<GccEnt_BadQualifier> is null
+    pub fn HandleGccEntBadQualifier_is_null(self_: *const HandleGccEntBadQualifier) -> bool;
     /// Dereference Handle to get *const GccEnt_BadQualifier
     pub fn HandleGccEntBadQualifier_get(
         handle: *const HandleGccEntBadQualifier,
@@ -2194,6 +2198,8 @@ extern "C" {
     pub fn HandleGccIntBCirc_clone(
         self_: *const HandleGccIntBCirc,
     ) -> crate::OcctResult<*mut HandleGccIntBCirc>;
+    /// Check if Handle<GccInt_BCirc> is null
+    pub fn HandleGccIntBCirc_is_null(self_: *const HandleGccIntBCirc) -> bool;
     /// Dereference Handle to get *const GccInt_BCirc
     pub fn HandleGccIntBCirc_get(
         handle: *const HandleGccIntBCirc,
@@ -2302,6 +2308,8 @@ extern "C" {
     pub fn HandleGccIntBElips_clone(
         self_: *const HandleGccIntBElips,
     ) -> crate::OcctResult<*mut HandleGccIntBElips>;
+    /// Check if Handle<GccInt_BElips> is null
+    pub fn HandleGccIntBElips_is_null(self_: *const HandleGccIntBElips) -> bool;
     /// Dereference Handle to get *const GccInt_BElips
     pub fn HandleGccIntBElips_get(
         handle: *const HandleGccIntBElips,
@@ -2412,6 +2420,8 @@ extern "C" {
     pub fn HandleGccIntBHyper_clone(
         self_: *const HandleGccIntBHyper,
     ) -> crate::OcctResult<*mut HandleGccIntBHyper>;
+    /// Check if Handle<GccInt_BHyper> is null
+    pub fn HandleGccIntBHyper_is_null(self_: *const HandleGccIntBHyper) -> bool;
     /// Dereference Handle to get *const GccInt_BHyper
     pub fn HandleGccIntBHyper_get(
         handle: *const HandleGccIntBHyper,
@@ -2518,6 +2528,8 @@ extern "C" {
     pub fn HandleGccIntBLine_clone(
         self_: *const HandleGccIntBLine,
     ) -> crate::OcctResult<*mut HandleGccIntBLine>;
+    /// Check if Handle<GccInt_BLine> is null
+    pub fn HandleGccIntBLine_is_null(self_: *const HandleGccIntBLine) -> bool;
     /// Dereference Handle to get *const GccInt_BLine
     pub fn HandleGccIntBLine_get(
         handle: *const HandleGccIntBLine,
@@ -2627,6 +2639,8 @@ extern "C" {
     pub fn HandleGccIntBParab_clone(
         self_: *const HandleGccIntBParab,
     ) -> crate::OcctResult<*mut HandleGccIntBParab>;
+    /// Check if Handle<GccInt_BParab> is null
+    pub fn HandleGccIntBParab_is_null(self_: *const HandleGccIntBParab) -> bool;
     /// Dereference Handle to get *const GccInt_BParab
     pub fn HandleGccIntBParab_get(
         handle: *const HandleGccIntBParab,
@@ -2735,6 +2749,8 @@ extern "C" {
     pub fn HandleGccIntBPoint_clone(
         self_: *const HandleGccIntBPoint,
     ) -> crate::OcctResult<*mut HandleGccIntBPoint>;
+    /// Check if Handle<GccInt_BPoint> is null
+    pub fn HandleGccIntBPoint_is_null(self_: *const HandleGccIntBPoint) -> bool;
     /// Dereference Handle to get *const GccInt_BPoint
     pub fn HandleGccIntBPoint_get(
         handle: *const HandleGccIntBPoint,
@@ -2837,6 +2853,8 @@ extern "C" {
     pub fn HandleGccIntBisec_clone(
         self_: *const HandleGccIntBisec,
     ) -> crate::OcctResult<*mut HandleGccIntBisec>;
+    /// Check if Handle<GccInt_Bisec> is null
+    pub fn HandleGccIntBisec_is_null(self_: *const HandleGccIntBisec) -> bool;
     /// Dereference Handle to get *const GccInt_Bisec
     pub fn HandleGccIntBisec_get(
         handle: *const HandleGccIntBisec,
@@ -4800,6 +4818,8 @@ extern "C" {
     pub fn HandleGeom2dGccIsParallel_clone(
         self_: *const HandleGeom2dGccIsParallel,
     ) -> crate::OcctResult<*mut HandleGeom2dGccIsParallel>;
+    /// Check if Handle<Geom2dGcc_IsParallel> is null
+    pub fn HandleGeom2dGccIsParallel_is_null(self_: *const HandleGeom2dGccIsParallel) -> bool;
     /// Dereference Handle to get *const Geom2dGcc_IsParallel
     pub fn HandleGeom2dGccIsParallel_get(
         handle: *const HandleGeom2dGccIsParallel,
@@ -8279,6 +8299,8 @@ extern "C" {
     pub fn HandleGeomFillBoundWithSurf_clone(
         self_: *const HandleGeomFillBoundWithSurf,
     ) -> crate::OcctResult<*mut HandleGeomFillBoundWithSurf>;
+    /// Check if Handle<GeomFill_BoundWithSurf> is null
+    pub fn HandleGeomFillBoundWithSurf_is_null(self_: *const HandleGeomFillBoundWithSurf) -> bool;
     /// Dereference Handle to get *const GeomFill_BoundWithSurf
     pub fn HandleGeomFillBoundWithSurf_get(
         handle: *const HandleGeomFillBoundWithSurf,
@@ -8432,6 +8454,8 @@ extern "C" {
     pub fn HandleGeomFillBoundary_clone(
         self_: *const HandleGeomFillBoundary,
     ) -> crate::OcctResult<*mut HandleGeomFillBoundary>;
+    /// Check if Handle<GeomFill_Boundary> is null
+    pub fn HandleGeomFillBoundary_is_null(self_: *const HandleGeomFillBoundary) -> bool;
     /// Dereference Handle to get *const GeomFill_Boundary
     pub fn HandleGeomFillBoundary_get(
         handle: *const HandleGeomFillBoundary,
@@ -8639,6 +8663,10 @@ extern "C" {
     pub fn HandleGeomFillCircularBlendFunc_clone(
         self_: *const HandleGeomFillCircularBlendFunc,
     ) -> crate::OcctResult<*mut HandleGeomFillCircularBlendFunc>;
+    /// Check if Handle<GeomFill_CircularBlendFunc> is null
+    pub fn HandleGeomFillCircularBlendFunc_is_null(
+        self_: *const HandleGeomFillCircularBlendFunc,
+    ) -> bool;
     /// Dereference Handle to get *const GeomFill_CircularBlendFunc
     pub fn HandleGeomFillCircularBlendFunc_get(
         handle: *const HandleGeomFillCircularBlendFunc,
@@ -8802,6 +8830,10 @@ extern "C" {
     pub fn HandleGeomFillConstantBiNormal_clone(
         self_: *const HandleGeomFillConstantBiNormal,
     ) -> crate::OcctResult<*mut HandleGeomFillConstantBiNormal>;
+    /// Check if Handle<GeomFill_ConstantBiNormal> is null
+    pub fn HandleGeomFillConstantBiNormal_is_null(
+        self_: *const HandleGeomFillConstantBiNormal,
+    ) -> bool;
     /// Dereference Handle to get *const GeomFill_ConstantBiNormal
     pub fn HandleGeomFillConstantBiNormal_get(
         handle: *const HandleGeomFillConstantBiNormal,
@@ -9093,6 +9125,8 @@ extern "C" {
     pub fn HandleGeomFillCoonsAlgPatch_clone(
         self_: *const HandleGeomFillCoonsAlgPatch,
     ) -> crate::OcctResult<*mut HandleGeomFillCoonsAlgPatch>;
+    /// Check if Handle<GeomFill_CoonsAlgPatch> is null
+    pub fn HandleGeomFillCoonsAlgPatch_is_null(self_: *const HandleGeomFillCoonsAlgPatch) -> bool;
     /// Dereference Handle to get *const GeomFill_CoonsAlgPatch
     pub fn HandleGeomFillCoonsAlgPatch_get(
         handle: *const HandleGeomFillCoonsAlgPatch,
@@ -9303,6 +9337,10 @@ extern "C" {
     pub fn HandleGeomFillCorrectedFrenet_clone(
         self_: *const HandleGeomFillCorrectedFrenet,
     ) -> crate::OcctResult<*mut HandleGeomFillCorrectedFrenet>;
+    /// Check if Handle<GeomFill_CorrectedFrenet> is null
+    pub fn HandleGeomFillCorrectedFrenet_is_null(
+        self_: *const HandleGeomFillCorrectedFrenet,
+    ) -> bool;
     /// Dereference Handle to get *const GeomFill_CorrectedFrenet
     pub fn HandleGeomFillCorrectedFrenet_get(
         handle: *const HandleGeomFillCorrectedFrenet,
@@ -9512,6 +9550,10 @@ extern "C" {
     pub fn HandleGeomFillCurveAndTrihedron_clone(
         self_: *const HandleGeomFillCurveAndTrihedron,
     ) -> crate::OcctResult<*mut HandleGeomFillCurveAndTrihedron>;
+    /// Check if Handle<GeomFill_CurveAndTrihedron> is null
+    pub fn HandleGeomFillCurveAndTrihedron_is_null(
+        self_: *const HandleGeomFillCurveAndTrihedron,
+    ) -> bool;
     /// Dereference Handle to get *const GeomFill_CurveAndTrihedron
     pub fn HandleGeomFillCurveAndTrihedron_get(
         handle: *const HandleGeomFillCurveAndTrihedron,
@@ -9789,6 +9831,8 @@ extern "C" {
     pub fn HandleGeomFillDarboux_clone(
         self_: *const HandleGeomFillDarboux,
     ) -> crate::OcctResult<*mut HandleGeomFillDarboux>;
+    /// Check if Handle<GeomFill_Darboux> is null
+    pub fn HandleGeomFillDarboux_is_null(self_: *const HandleGeomFillDarboux) -> bool;
     /// Dereference Handle to get *const GeomFill_Darboux
     pub fn HandleGeomFillDarboux_get(
         handle: *const HandleGeomFillDarboux,
@@ -9934,6 +9978,10 @@ extern "C" {
     pub fn HandleGeomFillDegeneratedBound_clone(
         self_: *const HandleGeomFillDegeneratedBound,
     ) -> crate::OcctResult<*mut HandleGeomFillDegeneratedBound>;
+    /// Check if Handle<GeomFill_DegeneratedBound> is null
+    pub fn HandleGeomFillDegeneratedBound_is_null(
+        self_: *const HandleGeomFillDegeneratedBound,
+    ) -> bool;
     /// Dereference Handle to get *const GeomFill_DegeneratedBound
     pub fn HandleGeomFillDegeneratedBound_get(
         handle: *const HandleGeomFillDegeneratedBound,
@@ -10121,6 +10169,10 @@ extern "C" {
     pub fn HandleGeomFillDiscreteTrihedron_clone(
         self_: *const HandleGeomFillDiscreteTrihedron,
     ) -> crate::OcctResult<*mut HandleGeomFillDiscreteTrihedron>;
+    /// Check if Handle<GeomFill_DiscreteTrihedron> is null
+    pub fn HandleGeomFillDiscreteTrihedron_is_null(
+        self_: *const HandleGeomFillDiscreteTrihedron,
+    ) -> bool;
     /// Dereference Handle to get *const GeomFill_DiscreteTrihedron
     pub fn HandleGeomFillDiscreteTrihedron_get(
         handle: *const HandleGeomFillDiscreteTrihedron,
@@ -10293,6 +10345,9 @@ extern "C" {
     pub fn HandleGeomFillDraftTrihedron_clone(
         self_: *const HandleGeomFillDraftTrihedron,
     ) -> crate::OcctResult<*mut HandleGeomFillDraftTrihedron>;
+    /// Check if Handle<GeomFill_DraftTrihedron> is null
+    pub fn HandleGeomFillDraftTrihedron_is_null(self_: *const HandleGeomFillDraftTrihedron)
+        -> bool;
     /// Dereference Handle to get *const GeomFill_DraftTrihedron
     pub fn HandleGeomFillDraftTrihedron_get(
         handle: *const HandleGeomFillDraftTrihedron,
@@ -10521,6 +10576,9 @@ extern "C" {
     pub fn HandleGeomFillEvolvedSection_clone(
         self_: *const HandleGeomFillEvolvedSection,
     ) -> crate::OcctResult<*mut HandleGeomFillEvolvedSection>;
+    /// Check if Handle<GeomFill_EvolvedSection> is null
+    pub fn HandleGeomFillEvolvedSection_is_null(self_: *const HandleGeomFillEvolvedSection)
+        -> bool;
     /// Dereference Handle to get *const GeomFill_EvolvedSection
     pub fn HandleGeomFillEvolvedSection_get(
         handle: *const HandleGeomFillEvolvedSection,
@@ -10701,6 +10759,8 @@ extern "C" {
     pub fn HandleGeomFillFixed_clone(
         self_: *const HandleGeomFillFixed,
     ) -> crate::OcctResult<*mut HandleGeomFillFixed>;
+    /// Check if Handle<GeomFill_Fixed> is null
+    pub fn HandleGeomFillFixed_is_null(self_: *const HandleGeomFillFixed) -> bool;
     /// Dereference Handle to get *const GeomFill_Fixed
     pub fn HandleGeomFillFixed_get(
         handle: *const HandleGeomFillFixed,
@@ -10877,6 +10937,8 @@ extern "C" {
     pub fn HandleGeomFillFrenet_clone(
         self_: *const HandleGeomFillFrenet,
     ) -> crate::OcctResult<*mut HandleGeomFillFrenet>;
+    /// Check if Handle<GeomFill_Frenet> is null
+    pub fn HandleGeomFillFrenet_is_null(self_: *const HandleGeomFillFrenet) -> bool;
     /// Dereference Handle to get *const GeomFill_Frenet
     pub fn HandleGeomFillFrenet_get(
         handle: *const HandleGeomFillFrenet,
@@ -11303,6 +11365,10 @@ extern "C" {
     pub fn HandleGeomFillGuideTrihedronAC_clone(
         self_: *const HandleGeomFillGuideTrihedronAC,
     ) -> crate::OcctResult<*mut HandleGeomFillGuideTrihedronAC>;
+    /// Check if Handle<GeomFill_GuideTrihedronAC> is null
+    pub fn HandleGeomFillGuideTrihedronAC_is_null(
+        self_: *const HandleGeomFillGuideTrihedronAC,
+    ) -> bool;
     /// Dereference Handle to get *const GeomFill_GuideTrihedronAC
     pub fn HandleGeomFillGuideTrihedronAC_get(
         handle: *const HandleGeomFillGuideTrihedronAC,
@@ -11506,6 +11572,10 @@ extern "C" {
     pub fn HandleGeomFillGuideTrihedronPlan_clone(
         self_: *const HandleGeomFillGuideTrihedronPlan,
     ) -> crate::OcctResult<*mut HandleGeomFillGuideTrihedronPlan>;
+    /// Check if Handle<GeomFill_GuideTrihedronPlan> is null
+    pub fn HandleGeomFillGuideTrihedronPlan_is_null(
+        self_: *const HandleGeomFillGuideTrihedronPlan,
+    ) -> bool;
     /// Dereference Handle to get *const GeomFill_GuideTrihedronPlan
     pub fn HandleGeomFillGuideTrihedronPlan_get(
         handle: *const HandleGeomFillGuideTrihedronPlan,
@@ -11631,6 +11701,10 @@ extern "C" {
     pub fn HandleGeomFillHArray1OfLocationLaw_clone(
         self_: *const HandleGeomFillHArray1OfLocationLaw,
     ) -> crate::OcctResult<*mut HandleGeomFillHArray1OfLocationLaw>;
+    /// Check if Handle<GeomFill_HArray1OfLocationLaw> is null
+    pub fn HandleGeomFillHArray1OfLocationLaw_is_null(
+        self_: *const HandleGeomFillHArray1OfLocationLaw,
+    ) -> bool;
     /// Dereference Handle to get *const GeomFill_HArray1OfLocationLaw
     pub fn HandleGeomFillHArray1OfLocationLaw_get(
         handle: *const HandleGeomFillHArray1OfLocationLaw,
@@ -11737,6 +11811,10 @@ extern "C" {
     pub fn HandleGeomFillHArray1OfSectionLaw_clone(
         self_: *const HandleGeomFillHArray1OfSectionLaw,
     ) -> crate::OcctResult<*mut HandleGeomFillHArray1OfSectionLaw>;
+    /// Check if Handle<GeomFill_HArray1OfSectionLaw> is null
+    pub fn HandleGeomFillHArray1OfSectionLaw_is_null(
+        self_: *const HandleGeomFillHArray1OfSectionLaw,
+    ) -> bool;
     /// Dereference Handle to get *const GeomFill_HArray1OfSectionLaw
     pub fn HandleGeomFillHArray1OfSectionLaw_get(
         handle: *const HandleGeomFillHArray1OfSectionLaw,
@@ -11832,6 +11910,9 @@ extern "C" {
     pub fn HandleGeomFillHSequenceOfAx2_clone(
         self_: *const HandleGeomFillHSequenceOfAx2,
     ) -> crate::OcctResult<*mut HandleGeomFillHSequenceOfAx2>;
+    /// Check if Handle<GeomFill_HSequenceOfAx2> is null
+    pub fn HandleGeomFillHSequenceOfAx2_is_null(self_: *const HandleGeomFillHSequenceOfAx2)
+        -> bool;
     /// Dereference Handle to get *const GeomFill_HSequenceOfAx2
     pub fn HandleGeomFillHSequenceOfAx2_get(
         handle: *const HandleGeomFillHSequenceOfAx2,
@@ -11910,6 +11991,8 @@ extern "C" {
     pub fn HandleGeomFillLine_clone(
         self_: *const HandleGeomFillLine,
     ) -> crate::OcctResult<*mut HandleGeomFillLine>;
+    /// Check if Handle<GeomFill_Line> is null
+    pub fn HandleGeomFillLine_is_null(self_: *const HandleGeomFillLine) -> bool;
     /// Dereference Handle to get *const GeomFill_Line
     pub fn HandleGeomFillLine_get(
         handle: *const HandleGeomFillLine,
@@ -12179,6 +12262,8 @@ extern "C" {
     pub fn HandleGeomFillLocationDraft_clone(
         self_: *const HandleGeomFillLocationDraft,
     ) -> crate::OcctResult<*mut HandleGeomFillLocationDraft>;
+    /// Check if Handle<GeomFill_LocationDraft> is null
+    pub fn HandleGeomFillLocationDraft_is_null(self_: *const HandleGeomFillLocationDraft) -> bool;
     /// Dereference Handle to get *const GeomFill_LocationDraft
     pub fn HandleGeomFillLocationDraft_get(
         handle: *const HandleGeomFillLocationDraft,
@@ -12455,6 +12540,8 @@ extern "C" {
     pub fn HandleGeomFillLocationGuide_clone(
         self_: *const HandleGeomFillLocationGuide,
     ) -> crate::OcctResult<*mut HandleGeomFillLocationGuide>;
+    /// Check if Handle<GeomFill_LocationGuide> is null
+    pub fn HandleGeomFillLocationGuide_is_null(self_: *const HandleGeomFillLocationGuide) -> bool;
     /// Dereference Handle to get *const GeomFill_LocationGuide
     pub fn HandleGeomFillLocationGuide_get(
         handle: *const HandleGeomFillLocationGuide,
@@ -12675,6 +12762,8 @@ extern "C" {
     pub fn HandleGeomFillLocationLaw_clone(
         self_: *const HandleGeomFillLocationLaw,
     ) -> crate::OcctResult<*mut HandleGeomFillLocationLaw>;
+    /// Check if Handle<GeomFill_LocationLaw> is null
+    pub fn HandleGeomFillLocationLaw_is_null(self_: *const HandleGeomFillLocationLaw) -> bool;
     /// Dereference Handle to get *const GeomFill_LocationLaw
     pub fn HandleGeomFillLocationLaw_get(
         handle: *const HandleGeomFillLocationLaw,
@@ -12939,6 +13028,8 @@ extern "C" {
     pub fn HandleGeomFillNSections_clone(
         self_: *const HandleGeomFillNSections,
     ) -> crate::OcctResult<*mut HandleGeomFillNSections>;
+    /// Check if Handle<GeomFill_NSections> is null
+    pub fn HandleGeomFillNSections_is_null(self_: *const HandleGeomFillNSections) -> bool;
     /// Dereference Handle to get *const GeomFill_NSections
     pub fn HandleGeomFillNSections_get(
         handle: *const HandleGeomFillNSections,
@@ -13649,6 +13740,8 @@ extern "C" {
     pub fn HandleGeomFillSectionLaw_clone(
         self_: *const HandleGeomFillSectionLaw,
     ) -> crate::OcctResult<*mut HandleGeomFillSectionLaw>;
+    /// Check if Handle<GeomFill_SectionLaw> is null
+    pub fn HandleGeomFillSectionLaw_is_null(self_: *const HandleGeomFillSectionLaw) -> bool;
     /// Dereference Handle to get *const GeomFill_SectionLaw
     pub fn HandleGeomFillSectionLaw_get(
         handle: *const HandleGeomFillSectionLaw,
@@ -13843,6 +13936,8 @@ extern "C" {
     pub fn HandleGeomFillSimpleBound_clone(
         self_: *const HandleGeomFillSimpleBound,
     ) -> crate::OcctResult<*mut HandleGeomFillSimpleBound>;
+    /// Check if Handle<GeomFill_SimpleBound> is null
+    pub fn HandleGeomFillSimpleBound_is_null(self_: *const HandleGeomFillSimpleBound) -> bool;
     /// Dereference Handle to get *const GeomFill_SimpleBound
     pub fn HandleGeomFillSimpleBound_get(
         handle: *const HandleGeomFillSimpleBound,
@@ -14033,6 +14128,8 @@ extern "C" {
     pub fn HandleGeomFillSnglrFunc_clone(
         self_: *const HandleGeomFillSnglrFunc,
     ) -> crate::OcctResult<*mut HandleGeomFillSnglrFunc>;
+    /// Check if Handle<GeomFill_SnglrFunc> is null
+    pub fn HandleGeomFillSnglrFunc_is_null(self_: *const HandleGeomFillSnglrFunc) -> bool;
     /// Dereference Handle to get *const GeomFill_SnglrFunc
     pub fn HandleGeomFillSnglrFunc_get(
         handle: *const HandleGeomFillSnglrFunc,
@@ -14456,6 +14553,8 @@ extern "C" {
     pub fn HandleGeomFillSweepFunction_clone(
         self_: *const HandleGeomFillSweepFunction,
     ) -> crate::OcctResult<*mut HandleGeomFillSweepFunction>;
+    /// Check if Handle<GeomFill_SweepFunction> is null
+    pub fn HandleGeomFillSweepFunction_is_null(self_: *const HandleGeomFillSweepFunction) -> bool;
     /// Dereference Handle to get *const GeomFill_SweepFunction
     pub fn HandleGeomFillSweepFunction_get(
         handle: *const HandleGeomFillSweepFunction,
@@ -14711,6 +14810,8 @@ extern "C" {
     pub fn HandleGeomFillTgtField_clone(
         self_: *const HandleGeomFillTgtField,
     ) -> crate::OcctResult<*mut HandleGeomFillTgtField>;
+    /// Check if Handle<GeomFill_TgtField> is null
+    pub fn HandleGeomFillTgtField_is_null(self_: *const HandleGeomFillTgtField) -> bool;
     /// Dereference Handle to get *const GeomFill_TgtField
     pub fn HandleGeomFillTgtField_get(
         handle: *const HandleGeomFillTgtField,
@@ -14815,6 +14916,8 @@ extern "C" {
     pub fn HandleGeomFillTgtOnCoons_clone(
         self_: *const HandleGeomFillTgtOnCoons,
     ) -> crate::OcctResult<*mut HandleGeomFillTgtOnCoons>;
+    /// Check if Handle<GeomFill_TgtOnCoons> is null
+    pub fn HandleGeomFillTgtOnCoons_is_null(self_: *const HandleGeomFillTgtOnCoons) -> bool;
     /// Dereference Handle to get *const GeomFill_TgtOnCoons
     pub fn HandleGeomFillTgtOnCoons_get(
         handle: *const HandleGeomFillTgtOnCoons,
@@ -14979,6 +15082,8 @@ extern "C" {
     pub fn HandleGeomFillTrihedronLaw_clone(
         self_: *const HandleGeomFillTrihedronLaw,
     ) -> crate::OcctResult<*mut HandleGeomFillTrihedronLaw>;
+    /// Check if Handle<GeomFill_TrihedronLaw> is null
+    pub fn HandleGeomFillTrihedronLaw_is_null(self_: *const HandleGeomFillTrihedronLaw) -> bool;
     /// Dereference Handle to get *const GeomFill_TrihedronLaw
     pub fn HandleGeomFillTrihedronLaw_get(
         handle: *const HandleGeomFillTrihedronLaw,
@@ -15106,6 +15211,10 @@ extern "C" {
     pub fn HandleGeomFillTrihedronWithGuide_clone(
         self_: *const HandleGeomFillTrihedronWithGuide,
     ) -> crate::OcctResult<*mut HandleGeomFillTrihedronWithGuide>;
+    /// Check if Handle<GeomFill_TrihedronWithGuide> is null
+    pub fn HandleGeomFillTrihedronWithGuide_is_null(
+        self_: *const HandleGeomFillTrihedronWithGuide,
+    ) -> bool;
     /// Dereference Handle to get *const GeomFill_TrihedronWithGuide
     pub fn HandleGeomFillTrihedronWithGuide_get(
         handle: *const HandleGeomFillTrihedronWithGuide,
@@ -15406,6 +15515,9 @@ extern "C" {
     pub fn HandleGeomFillUniformSection_clone(
         self_: *const HandleGeomFillUniformSection,
     ) -> crate::OcctResult<*mut HandleGeomFillUniformSection>;
+    /// Check if Handle<GeomFill_UniformSection> is null
+    pub fn HandleGeomFillUniformSection_is_null(self_: *const HandleGeomFillUniformSection)
+        -> bool;
     /// Dereference Handle to get *const GeomFill_UniformSection
     pub fn HandleGeomFillUniformSection_get(
         handle: *const HandleGeomFillUniformSection,
@@ -18231,6 +18343,10 @@ extern "C" {
     pub fn HandleGeomPlateCurveConstraint_clone(
         self_: *const HandleGeomPlateCurveConstraint,
     ) -> crate::OcctResult<*mut HandleGeomPlateCurveConstraint>;
+    /// Check if Handle<GeomPlate_CurveConstraint> is null
+    pub fn HandleGeomPlateCurveConstraint_is_null(
+        self_: *const HandleGeomPlateCurveConstraint,
+    ) -> bool;
     /// Dereference Handle to get *const GeomPlate_CurveConstraint
     pub fn HandleGeomPlateCurveConstraint_get(
         handle: *const HandleGeomPlateCurveConstraint,
@@ -18338,6 +18454,10 @@ extern "C" {
     pub fn HandleGeomPlateHArray1OfHCurve_clone(
         self_: *const HandleGeomPlateHArray1OfHCurve,
     ) -> crate::OcctResult<*mut HandleGeomPlateHArray1OfHCurve>;
+    /// Check if Handle<GeomPlate_HArray1OfHCurve> is null
+    pub fn HandleGeomPlateHArray1OfHCurve_is_null(
+        self_: *const HandleGeomPlateHArray1OfHCurve,
+    ) -> bool;
     /// Dereference Handle to get *const GeomPlate_HArray1OfHCurve
     pub fn HandleGeomPlateHArray1OfHCurve_get(
         handle: *const HandleGeomPlateHArray1OfHCurve,
@@ -18447,6 +18567,10 @@ extern "C" {
     pub fn HandleGeomPlateHArray1OfSequenceOfReal_clone(
         self_: *const HandleGeomPlateHArray1OfSequenceOfReal,
     ) -> crate::OcctResult<*mut HandleGeomPlateHArray1OfSequenceOfReal>;
+    /// Check if Handle<GeomPlate_HArray1OfSequenceOfReal> is null
+    pub fn HandleGeomPlateHArray1OfSequenceOfReal_is_null(
+        self_: *const HandleGeomPlateHArray1OfSequenceOfReal,
+    ) -> bool;
     /// Dereference Handle to get *const GeomPlate_HArray1OfSequenceOfReal
     pub fn HandleGeomPlateHArray1OfSequenceOfReal_get(
         handle: *const HandleGeomPlateHArray1OfSequenceOfReal,
@@ -18548,6 +18672,10 @@ extern "C" {
     pub fn HandleGeomPlateHSequenceOfCurveConstraint_clone(
         self_: *const HandleGeomPlateHSequenceOfCurveConstraint,
     ) -> crate::OcctResult<*mut HandleGeomPlateHSequenceOfCurveConstraint>;
+    /// Check if Handle<GeomPlate_HSequenceOfCurveConstraint> is null
+    pub fn HandleGeomPlateHSequenceOfCurveConstraint_is_null(
+        self_: *const HandleGeomPlateHSequenceOfCurveConstraint,
+    ) -> bool;
     /// Dereference Handle to get *const GeomPlate_HSequenceOfCurveConstraint
     pub fn HandleGeomPlateHSequenceOfCurveConstraint_get(
         handle: *const HandleGeomPlateHSequenceOfCurveConstraint,
@@ -18649,6 +18777,10 @@ extern "C" {
     pub fn HandleGeomPlateHSequenceOfPointConstraint_clone(
         self_: *const HandleGeomPlateHSequenceOfPointConstraint,
     ) -> crate::OcctResult<*mut HandleGeomPlateHSequenceOfPointConstraint>;
+    /// Check if Handle<GeomPlate_HSequenceOfPointConstraint> is null
+    pub fn HandleGeomPlateHSequenceOfPointConstraint_is_null(
+        self_: *const HandleGeomPlateHSequenceOfPointConstraint,
+    ) -> bool;
     /// Dereference Handle to get *const GeomPlate_HSequenceOfPointConstraint
     pub fn HandleGeomPlateHSequenceOfPointConstraint_get(
         handle: *const HandleGeomPlateHSequenceOfPointConstraint,
@@ -18928,6 +19060,10 @@ extern "C" {
     pub fn HandleGeomPlatePointConstraint_clone(
         self_: *const HandleGeomPlatePointConstraint,
     ) -> crate::OcctResult<*mut HandleGeomPlatePointConstraint>;
+    /// Check if Handle<GeomPlate_PointConstraint> is null
+    pub fn HandleGeomPlatePointConstraint_is_null(
+        self_: *const HandleGeomPlatePointConstraint,
+    ) -> bool;
     /// Dereference Handle to get *const GeomPlate_PointConstraint
     pub fn HandleGeomPlatePointConstraint_get(
         handle: *const HandleGeomPlatePointConstraint,
@@ -19181,6 +19317,8 @@ extern "C" {
     pub fn HandleGeomPlateSurface_clone(
         self_: *const HandleGeomPlateSurface,
     ) -> crate::OcctResult<*mut HandleGeomPlateSurface>;
+    /// Check if Handle<GeomPlate_Surface> is null
+    pub fn HandleGeomPlateSurface_is_null(self_: *const HandleGeomPlateSurface) -> bool;
     /// Dereference Handle to get *const GeomPlate_Surface
     pub fn HandleGeomPlateSurface_get(
         handle: *const HandleGeomPlateSurface,
@@ -21652,6 +21790,8 @@ extern "C" {
     pub fn HandleIntPatchALine_clone(
         self_: *const HandleIntPatchALine,
     ) -> crate::OcctResult<*mut HandleIntPatchALine>;
+    /// Check if Handle<IntPatch_ALine> is null
+    pub fn HandleIntPatchALine_is_null(self_: *const HandleIntPatchALine) -> bool;
     /// Dereference Handle to get *const IntPatch_ALine
     pub fn HandleIntPatchALine_get(
         handle: *const HandleIntPatchALine,
@@ -22192,6 +22332,8 @@ extern "C" {
     pub fn HandleIntPatchGLine_clone(
         self_: *const HandleIntPatchGLine,
     ) -> crate::OcctResult<*mut HandleIntPatchGLine>;
+    /// Check if Handle<IntPatch_GLine> is null
+    pub fn HandleIntPatchGLine_is_null(self_: *const HandleIntPatchGLine) -> bool;
     /// Dereference Handle to get *const IntPatch_GLine
     pub fn HandleIntPatchGLine_get(
         handle: *const HandleIntPatchGLine,
@@ -22929,6 +23071,8 @@ extern "C" {
     pub fn HandleIntPatchLine_clone(
         self_: *const HandleIntPatchLine,
     ) -> crate::OcctResult<*mut HandleIntPatchLine>;
+    /// Check if Handle<IntPatch_Line> is null
+    pub fn HandleIntPatchLine_is_null(self_: *const HandleIntPatchLine) -> bool;
     /// Dereference Handle to get *const IntPatch_Line
     pub fn HandleIntPatchLine_get(
         handle: *const HandleIntPatchLine,
@@ -23250,6 +23394,8 @@ extern "C" {
     pub fn HandleIntPatchPointLine_clone(
         self_: *const HandleIntPatchPointLine,
     ) -> crate::OcctResult<*mut HandleIntPatchPointLine>;
+    /// Check if Handle<IntPatch_PointLine> is null
+    pub fn HandleIntPatchPointLine_is_null(self_: *const HandleIntPatchPointLine) -> bool;
     /// Dereference Handle to get *const IntPatch_PointLine
     pub fn HandleIntPatchPointLine_get(
         handle: *const HandleIntPatchPointLine,
@@ -24207,6 +24353,8 @@ extern "C" {
     pub fn HandleIntPatchRLine_clone(
         self_: *const HandleIntPatchRLine,
     ) -> crate::OcctResult<*mut HandleIntPatchRLine>;
+    /// Check if Handle<IntPatch_RLine> is null
+    pub fn HandleIntPatchRLine_is_null(self_: *const HandleIntPatchRLine) -> bool;
     /// Dereference Handle to get *const IntPatch_RLine
     pub fn HandleIntPatchRLine_get(
         handle: *const HandleIntPatchRLine,
@@ -24539,6 +24687,10 @@ extern "C" {
     pub fn HandleIntPatchTheIWLineOfTheIWalking_clone(
         self_: *const HandleIntPatchTheIWLineOfTheIWalking,
     ) -> crate::OcctResult<*mut HandleIntPatchTheIWLineOfTheIWalking>;
+    /// Check if Handle<IntPatch_TheIWLineOfTheIWalking> is null
+    pub fn HandleIntPatchTheIWLineOfTheIWalking_is_null(
+        self_: *const HandleIntPatchTheIWLineOfTheIWalking,
+    ) -> bool;
     /// Dereference Handle to get *const IntPatch_TheIWLineOfTheIWalking
     pub fn HandleIntPatchTheIWLineOfTheIWalking_get(
         handle: *const HandleIntPatchTheIWLineOfTheIWalking,
@@ -25152,6 +25304,8 @@ extern "C" {
     pub fn HandleIntPatchWLine_clone(
         self_: *const HandleIntPatchWLine,
     ) -> crate::OcctResult<*mut HandleIntPatchWLine>;
+    /// Check if Handle<IntPatch_WLine> is null
+    pub fn HandleIntPatchWLine_is_null(self_: *const HandleIntPatchWLine) -> bool;
     /// Dereference Handle to get *const IntPatch_WLine
     pub fn HandleIntPatchWLine_get(
         handle: *const HandleIntPatchWLine,
@@ -26470,6 +26624,8 @@ extern "C" {
     pub fn HandleIntStartSITopolTool_clone(
         self_: *const HandleIntStartSITopolTool,
     ) -> crate::OcctResult<*mut HandleIntStartSITopolTool>;
+    /// Check if Handle<IntStart_SITopolTool> is null
+    pub fn HandleIntStartSITopolTool_is_null(self_: *const HandleIntStartSITopolTool) -> bool;
     /// Dereference Handle to get *const IntStart_SITopolTool
     pub fn HandleIntStartSITopolTool_get(
         handle: *const HandleIntStartSITopolTool,
@@ -26693,6 +26849,8 @@ extern "C" {
     pub fn HandleIntSurfLineOn2S_clone(
         self_: *const HandleIntSurfLineOn2S,
     ) -> crate::OcctResult<*mut HandleIntSurfLineOn2S>;
+    /// Check if Handle<IntSurf_LineOn2S> is null
+    pub fn HandleIntSurfLineOn2S_is_null(self_: *const HandleIntSurfLineOn2S) -> bool;
     /// Dereference Handle to get *const IntSurf_LineOn2S
     pub fn HandleIntSurfLineOn2S_get(
         handle: *const HandleIntSurfLineOn2S,
@@ -27973,6 +28131,8 @@ extern "C" {
     pub fn HandleLawBSpFunc_clone(
         self_: *const HandleLawBSpFunc,
     ) -> crate::OcctResult<*mut HandleLawBSpFunc>;
+    /// Check if Handle<Law_BSpFunc> is null
+    pub fn HandleLawBSpFunc_is_null(self_: *const HandleLawBSpFunc) -> bool;
     /// Dereference Handle to get *const Law_BSpFunc
     pub fn HandleLawBSpFunc_get(
         handle: *const HandleLawBSpFunc,
@@ -28359,6 +28519,8 @@ extern "C" {
     pub fn HandleLawBSpline_clone(
         self_: *const HandleLawBSpline,
     ) -> crate::OcctResult<*mut HandleLawBSpline>;
+    /// Check if Handle<Law_BSpline> is null
+    pub fn HandleLawBSpline_is_null(self_: *const HandleLawBSpline) -> bool;
     /// Dereference Handle to get *const Law_BSpline
     pub fn HandleLawBSpline_get(
         handle: *const HandleLawBSpline,
@@ -28517,6 +28679,8 @@ extern "C" {
     pub fn HandleLawComposite_clone(
         self_: *const HandleLawComposite,
     ) -> crate::OcctResult<*mut HandleLawComposite>;
+    /// Check if Handle<Law_Composite> is null
+    pub fn HandleLawComposite_is_null(self_: *const HandleLawComposite) -> bool;
     /// Dereference Handle to get *const Law_Composite
     pub fn HandleLawComposite_get(
         handle: *const HandleLawComposite,
@@ -28646,6 +28810,8 @@ extern "C" {
     pub fn HandleLawConstant_clone(
         self_: *const HandleLawConstant,
     ) -> crate::OcctResult<*mut HandleLawConstant>;
+    /// Check if Handle<Law_Constant> is null
+    pub fn HandleLawConstant_is_null(self_: *const HandleLawConstant) -> bool;
     /// Dereference Handle to get *const Law_Constant
     pub fn HandleLawConstant_get(
         handle: *const HandleLawConstant,
@@ -28753,6 +28919,8 @@ extern "C" {
     pub fn HandleLawFunction_clone(
         self_: *const HandleLawFunction,
     ) -> crate::OcctResult<*mut HandleLawFunction>;
+    /// Check if Handle<Law_Function> is null
+    pub fn HandleLawFunction_is_null(self_: *const HandleLawFunction) -> bool;
     /// Dereference Handle to get *const Law_Function
     pub fn HandleLawFunction_get(
         handle: *const HandleLawFunction,
@@ -28894,6 +29062,8 @@ extern "C" {
     pub fn HandleLawInterpol_clone(
         self_: *const HandleLawInterpol,
     ) -> crate::OcctResult<*mut HandleLawInterpol>;
+    /// Check if Handle<Law_Interpol> is null
+    pub fn HandleLawInterpol_is_null(self_: *const HandleLawInterpol) -> bool;
     /// Dereference Handle to get *const Law_Interpol
     pub fn HandleLawInterpol_get(
         handle: *const HandleLawInterpol,
@@ -29115,6 +29285,8 @@ extern "C" {
     pub fn HandleLawLinear_clone(
         self_: *const HandleLawLinear,
     ) -> crate::OcctResult<*mut HandleLawLinear>;
+    /// Check if Handle<Law_Linear> is null
+    pub fn HandleLawLinear_is_null(self_: *const HandleLawLinear) -> bool;
     /// Dereference Handle to get *const Law_Linear
     pub fn HandleLawLinear_get(
         handle: *const HandleLawLinear,
@@ -29207,6 +29379,8 @@ extern "C" {
     pub fn HandleLawS_destructor(self_: *mut HandleLawS);
     /// Clone Handle<Law_S> (increments reference count)
     pub fn HandleLawS_clone(self_: *const HandleLawS) -> crate::OcctResult<*mut HandleLawS>;
+    /// Check if Handle<Law_S> is null
+    pub fn HandleLawS_is_null(self_: *const HandleLawS) -> bool;
     /// Dereference Handle to get *const Law_S
     pub fn HandleLawS_get(handle: *const HandleLawS) -> crate::OcctResult<*const Law_S>;
     /// Dereference Handle to get *mut Law_S
@@ -29626,6 +29800,8 @@ extern "C" {
     pub fn HandleNLPlateHGPPConstraint_clone(
         self_: *const HandleNLPlateHGPPConstraint,
     ) -> crate::OcctResult<*mut HandleNLPlateHGPPConstraint>;
+    /// Check if Handle<NLPlate_HGPPConstraint> is null
+    pub fn HandleNLPlateHGPPConstraint_is_null(self_: *const HandleNLPlateHGPPConstraint) -> bool;
     /// Dereference Handle to get *const NLPlate_HGPPConstraint
     pub fn HandleNLPlateHGPPConstraint_get(
         handle: *const HandleNLPlateHGPPConstraint,
@@ -29768,6 +29944,8 @@ extern "C" {
     pub fn HandleNLPlateHPG0Constraint_clone(
         self_: *const HandleNLPlateHPG0Constraint,
     ) -> crate::OcctResult<*mut HandleNLPlateHPG0Constraint>;
+    /// Check if Handle<NLPlate_HPG0Constraint> is null
+    pub fn HandleNLPlateHPG0Constraint_is_null(self_: *const HandleNLPlateHPG0Constraint) -> bool;
     /// Dereference Handle to get *const NLPlate_HPG0Constraint
     pub fn HandleNLPlateHPG0Constraint_get(
         handle: *const HandleNLPlateHPG0Constraint,
@@ -29965,6 +30143,10 @@ extern "C" {
     pub fn HandleNLPlateHPG0G1Constraint_clone(
         self_: *const HandleNLPlateHPG0G1Constraint,
     ) -> crate::OcctResult<*mut HandleNLPlateHPG0G1Constraint>;
+    /// Check if Handle<NLPlate_HPG0G1Constraint> is null
+    pub fn HandleNLPlateHPG0G1Constraint_is_null(
+        self_: *const HandleNLPlateHPG0G1Constraint,
+    ) -> bool;
     /// Dereference Handle to get *const NLPlate_HPG0G1Constraint
     pub fn HandleNLPlateHPG0G1Constraint_get(
         handle: *const HandleNLPlateHPG0G1Constraint,
@@ -30175,6 +30357,10 @@ extern "C" {
     pub fn HandleNLPlateHPG0G2Constraint_clone(
         self_: *const HandleNLPlateHPG0G2Constraint,
     ) -> crate::OcctResult<*mut HandleNLPlateHPG0G2Constraint>;
+    /// Check if Handle<NLPlate_HPG0G2Constraint> is null
+    pub fn HandleNLPlateHPG0G2Constraint_is_null(
+        self_: *const HandleNLPlateHPG0G2Constraint,
+    ) -> bool;
     /// Dereference Handle to get *const NLPlate_HPG0G2Constraint
     pub fn HandleNLPlateHPG0G2Constraint_get(
         handle: *const HandleNLPlateHPG0G2Constraint,
@@ -30403,6 +30589,10 @@ extern "C" {
     pub fn HandleNLPlateHPG0G3Constraint_clone(
         self_: *const HandleNLPlateHPG0G3Constraint,
     ) -> crate::OcctResult<*mut HandleNLPlateHPG0G3Constraint>;
+    /// Check if Handle<NLPlate_HPG0G3Constraint> is null
+    pub fn HandleNLPlateHPG0G3Constraint_is_null(
+        self_: *const HandleNLPlateHPG0G3Constraint,
+    ) -> bool;
     /// Dereference Handle to get *const NLPlate_HPG0G3Constraint
     pub fn HandleNLPlateHPG0G3Constraint_get(
         handle: *const HandleNLPlateHPG0G3Constraint,
@@ -30626,6 +30816,8 @@ extern "C" {
     pub fn HandleNLPlateHPG1Constraint_clone(
         self_: *const HandleNLPlateHPG1Constraint,
     ) -> crate::OcctResult<*mut HandleNLPlateHPG1Constraint>;
+    /// Check if Handle<NLPlate_HPG1Constraint> is null
+    pub fn HandleNLPlateHPG1Constraint_is_null(self_: *const HandleNLPlateHPG1Constraint) -> bool;
     /// Dereference Handle to get *const NLPlate_HPG1Constraint
     pub fn HandleNLPlateHPG1Constraint_get(
         handle: *const HandleNLPlateHPG1Constraint,
@@ -30810,6 +31002,8 @@ extern "C" {
     pub fn HandleNLPlateHPG2Constraint_clone(
         self_: *const HandleNLPlateHPG2Constraint,
     ) -> crate::OcctResult<*mut HandleNLPlateHPG2Constraint>;
+    /// Check if Handle<NLPlate_HPG2Constraint> is null
+    pub fn HandleNLPlateHPG2Constraint_is_null(self_: *const HandleNLPlateHPG2Constraint) -> bool;
     /// Dereference Handle to get *const NLPlate_HPG2Constraint
     pub fn HandleNLPlateHPG2Constraint_get(
         handle: *const HandleNLPlateHPG2Constraint,
@@ -31025,6 +31219,8 @@ extern "C" {
     pub fn HandleNLPlateHPG3Constraint_clone(
         self_: *const HandleNLPlateHPG3Constraint,
     ) -> crate::OcctResult<*mut HandleNLPlateHPG3Constraint>;
+    /// Check if Handle<NLPlate_HPG3Constraint> is null
+    pub fn HandleNLPlateHPG3Constraint_is_null(self_: *const HandleNLPlateHPG3Constraint) -> bool;
     /// Dereference Handle to get *const NLPlate_HPG3Constraint
     pub fn HandleNLPlateHPG3Constraint_get(
         handle: *const HandleNLPlateHPG3Constraint,
@@ -31465,6 +31661,10 @@ extern "C" {
     pub fn HandlePlateHArray1OfPinpointConstraint_clone(
         self_: *const HandlePlateHArray1OfPinpointConstraint,
     ) -> crate::OcctResult<*mut HandlePlateHArray1OfPinpointConstraint>;
+    /// Check if Handle<Plate_HArray1OfPinpointConstraint> is null
+    pub fn HandlePlateHArray1OfPinpointConstraint_is_null(
+        self_: *const HandlePlateHArray1OfPinpointConstraint,
+    ) -> bool;
     /// Dereference Handle to get *const Plate_HArray1OfPinpointConstraint
     pub fn HandlePlateHArray1OfPinpointConstraint_get(
         handle: *const HandlePlateHArray1OfPinpointConstraint,

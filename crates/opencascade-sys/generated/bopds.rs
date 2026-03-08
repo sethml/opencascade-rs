@@ -404,6 +404,11 @@ unsafe impl crate::CppCopyable for HandleBOPDSCommonBlock {
 }
 
 impl HandleBOPDSCommonBlock {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBO::HandleBOPDSCommonBlock_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BOPDS_CommonBlock
     pub fn get(&self) -> &crate::ffi_types::BOPDS_CommonBlock {
         unsafe {
@@ -4976,6 +4981,11 @@ unsafe impl crate::CppCopyable for HandleBOPDSPaveBlock {
 }
 
 impl HandleBOPDSPaveBlock {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBO::HandleBOPDSPaveBlock_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BOPDS_PaveBlock
     pub fn get(&self) -> &crate::ffi_types::BOPDS_PaveBlock {
         unsafe {

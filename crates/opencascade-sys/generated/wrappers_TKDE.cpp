@@ -66,32 +66,37 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleDEConfigurationContext_destructor(HandleDEConfigurationContext* self_) { delete self_; }
 extern "C" OcctResult<HandleDEConfigurationContext*> HandleDEConfigurationContext_clone(const HandleDEConfigurationContext* self_) {
     try { return {new HandleDEConfigurationContext(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEConfigurationContext_is_null(const HandleDEConfigurationContext* self_) { return self_->IsNull(); }
 extern "C" void HandleDEConfigurationNode_destructor(HandleDEConfigurationNode* self_) { delete self_; }
 extern "C" OcctResult<HandleDEConfigurationNode*> HandleDEConfigurationNode_clone(const HandleDEConfigurationNode* self_) {
     try { return {new HandleDEConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEConfigurationNode_is_null(const HandleDEConfigurationNode* self_) { return self_->IsNull(); }
 extern "C" void HandleDEProvider_destructor(HandleDEProvider* self_) { delete self_; }
 extern "C" OcctResult<HandleDEProvider*> HandleDEProvider_clone(const HandleDEProvider* self_) {
     try { return {new HandleDEProvider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEProvider_is_null(const HandleDEProvider* self_) { return self_->IsNull(); }
 extern "C" void HandleDEShapeFixConfigurationNode_destructor(HandleDEShapeFixConfigurationNode* self_) { delete self_; }
 extern "C" OcctResult<HandleDEShapeFixConfigurationNode*> HandleDEShapeFixConfigurationNode_clone(const HandleDEShapeFixConfigurationNode* self_) {
     try { return {new HandleDEShapeFixConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEShapeFixConfigurationNode_is_null(const HandleDEShapeFixConfigurationNode* self_) { return self_->IsNull(); }
 extern "C" void HandleDEWrapper_destructor(HandleDEWrapper* self_) { delete self_; }
 extern "C" OcctResult<HandleDEWrapper*> HandleDEWrapper_clone(const HandleDEWrapper* self_) {
     try { return {new HandleDEWrapper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEWrapper_is_null(const HandleDEWrapper* self_) { return self_->IsNull(); }
 
 // ========================
 // DE_ConfigurationContext wrappers

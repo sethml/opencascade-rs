@@ -307,6 +307,11 @@ unsafe impl crate::CppCopyable for HandleXmlMDFADriver {
 }
 
 impl HandleXmlMDFADriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXmlL::HandleXmlMDFADriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDF_ADriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDF_ADriver {
         unsafe {
@@ -1510,6 +1515,11 @@ unsafe impl crate::CppCopyable for HandleXmlMDFADriverTable {
 }
 
 impl HandleXmlMDFADriverTable {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXmlL::HandleXmlMDFADriverTable_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDF_ADriverTable
     pub fn get(&self) -> &crate::ffi_types::XmlMDF_ADriverTable {
         unsafe {
@@ -1826,6 +1836,11 @@ unsafe impl crate::CppCopyable for HandleXmlMDFDerivedDriver {
 }
 
 impl HandleXmlMDFDerivedDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXmlL::HandleXmlMDFDerivedDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDF_DerivedDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDF_DerivedDriver {
         unsafe {
@@ -2151,6 +2166,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDFReferenceDriver {
 }
 
 impl HandleXmlMDFReferenceDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDFReferenceDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDF_ReferenceDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDF_ReferenceDriver {
         unsafe {
@@ -2476,6 +2498,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDFTagSourceDriver {
 }
 
 impl HandleXmlMDFTagSourceDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDFTagSourceDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDF_TagSourceDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDF_TagSourceDriver {
         unsafe {

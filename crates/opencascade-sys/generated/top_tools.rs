@@ -819,6 +819,15 @@ unsafe impl crate::CppCopyable for HandleTopToolsHArray1OfListOfShape {
 }
 
 impl HandleTopToolsHArray1OfListOfShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfListOfShape_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopTools_HArray1OfListOfShape
     pub fn get(&self) -> &crate::ffi_types::TopTools_HArray1OfListOfShape {
         unsafe {
@@ -1089,6 +1098,13 @@ unsafe impl crate::CppCopyable for HandleTopToolsHArray1OfShape {
 }
 
 impl HandleTopToolsHArray1OfShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfShape_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopTools_HArray1OfShape
     pub fn get(&self) -> &crate::ffi_types::TopTools_HArray1OfShape {
         unsafe {
@@ -1345,6 +1361,13 @@ unsafe impl crate::CppCopyable for HandleTopToolsHArray2OfShape {
 }
 
 impl HandleTopToolsHArray2OfShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopToolsHArray2OfShape_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopTools_HArray2OfShape
     pub fn get(&self) -> &crate::ffi_types::TopTools_HArray2OfShape {
         unsafe {
@@ -1628,6 +1651,13 @@ unsafe impl crate::CppCopyable for HandleTopToolsHSequenceOfShape {
 }
 
 impl HandleTopToolsHSequenceOfShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopToolsHSequenceOfShape_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopTools_HSequenceOfShape
     pub fn get(&self) -> &crate::ffi_types::TopTools_HSequenceOfShape {
         unsafe {

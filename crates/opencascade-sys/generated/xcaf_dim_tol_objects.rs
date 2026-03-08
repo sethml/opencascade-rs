@@ -1369,6 +1369,15 @@ unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsDatumObject {
 }
 
 impl HandleXCAFDimTolObjectsDatumObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDimTolObjects_DatumObject
     pub fn get(&self) -> &crate::ffi_types::XCAFDimTolObjects_DatumObject {
         unsafe {
@@ -2270,6 +2279,15 @@ unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsDimensionObject {
 }
 
 impl HandleXCAFDimTolObjectsDimensionObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDimTolObjects_DimensionObject
     pub fn get(&self) -> &crate::ffi_types::XCAFDimTolObjects_DimensionObject {
         unsafe {
@@ -2920,6 +2938,15 @@ unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsGeomToleranceObject {
 }
 
 impl HandleXCAFDimTolObjectsGeomToleranceObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDimTolObjects_GeomToleranceObject
     pub fn get(&self) -> &crate::ffi_types::XCAFDimTolObjects_GeomToleranceObject {
         unsafe {

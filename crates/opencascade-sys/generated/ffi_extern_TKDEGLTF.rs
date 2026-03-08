@@ -88,6 +88,10 @@ extern "C" {
     pub fn HandleDEGLTFConfigurationNode_clone(
         self_: *const HandleDEGLTFConfigurationNode,
     ) -> crate::OcctResult<*mut HandleDEGLTFConfigurationNode>;
+    /// Check if Handle<DEGLTF_ConfigurationNode> is null
+    pub fn HandleDEGLTFConfigurationNode_is_null(
+        self_: *const HandleDEGLTFConfigurationNode,
+    ) -> bool;
     /// Dereference Handle to get *const DEGLTF_ConfigurationNode
     pub fn HandleDEGLTFConfigurationNode_get(
         handle: *const HandleDEGLTFConfigurationNode,
@@ -281,6 +285,8 @@ extern "C" {
     pub fn HandleDEGLTFProvider_clone(
         self_: *const HandleDEGLTFProvider,
     ) -> crate::OcctResult<*mut HandleDEGLTFProvider>;
+    /// Check if Handle<DEGLTF_Provider> is null
+    pub fn HandleDEGLTFProvider_is_null(self_: *const HandleDEGLTFProvider) -> bool;
     /// Dereference Handle to get *const DEGLTF_Provider
     pub fn HandleDEGLTFProvider_get(
         handle: *const HandleDEGLTFProvider,
@@ -444,6 +450,8 @@ extern "C" {
     pub fn HandleRWGltfCafReader_clone(
         self_: *const HandleRWGltfCafReader,
     ) -> crate::OcctResult<*mut HandleRWGltfCafReader>;
+    /// Check if Handle<RWGltf_CafReader> is null
+    pub fn HandleRWGltfCafReader_is_null(self_: *const HandleRWGltfCafReader) -> bool;
     /// Dereference Handle to get *const RWGltf_CafReader
     pub fn HandleRWGltfCafReader_get(
         handle: *const HandleRWGltfCafReader,
@@ -636,6 +644,8 @@ extern "C" {
     pub fn HandleRWGltfGltfFace_clone(
         self_: *const HandleRWGltfGltfFace,
     ) -> crate::OcctResult<*mut HandleRWGltfGltfFace>;
+    /// Check if Handle<RWGltf_GltfFace> is null
+    pub fn HandleRWGltfGltfFace_is_null(self_: *const HandleRWGltfGltfFace) -> bool;
     /// Dereference Handle to get *const RWGltf_GltfFace
     pub fn HandleRWGltfGltfFace_get(
         handle: *const HandleRWGltfGltfFace,
@@ -800,6 +810,10 @@ extern "C" {
     pub fn HandleRWGltfGltfLatePrimitiveArray_clone(
         self_: *const HandleRWGltfGltfLatePrimitiveArray,
     ) -> crate::OcctResult<*mut HandleRWGltfGltfLatePrimitiveArray>;
+    /// Check if Handle<RWGltf_GltfLatePrimitiveArray> is null
+    pub fn HandleRWGltfGltfLatePrimitiveArray_is_null(
+        self_: *const HandleRWGltfGltfLatePrimitiveArray,
+    ) -> bool;
     /// Dereference Handle to get *const RWGltf_GltfLatePrimitiveArray
     pub fn HandleRWGltfGltfLatePrimitiveArray_get(
         handle: *const HandleRWGltfGltfLatePrimitiveArray,
@@ -1170,6 +1184,8 @@ extern "C" {
     pub fn HandleRWGltfGltfMaterialMap_clone(
         self_: *const HandleRWGltfGltfMaterialMap,
     ) -> crate::OcctResult<*mut HandleRWGltfGltfMaterialMap>;
+    /// Check if Handle<RWGltf_GltfMaterialMap> is null
+    pub fn HandleRWGltfGltfMaterialMap_is_null(self_: *const HandleRWGltfGltfMaterialMap) -> bool;
     /// Dereference Handle to get *const RWGltf_GltfMaterialMap
     pub fn HandleRWGltfGltfMaterialMap_get(
         handle: *const HandleRWGltfGltfMaterialMap,
@@ -1284,6 +1300,8 @@ extern "C" {
     pub fn HandleRWGltfMaterialCommon_clone(
         self_: *const HandleRWGltfMaterialCommon,
     ) -> crate::OcctResult<*mut HandleRWGltfMaterialCommon>;
+    /// Check if Handle<RWGltf_MaterialCommon> is null
+    pub fn HandleRWGltfMaterialCommon_is_null(self_: *const HandleRWGltfMaterialCommon) -> bool;
     /// Dereference Handle to get *const RWGltf_MaterialCommon
     pub fn HandleRWGltfMaterialCommon_get(
         handle: *const HandleRWGltfMaterialCommon,
@@ -1357,6 +1375,10 @@ extern "C" {
     pub fn HandleRWGltfMaterialMetallicRoughness_clone(
         self_: *const HandleRWGltfMaterialMetallicRoughness,
     ) -> crate::OcctResult<*mut HandleRWGltfMaterialMetallicRoughness>;
+    /// Check if Handle<RWGltf_MaterialMetallicRoughness> is null
+    pub fn HandleRWGltfMaterialMetallicRoughness_is_null(
+        self_: *const HandleRWGltfMaterialMetallicRoughness,
+    ) -> bool;
     /// Dereference Handle to get *const RWGltf_MaterialMetallicRoughness
     pub fn HandleRWGltfMaterialMetallicRoughness_get(
         handle: *const HandleRWGltfMaterialMetallicRoughness,
@@ -1448,6 +1470,10 @@ extern "C" {
     pub fn HandleRWGltfTriangulationReader_clone(
         self_: *const HandleRWGltfTriangulationReader,
     ) -> crate::OcctResult<*mut HandleRWGltfTriangulationReader>;
+    /// Check if Handle<RWGltf_TriangulationReader> is null
+    pub fn HandleRWGltfTriangulationReader_is_null(
+        self_: *const HandleRWGltfTriangulationReader,
+    ) -> bool;
     /// Dereference Handle to get *const RWGltf_TriangulationReader
     pub fn HandleRWGltfTriangulationReader_get(
         handle: *const HandleRWGltfTriangulationReader,

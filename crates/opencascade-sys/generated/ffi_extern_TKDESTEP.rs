@@ -78,6 +78,10 @@ extern "C" {
     pub fn HandleAPIHeaderSectionEditHeader_clone(
         self_: *const HandleAPIHeaderSectionEditHeader,
     ) -> crate::OcctResult<*mut HandleAPIHeaderSectionEditHeader>;
+    /// Check if Handle<APIHeaderSection_EditHeader> is null
+    pub fn HandleAPIHeaderSectionEditHeader_is_null(
+        self_: *const HandleAPIHeaderSectionEditHeader,
+    ) -> bool;
     /// Dereference Handle to get *const APIHeaderSection_EditHeader
     pub fn HandleAPIHeaderSectionEditHeader_get(
         handle: *const HandleAPIHeaderSectionEditHeader,
@@ -504,6 +508,10 @@ extern "C" {
     pub fn HandleDESTEPConfigurationNode_clone(
         self_: *const HandleDESTEPConfigurationNode,
     ) -> crate::OcctResult<*mut HandleDESTEPConfigurationNode>;
+    /// Check if Handle<DESTEP_ConfigurationNode> is null
+    pub fn HandleDESTEPConfigurationNode_is_null(
+        self_: *const HandleDESTEPConfigurationNode,
+    ) -> bool;
     /// Dereference Handle to get *const DESTEP_ConfigurationNode
     pub fn HandleDESTEPConfigurationNode_get(
         handle: *const HandleDESTEPConfigurationNode,
@@ -707,6 +715,8 @@ extern "C" {
     pub fn HandleDESTEPProvider_clone(
         self_: *const HandleDESTEPProvider,
     ) -> crate::OcctResult<*mut HandleDESTEPProvider>;
+    /// Check if Handle<DESTEP_Provider> is null
+    pub fn HandleDESTEPProvider_is_null(self_: *const HandleDESTEPProvider) -> bool;
     /// Dereference Handle to get *const DESTEP_Provider
     pub fn HandleDESTEPProvider_get(
         handle: *const HandleDESTEPProvider,
@@ -1726,6 +1736,10 @@ extern "C" {
     pub fn HandleHeaderSectionFileDescription_clone(
         self_: *const HandleHeaderSectionFileDescription,
     ) -> crate::OcctResult<*mut HandleHeaderSectionFileDescription>;
+    /// Check if Handle<HeaderSection_FileDescription> is null
+    pub fn HandleHeaderSectionFileDescription_is_null(
+        self_: *const HandleHeaderSectionFileDescription,
+    ) -> bool;
     /// Dereference Handle to get *const HeaderSection_FileDescription
     pub fn HandleHeaderSectionFileDescription_get(
         handle: *const HandleHeaderSectionFileDescription,
@@ -1891,6 +1905,8 @@ extern "C" {
     pub fn HandleHeaderSectionFileName_clone(
         self_: *const HandleHeaderSectionFileName,
     ) -> crate::OcctResult<*mut HandleHeaderSectionFileName>;
+    /// Check if Handle<HeaderSection_FileName> is null
+    pub fn HandleHeaderSectionFileName_is_null(self_: *const HandleHeaderSectionFileName) -> bool;
     /// Dereference Handle to get *const HeaderSection_FileName
     pub fn HandleHeaderSectionFileName_get(
         handle: *const HandleHeaderSectionFileName,
@@ -1987,6 +2003,10 @@ extern "C" {
     pub fn HandleHeaderSectionFileSchema_clone(
         self_: *const HandleHeaderSectionFileSchema,
     ) -> crate::OcctResult<*mut HandleHeaderSectionFileSchema>;
+    /// Check if Handle<HeaderSection_FileSchema> is null
+    pub fn HandleHeaderSectionFileSchema_is_null(
+        self_: *const HandleHeaderSectionFileSchema,
+    ) -> bool;
     /// Dereference Handle to get *const HeaderSection_FileSchema
     pub fn HandleHeaderSectionFileSchema_get(
         handle: *const HandleHeaderSectionFileSchema,
@@ -2086,6 +2106,8 @@ extern "C" {
     pub fn HandleHeaderSectionProtocol_clone(
         self_: *const HandleHeaderSectionProtocol,
     ) -> crate::OcctResult<*mut HandleHeaderSectionProtocol>;
+    /// Check if Handle<HeaderSection_Protocol> is null
+    pub fn HandleHeaderSectionProtocol_is_null(self_: *const HandleHeaderSectionProtocol) -> bool;
     /// Dereference Handle to get *const HeaderSection_Protocol
     pub fn HandleHeaderSectionProtocol_get(
         handle: *const HandleHeaderSectionProtocol,
@@ -2306,6 +2328,10 @@ extern "C" {
     pub fn HandleRWHeaderSectionGeneralModule_clone(
         self_: *const HandleRWHeaderSectionGeneralModule,
     ) -> crate::OcctResult<*mut HandleRWHeaderSectionGeneralModule>;
+    /// Check if Handle<RWHeaderSection_GeneralModule> is null
+    pub fn HandleRWHeaderSectionGeneralModule_is_null(
+        self_: *const HandleRWHeaderSectionGeneralModule,
+    ) -> bool;
     /// Dereference Handle to get *const RWHeaderSection_GeneralModule
     pub fn HandleRWHeaderSectionGeneralModule_get(
         handle: *const HandleRWHeaderSectionGeneralModule,
@@ -2581,6 +2607,10 @@ extern "C" {
     pub fn HandleRWHeaderSectionReadWriteModule_clone(
         self_: *const HandleRWHeaderSectionReadWriteModule,
     ) -> crate::OcctResult<*mut HandleRWHeaderSectionReadWriteModule>;
+    /// Check if Handle<RWHeaderSection_ReadWriteModule> is null
+    pub fn HandleRWHeaderSectionReadWriteModule_is_null(
+        self_: *const HandleRWHeaderSectionReadWriteModule,
+    ) -> bool;
     /// Dereference Handle to get *const RWHeaderSection_ReadWriteModule
     pub fn HandleRWHeaderSectionReadWriteModule_get(
         handle: *const HandleRWHeaderSectionReadWriteModule,
@@ -2741,6 +2771,10 @@ extern "C" {
     pub fn HandleSTEPCAFControlActorWrite_clone(
         self_: *const HandleSTEPCAFControlActorWrite,
     ) -> crate::OcctResult<*mut HandleSTEPCAFControlActorWrite>;
+    /// Check if Handle<STEPCAFControl_ActorWrite> is null
+    pub fn HandleSTEPCAFControlActorWrite_is_null(
+        self_: *const HandleSTEPCAFControlActorWrite,
+    ) -> bool;
     /// Dereference Handle to get *const STEPCAFControl_ActorWrite
     pub fn HandleSTEPCAFControlActorWrite_get(
         handle: *const HandleSTEPCAFControlActorWrite,
@@ -2974,6 +3008,10 @@ extern "C" {
     pub fn HandleSTEPCAFControlController_clone(
         self_: *const HandleSTEPCAFControlController,
     ) -> crate::OcctResult<*mut HandleSTEPCAFControlController>;
+    /// Check if Handle<STEPCAFControl_Controller> is null
+    pub fn HandleSTEPCAFControlController_is_null(
+        self_: *const HandleSTEPCAFControlController,
+    ) -> bool;
     /// Dereference Handle to get *const STEPCAFControl_Controller
     pub fn HandleSTEPCAFControlController_get(
         handle: *const HandleSTEPCAFControlController,
@@ -3193,6 +3231,10 @@ extern "C" {
     pub fn HandleSTEPCAFControlExternFile_clone(
         self_: *const HandleSTEPCAFControlExternFile,
     ) -> crate::OcctResult<*mut HandleSTEPCAFControlExternFile>;
+    /// Check if Handle<STEPCAFControl_ExternFile> is null
+    pub fn HandleSTEPCAFControlExternFile_is_null(
+        self_: *const HandleSTEPCAFControlExternFile,
+    ) -> bool;
     /// Dereference Handle to get *const STEPCAFControl_ExternFile
     pub fn HandleSTEPCAFControlExternFile_get(
         handle: *const HandleSTEPCAFControlExternFile,
@@ -4875,6 +4917,8 @@ extern "C" {
     pub fn HandleSTEPControlActorRead_clone(
         self_: *const HandleSTEPControlActorRead,
     ) -> crate::OcctResult<*mut HandleSTEPControlActorRead>;
+    /// Check if Handle<STEPControl_ActorRead> is null
+    pub fn HandleSTEPControlActorRead_is_null(self_: *const HandleSTEPControlActorRead) -> bool;
     /// Dereference Handle to get *const STEPControl_ActorRead
     pub fn HandleSTEPControlActorRead_get(
         handle: *const HandleSTEPControlActorRead,
@@ -5104,6 +5148,8 @@ extern "C" {
     pub fn HandleSTEPControlActorWrite_clone(
         self_: *const HandleSTEPControlActorWrite,
     ) -> crate::OcctResult<*mut HandleSTEPControlActorWrite>;
+    /// Check if Handle<STEPControl_ActorWrite> is null
+    pub fn HandleSTEPControlActorWrite_is_null(self_: *const HandleSTEPControlActorWrite) -> bool;
     /// Dereference Handle to get *const STEPControl_ActorWrite
     pub fn HandleSTEPControlActorWrite_get(
         handle: *const HandleSTEPControlActorWrite,
@@ -5285,6 +5331,8 @@ extern "C" {
     pub fn HandleSTEPControlController_clone(
         self_: *const HandleSTEPControlController,
     ) -> crate::OcctResult<*mut HandleSTEPControlController>;
+    /// Check if Handle<STEPControl_Controller> is null
+    pub fn HandleSTEPControlController_is_null(self_: *const HandleSTEPControlController) -> bool;
     /// Dereference Handle to get *const STEPControl_Controller
     pub fn HandleSTEPControlController_get(
         handle: *const HandleSTEPControlController,
@@ -5733,6 +5781,8 @@ extern "C" {
     pub fn HandleSTEPEditEditContext_clone(
         self_: *const HandleSTEPEditEditContext,
     ) -> crate::OcctResult<*mut HandleSTEPEditEditContext>;
+    /// Check if Handle<STEPEdit_EditContext> is null
+    pub fn HandleSTEPEditEditContext_is_null(self_: *const HandleSTEPEditEditContext) -> bool;
     /// Dereference Handle to get *const STEPEdit_EditContext
     pub fn HandleSTEPEditEditContext_get(
         handle: *const HandleSTEPEditEditContext,
@@ -5925,6 +5975,8 @@ extern "C" {
     pub fn HandleSTEPEditEditSDR_clone(
         self_: *const HandleSTEPEditEditSDR,
     ) -> crate::OcctResult<*mut HandleSTEPEditEditSDR>;
+    /// Check if Handle<STEPEdit_EditSDR> is null
+    pub fn HandleSTEPEditEditSDR_is_null(self_: *const HandleSTEPEditEditSDR) -> bool;
     /// Dereference Handle to get *const STEPEdit_EditSDR
     pub fn HandleSTEPEditEditSDR_get(
         handle: *const HandleSTEPEditEditSDR,
@@ -6110,6 +6162,10 @@ extern "C" {
     pub fn HandleSTEPSelectionsAssemblyComponent_clone(
         self_: *const HandleSTEPSelectionsAssemblyComponent,
     ) -> crate::OcctResult<*mut HandleSTEPSelectionsAssemblyComponent>;
+    /// Check if Handle<STEPSelections_AssemblyComponent> is null
+    pub fn HandleSTEPSelectionsAssemblyComponent_is_null(
+        self_: *const HandleSTEPSelectionsAssemblyComponent,
+    ) -> bool;
     /// Dereference Handle to get *const STEPSelections_AssemblyComponent
     pub fn HandleSTEPSelectionsAssemblyComponent_get(
         handle: *const HandleSTEPSelectionsAssemblyComponent,
@@ -6258,6 +6314,10 @@ extern "C" {
     pub fn HandleSTEPSelectionsAssemblyLink_clone(
         self_: *const HandleSTEPSelectionsAssemblyLink,
     ) -> crate::OcctResult<*mut HandleSTEPSelectionsAssemblyLink>;
+    /// Check if Handle<STEPSelections_AssemblyLink> is null
+    pub fn HandleSTEPSelectionsAssemblyLink_is_null(
+        self_: *const HandleSTEPSelectionsAssemblyLink,
+    ) -> bool;
     /// Dereference Handle to get *const STEPSelections_AssemblyLink
     pub fn HandleSTEPSelectionsAssemblyLink_get(
         handle: *const HandleSTEPSelectionsAssemblyLink,
@@ -6421,6 +6481,10 @@ extern "C" {
     pub fn HandleSTEPSelectionsHSequenceOfAssemblyLink_clone(
         self_: *const HandleSTEPSelectionsHSequenceOfAssemblyLink,
     ) -> crate::OcctResult<*mut HandleSTEPSelectionsHSequenceOfAssemblyLink>;
+    /// Check if Handle<STEPSelections_HSequenceOfAssemblyLink> is null
+    pub fn HandleSTEPSelectionsHSequenceOfAssemblyLink_is_null(
+        self_: *const HandleSTEPSelectionsHSequenceOfAssemblyLink,
+    ) -> bool;
     /// Dereference Handle to get *const STEPSelections_HSequenceOfAssemblyLink
     pub fn HandleSTEPSelectionsHSequenceOfAssemblyLink_get(
         handle: *const HandleSTEPSelectionsHSequenceOfAssemblyLink,
@@ -6534,6 +6598,10 @@ extern "C" {
     pub fn HandleSTEPSelectionsSelectAssembly_clone(
         self_: *const HandleSTEPSelectionsSelectAssembly,
     ) -> crate::OcctResult<*mut HandleSTEPSelectionsSelectAssembly>;
+    /// Check if Handle<STEPSelections_SelectAssembly> is null
+    pub fn HandleSTEPSelectionsSelectAssembly_is_null(
+        self_: *const HandleSTEPSelectionsSelectAssembly,
+    ) -> bool;
     /// Dereference Handle to get *const STEPSelections_SelectAssembly
     pub fn HandleSTEPSelectionsSelectAssembly_get(
         handle: *const HandleSTEPSelectionsSelectAssembly,
@@ -6716,6 +6784,10 @@ extern "C" {
     pub fn HandleSTEPSelectionsSelectDerived_clone(
         self_: *const HandleSTEPSelectionsSelectDerived,
     ) -> crate::OcctResult<*mut HandleSTEPSelectionsSelectDerived>;
+    /// Check if Handle<STEPSelections_SelectDerived> is null
+    pub fn HandleSTEPSelectionsSelectDerived_is_null(
+        self_: *const HandleSTEPSelectionsSelectDerived,
+    ) -> bool;
     /// Dereference Handle to get *const STEPSelections_SelectDerived
     pub fn HandleSTEPSelectionsSelectDerived_get(
         handle: *const HandleSTEPSelectionsSelectDerived,
@@ -6881,6 +6953,10 @@ extern "C" {
     pub fn HandleSTEPSelectionsSelectFaces_clone(
         self_: *const HandleSTEPSelectionsSelectFaces,
     ) -> crate::OcctResult<*mut HandleSTEPSelectionsSelectFaces>;
+    /// Check if Handle<STEPSelections_SelectFaces> is null
+    pub fn HandleSTEPSelectionsSelectFaces_is_null(
+        self_: *const HandleSTEPSelectionsSelectFaces,
+    ) -> bool;
     /// Dereference Handle to get *const STEPSelections_SelectFaces
     pub fn HandleSTEPSelectionsSelectFaces_get(
         handle: *const HandleSTEPSelectionsSelectFaces,
@@ -7067,6 +7143,10 @@ extern "C" {
     pub fn HandleSTEPSelectionsSelectForTransfer_clone(
         self_: *const HandleSTEPSelectionsSelectForTransfer,
     ) -> crate::OcctResult<*mut HandleSTEPSelectionsSelectForTransfer>;
+    /// Check if Handle<STEPSelections_SelectForTransfer> is null
+    pub fn HandleSTEPSelectionsSelectForTransfer_is_null(
+        self_: *const HandleSTEPSelectionsSelectForTransfer,
+    ) -> bool;
     /// Dereference Handle to get *const STEPSelections_SelectForTransfer
     pub fn HandleSTEPSelectionsSelectForTransfer_get(
         handle: *const HandleSTEPSelectionsSelectForTransfer,
@@ -7286,6 +7366,10 @@ extern "C" {
     pub fn HandleSTEPSelectionsSelectGSCurves_clone(
         self_: *const HandleSTEPSelectionsSelectGSCurves,
     ) -> crate::OcctResult<*mut HandleSTEPSelectionsSelectGSCurves>;
+    /// Check if Handle<STEPSelections_SelectGSCurves> is null
+    pub fn HandleSTEPSelectionsSelectGSCurves_is_null(
+        self_: *const HandleSTEPSelectionsSelectGSCurves,
+    ) -> bool;
     /// Dereference Handle to get *const STEPSelections_SelectGSCurves
     pub fn HandleSTEPSelectionsSelectGSCurves_get(
         handle: *const HandleSTEPSelectionsSelectGSCurves,
@@ -7470,6 +7554,10 @@ extern "C" {
     pub fn HandleSTEPSelectionsSelectInstances_clone(
         self_: *const HandleSTEPSelectionsSelectInstances,
     ) -> crate::OcctResult<*mut HandleSTEPSelectionsSelectInstances>;
+    /// Check if Handle<STEPSelections_SelectInstances> is null
+    pub fn HandleSTEPSelectionsSelectInstances_is_null(
+        self_: *const HandleSTEPSelectionsSelectInstances,
+    ) -> bool;
     /// Dereference Handle to get *const STEPSelections_SelectInstances
     pub fn HandleSTEPSelectionsSelectInstances_get(
         handle: *const HandleSTEPSelectionsSelectInstances,
@@ -7764,6 +7852,10 @@ extern "C" {
     pub fn HandleStepAP203CcDesignApproval_clone(
         self_: *const HandleStepAP203CcDesignApproval,
     ) -> crate::OcctResult<*mut HandleStepAP203CcDesignApproval>;
+    /// Check if Handle<StepAP203_CcDesignApproval> is null
+    pub fn HandleStepAP203CcDesignApproval_is_null(
+        self_: *const HandleStepAP203CcDesignApproval,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_CcDesignApproval
     pub fn HandleStepAP203CcDesignApproval_get(
         handle: *const HandleStepAP203CcDesignApproval,
@@ -7877,6 +7969,10 @@ extern "C" {
     pub fn HandleStepAP203CcDesignCertification_clone(
         self_: *const HandleStepAP203CcDesignCertification,
     ) -> crate::OcctResult<*mut HandleStepAP203CcDesignCertification>;
+    /// Check if Handle<StepAP203_CcDesignCertification> is null
+    pub fn HandleStepAP203CcDesignCertification_is_null(
+        self_: *const HandleStepAP203CcDesignCertification,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_CcDesignCertification
     pub fn HandleStepAP203CcDesignCertification_get(
         handle: *const HandleStepAP203CcDesignCertification,
@@ -7986,6 +8082,10 @@ extern "C" {
     pub fn HandleStepAP203CcDesignContract_clone(
         self_: *const HandleStepAP203CcDesignContract,
     ) -> crate::OcctResult<*mut HandleStepAP203CcDesignContract>;
+    /// Check if Handle<StepAP203_CcDesignContract> is null
+    pub fn HandleStepAP203CcDesignContract_is_null(
+        self_: *const HandleStepAP203CcDesignContract,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_CcDesignContract
     pub fn HandleStepAP203CcDesignContract_get(
         handle: *const HandleStepAP203CcDesignContract,
@@ -8102,6 +8202,10 @@ extern "C" {
     pub fn HandleStepAP203CcDesignDateAndTimeAssignment_clone(
         self_: *const HandleStepAP203CcDesignDateAndTimeAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP203CcDesignDateAndTimeAssignment>;
+    /// Check if Handle<StepAP203_CcDesignDateAndTimeAssignment> is null
+    pub fn HandleStepAP203CcDesignDateAndTimeAssignment_is_null(
+        self_: *const HandleStepAP203CcDesignDateAndTimeAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_CcDesignDateAndTimeAssignment
     pub fn HandleStepAP203CcDesignDateAndTimeAssignment_get(
         handle: *const HandleStepAP203CcDesignDateAndTimeAssignment,
@@ -8227,6 +8331,10 @@ extern "C" {
     pub fn HandleStepAP203CcDesignPersonAndOrganizationAssignment_clone(
         self_: *const HandleStepAP203CcDesignPersonAndOrganizationAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP203CcDesignPersonAndOrganizationAssignment>;
+    /// Check if Handle<StepAP203_CcDesignPersonAndOrganizationAssignment> is null
+    pub fn HandleStepAP203CcDesignPersonAndOrganizationAssignment_is_null(
+        self_: *const HandleStepAP203CcDesignPersonAndOrganizationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_CcDesignPersonAndOrganizationAssignment
     pub fn HandleStepAP203CcDesignPersonAndOrganizationAssignment_get(
         handle: *const HandleStepAP203CcDesignPersonAndOrganizationAssignment,
@@ -8351,6 +8459,10 @@ extern "C" {
     pub fn HandleStepAP203CcDesignSecurityClassification_clone(
         self_: *const HandleStepAP203CcDesignSecurityClassification,
     ) -> crate::OcctResult<*mut HandleStepAP203CcDesignSecurityClassification>;
+    /// Check if Handle<StepAP203_CcDesignSecurityClassification> is null
+    pub fn HandleStepAP203CcDesignSecurityClassification_is_null(
+        self_: *const HandleStepAP203CcDesignSecurityClassification,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_CcDesignSecurityClassification
     pub fn HandleStepAP203CcDesignSecurityClassification_get(
         handle: *const HandleStepAP203CcDesignSecurityClassification,
@@ -8467,6 +8579,10 @@ extern "C" {
     pub fn HandleStepAP203CcDesignSpecificationReference_clone(
         self_: *const HandleStepAP203CcDesignSpecificationReference,
     ) -> crate::OcctResult<*mut HandleStepAP203CcDesignSpecificationReference>;
+    /// Check if Handle<StepAP203_CcDesignSpecificationReference> is null
+    pub fn HandleStepAP203CcDesignSpecificationReference_is_null(
+        self_: *const HandleStepAP203CcDesignSpecificationReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_CcDesignSpecificationReference
     pub fn HandleStepAP203CcDesignSpecificationReference_get(
         handle: *const HandleStepAP203CcDesignSpecificationReference,
@@ -8687,6 +8803,8 @@ extern "C" {
     pub fn HandleStepAP203Change_clone(
         self_: *const HandleStepAP203Change,
     ) -> crate::OcctResult<*mut HandleStepAP203Change>;
+    /// Check if Handle<StepAP203_Change> is null
+    pub fn HandleStepAP203Change_is_null(self_: *const HandleStepAP203Change) -> bool;
     /// Dereference Handle to get *const StepAP203_Change
     pub fn HandleStepAP203Change_get(
         handle: *const HandleStepAP203Change,
@@ -8796,6 +8914,9 @@ extern "C" {
     pub fn HandleStepAP203ChangeRequest_clone(
         self_: *const HandleStepAP203ChangeRequest,
     ) -> crate::OcctResult<*mut HandleStepAP203ChangeRequest>;
+    /// Check if Handle<StepAP203_ChangeRequest> is null
+    pub fn HandleStepAP203ChangeRequest_is_null(self_: *const HandleStepAP203ChangeRequest)
+        -> bool;
     /// Dereference Handle to get *const StepAP203_ChangeRequest
     pub fn HandleStepAP203ChangeRequest_get(
         handle: *const HandleStepAP203ChangeRequest,
@@ -9340,6 +9461,10 @@ extern "C" {
     pub fn HandleStepAP203HArray1OfApprovedItem_clone(
         self_: *const HandleStepAP203HArray1OfApprovedItem,
     ) -> crate::OcctResult<*mut HandleStepAP203HArray1OfApprovedItem>;
+    /// Check if Handle<StepAP203_HArray1OfApprovedItem> is null
+    pub fn HandleStepAP203HArray1OfApprovedItem_is_null(
+        self_: *const HandleStepAP203HArray1OfApprovedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_HArray1OfApprovedItem
     pub fn HandleStepAP203HArray1OfApprovedItem_get(
         handle: *const HandleStepAP203HArray1OfApprovedItem,
@@ -9449,6 +9574,10 @@ extern "C" {
     pub fn HandleStepAP203HArray1OfCertifiedItem_clone(
         self_: *const HandleStepAP203HArray1OfCertifiedItem,
     ) -> crate::OcctResult<*mut HandleStepAP203HArray1OfCertifiedItem>;
+    /// Check if Handle<StepAP203_HArray1OfCertifiedItem> is null
+    pub fn HandleStepAP203HArray1OfCertifiedItem_is_null(
+        self_: *const HandleStepAP203HArray1OfCertifiedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_HArray1OfCertifiedItem
     pub fn HandleStepAP203HArray1OfCertifiedItem_get(
         handle: *const HandleStepAP203HArray1OfCertifiedItem,
@@ -9558,6 +9687,10 @@ extern "C" {
     pub fn HandleStepAP203HArray1OfChangeRequestItem_clone(
         self_: *const HandleStepAP203HArray1OfChangeRequestItem,
     ) -> crate::OcctResult<*mut HandleStepAP203HArray1OfChangeRequestItem>;
+    /// Check if Handle<StepAP203_HArray1OfChangeRequestItem> is null
+    pub fn HandleStepAP203HArray1OfChangeRequestItem_is_null(
+        self_: *const HandleStepAP203HArray1OfChangeRequestItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_HArray1OfChangeRequestItem
     pub fn HandleStepAP203HArray1OfChangeRequestItem_get(
         handle: *const HandleStepAP203HArray1OfChangeRequestItem,
@@ -9667,6 +9800,10 @@ extern "C" {
     pub fn HandleStepAP203HArray1OfClassifiedItem_clone(
         self_: *const HandleStepAP203HArray1OfClassifiedItem,
     ) -> crate::OcctResult<*mut HandleStepAP203HArray1OfClassifiedItem>;
+    /// Check if Handle<StepAP203_HArray1OfClassifiedItem> is null
+    pub fn HandleStepAP203HArray1OfClassifiedItem_is_null(
+        self_: *const HandleStepAP203HArray1OfClassifiedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_HArray1OfClassifiedItem
     pub fn HandleStepAP203HArray1OfClassifiedItem_get(
         handle: *const HandleStepAP203HArray1OfClassifiedItem,
@@ -9776,6 +9913,10 @@ extern "C" {
     pub fn HandleStepAP203HArray1OfContractedItem_clone(
         self_: *const HandleStepAP203HArray1OfContractedItem,
     ) -> crate::OcctResult<*mut HandleStepAP203HArray1OfContractedItem>;
+    /// Check if Handle<StepAP203_HArray1OfContractedItem> is null
+    pub fn HandleStepAP203HArray1OfContractedItem_is_null(
+        self_: *const HandleStepAP203HArray1OfContractedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_HArray1OfContractedItem
     pub fn HandleStepAP203HArray1OfContractedItem_get(
         handle: *const HandleStepAP203HArray1OfContractedItem,
@@ -9883,6 +10024,10 @@ extern "C" {
     pub fn HandleStepAP203HArray1OfDateTimeItem_clone(
         self_: *const HandleStepAP203HArray1OfDateTimeItem,
     ) -> crate::OcctResult<*mut HandleStepAP203HArray1OfDateTimeItem>;
+    /// Check if Handle<StepAP203_HArray1OfDateTimeItem> is null
+    pub fn HandleStepAP203HArray1OfDateTimeItem_is_null(
+        self_: *const HandleStepAP203HArray1OfDateTimeItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_HArray1OfDateTimeItem
     pub fn HandleStepAP203HArray1OfDateTimeItem_get(
         handle: *const HandleStepAP203HArray1OfDateTimeItem,
@@ -9992,6 +10137,10 @@ extern "C" {
     pub fn HandleStepAP203HArray1OfPersonOrganizationItem_clone(
         self_: *const HandleStepAP203HArray1OfPersonOrganizationItem,
     ) -> crate::OcctResult<*mut HandleStepAP203HArray1OfPersonOrganizationItem>;
+    /// Check if Handle<StepAP203_HArray1OfPersonOrganizationItem> is null
+    pub fn HandleStepAP203HArray1OfPersonOrganizationItem_is_null(
+        self_: *const HandleStepAP203HArray1OfPersonOrganizationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_HArray1OfPersonOrganizationItem
     pub fn HandleStepAP203HArray1OfPersonOrganizationItem_get(
         handle: *const HandleStepAP203HArray1OfPersonOrganizationItem,
@@ -10101,6 +10250,10 @@ extern "C" {
     pub fn HandleStepAP203HArray1OfSpecifiedItem_clone(
         self_: *const HandleStepAP203HArray1OfSpecifiedItem,
     ) -> crate::OcctResult<*mut HandleStepAP203HArray1OfSpecifiedItem>;
+    /// Check if Handle<StepAP203_HArray1OfSpecifiedItem> is null
+    pub fn HandleStepAP203HArray1OfSpecifiedItem_is_null(
+        self_: *const HandleStepAP203HArray1OfSpecifiedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_HArray1OfSpecifiedItem
     pub fn HandleStepAP203HArray1OfSpecifiedItem_get(
         handle: *const HandleStepAP203HArray1OfSpecifiedItem,
@@ -10210,6 +10363,10 @@ extern "C" {
     pub fn HandleStepAP203HArray1OfStartRequestItem_clone(
         self_: *const HandleStepAP203HArray1OfStartRequestItem,
     ) -> crate::OcctResult<*mut HandleStepAP203HArray1OfStartRequestItem>;
+    /// Check if Handle<StepAP203_HArray1OfStartRequestItem> is null
+    pub fn HandleStepAP203HArray1OfStartRequestItem_is_null(
+        self_: *const HandleStepAP203HArray1OfStartRequestItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_HArray1OfStartRequestItem
     pub fn HandleStepAP203HArray1OfStartRequestItem_get(
         handle: *const HandleStepAP203HArray1OfStartRequestItem,
@@ -10315,6 +10472,10 @@ extern "C" {
     pub fn HandleStepAP203HArray1OfWorkItem_clone(
         self_: *const HandleStepAP203HArray1OfWorkItem,
     ) -> crate::OcctResult<*mut HandleStepAP203HArray1OfWorkItem>;
+    /// Check if Handle<StepAP203_HArray1OfWorkItem> is null
+    pub fn HandleStepAP203HArray1OfWorkItem_is_null(
+        self_: *const HandleStepAP203HArray1OfWorkItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP203_HArray1OfWorkItem
     pub fn HandleStepAP203HArray1OfWorkItem_get(
         handle: *const HandleStepAP203HArray1OfWorkItem,
@@ -10648,6 +10809,8 @@ extern "C" {
     pub fn HandleStepAP203StartRequest_clone(
         self_: *const HandleStepAP203StartRequest,
     ) -> crate::OcctResult<*mut HandleStepAP203StartRequest>;
+    /// Check if Handle<StepAP203_StartRequest> is null
+    pub fn HandleStepAP203StartRequest_is_null(self_: *const HandleStepAP203StartRequest) -> bool;
     /// Dereference Handle to get *const StepAP203_StartRequest
     pub fn HandleStepAP203StartRequest_get(
         handle: *const HandleStepAP203StartRequest,
@@ -10853,6 +11016,8 @@ extern "C" {
     pub fn HandleStepAP203StartWork_clone(
         self_: *const HandleStepAP203StartWork,
     ) -> crate::OcctResult<*mut HandleStepAP203StartWork>;
+    /// Check if Handle<StepAP203_StartWork> is null
+    pub fn HandleStepAP203StartWork_is_null(self_: *const HandleStepAP203StartWork) -> bool;
     /// Dereference Handle to get *const StepAP203_StartWork
     pub fn HandleStepAP203StartWork_get(
         handle: *const HandleStepAP203StartWork,
@@ -11243,6 +11408,10 @@ extern "C" {
     pub fn HandleStepAP214AppliedApprovalAssignment_clone(
         self_: *const HandleStepAP214AppliedApprovalAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AppliedApprovalAssignment>;
+    /// Check if Handle<StepAP214_AppliedApprovalAssignment> is null
+    pub fn HandleStepAP214AppliedApprovalAssignment_is_null(
+        self_: *const HandleStepAP214AppliedApprovalAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AppliedApprovalAssignment
     pub fn HandleStepAP214AppliedApprovalAssignment_get(
         handle: *const HandleStepAP214AppliedApprovalAssignment,
@@ -11368,6 +11537,10 @@ extern "C" {
     pub fn HandleStepAP214AppliedDateAndTimeAssignment_clone(
         self_: *const HandleStepAP214AppliedDateAndTimeAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AppliedDateAndTimeAssignment>;
+    /// Check if Handle<StepAP214_AppliedDateAndTimeAssignment> is null
+    pub fn HandleStepAP214AppliedDateAndTimeAssignment_is_null(
+        self_: *const HandleStepAP214AppliedDateAndTimeAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AppliedDateAndTimeAssignment
     pub fn HandleStepAP214AppliedDateAndTimeAssignment_get(
         handle: *const HandleStepAP214AppliedDateAndTimeAssignment,
@@ -11500,6 +11673,10 @@ extern "C" {
     pub fn HandleStepAP214AppliedDateAssignment_clone(
         self_: *const HandleStepAP214AppliedDateAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AppliedDateAssignment>;
+    /// Check if Handle<StepAP214_AppliedDateAssignment> is null
+    pub fn HandleStepAP214AppliedDateAssignment_is_null(
+        self_: *const HandleStepAP214AppliedDateAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AppliedDateAssignment
     pub fn HandleStepAP214AppliedDateAssignment_get(
         handle: *const HandleStepAP214AppliedDateAssignment,
@@ -11634,6 +11811,10 @@ extern "C" {
     pub fn HandleStepAP214AppliedDocumentReference_clone(
         self_: *const HandleStepAP214AppliedDocumentReference,
     ) -> crate::OcctResult<*mut HandleStepAP214AppliedDocumentReference>;
+    /// Check if Handle<StepAP214_AppliedDocumentReference> is null
+    pub fn HandleStepAP214AppliedDocumentReference_is_null(
+        self_: *const HandleStepAP214AppliedDocumentReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AppliedDocumentReference
     pub fn HandleStepAP214AppliedDocumentReference_get(
         handle: *const HandleStepAP214AppliedDocumentReference,
@@ -11774,6 +11955,10 @@ extern "C" {
     pub fn HandleStepAP214AppliedExternalIdentificationAssignment_clone(
         self_: *const HandleStepAP214AppliedExternalIdentificationAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AppliedExternalIdentificationAssignment>;
+    /// Check if Handle<StepAP214_AppliedExternalIdentificationAssignment> is null
+    pub fn HandleStepAP214AppliedExternalIdentificationAssignment_is_null(
+        self_: *const HandleStepAP214AppliedExternalIdentificationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AppliedExternalIdentificationAssignment
     pub fn HandleStepAP214AppliedExternalIdentificationAssignment_get(
         handle: *const HandleStepAP214AppliedExternalIdentificationAssignment,
@@ -11911,6 +12096,10 @@ extern "C" {
     pub fn HandleStepAP214AppliedGroupAssignment_clone(
         self_: *const HandleStepAP214AppliedGroupAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AppliedGroupAssignment>;
+    /// Check if Handle<StepAP214_AppliedGroupAssignment> is null
+    pub fn HandleStepAP214AppliedGroupAssignment_is_null(
+        self_: *const HandleStepAP214AppliedGroupAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AppliedGroupAssignment
     pub fn HandleStepAP214AppliedGroupAssignment_get(
         handle: *const HandleStepAP214AppliedGroupAssignment,
@@ -12036,6 +12225,10 @@ extern "C" {
     pub fn HandleStepAP214AppliedOrganizationAssignment_clone(
         self_: *const HandleStepAP214AppliedOrganizationAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AppliedOrganizationAssignment>;
+    /// Check if Handle<StepAP214_AppliedOrganizationAssignment> is null
+    pub fn HandleStepAP214AppliedOrganizationAssignment_is_null(
+        self_: *const HandleStepAP214AppliedOrganizationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AppliedOrganizationAssignment
     pub fn HandleStepAP214AppliedOrganizationAssignment_get(
         handle: *const HandleStepAP214AppliedOrganizationAssignment,
@@ -12170,6 +12363,10 @@ extern "C" {
     pub fn HandleStepAP214AppliedPersonAndOrganizationAssignment_clone(
         self_: *const HandleStepAP214AppliedPersonAndOrganizationAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AppliedPersonAndOrganizationAssignment>;
+    /// Check if Handle<StepAP214_AppliedPersonAndOrganizationAssignment> is null
+    pub fn HandleStepAP214AppliedPersonAndOrganizationAssignment_is_null(
+        self_: *const HandleStepAP214AppliedPersonAndOrganizationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AppliedPersonAndOrganizationAssignment
     pub fn HandleStepAP214AppliedPersonAndOrganizationAssignment_get(
         handle: *const HandleStepAP214AppliedPersonAndOrganizationAssignment,
@@ -12300,6 +12497,10 @@ extern "C" {
     pub fn HandleStepAP214AppliedPresentedItem_clone(
         self_: *const HandleStepAP214AppliedPresentedItem,
     ) -> crate::OcctResult<*mut HandleStepAP214AppliedPresentedItem>;
+    /// Check if Handle<StepAP214_AppliedPresentedItem> is null
+    pub fn HandleStepAP214AppliedPresentedItem_is_null(
+        self_: *const HandleStepAP214AppliedPresentedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AppliedPresentedItem
     pub fn HandleStepAP214AppliedPresentedItem_get(
         handle: *const HandleStepAP214AppliedPresentedItem,
@@ -12415,6 +12616,10 @@ extern "C" {
     pub fn HandleStepAP214AppliedSecurityClassificationAssignment_clone(
         self_: *const HandleStepAP214AppliedSecurityClassificationAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AppliedSecurityClassificationAssignment>;
+    /// Check if Handle<StepAP214_AppliedSecurityClassificationAssignment> is null
+    pub fn HandleStepAP214AppliedSecurityClassificationAssignment_is_null(
+        self_: *const HandleStepAP214AppliedSecurityClassificationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AppliedSecurityClassificationAssignment
     pub fn HandleStepAP214AppliedSecurityClassificationAssignment_get(
         handle: *const HandleStepAP214AppliedSecurityClassificationAssignment,
@@ -12717,6 +12922,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignActualDateAndTimeAssignment_clone(
         self_: *const HandleStepAP214AutoDesignActualDateAndTimeAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignActualDateAndTimeAssignment>;
+    /// Check if Handle<StepAP214_AutoDesignActualDateAndTimeAssignment> is null
+    pub fn HandleStepAP214AutoDesignActualDateAndTimeAssignment_is_null(
+        self_: *const HandleStepAP214AutoDesignActualDateAndTimeAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignActualDateAndTimeAssignment
     pub fn HandleStepAP214AutoDesignActualDateAndTimeAssignment_get(
         handle: *const HandleStepAP214AutoDesignActualDateAndTimeAssignment,
@@ -12851,6 +13060,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignActualDateAssignment_clone(
         self_: *const HandleStepAP214AutoDesignActualDateAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignActualDateAssignment>;
+    /// Check if Handle<StepAP214_AutoDesignActualDateAssignment> is null
+    pub fn HandleStepAP214AutoDesignActualDateAssignment_is_null(
+        self_: *const HandleStepAP214AutoDesignActualDateAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignActualDateAssignment
     pub fn HandleStepAP214AutoDesignActualDateAssignment_get(
         handle: *const HandleStepAP214AutoDesignActualDateAssignment,
@@ -12984,6 +13197,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignApprovalAssignment_clone(
         self_: *const HandleStepAP214AutoDesignApprovalAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignApprovalAssignment>;
+    /// Check if Handle<StepAP214_AutoDesignApprovalAssignment> is null
+    pub fn HandleStepAP214AutoDesignApprovalAssignment_is_null(
+        self_: *const HandleStepAP214AutoDesignApprovalAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignApprovalAssignment
     pub fn HandleStepAP214AutoDesignApprovalAssignment_get(
         handle: *const HandleStepAP214AutoDesignApprovalAssignment,
@@ -13109,6 +13326,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignDateAndPersonAssignment_clone(
         self_: *const HandleStepAP214AutoDesignDateAndPersonAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignDateAndPersonAssignment>;
+    /// Check if Handle<StepAP214_AutoDesignDateAndPersonAssignment> is null
+    pub fn HandleStepAP214AutoDesignDateAndPersonAssignment_is_null(
+        self_: *const HandleStepAP214AutoDesignDateAndPersonAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignDateAndPersonAssignment
     pub fn HandleStepAP214AutoDesignDateAndPersonAssignment_get(
         handle: *const HandleStepAP214AutoDesignDateAndPersonAssignment,
@@ -13589,6 +13810,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignDocumentReference_clone(
         self_: *const HandleStepAP214AutoDesignDocumentReference,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignDocumentReference>;
+    /// Check if Handle<StepAP214_AutoDesignDocumentReference> is null
+    pub fn HandleStepAP214AutoDesignDocumentReference_is_null(
+        self_: *const HandleStepAP214AutoDesignDocumentReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignDocumentReference
     pub fn HandleStepAP214AutoDesignDocumentReference_get(
         handle: *const HandleStepAP214AutoDesignDocumentReference,
@@ -13856,6 +14081,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignGroupAssignment_clone(
         self_: *const HandleStepAP214AutoDesignGroupAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignGroupAssignment>;
+    /// Check if Handle<StepAP214_AutoDesignGroupAssignment> is null
+    pub fn HandleStepAP214AutoDesignGroupAssignment_is_null(
+        self_: *const HandleStepAP214AutoDesignGroupAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignGroupAssignment
     pub fn HandleStepAP214AutoDesignGroupAssignment_get(
         handle: *const HandleStepAP214AutoDesignGroupAssignment,
@@ -14119,6 +14348,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignNominalDateAndTimeAssignment_clone(
         self_: *const HandleStepAP214AutoDesignNominalDateAndTimeAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignNominalDateAndTimeAssignment>;
+    /// Check if Handle<StepAP214_AutoDesignNominalDateAndTimeAssignment> is null
+    pub fn HandleStepAP214AutoDesignNominalDateAndTimeAssignment_is_null(
+        self_: *const HandleStepAP214AutoDesignNominalDateAndTimeAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignNominalDateAndTimeAssignment
     pub fn HandleStepAP214AutoDesignNominalDateAndTimeAssignment_get(
         handle: *const HandleStepAP214AutoDesignNominalDateAndTimeAssignment,
@@ -14253,6 +14486,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignNominalDateAssignment_clone(
         self_: *const HandleStepAP214AutoDesignNominalDateAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignNominalDateAssignment>;
+    /// Check if Handle<StepAP214_AutoDesignNominalDateAssignment> is null
+    pub fn HandleStepAP214AutoDesignNominalDateAssignment_is_null(
+        self_: *const HandleStepAP214AutoDesignNominalDateAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignNominalDateAssignment
     pub fn HandleStepAP214AutoDesignNominalDateAssignment_get(
         handle: *const HandleStepAP214AutoDesignNominalDateAssignment,
@@ -14387,6 +14624,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignOrganizationAssignment_clone(
         self_: *const HandleStepAP214AutoDesignOrganizationAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignOrganizationAssignment>;
+    /// Check if Handle<StepAP214_AutoDesignOrganizationAssignment> is null
+    pub fn HandleStepAP214AutoDesignOrganizationAssignment_is_null(
+        self_: *const HandleStepAP214AutoDesignOrganizationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignOrganizationAssignment
     pub fn HandleStepAP214AutoDesignOrganizationAssignment_get(
         handle: *const HandleStepAP214AutoDesignOrganizationAssignment,
@@ -14665,6 +14906,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignPersonAndOrganizationAssignment_clone(
         self_: *const HandleStepAP214AutoDesignPersonAndOrganizationAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignPersonAndOrganizationAssignment>;
+    /// Check if Handle<StepAP214_AutoDesignPersonAndOrganizationAssignment> is null
+    pub fn HandleStepAP214AutoDesignPersonAndOrganizationAssignment_is_null(
+        self_: *const HandleStepAP214AutoDesignPersonAndOrganizationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignPersonAndOrganizationAssignment
     pub fn HandleStepAP214AutoDesignPersonAndOrganizationAssignment_get(
         handle: *const HandleStepAP214AutoDesignPersonAndOrganizationAssignment,
@@ -14797,6 +15042,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignPresentedItem_clone(
         self_: *const HandleStepAP214AutoDesignPresentedItem,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignPresentedItem>;
+    /// Check if Handle<StepAP214_AutoDesignPresentedItem> is null
+    pub fn HandleStepAP214AutoDesignPresentedItem_is_null(
+        self_: *const HandleStepAP214AutoDesignPresentedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignPresentedItem
     pub fn HandleStepAP214AutoDesignPresentedItem_get(
         handle: *const HandleStepAP214AutoDesignPresentedItem,
@@ -15184,6 +15433,10 @@ extern "C" {
     pub fn HandleStepAP214AutoDesignSecurityClassificationAssignment_clone(
         self_: *const HandleStepAP214AutoDesignSecurityClassificationAssignment,
     ) -> crate::OcctResult<*mut HandleStepAP214AutoDesignSecurityClassificationAssignment>;
+    /// Check if Handle<StepAP214_AutoDesignSecurityClassificationAssignment> is null
+    pub fn HandleStepAP214AutoDesignSecurityClassificationAssignment_is_null(
+        self_: *const HandleStepAP214AutoDesignSecurityClassificationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_AutoDesignSecurityClassificationAssignment
     pub fn HandleStepAP214AutoDesignSecurityClassificationAssignment_get(
         handle: *const HandleStepAP214AutoDesignSecurityClassificationAssignment,
@@ -15277,6 +15530,8 @@ extern "C" {
     pub fn HandleStepAP214Class_clone(
         self_: *const HandleStepAP214Class,
     ) -> crate::OcctResult<*mut HandleStepAP214Class>;
+    /// Check if Handle<StepAP214_Class> is null
+    pub fn HandleStepAP214Class_is_null(self_: *const HandleStepAP214Class) -> bool;
     /// Dereference Handle to get *const StepAP214_Class
     pub fn HandleStepAP214Class_get(
         handle: *const HandleStepAP214Class,
@@ -16155,6 +16410,10 @@ extern "C" {
     pub fn HandleStepAP214ExternallyDefinedClass_clone(
         self_: *const HandleStepAP214ExternallyDefinedClass,
     ) -> crate::OcctResult<*mut HandleStepAP214ExternallyDefinedClass>;
+    /// Check if Handle<StepAP214_ExternallyDefinedClass> is null
+    pub fn HandleStepAP214ExternallyDefinedClass_is_null(
+        self_: *const HandleStepAP214ExternallyDefinedClass,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_ExternallyDefinedClass
     pub fn HandleStepAP214ExternallyDefinedClass_get(
         handle: *const HandleStepAP214ExternallyDefinedClass,
@@ -16291,6 +16550,10 @@ extern "C" {
     pub fn HandleStepAP214ExternallyDefinedGeneralProperty_clone(
         self_: *const HandleStepAP214ExternallyDefinedGeneralProperty,
     ) -> crate::OcctResult<*mut HandleStepAP214ExternallyDefinedGeneralProperty>;
+    /// Check if Handle<StepAP214_ExternallyDefinedGeneralProperty> is null
+    pub fn HandleStepAP214ExternallyDefinedGeneralProperty_is_null(
+        self_: *const HandleStepAP214ExternallyDefinedGeneralProperty,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_ExternallyDefinedGeneralProperty
     pub fn HandleStepAP214ExternallyDefinedGeneralProperty_get(
         handle: *const HandleStepAP214ExternallyDefinedGeneralProperty,
@@ -16582,6 +16845,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfApprovalItem_clone(
         self_: *const HandleStepAP214HArray1OfApprovalItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfApprovalItem>;
+    /// Check if Handle<StepAP214_HArray1OfApprovalItem> is null
+    pub fn HandleStepAP214HArray1OfApprovalItem_is_null(
+        self_: *const HandleStepAP214HArray1OfApprovalItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfApprovalItem
     pub fn HandleStepAP214HArray1OfApprovalItem_get(
         handle: *const HandleStepAP214HArray1OfApprovalItem,
@@ -16691,6 +16958,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfAutoDesignDateAndPersonItem_clone(
         self_: *const HandleStepAP214HArray1OfAutoDesignDateAndPersonItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfAutoDesignDateAndPersonItem>;
+    /// Check if Handle<StepAP214_HArray1OfAutoDesignDateAndPersonItem> is null
+    pub fn HandleStepAP214HArray1OfAutoDesignDateAndPersonItem_is_null(
+        self_: *const HandleStepAP214HArray1OfAutoDesignDateAndPersonItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfAutoDesignDateAndPersonItem
     pub fn HandleStepAP214HArray1OfAutoDesignDateAndPersonItem_get(
         handle: *const HandleStepAP214HArray1OfAutoDesignDateAndPersonItem,
@@ -16800,6 +17071,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfAutoDesignDateAndTimeItem_clone(
         self_: *const HandleStepAP214HArray1OfAutoDesignDateAndTimeItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfAutoDesignDateAndTimeItem>;
+    /// Check if Handle<StepAP214_HArray1OfAutoDesignDateAndTimeItem> is null
+    pub fn HandleStepAP214HArray1OfAutoDesignDateAndTimeItem_is_null(
+        self_: *const HandleStepAP214HArray1OfAutoDesignDateAndTimeItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfAutoDesignDateAndTimeItem
     pub fn HandleStepAP214HArray1OfAutoDesignDateAndTimeItem_get(
         handle: *const HandleStepAP214HArray1OfAutoDesignDateAndTimeItem,
@@ -16909,6 +17184,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfAutoDesignDatedItem_clone(
         self_: *const HandleStepAP214HArray1OfAutoDesignDatedItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfAutoDesignDatedItem>;
+    /// Check if Handle<StepAP214_HArray1OfAutoDesignDatedItem> is null
+    pub fn HandleStepAP214HArray1OfAutoDesignDatedItem_is_null(
+        self_: *const HandleStepAP214HArray1OfAutoDesignDatedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfAutoDesignDatedItem
     pub fn HandleStepAP214HArray1OfAutoDesignDatedItem_get(
         handle: *const HandleStepAP214HArray1OfAutoDesignDatedItem,
@@ -17018,6 +17297,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfAutoDesignGeneralOrgItem_clone(
         self_: *const HandleStepAP214HArray1OfAutoDesignGeneralOrgItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfAutoDesignGeneralOrgItem>;
+    /// Check if Handle<StepAP214_HArray1OfAutoDesignGeneralOrgItem> is null
+    pub fn HandleStepAP214HArray1OfAutoDesignGeneralOrgItem_is_null(
+        self_: *const HandleStepAP214HArray1OfAutoDesignGeneralOrgItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfAutoDesignGeneralOrgItem
     pub fn HandleStepAP214HArray1OfAutoDesignGeneralOrgItem_get(
         handle: *const HandleStepAP214HArray1OfAutoDesignGeneralOrgItem,
@@ -17127,6 +17410,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfAutoDesignGroupedItem_clone(
         self_: *const HandleStepAP214HArray1OfAutoDesignGroupedItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfAutoDesignGroupedItem>;
+    /// Check if Handle<StepAP214_HArray1OfAutoDesignGroupedItem> is null
+    pub fn HandleStepAP214HArray1OfAutoDesignGroupedItem_is_null(
+        self_: *const HandleStepAP214HArray1OfAutoDesignGroupedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfAutoDesignGroupedItem
     pub fn HandleStepAP214HArray1OfAutoDesignGroupedItem_get(
         handle: *const HandleStepAP214HArray1OfAutoDesignGroupedItem,
@@ -17236,6 +17523,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfAutoDesignPresentedItemSelect_clone(
         self_: *const HandleStepAP214HArray1OfAutoDesignPresentedItemSelect,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfAutoDesignPresentedItemSelect>;
+    /// Check if Handle<StepAP214_HArray1OfAutoDesignPresentedItemSelect> is null
+    pub fn HandleStepAP214HArray1OfAutoDesignPresentedItemSelect_is_null(
+        self_: *const HandleStepAP214HArray1OfAutoDesignPresentedItemSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfAutoDesignPresentedItemSelect
     pub fn HandleStepAP214HArray1OfAutoDesignPresentedItemSelect_get(
         handle: *const HandleStepAP214HArray1OfAutoDesignPresentedItemSelect,
@@ -17345,6 +17636,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfAutoDesignReferencingItem_clone(
         self_: *const HandleStepAP214HArray1OfAutoDesignReferencingItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfAutoDesignReferencingItem>;
+    /// Check if Handle<StepAP214_HArray1OfAutoDesignReferencingItem> is null
+    pub fn HandleStepAP214HArray1OfAutoDesignReferencingItem_is_null(
+        self_: *const HandleStepAP214HArray1OfAutoDesignReferencingItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfAutoDesignReferencingItem
     pub fn HandleStepAP214HArray1OfAutoDesignReferencingItem_get(
         handle: *const HandleStepAP214HArray1OfAutoDesignReferencingItem,
@@ -17454,6 +17749,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfDateAndTimeItem_clone(
         self_: *const HandleStepAP214HArray1OfDateAndTimeItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfDateAndTimeItem>;
+    /// Check if Handle<StepAP214_HArray1OfDateAndTimeItem> is null
+    pub fn HandleStepAP214HArray1OfDateAndTimeItem_is_null(
+        self_: *const HandleStepAP214HArray1OfDateAndTimeItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfDateAndTimeItem
     pub fn HandleStepAP214HArray1OfDateAndTimeItem_get(
         handle: *const HandleStepAP214HArray1OfDateAndTimeItem,
@@ -17559,6 +17858,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfDateItem_clone(
         self_: *const HandleStepAP214HArray1OfDateItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfDateItem>;
+    /// Check if Handle<StepAP214_HArray1OfDateItem> is null
+    pub fn HandleStepAP214HArray1OfDateItem_is_null(
+        self_: *const HandleStepAP214HArray1OfDateItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfDateItem
     pub fn HandleStepAP214HArray1OfDateItem_get(
         handle: *const HandleStepAP214HArray1OfDateItem,
@@ -17668,6 +17971,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfDocumentReferenceItem_clone(
         self_: *const HandleStepAP214HArray1OfDocumentReferenceItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfDocumentReferenceItem>;
+    /// Check if Handle<StepAP214_HArray1OfDocumentReferenceItem> is null
+    pub fn HandleStepAP214HArray1OfDocumentReferenceItem_is_null(
+        self_: *const HandleStepAP214HArray1OfDocumentReferenceItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfDocumentReferenceItem
     pub fn HandleStepAP214HArray1OfDocumentReferenceItem_get(
         handle: *const HandleStepAP214HArray1OfDocumentReferenceItem,
@@ -17777,6 +18084,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfExternalIdentificationItem_clone(
         self_: *const HandleStepAP214HArray1OfExternalIdentificationItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfExternalIdentificationItem>;
+    /// Check if Handle<StepAP214_HArray1OfExternalIdentificationItem> is null
+    pub fn HandleStepAP214HArray1OfExternalIdentificationItem_is_null(
+        self_: *const HandleStepAP214HArray1OfExternalIdentificationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfExternalIdentificationItem
     pub fn HandleStepAP214HArray1OfExternalIdentificationItem_get(
         handle: *const HandleStepAP214HArray1OfExternalIdentificationItem,
@@ -17883,6 +18194,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfGroupItem_clone(
         self_: *const HandleStepAP214HArray1OfGroupItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfGroupItem>;
+    /// Check if Handle<StepAP214_HArray1OfGroupItem> is null
+    pub fn HandleStepAP214HArray1OfGroupItem_is_null(
+        self_: *const HandleStepAP214HArray1OfGroupItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfGroupItem
     pub fn HandleStepAP214HArray1OfGroupItem_get(
         handle: *const HandleStepAP214HArray1OfGroupItem,
@@ -17992,6 +18307,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfOrganizationItem_clone(
         self_: *const HandleStepAP214HArray1OfOrganizationItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfOrganizationItem>;
+    /// Check if Handle<StepAP214_HArray1OfOrganizationItem> is null
+    pub fn HandleStepAP214HArray1OfOrganizationItem_is_null(
+        self_: *const HandleStepAP214HArray1OfOrganizationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfOrganizationItem
     pub fn HandleStepAP214HArray1OfOrganizationItem_get(
         handle: *const HandleStepAP214HArray1OfOrganizationItem,
@@ -18101,6 +18420,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfPersonAndOrganizationItem_clone(
         self_: *const HandleStepAP214HArray1OfPersonAndOrganizationItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfPersonAndOrganizationItem>;
+    /// Check if Handle<StepAP214_HArray1OfPersonAndOrganizationItem> is null
+    pub fn HandleStepAP214HArray1OfPersonAndOrganizationItem_is_null(
+        self_: *const HandleStepAP214HArray1OfPersonAndOrganizationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfPersonAndOrganizationItem
     pub fn HandleStepAP214HArray1OfPersonAndOrganizationItem_get(
         handle: *const HandleStepAP214HArray1OfPersonAndOrganizationItem,
@@ -18210,6 +18533,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfPresentedItemSelect_clone(
         self_: *const HandleStepAP214HArray1OfPresentedItemSelect,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfPresentedItemSelect>;
+    /// Check if Handle<StepAP214_HArray1OfPresentedItemSelect> is null
+    pub fn HandleStepAP214HArray1OfPresentedItemSelect_is_null(
+        self_: *const HandleStepAP214HArray1OfPresentedItemSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfPresentedItemSelect
     pub fn HandleStepAP214HArray1OfPresentedItemSelect_get(
         handle: *const HandleStepAP214HArray1OfPresentedItemSelect,
@@ -18319,6 +18646,10 @@ extern "C" {
     pub fn HandleStepAP214HArray1OfSecurityClassificationItem_clone(
         self_: *const HandleStepAP214HArray1OfSecurityClassificationItem,
     ) -> crate::OcctResult<*mut HandleStepAP214HArray1OfSecurityClassificationItem>;
+    /// Check if Handle<StepAP214_HArray1OfSecurityClassificationItem> is null
+    pub fn HandleStepAP214HArray1OfSecurityClassificationItem_is_null(
+        self_: *const HandleStepAP214HArray1OfSecurityClassificationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP214_HArray1OfSecurityClassificationItem
     pub fn HandleStepAP214HArray1OfSecurityClassificationItem_get(
         handle: *const HandleStepAP214HArray1OfSecurityClassificationItem,
@@ -18925,6 +19256,8 @@ extern "C" {
     pub fn HandleStepAP214Protocol_clone(
         self_: *const HandleStepAP214Protocol,
     ) -> crate::OcctResult<*mut HandleStepAP214Protocol>;
+    /// Check if Handle<StepAP214_Protocol> is null
+    pub fn HandleStepAP214Protocol_is_null(self_: *const HandleStepAP214Protocol) -> bool;
     /// Dereference Handle to get *const StepAP214_Protocol
     pub fn HandleStepAP214Protocol_get(
         handle: *const HandleStepAP214Protocol,
@@ -19112,6 +19445,8 @@ extern "C" {
     pub fn HandleStepAP214RepItemGroup_clone(
         self_: *const HandleStepAP214RepItemGroup,
     ) -> crate::OcctResult<*mut HandleStepAP214RepItemGroup>;
+    /// Check if Handle<StepAP214_RepItemGroup> is null
+    pub fn HandleStepAP214RepItemGroup_is_null(self_: *const HandleStepAP214RepItemGroup) -> bool;
     /// Dereference Handle to get *const StepAP214_RepItemGroup
     pub fn HandleStepAP214RepItemGroup_get(
         handle: *const HandleStepAP214RepItemGroup,
@@ -19453,6 +19788,10 @@ extern "C" {
     pub fn HandleStepAP242DraughtingModelItemAssociation_clone(
         self_: *const HandleStepAP242DraughtingModelItemAssociation,
     ) -> crate::OcctResult<*mut HandleStepAP242DraughtingModelItemAssociation>;
+    /// Check if Handle<StepAP242_DraughtingModelItemAssociation> is null
+    pub fn HandleStepAP242DraughtingModelItemAssociation_is_null(
+        self_: *const HandleStepAP242DraughtingModelItemAssociation,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP242_DraughtingModelItemAssociation
     pub fn HandleStepAP242DraughtingModelItemAssociation_get(
         handle: *const HandleStepAP242DraughtingModelItemAssociation,
@@ -19613,6 +19952,10 @@ extern "C" {
     pub fn HandleStepAP242GeometricItemSpecificUsage_clone(
         self_: *const HandleStepAP242GeometricItemSpecificUsage,
     ) -> crate::OcctResult<*mut HandleStepAP242GeometricItemSpecificUsage>;
+    /// Check if Handle<StepAP242_GeometricItemSpecificUsage> is null
+    pub fn HandleStepAP242GeometricItemSpecificUsage_is_null(
+        self_: *const HandleStepAP242GeometricItemSpecificUsage,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP242_GeometricItemSpecificUsage
     pub fn HandleStepAP242GeometricItemSpecificUsage_get(
         handle: *const HandleStepAP242GeometricItemSpecificUsage,
@@ -19783,6 +20126,8 @@ extern "C" {
     pub fn HandleStepAP242IdAttribute_clone(
         self_: *const HandleStepAP242IdAttribute,
     ) -> crate::OcctResult<*mut HandleStepAP242IdAttribute>;
+    /// Check if Handle<StepAP242_IdAttribute> is null
+    pub fn HandleStepAP242IdAttribute_is_null(self_: *const HandleStepAP242IdAttribute) -> bool;
     /// Dereference Handle to get *const StepAP242_IdAttribute
     pub fn HandleStepAP242IdAttribute_get(
         handle: *const HandleStepAP242IdAttribute,
@@ -20068,6 +20413,10 @@ extern "C" {
     pub fn HandleStepAP242ItemIdentifiedRepresentationUsage_clone(
         self_: *const HandleStepAP242ItemIdentifiedRepresentationUsage,
     ) -> crate::OcctResult<*mut HandleStepAP242ItemIdentifiedRepresentationUsage>;
+    /// Check if Handle<StepAP242_ItemIdentifiedRepresentationUsage> is null
+    pub fn HandleStepAP242ItemIdentifiedRepresentationUsage_is_null(
+        self_: *const HandleStepAP242ItemIdentifiedRepresentationUsage,
+    ) -> bool;
     /// Dereference Handle to get *const StepAP242_ItemIdentifiedRepresentationUsage
     pub fn HandleStepAP242ItemIdentifiedRepresentationUsage_get(
         handle: *const HandleStepAP242ItemIdentifiedRepresentationUsage,
@@ -20351,6 +20700,8 @@ extern "C" {
     pub fn HandleStepBasicAction_clone(
         self_: *const HandleStepBasicAction,
     ) -> crate::OcctResult<*mut HandleStepBasicAction>;
+    /// Check if Handle<StepBasic_Action> is null
+    pub fn HandleStepBasicAction_is_null(self_: *const HandleStepBasicAction) -> bool;
     /// Dereference Handle to get *const StepBasic_Action
     pub fn HandleStepBasicAction_get(
         handle: *const HandleStepBasicAction,
@@ -20438,6 +20789,10 @@ extern "C" {
     pub fn HandleStepBasicActionAssignment_clone(
         self_: *const HandleStepBasicActionAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicActionAssignment>;
+    /// Check if Handle<StepBasic_ActionAssignment> is null
+    pub fn HandleStepBasicActionAssignment_is_null(
+        self_: *const HandleStepBasicActionAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ActionAssignment
     pub fn HandleStepBasicActionAssignment_get(
         handle: *const HandleStepBasicActionAssignment,
@@ -20568,6 +20923,8 @@ extern "C" {
     pub fn HandleStepBasicActionMethod_clone(
         self_: *const HandleStepBasicActionMethod,
     ) -> crate::OcctResult<*mut HandleStepBasicActionMethod>;
+    /// Check if Handle<StepBasic_ActionMethod> is null
+    pub fn HandleStepBasicActionMethod_is_null(self_: *const HandleStepBasicActionMethod) -> bool;
     /// Dereference Handle to get *const StepBasic_ActionMethod
     pub fn HandleStepBasicActionMethod_get(
         handle: *const HandleStepBasicActionMethod,
@@ -20661,6 +21018,10 @@ extern "C" {
     pub fn HandleStepBasicActionRequestAssignment_clone(
         self_: *const HandleStepBasicActionRequestAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicActionRequestAssignment>;
+    /// Check if Handle<StepBasic_ActionRequestAssignment> is null
+    pub fn HandleStepBasicActionRequestAssignment_is_null(
+        self_: *const HandleStepBasicActionRequestAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ActionRequestAssignment
     pub fn HandleStepBasicActionRequestAssignment_get(
         handle: *const HandleStepBasicActionRequestAssignment,
@@ -20770,6 +21131,10 @@ extern "C" {
     pub fn HandleStepBasicActionRequestSolution_clone(
         self_: *const HandleStepBasicActionRequestSolution,
     ) -> crate::OcctResult<*mut HandleStepBasicActionRequestSolution>;
+    /// Check if Handle<StepBasic_ActionRequestSolution> is null
+    pub fn HandleStepBasicActionRequestSolution_is_null(
+        self_: *const HandleStepBasicActionRequestSolution,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ActionRequestSolution
     pub fn HandleStepBasicActionRequestSolution_get(
         handle: *const HandleStepBasicActionRequestSolution,
@@ -21068,6 +21433,8 @@ extern "C" {
     pub fn HandleStepBasicAddress_clone(
         self_: *const HandleStepBasicAddress,
     ) -> crate::OcctResult<*mut HandleStepBasicAddress>;
+    /// Check if Handle<StepBasic_Address> is null
+    pub fn HandleStepBasicAddress_is_null(self_: *const HandleStepBasicAddress) -> bool;
     /// Dereference Handle to get *const StepBasic_Address
     pub fn HandleStepBasicAddress_get(
         handle: *const HandleStepBasicAddress,
@@ -21166,6 +21533,10 @@ extern "C" {
     pub fn HandleStepBasicApplicationContext_clone(
         self_: *const HandleStepBasicApplicationContext,
     ) -> crate::OcctResult<*mut HandleStepBasicApplicationContext>;
+    /// Check if Handle<StepBasic_ApplicationContext> is null
+    pub fn HandleStepBasicApplicationContext_is_null(
+        self_: *const HandleStepBasicApplicationContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ApplicationContext
     pub fn HandleStepBasicApplicationContext_get(
         handle: *const HandleStepBasicApplicationContext,
@@ -21269,6 +21640,10 @@ extern "C" {
     pub fn HandleStepBasicApplicationContextElement_clone(
         self_: *const HandleStepBasicApplicationContextElement,
     ) -> crate::OcctResult<*mut HandleStepBasicApplicationContextElement>;
+    /// Check if Handle<StepBasic_ApplicationContextElement> is null
+    pub fn HandleStepBasicApplicationContextElement_is_null(
+        self_: *const HandleStepBasicApplicationContextElement,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ApplicationContextElement
     pub fn HandleStepBasicApplicationContextElement_get(
         handle: *const HandleStepBasicApplicationContextElement,
@@ -21412,6 +21787,10 @@ extern "C" {
     pub fn HandleStepBasicApplicationProtocolDefinition_clone(
         self_: *const HandleStepBasicApplicationProtocolDefinition,
     ) -> crate::OcctResult<*mut HandleStepBasicApplicationProtocolDefinition>;
+    /// Check if Handle<StepBasic_ApplicationProtocolDefinition> is null
+    pub fn HandleStepBasicApplicationProtocolDefinition_is_null(
+        self_: *const HandleStepBasicApplicationProtocolDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ApplicationProtocolDefinition
     pub fn HandleStepBasicApplicationProtocolDefinition_get(
         handle: *const HandleStepBasicApplicationProtocolDefinition,
@@ -21508,6 +21887,8 @@ extern "C" {
     pub fn HandleStepBasicApproval_clone(
         self_: *const HandleStepBasicApproval,
     ) -> crate::OcctResult<*mut HandleStepBasicApproval>;
+    /// Check if Handle<StepBasic_Approval> is null
+    pub fn HandleStepBasicApproval_is_null(self_: *const HandleStepBasicApproval) -> bool;
     /// Dereference Handle to get *const StepBasic_Approval
     pub fn HandleStepBasicApproval_get(
         handle: *const HandleStepBasicApproval,
@@ -21598,6 +21979,10 @@ extern "C" {
     pub fn HandleStepBasicApprovalAssignment_clone(
         self_: *const HandleStepBasicApprovalAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicApprovalAssignment>;
+    /// Check if Handle<StepBasic_ApprovalAssignment> is null
+    pub fn HandleStepBasicApprovalAssignment_is_null(
+        self_: *const HandleStepBasicApprovalAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ApprovalAssignment
     pub fn HandleStepBasicApprovalAssignment_get(
         handle: *const HandleStepBasicApprovalAssignment,
@@ -21707,6 +22092,10 @@ extern "C" {
     pub fn HandleStepBasicApprovalDateTime_clone(
         self_: *const HandleStepBasicApprovalDateTime,
     ) -> crate::OcctResult<*mut HandleStepBasicApprovalDateTime>;
+    /// Check if Handle<StepBasic_ApprovalDateTime> is null
+    pub fn HandleStepBasicApprovalDateTime_is_null(
+        self_: *const HandleStepBasicApprovalDateTime,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ApprovalDateTime
     pub fn HandleStepBasicApprovalDateTime_get(
         handle: *const HandleStepBasicApprovalDateTime,
@@ -21820,6 +22209,10 @@ extern "C" {
     pub fn HandleStepBasicApprovalPersonOrganization_clone(
         self_: *const HandleStepBasicApprovalPersonOrganization,
     ) -> crate::OcctResult<*mut HandleStepBasicApprovalPersonOrganization>;
+    /// Check if Handle<StepBasic_ApprovalPersonOrganization> is null
+    pub fn HandleStepBasicApprovalPersonOrganization_is_null(
+        self_: *const HandleStepBasicApprovalPersonOrganization,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ApprovalPersonOrganization
     pub fn HandleStepBasicApprovalPersonOrganization_get(
         handle: *const HandleStepBasicApprovalPersonOrganization,
@@ -21941,6 +22334,10 @@ extern "C" {
     pub fn HandleStepBasicApprovalRelationship_clone(
         self_: *const HandleStepBasicApprovalRelationship,
     ) -> crate::OcctResult<*mut HandleStepBasicApprovalRelationship>;
+    /// Check if Handle<StepBasic_ApprovalRelationship> is null
+    pub fn HandleStepBasicApprovalRelationship_is_null(
+        self_: *const HandleStepBasicApprovalRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ApprovalRelationship
     pub fn HandleStepBasicApprovalRelationship_get(
         handle: *const HandleStepBasicApprovalRelationship,
@@ -22028,6 +22425,8 @@ extern "C" {
     pub fn HandleStepBasicApprovalRole_clone(
         self_: *const HandleStepBasicApprovalRole,
     ) -> crate::OcctResult<*mut HandleStepBasicApprovalRole>;
+    /// Check if Handle<StepBasic_ApprovalRole> is null
+    pub fn HandleStepBasicApprovalRole_is_null(self_: *const HandleStepBasicApprovalRole) -> bool;
     /// Dereference Handle to get *const StepBasic_ApprovalRole
     pub fn HandleStepBasicApprovalRole_get(
         handle: *const HandleStepBasicApprovalRole,
@@ -22115,6 +22514,10 @@ extern "C" {
     pub fn HandleStepBasicApprovalStatus_clone(
         self_: *const HandleStepBasicApprovalStatus,
     ) -> crate::OcctResult<*mut HandleStepBasicApprovalStatus>;
+    /// Check if Handle<StepBasic_ApprovalStatus> is null
+    pub fn HandleStepBasicApprovalStatus_is_null(
+        self_: *const HandleStepBasicApprovalStatus,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ApprovalStatus
     pub fn HandleStepBasicApprovalStatus_get(
         handle: *const HandleStepBasicApprovalStatus,
@@ -22195,6 +22598,8 @@ extern "C" {
     pub fn HandleStepBasicAreaUnit_clone(
         self_: *const HandleStepBasicAreaUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicAreaUnit>;
+    /// Check if Handle<StepBasic_AreaUnit> is null
+    pub fn HandleStepBasicAreaUnit_is_null(self_: *const HandleStepBasicAreaUnit) -> bool;
     /// Dereference Handle to get *const StepBasic_AreaUnit
     pub fn HandleStepBasicAreaUnit_get(
         handle: *const HandleStepBasicAreaUnit,
@@ -22319,6 +22724,8 @@ extern "C" {
     pub fn HandleStepBasicCalendarDate_clone(
         self_: *const HandleStepBasicCalendarDate,
     ) -> crate::OcctResult<*mut HandleStepBasicCalendarDate>;
+    /// Check if Handle<StepBasic_CalendarDate> is null
+    pub fn HandleStepBasicCalendarDate_is_null(self_: *const HandleStepBasicCalendarDate) -> bool;
     /// Dereference Handle to get *const StepBasic_CalendarDate
     pub fn HandleStepBasicCalendarDate_get(
         handle: *const HandleStepBasicCalendarDate,
@@ -22439,6 +22846,9 @@ extern "C" {
     pub fn HandleStepBasicCertification_clone(
         self_: *const HandleStepBasicCertification,
     ) -> crate::OcctResult<*mut HandleStepBasicCertification>;
+    /// Check if Handle<StepBasic_Certification> is null
+    pub fn HandleStepBasicCertification_is_null(self_: *const HandleStepBasicCertification)
+        -> bool;
     /// Dereference Handle to get *const StepBasic_Certification
     pub fn HandleStepBasicCertification_get(
         handle: *const HandleStepBasicCertification,
@@ -22532,6 +22942,10 @@ extern "C" {
     pub fn HandleStepBasicCertificationAssignment_clone(
         self_: *const HandleStepBasicCertificationAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicCertificationAssignment>;
+    /// Check if Handle<StepBasic_CertificationAssignment> is null
+    pub fn HandleStepBasicCertificationAssignment_is_null(
+        self_: *const HandleStepBasicCertificationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_CertificationAssignment
     pub fn HandleStepBasicCertificationAssignment_get(
         handle: *const HandleStepBasicCertificationAssignment,
@@ -22625,6 +23039,10 @@ extern "C" {
     pub fn HandleStepBasicCertificationType_clone(
         self_: *const HandleStepBasicCertificationType,
     ) -> crate::OcctResult<*mut HandleStepBasicCertificationType>;
+    /// Check if Handle<StepBasic_CertificationType> is null
+    pub fn HandleStepBasicCertificationType_is_null(
+        self_: *const HandleStepBasicCertificationType,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_CertificationType
     pub fn HandleStepBasicCertificationType_get(
         handle: *const HandleStepBasicCertificationType,
@@ -22731,6 +23149,10 @@ extern "C" {
     pub fn HandleStepBasicCharacterizedObject_clone(
         self_: *const HandleStepBasicCharacterizedObject,
     ) -> crate::OcctResult<*mut HandleStepBasicCharacterizedObject>;
+    /// Check if Handle<StepBasic_CharacterizedObject> is null
+    pub fn HandleStepBasicCharacterizedObject_is_null(
+        self_: *const HandleStepBasicCharacterizedObject,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_CharacterizedObject
     pub fn HandleStepBasicCharacterizedObject_get(
         handle: *const HandleStepBasicCharacterizedObject,
@@ -22837,6 +23259,8 @@ extern "C" {
     pub fn HandleStepBasicContract_clone(
         self_: *const HandleStepBasicContract,
     ) -> crate::OcctResult<*mut HandleStepBasicContract>;
+    /// Check if Handle<StepBasic_Contract> is null
+    pub fn HandleStepBasicContract_is_null(self_: *const HandleStepBasicContract) -> bool;
     /// Dereference Handle to get *const StepBasic_Contract
     pub fn HandleStepBasicContract_get(
         handle: *const HandleStepBasicContract,
@@ -22927,6 +23351,10 @@ extern "C" {
     pub fn HandleStepBasicContractAssignment_clone(
         self_: *const HandleStepBasicContractAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicContractAssignment>;
+    /// Check if Handle<StepBasic_ContractAssignment> is null
+    pub fn HandleStepBasicContractAssignment_is_null(
+        self_: *const HandleStepBasicContractAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ContractAssignment
     pub fn HandleStepBasicContractAssignment_get(
         handle: *const HandleStepBasicContractAssignment,
@@ -23018,6 +23446,8 @@ extern "C" {
     pub fn HandleStepBasicContractType_clone(
         self_: *const HandleStepBasicContractType,
     ) -> crate::OcctResult<*mut HandleStepBasicContractType>;
+    /// Check if Handle<StepBasic_ContractType> is null
+    pub fn HandleStepBasicContractType_is_null(self_: *const HandleStepBasicContractType) -> bool;
     /// Dereference Handle to get *const StepBasic_ContractType
     pub fn HandleStepBasicContractType_get(
         handle: *const HandleStepBasicContractType,
@@ -23128,6 +23558,10 @@ extern "C" {
     pub fn HandleStepBasicConversionBasedUnit_clone(
         self_: *const HandleStepBasicConversionBasedUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicConversionBasedUnit>;
+    /// Check if Handle<StepBasic_ConversionBasedUnit> is null
+    pub fn HandleStepBasicConversionBasedUnit_is_null(
+        self_: *const HandleStepBasicConversionBasedUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ConversionBasedUnit
     pub fn HandleStepBasicConversionBasedUnit_get(
         handle: *const HandleStepBasicConversionBasedUnit,
@@ -23277,6 +23711,10 @@ extern "C" {
     pub fn HandleStepBasicConversionBasedUnitAndAreaUnit_clone(
         self_: *const HandleStepBasicConversionBasedUnitAndAreaUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicConversionBasedUnitAndAreaUnit>;
+    /// Check if Handle<StepBasic_ConversionBasedUnitAndAreaUnit> is null
+    pub fn HandleStepBasicConversionBasedUnitAndAreaUnit_is_null(
+        self_: *const HandleStepBasicConversionBasedUnitAndAreaUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ConversionBasedUnitAndAreaUnit
     pub fn HandleStepBasicConversionBasedUnitAndAreaUnit_get(
         handle: *const HandleStepBasicConversionBasedUnitAndAreaUnit,
@@ -23430,6 +23868,10 @@ extern "C" {
     pub fn HandleStepBasicConversionBasedUnitAndLengthUnit_clone(
         self_: *const HandleStepBasicConversionBasedUnitAndLengthUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicConversionBasedUnitAndLengthUnit>;
+    /// Check if Handle<StepBasic_ConversionBasedUnitAndLengthUnit> is null
+    pub fn HandleStepBasicConversionBasedUnitAndLengthUnit_is_null(
+        self_: *const HandleStepBasicConversionBasedUnitAndLengthUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ConversionBasedUnitAndLengthUnit
     pub fn HandleStepBasicConversionBasedUnitAndLengthUnit_get(
         handle: *const HandleStepBasicConversionBasedUnitAndLengthUnit,
@@ -23576,6 +24018,10 @@ extern "C" {
     pub fn HandleStepBasicConversionBasedUnitAndMassUnit_clone(
         self_: *const HandleStepBasicConversionBasedUnitAndMassUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicConversionBasedUnitAndMassUnit>;
+    /// Check if Handle<StepBasic_ConversionBasedUnitAndMassUnit> is null
+    pub fn HandleStepBasicConversionBasedUnitAndMassUnit_is_null(
+        self_: *const HandleStepBasicConversionBasedUnitAndMassUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ConversionBasedUnitAndMassUnit
     pub fn HandleStepBasicConversionBasedUnitAndMassUnit_get(
         handle: *const HandleStepBasicConversionBasedUnitAndMassUnit,
@@ -23722,6 +24168,10 @@ extern "C" {
     pub fn HandleStepBasicConversionBasedUnitAndPlaneAngleUnit_clone(
         self_: *const HandleStepBasicConversionBasedUnitAndPlaneAngleUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicConversionBasedUnitAndPlaneAngleUnit>;
+    /// Check if Handle<StepBasic_ConversionBasedUnitAndPlaneAngleUnit> is null
+    pub fn HandleStepBasicConversionBasedUnitAndPlaneAngleUnit_is_null(
+        self_: *const HandleStepBasicConversionBasedUnitAndPlaneAngleUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ConversionBasedUnitAndPlaneAngleUnit
     pub fn HandleStepBasicConversionBasedUnitAndPlaneAngleUnit_get(
         handle: *const HandleStepBasicConversionBasedUnitAndPlaneAngleUnit,
@@ -23868,6 +24318,10 @@ extern "C" {
     pub fn HandleStepBasicConversionBasedUnitAndRatioUnit_clone(
         self_: *const HandleStepBasicConversionBasedUnitAndRatioUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicConversionBasedUnitAndRatioUnit>;
+    /// Check if Handle<StepBasic_ConversionBasedUnitAndRatioUnit> is null
+    pub fn HandleStepBasicConversionBasedUnitAndRatioUnit_is_null(
+        self_: *const HandleStepBasicConversionBasedUnitAndRatioUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ConversionBasedUnitAndRatioUnit
     pub fn HandleStepBasicConversionBasedUnitAndRatioUnit_get(
         handle: *const HandleStepBasicConversionBasedUnitAndRatioUnit,
@@ -24014,6 +24468,10 @@ extern "C" {
     pub fn HandleStepBasicConversionBasedUnitAndSolidAngleUnit_clone(
         self_: *const HandleStepBasicConversionBasedUnitAndSolidAngleUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicConversionBasedUnitAndSolidAngleUnit>;
+    /// Check if Handle<StepBasic_ConversionBasedUnitAndSolidAngleUnit> is null
+    pub fn HandleStepBasicConversionBasedUnitAndSolidAngleUnit_is_null(
+        self_: *const HandleStepBasicConversionBasedUnitAndSolidAngleUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ConversionBasedUnitAndSolidAngleUnit
     pub fn HandleStepBasicConversionBasedUnitAndSolidAngleUnit_get(
         handle: *const HandleStepBasicConversionBasedUnitAndSolidAngleUnit,
@@ -24160,6 +24618,10 @@ extern "C" {
     pub fn HandleStepBasicConversionBasedUnitAndTimeUnit_clone(
         self_: *const HandleStepBasicConversionBasedUnitAndTimeUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicConversionBasedUnitAndTimeUnit>;
+    /// Check if Handle<StepBasic_ConversionBasedUnitAndTimeUnit> is null
+    pub fn HandleStepBasicConversionBasedUnitAndTimeUnit_is_null(
+        self_: *const HandleStepBasicConversionBasedUnitAndTimeUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ConversionBasedUnitAndTimeUnit
     pub fn HandleStepBasicConversionBasedUnitAndTimeUnit_get(
         handle: *const HandleStepBasicConversionBasedUnitAndTimeUnit,
@@ -24299,6 +24761,10 @@ extern "C" {
     pub fn HandleStepBasicConversionBasedUnitAndVolumeUnit_clone(
         self_: *const HandleStepBasicConversionBasedUnitAndVolumeUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicConversionBasedUnitAndVolumeUnit>;
+    /// Check if Handle<StepBasic_ConversionBasedUnitAndVolumeUnit> is null
+    pub fn HandleStepBasicConversionBasedUnitAndVolumeUnit_is_null(
+        self_: *const HandleStepBasicConversionBasedUnitAndVolumeUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ConversionBasedUnitAndVolumeUnit
     pub fn HandleStepBasicConversionBasedUnitAndVolumeUnit_get(
         handle: *const HandleStepBasicConversionBasedUnitAndVolumeUnit,
@@ -24463,6 +24929,10 @@ extern "C" {
     pub fn HandleStepBasicCoordinatedUniversalTimeOffset_clone(
         self_: *const HandleStepBasicCoordinatedUniversalTimeOffset,
     ) -> crate::OcctResult<*mut HandleStepBasicCoordinatedUniversalTimeOffset>;
+    /// Check if Handle<StepBasic_CoordinatedUniversalTimeOffset> is null
+    pub fn HandleStepBasicCoordinatedUniversalTimeOffset_is_null(
+        self_: *const HandleStepBasicCoordinatedUniversalTimeOffset,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_CoordinatedUniversalTimeOffset
     pub fn HandleStepBasicCoordinatedUniversalTimeOffset_get(
         handle: *const HandleStepBasicCoordinatedUniversalTimeOffset,
@@ -24547,6 +25017,8 @@ extern "C" {
     pub fn HandleStepBasicDate_clone(
         self_: *const HandleStepBasicDate,
     ) -> crate::OcctResult<*mut HandleStepBasicDate>;
+    /// Check if Handle<StepBasic_Date> is null
+    pub fn HandleStepBasicDate_is_null(self_: *const HandleStepBasicDate) -> bool;
     /// Dereference Handle to get *const StepBasic_Date
     pub fn HandleStepBasicDate_get(
         handle: *const HandleStepBasicDate,
@@ -24655,6 +25127,8 @@ extern "C" {
     pub fn HandleStepBasicDateAndTime_clone(
         self_: *const HandleStepBasicDateAndTime,
     ) -> crate::OcctResult<*mut HandleStepBasicDateAndTime>;
+    /// Check if Handle<StepBasic_DateAndTime> is null
+    pub fn HandleStepBasicDateAndTime_is_null(self_: *const HandleStepBasicDateAndTime) -> bool;
     /// Dereference Handle to get *const StepBasic_DateAndTime
     pub fn HandleStepBasicDateAndTime_get(
         handle: *const HandleStepBasicDateAndTime,
@@ -24756,6 +25230,10 @@ extern "C" {
     pub fn HandleStepBasicDateAndTimeAssignment_clone(
         self_: *const HandleStepBasicDateAndTimeAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicDateAndTimeAssignment>;
+    /// Check if Handle<StepBasic_DateAndTimeAssignment> is null
+    pub fn HandleStepBasicDateAndTimeAssignment_is_null(
+        self_: *const HandleStepBasicDateAndTimeAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_DateAndTimeAssignment
     pub fn HandleStepBasicDateAndTimeAssignment_get(
         handle: *const HandleStepBasicDateAndTimeAssignment,
@@ -24869,6 +25347,10 @@ extern "C" {
     pub fn HandleStepBasicDateAssignment_clone(
         self_: *const HandleStepBasicDateAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicDateAssignment>;
+    /// Check if Handle<StepBasic_DateAssignment> is null
+    pub fn HandleStepBasicDateAssignment_is_null(
+        self_: *const HandleStepBasicDateAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_DateAssignment
     pub fn HandleStepBasicDateAssignment_get(
         handle: *const HandleStepBasicDateAssignment,
@@ -24967,6 +25449,8 @@ extern "C" {
     pub fn HandleStepBasicDateRole_clone(
         self_: *const HandleStepBasicDateRole,
     ) -> crate::OcctResult<*mut HandleStepBasicDateRole>;
+    /// Check if Handle<StepBasic_DateRole> is null
+    pub fn HandleStepBasicDateRole_is_null(self_: *const HandleStepBasicDateRole) -> bool;
     /// Dereference Handle to get *const StepBasic_DateRole
     pub fn HandleStepBasicDateRole_get(
         handle: *const HandleStepBasicDateRole,
@@ -25054,6 +25538,8 @@ extern "C" {
     pub fn HandleStepBasicDateTimeRole_clone(
         self_: *const HandleStepBasicDateTimeRole,
     ) -> crate::OcctResult<*mut HandleStepBasicDateTimeRole>;
+    /// Check if Handle<StepBasic_DateTimeRole> is null
+    pub fn HandleStepBasicDateTimeRole_is_null(self_: *const HandleStepBasicDateTimeRole) -> bool;
     /// Dereference Handle to get *const StepBasic_DateTimeRole
     pub fn HandleStepBasicDateTimeRole_get(
         handle: *const HandleStepBasicDateTimeRole,
@@ -25255,6 +25741,8 @@ extern "C" {
     pub fn HandleStepBasicDerivedUnit_clone(
         self_: *const HandleStepBasicDerivedUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicDerivedUnit>;
+    /// Check if Handle<StepBasic_DerivedUnit> is null
+    pub fn HandleStepBasicDerivedUnit_is_null(self_: *const HandleStepBasicDerivedUnit) -> bool;
     /// Dereference Handle to get *const StepBasic_DerivedUnit
     pub fn HandleStepBasicDerivedUnit_get(
         handle: *const HandleStepBasicDerivedUnit,
@@ -25355,6 +25843,10 @@ extern "C" {
     pub fn HandleStepBasicDerivedUnitElement_clone(
         self_: *const HandleStepBasicDerivedUnitElement,
     ) -> crate::OcctResult<*mut HandleStepBasicDerivedUnitElement>;
+    /// Check if Handle<StepBasic_DerivedUnitElement> is null
+    pub fn HandleStepBasicDerivedUnitElement_is_null(
+        self_: *const HandleStepBasicDerivedUnitElement,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_DerivedUnitElement
     pub fn HandleStepBasicDerivedUnitElement_get(
         handle: *const HandleStepBasicDerivedUnitElement,
@@ -25444,6 +25936,9 @@ extern "C" {
     pub fn HandleStepBasicDesignContext_clone(
         self_: *const HandleStepBasicDesignContext,
     ) -> crate::OcctResult<*mut HandleStepBasicDesignContext>;
+    /// Check if Handle<StepBasic_DesignContext> is null
+    pub fn HandleStepBasicDesignContext_is_null(self_: *const HandleStepBasicDesignContext)
+        -> bool;
     /// Dereference Handle to get *const StepBasic_DesignContext
     pub fn HandleStepBasicDesignContext_get(
         handle: *const HandleStepBasicDesignContext,
@@ -25567,6 +26062,10 @@ extern "C" {
     pub fn HandleStepBasicDigitalDocument_clone(
         self_: *const HandleStepBasicDigitalDocument,
     ) -> crate::OcctResult<*mut HandleStepBasicDigitalDocument>;
+    /// Check if Handle<StepBasic_DigitalDocument> is null
+    pub fn HandleStepBasicDigitalDocument_is_null(
+        self_: *const HandleStepBasicDigitalDocument,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_DigitalDocument
     pub fn HandleStepBasicDigitalDocument_get(
         handle: *const HandleStepBasicDigitalDocument,
@@ -25771,6 +26270,10 @@ extern "C" {
     pub fn HandleStepBasicDimensionalExponents_clone(
         self_: *const HandleStepBasicDimensionalExponents,
     ) -> crate::OcctResult<*mut HandleStepBasicDimensionalExponents>;
+    /// Check if Handle<StepBasic_DimensionalExponents> is null
+    pub fn HandleStepBasicDimensionalExponents_is_null(
+        self_: *const HandleStepBasicDimensionalExponents,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_DimensionalExponents
     pub fn HandleStepBasicDimensionalExponents_get(
         handle: *const HandleStepBasicDimensionalExponents,
@@ -25892,6 +26395,8 @@ extern "C" {
     pub fn HandleStepBasicDocument_clone(
         self_: *const HandleStepBasicDocument,
     ) -> crate::OcctResult<*mut HandleStepBasicDocument>;
+    /// Check if Handle<StepBasic_Document> is null
+    pub fn HandleStepBasicDocument_is_null(self_: *const HandleStepBasicDocument) -> bool;
     /// Dereference Handle to get *const StepBasic_Document
     pub fn HandleStepBasicDocument_get(
         handle: *const HandleStepBasicDocument,
@@ -26002,6 +26507,8 @@ extern "C" {
     pub fn HandleStepBasicDocumentFile_clone(
         self_: *const HandleStepBasicDocumentFile,
     ) -> crate::OcctResult<*mut HandleStepBasicDocumentFile>;
+    /// Check if Handle<StepBasic_DocumentFile> is null
+    pub fn HandleStepBasicDocumentFile_is_null(self_: *const HandleStepBasicDocumentFile) -> bool;
     /// Dereference Handle to get *const StepBasic_DocumentFile
     pub fn HandleStepBasicDocumentFile_get(
         handle: *const HandleStepBasicDocumentFile,
@@ -26174,6 +26681,10 @@ extern "C" {
     pub fn HandleStepBasicDocumentProductAssociation_clone(
         self_: *const HandleStepBasicDocumentProductAssociation,
     ) -> crate::OcctResult<*mut HandleStepBasicDocumentProductAssociation>;
+    /// Check if Handle<StepBasic_DocumentProductAssociation> is null
+    pub fn HandleStepBasicDocumentProductAssociation_is_null(
+        self_: *const HandleStepBasicDocumentProductAssociation,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_DocumentProductAssociation
     pub fn HandleStepBasicDocumentProductAssociation_get(
         handle: *const HandleStepBasicDocumentProductAssociation,
@@ -26265,6 +26776,10 @@ extern "C" {
     pub fn HandleStepBasicDocumentProductEquivalence_clone(
         self_: *const HandleStepBasicDocumentProductEquivalence,
     ) -> crate::OcctResult<*mut HandleStepBasicDocumentProductEquivalence>;
+    /// Check if Handle<StepBasic_DocumentProductEquivalence> is null
+    pub fn HandleStepBasicDocumentProductEquivalence_is_null(
+        self_: *const HandleStepBasicDocumentProductEquivalence,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_DocumentProductEquivalence
     pub fn HandleStepBasicDocumentProductEquivalence_get(
         handle: *const HandleStepBasicDocumentProductEquivalence,
@@ -26417,6 +26932,10 @@ extern "C" {
     pub fn HandleStepBasicDocumentReference_clone(
         self_: *const HandleStepBasicDocumentReference,
     ) -> crate::OcctResult<*mut HandleStepBasicDocumentReference>;
+    /// Check if Handle<StepBasic_DocumentReference> is null
+    pub fn HandleStepBasicDocumentReference_is_null(
+        self_: *const HandleStepBasicDocumentReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_DocumentReference
     pub fn HandleStepBasicDocumentReference_get(
         handle: *const HandleStepBasicDocumentReference,
@@ -26550,6 +27069,10 @@ extern "C" {
     pub fn HandleStepBasicDocumentRelationship_clone(
         self_: *const HandleStepBasicDocumentRelationship,
     ) -> crate::OcctResult<*mut HandleStepBasicDocumentRelationship>;
+    /// Check if Handle<StepBasic_DocumentRelationship> is null
+    pub fn HandleStepBasicDocumentRelationship_is_null(
+        self_: *const HandleStepBasicDocumentRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_DocumentRelationship
     pub fn HandleStepBasicDocumentRelationship_get(
         handle: *const HandleStepBasicDocumentRelationship,
@@ -26653,6 +27176,10 @@ extern "C" {
     pub fn HandleStepBasicDocumentRepresentationType_clone(
         self_: *const HandleStepBasicDocumentRepresentationType,
     ) -> crate::OcctResult<*mut HandleStepBasicDocumentRepresentationType>;
+    /// Check if Handle<StepBasic_DocumentRepresentationType> is null
+    pub fn HandleStepBasicDocumentRepresentationType_is_null(
+        self_: *const HandleStepBasicDocumentRepresentationType,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_DocumentRepresentationType
     pub fn HandleStepBasicDocumentRepresentationType_get(
         handle: *const HandleStepBasicDocumentRepresentationType,
@@ -26740,6 +27267,8 @@ extern "C" {
     pub fn HandleStepBasicDocumentType_clone(
         self_: *const HandleStepBasicDocumentType,
     ) -> crate::OcctResult<*mut HandleStepBasicDocumentType>;
+    /// Check if Handle<StepBasic_DocumentType> is null
+    pub fn HandleStepBasicDocumentType_is_null(self_: *const HandleStepBasicDocumentType) -> bool;
     /// Dereference Handle to get *const StepBasic_DocumentType
     pub fn HandleStepBasicDocumentType_get(
         handle: *const HandleStepBasicDocumentType,
@@ -26853,6 +27382,10 @@ extern "C" {
     pub fn HandleStepBasicDocumentUsageConstraint_clone(
         self_: *const HandleStepBasicDocumentUsageConstraint,
     ) -> crate::OcctResult<*mut HandleStepBasicDocumentUsageConstraint>;
+    /// Check if Handle<StepBasic_DocumentUsageConstraint> is null
+    pub fn HandleStepBasicDocumentUsageConstraint_is_null(
+        self_: *const HandleStepBasicDocumentUsageConstraint,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_DocumentUsageConstraint
     pub fn HandleStepBasicDocumentUsageConstraint_get(
         handle: *const HandleStepBasicDocumentUsageConstraint,
@@ -26940,6 +27473,8 @@ extern "C" {
     pub fn HandleStepBasicEffectivity_clone(
         self_: *const HandleStepBasicEffectivity,
     ) -> crate::OcctResult<*mut HandleStepBasicEffectivity>;
+    /// Check if Handle<StepBasic_Effectivity> is null
+    pub fn HandleStepBasicEffectivity_is_null(self_: *const HandleStepBasicEffectivity) -> bool;
     /// Dereference Handle to get *const StepBasic_Effectivity
     pub fn HandleStepBasicEffectivity_get(
         handle: *const HandleStepBasicEffectivity,
@@ -27039,6 +27574,10 @@ extern "C" {
     pub fn HandleStepBasicEffectivityAssignment_clone(
         self_: *const HandleStepBasicEffectivityAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicEffectivityAssignment>;
+    /// Check if Handle<StepBasic_EffectivityAssignment> is null
+    pub fn HandleStepBasicEffectivityAssignment_is_null(
+        self_: *const HandleStepBasicEffectivityAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_EffectivityAssignment
     pub fn HandleStepBasicEffectivityAssignment_get(
         handle: *const HandleStepBasicEffectivityAssignment,
@@ -27126,6 +27665,8 @@ extern "C" {
     pub fn HandleStepBasicEulerAngles_clone(
         self_: *const HandleStepBasicEulerAngles,
     ) -> crate::OcctResult<*mut HandleStepBasicEulerAngles>;
+    /// Check if Handle<StepBasic_EulerAngles> is null
+    pub fn HandleStepBasicEulerAngles_is_null(self_: *const HandleStepBasicEulerAngles) -> bool;
     /// Dereference Handle to get *const StepBasic_EulerAngles
     pub fn HandleStepBasicEulerAngles_get(
         handle: *const HandleStepBasicEulerAngles,
@@ -27229,6 +27770,10 @@ extern "C" {
     pub fn HandleStepBasicExternalIdentificationAssignment_clone(
         self_: *const HandleStepBasicExternalIdentificationAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicExternalIdentificationAssignment>;
+    /// Check if Handle<StepBasic_ExternalIdentificationAssignment> is null
+    pub fn HandleStepBasicExternalIdentificationAssignment_is_null(
+        self_: *const HandleStepBasicExternalIdentificationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ExternalIdentificationAssignment
     pub fn HandleStepBasicExternalIdentificationAssignment_get(
         handle: *const HandleStepBasicExternalIdentificationAssignment,
@@ -27342,6 +27887,10 @@ extern "C" {
     pub fn HandleStepBasicExternalSource_clone(
         self_: *const HandleStepBasicExternalSource,
     ) -> crate::OcctResult<*mut HandleStepBasicExternalSource>;
+    /// Check if Handle<StepBasic_ExternalSource> is null
+    pub fn HandleStepBasicExternalSource_is_null(
+        self_: *const HandleStepBasicExternalSource,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ExternalSource
     pub fn HandleStepBasicExternalSource_get(
         handle: *const HandleStepBasicExternalSource,
@@ -27443,6 +27992,10 @@ extern "C" {
     pub fn HandleStepBasicExternallyDefinedItem_clone(
         self_: *const HandleStepBasicExternallyDefinedItem,
     ) -> crate::OcctResult<*mut HandleStepBasicExternallyDefinedItem>;
+    /// Check if Handle<StepBasic_ExternallyDefinedItem> is null
+    pub fn HandleStepBasicExternallyDefinedItem_is_null(
+        self_: *const HandleStepBasicExternallyDefinedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ExternallyDefinedItem
     pub fn HandleStepBasicExternallyDefinedItem_get(
         handle: *const HandleStepBasicExternallyDefinedItem,
@@ -27563,6 +28116,10 @@ extern "C" {
     pub fn HandleStepBasicGeneralProperty_clone(
         self_: *const HandleStepBasicGeneralProperty,
     ) -> crate::OcctResult<*mut HandleStepBasicGeneralProperty>;
+    /// Check if Handle<StepBasic_GeneralProperty> is null
+    pub fn HandleStepBasicGeneralProperty_is_null(
+        self_: *const HandleStepBasicGeneralProperty,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_GeneralProperty
     pub fn HandleStepBasicGeneralProperty_get(
         handle: *const HandleStepBasicGeneralProperty,
@@ -27690,6 +28247,10 @@ extern "C" {
     pub fn HandleStepBasicGeneralPropertyAssociation_clone(
         self_: *const HandleStepBasicGeneralPropertyAssociation,
     ) -> crate::OcctResult<*mut HandleStepBasicGeneralPropertyAssociation>;
+    /// Check if Handle<StepBasic_GeneralPropertyAssociation> is null
+    pub fn HandleStepBasicGeneralPropertyAssociation_is_null(
+        self_: *const HandleStepBasicGeneralPropertyAssociation,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_GeneralPropertyAssociation
     pub fn HandleStepBasicGeneralPropertyAssociation_get(
         handle: *const HandleStepBasicGeneralPropertyAssociation,
@@ -27818,6 +28379,10 @@ extern "C" {
     pub fn HandleStepBasicGeneralPropertyRelationship_clone(
         self_: *const HandleStepBasicGeneralPropertyRelationship,
     ) -> crate::OcctResult<*mut HandleStepBasicGeneralPropertyRelationship>;
+    /// Check if Handle<StepBasic_GeneralPropertyRelationship> is null
+    pub fn HandleStepBasicGeneralPropertyRelationship_is_null(
+        self_: *const HandleStepBasicGeneralPropertyRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_GeneralPropertyRelationship
     pub fn HandleStepBasicGeneralPropertyRelationship_get(
         handle: *const HandleStepBasicGeneralPropertyRelationship,
@@ -27919,6 +28484,8 @@ extern "C" {
     pub fn HandleStepBasicGroup_clone(
         self_: *const HandleStepBasicGroup,
     ) -> crate::OcctResult<*mut HandleStepBasicGroup>;
+    /// Check if Handle<StepBasic_Group> is null
+    pub fn HandleStepBasicGroup_is_null(self_: *const HandleStepBasicGroup) -> bool;
     /// Dereference Handle to get *const StepBasic_Group
     pub fn HandleStepBasicGroup_get(
         handle: *const HandleStepBasicGroup,
@@ -28030,6 +28597,10 @@ extern "C" {
     pub fn HandleStepBasicGroupAssignment_clone(
         self_: *const HandleStepBasicGroupAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicGroupAssignment>;
+    /// Check if Handle<StepBasic_GroupAssignment> is null
+    pub fn HandleStepBasicGroupAssignment_is_null(
+        self_: *const HandleStepBasicGroupAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_GroupAssignment
     pub fn HandleStepBasicGroupAssignment_get(
         handle: *const HandleStepBasicGroupAssignment,
@@ -28162,6 +28733,10 @@ extern "C" {
     pub fn HandleStepBasicGroupRelationship_clone(
         self_: *const HandleStepBasicGroupRelationship,
     ) -> crate::OcctResult<*mut HandleStepBasicGroupRelationship>;
+    /// Check if Handle<StepBasic_GroupRelationship> is null
+    pub fn HandleStepBasicGroupRelationship_is_null(
+        self_: *const HandleStepBasicGroupRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_GroupRelationship
     pub fn HandleStepBasicGroupRelationship_get(
         handle: *const HandleStepBasicGroupRelationship,
@@ -28267,6 +28842,10 @@ extern "C" {
     pub fn HandleStepBasicHArray1OfApproval_clone(
         self_: *const HandleStepBasicHArray1OfApproval,
     ) -> crate::OcctResult<*mut HandleStepBasicHArray1OfApproval>;
+    /// Check if Handle<StepBasic_HArray1OfApproval> is null
+    pub fn HandleStepBasicHArray1OfApproval_is_null(
+        self_: *const HandleStepBasicHArray1OfApproval,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_HArray1OfApproval
     pub fn HandleStepBasicHArray1OfApproval_get(
         handle: *const HandleStepBasicHArray1OfApproval,
@@ -28376,6 +28955,10 @@ extern "C" {
     pub fn HandleStepBasicHArray1OfDerivedUnitElement_clone(
         self_: *const HandleStepBasicHArray1OfDerivedUnitElement,
     ) -> crate::OcctResult<*mut HandleStepBasicHArray1OfDerivedUnitElement>;
+    /// Check if Handle<StepBasic_HArray1OfDerivedUnitElement> is null
+    pub fn HandleStepBasicHArray1OfDerivedUnitElement_is_null(
+        self_: *const HandleStepBasicHArray1OfDerivedUnitElement,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_HArray1OfDerivedUnitElement
     pub fn HandleStepBasicHArray1OfDerivedUnitElement_get(
         handle: *const HandleStepBasicHArray1OfDerivedUnitElement,
@@ -28481,6 +29064,10 @@ extern "C" {
     pub fn HandleStepBasicHArray1OfDocument_clone(
         self_: *const HandleStepBasicHArray1OfDocument,
     ) -> crate::OcctResult<*mut HandleStepBasicHArray1OfDocument>;
+    /// Check if Handle<StepBasic_HArray1OfDocument> is null
+    pub fn HandleStepBasicHArray1OfDocument_is_null(
+        self_: *const HandleStepBasicHArray1OfDocument,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_HArray1OfDocument
     pub fn HandleStepBasicHArray1OfDocument_get(
         handle: *const HandleStepBasicHArray1OfDocument,
@@ -28587,6 +29174,10 @@ extern "C" {
     pub fn HandleStepBasicHArray1OfNamedUnit_clone(
         self_: *const HandleStepBasicHArray1OfNamedUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicHArray1OfNamedUnit>;
+    /// Check if Handle<StepBasic_HArray1OfNamedUnit> is null
+    pub fn HandleStepBasicHArray1OfNamedUnit_is_null(
+        self_: *const HandleStepBasicHArray1OfNamedUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_HArray1OfNamedUnit
     pub fn HandleStepBasicHArray1OfNamedUnit_get(
         handle: *const HandleStepBasicHArray1OfNamedUnit,
@@ -28694,6 +29285,10 @@ extern "C" {
     pub fn HandleStepBasicHArray1OfOrganization_clone(
         self_: *const HandleStepBasicHArray1OfOrganization,
     ) -> crate::OcctResult<*mut HandleStepBasicHArray1OfOrganization>;
+    /// Check if Handle<StepBasic_HArray1OfOrganization> is null
+    pub fn HandleStepBasicHArray1OfOrganization_is_null(
+        self_: *const HandleStepBasicHArray1OfOrganization,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_HArray1OfOrganization
     pub fn HandleStepBasicHArray1OfOrganization_get(
         handle: *const HandleStepBasicHArray1OfOrganization,
@@ -28797,6 +29392,10 @@ extern "C" {
     pub fn HandleStepBasicHArray1OfPerson_clone(
         self_: *const HandleStepBasicHArray1OfPerson,
     ) -> crate::OcctResult<*mut HandleStepBasicHArray1OfPerson>;
+    /// Check if Handle<StepBasic_HArray1OfPerson> is null
+    pub fn HandleStepBasicHArray1OfPerson_is_null(
+        self_: *const HandleStepBasicHArray1OfPerson,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_HArray1OfPerson
     pub fn HandleStepBasicHArray1OfPerson_get(
         handle: *const HandleStepBasicHArray1OfPerson,
@@ -28900,6 +29499,10 @@ extern "C" {
     pub fn HandleStepBasicHArray1OfProduct_clone(
         self_: *const HandleStepBasicHArray1OfProduct,
     ) -> crate::OcctResult<*mut HandleStepBasicHArray1OfProduct>;
+    /// Check if Handle<StepBasic_HArray1OfProduct> is null
+    pub fn HandleStepBasicHArray1OfProduct_is_null(
+        self_: *const HandleStepBasicHArray1OfProduct,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_HArray1OfProduct
     pub fn HandleStepBasicHArray1OfProduct_get(
         handle: *const HandleStepBasicHArray1OfProduct,
@@ -29009,6 +29612,10 @@ extern "C" {
     pub fn HandleStepBasicHArray1OfProductContext_clone(
         self_: *const HandleStepBasicHArray1OfProductContext,
     ) -> crate::OcctResult<*mut HandleStepBasicHArray1OfProductContext>;
+    /// Check if Handle<StepBasic_HArray1OfProductContext> is null
+    pub fn HandleStepBasicHArray1OfProductContext_is_null(
+        self_: *const HandleStepBasicHArray1OfProductContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_HArray1OfProductContext
     pub fn HandleStepBasicHArray1OfProductContext_get(
         handle: *const HandleStepBasicHArray1OfProductContext,
@@ -29118,6 +29725,10 @@ extern "C" {
     pub fn HandleStepBasicHArray1OfProductDefinition_clone(
         self_: *const HandleStepBasicHArray1OfProductDefinition,
     ) -> crate::OcctResult<*mut HandleStepBasicHArray1OfProductDefinition>;
+    /// Check if Handle<StepBasic_HArray1OfProductDefinition> is null
+    pub fn HandleStepBasicHArray1OfProductDefinition_is_null(
+        self_: *const HandleStepBasicHArray1OfProductDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_HArray1OfProductDefinition
     pub fn HandleStepBasicHArray1OfProductDefinition_get(
         handle: *const HandleStepBasicHArray1OfProductDefinition,
@@ -29227,6 +29838,10 @@ extern "C" {
     pub fn HandleStepBasicHArray1OfUncertaintyMeasureWithUnit_clone(
         self_: *const HandleStepBasicHArray1OfUncertaintyMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicHArray1OfUncertaintyMeasureWithUnit>;
+    /// Check if Handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> is null
+    pub fn HandleStepBasicHArray1OfUncertaintyMeasureWithUnit_is_null(
+        self_: *const HandleStepBasicHArray1OfUncertaintyMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_HArray1OfUncertaintyMeasureWithUnit
     pub fn HandleStepBasicHArray1OfUncertaintyMeasureWithUnit_get(
         handle: *const HandleStepBasicHArray1OfUncertaintyMeasureWithUnit,
@@ -29330,6 +29945,10 @@ extern "C" {
     pub fn HandleStepBasicIdentificationAssignment_clone(
         self_: *const HandleStepBasicIdentificationAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicIdentificationAssignment>;
+    /// Check if Handle<StepBasic_IdentificationAssignment> is null
+    pub fn HandleStepBasicIdentificationAssignment_is_null(
+        self_: *const HandleStepBasicIdentificationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_IdentificationAssignment
     pub fn HandleStepBasicIdentificationAssignment_get(
         handle: *const HandleStepBasicIdentificationAssignment,
@@ -29443,6 +30062,10 @@ extern "C" {
     pub fn HandleStepBasicIdentificationRole_clone(
         self_: *const HandleStepBasicIdentificationRole,
     ) -> crate::OcctResult<*mut HandleStepBasicIdentificationRole>;
+    /// Check if Handle<StepBasic_IdentificationRole> is null
+    pub fn HandleStepBasicIdentificationRole_is_null(
+        self_: *const HandleStepBasicIdentificationRole,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_IdentificationRole
     pub fn HandleStepBasicIdentificationRole_get(
         handle: *const HandleStepBasicIdentificationRole,
@@ -29528,6 +30151,10 @@ extern "C" {
     pub fn HandleStepBasicLengthMeasureWithUnit_clone(
         self_: *const HandleStepBasicLengthMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicLengthMeasureWithUnit>;
+    /// Check if Handle<StepBasic_LengthMeasureWithUnit> is null
+    pub fn HandleStepBasicLengthMeasureWithUnit_is_null(
+        self_: *const HandleStepBasicLengthMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_LengthMeasureWithUnit
     pub fn HandleStepBasicLengthMeasureWithUnit_get(
         handle: *const HandleStepBasicLengthMeasureWithUnit,
@@ -29645,6 +30272,8 @@ extern "C" {
     pub fn HandleStepBasicLengthUnit_clone(
         self_: *const HandleStepBasicLengthUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicLengthUnit>;
+    /// Check if Handle<StepBasic_LengthUnit> is null
+    pub fn HandleStepBasicLengthUnit_is_null(self_: *const HandleStepBasicLengthUnit) -> bool;
     /// Dereference Handle to get *const StepBasic_LengthUnit
     pub fn HandleStepBasicLengthUnit_get(
         handle: *const HandleStepBasicLengthUnit,
@@ -29797,6 +30426,8 @@ extern "C" {
     pub fn HandleStepBasicLocalTime_clone(
         self_: *const HandleStepBasicLocalTime,
     ) -> crate::OcctResult<*mut HandleStepBasicLocalTime>;
+    /// Check if Handle<StepBasic_LocalTime> is null
+    pub fn HandleStepBasicLocalTime_is_null(self_: *const HandleStepBasicLocalTime) -> bool;
     /// Dereference Handle to get *const StepBasic_LocalTime
     pub fn HandleStepBasicLocalTime_get(
         handle: *const HandleStepBasicLocalTime,
@@ -29882,6 +30513,10 @@ extern "C" {
     pub fn HandleStepBasicMassMeasureWithUnit_clone(
         self_: *const HandleStepBasicMassMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicMassMeasureWithUnit>;
+    /// Check if Handle<StepBasic_MassMeasureWithUnit> is null
+    pub fn HandleStepBasicMassMeasureWithUnit_is_null(
+        self_: *const HandleStepBasicMassMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_MassMeasureWithUnit
     pub fn HandleStepBasicMassMeasureWithUnit_get(
         handle: *const HandleStepBasicMassMeasureWithUnit,
@@ -29999,6 +30634,8 @@ extern "C" {
     pub fn HandleStepBasicMassUnit_clone(
         self_: *const HandleStepBasicMassUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicMassUnit>;
+    /// Check if Handle<StepBasic_MassUnit> is null
+    pub fn HandleStepBasicMassUnit_is_null(self_: *const HandleStepBasicMassUnit) -> bool;
     /// Dereference Handle to get *const StepBasic_MassUnit
     pub fn HandleStepBasicMassUnit_get(
         handle: *const HandleStepBasicMassUnit,
@@ -30122,6 +30759,10 @@ extern "C" {
     pub fn HandleStepBasicMeasureValueMember_clone(
         self_: *const HandleStepBasicMeasureValueMember,
     ) -> crate::OcctResult<*mut HandleStepBasicMeasureValueMember>;
+    /// Check if Handle<StepBasic_MeasureValueMember> is null
+    pub fn HandleStepBasicMeasureValueMember_is_null(
+        self_: *const HandleStepBasicMeasureValueMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_MeasureValueMember
     pub fn HandleStepBasicMeasureValueMember_get(
         handle: *const HandleStepBasicMeasureValueMember,
@@ -30298,6 +30939,10 @@ extern "C" {
     pub fn HandleStepBasicMeasureWithUnit_clone(
         self_: *const HandleStepBasicMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicMeasureWithUnit>;
+    /// Check if Handle<StepBasic_MeasureWithUnit> is null
+    pub fn HandleStepBasicMeasureWithUnit_is_null(
+        self_: *const HandleStepBasicMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_MeasureWithUnit
     pub fn HandleStepBasicMeasureWithUnit_get(
         handle: *const HandleStepBasicMeasureWithUnit,
@@ -30417,6 +31062,10 @@ extern "C" {
     pub fn HandleStepBasicMechanicalContext_clone(
         self_: *const HandleStepBasicMechanicalContext,
     ) -> crate::OcctResult<*mut HandleStepBasicMechanicalContext>;
+    /// Check if Handle<StepBasic_MechanicalContext> is null
+    pub fn HandleStepBasicMechanicalContext_is_null(
+        self_: *const HandleStepBasicMechanicalContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_MechanicalContext
     pub fn HandleStepBasicMechanicalContext_get(
         handle: *const HandleStepBasicMechanicalContext,
@@ -30546,6 +31195,10 @@ extern "C" {
     pub fn HandleStepBasicNameAssignment_clone(
         self_: *const HandleStepBasicNameAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicNameAssignment>;
+    /// Check if Handle<StepBasic_NameAssignment> is null
+    pub fn HandleStepBasicNameAssignment_is_null(
+        self_: *const HandleStepBasicNameAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_NameAssignment
     pub fn HandleStepBasicNameAssignment_get(
         handle: *const HandleStepBasicNameAssignment,
@@ -30632,6 +31285,8 @@ extern "C" {
     pub fn HandleStepBasicNamedUnit_clone(
         self_: *const HandleStepBasicNamedUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicNamedUnit>;
+    /// Check if Handle<StepBasic_NamedUnit> is null
+    pub fn HandleStepBasicNamedUnit_is_null(self_: *const HandleStepBasicNamedUnit) -> bool;
     /// Dereference Handle to get *const StepBasic_NamedUnit
     pub fn HandleStepBasicNamedUnit_get(
         handle: *const HandleStepBasicNamedUnit,
@@ -30845,6 +31500,8 @@ extern "C" {
     pub fn HandleStepBasicObjectRole_clone(
         self_: *const HandleStepBasicObjectRole,
     ) -> crate::OcctResult<*mut HandleStepBasicObjectRole>;
+    /// Check if Handle<StepBasic_ObjectRole> is null
+    pub fn HandleStepBasicObjectRole_is_null(self_: *const HandleStepBasicObjectRole) -> bool;
     /// Dereference Handle to get *const StepBasic_ObjectRole
     pub fn HandleStepBasicObjectRole_get(
         handle: *const HandleStepBasicObjectRole,
@@ -30941,6 +31598,8 @@ extern "C" {
     pub fn HandleStepBasicOrdinalDate_clone(
         self_: *const HandleStepBasicOrdinalDate,
     ) -> crate::OcctResult<*mut HandleStepBasicOrdinalDate>;
+    /// Check if Handle<StepBasic_OrdinalDate> is null
+    pub fn HandleStepBasicOrdinalDate_is_null(self_: *const HandleStepBasicOrdinalDate) -> bool;
     /// Dereference Handle to get *const StepBasic_OrdinalDate
     pub fn HandleStepBasicOrdinalDate_get(
         handle: *const HandleStepBasicOrdinalDate,
@@ -31070,6 +31729,8 @@ extern "C" {
     pub fn HandleStepBasicOrganization_clone(
         self_: *const HandleStepBasicOrganization,
     ) -> crate::OcctResult<*mut HandleStepBasicOrganization>;
+    /// Check if Handle<StepBasic_Organization> is null
+    pub fn HandleStepBasicOrganization_is_null(self_: *const HandleStepBasicOrganization) -> bool;
     /// Dereference Handle to get *const StepBasic_Organization
     pub fn HandleStepBasicOrganization_get(
         handle: *const HandleStepBasicOrganization,
@@ -31173,6 +31834,10 @@ extern "C" {
     pub fn HandleStepBasicOrganizationAssignment_clone(
         self_: *const HandleStepBasicOrganizationAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicOrganizationAssignment>;
+    /// Check if Handle<StepBasic_OrganizationAssignment> is null
+    pub fn HandleStepBasicOrganizationAssignment_is_null(
+        self_: *const HandleStepBasicOrganizationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_OrganizationAssignment
     pub fn HandleStepBasicOrganizationAssignment_get(
         handle: *const HandleStepBasicOrganizationAssignment,
@@ -31268,6 +31933,10 @@ extern "C" {
     pub fn HandleStepBasicOrganizationRole_clone(
         self_: *const HandleStepBasicOrganizationRole,
     ) -> crate::OcctResult<*mut HandleStepBasicOrganizationRole>;
+    /// Check if Handle<StepBasic_OrganizationRole> is null
+    pub fn HandleStepBasicOrganizationRole_is_null(
+        self_: *const HandleStepBasicOrganizationRole,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_OrganizationRole
     pub fn HandleStepBasicOrganizationRole_get(
         handle: *const HandleStepBasicOrganizationRole,
@@ -31410,6 +32079,10 @@ extern "C" {
     pub fn HandleStepBasicOrganizationalAddress_clone(
         self_: *const HandleStepBasicOrganizationalAddress,
     ) -> crate::OcctResult<*mut HandleStepBasicOrganizationalAddress>;
+    /// Check if Handle<StepBasic_OrganizationalAddress> is null
+    pub fn HandleStepBasicOrganizationalAddress_is_null(
+        self_: *const HandleStepBasicOrganizationalAddress,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_OrganizationalAddress
     pub fn HandleStepBasicOrganizationalAddress_get(
         handle: *const HandleStepBasicOrganizationalAddress,
@@ -31826,6 +32499,8 @@ extern "C" {
     pub fn HandleStepBasicPerson_clone(
         self_: *const HandleStepBasicPerson,
     ) -> crate::OcctResult<*mut HandleStepBasicPerson>;
+    /// Check if Handle<StepBasic_Person> is null
+    pub fn HandleStepBasicPerson_is_null(self_: *const HandleStepBasicPerson) -> bool;
     /// Dereference Handle to get *const StepBasic_Person
     pub fn HandleStepBasicPerson_get(
         handle: *const HandleStepBasicPerson,
@@ -31927,6 +32602,10 @@ extern "C" {
     pub fn HandleStepBasicPersonAndOrganization_clone(
         self_: *const HandleStepBasicPersonAndOrganization,
     ) -> crate::OcctResult<*mut HandleStepBasicPersonAndOrganization>;
+    /// Check if Handle<StepBasic_PersonAndOrganization> is null
+    pub fn HandleStepBasicPersonAndOrganization_is_null(
+        self_: *const HandleStepBasicPersonAndOrganization,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_PersonAndOrganization
     pub fn HandleStepBasicPersonAndOrganization_get(
         handle: *const HandleStepBasicPersonAndOrganization,
@@ -32030,6 +32709,10 @@ extern "C" {
     pub fn HandleStepBasicPersonAndOrganizationAssignment_clone(
         self_: *const HandleStepBasicPersonAndOrganizationAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicPersonAndOrganizationAssignment>;
+    /// Check if Handle<StepBasic_PersonAndOrganizationAssignment> is null
+    pub fn HandleStepBasicPersonAndOrganizationAssignment_is_null(
+        self_: *const HandleStepBasicPersonAndOrganizationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_PersonAndOrganizationAssignment
     pub fn HandleStepBasicPersonAndOrganizationAssignment_get(
         handle: *const HandleStepBasicPersonAndOrganizationAssignment,
@@ -32139,6 +32822,10 @@ extern "C" {
     pub fn HandleStepBasicPersonAndOrganizationRole_clone(
         self_: *const HandleStepBasicPersonAndOrganizationRole,
     ) -> crate::OcctResult<*mut HandleStepBasicPersonAndOrganizationRole>;
+    /// Check if Handle<StepBasic_PersonAndOrganizationRole> is null
+    pub fn HandleStepBasicPersonAndOrganizationRole_is_null(
+        self_: *const HandleStepBasicPersonAndOrganizationRole,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_PersonAndOrganizationRole
     pub fn HandleStepBasicPersonAndOrganizationRole_get(
         handle: *const HandleStepBasicPersonAndOrganizationRole,
@@ -32385,6 +33072,10 @@ extern "C" {
     pub fn HandleStepBasicPersonalAddress_clone(
         self_: *const HandleStepBasicPersonalAddress,
     ) -> crate::OcctResult<*mut HandleStepBasicPersonalAddress>;
+    /// Check if Handle<StepBasic_PersonalAddress> is null
+    pub fn HandleStepBasicPersonalAddress_is_null(
+        self_: *const HandleStepBasicPersonalAddress,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_PersonalAddress
     pub fn HandleStepBasicPersonalAddress_get(
         handle: *const HandleStepBasicPersonalAddress,
@@ -32680,6 +33371,10 @@ extern "C" {
     pub fn HandleStepBasicPhysicallyModeledProductDefinition_clone(
         self_: *const HandleStepBasicPhysicallyModeledProductDefinition,
     ) -> crate::OcctResult<*mut HandleStepBasicPhysicallyModeledProductDefinition>;
+    /// Check if Handle<StepBasic_PhysicallyModeledProductDefinition> is null
+    pub fn HandleStepBasicPhysicallyModeledProductDefinition_is_null(
+        self_: *const HandleStepBasicPhysicallyModeledProductDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_PhysicallyModeledProductDefinition
     pub fn HandleStepBasicPhysicallyModeledProductDefinition_get(
         handle: *const HandleStepBasicPhysicallyModeledProductDefinition,
@@ -32815,6 +33510,10 @@ extern "C" {
     pub fn HandleStepBasicPlaneAngleMeasureWithUnit_clone(
         self_: *const HandleStepBasicPlaneAngleMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicPlaneAngleMeasureWithUnit>;
+    /// Check if Handle<StepBasic_PlaneAngleMeasureWithUnit> is null
+    pub fn HandleStepBasicPlaneAngleMeasureWithUnit_is_null(
+        self_: *const HandleStepBasicPlaneAngleMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_PlaneAngleMeasureWithUnit
     pub fn HandleStepBasicPlaneAngleMeasureWithUnit_get(
         handle: *const HandleStepBasicPlaneAngleMeasureWithUnit,
@@ -32933,6 +33632,10 @@ extern "C" {
     pub fn HandleStepBasicPlaneAngleUnit_clone(
         self_: *const HandleStepBasicPlaneAngleUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicPlaneAngleUnit>;
+    /// Check if Handle<StepBasic_PlaneAngleUnit> is null
+    pub fn HandleStepBasicPlaneAngleUnit_is_null(
+        self_: *const HandleStepBasicPlaneAngleUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_PlaneAngleUnit
     pub fn HandleStepBasicPlaneAngleUnit_get(
         handle: *const HandleStepBasicPlaneAngleUnit,
@@ -33076,6 +33779,8 @@ extern "C" {
     pub fn HandleStepBasicProduct_clone(
         self_: *const HandleStepBasicProduct,
     ) -> crate::OcctResult<*mut HandleStepBasicProduct>;
+    /// Check if Handle<StepBasic_Product> is null
+    pub fn HandleStepBasicProduct_is_null(self_: *const HandleStepBasicProduct) -> bool;
     /// Dereference Handle to get *const StepBasic_Product
     pub fn HandleStepBasicProduct_get(
         handle: *const HandleStepBasicProduct,
@@ -33182,6 +33887,10 @@ extern "C" {
     pub fn HandleStepBasicProductCategory_clone(
         self_: *const HandleStepBasicProductCategory,
     ) -> crate::OcctResult<*mut HandleStepBasicProductCategory>;
+    /// Check if Handle<StepBasic_ProductCategory> is null
+    pub fn HandleStepBasicProductCategory_is_null(
+        self_: *const HandleStepBasicProductCategory,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductCategory
     pub fn HandleStepBasicProductCategory_get(
         handle: *const HandleStepBasicProductCategory,
@@ -33318,6 +34027,10 @@ extern "C" {
     pub fn HandleStepBasicProductCategoryRelationship_clone(
         self_: *const HandleStepBasicProductCategoryRelationship,
     ) -> crate::OcctResult<*mut HandleStepBasicProductCategoryRelationship>;
+    /// Check if Handle<StepBasic_ProductCategoryRelationship> is null
+    pub fn HandleStepBasicProductCategoryRelationship_is_null(
+        self_: *const HandleStepBasicProductCategoryRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductCategoryRelationship
     pub fn HandleStepBasicProductCategoryRelationship_get(
         handle: *const HandleStepBasicProductCategoryRelationship,
@@ -33419,6 +34132,10 @@ extern "C" {
     pub fn HandleStepBasicProductConceptContext_clone(
         self_: *const HandleStepBasicProductConceptContext,
     ) -> crate::OcctResult<*mut HandleStepBasicProductConceptContext>;
+    /// Check if Handle<StepBasic_ProductConceptContext> is null
+    pub fn HandleStepBasicProductConceptContext_is_null(
+        self_: *const HandleStepBasicProductConceptContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductConceptContext
     pub fn HandleStepBasicProductConceptContext_get(
         handle: *const HandleStepBasicProductConceptContext,
@@ -33538,6 +34255,10 @@ extern "C" {
     pub fn HandleStepBasicProductContext_clone(
         self_: *const HandleStepBasicProductContext,
     ) -> crate::OcctResult<*mut HandleStepBasicProductContext>;
+    /// Check if Handle<StepBasic_ProductContext> is null
+    pub fn HandleStepBasicProductContext_is_null(
+        self_: *const HandleStepBasicProductContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductContext
     pub fn HandleStepBasicProductContext_get(
         handle: *const HandleStepBasicProductContext,
@@ -33683,6 +34404,10 @@ extern "C" {
     pub fn HandleStepBasicProductDefinition_clone(
         self_: *const HandleStepBasicProductDefinition,
     ) -> crate::OcctResult<*mut HandleStepBasicProductDefinition>;
+    /// Check if Handle<StepBasic_ProductDefinition> is null
+    pub fn HandleStepBasicProductDefinition_is_null(
+        self_: *const HandleStepBasicProductDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductDefinition
     pub fn HandleStepBasicProductDefinition_get(
         handle: *const HandleStepBasicProductDefinition,
@@ -33798,6 +34523,10 @@ extern "C" {
     pub fn HandleStepBasicProductDefinitionContext_clone(
         self_: *const HandleStepBasicProductDefinitionContext,
     ) -> crate::OcctResult<*mut HandleStepBasicProductDefinitionContext>;
+    /// Check if Handle<StepBasic_ProductDefinitionContext> is null
+    pub fn HandleStepBasicProductDefinitionContext_is_null(
+        self_: *const HandleStepBasicProductDefinitionContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductDefinitionContext
     pub fn HandleStepBasicProductDefinitionContext_get(
         handle: *const HandleStepBasicProductDefinitionContext,
@@ -33926,6 +34655,10 @@ extern "C" {
     pub fn HandleStepBasicProductDefinitionEffectivity_clone(
         self_: *const HandleStepBasicProductDefinitionEffectivity,
     ) -> crate::OcctResult<*mut HandleStepBasicProductDefinitionEffectivity>;
+    /// Check if Handle<StepBasic_ProductDefinitionEffectivity> is null
+    pub fn HandleStepBasicProductDefinitionEffectivity_is_null(
+        self_: *const HandleStepBasicProductDefinitionEffectivity,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductDefinitionEffectivity
     pub fn HandleStepBasicProductDefinitionEffectivity_get(
         handle: *const HandleStepBasicProductDefinitionEffectivity,
@@ -34056,6 +34789,10 @@ extern "C" {
     pub fn HandleStepBasicProductDefinitionFormation_clone(
         self_: *const HandleStepBasicProductDefinitionFormation,
     ) -> crate::OcctResult<*mut HandleStepBasicProductDefinitionFormation>;
+    /// Check if Handle<StepBasic_ProductDefinitionFormation> is null
+    pub fn HandleStepBasicProductDefinitionFormation_is_null(
+        self_: *const HandleStepBasicProductDefinitionFormation,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductDefinitionFormation
     pub fn HandleStepBasicProductDefinitionFormation_get(
         handle: *const HandleStepBasicProductDefinitionFormation,
@@ -34193,6 +34930,10 @@ extern "C" {
     pub fn HandleStepBasicProductDefinitionFormationRelationship_clone(
         self_: *const HandleStepBasicProductDefinitionFormationRelationship,
     ) -> crate::OcctResult<*mut HandleStepBasicProductDefinitionFormationRelationship>;
+    /// Check if Handle<StepBasic_ProductDefinitionFormationRelationship> is null
+    pub fn HandleStepBasicProductDefinitionFormationRelationship_is_null(
+        self_: *const HandleStepBasicProductDefinitionFormationRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductDefinitionFormationRelationship
     pub fn HandleStepBasicProductDefinitionFormationRelationship_get(
         handle: *const HandleStepBasicProductDefinitionFormationRelationship,
@@ -34297,6 +35038,10 @@ extern "C" {
     pub fn HandleStepBasicProductDefinitionFormationWithSpecifiedSource_clone(
         self_: *const HandleStepBasicProductDefinitionFormationWithSpecifiedSource,
     ) -> crate::OcctResult<*mut HandleStepBasicProductDefinitionFormationWithSpecifiedSource>;
+    /// Check if Handle<StepBasic_ProductDefinitionFormationWithSpecifiedSource> is null
+    pub fn HandleStepBasicProductDefinitionFormationWithSpecifiedSource_is_null(
+        self_: *const HandleStepBasicProductDefinitionFormationWithSpecifiedSource,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductDefinitionFormationWithSpecifiedSource
     pub fn HandleStepBasicProductDefinitionFormationWithSpecifiedSource_get(
         handle: *const HandleStepBasicProductDefinitionFormationWithSpecifiedSource,
@@ -34581,6 +35326,10 @@ extern "C" {
     pub fn HandleStepBasicProductDefinitionReference_clone(
         self_: *const HandleStepBasicProductDefinitionReference,
     ) -> crate::OcctResult<*mut HandleStepBasicProductDefinitionReference>;
+    /// Check if Handle<StepBasic_ProductDefinitionReference> is null
+    pub fn HandleStepBasicProductDefinitionReference_is_null(
+        self_: *const HandleStepBasicProductDefinitionReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductDefinitionReference
     pub fn HandleStepBasicProductDefinitionReference_get(
         handle: *const HandleStepBasicProductDefinitionReference,
@@ -34686,6 +35435,10 @@ extern "C" {
     pub fn HandleStepBasicProductDefinitionReferenceWithLocalRepresentation_clone(
         self_: *const HandleStepBasicProductDefinitionReferenceWithLocalRepresentation,
     ) -> crate::OcctResult<*mut HandleStepBasicProductDefinitionReferenceWithLocalRepresentation>;
+    /// Check if Handle<StepBasic_ProductDefinitionReferenceWithLocalRepresentation> is null
+    pub fn HandleStepBasicProductDefinitionReferenceWithLocalRepresentation_is_null(
+        self_: *const HandleStepBasicProductDefinitionReferenceWithLocalRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductDefinitionReferenceWithLocalRepresentation
     pub fn HandleStepBasicProductDefinitionReferenceWithLocalRepresentation_get(
         handle: *const HandleStepBasicProductDefinitionReferenceWithLocalRepresentation,
@@ -34892,6 +35645,10 @@ extern "C" {
     pub fn HandleStepBasicProductDefinitionRelationship_clone(
         self_: *const HandleStepBasicProductDefinitionRelationship,
     ) -> crate::OcctResult<*mut HandleStepBasicProductDefinitionRelationship>;
+    /// Check if Handle<StepBasic_ProductDefinitionRelationship> is null
+    pub fn HandleStepBasicProductDefinitionRelationship_is_null(
+        self_: *const HandleStepBasicProductDefinitionRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductDefinitionRelationship
     pub fn HandleStepBasicProductDefinitionRelationship_get(
         handle: *const HandleStepBasicProductDefinitionRelationship,
@@ -35044,6 +35801,10 @@ extern "C" {
     pub fn HandleStepBasicProductDefinitionWithAssociatedDocuments_clone(
         self_: *const HandleStepBasicProductDefinitionWithAssociatedDocuments,
     ) -> crate::OcctResult<*mut HandleStepBasicProductDefinitionWithAssociatedDocuments>;
+    /// Check if Handle<StepBasic_ProductDefinitionWithAssociatedDocuments> is null
+    pub fn HandleStepBasicProductDefinitionWithAssociatedDocuments_is_null(
+        self_: *const HandleStepBasicProductDefinitionWithAssociatedDocuments,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductDefinitionWithAssociatedDocuments
     pub fn HandleStepBasicProductDefinitionWithAssociatedDocuments_get(
         handle: *const HandleStepBasicProductDefinitionWithAssociatedDocuments,
@@ -35305,6 +36066,10 @@ extern "C" {
     pub fn HandleStepBasicProductRelatedProductCategory_clone(
         self_: *const HandleStepBasicProductRelatedProductCategory,
     ) -> crate::OcctResult<*mut HandleStepBasicProductRelatedProductCategory>;
+    /// Check if Handle<StepBasic_ProductRelatedProductCategory> is null
+    pub fn HandleStepBasicProductRelatedProductCategory_is_null(
+        self_: *const HandleStepBasicProductRelatedProductCategory,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductRelatedProductCategory
     pub fn HandleStepBasicProductRelatedProductCategory_get(
         handle: *const HandleStepBasicProductRelatedProductCategory,
@@ -35428,6 +36193,8 @@ extern "C" {
     pub fn HandleStepBasicProductType_clone(
         self_: *const HandleStepBasicProductType,
     ) -> crate::OcctResult<*mut HandleStepBasicProductType>;
+    /// Check if Handle<StepBasic_ProductType> is null
+    pub fn HandleStepBasicProductType_is_null(self_: *const HandleStepBasicProductType) -> bool;
     /// Dereference Handle to get *const StepBasic_ProductType
     pub fn HandleStepBasicProductType_get(
         handle: *const HandleStepBasicProductType,
@@ -35573,6 +36340,10 @@ extern "C" {
     pub fn HandleStepBasicRatioMeasureWithUnit_clone(
         self_: *const HandleStepBasicRatioMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicRatioMeasureWithUnit>;
+    /// Check if Handle<StepBasic_RatioMeasureWithUnit> is null
+    pub fn HandleStepBasicRatioMeasureWithUnit_is_null(
+        self_: *const HandleStepBasicRatioMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_RatioMeasureWithUnit
     pub fn HandleStepBasicRatioMeasureWithUnit_get(
         handle: *const HandleStepBasicRatioMeasureWithUnit,
@@ -35690,6 +36461,8 @@ extern "C" {
     pub fn HandleStepBasicRatioUnit_clone(
         self_: *const HandleStepBasicRatioUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicRatioUnit>;
+    /// Check if Handle<StepBasic_RatioUnit> is null
+    pub fn HandleStepBasicRatioUnit_is_null(self_: *const HandleStepBasicRatioUnit) -> bool;
     /// Dereference Handle to get *const StepBasic_RatioUnit
     pub fn HandleStepBasicRatioUnit_get(
         handle: *const HandleStepBasicRatioUnit,
@@ -35805,6 +36578,10 @@ extern "C" {
     pub fn HandleStepBasicRoleAssociation_clone(
         self_: *const HandleStepBasicRoleAssociation,
     ) -> crate::OcctResult<*mut HandleStepBasicRoleAssociation>;
+    /// Check if Handle<StepBasic_RoleAssociation> is null
+    pub fn HandleStepBasicRoleAssociation_is_null(
+        self_: *const HandleStepBasicRoleAssociation,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_RoleAssociation
     pub fn HandleStepBasicRoleAssociation_get(
         handle: *const HandleStepBasicRoleAssociation,
@@ -36055,6 +36832,10 @@ extern "C" {
     pub fn HandleStepBasicSecurityClassification_clone(
         self_: *const HandleStepBasicSecurityClassification,
     ) -> crate::OcctResult<*mut HandleStepBasicSecurityClassification>;
+    /// Check if Handle<StepBasic_SecurityClassification> is null
+    pub fn HandleStepBasicSecurityClassification_is_null(
+        self_: *const HandleStepBasicSecurityClassification,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SecurityClassification
     pub fn HandleStepBasicSecurityClassification_get(
         handle: *const HandleStepBasicSecurityClassification,
@@ -36148,6 +36929,10 @@ extern "C" {
     pub fn HandleStepBasicSecurityClassificationAssignment_clone(
         self_: *const HandleStepBasicSecurityClassificationAssignment,
     ) -> crate::OcctResult<*mut HandleStepBasicSecurityClassificationAssignment>;
+    /// Check if Handle<StepBasic_SecurityClassificationAssignment> is null
+    pub fn HandleStepBasicSecurityClassificationAssignment_is_null(
+        self_: *const HandleStepBasicSecurityClassificationAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SecurityClassificationAssignment
     pub fn HandleStepBasicSecurityClassificationAssignment_get(
         handle: *const HandleStepBasicSecurityClassificationAssignment,
@@ -36253,6 +37038,10 @@ extern "C" {
     pub fn HandleStepBasicSecurityClassificationLevel_clone(
         self_: *const HandleStepBasicSecurityClassificationLevel,
     ) -> crate::OcctResult<*mut HandleStepBasicSecurityClassificationLevel>;
+    /// Check if Handle<StepBasic_SecurityClassificationLevel> is null
+    pub fn HandleStepBasicSecurityClassificationLevel_is_null(
+        self_: *const HandleStepBasicSecurityClassificationLevel,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SecurityClassificationLevel
     pub fn HandleStepBasicSecurityClassificationLevel_get(
         handle: *const HandleStepBasicSecurityClassificationLevel,
@@ -36367,6 +37156,8 @@ extern "C" {
     pub fn HandleStepBasicSiUnit_clone(
         self_: *const HandleStepBasicSiUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSiUnit>;
+    /// Check if Handle<StepBasic_SiUnit> is null
+    pub fn HandleStepBasicSiUnit_is_null(self_: *const HandleStepBasicSiUnit) -> bool;
     /// Dereference Handle to get *const StepBasic_SiUnit
     pub fn HandleStepBasicSiUnit_get(
         handle: *const HandleStepBasicSiUnit,
@@ -36507,6 +37298,10 @@ extern "C" {
     pub fn HandleStepBasicSiUnitAndAreaUnit_clone(
         self_: *const HandleStepBasicSiUnitAndAreaUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSiUnitAndAreaUnit>;
+    /// Check if Handle<StepBasic_SiUnitAndAreaUnit> is null
+    pub fn HandleStepBasicSiUnitAndAreaUnit_is_null(
+        self_: *const HandleStepBasicSiUnitAndAreaUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SiUnitAndAreaUnit
     pub fn HandleStepBasicSiUnitAndAreaUnit_get(
         handle: *const HandleStepBasicSiUnitAndAreaUnit,
@@ -36666,6 +37461,10 @@ extern "C" {
     pub fn HandleStepBasicSiUnitAndLengthUnit_clone(
         self_: *const HandleStepBasicSiUnitAndLengthUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSiUnitAndLengthUnit>;
+    /// Check if Handle<StepBasic_SiUnitAndLengthUnit> is null
+    pub fn HandleStepBasicSiUnitAndLengthUnit_is_null(
+        self_: *const HandleStepBasicSiUnitAndLengthUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SiUnitAndLengthUnit
     pub fn HandleStepBasicSiUnitAndLengthUnit_get(
         handle: *const HandleStepBasicSiUnitAndLengthUnit,
@@ -36816,6 +37615,10 @@ extern "C" {
     pub fn HandleStepBasicSiUnitAndMassUnit_clone(
         self_: *const HandleStepBasicSiUnitAndMassUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSiUnitAndMassUnit>;
+    /// Check if Handle<StepBasic_SiUnitAndMassUnit> is null
+    pub fn HandleStepBasicSiUnitAndMassUnit_is_null(
+        self_: *const HandleStepBasicSiUnitAndMassUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SiUnitAndMassUnit
     pub fn HandleStepBasicSiUnitAndMassUnit_get(
         handle: *const HandleStepBasicSiUnitAndMassUnit,
@@ -36970,6 +37773,10 @@ extern "C" {
     pub fn HandleStepBasicSiUnitAndPlaneAngleUnit_clone(
         self_: *const HandleStepBasicSiUnitAndPlaneAngleUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSiUnitAndPlaneAngleUnit>;
+    /// Check if Handle<StepBasic_SiUnitAndPlaneAngleUnit> is null
+    pub fn HandleStepBasicSiUnitAndPlaneAngleUnit_is_null(
+        self_: *const HandleStepBasicSiUnitAndPlaneAngleUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SiUnitAndPlaneAngleUnit
     pub fn HandleStepBasicSiUnitAndPlaneAngleUnit_get(
         handle: *const HandleStepBasicSiUnitAndPlaneAngleUnit,
@@ -37121,6 +37928,10 @@ extern "C" {
     pub fn HandleStepBasicSiUnitAndRatioUnit_clone(
         self_: *const HandleStepBasicSiUnitAndRatioUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSiUnitAndRatioUnit>;
+    /// Check if Handle<StepBasic_SiUnitAndRatioUnit> is null
+    pub fn HandleStepBasicSiUnitAndRatioUnit_is_null(
+        self_: *const HandleStepBasicSiUnitAndRatioUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SiUnitAndRatioUnit
     pub fn HandleStepBasicSiUnitAndRatioUnit_get(
         handle: *const HandleStepBasicSiUnitAndRatioUnit,
@@ -37275,6 +38086,10 @@ extern "C" {
     pub fn HandleStepBasicSiUnitAndSolidAngleUnit_clone(
         self_: *const HandleStepBasicSiUnitAndSolidAngleUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSiUnitAndSolidAngleUnit>;
+    /// Check if Handle<StepBasic_SiUnitAndSolidAngleUnit> is null
+    pub fn HandleStepBasicSiUnitAndSolidAngleUnit_is_null(
+        self_: *const HandleStepBasicSiUnitAndSolidAngleUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SiUnitAndSolidAngleUnit
     pub fn HandleStepBasicSiUnitAndSolidAngleUnit_get(
         handle: *const HandleStepBasicSiUnitAndSolidAngleUnit,
@@ -37429,6 +38244,10 @@ extern "C" {
     pub fn HandleStepBasicSiUnitAndThermodynamicTemperatureUnit_clone(
         self_: *const HandleStepBasicSiUnitAndThermodynamicTemperatureUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSiUnitAndThermodynamicTemperatureUnit>;
+    /// Check if Handle<StepBasic_SiUnitAndThermodynamicTemperatureUnit> is null
+    pub fn HandleStepBasicSiUnitAndThermodynamicTemperatureUnit_is_null(
+        self_: *const HandleStepBasicSiUnitAndThermodynamicTemperatureUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SiUnitAndThermodynamicTemperatureUnit
     pub fn HandleStepBasicSiUnitAndThermodynamicTemperatureUnit_get(
         handle: *const HandleStepBasicSiUnitAndThermodynamicTemperatureUnit,
@@ -37579,6 +38398,10 @@ extern "C" {
     pub fn HandleStepBasicSiUnitAndTimeUnit_clone(
         self_: *const HandleStepBasicSiUnitAndTimeUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSiUnitAndTimeUnit>;
+    /// Check if Handle<StepBasic_SiUnitAndTimeUnit> is null
+    pub fn HandleStepBasicSiUnitAndTimeUnit_is_null(
+        self_: *const HandleStepBasicSiUnitAndTimeUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SiUnitAndTimeUnit
     pub fn HandleStepBasicSiUnitAndTimeUnit_get(
         handle: *const HandleStepBasicSiUnitAndTimeUnit,
@@ -37724,6 +38547,10 @@ extern "C" {
     pub fn HandleStepBasicSiUnitAndVolumeUnit_clone(
         self_: *const HandleStepBasicSiUnitAndVolumeUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSiUnitAndVolumeUnit>;
+    /// Check if Handle<StepBasic_SiUnitAndVolumeUnit> is null
+    pub fn HandleStepBasicSiUnitAndVolumeUnit_is_null(
+        self_: *const HandleStepBasicSiUnitAndVolumeUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SiUnitAndVolumeUnit
     pub fn HandleStepBasicSiUnitAndVolumeUnit_get(
         handle: *const HandleStepBasicSiUnitAndVolumeUnit,
@@ -37875,6 +38702,8 @@ extern "C" {
     pub fn HandleStepBasicSizeMember_clone(
         self_: *const HandleStepBasicSizeMember,
     ) -> crate::OcctResult<*mut HandleStepBasicSizeMember>;
+    /// Check if Handle<StepBasic_SizeMember> is null
+    pub fn HandleStepBasicSizeMember_is_null(self_: *const HandleStepBasicSizeMember) -> bool;
     /// Dereference Handle to get *const StepBasic_SizeMember
     pub fn HandleStepBasicSizeMember_get(
         handle: *const HandleStepBasicSizeMember,
@@ -38134,6 +38963,10 @@ extern "C" {
     pub fn HandleStepBasicSolidAngleMeasureWithUnit_clone(
         self_: *const HandleStepBasicSolidAngleMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSolidAngleMeasureWithUnit>;
+    /// Check if Handle<StepBasic_SolidAngleMeasureWithUnit> is null
+    pub fn HandleStepBasicSolidAngleMeasureWithUnit_is_null(
+        self_: *const HandleStepBasicSolidAngleMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SolidAngleMeasureWithUnit
     pub fn HandleStepBasicSolidAngleMeasureWithUnit_get(
         handle: *const HandleStepBasicSolidAngleMeasureWithUnit,
@@ -38252,6 +39085,10 @@ extern "C" {
     pub fn HandleStepBasicSolidAngleUnit_clone(
         self_: *const HandleStepBasicSolidAngleUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicSolidAngleUnit>;
+    /// Check if Handle<StepBasic_SolidAngleUnit> is null
+    pub fn HandleStepBasicSolidAngleUnit_is_null(
+        self_: *const HandleStepBasicSolidAngleUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_SolidAngleUnit
     pub fn HandleStepBasicSolidAngleUnit_get(
         handle: *const HandleStepBasicSolidAngleUnit,
@@ -38454,6 +39291,10 @@ extern "C" {
     pub fn HandleStepBasicThermodynamicTemperatureUnit_clone(
         self_: *const HandleStepBasicThermodynamicTemperatureUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicThermodynamicTemperatureUnit>;
+    /// Check if Handle<StepBasic_ThermodynamicTemperatureUnit> is null
+    pub fn HandleStepBasicThermodynamicTemperatureUnit_is_null(
+        self_: *const HandleStepBasicThermodynamicTemperatureUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_ThermodynamicTemperatureUnit
     pub fn HandleStepBasicThermodynamicTemperatureUnit_get(
         handle: *const HandleStepBasicThermodynamicTemperatureUnit,
@@ -38557,6 +39398,10 @@ extern "C" {
     pub fn HandleStepBasicTimeMeasureWithUnit_clone(
         self_: *const HandleStepBasicTimeMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicTimeMeasureWithUnit>;
+    /// Check if Handle<StepBasic_TimeMeasureWithUnit> is null
+    pub fn HandleStepBasicTimeMeasureWithUnit_is_null(
+        self_: *const HandleStepBasicTimeMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_TimeMeasureWithUnit
     pub fn HandleStepBasicTimeMeasureWithUnit_get(
         handle: *const HandleStepBasicTimeMeasureWithUnit,
@@ -38674,6 +39519,8 @@ extern "C" {
     pub fn HandleStepBasicTimeUnit_clone(
         self_: *const HandleStepBasicTimeUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicTimeUnit>;
+    /// Check if Handle<StepBasic_TimeUnit> is null
+    pub fn HandleStepBasicTimeUnit_is_null(self_: *const HandleStepBasicTimeUnit) -> bool;
     /// Dereference Handle to get *const StepBasic_TimeUnit
     pub fn HandleStepBasicTimeUnit_get(
         handle: *const HandleStepBasicTimeUnit,
@@ -38805,6 +39652,10 @@ extern "C" {
     pub fn HandleStepBasicUncertaintyMeasureWithUnit_clone(
         self_: *const HandleStepBasicUncertaintyMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicUncertaintyMeasureWithUnit>;
+    /// Check if Handle<StepBasic_UncertaintyMeasureWithUnit> is null
+    pub fn HandleStepBasicUncertaintyMeasureWithUnit_is_null(
+        self_: *const HandleStepBasicUncertaintyMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_UncertaintyMeasureWithUnit
     pub fn HandleStepBasicUncertaintyMeasureWithUnit_get(
         handle: *const HandleStepBasicUncertaintyMeasureWithUnit,
@@ -39056,6 +39907,10 @@ extern "C" {
     pub fn HandleStepBasicVersionedActionRequest_clone(
         self_: *const HandleStepBasicVersionedActionRequest,
     ) -> crate::OcctResult<*mut HandleStepBasicVersionedActionRequest>;
+    /// Check if Handle<StepBasic_VersionedActionRequest> is null
+    pub fn HandleStepBasicVersionedActionRequest_is_null(
+        self_: *const HandleStepBasicVersionedActionRequest,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_VersionedActionRequest
     pub fn HandleStepBasicVersionedActionRequest_get(
         handle: *const HandleStepBasicVersionedActionRequest,
@@ -39136,6 +39991,8 @@ extern "C" {
     pub fn HandleStepBasicVolumeUnit_clone(
         self_: *const HandleStepBasicVolumeUnit,
     ) -> crate::OcctResult<*mut HandleStepBasicVolumeUnit>;
+    /// Check if Handle<StepBasic_VolumeUnit> is null
+    pub fn HandleStepBasicVolumeUnit_is_null(self_: *const HandleStepBasicVolumeUnit) -> bool;
     /// Dereference Handle to get *const StepBasic_VolumeUnit
     pub fn HandleStepBasicVolumeUnit_get(
         handle: *const HandleStepBasicVolumeUnit,
@@ -39273,6 +40130,10 @@ extern "C" {
     pub fn HandleStepBasicWeekOfYearAndDayDate_clone(
         self_: *const HandleStepBasicWeekOfYearAndDayDate,
     ) -> crate::OcctResult<*mut HandleStepBasicWeekOfYearAndDayDate>;
+    /// Check if Handle<StepBasic_WeekOfYearAndDayDate> is null
+    pub fn HandleStepBasicWeekOfYearAndDayDate_is_null(
+        self_: *const HandleStepBasicWeekOfYearAndDayDate,
+    ) -> bool;
     /// Dereference Handle to get *const StepBasic_WeekOfYearAndDayDate
     pub fn HandleStepBasicWeekOfYearAndDayDate_get(
         handle: *const HandleStepBasicWeekOfYearAndDayDate,
@@ -39404,6 +40265,9 @@ extern "C" {
     pub fn HandleStepDataDefaultGeneral_clone(
         self_: *const HandleStepDataDefaultGeneral,
     ) -> crate::OcctResult<*mut HandleStepDataDefaultGeneral>;
+    /// Check if Handle<StepData_DefaultGeneral> is null
+    pub fn HandleStepDataDefaultGeneral_is_null(self_: *const HandleStepDataDefaultGeneral)
+        -> bool;
     /// Dereference Handle to get *const StepData_DefaultGeneral
     pub fn HandleStepDataDefaultGeneral_get(
         handle: *const HandleStepDataDefaultGeneral,
@@ -39601,6 +40465,8 @@ extern "C" {
     pub fn HandleStepDataDescribed_clone(
         self_: *const HandleStepDataDescribed,
     ) -> crate::OcctResult<*mut HandleStepDataDescribed>;
+    /// Check if Handle<StepData_Described> is null
+    pub fn HandleStepDataDescribed_is_null(self_: *const HandleStepDataDescribed) -> bool;
     /// Dereference Handle to get *const StepData_Described
     pub fn HandleStepDataDescribed_get(
         handle: *const HandleStepDataDescribed,
@@ -39716,6 +40582,8 @@ extern "C" {
     pub fn HandleStepDataECDescr_clone(
         self_: *const HandleStepDataECDescr,
     ) -> crate::OcctResult<*mut HandleStepDataECDescr>;
+    /// Check if Handle<StepData_ECDescr> is null
+    pub fn HandleStepDataECDescr_is_null(self_: *const HandleStepDataECDescr) -> bool;
     /// Dereference Handle to get *const StepData_ECDescr
     pub fn HandleStepDataECDescr_get(
         handle: *const HandleStepDataECDescr,
@@ -39797,6 +40665,8 @@ extern "C" {
     pub fn HandleStepDataEDescr_clone(
         self_: *const HandleStepDataEDescr,
     ) -> crate::OcctResult<*mut HandleStepDataEDescr>;
+    /// Check if Handle<StepData_EDescr> is null
+    pub fn HandleStepDataEDescr_is_null(self_: *const HandleStepDataEDescr) -> bool;
     /// Dereference Handle to get *const StepData_EDescr
     pub fn HandleStepDataEDescr_get(
         handle: *const HandleStepDataEDescr,
@@ -39963,6 +40833,8 @@ extern "C" {
     pub fn HandleStepDataESDescr_clone(
         self_: *const HandleStepDataESDescr,
     ) -> crate::OcctResult<*mut HandleStepDataESDescr>;
+    /// Check if Handle<StepData_ESDescr> is null
+    pub fn HandleStepDataESDescr_is_null(self_: *const HandleStepDataESDescr) -> bool;
     /// Dereference Handle to get *const StepData_ESDescr
     pub fn HandleStepDataESDescr_get(
         handle: *const HandleStepDataESDescr,
@@ -40537,6 +41409,8 @@ extern "C" {
     pub fn HandleStepDataFileProtocol_clone(
         self_: *const HandleStepDataFileProtocol,
     ) -> crate::OcctResult<*mut HandleStepDataFileProtocol>;
+    /// Check if Handle<StepData_FileProtocol> is null
+    pub fn HandleStepDataFileProtocol_is_null(self_: *const HandleStepDataFileProtocol) -> bool;
     /// Dereference Handle to get *const StepData_FileProtocol
     pub fn HandleStepDataFileProtocol_get(
         handle: *const HandleStepDataFileProtocol,
@@ -40702,6 +41576,9 @@ extern "C" {
     pub fn HandleStepDataFileRecognizer_clone(
         self_: *const HandleStepDataFileRecognizer,
     ) -> crate::OcctResult<*mut HandleStepDataFileRecognizer>;
+    /// Check if Handle<StepData_FileRecognizer> is null
+    pub fn HandleStepDataFileRecognizer_is_null(self_: *const HandleStepDataFileRecognizer)
+        -> bool;
     /// Dereference Handle to get *const StepData_FileRecognizer
     pub fn HandleStepDataFileRecognizer_get(
         handle: *const HandleStepDataFileRecognizer,
@@ -40830,6 +41707,9 @@ extern "C" {
     pub fn HandleStepDataFreeFormEntity_clone(
         self_: *const HandleStepDataFreeFormEntity,
     ) -> crate::OcctResult<*mut HandleStepDataFreeFormEntity>;
+    /// Check if Handle<StepData_FreeFormEntity> is null
+    pub fn HandleStepDataFreeFormEntity_is_null(self_: *const HandleStepDataFreeFormEntity)
+        -> bool;
     /// Dereference Handle to get *const StepData_FreeFormEntity
     pub fn HandleStepDataFreeFormEntity_get(
         handle: *const HandleStepDataFreeFormEntity,
@@ -40928,6 +41808,8 @@ extern "C" {
     pub fn HandleStepDataGeneralModule_clone(
         self_: *const HandleStepDataGeneralModule,
     ) -> crate::OcctResult<*mut HandleStepDataGeneralModule>;
+    /// Check if Handle<StepData_GeneralModule> is null
+    pub fn HandleStepDataGeneralModule_is_null(self_: *const HandleStepDataGeneralModule) -> bool;
     /// Dereference Handle to get *const StepData_GeneralModule
     pub fn HandleStepDataGeneralModule_get(
         handle: *const HandleStepDataGeneralModule,
@@ -41121,6 +42003,10 @@ extern "C" {
     pub fn HandleStepDataGlobalNodeOfWriterLib_clone(
         self_: *const HandleStepDataGlobalNodeOfWriterLib,
     ) -> crate::OcctResult<*mut HandleStepDataGlobalNodeOfWriterLib>;
+    /// Check if Handle<StepData_GlobalNodeOfWriterLib> is null
+    pub fn HandleStepDataGlobalNodeOfWriterLib_is_null(
+        self_: *const HandleStepDataGlobalNodeOfWriterLib,
+    ) -> bool;
     /// Dereference Handle to get *const StepData_GlobalNodeOfWriterLib
     pub fn HandleStepDataGlobalNodeOfWriterLib_get(
         handle: *const HandleStepDataGlobalNodeOfWriterLib,
@@ -41224,6 +42110,9 @@ extern "C" {
     pub fn HandleStepDataHArray1OfField_clone(
         self_: *const HandleStepDataHArray1OfField,
     ) -> crate::OcctResult<*mut HandleStepDataHArray1OfField>;
+    /// Check if Handle<StepData_HArray1OfField> is null
+    pub fn HandleStepDataHArray1OfField_is_null(self_: *const HandleStepDataHArray1OfField)
+        -> bool;
     /// Dereference Handle to get *const StepData_HArray1OfField
     pub fn HandleStepDataHArray1OfField_get(
         handle: *const HandleStepDataHArray1OfField,
@@ -41314,6 +42203,10 @@ extern "C" {
     pub fn HandleStepDataNodeOfWriterLib_clone(
         self_: *const HandleStepDataNodeOfWriterLib,
     ) -> crate::OcctResult<*mut HandleStepDataNodeOfWriterLib>;
+    /// Check if Handle<StepData_NodeOfWriterLib> is null
+    pub fn HandleStepDataNodeOfWriterLib_is_null(
+        self_: *const HandleStepDataNodeOfWriterLib,
+    ) -> bool;
     /// Dereference Handle to get *const StepData_NodeOfWriterLib
     pub fn HandleStepDataNodeOfWriterLib_get(
         handle: *const HandleStepDataNodeOfWriterLib,
@@ -41540,6 +42433,8 @@ extern "C" {
     pub fn HandleStepDataPDescr_clone(
         self_: *const HandleStepDataPDescr,
     ) -> crate::OcctResult<*mut HandleStepDataPDescr>;
+    /// Check if Handle<StepData_PDescr> is null
+    pub fn HandleStepDataPDescr_is_null(self_: *const HandleStepDataPDescr) -> bool;
     /// Dereference Handle to get *const StepData_PDescr
     pub fn HandleStepDataPDescr_get(
         handle: *const HandleStepDataPDescr,
@@ -41679,6 +42574,8 @@ extern "C" {
     pub fn HandleStepDataPlex_clone(
         self_: *const HandleStepDataPlex,
     ) -> crate::OcctResult<*mut HandleStepDataPlex>;
+    /// Check if Handle<StepData_Plex> is null
+    pub fn HandleStepDataPlex_is_null(self_: *const HandleStepDataPlex) -> bool;
     /// Dereference Handle to get *const StepData_Plex
     pub fn HandleStepDataPlex_get(
         handle: *const HandleStepDataPlex,
@@ -41865,6 +42762,8 @@ extern "C" {
     pub fn HandleStepDataProtocol_clone(
         self_: *const HandleStepDataProtocol,
     ) -> crate::OcctResult<*mut HandleStepDataProtocol>;
+    /// Check if Handle<StepData_Protocol> is null
+    pub fn HandleStepDataProtocol_is_null(self_: *const HandleStepDataProtocol) -> bool;
     /// Dereference Handle to get *const StepData_Protocol
     pub fn HandleStepDataProtocol_get(
         handle: *const HandleStepDataProtocol,
@@ -42040,6 +42939,10 @@ extern "C" {
     pub fn HandleStepDataReadWriteModule_clone(
         self_: *const HandleStepDataReadWriteModule,
     ) -> crate::OcctResult<*mut HandleStepDataReadWriteModule>;
+    /// Check if Handle<StepData_ReadWriteModule> is null
+    pub fn HandleStepDataReadWriteModule_is_null(
+        self_: *const HandleStepDataReadWriteModule,
+    ) -> bool;
     /// Dereference Handle to get *const StepData_ReadWriteModule
     pub fn HandleStepDataReadWriteModule_get(
         handle: *const HandleStepDataReadWriteModule,
@@ -42159,6 +43062,8 @@ extern "C" {
     pub fn HandleStepDataSelectArrReal_clone(
         self_: *const HandleStepDataSelectArrReal,
     ) -> crate::OcctResult<*mut HandleStepDataSelectArrReal>;
+    /// Check if Handle<StepData_SelectArrReal> is null
+    pub fn HandleStepDataSelectArrReal_is_null(self_: *const HandleStepDataSelectArrReal) -> bool;
     /// Dereference Handle to get *const StepData_SelectArrReal
     pub fn HandleStepDataSelectArrReal_get(
         handle: *const HandleStepDataSelectArrReal,
@@ -42339,6 +43244,8 @@ extern "C" {
     pub fn HandleStepDataSelectInt_clone(
         self_: *const HandleStepDataSelectInt,
     ) -> crate::OcctResult<*mut HandleStepDataSelectInt>;
+    /// Check if Handle<StepData_SelectInt> is null
+    pub fn HandleStepDataSelectInt_is_null(self_: *const HandleStepDataSelectInt) -> bool;
     /// Dereference Handle to get *const StepData_SelectInt
     pub fn HandleStepDataSelectInt_get(
         handle: *const HandleStepDataSelectInt,
@@ -42580,6 +43487,8 @@ extern "C" {
     pub fn HandleStepDataSelectMember_clone(
         self_: *const HandleStepDataSelectMember,
     ) -> crate::OcctResult<*mut HandleStepDataSelectMember>;
+    /// Check if Handle<StepData_SelectMember> is null
+    pub fn HandleStepDataSelectMember_is_null(self_: *const HandleStepDataSelectMember) -> bool;
     /// Dereference Handle to get *const StepData_SelectMember
     pub fn HandleStepDataSelectMember_get(
         handle: *const HandleStepDataSelectMember,
@@ -42787,6 +43696,8 @@ extern "C" {
     pub fn HandleStepDataSelectNamed_clone(
         self_: *const HandleStepDataSelectNamed,
     ) -> crate::OcctResult<*mut HandleStepDataSelectNamed>;
+    /// Check if Handle<StepData_SelectNamed> is null
+    pub fn HandleStepDataSelectNamed_is_null(self_: *const HandleStepDataSelectNamed) -> bool;
     /// Dereference Handle to get *const StepData_SelectNamed
     pub fn HandleStepDataSelectNamed_get(
         handle: *const HandleStepDataSelectNamed,
@@ -42955,6 +43866,8 @@ extern "C" {
     pub fn HandleStepDataSelectReal_clone(
         self_: *const HandleStepDataSelectReal,
     ) -> crate::OcctResult<*mut HandleStepDataSelectReal>;
+    /// Check if Handle<StepData_SelectReal> is null
+    pub fn HandleStepDataSelectReal_is_null(self_: *const HandleStepDataSelectReal) -> bool;
     /// Dereference Handle to get *const StepData_SelectReal
     pub fn HandleStepDataSelectReal_get(
         handle: *const HandleStepDataSelectReal,
@@ -43274,6 +44187,8 @@ extern "C" {
     pub fn HandleStepDataSimple_clone(
         self_: *const HandleStepDataSimple,
     ) -> crate::OcctResult<*mut HandleStepDataSimple>;
+    /// Check if Handle<StepData_Simple> is null
+    pub fn HandleStepDataSimple_is_null(self_: *const HandleStepDataSimple) -> bool;
     /// Dereference Handle to get *const StepData_Simple
     pub fn HandleStepDataSimple_get(
         handle: *const HandleStepDataSimple,
@@ -43493,6 +44408,8 @@ extern "C" {
     pub fn HandleStepDataStepModel_clone(
         self_: *const HandleStepDataStepModel,
     ) -> crate::OcctResult<*mut HandleStepDataStepModel>;
+    /// Check if Handle<StepData_StepModel> is null
+    pub fn HandleStepDataStepModel_is_null(self_: *const HandleStepDataStepModel) -> bool;
     /// Dereference Handle to get *const StepData_StepModel
     pub fn HandleStepDataStepModel_get(
         handle: *const HandleStepDataStepModel,
@@ -44102,6 +45019,9 @@ extern "C" {
     pub fn HandleStepDataStepReaderData_clone(
         self_: *const HandleStepDataStepReaderData,
     ) -> crate::OcctResult<*mut HandleStepDataStepReaderData>;
+    /// Check if Handle<StepData_StepReaderData> is null
+    pub fn HandleStepDataStepReaderData_is_null(self_: *const HandleStepDataStepReaderData)
+        -> bool;
     /// Dereference Handle to get *const StepData_StepReaderData
     pub fn HandleStepDataStepReaderData_get(
         handle: *const HandleStepDataStepReaderData,
@@ -44694,6 +45614,10 @@ extern "C" {
     pub fn HandleStepDataUndefinedEntity_clone(
         self_: *const HandleStepDataUndefinedEntity,
     ) -> crate::OcctResult<*mut HandleStepDataUndefinedEntity>;
+    /// Check if Handle<StepData_UndefinedEntity> is null
+    pub fn HandleStepDataUndefinedEntity_is_null(
+        self_: *const HandleStepDataUndefinedEntity,
+    ) -> bool;
     /// Dereference Handle to get *const StepData_UndefinedEntity
     pub fn HandleStepDataUndefinedEntity_get(
         handle: *const HandleStepDataUndefinedEntity,
@@ -44832,6 +45756,10 @@ extern "C" {
     pub fn HandleStepDimTolAngularityTolerance_clone(
         self_: *const HandleStepDimTolAngularityTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolAngularityTolerance>;
+    /// Check if Handle<StepDimTol_AngularityTolerance> is null
+    pub fn HandleStepDimTolAngularityTolerance_is_null(
+        self_: *const HandleStepDimTolAngularityTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_AngularityTolerance
     pub fn HandleStepDimTolAngularityTolerance_get(
         handle: *const HandleStepDimTolAngularityTolerance,
@@ -44993,6 +45921,10 @@ extern "C" {
     pub fn HandleStepDimTolCircularRunoutTolerance_clone(
         self_: *const HandleStepDimTolCircularRunoutTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolCircularRunoutTolerance>;
+    /// Check if Handle<StepDimTol_CircularRunoutTolerance> is null
+    pub fn HandleStepDimTolCircularRunoutTolerance_is_null(
+        self_: *const HandleStepDimTolCircularRunoutTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_CircularRunoutTolerance
     pub fn HandleStepDimTolCircularRunoutTolerance_get(
         handle: *const HandleStepDimTolCircularRunoutTolerance,
@@ -45152,6 +46084,10 @@ extern "C" {
     pub fn HandleStepDimTolCoaxialityTolerance_clone(
         self_: *const HandleStepDimTolCoaxialityTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolCoaxialityTolerance>;
+    /// Check if Handle<StepDimTol_CoaxialityTolerance> is null
+    pub fn HandleStepDimTolCoaxialityTolerance_is_null(
+        self_: *const HandleStepDimTolCoaxialityTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_CoaxialityTolerance
     pub fn HandleStepDimTolCoaxialityTolerance_get(
         handle: *const HandleStepDimTolCoaxialityTolerance,
@@ -45329,6 +46265,8 @@ extern "C" {
     pub fn HandleStepDimTolCommonDatum_clone(
         self_: *const HandleStepDimTolCommonDatum,
     ) -> crate::OcctResult<*mut HandleStepDimTolCommonDatum>;
+    /// Check if Handle<StepDimTol_CommonDatum> is null
+    pub fn HandleStepDimTolCommonDatum_is_null(self_: *const HandleStepDimTolCommonDatum) -> bool;
     /// Dereference Handle to get *const StepDimTol_CommonDatum
     pub fn HandleStepDimTolCommonDatum_get(
         handle: *const HandleStepDimTolCommonDatum,
@@ -45468,6 +46406,10 @@ extern "C" {
     pub fn HandleStepDimTolConcentricityTolerance_clone(
         self_: *const HandleStepDimTolConcentricityTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolConcentricityTolerance>;
+    /// Check if Handle<StepDimTol_ConcentricityTolerance> is null
+    pub fn HandleStepDimTolConcentricityTolerance_is_null(
+        self_: *const HandleStepDimTolConcentricityTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_ConcentricityTolerance
     pub fn HandleStepDimTolConcentricityTolerance_get(
         handle: *const HandleStepDimTolConcentricityTolerance,
@@ -45621,6 +46563,10 @@ extern "C" {
     pub fn HandleStepDimTolCylindricityTolerance_clone(
         self_: *const HandleStepDimTolCylindricityTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolCylindricityTolerance>;
+    /// Check if Handle<StepDimTol_CylindricityTolerance> is null
+    pub fn HandleStepDimTolCylindricityTolerance_is_null(
+        self_: *const HandleStepDimTolCylindricityTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_CylindricityTolerance
     pub fn HandleStepDimTolCylindricityTolerance_get(
         handle: *const HandleStepDimTolCylindricityTolerance,
@@ -45767,6 +46713,8 @@ extern "C" {
     pub fn HandleStepDimTolDatum_clone(
         self_: *const HandleStepDimTolDatum,
     ) -> crate::OcctResult<*mut HandleStepDimTolDatum>;
+    /// Check if Handle<StepDimTol_Datum> is null
+    pub fn HandleStepDimTolDatum_is_null(self_: *const HandleStepDimTolDatum) -> bool;
     /// Dereference Handle to get *const StepDimTol_Datum
     pub fn HandleStepDimTolDatum_get(
         handle: *const HandleStepDimTolDatum,
@@ -45888,6 +46836,9 @@ extern "C" {
     pub fn HandleStepDimTolDatumFeature_clone(
         self_: *const HandleStepDimTolDatumFeature,
     ) -> crate::OcctResult<*mut HandleStepDimTolDatumFeature>;
+    /// Check if Handle<StepDimTol_DatumFeature> is null
+    pub fn HandleStepDimTolDatumFeature_is_null(self_: *const HandleStepDimTolDatumFeature)
+        -> bool;
     /// Dereference Handle to get *const StepDimTol_DatumFeature
     pub fn HandleStepDimTolDatumFeature_get(
         handle: *const HandleStepDimTolDatumFeature,
@@ -46135,6 +47086,10 @@ extern "C" {
     pub fn HandleStepDimTolDatumReference_clone(
         self_: *const HandleStepDimTolDatumReference,
     ) -> crate::OcctResult<*mut HandleStepDimTolDatumReference>;
+    /// Check if Handle<StepDimTol_DatumReference> is null
+    pub fn HandleStepDimTolDatumReference_is_null(
+        self_: *const HandleStepDimTolDatumReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_DatumReference
     pub fn HandleStepDimTolDatumReference_get(
         handle: *const HandleStepDimTolDatumReference,
@@ -46230,6 +47185,10 @@ extern "C" {
     pub fn HandleStepDimTolDatumReferenceCompartment_clone(
         self_: *const HandleStepDimTolDatumReferenceCompartment,
     ) -> crate::OcctResult<*mut HandleStepDimTolDatumReferenceCompartment>;
+    /// Check if Handle<StepDimTol_DatumReferenceCompartment> is null
+    pub fn HandleStepDimTolDatumReferenceCompartment_is_null(
+        self_: *const HandleStepDimTolDatumReferenceCompartment,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_DatumReferenceCompartment
     pub fn HandleStepDimTolDatumReferenceCompartment_get(
         handle: *const HandleStepDimTolDatumReferenceCompartment,
@@ -46411,6 +47370,10 @@ extern "C" {
     pub fn HandleStepDimTolDatumReferenceElement_clone(
         self_: *const HandleStepDimTolDatumReferenceElement,
     ) -> crate::OcctResult<*mut HandleStepDimTolDatumReferenceElement>;
+    /// Check if Handle<StepDimTol_DatumReferenceElement> is null
+    pub fn HandleStepDimTolDatumReferenceElement_is_null(
+        self_: *const HandleStepDimTolDatumReferenceElement,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_DatumReferenceElement
     pub fn HandleStepDimTolDatumReferenceElement_get(
         handle: *const HandleStepDimTolDatumReferenceElement,
@@ -46704,6 +47667,10 @@ extern "C" {
     pub fn HandleStepDimTolDatumReferenceModifierWithValue_clone(
         self_: *const HandleStepDimTolDatumReferenceModifierWithValue,
     ) -> crate::OcctResult<*mut HandleStepDimTolDatumReferenceModifierWithValue>;
+    /// Check if Handle<StepDimTol_DatumReferenceModifierWithValue> is null
+    pub fn HandleStepDimTolDatumReferenceModifierWithValue_is_null(
+        self_: *const HandleStepDimTolDatumReferenceModifierWithValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_DatumReferenceModifierWithValue
     pub fn HandleStepDimTolDatumReferenceModifierWithValue_get(
         handle: *const HandleStepDimTolDatumReferenceModifierWithValue,
@@ -46818,6 +47785,8 @@ extern "C" {
     pub fn HandleStepDimTolDatumSystem_clone(
         self_: *const HandleStepDimTolDatumSystem,
     ) -> crate::OcctResult<*mut HandleStepDimTolDatumSystem>;
+    /// Check if Handle<StepDimTol_DatumSystem> is null
+    pub fn HandleStepDimTolDatumSystem_is_null(self_: *const HandleStepDimTolDatumSystem) -> bool;
     /// Dereference Handle to get *const StepDimTol_DatumSystem
     pub fn HandleStepDimTolDatumSystem_get(
         handle: *const HandleStepDimTolDatumSystem,
@@ -47061,6 +48030,8 @@ extern "C" {
     pub fn HandleStepDimTolDatumTarget_clone(
         self_: *const HandleStepDimTolDatumTarget,
     ) -> crate::OcctResult<*mut HandleStepDimTolDatumTarget>;
+    /// Check if Handle<StepDimTol_DatumTarget> is null
+    pub fn HandleStepDimTolDatumTarget_is_null(self_: *const HandleStepDimTolDatumTarget) -> bool;
     /// Dereference Handle to get *const StepDimTol_DatumTarget
     pub fn HandleStepDimTolDatumTarget_get(
         handle: *const HandleStepDimTolDatumTarget,
@@ -47189,6 +48160,10 @@ extern "C" {
     pub fn HandleStepDimTolFlatnessTolerance_clone(
         self_: *const HandleStepDimTolFlatnessTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolFlatnessTolerance>;
+    /// Check if Handle<StepDimTol_FlatnessTolerance> is null
+    pub fn HandleStepDimTolFlatnessTolerance_is_null(
+        self_: *const HandleStepDimTolFlatnessTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_FlatnessTolerance
     pub fn HandleStepDimTolFlatnessTolerance_get(
         handle: *const HandleStepDimTolFlatnessTolerance,
@@ -47372,6 +48347,10 @@ extern "C" {
     pub fn HandleStepDimTolGeneralDatumReference_clone(
         self_: *const HandleStepDimTolGeneralDatumReference,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeneralDatumReference>;
+    /// Check if Handle<StepDimTol_GeneralDatumReference> is null
+    pub fn HandleStepDimTolGeneralDatumReference_is_null(
+        self_: *const HandleStepDimTolGeneralDatumReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeneralDatumReference
     pub fn HandleStepDimTolGeneralDatumReference_get(
         handle: *const HandleStepDimTolGeneralDatumReference,
@@ -47545,6 +48524,10 @@ extern "C" {
     pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRef_clone(
         self_: *const HandleStepDimTolGeoTolAndGeoTolWthDatRef,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeoTolAndGeoTolWthDatRef>;
+    /// Check if Handle<StepDimTol_GeoTolAndGeoTolWthDatRef> is null
+    pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRef_is_null(
+        self_: *const HandleStepDimTolGeoTolAndGeoTolWthDatRef,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeoTolAndGeoTolWthDatRef
     pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRef_get(
         handle: *const HandleStepDimTolGeoTolAndGeoTolWthDatRef,
@@ -47717,6 +48700,10 @@ extern "C" {
     pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_clone(
         self_: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol>;
+    /// Check if Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol> is null
+    pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_is_null(
+        self_: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol
     pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_get(
         handle: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol,
@@ -47924,6 +48911,10 @@ extern "C" {
     pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_clone(
         self_: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod>;
+    /// Check if Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod> is null
+    pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_is_null(
+        self_: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod
     pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_get(
         handle: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod,
@@ -48102,6 +49093,10 @@ extern "C" {
     pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_clone(
         self_: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol>;
+    /// Check if Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol> is null
+    pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_is_null(
+        self_: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol
     pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_get(
         handle: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol,
@@ -48268,6 +49263,10 @@ extern "C" {
     pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_clone(
         self_: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol>;
+    /// Check if Handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol> is null
+    pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_is_null(
+        self_: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol
     pub fn HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_get(
         handle: *const HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol,
@@ -48456,6 +49455,10 @@ extern "C" {
     pub fn HandleStepDimTolGeoTolAndGeoTolWthMaxTol_clone(
         self_: *const HandleStepDimTolGeoTolAndGeoTolWthMaxTol,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeoTolAndGeoTolWthMaxTol>;
+    /// Check if Handle<StepDimTol_GeoTolAndGeoTolWthMaxTol> is null
+    pub fn HandleStepDimTolGeoTolAndGeoTolWthMaxTol_is_null(
+        self_: *const HandleStepDimTolGeoTolAndGeoTolWthMaxTol,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeoTolAndGeoTolWthMaxTol
     pub fn HandleStepDimTolGeoTolAndGeoTolWthMaxTol_get(
         handle: *const HandleStepDimTolGeoTolAndGeoTolWthMaxTol,
@@ -48643,6 +49646,10 @@ extern "C" {
     pub fn HandleStepDimTolGeoTolAndGeoTolWthMod_clone(
         self_: *const HandleStepDimTolGeoTolAndGeoTolWthMod,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeoTolAndGeoTolWthMod>;
+    /// Check if Handle<StepDimTol_GeoTolAndGeoTolWthMod> is null
+    pub fn HandleStepDimTolGeoTolAndGeoTolWthMod_is_null(
+        self_: *const HandleStepDimTolGeoTolAndGeoTolWthMod,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeoTolAndGeoTolWthMod
     pub fn HandleStepDimTolGeoTolAndGeoTolWthMod_get(
         handle: *const HandleStepDimTolGeoTolAndGeoTolWthMod,
@@ -48821,6 +49828,10 @@ extern "C" {
     pub fn HandleStepDimTolGeometricTolerance_clone(
         self_: *const HandleStepDimTolGeometricTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeometricTolerance>;
+    /// Check if Handle<StepDimTol_GeometricTolerance> is null
+    pub fn HandleStepDimTolGeometricTolerance_is_null(
+        self_: *const HandleStepDimTolGeometricTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeometricTolerance
     pub fn HandleStepDimTolGeometricTolerance_get(
         handle: *const HandleStepDimTolGeometricTolerance,
@@ -49060,6 +50071,10 @@ extern "C" {
     pub fn HandleStepDimTolGeometricToleranceRelationship_clone(
         self_: *const HandleStepDimTolGeometricToleranceRelationship,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeometricToleranceRelationship>;
+    /// Check if Handle<StepDimTol_GeometricToleranceRelationship> is null
+    pub fn HandleStepDimTolGeometricToleranceRelationship_is_null(
+        self_: *const HandleStepDimTolGeometricToleranceRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeometricToleranceRelationship
     pub fn HandleStepDimTolGeometricToleranceRelationship_get(
         handle: *const HandleStepDimTolGeometricToleranceRelationship,
@@ -49295,6 +50310,10 @@ extern "C" {
     pub fn HandleStepDimTolGeometricToleranceWithDatumReference_clone(
         self_: *const HandleStepDimTolGeometricToleranceWithDatumReference,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeometricToleranceWithDatumReference>;
+    /// Check if Handle<StepDimTol_GeometricToleranceWithDatumReference> is null
+    pub fn HandleStepDimTolGeometricToleranceWithDatumReference_is_null(
+        self_: *const HandleStepDimTolGeometricToleranceWithDatumReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeometricToleranceWithDatumReference
     pub fn HandleStepDimTolGeometricToleranceWithDatumReference_get(
         handle: *const HandleStepDimTolGeometricToleranceWithDatumReference,
@@ -49496,6 +50515,10 @@ extern "C" {
     pub fn HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_clone(
         self_: *const HandleStepDimTolGeometricToleranceWithDefinedAreaUnit,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeometricToleranceWithDefinedAreaUnit>;
+    /// Check if Handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit> is null
+    pub fn HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_is_null(
+        self_: *const HandleStepDimTolGeometricToleranceWithDefinedAreaUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeometricToleranceWithDefinedAreaUnit
     pub fn HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_get(
         handle: *const HandleStepDimTolGeometricToleranceWithDefinedAreaUnit,
@@ -49663,6 +50686,10 @@ extern "C" {
     pub fn HandleStepDimTolGeometricToleranceWithDefinedUnit_clone(
         self_: *const HandleStepDimTolGeometricToleranceWithDefinedUnit,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeometricToleranceWithDefinedUnit>;
+    /// Check if Handle<StepDimTol_GeometricToleranceWithDefinedUnit> is null
+    pub fn HandleStepDimTolGeometricToleranceWithDefinedUnit_is_null(
+        self_: *const HandleStepDimTolGeometricToleranceWithDefinedUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeometricToleranceWithDefinedUnit
     pub fn HandleStepDimTolGeometricToleranceWithDefinedUnit_get(
         handle: *const HandleStepDimTolGeometricToleranceWithDefinedUnit,
@@ -49821,6 +50848,10 @@ extern "C" {
     pub fn HandleStepDimTolGeometricToleranceWithMaximumTolerance_clone(
         self_: *const HandleStepDimTolGeometricToleranceWithMaximumTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeometricToleranceWithMaximumTolerance>;
+    /// Check if Handle<StepDimTol_GeometricToleranceWithMaximumTolerance> is null
+    pub fn HandleStepDimTolGeometricToleranceWithMaximumTolerance_is_null(
+        self_: *const HandleStepDimTolGeometricToleranceWithMaximumTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeometricToleranceWithMaximumTolerance
     pub fn HandleStepDimTolGeometricToleranceWithMaximumTolerance_get(
         handle: *const HandleStepDimTolGeometricToleranceWithMaximumTolerance,
@@ -50009,6 +51040,10 @@ extern "C" {
     pub fn HandleStepDimTolGeometricToleranceWithModifiers_clone(
         self_: *const HandleStepDimTolGeometricToleranceWithModifiers,
     ) -> crate::OcctResult<*mut HandleStepDimTolGeometricToleranceWithModifiers>;
+    /// Check if Handle<StepDimTol_GeometricToleranceWithModifiers> is null
+    pub fn HandleStepDimTolGeometricToleranceWithModifiers_is_null(
+        self_: *const HandleStepDimTolGeometricToleranceWithModifiers,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_GeometricToleranceWithModifiers
     pub fn HandleStepDimTolGeometricToleranceWithModifiers_get(
         handle: *const HandleStepDimTolGeometricToleranceWithModifiers,
@@ -50162,6 +51197,10 @@ extern "C" {
     pub fn HandleStepDimTolHArray1OfDatumReference_clone(
         self_: *const HandleStepDimTolHArray1OfDatumReference,
     ) -> crate::OcctResult<*mut HandleStepDimTolHArray1OfDatumReference>;
+    /// Check if Handle<StepDimTol_HArray1OfDatumReference> is null
+    pub fn HandleStepDimTolHArray1OfDatumReference_is_null(
+        self_: *const HandleStepDimTolHArray1OfDatumReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_HArray1OfDatumReference
     pub fn HandleStepDimTolHArray1OfDatumReference_get(
         handle: *const HandleStepDimTolHArray1OfDatumReference,
@@ -50271,6 +51310,10 @@ extern "C" {
     pub fn HandleStepDimTolHArray1OfDatumReferenceCompartment_clone(
         self_: *const HandleStepDimTolHArray1OfDatumReferenceCompartment,
     ) -> crate::OcctResult<*mut HandleStepDimTolHArray1OfDatumReferenceCompartment>;
+    /// Check if Handle<StepDimTol_HArray1OfDatumReferenceCompartment> is null
+    pub fn HandleStepDimTolHArray1OfDatumReferenceCompartment_is_null(
+        self_: *const HandleStepDimTolHArray1OfDatumReferenceCompartment,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_HArray1OfDatumReferenceCompartment
     pub fn HandleStepDimTolHArray1OfDatumReferenceCompartment_get(
         handle: *const HandleStepDimTolHArray1OfDatumReferenceCompartment,
@@ -50380,6 +51423,10 @@ extern "C" {
     pub fn HandleStepDimTolHArray1OfDatumReferenceElement_clone(
         self_: *const HandleStepDimTolHArray1OfDatumReferenceElement,
     ) -> crate::OcctResult<*mut HandleStepDimTolHArray1OfDatumReferenceElement>;
+    /// Check if Handle<StepDimTol_HArray1OfDatumReferenceElement> is null
+    pub fn HandleStepDimTolHArray1OfDatumReferenceElement_is_null(
+        self_: *const HandleStepDimTolHArray1OfDatumReferenceElement,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_HArray1OfDatumReferenceElement
     pub fn HandleStepDimTolHArray1OfDatumReferenceElement_get(
         handle: *const HandleStepDimTolHArray1OfDatumReferenceElement,
@@ -50489,6 +51536,10 @@ extern "C" {
     pub fn HandleStepDimTolHArray1OfDatumReferenceModifier_clone(
         self_: *const HandleStepDimTolHArray1OfDatumReferenceModifier,
     ) -> crate::OcctResult<*mut HandleStepDimTolHArray1OfDatumReferenceModifier>;
+    /// Check if Handle<StepDimTol_HArray1OfDatumReferenceModifier> is null
+    pub fn HandleStepDimTolHArray1OfDatumReferenceModifier_is_null(
+        self_: *const HandleStepDimTolHArray1OfDatumReferenceModifier,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_HArray1OfDatumReferenceModifier
     pub fn HandleStepDimTolHArray1OfDatumReferenceModifier_get(
         handle: *const HandleStepDimTolHArray1OfDatumReferenceModifier,
@@ -50598,6 +51649,10 @@ extern "C" {
     pub fn HandleStepDimTolHArray1OfDatumSystemOrReference_clone(
         self_: *const HandleStepDimTolHArray1OfDatumSystemOrReference,
     ) -> crate::OcctResult<*mut HandleStepDimTolHArray1OfDatumSystemOrReference>;
+    /// Check if Handle<StepDimTol_HArray1OfDatumSystemOrReference> is null
+    pub fn HandleStepDimTolHArray1OfDatumSystemOrReference_is_null(
+        self_: *const HandleStepDimTolHArray1OfDatumSystemOrReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_HArray1OfDatumSystemOrReference
     pub fn HandleStepDimTolHArray1OfDatumSystemOrReference_get(
         handle: *const HandleStepDimTolHArray1OfDatumSystemOrReference,
@@ -50707,6 +51762,10 @@ extern "C" {
     pub fn HandleStepDimTolHArray1OfGeometricToleranceModifier_clone(
         self_: *const HandleStepDimTolHArray1OfGeometricToleranceModifier,
     ) -> crate::OcctResult<*mut HandleStepDimTolHArray1OfGeometricToleranceModifier>;
+    /// Check if Handle<StepDimTol_HArray1OfGeometricToleranceModifier> is null
+    pub fn HandleStepDimTolHArray1OfGeometricToleranceModifier_is_null(
+        self_: *const HandleStepDimTolHArray1OfGeometricToleranceModifier,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_HArray1OfGeometricToleranceModifier
     pub fn HandleStepDimTolHArray1OfGeometricToleranceModifier_get(
         handle: *const HandleStepDimTolHArray1OfGeometricToleranceModifier,
@@ -50816,6 +51875,10 @@ extern "C" {
     pub fn HandleStepDimTolHArray1OfToleranceZoneTarget_clone(
         self_: *const HandleStepDimTolHArray1OfToleranceZoneTarget,
     ) -> crate::OcctResult<*mut HandleStepDimTolHArray1OfToleranceZoneTarget>;
+    /// Check if Handle<StepDimTol_HArray1OfToleranceZoneTarget> is null
+    pub fn HandleStepDimTolHArray1OfToleranceZoneTarget_is_null(
+        self_: *const HandleStepDimTolHArray1OfToleranceZoneTarget,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_HArray1OfToleranceZoneTarget
     pub fn HandleStepDimTolHArray1OfToleranceZoneTarget_get(
         handle: *const HandleStepDimTolHArray1OfToleranceZoneTarget,
@@ -50901,6 +51964,10 @@ extern "C" {
     pub fn HandleStepDimTolLineProfileTolerance_clone(
         self_: *const HandleStepDimTolLineProfileTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolLineProfileTolerance>;
+    /// Check if Handle<StepDimTol_LineProfileTolerance> is null
+    pub fn HandleStepDimTolLineProfileTolerance_is_null(
+        self_: *const HandleStepDimTolLineProfileTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_LineProfileTolerance
     pub fn HandleStepDimTolLineProfileTolerance_get(
         handle: *const HandleStepDimTolLineProfileTolerance,
@@ -51063,6 +52130,10 @@ extern "C" {
     pub fn HandleStepDimTolModifiedGeometricTolerance_clone(
         self_: *const HandleStepDimTolModifiedGeometricTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolModifiedGeometricTolerance>;
+    /// Check if Handle<StepDimTol_ModifiedGeometricTolerance> is null
+    pub fn HandleStepDimTolModifiedGeometricTolerance_is_null(
+        self_: *const HandleStepDimTolModifiedGeometricTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_ModifiedGeometricTolerance
     pub fn HandleStepDimTolModifiedGeometricTolerance_get(
         handle: *const HandleStepDimTolModifiedGeometricTolerance,
@@ -51190,6 +52261,10 @@ extern "C" {
     pub fn HandleStepDimTolNonUniformZoneDefinition_clone(
         self_: *const HandleStepDimTolNonUniformZoneDefinition,
     ) -> crate::OcctResult<*mut HandleStepDimTolNonUniformZoneDefinition>;
+    /// Check if Handle<StepDimTol_NonUniformZoneDefinition> is null
+    pub fn HandleStepDimTolNonUniformZoneDefinition_is_null(
+        self_: *const HandleStepDimTolNonUniformZoneDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_NonUniformZoneDefinition
     pub fn HandleStepDimTolNonUniformZoneDefinition_get(
         handle: *const HandleStepDimTolNonUniformZoneDefinition,
@@ -51326,6 +52401,10 @@ extern "C" {
     pub fn HandleStepDimTolParallelismTolerance_clone(
         self_: *const HandleStepDimTolParallelismTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolParallelismTolerance>;
+    /// Check if Handle<StepDimTol_ParallelismTolerance> is null
+    pub fn HandleStepDimTolParallelismTolerance_is_null(
+        self_: *const HandleStepDimTolParallelismTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_ParallelismTolerance
     pub fn HandleStepDimTolParallelismTolerance_get(
         handle: *const HandleStepDimTolParallelismTolerance,
@@ -51487,6 +52566,10 @@ extern "C" {
     pub fn HandleStepDimTolPerpendicularityTolerance_clone(
         self_: *const HandleStepDimTolPerpendicularityTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolPerpendicularityTolerance>;
+    /// Check if Handle<StepDimTol_PerpendicularityTolerance> is null
+    pub fn HandleStepDimTolPerpendicularityTolerance_is_null(
+        self_: *const HandleStepDimTolPerpendicularityTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_PerpendicularityTolerance
     pub fn HandleStepDimTolPerpendicularityTolerance_get(
         handle: *const HandleStepDimTolPerpendicularityTolerance,
@@ -51648,6 +52731,10 @@ extern "C" {
     pub fn HandleStepDimTolPlacedDatumTargetFeature_clone(
         self_: *const HandleStepDimTolPlacedDatumTargetFeature,
     ) -> crate::OcctResult<*mut HandleStepDimTolPlacedDatumTargetFeature>;
+    /// Check if Handle<StepDimTol_PlacedDatumTargetFeature> is null
+    pub fn HandleStepDimTolPlacedDatumTargetFeature_is_null(
+        self_: *const HandleStepDimTolPlacedDatumTargetFeature,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_PlacedDatumTargetFeature
     pub fn HandleStepDimTolPlacedDatumTargetFeature_get(
         handle: *const HandleStepDimTolPlacedDatumTargetFeature,
@@ -51794,6 +52881,10 @@ extern "C" {
     pub fn HandleStepDimTolPositionTolerance_clone(
         self_: *const HandleStepDimTolPositionTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolPositionTolerance>;
+    /// Check if Handle<StepDimTol_PositionTolerance> is null
+    pub fn HandleStepDimTolPositionTolerance_is_null(
+        self_: *const HandleStepDimTolPositionTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_PositionTolerance
     pub fn HandleStepDimTolPositionTolerance_get(
         handle: *const HandleStepDimTolPositionTolerance,
@@ -51955,6 +53046,10 @@ extern "C" {
     pub fn HandleStepDimTolProjectedZoneDefinition_clone(
         self_: *const HandleStepDimTolProjectedZoneDefinition,
     ) -> crate::OcctResult<*mut HandleStepDimTolProjectedZoneDefinition>;
+    /// Check if Handle<StepDimTol_ProjectedZoneDefinition> is null
+    pub fn HandleStepDimTolProjectedZoneDefinition_is_null(
+        self_: *const HandleStepDimTolProjectedZoneDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_ProjectedZoneDefinition
     pub fn HandleStepDimTolProjectedZoneDefinition_get(
         handle: *const HandleStepDimTolProjectedZoneDefinition,
@@ -52077,6 +53172,10 @@ extern "C" {
     pub fn HandleStepDimTolRoundnessTolerance_clone(
         self_: *const HandleStepDimTolRoundnessTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolRoundnessTolerance>;
+    /// Check if Handle<StepDimTol_RoundnessTolerance> is null
+    pub fn HandleStepDimTolRoundnessTolerance_is_null(
+        self_: *const HandleStepDimTolRoundnessTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_RoundnessTolerance
     pub fn HandleStepDimTolRoundnessTolerance_get(
         handle: *const HandleStepDimTolRoundnessTolerance,
@@ -52226,6 +53325,10 @@ extern "C" {
     pub fn HandleStepDimTolRunoutZoneDefinition_clone(
         self_: *const HandleStepDimTolRunoutZoneDefinition,
     ) -> crate::OcctResult<*mut HandleStepDimTolRunoutZoneDefinition>;
+    /// Check if Handle<StepDimTol_RunoutZoneDefinition> is null
+    pub fn HandleStepDimTolRunoutZoneDefinition_is_null(
+        self_: *const HandleStepDimTolRunoutZoneDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_RunoutZoneDefinition
     pub fn HandleStepDimTolRunoutZoneDefinition_get(
         handle: *const HandleStepDimTolRunoutZoneDefinition,
@@ -52356,6 +53459,10 @@ extern "C" {
     pub fn HandleStepDimTolRunoutZoneOrientation_clone(
         self_: *const HandleStepDimTolRunoutZoneOrientation,
     ) -> crate::OcctResult<*mut HandleStepDimTolRunoutZoneOrientation>;
+    /// Check if Handle<StepDimTol_RunoutZoneOrientation> is null
+    pub fn HandleStepDimTolRunoutZoneOrientation_is_null(
+        self_: *const HandleStepDimTolRunoutZoneOrientation,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_RunoutZoneOrientation
     pub fn HandleStepDimTolRunoutZoneOrientation_get(
         handle: *const HandleStepDimTolRunoutZoneOrientation,
@@ -52589,6 +53696,10 @@ extern "C" {
     pub fn HandleStepDimTolSimpleDatumReferenceModifierMember_clone(
         self_: *const HandleStepDimTolSimpleDatumReferenceModifierMember,
     ) -> crate::OcctResult<*mut HandleStepDimTolSimpleDatumReferenceModifierMember>;
+    /// Check if Handle<StepDimTol_SimpleDatumReferenceModifierMember> is null
+    pub fn HandleStepDimTolSimpleDatumReferenceModifierMember_is_null(
+        self_: *const HandleStepDimTolSimpleDatumReferenceModifierMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_SimpleDatumReferenceModifierMember
     pub fn HandleStepDimTolSimpleDatumReferenceModifierMember_get(
         handle: *const HandleStepDimTolSimpleDatumReferenceModifierMember,
@@ -52742,6 +53853,10 @@ extern "C" {
     pub fn HandleStepDimTolStraightnessTolerance_clone(
         self_: *const HandleStepDimTolStraightnessTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolStraightnessTolerance>;
+    /// Check if Handle<StepDimTol_StraightnessTolerance> is null
+    pub fn HandleStepDimTolStraightnessTolerance_is_null(
+        self_: *const HandleStepDimTolStraightnessTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_StraightnessTolerance
     pub fn HandleStepDimTolStraightnessTolerance_get(
         handle: *const HandleStepDimTolStraightnessTolerance,
@@ -52877,6 +53992,10 @@ extern "C" {
     pub fn HandleStepDimTolSurfaceProfileTolerance_clone(
         self_: *const HandleStepDimTolSurfaceProfileTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolSurfaceProfileTolerance>;
+    /// Check if Handle<StepDimTol_SurfaceProfileTolerance> is null
+    pub fn HandleStepDimTolSurfaceProfileTolerance_is_null(
+        self_: *const HandleStepDimTolSurfaceProfileTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_SurfaceProfileTolerance
     pub fn HandleStepDimTolSurfaceProfileTolerance_get(
         handle: *const HandleStepDimTolSurfaceProfileTolerance,
@@ -53017,6 +54136,10 @@ extern "C" {
     pub fn HandleStepDimTolSymmetryTolerance_clone(
         self_: *const HandleStepDimTolSymmetryTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolSymmetryTolerance>;
+    /// Check if Handle<StepDimTol_SymmetryTolerance> is null
+    pub fn HandleStepDimTolSymmetryTolerance_is_null(
+        self_: *const HandleStepDimTolSymmetryTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_SymmetryTolerance
     pub fn HandleStepDimTolSymmetryTolerance_get(
         handle: *const HandleStepDimTolSymmetryTolerance,
@@ -53207,6 +54330,10 @@ extern "C" {
     pub fn HandleStepDimTolToleranceZone_clone(
         self_: *const HandleStepDimTolToleranceZone,
     ) -> crate::OcctResult<*mut HandleStepDimTolToleranceZone>;
+    /// Check if Handle<StepDimTol_ToleranceZone> is null
+    pub fn HandleStepDimTolToleranceZone_is_null(
+        self_: *const HandleStepDimTolToleranceZone,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_ToleranceZone
     pub fn HandleStepDimTolToleranceZone_get(
         handle: *const HandleStepDimTolToleranceZone,
@@ -53365,6 +54492,10 @@ extern "C" {
     pub fn HandleStepDimTolToleranceZoneDefinition_clone(
         self_: *const HandleStepDimTolToleranceZoneDefinition,
     ) -> crate::OcctResult<*mut HandleStepDimTolToleranceZoneDefinition>;
+    /// Check if Handle<StepDimTol_ToleranceZoneDefinition> is null
+    pub fn HandleStepDimTolToleranceZoneDefinition_is_null(
+        self_: *const HandleStepDimTolToleranceZoneDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_ToleranceZoneDefinition
     pub fn HandleStepDimTolToleranceZoneDefinition_get(
         handle: *const HandleStepDimTolToleranceZoneDefinition,
@@ -53467,6 +54598,10 @@ extern "C" {
     pub fn HandleStepDimTolToleranceZoneForm_clone(
         self_: *const HandleStepDimTolToleranceZoneForm,
     ) -> crate::OcctResult<*mut HandleStepDimTolToleranceZoneForm>;
+    /// Check if Handle<StepDimTol_ToleranceZoneForm> is null
+    pub fn HandleStepDimTolToleranceZoneForm_is_null(
+        self_: *const HandleStepDimTolToleranceZoneForm,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_ToleranceZoneForm
     pub fn HandleStepDimTolToleranceZoneForm_get(
         handle: *const HandleStepDimTolToleranceZoneForm,
@@ -53670,6 +54805,10 @@ extern "C" {
     pub fn HandleStepDimTolTotalRunoutTolerance_clone(
         self_: *const HandleStepDimTolTotalRunoutTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolTotalRunoutTolerance>;
+    /// Check if Handle<StepDimTol_TotalRunoutTolerance> is null
+    pub fn HandleStepDimTolTotalRunoutTolerance_is_null(
+        self_: *const HandleStepDimTolTotalRunoutTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_TotalRunoutTolerance
     pub fn HandleStepDimTolTotalRunoutTolerance_get(
         handle: *const HandleStepDimTolTotalRunoutTolerance,
@@ -53841,6 +54980,10 @@ extern "C" {
     pub fn HandleStepDimTolUnequallyDisposedGeometricTolerance_clone(
         self_: *const HandleStepDimTolUnequallyDisposedGeometricTolerance,
     ) -> crate::OcctResult<*mut HandleStepDimTolUnequallyDisposedGeometricTolerance>;
+    /// Check if Handle<StepDimTol_UnequallyDisposedGeometricTolerance> is null
+    pub fn HandleStepDimTolUnequallyDisposedGeometricTolerance_is_null(
+        self_: *const HandleStepDimTolUnequallyDisposedGeometricTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepDimTol_UnequallyDisposedGeometricTolerance
     pub fn HandleStepDimTolUnequallyDisposedGeometricTolerance_get(
         handle: *const HandleStepDimTolUnequallyDisposedGeometricTolerance,
@@ -54004,6 +55147,10 @@ extern "C" {
     pub fn HandleStepElementAnalysisItemWithinRepresentation_clone(
         self_: *const HandleStepElementAnalysisItemWithinRepresentation,
     ) -> crate::OcctResult<*mut HandleStepElementAnalysisItemWithinRepresentation>;
+    /// Check if Handle<StepElement_AnalysisItemWithinRepresentation> is null
+    pub fn HandleStepElementAnalysisItemWithinRepresentation_is_null(
+        self_: *const HandleStepElementAnalysisItemWithinRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_AnalysisItemWithinRepresentation
     pub fn HandleStepElementAnalysisItemWithinRepresentation_get(
         handle: *const HandleStepElementAnalysisItemWithinRepresentation,
@@ -54107,6 +55254,10 @@ extern "C" {
     pub fn HandleStepElementCurve3dElementDescriptor_clone(
         self_: *const HandleStepElementCurve3dElementDescriptor,
     ) -> crate::OcctResult<*mut HandleStepElementCurve3dElementDescriptor>;
+    /// Check if Handle<StepElement_Curve3dElementDescriptor> is null
+    pub fn HandleStepElementCurve3dElementDescriptor_is_null(
+        self_: *const HandleStepElementCurve3dElementDescriptor,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_Curve3dElementDescriptor
     pub fn HandleStepElementCurve3dElementDescriptor_get(
         handle: *const HandleStepElementCurve3dElementDescriptor,
@@ -54232,6 +55383,10 @@ extern "C" {
     pub fn HandleStepElementCurveElementEndReleasePacket_clone(
         self_: *const HandleStepElementCurveElementEndReleasePacket,
     ) -> crate::OcctResult<*mut HandleStepElementCurveElementEndReleasePacket>;
+    /// Check if Handle<StepElement_CurveElementEndReleasePacket> is null
+    pub fn HandleStepElementCurveElementEndReleasePacket_is_null(
+        self_: *const HandleStepElementCurveElementEndReleasePacket,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_CurveElementEndReleasePacket
     pub fn HandleStepElementCurveElementEndReleasePacket_get(
         handle: *const HandleStepElementCurveElementEndReleasePacket,
@@ -54457,6 +55612,10 @@ extern "C" {
     pub fn HandleStepElementCurveElementFreedomMember_clone(
         self_: *const HandleStepElementCurveElementFreedomMember,
     ) -> crate::OcctResult<*mut HandleStepElementCurveElementFreedomMember>;
+    /// Check if Handle<StepElement_CurveElementFreedomMember> is null
+    pub fn HandleStepElementCurveElementFreedomMember_is_null(
+        self_: *const HandleStepElementCurveElementFreedomMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_CurveElementFreedomMember
     pub fn HandleStepElementCurveElementFreedomMember_get(
         handle: *const HandleStepElementCurveElementFreedomMember,
@@ -54760,6 +55919,10 @@ extern "C" {
     pub fn HandleStepElementCurveElementPurposeMember_clone(
         self_: *const HandleStepElementCurveElementPurposeMember,
     ) -> crate::OcctResult<*mut HandleStepElementCurveElementPurposeMember>;
+    /// Check if Handle<StepElement_CurveElementPurposeMember> is null
+    pub fn HandleStepElementCurveElementPurposeMember_is_null(
+        self_: *const HandleStepElementCurveElementPurposeMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_CurveElementPurposeMember
     pub fn HandleStepElementCurveElementPurposeMember_get(
         handle: *const HandleStepElementCurveElementPurposeMember,
@@ -54941,6 +56104,10 @@ extern "C" {
     pub fn HandleStepElementCurveElementSectionDefinition_clone(
         self_: *const HandleStepElementCurveElementSectionDefinition,
     ) -> crate::OcctResult<*mut HandleStepElementCurveElementSectionDefinition>;
+    /// Check if Handle<StepElement_CurveElementSectionDefinition> is null
+    pub fn HandleStepElementCurveElementSectionDefinition_is_null(
+        self_: *const HandleStepElementCurveElementSectionDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_CurveElementSectionDefinition
     pub fn HandleStepElementCurveElementSectionDefinition_get(
         handle: *const HandleStepElementCurveElementSectionDefinition,
@@ -55138,6 +56305,10 @@ extern "C" {
     pub fn HandleStepElementCurveElementSectionDerivedDefinitions_clone(
         self_: *const HandleStepElementCurveElementSectionDerivedDefinitions,
     ) -> crate::OcctResult<*mut HandleStepElementCurveElementSectionDerivedDefinitions>;
+    /// Check if Handle<StepElement_CurveElementSectionDerivedDefinitions> is null
+    pub fn HandleStepElementCurveElementSectionDerivedDefinitions_is_null(
+        self_: *const HandleStepElementCurveElementSectionDerivedDefinitions,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_CurveElementSectionDerivedDefinitions
     pub fn HandleStepElementCurveElementSectionDerivedDefinitions_get(
         handle: *const HandleStepElementCurveElementSectionDerivedDefinitions,
@@ -55454,6 +56625,10 @@ extern "C" {
     pub fn HandleStepElementElementAspectMember_clone(
         self_: *const HandleStepElementElementAspectMember,
     ) -> crate::OcctResult<*mut HandleStepElementElementAspectMember>;
+    /// Check if Handle<StepElement_ElementAspectMember> is null
+    pub fn HandleStepElementElementAspectMember_is_null(
+        self_: *const HandleStepElementElementAspectMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_ElementAspectMember
     pub fn HandleStepElementElementAspectMember_get(
         handle: *const HandleStepElementElementAspectMember,
@@ -55633,6 +56808,10 @@ extern "C" {
     pub fn HandleStepElementElementDescriptor_clone(
         self_: *const HandleStepElementElementDescriptor,
     ) -> crate::OcctResult<*mut HandleStepElementElementDescriptor>;
+    /// Check if Handle<StepElement_ElementDescriptor> is null
+    pub fn HandleStepElementElementDescriptor_is_null(
+        self_: *const HandleStepElementElementDescriptor,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_ElementDescriptor
     pub fn HandleStepElementElementDescriptor_get(
         handle: *const HandleStepElementElementDescriptor,
@@ -55754,6 +56933,10 @@ extern "C" {
     pub fn HandleStepElementElementMaterial_clone(
         self_: *const HandleStepElementElementMaterial,
     ) -> crate::OcctResult<*mut HandleStepElementElementMaterial>;
+    /// Check if Handle<StepElement_ElementMaterial> is null
+    pub fn HandleStepElementElementMaterial_is_null(
+        self_: *const HandleStepElementElementMaterial,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_ElementMaterial
     pub fn HandleStepElementElementMaterial_get(
         handle: *const HandleStepElementElementMaterial,
@@ -55863,6 +57046,10 @@ extern "C" {
     pub fn HandleStepElementHArray1OfCurveElementEndReleasePacket_clone(
         self_: *const HandleStepElementHArray1OfCurveElementEndReleasePacket,
     ) -> crate::OcctResult<*mut HandleStepElementHArray1OfCurveElementEndReleasePacket>;
+    /// Check if Handle<StepElement_HArray1OfCurveElementEndReleasePacket> is null
+    pub fn HandleStepElementHArray1OfCurveElementEndReleasePacket_is_null(
+        self_: *const HandleStepElementHArray1OfCurveElementEndReleasePacket,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HArray1OfCurveElementEndReleasePacket
     pub fn HandleStepElementHArray1OfCurveElementEndReleasePacket_get(
         handle: *const HandleStepElementHArray1OfCurveElementEndReleasePacket,
@@ -55972,6 +57159,10 @@ extern "C" {
     pub fn HandleStepElementHArray1OfCurveElementSectionDefinition_clone(
         self_: *const HandleStepElementHArray1OfCurveElementSectionDefinition,
     ) -> crate::OcctResult<*mut HandleStepElementHArray1OfCurveElementSectionDefinition>;
+    /// Check if Handle<StepElement_HArray1OfCurveElementSectionDefinition> is null
+    pub fn HandleStepElementHArray1OfCurveElementSectionDefinition_is_null(
+        self_: *const HandleStepElementHArray1OfCurveElementSectionDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HArray1OfCurveElementSectionDefinition
     pub fn HandleStepElementHArray1OfCurveElementSectionDefinition_get(
         handle: *const HandleStepElementHArray1OfCurveElementSectionDefinition,
@@ -56081,6 +57272,10 @@ extern "C" {
     pub fn HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_clone(
         self_: *const HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember,
     ) -> crate::OcctResult<*mut HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember>;
+    /// Check if Handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> is null
+    pub fn HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_is_null(
+        self_: *const HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HArray1OfHSequenceOfCurveElementPurposeMember
     pub fn HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_get(
         handle: *const HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember,
@@ -56190,6 +57385,10 @@ extern "C" {
     pub fn HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_clone(
         self_: *const HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember,
     ) -> crate::OcctResult<*mut HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember>;
+    /// Check if Handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> is null
+    pub fn HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_is_null(
+        self_: *const HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember
     pub fn HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_get(
         handle: *const HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember,
@@ -56299,6 +57498,10 @@ extern "C" {
     pub fn HandleStepElementHArray1OfMeasureOrUnspecifiedValue_clone(
         self_: *const HandleStepElementHArray1OfMeasureOrUnspecifiedValue,
     ) -> crate::OcctResult<*mut HandleStepElementHArray1OfMeasureOrUnspecifiedValue>;
+    /// Check if Handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> is null
+    pub fn HandleStepElementHArray1OfMeasureOrUnspecifiedValue_is_null(
+        self_: *const HandleStepElementHArray1OfMeasureOrUnspecifiedValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HArray1OfMeasureOrUnspecifiedValue
     pub fn HandleStepElementHArray1OfMeasureOrUnspecifiedValue_get(
         handle: *const HandleStepElementHArray1OfMeasureOrUnspecifiedValue,
@@ -56408,6 +57611,10 @@ extern "C" {
     pub fn HandleStepElementHArray1OfSurfaceSection_clone(
         self_: *const HandleStepElementHArray1OfSurfaceSection,
     ) -> crate::OcctResult<*mut HandleStepElementHArray1OfSurfaceSection>;
+    /// Check if Handle<StepElement_HArray1OfSurfaceSection> is null
+    pub fn HandleStepElementHArray1OfSurfaceSection_is_null(
+        self_: *const HandleStepElementHArray1OfSurfaceSection,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HArray1OfSurfaceSection
     pub fn HandleStepElementHArray1OfSurfaceSection_get(
         handle: *const HandleStepElementHArray1OfSurfaceSection,
@@ -56517,6 +57724,10 @@ extern "C" {
     pub fn HandleStepElementHArray1OfVolumeElementPurpose_clone(
         self_: *const HandleStepElementHArray1OfVolumeElementPurpose,
     ) -> crate::OcctResult<*mut HandleStepElementHArray1OfVolumeElementPurpose>;
+    /// Check if Handle<StepElement_HArray1OfVolumeElementPurpose> is null
+    pub fn HandleStepElementHArray1OfVolumeElementPurpose_is_null(
+        self_: *const HandleStepElementHArray1OfVolumeElementPurpose,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HArray1OfVolumeElementPurpose
     pub fn HandleStepElementHArray1OfVolumeElementPurpose_get(
         handle: *const HandleStepElementHArray1OfVolumeElementPurpose,
@@ -56626,6 +57837,10 @@ extern "C" {
     pub fn HandleStepElementHArray1OfVolumeElementPurposeMember_clone(
         self_: *const HandleStepElementHArray1OfVolumeElementPurposeMember,
     ) -> crate::OcctResult<*mut HandleStepElementHArray1OfVolumeElementPurposeMember>;
+    /// Check if Handle<StepElement_HArray1OfVolumeElementPurposeMember> is null
+    pub fn HandleStepElementHArray1OfVolumeElementPurposeMember_is_null(
+        self_: *const HandleStepElementHArray1OfVolumeElementPurposeMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HArray1OfVolumeElementPurposeMember
     pub fn HandleStepElementHArray1OfVolumeElementPurposeMember_get(
         handle: *const HandleStepElementHArray1OfVolumeElementPurposeMember,
@@ -56729,6 +57944,10 @@ extern "C" {
     pub fn HandleStepElementHArray2OfCurveElementPurposeMember_clone(
         self_: *const HandleStepElementHArray2OfCurveElementPurposeMember,
     ) -> crate::OcctResult<*mut HandleStepElementHArray2OfCurveElementPurposeMember>;
+    /// Check if Handle<StepElement_HArray2OfCurveElementPurposeMember> is null
+    pub fn HandleStepElementHArray2OfCurveElementPurposeMember_is_null(
+        self_: *const HandleStepElementHArray2OfCurveElementPurposeMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HArray2OfCurveElementPurposeMember
     pub fn HandleStepElementHArray2OfCurveElementPurposeMember_get(
         handle: *const HandleStepElementHArray2OfCurveElementPurposeMember,
@@ -56832,6 +58051,10 @@ extern "C" {
     pub fn HandleStepElementHArray2OfSurfaceElementPurpose_clone(
         self_: *const HandleStepElementHArray2OfSurfaceElementPurpose,
     ) -> crate::OcctResult<*mut HandleStepElementHArray2OfSurfaceElementPurpose>;
+    /// Check if Handle<StepElement_HArray2OfSurfaceElementPurpose> is null
+    pub fn HandleStepElementHArray2OfSurfaceElementPurpose_is_null(
+        self_: *const HandleStepElementHArray2OfSurfaceElementPurpose,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HArray2OfSurfaceElementPurpose
     pub fn HandleStepElementHArray2OfSurfaceElementPurpose_get(
         handle: *const HandleStepElementHArray2OfSurfaceElementPurpose,
@@ -56935,6 +58158,10 @@ extern "C" {
     pub fn HandleStepElementHArray2OfSurfaceElementPurposeMember_clone(
         self_: *const HandleStepElementHArray2OfSurfaceElementPurposeMember,
     ) -> crate::OcctResult<*mut HandleStepElementHArray2OfSurfaceElementPurposeMember>;
+    /// Check if Handle<StepElement_HArray2OfSurfaceElementPurposeMember> is null
+    pub fn HandleStepElementHArray2OfSurfaceElementPurposeMember_is_null(
+        self_: *const HandleStepElementHArray2OfSurfaceElementPurposeMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HArray2OfSurfaceElementPurposeMember
     pub fn HandleStepElementHArray2OfSurfaceElementPurposeMember_get(
         handle: *const HandleStepElementHArray2OfSurfaceElementPurposeMember,
@@ -57036,6 +58263,10 @@ extern "C" {
     pub fn HandleStepElementHSequenceOfCurveElementPurposeMember_clone(
         self_: *const HandleStepElementHSequenceOfCurveElementPurposeMember,
     ) -> crate::OcctResult<*mut HandleStepElementHSequenceOfCurveElementPurposeMember>;
+    /// Check if Handle<StepElement_HSequenceOfCurveElementPurposeMember> is null
+    pub fn HandleStepElementHSequenceOfCurveElementPurposeMember_is_null(
+        self_: *const HandleStepElementHSequenceOfCurveElementPurposeMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HSequenceOfCurveElementPurposeMember
     pub fn HandleStepElementHSequenceOfCurveElementPurposeMember_get(
         handle: *const HandleStepElementHSequenceOfCurveElementPurposeMember,
@@ -57137,6 +58368,10 @@ extern "C" {
     pub fn HandleStepElementHSequenceOfCurveElementSectionDefinition_clone(
         self_: *const HandleStepElementHSequenceOfCurveElementSectionDefinition,
     ) -> crate::OcctResult<*mut HandleStepElementHSequenceOfCurveElementSectionDefinition>;
+    /// Check if Handle<StepElement_HSequenceOfCurveElementSectionDefinition> is null
+    pub fn HandleStepElementHSequenceOfCurveElementSectionDefinition_is_null(
+        self_: *const HandleStepElementHSequenceOfCurveElementSectionDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HSequenceOfCurveElementSectionDefinition
     pub fn HandleStepElementHSequenceOfCurveElementSectionDefinition_get(
         handle: *const HandleStepElementHSequenceOfCurveElementSectionDefinition,
@@ -57238,6 +58473,10 @@ extern "C" {
     pub fn HandleStepElementHSequenceOfElementMaterial_clone(
         self_: *const HandleStepElementHSequenceOfElementMaterial,
     ) -> crate::OcctResult<*mut HandleStepElementHSequenceOfElementMaterial>;
+    /// Check if Handle<StepElement_HSequenceOfElementMaterial> is null
+    pub fn HandleStepElementHSequenceOfElementMaterial_is_null(
+        self_: *const HandleStepElementHSequenceOfElementMaterial,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HSequenceOfElementMaterial
     pub fn HandleStepElementHSequenceOfElementMaterial_get(
         handle: *const HandleStepElementHSequenceOfElementMaterial,
@@ -57339,6 +58578,10 @@ extern "C" {
     pub fn HandleStepElementHSequenceOfSurfaceElementPurposeMember_clone(
         self_: *const HandleStepElementHSequenceOfSurfaceElementPurposeMember,
     ) -> crate::OcctResult<*mut HandleStepElementHSequenceOfSurfaceElementPurposeMember>;
+    /// Check if Handle<StepElement_HSequenceOfSurfaceElementPurposeMember> is null
+    pub fn HandleStepElementHSequenceOfSurfaceElementPurposeMember_is_null(
+        self_: *const HandleStepElementHSequenceOfSurfaceElementPurposeMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_HSequenceOfSurfaceElementPurposeMember
     pub fn HandleStepElementHSequenceOfSurfaceElementPurposeMember_get(
         handle: *const HandleStepElementHSequenceOfSurfaceElementPurposeMember,
@@ -57566,6 +58809,10 @@ extern "C" {
     pub fn HandleStepElementMeasureOrUnspecifiedValueMember_clone(
         self_: *const HandleStepElementMeasureOrUnspecifiedValueMember,
     ) -> crate::OcctResult<*mut HandleStepElementMeasureOrUnspecifiedValueMember>;
+    /// Check if Handle<StepElement_MeasureOrUnspecifiedValueMember> is null
+    pub fn HandleStepElementMeasureOrUnspecifiedValueMember_is_null(
+        self_: *const HandleStepElementMeasureOrUnspecifiedValueMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_MeasureOrUnspecifiedValueMember
     pub fn HandleStepElementMeasureOrUnspecifiedValueMember_get(
         handle: *const HandleStepElementMeasureOrUnspecifiedValueMember,
@@ -57757,6 +59004,10 @@ extern "C" {
     pub fn HandleStepElementSurface3dElementDescriptor_clone(
         self_: *const HandleStepElementSurface3dElementDescriptor,
     ) -> crate::OcctResult<*mut HandleStepElementSurface3dElementDescriptor>;
+    /// Check if Handle<StepElement_Surface3dElementDescriptor> is null
+    pub fn HandleStepElementSurface3dElementDescriptor_is_null(
+        self_: *const HandleStepElementSurface3dElementDescriptor,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_Surface3dElementDescriptor
     pub fn HandleStepElementSurface3dElementDescriptor_get(
         handle: *const HandleStepElementSurface3dElementDescriptor,
@@ -57892,6 +59143,10 @@ extern "C" {
     pub fn HandleStepElementSurfaceElementProperty_clone(
         self_: *const HandleStepElementSurfaceElementProperty,
     ) -> crate::OcctResult<*mut HandleStepElementSurfaceElementProperty>;
+    /// Check if Handle<StepElement_SurfaceElementProperty> is null
+    pub fn HandleStepElementSurfaceElementProperty_is_null(
+        self_: *const HandleStepElementSurfaceElementProperty,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_SurfaceElementProperty
     pub fn HandleStepElementSurfaceElementProperty_get(
         handle: *const HandleStepElementSurfaceElementProperty,
@@ -58119,6 +59374,10 @@ extern "C" {
     pub fn HandleStepElementSurfaceElementPurposeMember_clone(
         self_: *const HandleStepElementSurfaceElementPurposeMember,
     ) -> crate::OcctResult<*mut HandleStepElementSurfaceElementPurposeMember>;
+    /// Check if Handle<StepElement_SurfaceElementPurposeMember> is null
+    pub fn HandleStepElementSurfaceElementPurposeMember_is_null(
+        self_: *const HandleStepElementSurfaceElementPurposeMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_SurfaceElementPurposeMember
     pub fn HandleStepElementSurfaceElementPurposeMember_get(
         handle: *const HandleStepElementSurfaceElementPurposeMember,
@@ -58304,6 +59563,10 @@ extern "C" {
     pub fn HandleStepElementSurfaceSection_clone(
         self_: *const HandleStepElementSurfaceSection,
     ) -> crate::OcctResult<*mut HandleStepElementSurfaceSection>;
+    /// Check if Handle<StepElement_SurfaceSection> is null
+    pub fn HandleStepElementSurfaceSection_is_null(
+        self_: *const HandleStepElementSurfaceSection,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_SurfaceSection
     pub fn HandleStepElementSurfaceSection_get(
         handle: *const HandleStepElementSurfaceSection,
@@ -58385,6 +59648,10 @@ extern "C" {
     pub fn HandleStepElementSurfaceSectionField_clone(
         self_: *const HandleStepElementSurfaceSectionField,
     ) -> crate::OcctResult<*mut HandleStepElementSurfaceSectionField>;
+    /// Check if Handle<StepElement_SurfaceSectionField> is null
+    pub fn HandleStepElementSurfaceSectionField_is_null(
+        self_: *const HandleStepElementSurfaceSectionField,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_SurfaceSectionField
     pub fn HandleStepElementSurfaceSectionField_get(
         handle: *const HandleStepElementSurfaceSectionField,
@@ -58494,6 +59761,10 @@ extern "C" {
     pub fn HandleStepElementSurfaceSectionFieldConstant_clone(
         self_: *const HandleStepElementSurfaceSectionFieldConstant,
     ) -> crate::OcctResult<*mut HandleStepElementSurfaceSectionFieldConstant>;
+    /// Check if Handle<StepElement_SurfaceSectionFieldConstant> is null
+    pub fn HandleStepElementSurfaceSectionFieldConstant_is_null(
+        self_: *const HandleStepElementSurfaceSectionFieldConstant,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_SurfaceSectionFieldConstant
     pub fn HandleStepElementSurfaceSectionFieldConstant_get(
         handle: *const HandleStepElementSurfaceSectionFieldConstant,
@@ -58609,6 +59880,10 @@ extern "C" {
     pub fn HandleStepElementSurfaceSectionFieldVarying_clone(
         self_: *const HandleStepElementSurfaceSectionFieldVarying,
     ) -> crate::OcctResult<*mut HandleStepElementSurfaceSectionFieldVarying>;
+    /// Check if Handle<StepElement_SurfaceSectionFieldVarying> is null
+    pub fn HandleStepElementSurfaceSectionFieldVarying_is_null(
+        self_: *const HandleStepElementSurfaceSectionFieldVarying,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_SurfaceSectionFieldVarying
     pub fn HandleStepElementSurfaceSectionFieldVarying_get(
         handle: *const HandleStepElementSurfaceSectionFieldVarying,
@@ -58737,6 +60012,10 @@ extern "C" {
     pub fn HandleStepElementUniformSurfaceSection_clone(
         self_: *const HandleStepElementUniformSurfaceSection,
     ) -> crate::OcctResult<*mut HandleStepElementUniformSurfaceSection>;
+    /// Check if Handle<StepElement_UniformSurfaceSection> is null
+    pub fn HandleStepElementUniformSurfaceSection_is_null(
+        self_: *const HandleStepElementUniformSurfaceSection,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_UniformSurfaceSection
     pub fn HandleStepElementUniformSurfaceSection_get(
         handle: *const HandleStepElementUniformSurfaceSection,
@@ -58881,6 +60160,10 @@ extern "C" {
     pub fn HandleStepElementVolume3dElementDescriptor_clone(
         self_: *const HandleStepElementVolume3dElementDescriptor,
     ) -> crate::OcctResult<*mut HandleStepElementVolume3dElementDescriptor>;
+    /// Check if Handle<StepElement_Volume3dElementDescriptor> is null
+    pub fn HandleStepElementVolume3dElementDescriptor_is_null(
+        self_: *const HandleStepElementVolume3dElementDescriptor,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_Volume3dElementDescriptor
     pub fn HandleStepElementVolume3dElementDescriptor_get(
         handle: *const HandleStepElementVolume3dElementDescriptor,
@@ -59130,6 +60413,10 @@ extern "C" {
     pub fn HandleStepElementVolumeElementPurposeMember_clone(
         self_: *const HandleStepElementVolumeElementPurposeMember,
     ) -> crate::OcctResult<*mut HandleStepElementVolumeElementPurposeMember>;
+    /// Check if Handle<StepElement_VolumeElementPurposeMember> is null
+    pub fn HandleStepElementVolumeElementPurposeMember_is_null(
+        self_: *const HandleStepElementVolumeElementPurposeMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepElement_VolumeElementPurposeMember
     pub fn HandleStepElementVolumeElementPurposeMember_get(
         handle: *const HandleStepElementVolumeElementPurposeMember,
@@ -59318,6 +60605,10 @@ extern "C" {
     pub fn HandleStepFEAAlignedCurve3dElementCoordinateSystem_clone(
         self_: *const HandleStepFEAAlignedCurve3dElementCoordinateSystem,
     ) -> crate::OcctResult<*mut HandleStepFEAAlignedCurve3dElementCoordinateSystem>;
+    /// Check if Handle<StepFEA_AlignedCurve3dElementCoordinateSystem> is null
+    pub fn HandleStepFEAAlignedCurve3dElementCoordinateSystem_is_null(
+        self_: *const HandleStepFEAAlignedCurve3dElementCoordinateSystem,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_AlignedCurve3dElementCoordinateSystem
     pub fn HandleStepFEAAlignedCurve3dElementCoordinateSystem_get(
         handle: *const HandleStepFEAAlignedCurve3dElementCoordinateSystem,
@@ -59445,6 +60736,10 @@ extern "C" {
     pub fn HandleStepFEAAlignedSurface3dElementCoordinateSystem_clone(
         self_: *const HandleStepFEAAlignedSurface3dElementCoordinateSystem,
     ) -> crate::OcctResult<*mut HandleStepFEAAlignedSurface3dElementCoordinateSystem>;
+    /// Check if Handle<StepFEA_AlignedSurface3dElementCoordinateSystem> is null
+    pub fn HandleStepFEAAlignedSurface3dElementCoordinateSystem_is_null(
+        self_: *const HandleStepFEAAlignedSurface3dElementCoordinateSystem,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_AlignedSurface3dElementCoordinateSystem
     pub fn HandleStepFEAAlignedSurface3dElementCoordinateSystem_get(
         handle: *const HandleStepFEAAlignedSurface3dElementCoordinateSystem,
@@ -59572,6 +60867,10 @@ extern "C" {
     pub fn HandleStepFEAArbitraryVolume3dElementCoordinateSystem_clone(
         self_: *const HandleStepFEAArbitraryVolume3dElementCoordinateSystem,
     ) -> crate::OcctResult<*mut HandleStepFEAArbitraryVolume3dElementCoordinateSystem>;
+    /// Check if Handle<StepFEA_ArbitraryVolume3dElementCoordinateSystem> is null
+    pub fn HandleStepFEAArbitraryVolume3dElementCoordinateSystem_is_null(
+        self_: *const HandleStepFEAArbitraryVolume3dElementCoordinateSystem,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_ArbitraryVolume3dElementCoordinateSystem
     pub fn HandleStepFEAArbitraryVolume3dElementCoordinateSystem_get(
         handle: *const HandleStepFEAArbitraryVolume3dElementCoordinateSystem,
@@ -59709,6 +61008,10 @@ extern "C" {
     pub fn HandleStepFEAConstantSurface3dElementCoordinateSystem_clone(
         self_: *const HandleStepFEAConstantSurface3dElementCoordinateSystem,
     ) -> crate::OcctResult<*mut HandleStepFEAConstantSurface3dElementCoordinateSystem>;
+    /// Check if Handle<StepFEA_ConstantSurface3dElementCoordinateSystem> is null
+    pub fn HandleStepFEAConstantSurface3dElementCoordinateSystem_is_null(
+        self_: *const HandleStepFEAConstantSurface3dElementCoordinateSystem,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_ConstantSurface3dElementCoordinateSystem
     pub fn HandleStepFEAConstantSurface3dElementCoordinateSystem_get(
         handle: *const HandleStepFEAConstantSurface3dElementCoordinateSystem,
@@ -59857,6 +61160,10 @@ extern "C" {
     pub fn HandleStepFEACurve3dElementProperty_clone(
         self_: *const HandleStepFEACurve3dElementProperty,
     ) -> crate::OcctResult<*mut HandleStepFEACurve3dElementProperty>;
+    /// Check if Handle<StepFEA_Curve3dElementProperty> is null
+    pub fn HandleStepFEACurve3dElementProperty_is_null(
+        self_: *const HandleStepFEACurve3dElementProperty,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_Curve3dElementProperty
     pub fn HandleStepFEACurve3dElementProperty_get(
         handle: *const HandleStepFEACurve3dElementProperty,
@@ -60000,6 +61307,10 @@ extern "C" {
     pub fn HandleStepFEACurve3dElementRepresentation_clone(
         self_: *const HandleStepFEACurve3dElementRepresentation,
     ) -> crate::OcctResult<*mut HandleStepFEACurve3dElementRepresentation>;
+    /// Check if Handle<StepFEA_Curve3dElementRepresentation> is null
+    pub fn HandleStepFEACurve3dElementRepresentation_is_null(
+        self_: *const HandleStepFEACurve3dElementRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_Curve3dElementRepresentation
     pub fn HandleStepFEACurve3dElementRepresentation_get(
         handle: *const HandleStepFEACurve3dElementRepresentation,
@@ -60262,6 +61573,10 @@ extern "C" {
     pub fn HandleStepFEACurveElementEndOffset_clone(
         self_: *const HandleStepFEACurveElementEndOffset,
     ) -> crate::OcctResult<*mut HandleStepFEACurveElementEndOffset>;
+    /// Check if Handle<StepFEA_CurveElementEndOffset> is null
+    pub fn HandleStepFEACurveElementEndOffset_is_null(
+        self_: *const HandleStepFEACurveElementEndOffset,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_CurveElementEndOffset
     pub fn HandleStepFEACurveElementEndOffset_get(
         handle: *const HandleStepFEACurveElementEndOffset,
@@ -60363,6 +61678,10 @@ extern "C" {
     pub fn HandleStepFEACurveElementEndRelease_clone(
         self_: *const HandleStepFEACurveElementEndRelease,
     ) -> crate::OcctResult<*mut HandleStepFEACurveElementEndRelease>;
+    /// Check if Handle<StepFEA_CurveElementEndRelease> is null
+    pub fn HandleStepFEACurveElementEndRelease_is_null(
+        self_: *const HandleStepFEACurveElementEndRelease,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_CurveElementEndRelease
     pub fn HandleStepFEACurveElementEndRelease_get(
         handle: *const HandleStepFEACurveElementEndRelease,
@@ -60463,6 +61782,10 @@ extern "C" {
     pub fn HandleStepFEACurveElementInterval_clone(
         self_: *const HandleStepFEACurveElementInterval,
     ) -> crate::OcctResult<*mut HandleStepFEACurveElementInterval>;
+    /// Check if Handle<StepFEA_CurveElementInterval> is null
+    pub fn HandleStepFEACurveElementInterval_is_null(
+        self_: *const HandleStepFEACurveElementInterval,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_CurveElementInterval
     pub fn HandleStepFEACurveElementInterval_get(
         handle: *const HandleStepFEACurveElementInterval,
@@ -60574,6 +61897,10 @@ extern "C" {
     pub fn HandleStepFEACurveElementIntervalConstant_clone(
         self_: *const HandleStepFEACurveElementIntervalConstant,
     ) -> crate::OcctResult<*mut HandleStepFEACurveElementIntervalConstant>;
+    /// Check if Handle<StepFEA_CurveElementIntervalConstant> is null
+    pub fn HandleStepFEACurveElementIntervalConstant_is_null(
+        self_: *const HandleStepFEACurveElementIntervalConstant,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_CurveElementIntervalConstant
     pub fn HandleStepFEACurveElementIntervalConstant_get(
         handle: *const HandleStepFEACurveElementIntervalConstant,
@@ -60699,6 +62026,10 @@ extern "C" {
     pub fn HandleStepFEACurveElementIntervalLinearlyVarying_clone(
         self_: *const HandleStepFEACurveElementIntervalLinearlyVarying,
     ) -> crate::OcctResult<*mut HandleStepFEACurveElementIntervalLinearlyVarying>;
+    /// Check if Handle<StepFEA_CurveElementIntervalLinearlyVarying> is null
+    pub fn HandleStepFEACurveElementIntervalLinearlyVarying_is_null(
+        self_: *const HandleStepFEACurveElementIntervalLinearlyVarying,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_CurveElementIntervalLinearlyVarying
     pub fn HandleStepFEACurveElementIntervalLinearlyVarying_get(
         handle: *const HandleStepFEACurveElementIntervalLinearlyVarying,
@@ -60811,6 +62142,10 @@ extern "C" {
     pub fn HandleStepFEACurveElementLocation_clone(
         self_: *const HandleStepFEACurveElementLocation,
     ) -> crate::OcctResult<*mut HandleStepFEACurveElementLocation>;
+    /// Check if Handle<StepFEA_CurveElementLocation> is null
+    pub fn HandleStepFEACurveElementLocation_is_null(
+        self_: *const HandleStepFEACurveElementLocation,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_CurveElementLocation
     pub fn HandleStepFEACurveElementLocation_get(
         handle: *const HandleStepFEACurveElementLocation,
@@ -61033,6 +62368,10 @@ extern "C" {
     pub fn HandleStepFEADegreeOfFreedomMember_clone(
         self_: *const HandleStepFEADegreeOfFreedomMember,
     ) -> crate::OcctResult<*mut HandleStepFEADegreeOfFreedomMember>;
+    /// Check if Handle<StepFEA_DegreeOfFreedomMember> is null
+    pub fn HandleStepFEADegreeOfFreedomMember_is_null(
+        self_: *const HandleStepFEADegreeOfFreedomMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_DegreeOfFreedomMember
     pub fn HandleStepFEADegreeOfFreedomMember_get(
         handle: *const HandleStepFEADegreeOfFreedomMember,
@@ -61199,6 +62538,8 @@ extern "C" {
     pub fn HandleStepFEADummyNode_clone(
         self_: *const HandleStepFEADummyNode,
     ) -> crate::OcctResult<*mut HandleStepFEADummyNode>;
+    /// Check if Handle<StepFEA_DummyNode> is null
+    pub fn HandleStepFEADummyNode_is_null(self_: *const HandleStepFEADummyNode) -> bool;
     /// Dereference Handle to get *const StepFEA_DummyNode
     pub fn HandleStepFEADummyNode_get(
         handle: *const HandleStepFEADummyNode,
@@ -61373,6 +62714,10 @@ extern "C" {
     pub fn HandleStepFEAElementGeometricRelationship_clone(
         self_: *const HandleStepFEAElementGeometricRelationship,
     ) -> crate::OcctResult<*mut HandleStepFEAElementGeometricRelationship>;
+    /// Check if Handle<StepFEA_ElementGeometricRelationship> is null
+    pub fn HandleStepFEAElementGeometricRelationship_is_null(
+        self_: *const HandleStepFEAElementGeometricRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_ElementGeometricRelationship
     pub fn HandleStepFEAElementGeometricRelationship_get(
         handle: *const HandleStepFEAElementGeometricRelationship,
@@ -61478,6 +62823,8 @@ extern "C" {
     pub fn HandleStepFEAElementGroup_clone(
         self_: *const HandleStepFEAElementGroup,
     ) -> crate::OcctResult<*mut HandleStepFEAElementGroup>;
+    /// Check if Handle<StepFEA_ElementGroup> is null
+    pub fn HandleStepFEAElementGroup_is_null(self_: *const HandleStepFEAElementGroup) -> bool;
     /// Dereference Handle to get *const StepFEA_ElementGroup
     pub fn HandleStepFEAElementGroup_get(
         handle: *const HandleStepFEAElementGroup,
@@ -61721,6 +63068,10 @@ extern "C" {
     pub fn HandleStepFEAElementRepresentation_clone(
         self_: *const HandleStepFEAElementRepresentation,
     ) -> crate::OcctResult<*mut HandleStepFEAElementRepresentation>;
+    /// Check if Handle<StepFEA_ElementRepresentation> is null
+    pub fn HandleStepFEAElementRepresentation_is_null(
+        self_: *const HandleStepFEAElementRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_ElementRepresentation
     pub fn HandleStepFEAElementRepresentation_get(
         handle: *const HandleStepFEAElementRepresentation,
@@ -61877,6 +63228,8 @@ extern "C" {
     pub fn HandleStepFEAFeaAreaDensity_clone(
         self_: *const HandleStepFEAFeaAreaDensity,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaAreaDensity>;
+    /// Check if Handle<StepFEA_FeaAreaDensity> is null
+    pub fn HandleStepFEAFeaAreaDensity_is_null(self_: *const HandleStepFEAFeaAreaDensity) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaAreaDensity
     pub fn HandleStepFEAFeaAreaDensity_get(
         handle: *const HandleStepFEAFeaAreaDensity,
@@ -62031,6 +63384,10 @@ extern "C" {
     pub fn HandleStepFEAFeaAxis2Placement3d_clone(
         self_: *const HandleStepFEAFeaAxis2Placement3d,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaAxis2Placement3d>;
+    /// Check if Handle<StepFEA_FeaAxis2Placement3d> is null
+    pub fn HandleStepFEAFeaAxis2Placement3d_is_null(
+        self_: *const HandleStepFEAFeaAxis2Placement3d,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaAxis2Placement3d
     pub fn HandleStepFEAFeaAxis2Placement3d_get(
         handle: *const HandleStepFEAFeaAxis2Placement3d,
@@ -62202,6 +63559,10 @@ extern "C" {
     pub fn HandleStepFEAFeaCurveSectionGeometricRelationship_clone(
         self_: *const HandleStepFEAFeaCurveSectionGeometricRelationship,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaCurveSectionGeometricRelationship>;
+    /// Check if Handle<StepFEA_FeaCurveSectionGeometricRelationship> is null
+    pub fn HandleStepFEAFeaCurveSectionGeometricRelationship_is_null(
+        self_: *const HandleStepFEAFeaCurveSectionGeometricRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaCurveSectionGeometricRelationship
     pub fn HandleStepFEAFeaCurveSectionGeometricRelationship_get(
         handle: *const HandleStepFEAFeaCurveSectionGeometricRelationship,
@@ -62298,6 +63659,8 @@ extern "C" {
     pub fn HandleStepFEAFeaGroup_clone(
         self_: *const HandleStepFEAFeaGroup,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaGroup>;
+    /// Check if Handle<StepFEA_FeaGroup> is null
+    pub fn HandleStepFEAFeaGroup_is_null(self_: *const HandleStepFEAFeaGroup) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaGroup
     pub fn HandleStepFEAFeaGroup_get(
         handle: *const HandleStepFEAFeaGroup,
@@ -62438,6 +63801,10 @@ extern "C" {
     pub fn HandleStepFEAFeaLinearElasticity_clone(
         self_: *const HandleStepFEAFeaLinearElasticity,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaLinearElasticity>;
+    /// Check if Handle<StepFEA_FeaLinearElasticity> is null
+    pub fn HandleStepFEAFeaLinearElasticity_is_null(
+        self_: *const HandleStepFEAFeaLinearElasticity,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaLinearElasticity
     pub fn HandleStepFEAFeaLinearElasticity_get(
         handle: *const HandleStepFEAFeaLinearElasticity,
@@ -62559,6 +63926,8 @@ extern "C" {
     pub fn HandleStepFEAFeaMassDensity_clone(
         self_: *const HandleStepFEAFeaMassDensity,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaMassDensity>;
+    /// Check if Handle<StepFEA_FeaMassDensity> is null
+    pub fn HandleStepFEAFeaMassDensity_is_null(self_: *const HandleStepFEAFeaMassDensity) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaMassDensity
     pub fn HandleStepFEAFeaMassDensity_get(
         handle: *const HandleStepFEAFeaMassDensity,
@@ -62671,6 +64040,10 @@ extern "C" {
     pub fn HandleStepFEAFeaMaterialPropertyRepresentation_clone(
         self_: *const HandleStepFEAFeaMaterialPropertyRepresentation,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaMaterialPropertyRepresentation>;
+    /// Check if Handle<StepFEA_FeaMaterialPropertyRepresentation> is null
+    pub fn HandleStepFEAFeaMaterialPropertyRepresentation_is_null(
+        self_: *const HandleStepFEAFeaMaterialPropertyRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaMaterialPropertyRepresentation
     pub fn HandleStepFEAFeaMaterialPropertyRepresentation_get(
         handle: *const HandleStepFEAFeaMaterialPropertyRepresentation,
@@ -62800,6 +64173,10 @@ extern "C" {
     pub fn HandleStepFEAFeaMaterialPropertyRepresentationItem_clone(
         self_: *const HandleStepFEAFeaMaterialPropertyRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaMaterialPropertyRepresentationItem>;
+    /// Check if Handle<StepFEA_FeaMaterialPropertyRepresentationItem> is null
+    pub fn HandleStepFEAFeaMaterialPropertyRepresentationItem_is_null(
+        self_: *const HandleStepFEAFeaMaterialPropertyRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaMaterialPropertyRepresentationItem
     pub fn HandleStepFEAFeaMaterialPropertyRepresentationItem_get(
         handle: *const HandleStepFEAFeaMaterialPropertyRepresentationItem,
@@ -62985,6 +64362,8 @@ extern "C" {
     pub fn HandleStepFEAFeaModel_clone(
         self_: *const HandleStepFEAFeaModel,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaModel>;
+    /// Check if Handle<StepFEA_FeaModel> is null
+    pub fn HandleStepFEAFeaModel_is_null(self_: *const HandleStepFEAFeaModel) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaModel
     pub fn HandleStepFEAFeaModel_get(
         handle: *const HandleStepFEAFeaModel,
@@ -63117,6 +64496,8 @@ extern "C" {
     pub fn HandleStepFEAFeaModel3d_clone(
         self_: *const HandleStepFEAFeaModel3d,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaModel3d>;
+    /// Check if Handle<StepFEA_FeaModel3d> is null
+    pub fn HandleStepFEAFeaModel3d_is_null(self_: *const HandleStepFEAFeaModel3d) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaModel3d
     pub fn HandleStepFEAFeaModel3d_get(
         handle: *const HandleStepFEAFeaModel3d,
@@ -63289,6 +64670,10 @@ extern "C" {
     pub fn HandleStepFEAFeaModelDefinition_clone(
         self_: *const HandleStepFEAFeaModelDefinition,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaModelDefinition>;
+    /// Check if Handle<StepFEA_FeaModelDefinition> is null
+    pub fn HandleStepFEAFeaModelDefinition_is_null(
+        self_: *const HandleStepFEAFeaModelDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaModelDefinition
     pub fn HandleStepFEAFeaModelDefinition_get(
         handle: *const HandleStepFEAFeaModelDefinition,
@@ -63445,6 +64830,10 @@ extern "C" {
     pub fn HandleStepFEAFeaMoistureAbsorption_clone(
         self_: *const HandleStepFEAFeaMoistureAbsorption,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaMoistureAbsorption>;
+    /// Check if Handle<StepFEA_FeaMoistureAbsorption> is null
+    pub fn HandleStepFEAFeaMoistureAbsorption_is_null(
+        self_: *const HandleStepFEAFeaMoistureAbsorption,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaMoistureAbsorption
     pub fn HandleStepFEAFeaMoistureAbsorption_get(
         handle: *const HandleStepFEAFeaMoistureAbsorption,
@@ -63574,6 +64963,10 @@ extern "C" {
     pub fn HandleStepFEAFeaParametricPoint_clone(
         self_: *const HandleStepFEAFeaParametricPoint,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaParametricPoint>;
+    /// Check if Handle<StepFEA_FeaParametricPoint> is null
+    pub fn HandleStepFEAFeaParametricPoint_is_null(
+        self_: *const HandleStepFEAFeaParametricPoint,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaParametricPoint
     pub fn HandleStepFEAFeaParametricPoint_get(
         handle: *const HandleStepFEAFeaParametricPoint,
@@ -63680,6 +65073,10 @@ extern "C" {
     pub fn HandleStepFEAFeaRepresentationItem_clone(
         self_: *const HandleStepFEAFeaRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaRepresentationItem>;
+    /// Check if Handle<StepFEA_FeaRepresentationItem> is null
+    pub fn HandleStepFEAFeaRepresentationItem_is_null(
+        self_: *const HandleStepFEAFeaRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaRepresentationItem
     pub fn HandleStepFEAFeaRepresentationItem_get(
         handle: *const HandleStepFEAFeaRepresentationItem,
@@ -63846,6 +65243,10 @@ extern "C" {
     pub fn HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion_clone(
         self_: *const HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion>;
+    /// Check if Handle<StepFEA_FeaSecantCoefficientOfLinearThermalExpansion> is null
+    pub fn HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion_is_null(
+        self_: *const HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaSecantCoefficientOfLinearThermalExpansion
     pub fn HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion_get(
         handle: *const HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion,
@@ -63973,6 +65374,10 @@ extern "C" {
     pub fn HandleStepFEAFeaShellBendingStiffness_clone(
         self_: *const HandleStepFEAFeaShellBendingStiffness,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaShellBendingStiffness>;
+    /// Check if Handle<StepFEA_FeaShellBendingStiffness> is null
+    pub fn HandleStepFEAFeaShellBendingStiffness_is_null(
+        self_: *const HandleStepFEAFeaShellBendingStiffness,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaShellBendingStiffness
     pub fn HandleStepFEAFeaShellBendingStiffness_get(
         handle: *const HandleStepFEAFeaShellBendingStiffness,
@@ -64100,6 +65505,10 @@ extern "C" {
     pub fn HandleStepFEAFeaShellMembraneBendingCouplingStiffness_clone(
         self_: *const HandleStepFEAFeaShellMembraneBendingCouplingStiffness,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaShellMembraneBendingCouplingStiffness>;
+    /// Check if Handle<StepFEA_FeaShellMembraneBendingCouplingStiffness> is null
+    pub fn HandleStepFEAFeaShellMembraneBendingCouplingStiffness_is_null(
+        self_: *const HandleStepFEAFeaShellMembraneBendingCouplingStiffness,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaShellMembraneBendingCouplingStiffness
     pub fn HandleStepFEAFeaShellMembraneBendingCouplingStiffness_get(
         handle: *const HandleStepFEAFeaShellMembraneBendingCouplingStiffness,
@@ -64227,6 +65636,10 @@ extern "C" {
     pub fn HandleStepFEAFeaShellMembraneStiffness_clone(
         self_: *const HandleStepFEAFeaShellMembraneStiffness,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaShellMembraneStiffness>;
+    /// Check if Handle<StepFEA_FeaShellMembraneStiffness> is null
+    pub fn HandleStepFEAFeaShellMembraneStiffness_is_null(
+        self_: *const HandleStepFEAFeaShellMembraneStiffness,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaShellMembraneStiffness
     pub fn HandleStepFEAFeaShellMembraneStiffness_get(
         handle: *const HandleStepFEAFeaShellMembraneStiffness,
@@ -64352,6 +65765,10 @@ extern "C" {
     pub fn HandleStepFEAFeaShellShearStiffness_clone(
         self_: *const HandleStepFEAFeaShellShearStiffness,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaShellShearStiffness>;
+    /// Check if Handle<StepFEA_FeaShellShearStiffness> is null
+    pub fn HandleStepFEAFeaShellShearStiffness_is_null(
+        self_: *const HandleStepFEAFeaShellShearStiffness,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaShellShearStiffness
     pub fn HandleStepFEAFeaShellShearStiffness_get(
         handle: *const HandleStepFEAFeaShellShearStiffness,
@@ -64472,6 +65889,10 @@ extern "C" {
     pub fn HandleStepFEAFeaSurfaceSectionGeometricRelationship_clone(
         self_: *const HandleStepFEAFeaSurfaceSectionGeometricRelationship,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaSurfaceSectionGeometricRelationship>;
+    /// Check if Handle<StepFEA_FeaSurfaceSectionGeometricRelationship> is null
+    pub fn HandleStepFEAFeaSurfaceSectionGeometricRelationship_is_null(
+        self_: *const HandleStepFEAFeaSurfaceSectionGeometricRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaSurfaceSectionGeometricRelationship
     pub fn HandleStepFEAFeaSurfaceSectionGeometricRelationship_get(
         handle: *const HandleStepFEAFeaSurfaceSectionGeometricRelationship,
@@ -64582,6 +66003,10 @@ extern "C" {
     pub fn HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion_clone(
         self_: *const HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion,
     ) -> crate::OcctResult<*mut HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion>;
+    /// Check if Handle<StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion> is null
+    pub fn HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion_is_null(
+        self_: *const HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion
     pub fn HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion_get(
         handle: *const HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion,
@@ -64700,6 +66125,10 @@ extern "C" {
     pub fn HandleStepFEAFreedomAndCoefficient_clone(
         self_: *const HandleStepFEAFreedomAndCoefficient,
     ) -> crate::OcctResult<*mut HandleStepFEAFreedomAndCoefficient>;
+    /// Check if Handle<StepFEA_FreedomAndCoefficient> is null
+    pub fn HandleStepFEAFreedomAndCoefficient_is_null(
+        self_: *const HandleStepFEAFreedomAndCoefficient,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_FreedomAndCoefficient
     pub fn HandleStepFEAFreedomAndCoefficient_get(
         handle: *const HandleStepFEAFreedomAndCoefficient,
@@ -64786,6 +66215,8 @@ extern "C" {
     pub fn HandleStepFEAFreedomsList_clone(
         self_: *const HandleStepFEAFreedomsList,
     ) -> crate::OcctResult<*mut HandleStepFEAFreedomsList>;
+    /// Check if Handle<StepFEA_FreedomsList> is null
+    pub fn HandleStepFEAFreedomsList_is_null(self_: *const HandleStepFEAFreedomsList) -> bool;
     /// Dereference Handle to get *const StepFEA_FreedomsList
     pub fn HandleStepFEAFreedomsList_get(
         handle: *const HandleStepFEAFreedomsList,
@@ -64875,6 +66306,8 @@ extern "C" {
     pub fn HandleStepFEAGeometricNode_clone(
         self_: *const HandleStepFEAGeometricNode,
     ) -> crate::OcctResult<*mut HandleStepFEAGeometricNode>;
+    /// Check if Handle<StepFEA_GeometricNode> is null
+    pub fn HandleStepFEAGeometricNode_is_null(self_: *const HandleStepFEAGeometricNode) -> bool;
     /// Dereference Handle to get *const StepFEA_GeometricNode
     pub fn HandleStepFEAGeometricNode_get(
         handle: *const HandleStepFEAGeometricNode,
@@ -65045,6 +66478,10 @@ extern "C" {
     pub fn HandleStepFEAHArray1OfCurveElementEndOffset_clone(
         self_: *const HandleStepFEAHArray1OfCurveElementEndOffset,
     ) -> crate::OcctResult<*mut HandleStepFEAHArray1OfCurveElementEndOffset>;
+    /// Check if Handle<StepFEA_HArray1OfCurveElementEndOffset> is null
+    pub fn HandleStepFEAHArray1OfCurveElementEndOffset_is_null(
+        self_: *const HandleStepFEAHArray1OfCurveElementEndOffset,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_HArray1OfCurveElementEndOffset
     pub fn HandleStepFEAHArray1OfCurveElementEndOffset_get(
         handle: *const HandleStepFEAHArray1OfCurveElementEndOffset,
@@ -65154,6 +66591,10 @@ extern "C" {
     pub fn HandleStepFEAHArray1OfCurveElementEndRelease_clone(
         self_: *const HandleStepFEAHArray1OfCurveElementEndRelease,
     ) -> crate::OcctResult<*mut HandleStepFEAHArray1OfCurveElementEndRelease>;
+    /// Check if Handle<StepFEA_HArray1OfCurveElementEndRelease> is null
+    pub fn HandleStepFEAHArray1OfCurveElementEndRelease_is_null(
+        self_: *const HandleStepFEAHArray1OfCurveElementEndRelease,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_HArray1OfCurveElementEndRelease
     pub fn HandleStepFEAHArray1OfCurveElementEndRelease_get(
         handle: *const HandleStepFEAHArray1OfCurveElementEndRelease,
@@ -65263,6 +66704,10 @@ extern "C" {
     pub fn HandleStepFEAHArray1OfCurveElementInterval_clone(
         self_: *const HandleStepFEAHArray1OfCurveElementInterval,
     ) -> crate::OcctResult<*mut HandleStepFEAHArray1OfCurveElementInterval>;
+    /// Check if Handle<StepFEA_HArray1OfCurveElementInterval> is null
+    pub fn HandleStepFEAHArray1OfCurveElementInterval_is_null(
+        self_: *const HandleStepFEAHArray1OfCurveElementInterval,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_HArray1OfCurveElementInterval
     pub fn HandleStepFEAHArray1OfCurveElementInterval_get(
         handle: *const HandleStepFEAHArray1OfCurveElementInterval,
@@ -65372,6 +66817,10 @@ extern "C" {
     pub fn HandleStepFEAHArray1OfDegreeOfFreedom_clone(
         self_: *const HandleStepFEAHArray1OfDegreeOfFreedom,
     ) -> crate::OcctResult<*mut HandleStepFEAHArray1OfDegreeOfFreedom>;
+    /// Check if Handle<StepFEA_HArray1OfDegreeOfFreedom> is null
+    pub fn HandleStepFEAHArray1OfDegreeOfFreedom_is_null(
+        self_: *const HandleStepFEAHArray1OfDegreeOfFreedom,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_HArray1OfDegreeOfFreedom
     pub fn HandleStepFEAHArray1OfDegreeOfFreedom_get(
         handle: *const HandleStepFEAHArray1OfDegreeOfFreedom,
@@ -65481,6 +66930,10 @@ extern "C" {
     pub fn HandleStepFEAHArray1OfElementRepresentation_clone(
         self_: *const HandleStepFEAHArray1OfElementRepresentation,
     ) -> crate::OcctResult<*mut HandleStepFEAHArray1OfElementRepresentation>;
+    /// Check if Handle<StepFEA_HArray1OfElementRepresentation> is null
+    pub fn HandleStepFEAHArray1OfElementRepresentation_is_null(
+        self_: *const HandleStepFEAHArray1OfElementRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_HArray1OfElementRepresentation
     pub fn HandleStepFEAHArray1OfElementRepresentation_get(
         handle: *const HandleStepFEAHArray1OfElementRepresentation,
@@ -65590,6 +67043,10 @@ extern "C" {
     pub fn HandleStepFEAHArray1OfNodeRepresentation_clone(
         self_: *const HandleStepFEAHArray1OfNodeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepFEAHArray1OfNodeRepresentation>;
+    /// Check if Handle<StepFEA_HArray1OfNodeRepresentation> is null
+    pub fn HandleStepFEAHArray1OfNodeRepresentation_is_null(
+        self_: *const HandleStepFEAHArray1OfNodeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_HArray1OfNodeRepresentation
     pub fn HandleStepFEAHArray1OfNodeRepresentation_get(
         handle: *const HandleStepFEAHArray1OfNodeRepresentation,
@@ -65691,6 +67148,10 @@ extern "C" {
     pub fn HandleStepFEAHSequenceOfCurve3dElementProperty_clone(
         self_: *const HandleStepFEAHSequenceOfCurve3dElementProperty,
     ) -> crate::OcctResult<*mut HandleStepFEAHSequenceOfCurve3dElementProperty>;
+    /// Check if Handle<StepFEA_HSequenceOfCurve3dElementProperty> is null
+    pub fn HandleStepFEAHSequenceOfCurve3dElementProperty_is_null(
+        self_: *const HandleStepFEAHSequenceOfCurve3dElementProperty,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_HSequenceOfCurve3dElementProperty
     pub fn HandleStepFEAHSequenceOfCurve3dElementProperty_get(
         handle: *const HandleStepFEAHSequenceOfCurve3dElementProperty,
@@ -65792,6 +67253,10 @@ extern "C" {
     pub fn HandleStepFEAHSequenceOfElementGeometricRelationship_clone(
         self_: *const HandleStepFEAHSequenceOfElementGeometricRelationship,
     ) -> crate::OcctResult<*mut HandleStepFEAHSequenceOfElementGeometricRelationship>;
+    /// Check if Handle<StepFEA_HSequenceOfElementGeometricRelationship> is null
+    pub fn HandleStepFEAHSequenceOfElementGeometricRelationship_is_null(
+        self_: *const HandleStepFEAHSequenceOfElementGeometricRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_HSequenceOfElementGeometricRelationship
     pub fn HandleStepFEAHSequenceOfElementGeometricRelationship_get(
         handle: *const HandleStepFEAHSequenceOfElementGeometricRelationship,
@@ -65893,6 +67358,10 @@ extern "C" {
     pub fn HandleStepFEAHSequenceOfElementRepresentation_clone(
         self_: *const HandleStepFEAHSequenceOfElementRepresentation,
     ) -> crate::OcctResult<*mut HandleStepFEAHSequenceOfElementRepresentation>;
+    /// Check if Handle<StepFEA_HSequenceOfElementRepresentation> is null
+    pub fn HandleStepFEAHSequenceOfElementRepresentation_is_null(
+        self_: *const HandleStepFEAHSequenceOfElementRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_HSequenceOfElementRepresentation
     pub fn HandleStepFEAHSequenceOfElementRepresentation_get(
         handle: *const HandleStepFEAHSequenceOfElementRepresentation,
@@ -65994,6 +67463,10 @@ extern "C" {
     pub fn HandleStepFEAHSequenceOfNodeRepresentation_clone(
         self_: *const HandleStepFEAHSequenceOfNodeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepFEAHSequenceOfNodeRepresentation>;
+    /// Check if Handle<StepFEA_HSequenceOfNodeRepresentation> is null
+    pub fn HandleStepFEAHSequenceOfNodeRepresentation_is_null(
+        self_: *const HandleStepFEAHSequenceOfNodeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_HSequenceOfNodeRepresentation
     pub fn HandleStepFEAHSequenceOfNodeRepresentation_get(
         handle: *const HandleStepFEAHSequenceOfNodeRepresentation,
@@ -66082,6 +67555,8 @@ extern "C" {
     pub fn HandleStepFEANode_clone(
         self_: *const HandleStepFEANode,
     ) -> crate::OcctResult<*mut HandleStepFEANode>;
+    /// Check if Handle<StepFEA_Node> is null
+    pub fn HandleStepFEANode_is_null(self_: *const HandleStepFEANode) -> bool;
     /// Dereference Handle to get *const StepFEA_Node
     pub fn HandleStepFEANode_get(
         handle: *const HandleStepFEANode,
@@ -66227,6 +67702,8 @@ extern "C" {
     pub fn HandleStepFEANodeDefinition_clone(
         self_: *const HandleStepFEANodeDefinition,
     ) -> crate::OcctResult<*mut HandleStepFEANodeDefinition>;
+    /// Check if Handle<StepFEA_NodeDefinition> is null
+    pub fn HandleStepFEANodeDefinition_is_null(self_: *const HandleStepFEANodeDefinition) -> bool;
     /// Dereference Handle to get *const StepFEA_NodeDefinition
     pub fn HandleStepFEANodeDefinition_get(
         handle: *const HandleStepFEANodeDefinition,
@@ -66380,6 +67857,8 @@ extern "C" {
     pub fn HandleStepFEANodeGroup_clone(
         self_: *const HandleStepFEANodeGroup,
     ) -> crate::OcctResult<*mut HandleStepFEANodeGroup>;
+    /// Check if Handle<StepFEA_NodeGroup> is null
+    pub fn HandleStepFEANodeGroup_is_null(self_: *const HandleStepFEANodeGroup) -> bool;
     /// Dereference Handle to get *const StepFEA_NodeGroup
     pub fn HandleStepFEANodeGroup_get(
         handle: *const HandleStepFEANodeGroup,
@@ -66517,6 +67996,10 @@ extern "C" {
     pub fn HandleStepFEANodeRepresentation_clone(
         self_: *const HandleStepFEANodeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepFEANodeRepresentation>;
+    /// Check if Handle<StepFEA_NodeRepresentation> is null
+    pub fn HandleStepFEANodeRepresentation_is_null(
+        self_: *const HandleStepFEANodeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_NodeRepresentation
     pub fn HandleStepFEANodeRepresentation_get(
         handle: *const HandleStepFEANodeRepresentation,
@@ -66680,6 +68163,8 @@ extern "C" {
     pub fn HandleStepFEANodeSet_clone(
         self_: *const HandleStepFEANodeSet,
     ) -> crate::OcctResult<*mut HandleStepFEANodeSet>;
+    /// Check if Handle<StepFEA_NodeSet> is null
+    pub fn HandleStepFEANodeSet_is_null(self_: *const HandleStepFEANodeSet) -> bool;
     /// Dereference Handle to get *const StepFEA_NodeSet
     pub fn HandleStepFEANodeSet_get(
         handle: *const HandleStepFEANodeSet,
@@ -66800,6 +68285,10 @@ extern "C" {
     pub fn HandleStepFEANodeWithSolutionCoordinateSystem_clone(
         self_: *const HandleStepFEANodeWithSolutionCoordinateSystem,
     ) -> crate::OcctResult<*mut HandleStepFEANodeWithSolutionCoordinateSystem>;
+    /// Check if Handle<StepFEA_NodeWithSolutionCoordinateSystem> is null
+    pub fn HandleStepFEANodeWithSolutionCoordinateSystem_is_null(
+        self_: *const HandleStepFEANodeWithSolutionCoordinateSystem,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_NodeWithSolutionCoordinateSystem
     pub fn HandleStepFEANodeWithSolutionCoordinateSystem_get(
         handle: *const HandleStepFEANodeWithSolutionCoordinateSystem,
@@ -66962,6 +68451,8 @@ extern "C" {
     pub fn HandleStepFEANodeWithVector_clone(
         self_: *const HandleStepFEANodeWithVector,
     ) -> crate::OcctResult<*mut HandleStepFEANodeWithVector>;
+    /// Check if Handle<StepFEA_NodeWithVector> is null
+    pub fn HandleStepFEANodeWithVector_is_null(self_: *const HandleStepFEANodeWithVector) -> bool;
     /// Dereference Handle to get *const StepFEA_NodeWithVector
     pub fn HandleStepFEANodeWithVector_get(
         handle: *const HandleStepFEANodeWithVector,
@@ -67137,6 +68628,10 @@ extern "C" {
     pub fn HandleStepFEAParametricCurve3dElementCoordinateDirection_clone(
         self_: *const HandleStepFEAParametricCurve3dElementCoordinateDirection,
     ) -> crate::OcctResult<*mut HandleStepFEAParametricCurve3dElementCoordinateDirection>;
+    /// Check if Handle<StepFEA_ParametricCurve3dElementCoordinateDirection> is null
+    pub fn HandleStepFEAParametricCurve3dElementCoordinateDirection_is_null(
+        self_: *const HandleStepFEAParametricCurve3dElementCoordinateDirection,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_ParametricCurve3dElementCoordinateDirection
     pub fn HandleStepFEAParametricCurve3dElementCoordinateDirection_get(
         handle: *const HandleStepFEAParametricCurve3dElementCoordinateDirection,
@@ -67264,6 +68759,10 @@ extern "C" {
     pub fn HandleStepFEAParametricCurve3dElementCoordinateSystem_clone(
         self_: *const HandleStepFEAParametricCurve3dElementCoordinateSystem,
     ) -> crate::OcctResult<*mut HandleStepFEAParametricCurve3dElementCoordinateSystem>;
+    /// Check if Handle<StepFEA_ParametricCurve3dElementCoordinateSystem> is null
+    pub fn HandleStepFEAParametricCurve3dElementCoordinateSystem_is_null(
+        self_: *const HandleStepFEAParametricCurve3dElementCoordinateSystem,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_ParametricCurve3dElementCoordinateSystem
     pub fn HandleStepFEAParametricCurve3dElementCoordinateSystem_get(
         handle: *const HandleStepFEAParametricCurve3dElementCoordinateSystem,
@@ -67401,6 +68900,10 @@ extern "C" {
     pub fn HandleStepFEAParametricSurface3dElementCoordinateSystem_clone(
         self_: *const HandleStepFEAParametricSurface3dElementCoordinateSystem,
     ) -> crate::OcctResult<*mut HandleStepFEAParametricSurface3dElementCoordinateSystem>;
+    /// Check if Handle<StepFEA_ParametricSurface3dElementCoordinateSystem> is null
+    pub fn HandleStepFEAParametricSurface3dElementCoordinateSystem_is_null(
+        self_: *const HandleStepFEAParametricSurface3dElementCoordinateSystem,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_ParametricSurface3dElementCoordinateSystem
     pub fn HandleStepFEAParametricSurface3dElementCoordinateSystem_get(
         handle: *const HandleStepFEAParametricSurface3dElementCoordinateSystem,
@@ -67561,6 +69064,10 @@ extern "C" {
     pub fn HandleStepFEASurface3dElementRepresentation_clone(
         self_: *const HandleStepFEASurface3dElementRepresentation,
     ) -> crate::OcctResult<*mut HandleStepFEASurface3dElementRepresentation>;
+    /// Check if Handle<StepFEA_Surface3dElementRepresentation> is null
+    pub fn HandleStepFEASurface3dElementRepresentation_is_null(
+        self_: *const HandleStepFEASurface3dElementRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_Surface3dElementRepresentation
     pub fn HandleStepFEASurface3dElementRepresentation_get(
         handle: *const HandleStepFEASurface3dElementRepresentation,
@@ -67952,6 +69459,10 @@ extern "C" {
     pub fn HandleStepFEASymmetricTensor23dMember_clone(
         self_: *const HandleStepFEASymmetricTensor23dMember,
     ) -> crate::OcctResult<*mut HandleStepFEASymmetricTensor23dMember>;
+    /// Check if Handle<StepFEA_SymmetricTensor23dMember> is null
+    pub fn HandleStepFEASymmetricTensor23dMember_is_null(
+        self_: *const HandleStepFEASymmetricTensor23dMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_SymmetricTensor23dMember
     pub fn HandleStepFEASymmetricTensor23dMember_get(
         handle: *const HandleStepFEASymmetricTensor23dMember,
@@ -68383,6 +69894,10 @@ extern "C" {
     pub fn HandleStepFEASymmetricTensor43dMember_clone(
         self_: *const HandleStepFEASymmetricTensor43dMember,
     ) -> crate::OcctResult<*mut HandleStepFEASymmetricTensor43dMember>;
+    /// Check if Handle<StepFEA_SymmetricTensor43dMember> is null
+    pub fn HandleStepFEASymmetricTensor43dMember_is_null(
+        self_: *const HandleStepFEASymmetricTensor43dMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_SymmetricTensor43dMember
     pub fn HandleStepFEASymmetricTensor43dMember_get(
         handle: *const HandleStepFEASymmetricTensor43dMember,
@@ -68607,6 +70122,10 @@ extern "C" {
     pub fn HandleStepFEAVolume3dElementRepresentation_clone(
         self_: *const HandleStepFEAVolume3dElementRepresentation,
     ) -> crate::OcctResult<*mut HandleStepFEAVolume3dElementRepresentation>;
+    /// Check if Handle<StepFEA_Volume3dElementRepresentation> is null
+    pub fn HandleStepFEAVolume3dElementRepresentation_is_null(
+        self_: *const HandleStepFEAVolume3dElementRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepFEA_Volume3dElementRepresentation
     pub fn HandleStepFEAVolume3dElementRepresentation_get(
         handle: *const HandleStepFEAVolume3dElementRepresentation,
@@ -68890,6 +70409,9 @@ extern "C" {
     pub fn HandleStepGeomAxis1Placement_clone(
         self_: *const HandleStepGeomAxis1Placement,
     ) -> crate::OcctResult<*mut HandleStepGeomAxis1Placement>;
+    /// Check if Handle<StepGeom_Axis1Placement> is null
+    pub fn HandleStepGeomAxis1Placement_is_null(self_: *const HandleStepGeomAxis1Placement)
+        -> bool;
     /// Dereference Handle to get *const StepGeom_Axis1Placement
     pub fn HandleStepGeomAxis1Placement_get(
         handle: *const HandleStepGeomAxis1Placement,
@@ -69143,6 +70665,10 @@ extern "C" {
     pub fn HandleStepGeomAxis2Placement2d_clone(
         self_: *const HandleStepGeomAxis2Placement2d,
     ) -> crate::OcctResult<*mut HandleStepGeomAxis2Placement2d>;
+    /// Check if Handle<StepGeom_Axis2Placement2d> is null
+    pub fn HandleStepGeomAxis2Placement2d_is_null(
+        self_: *const HandleStepGeomAxis2Placement2d,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_Axis2Placement2d
     pub fn HandleStepGeomAxis2Placement2d_get(
         handle: *const HandleStepGeomAxis2Placement2d,
@@ -69314,6 +70840,10 @@ extern "C" {
     pub fn HandleStepGeomAxis2Placement3d_clone(
         self_: *const HandleStepGeomAxis2Placement3d,
     ) -> crate::OcctResult<*mut HandleStepGeomAxis2Placement3d>;
+    /// Check if Handle<StepGeom_Axis2Placement3d> is null
+    pub fn HandleStepGeomAxis2Placement3d_is_null(
+        self_: *const HandleStepGeomAxis2Placement3d,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_Axis2Placement3d
     pub fn HandleStepGeomAxis2Placement3d_get(
         handle: *const HandleStepGeomAxis2Placement3d,
@@ -69517,6 +71047,8 @@ extern "C" {
     pub fn HandleStepGeomBSplineCurve_clone(
         self_: *const HandleStepGeomBSplineCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomBSplineCurve>;
+    /// Check if Handle<StepGeom_BSplineCurve> is null
+    pub fn HandleStepGeomBSplineCurve_is_null(self_: *const HandleStepGeomBSplineCurve) -> bool;
     /// Dereference Handle to get *const StepGeom_BSplineCurve
     pub fn HandleStepGeomBSplineCurve_get(
         handle: *const HandleStepGeomBSplineCurve,
@@ -69753,6 +71285,10 @@ extern "C" {
     pub fn HandleStepGeomBSplineCurveWithKnots_clone(
         self_: *const HandleStepGeomBSplineCurveWithKnots,
     ) -> crate::OcctResult<*mut HandleStepGeomBSplineCurveWithKnots>;
+    /// Check if Handle<StepGeom_BSplineCurveWithKnots> is null
+    pub fn HandleStepGeomBSplineCurveWithKnots_is_null(
+        self_: *const HandleStepGeomBSplineCurveWithKnots,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_BSplineCurveWithKnots
     pub fn HandleStepGeomBSplineCurveWithKnots_get(
         handle: *const HandleStepGeomBSplineCurveWithKnots,
@@ -70062,6 +71598,10 @@ extern "C" {
     pub fn HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve_clone(
         self_: *const HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve>;
+    /// Check if Handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> is null
+    pub fn HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve_is_null(
+        self_: *const HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve
     pub fn HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve_get(
         handle: *const HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve,
@@ -70339,6 +71879,9 @@ extern "C" {
     pub fn HandleStepGeomBSplineSurface_clone(
         self_: *const HandleStepGeomBSplineSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomBSplineSurface>;
+    /// Check if Handle<StepGeom_BSplineSurface> is null
+    pub fn HandleStepGeomBSplineSurface_is_null(self_: *const HandleStepGeomBSplineSurface)
+        -> bool;
     /// Dereference Handle to get *const StepGeom_BSplineSurface
     pub fn HandleStepGeomBSplineSurface_get(
         handle: *const HandleStepGeomBSplineSurface,
@@ -70617,6 +72160,10 @@ extern "C" {
     pub fn HandleStepGeomBSplineSurfaceWithKnots_clone(
         self_: *const HandleStepGeomBSplineSurfaceWithKnots,
     ) -> crate::OcctResult<*mut HandleStepGeomBSplineSurfaceWithKnots>;
+    /// Check if Handle<StepGeom_BSplineSurfaceWithKnots> is null
+    pub fn HandleStepGeomBSplineSurfaceWithKnots_is_null(
+        self_: *const HandleStepGeomBSplineSurfaceWithKnots,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_BSplineSurfaceWithKnots
     pub fn HandleStepGeomBSplineSurfaceWithKnots_get(
         handle: *const HandleStepGeomBSplineSurfaceWithKnots,
@@ -70996,6 +72543,10 @@ extern "C" {
     pub fn HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface_clone(
         self_: *const HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface>;
+    /// Check if Handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> is null
+    pub fn HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface_is_null(
+        self_: *const HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface
     pub fn HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface_get(
         handle: *const HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface,
@@ -71214,6 +72765,8 @@ extern "C" {
     pub fn HandleStepGeomBezierCurve_clone(
         self_: *const HandleStepGeomBezierCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomBezierCurve>;
+    /// Check if Handle<StepGeom_BezierCurve> is null
+    pub fn HandleStepGeomBezierCurve_is_null(self_: *const HandleStepGeomBezierCurve) -> bool;
     /// Dereference Handle to get *const StepGeom_BezierCurve
     pub fn HandleStepGeomBezierCurve_get(
         handle: *const HandleStepGeomBezierCurve,
@@ -71485,6 +73038,10 @@ extern "C" {
     pub fn HandleStepGeomBezierCurveAndRationalBSplineCurve_clone(
         self_: *const HandleStepGeomBezierCurveAndRationalBSplineCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomBezierCurveAndRationalBSplineCurve>;
+    /// Check if Handle<StepGeom_BezierCurveAndRationalBSplineCurve> is null
+    pub fn HandleStepGeomBezierCurveAndRationalBSplineCurve_is_null(
+        self_: *const HandleStepGeomBezierCurveAndRationalBSplineCurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_BezierCurveAndRationalBSplineCurve
     pub fn HandleStepGeomBezierCurveAndRationalBSplineCurve_get(
         handle: *const HandleStepGeomBezierCurveAndRationalBSplineCurve,
@@ -71681,6 +73238,8 @@ extern "C" {
     pub fn HandleStepGeomBezierSurface_clone(
         self_: *const HandleStepGeomBezierSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomBezierSurface>;
+    /// Check if Handle<StepGeom_BezierSurface> is null
+    pub fn HandleStepGeomBezierSurface_is_null(self_: *const HandleStepGeomBezierSurface) -> bool;
     /// Dereference Handle to get *const StepGeom_BezierSurface
     pub fn HandleStepGeomBezierSurface_get(
         handle: *const HandleStepGeomBezierSurface,
@@ -71986,6 +73545,10 @@ extern "C" {
     pub fn HandleStepGeomBezierSurfaceAndRationalBSplineSurface_clone(
         self_: *const HandleStepGeomBezierSurfaceAndRationalBSplineSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomBezierSurfaceAndRationalBSplineSurface>;
+    /// Check if Handle<StepGeom_BezierSurfaceAndRationalBSplineSurface> is null
+    pub fn HandleStepGeomBezierSurfaceAndRationalBSplineSurface_is_null(
+        self_: *const HandleStepGeomBezierSurfaceAndRationalBSplineSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_BezierSurfaceAndRationalBSplineSurface
     pub fn HandleStepGeomBezierSurfaceAndRationalBSplineSurface_get(
         handle: *const HandleStepGeomBezierSurfaceAndRationalBSplineSurface,
@@ -72213,6 +73776,8 @@ extern "C" {
     pub fn HandleStepGeomBoundaryCurve_clone(
         self_: *const HandleStepGeomBoundaryCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomBoundaryCurve>;
+    /// Check if Handle<StepGeom_BoundaryCurve> is null
+    pub fn HandleStepGeomBoundaryCurve_is_null(self_: *const HandleStepGeomBoundaryCurve) -> bool;
     /// Dereference Handle to get *const StepGeom_BoundaryCurve
     pub fn HandleStepGeomBoundaryCurve_get(
         handle: *const HandleStepGeomBoundaryCurve,
@@ -72381,6 +73946,8 @@ extern "C" {
     pub fn HandleStepGeomBoundedCurve_clone(
         self_: *const HandleStepGeomBoundedCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomBoundedCurve>;
+    /// Check if Handle<StepGeom_BoundedCurve> is null
+    pub fn HandleStepGeomBoundedCurve_is_null(self_: *const HandleStepGeomBoundedCurve) -> bool;
     /// Dereference Handle to get *const StepGeom_BoundedCurve
     pub fn HandleStepGeomBoundedCurve_get(
         handle: *const HandleStepGeomBoundedCurve,
@@ -72568,6 +74135,9 @@ extern "C" {
     pub fn HandleStepGeomBoundedSurface_clone(
         self_: *const HandleStepGeomBoundedSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomBoundedSurface>;
+    /// Check if Handle<StepGeom_BoundedSurface> is null
+    pub fn HandleStepGeomBoundedSurface_is_null(self_: *const HandleStepGeomBoundedSurface)
+        -> bool;
     /// Dereference Handle to get *const StepGeom_BoundedSurface
     pub fn HandleStepGeomBoundedSurface_get(
         handle: *const HandleStepGeomBoundedSurface,
@@ -72782,6 +74352,9 @@ extern "C" {
     pub fn HandleStepGeomCartesianPoint_clone(
         self_: *const HandleStepGeomCartesianPoint,
     ) -> crate::OcctResult<*mut HandleStepGeomCartesianPoint>;
+    /// Check if Handle<StepGeom_CartesianPoint> is null
+    pub fn HandleStepGeomCartesianPoint_is_null(self_: *const HandleStepGeomCartesianPoint)
+        -> bool;
     /// Dereference Handle to get *const StepGeom_CartesianPoint
     pub fn HandleStepGeomCartesianPoint_get(
         handle: *const HandleStepGeomCartesianPoint,
@@ -72970,6 +74543,10 @@ extern "C" {
     pub fn HandleStepGeomCartesianTransformationOperator_clone(
         self_: *const HandleStepGeomCartesianTransformationOperator,
     ) -> crate::OcctResult<*mut HandleStepGeomCartesianTransformationOperator>;
+    /// Check if Handle<StepGeom_CartesianTransformationOperator> is null
+    pub fn HandleStepGeomCartesianTransformationOperator_is_null(
+        self_: *const HandleStepGeomCartesianTransformationOperator,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_CartesianTransformationOperator
     pub fn HandleStepGeomCartesianTransformationOperator_get(
         handle: *const HandleStepGeomCartesianTransformationOperator,
@@ -73098,6 +74675,10 @@ extern "C" {
     pub fn HandleStepGeomCartesianTransformationOperator2d_clone(
         self_: *const HandleStepGeomCartesianTransformationOperator2d,
     ) -> crate::OcctResult<*mut HandleStepGeomCartesianTransformationOperator2d>;
+    /// Check if Handle<StepGeom_CartesianTransformationOperator2d> is null
+    pub fn HandleStepGeomCartesianTransformationOperator2d_is_null(
+        self_: *const HandleStepGeomCartesianTransformationOperator2d,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_CartesianTransformationOperator2d
     pub fn HandleStepGeomCartesianTransformationOperator2d_get(
         handle: *const HandleStepGeomCartesianTransformationOperator2d,
@@ -73325,6 +74906,10 @@ extern "C" {
     pub fn HandleStepGeomCartesianTransformationOperator3d_clone(
         self_: *const HandleStepGeomCartesianTransformationOperator3d,
     ) -> crate::OcctResult<*mut HandleStepGeomCartesianTransformationOperator3d>;
+    /// Check if Handle<StepGeom_CartesianTransformationOperator3d> is null
+    pub fn HandleStepGeomCartesianTransformationOperator3d_is_null(
+        self_: *const HandleStepGeomCartesianTransformationOperator3d,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_CartesianTransformationOperator3d
     pub fn HandleStepGeomCartesianTransformationOperator3d_get(
         handle: *const HandleStepGeomCartesianTransformationOperator3d,
@@ -73524,6 +75109,8 @@ extern "C" {
     pub fn HandleStepGeomCircle_clone(
         self_: *const HandleStepGeomCircle,
     ) -> crate::OcctResult<*mut HandleStepGeomCircle>;
+    /// Check if Handle<StepGeom_Circle> is null
+    pub fn HandleStepGeomCircle_is_null(self_: *const HandleStepGeomCircle) -> bool;
     /// Dereference Handle to get *const StepGeom_Circle
     pub fn HandleStepGeomCircle_get(
         handle: *const HandleStepGeomCircle,
@@ -73697,6 +75284,9 @@ extern "C" {
     pub fn HandleStepGeomCompositeCurve_clone(
         self_: *const HandleStepGeomCompositeCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomCompositeCurve>;
+    /// Check if Handle<StepGeom_CompositeCurve> is null
+    pub fn HandleStepGeomCompositeCurve_is_null(self_: *const HandleStepGeomCompositeCurve)
+        -> bool;
     /// Dereference Handle to get *const StepGeom_CompositeCurve
     pub fn HandleStepGeomCompositeCurve_get(
         handle: *const HandleStepGeomCompositeCurve,
@@ -73853,6 +75443,10 @@ extern "C" {
     pub fn HandleStepGeomCompositeCurveOnSurface_clone(
         self_: *const HandleStepGeomCompositeCurveOnSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomCompositeCurveOnSurface>;
+    /// Check if Handle<StepGeom_CompositeCurveOnSurface> is null
+    pub fn HandleStepGeomCompositeCurveOnSurface_is_null(
+        self_: *const HandleStepGeomCompositeCurveOnSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_CompositeCurveOnSurface
     pub fn HandleStepGeomCompositeCurveOnSurface_get(
         handle: *const HandleStepGeomCompositeCurveOnSurface,
@@ -74035,6 +75629,10 @@ extern "C" {
     pub fn HandleStepGeomCompositeCurveSegment_clone(
         self_: *const HandleStepGeomCompositeCurveSegment,
     ) -> crate::OcctResult<*mut HandleStepGeomCompositeCurveSegment>;
+    /// Check if Handle<StepGeom_CompositeCurveSegment> is null
+    pub fn HandleStepGeomCompositeCurveSegment_is_null(
+        self_: *const HandleStepGeomCompositeCurveSegment,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_CompositeCurveSegment
     pub fn HandleStepGeomCompositeCurveSegment_get(
         handle: *const HandleStepGeomCompositeCurveSegment,
@@ -74150,6 +75748,8 @@ extern "C" {
     pub fn HandleStepGeomConic_clone(
         self_: *const HandleStepGeomConic,
     ) -> crate::OcctResult<*mut HandleStepGeomConic>;
+    /// Check if Handle<StepGeom_Conic> is null
+    pub fn HandleStepGeomConic_is_null(self_: *const HandleStepGeomConic) -> bool;
     /// Dereference Handle to get *const StepGeom_Conic
     pub fn HandleStepGeomConic_get(
         handle: *const HandleStepGeomConic,
@@ -74317,6 +75917,9 @@ extern "C" {
     pub fn HandleStepGeomConicalSurface_clone(
         self_: *const HandleStepGeomConicalSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomConicalSurface>;
+    /// Check if Handle<StepGeom_ConicalSurface> is null
+    pub fn HandleStepGeomConicalSurface_is_null(self_: *const HandleStepGeomConicalSurface)
+        -> bool;
     /// Dereference Handle to get *const StepGeom_ConicalSurface
     pub fn HandleStepGeomConicalSurface_get(
         handle: *const HandleStepGeomConicalSurface,
@@ -74439,6 +76042,8 @@ extern "C" {
     pub fn HandleStepGeomCurve_clone(
         self_: *const HandleStepGeomCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomCurve>;
+    /// Check if Handle<StepGeom_Curve> is null
+    pub fn HandleStepGeomCurve_is_null(self_: *const HandleStepGeomCurve) -> bool;
     /// Dereference Handle to get *const StepGeom_Curve
     pub fn HandleStepGeomCurve_get(
         handle: *const HandleStepGeomCurve,
@@ -74723,6 +76328,10 @@ extern "C" {
     pub fn HandleStepGeomCurveBoundedSurface_clone(
         self_: *const HandleStepGeomCurveBoundedSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomCurveBoundedSurface>;
+    /// Check if Handle<StepGeom_CurveBoundedSurface> is null
+    pub fn HandleStepGeomCurveBoundedSurface_is_null(
+        self_: *const HandleStepGeomCurveBoundedSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_CurveBoundedSurface
     pub fn HandleStepGeomCurveBoundedSurface_get(
         handle: *const HandleStepGeomCurveBoundedSurface,
@@ -74975,6 +76584,8 @@ extern "C" {
     pub fn HandleStepGeomCurveReplica_clone(
         self_: *const HandleStepGeomCurveReplica,
     ) -> crate::OcctResult<*mut HandleStepGeomCurveReplica>;
+    /// Check if Handle<StepGeom_CurveReplica> is null
+    pub fn HandleStepGeomCurveReplica_is_null(self_: *const HandleStepGeomCurveReplica) -> bool;
     /// Dereference Handle to get *const StepGeom_CurveReplica
     pub fn HandleStepGeomCurveReplica_get(
         handle: *const HandleStepGeomCurveReplica,
@@ -75119,6 +76730,10 @@ extern "C" {
     pub fn HandleStepGeomCylindricalSurface_clone(
         self_: *const HandleStepGeomCylindricalSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomCylindricalSurface>;
+    /// Check if Handle<StepGeom_CylindricalSurface> is null
+    pub fn HandleStepGeomCylindricalSurface_is_null(
+        self_: *const HandleStepGeomCylindricalSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_CylindricalSurface
     pub fn HandleStepGeomCylindricalSurface_get(
         handle: *const HandleStepGeomCylindricalSurface,
@@ -75275,6 +76890,10 @@ extern "C" {
     pub fn HandleStepGeomDegeneratePcurve_clone(
         self_: *const HandleStepGeomDegeneratePcurve,
     ) -> crate::OcctResult<*mut HandleStepGeomDegeneratePcurve>;
+    /// Check if Handle<StepGeom_DegeneratePcurve> is null
+    pub fn HandleStepGeomDegeneratePcurve_is_null(
+        self_: *const HandleStepGeomDegeneratePcurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_DegeneratePcurve
     pub fn HandleStepGeomDegeneratePcurve_get(
         handle: *const HandleStepGeomDegeneratePcurve,
@@ -75437,6 +77056,10 @@ extern "C" {
     pub fn HandleStepGeomDegenerateToroidalSurface_clone(
         self_: *const HandleStepGeomDegenerateToroidalSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomDegenerateToroidalSurface>;
+    /// Check if Handle<StepGeom_DegenerateToroidalSurface> is null
+    pub fn HandleStepGeomDegenerateToroidalSurface_is_null(
+        self_: *const HandleStepGeomDegenerateToroidalSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_DegenerateToroidalSurface
     pub fn HandleStepGeomDegenerateToroidalSurface_get(
         handle: *const HandleStepGeomDegenerateToroidalSurface,
@@ -75605,6 +77228,8 @@ extern "C" {
     pub fn HandleStepGeomDirection_clone(
         self_: *const HandleStepGeomDirection,
     ) -> crate::OcctResult<*mut HandleStepGeomDirection>;
+    /// Check if Handle<StepGeom_Direction> is null
+    pub fn HandleStepGeomDirection_is_null(self_: *const HandleStepGeomDirection) -> bool;
     /// Dereference Handle to get *const StepGeom_Direction
     pub fn HandleStepGeomDirection_get(
         handle: *const HandleStepGeomDirection,
@@ -75734,6 +77359,10 @@ extern "C" {
     pub fn HandleStepGeomElementarySurface_clone(
         self_: *const HandleStepGeomElementarySurface,
     ) -> crate::OcctResult<*mut HandleStepGeomElementarySurface>;
+    /// Check if Handle<StepGeom_ElementarySurface> is null
+    pub fn HandleStepGeomElementarySurface_is_null(
+        self_: *const HandleStepGeomElementarySurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_ElementarySurface
     pub fn HandleStepGeomElementarySurface_get(
         handle: *const HandleStepGeomElementarySurface,
@@ -75905,6 +77534,8 @@ extern "C" {
     pub fn HandleStepGeomEllipse_clone(
         self_: *const HandleStepGeomEllipse,
     ) -> crate::OcctResult<*mut HandleStepGeomEllipse>;
+    /// Check if Handle<StepGeom_Ellipse> is null
+    pub fn HandleStepGeomEllipse_is_null(self_: *const HandleStepGeomEllipse) -> bool;
     /// Dereference Handle to get *const StepGeom_Ellipse
     pub fn HandleStepGeomEllipse_get(
         handle: *const HandleStepGeomEllipse,
@@ -76067,6 +77698,10 @@ extern "C" {
     pub fn HandleStepGeomEvaluatedDegeneratePcurve_clone(
         self_: *const HandleStepGeomEvaluatedDegeneratePcurve,
     ) -> crate::OcctResult<*mut HandleStepGeomEvaluatedDegeneratePcurve>;
+    /// Check if Handle<StepGeom_EvaluatedDegeneratePcurve> is null
+    pub fn HandleStepGeomEvaluatedDegeneratePcurve_is_null(
+        self_: *const HandleStepGeomEvaluatedDegeneratePcurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_EvaluatedDegeneratePcurve
     pub fn HandleStepGeomEvaluatedDegeneratePcurve_get(
         handle: *const HandleStepGeomEvaluatedDegeneratePcurve,
@@ -76287,6 +77922,10 @@ extern "C" {
     pub fn HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_clone(
         self_: *const HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
     ) -> crate::OcctResult<*mut HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx>;
+    /// Check if Handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx> is null
+    pub fn HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_is_null(
+        self_: *const HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx
     pub fn HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_get(
         handle: *const HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
@@ -76412,6 +78051,10 @@ extern "C" {
     pub fn HandleStepGeomGeometricRepresentationContext_clone(
         self_: *const HandleStepGeomGeometricRepresentationContext,
     ) -> crate::OcctResult<*mut HandleStepGeomGeometricRepresentationContext>;
+    /// Check if Handle<StepGeom_GeometricRepresentationContext> is null
+    pub fn HandleStepGeomGeometricRepresentationContext_is_null(
+        self_: *const HandleStepGeomGeometricRepresentationContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_GeometricRepresentationContext
     pub fn HandleStepGeomGeometricRepresentationContext_get(
         handle: *const HandleStepGeomGeometricRepresentationContext,
@@ -76586,6 +78229,10 @@ extern "C" {
     ) -> crate::OcctResult<
         *mut HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext,
     >;
+    /// Check if Handle<StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext> is null
+    pub fn HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext_is_null(
+        self_: *const HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext
     pub fn HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext_get(
         handle: *const HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext,
@@ -76743,6 +78390,10 @@ extern "C" {
     ) -> crate::OcctResult<
         *mut HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext,
     >;
+    /// Check if Handle<StepGeom_GeometricRepresentationContextAndParametricRepresentationContext> is null
+    pub fn HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext_is_null(
+        self_: *const HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_GeometricRepresentationContextAndParametricRepresentationContext
     pub fn HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext_get(
         handle: *const HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext,
@@ -76856,6 +78507,10 @@ extern "C" {
     pub fn HandleStepGeomGeometricRepresentationItem_clone(
         self_: *const HandleStepGeomGeometricRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepGeomGeometricRepresentationItem>;
+    /// Check if Handle<StepGeom_GeometricRepresentationItem> is null
+    pub fn HandleStepGeomGeometricRepresentationItem_is_null(
+        self_: *const HandleStepGeomGeometricRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_GeometricRepresentationItem
     pub fn HandleStepGeomGeometricRepresentationItem_get(
         handle: *const HandleStepGeomGeometricRepresentationItem,
@@ -77801,6 +79456,10 @@ extern "C" {
     pub fn HandleStepGeomHArray1OfBoundaryCurve_clone(
         self_: *const HandleStepGeomHArray1OfBoundaryCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomHArray1OfBoundaryCurve>;
+    /// Check if Handle<StepGeom_HArray1OfBoundaryCurve> is null
+    pub fn HandleStepGeomHArray1OfBoundaryCurve_is_null(
+        self_: *const HandleStepGeomHArray1OfBoundaryCurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_HArray1OfBoundaryCurve
     pub fn HandleStepGeomHArray1OfBoundaryCurve_get(
         handle: *const HandleStepGeomHArray1OfBoundaryCurve,
@@ -77910,6 +79569,10 @@ extern "C" {
     pub fn HandleStepGeomHArray1OfCartesianPoint_clone(
         self_: *const HandleStepGeomHArray1OfCartesianPoint,
     ) -> crate::OcctResult<*mut HandleStepGeomHArray1OfCartesianPoint>;
+    /// Check if Handle<StepGeom_HArray1OfCartesianPoint> is null
+    pub fn HandleStepGeomHArray1OfCartesianPoint_is_null(
+        self_: *const HandleStepGeomHArray1OfCartesianPoint,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_HArray1OfCartesianPoint
     pub fn HandleStepGeomHArray1OfCartesianPoint_get(
         handle: *const HandleStepGeomHArray1OfCartesianPoint,
@@ -78019,6 +79682,10 @@ extern "C" {
     pub fn HandleStepGeomHArray1OfCompositeCurveSegment_clone(
         self_: *const HandleStepGeomHArray1OfCompositeCurveSegment,
     ) -> crate::OcctResult<*mut HandleStepGeomHArray1OfCompositeCurveSegment>;
+    /// Check if Handle<StepGeom_HArray1OfCompositeCurveSegment> is null
+    pub fn HandleStepGeomHArray1OfCompositeCurveSegment_is_null(
+        self_: *const HandleStepGeomHArray1OfCompositeCurveSegment,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_HArray1OfCompositeCurveSegment
     pub fn HandleStepGeomHArray1OfCompositeCurveSegment_get(
         handle: *const HandleStepGeomHArray1OfCompositeCurveSegment,
@@ -78122,6 +79789,9 @@ extern "C" {
     pub fn HandleStepGeomHArray1OfCurve_clone(
         self_: *const HandleStepGeomHArray1OfCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomHArray1OfCurve>;
+    /// Check if Handle<StepGeom_HArray1OfCurve> is null
+    pub fn HandleStepGeomHArray1OfCurve_is_null(self_: *const HandleStepGeomHArray1OfCurve)
+        -> bool;
     /// Dereference Handle to get *const StepGeom_HArray1OfCurve
     pub fn HandleStepGeomHArray1OfCurve_get(
         handle: *const HandleStepGeomHArray1OfCurve,
@@ -78231,6 +79901,10 @@ extern "C" {
     pub fn HandleStepGeomHArray1OfPcurveOrSurface_clone(
         self_: *const HandleStepGeomHArray1OfPcurveOrSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomHArray1OfPcurveOrSurface>;
+    /// Check if Handle<StepGeom_HArray1OfPcurveOrSurface> is null
+    pub fn HandleStepGeomHArray1OfPcurveOrSurface_is_null(
+        self_: *const HandleStepGeomHArray1OfPcurveOrSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_HArray1OfPcurveOrSurface
     pub fn HandleStepGeomHArray1OfPcurveOrSurface_get(
         handle: *const HandleStepGeomHArray1OfPcurveOrSurface,
@@ -78340,6 +80014,10 @@ extern "C" {
     pub fn HandleStepGeomHArray1OfSurfaceBoundary_clone(
         self_: *const HandleStepGeomHArray1OfSurfaceBoundary,
     ) -> crate::OcctResult<*mut HandleStepGeomHArray1OfSurfaceBoundary>;
+    /// Check if Handle<StepGeom_HArray1OfSurfaceBoundary> is null
+    pub fn HandleStepGeomHArray1OfSurfaceBoundary_is_null(
+        self_: *const HandleStepGeomHArray1OfSurfaceBoundary,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_HArray1OfSurfaceBoundary
     pub fn HandleStepGeomHArray1OfSurfaceBoundary_get(
         handle: *const HandleStepGeomHArray1OfSurfaceBoundary,
@@ -78449,6 +80127,10 @@ extern "C" {
     pub fn HandleStepGeomHArray1OfTrimmingSelect_clone(
         self_: *const HandleStepGeomHArray1OfTrimmingSelect,
     ) -> crate::OcctResult<*mut HandleStepGeomHArray1OfTrimmingSelect>;
+    /// Check if Handle<StepGeom_HArray1OfTrimmingSelect> is null
+    pub fn HandleStepGeomHArray1OfTrimmingSelect_is_null(
+        self_: *const HandleStepGeomHArray1OfTrimmingSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_HArray1OfTrimmingSelect
     pub fn HandleStepGeomHArray1OfTrimmingSelect_get(
         handle: *const HandleStepGeomHArray1OfTrimmingSelect,
@@ -78552,6 +80234,10 @@ extern "C" {
     pub fn HandleStepGeomHArray2OfCartesianPoint_clone(
         self_: *const HandleStepGeomHArray2OfCartesianPoint,
     ) -> crate::OcctResult<*mut HandleStepGeomHArray2OfCartesianPoint>;
+    /// Check if Handle<StepGeom_HArray2OfCartesianPoint> is null
+    pub fn HandleStepGeomHArray2OfCartesianPoint_is_null(
+        self_: *const HandleStepGeomHArray2OfCartesianPoint,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_HArray2OfCartesianPoint
     pub fn HandleStepGeomHArray2OfCartesianPoint_get(
         handle: *const HandleStepGeomHArray2OfCartesianPoint,
@@ -78653,6 +80339,10 @@ extern "C" {
     pub fn HandleStepGeomHArray2OfSurfacePatch_clone(
         self_: *const HandleStepGeomHArray2OfSurfacePatch,
     ) -> crate::OcctResult<*mut HandleStepGeomHArray2OfSurfacePatch>;
+    /// Check if Handle<StepGeom_HArray2OfSurfacePatch> is null
+    pub fn HandleStepGeomHArray2OfSurfacePatch_is_null(
+        self_: *const HandleStepGeomHArray2OfSurfacePatch,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_HArray2OfSurfacePatch
     pub fn HandleStepGeomHArray2OfSurfacePatch_get(
         handle: *const HandleStepGeomHArray2OfSurfacePatch,
@@ -78782,6 +80472,8 @@ extern "C" {
     pub fn HandleStepGeomHyperbola_clone(
         self_: *const HandleStepGeomHyperbola,
     ) -> crate::OcctResult<*mut HandleStepGeomHyperbola>;
+    /// Check if Handle<StepGeom_Hyperbola> is null
+    pub fn HandleStepGeomHyperbola_is_null(self_: *const HandleStepGeomHyperbola) -> bool;
     /// Dereference Handle to get *const StepGeom_Hyperbola
     pub fn HandleStepGeomHyperbola_get(
         handle: *const HandleStepGeomHyperbola,
@@ -78921,6 +80613,10 @@ extern "C" {
     pub fn HandleStepGeomIntersectionCurve_clone(
         self_: *const HandleStepGeomIntersectionCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomIntersectionCurve>;
+    /// Check if Handle<StepGeom_IntersectionCurve> is null
+    pub fn HandleStepGeomIntersectionCurve_is_null(
+        self_: *const HandleStepGeomIntersectionCurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_IntersectionCurve
     pub fn HandleStepGeomIntersectionCurve_get(
         handle: *const HandleStepGeomIntersectionCurve,
@@ -79111,6 +80807,8 @@ extern "C" {
     pub fn HandleStepGeomLine_clone(
         self_: *const HandleStepGeomLine,
     ) -> crate::OcctResult<*mut HandleStepGeomLine>;
+    /// Check if Handle<StepGeom_Line> is null
+    pub fn HandleStepGeomLine_is_null(self_: *const HandleStepGeomLine) -> bool;
     /// Dereference Handle to get *const StepGeom_Line
     pub fn HandleStepGeomLine_get(
         handle: *const HandleStepGeomLine,
@@ -79272,6 +80970,8 @@ extern "C" {
     pub fn HandleStepGeomOffsetCurve3d_clone(
         self_: *const HandleStepGeomOffsetCurve3d,
     ) -> crate::OcctResult<*mut HandleStepGeomOffsetCurve3d>;
+    /// Check if Handle<StepGeom_OffsetCurve3d> is null
+    pub fn HandleStepGeomOffsetCurve3d_is_null(self_: *const HandleStepGeomOffsetCurve3d) -> bool;
     /// Dereference Handle to get *const StepGeom_OffsetCurve3d
     pub fn HandleStepGeomOffsetCurve3d_get(
         handle: *const HandleStepGeomOffsetCurve3d,
@@ -79425,6 +81125,8 @@ extern "C" {
     pub fn HandleStepGeomOffsetSurface_clone(
         self_: *const HandleStepGeomOffsetSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomOffsetSurface>;
+    /// Check if Handle<StepGeom_OffsetSurface> is null
+    pub fn HandleStepGeomOffsetSurface_is_null(self_: *const HandleStepGeomOffsetSurface) -> bool;
     /// Dereference Handle to get *const StepGeom_OffsetSurface
     pub fn HandleStepGeomOffsetSurface_get(
         handle: *const HandleStepGeomOffsetSurface,
@@ -79558,6 +81260,10 @@ extern "C" {
     pub fn HandleStepGeomOrientedSurface_clone(
         self_: *const HandleStepGeomOrientedSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomOrientedSurface>;
+    /// Check if Handle<StepGeom_OrientedSurface> is null
+    pub fn HandleStepGeomOrientedSurface_is_null(
+        self_: *const HandleStepGeomOrientedSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_OrientedSurface
     pub fn HandleStepGeomOrientedSurface_get(
         handle: *const HandleStepGeomOrientedSurface,
@@ -79710,6 +81416,10 @@ extern "C" {
     pub fn HandleStepGeomOuterBoundaryCurve_clone(
         self_: *const HandleStepGeomOuterBoundaryCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomOuterBoundaryCurve>;
+    /// Check if Handle<StepGeom_OuterBoundaryCurve> is null
+    pub fn HandleStepGeomOuterBoundaryCurve_is_null(
+        self_: *const HandleStepGeomOuterBoundaryCurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_OuterBoundaryCurve
     pub fn HandleStepGeomOuterBoundaryCurve_get(
         handle: *const HandleStepGeomOuterBoundaryCurve,
@@ -79899,6 +81609,8 @@ extern "C" {
     pub fn HandleStepGeomParabola_clone(
         self_: *const HandleStepGeomParabola,
     ) -> crate::OcctResult<*mut HandleStepGeomParabola>;
+    /// Check if Handle<StepGeom_Parabola> is null
+    pub fn HandleStepGeomParabola_is_null(self_: *const HandleStepGeomParabola) -> bool;
     /// Dereference Handle to get *const StepGeom_Parabola
     pub fn HandleStepGeomParabola_get(
         handle: *const HandleStepGeomParabola,
@@ -80054,6 +81766,8 @@ extern "C" {
     pub fn HandleStepGeomPcurve_clone(
         self_: *const HandleStepGeomPcurve,
     ) -> crate::OcctResult<*mut HandleStepGeomPcurve>;
+    /// Check if Handle<StepGeom_Pcurve> is null
+    pub fn HandleStepGeomPcurve_is_null(self_: *const HandleStepGeomPcurve) -> bool;
     /// Dereference Handle to get *const StepGeom_Pcurve
     pub fn HandleStepGeomPcurve_get(
         handle: *const HandleStepGeomPcurve,
@@ -80279,6 +81993,8 @@ extern "C" {
     pub fn HandleStepGeomPlacement_clone(
         self_: *const HandleStepGeomPlacement,
     ) -> crate::OcctResult<*mut HandleStepGeomPlacement>;
+    /// Check if Handle<StepGeom_Placement> is null
+    pub fn HandleStepGeomPlacement_is_null(self_: *const HandleStepGeomPlacement) -> bool;
     /// Dereference Handle to get *const StepGeom_Placement
     pub fn HandleStepGeomPlacement_get(
         handle: *const HandleStepGeomPlacement,
@@ -80416,6 +82132,8 @@ extern "C" {
     pub fn HandleStepGeomPlane_clone(
         self_: *const HandleStepGeomPlane,
     ) -> crate::OcctResult<*mut HandleStepGeomPlane>;
+    /// Check if Handle<StepGeom_Plane> is null
+    pub fn HandleStepGeomPlane_is_null(self_: *const HandleStepGeomPlane) -> bool;
     /// Dereference Handle to get *const StepGeom_Plane
     pub fn HandleStepGeomPlane_get(
         handle: *const HandleStepGeomPlane,
@@ -80543,6 +82261,8 @@ extern "C" {
     pub fn HandleStepGeomPoint_clone(
         self_: *const HandleStepGeomPoint,
     ) -> crate::OcctResult<*mut HandleStepGeomPoint>;
+    /// Check if Handle<StepGeom_Point> is null
+    pub fn HandleStepGeomPoint_is_null(self_: *const HandleStepGeomPoint) -> bool;
     /// Dereference Handle to get *const StepGeom_Point
     pub fn HandleStepGeomPoint_get(
         handle: *const HandleStepGeomPoint,
@@ -80714,6 +82434,8 @@ extern "C" {
     pub fn HandleStepGeomPointOnCurve_clone(
         self_: *const HandleStepGeomPointOnCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomPointOnCurve>;
+    /// Check if Handle<StepGeom_PointOnCurve> is null
+    pub fn HandleStepGeomPointOnCurve_is_null(self_: *const HandleStepGeomPointOnCurve) -> bool;
     /// Dereference Handle to get *const StepGeom_PointOnCurve
     pub fn HandleStepGeomPointOnCurve_get(
         handle: *const HandleStepGeomPointOnCurve,
@@ -80867,6 +82589,9 @@ extern "C" {
     pub fn HandleStepGeomPointOnSurface_clone(
         self_: *const HandleStepGeomPointOnSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomPointOnSurface>;
+    /// Check if Handle<StepGeom_PointOnSurface> is null
+    pub fn HandleStepGeomPointOnSurface_is_null(self_: *const HandleStepGeomPointOnSurface)
+        -> bool;
     /// Dereference Handle to get *const StepGeom_PointOnSurface
     pub fn HandleStepGeomPointOnSurface_get(
         handle: *const HandleStepGeomPointOnSurface,
@@ -81010,6 +82735,8 @@ extern "C" {
     pub fn HandleStepGeomPointReplica_clone(
         self_: *const HandleStepGeomPointReplica,
     ) -> crate::OcctResult<*mut HandleStepGeomPointReplica>;
+    /// Check if Handle<StepGeom_PointReplica> is null
+    pub fn HandleStepGeomPointReplica_is_null(self_: *const HandleStepGeomPointReplica) -> bool;
     /// Dereference Handle to get *const StepGeom_PointReplica
     pub fn HandleStepGeomPointReplica_get(
         handle: *const HandleStepGeomPointReplica,
@@ -81157,6 +82884,8 @@ extern "C" {
     pub fn HandleStepGeomPolyline_clone(
         self_: *const HandleStepGeomPolyline,
     ) -> crate::OcctResult<*mut HandleStepGeomPolyline>;
+    /// Check if Handle<StepGeom_Polyline> is null
+    pub fn HandleStepGeomPolyline_is_null(self_: *const HandleStepGeomPolyline) -> bool;
     /// Dereference Handle to get *const StepGeom_Polyline
     pub fn HandleStepGeomPolyline_get(
         handle: *const HandleStepGeomPolyline,
@@ -81295,6 +83024,10 @@ extern "C" {
     pub fn HandleStepGeomQuasiUniformCurve_clone(
         self_: *const HandleStepGeomQuasiUniformCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomQuasiUniformCurve>;
+    /// Check if Handle<StepGeom_QuasiUniformCurve> is null
+    pub fn HandleStepGeomQuasiUniformCurve_is_null(
+        self_: *const HandleStepGeomQuasiUniformCurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_QuasiUniformCurve
     pub fn HandleStepGeomQuasiUniformCurve_get(
         handle: *const HandleStepGeomQuasiUniformCurve,
@@ -81566,6 +83299,10 @@ extern "C" {
     pub fn HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve_clone(
         self_: *const HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve>;
+    /// Check if Handle<StepGeom_QuasiUniformCurveAndRationalBSplineCurve> is null
+    pub fn HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve_is_null(
+        self_: *const HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_QuasiUniformCurveAndRationalBSplineCurve
     pub fn HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve_get(
         handle: *const HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve,
@@ -81765,6 +83502,10 @@ extern "C" {
     pub fn HandleStepGeomQuasiUniformSurface_clone(
         self_: *const HandleStepGeomQuasiUniformSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomQuasiUniformSurface>;
+    /// Check if Handle<StepGeom_QuasiUniformSurface> is null
+    pub fn HandleStepGeomQuasiUniformSurface_is_null(
+        self_: *const HandleStepGeomQuasiUniformSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_QuasiUniformSurface
     pub fn HandleStepGeomQuasiUniformSurface_get(
         handle: *const HandleStepGeomQuasiUniformSurface,
@@ -82070,6 +83811,10 @@ extern "C" {
     pub fn HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface_clone(
         self_: *const HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface>;
+    /// Check if Handle<StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface> is null
+    pub fn HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface_is_null(
+        self_: *const HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface
     pub fn HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface_get(
         handle: *const HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface,
@@ -82322,6 +84067,10 @@ extern "C" {
     pub fn HandleStepGeomRationalBSplineCurve_clone(
         self_: *const HandleStepGeomRationalBSplineCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomRationalBSplineCurve>;
+    /// Check if Handle<StepGeom_RationalBSplineCurve> is null
+    pub fn HandleStepGeomRationalBSplineCurve_is_null(
+        self_: *const HandleStepGeomRationalBSplineCurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_RationalBSplineCurve
     pub fn HandleStepGeomRationalBSplineCurve_get(
         handle: *const HandleStepGeomRationalBSplineCurve,
@@ -82558,6 +84307,10 @@ extern "C" {
     pub fn HandleStepGeomRationalBSplineSurface_clone(
         self_: *const HandleStepGeomRationalBSplineSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomRationalBSplineSurface>;
+    /// Check if Handle<StepGeom_RationalBSplineSurface> is null
+    pub fn HandleStepGeomRationalBSplineSurface_is_null(
+        self_: *const HandleStepGeomRationalBSplineSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_RationalBSplineSurface
     pub fn HandleStepGeomRationalBSplineSurface_get(
         handle: *const HandleStepGeomRationalBSplineSurface,
@@ -82804,6 +84557,10 @@ extern "C" {
     pub fn HandleStepGeomRectangularCompositeSurface_clone(
         self_: *const HandleStepGeomRectangularCompositeSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomRectangularCompositeSurface>;
+    /// Check if Handle<StepGeom_RectangularCompositeSurface> is null
+    pub fn HandleStepGeomRectangularCompositeSurface_is_null(
+        self_: *const HandleStepGeomRectangularCompositeSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_RectangularCompositeSurface
     pub fn HandleStepGeomRectangularCompositeSurface_get(
         handle: *const HandleStepGeomRectangularCompositeSurface,
@@ -83015,6 +84772,10 @@ extern "C" {
     pub fn HandleStepGeomRectangularTrimmedSurface_clone(
         self_: *const HandleStepGeomRectangularTrimmedSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomRectangularTrimmedSurface>;
+    /// Check if Handle<StepGeom_RectangularTrimmedSurface> is null
+    pub fn HandleStepGeomRectangularTrimmedSurface_is_null(
+        self_: *const HandleStepGeomRectangularTrimmedSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_RectangularTrimmedSurface
     pub fn HandleStepGeomRectangularTrimmedSurface_get(
         handle: *const HandleStepGeomRectangularTrimmedSurface,
@@ -83144,6 +84905,10 @@ extern "C" {
     pub fn HandleStepGeomReparametrisedCompositeCurveSegment_clone(
         self_: *const HandleStepGeomReparametrisedCompositeCurveSegment,
     ) -> crate::OcctResult<*mut HandleStepGeomReparametrisedCompositeCurveSegment>;
+    /// Check if Handle<StepGeom_ReparametrisedCompositeCurveSegment> is null
+    pub fn HandleStepGeomReparametrisedCompositeCurveSegment_is_null(
+        self_: *const HandleStepGeomReparametrisedCompositeCurveSegment,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_ReparametrisedCompositeCurveSegment
     pub fn HandleStepGeomReparametrisedCompositeCurveSegment_get(
         handle: *const HandleStepGeomReparametrisedCompositeCurveSegment,
@@ -83279,6 +85044,8 @@ extern "C" {
     pub fn HandleStepGeomSeamCurve_clone(
         self_: *const HandleStepGeomSeamCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomSeamCurve>;
+    /// Check if Handle<StepGeom_SeamCurve> is null
+    pub fn HandleStepGeomSeamCurve_is_null(self_: *const HandleStepGeomSeamCurve) -> bool;
     /// Dereference Handle to get *const StepGeom_SeamCurve
     pub fn HandleStepGeomSeamCurve_get(
         handle: *const HandleStepGeomSeamCurve,
@@ -83469,6 +85236,10 @@ extern "C" {
     pub fn HandleStepGeomSphericalSurface_clone(
         self_: *const HandleStepGeomSphericalSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomSphericalSurface>;
+    /// Check if Handle<StepGeom_SphericalSurface> is null
+    pub fn HandleStepGeomSphericalSurface_is_null(
+        self_: *const HandleStepGeomSphericalSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_SphericalSurface
     pub fn HandleStepGeomSphericalSurface_get(
         handle: *const HandleStepGeomSphericalSurface,
@@ -83651,6 +85422,8 @@ extern "C" {
     pub fn HandleStepGeomSuParameters_clone(
         self_: *const HandleStepGeomSuParameters,
     ) -> crate::OcctResult<*mut HandleStepGeomSuParameters>;
+    /// Check if Handle<StepGeom_SuParameters> is null
+    pub fn HandleStepGeomSuParameters_is_null(self_: *const HandleStepGeomSuParameters) -> bool;
     /// Dereference Handle to get *const StepGeom_SuParameters
     pub fn HandleStepGeomSuParameters_get(
         handle: *const HandleStepGeomSuParameters,
@@ -83756,6 +85529,8 @@ extern "C" {
     pub fn HandleStepGeomSurface_clone(
         self_: *const HandleStepGeomSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomSurface>;
+    /// Check if Handle<StepGeom_Surface> is null
+    pub fn HandleStepGeomSurface_is_null(self_: *const HandleStepGeomSurface) -> bool;
     /// Dereference Handle to get *const StepGeom_Surface
     pub fn HandleStepGeomSurface_get(
         handle: *const HandleStepGeomSurface,
@@ -84128,6 +85903,8 @@ extern "C" {
     pub fn HandleStepGeomSurfaceCurve_clone(
         self_: *const HandleStepGeomSurfaceCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomSurfaceCurve>;
+    /// Check if Handle<StepGeom_SurfaceCurve> is null
+    pub fn HandleStepGeomSurfaceCurve_is_null(self_: *const HandleStepGeomSurfaceCurve) -> bool;
     /// Dereference Handle to get *const StepGeom_SurfaceCurve
     pub fn HandleStepGeomSurfaceCurve_get(
         handle: *const HandleStepGeomSurfaceCurve,
@@ -84276,6 +86053,10 @@ extern "C" {
     pub fn HandleStepGeomSurfaceCurveAndBoundedCurve_clone(
         self_: *const HandleStepGeomSurfaceCurveAndBoundedCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomSurfaceCurveAndBoundedCurve>;
+    /// Check if Handle<StepGeom_SurfaceCurveAndBoundedCurve> is null
+    pub fn HandleStepGeomSurfaceCurveAndBoundedCurve_is_null(
+        self_: *const HandleStepGeomSurfaceCurveAndBoundedCurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_SurfaceCurveAndBoundedCurve
     pub fn HandleStepGeomSurfaceCurveAndBoundedCurve_get(
         handle: *const HandleStepGeomSurfaceCurveAndBoundedCurve,
@@ -84472,6 +86253,10 @@ extern "C" {
     pub fn HandleStepGeomSurfaceOfLinearExtrusion_clone(
         self_: *const HandleStepGeomSurfaceOfLinearExtrusion,
     ) -> crate::OcctResult<*mut HandleStepGeomSurfaceOfLinearExtrusion>;
+    /// Check if Handle<StepGeom_SurfaceOfLinearExtrusion> is null
+    pub fn HandleStepGeomSurfaceOfLinearExtrusion_is_null(
+        self_: *const HandleStepGeomSurfaceOfLinearExtrusion,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_SurfaceOfLinearExtrusion
     pub fn HandleStepGeomSurfaceOfLinearExtrusion_get(
         handle: *const HandleStepGeomSurfaceOfLinearExtrusion,
@@ -84630,6 +86415,10 @@ extern "C" {
     pub fn HandleStepGeomSurfaceOfRevolution_clone(
         self_: *const HandleStepGeomSurfaceOfRevolution,
     ) -> crate::OcctResult<*mut HandleStepGeomSurfaceOfRevolution>;
+    /// Check if Handle<StepGeom_SurfaceOfRevolution> is null
+    pub fn HandleStepGeomSurfaceOfRevolution_is_null(
+        self_: *const HandleStepGeomSurfaceOfRevolution,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_SurfaceOfRevolution
     pub fn HandleStepGeomSurfaceOfRevolution_get(
         handle: *const HandleStepGeomSurfaceOfRevolution,
@@ -84791,6 +86580,8 @@ extern "C" {
     pub fn HandleStepGeomSurfacePatch_clone(
         self_: *const HandleStepGeomSurfacePatch,
     ) -> crate::OcctResult<*mut HandleStepGeomSurfacePatch>;
+    /// Check if Handle<StepGeom_SurfacePatch> is null
+    pub fn HandleStepGeomSurfacePatch_is_null(self_: *const HandleStepGeomSurfacePatch) -> bool;
     /// Dereference Handle to get *const StepGeom_SurfacePatch
     pub fn HandleStepGeomSurfacePatch_get(
         handle: *const HandleStepGeomSurfacePatch,
@@ -84913,6 +86704,9 @@ extern "C" {
     pub fn HandleStepGeomSurfaceReplica_clone(
         self_: *const HandleStepGeomSurfaceReplica,
     ) -> crate::OcctResult<*mut HandleStepGeomSurfaceReplica>;
+    /// Check if Handle<StepGeom_SurfaceReplica> is null
+    pub fn HandleStepGeomSurfaceReplica_is_null(self_: *const HandleStepGeomSurfaceReplica)
+        -> bool;
     /// Dereference Handle to get *const StepGeom_SurfaceReplica
     pub fn HandleStepGeomSurfaceReplica_get(
         handle: *const HandleStepGeomSurfaceReplica,
@@ -85046,6 +86840,8 @@ extern "C" {
     pub fn HandleStepGeomSweptSurface_clone(
         self_: *const HandleStepGeomSweptSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomSweptSurface>;
+    /// Check if Handle<StepGeom_SweptSurface> is null
+    pub fn HandleStepGeomSweptSurface_is_null(self_: *const HandleStepGeomSweptSurface) -> bool;
     /// Dereference Handle to get *const StepGeom_SweptSurface
     pub fn HandleStepGeomSweptSurface_get(
         handle: *const HandleStepGeomSweptSurface,
@@ -85206,6 +87002,10 @@ extern "C" {
     pub fn HandleStepGeomToroidalSurface_clone(
         self_: *const HandleStepGeomToroidalSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomToroidalSurface>;
+    /// Check if Handle<StepGeom_ToroidalSurface> is null
+    pub fn HandleStepGeomToroidalSurface_is_null(
+        self_: *const HandleStepGeomToroidalSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_ToroidalSurface
     pub fn HandleStepGeomToroidalSurface_get(
         handle: *const HandleStepGeomToroidalSurface,
@@ -85422,6 +87222,8 @@ extern "C" {
     pub fn HandleStepGeomTrimmedCurve_clone(
         self_: *const HandleStepGeomTrimmedCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomTrimmedCurve>;
+    /// Check if Handle<StepGeom_TrimmedCurve> is null
+    pub fn HandleStepGeomTrimmedCurve_is_null(self_: *const HandleStepGeomTrimmedCurve) -> bool;
     /// Dereference Handle to get *const StepGeom_TrimmedCurve
     pub fn HandleStepGeomTrimmedCurve_get(
         handle: *const HandleStepGeomTrimmedCurve,
@@ -85549,6 +87351,9 @@ extern "C" {
     pub fn HandleStepGeomTrimmingMember_clone(
         self_: *const HandleStepGeomTrimmingMember,
     ) -> crate::OcctResult<*mut HandleStepGeomTrimmingMember>;
+    /// Check if Handle<StepGeom_TrimmingMember> is null
+    pub fn HandleStepGeomTrimmingMember_is_null(self_: *const HandleStepGeomTrimmingMember)
+        -> bool;
     /// Dereference Handle to get *const StepGeom_TrimmingMember
     pub fn HandleStepGeomTrimmingMember_get(
         handle: *const HandleStepGeomTrimmingMember,
@@ -85838,6 +87643,8 @@ extern "C" {
     pub fn HandleStepGeomUniformCurve_clone(
         self_: *const HandleStepGeomUniformCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomUniformCurve>;
+    /// Check if Handle<StepGeom_UniformCurve> is null
+    pub fn HandleStepGeomUniformCurve_is_null(self_: *const HandleStepGeomUniformCurve) -> bool;
     /// Dereference Handle to get *const StepGeom_UniformCurve
     pub fn HandleStepGeomUniformCurve_get(
         handle: *const HandleStepGeomUniformCurve,
@@ -86109,6 +87916,10 @@ extern "C" {
     pub fn HandleStepGeomUniformCurveAndRationalBSplineCurve_clone(
         self_: *const HandleStepGeomUniformCurveAndRationalBSplineCurve,
     ) -> crate::OcctResult<*mut HandleStepGeomUniformCurveAndRationalBSplineCurve>;
+    /// Check if Handle<StepGeom_UniformCurveAndRationalBSplineCurve> is null
+    pub fn HandleStepGeomUniformCurveAndRationalBSplineCurve_is_null(
+        self_: *const HandleStepGeomUniformCurveAndRationalBSplineCurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_UniformCurveAndRationalBSplineCurve
     pub fn HandleStepGeomUniformCurveAndRationalBSplineCurve_get(
         handle: *const HandleStepGeomUniformCurveAndRationalBSplineCurve,
@@ -86305,6 +88116,9 @@ extern "C" {
     pub fn HandleStepGeomUniformSurface_clone(
         self_: *const HandleStepGeomUniformSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomUniformSurface>;
+    /// Check if Handle<StepGeom_UniformSurface> is null
+    pub fn HandleStepGeomUniformSurface_is_null(self_: *const HandleStepGeomUniformSurface)
+        -> bool;
     /// Dereference Handle to get *const StepGeom_UniformSurface
     pub fn HandleStepGeomUniformSurface_get(
         handle: *const HandleStepGeomUniformSurface,
@@ -86610,6 +88424,10 @@ extern "C" {
     pub fn HandleStepGeomUniformSurfaceAndRationalBSplineSurface_clone(
         self_: *const HandleStepGeomUniformSurfaceAndRationalBSplineSurface,
     ) -> crate::OcctResult<*mut HandleStepGeomUniformSurfaceAndRationalBSplineSurface>;
+    /// Check if Handle<StepGeom_UniformSurfaceAndRationalBSplineSurface> is null
+    pub fn HandleStepGeomUniformSurfaceAndRationalBSplineSurface_is_null(
+        self_: *const HandleStepGeomUniformSurfaceAndRationalBSplineSurface,
+    ) -> bool;
     /// Dereference Handle to get *const StepGeom_UniformSurfaceAndRationalBSplineSurface
     pub fn HandleStepGeomUniformSurfaceAndRationalBSplineSurface_get(
         handle: *const HandleStepGeomUniformSurfaceAndRationalBSplineSurface,
@@ -86827,6 +88645,8 @@ extern "C" {
     pub fn HandleStepGeomVector_clone(
         self_: *const HandleStepGeomVector,
     ) -> crate::OcctResult<*mut HandleStepGeomVector>;
+    /// Check if Handle<StepGeom_Vector> is null
+    pub fn HandleStepGeomVector_is_null(self_: *const HandleStepGeomVector) -> bool;
     /// Dereference Handle to get *const StepGeom_Vector
     pub fn HandleStepGeomVector_get(
         handle: *const HandleStepGeomVector,
@@ -87079,6 +88899,10 @@ extern "C" {
     pub fn HandleStepKinematicsActuatedKinPairAndOrderKinPair_clone(
         self_: *const HandleStepKinematicsActuatedKinPairAndOrderKinPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsActuatedKinPairAndOrderKinPair>;
+    /// Check if Handle<StepKinematics_ActuatedKinPairAndOrderKinPair> is null
+    pub fn HandleStepKinematicsActuatedKinPairAndOrderKinPair_is_null(
+        self_: *const HandleStepKinematicsActuatedKinPairAndOrderKinPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_ActuatedKinPairAndOrderKinPair
     pub fn HandleStepKinematicsActuatedKinPairAndOrderKinPair_get(
         handle: *const HandleStepKinematicsActuatedKinPairAndOrderKinPair,
@@ -87322,6 +89146,10 @@ extern "C" {
     pub fn HandleStepKinematicsActuatedKinematicPair_clone(
         self_: *const HandleStepKinematicsActuatedKinematicPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsActuatedKinematicPair>;
+    /// Check if Handle<StepKinematics_ActuatedKinematicPair> is null
+    pub fn HandleStepKinematicsActuatedKinematicPair_is_null(
+        self_: *const HandleStepKinematicsActuatedKinematicPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_ActuatedKinematicPair
     pub fn HandleStepKinematicsActuatedKinematicPair_get(
         handle: *const HandleStepKinematicsActuatedKinematicPair,
@@ -87464,6 +89292,10 @@ extern "C" {
     pub fn HandleStepKinematicsContextDependentKinematicLinkRepresentation_clone(
         self_: *const HandleStepKinematicsContextDependentKinematicLinkRepresentation,
     ) -> crate::OcctResult<*mut HandleStepKinematicsContextDependentKinematicLinkRepresentation>;
+    /// Check if Handle<StepKinematics_ContextDependentKinematicLinkRepresentation> is null
+    pub fn HandleStepKinematicsContextDependentKinematicLinkRepresentation_is_null(
+        self_: *const HandleStepKinematicsContextDependentKinematicLinkRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_ContextDependentKinematicLinkRepresentation
     pub fn HandleStepKinematicsContextDependentKinematicLinkRepresentation_get(
         handle: *const HandleStepKinematicsContextDependentKinematicLinkRepresentation,
@@ -87573,6 +89405,10 @@ extern "C" {
     pub fn HandleStepKinematicsCylindricalPair_clone(
         self_: *const HandleStepKinematicsCylindricalPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsCylindricalPair>;
+    /// Check if Handle<StepKinematics_CylindricalPair> is null
+    pub fn HandleStepKinematicsCylindricalPair_is_null(
+        self_: *const HandleStepKinematicsCylindricalPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_CylindricalPair
     pub fn HandleStepKinematicsCylindricalPair_get(
         handle: *const HandleStepKinematicsCylindricalPair,
@@ -87820,6 +89656,10 @@ extern "C" {
     pub fn HandleStepKinematicsCylindricalPairValue_clone(
         self_: *const HandleStepKinematicsCylindricalPairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsCylindricalPairValue>;
+    /// Check if Handle<StepKinematics_CylindricalPairValue> is null
+    pub fn HandleStepKinematicsCylindricalPairValue_is_null(
+        self_: *const HandleStepKinematicsCylindricalPairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_CylindricalPairValue
     pub fn HandleStepKinematicsCylindricalPairValue_get(
         handle: *const HandleStepKinematicsCylindricalPairValue,
@@ -88046,6 +89886,10 @@ extern "C" {
     pub fn HandleStepKinematicsCylindricalPairWithRange_clone(
         self_: *const HandleStepKinematicsCylindricalPairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsCylindricalPairWithRange>;
+    /// Check if Handle<StepKinematics_CylindricalPairWithRange> is null
+    pub fn HandleStepKinematicsCylindricalPairWithRange_is_null(
+        self_: *const HandleStepKinematicsCylindricalPairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_CylindricalPairWithRange
     pub fn HandleStepKinematicsCylindricalPairWithRange_get(
         handle: *const HandleStepKinematicsCylindricalPairWithRange,
@@ -88258,6 +90102,10 @@ extern "C" {
     pub fn HandleStepKinematicsFullyConstrainedPair_clone(
         self_: *const HandleStepKinematicsFullyConstrainedPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsFullyConstrainedPair>;
+    /// Check if Handle<StepKinematics_FullyConstrainedPair> is null
+    pub fn HandleStepKinematicsFullyConstrainedPair_is_null(
+        self_: *const HandleStepKinematicsFullyConstrainedPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_FullyConstrainedPair
     pub fn HandleStepKinematicsFullyConstrainedPair_get(
         handle: *const HandleStepKinematicsFullyConstrainedPair,
@@ -88538,6 +90386,9 @@ extern "C" {
     pub fn HandleStepKinematicsGearPair_clone(
         self_: *const HandleStepKinematicsGearPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsGearPair>;
+    /// Check if Handle<StepKinematics_GearPair> is null
+    pub fn HandleStepKinematicsGearPair_is_null(self_: *const HandleStepKinematicsGearPair)
+        -> bool;
     /// Dereference Handle to get *const StepKinematics_GearPair
     pub fn HandleStepKinematicsGearPair_get(
         handle: *const HandleStepKinematicsGearPair,
@@ -88701,6 +90552,10 @@ extern "C" {
     pub fn HandleStepKinematicsGearPairValue_clone(
         self_: *const HandleStepKinematicsGearPairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsGearPairValue>;
+    /// Check if Handle<StepKinematics_GearPairValue> is null
+    pub fn HandleStepKinematicsGearPairValue_is_null(
+        self_: *const HandleStepKinematicsGearPairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_GearPairValue
     pub fn HandleStepKinematicsGearPairValue_get(
         handle: *const HandleStepKinematicsGearPairValue,
@@ -88896,6 +90751,10 @@ extern "C" {
     pub fn HandleStepKinematicsGearPairWithRange_clone(
         self_: *const HandleStepKinematicsGearPairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsGearPairWithRange>;
+    /// Check if Handle<StepKinematics_GearPairWithRange> is null
+    pub fn HandleStepKinematicsGearPairWithRange_is_null(
+        self_: *const HandleStepKinematicsGearPairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_GearPairWithRange
     pub fn HandleStepKinematicsGearPairWithRange_get(
         handle: *const HandleStepKinematicsGearPairWithRange,
@@ -89091,6 +90950,10 @@ extern "C" {
     pub fn HandleStepKinematicsHighOrderKinematicPair_clone(
         self_: *const HandleStepKinematicsHighOrderKinematicPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsHighOrderKinematicPair>;
+    /// Check if Handle<StepKinematics_HighOrderKinematicPair> is null
+    pub fn HandleStepKinematicsHighOrderKinematicPair_is_null(
+        self_: *const HandleStepKinematicsHighOrderKinematicPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_HighOrderKinematicPair
     pub fn HandleStepKinematicsHighOrderKinematicPair_get(
         handle: *const HandleStepKinematicsHighOrderKinematicPair,
@@ -89310,6 +91173,10 @@ extern "C" {
     pub fn HandleStepKinematicsHomokineticPair_clone(
         self_: *const HandleStepKinematicsHomokineticPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsHomokineticPair>;
+    /// Check if Handle<StepKinematics_HomokineticPair> is null
+    pub fn HandleStepKinematicsHomokineticPair_is_null(
+        self_: *const HandleStepKinematicsHomokineticPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_HomokineticPair
     pub fn HandleStepKinematicsHomokineticPair_get(
         handle: *const HandleStepKinematicsHomokineticPair,
@@ -89544,6 +91411,10 @@ extern "C" {
     pub fn HandleStepKinematicsKinematicJoint_clone(
         self_: *const HandleStepKinematicsKinematicJoint,
     ) -> crate::OcctResult<*mut HandleStepKinematicsKinematicJoint>;
+    /// Check if Handle<StepKinematics_KinematicJoint> is null
+    pub fn HandleStepKinematicsKinematicJoint_is_null(
+        self_: *const HandleStepKinematicsKinematicJoint,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_KinematicJoint
     pub fn HandleStepKinematicsKinematicJoint_get(
         handle: *const HandleStepKinematicsKinematicJoint,
@@ -89690,6 +91561,10 @@ extern "C" {
     pub fn HandleStepKinematicsKinematicLink_clone(
         self_: *const HandleStepKinematicsKinematicLink,
     ) -> crate::OcctResult<*mut HandleStepKinematicsKinematicLink>;
+    /// Check if Handle<StepKinematics_KinematicLink> is null
+    pub fn HandleStepKinematicsKinematicLink_is_null(
+        self_: *const HandleStepKinematicsKinematicLink,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_KinematicLink
     pub fn HandleStepKinematicsKinematicLink_get(
         handle: *const HandleStepKinematicsKinematicLink,
@@ -89820,6 +91695,10 @@ extern "C" {
     pub fn HandleStepKinematicsKinematicLinkRepresentation_clone(
         self_: *const HandleStepKinematicsKinematicLinkRepresentation,
     ) -> crate::OcctResult<*mut HandleStepKinematicsKinematicLinkRepresentation>;
+    /// Check if Handle<StepKinematics_KinematicLinkRepresentation> is null
+    pub fn HandleStepKinematicsKinematicLinkRepresentation_is_null(
+        self_: *const HandleStepKinematicsKinematicLinkRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_KinematicLinkRepresentation
     pub fn HandleStepKinematicsKinematicLinkRepresentation_get(
         handle: *const HandleStepKinematicsKinematicLinkRepresentation,
@@ -89955,6 +91834,10 @@ extern "C" {
     pub fn HandleStepKinematicsKinematicLinkRepresentationAssociation_clone(
         self_: *const HandleStepKinematicsKinematicLinkRepresentationAssociation,
     ) -> crate::OcctResult<*mut HandleStepKinematicsKinematicLinkRepresentationAssociation>;
+    /// Check if Handle<StepKinematics_KinematicLinkRepresentationAssociation> is null
+    pub fn HandleStepKinematicsKinematicLinkRepresentationAssociation_is_null(
+        self_: *const HandleStepKinematicsKinematicLinkRepresentationAssociation,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_KinematicLinkRepresentationAssociation
     pub fn HandleStepKinematicsKinematicLinkRepresentationAssociation_get(
         handle: *const HandleStepKinematicsKinematicLinkRepresentationAssociation,
@@ -90128,6 +92011,10 @@ extern "C" {
     pub fn HandleStepKinematicsKinematicPair_clone(
         self_: *const HandleStepKinematicsKinematicPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsKinematicPair>;
+    /// Check if Handle<StepKinematics_KinematicPair> is null
+    pub fn HandleStepKinematicsKinematicPair_is_null(
+        self_: *const HandleStepKinematicsKinematicPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_KinematicPair
     pub fn HandleStepKinematicsKinematicPair_get(
         handle: *const HandleStepKinematicsKinematicPair,
@@ -90404,6 +92291,10 @@ extern "C" {
     pub fn HandleStepKinematicsKinematicPropertyDefinitionRepresentation_clone(
         self_: *const HandleStepKinematicsKinematicPropertyDefinitionRepresentation,
     ) -> crate::OcctResult<*mut HandleStepKinematicsKinematicPropertyDefinitionRepresentation>;
+    /// Check if Handle<StepKinematics_KinematicPropertyDefinitionRepresentation> is null
+    pub fn HandleStepKinematicsKinematicPropertyDefinitionRepresentation_is_null(
+        self_: *const HandleStepKinematicsKinematicPropertyDefinitionRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_KinematicPropertyDefinitionRepresentation
     pub fn HandleStepKinematicsKinematicPropertyDefinitionRepresentation_get(
         handle: *const HandleStepKinematicsKinematicPropertyDefinitionRepresentation,
@@ -90547,6 +92438,10 @@ extern "C" {
     pub fn HandleStepKinematicsKinematicPropertyMechanismRepresentation_clone(
         self_: *const HandleStepKinematicsKinematicPropertyMechanismRepresentation,
     ) -> crate::OcctResult<*mut HandleStepKinematicsKinematicPropertyMechanismRepresentation>;
+    /// Check if Handle<StepKinematics_KinematicPropertyMechanismRepresentation> is null
+    pub fn HandleStepKinematicsKinematicPropertyMechanismRepresentation_is_null(
+        self_: *const HandleStepKinematicsKinematicPropertyMechanismRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_KinematicPropertyMechanismRepresentation
     pub fn HandleStepKinematicsKinematicPropertyMechanismRepresentation_get(
         handle: *const HandleStepKinematicsKinematicPropertyMechanismRepresentation,
@@ -90677,6 +92572,10 @@ extern "C" {
     pub fn HandleStepKinematicsKinematicTopologyDirectedStructure_clone(
         self_: *const HandleStepKinematicsKinematicTopologyDirectedStructure,
     ) -> crate::OcctResult<*mut HandleStepKinematicsKinematicTopologyDirectedStructure>;
+    /// Check if Handle<StepKinematics_KinematicTopologyDirectedStructure> is null
+    pub fn HandleStepKinematicsKinematicTopologyDirectedStructure_is_null(
+        self_: *const HandleStepKinematicsKinematicTopologyDirectedStructure,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_KinematicTopologyDirectedStructure
     pub fn HandleStepKinematicsKinematicTopologyDirectedStructure_get(
         handle: *const HandleStepKinematicsKinematicTopologyDirectedStructure,
@@ -90821,6 +92720,10 @@ extern "C" {
     pub fn HandleStepKinematicsKinematicTopologyNetworkStructure_clone(
         self_: *const HandleStepKinematicsKinematicTopologyNetworkStructure,
     ) -> crate::OcctResult<*mut HandleStepKinematicsKinematicTopologyNetworkStructure>;
+    /// Check if Handle<StepKinematics_KinematicTopologyNetworkStructure> is null
+    pub fn HandleStepKinematicsKinematicTopologyNetworkStructure_is_null(
+        self_: *const HandleStepKinematicsKinematicTopologyNetworkStructure,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_KinematicTopologyNetworkStructure
     pub fn HandleStepKinematicsKinematicTopologyNetworkStructure_get(
         handle: *const HandleStepKinematicsKinematicTopologyNetworkStructure,
@@ -91056,6 +92959,10 @@ extern "C" {
     pub fn HandleStepKinematicsKinematicTopologyStructure_clone(
         self_: *const HandleStepKinematicsKinematicTopologyStructure,
     ) -> crate::OcctResult<*mut HandleStepKinematicsKinematicTopologyStructure>;
+    /// Check if Handle<StepKinematics_KinematicTopologyStructure> is null
+    pub fn HandleStepKinematicsKinematicTopologyStructure_is_null(
+        self_: *const HandleStepKinematicsKinematicTopologyStructure,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_KinematicTopologyStructure
     pub fn HandleStepKinematicsKinematicTopologyStructure_get(
         handle: *const HandleStepKinematicsKinematicTopologyStructure,
@@ -91235,6 +93142,10 @@ extern "C" {
     pub fn HandleStepKinematicsLinearFlexibleAndPinionPair_clone(
         self_: *const HandleStepKinematicsLinearFlexibleAndPinionPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsLinearFlexibleAndPinionPair>;
+    /// Check if Handle<StepKinematics_LinearFlexibleAndPinionPair> is null
+    pub fn HandleStepKinematicsLinearFlexibleAndPinionPair_is_null(
+        self_: *const HandleStepKinematicsLinearFlexibleAndPinionPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_LinearFlexibleAndPinionPair
     pub fn HandleStepKinematicsLinearFlexibleAndPinionPair_get(
         handle: *const HandleStepKinematicsLinearFlexibleAndPinionPair,
@@ -91420,6 +93331,10 @@ extern "C" {
     pub fn HandleStepKinematicsLinearFlexibleAndPlanarCurvePair_clone(
         self_: *const HandleStepKinematicsLinearFlexibleAndPlanarCurvePair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsLinearFlexibleAndPlanarCurvePair>;
+    /// Check if Handle<StepKinematics_LinearFlexibleAndPlanarCurvePair> is null
+    pub fn HandleStepKinematicsLinearFlexibleAndPlanarCurvePair_is_null(
+        self_: *const HandleStepKinematicsLinearFlexibleAndPlanarCurvePair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_LinearFlexibleAndPlanarCurvePair
     pub fn HandleStepKinematicsLinearFlexibleAndPlanarCurvePair_get(
         handle: *const HandleStepKinematicsLinearFlexibleAndPlanarCurvePair,
@@ -91558,6 +93473,10 @@ extern "C" {
     pub fn HandleStepKinematicsLinearFlexibleLinkRepresentation_clone(
         self_: *const HandleStepKinematicsLinearFlexibleLinkRepresentation,
     ) -> crate::OcctResult<*mut HandleStepKinematicsLinearFlexibleLinkRepresentation>;
+    /// Check if Handle<StepKinematics_LinearFlexibleLinkRepresentation> is null
+    pub fn HandleStepKinematicsLinearFlexibleLinkRepresentation_is_null(
+        self_: *const HandleStepKinematicsLinearFlexibleLinkRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_LinearFlexibleLinkRepresentation
     pub fn HandleStepKinematicsLinearFlexibleLinkRepresentation_get(
         handle: *const HandleStepKinematicsLinearFlexibleLinkRepresentation,
@@ -91793,6 +93712,10 @@ extern "C" {
     pub fn HandleStepKinematicsLowOrderKinematicPair_clone(
         self_: *const HandleStepKinematicsLowOrderKinematicPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsLowOrderKinematicPair>;
+    /// Check if Handle<StepKinematics_LowOrderKinematicPair> is null
+    pub fn HandleStepKinematicsLowOrderKinematicPair_is_null(
+        self_: *const HandleStepKinematicsLowOrderKinematicPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_LowOrderKinematicPair
     pub fn HandleStepKinematicsLowOrderKinematicPair_get(
         handle: *const HandleStepKinematicsLowOrderKinematicPair,
@@ -92073,6 +93996,10 @@ extern "C" {
     pub fn HandleStepKinematicsLowOrderKinematicPairValue_clone(
         self_: *const HandleStepKinematicsLowOrderKinematicPairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsLowOrderKinematicPairValue>;
+    /// Check if Handle<StepKinematics_LowOrderKinematicPairValue> is null
+    pub fn HandleStepKinematicsLowOrderKinematicPairValue_is_null(
+        self_: *const HandleStepKinematicsLowOrderKinematicPairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_LowOrderKinematicPairValue
     pub fn HandleStepKinematicsLowOrderKinematicPairValue_get(
         handle: *const HandleStepKinematicsLowOrderKinematicPairValue,
@@ -92206,6 +94133,10 @@ extern "C" {
     pub fn HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling_clone(
         self_: *const HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling,
     ) -> crate::OcctResult<*mut HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling>;
+    /// Check if Handle<StepKinematics_LowOrderKinematicPairWithMotionCoupling> is null
+    pub fn HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling_is_null(
+        self_: *const HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_LowOrderKinematicPairWithMotionCoupling
     pub fn HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling_get(
         handle: *const HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling,
@@ -92592,6 +94523,10 @@ extern "C" {
     pub fn HandleStepKinematicsLowOrderKinematicPairWithRange_clone(
         self_: *const HandleStepKinematicsLowOrderKinematicPairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsLowOrderKinematicPairWithRange>;
+    /// Check if Handle<StepKinematics_LowOrderKinematicPairWithRange> is null
+    pub fn HandleStepKinematicsLowOrderKinematicPairWithRange_is_null(
+        self_: *const HandleStepKinematicsLowOrderKinematicPairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_LowOrderKinematicPairWithRange
     pub fn HandleStepKinematicsLowOrderKinematicPairWithRange_get(
         handle: *const HandleStepKinematicsLowOrderKinematicPairWithRange,
@@ -92793,6 +94728,10 @@ extern "C" {
     pub fn HandleStepKinematicsMechanismRepresentation_clone(
         self_: *const HandleStepKinematicsMechanismRepresentation,
     ) -> crate::OcctResult<*mut HandleStepKinematicsMechanismRepresentation>;
+    /// Check if Handle<StepKinematics_MechanismRepresentation> is null
+    pub fn HandleStepKinematicsMechanismRepresentation_is_null(
+        self_: *const HandleStepKinematicsMechanismRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_MechanismRepresentation
     pub fn HandleStepKinematicsMechanismRepresentation_get(
         handle: *const HandleStepKinematicsMechanismRepresentation,
@@ -92937,6 +94876,10 @@ extern "C" {
     pub fn HandleStepKinematicsMechanismStateRepresentation_clone(
         self_: *const HandleStepKinematicsMechanismStateRepresentation,
     ) -> crate::OcctResult<*mut HandleStepKinematicsMechanismStateRepresentation>;
+    /// Check if Handle<StepKinematics_MechanismStateRepresentation> is null
+    pub fn HandleStepKinematicsMechanismStateRepresentation_is_null(
+        self_: *const HandleStepKinematicsMechanismStateRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_MechanismStateRepresentation
     pub fn HandleStepKinematicsMechanismStateRepresentation_get(
         handle: *const HandleStepKinematicsMechanismStateRepresentation,
@@ -93085,6 +95028,10 @@ extern "C" {
     pub fn HandleStepKinematicsOrientedJoint_clone(
         self_: *const HandleStepKinematicsOrientedJoint,
     ) -> crate::OcctResult<*mut HandleStepKinematicsOrientedJoint>;
+    /// Check if Handle<StepKinematics_OrientedJoint> is null
+    pub fn HandleStepKinematicsOrientedJoint_is_null(
+        self_: *const HandleStepKinematicsOrientedJoint,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_OrientedJoint
     pub fn HandleStepKinematicsOrientedJoint_get(
         handle: *const HandleStepKinematicsOrientedJoint,
@@ -93268,6 +95215,10 @@ extern "C" {
     pub fn HandleStepKinematicsPairRepresentationRelationship_clone(
         self_: *const HandleStepKinematicsPairRepresentationRelationship,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPairRepresentationRelationship>;
+    /// Check if Handle<StepKinematics_PairRepresentationRelationship> is null
+    pub fn HandleStepKinematicsPairRepresentationRelationship_is_null(
+        self_: *const HandleStepKinematicsPairRepresentationRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PairRepresentationRelationship
     pub fn HandleStepKinematicsPairRepresentationRelationship_get(
         handle: *const HandleStepKinematicsPairRepresentationRelationship,
@@ -93389,6 +95340,10 @@ extern "C" {
     pub fn HandleStepKinematicsPairValue_clone(
         self_: *const HandleStepKinematicsPairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPairValue>;
+    /// Check if Handle<StepKinematics_PairValue> is null
+    pub fn HandleStepKinematicsPairValue_is_null(
+        self_: *const HandleStepKinematicsPairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PairValue
     pub fn HandleStepKinematicsPairValue_get(
         handle: *const HandleStepKinematicsPairValue,
@@ -93624,6 +95579,10 @@ extern "C" {
     pub fn HandleStepKinematicsPlanarCurvePair_clone(
         self_: *const HandleStepKinematicsPlanarCurvePair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPlanarCurvePair>;
+    /// Check if Handle<StepKinematics_PlanarCurvePair> is null
+    pub fn HandleStepKinematicsPlanarCurvePair_is_null(
+        self_: *const HandleStepKinematicsPlanarCurvePair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PlanarCurvePair
     pub fn HandleStepKinematicsPlanarCurvePair_get(
         handle: *const HandleStepKinematicsPlanarCurvePair,
@@ -93832,6 +95791,10 @@ extern "C" {
     pub fn HandleStepKinematicsPlanarCurvePairRange_clone(
         self_: *const HandleStepKinematicsPlanarCurvePairRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPlanarCurvePairRange>;
+    /// Check if Handle<StepKinematics_PlanarCurvePairRange> is null
+    pub fn HandleStepKinematicsPlanarCurvePairRange_is_null(
+        self_: *const HandleStepKinematicsPlanarCurvePairRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PlanarCurvePairRange
     pub fn HandleStepKinematicsPlanarCurvePairRange_get(
         handle: *const HandleStepKinematicsPlanarCurvePairRange,
@@ -94011,6 +95974,10 @@ extern "C" {
     pub fn HandleStepKinematicsPlanarPair_clone(
         self_: *const HandleStepKinematicsPlanarPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPlanarPair>;
+    /// Check if Handle<StepKinematics_PlanarPair> is null
+    pub fn HandleStepKinematicsPlanarPair_is_null(
+        self_: *const HandleStepKinematicsPlanarPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PlanarPair
     pub fn HandleStepKinematicsPlanarPair_get(
         handle: *const HandleStepKinematicsPlanarPair,
@@ -94266,6 +96233,10 @@ extern "C" {
     pub fn HandleStepKinematicsPlanarPairValue_clone(
         self_: *const HandleStepKinematicsPlanarPairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPlanarPairValue>;
+    /// Check if Handle<StepKinematics_PlanarPairValue> is null
+    pub fn HandleStepKinematicsPlanarPairValue_is_null(
+        self_: *const HandleStepKinematicsPlanarPairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PlanarPairValue
     pub fn HandleStepKinematicsPlanarPairValue_get(
         handle: *const HandleStepKinematicsPlanarPairValue,
@@ -94522,6 +96493,10 @@ extern "C" {
     pub fn HandleStepKinematicsPlanarPairWithRange_clone(
         self_: *const HandleStepKinematicsPlanarPairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPlanarPairWithRange>;
+    /// Check if Handle<StepKinematics_PlanarPairWithRange> is null
+    pub fn HandleStepKinematicsPlanarPairWithRange_is_null(
+        self_: *const HandleStepKinematicsPlanarPairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PlanarPairWithRange
     pub fn HandleStepKinematicsPlanarPairWithRange_get(
         handle: *const HandleStepKinematicsPlanarPairWithRange,
@@ -94765,6 +96740,10 @@ extern "C" {
     pub fn HandleStepKinematicsPointOnPlanarCurvePair_clone(
         self_: *const HandleStepKinematicsPointOnPlanarCurvePair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPointOnPlanarCurvePair>;
+    /// Check if Handle<StepKinematics_PointOnPlanarCurvePair> is null
+    pub fn HandleStepKinematicsPointOnPlanarCurvePair_is_null(
+        self_: *const HandleStepKinematicsPointOnPlanarCurvePair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PointOnPlanarCurvePair
     pub fn HandleStepKinematicsPointOnPlanarCurvePair_get(
         handle: *const HandleStepKinematicsPointOnPlanarCurvePair,
@@ -94941,6 +96920,10 @@ extern "C" {
     pub fn HandleStepKinematicsPointOnPlanarCurvePairValue_clone(
         self_: *const HandleStepKinematicsPointOnPlanarCurvePairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPointOnPlanarCurvePairValue>;
+    /// Check if Handle<StepKinematics_PointOnPlanarCurvePairValue> is null
+    pub fn HandleStepKinematicsPointOnPlanarCurvePairValue_is_null(
+        self_: *const HandleStepKinematicsPointOnPlanarCurvePairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PointOnPlanarCurvePairValue
     pub fn HandleStepKinematicsPointOnPlanarCurvePairValue_get(
         handle: *const HandleStepKinematicsPointOnPlanarCurvePairValue,
@@ -95203,6 +97186,10 @@ extern "C" {
     pub fn HandleStepKinematicsPointOnPlanarCurvePairWithRange_clone(
         self_: *const HandleStepKinematicsPointOnPlanarCurvePairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPointOnPlanarCurvePairWithRange>;
+    /// Check if Handle<StepKinematics_PointOnPlanarCurvePairWithRange> is null
+    pub fn HandleStepKinematicsPointOnPlanarCurvePairWithRange_is_null(
+        self_: *const HandleStepKinematicsPointOnPlanarCurvePairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PointOnPlanarCurvePairWithRange
     pub fn HandleStepKinematicsPointOnPlanarCurvePairWithRange_get(
         handle: *const HandleStepKinematicsPointOnPlanarCurvePairWithRange,
@@ -95400,6 +97387,10 @@ extern "C" {
     pub fn HandleStepKinematicsPointOnSurfacePair_clone(
         self_: *const HandleStepKinematicsPointOnSurfacePair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPointOnSurfacePair>;
+    /// Check if Handle<StepKinematics_PointOnSurfacePair> is null
+    pub fn HandleStepKinematicsPointOnSurfacePair_is_null(
+        self_: *const HandleStepKinematicsPointOnSurfacePair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PointOnSurfacePair
     pub fn HandleStepKinematicsPointOnSurfacePair_get(
         handle: *const HandleStepKinematicsPointOnSurfacePair,
@@ -95576,6 +97567,10 @@ extern "C" {
     pub fn HandleStepKinematicsPointOnSurfacePairValue_clone(
         self_: *const HandleStepKinematicsPointOnSurfacePairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPointOnSurfacePairValue>;
+    /// Check if Handle<StepKinematics_PointOnSurfacePairValue> is null
+    pub fn HandleStepKinematicsPointOnSurfacePairValue_is_null(
+        self_: *const HandleStepKinematicsPointOnSurfacePairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PointOnSurfacePairValue
     pub fn HandleStepKinematicsPointOnSurfacePairValue_get(
         handle: *const HandleStepKinematicsPointOnSurfacePairValue,
@@ -95837,6 +97832,10 @@ extern "C" {
     pub fn HandleStepKinematicsPointOnSurfacePairWithRange_clone(
         self_: *const HandleStepKinematicsPointOnSurfacePairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPointOnSurfacePairWithRange>;
+    /// Check if Handle<StepKinematics_PointOnSurfacePairWithRange> is null
+    pub fn HandleStepKinematicsPointOnSurfacePairWithRange_is_null(
+        self_: *const HandleStepKinematicsPointOnSurfacePairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PointOnSurfacePairWithRange
     pub fn HandleStepKinematicsPointOnSurfacePairWithRange_get(
         handle: *const HandleStepKinematicsPointOnSurfacePairWithRange,
@@ -96001,6 +98000,10 @@ extern "C" {
     pub fn HandleStepKinematicsPrismaticPair_clone(
         self_: *const HandleStepKinematicsPrismaticPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPrismaticPair>;
+    /// Check if Handle<StepKinematics_PrismaticPair> is null
+    pub fn HandleStepKinematicsPrismaticPair_is_null(
+        self_: *const HandleStepKinematicsPrismaticPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PrismaticPair
     pub fn HandleStepKinematicsPrismaticPair_get(
         handle: *const HandleStepKinematicsPrismaticPair,
@@ -96238,6 +98241,10 @@ extern "C" {
     pub fn HandleStepKinematicsPrismaticPairValue_clone(
         self_: *const HandleStepKinematicsPrismaticPairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPrismaticPairValue>;
+    /// Check if Handle<StepKinematics_PrismaticPairValue> is null
+    pub fn HandleStepKinematicsPrismaticPairValue_is_null(
+        self_: *const HandleStepKinematicsPrismaticPairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PrismaticPairValue
     pub fn HandleStepKinematicsPrismaticPairValue_get(
         handle: *const HandleStepKinematicsPrismaticPairValue,
@@ -96434,6 +98441,10 @@ extern "C" {
     pub fn HandleStepKinematicsPrismaticPairWithRange_clone(
         self_: *const HandleStepKinematicsPrismaticPairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsPrismaticPairWithRange>;
+    /// Check if Handle<StepKinematics_PrismaticPairWithRange> is null
+    pub fn HandleStepKinematicsPrismaticPairWithRange_is_null(
+        self_: *const HandleStepKinematicsPrismaticPairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_PrismaticPairWithRange
     pub fn HandleStepKinematicsPrismaticPairWithRange_get(
         handle: *const HandleStepKinematicsPrismaticPairWithRange,
@@ -96622,6 +98633,10 @@ extern "C" {
     pub fn HandleStepKinematicsProductDefinitionKinematics_clone(
         self_: *const HandleStepKinematicsProductDefinitionKinematics,
     ) -> crate::OcctResult<*mut HandleStepKinematicsProductDefinitionKinematics>;
+    /// Check if Handle<StepKinematics_ProductDefinitionKinematics> is null
+    pub fn HandleStepKinematicsProductDefinitionKinematics_is_null(
+        self_: *const HandleStepKinematicsProductDefinitionKinematics,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_ProductDefinitionKinematics
     pub fn HandleStepKinematicsProductDefinitionKinematics_get(
         handle: *const HandleStepKinematicsProductDefinitionKinematics,
@@ -96752,6 +98767,10 @@ extern "C" {
     pub fn HandleStepKinematicsProductDefinitionRelationshipKinematics_clone(
         self_: *const HandleStepKinematicsProductDefinitionRelationshipKinematics,
     ) -> crate::OcctResult<*mut HandleStepKinematicsProductDefinitionRelationshipKinematics>;
+    /// Check if Handle<StepKinematics_ProductDefinitionRelationshipKinematics> is null
+    pub fn HandleStepKinematicsProductDefinitionRelationshipKinematics_is_null(
+        self_: *const HandleStepKinematicsProductDefinitionRelationshipKinematics,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_ProductDefinitionRelationshipKinematics
     pub fn HandleStepKinematicsProductDefinitionRelationshipKinematics_get(
         handle: *const HandleStepKinematicsProductDefinitionRelationshipKinematics,
@@ -96927,6 +98946,10 @@ extern "C" {
     pub fn HandleStepKinematicsRackAndPinionPair_clone(
         self_: *const HandleStepKinematicsRackAndPinionPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRackAndPinionPair>;
+    /// Check if Handle<StepKinematics_RackAndPinionPair> is null
+    pub fn HandleStepKinematicsRackAndPinionPair_is_null(
+        self_: *const HandleStepKinematicsRackAndPinionPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RackAndPinionPair
     pub fn HandleStepKinematicsRackAndPinionPair_get(
         handle: *const HandleStepKinematicsRackAndPinionPair,
@@ -97093,6 +99116,10 @@ extern "C" {
     pub fn HandleStepKinematicsRackAndPinionPairValue_clone(
         self_: *const HandleStepKinematicsRackAndPinionPairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRackAndPinionPairValue>;
+    /// Check if Handle<StepKinematics_RackAndPinionPairValue> is null
+    pub fn HandleStepKinematicsRackAndPinionPairValue_is_null(
+        self_: *const HandleStepKinematicsRackAndPinionPairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RackAndPinionPairValue
     pub fn HandleStepKinematicsRackAndPinionPairValue_get(
         handle: *const HandleStepKinematicsRackAndPinionPairValue,
@@ -97284,6 +99311,10 @@ extern "C" {
     pub fn HandleStepKinematicsRackAndPinionPairWithRange_clone(
         self_: *const HandleStepKinematicsRackAndPinionPairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRackAndPinionPairWithRange>;
+    /// Check if Handle<StepKinematics_RackAndPinionPairWithRange> is null
+    pub fn HandleStepKinematicsRackAndPinionPairWithRange_is_null(
+        self_: *const HandleStepKinematicsRackAndPinionPairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RackAndPinionPairWithRange
     pub fn HandleStepKinematicsRackAndPinionPairWithRange_get(
         handle: *const HandleStepKinematicsRackAndPinionPairWithRange,
@@ -97447,6 +99478,10 @@ extern "C" {
     pub fn HandleStepKinematicsRevolutePair_clone(
         self_: *const HandleStepKinematicsRevolutePair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRevolutePair>;
+    /// Check if Handle<StepKinematics_RevolutePair> is null
+    pub fn HandleStepKinematicsRevolutePair_is_null(
+        self_: *const HandleStepKinematicsRevolutePair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RevolutePair
     pub fn HandleStepKinematicsRevolutePair_get(
         handle: *const HandleStepKinematicsRevolutePair,
@@ -97684,6 +99719,10 @@ extern "C" {
     pub fn HandleStepKinematicsRevolutePairValue_clone(
         self_: *const HandleStepKinematicsRevolutePairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRevolutePairValue>;
+    /// Check if Handle<StepKinematics_RevolutePairValue> is null
+    pub fn HandleStepKinematicsRevolutePairValue_is_null(
+        self_: *const HandleStepKinematicsRevolutePairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RevolutePairValue
     pub fn HandleStepKinematicsRevolutePairValue_get(
         handle: *const HandleStepKinematicsRevolutePairValue,
@@ -97880,6 +99919,10 @@ extern "C" {
     pub fn HandleStepKinematicsRevolutePairWithRange_clone(
         self_: *const HandleStepKinematicsRevolutePairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRevolutePairWithRange>;
+    /// Check if Handle<StepKinematics_RevolutePairWithRange> is null
+    pub fn HandleStepKinematicsRevolutePairWithRange_is_null(
+        self_: *const HandleStepKinematicsRevolutePairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RevolutePairWithRange
     pub fn HandleStepKinematicsRevolutePairWithRange_get(
         handle: *const HandleStepKinematicsRevolutePairWithRange,
@@ -98076,6 +100119,10 @@ extern "C" {
     pub fn HandleStepKinematicsRigidLinkRepresentation_clone(
         self_: *const HandleStepKinematicsRigidLinkRepresentation,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRigidLinkRepresentation>;
+    /// Check if Handle<StepKinematics_RigidLinkRepresentation> is null
+    pub fn HandleStepKinematicsRigidLinkRepresentation_is_null(
+        self_: *const HandleStepKinematicsRigidLinkRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RigidLinkRepresentation
     pub fn HandleStepKinematicsRigidLinkRepresentation_get(
         handle: *const HandleStepKinematicsRigidLinkRepresentation,
@@ -98356,6 +100403,10 @@ extern "C" {
     pub fn HandleStepKinematicsRollingCurvePair_clone(
         self_: *const HandleStepKinematicsRollingCurvePair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRollingCurvePair>;
+    /// Check if Handle<StepKinematics_RollingCurvePair> is null
+    pub fn HandleStepKinematicsRollingCurvePair_is_null(
+        self_: *const HandleStepKinematicsRollingCurvePair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RollingCurvePair
     pub fn HandleStepKinematicsRollingCurvePair_get(
         handle: *const HandleStepKinematicsRollingCurvePair,
@@ -98563,6 +100614,10 @@ extern "C" {
     pub fn HandleStepKinematicsRollingCurvePairValue_clone(
         self_: *const HandleStepKinematicsRollingCurvePairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRollingCurvePairValue>;
+    /// Check if Handle<StepKinematics_RollingCurvePairValue> is null
+    pub fn HandleStepKinematicsRollingCurvePairValue_is_null(
+        self_: *const HandleStepKinematicsRollingCurvePairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RollingCurvePairValue
     pub fn HandleStepKinematicsRollingCurvePairValue_get(
         handle: *const HandleStepKinematicsRollingCurvePairValue,
@@ -98712,6 +100767,10 @@ extern "C" {
     pub fn HandleStepKinematicsRollingSurfacePair_clone(
         self_: *const HandleStepKinematicsRollingSurfacePair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRollingSurfacePair>;
+    /// Check if Handle<StepKinematics_RollingSurfacePair> is null
+    pub fn HandleStepKinematicsRollingSurfacePair_is_null(
+        self_: *const HandleStepKinematicsRollingSurfacePair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RollingSurfacePair
     pub fn HandleStepKinematicsRollingSurfacePair_get(
         handle: *const HandleStepKinematicsRollingSurfacePair,
@@ -98929,6 +100988,10 @@ extern "C" {
     pub fn HandleStepKinematicsRollingSurfacePairValue_clone(
         self_: *const HandleStepKinematicsRollingSurfacePairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRollingSurfacePairValue>;
+    /// Check if Handle<StepKinematics_RollingSurfacePairValue> is null
+    pub fn HandleStepKinematicsRollingSurfacePairValue_is_null(
+        self_: *const HandleStepKinematicsRollingSurfacePairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RollingSurfacePairValue
     pub fn HandleStepKinematicsRollingSurfacePairValue_get(
         handle: *const HandleStepKinematicsRollingSurfacePairValue,
@@ -99079,6 +101142,10 @@ extern "C" {
     pub fn HandleStepKinematicsRotationAboutDirection_clone(
         self_: *const HandleStepKinematicsRotationAboutDirection,
     ) -> crate::OcctResult<*mut HandleStepKinematicsRotationAboutDirection>;
+    /// Check if Handle<StepKinematics_RotationAboutDirection> is null
+    pub fn HandleStepKinematicsRotationAboutDirection_is_null(
+        self_: *const HandleStepKinematicsRotationAboutDirection,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_RotationAboutDirection
     pub fn HandleStepKinematicsRotationAboutDirection_get(
         handle: *const HandleStepKinematicsRotationAboutDirection,
@@ -99222,6 +101289,10 @@ extern "C" {
     pub fn HandleStepKinematicsScrewPair_clone(
         self_: *const HandleStepKinematicsScrewPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsScrewPair>;
+    /// Check if Handle<StepKinematics_ScrewPair> is null
+    pub fn HandleStepKinematicsScrewPair_is_null(
+        self_: *const HandleStepKinematicsScrewPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_ScrewPair
     pub fn HandleStepKinematicsScrewPair_get(
         handle: *const HandleStepKinematicsScrewPair,
@@ -99386,6 +101457,10 @@ extern "C" {
     pub fn HandleStepKinematicsScrewPairValue_clone(
         self_: *const HandleStepKinematicsScrewPairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsScrewPairValue>;
+    /// Check if Handle<StepKinematics_ScrewPairValue> is null
+    pub fn HandleStepKinematicsScrewPairValue_is_null(
+        self_: *const HandleStepKinematicsScrewPairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_ScrewPairValue
     pub fn HandleStepKinematicsScrewPairValue_get(
         handle: *const HandleStepKinematicsScrewPairValue,
@@ -99577,6 +101652,10 @@ extern "C" {
     pub fn HandleStepKinematicsScrewPairWithRange_clone(
         self_: *const HandleStepKinematicsScrewPairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsScrewPairWithRange>;
+    /// Check if Handle<StepKinematics_ScrewPairWithRange> is null
+    pub fn HandleStepKinematicsScrewPairWithRange_is_null(
+        self_: *const HandleStepKinematicsScrewPairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_ScrewPairWithRange
     pub fn HandleStepKinematicsScrewPairWithRange_get(
         handle: *const HandleStepKinematicsScrewPairWithRange,
@@ -99750,6 +101829,10 @@ extern "C" {
     pub fn HandleStepKinematicsSlidingCurvePair_clone(
         self_: *const HandleStepKinematicsSlidingCurvePair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsSlidingCurvePair>;
+    /// Check if Handle<StepKinematics_SlidingCurvePair> is null
+    pub fn HandleStepKinematicsSlidingCurvePair_is_null(
+        self_: *const HandleStepKinematicsSlidingCurvePair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_SlidingCurvePair
     pub fn HandleStepKinematicsSlidingCurvePair_get(
         handle: *const HandleStepKinematicsSlidingCurvePair,
@@ -99967,6 +102050,10 @@ extern "C" {
     pub fn HandleStepKinematicsSlidingCurvePairValue_clone(
         self_: *const HandleStepKinematicsSlidingCurvePairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsSlidingCurvePairValue>;
+    /// Check if Handle<StepKinematics_SlidingCurvePairValue> is null
+    pub fn HandleStepKinematicsSlidingCurvePairValue_is_null(
+        self_: *const HandleStepKinematicsSlidingCurvePairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_SlidingCurvePairValue
     pub fn HandleStepKinematicsSlidingCurvePairValue_get(
         handle: *const HandleStepKinematicsSlidingCurvePairValue,
@@ -100116,6 +102203,10 @@ extern "C" {
     pub fn HandleStepKinematicsSlidingSurfacePair_clone(
         self_: *const HandleStepKinematicsSlidingSurfacePair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsSlidingSurfacePair>;
+    /// Check if Handle<StepKinematics_SlidingSurfacePair> is null
+    pub fn HandleStepKinematicsSlidingSurfacePair_is_null(
+        self_: *const HandleStepKinematicsSlidingSurfacePair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_SlidingSurfacePair
     pub fn HandleStepKinematicsSlidingSurfacePair_get(
         handle: *const HandleStepKinematicsSlidingSurfacePair,
@@ -100343,6 +102434,10 @@ extern "C" {
     pub fn HandleStepKinematicsSlidingSurfacePairValue_clone(
         self_: *const HandleStepKinematicsSlidingSurfacePairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsSlidingSurfacePairValue>;
+    /// Check if Handle<StepKinematics_SlidingSurfacePairValue> is null
+    pub fn HandleStepKinematicsSlidingSurfacePairValue_is_null(
+        self_: *const HandleStepKinematicsSlidingSurfacePairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_SlidingSurfacePairValue
     pub fn HandleStepKinematicsSlidingSurfacePairValue_get(
         handle: *const HandleStepKinematicsSlidingSurfacePairValue,
@@ -100583,6 +102678,10 @@ extern "C" {
     pub fn HandleStepKinematicsSphericalPair_clone(
         self_: *const HandleStepKinematicsSphericalPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsSphericalPair>;
+    /// Check if Handle<StepKinematics_SphericalPair> is null
+    pub fn HandleStepKinematicsSphericalPair_is_null(
+        self_: *const HandleStepKinematicsSphericalPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_SphericalPair
     pub fn HandleStepKinematicsSphericalPair_get(
         handle: *const HandleStepKinematicsSphericalPair,
@@ -100924,6 +103023,10 @@ extern "C" {
     pub fn HandleStepKinematicsSphericalPairValue_clone(
         self_: *const HandleStepKinematicsSphericalPairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsSphericalPairValue>;
+    /// Check if Handle<StepKinematics_SphericalPairValue> is null
+    pub fn HandleStepKinematicsSphericalPairValue_is_null(
+        self_: *const HandleStepKinematicsSphericalPairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_SphericalPairValue
     pub fn HandleStepKinematicsSphericalPairValue_get(
         handle: *const HandleStepKinematicsSphericalPairValue,
@@ -101065,6 +103168,10 @@ extern "C" {
     pub fn HandleStepKinematicsSphericalPairWithPin_clone(
         self_: *const HandleStepKinematicsSphericalPairWithPin,
     ) -> crate::OcctResult<*mut HandleStepKinematicsSphericalPairWithPin>;
+    /// Check if Handle<StepKinematics_SphericalPairWithPin> is null
+    pub fn HandleStepKinematicsSphericalPairWithPin_is_null(
+        self_: *const HandleStepKinematicsSphericalPairWithPin,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_SphericalPairWithPin
     pub fn HandleStepKinematicsSphericalPairWithPin_get(
         handle: *const HandleStepKinematicsSphericalPairWithPin,
@@ -101379,6 +103486,10 @@ extern "C" {
     pub fn HandleStepKinematicsSphericalPairWithPinAndRange_clone(
         self_: *const HandleStepKinematicsSphericalPairWithPinAndRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsSphericalPairWithPinAndRange>;
+    /// Check if Handle<StepKinematics_SphericalPairWithPinAndRange> is null
+    pub fn HandleStepKinematicsSphericalPairWithPinAndRange_is_null(
+        self_: *const HandleStepKinematicsSphericalPairWithPinAndRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_SphericalPairWithPinAndRange
     pub fn HandleStepKinematicsSphericalPairWithPinAndRange_get(
         handle: *const HandleStepKinematicsSphericalPairWithPinAndRange,
@@ -101706,6 +103817,10 @@ extern "C" {
     pub fn HandleStepKinematicsSphericalPairWithRange_clone(
         self_: *const HandleStepKinematicsSphericalPairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsSphericalPairWithRange>;
+    /// Check if Handle<StepKinematics_SphericalPairWithRange> is null
+    pub fn HandleStepKinematicsSphericalPairWithRange_is_null(
+        self_: *const HandleStepKinematicsSphericalPairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_SphericalPairWithRange
     pub fn HandleStepKinematicsSphericalPairWithRange_get(
         handle: *const HandleStepKinematicsSphericalPairWithRange,
@@ -101953,6 +104068,10 @@ extern "C" {
     pub fn HandleStepKinematicsSurfacePair_clone(
         self_: *const HandleStepKinematicsSurfacePair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsSurfacePair>;
+    /// Check if Handle<StepKinematics_SurfacePair> is null
+    pub fn HandleStepKinematicsSurfacePair_is_null(
+        self_: *const HandleStepKinematicsSurfacePair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_SurfacePair
     pub fn HandleStepKinematicsSurfacePair_get(
         handle: *const HandleStepKinematicsSurfacePair,
@@ -102191,6 +104310,10 @@ extern "C" {
     pub fn HandleStepKinematicsSurfacePairWithRange_clone(
         self_: *const HandleStepKinematicsSurfacePairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsSurfacePairWithRange>;
+    /// Check if Handle<StepKinematics_SurfacePairWithRange> is null
+    pub fn HandleStepKinematicsSurfacePairWithRange_is_null(
+        self_: *const HandleStepKinematicsSurfacePairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_SurfacePairWithRange
     pub fn HandleStepKinematicsSurfacePairWithRange_get(
         handle: *const HandleStepKinematicsSurfacePairWithRange,
@@ -102376,6 +104499,10 @@ extern "C" {
     pub fn HandleStepKinematicsUnconstrainedPair_clone(
         self_: *const HandleStepKinematicsUnconstrainedPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsUnconstrainedPair>;
+    /// Check if Handle<StepKinematics_UnconstrainedPair> is null
+    pub fn HandleStepKinematicsUnconstrainedPair_is_null(
+        self_: *const HandleStepKinematicsUnconstrainedPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_UnconstrainedPair
     pub fn HandleStepKinematicsUnconstrainedPair_get(
         handle: *const HandleStepKinematicsUnconstrainedPair,
@@ -102609,6 +104736,10 @@ extern "C" {
     pub fn HandleStepKinematicsUnconstrainedPairValue_clone(
         self_: *const HandleStepKinematicsUnconstrainedPairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsUnconstrainedPairValue>;
+    /// Check if Handle<StepKinematics_UnconstrainedPairValue> is null
+    pub fn HandleStepKinematicsUnconstrainedPairValue_is_null(
+        self_: *const HandleStepKinematicsUnconstrainedPairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_UnconstrainedPairValue
     pub fn HandleStepKinematicsUnconstrainedPairValue_get(
         handle: *const HandleStepKinematicsUnconstrainedPairValue,
@@ -102779,6 +104910,10 @@ extern "C" {
     pub fn HandleStepKinematicsUniversalPair_clone(
         self_: *const HandleStepKinematicsUniversalPair,
     ) -> crate::OcctResult<*mut HandleStepKinematicsUniversalPair>;
+    /// Check if Handle<StepKinematics_UniversalPair> is null
+    pub fn HandleStepKinematicsUniversalPair_is_null(
+        self_: *const HandleStepKinematicsUniversalPair,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_UniversalPair
     pub fn HandleStepKinematicsUniversalPair_get(
         handle: *const HandleStepKinematicsUniversalPair,
@@ -103013,6 +105148,10 @@ extern "C" {
     pub fn HandleStepKinematicsUniversalPairValue_clone(
         self_: *const HandleStepKinematicsUniversalPairValue,
     ) -> crate::OcctResult<*mut HandleStepKinematicsUniversalPairValue>;
+    /// Check if Handle<StepKinematics_UniversalPairValue> is null
+    pub fn HandleStepKinematicsUniversalPairValue_is_null(
+        self_: *const HandleStepKinematicsUniversalPairValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_UniversalPairValue
     pub fn HandleStepKinematicsUniversalPairValue_get(
         handle: *const HandleStepKinematicsUniversalPairValue,
@@ -103241,6 +105380,10 @@ extern "C" {
     pub fn HandleStepKinematicsUniversalPairWithRange_clone(
         self_: *const HandleStepKinematicsUniversalPairWithRange,
     ) -> crate::OcctResult<*mut HandleStepKinematicsUniversalPairWithRange>;
+    /// Check if Handle<StepKinematics_UniversalPairWithRange> is null
+    pub fn HandleStepKinematicsUniversalPairWithRange_is_null(
+        self_: *const HandleStepKinematicsUniversalPairWithRange,
+    ) -> bool;
     /// Dereference Handle to get *const StepKinematics_UniversalPairWithRange
     pub fn HandleStepKinematicsUniversalPairWithRange_get(
         handle: *const HandleStepKinematicsUniversalPairWithRange,
@@ -103456,6 +105599,10 @@ extern "C" {
     pub fn HandleStepReprAllAroundShapeAspect_clone(
         self_: *const HandleStepReprAllAroundShapeAspect,
     ) -> crate::OcctResult<*mut HandleStepReprAllAroundShapeAspect>;
+    /// Check if Handle<StepRepr_AllAroundShapeAspect> is null
+    pub fn HandleStepReprAllAroundShapeAspect_is_null(
+        self_: *const HandleStepReprAllAroundShapeAspect,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_AllAroundShapeAspect
     pub fn HandleStepReprAllAroundShapeAspect_get(
         handle: *const HandleStepReprAllAroundShapeAspect,
@@ -103600,6 +105747,8 @@ extern "C" {
     pub fn HandleStepReprApex_clone(
         self_: *const HandleStepReprApex,
     ) -> crate::OcctResult<*mut HandleStepReprApex>;
+    /// Check if Handle<StepRepr_Apex> is null
+    pub fn HandleStepReprApex_is_null(self_: *const HandleStepReprApex) -> bool;
     /// Dereference Handle to get *const StepRepr_Apex
     pub fn HandleStepReprApex_get(
         handle: *const HandleStepReprApex,
@@ -103780,6 +105929,10 @@ extern "C" {
     pub fn HandleStepReprAssemblyComponentUsage_clone(
         self_: *const HandleStepReprAssemblyComponentUsage,
     ) -> crate::OcctResult<*mut HandleStepReprAssemblyComponentUsage>;
+    /// Check if Handle<StepRepr_AssemblyComponentUsage> is null
+    pub fn HandleStepReprAssemblyComponentUsage_is_null(
+        self_: *const HandleStepReprAssemblyComponentUsage,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_AssemblyComponentUsage
     pub fn HandleStepReprAssemblyComponentUsage_get(
         handle: *const HandleStepReprAssemblyComponentUsage,
@@ -103984,6 +106137,10 @@ extern "C" {
     pub fn HandleStepReprAssemblyComponentUsageSubstitute_clone(
         self_: *const HandleStepReprAssemblyComponentUsageSubstitute,
     ) -> crate::OcctResult<*mut HandleStepReprAssemblyComponentUsageSubstitute>;
+    /// Check if Handle<StepRepr_AssemblyComponentUsageSubstitute> is null
+    pub fn HandleStepReprAssemblyComponentUsageSubstitute_is_null(
+        self_: *const HandleStepReprAssemblyComponentUsageSubstitute,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_AssemblyComponentUsageSubstitute
     pub fn HandleStepReprAssemblyComponentUsageSubstitute_get(
         handle: *const HandleStepReprAssemblyComponentUsageSubstitute,
@@ -104083,6 +106240,10 @@ extern "C" {
     pub fn HandleStepReprBetweenShapeAspect_clone(
         self_: *const HandleStepReprBetweenShapeAspect,
     ) -> crate::OcctResult<*mut HandleStepReprBetweenShapeAspect>;
+    /// Check if Handle<StepRepr_BetweenShapeAspect> is null
+    pub fn HandleStepReprBetweenShapeAspect_is_null(
+        self_: *const HandleStepReprBetweenShapeAspect,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_BetweenShapeAspect
     pub fn HandleStepReprBetweenShapeAspect_get(
         handle: *const HandleStepReprBetweenShapeAspect,
@@ -104241,6 +106402,10 @@ extern "C" {
     pub fn HandleStepReprBooleanRepresentationItem_clone(
         self_: *const HandleStepReprBooleanRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepReprBooleanRepresentationItem>;
+    /// Check if Handle<StepRepr_BooleanRepresentationItem> is null
+    pub fn HandleStepReprBooleanRepresentationItem_is_null(
+        self_: *const HandleStepReprBooleanRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_BooleanRepresentationItem
     pub fn HandleStepReprBooleanRepresentationItem_get(
         handle: *const HandleStepReprBooleanRepresentationItem,
@@ -104343,6 +106508,10 @@ extern "C" {
     pub fn HandleStepReprCentreOfSymmetry_clone(
         self_: *const HandleStepReprCentreOfSymmetry,
     ) -> crate::OcctResult<*mut HandleStepReprCentreOfSymmetry>;
+    /// Check if Handle<StepRepr_CentreOfSymmetry> is null
+    pub fn HandleStepReprCentreOfSymmetry_is_null(
+        self_: *const HandleStepReprCentreOfSymmetry,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_CentreOfSymmetry
     pub fn HandleStepReprCentreOfSymmetry_get(
         handle: *const HandleStepReprCentreOfSymmetry,
@@ -104623,6 +106792,10 @@ extern "C" {
     pub fn HandleStepReprCharacterizedRepresentation_clone(
         self_: *const HandleStepReprCharacterizedRepresentation,
     ) -> crate::OcctResult<*mut HandleStepReprCharacterizedRepresentation>;
+    /// Check if Handle<StepRepr_CharacterizedRepresentation> is null
+    pub fn HandleStepReprCharacterizedRepresentation_is_null(
+        self_: *const HandleStepReprCharacterizedRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_CharacterizedRepresentation
     pub fn HandleStepReprCharacterizedRepresentation_get(
         handle: *const HandleStepReprCharacterizedRepresentation,
@@ -104758,6 +106931,10 @@ extern "C" {
     pub fn HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp_clone(
         self_: *const HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp,
     ) -> crate::OcctResult<*mut HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp>;
+    /// Check if Handle<StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp> is null
+    pub fn HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp_is_null(
+        self_: *const HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp
     pub fn HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp_get(
         handle: *const HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp,
@@ -104897,6 +107074,10 @@ extern "C" {
     pub fn HandleStepReprCompShAspAndDatumFeatAndShAsp_clone(
         self_: *const HandleStepReprCompShAspAndDatumFeatAndShAsp,
     ) -> crate::OcctResult<*mut HandleStepReprCompShAspAndDatumFeatAndShAsp>;
+    /// Check if Handle<StepRepr_CompShAspAndDatumFeatAndShAsp> is null
+    pub fn HandleStepReprCompShAspAndDatumFeatAndShAsp_is_null(
+        self_: *const HandleStepReprCompShAspAndDatumFeatAndShAsp,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_CompShAspAndDatumFeatAndShAsp
     pub fn HandleStepReprCompShAspAndDatumFeatAndShAsp_get(
         handle: *const HandleStepReprCompShAspAndDatumFeatAndShAsp,
@@ -105044,6 +107225,10 @@ extern "C" {
     pub fn HandleStepReprCompositeGroupShapeAspect_clone(
         self_: *const HandleStepReprCompositeGroupShapeAspect,
     ) -> crate::OcctResult<*mut HandleStepReprCompositeGroupShapeAspect>;
+    /// Check if Handle<StepRepr_CompositeGroupShapeAspect> is null
+    pub fn HandleStepReprCompositeGroupShapeAspect_is_null(
+        self_: *const HandleStepReprCompositeGroupShapeAspect,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_CompositeGroupShapeAspect
     pub fn HandleStepReprCompositeGroupShapeAspect_get(
         handle: *const HandleStepReprCompositeGroupShapeAspect,
@@ -105181,6 +107366,10 @@ extern "C" {
     pub fn HandleStepReprCompositeShapeAspect_clone(
         self_: *const HandleStepReprCompositeShapeAspect,
     ) -> crate::OcctResult<*mut HandleStepReprCompositeShapeAspect>;
+    /// Check if Handle<StepRepr_CompositeShapeAspect> is null
+    pub fn HandleStepReprCompositeShapeAspect_is_null(
+        self_: *const HandleStepReprCompositeShapeAspect,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_CompositeShapeAspect
     pub fn HandleStepReprCompositeShapeAspect_get(
         handle: *const HandleStepReprCompositeShapeAspect,
@@ -105366,6 +107555,10 @@ extern "C" {
     pub fn HandleStepReprCompoundRepresentationItem_clone(
         self_: *const HandleStepReprCompoundRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepReprCompoundRepresentationItem>;
+    /// Check if Handle<StepRepr_CompoundRepresentationItem> is null
+    pub fn HandleStepReprCompoundRepresentationItem_is_null(
+        self_: *const HandleStepReprCompoundRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_CompoundRepresentationItem
     pub fn HandleStepReprCompoundRepresentationItem_get(
         handle: *const HandleStepReprCompoundRepresentationItem,
@@ -105483,6 +107676,10 @@ extern "C" {
     pub fn HandleStepReprConfigurationDesign_clone(
         self_: *const HandleStepReprConfigurationDesign,
     ) -> crate::OcctResult<*mut HandleStepReprConfigurationDesign>;
+    /// Check if Handle<StepRepr_ConfigurationDesign> is null
+    pub fn HandleStepReprConfigurationDesign_is_null(
+        self_: *const HandleStepReprConfigurationDesign,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ConfigurationDesign
     pub fn HandleStepReprConfigurationDesign_get(
         handle: *const HandleStepReprConfigurationDesign,
@@ -105698,6 +107895,10 @@ extern "C" {
     pub fn HandleStepReprConfigurationEffectivity_clone(
         self_: *const HandleStepReprConfigurationEffectivity,
     ) -> crate::OcctResult<*mut HandleStepReprConfigurationEffectivity>;
+    /// Check if Handle<StepRepr_ConfigurationEffectivity> is null
+    pub fn HandleStepReprConfigurationEffectivity_is_null(
+        self_: *const HandleStepReprConfigurationEffectivity,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ConfigurationEffectivity
     pub fn HandleStepReprConfigurationEffectivity_get(
         handle: *const HandleStepReprConfigurationEffectivity,
@@ -105861,6 +108062,10 @@ extern "C" {
     pub fn HandleStepReprConfigurationItem_clone(
         self_: *const HandleStepReprConfigurationItem,
     ) -> crate::OcctResult<*mut HandleStepReprConfigurationItem>;
+    /// Check if Handle<StepRepr_ConfigurationItem> is null
+    pub fn HandleStepReprConfigurationItem_is_null(
+        self_: *const HandleStepReprConfigurationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ConfigurationItem
     pub fn HandleStepReprConfigurationItem_get(
         handle: *const HandleStepReprConfigurationItem,
@@ -105948,6 +108153,10 @@ extern "C" {
     pub fn HandleStepReprConstructiveGeometryRepresentation_clone(
         self_: *const HandleStepReprConstructiveGeometryRepresentation,
     ) -> crate::OcctResult<*mut HandleStepReprConstructiveGeometryRepresentation>;
+    /// Check if Handle<StepRepr_ConstructiveGeometryRepresentation> is null
+    pub fn HandleStepReprConstructiveGeometryRepresentation_is_null(
+        self_: *const HandleStepReprConstructiveGeometryRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ConstructiveGeometryRepresentation
     pub fn HandleStepReprConstructiveGeometryRepresentation_get(
         handle: *const HandleStepReprConstructiveGeometryRepresentation,
@@ -106082,6 +108291,10 @@ extern "C" {
     pub fn HandleStepReprConstructiveGeometryRepresentationRelationship_clone(
         self_: *const HandleStepReprConstructiveGeometryRepresentationRelationship,
     ) -> crate::OcctResult<*mut HandleStepReprConstructiveGeometryRepresentationRelationship>;
+    /// Check if Handle<StepRepr_ConstructiveGeometryRepresentationRelationship> is null
+    pub fn HandleStepReprConstructiveGeometryRepresentationRelationship_is_null(
+        self_: *const HandleStepReprConstructiveGeometryRepresentationRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ConstructiveGeometryRepresentationRelationship
     pub fn HandleStepReprConstructiveGeometryRepresentationRelationship_get(
         handle: *const HandleStepReprConstructiveGeometryRepresentationRelationship,
@@ -106227,6 +108440,10 @@ extern "C" {
     pub fn HandleStepReprContinuosShapeAspect_clone(
         self_: *const HandleStepReprContinuosShapeAspect,
     ) -> crate::OcctResult<*mut HandleStepReprContinuosShapeAspect>;
+    /// Check if Handle<StepRepr_ContinuosShapeAspect> is null
+    pub fn HandleStepReprContinuosShapeAspect_is_null(
+        self_: *const HandleStepReprContinuosShapeAspect,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ContinuosShapeAspect
     pub fn HandleStepReprContinuosShapeAspect_get(
         handle: *const HandleStepReprContinuosShapeAspect,
@@ -106394,6 +108611,10 @@ extern "C" {
     pub fn HandleStepReprDataEnvironment_clone(
         self_: *const HandleStepReprDataEnvironment,
     ) -> crate::OcctResult<*mut HandleStepReprDataEnvironment>;
+    /// Check if Handle<StepRepr_DataEnvironment> is null
+    pub fn HandleStepReprDataEnvironment_is_null(
+        self_: *const HandleStepReprDataEnvironment,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_DataEnvironment
     pub fn HandleStepReprDataEnvironment_get(
         handle: *const HandleStepReprDataEnvironment,
@@ -106481,6 +108702,10 @@ extern "C" {
     pub fn HandleStepReprDefinitionalRepresentation_clone(
         self_: *const HandleStepReprDefinitionalRepresentation,
     ) -> crate::OcctResult<*mut HandleStepReprDefinitionalRepresentation>;
+    /// Check if Handle<StepRepr_DefinitionalRepresentation> is null
+    pub fn HandleStepReprDefinitionalRepresentation_is_null(
+        self_: *const HandleStepReprDefinitionalRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_DefinitionalRepresentation
     pub fn HandleStepReprDefinitionalRepresentation_get(
         handle: *const HandleStepReprDefinitionalRepresentation,
@@ -106615,6 +108840,10 @@ extern "C" {
     pub fn HandleStepReprDerivedShapeAspect_clone(
         self_: *const HandleStepReprDerivedShapeAspect,
     ) -> crate::OcctResult<*mut HandleStepReprDerivedShapeAspect>;
+    /// Check if Handle<StepRepr_DerivedShapeAspect> is null
+    pub fn HandleStepReprDerivedShapeAspect_is_null(
+        self_: *const HandleStepReprDerivedShapeAspect,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_DerivedShapeAspect
     pub fn HandleStepReprDerivedShapeAspect_get(
         handle: *const HandleStepReprDerivedShapeAspect,
@@ -106793,6 +109022,10 @@ extern "C" {
     pub fn HandleStepReprDescriptiveRepresentationItem_clone(
         self_: *const HandleStepReprDescriptiveRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepReprDescriptiveRepresentationItem>;
+    /// Check if Handle<StepRepr_DescriptiveRepresentationItem> is null
+    pub fn HandleStepReprDescriptiveRepresentationItem_is_null(
+        self_: *const HandleStepReprDescriptiveRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_DescriptiveRepresentationItem
     pub fn HandleStepReprDescriptiveRepresentationItem_get(
         handle: *const HandleStepReprDescriptiveRepresentationItem,
@@ -106894,6 +109127,8 @@ extern "C" {
     pub fn HandleStepReprExtension_clone(
         self_: *const HandleStepReprExtension,
     ) -> crate::OcctResult<*mut HandleStepReprExtension>;
+    /// Check if Handle<StepRepr_Extension> is null
+    pub fn HandleStepReprExtension_is_null(self_: *const HandleStepReprExtension) -> bool;
     /// Dereference Handle to get *const StepRepr_Extension
     pub fn HandleStepReprExtension_get(
         handle: *const HandleStepReprExtension,
@@ -107033,6 +109268,10 @@ extern "C" {
     pub fn HandleStepReprExternallyDefinedRepresentation_clone(
         self_: *const HandleStepReprExternallyDefinedRepresentation,
     ) -> crate::OcctResult<*mut HandleStepReprExternallyDefinedRepresentation>;
+    /// Check if Handle<StepRepr_ExternallyDefinedRepresentation> is null
+    pub fn HandleStepReprExternallyDefinedRepresentation_is_null(
+        self_: *const HandleStepReprExternallyDefinedRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ExternallyDefinedRepresentation
     pub fn HandleStepReprExternallyDefinedRepresentation_get(
         handle: *const HandleStepReprExternallyDefinedRepresentation,
@@ -107167,6 +109406,10 @@ extern "C" {
     pub fn HandleStepReprFeatureForDatumTargetRelationship_clone(
         self_: *const HandleStepReprFeatureForDatumTargetRelationship,
     ) -> crate::OcctResult<*mut HandleStepReprFeatureForDatumTargetRelationship>;
+    /// Check if Handle<StepRepr_FeatureForDatumTargetRelationship> is null
+    pub fn HandleStepReprFeatureForDatumTargetRelationship_is_null(
+        self_: *const HandleStepReprFeatureForDatumTargetRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_FeatureForDatumTargetRelationship
     pub fn HandleStepReprFeatureForDatumTargetRelationship_get(
         handle: *const HandleStepReprFeatureForDatumTargetRelationship,
@@ -107323,6 +109566,10 @@ extern "C" {
     pub fn HandleStepReprFunctionallyDefinedTransformation_clone(
         self_: *const HandleStepReprFunctionallyDefinedTransformation,
     ) -> crate::OcctResult<*mut HandleStepReprFunctionallyDefinedTransformation>;
+    /// Check if Handle<StepRepr_FunctionallyDefinedTransformation> is null
+    pub fn HandleStepReprFunctionallyDefinedTransformation_is_null(
+        self_: *const HandleStepReprFunctionallyDefinedTransformation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_FunctionallyDefinedTransformation
     pub fn HandleStepReprFunctionallyDefinedTransformation_get(
         handle: *const HandleStepReprFunctionallyDefinedTransformation,
@@ -107414,6 +109661,10 @@ extern "C" {
     pub fn HandleStepReprGeometricAlignment_clone(
         self_: *const HandleStepReprGeometricAlignment,
     ) -> crate::OcctResult<*mut HandleStepReprGeometricAlignment>;
+    /// Check if Handle<StepRepr_GeometricAlignment> is null
+    pub fn HandleStepReprGeometricAlignment_is_null(
+        self_: *const HandleStepReprGeometricAlignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_GeometricAlignment
     pub fn HandleStepReprGeometricAlignment_get(
         handle: *const HandleStepReprGeometricAlignment,
@@ -107578,6 +109829,10 @@ extern "C" {
     pub fn HandleStepReprGlobalUncertaintyAssignedContext_clone(
         self_: *const HandleStepReprGlobalUncertaintyAssignedContext,
     ) -> crate::OcctResult<*mut HandleStepReprGlobalUncertaintyAssignedContext>;
+    /// Check if Handle<StepRepr_GlobalUncertaintyAssignedContext> is null
+    pub fn HandleStepReprGlobalUncertaintyAssignedContext_is_null(
+        self_: *const HandleStepReprGlobalUncertaintyAssignedContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_GlobalUncertaintyAssignedContext
     pub fn HandleStepReprGlobalUncertaintyAssignedContext_get(
         handle: *const HandleStepReprGlobalUncertaintyAssignedContext,
@@ -107712,6 +109967,10 @@ extern "C" {
     pub fn HandleStepReprGlobalUnitAssignedContext_clone(
         self_: *const HandleStepReprGlobalUnitAssignedContext,
     ) -> crate::OcctResult<*mut HandleStepReprGlobalUnitAssignedContext>;
+    /// Check if Handle<StepRepr_GlobalUnitAssignedContext> is null
+    pub fn HandleStepReprGlobalUnitAssignedContext_is_null(
+        self_: *const HandleStepReprGlobalUnitAssignedContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_GlobalUnitAssignedContext
     pub fn HandleStepReprGlobalUnitAssignedContext_get(
         handle: *const HandleStepReprGlobalUnitAssignedContext,
@@ -107843,6 +110102,10 @@ extern "C" {
     pub fn HandleStepReprHArray1OfMaterialPropertyRepresentation_clone(
         self_: *const HandleStepReprHArray1OfMaterialPropertyRepresentation,
     ) -> crate::OcctResult<*mut HandleStepReprHArray1OfMaterialPropertyRepresentation>;
+    /// Check if Handle<StepRepr_HArray1OfMaterialPropertyRepresentation> is null
+    pub fn HandleStepReprHArray1OfMaterialPropertyRepresentation_is_null(
+        self_: *const HandleStepReprHArray1OfMaterialPropertyRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_HArray1OfMaterialPropertyRepresentation
     pub fn HandleStepReprHArray1OfMaterialPropertyRepresentation_get(
         handle: *const HandleStepReprHArray1OfMaterialPropertyRepresentation,
@@ -107952,6 +110215,10 @@ extern "C" {
     pub fn HandleStepReprHArray1OfPropertyDefinitionRepresentation_clone(
         self_: *const HandleStepReprHArray1OfPropertyDefinitionRepresentation,
     ) -> crate::OcctResult<*mut HandleStepReprHArray1OfPropertyDefinitionRepresentation>;
+    /// Check if Handle<StepRepr_HArray1OfPropertyDefinitionRepresentation> is null
+    pub fn HandleStepReprHArray1OfPropertyDefinitionRepresentation_is_null(
+        self_: *const HandleStepReprHArray1OfPropertyDefinitionRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_HArray1OfPropertyDefinitionRepresentation
     pub fn HandleStepReprHArray1OfPropertyDefinitionRepresentation_get(
         handle: *const HandleStepReprHArray1OfPropertyDefinitionRepresentation,
@@ -108061,6 +110328,10 @@ extern "C" {
     pub fn HandleStepReprHArray1OfRepresentationItem_clone(
         self_: *const HandleStepReprHArray1OfRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepReprHArray1OfRepresentationItem>;
+    /// Check if Handle<StepRepr_HArray1OfRepresentationItem> is null
+    pub fn HandleStepReprHArray1OfRepresentationItem_is_null(
+        self_: *const HandleStepReprHArray1OfRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_HArray1OfRepresentationItem
     pub fn HandleStepReprHArray1OfRepresentationItem_get(
         handle: *const HandleStepReprHArray1OfRepresentationItem,
@@ -108168,6 +110439,10 @@ extern "C" {
     pub fn HandleStepReprHArray1OfShapeAspect_clone(
         self_: *const HandleStepReprHArray1OfShapeAspect,
     ) -> crate::OcctResult<*mut HandleStepReprHArray1OfShapeAspect>;
+    /// Check if Handle<StepRepr_HArray1OfShapeAspect> is null
+    pub fn HandleStepReprHArray1OfShapeAspect_is_null(
+        self_: *const HandleStepReprHArray1OfShapeAspect,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_HArray1OfShapeAspect
     pub fn HandleStepReprHArray1OfShapeAspect_get(
         handle: *const HandleStepReprHArray1OfShapeAspect,
@@ -108269,6 +110544,10 @@ extern "C" {
     pub fn HandleStepReprHSequenceOfMaterialPropertyRepresentation_clone(
         self_: *const HandleStepReprHSequenceOfMaterialPropertyRepresentation,
     ) -> crate::OcctResult<*mut HandleStepReprHSequenceOfMaterialPropertyRepresentation>;
+    /// Check if Handle<StepRepr_HSequenceOfMaterialPropertyRepresentation> is null
+    pub fn HandleStepReprHSequenceOfMaterialPropertyRepresentation_is_null(
+        self_: *const HandleStepReprHSequenceOfMaterialPropertyRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_HSequenceOfMaterialPropertyRepresentation
     pub fn HandleStepReprHSequenceOfMaterialPropertyRepresentation_get(
         handle: *const HandleStepReprHSequenceOfMaterialPropertyRepresentation,
@@ -108370,6 +110649,10 @@ extern "C" {
     pub fn HandleStepReprHSequenceOfRepresentationItem_clone(
         self_: *const HandleStepReprHSequenceOfRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepReprHSequenceOfRepresentationItem>;
+    /// Check if Handle<StepRepr_HSequenceOfRepresentationItem> is null
+    pub fn HandleStepReprHSequenceOfRepresentationItem_is_null(
+        self_: *const HandleStepReprHSequenceOfRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_HSequenceOfRepresentationItem
     pub fn HandleStepReprHSequenceOfRepresentationItem_get(
         handle: *const HandleStepReprHSequenceOfRepresentationItem,
@@ -108472,6 +110755,10 @@ extern "C" {
     pub fn HandleStepReprIntegerRepresentationItem_clone(
         self_: *const HandleStepReprIntegerRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepReprIntegerRepresentationItem>;
+    /// Check if Handle<StepRepr_IntegerRepresentationItem> is null
+    pub fn HandleStepReprIntegerRepresentationItem_is_null(
+        self_: *const HandleStepReprIntegerRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_IntegerRepresentationItem
     pub fn HandleStepReprIntegerRepresentationItem_get(
         handle: *const HandleStepReprIntegerRepresentationItem,
@@ -108612,6 +110899,10 @@ extern "C" {
     pub fn HandleStepReprItemDefinedTransformation_clone(
         self_: *const HandleStepReprItemDefinedTransformation,
     ) -> crate::OcctResult<*mut HandleStepReprItemDefinedTransformation>;
+    /// Check if Handle<StepRepr_ItemDefinedTransformation> is null
+    pub fn HandleStepReprItemDefinedTransformation_is_null(
+        self_: *const HandleStepReprItemDefinedTransformation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ItemDefinedTransformation
     pub fn HandleStepReprItemDefinedTransformation_get(
         handle: *const HandleStepReprItemDefinedTransformation,
@@ -108757,6 +111048,10 @@ extern "C" {
     pub fn HandleStepReprMakeFromUsageOption_clone(
         self_: *const HandleStepReprMakeFromUsageOption,
     ) -> crate::OcctResult<*mut HandleStepReprMakeFromUsageOption>;
+    /// Check if Handle<StepRepr_MakeFromUsageOption> is null
+    pub fn HandleStepReprMakeFromUsageOption_is_null(
+        self_: *const HandleStepReprMakeFromUsageOption,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_MakeFromUsageOption
     pub fn HandleStepReprMakeFromUsageOption_get(
         handle: *const HandleStepReprMakeFromUsageOption,
@@ -108927,6 +111222,8 @@ extern "C" {
     pub fn HandleStepReprMappedItem_clone(
         self_: *const HandleStepReprMappedItem,
     ) -> crate::OcctResult<*mut HandleStepReprMappedItem>;
+    /// Check if Handle<StepRepr_MappedItem> is null
+    pub fn HandleStepReprMappedItem_is_null(self_: *const HandleStepReprMappedItem) -> bool;
     /// Dereference Handle to get *const StepRepr_MappedItem
     pub fn HandleStepReprMappedItem_get(
         handle: *const HandleStepReprMappedItem,
@@ -109060,6 +111357,10 @@ extern "C" {
     pub fn HandleStepReprMaterialDesignation_clone(
         self_: *const HandleStepReprMaterialDesignation,
     ) -> crate::OcctResult<*mut HandleStepReprMaterialDesignation>;
+    /// Check if Handle<StepRepr_MaterialDesignation> is null
+    pub fn HandleStepReprMaterialDesignation_is_null(
+        self_: *const HandleStepReprMaterialDesignation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_MaterialDesignation
     pub fn HandleStepReprMaterialDesignation_get(
         handle: *const HandleStepReprMaterialDesignation,
@@ -109141,6 +111442,10 @@ extern "C" {
     pub fn HandleStepReprMaterialProperty_clone(
         self_: *const HandleStepReprMaterialProperty,
     ) -> crate::OcctResult<*mut HandleStepReprMaterialProperty>;
+    /// Check if Handle<StepRepr_MaterialProperty> is null
+    pub fn HandleStepReprMaterialProperty_is_null(
+        self_: *const HandleStepReprMaterialProperty,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_MaterialProperty
     pub fn HandleStepReprMaterialProperty_get(
         handle: *const HandleStepReprMaterialProperty,
@@ -109287,6 +111592,10 @@ extern "C" {
     pub fn HandleStepReprMaterialPropertyRepresentation_clone(
         self_: *const HandleStepReprMaterialPropertyRepresentation,
     ) -> crate::OcctResult<*mut HandleStepReprMaterialPropertyRepresentation>;
+    /// Check if Handle<StepRepr_MaterialPropertyRepresentation> is null
+    pub fn HandleStepReprMaterialPropertyRepresentation_is_null(
+        self_: *const HandleStepReprMaterialPropertyRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_MaterialPropertyRepresentation
     pub fn HandleStepReprMaterialPropertyRepresentation_get(
         handle: *const HandleStepReprMaterialPropertyRepresentation,
@@ -109416,6 +111725,10 @@ extern "C" {
     pub fn HandleStepReprMeasureRepresentationItem_clone(
         self_: *const HandleStepReprMeasureRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepReprMeasureRepresentationItem>;
+    /// Check if Handle<StepRepr_MeasureRepresentationItem> is null
+    pub fn HandleStepReprMeasureRepresentationItem_is_null(
+        self_: *const HandleStepReprMeasureRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_MeasureRepresentationItem
     pub fn HandleStepReprMeasureRepresentationItem_get(
         handle: *const HandleStepReprMeasureRepresentationItem,
@@ -109516,6 +111829,10 @@ extern "C" {
     pub fn HandleStepReprMechanicalDesignAndDraughtingRelationship_clone(
         self_: *const HandleStepReprMechanicalDesignAndDraughtingRelationship,
     ) -> crate::OcctResult<*mut HandleStepReprMechanicalDesignAndDraughtingRelationship>;
+    /// Check if Handle<StepRepr_MechanicalDesignAndDraughtingRelationship> is null
+    pub fn HandleStepReprMechanicalDesignAndDraughtingRelationship_is_null(
+        self_: *const HandleStepReprMechanicalDesignAndDraughtingRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_MechanicalDesignAndDraughtingRelationship
     pub fn HandleStepReprMechanicalDesignAndDraughtingRelationship_get(
         handle: *const HandleStepReprMechanicalDesignAndDraughtingRelationship,
@@ -109671,6 +111988,10 @@ extern "C" {
     pub fn HandleStepReprNextAssemblyUsageOccurrence_clone(
         self_: *const HandleStepReprNextAssemblyUsageOccurrence,
     ) -> crate::OcctResult<*mut HandleStepReprNextAssemblyUsageOccurrence>;
+    /// Check if Handle<StepRepr_NextAssemblyUsageOccurrence> is null
+    pub fn HandleStepReprNextAssemblyUsageOccurrence_is_null(
+        self_: *const HandleStepReprNextAssemblyUsageOccurrence,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_NextAssemblyUsageOccurrence
     pub fn HandleStepReprNextAssemblyUsageOccurrence_get(
         handle: *const HandleStepReprNextAssemblyUsageOccurrence,
@@ -109872,6 +112193,9 @@ extern "C" {
     pub fn HandleStepReprParallelOffset_clone(
         self_: *const HandleStepReprParallelOffset,
     ) -> crate::OcctResult<*mut HandleStepReprParallelOffset>;
+    /// Check if Handle<StepRepr_ParallelOffset> is null
+    pub fn HandleStepReprParallelOffset_is_null(self_: *const HandleStepReprParallelOffset)
+        -> bool;
     /// Dereference Handle to get *const StepRepr_ParallelOffset
     pub fn HandleStepReprParallelOffset_get(
         handle: *const HandleStepReprParallelOffset,
@@ -110003,6 +112327,10 @@ extern "C" {
     pub fn HandleStepReprParametricRepresentationContext_clone(
         self_: *const HandleStepReprParametricRepresentationContext,
     ) -> crate::OcctResult<*mut HandleStepReprParametricRepresentationContext>;
+    /// Check if Handle<StepRepr_ParametricRepresentationContext> is null
+    pub fn HandleStepReprParametricRepresentationContext_is_null(
+        self_: *const HandleStepReprParametricRepresentationContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ParametricRepresentationContext
     pub fn HandleStepReprParametricRepresentationContext_get(
         handle: *const HandleStepReprParametricRepresentationContext,
@@ -110120,6 +112448,10 @@ extern "C" {
     pub fn HandleStepReprPerpendicularTo_clone(
         self_: *const HandleStepReprPerpendicularTo,
     ) -> crate::OcctResult<*mut HandleStepReprPerpendicularTo>;
+    /// Check if Handle<StepRepr_PerpendicularTo> is null
+    pub fn HandleStepReprPerpendicularTo_is_null(
+        self_: *const HandleStepReprPerpendicularTo,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_PerpendicularTo
     pub fn HandleStepReprPerpendicularTo_get(
         handle: *const HandleStepReprPerpendicularTo,
@@ -110294,6 +112626,9 @@ extern "C" {
     pub fn HandleStepReprProductConcept_clone(
         self_: *const HandleStepReprProductConcept,
     ) -> crate::OcctResult<*mut HandleStepReprProductConcept>;
+    /// Check if Handle<StepRepr_ProductConcept> is null
+    pub fn HandleStepReprProductConcept_is_null(self_: *const HandleStepReprProductConcept)
+        -> bool;
     /// Dereference Handle to get *const StepRepr_ProductConcept
     pub fn HandleStepReprProductConcept_get(
         handle: *const HandleStepReprProductConcept,
@@ -110379,6 +112714,10 @@ extern "C" {
     pub fn HandleStepReprProductDefinitionShape_clone(
         self_: *const HandleStepReprProductDefinitionShape,
     ) -> crate::OcctResult<*mut HandleStepReprProductDefinitionShape>;
+    /// Check if Handle<StepRepr_ProductDefinitionShape> is null
+    pub fn HandleStepReprProductDefinitionShape_is_null(
+        self_: *const HandleStepReprProductDefinitionShape,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ProductDefinitionShape
     pub fn HandleStepReprProductDefinitionShape_get(
         handle: *const HandleStepReprProductDefinitionShape,
@@ -110507,6 +112846,10 @@ extern "C" {
     pub fn HandleStepReprProductDefinitionUsage_clone(
         self_: *const HandleStepReprProductDefinitionUsage,
     ) -> crate::OcctResult<*mut HandleStepReprProductDefinitionUsage>;
+    /// Check if Handle<StepRepr_ProductDefinitionUsage> is null
+    pub fn HandleStepReprProductDefinitionUsage_is_null(
+        self_: *const HandleStepReprProductDefinitionUsage,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ProductDefinitionUsage
     pub fn HandleStepReprProductDefinitionUsage_get(
         handle: *const HandleStepReprProductDefinitionUsage,
@@ -110705,6 +113048,10 @@ extern "C" {
     pub fn HandleStepReprPromissoryUsageOccurrence_clone(
         self_: *const HandleStepReprPromissoryUsageOccurrence,
     ) -> crate::OcctResult<*mut HandleStepReprPromissoryUsageOccurrence>;
+    /// Check if Handle<StepRepr_PromissoryUsageOccurrence> is null
+    pub fn HandleStepReprPromissoryUsageOccurrence_is_null(
+        self_: *const HandleStepReprPromissoryUsageOccurrence,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_PromissoryUsageOccurrence
     pub fn HandleStepReprPromissoryUsageOccurrence_get(
         handle: *const HandleStepReprPromissoryUsageOccurrence,
@@ -110913,6 +113260,10 @@ extern "C" {
     pub fn HandleStepReprPropertyDefinition_clone(
         self_: *const HandleStepReprPropertyDefinition,
     ) -> crate::OcctResult<*mut HandleStepReprPropertyDefinition>;
+    /// Check if Handle<StepRepr_PropertyDefinition> is null
+    pub fn HandleStepReprPropertyDefinition_is_null(
+        self_: *const HandleStepReprPropertyDefinition,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_PropertyDefinition
     pub fn HandleStepReprPropertyDefinition_get(
         handle: *const HandleStepReprPropertyDefinition,
@@ -111056,6 +113407,10 @@ extern "C" {
     pub fn HandleStepReprPropertyDefinitionRelationship_clone(
         self_: *const HandleStepReprPropertyDefinitionRelationship,
     ) -> crate::OcctResult<*mut HandleStepReprPropertyDefinitionRelationship>;
+    /// Check if Handle<StepRepr_PropertyDefinitionRelationship> is null
+    pub fn HandleStepReprPropertyDefinitionRelationship_is_null(
+        self_: *const HandleStepReprPropertyDefinitionRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_PropertyDefinitionRelationship
     pub fn HandleStepReprPropertyDefinitionRelationship_get(
         handle: *const HandleStepReprPropertyDefinitionRelationship,
@@ -111159,6 +113514,10 @@ extern "C" {
     pub fn HandleStepReprPropertyDefinitionRepresentation_clone(
         self_: *const HandleStepReprPropertyDefinitionRepresentation,
     ) -> crate::OcctResult<*mut HandleStepReprPropertyDefinitionRepresentation>;
+    /// Check if Handle<StepRepr_PropertyDefinitionRepresentation> is null
+    pub fn HandleStepReprPropertyDefinitionRepresentation_is_null(
+        self_: *const HandleStepReprPropertyDefinitionRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_PropertyDefinitionRepresentation
     pub fn HandleStepReprPropertyDefinitionRepresentation_get(
         handle: *const HandleStepReprPropertyDefinitionRepresentation,
@@ -111321,6 +113680,10 @@ extern "C" {
     pub fn HandleStepReprQuantifiedAssemblyComponentUsage_clone(
         self_: *const HandleStepReprQuantifiedAssemblyComponentUsage,
     ) -> crate::OcctResult<*mut HandleStepReprQuantifiedAssemblyComponentUsage>;
+    /// Check if Handle<StepRepr_QuantifiedAssemblyComponentUsage> is null
+    pub fn HandleStepReprQuantifiedAssemblyComponentUsage_is_null(
+        self_: *const HandleStepReprQuantifiedAssemblyComponentUsage,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_QuantifiedAssemblyComponentUsage
     pub fn HandleStepReprQuantifiedAssemblyComponentUsage_get(
         handle: *const HandleStepReprQuantifiedAssemblyComponentUsage,
@@ -111503,6 +113866,10 @@ extern "C" {
     pub fn HandleStepReprRealRepresentationItem_clone(
         self_: *const HandleStepReprRealRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepReprRealRepresentationItem>;
+    /// Check if Handle<StepRepr_RealRepresentationItem> is null
+    pub fn HandleStepReprRealRepresentationItem_is_null(
+        self_: *const HandleStepReprRealRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_RealRepresentationItem
     pub fn HandleStepReprRealRepresentationItem_get(
         handle: *const HandleStepReprRealRepresentationItem,
@@ -111620,6 +113987,10 @@ extern "C" {
     pub fn HandleStepReprReprItemAndLengthMeasureWithUnit_clone(
         self_: *const HandleStepReprReprItemAndLengthMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepReprReprItemAndLengthMeasureWithUnit>;
+    /// Check if Handle<StepRepr_ReprItemAndLengthMeasureWithUnit> is null
+    pub fn HandleStepReprReprItemAndLengthMeasureWithUnit_is_null(
+        self_: *const HandleStepReprReprItemAndLengthMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ReprItemAndLengthMeasureWithUnit
     pub fn HandleStepReprReprItemAndLengthMeasureWithUnit_get(
         handle: *const HandleStepReprReprItemAndLengthMeasureWithUnit,
@@ -111772,6 +114143,10 @@ extern "C" {
     pub fn HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI_clone(
         self_: *const HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI,
     ) -> crate::OcctResult<*mut HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI>;
+    /// Check if Handle<StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI> is null
+    pub fn HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI_is_null(
+        self_: *const HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI
     pub fn HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI_get(
         handle: *const HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI,
@@ -111936,6 +114311,10 @@ extern "C" {
     pub fn HandleStepReprReprItemAndMeasureWithUnit_clone(
         self_: *const HandleStepReprReprItemAndMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepReprReprItemAndMeasureWithUnit>;
+    /// Check if Handle<StepRepr_ReprItemAndMeasureWithUnit> is null
+    pub fn HandleStepReprReprItemAndMeasureWithUnit_is_null(
+        self_: *const HandleStepReprReprItemAndMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ReprItemAndMeasureWithUnit
     pub fn HandleStepReprReprItemAndMeasureWithUnit_get(
         handle: *const HandleStepReprReprItemAndMeasureWithUnit,
@@ -112080,6 +114459,10 @@ extern "C" {
     pub fn HandleStepReprReprItemAndMeasureWithUnitAndQRI_clone(
         self_: *const HandleStepReprReprItemAndMeasureWithUnitAndQRI,
     ) -> crate::OcctResult<*mut HandleStepReprReprItemAndMeasureWithUnitAndQRI>;
+    /// Check if Handle<StepRepr_ReprItemAndMeasureWithUnitAndQRI> is null
+    pub fn HandleStepReprReprItemAndMeasureWithUnitAndQRI_is_null(
+        self_: *const HandleStepReprReprItemAndMeasureWithUnitAndQRI,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ReprItemAndMeasureWithUnitAndQRI
     pub fn HandleStepReprReprItemAndMeasureWithUnitAndQRI_get(
         handle: *const HandleStepReprReprItemAndMeasureWithUnitAndQRI,
@@ -112226,6 +114609,10 @@ extern "C" {
     pub fn HandleStepReprReprItemAndPlaneAngleMeasureWithUnit_clone(
         self_: *const HandleStepReprReprItemAndPlaneAngleMeasureWithUnit,
     ) -> crate::OcctResult<*mut HandleStepReprReprItemAndPlaneAngleMeasureWithUnit>;
+    /// Check if Handle<StepRepr_ReprItemAndPlaneAngleMeasureWithUnit> is null
+    pub fn HandleStepReprReprItemAndPlaneAngleMeasureWithUnit_is_null(
+        self_: *const HandleStepReprReprItemAndPlaneAngleMeasureWithUnit,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ReprItemAndPlaneAngleMeasureWithUnit
     pub fn HandleStepReprReprItemAndPlaneAngleMeasureWithUnit_get(
         handle: *const HandleStepReprReprItemAndPlaneAngleMeasureWithUnit,
@@ -112378,6 +114765,10 @@ extern "C" {
     pub fn HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI_clone(
         self_: *const HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI,
     ) -> crate::OcctResult<*mut HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI>;
+    /// Check if Handle<StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI> is null
+    pub fn HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI_is_null(
+        self_: *const HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI
     pub fn HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI_get(
         handle: *const HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI,
@@ -112548,6 +114939,9 @@ extern "C" {
     pub fn HandleStepReprRepresentation_clone(
         self_: *const HandleStepReprRepresentation,
     ) -> crate::OcctResult<*mut HandleStepReprRepresentation>;
+    /// Check if Handle<StepRepr_Representation> is null
+    pub fn HandleStepReprRepresentation_is_null(self_: *const HandleStepReprRepresentation)
+        -> bool;
     /// Dereference Handle to get *const StepRepr_Representation
     pub fn HandleStepReprRepresentation_get(
         handle: *const HandleStepReprRepresentation,
@@ -112849,6 +115243,10 @@ extern "C" {
     pub fn HandleStepReprRepresentationContext_clone(
         self_: *const HandleStepReprRepresentationContext,
     ) -> crate::OcctResult<*mut HandleStepReprRepresentationContext>;
+    /// Check if Handle<StepRepr_RepresentationContext> is null
+    pub fn HandleStepReprRepresentationContext_is_null(
+        self_: *const HandleStepReprRepresentationContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_RepresentationContext
     pub fn HandleStepReprRepresentationContext_get(
         handle: *const HandleStepReprRepresentationContext,
@@ -112974,6 +115372,10 @@ extern "C" {
     pub fn HandleStepReprRepresentationContextReference_clone(
         self_: *const HandleStepReprRepresentationContextReference,
     ) -> crate::OcctResult<*mut HandleStepReprRepresentationContextReference>;
+    /// Check if Handle<StepRepr_RepresentationContextReference> is null
+    pub fn HandleStepReprRepresentationContextReference_is_null(
+        self_: *const HandleStepReprRepresentationContextReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_RepresentationContextReference
     pub fn HandleStepReprRepresentationContextReference_get(
         handle: *const HandleStepReprRepresentationContextReference,
@@ -113063,6 +115465,10 @@ extern "C" {
     pub fn HandleStepReprRepresentationItem_clone(
         self_: *const HandleStepReprRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepReprRepresentationItem>;
+    /// Check if Handle<StepRepr_RepresentationItem> is null
+    pub fn HandleStepReprRepresentationItem_is_null(
+        self_: *const HandleStepReprRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_RepresentationItem
     pub fn HandleStepReprRepresentationItem_get(
         handle: *const HandleStepReprRepresentationItem,
@@ -114322,6 +116728,10 @@ extern "C" {
     pub fn HandleStepReprRepresentationMap_clone(
         self_: *const HandleStepReprRepresentationMap,
     ) -> crate::OcctResult<*mut HandleStepReprRepresentationMap>;
+    /// Check if Handle<StepRepr_RepresentationMap> is null
+    pub fn HandleStepReprRepresentationMap_is_null(
+        self_: *const HandleStepReprRepresentationMap,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_RepresentationMap
     pub fn HandleStepReprRepresentationMap_get(
         handle: *const HandleStepReprRepresentationMap,
@@ -114533,6 +116943,10 @@ extern "C" {
     pub fn HandleStepReprRepresentationReference_clone(
         self_: *const HandleStepReprRepresentationReference,
     ) -> crate::OcctResult<*mut HandleStepReprRepresentationReference>;
+    /// Check if Handle<StepRepr_RepresentationReference> is null
+    pub fn HandleStepReprRepresentationReference_is_null(
+        self_: *const HandleStepReprRepresentationReference,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_RepresentationReference
     pub fn HandleStepReprRepresentationReference_get(
         handle: *const HandleStepReprRepresentationReference,
@@ -114660,6 +117074,10 @@ extern "C" {
     pub fn HandleStepReprRepresentationRelationship_clone(
         self_: *const HandleStepReprRepresentationRelationship,
     ) -> crate::OcctResult<*mut HandleStepReprRepresentationRelationship>;
+    /// Check if Handle<StepRepr_RepresentationRelationship> is null
+    pub fn HandleStepReprRepresentationRelationship_is_null(
+        self_: *const HandleStepReprRepresentationRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_RepresentationRelationship
     pub fn HandleStepReprRepresentationRelationship_get(
         handle: *const HandleStepReprRepresentationRelationship,
@@ -114797,6 +117215,10 @@ extern "C" {
     pub fn HandleStepReprRepresentationRelationshipWithTransformation_clone(
         self_: *const HandleStepReprRepresentationRelationshipWithTransformation,
     ) -> crate::OcctResult<*mut HandleStepReprRepresentationRelationshipWithTransformation>;
+    /// Check if Handle<StepRepr_RepresentationRelationshipWithTransformation> is null
+    pub fn HandleStepReprRepresentationRelationshipWithTransformation_is_null(
+        self_: *const HandleStepReprRepresentationRelationshipWithTransformation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_RepresentationRelationshipWithTransformation
     pub fn HandleStepReprRepresentationRelationshipWithTransformation_get(
         handle: *const HandleStepReprRepresentationRelationshipWithTransformation,
@@ -115079,6 +117501,8 @@ extern "C" {
     pub fn HandleStepReprShapeAspect_clone(
         self_: *const HandleStepReprShapeAspect,
     ) -> crate::OcctResult<*mut HandleStepReprShapeAspect>;
+    /// Check if Handle<StepRepr_ShapeAspect> is null
+    pub fn HandleStepReprShapeAspect_is_null(self_: *const HandleStepReprShapeAspect) -> bool;
     /// Dereference Handle to get *const StepRepr_ShapeAspect
     pub fn HandleStepReprShapeAspect_get(
         handle: *const HandleStepReprShapeAspect,
@@ -115274,6 +117698,10 @@ extern "C" {
     pub fn HandleStepReprShapeAspectDerivingRelationship_clone(
         self_: *const HandleStepReprShapeAspectDerivingRelationship,
     ) -> crate::OcctResult<*mut HandleStepReprShapeAspectDerivingRelationship>;
+    /// Check if Handle<StepRepr_ShapeAspectDerivingRelationship> is null
+    pub fn HandleStepReprShapeAspectDerivingRelationship_is_null(
+        self_: *const HandleStepReprShapeAspectDerivingRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ShapeAspectDerivingRelationship
     pub fn HandleStepReprShapeAspectDerivingRelationship_get(
         handle: *const HandleStepReprShapeAspectDerivingRelationship,
@@ -115455,6 +117883,10 @@ extern "C" {
     pub fn HandleStepReprShapeAspectRelationship_clone(
         self_: *const HandleStepReprShapeAspectRelationship,
     ) -> crate::OcctResult<*mut HandleStepReprShapeAspectRelationship>;
+    /// Check if Handle<StepRepr_ShapeAspectRelationship> is null
+    pub fn HandleStepReprShapeAspectRelationship_is_null(
+        self_: *const HandleStepReprShapeAspectRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ShapeAspectRelationship
     pub fn HandleStepReprShapeAspectRelationship_get(
         handle: *const HandleStepReprShapeAspectRelationship,
@@ -115568,6 +118000,10 @@ extern "C" {
     pub fn HandleStepReprShapeAspectTransition_clone(
         self_: *const HandleStepReprShapeAspectTransition,
     ) -> crate::OcctResult<*mut HandleStepReprShapeAspectTransition>;
+    /// Check if Handle<StepRepr_ShapeAspectTransition> is null
+    pub fn HandleStepReprShapeAspectTransition_is_null(
+        self_: *const HandleStepReprShapeAspectTransition,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ShapeAspectTransition
     pub fn HandleStepReprShapeAspectTransition_get(
         handle: *const HandleStepReprShapeAspectTransition,
@@ -115813,6 +118249,10 @@ extern "C" {
     pub fn HandleStepReprShapeRepresentationRelationship_clone(
         self_: *const HandleStepReprShapeRepresentationRelationship,
     ) -> crate::OcctResult<*mut HandleStepReprShapeRepresentationRelationship>;
+    /// Check if Handle<StepRepr_ShapeRepresentationRelationship> is null
+    pub fn HandleStepReprShapeRepresentationRelationship_is_null(
+        self_: *const HandleStepReprShapeRepresentationRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ShapeRepresentationRelationship
     pub fn HandleStepReprShapeRepresentationRelationship_get(
         handle: *const HandleStepReprShapeRepresentationRelationship,
@@ -115976,6 +118416,10 @@ extern "C" {
     pub fn HandleStepReprShapeRepresentationRelationshipWithTransformation_clone(
         self_: *const HandleStepReprShapeRepresentationRelationshipWithTransformation,
     ) -> crate::OcctResult<*mut HandleStepReprShapeRepresentationRelationshipWithTransformation>;
+    /// Check if Handle<StepRepr_ShapeRepresentationRelationshipWithTransformation> is null
+    pub fn HandleStepReprShapeRepresentationRelationshipWithTransformation_is_null(
+        self_: *const HandleStepReprShapeRepresentationRelationshipWithTransformation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ShapeRepresentationRelationshipWithTransformation
     pub fn HandleStepReprShapeRepresentationRelationshipWithTransformation_get(
         handle: *const HandleStepReprShapeRepresentationRelationshipWithTransformation,
@@ -116195,6 +118639,10 @@ extern "C" {
     pub fn HandleStepReprSpecifiedHigherUsageOccurrence_clone(
         self_: *const HandleStepReprSpecifiedHigherUsageOccurrence,
     ) -> crate::OcctResult<*mut HandleStepReprSpecifiedHigherUsageOccurrence>;
+    /// Check if Handle<StepRepr_SpecifiedHigherUsageOccurrence> is null
+    pub fn HandleStepReprSpecifiedHigherUsageOccurrence_is_null(
+        self_: *const HandleStepReprSpecifiedHigherUsageOccurrence,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_SpecifiedHigherUsageOccurrence
     pub fn HandleStepReprSpecifiedHigherUsageOccurrence_get(
         handle: *const HandleStepReprSpecifiedHigherUsageOccurrence,
@@ -116364,6 +118812,10 @@ extern "C" {
     pub fn HandleStepReprStructuralResponseProperty_clone(
         self_: *const HandleStepReprStructuralResponseProperty,
     ) -> crate::OcctResult<*mut HandleStepReprStructuralResponseProperty>;
+    /// Check if Handle<StepRepr_StructuralResponseProperty> is null
+    pub fn HandleStepReprStructuralResponseProperty_is_null(
+        self_: *const HandleStepReprStructuralResponseProperty,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_StructuralResponseProperty
     pub fn HandleStepReprStructuralResponseProperty_get(
         handle: *const HandleStepReprStructuralResponseProperty,
@@ -116494,6 +118946,10 @@ extern "C" {
     pub fn HandleStepReprStructuralResponsePropertyDefinitionRepresentation_clone(
         self_: *const HandleStepReprStructuralResponsePropertyDefinitionRepresentation,
     ) -> crate::OcctResult<*mut HandleStepReprStructuralResponsePropertyDefinitionRepresentation>;
+    /// Check if Handle<StepRepr_StructuralResponsePropertyDefinitionRepresentation> is null
+    pub fn HandleStepReprStructuralResponsePropertyDefinitionRepresentation_is_null(
+        self_: *const HandleStepReprStructuralResponsePropertyDefinitionRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_StructuralResponsePropertyDefinitionRepresentation
     pub fn HandleStepReprStructuralResponsePropertyDefinitionRepresentation_get(
         handle: *const HandleStepReprStructuralResponsePropertyDefinitionRepresentation,
@@ -116609,6 +119065,10 @@ extern "C" {
     pub fn HandleStepReprSuppliedPartRelationship_clone(
         self_: *const HandleStepReprSuppliedPartRelationship,
     ) -> crate::OcctResult<*mut HandleStepReprSuppliedPartRelationship>;
+    /// Check if Handle<StepRepr_SuppliedPartRelationship> is null
+    pub fn HandleStepReprSuppliedPartRelationship_is_null(
+        self_: *const HandleStepReprSuppliedPartRelationship,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_SuppliedPartRelationship
     pub fn HandleStepReprSuppliedPartRelationship_get(
         handle: *const HandleStepReprSuppliedPartRelationship,
@@ -116768,6 +119228,8 @@ extern "C" {
     pub fn HandleStepReprTangent_clone(
         self_: *const HandleStepReprTangent,
     ) -> crate::OcctResult<*mut HandleStepReprTangent>;
+    /// Check if Handle<StepRepr_Tangent> is null
+    pub fn HandleStepReprTangent_is_null(self_: *const HandleStepReprTangent) -> bool;
     /// Dereference Handle to get *const StepRepr_Tangent
     pub fn HandleStepReprTangent_get(
         handle: *const HandleStepReprTangent,
@@ -117009,6 +119471,8 @@ extern "C" {
     pub fn HandleStepReprValueRange_clone(
         self_: *const HandleStepReprValueRange,
     ) -> crate::OcctResult<*mut HandleStepReprValueRange>;
+    /// Check if Handle<StepRepr_ValueRange> is null
+    pub fn HandleStepReprValueRange_is_null(self_: *const HandleStepReprValueRange) -> bool;
     /// Dereference Handle to get *const StepRepr_ValueRange
     pub fn HandleStepReprValueRange_get(
         handle: *const HandleStepReprValueRange,
@@ -117158,6 +119622,10 @@ extern "C" {
     pub fn HandleStepReprValueRepresentationItem_clone(
         self_: *const HandleStepReprValueRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepReprValueRepresentationItem>;
+    /// Check if Handle<StepRepr_ValueRepresentationItem> is null
+    pub fn HandleStepReprValueRepresentationItem_is_null(
+        self_: *const HandleStepReprValueRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepRepr_ValueRepresentationItem
     pub fn HandleStepReprValueRepresentationItem_get(
         handle: *const HandleStepReprValueRepresentationItem,
@@ -117262,6 +119730,8 @@ extern "C" {
     pub fn HandleStepSelectActivator_clone(
         self_: *const HandleStepSelectActivator,
     ) -> crate::OcctResult<*mut HandleStepSelectActivator>;
+    /// Check if Handle<StepSelect_Activator> is null
+    pub fn HandleStepSelectActivator_is_null(self_: *const HandleStepSelectActivator) -> bool;
     /// Dereference Handle to get *const StepSelect_Activator
     pub fn HandleStepSelectActivator_get(
         handle: *const HandleStepSelectActivator,
@@ -117347,6 +119817,9 @@ extern "C" {
     pub fn HandleStepSelectFileModifier_clone(
         self_: *const HandleStepSelectFileModifier,
     ) -> crate::OcctResult<*mut HandleStepSelectFileModifier>;
+    /// Check if Handle<StepSelect_FileModifier> is null
+    pub fn HandleStepSelectFileModifier_is_null(self_: *const HandleStepSelectFileModifier)
+        -> bool;
     /// Dereference Handle to get *const StepSelect_FileModifier
     pub fn HandleStepSelectFileModifier_get(
         handle: *const HandleStepSelectFileModifier,
@@ -117525,6 +119998,8 @@ extern "C" {
     pub fn HandleStepSelectFloatFormat_clone(
         self_: *const HandleStepSelectFloatFormat,
     ) -> crate::OcctResult<*mut HandleStepSelectFloatFormat>;
+    /// Check if Handle<StepSelect_FloatFormat> is null
+    pub fn HandleStepSelectFloatFormat_is_null(self_: *const HandleStepSelectFloatFormat) -> bool;
     /// Dereference Handle to get *const StepSelect_FloatFormat
     pub fn HandleStepSelectFloatFormat_get(
         handle: *const HandleStepSelectFloatFormat,
@@ -117674,6 +120149,10 @@ extern "C" {
     pub fn HandleStepSelectModelModifier_clone(
         self_: *const HandleStepSelectModelModifier,
     ) -> crate::OcctResult<*mut HandleStepSelectModelModifier>;
+    /// Check if Handle<StepSelect_ModelModifier> is null
+    pub fn HandleStepSelectModelModifier_is_null(
+        self_: *const HandleStepSelectModelModifier,
+    ) -> bool;
     /// Dereference Handle to get *const StepSelect_ModelModifier
     pub fn HandleStepSelectModelModifier_get(
         handle: *const HandleStepSelectModelModifier,
@@ -117828,6 +120307,8 @@ extern "C" {
     pub fn HandleStepSelectStepType_clone(
         self_: *const HandleStepSelectStepType,
     ) -> crate::OcctResult<*mut HandleStepSelectStepType>;
+    /// Check if Handle<StepSelect_StepType> is null
+    pub fn HandleStepSelectStepType_is_null(self_: *const HandleStepSelectStepType) -> bool;
     /// Dereference Handle to get *const StepSelect_StepType
     pub fn HandleStepSelectStepType_get(
         handle: *const HandleStepSelectStepType,
@@ -118012,6 +120493,8 @@ extern "C" {
     pub fn HandleStepSelectWorkLibrary_clone(
         self_: *const HandleStepSelectWorkLibrary,
     ) -> crate::OcctResult<*mut HandleStepSelectWorkLibrary>;
+    /// Check if Handle<StepSelect_WorkLibrary> is null
+    pub fn HandleStepSelectWorkLibrary_is_null(self_: *const HandleStepSelectWorkLibrary) -> bool;
     /// Dereference Handle to get *const StepSelect_WorkLibrary
     pub fn HandleStepSelectWorkLibrary_get(
         handle: *const HandleStepSelectWorkLibrary,
@@ -118123,6 +120606,10 @@ extern "C" {
     pub fn HandleStepShapeAdvancedBrepShapeRepresentation_clone(
         self_: *const HandleStepShapeAdvancedBrepShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeAdvancedBrepShapeRepresentation>;
+    /// Check if Handle<StepShape_AdvancedBrepShapeRepresentation> is null
+    pub fn HandleStepShapeAdvancedBrepShapeRepresentation_is_null(
+        self_: *const HandleStepShapeAdvancedBrepShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_AdvancedBrepShapeRepresentation
     pub fn HandleStepShapeAdvancedBrepShapeRepresentation_get(
         handle: *const HandleStepShapeAdvancedBrepShapeRepresentation,
@@ -118279,6 +120766,8 @@ extern "C" {
     pub fn HandleStepShapeAdvancedFace_clone(
         self_: *const HandleStepShapeAdvancedFace,
     ) -> crate::OcctResult<*mut HandleStepShapeAdvancedFace>;
+    /// Check if Handle<StepShape_AdvancedFace> is null
+    pub fn HandleStepShapeAdvancedFace_is_null(self_: *const HandleStepShapeAdvancedFace) -> bool;
     /// Dereference Handle to get *const StepShape_AdvancedFace
     pub fn HandleStepShapeAdvancedFace_get(
         handle: *const HandleStepShapeAdvancedFace,
@@ -118456,6 +120945,10 @@ extern "C" {
     pub fn HandleStepShapeAngularLocation_clone(
         self_: *const HandleStepShapeAngularLocation,
     ) -> crate::OcctResult<*mut HandleStepShapeAngularLocation>;
+    /// Check if Handle<StepShape_AngularLocation> is null
+    pub fn HandleStepShapeAngularLocation_is_null(
+        self_: *const HandleStepShapeAngularLocation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_AngularLocation
     pub fn HandleStepShapeAngularLocation_get(
         handle: *const HandleStepShapeAngularLocation,
@@ -118601,6 +121094,8 @@ extern "C" {
     pub fn HandleStepShapeAngularSize_clone(
         self_: *const HandleStepShapeAngularSize,
     ) -> crate::OcctResult<*mut HandleStepShapeAngularSize>;
+    /// Check if Handle<StepShape_AngularSize> is null
+    pub fn HandleStepShapeAngularSize_is_null(self_: *const HandleStepShapeAngularSize) -> bool;
     /// Dereference Handle to get *const StepShape_AngularSize
     pub fn HandleStepShapeAngularSize_get(
         handle: *const HandleStepShapeAngularSize,
@@ -118741,6 +121236,8 @@ extern "C" {
     pub fn HandleStepShapeBlock_clone(
         self_: *const HandleStepShapeBlock,
     ) -> crate::OcctResult<*mut HandleStepShapeBlock>;
+    /// Check if Handle<StepShape_Block> is null
+    pub fn HandleStepShapeBlock_is_null(self_: *const HandleStepShapeBlock) -> bool;
     /// Dereference Handle to get *const StepShape_Block
     pub fn HandleStepShapeBlock_get(
         handle: *const HandleStepShapeBlock,
@@ -118931,6 +121428,9 @@ extern "C" {
     pub fn HandleStepShapeBooleanResult_clone(
         self_: *const HandleStepShapeBooleanResult,
     ) -> crate::OcctResult<*mut HandleStepShapeBooleanResult>;
+    /// Check if Handle<StepShape_BooleanResult> is null
+    pub fn HandleStepShapeBooleanResult_is_null(self_: *const HandleStepShapeBooleanResult)
+        -> bool;
     /// Dereference Handle to get *const StepShape_BooleanResult
     pub fn HandleStepShapeBooleanResult_get(
         handle: *const HandleStepShapeBooleanResult,
@@ -119061,6 +121561,8 @@ extern "C" {
     pub fn HandleStepShapeBoxDomain_clone(
         self_: *const HandleStepShapeBoxDomain,
     ) -> crate::OcctResult<*mut HandleStepShapeBoxDomain>;
+    /// Check if Handle<StepShape_BoxDomain> is null
+    pub fn HandleStepShapeBoxDomain_is_null(self_: *const HandleStepShapeBoxDomain) -> bool;
     /// Dereference Handle to get *const StepShape_BoxDomain
     pub fn HandleStepShapeBoxDomain_get(
         handle: *const HandleStepShapeBoxDomain,
@@ -119175,6 +121677,10 @@ extern "C" {
     pub fn HandleStepShapeBoxedHalfSpace_clone(
         self_: *const HandleStepShapeBoxedHalfSpace,
     ) -> crate::OcctResult<*mut HandleStepShapeBoxedHalfSpace>;
+    /// Check if Handle<StepShape_BoxedHalfSpace> is null
+    pub fn HandleStepShapeBoxedHalfSpace_is_null(
+        self_: *const HandleStepShapeBoxedHalfSpace,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_BoxedHalfSpace
     pub fn HandleStepShapeBoxedHalfSpace_get(
         handle: *const HandleStepShapeBoxedHalfSpace,
@@ -119344,6 +121850,9 @@ extern "C" {
     pub fn HandleStepShapeBrepWithVoids_clone(
         self_: *const HandleStepShapeBrepWithVoids,
     ) -> crate::OcctResult<*mut HandleStepShapeBrepWithVoids>;
+    /// Check if Handle<StepShape_BrepWithVoids> is null
+    pub fn HandleStepShapeBrepWithVoids_is_null(self_: *const HandleStepShapeBrepWithVoids)
+        -> bool;
     /// Dereference Handle to get *const StepShape_BrepWithVoids
     pub fn HandleStepShapeBrepWithVoids_get(
         handle: *const HandleStepShapeBrepWithVoids,
@@ -119475,6 +121984,8 @@ extern "C" {
     pub fn HandleStepShapeClosedShell_clone(
         self_: *const HandleStepShapeClosedShell,
     ) -> crate::OcctResult<*mut HandleStepShapeClosedShell>;
+    /// Check if Handle<StepShape_ClosedShell> is null
+    pub fn HandleStepShapeClosedShell_is_null(self_: *const HandleStepShapeClosedShell) -> bool;
     /// Dereference Handle to get *const StepShape_ClosedShell
     pub fn HandleStepShapeClosedShell_get(
         handle: *const HandleStepShapeClosedShell,
@@ -119619,6 +122130,10 @@ extern "C" {
     pub fn HandleStepShapeCompoundShapeRepresentation_clone(
         self_: *const HandleStepShapeCompoundShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeCompoundShapeRepresentation>;
+    /// Check if Handle<StepShape_CompoundShapeRepresentation> is null
+    pub fn HandleStepShapeCompoundShapeRepresentation_is_null(
+        self_: *const HandleStepShapeCompoundShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_CompoundShapeRepresentation
     pub fn HandleStepShapeCompoundShapeRepresentation_get(
         handle: *const HandleStepShapeCompoundShapeRepresentation,
@@ -119774,6 +122289,10 @@ extern "C" {
     pub fn HandleStepShapeConnectedEdgeSet_clone(
         self_: *const HandleStepShapeConnectedEdgeSet,
     ) -> crate::OcctResult<*mut HandleStepShapeConnectedEdgeSet>;
+    /// Check if Handle<StepShape_ConnectedEdgeSet> is null
+    pub fn HandleStepShapeConnectedEdgeSet_is_null(
+        self_: *const HandleStepShapeConnectedEdgeSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ConnectedEdgeSet
     pub fn HandleStepShapeConnectedEdgeSet_get(
         handle: *const HandleStepShapeConnectedEdgeSet,
@@ -119904,6 +122423,10 @@ extern "C" {
     pub fn HandleStepShapeConnectedFaceSet_clone(
         self_: *const HandleStepShapeConnectedFaceSet,
     ) -> crate::OcctResult<*mut HandleStepShapeConnectedFaceSet>;
+    /// Check if Handle<StepShape_ConnectedFaceSet> is null
+    pub fn HandleStepShapeConnectedFaceSet_is_null(
+        self_: *const HandleStepShapeConnectedFaceSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ConnectedFaceSet
     pub fn HandleStepShapeConnectedFaceSet_get(
         handle: *const HandleStepShapeConnectedFaceSet,
@@ -120028,6 +122551,10 @@ extern "C" {
     pub fn HandleStepShapeConnectedFaceShapeRepresentation_clone(
         self_: *const HandleStepShapeConnectedFaceShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeConnectedFaceShapeRepresentation>;
+    /// Check if Handle<StepShape_ConnectedFaceShapeRepresentation> is null
+    pub fn HandleStepShapeConnectedFaceShapeRepresentation_is_null(
+        self_: *const HandleStepShapeConnectedFaceShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ConnectedFaceShapeRepresentation
     pub fn HandleStepShapeConnectedFaceShapeRepresentation_get(
         handle: *const HandleStepShapeConnectedFaceShapeRepresentation,
@@ -120192,6 +122719,10 @@ extern "C" {
     pub fn HandleStepShapeConnectedFaceSubSet_clone(
         self_: *const HandleStepShapeConnectedFaceSubSet,
     ) -> crate::OcctResult<*mut HandleStepShapeConnectedFaceSubSet>;
+    /// Check if Handle<StepShape_ConnectedFaceSubSet> is null
+    pub fn HandleStepShapeConnectedFaceSubSet_is_null(
+        self_: *const HandleStepShapeConnectedFaceSubSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ConnectedFaceSubSet
     pub fn HandleStepShapeConnectedFaceSubSet_get(
         handle: *const HandleStepShapeConnectedFaceSubSet,
@@ -120334,6 +122865,10 @@ extern "C" {
     pub fn HandleStepShapeContextDependentShapeRepresentation_clone(
         self_: *const HandleStepShapeContextDependentShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeContextDependentShapeRepresentation>;
+    /// Check if Handle<StepShape_ContextDependentShapeRepresentation> is null
+    pub fn HandleStepShapeContextDependentShapeRepresentation_is_null(
+        self_: *const HandleStepShapeContextDependentShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ContextDependentShapeRepresentation
     pub fn HandleStepShapeContextDependentShapeRepresentation_get(
         handle: *const HandleStepShapeContextDependentShapeRepresentation,
@@ -120577,6 +123112,10 @@ extern "C" {
     pub fn HandleStepShapeCsgShapeRepresentation_clone(
         self_: *const HandleStepShapeCsgShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeCsgShapeRepresentation>;
+    /// Check if Handle<StepShape_CsgShapeRepresentation> is null
+    pub fn HandleStepShapeCsgShapeRepresentation_is_null(
+        self_: *const HandleStepShapeCsgShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_CsgShapeRepresentation
     pub fn HandleStepShapeCsgShapeRepresentation_get(
         handle: *const HandleStepShapeCsgShapeRepresentation,
@@ -120739,6 +123278,8 @@ extern "C" {
     pub fn HandleStepShapeCsgSolid_clone(
         self_: *const HandleStepShapeCsgSolid,
     ) -> crate::OcctResult<*mut HandleStepShapeCsgSolid>;
+    /// Check if Handle<StepShape_CsgSolid> is null
+    pub fn HandleStepShapeCsgSolid_is_null(self_: *const HandleStepShapeCsgSolid) -> bool;
     /// Dereference Handle to get *const StepShape_CsgSolid
     pub fn HandleStepShapeCsgSolid_get(
         handle: *const HandleStepShapeCsgSolid,
@@ -120855,6 +123396,10 @@ extern "C" {
     pub fn HandleStepShapeDefinitionalRepresentationAndShapeRepresentation_clone(
         self_: *const HandleStepShapeDefinitionalRepresentationAndShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeDefinitionalRepresentationAndShapeRepresentation>;
+    /// Check if Handle<StepShape_DefinitionalRepresentationAndShapeRepresentation> is null
+    pub fn HandleStepShapeDefinitionalRepresentationAndShapeRepresentation_is_null(
+        self_: *const HandleStepShapeDefinitionalRepresentationAndShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_DefinitionalRepresentationAndShapeRepresentation
     pub fn HandleStepShapeDefinitionalRepresentationAndShapeRepresentation_get(
         handle: *const HandleStepShapeDefinitionalRepresentationAndShapeRepresentation,
@@ -121113,6 +123658,10 @@ extern "C" {
     pub fn HandleStepShapeDimensionalCharacteristicRepresentation_clone(
         self_: *const HandleStepShapeDimensionalCharacteristicRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeDimensionalCharacteristicRepresentation>;
+    /// Check if Handle<StepShape_DimensionalCharacteristicRepresentation> is null
+    pub fn HandleStepShapeDimensionalCharacteristicRepresentation_is_null(
+        self_: *const HandleStepShapeDimensionalCharacteristicRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_DimensionalCharacteristicRepresentation
     pub fn HandleStepShapeDimensionalCharacteristicRepresentation_get(
         handle: *const HandleStepShapeDimensionalCharacteristicRepresentation,
@@ -121198,6 +123747,10 @@ extern "C" {
     pub fn HandleStepShapeDimensionalLocation_clone(
         self_: *const HandleStepShapeDimensionalLocation,
     ) -> crate::OcctResult<*mut HandleStepShapeDimensionalLocation>;
+    /// Check if Handle<StepShape_DimensionalLocation> is null
+    pub fn HandleStepShapeDimensionalLocation_is_null(
+        self_: *const HandleStepShapeDimensionalLocation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_DimensionalLocation
     pub fn HandleStepShapeDimensionalLocation_get(
         handle: *const HandleStepShapeDimensionalLocation,
@@ -121377,6 +123930,10 @@ extern "C" {
     pub fn HandleStepShapeDimensionalLocationWithPath_clone(
         self_: *const HandleStepShapeDimensionalLocationWithPath,
     ) -> crate::OcctResult<*mut HandleStepShapeDimensionalLocationWithPath>;
+    /// Check if Handle<StepShape_DimensionalLocationWithPath> is null
+    pub fn HandleStepShapeDimensionalLocationWithPath_is_null(
+        self_: *const HandleStepShapeDimensionalLocationWithPath,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_DimensionalLocationWithPath
     pub fn HandleStepShapeDimensionalLocationWithPath_get(
         handle: *const HandleStepShapeDimensionalLocationWithPath,
@@ -121522,6 +124079,10 @@ extern "C" {
     pub fn HandleStepShapeDimensionalSize_clone(
         self_: *const HandleStepShapeDimensionalSize,
     ) -> crate::OcctResult<*mut HandleStepShapeDimensionalSize>;
+    /// Check if Handle<StepShape_DimensionalSize> is null
+    pub fn HandleStepShapeDimensionalSize_is_null(
+        self_: *const HandleStepShapeDimensionalSize,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_DimensionalSize
     pub fn HandleStepShapeDimensionalSize_get(
         handle: *const HandleStepShapeDimensionalSize,
@@ -121633,6 +124194,10 @@ extern "C" {
     pub fn HandleStepShapeDimensionalSizeWithPath_clone(
         self_: *const HandleStepShapeDimensionalSizeWithPath,
     ) -> crate::OcctResult<*mut HandleStepShapeDimensionalSizeWithPath>;
+    /// Check if Handle<StepShape_DimensionalSizeWithPath> is null
+    pub fn HandleStepShapeDimensionalSizeWithPath_is_null(
+        self_: *const HandleStepShapeDimensionalSizeWithPath,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_DimensionalSizeWithPath
     pub fn HandleStepShapeDimensionalSizeWithPath_get(
         handle: *const HandleStepShapeDimensionalSizeWithPath,
@@ -121750,6 +124315,10 @@ extern "C" {
     pub fn HandleStepShapeDirectedDimensionalLocation_clone(
         self_: *const HandleStepShapeDirectedDimensionalLocation,
     ) -> crate::OcctResult<*mut HandleStepShapeDirectedDimensionalLocation>;
+    /// Check if Handle<StepShape_DirectedDimensionalLocation> is null
+    pub fn HandleStepShapeDirectedDimensionalLocation_is_null(
+        self_: *const HandleStepShapeDirectedDimensionalLocation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_DirectedDimensionalLocation
     pub fn HandleStepShapeDirectedDimensionalLocation_get(
         handle: *const HandleStepShapeDirectedDimensionalLocation,
@@ -121920,6 +124489,8 @@ extern "C" {
     pub fn HandleStepShapeEdge_clone(
         self_: *const HandleStepShapeEdge,
     ) -> crate::OcctResult<*mut HandleStepShapeEdge>;
+    /// Check if Handle<StepShape_Edge> is null
+    pub fn HandleStepShapeEdge_is_null(self_: *const HandleStepShapeEdge) -> bool;
     /// Dereference Handle to get *const StepShape_Edge
     pub fn HandleStepShapeEdge_get(
         handle: *const HandleStepShapeEdge,
@@ -122070,6 +124641,10 @@ extern "C" {
     pub fn HandleStepShapeEdgeBasedWireframeModel_clone(
         self_: *const HandleStepShapeEdgeBasedWireframeModel,
     ) -> crate::OcctResult<*mut HandleStepShapeEdgeBasedWireframeModel>;
+    /// Check if Handle<StepShape_EdgeBasedWireframeModel> is null
+    pub fn HandleStepShapeEdgeBasedWireframeModel_is_null(
+        self_: *const HandleStepShapeEdgeBasedWireframeModel,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_EdgeBasedWireframeModel
     pub fn HandleStepShapeEdgeBasedWireframeModel_get(
         handle: *const HandleStepShapeEdgeBasedWireframeModel,
@@ -122182,6 +124757,10 @@ extern "C" {
     pub fn HandleStepShapeEdgeBasedWireframeShapeRepresentation_clone(
         self_: *const HandleStepShapeEdgeBasedWireframeShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeEdgeBasedWireframeShapeRepresentation>;
+    /// Check if Handle<StepShape_EdgeBasedWireframeShapeRepresentation> is null
+    pub fn HandleStepShapeEdgeBasedWireframeShapeRepresentation_is_null(
+        self_: *const HandleStepShapeEdgeBasedWireframeShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_EdgeBasedWireframeShapeRepresentation
     pub fn HandleStepShapeEdgeBasedWireframeShapeRepresentation_get(
         handle: *const HandleStepShapeEdgeBasedWireframeShapeRepresentation,
@@ -122356,6 +124935,8 @@ extern "C" {
     pub fn HandleStepShapeEdgeCurve_clone(
         self_: *const HandleStepShapeEdgeCurve,
     ) -> crate::OcctResult<*mut HandleStepShapeEdgeCurve>;
+    /// Check if Handle<StepShape_EdgeCurve> is null
+    pub fn HandleStepShapeEdgeCurve_is_null(self_: *const HandleStepShapeEdgeCurve) -> bool;
     /// Dereference Handle to get *const StepShape_EdgeCurve
     pub fn HandleStepShapeEdgeCurve_get(
         handle: *const HandleStepShapeEdgeCurve,
@@ -122515,6 +125096,8 @@ extern "C" {
     pub fn HandleStepShapeEdgeLoop_clone(
         self_: *const HandleStepShapeEdgeLoop,
     ) -> crate::OcctResult<*mut HandleStepShapeEdgeLoop>;
+    /// Check if Handle<StepShape_EdgeLoop> is null
+    pub fn HandleStepShapeEdgeLoop_is_null(self_: *const HandleStepShapeEdgeLoop) -> bool;
     /// Dereference Handle to get *const StepShape_EdgeLoop
     pub fn HandleStepShapeEdgeLoop_get(
         handle: *const HandleStepShapeEdgeLoop,
@@ -122669,6 +125252,10 @@ extern "C" {
     pub fn HandleStepShapeExtrudedAreaSolid_clone(
         self_: *const HandleStepShapeExtrudedAreaSolid,
     ) -> crate::OcctResult<*mut HandleStepShapeExtrudedAreaSolid>;
+    /// Check if Handle<StepShape_ExtrudedAreaSolid> is null
+    pub fn HandleStepShapeExtrudedAreaSolid_is_null(
+        self_: *const HandleStepShapeExtrudedAreaSolid,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ExtrudedAreaSolid
     pub fn HandleStepShapeExtrudedAreaSolid_get(
         handle: *const HandleStepShapeExtrudedAreaSolid,
@@ -122836,6 +125423,10 @@ extern "C" {
     pub fn HandleStepShapeExtrudedFaceSolid_clone(
         self_: *const HandleStepShapeExtrudedFaceSolid,
     ) -> crate::OcctResult<*mut HandleStepShapeExtrudedFaceSolid>;
+    /// Check if Handle<StepShape_ExtrudedFaceSolid> is null
+    pub fn HandleStepShapeExtrudedFaceSolid_is_null(
+        self_: *const HandleStepShapeExtrudedFaceSolid,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ExtrudedFaceSolid
     pub fn HandleStepShapeExtrudedFaceSolid_get(
         handle: *const HandleStepShapeExtrudedFaceSolid,
@@ -122980,6 +125571,8 @@ extern "C" {
     pub fn HandleStepShapeFace_clone(
         self_: *const HandleStepShapeFace,
     ) -> crate::OcctResult<*mut HandleStepShapeFace>;
+    /// Check if Handle<StepShape_Face> is null
+    pub fn HandleStepShapeFace_is_null(self_: *const HandleStepShapeFace) -> bool;
     /// Dereference Handle to get *const StepShape_Face
     pub fn HandleStepShapeFace_get(
         handle: *const HandleStepShapeFace,
@@ -123120,6 +125713,10 @@ extern "C" {
     pub fn HandleStepShapeFaceBasedSurfaceModel_clone(
         self_: *const HandleStepShapeFaceBasedSurfaceModel,
     ) -> crate::OcctResult<*mut HandleStepShapeFaceBasedSurfaceModel>;
+    /// Check if Handle<StepShape_FaceBasedSurfaceModel> is null
+    pub fn HandleStepShapeFaceBasedSurfaceModel_is_null(
+        self_: *const HandleStepShapeFaceBasedSurfaceModel,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_FaceBasedSurfaceModel
     pub fn HandleStepShapeFaceBasedSurfaceModel_get(
         handle: *const HandleStepShapeFaceBasedSurfaceModel,
@@ -123250,6 +125847,8 @@ extern "C" {
     pub fn HandleStepShapeFaceBound_clone(
         self_: *const HandleStepShapeFaceBound,
     ) -> crate::OcctResult<*mut HandleStepShapeFaceBound>;
+    /// Check if Handle<StepShape_FaceBound> is null
+    pub fn HandleStepShapeFaceBound_is_null(self_: *const HandleStepShapeFaceBound) -> bool;
     /// Dereference Handle to get *const StepShape_FaceBound
     pub fn HandleStepShapeFaceBound_get(
         handle: *const HandleStepShapeFaceBound,
@@ -123368,6 +125967,10 @@ extern "C" {
     pub fn HandleStepShapeFaceOuterBound_clone(
         self_: *const HandleStepShapeFaceOuterBound,
     ) -> crate::OcctResult<*mut HandleStepShapeFaceOuterBound>;
+    /// Check if Handle<StepShape_FaceOuterBound> is null
+    pub fn HandleStepShapeFaceOuterBound_is_null(
+        self_: *const HandleStepShapeFaceOuterBound,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_FaceOuterBound
     pub fn HandleStepShapeFaceOuterBound_get(
         handle: *const HandleStepShapeFaceOuterBound,
@@ -123537,6 +126140,8 @@ extern "C" {
     pub fn HandleStepShapeFaceSurface_clone(
         self_: *const HandleStepShapeFaceSurface,
     ) -> crate::OcctResult<*mut HandleStepShapeFaceSurface>;
+    /// Check if Handle<StepShape_FaceSurface> is null
+    pub fn HandleStepShapeFaceSurface_is_null(self_: *const HandleStepShapeFaceSurface) -> bool;
     /// Dereference Handle to get *const StepShape_FaceSurface
     pub fn HandleStepShapeFaceSurface_get(
         handle: *const HandleStepShapeFaceSurface,
@@ -123685,6 +126290,8 @@ extern "C" {
     pub fn HandleStepShapeFacetedBrep_clone(
         self_: *const HandleStepShapeFacetedBrep,
     ) -> crate::OcctResult<*mut HandleStepShapeFacetedBrep>;
+    /// Check if Handle<StepShape_FacetedBrep> is null
+    pub fn HandleStepShapeFacetedBrep_is_null(self_: *const HandleStepShapeFacetedBrep) -> bool;
     /// Dereference Handle to get *const StepShape_FacetedBrep
     pub fn HandleStepShapeFacetedBrep_get(
         handle: *const HandleStepShapeFacetedBrep,
@@ -123887,6 +126494,10 @@ extern "C" {
     pub fn HandleStepShapeFacetedBrepAndBrepWithVoids_clone(
         self_: *const HandleStepShapeFacetedBrepAndBrepWithVoids,
     ) -> crate::OcctResult<*mut HandleStepShapeFacetedBrepAndBrepWithVoids>;
+    /// Check if Handle<StepShape_FacetedBrepAndBrepWithVoids> is null
+    pub fn HandleStepShapeFacetedBrepAndBrepWithVoids_is_null(
+        self_: *const HandleStepShapeFacetedBrepAndBrepWithVoids,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_FacetedBrepAndBrepWithVoids
     pub fn HandleStepShapeFacetedBrepAndBrepWithVoids_get(
         handle: *const HandleStepShapeFacetedBrepAndBrepWithVoids,
@@ -124016,6 +126627,10 @@ extern "C" {
     pub fn HandleStepShapeFacetedBrepShapeRepresentation_clone(
         self_: *const HandleStepShapeFacetedBrepShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeFacetedBrepShapeRepresentation>;
+    /// Check if Handle<StepShape_FacetedBrepShapeRepresentation> is null
+    pub fn HandleStepShapeFacetedBrepShapeRepresentation_is_null(
+        self_: *const HandleStepShapeFacetedBrepShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_FacetedBrepShapeRepresentation
     pub fn HandleStepShapeFacetedBrepShapeRepresentation_get(
         handle: *const HandleStepShapeFacetedBrepShapeRepresentation,
@@ -124166,6 +126781,10 @@ extern "C" {
     pub fn HandleStepShapeGeometricCurveSet_clone(
         self_: *const HandleStepShapeGeometricCurveSet,
     ) -> crate::OcctResult<*mut HandleStepShapeGeometricCurveSet>;
+    /// Check if Handle<StepShape_GeometricCurveSet> is null
+    pub fn HandleStepShapeGeometricCurveSet_is_null(
+        self_: *const HandleStepShapeGeometricCurveSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_GeometricCurveSet
     pub fn HandleStepShapeGeometricCurveSet_get(
         handle: *const HandleStepShapeGeometricCurveSet,
@@ -124328,6 +126947,8 @@ extern "C" {
     pub fn HandleStepShapeGeometricSet_clone(
         self_: *const HandleStepShapeGeometricSet,
     ) -> crate::OcctResult<*mut HandleStepShapeGeometricSet>;
+    /// Check if Handle<StepShape_GeometricSet> is null
+    pub fn HandleStepShapeGeometricSet_is_null(self_: *const HandleStepShapeGeometricSet) -> bool;
     /// Dereference Handle to get *const StepShape_GeometricSet
     pub fn HandleStepShapeGeometricSet_get(
         handle: *const HandleStepShapeGeometricSet,
@@ -124554,6 +127175,10 @@ extern "C" {
     pub fn HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation_clone(
         self_: *const HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation>;
+    /// Check if Handle<StepShape_GeometricallyBoundedSurfaceShapeRepresentation> is null
+    pub fn HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation_is_null(
+        self_: *const HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_GeometricallyBoundedSurfaceShapeRepresentation
     pub fn HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation_get(
         handle: *const HandleStepShapeGeometricallyBoundedSurfaceShapeRepresentation,
@@ -124700,6 +127325,10 @@ extern "C" {
     pub fn HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation_clone(
         self_: *const HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation>;
+    /// Check if Handle<StepShape_GeometricallyBoundedWireframeShapeRepresentation> is null
+    pub fn HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation_is_null(
+        self_: *const HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_GeometricallyBoundedWireframeShapeRepresentation
     pub fn HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation_get(
         handle: *const HandleStepShapeGeometricallyBoundedWireframeShapeRepresentation,
@@ -124860,6 +127489,10 @@ extern "C" {
     pub fn HandleStepShapeHArray1OfConnectedEdgeSet_clone(
         self_: *const HandleStepShapeHArray1OfConnectedEdgeSet,
     ) -> crate::OcctResult<*mut HandleStepShapeHArray1OfConnectedEdgeSet>;
+    /// Check if Handle<StepShape_HArray1OfConnectedEdgeSet> is null
+    pub fn HandleStepShapeHArray1OfConnectedEdgeSet_is_null(
+        self_: *const HandleStepShapeHArray1OfConnectedEdgeSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_HArray1OfConnectedEdgeSet
     pub fn HandleStepShapeHArray1OfConnectedEdgeSet_get(
         handle: *const HandleStepShapeHArray1OfConnectedEdgeSet,
@@ -124969,6 +127602,10 @@ extern "C" {
     pub fn HandleStepShapeHArray1OfConnectedFaceSet_clone(
         self_: *const HandleStepShapeHArray1OfConnectedFaceSet,
     ) -> crate::OcctResult<*mut HandleStepShapeHArray1OfConnectedFaceSet>;
+    /// Check if Handle<StepShape_HArray1OfConnectedFaceSet> is null
+    pub fn HandleStepShapeHArray1OfConnectedFaceSet_is_null(
+        self_: *const HandleStepShapeHArray1OfConnectedFaceSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_HArray1OfConnectedFaceSet
     pub fn HandleStepShapeHArray1OfConnectedFaceSet_get(
         handle: *const HandleStepShapeHArray1OfConnectedFaceSet,
@@ -125072,6 +127709,9 @@ extern "C" {
     pub fn HandleStepShapeHArray1OfEdge_clone(
         self_: *const HandleStepShapeHArray1OfEdge,
     ) -> crate::OcctResult<*mut HandleStepShapeHArray1OfEdge>;
+    /// Check if Handle<StepShape_HArray1OfEdge> is null
+    pub fn HandleStepShapeHArray1OfEdge_is_null(self_: *const HandleStepShapeHArray1OfEdge)
+        -> bool;
     /// Dereference Handle to get *const StepShape_HArray1OfEdge
     pub fn HandleStepShapeHArray1OfEdge_get(
         handle: *const HandleStepShapeHArray1OfEdge,
@@ -125175,6 +127815,9 @@ extern "C" {
     pub fn HandleStepShapeHArray1OfFace_clone(
         self_: *const HandleStepShapeHArray1OfFace,
     ) -> crate::OcctResult<*mut HandleStepShapeHArray1OfFace>;
+    /// Check if Handle<StepShape_HArray1OfFace> is null
+    pub fn HandleStepShapeHArray1OfFace_is_null(self_: *const HandleStepShapeHArray1OfFace)
+        -> bool;
     /// Dereference Handle to get *const StepShape_HArray1OfFace
     pub fn HandleStepShapeHArray1OfFace_get(
         handle: *const HandleStepShapeHArray1OfFace,
@@ -125281,6 +127924,10 @@ extern "C" {
     pub fn HandleStepShapeHArray1OfFaceBound_clone(
         self_: *const HandleStepShapeHArray1OfFaceBound,
     ) -> crate::OcctResult<*mut HandleStepShapeHArray1OfFaceBound>;
+    /// Check if Handle<StepShape_HArray1OfFaceBound> is null
+    pub fn HandleStepShapeHArray1OfFaceBound_is_null(
+        self_: *const HandleStepShapeHArray1OfFaceBound,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_HArray1OfFaceBound
     pub fn HandleStepShapeHArray1OfFaceBound_get(
         handle: *const HandleStepShapeHArray1OfFaceBound,
@@ -125390,6 +128037,10 @@ extern "C" {
     pub fn HandleStepShapeHArray1OfGeometricSetSelect_clone(
         self_: *const HandleStepShapeHArray1OfGeometricSetSelect,
     ) -> crate::OcctResult<*mut HandleStepShapeHArray1OfGeometricSetSelect>;
+    /// Check if Handle<StepShape_HArray1OfGeometricSetSelect> is null
+    pub fn HandleStepShapeHArray1OfGeometricSetSelect_is_null(
+        self_: *const HandleStepShapeHArray1OfGeometricSetSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_HArray1OfGeometricSetSelect
     pub fn HandleStepShapeHArray1OfGeometricSetSelect_get(
         handle: *const HandleStepShapeHArray1OfGeometricSetSelect,
@@ -125499,6 +128150,10 @@ extern "C" {
     pub fn HandleStepShapeHArray1OfOrientedClosedShell_clone(
         self_: *const HandleStepShapeHArray1OfOrientedClosedShell,
     ) -> crate::OcctResult<*mut HandleStepShapeHArray1OfOrientedClosedShell>;
+    /// Check if Handle<StepShape_HArray1OfOrientedClosedShell> is null
+    pub fn HandleStepShapeHArray1OfOrientedClosedShell_is_null(
+        self_: *const HandleStepShapeHArray1OfOrientedClosedShell,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_HArray1OfOrientedClosedShell
     pub fn HandleStepShapeHArray1OfOrientedClosedShell_get(
         handle: *const HandleStepShapeHArray1OfOrientedClosedShell,
@@ -125606,6 +128261,10 @@ extern "C" {
     pub fn HandleStepShapeHArray1OfOrientedEdge_clone(
         self_: *const HandleStepShapeHArray1OfOrientedEdge,
     ) -> crate::OcctResult<*mut HandleStepShapeHArray1OfOrientedEdge>;
+    /// Check if Handle<StepShape_HArray1OfOrientedEdge> is null
+    pub fn HandleStepShapeHArray1OfOrientedEdge_is_null(
+        self_: *const HandleStepShapeHArray1OfOrientedEdge,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_HArray1OfOrientedEdge
     pub fn HandleStepShapeHArray1OfOrientedEdge_get(
         handle: *const HandleStepShapeHArray1OfOrientedEdge,
@@ -125715,6 +128374,10 @@ extern "C" {
     pub fn HandleStepShapeHArray1OfShapeDimensionRepresentationItem_clone(
         self_: *const HandleStepShapeHArray1OfShapeDimensionRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepShapeHArray1OfShapeDimensionRepresentationItem>;
+    /// Check if Handle<StepShape_HArray1OfShapeDimensionRepresentationItem> is null
+    pub fn HandleStepShapeHArray1OfShapeDimensionRepresentationItem_is_null(
+        self_: *const HandleStepShapeHArray1OfShapeDimensionRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_HArray1OfShapeDimensionRepresentationItem
     pub fn HandleStepShapeHArray1OfShapeDimensionRepresentationItem_get(
         handle: *const HandleStepShapeHArray1OfShapeDimensionRepresentationItem,
@@ -125818,6 +128481,10 @@ extern "C" {
     pub fn HandleStepShapeHArray1OfShell_clone(
         self_: *const HandleStepShapeHArray1OfShell,
     ) -> crate::OcctResult<*mut HandleStepShapeHArray1OfShell>;
+    /// Check if Handle<StepShape_HArray1OfShell> is null
+    pub fn HandleStepShapeHArray1OfShell_is_null(
+        self_: *const HandleStepShapeHArray1OfShell,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_HArray1OfShell
     pub fn HandleStepShapeHArray1OfShell_get(
         handle: *const HandleStepShapeHArray1OfShell,
@@ -125927,6 +128594,10 @@ extern "C" {
     pub fn HandleStepShapeHArray1OfValueQualifier_clone(
         self_: *const HandleStepShapeHArray1OfValueQualifier,
     ) -> crate::OcctResult<*mut HandleStepShapeHArray1OfValueQualifier>;
+    /// Check if Handle<StepShape_HArray1OfValueQualifier> is null
+    pub fn HandleStepShapeHArray1OfValueQualifier_is_null(
+        self_: *const HandleStepShapeHArray1OfValueQualifier,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_HArray1OfValueQualifier
     pub fn HandleStepShapeHArray1OfValueQualifier_get(
         handle: *const HandleStepShapeHArray1OfValueQualifier,
@@ -126041,6 +128712,10 @@ extern "C" {
     pub fn HandleStepShapeHalfSpaceSolid_clone(
         self_: *const HandleStepShapeHalfSpaceSolid,
     ) -> crate::OcctResult<*mut HandleStepShapeHalfSpaceSolid>;
+    /// Check if Handle<StepShape_HalfSpaceSolid> is null
+    pub fn HandleStepShapeHalfSpaceSolid_is_null(
+        self_: *const HandleStepShapeHalfSpaceSolid,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_HalfSpaceSolid
     pub fn HandleStepShapeHalfSpaceSolid_get(
         handle: *const HandleStepShapeHalfSpaceSolid,
@@ -126179,6 +128854,9 @@ extern "C" {
     pub fn HandleStepShapeLimitsAndFits_clone(
         self_: *const HandleStepShapeLimitsAndFits,
     ) -> crate::OcctResult<*mut HandleStepShapeLimitsAndFits>;
+    /// Check if Handle<StepShape_LimitsAndFits> is null
+    pub fn HandleStepShapeLimitsAndFits_is_null(self_: *const HandleStepShapeLimitsAndFits)
+        -> bool;
     /// Dereference Handle to get *const StepShape_LimitsAndFits
     pub fn HandleStepShapeLimitsAndFits_get(
         handle: *const HandleStepShapeLimitsAndFits,
@@ -126267,6 +128945,8 @@ extern "C" {
     pub fn HandleStepShapeLoop_clone(
         self_: *const HandleStepShapeLoop,
     ) -> crate::OcctResult<*mut HandleStepShapeLoop>;
+    /// Check if Handle<StepShape_Loop> is null
+    pub fn HandleStepShapeLoop_is_null(self_: *const HandleStepShapeLoop) -> bool;
     /// Dereference Handle to get *const StepShape_Loop
     pub fn HandleStepShapeLoop_get(
         handle: *const HandleStepShapeLoop,
@@ -126438,6 +129118,8 @@ extern "C" {
     pub fn HandleStepShapeLoopAndPath_clone(
         self_: *const HandleStepShapeLoopAndPath,
     ) -> crate::OcctResult<*mut HandleStepShapeLoopAndPath>;
+    /// Check if Handle<StepShape_LoopAndPath> is null
+    pub fn HandleStepShapeLoopAndPath_is_null(self_: *const HandleStepShapeLoopAndPath) -> bool;
     /// Dereference Handle to get *const StepShape_LoopAndPath
     pub fn HandleStepShapeLoopAndPath_get(
         handle: *const HandleStepShapeLoopAndPath,
@@ -126575,6 +129257,10 @@ extern "C" {
     pub fn HandleStepShapeManifoldSolidBrep_clone(
         self_: *const HandleStepShapeManifoldSolidBrep,
     ) -> crate::OcctResult<*mut HandleStepShapeManifoldSolidBrep>;
+    /// Check if Handle<StepShape_ManifoldSolidBrep> is null
+    pub fn HandleStepShapeManifoldSolidBrep_is_null(
+        self_: *const HandleStepShapeManifoldSolidBrep,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ManifoldSolidBrep
     pub fn HandleStepShapeManifoldSolidBrep_get(
         handle: *const HandleStepShapeManifoldSolidBrep,
@@ -126703,6 +129389,10 @@ extern "C" {
     pub fn HandleStepShapeManifoldSurfaceShapeRepresentation_clone(
         self_: *const HandleStepShapeManifoldSurfaceShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeManifoldSurfaceShapeRepresentation>;
+    /// Check if Handle<StepShape_ManifoldSurfaceShapeRepresentation> is null
+    pub fn HandleStepShapeManifoldSurfaceShapeRepresentation_is_null(
+        self_: *const HandleStepShapeManifoldSurfaceShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ManifoldSurfaceShapeRepresentation
     pub fn HandleStepShapeManifoldSurfaceShapeRepresentation_get(
         handle: *const HandleStepShapeManifoldSurfaceShapeRepresentation,
@@ -126890,6 +129580,10 @@ extern "C" {
     pub fn HandleStepShapeMeasureQualification_clone(
         self_: *const HandleStepShapeMeasureQualification,
     ) -> crate::OcctResult<*mut HandleStepShapeMeasureQualification>;
+    /// Check if Handle<StepShape_MeasureQualification> is null
+    pub fn HandleStepShapeMeasureQualification_is_null(
+        self_: *const HandleStepShapeMeasureQualification,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_MeasureQualification
     pub fn HandleStepShapeMeasureQualification_get(
         handle: *const HandleStepShapeMeasureQualification,
@@ -127022,6 +129716,10 @@ extern "C" {
     ) -> crate::OcctResult<
         *mut HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem,
     >;
+    /// Check if Handle<StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem> is null
+    pub fn HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem_is_null(
+        self_: *const HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem
     pub fn HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem_get(
         handle: *const HandleStepShapeMeasureRepresentationItemAndQualifiedRepresentationItem,
@@ -127130,6 +129828,10 @@ extern "C" {
     pub fn HandleStepShapeNonManifoldSurfaceShapeRepresentation_clone(
         self_: *const HandleStepShapeNonManifoldSurfaceShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeNonManifoldSurfaceShapeRepresentation>;
+    /// Check if Handle<StepShape_NonManifoldSurfaceShapeRepresentation> is null
+    pub fn HandleStepShapeNonManifoldSurfaceShapeRepresentation_is_null(
+        self_: *const HandleStepShapeNonManifoldSurfaceShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_NonManifoldSurfaceShapeRepresentation
     pub fn HandleStepShapeNonManifoldSurfaceShapeRepresentation_get(
         handle: *const HandleStepShapeNonManifoldSurfaceShapeRepresentation,
@@ -127277,6 +129979,8 @@ extern "C" {
     pub fn HandleStepShapeOpenShell_clone(
         self_: *const HandleStepShapeOpenShell,
     ) -> crate::OcctResult<*mut HandleStepShapeOpenShell>;
+    /// Check if Handle<StepShape_OpenShell> is null
+    pub fn HandleStepShapeOpenShell_is_null(self_: *const HandleStepShapeOpenShell) -> bool;
     /// Dereference Handle to get *const StepShape_OpenShell
     pub fn HandleStepShapeOpenShell_get(
         handle: *const HandleStepShapeOpenShell,
@@ -127478,6 +130182,10 @@ extern "C" {
     pub fn HandleStepShapeOrientedClosedShell_clone(
         self_: *const HandleStepShapeOrientedClosedShell,
     ) -> crate::OcctResult<*mut HandleStepShapeOrientedClosedShell>;
+    /// Check if Handle<StepShape_OrientedClosedShell> is null
+    pub fn HandleStepShapeOrientedClosedShell_is_null(
+        self_: *const HandleStepShapeOrientedClosedShell,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_OrientedClosedShell
     pub fn HandleStepShapeOrientedClosedShell_get(
         handle: *const HandleStepShapeOrientedClosedShell,
@@ -127643,6 +130351,8 @@ extern "C" {
     pub fn HandleStepShapeOrientedEdge_clone(
         self_: *const HandleStepShapeOrientedEdge,
     ) -> crate::OcctResult<*mut HandleStepShapeOrientedEdge>;
+    /// Check if Handle<StepShape_OrientedEdge> is null
+    pub fn HandleStepShapeOrientedEdge_is_null(self_: *const HandleStepShapeOrientedEdge) -> bool;
     /// Dereference Handle to get *const StepShape_OrientedEdge
     pub fn HandleStepShapeOrientedEdge_get(
         handle: *const HandleStepShapeOrientedEdge,
@@ -127812,6 +130522,8 @@ extern "C" {
     pub fn HandleStepShapeOrientedFace_clone(
         self_: *const HandleStepShapeOrientedFace,
     ) -> crate::OcctResult<*mut HandleStepShapeOrientedFace>;
+    /// Check if Handle<StepShape_OrientedFace> is null
+    pub fn HandleStepShapeOrientedFace_is_null(self_: *const HandleStepShapeOrientedFace) -> bool;
     /// Dereference Handle to get *const StepShape_OrientedFace
     pub fn HandleStepShapeOrientedFace_get(
         handle: *const HandleStepShapeOrientedFace,
@@ -127983,6 +130695,10 @@ extern "C" {
     pub fn HandleStepShapeOrientedOpenShell_clone(
         self_: *const HandleStepShapeOrientedOpenShell,
     ) -> crate::OcctResult<*mut HandleStepShapeOrientedOpenShell>;
+    /// Check if Handle<StepShape_OrientedOpenShell> is null
+    pub fn HandleStepShapeOrientedOpenShell_is_null(
+        self_: *const HandleStepShapeOrientedOpenShell,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_OrientedOpenShell
     pub fn HandleStepShapeOrientedOpenShell_get(
         handle: *const HandleStepShapeOrientedOpenShell,
@@ -128148,6 +130864,8 @@ extern "C" {
     pub fn HandleStepShapeOrientedPath_clone(
         self_: *const HandleStepShapeOrientedPath,
     ) -> crate::OcctResult<*mut HandleStepShapeOrientedPath>;
+    /// Check if Handle<StepShape_OrientedPath> is null
+    pub fn HandleStepShapeOrientedPath_is_null(self_: *const HandleStepShapeOrientedPath) -> bool;
     /// Dereference Handle to get *const StepShape_OrientedPath
     pub fn HandleStepShapeOrientedPath_get(
         handle: *const HandleStepShapeOrientedPath,
@@ -128279,6 +130997,8 @@ extern "C" {
     pub fn HandleStepShapePath_clone(
         self_: *const HandleStepShapePath,
     ) -> crate::OcctResult<*mut HandleStepShapePath>;
+    /// Check if Handle<StepShape_Path> is null
+    pub fn HandleStepShapePath_is_null(self_: *const HandleStepShapePath) -> bool;
     /// Dereference Handle to get *const StepShape_Path
     pub fn HandleStepShapePath_get(
         handle: *const HandleStepShapePath,
@@ -128399,6 +131119,10 @@ extern "C" {
     pub fn HandleStepShapePlusMinusTolerance_clone(
         self_: *const HandleStepShapePlusMinusTolerance,
     ) -> crate::OcctResult<*mut HandleStepShapePlusMinusTolerance>;
+    /// Check if Handle<StepShape_PlusMinusTolerance> is null
+    pub fn HandleStepShapePlusMinusTolerance_is_null(
+        self_: *const HandleStepShapePlusMinusTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_PlusMinusTolerance
     pub fn HandleStepShapePlusMinusTolerance_get(
         handle: *const HandleStepShapePlusMinusTolerance,
@@ -128492,6 +131216,10 @@ extern "C" {
     pub fn HandleStepShapePointRepresentation_clone(
         self_: *const HandleStepShapePointRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapePointRepresentation>;
+    /// Check if Handle<StepShape_PointRepresentation> is null
+    pub fn HandleStepShapePointRepresentation_is_null(
+        self_: *const HandleStepShapePointRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_PointRepresentation
     pub fn HandleStepShapePointRepresentation_get(
         handle: *const HandleStepShapePointRepresentation,
@@ -128663,6 +131391,8 @@ extern "C" {
     pub fn HandleStepShapePolyLoop_clone(
         self_: *const HandleStepShapePolyLoop,
     ) -> crate::OcctResult<*mut HandleStepShapePolyLoop>;
+    /// Check if Handle<StepShape_PolyLoop> is null
+    pub fn HandleStepShapePolyLoop_is_null(self_: *const HandleStepShapePolyLoop) -> bool;
     /// Dereference Handle to get *const StepShape_PolyLoop
     pub fn HandleStepShapePolyLoop_get(
         handle: *const HandleStepShapePolyLoop,
@@ -128774,6 +131504,10 @@ extern "C" {
     pub fn HandleStepShapePrecisionQualifier_clone(
         self_: *const HandleStepShapePrecisionQualifier,
     ) -> crate::OcctResult<*mut HandleStepShapePrecisionQualifier>;
+    /// Check if Handle<StepShape_PrecisionQualifier> is null
+    pub fn HandleStepShapePrecisionQualifier_is_null(
+        self_: *const HandleStepShapePrecisionQualifier,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_PrecisionQualifier
     pub fn HandleStepShapePrecisionQualifier_get(
         handle: *const HandleStepShapePrecisionQualifier,
@@ -128891,6 +131625,10 @@ extern "C" {
     pub fn HandleStepShapeQualifiedRepresentationItem_clone(
         self_: *const HandleStepShapeQualifiedRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepShapeQualifiedRepresentationItem>;
+    /// Check if Handle<StepShape_QualifiedRepresentationItem> is null
+    pub fn HandleStepShapeQualifiedRepresentationItem_is_null(
+        self_: *const HandleStepShapeQualifiedRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_QualifiedRepresentationItem
     pub fn HandleStepShapeQualifiedRepresentationItem_get(
         handle: *const HandleStepShapeQualifiedRepresentationItem,
@@ -129157,6 +131895,10 @@ extern "C" {
     pub fn HandleStepShapeRevolvedAreaSolid_clone(
         self_: *const HandleStepShapeRevolvedAreaSolid,
     ) -> crate::OcctResult<*mut HandleStepShapeRevolvedAreaSolid>;
+    /// Check if Handle<StepShape_RevolvedAreaSolid> is null
+    pub fn HandleStepShapeRevolvedAreaSolid_is_null(
+        self_: *const HandleStepShapeRevolvedAreaSolid,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_RevolvedAreaSolid
     pub fn HandleStepShapeRevolvedAreaSolid_get(
         handle: *const HandleStepShapeRevolvedAreaSolid,
@@ -129330,6 +132072,10 @@ extern "C" {
     pub fn HandleStepShapeRevolvedFaceSolid_clone(
         self_: *const HandleStepShapeRevolvedFaceSolid,
     ) -> crate::OcctResult<*mut HandleStepShapeRevolvedFaceSolid>;
+    /// Check if Handle<StepShape_RevolvedFaceSolid> is null
+    pub fn HandleStepShapeRevolvedFaceSolid_is_null(
+        self_: *const HandleStepShapeRevolvedFaceSolid,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_RevolvedFaceSolid
     pub fn HandleStepShapeRevolvedFaceSolid_get(
         handle: *const HandleStepShapeRevolvedFaceSolid,
@@ -129510,6 +132256,10 @@ extern "C" {
     pub fn HandleStepShapeRightAngularWedge_clone(
         self_: *const HandleStepShapeRightAngularWedge,
     ) -> crate::OcctResult<*mut HandleStepShapeRightAngularWedge>;
+    /// Check if Handle<StepShape_RightAngularWedge> is null
+    pub fn HandleStepShapeRightAngularWedge_is_null(
+        self_: *const HandleStepShapeRightAngularWedge,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_RightAngularWedge
     pub fn HandleStepShapeRightAngularWedge_get(
         handle: *const HandleStepShapeRightAngularWedge,
@@ -129663,6 +132413,10 @@ extern "C" {
     pub fn HandleStepShapeRightCircularCone_clone(
         self_: *const HandleStepShapeRightCircularCone,
     ) -> crate::OcctResult<*mut HandleStepShapeRightCircularCone>;
+    /// Check if Handle<StepShape_RightCircularCone> is null
+    pub fn HandleStepShapeRightCircularCone_is_null(
+        self_: *const HandleStepShapeRightCircularCone,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_RightCircularCone
     pub fn HandleStepShapeRightCircularCone_get(
         handle: *const HandleStepShapeRightCircularCone,
@@ -129808,6 +132562,10 @@ extern "C" {
     pub fn HandleStepShapeRightCircularCylinder_clone(
         self_: *const HandleStepShapeRightCircularCylinder,
     ) -> crate::OcctResult<*mut HandleStepShapeRightCircularCylinder>;
+    /// Check if Handle<StepShape_RightCircularCylinder> is null
+    pub fn HandleStepShapeRightCircularCylinder_is_null(
+        self_: *const HandleStepShapeRightCircularCylinder,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_RightCircularCylinder
     pub fn HandleStepShapeRightCircularCylinder_get(
         handle: *const HandleStepShapeRightCircularCylinder,
@@ -129946,6 +132704,8 @@ extern "C" {
     pub fn HandleStepShapeSeamEdge_clone(
         self_: *const HandleStepShapeSeamEdge,
     ) -> crate::OcctResult<*mut HandleStepShapeSeamEdge>;
+    /// Check if Handle<StepShape_SeamEdge> is null
+    pub fn HandleStepShapeSeamEdge_is_null(self_: *const HandleStepShapeSeamEdge) -> bool;
     /// Dereference Handle to get *const StepShape_SeamEdge
     pub fn HandleStepShapeSeamEdge_get(
         handle: *const HandleStepShapeSeamEdge,
@@ -130094,6 +132854,10 @@ extern "C" {
     pub fn HandleStepShapeShapeDefinitionRepresentation_clone(
         self_: *const HandleStepShapeShapeDefinitionRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeShapeDefinitionRepresentation>;
+    /// Check if Handle<StepShape_ShapeDefinitionRepresentation> is null
+    pub fn HandleStepShapeShapeDefinitionRepresentation_is_null(
+        self_: *const HandleStepShapeShapeDefinitionRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ShapeDefinitionRepresentation
     pub fn HandleStepShapeShapeDefinitionRepresentation_get(
         handle: *const HandleStepShapeShapeDefinitionRepresentation,
@@ -130240,6 +133004,10 @@ extern "C" {
     pub fn HandleStepShapeShapeDimensionRepresentation_clone(
         self_: *const HandleStepShapeShapeDimensionRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeShapeDimensionRepresentation>;
+    /// Check if Handle<StepShape_ShapeDimensionRepresentation> is null
+    pub fn HandleStepShapeShapeDimensionRepresentation_is_null(
+        self_: *const HandleStepShapeShapeDimensionRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ShapeDimensionRepresentation
     pub fn HandleStepShapeShapeDimensionRepresentation_get(
         handle: *const HandleStepShapeShapeDimensionRepresentation,
@@ -130481,6 +133249,10 @@ extern "C" {
     pub fn HandleStepShapeShapeRepresentation_clone(
         self_: *const HandleStepShapeShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeShapeRepresentation>;
+    /// Check if Handle<StepShape_ShapeRepresentation> is null
+    pub fn HandleStepShapeShapeRepresentation_is_null(
+        self_: *const HandleStepShapeShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ShapeRepresentation
     pub fn HandleStepShapeShapeRepresentation_get(
         handle: *const HandleStepShapeShapeRepresentation,
@@ -130683,6 +133455,10 @@ extern "C" {
     pub fn HandleStepShapeShapeRepresentationWithParameters_clone(
         self_: *const HandleStepShapeShapeRepresentationWithParameters,
     ) -> crate::OcctResult<*mut HandleStepShapeShapeRepresentationWithParameters>;
+    /// Check if Handle<StepShape_ShapeRepresentationWithParameters> is null
+    pub fn HandleStepShapeShapeRepresentationWithParameters_is_null(
+        self_: *const HandleStepShapeShapeRepresentationWithParameters,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ShapeRepresentationWithParameters
     pub fn HandleStepShapeShapeRepresentationWithParameters_get(
         handle: *const HandleStepShapeShapeRepresentationWithParameters,
@@ -130950,6 +133726,10 @@ extern "C" {
     pub fn HandleStepShapeShellBasedSurfaceModel_clone(
         self_: *const HandleStepShapeShellBasedSurfaceModel,
     ) -> crate::OcctResult<*mut HandleStepShapeShellBasedSurfaceModel>;
+    /// Check if Handle<StepShape_ShellBasedSurfaceModel> is null
+    pub fn HandleStepShapeShellBasedSurfaceModel_is_null(
+        self_: *const HandleStepShapeShellBasedSurfaceModel,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ShellBasedSurfaceModel
     pub fn HandleStepShapeShellBasedSurfaceModel_get(
         handle: *const HandleStepShapeShellBasedSurfaceModel,
@@ -131055,6 +133835,8 @@ extern "C" {
     pub fn HandleStepShapeSolidModel_clone(
         self_: *const HandleStepShapeSolidModel,
     ) -> crate::OcctResult<*mut HandleStepShapeSolidModel>;
+    /// Check if Handle<StepShape_SolidModel> is null
+    pub fn HandleStepShapeSolidModel_is_null(self_: *const HandleStepShapeSolidModel) -> bool;
     /// Dereference Handle to get *const StepShape_SolidModel
     pub fn HandleStepShapeSolidModel_get(
         handle: *const HandleStepShapeSolidModel,
@@ -131247,6 +134029,8 @@ extern "C" {
     pub fn HandleStepShapeSolidReplica_clone(
         self_: *const HandleStepShapeSolidReplica,
     ) -> crate::OcctResult<*mut HandleStepShapeSolidReplica>;
+    /// Check if Handle<StepShape_SolidReplica> is null
+    pub fn HandleStepShapeSolidReplica_is_null(self_: *const HandleStepShapeSolidReplica) -> bool;
     /// Dereference Handle to get *const StepShape_SolidReplica
     pub fn HandleStepShapeSolidReplica_get(
         handle: *const HandleStepShapeSolidReplica,
@@ -131379,6 +134163,8 @@ extern "C" {
     pub fn HandleStepShapeSphere_clone(
         self_: *const HandleStepShapeSphere,
     ) -> crate::OcctResult<*mut HandleStepShapeSphere>;
+    /// Check if Handle<StepShape_Sphere> is null
+    pub fn HandleStepShapeSphere_is_null(self_: *const HandleStepShapeSphere) -> bool;
     /// Dereference Handle to get *const StepShape_Sphere
     pub fn HandleStepShapeSphere_get(
         handle: *const HandleStepShapeSphere,
@@ -131509,6 +134295,8 @@ extern "C" {
     pub fn HandleStepShapeSubedge_clone(
         self_: *const HandleStepShapeSubedge,
     ) -> crate::OcctResult<*mut HandleStepShapeSubedge>;
+    /// Check if Handle<StepShape_Subedge> is null
+    pub fn HandleStepShapeSubedge_is_null(self_: *const HandleStepShapeSubedge) -> bool;
     /// Dereference Handle to get *const StepShape_Subedge
     pub fn HandleStepShapeSubedge_get(
         handle: *const HandleStepShapeSubedge,
@@ -131660,6 +134448,8 @@ extern "C" {
     pub fn HandleStepShapeSubface_clone(
         self_: *const HandleStepShapeSubface,
     ) -> crate::OcctResult<*mut HandleStepShapeSubface>;
+    /// Check if Handle<StepShape_Subface> is null
+    pub fn HandleStepShapeSubface_is_null(self_: *const HandleStepShapeSubface) -> bool;
     /// Dereference Handle to get *const StepShape_Subface
     pub fn HandleStepShapeSubface_get(
         handle: *const HandleStepShapeSubface,
@@ -131908,6 +134698,10 @@ extern "C" {
     pub fn HandleStepShapeSweptAreaSolid_clone(
         self_: *const HandleStepShapeSweptAreaSolid,
     ) -> crate::OcctResult<*mut HandleStepShapeSweptAreaSolid>;
+    /// Check if Handle<StepShape_SweptAreaSolid> is null
+    pub fn HandleStepShapeSweptAreaSolid_is_null(
+        self_: *const HandleStepShapeSweptAreaSolid,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_SweptAreaSolid
     pub fn HandleStepShapeSweptAreaSolid_get(
         handle: *const HandleStepShapeSweptAreaSolid,
@@ -132049,6 +134843,10 @@ extern "C" {
     pub fn HandleStepShapeSweptFaceSolid_clone(
         self_: *const HandleStepShapeSweptFaceSolid,
     ) -> crate::OcctResult<*mut HandleStepShapeSweptFaceSolid>;
+    /// Check if Handle<StepShape_SweptFaceSolid> is null
+    pub fn HandleStepShapeSweptFaceSolid_is_null(
+        self_: *const HandleStepShapeSweptFaceSolid,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_SweptFaceSolid
     pub fn HandleStepShapeSweptFaceSolid_get(
         handle: *const HandleStepShapeSweptFaceSolid,
@@ -132279,6 +135077,10 @@ extern "C" {
     pub fn HandleStepShapeToleranceValue_clone(
         self_: *const HandleStepShapeToleranceValue,
     ) -> crate::OcctResult<*mut HandleStepShapeToleranceValue>;
+    /// Check if Handle<StepShape_ToleranceValue> is null
+    pub fn HandleStepShapeToleranceValue_is_null(
+        self_: *const HandleStepShapeToleranceValue,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ToleranceValue
     pub fn HandleStepShapeToleranceValue_get(
         handle: *const HandleStepShapeToleranceValue,
@@ -132366,6 +135168,10 @@ extern "C" {
     pub fn HandleStepShapeTopologicalRepresentationItem_clone(
         self_: *const HandleStepShapeTopologicalRepresentationItem,
     ) -> crate::OcctResult<*mut HandleStepShapeTopologicalRepresentationItem>;
+    /// Check if Handle<StepShape_TopologicalRepresentationItem> is null
+    pub fn HandleStepShapeTopologicalRepresentationItem_is_null(
+        self_: *const HandleStepShapeTopologicalRepresentationItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_TopologicalRepresentationItem
     pub fn HandleStepShapeTopologicalRepresentationItem_get(
         handle: *const HandleStepShapeTopologicalRepresentationItem,
@@ -132627,6 +135433,8 @@ extern "C" {
     pub fn HandleStepShapeTorus_clone(
         self_: *const HandleStepShapeTorus,
     ) -> crate::OcctResult<*mut HandleStepShapeTorus>;
+    /// Check if Handle<StepShape_Torus> is null
+    pub fn HandleStepShapeTorus_is_null(self_: *const HandleStepShapeTorus) -> bool;
     /// Dereference Handle to get *const StepShape_Torus
     pub fn HandleStepShapeTorus_get(
         handle: *const HandleStepShapeTorus,
@@ -132739,6 +135547,10 @@ extern "C" {
     pub fn HandleStepShapeTransitionalShapeRepresentation_clone(
         self_: *const HandleStepShapeTransitionalShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepShapeTransitionalShapeRepresentation>;
+    /// Check if Handle<StepShape_TransitionalShapeRepresentation> is null
+    pub fn HandleStepShapeTransitionalShapeRepresentation_is_null(
+        self_: *const HandleStepShapeTransitionalShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_TransitionalShapeRepresentation
     pub fn HandleStepShapeTransitionalShapeRepresentation_get(
         handle: *const HandleStepShapeTransitionalShapeRepresentation,
@@ -132877,6 +135689,9 @@ extern "C" {
     pub fn HandleStepShapeTypeQualifier_clone(
         self_: *const HandleStepShapeTypeQualifier,
     ) -> crate::OcctResult<*mut HandleStepShapeTypeQualifier>;
+    /// Check if Handle<StepShape_TypeQualifier> is null
+    pub fn HandleStepShapeTypeQualifier_is_null(self_: *const HandleStepShapeTypeQualifier)
+        -> bool;
     /// Dereference Handle to get *const StepShape_TypeQualifier
     pub fn HandleStepShapeTypeQualifier_get(
         handle: *const HandleStepShapeTypeQualifier,
@@ -132970,6 +135785,10 @@ extern "C" {
     pub fn HandleStepShapeValueFormatTypeQualifier_clone(
         self_: *const HandleStepShapeValueFormatTypeQualifier,
     ) -> crate::OcctResult<*mut HandleStepShapeValueFormatTypeQualifier>;
+    /// Check if Handle<StepShape_ValueFormatTypeQualifier> is null
+    pub fn HandleStepShapeValueFormatTypeQualifier_is_null(
+        self_: *const HandleStepShapeValueFormatTypeQualifier,
+    ) -> bool;
     /// Dereference Handle to get *const StepShape_ValueFormatTypeQualifier
     pub fn HandleStepShapeValueFormatTypeQualifier_get(
         handle: *const HandleStepShapeValueFormatTypeQualifier,
@@ -133163,6 +135982,8 @@ extern "C" {
     pub fn HandleStepShapeVertex_clone(
         self_: *const HandleStepShapeVertex,
     ) -> crate::OcctResult<*mut HandleStepShapeVertex>;
+    /// Check if Handle<StepShape_Vertex> is null
+    pub fn HandleStepShapeVertex_is_null(self_: *const HandleStepShapeVertex) -> bool;
     /// Dereference Handle to get *const StepShape_Vertex
     pub fn HandleStepShapeVertex_get(
         handle: *const HandleStepShapeVertex,
@@ -133304,6 +136125,8 @@ extern "C" {
     pub fn HandleStepShapeVertexLoop_clone(
         self_: *const HandleStepShapeVertexLoop,
     ) -> crate::OcctResult<*mut HandleStepShapeVertexLoop>;
+    /// Check if Handle<StepShape_VertexLoop> is null
+    pub fn HandleStepShapeVertexLoop_is_null(self_: *const HandleStepShapeVertexLoop) -> bool;
     /// Dereference Handle to get *const StepShape_VertexLoop
     pub fn HandleStepShapeVertexLoop_get(
         handle: *const HandleStepShapeVertexLoop,
@@ -133437,6 +136260,8 @@ extern "C" {
     pub fn HandleStepShapeVertexPoint_clone(
         self_: *const HandleStepShapeVertexPoint,
     ) -> crate::OcctResult<*mut HandleStepShapeVertexPoint>;
+    /// Check if Handle<StepShape_VertexPoint> is null
+    pub fn HandleStepShapeVertexPoint_is_null(self_: *const HandleStepShapeVertexPoint) -> bool;
     /// Dereference Handle to get *const StepShape_VertexPoint
     pub fn HandleStepShapeVertexPoint_get(
         handle: *const HandleStepShapeVertexPoint,
@@ -134692,6 +137517,10 @@ extern "C" {
     pub fn HandleStepVisualAnnotationCurveOccurrence_clone(
         self_: *const HandleStepVisualAnnotationCurveOccurrence,
     ) -> crate::OcctResult<*mut HandleStepVisualAnnotationCurveOccurrence>;
+    /// Check if Handle<StepVisual_AnnotationCurveOccurrence> is null
+    pub fn HandleStepVisualAnnotationCurveOccurrence_is_null(
+        self_: *const HandleStepVisualAnnotationCurveOccurrence,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_AnnotationCurveOccurrence
     pub fn HandleStepVisualAnnotationCurveOccurrence_get(
         handle: *const HandleStepVisualAnnotationCurveOccurrence,
@@ -134866,6 +137695,10 @@ extern "C" {
     pub fn HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem_clone(
         self_: *const HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem,
     ) -> crate::OcctResult<*mut HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem>;
+    /// Check if Handle<StepVisual_AnnotationCurveOccurrenceAndGeomReprItem> is null
+    pub fn HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem_is_null(
+        self_: *const HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_AnnotationCurveOccurrenceAndGeomReprItem
     pub fn HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem_get(
         handle: *const HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem,
@@ -135038,6 +137871,10 @@ extern "C" {
     pub fn HandleStepVisualAnnotationFillArea_clone(
         self_: *const HandleStepVisualAnnotationFillArea,
     ) -> crate::OcctResult<*mut HandleStepVisualAnnotationFillArea>;
+    /// Check if Handle<StepVisual_AnnotationFillArea> is null
+    pub fn HandleStepVisualAnnotationFillArea_is_null(
+        self_: *const HandleStepVisualAnnotationFillArea,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_AnnotationFillArea
     pub fn HandleStepVisualAnnotationFillArea_get(
         handle: *const HandleStepVisualAnnotationFillArea,
@@ -135207,6 +138044,10 @@ extern "C" {
     pub fn HandleStepVisualAnnotationFillAreaOccurrence_clone(
         self_: *const HandleStepVisualAnnotationFillAreaOccurrence,
     ) -> crate::OcctResult<*mut HandleStepVisualAnnotationFillAreaOccurrence>;
+    /// Check if Handle<StepVisual_AnnotationFillAreaOccurrence> is null
+    pub fn HandleStepVisualAnnotationFillAreaOccurrence_is_null(
+        self_: *const HandleStepVisualAnnotationFillAreaOccurrence,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_AnnotationFillAreaOccurrence
     pub fn HandleStepVisualAnnotationFillAreaOccurrence_get(
         handle: *const HandleStepVisualAnnotationFillAreaOccurrence,
@@ -135352,6 +138193,10 @@ extern "C" {
     pub fn HandleStepVisualAnnotationOccurrence_clone(
         self_: *const HandleStepVisualAnnotationOccurrence,
     ) -> crate::OcctResult<*mut HandleStepVisualAnnotationOccurrence>;
+    /// Check if Handle<StepVisual_AnnotationOccurrence> is null
+    pub fn HandleStepVisualAnnotationOccurrence_is_null(
+        self_: *const HandleStepVisualAnnotationOccurrence,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_AnnotationOccurrence
     pub fn HandleStepVisualAnnotationOccurrence_get(
         handle: *const HandleStepVisualAnnotationOccurrence,
@@ -135560,6 +138405,10 @@ extern "C" {
     pub fn HandleStepVisualAnnotationPlane_clone(
         self_: *const HandleStepVisualAnnotationPlane,
     ) -> crate::OcctResult<*mut HandleStepVisualAnnotationPlane>;
+    /// Check if Handle<StepVisual_AnnotationPlane> is null
+    pub fn HandleStepVisualAnnotationPlane_is_null(
+        self_: *const HandleStepVisualAnnotationPlane,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_AnnotationPlane
     pub fn HandleStepVisualAnnotationPlane_get(
         handle: *const HandleStepVisualAnnotationPlane,
@@ -135805,6 +138654,10 @@ extern "C" {
     pub fn HandleStepVisualAnnotationText_clone(
         self_: *const HandleStepVisualAnnotationText,
     ) -> crate::OcctResult<*mut HandleStepVisualAnnotationText>;
+    /// Check if Handle<StepVisual_AnnotationText> is null
+    pub fn HandleStepVisualAnnotationText_is_null(
+        self_: *const HandleStepVisualAnnotationText,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_AnnotationText
     pub fn HandleStepVisualAnnotationText_get(
         handle: *const HandleStepVisualAnnotationText,
@@ -135950,6 +138803,10 @@ extern "C" {
     pub fn HandleStepVisualAnnotationTextOccurrence_clone(
         self_: *const HandleStepVisualAnnotationTextOccurrence,
     ) -> crate::OcctResult<*mut HandleStepVisualAnnotationTextOccurrence>;
+    /// Check if Handle<StepVisual_AnnotationTextOccurrence> is null
+    pub fn HandleStepVisualAnnotationTextOccurrence_is_null(
+        self_: *const HandleStepVisualAnnotationTextOccurrence,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_AnnotationTextOccurrence
     pub fn HandleStepVisualAnnotationTextOccurrence_get(
         handle: *const HandleStepVisualAnnotationTextOccurrence,
@@ -136105,6 +138962,8 @@ extern "C" {
     pub fn HandleStepVisualAreaInSet_clone(
         self_: *const HandleStepVisualAreaInSet,
     ) -> crate::OcctResult<*mut HandleStepVisualAreaInSet>;
+    /// Check if Handle<StepVisual_AreaInSet> is null
+    pub fn HandleStepVisualAreaInSet_is_null(self_: *const HandleStepVisualAreaInSet) -> bool;
     /// Dereference Handle to get *const StepVisual_AreaInSet
     pub fn HandleStepVisualAreaInSet_get(
         handle: *const HandleStepVisualAreaInSet,
@@ -136303,6 +139162,10 @@ extern "C" {
     pub fn HandleStepVisualBackgroundColour_clone(
         self_: *const HandleStepVisualBackgroundColour,
     ) -> crate::OcctResult<*mut HandleStepVisualBackgroundColour>;
+    /// Check if Handle<StepVisual_BackgroundColour> is null
+    pub fn HandleStepVisualBackgroundColour_is_null(
+        self_: *const HandleStepVisualBackgroundColour,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_BackgroundColour
     pub fn HandleStepVisualBackgroundColour_get(
         handle: *const HandleStepVisualBackgroundColour,
@@ -136421,6 +139284,8 @@ extern "C" {
     pub fn HandleStepVisualCameraImage_clone(
         self_: *const HandleStepVisualCameraImage,
     ) -> crate::OcctResult<*mut HandleStepVisualCameraImage>;
+    /// Check if Handle<StepVisual_CameraImage> is null
+    pub fn HandleStepVisualCameraImage_is_null(self_: *const HandleStepVisualCameraImage) -> bool;
     /// Dereference Handle to get *const StepVisual_CameraImage
     pub fn HandleStepVisualCameraImage_get(
         handle: *const HandleStepVisualCameraImage,
@@ -136574,6 +139439,10 @@ extern "C" {
     pub fn HandleStepVisualCameraImage2dWithScale_clone(
         self_: *const HandleStepVisualCameraImage2dWithScale,
     ) -> crate::OcctResult<*mut HandleStepVisualCameraImage2dWithScale>;
+    /// Check if Handle<StepVisual_CameraImage2dWithScale> is null
+    pub fn HandleStepVisualCameraImage2dWithScale_is_null(
+        self_: *const HandleStepVisualCameraImage2dWithScale,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CameraImage2dWithScale
     pub fn HandleStepVisualCameraImage2dWithScale_get(
         handle: *const HandleStepVisualCameraImage2dWithScale,
@@ -136723,6 +139592,10 @@ extern "C" {
     pub fn HandleStepVisualCameraImage3dWithScale_clone(
         self_: *const HandleStepVisualCameraImage3dWithScale,
     ) -> crate::OcctResult<*mut HandleStepVisualCameraImage3dWithScale>;
+    /// Check if Handle<StepVisual_CameraImage3dWithScale> is null
+    pub fn HandleStepVisualCameraImage3dWithScale_is_null(
+        self_: *const HandleStepVisualCameraImage3dWithScale,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CameraImage3dWithScale
     pub fn HandleStepVisualCameraImage3dWithScale_get(
         handle: *const HandleStepVisualCameraImage3dWithScale,
@@ -136858,6 +139731,8 @@ extern "C" {
     pub fn HandleStepVisualCameraModel_clone(
         self_: *const HandleStepVisualCameraModel,
     ) -> crate::OcctResult<*mut HandleStepVisualCameraModel>;
+    /// Check if Handle<StepVisual_CameraModel> is null
+    pub fn HandleStepVisualCameraModel_is_null(self_: *const HandleStepVisualCameraModel) -> bool;
     /// Dereference Handle to get *const StepVisual_CameraModel
     pub fn HandleStepVisualCameraModel_get(
         handle: *const HandleStepVisualCameraModel,
@@ -137014,6 +139889,10 @@ extern "C" {
     pub fn HandleStepVisualCameraModelD2_clone(
         self_: *const HandleStepVisualCameraModelD2,
     ) -> crate::OcctResult<*mut HandleStepVisualCameraModelD2>;
+    /// Check if Handle<StepVisual_CameraModelD2> is null
+    pub fn HandleStepVisualCameraModelD2_is_null(
+        self_: *const HandleStepVisualCameraModelD2,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CameraModelD2
     pub fn HandleStepVisualCameraModelD2_get(
         handle: *const HandleStepVisualCameraModelD2,
@@ -137157,6 +140036,10 @@ extern "C" {
     pub fn HandleStepVisualCameraModelD3_clone(
         self_: *const HandleStepVisualCameraModelD3,
     ) -> crate::OcctResult<*mut HandleStepVisualCameraModelD3>;
+    /// Check if Handle<StepVisual_CameraModelD3> is null
+    pub fn HandleStepVisualCameraModelD3_is_null(
+        self_: *const HandleStepVisualCameraModelD3,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CameraModelD3
     pub fn HandleStepVisualCameraModelD3_get(
         handle: *const HandleStepVisualCameraModelD3,
@@ -137310,6 +140193,10 @@ extern "C" {
     pub fn HandleStepVisualCameraModelD3MultiClipping_clone(
         self_: *const HandleStepVisualCameraModelD3MultiClipping,
     ) -> crate::OcctResult<*mut HandleStepVisualCameraModelD3MultiClipping>;
+    /// Check if Handle<StepVisual_CameraModelD3MultiClipping> is null
+    pub fn HandleStepVisualCameraModelD3MultiClipping_is_null(
+        self_: *const HandleStepVisualCameraModelD3MultiClipping,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CameraModelD3MultiClipping
     pub fn HandleStepVisualCameraModelD3MultiClipping_get(
         handle: *const HandleStepVisualCameraModelD3MultiClipping,
@@ -137567,6 +140454,10 @@ extern "C" {
     pub fn HandleStepVisualCameraModelD3MultiClippingIntersection_clone(
         self_: *const HandleStepVisualCameraModelD3MultiClippingIntersection,
     ) -> crate::OcctResult<*mut HandleStepVisualCameraModelD3MultiClippingIntersection>;
+    /// Check if Handle<StepVisual_CameraModelD3MultiClippingIntersection> is null
+    pub fn HandleStepVisualCameraModelD3MultiClippingIntersection_is_null(
+        self_: *const HandleStepVisualCameraModelD3MultiClippingIntersection,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CameraModelD3MultiClippingIntersection
     pub fn HandleStepVisualCameraModelD3MultiClippingIntersection_get(
         handle: *const HandleStepVisualCameraModelD3MultiClippingIntersection,
@@ -137694,6 +140585,10 @@ extern "C" {
     pub fn HandleStepVisualCameraModelD3MultiClippingUnion_clone(
         self_: *const HandleStepVisualCameraModelD3MultiClippingUnion,
     ) -> crate::OcctResult<*mut HandleStepVisualCameraModelD3MultiClippingUnion>;
+    /// Check if Handle<StepVisual_CameraModelD3MultiClippingUnion> is null
+    pub fn HandleStepVisualCameraModelD3MultiClippingUnion_is_null(
+        self_: *const HandleStepVisualCameraModelD3MultiClippingUnion,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CameraModelD3MultiClippingUnion
     pub fn HandleStepVisualCameraModelD3MultiClippingUnion_get(
         handle: *const HandleStepVisualCameraModelD3MultiClippingUnion,
@@ -137896,6 +140791,8 @@ extern "C" {
     pub fn HandleStepVisualCameraUsage_clone(
         self_: *const HandleStepVisualCameraUsage,
     ) -> crate::OcctResult<*mut HandleStepVisualCameraUsage>;
+    /// Check if Handle<StepVisual_CameraUsage> is null
+    pub fn HandleStepVisualCameraUsage_is_null(self_: *const HandleStepVisualCameraUsage) -> bool;
     /// Dereference Handle to get *const StepVisual_CameraUsage
     pub fn HandleStepVisualCameraUsage_get(
         handle: *const HandleStepVisualCameraUsage,
@@ -138019,6 +140916,10 @@ extern "C" {
     pub fn HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel_clone(
         self_: *const HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel,
     ) -> crate::OcctResult<*mut HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel>;
+    /// Check if Handle<StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel> is null
+    pub fn HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel_is_null(
+        self_: *const HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel
     pub fn HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel_get(
         handle: *const HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel,
@@ -138142,6 +141043,8 @@ extern "C" {
     pub fn HandleStepVisualColour_clone(
         self_: *const HandleStepVisualColour,
     ) -> crate::OcctResult<*mut HandleStepVisualColour>;
+    /// Check if Handle<StepVisual_Colour> is null
+    pub fn HandleStepVisualColour_is_null(self_: *const HandleStepVisualColour) -> bool;
     /// Dereference Handle to get *const StepVisual_Colour
     pub fn HandleStepVisualColour_get(
         handle: *const HandleStepVisualColour,
@@ -138280,6 +141183,8 @@ extern "C" {
     pub fn HandleStepVisualColourRgb_clone(
         self_: *const HandleStepVisualColourRgb,
     ) -> crate::OcctResult<*mut HandleStepVisualColourRgb>;
+    /// Check if Handle<StepVisual_ColourRgb> is null
+    pub fn HandleStepVisualColourRgb_is_null(self_: *const HandleStepVisualColourRgb) -> bool;
     /// Dereference Handle to get *const StepVisual_ColourRgb
     pub fn HandleStepVisualColourRgb_get(
         handle: *const HandleStepVisualColourRgb,
@@ -138396,6 +141301,10 @@ extern "C" {
     pub fn HandleStepVisualColourSpecification_clone(
         self_: *const HandleStepVisualColourSpecification,
     ) -> crate::OcctResult<*mut HandleStepVisualColourSpecification>;
+    /// Check if Handle<StepVisual_ColourSpecification> is null
+    pub fn HandleStepVisualColourSpecification_is_null(
+        self_: *const HandleStepVisualColourSpecification,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_ColourSpecification
     pub fn HandleStepVisualColourSpecification_get(
         handle: *const HandleStepVisualColourSpecification,
@@ -138580,6 +141489,10 @@ extern "C" {
     pub fn HandleStepVisualComplexTriangulatedFace_clone(
         self_: *const HandleStepVisualComplexTriangulatedFace,
     ) -> crate::OcctResult<*mut HandleStepVisualComplexTriangulatedFace>;
+    /// Check if Handle<StepVisual_ComplexTriangulatedFace> is null
+    pub fn HandleStepVisualComplexTriangulatedFace_is_null(
+        self_: *const HandleStepVisualComplexTriangulatedFace,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_ComplexTriangulatedFace
     pub fn HandleStepVisualComplexTriangulatedFace_get(
         handle: *const HandleStepVisualComplexTriangulatedFace,
@@ -138819,6 +141732,10 @@ extern "C" {
     pub fn HandleStepVisualComplexTriangulatedSurfaceSet_clone(
         self_: *const HandleStepVisualComplexTriangulatedSurfaceSet,
     ) -> crate::OcctResult<*mut HandleStepVisualComplexTriangulatedSurfaceSet>;
+    /// Check if Handle<StepVisual_ComplexTriangulatedSurfaceSet> is null
+    pub fn HandleStepVisualComplexTriangulatedSurfaceSet_is_null(
+        self_: *const HandleStepVisualComplexTriangulatedSurfaceSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_ComplexTriangulatedSurfaceSet
     pub fn HandleStepVisualComplexTriangulatedSurfaceSet_get(
         handle: *const HandleStepVisualComplexTriangulatedSurfaceSet,
@@ -138988,6 +141905,10 @@ extern "C" {
     pub fn HandleStepVisualCompositeText_clone(
         self_: *const HandleStepVisualCompositeText,
     ) -> crate::OcctResult<*mut HandleStepVisualCompositeText>;
+    /// Check if Handle<StepVisual_CompositeText> is null
+    pub fn HandleStepVisualCompositeText_is_null(
+        self_: *const HandleStepVisualCompositeText,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CompositeText
     pub fn HandleStepVisualCompositeText_get(
         handle: *const HandleStepVisualCompositeText,
@@ -139128,6 +142049,10 @@ extern "C" {
     pub fn HandleStepVisualCompositeTextWithExtent_clone(
         self_: *const HandleStepVisualCompositeTextWithExtent,
     ) -> crate::OcctResult<*mut HandleStepVisualCompositeTextWithExtent>;
+    /// Check if Handle<StepVisual_CompositeTextWithExtent> is null
+    pub fn HandleStepVisualCompositeTextWithExtent_is_null(
+        self_: *const HandleStepVisualCompositeTextWithExtent,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CompositeTextWithExtent
     pub fn HandleStepVisualCompositeTextWithExtent_get(
         handle: *const HandleStepVisualCompositeTextWithExtent,
@@ -139269,6 +142194,10 @@ extern "C" {
     pub fn HandleStepVisualContextDependentInvisibility_clone(
         self_: *const HandleStepVisualContextDependentInvisibility,
     ) -> crate::OcctResult<*mut HandleStepVisualContextDependentInvisibility>;
+    /// Check if Handle<StepVisual_ContextDependentInvisibility> is null
+    pub fn HandleStepVisualContextDependentInvisibility_is_null(
+        self_: *const HandleStepVisualContextDependentInvisibility,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_ContextDependentInvisibility
     pub fn HandleStepVisualContextDependentInvisibility_get(
         handle: *const HandleStepVisualContextDependentInvisibility,
@@ -139421,6 +142350,10 @@ extern "C" {
     pub fn HandleStepVisualContextDependentOverRidingStyledItem_clone(
         self_: *const HandleStepVisualContextDependentOverRidingStyledItem,
     ) -> crate::OcctResult<*mut HandleStepVisualContextDependentOverRidingStyledItem>;
+    /// Check if Handle<StepVisual_ContextDependentOverRidingStyledItem> is null
+    pub fn HandleStepVisualContextDependentOverRidingStyledItem_is_null(
+        self_: *const HandleStepVisualContextDependentOverRidingStyledItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_ContextDependentOverRidingStyledItem
     pub fn HandleStepVisualContextDependentOverRidingStyledItem_get(
         handle: *const HandleStepVisualContextDependentOverRidingStyledItem,
@@ -139589,6 +142522,10 @@ extern "C" {
     pub fn HandleStepVisualCoordinatesList_clone(
         self_: *const HandleStepVisualCoordinatesList,
     ) -> crate::OcctResult<*mut HandleStepVisualCoordinatesList>;
+    /// Check if Handle<StepVisual_CoordinatesList> is null
+    pub fn HandleStepVisualCoordinatesList_is_null(
+        self_: *const HandleStepVisualCoordinatesList,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CoordinatesList
     pub fn HandleStepVisualCoordinatesList_get(
         handle: *const HandleStepVisualCoordinatesList,
@@ -139729,6 +142666,10 @@ extern "C" {
     pub fn HandleStepVisualCubicBezierTessellatedEdge_clone(
         self_: *const HandleStepVisualCubicBezierTessellatedEdge,
     ) -> crate::OcctResult<*mut HandleStepVisualCubicBezierTessellatedEdge>;
+    /// Check if Handle<StepVisual_CubicBezierTessellatedEdge> is null
+    pub fn HandleStepVisualCubicBezierTessellatedEdge_is_null(
+        self_: *const HandleStepVisualCubicBezierTessellatedEdge,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CubicBezierTessellatedEdge
     pub fn HandleStepVisualCubicBezierTessellatedEdge_get(
         handle: *const HandleStepVisualCubicBezierTessellatedEdge,
@@ -139950,6 +142891,10 @@ extern "C" {
     pub fn HandleStepVisualCubicBezierTriangulatedFace_clone(
         self_: *const HandleStepVisualCubicBezierTriangulatedFace,
     ) -> crate::OcctResult<*mut HandleStepVisualCubicBezierTriangulatedFace>;
+    /// Check if Handle<StepVisual_CubicBezierTriangulatedFace> is null
+    pub fn HandleStepVisualCubicBezierTriangulatedFace_is_null(
+        self_: *const HandleStepVisualCubicBezierTriangulatedFace,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CubicBezierTriangulatedFace
     pub fn HandleStepVisualCubicBezierTriangulatedFace_get(
         handle: *const HandleStepVisualCubicBezierTriangulatedFace,
@@ -140140,6 +143085,8 @@ extern "C" {
     pub fn HandleStepVisualCurveStyle_clone(
         self_: *const HandleStepVisualCurveStyle,
     ) -> crate::OcctResult<*mut HandleStepVisualCurveStyle>;
+    /// Check if Handle<StepVisual_CurveStyle> is null
+    pub fn HandleStepVisualCurveStyle_is_null(self_: *const HandleStepVisualCurveStyle) -> bool;
     /// Dereference Handle to get *const StepVisual_CurveStyle
     pub fn HandleStepVisualCurveStyle_get(
         handle: *const HandleStepVisualCurveStyle,
@@ -140246,6 +143193,10 @@ extern "C" {
     pub fn HandleStepVisualCurveStyleFont_clone(
         self_: *const HandleStepVisualCurveStyleFont,
     ) -> crate::OcctResult<*mut HandleStepVisualCurveStyleFont>;
+    /// Check if Handle<StepVisual_CurveStyleFont> is null
+    pub fn HandleStepVisualCurveStyleFont_is_null(
+        self_: *const HandleStepVisualCurveStyleFont,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CurveStyleFont
     pub fn HandleStepVisualCurveStyleFont_get(
         handle: *const HandleStepVisualCurveStyleFont,
@@ -140349,6 +143300,10 @@ extern "C" {
     pub fn HandleStepVisualCurveStyleFontPattern_clone(
         self_: *const HandleStepVisualCurveStyleFontPattern,
     ) -> crate::OcctResult<*mut HandleStepVisualCurveStyleFontPattern>;
+    /// Check if Handle<StepVisual_CurveStyleFontPattern> is null
+    pub fn HandleStepVisualCurveStyleFontPattern_is_null(
+        self_: *const HandleStepVisualCurveStyleFontPattern,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_CurveStyleFontPattern
     pub fn HandleStepVisualCurveStyleFontPattern_get(
         handle: *const HandleStepVisualCurveStyleFontPattern,
@@ -140590,6 +143545,10 @@ extern "C" {
     pub fn HandleStepVisualDraughtingAnnotationOccurrence_clone(
         self_: *const HandleStepVisualDraughtingAnnotationOccurrence,
     ) -> crate::OcctResult<*mut HandleStepVisualDraughtingAnnotationOccurrence>;
+    /// Check if Handle<StepVisual_DraughtingAnnotationOccurrence> is null
+    pub fn HandleStepVisualDraughtingAnnotationOccurrence_is_null(
+        self_: *const HandleStepVisualDraughtingAnnotationOccurrence,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_DraughtingAnnotationOccurrence
     pub fn HandleStepVisualDraughtingAnnotationOccurrence_get(
         handle: *const HandleStepVisualDraughtingAnnotationOccurrence,
@@ -140771,6 +143730,10 @@ extern "C" {
     pub fn HandleStepVisualDraughtingCallout_clone(
         self_: *const HandleStepVisualDraughtingCallout,
     ) -> crate::OcctResult<*mut HandleStepVisualDraughtingCallout>;
+    /// Check if Handle<StepVisual_DraughtingCallout> is null
+    pub fn HandleStepVisualDraughtingCallout_is_null(
+        self_: *const HandleStepVisualDraughtingCallout,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_DraughtingCallout
     pub fn HandleStepVisualDraughtingCallout_get(
         handle: *const HandleStepVisualDraughtingCallout,
@@ -140981,6 +143944,10 @@ extern "C" {
     pub fn HandleStepVisualDraughtingModel_clone(
         self_: *const HandleStepVisualDraughtingModel,
     ) -> crate::OcctResult<*mut HandleStepVisualDraughtingModel>;
+    /// Check if Handle<StepVisual_DraughtingModel> is null
+    pub fn HandleStepVisualDraughtingModel_is_null(
+        self_: *const HandleStepVisualDraughtingModel,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_DraughtingModel
     pub fn HandleStepVisualDraughtingModel_get(
         handle: *const HandleStepVisualDraughtingModel,
@@ -141127,6 +144094,10 @@ extern "C" {
     pub fn HandleStepVisualDraughtingPreDefinedColour_clone(
         self_: *const HandleStepVisualDraughtingPreDefinedColour,
     ) -> crate::OcctResult<*mut HandleStepVisualDraughtingPreDefinedColour>;
+    /// Check if Handle<StepVisual_DraughtingPreDefinedColour> is null
+    pub fn HandleStepVisualDraughtingPreDefinedColour_is_null(
+        self_: *const HandleStepVisualDraughtingPreDefinedColour,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_DraughtingPreDefinedColour
     pub fn HandleStepVisualDraughtingPreDefinedColour_get(
         handle: *const HandleStepVisualDraughtingPreDefinedColour,
@@ -141239,6 +144210,10 @@ extern "C" {
     pub fn HandleStepVisualDraughtingPreDefinedCurveFont_clone(
         self_: *const HandleStepVisualDraughtingPreDefinedCurveFont,
     ) -> crate::OcctResult<*mut HandleStepVisualDraughtingPreDefinedCurveFont>;
+    /// Check if Handle<StepVisual_DraughtingPreDefinedCurveFont> is null
+    pub fn HandleStepVisualDraughtingPreDefinedCurveFont_is_null(
+        self_: *const HandleStepVisualDraughtingPreDefinedCurveFont,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_DraughtingPreDefinedCurveFont
     pub fn HandleStepVisualDraughtingPreDefinedCurveFont_get(
         handle: *const HandleStepVisualDraughtingPreDefinedCurveFont,
@@ -141449,6 +144424,10 @@ extern "C" {
     pub fn HandleStepVisualExternallyDefinedCurveFont_clone(
         self_: *const HandleStepVisualExternallyDefinedCurveFont,
     ) -> crate::OcctResult<*mut HandleStepVisualExternallyDefinedCurveFont>;
+    /// Check if Handle<StepVisual_ExternallyDefinedCurveFont> is null
+    pub fn HandleStepVisualExternallyDefinedCurveFont_is_null(
+        self_: *const HandleStepVisualExternallyDefinedCurveFont,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_ExternallyDefinedCurveFont
     pub fn HandleStepVisualExternallyDefinedCurveFont_get(
         handle: *const HandleStepVisualExternallyDefinedCurveFont,
@@ -141564,6 +144543,10 @@ extern "C" {
     pub fn HandleStepVisualExternallyDefinedTextFont_clone(
         self_: *const HandleStepVisualExternallyDefinedTextFont,
     ) -> crate::OcctResult<*mut HandleStepVisualExternallyDefinedTextFont>;
+    /// Check if Handle<StepVisual_ExternallyDefinedTextFont> is null
+    pub fn HandleStepVisualExternallyDefinedTextFont_is_null(
+        self_: *const HandleStepVisualExternallyDefinedTextFont,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_ExternallyDefinedTextFont
     pub fn HandleStepVisualExternallyDefinedTextFont_get(
         handle: *const HandleStepVisualExternallyDefinedTextFont,
@@ -141799,6 +144782,10 @@ extern "C" {
     pub fn HandleStepVisualFillAreaStyle_clone(
         self_: *const HandleStepVisualFillAreaStyle,
     ) -> crate::OcctResult<*mut HandleStepVisualFillAreaStyle>;
+    /// Check if Handle<StepVisual_FillAreaStyle> is null
+    pub fn HandleStepVisualFillAreaStyle_is_null(
+        self_: *const HandleStepVisualFillAreaStyle,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_FillAreaStyle
     pub fn HandleStepVisualFillAreaStyle_get(
         handle: *const HandleStepVisualFillAreaStyle,
@@ -141900,6 +144887,10 @@ extern "C" {
     pub fn HandleStepVisualFillAreaStyleColour_clone(
         self_: *const HandleStepVisualFillAreaStyleColour,
     ) -> crate::OcctResult<*mut HandleStepVisualFillAreaStyleColour>;
+    /// Check if Handle<StepVisual_FillAreaStyleColour> is null
+    pub fn HandleStepVisualFillAreaStyleColour_is_null(
+        self_: *const HandleStepVisualFillAreaStyleColour,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_FillAreaStyleColour
     pub fn HandleStepVisualFillAreaStyleColour_get(
         handle: *const HandleStepVisualFillAreaStyleColour,
@@ -142207,6 +145198,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfAnnotationPlaneElement_clone(
         self_: *const HandleStepVisualHArray1OfAnnotationPlaneElement,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfAnnotationPlaneElement>;
+    /// Check if Handle<StepVisual_HArray1OfAnnotationPlaneElement> is null
+    pub fn HandleStepVisualHArray1OfAnnotationPlaneElement_is_null(
+        self_: *const HandleStepVisualHArray1OfAnnotationPlaneElement,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfAnnotationPlaneElement
     pub fn HandleStepVisualHArray1OfAnnotationPlaneElement_get(
         handle: *const HandleStepVisualHArray1OfAnnotationPlaneElement,
@@ -142316,6 +145311,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfBoxCharacteristicSelect_clone(
         self_: *const HandleStepVisualHArray1OfBoxCharacteristicSelect,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfBoxCharacteristicSelect>;
+    /// Check if Handle<StepVisual_HArray1OfBoxCharacteristicSelect> is null
+    pub fn HandleStepVisualHArray1OfBoxCharacteristicSelect_is_null(
+        self_: *const HandleStepVisualHArray1OfBoxCharacteristicSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfBoxCharacteristicSelect
     pub fn HandleStepVisualHArray1OfBoxCharacteristicSelect_get(
         handle: *const HandleStepVisualHArray1OfBoxCharacteristicSelect,
@@ -142425,6 +145424,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect_clone(
         self_: *const HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect>;
+    /// Check if Handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> is null
+    pub fn HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect_is_null(
+        self_: *const HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
     pub fn HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect_get(
         handle: *const HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect,
@@ -142534,6 +145537,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect_clone(
         self_: *const HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect>;
+    /// Check if Handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect> is null
+    pub fn HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect_is_null(
+        self_: *const HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect
     pub fn HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect_get(
         handle: *const HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect,
@@ -142643,6 +145650,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfCurveStyleFontPattern_clone(
         self_: *const HandleStepVisualHArray1OfCurveStyleFontPattern,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfCurveStyleFontPattern>;
+    /// Check if Handle<StepVisual_HArray1OfCurveStyleFontPattern> is null
+    pub fn HandleStepVisualHArray1OfCurveStyleFontPattern_is_null(
+        self_: *const HandleStepVisualHArray1OfCurveStyleFontPattern,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfCurveStyleFontPattern
     pub fn HandleStepVisualHArray1OfCurveStyleFontPattern_get(
         handle: *const HandleStepVisualHArray1OfCurveStyleFontPattern,
@@ -142752,6 +145763,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfDirectionCountSelect_clone(
         self_: *const HandleStepVisualHArray1OfDirectionCountSelect,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfDirectionCountSelect>;
+    /// Check if Handle<StepVisual_HArray1OfDirectionCountSelect> is null
+    pub fn HandleStepVisualHArray1OfDirectionCountSelect_is_null(
+        self_: *const HandleStepVisualHArray1OfDirectionCountSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfDirectionCountSelect
     pub fn HandleStepVisualHArray1OfDirectionCountSelect_get(
         handle: *const HandleStepVisualHArray1OfDirectionCountSelect,
@@ -142861,6 +145876,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfDraughtingCalloutElement_clone(
         self_: *const HandleStepVisualHArray1OfDraughtingCalloutElement,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfDraughtingCalloutElement>;
+    /// Check if Handle<StepVisual_HArray1OfDraughtingCalloutElement> is null
+    pub fn HandleStepVisualHArray1OfDraughtingCalloutElement_is_null(
+        self_: *const HandleStepVisualHArray1OfDraughtingCalloutElement,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfDraughtingCalloutElement
     pub fn HandleStepVisualHArray1OfDraughtingCalloutElement_get(
         handle: *const HandleStepVisualHArray1OfDraughtingCalloutElement,
@@ -142970,6 +145989,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfFillStyleSelect_clone(
         self_: *const HandleStepVisualHArray1OfFillStyleSelect,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfFillStyleSelect>;
+    /// Check if Handle<StepVisual_HArray1OfFillStyleSelect> is null
+    pub fn HandleStepVisualHArray1OfFillStyleSelect_is_null(
+        self_: *const HandleStepVisualHArray1OfFillStyleSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfFillStyleSelect
     pub fn HandleStepVisualHArray1OfFillStyleSelect_get(
         handle: *const HandleStepVisualHArray1OfFillStyleSelect,
@@ -143079,6 +146102,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfInvisibleItem_clone(
         self_: *const HandleStepVisualHArray1OfInvisibleItem,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfInvisibleItem>;
+    /// Check if Handle<StepVisual_HArray1OfInvisibleItem> is null
+    pub fn HandleStepVisualHArray1OfInvisibleItem_is_null(
+        self_: *const HandleStepVisualHArray1OfInvisibleItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfInvisibleItem
     pub fn HandleStepVisualHArray1OfInvisibleItem_get(
         handle: *const HandleStepVisualHArray1OfInvisibleItem,
@@ -143186,6 +146213,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfLayeredItem_clone(
         self_: *const HandleStepVisualHArray1OfLayeredItem,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfLayeredItem>;
+    /// Check if Handle<StepVisual_HArray1OfLayeredItem> is null
+    pub fn HandleStepVisualHArray1OfLayeredItem_is_null(
+        self_: *const HandleStepVisualHArray1OfLayeredItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfLayeredItem
     pub fn HandleStepVisualHArray1OfLayeredItem_get(
         handle: *const HandleStepVisualHArray1OfLayeredItem,
@@ -143295,6 +146326,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfPresentationStyleAssignment_clone(
         self_: *const HandleStepVisualHArray1OfPresentationStyleAssignment,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfPresentationStyleAssignment>;
+    /// Check if Handle<StepVisual_HArray1OfPresentationStyleAssignment> is null
+    pub fn HandleStepVisualHArray1OfPresentationStyleAssignment_is_null(
+        self_: *const HandleStepVisualHArray1OfPresentationStyleAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfPresentationStyleAssignment
     pub fn HandleStepVisualHArray1OfPresentationStyleAssignment_get(
         handle: *const HandleStepVisualHArray1OfPresentationStyleAssignment,
@@ -143404,6 +146439,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfPresentationStyleSelect_clone(
         self_: *const HandleStepVisualHArray1OfPresentationStyleSelect,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfPresentationStyleSelect>;
+    /// Check if Handle<StepVisual_HArray1OfPresentationStyleSelect> is null
+    pub fn HandleStepVisualHArray1OfPresentationStyleSelect_is_null(
+        self_: *const HandleStepVisualHArray1OfPresentationStyleSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfPresentationStyleSelect
     pub fn HandleStepVisualHArray1OfPresentationStyleSelect_get(
         handle: *const HandleStepVisualHArray1OfPresentationStyleSelect,
@@ -143513,6 +146552,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfRenderingPropertiesSelect_clone(
         self_: *const HandleStepVisualHArray1OfRenderingPropertiesSelect,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfRenderingPropertiesSelect>;
+    /// Check if Handle<StepVisual_HArray1OfRenderingPropertiesSelect> is null
+    pub fn HandleStepVisualHArray1OfRenderingPropertiesSelect_is_null(
+        self_: *const HandleStepVisualHArray1OfRenderingPropertiesSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfRenderingPropertiesSelect
     pub fn HandleStepVisualHArray1OfRenderingPropertiesSelect_get(
         handle: *const HandleStepVisualHArray1OfRenderingPropertiesSelect,
@@ -143622,6 +146665,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfStyleContextSelect_clone(
         self_: *const HandleStepVisualHArray1OfStyleContextSelect,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfStyleContextSelect>;
+    /// Check if Handle<StepVisual_HArray1OfStyleContextSelect> is null
+    pub fn HandleStepVisualHArray1OfStyleContextSelect_is_null(
+        self_: *const HandleStepVisualHArray1OfStyleContextSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfStyleContextSelect
     pub fn HandleStepVisualHArray1OfStyleContextSelect_get(
         handle: *const HandleStepVisualHArray1OfStyleContextSelect,
@@ -143731,6 +146778,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfSurfaceStyleElementSelect_clone(
         self_: *const HandleStepVisualHArray1OfSurfaceStyleElementSelect,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfSurfaceStyleElementSelect>;
+    /// Check if Handle<StepVisual_HArray1OfSurfaceStyleElementSelect> is null
+    pub fn HandleStepVisualHArray1OfSurfaceStyleElementSelect_is_null(
+        self_: *const HandleStepVisualHArray1OfSurfaceStyleElementSelect,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfSurfaceStyleElementSelect
     pub fn HandleStepVisualHArray1OfSurfaceStyleElementSelect_get(
         handle: *const HandleStepVisualHArray1OfSurfaceStyleElementSelect,
@@ -143840,6 +146891,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfTessellatedEdgeOrVertex_clone(
         self_: *const HandleStepVisualHArray1OfTessellatedEdgeOrVertex,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfTessellatedEdgeOrVertex>;
+    /// Check if Handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> is null
+    pub fn HandleStepVisualHArray1OfTessellatedEdgeOrVertex_is_null(
+        self_: *const HandleStepVisualHArray1OfTessellatedEdgeOrVertex,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfTessellatedEdgeOrVertex
     pub fn HandleStepVisualHArray1OfTessellatedEdgeOrVertex_get(
         handle: *const HandleStepVisualHArray1OfTessellatedEdgeOrVertex,
@@ -143949,6 +147004,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfTessellatedStructuredItem_clone(
         self_: *const HandleStepVisualHArray1OfTessellatedStructuredItem,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfTessellatedStructuredItem>;
+    /// Check if Handle<StepVisual_HArray1OfTessellatedStructuredItem> is null
+    pub fn HandleStepVisualHArray1OfTessellatedStructuredItem_is_null(
+        self_: *const HandleStepVisualHArray1OfTessellatedStructuredItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfTessellatedStructuredItem
     pub fn HandleStepVisualHArray1OfTessellatedStructuredItem_get(
         handle: *const HandleStepVisualHArray1OfTessellatedStructuredItem,
@@ -144058,6 +147117,10 @@ extern "C" {
     pub fn HandleStepVisualHArray1OfTextOrCharacter_clone(
         self_: *const HandleStepVisualHArray1OfTextOrCharacter,
     ) -> crate::OcctResult<*mut HandleStepVisualHArray1OfTextOrCharacter>;
+    /// Check if Handle<StepVisual_HArray1OfTextOrCharacter> is null
+    pub fn HandleStepVisualHArray1OfTextOrCharacter_is_null(
+        self_: *const HandleStepVisualHArray1OfTextOrCharacter,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_HArray1OfTextOrCharacter
     pub fn HandleStepVisualHArray1OfTextOrCharacter_get(
         handle: *const HandleStepVisualHArray1OfTextOrCharacter,
@@ -144154,6 +147217,9 @@ extern "C" {
     pub fn HandleStepVisualInvisibility_clone(
         self_: *const HandleStepVisualInvisibility,
     ) -> crate::OcctResult<*mut HandleStepVisualInvisibility>;
+    /// Check if Handle<StepVisual_Invisibility> is null
+    pub fn HandleStepVisualInvisibility_is_null(self_: *const HandleStepVisualInvisibility)
+        -> bool;
     /// Dereference Handle to get *const StepVisual_Invisibility
     pub fn HandleStepVisualInvisibility_get(
         handle: *const HandleStepVisualInvisibility,
@@ -144591,6 +147657,9 @@ extern "C" {
     pub fn HandleStepVisualMarkerMember_clone(
         self_: *const HandleStepVisualMarkerMember,
     ) -> crate::OcctResult<*mut HandleStepVisualMarkerMember>;
+    /// Check if Handle<StepVisual_MarkerMember> is null
+    pub fn HandleStepVisualMarkerMember_is_null(self_: *const HandleStepVisualMarkerMember)
+        -> bool;
     /// Dereference Handle to get *const StepVisual_MarkerMember
     pub fn HandleStepVisualMarkerMember_get(
         handle: *const HandleStepVisualMarkerMember,
@@ -144861,6 +147930,10 @@ extern "C" {
     pub fn HandleStepVisualMechanicalDesignGeometricPresentationArea_clone(
         self_: *const HandleStepVisualMechanicalDesignGeometricPresentationArea,
     ) -> crate::OcctResult<*mut HandleStepVisualMechanicalDesignGeometricPresentationArea>;
+    /// Check if Handle<StepVisual_MechanicalDesignGeometricPresentationArea> is null
+    pub fn HandleStepVisualMechanicalDesignGeometricPresentationArea_is_null(
+        self_: *const HandleStepVisualMechanicalDesignGeometricPresentationArea,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_MechanicalDesignGeometricPresentationArea
     pub fn HandleStepVisualMechanicalDesignGeometricPresentationArea_get(
         handle: *const HandleStepVisualMechanicalDesignGeometricPresentationArea,
@@ -145011,6 +148084,10 @@ extern "C" {
     pub fn HandleStepVisualMechanicalDesignGeometricPresentationRepresentation_clone(
         self_: *const HandleStepVisualMechanicalDesignGeometricPresentationRepresentation,
     ) -> crate::OcctResult<*mut HandleStepVisualMechanicalDesignGeometricPresentationRepresentation>;
+    /// Check if Handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> is null
+    pub fn HandleStepVisualMechanicalDesignGeometricPresentationRepresentation_is_null(
+        self_: *const HandleStepVisualMechanicalDesignGeometricPresentationRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_MechanicalDesignGeometricPresentationRepresentation
     pub fn HandleStepVisualMechanicalDesignGeometricPresentationRepresentation_get(
         handle: *const HandleStepVisualMechanicalDesignGeometricPresentationRepresentation,
@@ -145187,6 +148264,10 @@ extern "C" {
     pub fn HandleStepVisualNullStyleMember_clone(
         self_: *const HandleStepVisualNullStyleMember,
     ) -> crate::OcctResult<*mut HandleStepVisualNullStyleMember>;
+    /// Check if Handle<StepVisual_NullStyleMember> is null
+    pub fn HandleStepVisualNullStyleMember_is_null(
+        self_: *const HandleStepVisualNullStyleMember,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_NullStyleMember
     pub fn HandleStepVisualNullStyleMember_get(
         handle: *const HandleStepVisualNullStyleMember,
@@ -145363,6 +148444,10 @@ extern "C" {
     pub fn HandleStepVisualOverRidingStyledItem_clone(
         self_: *const HandleStepVisualOverRidingStyledItem,
     ) -> crate::OcctResult<*mut HandleStepVisualOverRidingStyledItem>;
+    /// Check if Handle<StepVisual_OverRidingStyledItem> is null
+    pub fn HandleStepVisualOverRidingStyledItem_is_null(
+        self_: *const HandleStepVisualOverRidingStyledItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_OverRidingStyledItem
     pub fn HandleStepVisualOverRidingStyledItem_get(
         handle: *const HandleStepVisualOverRidingStyledItem,
@@ -145630,6 +148715,8 @@ extern "C" {
     pub fn HandleStepVisualPlanarBox_clone(
         self_: *const HandleStepVisualPlanarBox,
     ) -> crate::OcctResult<*mut HandleStepVisualPlanarBox>;
+    /// Check if Handle<StepVisual_PlanarBox> is null
+    pub fn HandleStepVisualPlanarBox_is_null(self_: *const HandleStepVisualPlanarBox) -> bool;
     /// Dereference Handle to get *const StepVisual_PlanarBox
     pub fn HandleStepVisualPlanarBox_get(
         handle: *const HandleStepVisualPlanarBox,
@@ -145783,6 +148870,9 @@ extern "C" {
     pub fn HandleStepVisualPlanarExtent_clone(
         self_: *const HandleStepVisualPlanarExtent,
     ) -> crate::OcctResult<*mut HandleStepVisualPlanarExtent>;
+    /// Check if Handle<StepVisual_PlanarExtent> is null
+    pub fn HandleStepVisualPlanarExtent_is_null(self_: *const HandleStepVisualPlanarExtent)
+        -> bool;
     /// Dereference Handle to get *const StepVisual_PlanarExtent
     pub fn HandleStepVisualPlanarExtent_get(
         handle: *const HandleStepVisualPlanarExtent,
@@ -145921,6 +149011,8 @@ extern "C" {
     pub fn HandleStepVisualPointStyle_clone(
         self_: *const HandleStepVisualPointStyle,
     ) -> crate::OcctResult<*mut HandleStepVisualPointStyle>;
+    /// Check if Handle<StepVisual_PointStyle> is null
+    pub fn HandleStepVisualPointStyle_is_null(self_: *const HandleStepVisualPointStyle) -> bool;
     /// Dereference Handle to get *const StepVisual_PointStyle
     pub fn HandleStepVisualPointStyle_get(
         handle: *const HandleStepVisualPointStyle,
@@ -146013,6 +149105,10 @@ extern "C" {
     pub fn HandleStepVisualPreDefinedColour_clone(
         self_: *const HandleStepVisualPreDefinedColour,
     ) -> crate::OcctResult<*mut HandleStepVisualPreDefinedColour>;
+    /// Check if Handle<StepVisual_PreDefinedColour> is null
+    pub fn HandleStepVisualPreDefinedColour_is_null(
+        self_: *const HandleStepVisualPreDefinedColour,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PreDefinedColour
     pub fn HandleStepVisualPreDefinedColour_get(
         handle: *const HandleStepVisualPreDefinedColour,
@@ -146106,6 +149202,10 @@ extern "C" {
     pub fn HandleStepVisualPreDefinedCurveFont_clone(
         self_: *const HandleStepVisualPreDefinedCurveFont,
     ) -> crate::OcctResult<*mut HandleStepVisualPreDefinedCurveFont>;
+    /// Check if Handle<StepVisual_PreDefinedCurveFont> is null
+    pub fn HandleStepVisualPreDefinedCurveFont_is_null(
+        self_: *const HandleStepVisualPreDefinedCurveFont,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PreDefinedCurveFont
     pub fn HandleStepVisualPreDefinedCurveFont_get(
         handle: *const HandleStepVisualPreDefinedCurveFont,
@@ -146215,6 +149315,10 @@ extern "C" {
     pub fn HandleStepVisualPreDefinedItem_clone(
         self_: *const HandleStepVisualPreDefinedItem,
     ) -> crate::OcctResult<*mut HandleStepVisualPreDefinedItem>;
+    /// Check if Handle<StepVisual_PreDefinedItem> is null
+    pub fn HandleStepVisualPreDefinedItem_is_null(
+        self_: *const HandleStepVisualPreDefinedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PreDefinedItem
     pub fn HandleStepVisualPreDefinedItem_get(
         handle: *const HandleStepVisualPreDefinedItem,
@@ -146312,6 +149416,10 @@ extern "C" {
     pub fn HandleStepVisualPreDefinedTextFont_clone(
         self_: *const HandleStepVisualPreDefinedTextFont,
     ) -> crate::OcctResult<*mut HandleStepVisualPreDefinedTextFont>;
+    /// Check if Handle<StepVisual_PreDefinedTextFont> is null
+    pub fn HandleStepVisualPreDefinedTextFont_is_null(
+        self_: *const HandleStepVisualPreDefinedTextFont,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PreDefinedTextFont
     pub fn HandleStepVisualPreDefinedTextFont_get(
         handle: *const HandleStepVisualPreDefinedTextFont,
@@ -146421,6 +149529,10 @@ extern "C" {
     pub fn HandleStepVisualPresentationArea_clone(
         self_: *const HandleStepVisualPresentationArea,
     ) -> crate::OcctResult<*mut HandleStepVisualPresentationArea>;
+    /// Check if Handle<StepVisual_PresentationArea> is null
+    pub fn HandleStepVisualPresentationArea_is_null(
+        self_: *const HandleStepVisualPresentationArea,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PresentationArea
     pub fn HandleStepVisualPresentationArea_get(
         handle: *const HandleStepVisualPresentationArea,
@@ -146598,6 +149710,10 @@ extern "C" {
     pub fn HandleStepVisualPresentationLayerAssignment_clone(
         self_: *const HandleStepVisualPresentationLayerAssignment,
     ) -> crate::OcctResult<*mut HandleStepVisualPresentationLayerAssignment>;
+    /// Check if Handle<StepVisual_PresentationLayerAssignment> is null
+    pub fn HandleStepVisualPresentationLayerAssignment_is_null(
+        self_: *const HandleStepVisualPresentationLayerAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PresentationLayerAssignment
     pub fn HandleStepVisualPresentationLayerAssignment_get(
         handle: *const HandleStepVisualPresentationLayerAssignment,
@@ -146701,6 +149817,10 @@ extern "C" {
     pub fn HandleStepVisualPresentationLayerUsage_clone(
         self_: *const HandleStepVisualPresentationLayerUsage,
     ) -> crate::OcctResult<*mut HandleStepVisualPresentationLayerUsage>;
+    /// Check if Handle<StepVisual_PresentationLayerUsage> is null
+    pub fn HandleStepVisualPresentationLayerUsage_is_null(
+        self_: *const HandleStepVisualPresentationLayerUsage,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PresentationLayerUsage
     pub fn HandleStepVisualPresentationLayerUsage_get(
         handle: *const HandleStepVisualPresentationLayerUsage,
@@ -146788,6 +149908,10 @@ extern "C" {
     pub fn HandleStepVisualPresentationRepresentation_clone(
         self_: *const HandleStepVisualPresentationRepresentation,
     ) -> crate::OcctResult<*mut HandleStepVisualPresentationRepresentation>;
+    /// Check if Handle<StepVisual_PresentationRepresentation> is null
+    pub fn HandleStepVisualPresentationRepresentation_is_null(
+        self_: *const HandleStepVisualPresentationRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PresentationRepresentation
     pub fn HandleStepVisualPresentationRepresentation_get(
         handle: *const HandleStepVisualPresentationRepresentation,
@@ -147028,6 +150152,10 @@ extern "C" {
     pub fn HandleStepVisualPresentationSet_clone(
         self_: *const HandleStepVisualPresentationSet,
     ) -> crate::OcctResult<*mut HandleStepVisualPresentationSet>;
+    /// Check if Handle<StepVisual_PresentationSet> is null
+    pub fn HandleStepVisualPresentationSet_is_null(
+        self_: *const HandleStepVisualPresentationSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PresentationSet
     pub fn HandleStepVisualPresentationSet_get(
         handle: *const HandleStepVisualPresentationSet,
@@ -147127,6 +150255,10 @@ extern "C" {
     pub fn HandleStepVisualPresentationSize_clone(
         self_: *const HandleStepVisualPresentationSize,
     ) -> crate::OcctResult<*mut HandleStepVisualPresentationSize>;
+    /// Check if Handle<StepVisual_PresentationSize> is null
+    pub fn HandleStepVisualPresentationSize_is_null(
+        self_: *const HandleStepVisualPresentationSize,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PresentationSize
     pub fn HandleStepVisualPresentationSize_get(
         handle: *const HandleStepVisualPresentationSize,
@@ -147337,6 +150469,10 @@ extern "C" {
     pub fn HandleStepVisualPresentationStyleAssignment_clone(
         self_: *const HandleStepVisualPresentationStyleAssignment,
     ) -> crate::OcctResult<*mut HandleStepVisualPresentationStyleAssignment>;
+    /// Check if Handle<StepVisual_PresentationStyleAssignment> is null
+    pub fn HandleStepVisualPresentationStyleAssignment_is_null(
+        self_: *const HandleStepVisualPresentationStyleAssignment,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PresentationStyleAssignment
     pub fn HandleStepVisualPresentationStyleAssignment_get(
         handle: *const HandleStepVisualPresentationStyleAssignment,
@@ -147443,6 +150579,10 @@ extern "C" {
     pub fn HandleStepVisualPresentationStyleByContext_clone(
         self_: *const HandleStepVisualPresentationStyleByContext,
     ) -> crate::OcctResult<*mut HandleStepVisualPresentationStyleByContext>;
+    /// Check if Handle<StepVisual_PresentationStyleByContext> is null
+    pub fn HandleStepVisualPresentationStyleByContext_is_null(
+        self_: *const HandleStepVisualPresentationStyleByContext,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PresentationStyleByContext
     pub fn HandleStepVisualPresentationStyleByContext_get(
         handle: *const HandleStepVisualPresentationStyleByContext,
@@ -147668,6 +150808,10 @@ extern "C" {
     pub fn HandleStepVisualPresentationView_clone(
         self_: *const HandleStepVisualPresentationView,
     ) -> crate::OcctResult<*mut HandleStepVisualPresentationView>;
+    /// Check if Handle<StepVisual_PresentationView> is null
+    pub fn HandleStepVisualPresentationView_is_null(
+        self_: *const HandleStepVisualPresentationView,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PresentationView
     pub fn HandleStepVisualPresentationView_get(
         handle: *const HandleStepVisualPresentationView,
@@ -147792,6 +150936,10 @@ extern "C" {
     pub fn HandleStepVisualPresentedItem_clone(
         self_: *const HandleStepVisualPresentedItem,
     ) -> crate::OcctResult<*mut HandleStepVisualPresentedItem>;
+    /// Check if Handle<StepVisual_PresentedItem> is null
+    pub fn HandleStepVisualPresentedItem_is_null(
+        self_: *const HandleStepVisualPresentedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PresentedItem
     pub fn HandleStepVisualPresentedItem_get(
         handle: *const HandleStepVisualPresentedItem,
@@ -147903,6 +151051,10 @@ extern "C" {
     pub fn HandleStepVisualPresentedItemRepresentation_clone(
         self_: *const HandleStepVisualPresentedItemRepresentation,
     ) -> crate::OcctResult<*mut HandleStepVisualPresentedItemRepresentation>;
+    /// Check if Handle<StepVisual_PresentedItemRepresentation> is null
+    pub fn HandleStepVisualPresentedItemRepresentation_is_null(
+        self_: *const HandleStepVisualPresentedItemRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_PresentedItemRepresentation
     pub fn HandleStepVisualPresentedItemRepresentation_get(
         handle: *const HandleStepVisualPresentedItemRepresentation,
@@ -148134,6 +151286,10 @@ extern "C" {
     pub fn HandleStepVisualRepositionedTessellatedGeometricSet_clone(
         self_: *const HandleStepVisualRepositionedTessellatedGeometricSet,
     ) -> crate::OcctResult<*mut HandleStepVisualRepositionedTessellatedGeometricSet>;
+    /// Check if Handle<StepVisual_RepositionedTessellatedGeometricSet> is null
+    pub fn HandleStepVisualRepositionedTessellatedGeometricSet_is_null(
+        self_: *const HandleStepVisualRepositionedTessellatedGeometricSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_RepositionedTessellatedGeometricSet
     pub fn HandleStepVisualRepositionedTessellatedGeometricSet_get(
         handle: *const HandleStepVisualRepositionedTessellatedGeometricSet,
@@ -148281,6 +151437,10 @@ extern "C" {
     pub fn HandleStepVisualRepositionedTessellatedItem_clone(
         self_: *const HandleStepVisualRepositionedTessellatedItem,
     ) -> crate::OcctResult<*mut HandleStepVisualRepositionedTessellatedItem>;
+    /// Check if Handle<StepVisual_RepositionedTessellatedItem> is null
+    pub fn HandleStepVisualRepositionedTessellatedItem_is_null(
+        self_: *const HandleStepVisualRepositionedTessellatedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_RepositionedTessellatedItem
     pub fn HandleStepVisualRepositionedTessellatedItem_get(
         handle: *const HandleStepVisualRepositionedTessellatedItem,
@@ -148532,6 +151692,8 @@ extern "C" {
     pub fn HandleStepVisualStyledItem_clone(
         self_: *const HandleStepVisualStyledItem,
     ) -> crate::OcctResult<*mut HandleStepVisualStyledItem>;
+    /// Check if Handle<StepVisual_StyledItem> is null
+    pub fn HandleStepVisualStyledItem_is_null(self_: *const HandleStepVisualStyledItem) -> bool;
     /// Dereference Handle to get *const StepVisual_StyledItem
     pub fn HandleStepVisualStyledItem_get(
         handle: *const HandleStepVisualStyledItem,
@@ -148802,6 +151964,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceSideStyle_clone(
         self_: *const HandleStepVisualSurfaceSideStyle,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceSideStyle>;
+    /// Check if Handle<StepVisual_SurfaceSideStyle> is null
+    pub fn HandleStepVisualSurfaceSideStyle_is_null(
+        self_: *const HandleStepVisualSurfaceSideStyle,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceSideStyle
     pub fn HandleStepVisualSurfaceSideStyle_get(
         handle: *const HandleStepVisualSurfaceSideStyle,
@@ -148893,6 +152059,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceStyleBoundary_clone(
         self_: *const HandleStepVisualSurfaceStyleBoundary,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceStyleBoundary>;
+    /// Check if Handle<StepVisual_SurfaceStyleBoundary> is null
+    pub fn HandleStepVisualSurfaceStyleBoundary_is_null(
+        self_: *const HandleStepVisualSurfaceStyleBoundary,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceStyleBoundary
     pub fn HandleStepVisualSurfaceStyleBoundary_get(
         handle: *const HandleStepVisualSurfaceStyleBoundary,
@@ -148986,6 +152156,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceStyleControlGrid_clone(
         self_: *const HandleStepVisualSurfaceStyleControlGrid,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceStyleControlGrid>;
+    /// Check if Handle<StepVisual_SurfaceStyleControlGrid> is null
+    pub fn HandleStepVisualSurfaceStyleControlGrid_is_null(
+        self_: *const HandleStepVisualSurfaceStyleControlGrid,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceStyleControlGrid
     pub fn HandleStepVisualSurfaceStyleControlGrid_get(
         handle: *const HandleStepVisualSurfaceStyleControlGrid,
@@ -149189,6 +152363,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceStyleFillArea_clone(
         self_: *const HandleStepVisualSurfaceStyleFillArea,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceStyleFillArea>;
+    /// Check if Handle<StepVisual_SurfaceStyleFillArea> is null
+    pub fn HandleStepVisualSurfaceStyleFillArea_is_null(
+        self_: *const HandleStepVisualSurfaceStyleFillArea,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceStyleFillArea
     pub fn HandleStepVisualSurfaceStyleFillArea_get(
         handle: *const HandleStepVisualSurfaceStyleFillArea,
@@ -149301,6 +152479,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceStyleParameterLine_clone(
         self_: *const HandleStepVisualSurfaceStyleParameterLine,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceStyleParameterLine>;
+    /// Check if Handle<StepVisual_SurfaceStyleParameterLine> is null
+    pub fn HandleStepVisualSurfaceStyleParameterLine_is_null(
+        self_: *const HandleStepVisualSurfaceStyleParameterLine,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceStyleParameterLine
     pub fn HandleStepVisualSurfaceStyleParameterLine_get(
         handle: *const HandleStepVisualSurfaceStyleParameterLine,
@@ -149394,6 +152576,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceStyleReflectanceAmbient_clone(
         self_: *const HandleStepVisualSurfaceStyleReflectanceAmbient,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceStyleReflectanceAmbient>;
+    /// Check if Handle<StepVisual_SurfaceStyleReflectanceAmbient> is null
+    pub fn HandleStepVisualSurfaceStyleReflectanceAmbient_is_null(
+        self_: *const HandleStepVisualSurfaceStyleReflectanceAmbient,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceStyleReflectanceAmbient
     pub fn HandleStepVisualSurfaceStyleReflectanceAmbient_get(
         handle: *const HandleStepVisualSurfaceStyleReflectanceAmbient,
@@ -149497,6 +152683,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceStyleRendering_clone(
         self_: *const HandleStepVisualSurfaceStyleRendering,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceStyleRendering>;
+    /// Check if Handle<StepVisual_SurfaceStyleRendering> is null
+    pub fn HandleStepVisualSurfaceStyleRendering_is_null(
+        self_: *const HandleStepVisualSurfaceStyleRendering,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceStyleRendering
     pub fn HandleStepVisualSurfaceStyleRendering_get(
         handle: *const HandleStepVisualSurfaceStyleRendering,
@@ -149604,6 +152794,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceStyleRenderingWithProperties_clone(
         self_: *const HandleStepVisualSurfaceStyleRenderingWithProperties,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceStyleRenderingWithProperties>;
+    /// Check if Handle<StepVisual_SurfaceStyleRenderingWithProperties> is null
+    pub fn HandleStepVisualSurfaceStyleRenderingWithProperties_is_null(
+        self_: *const HandleStepVisualSurfaceStyleRenderingWithProperties,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceStyleRenderingWithProperties
     pub fn HandleStepVisualSurfaceStyleRenderingWithProperties_get(
         handle: *const HandleStepVisualSurfaceStyleRenderingWithProperties,
@@ -149719,6 +152913,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceStyleSegmentationCurve_clone(
         self_: *const HandleStepVisualSurfaceStyleSegmentationCurve,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceStyleSegmentationCurve>;
+    /// Check if Handle<StepVisual_SurfaceStyleSegmentationCurve> is null
+    pub fn HandleStepVisualSurfaceStyleSegmentationCurve_is_null(
+        self_: *const HandleStepVisualSurfaceStyleSegmentationCurve,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceStyleSegmentationCurve
     pub fn HandleStepVisualSurfaceStyleSegmentationCurve_get(
         handle: *const HandleStepVisualSurfaceStyleSegmentationCurve,
@@ -149812,6 +153010,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceStyleSilhouette_clone(
         self_: *const HandleStepVisualSurfaceStyleSilhouette,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceStyleSilhouette>;
+    /// Check if Handle<StepVisual_SurfaceStyleSilhouette> is null
+    pub fn HandleStepVisualSurfaceStyleSilhouette_is_null(
+        self_: *const HandleStepVisualSurfaceStyleSilhouette,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceStyleSilhouette
     pub fn HandleStepVisualSurfaceStyleSilhouette_get(
         handle: *const HandleStepVisualSurfaceStyleSilhouette,
@@ -149905,6 +153107,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceStyleTransparent_clone(
         self_: *const HandleStepVisualSurfaceStyleTransparent,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceStyleTransparent>;
+    /// Check if Handle<StepVisual_SurfaceStyleTransparent> is null
+    pub fn HandleStepVisualSurfaceStyleTransparent_is_null(
+        self_: *const HandleStepVisualSurfaceStyleTransparent,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceStyleTransparent
     pub fn HandleStepVisualSurfaceStyleTransparent_get(
         handle: *const HandleStepVisualSurfaceStyleTransparent,
@@ -150005,6 +153211,10 @@ extern "C" {
     pub fn HandleStepVisualSurfaceStyleUsage_clone(
         self_: *const HandleStepVisualSurfaceStyleUsage,
     ) -> crate::OcctResult<*mut HandleStepVisualSurfaceStyleUsage>;
+    /// Check if Handle<StepVisual_SurfaceStyleUsage> is null
+    pub fn HandleStepVisualSurfaceStyleUsage_is_null(
+        self_: *const HandleStepVisualSurfaceStyleUsage,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_SurfaceStyleUsage
     pub fn HandleStepVisualSurfaceStyleUsage_get(
         handle: *const HandleStepVisualSurfaceStyleUsage,
@@ -150085,6 +153295,8 @@ extern "C" {
     pub fn HandleStepVisualTemplate_clone(
         self_: *const HandleStepVisualTemplate,
     ) -> crate::OcctResult<*mut HandleStepVisualTemplate>;
+    /// Check if Handle<StepVisual_Template> is null
+    pub fn HandleStepVisualTemplate_is_null(self_: *const HandleStepVisualTemplate) -> bool;
     /// Dereference Handle to get *const StepVisual_Template
     pub fn HandleStepVisualTemplate_get(
         handle: *const HandleStepVisualTemplate,
@@ -150223,6 +153435,10 @@ extern "C" {
     pub fn HandleStepVisualTemplateInstance_clone(
         self_: *const HandleStepVisualTemplateInstance,
     ) -> crate::OcctResult<*mut HandleStepVisualTemplateInstance>;
+    /// Check if Handle<StepVisual_TemplateInstance> is null
+    pub fn HandleStepVisualTemplateInstance_is_null(
+        self_: *const HandleStepVisualTemplateInstance,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TemplateInstance
     pub fn HandleStepVisualTemplateInstance_get(
         handle: *const HandleStepVisualTemplateInstance,
@@ -150360,6 +153576,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedAnnotationOccurrence_clone(
         self_: *const HandleStepVisualTessellatedAnnotationOccurrence,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedAnnotationOccurrence>;
+    /// Check if Handle<StepVisual_TessellatedAnnotationOccurrence> is null
+    pub fn HandleStepVisualTessellatedAnnotationOccurrence_is_null(
+        self_: *const HandleStepVisualTessellatedAnnotationOccurrence,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedAnnotationOccurrence
     pub fn HandleStepVisualTessellatedAnnotationOccurrence_get(
         handle: *const HandleStepVisualTessellatedAnnotationOccurrence,
@@ -150611,6 +153831,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedConnectingEdge_clone(
         self_: *const HandleStepVisualTessellatedConnectingEdge,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedConnectingEdge>;
+    /// Check if Handle<StepVisual_TessellatedConnectingEdge> is null
+    pub fn HandleStepVisualTessellatedConnectingEdge_is_null(
+        self_: *const HandleStepVisualTessellatedConnectingEdge,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedConnectingEdge
     pub fn HandleStepVisualTessellatedConnectingEdge_get(
         handle: *const HandleStepVisualTessellatedConnectingEdge,
@@ -150796,6 +154020,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedCurveSet_clone(
         self_: *const HandleStepVisualTessellatedCurveSet,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedCurveSet>;
+    /// Check if Handle<StepVisual_TessellatedCurveSet> is null
+    pub fn HandleStepVisualTessellatedCurveSet_is_null(
+        self_: *const HandleStepVisualTessellatedCurveSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedCurveSet
     pub fn HandleStepVisualTessellatedCurveSet_get(
         handle: *const HandleStepVisualTessellatedCurveSet,
@@ -150971,6 +154199,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedEdge_clone(
         self_: *const HandleStepVisualTessellatedEdge,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedEdge>;
+    /// Check if Handle<StepVisual_TessellatedEdge> is null
+    pub fn HandleStepVisualTessellatedEdge_is_null(
+        self_: *const HandleStepVisualTessellatedEdge,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedEdge
     pub fn HandleStepVisualTessellatedEdge_get(
         handle: *const HandleStepVisualTessellatedEdge,
@@ -151267,6 +154499,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedFace_clone(
         self_: *const HandleStepVisualTessellatedFace,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedFace>;
+    /// Check if Handle<StepVisual_TessellatedFace> is null
+    pub fn HandleStepVisualTessellatedFace_is_null(
+        self_: *const HandleStepVisualTessellatedFace,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedFace
     pub fn HandleStepVisualTessellatedFace_get(
         handle: *const HandleStepVisualTessellatedFace,
@@ -151417,6 +154653,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedGeometricSet_clone(
         self_: *const HandleStepVisualTessellatedGeometricSet,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedGeometricSet>;
+    /// Check if Handle<StepVisual_TessellatedGeometricSet> is null
+    pub fn HandleStepVisualTessellatedGeometricSet_is_null(
+        self_: *const HandleStepVisualTessellatedGeometricSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedGeometricSet
     pub fn HandleStepVisualTessellatedGeometricSet_get(
         handle: *const HandleStepVisualTessellatedGeometricSet,
@@ -151531,6 +154771,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedItem_clone(
         self_: *const HandleStepVisualTessellatedItem,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedItem>;
+    /// Check if Handle<StepVisual_TessellatedItem> is null
+    pub fn HandleStepVisualTessellatedItem_is_null(
+        self_: *const HandleStepVisualTessellatedItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedItem
     pub fn HandleStepVisualTessellatedItem_get(
         handle: *const HandleStepVisualTessellatedItem,
@@ -151772,6 +155016,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedPointSet_clone(
         self_: *const HandleStepVisualTessellatedPointSet,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedPointSet>;
+    /// Check if Handle<StepVisual_TessellatedPointSet> is null
+    pub fn HandleStepVisualTessellatedPointSet_is_null(
+        self_: *const HandleStepVisualTessellatedPointSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedPointSet
     pub fn HandleStepVisualTessellatedPointSet_get(
         handle: *const HandleStepVisualTessellatedPointSet,
@@ -151888,6 +155136,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedShapeRepresentation_clone(
         self_: *const HandleStepVisualTessellatedShapeRepresentation,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedShapeRepresentation>;
+    /// Check if Handle<StepVisual_TessellatedShapeRepresentation> is null
+    pub fn HandleStepVisualTessellatedShapeRepresentation_is_null(
+        self_: *const HandleStepVisualTessellatedShapeRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedShapeRepresentation
     pub fn HandleStepVisualTessellatedShapeRepresentation_get(
         handle: *const HandleStepVisualTessellatedShapeRepresentation,
@@ -152072,6 +155324,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters_clone(
         self_: *const HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters>;
+    /// Check if Handle<StepVisual_TessellatedShapeRepresentationWithAccuracyParameters> is null
+    pub fn HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters_is_null(
+        self_: *const HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedShapeRepresentationWithAccuracyParameters
     pub fn HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters_get(
         handle: *const HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters,
@@ -152258,6 +155514,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedShell_clone(
         self_: *const HandleStepVisualTessellatedShell,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedShell>;
+    /// Check if Handle<StepVisual_TessellatedShell> is null
+    pub fn HandleStepVisualTessellatedShell_is_null(
+        self_: *const HandleStepVisualTessellatedShell,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedShell
     pub fn HandleStepVisualTessellatedShell_get(
         handle: *const HandleStepVisualTessellatedShell,
@@ -152417,6 +155677,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedSolid_clone(
         self_: *const HandleStepVisualTessellatedSolid,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedSolid>;
+    /// Check if Handle<StepVisual_TessellatedSolid> is null
+    pub fn HandleStepVisualTessellatedSolid_is_null(
+        self_: *const HandleStepVisualTessellatedSolid,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedSolid
     pub fn HandleStepVisualTessellatedSolid_get(
         handle: *const HandleStepVisualTessellatedSolid,
@@ -152541,6 +155805,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedStructuredItem_clone(
         self_: *const HandleStepVisualTessellatedStructuredItem,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedStructuredItem>;
+    /// Check if Handle<StepVisual_TessellatedStructuredItem> is null
+    pub fn HandleStepVisualTessellatedStructuredItem_is_null(
+        self_: *const HandleStepVisualTessellatedStructuredItem,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedStructuredItem
     pub fn HandleStepVisualTessellatedStructuredItem_get(
         handle: *const HandleStepVisualTessellatedStructuredItem,
@@ -152741,6 +156009,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedSurfaceSet_clone(
         self_: *const HandleStepVisualTessellatedSurfaceSet,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedSurfaceSet>;
+    /// Check if Handle<StepVisual_TessellatedSurfaceSet> is null
+    pub fn HandleStepVisualTessellatedSurfaceSet_is_null(
+        self_: *const HandleStepVisualTessellatedSurfaceSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedSurfaceSet
     pub fn HandleStepVisualTessellatedSurfaceSet_get(
         handle: *const HandleStepVisualTessellatedSurfaceSet,
@@ -152918,6 +156190,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedVertex_clone(
         self_: *const HandleStepVisualTessellatedVertex,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedVertex>;
+    /// Check if Handle<StepVisual_TessellatedVertex> is null
+    pub fn HandleStepVisualTessellatedVertex_is_null(
+        self_: *const HandleStepVisualTessellatedVertex,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedVertex
     pub fn HandleStepVisualTessellatedVertex_get(
         handle: *const HandleStepVisualTessellatedVertex,
@@ -153079,6 +156355,10 @@ extern "C" {
     pub fn HandleStepVisualTessellatedWire_clone(
         self_: *const HandleStepVisualTessellatedWire,
     ) -> crate::OcctResult<*mut HandleStepVisualTessellatedWire>;
+    /// Check if Handle<StepVisual_TessellatedWire> is null
+    pub fn HandleStepVisualTessellatedWire_is_null(
+        self_: *const HandleStepVisualTessellatedWire,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TessellatedWire
     pub fn HandleStepVisualTessellatedWire_get(
         handle: *const HandleStepVisualTessellatedWire,
@@ -153244,6 +156524,8 @@ extern "C" {
     pub fn HandleStepVisualTextLiteral_clone(
         self_: *const HandleStepVisualTextLiteral,
     ) -> crate::OcctResult<*mut HandleStepVisualTextLiteral>;
+    /// Check if Handle<StepVisual_TextLiteral> is null
+    pub fn HandleStepVisualTextLiteral_is_null(self_: *const HandleStepVisualTextLiteral) -> bool;
     /// Dereference Handle to get *const StepVisual_TextLiteral
     pub fn HandleStepVisualTextLiteral_get(
         handle: *const HandleStepVisualTextLiteral,
@@ -153462,6 +156744,8 @@ extern "C" {
     pub fn HandleStepVisualTextStyle_clone(
         self_: *const HandleStepVisualTextStyle,
     ) -> crate::OcctResult<*mut HandleStepVisualTextStyle>;
+    /// Check if Handle<StepVisual_TextStyle> is null
+    pub fn HandleStepVisualTextStyle_is_null(self_: *const HandleStepVisualTextStyle) -> bool;
     /// Dereference Handle to get *const StepVisual_TextStyle
     pub fn HandleStepVisualTextStyle_get(
         handle: *const HandleStepVisualTextStyle,
@@ -153559,6 +156843,10 @@ extern "C" {
     pub fn HandleStepVisualTextStyleForDefinedFont_clone(
         self_: *const HandleStepVisualTextStyleForDefinedFont,
     ) -> crate::OcctResult<*mut HandleStepVisualTextStyleForDefinedFont>;
+    /// Check if Handle<StepVisual_TextStyleForDefinedFont> is null
+    pub fn HandleStepVisualTextStyleForDefinedFont_is_null(
+        self_: *const HandleStepVisualTextStyleForDefinedFont,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TextStyleForDefinedFont
     pub fn HandleStepVisualTextStyleForDefinedFont_get(
         handle: *const HandleStepVisualTextStyleForDefinedFont,
@@ -153671,6 +156959,10 @@ extern "C" {
     pub fn HandleStepVisualTextStyleWithBoxCharacteristics_clone(
         self_: *const HandleStepVisualTextStyleWithBoxCharacteristics,
     ) -> crate::OcctResult<*mut HandleStepVisualTextStyleWithBoxCharacteristics>;
+    /// Check if Handle<StepVisual_TextStyleWithBoxCharacteristics> is null
+    pub fn HandleStepVisualTextStyleWithBoxCharacteristics_is_null(
+        self_: *const HandleStepVisualTextStyleWithBoxCharacteristics,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TextStyleWithBoxCharacteristics
     pub fn HandleStepVisualTextStyleWithBoxCharacteristics_get(
         handle: *const HandleStepVisualTextStyleWithBoxCharacteristics,
@@ -153851,6 +157143,10 @@ extern "C" {
     pub fn HandleStepVisualTriangulatedFace_clone(
         self_: *const HandleStepVisualTriangulatedFace,
     ) -> crate::OcctResult<*mut HandleStepVisualTriangulatedFace>;
+    /// Check if Handle<StepVisual_TriangulatedFace> is null
+    pub fn HandleStepVisualTriangulatedFace_is_null(
+        self_: *const HandleStepVisualTriangulatedFace,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TriangulatedFace
     pub fn HandleStepVisualTriangulatedFace_get(
         handle: *const HandleStepVisualTriangulatedFace,
@@ -154076,6 +157372,10 @@ extern "C" {
     pub fn HandleStepVisualTriangulatedSurfaceSet_clone(
         self_: *const HandleStepVisualTriangulatedSurfaceSet,
     ) -> crate::OcctResult<*mut HandleStepVisualTriangulatedSurfaceSet>;
+    /// Check if Handle<StepVisual_TriangulatedSurfaceSet> is null
+    pub fn HandleStepVisualTriangulatedSurfaceSet_is_null(
+        self_: *const HandleStepVisualTriangulatedSurfaceSet,
+    ) -> bool;
     /// Dereference Handle to get *const StepVisual_TriangulatedSurfaceSet
     pub fn HandleStepVisualTriangulatedSurfaceSet_get(
         handle: *const HandleStepVisualTriangulatedSurfaceSet,
@@ -154299,6 +157599,8 @@ extern "C" {
     pub fn HandleStepVisualViewVolume_clone(
         self_: *const HandleStepVisualViewVolume,
     ) -> crate::OcctResult<*mut HandleStepVisualViewVolume>;
+    /// Check if Handle<StepVisual_ViewVolume> is null
+    pub fn HandleStepVisualViewVolume_is_null(self_: *const HandleStepVisualViewVolume) -> bool;
     /// Dereference Handle to get *const StepVisual_ViewVolume
     pub fn HandleStepVisualViewVolume_get(
         handle: *const HandleStepVisualViewVolume,

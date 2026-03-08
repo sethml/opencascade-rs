@@ -2836,6 +2836,11 @@ unsafe impl crate::CppCopyable for HandlePrsDimAngleDimension {
 }
 
 impl HandlePrsDimAngleDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrsDimAngleDimension_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_AngleDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_AngleDimension {
         unsafe {
@@ -4689,6 +4694,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimChamf2dDimension {
 }
 
 impl HandlePrsDimChamf2dDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimChamf2dDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_Chamf2dDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_Chamf2dDimension {
         unsafe {
@@ -6543,6 +6555,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimChamf3dDimension {
 }
 
 impl HandlePrsDimChamf3dDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimChamf3dDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_Chamf3dDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_Chamf3dDimension {
         unsafe {
@@ -8374,6 +8393,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimConcentricRelation {
 }
 
 impl HandlePrsDimConcentricRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimConcentricRelation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_ConcentricRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_ConcentricRelation {
         unsafe {
@@ -10360,6 +10386,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimDiameterDimension {
 }
 
 impl HandlePrsDimDiameterDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimDiameterDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_DiameterDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_DiameterDimension {
         unsafe {
@@ -12245,6 +12278,11 @@ unsafe impl crate::CppCopyable for HandlePrsDimDimension {
 }
 
 impl HandlePrsDimDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrsDimDimension_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_Dimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_Dimension {
         unsafe {
@@ -12895,6 +12933,11 @@ unsafe impl crate::CppCopyable for HandlePrsDimDimensionOwner {
 }
 
 impl HandlePrsDimDimensionOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrsDimDimensionOwner_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_DimensionOwner
     pub fn get(&self) -> &crate::ffi_types::PrsDim_DimensionOwner {
         unsafe {
@@ -14660,6 +14703,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimEllipseRadiusDimension {
 }
 
 impl HandlePrsDimEllipseRadiusDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimEllipseRadiusDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_EllipseRadiusDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_EllipseRadiusDimension {
         unsafe {
@@ -16681,6 +16731,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimEqualDistanceRelation {
 }
 
 impl HandlePrsDimEqualDistanceRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimEqualDistanceRelation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_EqualDistanceRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_EqualDistanceRelation {
         unsafe {
@@ -18492,6 +18549,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimEqualRadiusRelation {
 }
 
 impl HandlePrsDimEqualRadiusRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimEqualRadiusRelation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_EqualRadiusRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_EqualRadiusRelation {
         unsafe {
@@ -20369,6 +20433,11 @@ unsafe impl crate::CppCopyable for HandlePrsDimFixRelation {
 }
 
 impl HandlePrsDimFixRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrsDimFixRelation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_FixRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_FixRelation {
         unsafe {
@@ -22215,6 +22284,11 @@ unsafe impl crate::CppCopyable for HandlePrsDimIdenticRelation {
 }
 
 impl HandlePrsDimIdenticRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrsDimIdenticRelation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_IdenticRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_IdenticRelation {
         unsafe {
@@ -24320,6 +24394,11 @@ unsafe impl crate::CppCopyable for HandlePrsDimLengthDimension {
 }
 
 impl HandlePrsDimLengthDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrsDimLengthDimension_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_LengthDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_LengthDimension {
         unsafe {
@@ -26203,6 +26282,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimMaxRadiusDimension {
 }
 
 impl HandlePrsDimMaxRadiusDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimMaxRadiusDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_MaxRadiusDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_MaxRadiusDimension {
         unsafe {
@@ -28042,6 +28128,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimMidPointRelation {
 }
 
 impl HandlePrsDimMidPointRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimMidPointRelation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_MidPointRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_MidPointRelation {
         unsafe {
@@ -29925,6 +30018,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimMinRadiusDimension {
 }
 
 impl HandlePrsDimMinRadiusDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimMinRadiusDimension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_MinRadiusDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_MinRadiusDimension {
         unsafe {
@@ -31752,6 +31852,11 @@ unsafe impl crate::CppCopyable for HandlePrsDimOffsetDimension {
 }
 
 impl HandlePrsDimOffsetDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrsDimOffsetDimension_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_OffsetDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_OffsetDimension {
         unsafe {
@@ -33606,6 +33711,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimParallelRelation {
 }
 
 impl HandlePrsDimParallelRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimParallelRelation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_ParallelRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_ParallelRelation {
         unsafe {
@@ -35437,6 +35549,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimPerpendicularRelation {
 }
 
 impl HandlePrsDimPerpendicularRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimPerpendicularRelation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_PerpendicularRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_PerpendicularRelation {
         unsafe {
@@ -37417,6 +37536,11 @@ unsafe impl crate::CppCopyable for HandlePrsDimRadiusDimension {
 }
 
 impl HandlePrsDimRadiusDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrsDimRadiusDimension_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_RadiusDimension
     pub fn get(&self) -> &crate::ffi_types::PrsDim_RadiusDimension {
         unsafe {
@@ -39142,6 +39266,11 @@ unsafe impl crate::CppCopyable for HandlePrsDimRelation {
 }
 
 impl HandlePrsDimRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrsDimRelation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_Relation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_Relation {
         unsafe {
@@ -41284,6 +41413,13 @@ unsafe impl crate::CppCopyable for HandlePrsDimSymmetricRelation {
 }
 
 impl HandlePrsDimSymmetricRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsDimSymmetricRelation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_SymmetricRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_SymmetricRelation {
         unsafe {
@@ -43132,6 +43268,11 @@ unsafe impl crate::CppCopyable for HandlePrsDimTangentRelation {
 }
 
 impl HandlePrsDimTangentRelation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrsDimTangentRelation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PrsDim_TangentRelation
     pub fn get(&self) -> &crate::ffi_types::PrsDim_TangentRelation {
         unsafe {

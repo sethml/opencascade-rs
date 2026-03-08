@@ -610,6 +610,11 @@ unsafe impl crate::CppCopyable for HandleIntPatchALine {
 }
 
 impl HandleIntPatchALine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IntPatch_ALine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_ALine {
         unsafe {
@@ -1985,6 +1990,11 @@ unsafe impl crate::CppCopyable for HandleIntPatchGLine {
 }
 
 impl HandleIntPatchGLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IntPatch_GLine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_GLine {
         unsafe {
@@ -3749,6 +3759,11 @@ unsafe impl crate::CppCopyable for HandleIntPatchLine {
 }
 
 impl HandleIntPatchLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IntPatch_Line
     pub fn get(&self) -> &crate::ffi_types::IntPatch_Line {
         unsafe {
@@ -4769,6 +4784,13 @@ unsafe impl crate::CppCopyable for HandleIntPatchPointLine {
 }
 
 impl HandleIntPatchPointLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IntPatch_PointLine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_PointLine {
         unsafe {
@@ -7013,6 +7035,11 @@ unsafe impl crate::CppCopyable for HandleIntPatchRLine {
 }
 
 impl HandleIntPatchRLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IntPatch_RLine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_RLine {
         unsafe {
@@ -7789,6 +7816,15 @@ unsafe impl crate::CppCopyable for HandleIntPatchTheIWLineOfTheIWalking {
 }
 
 impl HandleIntPatchTheIWLineOfTheIWalking {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IntPatch_TheIWLineOfTheIWalking
     pub fn get(&self) -> &crate::ffi_types::IntPatch_TheIWLineOfTheIWalking {
         unsafe {
@@ -9427,6 +9463,11 @@ unsafe impl crate::CppCopyable for HandleIntPatchWLine {
 }
 
 impl HandleIntPatchWLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IntPatch_WLine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_WLine {
         unsafe {

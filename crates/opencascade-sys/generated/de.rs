@@ -461,6 +461,11 @@ unsafe impl crate::CppCopyable for HandleDEConfigurationContext {
 }
 
 impl HandleDEConfigurationContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDE::HandleDEConfigurationContext_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying DE_ConfigurationContext
     pub fn get(&self) -> &crate::ffi_types::DE_ConfigurationContext {
         unsafe {
@@ -865,6 +870,11 @@ unsafe impl crate::CppCopyable for HandleDEConfigurationNode {
 }
 
 impl HandleDEConfigurationNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDE::HandleDEConfigurationNode_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying DE_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DE_ConfigurationNode {
         unsafe {
@@ -1415,6 +1425,11 @@ unsafe impl crate::CppCopyable for HandleDEProvider {
 }
 
 impl HandleDEProvider {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDE::HandleDEProvider_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying DE_Provider
     pub fn get(&self) -> &crate::ffi_types::DE_Provider {
         unsafe {
@@ -1942,6 +1957,13 @@ unsafe impl crate::CppCopyable for HandleDEShapeFixConfigurationNode {
 }
 
 impl HandleDEShapeFixConfigurationNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying DE_ShapeFixConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DE_ShapeFixConfigurationNode {
         unsafe {
@@ -2648,6 +2670,11 @@ unsafe impl crate::CppCopyable for HandleDEWrapper {
 }
 
 impl HandleDEWrapper {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDE::HandleDEWrapper_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying DE_Wrapper
     pub fn get(&self) -> &crate::ffi_types::DE_Wrapper {
         unsafe {

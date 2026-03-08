@@ -950,6 +950,11 @@ unsafe impl crate::CppCopyable for HandleIGESGraphColor {
 }
 
 impl HandleIGESGraphColor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGraphColor_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_Color
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_Color {
         unsafe {
@@ -1961,6 +1966,13 @@ unsafe impl crate::CppCopyable for HandleIGESGraphDefinitionLevel {
 }
 
 impl HandleIGESGraphDefinitionLevel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphDefinitionLevel_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_DefinitionLevel
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_DefinitionLevel {
         unsafe {
@@ -2922,6 +2934,13 @@ unsafe impl crate::CppCopyable for HandleIGESGraphDrawingSize {
 }
 
 impl HandleIGESGraphDrawingSize {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphDrawingSize_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_DrawingSize
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_DrawingSize {
         unsafe {
@@ -3903,6 +3922,13 @@ unsafe impl crate::CppCopyable for HandleIGESGraphDrawingUnits {
 }
 
 impl HandleIGESGraphDrawingUnits {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphDrawingUnits_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_DrawingUnits
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_DrawingUnits {
         unsafe {
@@ -4556,6 +4582,13 @@ unsafe impl crate::CppCopyable for HandleIGESGraphGeneralModule {
 }
 
 impl HandleIGESGraphGeneralModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphGeneralModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_GeneralModule {
         unsafe {
@@ -4848,6 +4881,13 @@ unsafe impl crate::CppCopyable for HandleIGESGraphHArray1OfColor {
 }
 
 impl HandleIGESGraphHArray1OfColor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfColor_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_HArray1OfColor
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_HArray1OfColor {
         unsafe {
@@ -5110,6 +5150,15 @@ unsafe impl crate::CppCopyable for HandleIGESGraphHArray1OfTextDisplayTemplate {
 }
 
 impl HandleIGESGraphHArray1OfTextDisplayTemplate {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfTextDisplayTemplate_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_HArray1OfTextDisplayTemplate
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_HArray1OfTextDisplayTemplate {
         unsafe {
@@ -5386,6 +5435,15 @@ unsafe impl crate::CppCopyable for HandleIGESGraphHArray1OfTextFontDef {
 }
 
 impl HandleIGESGraphHArray1OfTextFontDef {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfTextFontDef_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_HArray1OfTextFontDef
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_HArray1OfTextFontDef {
         unsafe {
@@ -6315,6 +6373,11 @@ unsafe impl crate::CppCopyable for HandleIGESGraphHighLight {
 }
 
 impl HandleIGESGraphHighLight {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGraphHighLight_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_HighLight
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_HighLight {
         unsafe {
@@ -7238,6 +7301,15 @@ unsafe impl crate::CppCopyable for HandleIGESGraphIntercharacterSpacing {
 }
 
 impl HandleIGESGraphIntercharacterSpacing {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphIntercharacterSpacing_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_IntercharacterSpacing
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_IntercharacterSpacing {
         unsafe {
@@ -8248,6 +8320,15 @@ unsafe impl crate::CppCopyable for HandleIGESGraphLineFontDefPattern {
 }
 
 impl HandleIGESGraphLineFontDefPattern {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontDefPattern_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_LineFontDefPattern
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_LineFontDefPattern {
         unsafe {
@@ -9256,6 +9337,15 @@ unsafe impl crate::CppCopyable for HandleIGESGraphLineFontDefTemplate {
 }
 
 impl HandleIGESGraphLineFontDefTemplate {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontDefTemplate_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_LineFontDefTemplate
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_LineFontDefTemplate {
         unsafe {
@@ -10215,6 +10305,15 @@ unsafe impl crate::CppCopyable for HandleIGESGraphLineFontPredefined {
 }
 
 impl HandleIGESGraphLineFontPredefined {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontPredefined_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_LineFontPredefined
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_LineFontPredefined {
         unsafe {
@@ -11207,6 +11306,13 @@ unsafe impl crate::CppCopyable for HandleIGESGraphNominalSize {
 }
 
 impl HandleIGESGraphNominalSize {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphNominalSize_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_NominalSize
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_NominalSize {
         unsafe {
@@ -12089,6 +12195,11 @@ unsafe impl crate::CppCopyable for HandleIGESGraphPick {
 }
 
 impl HandleIGESGraphPick {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGraphPick_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_Pick
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_Pick {
         unsafe {
@@ -12486,6 +12597,11 @@ unsafe impl crate::CppCopyable for HandleIGESGraphProtocol {
 }
 
 impl HandleIGESGraphProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGraphProtocol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_Protocol {
         unsafe {
@@ -12870,6 +12986,13 @@ unsafe impl crate::CppCopyable for HandleIGESGraphReadWriteModule {
 }
 
 impl HandleIGESGraphReadWriteModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphReadWriteModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_ReadWriteModule
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_ReadWriteModule {
         unsafe {
@@ -13154,6 +13277,13 @@ unsafe impl crate::CppCopyable for HandleIGESGraphSpecificModule {
 }
 
 impl HandleIGESGraphSpecificModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphSpecificModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_SpecificModule
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_SpecificModule {
         unsafe {
@@ -14246,6 +14376,15 @@ unsafe impl crate::CppCopyable for HandleIGESGraphTextDisplayTemplate {
 }
 
 impl HandleIGESGraphTextDisplayTemplate {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphTextDisplayTemplate_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_TextDisplayTemplate
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_TextDisplayTemplate {
         unsafe {
@@ -15343,6 +15482,13 @@ unsafe impl crate::CppCopyable for HandleIGESGraphTextFontDef {
 }
 
 impl HandleIGESGraphTextFontDef {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphTextFontDef_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_TextFontDef
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_TextFontDef {
         unsafe {
@@ -18596,6 +18742,13 @@ unsafe impl crate::CppCopyable for HandleIGESGraphUniformRectGrid {
 }
 
 impl HandleIGESGraphUniformRectGrid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphUniformRectGrid_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGraph_UniformRectGrid
     pub fn get(&self) -> &crate::ffi_types::IGESGraph_UniformRectGrid {
         unsafe {

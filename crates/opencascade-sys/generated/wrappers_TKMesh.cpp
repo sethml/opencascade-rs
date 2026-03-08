@@ -165,232 +165,277 @@ typedef opencascade::handle<Poly_Triangulation> HandlePolyTriangulation;
 typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleBRepMeshBaseMeshAlgo_destructor(HandleBRepMeshBaseMeshAlgo* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshBaseMeshAlgo*> HandleBRepMeshBaseMeshAlgo_clone(const HandleBRepMeshBaseMeshAlgo* self_) {
     try { return {new HandleBRepMeshBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshBaseMeshAlgo_is_null(const HandleBRepMeshBaseMeshAlgo* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshClassifier_destructor(HandleBRepMeshClassifier* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshClassifier*> HandleBRepMeshClassifier_clone(const HandleBRepMeshClassifier* self_) {
     try { return {new HandleBRepMeshClassifier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshClassifier_is_null(const HandleBRepMeshClassifier* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshConstrainedBaseMeshAlgo_destructor(HandleBRepMeshConstrainedBaseMeshAlgo* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshConstrainedBaseMeshAlgo*> HandleBRepMeshConstrainedBaseMeshAlgo_clone(const HandleBRepMeshConstrainedBaseMeshAlgo* self_) {
     try { return {new HandleBRepMeshConstrainedBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshConstrainedBaseMeshAlgo_is_null(const HandleBRepMeshConstrainedBaseMeshAlgo* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshContext_destructor(HandleBRepMeshContext* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshContext*> HandleBRepMeshContext_clone(const HandleBRepMeshContext* self_) {
     try { return {new HandleBRepMeshContext(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshContext_is_null(const HandleBRepMeshContext* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshCurveTessellator_destructor(HandleBRepMeshCurveTessellator* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshCurveTessellator*> HandleBRepMeshCurveTessellator_clone(const HandleBRepMeshCurveTessellator* self_) {
     try { return {new HandleBRepMeshCurveTessellator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshCurveTessellator_is_null(const HandleBRepMeshCurveTessellator* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshCustomBaseMeshAlgo_destructor(HandleBRepMeshCustomBaseMeshAlgo* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshCustomBaseMeshAlgo*> HandleBRepMeshCustomBaseMeshAlgo_clone(const HandleBRepMeshCustomBaseMeshAlgo* self_) {
     try { return {new HandleBRepMeshCustomBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshCustomBaseMeshAlgo_is_null(const HandleBRepMeshCustomBaseMeshAlgo* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshDataStructureOfDelaun_destructor(HandleBRepMeshDataStructureOfDelaun* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshDataStructureOfDelaun*> HandleBRepMeshDataStructureOfDelaun_clone(const HandleBRepMeshDataStructureOfDelaun* self_) {
     try { return {new HandleBRepMeshDataStructureOfDelaun(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshDataStructureOfDelaun_is_null(const HandleBRepMeshDataStructureOfDelaun* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshDeflection_destructor(HandleBRepMeshDeflection* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshDeflection*> HandleBRepMeshDeflection_clone(const HandleBRepMeshDeflection* self_) {
     try { return {new HandleBRepMeshDeflection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshDeflection_is_null(const HandleBRepMeshDeflection* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshDelabellaBaseMeshAlgo_destructor(HandleBRepMeshDelabellaBaseMeshAlgo* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshDelabellaBaseMeshAlgo*> HandleBRepMeshDelabellaBaseMeshAlgo_clone(const HandleBRepMeshDelabellaBaseMeshAlgo* self_) {
     try { return {new HandleBRepMeshDelabellaBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshDelabellaBaseMeshAlgo_is_null(const HandleBRepMeshDelabellaBaseMeshAlgo* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshDelabellaMeshAlgoFactory_destructor(HandleBRepMeshDelabellaMeshAlgoFactory* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshDelabellaMeshAlgoFactory*> HandleBRepMeshDelabellaMeshAlgoFactory_clone(const HandleBRepMeshDelabellaMeshAlgoFactory* self_) {
     try { return {new HandleBRepMeshDelabellaMeshAlgoFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshDelabellaMeshAlgoFactory_is_null(const HandleBRepMeshDelabellaMeshAlgoFactory* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshDelaunayBaseMeshAlgo_destructor(HandleBRepMeshDelaunayBaseMeshAlgo* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshDelaunayBaseMeshAlgo*> HandleBRepMeshDelaunayBaseMeshAlgo_clone(const HandleBRepMeshDelaunayBaseMeshAlgo* self_) {
     try { return {new HandleBRepMeshDelaunayBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshDelaunayBaseMeshAlgo_is_null(const HandleBRepMeshDelaunayBaseMeshAlgo* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshDiscretRoot_destructor(HandleBRepMeshDiscretRoot* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshDiscretRoot*> HandleBRepMeshDiscretRoot_clone(const HandleBRepMeshDiscretRoot* self_) {
     try { return {new HandleBRepMeshDiscretRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshDiscretRoot_is_null(const HandleBRepMeshDiscretRoot* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshEdgeDiscret_destructor(HandleBRepMeshEdgeDiscret* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshEdgeDiscret*> HandleBRepMeshEdgeDiscret_clone(const HandleBRepMeshEdgeDiscret* self_) {
     try { return {new HandleBRepMeshEdgeDiscret(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshEdgeDiscret_is_null(const HandleBRepMeshEdgeDiscret* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshEdgeTessellationExtractor_destructor(HandleBRepMeshEdgeTessellationExtractor* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshEdgeTessellationExtractor*> HandleBRepMeshEdgeTessellationExtractor_clone(const HandleBRepMeshEdgeTessellationExtractor* self_) {
     try { return {new HandleBRepMeshEdgeTessellationExtractor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshEdgeTessellationExtractor_is_null(const HandleBRepMeshEdgeTessellationExtractor* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshFaceChecker_destructor(HandleBRepMeshFaceChecker* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshFaceChecker*> HandleBRepMeshFaceChecker_clone(const HandleBRepMeshFaceChecker* self_) {
     try { return {new HandleBRepMeshFaceChecker(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshFaceChecker_is_null(const HandleBRepMeshFaceChecker* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshFaceDiscret_destructor(HandleBRepMeshFaceDiscret* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshFaceDiscret*> HandleBRepMeshFaceDiscret_clone(const HandleBRepMeshFaceDiscret* self_) {
     try { return {new HandleBRepMeshFaceDiscret(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshFaceDiscret_is_null(const HandleBRepMeshFaceDiscret* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshIncrementalMesh_destructor(HandleBRepMeshIncrementalMesh* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshIncrementalMesh*> HandleBRepMeshIncrementalMesh_clone(const HandleBRepMeshIncrementalMesh* self_) {
     try { return {new HandleBRepMeshIncrementalMesh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshIncrementalMesh_is_null(const HandleBRepMeshIncrementalMesh* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshMeshAlgoFactory_destructor(HandleBRepMeshMeshAlgoFactory* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshMeshAlgoFactory*> HandleBRepMeshMeshAlgoFactory_clone(const HandleBRepMeshMeshAlgoFactory* self_) {
     try { return {new HandleBRepMeshMeshAlgoFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshMeshAlgoFactory_is_null(const HandleBRepMeshMeshAlgoFactory* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshMeshTool_destructor(HandleBRepMeshMeshTool* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshMeshTool*> HandleBRepMeshMeshTool_clone(const HandleBRepMeshMeshTool* self_) {
     try { return {new HandleBRepMeshMeshTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshMeshTool_is_null(const HandleBRepMeshMeshTool* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshModelBuilder_destructor(HandleBRepMeshModelBuilder* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshModelBuilder*> HandleBRepMeshModelBuilder_clone(const HandleBRepMeshModelBuilder* self_) {
     try { return {new HandleBRepMeshModelBuilder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshModelBuilder_is_null(const HandleBRepMeshModelBuilder* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshModelHealer_destructor(HandleBRepMeshModelHealer* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshModelHealer*> HandleBRepMeshModelHealer_clone(const HandleBRepMeshModelHealer* self_) {
     try { return {new HandleBRepMeshModelHealer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshModelHealer_is_null(const HandleBRepMeshModelHealer* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshModelPostProcessor_destructor(HandleBRepMeshModelPostProcessor* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshModelPostProcessor*> HandleBRepMeshModelPostProcessor_clone(const HandleBRepMeshModelPostProcessor* self_) {
     try { return {new HandleBRepMeshModelPostProcessor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshModelPostProcessor_is_null(const HandleBRepMeshModelPostProcessor* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshModelPreProcessor_destructor(HandleBRepMeshModelPreProcessor* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshModelPreProcessor*> HandleBRepMeshModelPreProcessor_clone(const HandleBRepMeshModelPreProcessor* self_) {
     try { return {new HandleBRepMeshModelPreProcessor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshModelPreProcessor_is_null(const HandleBRepMeshModelPreProcessor* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshSelectorOfDataStructureOfDelaun_destructor(HandleBRepMeshSelectorOfDataStructureOfDelaun* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshSelectorOfDataStructureOfDelaun*> HandleBRepMeshSelectorOfDataStructureOfDelaun_clone(const HandleBRepMeshSelectorOfDataStructureOfDelaun* self_) {
     try { return {new HandleBRepMeshSelectorOfDataStructureOfDelaun(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshSelectorOfDataStructureOfDelaun_is_null(const HandleBRepMeshSelectorOfDataStructureOfDelaun* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshShapeTool_destructor(HandleBRepMeshShapeTool* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshShapeTool*> HandleBRepMeshShapeTool_clone(const HandleBRepMeshShapeTool* self_) {
     try { return {new HandleBRepMeshShapeTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshShapeTool_is_null(const HandleBRepMeshShapeTool* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshShapeVisitor_destructor(HandleBRepMeshShapeVisitor* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshShapeVisitor*> HandleBRepMeshShapeVisitor_clone(const HandleBRepMeshShapeVisitor* self_) {
     try { return {new HandleBRepMeshShapeVisitor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshShapeVisitor_is_null(const HandleBRepMeshShapeVisitor* self_) { return self_->IsNull(); }
 extern "C" void HandleBRepMeshVertexTool_destructor(HandleBRepMeshVertexTool* self_) { delete self_; }
 extern "C" OcctResult<HandleBRepMeshVertexTool*> HandleBRepMeshVertexTool_clone(const HandleBRepMeshVertexTool* self_) {
     try { return {new HandleBRepMeshVertexTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBRepMeshVertexTool_is_null(const HandleBRepMeshVertexTool* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshDataCurve_destructor(HandleIMeshDataCurve* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshDataCurve*> HandleIMeshDataCurve_clone(const HandleIMeshDataCurve* self_) {
     try { return {new HandleIMeshDataCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshDataCurve_is_null(const HandleIMeshDataCurve* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshDataEdge_destructor(HandleIMeshDataEdge* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshDataEdge*> HandleIMeshDataEdge_clone(const HandleIMeshDataEdge* self_) {
     try { return {new HandleIMeshDataEdge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshDataEdge_is_null(const HandleIMeshDataEdge* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshDataFace_destructor(HandleIMeshDataFace* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshDataFace*> HandleIMeshDataFace_clone(const HandleIMeshDataFace* self_) {
     try { return {new HandleIMeshDataFace(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshDataFace_is_null(const HandleIMeshDataFace* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshDataModel_destructor(HandleIMeshDataModel* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshDataModel*> HandleIMeshDataModel_clone(const HandleIMeshDataModel* self_) {
     try { return {new HandleIMeshDataModel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshDataModel_is_null(const HandleIMeshDataModel* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshDataPCurve_destructor(HandleIMeshDataPCurve* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshDataPCurve*> HandleIMeshDataPCurve_clone(const HandleIMeshDataPCurve* self_) {
     try { return {new HandleIMeshDataPCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshDataPCurve_is_null(const HandleIMeshDataPCurve* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshDataParametersList_destructor(HandleIMeshDataParametersList* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshDataParametersList*> HandleIMeshDataParametersList_clone(const HandleIMeshDataParametersList* self_) {
     try { return {new HandleIMeshDataParametersList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshDataParametersList_is_null(const HandleIMeshDataParametersList* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshDataShape_destructor(HandleIMeshDataShape* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshDataShape*> HandleIMeshDataShape_clone(const HandleIMeshDataShape* self_) {
     try { return {new HandleIMeshDataShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshDataShape_is_null(const HandleIMeshDataShape* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshDataTessellatedShape_destructor(HandleIMeshDataTessellatedShape* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshDataTessellatedShape*> HandleIMeshDataTessellatedShape_clone(const HandleIMeshDataTessellatedShape* self_) {
     try { return {new HandleIMeshDataTessellatedShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshDataTessellatedShape_is_null(const HandleIMeshDataTessellatedShape* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshDataWire_destructor(HandleIMeshDataWire* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshDataWire*> HandleIMeshDataWire_clone(const HandleIMeshDataWire* self_) {
     try { return {new HandleIMeshDataWire(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshDataWire_is_null(const HandleIMeshDataWire* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshToolsContext_destructor(HandleIMeshToolsContext* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshToolsContext*> HandleIMeshToolsContext_clone(const HandleIMeshToolsContext* self_) {
     try { return {new HandleIMeshToolsContext(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshToolsContext_is_null(const HandleIMeshToolsContext* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshToolsCurveTessellator_destructor(HandleIMeshToolsCurveTessellator* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshToolsCurveTessellator*> HandleIMeshToolsCurveTessellator_clone(const HandleIMeshToolsCurveTessellator* self_) {
     try { return {new HandleIMeshToolsCurveTessellator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshToolsCurveTessellator_is_null(const HandleIMeshToolsCurveTessellator* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshToolsMeshAlgo_destructor(HandleIMeshToolsMeshAlgo* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshToolsMeshAlgo*> HandleIMeshToolsMeshAlgo_clone(const HandleIMeshToolsMeshAlgo* self_) {
     try { return {new HandleIMeshToolsMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshToolsMeshAlgo_is_null(const HandleIMeshToolsMeshAlgo* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshToolsMeshAlgoFactory_destructor(HandleIMeshToolsMeshAlgoFactory* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshToolsMeshAlgoFactory*> HandleIMeshToolsMeshAlgoFactory_clone(const HandleIMeshToolsMeshAlgoFactory* self_) {
     try { return {new HandleIMeshToolsMeshAlgoFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshToolsMeshAlgoFactory_is_null(const HandleIMeshToolsMeshAlgoFactory* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshToolsMeshBuilder_destructor(HandleIMeshToolsMeshBuilder* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshToolsMeshBuilder*> HandleIMeshToolsMeshBuilder_clone(const HandleIMeshToolsMeshBuilder* self_) {
     try { return {new HandleIMeshToolsMeshBuilder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshToolsMeshBuilder_is_null(const HandleIMeshToolsMeshBuilder* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshToolsModelAlgo_destructor(HandleIMeshToolsModelAlgo* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshToolsModelAlgo*> HandleIMeshToolsModelAlgo_clone(const HandleIMeshToolsModelAlgo* self_) {
     try { return {new HandleIMeshToolsModelAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshToolsModelAlgo_is_null(const HandleIMeshToolsModelAlgo* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshToolsModelBuilder_destructor(HandleIMeshToolsModelBuilder* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshToolsModelBuilder*> HandleIMeshToolsModelBuilder_clone(const HandleIMeshToolsModelBuilder* self_) {
     try { return {new HandleIMeshToolsModelBuilder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshToolsModelBuilder_is_null(const HandleIMeshToolsModelBuilder* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshToolsShapeExplorer_destructor(HandleIMeshToolsShapeExplorer* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshToolsShapeExplorer*> HandleIMeshToolsShapeExplorer_clone(const HandleIMeshToolsShapeExplorer* self_) {
     try { return {new HandleIMeshToolsShapeExplorer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshToolsShapeExplorer_is_null(const HandleIMeshToolsShapeExplorer* self_) { return self_->IsNull(); }
 extern "C" void HandleIMeshToolsShapeVisitor_destructor(HandleIMeshToolsShapeVisitor* self_) { delete self_; }
 extern "C" OcctResult<HandleIMeshToolsShapeVisitor*> HandleIMeshToolsShapeVisitor_clone(const HandleIMeshToolsShapeVisitor* self_) {
     try { return {new HandleIMeshToolsShapeVisitor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleIMeshToolsShapeVisitor_is_null(const HandleIMeshToolsShapeVisitor* self_) { return self_->IsNull(); }
 
 // ========================
 // BRepMesh_BaseMeshAlgo wrappers

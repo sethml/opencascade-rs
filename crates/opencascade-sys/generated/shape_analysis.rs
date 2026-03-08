@@ -2065,6 +2065,15 @@ unsafe impl crate::CppCopyable for HandleShapeAnalysisFreeBoundData {
 }
 
 impl HandleShapeAnalysisFreeBoundData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeAnalysisFreeBoundData_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeAnalysis_FreeBoundData
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_FreeBoundData {
         unsafe {
@@ -3057,6 +3066,15 @@ unsafe impl crate::CppCopyable for HandleShapeAnalysisHSequenceOfFreeBounds {
 }
 
 impl HandleShapeAnalysisHSequenceOfFreeBounds {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeAnalysisHSequenceOfFreeBounds_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeAnalysis_HSequenceOfFreeBounds
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_HSequenceOfFreeBounds {
         unsafe {
@@ -4603,6 +4621,13 @@ unsafe impl crate::CppCopyable for HandleShapeAnalysisSurface {
 }
 
 impl HandleShapeAnalysisSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeAnalysisSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeAnalysis_Surface
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_Surface {
         unsafe {
@@ -4914,6 +4939,15 @@ unsafe impl crate::CppCopyable for HandleShapeAnalysisTransferParameters {
 }
 
 impl HandleShapeAnalysisTransferParameters {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParameters_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeAnalysis_TransferParameters
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_TransferParameters {
         unsafe {
@@ -5273,6 +5307,15 @@ unsafe impl crate::CppCopyable for HandleShapeAnalysisTransferParametersProj {
 }
 
 impl HandleShapeAnalysisTransferParametersProj {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParametersProj_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeAnalysis_TransferParametersProj
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_TransferParametersProj {
         unsafe {
@@ -6569,6 +6612,13 @@ unsafe impl crate::CppCopyable for HandleShapeAnalysisWire {
 }
 
 impl HandleShapeAnalysisWire {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeAnalysisWire_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeAnalysis_Wire
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_Wire {
         unsafe {

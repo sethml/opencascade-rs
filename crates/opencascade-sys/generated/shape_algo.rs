@@ -463,6 +463,13 @@ unsafe impl crate::CppCopyable for HandleShapeAlgoAlgoContainer {
 }
 
 impl HandleShapeAlgoAlgoContainer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeAlgoAlgoContainer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeAlgo_AlgoContainer
     pub fn get(&self) -> &crate::ffi_types::ShapeAlgo_AlgoContainer {
         unsafe {
@@ -694,6 +701,13 @@ unsafe impl crate::CppCopyable for HandleShapeAlgoToolContainer {
 }
 
 impl HandleShapeAlgoToolContainer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeAlgoToolContainer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeAlgo_ToolContainer
     pub fn get(&self) -> &crate::ffi_types::ShapeAlgo_ToolContainer {
         unsafe {

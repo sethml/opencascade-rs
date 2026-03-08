@@ -457,6 +457,11 @@ unsafe impl crate::CppCopyable for HandleExprIntrpGenExp {
 }
 
 impl HandleExprIntrpGenExp {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprIntrpGenExp_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ExprIntrp_GenExp
     pub fn get(&self) -> &crate::ffi_types::ExprIntrp_GenExp {
         unsafe {
@@ -752,6 +757,11 @@ unsafe impl crate::CppCopyable for HandleExprIntrpGenFct {
 }
 
 impl HandleExprIntrpGenFct {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ExprIntrp_GenFct
     pub fn get(&self) -> &crate::ffi_types::ExprIntrp_GenFct {
         unsafe {
@@ -1060,6 +1070,11 @@ unsafe impl crate::CppCopyable for HandleExprIntrpGenRel {
 }
 
 impl HandleExprIntrpGenRel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKExpress::HandleExprIntrpGenRel_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ExprIntrp_GenRel
     pub fn get(&self) -> &crate::ffi_types::ExprIntrp_GenRel {
         unsafe {
@@ -1347,6 +1362,13 @@ unsafe impl crate::CppCopyable for HandleExprIntrpGenerator {
 }
 
 impl HandleExprIntrpGenerator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ExprIntrp_Generator
     pub fn get(&self) -> &crate::ffi_types::ExprIntrp_Generator {
         unsafe {
@@ -1724,6 +1746,13 @@ unsafe impl crate::CppCopyable for HandleExprIntrpSyntaxError {
 }
 
 impl HandleExprIntrpSyntaxError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ExprIntrp_SyntaxError
     pub fn get(&self) -> &crate::ffi_types::ExprIntrp_SyntaxError {
         unsafe {

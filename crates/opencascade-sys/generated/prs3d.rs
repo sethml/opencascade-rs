@@ -841,6 +841,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dArrowAspect {
 }
 
 impl HandlePrs3dArrowAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dArrowAspect_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_ArrowAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_ArrowAspect {
         unsafe {
@@ -1031,6 +1036,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dBasicAspect {
 }
 
 impl HandlePrs3dBasicAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dBasicAspect_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_BasicAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_BasicAspect {
         unsafe {
@@ -1784,6 +1794,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dDatumAspect {
 }
 
 impl HandlePrs3dDatumAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dDatumAspect_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_DatumAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_DatumAspect {
         unsafe {
@@ -2305,6 +2320,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dDimensionAspect {
 }
 
 impl HandlePrs3dDimensionAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dDimensionAspect_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_DimensionAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_DimensionAspect {
         unsafe {
@@ -4360,6 +4380,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dDrawer {
 }
 
 impl HandlePrs3dDrawer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dDrawer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_Drawer
     pub fn get(&self) -> &crate::ffi_types::Prs3d_Drawer {
         unsafe {
@@ -4748,6 +4773,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dInvalidAngle {
 }
 
 impl HandlePrs3dInvalidAngle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dInvalidAngle_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_InvalidAngle
     pub fn get(&self) -> &crate::ffi_types::Prs3d_InvalidAngle {
         unsafe {
@@ -5095,6 +5125,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dIsoAspect {
 }
 
 impl HandlePrs3dIsoAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dIsoAspect_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_IsoAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_IsoAspect {
         unsafe {
@@ -5416,6 +5451,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dLineAspect {
 }
 
 impl HandlePrs3dLineAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dLineAspect_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_LineAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_LineAspect {
         unsafe {
@@ -5860,6 +5900,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dPlaneAspect {
 }
 
 impl HandlePrs3dPlaneAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dPlaneAspect_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_PlaneAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_PlaneAspect {
         unsafe {
@@ -6193,6 +6238,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dPointAspect {
 }
 
 impl HandlePrs3dPointAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dPointAspect_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_PointAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_PointAspect {
         unsafe {
@@ -7049,6 +7099,13 @@ unsafe impl crate::CppCopyable for HandlePrs3dPresentationShadow {
 }
 
 impl HandlePrs3dPresentationShadow {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dPresentationShadow_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_PresentationShadow
     pub fn get(&self) -> &crate::ffi_types::Prs3d_PresentationShadow {
         unsafe {
@@ -7401,6 +7458,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dShadingAspect {
 }
 
 impl HandlePrs3dShadingAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dShadingAspect_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_ShadingAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_ShadingAspect {
         unsafe {
@@ -7862,6 +7924,11 @@ unsafe impl crate::CppCopyable for HandlePrs3dTextAspect {
 }
 
 impl HandlePrs3dTextAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrs3dTextAspect_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Prs3d_TextAspect
     pub fn get(&self) -> &crate::ffi_types::Prs3d_TextAspect {
         unsafe {

@@ -53,57 +53,67 @@ typedef opencascade::handle<TPrsStd_PointDriver> HandleTPrsStdPointDriver;
 typedef opencascade::handle<V3d_Viewer> HandleV3dViewer;
 typedef opencascade::handle<XCAFPrs_Driver> HandleXCAFPrsDriver;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleTPrsStdAISPresentation_destructor(HandleTPrsStdAISPresentation* self_) { delete self_; }
 extern "C" OcctResult<HandleTPrsStdAISPresentation*> HandleTPrsStdAISPresentation_clone(const HandleTPrsStdAISPresentation* self_) {
     try { return {new HandleTPrsStdAISPresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTPrsStdAISPresentation_is_null(const HandleTPrsStdAISPresentation* self_) { return self_->IsNull(); }
 extern "C" void HandleTPrsStdAISViewer_destructor(HandleTPrsStdAISViewer* self_) { delete self_; }
 extern "C" OcctResult<HandleTPrsStdAISViewer*> HandleTPrsStdAISViewer_clone(const HandleTPrsStdAISViewer* self_) {
     try { return {new HandleTPrsStdAISViewer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTPrsStdAISViewer_is_null(const HandleTPrsStdAISViewer* self_) { return self_->IsNull(); }
 extern "C" void HandleTPrsStdAxisDriver_destructor(HandleTPrsStdAxisDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleTPrsStdAxisDriver*> HandleTPrsStdAxisDriver_clone(const HandleTPrsStdAxisDriver* self_) {
     try { return {new HandleTPrsStdAxisDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTPrsStdAxisDriver_is_null(const HandleTPrsStdAxisDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleTPrsStdConstraintDriver_destructor(HandleTPrsStdConstraintDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleTPrsStdConstraintDriver*> HandleTPrsStdConstraintDriver_clone(const HandleTPrsStdConstraintDriver* self_) {
     try { return {new HandleTPrsStdConstraintDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTPrsStdConstraintDriver_is_null(const HandleTPrsStdConstraintDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleTPrsStdDriver_destructor(HandleTPrsStdDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleTPrsStdDriver*> HandleTPrsStdDriver_clone(const HandleTPrsStdDriver* self_) {
     try { return {new HandleTPrsStdDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTPrsStdDriver_is_null(const HandleTPrsStdDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleTPrsStdDriverTable_destructor(HandleTPrsStdDriverTable* self_) { delete self_; }
 extern "C" OcctResult<HandleTPrsStdDriverTable*> HandleTPrsStdDriverTable_clone(const HandleTPrsStdDriverTable* self_) {
     try { return {new HandleTPrsStdDriverTable(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTPrsStdDriverTable_is_null(const HandleTPrsStdDriverTable* self_) { return self_->IsNull(); }
 extern "C" void HandleTPrsStdGeometryDriver_destructor(HandleTPrsStdGeometryDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleTPrsStdGeometryDriver*> HandleTPrsStdGeometryDriver_clone(const HandleTPrsStdGeometryDriver* self_) {
     try { return {new HandleTPrsStdGeometryDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTPrsStdGeometryDriver_is_null(const HandleTPrsStdGeometryDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleTPrsStdNamedShapeDriver_destructor(HandleTPrsStdNamedShapeDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleTPrsStdNamedShapeDriver*> HandleTPrsStdNamedShapeDriver_clone(const HandleTPrsStdNamedShapeDriver* self_) {
     try { return {new HandleTPrsStdNamedShapeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTPrsStdNamedShapeDriver_is_null(const HandleTPrsStdNamedShapeDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleTPrsStdPlaneDriver_destructor(HandleTPrsStdPlaneDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleTPrsStdPlaneDriver*> HandleTPrsStdPlaneDriver_clone(const HandleTPrsStdPlaneDriver* self_) {
     try { return {new HandleTPrsStdPlaneDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTPrsStdPlaneDriver_is_null(const HandleTPrsStdPlaneDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleTPrsStdPointDriver_destructor(HandleTPrsStdPointDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleTPrsStdPointDriver*> HandleTPrsStdPointDriver_clone(const HandleTPrsStdPointDriver* self_) {
     try { return {new HandleTPrsStdPointDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTPrsStdPointDriver_is_null(const HandleTPrsStdPointDriver* self_) { return self_->IsNull(); }
 
 // ========================
 // TPrsStd_AISPresentation wrappers

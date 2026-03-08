@@ -40,22 +40,25 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleDEPLYConfigurationNode_destructor(HandleDEPLYConfigurationNode* self_) { delete self_; }
 extern "C" OcctResult<HandleDEPLYConfigurationNode*> HandleDEPLYConfigurationNode_clone(const HandleDEPLYConfigurationNode* self_) {
     try { return {new HandleDEPLYConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEPLYConfigurationNode_is_null(const HandleDEPLYConfigurationNode* self_) { return self_->IsNull(); }
 extern "C" void HandleDEPLYProvider_destructor(HandleDEPLYProvider* self_) { delete self_; }
 extern "C" OcctResult<HandleDEPLYProvider*> HandleDEPLYProvider_clone(const HandleDEPLYProvider* self_) {
     try { return {new HandleDEPLYProvider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEPLYProvider_is_null(const HandleDEPLYProvider* self_) { return self_->IsNull(); }
 extern "C" void HandleRWPlyCafWriter_destructor(HandleRWPlyCafWriter* self_) { delete self_; }
 extern "C" OcctResult<HandleRWPlyCafWriter*> HandleRWPlyCafWriter_clone(const HandleRWPlyCafWriter* self_) {
     try { return {new HandleRWPlyCafWriter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleRWPlyCafWriter_is_null(const HandleRWPlyCafWriter* self_) { return self_->IsNull(); }
 
 // ========================
 // DEPLY_ConfigurationNode wrappers

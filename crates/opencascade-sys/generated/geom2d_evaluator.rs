@@ -332,6 +332,11 @@ unsafe impl crate::CppCopyable for HandleGeom2dEvaluatorCurve {
 }
 
 impl HandleGeom2dEvaluatorCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom2dEvaluator_Curve
     pub fn get(&self) -> &crate::ffi_types::Geom2dEvaluator_Curve {
         unsafe {
@@ -698,6 +703,13 @@ unsafe impl crate::CppCopyable for HandleGeom2dEvaluatorOffsetCurve {
 }
 
 impl HandleGeom2dEvaluatorOffsetCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorOffsetCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Geom2dEvaluator_OffsetCurve
     pub fn get(&self) -> &crate::ffi_types::Geom2dEvaluator_OffsetCurve {
         unsafe {

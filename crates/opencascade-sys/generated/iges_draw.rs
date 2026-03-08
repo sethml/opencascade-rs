@@ -1069,6 +1069,15 @@ unsafe impl crate::CppCopyable for HandleIGESDrawCircArraySubfigure {
 }
 
 impl HandleIGESDrawCircArraySubfigure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawCircArraySubfigure_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_CircArraySubfigure
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_CircArraySubfigure {
         unsafe {
@@ -2237,6 +2246,13 @@ unsafe impl crate::CppCopyable for HandleIGESDrawConnectPoint {
 }
 
 impl HandleIGESDrawConnectPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawConnectPoint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_ConnectPoint
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_ConnectPoint {
         unsafe {
@@ -3243,6 +3259,11 @@ unsafe impl crate::CppCopyable for HandleIGESDrawDrawing {
 }
 
 impl HandleIGESDrawDrawing {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawing_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_Drawing
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_Drawing {
         unsafe {
@@ -4314,6 +4335,15 @@ unsafe impl crate::CppCopyable for HandleIGESDrawDrawingWithRotation {
 }
 
 impl HandleIGESDrawDrawingWithRotation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawingWithRotation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_DrawingWithRotation
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_DrawingWithRotation {
         unsafe {
@@ -4970,6 +5000,13 @@ unsafe impl crate::CppCopyable for HandleIGESDrawGeneralModule {
 }
 
 impl HandleIGESDrawGeneralModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawGeneralModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_GeneralModule {
         unsafe {
@@ -5260,6 +5297,15 @@ unsafe impl crate::CppCopyable for HandleIGESDrawHArray1OfConnectPoint {
 }
 
 impl HandleIGESDrawHArray1OfConnectPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfConnectPoint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_HArray1OfConnectPoint
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_HArray1OfConnectPoint {
         unsafe {
@@ -5528,6 +5574,15 @@ unsafe impl crate::CppCopyable for HandleIGESDrawHArray1OfViewKindEntity {
 }
 
 impl HandleIGESDrawHArray1OfViewKindEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfViewKindEntity_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_HArray1OfViewKindEntity
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_HArray1OfViewKindEntity {
         unsafe {
@@ -6582,6 +6637,13 @@ unsafe impl crate::CppCopyable for HandleIGESDrawLabelDisplay {
 }
 
 impl HandleIGESDrawLabelDisplay {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawLabelDisplay_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_LabelDisplay
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_LabelDisplay {
         unsafe {
@@ -7682,6 +7744,13 @@ unsafe impl crate::CppCopyable for HandleIGESDrawNetworkSubfigure {
 }
 
 impl HandleIGESDrawNetworkSubfigure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigure_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_NetworkSubfigure
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_NetworkSubfigure {
         unsafe {
@@ -8777,6 +8846,15 @@ unsafe impl crate::CppCopyable for HandleIGESDrawNetworkSubfigureDef {
 }
 
 impl HandleIGESDrawNetworkSubfigureDef {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigureDef_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_NetworkSubfigureDef
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_NetworkSubfigureDef {
         unsafe {
@@ -9967,6 +10045,13 @@ unsafe impl crate::CppCopyable for HandleIGESDrawPerspectiveView {
 }
 
 impl HandleIGESDrawPerspectiveView {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawPerspectiveView_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_PerspectiveView
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_PerspectiveView {
         unsafe {
@@ -10910,6 +10995,11 @@ unsafe impl crate::CppCopyable for HandleIGESDrawPlanar {
 }
 
 impl HandleIGESDrawPlanar {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESDrawPlanar_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_Planar
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_Planar {
         unsafe {
@@ -11305,6 +11395,11 @@ unsafe impl crate::CppCopyable for HandleIGESDrawProtocol {
 }
 
 impl HandleIGESDrawProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESDrawProtocol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_Protocol {
         unsafe {
@@ -11689,6 +11784,13 @@ unsafe impl crate::CppCopyable for HandleIGESDrawReadWriteModule {
 }
 
 impl HandleIGESDrawReadWriteModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawReadWriteModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_ReadWriteModule
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_ReadWriteModule {
         unsafe {
@@ -12797,6 +12899,15 @@ unsafe impl crate::CppCopyable for HandleIGESDrawRectArraySubfigure {
 }
 
 impl HandleIGESDrawRectArraySubfigure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawRectArraySubfigure_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_RectArraySubfigure
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_RectArraySubfigure {
         unsafe {
@@ -13925,6 +14036,15 @@ unsafe impl crate::CppCopyable for HandleIGESDrawSegmentedViewsVisible {
 }
 
 impl HandleIGESDrawSegmentedViewsVisible {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawSegmentedViewsVisible_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_SegmentedViewsVisible
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_SegmentedViewsVisible {
         unsafe {
@@ -14210,6 +14330,13 @@ unsafe impl crate::CppCopyable for HandleIGESDrawSpecificModule {
 }
 
 impl HandleIGESDrawSpecificModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawSpecificModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_SpecificModule
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_SpecificModule {
         unsafe {
@@ -17532,6 +17659,11 @@ unsafe impl crate::CppCopyable for HandleIGESDrawView {
 }
 
 impl HandleIGESDrawView {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESDrawView_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_View
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_View {
         unsafe {
@@ -18577,6 +18709,13 @@ unsafe impl crate::CppCopyable for HandleIGESDrawViewsVisible {
 }
 
 impl HandleIGESDrawViewsVisible {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisible_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_ViewsVisible
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_ViewsVisible {
         unsafe {
@@ -19722,6 +19861,15 @@ unsafe impl crate::CppCopyable for HandleIGESDrawViewsVisibleWithAttr {
 }
 
 impl HandleIGESDrawViewsVisibleWithAttr {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisibleWithAttr_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESDraw_ViewsVisibleWithAttr
     pub fn get(&self) -> &crate::ffi_types::IGESDraw_ViewsVisibleWithAttr {
         unsafe {

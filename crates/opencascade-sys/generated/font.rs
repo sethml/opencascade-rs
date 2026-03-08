@@ -770,6 +770,11 @@ unsafe impl crate::CppCopyable for HandleFontFTFont {
 }
 
 impl HandleFontFTFont {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleFontFTFont_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Font_FTFont
     pub fn get(&self) -> &crate::ffi_types::Font_FTFont {
         unsafe {
@@ -989,6 +994,11 @@ unsafe impl crate::CppCopyable for HandleFontFTLibrary {
 }
 
 impl HandleFontFTLibrary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleFontFTLibrary_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Font_FTLibrary
     pub fn get(&self) -> &crate::ffi_types::Font_FTLibrary {
         unsafe {
@@ -1544,6 +1554,11 @@ unsafe impl crate::CppCopyable for HandleFontFontMgr {
 }
 
 impl HandleFontFontMgr {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleFontFontMgr_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Font_FontMgr
     pub fn get(&self) -> &crate::ffi_types::Font_FontMgr {
         unsafe {
@@ -1899,6 +1914,11 @@ unsafe impl crate::CppCopyable for HandleFontSystemFont {
 }
 
 impl HandleFontSystemFont {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleFontSystemFont_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Font_SystemFont
     pub fn get(&self) -> &crate::ffi_types::Font_SystemFont {
         unsafe {
@@ -2420,6 +2440,11 @@ unsafe impl crate::CppCopyable for HandleFontTextFormatter {
 }
 
 impl HandleFontTextFormatter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleFontTextFormatter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Font_TextFormatter
     pub fn get(&self) -> &crate::ffi_types::Font_TextFormatter {
         unsafe {

@@ -184,142 +184,169 @@ typedef opencascade::handle<TDataXtd_Presentation> HandleTDataXtdPresentation;
 typedef opencascade::handle<TNaming_NamedShape> HandleTNamingNamedShape;
 typedef opencascade::handle<TopLoc_Datum3D> HandleTopLocDatum3D;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleShapePersistentBRepCurve3D_destructor(HandleShapePersistentBRepCurve3D* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepCurve3D*> HandleShapePersistentBRepCurve3D_clone(const HandleShapePersistentBRepCurve3D* self_) {
     try { return {new HandleShapePersistentBRepCurve3D(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepCurve3D_is_null(const HandleShapePersistentBRepCurve3D* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepCurveOn2Surfaces_destructor(HandleShapePersistentBRepCurveOn2Surfaces* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepCurveOn2Surfaces*> HandleShapePersistentBRepCurveOn2Surfaces_clone(const HandleShapePersistentBRepCurveOn2Surfaces* self_) {
     try { return {new HandleShapePersistentBRepCurveOn2Surfaces(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepCurveOn2Surfaces_is_null(const HandleShapePersistentBRepCurveOn2Surfaces* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepCurveOnClosedSurface_destructor(HandleShapePersistentBRepCurveOnClosedSurface* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepCurveOnClosedSurface*> HandleShapePersistentBRepCurveOnClosedSurface_clone(const HandleShapePersistentBRepCurveOnClosedSurface* self_) {
     try { return {new HandleShapePersistentBRepCurveOnClosedSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepCurveOnClosedSurface_is_null(const HandleShapePersistentBRepCurveOnClosedSurface* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepCurveOnSurface_destructor(HandleShapePersistentBRepCurveOnSurface* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepCurveOnSurface*> HandleShapePersistentBRepCurveOnSurface_clone(const HandleShapePersistentBRepCurveOnSurface* self_) {
     try { return {new HandleShapePersistentBRepCurveOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepCurveOnSurface_is_null(const HandleShapePersistentBRepCurveOnSurface* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepCurveRepresentation_destructor(HandleShapePersistentBRepCurveRepresentation* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepCurveRepresentation*> HandleShapePersistentBRepCurveRepresentation_clone(const HandleShapePersistentBRepCurveRepresentation* self_) {
     try { return {new HandleShapePersistentBRepCurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepCurveRepresentation_is_null(const HandleShapePersistentBRepCurveRepresentation* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepPointOnCurve_destructor(HandleShapePersistentBRepPointOnCurve* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepPointOnCurve*> HandleShapePersistentBRepPointOnCurve_clone(const HandleShapePersistentBRepPointOnCurve* self_) {
     try { return {new HandleShapePersistentBRepPointOnCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepPointOnCurve_is_null(const HandleShapePersistentBRepPointOnCurve* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepPointOnCurveOnSurface_destructor(HandleShapePersistentBRepPointOnCurveOnSurface* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepPointOnCurveOnSurface*> HandleShapePersistentBRepPointOnCurveOnSurface_clone(const HandleShapePersistentBRepPointOnCurveOnSurface* self_) {
     try { return {new HandleShapePersistentBRepPointOnCurveOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepPointOnCurveOnSurface_is_null(const HandleShapePersistentBRepPointOnCurveOnSurface* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepPointOnSurface_destructor(HandleShapePersistentBRepPointOnSurface* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepPointOnSurface*> HandleShapePersistentBRepPointOnSurface_clone(const HandleShapePersistentBRepPointOnSurface* self_) {
     try { return {new HandleShapePersistentBRepPointOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepPointOnSurface_is_null(const HandleShapePersistentBRepPointOnSurface* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepPointRepresentation_destructor(HandleShapePersistentBRepPointRepresentation* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepPointRepresentation*> HandleShapePersistentBRepPointRepresentation_clone(const HandleShapePersistentBRepPointRepresentation* self_) {
     try { return {new HandleShapePersistentBRepPointRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepPointRepresentation_is_null(const HandleShapePersistentBRepPointRepresentation* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepPolygon3D_destructor(HandleShapePersistentBRepPolygon3D* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepPolygon3D*> HandleShapePersistentBRepPolygon3D_clone(const HandleShapePersistentBRepPolygon3D* self_) {
     try { return {new HandleShapePersistentBRepPolygon3D(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepPolygon3D_is_null(const HandleShapePersistentBRepPolygon3D* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepPolygonOnClosedSurface_destructor(HandleShapePersistentBRepPolygonOnClosedSurface* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepPolygonOnClosedSurface*> HandleShapePersistentBRepPolygonOnClosedSurface_clone(const HandleShapePersistentBRepPolygonOnClosedSurface* self_) {
     try { return {new HandleShapePersistentBRepPolygonOnClosedSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepPolygonOnClosedSurface_is_null(const HandleShapePersistentBRepPolygonOnClosedSurface* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepPolygonOnClosedTriangulation_destructor(HandleShapePersistentBRepPolygonOnClosedTriangulation* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepPolygonOnClosedTriangulation*> HandleShapePersistentBRepPolygonOnClosedTriangulation_clone(const HandleShapePersistentBRepPolygonOnClosedTriangulation* self_) {
     try { return {new HandleShapePersistentBRepPolygonOnClosedTriangulation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepPolygonOnClosedTriangulation_is_null(const HandleShapePersistentBRepPolygonOnClosedTriangulation* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepPolygonOnSurface_destructor(HandleShapePersistentBRepPolygonOnSurface* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepPolygonOnSurface*> HandleShapePersistentBRepPolygonOnSurface_clone(const HandleShapePersistentBRepPolygonOnSurface* self_) {
     try { return {new HandleShapePersistentBRepPolygonOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepPolygonOnSurface_is_null(const HandleShapePersistentBRepPolygonOnSurface* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentBRepPolygonOnTriangulation_destructor(HandleShapePersistentBRepPolygonOnTriangulation* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentBRepPolygonOnTriangulation*> HandleShapePersistentBRepPolygonOnTriangulation_clone(const HandleShapePersistentBRepPolygonOnTriangulation* self_) {
     try { return {new HandleShapePersistentBRepPolygonOnTriangulation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentBRepPolygonOnTriangulation_is_null(const HandleShapePersistentBRepPolygonOnTriangulation* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentGeomGeometry_destructor(HandleShapePersistentGeomGeometry* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentGeomGeometry*> HandleShapePersistentGeomGeometry_clone(const HandleShapePersistentGeomGeometry* self_) {
     try { return {new HandleShapePersistentGeomGeometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentGeomGeometry_is_null(const HandleShapePersistentGeomGeometry* self_) { return self_->IsNull(); }
 extern "C" void HandleShapePersistentTopoDSHShape_destructor(HandleShapePersistentTopoDSHShape* self_) { delete self_; }
 extern "C" OcctResult<HandleShapePersistentTopoDSHShape*> HandleShapePersistentTopoDSHShape_clone(const HandleShapePersistentTopoDSHShape* self_) {
     try { return {new HandleShapePersistentTopoDSHShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleShapePersistentTopoDSHShape_is_null(const HandleShapePersistentTopoDSHShape* self_) { return self_->IsNull(); }
 extern "C" void HandleStdDriversDocumentRetrievalDriver_destructor(HandleStdDriversDocumentRetrievalDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleStdDriversDocumentRetrievalDriver*> HandleStdDriversDocumentRetrievalDriver_clone(const HandleStdDriversDocumentRetrievalDriver* self_) {
     try { return {new HandleStdDriversDocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdDriversDocumentRetrievalDriver_is_null(const HandleStdDriversDocumentRetrievalDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleStdPersistentHArray1OfShape1_destructor(HandleStdPersistentHArray1OfShape1* self_) { delete self_; }
 extern "C" OcctResult<HandleStdPersistentHArray1OfShape1*> HandleStdPersistentHArray1OfShape1_clone(const HandleStdPersistentHArray1OfShape1* self_) {
     try { return {new HandleStdPersistentHArray1OfShape1(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdPersistentHArray1OfShape1_is_null(const HandleStdPersistentHArray1OfShape1* self_) { return self_->IsNull(); }
 extern "C" void HandleStdPersistentNamingName_destructor(HandleStdPersistentNamingName* self_) { delete self_; }
 extern "C" OcctResult<HandleStdPersistentNamingName*> HandleStdPersistentNamingName_clone(const HandleStdPersistentNamingName* self_) {
     try { return {new HandleStdPersistentNamingName(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdPersistentNamingName_is_null(const HandleStdPersistentNamingName* self_) { return self_->IsNull(); }
 extern "C" void HandleStdPersistentTopLocDatum3D_destructor(HandleStdPersistentTopLocDatum3D* self_) { delete self_; }
 extern "C" OcctResult<HandleStdPersistentTopLocDatum3D*> HandleStdPersistentTopLocDatum3D_clone(const HandleStdPersistentTopLocDatum3D* self_) {
     try { return {new HandleStdPersistentTopLocDatum3D(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdPersistentTopLocDatum3D_is_null(const HandleStdPersistentTopLocDatum3D* self_) { return self_->IsNull(); }
 extern "C" void HandleStdPersistentTopLocItemLocation_destructor(HandleStdPersistentTopLocItemLocation* self_) { delete self_; }
 extern "C" OcctResult<HandleStdPersistentTopLocItemLocation*> HandleStdPersistentTopLocItemLocation_clone(const HandleStdPersistentTopLocItemLocation* self_) {
     try { return {new HandleStdPersistentTopLocItemLocation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdPersistentTopLocItemLocation_is_null(const HandleStdPersistentTopLocItemLocation* self_) { return self_->IsNull(); }
 extern "C" void HandleStdStorageData_destructor(HandleStdStorageData* self_) { delete self_; }
 extern "C" OcctResult<HandleStdStorageData*> HandleStdStorageData_clone(const HandleStdStorageData* self_) {
     try { return {new HandleStdStorageData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdStorageData_is_null(const HandleStdStorageData* self_) { return self_->IsNull(); }
 extern "C" void HandleStdStorageHSequenceOfRoots_destructor(HandleStdStorageHSequenceOfRoots* self_) { delete self_; }
 extern "C" OcctResult<HandleStdStorageHSequenceOfRoots*> HandleStdStorageHSequenceOfRoots_clone(const HandleStdStorageHSequenceOfRoots* self_) {
     try { return {new HandleStdStorageHSequenceOfRoots(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdStorageHSequenceOfRoots_is_null(const HandleStdStorageHSequenceOfRoots* self_) { return self_->IsNull(); }
 extern "C" void HandleStdStorageHeaderData_destructor(HandleStdStorageHeaderData* self_) { delete self_; }
 extern "C" OcctResult<HandleStdStorageHeaderData*> HandleStdStorageHeaderData_clone(const HandleStdStorageHeaderData* self_) {
     try { return {new HandleStdStorageHeaderData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdStorageHeaderData_is_null(const HandleStdStorageHeaderData* self_) { return self_->IsNull(); }
 extern "C" void HandleStdStorageRoot_destructor(HandleStdStorageRoot* self_) { delete self_; }
 extern "C" OcctResult<HandleStdStorageRoot*> HandleStdStorageRoot_clone(const HandleStdStorageRoot* self_) {
     try { return {new HandleStdStorageRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdStorageRoot_is_null(const HandleStdStorageRoot* self_) { return self_->IsNull(); }
 extern "C" void HandleStdStorageRootData_destructor(HandleStdStorageRootData* self_) { delete self_; }
 extern "C" OcctResult<HandleStdStorageRootData*> HandleStdStorageRootData_clone(const HandleStdStorageRootData* self_) {
     try { return {new HandleStdStorageRootData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdStorageRootData_is_null(const HandleStdStorageRootData* self_) { return self_->IsNull(); }
 extern "C" void HandleStdStorageTypeData_destructor(HandleStdStorageTypeData* self_) { delete self_; }
 extern "C" OcctResult<HandleStdStorageTypeData*> HandleStdStorageTypeData_clone(const HandleStdStorageTypeData* self_) {
     try { return {new HandleStdStorageTypeData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdStorageTypeData_is_null(const HandleStdStorageTypeData* self_) { return self_->IsNull(); }
 
 // ========================
 // ShapePersistent_BRep wrappers

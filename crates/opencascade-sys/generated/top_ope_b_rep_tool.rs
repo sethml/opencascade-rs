@@ -1657,6 +1657,13 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepToolHBoxTool {
 }
 
 impl HandleTopOpeBRepToolHBoxTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepTool_HBoxTool
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepTool_HBoxTool {
         unsafe {

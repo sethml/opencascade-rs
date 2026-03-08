@@ -495,6 +495,15 @@ unsafe impl crate::CppCopyable for HandleRWHeaderSectionGeneralModule {
 }
 
 impl HandleRWHeaderSectionGeneralModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionGeneralModule_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying RWHeaderSection_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::RWHeaderSection_GeneralModule {
         unsafe {
@@ -1093,6 +1102,15 @@ unsafe impl crate::CppCopyable for HandleRWHeaderSectionReadWriteModule {
 }
 
 impl HandleRWHeaderSectionReadWriteModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionReadWriteModule_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying RWHeaderSection_ReadWriteModule
     pub fn get(&self) -> &crate::ffi_types::RWHeaderSection_ReadWriteModule {
         unsafe {

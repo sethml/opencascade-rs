@@ -291,6 +291,15 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocAssemblyItemRefDriver {
 }
 
 impl HandleXmlMXCAFDocAssemblyItemRefDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocAssemblyItemRefDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_AssemblyItemRefDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_AssemblyItemRefDriver {
         unsafe {
@@ -620,6 +629,15 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocCentroidDriver {
 }
 
 impl HandleXmlMXCAFDocCentroidDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocCentroidDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_CentroidDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_CentroidDriver {
         unsafe {
@@ -949,6 +967,13 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocColorDriver {
 }
 
 impl HandleXmlMXCAFDocColorDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocColorDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_ColorDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_ColorDriver {
         unsafe {
@@ -1278,6 +1303,13 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocDatumDriver {
 }
 
 impl HandleXmlMXCAFDocDatumDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocDatumDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_DatumDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_DatumDriver {
         unsafe {
@@ -1609,6 +1641,13 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocDimTolDriver {
 }
 
 impl HandleXmlMXCAFDocDimTolDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocDimTolDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_DimTolDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_DimTolDriver {
         unsafe {
@@ -1938,6 +1977,15 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocGraphNodeDriver {
 }
 
 impl HandleXmlMXCAFDocGraphNodeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocGraphNodeDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_GraphNodeDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_GraphNodeDriver {
         unsafe {
@@ -2265,6 +2313,15 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocLengthUnitDriver {
 }
 
 impl HandleXmlMXCAFDocLengthUnitDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocLengthUnitDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_LengthUnitDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_LengthUnitDriver {
         unsafe {
@@ -2633,6 +2690,15 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocLocationDriver {
 }
 
 impl HandleXmlMXCAFDocLocationDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocLocationDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_LocationDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_LocationDriver {
         unsafe {
@@ -2964,6 +3030,15 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocMaterialDriver {
 }
 
 impl HandleXmlMXCAFDocMaterialDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocMaterialDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_MaterialDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_MaterialDriver {
         unsafe {
@@ -3305,6 +3380,15 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocNoteBinDataDriver {
 }
 
 impl HandleXmlMXCAFDocNoteBinDataDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocNoteBinDataDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_NoteBinDataDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_NoteBinDataDriver {
         unsafe {
@@ -3653,6 +3737,15 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocNoteCommentDriver {
 }
 
 impl HandleXmlMXCAFDocNoteCommentDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocNoteCommentDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_NoteCommentDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_NoteCommentDriver {
         unsafe {
@@ -3967,6 +4060,13 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocNoteDriver {
 }
 
 impl HandleXmlMXCAFDocNoteDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocNoteDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_NoteDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_NoteDriver {
         unsafe {
@@ -4332,6 +4432,15 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocVisMaterialDriver {
 }
 
 impl HandleXmlMXCAFDocVisMaterialDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocVisMaterialDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_VisMaterialDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_VisMaterialDriver {
         unsafe {
@@ -4646,6 +4755,15 @@ unsafe impl crate::CppCopyable for HandleXmlMXCAFDocVisMaterialToolDriver {
 }
 
 impl HandleXmlMXCAFDocVisMaterialToolDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlMXCAFDocVisMaterialToolDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMXCAFDoc_VisMaterialToolDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMXCAFDoc_VisMaterialToolDriver {
         unsafe {

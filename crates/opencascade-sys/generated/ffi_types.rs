@@ -14257,16 +14257,21 @@ extern "C" {
     pub fn HandleBVHBuilderdouble3_clone(
         ptr: *const HandleBVHBuilderdouble3,
     ) -> crate::OcctResult<*mut HandleBVHBuilderdouble3>;
+    pub fn HandleBVHBuilderdouble3_is_null(self_: *const HandleBVHBuilderdouble3) -> bool;
     pub fn HandleBVHTreedouble3_destructor(ptr: *mut HandleBVHTreedouble3);
     pub fn HandleBVHTreedouble3_clone(
         ptr: *const HandleBVHTreedouble3,
     ) -> crate::OcctResult<*mut HandleBVHTreedouble3>;
+    pub fn HandleBVHTreedouble3_is_null(self_: *const HandleBVHTreedouble3) -> bool;
     pub fn HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_destructor(
         ptr: *mut HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex,
     );
     pub fn HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_clone(
         ptr: *const HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex,
     ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex>;
+    pub fn HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_is_null(
+        self_: *const HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex,
+    ) -> bool;
     pub fn HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner_destructor(
         ptr: *mut HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
     );
@@ -14275,30 +14280,48 @@ extern "C" {
     ) -> crate::OcctResult<
         *mut HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
     >;
+    pub fn HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner_is_null(
+        self_: *const HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> bool;
     pub fn HandleNCollectionSharedNCollectionListgpPnt2d_destructor(
         ptr: *mut HandleNCollectionSharedNCollectionListgpPnt2d,
     );
     pub fn HandleNCollectionSharedNCollectionListgpPnt2d_clone(
         ptr: *const HandleNCollectionSharedNCollectionListgpPnt2d,
     ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionListgpPnt2d>;
+    pub fn HandleNCollectionSharedNCollectionListgpPnt2d_is_null(
+        self_: *const HandleNCollectionSharedNCollectionListgpPnt2d,
+    ) -> bool;
     pub fn HandleNCollectionSharedTColStdPackedMapOfInteger_destructor(
         ptr: *mut HandleNCollectionSharedTColStdPackedMapOfInteger,
     );
     pub fn HandleNCollectionSharedTColStdPackedMapOfInteger_clone(
         ptr: *const HandleNCollectionSharedTColStdPackedMapOfInteger,
     ) -> crate::OcctResult<*mut HandleNCollectionSharedTColStdPackedMapOfInteger>;
+    pub fn HandleNCollectionSharedTColStdPackedMapOfInteger_is_null(
+        self_: *const HandleNCollectionSharedTColStdPackedMapOfInteger,
+    ) -> bool;
     pub fn HandleShapePersistentGeom2dCurve_destructor(ptr: *mut HandleShapePersistentGeom2dCurve);
     pub fn HandleShapePersistentGeom2dCurve_clone(
         ptr: *const HandleShapePersistentGeom2dCurve,
     ) -> crate::OcctResult<*mut HandleShapePersistentGeom2dCurve>;
+    pub fn HandleShapePersistentGeom2dCurve_is_null(
+        self_: *const HandleShapePersistentGeom2dCurve,
+    ) -> bool;
     pub fn HandleShapePersistentGeomCurve_destructor(ptr: *mut HandleShapePersistentGeomCurve);
     pub fn HandleShapePersistentGeomCurve_clone(
         ptr: *const HandleShapePersistentGeomCurve,
     ) -> crate::OcctResult<*mut HandleShapePersistentGeomCurve>;
+    pub fn HandleShapePersistentGeomCurve_is_null(
+        self_: *const HandleShapePersistentGeomCurve,
+    ) -> bool;
     pub fn HandleShapePersistentGeomSurface_destructor(ptr: *mut HandleShapePersistentGeomSurface);
     pub fn HandleShapePersistentGeomSurface_clone(
         ptr: *const HandleShapePersistentGeomSurface,
     ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
+    pub fn HandleShapePersistentGeomSurface_is_null(
+        self_: *const HandleShapePersistentGeomSurface,
+    ) -> bool;
 }
 
 unsafe impl crate::CppDeletable for HandleBVHBuilderdouble3 {
@@ -14311,6 +14334,12 @@ unsafe impl crate::CppCopyable for HandleBVHBuilderdouble3 {
         crate::check_result(HandleBVHBuilderdouble3_clone(ptr))
     }
 }
+impl HandleBVHBuilderdouble3 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { HandleBVHBuilderdouble3_is_null(self as *const Self) }
+    }
+}
 unsafe impl crate::CppDeletable for HandleBVHTreedouble3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         HandleBVHTreedouble3_destructor(ptr);
@@ -14321,6 +14350,12 @@ unsafe impl crate::CppCopyable for HandleBVHTreedouble3 {
         crate::check_result(HandleBVHTreedouble3_clone(ptr))
     }
 }
+impl HandleBVHTreedouble3 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { HandleBVHTreedouble3_is_null(self as *const Self) }
+    }
+}
 unsafe impl crate::CppDeletable for HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
         HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_destructor(ptr);
@@ -14329,6 +14364,16 @@ unsafe impl crate::CppDeletable for HandleNCollectionSharedNCollectionDynamicArr
 unsafe impl crate::CppCopyable for HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         crate::check_result(HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_clone(ptr))
+    }
+}
+impl HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_is_null(
+                self as *const Self,
+            )
+        }
     }
 }
 unsafe impl crate::CppDeletable
@@ -14349,6 +14394,14 @@ unsafe impl crate::CppCopyable
         )
     }
 }
+impl HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner_is_null(self as *const Self)
+        }
+    }
+}
 unsafe impl crate::CppDeletable for HandleNCollectionSharedNCollectionListgpPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         HandleNCollectionSharedNCollectionListgpPnt2d_destructor(ptr);
@@ -14357,6 +14410,12 @@ unsafe impl crate::CppDeletable for HandleNCollectionSharedNCollectionListgpPnt2
 unsafe impl crate::CppCopyable for HandleNCollectionSharedNCollectionListgpPnt2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         crate::check_result(HandleNCollectionSharedNCollectionListgpPnt2d_clone(ptr))
+    }
+}
+impl HandleNCollectionSharedNCollectionListgpPnt2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { HandleNCollectionSharedNCollectionListgpPnt2d_is_null(self as *const Self) }
     }
 }
 unsafe impl crate::CppDeletable for HandleNCollectionSharedTColStdPackedMapOfInteger {
@@ -14369,6 +14428,12 @@ unsafe impl crate::CppCopyable for HandleNCollectionSharedTColStdPackedMapOfInte
         crate::check_result(HandleNCollectionSharedTColStdPackedMapOfInteger_clone(ptr))
     }
 }
+impl HandleNCollectionSharedTColStdPackedMapOfInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { HandleNCollectionSharedTColStdPackedMapOfInteger_is_null(self as *const Self) }
+    }
+}
 unsafe impl crate::CppDeletable for HandleShapePersistentGeom2dCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         HandleShapePersistentGeom2dCurve_destructor(ptr);
@@ -14377,6 +14442,12 @@ unsafe impl crate::CppDeletable for HandleShapePersistentGeom2dCurve {
 unsafe impl crate::CppCopyable for HandleShapePersistentGeom2dCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         crate::check_result(HandleShapePersistentGeom2dCurve_clone(ptr))
+    }
+}
+impl HandleShapePersistentGeom2dCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { HandleShapePersistentGeom2dCurve_is_null(self as *const Self) }
     }
 }
 unsafe impl crate::CppDeletable for HandleShapePersistentGeomCurve {
@@ -14389,6 +14460,12 @@ unsafe impl crate::CppCopyable for HandleShapePersistentGeomCurve {
         crate::check_result(HandleShapePersistentGeomCurve_clone(ptr))
     }
 }
+impl HandleShapePersistentGeomCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { HandleShapePersistentGeomCurve_is_null(self as *const Self) }
+    }
+}
 unsafe impl crate::CppDeletable for HandleShapePersistentGeomSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         HandleShapePersistentGeomSurface_destructor(ptr);
@@ -14397,6 +14474,12 @@ unsafe impl crate::CppDeletable for HandleShapePersistentGeomSurface {
 unsafe impl crate::CppCopyable for HandleShapePersistentGeomSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         crate::check_result(HandleShapePersistentGeomSurface_clone(ptr))
+    }
+}
+impl HandleShapePersistentGeomSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { HandleShapePersistentGeomSurface_is_null(self as *const Self) }
     }
 }
 

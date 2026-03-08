@@ -356,6 +356,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsActuatedKinPairAndOrderKi
 }
 
 impl HandleStepKinematicsActuatedKinPairAndOrderKinPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsActuatedKinPairAndOrderKinPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_ActuatedKinPairAndOrderKinPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_ActuatedKinPairAndOrderKinPair {
         unsafe {
@@ -919,6 +928,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsActuatedKinematicPair {
 }
 
 impl HandleStepKinematicsActuatedKinematicPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsActuatedKinematicPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_ActuatedKinematicPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_ActuatedKinematicPair {
         unsafe {
@@ -1176,6 +1194,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsContextDependentKinematic
 }
 
 impl HandleStepKinematicsContextDependentKinematicLinkRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsContextDependentKinematicLinkRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_ContextDependentKinematicLinkRepresentation
     pub fn get(
         &self,
@@ -1655,6 +1680,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsCylindricalPair {
 }
 
 impl HandleStepKinematicsCylindricalPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsCylindricalPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_CylindricalPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_CylindricalPair {
         unsafe {
@@ -2060,6 +2094,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsCylindricalPairValue {
 }
 
 impl HandleStepKinematicsCylindricalPairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsCylindricalPairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_CylindricalPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_CylindricalPairValue {
         unsafe {
@@ -2685,6 +2728,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsCylindricalPairWithRange 
 }
 
 impl HandleStepKinematicsCylindricalPairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsCylindricalPairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_CylindricalPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_CylindricalPairWithRange {
         unsafe {
@@ -3206,6 +3258,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsFullyConstrainedPair {
 }
 
 impl HandleStepKinematicsFullyConstrainedPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsFullyConstrainedPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_FullyConstrainedPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_FullyConstrainedPair {
         unsafe {
@@ -3721,6 +3782,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsGearPair {
 }
 
 impl HandleStepKinematicsGearPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsGearPair_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_GearPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_GearPair {
         unsafe {
@@ -4120,6 +4188,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsGearPairValue {
 }
 
 impl HandleStepKinematicsGearPairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsGearPairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_GearPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_GearPairValue {
         unsafe {
@@ -4674,6 +4751,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsGearPairWithRange {
 }
 
 impl HandleStepKinematicsGearPairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsGearPairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_GearPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_GearPairWithRange {
         unsafe {
@@ -5054,6 +5140,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsHighOrderKinematicPair {
 }
 
 impl HandleStepKinematicsHighOrderKinematicPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsHighOrderKinematicPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_HighOrderKinematicPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_HighOrderKinematicPair {
         unsafe {
@@ -5823,6 +5918,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsHomokineticPair {
 }
 
 impl HandleStepKinematicsHomokineticPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsHomokineticPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_HomokineticPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_HomokineticPair {
         unsafe {
@@ -6215,6 +6319,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicJoint {
 }
 
 impl HandleStepKinematicsKinematicJoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicJoint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_KinematicJoint
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicJoint {
         unsafe {
@@ -6538,6 +6651,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicLink {
 }
 
 impl HandleStepKinematicsKinematicLink {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicLink_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_KinematicLink
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicLink {
         unsafe {
@@ -6878,6 +7000,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicLinkRepresentati
 }
 
 impl HandleStepKinematicsKinematicLinkRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicLinkRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_KinematicLinkRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicLinkRepresentation {
         unsafe {
@@ -7189,6 +7320,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicLinkRepresentati
 }
 
 impl HandleStepKinematicsKinematicLinkRepresentationAssociation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicLinkRepresentationAssociation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_KinematicLinkRepresentationAssociation
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicLinkRepresentationAssociation {
         unsafe {
@@ -7529,6 +7667,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicPair {
 }
 
 impl HandleStepKinematicsKinematicPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_KinematicPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicPair {
         unsafe {
@@ -8483,6 +8630,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicPropertyDefiniti
 }
 
 impl HandleStepKinematicsKinematicPropertyDefinitionRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicPropertyDefinitionRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_KinematicPropertyDefinitionRepresentation
     pub fn get(
         &self,
@@ -8787,6 +8941,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicPropertyMechanis
 }
 
 impl HandleStepKinematicsKinematicPropertyMechanismRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicPropertyMechanismRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_KinematicPropertyMechanismRepresentation
     pub fn get(
         &self,
@@ -9105,6 +9266,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicTopologyDirected
 }
 
 impl HandleStepKinematicsKinematicTopologyDirectedStructure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicTopologyDirectedStructure_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_KinematicTopologyDirectedStructure
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicTopologyDirectedStructure {
         unsafe {
@@ -9417,6 +9585,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicTopologyNetworkS
 }
 
 impl HandleStepKinematicsKinematicTopologyNetworkStructure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicTopologyNetworkStructure_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_KinematicTopologyNetworkStructure
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicTopologyNetworkStructure {
         unsafe {
@@ -9930,6 +10105,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsKinematicTopologyStructur
 }
 
 impl HandleStepKinematicsKinematicTopologyStructure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsKinematicTopologyStructure_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_KinematicTopologyStructure
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_KinematicTopologyStructure {
         unsafe {
@@ -10290,6 +10474,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsLinearFlexibleAndPinionPa
 }
 
 impl HandleStepKinematicsLinearFlexibleAndPinionPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLinearFlexibleAndPinionPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_LinearFlexibleAndPinionPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_LinearFlexibleAndPinionPair {
         unsafe {
@@ -10679,6 +10872,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsLinearFlexibleAndPlanarCu
 }
 
 impl HandleStepKinematicsLinearFlexibleAndPlanarCurvePair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLinearFlexibleAndPlanarCurvePair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_LinearFlexibleAndPlanarCurvePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_LinearFlexibleAndPlanarCurvePair {
         unsafe {
@@ -11016,6 +11218,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsLinearFlexibleLinkReprese
 }
 
 impl HandleStepKinematicsLinearFlexibleLinkRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLinearFlexibleLinkRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_LinearFlexibleLinkRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_LinearFlexibleLinkRepresentation {
         unsafe {
@@ -11488,6 +11699,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsLowOrderKinematicPair {
 }
 
 impl HandleStepKinematicsLowOrderKinematicPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLowOrderKinematicPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_LowOrderKinematicPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_LowOrderKinematicPair {
         unsafe {
@@ -12215,6 +12435,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsLowOrderKinematicPairValu
 }
 
 impl HandleStepKinematicsLowOrderKinematicPairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLowOrderKinematicPairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_LowOrderKinematicPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_LowOrderKinematicPairValue {
         unsafe {
@@ -12524,6 +12753,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsLowOrderKinematicPairWith
 }
 
 impl HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLowOrderKinematicPairWithMotionCoupling_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_LowOrderKinematicPairWithMotionCoupling
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_LowOrderKinematicPairWithMotionCoupling {
         unsafe {
@@ -13419,6 +13655,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsLowOrderKinematicPairWith
 }
 
 impl HandleStepKinematicsLowOrderKinematicPairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsLowOrderKinematicPairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_LowOrderKinematicPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_LowOrderKinematicPairWithRange {
         unsafe {
@@ -13790,6 +14035,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsMechanismRepresentation {
 }
 
 impl HandleStepKinematicsMechanismRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsMechanismRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_MechanismRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_MechanismRepresentation {
         unsafe {
@@ -14110,6 +14364,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsMechanismStateRepresentat
 }
 
 impl HandleStepKinematicsMechanismStateRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsMechanismStateRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_MechanismStateRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_MechanismStateRepresentation {
         unsafe {
@@ -14522,6 +14785,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsOrientedJoint {
 }
 
 impl HandleStepKinematicsOrientedJoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsOrientedJoint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_OrientedJoint
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_OrientedJoint {
         unsafe {
@@ -14833,6 +15105,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPairRepresentationRelatio
 }
 
 impl HandleStepKinematicsPairRepresentationRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPairRepresentationRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PairRepresentationRelationship
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PairRepresentationRelationship {
         unsafe {
@@ -15161,6 +15442,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPairValue {
 }
 
 impl HandleStepKinematicsPairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPairValue_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PairValue {
         unsafe {
@@ -15885,6 +16173,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPlanarCurvePair {
 }
 
 impl HandleStepKinematicsPlanarCurvePair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPlanarCurvePair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PlanarCurvePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PlanarCurvePair {
         unsafe {
@@ -16457,6 +16754,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPlanarCurvePairRange {
 }
 
 impl HandleStepKinematicsPlanarCurvePairRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPlanarCurvePairRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PlanarCurvePairRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PlanarCurvePairRange {
         unsafe {
@@ -16973,6 +17279,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPlanarPair {
 }
 
 impl HandleStepKinematicsPlanarPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPlanarPair_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PlanarPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PlanarPair {
         unsafe {
@@ -17412,6 +17725,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPlanarPairValue {
 }
 
 impl HandleStepKinematicsPlanarPairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPlanarPairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PlanarPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PlanarPairValue {
         unsafe {
@@ -18098,6 +18420,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPlanarPairWithRange {
 }
 
 impl HandleStepKinematicsPlanarPairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPlanarPairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PlanarPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PlanarPairWithRange {
         unsafe {
@@ -18539,6 +18870,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnPlanarCurvePair {
 }
 
 impl HandleStepKinematicsPointOnPlanarCurvePair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnPlanarCurvePair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PointOnPlanarCurvePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PointOnPlanarCurvePair {
         unsafe {
@@ -18920,6 +19260,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnPlanarCurvePairVal
 }
 
 impl HandleStepKinematicsPointOnPlanarCurvePairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnPlanarCurvePairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PointOnPlanarCurvePairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PointOnPlanarCurvePairValue {
         unsafe {
@@ -19497,6 +19846,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnPlanarCurvePairWit
 }
 
 impl HandleStepKinematicsPointOnPlanarCurvePairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnPlanarCurvePairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PointOnPlanarCurvePairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PointOnPlanarCurvePairWithRange {
         unsafe {
@@ -19919,6 +20277,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnSurfacePair {
 }
 
 impl HandleStepKinematicsPointOnSurfacePair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnSurfacePair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PointOnSurfacePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PointOnSurfacePair {
         unsafe {
@@ -20319,6 +20686,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnSurfacePairValue {
 }
 
 impl HandleStepKinematicsPointOnSurfacePairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnSurfacePairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PointOnSurfacePairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PointOnSurfacePairValue {
         unsafe {
@@ -20903,6 +21279,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPointOnSurfacePairWithRan
 }
 
 impl HandleStepKinematicsPointOnSurfacePairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPointOnSurfacePairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PointOnSurfacePairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PointOnSurfacePairWithRange {
         unsafe {
@@ -21433,6 +21818,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPrismaticPair {
 }
 
 impl HandleStepKinematicsPrismaticPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPrismaticPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PrismaticPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PrismaticPair {
         unsafe {
@@ -21820,6 +22214,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPrismaticPairValue {
 }
 
 impl HandleStepKinematicsPrismaticPairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPrismaticPairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PrismaticPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PrismaticPairValue {
         unsafe {
@@ -22391,6 +22794,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsPrismaticPairWithRange {
 }
 
 impl HandleStepKinematicsPrismaticPairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsPrismaticPairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_PrismaticPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_PrismaticPairWithRange {
         unsafe {
@@ -22712,6 +23124,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsProductDefinitionKinemati
 }
 
 impl HandleStepKinematicsProductDefinitionKinematics {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsProductDefinitionKinematics_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_ProductDefinitionKinematics
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_ProductDefinitionKinematics {
         unsafe {
@@ -22973,6 +23394,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsProductDefinitionRelation
 }
 
 impl HandleStepKinematicsProductDefinitionRelationshipKinematics {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsProductDefinitionRelationshipKinematics_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_ProductDefinitionRelationshipKinematics
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_ProductDefinitionRelationshipKinematics {
         unsafe {
@@ -23357,6 +23785,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRackAndPinionPair {
 }
 
 impl HandleStepKinematicsRackAndPinionPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRackAndPinionPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RackAndPinionPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RackAndPinionPair {
         unsafe {
@@ -23735,6 +24172,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRackAndPinionPairValue {
 }
 
 impl HandleStepKinematicsRackAndPinionPairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRackAndPinionPairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RackAndPinionPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RackAndPinionPairValue {
         unsafe {
@@ -24188,6 +24634,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRackAndPinionPairWithRang
 }
 
 impl HandleStepKinematicsRackAndPinionPairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRackAndPinionPairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RackAndPinionPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RackAndPinionPairWithRange {
         unsafe {
@@ -24718,6 +25173,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRevolutePair {
 }
 
 impl HandleStepKinematicsRevolutePair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRevolutePair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RevolutePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RevolutePair {
         unsafe {
@@ -25103,6 +25567,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRevolutePairValue {
 }
 
 impl HandleStepKinematicsRevolutePairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRevolutePairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RevolutePairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RevolutePairValue {
         unsafe {
@@ -25674,6 +26147,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRevolutePairWithRange {
 }
 
 impl HandleStepKinematicsRevolutePairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRevolutePairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RevolutePairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RevolutePairWithRange {
         unsafe {
@@ -26069,6 +26551,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRigidLinkRepresentation {
 }
 
 impl HandleStepKinematicsRigidLinkRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRigidLinkRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RigidLinkRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RigidLinkRepresentation {
         unsafe {
@@ -26781,6 +27272,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRollingCurvePair {
 }
 
 impl HandleStepKinematicsRollingCurvePair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRollingCurvePair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RollingCurvePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RollingCurvePair {
         unsafe {
@@ -27152,6 +27652,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRollingCurvePairValue {
 }
 
 impl HandleStepKinematicsRollingCurvePairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRollingCurvePairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RollingCurvePairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RollingCurvePairValue {
         unsafe {
@@ -27613,6 +28122,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRollingSurfacePair {
 }
 
 impl HandleStepKinematicsRollingSurfacePair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRollingSurfacePair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RollingSurfacePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RollingSurfacePair {
         unsafe {
@@ -28007,6 +28525,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRollingSurfacePairValue {
 }
 
 impl HandleStepKinematicsRollingSurfacePairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRollingSurfacePairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RollingSurfacePairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RollingSurfacePairValue {
         unsafe {
@@ -28353,6 +28880,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsRotationAboutDirection {
 }
 
 impl HandleStepKinematicsRotationAboutDirection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsRotationAboutDirection_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_RotationAboutDirection
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_RotationAboutDirection {
         unsafe {
@@ -28758,6 +29294,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsScrewPair {
 }
 
 impl HandleStepKinematicsScrewPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsScrewPair_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_ScrewPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_ScrewPair {
         unsafe {
@@ -29155,6 +29698,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsScrewPairValue {
 }
 
 impl HandleStepKinematicsScrewPairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsScrewPairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_ScrewPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_ScrewPairValue {
         unsafe {
@@ -29631,6 +30183,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsScrewPairWithRange {
 }
 
 impl HandleStepKinematicsScrewPairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsScrewPairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_ScrewPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_ScrewPairWithRange {
         unsafe {
@@ -30112,6 +30673,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsSlidingCurvePair {
 }
 
 impl HandleStepKinematicsSlidingCurvePair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSlidingCurvePair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_SlidingCurvePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SlidingCurvePair {
         unsafe {
@@ -30506,6 +31076,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsSlidingCurvePairValue {
 }
 
 impl HandleStepKinematicsSlidingCurvePairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSlidingCurvePairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_SlidingCurvePairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SlidingCurvePairValue {
         unsafe {
@@ -30967,6 +31546,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsSlidingSurfacePair {
 }
 
 impl HandleStepKinematicsSlidingSurfacePair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSlidingSurfacePair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_SlidingSurfacePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SlidingSurfacePair {
         unsafe {
@@ -31384,6 +31972,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsSlidingSurfacePairValue {
 }
 
 impl HandleStepKinematicsSlidingSurfacePairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSlidingSurfacePairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_SlidingSurfacePairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SlidingSurfacePairValue {
         unsafe {
@@ -32156,6 +32753,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsSphericalPair {
 }
 
 impl HandleStepKinematicsSphericalPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_SphericalPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SphericalPair {
         unsafe {
@@ -32795,6 +33401,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsSphericalPairValue {
 }
 
 impl HandleStepKinematicsSphericalPairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_SphericalPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SphericalPairValue {
         unsafe {
@@ -33298,6 +33913,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsSphericalPairWithPin {
 }
 
 impl HandleStepKinematicsSphericalPairWithPin {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPairWithPin_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_SphericalPairWithPin
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SphericalPairWithPin {
         unsafe {
@@ -33930,6 +34554,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsSphericalPairWithPinAndRa
 }
 
 impl HandleStepKinematicsSphericalPairWithPinAndRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPairWithPinAndRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_SphericalPairWithPinAndRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SphericalPairWithPinAndRange {
         unsafe {
@@ -34671,6 +35304,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsSphericalPairWithRange {
 }
 
 impl HandleStepKinematicsSphericalPairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSphericalPairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_SphericalPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SphericalPairWithRange {
         unsafe {
@@ -35145,6 +35787,13 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsSurfacePair {
 }
 
 impl HandleStepKinematicsSurfacePair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSurfacePair_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_SurfacePair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SurfacePair {
         unsafe {
@@ -35775,6 +36424,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsSurfacePairWithRange {
 }
 
 impl HandleStepKinematicsSurfacePairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsSurfacePairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_SurfacePairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_SurfacePairWithRange {
         unsafe {
@@ -36299,6 +36957,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsUnconstrainedPair {
 }
 
 impl HandleStepKinematicsUnconstrainedPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsUnconstrainedPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_UnconstrainedPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_UnconstrainedPair {
         unsafe {
@@ -36668,6 +37335,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsUnconstrainedPairValue {
 }
 
 impl HandleStepKinematicsUnconstrainedPairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsUnconstrainedPairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_UnconstrainedPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_UnconstrainedPairValue {
         unsafe {
@@ -37216,6 +37892,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsUniversalPair {
 }
 
 impl HandleStepKinematicsUniversalPair {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsUniversalPair_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_UniversalPair
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_UniversalPair {
         unsafe {
@@ -37642,6 +38327,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsUniversalPairValue {
 }
 
 impl HandleStepKinematicsUniversalPairValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsUniversalPairValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_UniversalPairValue
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_UniversalPairValue {
         unsafe {
@@ -38294,6 +38988,15 @@ unsafe impl crate::CppCopyable for HandleStepKinematicsUniversalPairWithRange {
 }
 
 impl HandleStepKinematicsUniversalPairWithRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepKinematicsUniversalPairWithRange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepKinematics_UniversalPairWithRange
     pub fn get(&self) -> &crate::ffi_types::StepKinematics_UniversalPairWithRange {
         unsafe {

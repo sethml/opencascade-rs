@@ -553,6 +553,13 @@ unsafe impl crate::CppCopyable for HandleTransferActorDispatch {
 }
 
 impl HandleTransferActorDispatch {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferActorDispatch_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_ActorDispatch
     pub fn get(&self) -> &crate::ffi_types::Transfer_ActorDispatch {
         unsafe {
@@ -1018,6 +1025,15 @@ unsafe impl crate::CppCopyable for HandleTransferActorOfFinderProcess {
 }
 
 impl HandleTransferActorOfFinderProcess {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_ActorOfFinderProcess
     pub fn get(&self) -> &crate::ffi_types::Transfer_ActorOfFinderProcess {
         unsafe {
@@ -1413,6 +1429,15 @@ unsafe impl crate::CppCopyable for HandleTransferActorOfProcessForFinder {
 }
 
 impl HandleTransferActorOfProcessForFinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_ActorOfProcessForFinder
     pub fn get(&self) -> &crate::ffi_types::Transfer_ActorOfProcessForFinder {
         unsafe {
@@ -1805,6 +1830,15 @@ unsafe impl crate::CppCopyable for HandleTransferActorOfProcessForTransient {
 }
 
 impl HandleTransferActorOfProcessForTransient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_ActorOfProcessForTransient
     pub fn get(&self) -> &crate::ffi_types::Transfer_ActorOfProcessForTransient {
         unsafe {
@@ -2287,6 +2321,15 @@ unsafe impl crate::CppCopyable for HandleTransferActorOfTransientProcess {
 }
 
 impl HandleTransferActorOfTransientProcess {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_ActorOfTransientProcess
     pub fn get(&self) -> &crate::ffi_types::Transfer_ActorOfTransientProcess {
         unsafe {
@@ -2727,6 +2770,11 @@ unsafe impl crate::CppCopyable for HandleTransferBinder {
 }
 
 impl HandleTransferBinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleTransferBinder_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_Binder
     pub fn get(&self) -> &crate::ffi_types::Transfer_Binder {
         unsafe {
@@ -3263,6 +3311,15 @@ unsafe impl crate::CppCopyable for HandleTransferBinderOfTransientInteger {
 }
 
 impl HandleTransferBinderOfTransientInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBinderOfTransientInteger_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_BinderOfTransientInteger
     pub fn get(&self) -> &crate::ffi_types::Transfer_BinderOfTransientInteger {
         unsafe {
@@ -3631,6 +3688,13 @@ unsafe impl crate::CppCopyable for HandleTransferDispatchControl {
 }
 
 impl HandleTransferDispatchControl {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferDispatchControl_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_DispatchControl
     pub fn get(&self) -> &crate::ffi_types::Transfer_DispatchControl {
         unsafe {
@@ -4126,6 +4190,11 @@ unsafe impl crate::CppCopyable for HandleTransferFinder {
 }
 
 impl HandleTransferFinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleTransferFinder_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_Finder
     pub fn get(&self) -> &crate::ffi_types::Transfer_Finder {
         unsafe {
@@ -5140,6 +5209,13 @@ unsafe impl crate::CppCopyable for HandleTransferFinderProcess {
 }
 
 impl HandleTransferFinderProcess {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferFinderProcess_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_FinderProcess
     pub fn get(&self) -> &crate::ffi_types::Transfer_FinderProcess {
         unsafe {
@@ -5417,6 +5493,13 @@ unsafe impl crate::CppCopyable for HandleTransferHSequenceOfBinder {
 }
 
 impl HandleTransferHSequenceOfBinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfBinder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_HSequenceOfBinder
     pub fn get(&self) -> &crate::ffi_types::Transfer_HSequenceOfBinder {
         unsafe {
@@ -5683,6 +5766,13 @@ unsafe impl crate::CppCopyable for HandleTransferHSequenceOfFinder {
 }
 
 impl HandleTransferHSequenceOfFinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfFinder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_HSequenceOfFinder
     pub fn get(&self) -> &crate::ffi_types::Transfer_HSequenceOfFinder {
         unsafe {
@@ -6472,6 +6562,13 @@ unsafe impl crate::CppCopyable for HandleTransferMapContainer {
 }
 
 impl HandleTransferMapContainer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferMapContainer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_MapContainer
     pub fn get(&self) -> &crate::ffi_types::Transfer_MapContainer {
         unsafe {
@@ -6909,6 +7006,13 @@ unsafe impl crate::CppCopyable for HandleTransferMultipleBinder {
 }
 
 impl HandleTransferMultipleBinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferMultipleBinder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_MultipleBinder
     pub fn get(&self) -> &crate::ffi_types::Transfer_MultipleBinder {
         unsafe {
@@ -8126,6 +8230,13 @@ unsafe impl crate::CppCopyable for HandleTransferProcessForFinder {
 }
 
 impl HandleTransferProcessForFinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferProcessForFinder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_ProcessForFinder
     pub fn get(&self) -> &crate::ffi_types::Transfer_ProcessForFinder {
         unsafe {
@@ -9369,6 +9480,15 @@ unsafe impl crate::CppCopyable for HandleTransferProcessForTransient {
 }
 
 impl HandleTransferProcessForTransient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferProcessForTransient_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_ProcessForTransient
     pub fn get(&self) -> &crate::ffi_types::Transfer_ProcessForTransient {
         unsafe {
@@ -9875,6 +9995,13 @@ unsafe impl crate::CppCopyable for HandleTransferResultFromModel {
 }
 
 impl HandleTransferResultFromModel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferResultFromModel_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_ResultFromModel
     pub fn get(&self) -> &crate::ffi_types::Transfer_ResultFromModel {
         unsafe {
@@ -10273,6 +10400,15 @@ unsafe impl crate::CppCopyable for HandleTransferResultFromTransient {
 }
 
 impl HandleTransferResultFromTransient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferResultFromTransient_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_ResultFromTransient
     pub fn get(&self) -> &crate::ffi_types::Transfer_ResultFromTransient {
         unsafe {
@@ -10687,6 +10823,15 @@ unsafe impl crate::CppCopyable for HandleTransferSimpleBinderOfTransient {
 }
 
 impl HandleTransferSimpleBinderOfTransient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferSimpleBinderOfTransient_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_SimpleBinderOfTransient
     pub fn get(&self) -> &crate::ffi_types::Transfer_SimpleBinderOfTransient {
         unsafe {
@@ -11075,6 +11220,13 @@ unsafe impl crate::CppCopyable for HandleTransferTransferDeadLoop {
 }
 
 impl HandleTransferTransferDeadLoop {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_TransferDeadLoop
     pub fn get(&self) -> &crate::ffi_types::Transfer_TransferDeadLoop {
         unsafe {
@@ -11739,6 +11891,13 @@ unsafe impl crate::CppCopyable for HandleTransferTransferFailure {
 }
 
 impl HandleTransferTransferFailure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_TransferFailure
     pub fn get(&self) -> &crate::ffi_types::Transfer_TransferFailure {
         unsafe {
@@ -12735,6 +12894,15 @@ unsafe impl crate::CppCopyable for HandleTransferTransientListBinder {
 }
 
 impl HandleTransferTransientListBinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferTransientListBinder_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_TransientListBinder
     pub fn get(&self) -> &crate::ffi_types::Transfer_TransientListBinder {
         unsafe {
@@ -13056,6 +13224,13 @@ unsafe impl crate::CppCopyable for HandleTransferTransientMapper {
 }
 
 impl HandleTransferTransientMapper {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferTransientMapper_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_TransientMapper
     pub fn get(&self) -> &crate::ffi_types::Transfer_TransientMapper {
         unsafe {
@@ -14153,6 +14328,13 @@ unsafe impl crate::CppCopyable for HandleTransferTransientProcess {
 }
 
 impl HandleTransferTransientProcess {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferTransientProcess_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_TransientProcess
     pub fn get(&self) -> &crate::ffi_types::Transfer_TransientProcess {
         unsafe {
@@ -14519,6 +14701,11 @@ unsafe impl crate::CppCopyable for HandleTransferVoidBinder {
 }
 
 impl HandleTransferVoidBinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleTransferVoidBinder_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Transfer_VoidBinder
     pub fn get(&self) -> &crate::ffi_types::Transfer_VoidBinder {
         unsafe {

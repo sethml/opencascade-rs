@@ -127,6 +127,9 @@ extern "C" {
     pub fn HandleDEConfigurationContext_clone(
         self_: *const HandleDEConfigurationContext,
     ) -> crate::OcctResult<*mut HandleDEConfigurationContext>;
+    /// Check if Handle<DE_ConfigurationContext> is null
+    pub fn HandleDEConfigurationContext_is_null(self_: *const HandleDEConfigurationContext)
+        -> bool;
     /// Dereference Handle to get *const DE_ConfigurationContext
     pub fn HandleDEConfigurationContext_get(
         handle: *const HandleDEConfigurationContext,
@@ -270,6 +273,8 @@ extern "C" {
     pub fn HandleDEConfigurationNode_clone(
         self_: *const HandleDEConfigurationNode,
     ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
+    /// Check if Handle<DE_ConfigurationNode> is null
+    pub fn HandleDEConfigurationNode_is_null(self_: *const HandleDEConfigurationNode) -> bool;
     /// Dereference Handle to get *const DE_ConfigurationNode
     pub fn HandleDEConfigurationNode_get(
         handle: *const HandleDEConfigurationNode,
@@ -458,6 +463,8 @@ extern "C" {
     pub fn HandleDEProvider_clone(
         self_: *const HandleDEProvider,
     ) -> crate::OcctResult<*mut HandleDEProvider>;
+    /// Check if Handle<DE_Provider> is null
+    pub fn HandleDEProvider_is_null(self_: *const HandleDEProvider) -> bool;
     /// Dereference Handle to get *const DE_Provider
     pub fn HandleDEProvider_get(
         handle: *const HandleDEProvider,
@@ -576,6 +583,10 @@ extern "C" {
     pub fn HandleDEShapeFixConfigurationNode_clone(
         self_: *const HandleDEShapeFixConfigurationNode,
     ) -> crate::OcctResult<*mut HandleDEShapeFixConfigurationNode>;
+    /// Check if Handle<DE_ShapeFixConfigurationNode> is null
+    pub fn HandleDEShapeFixConfigurationNode_is_null(
+        self_: *const HandleDEShapeFixConfigurationNode,
+    ) -> bool;
     /// Dereference Handle to get *const DE_ShapeFixConfigurationNode
     pub fn HandleDEShapeFixConfigurationNode_get(
         handle: *const HandleDEShapeFixConfigurationNode,
@@ -874,6 +885,8 @@ extern "C" {
     pub fn HandleDEWrapper_clone(
         self_: *const HandleDEWrapper,
     ) -> crate::OcctResult<*mut HandleDEWrapper>;
+    /// Check if Handle<DE_Wrapper> is null
+    pub fn HandleDEWrapper_is_null(self_: *const HandleDEWrapper) -> bool;
     /// Dereference Handle to get *const DE_Wrapper
     pub fn HandleDEWrapper_get(
         handle: *const HandleDEWrapper,

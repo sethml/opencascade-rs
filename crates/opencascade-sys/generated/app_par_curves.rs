@@ -356,6 +356,15 @@ unsafe impl crate::CppCopyable for HandleAppParCurvesHArray1OfConstraintCouple {
 }
 
 impl HandleAppParCurvesHArray1OfConstraintCouple {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfConstraintCouple_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfConstraintCouple
     pub fn get(&self) -> &crate::ffi_types::AppParCurves_HArray1OfConstraintCouple {
         unsafe {
@@ -618,6 +627,15 @@ unsafe impl crate::CppCopyable for HandleAppParCurvesHArray1OfMultiBSpCurve {
 }
 
 impl HandleAppParCurvesHArray1OfMultiBSpCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiBSpCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfMultiBSpCurve
     pub fn get(&self) -> &crate::ffi_types::AppParCurves_HArray1OfMultiBSpCurve {
         unsafe {
@@ -887,6 +905,15 @@ unsafe impl crate::CppCopyable for HandleAppParCurvesHArray1OfMultiCurve {
 }
 
 impl HandleAppParCurvesHArray1OfMultiCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfMultiCurve
     pub fn get(&self) -> &crate::ffi_types::AppParCurves_HArray1OfMultiCurve {
         unsafe {
@@ -1156,6 +1183,15 @@ unsafe impl crate::CppCopyable for HandleAppParCurvesHArray1OfMultiPoint {
 }
 
 impl HandleAppParCurvesHArray1OfMultiPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiPoint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfMultiPoint
     pub fn get(&self) -> &crate::ffi_types::AppParCurves_HArray1OfMultiPoint {
         unsafe {

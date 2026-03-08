@@ -675,6 +675,11 @@ unsafe impl crate::CppCopyable for HandleAppStdLApplication {
 }
 
 impl HandleAppStdLApplication {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleAppStdLApplication_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AppStdL_Application
     pub fn get(&self) -> &crate::ffi_types::AppStdL_Application {
         unsafe {

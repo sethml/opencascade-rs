@@ -309,6 +309,11 @@ unsafe impl crate::CppCopyable for HandleStdObjMgtPersistent {
 }
 
 impl HandleStdObjMgtPersistent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKStdL::HandleStdObjMgtPersistent_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdObjMgt_Persistent
     pub fn get(&self) -> &crate::ffi_types::StdObjMgt_Persistent {
         unsafe {

@@ -175,6 +175,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPointRepresentation_clone(
         self_: *const HandleShapePersistentBRepPointRepresentation,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointRepresentation>;
+    /// Check if Handle<ShapePersistent_BRep_PointRepresentation> is null
+    pub fn HandleShapePersistentBRepPointRepresentation_is_null(
+        self_: *const HandleShapePersistentBRepPointRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointRepresentation
     pub fn HandleShapePersistentBRepPointRepresentation_get(
         handle: *const HandleShapePersistentBRepPointRepresentation,
@@ -305,6 +309,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPointOnCurve_clone(
         self_: *const HandleShapePersistentBRepPointOnCurve,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnCurve>;
+    /// Check if Handle<ShapePersistent_BRep_PointOnCurve> is null
+    pub fn HandleShapePersistentBRepPointOnCurve_is_null(
+        self_: *const HandleShapePersistentBRepPointOnCurve,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointOnCurve
     pub fn HandleShapePersistentBRepPointOnCurve_get(
         handle: *const HandleShapePersistentBRepPointOnCurve,
@@ -381,6 +389,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPointOnCurveOnSurface_clone(
         self_: *const HandleShapePersistentBRepPointOnCurveOnSurface,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnCurveOnSurface>;
+    /// Check if Handle<ShapePersistent_BRep_PointOnCurveOnSurface> is null
+    pub fn HandleShapePersistentBRepPointOnCurveOnSurface_is_null(
+        self_: *const HandleShapePersistentBRepPointOnCurveOnSurface,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointOnCurveOnSurface
     pub fn HandleShapePersistentBRepPointOnCurveOnSurface_get(
         handle: *const HandleShapePersistentBRepPointOnCurveOnSurface,
@@ -426,6 +438,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPointOnSurface_clone(
         self_: *const HandleShapePersistentBRepPointOnSurface,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnSurface>;
+    /// Check if Handle<ShapePersistent_BRep_PointOnSurface> is null
+    pub fn HandleShapePersistentBRepPointOnSurface_is_null(
+        self_: *const HandleShapePersistentBRepPointOnSurface,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointOnSurface
     pub fn HandleShapePersistentBRepPointOnSurface_get(
         handle: *const HandleShapePersistentBRepPointOnSurface,
@@ -493,6 +509,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepCurveRepresentation_clone(
         self_: *const HandleShapePersistentBRepCurveRepresentation,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveRepresentation>;
+    /// Check if Handle<ShapePersistent_BRep_CurveRepresentation> is null
+    pub fn HandleShapePersistentBRepCurveRepresentation_is_null(
+        self_: *const HandleShapePersistentBRepCurveRepresentation,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveRepresentation
     pub fn HandleShapePersistentBRepCurveRepresentation_get(
         handle: *const HandleShapePersistentBRepCurveRepresentation,
@@ -639,6 +659,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepCurve3D_clone(
         self_: *const HandleShapePersistentBRepCurve3D,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurve3D>;
+    /// Check if Handle<ShapePersistent_BRep_Curve3D> is null
+    pub fn HandleShapePersistentBRepCurve3D_is_null(
+        self_: *const HandleShapePersistentBRepCurve3D,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_Curve3D
     pub fn HandleShapePersistentBRepCurve3D_get(
         handle: *const HandleShapePersistentBRepCurve3D,
@@ -689,6 +713,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepCurveOnSurface_clone(
         self_: *const HandleShapePersistentBRepCurveOnSurface,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOnSurface>;
+    /// Check if Handle<ShapePersistent_BRep_CurveOnSurface> is null
+    pub fn HandleShapePersistentBRepCurveOnSurface_is_null(
+        self_: *const HandleShapePersistentBRepCurveOnSurface,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveOnSurface
     pub fn HandleShapePersistentBRepCurveOnSurface_get(
         handle: *const HandleShapePersistentBRepCurveOnSurface,
@@ -739,6 +767,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepCurveOnClosedSurface_clone(
         self_: *const HandleShapePersistentBRepCurveOnClosedSurface,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOnClosedSurface>;
+    /// Check if Handle<ShapePersistent_BRep_CurveOnClosedSurface> is null
+    pub fn HandleShapePersistentBRepCurveOnClosedSurface_is_null(
+        self_: *const HandleShapePersistentBRepCurveOnClosedSurface,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveOnClosedSurface
     pub fn HandleShapePersistentBRepCurveOnClosedSurface_get(
         handle: *const HandleShapePersistentBRepCurveOnClosedSurface,
@@ -787,6 +819,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPolygon3D_clone(
         self_: *const HandleShapePersistentBRepPolygon3D,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygon3D>;
+    /// Check if Handle<ShapePersistent_BRep_Polygon3D> is null
+    pub fn HandleShapePersistentBRepPolygon3D_is_null(
+        self_: *const HandleShapePersistentBRepPolygon3D,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_Polygon3D
     pub fn HandleShapePersistentBRepPolygon3D_get(
         handle: *const HandleShapePersistentBRepPolygon3D,
@@ -837,6 +873,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPolygonOnTriangulation_clone(
         self_: *const HandleShapePersistentBRepPolygonOnTriangulation,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnTriangulation>;
+    /// Check if Handle<ShapePersistent_BRep_PolygonOnTriangulation> is null
+    pub fn HandleShapePersistentBRepPolygonOnTriangulation_is_null(
+        self_: *const HandleShapePersistentBRepPolygonOnTriangulation,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnTriangulation
     pub fn HandleShapePersistentBRepPolygonOnTriangulation_get(
         handle: *const HandleShapePersistentBRepPolygonOnTriangulation,
@@ -887,6 +927,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPolygonOnClosedTriangulation_clone(
         self_: *const HandleShapePersistentBRepPolygonOnClosedTriangulation,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnClosedTriangulation>;
+    /// Check if Handle<ShapePersistent_BRep_PolygonOnClosedTriangulation> is null
+    pub fn HandleShapePersistentBRepPolygonOnClosedTriangulation_is_null(
+        self_: *const HandleShapePersistentBRepPolygonOnClosedTriangulation,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnClosedTriangulation
     pub fn HandleShapePersistentBRepPolygonOnClosedTriangulation_get(
         handle: *const HandleShapePersistentBRepPolygonOnClosedTriangulation,
@@ -937,6 +981,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPolygonOnSurface_clone(
         self_: *const HandleShapePersistentBRepPolygonOnSurface,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnSurface>;
+    /// Check if Handle<ShapePersistent_BRep_PolygonOnSurface> is null
+    pub fn HandleShapePersistentBRepPolygonOnSurface_is_null(
+        self_: *const HandleShapePersistentBRepPolygonOnSurface,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnSurface
     pub fn HandleShapePersistentBRepPolygonOnSurface_get(
         handle: *const HandleShapePersistentBRepPolygonOnSurface,
@@ -987,6 +1035,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepPolygonOnClosedSurface_clone(
         self_: *const HandleShapePersistentBRepPolygonOnClosedSurface,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnClosedSurface>;
+    /// Check if Handle<ShapePersistent_BRep_PolygonOnClosedSurface> is null
+    pub fn HandleShapePersistentBRepPolygonOnClosedSurface_is_null(
+        self_: *const HandleShapePersistentBRepPolygonOnClosedSurface,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnClosedSurface
     pub fn HandleShapePersistentBRepPolygonOnClosedSurface_get(
         handle: *const HandleShapePersistentBRepPolygonOnClosedSurface,
@@ -1037,6 +1089,10 @@ extern "C" {
     pub fn HandleShapePersistentBRepCurveOn2Surfaces_clone(
         self_: *const HandleShapePersistentBRepCurveOn2Surfaces,
     ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOn2Surfaces>;
+    /// Check if Handle<ShapePersistent_BRep_CurveOn2Surfaces> is null
+    pub fn HandleShapePersistentBRepCurveOn2Surfaces_is_null(
+        self_: *const HandleShapePersistentBRepCurveOn2Surfaces,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveOn2Surfaces
     pub fn HandleShapePersistentBRepCurveOn2Surfaces_get(
         handle: *const HandleShapePersistentBRepCurveOn2Surfaces,
@@ -1111,6 +1167,10 @@ extern "C" {
     pub fn HandleShapePersistentGeomGeometry_clone(
         self_: *const HandleShapePersistentGeomGeometry,
     ) -> crate::OcctResult<*mut HandleShapePersistentGeomGeometry>;
+    /// Check if Handle<ShapePersistent_Geom_Geometry> is null
+    pub fn HandleShapePersistentGeomGeometry_is_null(
+        self_: *const HandleShapePersistentGeomGeometry,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_Geom_Geometry
     pub fn HandleShapePersistentGeomGeometry_get(
         handle: *const HandleShapePersistentGeomGeometry,
@@ -1465,6 +1525,10 @@ extern "C" {
     pub fn HandleShapePersistentTopoDSHShape_clone(
         self_: *const HandleShapePersistentTopoDSHShape,
     ) -> crate::OcctResult<*mut HandleShapePersistentTopoDSHShape>;
+    /// Check if Handle<ShapePersistent_TopoDS_HShape> is null
+    pub fn HandleShapePersistentTopoDSHShape_is_null(
+        self_: *const HandleShapePersistentTopoDSHShape,
+    ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_TopoDS_HShape
     pub fn HandleShapePersistentTopoDSHShape_get(
         handle: *const HandleShapePersistentTopoDSHShape,
@@ -1618,6 +1682,10 @@ extern "C" {
     pub fn HandleStdDriversDocumentRetrievalDriver_clone(
         self_: *const HandleStdDriversDocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut HandleStdDriversDocumentRetrievalDriver>;
+    /// Check if Handle<StdDrivers_DocumentRetrievalDriver> is null
+    pub fn HandleStdDriversDocumentRetrievalDriver_is_null(
+        self_: *const HandleStdDriversDocumentRetrievalDriver,
+    ) -> bool;
     /// Dereference Handle to get *const StdDrivers_DocumentRetrievalDriver
     pub fn HandleStdDriversDocumentRetrievalDriver_get(
         handle: *const HandleStdDriversDocumentRetrievalDriver,
@@ -1874,6 +1942,10 @@ extern "C" {
     pub fn HandleStdPersistentHArray1OfShape1_clone(
         self_: *const HandleStdPersistentHArray1OfShape1,
     ) -> crate::OcctResult<*mut HandleStdPersistentHArray1OfShape1>;
+    /// Check if Handle<StdPersistent_HArray1OfShape1> is null
+    pub fn HandleStdPersistentHArray1OfShape1_is_null(
+        self_: *const HandleStdPersistentHArray1OfShape1,
+    ) -> bool;
     /// Dereference Handle to get *const StdPersistent_HArray1OfShape1
     pub fn HandleStdPersistentHArray1OfShape1_get(
         handle: *const HandleStdPersistentHArray1OfShape1,
@@ -2004,6 +2076,10 @@ extern "C" {
     pub fn HandleStdPersistentNamingName_clone(
         self_: *const HandleStdPersistentNamingName,
     ) -> crate::OcctResult<*mut HandleStdPersistentNamingName>;
+    /// Check if Handle<StdPersistent_Naming_Name> is null
+    pub fn HandleStdPersistentNamingName_is_null(
+        self_: *const HandleStdPersistentNamingName,
+    ) -> bool;
     /// Dereference Handle to get *const StdPersistent_Naming_Name
     pub fn HandleStdPersistentNamingName_get(
         handle: *const HandleStdPersistentNamingName,
@@ -2278,6 +2354,10 @@ extern "C" {
     pub fn HandleStdPersistentTopLocDatum3D_clone(
         self_: *const HandleStdPersistentTopLocDatum3D,
     ) -> crate::OcctResult<*mut HandleStdPersistentTopLocDatum3D>;
+    /// Check if Handle<StdPersistent_TopLoc_Datum3D> is null
+    pub fn HandleStdPersistentTopLocDatum3D_is_null(
+        self_: *const HandleStdPersistentTopLocDatum3D,
+    ) -> bool;
     /// Dereference Handle to get *const StdPersistent_TopLoc_Datum3D
     pub fn HandleStdPersistentTopLocDatum3D_get(
         handle: *const HandleStdPersistentTopLocDatum3D,
@@ -2344,6 +2424,10 @@ extern "C" {
     pub fn HandleStdPersistentTopLocItemLocation_clone(
         self_: *const HandleStdPersistentTopLocItemLocation,
     ) -> crate::OcctResult<*mut HandleStdPersistentTopLocItemLocation>;
+    /// Check if Handle<StdPersistent_TopLoc_ItemLocation> is null
+    pub fn HandleStdPersistentTopLocItemLocation_is_null(
+        self_: *const HandleStdPersistentTopLocItemLocation,
+    ) -> bool;
     /// Dereference Handle to get *const StdPersistent_TopLoc_ItemLocation
     pub fn HandleStdPersistentTopLocItemLocation_get(
         handle: *const HandleStdPersistentTopLocItemLocation,
@@ -2530,6 +2614,8 @@ extern "C" {
     pub fn HandleStdStorageData_clone(
         self_: *const HandleStdStorageData,
     ) -> crate::OcctResult<*mut HandleStdStorageData>;
+    /// Check if Handle<StdStorage_Data> is null
+    pub fn HandleStdStorageData_is_null(self_: *const HandleStdStorageData) -> bool;
     /// Dereference Handle to get *const StdStorage_Data
     pub fn HandleStdStorageData_get(
         handle: *const HandleStdStorageData,
@@ -2631,6 +2717,10 @@ extern "C" {
     pub fn HandleStdStorageHSequenceOfRoots_clone(
         self_: *const HandleStdStorageHSequenceOfRoots,
     ) -> crate::OcctResult<*mut HandleStdStorageHSequenceOfRoots>;
+    /// Check if Handle<StdStorage_HSequenceOfRoots> is null
+    pub fn HandleStdStorageHSequenceOfRoots_is_null(
+        self_: *const HandleStdStorageHSequenceOfRoots,
+    ) -> bool;
     /// Dereference Handle to get *const StdStorage_HSequenceOfRoots
     pub fn HandleStdStorageHSequenceOfRoots_get(
         handle: *const HandleStdStorageHSequenceOfRoots,
@@ -2810,6 +2900,8 @@ extern "C" {
     pub fn HandleStdStorageHeaderData_clone(
         self_: *const HandleStdStorageHeaderData,
     ) -> crate::OcctResult<*mut HandleStdStorageHeaderData>;
+    /// Check if Handle<StdStorage_HeaderData> is null
+    pub fn HandleStdStorageHeaderData_is_null(self_: *const HandleStdStorageHeaderData) -> bool;
     /// Dereference Handle to get *const StdStorage_HeaderData
     pub fn HandleStdStorageHeaderData_get(
         handle: *const HandleStdStorageHeaderData,
@@ -2916,6 +3008,8 @@ extern "C" {
     pub fn HandleStdStorageRoot_clone(
         self_: *const HandleStdStorageRoot,
     ) -> crate::OcctResult<*mut HandleStdStorageRoot>;
+    /// Check if Handle<StdStorage_Root> is null
+    pub fn HandleStdStorageRoot_is_null(self_: *const HandleStdStorageRoot) -> bool;
     /// Dereference Handle to get *const StdStorage_Root
     pub fn HandleStdStorageRoot_get(
         handle: *const HandleStdStorageRoot,
@@ -3038,6 +3132,8 @@ extern "C" {
     pub fn HandleStdStorageRootData_clone(
         self_: *const HandleStdStorageRootData,
     ) -> crate::OcctResult<*mut HandleStdStorageRootData>;
+    /// Check if Handle<StdStorage_RootData> is null
+    pub fn HandleStdStorageRootData_is_null(self_: *const HandleStdStorageRootData) -> bool;
     /// Dereference Handle to get *const StdStorage_RootData
     pub fn HandleStdStorageRootData_get(
         handle: *const HandleStdStorageRootData,
@@ -3171,6 +3267,8 @@ extern "C" {
     pub fn HandleStdStorageTypeData_clone(
         self_: *const HandleStdStorageTypeData,
     ) -> crate::OcctResult<*mut HandleStdStorageTypeData>;
+    /// Check if Handle<StdStorage_TypeData> is null
+    pub fn HandleStdStorageTypeData_is_null(self_: *const HandleStdStorageTypeData) -> bool;
     /// Dereference Handle to get *const StdStorage_TypeData
     pub fn HandleStdStorageTypeData_get(
         handle: *const HandleStdStorageTypeData,

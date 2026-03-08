@@ -8268,6 +8268,13 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildHBuilder {
 }
 
 impl HandleTopOpeBRepBuildHBuilder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepBuild_HBuilder
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepBuild_HBuilder {
         unsafe {
@@ -8513,6 +8520,11 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildLoop {
 }
 
 impl HandleTopOpeBRepBuildLoop {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepBuild_Loop
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepBuild_Loop {
         unsafe {
@@ -8966,6 +8978,11 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildPave {
 }
 
 impl HandleTopOpeBRepBuildPave {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepBuild_Pave
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepBuild_Pave {
         unsafe {

@@ -81,87 +81,103 @@ typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleBinMXCAFDocAssemblyItemRefDriver_destructor(HandleBinMXCAFDocAssemblyItemRefDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocAssemblyItemRefDriver*> HandleBinMXCAFDocAssemblyItemRefDriver_clone(const HandleBinMXCAFDocAssemblyItemRefDriver* self_) {
     try { return {new HandleBinMXCAFDocAssemblyItemRefDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocAssemblyItemRefDriver_is_null(const HandleBinMXCAFDocAssemblyItemRefDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocCentroidDriver_destructor(HandleBinMXCAFDocCentroidDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocCentroidDriver*> HandleBinMXCAFDocCentroidDriver_clone(const HandleBinMXCAFDocCentroidDriver* self_) {
     try { return {new HandleBinMXCAFDocCentroidDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocCentroidDriver_is_null(const HandleBinMXCAFDocCentroidDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocColorDriver_destructor(HandleBinMXCAFDocColorDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocColorDriver*> HandleBinMXCAFDocColorDriver_clone(const HandleBinMXCAFDocColorDriver* self_) {
     try { return {new HandleBinMXCAFDocColorDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocColorDriver_is_null(const HandleBinMXCAFDocColorDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocDatumDriver_destructor(HandleBinMXCAFDocDatumDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocDatumDriver*> HandleBinMXCAFDocDatumDriver_clone(const HandleBinMXCAFDocDatumDriver* self_) {
     try { return {new HandleBinMXCAFDocDatumDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocDatumDriver_is_null(const HandleBinMXCAFDocDatumDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocDimTolDriver_destructor(HandleBinMXCAFDocDimTolDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocDimTolDriver*> HandleBinMXCAFDocDimTolDriver_clone(const HandleBinMXCAFDocDimTolDriver* self_) {
     try { return {new HandleBinMXCAFDocDimTolDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocDimTolDriver_is_null(const HandleBinMXCAFDocDimTolDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocGraphNodeDriver_destructor(HandleBinMXCAFDocGraphNodeDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocGraphNodeDriver*> HandleBinMXCAFDocGraphNodeDriver_clone(const HandleBinMXCAFDocGraphNodeDriver* self_) {
     try { return {new HandleBinMXCAFDocGraphNodeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocGraphNodeDriver_is_null(const HandleBinMXCAFDocGraphNodeDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocLengthUnitDriver_destructor(HandleBinMXCAFDocLengthUnitDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocLengthUnitDriver*> HandleBinMXCAFDocLengthUnitDriver_clone(const HandleBinMXCAFDocLengthUnitDriver* self_) {
     try { return {new HandleBinMXCAFDocLengthUnitDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocLengthUnitDriver_is_null(const HandleBinMXCAFDocLengthUnitDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocLocationDriver_destructor(HandleBinMXCAFDocLocationDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocLocationDriver*> HandleBinMXCAFDocLocationDriver_clone(const HandleBinMXCAFDocLocationDriver* self_) {
     try { return {new HandleBinMXCAFDocLocationDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocLocationDriver_is_null(const HandleBinMXCAFDocLocationDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocMaterialDriver_destructor(HandleBinMXCAFDocMaterialDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocMaterialDriver*> HandleBinMXCAFDocMaterialDriver_clone(const HandleBinMXCAFDocMaterialDriver* self_) {
     try { return {new HandleBinMXCAFDocMaterialDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocMaterialDriver_is_null(const HandleBinMXCAFDocMaterialDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocNoteBinDataDriver_destructor(HandleBinMXCAFDocNoteBinDataDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocNoteBinDataDriver*> HandleBinMXCAFDocNoteBinDataDriver_clone(const HandleBinMXCAFDocNoteBinDataDriver* self_) {
     try { return {new HandleBinMXCAFDocNoteBinDataDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocNoteBinDataDriver_is_null(const HandleBinMXCAFDocNoteBinDataDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocNoteCommentDriver_destructor(HandleBinMXCAFDocNoteCommentDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocNoteCommentDriver*> HandleBinMXCAFDocNoteCommentDriver_clone(const HandleBinMXCAFDocNoteCommentDriver* self_) {
     try { return {new HandleBinMXCAFDocNoteCommentDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocNoteCommentDriver_is_null(const HandleBinMXCAFDocNoteCommentDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocNoteDriver_destructor(HandleBinMXCAFDocNoteDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocNoteDriver*> HandleBinMXCAFDocNoteDriver_clone(const HandleBinMXCAFDocNoteDriver* self_) {
     try { return {new HandleBinMXCAFDocNoteDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocNoteDriver_is_null(const HandleBinMXCAFDocNoteDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocVisMaterialDriver_destructor(HandleBinMXCAFDocVisMaterialDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocVisMaterialDriver*> HandleBinMXCAFDocVisMaterialDriver_clone(const HandleBinMXCAFDocVisMaterialDriver* self_) {
     try { return {new HandleBinMXCAFDocVisMaterialDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocVisMaterialDriver_is_null(const HandleBinMXCAFDocVisMaterialDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMXCAFDocVisMaterialToolDriver_destructor(HandleBinMXCAFDocVisMaterialToolDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMXCAFDocVisMaterialToolDriver*> HandleBinMXCAFDocVisMaterialToolDriver_clone(const HandleBinMXCAFDocVisMaterialToolDriver* self_) {
     try { return {new HandleBinMXCAFDocVisMaterialToolDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMXCAFDocVisMaterialToolDriver_is_null(const HandleBinMXCAFDocVisMaterialToolDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinXCAFDriversDocumentRetrievalDriver_destructor(HandleBinXCAFDriversDocumentRetrievalDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinXCAFDriversDocumentRetrievalDriver*> HandleBinXCAFDriversDocumentRetrievalDriver_clone(const HandleBinXCAFDriversDocumentRetrievalDriver* self_) {
     try { return {new HandleBinXCAFDriversDocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinXCAFDriversDocumentRetrievalDriver_is_null(const HandleBinXCAFDriversDocumentRetrievalDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinXCAFDriversDocumentStorageDriver_destructor(HandleBinXCAFDriversDocumentStorageDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinXCAFDriversDocumentStorageDriver*> HandleBinXCAFDriversDocumentStorageDriver_clone(const HandleBinXCAFDriversDocumentStorageDriver* self_) {
     try { return {new HandleBinXCAFDriversDocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinXCAFDriversDocumentStorageDriver_is_null(const HandleBinXCAFDriversDocumentStorageDriver* self_) { return self_->IsNull(); }
 
 // ========================
 // BinMXCAFDoc_AssemblyItemRefDriver wrappers

@@ -576,6 +576,13 @@ unsafe impl crate::CppCopyable for HandleSTEPControlActorRead {
 }
 
 impl HandleSTEPControlActorRead {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPControl_ActorRead
     pub fn get(&self) -> &crate::ffi_types::STEPControl_ActorRead {
         unsafe {
@@ -1168,6 +1175,13 @@ unsafe impl crate::CppCopyable for HandleSTEPControlActorWrite {
 }
 
 impl HandleSTEPControlActorWrite {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPControl_ActorWrite
     pub fn get(&self) -> &crate::ffi_types::STEPControl_ActorWrite {
         unsafe {
@@ -1640,6 +1654,13 @@ unsafe impl crate::CppCopyable for HandleSTEPControlController {
 }
 
 impl HandleSTEPControlController {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPControlController_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPControl_Controller
     pub fn get(&self) -> &crate::ffi_types::STEPControl_Controller {
         unsafe {

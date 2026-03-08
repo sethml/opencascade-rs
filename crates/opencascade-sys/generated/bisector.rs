@@ -878,6 +878,11 @@ unsafe impl crate::CppCopyable for HandleBisectorBisecAna {
 }
 
 impl HandleBisectorBisecAna {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Bisector_BisecAna
     pub fn get(&self) -> &crate::ffi_types::Bisector_BisecAna {
         unsafe {
@@ -1717,6 +1722,11 @@ unsafe impl crate::CppCopyable for HandleBisectorBisecCC {
 }
 
 impl HandleBisectorBisecCC {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Bisector_BisecCC
     pub fn get(&self) -> &crate::ffi_types::Bisector_BisecCC {
         unsafe {
@@ -2503,6 +2513,11 @@ unsafe impl crate::CppCopyable for HandleBisectorBisecPC {
 }
 
 impl HandleBisectorBisecPC {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Bisector_BisecPC
     pub fn get(&self) -> &crate::ffi_types::Bisector_BisecPC {
         unsafe {
@@ -3098,6 +3113,11 @@ unsafe impl crate::CppCopyable for HandleBisectorCurve {
 }
 
 impl HandleBisectorCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Bisector_Curve
     pub fn get(&self) -> &crate::ffi_types::Bisector_Curve {
         unsafe {

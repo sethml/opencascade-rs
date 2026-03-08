@@ -93,6 +93,9 @@ extern "C" {
     pub fn HandleDEPLYConfigurationNode_clone(
         self_: *const HandleDEPLYConfigurationNode,
     ) -> crate::OcctResult<*mut HandleDEPLYConfigurationNode>;
+    /// Check if Handle<DEPLY_ConfigurationNode> is null
+    pub fn HandleDEPLYConfigurationNode_is_null(self_: *const HandleDEPLYConfigurationNode)
+        -> bool;
     /// Dereference Handle to get *const DEPLY_ConfigurationNode
     pub fn HandleDEPLYConfigurationNode_get(
         handle: *const HandleDEPLYConfigurationNode,
@@ -251,6 +254,8 @@ extern "C" {
     pub fn HandleDEPLYProvider_clone(
         self_: *const HandleDEPLYProvider,
     ) -> crate::OcctResult<*mut HandleDEPLYProvider>;
+    /// Check if Handle<DEPLY_Provider> is null
+    pub fn HandleDEPLYProvider_is_null(self_: *const HandleDEPLYProvider) -> bool;
     /// Dereference Handle to get *const DEPLY_Provider
     pub fn HandleDEPLYProvider_get(
         handle: *const HandleDEPLYProvider,
@@ -428,6 +433,8 @@ extern "C" {
     pub fn HandleRWPlyCafWriter_clone(
         self_: *const HandleRWPlyCafWriter,
     ) -> crate::OcctResult<*mut HandleRWPlyCafWriter>;
+    /// Check if Handle<RWPly_CafWriter> is null
+    pub fn HandleRWPlyCafWriter_is_null(self_: *const HandleRWPlyCafWriter) -> bool;
     /// Dereference Handle to get *const RWPly_CafWriter
     pub fn HandleRWPlyCafWriter_get(
         handle: *const HandleRWPlyCafWriter,

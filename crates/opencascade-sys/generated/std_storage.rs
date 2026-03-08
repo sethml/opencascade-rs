@@ -467,6 +467,11 @@ unsafe impl crate::CppCopyable for HandleStdStorageData {
 }
 
 impl HandleStdStorageData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKStd::HandleStdStorageData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdStorage_Data
     pub fn get(&self) -> &crate::ffi_types::StdStorage_Data {
         unsafe {
@@ -731,6 +736,13 @@ unsafe impl crate::CppCopyable for HandleStdStorageHSequenceOfRoots {
 }
 
 impl HandleStdStorageHSequenceOfRoots {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStd::HandleStdStorageHSequenceOfRoots_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdStorage_HSequenceOfRoots
     pub fn get(&self) -> &crate::ffi_types::StdStorage_HSequenceOfRoots {
         unsafe {
@@ -1166,6 +1178,11 @@ unsafe impl crate::CppCopyable for HandleStdStorageHeaderData {
 }
 
 impl HandleStdStorageHeaderData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKStd::HandleStdStorageHeaderData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdStorage_HeaderData
     pub fn get(&self) -> &crate::ffi_types::StdStorage_HeaderData {
         unsafe {
@@ -1437,6 +1454,11 @@ unsafe impl crate::CppCopyable for HandleStdStorageRoot {
 }
 
 impl HandleStdStorageRoot {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKStd::HandleStdStorageRoot_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdStorage_Root
     pub fn get(&self) -> &crate::ffi_types::StdStorage_Root {
         unsafe {
@@ -1743,6 +1765,11 @@ unsafe impl crate::CppCopyable for HandleStdStorageRootData {
 }
 
 impl HandleStdStorageRootData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKStd::HandleStdStorageRootData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdStorage_RootData
     pub fn get(&self) -> &crate::ffi_types::StdStorage_RootData {
         unsafe {
@@ -2090,6 +2117,11 @@ unsafe impl crate::CppCopyable for HandleStdStorageTypeData {
 }
 
 impl HandleStdStorageTypeData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKStd::HandleStdStorageTypeData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdStorage_TypeData
     pub fn get(&self) -> &crate::ffi_types::StdStorage_TypeData {
         unsafe {

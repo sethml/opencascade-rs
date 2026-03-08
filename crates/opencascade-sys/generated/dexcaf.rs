@@ -400,6 +400,15 @@ unsafe impl crate::CppCopyable for HandleDEXCAFConfigurationNode {
 }
 
 impl HandleDEXCAFConfigurationNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDECascade::HandleDEXCAFConfigurationNode_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying DEXCAF_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEXCAF_ConfigurationNode {
         unsafe {
@@ -872,6 +881,11 @@ unsafe impl crate::CppCopyable for HandleDEXCAFProvider {
 }
 
 impl HandleDEXCAFProvider {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDECascade::HandleDEXCAFProvider_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying DEXCAF_Provider
     pub fn get(&self) -> &crate::ffi_types::DEXCAF_Provider {
         unsafe {

@@ -990,6 +990,11 @@ unsafe impl crate::CppCopyable for HandleIGESSolidBlock {
 }
 
 impl HandleIGESSolidBlock {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSolidBlock_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_Block
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Block {
         unsafe {
@@ -1969,6 +1974,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidBooleanTree {
 }
 
 impl HandleIGESSolidBooleanTree {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidBooleanTree_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_BooleanTree
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_BooleanTree {
         unsafe {
@@ -2983,6 +2995,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidConeFrustum {
 }
 
 impl HandleIGESSolidConeFrustum {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidConeFrustum_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_ConeFrustum
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_ConeFrustum {
         unsafe {
@@ -4001,6 +4020,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidConicalSurface {
 }
 
 impl HandleIGESSolidConicalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidConicalSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_ConicalSurface
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_ConicalSurface {
         unsafe {
@@ -4973,6 +4999,11 @@ unsafe impl crate::CppCopyable for HandleIGESSolidCylinder {
 }
 
 impl HandleIGESSolidCylinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSolidCylinder_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_Cylinder
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Cylinder {
         unsafe {
@@ -5967,6 +5998,15 @@ unsafe impl crate::CppCopyable for HandleIGESSolidCylindricalSurface {
 }
 
 impl HandleIGESSolidCylindricalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidCylindricalSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_CylindricalSurface
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_CylindricalSurface {
         unsafe {
@@ -6969,6 +7009,11 @@ unsafe impl crate::CppCopyable for HandleIGESSolidEdgeList {
 }
 
 impl HandleIGESSolidEdgeList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSolidEdgeList_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_EdgeList
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_EdgeList {
         unsafe {
@@ -8028,6 +8073,11 @@ unsafe impl crate::CppCopyable for HandleIGESSolidEllipsoid {
 }
 
 impl HandleIGESSolidEllipsoid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSolidEllipsoid_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_Ellipsoid
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Ellipsoid {
         unsafe {
@@ -8930,6 +8980,11 @@ unsafe impl crate::CppCopyable for HandleIGESSolidFace {
 }
 
 impl HandleIGESSolidFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSolidFace_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_Face
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Face {
         unsafe {
@@ -9583,6 +9638,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidGeneralModule {
 }
 
 impl HandleIGESSolidGeneralModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidGeneralModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_GeneralModule {
         unsafe {
@@ -9875,6 +9937,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidHArray1OfFace {
 }
 
 impl HandleIGESSolidHArray1OfFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidHArray1OfFace_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_HArray1OfFace
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_HArray1OfFace {
         unsafe {
@@ -10149,6 +10218,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidHArray1OfLoop {
 }
 
 impl HandleIGESSolidHArray1OfLoop {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidHArray1OfLoop_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_HArray1OfLoop
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_HArray1OfLoop {
         unsafe {
@@ -10423,6 +10499,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidHArray1OfShell {
 }
 
 impl HandleIGESSolidHArray1OfShell {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidHArray1OfShell_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_HArray1OfShell
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_HArray1OfShell {
         unsafe {
@@ -10699,6 +10782,15 @@ unsafe impl crate::CppCopyable for HandleIGESSolidHArray1OfVertexList {
 }
 
 impl HandleIGESSolidHArray1OfVertexList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidHArray1OfVertexList_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_HArray1OfVertexList
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_HArray1OfVertexList {
         unsafe {
@@ -11681,6 +11773,11 @@ unsafe impl crate::CppCopyable for HandleIGESSolidLoop {
 }
 
 impl HandleIGESSolidLoop {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSolidLoop_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_Loop
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Loop {
         unsafe {
@@ -12688,6 +12785,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidManifoldSolid {
 }
 
 impl HandleIGESSolidManifoldSolid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidManifoldSolid_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_ManifoldSolid
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_ManifoldSolid {
         unsafe {
@@ -13671,6 +13775,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidPlaneSurface {
 }
 
 impl HandleIGESSolidPlaneSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidPlaneSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_PlaneSurface
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_PlaneSurface {
         unsafe {
@@ -14068,6 +14179,11 @@ unsafe impl crate::CppCopyable for HandleIGESSolidProtocol {
 }
 
 impl HandleIGESSolidProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSolidProtocol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Protocol {
         unsafe {
@@ -14452,6 +14568,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidReadWriteModule {
 }
 
 impl HandleIGESSolidReadWriteModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidReadWriteModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_ReadWriteModule
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_ReadWriteModule {
         unsafe {
@@ -15542,6 +15665,15 @@ unsafe impl crate::CppCopyable for HandleIGESSolidRightAngularWedge {
 }
 
 impl HandleIGESSolidRightAngularWedge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidRightAngularWedge_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_RightAngularWedge
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_RightAngularWedge {
         unsafe {
@@ -16510,6 +16642,15 @@ unsafe impl crate::CppCopyable for HandleIGESSolidSelectedComponent {
 }
 
 impl HandleIGESSolidSelectedComponent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidSelectedComponent_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_SelectedComponent
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_SelectedComponent {
         unsafe {
@@ -17429,6 +17570,11 @@ unsafe impl crate::CppCopyable for HandleIGESSolidShell {
 }
 
 impl HandleIGESSolidShell {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSolidShell_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_Shell
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Shell {
         unsafe {
@@ -18434,6 +18580,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidSolidAssembly {
 }
 
 impl HandleIGESSolidSolidAssembly {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidSolidAssembly_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_SolidAssembly
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_SolidAssembly {
         unsafe {
@@ -19393,6 +19546,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidSolidInstance {
 }
 
 impl HandleIGESSolidSolidInstance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidSolidInstance_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_SolidInstance
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_SolidInstance {
         unsafe {
@@ -20330,6 +20490,15 @@ unsafe impl crate::CppCopyable for HandleIGESSolidSolidOfLinearExtrusion {
 }
 
 impl HandleIGESSolidSolidOfLinearExtrusion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidSolidOfLinearExtrusion_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_SolidOfLinearExtrusion
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_SolidOfLinearExtrusion {
         unsafe {
@@ -21360,6 +21529,15 @@ unsafe impl crate::CppCopyable for HandleIGESSolidSolidOfRevolution {
 }
 
 impl HandleIGESSolidSolidOfRevolution {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidSolidOfRevolution_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_SolidOfRevolution
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_SolidOfRevolution {
         unsafe {
@@ -21631,6 +21809,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidSpecificModule {
 }
 
 impl HandleIGESSolidSpecificModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidSpecificModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_SpecificModule
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_SpecificModule {
         unsafe {
@@ -22539,6 +22724,11 @@ unsafe impl crate::CppCopyable for HandleIGESSolidSphere {
 }
 
 impl HandleIGESSolidSphere {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSolidSphere_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_Sphere
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Sphere {
         unsafe {
@@ -23555,6 +23745,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidSphericalSurface {
 }
 
 impl HandleIGESSolidSphericalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidSphericalSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_SphericalSurface
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_SphericalSurface {
         unsafe {
@@ -28501,6 +28698,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidToroidalSurface {
 }
 
 impl HandleIGESSolidToroidalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidToroidalSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_ToroidalSurface
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_ToroidalSurface {
         unsafe {
@@ -29434,6 +29638,11 @@ unsafe impl crate::CppCopyable for HandleIGESSolidTorus {
 }
 
 impl HandleIGESSolidTorus {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSolidTorus_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_Torus
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_Torus {
         unsafe {
@@ -30371,6 +30580,13 @@ unsafe impl crate::CppCopyable for HandleIGESSolidVertexList {
 }
 
 impl HandleIGESSolidVertexList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSolidVertexList_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSolid_VertexList
     pub fn get(&self) -> &crate::ffi_types::IGESSolid_VertexList {
         unsafe {

@@ -5775,6 +5775,11 @@ unsafe impl crate::CppCopyable for HandlemathNotSquare {
 }
 
 impl HandlemathNotSquare {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandlemathNotSquare_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying math_NotSquare
     pub fn get(&self) -> &crate::ffi_types::math_NotSquare {
         unsafe {
@@ -6636,6 +6641,11 @@ unsafe impl crate::CppCopyable for HandlemathSingularMatrix {
 }
 
 impl HandlemathSingularMatrix {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandlemathSingularMatrix_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying math_SingularMatrix
     pub fn get(&self) -> &crate::ffi_types::math_SingularMatrix {
         unsafe {

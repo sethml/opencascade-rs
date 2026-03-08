@@ -2640,6 +2640,15 @@ unsafe impl crate::CppCopyable for HandleQuantityDateDefinitionError {
 }
 
 impl HandleQuantityDateDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Quantity_DateDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Quantity_DateDefinitionError {
         unsafe {
@@ -2924,6 +2933,13 @@ unsafe impl crate::CppCopyable for HandleQuantityHArray1OfColor {
 }
 
 impl HandleQuantityHArray1OfColor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleQuantityHArray1OfColor_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Quantity_HArray1OfColor
     pub fn get(&self) -> &crate::ffi_types::Quantity_HArray1OfColor {
         unsafe {
@@ -3520,6 +3536,15 @@ unsafe impl crate::CppCopyable for HandleQuantityPeriodDefinitionError {
 }
 
 impl HandleQuantityPeriodDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Quantity_PeriodDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Quantity_PeriodDefinitionError {
         unsafe {

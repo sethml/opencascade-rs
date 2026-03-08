@@ -475,6 +475,11 @@ unsafe impl crate::CppCopyable for HandleFEmToolCurve {
 }
 
 impl HandleFEmToolCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomBase::HandleFEmToolCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying FEmTool_Curve
     pub fn get(&self) -> &crate::ffi_types::FEmTool_Curve {
         unsafe {
@@ -742,6 +747,15 @@ unsafe impl crate::CppCopyable for HandleFEmToolElementaryCriterion {
 }
 
 impl HandleFEmToolElementaryCriterion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying FEmTool_ElementaryCriterion
     pub fn get(&self) -> &crate::ffi_types::FEmTool_ElementaryCriterion {
         unsafe {
@@ -1154,6 +1168,13 @@ unsafe impl crate::CppCopyable for HandleFEmToolHAssemblyTable {
 }
 
 impl HandleFEmToolHAssemblyTable {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolHAssemblyTable_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying FEmTool_HAssemblyTable
     pub fn get(&self) -> &crate::ffi_types::FEmTool_HAssemblyTable {
         unsafe {
@@ -1437,6 +1458,13 @@ unsafe impl crate::CppCopyable for HandleFEmToolLinearFlexion {
 }
 
 impl HandleFEmToolLinearFlexion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying FEmTool_LinearFlexion
     pub fn get(&self) -> &crate::ffi_types::FEmTool_LinearFlexion {
         unsafe {
@@ -1726,6 +1754,13 @@ unsafe impl crate::CppCopyable for HandleFEmToolLinearJerk {
 }
 
 impl HandleFEmToolLinearJerk {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying FEmTool_LinearJerk
     pub fn get(&self) -> &crate::ffi_types::FEmTool_LinearJerk {
         unsafe {
@@ -2020,6 +2055,13 @@ unsafe impl crate::CppCopyable for HandleFEmToolLinearTension {
 }
 
 impl HandleFEmToolLinearTension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying FEmTool_LinearTension
     pub fn get(&self) -> &crate::ffi_types::FEmTool_LinearTension {
         unsafe {
@@ -2398,6 +2440,13 @@ unsafe impl crate::CppCopyable for HandleFEmToolProfileMatrix {
 }
 
 impl HandleFEmToolProfileMatrix {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolProfileMatrix_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying FEmTool_ProfileMatrix
     pub fn get(&self) -> &crate::ffi_types::FEmTool_ProfileMatrix {
         unsafe {
@@ -2702,6 +2751,13 @@ unsafe impl crate::CppCopyable for HandleFEmToolSparseMatrix {
 }
 
 impl HandleFEmToolSparseMatrix {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying FEmTool_SparseMatrix
     pub fn get(&self) -> &crate::ffi_types::FEmTool_SparseMatrix {
         unsafe {

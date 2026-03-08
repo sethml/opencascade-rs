@@ -1133,6 +1133,11 @@ unsafe impl crate::CppCopyable for HandleHLRAlgoEdgesBlock {
 }
 
 impl HandleHLRAlgoEdgesBlock {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRAlgo_EdgesBlock
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_EdgesBlock {
         unsafe {
@@ -1412,6 +1417,11 @@ unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPHDat {
 }
 
 impl HandleHLRAlgoHArray1OfPHDat {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPHDat
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_HArray1OfPHDat {
         unsafe {
@@ -1674,6 +1684,11 @@ unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPINod {
 }
 
 impl HandleHLRAlgoHArray1OfPINod {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPINod
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_HArray1OfPINod {
         unsafe {
@@ -1944,6 +1959,11 @@ unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPISeg {
 }
 
 impl HandleHLRAlgoHArray1OfPISeg {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPISeg
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_HArray1OfPISeg {
         unsafe {
@@ -2214,6 +2234,11 @@ unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfTData {
 }
 
 impl HandleHLRAlgoHArray1OfTData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfTData
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_HArray1OfTData {
         unsafe {
@@ -2842,6 +2867,11 @@ unsafe impl crate::CppCopyable for HandleHLRAlgoPolyAlgo {
 }
 
 impl HandleHLRAlgoPolyAlgo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRAlgo_PolyAlgo
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyAlgo {
         unsafe {
@@ -3145,6 +3175,11 @@ unsafe impl crate::CppCopyable for HandleHLRAlgoPolyData {
 }
 
 impl HandleHLRAlgoPolyData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRAlgo_PolyData
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyData {
         unsafe {
@@ -3682,6 +3717,13 @@ unsafe impl crate::CppCopyable for HandleHLRAlgoPolyInternalData {
 }
 
 impl HandleHLRAlgoPolyInternalData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying HLRAlgo_PolyInternalData
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyInternalData {
         unsafe {
@@ -3904,6 +3946,13 @@ unsafe impl crate::CppCopyable for HandleHLRAlgoPolyInternalNode {
 }
 
 impl HandleHLRAlgoPolyInternalNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying HLRAlgo_PolyInternalNode
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyInternalNode {
         unsafe {
@@ -4216,6 +4265,11 @@ unsafe impl crate::CppCopyable for HandleHLRAlgoPolyShellData {
 }
 
 impl HandleHLRAlgoPolyShellData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRAlgo_PolyShellData
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyShellData {
         unsafe {
@@ -4725,6 +4779,11 @@ unsafe impl crate::CppCopyable for HandleHLRAlgoWiresBlock {
 }
 
 impl HandleHLRAlgoWiresBlock {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRAlgo_WiresBlock
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_WiresBlock {
         unsafe {

@@ -799,6 +799,11 @@ unsafe impl crate::CppCopyable for HandleTDFAttribute {
 }
 
 impl HandleTDFAttribute {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFAttribute_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_Attribute
     pub fn get(&self) -> &crate::ffi_types::TDF_Attribute {
         unsafe {
@@ -2678,6 +2683,11 @@ unsafe impl crate::CppCopyable for HandleTDFAttributeDelta {
 }
 
 impl HandleTDFAttributeDelta {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFAttributeDelta_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_AttributeDelta
     pub fn get(&self) -> &crate::ffi_types::TDF_AttributeDelta {
         unsafe {
@@ -4141,6 +4151,11 @@ unsafe impl crate::CppCopyable for HandleTDFData {
 }
 
 impl HandleTDFData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_Data
     pub fn get(&self) -> &crate::ffi_types::TDF_Data {
         unsafe {
@@ -4437,6 +4452,11 @@ unsafe impl crate::CppCopyable for HandleTDFDataSet {
 }
 
 impl HandleTDFDataSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFDataSet_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_DataSet
     pub fn get(&self) -> &crate::ffi_types::TDF_DataSet {
         unsafe {
@@ -4735,6 +4755,15 @@ unsafe impl crate::CppCopyable for HandleTDFDefaultDeltaOnModification {
 }
 
 impl HandleTDFDefaultDeltaOnModification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDFDefaultDeltaOnModification_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDF_DefaultDeltaOnModification
     pub fn get(&self) -> &crate::ffi_types::TDF_DefaultDeltaOnModification {
         unsafe {
@@ -5052,6 +5081,13 @@ unsafe impl crate::CppCopyable for HandleTDFDefaultDeltaOnRemoval {
 }
 
 impl HandleTDFDefaultDeltaOnRemoval {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDFDefaultDeltaOnRemoval_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDF_DefaultDeltaOnRemoval
     pub fn get(&self) -> &crate::ffi_types::TDF_DefaultDeltaOnRemoval {
         unsafe {
@@ -5344,6 +5380,11 @@ unsafe impl crate::CppCopyable for HandleTDFDelta {
 }
 
 impl HandleTDFDelta {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFDelta_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_Delta
     pub fn get(&self) -> &crate::ffi_types::TDF_Delta {
         unsafe {
@@ -5626,6 +5667,11 @@ unsafe impl crate::CppCopyable for HandleTDFDeltaOnAddition {
 }
 
 impl HandleTDFDeltaOnAddition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFDeltaOnAddition_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_DeltaOnAddition
     pub fn get(&self) -> &crate::ffi_types::TDF_DeltaOnAddition {
         unsafe {
@@ -5905,6 +5951,11 @@ unsafe impl crate::CppCopyable for HandleTDFDeltaOnForget {
 }
 
 impl HandleTDFDeltaOnForget {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFDeltaOnForget_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_DeltaOnForget
     pub fn get(&self) -> &crate::ffi_types::TDF_DeltaOnForget {
         unsafe {
@@ -6178,6 +6229,13 @@ unsafe impl crate::CppCopyable for HandleTDFDeltaOnModification {
 }
 
 impl HandleTDFDeltaOnModification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDFDeltaOnModification_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TDF_DeltaOnModification
     pub fn get(&self) -> &crate::ffi_types::TDF_DeltaOnModification {
         unsafe {
@@ -6550,6 +6608,11 @@ unsafe impl crate::CppCopyable for HandleTDFDeltaOnRemoval {
 }
 
 impl HandleTDFDeltaOnRemoval {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFDeltaOnRemoval_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_DeltaOnRemoval
     pub fn get(&self) -> &crate::ffi_types::TDF_DeltaOnRemoval {
         unsafe {
@@ -6861,6 +6924,11 @@ unsafe impl crate::CppCopyable for HandleTDFDeltaOnResume {
 }
 
 impl HandleTDFDeltaOnResume {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFDeltaOnResume_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_DeltaOnResume
     pub fn get(&self) -> &crate::ffi_types::TDF_DeltaOnResume {
         unsafe {
@@ -7222,6 +7290,11 @@ unsafe impl crate::CppCopyable for HandleTDFHAttributeArray1 {
 }
 
 impl HandleTDFHAttributeArray1 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFHAttributeArray1_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_HAttributeArray1
     pub fn get(&self) -> &crate::ffi_types::TDF_HAttributeArray1 {
         unsafe {
@@ -8458,6 +8531,11 @@ unsafe impl crate::CppCopyable for HandleTDFReference {
 }
 
 impl HandleTDFReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFReference_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_Reference
     pub fn get(&self) -> &crate::ffi_types::TDF_Reference {
         unsafe {
@@ -8938,6 +9016,11 @@ unsafe impl crate::CppCopyable for HandleTDFRelocationTable {
 }
 
 impl HandleTDFRelocationTable {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFRelocationTable_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_RelocationTable
     pub fn get(&self) -> &crate::ffi_types::TDF_RelocationTable {
         unsafe {
@@ -9542,6 +9625,11 @@ unsafe impl crate::CppCopyable for HandleTDFTagSource {
 }
 
 impl HandleTDFTagSource {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKLCAF::HandleTDFTagSource_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDF_TagSource
     pub fn get(&self) -> &crate::ffi_types::TDF_TagSource {
         unsafe {

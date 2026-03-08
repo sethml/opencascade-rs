@@ -367,6 +367,11 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUserBreak {
 }
 
 impl HandleBOPAlgoAlertUserBreak {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBO::HandleBOPAlgoAlertUserBreak_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUserBreak
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUserBreak {
         unsafe {
@@ -622,6 +627,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBOPNotAllowed {
 }
 
 impl HandleBOPAlgoAlertBOPNotAllowed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotAllowed_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBOPNotAllowed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBOPNotAllowed {
         unsafe {
@@ -871,6 +883,11 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBOPNotSet {
 }
 
 impl HandleBOPAlgoAlertBOPNotSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotSet_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBOPNotSet
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBOPNotSet {
         unsafe {
@@ -1126,6 +1143,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBuilderFailed {
 }
 
 impl HandleBOPAlgoAlertBuilderFailed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuilderFailed_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBuilderFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBuilderFailed {
         unsafe {
@@ -1383,6 +1407,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertIntersectionFailed {
 }
 
 impl HandleBOPAlgoAlertIntersectionFailed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionFailed_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertIntersectionFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertIntersectionFailed {
         unsafe {
@@ -1638,6 +1671,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertMultipleArguments {
 }
 
 impl HandleBOPAlgoAlertMultipleArguments {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultipleArguments_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertMultipleArguments
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertMultipleArguments {
         unsafe {
@@ -1883,6 +1923,11 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNoFiller {
 }
 
 impl HandleBOPAlgoAlertNoFiller {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFiller_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertNoFiller
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNoFiller {
         unsafe {
@@ -2140,6 +2185,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNullInputShapes {
 }
 
 impl HandleBOPAlgoAlertNullInputShapes {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNullInputShapes_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertNullInputShapes
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNullInputShapes {
         unsafe {
@@ -2389,6 +2441,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertPostTreatFF {
 }
 
 impl HandleBOPAlgoAlertPostTreatFF {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertPostTreatFF_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertPostTreatFF
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertPostTreatFF {
         unsafe {
@@ -2646,6 +2705,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertSolidBuilderFailed {
 }
 
 impl HandleBOPAlgoAlertSolidBuilderFailed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderFailed_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertSolidBuilderFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertSolidBuilderFailed {
         unsafe {
@@ -2901,6 +2969,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertTooFewArguments {
 }
 
 impl HandleBOPAlgoAlertTooFewArguments {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooFewArguments_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertTooFewArguments
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertTooFewArguments {
         unsafe {
@@ -3199,6 +3274,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBadPositioning {
 }
 
 impl HandleBOPAlgoAlertBadPositioning {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBadPositioning_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBadPositioning
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBadPositioning {
         unsafe {
@@ -3500,6 +3582,11 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertEmptyShape {
 }
 
 impl HandleBOPAlgoAlertEmptyShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBO::HandleBOPAlgoAlertEmptyShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertEmptyShape
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertEmptyShape {
         unsafe {
@@ -3813,6 +3900,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNotSplittableEdge {
 }
 
 impl HandleBOPAlgoAlertNotSplittableEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNotSplittableEdge_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertNotSplittableEdge
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNotSplittableEdge {
         unsafe {
@@ -4105,6 +4199,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
 }
 
 impl HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertRemovalOfIBForEdgesFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemovalOfIBForEdgesFailed {
         unsafe {
@@ -4395,6 +4498,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
 }
 
 impl HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertRemovalOfIBForFacesFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemovalOfIBForFacesFailed {
         unsafe {
@@ -4688,6 +4800,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
 }
 
 impl HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertRemovalOfIBForMDimShapes
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemovalOfIBForMDimShapes {
         unsafe {
@@ -4976,6 +5097,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForSolidsFailed 
 }
 
 impl HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertRemovalOfIBForSolidsFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemovalOfIBForSolidsFailed {
         unsafe {
@@ -5279,6 +5409,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertSelfInterferingShape {
 }
 
 impl HandleBOPAlgoAlertSelfInterferingShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertSelfInterferingShape_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertSelfInterferingShape
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertSelfInterferingShape {
         unsafe {
@@ -5582,6 +5721,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertShellSplitterFailed {
 }
 
 impl HandleBOPAlgoAlertShellSplitterFailed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertShellSplitterFailed_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertShellSplitterFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertShellSplitterFailed {
         unsafe {
@@ -5887,6 +6035,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertTooSmallEdge {
 }
 
 impl HandleBOPAlgoAlertTooSmallEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooSmallEdge_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertTooSmallEdge
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertTooSmallEdge {
         unsafe {
@@ -6162,6 +6317,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertIntersectionOfPairOfShapesF
 }
 
 impl HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertIntersectionOfPairOfShapesFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertIntersectionOfPairOfShapesFailed {
         unsafe {
@@ -6467,6 +6631,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBuildingPCurveFailed {
 }
 
 impl HandleBOPAlgoAlertBuildingPCurveFailed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuildingPCurveFailed_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBuildingPCurveFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBuildingPCurveFailed {
         unsafe {
@@ -6762,6 +6935,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertAcquiredSelfIntersection {
 }
 
 impl HandleBOPAlgoAlertAcquiredSelfIntersection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertAcquiredSelfIntersection_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertAcquiredSelfIntersection
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertAcquiredSelfIntersection {
         unsafe {
@@ -7067,6 +7249,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnsupportedType {
 }
 
 impl HandleBOPAlgoAlertUnsupportedType {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnsupportedType_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnsupportedType
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnsupportedType {
         unsafe {
@@ -7331,6 +7520,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNoFacesToRemove {
 }
 
 impl HandleBOPAlgoAlertNoFacesToRemove {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFacesToRemove_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertNoFacesToRemove
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNoFacesToRemove {
         unsafe {
@@ -7617,6 +7813,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToRemoveTheFeature {
 }
 
 impl HandleBOPAlgoAlertUnableToRemoveTheFeature {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRemoveTheFeature_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToRemoveTheFeature
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToRemoveTheFeature {
         unsafe {
@@ -7881,6 +8086,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemoveFeaturesFailed {
 }
 
 impl HandleBOPAlgoAlertRemoveFeaturesFailed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemoveFeaturesFailed_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertRemoveFeaturesFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemoveFeaturesFailed {
         unsafe {
@@ -8167,6 +8381,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertSolidBuilderUnusedFaces {
 }
 
 impl HandleBOPAlgoAlertSolidBuilderUnusedFaces {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderUnusedFaces_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertSolidBuilderUnusedFaces
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertSolidBuilderUnusedFaces {
         unsafe {
@@ -8462,6 +8685,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertFaceBuilderUnusedEdges {
 }
 
 impl HandleBOPAlgoAlertFaceBuilderUnusedEdges {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertFaceBuilderUnusedEdges_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertFaceBuilderUnusedEdges
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertFaceBuilderUnusedEdges {
         unsafe {
@@ -8755,6 +8987,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToOrientTheShape {
 }
 
 impl HandleBOPAlgoAlertUnableToOrientTheShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToOrientTheShape_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToOrientTheShape
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToOrientTheShape {
         unsafe {
@@ -9056,6 +9297,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnknownShape {
 }
 
 impl HandleBOPAlgoAlertUnknownShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnknownShape_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnknownShape
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnknownShape {
         unsafe {
@@ -9322,6 +9570,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNoPeriodicityRequired {
 }
 
 impl HandleBOPAlgoAlertNoPeriodicityRequired {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoPeriodicityRequired_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertNoPeriodicityRequired
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNoPeriodicityRequired {
         unsafe {
@@ -9614,6 +9871,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToTrim {
 }
 
 impl HandleBOPAlgoAlertUnableToTrim {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToTrim_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToTrim
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToTrim {
         unsafe {
@@ -9919,6 +10183,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToMakeIdentical {
 }
 
 impl HandleBOPAlgoAlertUnableToMakeIdentical {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeIdentical_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToMakeIdentical
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToMakeIdentical {
         unsafe {
@@ -10224,6 +10497,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToRepeat {
 }
 
 impl HandleBOPAlgoAlertUnableToRepeat {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRepeat_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToRepeat
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToRepeat {
         unsafe {
@@ -10483,6 +10763,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertMultiDimensionalArguments {
 }
 
 impl HandleBOPAlgoAlertMultiDimensionalArguments {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultiDimensionalArguments_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertMultiDimensionalArguments
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertMultiDimensionalArguments {
         unsafe {
@@ -10777,6 +11066,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToMakePeriodic {
 }
 
 impl HandleBOPAlgoAlertUnableToMakePeriodic {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakePeriodic_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToMakePeriodic
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToMakePeriodic {
         unsafe {
@@ -11078,6 +11376,13 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToGlue {
 }
 
 impl HandleBOPAlgoAlertUnableToGlue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToGlue_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToGlue
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToGlue {
         unsafe {
@@ -11383,6 +11688,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertShapeIsNotPeriodic {
 }
 
 impl HandleBOPAlgoAlertShapeIsNotPeriodic {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertShapeIsNotPeriodic_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertShapeIsNotPeriodic
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertShapeIsNotPeriodic {
         unsafe {
@@ -11664,6 +11978,15 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFac
 }
 
 impl HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToMakeClosedEdgeOnFace
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace {
         unsafe {

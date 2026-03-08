@@ -2306,6 +2306,8 @@ extern "C" {
     pub fn HandleLocOpeGeneratedShape_clone(
         self_: *const HandleLocOpeGeneratedShape,
     ) -> crate::OcctResult<*mut HandleLocOpeGeneratedShape>;
+    /// Check if Handle<LocOpe_GeneratedShape> is null
+    pub fn HandleLocOpeGeneratedShape_is_null(self_: *const HandleLocOpeGeneratedShape) -> bool;
     /// Dereference Handle to get *const LocOpe_GeneratedShape
     pub fn HandleLocOpeGeneratedShape_get(
         handle: *const HandleLocOpeGeneratedShape,
@@ -2455,6 +2457,8 @@ extern "C" {
     pub fn HandleLocOpeGluedShape_clone(
         self_: *const HandleLocOpeGluedShape,
     ) -> crate::OcctResult<*mut HandleLocOpeGluedShape>;
+    /// Check if Handle<LocOpe_GluedShape> is null
+    pub fn HandleLocOpeGluedShape_is_null(self_: *const HandleLocOpeGluedShape) -> bool;
     /// Dereference Handle to get *const LocOpe_GluedShape
     pub fn HandleLocOpeGluedShape_get(
         handle: *const HandleLocOpeGluedShape,
@@ -3096,6 +3100,8 @@ extern "C" {
     pub fn HandleLocOpeWiresOnShape_clone(
         self_: *const HandleLocOpeWiresOnShape,
     ) -> crate::OcctResult<*mut HandleLocOpeWiresOnShape>;
+    /// Check if Handle<LocOpe_WiresOnShape> is null
+    pub fn HandleLocOpeWiresOnShape_is_null(self_: *const HandleLocOpeWiresOnShape) -> bool;
     /// Dereference Handle to get *const LocOpe_WiresOnShape
     pub fn HandleLocOpeWiresOnShape_get(
         handle: *const HandleLocOpeWiresOnShape,

@@ -202,6 +202,11 @@ unsafe impl crate::CppCopyable for HandleMediaBufferPool {
 }
 
 impl HandleMediaBufferPool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleMediaBufferPool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Media_BufferPool
     pub fn get(&self) -> &crate::ffi_types::Media_BufferPool {
         unsafe {
@@ -485,6 +490,11 @@ unsafe impl crate::CppCopyable for HandleMediaCodecContext {
 }
 
 impl HandleMediaCodecContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleMediaCodecContext_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Media_CodecContext
     pub fn get(&self) -> &crate::ffi_types::Media_CodecContext {
         unsafe {
@@ -845,6 +855,13 @@ unsafe impl crate::CppCopyable for HandleMediaFormatContext {
 }
 
 impl HandleMediaFormatContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleMediaFormatContext_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Media_FormatContext
     pub fn get(&self) -> &crate::ffi_types::Media_FormatContext {
         unsafe {
@@ -1254,6 +1271,11 @@ unsafe impl crate::CppCopyable for HandleMediaFrame {
 }
 
 impl HandleMediaFrame {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleMediaFrame_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Media_Frame
     pub fn get(&self) -> &crate::ffi_types::Media_Frame {
         unsafe {
@@ -1597,6 +1619,11 @@ unsafe impl crate::CppCopyable for HandleMediaPacket {
 }
 
 impl HandleMediaPacket {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleMediaPacket_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Media_Packet
     pub fn get(&self) -> &crate::ffi_types::Media_Packet {
         unsafe {
@@ -1948,6 +1975,13 @@ unsafe impl crate::CppCopyable for HandleMediaPlayerContext {
 }
 
 impl HandleMediaPlayerContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleMediaPlayerContext_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Media_PlayerContext
     pub fn get(&self) -> &crate::ffi_types::Media_PlayerContext {
         unsafe {
@@ -2194,6 +2228,11 @@ unsafe impl crate::CppCopyable for HandleMediaScaler {
 }
 
 impl HandleMediaScaler {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleMediaScaler_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Media_Scaler
     pub fn get(&self) -> &crate::ffi_types::Media_Scaler {
         unsafe {
@@ -2452,6 +2491,11 @@ unsafe impl crate::CppCopyable for HandleMediaTimer {
 }
 
 impl HandleMediaTimer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleMediaTimer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Media_Timer
     pub fn get(&self) -> &crate::ffi_types::Media_Timer {
         unsafe {

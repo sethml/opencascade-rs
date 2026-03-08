@@ -572,6 +572,11 @@ unsafe impl crate::CppCopyable for HandleSelectMgrAndFilter {
 }
 
 impl HandleSelectMgrAndFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelectMgrAndFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_AndFilter
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_AndFilter {
         unsafe {
@@ -935,6 +940,11 @@ unsafe impl crate::CppCopyable for HandleSelectMgrAndOrFilter {
 }
 
 impl HandleSelectMgrAndOrFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelectMgrAndOrFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_AndOrFilter
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_AndOrFilter {
         unsafe {
@@ -1699,6 +1709,13 @@ unsafe impl crate::CppCopyable for HandleSelectMgrAxisIntersector {
 }
 
 impl HandleSelectMgrAxisIntersector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrAxisIntersector_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_AxisIntersector
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_AxisIntersector {
         unsafe {
@@ -1939,6 +1956,13 @@ unsafe impl crate::CppCopyable for HandleSelectMgrBVHThreadPool {
 }
 
 impl HandleSelectMgrBVHThreadPool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrBVHThreadPool_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_BVHThreadPool
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_BVHThreadPool {
         unsafe {
@@ -2805,6 +2829,11 @@ unsafe impl crate::CppCopyable for HandleSelectMgrBaseFrustum {
 }
 
 impl HandleSelectMgrBaseFrustum {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelectMgrBaseFrustum_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_BaseFrustum
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_BaseFrustum {
         unsafe {
@@ -3587,6 +3616,13 @@ unsafe impl crate::CppCopyable for HandleSelectMgrBaseIntersector {
 }
 
 impl HandleSelectMgrBaseIntersector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrBaseIntersector_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_BaseIntersector
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_BaseIntersector {
         unsafe {
@@ -3919,6 +3955,13 @@ unsafe impl crate::CppCopyable for HandleSelectMgrCompositionFilter {
 }
 
 impl HandleSelectMgrCompositionFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrCompositionFilter_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_CompositionFilter
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_CompositionFilter {
         unsafe {
@@ -4544,6 +4587,11 @@ unsafe impl crate::CppCopyable for HandleSelectMgrEntityOwner {
 }
 
 impl HandleSelectMgrEntityOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_EntityOwner
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_EntityOwner {
         unsafe {
@@ -4914,6 +4962,11 @@ unsafe impl crate::CppCopyable for HandleSelectMgrFilter {
 }
 
 impl HandleSelectMgrFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelectMgrFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_Filter
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_Filter {
         unsafe {
@@ -5455,6 +5508,13 @@ unsafe impl crate::CppCopyable for HandleSelectMgrFrustumBuilder {
 }
 
 impl HandleSelectMgrFrustumBuilder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrFrustumBuilder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_FrustumBuilder
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_FrustumBuilder {
         unsafe {
@@ -5762,6 +5822,11 @@ unsafe impl crate::CppCopyable for HandleSelectMgrOrFilter {
 }
 
 impl HandleSelectMgrOrFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelectMgrOrFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_OrFilter
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_OrFilter {
         unsafe {
@@ -7747,6 +7812,13 @@ unsafe impl crate::CppCopyable for HandleSelectMgrSelectableObject {
 }
 
 impl HandleSelectMgrSelectableObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_SelectableObject
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_SelectableObject {
         unsafe {
@@ -9883,6 +9955,11 @@ unsafe impl crate::CppCopyable for HandleSelectMgrSelection {
 }
 
 impl HandleSelectMgrSelection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelectMgrSelection_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_Selection
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_Selection {
         unsafe {
@@ -10091,6 +10168,15 @@ unsafe impl crate::CppCopyable for HandleSelectMgrSelectionImageFiller {
 }
 
 impl HandleSelectMgrSelectionImageFiller {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectionImageFiller_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_SelectionImageFiller
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_SelectionImageFiller {
         unsafe {
@@ -10531,6 +10617,13 @@ unsafe impl crate::CppCopyable for HandleSelectMgrSelectionManager {
 }
 
 impl HandleSelectMgrSelectionManager {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectionManager_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_SelectionManager
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_SelectionManager {
         unsafe {
@@ -10790,6 +10883,13 @@ unsafe impl crate::CppCopyable for HandleSelectMgrSensitiveEntity {
 }
 
 impl HandleSelectMgrSensitiveEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntity_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_SensitiveEntity
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_SensitiveEntity {
         unsafe {
@@ -11043,6 +11143,13 @@ unsafe impl crate::CppCopyable for HandleSelectMgrSensitiveEntitySet {
 }
 
 impl HandleSelectMgrSensitiveEntitySet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntitySet_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_SensitiveEntitySet
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_SensitiveEntitySet {
         unsafe {
@@ -11615,6 +11722,13 @@ unsafe impl crate::CppCopyable for HandleSelectMgrTriangularFrustum {
 }
 
 impl HandleSelectMgrTriangularFrustum {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustum_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_TriangularFrustum
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_TriangularFrustum {
         unsafe {
@@ -12389,6 +12503,15 @@ unsafe impl crate::CppCopyable for HandleSelectMgrTriangularFrustumSet {
 }
 
 impl HandleSelectMgrTriangularFrustumSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustumSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_TriangularFrustumSet
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_TriangularFrustumSet {
         unsafe {
@@ -13438,6 +13561,13 @@ unsafe impl crate::CppCopyable for HandleSelectMgrViewerSelector {
 }
 
 impl HandleSelectMgrViewerSelector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelectMgrViewerSelector_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying SelectMgr_ViewerSelector
     pub fn get(&self) -> &crate::ffi_types::SelectMgr_ViewerSelector {
         unsafe {

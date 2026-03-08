@@ -240,6 +240,11 @@ unsafe impl crate::CppCopyable for HandleGeomEvaluatorCurve {
 }
 
 impl HandleGeomEvaluatorCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomEvaluatorCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GeomEvaluator_Curve
     pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_Curve {
         unsafe {
@@ -618,6 +623,13 @@ unsafe impl crate::CppCopyable for HandleGeomEvaluatorOffsetCurve {
 }
 
 impl HandleGeomEvaluatorOffsetCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomEvaluator_OffsetCurve
     pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_OffsetCurve {
         unsafe {
@@ -1019,6 +1031,13 @@ unsafe impl crate::CppCopyable for HandleGeomEvaluatorOffsetSurface {
 }
 
 impl HandleGeomEvaluatorOffsetSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomEvaluator_OffsetSurface
     pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_OffsetSurface {
         unsafe {
@@ -1341,6 +1360,11 @@ unsafe impl crate::CppCopyable for HandleGeomEvaluatorSurface {
 }
 
 impl HandleGeomEvaluatorSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GeomEvaluator_Surface
     pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_Surface {
         unsafe {
@@ -1780,6 +1804,15 @@ unsafe impl crate::CppCopyable for HandleGeomEvaluatorSurfaceOfExtrusion {
 }
 
 impl HandleGeomEvaluatorSurfaceOfExtrusion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfExtrusion_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomEvaluator_SurfaceOfExtrusion
     pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_SurfaceOfExtrusion {
         unsafe {
@@ -2197,6 +2230,15 @@ unsafe impl crate::CppCopyable for HandleGeomEvaluatorSurfaceOfRevolution {
 }
 
 impl HandleGeomEvaluatorSurfaceOfRevolution {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfRevolution_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomEvaluator_SurfaceOfRevolution
     pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_SurfaceOfRevolution {
         unsafe {

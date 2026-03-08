@@ -630,6 +630,11 @@ unsafe impl crate::CppCopyable for HandleGeomAdaptorCurve {
 }
 
 impl HandleGeomAdaptorCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GeomAdaptor_Curve
     pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_Curve {
         unsafe {
@@ -1510,6 +1515,11 @@ unsafe impl crate::CppCopyable for HandleGeomAdaptorSurface {
 }
 
 impl HandleGeomAdaptorSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GeomAdaptor_Surface
     pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_Surface {
         unsafe {
@@ -2436,6 +2446,15 @@ unsafe impl crate::CppCopyable for HandleGeomAdaptorSurfaceOfLinearExtrusion {
 }
 
 impl HandleGeomAdaptorSurfaceOfLinearExtrusion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomAdaptor_SurfaceOfLinearExtrusion
     pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_SurfaceOfLinearExtrusion {
         unsafe {
@@ -3362,6 +3381,15 @@ unsafe impl crate::CppCopyable for HandleGeomAdaptorSurfaceOfRevolution {
 }
 
 impl HandleGeomAdaptorSurfaceOfRevolution {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying GeomAdaptor_SurfaceOfRevolution
     pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_SurfaceOfRevolution {
         unsafe {

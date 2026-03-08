@@ -231,6 +231,13 @@ unsafe impl crate::CppCopyable for HandleStepSelectActivator {
 }
 
 impl HandleStepSelectActivator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepSelectActivator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepSelect_Activator
     pub fn get(&self) -> &crate::ffi_types::StepSelect_Activator {
         unsafe {
@@ -566,6 +573,13 @@ unsafe impl crate::CppCopyable for HandleStepSelectFileModifier {
 }
 
 impl HandleStepSelectFileModifier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepSelectFileModifier_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepSelect_FileModifier
     pub fn get(&self) -> &crate::ffi_types::StepSelect_FileModifier {
         unsafe {
@@ -1044,6 +1058,13 @@ unsafe impl crate::CppCopyable for HandleStepSelectFloatFormat {
 }
 
 impl HandleStepSelectFloatFormat {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepSelectFloatFormat_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepSelect_FloatFormat
     pub fn get(&self) -> &crate::ffi_types::StepSelect_FloatFormat {
         unsafe {
@@ -1445,6 +1466,13 @@ unsafe impl crate::CppCopyable for HandleStepSelectModelModifier {
 }
 
 impl HandleStepSelectModelModifier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepSelectModelModifier_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepSelect_ModelModifier
     pub fn get(&self) -> &crate::ffi_types::StepSelect_ModelModifier {
         unsafe {
@@ -1879,6 +1907,11 @@ unsafe impl crate::CppCopyable for HandleStepSelectStepType {
 }
 
 impl HandleStepSelectStepType {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepSelectStepType_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepSelect_StepType
     pub fn get(&self) -> &crate::ffi_types::StepSelect_StepType {
         unsafe {
@@ -2309,6 +2342,13 @@ unsafe impl crate::CppCopyable for HandleStepSelectWorkLibrary {
 }
 
 impl HandleStepSelectWorkLibrary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepSelectWorkLibrary_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepSelect_WorkLibrary
     pub fn get(&self) -> &crate::ffi_types::StepSelect_WorkLibrary {
         unsafe {

@@ -862,6 +862,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocArea {
 }
 
 impl HandleXCAFDocArea {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocArea_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_Area
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_Area {
         unsafe {
@@ -1233,6 +1238,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocAssemblyGraph {
 }
 
 impl HandleXCAFDocAssemblyGraph {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocAssemblyGraph_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_AssemblyGraph
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_AssemblyGraph {
         unsafe {
@@ -2278,6 +2288,13 @@ unsafe impl crate::CppCopyable for HandleXCAFDocAssemblyItemRef {
 }
 
 impl HandleXCAFDocAssemblyItemRef {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFDocAssemblyItemRef_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_AssemblyItemRef
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_AssemblyItemRef {
         unsafe {
@@ -2986,6 +3003,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocCentroid {
 }
 
 impl HandleXCAFDocCentroid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocCentroid_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_Centroid
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_Centroid {
         unsafe {
@@ -3836,6 +3858,13 @@ unsafe impl crate::CppCopyable for HandleXCAFDocClippingPlaneTool {
 }
 
 impl HandleXCAFDocClippingPlaneTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFDocClippingPlaneTool_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_ClippingPlaneTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_ClippingPlaneTool {
         unsafe {
@@ -4522,6 +4551,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocColor {
 }
 
 impl HandleXCAFDocColor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocColor_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_Color
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_Color {
         unsafe {
@@ -5775,6 +5809,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocColorTool {
 }
 
 impl HandleXCAFDocColorTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocColorTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_ColorTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_ColorTool {
         unsafe {
@@ -6446,6 +6485,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocDatum {
 }
 
 impl HandleXCAFDocDatum {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocDatum_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_Datum
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_Datum {
         unsafe {
@@ -7079,6 +7123,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocDimTol {
 }
 
 impl HandleXCAFDocDimTol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocDimTol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_DimTol
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_DimTol {
         unsafe {
@@ -8284,6 +8333,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocDimTolTool {
 }
 
 impl HandleXCAFDocDimTolTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocDimTolTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_DimTolTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_DimTolTool {
         unsafe {
@@ -8939,6 +8993,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocDimension {
 }
 
 impl HandleXCAFDocDimension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocDimension_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_Dimension
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_Dimension {
         unsafe {
@@ -9945,6 +10004,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocDocumentTool {
 }
 
 impl HandleXCAFDocDocumentTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocDocumentTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_DocumentTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_DocumentTool {
         unsafe {
@@ -10879,6 +10943,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocGeomTolerance {
 }
 
 impl HandleXCAFDocGeomTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocGeomTolerance_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_GeomTolerance
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_GeomTolerance {
         unsafe {
@@ -11688,6 +11757,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocGraphNode {
 }
 
 impl HandleXCAFDocGraphNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocGraphNode_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_GraphNode
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_GraphNode {
         unsafe {
@@ -12796,6 +12870,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocLayerTool {
 }
 
 impl HandleXCAFDocLayerTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocLayerTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_LayerTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_LayerTool {
         unsafe {
@@ -13505,6 +13584,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocLengthUnit {
 }
 
 impl HandleXCAFDocLengthUnit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocLengthUnit_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_LengthUnit
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_LengthUnit {
         unsafe {
@@ -14112,6 +14196,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocLocation {
 }
 
 impl HandleXCAFDocLocation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocLocation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_Location
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_Location {
         unsafe {
@@ -14768,6 +14857,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocMaterial {
 }
 
 impl HandleXCAFDocMaterial {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocMaterial_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_Material
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_Material {
         unsafe {
@@ -15527,6 +15621,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocMaterialTool {
 }
 
 impl HandleXCAFDocMaterialTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocMaterialTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_MaterialTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_MaterialTool {
         unsafe {
@@ -16164,6 +16263,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocNote {
 }
 
 impl HandleXCAFDocNote {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocNote_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_Note
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_Note {
         unsafe {
@@ -16945,6 +17049,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocNoteBalloon {
 }
 
 impl HandleXCAFDocNoteBalloon {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocNoteBalloon_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_NoteBalloon
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_NoteBalloon {
         unsafe {
@@ -17772,6 +17881,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocNoteBinData {
 }
 
 impl HandleXCAFDocNoteBinData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocNoteBinData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_NoteBinData
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_NoteBinData {
         unsafe {
@@ -18511,6 +18625,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocNoteComment {
 }
 
 impl HandleXCAFDocNoteComment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocNoteComment_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_NoteComment
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_NoteComment {
         unsafe {
@@ -20066,6 +20185,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocNotesTool {
 }
 
 impl HandleXCAFDocNotesTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocNotesTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_NotesTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_NotesTool {
         unsafe {
@@ -20706,6 +20830,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocShapeMapTool {
 }
 
 impl HandleXCAFDocShapeMapTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocShapeMapTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_ShapeMapTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_ShapeMapTool {
         unsafe {
@@ -22319,6 +22448,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocShapeTool {
 }
 
 impl HandleXCAFDocShapeTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocShapeTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_ShapeTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_ShapeTool {
         unsafe {
@@ -22929,6 +23063,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocView {
 }
 
 impl HandleXCAFDocView {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocView_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_View
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_View {
         unsafe {
@@ -23871,6 +24010,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocViewTool {
 }
 
 impl HandleXCAFDocViewTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocViewTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_ViewTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_ViewTool {
         unsafe {
@@ -24723,6 +24867,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocVisMaterial {
 }
 
 impl HandleXCAFDocVisMaterial {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocVisMaterial_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_VisMaterial
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_VisMaterial {
         unsafe {
@@ -25667,6 +25816,13 @@ unsafe impl crate::CppCopyable for HandleXCAFDocVisMaterialTool {
 }
 
 impl HandleXCAFDocVisMaterialTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFDocVisMaterialTool_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_VisMaterialTool
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_VisMaterialTool {
         unsafe {
@@ -26315,6 +26471,11 @@ unsafe impl crate::CppCopyable for HandleXCAFDocVolume {
 }
 
 impl HandleXCAFDocVolume {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFDocVolume_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying XCAFDoc_Volume
     pub fn get(&self) -> &crate::ffi_types::XCAFDoc_Volume {
         unsafe {

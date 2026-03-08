@@ -499,6 +499,11 @@ unsafe impl crate::CppCopyable for HandlePCDMDocument {
 }
 
 impl HandlePCDMDocument {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandlePCDMDocument_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PCDM_Document
     pub fn get(&self) -> &crate::ffi_types::PCDM_Document {
         unsafe {
@@ -818,6 +823,11 @@ unsafe impl crate::CppCopyable for HandlePCDMDriverError {
 }
 
 impl HandlePCDMDriverError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandlePCDMDriverError_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PCDM_DriverError
     pub fn get(&self) -> &crate::ffi_types::PCDM_DriverError {
         unsafe {
@@ -1210,6 +1220,11 @@ unsafe impl crate::CppCopyable for HandlePCDMReadWriter {
 }
 
 impl HandlePCDMReadWriter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandlePCDMReadWriter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PCDM_ReadWriter
     pub fn get(&self) -> &crate::ffi_types::PCDM_ReadWriter {
         unsafe {
@@ -1579,6 +1594,11 @@ unsafe impl crate::CppCopyable for HandlePCDMReadWriter1 {
 }
 
 impl HandlePCDMReadWriter1 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandlePCDMReadWriter1_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PCDM_ReadWriter_1
     pub fn get(&self) -> &crate::ffi_types::PCDM_ReadWriter_1 {
         unsafe {
@@ -1791,6 +1811,11 @@ unsafe impl crate::CppCopyable for HandlePCDMReader {
 }
 
 impl HandlePCDMReader {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandlePCDMReader_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PCDM_Reader
     pub fn get(&self) -> &crate::ffi_types::PCDM_Reader {
         unsafe {
@@ -2390,6 +2415,11 @@ unsafe impl crate::CppCopyable for HandlePCDMReaderFilter {
 }
 
 impl HandlePCDMReaderFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandlePCDMReaderFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PCDM_ReaderFilter
     pub fn get(&self) -> &crate::ffi_types::PCDM_ReaderFilter {
         unsafe {
@@ -2686,6 +2716,11 @@ unsafe impl crate::CppCopyable for HandlePCDMReferenceIterator {
 }
 
 impl HandlePCDMReferenceIterator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandlePCDMReferenceIterator_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PCDM_ReferenceIterator
     pub fn get(&self) -> &crate::ffi_types::PCDM_ReferenceIterator {
         unsafe {
@@ -2954,6 +2989,11 @@ unsafe impl crate::CppCopyable for HandlePCDMRetrievalDriver {
 }
 
 impl HandlePCDMRetrievalDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PCDM_RetrievalDriver
     pub fn get(&self) -> &crate::ffi_types::PCDM_RetrievalDriver {
         unsafe {
@@ -3473,6 +3513,11 @@ unsafe impl crate::CppCopyable for HandlePCDMStorageDriver {
 }
 
 impl HandlePCDMStorageDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PCDM_StorageDriver
     pub fn get(&self) -> &crate::ffi_types::PCDM_StorageDriver {
         unsafe {
@@ -3805,6 +3850,11 @@ unsafe impl crate::CppCopyable for HandlePCDMWriter {
 }
 
 impl HandlePCDMWriter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandlePCDMWriter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PCDM_Writer
     pub fn get(&self) -> &crate::ffi_types::PCDM_Writer {
         unsafe {

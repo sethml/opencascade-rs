@@ -619,6 +619,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolAngularityTolerance {
 }
 
 impl HandleStepDimTolAngularityTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolAngularityTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_AngularityTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_AngularityTolerance {
         unsafe {
@@ -1006,6 +1015,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolCircularRunoutTolerance {
 }
 
 impl HandleStepDimTolCircularRunoutTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolCircularRunoutTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_CircularRunoutTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_CircularRunoutTolerance {
         unsafe {
@@ -1408,6 +1426,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolCoaxialityTolerance {
 }
 
 impl HandleStepDimTolCoaxialityTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolCoaxialityTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_CoaxialityTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_CoaxialityTolerance {
         unsafe {
@@ -1818,6 +1845,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolCommonDatum {
 }
 
 impl HandleStepDimTolCommonDatum {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolCommonDatum_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_CommonDatum
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_CommonDatum {
         unsafe {
@@ -2215,6 +2249,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolConcentricityTolerance {
 }
 
 impl HandleStepDimTolConcentricityTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolConcentricityTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_ConcentricityTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ConcentricityTolerance {
         unsafe {
@@ -2558,6 +2601,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolCylindricityTolerance {
 }
 
 impl HandleStepDimTolCylindricityTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolCylindricityTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_CylindricityTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_CylindricityTolerance {
         unsafe {
@@ -2922,6 +2974,11 @@ unsafe impl crate::CppCopyable for HandleStepDimTolDatum {
 }
 
 impl HandleStepDimTolDatum {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDimTolDatum_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_Datum
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_Datum {
         unsafe {
@@ -3276,6 +3333,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolDatumFeature {
 }
 
 impl HandleStepDimTolDatumFeature {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumFeature_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_DatumFeature
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_DatumFeature {
         unsafe {
@@ -3815,6 +3879,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolDatumReference {
 }
 
 impl HandleStepDimTolDatumReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumReference_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_DatumReference
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_DatumReference {
         unsafe {
@@ -4209,6 +4280,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolDatumReferenceCompartment {
 }
 
 impl HandleStepDimTolDatumReferenceCompartment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumReferenceCompartment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_DatumReferenceCompartment
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_DatumReferenceCompartment {
         unsafe {
@@ -4640,6 +4720,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolDatumReferenceElement {
 }
 
 impl HandleStepDimTolDatumReferenceElement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumReferenceElement_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_DatumReferenceElement
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_DatumReferenceElement {
         unsafe {
@@ -5156,6 +5245,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolDatumReferenceModifierWithVal
 }
 
 impl HandleStepDimTolDatumReferenceModifierWithValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumReferenceModifierWithValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_DatumReferenceModifierWithValue
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_DatumReferenceModifierWithValue {
         unsafe {
@@ -5560,6 +5658,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolDatumSystem {
 }
 
 impl HandleStepDimTolDatumSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumSystem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_DatumSystem
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_DatumSystem {
         unsafe {
@@ -6188,6 +6293,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolDatumTarget {
 }
 
 impl HandleStepDimTolDatumTarget {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolDatumTarget_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_DatumTarget
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_DatumTarget {
         unsafe {
@@ -6543,6 +6655,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolFlatnessTolerance {
 }
 
 impl HandleStepDimTolFlatnessTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolFlatnessTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_FlatnessTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_FlatnessTolerance {
         unsafe {
@@ -6976,6 +7097,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeneralDatumReference {
 }
 
 impl HandleStepDimTolGeneralDatumReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeneralDatumReference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeneralDatumReference
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeneralDatumReference {
         unsafe {
@@ -7383,6 +7513,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthDatRef {
 }
 
 impl HandleStepDimTolGeoTolAndGeoTolWthDatRef {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRef_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRef
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeoTolAndGeoTolWthDatRef {
         unsafe {
@@ -7782,6 +7921,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGe
 }
 
 impl HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
         unsafe {
@@ -8133,6 +8279,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGe
 }
 
 impl HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndGeoTolWthMod_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
         unsafe {
@@ -8492,6 +8645,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndMo
 }
 
 impl HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol
     pub fn get(
         &self,
@@ -8847,6 +9007,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUn
 }
 
 impl HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
         unsafe {
@@ -9261,6 +9428,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthMaxTol {
 }
 
 impl HandleStepDimTolGeoTolAndGeoTolWthMaxTol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthMaxTol_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthMaxTol
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeoTolAndGeoTolWthMaxTol {
         unsafe {
@@ -9651,6 +9827,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeoTolAndGeoTolWthMod {
 }
 
 impl HandleStepDimTolGeoTolAndGeoTolWthMod {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeoTolAndGeoTolWthMod_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeoTolAndGeoTolWthMod
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeoTolAndGeoTolWthMod {
         unsafe {
@@ -10023,6 +10208,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeometricTolerance {
 }
 
 impl HandleStepDimTolGeometricTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeometricTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricTolerance {
         unsafe {
@@ -10815,6 +11009,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceRelationshi
 }
 
 impl HandleStepDimTolGeometricToleranceRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceRelationship
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricToleranceRelationship {
         unsafe {
@@ -11418,6 +11621,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceWithDatumRe
 }
 
 impl HandleStepDimTolGeometricToleranceWithDatumReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceWithDatumReference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithDatumReference
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricToleranceWithDatumReference {
         unsafe {
@@ -11917,6 +12129,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceWithDefined
 }
 
 impl HandleStepDimTolGeometricToleranceWithDefinedAreaUnit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceWithDefinedAreaUnit_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithDefinedAreaUnit
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricToleranceWithDefinedAreaUnit {
         unsafe {
@@ -12247,6 +12466,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceWithDefined
 }
 
 impl HandleStepDimTolGeometricToleranceWithDefinedUnit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceWithDefinedUnit_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithDefinedUnit
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricToleranceWithDefinedUnit {
         unsafe {
@@ -12630,6 +12858,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceWithMaximum
 }
 
 impl HandleStepDimTolGeometricToleranceWithMaximumTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceWithMaximumTolerance_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithMaximumTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricToleranceWithMaximumTolerance {
         unsafe {
@@ -12995,6 +13230,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolGeometricToleranceWithModifie
 }
 
 impl HandleStepDimTolGeometricToleranceWithModifiers {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolGeometricToleranceWithModifiers_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_GeometricToleranceWithModifiers
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_GeometricToleranceWithModifiers {
         unsafe {
@@ -13287,6 +13531,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfDatumReference {
 }
 
 impl HandleStepDimTolHArray1OfDatumReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumReference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumReference
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_HArray1OfDatumReference {
         unsafe {
@@ -13529,6 +13782,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfDatumReferenceCompar
 }
 
 impl HandleStepDimTolHArray1OfDatumReferenceCompartment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumReferenceCompartment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumReferenceCompartment
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_HArray1OfDatumReferenceCompartment {
         unsafe {
@@ -13787,6 +14049,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfDatumReferenceElemen
 }
 
 impl HandleStepDimTolHArray1OfDatumReferenceElement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumReferenceElement_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumReferenceElement
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_HArray1OfDatumReferenceElement {
         unsafe {
@@ -14034,6 +14305,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfDatumReferenceModifi
 }
 
 impl HandleStepDimTolHArray1OfDatumReferenceModifier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumReferenceModifier_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumReferenceModifier
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_HArray1OfDatumReferenceModifier {
         unsafe {
@@ -14281,6 +14561,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfDatumSystemOrReferen
 }
 
 impl HandleStepDimTolHArray1OfDatumSystemOrReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfDatumSystemOrReference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumSystemOrReference
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_HArray1OfDatumSystemOrReference {
         unsafe {
@@ -14516,6 +14805,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfGeometricToleranceMo
 }
 
 impl HandleStepDimTolHArray1OfGeometricToleranceModifier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfGeometricToleranceModifier_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_HArray1OfGeometricToleranceModifier
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_HArray1OfGeometricToleranceModifier {
         unsafe {
@@ -14776,6 +15074,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolHArray1OfToleranceZoneTarget 
 }
 
 impl HandleStepDimTolHArray1OfToleranceZoneTarget {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolHArray1OfToleranceZoneTarget_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_HArray1OfToleranceZoneTarget
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_HArray1OfToleranceZoneTarget {
         unsafe {
@@ -15100,6 +15407,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolLineProfileTolerance {
 }
 
 impl HandleStepDimTolLineProfileTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolLineProfileTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_LineProfileTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_LineProfileTolerance {
         unsafe {
@@ -15449,6 +15765,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolModifiedGeometricTolerance {
 }
 
 impl HandleStepDimTolModifiedGeometricTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolModifiedGeometricTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_ModifiedGeometricTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ModifiedGeometricTolerance {
         unsafe {
@@ -15762,6 +16087,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolNonUniformZoneDefinition {
 }
 
 impl HandleStepDimTolNonUniformZoneDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolNonUniformZoneDefinition_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_NonUniformZoneDefinition
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_NonUniformZoneDefinition {
         unsafe {
@@ -16150,6 +16484,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolParallelismTolerance {
 }
 
 impl HandleStepDimTolParallelismTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolParallelismTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_ParallelismTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ParallelismTolerance {
         unsafe {
@@ -16524,6 +16867,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolPerpendicularityTolerance {
 }
 
 impl HandleStepDimTolPerpendicularityTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolPerpendicularityTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_PerpendicularityTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_PerpendicularityTolerance {
         unsafe {
@@ -16894,6 +17246,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolPlacedDatumTargetFeature {
 }
 
 impl HandleStepDimTolPlacedDatumTargetFeature {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolPlacedDatumTargetFeature_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_PlacedDatumTargetFeature
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_PlacedDatumTargetFeature {
         unsafe {
@@ -17242,6 +17603,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolPositionTolerance {
 }
 
 impl HandleStepDimTolPositionTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolPositionTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_PositionTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_PositionTolerance {
         unsafe {
@@ -17618,6 +17988,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolProjectedZoneDefinition {
 }
 
 impl HandleStepDimTolProjectedZoneDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolProjectedZoneDefinition_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_ProjectedZoneDefinition
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ProjectedZoneDefinition {
         unsafe {
@@ -17957,6 +18336,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolRoundnessTolerance {
 }
 
 impl HandleStepDimTolRoundnessTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolRoundnessTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_RoundnessTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_RoundnessTolerance {
         unsafe {
@@ -18312,6 +18700,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolRunoutZoneDefinition {
 }
 
 impl HandleStepDimTolRunoutZoneDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolRunoutZoneDefinition_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_RunoutZoneDefinition
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_RunoutZoneDefinition {
         unsafe {
@@ -18564,6 +18961,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolRunoutZoneOrientation {
 }
 
 impl HandleStepDimTolRunoutZoneOrientation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolRunoutZoneOrientation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_RunoutZoneOrientation
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_RunoutZoneOrientation {
         unsafe {
@@ -19216,6 +19622,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolSimpleDatumReferenceModifierM
 }
 
 impl HandleStepDimTolSimpleDatumReferenceModifierMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolSimpleDatumReferenceModifierMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_SimpleDatumReferenceModifierMember
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_SimpleDatumReferenceModifierMember {
         unsafe {
@@ -19556,6 +19971,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolStraightnessTolerance {
 }
 
 impl HandleStepDimTolStraightnessTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolStraightnessTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_StraightnessTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_StraightnessTolerance {
         unsafe {
@@ -19882,6 +20306,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolSurfaceProfileTolerance {
 }
 
 impl HandleStepDimTolSurfaceProfileTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolSurfaceProfileTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_SurfaceProfileTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_SurfaceProfileTolerance {
         unsafe {
@@ -20280,6 +20713,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolSymmetryTolerance {
 }
 
 impl HandleStepDimTolSymmetryTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolSymmetryTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_SymmetryTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_SymmetryTolerance {
         unsafe {
@@ -20729,6 +21171,13 @@ unsafe impl crate::CppCopyable for HandleStepDimTolToleranceZone {
 }
 
 impl HandleStepDimTolToleranceZone {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolToleranceZone_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_ToleranceZone
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ToleranceZone {
         unsafe {
@@ -21047,6 +21496,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolToleranceZoneDefinition {
 }
 
 impl HandleStepDimTolToleranceZoneDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolToleranceZoneDefinition_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_ToleranceZoneDefinition
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ToleranceZoneDefinition {
         unsafe {
@@ -21337,6 +21795,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolToleranceZoneForm {
 }
 
 impl HandleStepDimTolToleranceZoneForm {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolToleranceZoneForm_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_ToleranceZoneForm
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_ToleranceZoneForm {
         unsafe {
@@ -22008,6 +22475,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolTotalRunoutTolerance {
 }
 
 impl HandleStepDimTolTotalRunoutTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolTotalRunoutTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_TotalRunoutTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_TotalRunoutTolerance {
         unsafe {
@@ -22327,6 +22803,15 @@ unsafe impl crate::CppCopyable for HandleStepDimTolUnequallyDisposedGeometricTol
 }
 
 impl HandleStepDimTolUnequallyDisposedGeometricTolerance {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDimTolUnequallyDisposedGeometricTolerance_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepDimTol_UnequallyDisposedGeometricTolerance
     pub fn get(&self) -> &crate::ffi_types::StepDimTol_UnequallyDisposedGeometricTolerance {
         unsafe {

@@ -492,6 +492,13 @@ unsafe impl crate::CppCopyable for HandleSelect3DBVHIndexBuffer {
 }
 
 impl HandleSelect3DBVHIndexBuffer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DBVHIndexBuffer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_BVHIndexBuffer
     pub fn get(&self) -> &crate::ffi_types::Select3D_BVHIndexBuffer {
         unsafe {
@@ -1001,6 +1008,15 @@ unsafe impl crate::CppCopyable for HandleSelect3DInteriorSensitivePointSet {
 }
 
 impl HandleSelect3DInteriorSensitivePointSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DInteriorSensitivePointSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_InteriorSensitivePointSet
     pub fn get(&self) -> &crate::ffi_types::Select3D_InteriorSensitivePointSet {
         unsafe {
@@ -1530,6 +1546,11 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveBox {
 }
 
 impl HandleSelect3DSensitiveBox {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelect3DSensitiveBox_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveBox
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveBox {
         unsafe {
@@ -1975,6 +1996,13 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveCircle {
 }
 
 impl HandleSelect3DSensitiveCircle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCircle_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveCircle
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveCircle {
         unsafe {
@@ -2559,6 +2587,13 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveCurve {
 }
 
 impl HandleSelect3DSensitiveCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveCurve
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveCurve {
         unsafe {
@@ -3062,6 +3097,13 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveCylinder {
 }
 
 impl HandleSelect3DSensitiveCylinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCylinder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveCylinder
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveCylinder {
         unsafe {
@@ -3434,6 +3476,13 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveEntity {
 }
 
 impl HandleSelect3DSensitiveEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveEntity
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveEntity {
         unsafe {
@@ -4227,6 +4276,11 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveFace {
 }
 
 impl HandleSelect3DSensitiveFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelect3DSensitiveFace_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveFace
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveFace {
         unsafe {
@@ -4919,6 +4973,13 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveGroup {
 }
 
 impl HandleSelect3DSensitiveGroup {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveGroup_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveGroup
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveGroup {
         unsafe {
@@ -5343,6 +5404,13 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitivePoint {
 }
 
 impl HandleSelect3DSensitivePoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitivePoint
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitivePoint {
         unsafe {
@@ -5976,6 +6044,11 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitivePoly {
 }
 
 impl HandleSelect3DSensitivePoly {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitivePoly
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitivePoly {
         unsafe {
@@ -6862,6 +6935,15 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitivePrimitiveArray {
 }
 
 impl HandleSelect3DSensitivePrimitiveArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitivePrimitiveArray
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitivePrimitiveArray {
         unsafe {
@@ -7358,6 +7440,13 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveSegment {
 }
 
 impl HandleSelect3DSensitiveSegment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSegment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveSegment
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveSegment {
         unsafe {
@@ -7853,6 +7942,11 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveSet {
 }
 
 impl HandleSelect3DSensitiveSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveSet
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveSet {
         unsafe {
@@ -8431,6 +8525,13 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveSphere {
 }
 
 impl HandleSelect3DSensitiveSphere {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSphere_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveSphere
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveSphere {
         unsafe {
@@ -8873,6 +8974,13 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveTriangle {
 }
 
 impl HandleSelect3DSensitiveTriangle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangle_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveTriangle
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveTriangle {
         unsafe {
@@ -9470,6 +9578,15 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveTriangulation {
 }
 
 impl HandleSelect3DSensitiveTriangulation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangulation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveTriangulation
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveTriangulation {
         unsafe {
@@ -10006,6 +10123,11 @@ unsafe impl crate::CppCopyable for HandleSelect3DSensitiveWire {
 }
 
 impl HandleSelect3DSensitiveWire {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleSelect3DSensitiveWire_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Select3D_SensitiveWire
     pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveWire {
         unsafe {

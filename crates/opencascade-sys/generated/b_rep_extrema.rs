@@ -2672,6 +2672,13 @@ unsafe impl crate::CppCopyable for HandleBRepExtremaTriangleSet {
 }
 
 impl HandleBRepExtremaTriangleSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepExtremaTriangleSet_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepExtrema_TriangleSet
     pub fn get(&self) -> &crate::ffi_types::BRepExtrema_TriangleSet {
         unsafe {
@@ -3010,6 +3017,15 @@ unsafe impl crate::CppCopyable for HandleBRepExtremaUnCompatibleShape {
 }
 
 impl HandleBRepExtremaUnCompatibleShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepExtrema_UnCompatibleShape
     pub fn get(&self) -> &crate::ffi_types::BRepExtrema_UnCompatibleShape {
         unsafe {

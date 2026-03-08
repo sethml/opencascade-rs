@@ -381,6 +381,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAAlignedCurve3dElementCoordinateS
 }
 
 impl HandleStepFEAAlignedCurve3dElementCoordinateSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAAlignedCurve3dElementCoordinateSystem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_AlignedCurve3dElementCoordinateSystem
     pub fn get(&self) -> &crate::ffi_types::StepFEA_AlignedCurve3dElementCoordinateSystem {
         unsafe {
@@ -656,6 +665,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAAlignedSurface3dElementCoordinat
 }
 
 impl HandleStepFEAAlignedSurface3dElementCoordinateSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAAlignedSurface3dElementCoordinateSystem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_AlignedSurface3dElementCoordinateSystem
     pub fn get(&self) -> &crate::ffi_types::StepFEA_AlignedSurface3dElementCoordinateSystem {
         unsafe {
@@ -927,6 +945,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAArbitraryVolume3dElementCoordina
 }
 
 impl HandleStepFEAArbitraryVolume3dElementCoordinateSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAArbitraryVolume3dElementCoordinateSystem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_ArbitraryVolume3dElementCoordinateSystem
     pub fn get(&self) -> &crate::ffi_types::StepFEA_ArbitraryVolume3dElementCoordinateSystem {
         unsafe {
@@ -1221,6 +1246,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAConstantSurface3dElementCoordina
 }
 
 impl HandleStepFEAConstantSurface3dElementCoordinateSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAConstantSurface3dElementCoordinateSystem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_ConstantSurface3dElementCoordinateSystem
     pub fn get(&self) -> &crate::ffi_types::StepFEA_ConstantSurface3dElementCoordinateSystem {
         unsafe {
@@ -1600,6 +1632,15 @@ unsafe impl crate::CppCopyable for HandleStepFEACurve3dElementProperty {
 }
 
 impl HandleStepFEACurve3dElementProperty {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurve3dElementProperty_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_Curve3dElementProperty
     pub fn get(&self) -> &crate::ffi_types::StepFEA_Curve3dElementProperty {
         unsafe {
@@ -2068,6 +2109,15 @@ unsafe impl crate::CppCopyable for HandleStepFEACurve3dElementRepresentation {
 }
 
 impl HandleStepFEACurve3dElementRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurve3dElementRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_Curve3dElementRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepFEA_Curve3dElementRepresentation {
         unsafe {
@@ -2613,6 +2663,15 @@ unsafe impl crate::CppCopyable for HandleStepFEACurveElementEndOffset {
 }
 
 impl HandleStepFEACurveElementEndOffset {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementEndOffset_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_CurveElementEndOffset
     pub fn get(&self) -> &crate::ffi_types::StepFEA_CurveElementEndOffset {
         unsafe {
@@ -2890,6 +2949,15 @@ unsafe impl crate::CppCopyable for HandleStepFEACurveElementEndRelease {
 }
 
 impl HandleStepFEACurveElementEndRelease {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementEndRelease_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_CurveElementEndRelease
     pub fn get(&self) -> &crate::ffi_types::StepFEA_CurveElementEndRelease {
         unsafe {
@@ -3168,6 +3236,15 @@ unsafe impl crate::CppCopyable for HandleStepFEACurveElementInterval {
 }
 
 impl HandleStepFEACurveElementInterval {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementInterval_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_CurveElementInterval
     pub fn get(&self) -> &crate::ffi_types::StepFEA_CurveElementInterval {
         unsafe {
@@ -3500,6 +3577,15 @@ unsafe impl crate::CppCopyable for HandleStepFEACurveElementIntervalConstant {
 }
 
 impl HandleStepFEACurveElementIntervalConstant {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementIntervalConstant_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_CurveElementIntervalConstant
     pub fn get(&self) -> &crate::ffi_types::StepFEA_CurveElementIntervalConstant {
         unsafe {
@@ -3787,6 +3873,15 @@ unsafe impl crate::CppCopyable for HandleStepFEACurveElementIntervalLinearlyVary
 }
 
 impl HandleStepFEACurveElementIntervalLinearlyVarying {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementIntervalLinearlyVarying_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_CurveElementIntervalLinearlyVarying
     pub fn get(&self) -> &crate::ffi_types::StepFEA_CurveElementIntervalLinearlyVarying {
         unsafe {
@@ -4042,6 +4137,15 @@ unsafe impl crate::CppCopyable for HandleStepFEACurveElementLocation {
 }
 
 impl HandleStepFEACurveElementLocation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementLocation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_CurveElementLocation
     pub fn get(&self) -> &crate::ffi_types::StepFEA_CurveElementLocation {
         unsafe {
@@ -4763,6 +4867,15 @@ unsafe impl crate::CppCopyable for HandleStepFEADegreeOfFreedomMember {
 }
 
 impl HandleStepFEADegreeOfFreedomMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEADegreeOfFreedomMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_DegreeOfFreedomMember
     pub fn get(&self) -> &crate::ffi_types::StepFEA_DegreeOfFreedomMember {
         unsafe {
@@ -5157,6 +5270,11 @@ unsafe impl crate::CppCopyable for HandleStepFEADummyNode {
 }
 
 impl HandleStepFEADummyNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepFEADummyNode_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_DummyNode
     pub fn get(&self) -> &crate::ffi_types::StepFEA_DummyNode {
         unsafe {
@@ -5470,6 +5588,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAElementGeometricRelationship {
 }
 
 impl HandleStepFEAElementGeometricRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAElementGeometricRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_ElementGeometricRelationship
     pub fn get(&self) -> &crate::ffi_types::StepFEA_ElementGeometricRelationship {
         unsafe {
@@ -5838,6 +5965,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAElementGroup {
 }
 
 impl HandleStepFEAElementGroup {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAElementGroup_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_ElementGroup
     pub fn get(&self) -> &crate::ffi_types::StepFEA_ElementGroup {
         unsafe {
@@ -6491,6 +6625,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAElementRepresentation {
 }
 
 impl HandleStepFEAElementRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAElementRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_ElementRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepFEA_ElementRepresentation {
         unsafe {
@@ -6850,6 +6993,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaAreaDensity {
 }
 
 impl HandleStepFEAFeaAreaDensity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaAreaDensity_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaAreaDensity
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaAreaDensity {
         unsafe {
@@ -7343,6 +7493,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaAxis2Placement3d {
 }
 
 impl HandleStepFEAFeaAxis2Placement3d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaAxis2Placement3d_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaAxis2Placement3d
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaAxis2Placement3d {
         unsafe {
@@ -7626,6 +7785,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaCurveSectionGeometricRelation
 }
 
 impl HandleStepFEAFeaCurveSectionGeometricRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaCurveSectionGeometricRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaCurveSectionGeometricRelationship
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaCurveSectionGeometricRelationship {
         unsafe {
@@ -7930,6 +8098,11 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaGroup {
 }
 
 impl HandleStepFEAFeaGroup {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepFEAFeaGroup_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaGroup
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaGroup {
         unsafe {
@@ -8280,6 +8453,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaLinearElasticity {
 }
 
 impl HandleStepFEAFeaLinearElasticity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaLinearElasticity_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaLinearElasticity
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaLinearElasticity {
         unsafe {
@@ -8597,6 +8779,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaMassDensity {
 }
 
 impl HandleStepFEAFeaMassDensity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMassDensity_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaMassDensity
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaMassDensity {
         unsafe {
@@ -8915,6 +9104,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaMaterialPropertyRepresentatio
 }
 
 impl HandleStepFEAFeaMaterialPropertyRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMaterialPropertyRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaMaterialPropertyRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaMaterialPropertyRepresentation {
         unsafe {
@@ -9154,6 +9352,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaMaterialPropertyRepresentatio
 }
 
 impl HandleStepFEAFeaMaterialPropertyRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMaterialPropertyRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaMaterialPropertyRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaMaterialPropertyRepresentationItem {
         unsafe {
@@ -9772,6 +9979,11 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaModel {
 }
 
 impl HandleStepFEAFeaModel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModel_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaModel
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaModel {
         unsafe {
@@ -10268,6 +10480,11 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaModel3d {
 }
 
 impl HandleStepFEAFeaModel3d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModel3d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaModel3d
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaModel3d {
         unsafe {
@@ -10633,6 +10850,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaModelDefinition {
 }
 
 impl HandleStepFEAFeaModelDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModelDefinition_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaModelDefinition
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaModelDefinition {
         unsafe {
@@ -10945,6 +11169,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaMoistureAbsorption {
 }
 
 impl HandleStepFEAFeaMoistureAbsorption {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMoistureAbsorption_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaMoistureAbsorption
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaMoistureAbsorption {
         unsafe {
@@ -11288,6 +11521,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaParametricPoint {
 }
 
 impl HandleStepFEAFeaParametricPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaParametricPoint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaParametricPoint
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaParametricPoint {
         unsafe {
@@ -11573,6 +11813,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaRepresentationItem {
 }
 
 impl HandleStepFEAFeaRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaRepresentationItem {
         unsafe {
@@ -11977,6 +12226,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaSecantCoefficientOfLinearTher
 }
 
 impl HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaSecantCoefficientOfLinearThermalExpansion
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaSecantCoefficientOfLinearThermalExpansion {
         unsafe {
@@ -12288,6 +12544,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaShellBendingStiffness {
 }
 
 impl HandleStepFEAFeaShellBendingStiffness {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellBendingStiffness_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaShellBendingStiffness
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaShellBendingStiffness {
         unsafe {
@@ -12564,6 +12829,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaShellMembraneBendingCouplingS
 }
 
 impl HandleStepFEAFeaShellMembraneBendingCouplingStiffness {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellMembraneBendingCouplingStiffness_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaShellMembraneBendingCouplingStiffness
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaShellMembraneBendingCouplingStiffness {
         unsafe {
@@ -12875,6 +13147,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaShellMembraneStiffness {
 }
 
 impl HandleStepFEAFeaShellMembraneStiffness {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellMembraneStiffness_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaShellMembraneStiffness
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaShellMembraneStiffness {
         unsafe {
@@ -13196,6 +13477,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaShellShearStiffness {
 }
 
 impl HandleStepFEAFeaShellShearStiffness {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellShearStiffness_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaShellShearStiffness
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaShellShearStiffness {
         unsafe {
@@ -13457,6 +13747,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaSurfaceSectionGeometricRelati
 }
 
 impl HandleStepFEAFeaSurfaceSectionGeometricRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaSurfaceSectionGeometricRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaSurfaceSectionGeometricRelationship
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FeaSurfaceSectionGeometricRelationship {
         unsafe {
@@ -13702,6 +14001,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAFeaTangentialCoefficientOfLinear
 }
 
 impl HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion
     pub fn get(
         &self,
@@ -13984,6 +14290,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAFreedomAndCoefficient {
 }
 
 impl HandleStepFEAFreedomAndCoefficient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFreedomAndCoefficient_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FreedomAndCoefficient
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FreedomAndCoefficient {
         unsafe {
@@ -14221,6 +14536,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAFreedomsList {
 }
 
 impl HandleStepFEAFreedomsList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFreedomsList_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_FreedomsList
     pub fn get(&self) -> &crate::ffi_types::StepFEA_FreedomsList {
         unsafe {
@@ -14605,6 +14927,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAGeometricNode {
 }
 
 impl HandleStepFEAGeometricNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAGeometricNode_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_GeometricNode
     pub fn get(&self) -> &crate::ffi_types::StepFEA_GeometricNode {
         unsafe {
@@ -14887,6 +15216,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfCurveElementEndOffset {
 }
 
 impl HandleStepFEAHArray1OfCurveElementEndOffset {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementEndOffset_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_HArray1OfCurveElementEndOffset
     pub fn get(&self) -> &crate::ffi_types::StepFEA_HArray1OfCurveElementEndOffset {
         unsafe {
@@ -15149,6 +15487,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfCurveElementEndRelease 
 }
 
 impl HandleStepFEAHArray1OfCurveElementEndRelease {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementEndRelease_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_HArray1OfCurveElementEndRelease
     pub fn get(&self) -> &crate::ffi_types::StepFEA_HArray1OfCurveElementEndRelease {
         unsafe {
@@ -15411,6 +15758,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfCurveElementInterval {
 }
 
 impl HandleStepFEAHArray1OfCurveElementInterval {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementInterval_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_HArray1OfCurveElementInterval
     pub fn get(&self) -> &crate::ffi_types::StepFEA_HArray1OfCurveElementInterval {
         unsafe {
@@ -15679,6 +16035,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfDegreeOfFreedom {
 }
 
 impl HandleStepFEAHArray1OfDegreeOfFreedom {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfDegreeOfFreedom_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_HArray1OfDegreeOfFreedom
     pub fn get(&self) -> &crate::ffi_types::StepFEA_HArray1OfDegreeOfFreedom {
         unsafe {
@@ -15943,6 +16308,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfElementRepresentation {
 }
 
 impl HandleStepFEAHArray1OfElementRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfElementRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_HArray1OfElementRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepFEA_HArray1OfElementRepresentation {
         unsafe {
@@ -16208,6 +16582,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfNodeRepresentation {
 }
 
 impl HandleStepFEAHArray1OfNodeRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfNodeRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_HArray1OfNodeRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepFEA_HArray1OfNodeRepresentation {
         unsafe {
@@ -16450,6 +16833,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAHSequenceOfCurve3dElementPropert
 }
 
 impl HandleStepFEAHSequenceOfCurve3dElementProperty {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfCurve3dElementProperty_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_HSequenceOfCurve3dElementProperty
     pub fn get(&self) -> &crate::ffi_types::StepFEA_HSequenceOfCurve3dElementProperty {
         unsafe {
@@ -16671,6 +17063,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAHSequenceOfElementGeometricRelat
 }
 
 impl HandleStepFEAHSequenceOfElementGeometricRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfElementGeometricRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_HSequenceOfElementGeometricRelationship
     pub fn get(&self) -> &crate::ffi_types::StepFEA_HSequenceOfElementGeometricRelationship {
         unsafe {
@@ -16907,6 +17308,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAHSequenceOfElementRepresentation
 }
 
 impl HandleStepFEAHSequenceOfElementRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfElementRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_HSequenceOfElementRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepFEA_HSequenceOfElementRepresentation {
         unsafe {
@@ -17157,6 +17567,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAHSequenceOfNodeRepresentation {
 }
 
 impl HandleStepFEAHSequenceOfNodeRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfNodeRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_HSequenceOfNodeRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepFEA_HSequenceOfNodeRepresentation {
         unsafe {
@@ -17518,6 +17937,11 @@ unsafe impl crate::CppCopyable for HandleStepFEANode {
 }
 
 impl HandleStepFEANode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepFEANode_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_Node
     pub fn get(&self) -> &crate::ffi_types::StepFEA_Node {
         unsafe {
@@ -17918,6 +18342,13 @@ unsafe impl crate::CppCopyable for HandleStepFEANodeDefinition {
 }
 
 impl HandleStepFEANodeDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEANodeDefinition_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_NodeDefinition
     pub fn get(&self) -> &crate::ffi_types::StepFEA_NodeDefinition {
         unsafe {
@@ -18283,6 +18714,11 @@ unsafe impl crate::CppCopyable for HandleStepFEANodeGroup {
 }
 
 impl HandleStepFEANodeGroup {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepFEANodeGroup_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_NodeGroup
     pub fn get(&self) -> &crate::ffi_types::StepFEA_NodeGroup {
         unsafe {
@@ -18672,6 +19108,13 @@ unsafe impl crate::CppCopyable for HandleStepFEANodeRepresentation {
 }
 
 impl HandleStepFEANodeRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEANodeRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_NodeRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepFEA_NodeRepresentation {
         unsafe {
@@ -19060,6 +19503,11 @@ unsafe impl crate::CppCopyable for HandleStepFEANodeSet {
 }
 
 impl HandleStepFEANodeSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepFEANodeSet_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_NodeSet
     pub fn get(&self) -> &crate::ffi_types::StepFEA_NodeSet {
         unsafe {
@@ -19429,6 +19877,15 @@ unsafe impl crate::CppCopyable for HandleStepFEANodeWithSolutionCoordinateSystem
 }
 
 impl HandleStepFEANodeWithSolutionCoordinateSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEANodeWithSolutionCoordinateSystem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_NodeWithSolutionCoordinateSystem
     pub fn get(&self) -> &crate::ffi_types::StepFEA_NodeWithSolutionCoordinateSystem {
         unsafe {
@@ -19860,6 +20317,13 @@ unsafe impl crate::CppCopyable for HandleStepFEANodeWithVector {
 }
 
 impl HandleStepFEANodeWithVector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEANodeWithVector_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_NodeWithVector
     pub fn get(&self) -> &crate::ffi_types::StepFEA_NodeWithVector {
         unsafe {
@@ -20137,6 +20601,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAParametricCurve3dElementCoordina
 }
 
 impl HandleStepFEAParametricCurve3dElementCoordinateDirection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAParametricCurve3dElementCoordinateDirection_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_ParametricCurve3dElementCoordinateDirection
     pub fn get(&self) -> &crate::ffi_types::StepFEA_ParametricCurve3dElementCoordinateDirection {
         unsafe {
@@ -20409,6 +20880,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAParametricCurve3dElementCoordina
 }
 
 impl HandleStepFEAParametricCurve3dElementCoordinateSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAParametricCurve3dElementCoordinateSystem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_ParametricCurve3dElementCoordinateSystem
     pub fn get(&self) -> &crate::ffi_types::StepFEA_ParametricCurve3dElementCoordinateSystem {
         unsafe {
@@ -20700,6 +21178,13 @@ unsafe impl crate::CppCopyable for HandleStepFEAParametricSurface3dElementCoordi
 }
 
 impl HandleStepFEAParametricSurface3dElementCoordinateSystem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAParametricSurface3dElementCoordinateSystem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_ParametricSurface3dElementCoordinateSystem
     pub fn get(&self) -> &crate::ffi_types::StepFEA_ParametricSurface3dElementCoordinateSystem {
         unsafe {
@@ -21169,6 +21654,15 @@ unsafe impl crate::CppCopyable for HandleStepFEASurface3dElementRepresentation {
 }
 
 impl HandleStepFEASurface3dElementRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEASurface3dElementRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_Surface3dElementRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepFEA_Surface3dElementRepresentation {
         unsafe {
@@ -22213,6 +22707,15 @@ unsafe impl crate::CppCopyable for HandleStepFEASymmetricTensor23dMember {
 }
 
 impl HandleStepFEASymmetricTensor23dMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEASymmetricTensor23dMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_SymmetricTensor23dMember
     pub fn get(&self) -> &crate::ffi_types::StepFEA_SymmetricTensor23dMember {
         unsafe {
@@ -23274,6 +23777,15 @@ unsafe impl crate::CppCopyable for HandleStepFEASymmetricTensor43dMember {
 }
 
 impl HandleStepFEASymmetricTensor43dMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEASymmetricTensor43dMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_SymmetricTensor43dMember
     pub fn get(&self) -> &crate::ffi_types::StepFEA_SymmetricTensor43dMember {
         unsafe {
@@ -23731,6 +24243,15 @@ unsafe impl crate::CppCopyable for HandleStepFEAVolume3dElementRepresentation {
 }
 
 impl HandleStepFEAVolume3dElementRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAVolume3dElementRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepFEA_Volume3dElementRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepFEA_Volume3dElementRepresentation {
         unsafe {

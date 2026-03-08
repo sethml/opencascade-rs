@@ -85,6 +85,10 @@ extern "C" {
     pub fn HandleXmlLDriversDocumentRetrievalDriver_clone(
         self_: *const HandleXmlLDriversDocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut HandleXmlLDriversDocumentRetrievalDriver>;
+    /// Check if Handle<XmlLDrivers_DocumentRetrievalDriver> is null
+    pub fn HandleXmlLDriversDocumentRetrievalDriver_is_null(
+        self_: *const HandleXmlLDriversDocumentRetrievalDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlLDrivers_DocumentRetrievalDriver
     pub fn HandleXmlLDriversDocumentRetrievalDriver_get(
         handle: *const HandleXmlLDriversDocumentRetrievalDriver,
@@ -233,6 +237,10 @@ extern "C" {
     pub fn HandleXmlLDriversDocumentStorageDriver_clone(
         self_: *const HandleXmlLDriversDocumentStorageDriver,
     ) -> crate::OcctResult<*mut HandleXmlLDriversDocumentStorageDriver>;
+    /// Check if Handle<XmlLDrivers_DocumentStorageDriver> is null
+    pub fn HandleXmlLDriversDocumentStorageDriver_is_null(
+        self_: *const HandleXmlLDriversDocumentStorageDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlLDrivers_DocumentStorageDriver
     pub fn HandleXmlLDriversDocumentStorageDriver_get(
         handle: *const HandleXmlLDriversDocumentStorageDriver,
@@ -404,6 +412,8 @@ extern "C" {
     pub fn HandleXmlMDFADriver_clone(
         self_: *const HandleXmlMDFADriver,
     ) -> crate::OcctResult<*mut HandleXmlMDFADriver>;
+    /// Check if Handle<XmlMDF_ADriver> is null
+    pub fn HandleXmlMDFADriver_is_null(self_: *const HandleXmlMDFADriver) -> bool;
     /// Dereference Handle to get *const XmlMDF_ADriver
     pub fn HandleXmlMDFADriver_get(
         handle: *const HandleXmlMDFADriver,
@@ -725,6 +735,8 @@ extern "C" {
     pub fn HandleXmlMDFADriverTable_clone(
         self_: *const HandleXmlMDFADriverTable,
     ) -> crate::OcctResult<*mut HandleXmlMDFADriverTable>;
+    /// Check if Handle<XmlMDF_ADriverTable> is null
+    pub fn HandleXmlMDFADriverTable_is_null(self_: *const HandleXmlMDFADriverTable) -> bool;
     /// Dereference Handle to get *const XmlMDF_ADriverTable
     pub fn HandleXmlMDFADriverTable_get(
         handle: *const HandleXmlMDFADriverTable,
@@ -830,6 +842,8 @@ extern "C" {
     pub fn HandleXmlMDFDerivedDriver_clone(
         self_: *const HandleXmlMDFDerivedDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDFDerivedDriver>;
+    /// Check if Handle<XmlMDF_DerivedDriver> is null
+    pub fn HandleXmlMDFDerivedDriver_is_null(self_: *const HandleXmlMDFDerivedDriver) -> bool;
     /// Dereference Handle to get *const XmlMDF_DerivedDriver
     pub fn HandleXmlMDFDerivedDriver_get(
         handle: *const HandleXmlMDFDerivedDriver,
@@ -951,6 +965,8 @@ extern "C" {
     pub fn HandleXmlMDFReferenceDriver_clone(
         self_: *const HandleXmlMDFReferenceDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDFReferenceDriver>;
+    /// Check if Handle<XmlMDF_ReferenceDriver> is null
+    pub fn HandleXmlMDFReferenceDriver_is_null(self_: *const HandleXmlMDFReferenceDriver) -> bool;
     /// Dereference Handle to get *const XmlMDF_ReferenceDriver
     pub fn HandleXmlMDFReferenceDriver_get(
         handle: *const HandleXmlMDFReferenceDriver,
@@ -1076,6 +1092,8 @@ extern "C" {
     pub fn HandleXmlMDFTagSourceDriver_clone(
         self_: *const HandleXmlMDFTagSourceDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDFTagSourceDriver>;
+    /// Check if Handle<XmlMDF_TagSourceDriver> is null
+    pub fn HandleXmlMDFTagSourceDriver_is_null(self_: *const HandleXmlMDFTagSourceDriver) -> bool;
     /// Dereference Handle to get *const XmlMDF_TagSourceDriver
     pub fn HandleXmlMDFTagSourceDriver_get(
         handle: *const HandleXmlMDFTagSourceDriver,
@@ -1204,6 +1222,10 @@ extern "C" {
     pub fn HandleXmlMDataStdAsciiStringDriver_clone(
         self_: *const HandleXmlMDataStdAsciiStringDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdAsciiStringDriver>;
+    /// Check if Handle<XmlMDataStd_AsciiStringDriver> is null
+    pub fn HandleXmlMDataStdAsciiStringDriver_is_null(
+        self_: *const HandleXmlMDataStdAsciiStringDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_AsciiStringDriver
     pub fn HandleXmlMDataStdAsciiStringDriver_get(
         handle: *const HandleXmlMDataStdAsciiStringDriver,
@@ -1332,6 +1354,10 @@ extern "C" {
     pub fn HandleXmlMDataStdBooleanArrayDriver_clone(
         self_: *const HandleXmlMDataStdBooleanArrayDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdBooleanArrayDriver>;
+    /// Check if Handle<XmlMDataStd_BooleanArrayDriver> is null
+    pub fn HandleXmlMDataStdBooleanArrayDriver_is_null(
+        self_: *const HandleXmlMDataStdBooleanArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_BooleanArrayDriver
     pub fn HandleXmlMDataStdBooleanArrayDriver_get(
         handle: *const HandleXmlMDataStdBooleanArrayDriver,
@@ -1460,6 +1486,10 @@ extern "C" {
     pub fn HandleXmlMDataStdBooleanListDriver_clone(
         self_: *const HandleXmlMDataStdBooleanListDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdBooleanListDriver>;
+    /// Check if Handle<XmlMDataStd_BooleanListDriver> is null
+    pub fn HandleXmlMDataStdBooleanListDriver_is_null(
+        self_: *const HandleXmlMDataStdBooleanListDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_BooleanListDriver
     pub fn HandleXmlMDataStdBooleanListDriver_get(
         handle: *const HandleXmlMDataStdBooleanListDriver,
@@ -1587,6 +1617,10 @@ extern "C" {
     pub fn HandleXmlMDataStdByteArrayDriver_clone(
         self_: *const HandleXmlMDataStdByteArrayDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdByteArrayDriver>;
+    /// Check if Handle<XmlMDataStd_ByteArrayDriver> is null
+    pub fn HandleXmlMDataStdByteArrayDriver_is_null(
+        self_: *const HandleXmlMDataStdByteArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_ByteArrayDriver
     pub fn HandleXmlMDataStdByteArrayDriver_get(
         handle: *const HandleXmlMDataStdByteArrayDriver,
@@ -1714,6 +1748,10 @@ extern "C" {
     pub fn HandleXmlMDataStdExpressionDriver_clone(
         self_: *const HandleXmlMDataStdExpressionDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdExpressionDriver>;
+    /// Check if Handle<XmlMDataStd_ExpressionDriver> is null
+    pub fn HandleXmlMDataStdExpressionDriver_is_null(
+        self_: *const HandleXmlMDataStdExpressionDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_ExpressionDriver
     pub fn HandleXmlMDataStdExpressionDriver_get(
         handle: *const HandleXmlMDataStdExpressionDriver,
@@ -1844,6 +1882,10 @@ extern "C" {
     pub fn HandleXmlMDataStdExtStringArrayDriver_clone(
         self_: *const HandleXmlMDataStdExtStringArrayDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdExtStringArrayDriver>;
+    /// Check if Handle<XmlMDataStd_ExtStringArrayDriver> is null
+    pub fn HandleXmlMDataStdExtStringArrayDriver_is_null(
+        self_: *const HandleXmlMDataStdExtStringArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_ExtStringArrayDriver
     pub fn HandleXmlMDataStdExtStringArrayDriver_get(
         handle: *const HandleXmlMDataStdExtStringArrayDriver,
@@ -1972,6 +2014,10 @@ extern "C" {
     pub fn HandleXmlMDataStdExtStringListDriver_clone(
         self_: *const HandleXmlMDataStdExtStringListDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdExtStringListDriver>;
+    /// Check if Handle<XmlMDataStd_ExtStringListDriver> is null
+    pub fn HandleXmlMDataStdExtStringListDriver_is_null(
+        self_: *const HandleXmlMDataStdExtStringListDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_ExtStringListDriver
     pub fn HandleXmlMDataStdExtStringListDriver_get(
         handle: *const HandleXmlMDataStdExtStringListDriver,
@@ -2104,6 +2150,10 @@ extern "C" {
     pub fn HandleXmlMDataStdGenericEmptyDriver_clone(
         self_: *const HandleXmlMDataStdGenericEmptyDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdGenericEmptyDriver>;
+    /// Check if Handle<XmlMDataStd_GenericEmptyDriver> is null
+    pub fn HandleXmlMDataStdGenericEmptyDriver_is_null(
+        self_: *const HandleXmlMDataStdGenericEmptyDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_GenericEmptyDriver
     pub fn HandleXmlMDataStdGenericEmptyDriver_get(
         handle: *const HandleXmlMDataStdGenericEmptyDriver,
@@ -2234,6 +2284,10 @@ extern "C" {
     pub fn HandleXmlMDataStdGenericExtStringDriver_clone(
         self_: *const HandleXmlMDataStdGenericExtStringDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdGenericExtStringDriver>;
+    /// Check if Handle<XmlMDataStd_GenericExtStringDriver> is null
+    pub fn HandleXmlMDataStdGenericExtStringDriver_is_null(
+        self_: *const HandleXmlMDataStdGenericExtStringDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_GenericExtStringDriver
     pub fn HandleXmlMDataStdGenericExtStringDriver_get(
         handle: *const HandleXmlMDataStdGenericExtStringDriver,
@@ -2358,6 +2412,10 @@ extern "C" {
     pub fn HandleXmlMDataStdIntPackedMapDriver_clone(
         self_: *const HandleXmlMDataStdIntPackedMapDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdIntPackedMapDriver>;
+    /// Check if Handle<XmlMDataStd_IntPackedMapDriver> is null
+    pub fn HandleXmlMDataStdIntPackedMapDriver_is_null(
+        self_: *const HandleXmlMDataStdIntPackedMapDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_IntPackedMapDriver
     pub fn HandleXmlMDataStdIntPackedMapDriver_get(
         handle: *const HandleXmlMDataStdIntPackedMapDriver,
@@ -2486,6 +2544,10 @@ extern "C" {
     pub fn HandleXmlMDataStdIntegerArrayDriver_clone(
         self_: *const HandleXmlMDataStdIntegerArrayDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdIntegerArrayDriver>;
+    /// Check if Handle<XmlMDataStd_IntegerArrayDriver> is null
+    pub fn HandleXmlMDataStdIntegerArrayDriver_is_null(
+        self_: *const HandleXmlMDataStdIntegerArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_IntegerArrayDriver
     pub fn HandleXmlMDataStdIntegerArrayDriver_get(
         handle: *const HandleXmlMDataStdIntegerArrayDriver,
@@ -2611,6 +2673,10 @@ extern "C" {
     pub fn HandleXmlMDataStdIntegerDriver_clone(
         self_: *const HandleXmlMDataStdIntegerDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdIntegerDriver>;
+    /// Check if Handle<XmlMDataStd_IntegerDriver> is null
+    pub fn HandleXmlMDataStdIntegerDriver_is_null(
+        self_: *const HandleXmlMDataStdIntegerDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_IntegerDriver
     pub fn HandleXmlMDataStdIntegerDriver_get(
         handle: *const HandleXmlMDataStdIntegerDriver,
@@ -2739,6 +2805,10 @@ extern "C" {
     pub fn HandleXmlMDataStdIntegerListDriver_clone(
         self_: *const HandleXmlMDataStdIntegerListDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdIntegerListDriver>;
+    /// Check if Handle<XmlMDataStd_IntegerListDriver> is null
+    pub fn HandleXmlMDataStdIntegerListDriver_is_null(
+        self_: *const HandleXmlMDataStdIntegerListDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_IntegerListDriver
     pub fn HandleXmlMDataStdIntegerListDriver_get(
         handle: *const HandleXmlMDataStdIntegerListDriver,
@@ -2866,6 +2936,10 @@ extern "C" {
     pub fn HandleXmlMDataStdNamedDataDriver_clone(
         self_: *const HandleXmlMDataStdNamedDataDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdNamedDataDriver>;
+    /// Check if Handle<XmlMDataStd_NamedDataDriver> is null
+    pub fn HandleXmlMDataStdNamedDataDriver_is_null(
+        self_: *const HandleXmlMDataStdNamedDataDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_NamedDataDriver
     pub fn HandleXmlMDataStdNamedDataDriver_get(
         handle: *const HandleXmlMDataStdNamedDataDriver,
@@ -2993,6 +3067,10 @@ extern "C" {
     pub fn HandleXmlMDataStdRealArrayDriver_clone(
         self_: *const HandleXmlMDataStdRealArrayDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdRealArrayDriver>;
+    /// Check if Handle<XmlMDataStd_RealArrayDriver> is null
+    pub fn HandleXmlMDataStdRealArrayDriver_is_null(
+        self_: *const HandleXmlMDataStdRealArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_RealArrayDriver
     pub fn HandleXmlMDataStdRealArrayDriver_get(
         handle: *const HandleXmlMDataStdRealArrayDriver,
@@ -3118,6 +3196,8 @@ extern "C" {
     pub fn HandleXmlMDataStdRealDriver_clone(
         self_: *const HandleXmlMDataStdRealDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdRealDriver>;
+    /// Check if Handle<XmlMDataStd_RealDriver> is null
+    pub fn HandleXmlMDataStdRealDriver_is_null(self_: *const HandleXmlMDataStdRealDriver) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_RealDriver
     pub fn HandleXmlMDataStdRealDriver_get(
         handle: *const HandleXmlMDataStdRealDriver,
@@ -3243,6 +3323,10 @@ extern "C" {
     pub fn HandleXmlMDataStdRealListDriver_clone(
         self_: *const HandleXmlMDataStdRealListDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdRealListDriver>;
+    /// Check if Handle<XmlMDataStd_RealListDriver> is null
+    pub fn HandleXmlMDataStdRealListDriver_is_null(
+        self_: *const HandleXmlMDataStdRealListDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_RealListDriver
     pub fn HandleXmlMDataStdRealListDriver_get(
         handle: *const HandleXmlMDataStdRealListDriver,
@@ -3373,6 +3457,10 @@ extern "C" {
     pub fn HandleXmlMDataStdReferenceArrayDriver_clone(
         self_: *const HandleXmlMDataStdReferenceArrayDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdReferenceArrayDriver>;
+    /// Check if Handle<XmlMDataStd_ReferenceArrayDriver> is null
+    pub fn HandleXmlMDataStdReferenceArrayDriver_is_null(
+        self_: *const HandleXmlMDataStdReferenceArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_ReferenceArrayDriver
     pub fn HandleXmlMDataStdReferenceArrayDriver_get(
         handle: *const HandleXmlMDataStdReferenceArrayDriver,
@@ -3501,6 +3589,10 @@ extern "C" {
     pub fn HandleXmlMDataStdReferenceListDriver_clone(
         self_: *const HandleXmlMDataStdReferenceListDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdReferenceListDriver>;
+    /// Check if Handle<XmlMDataStd_ReferenceListDriver> is null
+    pub fn HandleXmlMDataStdReferenceListDriver_is_null(
+        self_: *const HandleXmlMDataStdReferenceListDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_ReferenceListDriver
     pub fn HandleXmlMDataStdReferenceListDriver_get(
         handle: *const HandleXmlMDataStdReferenceListDriver,
@@ -3626,6 +3718,10 @@ extern "C" {
     pub fn HandleXmlMDataStdTreeNodeDriver_clone(
         self_: *const HandleXmlMDataStdTreeNodeDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdTreeNodeDriver>;
+    /// Check if Handle<XmlMDataStd_TreeNodeDriver> is null
+    pub fn HandleXmlMDataStdTreeNodeDriver_is_null(
+        self_: *const HandleXmlMDataStdTreeNodeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_TreeNodeDriver
     pub fn HandleXmlMDataStdTreeNodeDriver_get(
         handle: *const HandleXmlMDataStdTreeNodeDriver,
@@ -3753,6 +3849,10 @@ extern "C" {
     pub fn HandleXmlMDataStdUAttributeDriver_clone(
         self_: *const HandleXmlMDataStdUAttributeDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdUAttributeDriver>;
+    /// Check if Handle<XmlMDataStd_UAttributeDriver> is null
+    pub fn HandleXmlMDataStdUAttributeDriver_is_null(
+        self_: *const HandleXmlMDataStdUAttributeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_UAttributeDriver
     pub fn HandleXmlMDataStdUAttributeDriver_get(
         handle: *const HandleXmlMDataStdUAttributeDriver,
@@ -3878,6 +3978,10 @@ extern "C" {
     pub fn HandleXmlMDataStdVariableDriver_clone(
         self_: *const HandleXmlMDataStdVariableDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDataStdVariableDriver>;
+    /// Check if Handle<XmlMDataStd_VariableDriver> is null
+    pub fn HandleXmlMDataStdVariableDriver_is_null(
+        self_: *const HandleXmlMDataStdVariableDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMDataStd_VariableDriver
     pub fn HandleXmlMDataStdVariableDriver_get(
         handle: *const HandleXmlMDataStdVariableDriver,
@@ -4003,6 +4107,8 @@ extern "C" {
     pub fn HandleXmlMDocStdXLinkDriver_clone(
         self_: *const HandleXmlMDocStdXLinkDriver,
     ) -> crate::OcctResult<*mut HandleXmlMDocStdXLinkDriver>;
+    /// Check if Handle<XmlMDocStd_XLinkDriver> is null
+    pub fn HandleXmlMDocStdXLinkDriver_is_null(self_: *const HandleXmlMDocStdXLinkDriver) -> bool;
     /// Dereference Handle to get *const XmlMDocStd_XLinkDriver
     pub fn HandleXmlMDocStdXLinkDriver_get(
         handle: *const HandleXmlMDocStdXLinkDriver,
@@ -4130,6 +4236,10 @@ extern "C" {
     pub fn HandleXmlMFunctionFunctionDriver_clone(
         self_: *const HandleXmlMFunctionFunctionDriver,
     ) -> crate::OcctResult<*mut HandleXmlMFunctionFunctionDriver>;
+    /// Check if Handle<XmlMFunction_FunctionDriver> is null
+    pub fn HandleXmlMFunctionFunctionDriver_is_null(
+        self_: *const HandleXmlMFunctionFunctionDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMFunction_FunctionDriver
     pub fn HandleXmlMFunctionFunctionDriver_get(
         handle: *const HandleXmlMFunctionFunctionDriver,
@@ -4257,6 +4367,10 @@ extern "C" {
     pub fn HandleXmlMFunctionGraphNodeDriver_clone(
         self_: *const HandleXmlMFunctionGraphNodeDriver,
     ) -> crate::OcctResult<*mut HandleXmlMFunctionGraphNodeDriver>;
+    /// Check if Handle<XmlMFunction_GraphNodeDriver> is null
+    pub fn HandleXmlMFunctionGraphNodeDriver_is_null(
+        self_: *const HandleXmlMFunctionGraphNodeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMFunction_GraphNodeDriver
     pub fn HandleXmlMFunctionGraphNodeDriver_get(
         handle: *const HandleXmlMFunctionGraphNodeDriver,
@@ -4382,6 +4496,10 @@ extern "C" {
     pub fn HandleXmlMFunctionScopeDriver_clone(
         self_: *const HandleXmlMFunctionScopeDriver,
     ) -> crate::OcctResult<*mut HandleXmlMFunctionScopeDriver>;
+    /// Check if Handle<XmlMFunction_ScopeDriver> is null
+    pub fn HandleXmlMFunctionScopeDriver_is_null(
+        self_: *const HandleXmlMFunctionScopeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMFunction_ScopeDriver
     pub fn HandleXmlMFunctionScopeDriver_get(
         handle: *const HandleXmlMFunctionScopeDriver,

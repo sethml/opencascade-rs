@@ -74,6 +74,10 @@ extern "C" {
     pub fn HandleBinTObjDriversDocumentRetrievalDriver_clone(
         self_: *const HandleBinTObjDriversDocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut HandleBinTObjDriversDocumentRetrievalDriver>;
+    /// Check if Handle<BinTObjDrivers_DocumentRetrievalDriver> is null
+    pub fn HandleBinTObjDriversDocumentRetrievalDriver_is_null(
+        self_: *const HandleBinTObjDriversDocumentRetrievalDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_DocumentRetrievalDriver
     pub fn HandleBinTObjDriversDocumentRetrievalDriver_get(
         handle: *const HandleBinTObjDriversDocumentRetrievalDriver,
@@ -216,6 +220,10 @@ extern "C" {
     pub fn HandleBinTObjDriversDocumentStorageDriver_clone(
         self_: *const HandleBinTObjDriversDocumentStorageDriver,
     ) -> crate::OcctResult<*mut HandleBinTObjDriversDocumentStorageDriver>;
+    /// Check if Handle<BinTObjDrivers_DocumentStorageDriver> is null
+    pub fn HandleBinTObjDriversDocumentStorageDriver_is_null(
+        self_: *const HandleBinTObjDriversDocumentStorageDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_DocumentStorageDriver
     pub fn HandleBinTObjDriversDocumentStorageDriver_get(
         handle: *const HandleBinTObjDriversDocumentStorageDriver,
@@ -384,6 +392,10 @@ extern "C" {
     pub fn HandleBinTObjDriversIntSparseArrayDriver_clone(
         self_: *const HandleBinTObjDriversIntSparseArrayDriver,
     ) -> crate::OcctResult<*mut HandleBinTObjDriversIntSparseArrayDriver>;
+    /// Check if Handle<BinTObjDrivers_IntSparseArrayDriver> is null
+    pub fn HandleBinTObjDriversIntSparseArrayDriver_is_null(
+        self_: *const HandleBinTObjDriversIntSparseArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_IntSparseArrayDriver
     pub fn HandleBinTObjDriversIntSparseArrayDriver_get(
         handle: *const HandleBinTObjDriversIntSparseArrayDriver,
@@ -501,6 +513,10 @@ extern "C" {
     pub fn HandleBinTObjDriversModelDriver_clone(
         self_: *const HandleBinTObjDriversModelDriver,
     ) -> crate::OcctResult<*mut HandleBinTObjDriversModelDriver>;
+    /// Check if Handle<BinTObjDrivers_ModelDriver> is null
+    pub fn HandleBinTObjDriversModelDriver_is_null(
+        self_: *const HandleBinTObjDriversModelDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_ModelDriver
     pub fn HandleBinTObjDriversModelDriver_get(
         handle: *const HandleBinTObjDriversModelDriver,
@@ -620,6 +636,10 @@ extern "C" {
     pub fn HandleBinTObjDriversObjectDriver_clone(
         self_: *const HandleBinTObjDriversObjectDriver,
     ) -> crate::OcctResult<*mut HandleBinTObjDriversObjectDriver>;
+    /// Check if Handle<BinTObjDrivers_ObjectDriver> is null
+    pub fn HandleBinTObjDriversObjectDriver_is_null(
+        self_: *const HandleBinTObjDriversObjectDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_ObjectDriver
     pub fn HandleBinTObjDriversObjectDriver_get(
         handle: *const HandleBinTObjDriversObjectDriver,
@@ -740,6 +760,10 @@ extern "C" {
     pub fn HandleBinTObjDriversReferenceDriver_clone(
         self_: *const HandleBinTObjDriversReferenceDriver,
     ) -> crate::OcctResult<*mut HandleBinTObjDriversReferenceDriver>;
+    /// Check if Handle<BinTObjDrivers_ReferenceDriver> is null
+    pub fn HandleBinTObjDriversReferenceDriver_is_null(
+        self_: *const HandleBinTObjDriversReferenceDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_ReferenceDriver
     pub fn HandleBinTObjDriversReferenceDriver_get(
         handle: *const HandleBinTObjDriversReferenceDriver,
@@ -857,6 +881,10 @@ extern "C" {
     pub fn HandleBinTObjDriversXYZDriver_clone(
         self_: *const HandleBinTObjDriversXYZDriver,
     ) -> crate::OcctResult<*mut HandleBinTObjDriversXYZDriver>;
+    /// Check if Handle<BinTObjDrivers_XYZDriver> is null
+    pub fn HandleBinTObjDriversXYZDriver_is_null(
+        self_: *const HandleBinTObjDriversXYZDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_XYZDriver
     pub fn HandleBinTObjDriversXYZDriver_get(
         handle: *const HandleBinTObjDriversXYZDriver,

@@ -327,6 +327,11 @@ unsafe impl crate::CppCopyable for HandleStdLPersistentData {
 }
 
 impl HandleStdLPersistentData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKStdL::HandleStdLPersistentData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdLPersistent_Data
     pub fn get(&self) -> &crate::ffi_types::StdLPersistent_Data {
         unsafe {
@@ -685,6 +690,13 @@ unsafe impl crate::CppCopyable for HandleStdLPersistentDocument {
 }
 
 impl HandleStdLPersistentDocument {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdLPersistent_Document
     pub fn get(&self) -> &crate::ffi_types::StdLPersistent_Document {
         unsafe {
@@ -1048,6 +1060,15 @@ unsafe impl crate::CppCopyable for HandleStdLPersistentHArray1OfPersistent {
 }
 
 impl HandleStdLPersistentHArray1OfPersistent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdLPersistent_HArray1OfPersistent
     pub fn get(&self) -> &crate::ffi_types::StdLPersistent_HArray1OfPersistent {
         unsafe {
@@ -1306,6 +1327,15 @@ unsafe impl crate::CppCopyable for HandleStdLPersistentHArray2OfPersistent {
 }
 
 impl HandleStdLPersistentHArray2OfPersistent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdLPersistent_HArray2OfPersistent
     pub fn get(&self) -> &crate::ffi_types::StdLPersistent_HArray2OfPersistent {
         unsafe {

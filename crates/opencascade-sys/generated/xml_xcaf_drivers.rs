@@ -349,6 +349,15 @@ unsafe impl crate::CppCopyable for HandleXmlXCAFDriversDocumentRetrievalDriver {
 }
 
 impl HandleXmlXCAFDriversDocumentRetrievalDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentRetrievalDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlXCAFDrivers_DocumentRetrievalDriver
     pub fn get(&self) -> &crate::ffi_types::XmlXCAFDrivers_DocumentRetrievalDriver {
         unsafe {
@@ -756,6 +765,15 @@ unsafe impl crate::CppCopyable for HandleXmlXCAFDriversDocumentStorageDriver {
 }
 
 impl HandleXmlXCAFDriversDocumentStorageDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentStorageDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlXCAFDrivers_DocumentStorageDriver
     pub fn get(&self) -> &crate::ffi_types::XmlXCAFDrivers_DocumentStorageDriver {
         unsafe {

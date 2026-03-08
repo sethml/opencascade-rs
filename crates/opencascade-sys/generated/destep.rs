@@ -419,6 +419,13 @@ unsafe impl crate::CppCopyable for HandleDESTEPConfigurationNode {
 }
 
 impl HandleDESTEPConfigurationNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleDESTEPConfigurationNode_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying DESTEP_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DESTEP_ConfigurationNode {
         unsafe {
@@ -936,6 +943,11 @@ unsafe impl crate::CppCopyable for HandleDESTEPProvider {
 }
 
 impl HandleDESTEPProvider {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleDESTEPProvider_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying DESTEP_Provider
     pub fn get(&self) -> &crate::ffi_types::DESTEP_Provider {
         unsafe {

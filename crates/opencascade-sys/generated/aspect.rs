@@ -1815,6 +1815,15 @@ unsafe impl crate::CppCopyable for HandleAspectAspectFillAreaDefinitionError {
 }
 
 impl HandleAspectAspectFillAreaDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectAspectFillAreaDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_AspectFillAreaDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Aspect_AspectFillAreaDefinitionError {
         unsafe {
@@ -2214,6 +2223,15 @@ unsafe impl crate::CppCopyable for HandleAspectAspectLineDefinitionError {
 }
 
 impl HandleAspectAspectLineDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectAspectLineDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_AspectLineDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Aspect_AspectLineDefinitionError {
         unsafe {
@@ -2603,6 +2621,15 @@ unsafe impl crate::CppCopyable for HandleAspectAspectMarkerDefinitionError {
 }
 
 impl HandleAspectAspectMarkerDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectAspectMarkerDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_AspectMarkerDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Aspect_AspectMarkerDefinitionError {
         unsafe {
@@ -3153,6 +3180,13 @@ unsafe impl crate::CppCopyable for HandleAspectCircularGrid {
 }
 
 impl HandleAspectCircularGrid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectCircularGrid_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_CircularGrid
     pub fn get(&self) -> &crate::ffi_types::Aspect_CircularGrid {
         unsafe {
@@ -3447,6 +3481,13 @@ unsafe impl crate::CppCopyable for HandleAspectDisplayConnection {
 }
 
 impl HandleAspectDisplayConnection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectDisplayConnection_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_DisplayConnection
     pub fn get(&self) -> &crate::ffi_types::Aspect_DisplayConnection {
         unsafe {
@@ -3825,6 +3866,15 @@ unsafe impl crate::CppCopyable for HandleAspectDisplayConnectionDefinitionError 
 }
 
 impl HandleAspectDisplayConnectionDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectDisplayConnectionDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_DisplayConnectionDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Aspect_DisplayConnectionDefinitionError {
         unsafe {
@@ -4440,6 +4490,15 @@ unsafe impl crate::CppCopyable for HandleAspectGraphicDeviceDefinitionError {
 }
 
 impl HandleAspectGraphicDeviceDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectGraphicDeviceDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_GraphicDeviceDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Aspect_GraphicDeviceDefinitionError {
         unsafe {
@@ -4844,6 +4903,11 @@ unsafe impl crate::CppCopyable for HandleAspectGrid {
 }
 
 impl HandleAspectGrid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleAspectGrid_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_Grid
     pub fn get(&self) -> &crate::ffi_types::Aspect_Grid {
         unsafe {
@@ -5311,6 +5375,15 @@ unsafe impl crate::CppCopyable for HandleAspectIdentDefinitionError {
 }
 
 impl HandleAspectIdentDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectIdentDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_IdentDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Aspect_IdentDefinitionError {
         unsafe {
@@ -5879,6 +5952,13 @@ unsafe impl crate::CppCopyable for HandleAspectNeutralWindow {
 }
 
 impl HandleAspectNeutralWindow {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectNeutralWindow_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_NeutralWindow
     pub fn get(&self) -> &crate::ffi_types::Aspect_NeutralWindow {
         unsafe {
@@ -6559,6 +6639,13 @@ unsafe impl crate::CppCopyable for HandleAspectOpenVRSession {
 }
 
 impl HandleAspectOpenVRSession {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectOpenVRSession_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_OpenVRSession
     pub fn get(&self) -> &crate::ffi_types::Aspect_OpenVRSession {
         unsafe {
@@ -7074,6 +7161,13 @@ unsafe impl crate::CppCopyable for HandleAspectRectangularGrid {
 }
 
 impl HandleAspectRectangularGrid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectRectangularGrid_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_RectangularGrid
     pub fn get(&self) -> &crate::ffi_types::Aspect_RectangularGrid {
         unsafe {
@@ -7781,6 +7875,11 @@ unsafe impl crate::CppCopyable for HandleAspectVKeySet {
 }
 
 impl HandleAspectVKeySet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleAspectVKeySet_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_VKeySet
     pub fn get(&self) -> &crate::ffi_types::Aspect_VKeySet {
         unsafe {
@@ -8236,6 +8335,11 @@ unsafe impl crate::CppCopyable for HandleAspectWindow {
 }
 
 impl HandleAspectWindow {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleAspectWindow_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_Window
     pub fn get(&self) -> &crate::ffi_types::Aspect_Window {
         unsafe {
@@ -8648,6 +8752,15 @@ unsafe impl crate::CppCopyable for HandleAspectWindowDefinitionError {
 }
 
 impl HandleAspectWindowDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectWindowDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_WindowDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Aspect_WindowDefinitionError {
         unsafe {
@@ -9065,6 +9178,11 @@ unsafe impl crate::CppCopyable for HandleAspectWindowError {
 }
 
 impl HandleAspectWindowError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleAspectWindowError_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_WindowError
     pub fn get(&self) -> &crate::ffi_types::Aspect_WindowError {
         unsafe {
@@ -9881,6 +9999,11 @@ unsafe impl crate::CppCopyable for HandleAspectXRAction {
 }
 
 impl HandleAspectXRAction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleAspectXRAction_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_XRAction
     pub fn get(&self) -> &crate::ffi_types::Aspect_XRAction {
         unsafe {
@@ -10131,6 +10254,11 @@ unsafe impl crate::CppCopyable for HandleAspectXRActionSet {
 }
 
 impl HandleAspectXRActionSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleAspectXRActionSet_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_XRActionSet
     pub fn get(&self) -> &crate::ffi_types::Aspect_XRActionSet {
         unsafe {
@@ -10848,6 +10976,11 @@ unsafe impl crate::CppCopyable for HandleAspectXRSession {
 }
 
 impl HandleAspectXRSession {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleAspectXRSession_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Aspect_XRSession
     pub fn get(&self) -> &crate::ffi_types::Aspect_XRSession {
         unsafe {

@@ -1138,6 +1138,11 @@ unsafe impl crate::CppCopyable for HandleMoniToolCaseData {
 }
 
 impl HandleMoniToolCaseData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleMoniToolCaseData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MoniTool_CaseData
     pub fn get(&self) -> &crate::ffi_types::MoniTool_CaseData {
         unsafe {
@@ -1440,6 +1445,11 @@ unsafe impl crate::CppCopyable for HandleMoniToolElement {
 }
 
 impl HandleMoniToolElement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleMoniToolElement_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MoniTool_Element
     pub fn get(&self) -> &crate::ffi_types::MoniTool_Element {
         unsafe {
@@ -1724,6 +1734,15 @@ unsafe impl crate::CppCopyable for HandleMoniToolHSequenceOfElement {
 }
 
 impl HandleMoniToolHSequenceOfElement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolHSequenceOfElement_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying MoniTool_HSequenceOfElement
     pub fn get(&self) -> &crate::ffi_types::MoniTool_HSequenceOfElement {
         unsafe {
@@ -1943,6 +1962,11 @@ unsafe impl crate::CppCopyable for HandleMoniToolIntVal {
 }
 
 impl HandleMoniToolIntVal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleMoniToolIntVal_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MoniTool_IntVal
     pub fn get(&self) -> &crate::ffi_types::MoniTool_IntVal {
         unsafe {
@@ -2164,6 +2188,11 @@ unsafe impl crate::CppCopyable for HandleMoniToolRealVal {
 }
 
 impl HandleMoniToolRealVal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleMoniToolRealVal_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MoniTool_RealVal
     pub fn get(&self) -> &crate::ffi_types::MoniTool_RealVal {
         unsafe {
@@ -2435,6 +2464,11 @@ unsafe impl crate::CppCopyable for HandleMoniToolSignShape {
 }
 
 impl HandleMoniToolSignShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleMoniToolSignShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MoniTool_SignShape
     pub fn get(&self) -> &crate::ffi_types::MoniTool_SignShape {
         unsafe {
@@ -2680,6 +2714,11 @@ unsafe impl crate::CppCopyable for HandleMoniToolSignText {
 }
 
 impl HandleMoniToolSignText {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleMoniToolSignText_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MoniTool_SignText
     pub fn get(&self) -> &crate::ffi_types::MoniTool_SignText {
         unsafe {
@@ -3462,6 +3501,11 @@ unsafe impl crate::CppCopyable for HandleMoniToolTimer {
 }
 
 impl HandleMoniToolTimer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleMoniToolTimer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MoniTool_Timer
     pub fn get(&self) -> &crate::ffi_types::MoniTool_Timer {
         unsafe {
@@ -3842,6 +3886,13 @@ unsafe impl crate::CppCopyable for HandleMoniToolTransientElem {
 }
 
 impl HandleMoniToolTransientElem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolTransientElem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying MoniTool_TransientElem
     pub fn get(&self) -> &crate::ffi_types::MoniTool_TransientElem {
         unsafe {
@@ -4775,6 +4826,11 @@ unsafe impl crate::CppCopyable for HandleMoniToolTypedValue {
 }
 
 impl HandleMoniToolTypedValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleMoniToolTypedValue_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying MoniTool_TypedValue
     pub fn get(&self) -> &crate::ffi_types::MoniTool_TypedValue {
         unsafe {

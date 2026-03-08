@@ -706,6 +706,11 @@ unsafe impl crate::CppCopyable for HandleV3dAmbientLight {
 }
 
 impl HandleV3dAmbientLight {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dAmbientLight_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_AmbientLight
     pub fn get(&self) -> &crate::ffi_types::V3d_AmbientLight {
         unsafe {
@@ -1063,6 +1068,11 @@ unsafe impl crate::CppCopyable for HandleV3dBadValue {
 }
 
 impl HandleV3dBadValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dBadValue_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_BadValue
     pub fn get(&self) -> &crate::ffi_types::V3d_BadValue {
         unsafe {
@@ -1620,6 +1630,11 @@ unsafe impl crate::CppCopyable for HandleV3dCircularGrid {
 }
 
 impl HandleV3dCircularGrid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dCircularGrid_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_CircularGrid
     pub fn get(&self) -> &crate::ffi_types::V3d_CircularGrid {
         unsafe {
@@ -2220,6 +2235,11 @@ unsafe impl crate::CppCopyable for HandleV3dDirectionalLight {
 }
 
 impl HandleV3dDirectionalLight {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dDirectionalLight_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_DirectionalLight
     pub fn get(&self) -> &crate::ffi_types::V3d_DirectionalLight {
         unsafe {
@@ -2550,6 +2570,11 @@ unsafe impl crate::CppCopyable for HandleV3dPlane {
 }
 
 impl HandleV3dPlane {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dPlane_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_Plane
     pub fn get(&self) -> &crate::ffi_types::V3d_Plane {
         unsafe {
@@ -3108,6 +3133,11 @@ unsafe impl crate::CppCopyable for HandleV3dPositionLight {
 }
 
 impl HandleV3dPositionLight {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dPositionLight_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_PositionLight
     pub fn get(&self) -> &crate::ffi_types::V3d_PositionLight {
         unsafe {
@@ -3731,6 +3761,11 @@ unsafe impl crate::CppCopyable for HandleV3dPositionalLight {
 }
 
 impl HandleV3dPositionalLight {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dPositionalLight_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_PositionalLight
     pub fn get(&self) -> &crate::ffi_types::V3d_PositionalLight {
         unsafe {
@@ -4303,6 +4338,11 @@ unsafe impl crate::CppCopyable for HandleV3dRectangularGrid {
 }
 
 impl HandleV3dRectangularGrid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dRectangularGrid_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_RectangularGrid
     pub fn get(&self) -> &crate::ffi_types::V3d_RectangularGrid {
         unsafe {
@@ -4919,6 +4959,11 @@ unsafe impl crate::CppCopyable for HandleV3dSpotLight {
 }
 
 impl HandleV3dSpotLight {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dSpotLight_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_SpotLight
     pub fn get(&self) -> &crate::ffi_types::V3d_SpotLight {
         unsafe {
@@ -5373,6 +5418,11 @@ unsafe impl crate::CppCopyable for HandleV3dTrihedron {
 }
 
 impl HandleV3dTrihedron {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dTrihedron_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_Trihedron
     pub fn get(&self) -> &crate::ffi_types::V3d_Trihedron {
         unsafe {
@@ -5683,6 +5733,11 @@ unsafe impl crate::CppCopyable for HandleV3dUnMapped {
 }
 
 impl HandleV3dUnMapped {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dUnMapped_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_UnMapped
     pub fn get(&self) -> &crate::ffi_types::V3d_UnMapped {
         unsafe {
@@ -8177,6 +8232,11 @@ unsafe impl crate::CppCopyable for HandleV3dView {
 }
 
 impl HandleV3dView {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dView_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_View
     pub fn get(&self) -> &crate::ffi_types::V3d_View {
         unsafe {
@@ -9368,6 +9428,11 @@ unsafe impl crate::CppCopyable for HandleV3dViewer {
 }
 
 impl HandleV3dViewer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleV3dViewer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying V3d_Viewer
     pub fn get(&self) -> &crate::ffi_types::V3d_Viewer {
         unsafe {

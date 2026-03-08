@@ -316,6 +316,11 @@ unsafe impl crate::CppCopyable for HandleBVHBuildThread {
 }
 
 impl HandleBVHBuildThread {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleBVHBuildThread_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BVH_BuildThread
     pub fn get(&self) -> &crate::ffi_types::BVH_BuildThread {
         unsafe {
@@ -545,6 +550,11 @@ unsafe impl crate::CppCopyable for HandleBVHBuilderTransient {
 }
 
 impl HandleBVHBuilderTransient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleBVHBuilderTransient_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BVH_BuilderTransient
     pub fn get(&self) -> &crate::ffi_types::BVH_BuilderTransient {
         unsafe {
@@ -774,6 +784,11 @@ unsafe impl crate::CppCopyable for HandleBVHObjectTransient {
 }
 
 impl HandleBVHObjectTransient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleBVHObjectTransient_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BVH_ObjectTransient
     pub fn get(&self) -> &crate::ffi_types::BVH_ObjectTransient {
         unsafe {
@@ -947,6 +962,11 @@ unsafe impl crate::CppCopyable for HandleBVHProperties {
 }
 
 impl HandleBVHProperties {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleBVHProperties_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BVH_Properties
     pub fn get(&self) -> &crate::ffi_types::BVH_Properties {
         unsafe {
@@ -1141,6 +1161,11 @@ unsafe impl crate::CppCopyable for HandleBVHTreeBaseTransient {
 }
 
 impl HandleBVHTreeBaseTransient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleBVHTreeBaseTransient_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BVH_TreeBaseTransient
     pub fn get(&self) -> &crate::ffi_types::BVH_TreeBaseTransient {
         unsafe {

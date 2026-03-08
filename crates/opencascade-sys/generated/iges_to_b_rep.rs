@@ -534,6 +534,11 @@ unsafe impl crate::CppCopyable for HandleIGESToBRepActor {
 }
 
 impl HandleIGESToBRepActor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESToBRep_Actor
     pub fn get(&self) -> &crate::ffi_types::IGESToBRep_Actor {
         unsafe {
@@ -785,6 +790,13 @@ unsafe impl crate::CppCopyable for HandleIGESToBRepAlgoContainer {
 }
 
 impl HandleIGESToBRepAlgoContainer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESToBRep_AlgoContainer
     pub fn get(&self) -> &crate::ffi_types::IGESToBRep_AlgoContainer {
         unsafe {
@@ -3734,6 +3746,13 @@ unsafe impl crate::CppCopyable for HandleIGESToBRepIGESBoundary {
 }
 
 impl HandleIGESToBRepIGESBoundary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESToBRepIGESBoundary_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESToBRep_IGESBoundary
     pub fn get(&self) -> &crate::ffi_types::IGESToBRep_IGESBoundary {
         unsafe {
@@ -4252,6 +4271,13 @@ unsafe impl crate::CppCopyable for HandleIGESToBRepToolContainer {
 }
 
 impl HandleIGESToBRepToolContainer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESToBRepToolContainer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESToBRep_ToolContainer
     pub fn get(&self) -> &crate::ffi_types::IGESToBRep_ToolContainer {
         unsafe {

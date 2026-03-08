@@ -291,6 +291,11 @@ unsafe impl crate::CppCopyable for HandleGccIntBCirc {
 }
 
 impl HandleGccIntBCirc {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBCirc_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GccInt_BCirc
     pub fn get(&self) -> &crate::ffi_types::GccInt_BCirc {
         unsafe {
@@ -588,6 +593,11 @@ unsafe impl crate::CppCopyable for HandleGccIntBElips {
 }
 
 impl HandleGccIntBElips {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBElips_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GccInt_BElips
     pub fn get(&self) -> &crate::ffi_types::GccInt_BElips {
         unsafe {
@@ -883,6 +893,11 @@ unsafe impl crate::CppCopyable for HandleGccIntBHyper {
 }
 
 impl HandleGccIntBHyper {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBHyper_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GccInt_BHyper
     pub fn get(&self) -> &crate::ffi_types::GccInt_BHyper {
         unsafe {
@@ -1174,6 +1189,11 @@ unsafe impl crate::CppCopyable for HandleGccIntBLine {
 }
 
 impl HandleGccIntBLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GccInt_BLine
     pub fn get(&self) -> &crate::ffi_types::GccInt_BLine {
         unsafe {
@@ -1471,6 +1491,11 @@ unsafe impl crate::CppCopyable for HandleGccIntBParab {
 }
 
 impl HandleGccIntBParab {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBParab_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GccInt_BParab
     pub fn get(&self) -> &crate::ffi_types::GccInt_BParab {
         unsafe {
@@ -1767,6 +1792,11 @@ unsafe impl crate::CppCopyable for HandleGccIntBPoint {
 }
 
 impl HandleGccIntBPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBPoint_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GccInt_BPoint
     pub fn get(&self) -> &crate::ffi_types::GccInt_BPoint {
         unsafe {
@@ -2048,6 +2078,11 @@ unsafe impl crate::CppCopyable for HandleGccIntBisec {
 }
 
 impl HandleGccIntBisec {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying GccInt_Bisec
     pub fn get(&self) -> &crate::ffi_types::GccInt_Bisec {
         unsafe {

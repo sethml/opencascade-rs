@@ -85,6 +85,10 @@ extern "C" {
     pub fn HandleBinLDriversDocumentRetrievalDriver_clone(
         self_: *const HandleBinLDriversDocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut HandleBinLDriversDocumentRetrievalDriver>;
+    /// Check if Handle<BinLDrivers_DocumentRetrievalDriver> is null
+    pub fn HandleBinLDriversDocumentRetrievalDriver_is_null(
+        self_: *const HandleBinLDriversDocumentRetrievalDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinLDrivers_DocumentRetrievalDriver
     pub fn HandleBinLDriversDocumentRetrievalDriver_get(
         handle: *const HandleBinLDriversDocumentRetrievalDriver,
@@ -297,6 +301,10 @@ extern "C" {
     pub fn HandleBinLDriversDocumentStorageDriver_clone(
         self_: *const HandleBinLDriversDocumentStorageDriver,
     ) -> crate::OcctResult<*mut HandleBinLDriversDocumentStorageDriver>;
+    /// Check if Handle<BinLDrivers_DocumentStorageDriver> is null
+    pub fn HandleBinLDriversDocumentStorageDriver_is_null(
+        self_: *const HandleBinLDriversDocumentStorageDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinLDrivers_DocumentStorageDriver
     pub fn HandleBinLDriversDocumentStorageDriver_get(
         handle: *const HandleBinLDriversDocumentStorageDriver,
@@ -445,6 +453,8 @@ extern "C" {
     pub fn HandleBinMDFADriver_clone(
         self_: *const HandleBinMDFADriver,
     ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    /// Check if Handle<BinMDF_ADriver> is null
+    pub fn HandleBinMDFADriver_is_null(self_: *const HandleBinMDFADriver) -> bool;
     /// Dereference Handle to get *const BinMDF_ADriver
     pub fn HandleBinMDFADriver_get(
         handle: *const HandleBinMDFADriver,
@@ -776,6 +786,8 @@ extern "C" {
     pub fn HandleBinMDFADriverTable_clone(
         self_: *const HandleBinMDFADriverTable,
     ) -> crate::OcctResult<*mut HandleBinMDFADriverTable>;
+    /// Check if Handle<BinMDF_ADriverTable> is null
+    pub fn HandleBinMDFADriverTable_is_null(self_: *const HandleBinMDFADriverTable) -> bool;
     /// Dereference Handle to get *const BinMDF_ADriverTable
     pub fn HandleBinMDFADriverTable_get(
         handle: *const HandleBinMDFADriverTable,
@@ -877,6 +889,8 @@ extern "C" {
     pub fn HandleBinMDFDerivedDriver_clone(
         self_: *const HandleBinMDFDerivedDriver,
     ) -> crate::OcctResult<*mut HandleBinMDFDerivedDriver>;
+    /// Check if Handle<BinMDF_DerivedDriver> is null
+    pub fn HandleBinMDFDerivedDriver_is_null(self_: *const HandleBinMDFDerivedDriver) -> bool;
     /// Dereference Handle to get *const BinMDF_DerivedDriver
     pub fn HandleBinMDFDerivedDriver_get(
         handle: *const HandleBinMDFDerivedDriver,
@@ -994,6 +1008,8 @@ extern "C" {
     pub fn HandleBinMDFReferenceDriver_clone(
         self_: *const HandleBinMDFReferenceDriver,
     ) -> crate::OcctResult<*mut HandleBinMDFReferenceDriver>;
+    /// Check if Handle<BinMDF_ReferenceDriver> is null
+    pub fn HandleBinMDFReferenceDriver_is_null(self_: *const HandleBinMDFReferenceDriver) -> bool;
     /// Dereference Handle to get *const BinMDF_ReferenceDriver
     pub fn HandleBinMDFReferenceDriver_get(
         handle: *const HandleBinMDFReferenceDriver,
@@ -1111,6 +1127,8 @@ extern "C" {
     pub fn HandleBinMDFTagSourceDriver_clone(
         self_: *const HandleBinMDFTagSourceDriver,
     ) -> crate::OcctResult<*mut HandleBinMDFTagSourceDriver>;
+    /// Check if Handle<BinMDF_TagSourceDriver> is null
+    pub fn HandleBinMDFTagSourceDriver_is_null(self_: *const HandleBinMDFTagSourceDriver) -> bool;
     /// Dereference Handle to get *const BinMDF_TagSourceDriver
     pub fn HandleBinMDFTagSourceDriver_get(
         handle: *const HandleBinMDFTagSourceDriver,
@@ -1231,6 +1249,10 @@ extern "C" {
     pub fn HandleBinMDataStdAsciiStringDriver_clone(
         self_: *const HandleBinMDataStdAsciiStringDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdAsciiStringDriver>;
+    /// Check if Handle<BinMDataStd_AsciiStringDriver> is null
+    pub fn HandleBinMDataStdAsciiStringDriver_is_null(
+        self_: *const HandleBinMDataStdAsciiStringDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_AsciiStringDriver
     pub fn HandleBinMDataStdAsciiStringDriver_get(
         handle: *const HandleBinMDataStdAsciiStringDriver,
@@ -1351,6 +1373,10 @@ extern "C" {
     pub fn HandleBinMDataStdBooleanArrayDriver_clone(
         self_: *const HandleBinMDataStdBooleanArrayDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdBooleanArrayDriver>;
+    /// Check if Handle<BinMDataStd_BooleanArrayDriver> is null
+    pub fn HandleBinMDataStdBooleanArrayDriver_is_null(
+        self_: *const HandleBinMDataStdBooleanArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_BooleanArrayDriver
     pub fn HandleBinMDataStdBooleanArrayDriver_get(
         handle: *const HandleBinMDataStdBooleanArrayDriver,
@@ -1471,6 +1497,10 @@ extern "C" {
     pub fn HandleBinMDataStdBooleanListDriver_clone(
         self_: *const HandleBinMDataStdBooleanListDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdBooleanListDriver>;
+    /// Check if Handle<BinMDataStd_BooleanListDriver> is null
+    pub fn HandleBinMDataStdBooleanListDriver_is_null(
+        self_: *const HandleBinMDataStdBooleanListDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_BooleanListDriver
     pub fn HandleBinMDataStdBooleanListDriver_get(
         handle: *const HandleBinMDataStdBooleanListDriver,
@@ -1590,6 +1620,10 @@ extern "C" {
     pub fn HandleBinMDataStdByteArrayDriver_clone(
         self_: *const HandleBinMDataStdByteArrayDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdByteArrayDriver>;
+    /// Check if Handle<BinMDataStd_ByteArrayDriver> is null
+    pub fn HandleBinMDataStdByteArrayDriver_is_null(
+        self_: *const HandleBinMDataStdByteArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_ByteArrayDriver
     pub fn HandleBinMDataStdByteArrayDriver_get(
         handle: *const HandleBinMDataStdByteArrayDriver,
@@ -1709,6 +1743,10 @@ extern "C" {
     pub fn HandleBinMDataStdExpressionDriver_clone(
         self_: *const HandleBinMDataStdExpressionDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdExpressionDriver>;
+    /// Check if Handle<BinMDataStd_ExpressionDriver> is null
+    pub fn HandleBinMDataStdExpressionDriver_is_null(
+        self_: *const HandleBinMDataStdExpressionDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_ExpressionDriver
     pub fn HandleBinMDataStdExpressionDriver_get(
         handle: *const HandleBinMDataStdExpressionDriver,
@@ -1831,6 +1869,10 @@ extern "C" {
     pub fn HandleBinMDataStdExtStringArrayDriver_clone(
         self_: *const HandleBinMDataStdExtStringArrayDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdExtStringArrayDriver>;
+    /// Check if Handle<BinMDataStd_ExtStringArrayDriver> is null
+    pub fn HandleBinMDataStdExtStringArrayDriver_is_null(
+        self_: *const HandleBinMDataStdExtStringArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_ExtStringArrayDriver
     pub fn HandleBinMDataStdExtStringArrayDriver_get(
         handle: *const HandleBinMDataStdExtStringArrayDriver,
@@ -1951,6 +1993,10 @@ extern "C" {
     pub fn HandleBinMDataStdExtStringListDriver_clone(
         self_: *const HandleBinMDataStdExtStringListDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdExtStringListDriver>;
+    /// Check if Handle<BinMDataStd_ExtStringListDriver> is null
+    pub fn HandleBinMDataStdExtStringListDriver_is_null(
+        self_: *const HandleBinMDataStdExtStringListDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_ExtStringListDriver
     pub fn HandleBinMDataStdExtStringListDriver_get(
         handle: *const HandleBinMDataStdExtStringListDriver,
@@ -2075,6 +2121,10 @@ extern "C" {
     pub fn HandleBinMDataStdGenericEmptyDriver_clone(
         self_: *const HandleBinMDataStdGenericEmptyDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdGenericEmptyDriver>;
+    /// Check if Handle<BinMDataStd_GenericEmptyDriver> is null
+    pub fn HandleBinMDataStdGenericEmptyDriver_is_null(
+        self_: *const HandleBinMDataStdGenericEmptyDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_GenericEmptyDriver
     pub fn HandleBinMDataStdGenericEmptyDriver_get(
         handle: *const HandleBinMDataStdGenericEmptyDriver,
@@ -2197,6 +2247,10 @@ extern "C" {
     pub fn HandleBinMDataStdGenericExtStringDriver_clone(
         self_: *const HandleBinMDataStdGenericExtStringDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdGenericExtStringDriver>;
+    /// Check if Handle<BinMDataStd_GenericExtStringDriver> is null
+    pub fn HandleBinMDataStdGenericExtStringDriver_is_null(
+        self_: *const HandleBinMDataStdGenericExtStringDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_GenericExtStringDriver
     pub fn HandleBinMDataStdGenericExtStringDriver_get(
         handle: *const HandleBinMDataStdGenericExtStringDriver,
@@ -2313,6 +2367,10 @@ extern "C" {
     pub fn HandleBinMDataStdIntPackedMapDriver_clone(
         self_: *const HandleBinMDataStdIntPackedMapDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdIntPackedMapDriver>;
+    /// Check if Handle<BinMDataStd_IntPackedMapDriver> is null
+    pub fn HandleBinMDataStdIntPackedMapDriver_is_null(
+        self_: *const HandleBinMDataStdIntPackedMapDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_IntPackedMapDriver
     pub fn HandleBinMDataStdIntPackedMapDriver_get(
         handle: *const HandleBinMDataStdIntPackedMapDriver,
@@ -2433,6 +2491,10 @@ extern "C" {
     pub fn HandleBinMDataStdIntegerArrayDriver_clone(
         self_: *const HandleBinMDataStdIntegerArrayDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdIntegerArrayDriver>;
+    /// Check if Handle<BinMDataStd_IntegerArrayDriver> is null
+    pub fn HandleBinMDataStdIntegerArrayDriver_is_null(
+        self_: *const HandleBinMDataStdIntegerArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_IntegerArrayDriver
     pub fn HandleBinMDataStdIntegerArrayDriver_get(
         handle: *const HandleBinMDataStdIntegerArrayDriver,
@@ -2550,6 +2612,10 @@ extern "C" {
     pub fn HandleBinMDataStdIntegerDriver_clone(
         self_: *const HandleBinMDataStdIntegerDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdIntegerDriver>;
+    /// Check if Handle<BinMDataStd_IntegerDriver> is null
+    pub fn HandleBinMDataStdIntegerDriver_is_null(
+        self_: *const HandleBinMDataStdIntegerDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_IntegerDriver
     pub fn HandleBinMDataStdIntegerDriver_get(
         handle: *const HandleBinMDataStdIntegerDriver,
@@ -2670,6 +2736,10 @@ extern "C" {
     pub fn HandleBinMDataStdIntegerListDriver_clone(
         self_: *const HandleBinMDataStdIntegerListDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdIntegerListDriver>;
+    /// Check if Handle<BinMDataStd_IntegerListDriver> is null
+    pub fn HandleBinMDataStdIntegerListDriver_is_null(
+        self_: *const HandleBinMDataStdIntegerListDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_IntegerListDriver
     pub fn HandleBinMDataStdIntegerListDriver_get(
         handle: *const HandleBinMDataStdIntegerListDriver,
@@ -2789,6 +2859,10 @@ extern "C" {
     pub fn HandleBinMDataStdNamedDataDriver_clone(
         self_: *const HandleBinMDataStdNamedDataDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdNamedDataDriver>;
+    /// Check if Handle<BinMDataStd_NamedDataDriver> is null
+    pub fn HandleBinMDataStdNamedDataDriver_is_null(
+        self_: *const HandleBinMDataStdNamedDataDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_NamedDataDriver
     pub fn HandleBinMDataStdNamedDataDriver_get(
         handle: *const HandleBinMDataStdNamedDataDriver,
@@ -2908,6 +2982,10 @@ extern "C" {
     pub fn HandleBinMDataStdRealArrayDriver_clone(
         self_: *const HandleBinMDataStdRealArrayDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdRealArrayDriver>;
+    /// Check if Handle<BinMDataStd_RealArrayDriver> is null
+    pub fn HandleBinMDataStdRealArrayDriver_is_null(
+        self_: *const HandleBinMDataStdRealArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_RealArrayDriver
     pub fn HandleBinMDataStdRealArrayDriver_get(
         handle: *const HandleBinMDataStdRealArrayDriver,
@@ -3025,6 +3103,8 @@ extern "C" {
     pub fn HandleBinMDataStdRealDriver_clone(
         self_: *const HandleBinMDataStdRealDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdRealDriver>;
+    /// Check if Handle<BinMDataStd_RealDriver> is null
+    pub fn HandleBinMDataStdRealDriver_is_null(self_: *const HandleBinMDataStdRealDriver) -> bool;
     /// Dereference Handle to get *const BinMDataStd_RealDriver
     pub fn HandleBinMDataStdRealDriver_get(
         handle: *const HandleBinMDataStdRealDriver,
@@ -3142,6 +3222,10 @@ extern "C" {
     pub fn HandleBinMDataStdRealListDriver_clone(
         self_: *const HandleBinMDataStdRealListDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdRealListDriver>;
+    /// Check if Handle<BinMDataStd_RealListDriver> is null
+    pub fn HandleBinMDataStdRealListDriver_is_null(
+        self_: *const HandleBinMDataStdRealListDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_RealListDriver
     pub fn HandleBinMDataStdRealListDriver_get(
         handle: *const HandleBinMDataStdRealListDriver,
@@ -3264,6 +3348,10 @@ extern "C" {
     pub fn HandleBinMDataStdReferenceArrayDriver_clone(
         self_: *const HandleBinMDataStdReferenceArrayDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdReferenceArrayDriver>;
+    /// Check if Handle<BinMDataStd_ReferenceArrayDriver> is null
+    pub fn HandleBinMDataStdReferenceArrayDriver_is_null(
+        self_: *const HandleBinMDataStdReferenceArrayDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_ReferenceArrayDriver
     pub fn HandleBinMDataStdReferenceArrayDriver_get(
         handle: *const HandleBinMDataStdReferenceArrayDriver,
@@ -3384,6 +3472,10 @@ extern "C" {
     pub fn HandleBinMDataStdReferenceListDriver_clone(
         self_: *const HandleBinMDataStdReferenceListDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdReferenceListDriver>;
+    /// Check if Handle<BinMDataStd_ReferenceListDriver> is null
+    pub fn HandleBinMDataStdReferenceListDriver_is_null(
+        self_: *const HandleBinMDataStdReferenceListDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_ReferenceListDriver
     pub fn HandleBinMDataStdReferenceListDriver_get(
         handle: *const HandleBinMDataStdReferenceListDriver,
@@ -3501,6 +3593,10 @@ extern "C" {
     pub fn HandleBinMDataStdTreeNodeDriver_clone(
         self_: *const HandleBinMDataStdTreeNodeDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdTreeNodeDriver>;
+    /// Check if Handle<BinMDataStd_TreeNodeDriver> is null
+    pub fn HandleBinMDataStdTreeNodeDriver_is_null(
+        self_: *const HandleBinMDataStdTreeNodeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_TreeNodeDriver
     pub fn HandleBinMDataStdTreeNodeDriver_get(
         handle: *const HandleBinMDataStdTreeNodeDriver,
@@ -3620,6 +3716,10 @@ extern "C" {
     pub fn HandleBinMDataStdUAttributeDriver_clone(
         self_: *const HandleBinMDataStdUAttributeDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdUAttributeDriver>;
+    /// Check if Handle<BinMDataStd_UAttributeDriver> is null
+    pub fn HandleBinMDataStdUAttributeDriver_is_null(
+        self_: *const HandleBinMDataStdUAttributeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_UAttributeDriver
     pub fn HandleBinMDataStdUAttributeDriver_get(
         handle: *const HandleBinMDataStdUAttributeDriver,
@@ -3737,6 +3837,10 @@ extern "C" {
     pub fn HandleBinMDataStdVariableDriver_clone(
         self_: *const HandleBinMDataStdVariableDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataStdVariableDriver>;
+    /// Check if Handle<BinMDataStd_VariableDriver> is null
+    pub fn HandleBinMDataStdVariableDriver_is_null(
+        self_: *const HandleBinMDataStdVariableDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataStd_VariableDriver
     pub fn HandleBinMDataStdVariableDriver_get(
         handle: *const HandleBinMDataStdVariableDriver,
@@ -3854,6 +3958,8 @@ extern "C" {
     pub fn HandleBinMDocStdXLinkDriver_clone(
         self_: *const HandleBinMDocStdXLinkDriver,
     ) -> crate::OcctResult<*mut HandleBinMDocStdXLinkDriver>;
+    /// Check if Handle<BinMDocStd_XLinkDriver> is null
+    pub fn HandleBinMDocStdXLinkDriver_is_null(self_: *const HandleBinMDocStdXLinkDriver) -> bool;
     /// Dereference Handle to get *const BinMDocStd_XLinkDriver
     pub fn HandleBinMDocStdXLinkDriver_get(
         handle: *const HandleBinMDocStdXLinkDriver,
@@ -3973,6 +4079,10 @@ extern "C" {
     pub fn HandleBinMFunctionFunctionDriver_clone(
         self_: *const HandleBinMFunctionFunctionDriver,
     ) -> crate::OcctResult<*mut HandleBinMFunctionFunctionDriver>;
+    /// Check if Handle<BinMFunction_FunctionDriver> is null
+    pub fn HandleBinMFunctionFunctionDriver_is_null(
+        self_: *const HandleBinMFunctionFunctionDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMFunction_FunctionDriver
     pub fn HandleBinMFunctionFunctionDriver_get(
         handle: *const HandleBinMFunctionFunctionDriver,
@@ -4092,6 +4202,10 @@ extern "C" {
     pub fn HandleBinMFunctionGraphNodeDriver_clone(
         self_: *const HandleBinMFunctionGraphNodeDriver,
     ) -> crate::OcctResult<*mut HandleBinMFunctionGraphNodeDriver>;
+    /// Check if Handle<BinMFunction_GraphNodeDriver> is null
+    pub fn HandleBinMFunctionGraphNodeDriver_is_null(
+        self_: *const HandleBinMFunctionGraphNodeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMFunction_GraphNodeDriver
     pub fn HandleBinMFunctionGraphNodeDriver_get(
         handle: *const HandleBinMFunctionGraphNodeDriver,
@@ -4209,6 +4323,10 @@ extern "C" {
     pub fn HandleBinMFunctionScopeDriver_clone(
         self_: *const HandleBinMFunctionScopeDriver,
     ) -> crate::OcctResult<*mut HandleBinMFunctionScopeDriver>;
+    /// Check if Handle<BinMFunction_ScopeDriver> is null
+    pub fn HandleBinMFunctionScopeDriver_is_null(
+        self_: *const HandleBinMFunctionScopeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMFunction_ScopeDriver
     pub fn HandleBinMFunctionScopeDriver_get(
         handle: *const HandleBinMFunctionScopeDriver,
@@ -4586,6 +4704,8 @@ extern "C" {
     pub fn HandleBinObjMgtPosition_clone(
         self_: *const HandleBinObjMgtPosition,
     ) -> crate::OcctResult<*mut HandleBinObjMgtPosition>;
+    /// Check if Handle<BinObjMgt_Position> is null
+    pub fn HandleBinObjMgtPosition_is_null(self_: *const HandleBinObjMgtPosition) -> bool;
     /// Dereference Handle to get *const BinObjMgt_Position
     pub fn HandleBinObjMgtPosition_get(
         handle: *const HandleBinObjMgtPosition,

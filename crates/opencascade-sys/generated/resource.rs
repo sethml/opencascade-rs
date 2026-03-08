@@ -604,6 +604,11 @@ unsafe impl crate::CppCopyable for HandleResourceManager {
 }
 
 impl HandleResourceManager {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleResourceManager_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Resource_Manager
     pub fn get(&self) -> &crate::ffi_types::Resource_Manager {
         unsafe {
@@ -971,6 +976,13 @@ unsafe impl crate::CppCopyable for HandleResourceNoSuchResource {
 }
 
 impl HandleResourceNoSuchResource {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleResourceNoSuchResource_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Resource_NoSuchResource
     pub fn get(&self) -> &crate::ffi_types::Resource_NoSuchResource {
         unsafe {

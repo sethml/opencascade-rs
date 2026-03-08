@@ -1323,6 +1323,8 @@ extern "C" {
     pub fn HandleIFSelectAct_clone(
         self_: *const HandleIFSelectAct,
     ) -> crate::OcctResult<*mut HandleIFSelectAct>;
+    /// Check if Handle<IFSelect_Act> is null
+    pub fn HandleIFSelectAct_is_null(self_: *const HandleIFSelectAct) -> bool;
     /// Dereference Handle to get *const IFSelect_Act
     pub fn HandleIFSelectAct_get(
         handle: *const HandleIFSelectAct,
@@ -1449,6 +1451,8 @@ extern "C" {
     pub fn HandleIFSelectActivator_clone(
         self_: *const HandleIFSelectActivator,
     ) -> crate::OcctResult<*mut HandleIFSelectActivator>;
+    /// Check if Handle<IFSelect_Activator> is null
+    pub fn HandleIFSelectActivator_is_null(self_: *const HandleIFSelectActivator) -> bool;
     /// Dereference Handle to get *const IFSelect_Activator
     pub fn HandleIFSelectActivator_get(
         handle: *const HandleIFSelectActivator,
@@ -1575,6 +1579,10 @@ extern "C" {
     pub fn HandleIFSelectAppliedModifiers_clone(
         self_: *const HandleIFSelectAppliedModifiers,
     ) -> crate::OcctResult<*mut HandleIFSelectAppliedModifiers>;
+    /// Check if Handle<IFSelect_AppliedModifiers> is null
+    pub fn HandleIFSelectAppliedModifiers_is_null(
+        self_: *const HandleIFSelectAppliedModifiers,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_AppliedModifiers
     pub fn HandleIFSelectAppliedModifiers_get(
         handle: *const HandleIFSelectAppliedModifiers,
@@ -1668,6 +1676,8 @@ extern "C" {
     pub fn HandleIFSelectBasicDumper_clone(
         self_: *const HandleIFSelectBasicDumper,
     ) -> crate::OcctResult<*mut HandleIFSelectBasicDumper>;
+    /// Check if Handle<IFSelect_BasicDumper> is null
+    pub fn HandleIFSelectBasicDumper_is_null(self_: *const HandleIFSelectBasicDumper) -> bool;
     /// Dereference Handle to get *const IFSelect_BasicDumper
     pub fn HandleIFSelectBasicDumper_get(
         handle: *const HandleIFSelectBasicDumper,
@@ -1776,6 +1786,8 @@ extern "C" {
     pub fn HandleIFSelectCheckCounter_clone(
         self_: *const HandleIFSelectCheckCounter,
     ) -> crate::OcctResult<*mut HandleIFSelectCheckCounter>;
+    /// Check if Handle<IFSelect_CheckCounter> is null
+    pub fn HandleIFSelectCheckCounter_is_null(self_: *const HandleIFSelectCheckCounter) -> bool;
     /// Dereference Handle to get *const IFSelect_CheckCounter
     pub fn HandleIFSelectCheckCounter_get(
         handle: *const HandleIFSelectCheckCounter,
@@ -2168,6 +2180,8 @@ extern "C" {
     pub fn HandleIFSelectDispGlobal_clone(
         self_: *const HandleIFSelectDispGlobal,
     ) -> crate::OcctResult<*mut HandleIFSelectDispGlobal>;
+    /// Check if Handle<IFSelect_DispGlobal> is null
+    pub fn HandleIFSelectDispGlobal_is_null(self_: *const HandleIFSelectDispGlobal) -> bool;
     /// Dereference Handle to get *const IFSelect_DispGlobal
     pub fn HandleIFSelectDispGlobal_get(
         handle: *const HandleIFSelectDispGlobal,
@@ -2327,6 +2341,8 @@ extern "C" {
     pub fn HandleIFSelectDispPerCount_clone(
         self_: *const HandleIFSelectDispPerCount,
     ) -> crate::OcctResult<*mut HandleIFSelectDispPerCount>;
+    /// Check if Handle<IFSelect_DispPerCount> is null
+    pub fn HandleIFSelectDispPerCount_is_null(self_: *const HandleIFSelectDispPerCount) -> bool;
     /// Dereference Handle to get *const IFSelect_DispPerCount
     pub fn HandleIFSelectDispPerCount_get(
         handle: *const HandleIFSelectDispPerCount,
@@ -2486,6 +2502,8 @@ extern "C" {
     pub fn HandleIFSelectDispPerFiles_clone(
         self_: *const HandleIFSelectDispPerFiles,
     ) -> crate::OcctResult<*mut HandleIFSelectDispPerFiles>;
+    /// Check if Handle<IFSelect_DispPerFiles> is null
+    pub fn HandleIFSelectDispPerFiles_is_null(self_: *const HandleIFSelectDispPerFiles) -> bool;
     /// Dereference Handle to get *const IFSelect_DispPerFiles
     pub fn HandleIFSelectDispPerFiles_get(
         handle: *const HandleIFSelectDispPerFiles,
@@ -2631,6 +2649,8 @@ extern "C" {
     pub fn HandleIFSelectDispPerOne_clone(
         self_: *const HandleIFSelectDispPerOne,
     ) -> crate::OcctResult<*mut HandleIFSelectDispPerOne>;
+    /// Check if Handle<IFSelect_DispPerOne> is null
+    pub fn HandleIFSelectDispPerOne_is_null(self_: *const HandleIFSelectDispPerOne) -> bool;
     /// Dereference Handle to get *const IFSelect_DispPerOne
     pub fn HandleIFSelectDispPerOne_get(
         handle: *const HandleIFSelectDispPerOne,
@@ -2790,6 +2810,10 @@ extern "C" {
     pub fn HandleIFSelectDispPerSignature_clone(
         self_: *const HandleIFSelectDispPerSignature,
     ) -> crate::OcctResult<*mut HandleIFSelectDispPerSignature>;
+    /// Check if Handle<IFSelect_DispPerSignature> is null
+    pub fn HandleIFSelectDispPerSignature_is_null(
+        self_: *const HandleIFSelectDispPerSignature,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_DispPerSignature
     pub fn HandleIFSelectDispPerSignature_get(
         handle: *const HandleIFSelectDispPerSignature,
@@ -2966,6 +2990,8 @@ extern "C" {
     pub fn HandleIFSelectDispatch_clone(
         self_: *const HandleIFSelectDispatch,
     ) -> crate::OcctResult<*mut HandleIFSelectDispatch>;
+    /// Check if Handle<IFSelect_Dispatch> is null
+    pub fn HandleIFSelectDispatch_is_null(self_: *const HandleIFSelectDispatch) -> bool;
     /// Dereference Handle to get *const IFSelect_Dispatch
     pub fn HandleIFSelectDispatch_get(
         handle: *const HandleIFSelectDispatch,
@@ -3281,6 +3307,8 @@ extern "C" {
     pub fn HandleIFSelectEditForm_clone(
         self_: *const HandleIFSelectEditForm,
     ) -> crate::OcctResult<*mut HandleIFSelectEditForm>;
+    /// Check if Handle<IFSelect_EditForm> is null
+    pub fn HandleIFSelectEditForm_is_null(self_: *const HandleIFSelectEditForm) -> bool;
     /// Dereference Handle to get *const IFSelect_EditForm
     pub fn HandleIFSelectEditForm_get(
         handle: *const HandleIFSelectEditForm,
@@ -3472,6 +3500,8 @@ extern "C" {
     pub fn HandleIFSelectEditor_clone(
         self_: *const HandleIFSelectEditor,
     ) -> crate::OcctResult<*mut HandleIFSelectEditor>;
+    /// Check if Handle<IFSelect_Editor> is null
+    pub fn HandleIFSelectEditor_is_null(self_: *const HandleIFSelectEditor) -> bool;
     /// Dereference Handle to get *const IFSelect_Editor
     pub fn HandleIFSelectEditor_get(
         handle: *const HandleIFSelectEditor,
@@ -3630,6 +3660,10 @@ extern "C" {
     pub fn HandleIFSelectGeneralModifier_clone(
         self_: *const HandleIFSelectGeneralModifier,
     ) -> crate::OcctResult<*mut HandleIFSelectGeneralModifier>;
+    /// Check if Handle<IFSelect_GeneralModifier> is null
+    pub fn HandleIFSelectGeneralModifier_is_null(
+        self_: *const HandleIFSelectGeneralModifier,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_GeneralModifier
     pub fn HandleIFSelectGeneralModifier_get(
         handle: *const HandleIFSelectGeneralModifier,
@@ -3813,6 +3847,8 @@ extern "C" {
     pub fn HandleIFSelectGraphCounter_clone(
         self_: *const HandleIFSelectGraphCounter,
     ) -> crate::OcctResult<*mut HandleIFSelectGraphCounter>;
+    /// Check if Handle<IFSelect_GraphCounter> is null
+    pub fn HandleIFSelectGraphCounter_is_null(self_: *const HandleIFSelectGraphCounter) -> bool;
     /// Dereference Handle to get *const IFSelect_GraphCounter
     pub fn HandleIFSelectGraphCounter_get(
         handle: *const HandleIFSelectGraphCounter,
@@ -4022,6 +4058,10 @@ extern "C" {
     pub fn HandleIFSelectHSeqOfSelection_clone(
         self_: *const HandleIFSelectHSeqOfSelection,
     ) -> crate::OcctResult<*mut HandleIFSelectHSeqOfSelection>;
+    /// Check if Handle<IFSelect_HSeqOfSelection> is null
+    pub fn HandleIFSelectHSeqOfSelection_is_null(
+        self_: *const HandleIFSelectHSeqOfSelection,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_HSeqOfSelection
     pub fn HandleIFSelectHSeqOfSelection_get(
         handle: *const HandleIFSelectHSeqOfSelection,
@@ -4110,6 +4150,8 @@ extern "C" {
     pub fn HandleIFSelectIntParam_clone(
         self_: *const HandleIFSelectIntParam,
     ) -> crate::OcctResult<*mut HandleIFSelectIntParam>;
+    /// Check if Handle<IFSelect_IntParam> is null
+    pub fn HandleIFSelectIntParam_is_null(self_: *const HandleIFSelectIntParam) -> bool;
     /// Dereference Handle to get *const IFSelect_IntParam
     pub fn HandleIFSelectIntParam_get(
         handle: *const HandleIFSelectIntParam,
@@ -4266,6 +4308,8 @@ extern "C" {
     pub fn HandleIFSelectListEditor_clone(
         self_: *const HandleIFSelectListEditor,
     ) -> crate::OcctResult<*mut HandleIFSelectListEditor>;
+    /// Check if Handle<IFSelect_ListEditor> is null
+    pub fn HandleIFSelectListEditor_is_null(self_: *const HandleIFSelectListEditor) -> bool;
     /// Dereference Handle to get *const IFSelect_ListEditor
     pub fn HandleIFSelectListEditor_get(
         handle: *const HandleIFSelectListEditor,
@@ -4459,6 +4503,8 @@ extern "C" {
     pub fn HandleIFSelectModelCopier_clone(
         self_: *const HandleIFSelectModelCopier,
     ) -> crate::OcctResult<*mut HandleIFSelectModelCopier>;
+    /// Check if Handle<IFSelect_ModelCopier> is null
+    pub fn HandleIFSelectModelCopier_is_null(self_: *const HandleIFSelectModelCopier) -> bool;
     /// Dereference Handle to get *const IFSelect_ModelCopier
     pub fn HandleIFSelectModelCopier_get(
         handle: *const HandleIFSelectModelCopier,
@@ -4566,6 +4612,8 @@ extern "C" {
     pub fn HandleIFSelectModifEditForm_clone(
         self_: *const HandleIFSelectModifEditForm,
     ) -> crate::OcctResult<*mut HandleIFSelectModifEditForm>;
+    /// Check if Handle<IFSelect_ModifEditForm> is null
+    pub fn HandleIFSelectModifEditForm_is_null(self_: *const HandleIFSelectModifEditForm) -> bool;
     /// Dereference Handle to get *const IFSelect_ModifEditForm
     pub fn HandleIFSelectModifEditForm_get(
         handle: *const HandleIFSelectModifEditForm,
@@ -4712,6 +4760,8 @@ extern "C" {
     pub fn HandleIFSelectModifReorder_clone(
         self_: *const HandleIFSelectModifReorder,
     ) -> crate::OcctResult<*mut HandleIFSelectModifReorder>;
+    /// Check if Handle<IFSelect_ModifReorder> is null
+    pub fn HandleIFSelectModifReorder_is_null(self_: *const HandleIFSelectModifReorder) -> bool;
     /// Dereference Handle to get *const IFSelect_ModifReorder
     pub fn HandleIFSelectModifReorder_get(
         handle: *const HandleIFSelectModifReorder,
@@ -4837,6 +4887,8 @@ extern "C" {
     pub fn HandleIFSelectModifier_clone(
         self_: *const HandleIFSelectModifier,
     ) -> crate::OcctResult<*mut HandleIFSelectModifier>;
+    /// Check if Handle<IFSelect_Modifier> is null
+    pub fn HandleIFSelectModifier_is_null(self_: *const HandleIFSelectModifier) -> bool;
     /// Dereference Handle to get *const IFSelect_Modifier
     pub fn HandleIFSelectModifier_get(
         handle: *const HandleIFSelectModifier,
@@ -5075,6 +5127,8 @@ extern "C" {
     pub fn HandleIFSelectPacketList_clone(
         self_: *const HandleIFSelectPacketList,
     ) -> crate::OcctResult<*mut HandleIFSelectPacketList>;
+    /// Check if Handle<IFSelect_PacketList> is null
+    pub fn HandleIFSelectPacketList_is_null(self_: *const HandleIFSelectPacketList) -> bool;
     /// Dereference Handle to get *const IFSelect_PacketList
     pub fn HandleIFSelectPacketList_get(
         handle: *const HandleIFSelectPacketList,
@@ -5205,6 +5259,8 @@ extern "C" {
     pub fn HandleIFSelectParamEditor_clone(
         self_: *const HandleIFSelectParamEditor,
     ) -> crate::OcctResult<*mut HandleIFSelectParamEditor>;
+    /// Check if Handle<IFSelect_ParamEditor> is null
+    pub fn HandleIFSelectParamEditor_is_null(self_: *const HandleIFSelectParamEditor) -> bool;
     /// Dereference Handle to get *const IFSelect_ParamEditor
     pub fn HandleIFSelectParamEditor_get(
         handle: *const HandleIFSelectParamEditor,
@@ -5447,6 +5503,8 @@ extern "C" {
     pub fn HandleIFSelectSelectAnyList_clone(
         self_: *const HandleIFSelectSelectAnyList,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectAnyList>;
+    /// Check if Handle<IFSelect_SelectAnyList> is null
+    pub fn HandleIFSelectSelectAnyList_is_null(self_: *const HandleIFSelectSelectAnyList) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectAnyList
     pub fn HandleIFSelectSelectAnyList_get(
         handle: *const HandleIFSelectSelectAnyList,
@@ -5598,6 +5656,8 @@ extern "C" {
     pub fn HandleIFSelectSelectAnyType_clone(
         self_: *const HandleIFSelectSelectAnyType,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectAnyType>;
+    /// Check if Handle<IFSelect_SelectAnyType> is null
+    pub fn HandleIFSelectSelectAnyType_is_null(self_: *const HandleIFSelectSelectAnyType) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectAnyType
     pub fn HandleIFSelectSelectAnyType_get(
         handle: *const HandleIFSelectSelectAnyType,
@@ -5763,6 +5823,8 @@ extern "C" {
     pub fn HandleIFSelectSelectBase_clone(
         self_: *const HandleIFSelectSelectBase,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectBase>;
+    /// Check if Handle<IFSelect_SelectBase> is null
+    pub fn HandleIFSelectSelectBase_is_null(self_: *const HandleIFSelectSelectBase) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectBase
     pub fn HandleIFSelectSelectBase_get(
         handle: *const HandleIFSelectSelectBase,
@@ -5912,6 +5974,8 @@ extern "C" {
     pub fn HandleIFSelectSelectCombine_clone(
         self_: *const HandleIFSelectSelectCombine,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectCombine>;
+    /// Check if Handle<IFSelect_SelectCombine> is null
+    pub fn HandleIFSelectSelectCombine_is_null(self_: *const HandleIFSelectSelectCombine) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectCombine
     pub fn HandleIFSelectSelectCombine_get(
         handle: *const HandleIFSelectSelectCombine,
@@ -6045,6 +6109,8 @@ extern "C" {
     pub fn HandleIFSelectSelectControl_clone(
         self_: *const HandleIFSelectSelectControl,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectControl>;
+    /// Check if Handle<IFSelect_SelectControl> is null
+    pub fn HandleIFSelectSelectControl_is_null(self_: *const HandleIFSelectSelectControl) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectControl
     pub fn HandleIFSelectSelectControl_get(
         handle: *const HandleIFSelectSelectControl,
@@ -6178,6 +6244,8 @@ extern "C" {
     pub fn HandleIFSelectSelectDeduct_clone(
         self_: *const HandleIFSelectSelectDeduct,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectDeduct>;
+    /// Check if Handle<IFSelect_SelectDeduct> is null
+    pub fn HandleIFSelectSelectDeduct_is_null(self_: *const HandleIFSelectSelectDeduct) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectDeduct
     pub fn HandleIFSelectSelectDeduct_get(
         handle: *const HandleIFSelectSelectDeduct,
@@ -6438,6 +6506,8 @@ extern "C" {
     pub fn HandleIFSelectSelectDiff_clone(
         self_: *const HandleIFSelectSelectDiff,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectDiff>;
+    /// Check if Handle<IFSelect_SelectDiff> is null
+    pub fn HandleIFSelectSelectDiff_is_null(self_: *const HandleIFSelectSelectDiff) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectDiff
     pub fn HandleIFSelectSelectDiff_get(
         handle: *const HandleIFSelectSelectDiff,
@@ -6592,6 +6662,10 @@ extern "C" {
     pub fn HandleIFSelectSelectEntityNumber_clone(
         self_: *const HandleIFSelectSelectEntityNumber,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectEntityNumber>;
+    /// Check if Handle<IFSelect_SelectEntityNumber> is null
+    pub fn HandleIFSelectSelectEntityNumber_is_null(
+        self_: *const HandleIFSelectSelectEntityNumber,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectEntityNumber
     pub fn HandleIFSelectSelectEntityNumber_get(
         handle: *const HandleIFSelectSelectEntityNumber,
@@ -6726,6 +6800,10 @@ extern "C" {
     pub fn HandleIFSelectSelectErrorEntities_clone(
         self_: *const HandleIFSelectSelectErrorEntities,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectErrorEntities>;
+    /// Check if Handle<IFSelect_SelectErrorEntities> is null
+    pub fn HandleIFSelectSelectErrorEntities_is_null(
+        self_: *const HandleIFSelectSelectErrorEntities,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectErrorEntities
     pub fn HandleIFSelectSelectErrorEntities_get(
         handle: *const HandleIFSelectSelectErrorEntities,
@@ -6912,6 +6990,8 @@ extern "C" {
     pub fn HandleIFSelectSelectExplore_clone(
         self_: *const HandleIFSelectSelectExplore,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectExplore>;
+    /// Check if Handle<IFSelect_SelectExplore> is null
+    pub fn HandleIFSelectSelectExplore_is_null(self_: *const HandleIFSelectSelectExplore) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectExplore
     pub fn HandleIFSelectSelectExplore_get(
         handle: *const HandleIFSelectSelectExplore,
@@ -7128,6 +7208,8 @@ extern "C" {
     pub fn HandleIFSelectSelectExtract_clone(
         self_: *const HandleIFSelectSelectExtract,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectExtract>;
+    /// Check if Handle<IFSelect_SelectExtract> is null
+    pub fn HandleIFSelectSelectExtract_is_null(self_: *const HandleIFSelectSelectExtract) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectExtract
     pub fn HandleIFSelectSelectExtract_get(
         handle: *const HandleIFSelectSelectExtract,
@@ -7359,6 +7441,8 @@ extern "C" {
     pub fn HandleIFSelectSelectFlag_clone(
         self_: *const HandleIFSelectSelectFlag,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectFlag>;
+    /// Check if Handle<IFSelect_SelectFlag> is null
+    pub fn HandleIFSelectSelectFlag_is_null(self_: *const HandleIFSelectSelectFlag) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectFlag
     pub fn HandleIFSelectSelectFlag_get(
         handle: *const HandleIFSelectSelectFlag,
@@ -7541,6 +7625,8 @@ extern "C" {
     pub fn HandleIFSelectSelectInList_clone(
         self_: *const HandleIFSelectSelectInList,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectInList>;
+    /// Check if Handle<IFSelect_SelectInList> is null
+    pub fn HandleIFSelectSelectInList_is_null(self_: *const HandleIFSelectSelectInList) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectInList
     pub fn HandleIFSelectSelectInList_get(
         handle: *const HandleIFSelectSelectInList,
@@ -7773,6 +7859,10 @@ extern "C" {
     pub fn HandleIFSelectSelectIncorrectEntities_clone(
         self_: *const HandleIFSelectSelectIncorrectEntities,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectIncorrectEntities>;
+    /// Check if Handle<IFSelect_SelectIncorrectEntities> is null
+    pub fn HandleIFSelectSelectIncorrectEntities_is_null(
+        self_: *const HandleIFSelectSelectIncorrectEntities,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectIncorrectEntities
     pub fn HandleIFSelectSelectIncorrectEntities_get(
         handle: *const HandleIFSelectSelectIncorrectEntities,
@@ -7966,6 +8056,10 @@ extern "C" {
     pub fn HandleIFSelectSelectIntersection_clone(
         self_: *const HandleIFSelectSelectIntersection,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectIntersection>;
+    /// Check if Handle<IFSelect_SelectIntersection> is null
+    pub fn HandleIFSelectSelectIntersection_is_null(
+        self_: *const HandleIFSelectSelectIntersection,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectIntersection
     pub fn HandleIFSelectSelectIntersection_get(
         handle: *const HandleIFSelectSelectIntersection,
@@ -8120,6 +8214,10 @@ extern "C" {
     pub fn HandleIFSelectSelectModelEntities_clone(
         self_: *const HandleIFSelectSelectModelEntities,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectModelEntities>;
+    /// Check if Handle<IFSelect_SelectModelEntities> is null
+    pub fn HandleIFSelectSelectModelEntities_is_null(
+        self_: *const HandleIFSelectSelectModelEntities,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectModelEntities
     pub fn HandleIFSelectSelectModelEntities_get(
         handle: *const HandleIFSelectSelectModelEntities,
@@ -8236,6 +8334,10 @@ extern "C" {
     pub fn HandleIFSelectSelectModelRoots_clone(
         self_: *const HandleIFSelectSelectModelRoots,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectModelRoots>;
+    /// Check if Handle<IFSelect_SelectModelRoots> is null
+    pub fn HandleIFSelectSelectModelRoots_is_null(
+        self_: *const HandleIFSelectSelectModelRoots,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectModelRoots
     pub fn HandleIFSelectSelectModelRoots_get(
         handle: *const HandleIFSelectSelectModelRoots,
@@ -8429,6 +8531,8 @@ extern "C" {
     pub fn HandleIFSelectSelectPointed_clone(
         self_: *const HandleIFSelectSelectPointed,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectPointed>;
+    /// Check if Handle<IFSelect_SelectPointed> is null
+    pub fn HandleIFSelectSelectPointed_is_null(self_: *const HandleIFSelectSelectPointed) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectPointed
     pub fn HandleIFSelectSelectPointed_get(
         handle: *const HandleIFSelectSelectPointed,
@@ -8604,6 +8708,8 @@ extern "C" {
     pub fn HandleIFSelectSelectRange_clone(
         self_: *const HandleIFSelectSelectRange,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectRange>;
+    /// Check if Handle<IFSelect_SelectRange> is null
+    pub fn HandleIFSelectSelectRange_is_null(self_: *const HandleIFSelectSelectRange) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectRange
     pub fn HandleIFSelectSelectRange_get(
         handle: *const HandleIFSelectSelectRange,
@@ -8795,6 +8901,10 @@ extern "C" {
     pub fn HandleIFSelectSelectRootComps_clone(
         self_: *const HandleIFSelectSelectRootComps,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectRootComps>;
+    /// Check if Handle<IFSelect_SelectRootComps> is null
+    pub fn HandleIFSelectSelectRootComps_is_null(
+        self_: *const HandleIFSelectSelectRootComps,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectRootComps
     pub fn HandleIFSelectSelectRootComps_get(
         handle: *const HandleIFSelectSelectRootComps,
@@ -8980,6 +9090,8 @@ extern "C" {
     pub fn HandleIFSelectSelectRoots_clone(
         self_: *const HandleIFSelectSelectRoots,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectRoots>;
+    /// Check if Handle<IFSelect_SelectRoots> is null
+    pub fn HandleIFSelectSelectRoots_is_null(self_: *const HandleIFSelectSelectRoots) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectRoots
     pub fn HandleIFSelectSelectRoots_get(
         handle: *const HandleIFSelectSelectRoots,
@@ -9176,6 +9288,8 @@ extern "C" {
     pub fn HandleIFSelectSelectSent_clone(
         self_: *const HandleIFSelectSelectSent,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectSent>;
+    /// Check if Handle<IFSelect_SelectSent> is null
+    pub fn HandleIFSelectSelectSent_is_null(self_: *const HandleIFSelectSelectSent) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectSent
     pub fn HandleIFSelectSelectSent_get(
         handle: *const HandleIFSelectSelectSent,
@@ -9347,6 +9461,8 @@ extern "C" {
     pub fn HandleIFSelectSelectShared_clone(
         self_: *const HandleIFSelectSelectShared,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectShared>;
+    /// Check if Handle<IFSelect_SelectShared> is null
+    pub fn HandleIFSelectSelectShared_is_null(self_: *const HandleIFSelectSelectShared) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectShared
     pub fn HandleIFSelectSelectShared_get(
         handle: *const HandleIFSelectSelectShared,
@@ -9494,6 +9610,8 @@ extern "C" {
     pub fn HandleIFSelectSelectSharing_clone(
         self_: *const HandleIFSelectSelectSharing,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectSharing>;
+    /// Check if Handle<IFSelect_SelectSharing> is null
+    pub fn HandleIFSelectSelectSharing_is_null(self_: *const HandleIFSelectSelectSharing) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectSharing
     pub fn HandleIFSelectSelectSharing_get(
         handle: *const HandleIFSelectSelectSharing,
@@ -9690,6 +9808,10 @@ extern "C" {
     pub fn HandleIFSelectSelectSignature_clone(
         self_: *const HandleIFSelectSelectSignature,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectSignature>;
+    /// Check if Handle<IFSelect_SelectSignature> is null
+    pub fn HandleIFSelectSelectSignature_is_null(
+        self_: *const HandleIFSelectSelectSignature,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectSignature
     pub fn HandleIFSelectSelectSignature_get(
         handle: *const HandleIFSelectSelectSignature,
@@ -9889,6 +10011,10 @@ extern "C" {
     pub fn HandleIFSelectSelectSignedShared_clone(
         self_: *const HandleIFSelectSelectSignedShared,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectSignedShared>;
+    /// Check if Handle<IFSelect_SelectSignedShared> is null
+    pub fn HandleIFSelectSelectSignedShared_is_null(
+        self_: *const HandleIFSelectSelectSignedShared,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectSignedShared
     pub fn HandleIFSelectSelectSignedShared_get(
         handle: *const HandleIFSelectSelectSignedShared,
@@ -10083,6 +10209,10 @@ extern "C" {
     pub fn HandleIFSelectSelectSignedSharing_clone(
         self_: *const HandleIFSelectSelectSignedSharing,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectSignedSharing>;
+    /// Check if Handle<IFSelect_SelectSignedSharing> is null
+    pub fn HandleIFSelectSelectSignedSharing_is_null(
+        self_: *const HandleIFSelectSelectSignedSharing,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectSignedSharing
     pub fn HandleIFSelectSelectSignedSharing_get(
         handle: *const HandleIFSelectSelectSignedSharing,
@@ -10275,6 +10405,8 @@ extern "C" {
     pub fn HandleIFSelectSelectSuite_clone(
         self_: *const HandleIFSelectSelectSuite,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectSuite>;
+    /// Check if Handle<IFSelect_SelectSuite> is null
+    pub fn HandleIFSelectSelectSuite_is_null(self_: *const HandleIFSelectSelectSuite) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectSuite
     pub fn HandleIFSelectSelectSuite_get(
         handle: *const HandleIFSelectSelectSuite,
@@ -10445,6 +10577,8 @@ extern "C" {
     pub fn HandleIFSelectSelectType_clone(
         self_: *const HandleIFSelectSelectType,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectType>;
+    /// Check if Handle<IFSelect_SelectType> is null
+    pub fn HandleIFSelectSelectType_is_null(self_: *const HandleIFSelectSelectType) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectType
     pub fn HandleIFSelectSelectType_get(
         handle: *const HandleIFSelectSelectType,
@@ -10631,6 +10765,8 @@ extern "C" {
     pub fn HandleIFSelectSelectUnion_clone(
         self_: *const HandleIFSelectSelectUnion,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectUnion>;
+    /// Check if Handle<IFSelect_SelectUnion> is null
+    pub fn HandleIFSelectSelectUnion_is_null(self_: *const HandleIFSelectSelectUnion) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectUnion
     pub fn HandleIFSelectSelectUnion_get(
         handle: *const HandleIFSelectSelectUnion,
@@ -10791,6 +10927,10 @@ extern "C" {
     pub fn HandleIFSelectSelectUnknownEntities_clone(
         self_: *const HandleIFSelectSelectUnknownEntities,
     ) -> crate::OcctResult<*mut HandleIFSelectSelectUnknownEntities>;
+    /// Check if Handle<IFSelect_SelectUnknownEntities> is null
+    pub fn HandleIFSelectSelectUnknownEntities_is_null(
+        self_: *const HandleIFSelectSelectUnknownEntities,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_SelectUnknownEntities
     pub fn HandleIFSelectSelectUnknownEntities_get(
         handle: *const HandleIFSelectSelectUnknownEntities,
@@ -10959,6 +11099,8 @@ extern "C" {
     pub fn HandleIFSelectSelection_clone(
         self_: *const HandleIFSelectSelection,
     ) -> crate::OcctResult<*mut HandleIFSelectSelection>;
+    /// Check if Handle<IFSelect_Selection> is null
+    pub fn HandleIFSelectSelection_is_null(self_: *const HandleIFSelectSelection) -> bool;
     /// Dereference Handle to get *const IFSelect_Selection
     pub fn HandleIFSelectSelection_get(
         handle: *const HandleIFSelectSelection,
@@ -11264,6 +11406,8 @@ extern "C" {
     pub fn HandleIFSelectSessionDumper_clone(
         self_: *const HandleIFSelectSessionDumper,
     ) -> crate::OcctResult<*mut HandleIFSelectSessionDumper>;
+    /// Check if Handle<IFSelect_SessionDumper> is null
+    pub fn HandleIFSelectSessionDumper_is_null(self_: *const HandleIFSelectSessionDumper) -> bool;
     /// Dereference Handle to get *const IFSelect_SessionDumper
     pub fn HandleIFSelectSessionDumper_get(
         handle: *const HandleIFSelectSessionDumper,
@@ -11655,6 +11799,8 @@ extern "C" {
     pub fn HandleIFSelectSessionPilot_clone(
         self_: *const HandleIFSelectSessionPilot,
     ) -> crate::OcctResult<*mut HandleIFSelectSessionPilot>;
+    /// Check if Handle<IFSelect_SessionPilot> is null
+    pub fn HandleIFSelectSessionPilot_is_null(self_: *const HandleIFSelectSessionPilot) -> bool;
     /// Dereference Handle to get *const IFSelect_SessionPilot
     pub fn HandleIFSelectSessionPilot_get(
         handle: *const HandleIFSelectSessionPilot,
@@ -11886,6 +12032,8 @@ extern "C" {
     pub fn HandleIFSelectShareOut_clone(
         self_: *const HandleIFSelectShareOut,
     ) -> crate::OcctResult<*mut HandleIFSelectShareOut>;
+    /// Check if Handle<IFSelect_ShareOut> is null
+    pub fn HandleIFSelectShareOut_is_null(self_: *const HandleIFSelectShareOut) -> bool;
     /// Dereference Handle to get *const IFSelect_ShareOut
     pub fn HandleIFSelectShareOut_get(
         handle: *const HandleIFSelectShareOut,
@@ -12090,6 +12238,8 @@ extern "C" {
     pub fn HandleIFSelectSignAncestor_clone(
         self_: *const HandleIFSelectSignAncestor,
     ) -> crate::OcctResult<*mut HandleIFSelectSignAncestor>;
+    /// Check if Handle<IFSelect_SignAncestor> is null
+    pub fn HandleIFSelectSignAncestor_is_null(self_: *const HandleIFSelectSignAncestor) -> bool;
     /// Dereference Handle to get *const IFSelect_SignAncestor
     pub fn HandleIFSelectSignAncestor_get(
         handle: *const HandleIFSelectSignAncestor,
@@ -12244,6 +12394,8 @@ extern "C" {
     pub fn HandleIFSelectSignCategory_clone(
         self_: *const HandleIFSelectSignCategory,
     ) -> crate::OcctResult<*mut HandleIFSelectSignCategory>;
+    /// Check if Handle<IFSelect_SignCategory> is null
+    pub fn HandleIFSelectSignCategory_is_null(self_: *const HandleIFSelectSignCategory) -> bool;
     /// Dereference Handle to get *const IFSelect_SignCategory
     pub fn HandleIFSelectSignCategory_get(
         handle: *const HandleIFSelectSignCategory,
@@ -12468,6 +12620,8 @@ extern "C" {
     pub fn HandleIFSelectSignCounter_clone(
         self_: *const HandleIFSelectSignCounter,
     ) -> crate::OcctResult<*mut HandleIFSelectSignCounter>;
+    /// Check if Handle<IFSelect_SignCounter> is null
+    pub fn HandleIFSelectSignCounter_is_null(self_: *const HandleIFSelectSignCounter) -> bool;
     /// Dereference Handle to get *const IFSelect_SignCounter
     pub fn HandleIFSelectSignCounter_get(
         handle: *const HandleIFSelectSignCounter,
@@ -12638,6 +12792,8 @@ extern "C" {
     pub fn HandleIFSelectSignMultiple_clone(
         self_: *const HandleIFSelectSignMultiple,
     ) -> crate::OcctResult<*mut HandleIFSelectSignMultiple>;
+    /// Check if Handle<IFSelect_SignMultiple> is null
+    pub fn HandleIFSelectSignMultiple_is_null(self_: *const HandleIFSelectSignMultiple) -> bool;
     /// Dereference Handle to get *const IFSelect_SignMultiple
     pub fn HandleIFSelectSignMultiple_get(
         handle: *const HandleIFSelectSignMultiple,
@@ -12787,6 +12943,8 @@ extern "C" {
     pub fn HandleIFSelectSignType_clone(
         self_: *const HandleIFSelectSignType,
     ) -> crate::OcctResult<*mut HandleIFSelectSignType>;
+    /// Check if Handle<IFSelect_SignType> is null
+    pub fn HandleIFSelectSignType_is_null(self_: *const HandleIFSelectSignType) -> bool;
     /// Dereference Handle to get *const IFSelect_SignType
     pub fn HandleIFSelectSignType_get(
         handle: *const HandleIFSelectSignType,
@@ -12954,6 +13112,8 @@ extern "C" {
     pub fn HandleIFSelectSignValidity_clone(
         self_: *const HandleIFSelectSignValidity,
     ) -> crate::OcctResult<*mut HandleIFSelectSignValidity>;
+    /// Check if Handle<IFSelect_SignValidity> is null
+    pub fn HandleIFSelectSignValidity_is_null(self_: *const HandleIFSelectSignValidity) -> bool;
     /// Dereference Handle to get *const IFSelect_SignValidity
     pub fn HandleIFSelectSignValidity_get(
         handle: *const HandleIFSelectSignValidity,
@@ -13140,6 +13300,8 @@ extern "C" {
     pub fn HandleIFSelectSignature_clone(
         self_: *const HandleIFSelectSignature,
     ) -> crate::OcctResult<*mut HandleIFSelectSignature>;
+    /// Check if Handle<IFSelect_Signature> is null
+    pub fn HandleIFSelectSignature_is_null(self_: *const HandleIFSelectSignature) -> bool;
     /// Dereference Handle to get *const IFSelect_Signature
     pub fn HandleIFSelectSignature_get(
         handle: *const HandleIFSelectSignature,
@@ -13366,6 +13528,8 @@ extern "C" {
     pub fn HandleIFSelectSignatureList_clone(
         self_: *const HandleIFSelectSignatureList,
     ) -> crate::OcctResult<*mut HandleIFSelectSignatureList>;
+    /// Check if Handle<IFSelect_SignatureList> is null
+    pub fn HandleIFSelectSignatureList_is_null(self_: *const HandleIFSelectSignatureList) -> bool;
     /// Dereference Handle to get *const IFSelect_SignatureList
     pub fn HandleIFSelectSignatureList_get(
         handle: *const HandleIFSelectSignatureList,
@@ -13559,6 +13723,10 @@ extern "C" {
     pub fn HandleIFSelectTransformStandard_clone(
         self_: *const HandleIFSelectTransformStandard,
     ) -> crate::OcctResult<*mut HandleIFSelectTransformStandard>;
+    /// Check if Handle<IFSelect_TransformStandard> is null
+    pub fn HandleIFSelectTransformStandard_is_null(
+        self_: *const HandleIFSelectTransformStandard,
+    ) -> bool;
     /// Dereference Handle to get *const IFSelect_TransformStandard
     pub fn HandleIFSelectTransformStandard_get(
         handle: *const HandleIFSelectTransformStandard,
@@ -13657,6 +13825,8 @@ extern "C" {
     pub fn HandleIFSelectTransformer_clone(
         self_: *const HandleIFSelectTransformer,
     ) -> crate::OcctResult<*mut HandleIFSelectTransformer>;
+    /// Check if Handle<IFSelect_Transformer> is null
+    pub fn HandleIFSelectTransformer_is_null(self_: *const HandleIFSelectTransformer) -> bool;
     /// Dereference Handle to get *const IFSelect_Transformer
     pub fn HandleIFSelectTransformer_get(
         handle: *const HandleIFSelectTransformer,
@@ -13799,6 +13969,8 @@ extern "C" {
     pub fn HandleIFSelectWorkLibrary_clone(
         self_: *const HandleIFSelectWorkLibrary,
     ) -> crate::OcctResult<*mut HandleIFSelectWorkLibrary>;
+    /// Check if Handle<IFSelect_WorkLibrary> is null
+    pub fn HandleIFSelectWorkLibrary_is_null(self_: *const HandleIFSelectWorkLibrary) -> bool;
     /// Dereference Handle to get *const IFSelect_WorkLibrary
     pub fn HandleIFSelectWorkLibrary_get(
         handle: *const HandleIFSelectWorkLibrary,
@@ -14731,6 +14903,8 @@ extern "C" {
     pub fn HandleIFSelectWorkSession_clone(
         self_: *const HandleIFSelectWorkSession,
     ) -> crate::OcctResult<*mut HandleIFSelectWorkSession>;
+    /// Check if Handle<IFSelect_WorkSession> is null
+    pub fn HandleIFSelectWorkSession_is_null(self_: *const HandleIFSelectWorkSession) -> bool;
     /// Dereference Handle to get *const IFSelect_WorkSession
     pub fn HandleIFSelectWorkSession_get(
         handle: *const HandleIFSelectWorkSession,
@@ -15170,6 +15344,8 @@ extern "C" {
     pub fn HandleInterfaceCheck_clone(
         self_: *const HandleInterfaceCheck,
     ) -> crate::OcctResult<*mut HandleInterfaceCheck>;
+    /// Check if Handle<Interface_Check> is null
+    pub fn HandleInterfaceCheck_is_null(self_: *const HandleInterfaceCheck) -> bool;
     /// Dereference Handle to get *const Interface_Check
     pub fn HandleInterfaceCheck_get(
         handle: *const HandleInterfaceCheck,
@@ -15285,6 +15461,8 @@ extern "C" {
     pub fn HandleInterfaceCheckFailure_clone(
         self_: *const HandleInterfaceCheckFailure,
     ) -> crate::OcctResult<*mut HandleInterfaceCheckFailure>;
+    /// Check if Handle<Interface_CheckFailure> is null
+    pub fn HandleInterfaceCheckFailure_is_null(self_: *const HandleInterfaceCheckFailure) -> bool;
     /// Dereference Handle to get *const Interface_CheckFailure
     pub fn HandleInterfaceCheckFailure_get(
         handle: *const HandleInterfaceCheckFailure,
@@ -15600,6 +15778,8 @@ extern "C" {
     pub fn HandleInterfaceCopyControl_clone(
         self_: *const HandleInterfaceCopyControl,
     ) -> crate::OcctResult<*mut HandleInterfaceCopyControl>;
+    /// Check if Handle<Interface_CopyControl> is null
+    pub fn HandleInterfaceCopyControl_is_null(self_: *const HandleInterfaceCopyControl) -> bool;
     /// Dereference Handle to get *const Interface_CopyControl
     pub fn HandleInterfaceCopyControl_get(
         handle: *const HandleInterfaceCopyControl,
@@ -15708,6 +15888,8 @@ extern "C" {
     pub fn HandleInterfaceCopyMap_clone(
         self_: *const HandleInterfaceCopyMap,
     ) -> crate::OcctResult<*mut HandleInterfaceCopyMap>;
+    /// Check if Handle<Interface_CopyMap> is null
+    pub fn HandleInterfaceCopyMap_is_null(self_: *const HandleInterfaceCopyMap) -> bool;
     /// Dereference Handle to get *const Interface_CopyMap
     pub fn HandleInterfaceCopyMap_get(
         handle: *const HandleInterfaceCopyMap,
@@ -15924,6 +16106,9 @@ extern "C" {
     pub fn HandleInterfaceEntityCluster_clone(
         self_: *const HandleInterfaceEntityCluster,
     ) -> crate::OcctResult<*mut HandleInterfaceEntityCluster>;
+    /// Check if Handle<Interface_EntityCluster> is null
+    pub fn HandleInterfaceEntityCluster_is_null(self_: *const HandleInterfaceEntityCluster)
+        -> bool;
     /// Dereference Handle to get *const Interface_EntityCluster
     pub fn HandleInterfaceEntityCluster_get(
         handle: *const HandleInterfaceEntityCluster,
@@ -16294,6 +16479,10 @@ extern "C" {
     pub fn HandleInterfaceFileReaderData_clone(
         self_: *const HandleInterfaceFileReaderData,
     ) -> crate::OcctResult<*mut HandleInterfaceFileReaderData>;
+    /// Check if Handle<Interface_FileReaderData> is null
+    pub fn HandleInterfaceFileReaderData_is_null(
+        self_: *const HandleInterfaceFileReaderData,
+    ) -> bool;
     /// Dereference Handle to get *const Interface_FileReaderData
     pub fn HandleInterfaceFileReaderData_get(
         handle: *const HandleInterfaceFileReaderData,
@@ -16600,6 +16789,8 @@ extern "C" {
     pub fn HandleInterfaceGTool_clone(
         self_: *const HandleInterfaceGTool,
     ) -> crate::OcctResult<*mut HandleInterfaceGTool>;
+    /// Check if Handle<Interface_GTool> is null
+    pub fn HandleInterfaceGTool_is_null(self_: *const HandleInterfaceGTool) -> bool;
     /// Dereference Handle to get *const Interface_GTool
     pub fn HandleInterfaceGTool_get(
         handle: *const HandleInterfaceGTool,
@@ -16822,6 +17013,9 @@ extern "C" {
     pub fn HandleInterfaceGeneralModule_clone(
         self_: *const HandleInterfaceGeneralModule,
     ) -> crate::OcctResult<*mut HandleInterfaceGeneralModule>;
+    /// Check if Handle<Interface_GeneralModule> is null
+    pub fn HandleInterfaceGeneralModule_is_null(self_: *const HandleInterfaceGeneralModule)
+        -> bool;
     /// Dereference Handle to get *const Interface_GeneralModule
     pub fn HandleInterfaceGeneralModule_get(
         handle: *const HandleInterfaceGeneralModule,
@@ -16963,6 +17157,10 @@ extern "C" {
     pub fn HandleInterfaceGlobalNodeOfGeneralLib_clone(
         self_: *const HandleInterfaceGlobalNodeOfGeneralLib,
     ) -> crate::OcctResult<*mut HandleInterfaceGlobalNodeOfGeneralLib>;
+    /// Check if Handle<Interface_GlobalNodeOfGeneralLib> is null
+    pub fn HandleInterfaceGlobalNodeOfGeneralLib_is_null(
+        self_: *const HandleInterfaceGlobalNodeOfGeneralLib,
+    ) -> bool;
     /// Dereference Handle to get *const Interface_GlobalNodeOfGeneralLib
     pub fn HandleInterfaceGlobalNodeOfGeneralLib_get(
         handle: *const HandleInterfaceGlobalNodeOfGeneralLib,
@@ -17058,6 +17256,10 @@ extern "C" {
     pub fn HandleInterfaceGlobalNodeOfReaderLib_clone(
         self_: *const HandleInterfaceGlobalNodeOfReaderLib,
     ) -> crate::OcctResult<*mut HandleInterfaceGlobalNodeOfReaderLib>;
+    /// Check if Handle<Interface_GlobalNodeOfReaderLib> is null
+    pub fn HandleInterfaceGlobalNodeOfReaderLib_is_null(
+        self_: *const HandleInterfaceGlobalNodeOfReaderLib,
+    ) -> bool;
     /// Dereference Handle to get *const Interface_GlobalNodeOfReaderLib
     pub fn HandleInterfaceGlobalNodeOfReaderLib_get(
         handle: *const HandleInterfaceGlobalNodeOfReaderLib,
@@ -17458,6 +17660,10 @@ extern "C" {
     pub fn HandleInterfaceHArray1OfHAsciiString_clone(
         self_: *const HandleInterfaceHArray1OfHAsciiString,
     ) -> crate::OcctResult<*mut HandleInterfaceHArray1OfHAsciiString>;
+    /// Check if Handle<Interface_HArray1OfHAsciiString> is null
+    pub fn HandleInterfaceHArray1OfHAsciiString_is_null(
+        self_: *const HandleInterfaceHArray1OfHAsciiString,
+    ) -> bool;
     /// Dereference Handle to get *const Interface_HArray1OfHAsciiString
     pub fn HandleInterfaceHArray1OfHAsciiString_get(
         handle: *const HandleInterfaceHArray1OfHAsciiString,
@@ -17563,6 +17769,8 @@ extern "C" {
     pub fn HandleInterfaceHGraph_clone(
         self_: *const HandleInterfaceHGraph,
     ) -> crate::OcctResult<*mut HandleInterfaceHGraph>;
+    /// Check if Handle<Interface_HGraph> is null
+    pub fn HandleInterfaceHGraph_is_null(self_: *const HandleInterfaceHGraph) -> bool;
     /// Dereference Handle to get *const Interface_HGraph
     pub fn HandleInterfaceHGraph_get(
         handle: *const HandleInterfaceHGraph,
@@ -17658,6 +17866,10 @@ extern "C" {
     pub fn HandleInterfaceHSequenceOfCheck_clone(
         self_: *const HandleInterfaceHSequenceOfCheck,
     ) -> crate::OcctResult<*mut HandleInterfaceHSequenceOfCheck>;
+    /// Check if Handle<Interface_HSequenceOfCheck> is null
+    pub fn HandleInterfaceHSequenceOfCheck_is_null(
+        self_: *const HandleInterfaceHSequenceOfCheck,
+    ) -> bool;
     /// Dereference Handle to get *const Interface_HSequenceOfCheck
     pub fn HandleInterfaceHSequenceOfCheck_get(
         handle: *const HandleInterfaceHSequenceOfCheck,
@@ -17817,6 +18029,8 @@ extern "C" {
     pub fn HandleInterfaceIntVal_clone(
         self_: *const HandleInterfaceIntVal,
     ) -> crate::OcctResult<*mut HandleInterfaceIntVal>;
+    /// Check if Handle<Interface_IntVal> is null
+    pub fn HandleInterfaceIntVal_is_null(self_: *const HandleInterfaceIntVal) -> bool;
     /// Dereference Handle to get *const Interface_IntVal
     pub fn HandleInterfaceIntVal_get(
         handle: *const HandleInterfaceIntVal,
@@ -17924,6 +18138,10 @@ extern "C" {
     pub fn HandleInterfaceInterfaceError_clone(
         self_: *const HandleInterfaceInterfaceError,
     ) -> crate::OcctResult<*mut HandleInterfaceInterfaceError>;
+    /// Check if Handle<Interface_InterfaceError> is null
+    pub fn HandleInterfaceInterfaceError_is_null(
+        self_: *const HandleInterfaceInterfaceError,
+    ) -> bool;
     /// Dereference Handle to get *const Interface_InterfaceError
     pub fn HandleInterfaceInterfaceError_get(
         handle: *const HandleInterfaceInterfaceError,
@@ -18074,6 +18292,10 @@ extern "C" {
     pub fn HandleInterfaceInterfaceMismatch_clone(
         self_: *const HandleInterfaceInterfaceMismatch,
     ) -> crate::OcctResult<*mut HandleInterfaceInterfaceMismatch>;
+    /// Check if Handle<Interface_InterfaceMismatch> is null
+    pub fn HandleInterfaceInterfaceMismatch_is_null(
+        self_: *const HandleInterfaceInterfaceMismatch,
+    ) -> bool;
     /// Dereference Handle to get *const Interface_InterfaceMismatch
     pub fn HandleInterfaceInterfaceMismatch_get(
         handle: *const HandleInterfaceInterfaceMismatch,
@@ -18471,6 +18693,10 @@ extern "C" {
     pub fn HandleInterfaceInterfaceModel_clone(
         self_: *const HandleInterfaceInterfaceModel,
     ) -> crate::OcctResult<*mut HandleInterfaceInterfaceModel>;
+    /// Check if Handle<Interface_InterfaceModel> is null
+    pub fn HandleInterfaceInterfaceModel_is_null(
+        self_: *const HandleInterfaceInterfaceModel,
+    ) -> bool;
     /// Dereference Handle to get *const Interface_InterfaceModel
     pub fn HandleInterfaceInterfaceModel_get(
         handle: *const HandleInterfaceInterfaceModel,
@@ -18755,6 +18981,10 @@ extern "C" {
     pub fn HandleInterfaceNodeOfGeneralLib_clone(
         self_: *const HandleInterfaceNodeOfGeneralLib,
     ) -> crate::OcctResult<*mut HandleInterfaceNodeOfGeneralLib>;
+    /// Check if Handle<Interface_NodeOfGeneralLib> is null
+    pub fn HandleInterfaceNodeOfGeneralLib_is_null(
+        self_: *const HandleInterfaceNodeOfGeneralLib,
+    ) -> bool;
     /// Dereference Handle to get *const Interface_NodeOfGeneralLib
     pub fn HandleInterfaceNodeOfGeneralLib_get(
         handle: *const HandleInterfaceNodeOfGeneralLib,
@@ -18845,6 +19075,10 @@ extern "C" {
     pub fn HandleInterfaceNodeOfReaderLib_clone(
         self_: *const HandleInterfaceNodeOfReaderLib,
     ) -> crate::OcctResult<*mut HandleInterfaceNodeOfReaderLib>;
+    /// Check if Handle<Interface_NodeOfReaderLib> is null
+    pub fn HandleInterfaceNodeOfReaderLib_is_null(
+        self_: *const HandleInterfaceNodeOfReaderLib,
+    ) -> bool;
     /// Dereference Handle to get *const Interface_NodeOfReaderLib
     pub fn HandleInterfaceNodeOfReaderLib_get(
         handle: *const HandleInterfaceNodeOfReaderLib,
@@ -18943,6 +19177,8 @@ extern "C" {
     pub fn HandleInterfaceParamList_clone(
         self_: *const HandleInterfaceParamList,
     ) -> crate::OcctResult<*mut HandleInterfaceParamList>;
+    /// Check if Handle<Interface_ParamList> is null
+    pub fn HandleInterfaceParamList_is_null(self_: *const HandleInterfaceParamList) -> bool;
     /// Dereference Handle to get *const Interface_ParamList
     pub fn HandleInterfaceParamList_get(
         handle: *const HandleInterfaceParamList,
@@ -19058,6 +19294,8 @@ extern "C" {
     pub fn HandleInterfaceParamSet_clone(
         self_: *const HandleInterfaceParamSet,
     ) -> crate::OcctResult<*mut HandleInterfaceParamSet>;
+    /// Check if Handle<Interface_ParamSet> is null
+    pub fn HandleInterfaceParamSet_is_null(self_: *const HandleInterfaceParamSet) -> bool;
     /// Dereference Handle to get *const Interface_ParamSet
     pub fn HandleInterfaceParamSet_get(
         handle: *const HandleInterfaceParamSet,
@@ -19191,6 +19429,8 @@ extern "C" {
     pub fn HandleInterfaceProtocol_clone(
         self_: *const HandleInterfaceProtocol,
     ) -> crate::OcctResult<*mut HandleInterfaceProtocol>;
+    /// Check if Handle<Interface_Protocol> is null
+    pub fn HandleInterfaceProtocol_is_null(self_: *const HandleInterfaceProtocol) -> bool;
     /// Dereference Handle to get *const Interface_Protocol
     pub fn HandleInterfaceProtocol_get(
         handle: *const HandleInterfaceProtocol,
@@ -19383,6 +19623,8 @@ extern "C" {
     pub fn HandleInterfaceReaderModule_clone(
         self_: *const HandleInterfaceReaderModule,
     ) -> crate::OcctResult<*mut HandleInterfaceReaderModule>;
+    /// Check if Handle<Interface_ReaderModule> is null
+    pub fn HandleInterfaceReaderModule_is_null(self_: *const HandleInterfaceReaderModule) -> bool;
     /// Dereference Handle to get *const Interface_ReaderModule
     pub fn HandleInterfaceReaderModule_get(
         handle: *const HandleInterfaceReaderModule,
@@ -19536,6 +19778,8 @@ extern "C" {
     pub fn HandleInterfaceReportEntity_clone(
         self_: *const HandleInterfaceReportEntity,
     ) -> crate::OcctResult<*mut HandleInterfaceReportEntity>;
+    /// Check if Handle<Interface_ReportEntity> is null
+    pub fn HandleInterfaceReportEntity_is_null(self_: *const HandleInterfaceReportEntity) -> bool;
     /// Dereference Handle to get *const Interface_ReportEntity
     pub fn HandleInterfaceReportEntity_get(
         handle: *const HandleInterfaceReportEntity,
@@ -19830,6 +20074,8 @@ extern "C" {
     pub fn HandleInterfaceSignLabel_clone(
         self_: *const HandleInterfaceSignLabel,
     ) -> crate::OcctResult<*mut HandleInterfaceSignLabel>;
+    /// Check if Handle<Interface_SignLabel> is null
+    pub fn HandleInterfaceSignLabel_is_null(self_: *const HandleInterfaceSignLabel) -> bool;
     /// Dereference Handle to get *const Interface_SignLabel
     pub fn HandleInterfaceSignLabel_get(
         handle: *const HandleInterfaceSignLabel,
@@ -19929,6 +20175,8 @@ extern "C" {
     pub fn HandleInterfaceSignType_clone(
         self_: *const HandleInterfaceSignType,
     ) -> crate::OcctResult<*mut HandleInterfaceSignType>;
+    /// Check if Handle<Interface_SignType> is null
+    pub fn HandleInterfaceSignType_is_null(self_: *const HandleInterfaceSignType) -> bool;
     /// Dereference Handle to get *const Interface_SignType
     pub fn HandleInterfaceSignType_get(
         handle: *const HandleInterfaceSignType,
@@ -20188,6 +20436,8 @@ extern "C" {
     pub fn HandleInterfaceStatic_clone(
         self_: *const HandleInterfaceStatic,
     ) -> crate::OcctResult<*mut HandleInterfaceStatic>;
+    /// Check if Handle<Interface_Static> is null
+    pub fn HandleInterfaceStatic_is_null(self_: *const HandleInterfaceStatic) -> bool;
     /// Dereference Handle to get *const Interface_Static
     pub fn HandleInterfaceStatic_get(
         handle: *const HandleInterfaceStatic,
@@ -20433,6 +20683,8 @@ extern "C" {
     pub fn HandleInterfaceTypedValue_clone(
         self_: *const HandleInterfaceTypedValue,
     ) -> crate::OcctResult<*mut HandleInterfaceTypedValue>;
+    /// Check if Handle<Interface_TypedValue> is null
+    pub fn HandleInterfaceTypedValue_is_null(self_: *const HandleInterfaceTypedValue) -> bool;
     /// Dereference Handle to get *const Interface_TypedValue
     pub fn HandleInterfaceTypedValue_get(
         handle: *const HandleInterfaceTypedValue,
@@ -20745,6 +20997,10 @@ extern "C" {
     pub fn HandleInterfaceUndefinedContent_clone(
         self_: *const HandleInterfaceUndefinedContent,
     ) -> crate::OcctResult<*mut HandleInterfaceUndefinedContent>;
+    /// Check if Handle<Interface_UndefinedContent> is null
+    pub fn HandleInterfaceUndefinedContent_is_null(
+        self_: *const HandleInterfaceUndefinedContent,
+    ) -> bool;
     /// Dereference Handle to get *const Interface_UndefinedContent
     pub fn HandleInterfaceUndefinedContent_get(
         handle: *const HandleInterfaceUndefinedContent,
@@ -21150,6 +21406,8 @@ extern "C" {
     pub fn HandleMoniToolCaseData_clone(
         self_: *const HandleMoniToolCaseData,
     ) -> crate::OcctResult<*mut HandleMoniToolCaseData>;
+    /// Check if Handle<MoniTool_CaseData> is null
+    pub fn HandleMoniToolCaseData_is_null(self_: *const HandleMoniToolCaseData) -> bool;
     /// Dereference Handle to get *const MoniTool_CaseData
     pub fn HandleMoniToolCaseData_get(
         handle: *const HandleMoniToolCaseData,
@@ -21253,6 +21511,8 @@ extern "C" {
     pub fn HandleMoniToolElement_clone(
         self_: *const HandleMoniToolElement,
     ) -> crate::OcctResult<*mut HandleMoniToolElement>;
+    /// Check if Handle<MoniTool_Element> is null
+    pub fn HandleMoniToolElement_is_null(self_: *const HandleMoniToolElement) -> bool;
     /// Dereference Handle to get *const MoniTool_Element
     pub fn HandleMoniToolElement_get(
         handle: *const HandleMoniToolElement,
@@ -21354,6 +21614,10 @@ extern "C" {
     pub fn HandleMoniToolHSequenceOfElement_clone(
         self_: *const HandleMoniToolHSequenceOfElement,
     ) -> crate::OcctResult<*mut HandleMoniToolHSequenceOfElement>;
+    /// Check if Handle<MoniTool_HSequenceOfElement> is null
+    pub fn HandleMoniToolHSequenceOfElement_is_null(
+        self_: *const HandleMoniToolHSequenceOfElement,
+    ) -> bool;
     /// Dereference Handle to get *const MoniTool_HSequenceOfElement
     pub fn HandleMoniToolHSequenceOfElement_get(
         handle: *const HandleMoniToolHSequenceOfElement,
@@ -21430,6 +21694,8 @@ extern "C" {
     pub fn HandleMoniToolIntVal_clone(
         self_: *const HandleMoniToolIntVal,
     ) -> crate::OcctResult<*mut HandleMoniToolIntVal>;
+    /// Check if Handle<MoniTool_IntVal> is null
+    pub fn HandleMoniToolIntVal_is_null(self_: *const HandleMoniToolIntVal) -> bool;
     /// Dereference Handle to get *const MoniTool_IntVal
     pub fn HandleMoniToolIntVal_get(
         handle: *const HandleMoniToolIntVal,
@@ -21506,6 +21772,8 @@ extern "C" {
     pub fn HandleMoniToolRealVal_clone(
         self_: *const HandleMoniToolRealVal,
     ) -> crate::OcctResult<*mut HandleMoniToolRealVal>;
+    /// Check if Handle<MoniTool_RealVal> is null
+    pub fn HandleMoniToolRealVal_is_null(self_: *const HandleMoniToolRealVal) -> bool;
     /// Dereference Handle to get *const MoniTool_RealVal
     pub fn HandleMoniToolRealVal_get(
         handle: *const HandleMoniToolRealVal,
@@ -21596,6 +21864,8 @@ extern "C" {
     pub fn HandleMoniToolSignShape_clone(
         self_: *const HandleMoniToolSignShape,
     ) -> crate::OcctResult<*mut HandleMoniToolSignShape>;
+    /// Check if Handle<MoniTool_SignShape> is null
+    pub fn HandleMoniToolSignShape_is_null(self_: *const HandleMoniToolSignShape) -> bool;
     /// Dereference Handle to get *const MoniTool_SignShape
     pub fn HandleMoniToolSignShape_get(
         handle: *const HandleMoniToolSignShape,
@@ -21686,6 +21956,8 @@ extern "C" {
     pub fn HandleMoniToolSignText_clone(
         self_: *const HandleMoniToolSignText,
     ) -> crate::OcctResult<*mut HandleMoniToolSignText>;
+    /// Check if Handle<MoniTool_SignText> is null
+    pub fn HandleMoniToolSignText_is_null(self_: *const HandleMoniToolSignText) -> bool;
     /// Dereference Handle to get *const MoniTool_SignText
     pub fn HandleMoniToolSignText_get(
         handle: *const HandleMoniToolSignText,
@@ -21907,6 +22179,8 @@ extern "C" {
     pub fn HandleMoniToolTimer_clone(
         self_: *const HandleMoniToolTimer,
     ) -> crate::OcctResult<*mut HandleMoniToolTimer>;
+    /// Check if Handle<MoniTool_Timer> is null
+    pub fn HandleMoniToolTimer_is_null(self_: *const HandleMoniToolTimer) -> bool;
     /// Dereference Handle to get *const MoniTool_Timer
     pub fn HandleMoniToolTimer_get(
         handle: *const HandleMoniToolTimer,
@@ -22022,6 +22296,8 @@ extern "C" {
     pub fn HandleMoniToolTransientElem_clone(
         self_: *const HandleMoniToolTransientElem,
     ) -> crate::OcctResult<*mut HandleMoniToolTransientElem>;
+    /// Check if Handle<MoniTool_TransientElem> is null
+    pub fn HandleMoniToolTransientElem_is_null(self_: *const HandleMoniToolTransientElem) -> bool;
     /// Dereference Handle to get *const MoniTool_TransientElem
     pub fn HandleMoniToolTransientElem_get(
         handle: *const HandleMoniToolTransientElem,
@@ -22373,6 +22649,8 @@ extern "C" {
     pub fn HandleMoniToolTypedValue_clone(
         self_: *const HandleMoniToolTypedValue,
     ) -> crate::OcctResult<*mut HandleMoniToolTypedValue>;
+    /// Check if Handle<MoniTool_TypedValue> is null
+    pub fn HandleMoniToolTypedValue_is_null(self_: *const HandleMoniToolTypedValue) -> bool;
     /// Dereference Handle to get *const MoniTool_TypedValue
     pub fn HandleMoniToolTypedValue_get(
         handle: *const HandleMoniToolTypedValue,
@@ -22498,6 +22776,8 @@ extern "C" {
     pub fn HandleTransferActorDispatch_clone(
         self_: *const HandleTransferActorDispatch,
     ) -> crate::OcctResult<*mut HandleTransferActorDispatch>;
+    /// Check if Handle<Transfer_ActorDispatch> is null
+    pub fn HandleTransferActorDispatch_is_null(self_: *const HandleTransferActorDispatch) -> bool;
     /// Dereference Handle to get *const Transfer_ActorDispatch
     pub fn HandleTransferActorDispatch_get(
         handle: *const HandleTransferActorDispatch,
@@ -22704,6 +22984,10 @@ extern "C" {
     pub fn HandleTransferActorOfFinderProcess_clone(
         self_: *const HandleTransferActorOfFinderProcess,
     ) -> crate::OcctResult<*mut HandleTransferActorOfFinderProcess>;
+    /// Check if Handle<Transfer_ActorOfFinderProcess> is null
+    pub fn HandleTransferActorOfFinderProcess_is_null(
+        self_: *const HandleTransferActorOfFinderProcess,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_ActorOfFinderProcess
     pub fn HandleTransferActorOfFinderProcess_get(
         handle: *const HandleTransferActorOfFinderProcess,
@@ -22870,6 +23154,10 @@ extern "C" {
     pub fn HandleTransferActorOfProcessForFinder_clone(
         self_: *const HandleTransferActorOfProcessForFinder,
     ) -> crate::OcctResult<*mut HandleTransferActorOfProcessForFinder>;
+    /// Check if Handle<Transfer_ActorOfProcessForFinder> is null
+    pub fn HandleTransferActorOfProcessForFinder_is_null(
+        self_: *const HandleTransferActorOfProcessForFinder,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_ActorOfProcessForFinder
     pub fn HandleTransferActorOfProcessForFinder_get(
         handle: *const HandleTransferActorOfProcessForFinder,
@@ -23004,6 +23292,10 @@ extern "C" {
     pub fn HandleTransferActorOfProcessForTransient_clone(
         self_: *const HandleTransferActorOfProcessForTransient,
     ) -> crate::OcctResult<*mut HandleTransferActorOfProcessForTransient>;
+    /// Check if Handle<Transfer_ActorOfProcessForTransient> is null
+    pub fn HandleTransferActorOfProcessForTransient_is_null(
+        self_: *const HandleTransferActorOfProcessForTransient,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_ActorOfProcessForTransient
     pub fn HandleTransferActorOfProcessForTransient_get(
         handle: *const HandleTransferActorOfProcessForTransient,
@@ -23152,6 +23444,10 @@ extern "C" {
     pub fn HandleTransferActorOfTransientProcess_clone(
         self_: *const HandleTransferActorOfTransientProcess,
     ) -> crate::OcctResult<*mut HandleTransferActorOfTransientProcess>;
+    /// Check if Handle<Transfer_ActorOfTransientProcess> is null
+    pub fn HandleTransferActorOfTransientProcess_is_null(
+        self_: *const HandleTransferActorOfTransientProcess,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_ActorOfTransientProcess
     pub fn HandleTransferActorOfTransientProcess_get(
         handle: *const HandleTransferActorOfTransientProcess,
@@ -23324,6 +23620,8 @@ extern "C" {
     pub fn HandleTransferBinder_clone(
         self_: *const HandleTransferBinder,
     ) -> crate::OcctResult<*mut HandleTransferBinder>;
+    /// Check if Handle<Transfer_Binder> is null
+    pub fn HandleTransferBinder_is_null(self_: *const HandleTransferBinder) -> bool;
     /// Dereference Handle to get *const Transfer_Binder
     pub fn HandleTransferBinder_get(
         handle: *const HandleTransferBinder,
@@ -23460,6 +23758,10 @@ extern "C" {
     pub fn HandleTransferBinderOfTransientInteger_clone(
         self_: *const HandleTransferBinderOfTransientInteger,
     ) -> crate::OcctResult<*mut HandleTransferBinderOfTransientInteger>;
+    /// Check if Handle<Transfer_BinderOfTransientInteger> is null
+    pub fn HandleTransferBinderOfTransientInteger_is_null(
+        self_: *const HandleTransferBinderOfTransientInteger,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_BinderOfTransientInteger
     pub fn HandleTransferBinderOfTransientInteger_get(
         handle: *const HandleTransferBinderOfTransientInteger,
@@ -23648,6 +23950,10 @@ extern "C" {
     pub fn HandleTransferDispatchControl_clone(
         self_: *const HandleTransferDispatchControl,
     ) -> crate::OcctResult<*mut HandleTransferDispatchControl>;
+    /// Check if Handle<Transfer_DispatchControl> is null
+    pub fn HandleTransferDispatchControl_is_null(
+        self_: *const HandleTransferDispatchControl,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_DispatchControl
     pub fn HandleTransferDispatchControl_get(
         handle: *const HandleTransferDispatchControl,
@@ -23829,6 +24135,8 @@ extern "C" {
     pub fn HandleTransferFinder_clone(
         self_: *const HandleTransferFinder,
     ) -> crate::OcctResult<*mut HandleTransferFinder>;
+    /// Check if Handle<Transfer_Finder> is null
+    pub fn HandleTransferFinder_is_null(self_: *const HandleTransferFinder) -> bool;
     /// Dereference Handle to get *const Transfer_Finder
     pub fn HandleTransferFinder_get(
         handle: *const HandleTransferFinder,
@@ -23952,6 +24260,8 @@ extern "C" {
     pub fn HandleTransferFinderProcess_clone(
         self_: *const HandleTransferFinderProcess,
     ) -> crate::OcctResult<*mut HandleTransferFinderProcess>;
+    /// Check if Handle<Transfer_FinderProcess> is null
+    pub fn HandleTransferFinderProcess_is_null(self_: *const HandleTransferFinderProcess) -> bool;
     /// Dereference Handle to get *const Transfer_FinderProcess
     pub fn HandleTransferFinderProcess_get(
         handle: *const HandleTransferFinderProcess,
@@ -24329,6 +24639,10 @@ extern "C" {
     pub fn HandleTransferHSequenceOfBinder_clone(
         self_: *const HandleTransferHSequenceOfBinder,
     ) -> crate::OcctResult<*mut HandleTransferHSequenceOfBinder>;
+    /// Check if Handle<Transfer_HSequenceOfBinder> is null
+    pub fn HandleTransferHSequenceOfBinder_is_null(
+        self_: *const HandleTransferHSequenceOfBinder,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_HSequenceOfBinder
     pub fn HandleTransferHSequenceOfBinder_get(
         handle: *const HandleTransferHSequenceOfBinder,
@@ -24424,6 +24738,10 @@ extern "C" {
     pub fn HandleTransferHSequenceOfFinder_clone(
         self_: *const HandleTransferHSequenceOfFinder,
     ) -> crate::OcctResult<*mut HandleTransferHSequenceOfFinder>;
+    /// Check if Handle<Transfer_HSequenceOfFinder> is null
+    pub fn HandleTransferHSequenceOfFinder_is_null(
+        self_: *const HandleTransferHSequenceOfFinder,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_HSequenceOfFinder
     pub fn HandleTransferHSequenceOfFinder_get(
         handle: *const HandleTransferHSequenceOfFinder,
@@ -24756,6 +25074,8 @@ extern "C" {
     pub fn HandleTransferMapContainer_clone(
         self_: *const HandleTransferMapContainer,
     ) -> crate::OcctResult<*mut HandleTransferMapContainer>;
+    /// Check if Handle<Transfer_MapContainer> is null
+    pub fn HandleTransferMapContainer_is_null(self_: *const HandleTransferMapContainer) -> bool;
     /// Dereference Handle to get *const Transfer_MapContainer
     pub fn HandleTransferMapContainer_get(
         handle: *const HandleTransferMapContainer,
@@ -24872,6 +25192,9 @@ extern "C" {
     pub fn HandleTransferMultipleBinder_clone(
         self_: *const HandleTransferMultipleBinder,
     ) -> crate::OcctResult<*mut HandleTransferMultipleBinder>;
+    /// Check if Handle<Transfer_MultipleBinder> is null
+    pub fn HandleTransferMultipleBinder_is_null(self_: *const HandleTransferMultipleBinder)
+        -> bool;
     /// Dereference Handle to get *const Transfer_MultipleBinder
     pub fn HandleTransferMultipleBinder_get(
         handle: *const HandleTransferMultipleBinder,
@@ -25322,6 +25645,10 @@ extern "C" {
     pub fn HandleTransferProcessForFinder_clone(
         self_: *const HandleTransferProcessForFinder,
     ) -> crate::OcctResult<*mut HandleTransferProcessForFinder>;
+    /// Check if Handle<Transfer_ProcessForFinder> is null
+    pub fn HandleTransferProcessForFinder_is_null(
+        self_: *const HandleTransferProcessForFinder,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_ProcessForFinder
     pub fn HandleTransferProcessForFinder_get(
         handle: *const HandleTransferProcessForFinder,
@@ -25736,6 +26063,10 @@ extern "C" {
     pub fn HandleTransferProcessForTransient_clone(
         self_: *const HandleTransferProcessForTransient,
     ) -> crate::OcctResult<*mut HandleTransferProcessForTransient>;
+    /// Check if Handle<Transfer_ProcessForTransient> is null
+    pub fn HandleTransferProcessForTransient_is_null(
+        self_: *const HandleTransferProcessForTransient,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_ProcessForTransient
     pub fn HandleTransferProcessForTransient_get(
         handle: *const HandleTransferProcessForTransient,
@@ -25904,6 +26235,10 @@ extern "C" {
     pub fn HandleTransferResultFromModel_clone(
         self_: *const HandleTransferResultFromModel,
     ) -> crate::OcctResult<*mut HandleTransferResultFromModel>;
+    /// Check if Handle<Transfer_ResultFromModel> is null
+    pub fn HandleTransferResultFromModel_is_null(
+        self_: *const HandleTransferResultFromModel,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_ResultFromModel
     pub fn HandleTransferResultFromModel_get(
         handle: *const HandleTransferResultFromModel,
@@ -26052,6 +26387,10 @@ extern "C" {
     pub fn HandleTransferResultFromTransient_clone(
         self_: *const HandleTransferResultFromTransient,
     ) -> crate::OcctResult<*mut HandleTransferResultFromTransient>;
+    /// Check if Handle<Transfer_ResultFromTransient> is null
+    pub fn HandleTransferResultFromTransient_is_null(
+        self_: *const HandleTransferResultFromTransient,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_ResultFromTransient
     pub fn HandleTransferResultFromTransient_get(
         handle: *const HandleTransferResultFromTransient,
@@ -26162,6 +26501,10 @@ extern "C" {
     pub fn HandleTransferSimpleBinderOfTransient_clone(
         self_: *const HandleTransferSimpleBinderOfTransient,
     ) -> crate::OcctResult<*mut HandleTransferSimpleBinderOfTransient>;
+    /// Check if Handle<Transfer_SimpleBinderOfTransient> is null
+    pub fn HandleTransferSimpleBinderOfTransient_is_null(
+        self_: *const HandleTransferSimpleBinderOfTransient,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_SimpleBinderOfTransient
     pub fn HandleTransferSimpleBinderOfTransient_get(
         handle: *const HandleTransferSimpleBinderOfTransient,
@@ -26340,6 +26683,10 @@ extern "C" {
     pub fn HandleTransferTransferDeadLoop_clone(
         self_: *const HandleTransferTransferDeadLoop,
     ) -> crate::OcctResult<*mut HandleTransferTransferDeadLoop>;
+    /// Check if Handle<Transfer_TransferDeadLoop> is null
+    pub fn HandleTransferTransferDeadLoop_is_null(
+        self_: *const HandleTransferTransferDeadLoop,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_TransferDeadLoop
     pub fn HandleTransferTransferDeadLoop_get(
         handle: *const HandleTransferTransferDeadLoop,
@@ -26585,6 +26932,10 @@ extern "C" {
     pub fn HandleTransferTransferFailure_clone(
         self_: *const HandleTransferTransferFailure,
     ) -> crate::OcctResult<*mut HandleTransferTransferFailure>;
+    /// Check if Handle<Transfer_TransferFailure> is null
+    pub fn HandleTransferTransferFailure_is_null(
+        self_: *const HandleTransferTransferFailure,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_TransferFailure
     pub fn HandleTransferTransferFailure_get(
         handle: *const HandleTransferTransferFailure,
@@ -26915,6 +27266,10 @@ extern "C" {
     pub fn HandleTransferTransientListBinder_clone(
         self_: *const HandleTransferTransientListBinder,
     ) -> crate::OcctResult<*mut HandleTransferTransientListBinder>;
+    /// Check if Handle<Transfer_TransientListBinder> is null
+    pub fn HandleTransferTransientListBinder_is_null(
+        self_: *const HandleTransferTransientListBinder,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_TransientListBinder
     pub fn HandleTransferTransientListBinder_get(
         handle: *const HandleTransferTransientListBinder,
@@ -27057,6 +27412,10 @@ extern "C" {
     pub fn HandleTransferTransientMapper_clone(
         self_: *const HandleTransferTransientMapper,
     ) -> crate::OcctResult<*mut HandleTransferTransientMapper>;
+    /// Check if Handle<Transfer_TransientMapper> is null
+    pub fn HandleTransferTransientMapper_is_null(
+        self_: *const HandleTransferTransientMapper,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_TransientMapper
     pub fn HandleTransferTransientMapper_get(
         handle: *const HandleTransferTransientMapper,
@@ -27237,6 +27596,10 @@ extern "C" {
     pub fn HandleTransferTransientProcess_clone(
         self_: *const HandleTransferTransientProcess,
     ) -> crate::OcctResult<*mut HandleTransferTransientProcess>;
+    /// Check if Handle<Transfer_TransientProcess> is null
+    pub fn HandleTransferTransientProcess_is_null(
+        self_: *const HandleTransferTransientProcess,
+    ) -> bool;
     /// Dereference Handle to get *const Transfer_TransientProcess
     pub fn HandleTransferTransientProcess_get(
         handle: *const HandleTransferTransientProcess,
@@ -27602,6 +27965,8 @@ extern "C" {
     pub fn HandleTransferVoidBinder_clone(
         self_: *const HandleTransferVoidBinder,
     ) -> crate::OcctResult<*mut HandleTransferVoidBinder>;
+    /// Check if Handle<Transfer_VoidBinder> is null
+    pub fn HandleTransferVoidBinder_is_null(self_: *const HandleTransferVoidBinder) -> bool;
     /// Dereference Handle to get *const Transfer_VoidBinder
     pub fn HandleTransferVoidBinder_get(
         handle: *const HandleTransferVoidBinder,
@@ -27759,6 +28124,10 @@ extern "C" {
     pub fn HandleTransferBRepBinderOfShape_clone(
         self_: *const HandleTransferBRepBinderOfShape,
     ) -> crate::OcctResult<*mut HandleTransferBRepBinderOfShape>;
+    /// Check if Handle<TransferBRep_BinderOfShape> is null
+    pub fn HandleTransferBRepBinderOfShape_is_null(
+        self_: *const HandleTransferBRepBinderOfShape,
+    ) -> bool;
     /// Dereference Handle to get *const TransferBRep_BinderOfShape
     pub fn HandleTransferBRepBinderOfShape_get(
         handle: *const HandleTransferBRepBinderOfShape,
@@ -27915,6 +28284,10 @@ extern "C" {
     pub fn HandleTransferBRepHSequenceOfTransferResultInfo_clone(
         self_: *const HandleTransferBRepHSequenceOfTransferResultInfo,
     ) -> crate::OcctResult<*mut HandleTransferBRepHSequenceOfTransferResultInfo>;
+    /// Check if Handle<TransferBRep_HSequenceOfTransferResultInfo> is null
+    pub fn HandleTransferBRepHSequenceOfTransferResultInfo_is_null(
+        self_: *const HandleTransferBRepHSequenceOfTransferResultInfo,
+    ) -> bool;
     /// Dereference Handle to get *const TransferBRep_HSequenceOfTransferResultInfo
     pub fn HandleTransferBRepHSequenceOfTransferResultInfo_get(
         handle: *const HandleTransferBRepHSequenceOfTransferResultInfo,
@@ -28188,6 +28561,10 @@ extern "C" {
     pub fn HandleTransferBRepShapeBinder_clone(
         self_: *const HandleTransferBRepShapeBinder,
     ) -> crate::OcctResult<*mut HandleTransferBRepShapeBinder>;
+    /// Check if Handle<TransferBRep_ShapeBinder> is null
+    pub fn HandleTransferBRepShapeBinder_is_null(
+        self_: *const HandleTransferBRepShapeBinder,
+    ) -> bool;
     /// Dereference Handle to get *const TransferBRep_ShapeBinder
     pub fn HandleTransferBRepShapeBinder_get(
         handle: *const HandleTransferBRepShapeBinder,
@@ -28441,6 +28818,10 @@ extern "C" {
     pub fn HandleTransferBRepShapeListBinder_clone(
         self_: *const HandleTransferBRepShapeListBinder,
     ) -> crate::OcctResult<*mut HandleTransferBRepShapeListBinder>;
+    /// Check if Handle<TransferBRep_ShapeListBinder> is null
+    pub fn HandleTransferBRepShapeListBinder_is_null(
+        self_: *const HandleTransferBRepShapeListBinder,
+    ) -> bool;
     /// Dereference Handle to get *const TransferBRep_ShapeListBinder
     pub fn HandleTransferBRepShapeListBinder_get(
         handle: *const HandleTransferBRepShapeListBinder,
@@ -28583,6 +28964,10 @@ extern "C" {
     pub fn HandleTransferBRepShapeMapper_clone(
         self_: *const HandleTransferBRepShapeMapper,
     ) -> crate::OcctResult<*mut HandleTransferBRepShapeMapper>;
+    /// Check if Handle<TransferBRep_ShapeMapper> is null
+    pub fn HandleTransferBRepShapeMapper_is_null(
+        self_: *const HandleTransferBRepShapeMapper,
+    ) -> bool;
     /// Dereference Handle to get *const TransferBRep_ShapeMapper
     pub fn HandleTransferBRepShapeMapper_get(
         handle: *const HandleTransferBRepShapeMapper,
@@ -28713,6 +29098,10 @@ extern "C" {
     pub fn HandleTransferBRepTransferResultInfo_clone(
         self_: *const HandleTransferBRepTransferResultInfo,
     ) -> crate::OcctResult<*mut HandleTransferBRepTransferResultInfo>;
+    /// Check if Handle<TransferBRep_TransferResultInfo> is null
+    pub fn HandleTransferBRepTransferResultInfo_is_null(
+        self_: *const HandleTransferBRepTransferResultInfo,
+    ) -> bool;
     /// Dereference Handle to get *const TransferBRep_TransferResultInfo
     pub fn HandleTransferBRepTransferResultInfo_get(
         handle: *const HandleTransferBRepTransferResultInfo,
@@ -28823,6 +29212,8 @@ extern "C" {
     pub fn HandleXSAlgoAlgoContainer_clone(
         self_: *const HandleXSAlgoAlgoContainer,
     ) -> crate::OcctResult<*mut HandleXSAlgoAlgoContainer>;
+    /// Check if Handle<XSAlgo_AlgoContainer> is null
+    pub fn HandleXSAlgoAlgoContainer_is_null(self_: *const HandleXSAlgoAlgoContainer) -> bool;
     /// Dereference Handle to get *const XSAlgo_AlgoContainer
     pub fn HandleXSAlgoAlgoContainer_get(
         handle: *const HandleXSAlgoAlgoContainer,
@@ -29040,6 +29431,10 @@ extern "C" {
     pub fn HandleXSControlConnectedShapes_clone(
         self_: *const HandleXSControlConnectedShapes,
     ) -> crate::OcctResult<*mut HandleXSControlConnectedShapes>;
+    /// Check if Handle<XSControl_ConnectedShapes> is null
+    pub fn HandleXSControlConnectedShapes_is_null(
+        self_: *const HandleXSControlConnectedShapes,
+    ) -> bool;
     /// Dereference Handle to get *const XSControl_ConnectedShapes
     pub fn HandleXSControlConnectedShapes_get(
         handle: *const HandleXSControlConnectedShapes,
@@ -29301,6 +29696,8 @@ extern "C" {
     pub fn HandleXSControlController_clone(
         self_: *const HandleXSControlController,
     ) -> crate::OcctResult<*mut HandleXSControlController>;
+    /// Check if Handle<XSControl_Controller> is null
+    pub fn HandleXSControlController_is_null(self_: *const HandleXSControlController) -> bool;
     /// Dereference Handle to get *const XSControl_Controller
     pub fn HandleXSControlController_get(
         handle: *const HandleXSControlController,
@@ -29649,6 +30046,10 @@ extern "C" {
     pub fn HandleXSControlSelectForTransfer_clone(
         self_: *const HandleXSControlSelectForTransfer,
     ) -> crate::OcctResult<*mut HandleXSControlSelectForTransfer>;
+    /// Check if Handle<XSControl_SelectForTransfer> is null
+    pub fn HandleXSControlSelectForTransfer_is_null(
+        self_: *const HandleXSControlSelectForTransfer,
+    ) -> bool;
     /// Dereference Handle to get *const XSControl_SelectForTransfer
     pub fn HandleXSControlSelectForTransfer_get(
         handle: *const HandleXSControlSelectForTransfer,
@@ -29859,6 +30260,10 @@ extern "C" {
     pub fn HandleXSControlSignTransferStatus_clone(
         self_: *const HandleXSControlSignTransferStatus,
     ) -> crate::OcctResult<*mut HandleXSControlSignTransferStatus>;
+    /// Check if Handle<XSControl_SignTransferStatus> is null
+    pub fn HandleXSControlSignTransferStatus_is_null(
+        self_: *const HandleXSControlSignTransferStatus,
+    ) -> bool;
     /// Dereference Handle to get *const XSControl_SignTransferStatus
     pub fn HandleXSControlSignTransferStatus_get(
         handle: *const HandleXSControlSignTransferStatus,
@@ -30231,6 +30636,10 @@ extern "C" {
     pub fn HandleXSControlTransferReader_clone(
         self_: *const HandleXSControlTransferReader,
     ) -> crate::OcctResult<*mut HandleXSControlTransferReader>;
+    /// Check if Handle<XSControl_TransferReader> is null
+    pub fn HandleXSControlTransferReader_is_null(
+        self_: *const HandleXSControlTransferReader,
+    ) -> bool;
     /// Dereference Handle to get *const XSControl_TransferReader
     pub fn HandleXSControlTransferReader_get(
         handle: *const HandleXSControlTransferReader,
@@ -30375,6 +30784,10 @@ extern "C" {
     pub fn HandleXSControlTransferWriter_clone(
         self_: *const HandleXSControlTransferWriter,
     ) -> crate::OcctResult<*mut HandleXSControlTransferWriter>;
+    /// Check if Handle<XSControl_TransferWriter> is null
+    pub fn HandleXSControlTransferWriter_is_null(
+        self_: *const HandleXSControlTransferWriter,
+    ) -> bool;
     /// Dereference Handle to get *const XSControl_TransferWriter
     pub fn HandleXSControlTransferWriter_get(
         handle: *const HandleXSControlTransferWriter,
@@ -30731,6 +31144,8 @@ extern "C" {
     pub fn HandleXSControlVars_clone(
         self_: *const HandleXSControlVars,
     ) -> crate::OcctResult<*mut HandleXSControlVars>;
+    /// Check if Handle<XSControl_Vars> is null
+    pub fn HandleXSControlVars_is_null(self_: *const HandleXSControlVars) -> bool;
     /// Dereference Handle to get *const XSControl_Vars
     pub fn HandleXSControlVars_get(
         handle: *const HandleXSControlVars,
@@ -30928,6 +31343,8 @@ extern "C" {
     pub fn HandleXSControlWorkSession_clone(
         self_: *const HandleXSControlWorkSession,
     ) -> crate::OcctResult<*mut HandleXSControlWorkSession>;
+    /// Check if Handle<XSControl_WorkSession> is null
+    pub fn HandleXSControlWorkSession_is_null(self_: *const HandleXSControlWorkSession) -> bool;
     /// Dereference Handle to get *const XSControl_WorkSession
     pub fn HandleXSControlWorkSession_get(
         handle: *const HandleXSControlWorkSession,

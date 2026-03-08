@@ -1006,6 +1006,11 @@ unsafe impl crate::CppCopyable for HandleBinObjMgtPosition {
 }
 
 impl HandleBinObjMgtPosition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BinObjMgt_Position
     pub fn get(&self) -> &crate::ffi_types::BinObjMgt_Position {
         unsafe {

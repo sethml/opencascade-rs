@@ -1742,6 +1742,13 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray1OfCirc2d {
 }
 
 impl HandleTColgpHArray1OfCirc2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray1OfCirc2d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray1OfCirc2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfCirc2d {
         unsafe {
@@ -2032,6 +2039,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray1OfDir {
 }
 
 impl HandleTColgpHArray1OfDir {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray1OfDir
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfDir {
         unsafe {
@@ -2324,6 +2336,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray1OfDir2d {
 }
 
 impl HandleTColgpHArray1OfDir2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray1OfDir2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfDir2d {
         unsafe {
@@ -2616,6 +2633,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray1OfLin2d {
 }
 
 impl HandleTColgpHArray1OfLin2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray1OfLin2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray1OfLin2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfLin2d {
         unsafe {
@@ -2906,6 +2928,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray1OfPnt {
 }
 
 impl HandleTColgpHArray1OfPnt {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray1OfPnt
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfPnt {
         unsafe {
@@ -3198,6 +3225,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray1OfPnt2d {
 }
 
 impl HandleTColgpHArray1OfPnt2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray1OfPnt2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfPnt2d {
         unsafe {
@@ -3488,6 +3520,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray1OfVec {
 }
 
 impl HandleTColgpHArray1OfVec {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray1OfVec
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfVec {
         unsafe {
@@ -3780,6 +3817,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray1OfVec2d {
 }
 
 impl HandleTColgpHArray1OfVec2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray1OfVec2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfVec2d {
         unsafe {
@@ -4068,6 +4110,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray1OfXY {
 }
 
 impl HandleTColgpHArray1OfXY {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray1OfXY_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray1OfXY
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfXY {
         unsafe {
@@ -4358,6 +4405,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray1OfXYZ {
 }
 
 impl HandleTColgpHArray1OfXYZ {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray1OfXYZ_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray1OfXYZ
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfXYZ {
         unsafe {
@@ -4634,6 +4686,13 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray2OfCirc2d {
 }
 
 impl HandleTColgpHArray2OfCirc2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray2OfCirc2d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray2OfCirc2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfCirc2d {
         unsafe {
@@ -4908,6 +4967,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray2OfDir {
 }
 
 impl HandleTColgpHArray2OfDir {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray2OfDir
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfDir {
         unsafe {
@@ -5184,6 +5248,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray2OfDir2d {
 }
 
 impl HandleTColgpHArray2OfDir2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray2OfDir2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfDir2d {
         unsafe {
@@ -5460,6 +5529,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray2OfLin2d {
 }
 
 impl HandleTColgpHArray2OfLin2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray2OfLin2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray2OfLin2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfLin2d {
         unsafe {
@@ -5734,6 +5808,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray2OfPnt {
 }
 
 impl HandleTColgpHArray2OfPnt {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray2OfPnt
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfPnt {
         unsafe {
@@ -6010,6 +6089,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray2OfPnt2d {
 }
 
 impl HandleTColgpHArray2OfPnt2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray2OfPnt2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfPnt2d {
         unsafe {
@@ -6284,6 +6368,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray2OfVec {
 }
 
 impl HandleTColgpHArray2OfVec {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray2OfVec
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfVec {
         unsafe {
@@ -6560,6 +6649,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray2OfVec2d {
 }
 
 impl HandleTColgpHArray2OfVec2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray2OfVec2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfVec2d {
         unsafe {
@@ -6832,6 +6926,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray2OfXY {
 }
 
 impl HandleTColgpHArray2OfXY {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray2OfXY_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray2OfXY
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfXY {
         unsafe {
@@ -7106,6 +7205,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHArray2OfXYZ {
 }
 
 impl HandleTColgpHArray2OfXYZ {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHArray2OfXYZ_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HArray2OfXYZ
     pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfXYZ {
         unsafe {
@@ -7356,6 +7460,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfDir {
 }
 
 impl HandleTColgpHSequenceOfDir {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfDir
     pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfDir {
         unsafe {
@@ -7613,6 +7722,13 @@ unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfDir2d {
 }
 
 impl HandleTColgpHSequenceOfDir2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir2d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfDir2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfDir2d {
         unsafe {
@@ -7863,6 +7979,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfPnt {
 }
 
 impl HandleTColgpHSequenceOfPnt {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfPnt
     pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfPnt {
         unsafe {
@@ -8120,6 +8241,13 @@ unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfPnt2d {
 }
 
 impl HandleTColgpHSequenceOfPnt2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt2d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfPnt2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfPnt2d {
         unsafe {
@@ -8370,6 +8498,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfVec {
 }
 
 impl HandleTColgpHSequenceOfVec {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfVec
     pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfVec {
         unsafe {
@@ -8627,6 +8760,13 @@ unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfVec2d {
 }
 
 impl HandleTColgpHSequenceOfVec2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec2d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfVec2d
     pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfVec2d {
         unsafe {
@@ -8874,6 +9014,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfXY {
 }
 
 impl HandleTColgpHSequenceOfXY {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXY_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfXY
     pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfXY {
         unsafe {
@@ -9124,6 +9269,11 @@ unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfXYZ {
 }
 
 impl HandleTColgpHSequenceOfXYZ {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXYZ_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfXYZ
     pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfXYZ {
         unsafe {

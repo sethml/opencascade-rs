@@ -261,6 +261,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectActivator {
 }
 
 impl HandleIGESSelectActivator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_Activator
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_Activator {
         unsafe {
@@ -694,6 +701,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectAddFileComment {
 }
 
 impl HandleIGESSelectAddFileComment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_AddFileComment
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_AddFileComment {
         unsafe {
@@ -1126,6 +1140,11 @@ unsafe impl crate::CppCopyable for HandleIGESSelectAddGroup {
 }
 
 impl HandleIGESSelectAddGroup {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_AddGroup
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_AddGroup {
         unsafe {
@@ -1596,6 +1615,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectAutoCorrect {
 }
 
 impl HandleIGESSelectAutoCorrect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_AutoCorrect
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_AutoCorrect {
         unsafe {
@@ -2129,6 +2155,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectChangeLevelList {
 }
 
 impl HandleIGESSelectChangeLevelList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_ChangeLevelList
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ChangeLevelList {
         unsafe {
@@ -2634,6 +2667,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectChangeLevelNumber {
 }
 
 impl HandleIGESSelectChangeLevelNumber {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_ChangeLevelNumber
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ChangeLevelNumber {
         unsafe {
@@ -3081,6 +3123,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectComputeStatus {
 }
 
 impl HandleIGESSelectComputeStatus {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_ComputeStatus
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ComputeStatus {
         unsafe {
@@ -3686,6 +3735,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectCounterOfLevelNumber {
 }
 
 impl HandleIGESSelectCounterOfLevelNumber {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_CounterOfLevelNumber
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_CounterOfLevelNumber {
         unsafe {
@@ -4097,6 +4155,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectDispPerDrawing {
 }
 
 impl HandleIGESSelectDispPerDrawing {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_DispPerDrawing
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_DispPerDrawing {
         unsafe {
@@ -4497,6 +4562,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectDispPerSingleView {
 }
 
 impl HandleIGESSelectDispPerSingleView {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_DispPerSingleView
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_DispPerSingleView {
         unsafe {
@@ -4770,6 +4844,11 @@ unsafe impl crate::CppCopyable for HandleIGESSelectDumper {
 }
 
 impl HandleIGESSelectDumper {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_Dumper
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_Dumper {
         unsafe {
@@ -5263,6 +5342,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectEditDirPart {
 }
 
 impl HandleIGESSelectEditDirPart {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_EditDirPart
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_EditDirPart {
         unsafe {
@@ -5752,6 +5838,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectEditHeader {
 }
 
 impl HandleIGESSelectEditHeader {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_EditHeader
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_EditHeader {
         unsafe {
@@ -6085,6 +6178,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectFileModifier {
 }
 
 impl HandleIGESSelectFileModifier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_FileModifier
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_FileModifier {
         unsafe {
@@ -6579,6 +6679,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectFloatFormat {
 }
 
 impl HandleIGESSelectFloatFormat {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_FloatFormat
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_FloatFormat {
         unsafe {
@@ -6998,6 +7105,11 @@ unsafe impl crate::CppCopyable for HandleIGESSelectIGESName {
 }
 
 impl HandleIGESSelectIGESName {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_IGESName
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_IGESName {
         unsafe {
@@ -7461,6 +7573,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectIGESTypeForm {
 }
 
 impl HandleIGESSelectIGESTypeForm {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_IGESTypeForm
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_IGESTypeForm {
         unsafe {
@@ -7881,6 +8000,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectModelModifier {
 }
 
 impl HandleIGESSelectModelModifier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_ModelModifier
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ModelModifier {
         unsafe {
@@ -8545,6 +8671,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectRebuildDrawings {
 }
 
 impl HandleIGESSelectRebuildDrawings {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_RebuildDrawings
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_RebuildDrawings {
         unsafe {
@@ -8990,6 +9123,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectRebuildGroups {
 }
 
 impl HandleIGESSelectRebuildGroups {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_RebuildGroups
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_RebuildGroups {
         unsafe {
@@ -9441,6 +9581,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectRemoveCurves {
 }
 
 impl HandleIGESSelectRemoveCurves {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_RemoveCurves
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_RemoveCurves {
         unsafe {
@@ -9954,6 +10101,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectBasicGeom {
 }
 
 impl HandleIGESSelectSelectBasicGeom {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectBasicGeom
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectBasicGeom {
         unsafe {
@@ -10436,6 +10590,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectBypassGroup {
 }
 
 impl HandleIGESSelectSelectBypassGroup {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectBypassGroup
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectBypassGroup {
         unsafe {
@@ -10903,6 +11066,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectBypassSubfigure {
 }
 
 impl HandleIGESSelectSelectBypassSubfigure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectBypassSubfigure
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectBypassSubfigure {
         unsafe {
@@ -11315,6 +11487,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectDrawingFrom {
 }
 
 impl HandleIGESSelectSelectDrawingFrom {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectDrawingFrom
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectDrawingFrom {
         unsafe {
@@ -11785,6 +11966,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectFaces {
 }
 
 impl HandleIGESSelectSelectFaces {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectFaces
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectFaces {
         unsafe {
@@ -12202,6 +12390,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectFromDrawing {
 }
 
 impl HandleIGESSelectSelectFromDrawing {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectFromDrawing
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectFromDrawing {
         unsafe {
@@ -12589,6 +12786,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectFromSingleView {
 }
 
 impl HandleIGESSelectSelectFromSingleView {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectFromSingleView
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectFromSingleView {
         unsafe {
@@ -13109,6 +13315,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectLevelNumber {
 }
 
 impl HandleIGESSelectSelectLevelNumber {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectLevelNumber
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectLevelNumber {
         unsafe {
@@ -13629,6 +13844,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectName {
 }
 
 impl HandleIGESSelectSelectName {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectName
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectName {
         unsafe {
@@ -14114,6 +14336,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectPCurves {
 }
 
 impl HandleIGESSelectSelectPCurves {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectPCurves
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectPCurves {
         unsafe {
@@ -14507,6 +14736,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectSingleViewFrom {
 }
 
 impl HandleIGESSelectSelectSingleViewFrom {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectSingleViewFrom
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectSingleViewFrom {
         unsafe {
@@ -15011,6 +15249,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectSubordinate {
 }
 
 impl HandleIGESSelectSelectSubordinate {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectSubordinate
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectSubordinate {
         unsafe {
@@ -15496,6 +15743,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSelectVisibleStatus {
 }
 
 impl HandleIGESSelectSelectVisibleStatus {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SelectVisibleStatus
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectVisibleStatus {
         unsafe {
@@ -15978,6 +16234,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSetGlobalParameter {
 }
 
 impl HandleIGESSelectSetGlobalParameter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SetGlobalParameter
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SetGlobalParameter {
         unsafe {
@@ -16425,6 +16690,11 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSetLabel {
 }
 
 impl HandleIGESSelectSetLabel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SetLabel
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SetLabel {
         unsafe {
@@ -16880,6 +17150,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSetVersion5 {
 }
 
 impl HandleIGESSelectSetVersion5 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SetVersion5
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SetVersion5 {
         unsafe {
@@ -17318,6 +17595,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSignColor {
 }
 
 impl HandleIGESSelectSignColor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SignColor
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SignColor {
         unsafe {
@@ -17765,6 +18049,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSignLevelNumber {
 }
 
 impl HandleIGESSelectSignLevelNumber {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SignLevelNumber
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SignLevelNumber {
         unsafe {
@@ -18199,6 +18490,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSignStatus {
 }
 
 impl HandleIGESSelectSignStatus {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SignStatus
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SignStatus {
         unsafe {
@@ -18558,6 +18856,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectSplineToBSpline {
 }
 
 impl HandleIGESSelectSplineToBSpline {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_SplineToBSpline
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SplineToBSpline {
         unsafe {
@@ -18979,6 +19284,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectUpdateCreationDate {
 }
 
 impl HandleIGESSelectUpdateCreationDate {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_UpdateCreationDate
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_UpdateCreationDate {
         unsafe {
@@ -19424,6 +19738,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectUpdateFileName {
 }
 
 impl HandleIGESSelectUpdateFileName {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_UpdateFileName
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_UpdateFileName {
         unsafe {
@@ -19868,6 +20189,15 @@ unsafe impl crate::CppCopyable for HandleIGESSelectUpdateLastChange {
 }
 
 impl HandleIGESSelectUpdateLastChange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_UpdateLastChange
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_UpdateLastChange {
         unsafe {
@@ -20245,6 +20575,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectViewSorter {
 }
 
 impl HandleIGESSelectViewSorter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_ViewSorter
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ViewSorter {
         unsafe {
@@ -20587,6 +20924,13 @@ unsafe impl crate::CppCopyable for HandleIGESSelectWorkLibrary {
 }
 
 impl HandleIGESSelectWorkLibrary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESSelect_WorkLibrary
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_WorkLibrary {
         unsafe {

@@ -1377,6 +1377,11 @@ unsafe impl crate::CppCopyable for HandleIntToolsContext {
 }
 
 impl HandleIntToolsContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBO::HandleIntToolsContext_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IntTools_Context
     pub fn get(&self) -> &crate::ffi_types::IntTools_Context {
         unsafe {
@@ -4903,6 +4908,11 @@ unsafe impl crate::CppCopyable for HandleIntToolsTopolTool {
 }
 
 impl HandleIntToolsTopolTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBO::HandleIntToolsTopolTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IntTools_TopolTool
     pub fn get(&self) -> &crate::ffi_types::IntTools_TopolTool {
         unsafe {

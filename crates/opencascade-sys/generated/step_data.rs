@@ -571,6 +571,13 @@ unsafe impl crate::CppCopyable for HandleStepDataDefaultGeneral {
 }
 
 impl HandleStepDataDefaultGeneral {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataDefaultGeneral_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_DefaultGeneral
     pub fn get(&self) -> &crate::ffi_types::StepData_DefaultGeneral {
         unsafe {
@@ -884,6 +891,11 @@ unsafe impl crate::CppCopyable for HandleStepDataDescribed {
 }
 
 impl HandleStepDataDescribed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDataDescribed_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepData_Described
     pub fn get(&self) -> &crate::ffi_types::StepData_Described {
         unsafe {
@@ -1211,6 +1223,11 @@ unsafe impl crate::CppCopyable for HandleStepDataECDescr {
 }
 
 impl HandleStepDataECDescr {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDataECDescr_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepData_ECDescr
     pub fn get(&self) -> &crate::ffi_types::StepData_ECDescr {
         unsafe {
@@ -1433,6 +1450,11 @@ unsafe impl crate::CppCopyable for HandleStepDataEDescr {
 }
 
 impl HandleStepDataEDescr {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDataEDescr_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepData_EDescr
     pub fn get(&self) -> &crate::ffi_types::StepData_EDescr {
         unsafe {
@@ -1876,6 +1898,11 @@ unsafe impl crate::CppCopyable for HandleStepDataESDescr {
 }
 
 impl HandleStepDataESDescr {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDataESDescr_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepData_ESDescr
     pub fn get(&self) -> &crate::ffi_types::StepData_ESDescr {
         unsafe {
@@ -3585,6 +3612,13 @@ unsafe impl crate::CppCopyable for HandleStepDataFileProtocol {
 }
 
 impl HandleStepDataFileProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataFileProtocol_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_FileProtocol
     pub fn get(&self) -> &crate::ffi_types::StepData_FileProtocol {
         unsafe {
@@ -3840,6 +3874,13 @@ unsafe impl crate::CppCopyable for HandleStepDataFileRecognizer {
 }
 
 impl HandleStepDataFileRecognizer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataFileRecognizer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_FileRecognizer
     pub fn get(&self) -> &crate::ffi_types::StepData_FileRecognizer {
         unsafe {
@@ -4193,6 +4234,13 @@ unsafe impl crate::CppCopyable for HandleStepDataFreeFormEntity {
 }
 
 impl HandleStepDataFreeFormEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataFreeFormEntity_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_FreeFormEntity
     pub fn get(&self) -> &crate::ffi_types::StepData_FreeFormEntity {
         unsafe {
@@ -4668,6 +4716,13 @@ unsafe impl crate::CppCopyable for HandleStepDataGeneralModule {
 }
 
 impl HandleStepDataGeneralModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::StepData_GeneralModule {
         unsafe {
@@ -4973,6 +5028,15 @@ unsafe impl crate::CppCopyable for HandleStepDataGlobalNodeOfWriterLib {
 }
 
 impl HandleStepDataGlobalNodeOfWriterLib {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataGlobalNodeOfWriterLib_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_GlobalNodeOfWriterLib
     pub fn get(&self) -> &crate::ffi_types::StepData_GlobalNodeOfWriterLib {
         unsafe {
@@ -5247,6 +5311,13 @@ unsafe impl crate::CppCopyable for HandleStepDataHArray1OfField {
 }
 
 impl HandleStepDataHArray1OfField {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataHArray1OfField_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_HArray1OfField
     pub fn get(&self) -> &crate::ffi_types::StepData_HArray1OfField {
         unsafe {
@@ -5495,6 +5566,13 @@ unsafe impl crate::CppCopyable for HandleStepDataNodeOfWriterLib {
 }
 
 impl HandleStepDataNodeOfWriterLib {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataNodeOfWriterLib_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_NodeOfWriterLib
     pub fn get(&self) -> &crate::ffi_types::StepData_NodeOfWriterLib {
         unsafe {
@@ -6127,6 +6205,11 @@ unsafe impl crate::CppCopyable for HandleStepDataPDescr {
 }
 
 impl HandleStepDataPDescr {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDataPDescr_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepData_PDescr
     pub fn get(&self) -> &crate::ffi_types::StepData_PDescr {
         unsafe {
@@ -6507,6 +6590,11 @@ unsafe impl crate::CppCopyable for HandleStepDataPlex {
 }
 
 impl HandleStepDataPlex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDataPlex_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepData_Plex
     pub fn get(&self) -> &crate::ffi_types::StepData_Plex {
         unsafe {
@@ -7064,6 +7152,11 @@ unsafe impl crate::CppCopyable for HandleStepDataProtocol {
 }
 
 impl HandleStepDataProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepData_Protocol
     pub fn get(&self) -> &crate::ffi_types::StepData_Protocol {
         unsafe {
@@ -7541,6 +7634,13 @@ unsafe impl crate::CppCopyable for HandleStepDataReadWriteModule {
 }
 
 impl HandleStepDataReadWriteModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataReadWriteModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_ReadWriteModule
     pub fn get(&self) -> &crate::ffi_types::StepData_ReadWriteModule {
         unsafe {
@@ -7986,6 +8086,13 @@ unsafe impl crate::CppCopyable for HandleStepDataSelectArrReal {
 }
 
 impl HandleStepDataSelectArrReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_SelectArrReal
     pub fn get(&self) -> &crate::ffi_types::StepData_SelectArrReal {
         unsafe {
@@ -8379,6 +8486,11 @@ unsafe impl crate::CppCopyable for HandleStepDataSelectInt {
 }
 
 impl HandleStepDataSelectInt {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepData_SelectInt
     pub fn get(&self) -> &crate::ffi_types::StepData_SelectInt {
         unsafe {
@@ -8874,6 +8986,13 @@ unsafe impl crate::CppCopyable for HandleStepDataSelectMember {
 }
 
 impl HandleStepDataSelectMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_SelectMember
     pub fn get(&self) -> &crate::ffi_types::StepData_SelectMember {
         unsafe {
@@ -9592,6 +9711,13 @@ unsafe impl crate::CppCopyable for HandleStepDataSelectNamed {
 }
 
 impl HandleStepDataSelectNamed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_SelectNamed
     pub fn get(&self) -> &crate::ffi_types::StepData_SelectNamed {
         unsafe {
@@ -10114,6 +10240,11 @@ unsafe impl crate::CppCopyable for HandleStepDataSelectReal {
 }
 
 impl HandleStepDataSelectReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepData_SelectReal
     pub fn get(&self) -> &crate::ffi_types::StepData_SelectReal {
         unsafe {
@@ -10872,6 +11003,11 @@ unsafe impl crate::CppCopyable for HandleStepDataSimple {
 }
 
 impl HandleStepDataSimple {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDataSimple_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepData_Simple
     pub fn get(&self) -> &crate::ffi_types::StepData_Simple {
         unsafe {
@@ -11958,6 +12094,11 @@ unsafe impl crate::CppCopyable for HandleStepDataStepModel {
 }
 
 impl HandleStepDataStepModel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepDataStepModel_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepData_StepModel
     pub fn get(&self) -> &crate::ffi_types::StepData_StepModel {
         unsafe {
@@ -13252,6 +13393,13 @@ unsafe impl crate::CppCopyable for HandleStepDataStepReaderData {
 }
 
 impl HandleStepDataStepReaderData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataStepReaderData_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_StepReaderData
     pub fn get(&self) -> &crate::ffi_types::StepData_StepReaderData {
         unsafe {
@@ -14532,6 +14680,13 @@ unsafe impl crate::CppCopyable for HandleStepDataUndefinedEntity {
 }
 
 impl HandleStepDataUndefinedEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataUndefinedEntity_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepData_UndefinedEntity
     pub fn get(&self) -> &crate::ffi_types::StepData_UndefinedEntity {
         unsafe {

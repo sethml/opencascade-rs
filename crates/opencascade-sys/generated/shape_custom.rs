@@ -905,6 +905,15 @@ unsafe impl crate::CppCopyable for HandleShapeCustomBSplineRestriction {
 }
 
 impl HandleShapeCustomBSplineRestriction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeCustom_BSplineRestriction
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_BSplineRestriction {
         unsafe {
@@ -1448,6 +1457,15 @@ unsafe impl crate::CppCopyable for HandleShapeCustomConvertToBSpline {
 }
 
 impl HandleShapeCustomConvertToBSpline {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeCustom_ConvertToBSpline
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_ConvertToBSpline {
         unsafe {
@@ -1934,6 +1952,15 @@ unsafe impl crate::CppCopyable for HandleShapeCustomConvertToRevolution {
 }
 
 impl HandleShapeCustomConvertToRevolution {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeCustom_ConvertToRevolution
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_ConvertToRevolution {
         unsafe {
@@ -2578,6 +2605,15 @@ unsafe impl crate::CppCopyable for HandleShapeCustomDirectModification {
 }
 
 impl HandleShapeCustomDirectModification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeCustom_DirectModification
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_DirectModification {
         unsafe {
@@ -3017,6 +3053,15 @@ unsafe impl crate::CppCopyable for HandleShapeCustomModification {
 }
 
 impl HandleShapeCustomModification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomModification_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeCustom_Modification
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_Modification {
         unsafe {
@@ -3465,6 +3510,15 @@ unsafe impl crate::CppCopyable for HandleShapeCustomRestrictionParameters {
 }
 
 impl HandleShapeCustomRestrictionParameters {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomRestrictionParameters_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeCustom_RestrictionParameters
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_RestrictionParameters {
         unsafe {
@@ -4046,6 +4100,15 @@ unsafe impl crate::CppCopyable for HandleShapeCustomSweptToElementary {
 }
 
 impl HandleShapeCustomSweptToElementary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeCustom_SweptToElementary
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_SweptToElementary {
         unsafe {
@@ -4507,6 +4570,15 @@ unsafe impl crate::CppCopyable for HandleShapeCustomTrsfModification {
 }
 
 impl HandleShapeCustomTrsfModification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeCustom_TrsfModification
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_TrsfModification {
         unsafe {

@@ -272,6 +272,11 @@ unsafe impl crate::CppCopyable for HandleCDMApplication {
 }
 
 impl HandleCDMApplication {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandleCDMApplication_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying CDM_Application
     pub fn get(&self) -> &crate::ffi_types::CDM_Application {
         unsafe {
@@ -1285,6 +1290,11 @@ unsafe impl crate::CppCopyable for HandleCDMDocument {
 }
 
 impl HandleCDMDocument {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandleCDMDocument_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying CDM_Document
     pub fn get(&self) -> &crate::ffi_types::CDM_Document {
         unsafe {
@@ -1629,6 +1639,11 @@ unsafe impl crate::CppCopyable for HandleCDMMetaData {
 }
 
 impl HandleCDMMetaData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandleCDMMetaData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying CDM_MetaData
     pub fn get(&self) -> &crate::ffi_types::CDM_MetaData {
         unsafe {
@@ -1845,6 +1860,11 @@ unsafe impl crate::CppCopyable for HandleCDMReference {
 }
 
 impl HandleCDMReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCDF::HandleCDMReference_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying CDM_Reference
     pub fn get(&self) -> &crate::ffi_types::CDM_Reference {
         unsafe {

@@ -753,6 +753,9 @@ extern "C" {
     pub fn HandleBRepOffsetSimpleOffset_clone(
         self_: *const HandleBRepOffsetSimpleOffset,
     ) -> crate::OcctResult<*mut HandleBRepOffsetSimpleOffset>;
+    /// Check if Handle<BRepOffset_SimpleOffset> is null
+    pub fn HandleBRepOffsetSimpleOffset_is_null(self_: *const HandleBRepOffsetSimpleOffset)
+        -> bool;
     /// Dereference Handle to get *const BRepOffset_SimpleOffset
     pub fn HandleBRepOffsetSimpleOffset_get(
         handle: *const HandleBRepOffsetSimpleOffset,
@@ -2621,6 +2624,8 @@ extern "C" {
     pub fn HandleBiTgteCurveOnEdge_clone(
         self_: *const HandleBiTgteCurveOnEdge,
     ) -> crate::OcctResult<*mut HandleBiTgteCurveOnEdge>;
+    /// Check if Handle<BiTgte_CurveOnEdge> is null
+    pub fn HandleBiTgteCurveOnEdge_is_null(self_: *const HandleBiTgteCurveOnEdge) -> bool;
     /// Dereference Handle to get *const BiTgte_CurveOnEdge
     pub fn HandleBiTgteCurveOnEdge_get(
         handle: *const HandleBiTgteCurveOnEdge,
@@ -2856,6 +2861,8 @@ extern "C" {
     pub fn HandleBiTgteCurveOnVertex_clone(
         self_: *const HandleBiTgteCurveOnVertex,
     ) -> crate::OcctResult<*mut HandleBiTgteCurveOnVertex>;
+    /// Check if Handle<BiTgte_CurveOnVertex> is null
+    pub fn HandleBiTgteCurveOnVertex_is_null(self_: *const HandleBiTgteCurveOnVertex) -> bool;
     /// Dereference Handle to get *const BiTgte_CurveOnVertex
     pub fn HandleBiTgteCurveOnVertex_get(
         handle: *const HandleBiTgteCurveOnVertex,
@@ -3169,6 +3176,8 @@ extern "C" {
     pub fn HandleDraftModification_clone(
         self_: *const HandleDraftModification,
     ) -> crate::OcctResult<*mut HandleDraftModification>;
+    /// Check if Handle<Draft_Modification> is null
+    pub fn HandleDraftModification_is_null(self_: *const HandleDraftModification) -> bool;
     /// Dereference Handle to get *const Draft_Modification
     pub fn HandleDraftModification_get(
         handle: *const HandleDraftModification,

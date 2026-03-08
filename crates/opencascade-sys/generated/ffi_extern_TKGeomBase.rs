@@ -795,6 +795,8 @@ extern "C" {
     pub fn HandleAdvApp2VarIso_clone(
         self_: *const HandleAdvApp2VarIso,
     ) -> crate::OcctResult<*mut HandleAdvApp2VarIso>;
+    /// Check if Handle<AdvApp2Var_Iso> is null
+    pub fn HandleAdvApp2VarIso_is_null(self_: *const HandleAdvApp2VarIso) -> bool;
     /// Dereference Handle to get *const AdvApp2Var_Iso
     pub fn HandleAdvApp2VarIso_get(
         handle: *const HandleAdvApp2VarIso,
@@ -1324,6 +1326,8 @@ extern "C" {
     pub fn HandleAdvApp2VarNode_clone(
         self_: *const HandleAdvApp2VarNode,
     ) -> crate::OcctResult<*mut HandleAdvApp2VarNode>;
+    /// Check if Handle<AdvApp2Var_Node> is null
+    pub fn HandleAdvApp2VarNode_is_null(self_: *const HandleAdvApp2VarNode) -> bool;
     /// Dereference Handle to get *const AdvApp2Var_Node
     pub fn HandleAdvApp2VarNode_get(
         handle: *const HandleAdvApp2VarNode,
@@ -1517,6 +1521,8 @@ extern "C" {
     pub fn HandleAdvApp2VarPatch_clone(
         self_: *const HandleAdvApp2VarPatch,
     ) -> crate::OcctResult<*mut HandleAdvApp2VarPatch>;
+    /// Check if Handle<AdvApp2Var_Patch> is null
+    pub fn HandleAdvApp2VarPatch_is_null(self_: *const HandleAdvApp2VarPatch) -> bool;
     /// Dereference Handle to get *const AdvApp2Var_Patch
     pub fn HandleAdvApp2VarPatch_get(
         handle: *const HandleAdvApp2VarPatch,
@@ -2590,6 +2596,10 @@ extern "C" {
     pub fn HandleAppDefHArray1OfMultiPointConstraint_clone(
         self_: *const HandleAppDefHArray1OfMultiPointConstraint,
     ) -> crate::OcctResult<*mut HandleAppDefHArray1OfMultiPointConstraint>;
+    /// Check if Handle<AppDef_HArray1OfMultiPointConstraint> is null
+    pub fn HandleAppDefHArray1OfMultiPointConstraint_is_null(
+        self_: *const HandleAppDefHArray1OfMultiPointConstraint,
+    ) -> bool;
     /// Dereference Handle to get *const AppDef_HArray1OfMultiPointConstraint
     pub fn HandleAppDefHArray1OfMultiPointConstraint_get(
         handle: *const HandleAppDefHArray1OfMultiPointConstraint,
@@ -2774,6 +2784,8 @@ extern "C" {
     pub fn HandleAppDefLinearCriteria_clone(
         self_: *const HandleAppDefLinearCriteria,
     ) -> crate::OcctResult<*mut HandleAppDefLinearCriteria>;
+    /// Check if Handle<AppDef_LinearCriteria> is null
+    pub fn HandleAppDefLinearCriteria_is_null(self_: *const HandleAppDefLinearCriteria) -> bool;
     /// Dereference Handle to get *const AppDef_LinearCriteria
     pub fn HandleAppDefLinearCriteria_get(
         handle: *const HandleAppDefLinearCriteria,
@@ -4207,6 +4219,8 @@ extern "C" {
     pub fn HandleAppDefSmoothCriterion_clone(
         self_: *const HandleAppDefSmoothCriterion,
     ) -> crate::OcctResult<*mut HandleAppDefSmoothCriterion>;
+    /// Check if Handle<AppDef_SmoothCriterion> is null
+    pub fn HandleAppDefSmoothCriterion_is_null(self_: *const HandleAppDefSmoothCriterion) -> bool;
     /// Dereference Handle to get *const AppDef_SmoothCriterion
     pub fn HandleAppDefSmoothCriterion_get(
         handle: *const HandleAppDefSmoothCriterion,
@@ -4816,6 +4830,10 @@ extern "C" {
     pub fn HandleAppParCurvesHArray1OfConstraintCouple_clone(
         self_: *const HandleAppParCurvesHArray1OfConstraintCouple,
     ) -> crate::OcctResult<*mut HandleAppParCurvesHArray1OfConstraintCouple>;
+    /// Check if Handle<AppParCurves_HArray1OfConstraintCouple> is null
+    pub fn HandleAppParCurvesHArray1OfConstraintCouple_is_null(
+        self_: *const HandleAppParCurvesHArray1OfConstraintCouple,
+    ) -> bool;
     /// Dereference Handle to get *const AppParCurves_HArray1OfConstraintCouple
     pub fn HandleAppParCurvesHArray1OfConstraintCouple_get(
         handle: *const HandleAppParCurvesHArray1OfConstraintCouple,
@@ -4925,6 +4943,10 @@ extern "C" {
     pub fn HandleAppParCurvesHArray1OfMultiBSpCurve_clone(
         self_: *const HandleAppParCurvesHArray1OfMultiBSpCurve,
     ) -> crate::OcctResult<*mut HandleAppParCurvesHArray1OfMultiBSpCurve>;
+    /// Check if Handle<AppParCurves_HArray1OfMultiBSpCurve> is null
+    pub fn HandleAppParCurvesHArray1OfMultiBSpCurve_is_null(
+        self_: *const HandleAppParCurvesHArray1OfMultiBSpCurve,
+    ) -> bool;
     /// Dereference Handle to get *const AppParCurves_HArray1OfMultiBSpCurve
     pub fn HandleAppParCurvesHArray1OfMultiBSpCurve_get(
         handle: *const HandleAppParCurvesHArray1OfMultiBSpCurve,
@@ -5034,6 +5056,10 @@ extern "C" {
     pub fn HandleAppParCurvesHArray1OfMultiCurve_clone(
         self_: *const HandleAppParCurvesHArray1OfMultiCurve,
     ) -> crate::OcctResult<*mut HandleAppParCurvesHArray1OfMultiCurve>;
+    /// Check if Handle<AppParCurves_HArray1OfMultiCurve> is null
+    pub fn HandleAppParCurvesHArray1OfMultiCurve_is_null(
+        self_: *const HandleAppParCurvesHArray1OfMultiCurve,
+    ) -> bool;
     /// Dereference Handle to get *const AppParCurves_HArray1OfMultiCurve
     pub fn HandleAppParCurvesHArray1OfMultiCurve_get(
         handle: *const HandleAppParCurvesHArray1OfMultiCurve,
@@ -5143,6 +5169,10 @@ extern "C" {
     pub fn HandleAppParCurvesHArray1OfMultiPoint_clone(
         self_: *const HandleAppParCurvesHArray1OfMultiPoint,
     ) -> crate::OcctResult<*mut HandleAppParCurvesHArray1OfMultiPoint>;
+    /// Check if Handle<AppParCurves_HArray1OfMultiPoint> is null
+    pub fn HandleAppParCurvesHArray1OfMultiPoint_is_null(
+        self_: *const HandleAppParCurvesHArray1OfMultiPoint,
+    ) -> bool;
     /// Dereference Handle to get *const AppParCurves_HArray1OfMultiPoint
     pub fn HandleAppParCurvesHArray1OfMultiPoint_get(
         handle: *const HandleAppParCurvesHArray1OfMultiPoint,
@@ -5862,6 +5892,8 @@ extern "C" {
     pub fn HandleApproxCurvlinFunc_clone(
         self_: *const HandleApproxCurvlinFunc,
     ) -> crate::OcctResult<*mut HandleApproxCurvlinFunc>;
+    /// Check if Handle<Approx_CurvlinFunc> is null
+    pub fn HandleApproxCurvlinFunc_is_null(self_: *const HandleApproxCurvlinFunc) -> bool;
     /// Dereference Handle to get *const Approx_CurvlinFunc
     pub fn HandleApproxCurvlinFunc_get(
         handle: *const HandleApproxCurvlinFunc,
@@ -6149,6 +6181,10 @@ extern "C" {
     pub fn HandleApproxHArray1OfAdHSurface_clone(
         self_: *const HandleApproxHArray1OfAdHSurface,
     ) -> crate::OcctResult<*mut HandleApproxHArray1OfAdHSurface>;
+    /// Check if Handle<Approx_HArray1OfAdHSurface> is null
+    pub fn HandleApproxHArray1OfAdHSurface_is_null(
+        self_: *const HandleApproxHArray1OfAdHSurface,
+    ) -> bool;
     /// Dereference Handle to get *const Approx_HArray1OfAdHSurface
     pub fn HandleApproxHArray1OfAdHSurface_get(
         handle: *const HandleApproxHArray1OfAdHSurface,
@@ -6252,6 +6288,9 @@ extern "C" {
     pub fn HandleApproxHArray1OfGTrsf2d_clone(
         self_: *const HandleApproxHArray1OfGTrsf2d,
     ) -> crate::OcctResult<*mut HandleApproxHArray1OfGTrsf2d>;
+    /// Check if Handle<Approx_HArray1OfGTrsf2d> is null
+    pub fn HandleApproxHArray1OfGTrsf2d_is_null(self_: *const HandleApproxHArray1OfGTrsf2d)
+        -> bool;
     /// Dereference Handle to get *const Approx_HArray1OfGTrsf2d
     pub fn HandleApproxHArray1OfGTrsf2d_get(
         handle: *const HandleApproxHArray1OfGTrsf2d,
@@ -6659,6 +6698,8 @@ extern "C" {
     pub fn HandleApproxSweepFunction_clone(
         self_: *const HandleApproxSweepFunction,
     ) -> crate::OcctResult<*mut HandleApproxSweepFunction>;
+    /// Check if Handle<Approx_SweepFunction> is null
+    pub fn HandleApproxSweepFunction_is_null(self_: *const HandleApproxSweepFunction) -> bool;
     /// Dereference Handle to get *const Approx_SweepFunction
     pub fn HandleApproxSweepFunction_get(
         handle: *const HandleApproxSweepFunction,
@@ -9288,6 +9329,8 @@ extern "C" {
     pub fn HandleExtremaExtPExtS_clone(
         self_: *const HandleExtremaExtPExtS,
     ) -> crate::OcctResult<*mut HandleExtremaExtPExtS>;
+    /// Check if Handle<Extrema_ExtPExtS> is null
+    pub fn HandleExtremaExtPExtS_is_null(self_: *const HandleExtremaExtPExtS) -> bool;
     /// Dereference Handle to get *const Extrema_ExtPExtS
     pub fn HandleExtremaExtPExtS_get(
         handle: *const HandleExtremaExtPExtS,
@@ -9408,6 +9451,8 @@ extern "C" {
     pub fn HandleExtremaExtPRevS_clone(
         self_: *const HandleExtremaExtPRevS,
     ) -> crate::OcctResult<*mut HandleExtremaExtPRevS>;
+    /// Check if Handle<Extrema_ExtPRevS> is null
+    pub fn HandleExtremaExtPRevS_is_null(self_: *const HandleExtremaExtPRevS) -> bool;
     /// Dereference Handle to get *const Extrema_ExtPRevS
     pub fn HandleExtremaExtPRevS_get(
         handle: *const HandleExtremaExtPRevS,
@@ -10648,6 +10693,10 @@ extern "C" {
     pub fn HandleExtremaHArray1OfPOnCurv_clone(
         self_: *const HandleExtremaHArray1OfPOnCurv,
     ) -> crate::OcctResult<*mut HandleExtremaHArray1OfPOnCurv>;
+    /// Check if Handle<Extrema_HArray1OfPOnCurv> is null
+    pub fn HandleExtremaHArray1OfPOnCurv_is_null(
+        self_: *const HandleExtremaHArray1OfPOnCurv,
+    ) -> bool;
     /// Dereference Handle to get *const Extrema_HArray1OfPOnCurv
     pub fn HandleExtremaHArray1OfPOnCurv_get(
         handle: *const HandleExtremaHArray1OfPOnCurv,
@@ -10751,6 +10800,10 @@ extern "C" {
     pub fn HandleExtremaHArray1OfPOnCurv2d_clone(
         self_: *const HandleExtremaHArray1OfPOnCurv2d,
     ) -> crate::OcctResult<*mut HandleExtremaHArray1OfPOnCurv2d>;
+    /// Check if Handle<Extrema_HArray1OfPOnCurv2d> is null
+    pub fn HandleExtremaHArray1OfPOnCurv2d_is_null(
+        self_: *const HandleExtremaHArray1OfPOnCurv2d,
+    ) -> bool;
     /// Dereference Handle to get *const Extrema_HArray1OfPOnCurv2d
     pub fn HandleExtremaHArray1OfPOnCurv2d_get(
         handle: *const HandleExtremaHArray1OfPOnCurv2d,
@@ -10854,6 +10907,10 @@ extern "C" {
     pub fn HandleExtremaHArray1OfPOnSurf_clone(
         self_: *const HandleExtremaHArray1OfPOnSurf,
     ) -> crate::OcctResult<*mut HandleExtremaHArray1OfPOnSurf>;
+    /// Check if Handle<Extrema_HArray1OfPOnSurf> is null
+    pub fn HandleExtremaHArray1OfPOnSurf_is_null(
+        self_: *const HandleExtremaHArray1OfPOnSurf,
+    ) -> bool;
     /// Dereference Handle to get *const Extrema_HArray1OfPOnSurf
     pub fn HandleExtremaHArray1OfPOnSurf_get(
         handle: *const HandleExtremaHArray1OfPOnSurf,
@@ -10952,6 +11009,10 @@ extern "C" {
     pub fn HandleExtremaHArray2OfPOnCurv_clone(
         self_: *const HandleExtremaHArray2OfPOnCurv,
     ) -> crate::OcctResult<*mut HandleExtremaHArray2OfPOnCurv>;
+    /// Check if Handle<Extrema_HArray2OfPOnCurv> is null
+    pub fn HandleExtremaHArray2OfPOnCurv_is_null(
+        self_: *const HandleExtremaHArray2OfPOnCurv,
+    ) -> bool;
     /// Dereference Handle to get *const Extrema_HArray2OfPOnCurv
     pub fn HandleExtremaHArray2OfPOnCurv_get(
         handle: *const HandleExtremaHArray2OfPOnCurv,
@@ -11050,6 +11111,10 @@ extern "C" {
     pub fn HandleExtremaHArray2OfPOnCurv2d_clone(
         self_: *const HandleExtremaHArray2OfPOnCurv2d,
     ) -> crate::OcctResult<*mut HandleExtremaHArray2OfPOnCurv2d>;
+    /// Check if Handle<Extrema_HArray2OfPOnCurv2d> is null
+    pub fn HandleExtremaHArray2OfPOnCurv2d_is_null(
+        self_: *const HandleExtremaHArray2OfPOnCurv2d,
+    ) -> bool;
     /// Dereference Handle to get *const Extrema_HArray2OfPOnCurv2d
     pub fn HandleExtremaHArray2OfPOnCurv2d_get(
         handle: *const HandleExtremaHArray2OfPOnCurv2d,
@@ -11148,6 +11213,10 @@ extern "C" {
     pub fn HandleExtremaHArray2OfPOnSurf_clone(
         self_: *const HandleExtremaHArray2OfPOnSurf,
     ) -> crate::OcctResult<*mut HandleExtremaHArray2OfPOnSurf>;
+    /// Check if Handle<Extrema_HArray2OfPOnSurf> is null
+    pub fn HandleExtremaHArray2OfPOnSurf_is_null(
+        self_: *const HandleExtremaHArray2OfPOnSurf,
+    ) -> bool;
     /// Dereference Handle to get *const Extrema_HArray2OfPOnSurf
     pub fn HandleExtremaHArray2OfPOnSurf_get(
         handle: *const HandleExtremaHArray2OfPOnSurf,
@@ -12313,6 +12382,8 @@ extern "C" {
     pub fn HandleFEmToolCurve_clone(
         self_: *const HandleFEmToolCurve,
     ) -> crate::OcctResult<*mut HandleFEmToolCurve>;
+    /// Check if Handle<FEmTool_Curve> is null
+    pub fn HandleFEmToolCurve_is_null(self_: *const HandleFEmToolCurve) -> bool;
     /// Dereference Handle to get *const FEmTool_Curve
     pub fn HandleFEmToolCurve_get(
         handle: *const HandleFEmToolCurve,
@@ -12412,6 +12483,10 @@ extern "C" {
     pub fn HandleFEmToolElementaryCriterion_clone(
         self_: *const HandleFEmToolElementaryCriterion,
     ) -> crate::OcctResult<*mut HandleFEmToolElementaryCriterion>;
+    /// Check if Handle<FEmTool_ElementaryCriterion> is null
+    pub fn HandleFEmToolElementaryCriterion_is_null(
+        self_: *const HandleFEmToolElementaryCriterion,
+    ) -> bool;
     /// Dereference Handle to get *const FEmTool_ElementaryCriterion
     pub fn HandleFEmToolElementaryCriterion_get(
         handle: *const HandleFEmToolElementaryCriterion,
@@ -12555,6 +12630,8 @@ extern "C" {
     pub fn HandleFEmToolHAssemblyTable_clone(
         self_: *const HandleFEmToolHAssemblyTable,
     ) -> crate::OcctResult<*mut HandleFEmToolHAssemblyTable>;
+    /// Check if Handle<FEmTool_HAssemblyTable> is null
+    pub fn HandleFEmToolHAssemblyTable_is_null(self_: *const HandleFEmToolHAssemblyTable) -> bool;
     /// Dereference Handle to get *const FEmTool_HAssemblyTable
     pub fn HandleFEmToolHAssemblyTable_get(
         handle: *const HandleFEmToolHAssemblyTable,
@@ -12659,6 +12736,8 @@ extern "C" {
     pub fn HandleFEmToolLinearFlexion_clone(
         self_: *const HandleFEmToolLinearFlexion,
     ) -> crate::OcctResult<*mut HandleFEmToolLinearFlexion>;
+    /// Check if Handle<FEmTool_LinearFlexion> is null
+    pub fn HandleFEmToolLinearFlexion_is_null(self_: *const HandleFEmToolLinearFlexion) -> bool;
     /// Dereference Handle to get *const FEmTool_LinearFlexion
     pub fn HandleFEmToolLinearFlexion_get(
         handle: *const HandleFEmToolLinearFlexion,
@@ -12770,6 +12849,8 @@ extern "C" {
     pub fn HandleFEmToolLinearJerk_clone(
         self_: *const HandleFEmToolLinearJerk,
     ) -> crate::OcctResult<*mut HandleFEmToolLinearJerk>;
+    /// Check if Handle<FEmTool_LinearJerk> is null
+    pub fn HandleFEmToolLinearJerk_is_null(self_: *const HandleFEmToolLinearJerk) -> bool;
     /// Dereference Handle to get *const FEmTool_LinearJerk
     pub fn HandleFEmToolLinearJerk_get(
         handle: *const HandleFEmToolLinearJerk,
@@ -12883,6 +12964,8 @@ extern "C" {
     pub fn HandleFEmToolLinearTension_clone(
         self_: *const HandleFEmToolLinearTension,
     ) -> crate::OcctResult<*mut HandleFEmToolLinearTension>;
+    /// Check if Handle<FEmTool_LinearTension> is null
+    pub fn HandleFEmToolLinearTension_is_null(self_: *const HandleFEmToolLinearTension) -> bool;
     /// Dereference Handle to get *const FEmTool_LinearTension
     pub fn HandleFEmToolLinearTension_get(
         handle: *const HandleFEmToolLinearTension,
@@ -13038,6 +13121,8 @@ extern "C" {
     pub fn HandleFEmToolProfileMatrix_clone(
         self_: *const HandleFEmToolProfileMatrix,
     ) -> crate::OcctResult<*mut HandleFEmToolProfileMatrix>;
+    /// Check if Handle<FEmTool_ProfileMatrix> is null
+    pub fn HandleFEmToolProfileMatrix_is_null(self_: *const HandleFEmToolProfileMatrix) -> bool;
     /// Dereference Handle to get *const FEmTool_ProfileMatrix
     pub fn HandleFEmToolProfileMatrix_get(
         handle: *const HandleFEmToolProfileMatrix,
@@ -13157,6 +13242,8 @@ extern "C" {
     pub fn HandleFEmToolSparseMatrix_clone(
         self_: *const HandleFEmToolSparseMatrix,
     ) -> crate::OcctResult<*mut HandleFEmToolSparseMatrix>;
+    /// Check if Handle<FEmTool_SparseMatrix> is null
+    pub fn HandleFEmToolSparseMatrix_is_null(self_: *const HandleFEmToolSparseMatrix) -> bool;
     /// Dereference Handle to get *const FEmTool_SparseMatrix
     pub fn HandleFEmToolSparseMatrix_get(
         handle: *const HandleFEmToolSparseMatrix,
@@ -16556,6 +16643,10 @@ extern "C" {
     pub fn HandleGeomToolsUndefinedTypeHandler_clone(
         self_: *const HandleGeomToolsUndefinedTypeHandler,
     ) -> crate::OcctResult<*mut HandleGeomToolsUndefinedTypeHandler>;
+    /// Check if Handle<GeomTools_UndefinedTypeHandler> is null
+    pub fn HandleGeomToolsUndefinedTypeHandler_is_null(
+        self_: *const HandleGeomToolsUndefinedTypeHandler,
+    ) -> bool;
     /// Dereference Handle to get *const GeomTools_UndefinedTypeHandler
     pub fn HandleGeomToolsUndefinedTypeHandler_get(
         handle: *const HandleGeomToolsUndefinedTypeHandler,
@@ -17848,6 +17939,10 @@ extern "C" {
     pub fn HandleProjLibCompProjectedCurve_clone(
         self_: *const HandleProjLibCompProjectedCurve,
     ) -> crate::OcctResult<*mut HandleProjLibCompProjectedCurve>;
+    /// Check if Handle<ProjLib_CompProjectedCurve> is null
+    pub fn HandleProjLibCompProjectedCurve_is_null(
+        self_: *const HandleProjLibCompProjectedCurve,
+    ) -> bool;
     /// Dereference Handle to get *const ProjLib_CompProjectedCurve
     pub fn HandleProjLibCompProjectedCurve_get(
         handle: *const HandleProjLibCompProjectedCurve,
@@ -18435,6 +18530,10 @@ extern "C" {
     pub fn HandleProjLibHSequenceOfHSequenceOfPnt_clone(
         self_: *const HandleProjLibHSequenceOfHSequenceOfPnt,
     ) -> crate::OcctResult<*mut HandleProjLibHSequenceOfHSequenceOfPnt>;
+    /// Check if Handle<ProjLib_HSequenceOfHSequenceOfPnt> is null
+    pub fn HandleProjLibHSequenceOfHSequenceOfPnt_is_null(
+        self_: *const HandleProjLibHSequenceOfHSequenceOfPnt,
+    ) -> bool;
     /// Dereference Handle to get *const ProjLib_HSequenceOfHSequenceOfPnt
     pub fn HandleProjLibHSequenceOfHSequenceOfPnt_get(
         handle: *const HandleProjLibHSequenceOfHSequenceOfPnt,
@@ -18903,6 +19002,8 @@ extern "C" {
     pub fn HandleProjLibProjectOnPlane_clone(
         self_: *const HandleProjLibProjectOnPlane,
     ) -> crate::OcctResult<*mut HandleProjLibProjectOnPlane>;
+    /// Check if Handle<ProjLib_ProjectOnPlane> is null
+    pub fn HandleProjLibProjectOnPlane_is_null(self_: *const HandleProjLibProjectOnPlane) -> bool;
     /// Dereference Handle to get *const ProjLib_ProjectOnPlane
     pub fn HandleProjLibProjectOnPlane_get(
         handle: *const HandleProjLibProjectOnPlane,
@@ -19226,6 +19327,8 @@ extern "C" {
     pub fn HandleProjLibProjectedCurve_clone(
         self_: *const HandleProjLibProjectedCurve,
     ) -> crate::OcctResult<*mut HandleProjLibProjectedCurve>;
+    /// Check if Handle<ProjLib_ProjectedCurve> is null
+    pub fn HandleProjLibProjectedCurve_is_null(self_: *const HandleProjLibProjectedCurve) -> bool;
     /// Dereference Handle to get *const ProjLib_ProjectedCurve
     pub fn HandleProjLibProjectedCurve_get(
         handle: *const HandleProjLibProjectedCurve,

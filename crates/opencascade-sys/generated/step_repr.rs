@@ -520,6 +520,15 @@ unsafe impl crate::CppCopyable for HandleStepReprAllAroundShapeAspect {
 }
 
 impl HandleStepReprAllAroundShapeAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprAllAroundShapeAspect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_AllAroundShapeAspect
     pub fn get(&self) -> &crate::ffi_types::StepRepr_AllAroundShapeAspect {
         unsafe {
@@ -887,6 +896,11 @@ unsafe impl crate::CppCopyable for HandleStepReprApex {
 }
 
 impl HandleStepReprApex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepReprApex_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_Apex
     pub fn get(&self) -> &crate::ffi_types::StepRepr_Apex {
         unsafe {
@@ -1355,6 +1369,15 @@ unsafe impl crate::CppCopyable for HandleStepReprAssemblyComponentUsage {
 }
 
 impl HandleStepReprAssemblyComponentUsage {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprAssemblyComponentUsage_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_AssemblyComponentUsage
     pub fn get(&self) -> &crate::ffi_types::StepRepr_AssemblyComponentUsage {
         unsafe {
@@ -1740,6 +1763,15 @@ unsafe impl crate::CppCopyable for HandleStepReprAssemblyComponentUsageSubstitut
 }
 
 impl HandleStepReprAssemblyComponentUsageSubstitute {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprAssemblyComponentUsageSubstitute_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_AssemblyComponentUsageSubstitute
     pub fn get(&self) -> &crate::ffi_types::StepRepr_AssemblyComponentUsageSubstitute {
         unsafe {
@@ -2108,6 +2140,15 @@ unsafe impl crate::CppCopyable for HandleStepReprBetweenShapeAspect {
 }
 
 impl HandleStepReprBetweenShapeAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprBetweenShapeAspect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_BetweenShapeAspect
     pub fn get(&self) -> &crate::ffi_types::StepRepr_BetweenShapeAspect {
         unsafe {
@@ -2403,6 +2444,15 @@ unsafe impl crate::CppCopyable for HandleStepReprBooleanRepresentationItem {
 }
 
 impl HandleStepReprBooleanRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprBooleanRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_BooleanRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_BooleanRepresentationItem {
         unsafe {
@@ -2766,6 +2816,13 @@ unsafe impl crate::CppCopyable for HandleStepReprCentreOfSymmetry {
 }
 
 impl HandleStepReprCentreOfSymmetry {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprCentreOfSymmetry_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_CentreOfSymmetry
     pub fn get(&self) -> &crate::ffi_types::StepRepr_CentreOfSymmetry {
         unsafe {
@@ -3444,6 +3501,15 @@ unsafe impl crate::CppCopyable for HandleStepReprCharacterizedRepresentation {
 }
 
 impl HandleStepReprCharacterizedRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprCharacterizedRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_CharacterizedRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_CharacterizedRepresentation {
         unsafe {
@@ -3728,6 +3794,13 @@ unsafe impl crate::CppCopyable for HandleStepReprCompGroupShAspAndCompShAspAndDa
 }
 
 impl HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprCompGroupShAspAndCompShAspAndDatumFeatAndShAsp_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp
     pub fn get(
         &self,
@@ -4045,6 +4118,15 @@ unsafe impl crate::CppCopyable for HandleStepReprCompShAspAndDatumFeatAndShAsp {
 }
 
 impl HandleStepReprCompShAspAndDatumFeatAndShAsp {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprCompShAspAndDatumFeatAndShAsp_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_CompShAspAndDatumFeatAndShAsp
     pub fn get(&self) -> &crate::ffi_types::StepRepr_CompShAspAndDatumFeatAndShAsp {
         unsafe {
@@ -4401,6 +4483,15 @@ unsafe impl crate::CppCopyable for HandleStepReprCompositeGroupShapeAspect {
 }
 
 impl HandleStepReprCompositeGroupShapeAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprCompositeGroupShapeAspect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_CompositeGroupShapeAspect
     pub fn get(&self) -> &crate::ffi_types::StepRepr_CompositeGroupShapeAspect {
         unsafe {
@@ -4754,6 +4845,15 @@ unsafe impl crate::CppCopyable for HandleStepReprCompositeShapeAspect {
 }
 
 impl HandleStepReprCompositeShapeAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprCompositeShapeAspect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_CompositeShapeAspect
     pub fn get(&self) -> &crate::ffi_types::StepRepr_CompositeShapeAspect {
         unsafe {
@@ -5159,6 +5259,15 @@ unsafe impl crate::CppCopyable for HandleStepReprCompoundRepresentationItem {
 }
 
 impl HandleStepReprCompoundRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprCompoundRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_CompoundRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_CompoundRepresentationItem {
         unsafe {
@@ -5462,6 +5571,15 @@ unsafe impl crate::CppCopyable for HandleStepReprConfigurationDesign {
 }
 
 impl HandleStepReprConfigurationDesign {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprConfigurationDesign_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ConfigurationDesign
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ConfigurationDesign {
         unsafe {
@@ -6051,6 +6169,15 @@ unsafe impl crate::CppCopyable for HandleStepReprConfigurationEffectivity {
 }
 
 impl HandleStepReprConfigurationEffectivity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprConfigurationEffectivity_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ConfigurationEffectivity
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ConfigurationEffectivity {
         unsafe {
@@ -6431,6 +6558,13 @@ unsafe impl crate::CppCopyable for HandleStepReprConfigurationItem {
 }
 
 impl HandleStepReprConfigurationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprConfigurationItem_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ConfigurationItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ConfigurationItem {
         unsafe {
@@ -6712,6 +6846,15 @@ unsafe impl crate::CppCopyable for HandleStepReprConstructiveGeometryRepresentat
 }
 
 impl HandleStepReprConstructiveGeometryRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprConstructiveGeometryRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ConstructiveGeometryRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ConstructiveGeometryRepresentation {
         unsafe {
@@ -6981,6 +7124,13 @@ unsafe impl crate::CppCopyable for HandleStepReprConstructiveGeometryRepresentat
 }
 
 impl HandleStepReprConstructiveGeometryRepresentationRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprConstructiveGeometryRepresentationRelationship_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ConstructiveGeometryRepresentationRelationship
     pub fn get(
         &self,
@@ -7335,6 +7485,15 @@ unsafe impl crate::CppCopyable for HandleStepReprContinuosShapeAspect {
 }
 
 impl HandleStepReprContinuosShapeAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprContinuosShapeAspect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ContinuosShapeAspect
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ContinuosShapeAspect {
         unsafe {
@@ -7683,6 +7842,13 @@ unsafe impl crate::CppCopyable for HandleStepReprDataEnvironment {
 }
 
 impl HandleStepReprDataEnvironment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprDataEnvironment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_DataEnvironment
     pub fn get(&self) -> &crate::ffi_types::StepRepr_DataEnvironment {
         unsafe {
@@ -7998,6 +8164,15 @@ unsafe impl crate::CppCopyable for HandleStepReprDefinitionalRepresentation {
 }
 
 impl HandleStepReprDefinitionalRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprDefinitionalRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_DefinitionalRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_DefinitionalRepresentation {
         unsafe {
@@ -8367,6 +8542,15 @@ unsafe impl crate::CppCopyable for HandleStepReprDerivedShapeAspect {
 }
 
 impl HandleStepReprDerivedShapeAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprDerivedShapeAspect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_DerivedShapeAspect
     pub fn get(&self) -> &crate::ffi_types::StepRepr_DerivedShapeAspect {
         unsafe {
@@ -8758,6 +8942,15 @@ unsafe impl crate::CppCopyable for HandleStepReprDescriptiveRepresentationItem {
 }
 
 impl HandleStepReprDescriptiveRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprDescriptiveRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_DescriptiveRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_DescriptiveRepresentationItem {
         unsafe {
@@ -9121,6 +9314,11 @@ unsafe impl crate::CppCopyable for HandleStepReprExtension {
 }
 
 impl HandleStepReprExtension {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepReprExtension_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_Extension
     pub fn get(&self) -> &crate::ffi_types::StepRepr_Extension {
         unsafe {
@@ -9448,6 +9646,15 @@ unsafe impl crate::CppCopyable for HandleStepReprExternallyDefinedRepresentation
 }
 
 impl HandleStepReprExternallyDefinedRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprExternallyDefinedRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ExternallyDefinedRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ExternallyDefinedRepresentation {
         unsafe {
@@ -9757,6 +9964,15 @@ unsafe impl crate::CppCopyable for HandleStepReprFeatureForDatumTargetRelationsh
 }
 
 impl HandleStepReprFeatureForDatumTargetRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprFeatureForDatumTargetRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_FeatureForDatumTargetRelationship
     pub fn get(&self) -> &crate::ffi_types::StepRepr_FeatureForDatumTargetRelationship {
         unsafe {
@@ -10011,6 +10227,15 @@ unsafe impl crate::CppCopyable for HandleStepReprFunctionallyDefinedTransformati
 }
 
 impl HandleStepReprFunctionallyDefinedTransformation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprFunctionallyDefinedTransformation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_FunctionallyDefinedTransformation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_FunctionallyDefinedTransformation {
         unsafe {
@@ -10365,6 +10590,15 @@ unsafe impl crate::CppCopyable for HandleStepReprGeometricAlignment {
 }
 
 impl HandleStepReprGeometricAlignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprGeometricAlignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_GeometricAlignment
     pub fn get(&self) -> &crate::ffi_types::StepRepr_GeometricAlignment {
         unsafe {
@@ -10687,6 +10921,15 @@ unsafe impl crate::CppCopyable for HandleStepReprGlobalUncertaintyAssignedContex
 }
 
 impl HandleStepReprGlobalUncertaintyAssignedContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprGlobalUncertaintyAssignedContext_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_GlobalUncertaintyAssignedContext
     pub fn get(&self) -> &crate::ffi_types::StepRepr_GlobalUncertaintyAssignedContext {
         unsafe {
@@ -11012,6 +11255,15 @@ unsafe impl crate::CppCopyable for HandleStepReprGlobalUnitAssignedContext {
 }
 
 impl HandleStepReprGlobalUnitAssignedContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprGlobalUnitAssignedContext_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_GlobalUnitAssignedContext
     pub fn get(&self) -> &crate::ffi_types::StepRepr_GlobalUnitAssignedContext {
         unsafe {
@@ -11256,6 +11508,13 @@ unsafe impl crate::CppCopyable for HandleStepReprHArray1OfMaterialPropertyRepres
 }
 
 impl HandleStepReprHArray1OfMaterialPropertyRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprHArray1OfMaterialPropertyRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_HArray1OfMaterialPropertyRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_HArray1OfMaterialPropertyRepresentation {
         unsafe {
@@ -11478,6 +11737,13 @@ unsafe impl crate::CppCopyable for HandleStepReprHArray1OfPropertyDefinitionRepr
 }
 
 impl HandleStepReprHArray1OfPropertyDefinitionRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprHArray1OfPropertyDefinitionRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_HArray1OfPropertyDefinitionRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_HArray1OfPropertyDefinitionRepresentation {
         unsafe {
@@ -11734,6 +12000,15 @@ unsafe impl crate::CppCopyable for HandleStepReprHArray1OfRepresentationItem {
 }
 
 impl HandleStepReprHArray1OfRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprHArray1OfRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_HArray1OfRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_HArray1OfRepresentationItem {
         unsafe {
@@ -12012,6 +12287,15 @@ unsafe impl crate::CppCopyable for HandleStepReprHArray1OfShapeAspect {
 }
 
 impl HandleStepReprHArray1OfShapeAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprHArray1OfShapeAspect_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_HArray1OfShapeAspect
     pub fn get(&self) -> &crate::ffi_types::StepRepr_HArray1OfShapeAspect {
         unsafe {
@@ -12230,6 +12514,13 @@ unsafe impl crate::CppCopyable for HandleStepReprHSequenceOfMaterialPropertyRepr
 }
 
 impl HandleStepReprHSequenceOfMaterialPropertyRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprHSequenceOfMaterialPropertyRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_HSequenceOfMaterialPropertyRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_HSequenceOfMaterialPropertyRepresentation {
         unsafe {
@@ -12474,6 +12765,15 @@ unsafe impl crate::CppCopyable for HandleStepReprHSequenceOfRepresentationItem {
 }
 
 impl HandleStepReprHSequenceOfRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprHSequenceOfRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_HSequenceOfRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_HSequenceOfRepresentationItem {
         unsafe {
@@ -12744,6 +13044,15 @@ unsafe impl crate::CppCopyable for HandleStepReprIntegerRepresentationItem {
 }
 
 impl HandleStepReprIntegerRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprIntegerRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_IntegerRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_IntegerRepresentationItem {
         unsafe {
@@ -13079,6 +13388,15 @@ unsafe impl crate::CppCopyable for HandleStepReprItemDefinedTransformation {
 }
 
 impl HandleStepReprItemDefinedTransformation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprItemDefinedTransformation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ItemDefinedTransformation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ItemDefinedTransformation {
         unsafe {
@@ -13561,6 +13879,15 @@ unsafe impl crate::CppCopyable for HandleStepReprMakeFromUsageOption {
 }
 
 impl HandleStepReprMakeFromUsageOption {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprMakeFromUsageOption_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_MakeFromUsageOption
     pub fn get(&self) -> &crate::ffi_types::StepRepr_MakeFromUsageOption {
         unsafe {
@@ -13887,6 +14214,11 @@ unsafe impl crate::CppCopyable for HandleStepReprMappedItem {
 }
 
 impl HandleStepReprMappedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepReprMappedItem_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_MappedItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_MappedItem {
         unsafe {
@@ -14240,6 +14572,15 @@ unsafe impl crate::CppCopyable for HandleStepReprMaterialDesignation {
 }
 
 impl HandleStepReprMaterialDesignation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprMaterialDesignation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_MaterialDesignation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_MaterialDesignation {
         unsafe {
@@ -14557,6 +14898,13 @@ unsafe impl crate::CppCopyable for HandleStepReprMaterialProperty {
 }
 
 impl HandleStepReprMaterialProperty {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprMaterialProperty_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_MaterialProperty
     pub fn get(&self) -> &crate::ffi_types::StepRepr_MaterialProperty {
         unsafe {
@@ -14849,6 +15197,15 @@ unsafe impl crate::CppCopyable for HandleStepReprMaterialPropertyRepresentation 
 }
 
 impl HandleStepReprMaterialPropertyRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprMaterialPropertyRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_MaterialPropertyRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_MaterialPropertyRepresentation {
         unsafe {
@@ -15153,6 +15510,15 @@ unsafe impl crate::CppCopyable for HandleStepReprMeasureRepresentationItem {
 }
 
 impl HandleStepReprMeasureRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprMeasureRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_MeasureRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_MeasureRepresentationItem {
         unsafe {
@@ -15429,6 +15795,13 @@ unsafe impl crate::CppCopyable for HandleStepReprMechanicalDesignAndDraughtingRe
 }
 
 impl HandleStepReprMechanicalDesignAndDraughtingRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprMechanicalDesignAndDraughtingRelationship_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_MechanicalDesignAndDraughtingRelationship
     pub fn get(&self) -> &crate::ffi_types::StepRepr_MechanicalDesignAndDraughtingRelationship {
         unsafe {
@@ -15852,6 +16225,15 @@ unsafe impl crate::CppCopyable for HandleStepReprNextAssemblyUsageOccurrence {
 }
 
 impl HandleStepReprNextAssemblyUsageOccurrence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprNextAssemblyUsageOccurrence_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_NextAssemblyUsageOccurrence
     pub fn get(&self) -> &crate::ffi_types::StepRepr_NextAssemblyUsageOccurrence {
         unsafe {
@@ -16261,6 +16643,13 @@ unsafe impl crate::CppCopyable for HandleStepReprParallelOffset {
 }
 
 impl HandleStepReprParallelOffset {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprParallelOffset_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ParallelOffset
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ParallelOffset {
         unsafe {
@@ -16538,6 +16927,15 @@ unsafe impl crate::CppCopyable for HandleStepReprParametricRepresentationContext
 }
 
 impl HandleStepReprParametricRepresentationContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprParametricRepresentationContext_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ParametricRepresentationContext
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ParametricRepresentationContext {
         unsafe {
@@ -16905,6 +17303,13 @@ unsafe impl crate::CppCopyable for HandleStepReprPerpendicularTo {
 }
 
 impl HandleStepReprPerpendicularTo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprPerpendicularTo_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_PerpendicularTo
     pub fn get(&self) -> &crate::ffi_types::StepRepr_PerpendicularTo {
         unsafe {
@@ -17250,6 +17655,13 @@ unsafe impl crate::CppCopyable for HandleStepReprProductConcept {
 }
 
 impl HandleStepReprProductConcept {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprProductConcept_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ProductConcept
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ProductConcept {
         unsafe {
@@ -17563,6 +17975,15 @@ unsafe impl crate::CppCopyable for HandleStepReprProductDefinitionShape {
 }
 
 impl HandleStepReprProductDefinitionShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprProductDefinitionShape_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ProductDefinitionShape
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ProductDefinitionShape {
         unsafe {
@@ -17949,6 +18370,15 @@ unsafe impl crate::CppCopyable for HandleStepReprProductDefinitionUsage {
 }
 
 impl HandleStepReprProductDefinitionUsage {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprProductDefinitionUsage_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ProductDefinitionUsage
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ProductDefinitionUsage {
         unsafe {
@@ -18482,6 +18912,15 @@ unsafe impl crate::CppCopyable for HandleStepReprPromissoryUsageOccurrence {
 }
 
 impl HandleStepReprPromissoryUsageOccurrence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprPromissoryUsageOccurrence_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_PromissoryUsageOccurrence
     pub fn get(&self) -> &crate::ffi_types::StepRepr_PromissoryUsageOccurrence {
         unsafe {
@@ -18818,6 +19257,15 @@ unsafe impl crate::CppCopyable for HandleStepReprPropertyDefinition {
 }
 
 impl HandleStepReprPropertyDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprPropertyDefinition_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_PropertyDefinition
     pub fn get(&self) -> &crate::ffi_types::StepRepr_PropertyDefinition {
         unsafe {
@@ -19209,6 +19657,15 @@ unsafe impl crate::CppCopyable for HandleStepReprPropertyDefinitionRelationship 
 }
 
 impl HandleStepReprPropertyDefinitionRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprPropertyDefinitionRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_PropertyDefinitionRelationship
     pub fn get(&self) -> &crate::ffi_types::StepRepr_PropertyDefinitionRelationship {
         unsafe {
@@ -19464,6 +19921,15 @@ unsafe impl crate::CppCopyable for HandleStepReprPropertyDefinitionRepresentatio
 }
 
 impl HandleStepReprPropertyDefinitionRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprPropertyDefinitionRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_PropertyDefinitionRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_PropertyDefinitionRepresentation {
         unsafe {
@@ -20021,6 +20487,15 @@ unsafe impl crate::CppCopyable for HandleStepReprQuantifiedAssemblyComponentUsag
 }
 
 impl HandleStepReprQuantifiedAssemblyComponentUsage {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprQuantifiedAssemblyComponentUsage_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_QuantifiedAssemblyComponentUsage
     pub fn get(&self) -> &crate::ffi_types::StepRepr_QuantifiedAssemblyComponentUsage {
         unsafe {
@@ -20319,6 +20794,15 @@ unsafe impl crate::CppCopyable for HandleStepReprRealRepresentationItem {
 }
 
 impl HandleStepReprRealRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprRealRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_RealRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_RealRepresentationItem {
         unsafe {
@@ -20637,6 +21121,15 @@ unsafe impl crate::CppCopyable for HandleStepReprReprItemAndLengthMeasureWithUni
 }
 
 impl HandleStepReprReprItemAndLengthMeasureWithUnit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprReprItemAndLengthMeasureWithUnit_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ReprItemAndLengthMeasureWithUnit
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ReprItemAndLengthMeasureWithUnit {
         unsafe {
@@ -20976,6 +21469,15 @@ unsafe impl crate::CppCopyable for HandleStepReprReprItemAndLengthMeasureWithUni
 }
 
 impl HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprReprItemAndLengthMeasureWithUnitAndQRI_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI {
         unsafe {
@@ -21289,6 +21791,15 @@ unsafe impl crate::CppCopyable for HandleStepReprReprItemAndMeasureWithUnit {
 }
 
 impl HandleStepReprReprItemAndMeasureWithUnit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprReprItemAndMeasureWithUnit_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ReprItemAndMeasureWithUnit
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ReprItemAndMeasureWithUnit {
         unsafe {
@@ -21699,6 +22210,15 @@ unsafe impl crate::CppCopyable for HandleStepReprReprItemAndMeasureWithUnitAndQR
 }
 
 impl HandleStepReprReprItemAndMeasureWithUnitAndQRI {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprReprItemAndMeasureWithUnitAndQRI_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ReprItemAndMeasureWithUnitAndQRI
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ReprItemAndMeasureWithUnitAndQRI {
         unsafe {
@@ -22045,6 +22565,15 @@ unsafe impl crate::CppCopyable for HandleStepReprReprItemAndPlaneAngleMeasureWit
 }
 
 impl HandleStepReprReprItemAndPlaneAngleMeasureWithUnit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprReprItemAndPlaneAngleMeasureWithUnit_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ReprItemAndPlaneAngleMeasureWithUnit
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ReprItemAndPlaneAngleMeasureWithUnit {
         unsafe {
@@ -22376,6 +22905,13 @@ unsafe impl crate::CppCopyable for HandleStepReprReprItemAndPlaneAngleMeasureWit
 }
 
 impl HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprReprItemAndPlaneAngleMeasureWithUnitAndQRI_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI {
         unsafe {
@@ -22707,6 +23243,13 @@ unsafe impl crate::CppCopyable for HandleStepReprRepresentation {
 }
 
 impl HandleStepReprRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_Representation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_Representation {
         unsafe {
@@ -23835,6 +24378,15 @@ unsafe impl crate::CppCopyable for HandleStepReprRepresentationContext {
 }
 
 impl HandleStepReprRepresentationContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprRepresentationContext_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_RepresentationContext
     pub fn get(&self) -> &crate::ffi_types::StepRepr_RepresentationContext {
         unsafe {
@@ -24179,6 +24731,15 @@ unsafe impl crate::CppCopyable for HandleStepReprRepresentationContextReference 
 }
 
 impl HandleStepReprRepresentationContextReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprRepresentationContextReference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_RepresentationContextReference
     pub fn get(&self) -> &crate::ffi_types::StepRepr_RepresentationContextReference {
         unsafe {
@@ -24413,6 +24974,15 @@ unsafe impl crate::CppCopyable for HandleStepReprRepresentationItem {
 }
 
 impl HandleStepReprRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_RepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_RepresentationItem {
         unsafe {
@@ -29416,6 +29986,13 @@ unsafe impl crate::CppCopyable for HandleStepReprRepresentationMap {
 }
 
 impl HandleStepReprRepresentationMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprRepresentationMap_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_RepresentationMap
     pub fn get(&self) -> &crate::ffi_types::StepRepr_RepresentationMap {
         unsafe {
@@ -29901,6 +30478,15 @@ unsafe impl crate::CppCopyable for HandleStepReprRepresentationReference {
 }
 
 impl HandleStepReprRepresentationReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprRepresentationReference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_RepresentationReference
     pub fn get(&self) -> &crate::ffi_types::StepRepr_RepresentationReference {
         unsafe {
@@ -30217,6 +30803,15 @@ unsafe impl crate::CppCopyable for HandleStepReprRepresentationRelationship {
 }
 
 impl HandleStepReprRepresentationRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprRepresentationRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_RepresentationRelationship
     pub fn get(&self) -> &crate::ffi_types::StepRepr_RepresentationRelationship {
         unsafe {
@@ -30631,6 +31226,13 @@ unsafe impl crate::CppCopyable for HandleStepReprRepresentationRelationshipWithT
 }
 
 impl HandleStepReprRepresentationRelationshipWithTransformation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprRepresentationRelationshipWithTransformation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_RepresentationRelationshipWithTransformation
     pub fn get(&self) -> &crate::ffi_types::StepRepr_RepresentationRelationshipWithTransformation {
         unsafe {
@@ -31264,6 +31866,13 @@ unsafe impl crate::CppCopyable for HandleStepReprShapeAspect {
 }
 
 impl HandleStepReprShapeAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprShapeAspect_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ShapeAspect
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ShapeAspect {
         unsafe {
@@ -32019,6 +32628,15 @@ unsafe impl crate::CppCopyable for HandleStepReprShapeAspectDerivingRelationship
 }
 
 impl HandleStepReprShapeAspectDerivingRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprShapeAspectDerivingRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ShapeAspectDerivingRelationship
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ShapeAspectDerivingRelationship {
         unsafe {
@@ -32370,6 +32988,15 @@ unsafe impl crate::CppCopyable for HandleStepReprShapeAspectRelationship {
 }
 
 impl HandleStepReprShapeAspectRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprShapeAspectRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ShapeAspectRelationship
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ShapeAspectRelationship {
         unsafe {
@@ -32820,6 +33447,15 @@ unsafe impl crate::CppCopyable for HandleStepReprShapeAspectTransition {
 }
 
 impl HandleStepReprShapeAspectTransition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprShapeAspectTransition_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ShapeAspectTransition
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ShapeAspectTransition {
         unsafe {
@@ -33414,6 +34050,15 @@ unsafe impl crate::CppCopyable for HandleStepReprShapeRepresentationRelationship
 }
 
 impl HandleStepReprShapeRepresentationRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprShapeRepresentationRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ShapeRepresentationRelationship
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ShapeRepresentationRelationship {
         unsafe {
@@ -33776,6 +34421,13 @@ unsafe impl crate::CppCopyable for HandleStepReprShapeRepresentationRelationship
 }
 
 impl HandleStepReprShapeRepresentationRelationshipWithTransformation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprShapeRepresentationRelationshipWithTransformation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ShapeRepresentationRelationshipWithTransformation
     pub fn get(
         &self,
@@ -34287,6 +34939,15 @@ unsafe impl crate::CppCopyable for HandleStepReprSpecifiedHigherUsageOccurrence 
 }
 
 impl HandleStepReprSpecifiedHigherUsageOccurrence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprSpecifiedHigherUsageOccurrence_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_SpecifiedHigherUsageOccurrence
     pub fn get(&self) -> &crate::ffi_types::StepRepr_SpecifiedHigherUsageOccurrence {
         unsafe {
@@ -34616,6 +35277,15 @@ unsafe impl crate::CppCopyable for HandleStepReprStructuralResponseProperty {
 }
 
 impl HandleStepReprStructuralResponseProperty {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprStructuralResponseProperty_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_StructuralResponseProperty
     pub fn get(&self) -> &crate::ffi_types::StepRepr_StructuralResponseProperty {
         unsafe {
@@ -34860,6 +35530,13 @@ unsafe impl crate::CppCopyable
 }
 
 impl HandleStepReprStructuralResponsePropertyDefinitionRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprStructuralResponsePropertyDefinitionRepresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_StructuralResponsePropertyDefinitionRepresentation
     pub fn get(
         &self,
@@ -35240,6 +35917,15 @@ unsafe impl crate::CppCopyable for HandleStepReprSuppliedPartRelationship {
 }
 
 impl HandleStepReprSuppliedPartRelationship {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprSuppliedPartRelationship_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_SuppliedPartRelationship
     pub fn get(&self) -> &crate::ffi_types::StepRepr_SuppliedPartRelationship {
         unsafe {
@@ -35596,6 +36282,11 @@ unsafe impl crate::CppCopyable for HandleStepReprTangent {
 }
 
 impl HandleStepReprTangent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepReprTangent_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_Tangent
     pub fn get(&self) -> &crate::ffi_types::StepRepr_Tangent {
         unsafe {
@@ -36208,6 +36899,11 @@ unsafe impl crate::CppCopyable for HandleStepReprValueRange {
 }
 
 impl HandleStepReprValueRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepReprValueRange_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ValueRange
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ValueRange {
         unsafe {
@@ -36506,6 +37202,15 @@ unsafe impl crate::CppCopyable for HandleStepReprValueRepresentationItem {
 }
 
 impl HandleStepReprValueRepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepReprValueRepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepRepr_ValueRepresentationItem
     pub fn get(&self) -> &crate::ffi_types::StepRepr_ValueRepresentationItem {
         unsafe {

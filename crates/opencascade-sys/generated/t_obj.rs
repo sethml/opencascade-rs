@@ -829,6 +829,11 @@ unsafe impl crate::CppCopyable for HandleTObjApplication {
 }
 
 impl HandleTObjApplication {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjApplication_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_Application
     pub fn get(&self) -> &crate::ffi_types::TObj_Application {
         unsafe {
@@ -1381,6 +1386,11 @@ unsafe impl crate::CppCopyable for HandleTObjCheckModel {
 }
 
 impl HandleTObjCheckModel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjCheckModel_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_CheckModel
     pub fn get(&self) -> &crate::ffi_types::TObj_CheckModel {
         unsafe {
@@ -2192,6 +2202,11 @@ unsafe impl crate::CppCopyable for HandleTObjHiddenPartition {
 }
 
 impl HandleTObjHiddenPartition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjHiddenPartition_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_HiddenPartition
     pub fn get(&self) -> &crate::ffi_types::TObj_HiddenPartition {
         unsafe {
@@ -2456,6 +2471,11 @@ unsafe impl crate::CppCopyable for HandleTObjLabelIterator {
 }
 
 impl HandleTObjLabelIterator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjLabelIterator_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_LabelIterator
     pub fn get(&self) -> &crate::ffi_types::TObj_LabelIterator {
         unsafe {
@@ -3033,6 +3053,11 @@ unsafe impl crate::CppCopyable for HandleTObjModel {
 }
 
 impl HandleTObjModel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjModel_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_Model
     pub fn get(&self) -> &crate::ffi_types::TObj_Model {
         unsafe {
@@ -3292,6 +3317,11 @@ unsafe impl crate::CppCopyable for HandleTObjModelIterator {
 }
 
 impl HandleTObjModelIterator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjModelIterator_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_ModelIterator
     pub fn get(&self) -> &crate::ffi_types::TObj_ModelIterator {
         unsafe {
@@ -4080,6 +4110,11 @@ unsafe impl crate::CppCopyable for HandleTObjObject {
 }
 
 impl HandleTObjObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjObject_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_Object
     pub fn get(&self) -> &crate::ffi_types::TObj_Object {
         unsafe {
@@ -4352,6 +4387,11 @@ unsafe impl crate::CppCopyable for HandleTObjObjectIterator {
 }
 
 impl HandleTObjObjectIterator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjObjectIterator_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_ObjectIterator
     pub fn get(&self) -> &crate::ffi_types::TObj_ObjectIterator {
         unsafe {
@@ -4745,6 +4785,13 @@ unsafe impl crate::CppCopyable for HandleTObjOcafObjectIterator {
 }
 
 impl HandleTObjOcafObjectIterator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjOcafObjectIterator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TObj_OcafObjectIterator
     pub fn get(&self) -> &crate::ffi_types::TObj_OcafObjectIterator {
         unsafe {
@@ -5546,6 +5593,11 @@ unsafe impl crate::CppCopyable for HandleTObjPartition {
 }
 
 impl HandleTObjPartition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjPartition_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_Partition
     pub fn get(&self) -> &crate::ffi_types::TObj_Partition {
         unsafe {
@@ -5926,6 +5978,13 @@ unsafe impl crate::CppCopyable for HandleTObjReferenceIterator {
 }
 
 impl HandleTObjReferenceIterator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjReferenceIterator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TObj_ReferenceIterator
     pub fn get(&self) -> &crate::ffi_types::TObj_ReferenceIterator {
         unsafe {
@@ -6208,6 +6267,11 @@ unsafe impl crate::CppCopyable for HandleTObjSequenceIterator {
 }
 
 impl HandleTObjSequenceIterator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjSequenceIterator_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_SequenceIterator
     pub fn get(&self) -> &crate::ffi_types::TObj_SequenceIterator {
         unsafe {
@@ -6474,6 +6538,13 @@ unsafe impl crate::CppCopyable for HandleTObjHSequenceOfObject {
 }
 
 impl HandleTObjHSequenceOfObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjHSequenceOfObject_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TObj_HSequenceOfObject
     pub fn get(&self) -> &crate::ffi_types::TObj_HSequenceOfObject {
         unsafe {
@@ -7163,6 +7234,11 @@ unsafe impl crate::CppCopyable for HandleTObjTIntSparseArray {
 }
 
 impl HandleTObjTIntSparseArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjTIntSparseArray_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_TIntSparseArray
     pub fn get(&self) -> &crate::ffi_types::TObj_TIntSparseArray {
         unsafe {
@@ -7735,6 +7811,11 @@ unsafe impl crate::CppCopyable for HandleTObjTModel {
 }
 
 impl HandleTObjTModel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjTModel_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_TModel
     pub fn get(&self) -> &crate::ffi_types::TObj_TModel {
         unsafe {
@@ -8403,6 +8484,11 @@ unsafe impl crate::CppCopyable for HandleTObjTNameContainer {
 }
 
 impl HandleTObjTNameContainer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjTNameContainer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_TNameContainer
     pub fn get(&self) -> &crate::ffi_types::TObj_TNameContainer {
         unsafe {
@@ -9003,6 +9089,11 @@ unsafe impl crate::CppCopyable for HandleTObjTObject {
 }
 
 impl HandleTObjTObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjTObject_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_TObject
     pub fn get(&self) -> &crate::ffi_types::TObj_TObject {
         unsafe {
@@ -9664,6 +9755,11 @@ unsafe impl crate::CppCopyable for HandleTObjTReference {
 }
 
 impl HandleTObjTReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjTReference_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_TReference
     pub fn get(&self) -> &crate::ffi_types::TObj_TReference {
         unsafe {
@@ -10256,6 +10352,11 @@ unsafe impl crate::CppCopyable for HandleTObjTXYZ {
 }
 
 impl HandleTObjTXYZ {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTObj::HandleTObjTXYZ_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TObj_TXYZ
     pub fn get(&self) -> &crate::ffi_types::TObj_TXYZ {
         unsafe {

@@ -777,6 +777,13 @@ unsafe impl crate::CppCopyable for HandleShapeBuildReShape {
 }
 
 impl HandleShapeBuildReShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeBuild_ReShape
     pub fn get(&self) -> &crate::ffi_types::ShapeBuild_ReShape {
         unsafe {

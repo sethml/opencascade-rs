@@ -444,6 +444,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeClosedEdgeDivide {
 }
 
 impl HandleShapeUpgradeClosedEdgeDivide {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedEdgeDivide_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedEdgeDivide
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ClosedEdgeDivide {
         unsafe {
@@ -939,6 +948,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeClosedFaceDivide {
 }
 
 impl HandleShapeUpgradeClosedFaceDivide {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedFaceDivide_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedFaceDivide
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ClosedFaceDivide {
         unsafe {
@@ -1271,6 +1289,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeConvertCurve2dToBezier {
 }
 
 impl HandleShapeUpgradeConvertCurve2dToBezier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve2dToBezier_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertCurve2dToBezier
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ConvertCurve2dToBezier {
         unsafe {
@@ -1668,6 +1695,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeConvertCurve3dToBezier {
 }
 
 impl HandleShapeUpgradeConvertCurve3dToBezier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve3dToBezier_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertCurve3dToBezier
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ConvertCurve3dToBezier {
         unsafe {
@@ -2056,6 +2092,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeConvertSurfaceToBezierBasis
 }
 
 impl HandleShapeUpgradeConvertSurfaceToBezierBasis {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertSurfaceToBezierBasis_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertSurfaceToBezierBasis
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ConvertSurfaceToBezierBasis {
         unsafe {
@@ -2499,6 +2544,13 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeEdgeDivide {
 }
 
 impl HandleShapeUpgradeEdgeDivide {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeEdgeDivide_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_EdgeDivide
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_EdgeDivide {
         unsafe {
@@ -3018,6 +3070,13 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeFaceDivide {
 }
 
 impl HandleShapeUpgradeFaceDivide {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivide_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_FaceDivide
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_FaceDivide {
         unsafe {
@@ -3571,6 +3630,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeFaceDivideArea {
 }
 
 impl HandleShapeUpgradeFaceDivideArea {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivideArea_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_FaceDivideArea
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_FaceDivideArea {
         unsafe {
@@ -3963,6 +4031,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeFixSmallBezierCurves {
 }
 
 impl HandleShapeUpgradeFixSmallBezierCurves {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallBezierCurves_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_FixSmallBezierCurves
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_FixSmallBezierCurves {
         unsafe {
@@ -4381,6 +4458,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeFixSmallCurves {
 }
 
 impl HandleShapeUpgradeFixSmallCurves {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallCurves_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_FixSmallCurves
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_FixSmallCurves {
         unsafe {
@@ -4839,6 +4925,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeRemoveInternalWires {
 }
 
 impl HandleShapeUpgradeRemoveInternalWires {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveInternalWires_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_RemoveInternalWires
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_RemoveInternalWires {
         unsafe {
@@ -5128,6 +5223,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeRemoveLocations {
 }
 
 impl HandleShapeUpgradeRemoveLocations {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveLocations_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_RemoveLocations
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_RemoveLocations {
         unsafe {
@@ -7292,6 +7396,13 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitCurve {
 }
 
 impl HandleShapeUpgradeSplitCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve {
         unsafe {
@@ -7722,6 +7833,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitCurve2d {
 }
 
 impl HandleShapeUpgradeSplitCurve2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2d_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve2d
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve2d {
         unsafe {
@@ -8089,6 +8209,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitCurve2dContinuity {
 }
 
 impl HandleShapeUpgradeSplitCurve2dContinuity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2dContinuity_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve2dContinuity
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve2dContinuity {
         unsafe {
@@ -8443,6 +8572,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitCurve3d {
 }
 
 impl HandleShapeUpgradeSplitCurve3d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3d_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve3d
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve3d {
         unsafe {
@@ -8821,6 +8959,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitCurve3dContinuity {
 }
 
 impl HandleShapeUpgradeSplitCurve3dContinuity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3dContinuity_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve3dContinuity
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve3dContinuity {
         unsafe {
@@ -9203,6 +9350,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitSurface {
 }
 
 impl HandleShapeUpgradeSplitSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurface
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitSurface {
         unsafe {
@@ -9607,6 +9763,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitSurfaceAngle {
 }
 
 impl HandleShapeUpgradeSplitSurfaceAngle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceAngle_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceAngle
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitSurfaceAngle {
         unsafe {
@@ -9978,6 +10143,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitSurfaceArea {
 }
 
 impl HandleShapeUpgradeSplitSurfaceArea {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceArea_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceArea
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitSurfaceArea {
         unsafe {
@@ -10311,6 +10485,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeSplitSurfaceContinuity {
 }
 
 impl HandleShapeUpgradeSplitSurfaceContinuity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceContinuity_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceContinuity
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitSurfaceContinuity {
         unsafe {
@@ -10617,6 +10800,13 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeTool {
 }
 
 impl HandleShapeUpgradeTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_Tool
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_Tool {
         unsafe {
@@ -11189,6 +11379,15 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeUnifySameDomain {
 }
 
 impl HandleShapeUpgradeUnifySameDomain {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeUnifySameDomain_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_UnifySameDomain
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_UnifySameDomain {
         unsafe {
@@ -11769,6 +11968,13 @@ unsafe impl crate::CppCopyable for HandleShapeUpgradeWireDivide {
 }
 
 impl HandleShapeUpgradeWireDivide {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeWireDivide_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying ShapeUpgrade_WireDivide
     pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_WireDivide {
         unsafe {

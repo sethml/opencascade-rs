@@ -747,6 +747,11 @@ unsafe impl crate::CppCopyable for HandleImageAlienPixMap {
 }
 
 impl HandleImageAlienPixMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleImageAlienPixMap_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Image_AlienPixMap
     pub fn get(&self) -> &crate::ffi_types::Image_AlienPixMap {
         unsafe {
@@ -1148,6 +1153,13 @@ unsafe impl crate::CppCopyable for HandleImageCompressedPixMap {
 }
 
 impl HandleImageCompressedPixMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleImageCompressedPixMap_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Image_CompressedPixMap
     pub fn get(&self) -> &crate::ffi_types::Image_CompressedPixMap {
         unsafe {
@@ -1551,6 +1563,11 @@ unsafe impl crate::CppCopyable for HandleImageDiff {
 }
 
 impl HandleImageDiff {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleImageDiff_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Image_Diff
     pub fn get(&self) -> &crate::ffi_types::Image_Diff {
         unsafe {
@@ -2475,6 +2492,11 @@ unsafe impl crate::CppCopyable for HandleImagePixMap {
 }
 
 impl HandleImagePixMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleImagePixMap_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Image_PixMap
     pub fn get(&self) -> &crate::ffi_types::Image_PixMap {
         unsafe {
@@ -2953,6 +2975,11 @@ unsafe impl crate::CppCopyable for HandleImagePixMapData {
 }
 
 impl HandleImagePixMapData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleImagePixMapData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Image_PixMapData
     pub fn get(&self) -> &crate::ffi_types::Image_PixMapData {
         unsafe {
@@ -3233,6 +3260,13 @@ unsafe impl crate::CppCopyable for HandleImageSupportedFormats {
 }
 
 impl HandleImageSupportedFormats {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleImageSupportedFormats_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Image_SupportedFormats
     pub fn get(&self) -> &crate::ffi_types::Image_SupportedFormats {
         unsafe {
@@ -3594,6 +3628,11 @@ unsafe impl crate::CppCopyable for HandleImageTexture {
 }
 
 impl HandleImageTexture {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleImageTexture_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Image_Texture
     pub fn get(&self) -> &crate::ffi_types::Image_Texture {
         unsafe {
@@ -3895,6 +3934,13 @@ unsafe impl crate::CppCopyable for HandleImageVideoRecorder {
 }
 
 impl HandleImageVideoRecorder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleImageVideoRecorder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Image_VideoRecorder
     pub fn get(&self) -> &crate::ffi_types::Image_VideoRecorder {
         unsafe {

@@ -85,37 +85,43 @@ typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
 typedef opencascade::handle<TDocStd_XLink> HandleTDocStdXLink;
 typedef opencascade::handle<TFunction_Function> HandleTFunctionFunction;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleStdLDriversDocumentRetrievalDriver_destructor(HandleStdLDriversDocumentRetrievalDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleStdLDriversDocumentRetrievalDriver*> HandleStdLDriversDocumentRetrievalDriver_clone(const HandleStdLDriversDocumentRetrievalDriver* self_) {
     try { return {new HandleStdLDriversDocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdLDriversDocumentRetrievalDriver_is_null(const HandleStdLDriversDocumentRetrievalDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleStdLPersistentData_destructor(HandleStdLPersistentData* self_) { delete self_; }
 extern "C" OcctResult<HandleStdLPersistentData*> HandleStdLPersistentData_clone(const HandleStdLPersistentData* self_) {
     try { return {new HandleStdLPersistentData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdLPersistentData_is_null(const HandleStdLPersistentData* self_) { return self_->IsNull(); }
 extern "C" void HandleStdLPersistentDocument_destructor(HandleStdLPersistentDocument* self_) { delete self_; }
 extern "C" OcctResult<HandleStdLPersistentDocument*> HandleStdLPersistentDocument_clone(const HandleStdLPersistentDocument* self_) {
     try { return {new HandleStdLPersistentDocument(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdLPersistentDocument_is_null(const HandleStdLPersistentDocument* self_) { return self_->IsNull(); }
 extern "C" void HandleStdLPersistentHArray1OfPersistent_destructor(HandleStdLPersistentHArray1OfPersistent* self_) { delete self_; }
 extern "C" OcctResult<HandleStdLPersistentHArray1OfPersistent*> HandleStdLPersistentHArray1OfPersistent_clone(const HandleStdLPersistentHArray1OfPersistent* self_) {
     try { return {new HandleStdLPersistentHArray1OfPersistent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdLPersistentHArray1OfPersistent_is_null(const HandleStdLPersistentHArray1OfPersistent* self_) { return self_->IsNull(); }
 extern "C" void HandleStdLPersistentHArray2OfPersistent_destructor(HandleStdLPersistentHArray2OfPersistent* self_) { delete self_; }
 extern "C" OcctResult<HandleStdLPersistentHArray2OfPersistent*> HandleStdLPersistentHArray2OfPersistent_clone(const HandleStdLPersistentHArray2OfPersistent* self_) {
     try { return {new HandleStdLPersistentHArray2OfPersistent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdLPersistentHArray2OfPersistent_is_null(const HandleStdLPersistentHArray2OfPersistent* self_) { return self_->IsNull(); }
 extern "C" void HandleStdObjMgtPersistent_destructor(HandleStdObjMgtPersistent* self_) { delete self_; }
 extern "C" OcctResult<HandleStdObjMgtPersistent*> HandleStdObjMgtPersistent_clone(const HandleStdObjMgtPersistent* self_) {
     try { return {new HandleStdObjMgtPersistent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdObjMgtPersistent_is_null(const HandleStdObjMgtPersistent* self_) { return self_->IsNull(); }
 
 // ========================
 // StdLDrivers_DocumentRetrievalDriver wrappers

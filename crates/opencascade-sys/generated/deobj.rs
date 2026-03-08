@@ -388,6 +388,13 @@ unsafe impl crate::CppCopyable for HandleDEOBJConfigurationNode {
 }
 
 impl HandleDEOBJConfigurationNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEOBJ::HandleDEOBJConfigurationNode_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying DEOBJ_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEOBJ_ConfigurationNode {
         unsafe {
@@ -844,6 +851,11 @@ unsafe impl crate::CppCopyable for HandleDEOBJProvider {
 }
 
 impl HandleDEOBJProvider {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEOBJ::HandleDEOBJProvider_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying DEOBJ_Provider
     pub fn get(&self) -> &crate::ffi_types::DEOBJ_Provider {
         unsafe {

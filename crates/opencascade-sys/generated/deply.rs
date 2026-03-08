@@ -391,6 +391,13 @@ unsafe impl crate::CppCopyable for HandleDEPLYConfigurationNode {
 }
 
 impl HandleDEPLYConfigurationNode {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEPLY::HandleDEPLYConfigurationNode_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying DEPLY_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEPLY_ConfigurationNode {
         unsafe {
@@ -789,6 +796,11 @@ unsafe impl crate::CppCopyable for HandleDEPLYProvider {
 }
 
 impl HandleDEPLYProvider {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEPLY::HandleDEPLYProvider_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying DEPLY_Provider
     pub fn get(&self) -> &crate::ffi_types::DEPLY_Provider {
         unsafe {

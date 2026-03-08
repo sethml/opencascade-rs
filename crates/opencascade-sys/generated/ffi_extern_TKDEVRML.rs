@@ -88,6 +88,10 @@ extern "C" {
     pub fn HandleDEVRMLConfigurationNode_clone(
         self_: *const HandleDEVRMLConfigurationNode,
     ) -> crate::OcctResult<*mut HandleDEVRMLConfigurationNode>;
+    /// Check if Handle<DEVRML_ConfigurationNode> is null
+    pub fn HandleDEVRMLConfigurationNode_is_null(
+        self_: *const HandleDEVRMLConfigurationNode,
+    ) -> bool;
     /// Dereference Handle to get *const DEVRML_ConfigurationNode
     pub fn HandleDEVRMLConfigurationNode_get(
         handle: *const HandleDEVRMLConfigurationNode,
@@ -281,6 +285,8 @@ extern "C" {
     pub fn HandleDEVRMLProvider_clone(
         self_: *const HandleDEVRMLProvider,
     ) -> crate::OcctResult<*mut HandleDEVRMLProvider>;
+    /// Check if Handle<DEVRML_Provider> is null
+    pub fn HandleDEVRMLProvider_is_null(self_: *const HandleDEVRMLProvider) -> bool;
     /// Dereference Handle to get *const DEVRML_Provider
     pub fn HandleDEVRMLProvider_get(
         handle: *const HandleDEVRMLProvider,
@@ -408,6 +414,8 @@ extern "C" {
     pub fn HandleVrmlAsciiText_clone(
         self_: *const HandleVrmlAsciiText,
     ) -> crate::OcctResult<*mut HandleVrmlAsciiText>;
+    /// Check if Handle<Vrml_AsciiText> is null
+    pub fn HandleVrmlAsciiText_is_null(self_: *const HandleVrmlAsciiText) -> bool;
     /// Dereference Handle to get *const Vrml_AsciiText
     pub fn HandleVrmlAsciiText_get(
         handle: *const HandleVrmlAsciiText,
@@ -525,6 +533,8 @@ extern "C" {
     pub fn HandleVrmlCoordinate3_clone(
         self_: *const HandleVrmlCoordinate3,
     ) -> crate::OcctResult<*mut HandleVrmlCoordinate3>;
+    /// Check if Handle<Vrml_Coordinate3> is null
+    pub fn HandleVrmlCoordinate3_is_null(self_: *const HandleVrmlCoordinate3) -> bool;
     /// Dereference Handle to get *const Vrml_Coordinate3
     pub fn HandleVrmlCoordinate3_get(
         handle: *const HandleVrmlCoordinate3,
@@ -799,6 +809,8 @@ extern "C" {
     pub fn HandleVrmlIndexedFaceSet_clone(
         self_: *const HandleVrmlIndexedFaceSet,
     ) -> crate::OcctResult<*mut HandleVrmlIndexedFaceSet>;
+    /// Check if Handle<Vrml_IndexedFaceSet> is null
+    pub fn HandleVrmlIndexedFaceSet_is_null(self_: *const HandleVrmlIndexedFaceSet) -> bool;
     /// Dereference Handle to get *const Vrml_IndexedFaceSet
     pub fn HandleVrmlIndexedFaceSet_get(
         handle: *const HandleVrmlIndexedFaceSet,
@@ -919,6 +931,8 @@ extern "C" {
     pub fn HandleVrmlIndexedLineSet_clone(
         self_: *const HandleVrmlIndexedLineSet,
     ) -> crate::OcctResult<*mut HandleVrmlIndexedLineSet>;
+    /// Check if Handle<Vrml_IndexedLineSet> is null
+    pub fn HandleVrmlIndexedLineSet_is_null(self_: *const HandleVrmlIndexedLineSet) -> bool;
     /// Dereference Handle to get *const Vrml_IndexedLineSet
     pub fn HandleVrmlIndexedLineSet_get(
         handle: *const HandleVrmlIndexedLineSet,
@@ -1051,6 +1065,8 @@ extern "C" {
     pub fn HandleVrmlLOD_clone(
         self_: *const HandleVrmlLOD,
     ) -> crate::OcctResult<*mut HandleVrmlLOD>;
+    /// Check if Handle<Vrml_LOD> is null
+    pub fn HandleVrmlLOD_is_null(self_: *const HandleVrmlLOD) -> bool;
     /// Dereference Handle to get *const Vrml_LOD
     pub fn HandleVrmlLOD_get(handle: *const HandleVrmlLOD) -> crate::OcctResult<*const Vrml_LOD>;
     /// Dereference Handle to get *mut Vrml_LOD
@@ -1179,6 +1195,8 @@ extern "C" {
     pub fn HandleVrmlMaterial_clone(
         self_: *const HandleVrmlMaterial,
     ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
+    /// Check if Handle<Vrml_Material> is null
+    pub fn HandleVrmlMaterial_is_null(self_: *const HandleVrmlMaterial) -> bool;
     /// Dereference Handle to get *const Vrml_Material
     pub fn HandleVrmlMaterial_get(
         handle: *const HandleVrmlMaterial,
@@ -1309,6 +1327,8 @@ extern "C" {
     pub fn HandleVrmlNormal_clone(
         self_: *const HandleVrmlNormal,
     ) -> crate::OcctResult<*mut HandleVrmlNormal>;
+    /// Check if Handle<Vrml_Normal> is null
+    pub fn HandleVrmlNormal_is_null(self_: *const HandleVrmlNormal) -> bool;
     /// Dereference Handle to get *const Vrml_Normal
     pub fn HandleVrmlNormal_get(
         handle: *const HandleVrmlNormal,
@@ -1634,6 +1654,8 @@ extern "C" {
     pub fn HandleVrmlSFImage_clone(
         self_: *const HandleVrmlSFImage,
     ) -> crate::OcctResult<*mut HandleVrmlSFImage>;
+    /// Check if Handle<Vrml_SFImage> is null
+    pub fn HandleVrmlSFImage_is_null(self_: *const HandleVrmlSFImage) -> bool;
     /// Dereference Handle to get *const Vrml_SFImage
     pub fn HandleVrmlSFImage_get(
         handle: *const HandleVrmlSFImage,
@@ -2043,6 +2065,9 @@ extern "C" {
     pub fn HandleVrmlTextureCoordinate2_clone(
         self_: *const HandleVrmlTextureCoordinate2,
     ) -> crate::OcctResult<*mut HandleVrmlTextureCoordinate2>;
+    /// Check if Handle<Vrml_TextureCoordinate2> is null
+    pub fn HandleVrmlTextureCoordinate2_is_null(self_: *const HandleVrmlTextureCoordinate2)
+        -> bool;
     /// Dereference Handle to get *const Vrml_TextureCoordinate2
     pub fn HandleVrmlTextureCoordinate2_get(
         handle: *const HandleVrmlTextureCoordinate2,
@@ -2291,6 +2316,8 @@ extern "C" {
     pub fn HandleVrmlAPICafReader_clone(
         self_: *const HandleVrmlAPICafReader,
     ) -> crate::OcctResult<*mut HandleVrmlAPICafReader>;
+    /// Check if Handle<VrmlAPI_CafReader> is null
+    pub fn HandleVrmlAPICafReader_is_null(self_: *const HandleVrmlAPICafReader) -> bool;
     /// Dereference Handle to get *const VrmlAPI_CafReader
     pub fn HandleVrmlAPICafReader_get(
         handle: *const HandleVrmlAPICafReader,
@@ -2848,6 +2875,8 @@ extern "C" {
     pub fn HandleVrmlConverterDrawer_clone(
         self_: *const HandleVrmlConverterDrawer,
     ) -> crate::OcctResult<*mut HandleVrmlConverterDrawer>;
+    /// Check if Handle<VrmlConverter_Drawer> is null
+    pub fn HandleVrmlConverterDrawer_is_null(self_: *const HandleVrmlConverterDrawer) -> bool;
     /// Dereference Handle to get *const VrmlConverter_Drawer
     pub fn HandleVrmlConverterDrawer_get(
         handle: *const HandleVrmlConverterDrawer,
@@ -2955,6 +2984,9 @@ extern "C" {
     pub fn HandleVrmlConverterIsoAspect_clone(
         self_: *const HandleVrmlConverterIsoAspect,
     ) -> crate::OcctResult<*mut HandleVrmlConverterIsoAspect>;
+    /// Check if Handle<VrmlConverter_IsoAspect> is null
+    pub fn HandleVrmlConverterIsoAspect_is_null(self_: *const HandleVrmlConverterIsoAspect)
+        -> bool;
     /// Dereference Handle to get *const VrmlConverter_IsoAspect
     pub fn HandleVrmlConverterIsoAspect_get(
         handle: *const HandleVrmlConverterIsoAspect,
@@ -3073,6 +3105,10 @@ extern "C" {
     pub fn HandleVrmlConverterLineAspect_clone(
         self_: *const HandleVrmlConverterLineAspect,
     ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
+    /// Check if Handle<VrmlConverter_LineAspect> is null
+    pub fn HandleVrmlConverterLineAspect_is_null(
+        self_: *const HandleVrmlConverterLineAspect,
+    ) -> bool;
     /// Dereference Handle to get *const VrmlConverter_LineAspect
     pub fn HandleVrmlConverterLineAspect_get(
         handle: *const HandleVrmlConverterLineAspect,
@@ -3173,6 +3209,10 @@ extern "C" {
     pub fn HandleVrmlConverterPointAspect_clone(
         self_: *const HandleVrmlConverterPointAspect,
     ) -> crate::OcctResult<*mut HandleVrmlConverterPointAspect>;
+    /// Check if Handle<VrmlConverter_PointAspect> is null
+    pub fn HandleVrmlConverterPointAspect_is_null(
+        self_: *const HandleVrmlConverterPointAspect,
+    ) -> bool;
     /// Dereference Handle to get *const VrmlConverter_PointAspect
     pub fn HandleVrmlConverterPointAspect_get(
         handle: *const HandleVrmlConverterPointAspect,
@@ -3284,6 +3324,9 @@ extern "C" {
     pub fn HandleVrmlConverterProjector_clone(
         self_: *const HandleVrmlConverterProjector,
     ) -> crate::OcctResult<*mut HandleVrmlConverterProjector>;
+    /// Check if Handle<VrmlConverter_Projector> is null
+    pub fn HandleVrmlConverterProjector_is_null(self_: *const HandleVrmlConverterProjector)
+        -> bool;
     /// Dereference Handle to get *const VrmlConverter_Projector
     pub fn HandleVrmlConverterProjector_get(
         handle: *const HandleVrmlConverterProjector,
@@ -3411,6 +3454,10 @@ extern "C" {
     pub fn HandleVrmlConverterShadingAspect_clone(
         self_: *const HandleVrmlConverterShadingAspect,
     ) -> crate::OcctResult<*mut HandleVrmlConverterShadingAspect>;
+    /// Check if Handle<VrmlConverter_ShadingAspect> is null
+    pub fn HandleVrmlConverterShadingAspect_is_null(
+        self_: *const HandleVrmlConverterShadingAspect,
+    ) -> bool;
     /// Dereference Handle to get *const VrmlConverter_ShadingAspect
     pub fn HandleVrmlConverterShadingAspect_get(
         handle: *const HandleVrmlConverterShadingAspect,
@@ -3632,6 +3679,8 @@ extern "C" {
     pub fn HandleVrmlDataAppearance_clone(
         self_: *const HandleVrmlDataAppearance,
     ) -> crate::OcctResult<*mut HandleVrmlDataAppearance>;
+    /// Check if Handle<VrmlData_Appearance> is null
+    pub fn HandleVrmlDataAppearance_is_null(self_: *const HandleVrmlDataAppearance) -> bool;
     /// Dereference Handle to get *const VrmlData_Appearance
     pub fn HandleVrmlDataAppearance_get(
         handle: *const HandleVrmlDataAppearance,
@@ -3761,6 +3810,8 @@ extern "C" {
     pub fn HandleVrmlDataArrayVec3d_clone(
         self_: *const HandleVrmlDataArrayVec3d,
     ) -> crate::OcctResult<*mut HandleVrmlDataArrayVec3d>;
+    /// Check if Handle<VrmlData_ArrayVec3d> is null
+    pub fn HandleVrmlDataArrayVec3d_is_null(self_: *const HandleVrmlDataArrayVec3d) -> bool;
     /// Dereference Handle to get *const VrmlData_ArrayVec3d
     pub fn HandleVrmlDataArrayVec3d_get(
         handle: *const HandleVrmlDataArrayVec3d,
@@ -3924,6 +3975,8 @@ extern "C" {
     pub fn HandleVrmlDataBox_clone(
         self_: *const HandleVrmlDataBox,
     ) -> crate::OcctResult<*mut HandleVrmlDataBox>;
+    /// Check if Handle<VrmlData_Box> is null
+    pub fn HandleVrmlDataBox_is_null(self_: *const HandleVrmlDataBox) -> bool;
     /// Dereference Handle to get *const VrmlData_Box
     pub fn HandleVrmlDataBox_get(
         handle: *const HandleVrmlDataBox,
@@ -4067,6 +4120,8 @@ extern "C" {
     pub fn HandleVrmlDataColor_clone(
         self_: *const HandleVrmlDataColor,
     ) -> crate::OcctResult<*mut HandleVrmlDataColor>;
+    /// Check if Handle<VrmlData_Color> is null
+    pub fn HandleVrmlDataColor_is_null(self_: *const HandleVrmlDataColor) -> bool;
     /// Dereference Handle to get *const VrmlData_Color
     pub fn HandleVrmlDataColor_get(
         handle: *const HandleVrmlDataColor,
@@ -4250,6 +4305,8 @@ extern "C" {
     pub fn HandleVrmlDataCone_clone(
         self_: *const HandleVrmlDataCone,
     ) -> crate::OcctResult<*mut HandleVrmlDataCone>;
+    /// Check if Handle<VrmlData_Cone> is null
+    pub fn HandleVrmlDataCone_is_null(self_: *const HandleVrmlDataCone) -> bool;
     /// Dereference Handle to get *const VrmlData_Cone
     pub fn HandleVrmlDataCone_get(
         handle: *const HandleVrmlDataCone,
@@ -4390,6 +4447,8 @@ extern "C" {
     pub fn HandleVrmlDataCoordinate_clone(
         self_: *const HandleVrmlDataCoordinate,
     ) -> crate::OcctResult<*mut HandleVrmlDataCoordinate>;
+    /// Check if Handle<VrmlData_Coordinate> is null
+    pub fn HandleVrmlDataCoordinate_is_null(self_: *const HandleVrmlDataCoordinate) -> bool;
     /// Dereference Handle to get *const VrmlData_Coordinate
     pub fn HandleVrmlDataCoordinate_get(
         handle: *const HandleVrmlDataCoordinate,
@@ -4578,6 +4637,8 @@ extern "C" {
     pub fn HandleVrmlDataCylinder_clone(
         self_: *const HandleVrmlDataCylinder,
     ) -> crate::OcctResult<*mut HandleVrmlDataCylinder>;
+    /// Check if Handle<VrmlData_Cylinder> is null
+    pub fn HandleVrmlDataCylinder_is_null(self_: *const HandleVrmlDataCylinder) -> bool;
     /// Dereference Handle to get *const VrmlData_Cylinder
     pub fn HandleVrmlDataCylinder_get(
         handle: *const HandleVrmlDataCylinder,
@@ -4715,6 +4776,8 @@ extern "C" {
     pub fn HandleVrmlDataFaceted_clone(
         self_: *const HandleVrmlDataFaceted,
     ) -> crate::OcctResult<*mut HandleVrmlDataFaceted>;
+    /// Check if Handle<VrmlData_Faceted> is null
+    pub fn HandleVrmlDataFaceted_is_null(self_: *const HandleVrmlDataFaceted) -> bool;
     /// Dereference Handle to get *const VrmlData_Faceted
     pub fn HandleVrmlDataFaceted_get(
         handle: *const HandleVrmlDataFaceted,
@@ -4838,6 +4901,8 @@ extern "C" {
     pub fn HandleVrmlDataGeometry_clone(
         self_: *const HandleVrmlDataGeometry,
     ) -> crate::OcctResult<*mut HandleVrmlDataGeometry>;
+    /// Check if Handle<VrmlData_Geometry> is null
+    pub fn HandleVrmlDataGeometry_is_null(self_: *const HandleVrmlDataGeometry) -> bool;
     /// Dereference Handle to get *const VrmlData_Geometry
     pub fn HandleVrmlDataGeometry_get(
         handle: *const HandleVrmlDataGeometry,
@@ -5044,6 +5109,8 @@ extern "C" {
     pub fn HandleVrmlDataGroup_clone(
         self_: *const HandleVrmlDataGroup,
     ) -> crate::OcctResult<*mut HandleVrmlDataGroup>;
+    /// Check if Handle<VrmlData_Group> is null
+    pub fn HandleVrmlDataGroup_is_null(self_: *const HandleVrmlDataGroup) -> bool;
     /// Dereference Handle to get *const VrmlData_Group
     pub fn HandleVrmlDataGroup_get(
         handle: *const HandleVrmlDataGroup,
@@ -5182,6 +5249,8 @@ extern "C" {
     pub fn HandleVrmlDataImageTexture_clone(
         self_: *const HandleVrmlDataImageTexture,
     ) -> crate::OcctResult<*mut HandleVrmlDataImageTexture>;
+    /// Check if Handle<VrmlData_ImageTexture> is null
+    pub fn HandleVrmlDataImageTexture_is_null(self_: *const HandleVrmlDataImageTexture) -> bool;
     /// Dereference Handle to get *const VrmlData_ImageTexture
     pub fn HandleVrmlDataImageTexture_get(
         handle: *const HandleVrmlDataImageTexture,
@@ -5476,6 +5545,9 @@ extern "C" {
     pub fn HandleVrmlDataIndexedFaceSet_clone(
         self_: *const HandleVrmlDataIndexedFaceSet,
     ) -> crate::OcctResult<*mut HandleVrmlDataIndexedFaceSet>;
+    /// Check if Handle<VrmlData_IndexedFaceSet> is null
+    pub fn HandleVrmlDataIndexedFaceSet_is_null(self_: *const HandleVrmlDataIndexedFaceSet)
+        -> bool;
     /// Dereference Handle to get *const VrmlData_IndexedFaceSet
     pub fn HandleVrmlDataIndexedFaceSet_get(
         handle: *const HandleVrmlDataIndexedFaceSet,
@@ -5714,6 +5786,9 @@ extern "C" {
     pub fn HandleVrmlDataIndexedLineSet_clone(
         self_: *const HandleVrmlDataIndexedLineSet,
     ) -> crate::OcctResult<*mut HandleVrmlDataIndexedLineSet>;
+    /// Check if Handle<VrmlData_IndexedLineSet> is null
+    pub fn HandleVrmlDataIndexedLineSet_is_null(self_: *const HandleVrmlDataIndexedLineSet)
+        -> bool;
     /// Dereference Handle to get *const VrmlData_IndexedLineSet
     pub fn HandleVrmlDataIndexedLineSet_get(
         handle: *const HandleVrmlDataIndexedLineSet,
@@ -5904,6 +5979,8 @@ extern "C" {
     pub fn HandleVrmlDataMaterial_clone(
         self_: *const HandleVrmlDataMaterial,
     ) -> crate::OcctResult<*mut HandleVrmlDataMaterial>;
+    /// Check if Handle<VrmlData_Material> is null
+    pub fn HandleVrmlDataMaterial_is_null(self_: *const HandleVrmlDataMaterial) -> bool;
     /// Dereference Handle to get *const VrmlData_Material
     pub fn HandleVrmlDataMaterial_get(
         handle: *const HandleVrmlDataMaterial,
@@ -6052,6 +6129,8 @@ extern "C" {
     pub fn HandleVrmlDataNode_clone(
         self_: *const HandleVrmlDataNode,
     ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    /// Check if Handle<VrmlData_Node> is null
+    pub fn HandleVrmlDataNode_is_null(self_: *const HandleVrmlDataNode) -> bool;
     /// Dereference Handle to get *const VrmlData_Node
     pub fn HandleVrmlDataNode_get(
         handle: *const HandleVrmlDataNode,
@@ -6249,6 +6328,8 @@ extern "C" {
     pub fn HandleVrmlDataNormal_clone(
         self_: *const HandleVrmlDataNormal,
     ) -> crate::OcctResult<*mut HandleVrmlDataNormal>;
+    /// Check if Handle<VrmlData_Normal> is null
+    pub fn HandleVrmlDataNormal_is_null(self_: *const HandleVrmlDataNormal) -> bool;
     /// Dereference Handle to get *const VrmlData_Normal
     pub fn HandleVrmlDataNormal_get(
         handle: *const HandleVrmlDataNormal,
@@ -6588,6 +6669,8 @@ extern "C" {
     pub fn HandleVrmlDataShapeNode_clone(
         self_: *const HandleVrmlDataShapeNode,
     ) -> crate::OcctResult<*mut HandleVrmlDataShapeNode>;
+    /// Check if Handle<VrmlData_ShapeNode> is null
+    pub fn HandleVrmlDataShapeNode_is_null(self_: *const HandleVrmlDataShapeNode) -> bool;
     /// Dereference Handle to get *const VrmlData_ShapeNode
     pub fn HandleVrmlDataShapeNode_get(
         handle: *const HandleVrmlDataShapeNode,
@@ -6727,6 +6810,8 @@ extern "C" {
     pub fn HandleVrmlDataSphere_clone(
         self_: *const HandleVrmlDataSphere,
     ) -> crate::OcctResult<*mut HandleVrmlDataSphere>;
+    /// Check if Handle<VrmlData_Sphere> is null
+    pub fn HandleVrmlDataSphere_is_null(self_: *const HandleVrmlDataSphere) -> bool;
     /// Dereference Handle to get *const VrmlData_Sphere
     pub fn HandleVrmlDataSphere_get(
         handle: *const HandleVrmlDataSphere,
@@ -6842,6 +6927,8 @@ extern "C" {
     pub fn HandleVrmlDataTexture_clone(
         self_: *const HandleVrmlDataTexture,
     ) -> crate::OcctResult<*mut HandleVrmlDataTexture>;
+    /// Check if Handle<VrmlData_Texture> is null
+    pub fn HandleVrmlDataTexture_is_null(self_: *const HandleVrmlDataTexture) -> bool;
     /// Dereference Handle to get *const VrmlData_Texture
     pub fn HandleVrmlDataTexture_get(
         handle: *const HandleVrmlDataTexture,
@@ -6996,6 +7083,10 @@ extern "C" {
     pub fn HandleVrmlDataTextureCoordinate_clone(
         self_: *const HandleVrmlDataTextureCoordinate,
     ) -> crate::OcctResult<*mut HandleVrmlDataTextureCoordinate>;
+    /// Check if Handle<VrmlData_TextureCoordinate> is null
+    pub fn HandleVrmlDataTextureCoordinate_is_null(
+        self_: *const HandleVrmlDataTextureCoordinate,
+    ) -> bool;
     /// Dereference Handle to get *const VrmlData_TextureCoordinate
     pub fn HandleVrmlDataTextureCoordinate_get(
         handle: *const HandleVrmlDataTextureCoordinate,
@@ -7130,6 +7221,10 @@ extern "C" {
     pub fn HandleVrmlDataTextureTransform_clone(
         self_: *const HandleVrmlDataTextureTransform,
     ) -> crate::OcctResult<*mut HandleVrmlDataTextureTransform>;
+    /// Check if Handle<VrmlData_TextureTransform> is null
+    pub fn HandleVrmlDataTextureTransform_is_null(
+        self_: *const HandleVrmlDataTextureTransform,
+    ) -> bool;
     /// Dereference Handle to get *const VrmlData_TextureTransform
     pub fn HandleVrmlDataTextureTransform_get(
         handle: *const HandleVrmlDataTextureTransform,
@@ -7262,6 +7357,8 @@ extern "C" {
     pub fn HandleVrmlDataUnknownNode_clone(
         self_: *const HandleVrmlDataUnknownNode,
     ) -> crate::OcctResult<*mut HandleVrmlDataUnknownNode>;
+    /// Check if Handle<VrmlData_UnknownNode> is null
+    pub fn HandleVrmlDataUnknownNode_is_null(self_: *const HandleVrmlDataUnknownNode) -> bool;
     /// Dereference Handle to get *const VrmlData_UnknownNode
     pub fn HandleVrmlDataUnknownNode_get(
         handle: *const HandleVrmlDataUnknownNode,
@@ -7405,6 +7502,8 @@ extern "C" {
     pub fn HandleVrmlDataWorldInfo_clone(
         self_: *const HandleVrmlDataWorldInfo,
     ) -> crate::OcctResult<*mut HandleVrmlDataWorldInfo>;
+    /// Check if Handle<VrmlData_WorldInfo> is null
+    pub fn HandleVrmlDataWorldInfo_is_null(self_: *const HandleVrmlDataWorldInfo) -> bool;
     /// Dereference Handle to get *const VrmlData_WorldInfo
     pub fn HandleVrmlDataWorldInfo_get(
         handle: *const HandleVrmlDataWorldInfo,

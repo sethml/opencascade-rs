@@ -93,6 +93,10 @@ extern "C" {
     pub fn HandleDEBREPConfigurationNode_clone(
         self_: *const HandleDEBREPConfigurationNode,
     ) -> crate::OcctResult<*mut HandleDEBREPConfigurationNode>;
+    /// Check if Handle<DEBREP_ConfigurationNode> is null
+    pub fn HandleDEBREPConfigurationNode_is_null(
+        self_: *const HandleDEBREPConfigurationNode,
+    ) -> bool;
     /// Dereference Handle to get *const DEBREP_ConfigurationNode
     pub fn HandleDEBREPConfigurationNode_get(
         handle: *const HandleDEBREPConfigurationNode,
@@ -281,6 +285,8 @@ extern "C" {
     pub fn HandleDEBREPProvider_clone(
         self_: *const HandleDEBREPProvider,
     ) -> crate::OcctResult<*mut HandleDEBREPProvider>;
+    /// Check if Handle<DEBREP_Provider> is null
+    pub fn HandleDEBREPProvider_is_null(self_: *const HandleDEBREPProvider) -> bool;
     /// Dereference Handle to get *const DEBREP_Provider
     pub fn HandleDEBREPProvider_get(
         handle: *const HandleDEBREPProvider,
@@ -421,6 +427,10 @@ extern "C" {
     pub fn HandleDEXCAFConfigurationNode_clone(
         self_: *const HandleDEXCAFConfigurationNode,
     ) -> crate::OcctResult<*mut HandleDEXCAFConfigurationNode>;
+    /// Check if Handle<DEXCAF_ConfigurationNode> is null
+    pub fn HandleDEXCAFConfigurationNode_is_null(
+        self_: *const HandleDEXCAFConfigurationNode,
+    ) -> bool;
     /// Dereference Handle to get *const DEXCAF_ConfigurationNode
     pub fn HandleDEXCAFConfigurationNode_get(
         handle: *const HandleDEXCAFConfigurationNode,
@@ -609,6 +619,8 @@ extern "C" {
     pub fn HandleDEXCAFProvider_clone(
         self_: *const HandleDEXCAFProvider,
     ) -> crate::OcctResult<*mut HandleDEXCAFProvider>;
+    /// Check if Handle<DEXCAF_Provider> is null
+    pub fn HandleDEXCAFProvider_is_null(self_: *const HandleDEXCAFProvider) -> bool;
     /// Dereference Handle to get *const DEXCAF_Provider
     pub fn HandleDEXCAFProvider_get(
         handle: *const HandleDEXCAFProvider,

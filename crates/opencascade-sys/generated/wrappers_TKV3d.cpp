@@ -681,732 +681,877 @@ typedef opencascade::handle<V3d_View> HandleV3dView;
 typedef opencascade::handle<V3d_Viewer> HandleV3dViewer;
 typedef opencascade::handle<XCAFPrs_AISObject> HandleXCAFPrsAISObject;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleAISAnimation_destructor(HandleAISAnimation* self_) { delete self_; }
 extern "C" OcctResult<HandleAISAnimation*> HandleAISAnimation_clone(const HandleAISAnimation* self_) {
     try { return {new HandleAISAnimation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISAnimation_is_null(const HandleAISAnimation* self_) { return self_->IsNull(); }
 extern "C" void HandleAISAnimationAxisRotation_destructor(HandleAISAnimationAxisRotation* self_) { delete self_; }
 extern "C" OcctResult<HandleAISAnimationAxisRotation*> HandleAISAnimationAxisRotation_clone(const HandleAISAnimationAxisRotation* self_) {
     try { return {new HandleAISAnimationAxisRotation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISAnimationAxisRotation_is_null(const HandleAISAnimationAxisRotation* self_) { return self_->IsNull(); }
 extern "C" void HandleAISAnimationCamera_destructor(HandleAISAnimationCamera* self_) { delete self_; }
 extern "C" OcctResult<HandleAISAnimationCamera*> HandleAISAnimationCamera_clone(const HandleAISAnimationCamera* self_) {
     try { return {new HandleAISAnimationCamera(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISAnimationCamera_is_null(const HandleAISAnimationCamera* self_) { return self_->IsNull(); }
 extern "C" void HandleAISAnimationObject_destructor(HandleAISAnimationObject* self_) { delete self_; }
 extern "C" OcctResult<HandleAISAnimationObject*> HandleAISAnimationObject_clone(const HandleAISAnimationObject* self_) {
     try { return {new HandleAISAnimationObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISAnimationObject_is_null(const HandleAISAnimationObject* self_) { return self_->IsNull(); }
 extern "C" void HandleAISAttributeFilter_destructor(HandleAISAttributeFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleAISAttributeFilter*> HandleAISAttributeFilter_clone(const HandleAISAttributeFilter* self_) {
     try { return {new HandleAISAttributeFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISAttributeFilter_is_null(const HandleAISAttributeFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleAISAxis_destructor(HandleAISAxis* self_) { delete self_; }
 extern "C" OcctResult<HandleAISAxis*> HandleAISAxis_clone(const HandleAISAxis* self_) {
     try { return {new HandleAISAxis(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISAxis_is_null(const HandleAISAxis* self_) { return self_->IsNull(); }
 extern "C" void HandleAISBadEdgeFilter_destructor(HandleAISBadEdgeFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleAISBadEdgeFilter*> HandleAISBadEdgeFilter_clone(const HandleAISBadEdgeFilter* self_) {
     try { return {new HandleAISBadEdgeFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISBadEdgeFilter_is_null(const HandleAISBadEdgeFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleAISBaseAnimationObject_destructor(HandleAISBaseAnimationObject* self_) { delete self_; }
 extern "C" OcctResult<HandleAISBaseAnimationObject*> HandleAISBaseAnimationObject_clone(const HandleAISBaseAnimationObject* self_) {
     try { return {new HandleAISBaseAnimationObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISBaseAnimationObject_is_null(const HandleAISBaseAnimationObject* self_) { return self_->IsNull(); }
 extern "C" void HandleAISC0RegularityFilter_destructor(HandleAISC0RegularityFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleAISC0RegularityFilter*> HandleAISC0RegularityFilter_clone(const HandleAISC0RegularityFilter* self_) {
     try { return {new HandleAISC0RegularityFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISC0RegularityFilter_is_null(const HandleAISC0RegularityFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleAISCameraFrustum_destructor(HandleAISCameraFrustum* self_) { delete self_; }
 extern "C" OcctResult<HandleAISCameraFrustum*> HandleAISCameraFrustum_clone(const HandleAISCameraFrustum* self_) {
     try { return {new HandleAISCameraFrustum(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISCameraFrustum_is_null(const HandleAISCameraFrustum* self_) { return self_->IsNull(); }
 extern "C" void HandleAISCircle_destructor(HandleAISCircle* self_) { delete self_; }
 extern "C" OcctResult<HandleAISCircle*> HandleAISCircle_clone(const HandleAISCircle* self_) {
     try { return {new HandleAISCircle(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISCircle_is_null(const HandleAISCircle* self_) { return self_->IsNull(); }
 extern "C" void HandleAISColorScale_destructor(HandleAISColorScale* self_) { delete self_; }
 extern "C" OcctResult<HandleAISColorScale*> HandleAISColorScale_clone(const HandleAISColorScale* self_) {
     try { return {new HandleAISColorScale(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISColorScale_is_null(const HandleAISColorScale* self_) { return self_->IsNull(); }
 extern "C" void HandleAISColoredDrawer_destructor(HandleAISColoredDrawer* self_) { delete self_; }
 extern "C" OcctResult<HandleAISColoredDrawer*> HandleAISColoredDrawer_clone(const HandleAISColoredDrawer* self_) {
     try { return {new HandleAISColoredDrawer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISColoredDrawer_is_null(const HandleAISColoredDrawer* self_) { return self_->IsNull(); }
 extern "C" void HandleAISColoredShape_destructor(HandleAISColoredShape* self_) { delete self_; }
 extern "C" OcctResult<HandleAISColoredShape*> HandleAISColoredShape_clone(const HandleAISColoredShape* self_) {
     try { return {new HandleAISColoredShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISColoredShape_is_null(const HandleAISColoredShape* self_) { return self_->IsNull(); }
 extern "C" void HandleAISConnectedInteractive_destructor(HandleAISConnectedInteractive* self_) { delete self_; }
 extern "C" OcctResult<HandleAISConnectedInteractive*> HandleAISConnectedInteractive_clone(const HandleAISConnectedInteractive* self_) {
     try { return {new HandleAISConnectedInteractive(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISConnectedInteractive_is_null(const HandleAISConnectedInteractive* self_) { return self_->IsNull(); }
 extern "C" void HandleAISExclusionFilter_destructor(HandleAISExclusionFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleAISExclusionFilter*> HandleAISExclusionFilter_clone(const HandleAISExclusionFilter* self_) {
     try { return {new HandleAISExclusionFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISExclusionFilter_is_null(const HandleAISExclusionFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleAISGlobalStatus_destructor(HandleAISGlobalStatus* self_) { delete self_; }
 extern "C" OcctResult<HandleAISGlobalStatus*> HandleAISGlobalStatus_clone(const HandleAISGlobalStatus* self_) {
     try { return {new HandleAISGlobalStatus(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISGlobalStatus_is_null(const HandleAISGlobalStatus* self_) { return self_->IsNull(); }
 extern "C" void HandleAISInteractiveContext_destructor(HandleAISInteractiveContext* self_) { delete self_; }
 extern "C" OcctResult<HandleAISInteractiveContext*> HandleAISInteractiveContext_clone(const HandleAISInteractiveContext* self_) {
     try { return {new HandleAISInteractiveContext(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISInteractiveContext_is_null(const HandleAISInteractiveContext* self_) { return self_->IsNull(); }
 extern "C" void HandleAISInteractiveObject_destructor(HandleAISInteractiveObject* self_) { delete self_; }
 extern "C" OcctResult<HandleAISInteractiveObject*> HandleAISInteractiveObject_clone(const HandleAISInteractiveObject* self_) {
     try { return {new HandleAISInteractiveObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISInteractiveObject_is_null(const HandleAISInteractiveObject* self_) { return self_->IsNull(); }
 extern "C" void HandleAISLightSource_destructor(HandleAISLightSource* self_) { delete self_; }
 extern "C" OcctResult<HandleAISLightSource*> HandleAISLightSource_clone(const HandleAISLightSource* self_) {
     try { return {new HandleAISLightSource(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISLightSource_is_null(const HandleAISLightSource* self_) { return self_->IsNull(); }
 extern "C" void HandleAISLightSourceOwner_destructor(HandleAISLightSourceOwner* self_) { delete self_; }
 extern "C" OcctResult<HandleAISLightSourceOwner*> HandleAISLightSourceOwner_clone(const HandleAISLightSourceOwner* self_) {
     try { return {new HandleAISLightSourceOwner(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISLightSourceOwner_is_null(const HandleAISLightSourceOwner* self_) { return self_->IsNull(); }
 extern "C" void HandleAISLine_destructor(HandleAISLine* self_) { delete self_; }
 extern "C" OcctResult<HandleAISLine*> HandleAISLine_clone(const HandleAISLine* self_) {
     try { return {new HandleAISLine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISLine_is_null(const HandleAISLine* self_) { return self_->IsNull(); }
 extern "C" void HandleAISManipulator_destructor(HandleAISManipulator* self_) { delete self_; }
 extern "C" OcctResult<HandleAISManipulator*> HandleAISManipulator_clone(const HandleAISManipulator* self_) {
     try { return {new HandleAISManipulator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISManipulator_is_null(const HandleAISManipulator* self_) { return self_->IsNull(); }
 extern "C" void HandleAISManipulatorObjectSequence_destructor(HandleAISManipulatorObjectSequence* self_) { delete self_; }
 extern "C" OcctResult<HandleAISManipulatorObjectSequence*> HandleAISManipulatorObjectSequence_clone(const HandleAISManipulatorObjectSequence* self_) {
     try { return {new HandleAISManipulatorObjectSequence(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISManipulatorObjectSequence_is_null(const HandleAISManipulatorObjectSequence* self_) { return self_->IsNull(); }
 extern "C" void HandleAISManipulatorOwner_destructor(HandleAISManipulatorOwner* self_) { delete self_; }
 extern "C" OcctResult<HandleAISManipulatorOwner*> HandleAISManipulatorOwner_clone(const HandleAISManipulatorOwner* self_) {
     try { return {new HandleAISManipulatorOwner(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISManipulatorOwner_is_null(const HandleAISManipulatorOwner* self_) { return self_->IsNull(); }
 extern "C" void HandleAISMediaPlayer_destructor(HandleAISMediaPlayer* self_) { delete self_; }
 extern "C" OcctResult<HandleAISMediaPlayer*> HandleAISMediaPlayer_clone(const HandleAISMediaPlayer* self_) {
     try { return {new HandleAISMediaPlayer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISMediaPlayer_is_null(const HandleAISMediaPlayer* self_) { return self_->IsNull(); }
 extern "C" void HandleAISMultipleConnectedInteractive_destructor(HandleAISMultipleConnectedInteractive* self_) { delete self_; }
 extern "C" OcctResult<HandleAISMultipleConnectedInteractive*> HandleAISMultipleConnectedInteractive_clone(const HandleAISMultipleConnectedInteractive* self_) {
     try { return {new HandleAISMultipleConnectedInteractive(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISMultipleConnectedInteractive_is_null(const HandleAISMultipleConnectedInteractive* self_) { return self_->IsNull(); }
 extern "C" void HandleAISPlane_destructor(HandleAISPlane* self_) { delete self_; }
 extern "C" OcctResult<HandleAISPlane*> HandleAISPlane_clone(const HandleAISPlane* self_) {
     try { return {new HandleAISPlane(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISPlane_is_null(const HandleAISPlane* self_) { return self_->IsNull(); }
 extern "C" void HandleAISPlaneTrihedron_destructor(HandleAISPlaneTrihedron* self_) { delete self_; }
 extern "C" OcctResult<HandleAISPlaneTrihedron*> HandleAISPlaneTrihedron_clone(const HandleAISPlaneTrihedron* self_) {
     try { return {new HandleAISPlaneTrihedron(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISPlaneTrihedron_is_null(const HandleAISPlaneTrihedron* self_) { return self_->IsNull(); }
 extern "C" void HandleAISPoint_destructor(HandleAISPoint* self_) { delete self_; }
 extern "C" OcctResult<HandleAISPoint*> HandleAISPoint_clone(const HandleAISPoint* self_) {
     try { return {new HandleAISPoint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISPoint_is_null(const HandleAISPoint* self_) { return self_->IsNull(); }
 extern "C" void HandleAISPointCloud_destructor(HandleAISPointCloud* self_) { delete self_; }
 extern "C" OcctResult<HandleAISPointCloud*> HandleAISPointCloud_clone(const HandleAISPointCloud* self_) {
     try { return {new HandleAISPointCloud(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISPointCloud_is_null(const HandleAISPointCloud* self_) { return self_->IsNull(); }
 extern "C" void HandleAISPointCloudOwner_destructor(HandleAISPointCloudOwner* self_) { delete self_; }
 extern "C" OcctResult<HandleAISPointCloudOwner*> HandleAISPointCloudOwner_clone(const HandleAISPointCloudOwner* self_) {
     try { return {new HandleAISPointCloudOwner(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISPointCloudOwner_is_null(const HandleAISPointCloudOwner* self_) { return self_->IsNull(); }
 extern "C" void HandleAISRubberBand_destructor(HandleAISRubberBand* self_) { delete self_; }
 extern "C" OcctResult<HandleAISRubberBand*> HandleAISRubberBand_clone(const HandleAISRubberBand* self_) {
     try { return {new HandleAISRubberBand(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISRubberBand_is_null(const HandleAISRubberBand* self_) { return self_->IsNull(); }
 extern "C" void HandleAISSelection_destructor(HandleAISSelection* self_) { delete self_; }
 extern "C" OcctResult<HandleAISSelection*> HandleAISSelection_clone(const HandleAISSelection* self_) {
     try { return {new HandleAISSelection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISSelection_is_null(const HandleAISSelection* self_) { return self_->IsNull(); }
 extern "C" void HandleAISShape_destructor(HandleAISShape* self_) { delete self_; }
 extern "C" OcctResult<HandleAISShape*> HandleAISShape_clone(const HandleAISShape* self_) {
     try { return {new HandleAISShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISShape_is_null(const HandleAISShape* self_) { return self_->IsNull(); }
 extern "C" void HandleAISSignatureFilter_destructor(HandleAISSignatureFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleAISSignatureFilter*> HandleAISSignatureFilter_clone(const HandleAISSignatureFilter* self_) {
     try { return {new HandleAISSignatureFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISSignatureFilter_is_null(const HandleAISSignatureFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleAISTextLabel_destructor(HandleAISTextLabel* self_) { delete self_; }
 extern "C" OcctResult<HandleAISTextLabel*> HandleAISTextLabel_clone(const HandleAISTextLabel* self_) {
     try { return {new HandleAISTextLabel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISTextLabel_is_null(const HandleAISTextLabel* self_) { return self_->IsNull(); }
 extern "C" void HandleAISTexturedShape_destructor(HandleAISTexturedShape* self_) { delete self_; }
 extern "C" OcctResult<HandleAISTexturedShape*> HandleAISTexturedShape_clone(const HandleAISTexturedShape* self_) {
     try { return {new HandleAISTexturedShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISTexturedShape_is_null(const HandleAISTexturedShape* self_) { return self_->IsNull(); }
 extern "C" void HandleAISTriangulation_destructor(HandleAISTriangulation* self_) { delete self_; }
 extern "C" OcctResult<HandleAISTriangulation*> HandleAISTriangulation_clone(const HandleAISTriangulation* self_) {
     try { return {new HandleAISTriangulation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISTriangulation_is_null(const HandleAISTriangulation* self_) { return self_->IsNull(); }
 extern "C" void HandleAISTrihedron_destructor(HandleAISTrihedron* self_) { delete self_; }
 extern "C" OcctResult<HandleAISTrihedron*> HandleAISTrihedron_clone(const HandleAISTrihedron* self_) {
     try { return {new HandleAISTrihedron(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISTrihedron_is_null(const HandleAISTrihedron* self_) { return self_->IsNull(); }
 extern "C" void HandleAISTrihedronOwner_destructor(HandleAISTrihedronOwner* self_) { delete self_; }
 extern "C" OcctResult<HandleAISTrihedronOwner*> HandleAISTrihedronOwner_clone(const HandleAISTrihedronOwner* self_) {
     try { return {new HandleAISTrihedronOwner(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISTrihedronOwner_is_null(const HandleAISTrihedronOwner* self_) { return self_->IsNull(); }
 extern "C" void HandleAISTypeFilter_destructor(HandleAISTypeFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleAISTypeFilter*> HandleAISTypeFilter_clone(const HandleAISTypeFilter* self_) {
     try { return {new HandleAISTypeFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISTypeFilter_is_null(const HandleAISTypeFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleAISViewCube_destructor(HandleAISViewCube* self_) { delete self_; }
 extern "C" OcctResult<HandleAISViewCube*> HandleAISViewCube_clone(const HandleAISViewCube* self_) {
     try { return {new HandleAISViewCube(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISViewCube_is_null(const HandleAISViewCube* self_) { return self_->IsNull(); }
 extern "C" void HandleAISViewCubeOwner_destructor(HandleAISViewCubeOwner* self_) { delete self_; }
 extern "C" OcctResult<HandleAISViewCubeOwner*> HandleAISViewCubeOwner_clone(const HandleAISViewCubeOwner* self_) {
     try { return {new HandleAISViewCubeOwner(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISViewCubeOwner_is_null(const HandleAISViewCubeOwner* self_) { return self_->IsNull(); }
 extern "C" void HandleAISViewCubeSensitive_destructor(HandleAISViewCubeSensitive* self_) { delete self_; }
 extern "C" OcctResult<HandleAISViewCubeSensitive*> HandleAISViewCubeSensitive_clone(const HandleAISViewCubeSensitive* self_) {
     try { return {new HandleAISViewCubeSensitive(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISViewCubeSensitive_is_null(const HandleAISViewCubeSensitive* self_) { return self_->IsNull(); }
 extern "C" void HandleAISXRTrackedDevice_destructor(HandleAISXRTrackedDevice* self_) { delete self_; }
 extern "C" OcctResult<HandleAISXRTrackedDevice*> HandleAISXRTrackedDevice_clone(const HandleAISXRTrackedDevice* self_) {
     try { return {new HandleAISXRTrackedDevice(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleAISXRTrackedDevice_is_null(const HandleAISXRTrackedDevice* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dArrowAspect_destructor(HandlePrs3dArrowAspect* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dArrowAspect*> HandlePrs3dArrowAspect_clone(const HandlePrs3dArrowAspect* self_) {
     try { return {new HandlePrs3dArrowAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dArrowAspect_is_null(const HandlePrs3dArrowAspect* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dBasicAspect_destructor(HandlePrs3dBasicAspect* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dBasicAspect*> HandlePrs3dBasicAspect_clone(const HandlePrs3dBasicAspect* self_) {
     try { return {new HandlePrs3dBasicAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dBasicAspect_is_null(const HandlePrs3dBasicAspect* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dDatumAspect_destructor(HandlePrs3dDatumAspect* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dDatumAspect*> HandlePrs3dDatumAspect_clone(const HandlePrs3dDatumAspect* self_) {
     try { return {new HandlePrs3dDatumAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dDatumAspect_is_null(const HandlePrs3dDatumAspect* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dDimensionAspect_destructor(HandlePrs3dDimensionAspect* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dDimensionAspect*> HandlePrs3dDimensionAspect_clone(const HandlePrs3dDimensionAspect* self_) {
     try { return {new HandlePrs3dDimensionAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dDimensionAspect_is_null(const HandlePrs3dDimensionAspect* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dDrawer_destructor(HandlePrs3dDrawer* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dDrawer*> HandlePrs3dDrawer_clone(const HandlePrs3dDrawer* self_) {
     try { return {new HandlePrs3dDrawer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dDrawer_is_null(const HandlePrs3dDrawer* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dInvalidAngle_destructor(HandlePrs3dInvalidAngle* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dInvalidAngle*> HandlePrs3dInvalidAngle_clone(const HandlePrs3dInvalidAngle* self_) {
     try { return {new HandlePrs3dInvalidAngle(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dInvalidAngle_is_null(const HandlePrs3dInvalidAngle* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dIsoAspect_destructor(HandlePrs3dIsoAspect* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dIsoAspect*> HandlePrs3dIsoAspect_clone(const HandlePrs3dIsoAspect* self_) {
     try { return {new HandlePrs3dIsoAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dIsoAspect_is_null(const HandlePrs3dIsoAspect* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dLineAspect_destructor(HandlePrs3dLineAspect* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dLineAspect*> HandlePrs3dLineAspect_clone(const HandlePrs3dLineAspect* self_) {
     try { return {new HandlePrs3dLineAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dLineAspect_is_null(const HandlePrs3dLineAspect* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dPlaneAspect_destructor(HandlePrs3dPlaneAspect* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dPlaneAspect*> HandlePrs3dPlaneAspect_clone(const HandlePrs3dPlaneAspect* self_) {
     try { return {new HandlePrs3dPlaneAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dPlaneAspect_is_null(const HandlePrs3dPlaneAspect* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dPointAspect_destructor(HandlePrs3dPointAspect* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dPointAspect*> HandlePrs3dPointAspect_clone(const HandlePrs3dPointAspect* self_) {
     try { return {new HandlePrs3dPointAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dPointAspect_is_null(const HandlePrs3dPointAspect* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dPresentationShadow_destructor(HandlePrs3dPresentationShadow* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dPresentationShadow*> HandlePrs3dPresentationShadow_clone(const HandlePrs3dPresentationShadow* self_) {
     try { return {new HandlePrs3dPresentationShadow(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dPresentationShadow_is_null(const HandlePrs3dPresentationShadow* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dShadingAspect_destructor(HandlePrs3dShadingAspect* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dShadingAspect*> HandlePrs3dShadingAspect_clone(const HandlePrs3dShadingAspect* self_) {
     try { return {new HandlePrs3dShadingAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dShadingAspect_is_null(const HandlePrs3dShadingAspect* self_) { return self_->IsNull(); }
 extern "C" void HandlePrs3dTextAspect_destructor(HandlePrs3dTextAspect* self_) { delete self_; }
 extern "C" OcctResult<HandlePrs3dTextAspect*> HandlePrs3dTextAspect_clone(const HandlePrs3dTextAspect* self_) {
     try { return {new HandlePrs3dTextAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrs3dTextAspect_is_null(const HandlePrs3dTextAspect* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimAngleDimension_destructor(HandlePrsDimAngleDimension* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimAngleDimension*> HandlePrsDimAngleDimension_clone(const HandlePrsDimAngleDimension* self_) {
     try { return {new HandlePrsDimAngleDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimAngleDimension_is_null(const HandlePrsDimAngleDimension* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimChamf2dDimension_destructor(HandlePrsDimChamf2dDimension* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimChamf2dDimension*> HandlePrsDimChamf2dDimension_clone(const HandlePrsDimChamf2dDimension* self_) {
     try { return {new HandlePrsDimChamf2dDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimChamf2dDimension_is_null(const HandlePrsDimChamf2dDimension* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimChamf3dDimension_destructor(HandlePrsDimChamf3dDimension* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimChamf3dDimension*> HandlePrsDimChamf3dDimension_clone(const HandlePrsDimChamf3dDimension* self_) {
     try { return {new HandlePrsDimChamf3dDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimChamf3dDimension_is_null(const HandlePrsDimChamf3dDimension* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimConcentricRelation_destructor(HandlePrsDimConcentricRelation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimConcentricRelation*> HandlePrsDimConcentricRelation_clone(const HandlePrsDimConcentricRelation* self_) {
     try { return {new HandlePrsDimConcentricRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimConcentricRelation_is_null(const HandlePrsDimConcentricRelation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimDiameterDimension_destructor(HandlePrsDimDiameterDimension* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimDiameterDimension*> HandlePrsDimDiameterDimension_clone(const HandlePrsDimDiameterDimension* self_) {
     try { return {new HandlePrsDimDiameterDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimDiameterDimension_is_null(const HandlePrsDimDiameterDimension* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimDimension_destructor(HandlePrsDimDimension* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimDimension*> HandlePrsDimDimension_clone(const HandlePrsDimDimension* self_) {
     try { return {new HandlePrsDimDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimDimension_is_null(const HandlePrsDimDimension* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimDimensionOwner_destructor(HandlePrsDimDimensionOwner* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimDimensionOwner*> HandlePrsDimDimensionOwner_clone(const HandlePrsDimDimensionOwner* self_) {
     try { return {new HandlePrsDimDimensionOwner(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimDimensionOwner_is_null(const HandlePrsDimDimensionOwner* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimEllipseRadiusDimension_destructor(HandlePrsDimEllipseRadiusDimension* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimEllipseRadiusDimension*> HandlePrsDimEllipseRadiusDimension_clone(const HandlePrsDimEllipseRadiusDimension* self_) {
     try { return {new HandlePrsDimEllipseRadiusDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimEllipseRadiusDimension_is_null(const HandlePrsDimEllipseRadiusDimension* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimEqualDistanceRelation_destructor(HandlePrsDimEqualDistanceRelation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimEqualDistanceRelation*> HandlePrsDimEqualDistanceRelation_clone(const HandlePrsDimEqualDistanceRelation* self_) {
     try { return {new HandlePrsDimEqualDistanceRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimEqualDistanceRelation_is_null(const HandlePrsDimEqualDistanceRelation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimEqualRadiusRelation_destructor(HandlePrsDimEqualRadiusRelation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimEqualRadiusRelation*> HandlePrsDimEqualRadiusRelation_clone(const HandlePrsDimEqualRadiusRelation* self_) {
     try { return {new HandlePrsDimEqualRadiusRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimEqualRadiusRelation_is_null(const HandlePrsDimEqualRadiusRelation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimFixRelation_destructor(HandlePrsDimFixRelation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimFixRelation*> HandlePrsDimFixRelation_clone(const HandlePrsDimFixRelation* self_) {
     try { return {new HandlePrsDimFixRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimFixRelation_is_null(const HandlePrsDimFixRelation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimIdenticRelation_destructor(HandlePrsDimIdenticRelation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimIdenticRelation*> HandlePrsDimIdenticRelation_clone(const HandlePrsDimIdenticRelation* self_) {
     try { return {new HandlePrsDimIdenticRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimIdenticRelation_is_null(const HandlePrsDimIdenticRelation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimLengthDimension_destructor(HandlePrsDimLengthDimension* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimLengthDimension*> HandlePrsDimLengthDimension_clone(const HandlePrsDimLengthDimension* self_) {
     try { return {new HandlePrsDimLengthDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimLengthDimension_is_null(const HandlePrsDimLengthDimension* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimMaxRadiusDimension_destructor(HandlePrsDimMaxRadiusDimension* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimMaxRadiusDimension*> HandlePrsDimMaxRadiusDimension_clone(const HandlePrsDimMaxRadiusDimension* self_) {
     try { return {new HandlePrsDimMaxRadiusDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimMaxRadiusDimension_is_null(const HandlePrsDimMaxRadiusDimension* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimMidPointRelation_destructor(HandlePrsDimMidPointRelation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimMidPointRelation*> HandlePrsDimMidPointRelation_clone(const HandlePrsDimMidPointRelation* self_) {
     try { return {new HandlePrsDimMidPointRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimMidPointRelation_is_null(const HandlePrsDimMidPointRelation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimMinRadiusDimension_destructor(HandlePrsDimMinRadiusDimension* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimMinRadiusDimension*> HandlePrsDimMinRadiusDimension_clone(const HandlePrsDimMinRadiusDimension* self_) {
     try { return {new HandlePrsDimMinRadiusDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimMinRadiusDimension_is_null(const HandlePrsDimMinRadiusDimension* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimOffsetDimension_destructor(HandlePrsDimOffsetDimension* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimOffsetDimension*> HandlePrsDimOffsetDimension_clone(const HandlePrsDimOffsetDimension* self_) {
     try { return {new HandlePrsDimOffsetDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimOffsetDimension_is_null(const HandlePrsDimOffsetDimension* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimParallelRelation_destructor(HandlePrsDimParallelRelation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimParallelRelation*> HandlePrsDimParallelRelation_clone(const HandlePrsDimParallelRelation* self_) {
     try { return {new HandlePrsDimParallelRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimParallelRelation_is_null(const HandlePrsDimParallelRelation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimPerpendicularRelation_destructor(HandlePrsDimPerpendicularRelation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimPerpendicularRelation*> HandlePrsDimPerpendicularRelation_clone(const HandlePrsDimPerpendicularRelation* self_) {
     try { return {new HandlePrsDimPerpendicularRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimPerpendicularRelation_is_null(const HandlePrsDimPerpendicularRelation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimRadiusDimension_destructor(HandlePrsDimRadiusDimension* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimRadiusDimension*> HandlePrsDimRadiusDimension_clone(const HandlePrsDimRadiusDimension* self_) {
     try { return {new HandlePrsDimRadiusDimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimRadiusDimension_is_null(const HandlePrsDimRadiusDimension* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimRelation_destructor(HandlePrsDimRelation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimRelation*> HandlePrsDimRelation_clone(const HandlePrsDimRelation* self_) {
     try { return {new HandlePrsDimRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimRelation_is_null(const HandlePrsDimRelation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimSymmetricRelation_destructor(HandlePrsDimSymmetricRelation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimSymmetricRelation*> HandlePrsDimSymmetricRelation_clone(const HandlePrsDimSymmetricRelation* self_) {
     try { return {new HandlePrsDimSymmetricRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimSymmetricRelation_is_null(const HandlePrsDimSymmetricRelation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsDimTangentRelation_destructor(HandlePrsDimTangentRelation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsDimTangentRelation*> HandlePrsDimTangentRelation_clone(const HandlePrsDimTangentRelation* self_) {
     try { return {new HandlePrsDimTangentRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsDimTangentRelation_is_null(const HandlePrsDimTangentRelation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsMgrPresentableObject_destructor(HandlePrsMgrPresentableObject* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsMgrPresentableObject*> HandlePrsMgrPresentableObject_clone(const HandlePrsMgrPresentableObject* self_) {
     try { return {new HandlePrsMgrPresentableObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsMgrPresentableObject_is_null(const HandlePrsMgrPresentableObject* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsMgrPresentation_destructor(HandlePrsMgrPresentation* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsMgrPresentation*> HandlePrsMgrPresentation_clone(const HandlePrsMgrPresentation* self_) {
     try { return {new HandlePrsMgrPresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsMgrPresentation_is_null(const HandlePrsMgrPresentation* self_) { return self_->IsNull(); }
 extern "C" void HandlePrsMgrPresentationManager_destructor(HandlePrsMgrPresentationManager* self_) { delete self_; }
 extern "C" OcctResult<HandlePrsMgrPresentationManager*> HandlePrsMgrPresentationManager_clone(const HandlePrsMgrPresentationManager* self_) {
     try { return {new HandlePrsMgrPresentationManager(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePrsMgrPresentationManager_is_null(const HandlePrsMgrPresentationManager* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DBVHIndexBuffer_destructor(HandleSelect3DBVHIndexBuffer* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DBVHIndexBuffer*> HandleSelect3DBVHIndexBuffer_clone(const HandleSelect3DBVHIndexBuffer* self_) {
     try { return {new HandleSelect3DBVHIndexBuffer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DBVHIndexBuffer_is_null(const HandleSelect3DBVHIndexBuffer* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DInteriorSensitivePointSet_destructor(HandleSelect3DInteriorSensitivePointSet* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DInteriorSensitivePointSet*> HandleSelect3DInteriorSensitivePointSet_clone(const HandleSelect3DInteriorSensitivePointSet* self_) {
     try { return {new HandleSelect3DInteriorSensitivePointSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DInteriorSensitivePointSet_is_null(const HandleSelect3DInteriorSensitivePointSet* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveBox_destructor(HandleSelect3DSensitiveBox* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveBox*> HandleSelect3DSensitiveBox_clone(const HandleSelect3DSensitiveBox* self_) {
     try { return {new HandleSelect3DSensitiveBox(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveBox_is_null(const HandleSelect3DSensitiveBox* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveCircle_destructor(HandleSelect3DSensitiveCircle* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveCircle*> HandleSelect3DSensitiveCircle_clone(const HandleSelect3DSensitiveCircle* self_) {
     try { return {new HandleSelect3DSensitiveCircle(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveCircle_is_null(const HandleSelect3DSensitiveCircle* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveCurve_destructor(HandleSelect3DSensitiveCurve* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveCurve*> HandleSelect3DSensitiveCurve_clone(const HandleSelect3DSensitiveCurve* self_) {
     try { return {new HandleSelect3DSensitiveCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveCurve_is_null(const HandleSelect3DSensitiveCurve* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveCylinder_destructor(HandleSelect3DSensitiveCylinder* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveCylinder*> HandleSelect3DSensitiveCylinder_clone(const HandleSelect3DSensitiveCylinder* self_) {
     try { return {new HandleSelect3DSensitiveCylinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveCylinder_is_null(const HandleSelect3DSensitiveCylinder* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveEntity_destructor(HandleSelect3DSensitiveEntity* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveEntity*> HandleSelect3DSensitiveEntity_clone(const HandleSelect3DSensitiveEntity* self_) {
     try { return {new HandleSelect3DSensitiveEntity(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveEntity_is_null(const HandleSelect3DSensitiveEntity* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveFace_destructor(HandleSelect3DSensitiveFace* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveFace*> HandleSelect3DSensitiveFace_clone(const HandleSelect3DSensitiveFace* self_) {
     try { return {new HandleSelect3DSensitiveFace(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveFace_is_null(const HandleSelect3DSensitiveFace* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveGroup_destructor(HandleSelect3DSensitiveGroup* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveGroup*> HandleSelect3DSensitiveGroup_clone(const HandleSelect3DSensitiveGroup* self_) {
     try { return {new HandleSelect3DSensitiveGroup(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveGroup_is_null(const HandleSelect3DSensitiveGroup* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitivePoint_destructor(HandleSelect3DSensitivePoint* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitivePoint*> HandleSelect3DSensitivePoint_clone(const HandleSelect3DSensitivePoint* self_) {
     try { return {new HandleSelect3DSensitivePoint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitivePoint_is_null(const HandleSelect3DSensitivePoint* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitivePoly_destructor(HandleSelect3DSensitivePoly* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitivePoly*> HandleSelect3DSensitivePoly_clone(const HandleSelect3DSensitivePoly* self_) {
     try { return {new HandleSelect3DSensitivePoly(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitivePoly_is_null(const HandleSelect3DSensitivePoly* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitivePrimitiveArray_destructor(HandleSelect3DSensitivePrimitiveArray* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitivePrimitiveArray*> HandleSelect3DSensitivePrimitiveArray_clone(const HandleSelect3DSensitivePrimitiveArray* self_) {
     try { return {new HandleSelect3DSensitivePrimitiveArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitivePrimitiveArray_is_null(const HandleSelect3DSensitivePrimitiveArray* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveSegment_destructor(HandleSelect3DSensitiveSegment* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveSegment*> HandleSelect3DSensitiveSegment_clone(const HandleSelect3DSensitiveSegment* self_) {
     try { return {new HandleSelect3DSensitiveSegment(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveSegment_is_null(const HandleSelect3DSensitiveSegment* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveSet_destructor(HandleSelect3DSensitiveSet* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveSet*> HandleSelect3DSensitiveSet_clone(const HandleSelect3DSensitiveSet* self_) {
     try { return {new HandleSelect3DSensitiveSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveSet_is_null(const HandleSelect3DSensitiveSet* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveSphere_destructor(HandleSelect3DSensitiveSphere* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveSphere*> HandleSelect3DSensitiveSphere_clone(const HandleSelect3DSensitiveSphere* self_) {
     try { return {new HandleSelect3DSensitiveSphere(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveSphere_is_null(const HandleSelect3DSensitiveSphere* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveTriangle_destructor(HandleSelect3DSensitiveTriangle* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveTriangle*> HandleSelect3DSensitiveTriangle_clone(const HandleSelect3DSensitiveTriangle* self_) {
     try { return {new HandleSelect3DSensitiveTriangle(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveTriangle_is_null(const HandleSelect3DSensitiveTriangle* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveTriangulation_destructor(HandleSelect3DSensitiveTriangulation* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveTriangulation*> HandleSelect3DSensitiveTriangulation_clone(const HandleSelect3DSensitiveTriangulation* self_) {
     try { return {new HandleSelect3DSensitiveTriangulation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveTriangulation_is_null(const HandleSelect3DSensitiveTriangulation* self_) { return self_->IsNull(); }
 extern "C" void HandleSelect3DSensitiveWire_destructor(HandleSelect3DSensitiveWire* self_) { delete self_; }
 extern "C" OcctResult<HandleSelect3DSensitiveWire*> HandleSelect3DSensitiveWire_clone(const HandleSelect3DSensitiveWire* self_) {
     try { return {new HandleSelect3DSensitiveWire(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelect3DSensitiveWire_is_null(const HandleSelect3DSensitiveWire* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrAndFilter_destructor(HandleSelectMgrAndFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrAndFilter*> HandleSelectMgrAndFilter_clone(const HandleSelectMgrAndFilter* self_) {
     try { return {new HandleSelectMgrAndFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrAndFilter_is_null(const HandleSelectMgrAndFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrAndOrFilter_destructor(HandleSelectMgrAndOrFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrAndOrFilter*> HandleSelectMgrAndOrFilter_clone(const HandleSelectMgrAndOrFilter* self_) {
     try { return {new HandleSelectMgrAndOrFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrAndOrFilter_is_null(const HandleSelectMgrAndOrFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrAxisIntersector_destructor(HandleSelectMgrAxisIntersector* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrAxisIntersector*> HandleSelectMgrAxisIntersector_clone(const HandleSelectMgrAxisIntersector* self_) {
     try { return {new HandleSelectMgrAxisIntersector(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrAxisIntersector_is_null(const HandleSelectMgrAxisIntersector* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrBVHThreadPool_destructor(HandleSelectMgrBVHThreadPool* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrBVHThreadPool*> HandleSelectMgrBVHThreadPool_clone(const HandleSelectMgrBVHThreadPool* self_) {
     try { return {new HandleSelectMgrBVHThreadPool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrBVHThreadPool_is_null(const HandleSelectMgrBVHThreadPool* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrBaseFrustum_destructor(HandleSelectMgrBaseFrustum* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrBaseFrustum*> HandleSelectMgrBaseFrustum_clone(const HandleSelectMgrBaseFrustum* self_) {
     try { return {new HandleSelectMgrBaseFrustum(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrBaseFrustum_is_null(const HandleSelectMgrBaseFrustum* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrBaseIntersector_destructor(HandleSelectMgrBaseIntersector* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrBaseIntersector*> HandleSelectMgrBaseIntersector_clone(const HandleSelectMgrBaseIntersector* self_) {
     try { return {new HandleSelectMgrBaseIntersector(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrBaseIntersector_is_null(const HandleSelectMgrBaseIntersector* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrCompositionFilter_destructor(HandleSelectMgrCompositionFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrCompositionFilter*> HandleSelectMgrCompositionFilter_clone(const HandleSelectMgrCompositionFilter* self_) {
     try { return {new HandleSelectMgrCompositionFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrCompositionFilter_is_null(const HandleSelectMgrCompositionFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrEntityOwner_destructor(HandleSelectMgrEntityOwner* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrEntityOwner*> HandleSelectMgrEntityOwner_clone(const HandleSelectMgrEntityOwner* self_) {
     try { return {new HandleSelectMgrEntityOwner(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrEntityOwner_is_null(const HandleSelectMgrEntityOwner* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrFilter_destructor(HandleSelectMgrFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrFilter*> HandleSelectMgrFilter_clone(const HandleSelectMgrFilter* self_) {
     try { return {new HandleSelectMgrFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrFilter_is_null(const HandleSelectMgrFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrFrustumBuilder_destructor(HandleSelectMgrFrustumBuilder* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrFrustumBuilder*> HandleSelectMgrFrustumBuilder_clone(const HandleSelectMgrFrustumBuilder* self_) {
     try { return {new HandleSelectMgrFrustumBuilder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrFrustumBuilder_is_null(const HandleSelectMgrFrustumBuilder* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrOrFilter_destructor(HandleSelectMgrOrFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrOrFilter*> HandleSelectMgrOrFilter_clone(const HandleSelectMgrOrFilter* self_) {
     try { return {new HandleSelectMgrOrFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrOrFilter_is_null(const HandleSelectMgrOrFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrSelectableObject_destructor(HandleSelectMgrSelectableObject* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrSelectableObject*> HandleSelectMgrSelectableObject_clone(const HandleSelectMgrSelectableObject* self_) {
     try { return {new HandleSelectMgrSelectableObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrSelectableObject_is_null(const HandleSelectMgrSelectableObject* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrSelection_destructor(HandleSelectMgrSelection* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrSelection*> HandleSelectMgrSelection_clone(const HandleSelectMgrSelection* self_) {
     try { return {new HandleSelectMgrSelection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrSelection_is_null(const HandleSelectMgrSelection* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrSelectionImageFiller_destructor(HandleSelectMgrSelectionImageFiller* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrSelectionImageFiller*> HandleSelectMgrSelectionImageFiller_clone(const HandleSelectMgrSelectionImageFiller* self_) {
     try { return {new HandleSelectMgrSelectionImageFiller(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrSelectionImageFiller_is_null(const HandleSelectMgrSelectionImageFiller* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrSelectionManager_destructor(HandleSelectMgrSelectionManager* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrSelectionManager*> HandleSelectMgrSelectionManager_clone(const HandleSelectMgrSelectionManager* self_) {
     try { return {new HandleSelectMgrSelectionManager(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrSelectionManager_is_null(const HandleSelectMgrSelectionManager* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrSensitiveEntity_destructor(HandleSelectMgrSensitiveEntity* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrSensitiveEntity*> HandleSelectMgrSensitiveEntity_clone(const HandleSelectMgrSensitiveEntity* self_) {
     try { return {new HandleSelectMgrSensitiveEntity(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrSensitiveEntity_is_null(const HandleSelectMgrSensitiveEntity* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrSensitiveEntitySet_destructor(HandleSelectMgrSensitiveEntitySet* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrSensitiveEntitySet*> HandleSelectMgrSensitiveEntitySet_clone(const HandleSelectMgrSensitiveEntitySet* self_) {
     try { return {new HandleSelectMgrSensitiveEntitySet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrSensitiveEntitySet_is_null(const HandleSelectMgrSensitiveEntitySet* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrTriangularFrustum_destructor(HandleSelectMgrTriangularFrustum* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrTriangularFrustum*> HandleSelectMgrTriangularFrustum_clone(const HandleSelectMgrTriangularFrustum* self_) {
     try { return {new HandleSelectMgrTriangularFrustum(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrTriangularFrustum_is_null(const HandleSelectMgrTriangularFrustum* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrTriangularFrustumSet_destructor(HandleSelectMgrTriangularFrustumSet* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrTriangularFrustumSet*> HandleSelectMgrTriangularFrustumSet_clone(const HandleSelectMgrTriangularFrustumSet* self_) {
     try { return {new HandleSelectMgrTriangularFrustumSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrTriangularFrustumSet_is_null(const HandleSelectMgrTriangularFrustumSet* self_) { return self_->IsNull(); }
 extern "C" void HandleSelectMgrViewerSelector_destructor(HandleSelectMgrViewerSelector* self_) { delete self_; }
 extern "C" OcctResult<HandleSelectMgrViewerSelector*> HandleSelectMgrViewerSelector_clone(const HandleSelectMgrViewerSelector* self_) {
     try { return {new HandleSelectMgrViewerSelector(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleSelectMgrViewerSelector_is_null(const HandleSelectMgrViewerSelector* self_) { return self_->IsNull(); }
 extern "C" void HandleStdPrsBRepFont_destructor(HandleStdPrsBRepFont* self_) { delete self_; }
 extern "C" OcctResult<HandleStdPrsBRepFont*> HandleStdPrsBRepFont_clone(const HandleStdPrsBRepFont* self_) {
     try { return {new HandleStdPrsBRepFont(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdPrsBRepFont_is_null(const HandleStdPrsBRepFont* self_) { return self_->IsNull(); }
 extern "C" void HandleStdPrsHLRPolyShape_destructor(HandleStdPrsHLRPolyShape* self_) { delete self_; }
 extern "C" OcctResult<HandleStdPrsHLRPolyShape*> HandleStdPrsHLRPolyShape_clone(const HandleStdPrsHLRPolyShape* self_) {
     try { return {new HandleStdPrsHLRPolyShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdPrsHLRPolyShape_is_null(const HandleStdPrsHLRPolyShape* self_) { return self_->IsNull(); }
 extern "C" void HandleStdPrsHLRShape_destructor(HandleStdPrsHLRShape* self_) { delete self_; }
 extern "C" OcctResult<HandleStdPrsHLRShape*> HandleStdPrsHLRShape_clone(const HandleStdPrsHLRShape* self_) {
     try { return {new HandleStdPrsHLRShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdPrsHLRShape_is_null(const HandleStdPrsHLRShape* self_) { return self_->IsNull(); }
 extern "C" void HandleStdPrsHLRShapeI_destructor(HandleStdPrsHLRShapeI* self_) { delete self_; }
 extern "C" OcctResult<HandleStdPrsHLRShapeI*> HandleStdPrsHLRShapeI_clone(const HandleStdPrsHLRShapeI* self_) {
     try { return {new HandleStdPrsHLRShapeI(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdPrsHLRShapeI_is_null(const HandleStdPrsHLRShapeI* self_) { return self_->IsNull(); }
 extern "C" void HandleStdSelectBRepOwner_destructor(HandleStdSelectBRepOwner* self_) { delete self_; }
 extern "C" OcctResult<HandleStdSelectBRepOwner*> HandleStdSelectBRepOwner_clone(const HandleStdSelectBRepOwner* self_) {
     try { return {new HandleStdSelectBRepOwner(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdSelectBRepOwner_is_null(const HandleStdSelectBRepOwner* self_) { return self_->IsNull(); }
 extern "C" void HandleStdSelectEdgeFilter_destructor(HandleStdSelectEdgeFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleStdSelectEdgeFilter*> HandleStdSelectEdgeFilter_clone(const HandleStdSelectEdgeFilter* self_) {
     try { return {new HandleStdSelectEdgeFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdSelectEdgeFilter_is_null(const HandleStdSelectEdgeFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleStdSelectFaceFilter_destructor(HandleStdSelectFaceFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleStdSelectFaceFilter*> HandleStdSelectFaceFilter_clone(const HandleStdSelectFaceFilter* self_) {
     try { return {new HandleStdSelectFaceFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdSelectFaceFilter_is_null(const HandleStdSelectFaceFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleStdSelectShape_destructor(HandleStdSelectShape* self_) { delete self_; }
 extern "C" OcctResult<HandleStdSelectShape*> HandleStdSelectShape_clone(const HandleStdSelectShape* self_) {
     try { return {new HandleStdSelectShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdSelectShape_is_null(const HandleStdSelectShape* self_) { return self_->IsNull(); }
 extern "C" void HandleStdSelectShapeTypeFilter_destructor(HandleStdSelectShapeTypeFilter* self_) { delete self_; }
 extern "C" OcctResult<HandleStdSelectShapeTypeFilter*> HandleStdSelectShapeTypeFilter_clone(const HandleStdSelectShapeTypeFilter* self_) {
     try { return {new HandleStdSelectShapeTypeFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleStdSelectShapeTypeFilter_is_null(const HandleStdSelectShapeTypeFilter* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dAmbientLight_destructor(HandleV3dAmbientLight* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dAmbientLight*> HandleV3dAmbientLight_clone(const HandleV3dAmbientLight* self_) {
     try { return {new HandleV3dAmbientLight(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dAmbientLight_is_null(const HandleV3dAmbientLight* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dBadValue_destructor(HandleV3dBadValue* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dBadValue*> HandleV3dBadValue_clone(const HandleV3dBadValue* self_) {
     try { return {new HandleV3dBadValue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dBadValue_is_null(const HandleV3dBadValue* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dCircularGrid_destructor(HandleV3dCircularGrid* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dCircularGrid*> HandleV3dCircularGrid_clone(const HandleV3dCircularGrid* self_) {
     try { return {new HandleV3dCircularGrid(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dCircularGrid_is_null(const HandleV3dCircularGrid* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dDirectionalLight_destructor(HandleV3dDirectionalLight* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dDirectionalLight*> HandleV3dDirectionalLight_clone(const HandleV3dDirectionalLight* self_) {
     try { return {new HandleV3dDirectionalLight(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dDirectionalLight_is_null(const HandleV3dDirectionalLight* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dPlane_destructor(HandleV3dPlane* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dPlane*> HandleV3dPlane_clone(const HandleV3dPlane* self_) {
     try { return {new HandleV3dPlane(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dPlane_is_null(const HandleV3dPlane* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dPositionLight_destructor(HandleV3dPositionLight* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dPositionLight*> HandleV3dPositionLight_clone(const HandleV3dPositionLight* self_) {
     try { return {new HandleV3dPositionLight(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dPositionLight_is_null(const HandleV3dPositionLight* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dPositionalLight_destructor(HandleV3dPositionalLight* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dPositionalLight*> HandleV3dPositionalLight_clone(const HandleV3dPositionalLight* self_) {
     try { return {new HandleV3dPositionalLight(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dPositionalLight_is_null(const HandleV3dPositionalLight* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dRectangularGrid_destructor(HandleV3dRectangularGrid* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dRectangularGrid*> HandleV3dRectangularGrid_clone(const HandleV3dRectangularGrid* self_) {
     try { return {new HandleV3dRectangularGrid(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dRectangularGrid_is_null(const HandleV3dRectangularGrid* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dSpotLight_destructor(HandleV3dSpotLight* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dSpotLight*> HandleV3dSpotLight_clone(const HandleV3dSpotLight* self_) {
     try { return {new HandleV3dSpotLight(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dSpotLight_is_null(const HandleV3dSpotLight* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dTrihedron_destructor(HandleV3dTrihedron* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dTrihedron*> HandleV3dTrihedron_clone(const HandleV3dTrihedron* self_) {
     try { return {new HandleV3dTrihedron(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dTrihedron_is_null(const HandleV3dTrihedron* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dUnMapped_destructor(HandleV3dUnMapped* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dUnMapped*> HandleV3dUnMapped_clone(const HandleV3dUnMapped* self_) {
     try { return {new HandleV3dUnMapped(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dUnMapped_is_null(const HandleV3dUnMapped* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dView_destructor(HandleV3dView* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dView*> HandleV3dView_clone(const HandleV3dView* self_) {
     try { return {new HandleV3dView(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dView_is_null(const HandleV3dView* self_) { return self_->IsNull(); }
 extern "C" void HandleV3dViewer_destructor(HandleV3dViewer* self_) { delete self_; }
 extern "C" OcctResult<HandleV3dViewer*> HandleV3dViewer_clone(const HandleV3dViewer* self_) {
     try { return {new HandleV3dViewer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleV3dViewer_is_null(const HandleV3dViewer* self_) { return self_->IsNull(); }
 
 // sizeof helper for POD struct AIS_AnimationProgress
 extern "C" size_t AIS_AnimationProgress_sizeof() { return sizeof(AIS_AnimationProgress); }

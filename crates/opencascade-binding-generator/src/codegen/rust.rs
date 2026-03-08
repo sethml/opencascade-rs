@@ -485,6 +485,7 @@ fn generate_handle_declarations(
             let handle_type_name = type_mapping::handle_type_name(class_name);
             writeln!(out, "    pub fn {}_destructor(ptr: *mut {});", handle_type_name, handle_type_name).unwrap();
             writeln!(out, "    pub fn {}_clone(ptr: *const {}) -> crate::OcctResult<*mut {}>;", handle_type_name, handle_type_name, handle_type_name).unwrap();
+            writeln!(out, "    pub fn {}_is_null(self_: *const {}) -> bool;", handle_type_name, handle_type_name).unwrap();
         }
         writeln!(out, "}}").unwrap();
         writeln!(out).unwrap();
@@ -498,6 +499,12 @@ fn generate_handle_declarations(
             writeln!(out, "unsafe impl crate::CppCopyable for {} {{", handle_type_name).unwrap();
             writeln!(out, "    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {{").unwrap();
             writeln!(out, "        crate::check_result({}_clone(ptr))", handle_type_name).unwrap();
+            writeln!(out, "    }}").unwrap();
+            writeln!(out, "}}").unwrap();
+            writeln!(out, "impl {} {{", handle_type_name).unwrap();
+            writeln!(out, "    /// Returns `true` if this Handle is null (doesn't point to any object).").unwrap();
+            writeln!(out, "    pub fn is_null(&self) -> bool {{").unwrap();
+            writeln!(out, "        unsafe {{ {}_is_null(self as *const Self) }}", handle_type_name).unwrap();
             writeln!(out, "    }}").unwrap();
             writeln!(out, "}}").unwrap();
         }

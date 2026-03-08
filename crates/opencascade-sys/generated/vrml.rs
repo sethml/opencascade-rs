@@ -678,6 +678,11 @@ unsafe impl crate::CppCopyable for HandleVrmlAsciiText {
 }
 
 impl HandleVrmlAsciiText {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlAsciiText_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Vrml_AsciiText
     pub fn get(&self) -> &crate::ffi_types::Vrml_AsciiText {
         unsafe {
@@ -1046,6 +1051,11 @@ unsafe impl crate::CppCopyable for HandleVrmlCoordinate3 {
 }
 
 impl HandleVrmlCoordinate3 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlCoordinate3_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Vrml_Coordinate3
     pub fn get(&self) -> &crate::ffi_types::Vrml_Coordinate3 {
         unsafe {
@@ -1885,6 +1895,11 @@ unsafe impl crate::CppCopyable for HandleVrmlIndexedFaceSet {
 }
 
 impl HandleVrmlIndexedFaceSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlIndexedFaceSet_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Vrml_IndexedFaceSet
     pub fn get(&self) -> &crate::ffi_types::Vrml_IndexedFaceSet {
         unsafe {
@@ -2231,6 +2246,11 @@ unsafe impl crate::CppCopyable for HandleVrmlIndexedLineSet {
 }
 
 impl HandleVrmlIndexedLineSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlIndexedLineSet_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Vrml_IndexedLineSet
     pub fn get(&self) -> &crate::ffi_types::Vrml_IndexedLineSet {
         unsafe {
@@ -2638,6 +2658,11 @@ unsafe impl crate::CppCopyable for HandleVrmlLOD {
 }
 
 impl HandleVrmlLOD {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlLOD_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Vrml_LOD
     pub fn get(&self) -> &crate::ffi_types::Vrml_LOD {
         unsafe {
@@ -2999,6 +3024,11 @@ unsafe impl crate::CppCopyable for HandleVrmlMaterial {
 }
 
 impl HandleVrmlMaterial {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlMaterial_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Vrml_Material
     pub fn get(&self) -> &crate::ffi_types::Vrml_Material {
         unsafe {
@@ -3398,6 +3428,11 @@ unsafe impl crate::CppCopyable for HandleVrmlNormal {
 }
 
 impl HandleVrmlNormal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlNormal_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Vrml_Normal
     pub fn get(&self) -> &crate::ffi_types::Vrml_Normal {
         unsafe {
@@ -4310,6 +4345,11 @@ unsafe impl crate::CppCopyable for HandleVrmlSFImage {
 }
 
 impl HandleVrmlSFImage {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlSFImage_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Vrml_SFImage
     pub fn get(&self) -> &crate::ffi_types::Vrml_SFImage {
         unsafe {
@@ -5596,6 +5636,13 @@ unsafe impl crate::CppCopyable for HandleVrmlTextureCoordinate2 {
 }
 
 impl HandleVrmlTextureCoordinate2 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlTextureCoordinate2_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Vrml_TextureCoordinate2
     pub fn get(&self) -> &crate::ffi_types::Vrml_TextureCoordinate2 {
         unsafe {

@@ -520,6 +520,13 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSAssociation {
 }
 
 impl HandleTopOpeBRepDSAssociation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSAssociation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_Association
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_Association {
         unsafe {
@@ -1506,6 +1513,11 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSCheck {
 }
 
 impl HandleTopOpeBRepDSCheck {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleTopOpeBRepDSCheck_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_Check
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_Check {
         unsafe {
@@ -2540,6 +2552,15 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSCurvePointInterference {
 }
 
 impl HandleTopOpeBRepDSCurvePointInterference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSCurvePointInterference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_CurvePointInterference
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_CurvePointInterference {
         unsafe {
@@ -4466,6 +4487,15 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSEdgeVertexInterference {
 }
 
 impl HandleTopOpeBRepDSEdgeVertexInterference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSEdgeVertexInterference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_EdgeVertexInterference
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_EdgeVertexInterference {
         unsafe {
@@ -5017,6 +5047,15 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSFaceEdgeInterference {
 }
 
 impl HandleTopOpeBRepDSFaceEdgeInterference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSFaceEdgeInterference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_FaceEdgeInterference
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_FaceEdgeInterference {
         unsafe {
@@ -5796,6 +5835,11 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSGapTool {
 }
 
 impl HandleTopOpeBRepDSGapTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleTopOpeBRepDSGapTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_GapTool
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_GapTool {
         unsafe {
@@ -6104,6 +6148,13 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSHArray1OfDataMapOfIntegerLi
 }
 
 impl HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference
     pub fn get(
         &self,
@@ -6880,6 +6931,13 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSHDataStructure {
 }
 
 impl HandleTopOpeBRepDSHDataStructure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSHDataStructure_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_HDataStructure
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_HDataStructure {
         unsafe {
@@ -7279,6 +7337,13 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSInterference {
 }
 
 impl HandleTopOpeBRepDSInterference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSInterference_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_Interference
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_Interference {
         unsafe {
@@ -8010,6 +8075,11 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSMarker {
 }
 
 impl HandleTopOpeBRepDSMarker {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleTopOpeBRepDSMarker_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_Marker
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_Marker {
         unsafe {
@@ -9020,6 +9090,15 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSShapeShapeInterference {
 }
 
 impl HandleTopOpeBRepDSShapeShapeInterference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSShapeShapeInterference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_ShapeShapeInterference
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_ShapeShapeInterference {
         unsafe {
@@ -9460,6 +9539,15 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSSolidSurfaceInterference {
 }
 
 impl HandleTopOpeBRepDSSolidSurfaceInterference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSSolidSurfaceInterference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_SolidSurfaceInterference
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_SolidSurfaceInterference {
         unsafe {
@@ -9908,6 +9996,15 @@ unsafe impl crate::CppCopyable for HandleTopOpeBRepDSSurfaceCurveInterference {
 }
 
 impl HandleTopOpeBRepDSSurfaceCurveInterference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSSurfaceCurveInterference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TopOpeBRepDS_SurfaceCurveInterference
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepDS_SurfaceCurveInterference {
         unsafe {

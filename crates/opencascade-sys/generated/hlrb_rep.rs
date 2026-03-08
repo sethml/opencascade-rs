@@ -473,6 +473,11 @@ unsafe impl crate::CppCopyable for HandleHLRBRepAlgo {
 }
 
 impl HandleHLRBRepAlgo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRBRepAlgo_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRBRep_Algo
     pub fn get(&self) -> &crate::ffi_types::HLRBRep_Algo {
         unsafe {
@@ -844,6 +849,11 @@ unsafe impl crate::CppCopyable for HandleHLRBRepAreaLimit {
 }
 
 impl HandleHLRBRepAreaLimit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRBRepAreaLimit_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRBRep_AreaLimit
     pub fn get(&self) -> &crate::ffi_types::HLRBRep_AreaLimit {
         unsafe {
@@ -3870,6 +3880,11 @@ unsafe impl crate::CppCopyable for HandleHLRBRepData {
 }
 
 impl HandleHLRBRepData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRBRepData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRBRep_Data
     pub fn get(&self) -> &crate::ffi_types::HLRBRep_Data {
         unsafe {
@@ -6498,6 +6513,11 @@ unsafe impl crate::CppCopyable for HandleHLRBRepInternalAlgo {
 }
 
 impl HandleHLRBRepInternalAlgo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRBRepInternalAlgo_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRBRep_InternalAlgo
     pub fn get(&self) -> &crate::ffi_types::HLRBRep_InternalAlgo {
         unsafe {
@@ -7794,6 +7814,11 @@ unsafe impl crate::CppCopyable for HandleHLRBRepPolyAlgo {
 }
 
 impl HandleHLRBRepPolyAlgo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRBRepPolyAlgo_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRBRep_PolyAlgo
     pub fn get(&self) -> &crate::ffi_types::HLRBRep_PolyAlgo {
         unsafe {

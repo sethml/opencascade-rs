@@ -788,6 +788,11 @@ unsafe impl crate::CppCopyable for HandleBSplCLibCache {
 }
 
 impl HandleBSplCLibCache {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleBSplCLibCache_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BSplCLib_Cache
     pub fn get(&self) -> &crate::ffi_types::BSplCLib_Cache {
         unsafe {

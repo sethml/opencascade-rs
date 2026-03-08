@@ -787,6 +787,15 @@ unsafe impl crate::CppCopyable for HandlePlateHArray1OfPinpointConstraint {
 }
 
 impl HandlePlateHArray1OfPinpointConstraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandlePlateHArray1OfPinpointConstraint_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Plate_HArray1OfPinpointConstraint
     pub fn get(&self) -> &crate::ffi_types::Plate_HArray1OfPinpointConstraint {
         unsafe {

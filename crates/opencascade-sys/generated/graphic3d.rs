@@ -2838,6 +2838,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfPoints {
 }
 
 impl HandleGraphic3dArrayOfPoints {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfPoints_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfPoints
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfPoints {
         unsafe {
@@ -3713,6 +3720,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfPolygons {
 }
 
 impl HandleGraphic3dArrayOfPolygons {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfPolygons_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfPolygons
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfPolygons {
         unsafe {
@@ -4547,6 +4561,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfPolylines {
 }
 
 impl HandleGraphic3dArrayOfPolylines {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfPolylines_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfPolylines
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfPolylines {
         unsafe {
@@ -6098,6 +6121,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfPrimitives {
 }
 
 impl HandleGraphic3dArrayOfPrimitives {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfPrimitives_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfPrimitives
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfPrimitives {
         unsafe {
@@ -6977,6 +7009,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfQuadrangleStrips {
 }
 
 impl HandleGraphic3dArrayOfQuadrangleStrips {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfQuadrangleStrips_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfQuadrangleStrips
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfQuadrangleStrips {
         unsafe {
@@ -7743,6 +7784,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfQuadrangles {
 }
 
 impl HandleGraphic3dArrayOfQuadrangles {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfQuadrangles_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfQuadrangles
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfQuadrangles {
         unsafe {
@@ -8484,6 +8534,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfSegments {
 }
 
 impl HandleGraphic3dArrayOfSegments {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfSegments_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfSegments
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfSegments {
         unsafe {
@@ -9258,6 +9315,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfTriangleFans {
 }
 
 impl HandleGraphic3dArrayOfTriangleFans {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfTriangleFans_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfTriangleFans
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfTriangleFans {
         unsafe {
@@ -10103,6 +10169,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfTriangleStrips {
 }
 
 impl HandleGraphic3dArrayOfTriangleStrips {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfTriangleStrips_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfTriangleStrips
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfTriangleStrips {
         unsafe {
@@ -10905,6 +10980,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dArrayOfTriangles {
 }
 
 impl HandleGraphic3dArrayOfTriangles {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dArrayOfTriangles_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ArrayOfTriangles
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ArrayOfTriangles {
         unsafe {
@@ -12075,6 +12159,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dAspectFillArea3d {
 }
 
 impl HandleGraphic3dAspectFillArea3d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dAspectFillArea3d_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_AspectFillArea3d
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_AspectFillArea3d {
         unsafe {
@@ -13300,6 +13393,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dAspectLine3d {
 }
 
 impl HandleGraphic3dAspectLine3d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dAspectLine3d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_AspectLine3d
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_AspectLine3d {
         unsafe {
@@ -14594,6 +14694,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dAspectMarker3d {
 }
 
 impl HandleGraphic3dAspectMarker3d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dAspectMarker3d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_AspectMarker3d
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_AspectMarker3d {
         unsafe {
@@ -15878,6 +15985,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dAspectText3d {
 }
 
 impl HandleGraphic3dAspectText3d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dAspectText3d_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_AspectText3d
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_AspectText3d {
         unsafe {
@@ -17118,6 +17232,11 @@ unsafe impl crate::CppCopyable for HandleGraphic3dAspects {
 }
 
 impl HandleGraphic3dAspects {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleGraphic3dAspects_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Aspects
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Aspects {
         unsafe {
@@ -17721,6 +17840,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dAttribBuffer {
 }
 
 impl HandleGraphic3dAttribBuffer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dAttribBuffer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_AttribBuffer
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_AttribBuffer {
         unsafe {
@@ -18272,6 +18398,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dBoundBuffer {
 }
 
 impl HandleGraphic3dBoundBuffer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dBoundBuffer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_BoundBuffer
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_BoundBuffer {
         unsafe {
@@ -18850,6 +18983,11 @@ unsafe impl crate::CppCopyable for HandleGraphic3dBuffer {
 }
 
 impl HandleGraphic3dBuffer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleGraphic3dBuffer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Buffer
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Buffer {
         unsafe {
@@ -19161,6 +19299,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dBvhCStructureSet {
 }
 
 impl HandleGraphic3dBvhCStructureSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dBvhCStructureSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_BvhCStructureSet
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_BvhCStructureSet {
         unsafe {
@@ -20031,6 +20178,11 @@ unsafe impl crate::CppCopyable for HandleGraphic3dCLight {
 }
 
 impl HandleGraphic3dCLight {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleGraphic3dCLight_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_CLight
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_CLight {
         unsafe {
@@ -20721,6 +20873,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dCStructure {
 }
 
 impl HandleGraphic3dCStructure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dCStructure_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_CStructure
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_CStructure {
         unsafe {
@@ -22383,6 +22542,11 @@ unsafe impl crate::CppCopyable for HandleGraphic3dCView {
 }
 
 impl HandleGraphic3dCView {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleGraphic3dCView_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_CView
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_CView {
         unsafe {
@@ -23765,6 +23929,11 @@ unsafe impl crate::CppCopyable for HandleGraphic3dCamera {
 }
 
 impl HandleGraphic3dCamera {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleGraphic3dCamera_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Camera
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Camera {
         unsafe {
@@ -24652,6 +24821,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dClipPlane {
 }
 
 impl HandleGraphic3dClipPlane {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dClipPlane_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ClipPlane
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ClipPlane {
         unsafe {
@@ -25193,6 +25369,11 @@ unsafe impl crate::CppCopyable for HandleGraphic3dCubeMap {
 }
 
 impl HandleGraphic3dCubeMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleGraphic3dCubeMap_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_CubeMap
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_CubeMap {
         unsafe {
@@ -26164,6 +26345,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dCubeMapPacked {
 }
 
 impl HandleGraphic3dCubeMapPacked {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dCubeMapPacked_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_CubeMapPacked
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_CubeMapPacked {
         unsafe {
@@ -26821,6 +27009,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dCubeMapSeparate {
 }
 
 impl HandleGraphic3dCubeMapSeparate {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dCubeMapSeparate_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_CubeMapSeparate
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_CubeMapSeparate {
         unsafe {
@@ -27372,6 +27567,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dDataStructureManager {
 }
 
 impl HandleGraphic3dDataStructureManager {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dDataStructureManager_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_DataStructureManager
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_DataStructureManager {
         unsafe {
@@ -27821,6 +28025,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dFrameStats {
 }
 
 impl HandleGraphic3dFrameStats {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dFrameStats_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_FrameStats
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_FrameStats {
         unsafe {
@@ -29461,6 +29672,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dGraphicDriver {
 }
 
 impl HandleGraphic3dGraphicDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dGraphicDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_GraphicDriver
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_GraphicDriver {
         unsafe {
@@ -29716,6 +29934,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dGraphicDriverFactory {
 }
 
 impl HandleGraphic3dGraphicDriverFactory {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dGraphicDriverFactory_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_GraphicDriverFactory
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_GraphicDriverFactory {
         unsafe {
@@ -30231,6 +30458,11 @@ unsafe impl crate::CppCopyable for HandleGraphic3dGroup {
 }
 
 impl HandleGraphic3dGroup {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleGraphic3dGroup_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Group
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Group {
         unsafe {
@@ -30612,6 +30844,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dGroupDefinitionError {
 }
 
 impl HandleGraphic3dGroupDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dGroupDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_GroupDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_GroupDefinitionError {
         unsafe {
@@ -30887,6 +31128,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dHatchStyle {
 }
 
 impl HandleGraphic3dHatchStyle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dHatchStyle_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_HatchStyle
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_HatchStyle {
         unsafe {
@@ -31344,6 +31592,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dIndexBuffer {
 }
 
 impl HandleGraphic3dIndexBuffer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dIndexBuffer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_IndexBuffer
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_IndexBuffer {
         unsafe {
@@ -31886,6 +32141,11 @@ unsafe impl crate::CppCopyable for HandleGraphic3dLayer {
 }
 
 impl HandleGraphic3dLayer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleGraphic3dLayer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Layer
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Layer {
         unsafe {
@@ -32264,6 +32524,11 @@ unsafe impl crate::CppCopyable for HandleGraphic3dLightSet {
 }
 
 impl HandleGraphic3dLightSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleGraphic3dLightSet_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_LightSet
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_LightSet {
         unsafe {
@@ -32680,6 +32945,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dMarkerImage {
 }
 
 impl HandleGraphic3dMarkerImage {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dMarkerImage_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_MarkerImage
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_MarkerImage {
         unsafe {
@@ -33538,6 +33810,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dMaterialDefinitionError {
 }
 
 impl HandleGraphic3dMaterialDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dMaterialDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_MaterialDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_MaterialDefinitionError {
         unsafe {
@@ -34131,6 +34412,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dMediaTexture {
 }
 
 impl HandleGraphic3dMediaTexture {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dMediaTexture_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_MediaTexture
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_MediaTexture {
         unsafe {
@@ -34631,6 +34919,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dMediaTextureSet {
 }
 
 impl HandleGraphic3dMediaTextureSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dMediaTextureSet_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_MediaTextureSet
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_MediaTextureSet {
         unsafe {
@@ -35148,6 +35443,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dMutableIndexBuffer {
 }
 
 impl HandleGraphic3dMutableIndexBuffer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dMutableIndexBuffer_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_MutableIndexBuffer
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_MutableIndexBuffer {
         unsafe {
@@ -35832,6 +36136,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dPresentationAttributes {
 }
 
 impl HandleGraphic3dPresentationAttributes {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dPresentationAttributes_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_PresentationAttributes
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_PresentationAttributes {
         unsafe {
@@ -36221,6 +36534,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dPriorityDefinitionError {
 }
 
 impl HandleGraphic3dPriorityDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dPriorityDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_PriorityDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_PriorityDefinitionError {
         unsafe {
@@ -36603,6 +36925,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dSequenceOfHClipPlane {
 }
 
 impl HandleGraphic3dSequenceOfHClipPlane {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dSequenceOfHClipPlane_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_SequenceOfHClipPlane
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_SequenceOfHClipPlane {
         unsafe {
@@ -36890,6 +37221,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dShaderAttribute {
 }
 
 impl HandleGraphic3dShaderAttribute {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dShaderAttribute_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ShaderAttribute
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ShaderAttribute {
         unsafe {
@@ -37243,6 +37581,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dShaderManager {
 }
 
 impl HandleGraphic3dShaderManager {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dShaderManager_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ShaderManager
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ShaderManager {
         unsafe {
@@ -37541,6 +37886,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dShaderObject {
 }
 
 impl HandleGraphic3dShaderObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dShaderObject_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ShaderObject
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ShaderObject {
         unsafe {
@@ -38269,6 +38621,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dShaderProgram {
 }
 
 impl HandleGraphic3dShaderProgram {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dShaderProgram_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ShaderProgram
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ShaderProgram {
         unsafe {
@@ -38519,6 +38878,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dShaderVariable {
 }
 
 impl HandleGraphic3dShaderVariable {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dShaderVariable_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ShaderVariable
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ShaderVariable {
         unsafe {
@@ -39508,6 +39874,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dStructure {
 }
 
 impl HandleGraphic3dStructure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dStructure_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Structure
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Structure {
         unsafe {
@@ -39895,6 +40268,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dStructureDefinitionError {
 }
 
 impl HandleGraphic3dStructureDefinitionError {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dStructureDefinitionError_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_StructureDefinitionError
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_StructureDefinitionError {
         unsafe {
@@ -40531,6 +40913,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dStructureManager {
 }
 
 impl HandleGraphic3dStructureManager {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dStructureManager_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_StructureManager
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_StructureManager {
         unsafe {
@@ -40939,6 +41330,11 @@ unsafe impl crate::CppCopyable for HandleGraphic3dText {
 }
 
 impl HandleGraphic3dText {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKService::HandleGraphic3dText_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Text
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Text {
         unsafe {
@@ -41444,6 +41840,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTexture1D {
 }
 
 impl HandleGraphic3dTexture1D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTexture1D_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Texture1D
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Texture1D {
         unsafe {
@@ -42066,6 +42469,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTexture1Dmanual {
 }
 
 impl HandleGraphic3dTexture1Dmanual {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTexture1Dmanual_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Texture1Dmanual
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Texture1Dmanual {
         unsafe {
@@ -42698,6 +43108,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTexture1Dsegment {
 }
 
 impl HandleGraphic3dTexture1Dsegment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTexture1Dsegment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Texture1Dsegment
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Texture1Dsegment {
         unsafe {
@@ -43277,6 +43696,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTexture2D {
 }
 
 impl HandleGraphic3dTexture2D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTexture2D_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Texture2D
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Texture2D {
         unsafe {
@@ -44133,6 +44559,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTexture2Dplane {
 }
 
 impl HandleGraphic3dTexture2Dplane {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTexture2Dplane_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Texture2Dplane
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Texture2Dplane {
         unsafe {
@@ -44682,6 +45115,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTexture3D {
 }
 
 impl HandleGraphic3dTexture3D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTexture3D_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_Texture3D
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_Texture3D {
         unsafe {
@@ -45134,6 +45574,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTextureEnv {
 }
 
 impl HandleGraphic3dTextureEnv {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTextureEnv_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_TextureEnv
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_TextureEnv {
         unsafe {
@@ -45600,6 +46047,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTextureMap {
 }
 
 impl HandleGraphic3dTextureMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTextureMap_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_TextureMap
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_TextureMap {
         unsafe {
@@ -46242,6 +46696,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTextureParams {
 }
 
 impl HandleGraphic3dTextureParams {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTextureParams_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_TextureParams
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_TextureParams {
         unsafe {
@@ -46630,6 +47091,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTextureRoot {
 }
 
 impl HandleGraphic3dTextureRoot {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTextureRoot_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_TextureRoot
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_TextureRoot {
         unsafe {
@@ -47134,6 +47602,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTextureSet {
 }
 
 impl HandleGraphic3dTextureSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTextureSet_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_TextureSet
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_TextureSet {
         unsafe {
@@ -47697,6 +48172,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTransformPers {
 }
 
 impl HandleGraphic3dTransformPers {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTransformPers_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_TransformPers
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_TransformPers {
         unsafe {
@@ -48099,6 +48581,15 @@ unsafe impl crate::CppCopyable for HandleGraphic3dTransformPersScaledAbove {
 }
 
 impl HandleGraphic3dTransformPersScaledAbove {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dTransformPersScaledAbove_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_TransformPersScaledAbove
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_TransformPersScaledAbove {
         unsafe {
@@ -48365,6 +48856,13 @@ unsafe impl crate::CppCopyable for HandleGraphic3dViewAffinity {
 }
 
 impl HandleGraphic3dViewAffinity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKService::HandleGraphic3dViewAffinity_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Graphic3d_ViewAffinity
     pub fn get(&self) -> &crate::ffi_types::Graphic3d_ViewAffinity {
         unsafe {

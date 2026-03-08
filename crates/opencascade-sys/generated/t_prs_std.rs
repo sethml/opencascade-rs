@@ -917,6 +917,13 @@ unsafe impl crate::CppCopyable for HandleTPrsStdAISPresentation {
 }
 
 impl HandleTPrsStdAISPresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TPrsStd_AISPresentation
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_AISPresentation {
         unsafe {
@@ -1614,6 +1621,11 @@ unsafe impl crate::CppCopyable for HandleTPrsStdAISViewer {
 }
 
 impl HandleTPrsStdAISViewer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TPrsStd_AISViewer
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_AISViewer {
         unsafe {
@@ -1865,6 +1877,11 @@ unsafe impl crate::CppCopyable for HandleTPrsStdAxisDriver {
 }
 
 impl HandleTPrsStdAxisDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TPrsStd_AxisDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_AxisDriver {
         unsafe {
@@ -2124,6 +2141,13 @@ unsafe impl crate::CppCopyable for HandleTPrsStdConstraintDriver {
 }
 
 impl HandleTPrsStdConstraintDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TPrsStd_ConstraintDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_ConstraintDriver {
         unsafe {
@@ -2596,6 +2620,11 @@ unsafe impl crate::CppCopyable for HandleTPrsStdDriver {
 }
 
 impl HandleTPrsStdDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TPrsStd_Driver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_Driver {
         unsafe {
@@ -2997,6 +3026,11 @@ unsafe impl crate::CppCopyable for HandleTPrsStdDriverTable {
 }
 
 impl HandleTPrsStdDriverTable {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TPrsStd_DriverTable
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_DriverTable {
         unsafe {
@@ -3241,6 +3275,13 @@ unsafe impl crate::CppCopyable for HandleTPrsStdGeometryDriver {
 }
 
 impl HandleTPrsStdGeometryDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TPrsStd_GeometryDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_GeometryDriver {
         unsafe {
@@ -3500,6 +3541,13 @@ unsafe impl crate::CppCopyable for HandleTPrsStdNamedShapeDriver {
 }
 
 impl HandleTPrsStdNamedShapeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TPrsStd_NamedShapeDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_NamedShapeDriver {
         unsafe {
@@ -3751,6 +3799,11 @@ unsafe impl crate::CppCopyable for HandleTPrsStdPlaneDriver {
 }
 
 impl HandleTPrsStdPlaneDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TPrsStd_PlaneDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_PlaneDriver {
         unsafe {
@@ -4002,6 +4055,11 @@ unsafe impl crate::CppCopyable for HandleTPrsStdPointDriver {
 }
 
 impl HandleTPrsStdPointDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TPrsStd_PointDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_PointDriver {
         unsafe {

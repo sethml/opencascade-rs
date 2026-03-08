@@ -135,6 +135,8 @@ extern "C" {
     pub fn HandleAISAnimation_clone(
         self_: *const HandleAISAnimation,
     ) -> crate::OcctResult<*mut HandleAISAnimation>;
+    /// Check if Handle<AIS_Animation> is null
+    pub fn HandleAISAnimation_is_null(self_: *const HandleAISAnimation) -> bool;
     /// Dereference Handle to get *const AIS_Animation
     pub fn HandleAISAnimation_get(
         handle: *const HandleAISAnimation,
@@ -245,6 +247,10 @@ extern "C" {
     pub fn HandleAISAnimationAxisRotation_clone(
         self_: *const HandleAISAnimationAxisRotation,
     ) -> crate::OcctResult<*mut HandleAISAnimationAxisRotation>;
+    /// Check if Handle<AIS_AnimationAxisRotation> is null
+    pub fn HandleAISAnimationAxisRotation_is_null(
+        self_: *const HandleAISAnimationAxisRotation,
+    ) -> bool;
     /// Dereference Handle to get *const AIS_AnimationAxisRotation
     pub fn HandleAISAnimationAxisRotation_get(
         handle: *const HandleAISAnimationAxisRotation,
@@ -478,6 +484,8 @@ extern "C" {
     pub fn HandleAISAnimationCamera_clone(
         self_: *const HandleAISAnimationCamera,
     ) -> crate::OcctResult<*mut HandleAISAnimationCamera>;
+    /// Check if Handle<AIS_AnimationCamera> is null
+    pub fn HandleAISAnimationCamera_is_null(self_: *const HandleAISAnimationCamera) -> bool;
     /// Dereference Handle to get *const AIS_AnimationCamera
     pub fn HandleAISAnimationCamera_get(
         handle: *const HandleAISAnimationCamera,
@@ -691,6 +699,8 @@ extern "C" {
     pub fn HandleAISAnimationObject_clone(
         self_: *const HandleAISAnimationObject,
     ) -> crate::OcctResult<*mut HandleAISAnimationObject>;
+    /// Check if Handle<AIS_AnimationObject> is null
+    pub fn HandleAISAnimationObject_is_null(self_: *const HandleAISAnimationObject) -> bool;
     /// Dereference Handle to get *const AIS_AnimationObject
     pub fn HandleAISAnimationObject_get(
         handle: *const HandleAISAnimationObject,
@@ -933,6 +943,8 @@ extern "C" {
     pub fn HandleAISAttributeFilter_clone(
         self_: *const HandleAISAttributeFilter,
     ) -> crate::OcctResult<*mut HandleAISAttributeFilter>;
+    /// Check if Handle<AIS_AttributeFilter> is null
+    pub fn HandleAISAttributeFilter_is_null(self_: *const HandleAISAttributeFilter) -> bool;
     /// Dereference Handle to get *const AIS_AttributeFilter
     pub fn HandleAISAttributeFilter_get(
         handle: *const HandleAISAttributeFilter,
@@ -1108,6 +1120,8 @@ extern "C" {
     pub fn HandleAISAxis_clone(
         self_: *const HandleAISAxis,
     ) -> crate::OcctResult<*mut HandleAISAxis>;
+    /// Check if Handle<AIS_Axis> is null
+    pub fn HandleAISAxis_is_null(self_: *const HandleAISAxis) -> bool;
     /// Dereference Handle to get *const AIS_Axis
     pub fn HandleAISAxis_get(handle: *const HandleAISAxis) -> crate::OcctResult<*const AIS_Axis>;
     /// Dereference Handle to get *mut AIS_Axis
@@ -1655,6 +1669,8 @@ extern "C" {
     pub fn HandleAISBadEdgeFilter_clone(
         self_: *const HandleAISBadEdgeFilter,
     ) -> crate::OcctResult<*mut HandleAISBadEdgeFilter>;
+    /// Check if Handle<AIS_BadEdgeFilter> is null
+    pub fn HandleAISBadEdgeFilter_is_null(self_: *const HandleAISBadEdgeFilter) -> bool;
     /// Dereference Handle to get *const AIS_BadEdgeFilter
     pub fn HandleAISBadEdgeFilter_get(
         handle: *const HandleAISBadEdgeFilter,
@@ -1738,6 +1754,9 @@ extern "C" {
     pub fn HandleAISBaseAnimationObject_clone(
         self_: *const HandleAISBaseAnimationObject,
     ) -> crate::OcctResult<*mut HandleAISBaseAnimationObject>;
+    /// Check if Handle<AIS_BaseAnimationObject> is null
+    pub fn HandleAISBaseAnimationObject_is_null(self_: *const HandleAISBaseAnimationObject)
+        -> bool;
     /// Dereference Handle to get *const AIS_BaseAnimationObject
     pub fn HandleAISBaseAnimationObject_get(
         handle: *const HandleAISBaseAnimationObject,
@@ -1958,6 +1977,8 @@ extern "C" {
     pub fn HandleAISC0RegularityFilter_clone(
         self_: *const HandleAISC0RegularityFilter,
     ) -> crate::OcctResult<*mut HandleAISC0RegularityFilter>;
+    /// Check if Handle<AIS_C0RegularityFilter> is null
+    pub fn HandleAISC0RegularityFilter_is_null(self_: *const HandleAISC0RegularityFilter) -> bool;
     /// Dereference Handle to get *const AIS_C0RegularityFilter
     pub fn HandleAISC0RegularityFilter_get(
         handle: *const HandleAISC0RegularityFilter,
@@ -2079,6 +2100,8 @@ extern "C" {
     pub fn HandleAISCameraFrustum_clone(
         self_: *const HandleAISCameraFrustum,
     ) -> crate::OcctResult<*mut HandleAISCameraFrustum>;
+    /// Check if Handle<AIS_CameraFrustum> is null
+    pub fn HandleAISCameraFrustum_is_null(self_: *const HandleAISCameraFrustum) -> bool;
     /// Dereference Handle to get *const AIS_CameraFrustum
     pub fn HandleAISCameraFrustum_get(
         handle: *const HandleAISCameraFrustum,
@@ -2756,6 +2779,8 @@ extern "C" {
     pub fn HandleAISCircle_clone(
         self_: *const HandleAISCircle,
     ) -> crate::OcctResult<*mut HandleAISCircle>;
+    /// Check if Handle<AIS_Circle> is null
+    pub fn HandleAISCircle_is_null(self_: *const HandleAISCircle) -> bool;
     /// Dereference Handle to get *const AIS_Circle
     pub fn HandleAISCircle_get(
         handle: *const HandleAISCircle,
@@ -3660,6 +3685,8 @@ extern "C" {
     pub fn HandleAISColorScale_clone(
         self_: *const HandleAISColorScale,
     ) -> crate::OcctResult<*mut HandleAISColorScale>;
+    /// Check if Handle<AIS_ColorScale> is null
+    pub fn HandleAISColorScale_is_null(self_: *const HandleAISColorScale) -> bool;
     /// Dereference Handle to get *const AIS_ColorScale
     pub fn HandleAISColorScale_get(
         handle: *const HandleAISColorScale,
@@ -4346,6 +4373,8 @@ extern "C" {
     pub fn HandleAISColoredDrawer_clone(
         self_: *const HandleAISColoredDrawer,
     ) -> crate::OcctResult<*mut HandleAISColoredDrawer>;
+    /// Check if Handle<AIS_ColoredDrawer> is null
+    pub fn HandleAISColoredDrawer_is_null(self_: *const HandleAISColoredDrawer) -> bool;
     /// Dereference Handle to get *const AIS_ColoredDrawer
     pub fn HandleAISColoredDrawer_get(
         handle: *const HandleAISColoredDrawer,
@@ -5259,6 +5288,8 @@ extern "C" {
     pub fn HandleAISColoredShape_clone(
         self_: *const HandleAISColoredShape,
     ) -> crate::OcctResult<*mut HandleAISColoredShape>;
+    /// Check if Handle<AIS_ColoredShape> is null
+    pub fn HandleAISColoredShape_is_null(self_: *const HandleAISColoredShape) -> bool;
     /// Dereference Handle to get *const AIS_ColoredShape
     pub fn HandleAISColoredShape_get(
         handle: *const HandleAISColoredShape,
@@ -6012,6 +6043,10 @@ extern "C" {
     pub fn HandleAISConnectedInteractive_clone(
         self_: *const HandleAISConnectedInteractive,
     ) -> crate::OcctResult<*mut HandleAISConnectedInteractive>;
+    /// Check if Handle<AIS_ConnectedInteractive> is null
+    pub fn HandleAISConnectedInteractive_is_null(
+        self_: *const HandleAISConnectedInteractive,
+    ) -> bool;
     /// Dereference Handle to get *const AIS_ConnectedInteractive
     pub fn HandleAISConnectedInteractive_get(
         handle: *const HandleAISConnectedInteractive,
@@ -6692,6 +6727,8 @@ extern "C" {
     pub fn HandleAISExclusionFilter_clone(
         self_: *const HandleAISExclusionFilter,
     ) -> crate::OcctResult<*mut HandleAISExclusionFilter>;
+    /// Check if Handle<AIS_ExclusionFilter> is null
+    pub fn HandleAISExclusionFilter_is_null(self_: *const HandleAISExclusionFilter) -> bool;
     /// Dereference Handle to get *const AIS_ExclusionFilter
     pub fn HandleAISExclusionFilter_get(
         handle: *const HandleAISExclusionFilter,
@@ -6829,6 +6866,8 @@ extern "C" {
     pub fn HandleAISGlobalStatus_clone(
         self_: *const HandleAISGlobalStatus,
     ) -> crate::OcctResult<*mut HandleAISGlobalStatus>;
+    /// Check if Handle<AIS_GlobalStatus> is null
+    pub fn HandleAISGlobalStatus_is_null(self_: *const HandleAISGlobalStatus) -> bool;
     /// Dereference Handle to get *const AIS_GlobalStatus
     pub fn HandleAISGlobalStatus_get(
         handle: *const HandleAISGlobalStatus,
@@ -7990,6 +8029,8 @@ extern "C" {
     pub fn HandleAISInteractiveContext_clone(
         self_: *const HandleAISInteractiveContext,
     ) -> crate::OcctResult<*mut HandleAISInteractiveContext>;
+    /// Check if Handle<AIS_InteractiveContext> is null
+    pub fn HandleAISInteractiveContext_is_null(self_: *const HandleAISInteractiveContext) -> bool;
     /// Dereference Handle to get *const AIS_InteractiveContext
     pub fn HandleAISInteractiveContext_get(
         handle: *const HandleAISInteractiveContext,
@@ -8138,6 +8179,8 @@ extern "C" {
     pub fn HandleAISInteractiveObject_clone(
         self_: *const HandleAISInteractiveObject,
     ) -> crate::OcctResult<*mut HandleAISInteractiveObject>;
+    /// Check if Handle<AIS_InteractiveObject> is null
+    pub fn HandleAISInteractiveObject_is_null(self_: *const HandleAISInteractiveObject) -> bool;
     /// Dereference Handle to get *const AIS_InteractiveObject
     pub fn HandleAISInteractiveObject_get(
         handle: *const HandleAISInteractiveObject,
@@ -9021,6 +9064,8 @@ extern "C" {
     pub fn HandleAISLightSource_clone(
         self_: *const HandleAISLightSource,
     ) -> crate::OcctResult<*mut HandleAISLightSource>;
+    /// Check if Handle<AIS_LightSource> is null
+    pub fn HandleAISLightSource_is_null(self_: *const HandleAISLightSource) -> bool;
     /// Dereference Handle to get *const AIS_LightSource
     pub fn HandleAISLightSource_get(
         handle: *const HandleAISLightSource,
@@ -9653,6 +9698,8 @@ extern "C" {
     pub fn HandleAISLightSourceOwner_clone(
         self_: *const HandleAISLightSourceOwner,
     ) -> crate::OcctResult<*mut HandleAISLightSourceOwner>;
+    /// Check if Handle<AIS_LightSourceOwner> is null
+    pub fn HandleAISLightSourceOwner_is_null(self_: *const HandleAISLightSourceOwner) -> bool;
     /// Dereference Handle to get *const AIS_LightSourceOwner
     pub fn HandleAISLightSourceOwner_get(
         handle: *const HandleAISLightSourceOwner,
@@ -9895,6 +9942,8 @@ extern "C" {
     pub fn HandleAISLine_clone(
         self_: *const HandleAISLine,
     ) -> crate::OcctResult<*mut HandleAISLine>;
+    /// Check if Handle<AIS_Line> is null
+    pub fn HandleAISLine_is_null(self_: *const HandleAISLine) -> bool;
     /// Dereference Handle to get *const AIS_Line
     pub fn HandleAISLine_get(handle: *const HandleAISLine) -> crate::OcctResult<*const AIS_Line>;
     /// Dereference Handle to get *mut AIS_Line
@@ -10440,6 +10489,10 @@ extern "C" {
     pub fn HandleAISManipulatorObjectSequence_clone(
         self_: *const HandleAISManipulatorObjectSequence,
     ) -> crate::OcctResult<*mut HandleAISManipulatorObjectSequence>;
+    /// Check if Handle<AIS_ManipulatorObjectSequence> is null
+    pub fn HandleAISManipulatorObjectSequence_is_null(
+        self_: *const HandleAISManipulatorObjectSequence,
+    ) -> bool;
     /// Dereference Handle to get *const AIS_ManipulatorObjectSequence
     pub fn HandleAISManipulatorObjectSequence_get(
         handle: *const HandleAISManipulatorObjectSequence,
@@ -10764,6 +10817,8 @@ extern "C" {
     pub fn HandleAISManipulator_clone(
         self_: *const HandleAISManipulator,
     ) -> crate::OcctResult<*mut HandleAISManipulator>;
+    /// Check if Handle<AIS_Manipulator> is null
+    pub fn HandleAISManipulator_is_null(self_: *const HandleAISManipulator) -> bool;
     /// Dereference Handle to get *const AIS_Manipulator
     pub fn HandleAISManipulator_get(
         handle: *const HandleAISManipulator,
@@ -11384,6 +11439,8 @@ extern "C" {
     pub fn HandleAISManipulatorOwner_clone(
         self_: *const HandleAISManipulatorOwner,
     ) -> crate::OcctResult<*mut HandleAISManipulatorOwner>;
+    /// Check if Handle<AIS_ManipulatorOwner> is null
+    pub fn HandleAISManipulatorOwner_is_null(self_: *const HandleAISManipulatorOwner) -> bool;
     /// Dereference Handle to get *const AIS_ManipulatorOwner
     pub fn HandleAISManipulatorOwner_get(
         handle: *const HandleAISManipulatorOwner,
@@ -11616,6 +11673,8 @@ extern "C" {
     pub fn HandleAISMediaPlayer_clone(
         self_: *const HandleAISMediaPlayer,
     ) -> crate::OcctResult<*mut HandleAISMediaPlayer>;
+    /// Check if Handle<AIS_MediaPlayer> is null
+    pub fn HandleAISMediaPlayer_is_null(self_: *const HandleAISMediaPlayer) -> bool;
     /// Dereference Handle to get *const AIS_MediaPlayer
     pub fn HandleAISMediaPlayer_get(
         handle: *const HandleAISMediaPlayer,
@@ -12324,6 +12383,10 @@ extern "C" {
     pub fn HandleAISMultipleConnectedInteractive_clone(
         self_: *const HandleAISMultipleConnectedInteractive,
     ) -> crate::OcctResult<*mut HandleAISMultipleConnectedInteractive>;
+    /// Check if Handle<AIS_MultipleConnectedInteractive> is null
+    pub fn HandleAISMultipleConnectedInteractive_is_null(
+        self_: *const HandleAISMultipleConnectedInteractive,
+    ) -> bool;
     /// Dereference Handle to get *const AIS_MultipleConnectedInteractive
     pub fn HandleAISMultipleConnectedInteractive_get(
         handle: *const HandleAISMultipleConnectedInteractive,
@@ -13078,6 +13141,8 @@ extern "C" {
     pub fn HandleAISPlane_clone(
         self_: *const HandleAISPlane,
     ) -> crate::OcctResult<*mut HandleAISPlane>;
+    /// Check if Handle<AIS_Plane> is null
+    pub fn HandleAISPlane_is_null(self_: *const HandleAISPlane) -> bool;
     /// Dereference Handle to get *const AIS_Plane
     pub fn HandleAISPlane_get(handle: *const HandleAISPlane)
         -> crate::OcctResult<*const AIS_Plane>;
@@ -13694,6 +13759,8 @@ extern "C" {
     pub fn HandleAISPlaneTrihedron_clone(
         self_: *const HandleAISPlaneTrihedron,
     ) -> crate::OcctResult<*mut HandleAISPlaneTrihedron>;
+    /// Check if Handle<AIS_PlaneTrihedron> is null
+    pub fn HandleAISPlaneTrihedron_is_null(self_: *const HandleAISPlaneTrihedron) -> bool;
     /// Dereference Handle to get *const AIS_PlaneTrihedron
     pub fn HandleAISPlaneTrihedron_get(
         handle: *const HandleAISPlaneTrihedron,
@@ -14353,6 +14420,8 @@ extern "C" {
     pub fn HandleAISPoint_clone(
         self_: *const HandleAISPoint,
     ) -> crate::OcctResult<*mut HandleAISPoint>;
+    /// Check if Handle<AIS_Point> is null
+    pub fn HandleAISPoint_is_null(self_: *const HandleAISPoint) -> bool;
     /// Dereference Handle to get *const AIS_Point
     pub fn HandleAISPoint_get(handle: *const HandleAISPoint)
         -> crate::OcctResult<*const AIS_Point>;
@@ -14951,6 +15020,8 @@ extern "C" {
     pub fn HandleAISPointCloud_clone(
         self_: *const HandleAISPointCloud,
     ) -> crate::OcctResult<*mut HandleAISPointCloud>;
+    /// Check if Handle<AIS_PointCloud> is null
+    pub fn HandleAISPointCloud_is_null(self_: *const HandleAISPointCloud) -> bool;
     /// Dereference Handle to get *const AIS_PointCloud
     pub fn HandleAISPointCloud_get(
         handle: *const HandleAISPointCloud,
@@ -15585,6 +15656,8 @@ extern "C" {
     pub fn HandleAISPointCloudOwner_clone(
         self_: *const HandleAISPointCloudOwner,
     ) -> crate::OcctResult<*mut HandleAISPointCloudOwner>;
+    /// Check if Handle<AIS_PointCloudOwner> is null
+    pub fn HandleAISPointCloudOwner_is_null(self_: *const HandleAISPointCloudOwner) -> bool;
     /// Dereference Handle to get *const AIS_PointCloudOwner
     pub fn HandleAISPointCloudOwner_get(
         handle: *const HandleAISPointCloudOwner,
@@ -15883,6 +15956,8 @@ extern "C" {
     pub fn HandleAISRubberBand_clone(
         self_: *const HandleAISRubberBand,
     ) -> crate::OcctResult<*mut HandleAISRubberBand>;
+    /// Check if Handle<AIS_RubberBand> is null
+    pub fn HandleAISRubberBand_is_null(self_: *const HandleAISRubberBand) -> bool;
     /// Dereference Handle to get *const AIS_RubberBand
     pub fn HandleAISRubberBand_get(
         handle: *const HandleAISRubberBand,
@@ -16546,6 +16621,8 @@ extern "C" {
     pub fn HandleAISSelection_clone(
         self_: *const HandleAISSelection,
     ) -> crate::OcctResult<*mut HandleAISSelection>;
+    /// Check if Handle<AIS_Selection> is null
+    pub fn HandleAISSelection_is_null(self_: *const HandleAISSelection) -> bool;
     /// Dereference Handle to get *const AIS_Selection
     pub fn HandleAISSelection_get(
         handle: *const HandleAISSelection,
@@ -16778,6 +16855,8 @@ extern "C" {
     pub fn HandleAISShape_clone(
         self_: *const HandleAISShape,
     ) -> crate::OcctResult<*mut HandleAISShape>;
+    /// Check if Handle<AIS_Shape> is null
+    pub fn HandleAISShape_is_null(self_: *const HandleAISShape) -> bool;
     /// Dereference Handle to get *const AIS_Shape
     pub fn HandleAISShape_get(handle: *const HandleAISShape)
         -> crate::OcctResult<*const AIS_Shape>;
@@ -17315,6 +17394,8 @@ extern "C" {
     pub fn HandleAISSignatureFilter_clone(
         self_: *const HandleAISSignatureFilter,
     ) -> crate::OcctResult<*mut HandleAISSignatureFilter>;
+    /// Check if Handle<AIS_SignatureFilter> is null
+    pub fn HandleAISSignatureFilter_is_null(self_: *const HandleAISSignatureFilter) -> bool;
     /// Dereference Handle to get *const AIS_SignatureFilter
     pub fn HandleAISSignatureFilter_get(
         handle: *const HandleAISSignatureFilter,
@@ -17553,6 +17634,8 @@ extern "C" {
     pub fn HandleAISTextLabel_clone(
         self_: *const HandleAISTextLabel,
     ) -> crate::OcctResult<*mut HandleAISTextLabel>;
+    /// Check if Handle<AIS_TextLabel> is null
+    pub fn HandleAISTextLabel_is_null(self_: *const HandleAISTextLabel) -> bool;
     /// Dereference Handle to get *const AIS_TextLabel
     pub fn HandleAISTextLabel_get(
         handle: *const HandleAISTextLabel,
@@ -18297,6 +18380,8 @@ extern "C" {
     pub fn HandleAISTexturedShape_clone(
         self_: *const HandleAISTexturedShape,
     ) -> crate::OcctResult<*mut HandleAISTexturedShape>;
+    /// Check if Handle<AIS_TexturedShape> is null
+    pub fn HandleAISTexturedShape_is_null(self_: *const HandleAISTexturedShape) -> bool;
     /// Dereference Handle to get *const AIS_TexturedShape
     pub fn HandleAISTexturedShape_get(
         handle: *const HandleAISTexturedShape,
@@ -19035,6 +19120,8 @@ extern "C" {
     pub fn HandleAISTriangulation_clone(
         self_: *const HandleAISTriangulation,
     ) -> crate::OcctResult<*mut HandleAISTriangulation>;
+    /// Check if Handle<AIS_Triangulation> is null
+    pub fn HandleAISTriangulation_is_null(self_: *const HandleAISTriangulation) -> bool;
     /// Dereference Handle to get *const AIS_Triangulation
     pub fn HandleAISTriangulation_get(
         handle: *const HandleAISTriangulation,
@@ -19826,6 +19913,8 @@ extern "C" {
     pub fn HandleAISTrihedron_clone(
         self_: *const HandleAISTrihedron,
     ) -> crate::OcctResult<*mut HandleAISTrihedron>;
+    /// Check if Handle<AIS_Trihedron> is null
+    pub fn HandleAISTrihedron_is_null(self_: *const HandleAISTrihedron) -> bool;
     /// Dereference Handle to get *const AIS_Trihedron
     pub fn HandleAISTrihedron_get(
         handle: *const HandleAISTrihedron,
@@ -20431,6 +20520,8 @@ extern "C" {
     pub fn HandleAISTrihedronOwner_clone(
         self_: *const HandleAISTrihedronOwner,
     ) -> crate::OcctResult<*mut HandleAISTrihedronOwner>;
+    /// Check if Handle<AIS_TrihedronOwner> is null
+    pub fn HandleAISTrihedronOwner_is_null(self_: *const HandleAISTrihedronOwner) -> bool;
     /// Dereference Handle to get *const AIS_TrihedronOwner
     pub fn HandleAISTrihedronOwner_get(
         handle: *const HandleAISTrihedronOwner,
@@ -20625,6 +20716,8 @@ extern "C" {
     pub fn HandleAISTypeFilter_clone(
         self_: *const HandleAISTypeFilter,
     ) -> crate::OcctResult<*mut HandleAISTypeFilter>;
+    /// Check if Handle<AIS_TypeFilter> is null
+    pub fn HandleAISTypeFilter_is_null(self_: *const HandleAISTypeFilter) -> bool;
     /// Dereference Handle to get *const AIS_TypeFilter
     pub fn HandleAISTypeFilter_get(
         handle: *const HandleAISTypeFilter,
@@ -21803,6 +21896,8 @@ extern "C" {
     pub fn HandleAISViewCube_clone(
         self_: *const HandleAISViewCube,
     ) -> crate::OcctResult<*mut HandleAISViewCube>;
+    /// Check if Handle<AIS_ViewCube> is null
+    pub fn HandleAISViewCube_is_null(self_: *const HandleAISViewCube) -> bool;
     /// Dereference Handle to get *const AIS_ViewCube
     pub fn HandleAISViewCube_get(
         handle: *const HandleAISViewCube,
@@ -22360,6 +22455,8 @@ extern "C" {
     pub fn HandleAISViewCubeOwner_clone(
         self_: *const HandleAISViewCubeOwner,
     ) -> crate::OcctResult<*mut HandleAISViewCubeOwner>;
+    /// Check if Handle<AIS_ViewCubeOwner> is null
+    pub fn HandleAISViewCubeOwner_is_null(self_: *const HandleAISViewCubeOwner) -> bool;
     /// Dereference Handle to get *const AIS_ViewCubeOwner
     pub fn HandleAISViewCubeOwner_get(
         handle: *const HandleAISViewCubeOwner,
@@ -22580,6 +22677,8 @@ extern "C" {
     pub fn HandleAISViewCubeSensitive_clone(
         self_: *const HandleAISViewCubeSensitive,
     ) -> crate::OcctResult<*mut HandleAISViewCubeSensitive>;
+    /// Check if Handle<AIS_ViewCubeSensitive> is null
+    pub fn HandleAISViewCubeSensitive_is_null(self_: *const HandleAISViewCubeSensitive) -> bool;
     /// Dereference Handle to get *const AIS_ViewCubeSensitive
     pub fn HandleAISViewCubeSensitive_get(
         handle: *const HandleAISViewCubeSensitive,
@@ -22990,6 +23089,8 @@ extern "C" {
     pub fn HandleAISXRTrackedDevice_clone(
         self_: *const HandleAISXRTrackedDevice,
     ) -> crate::OcctResult<*mut HandleAISXRTrackedDevice>;
+    /// Check if Handle<AIS_XRTrackedDevice> is null
+    pub fn HandleAISXRTrackedDevice_is_null(self_: *const HandleAISXRTrackedDevice) -> bool;
     /// Dereference Handle to get *const AIS_XRTrackedDevice
     pub fn HandleAISXRTrackedDevice_get(
         handle: *const HandleAISXRTrackedDevice,
@@ -24389,6 +24490,8 @@ extern "C" {
     pub fn HandlePrs3dArrowAspect_clone(
         self_: *const HandlePrs3dArrowAspect,
     ) -> crate::OcctResult<*mut HandlePrs3dArrowAspect>;
+    /// Check if Handle<Prs3d_ArrowAspect> is null
+    pub fn HandlePrs3dArrowAspect_is_null(self_: *const HandlePrs3dArrowAspect) -> bool;
     /// Dereference Handle to get *const Prs3d_ArrowAspect
     pub fn HandlePrs3dArrowAspect_get(
         handle: *const HandlePrs3dArrowAspect,
@@ -24459,6 +24562,8 @@ extern "C" {
     pub fn HandlePrs3dBasicAspect_clone(
         self_: *const HandlePrs3dBasicAspect,
     ) -> crate::OcctResult<*mut HandlePrs3dBasicAspect>;
+    /// Check if Handle<Prs3d_BasicAspect> is null
+    pub fn HandlePrs3dBasicAspect_is_null(self_: *const HandlePrs3dBasicAspect) -> bool;
     /// Dereference Handle to get *const Prs3d_BasicAspect
     pub fn HandlePrs3dBasicAspect_get(
         handle: *const HandlePrs3dBasicAspect,
@@ -24717,6 +24822,8 @@ extern "C" {
     pub fn HandlePrs3dDatumAspect_clone(
         self_: *const HandlePrs3dDatumAspect,
     ) -> crate::OcctResult<*mut HandlePrs3dDatumAspect>;
+    /// Check if Handle<Prs3d_DatumAspect> is null
+    pub fn HandlePrs3dDatumAspect_is_null(self_: *const HandlePrs3dDatumAspect) -> bool;
     /// Dereference Handle to get *const Prs3d_DatumAspect
     pub fn HandlePrs3dDatumAspect_get(
         handle: *const HandlePrs3dDatumAspect,
@@ -24924,6 +25031,8 @@ extern "C" {
     pub fn HandlePrs3dDimensionAspect_clone(
         self_: *const HandlePrs3dDimensionAspect,
     ) -> crate::OcctResult<*mut HandlePrs3dDimensionAspect>;
+    /// Check if Handle<Prs3d_DimensionAspect> is null
+    pub fn HandlePrs3dDimensionAspect_is_null(self_: *const HandlePrs3dDimensionAspect) -> bool;
     /// Dereference Handle to get *const Prs3d_DimensionAspect
     pub fn HandlePrs3dDimensionAspect_get(
         handle: *const HandlePrs3dDimensionAspect,
@@ -25666,6 +25775,8 @@ extern "C" {
     pub fn HandlePrs3dDrawer_clone(
         self_: *const HandlePrs3dDrawer,
     ) -> crate::OcctResult<*mut HandlePrs3dDrawer>;
+    /// Check if Handle<Prs3d_Drawer> is null
+    pub fn HandlePrs3dDrawer_is_null(self_: *const HandlePrs3dDrawer) -> bool;
     /// Dereference Handle to get *const Prs3d_Drawer
     pub fn HandlePrs3dDrawer_get(
         handle: *const HandlePrs3dDrawer,
@@ -25846,6 +25957,8 @@ extern "C" {
     pub fn HandlePrs3dInvalidAngle_clone(
         self_: *const HandlePrs3dInvalidAngle,
     ) -> crate::OcctResult<*mut HandlePrs3dInvalidAngle>;
+    /// Check if Handle<Prs3d_InvalidAngle> is null
+    pub fn HandlePrs3dInvalidAngle_is_null(self_: *const HandlePrs3dInvalidAngle) -> bool;
     /// Dereference Handle to get *const Prs3d_InvalidAngle
     pub fn HandlePrs3dInvalidAngle_get(
         handle: *const HandlePrs3dInvalidAngle,
@@ -25971,6 +26084,8 @@ extern "C" {
     pub fn HandlePrs3dIsoAspect_clone(
         self_: *const HandlePrs3dIsoAspect,
     ) -> crate::OcctResult<*mut HandlePrs3dIsoAspect>;
+    /// Check if Handle<Prs3d_IsoAspect> is null
+    pub fn HandlePrs3dIsoAspect_is_null(self_: *const HandlePrs3dIsoAspect) -> bool;
     /// Dereference Handle to get *const Prs3d_IsoAspect
     pub fn HandlePrs3dIsoAspect_get(
         handle: *const HandlePrs3dIsoAspect,
@@ -26115,6 +26230,8 @@ extern "C" {
     pub fn HandlePrs3dLineAspect_clone(
         self_: *const HandlePrs3dLineAspect,
     ) -> crate::OcctResult<*mut HandlePrs3dLineAspect>;
+    /// Check if Handle<Prs3d_LineAspect> is null
+    pub fn HandlePrs3dLineAspect_is_null(self_: *const HandlePrs3dLineAspect) -> bool;
     /// Dereference Handle to get *const Prs3d_LineAspect
     pub fn HandlePrs3dLineAspect_get(
         handle: *const HandlePrs3dLineAspect,
@@ -26300,6 +26417,8 @@ extern "C" {
     pub fn HandlePrs3dPlaneAspect_clone(
         self_: *const HandlePrs3dPlaneAspect,
     ) -> crate::OcctResult<*mut HandlePrs3dPlaneAspect>;
+    /// Check if Handle<Prs3d_PlaneAspect> is null
+    pub fn HandlePrs3dPlaneAspect_is_null(self_: *const HandlePrs3dPlaneAspect) -> bool;
     /// Dereference Handle to get *const Prs3d_PlaneAspect
     pub fn HandlePrs3dPlaneAspect_get(
         handle: *const HandlePrs3dPlaneAspect,
@@ -26433,6 +26552,8 @@ extern "C" {
     pub fn HandlePrs3dPointAspect_clone(
         self_: *const HandlePrs3dPointAspect,
     ) -> crate::OcctResult<*mut HandlePrs3dPointAspect>;
+    /// Check if Handle<Prs3d_PointAspect> is null
+    pub fn HandlePrs3dPointAspect_is_null(self_: *const HandlePrs3dPointAspect) -> bool;
     /// Dereference Handle to get *const Prs3d_PointAspect
     pub fn HandlePrs3dPointAspect_get(
         handle: *const HandlePrs3dPointAspect,
@@ -26533,6 +26654,10 @@ extern "C" {
     pub fn HandlePrs3dPresentationShadow_clone(
         self_: *const HandlePrs3dPresentationShadow,
     ) -> crate::OcctResult<*mut HandlePrs3dPresentationShadow>;
+    /// Check if Handle<Prs3d_PresentationShadow> is null
+    pub fn HandlePrs3dPresentationShadow_is_null(
+        self_: *const HandlePrs3dPresentationShadow,
+    ) -> bool;
     /// Dereference Handle to get *const Prs3d_PresentationShadow
     pub fn HandlePrs3dPresentationShadow_get(
         handle: *const HandlePrs3dPresentationShadow,
@@ -26928,6 +27053,8 @@ extern "C" {
     pub fn HandlePrs3dShadingAspect_clone(
         self_: *const HandlePrs3dShadingAspect,
     ) -> crate::OcctResult<*mut HandlePrs3dShadingAspect>;
+    /// Check if Handle<Prs3d_ShadingAspect> is null
+    pub fn HandlePrs3dShadingAspect_is_null(self_: *const HandlePrs3dShadingAspect) -> bool;
     /// Dereference Handle to get *const Prs3d_ShadingAspect
     pub fn HandlePrs3dShadingAspect_get(
         handle: *const HandlePrs3dShadingAspect,
@@ -27093,6 +27220,8 @@ extern "C" {
     pub fn HandlePrs3dTextAspect_clone(
         self_: *const HandlePrs3dTextAspect,
     ) -> crate::OcctResult<*mut HandlePrs3dTextAspect>;
+    /// Check if Handle<Prs3d_TextAspect> is null
+    pub fn HandlePrs3dTextAspect_is_null(self_: *const HandlePrs3dTextAspect) -> bool;
     /// Dereference Handle to get *const Prs3d_TextAspect
     pub fn HandlePrs3dTextAspect_get(
         handle: *const HandlePrs3dTextAspect,
@@ -27688,6 +27817,8 @@ extern "C" {
     pub fn HandlePrsDimAngleDimension_clone(
         self_: *const HandlePrsDimAngleDimension,
     ) -> crate::OcctResult<*mut HandlePrsDimAngleDimension>;
+    /// Check if Handle<PrsDim_AngleDimension> is null
+    pub fn HandlePrsDimAngleDimension_is_null(self_: *const HandlePrsDimAngleDimension) -> bool;
     /// Dereference Handle to get *const PrsDim_AngleDimension
     pub fn HandlePrsDimAngleDimension_get(
         handle: *const HandlePrsDimAngleDimension,
@@ -28465,6 +28596,9 @@ extern "C" {
     pub fn HandlePrsDimChamf2dDimension_clone(
         self_: *const HandlePrsDimChamf2dDimension,
     ) -> crate::OcctResult<*mut HandlePrsDimChamf2dDimension>;
+    /// Check if Handle<PrsDim_Chamf2dDimension> is null
+    pub fn HandlePrsDimChamf2dDimension_is_null(self_: *const HandlePrsDimChamf2dDimension)
+        -> bool;
     /// Dereference Handle to get *const PrsDim_Chamf2dDimension
     pub fn HandlePrsDimChamf2dDimension_get(
         handle: *const HandlePrsDimChamf2dDimension,
@@ -29249,6 +29383,9 @@ extern "C" {
     pub fn HandlePrsDimChamf3dDimension_clone(
         self_: *const HandlePrsDimChamf3dDimension,
     ) -> crate::OcctResult<*mut HandlePrsDimChamf3dDimension>;
+    /// Check if Handle<PrsDim_Chamf3dDimension> is null
+    pub fn HandlePrsDimChamf3dDimension_is_null(self_: *const HandlePrsDimChamf3dDimension)
+        -> bool;
     /// Dereference Handle to get *const PrsDim_Chamf3dDimension
     pub fn HandlePrsDimChamf3dDimension_get(
         handle: *const HandlePrsDimChamf3dDimension,
@@ -30016,6 +30153,10 @@ extern "C" {
     pub fn HandlePrsDimConcentricRelation_clone(
         self_: *const HandlePrsDimConcentricRelation,
     ) -> crate::OcctResult<*mut HandlePrsDimConcentricRelation>;
+    /// Check if Handle<PrsDim_ConcentricRelation> is null
+    pub fn HandlePrsDimConcentricRelation_is_null(
+        self_: *const HandlePrsDimConcentricRelation,
+    ) -> bool;
     /// Dereference Handle to get *const PrsDim_ConcentricRelation
     pub fn HandlePrsDimConcentricRelation_get(
         handle: *const HandlePrsDimConcentricRelation,
@@ -30852,6 +30993,10 @@ extern "C" {
     pub fn HandlePrsDimDiameterDimension_clone(
         self_: *const HandlePrsDimDiameterDimension,
     ) -> crate::OcctResult<*mut HandlePrsDimDiameterDimension>;
+    /// Check if Handle<PrsDim_DiameterDimension> is null
+    pub fn HandlePrsDimDiameterDimension_is_null(
+        self_: *const HandlePrsDimDiameterDimension,
+    ) -> bool;
     /// Dereference Handle to get *const PrsDim_DiameterDimension
     pub fn HandlePrsDimDiameterDimension_get(
         handle: *const HandlePrsDimDiameterDimension,
@@ -31719,6 +31864,8 @@ extern "C" {
     pub fn HandlePrsDimDimension_clone(
         self_: *const HandlePrsDimDimension,
     ) -> crate::OcctResult<*mut HandlePrsDimDimension>;
+    /// Check if Handle<PrsDim_Dimension> is null
+    pub fn HandlePrsDimDimension_is_null(self_: *const HandlePrsDimDimension) -> bool;
     /// Dereference Handle to get *const PrsDim_Dimension
     pub fn HandlePrsDimDimension_get(
         handle: *const HandlePrsDimDimension,
@@ -32384,6 +32531,8 @@ extern "C" {
     pub fn HandlePrsDimDimensionOwner_clone(
         self_: *const HandlePrsDimDimensionOwner,
     ) -> crate::OcctResult<*mut HandlePrsDimDimensionOwner>;
+    /// Check if Handle<PrsDim_DimensionOwner> is null
+    pub fn HandlePrsDimDimensionOwner_is_null(self_: *const HandlePrsDimDimensionOwner) -> bool;
     /// Dereference Handle to get *const PrsDim_DimensionOwner
     pub fn HandlePrsDimDimensionOwner_get(
         handle: *const HandlePrsDimDimensionOwner,
@@ -32605,6 +32754,10 @@ extern "C" {
     pub fn HandlePrsDimEllipseRadiusDimension_clone(
         self_: *const HandlePrsDimEllipseRadiusDimension,
     ) -> crate::OcctResult<*mut HandlePrsDimEllipseRadiusDimension>;
+    /// Check if Handle<PrsDim_EllipseRadiusDimension> is null
+    pub fn HandlePrsDimEllipseRadiusDimension_is_null(
+        self_: *const HandlePrsDimEllipseRadiusDimension,
+    ) -> bool;
     /// Dereference Handle to get *const PrsDim_EllipseRadiusDimension
     pub fn HandlePrsDimEllipseRadiusDimension_get(
         handle: *const HandlePrsDimEllipseRadiusDimension,
@@ -33463,6 +33616,10 @@ extern "C" {
     pub fn HandlePrsDimEqualDistanceRelation_clone(
         self_: *const HandlePrsDimEqualDistanceRelation,
     ) -> crate::OcctResult<*mut HandlePrsDimEqualDistanceRelation>;
+    /// Check if Handle<PrsDim_EqualDistanceRelation> is null
+    pub fn HandlePrsDimEqualDistanceRelation_is_null(
+        self_: *const HandlePrsDimEqualDistanceRelation,
+    ) -> bool;
     /// Dereference Handle to get *const PrsDim_EqualDistanceRelation
     pub fn HandlePrsDimEqualDistanceRelation_get(
         handle: *const HandlePrsDimEqualDistanceRelation,
@@ -34238,6 +34395,10 @@ extern "C" {
     pub fn HandlePrsDimEqualRadiusRelation_clone(
         self_: *const HandlePrsDimEqualRadiusRelation,
     ) -> crate::OcctResult<*mut HandlePrsDimEqualRadiusRelation>;
+    /// Check if Handle<PrsDim_EqualRadiusRelation> is null
+    pub fn HandlePrsDimEqualRadiusRelation_is_null(
+        self_: *const HandlePrsDimEqualRadiusRelation,
+    ) -> bool;
     /// Dereference Handle to get *const PrsDim_EqualRadiusRelation
     pub fn HandlePrsDimEqualRadiusRelation_get(
         handle: *const HandlePrsDimEqualRadiusRelation,
@@ -35045,6 +35206,8 @@ extern "C" {
     pub fn HandlePrsDimFixRelation_clone(
         self_: *const HandlePrsDimFixRelation,
     ) -> crate::OcctResult<*mut HandlePrsDimFixRelation>;
+    /// Check if Handle<PrsDim_FixRelation> is null
+    pub fn HandlePrsDimFixRelation_is_null(self_: *const HandlePrsDimFixRelation) -> bool;
     /// Dereference Handle to get *const PrsDim_FixRelation
     pub fn HandlePrsDimFixRelation_get(
         handle: *const HandlePrsDimFixRelation,
@@ -35837,6 +36000,8 @@ extern "C" {
     pub fn HandlePrsDimIdenticRelation_clone(
         self_: *const HandlePrsDimIdenticRelation,
     ) -> crate::OcctResult<*mut HandlePrsDimIdenticRelation>;
+    /// Check if Handle<PrsDim_IdenticRelation> is null
+    pub fn HandlePrsDimIdenticRelation_is_null(self_: *const HandlePrsDimIdenticRelation) -> bool;
     /// Dereference Handle to get *const PrsDim_IdenticRelation
     pub fn HandlePrsDimIdenticRelation_get(
         handle: *const HandlePrsDimIdenticRelation,
@@ -36711,6 +36876,8 @@ extern "C" {
     pub fn HandlePrsDimLengthDimension_clone(
         self_: *const HandlePrsDimLengthDimension,
     ) -> crate::OcctResult<*mut HandlePrsDimLengthDimension>;
+    /// Check if Handle<PrsDim_LengthDimension> is null
+    pub fn HandlePrsDimLengthDimension_is_null(self_: *const HandlePrsDimLengthDimension) -> bool;
     /// Dereference Handle to get *const PrsDim_LengthDimension
     pub fn HandlePrsDimLengthDimension_get(
         handle: *const HandlePrsDimLengthDimension,
@@ -37486,6 +37653,10 @@ extern "C" {
     pub fn HandlePrsDimMaxRadiusDimension_clone(
         self_: *const HandlePrsDimMaxRadiusDimension,
     ) -> crate::OcctResult<*mut HandlePrsDimMaxRadiusDimension>;
+    /// Check if Handle<PrsDim_MaxRadiusDimension> is null
+    pub fn HandlePrsDimMaxRadiusDimension_is_null(
+        self_: *const HandlePrsDimMaxRadiusDimension,
+    ) -> bool;
     /// Dereference Handle to get *const PrsDim_MaxRadiusDimension
     pub fn HandlePrsDimMaxRadiusDimension_get(
         handle: *const HandlePrsDimMaxRadiusDimension,
@@ -38283,6 +38454,9 @@ extern "C" {
     pub fn HandlePrsDimMidPointRelation_clone(
         self_: *const HandlePrsDimMidPointRelation,
     ) -> crate::OcctResult<*mut HandlePrsDimMidPointRelation>;
+    /// Check if Handle<PrsDim_MidPointRelation> is null
+    pub fn HandlePrsDimMidPointRelation_is_null(self_: *const HandlePrsDimMidPointRelation)
+        -> bool;
     /// Dereference Handle to get *const PrsDim_MidPointRelation
     pub fn HandlePrsDimMidPointRelation_get(
         handle: *const HandlePrsDimMidPointRelation,
@@ -39071,6 +39245,10 @@ extern "C" {
     pub fn HandlePrsDimMinRadiusDimension_clone(
         self_: *const HandlePrsDimMinRadiusDimension,
     ) -> crate::OcctResult<*mut HandlePrsDimMinRadiusDimension>;
+    /// Check if Handle<PrsDim_MinRadiusDimension> is null
+    pub fn HandlePrsDimMinRadiusDimension_is_null(
+        self_: *const HandlePrsDimMinRadiusDimension,
+    ) -> bool;
     /// Dereference Handle to get *const PrsDim_MinRadiusDimension
     pub fn HandlePrsDimMinRadiusDimension_get(
         handle: *const HandlePrsDimMinRadiusDimension,
@@ -39868,6 +40046,8 @@ extern "C" {
     pub fn HandlePrsDimOffsetDimension_clone(
         self_: *const HandlePrsDimOffsetDimension,
     ) -> crate::OcctResult<*mut HandlePrsDimOffsetDimension>;
+    /// Check if Handle<PrsDim_OffsetDimension> is null
+    pub fn HandlePrsDimOffsetDimension_is_null(self_: *const HandlePrsDimOffsetDimension) -> bool;
     /// Dereference Handle to get *const PrsDim_OffsetDimension
     pub fn HandlePrsDimOffsetDimension_get(
         handle: *const HandlePrsDimOffsetDimension,
@@ -40648,6 +40828,9 @@ extern "C" {
     pub fn HandlePrsDimParallelRelation_clone(
         self_: *const HandlePrsDimParallelRelation,
     ) -> crate::OcctResult<*mut HandlePrsDimParallelRelation>;
+    /// Check if Handle<PrsDim_ParallelRelation> is null
+    pub fn HandlePrsDimParallelRelation_is_null(self_: *const HandlePrsDimParallelRelation)
+        -> bool;
     /// Dereference Handle to get *const PrsDim_ParallelRelation
     pub fn HandlePrsDimParallelRelation_get(
         handle: *const HandlePrsDimParallelRelation,
@@ -41426,6 +41609,10 @@ extern "C" {
     pub fn HandlePrsDimPerpendicularRelation_clone(
         self_: *const HandlePrsDimPerpendicularRelation,
     ) -> crate::OcctResult<*mut HandlePrsDimPerpendicularRelation>;
+    /// Check if Handle<PrsDim_PerpendicularRelation> is null
+    pub fn HandlePrsDimPerpendicularRelation_is_null(
+        self_: *const HandlePrsDimPerpendicularRelation,
+    ) -> bool;
     /// Dereference Handle to get *const PrsDim_PerpendicularRelation
     pub fn HandlePrsDimPerpendicularRelation_get(
         handle: *const HandlePrsDimPerpendicularRelation,
@@ -42271,6 +42458,8 @@ extern "C" {
     pub fn HandlePrsDimRadiusDimension_clone(
         self_: *const HandlePrsDimRadiusDimension,
     ) -> crate::OcctResult<*mut HandlePrsDimRadiusDimension>;
+    /// Check if Handle<PrsDim_RadiusDimension> is null
+    pub fn HandlePrsDimRadiusDimension_is_null(self_: *const HandlePrsDimRadiusDimension) -> bool;
     /// Dereference Handle to get *const PrsDim_RadiusDimension
     pub fn HandlePrsDimRadiusDimension_get(
         handle: *const HandlePrsDimRadiusDimension,
@@ -43124,6 +43313,8 @@ extern "C" {
     pub fn HandlePrsDimRelation_clone(
         self_: *const HandlePrsDimRelation,
     ) -> crate::OcctResult<*mut HandlePrsDimRelation>;
+    /// Check if Handle<PrsDim_Relation> is null
+    pub fn HandlePrsDimRelation_is_null(self_: *const HandlePrsDimRelation) -> bool;
     /// Dereference Handle to get *const PrsDim_Relation
     pub fn HandlePrsDimRelation_get(
         handle: *const HandlePrsDimRelation,
@@ -43848,6 +44039,10 @@ extern "C" {
     pub fn HandlePrsDimSymmetricRelation_clone(
         self_: *const HandlePrsDimSymmetricRelation,
     ) -> crate::OcctResult<*mut HandlePrsDimSymmetricRelation>;
+    /// Check if Handle<PrsDim_SymmetricRelation> is null
+    pub fn HandlePrsDimSymmetricRelation_is_null(
+        self_: *const HandlePrsDimSymmetricRelation,
+    ) -> bool;
     /// Dereference Handle to get *const PrsDim_SymmetricRelation
     pub fn HandlePrsDimSymmetricRelation_get(
         handle: *const HandlePrsDimSymmetricRelation,
@@ -44629,6 +44824,8 @@ extern "C" {
     pub fn HandlePrsDimTangentRelation_clone(
         self_: *const HandlePrsDimTangentRelation,
     ) -> crate::OcctResult<*mut HandlePrsDimTangentRelation>;
+    /// Check if Handle<PrsDim_TangentRelation> is null
+    pub fn HandlePrsDimTangentRelation_is_null(self_: *const HandlePrsDimTangentRelation) -> bool;
     /// Dereference Handle to get *const PrsDim_TangentRelation
     pub fn HandlePrsDimTangentRelation_get(
         handle: *const HandlePrsDimTangentRelation,
@@ -45731,6 +45928,10 @@ extern "C" {
     pub fn HandlePrsMgrPresentableObject_clone(
         self_: *const HandlePrsMgrPresentableObject,
     ) -> crate::OcctResult<*mut HandlePrsMgrPresentableObject>;
+    /// Check if Handle<PrsMgr_PresentableObject> is null
+    pub fn HandlePrsMgrPresentableObject_is_null(
+        self_: *const HandlePrsMgrPresentableObject,
+    ) -> bool;
     /// Dereference Handle to get *const PrsMgr_PresentableObject
     pub fn HandlePrsMgrPresentableObject_get(
         handle: *const HandlePrsMgrPresentableObject,
@@ -46014,6 +46215,8 @@ extern "C" {
     pub fn HandlePrsMgrPresentation_clone(
         self_: *const HandlePrsMgrPresentation,
     ) -> crate::OcctResult<*mut HandlePrsMgrPresentation>;
+    /// Check if Handle<PrsMgr_Presentation> is null
+    pub fn HandlePrsMgrPresentation_is_null(self_: *const HandlePrsMgrPresentation) -> bool;
     /// Dereference Handle to get *const PrsMgr_Presentation
     pub fn HandlePrsMgrPresentation_get(
         handle: *const HandlePrsMgrPresentation,
@@ -46473,6 +46676,10 @@ extern "C" {
     pub fn HandlePrsMgrPresentationManager_clone(
         self_: *const HandlePrsMgrPresentationManager,
     ) -> crate::OcctResult<*mut HandlePrsMgrPresentationManager>;
+    /// Check if Handle<PrsMgr_PresentationManager> is null
+    pub fn HandlePrsMgrPresentationManager_is_null(
+        self_: *const HandlePrsMgrPresentationManager,
+    ) -> bool;
     /// Dereference Handle to get *const PrsMgr_PresentationManager
     pub fn HandlePrsMgrPresentationManager_get(
         handle: *const HandlePrsMgrPresentationManager,
@@ -46597,6 +46804,9 @@ extern "C" {
     pub fn HandleSelect3DBVHIndexBuffer_clone(
         self_: *const HandleSelect3DBVHIndexBuffer,
     ) -> crate::OcctResult<*mut HandleSelect3DBVHIndexBuffer>;
+    /// Check if Handle<Select3D_BVHIndexBuffer> is null
+    pub fn HandleSelect3DBVHIndexBuffer_is_null(self_: *const HandleSelect3DBVHIndexBuffer)
+        -> bool;
     /// Dereference Handle to get *const Select3D_BVHIndexBuffer
     pub fn HandleSelect3DBVHIndexBuffer_get(
         handle: *const HandleSelect3DBVHIndexBuffer,
@@ -46818,6 +47028,10 @@ extern "C" {
     pub fn HandleSelect3DInteriorSensitivePointSet_clone(
         self_: *const HandleSelect3DInteriorSensitivePointSet,
     ) -> crate::OcctResult<*mut HandleSelect3DInteriorSensitivePointSet>;
+    /// Check if Handle<Select3D_InteriorSensitivePointSet> is null
+    pub fn HandleSelect3DInteriorSensitivePointSet_is_null(
+        self_: *const HandleSelect3DInteriorSensitivePointSet,
+    ) -> bool;
     /// Dereference Handle to get *const Select3D_InteriorSensitivePointSet
     pub fn HandleSelect3DInteriorSensitivePointSet_get(
         handle: *const HandleSelect3DInteriorSensitivePointSet,
@@ -47053,6 +47267,8 @@ extern "C" {
     pub fn HandleSelect3DSensitiveBox_clone(
         self_: *const HandleSelect3DSensitiveBox,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveBox>;
+    /// Check if Handle<Select3D_SensitiveBox> is null
+    pub fn HandleSelect3DSensitiveBox_is_null(self_: *const HandleSelect3DSensitiveBox) -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveBox
     pub fn HandleSelect3DSensitiveBox_get(
         handle: *const HandleSelect3DSensitiveBox,
@@ -47223,6 +47439,10 @@ extern "C" {
     pub fn HandleSelect3DSensitiveCircle_clone(
         self_: *const HandleSelect3DSensitiveCircle,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveCircle>;
+    /// Check if Handle<Select3D_SensitiveCircle> is null
+    pub fn HandleSelect3DSensitiveCircle_is_null(
+        self_: *const HandleSelect3DSensitiveCircle,
+    ) -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveCircle
     pub fn HandleSelect3DSensitiveCircle_get(
         handle: *const HandleSelect3DSensitiveCircle,
@@ -47385,6 +47605,9 @@ extern "C" {
     pub fn HandleSelect3DSensitiveCurve_clone(
         self_: *const HandleSelect3DSensitiveCurve,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveCurve>;
+    /// Check if Handle<Select3D_SensitiveCurve> is null
+    pub fn HandleSelect3DSensitiveCurve_is_null(self_: *const HandleSelect3DSensitiveCurve)
+        -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveCurve
     pub fn HandleSelect3DSensitiveCurve_get(
         handle: *const HandleSelect3DSensitiveCurve,
@@ -47646,6 +47869,10 @@ extern "C" {
     pub fn HandleSelect3DSensitiveCylinder_clone(
         self_: *const HandleSelect3DSensitiveCylinder,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveCylinder>;
+    /// Check if Handle<Select3D_SensitiveCylinder> is null
+    pub fn HandleSelect3DSensitiveCylinder_is_null(
+        self_: *const HandleSelect3DSensitiveCylinder,
+    ) -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveCylinder
     pub fn HandleSelect3DSensitiveCylinder_get(
         handle: *const HandleSelect3DSensitiveCylinder,
@@ -47829,6 +48056,10 @@ extern "C" {
     pub fn HandleSelect3DSensitiveEntity_clone(
         self_: *const HandleSelect3DSensitiveEntity,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveEntity>;
+    /// Check if Handle<Select3D_SensitiveEntity> is null
+    pub fn HandleSelect3DSensitiveEntity_is_null(
+        self_: *const HandleSelect3DSensitiveEntity,
+    ) -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveEntity
     pub fn HandleSelect3DSensitiveEntity_get(
         handle: *const HandleSelect3DSensitiveEntity,
@@ -48047,6 +48278,8 @@ extern "C" {
     pub fn HandleSelect3DSensitiveFace_clone(
         self_: *const HandleSelect3DSensitiveFace,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveFace>;
+    /// Check if Handle<Select3D_SensitiveFace> is null
+    pub fn HandleSelect3DSensitiveFace_is_null(self_: *const HandleSelect3DSensitiveFace) -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveFace
     pub fn HandleSelect3DSensitiveFace_get(
         handle: *const HandleSelect3DSensitiveFace,
@@ -48299,6 +48532,9 @@ extern "C" {
     pub fn HandleSelect3DSensitiveGroup_clone(
         self_: *const HandleSelect3DSensitiveGroup,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveGroup>;
+    /// Check if Handle<Select3D_SensitiveGroup> is null
+    pub fn HandleSelect3DSensitiveGroup_is_null(self_: *const HandleSelect3DSensitiveGroup)
+        -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveGroup
     pub fn HandleSelect3DSensitiveGroup_get(
         handle: *const HandleSelect3DSensitiveGroup,
@@ -48472,6 +48708,9 @@ extern "C" {
     pub fn HandleSelect3DSensitivePoint_clone(
         self_: *const HandleSelect3DSensitivePoint,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitivePoint>;
+    /// Check if Handle<Select3D_SensitivePoint> is null
+    pub fn HandleSelect3DSensitivePoint_is_null(self_: *const HandleSelect3DSensitivePoint)
+        -> bool;
     /// Dereference Handle to get *const Select3D_SensitivePoint
     pub fn HandleSelect3DSensitivePoint_get(
         handle: *const HandleSelect3DSensitivePoint,
@@ -48688,6 +48927,8 @@ extern "C" {
     pub fn HandleSelect3DSensitivePoly_clone(
         self_: *const HandleSelect3DSensitivePoly,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitivePoly>;
+    /// Check if Handle<Select3D_SensitivePoly> is null
+    pub fn HandleSelect3DSensitivePoly_is_null(self_: *const HandleSelect3DSensitivePoly) -> bool;
     /// Dereference Handle to get *const Select3D_SensitivePoly
     pub fn HandleSelect3DSensitivePoly_get(
         handle: *const HandleSelect3DSensitivePoly,
@@ -49065,6 +49306,10 @@ extern "C" {
     pub fn HandleSelect3DSensitivePrimitiveArray_clone(
         self_: *const HandleSelect3DSensitivePrimitiveArray,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitivePrimitiveArray>;
+    /// Check if Handle<Select3D_SensitivePrimitiveArray> is null
+    pub fn HandleSelect3DSensitivePrimitiveArray_is_null(
+        self_: *const HandleSelect3DSensitivePrimitiveArray,
+    ) -> bool;
     /// Dereference Handle to get *const Select3D_SensitivePrimitiveArray
     pub fn HandleSelect3DSensitivePrimitiveArray_get(
         handle: *const HandleSelect3DSensitivePrimitiveArray,
@@ -49259,6 +49504,10 @@ extern "C" {
     pub fn HandleSelect3DSensitiveSegment_clone(
         self_: *const HandleSelect3DSensitiveSegment,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveSegment>;
+    /// Check if Handle<Select3D_SensitiveSegment> is null
+    pub fn HandleSelect3DSensitiveSegment_is_null(
+        self_: *const HandleSelect3DSensitiveSegment,
+    ) -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveSegment
     pub fn HandleSelect3DSensitiveSegment_get(
         handle: *const HandleSelect3DSensitiveSegment,
@@ -49450,6 +49699,8 @@ extern "C" {
     pub fn HandleSelect3DSensitiveSet_clone(
         self_: *const HandleSelect3DSensitiveSet,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveSet>;
+    /// Check if Handle<Select3D_SensitiveSet> is null
+    pub fn HandleSelect3DSensitiveSet_is_null(self_: *const HandleSelect3DSensitiveSet) -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveSet
     pub fn HandleSelect3DSensitiveSet_get(
         handle: *const HandleSelect3DSensitiveSet,
@@ -49656,6 +49907,10 @@ extern "C" {
     pub fn HandleSelect3DSensitiveSphere_clone(
         self_: *const HandleSelect3DSensitiveSphere,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveSphere>;
+    /// Check if Handle<Select3D_SensitiveSphere> is null
+    pub fn HandleSelect3DSensitiveSphere_is_null(
+        self_: *const HandleSelect3DSensitiveSphere,
+    ) -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveSphere
     pub fn HandleSelect3DSensitiveSphere_get(
         handle: *const HandleSelect3DSensitiveSphere,
@@ -49827,6 +50082,10 @@ extern "C" {
     pub fn HandleSelect3DSensitiveTriangle_clone(
         self_: *const HandleSelect3DSensitiveTriangle,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveTriangle>;
+    /// Check if Handle<Select3D_SensitiveTriangle> is null
+    pub fn HandleSelect3DSensitiveTriangle_is_null(
+        self_: *const HandleSelect3DSensitiveTriangle,
+    ) -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveTriangle
     pub fn HandleSelect3DSensitiveTriangle_get(
         handle: *const HandleSelect3DSensitiveTriangle,
@@ -50054,6 +50313,10 @@ extern "C" {
     pub fn HandleSelect3DSensitiveTriangulation_clone(
         self_: *const HandleSelect3DSensitiveTriangulation,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveTriangulation>;
+    /// Check if Handle<Select3D_SensitiveTriangulation> is null
+    pub fn HandleSelect3DSensitiveTriangulation_is_null(
+        self_: *const HandleSelect3DSensitiveTriangulation,
+    ) -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveTriangulation
     pub fn HandleSelect3DSensitiveTriangulation_get(
         handle: *const HandleSelect3DSensitiveTriangulation,
@@ -50260,6 +50523,8 @@ extern "C" {
     pub fn HandleSelect3DSensitiveWire_clone(
         self_: *const HandleSelect3DSensitiveWire,
     ) -> crate::OcctResult<*mut HandleSelect3DSensitiveWire>;
+    /// Check if Handle<Select3D_SensitiveWire> is null
+    pub fn HandleSelect3DSensitiveWire_is_null(self_: *const HandleSelect3DSensitiveWire) -> bool;
     /// Dereference Handle to get *const Select3D_SensitiveWire
     pub fn HandleSelect3DSensitiveWire_get(
         handle: *const HandleSelect3DSensitiveWire,
@@ -50635,6 +50900,8 @@ extern "C" {
     pub fn HandleSelectMgrAndFilter_clone(
         self_: *const HandleSelectMgrAndFilter,
     ) -> crate::OcctResult<*mut HandleSelectMgrAndFilter>;
+    /// Check if Handle<SelectMgr_AndFilter> is null
+    pub fn HandleSelectMgrAndFilter_is_null(self_: *const HandleSelectMgrAndFilter) -> bool;
     /// Dereference Handle to get *const SelectMgr_AndFilter
     pub fn HandleSelectMgrAndFilter_get(
         handle: *const HandleSelectMgrAndFilter,
@@ -50780,6 +51047,8 @@ extern "C" {
     pub fn HandleSelectMgrAndOrFilter_clone(
         self_: *const HandleSelectMgrAndOrFilter,
     ) -> crate::OcctResult<*mut HandleSelectMgrAndOrFilter>;
+    /// Check if Handle<SelectMgr_AndOrFilter> is null
+    pub fn HandleSelectMgrAndOrFilter_is_null(self_: *const HandleSelectMgrAndOrFilter) -> bool;
     /// Dereference Handle to get *const SelectMgr_AndOrFilter
     pub fn HandleSelectMgrAndOrFilter_get(
         handle: *const HandleSelectMgrAndOrFilter,
@@ -51050,6 +51319,10 @@ extern "C" {
     pub fn HandleSelectMgrAxisIntersector_clone(
         self_: *const HandleSelectMgrAxisIntersector,
     ) -> crate::OcctResult<*mut HandleSelectMgrAxisIntersector>;
+    /// Check if Handle<SelectMgr_AxisIntersector> is null
+    pub fn HandleSelectMgrAxisIntersector_is_null(
+        self_: *const HandleSelectMgrAxisIntersector,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_AxisIntersector
     pub fn HandleSelectMgrAxisIntersector_get(
         handle: *const HandleSelectMgrAxisIntersector,
@@ -51219,6 +51492,9 @@ extern "C" {
     pub fn HandleSelectMgrBVHThreadPool_clone(
         self_: *const HandleSelectMgrBVHThreadPool,
     ) -> crate::OcctResult<*mut HandleSelectMgrBVHThreadPool>;
+    /// Check if Handle<SelectMgr_BVHThreadPool> is null
+    pub fn HandleSelectMgrBVHThreadPool_is_null(self_: *const HandleSelectMgrBVHThreadPool)
+        -> bool;
     /// Dereference Handle to get *const SelectMgr_BVHThreadPool
     pub fn HandleSelectMgrBVHThreadPool_get(
         handle: *const HandleSelectMgrBVHThreadPool,
@@ -51407,6 +51683,8 @@ extern "C" {
     pub fn HandleSelectMgrBaseFrustum_clone(
         self_: *const HandleSelectMgrBaseFrustum,
     ) -> crate::OcctResult<*mut HandleSelectMgrBaseFrustum>;
+    /// Check if Handle<SelectMgr_BaseFrustum> is null
+    pub fn HandleSelectMgrBaseFrustum_is_null(self_: *const HandleSelectMgrBaseFrustum) -> bool;
     /// Dereference Handle to get *const SelectMgr_BaseFrustum
     pub fn HandleSelectMgrBaseFrustum_get(
         handle: *const HandleSelectMgrBaseFrustum,
@@ -51866,6 +52144,10 @@ extern "C" {
     pub fn HandleSelectMgrBaseIntersector_clone(
         self_: *const HandleSelectMgrBaseIntersector,
     ) -> crate::OcctResult<*mut HandleSelectMgrBaseIntersector>;
+    /// Check if Handle<SelectMgr_BaseIntersector> is null
+    pub fn HandleSelectMgrBaseIntersector_is_null(
+        self_: *const HandleSelectMgrBaseIntersector,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_BaseIntersector
     pub fn HandleSelectMgrBaseIntersector_get(
         handle: *const HandleSelectMgrBaseIntersector,
@@ -51987,6 +52269,10 @@ extern "C" {
     pub fn HandleSelectMgrCompositionFilter_clone(
         self_: *const HandleSelectMgrCompositionFilter,
     ) -> crate::OcctResult<*mut HandleSelectMgrCompositionFilter>;
+    /// Check if Handle<SelectMgr_CompositionFilter> is null
+    pub fn HandleSelectMgrCompositionFilter_is_null(
+        self_: *const HandleSelectMgrCompositionFilter,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_CompositionFilter
     pub fn HandleSelectMgrCompositionFilter_get(
         handle: *const HandleSelectMgrCompositionFilter,
@@ -52215,6 +52501,8 @@ extern "C" {
     pub fn HandleSelectMgrEntityOwner_clone(
         self_: *const HandleSelectMgrEntityOwner,
     ) -> crate::OcctResult<*mut HandleSelectMgrEntityOwner>;
+    /// Check if Handle<SelectMgr_EntityOwner> is null
+    pub fn HandleSelectMgrEntityOwner_is_null(self_: *const HandleSelectMgrEntityOwner) -> bool;
     /// Dereference Handle to get *const SelectMgr_EntityOwner
     pub fn HandleSelectMgrEntityOwner_get(
         handle: *const HandleSelectMgrEntityOwner,
@@ -52327,6 +52615,8 @@ extern "C" {
     pub fn HandleSelectMgrFilter_clone(
         self_: *const HandleSelectMgrFilter,
     ) -> crate::OcctResult<*mut HandleSelectMgrFilter>;
+    /// Check if Handle<SelectMgr_Filter> is null
+    pub fn HandleSelectMgrFilter_is_null(self_: *const HandleSelectMgrFilter) -> bool;
     /// Dereference Handle to get *const SelectMgr_Filter
     pub fn HandleSelectMgrFilter_get(
         handle: *const HandleSelectMgrFilter,
@@ -52498,6 +52788,10 @@ extern "C" {
     pub fn HandleSelectMgrFrustumBuilder_clone(
         self_: *const HandleSelectMgrFrustumBuilder,
     ) -> crate::OcctResult<*mut HandleSelectMgrFrustumBuilder>;
+    /// Check if Handle<SelectMgr_FrustumBuilder> is null
+    pub fn HandleSelectMgrFrustumBuilder_is_null(
+        self_: *const HandleSelectMgrFrustumBuilder,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_FrustumBuilder
     pub fn HandleSelectMgrFrustumBuilder_get(
         handle: *const HandleSelectMgrFrustumBuilder,
@@ -52591,6 +52885,8 @@ extern "C" {
     pub fn HandleSelectMgrOrFilter_clone(
         self_: *const HandleSelectMgrOrFilter,
     ) -> crate::OcctResult<*mut HandleSelectMgrOrFilter>;
+    /// Check if Handle<SelectMgr_OrFilter> is null
+    pub fn HandleSelectMgrOrFilter_is_null(self_: *const HandleSelectMgrOrFilter) -> bool;
     /// Dereference Handle to get *const SelectMgr_OrFilter
     pub fn HandleSelectMgrOrFilter_get(
         handle: *const HandleSelectMgrOrFilter,
@@ -53069,6 +53365,10 @@ extern "C" {
     pub fn HandleSelectMgrSelectableObject_clone(
         self_: *const HandleSelectMgrSelectableObject,
     ) -> crate::OcctResult<*mut HandleSelectMgrSelectableObject>;
+    /// Check if Handle<SelectMgr_SelectableObject> is null
+    pub fn HandleSelectMgrSelectableObject_is_null(
+        self_: *const HandleSelectMgrSelectableObject,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_SelectableObject
     pub fn HandleSelectMgrSelectableObject_get(
         handle: *const HandleSelectMgrSelectableObject,
@@ -54103,6 +54403,8 @@ extern "C" {
     pub fn HandleSelectMgrSelection_clone(
         self_: *const HandleSelectMgrSelection,
     ) -> crate::OcctResult<*mut HandleSelectMgrSelection>;
+    /// Check if Handle<SelectMgr_Selection> is null
+    pub fn HandleSelectMgrSelection_is_null(self_: *const HandleSelectMgrSelection) -> bool;
     /// Dereference Handle to get *const SelectMgr_Selection
     pub fn HandleSelectMgrSelection_get(
         handle: *const HandleSelectMgrSelection,
@@ -54180,6 +54482,10 @@ extern "C" {
     pub fn HandleSelectMgrSelectionImageFiller_clone(
         self_: *const HandleSelectMgrSelectionImageFiller,
     ) -> crate::OcctResult<*mut HandleSelectMgrSelectionImageFiller>;
+    /// Check if Handle<SelectMgr_SelectionImageFiller> is null
+    pub fn HandleSelectMgrSelectionImageFiller_is_null(
+        self_: *const HandleSelectMgrSelectionImageFiller,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_SelectionImageFiller
     pub fn HandleSelectMgrSelectionImageFiller_get(
         handle: *const HandleSelectMgrSelectionImageFiller,
@@ -54347,6 +54653,10 @@ extern "C" {
     pub fn HandleSelectMgrSelectionManager_clone(
         self_: *const HandleSelectMgrSelectionManager,
     ) -> crate::OcctResult<*mut HandleSelectMgrSelectionManager>;
+    /// Check if Handle<SelectMgr_SelectionManager> is null
+    pub fn HandleSelectMgrSelectionManager_is_null(
+        self_: *const HandleSelectMgrSelectionManager,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_SelectionManager
     pub fn HandleSelectMgrSelectionManager_get(
         handle: *const HandleSelectMgrSelectionManager,
@@ -54442,6 +54752,10 @@ extern "C" {
     pub fn HandleSelectMgrSensitiveEntity_clone(
         self_: *const HandleSelectMgrSensitiveEntity,
     ) -> crate::OcctResult<*mut HandleSelectMgrSensitiveEntity>;
+    /// Check if Handle<SelectMgr_SensitiveEntity> is null
+    pub fn HandleSelectMgrSensitiveEntity_is_null(
+        self_: *const HandleSelectMgrSensitiveEntity,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_SensitiveEntity
     pub fn HandleSelectMgrSensitiveEntity_get(
         handle: *const HandleSelectMgrSensitiveEntity,
@@ -54564,6 +54878,10 @@ extern "C" {
     pub fn HandleSelectMgrSensitiveEntitySet_clone(
         self_: *const HandleSelectMgrSensitiveEntitySet,
     ) -> crate::OcctResult<*mut HandleSelectMgrSensitiveEntitySet>;
+    /// Check if Handle<SelectMgr_SensitiveEntitySet> is null
+    pub fn HandleSelectMgrSensitiveEntitySet_is_null(
+        self_: *const HandleSelectMgrSensitiveEntitySet,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_SensitiveEntitySet
     pub fn HandleSelectMgrSensitiveEntitySet_get(
         handle: *const HandleSelectMgrSensitiveEntitySet,
@@ -54786,6 +55104,10 @@ extern "C" {
     pub fn HandleSelectMgrTriangularFrustum_clone(
         self_: *const HandleSelectMgrTriangularFrustum,
     ) -> crate::OcctResult<*mut HandleSelectMgrTriangularFrustum>;
+    /// Check if Handle<SelectMgr_TriangularFrustum> is null
+    pub fn HandleSelectMgrTriangularFrustum_is_null(
+        self_: *const HandleSelectMgrTriangularFrustum,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_TriangularFrustum
     pub fn HandleSelectMgrTriangularFrustum_get(
         handle: *const HandleSelectMgrTriangularFrustum,
@@ -54988,6 +55310,10 @@ extern "C" {
     pub fn HandleSelectMgrTriangularFrustumSet_clone(
         self_: *const HandleSelectMgrTriangularFrustumSet,
     ) -> crate::OcctResult<*mut HandleSelectMgrTriangularFrustumSet>;
+    /// Check if Handle<SelectMgr_TriangularFrustumSet> is null
+    pub fn HandleSelectMgrTriangularFrustumSet_is_null(
+        self_: *const HandleSelectMgrTriangularFrustumSet,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_TriangularFrustumSet
     pub fn HandleSelectMgrTriangularFrustumSet_get(
         handle: *const HandleSelectMgrTriangularFrustumSet,
@@ -55479,6 +55805,10 @@ extern "C" {
     pub fn HandleSelectMgrViewerSelector_clone(
         self_: *const HandleSelectMgrViewerSelector,
     ) -> crate::OcctResult<*mut HandleSelectMgrViewerSelector>;
+    /// Check if Handle<SelectMgr_ViewerSelector> is null
+    pub fn HandleSelectMgrViewerSelector_is_null(
+        self_: *const HandleSelectMgrViewerSelector,
+    ) -> bool;
     /// Dereference Handle to get *const SelectMgr_ViewerSelector
     pub fn HandleSelectMgrViewerSelector_get(
         handle: *const HandleSelectMgrViewerSelector,
@@ -55650,6 +55980,8 @@ extern "C" {
     pub fn HandleStdPrsBRepFont_clone(
         self_: *const HandleStdPrsBRepFont,
     ) -> crate::OcctResult<*mut HandleStdPrsBRepFont>;
+    /// Check if Handle<StdPrs_BRepFont> is null
+    pub fn HandleStdPrsBRepFont_is_null(self_: *const HandleStdPrsBRepFont) -> bool;
     /// Dereference Handle to get *const StdPrs_BRepFont
     pub fn HandleStdPrsBRepFont_get(
         handle: *const HandleStdPrsBRepFont,
@@ -55931,6 +56263,8 @@ extern "C" {
     pub fn HandleStdPrsHLRPolyShape_clone(
         self_: *const HandleStdPrsHLRPolyShape,
     ) -> crate::OcctResult<*mut HandleStdPrsHLRPolyShape>;
+    /// Check if Handle<StdPrs_HLRPolyShape> is null
+    pub fn HandleStdPrsHLRPolyShape_is_null(self_: *const HandleStdPrsHLRPolyShape) -> bool;
     /// Dereference Handle to get *const StdPrs_HLRPolyShape
     pub fn HandleStdPrsHLRPolyShape_get(
         handle: *const HandleStdPrsHLRPolyShape,
@@ -56023,6 +56357,8 @@ extern "C" {
     pub fn HandleStdPrsHLRShape_clone(
         self_: *const HandleStdPrsHLRShape,
     ) -> crate::OcctResult<*mut HandleStdPrsHLRShape>;
+    /// Check if Handle<StdPrs_HLRShape> is null
+    pub fn HandleStdPrsHLRShape_is_null(self_: *const HandleStdPrsHLRShape) -> bool;
     /// Dereference Handle to get *const StdPrs_HLRShape
     pub fn HandleStdPrsHLRShape_get(
         handle: *const HandleStdPrsHLRShape,
@@ -56101,6 +56437,8 @@ extern "C" {
     pub fn HandleStdPrsHLRShapeI_clone(
         self_: *const HandleStdPrsHLRShapeI,
     ) -> crate::OcctResult<*mut HandleStdPrsHLRShapeI>;
+    /// Check if Handle<StdPrs_HLRShapeI> is null
+    pub fn HandleStdPrsHLRShapeI_is_null(self_: *const HandleStdPrsHLRShapeI) -> bool;
     /// Dereference Handle to get *const StdPrs_HLRShapeI
     pub fn HandleStdPrsHLRShapeI_get(
         handle: *const HandleStdPrsHLRShapeI,
@@ -56910,6 +57248,8 @@ extern "C" {
     pub fn HandleStdSelectBRepOwner_clone(
         self_: *const HandleStdSelectBRepOwner,
     ) -> crate::OcctResult<*mut HandleStdSelectBRepOwner>;
+    /// Check if Handle<StdSelect_BRepOwner> is null
+    pub fn HandleStdSelectBRepOwner_is_null(self_: *const HandleStdSelectBRepOwner) -> bool;
     /// Dereference Handle to get *const StdSelect_BRepOwner
     pub fn HandleStdSelectBRepOwner_get(
         handle: *const HandleStdSelectBRepOwner,
@@ -57175,6 +57515,8 @@ extern "C" {
     pub fn HandleStdSelectEdgeFilter_clone(
         self_: *const HandleStdSelectEdgeFilter,
     ) -> crate::OcctResult<*mut HandleStdSelectEdgeFilter>;
+    /// Check if Handle<StdSelect_EdgeFilter> is null
+    pub fn HandleStdSelectEdgeFilter_is_null(self_: *const HandleStdSelectEdgeFilter) -> bool;
     /// Dereference Handle to get *const StdSelect_EdgeFilter
     pub fn HandleStdSelectEdgeFilter_get(
         handle: *const HandleStdSelectEdgeFilter,
@@ -57279,6 +57621,8 @@ extern "C" {
     pub fn HandleStdSelectFaceFilter_clone(
         self_: *const HandleStdSelectFaceFilter,
     ) -> crate::OcctResult<*mut HandleStdSelectFaceFilter>;
+    /// Check if Handle<StdSelect_FaceFilter> is null
+    pub fn HandleStdSelectFaceFilter_is_null(self_: *const HandleStdSelectFaceFilter) -> bool;
     /// Dereference Handle to get *const StdSelect_FaceFilter
     pub fn HandleStdSelectFaceFilter_get(
         handle: *const HandleStdSelectFaceFilter,
@@ -57382,6 +57726,8 @@ extern "C" {
     pub fn HandleStdSelectShape_clone(
         self_: *const HandleStdSelectShape,
     ) -> crate::OcctResult<*mut HandleStdSelectShape>;
+    /// Check if Handle<StdSelect_Shape> is null
+    pub fn HandleStdSelectShape_is_null(self_: *const HandleStdSelectShape) -> bool;
     /// Dereference Handle to get *const StdSelect_Shape
     pub fn HandleStdSelectShape_get(
         handle: *const HandleStdSelectShape,
@@ -57843,6 +58189,10 @@ extern "C" {
     pub fn HandleStdSelectShapeTypeFilter_clone(
         self_: *const HandleStdSelectShapeTypeFilter,
     ) -> crate::OcctResult<*mut HandleStdSelectShapeTypeFilter>;
+    /// Check if Handle<StdSelect_ShapeTypeFilter> is null
+    pub fn HandleStdSelectShapeTypeFilter_is_null(
+        self_: *const HandleStdSelectShapeTypeFilter,
+    ) -> bool;
     /// Dereference Handle to get *const StdSelect_ShapeTypeFilter
     pub fn HandleStdSelectShapeTypeFilter_get(
         handle: *const HandleStdSelectShapeTypeFilter,
@@ -57929,6 +58279,8 @@ extern "C" {
     pub fn HandleV3dAmbientLight_clone(
         self_: *const HandleV3dAmbientLight,
     ) -> crate::OcctResult<*mut HandleV3dAmbientLight>;
+    /// Check if Handle<V3d_AmbientLight> is null
+    pub fn HandleV3dAmbientLight_is_null(self_: *const HandleV3dAmbientLight) -> bool;
     /// Dereference Handle to get *const V3d_AmbientLight
     pub fn HandleV3dAmbientLight_get(
         handle: *const HandleV3dAmbientLight,
@@ -58162,6 +58514,8 @@ extern "C" {
     pub fn HandleV3dBadValue_clone(
         self_: *const HandleV3dBadValue,
     ) -> crate::OcctResult<*mut HandleV3dBadValue>;
+    /// Check if Handle<V3d_BadValue> is null
+    pub fn HandleV3dBadValue_is_null(self_: *const HandleV3dBadValue) -> bool;
     /// Dereference Handle to get *const V3d_BadValue
     pub fn HandleV3dBadValue_get(
         handle: *const HandleV3dBadValue,
@@ -58301,6 +58655,8 @@ extern "C" {
     pub fn HandleV3dCircularGrid_clone(
         self_: *const HandleV3dCircularGrid,
     ) -> crate::OcctResult<*mut HandleV3dCircularGrid>;
+    /// Check if Handle<V3d_CircularGrid> is null
+    pub fn HandleV3dCircularGrid_is_null(self_: *const HandleV3dCircularGrid) -> bool;
     /// Dereference Handle to get *const V3d_CircularGrid
     pub fn HandleV3dCircularGrid_get(
         handle: *const HandleV3dCircularGrid,
@@ -58523,6 +58879,8 @@ extern "C" {
     pub fn HandleV3dDirectionalLight_clone(
         self_: *const HandleV3dDirectionalLight,
     ) -> crate::OcctResult<*mut HandleV3dDirectionalLight>;
+    /// Check if Handle<V3d_DirectionalLight> is null
+    pub fn HandleV3dDirectionalLight_is_null(self_: *const HandleV3dDirectionalLight) -> bool;
     /// Dereference Handle to get *const V3d_DirectionalLight
     pub fn HandleV3dDirectionalLight_get(
         handle: *const HandleV3dDirectionalLight,
@@ -58771,6 +59129,8 @@ extern "C" {
     pub fn HandleV3dPlane_clone(
         self_: *const HandleV3dPlane,
     ) -> crate::OcctResult<*mut HandleV3dPlane>;
+    /// Check if Handle<V3d_Plane> is null
+    pub fn HandleV3dPlane_is_null(self_: *const HandleV3dPlane) -> bool;
     /// Dereference Handle to get *const V3d_Plane
     pub fn HandleV3dPlane_get(handle: *const HandleV3dPlane)
         -> crate::OcctResult<*const V3d_Plane>;
@@ -58842,6 +59202,8 @@ extern "C" {
     pub fn HandleV3dPositionLight_clone(
         self_: *const HandleV3dPositionLight,
     ) -> crate::OcctResult<*mut HandleV3dPositionLight>;
+    /// Check if Handle<V3d_PositionLight> is null
+    pub fn HandleV3dPositionLight_is_null(self_: *const HandleV3dPositionLight) -> bool;
     /// Dereference Handle to get *const V3d_PositionLight
     pub fn HandleV3dPositionLight_get(
         handle: *const HandleV3dPositionLight,
@@ -59123,6 +59485,8 @@ extern "C" {
     pub fn HandleV3dPositionalLight_clone(
         self_: *const HandleV3dPositionalLight,
     ) -> crate::OcctResult<*mut HandleV3dPositionalLight>;
+    /// Check if Handle<V3d_PositionalLight> is null
+    pub fn HandleV3dPositionalLight_is_null(self_: *const HandleV3dPositionalLight) -> bool;
     /// Dereference Handle to get *const V3d_PositionalLight
     pub fn HandleV3dPositionalLight_get(
         handle: *const HandleV3dPositionalLight,
@@ -59398,6 +59762,8 @@ extern "C" {
     pub fn HandleV3dRectangularGrid_clone(
         self_: *const HandleV3dRectangularGrid,
     ) -> crate::OcctResult<*mut HandleV3dRectangularGrid>;
+    /// Check if Handle<V3d_RectangularGrid> is null
+    pub fn HandleV3dRectangularGrid_is_null(self_: *const HandleV3dRectangularGrid) -> bool;
     /// Dereference Handle to get *const V3d_RectangularGrid
     pub fn HandleV3dRectangularGrid_get(
         handle: *const HandleV3dRectangularGrid,
@@ -59635,6 +60001,8 @@ extern "C" {
     pub fn HandleV3dSpotLight_clone(
         self_: *const HandleV3dSpotLight,
     ) -> crate::OcctResult<*mut HandleV3dSpotLight>;
+    /// Check if Handle<V3d_SpotLight> is null
+    pub fn HandleV3dSpotLight_is_null(self_: *const HandleV3dSpotLight) -> bool;
     /// Dereference Handle to get *const V3d_SpotLight
     pub fn HandleV3dSpotLight_get(
         handle: *const HandleV3dSpotLight,
@@ -59975,6 +60343,8 @@ extern "C" {
     pub fn HandleV3dTrihedron_clone(
         self_: *const HandleV3dTrihedron,
     ) -> crate::OcctResult<*mut HandleV3dTrihedron>;
+    /// Check if Handle<V3d_Trihedron> is null
+    pub fn HandleV3dTrihedron_is_null(self_: *const HandleV3dTrihedron) -> bool;
     /// Dereference Handle to get *const V3d_Trihedron
     pub fn HandleV3dTrihedron_get(
         handle: *const HandleV3dTrihedron,
@@ -60086,6 +60456,8 @@ extern "C" {
     pub fn HandleV3dUnMapped_clone(
         self_: *const HandleV3dUnMapped,
     ) -> crate::OcctResult<*mut HandleV3dUnMapped>;
+    /// Check if Handle<V3d_UnMapped> is null
+    pub fn HandleV3dUnMapped_is_null(self_: *const HandleV3dUnMapped) -> bool;
     /// Dereference Handle to get *const V3d_UnMapped
     pub fn HandleV3dUnMapped_get(
         handle: *const HandleV3dUnMapped,
@@ -61046,6 +61418,8 @@ extern "C" {
     pub fn HandleV3dView_clone(
         self_: *const HandleV3dView,
     ) -> crate::OcctResult<*mut HandleV3dView>;
+    /// Check if Handle<V3d_View> is null
+    pub fn HandleV3dView_is_null(self_: *const HandleV3dView) -> bool;
     /// Dereference Handle to get *const V3d_View
     pub fn HandleV3dView_get(handle: *const HandleV3dView) -> crate::OcctResult<*const V3d_View>;
     /// Dereference Handle to get *mut V3d_View
@@ -61463,6 +61837,8 @@ extern "C" {
     pub fn HandleV3dViewer_clone(
         self_: *const HandleV3dViewer,
     ) -> crate::OcctResult<*mut HandleV3dViewer>;
+    /// Check if Handle<V3d_Viewer> is null
+    pub fn HandleV3dViewer_is_null(self_: *const HandleV3dViewer) -> bool;
     /// Dereference Handle to get *const V3d_Viewer
     pub fn HandleV3dViewer_get(
         handle: *const HandleV3dViewer,

@@ -161,112 +161,133 @@ typedef opencascade::handle<XmlTObjDrivers_DocumentStorageDriver> HandleXmlTObjD
 typedef opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver> HandleXmlXCAFDriversDocumentRetrievalDriver;
 typedef opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver> HandleXmlXCAFDriversDocumentStorageDriver;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleCDFApplication_destructor(HandleCDFApplication* self_) { delete self_; }
 extern "C" OcctResult<HandleCDFApplication*> HandleCDFApplication_clone(const HandleCDFApplication* self_) {
     try { return {new HandleCDFApplication(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleCDFApplication_is_null(const HandleCDFApplication* self_) { return self_->IsNull(); }
 extern "C" void HandleCDFDirectory_destructor(HandleCDFDirectory* self_) { delete self_; }
 extern "C" OcctResult<HandleCDFDirectory*> HandleCDFDirectory_clone(const HandleCDFDirectory* self_) {
     try { return {new HandleCDFDirectory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleCDFDirectory_is_null(const HandleCDFDirectory* self_) { return self_->IsNull(); }
 extern "C" void HandleCDFFWOSDriver_destructor(HandleCDFFWOSDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleCDFFWOSDriver*> HandleCDFFWOSDriver_clone(const HandleCDFFWOSDriver* self_) {
     try { return {new HandleCDFFWOSDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleCDFFWOSDriver_is_null(const HandleCDFFWOSDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleCDFMetaDataDriver_destructor(HandleCDFMetaDataDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleCDFMetaDataDriver*> HandleCDFMetaDataDriver_clone(const HandleCDFMetaDataDriver* self_) {
     try { return {new HandleCDFMetaDataDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleCDFMetaDataDriver_is_null(const HandleCDFMetaDataDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleCDFMetaDataDriverFactory_destructor(HandleCDFMetaDataDriverFactory* self_) { delete self_; }
 extern "C" OcctResult<HandleCDFMetaDataDriverFactory*> HandleCDFMetaDataDriverFactory_clone(const HandleCDFMetaDataDriverFactory* self_) {
     try { return {new HandleCDFMetaDataDriverFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleCDFMetaDataDriverFactory_is_null(const HandleCDFMetaDataDriverFactory* self_) { return self_->IsNull(); }
 extern "C" void HandleCDFStoreList_destructor(HandleCDFStoreList* self_) { delete self_; }
 extern "C" OcctResult<HandleCDFStoreList*> HandleCDFStoreList_clone(const HandleCDFStoreList* self_) {
     try { return {new HandleCDFStoreList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleCDFStoreList_is_null(const HandleCDFStoreList* self_) { return self_->IsNull(); }
 extern "C" void HandleCDMApplication_destructor(HandleCDMApplication* self_) { delete self_; }
 extern "C" OcctResult<HandleCDMApplication*> HandleCDMApplication_clone(const HandleCDMApplication* self_) {
     try { return {new HandleCDMApplication(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleCDMApplication_is_null(const HandleCDMApplication* self_) { return self_->IsNull(); }
 extern "C" void HandleCDMDocument_destructor(HandleCDMDocument* self_) { delete self_; }
 extern "C" OcctResult<HandleCDMDocument*> HandleCDMDocument_clone(const HandleCDMDocument* self_) {
     try { return {new HandleCDMDocument(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleCDMDocument_is_null(const HandleCDMDocument* self_) { return self_->IsNull(); }
 extern "C" void HandleCDMMetaData_destructor(HandleCDMMetaData* self_) { delete self_; }
 extern "C" OcctResult<HandleCDMMetaData*> HandleCDMMetaData_clone(const HandleCDMMetaData* self_) {
     try { return {new HandleCDMMetaData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleCDMMetaData_is_null(const HandleCDMMetaData* self_) { return self_->IsNull(); }
 extern "C" void HandleCDMReference_destructor(HandleCDMReference* self_) { delete self_; }
 extern "C" OcctResult<HandleCDMReference*> HandleCDMReference_clone(const HandleCDMReference* self_) {
     try { return {new HandleCDMReference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleCDMReference_is_null(const HandleCDMReference* self_) { return self_->IsNull(); }
 extern "C" void HandleLDOMMemManager_destructor(HandleLDOMMemManager* self_) { delete self_; }
 extern "C" OcctResult<HandleLDOMMemManager*> HandleLDOMMemManager_clone(const HandleLDOMMemManager* self_) {
     try { return {new HandleLDOMMemManager(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleLDOMMemManager_is_null(const HandleLDOMMemManager* self_) { return self_->IsNull(); }
 extern "C" void HandlePCDMDocument_destructor(HandlePCDMDocument* self_) { delete self_; }
 extern "C" OcctResult<HandlePCDMDocument*> HandlePCDMDocument_clone(const HandlePCDMDocument* self_) {
     try { return {new HandlePCDMDocument(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePCDMDocument_is_null(const HandlePCDMDocument* self_) { return self_->IsNull(); }
 extern "C" void HandlePCDMDriverError_destructor(HandlePCDMDriverError* self_) { delete self_; }
 extern "C" OcctResult<HandlePCDMDriverError*> HandlePCDMDriverError_clone(const HandlePCDMDriverError* self_) {
     try { return {new HandlePCDMDriverError(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePCDMDriverError_is_null(const HandlePCDMDriverError* self_) { return self_->IsNull(); }
 extern "C" void HandlePCDMReadWriter_destructor(HandlePCDMReadWriter* self_) { delete self_; }
 extern "C" OcctResult<HandlePCDMReadWriter*> HandlePCDMReadWriter_clone(const HandlePCDMReadWriter* self_) {
     try { return {new HandlePCDMReadWriter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePCDMReadWriter_is_null(const HandlePCDMReadWriter* self_) { return self_->IsNull(); }
 extern "C" void HandlePCDMReadWriter1_destructor(HandlePCDMReadWriter1* self_) { delete self_; }
 extern "C" OcctResult<HandlePCDMReadWriter1*> HandlePCDMReadWriter1_clone(const HandlePCDMReadWriter1* self_) {
     try { return {new HandlePCDMReadWriter1(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePCDMReadWriter1_is_null(const HandlePCDMReadWriter1* self_) { return self_->IsNull(); }
 extern "C" void HandlePCDMReader_destructor(HandlePCDMReader* self_) { delete self_; }
 extern "C" OcctResult<HandlePCDMReader*> HandlePCDMReader_clone(const HandlePCDMReader* self_) {
     try { return {new HandlePCDMReader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePCDMReader_is_null(const HandlePCDMReader* self_) { return self_->IsNull(); }
 extern "C" void HandlePCDMReaderFilter_destructor(HandlePCDMReaderFilter* self_) { delete self_; }
 extern "C" OcctResult<HandlePCDMReaderFilter*> HandlePCDMReaderFilter_clone(const HandlePCDMReaderFilter* self_) {
     try { return {new HandlePCDMReaderFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePCDMReaderFilter_is_null(const HandlePCDMReaderFilter* self_) { return self_->IsNull(); }
 extern "C" void HandlePCDMReferenceIterator_destructor(HandlePCDMReferenceIterator* self_) { delete self_; }
 extern "C" OcctResult<HandlePCDMReferenceIterator*> HandlePCDMReferenceIterator_clone(const HandlePCDMReferenceIterator* self_) {
     try { return {new HandlePCDMReferenceIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePCDMReferenceIterator_is_null(const HandlePCDMReferenceIterator* self_) { return self_->IsNull(); }
 extern "C" void HandlePCDMRetrievalDriver_destructor(HandlePCDMRetrievalDriver* self_) { delete self_; }
 extern "C" OcctResult<HandlePCDMRetrievalDriver*> HandlePCDMRetrievalDriver_clone(const HandlePCDMRetrievalDriver* self_) {
     try { return {new HandlePCDMRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePCDMRetrievalDriver_is_null(const HandlePCDMRetrievalDriver* self_) { return self_->IsNull(); }
 extern "C" void HandlePCDMStorageDriver_destructor(HandlePCDMStorageDriver* self_) { delete self_; }
 extern "C" OcctResult<HandlePCDMStorageDriver*> HandlePCDMStorageDriver_clone(const HandlePCDMStorageDriver* self_) {
     try { return {new HandlePCDMStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePCDMStorageDriver_is_null(const HandlePCDMStorageDriver* self_) { return self_->IsNull(); }
 extern "C" void HandlePCDMWriter_destructor(HandlePCDMWriter* self_) { delete self_; }
 extern "C" OcctResult<HandlePCDMWriter*> HandlePCDMWriter_clone(const HandlePCDMWriter* self_) {
     try { return {new HandlePCDMWriter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandlePCDMWriter_is_null(const HandlePCDMWriter* self_) { return self_->IsNull(); }
 
 // ========================
 // CDF_Application wrappers

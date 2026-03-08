@@ -710,6 +710,11 @@ unsafe impl crate::CppCopyable for HandlePLibBase {
 }
 
 impl HandlePLibBase {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandlePLibBase_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PLib_Base
     pub fn get(&self) -> &crate::ffi_types::PLib_Base {
         unsafe {
@@ -1387,6 +1392,11 @@ unsafe impl crate::CppCopyable for HandlePLibHermitJacobi {
 }
 
 impl HandlePLibHermitJacobi {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandlePLibHermitJacobi_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PLib_HermitJacobi
     pub fn get(&self) -> &crate::ffi_types::PLib_HermitJacobi {
         unsafe {
@@ -1875,6 +1885,11 @@ unsafe impl crate::CppCopyable for HandlePLibJacobiPolynomial {
 }
 
 impl HandlePLibJacobiPolynomial {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandlePLibJacobiPolynomial_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PLib_JacobiPolynomial
     pub fn get(&self) -> &crate::ffi_types::PLib_JacobiPolynomial {
         unsafe {

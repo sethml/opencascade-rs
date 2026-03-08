@@ -662,6 +662,11 @@ unsafe impl crate::CppCopyable for HandleRWMeshCafReader {
 }
 
 impl HandleRWMeshCafReader {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying RWMesh_CafReader
     pub fn get(&self) -> &crate::ffi_types::RWMesh_CafReader {
         unsafe {
@@ -1876,6 +1881,11 @@ unsafe impl crate::CppCopyable for HandleRWMeshMaterialMap {
 }
 
 impl HandleRWMeshMaterialMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying RWMesh_MaterialMap
     pub fn get(&self) -> &crate::ffi_types::RWMesh_MaterialMap {
         unsafe {
@@ -2428,6 +2438,13 @@ unsafe impl crate::CppCopyable for HandleRWMeshTriangulationReader {
 }
 
 impl HandleRWMeshTriangulationReader {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying RWMesh_TriangulationReader
     pub fn get(&self) -> &crate::ffi_types::RWMesh_TriangulationReader {
         unsafe {
@@ -3311,6 +3328,13 @@ unsafe impl crate::CppCopyable for HandleRWMeshTriangulationSource {
 }
 
 impl HandleRWMeshTriangulationSource {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying RWMesh_TriangulationSource
     pub fn get(&self) -> &crate::ffi_types::RWMesh_TriangulationSource {
         unsafe {

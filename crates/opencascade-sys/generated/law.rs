@@ -388,6 +388,11 @@ unsafe impl crate::CppCopyable for HandleLawBSpFunc {
 }
 
 impl HandleLawBSpFunc {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Law_BSpFunc
     pub fn get(&self) -> &crate::ffi_types::Law_BSpFunc {
         unsafe {
@@ -1582,6 +1587,11 @@ unsafe impl crate::CppCopyable for HandleLawBSpline {
 }
 
 impl HandleLawBSpline {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Law_BSpline
     pub fn get(&self) -> &crate::ffi_types::Law_BSpline {
         unsafe {
@@ -2034,6 +2044,11 @@ unsafe impl crate::CppCopyable for HandleLawComposite {
 }
 
 impl HandleLawComposite {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawComposite_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Law_Composite
     pub fn get(&self) -> &crate::ffi_types::Law_Composite {
         unsafe {
@@ -2347,6 +2362,11 @@ unsafe impl crate::CppCopyable for HandleLawConstant {
 }
 
 impl HandleLawConstant {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawConstant_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Law_Constant
     pub fn get(&self) -> &crate::ffi_types::Law_Constant {
         unsafe {
@@ -2624,6 +2644,11 @@ unsafe impl crate::CppCopyable for HandleLawFunction {
 }
 
 impl HandleLawFunction {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawFunction_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Law_Function
     pub fn get(&self) -> &crate::ffi_types::Law_Function {
         unsafe {
@@ -3167,6 +3192,11 @@ unsafe impl crate::CppCopyable for HandleLawInterpol {
 }
 
 impl HandleLawInterpol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Law_Interpol
     pub fn get(&self) -> &crate::ffi_types::Law_Interpol {
         unsafe {
@@ -3619,6 +3649,11 @@ unsafe impl crate::CppCopyable for HandleLawLinear {
 }
 
 impl HandleLawLinear {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawLinear_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Law_Linear
     pub fn get(&self) -> &crate::ffi_types::Law_Linear {
         unsafe {
@@ -3990,6 +4025,11 @@ unsafe impl crate::CppCopyable for HandleLawS {
 }
 
 impl HandleLawS {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawS_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Law_S
     pub fn get(&self) -> &crate::ffi_types::Law_S {
         unsafe {

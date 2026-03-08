@@ -290,6 +290,15 @@ unsafe impl crate::CppCopyable for HandleHeaderSectionFileDescription {
 }
 
 impl HandleHeaderSectionFileDescription {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileDescription_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying HeaderSection_FileDescription
     pub fn get(&self) -> &crate::ffi_types::HeaderSection_FileDescription {
         unsafe {
@@ -725,6 +734,13 @@ unsafe impl crate::CppCopyable for HandleHeaderSectionFileName {
 }
 
 impl HandleHeaderSectionFileName {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileName_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying HeaderSection_FileName
     pub fn get(&self) -> &crate::ffi_types::HeaderSection_FileName {
         unsafe {
@@ -996,6 +1012,13 @@ unsafe impl crate::CppCopyable for HandleHeaderSectionFileSchema {
 }
 
 impl HandleHeaderSectionFileSchema {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileSchema_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying HeaderSection_FileSchema
     pub fn get(&self) -> &crate::ffi_types::HeaderSection_FileSchema {
         unsafe {
@@ -1480,6 +1503,13 @@ unsafe impl crate::CppCopyable for HandleHeaderSectionProtocol {
 }
 
 impl HandleHeaderSectionProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleHeaderSectionProtocol_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying HeaderSection_Protocol
     pub fn get(&self) -> &crate::ffi_types::HeaderSection_Protocol {
         unsafe {

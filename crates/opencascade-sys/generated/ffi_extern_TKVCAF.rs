@@ -261,6 +261,9 @@ extern "C" {
     pub fn HandleTPrsStdAISPresentation_clone(
         self_: *const HandleTPrsStdAISPresentation,
     ) -> crate::OcctResult<*mut HandleTPrsStdAISPresentation>;
+    /// Check if Handle<TPrsStd_AISPresentation> is null
+    pub fn HandleTPrsStdAISPresentation_is_null(self_: *const HandleTPrsStdAISPresentation)
+        -> bool;
     /// Dereference Handle to get *const TPrsStd_AISPresentation
     pub fn HandleTPrsStdAISPresentation_get(
         handle: *const HandleTPrsStdAISPresentation,
@@ -516,6 +519,8 @@ extern "C" {
     pub fn HandleTPrsStdAISViewer_clone(
         self_: *const HandleTPrsStdAISViewer,
     ) -> crate::OcctResult<*mut HandleTPrsStdAISViewer>;
+    /// Check if Handle<TPrsStd_AISViewer> is null
+    pub fn HandleTPrsStdAISViewer_is_null(self_: *const HandleTPrsStdAISViewer) -> bool;
     /// Dereference Handle to get *const TPrsStd_AISViewer
     pub fn HandleTPrsStdAISViewer_get(
         handle: *const HandleTPrsStdAISViewer,
@@ -748,6 +753,8 @@ extern "C" {
     pub fn HandleTPrsStdAxisDriver_clone(
         self_: *const HandleTPrsStdAxisDriver,
     ) -> crate::OcctResult<*mut HandleTPrsStdAxisDriver>;
+    /// Check if Handle<TPrsStd_AxisDriver> is null
+    pub fn HandleTPrsStdAxisDriver_is_null(self_: *const HandleTPrsStdAxisDriver) -> bool;
     /// Dereference Handle to get *const TPrsStd_AxisDriver
     pub fn HandleTPrsStdAxisDriver_get(
         handle: *const HandleTPrsStdAxisDriver,
@@ -839,6 +846,10 @@ extern "C" {
     pub fn HandleTPrsStdConstraintDriver_clone(
         self_: *const HandleTPrsStdConstraintDriver,
     ) -> crate::OcctResult<*mut HandleTPrsStdConstraintDriver>;
+    /// Check if Handle<TPrsStd_ConstraintDriver> is null
+    pub fn HandleTPrsStdConstraintDriver_is_null(
+        self_: *const HandleTPrsStdConstraintDriver,
+    ) -> bool;
     /// Dereference Handle to get *const TPrsStd_ConstraintDriver
     pub fn HandleTPrsStdConstraintDriver_get(
         handle: *const HandleTPrsStdConstraintDriver,
@@ -1036,6 +1047,8 @@ extern "C" {
     pub fn HandleTPrsStdDriver_clone(
         self_: *const HandleTPrsStdDriver,
     ) -> crate::OcctResult<*mut HandleTPrsStdDriver>;
+    /// Check if Handle<TPrsStd_Driver> is null
+    pub fn HandleTPrsStdDriver_is_null(self_: *const HandleTPrsStdDriver) -> bool;
     /// Dereference Handle to get *const TPrsStd_Driver
     pub fn HandleTPrsStdDriver_get(
         handle: *const HandleTPrsStdDriver,
@@ -1160,6 +1173,8 @@ extern "C" {
     pub fn HandleTPrsStdDriverTable_clone(
         self_: *const HandleTPrsStdDriverTable,
     ) -> crate::OcctResult<*mut HandleTPrsStdDriverTable>;
+    /// Check if Handle<TPrsStd_DriverTable> is null
+    pub fn HandleTPrsStdDriverTable_is_null(self_: *const HandleTPrsStdDriverTable) -> bool;
     /// Dereference Handle to get *const TPrsStd_DriverTable
     pub fn HandleTPrsStdDriverTable_get(
         handle: *const HandleTPrsStdDriverTable,
@@ -1247,6 +1262,8 @@ extern "C" {
     pub fn HandleTPrsStdGeometryDriver_clone(
         self_: *const HandleTPrsStdGeometryDriver,
     ) -> crate::OcctResult<*mut HandleTPrsStdGeometryDriver>;
+    /// Check if Handle<TPrsStd_GeometryDriver> is null
+    pub fn HandleTPrsStdGeometryDriver_is_null(self_: *const HandleTPrsStdGeometryDriver) -> bool;
     /// Dereference Handle to get *const TPrsStd_GeometryDriver
     pub fn HandleTPrsStdGeometryDriver_get(
         handle: *const HandleTPrsStdGeometryDriver,
@@ -1338,6 +1355,10 @@ extern "C" {
     pub fn HandleTPrsStdNamedShapeDriver_clone(
         self_: *const HandleTPrsStdNamedShapeDriver,
     ) -> crate::OcctResult<*mut HandleTPrsStdNamedShapeDriver>;
+    /// Check if Handle<TPrsStd_NamedShapeDriver> is null
+    pub fn HandleTPrsStdNamedShapeDriver_is_null(
+        self_: *const HandleTPrsStdNamedShapeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const TPrsStd_NamedShapeDriver
     pub fn HandleTPrsStdNamedShapeDriver_get(
         handle: *const HandleTPrsStdNamedShapeDriver,
@@ -1428,6 +1449,8 @@ extern "C" {
     pub fn HandleTPrsStdPlaneDriver_clone(
         self_: *const HandleTPrsStdPlaneDriver,
     ) -> crate::OcctResult<*mut HandleTPrsStdPlaneDriver>;
+    /// Check if Handle<TPrsStd_PlaneDriver> is null
+    pub fn HandleTPrsStdPlaneDriver_is_null(self_: *const HandleTPrsStdPlaneDriver) -> bool;
     /// Dereference Handle to get *const TPrsStd_PlaneDriver
     pub fn HandleTPrsStdPlaneDriver_get(
         handle: *const HandleTPrsStdPlaneDriver,
@@ -1518,6 +1541,8 @@ extern "C" {
     pub fn HandleTPrsStdPointDriver_clone(
         self_: *const HandleTPrsStdPointDriver,
     ) -> crate::OcctResult<*mut HandleTPrsStdPointDriver>;
+    /// Check if Handle<TPrsStd_PointDriver> is null
+    pub fn HandleTPrsStdPointDriver_is_null(self_: *const HandleTPrsStdPointDriver) -> bool;
     /// Dereference Handle to get *const TPrsStd_PointDriver
     pub fn HandleTPrsStdPointDriver_get(
         handle: *const HandleTPrsStdPointDriver,

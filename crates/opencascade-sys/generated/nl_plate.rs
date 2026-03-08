@@ -364,6 +364,13 @@ unsafe impl crate::CppCopyable for HandleNLPlateHGPPConstraint {
 }
 
 impl HandleNLPlateHGPPConstraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NLPlate_HGPPConstraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HGPPConstraint {
         unsafe {
@@ -925,6 +932,13 @@ unsafe impl crate::CppCopyable for HandleNLPlateHPG0Constraint {
 }
 
 impl HandleNLPlateHPG0Constraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NLPlate_HPG0Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG0Constraint {
         unsafe {
@@ -1450,6 +1464,13 @@ unsafe impl crate::CppCopyable for HandleNLPlateHPG0G1Constraint {
 }
 
 impl HandleNLPlateHPG0G1Constraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NLPlate_HPG0G1Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG0G1Constraint {
         unsafe {
@@ -1989,6 +2010,13 @@ unsafe impl crate::CppCopyable for HandleNLPlateHPG0G2Constraint {
 }
 
 impl HandleNLPlateHPG0G2Constraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NLPlate_HPG0G2Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG0G2Constraint {
         unsafe {
@@ -2540,6 +2568,13 @@ unsafe impl crate::CppCopyable for HandleNLPlateHPG0G3Constraint {
 }
 
 impl HandleNLPlateHPG0G3Constraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NLPlate_HPG0G3Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG0G3Constraint {
         unsafe {
@@ -3023,6 +3058,13 @@ unsafe impl crate::CppCopyable for HandleNLPlateHPG1Constraint {
 }
 
 impl HandleNLPlateHPG1Constraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NLPlate_HPG1Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG1Constraint {
         unsafe {
@@ -3539,6 +3581,13 @@ unsafe impl crate::CppCopyable for HandleNLPlateHPG2Constraint {
 }
 
 impl HandleNLPlateHPG2Constraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NLPlate_HPG2Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG2Constraint {
         unsafe {
@@ -4073,6 +4122,13 @@ unsafe impl crate::CppCopyable for HandleNLPlateHPG3Constraint {
 }
 
 impl HandleNLPlateHPG3Constraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying NLPlate_HPG3Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG3Constraint {
         unsafe {

@@ -164,6 +164,29 @@ gp_Pnt2d p = anEllipseHandle->Value(0);
 let p = handle_ellipse.get().value(0.0);
 ```
 
+### Null Handle Checking
+
+Some OCCT methods return null Handles (e.g., `BRep_Tool::Triangulation` when a
+face has no triangulation). Use `.is_null()` to check before dereferencing:
+
+```cpp
+// C++: Handle has IsNull()
+Handle(Poly_Triangulation) tri = BRep_Tool::Triangulation(face, loc);
+if (tri.IsNull()) { continue; }
+```
+
+```rust
+// Rust: .is_null() method on Handle types
+let tri_handle = b_rep::Tool::triangulation(face, &mut location, 0);
+if tri_handle.is_null() {
+    continue;
+}
+let tri = tri_handle.get();
+```
+
+Calling `.get()` on a null Handle will panic.
+
+
 ### Handle Downcasting
 
 Handle downcasting (e.g., `Handle(Geom_Surface)` → `Handle(Geom_Plane)`) is

@@ -765,6 +765,11 @@ unsafe impl crate::CppCopyable for HandleStdSelectBRepOwner {
 }
 
 impl HandleStdSelectBRepOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleStdSelectBRepOwner_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdSelect_BRepOwner
     pub fn get(&self) -> &crate::ffi_types::StdSelect_BRepOwner {
         unsafe {
@@ -1298,6 +1303,11 @@ unsafe impl crate::CppCopyable for HandleStdSelectEdgeFilter {
 }
 
 impl HandleStdSelectEdgeFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleStdSelectEdgeFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdSelect_EdgeFilter
     pub fn get(&self) -> &crate::ffi_types::StdSelect_EdgeFilter {
         unsafe {
@@ -1576,6 +1586,11 @@ unsafe impl crate::CppCopyable for HandleStdSelectFaceFilter {
 }
 
 impl HandleStdSelectFaceFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdSelect_FaceFilter
     pub fn get(&self) -> &crate::ffi_types::StdSelect_FaceFilter {
         unsafe {
@@ -2595,6 +2610,11 @@ unsafe impl crate::CppCopyable for HandleStdSelectShape {
 }
 
 impl HandleStdSelectShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleStdSelectShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StdSelect_Shape
     pub fn get(&self) -> &crate::ffi_types::StdSelect_Shape {
         unsafe {
@@ -2863,6 +2883,13 @@ unsafe impl crate::CppCopyable for HandleStdSelectShapeTypeFilter {
 }
 
 impl HandleStdSelectShapeTypeFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StdSelect_ShapeTypeFilter
     pub fn get(&self) -> &crate::ffi_types::StdSelect_ShapeTypeFilter {
         unsafe {

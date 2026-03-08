@@ -976,6 +976,13 @@ unsafe impl crate::CppCopyable for HandleBRepToolsCopyModification {
 }
 
 impl HandleBRepToolsCopyModification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsCopyModification_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepTools_CopyModification
     pub fn get(&self) -> &crate::ffi_types::BRepTools_CopyModification {
         unsafe {
@@ -1461,6 +1468,13 @@ unsafe impl crate::CppCopyable for HandleBRepToolsGTrsfModification {
 }
 
 impl HandleBRepToolsGTrsfModification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsGTrsfModification_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepTools_GTrsfModification
     pub fn get(&self) -> &crate::ffi_types::BRepTools_GTrsfModification {
         unsafe {
@@ -1931,6 +1945,11 @@ unsafe impl crate::CppCopyable for HandleBRepToolsHistory {
 }
 
 impl HandleBRepToolsHistory {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepToolsHistory_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepTools_History
     pub fn get(&self) -> &crate::ffi_types::BRepTools_History {
         unsafe {
@@ -2333,6 +2352,13 @@ unsafe impl crate::CppCopyable for HandleBRepToolsModification {
 }
 
 impl HandleBRepToolsModification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsModification_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepTools_Modification
     pub fn get(&self) -> &crate::ffi_types::BRepTools_Modification {
         unsafe {
@@ -3126,6 +3152,15 @@ unsafe impl crate::CppCopyable for HandleBRepToolsNurbsConvertModification {
 }
 
 impl HandleBRepToolsNurbsConvertModification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsNurbsConvertModification_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepTools_NurbsConvertModification
     pub fn get(&self) -> &crate::ffi_types::BRepTools_NurbsConvertModification {
         unsafe {
@@ -3708,6 +3743,11 @@ unsafe impl crate::CppCopyable for HandleBRepToolsReShape {
 }
 
 impl HandleBRepToolsReShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBRep::HandleBRepToolsReShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepTools_ReShape
     pub fn get(&self) -> &crate::ffi_types::BRepTools_ReShape {
         unsafe {
@@ -4838,6 +4878,13 @@ unsafe impl crate::CppCopyable for HandleBRepToolsTrsfModification {
 }
 
 impl HandleBRepToolsTrsfModification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsTrsfModification_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepTools_TrsfModification
     pub fn get(&self) -> &crate::ffi_types::BRepTools_TrsfModification {
         unsafe {

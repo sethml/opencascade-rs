@@ -361,6 +361,13 @@ unsafe impl crate::CppCopyable for HandleXmlMNamingNamedShapeDriver {
 }
 
 impl HandleXmlMNamingNamedShapeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMNaming_NamedShapeDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMNaming_NamedShapeDriver {
         unsafe {
@@ -683,6 +690,13 @@ unsafe impl crate::CppCopyable for HandleXmlMNamingNamingDriver {
 }
 
 impl HandleXmlMNamingNamingDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMNaming_NamingDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMNaming_NamingDriver {
         unsafe {

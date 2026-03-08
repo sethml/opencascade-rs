@@ -463,6 +463,11 @@ unsafe impl crate::CppCopyable for HandleGeomAxis1Placement {
 }
 
 impl HandleGeomAxis1Placement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomAxis1Placement_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Axis1Placement
     pub fn get(&self) -> &crate::ffi_types::Geom_Axis1Placement {
         unsafe {
@@ -1038,6 +1043,11 @@ unsafe impl crate::CppCopyable for HandleGeomAxis2Placement {
 }
 
 impl HandleGeomAxis2Placement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomAxis2Placement_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Axis2Placement
     pub fn get(&self) -> &crate::ffi_types::Geom_Axis2Placement {
         unsafe {
@@ -1489,6 +1499,11 @@ unsafe impl crate::CppCopyable for HandleGeomAxisPlacement {
 }
 
 impl HandleGeomAxisPlacement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomAxisPlacement_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_AxisPlacement
     pub fn get(&self) -> &crate::ffi_types::Geom_AxisPlacement {
         unsafe {
@@ -3369,6 +3384,11 @@ unsafe impl crate::CppCopyable for HandleGeomBSplineCurve {
 }
 
 impl HandleGeomBSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomBSplineCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_BSplineCurve
     pub fn get(&self) -> &crate::ffi_types::Geom_BSplineCurve {
         unsafe {
@@ -6193,6 +6213,11 @@ unsafe impl crate::CppCopyable for HandleGeomBSplineSurface {
 }
 
 impl HandleGeomBSplineSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomBSplineSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_BSplineSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_BSplineSurface {
         unsafe {
@@ -7158,6 +7183,11 @@ unsafe impl crate::CppCopyable for HandleGeomBezierCurve {
 }
 
 impl HandleGeomBezierCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomBezierCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_BezierCurve
     pub fn get(&self) -> &crate::ffi_types::Geom_BezierCurve {
         unsafe {
@@ -8640,6 +8670,11 @@ unsafe impl crate::CppCopyable for HandleGeomBezierSurface {
 }
 
 impl HandleGeomBezierSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomBezierSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_BezierSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_BezierSurface {
         unsafe {
@@ -9213,6 +9248,11 @@ unsafe impl crate::CppCopyable for HandleGeomBoundedCurve {
 }
 
 impl HandleGeomBoundedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomBoundedCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_BoundedCurve
     pub fn get(&self) -> &crate::ffi_types::Geom_BoundedCurve {
         unsafe {
@@ -9954,6 +9994,11 @@ unsafe impl crate::CppCopyable for HandleGeomBoundedSurface {
 }
 
 impl HandleGeomBoundedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomBoundedSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_BoundedSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_BoundedSurface {
         unsafe {
@@ -10511,6 +10556,11 @@ unsafe impl crate::CppCopyable for HandleGeomCartesianPoint {
 }
 
 impl HandleGeomCartesianPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomCartesianPoint_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_CartesianPoint
     pub fn get(&self) -> &crate::ffi_types::Geom_CartesianPoint {
         unsafe {
@@ -11218,6 +11268,11 @@ unsafe impl crate::CppCopyable for HandleGeomCircle {
 }
 
 impl HandleGeomCircle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomCircle_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Circle
     pub fn get(&self) -> &crate::ffi_types::Geom_Circle {
         unsafe {
@@ -11837,6 +11892,11 @@ unsafe impl crate::CppCopyable for HandleGeomConic {
 }
 
 impl HandleGeomConic {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomConic_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Conic
     pub fn get(&self) -> &crate::ffi_types::Geom_Conic {
         unsafe {
@@ -12905,6 +12965,11 @@ unsafe impl crate::CppCopyable for HandleGeomConicalSurface {
 }
 
 impl HandleGeomConicalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomConicalSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_ConicalSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_ConicalSurface {
         unsafe {
@@ -13516,6 +13581,11 @@ unsafe impl crate::CppCopyable for HandleGeomCurve {
 }
 
 impl HandleGeomCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Curve
     pub fn get(&self) -> &crate::ffi_types::Geom_Curve {
         unsafe {
@@ -14627,6 +14697,13 @@ unsafe impl crate::CppCopyable for HandleGeomCylindricalSurface {
 }
 
 impl HandleGeomCylindricalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomCylindricalSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Geom_CylindricalSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_CylindricalSurface {
         unsafe {
@@ -15243,6 +15320,11 @@ unsafe impl crate::CppCopyable for HandleGeomDirection {
 }
 
 impl HandleGeomDirection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomDirection_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Direction
     pub fn get(&self) -> &crate::ffi_types::Geom_Direction {
         unsafe {
@@ -16043,6 +16125,11 @@ unsafe impl crate::CppCopyable for HandleGeomElementarySurface {
 }
 
 impl HandleGeomElementarySurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomElementarySurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_ElementarySurface
     pub fn get(&self) -> &crate::ffi_types::Geom_ElementarySurface {
         unsafe {
@@ -16937,6 +17024,11 @@ unsafe impl crate::CppCopyable for HandleGeomEllipse {
 }
 
 impl HandleGeomEllipse {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomEllipse_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Ellipse
     pub fn get(&self) -> &crate::ffi_types::Geom_Ellipse {
         unsafe {
@@ -17333,6 +17425,11 @@ unsafe impl crate::CppCopyable for HandleGeomGeometry {
 }
 
 impl HandleGeomGeometry {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomGeometry_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Geometry
     pub fn get(&self) -> &crate::ffi_types::Geom_Geometry {
         unsafe {
@@ -18109,6 +18206,15 @@ unsafe impl crate::CppCopyable for HandleGeomHSequenceOfBSplineSurface {
 }
 
 impl HandleGeomHSequenceOfBSplineSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomHSequenceOfBSplineSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Geom_HSequenceOfBSplineSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_HSequenceOfBSplineSurface {
         unsafe {
@@ -18998,6 +19104,11 @@ unsafe impl crate::CppCopyable for HandleGeomHyperbola {
 }
 
 impl HandleGeomHyperbola {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomHyperbola_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Hyperbola
     pub fn get(&self) -> &crate::ffi_types::Geom_Hyperbola {
         unsafe {
@@ -19637,6 +19748,11 @@ unsafe impl crate::CppCopyable for HandleGeomLine {
 }
 
 impl HandleGeomLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Line
     pub fn get(&self) -> &crate::ffi_types::Geom_Line {
         unsafe {
@@ -20429,6 +20545,11 @@ unsafe impl crate::CppCopyable for HandleGeomOffsetCurve {
 }
 
 impl HandleGeomOffsetCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomOffsetCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_OffsetCurve
     pub fn get(&self) -> &crate::ffi_types::Geom_OffsetCurve {
         unsafe {
@@ -21448,6 +21569,11 @@ unsafe impl crate::CppCopyable for HandleGeomOffsetSurface {
 }
 
 impl HandleGeomOffsetSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomOffsetSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_OffsetSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_OffsetSurface {
         unsafe {
@@ -21754,6 +21880,11 @@ unsafe impl crate::CppCopyable for HandleGeomOsculatingSurface {
 }
 
 impl HandleGeomOsculatingSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomOsculatingSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_OsculatingSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_OsculatingSurface {
         unsafe {
@@ -22522,6 +22653,11 @@ unsafe impl crate::CppCopyable for HandleGeomParabola {
 }
 
 impl HandleGeomParabola {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomParabola_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Parabola
     pub fn get(&self) -> &crate::ffi_types::Geom_Parabola {
         unsafe {
@@ -23371,6 +23507,11 @@ unsafe impl crate::CppCopyable for HandleGeomPlane {
 }
 
 impl HandleGeomPlane {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomPlane_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Plane
     pub fn get(&self) -> &crate::ffi_types::Geom_Plane {
         unsafe {
@@ -23743,6 +23884,11 @@ unsafe impl crate::CppCopyable for HandleGeomPoint {
 }
 
 impl HandleGeomPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomPoint_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Point
     pub fn get(&self) -> &crate::ffi_types::Geom_Point {
         unsafe {
@@ -24824,6 +24970,15 @@ unsafe impl crate::CppCopyable for HandleGeomRectangularTrimmedSurface {
 }
 
 impl HandleGeomRectangularTrimmedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomRectangularTrimmedSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying Geom_RectangularTrimmedSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_RectangularTrimmedSurface {
         unsafe {
@@ -25804,6 +25959,11 @@ unsafe impl crate::CppCopyable for HandleGeomSphericalSurface {
 }
 
 impl HandleGeomSphericalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomSphericalSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_SphericalSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_SphericalSurface {
         unsafe {
@@ -26550,6 +26710,11 @@ unsafe impl crate::CppCopyable for HandleGeomSurface {
 }
 
 impl HandleGeomSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Surface
     pub fn get(&self) -> &crate::ffi_types::Geom_Surface {
         unsafe {
@@ -27743,6 +27908,13 @@ unsafe impl crate::CppCopyable for HandleGeomSurfaceOfLinearExtrusion {
 }
 
 impl HandleGeomSurfaceOfLinearExtrusion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomSurfaceOfLinearExtrusion_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Geom_SurfaceOfLinearExtrusion
     pub fn get(&self) -> &crate::ffi_types::Geom_SurfaceOfLinearExtrusion {
         unsafe {
@@ -28745,6 +28917,13 @@ unsafe impl crate::CppCopyable for HandleGeomSurfaceOfRevolution {
 }
 
 impl HandleGeomSurfaceOfRevolution {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomSurfaceOfRevolution_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Geom_SurfaceOfRevolution
     pub fn get(&self) -> &crate::ffi_types::Geom_SurfaceOfRevolution {
         unsafe {
@@ -29444,6 +29623,11 @@ unsafe impl crate::CppCopyable for HandleGeomSweptSurface {
 }
 
 impl HandleGeomSweptSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomSweptSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_SweptSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_SweptSurface {
         unsafe {
@@ -30454,6 +30638,11 @@ unsafe impl crate::CppCopyable for HandleGeomToroidalSurface {
 }
 
 impl HandleGeomToroidalSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomToroidalSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_ToroidalSurface
     pub fn get(&self) -> &crate::ffi_types::Geom_ToroidalSurface {
         unsafe {
@@ -31018,6 +31207,11 @@ unsafe impl crate::CppCopyable for HandleGeomTransformation {
 }
 
 impl HandleGeomTransformation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomTransformation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Transformation
     pub fn get(&self) -> &crate::ffi_types::Geom_Transformation {
         unsafe {
@@ -31840,6 +32034,11 @@ unsafe impl crate::CppCopyable for HandleGeomTrimmedCurve {
 }
 
 impl HandleGeomTrimmedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomTrimmedCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_TrimmedCurve
     pub fn get(&self) -> &crate::ffi_types::Geom_TrimmedCurve {
         unsafe {
@@ -32218,6 +32417,13 @@ unsafe impl crate::CppCopyable for HandleGeomUndefinedDerivative {
 }
 
 impl HandleGeomUndefinedDerivative {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomUndefinedDerivative_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Geom_UndefinedDerivative
     pub fn get(&self) -> &crate::ffi_types::Geom_UndefinedDerivative {
         unsafe {
@@ -32577,6 +32783,11 @@ unsafe impl crate::CppCopyable for HandleGeomUndefinedValue {
 }
 
 impl HandleGeomUndefinedValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomUndefinedValue_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_UndefinedValue
     pub fn get(&self) -> &crate::ffi_types::Geom_UndefinedValue {
         unsafe {
@@ -33086,6 +33297,11 @@ unsafe impl crate::CppCopyable for HandleGeomVector {
 }
 
 impl HandleGeomVector {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleGeomVector_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Geom_Vector
     pub fn get(&self) -> &crate::ffi_types::Geom_Vector {
         unsafe {
@@ -33881,6 +34097,13 @@ unsafe impl crate::CppCopyable for HandleGeomVectorWithMagnitude {
 }
 
 impl HandleGeomVectorWithMagnitude {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomVectorWithMagnitude_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Geom_VectorWithMagnitude
     pub fn get(&self) -> &crate::ffi_types::Geom_VectorWithMagnitude {
         unsafe {

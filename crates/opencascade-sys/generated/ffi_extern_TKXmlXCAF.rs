@@ -72,6 +72,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocAssemblyItemRefDriver_clone(
         self_: *const HandleXmlMXCAFDocAssemblyItemRefDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocAssemblyItemRefDriver>;
+    /// Check if Handle<XmlMXCAFDoc_AssemblyItemRefDriver> is null
+    pub fn HandleXmlMXCAFDocAssemblyItemRefDriver_is_null(
+        self_: *const HandleXmlMXCAFDocAssemblyItemRefDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_AssemblyItemRefDriver
     pub fn HandleXmlMXCAFDocAssemblyItemRefDriver_get(
         handle: *const HandleXmlMXCAFDocAssemblyItemRefDriver,
@@ -197,6 +201,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocCentroidDriver_clone(
         self_: *const HandleXmlMXCAFDocCentroidDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocCentroidDriver>;
+    /// Check if Handle<XmlMXCAFDoc_CentroidDriver> is null
+    pub fn HandleXmlMXCAFDocCentroidDriver_is_null(
+        self_: *const HandleXmlMXCAFDocCentroidDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_CentroidDriver
     pub fn HandleXmlMXCAFDocCentroidDriver_get(
         handle: *const HandleXmlMXCAFDocCentroidDriver,
@@ -322,6 +330,9 @@ extern "C" {
     pub fn HandleXmlMXCAFDocColorDriver_clone(
         self_: *const HandleXmlMXCAFDocColorDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocColorDriver>;
+    /// Check if Handle<XmlMXCAFDoc_ColorDriver> is null
+    pub fn HandleXmlMXCAFDocColorDriver_is_null(self_: *const HandleXmlMXCAFDocColorDriver)
+        -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_ColorDriver
     pub fn HandleXmlMXCAFDocColorDriver_get(
         handle: *const HandleXmlMXCAFDocColorDriver,
@@ -447,6 +458,9 @@ extern "C" {
     pub fn HandleXmlMXCAFDocDatumDriver_clone(
         self_: *const HandleXmlMXCAFDocDatumDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocDatumDriver>;
+    /// Check if Handle<XmlMXCAFDoc_DatumDriver> is null
+    pub fn HandleXmlMXCAFDocDatumDriver_is_null(self_: *const HandleXmlMXCAFDocDatumDriver)
+        -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_DatumDriver
     pub fn HandleXmlMXCAFDocDatumDriver_get(
         handle: *const HandleXmlMXCAFDocDatumDriver,
@@ -572,6 +586,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocDimTolDriver_clone(
         self_: *const HandleXmlMXCAFDocDimTolDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocDimTolDriver>;
+    /// Check if Handle<XmlMXCAFDoc_DimTolDriver> is null
+    pub fn HandleXmlMXCAFDocDimTolDriver_is_null(
+        self_: *const HandleXmlMXCAFDocDimTolDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_DimTolDriver
     pub fn HandleXmlMXCAFDocDimTolDriver_get(
         handle: *const HandleXmlMXCAFDocDimTolDriver,
@@ -699,6 +717,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocGraphNodeDriver_clone(
         self_: *const HandleXmlMXCAFDocGraphNodeDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocGraphNodeDriver>;
+    /// Check if Handle<XmlMXCAFDoc_GraphNodeDriver> is null
+    pub fn HandleXmlMXCAFDocGraphNodeDriver_is_null(
+        self_: *const HandleXmlMXCAFDocGraphNodeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_GraphNodeDriver
     pub fn HandleXmlMXCAFDocGraphNodeDriver_get(
         handle: *const HandleXmlMXCAFDocGraphNodeDriver,
@@ -826,6 +848,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocLengthUnitDriver_clone(
         self_: *const HandleXmlMXCAFDocLengthUnitDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocLengthUnitDriver>;
+    /// Check if Handle<XmlMXCAFDoc_LengthUnitDriver> is null
+    pub fn HandleXmlMXCAFDocLengthUnitDriver_is_null(
+        self_: *const HandleXmlMXCAFDocLengthUnitDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_LengthUnitDriver
     pub fn HandleXmlMXCAFDocLengthUnitDriver_get(
         handle: *const HandleXmlMXCAFDocLengthUnitDriver,
@@ -970,6 +996,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocLocationDriver_clone(
         self_: *const HandleXmlMXCAFDocLocationDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocLocationDriver>;
+    /// Check if Handle<XmlMXCAFDoc_LocationDriver> is null
+    pub fn HandleXmlMXCAFDocLocationDriver_is_null(
+        self_: *const HandleXmlMXCAFDocLocationDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_LocationDriver
     pub fn HandleXmlMXCAFDocLocationDriver_get(
         handle: *const HandleXmlMXCAFDocLocationDriver,
@@ -1095,6 +1125,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocMaterialDriver_clone(
         self_: *const HandleXmlMXCAFDocMaterialDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocMaterialDriver>;
+    /// Check if Handle<XmlMXCAFDoc_MaterialDriver> is null
+    pub fn HandleXmlMXCAFDocMaterialDriver_is_null(
+        self_: *const HandleXmlMXCAFDocMaterialDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_MaterialDriver
     pub fn HandleXmlMXCAFDocMaterialDriver_get(
         handle: *const HandleXmlMXCAFDocMaterialDriver,
@@ -1231,6 +1265,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocNoteBinDataDriver_clone(
         self_: *const HandleXmlMXCAFDocNoteBinDataDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocNoteBinDataDriver>;
+    /// Check if Handle<XmlMXCAFDoc_NoteBinDataDriver> is null
+    pub fn HandleXmlMXCAFDocNoteBinDataDriver_is_null(
+        self_: *const HandleXmlMXCAFDocNoteBinDataDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_NoteBinDataDriver
     pub fn HandleXmlMXCAFDocNoteBinDataDriver_get(
         handle: *const HandleXmlMXCAFDocNoteBinDataDriver,
@@ -1371,6 +1409,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocNoteCommentDriver_clone(
         self_: *const HandleXmlMXCAFDocNoteCommentDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocNoteCommentDriver>;
+    /// Check if Handle<XmlMXCAFDoc_NoteCommentDriver> is null
+    pub fn HandleXmlMXCAFDocNoteCommentDriver_is_null(
+        self_: *const HandleXmlMXCAFDocNoteCommentDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_NoteCommentDriver
     pub fn HandleXmlMXCAFDocNoteCommentDriver_get(
         handle: *const HandleXmlMXCAFDocNoteCommentDriver,
@@ -1488,6 +1530,8 @@ extern "C" {
     pub fn HandleXmlMXCAFDocNoteDriver_clone(
         self_: *const HandleXmlMXCAFDocNoteDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocNoteDriver>;
+    /// Check if Handle<XmlMXCAFDoc_NoteDriver> is null
+    pub fn HandleXmlMXCAFDocNoteDriver_is_null(self_: *const HandleXmlMXCAFDocNoteDriver) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_NoteDriver
     pub fn HandleXmlMXCAFDocNoteDriver_get(
         handle: *const HandleXmlMXCAFDocNoteDriver,
@@ -1628,6 +1672,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocVisMaterialDriver_clone(
         self_: *const HandleXmlMXCAFDocVisMaterialDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocVisMaterialDriver>;
+    /// Check if Handle<XmlMXCAFDoc_VisMaterialDriver> is null
+    pub fn HandleXmlMXCAFDocVisMaterialDriver_is_null(
+        self_: *const HandleXmlMXCAFDocVisMaterialDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_VisMaterialDriver
     pub fn HandleXmlMXCAFDocVisMaterialDriver_get(
         handle: *const HandleXmlMXCAFDocVisMaterialDriver,
@@ -1758,6 +1806,10 @@ extern "C" {
     pub fn HandleXmlMXCAFDocVisMaterialToolDriver_clone(
         self_: *const HandleXmlMXCAFDocVisMaterialToolDriver,
     ) -> crate::OcctResult<*mut HandleXmlMXCAFDocVisMaterialToolDriver>;
+    /// Check if Handle<XmlMXCAFDoc_VisMaterialToolDriver> is null
+    pub fn HandleXmlMXCAFDocVisMaterialToolDriver_is_null(
+        self_: *const HandleXmlMXCAFDocVisMaterialToolDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMXCAFDoc_VisMaterialToolDriver
     pub fn HandleXmlMXCAFDocVisMaterialToolDriver_get(
         handle: *const HandleXmlMXCAFDocVisMaterialToolDriver,
@@ -1898,6 +1950,10 @@ extern "C" {
     pub fn HandleXmlXCAFDriversDocumentRetrievalDriver_clone(
         self_: *const HandleXmlXCAFDriversDocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut HandleXmlXCAFDriversDocumentRetrievalDriver>;
+    /// Check if Handle<XmlXCAFDrivers_DocumentRetrievalDriver> is null
+    pub fn HandleXmlXCAFDriversDocumentRetrievalDriver_is_null(
+        self_: *const HandleXmlXCAFDriversDocumentRetrievalDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlXCAFDrivers_DocumentRetrievalDriver
     pub fn HandleXmlXCAFDriversDocumentRetrievalDriver_get(
         handle: *const HandleXmlXCAFDriversDocumentRetrievalDriver,
@@ -2065,6 +2121,10 @@ extern "C" {
     pub fn HandleXmlXCAFDriversDocumentStorageDriver_clone(
         self_: *const HandleXmlXCAFDriversDocumentStorageDriver,
     ) -> crate::OcctResult<*mut HandleXmlXCAFDriversDocumentStorageDriver>;
+    /// Check if Handle<XmlXCAFDrivers_DocumentStorageDriver> is null
+    pub fn HandleXmlXCAFDriversDocumentStorageDriver_is_null(
+        self_: *const HandleXmlXCAFDriversDocumentStorageDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlXCAFDrivers_DocumentStorageDriver
     pub fn HandleXmlXCAFDriversDocumentStorageDriver_get(
         handle: *const HandleXmlXCAFDriversDocumentStorageDriver,

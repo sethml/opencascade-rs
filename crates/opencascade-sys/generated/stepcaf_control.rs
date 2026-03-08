@@ -612,6 +612,13 @@ unsafe impl crate::CppCopyable for HandleSTEPCAFControlActorWrite {
 }
 
 impl HandleSTEPCAFControlActorWrite {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPCAFControlActorWrite_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPCAFControl_ActorWrite
     pub fn get(&self) -> &crate::ffi_types::STEPCAFControl_ActorWrite {
         unsafe {
@@ -1097,6 +1104,13 @@ unsafe impl crate::CppCopyable for HandleSTEPCAFControlController {
 }
 
 impl HandleSTEPCAFControlController {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPCAFControlController_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPCAFControl_Controller
     pub fn get(&self) -> &crate::ffi_types::STEPCAFControl_Controller {
         unsafe {
@@ -1432,6 +1446,13 @@ unsafe impl crate::CppCopyable for HandleSTEPCAFControlExternFile {
 }
 
 impl HandleSTEPCAFControlExternFile {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPCAFControlExternFile_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying STEPCAFControl_ExternFile
     pub fn get(&self) -> &crate::ffi_types::STEPCAFControl_ExternFile {
         unsafe {

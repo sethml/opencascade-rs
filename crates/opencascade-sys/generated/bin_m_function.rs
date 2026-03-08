@@ -290,6 +290,13 @@ unsafe impl crate::CppCopyable for HandleBinMFunctionFunctionDriver {
 }
 
 impl HandleBinMFunctionFunctionDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMFunctionFunctionDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMFunction_FunctionDriver
     pub fn get(&self) -> &crate::ffi_types::BinMFunction_FunctionDriver {
         unsafe {
@@ -601,6 +608,13 @@ unsafe impl crate::CppCopyable for HandleBinMFunctionGraphNodeDriver {
 }
 
 impl HandleBinMFunctionGraphNodeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMFunctionGraphNodeDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMFunction_GraphNodeDriver
     pub fn get(&self) -> &crate::ffi_types::BinMFunction_GraphNodeDriver {
         unsafe {
@@ -908,6 +922,13 @@ unsafe impl crate::CppCopyable for HandleBinMFunctionScopeDriver {
 }
 
 impl HandleBinMFunctionScopeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMFunctionScopeDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMFunction_ScopeDriver
     pub fn get(&self) -> &crate::ffi_types::BinMFunction_ScopeDriver {
         unsafe {

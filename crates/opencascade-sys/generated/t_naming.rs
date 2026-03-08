@@ -759,6 +759,13 @@ unsafe impl crate::CppCopyable for HandleTNamingDeltaOnModification {
 }
 
 impl HandleTNamingDeltaOnModification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TNaming_DeltaOnModification
     pub fn get(&self) -> &crate::ffi_types::TNaming_DeltaOnModification {
         unsafe {
@@ -1062,6 +1069,11 @@ unsafe impl crate::CppCopyable for HandleTNamingDeltaOnRemoval {
 }
 
 impl HandleTNamingDeltaOnRemoval {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TNaming_DeltaOnRemoval
     pub fn get(&self) -> &crate::ffi_types::TNaming_DeltaOnRemoval {
         unsafe {
@@ -2494,6 +2506,11 @@ unsafe impl crate::CppCopyable for HandleTNamingNamedShape {
 }
 
 impl HandleTNamingNamedShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTNamingNamedShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TNaming_NamedShape
     pub fn get(&self) -> &crate::ffi_types::TNaming_NamedShape {
         unsafe {
@@ -3162,6 +3179,11 @@ unsafe impl crate::CppCopyable for HandleTNamingNaming {
 }
 
 impl HandleTNamingNaming {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTNamingNaming_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TNaming_Naming
     pub fn get(&self) -> &crate::ffi_types::TNaming_Naming {
         unsafe {
@@ -4617,6 +4639,11 @@ unsafe impl crate::CppCopyable for HandleTNamingTranslateTool {
 }
 
 impl HandleTNamingTranslateTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTNamingTranslateTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TNaming_TranslateTool
     pub fn get(&self) -> &crate::ffi_types::TNaming_TranslateTool {
         unsafe {
@@ -5313,6 +5340,11 @@ unsafe impl crate::CppCopyable for HandleTNamingUsedShapes {
 }
 
 impl HandleTNamingUsedShapes {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TNaming_UsedShapes
     pub fn get(&self) -> &crate::ffi_types::TNaming_UsedShapes {
         unsafe {

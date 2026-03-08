@@ -557,6 +557,15 @@ unsafe impl crate::CppCopyable for HandleStepElementAnalysisItemWithinRepresenta
 }
 
 impl HandleStepElementAnalysisItemWithinRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementAnalysisItemWithinRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_AnalysisItemWithinRepresentation
     pub fn get(&self) -> &crate::ffi_types::StepElement_AnalysisItemWithinRepresentation {
         unsafe {
@@ -845,6 +854,15 @@ unsafe impl crate::CppCopyable for HandleStepElementCurve3dElementDescriptor {
 }
 
 impl HandleStepElementCurve3dElementDescriptor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementCurve3dElementDescriptor_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_Curve3dElementDescriptor
     pub fn get(&self) -> &crate::ffi_types::StepElement_Curve3dElementDescriptor {
         unsafe {
@@ -1098,6 +1116,15 @@ unsafe impl crate::CppCopyable for HandleStepElementCurveElementEndReleasePacket
 }
 
 impl HandleStepElementCurveElementEndReleasePacket {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementEndReleasePacket_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_CurveElementEndReleasePacket
     pub fn get(&self) -> &crate::ffi_types::StepElement_CurveElementEndReleasePacket {
         unsafe {
@@ -1807,6 +1834,15 @@ unsafe impl crate::CppCopyable for HandleStepElementCurveElementFreedomMember {
 }
 
 impl HandleStepElementCurveElementFreedomMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementFreedomMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_CurveElementFreedomMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_CurveElementFreedomMember {
         unsafe {
@@ -2534,6 +2570,15 @@ unsafe impl crate::CppCopyable for HandleStepElementCurveElementPurposeMember {
 }
 
 impl HandleStepElementCurveElementPurposeMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementPurposeMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_CurveElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_CurveElementPurposeMember {
         unsafe {
@@ -2810,6 +2855,15 @@ unsafe impl crate::CppCopyable for HandleStepElementCurveElementSectionDefinitio
 }
 
 impl HandleStepElementCurveElementSectionDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDefinition_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_CurveElementSectionDefinition
     pub fn get(&self) -> &crate::ffi_types::StepElement_CurveElementSectionDefinition {
         unsafe {
@@ -3275,6 +3329,13 @@ unsafe impl crate::CppCopyable for HandleStepElementCurveElementSectionDerivedDe
 }
 
 impl HandleStepElementCurveElementSectionDerivedDefinitions {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDerivedDefinitions_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_CurveElementSectionDerivedDefinitions
     pub fn get(&self) -> &crate::ffi_types::StepElement_CurveElementSectionDerivedDefinitions {
         unsafe {
@@ -4163,6 +4224,15 @@ unsafe impl crate::CppCopyable for HandleStepElementElementAspectMember {
 }
 
 impl HandleStepElementElementAspectMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementElementAspectMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_ElementAspectMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_ElementAspectMember {
         unsafe {
@@ -4456,6 +4526,15 @@ unsafe impl crate::CppCopyable for HandleStepElementElementDescriptor {
 }
 
 impl HandleStepElementElementDescriptor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_ElementDescriptor
     pub fn get(&self) -> &crate::ffi_types::StepElement_ElementDescriptor {
         unsafe {
@@ -4813,6 +4892,15 @@ unsafe impl crate::CppCopyable for HandleStepElementElementMaterial {
 }
 
 impl HandleStepElementElementMaterial {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementElementMaterial_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_ElementMaterial
     pub fn get(&self) -> &crate::ffi_types::StepElement_ElementMaterial {
         unsafe {
@@ -5039,6 +5127,13 @@ unsafe impl crate::CppCopyable for HandleStepElementHArray1OfCurveElementEndRele
 }
 
 impl HandleStepElementHArray1OfCurveElementEndReleasePacket {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementEndReleasePacket_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HArray1OfCurveElementEndReleasePacket
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfCurveElementEndReleasePacket {
         unsafe {
@@ -5261,6 +5356,13 @@ unsafe impl crate::CppCopyable for HandleStepElementHArray1OfCurveElementSection
 }
 
 impl HandleStepElementHArray1OfCurveElementSectionDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementSectionDefinition_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HArray1OfCurveElementSectionDefinition
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfCurveElementSectionDefinition {
         unsafe {
@@ -5481,6 +5583,13 @@ unsafe impl crate::CppCopyable for HandleStepElementHArray1OfHSequenceOfCurveEle
 }
 
 impl HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HArray1OfHSequenceOfCurveElementPurposeMember
     pub fn get(
         &self,
@@ -5707,6 +5816,13 @@ unsafe impl crate::CppCopyable
 }
 
 impl HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember
     pub fn get(
         &self,
@@ -5938,6 +6054,15 @@ unsafe impl crate::CppCopyable for HandleStepElementHArray1OfMeasureOrUnspecifie
 }
 
 impl HandleStepElementHArray1OfMeasureOrUnspecifiedValue {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfMeasureOrUnspecifiedValue_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HArray1OfMeasureOrUnspecifiedValue
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfMeasureOrUnspecifiedValue {
         unsafe {
@@ -6201,6 +6326,15 @@ unsafe impl crate::CppCopyable for HandleStepElementHArray1OfSurfaceSection {
 }
 
 impl HandleStepElementHArray1OfSurfaceSection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfSurfaceSection_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HArray1OfSurfaceSection
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfSurfaceSection {
         unsafe {
@@ -6461,6 +6595,15 @@ unsafe impl crate::CppCopyable for HandleStepElementHArray1OfVolumeElementPurpos
 }
 
 impl HandleStepElementHArray1OfVolumeElementPurpose {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurpose_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HArray1OfVolumeElementPurpose
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfVolumeElementPurpose {
         unsafe {
@@ -6696,6 +6839,15 @@ unsafe impl crate::CppCopyable for HandleStepElementHArray1OfVolumeElementPurpos
 }
 
 impl HandleStepElementHArray1OfVolumeElementPurposeMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurposeMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HArray1OfVolumeElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfVolumeElementPurposeMember {
         unsafe {
@@ -6911,6 +7063,15 @@ unsafe impl crate::CppCopyable for HandleStepElementHArray2OfCurveElementPurpose
 }
 
 impl HandleStepElementHArray2OfCurveElementPurposeMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfCurveElementPurposeMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HArray2OfCurveElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray2OfCurveElementPurposeMember {
         unsafe {
@@ -7142,6 +7303,15 @@ unsafe impl crate::CppCopyable for HandleStepElementHArray2OfSurfaceElementPurpo
 }
 
 impl HandleStepElementHArray2OfSurfaceElementPurpose {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurpose_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HArray2OfSurfaceElementPurpose
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray2OfSurfaceElementPurpose {
         unsafe {
@@ -7363,6 +7533,13 @@ unsafe impl crate::CppCopyable for HandleStepElementHArray2OfSurfaceElementPurpo
 }
 
 impl HandleStepElementHArray2OfSurfaceElementPurposeMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurposeMember_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HArray2OfSurfaceElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_HArray2OfSurfaceElementPurposeMember {
         unsafe {
@@ -7578,6 +7755,13 @@ unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfCurveElementPurpo
 }
 
 impl HandleStepElementHSequenceOfCurveElementPurposeMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementPurposeMember_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HSequenceOfCurveElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_HSequenceOfCurveElementPurposeMember {
         unsafe {
@@ -7789,6 +7973,13 @@ unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfCurveElementSecti
 }
 
 impl HandleStepElementHSequenceOfCurveElementSectionDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementSectionDefinition_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HSequenceOfCurveElementSectionDefinition
     pub fn get(&self) -> &crate::ffi_types::StepElement_HSequenceOfCurveElementSectionDefinition {
         unsafe {
@@ -8033,6 +8224,15 @@ unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfElementMaterial {
 }
 
 impl HandleStepElementHSequenceOfElementMaterial {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfElementMaterial_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HSequenceOfElementMaterial
     pub fn get(&self) -> &crate::ffi_types::StepElement_HSequenceOfElementMaterial {
         unsafe {
@@ -8251,6 +8451,13 @@ unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfSurfaceElementPur
 }
 
 impl HandleStepElementHSequenceOfSurfaceElementPurposeMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfSurfaceElementPurposeMember_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_HSequenceOfSurfaceElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_HSequenceOfSurfaceElementPurposeMember {
         unsafe {
@@ -8892,6 +9099,15 @@ unsafe impl crate::CppCopyable for HandleStepElementMeasureOrUnspecifiedValueMem
 }
 
 impl HandleStepElementMeasureOrUnspecifiedValueMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementMeasureOrUnspecifiedValueMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_MeasureOrUnspecifiedValueMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_MeasureOrUnspecifiedValueMember {
         unsafe {
@@ -9222,6 +9438,15 @@ unsafe impl crate::CppCopyable for HandleStepElementSurface3dElementDescriptor {
 }
 
 impl HandleStepElementSurface3dElementDescriptor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurface3dElementDescriptor_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_Surface3dElementDescriptor
     pub fn get(&self) -> &crate::ffi_types::StepElement_Surface3dElementDescriptor {
         unsafe {
@@ -9531,6 +9756,15 @@ unsafe impl crate::CppCopyable for HandleStepElementSurfaceElementProperty {
 }
 
 impl HandleStepElementSurfaceElementProperty {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementProperty_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_SurfaceElementProperty
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceElementProperty {
         unsafe {
@@ -10230,6 +10464,15 @@ unsafe impl crate::CppCopyable for HandleStepElementSurfaceElementPurposeMember 
 }
 
 impl HandleStepElementSurfaceElementPurposeMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementPurposeMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_SurfaceElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceElementPurposeMember {
         unsafe {
@@ -10545,6 +10788,13 @@ unsafe impl crate::CppCopyable for HandleStepElementSurfaceSection {
 }
 
 impl HandleStepElementSurfaceSection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSection_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_SurfaceSection
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceSection {
         unsafe {
@@ -10764,6 +11014,15 @@ unsafe impl crate::CppCopyable for HandleStepElementSurfaceSectionField {
 }
 
 impl HandleStepElementSurfaceSectionField {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionField_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_SurfaceSectionField
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceSectionField {
         unsafe {
@@ -11046,6 +11305,15 @@ unsafe impl crate::CppCopyable for HandleStepElementSurfaceSectionFieldConstant 
 }
 
 impl HandleStepElementSurfaceSectionFieldConstant {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldConstant_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_SurfaceSectionFieldConstant
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceSectionFieldConstant {
         unsafe {
@@ -11328,6 +11596,15 @@ unsafe impl crate::CppCopyable for HandleStepElementSurfaceSectionFieldVarying {
 }
 
 impl HandleStepElementSurfaceSectionFieldVarying {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldVarying_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_SurfaceSectionFieldVarying
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceSectionFieldVarying {
         unsafe {
@@ -11699,6 +11976,15 @@ unsafe impl crate::CppCopyable for HandleStepElementUniformSurfaceSection {
 }
 
 impl HandleStepElementUniformSurfaceSection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementUniformSurfaceSection_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_UniformSurfaceSection
     pub fn get(&self) -> &crate::ffi_types::StepElement_UniformSurfaceSection {
         unsafe {
@@ -12021,6 +12307,15 @@ unsafe impl crate::CppCopyable for HandleStepElementVolume3dElementDescriptor {
 }
 
 impl HandleStepElementVolume3dElementDescriptor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementVolume3dElementDescriptor_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_Volume3dElementDescriptor
     pub fn get(&self) -> &crate::ffi_types::StepElement_Volume3dElementDescriptor {
         unsafe {
@@ -12739,6 +13034,15 @@ unsafe impl crate::CppCopyable for HandleStepElementVolumeElementPurposeMember {
 }
 
 impl HandleStepElementVolumeElementPurposeMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepElementVolumeElementPurposeMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepElement_VolumeElementPurposeMember
     pub fn get(&self) -> &crate::ffi_types::StepElement_VolumeElementPurposeMember {
         unsafe {

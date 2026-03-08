@@ -1142,6 +1142,13 @@ unsafe impl crate::CppCopyable for HandlePrsMgrPresentableObject {
 }
 
 impl HandlePrsMgrPresentableObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsMgrPresentableObject_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsMgr_PresentableObject
     pub fn get(&self) -> &crate::ffi_types::PrsMgr_PresentableObject {
         unsafe {
@@ -2760,6 +2767,11 @@ unsafe impl crate::CppCopyable for HandlePrsMgrPresentation {
 }
 
 impl HandlePrsMgrPresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandlePrsMgrPresentation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying PrsMgr_Presentation
     pub fn get(&self) -> &crate::ffi_types::PrsMgr_Presentation {
         unsafe {
@@ -3397,6 +3409,13 @@ unsafe impl crate::CppCopyable for HandlePrsMgrPresentationManager {
 }
 
 impl HandlePrsMgrPresentationManager {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrsMgrPresentationManager_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying PrsMgr_PresentationManager
     pub fn get(&self) -> &crate::ffi_types::PrsMgr_PresentationManager {
         unsafe {

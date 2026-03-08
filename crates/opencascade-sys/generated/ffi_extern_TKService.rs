@@ -103,6 +103,10 @@ extern "C" {
     pub fn HandleAspectAspectFillAreaDefinitionError_clone(
         self_: *const HandleAspectAspectFillAreaDefinitionError,
     ) -> crate::OcctResult<*mut HandleAspectAspectFillAreaDefinitionError>;
+    /// Check if Handle<Aspect_AspectFillAreaDefinitionError> is null
+    pub fn HandleAspectAspectFillAreaDefinitionError_is_null(
+        self_: *const HandleAspectAspectFillAreaDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Aspect_AspectFillAreaDefinitionError
     pub fn HandleAspectAspectFillAreaDefinitionError_get(
         handle: *const HandleAspectAspectFillAreaDefinitionError,
@@ -269,6 +273,10 @@ extern "C" {
     pub fn HandleAspectAspectLineDefinitionError_clone(
         self_: *const HandleAspectAspectLineDefinitionError,
     ) -> crate::OcctResult<*mut HandleAspectAspectLineDefinitionError>;
+    /// Check if Handle<Aspect_AspectLineDefinitionError> is null
+    pub fn HandleAspectAspectLineDefinitionError_is_null(
+        self_: *const HandleAspectAspectLineDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Aspect_AspectLineDefinitionError
     pub fn HandleAspectAspectLineDefinitionError_get(
         handle: *const HandleAspectAspectLineDefinitionError,
@@ -435,6 +443,10 @@ extern "C" {
     pub fn HandleAspectAspectMarkerDefinitionError_clone(
         self_: *const HandleAspectAspectMarkerDefinitionError,
     ) -> crate::OcctResult<*mut HandleAspectAspectMarkerDefinitionError>;
+    /// Check if Handle<Aspect_AspectMarkerDefinitionError> is null
+    pub fn HandleAspectAspectMarkerDefinitionError_is_null(
+        self_: *const HandleAspectAspectMarkerDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Aspect_AspectMarkerDefinitionError
     pub fn HandleAspectAspectMarkerDefinitionError_get(
         handle: *const HandleAspectAspectMarkerDefinitionError,
@@ -592,6 +604,8 @@ extern "C" {
     pub fn HandleAspectCircularGrid_clone(
         self_: *const HandleAspectCircularGrid,
     ) -> crate::OcctResult<*mut HandleAspectCircularGrid>;
+    /// Check if Handle<Aspect_CircularGrid> is null
+    pub fn HandleAspectCircularGrid_is_null(self_: *const HandleAspectCircularGrid) -> bool;
     /// Dereference Handle to get *const Aspect_CircularGrid
     pub fn HandleAspectCircularGrid_get(
         handle: *const HandleAspectCircularGrid,
@@ -781,6 +795,10 @@ extern "C" {
     pub fn HandleAspectDisplayConnection_clone(
         self_: *const HandleAspectDisplayConnection,
     ) -> crate::OcctResult<*mut HandleAspectDisplayConnection>;
+    /// Check if Handle<Aspect_DisplayConnection> is null
+    pub fn HandleAspectDisplayConnection_is_null(
+        self_: *const HandleAspectDisplayConnection,
+    ) -> bool;
     /// Dereference Handle to get *const Aspect_DisplayConnection
     pub fn HandleAspectDisplayConnection_get(
         handle: *const HandleAspectDisplayConnection,
@@ -918,6 +936,10 @@ extern "C" {
     pub fn HandleAspectDisplayConnectionDefinitionError_clone(
         self_: *const HandleAspectDisplayConnectionDefinitionError,
     ) -> crate::OcctResult<*mut HandleAspectDisplayConnectionDefinitionError>;
+    /// Check if Handle<Aspect_DisplayConnectionDefinitionError> is null
+    pub fn HandleAspectDisplayConnectionDefinitionError_is_null(
+        self_: *const HandleAspectDisplayConnectionDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Aspect_DisplayConnectionDefinitionError
     pub fn HandleAspectDisplayConnectionDefinitionError_get(
         handle: *const HandleAspectDisplayConnectionDefinitionError,
@@ -1156,6 +1178,10 @@ extern "C" {
     pub fn HandleAspectGraphicDeviceDefinitionError_clone(
         self_: *const HandleAspectGraphicDeviceDefinitionError,
     ) -> crate::OcctResult<*mut HandleAspectGraphicDeviceDefinitionError>;
+    /// Check if Handle<Aspect_GraphicDeviceDefinitionError> is null
+    pub fn HandleAspectGraphicDeviceDefinitionError_is_null(
+        self_: *const HandleAspectGraphicDeviceDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Aspect_GraphicDeviceDefinitionError
     pub fn HandleAspectGraphicDeviceDefinitionError_get(
         handle: *const HandleAspectGraphicDeviceDefinitionError,
@@ -1329,6 +1355,8 @@ extern "C" {
     pub fn HandleAspectGrid_clone(
         self_: *const HandleAspectGrid,
     ) -> crate::OcctResult<*mut HandleAspectGrid>;
+    /// Check if Handle<Aspect_Grid> is null
+    pub fn HandleAspectGrid_is_null(self_: *const HandleAspectGrid) -> bool;
     /// Dereference Handle to get *const Aspect_Grid
     pub fn HandleAspectGrid_get(
         handle: *const HandleAspectGrid,
@@ -1474,6 +1502,10 @@ extern "C" {
     pub fn HandleAspectIdentDefinitionError_clone(
         self_: *const HandleAspectIdentDefinitionError,
     ) -> crate::OcctResult<*mut HandleAspectIdentDefinitionError>;
+    /// Check if Handle<Aspect_IdentDefinitionError> is null
+    pub fn HandleAspectIdentDefinitionError_is_null(
+        self_: *const HandleAspectIdentDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Aspect_IdentDefinitionError
     pub fn HandleAspectIdentDefinitionError_get(
         handle: *const HandleAspectIdentDefinitionError,
@@ -1651,6 +1683,8 @@ extern "C" {
     pub fn HandleAspectNeutralWindow_clone(
         self_: *const HandleAspectNeutralWindow,
     ) -> crate::OcctResult<*mut HandleAspectNeutralWindow>;
+    /// Check if Handle<Aspect_NeutralWindow> is null
+    pub fn HandleAspectNeutralWindow_is_null(self_: *const HandleAspectNeutralWindow) -> bool;
     /// Dereference Handle to get *const Aspect_NeutralWindow
     pub fn HandleAspectNeutralWindow_get(
         handle: *const HandleAspectNeutralWindow,
@@ -1873,6 +1907,8 @@ extern "C" {
     pub fn HandleAspectOpenVRSession_clone(
         self_: *const HandleAspectOpenVRSession,
     ) -> crate::OcctResult<*mut HandleAspectOpenVRSession>;
+    /// Check if Handle<Aspect_OpenVRSession> is null
+    pub fn HandleAspectOpenVRSession_is_null(self_: *const HandleAspectOpenVRSession) -> bool;
     /// Dereference Handle to get *const Aspect_OpenVRSession
     pub fn HandleAspectOpenVRSession_get(
         handle: *const HandleAspectOpenVRSession,
@@ -2088,6 +2124,8 @@ extern "C" {
     pub fn HandleAspectRectangularGrid_clone(
         self_: *const HandleAspectRectangularGrid,
     ) -> crate::OcctResult<*mut HandleAspectRectangularGrid>;
+    /// Check if Handle<Aspect_RectangularGrid> is null
+    pub fn HandleAspectRectangularGrid_is_null(self_: *const HandleAspectRectangularGrid) -> bool;
     /// Dereference Handle to get *const Aspect_RectangularGrid
     pub fn HandleAspectRectangularGrid_get(
         handle: *const HandleAspectRectangularGrid,
@@ -2426,6 +2464,8 @@ extern "C" {
     pub fn HandleAspectVKeySet_clone(
         self_: *const HandleAspectVKeySet,
     ) -> crate::OcctResult<*mut HandleAspectVKeySet>;
+    /// Check if Handle<Aspect_VKeySet> is null
+    pub fn HandleAspectVKeySet_is_null(self_: *const HandleAspectVKeySet) -> bool;
     /// Dereference Handle to get *const Aspect_VKeySet
     pub fn HandleAspectVKeySet_get(
         handle: *const HandleAspectVKeySet,
@@ -2600,6 +2640,8 @@ extern "C" {
     pub fn HandleAspectWindow_clone(
         self_: *const HandleAspectWindow,
     ) -> crate::OcctResult<*mut HandleAspectWindow>;
+    /// Check if Handle<Aspect_Window> is null
+    pub fn HandleAspectWindow_is_null(self_: *const HandleAspectWindow) -> bool;
     /// Dereference Handle to get *const Aspect_Window
     pub fn HandleAspectWindow_get(
         handle: *const HandleAspectWindow,
@@ -2736,6 +2778,10 @@ extern "C" {
     pub fn HandleAspectWindowDefinitionError_clone(
         self_: *const HandleAspectWindowDefinitionError,
     ) -> crate::OcctResult<*mut HandleAspectWindowDefinitionError>;
+    /// Check if Handle<Aspect_WindowDefinitionError> is null
+    pub fn HandleAspectWindowDefinitionError_is_null(
+        self_: *const HandleAspectWindowDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Aspect_WindowDefinitionError
     pub fn HandleAspectWindowDefinitionError_get(
         handle: *const HandleAspectWindowDefinitionError,
@@ -2895,6 +2941,8 @@ extern "C" {
     pub fn HandleAspectWindowError_clone(
         self_: *const HandleAspectWindowError,
     ) -> crate::OcctResult<*mut HandleAspectWindowError>;
+    /// Check if Handle<Aspect_WindowError> is null
+    pub fn HandleAspectWindowError_is_null(self_: *const HandleAspectWindowError) -> bool;
     /// Dereference Handle to get *const Aspect_WindowError
     pub fn HandleAspectWindowError_get(
         handle: *const HandleAspectWindowError,
@@ -3190,6 +3238,8 @@ extern "C" {
     pub fn HandleAspectXRAction_clone(
         self_: *const HandleAspectXRAction,
     ) -> crate::OcctResult<*mut HandleAspectXRAction>;
+    /// Check if Handle<Aspect_XRAction> is null
+    pub fn HandleAspectXRAction_is_null(self_: *const HandleAspectXRAction) -> bool;
     /// Dereference Handle to get *const Aspect_XRAction
     pub fn HandleAspectXRAction_get(
         handle: *const HandleAspectXRAction,
@@ -3286,6 +3336,8 @@ extern "C" {
     pub fn HandleAspectXRActionSet_clone(
         self_: *const HandleAspectXRActionSet,
     ) -> crate::OcctResult<*mut HandleAspectXRActionSet>;
+    /// Check if Handle<Aspect_XRActionSet> is null
+    pub fn HandleAspectXRActionSet_is_null(self_: *const HandleAspectXRActionSet) -> bool;
     /// Dereference Handle to get *const Aspect_XRActionSet
     pub fn HandleAspectXRActionSet_get(
         handle: *const HandleAspectXRActionSet,
@@ -3522,6 +3574,8 @@ extern "C" {
     pub fn HandleAspectXRSession_clone(
         self_: *const HandleAspectXRSession,
     ) -> crate::OcctResult<*mut HandleAspectXRSession>;
+    /// Check if Handle<Aspect_XRSession> is null
+    pub fn HandleAspectXRSession_is_null(self_: *const HandleAspectXRSession) -> bool;
     /// Dereference Handle to get *const Aspect_XRSession
     pub fn HandleAspectXRSession_get(
         handle: *const HandleAspectXRSession,
@@ -3752,6 +3806,8 @@ extern "C" {
     pub fn HandleFontFTFont_clone(
         self_: *const HandleFontFTFont,
     ) -> crate::OcctResult<*mut HandleFontFTFont>;
+    /// Check if Handle<Font_FTFont> is null
+    pub fn HandleFontFTFont_is_null(self_: *const HandleFontFTFont) -> bool;
     /// Dereference Handle to get *const Font_FTFont
     pub fn HandleFontFTFont_get(
         handle: *const HandleFontFTFont,
@@ -3822,6 +3878,8 @@ extern "C" {
     pub fn HandleFontFTLibrary_clone(
         self_: *const HandleFontFTLibrary,
     ) -> crate::OcctResult<*mut HandleFontFTLibrary>;
+    /// Check if Handle<Font_FTLibrary> is null
+    pub fn HandleFontFTLibrary_is_null(self_: *const HandleFontFTLibrary) -> bool;
     /// Dereference Handle to get *const Font_FTLibrary
     pub fn HandleFontFTLibrary_get(
         handle: *const HandleFontFTLibrary,
@@ -4004,6 +4062,8 @@ extern "C" {
     pub fn HandleFontFontMgr_clone(
         self_: *const HandleFontFontMgr,
     ) -> crate::OcctResult<*mut HandleFontFontMgr>;
+    /// Check if Handle<Font_FontMgr> is null
+    pub fn HandleFontFontMgr_is_null(self_: *const HandleFontFontMgr) -> bool;
     /// Dereference Handle to get *const Font_FontMgr
     pub fn HandleFontFontMgr_get(
         handle: *const HandleFontFontMgr,
@@ -4133,6 +4193,8 @@ extern "C" {
     pub fn HandleFontSystemFont_clone(
         self_: *const HandleFontSystemFont,
     ) -> crate::OcctResult<*mut HandleFontSystemFont>;
+    /// Check if Handle<Font_SystemFont> is null
+    pub fn HandleFontSystemFont_is_null(self_: *const HandleFontSystemFont) -> bool;
     /// Dereference Handle to get *const Font_SystemFont
     pub fn HandleFontSystemFont_get(
         handle: *const HandleFontSystemFont,
@@ -4325,6 +4387,8 @@ extern "C" {
     pub fn HandleFontTextFormatter_clone(
         self_: *const HandleFontTextFormatter,
     ) -> crate::OcctResult<*mut HandleFontTextFormatter>;
+    /// Check if Handle<Font_TextFormatter> is null
+    pub fn HandleFontTextFormatter_is_null(self_: *const HandleFontTextFormatter) -> bool;
     /// Dereference Handle to get *const Font_TextFormatter
     pub fn HandleFontTextFormatter_get(
         handle: *const HandleFontTextFormatter,
@@ -4450,6 +4514,9 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfPoints_clone(
         self_: *const HandleGraphic3dArrayOfPoints,
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfPoints>;
+    /// Check if Handle<Graphic3d_ArrayOfPoints> is null
+    pub fn HandleGraphic3dArrayOfPoints_is_null(self_: *const HandleGraphic3dArrayOfPoints)
+        -> bool;
     /// Dereference Handle to get *const Graphic3d_ArrayOfPoints
     pub fn HandleGraphic3dArrayOfPoints_get(
         handle: *const HandleGraphic3dArrayOfPoints,
@@ -4749,6 +4816,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfPolygons_clone(
         self_: *const HandleGraphic3dArrayOfPolygons,
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfPolygons>;
+    /// Check if Handle<Graphic3d_ArrayOfPolygons> is null
+    pub fn HandleGraphic3dArrayOfPolygons_is_null(
+        self_: *const HandleGraphic3dArrayOfPolygons,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_ArrayOfPolygons
     pub fn HandleGraphic3dArrayOfPolygons_get(
         handle: *const HandleGraphic3dArrayOfPolygons,
@@ -5046,6 +5117,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfPolylines_clone(
         self_: *const HandleGraphic3dArrayOfPolylines,
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfPolylines>;
+    /// Check if Handle<Graphic3d_ArrayOfPolylines> is null
+    pub fn HandleGraphic3dArrayOfPolylines_is_null(
+        self_: *const HandleGraphic3dArrayOfPolylines,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_ArrayOfPolylines
     pub fn HandleGraphic3dArrayOfPolylines_get(
         handle: *const HandleGraphic3dArrayOfPolylines,
@@ -5818,6 +5893,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfPrimitives_clone(
         self_: *const HandleGraphic3dArrayOfPrimitives,
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfPrimitives>;
+    /// Check if Handle<Graphic3d_ArrayOfPrimitives> is null
+    pub fn HandleGraphic3dArrayOfPrimitives_is_null(
+        self_: *const HandleGraphic3dArrayOfPrimitives,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_ArrayOfPrimitives
     pub fn HandleGraphic3dArrayOfPrimitives_get(
         handle: *const HandleGraphic3dArrayOfPrimitives,
@@ -5953,6 +6032,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfQuadrangleStrips_clone(
         self_: *const HandleGraphic3dArrayOfQuadrangleStrips,
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfQuadrangleStrips>;
+    /// Check if Handle<Graphic3d_ArrayOfQuadrangleStrips> is null
+    pub fn HandleGraphic3dArrayOfQuadrangleStrips_is_null(
+        self_: *const HandleGraphic3dArrayOfQuadrangleStrips,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_ArrayOfQuadrangleStrips
     pub fn HandleGraphic3dArrayOfQuadrangleStrips_get(
         handle: *const HandleGraphic3dArrayOfQuadrangleStrips,
@@ -6251,6 +6334,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfQuadrangles_clone(
         self_: *const HandleGraphic3dArrayOfQuadrangles,
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfQuadrangles>;
+    /// Check if Handle<Graphic3d_ArrayOfQuadrangles> is null
+    pub fn HandleGraphic3dArrayOfQuadrangles_is_null(
+        self_: *const HandleGraphic3dArrayOfQuadrangles,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_ArrayOfQuadrangles
     pub fn HandleGraphic3dArrayOfQuadrangles_get(
         handle: *const HandleGraphic3dArrayOfQuadrangles,
@@ -6545,6 +6632,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfSegments_clone(
         self_: *const HandleGraphic3dArrayOfSegments,
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfSegments>;
+    /// Check if Handle<Graphic3d_ArrayOfSegments> is null
+    pub fn HandleGraphic3dArrayOfSegments_is_null(
+        self_: *const HandleGraphic3dArrayOfSegments,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_ArrayOfSegments
     pub fn HandleGraphic3dArrayOfSegments_get(
         handle: *const HandleGraphic3dArrayOfSegments,
@@ -6845,6 +6936,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfTriangleFans_clone(
         self_: *const HandleGraphic3dArrayOfTriangleFans,
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfTriangleFans>;
+    /// Check if Handle<Graphic3d_ArrayOfTriangleFans> is null
+    pub fn HandleGraphic3dArrayOfTriangleFans_is_null(
+        self_: *const HandleGraphic3dArrayOfTriangleFans,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_ArrayOfTriangleFans
     pub fn HandleGraphic3dArrayOfTriangleFans_get(
         handle: *const HandleGraphic3dArrayOfTriangleFans,
@@ -7145,6 +7240,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfTriangleStrips_clone(
         self_: *const HandleGraphic3dArrayOfTriangleStrips,
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfTriangleStrips>;
+    /// Check if Handle<Graphic3d_ArrayOfTriangleStrips> is null
+    pub fn HandleGraphic3dArrayOfTriangleStrips_is_null(
+        self_: *const HandleGraphic3dArrayOfTriangleStrips,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_ArrayOfTriangleStrips
     pub fn HandleGraphic3dArrayOfTriangleStrips_get(
         handle: *const HandleGraphic3dArrayOfTriangleStrips,
@@ -7441,6 +7540,10 @@ extern "C" {
     pub fn HandleGraphic3dArrayOfTriangles_clone(
         self_: *const HandleGraphic3dArrayOfTriangles,
     ) -> crate::OcctResult<*mut HandleGraphic3dArrayOfTriangles>;
+    /// Check if Handle<Graphic3d_ArrayOfTriangles> is null
+    pub fn HandleGraphic3dArrayOfTriangles_is_null(
+        self_: *const HandleGraphic3dArrayOfTriangles,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_ArrayOfTriangles
     pub fn HandleGraphic3dArrayOfTriangles_get(
         handle: *const HandleGraphic3dArrayOfTriangles,
@@ -7735,6 +7838,10 @@ extern "C" {
     pub fn HandleGraphic3dAspectFillArea3d_clone(
         self_: *const HandleGraphic3dAspectFillArea3d,
     ) -> crate::OcctResult<*mut HandleGraphic3dAspectFillArea3d>;
+    /// Check if Handle<Graphic3d_AspectFillArea3d> is null
+    pub fn HandleGraphic3dAspectFillArea3d_is_null(
+        self_: *const HandleGraphic3dAspectFillArea3d,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_AspectFillArea3d
     pub fn HandleGraphic3dAspectFillArea3d_get(
         handle: *const HandleGraphic3dAspectFillArea3d,
@@ -8253,6 +8360,8 @@ extern "C" {
     pub fn HandleGraphic3dAspectLine3d_clone(
         self_: *const HandleGraphic3dAspectLine3d,
     ) -> crate::OcctResult<*mut HandleGraphic3dAspectLine3d>;
+    /// Check if Handle<Graphic3d_AspectLine3d> is null
+    pub fn HandleGraphic3dAspectLine3d_is_null(self_: *const HandleGraphic3dAspectLine3d) -> bool;
     /// Dereference Handle to get *const Graphic3d_AspectLine3d
     pub fn HandleGraphic3dAspectLine3d_get(
         handle: *const HandleGraphic3dAspectLine3d,
@@ -8799,6 +8908,10 @@ extern "C" {
     pub fn HandleGraphic3dAspectMarker3d_clone(
         self_: *const HandleGraphic3dAspectMarker3d,
     ) -> crate::OcctResult<*mut HandleGraphic3dAspectMarker3d>;
+    /// Check if Handle<Graphic3d_AspectMarker3d> is null
+    pub fn HandleGraphic3dAspectMarker3d_is_null(
+        self_: *const HandleGraphic3dAspectMarker3d,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_AspectMarker3d
     pub fn HandleGraphic3dAspectMarker3d_get(
         handle: *const HandleGraphic3dAspectMarker3d,
@@ -9364,6 +9477,8 @@ extern "C" {
     pub fn HandleGraphic3dAspectText3d_clone(
         self_: *const HandleGraphic3dAspectText3d,
     ) -> crate::OcctResult<*mut HandleGraphic3dAspectText3d>;
+    /// Check if Handle<Graphic3d_AspectText3d> is null
+    pub fn HandleGraphic3dAspectText3d_is_null(self_: *const HandleGraphic3dAspectText3d) -> bool;
     /// Dereference Handle to get *const Graphic3d_AspectText3d
     pub fn HandleGraphic3dAspectText3d_get(
         handle: *const HandleGraphic3dAspectText3d,
@@ -10249,6 +10364,8 @@ extern "C" {
     pub fn HandleGraphic3dAspects_clone(
         self_: *const HandleGraphic3dAspects,
     ) -> crate::OcctResult<*mut HandleGraphic3dAspects>;
+    /// Check if Handle<Graphic3d_Aspects> is null
+    pub fn HandleGraphic3dAspects_is_null(self_: *const HandleGraphic3dAspects) -> bool;
     /// Dereference Handle to get *const Graphic3d_Aspects
     pub fn HandleGraphic3dAspects_get(
         handle: *const HandleGraphic3dAspects,
@@ -10422,6 +10539,8 @@ extern "C" {
     pub fn HandleGraphic3dAttribBuffer_clone(
         self_: *const HandleGraphic3dAttribBuffer,
     ) -> crate::OcctResult<*mut HandleGraphic3dAttribBuffer>;
+    /// Check if Handle<Graphic3d_AttribBuffer> is null
+    pub fn HandleGraphic3dAttribBuffer_is_null(self_: *const HandleGraphic3dAttribBuffer) -> bool;
     /// Dereference Handle to get *const Graphic3d_AttribBuffer
     pub fn HandleGraphic3dAttribBuffer_get(
         handle: *const HandleGraphic3dAttribBuffer,
@@ -10644,6 +10763,8 @@ extern "C" {
     pub fn HandleGraphic3dBoundBuffer_clone(
         self_: *const HandleGraphic3dBoundBuffer,
     ) -> crate::OcctResult<*mut HandleGraphic3dBoundBuffer>;
+    /// Check if Handle<Graphic3d_BoundBuffer> is null
+    pub fn HandleGraphic3dBoundBuffer_is_null(self_: *const HandleGraphic3dBoundBuffer) -> bool;
     /// Dereference Handle to get *const Graphic3d_BoundBuffer
     pub fn HandleGraphic3dBoundBuffer_get(
         handle: *const HandleGraphic3dBoundBuffer,
@@ -10858,6 +10979,8 @@ extern "C" {
     pub fn HandleGraphic3dBuffer_clone(
         self_: *const HandleGraphic3dBuffer,
     ) -> crate::OcctResult<*mut HandleGraphic3dBuffer>;
+    /// Check if Handle<Graphic3d_Buffer> is null
+    pub fn HandleGraphic3dBuffer_is_null(self_: *const HandleGraphic3dBuffer) -> bool;
     /// Dereference Handle to get *const Graphic3d_Buffer
     pub fn HandleGraphic3dBuffer_get(
         handle: *const HandleGraphic3dBuffer,
@@ -11015,6 +11138,10 @@ extern "C" {
     pub fn HandleGraphic3dBvhCStructureSet_clone(
         self_: *const HandleGraphic3dBvhCStructureSet,
     ) -> crate::OcctResult<*mut HandleGraphic3dBvhCStructureSet>;
+    /// Check if Handle<Graphic3d_BvhCStructureSet> is null
+    pub fn HandleGraphic3dBvhCStructureSet_is_null(
+        self_: *const HandleGraphic3dBvhCStructureSet,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_BvhCStructureSet
     pub fn HandleGraphic3dBvhCStructureSet_get(
         handle: *const HandleGraphic3dBvhCStructureSet,
@@ -11321,6 +11448,8 @@ extern "C" {
     pub fn HandleGraphic3dCLight_clone(
         self_: *const HandleGraphic3dCLight,
     ) -> crate::OcctResult<*mut HandleGraphic3dCLight>;
+    /// Check if Handle<Graphic3d_CLight> is null
+    pub fn HandleGraphic3dCLight_is_null(self_: *const HandleGraphic3dCLight) -> bool;
     /// Dereference Handle to get *const Graphic3d_CLight
     pub fn HandleGraphic3dCLight_get(
         handle: *const HandleGraphic3dCLight,
@@ -11573,6 +11702,8 @@ extern "C" {
     pub fn HandleGraphic3dCStructure_clone(
         self_: *const HandleGraphic3dCStructure,
     ) -> crate::OcctResult<*mut HandleGraphic3dCStructure>;
+    /// Check if Handle<Graphic3d_CStructure> is null
+    pub fn HandleGraphic3dCStructure_is_null(self_: *const HandleGraphic3dCStructure) -> bool;
     /// Dereference Handle to get *const Graphic3d_CStructure
     pub fn HandleGraphic3dCStructure_get(
         handle: *const HandleGraphic3dCStructure,
@@ -12190,6 +12321,8 @@ extern "C" {
     pub fn HandleGraphic3dCView_clone(
         self_: *const HandleGraphic3dCView,
     ) -> crate::OcctResult<*mut HandleGraphic3dCView>;
+    /// Check if Handle<Graphic3d_CView> is null
+    pub fn HandleGraphic3dCView_is_null(self_: *const HandleGraphic3dCView) -> bool;
     /// Dereference Handle to get *const Graphic3d_CView
     pub fn HandleGraphic3dCView_get(
         handle: *const HandleGraphic3dCView,
@@ -12664,6 +12797,8 @@ extern "C" {
     pub fn HandleGraphic3dCamera_clone(
         self_: *const HandleGraphic3dCamera,
     ) -> crate::OcctResult<*mut HandleGraphic3dCamera>;
+    /// Check if Handle<Graphic3d_Camera> is null
+    pub fn HandleGraphic3dCamera_is_null(self_: *const HandleGraphic3dCamera) -> bool;
     /// Dereference Handle to get *const Graphic3d_Camera
     pub fn HandleGraphic3dCamera_get(
         handle: *const HandleGraphic3dCamera,
@@ -12977,6 +13112,8 @@ extern "C" {
     pub fn HandleGraphic3dClipPlane_clone(
         self_: *const HandleGraphic3dClipPlane,
     ) -> crate::OcctResult<*mut HandleGraphic3dClipPlane>;
+    /// Check if Handle<Graphic3d_ClipPlane> is null
+    pub fn HandleGraphic3dClipPlane_is_null(self_: *const HandleGraphic3dClipPlane) -> bool;
     /// Dereference Handle to get *const Graphic3d_ClipPlane
     pub fn HandleGraphic3dClipPlane_get(
         handle: *const HandleGraphic3dClipPlane,
@@ -13099,6 +13236,8 @@ extern "C" {
     pub fn HandleGraphic3dCubeMap_clone(
         self_: *const HandleGraphic3dCubeMap,
     ) -> crate::OcctResult<*mut HandleGraphic3dCubeMap>;
+    /// Check if Handle<Graphic3d_CubeMap> is null
+    pub fn HandleGraphic3dCubeMap_is_null(self_: *const HandleGraphic3dCubeMap) -> bool;
     /// Dereference Handle to get *const Graphic3d_CubeMap
     pub fn HandleGraphic3dCubeMap_get(
         handle: *const HandleGraphic3dCubeMap,
@@ -13418,6 +13557,9 @@ extern "C" {
     pub fn HandleGraphic3dCubeMapPacked_clone(
         self_: *const HandleGraphic3dCubeMapPacked,
     ) -> crate::OcctResult<*mut HandleGraphic3dCubeMapPacked>;
+    /// Check if Handle<Graphic3d_CubeMapPacked> is null
+    pub fn HandleGraphic3dCubeMapPacked_is_null(self_: *const HandleGraphic3dCubeMapPacked)
+        -> bool;
     /// Dereference Handle to get *const Graphic3d_CubeMapPacked
     pub fn HandleGraphic3dCubeMapPacked_get(
         handle: *const HandleGraphic3dCubeMapPacked,
@@ -13682,6 +13824,10 @@ extern "C" {
     pub fn HandleGraphic3dCubeMapSeparate_clone(
         self_: *const HandleGraphic3dCubeMapSeparate,
     ) -> crate::OcctResult<*mut HandleGraphic3dCubeMapSeparate>;
+    /// Check if Handle<Graphic3d_CubeMapSeparate> is null
+    pub fn HandleGraphic3dCubeMapSeparate_is_null(
+        self_: *const HandleGraphic3dCubeMapSeparate,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_CubeMapSeparate
     pub fn HandleGraphic3dCubeMapSeparate_get(
         handle: *const HandleGraphic3dCubeMapSeparate,
@@ -14000,6 +14146,10 @@ extern "C" {
     pub fn HandleGraphic3dDataStructureManager_clone(
         self_: *const HandleGraphic3dDataStructureManager,
     ) -> crate::OcctResult<*mut HandleGraphic3dDataStructureManager>;
+    /// Check if Handle<Graphic3d_DataStructureManager> is null
+    pub fn HandleGraphic3dDataStructureManager_is_null(
+        self_: *const HandleGraphic3dDataStructureManager,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_DataStructureManager
     pub fn HandleGraphic3dDataStructureManager_get(
         handle: *const HandleGraphic3dDataStructureManager,
@@ -14167,6 +14317,8 @@ extern "C" {
     pub fn HandleGraphic3dFrameStats_clone(
         self_: *const HandleGraphic3dFrameStats,
     ) -> crate::OcctResult<*mut HandleGraphic3dFrameStats>;
+    /// Check if Handle<Graphic3d_FrameStats> is null
+    pub fn HandleGraphic3dFrameStats_is_null(self_: *const HandleGraphic3dFrameStats) -> bool;
     /// Dereference Handle to get *const Graphic3d_FrameStats
     pub fn HandleGraphic3dFrameStats_get(
         handle: *const HandleGraphic3dFrameStats,
@@ -14742,6 +14894,9 @@ extern "C" {
     pub fn HandleGraphic3dGraphicDriver_clone(
         self_: *const HandleGraphic3dGraphicDriver,
     ) -> crate::OcctResult<*mut HandleGraphic3dGraphicDriver>;
+    /// Check if Handle<Graphic3d_GraphicDriver> is null
+    pub fn HandleGraphic3dGraphicDriver_is_null(self_: *const HandleGraphic3dGraphicDriver)
+        -> bool;
     /// Dereference Handle to get *const Graphic3d_GraphicDriver
     pub fn HandleGraphic3dGraphicDriver_get(
         handle: *const HandleGraphic3dGraphicDriver,
@@ -14836,6 +14991,10 @@ extern "C" {
     pub fn HandleGraphic3dGraphicDriverFactory_clone(
         self_: *const HandleGraphic3dGraphicDriverFactory,
     ) -> crate::OcctResult<*mut HandleGraphic3dGraphicDriverFactory>;
+    /// Check if Handle<Graphic3d_GraphicDriverFactory> is null
+    pub fn HandleGraphic3dGraphicDriverFactory_is_null(
+        self_: *const HandleGraphic3dGraphicDriverFactory,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_GraphicDriverFactory
     pub fn HandleGraphic3dGraphicDriverFactory_get(
         handle: *const HandleGraphic3dGraphicDriverFactory,
@@ -15025,6 +15184,8 @@ extern "C" {
     pub fn HandleGraphic3dGroup_clone(
         self_: *const HandleGraphic3dGroup,
     ) -> crate::OcctResult<*mut HandleGraphic3dGroup>;
+    /// Check if Handle<Graphic3d_Group> is null
+    pub fn HandleGraphic3dGroup_is_null(self_: *const HandleGraphic3dGroup) -> bool;
     /// Dereference Handle to get *const Graphic3d_Group
     pub fn HandleGraphic3dGroup_get(
         handle: *const HandleGraphic3dGroup,
@@ -15160,6 +15321,10 @@ extern "C" {
     pub fn HandleGraphic3dGroupDefinitionError_clone(
         self_: *const HandleGraphic3dGroupDefinitionError,
     ) -> crate::OcctResult<*mut HandleGraphic3dGroupDefinitionError>;
+    /// Check if Handle<Graphic3d_GroupDefinitionError> is null
+    pub fn HandleGraphic3dGroupDefinitionError_is_null(
+        self_: *const HandleGraphic3dGroupDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_GroupDefinitionError
     pub fn HandleGraphic3dGroupDefinitionError_get(
         handle: *const HandleGraphic3dGroupDefinitionError,
@@ -15275,6 +15440,8 @@ extern "C" {
     pub fn HandleGraphic3dHatchStyle_clone(
         self_: *const HandleGraphic3dHatchStyle,
     ) -> crate::OcctResult<*mut HandleGraphic3dHatchStyle>;
+    /// Check if Handle<Graphic3d_HatchStyle> is null
+    pub fn HandleGraphic3dHatchStyle_is_null(self_: *const HandleGraphic3dHatchStyle) -> bool;
     /// Dereference Handle to get *const Graphic3d_HatchStyle
     pub fn HandleGraphic3dHatchStyle_get(
         handle: *const HandleGraphic3dHatchStyle,
@@ -15382,6 +15549,8 @@ extern "C" {
     pub fn HandleGraphic3dIndexBuffer_clone(
         self_: *const HandleGraphic3dIndexBuffer,
     ) -> crate::OcctResult<*mut HandleGraphic3dIndexBuffer>;
+    /// Check if Handle<Graphic3d_IndexBuffer> is null
+    pub fn HandleGraphic3dIndexBuffer_is_null(self_: *const HandleGraphic3dIndexBuffer) -> bool;
     /// Dereference Handle to get *const Graphic3d_IndexBuffer
     pub fn HandleGraphic3dIndexBuffer_get(
         handle: *const HandleGraphic3dIndexBuffer,
@@ -15651,6 +15820,8 @@ extern "C" {
     pub fn HandleGraphic3dLayer_clone(
         self_: *const HandleGraphic3dLayer,
     ) -> crate::OcctResult<*mut HandleGraphic3dLayer>;
+    /// Check if Handle<Graphic3d_Layer> is null
+    pub fn HandleGraphic3dLayer_is_null(self_: *const HandleGraphic3dLayer) -> bool;
     /// Dereference Handle to get *const Graphic3d_Layer
     pub fn HandleGraphic3dLayer_get(
         handle: *const HandleGraphic3dLayer,
@@ -15790,6 +15961,8 @@ extern "C" {
     pub fn HandleGraphic3dLightSet_clone(
         self_: *const HandleGraphic3dLightSet,
     ) -> crate::OcctResult<*mut HandleGraphic3dLightSet>;
+    /// Check if Handle<Graphic3d_LightSet> is null
+    pub fn HandleGraphic3dLightSet_is_null(self_: *const HandleGraphic3dLightSet) -> bool;
     /// Dereference Handle to get *const Graphic3d_LightSet
     pub fn HandleGraphic3dLightSet_get(
         handle: *const HandleGraphic3dLightSet,
@@ -15936,6 +16109,8 @@ extern "C" {
     pub fn HandleGraphic3dMarkerImage_clone(
         self_: *const HandleGraphic3dMarkerImage,
     ) -> crate::OcctResult<*mut HandleGraphic3dMarkerImage>;
+    /// Check if Handle<Graphic3d_MarkerImage> is null
+    pub fn HandleGraphic3dMarkerImage_is_null(self_: *const HandleGraphic3dMarkerImage) -> bool;
     /// Dereference Handle to get *const Graphic3d_MarkerImage
     pub fn HandleGraphic3dMarkerImage_get(
         handle: *const HandleGraphic3dMarkerImage,
@@ -16256,6 +16431,10 @@ extern "C" {
     pub fn HandleGraphic3dMaterialDefinitionError_clone(
         self_: *const HandleGraphic3dMaterialDefinitionError,
     ) -> crate::OcctResult<*mut HandleGraphic3dMaterialDefinitionError>;
+    /// Check if Handle<Graphic3d_MaterialDefinitionError> is null
+    pub fn HandleGraphic3dMaterialDefinitionError_is_null(
+        self_: *const HandleGraphic3dMaterialDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_MaterialDefinitionError
     pub fn HandleGraphic3dMaterialDefinitionError_get(
         handle: *const HandleGraphic3dMaterialDefinitionError,
@@ -16398,6 +16577,8 @@ extern "C" {
     pub fn HandleGraphic3dMediaTexture_clone(
         self_: *const HandleGraphic3dMediaTexture,
     ) -> crate::OcctResult<*mut HandleGraphic3dMediaTexture>;
+    /// Check if Handle<Graphic3d_MediaTexture> is null
+    pub fn HandleGraphic3dMediaTexture_is_null(self_: *const HandleGraphic3dMediaTexture) -> bool;
     /// Dereference Handle to get *const Graphic3d_MediaTexture
     pub fn HandleGraphic3dMediaTexture_get(
         handle: *const HandleGraphic3dMediaTexture,
@@ -16660,6 +16841,10 @@ extern "C" {
     pub fn HandleGraphic3dMediaTextureSet_clone(
         self_: *const HandleGraphic3dMediaTextureSet,
     ) -> crate::OcctResult<*mut HandleGraphic3dMediaTextureSet>;
+    /// Check if Handle<Graphic3d_MediaTextureSet> is null
+    pub fn HandleGraphic3dMediaTextureSet_is_null(
+        self_: *const HandleGraphic3dMediaTextureSet,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_MediaTextureSet
     pub fn HandleGraphic3dMediaTextureSet_get(
         handle: *const HandleGraphic3dMediaTextureSet,
@@ -16828,6 +17013,10 @@ extern "C" {
     pub fn HandleGraphic3dMutableIndexBuffer_clone(
         self_: *const HandleGraphic3dMutableIndexBuffer,
     ) -> crate::OcctResult<*mut HandleGraphic3dMutableIndexBuffer>;
+    /// Check if Handle<Graphic3d_MutableIndexBuffer> is null
+    pub fn HandleGraphic3dMutableIndexBuffer_is_null(
+        self_: *const HandleGraphic3dMutableIndexBuffer,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_MutableIndexBuffer
     pub fn HandleGraphic3dMutableIndexBuffer_get(
         handle: *const HandleGraphic3dMutableIndexBuffer,
@@ -17159,6 +17348,10 @@ extern "C" {
     pub fn HandleGraphic3dPresentationAttributes_clone(
         self_: *const HandleGraphic3dPresentationAttributes,
     ) -> crate::OcctResult<*mut HandleGraphic3dPresentationAttributes>;
+    /// Check if Handle<Graphic3d_PresentationAttributes> is null
+    pub fn HandleGraphic3dPresentationAttributes_is_null(
+        self_: *const HandleGraphic3dPresentationAttributes,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_PresentationAttributes
     pub fn HandleGraphic3dPresentationAttributes_get(
         handle: *const HandleGraphic3dPresentationAttributes,
@@ -17304,6 +17497,10 @@ extern "C" {
     pub fn HandleGraphic3dPriorityDefinitionError_clone(
         self_: *const HandleGraphic3dPriorityDefinitionError,
     ) -> crate::OcctResult<*mut HandleGraphic3dPriorityDefinitionError>;
+    /// Check if Handle<Graphic3d_PriorityDefinitionError> is null
+    pub fn HandleGraphic3dPriorityDefinitionError_is_null(
+        self_: *const HandleGraphic3dPriorityDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_PriorityDefinitionError
     pub fn HandleGraphic3dPriorityDefinitionError_get(
         handle: *const HandleGraphic3dPriorityDefinitionError,
@@ -17458,6 +17655,10 @@ extern "C" {
     pub fn HandleGraphic3dSequenceOfHClipPlane_clone(
         self_: *const HandleGraphic3dSequenceOfHClipPlane,
     ) -> crate::OcctResult<*mut HandleGraphic3dSequenceOfHClipPlane>;
+    /// Check if Handle<Graphic3d_SequenceOfHClipPlane> is null
+    pub fn HandleGraphic3dSequenceOfHClipPlane_is_null(
+        self_: *const HandleGraphic3dSequenceOfHClipPlane,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_SequenceOfHClipPlane
     pub fn HandleGraphic3dSequenceOfHClipPlane_get(
         handle: *const HandleGraphic3dSequenceOfHClipPlane,
@@ -17567,6 +17768,10 @@ extern "C" {
     pub fn HandleGraphic3dShaderAttribute_clone(
         self_: *const HandleGraphic3dShaderAttribute,
     ) -> crate::OcctResult<*mut HandleGraphic3dShaderAttribute>;
+    /// Check if Handle<Graphic3d_ShaderAttribute> is null
+    pub fn HandleGraphic3dShaderAttribute_is_null(
+        self_: *const HandleGraphic3dShaderAttribute,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_ShaderAttribute
     pub fn HandleGraphic3dShaderAttribute_get(
         handle: *const HandleGraphic3dShaderAttribute,
@@ -17705,6 +17910,9 @@ extern "C" {
     pub fn HandleGraphic3dShaderManager_clone(
         self_: *const HandleGraphic3dShaderManager,
     ) -> crate::OcctResult<*mut HandleGraphic3dShaderManager>;
+    /// Check if Handle<Graphic3d_ShaderManager> is null
+    pub fn HandleGraphic3dShaderManager_is_null(self_: *const HandleGraphic3dShaderManager)
+        -> bool;
     /// Dereference Handle to get *const Graphic3d_ShaderManager
     pub fn HandleGraphic3dShaderManager_get(
         handle: *const HandleGraphic3dShaderManager,
@@ -17816,6 +18024,8 @@ extern "C" {
     pub fn HandleGraphic3dShaderObject_clone(
         self_: *const HandleGraphic3dShaderObject,
     ) -> crate::OcctResult<*mut HandleGraphic3dShaderObject>;
+    /// Check if Handle<Graphic3d_ShaderObject> is null
+    pub fn HandleGraphic3dShaderObject_is_null(self_: *const HandleGraphic3dShaderObject) -> bool;
     /// Dereference Handle to get *const Graphic3d_ShaderObject
     pub fn HandleGraphic3dShaderObject_get(
         handle: *const HandleGraphic3dShaderObject,
@@ -18091,6 +18301,9 @@ extern "C" {
     pub fn HandleGraphic3dShaderProgram_clone(
         self_: *const HandleGraphic3dShaderProgram,
     ) -> crate::OcctResult<*mut HandleGraphic3dShaderProgram>;
+    /// Check if Handle<Graphic3d_ShaderProgram> is null
+    pub fn HandleGraphic3dShaderProgram_is_null(self_: *const HandleGraphic3dShaderProgram)
+        -> bool;
     /// Dereference Handle to get *const Graphic3d_ShaderProgram
     pub fn HandleGraphic3dShaderProgram_get(
         handle: *const HandleGraphic3dShaderProgram,
@@ -18180,6 +18393,10 @@ extern "C" {
     pub fn HandleGraphic3dShaderVariable_clone(
         self_: *const HandleGraphic3dShaderVariable,
     ) -> crate::OcctResult<*mut HandleGraphic3dShaderVariable>;
+    /// Check if Handle<Graphic3d_ShaderVariable> is null
+    pub fn HandleGraphic3dShaderVariable_is_null(
+        self_: *const HandleGraphic3dShaderVariable,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_ShaderVariable
     pub fn HandleGraphic3dShaderVariable_get(
         handle: *const HandleGraphic3dShaderVariable,
@@ -18556,6 +18773,8 @@ extern "C" {
     pub fn HandleGraphic3dStructure_clone(
         self_: *const HandleGraphic3dStructure,
     ) -> crate::OcctResult<*mut HandleGraphic3dStructure>;
+    /// Check if Handle<Graphic3d_Structure> is null
+    pub fn HandleGraphic3dStructure_is_null(self_: *const HandleGraphic3dStructure) -> bool;
     /// Dereference Handle to get *const Graphic3d_Structure
     pub fn HandleGraphic3dStructure_get(
         handle: *const HandleGraphic3dStructure,
@@ -18701,6 +18920,10 @@ extern "C" {
     pub fn HandleGraphic3dStructureDefinitionError_clone(
         self_: *const HandleGraphic3dStructureDefinitionError,
     ) -> crate::OcctResult<*mut HandleGraphic3dStructureDefinitionError>;
+    /// Check if Handle<Graphic3d_StructureDefinitionError> is null
+    pub fn HandleGraphic3dStructureDefinitionError_is_null(
+        self_: *const HandleGraphic3dStructureDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_StructureDefinitionError
     pub fn HandleGraphic3dStructureDefinitionError_get(
         handle: *const HandleGraphic3dStructureDefinitionError,
@@ -18960,6 +19183,10 @@ extern "C" {
     pub fn HandleGraphic3dStructureManager_clone(
         self_: *const HandleGraphic3dStructureManager,
     ) -> crate::OcctResult<*mut HandleGraphic3dStructureManager>;
+    /// Check if Handle<Graphic3d_StructureManager> is null
+    pub fn HandleGraphic3dStructureManager_is_null(
+        self_: *const HandleGraphic3dStructureManager,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_StructureManager
     pub fn HandleGraphic3dStructureManager_get(
         handle: *const HandleGraphic3dStructureManager,
@@ -19116,6 +19343,8 @@ extern "C" {
     pub fn HandleGraphic3dText_clone(
         self_: *const HandleGraphic3dText,
     ) -> crate::OcctResult<*mut HandleGraphic3dText>;
+    /// Check if Handle<Graphic3d_Text> is null
+    pub fn HandleGraphic3dText_is_null(self_: *const HandleGraphic3dText) -> bool;
     /// Dereference Handle to get *const Graphic3d_Text
     pub fn HandleGraphic3dText_get(
         handle: *const HandleGraphic3dText,
@@ -19209,6 +19438,8 @@ extern "C" {
     pub fn HandleGraphic3dTexture1D_clone(
         self_: *const HandleGraphic3dTexture1D,
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture1D>;
+    /// Check if Handle<Graphic3d_Texture1D> is null
+    pub fn HandleGraphic3dTexture1D_is_null(self_: *const HandleGraphic3dTexture1D) -> bool;
     /// Dereference Handle to get *const Graphic3d_Texture1D
     pub fn HandleGraphic3dTexture1D_get(
         handle: *const HandleGraphic3dTexture1D,
@@ -19437,6 +19668,10 @@ extern "C" {
     pub fn HandleGraphic3dTexture1Dmanual_clone(
         self_: *const HandleGraphic3dTexture1Dmanual,
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture1Dmanual>;
+    /// Check if Handle<Graphic3d_Texture1Dmanual> is null
+    pub fn HandleGraphic3dTexture1Dmanual_is_null(
+        self_: *const HandleGraphic3dTexture1Dmanual,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_Texture1Dmanual
     pub fn HandleGraphic3dTexture1Dmanual_get(
         handle: *const HandleGraphic3dTexture1Dmanual,
@@ -19685,6 +19920,10 @@ extern "C" {
     pub fn HandleGraphic3dTexture1Dsegment_clone(
         self_: *const HandleGraphic3dTexture1Dsegment,
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture1Dsegment>;
+    /// Check if Handle<Graphic3d_Texture1Dsegment> is null
+    pub fn HandleGraphic3dTexture1Dsegment_is_null(
+        self_: *const HandleGraphic3dTexture1Dsegment,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_Texture1Dsegment
     pub fn HandleGraphic3dTexture1Dsegment_get(
         handle: *const HandleGraphic3dTexture1Dsegment,
@@ -19917,6 +20156,8 @@ extern "C" {
     pub fn HandleGraphic3dTexture2D_clone(
         self_: *const HandleGraphic3dTexture2D,
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture2D>;
+    /// Check if Handle<Graphic3d_Texture2D> is null
+    pub fn HandleGraphic3dTexture2D_is_null(self_: *const HandleGraphic3dTexture2D) -> bool;
     /// Dereference Handle to get *const Graphic3d_Texture2D
     pub fn HandleGraphic3dTexture2D_get(
         handle: *const HandleGraphic3dTexture2D,
@@ -20240,6 +20481,10 @@ extern "C" {
     pub fn HandleGraphic3dTexture2Dplane_clone(
         self_: *const HandleGraphic3dTexture2Dplane,
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture2Dplane>;
+    /// Check if Handle<Graphic3d_Texture2Dplane> is null
+    pub fn HandleGraphic3dTexture2Dplane_is_null(
+        self_: *const HandleGraphic3dTexture2Dplane,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_Texture2Dplane
     pub fn HandleGraphic3dTexture2Dplane_get(
         handle: *const HandleGraphic3dTexture2Dplane,
@@ -20474,6 +20719,8 @@ extern "C" {
     pub fn HandleGraphic3dTexture3D_clone(
         self_: *const HandleGraphic3dTexture3D,
     ) -> crate::OcctResult<*mut HandleGraphic3dTexture3D>;
+    /// Check if Handle<Graphic3d_Texture3D> is null
+    pub fn HandleGraphic3dTexture3D_is_null(self_: *const HandleGraphic3dTexture3D) -> bool;
     /// Dereference Handle to get *const Graphic3d_Texture3D
     pub fn HandleGraphic3dTexture3D_get(
         handle: *const HandleGraphic3dTexture3D,
@@ -20680,6 +20927,8 @@ extern "C" {
     pub fn HandleGraphic3dTextureEnv_clone(
         self_: *const HandleGraphic3dTextureEnv,
     ) -> crate::OcctResult<*mut HandleGraphic3dTextureEnv>;
+    /// Check if Handle<Graphic3d_TextureEnv> is null
+    pub fn HandleGraphic3dTextureEnv_is_null(self_: *const HandleGraphic3dTextureEnv) -> bool;
     /// Dereference Handle to get *const Graphic3d_TextureEnv
     pub fn HandleGraphic3dTextureEnv_get(
         handle: *const HandleGraphic3dTextureEnv,
@@ -20867,6 +21116,8 @@ extern "C" {
     pub fn HandleGraphic3dTextureMap_clone(
         self_: *const HandleGraphic3dTextureMap,
     ) -> crate::OcctResult<*mut HandleGraphic3dTextureMap>;
+    /// Check if Handle<Graphic3d_TextureMap> is null
+    pub fn HandleGraphic3dTextureMap_is_null(self_: *const HandleGraphic3dTextureMap) -> bool;
     /// Dereference Handle to get *const Graphic3d_TextureMap
     pub fn HandleGraphic3dTextureMap_get(
         handle: *const HandleGraphic3dTextureMap,
@@ -21153,6 +21404,9 @@ extern "C" {
     pub fn HandleGraphic3dTextureParams_clone(
         self_: *const HandleGraphic3dTextureParams,
     ) -> crate::OcctResult<*mut HandleGraphic3dTextureParams>;
+    /// Check if Handle<Graphic3d_TextureParams> is null
+    pub fn HandleGraphic3dTextureParams_is_null(self_: *const HandleGraphic3dTextureParams)
+        -> bool;
     /// Dereference Handle to get *const Graphic3d_TextureParams
     pub fn HandleGraphic3dTextureParams_get(
         handle: *const HandleGraphic3dTextureParams,
@@ -21286,6 +21540,8 @@ extern "C" {
     pub fn HandleGraphic3dTextureRoot_clone(
         self_: *const HandleGraphic3dTextureRoot,
     ) -> crate::OcctResult<*mut HandleGraphic3dTextureRoot>;
+    /// Check if Handle<Graphic3d_TextureRoot> is null
+    pub fn HandleGraphic3dTextureRoot_is_null(self_: *const HandleGraphic3dTextureRoot) -> bool;
     /// Dereference Handle to get *const Graphic3d_TextureRoot
     pub fn HandleGraphic3dTextureRoot_get(
         handle: *const HandleGraphic3dTextureRoot,
@@ -21446,6 +21702,8 @@ extern "C" {
     pub fn HandleGraphic3dTextureSet_clone(
         self_: *const HandleGraphic3dTextureSet,
     ) -> crate::OcctResult<*mut HandleGraphic3dTextureSet>;
+    /// Check if Handle<Graphic3d_TextureSet> is null
+    pub fn HandleGraphic3dTextureSet_is_null(self_: *const HandleGraphic3dTextureSet) -> bool;
     /// Dereference Handle to get *const Graphic3d_TextureSet
     pub fn HandleGraphic3dTextureSet_get(
         handle: *const HandleGraphic3dTextureSet,
@@ -21646,6 +21904,9 @@ extern "C" {
     pub fn HandleGraphic3dTransformPers_clone(
         self_: *const HandleGraphic3dTransformPers,
     ) -> crate::OcctResult<*mut HandleGraphic3dTransformPers>;
+    /// Check if Handle<Graphic3d_TransformPers> is null
+    pub fn HandleGraphic3dTransformPers_is_null(self_: *const HandleGraphic3dTransformPers)
+        -> bool;
     /// Dereference Handle to get *const Graphic3d_TransformPers
     pub fn HandleGraphic3dTransformPers_get(
         handle: *const HandleGraphic3dTransformPers,
@@ -21746,6 +22007,10 @@ extern "C" {
     pub fn HandleGraphic3dTransformPersScaledAbove_clone(
         self_: *const HandleGraphic3dTransformPersScaledAbove,
     ) -> crate::OcctResult<*mut HandleGraphic3dTransformPersScaledAbove>;
+    /// Check if Handle<Graphic3d_TransformPersScaledAbove> is null
+    pub fn HandleGraphic3dTransformPersScaledAbove_is_null(
+        self_: *const HandleGraphic3dTransformPersScaledAbove,
+    ) -> bool;
     /// Dereference Handle to get *const Graphic3d_TransformPersScaledAbove
     pub fn HandleGraphic3dTransformPersScaledAbove_get(
         handle: *const HandleGraphic3dTransformPersScaledAbove,
@@ -21914,6 +22179,8 @@ extern "C" {
     pub fn HandleGraphic3dViewAffinity_clone(
         self_: *const HandleGraphic3dViewAffinity,
     ) -> crate::OcctResult<*mut HandleGraphic3dViewAffinity>;
+    /// Check if Handle<Graphic3d_ViewAffinity> is null
+    pub fn HandleGraphic3dViewAffinity_is_null(self_: *const HandleGraphic3dViewAffinity) -> bool;
     /// Dereference Handle to get *const Graphic3d_ViewAffinity
     pub fn HandleGraphic3dViewAffinity_get(
         handle: *const HandleGraphic3dViewAffinity,
@@ -22251,6 +22518,8 @@ extern "C" {
     pub fn HandleImageAlienPixMap_clone(
         self_: *const HandleImageAlienPixMap,
     ) -> crate::OcctResult<*mut HandleImageAlienPixMap>;
+    /// Check if Handle<Image_AlienPixMap> is null
+    pub fn HandleImageAlienPixMap_is_null(self_: *const HandleImageAlienPixMap) -> bool;
     /// Dereference Handle to get *const Image_AlienPixMap
     pub fn HandleImageAlienPixMap_get(
         handle: *const HandleImageAlienPixMap,
@@ -22529,6 +22798,8 @@ extern "C" {
     pub fn HandleImageCompressedPixMap_clone(
         self_: *const HandleImageCompressedPixMap,
     ) -> crate::OcctResult<*mut HandleImageCompressedPixMap>;
+    /// Check if Handle<Image_CompressedPixMap> is null
+    pub fn HandleImageCompressedPixMap_is_null(self_: *const HandleImageCompressedPixMap) -> bool;
     /// Dereference Handle to get *const Image_CompressedPixMap
     pub fn HandleImageCompressedPixMap_get(
         handle: *const HandleImageCompressedPixMap,
@@ -22656,6 +22927,8 @@ extern "C" {
     pub fn HandleImageDiff_clone(
         self_: *const HandleImageDiff,
     ) -> crate::OcctResult<*mut HandleImageDiff>;
+    /// Check if Handle<Image_Diff> is null
+    pub fn HandleImageDiff_is_null(self_: *const HandleImageDiff) -> bool;
     /// Dereference Handle to get *const Image_Diff
     pub fn HandleImageDiff_get(
         handle: *const HandleImageDiff,
@@ -22965,6 +23238,8 @@ extern "C" {
     pub fn HandleImagePixMap_clone(
         self_: *const HandleImagePixMap,
     ) -> crate::OcctResult<*mut HandleImagePixMap>;
+    /// Check if Handle<Image_PixMap> is null
+    pub fn HandleImagePixMap_is_null(self_: *const HandleImagePixMap) -> bool;
     /// Dereference Handle to get *const Image_PixMap
     pub fn HandleImagePixMap_get(
         handle: *const HandleImagePixMap,
@@ -23146,6 +23421,8 @@ extern "C" {
     pub fn HandleImagePixMapData_clone(
         self_: *const HandleImagePixMapData,
     ) -> crate::OcctResult<*mut HandleImagePixMapData>;
+    /// Check if Handle<Image_PixMapData> is null
+    pub fn HandleImagePixMapData_is_null(self_: *const HandleImagePixMapData) -> bool;
     /// Dereference Handle to get *const Image_PixMapData
     pub fn HandleImagePixMapData_get(
         handle: *const HandleImagePixMapData,
@@ -23276,6 +23553,8 @@ extern "C" {
     pub fn HandleImageSupportedFormats_clone(
         self_: *const HandleImageSupportedFormats,
     ) -> crate::OcctResult<*mut HandleImageSupportedFormats>;
+    /// Check if Handle<Image_SupportedFormats> is null
+    pub fn HandleImageSupportedFormats_is_null(self_: *const HandleImageSupportedFormats) -> bool;
     /// Dereference Handle to get *const Image_SupportedFormats
     pub fn HandleImageSupportedFormats_get(
         handle: *const HandleImageSupportedFormats,
@@ -23406,6 +23685,8 @@ extern "C" {
     pub fn HandleImageTexture_clone(
         self_: *const HandleImageTexture,
     ) -> crate::OcctResult<*mut HandleImageTexture>;
+    /// Check if Handle<Image_Texture> is null
+    pub fn HandleImageTexture_is_null(self_: *const HandleImageTexture) -> bool;
     /// Dereference Handle to get *const Image_Texture
     pub fn HandleImageTexture_get(
         handle: *const HandleImageTexture,
@@ -23511,6 +23792,8 @@ extern "C" {
     pub fn HandleImageVideoRecorder_clone(
         self_: *const HandleImageVideoRecorder,
     ) -> crate::OcctResult<*mut HandleImageVideoRecorder>;
+    /// Check if Handle<Image_VideoRecorder> is null
+    pub fn HandleImageVideoRecorder_is_null(self_: *const HandleImageVideoRecorder) -> bool;
     /// Dereference Handle to get *const Image_VideoRecorder
     pub fn HandleImageVideoRecorder_get(
         handle: *const HandleImageVideoRecorder,
@@ -23592,6 +23875,8 @@ extern "C" {
     pub fn HandleMediaBufferPool_clone(
         self_: *const HandleMediaBufferPool,
     ) -> crate::OcctResult<*mut HandleMediaBufferPool>;
+    /// Check if Handle<Media_BufferPool> is null
+    pub fn HandleMediaBufferPool_is_null(self_: *const HandleMediaBufferPool) -> bool;
     /// Dereference Handle to get *const Media_BufferPool
     pub fn HandleMediaBufferPool_get(
         handle: *const HandleMediaBufferPool,
@@ -23691,6 +23976,8 @@ extern "C" {
     pub fn HandleMediaCodecContext_clone(
         self_: *const HandleMediaCodecContext,
     ) -> crate::OcctResult<*mut HandleMediaCodecContext>;
+    /// Check if Handle<Media_CodecContext> is null
+    pub fn HandleMediaCodecContext_is_null(self_: *const HandleMediaCodecContext) -> bool;
     /// Dereference Handle to get *const Media_CodecContext
     pub fn HandleMediaCodecContext_get(
         handle: *const HandleMediaCodecContext,
@@ -23818,6 +24105,8 @@ extern "C" {
     pub fn HandleMediaFormatContext_clone(
         self_: *const HandleMediaFormatContext,
     ) -> crate::OcctResult<*mut HandleMediaFormatContext>;
+    /// Check if Handle<Media_FormatContext> is null
+    pub fn HandleMediaFormatContext_is_null(self_: *const HandleMediaFormatContext) -> bool;
     /// Dereference Handle to get *const Media_FormatContext
     pub fn HandleMediaFormatContext_get(
         handle: *const HandleMediaFormatContext,
@@ -23947,6 +24236,8 @@ extern "C" {
     pub fn HandleMediaFrame_clone(
         self_: *const HandleMediaFrame,
     ) -> crate::OcctResult<*mut HandleMediaFrame>;
+    /// Check if Handle<Media_Frame> is null
+    pub fn HandleMediaFrame_is_null(self_: *const HandleMediaFrame) -> bool;
     /// Dereference Handle to get *const Media_Frame
     pub fn HandleMediaFrame_get(
         handle: *const HandleMediaFrame,
@@ -24053,6 +24344,8 @@ extern "C" {
     pub fn HandleMediaPacket_clone(
         self_: *const HandleMediaPacket,
     ) -> crate::OcctResult<*mut HandleMediaPacket>;
+    /// Check if Handle<Media_Packet> is null
+    pub fn HandleMediaPacket_is_null(self_: *const HandleMediaPacket) -> bool;
     /// Dereference Handle to get *const Media_Packet
     pub fn HandleMediaPacket_get(
         handle: *const HandleMediaPacket,
@@ -24174,6 +24467,8 @@ extern "C" {
     pub fn HandleMediaPlayerContext_clone(
         self_: *const HandleMediaPlayerContext,
     ) -> crate::OcctResult<*mut HandleMediaPlayerContext>;
+    /// Check if Handle<Media_PlayerContext> is null
+    pub fn HandleMediaPlayerContext_is_null(self_: *const HandleMediaPlayerContext) -> bool;
     /// Dereference Handle to get *const Media_PlayerContext
     pub fn HandleMediaPlayerContext_get(
         handle: *const HandleMediaPlayerContext,
@@ -24264,6 +24559,8 @@ extern "C" {
     pub fn HandleMediaScaler_clone(
         self_: *const HandleMediaScaler,
     ) -> crate::OcctResult<*mut HandleMediaScaler>;
+    /// Check if Handle<Media_Scaler> is null
+    pub fn HandleMediaScaler_is_null(self_: *const HandleMediaScaler) -> bool;
     /// Dereference Handle to get *const Media_Scaler
     pub fn HandleMediaScaler_get(
         handle: *const HandleMediaScaler,
@@ -24351,6 +24648,8 @@ extern "C" {
     pub fn HandleMediaTimer_clone(
         self_: *const HandleMediaTimer,
     ) -> crate::OcctResult<*mut HandleMediaTimer>;
+    /// Check if Handle<Media_Timer> is null
+    pub fn HandleMediaTimer_is_null(self_: *const HandleMediaTimer) -> bool;
     /// Dereference Handle to get *const Media_Timer
     pub fn HandleMediaTimer_get(
         handle: *const HandleMediaTimer,

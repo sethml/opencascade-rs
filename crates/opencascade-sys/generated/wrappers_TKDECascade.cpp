@@ -32,27 +32,31 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleDEBREPConfigurationNode_destructor(HandleDEBREPConfigurationNode* self_) { delete self_; }
 extern "C" OcctResult<HandleDEBREPConfigurationNode*> HandleDEBREPConfigurationNode_clone(const HandleDEBREPConfigurationNode* self_) {
     try { return {new HandleDEBREPConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEBREPConfigurationNode_is_null(const HandleDEBREPConfigurationNode* self_) { return self_->IsNull(); }
 extern "C" void HandleDEBREPProvider_destructor(HandleDEBREPProvider* self_) { delete self_; }
 extern "C" OcctResult<HandleDEBREPProvider*> HandleDEBREPProvider_clone(const HandleDEBREPProvider* self_) {
     try { return {new HandleDEBREPProvider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEBREPProvider_is_null(const HandleDEBREPProvider* self_) { return self_->IsNull(); }
 extern "C" void HandleDEXCAFConfigurationNode_destructor(HandleDEXCAFConfigurationNode* self_) { delete self_; }
 extern "C" OcctResult<HandleDEXCAFConfigurationNode*> HandleDEXCAFConfigurationNode_clone(const HandleDEXCAFConfigurationNode* self_) {
     try { return {new HandleDEXCAFConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEXCAFConfigurationNode_is_null(const HandleDEXCAFConfigurationNode* self_) { return self_->IsNull(); }
 extern "C" void HandleDEXCAFProvider_destructor(HandleDEXCAFProvider* self_) { delete self_; }
 extern "C" OcctResult<HandleDEXCAFProvider*> HandleDEXCAFProvider_clone(const HandleDEXCAFProvider* self_) {
     try { return {new HandleDEXCAFProvider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleDEXCAFProvider_is_null(const HandleDEXCAFProvider* self_) { return self_->IsNull(); }
 
 // ========================
 // DEBREP_ConfigurationNode wrappers

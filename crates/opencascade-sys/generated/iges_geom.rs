@@ -1105,6 +1105,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomBSplineCurve {
 }
 
 impl HandleIGESGeomBSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_BSplineCurve
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_BSplineCurve {
         unsafe {
@@ -2319,6 +2326,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomBSplineSurface {
 }
 
 impl HandleIGESGeomBSplineSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_BSplineSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_BSplineSurface {
         unsafe {
@@ -3353,6 +3367,11 @@ unsafe impl crate::CppCopyable for HandleIGESGeomBoundary {
 }
 
 impl HandleIGESGeomBoundary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundary_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_Boundary
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Boundary {
         unsafe {
@@ -4347,6 +4366,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomBoundedSurface {
 }
 
 impl HandleIGESGeomBoundedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundedSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_BoundedSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_BoundedSurface {
         unsafe {
@@ -5400,6 +5426,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomCircularArc {
 }
 
 impl HandleIGESGeomCircularArc {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomCircularArc_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_CircularArc
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_CircularArc {
         unsafe {
@@ -6356,6 +6389,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomCompositeCurve {
 }
 
 impl HandleIGESGeomCompositeCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomCompositeCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_CompositeCurve
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_CompositeCurve {
         unsafe {
@@ -7500,6 +7540,11 @@ unsafe impl crate::CppCopyable for HandleIGESGeomConicArc {
 }
 
 impl HandleIGESGeomConicArc {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGeomConicArc_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_ConicArc
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_ConicArc {
         unsafe {
@@ -8571,6 +8616,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomCopiousData {
 }
 
 impl HandleIGESGeomCopiousData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomCopiousData_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_CopiousData
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_CopiousData {
         unsafe {
@@ -9581,6 +9633,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomCurveOnSurface {
 }
 
 impl HandleIGESGeomCurveOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomCurveOnSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_CurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_CurveOnSurface {
         unsafe {
@@ -10503,6 +10562,11 @@ unsafe impl crate::CppCopyable for HandleIGESGeomDirection {
 }
 
 impl HandleIGESGeomDirection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGeomDirection_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_Direction
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Direction {
         unsafe {
@@ -11457,6 +11521,11 @@ unsafe impl crate::CppCopyable for HandleIGESGeomFlash {
 }
 
 impl HandleIGESGeomFlash {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGeomFlash_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_Flash
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Flash {
         unsafe {
@@ -12109,6 +12178,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomGeneralModule {
 }
 
 impl HandleIGESGeomGeneralModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomGeneralModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_GeneralModule {
         unsafe {
@@ -12401,6 +12477,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomHArray1OfBoundary {
 }
 
 impl HandleIGESGeomHArray1OfBoundary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfBoundary_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_HArray1OfBoundary
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_HArray1OfBoundary {
         unsafe {
@@ -12667,6 +12750,15 @@ unsafe impl crate::CppCopyable for HandleIGESGeomHArray1OfCurveOnSurface {
 }
 
 impl HandleIGESGeomHArray1OfCurveOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfCurveOnSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_HArray1OfCurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_HArray1OfCurveOnSurface {
         unsafe {
@@ -12931,6 +13023,15 @@ unsafe impl crate::CppCopyable for HandleIGESGeomHArray1OfTransformationMatrix {
 }
 
 impl HandleIGESGeomHArray1OfTransformationMatrix {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfTransformationMatrix_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_HArray1OfTransformationMatrix
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_HArray1OfTransformationMatrix {
         unsafe {
@@ -13820,6 +13921,11 @@ unsafe impl crate::CppCopyable for HandleIGESGeomLine {
 }
 
 impl HandleIGESGeomLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGeomLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_Line
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Line {
         unsafe {
@@ -14945,6 +15051,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomOffsetCurve {
 }
 
 impl HandleIGESGeomOffsetCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_OffsetCurve
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_OffsetCurve {
         unsafe {
@@ -15936,6 +16049,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomOffsetSurface {
 }
 
 impl HandleIGESGeomOffsetSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_OffsetSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_OffsetSurface {
         unsafe {
@@ -16907,6 +17027,11 @@ unsafe impl crate::CppCopyable for HandleIGESGeomPlane {
 }
 
 impl HandleIGESGeomPlane {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGeomPlane_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_Plane
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Plane {
         unsafe {
@@ -17803,6 +17928,11 @@ unsafe impl crate::CppCopyable for HandleIGESGeomPoint {
 }
 
 impl HandleIGESGeomPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGeomPoint_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_Point
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Point {
         unsafe {
@@ -18198,6 +18328,11 @@ unsafe impl crate::CppCopyable for HandleIGESGeomProtocol {
 }
 
 impl HandleIGESGeomProtocol {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESGeomProtocol_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_Protocol
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_Protocol {
         unsafe {
@@ -18582,6 +18717,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomReadWriteModule {
 }
 
 impl HandleIGESGeomReadWriteModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomReadWriteModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_ReadWriteModule
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_ReadWriteModule {
         unsafe {
@@ -19592,6 +19734,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomRuledSurface {
 }
 
 impl HandleIGESGeomRuledSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomRuledSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_RuledSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_RuledSurface {
         unsafe {
@@ -19872,6 +20021,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomSpecificModule {
 }
 
 impl HandleIGESGeomSpecificModule {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomSpecificModule_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_SpecificModule
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_SpecificModule {
         unsafe {
@@ -20996,6 +21152,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomSplineCurve {
 }
 
 impl HandleIGESGeomSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineCurve_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_SplineCurve
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_SplineCurve {
         unsafe {
@@ -22101,6 +22264,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomSplineSurface {
 }
 
 impl HandleIGESGeomSplineSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_SplineSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_SplineSurface {
         unsafe {
@@ -23086,6 +23256,15 @@ unsafe impl crate::CppCopyable for HandleIGESGeomSurfaceOfRevolution {
 }
 
 impl HandleIGESGeomSurfaceOfRevolution {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomSurfaceOfRevolution_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_SurfaceOfRevolution
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_SurfaceOfRevolution {
         unsafe {
@@ -24067,6 +24246,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomTabulatedCylinder {
 }
 
 impl HandleIGESGeomTabulatedCylinder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomTabulatedCylinder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_TabulatedCylinder
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_TabulatedCylinder {
         unsafe {
@@ -28574,6 +28760,15 @@ unsafe impl crate::CppCopyable for HandleIGESGeomTransformationMatrix {
 }
 
 impl HandleIGESGeomTransformationMatrix {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomTransformationMatrix_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_TransformationMatrix
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_TransformationMatrix {
         unsafe {
@@ -29609,6 +29804,13 @@ unsafe impl crate::CppCopyable for HandleIGESGeomTrimmedSurface {
 }
 
 impl HandleIGESGeomTrimmedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomTrimmedSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IGESGeom_TrimmedSurface
     pub fn get(&self) -> &crate::ffi_types::IGESGeom_TrimmedSurface {
         unsafe {

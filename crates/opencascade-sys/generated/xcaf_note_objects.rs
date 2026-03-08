@@ -316,6 +316,13 @@ unsafe impl crate::CppCopyable for HandleXCAFNoteObjectsNoteObject {
 }
 
 impl HandleXCAFNoteObjectsNoteObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XCAFNoteObjects_NoteObject
     pub fn get(&self) -> &crate::ffi_types::XCAFNoteObjects_NoteObject {
         unsafe {

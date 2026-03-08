@@ -547,6 +547,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectAct {
 }
 
 impl HandleIFSelectAct {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectAct_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_Act
     pub fn get(&self) -> &crate::ffi_types::IFSelect_Act {
         unsafe {
@@ -933,6 +938,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectActivator {
 }
 
 impl HandleIFSelectActivator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectActivator_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_Activator
     pub fn get(&self) -> &crate::ffi_types::IFSelect_Activator {
         unsafe {
@@ -1320,6 +1330,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectAppliedModifiers {
 }
 
 impl HandleIFSelectAppliedModifiers {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectAppliedModifiers_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_AppliedModifiers
     pub fn get(&self) -> &crate::ffi_types::IFSelect_AppliedModifiers {
         unsafe {
@@ -1592,6 +1609,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectBasicDumper {
 }
 
 impl HandleIFSelectBasicDumper {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectBasicDumper_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_BasicDumper
     pub fn get(&self) -> &crate::ffi_types::IFSelect_BasicDumper {
         unsafe {
@@ -1964,6 +1988,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectCheckCounter {
 }
 
 impl HandleIFSelectCheckCounter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectCheckCounter_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_CheckCounter
     pub fn get(&self) -> &crate::ffi_types::IFSelect_CheckCounter {
         unsafe {
@@ -3100,6 +3131,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectDispGlobal {
 }
 
 impl HandleIFSelectDispGlobal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectDispGlobal_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_DispGlobal
     pub fn get(&self) -> &crate::ffi_types::IFSelect_DispGlobal {
         unsafe {
@@ -3520,6 +3556,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectDispPerCount {
 }
 
 impl HandleIFSelectDispPerCount {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectDispPerCount_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_DispPerCount
     pub fn get(&self) -> &crate::ffi_types::IFSelect_DispPerCount {
         unsafe {
@@ -3944,6 +3987,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectDispPerFiles {
 }
 
 impl HandleIFSelectDispPerFiles {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectDispPerFiles_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_DispPerFiles
     pub fn get(&self) -> &crate::ffi_types::IFSelect_DispPerFiles {
         unsafe {
@@ -4333,6 +4383,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectDispPerOne {
 }
 
 impl HandleIFSelectDispPerOne {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectDispPerOne_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_DispPerOne
     pub fn get(&self) -> &crate::ffi_types::IFSelect_DispPerOne {
         unsafe {
@@ -4772,6 +4827,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectDispPerSignature {
 }
 
 impl HandleIFSelectDispPerSignature {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectDispPerSignature_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_DispPerSignature
     pub fn get(&self) -> &crate::ffi_types::IFSelect_DispPerSignature {
         unsafe {
@@ -5138,6 +5200,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectDispatch {
 }
 
 impl HandleIFSelectDispatch {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectDispatch_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_Dispatch
     pub fn get(&self) -> &crate::ffi_types::IFSelect_Dispatch {
         unsafe {
@@ -6047,6 +6114,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectEditForm {
 }
 
 impl HandleIFSelectEditForm {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectEditForm_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_EditForm
     pub fn get(&self) -> &crate::ffi_types::IFSelect_EditForm {
         unsafe {
@@ -6539,6 +6611,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectEditor {
 }
 
 impl HandleIFSelectEditor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectEditor_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_Editor
     pub fn get(&self) -> &crate::ffi_types::IFSelect_Editor {
         unsafe {
@@ -7071,6 +7148,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectGeneralModifier {
 }
 
 impl HandleIFSelectGeneralModifier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectGeneralModifier_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_GeneralModifier
     pub fn get(&self) -> &crate::ffi_types::IFSelect_GeneralModifier {
         unsafe {
@@ -7914,6 +7998,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectGraphCounter {
 }
 
 impl HandleIFSelectGraphCounter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectGraphCounter_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_GraphCounter
     pub fn get(&self) -> &crate::ffi_types::IFSelect_GraphCounter {
         unsafe {
@@ -8200,6 +8291,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectHSeqOfSelection {
 }
 
 impl HandleIFSelectHSeqOfSelection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectHSeqOfSelection_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_HSeqOfSelection
     pub fn get(&self) -> &crate::ffi_types::IFSelect_HSeqOfSelection {
         unsafe {
@@ -8463,6 +8561,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectIntParam {
 }
 
 impl HandleIFSelectIntParam {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectIntParam_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_IntParam
     pub fn get(&self) -> &crate::ffi_types::IFSelect_IntParam {
         unsafe {
@@ -8896,6 +8999,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectListEditor {
 }
 
 impl HandleIFSelectListEditor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectListEditor_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_ListEditor
     pub fn get(&self) -> &crate::ffi_types::IFSelect_ListEditor {
         unsafe {
@@ -9491,6 +9599,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectModelCopier {
 }
 
 impl HandleIFSelectModelCopier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectModelCopier_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_ModelCopier
     pub fn get(&self) -> &crate::ffi_types::IFSelect_ModelCopier {
         unsafe {
@@ -9865,6 +9980,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectModifEditForm {
 }
 
 impl HandleIFSelectModifEditForm {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectModifEditForm_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_ModifEditForm
     pub fn get(&self) -> &crate::ffi_types::IFSelect_ModifEditForm {
         unsafe {
@@ -10259,6 +10381,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectModifReorder {
 }
 
 impl HandleIFSelectModifReorder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectModifReorder_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_ModifReorder
     pub fn get(&self) -> &crate::ffi_types::IFSelect_ModifReorder {
         unsafe {
@@ -10605,6 +10734,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectModifier {
 }
 
 impl HandleIFSelectModifier {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectModifier_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_Modifier
     pub fn get(&self) -> &crate::ffi_types::IFSelect_Modifier {
         unsafe {
@@ -11235,6 +11369,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectPacketList {
 }
 
 impl HandleIFSelectPacketList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectPacketList_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_PacketList
     pub fn get(&self) -> &crate::ffi_types::IFSelect_PacketList {
         unsafe {
@@ -11776,6 +11915,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectParamEditor {
 }
 
 impl HandleIFSelectParamEditor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectParamEditor_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_ParamEditor
     pub fn get(&self) -> &crate::ffi_types::IFSelect_ParamEditor {
         unsafe {
@@ -12327,6 +12473,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectAnyList {
 }
 
 impl HandleIFSelectSelectAnyList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectAnyList_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectAnyList
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectAnyList {
         unsafe {
@@ -12813,6 +12966,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectAnyType {
 }
 
 impl HandleIFSelectSelectAnyType {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectAnyType_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectAnyType
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectAnyType {
         unsafe {
@@ -13130,6 +13290,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectBase {
 }
 
 impl HandleIFSelectSelectBase {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectSelectBase_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectBase
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectBase {
         unsafe {
@@ -13551,6 +13716,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectCombine {
 }
 
 impl HandleIFSelectSelectCombine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectCombine_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectCombine
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectCombine {
         unsafe {
@@ -13938,6 +14110,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectControl {
 }
 
 impl HandleIFSelectSelectControl {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectControl_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectControl
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectControl {
         unsafe {
@@ -14322,6 +14501,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectDeduct {
 }
 
 impl HandleIFSelectSelectDeduct {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectDeduct_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectDeduct
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectDeduct {
         unsafe {
@@ -15258,6 +15444,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectDiff {
 }
 
 impl HandleIFSelectSelectDiff {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectSelectDiff_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectDiff
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectDiff {
         unsafe {
@@ -15629,6 +15820,15 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectEntityNumber {
 }
 
 impl HandleIFSelectSelectEntityNumber {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectEntityNumber_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectEntityNumber
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectEntityNumber {
         unsafe {
@@ -16116,6 +16316,15 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectErrorEntities {
 }
 
 impl HandleIFSelectSelectErrorEntities {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectErrorEntities_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectErrorEntities
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectErrorEntities {
         unsafe {
@@ -16575,6 +16784,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectExplore {
 }
 
 impl HandleIFSelectSelectExplore {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectExplore_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectExplore
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectExplore {
         unsafe {
@@ -17234,6 +17450,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectExtract {
 }
 
 impl HandleIFSelectSelectExtract {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectExtract_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectExtract
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectExtract {
         unsafe {
@@ -17995,6 +18218,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectFlag {
 }
 
 impl HandleIFSelectSelectFlag {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectSelectFlag_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectFlag
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectFlag {
         unsafe {
@@ -18615,6 +18843,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectInList {
 }
 
 impl HandleIFSelectSelectInList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectInList_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectInList
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectInList {
         unsafe {
@@ -19110,6 +19345,15 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectIncorrectEntities {
 }
 
 impl HandleIFSelectSelectIncorrectEntities {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectIncorrectEntities_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectIncorrectEntities
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectIncorrectEntities {
         unsafe {
@@ -19515,6 +19759,15 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectIntersection {
 }
 
 impl HandleIFSelectSelectIntersection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectIntersection_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectIntersection
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectIntersection {
         unsafe {
@@ -19856,6 +20109,15 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectModelEntities {
 }
 
 impl HandleIFSelectSelectModelEntities {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectModelEntities_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectModelEntities
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectModelEntities {
         unsafe {
@@ -20197,6 +20459,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectModelRoots {
 }
 
 impl HandleIFSelectSelectModelRoots {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectModelRoots_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectModelRoots
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectModelRoots {
         unsafe {
@@ -20696,6 +20965,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectPointed {
 }
 
 impl HandleIFSelectSelectPointed {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectPointed_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectPointed
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectPointed {
         unsafe {
@@ -21279,6 +21555,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectRange {
 }
 
 impl HandleIFSelectSelectRange {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectRange_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectRange
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectRange {
         unsafe {
@@ -21798,6 +22081,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectRootComps {
 }
 
 impl HandleIFSelectSelectRootComps {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectRootComps_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectRootComps
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectRootComps {
         unsafe {
@@ -22289,6 +22579,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectRoots {
 }
 
 impl HandleIFSelectSelectRoots {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectRoots_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectRoots
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectRoots {
         unsafe {
@@ -22853,6 +23150,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectSent {
 }
 
 impl HandleIFSelectSelectSent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectSelectSent_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectSent
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectSent {
         unsafe {
@@ -23274,6 +23576,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectShared {
 }
 
 impl HandleIFSelectSelectShared {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectShared_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectShared
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectShared {
         unsafe {
@@ -23682,6 +23991,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectSharing {
 }
 
 impl HandleIFSelectSelectSharing {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectSharing_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectSharing
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectSharing {
         unsafe {
@@ -24305,6 +24621,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectSignature {
 }
 
 impl HandleIFSelectSelectSignature {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectSignature_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectSignature
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectSignature {
         unsafe {
@@ -24835,6 +25158,15 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectSignedShared {
 }
 
 impl HandleIFSelectSelectSignedShared {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectSignedShared_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectSignedShared
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectSignedShared {
         unsafe {
@@ -25367,6 +25699,15 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectSignedSharing {
 }
 
 impl HandleIFSelectSelectSignedSharing {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectSignedSharing_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectSignedSharing
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectSignedSharing {
         unsafe {
@@ -25850,6 +26191,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectSuite {
 }
 
 impl HandleIFSelectSelectSuite {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectSuite_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectSuite
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectSuite {
         unsafe {
@@ -26390,6 +26738,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectType {
 }
 
 impl HandleIFSelectSelectType {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectSelectType_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectType
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectType {
         unsafe {
@@ -26807,6 +27160,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectUnion {
 }
 
 impl HandleIFSelectSelectUnion {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectUnion_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectUnion
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectUnion {
         unsafe {
@@ -27287,6 +27647,15 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelectUnknownEntities {
 }
 
 impl HandleIFSelectSelectUnknownEntities {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSelectUnknownEntities_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SelectUnknownEntities
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SelectUnknownEntities {
         unsafe {
@@ -27578,6 +27947,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectSelection {
 }
 
 impl HandleIFSelectSelection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectSelection_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_Selection
     pub fn get(&self) -> &crate::ffi_types::IFSelect_Selection {
         unsafe {
@@ -28701,6 +29075,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSessionDumper {
 }
 
 impl HandleIFSelectSessionDumper {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSessionDumper_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SessionDumper
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SessionDumper {
         unsafe {
@@ -29830,6 +30211,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSessionPilot {
 }
 
 impl HandleIFSelectSessionPilot {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSessionPilot_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SessionPilot
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SessionPilot {
         unsafe {
@@ -30468,6 +30856,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectShareOut {
 }
 
 impl HandleIFSelectShareOut {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectShareOut_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_ShareOut
     pub fn get(&self) -> &crate::ffi_types::IFSelect_ShareOut {
         unsafe {
@@ -31132,6 +31525,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSignAncestor {
 }
 
 impl HandleIFSelectSignAncestor {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSignAncestor_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SignAncestor
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignAncestor {
         unsafe {
@@ -31582,6 +31982,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSignCategory {
 }
 
 impl HandleIFSelectSignCategory {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSignCategory_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SignCategory
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignCategory {
         unsafe {
@@ -32229,6 +32636,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSignCounter {
 }
 
 impl HandleIFSelectSignCounter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSignCounter_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SignCounter
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignCounter {
         unsafe {
@@ -32701,6 +33115,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSignMultiple {
 }
 
 impl HandleIFSelectSignMultiple {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSignMultiple_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SignMultiple
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignMultiple {
         unsafe {
@@ -33144,6 +33565,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectSignType {
 }
 
 impl HandleIFSelectSignType {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectSignType_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SignType
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignType {
         unsafe {
@@ -33617,6 +34043,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSignValidity {
 }
 
 impl HandleIFSelectSignValidity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSignValidity_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SignValidity
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignValidity {
         unsafe {
@@ -34063,6 +34496,11 @@ unsafe impl crate::CppCopyable for HandleIFSelectSignature {
 }
 
 impl HandleIFSelectSignature {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXSBase::HandleIFSelectSignature_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_Signature
     pub fn get(&self) -> &crate::ffi_types::IFSelect_Signature {
         unsafe {
@@ -34750,6 +35188,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectSignatureList {
 }
 
 impl HandleIFSelectSignatureList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectSignatureList_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_SignatureList
     pub fn get(&self) -> &crate::ffi_types::IFSelect_SignatureList {
         unsafe {
@@ -35341,6 +35786,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectTransformStandard {
 }
 
 impl HandleIFSelectTransformStandard {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectTransformStandard_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_TransformStandard
     pub fn get(&self) -> &crate::ffi_types::IFSelect_TransformStandard {
         unsafe {
@@ -35634,6 +36086,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectTransformer {
 }
 
 impl HandleIFSelectTransformer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectTransformer_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_Transformer
     pub fn get(&self) -> &crate::ffi_types::IFSelect_Transformer {
         unsafe {
@@ -36049,6 +36508,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectWorkLibrary {
 }
 
 impl HandleIFSelectWorkLibrary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectWorkLibrary_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_WorkLibrary
     pub fn get(&self) -> &crate::ffi_types::IFSelect_WorkLibrary {
         unsafe {
@@ -38995,6 +39461,13 @@ unsafe impl crate::CppCopyable for HandleIFSelectWorkSession {
 }
 
 impl HandleIFSelectWorkSession {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleIFSelectWorkSession_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying IFSelect_WorkSession
     pub fn get(&self) -> &crate::ffi_types::IFSelect_WorkSession {
         unsafe {

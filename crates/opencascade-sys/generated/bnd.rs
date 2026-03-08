@@ -2418,6 +2418,11 @@ unsafe impl crate::CppCopyable for HandleBndHArray1OfBox {
 }
 
 impl HandleBndHArray1OfBox {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleBndHArray1OfBox_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Bnd_HArray1OfBox
     pub fn get(&self) -> &crate::ffi_types::Bnd_HArray1OfBox {
         unsafe {
@@ -2682,6 +2687,11 @@ unsafe impl crate::CppCopyable for HandleBndHArray1OfBox2d {
 }
 
 impl HandleBndHArray1OfBox2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleBndHArray1OfBox2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Bnd_HArray1OfBox2d
     pub fn get(&self) -> &crate::ffi_types::Bnd_HArray1OfBox2d {
         unsafe {
@@ -2950,6 +2960,11 @@ unsafe impl crate::CppCopyable for HandleBndHArray1OfSphere {
 }
 
 impl HandleBndHArray1OfSphere {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandleBndHArray1OfSphere_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Bnd_HArray1OfSphere
     pub fn get(&self) -> &crate::ffi_types::Bnd_HArray1OfSphere {
         unsafe {

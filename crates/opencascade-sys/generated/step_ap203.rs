@@ -645,6 +645,13 @@ unsafe impl crate::CppCopyable for HandleStepAP203CcDesignApproval {
 }
 
 impl HandleStepAP203CcDesignApproval {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignApproval_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_CcDesignApproval
     pub fn get(&self) -> &crate::ffi_types::StepAP203_CcDesignApproval {
         unsafe {
@@ -935,6 +942,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203CcDesignCertification {
 }
 
 impl HandleStepAP203CcDesignCertification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignCertification_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_CcDesignCertification
     pub fn get(&self) -> &crate::ffi_types::StepAP203_CcDesignCertification {
         unsafe {
@@ -1232,6 +1248,13 @@ unsafe impl crate::CppCopyable for HandleStepAP203CcDesignContract {
 }
 
 impl HandleStepAP203CcDesignContract {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignContract_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_CcDesignContract
     pub fn get(&self) -> &crate::ffi_types::StepAP203_CcDesignContract {
         unsafe {
@@ -1535,6 +1558,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203CcDesignDateAndTimeAssignment 
 }
 
 impl HandleStepAP203CcDesignDateAndTimeAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignDateAndTimeAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_CcDesignDateAndTimeAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP203_CcDesignDateAndTimeAssignment {
         unsafe {
@@ -1818,6 +1850,13 @@ unsafe impl crate::CppCopyable for HandleStepAP203CcDesignPersonAndOrganizationA
 }
 
 impl HandleStepAP203CcDesignPersonAndOrganizationAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignPersonAndOrganizationAssignment_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_CcDesignPersonAndOrganizationAssignment
     pub fn get(&self) -> &crate::ffi_types::StepAP203_CcDesignPersonAndOrganizationAssignment {
         unsafe {
@@ -2094,6 +2133,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203CcDesignSecurityClassification
 }
 
 impl HandleStepAP203CcDesignSecurityClassification {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignSecurityClassification_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_CcDesignSecurityClassification
     pub fn get(&self) -> &crate::ffi_types::StepAP203_CcDesignSecurityClassification {
         unsafe {
@@ -2406,6 +2454,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203CcDesignSpecificationReference
 }
 
 impl HandleStepAP203CcDesignSpecificationReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203CcDesignSpecificationReference_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_CcDesignSpecificationReference
     pub fn get(&self) -> &crate::ffi_types::StepAP203_CcDesignSpecificationReference {
         unsafe {
@@ -2941,6 +2998,11 @@ unsafe impl crate::CppCopyable for HandleStepAP203Change {
 }
 
 impl HandleStepAP203Change {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepAP203Change_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_Change
     pub fn get(&self) -> &crate::ffi_types::StepAP203_Change {
         unsafe {
@@ -3242,6 +3304,13 @@ unsafe impl crate::CppCopyable for HandleStepAP203ChangeRequest {
 }
 
 impl HandleStepAP203ChangeRequest {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203ChangeRequest_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_ChangeRequest
     pub fn get(&self) -> &crate::ffi_types::StepAP203_ChangeRequest {
         unsafe {
@@ -4621,6 +4690,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfApprovedItem {
 }
 
 impl HandleStepAP203HArray1OfApprovedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfApprovedItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfApprovedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfApprovedItem {
         unsafe {
@@ -4889,6 +4967,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfCertifiedItem {
 }
 
 impl HandleStepAP203HArray1OfCertifiedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfCertifiedItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfCertifiedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfCertifiedItem {
         unsafe {
@@ -5151,6 +5238,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfChangeRequestItem {
 }
 
 impl HandleStepAP203HArray1OfChangeRequestItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfChangeRequestItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfChangeRequestItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfChangeRequestItem {
         unsafe {
@@ -5419,6 +5515,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfClassifiedItem {
 }
 
 impl HandleStepAP203HArray1OfClassifiedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfClassifiedItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfClassifiedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfClassifiedItem {
         unsafe {
@@ -5687,6 +5792,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfContractedItem {
 }
 
 impl HandleStepAP203HArray1OfContractedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfContractedItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfContractedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfContractedItem {
         unsafe {
@@ -5959,6 +6073,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfDateTimeItem {
 }
 
 impl HandleStepAP203HArray1OfDateTimeItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfDateTimeItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfDateTimeItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfDateTimeItem {
         unsafe {
@@ -6219,6 +6342,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfPersonOrganizationIte
 }
 
 impl HandleStepAP203HArray1OfPersonOrganizationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfPersonOrganizationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfPersonOrganizationItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfPersonOrganizationItem {
         unsafe {
@@ -6487,6 +6619,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfSpecifiedItem {
 }
 
 impl HandleStepAP203HArray1OfSpecifiedItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfSpecifiedItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfSpecifiedItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfSpecifiedItem {
         unsafe {
@@ -6752,6 +6893,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfStartRequestItem {
 }
 
 impl HandleStepAP203HArray1OfStartRequestItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfStartRequestItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfStartRequestItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfStartRequestItem {
         unsafe {
@@ -7034,6 +7184,15 @@ unsafe impl crate::CppCopyable for HandleStepAP203HArray1OfWorkItem {
 }
 
 impl HandleStepAP203HArray1OfWorkItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203HArray1OfWorkItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfWorkItem
     pub fn get(&self) -> &crate::ffi_types::StepAP203_HArray1OfWorkItem {
         unsafe {
@@ -7943,6 +8102,13 @@ unsafe impl crate::CppCopyable for HandleStepAP203StartRequest {
 }
 
 impl HandleStepAP203StartRequest {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP203StartRequest_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_StartRequest
     pub fn get(&self) -> &crate::ffi_types::StepAP203_StartRequest {
         unsafe {
@@ -8489,6 +8655,11 @@ unsafe impl crate::CppCopyable for HandleStepAP203StartWork {
 }
 
 impl HandleStepAP203StartWork {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDESTEP::HandleStepAP203StartWork_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying StepAP203_StartWork
     pub fn get(&self) -> &crate::ffi_types::StepAP203_StartWork {
         unsafe {

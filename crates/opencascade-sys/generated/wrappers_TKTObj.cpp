@@ -87,102 +87,121 @@ typedef opencascade::handle<TObj_TObject> HandleTObjTObject;
 typedef opencascade::handle<TObj_TReference> HandleTObjTReference;
 typedef opencascade::handle<TObj_TXYZ> HandleTObjTXYZ;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleTObjApplication_destructor(HandleTObjApplication* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjApplication*> HandleTObjApplication_clone(const HandleTObjApplication* self_) {
     try { return {new HandleTObjApplication(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjApplication_is_null(const HandleTObjApplication* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjCheckModel_destructor(HandleTObjCheckModel* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjCheckModel*> HandleTObjCheckModel_clone(const HandleTObjCheckModel* self_) {
     try { return {new HandleTObjCheckModel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjCheckModel_is_null(const HandleTObjCheckModel* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjHSequenceOfObject_destructor(HandleTObjHSequenceOfObject* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjHSequenceOfObject*> HandleTObjHSequenceOfObject_clone(const HandleTObjHSequenceOfObject* self_) {
     try { return {new HandleTObjHSequenceOfObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjHSequenceOfObject_is_null(const HandleTObjHSequenceOfObject* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjHiddenPartition_destructor(HandleTObjHiddenPartition* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjHiddenPartition*> HandleTObjHiddenPartition_clone(const HandleTObjHiddenPartition* self_) {
     try { return {new HandleTObjHiddenPartition(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjHiddenPartition_is_null(const HandleTObjHiddenPartition* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjLabelIterator_destructor(HandleTObjLabelIterator* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjLabelIterator*> HandleTObjLabelIterator_clone(const HandleTObjLabelIterator* self_) {
     try { return {new HandleTObjLabelIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjLabelIterator_is_null(const HandleTObjLabelIterator* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjModel_destructor(HandleTObjModel* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjModel*> HandleTObjModel_clone(const HandleTObjModel* self_) {
     try { return {new HandleTObjModel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjModel_is_null(const HandleTObjModel* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjModelIterator_destructor(HandleTObjModelIterator* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjModelIterator*> HandleTObjModelIterator_clone(const HandleTObjModelIterator* self_) {
     try { return {new HandleTObjModelIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjModelIterator_is_null(const HandleTObjModelIterator* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjObject_destructor(HandleTObjObject* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjObject*> HandleTObjObject_clone(const HandleTObjObject* self_) {
     try { return {new HandleTObjObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjObject_is_null(const HandleTObjObject* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjObjectIterator_destructor(HandleTObjObjectIterator* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjObjectIterator*> HandleTObjObjectIterator_clone(const HandleTObjObjectIterator* self_) {
     try { return {new HandleTObjObjectIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjObjectIterator_is_null(const HandleTObjObjectIterator* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjOcafObjectIterator_destructor(HandleTObjOcafObjectIterator* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjOcafObjectIterator*> HandleTObjOcafObjectIterator_clone(const HandleTObjOcafObjectIterator* self_) {
     try { return {new HandleTObjOcafObjectIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjOcafObjectIterator_is_null(const HandleTObjOcafObjectIterator* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjPartition_destructor(HandleTObjPartition* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjPartition*> HandleTObjPartition_clone(const HandleTObjPartition* self_) {
     try { return {new HandleTObjPartition(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjPartition_is_null(const HandleTObjPartition* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjReferenceIterator_destructor(HandleTObjReferenceIterator* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjReferenceIterator*> HandleTObjReferenceIterator_clone(const HandleTObjReferenceIterator* self_) {
     try { return {new HandleTObjReferenceIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjReferenceIterator_is_null(const HandleTObjReferenceIterator* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjSequenceIterator_destructor(HandleTObjSequenceIterator* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjSequenceIterator*> HandleTObjSequenceIterator_clone(const HandleTObjSequenceIterator* self_) {
     try { return {new HandleTObjSequenceIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjSequenceIterator_is_null(const HandleTObjSequenceIterator* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjTIntSparseArray_destructor(HandleTObjTIntSparseArray* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjTIntSparseArray*> HandleTObjTIntSparseArray_clone(const HandleTObjTIntSparseArray* self_) {
     try { return {new HandleTObjTIntSparseArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjTIntSparseArray_is_null(const HandleTObjTIntSparseArray* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjTModel_destructor(HandleTObjTModel* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjTModel*> HandleTObjTModel_clone(const HandleTObjTModel* self_) {
     try { return {new HandleTObjTModel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjTModel_is_null(const HandleTObjTModel* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjTNameContainer_destructor(HandleTObjTNameContainer* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjTNameContainer*> HandleTObjTNameContainer_clone(const HandleTObjTNameContainer* self_) {
     try { return {new HandleTObjTNameContainer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjTNameContainer_is_null(const HandleTObjTNameContainer* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjTObject_destructor(HandleTObjTObject* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjTObject*> HandleTObjTObject_clone(const HandleTObjTObject* self_) {
     try { return {new HandleTObjTObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjTObject_is_null(const HandleTObjTObject* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjTReference_destructor(HandleTObjTReference* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjTReference*> HandleTObjTReference_clone(const HandleTObjTReference* self_) {
     try { return {new HandleTObjTReference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjTReference_is_null(const HandleTObjTReference* self_) { return self_->IsNull(); }
 extern "C" void HandleTObjTXYZ_destructor(HandleTObjTXYZ* self_) { delete self_; }
 extern "C" OcctResult<HandleTObjTXYZ*> HandleTObjTXYZ_clone(const HandleTObjTXYZ* self_) {
     try { return {new HandleTObjTXYZ(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleTObjTXYZ_is_null(const HandleTObjTXYZ* self_) { return self_->IsNull(); }
 
 // ========================
 // TObj_Application wrappers

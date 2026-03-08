@@ -73,6 +73,8 @@ extern "C" {
     pub fn HandleBRepBlendAppFunc_clone(
         self_: *const HandleBRepBlendAppFunc,
     ) -> crate::OcctResult<*mut HandleBRepBlendAppFunc>;
+    /// Check if Handle<BRepBlend_AppFunc> is null
+    pub fn HandleBRepBlendAppFunc_is_null(self_: *const HandleBRepBlendAppFunc) -> bool;
     /// Dereference Handle to get *const BRepBlend_AppFunc
     pub fn HandleBRepBlendAppFunc_get(
         handle: *const HandleBRepBlendAppFunc,
@@ -402,6 +404,8 @@ extern "C" {
     pub fn HandleBRepBlendAppFuncRoot_clone(
         self_: *const HandleBRepBlendAppFuncRoot,
     ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRoot>;
+    /// Check if Handle<BRepBlend_AppFuncRoot> is null
+    pub fn HandleBRepBlendAppFuncRoot_is_null(self_: *const HandleBRepBlendAppFuncRoot) -> bool;
     /// Dereference Handle to get *const BRepBlend_AppFuncRoot
     pub fn HandleBRepBlendAppFuncRoot_get(
         handle: *const HandleBRepBlendAppFuncRoot,
@@ -525,6 +529,8 @@ extern "C" {
     pub fn HandleBRepBlendAppFuncRst_clone(
         self_: *const HandleBRepBlendAppFuncRst,
     ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRst>;
+    /// Check if Handle<BRepBlend_AppFuncRst> is null
+    pub fn HandleBRepBlendAppFuncRst_is_null(self_: *const HandleBRepBlendAppFuncRst) -> bool;
     /// Dereference Handle to get *const BRepBlend_AppFuncRst
     pub fn HandleBRepBlendAppFuncRst_get(
         handle: *const HandleBRepBlendAppFuncRst,
@@ -757,6 +763,9 @@ extern "C" {
     pub fn HandleBRepBlendAppFuncRstRst_clone(
         self_: *const HandleBRepBlendAppFuncRstRst,
     ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRstRst>;
+    /// Check if Handle<BRepBlend_AppFuncRstRst> is null
+    pub fn HandleBRepBlendAppFuncRstRst_is_null(self_: *const HandleBRepBlendAppFuncRstRst)
+        -> bool;
     /// Dereference Handle to get *const BRepBlend_AppFuncRstRst
     pub fn HandleBRepBlendAppFuncRstRst_get(
         handle: *const HandleBRepBlendAppFuncRstRst,
@@ -1900,6 +1909,8 @@ extern "C" {
     pub fn HandleBRepBlendLine_clone(
         self_: *const HandleBRepBlendLine,
     ) -> crate::OcctResult<*mut HandleBRepBlendLine>;
+    /// Check if Handle<BRepBlend_Line> is null
+    pub fn HandleBRepBlendLine_is_null(self_: *const HandleBRepBlendLine) -> bool;
     /// Dereference Handle to get *const BRepBlend_Line
     pub fn HandleBRepBlendLine_get(
         handle: *const HandleBRepBlendLine,
@@ -11269,6 +11280,8 @@ extern "C" {
     pub fn HandleChFiDSChamfSpine_clone(
         self_: *const HandleChFiDSChamfSpine,
     ) -> crate::OcctResult<*mut HandleChFiDSChamfSpine>;
+    /// Check if Handle<ChFiDS_ChamfSpine> is null
+    pub fn HandleChFiDSChamfSpine_is_null(self_: *const HandleChFiDSChamfSpine) -> bool;
     /// Dereference Handle to get *const ChFiDS_ChamfSpine
     pub fn HandleChFiDSChamfSpine_get(
         handle: *const HandleChFiDSChamfSpine,
@@ -11935,6 +11948,8 @@ extern "C" {
     pub fn HandleChFiDSElSpine_clone(
         self_: *const HandleChFiDSElSpine,
     ) -> crate::OcctResult<*mut HandleChFiDSElSpine>;
+    /// Check if Handle<ChFiDS_ElSpine> is null
+    pub fn HandleChFiDSElSpine_is_null(self_: *const HandleChFiDSElSpine) -> bool;
     /// Dereference Handle to get *const ChFiDS_ElSpine
     pub fn HandleChFiDSElSpine_get(
         handle: *const HandleChFiDSElSpine,
@@ -12203,6 +12218,8 @@ extern "C" {
     pub fn HandleChFiDSFilSpine_clone(
         self_: *const HandleChFiDSFilSpine,
     ) -> crate::OcctResult<*mut HandleChFiDSFilSpine>;
+    /// Check if Handle<ChFiDS_FilSpine> is null
+    pub fn HandleChFiDSFilSpine_is_null(self_: *const HandleChFiDSFilSpine) -> bool;
     /// Dereference Handle to get *const ChFiDS_FilSpine
     pub fn HandleChFiDSFilSpine_get(
         handle: *const HandleChFiDSFilSpine,
@@ -12568,6 +12585,8 @@ extern "C" {
     pub fn HandleChFiDSHData_clone(
         self_: *const HandleChFiDSHData,
     ) -> crate::OcctResult<*mut HandleChFiDSHData>;
+    /// Check if Handle<ChFiDS_HData> is null
+    pub fn HandleChFiDSHData_is_null(self_: *const HandleChFiDSHData) -> bool;
     /// Dereference Handle to get *const ChFiDS_HData
     pub fn HandleChFiDSHData_get(
         handle: *const HandleChFiDSHData,
@@ -12721,6 +12740,8 @@ extern "C" {
     pub fn HandleChFiDSSecHArray1_clone(
         self_: *const HandleChFiDSSecHArray1,
     ) -> crate::OcctResult<*mut HandleChFiDSSecHArray1>;
+    /// Check if Handle<ChFiDS_SecHArray1> is null
+    pub fn HandleChFiDSSecHArray1_is_null(self_: *const HandleChFiDSSecHArray1) -> bool;
     /// Dereference Handle to get *const ChFiDS_SecHArray1
     pub fn HandleChFiDSSecHArray1_get(
         handle: *const HandleChFiDSSecHArray1,
@@ -13074,6 +13095,8 @@ extern "C" {
     pub fn HandleChFiDSSpine_clone(
         self_: *const HandleChFiDSSpine,
     ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
+    /// Check if Handle<ChFiDS_Spine> is null
+    pub fn HandleChFiDSSpine_is_null(self_: *const HandleChFiDSSpine) -> bool;
     /// Dereference Handle to get *const ChFiDS_Spine
     pub fn HandleChFiDSSpine_get(
         handle: *const HandleChFiDSSpine,
@@ -13384,6 +13407,8 @@ extern "C" {
     pub fn HandleChFiDSStripe_clone(
         self_: *const HandleChFiDSStripe,
     ) -> crate::OcctResult<*mut HandleChFiDSStripe>;
+    /// Check if Handle<ChFiDS_Stripe> is null
+    pub fn HandleChFiDSStripe_is_null(self_: *const HandleChFiDSStripe) -> bool;
     /// Dereference Handle to get *const ChFiDS_Stripe
     pub fn HandleChFiDSStripe_get(
         handle: *const HandleChFiDSStripe,
@@ -13699,6 +13724,8 @@ extern "C" {
     pub fn HandleChFiDSSurfData_clone(
         self_: *const HandleChFiDSSurfData,
     ) -> crate::OcctResult<*mut HandleChFiDSSurfData>;
+    /// Check if Handle<ChFiDS_SurfData> is null
+    pub fn HandleChFiDSSurfData_is_null(self_: *const HandleChFiDSSurfData) -> bool;
     /// Dereference Handle to get *const ChFiDS_SurfData
     pub fn HandleChFiDSSurfData_get(
         handle: *const HandleChFiDSSurfData,

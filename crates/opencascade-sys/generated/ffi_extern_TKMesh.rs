@@ -48,6 +48,8 @@ extern "C" {
     pub fn HandleBRepMeshBaseMeshAlgo_clone(
         self_: *const HandleBRepMeshBaseMeshAlgo,
     ) -> crate::OcctResult<*mut HandleBRepMeshBaseMeshAlgo>;
+    /// Check if Handle<BRepMesh_BaseMeshAlgo> is null
+    pub fn HandleBRepMeshBaseMeshAlgo_is_null(self_: *const HandleBRepMeshBaseMeshAlgo) -> bool;
     /// Dereference Handle to get *const BRepMesh_BaseMeshAlgo
     pub fn HandleBRepMeshBaseMeshAlgo_get(
         handle: *const HandleBRepMeshBaseMeshAlgo,
@@ -346,6 +348,8 @@ extern "C" {
     pub fn HandleBRepMeshClassifier_clone(
         self_: *const HandleBRepMeshClassifier,
     ) -> crate::OcctResult<*mut HandleBRepMeshClassifier>;
+    /// Check if Handle<BRepMesh_Classifier> is null
+    pub fn HandleBRepMeshClassifier_is_null(self_: *const HandleBRepMeshClassifier) -> bool;
     /// Dereference Handle to get *const BRepMesh_Classifier
     pub fn HandleBRepMeshClassifier_get(
         handle: *const HandleBRepMeshClassifier,
@@ -511,6 +515,10 @@ extern "C" {
     pub fn HandleBRepMeshConstrainedBaseMeshAlgo_clone(
         self_: *const HandleBRepMeshConstrainedBaseMeshAlgo,
     ) -> crate::OcctResult<*mut HandleBRepMeshConstrainedBaseMeshAlgo>;
+    /// Check if Handle<BRepMesh_ConstrainedBaseMeshAlgo> is null
+    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_is_null(
+        self_: *const HandleBRepMeshConstrainedBaseMeshAlgo,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_ConstrainedBaseMeshAlgo
     pub fn HandleBRepMeshConstrainedBaseMeshAlgo_get(
         handle: *const HandleBRepMeshConstrainedBaseMeshAlgo,
@@ -624,6 +632,8 @@ extern "C" {
     pub fn HandleBRepMeshContext_clone(
         self_: *const HandleBRepMeshContext,
     ) -> crate::OcctResult<*mut HandleBRepMeshContext>;
+    /// Check if Handle<BRepMesh_Context> is null
+    pub fn HandleBRepMeshContext_is_null(self_: *const HandleBRepMeshContext) -> bool;
     /// Dereference Handle to get *const BRepMesh_Context
     pub fn HandleBRepMeshContext_get(
         handle: *const HandleBRepMeshContext,
@@ -840,6 +850,10 @@ extern "C" {
     pub fn HandleBRepMeshCurveTessellator_clone(
         self_: *const HandleBRepMeshCurveTessellator,
     ) -> crate::OcctResult<*mut HandleBRepMeshCurveTessellator>;
+    /// Check if Handle<BRepMesh_CurveTessellator> is null
+    pub fn HandleBRepMeshCurveTessellator_is_null(
+        self_: *const HandleBRepMeshCurveTessellator,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_CurveTessellator
     pub fn HandleBRepMeshCurveTessellator_get(
         handle: *const HandleBRepMeshCurveTessellator,
@@ -937,6 +951,10 @@ extern "C" {
     pub fn HandleBRepMeshCustomBaseMeshAlgo_clone(
         self_: *const HandleBRepMeshCustomBaseMeshAlgo,
     ) -> crate::OcctResult<*mut HandleBRepMeshCustomBaseMeshAlgo>;
+    /// Check if Handle<BRepMesh_CustomBaseMeshAlgo> is null
+    pub fn HandleBRepMeshCustomBaseMeshAlgo_is_null(
+        self_: *const HandleBRepMeshCustomBaseMeshAlgo,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_CustomBaseMeshAlgo
     pub fn HandleBRepMeshCustomBaseMeshAlgo_get(
         handle: *const HandleBRepMeshCustomBaseMeshAlgo,
@@ -1249,6 +1267,10 @@ extern "C" {
     pub fn HandleBRepMeshDataStructureOfDelaun_clone(
         self_: *const HandleBRepMeshDataStructureOfDelaun,
     ) -> crate::OcctResult<*mut HandleBRepMeshDataStructureOfDelaun>;
+    /// Check if Handle<BRepMesh_DataStructureOfDelaun> is null
+    pub fn HandleBRepMeshDataStructureOfDelaun_is_null(
+        self_: *const HandleBRepMeshDataStructureOfDelaun,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_DataStructureOfDelaun
     pub fn HandleBRepMeshDataStructureOfDelaun_get(
         handle: *const HandleBRepMeshDataStructureOfDelaun,
@@ -1414,6 +1436,8 @@ extern "C" {
     pub fn HandleBRepMeshDeflection_clone(
         self_: *const HandleBRepMeshDeflection,
     ) -> crate::OcctResult<*mut HandleBRepMeshDeflection>;
+    /// Check if Handle<BRepMesh_Deflection> is null
+    pub fn HandleBRepMeshDeflection_is_null(self_: *const HandleBRepMeshDeflection) -> bool;
     /// Dereference Handle to get *const BRepMesh_Deflection
     pub fn HandleBRepMeshDeflection_get(
         handle: *const HandleBRepMeshDeflection,
@@ -1523,6 +1547,10 @@ extern "C" {
     pub fn HandleBRepMeshDelabellaBaseMeshAlgo_clone(
         self_: *const HandleBRepMeshDelabellaBaseMeshAlgo,
     ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaBaseMeshAlgo>;
+    /// Check if Handle<BRepMesh_DelabellaBaseMeshAlgo> is null
+    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_is_null(
+        self_: *const HandleBRepMeshDelabellaBaseMeshAlgo,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_DelabellaBaseMeshAlgo
     pub fn HandleBRepMeshDelabellaBaseMeshAlgo_get(
         handle: *const HandleBRepMeshDelabellaBaseMeshAlgo,
@@ -1639,6 +1667,10 @@ extern "C" {
     pub fn HandleBRepMeshDelabellaMeshAlgoFactory_clone(
         self_: *const HandleBRepMeshDelabellaMeshAlgoFactory,
     ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaMeshAlgoFactory>;
+    /// Check if Handle<BRepMesh_DelabellaMeshAlgoFactory> is null
+    pub fn HandleBRepMeshDelabellaMeshAlgoFactory_is_null(
+        self_: *const HandleBRepMeshDelabellaMeshAlgoFactory,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_DelabellaMeshAlgoFactory
     pub fn HandleBRepMeshDelabellaMeshAlgoFactory_get(
         handle: *const HandleBRepMeshDelabellaMeshAlgoFactory,
@@ -1857,6 +1889,10 @@ extern "C" {
     pub fn HandleBRepMeshDelaunayBaseMeshAlgo_clone(
         self_: *const HandleBRepMeshDelaunayBaseMeshAlgo,
     ) -> crate::OcctResult<*mut HandleBRepMeshDelaunayBaseMeshAlgo>;
+    /// Check if Handle<BRepMesh_DelaunayBaseMeshAlgo> is null
+    pub fn HandleBRepMeshDelaunayBaseMeshAlgo_is_null(
+        self_: *const HandleBRepMeshDelaunayBaseMeshAlgo,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_DelaunayBaseMeshAlgo
     pub fn HandleBRepMeshDelaunayBaseMeshAlgo_get(
         handle: *const HandleBRepMeshDelaunayBaseMeshAlgo,
@@ -2002,6 +2038,8 @@ extern "C" {
     pub fn HandleBRepMeshDiscretRoot_clone(
         self_: *const HandleBRepMeshDiscretRoot,
     ) -> crate::OcctResult<*mut HandleBRepMeshDiscretRoot>;
+    /// Check if Handle<BRepMesh_DiscretRoot> is null
+    pub fn HandleBRepMeshDiscretRoot_is_null(self_: *const HandleBRepMeshDiscretRoot) -> bool;
     /// Dereference Handle to get *const BRepMesh_DiscretRoot
     pub fn HandleBRepMeshDiscretRoot_get(
         handle: *const HandleBRepMeshDiscretRoot,
@@ -2156,6 +2194,8 @@ extern "C" {
     pub fn HandleBRepMeshEdgeDiscret_clone(
         self_: *const HandleBRepMeshEdgeDiscret,
     ) -> crate::OcctResult<*mut HandleBRepMeshEdgeDiscret>;
+    /// Check if Handle<BRepMesh_EdgeDiscret> is null
+    pub fn HandleBRepMeshEdgeDiscret_is_null(self_: *const HandleBRepMeshEdgeDiscret) -> bool;
     /// Dereference Handle to get *const BRepMesh_EdgeDiscret
     pub fn HandleBRepMeshEdgeDiscret_get(
         handle: *const HandleBRepMeshEdgeDiscret,
@@ -2267,6 +2307,10 @@ extern "C" {
     pub fn HandleBRepMeshEdgeTessellationExtractor_clone(
         self_: *const HandleBRepMeshEdgeTessellationExtractor,
     ) -> crate::OcctResult<*mut HandleBRepMeshEdgeTessellationExtractor>;
+    /// Check if Handle<BRepMesh_EdgeTessellationExtractor> is null
+    pub fn HandleBRepMeshEdgeTessellationExtractor_is_null(
+        self_: *const HandleBRepMeshEdgeTessellationExtractor,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_EdgeTessellationExtractor
     pub fn HandleBRepMeshEdgeTessellationExtractor_get(
         handle: *const HandleBRepMeshEdgeTessellationExtractor,
@@ -2446,6 +2490,8 @@ extern "C" {
     pub fn HandleBRepMeshFaceChecker_clone(
         self_: *const HandleBRepMeshFaceChecker,
     ) -> crate::OcctResult<*mut HandleBRepMeshFaceChecker>;
+    /// Check if Handle<BRepMesh_FaceChecker> is null
+    pub fn HandleBRepMeshFaceChecker_is_null(self_: *const HandleBRepMeshFaceChecker) -> bool;
     /// Dereference Handle to get *const BRepMesh_FaceChecker
     pub fn HandleBRepMeshFaceChecker_get(
         handle: *const HandleBRepMeshFaceChecker,
@@ -2533,6 +2579,8 @@ extern "C" {
     pub fn HandleBRepMeshFaceDiscret_clone(
         self_: *const HandleBRepMeshFaceDiscret,
     ) -> crate::OcctResult<*mut HandleBRepMeshFaceDiscret>;
+    /// Check if Handle<BRepMesh_FaceDiscret> is null
+    pub fn HandleBRepMeshFaceDiscret_is_null(self_: *const HandleBRepMeshFaceDiscret) -> bool;
     /// Dereference Handle to get *const BRepMesh_FaceDiscret
     pub fn HandleBRepMeshFaceDiscret_get(
         handle: *const HandleBRepMeshFaceDiscret,
@@ -2770,6 +2818,10 @@ extern "C" {
     pub fn HandleBRepMeshIncrementalMesh_clone(
         self_: *const HandleBRepMeshIncrementalMesh,
     ) -> crate::OcctResult<*mut HandleBRepMeshIncrementalMesh>;
+    /// Check if Handle<BRepMesh_IncrementalMesh> is null
+    pub fn HandleBRepMeshIncrementalMesh_is_null(
+        self_: *const HandleBRepMeshIncrementalMesh,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_IncrementalMesh
     pub fn HandleBRepMeshIncrementalMesh_get(
         handle: *const HandleBRepMeshIncrementalMesh,
@@ -2874,6 +2926,10 @@ extern "C" {
     pub fn HandleBRepMeshMeshAlgoFactory_clone(
         self_: *const HandleBRepMeshMeshAlgoFactory,
     ) -> crate::OcctResult<*mut HandleBRepMeshMeshAlgoFactory>;
+    /// Check if Handle<BRepMesh_MeshAlgoFactory> is null
+    pub fn HandleBRepMeshMeshAlgoFactory_is_null(
+        self_: *const HandleBRepMeshMeshAlgoFactory,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_MeshAlgoFactory
     pub fn HandleBRepMeshMeshAlgoFactory_get(
         handle: *const HandleBRepMeshMeshAlgoFactory,
@@ -3025,6 +3081,8 @@ extern "C" {
     pub fn HandleBRepMeshMeshTool_clone(
         self_: *const HandleBRepMeshMeshTool,
     ) -> crate::OcctResult<*mut HandleBRepMeshMeshTool>;
+    /// Check if Handle<BRepMesh_MeshTool> is null
+    pub fn HandleBRepMeshMeshTool_is_null(self_: *const HandleBRepMeshMeshTool) -> bool;
     /// Dereference Handle to get *const BRepMesh_MeshTool
     pub fn HandleBRepMeshMeshTool_get(
         handle: *const HandleBRepMeshMeshTool,
@@ -3128,6 +3186,8 @@ extern "C" {
     pub fn HandleBRepMeshModelBuilder_clone(
         self_: *const HandleBRepMeshModelBuilder,
     ) -> crate::OcctResult<*mut HandleBRepMeshModelBuilder>;
+    /// Check if Handle<BRepMesh_ModelBuilder> is null
+    pub fn HandleBRepMeshModelBuilder_is_null(self_: *const HandleBRepMeshModelBuilder) -> bool;
     /// Dereference Handle to get *const BRepMesh_ModelBuilder
     pub fn HandleBRepMeshModelBuilder_get(
         handle: *const HandleBRepMeshModelBuilder,
@@ -3276,6 +3336,8 @@ extern "C" {
     pub fn HandleBRepMeshModelHealer_clone(
         self_: *const HandleBRepMeshModelHealer,
     ) -> crate::OcctResult<*mut HandleBRepMeshModelHealer>;
+    /// Check if Handle<BRepMesh_ModelHealer> is null
+    pub fn HandleBRepMeshModelHealer_is_null(self_: *const HandleBRepMeshModelHealer) -> bool;
     /// Dereference Handle to get *const BRepMesh_ModelHealer
     pub fn HandleBRepMeshModelHealer_get(
         handle: *const HandleBRepMeshModelHealer,
@@ -3370,6 +3432,10 @@ extern "C" {
     pub fn HandleBRepMeshModelPostProcessor_clone(
         self_: *const HandleBRepMeshModelPostProcessor,
     ) -> crate::OcctResult<*mut HandleBRepMeshModelPostProcessor>;
+    /// Check if Handle<BRepMesh_ModelPostProcessor> is null
+    pub fn HandleBRepMeshModelPostProcessor_is_null(
+        self_: *const HandleBRepMeshModelPostProcessor,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_ModelPostProcessor
     pub fn HandleBRepMeshModelPostProcessor_get(
         handle: *const HandleBRepMeshModelPostProcessor,
@@ -3462,6 +3528,10 @@ extern "C" {
     pub fn HandleBRepMeshModelPreProcessor_clone(
         self_: *const HandleBRepMeshModelPreProcessor,
     ) -> crate::OcctResult<*mut HandleBRepMeshModelPreProcessor>;
+    /// Check if Handle<BRepMesh_ModelPreProcessor> is null
+    pub fn HandleBRepMeshModelPreProcessor_is_null(
+        self_: *const HandleBRepMeshModelPreProcessor,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_ModelPreProcessor
     pub fn HandleBRepMeshModelPreProcessor_get(
         handle: *const HandleBRepMeshModelPreProcessor,
@@ -3778,6 +3848,10 @@ extern "C" {
     pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_clone(
         self_: *const HandleBRepMeshSelectorOfDataStructureOfDelaun,
     ) -> crate::OcctResult<*mut HandleBRepMeshSelectorOfDataStructureOfDelaun>;
+    /// Check if Handle<BRepMesh_SelectorOfDataStructureOfDelaun> is null
+    pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_is_null(
+        self_: *const HandleBRepMeshSelectorOfDataStructureOfDelaun,
+    ) -> bool;
     /// Dereference Handle to get *const BRepMesh_SelectorOfDataStructureOfDelaun
     pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_get(
         handle: *const HandleBRepMeshSelectorOfDataStructureOfDelaun,
@@ -3932,6 +4006,8 @@ extern "C" {
     pub fn HandleBRepMeshShapeTool_clone(
         self_: *const HandleBRepMeshShapeTool,
     ) -> crate::OcctResult<*mut HandleBRepMeshShapeTool>;
+    /// Check if Handle<BRepMesh_ShapeTool> is null
+    pub fn HandleBRepMeshShapeTool_is_null(self_: *const HandleBRepMeshShapeTool) -> bool;
     /// Dereference Handle to get *const BRepMesh_ShapeTool
     pub fn HandleBRepMeshShapeTool_get(
         handle: *const HandleBRepMeshShapeTool,
@@ -4025,6 +4101,8 @@ extern "C" {
     pub fn HandleBRepMeshShapeVisitor_clone(
         self_: *const HandleBRepMeshShapeVisitor,
     ) -> crate::OcctResult<*mut HandleBRepMeshShapeVisitor>;
+    /// Check if Handle<BRepMesh_ShapeVisitor> is null
+    pub fn HandleBRepMeshShapeVisitor_is_null(self_: *const HandleBRepMeshShapeVisitor) -> bool;
     /// Dereference Handle to get *const BRepMesh_ShapeVisitor
     pub fn HandleBRepMeshShapeVisitor_get(
         handle: *const HandleBRepMeshShapeVisitor,
@@ -4629,6 +4707,8 @@ extern "C" {
     pub fn HandleBRepMeshVertexTool_clone(
         self_: *const HandleBRepMeshVertexTool,
     ) -> crate::OcctResult<*mut HandleBRepMeshVertexTool>;
+    /// Check if Handle<BRepMesh_VertexTool> is null
+    pub fn HandleBRepMeshVertexTool_is_null(self_: *const HandleBRepMeshVertexTool) -> bool;
     /// Dereference Handle to get *const BRepMesh_VertexTool
     pub fn HandleBRepMeshVertexTool_get(
         handle: *const HandleBRepMeshVertexTool,
@@ -4726,6 +4806,8 @@ extern "C" {
     pub fn HandleIMeshDataCurve_clone(
         self_: *const HandleIMeshDataCurve,
     ) -> crate::OcctResult<*mut HandleIMeshDataCurve>;
+    /// Check if Handle<IMeshData_Curve> is null
+    pub fn HandleIMeshDataCurve_is_null(self_: *const HandleIMeshDataCurve) -> bool;
     /// Dereference Handle to get *const IMeshData_Curve
     pub fn HandleIMeshDataCurve_get(
         handle: *const HandleIMeshDataCurve,
@@ -4891,6 +4973,8 @@ extern "C" {
     pub fn HandleIMeshDataEdge_clone(
         self_: *const HandleIMeshDataEdge,
     ) -> crate::OcctResult<*mut HandleIMeshDataEdge>;
+    /// Check if Handle<IMeshData_Edge> is null
+    pub fn HandleIMeshDataEdge_is_null(self_: *const HandleIMeshDataEdge) -> bool;
     /// Dereference Handle to get *const IMeshData_Edge
     pub fn HandleIMeshDataEdge_get(
         handle: *const HandleIMeshDataEdge,
@@ -5053,6 +5137,8 @@ extern "C" {
     pub fn HandleIMeshDataFace_clone(
         self_: *const HandleIMeshDataFace,
     ) -> crate::OcctResult<*mut HandleIMeshDataFace>;
+    /// Check if Handle<IMeshData_Face> is null
+    pub fn HandleIMeshDataFace_is_null(self_: *const HandleIMeshDataFace) -> bool;
     /// Dereference Handle to get *const IMeshData_Face
     pub fn HandleIMeshDataFace_get(
         handle: *const HandleIMeshDataFace,
@@ -5202,6 +5288,8 @@ extern "C" {
     pub fn HandleIMeshDataModel_clone(
         self_: *const HandleIMeshDataModel,
     ) -> crate::OcctResult<*mut HandleIMeshDataModel>;
+    /// Check if Handle<IMeshData_Model> is null
+    pub fn HandleIMeshDataModel_is_null(self_: *const HandleIMeshDataModel) -> bool;
     /// Dereference Handle to get *const IMeshData_Model
     pub fn HandleIMeshDataModel_get(
         handle: *const HandleIMeshDataModel,
@@ -5325,6 +5413,8 @@ extern "C" {
     pub fn HandleIMeshDataPCurve_clone(
         self_: *const HandleIMeshDataPCurve,
     ) -> crate::OcctResult<*mut HandleIMeshDataPCurve>;
+    /// Check if Handle<IMeshData_PCurve> is null
+    pub fn HandleIMeshDataPCurve_is_null(self_: *const HandleIMeshDataPCurve) -> bool;
     /// Dereference Handle to get *const IMeshData_PCurve
     pub fn HandleIMeshDataPCurve_get(
         handle: *const HandleIMeshDataPCurve,
@@ -5424,6 +5514,10 @@ extern "C" {
     pub fn HandleIMeshDataParametersList_clone(
         self_: *const HandleIMeshDataParametersList,
     ) -> crate::OcctResult<*mut HandleIMeshDataParametersList>;
+    /// Check if Handle<IMeshData_ParametersList> is null
+    pub fn HandleIMeshDataParametersList_is_null(
+        self_: *const HandleIMeshDataParametersList,
+    ) -> bool;
     /// Dereference Handle to get *const IMeshData_ParametersList
     pub fn HandleIMeshDataParametersList_get(
         handle: *const HandleIMeshDataParametersList,
@@ -5503,6 +5597,8 @@ extern "C" {
     pub fn HandleIMeshDataShape_clone(
         self_: *const HandleIMeshDataShape,
     ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
+    /// Check if Handle<IMeshData_Shape> is null
+    pub fn HandleIMeshDataShape_is_null(self_: *const HandleIMeshDataShape) -> bool;
     /// Dereference Handle to get *const IMeshData_Shape
     pub fn HandleIMeshDataShape_get(
         handle: *const HandleIMeshDataShape,
@@ -5633,6 +5729,10 @@ extern "C" {
     pub fn HandleIMeshDataTessellatedShape_clone(
         self_: *const HandleIMeshDataTessellatedShape,
     ) -> crate::OcctResult<*mut HandleIMeshDataTessellatedShape>;
+    /// Check if Handle<IMeshData_TessellatedShape> is null
+    pub fn HandleIMeshDataTessellatedShape_is_null(
+        self_: *const HandleIMeshDataTessellatedShape,
+    ) -> bool;
     /// Dereference Handle to get *const IMeshData_TessellatedShape
     pub fn HandleIMeshDataTessellatedShape_get(
         handle: *const HandleIMeshDataTessellatedShape,
@@ -5747,6 +5847,8 @@ extern "C" {
     pub fn HandleIMeshDataWire_clone(
         self_: *const HandleIMeshDataWire,
     ) -> crate::OcctResult<*mut HandleIMeshDataWire>;
+    /// Check if Handle<IMeshData_Wire> is null
+    pub fn HandleIMeshDataWire_is_null(self_: *const HandleIMeshDataWire) -> bool;
     /// Dereference Handle to get *const IMeshData_Wire
     pub fn HandleIMeshDataWire_get(
         handle: *const HandleIMeshDataWire,
@@ -5968,6 +6070,8 @@ extern "C" {
     pub fn HandleIMeshToolsContext_clone(
         self_: *const HandleIMeshToolsContext,
     ) -> crate::OcctResult<*mut HandleIMeshToolsContext>;
+    /// Check if Handle<IMeshTools_Context> is null
+    pub fn HandleIMeshToolsContext_is_null(self_: *const HandleIMeshToolsContext) -> bool;
     /// Dereference Handle to get *const IMeshTools_Context
     pub fn HandleIMeshToolsContext_get(
         handle: *const HandleIMeshToolsContext,
@@ -6065,6 +6169,10 @@ extern "C" {
     pub fn HandleIMeshToolsCurveTessellator_clone(
         self_: *const HandleIMeshToolsCurveTessellator,
     ) -> crate::OcctResult<*mut HandleIMeshToolsCurveTessellator>;
+    /// Check if Handle<IMeshTools_CurveTessellator> is null
+    pub fn HandleIMeshToolsCurveTessellator_is_null(
+        self_: *const HandleIMeshToolsCurveTessellator,
+    ) -> bool;
     /// Dereference Handle to get *const IMeshTools_CurveTessellator
     pub fn HandleIMeshToolsCurveTessellator_get(
         handle: *const HandleIMeshToolsCurveTessellator,
@@ -6146,6 +6254,8 @@ extern "C" {
     pub fn HandleIMeshToolsMeshAlgo_clone(
         self_: *const HandleIMeshToolsMeshAlgo,
     ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgo>;
+    /// Check if Handle<IMeshTools_MeshAlgo> is null
+    pub fn HandleIMeshToolsMeshAlgo_is_null(self_: *const HandleIMeshToolsMeshAlgo) -> bool;
     /// Dereference Handle to get *const IMeshTools_MeshAlgo
     pub fn HandleIMeshToolsMeshAlgo_get(
         handle: *const HandleIMeshToolsMeshAlgo,
@@ -6231,6 +6341,10 @@ extern "C" {
     pub fn HandleIMeshToolsMeshAlgoFactory_clone(
         self_: *const HandleIMeshToolsMeshAlgoFactory,
     ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgoFactory>;
+    /// Check if Handle<IMeshTools_MeshAlgoFactory> is null
+    pub fn HandleIMeshToolsMeshAlgoFactory_is_null(
+        self_: *const HandleIMeshToolsMeshAlgoFactory,
+    ) -> bool;
     /// Dereference Handle to get *const IMeshTools_MeshAlgoFactory
     pub fn HandleIMeshToolsMeshAlgoFactory_get(
         handle: *const HandleIMeshToolsMeshAlgoFactory,
@@ -6338,6 +6452,8 @@ extern "C" {
     pub fn HandleIMeshToolsMeshBuilder_clone(
         self_: *const HandleIMeshToolsMeshBuilder,
     ) -> crate::OcctResult<*mut HandleIMeshToolsMeshBuilder>;
+    /// Check if Handle<IMeshTools_MeshBuilder> is null
+    pub fn HandleIMeshToolsMeshBuilder_is_null(self_: *const HandleIMeshToolsMeshBuilder) -> bool;
     /// Dereference Handle to get *const IMeshTools_MeshBuilder
     pub fn HandleIMeshToolsMeshBuilder_get(
         handle: *const HandleIMeshToolsMeshBuilder,
@@ -6469,6 +6585,8 @@ extern "C" {
     pub fn HandleIMeshToolsModelAlgo_clone(
         self_: *const HandleIMeshToolsModelAlgo,
     ) -> crate::OcctResult<*mut HandleIMeshToolsModelAlgo>;
+    /// Check if Handle<IMeshTools_ModelAlgo> is null
+    pub fn HandleIMeshToolsModelAlgo_is_null(self_: *const HandleIMeshToolsModelAlgo) -> bool;
     /// Dereference Handle to get *const IMeshTools_ModelAlgo
     pub fn HandleIMeshToolsModelAlgo_get(
         handle: *const HandleIMeshToolsModelAlgo,
@@ -6570,6 +6688,9 @@ extern "C" {
     pub fn HandleIMeshToolsModelBuilder_clone(
         self_: *const HandleIMeshToolsModelBuilder,
     ) -> crate::OcctResult<*mut HandleIMeshToolsModelBuilder>;
+    /// Check if Handle<IMeshTools_ModelBuilder> is null
+    pub fn HandleIMeshToolsModelBuilder_is_null(self_: *const HandleIMeshToolsModelBuilder)
+        -> bool;
     /// Dereference Handle to get *const IMeshTools_ModelBuilder
     pub fn HandleIMeshToolsModelBuilder_get(
         handle: *const HandleIMeshToolsModelBuilder,
@@ -6726,6 +6847,10 @@ extern "C" {
     pub fn HandleIMeshToolsShapeExplorer_clone(
         self_: *const HandleIMeshToolsShapeExplorer,
     ) -> crate::OcctResult<*mut HandleIMeshToolsShapeExplorer>;
+    /// Check if Handle<IMeshTools_ShapeExplorer> is null
+    pub fn HandleIMeshToolsShapeExplorer_is_null(
+        self_: *const HandleIMeshToolsShapeExplorer,
+    ) -> bool;
     /// Dereference Handle to get *const IMeshTools_ShapeExplorer
     pub fn HandleIMeshToolsShapeExplorer_get(
         handle: *const HandleIMeshToolsShapeExplorer,
@@ -6816,6 +6941,9 @@ extern "C" {
     pub fn HandleIMeshToolsShapeVisitor_clone(
         self_: *const HandleIMeshToolsShapeVisitor,
     ) -> crate::OcctResult<*mut HandleIMeshToolsShapeVisitor>;
+    /// Check if Handle<IMeshTools_ShapeVisitor> is null
+    pub fn HandleIMeshToolsShapeVisitor_is_null(self_: *const HandleIMeshToolsShapeVisitor)
+        -> bool;
     /// Dereference Handle to get *const IMeshTools_ShapeVisitor
     pub fn HandleIMeshToolsShapeVisitor_get(
         handle: *const HandleIMeshToolsShapeVisitor,

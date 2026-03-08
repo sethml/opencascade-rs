@@ -677,6 +677,10 @@ extern "C" {
     pub fn HandleDEIGESConfigurationNode_clone(
         self_: *const HandleDEIGESConfigurationNode,
     ) -> crate::OcctResult<*mut HandleDEIGESConfigurationNode>;
+    /// Check if Handle<DEIGES_ConfigurationNode> is null
+    pub fn HandleDEIGESConfigurationNode_is_null(
+        self_: *const HandleDEIGESConfigurationNode,
+    ) -> bool;
     /// Dereference Handle to get *const DEIGES_ConfigurationNode
     pub fn HandleDEIGESConfigurationNode_get(
         handle: *const HandleDEIGESConfigurationNode,
@@ -875,6 +879,8 @@ extern "C" {
     pub fn HandleDEIGESProvider_clone(
         self_: *const HandleDEIGESProvider,
     ) -> crate::OcctResult<*mut HandleDEIGESProvider>;
+    /// Check if Handle<DEIGES_Provider> is null
+    pub fn HandleDEIGESProvider_is_null(self_: *const HandleDEIGESProvider) -> bool;
     /// Dereference Handle to get *const DEIGES_Provider
     pub fn HandleDEIGESProvider_get(
         handle: *const HandleDEIGESProvider,
@@ -1636,6 +1642,8 @@ extern "C" {
     pub fn HandleIGESAppliDrilledHole_clone(
         self_: *const HandleIGESAppliDrilledHole,
     ) -> crate::OcctResult<*mut HandleIGESAppliDrilledHole>;
+    /// Check if Handle<IGESAppli_DrilledHole> is null
+    pub fn HandleIGESAppliDrilledHole_is_null(self_: *const HandleIGESAppliDrilledHole) -> bool;
     /// Dereference Handle to get *const IGESAppli_DrilledHole
     pub fn HandleIGESAppliDrilledHole_get(
         handle: *const HandleIGESAppliDrilledHole,
@@ -2123,6 +2131,10 @@ extern "C" {
     pub fn HandleIGESAppliElementResults_clone(
         self_: *const HandleIGESAppliElementResults,
     ) -> crate::OcctResult<*mut HandleIGESAppliElementResults>;
+    /// Check if Handle<IGESAppli_ElementResults> is null
+    pub fn HandleIGESAppliElementResults_is_null(
+        self_: *const HandleIGESAppliElementResults,
+    ) -> bool;
     /// Dereference Handle to get *const IGESAppli_ElementResults
     pub fn HandleIGESAppliElementResults_get(
         handle: *const HandleIGESAppliElementResults,
@@ -2520,6 +2532,9 @@ extern "C" {
     pub fn HandleIGESAppliFiniteElement_clone(
         self_: *const HandleIGESAppliFiniteElement,
     ) -> crate::OcctResult<*mut HandleIGESAppliFiniteElement>;
+    /// Check if Handle<IGESAppli_FiniteElement> is null
+    pub fn HandleIGESAppliFiniteElement_is_null(self_: *const HandleIGESAppliFiniteElement)
+        -> bool;
     /// Dereference Handle to get *const IGESAppli_FiniteElement
     pub fn HandleIGESAppliFiniteElement_get(
         handle: *const HandleIGESAppliFiniteElement,
@@ -2962,6 +2977,8 @@ extern "C" {
     pub fn HandleIGESAppliFlow_clone(
         self_: *const HandleIGESAppliFlow,
     ) -> crate::OcctResult<*mut HandleIGESAppliFlow>;
+    /// Check if Handle<IGESAppli_Flow> is null
+    pub fn HandleIGESAppliFlow_is_null(self_: *const HandleIGESAppliFlow) -> bool;
     /// Dereference Handle to get *const IGESAppli_Flow
     pub fn HandleIGESAppliFlow_get(
         handle: *const HandleIGESAppliFlow,
@@ -3348,6 +3365,8 @@ extern "C" {
     pub fn HandleIGESAppliFlowLineSpec_clone(
         self_: *const HandleIGESAppliFlowLineSpec,
     ) -> crate::OcctResult<*mut HandleIGESAppliFlowLineSpec>;
+    /// Check if Handle<IGESAppli_FlowLineSpec> is null
+    pub fn HandleIGESAppliFlowLineSpec_is_null(self_: *const HandleIGESAppliFlowLineSpec) -> bool;
     /// Dereference Handle to get *const IGESAppli_FlowLineSpec
     pub fn HandleIGESAppliFlowLineSpec_get(
         handle: *const HandleIGESAppliFlowLineSpec,
@@ -3771,6 +3790,9 @@ extern "C" {
     pub fn HandleIGESAppliGeneralModule_clone(
         self_: *const HandleIGESAppliGeneralModule,
     ) -> crate::OcctResult<*mut HandleIGESAppliGeneralModule>;
+    /// Check if Handle<IGESAppli_GeneralModule> is null
+    pub fn HandleIGESAppliGeneralModule_is_null(self_: *const HandleIGESAppliGeneralModule)
+        -> bool;
     /// Dereference Handle to get *const IGESAppli_GeneralModule
     pub fn HandleIGESAppliGeneralModule_get(
         handle: *const HandleIGESAppliGeneralModule,
@@ -4005,6 +4027,10 @@ extern "C" {
     pub fn HandleIGESAppliHArray1OfFiniteElement_clone(
         self_: *const HandleIGESAppliHArray1OfFiniteElement,
     ) -> crate::OcctResult<*mut HandleIGESAppliHArray1OfFiniteElement>;
+    /// Check if Handle<IGESAppli_HArray1OfFiniteElement> is null
+    pub fn HandleIGESAppliHArray1OfFiniteElement_is_null(
+        self_: *const HandleIGESAppliHArray1OfFiniteElement,
+    ) -> bool;
     /// Dereference Handle to get *const IGESAppli_HArray1OfFiniteElement
     pub fn HandleIGESAppliHArray1OfFiniteElement_get(
         handle: *const HandleIGESAppliHArray1OfFiniteElement,
@@ -4108,6 +4134,9 @@ extern "C" {
     pub fn HandleIGESAppliHArray1OfFlow_clone(
         self_: *const HandleIGESAppliHArray1OfFlow,
     ) -> crate::OcctResult<*mut HandleIGESAppliHArray1OfFlow>;
+    /// Check if Handle<IGESAppli_HArray1OfFlow> is null
+    pub fn HandleIGESAppliHArray1OfFlow_is_null(self_: *const HandleIGESAppliHArray1OfFlow)
+        -> bool;
     /// Dereference Handle to get *const IGESAppli_HArray1OfFlow
     pub fn HandleIGESAppliHArray1OfFlow_get(
         handle: *const HandleIGESAppliHArray1OfFlow,
@@ -4211,6 +4240,9 @@ extern "C" {
     pub fn HandleIGESAppliHArray1OfNode_clone(
         self_: *const HandleIGESAppliHArray1OfNode,
     ) -> crate::OcctResult<*mut HandleIGESAppliHArray1OfNode>;
+    /// Check if Handle<IGESAppli_HArray1OfNode> is null
+    pub fn HandleIGESAppliHArray1OfNode_is_null(self_: *const HandleIGESAppliHArray1OfNode)
+        -> bool;
     /// Dereference Handle to get *const IGESAppli_HArray1OfNode
     pub fn HandleIGESAppliHArray1OfNode_get(
         handle: *const HandleIGESAppliHArray1OfNode,
@@ -4311,6 +4343,9 @@ extern "C" {
     pub fn HandleIGESAppliLevelFunction_clone(
         self_: *const HandleIGESAppliLevelFunction,
     ) -> crate::OcctResult<*mut HandleIGESAppliLevelFunction>;
+    /// Check if Handle<IGESAppli_LevelFunction> is null
+    pub fn HandleIGESAppliLevelFunction_is_null(self_: *const HandleIGESAppliLevelFunction)
+        -> bool;
     /// Dereference Handle to get *const IGESAppli_LevelFunction
     pub fn HandleIGESAppliLevelFunction_get(
         handle: *const HandleIGESAppliLevelFunction,
@@ -4724,6 +4759,10 @@ extern "C" {
     pub fn HandleIGESAppliLevelToPWBLayerMap_clone(
         self_: *const HandleIGESAppliLevelToPWBLayerMap,
     ) -> crate::OcctResult<*mut HandleIGESAppliLevelToPWBLayerMap>;
+    /// Check if Handle<IGESAppli_LevelToPWBLayerMap> is null
+    pub fn HandleIGESAppliLevelToPWBLayerMap_is_null(
+        self_: *const HandleIGESAppliLevelToPWBLayerMap,
+    ) -> bool;
     /// Dereference Handle to get *const IGESAppli_LevelToPWBLayerMap
     pub fn HandleIGESAppliLevelToPWBLayerMap_get(
         handle: *const HandleIGESAppliLevelToPWBLayerMap,
@@ -5131,6 +5170,8 @@ extern "C" {
     pub fn HandleIGESAppliLineWidening_clone(
         self_: *const HandleIGESAppliLineWidening,
     ) -> crate::OcctResult<*mut HandleIGESAppliLineWidening>;
+    /// Check if Handle<IGESAppli_LineWidening> is null
+    pub fn HandleIGESAppliLineWidening_is_null(self_: *const HandleIGESAppliLineWidening) -> bool;
     /// Dereference Handle to get *const IGESAppli_LineWidening
     pub fn HandleIGESAppliLineWidening_get(
         handle: *const HandleIGESAppliLineWidening,
@@ -5528,6 +5569,10 @@ extern "C" {
     pub fn HandleIGESAppliNodalConstraint_clone(
         self_: *const HandleIGESAppliNodalConstraint,
     ) -> crate::OcctResult<*mut HandleIGESAppliNodalConstraint>;
+    /// Check if Handle<IGESAppli_NodalConstraint> is null
+    pub fn HandleIGESAppliNodalConstraint_is_null(
+        self_: *const HandleIGESAppliNodalConstraint,
+    ) -> bool;
     /// Dereference Handle to get *const IGESAppli_NodalConstraint
     pub fn HandleIGESAppliNodalConstraint_get(
         handle: *const HandleIGESAppliNodalConstraint,
@@ -5945,6 +5990,10 @@ extern "C" {
     pub fn HandleIGESAppliNodalDisplAndRot_clone(
         self_: *const HandleIGESAppliNodalDisplAndRot,
     ) -> crate::OcctResult<*mut HandleIGESAppliNodalDisplAndRot>;
+    /// Check if Handle<IGESAppli_NodalDisplAndRot> is null
+    pub fn HandleIGESAppliNodalDisplAndRot_is_null(
+        self_: *const HandleIGESAppliNodalDisplAndRot,
+    ) -> bool;
     /// Dereference Handle to get *const IGESAppli_NodalDisplAndRot
     pub fn HandleIGESAppliNodalDisplAndRot_get(
         handle: *const HandleIGESAppliNodalDisplAndRot,
@@ -6369,6 +6418,8 @@ extern "C" {
     pub fn HandleIGESAppliNodalResults_clone(
         self_: *const HandleIGESAppliNodalResults,
     ) -> crate::OcctResult<*mut HandleIGESAppliNodalResults>;
+    /// Check if Handle<IGESAppli_NodalResults> is null
+    pub fn HandleIGESAppliNodalResults_is_null(self_: *const HandleIGESAppliNodalResults) -> bool;
     /// Dereference Handle to get *const IGESAppli_NodalResults
     pub fn HandleIGESAppliNodalResults_get(
         handle: *const HandleIGESAppliNodalResults,
@@ -6759,6 +6810,8 @@ extern "C" {
     pub fn HandleIGESAppliNode_clone(
         self_: *const HandleIGESAppliNode,
     ) -> crate::OcctResult<*mut HandleIGESAppliNode>;
+    /// Check if Handle<IGESAppli_Node> is null
+    pub fn HandleIGESAppliNode_is_null(self_: *const HandleIGESAppliNode) -> bool;
     /// Dereference Handle to get *const IGESAppli_Node
     pub fn HandleIGESAppliNode_get(
         handle: *const HandleIGESAppliNode,
@@ -7153,6 +7206,10 @@ extern "C" {
     pub fn HandleIGESAppliPWBArtworkStackup_clone(
         self_: *const HandleIGESAppliPWBArtworkStackup,
     ) -> crate::OcctResult<*mut HandleIGESAppliPWBArtworkStackup>;
+    /// Check if Handle<IGESAppli_PWBArtworkStackup> is null
+    pub fn HandleIGESAppliPWBArtworkStackup_is_null(
+        self_: *const HandleIGESAppliPWBArtworkStackup,
+    ) -> bool;
     /// Dereference Handle to get *const IGESAppli_PWBArtworkStackup
     pub fn HandleIGESAppliPWBArtworkStackup_get(
         handle: *const HandleIGESAppliPWBArtworkStackup,
@@ -7550,6 +7607,10 @@ extern "C" {
     pub fn HandleIGESAppliPWBDrilledHole_clone(
         self_: *const HandleIGESAppliPWBDrilledHole,
     ) -> crate::OcctResult<*mut HandleIGESAppliPWBDrilledHole>;
+    /// Check if Handle<IGESAppli_PWBDrilledHole> is null
+    pub fn HandleIGESAppliPWBDrilledHole_is_null(
+        self_: *const HandleIGESAppliPWBDrilledHole,
+    ) -> bool;
     /// Dereference Handle to get *const IGESAppli_PWBDrilledHole
     pub fn HandleIGESAppliPWBDrilledHole_get(
         handle: *const HandleIGESAppliPWBDrilledHole,
@@ -7951,6 +8012,8 @@ extern "C" {
     pub fn HandleIGESAppliPartNumber_clone(
         self_: *const HandleIGESAppliPartNumber,
     ) -> crate::OcctResult<*mut HandleIGESAppliPartNumber>;
+    /// Check if Handle<IGESAppli_PartNumber> is null
+    pub fn HandleIGESAppliPartNumber_is_null(self_: *const HandleIGESAppliPartNumber) -> bool;
     /// Dereference Handle to get *const IGESAppli_PartNumber
     pub fn HandleIGESAppliPartNumber_get(
         handle: *const HandleIGESAppliPartNumber,
@@ -8337,6 +8400,8 @@ extern "C" {
     pub fn HandleIGESAppliPinNumber_clone(
         self_: *const HandleIGESAppliPinNumber,
     ) -> crate::OcctResult<*mut HandleIGESAppliPinNumber>;
+    /// Check if Handle<IGESAppli_PinNumber> is null
+    pub fn HandleIGESAppliPinNumber_is_null(self_: *const HandleIGESAppliPinNumber) -> bool;
     /// Dereference Handle to get *const IGESAppli_PinNumber
     pub fn HandleIGESAppliPinNumber_get(
         handle: *const HandleIGESAppliPinNumber,
@@ -8787,6 +8852,8 @@ extern "C" {
     pub fn HandleIGESAppliPipingFlow_clone(
         self_: *const HandleIGESAppliPipingFlow,
     ) -> crate::OcctResult<*mut HandleIGESAppliPipingFlow>;
+    /// Check if Handle<IGESAppli_PipingFlow> is null
+    pub fn HandleIGESAppliPipingFlow_is_null(self_: *const HandleIGESAppliPipingFlow) -> bool;
     /// Dereference Handle to get *const IGESAppli_PipingFlow
     pub fn HandleIGESAppliPipingFlow_get(
         handle: *const HandleIGESAppliPipingFlow,
@@ -9181,6 +9248,8 @@ extern "C" {
     pub fn HandleIGESAppliProtocol_clone(
         self_: *const HandleIGESAppliProtocol,
     ) -> crate::OcctResult<*mut HandleIGESAppliProtocol>;
+    /// Check if Handle<IGESAppli_Protocol> is null
+    pub fn HandleIGESAppliProtocol_is_null(self_: *const HandleIGESAppliProtocol) -> bool;
     /// Dereference Handle to get *const IGESAppli_Protocol
     pub fn HandleIGESAppliProtocol_get(
         handle: *const HandleIGESAppliProtocol,
@@ -9344,6 +9413,10 @@ extern "C" {
     pub fn HandleIGESAppliReadWriteModule_clone(
         self_: *const HandleIGESAppliReadWriteModule,
     ) -> crate::OcctResult<*mut HandleIGESAppliReadWriteModule>;
+    /// Check if Handle<IGESAppli_ReadWriteModule> is null
+    pub fn HandleIGESAppliReadWriteModule_is_null(
+        self_: *const HandleIGESAppliReadWriteModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESAppli_ReadWriteModule
     pub fn HandleIGESAppliReadWriteModule_get(
         handle: *const HandleIGESAppliReadWriteModule,
@@ -9475,6 +9548,10 @@ extern "C" {
     pub fn HandleIGESAppliReferenceDesignator_clone(
         self_: *const HandleIGESAppliReferenceDesignator,
     ) -> crate::OcctResult<*mut HandleIGESAppliReferenceDesignator>;
+    /// Check if Handle<IGESAppli_ReferenceDesignator> is null
+    pub fn HandleIGESAppliReferenceDesignator_is_null(
+        self_: *const HandleIGESAppliReferenceDesignator,
+    ) -> bool;
     /// Dereference Handle to get *const IGESAppli_ReferenceDesignator
     pub fn HandleIGESAppliReferenceDesignator_get(
         handle: *const HandleIGESAppliReferenceDesignator,
@@ -9874,6 +9951,10 @@ extern "C" {
     pub fn HandleIGESAppliRegionRestriction_clone(
         self_: *const HandleIGESAppliRegionRestriction,
     ) -> crate::OcctResult<*mut HandleIGESAppliRegionRestriction>;
+    /// Check if Handle<IGESAppli_RegionRestriction> is null
+    pub fn HandleIGESAppliRegionRestriction_is_null(
+        self_: *const HandleIGESAppliRegionRestriction,
+    ) -> bool;
     /// Dereference Handle to get *const IGESAppli_RegionRestriction
     pub fn HandleIGESAppliRegionRestriction_get(
         handle: *const HandleIGESAppliRegionRestriction,
@@ -10262,6 +10343,10 @@ extern "C" {
     pub fn HandleIGESAppliSpecificModule_clone(
         self_: *const HandleIGESAppliSpecificModule,
     ) -> crate::OcctResult<*mut HandleIGESAppliSpecificModule>;
+    /// Check if Handle<IGESAppli_SpecificModule> is null
+    pub fn HandleIGESAppliSpecificModule_is_null(
+        self_: *const HandleIGESAppliSpecificModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESAppli_SpecificModule
     pub fn HandleIGESAppliSpecificModule_get(
         handle: *const HandleIGESAppliSpecificModule,
@@ -11378,6 +11463,10 @@ extern "C" {
     pub fn HandleIGESBasicAssocGroupType_clone(
         self_: *const HandleIGESBasicAssocGroupType,
     ) -> crate::OcctResult<*mut HandleIGESBasicAssocGroupType>;
+    /// Check if Handle<IGESBasic_AssocGroupType> is null
+    pub fn HandleIGESBasicAssocGroupType_is_null(
+        self_: *const HandleIGESBasicAssocGroupType,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_AssocGroupType
     pub fn HandleIGESBasicAssocGroupType_get(
         handle: *const HandleIGESBasicAssocGroupType,
@@ -11760,6 +11849,10 @@ extern "C" {
     pub fn HandleIGESBasicExternalRefFile_clone(
         self_: *const HandleIGESBasicExternalRefFile,
     ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefFile>;
+    /// Check if Handle<IGESBasic_ExternalRefFile> is null
+    pub fn HandleIGESBasicExternalRefFile_is_null(
+        self_: *const HandleIGESBasicExternalRefFile,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_ExternalRefFile
     pub fn HandleIGESBasicExternalRefFile_get(
         handle: *const HandleIGESBasicExternalRefFile,
@@ -12157,6 +12250,10 @@ extern "C" {
     pub fn HandleIGESBasicExternalRefFileIndex_clone(
         self_: *const HandleIGESBasicExternalRefFileIndex,
     ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefFileIndex>;
+    /// Check if Handle<IGESBasic_ExternalRefFileIndex> is null
+    pub fn HandleIGESBasicExternalRefFileIndex_is_null(
+        self_: *const HandleIGESBasicExternalRefFileIndex,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_ExternalRefFileIndex
     pub fn HandleIGESBasicExternalRefFileIndex_get(
         handle: *const HandleIGESBasicExternalRefFileIndex,
@@ -12553,6 +12650,10 @@ extern "C" {
     pub fn HandleIGESBasicExternalRefFileName_clone(
         self_: *const HandleIGESBasicExternalRefFileName,
     ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefFileName>;
+    /// Check if Handle<IGESBasic_ExternalRefFileName> is null
+    pub fn HandleIGESBasicExternalRefFileName_is_null(
+        self_: *const HandleIGESBasicExternalRefFileName,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_ExternalRefFileName
     pub fn HandleIGESBasicExternalRefFileName_get(
         handle: *const HandleIGESBasicExternalRefFileName,
@@ -12943,6 +13044,10 @@ extern "C" {
     pub fn HandleIGESBasicExternalRefLibName_clone(
         self_: *const HandleIGESBasicExternalRefLibName,
     ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefLibName>;
+    /// Check if Handle<IGESBasic_ExternalRefLibName> is null
+    pub fn HandleIGESBasicExternalRefLibName_is_null(
+        self_: *const HandleIGESBasicExternalRefLibName,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_ExternalRefLibName
     pub fn HandleIGESBasicExternalRefLibName_get(
         handle: *const HandleIGESBasicExternalRefLibName,
@@ -13325,6 +13430,10 @@ extern "C" {
     pub fn HandleIGESBasicExternalRefName_clone(
         self_: *const HandleIGESBasicExternalRefName,
     ) -> crate::OcctResult<*mut HandleIGESBasicExternalRefName>;
+    /// Check if Handle<IGESBasic_ExternalRefName> is null
+    pub fn HandleIGESBasicExternalRefName_is_null(
+        self_: *const HandleIGESBasicExternalRefName,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_ExternalRefName
     pub fn HandleIGESBasicExternalRefName_get(
         handle: *const HandleIGESBasicExternalRefName,
@@ -13716,6 +13825,10 @@ extern "C" {
     pub fn HandleIGESBasicExternalReferenceFile_clone(
         self_: *const HandleIGESBasicExternalReferenceFile,
     ) -> crate::OcctResult<*mut HandleIGESBasicExternalReferenceFile>;
+    /// Check if Handle<IGESBasic_ExternalReferenceFile> is null
+    pub fn HandleIGESBasicExternalReferenceFile_is_null(
+        self_: *const HandleIGESBasicExternalReferenceFile,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_ExternalReferenceFile
     pub fn HandleIGESBasicExternalReferenceFile_get(
         handle: *const HandleIGESBasicExternalReferenceFile,
@@ -14139,6 +14252,9 @@ extern "C" {
     pub fn HandleIGESBasicGeneralModule_clone(
         self_: *const HandleIGESBasicGeneralModule,
     ) -> crate::OcctResult<*mut HandleIGESBasicGeneralModule>;
+    /// Check if Handle<IGESBasic_GeneralModule> is null
+    pub fn HandleIGESBasicGeneralModule_is_null(self_: *const HandleIGESBasicGeneralModule)
+        -> bool;
     /// Dereference Handle to get *const IGESBasic_GeneralModule
     pub fn HandleIGESBasicGeneralModule_get(
         handle: *const HandleIGESBasicGeneralModule,
@@ -14393,6 +14509,8 @@ extern "C" {
     pub fn HandleIGESBasicGroup_clone(
         self_: *const HandleIGESBasicGroup,
     ) -> crate::OcctResult<*mut HandleIGESBasicGroup>;
+    /// Check if Handle<IGESBasic_Group> is null
+    pub fn HandleIGESBasicGroup_is_null(self_: *const HandleIGESBasicGroup) -> bool;
     /// Dereference Handle to get *const IGESBasic_Group
     pub fn HandleIGESBasicGroup_get(
         handle: *const HandleIGESBasicGroup,
@@ -14787,6 +14905,10 @@ extern "C" {
     pub fn HandleIGESBasicGroupWithoutBackP_clone(
         self_: *const HandleIGESBasicGroupWithoutBackP,
     ) -> crate::OcctResult<*mut HandleIGESBasicGroupWithoutBackP>;
+    /// Check if Handle<IGESBasic_GroupWithoutBackP> is null
+    pub fn HandleIGESBasicGroupWithoutBackP_is_null(
+        self_: *const HandleIGESBasicGroupWithoutBackP,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_GroupWithoutBackP
     pub fn HandleIGESBasicGroupWithoutBackP_get(
         handle: *const HandleIGESBasicGroupWithoutBackP,
@@ -15241,6 +15363,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfHArray1OfIGESEntity_clone(
         self_: *const HandleIGESBasicHArray1OfHArray1OfIGESEntity,
     ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfHArray1OfIGESEntity>;
+    /// Check if Handle<IGESBasic_HArray1OfHArray1OfIGESEntity> is null
+    pub fn HandleIGESBasicHArray1OfHArray1OfIGESEntity_is_null(
+        self_: *const HandleIGESBasicHArray1OfHArray1OfIGESEntity,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_HArray1OfHArray1OfIGESEntity
     pub fn HandleIGESBasicHArray1OfHArray1OfIGESEntity_get(
         handle: *const HandleIGESBasicHArray1OfHArray1OfIGESEntity,
@@ -15345,6 +15471,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfHArray1OfInteger_clone(
         self_: *const HandleIGESBasicHArray1OfHArray1OfInteger,
     ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfHArray1OfInteger>;
+    /// Check if Handle<IGESBasic_HArray1OfHArray1OfInteger> is null
+    pub fn HandleIGESBasicHArray1OfHArray1OfInteger_is_null(
+        self_: *const HandleIGESBasicHArray1OfHArray1OfInteger,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_HArray1OfHArray1OfInteger
     pub fn HandleIGESBasicHArray1OfHArray1OfInteger_get(
         handle: *const HandleIGESBasicHArray1OfHArray1OfInteger,
@@ -15449,6 +15579,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfHArray1OfReal_clone(
         self_: *const HandleIGESBasicHArray1OfHArray1OfReal,
     ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfHArray1OfReal>;
+    /// Check if Handle<IGESBasic_HArray1OfHArray1OfReal> is null
+    pub fn HandleIGESBasicHArray1OfHArray1OfReal_is_null(
+        self_: *const HandleIGESBasicHArray1OfHArray1OfReal,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_HArray1OfHArray1OfReal
     pub fn HandleIGESBasicHArray1OfHArray1OfReal_get(
         handle: *const HandleIGESBasicHArray1OfHArray1OfReal,
@@ -15551,6 +15685,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfHArray1OfXY_clone(
         self_: *const HandleIGESBasicHArray1OfHArray1OfXY,
     ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfHArray1OfXY>;
+    /// Check if Handle<IGESBasic_HArray1OfHArray1OfXY> is null
+    pub fn HandleIGESBasicHArray1OfHArray1OfXY_is_null(
+        self_: *const HandleIGESBasicHArray1OfHArray1OfXY,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_HArray1OfHArray1OfXY
     pub fn HandleIGESBasicHArray1OfHArray1OfXY_get(
         handle: *const HandleIGESBasicHArray1OfHArray1OfXY,
@@ -15653,6 +15791,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfHArray1OfXYZ_clone(
         self_: *const HandleIGESBasicHArray1OfHArray1OfXYZ,
     ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfHArray1OfXYZ>;
+    /// Check if Handle<IGESBasic_HArray1OfHArray1OfXYZ> is null
+    pub fn HandleIGESBasicHArray1OfHArray1OfXYZ_is_null(
+        self_: *const HandleIGESBasicHArray1OfHArray1OfXYZ,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_HArray1OfHArray1OfXYZ
     pub fn HandleIGESBasicHArray1OfHArray1OfXYZ_get(
         handle: *const HandleIGESBasicHArray1OfHArray1OfXYZ,
@@ -15762,6 +15904,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray1OfLineFontEntity_clone(
         self_: *const HandleIGESBasicHArray1OfLineFontEntity,
     ) -> crate::OcctResult<*mut HandleIGESBasicHArray1OfLineFontEntity>;
+    /// Check if Handle<IGESBasic_HArray1OfLineFontEntity> is null
+    pub fn HandleIGESBasicHArray1OfLineFontEntity_is_null(
+        self_: *const HandleIGESBasicHArray1OfLineFontEntity,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_HArray1OfLineFontEntity
     pub fn HandleIGESBasicHArray1OfLineFontEntity_get(
         handle: *const HandleIGESBasicHArray1OfLineFontEntity,
@@ -15865,6 +16011,10 @@ extern "C" {
     pub fn HandleIGESBasicHArray2OfHArray1OfReal_clone(
         self_: *const HandleIGESBasicHArray2OfHArray1OfReal,
     ) -> crate::OcctResult<*mut HandleIGESBasicHArray2OfHArray1OfReal>;
+    /// Check if Handle<IGESBasic_HArray2OfHArray1OfReal> is null
+    pub fn HandleIGESBasicHArray2OfHArray1OfReal_is_null(
+        self_: *const HandleIGESBasicHArray2OfHArray1OfReal,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_HArray2OfHArray1OfReal
     pub fn HandleIGESBasicHArray2OfHArray1OfReal_get(
         handle: *const HandleIGESBasicHArray2OfHArray1OfReal,
@@ -15984,6 +16134,8 @@ extern "C" {
     pub fn HandleIGESBasicHierarchy_clone(
         self_: *const HandleIGESBasicHierarchy,
     ) -> crate::OcctResult<*mut HandleIGESBasicHierarchy>;
+    /// Check if Handle<IGESBasic_Hierarchy> is null
+    pub fn HandleIGESBasicHierarchy_is_null(self_: *const HandleIGESBasicHierarchy) -> bool;
     /// Dereference Handle to get *const IGESBasic_Hierarchy
     pub fn HandleIGESBasicHierarchy_get(
         handle: *const HandleIGESBasicHierarchy,
@@ -16378,6 +16530,8 @@ extern "C" {
     pub fn HandleIGESBasicName_clone(
         self_: *const HandleIGESBasicName,
     ) -> crate::OcctResult<*mut HandleIGESBasicName>;
+    /// Check if Handle<IGESBasic_Name> is null
+    pub fn HandleIGESBasicName_is_null(self_: *const HandleIGESBasicName) -> bool;
     /// Dereference Handle to get *const IGESBasic_Name
     pub fn HandleIGESBasicName_get(
         handle: *const HandleIGESBasicName,
@@ -16758,6 +16912,8 @@ extern "C" {
     pub fn HandleIGESBasicOrderedGroup_clone(
         self_: *const HandleIGESBasicOrderedGroup,
     ) -> crate::OcctResult<*mut HandleIGESBasicOrderedGroup>;
+    /// Check if Handle<IGESBasic_OrderedGroup> is null
+    pub fn HandleIGESBasicOrderedGroup_is_null(self_: *const HandleIGESBasicOrderedGroup) -> bool;
     /// Dereference Handle to get *const IGESBasic_OrderedGroup
     pub fn HandleIGESBasicOrderedGroup_get(
         handle: *const HandleIGESBasicOrderedGroup,
@@ -17203,6 +17359,10 @@ extern "C" {
     pub fn HandleIGESBasicOrderedGroupWithoutBackP_clone(
         self_: *const HandleIGESBasicOrderedGroupWithoutBackP,
     ) -> crate::OcctResult<*mut HandleIGESBasicOrderedGroupWithoutBackP>;
+    /// Check if Handle<IGESBasic_OrderedGroupWithoutBackP> is null
+    pub fn HandleIGESBasicOrderedGroupWithoutBackP_is_null(
+        self_: *const HandleIGESBasicOrderedGroupWithoutBackP,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_OrderedGroupWithoutBackP
     pub fn HandleIGESBasicOrderedGroupWithoutBackP_get(
         handle: *const HandleIGESBasicOrderedGroupWithoutBackP,
@@ -17655,6 +17815,8 @@ extern "C" {
     pub fn HandleIGESBasicProtocol_clone(
         self_: *const HandleIGESBasicProtocol,
     ) -> crate::OcctResult<*mut HandleIGESBasicProtocol>;
+    /// Check if Handle<IGESBasic_Protocol> is null
+    pub fn HandleIGESBasicProtocol_is_null(self_: *const HandleIGESBasicProtocol) -> bool;
     /// Dereference Handle to get *const IGESBasic_Protocol
     pub fn HandleIGESBasicProtocol_get(
         handle: *const HandleIGESBasicProtocol,
@@ -17818,6 +17980,10 @@ extern "C" {
     pub fn HandleIGESBasicReadWriteModule_clone(
         self_: *const HandleIGESBasicReadWriteModule,
     ) -> crate::OcctResult<*mut HandleIGESBasicReadWriteModule>;
+    /// Check if Handle<IGESBasic_ReadWriteModule> is null
+    pub fn HandleIGESBasicReadWriteModule_is_null(
+        self_: *const HandleIGESBasicReadWriteModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_ReadWriteModule
     pub fn HandleIGESBasicReadWriteModule_get(
         handle: *const HandleIGESBasicReadWriteModule,
@@ -17963,6 +18129,8 @@ extern "C" {
     pub fn HandleIGESBasicSingleParent_clone(
         self_: *const HandleIGESBasicSingleParent,
     ) -> crate::OcctResult<*mut HandleIGESBasicSingleParent>;
+    /// Check if Handle<IGESBasic_SingleParent> is null
+    pub fn HandleIGESBasicSingleParent_is_null(self_: *const HandleIGESBasicSingleParent) -> bool;
     /// Dereference Handle to get *const IGESBasic_SingleParent
     pub fn HandleIGESBasicSingleParent_get(
         handle: *const HandleIGESBasicSingleParent,
@@ -18370,6 +18538,10 @@ extern "C" {
     pub fn HandleIGESBasicSingularSubfigure_clone(
         self_: *const HandleIGESBasicSingularSubfigure,
     ) -> crate::OcctResult<*mut HandleIGESBasicSingularSubfigure>;
+    /// Check if Handle<IGESBasic_SingularSubfigure> is null
+    pub fn HandleIGESBasicSingularSubfigure_is_null(
+        self_: *const HandleIGESBasicSingularSubfigure,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_SingularSubfigure
     pub fn HandleIGESBasicSingularSubfigure_get(
         handle: *const HandleIGESBasicSingularSubfigure,
@@ -18758,6 +18930,10 @@ extern "C" {
     pub fn HandleIGESBasicSpecificModule_clone(
         self_: *const HandleIGESBasicSpecificModule,
     ) -> crate::OcctResult<*mut HandleIGESBasicSpecificModule>;
+    /// Check if Handle<IGESBasic_SpecificModule> is null
+    pub fn HandleIGESBasicSpecificModule_is_null(
+        self_: *const HandleIGESBasicSpecificModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESBasic_SpecificModule
     pub fn HandleIGESBasicSpecificModule_get(
         handle: *const HandleIGESBasicSpecificModule,
@@ -18872,6 +19048,8 @@ extern "C" {
     pub fn HandleIGESBasicSubfigureDef_clone(
         self_: *const HandleIGESBasicSubfigureDef,
     ) -> crate::OcctResult<*mut HandleIGESBasicSubfigureDef>;
+    /// Check if Handle<IGESBasic_SubfigureDef> is null
+    pub fn HandleIGESBasicSubfigureDef_is_null(self_: *const HandleIGESBasicSubfigureDef) -> bool;
     /// Dereference Handle to get *const IGESBasic_SubfigureDef
     pub fn HandleIGESBasicSubfigureDef_get(
         handle: *const HandleIGESBasicSubfigureDef,
@@ -20467,6 +20645,8 @@ extern "C" {
     pub fn HandleIGESControlActorWrite_clone(
         self_: *const HandleIGESControlActorWrite,
     ) -> crate::OcctResult<*mut HandleIGESControlActorWrite>;
+    /// Check if Handle<IGESControl_ActorWrite> is null
+    pub fn HandleIGESControlActorWrite_is_null(self_: *const HandleIGESControlActorWrite) -> bool;
     /// Dereference Handle to get *const IGESControl_ActorWrite
     pub fn HandleIGESControlActorWrite_get(
         handle: *const HandleIGESControlActorWrite,
@@ -20619,6 +20799,10 @@ extern "C" {
     pub fn HandleIGESControlAlgoContainer_clone(
         self_: *const HandleIGESControlAlgoContainer,
     ) -> crate::OcctResult<*mut HandleIGESControlAlgoContainer>;
+    /// Check if Handle<IGESControl_AlgoContainer> is null
+    pub fn HandleIGESControlAlgoContainer_is_null(
+        self_: *const HandleIGESControlAlgoContainer,
+    ) -> bool;
     /// Dereference Handle to get *const IGESControl_AlgoContainer
     pub fn HandleIGESControlAlgoContainer_get(
         handle: *const HandleIGESControlAlgoContainer,
@@ -20740,6 +20924,8 @@ extern "C" {
     pub fn HandleIGESControlController_clone(
         self_: *const HandleIGESControlController,
     ) -> crate::OcctResult<*mut HandleIGESControlController>;
+    /// Check if Handle<IGESControl_Controller> is null
+    pub fn HandleIGESControlController_is_null(self_: *const HandleIGESControlController) -> bool;
     /// Dereference Handle to get *const IGESControl_Controller
     pub fn HandleIGESControlController_get(
         handle: *const HandleIGESControlController,
@@ -20898,6 +21084,10 @@ extern "C" {
     pub fn HandleIGESControlIGESBoundary_clone(
         self_: *const HandleIGESControlIGESBoundary,
     ) -> crate::OcctResult<*mut HandleIGESControlIGESBoundary>;
+    /// Check if Handle<IGESControl_IGESBoundary> is null
+    pub fn HandleIGESControlIGESBoundary_is_null(
+        self_: *const HandleIGESControlIGESBoundary,
+    ) -> bool;
     /// Dereference Handle to get *const IGESControl_IGESBoundary
     pub fn HandleIGESControlIGESBoundary_get(
         handle: *const HandleIGESControlIGESBoundary,
@@ -21158,6 +21348,10 @@ extern "C" {
     pub fn HandleIGESControlToolContainer_clone(
         self_: *const HandleIGESControlToolContainer,
     ) -> crate::OcctResult<*mut HandleIGESControlToolContainer>;
+    /// Check if Handle<IGESControl_ToolContainer> is null
+    pub fn HandleIGESControlToolContainer_is_null(
+        self_: *const HandleIGESControlToolContainer,
+    ) -> bool;
     /// Dereference Handle to get *const IGESControl_ToolContainer
     pub fn HandleIGESControlToolContainer_get(
         handle: *const HandleIGESControlToolContainer,
@@ -21497,6 +21691,8 @@ extern "C" {
     pub fn HandleIGESDataColorEntity_clone(
         self_: *const HandleIGESDataColorEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataColorEntity>;
+    /// Check if Handle<IGESData_ColorEntity> is null
+    pub fn HandleIGESDataColorEntity_is_null(self_: *const HandleIGESDataColorEntity) -> bool;
     /// Dereference Handle to get *const IGESData_ColorEntity
     pub fn HandleIGESDataColorEntity_get(
         handle: *const HandleIGESDataColorEntity,
@@ -21936,6 +22132,9 @@ extern "C" {
     pub fn HandleIGESDataDefaultGeneral_clone(
         self_: *const HandleIGESDataDefaultGeneral,
     ) -> crate::OcctResult<*mut HandleIGESDataDefaultGeneral>;
+    /// Check if Handle<IGESData_DefaultGeneral> is null
+    pub fn HandleIGESDataDefaultGeneral_is_null(self_: *const HandleIGESDataDefaultGeneral)
+        -> bool;
     /// Dereference Handle to get *const IGESData_DefaultGeneral
     pub fn HandleIGESDataDefaultGeneral_get(
         handle: *const HandleIGESDataDefaultGeneral,
@@ -22158,6 +22357,10 @@ extern "C" {
     pub fn HandleIGESDataDefaultSpecific_clone(
         self_: *const HandleIGESDataDefaultSpecific,
     ) -> crate::OcctResult<*mut HandleIGESDataDefaultSpecific>;
+    /// Check if Handle<IGESData_DefaultSpecific> is null
+    pub fn HandleIGESDataDefaultSpecific_is_null(
+        self_: *const HandleIGESDataDefaultSpecific,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_DefaultSpecific
     pub fn HandleIGESDataDefaultSpecific_get(
         handle: *const HandleIGESDataDefaultSpecific,
@@ -22431,6 +22634,8 @@ extern "C" {
     pub fn HandleIGESDataFileProtocol_clone(
         self_: *const HandleIGESDataFileProtocol,
     ) -> crate::OcctResult<*mut HandleIGESDataFileProtocol>;
+    /// Check if Handle<IGESData_FileProtocol> is null
+    pub fn HandleIGESDataFileProtocol_is_null(self_: *const HandleIGESDataFileProtocol) -> bool;
     /// Dereference Handle to get *const IGESData_FileProtocol
     pub fn HandleIGESDataFileProtocol_get(
         handle: *const HandleIGESDataFileProtocol,
@@ -22571,6 +22776,9 @@ extern "C" {
     pub fn HandleIGESDataFileRecognizer_clone(
         self_: *const HandleIGESDataFileRecognizer,
     ) -> crate::OcctResult<*mut HandleIGESDataFileRecognizer>;
+    /// Check if Handle<IGESData_FileRecognizer> is null
+    pub fn HandleIGESDataFileRecognizer_is_null(self_: *const HandleIGESDataFileRecognizer)
+        -> bool;
     /// Dereference Handle to get *const IGESData_FileRecognizer
     pub fn HandleIGESDataFileRecognizer_get(
         handle: *const HandleIGESDataFileRecognizer,
@@ -22749,6 +22957,10 @@ extern "C" {
     pub fn HandleIGESDataFreeFormatEntity_clone(
         self_: *const HandleIGESDataFreeFormatEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataFreeFormatEntity>;
+    /// Check if Handle<IGESData_FreeFormatEntity> is null
+    pub fn HandleIGESDataFreeFormatEntity_is_null(
+        self_: *const HandleIGESDataFreeFormatEntity,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_FreeFormatEntity
     pub fn HandleIGESDataFreeFormatEntity_get(
         handle: *const HandleIGESDataFreeFormatEntity,
@@ -23272,6 +23484,8 @@ extern "C" {
     pub fn HandleIGESDataGeneralModule_clone(
         self_: *const HandleIGESDataGeneralModule,
     ) -> crate::OcctResult<*mut HandleIGESDataGeneralModule>;
+    /// Check if Handle<IGESData_GeneralModule> is null
+    pub fn HandleIGESDataGeneralModule_is_null(self_: *const HandleIGESDataGeneralModule) -> bool;
     /// Dereference Handle to get *const IGESData_GeneralModule
     pub fn HandleIGESDataGeneralModule_get(
         handle: *const HandleIGESDataGeneralModule,
@@ -23454,6 +23668,10 @@ extern "C" {
     pub fn HandleIGESDataGlobalNodeOfSpecificLib_clone(
         self_: *const HandleIGESDataGlobalNodeOfSpecificLib,
     ) -> crate::OcctResult<*mut HandleIGESDataGlobalNodeOfSpecificLib>;
+    /// Check if Handle<IGESData_GlobalNodeOfSpecificLib> is null
+    pub fn HandleIGESDataGlobalNodeOfSpecificLib_is_null(
+        self_: *const HandleIGESDataGlobalNodeOfSpecificLib,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_GlobalNodeOfSpecificLib
     pub fn HandleIGESDataGlobalNodeOfSpecificLib_get(
         handle: *const HandleIGESDataGlobalNodeOfSpecificLib,
@@ -23549,6 +23767,10 @@ extern "C" {
     pub fn HandleIGESDataGlobalNodeOfWriterLib_clone(
         self_: *const HandleIGESDataGlobalNodeOfWriterLib,
     ) -> crate::OcctResult<*mut HandleIGESDataGlobalNodeOfWriterLib>;
+    /// Check if Handle<IGESData_GlobalNodeOfWriterLib> is null
+    pub fn HandleIGESDataGlobalNodeOfWriterLib_is_null(
+        self_: *const HandleIGESDataGlobalNodeOfWriterLib,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_GlobalNodeOfWriterLib
     pub fn HandleIGESDataGlobalNodeOfWriterLib_get(
         handle: *const HandleIGESDataGlobalNodeOfWriterLib,
@@ -23966,6 +24188,10 @@ extern "C" {
     pub fn HandleIGESDataHArray1OfIGESEntity_clone(
         self_: *const HandleIGESDataHArray1OfIGESEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataHArray1OfIGESEntity>;
+    /// Check if Handle<IGESData_HArray1OfIGESEntity> is null
+    pub fn HandleIGESDataHArray1OfIGESEntity_is_null(
+        self_: *const HandleIGESDataHArray1OfIGESEntity,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_HArray1OfIGESEntity
     pub fn HandleIGESDataHArray1OfIGESEntity_get(
         handle: *const HandleIGESDataHArray1OfIGESEntity,
@@ -24362,6 +24588,8 @@ extern "C" {
     pub fn HandleIGESDataIGESEntity_clone(
         self_: *const HandleIGESDataIGESEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataIGESEntity>;
+    /// Check if Handle<IGESData_IGESEntity> is null
+    pub fn HandleIGESDataIGESEntity_is_null(self_: *const HandleIGESDataIGESEntity) -> bool;
     /// Dereference Handle to get *const IGESData_IGESEntity
     pub fn HandleIGESDataIGESEntity_get(
         handle: *const HandleIGESDataIGESEntity,
@@ -25135,6 +25363,8 @@ extern "C" {
     pub fn HandleIGESDataIGESModel_clone(
         self_: *const HandleIGESDataIGESModel,
     ) -> crate::OcctResult<*mut HandleIGESDataIGESModel>;
+    /// Check if Handle<IGESData_IGESModel> is null
+    pub fn HandleIGESDataIGESModel_is_null(self_: *const HandleIGESDataIGESModel) -> bool;
     /// Dereference Handle to get *const IGESData_IGESModel
     pub fn HandleIGESDataIGESModel_get(
         handle: *const HandleIGESDataIGESModel,
@@ -25550,6 +25780,9 @@ extern "C" {
     pub fn HandleIGESDataIGESReaderData_clone(
         self_: *const HandleIGESDataIGESReaderData,
     ) -> crate::OcctResult<*mut HandleIGESDataIGESReaderData>;
+    /// Check if Handle<IGESData_IGESReaderData> is null
+    pub fn HandleIGESDataIGESReaderData_is_null(self_: *const HandleIGESDataIGESReaderData)
+        -> bool;
     /// Dereference Handle to get *const IGESData_IGESReaderData
     pub fn HandleIGESDataIGESReaderData_get(
         handle: *const HandleIGESDataIGESReaderData,
@@ -26036,6 +26269,10 @@ extern "C" {
     pub fn HandleIGESDataLabelDisplayEntity_clone(
         self_: *const HandleIGESDataLabelDisplayEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataLabelDisplayEntity>;
+    /// Check if Handle<IGESData_LabelDisplayEntity> is null
+    pub fn HandleIGESDataLabelDisplayEntity_is_null(
+        self_: *const HandleIGESDataLabelDisplayEntity,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_LabelDisplayEntity
     pub fn HandleIGESDataLabelDisplayEntity_get(
         handle: *const HandleIGESDataLabelDisplayEntity,
@@ -26421,6 +26658,10 @@ extern "C" {
     pub fn HandleIGESDataLevelListEntity_clone(
         self_: *const HandleIGESDataLevelListEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataLevelListEntity>;
+    /// Check if Handle<IGESData_LevelListEntity> is null
+    pub fn HandleIGESDataLevelListEntity_is_null(
+        self_: *const HandleIGESDataLevelListEntity,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_LevelListEntity
     pub fn HandleIGESDataLevelListEntity_get(
         handle: *const HandleIGESDataLevelListEntity,
@@ -26798,6 +27039,9 @@ extern "C" {
     pub fn HandleIGESDataLineFontEntity_clone(
         self_: *const HandleIGESDataLineFontEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataLineFontEntity>;
+    /// Check if Handle<IGESData_LineFontEntity> is null
+    pub fn HandleIGESDataLineFontEntity_is_null(self_: *const HandleIGESDataLineFontEntity)
+        -> bool;
     /// Dereference Handle to get *const IGESData_LineFontEntity
     pub fn HandleIGESDataLineFontEntity_get(
         handle: *const HandleIGESDataLineFontEntity,
@@ -27176,6 +27420,8 @@ extern "C" {
     pub fn HandleIGESDataNameEntity_clone(
         self_: *const HandleIGESDataNameEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataNameEntity>;
+    /// Check if Handle<IGESData_NameEntity> is null
+    pub fn HandleIGESDataNameEntity_is_null(self_: *const HandleIGESDataNameEntity) -> bool;
     /// Dereference Handle to get *const IGESData_NameEntity
     pub fn HandleIGESDataNameEntity_get(
         handle: *const HandleIGESDataNameEntity,
@@ -27562,6 +27808,10 @@ extern "C" {
     pub fn HandleIGESDataNodeOfSpecificLib_clone(
         self_: *const HandleIGESDataNodeOfSpecificLib,
     ) -> crate::OcctResult<*mut HandleIGESDataNodeOfSpecificLib>;
+    /// Check if Handle<IGESData_NodeOfSpecificLib> is null
+    pub fn HandleIGESDataNodeOfSpecificLib_is_null(
+        self_: *const HandleIGESDataNodeOfSpecificLib,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_NodeOfSpecificLib
     pub fn HandleIGESDataNodeOfSpecificLib_get(
         handle: *const HandleIGESDataNodeOfSpecificLib,
@@ -27652,6 +27902,10 @@ extern "C" {
     pub fn HandleIGESDataNodeOfWriterLib_clone(
         self_: *const HandleIGESDataNodeOfWriterLib,
     ) -> crate::OcctResult<*mut HandleIGESDataNodeOfWriterLib>;
+    /// Check if Handle<IGESData_NodeOfWriterLib> is null
+    pub fn HandleIGESDataNodeOfWriterLib_is_null(
+        self_: *const HandleIGESDataNodeOfWriterLib,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_NodeOfWriterLib
     pub fn HandleIGESDataNodeOfWriterLib_get(
         handle: *const HandleIGESDataNodeOfWriterLib,
@@ -28197,6 +28451,8 @@ extern "C" {
     pub fn HandleIGESDataProtocol_clone(
         self_: *const HandleIGESDataProtocol,
     ) -> crate::OcctResult<*mut HandleIGESDataProtocol>;
+    /// Check if Handle<IGESData_Protocol> is null
+    pub fn HandleIGESDataProtocol_is_null(self_: *const HandleIGESDataProtocol) -> bool;
     /// Dereference Handle to get *const IGESData_Protocol
     pub fn HandleIGESDataProtocol_get(
         handle: *const HandleIGESDataProtocol,
@@ -28375,6 +28631,10 @@ extern "C" {
     pub fn HandleIGESDataReadWriteModule_clone(
         self_: *const HandleIGESDataReadWriteModule,
     ) -> crate::OcctResult<*mut HandleIGESDataReadWriteModule>;
+    /// Check if Handle<IGESData_ReadWriteModule> is null
+    pub fn HandleIGESDataReadWriteModule_is_null(
+        self_: *const HandleIGESDataReadWriteModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_ReadWriteModule
     pub fn HandleIGESDataReadWriteModule_get(
         handle: *const HandleIGESDataReadWriteModule,
@@ -28510,6 +28770,10 @@ extern "C" {
     pub fn HandleIGESDataSingleParentEntity_clone(
         self_: *const HandleIGESDataSingleParentEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataSingleParentEntity>;
+    /// Check if Handle<IGESData_SingleParentEntity> is null
+    pub fn HandleIGESDataSingleParentEntity_is_null(
+        self_: *const HandleIGESDataSingleParentEntity,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_SingleParentEntity
     pub fn HandleIGESDataSingleParentEntity_get(
         handle: *const HandleIGESDataSingleParentEntity,
@@ -28934,6 +29198,9 @@ extern "C" {
     pub fn HandleIGESDataSpecificModule_clone(
         self_: *const HandleIGESDataSpecificModule,
     ) -> crate::OcctResult<*mut HandleIGESDataSpecificModule>;
+    /// Check if Handle<IGESData_SpecificModule> is null
+    pub fn HandleIGESDataSpecificModule_is_null(self_: *const HandleIGESDataSpecificModule)
+        -> bool;
     /// Dereference Handle to get *const IGESData_SpecificModule
     pub fn HandleIGESDataSpecificModule_get(
         handle: *const HandleIGESDataSpecificModule,
@@ -29139,6 +29406,8 @@ extern "C" {
     pub fn HandleIGESDataToolLocation_clone(
         self_: *const HandleIGESDataToolLocation,
     ) -> crate::OcctResult<*mut HandleIGESDataToolLocation>;
+    /// Check if Handle<IGESData_ToolLocation> is null
+    pub fn HandleIGESDataToolLocation_is_null(self_: *const HandleIGESDataToolLocation) -> bool;
     /// Dereference Handle to get *const IGESData_ToolLocation
     pub fn HandleIGESDataToolLocation_get(
         handle: *const HandleIGESDataToolLocation,
@@ -29218,6 +29487,8 @@ extern "C" {
     pub fn HandleIGESDataTransfEntity_clone(
         self_: *const HandleIGESDataTransfEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataTransfEntity>;
+    /// Check if Handle<IGESData_TransfEntity> is null
+    pub fn HandleIGESDataTransfEntity_is_null(self_: *const HandleIGESDataTransfEntity) -> bool;
     /// Dereference Handle to get *const IGESData_TransfEntity
     pub fn HandleIGESDataTransfEntity_get(
         handle: *const HandleIGESDataTransfEntity,
@@ -29658,6 +29929,10 @@ extern "C" {
     pub fn HandleIGESDataUndefinedEntity_clone(
         self_: *const HandleIGESDataUndefinedEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataUndefinedEntity>;
+    /// Check if Handle<IGESData_UndefinedEntity> is null
+    pub fn HandleIGESDataUndefinedEntity_is_null(
+        self_: *const HandleIGESDataUndefinedEntity,
+    ) -> bool;
     /// Dereference Handle to get *const IGESData_UndefinedEntity
     pub fn HandleIGESDataUndefinedEntity_get(
         handle: *const HandleIGESDataUndefinedEntity,
@@ -30022,6 +30297,9 @@ extern "C" {
     pub fn HandleIGESDataViewKindEntity_clone(
         self_: *const HandleIGESDataViewKindEntity,
     ) -> crate::OcctResult<*mut HandleIGESDataViewKindEntity>;
+    /// Check if Handle<IGESData_ViewKindEntity> is null
+    pub fn HandleIGESDataViewKindEntity_is_null(self_: *const HandleIGESDataViewKindEntity)
+        -> bool;
     /// Dereference Handle to get *const IGESData_ViewKindEntity
     pub fn HandleIGESDataViewKindEntity_get(
         handle: *const HandleIGESDataViewKindEntity,
@@ -30508,6 +30786,10 @@ extern "C" {
     pub fn HandleIGESDefsAssociativityDef_clone(
         self_: *const HandleIGESDefsAssociativityDef,
     ) -> crate::OcctResult<*mut HandleIGESDefsAssociativityDef>;
+    /// Check if Handle<IGESDefs_AssociativityDef> is null
+    pub fn HandleIGESDefsAssociativityDef_is_null(
+        self_: *const HandleIGESDefsAssociativityDef,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDefs_AssociativityDef
     pub fn HandleIGESDefsAssociativityDef_get(
         handle: *const HandleIGESDefsAssociativityDef,
@@ -30972,6 +31254,8 @@ extern "C" {
     pub fn HandleIGESDefsAttributeDef_clone(
         self_: *const HandleIGESDefsAttributeDef,
     ) -> crate::OcctResult<*mut HandleIGESDefsAttributeDef>;
+    /// Check if Handle<IGESDefs_AttributeDef> is null
+    pub fn HandleIGESDefsAttributeDef_is_null(self_: *const HandleIGESDefsAttributeDef) -> bool;
     /// Dereference Handle to get *const IGESDefs_AttributeDef
     pub fn HandleIGESDefsAttributeDef_get(
         handle: *const HandleIGESDefsAttributeDef,
@@ -31418,6 +31702,9 @@ extern "C" {
     pub fn HandleIGESDefsAttributeTable_clone(
         self_: *const HandleIGESDefsAttributeTable,
     ) -> crate::OcctResult<*mut HandleIGESDefsAttributeTable>;
+    /// Check if Handle<IGESDefs_AttributeTable> is null
+    pub fn HandleIGESDefsAttributeTable_is_null(self_: *const HandleIGESDefsAttributeTable)
+        -> bool;
     /// Dereference Handle to get *const IGESDefs_AttributeTable
     pub fn HandleIGESDefsAttributeTable_get(
         handle: *const HandleIGESDefsAttributeTable,
@@ -31841,6 +32128,8 @@ extern "C" {
     pub fn HandleIGESDefsGeneralModule_clone(
         self_: *const HandleIGESDefsGeneralModule,
     ) -> crate::OcctResult<*mut HandleIGESDefsGeneralModule>;
+    /// Check if Handle<IGESDefs_GeneralModule> is null
+    pub fn HandleIGESDefsGeneralModule_is_null(self_: *const HandleIGESDefsGeneralModule) -> bool;
     /// Dereference Handle to get *const IGESDefs_GeneralModule
     pub fn HandleIGESDefsGeneralModule_get(
         handle: *const HandleIGESDefsGeneralModule,
@@ -32101,6 +32390,8 @@ extern "C" {
     pub fn HandleIGESDefsGenericData_clone(
         self_: *const HandleIGESDefsGenericData,
     ) -> crate::OcctResult<*mut HandleIGESDefsGenericData>;
+    /// Check if Handle<IGESDefs_GenericData> is null
+    pub fn HandleIGESDefsGenericData_is_null(self_: *const HandleIGESDefsGenericData) -> bool;
     /// Dereference Handle to get *const IGESDefs_GenericData
     pub fn HandleIGESDefsGenericData_get(
         handle: *const HandleIGESDefsGenericData,
@@ -32497,6 +32788,10 @@ extern "C" {
     pub fn HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate_clone(
         self_: *const HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate,
     ) -> crate::OcctResult<*mut HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate>;
+    /// Check if Handle<IGESDefs_HArray1OfHArray1OfTextDisplayTemplate> is null
+    pub fn HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate_is_null(
+        self_: *const HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDefs_HArray1OfHArray1OfTextDisplayTemplate
     pub fn HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate_get(
         handle: *const HandleIGESDefsHArray1OfHArray1OfTextDisplayTemplate,
@@ -32604,6 +32899,10 @@ extern "C" {
     pub fn HandleIGESDefsHArray1OfTabularData_clone(
         self_: *const HandleIGESDefsHArray1OfTabularData,
     ) -> crate::OcctResult<*mut HandleIGESDefsHArray1OfTabularData>;
+    /// Check if Handle<IGESDefs_HArray1OfTabularData> is null
+    pub fn HandleIGESDefsHArray1OfTabularData_is_null(
+        self_: *const HandleIGESDefsHArray1OfTabularData,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDefs_HArray1OfTabularData
     pub fn HandleIGESDefsHArray1OfTabularData_get(
         handle: *const HandleIGESDefsHArray1OfTabularData,
@@ -32713,6 +33012,8 @@ extern "C" {
     pub fn HandleIGESDefsMacroDef_clone(
         self_: *const HandleIGESDefsMacroDef,
     ) -> crate::OcctResult<*mut HandleIGESDefsMacroDef>;
+    /// Check if Handle<IGESDefs_MacroDef> is null
+    pub fn HandleIGESDefsMacroDef_is_null(self_: *const HandleIGESDefsMacroDef) -> bool;
     /// Dereference Handle to get *const IGESDefs_MacroDef
     pub fn HandleIGESDefsMacroDef_get(
         handle: *const HandleIGESDefsMacroDef,
@@ -33107,6 +33408,8 @@ extern "C" {
     pub fn HandleIGESDefsProtocol_clone(
         self_: *const HandleIGESDefsProtocol,
     ) -> crate::OcctResult<*mut HandleIGESDefsProtocol>;
+    /// Check if Handle<IGESDefs_Protocol> is null
+    pub fn HandleIGESDefsProtocol_is_null(self_: *const HandleIGESDefsProtocol) -> bool;
     /// Dereference Handle to get *const IGESDefs_Protocol
     pub fn HandleIGESDefsProtocol_get(
         handle: *const HandleIGESDefsProtocol,
@@ -33270,6 +33573,10 @@ extern "C" {
     pub fn HandleIGESDefsReadWriteModule_clone(
         self_: *const HandleIGESDefsReadWriteModule,
     ) -> crate::OcctResult<*mut HandleIGESDefsReadWriteModule>;
+    /// Check if Handle<IGESDefs_ReadWriteModule> is null
+    pub fn HandleIGESDefsReadWriteModule_is_null(
+        self_: *const HandleIGESDefsReadWriteModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDefs_ReadWriteModule
     pub fn HandleIGESDefsReadWriteModule_get(
         handle: *const HandleIGESDefsReadWriteModule,
@@ -33392,6 +33699,9 @@ extern "C" {
     pub fn HandleIGESDefsSpecificModule_clone(
         self_: *const HandleIGESDefsSpecificModule,
     ) -> crate::OcctResult<*mut HandleIGESDefsSpecificModule>;
+    /// Check if Handle<IGESDefs_SpecificModule> is null
+    pub fn HandleIGESDefsSpecificModule_is_null(self_: *const HandleIGESDefsSpecificModule)
+        -> bool;
     /// Dereference Handle to get *const IGESDefs_SpecificModule
     pub fn HandleIGESDefsSpecificModule_get(
         handle: *const HandleIGESDefsSpecificModule,
@@ -33543,6 +33853,8 @@ extern "C" {
     pub fn HandleIGESDefsTabularData_clone(
         self_: *const HandleIGESDefsTabularData,
     ) -> crate::OcctResult<*mut HandleIGESDefsTabularData>;
+    /// Check if Handle<IGESDefs_TabularData> is null
+    pub fn HandleIGESDefsTabularData_is_null(self_: *const HandleIGESDefsTabularData) -> bool;
     /// Dereference Handle to get *const IGESDefs_TabularData
     pub fn HandleIGESDefsTabularData_get(
         handle: *const HandleIGESDefsTabularData,
@@ -34290,6 +34602,8 @@ extern "C" {
     pub fn HandleIGESDefsUnitsData_clone(
         self_: *const HandleIGESDefsUnitsData,
     ) -> crate::OcctResult<*mut HandleIGESDefsUnitsData>;
+    /// Check if Handle<IGESDefs_UnitsData> is null
+    pub fn HandleIGESDefsUnitsData_is_null(self_: *const HandleIGESDefsUnitsData) -> bool;
     /// Dereference Handle to get *const IGESDefs_UnitsData
     pub fn HandleIGESDefsUnitsData_get(
         handle: *const HandleIGESDefsUnitsData,
@@ -34714,6 +35028,10 @@ extern "C" {
     pub fn HandleIGESDimenAngularDimension_clone(
         self_: *const HandleIGESDimenAngularDimension,
     ) -> crate::OcctResult<*mut HandleIGESDimenAngularDimension>;
+    /// Check if Handle<IGESDimen_AngularDimension> is null
+    pub fn HandleIGESDimenAngularDimension_is_null(
+        self_: *const HandleIGESDimenAngularDimension,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_AngularDimension
     pub fn HandleIGESDimenAngularDimension_get(
         handle: *const HandleIGESDimenAngularDimension,
@@ -35116,6 +35434,10 @@ extern "C" {
     pub fn HandleIGESDimenBasicDimension_clone(
         self_: *const HandleIGESDimenBasicDimension,
     ) -> crate::OcctResult<*mut HandleIGESDimenBasicDimension>;
+    /// Check if Handle<IGESDimen_BasicDimension> is null
+    pub fn HandleIGESDimenBasicDimension_is_null(
+        self_: *const HandleIGESDimenBasicDimension,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_BasicDimension
     pub fn HandleIGESDimenBasicDimension_get(
         handle: *const HandleIGESDimenBasicDimension,
@@ -35526,6 +35848,8 @@ extern "C" {
     pub fn HandleIGESDimenCenterLine_clone(
         self_: *const HandleIGESDimenCenterLine,
     ) -> crate::OcctResult<*mut HandleIGESDimenCenterLine>;
+    /// Check if Handle<IGESDimen_CenterLine> is null
+    pub fn HandleIGESDimenCenterLine_is_null(self_: *const HandleIGESDimenCenterLine) -> bool;
     /// Dereference Handle to get *const IGESDimen_CenterLine
     pub fn HandleIGESDimenCenterLine_get(
         handle: *const HandleIGESDimenCenterLine,
@@ -35950,6 +36274,10 @@ extern "C" {
     pub fn HandleIGESDimenCurveDimension_clone(
         self_: *const HandleIGESDimenCurveDimension,
     ) -> crate::OcctResult<*mut HandleIGESDimenCurveDimension>;
+    /// Check if Handle<IGESDimen_CurveDimension> is null
+    pub fn HandleIGESDimenCurveDimension_is_null(
+        self_: *const HandleIGESDimenCurveDimension,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_CurveDimension
     pub fn HandleIGESDimenCurveDimension_get(
         handle: *const HandleIGESDimenCurveDimension,
@@ -36357,6 +36685,10 @@ extern "C" {
     pub fn HandleIGESDimenDiameterDimension_clone(
         self_: *const HandleIGESDimenDiameterDimension,
     ) -> crate::OcctResult<*mut HandleIGESDimenDiameterDimension>;
+    /// Check if Handle<IGESDimen_DiameterDimension> is null
+    pub fn HandleIGESDimenDiameterDimension_is_null(
+        self_: *const HandleIGESDimenDiameterDimension,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_DiameterDimension
     pub fn HandleIGESDimenDiameterDimension_get(
         handle: *const HandleIGESDimenDiameterDimension,
@@ -36820,6 +37152,10 @@ extern "C" {
     pub fn HandleIGESDimenDimensionDisplayData_clone(
         self_: *const HandleIGESDimenDimensionDisplayData,
     ) -> crate::OcctResult<*mut HandleIGESDimenDimensionDisplayData>;
+    /// Check if Handle<IGESDimen_DimensionDisplayData> is null
+    pub fn HandleIGESDimenDimensionDisplayData_is_null(
+        self_: *const HandleIGESDimenDimensionDisplayData,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_DimensionDisplayData
     pub fn HandleIGESDimenDimensionDisplayData_get(
         handle: *const HandleIGESDimenDimensionDisplayData,
@@ -37245,6 +37581,10 @@ extern "C" {
     pub fn HandleIGESDimenDimensionTolerance_clone(
         self_: *const HandleIGESDimenDimensionTolerance,
     ) -> crate::OcctResult<*mut HandleIGESDimenDimensionTolerance>;
+    /// Check if Handle<IGESDimen_DimensionTolerance> is null
+    pub fn HandleIGESDimenDimensionTolerance_is_null(
+        self_: *const HandleIGESDimenDimensionTolerance,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_DimensionTolerance
     pub fn HandleIGESDimenDimensionTolerance_get(
         handle: *const HandleIGESDimenDimensionTolerance,
@@ -37657,6 +37997,10 @@ extern "C" {
     pub fn HandleIGESDimenDimensionUnits_clone(
         self_: *const HandleIGESDimenDimensionUnits,
     ) -> crate::OcctResult<*mut HandleIGESDimenDimensionUnits>;
+    /// Check if Handle<IGESDimen_DimensionUnits> is null
+    pub fn HandleIGESDimenDimensionUnits_is_null(
+        self_: *const HandleIGESDimenDimensionUnits,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_DimensionUnits
     pub fn HandleIGESDimenDimensionUnits_get(
         handle: *const HandleIGESDimenDimensionUnits,
@@ -38058,6 +38402,10 @@ extern "C" {
     pub fn HandleIGESDimenDimensionedGeometry_clone(
         self_: *const HandleIGESDimenDimensionedGeometry,
     ) -> crate::OcctResult<*mut HandleIGESDimenDimensionedGeometry>;
+    /// Check if Handle<IGESDimen_DimensionedGeometry> is null
+    pub fn HandleIGESDimenDimensionedGeometry_is_null(
+        self_: *const HandleIGESDimenDimensionedGeometry,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_DimensionedGeometry
     pub fn HandleIGESDimenDimensionedGeometry_get(
         handle: *const HandleIGESDimenDimensionedGeometry,
@@ -38477,6 +38825,8 @@ extern "C" {
     pub fn HandleIGESDimenFlagNote_clone(
         self_: *const HandleIGESDimenFlagNote,
     ) -> crate::OcctResult<*mut HandleIGESDimenFlagNote>;
+    /// Check if Handle<IGESDimen_FlagNote> is null
+    pub fn HandleIGESDimenFlagNote_is_null(self_: *const HandleIGESDimenFlagNote) -> bool;
     /// Dereference Handle to get *const IGESDimen_FlagNote
     pub fn HandleIGESDimenFlagNote_get(
         handle: *const HandleIGESDimenFlagNote,
@@ -38869,6 +39219,8 @@ extern "C" {
     pub fn HandleIGESDimenGeneralLabel_clone(
         self_: *const HandleIGESDimenGeneralLabel,
     ) -> crate::OcctResult<*mut HandleIGESDimenGeneralLabel>;
+    /// Check if Handle<IGESDimen_GeneralLabel> is null
+    pub fn HandleIGESDimenGeneralLabel_is_null(self_: *const HandleIGESDimenGeneralLabel) -> bool;
     /// Dereference Handle to get *const IGESDimen_GeneralLabel
     pub fn HandleIGESDimenGeneralLabel_get(
         handle: *const HandleIGESDimenGeneralLabel,
@@ -39292,6 +39644,9 @@ extern "C" {
     pub fn HandleIGESDimenGeneralModule_clone(
         self_: *const HandleIGESDimenGeneralModule,
     ) -> crate::OcctResult<*mut HandleIGESDimenGeneralModule>;
+    /// Check if Handle<IGESDimen_GeneralModule> is null
+    pub fn HandleIGESDimenGeneralModule_is_null(self_: *const HandleIGESDimenGeneralModule)
+        -> bool;
     /// Dereference Handle to get *const IGESDimen_GeneralModule
     pub fn HandleIGESDimenGeneralModule_get(
         handle: *const HandleIGESDimenGeneralModule,
@@ -39592,6 +39947,8 @@ extern "C" {
     pub fn HandleIGESDimenGeneralNote_clone(
         self_: *const HandleIGESDimenGeneralNote,
     ) -> crate::OcctResult<*mut HandleIGESDimenGeneralNote>;
+    /// Check if Handle<IGESDimen_GeneralNote> is null
+    pub fn HandleIGESDimenGeneralNote_is_null(self_: *const HandleIGESDimenGeneralNote) -> bool;
     /// Dereference Handle to get *const IGESDimen_GeneralNote
     pub fn HandleIGESDimenGeneralNote_get(
         handle: *const HandleIGESDimenGeneralNote,
@@ -40003,6 +40360,9 @@ extern "C" {
     pub fn HandleIGESDimenGeneralSymbol_clone(
         self_: *const HandleIGESDimenGeneralSymbol,
     ) -> crate::OcctResult<*mut HandleIGESDimenGeneralSymbol>;
+    /// Check if Handle<IGESDimen_GeneralSymbol> is null
+    pub fn HandleIGESDimenGeneralSymbol_is_null(self_: *const HandleIGESDimenGeneralSymbol)
+        -> bool;
     /// Dereference Handle to get *const IGESDimen_GeneralSymbol
     pub fn HandleIGESDimenGeneralSymbol_get(
         handle: *const HandleIGESDimenGeneralSymbol,
@@ -40402,6 +40762,10 @@ extern "C" {
     pub fn HandleIGESDimenHArray1OfGeneralNote_clone(
         self_: *const HandleIGESDimenHArray1OfGeneralNote,
     ) -> crate::OcctResult<*mut HandleIGESDimenHArray1OfGeneralNote>;
+    /// Check if Handle<IGESDimen_HArray1OfGeneralNote> is null
+    pub fn HandleIGESDimenHArray1OfGeneralNote_is_null(
+        self_: *const HandleIGESDimenHArray1OfGeneralNote,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_HArray1OfGeneralNote
     pub fn HandleIGESDimenHArray1OfGeneralNote_get(
         handle: *const HandleIGESDimenHArray1OfGeneralNote,
@@ -40509,6 +40873,10 @@ extern "C" {
     pub fn HandleIGESDimenHArray1OfLeaderArrow_clone(
         self_: *const HandleIGESDimenHArray1OfLeaderArrow,
     ) -> crate::OcctResult<*mut HandleIGESDimenHArray1OfLeaderArrow>;
+    /// Check if Handle<IGESDimen_HArray1OfLeaderArrow> is null
+    pub fn HandleIGESDimenHArray1OfLeaderArrow_is_null(
+        self_: *const HandleIGESDimenHArray1OfLeaderArrow,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_HArray1OfLeaderArrow
     pub fn HandleIGESDimenHArray1OfLeaderArrow_get(
         handle: *const HandleIGESDimenHArray1OfLeaderArrow,
@@ -40638,6 +41006,8 @@ extern "C" {
     pub fn HandleIGESDimenLeaderArrow_clone(
         self_: *const HandleIGESDimenLeaderArrow,
     ) -> crate::OcctResult<*mut HandleIGESDimenLeaderArrow>;
+    /// Check if Handle<IGESDimen_LeaderArrow> is null
+    pub fn HandleIGESDimenLeaderArrow_is_null(self_: *const HandleIGESDimenLeaderArrow) -> bool;
     /// Dereference Handle to get *const IGESDimen_LeaderArrow
     pub fn HandleIGESDimenLeaderArrow_get(
         handle: *const HandleIGESDimenLeaderArrow,
@@ -41053,6 +41423,10 @@ extern "C" {
     pub fn HandleIGESDimenLinearDimension_clone(
         self_: *const HandleIGESDimenLinearDimension,
     ) -> crate::OcctResult<*mut HandleIGESDimenLinearDimension>;
+    /// Check if Handle<IGESDimen_LinearDimension> is null
+    pub fn HandleIGESDimenLinearDimension_is_null(
+        self_: *const HandleIGESDimenLinearDimension,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_LinearDimension
     pub fn HandleIGESDimenLinearDimension_get(
         handle: *const HandleIGESDimenLinearDimension,
@@ -41483,6 +41857,10 @@ extern "C" {
     pub fn HandleIGESDimenNewDimensionedGeometry_clone(
         self_: *const HandleIGESDimenNewDimensionedGeometry,
     ) -> crate::OcctResult<*mut HandleIGESDimenNewDimensionedGeometry>;
+    /// Check if Handle<IGESDimen_NewDimensionedGeometry> is null
+    pub fn HandleIGESDimenNewDimensionedGeometry_is_null(
+        self_: *const HandleIGESDimenNewDimensionedGeometry,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_NewDimensionedGeometry
     pub fn HandleIGESDimenNewDimensionedGeometry_get(
         handle: *const HandleIGESDimenNewDimensionedGeometry,
@@ -42054,6 +42432,10 @@ extern "C" {
     pub fn HandleIGESDimenNewGeneralNote_clone(
         self_: *const HandleIGESDimenNewGeneralNote,
     ) -> crate::OcctResult<*mut HandleIGESDimenNewGeneralNote>;
+    /// Check if Handle<IGESDimen_NewGeneralNote> is null
+    pub fn HandleIGESDimenNewGeneralNote_is_null(
+        self_: *const HandleIGESDimenNewGeneralNote,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_NewGeneralNote
     pub fn HandleIGESDimenNewGeneralNote_get(
         handle: *const HandleIGESDimenNewGeneralNote,
@@ -42457,6 +42839,10 @@ extern "C" {
     pub fn HandleIGESDimenOrdinateDimension_clone(
         self_: *const HandleIGESDimenOrdinateDimension,
     ) -> crate::OcctResult<*mut HandleIGESDimenOrdinateDimension>;
+    /// Check if Handle<IGESDimen_OrdinateDimension> is null
+    pub fn HandleIGESDimenOrdinateDimension_is_null(
+        self_: *const HandleIGESDimenOrdinateDimension,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_OrdinateDimension
     pub fn HandleIGESDimenOrdinateDimension_get(
         handle: *const HandleIGESDimenOrdinateDimension,
@@ -42861,6 +43247,10 @@ extern "C" {
     pub fn HandleIGESDimenPointDimension_clone(
         self_: *const HandleIGESDimenPointDimension,
     ) -> crate::OcctResult<*mut HandleIGESDimenPointDimension>;
+    /// Check if Handle<IGESDimen_PointDimension> is null
+    pub fn HandleIGESDimenPointDimension_is_null(
+        self_: *const HandleIGESDimenPointDimension,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_PointDimension
     pub fn HandleIGESDimenPointDimension_get(
         handle: *const HandleIGESDimenPointDimension,
@@ -43255,6 +43645,8 @@ extern "C" {
     pub fn HandleIGESDimenProtocol_clone(
         self_: *const HandleIGESDimenProtocol,
     ) -> crate::OcctResult<*mut HandleIGESDimenProtocol>;
+    /// Check if Handle<IGESDimen_Protocol> is null
+    pub fn HandleIGESDimenProtocol_is_null(self_: *const HandleIGESDimenProtocol) -> bool;
     /// Dereference Handle to get *const IGESDimen_Protocol
     pub fn HandleIGESDimenProtocol_get(
         handle: *const HandleIGESDimenProtocol,
@@ -43426,6 +43818,10 @@ extern "C" {
     pub fn HandleIGESDimenRadiusDimension_clone(
         self_: *const HandleIGESDimenRadiusDimension,
     ) -> crate::OcctResult<*mut HandleIGESDimenRadiusDimension>;
+    /// Check if Handle<IGESDimen_RadiusDimension> is null
+    pub fn HandleIGESDimenRadiusDimension_is_null(
+        self_: *const HandleIGESDimenRadiusDimension,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_RadiusDimension
     pub fn HandleIGESDimenRadiusDimension_get(
         handle: *const HandleIGESDimenRadiusDimension,
@@ -43828,6 +44224,10 @@ extern "C" {
     pub fn HandleIGESDimenReadWriteModule_clone(
         self_: *const HandleIGESDimenReadWriteModule,
     ) -> crate::OcctResult<*mut HandleIGESDimenReadWriteModule>;
+    /// Check if Handle<IGESDimen_ReadWriteModule> is null
+    pub fn HandleIGESDimenReadWriteModule_is_null(
+        self_: *const HandleIGESDimenReadWriteModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_ReadWriteModule
     pub fn HandleIGESDimenReadWriteModule_get(
         handle: *const HandleIGESDimenReadWriteModule,
@@ -43970,6 +44370,8 @@ extern "C" {
     pub fn HandleIGESDimenSection_clone(
         self_: *const HandleIGESDimenSection,
     ) -> crate::OcctResult<*mut HandleIGESDimenSection>;
+    /// Check if Handle<IGESDimen_Section> is null
+    pub fn HandleIGESDimenSection_is_null(self_: *const HandleIGESDimenSection) -> bool;
     /// Dereference Handle to get *const IGESDimen_Section
     pub fn HandleIGESDimenSection_get(
         handle: *const HandleIGESDimenSection,
@@ -44399,6 +44801,9 @@ extern "C" {
     pub fn HandleIGESDimenSectionedArea_clone(
         self_: *const HandleIGESDimenSectionedArea,
     ) -> crate::OcctResult<*mut HandleIGESDimenSectionedArea>;
+    /// Check if Handle<IGESDimen_SectionedArea> is null
+    pub fn HandleIGESDimenSectionedArea_is_null(self_: *const HandleIGESDimenSectionedArea)
+        -> bool;
     /// Dereference Handle to get *const IGESDimen_SectionedArea
     pub fn HandleIGESDimenSectionedArea_get(
         handle: *const HandleIGESDimenSectionedArea,
@@ -44787,6 +45192,10 @@ extern "C" {
     pub fn HandleIGESDimenSpecificModule_clone(
         self_: *const HandleIGESDimenSpecificModule,
     ) -> crate::OcctResult<*mut HandleIGESDimenSpecificModule>;
+    /// Check if Handle<IGESDimen_SpecificModule> is null
+    pub fn HandleIGESDimenSpecificModule_is_null(
+        self_: *const HandleIGESDimenSpecificModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDimen_SpecificModule
     pub fn HandleIGESDimenSpecificModule_get(
         handle: *const HandleIGESDimenSpecificModule,
@@ -46118,6 +46527,8 @@ extern "C" {
     pub fn HandleIGESDimenWitnessLine_clone(
         self_: *const HandleIGESDimenWitnessLine,
     ) -> crate::OcctResult<*mut HandleIGESDimenWitnessLine>;
+    /// Check if Handle<IGESDimen_WitnessLine> is null
+    pub fn HandleIGESDimenWitnessLine_is_null(self_: *const HandleIGESDimenWitnessLine) -> bool;
     /// Dereference Handle to get *const IGESDimen_WitnessLine
     pub fn HandleIGESDimenWitnessLine_get(
         handle: *const HandleIGESDimenWitnessLine,
@@ -46555,6 +46966,10 @@ extern "C" {
     pub fn HandleIGESDrawCircArraySubfigure_clone(
         self_: *const HandleIGESDrawCircArraySubfigure,
     ) -> crate::OcctResult<*mut HandleIGESDrawCircArraySubfigure>;
+    /// Check if Handle<IGESDraw_CircArraySubfigure> is null
+    pub fn HandleIGESDrawCircArraySubfigure_is_null(
+        self_: *const HandleIGESDrawCircArraySubfigure,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDraw_CircArraySubfigure
     pub fn HandleIGESDrawCircArraySubfigure_get(
         handle: *const HandleIGESDrawCircArraySubfigure,
@@ -47012,6 +47427,8 @@ extern "C" {
     pub fn HandleIGESDrawConnectPoint_clone(
         self_: *const HandleIGESDrawConnectPoint,
     ) -> crate::OcctResult<*mut HandleIGESDrawConnectPoint>;
+    /// Check if Handle<IGESDraw_ConnectPoint> is null
+    pub fn HandleIGESDrawConnectPoint_is_null(self_: *const HandleIGESDrawConnectPoint) -> bool;
     /// Dereference Handle to get *const IGESDraw_ConnectPoint
     pub fn HandleIGESDrawConnectPoint_get(
         handle: *const HandleIGESDrawConnectPoint,
@@ -47429,6 +47846,8 @@ extern "C" {
     pub fn HandleIGESDrawDrawing_clone(
         self_: *const HandleIGESDrawDrawing,
     ) -> crate::OcctResult<*mut HandleIGESDrawDrawing>;
+    /// Check if Handle<IGESDraw_Drawing> is null
+    pub fn HandleIGESDrawDrawing_is_null(self_: *const HandleIGESDrawDrawing) -> bool;
     /// Dereference Handle to get *const IGESDraw_Drawing
     pub fn HandleIGESDrawDrawing_get(
         handle: *const HandleIGESDrawDrawing,
@@ -47858,6 +48277,10 @@ extern "C" {
     pub fn HandleIGESDrawDrawingWithRotation_clone(
         self_: *const HandleIGESDrawDrawingWithRotation,
     ) -> crate::OcctResult<*mut HandleIGESDrawDrawingWithRotation>;
+    /// Check if Handle<IGESDraw_DrawingWithRotation> is null
+    pub fn HandleIGESDrawDrawingWithRotation_is_null(
+        self_: *const HandleIGESDrawDrawingWithRotation,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDraw_DrawingWithRotation
     pub fn HandleIGESDrawDrawingWithRotation_get(
         handle: *const HandleIGESDrawDrawingWithRotation,
@@ -48302,6 +48725,8 @@ extern "C" {
     pub fn HandleIGESDrawGeneralModule_clone(
         self_: *const HandleIGESDrawGeneralModule,
     ) -> crate::OcctResult<*mut HandleIGESDrawGeneralModule>;
+    /// Check if Handle<IGESDraw_GeneralModule> is null
+    pub fn HandleIGESDrawGeneralModule_is_null(self_: *const HandleIGESDrawGeneralModule) -> bool;
     /// Dereference Handle to get *const IGESDraw_GeneralModule
     pub fn HandleIGESDrawGeneralModule_get(
         handle: *const HandleIGESDrawGeneralModule,
@@ -48513,6 +48938,10 @@ extern "C" {
     pub fn HandleIGESDrawHArray1OfConnectPoint_clone(
         self_: *const HandleIGESDrawHArray1OfConnectPoint,
     ) -> crate::OcctResult<*mut HandleIGESDrawHArray1OfConnectPoint>;
+    /// Check if Handle<IGESDraw_HArray1OfConnectPoint> is null
+    pub fn HandleIGESDrawHArray1OfConnectPoint_is_null(
+        self_: *const HandleIGESDrawHArray1OfConnectPoint,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDraw_HArray1OfConnectPoint
     pub fn HandleIGESDrawHArray1OfConnectPoint_get(
         handle: *const HandleIGESDrawHArray1OfConnectPoint,
@@ -48622,6 +49051,10 @@ extern "C" {
     pub fn HandleIGESDrawHArray1OfViewKindEntity_clone(
         self_: *const HandleIGESDrawHArray1OfViewKindEntity,
     ) -> crate::OcctResult<*mut HandleIGESDrawHArray1OfViewKindEntity>;
+    /// Check if Handle<IGESDraw_HArray1OfViewKindEntity> is null
+    pub fn HandleIGESDrawHArray1OfViewKindEntity_is_null(
+        self_: *const HandleIGESDrawHArray1OfViewKindEntity,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDraw_HArray1OfViewKindEntity
     pub fn HandleIGESDrawHArray1OfViewKindEntity_get(
         handle: *const HandleIGESDrawHArray1OfViewKindEntity,
@@ -48754,6 +49187,8 @@ extern "C" {
     pub fn HandleIGESDrawLabelDisplay_clone(
         self_: *const HandleIGESDrawLabelDisplay,
     ) -> crate::OcctResult<*mut HandleIGESDrawLabelDisplay>;
+    /// Check if Handle<IGESDraw_LabelDisplay> is null
+    pub fn HandleIGESDrawLabelDisplay_is_null(self_: *const HandleIGESDrawLabelDisplay) -> bool;
     /// Dereference Handle to get *const IGESDraw_LabelDisplay
     pub fn HandleIGESDrawLabelDisplay_get(
         handle: *const HandleIGESDrawLabelDisplay,
@@ -49183,6 +49618,10 @@ extern "C" {
     pub fn HandleIGESDrawNetworkSubfigure_clone(
         self_: *const HandleIGESDrawNetworkSubfigure,
     ) -> crate::OcctResult<*mut HandleIGESDrawNetworkSubfigure>;
+    /// Check if Handle<IGESDraw_NetworkSubfigure> is null
+    pub fn HandleIGESDrawNetworkSubfigure_is_null(
+        self_: *const HandleIGESDrawNetworkSubfigure,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDraw_NetworkSubfigure
     pub fn HandleIGESDrawNetworkSubfigure_get(
         handle: *const HandleIGESDrawNetworkSubfigure,
@@ -49617,6 +50056,10 @@ extern "C" {
     pub fn HandleIGESDrawNetworkSubfigureDef_clone(
         self_: *const HandleIGESDrawNetworkSubfigureDef,
     ) -> crate::OcctResult<*mut HandleIGESDrawNetworkSubfigureDef>;
+    /// Check if Handle<IGESDraw_NetworkSubfigureDef> is null
+    pub fn HandleIGESDrawNetworkSubfigureDef_is_null(
+        self_: *const HandleIGESDrawNetworkSubfigureDef,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDraw_NetworkSubfigureDef
     pub fn HandleIGESDrawNetworkSubfigureDef_get(
         handle: *const HandleIGESDrawNetworkSubfigureDef,
@@ -50084,6 +50527,10 @@ extern "C" {
     pub fn HandleIGESDrawPerspectiveView_clone(
         self_: *const HandleIGESDrawPerspectiveView,
     ) -> crate::OcctResult<*mut HandleIGESDrawPerspectiveView>;
+    /// Check if Handle<IGESDraw_PerspectiveView> is null
+    pub fn HandleIGESDrawPerspectiveView_is_null(
+        self_: *const HandleIGESDrawPerspectiveView,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDraw_PerspectiveView
     pub fn HandleIGESDrawPerspectiveView_get(
         handle: *const HandleIGESDrawPerspectiveView,
@@ -50484,6 +50931,8 @@ extern "C" {
     pub fn HandleIGESDrawPlanar_clone(
         self_: *const HandleIGESDrawPlanar,
     ) -> crate::OcctResult<*mut HandleIGESDrawPlanar>;
+    /// Check if Handle<IGESDraw_Planar> is null
+    pub fn HandleIGESDrawPlanar_is_null(self_: *const HandleIGESDrawPlanar) -> bool;
     /// Dereference Handle to get *const IGESDraw_Planar
     pub fn HandleIGESDrawPlanar_get(
         handle: *const HandleIGESDrawPlanar,
@@ -50877,6 +51326,8 @@ extern "C" {
     pub fn HandleIGESDrawProtocol_clone(
         self_: *const HandleIGESDrawProtocol,
     ) -> crate::OcctResult<*mut HandleIGESDrawProtocol>;
+    /// Check if Handle<IGESDraw_Protocol> is null
+    pub fn HandleIGESDrawProtocol_is_null(self_: *const HandleIGESDrawProtocol) -> bool;
     /// Dereference Handle to get *const IGESDraw_Protocol
     pub fn HandleIGESDrawProtocol_get(
         handle: *const HandleIGESDrawProtocol,
@@ -51040,6 +51491,10 @@ extern "C" {
     pub fn HandleIGESDrawReadWriteModule_clone(
         self_: *const HandleIGESDrawReadWriteModule,
     ) -> crate::OcctResult<*mut HandleIGESDrawReadWriteModule>;
+    /// Check if Handle<IGESDraw_ReadWriteModule> is null
+    pub fn HandleIGESDrawReadWriteModule_is_null(
+        self_: *const HandleIGESDrawReadWriteModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDraw_ReadWriteModule
     pub fn HandleIGESDrawReadWriteModule_get(
         handle: *const HandleIGESDrawReadWriteModule,
@@ -51227,6 +51682,10 @@ extern "C" {
     pub fn HandleIGESDrawRectArraySubfigure_clone(
         self_: *const HandleIGESDrawRectArraySubfigure,
     ) -> crate::OcctResult<*mut HandleIGESDrawRectArraySubfigure>;
+    /// Check if Handle<IGESDraw_RectArraySubfigure> is null
+    pub fn HandleIGESDrawRectArraySubfigure_is_null(
+        self_: *const HandleIGESDrawRectArraySubfigure,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDraw_RectArraySubfigure
     pub fn HandleIGESDrawRectArraySubfigure_get(
         handle: *const HandleIGESDrawRectArraySubfigure,
@@ -51686,6 +52145,10 @@ extern "C" {
     pub fn HandleIGESDrawSegmentedViewsVisible_clone(
         self_: *const HandleIGESDrawSegmentedViewsVisible,
     ) -> crate::OcctResult<*mut HandleIGESDrawSegmentedViewsVisible>;
+    /// Check if Handle<IGESDraw_SegmentedViewsVisible> is null
+    pub fn HandleIGESDrawSegmentedViewsVisible_is_null(
+        self_: *const HandleIGESDrawSegmentedViewsVisible,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDraw_SegmentedViewsVisible
     pub fn HandleIGESDrawSegmentedViewsVisible_get(
         handle: *const HandleIGESDrawSegmentedViewsVisible,
@@ -52078,6 +52541,9 @@ extern "C" {
     pub fn HandleIGESDrawSpecificModule_clone(
         self_: *const HandleIGESDrawSpecificModule,
     ) -> crate::OcctResult<*mut HandleIGESDrawSpecificModule>;
+    /// Check if Handle<IGESDraw_SpecificModule> is null
+    pub fn HandleIGESDrawSpecificModule_is_null(self_: *const HandleIGESDrawSpecificModule)
+        -> bool;
     /// Dereference Handle to get *const IGESDraw_SpecificModule
     pub fn HandleIGESDrawSpecificModule_get(
         handle: *const HandleIGESDrawSpecificModule,
@@ -53017,6 +53483,8 @@ extern "C" {
     pub fn HandleIGESDrawView_clone(
         self_: *const HandleIGESDrawView,
     ) -> crate::OcctResult<*mut HandleIGESDrawView>;
+    /// Check if Handle<IGESDraw_View> is null
+    pub fn HandleIGESDrawView_is_null(self_: *const HandleIGESDrawView) -> bool;
     /// Dereference Handle to get *const IGESDraw_View
     pub fn HandleIGESDrawView_get(
         handle: *const HandleIGESDrawView,
@@ -53420,6 +53888,8 @@ extern "C" {
     pub fn HandleIGESDrawViewsVisible_clone(
         self_: *const HandleIGESDrawViewsVisible,
     ) -> crate::OcctResult<*mut HandleIGESDrawViewsVisible>;
+    /// Check if Handle<IGESDraw_ViewsVisible> is null
+    pub fn HandleIGESDrawViewsVisible_is_null(self_: *const HandleIGESDrawViewsVisible) -> bool;
     /// Dereference Handle to get *const IGESDraw_ViewsVisible
     pub fn HandleIGESDrawViewsVisible_get(
         handle: *const HandleIGESDrawViewsVisible,
@@ -53882,6 +54352,10 @@ extern "C" {
     pub fn HandleIGESDrawViewsVisibleWithAttr_clone(
         self_: *const HandleIGESDrawViewsVisibleWithAttr,
     ) -> crate::OcctResult<*mut HandleIGESDrawViewsVisibleWithAttr>;
+    /// Check if Handle<IGESDraw_ViewsVisibleWithAttr> is null
+    pub fn HandleIGESDrawViewsVisibleWithAttr_is_null(
+        self_: *const HandleIGESDrawViewsVisibleWithAttr,
+    ) -> bool;
     /// Dereference Handle to get *const IGESDraw_ViewsVisibleWithAttr
     pub fn HandleIGESDrawViewsVisibleWithAttr_get(
         handle: *const HandleIGESDrawViewsVisibleWithAttr,
@@ -54345,6 +54819,8 @@ extern "C" {
     pub fn HandleIGESGeomBSplineCurve_clone(
         self_: *const HandleIGESGeomBSplineCurve,
     ) -> crate::OcctResult<*mut HandleIGESGeomBSplineCurve>;
+    /// Check if Handle<IGESGeom_BSplineCurve> is null
+    pub fn HandleIGESGeomBSplineCurve_is_null(self_: *const HandleIGESGeomBSplineCurve) -> bool;
     /// Dereference Handle to get *const IGESGeom_BSplineCurve
     pub fn HandleIGESGeomBSplineCurve_get(
         handle: *const HandleIGESGeomBSplineCurve,
@@ -54841,6 +55317,9 @@ extern "C" {
     pub fn HandleIGESGeomBSplineSurface_clone(
         self_: *const HandleIGESGeomBSplineSurface,
     ) -> crate::OcctResult<*mut HandleIGESGeomBSplineSurface>;
+    /// Check if Handle<IGESGeom_BSplineSurface> is null
+    pub fn HandleIGESGeomBSplineSurface_is_null(self_: *const HandleIGESGeomBSplineSurface)
+        -> bool;
     /// Dereference Handle to get *const IGESGeom_BSplineSurface
     pub fn HandleIGESGeomBSplineSurface_get(
         handle: *const HandleIGESGeomBSplineSurface,
@@ -55265,6 +55744,8 @@ extern "C" {
     pub fn HandleIGESGeomBoundary_clone(
         self_: *const HandleIGESGeomBoundary,
     ) -> crate::OcctResult<*mut HandleIGESGeomBoundary>;
+    /// Check if Handle<IGESGeom_Boundary> is null
+    pub fn HandleIGESGeomBoundary_is_null(self_: *const HandleIGESGeomBoundary) -> bool;
     /// Dereference Handle to get *const IGESGeom_Boundary
     pub fn HandleIGESGeomBoundary_get(
         handle: *const HandleIGESGeomBoundary,
@@ -55662,6 +56143,9 @@ extern "C" {
     pub fn HandleIGESGeomBoundedSurface_clone(
         self_: *const HandleIGESGeomBoundedSurface,
     ) -> crate::OcctResult<*mut HandleIGESGeomBoundedSurface>;
+    /// Check if Handle<IGESGeom_BoundedSurface> is null
+    pub fn HandleIGESGeomBoundedSurface_is_null(self_: *const HandleIGESGeomBoundedSurface)
+        -> bool;
     /// Dereference Handle to get *const IGESGeom_BoundedSurface
     pub fn HandleIGESGeomBoundedSurface_get(
         handle: *const HandleIGESGeomBoundedSurface,
@@ -56089,6 +56573,8 @@ extern "C" {
     pub fn HandleIGESGeomCircularArc_clone(
         self_: *const HandleIGESGeomCircularArc,
     ) -> crate::OcctResult<*mut HandleIGESGeomCircularArc>;
+    /// Check if Handle<IGESGeom_CircularArc> is null
+    pub fn HandleIGESGeomCircularArc_is_null(self_: *const HandleIGESGeomCircularArc) -> bool;
     /// Dereference Handle to get *const IGESGeom_CircularArc
     pub fn HandleIGESGeomCircularArc_get(
         handle: *const HandleIGESGeomCircularArc,
@@ -56476,6 +56962,9 @@ extern "C" {
     pub fn HandleIGESGeomCompositeCurve_clone(
         self_: *const HandleIGESGeomCompositeCurve,
     ) -> crate::OcctResult<*mut HandleIGESGeomCompositeCurve>;
+    /// Check if Handle<IGESGeom_CompositeCurve> is null
+    pub fn HandleIGESGeomCompositeCurve_is_null(self_: *const HandleIGESGeomCompositeCurve)
+        -> bool;
     /// Dereference Handle to get *const IGESGeom_CompositeCurve
     pub fn HandleIGESGeomCompositeCurve_get(
         handle: *const HandleIGESGeomCompositeCurve,
@@ -56943,6 +57432,8 @@ extern "C" {
     pub fn HandleIGESGeomConicArc_clone(
         self_: *const HandleIGESGeomConicArc,
     ) -> crate::OcctResult<*mut HandleIGESGeomConicArc>;
+    /// Check if Handle<IGESGeom_ConicArc> is null
+    pub fn HandleIGESGeomConicArc_is_null(self_: *const HandleIGESGeomConicArc) -> bool;
     /// Dereference Handle to get *const IGESGeom_ConicArc
     pub fn HandleIGESGeomConicArc_get(
         handle: *const HandleIGESGeomConicArc,
@@ -57381,6 +57872,8 @@ extern "C" {
     pub fn HandleIGESGeomCopiousData_clone(
         self_: *const HandleIGESGeomCopiousData,
     ) -> crate::OcctResult<*mut HandleIGESGeomCopiousData>;
+    /// Check if Handle<IGESGeom_CopiousData> is null
+    pub fn HandleIGESGeomCopiousData_is_null(self_: *const HandleIGESGeomCopiousData) -> bool;
     /// Dereference Handle to get *const IGESGeom_CopiousData
     pub fn HandleIGESGeomCopiousData_get(
         handle: *const HandleIGESGeomCopiousData,
@@ -57783,6 +58276,9 @@ extern "C" {
     pub fn HandleIGESGeomCurveOnSurface_clone(
         self_: *const HandleIGESGeomCurveOnSurface,
     ) -> crate::OcctResult<*mut HandleIGESGeomCurveOnSurface>;
+    /// Check if Handle<IGESGeom_CurveOnSurface> is null
+    pub fn HandleIGESGeomCurveOnSurface_is_null(self_: *const HandleIGESGeomCurveOnSurface)
+        -> bool;
     /// Dereference Handle to get *const IGESGeom_CurveOnSurface
     pub fn HandleIGESGeomCurveOnSurface_get(
         handle: *const HandleIGESGeomCurveOnSurface,
@@ -58168,6 +58664,8 @@ extern "C" {
     pub fn HandleIGESGeomDirection_clone(
         self_: *const HandleIGESGeomDirection,
     ) -> crate::OcctResult<*mut HandleIGESGeomDirection>;
+    /// Check if Handle<IGESGeom_Direction> is null
+    pub fn HandleIGESGeomDirection_is_null(self_: *const HandleIGESGeomDirection) -> bool;
     /// Dereference Handle to get *const IGESGeom_Direction
     pub fn HandleIGESGeomDirection_get(
         handle: *const HandleIGESGeomDirection,
@@ -58576,6 +59074,8 @@ extern "C" {
     pub fn HandleIGESGeomFlash_clone(
         self_: *const HandleIGESGeomFlash,
     ) -> crate::OcctResult<*mut HandleIGESGeomFlash>;
+    /// Check if Handle<IGESGeom_Flash> is null
+    pub fn HandleIGESGeomFlash_is_null(self_: *const HandleIGESGeomFlash) -> bool;
     /// Dereference Handle to get *const IGESGeom_Flash
     pub fn HandleIGESGeomFlash_get(
         handle: *const HandleIGESGeomFlash,
@@ -58994,6 +59494,8 @@ extern "C" {
     pub fn HandleIGESGeomGeneralModule_clone(
         self_: *const HandleIGESGeomGeneralModule,
     ) -> crate::OcctResult<*mut HandleIGESGeomGeneralModule>;
+    /// Check if Handle<IGESGeom_GeneralModule> is null
+    pub fn HandleIGESGeomGeneralModule_is_null(self_: *const HandleIGESGeomGeneralModule) -> bool;
     /// Dereference Handle to get *const IGESGeom_GeneralModule
     pub fn HandleIGESGeomGeneralModule_get(
         handle: *const HandleIGESGeomGeneralModule,
@@ -59222,6 +59724,10 @@ extern "C" {
     pub fn HandleIGESGeomHArray1OfBoundary_clone(
         self_: *const HandleIGESGeomHArray1OfBoundary,
     ) -> crate::OcctResult<*mut HandleIGESGeomHArray1OfBoundary>;
+    /// Check if Handle<IGESGeom_HArray1OfBoundary> is null
+    pub fn HandleIGESGeomHArray1OfBoundary_is_null(
+        self_: *const HandleIGESGeomHArray1OfBoundary,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGeom_HArray1OfBoundary
     pub fn HandleIGESGeomHArray1OfBoundary_get(
         handle: *const HandleIGESGeomHArray1OfBoundary,
@@ -59331,6 +59837,10 @@ extern "C" {
     pub fn HandleIGESGeomHArray1OfCurveOnSurface_clone(
         self_: *const HandleIGESGeomHArray1OfCurveOnSurface,
     ) -> crate::OcctResult<*mut HandleIGESGeomHArray1OfCurveOnSurface>;
+    /// Check if Handle<IGESGeom_HArray1OfCurveOnSurface> is null
+    pub fn HandleIGESGeomHArray1OfCurveOnSurface_is_null(
+        self_: *const HandleIGESGeomHArray1OfCurveOnSurface,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGeom_HArray1OfCurveOnSurface
     pub fn HandleIGESGeomHArray1OfCurveOnSurface_get(
         handle: *const HandleIGESGeomHArray1OfCurveOnSurface,
@@ -59440,6 +59950,10 @@ extern "C" {
     pub fn HandleIGESGeomHArray1OfTransformationMatrix_clone(
         self_: *const HandleIGESGeomHArray1OfTransformationMatrix,
     ) -> crate::OcctResult<*mut HandleIGESGeomHArray1OfTransformationMatrix>;
+    /// Check if Handle<IGESGeom_HArray1OfTransformationMatrix> is null
+    pub fn HandleIGESGeomHArray1OfTransformationMatrix_is_null(
+        self_: *const HandleIGESGeomHArray1OfTransformationMatrix,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGeom_HArray1OfTransformationMatrix
     pub fn HandleIGESGeomHArray1OfTransformationMatrix_get(
         handle: *const HandleIGESGeomHArray1OfTransformationMatrix,
@@ -59546,6 +60060,8 @@ extern "C" {
     pub fn HandleIGESGeomLine_clone(
         self_: *const HandleIGESGeomLine,
     ) -> crate::OcctResult<*mut HandleIGESGeomLine>;
+    /// Check if Handle<IGESGeom_Line> is null
+    pub fn HandleIGESGeomLine_is_null(self_: *const HandleIGESGeomLine) -> bool;
     /// Dereference Handle to get *const IGESGeom_Line
     pub fn HandleIGESGeomLine_get(
         handle: *const HandleIGESGeomLine,
@@ -59981,6 +60497,8 @@ extern "C" {
     pub fn HandleIGESGeomOffsetCurve_clone(
         self_: *const HandleIGESGeomOffsetCurve,
     ) -> crate::OcctResult<*mut HandleIGESGeomOffsetCurve>;
+    /// Check if Handle<IGESGeom_OffsetCurve> is null
+    pub fn HandleIGESGeomOffsetCurve_is_null(self_: *const HandleIGESGeomOffsetCurve) -> bool;
     /// Dereference Handle to get *const IGESGeom_OffsetCurve
     pub fn HandleIGESGeomOffsetCurve_get(
         handle: *const HandleIGESGeomOffsetCurve,
@@ -60377,6 +60895,8 @@ extern "C" {
     pub fn HandleIGESGeomOffsetSurface_clone(
         self_: *const HandleIGESGeomOffsetSurface,
     ) -> crate::OcctResult<*mut HandleIGESGeomOffsetSurface>;
+    /// Check if Handle<IGESGeom_OffsetSurface> is null
+    pub fn HandleIGESGeomOffsetSurface_is_null(self_: *const HandleIGESGeomOffsetSurface) -> bool;
     /// Dereference Handle to get *const IGESGeom_OffsetSurface
     pub fn HandleIGESGeomOffsetSurface_get(
         handle: *const HandleIGESGeomOffsetSurface,
@@ -60807,6 +61327,8 @@ extern "C" {
     pub fn HandleIGESGeomPlane_clone(
         self_: *const HandleIGESGeomPlane,
     ) -> crate::OcctResult<*mut HandleIGESGeomPlane>;
+    /// Check if Handle<IGESGeom_Plane> is null
+    pub fn HandleIGESGeomPlane_is_null(self_: *const HandleIGESGeomPlane) -> bool;
     /// Dereference Handle to get *const IGESGeom_Plane
     pub fn HandleIGESGeomPlane_get(
         handle: *const HandleIGESGeomPlane,
@@ -61194,6 +61716,8 @@ extern "C" {
     pub fn HandleIGESGeomPoint_clone(
         self_: *const HandleIGESGeomPoint,
     ) -> crate::OcctResult<*mut HandleIGESGeomPoint>;
+    /// Check if Handle<IGESGeom_Point> is null
+    pub fn HandleIGESGeomPoint_is_null(self_: *const HandleIGESGeomPoint) -> bool;
     /// Dereference Handle to get *const IGESGeom_Point
     pub fn HandleIGESGeomPoint_get(
         handle: *const HandleIGESGeomPoint,
@@ -61583,6 +62107,8 @@ extern "C" {
     pub fn HandleIGESGeomProtocol_clone(
         self_: *const HandleIGESGeomProtocol,
     ) -> crate::OcctResult<*mut HandleIGESGeomProtocol>;
+    /// Check if Handle<IGESGeom_Protocol> is null
+    pub fn HandleIGESGeomProtocol_is_null(self_: *const HandleIGESGeomProtocol) -> bool;
     /// Dereference Handle to get *const IGESGeom_Protocol
     pub fn HandleIGESGeomProtocol_get(
         handle: *const HandleIGESGeomProtocol,
@@ -61746,6 +62272,10 @@ extern "C" {
     pub fn HandleIGESGeomReadWriteModule_clone(
         self_: *const HandleIGESGeomReadWriteModule,
     ) -> crate::OcctResult<*mut HandleIGESGeomReadWriteModule>;
+    /// Check if Handle<IGESGeom_ReadWriteModule> is null
+    pub fn HandleIGESGeomReadWriteModule_is_null(
+        self_: *const HandleIGESGeomReadWriteModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGeom_ReadWriteModule
     pub fn HandleIGESGeomReadWriteModule_get(
         handle: *const HandleIGESGeomReadWriteModule,
@@ -61892,6 +62422,8 @@ extern "C" {
     pub fn HandleIGESGeomRuledSurface_clone(
         self_: *const HandleIGESGeomRuledSurface,
     ) -> crate::OcctResult<*mut HandleIGESGeomRuledSurface>;
+    /// Check if Handle<IGESGeom_RuledSurface> is null
+    pub fn HandleIGESGeomRuledSurface_is_null(self_: *const HandleIGESGeomRuledSurface) -> bool;
     /// Dereference Handle to get *const IGESGeom_RuledSurface
     pub fn HandleIGESGeomRuledSurface_get(
         handle: *const HandleIGESGeomRuledSurface,
@@ -62280,6 +62812,9 @@ extern "C" {
     pub fn HandleIGESGeomSpecificModule_clone(
         self_: *const HandleIGESGeomSpecificModule,
     ) -> crate::OcctResult<*mut HandleIGESGeomSpecificModule>;
+    /// Check if Handle<IGESGeom_SpecificModule> is null
+    pub fn HandleIGESGeomSpecificModule_is_null(self_: *const HandleIGESGeomSpecificModule)
+        -> bool;
     /// Dereference Handle to get *const IGESGeom_SpecificModule
     pub fn HandleIGESGeomSpecificModule_get(
         handle: *const HandleIGESGeomSpecificModule,
@@ -62450,6 +62985,8 @@ extern "C" {
     pub fn HandleIGESGeomSplineCurve_clone(
         self_: *const HandleIGESGeomSplineCurve,
     ) -> crate::OcctResult<*mut HandleIGESGeomSplineCurve>;
+    /// Check if Handle<IGESGeom_SplineCurve> is null
+    pub fn HandleIGESGeomSplineCurve_is_null(self_: *const HandleIGESGeomSplineCurve) -> bool;
     /// Dereference Handle to get *const IGESGeom_SplineCurve
     pub fn HandleIGESGeomSplineCurve_get(
         handle: *const HandleIGESGeomSplineCurve,
@@ -62885,6 +63422,8 @@ extern "C" {
     pub fn HandleIGESGeomSplineSurface_clone(
         self_: *const HandleIGESGeomSplineSurface,
     ) -> crate::OcctResult<*mut HandleIGESGeomSplineSurface>;
+    /// Check if Handle<IGESGeom_SplineSurface> is null
+    pub fn HandleIGESGeomSplineSurface_is_null(self_: *const HandleIGESGeomSplineSurface) -> bool;
     /// Dereference Handle to get *const IGESGeom_SplineSurface
     pub fn HandleIGESGeomSplineSurface_get(
         handle: *const HandleIGESGeomSplineSurface,
@@ -63285,6 +63824,10 @@ extern "C" {
     pub fn HandleIGESGeomSurfaceOfRevolution_clone(
         self_: *const HandleIGESGeomSurfaceOfRevolution,
     ) -> crate::OcctResult<*mut HandleIGESGeomSurfaceOfRevolution>;
+    /// Check if Handle<IGESGeom_SurfaceOfRevolution> is null
+    pub fn HandleIGESGeomSurfaceOfRevolution_is_null(
+        self_: *const HandleIGESGeomSurfaceOfRevolution,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGeom_SurfaceOfRevolution
     pub fn HandleIGESGeomSurfaceOfRevolution_get(
         handle: *const HandleIGESGeomSurfaceOfRevolution,
@@ -63676,6 +64219,10 @@ extern "C" {
     pub fn HandleIGESGeomTabulatedCylinder_clone(
         self_: *const HandleIGESGeomTabulatedCylinder,
     ) -> crate::OcctResult<*mut HandleIGESGeomTabulatedCylinder>;
+    /// Check if Handle<IGESGeom_TabulatedCylinder> is null
+    pub fn HandleIGESGeomTabulatedCylinder_is_null(
+        self_: *const HandleIGESGeomTabulatedCylinder,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGeom_TabulatedCylinder
     pub fn HandleIGESGeomTabulatedCylinder_get(
         handle: *const HandleIGESGeomTabulatedCylinder,
@@ -65268,6 +65815,10 @@ extern "C" {
     pub fn HandleIGESGeomTransformationMatrix_clone(
         self_: *const HandleIGESGeomTransformationMatrix,
     ) -> crate::OcctResult<*mut HandleIGESGeomTransformationMatrix>;
+    /// Check if Handle<IGESGeom_TransformationMatrix> is null
+    pub fn HandleIGESGeomTransformationMatrix_is_null(
+        self_: *const HandleIGESGeomTransformationMatrix,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGeom_TransformationMatrix
     pub fn HandleIGESGeomTransformationMatrix_get(
         handle: *const HandleIGESGeomTransformationMatrix,
@@ -65678,6 +66229,9 @@ extern "C" {
     pub fn HandleIGESGeomTrimmedSurface_clone(
         self_: *const HandleIGESGeomTrimmedSurface,
     ) -> crate::OcctResult<*mut HandleIGESGeomTrimmedSurface>;
+    /// Check if Handle<IGESGeom_TrimmedSurface> is null
+    pub fn HandleIGESGeomTrimmedSurface_is_null(self_: *const HandleIGESGeomTrimmedSurface)
+        -> bool;
     /// Dereference Handle to get *const IGESGeom_TrimmedSurface
     pub fn HandleIGESGeomTrimmedSurface_get(
         handle: *const HandleIGESGeomTrimmedSurface,
@@ -66094,6 +66648,8 @@ extern "C" {
     pub fn HandleIGESGraphColor_clone(
         self_: *const HandleIGESGraphColor,
     ) -> crate::OcctResult<*mut HandleIGESGraphColor>;
+    /// Check if Handle<IGESGraph_Color> is null
+    pub fn HandleIGESGraphColor_is_null(self_: *const HandleIGESGraphColor) -> bool;
     /// Dereference Handle to get *const IGESGraph_Color
     pub fn HandleIGESGraphColor_get(
         handle: *const HandleIGESGraphColor,
@@ -66496,6 +67052,10 @@ extern "C" {
     pub fn HandleIGESGraphDefinitionLevel_clone(
         self_: *const HandleIGESGraphDefinitionLevel,
     ) -> crate::OcctResult<*mut HandleIGESGraphDefinitionLevel>;
+    /// Check if Handle<IGESGraph_DefinitionLevel> is null
+    pub fn HandleIGESGraphDefinitionLevel_is_null(
+        self_: *const HandleIGESGraphDefinitionLevel,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_DefinitionLevel
     pub fn HandleIGESGraphDefinitionLevel_get(
         handle: *const HandleIGESGraphDefinitionLevel,
@@ -66897,6 +67457,8 @@ extern "C" {
     pub fn HandleIGESGraphDrawingSize_clone(
         self_: *const HandleIGESGraphDrawingSize,
     ) -> crate::OcctResult<*mut HandleIGESGraphDrawingSize>;
+    /// Check if Handle<IGESGraph_DrawingSize> is null
+    pub fn HandleIGESGraphDrawingSize_is_null(self_: *const HandleIGESGraphDrawingSize) -> bool;
     /// Dereference Handle to get *const IGESGraph_DrawingSize
     pub fn HandleIGESGraphDrawingSize_get(
         handle: *const HandleIGESGraphDrawingSize,
@@ -67293,6 +67855,8 @@ extern "C" {
     pub fn HandleIGESGraphDrawingUnits_clone(
         self_: *const HandleIGESGraphDrawingUnits,
     ) -> crate::OcctResult<*mut HandleIGESGraphDrawingUnits>;
+    /// Check if Handle<IGESGraph_DrawingUnits> is null
+    pub fn HandleIGESGraphDrawingUnits_is_null(self_: *const HandleIGESGraphDrawingUnits) -> bool;
     /// Dereference Handle to get *const IGESGraph_DrawingUnits
     pub fn HandleIGESGraphDrawingUnits_get(
         handle: *const HandleIGESGraphDrawingUnits,
@@ -67716,6 +68280,9 @@ extern "C" {
     pub fn HandleIGESGraphGeneralModule_clone(
         self_: *const HandleIGESGraphGeneralModule,
     ) -> crate::OcctResult<*mut HandleIGESGraphGeneralModule>;
+    /// Check if Handle<IGESGraph_GeneralModule> is null
+    pub fn HandleIGESGraphGeneralModule_is_null(self_: *const HandleIGESGraphGeneralModule)
+        -> bool;
     /// Dereference Handle to get *const IGESGraph_GeneralModule
     pub fn HandleIGESGraphGeneralModule_get(
         handle: *const HandleIGESGraphGeneralModule,
@@ -67944,6 +68511,10 @@ extern "C" {
     pub fn HandleIGESGraphHArray1OfColor_clone(
         self_: *const HandleIGESGraphHArray1OfColor,
     ) -> crate::OcctResult<*mut HandleIGESGraphHArray1OfColor>;
+    /// Check if Handle<IGESGraph_HArray1OfColor> is null
+    pub fn HandleIGESGraphHArray1OfColor_is_null(
+        self_: *const HandleIGESGraphHArray1OfColor,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_HArray1OfColor
     pub fn HandleIGESGraphHArray1OfColor_get(
         handle: *const HandleIGESGraphHArray1OfColor,
@@ -68053,6 +68624,10 @@ extern "C" {
     pub fn HandleIGESGraphHArray1OfTextDisplayTemplate_clone(
         self_: *const HandleIGESGraphHArray1OfTextDisplayTemplate,
     ) -> crate::OcctResult<*mut HandleIGESGraphHArray1OfTextDisplayTemplate>;
+    /// Check if Handle<IGESGraph_HArray1OfTextDisplayTemplate> is null
+    pub fn HandleIGESGraphHArray1OfTextDisplayTemplate_is_null(
+        self_: *const HandleIGESGraphHArray1OfTextDisplayTemplate,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_HArray1OfTextDisplayTemplate
     pub fn HandleIGESGraphHArray1OfTextDisplayTemplate_get(
         handle: *const HandleIGESGraphHArray1OfTextDisplayTemplate,
@@ -68160,6 +68735,10 @@ extern "C" {
     pub fn HandleIGESGraphHArray1OfTextFontDef_clone(
         self_: *const HandleIGESGraphHArray1OfTextFontDef,
     ) -> crate::OcctResult<*mut HandleIGESGraphHArray1OfTextFontDef>;
+    /// Check if Handle<IGESGraph_HArray1OfTextFontDef> is null
+    pub fn HandleIGESGraphHArray1OfTextFontDef_is_null(
+        self_: *const HandleIGESGraphHArray1OfTextFontDef,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_HArray1OfTextFontDef
     pub fn HandleIGESGraphHArray1OfTextFontDef_get(
         handle: *const HandleIGESGraphHArray1OfTextFontDef,
@@ -68258,6 +68837,8 @@ extern "C" {
     pub fn HandleIGESGraphHighLight_clone(
         self_: *const HandleIGESGraphHighLight,
     ) -> crate::OcctResult<*mut HandleIGESGraphHighLight>;
+    /// Check if Handle<IGESGraph_HighLight> is null
+    pub fn HandleIGESGraphHighLight_is_null(self_: *const HandleIGESGraphHighLight) -> bool;
     /// Dereference Handle to get *const IGESGraph_HighLight
     pub fn HandleIGESGraphHighLight_get(
         handle: *const HandleIGESGraphHighLight,
@@ -68649,6 +69230,10 @@ extern "C" {
     pub fn HandleIGESGraphIntercharacterSpacing_clone(
         self_: *const HandleIGESGraphIntercharacterSpacing,
     ) -> crate::OcctResult<*mut HandleIGESGraphIntercharacterSpacing>;
+    /// Check if Handle<IGESGraph_IntercharacterSpacing> is null
+    pub fn HandleIGESGraphIntercharacterSpacing_is_null(
+        self_: *const HandleIGESGraphIntercharacterSpacing,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_IntercharacterSpacing
     pub fn HandleIGESGraphIntercharacterSpacing_get(
         handle: *const HandleIGESGraphIntercharacterSpacing,
@@ -69057,6 +69642,10 @@ extern "C" {
     pub fn HandleIGESGraphLineFontDefPattern_clone(
         self_: *const HandleIGESGraphLineFontDefPattern,
     ) -> crate::OcctResult<*mut HandleIGESGraphLineFontDefPattern>;
+    /// Check if Handle<IGESGraph_LineFontDefPattern> is null
+    pub fn HandleIGESGraphLineFontDefPattern_is_null(
+        self_: *const HandleIGESGraphLineFontDefPattern,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_LineFontDefPattern
     pub fn HandleIGESGraphLineFontDefPattern_get(
         handle: *const HandleIGESGraphLineFontDefPattern,
@@ -69470,6 +70059,10 @@ extern "C" {
     pub fn HandleIGESGraphLineFontDefTemplate_clone(
         self_: *const HandleIGESGraphLineFontDefTemplate,
     ) -> crate::OcctResult<*mut HandleIGESGraphLineFontDefTemplate>;
+    /// Check if Handle<IGESGraph_LineFontDefTemplate> is null
+    pub fn HandleIGESGraphLineFontDefTemplate_is_null(
+        self_: *const HandleIGESGraphLineFontDefTemplate,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_LineFontDefTemplate
     pub fn HandleIGESGraphLineFontDefTemplate_get(
         handle: *const HandleIGESGraphLineFontDefTemplate,
@@ -69864,6 +70457,10 @@ extern "C" {
     pub fn HandleIGESGraphLineFontPredefined_clone(
         self_: *const HandleIGESGraphLineFontPredefined,
     ) -> crate::OcctResult<*mut HandleIGESGraphLineFontPredefined>;
+    /// Check if Handle<IGESGraph_LineFontPredefined> is null
+    pub fn HandleIGESGraphLineFontPredefined_is_null(
+        self_: *const HandleIGESGraphLineFontPredefined,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_LineFontPredefined
     pub fn HandleIGESGraphLineFontPredefined_get(
         handle: *const HandleIGESGraphLineFontPredefined,
@@ -70265,6 +70862,8 @@ extern "C" {
     pub fn HandleIGESGraphNominalSize_clone(
         self_: *const HandleIGESGraphNominalSize,
     ) -> crate::OcctResult<*mut HandleIGESGraphNominalSize>;
+    /// Check if Handle<IGESGraph_NominalSize> is null
+    pub fn HandleIGESGraphNominalSize_is_null(self_: *const HandleIGESGraphNominalSize) -> bool;
     /// Dereference Handle to get *const IGESGraph_NominalSize
     pub fn HandleIGESGraphNominalSize_get(
         handle: *const HandleIGESGraphNominalSize,
@@ -70651,6 +71250,8 @@ extern "C" {
     pub fn HandleIGESGraphPick_clone(
         self_: *const HandleIGESGraphPick,
     ) -> crate::OcctResult<*mut HandleIGESGraphPick>;
+    /// Check if Handle<IGESGraph_Pick> is null
+    pub fn HandleIGESGraphPick_is_null(self_: *const HandleIGESGraphPick) -> bool;
     /// Dereference Handle to get *const IGESGraph_Pick
     pub fn HandleIGESGraphPick_get(
         handle: *const HandleIGESGraphPick,
@@ -71040,6 +71641,8 @@ extern "C" {
     pub fn HandleIGESGraphProtocol_clone(
         self_: *const HandleIGESGraphProtocol,
     ) -> crate::OcctResult<*mut HandleIGESGraphProtocol>;
+    /// Check if Handle<IGESGraph_Protocol> is null
+    pub fn HandleIGESGraphProtocol_is_null(self_: *const HandleIGESGraphProtocol) -> bool;
     /// Dereference Handle to get *const IGESGraph_Protocol
     pub fn HandleIGESGraphProtocol_get(
         handle: *const HandleIGESGraphProtocol,
@@ -71203,6 +71806,10 @@ extern "C" {
     pub fn HandleIGESGraphReadWriteModule_clone(
         self_: *const HandleIGESGraphReadWriteModule,
     ) -> crate::OcctResult<*mut HandleIGESGraphReadWriteModule>;
+    /// Check if Handle<IGESGraph_ReadWriteModule> is null
+    pub fn HandleIGESGraphReadWriteModule_is_null(
+        self_: *const HandleIGESGraphReadWriteModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_ReadWriteModule
     pub fn HandleIGESGraphReadWriteModule_get(
         handle: *const HandleIGESGraphReadWriteModule,
@@ -71331,6 +71938,10 @@ extern "C" {
     pub fn HandleIGESGraphSpecificModule_clone(
         self_: *const HandleIGESGraphSpecificModule,
     ) -> crate::OcctResult<*mut HandleIGESGraphSpecificModule>;
+    /// Check if Handle<IGESGraph_SpecificModule> is null
+    pub fn HandleIGESGraphSpecificModule_is_null(
+        self_: *const HandleIGESGraphSpecificModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_SpecificModule
     pub fn HandleIGESGraphSpecificModule_get(
         handle: *const HandleIGESGraphSpecificModule,
@@ -71486,6 +72097,10 @@ extern "C" {
     pub fn HandleIGESGraphTextDisplayTemplate_clone(
         self_: *const HandleIGESGraphTextDisplayTemplate,
     ) -> crate::OcctResult<*mut HandleIGESGraphTextDisplayTemplate>;
+    /// Check if Handle<IGESGraph_TextDisplayTemplate> is null
+    pub fn HandleIGESGraphTextDisplayTemplate_is_null(
+        self_: *const HandleIGESGraphTextDisplayTemplate,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_TextDisplayTemplate
     pub fn HandleIGESGraphTextDisplayTemplate_get(
         handle: *const HandleIGESGraphTextDisplayTemplate,
@@ -71934,6 +72549,8 @@ extern "C" {
     pub fn HandleIGESGraphTextFontDef_clone(
         self_: *const HandleIGESGraphTextFontDef,
     ) -> crate::OcctResult<*mut HandleIGESGraphTextFontDef>;
+    /// Check if Handle<IGESGraph_TextFontDef> is null
+    pub fn HandleIGESGraphTextFontDef_is_null(self_: *const HandleIGESGraphTextFontDef) -> bool;
     /// Dereference Handle to get *const IGESGraph_TextFontDef
     pub fn HandleIGESGraphTextFontDef_get(
         handle: *const HandleIGESGraphTextFontDef,
@@ -73108,6 +73725,10 @@ extern "C" {
     pub fn HandleIGESGraphUniformRectGrid_clone(
         self_: *const HandleIGESGraphUniformRectGrid,
     ) -> crate::OcctResult<*mut HandleIGESGraphUniformRectGrid>;
+    /// Check if Handle<IGESGraph_UniformRectGrid> is null
+    pub fn HandleIGESGraphUniformRectGrid_is_null(
+        self_: *const HandleIGESGraphUniformRectGrid,
+    ) -> bool;
     /// Dereference Handle to get *const IGESGraph_UniformRectGrid
     pub fn HandleIGESGraphUniformRectGrid_get(
         handle: *const HandleIGESGraphUniformRectGrid,
@@ -73491,6 +74112,8 @@ extern "C" {
     pub fn HandleIGESSelectActivator_clone(
         self_: *const HandleIGESSelectActivator,
     ) -> crate::OcctResult<*mut HandleIGESSelectActivator>;
+    /// Check if Handle<IGESSelect_Activator> is null
+    pub fn HandleIGESSelectActivator_is_null(self_: *const HandleIGESSelectActivator) -> bool;
     /// Dereference Handle to get *const IGESSelect_Activator
     pub fn HandleIGESSelectActivator_get(
         handle: *const HandleIGESSelectActivator,
@@ -73621,6 +74244,10 @@ extern "C" {
     pub fn HandleIGESSelectAddFileComment_clone(
         self_: *const HandleIGESSelectAddFileComment,
     ) -> crate::OcctResult<*mut HandleIGESSelectAddFileComment>;
+    /// Check if Handle<IGESSelect_AddFileComment> is null
+    pub fn HandleIGESSelectAddFileComment_is_null(
+        self_: *const HandleIGESSelectAddFileComment,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_AddFileComment
     pub fn HandleIGESSelectAddFileComment_get(
         handle: *const HandleIGESSelectAddFileComment,
@@ -73771,6 +74398,8 @@ extern "C" {
     pub fn HandleIGESSelectAddGroup_clone(
         self_: *const HandleIGESSelectAddGroup,
     ) -> crate::OcctResult<*mut HandleIGESSelectAddGroup>;
+    /// Check if Handle<IGESSelect_AddGroup> is null
+    pub fn HandleIGESSelectAddGroup_is_null(self_: *const HandleIGESSelectAddGroup) -> bool;
     /// Dereference Handle to get *const IGESSelect_AddGroup
     pub fn HandleIGESSelectAddGroup_get(
         handle: *const HandleIGESSelectAddGroup,
@@ -73942,6 +74571,8 @@ extern "C" {
     pub fn HandleIGESSelectAutoCorrect_clone(
         self_: *const HandleIGESSelectAutoCorrect,
     ) -> crate::OcctResult<*mut HandleIGESSelectAutoCorrect>;
+    /// Check if Handle<IGESSelect_AutoCorrect> is null
+    pub fn HandleIGESSelectAutoCorrect_is_null(self_: *const HandleIGESSelectAutoCorrect) -> bool;
     /// Dereference Handle to get *const IGESSelect_AutoCorrect
     pub fn HandleIGESSelectAutoCorrect_get(
         handle: *const HandleIGESSelectAutoCorrect,
@@ -74139,6 +74770,10 @@ extern "C" {
     pub fn HandleIGESSelectChangeLevelList_clone(
         self_: *const HandleIGESSelectChangeLevelList,
     ) -> crate::OcctResult<*mut HandleIGESSelectChangeLevelList>;
+    /// Check if Handle<IGESSelect_ChangeLevelList> is null
+    pub fn HandleIGESSelectChangeLevelList_is_null(
+        self_: *const HandleIGESSelectChangeLevelList,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_ChangeLevelList
     pub fn HandleIGESSelectChangeLevelList_get(
         handle: *const HandleIGESSelectChangeLevelList,
@@ -74335,6 +74970,10 @@ extern "C" {
     pub fn HandleIGESSelectChangeLevelNumber_clone(
         self_: *const HandleIGESSelectChangeLevelNumber,
     ) -> crate::OcctResult<*mut HandleIGESSelectChangeLevelNumber>;
+    /// Check if Handle<IGESSelect_ChangeLevelNumber> is null
+    pub fn HandleIGESSelectChangeLevelNumber_is_null(
+        self_: *const HandleIGESSelectChangeLevelNumber,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_ChangeLevelNumber
     pub fn HandleIGESSelectChangeLevelNumber_get(
         handle: *const HandleIGESSelectChangeLevelNumber,
@@ -74506,6 +75145,10 @@ extern "C" {
     pub fn HandleIGESSelectComputeStatus_clone(
         self_: *const HandleIGESSelectComputeStatus,
     ) -> crate::OcctResult<*mut HandleIGESSelectComputeStatus>;
+    /// Check if Handle<IGESSelect_ComputeStatus> is null
+    pub fn HandleIGESSelectComputeStatus_is_null(
+        self_: *const HandleIGESSelectComputeStatus,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_ComputeStatus
     pub fn HandleIGESSelectComputeStatus_get(
         handle: *const HandleIGESSelectComputeStatus,
@@ -74704,6 +75347,10 @@ extern "C" {
     pub fn HandleIGESSelectCounterOfLevelNumber_clone(
         self_: *const HandleIGESSelectCounterOfLevelNumber,
     ) -> crate::OcctResult<*mut HandleIGESSelectCounterOfLevelNumber>;
+    /// Check if Handle<IGESSelect_CounterOfLevelNumber> is null
+    pub fn HandleIGESSelectCounterOfLevelNumber_is_null(
+        self_: *const HandleIGESSelectCounterOfLevelNumber,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_CounterOfLevelNumber
     pub fn HandleIGESSelectCounterOfLevelNumber_get(
         handle: *const HandleIGESSelectCounterOfLevelNumber,
@@ -74903,6 +75550,10 @@ extern "C" {
     pub fn HandleIGESSelectDispPerDrawing_clone(
         self_: *const HandleIGESSelectDispPerDrawing,
     ) -> crate::OcctResult<*mut HandleIGESSelectDispPerDrawing>;
+    /// Check if Handle<IGESSelect_DispPerDrawing> is null
+    pub fn HandleIGESSelectDispPerDrawing_is_null(
+        self_: *const HandleIGESSelectDispPerDrawing,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_DispPerDrawing
     pub fn HandleIGESSelectDispPerDrawing_get(
         handle: *const HandleIGESSelectDispPerDrawing,
@@ -75052,6 +75703,10 @@ extern "C" {
     pub fn HandleIGESSelectDispPerSingleView_clone(
         self_: *const HandleIGESSelectDispPerSingleView,
     ) -> crate::OcctResult<*mut HandleIGESSelectDispPerSingleView>;
+    /// Check if Handle<IGESSelect_DispPerSingleView> is null
+    pub fn HandleIGESSelectDispPerSingleView_is_null(
+        self_: *const HandleIGESSelectDispPerSingleView,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_DispPerSingleView
     pub fn HandleIGESSelectDispPerSingleView_get(
         handle: *const HandleIGESSelectDispPerSingleView,
@@ -75191,6 +75846,8 @@ extern "C" {
     pub fn HandleIGESSelectDumper_clone(
         self_: *const HandleIGESSelectDumper,
     ) -> crate::OcctResult<*mut HandleIGESSelectDumper>;
+    /// Check if Handle<IGESSelect_Dumper> is null
+    pub fn HandleIGESSelectDumper_is_null(self_: *const HandleIGESSelectDumper) -> bool;
     /// Dereference Handle to get *const IGESSelect_Dumper
     pub fn HandleIGESSelectDumper_get(
         handle: *const HandleIGESSelectDumper,
@@ -75317,6 +75974,8 @@ extern "C" {
     pub fn HandleIGESSelectEditDirPart_clone(
         self_: *const HandleIGESSelectEditDirPart,
     ) -> crate::OcctResult<*mut HandleIGESSelectEditDirPart>;
+    /// Check if Handle<IGESSelect_EditDirPart> is null
+    pub fn HandleIGESSelectEditDirPart_is_null(self_: *const HandleIGESSelectEditDirPart) -> bool;
     /// Dereference Handle to get *const IGESSelect_EditDirPart
     pub fn HandleIGESSelectEditDirPart_get(
         handle: *const HandleIGESSelectEditDirPart,
@@ -75510,6 +76169,8 @@ extern "C" {
     pub fn HandleIGESSelectEditHeader_clone(
         self_: *const HandleIGESSelectEditHeader,
     ) -> crate::OcctResult<*mut HandleIGESSelectEditHeader>;
+    /// Check if Handle<IGESSelect_EditHeader> is null
+    pub fn HandleIGESSelectEditHeader_is_null(self_: *const HandleIGESSelectEditHeader) -> bool;
     /// Dereference Handle to get *const IGESSelect_EditHeader
     pub fn HandleIGESSelectEditHeader_get(
         handle: *const HandleIGESSelectEditHeader,
@@ -75666,6 +76327,9 @@ extern "C" {
     pub fn HandleIGESSelectFileModifier_clone(
         self_: *const HandleIGESSelectFileModifier,
     ) -> crate::OcctResult<*mut HandleIGESSelectFileModifier>;
+    /// Check if Handle<IGESSelect_FileModifier> is null
+    pub fn HandleIGESSelectFileModifier_is_null(self_: *const HandleIGESSelectFileModifier)
+        -> bool;
     /// Dereference Handle to get *const IGESSelect_FileModifier
     pub fn HandleIGESSelectFileModifier_get(
         handle: *const HandleIGESSelectFileModifier,
@@ -75848,6 +76512,8 @@ extern "C" {
     pub fn HandleIGESSelectFloatFormat_clone(
         self_: *const HandleIGESSelectFloatFormat,
     ) -> crate::OcctResult<*mut HandleIGESSelectFloatFormat>;
+    /// Check if Handle<IGESSelect_FloatFormat> is null
+    pub fn HandleIGESSelectFloatFormat_is_null(self_: *const HandleIGESSelectFloatFormat) -> bool;
     /// Dereference Handle to get *const IGESSelect_FloatFormat
     pub fn HandleIGESSelectFloatFormat_get(
         handle: *const HandleIGESSelectFloatFormat,
@@ -75993,6 +76659,8 @@ extern "C" {
     pub fn HandleIGESSelectIGESName_clone(
         self_: *const HandleIGESSelectIGESName,
     ) -> crate::OcctResult<*mut HandleIGESSelectIGESName>;
+    /// Check if Handle<IGESSelect_IGESName> is null
+    pub fn HandleIGESSelectIGESName_is_null(self_: *const HandleIGESSelectIGESName) -> bool;
     /// Dereference Handle to get *const IGESSelect_IGESName
     pub fn HandleIGESSelectIGESName_get(
         handle: *const HandleIGESSelectIGESName,
@@ -76158,6 +76826,9 @@ extern "C" {
     pub fn HandleIGESSelectIGESTypeForm_clone(
         self_: *const HandleIGESSelectIGESTypeForm,
     ) -> crate::OcctResult<*mut HandleIGESSelectIGESTypeForm>;
+    /// Check if Handle<IGESSelect_IGESTypeForm> is null
+    pub fn HandleIGESSelectIGESTypeForm_is_null(self_: *const HandleIGESSelectIGESTypeForm)
+        -> bool;
     /// Dereference Handle to get *const IGESSelect_IGESTypeForm
     pub fn HandleIGESSelectIGESTypeForm_get(
         handle: *const HandleIGESSelectIGESTypeForm,
@@ -76319,6 +76990,10 @@ extern "C" {
     pub fn HandleIGESSelectModelModifier_clone(
         self_: *const HandleIGESSelectModelModifier,
     ) -> crate::OcctResult<*mut HandleIGESSelectModelModifier>;
+    /// Check if Handle<IGESSelect_ModelModifier> is null
+    pub fn HandleIGESSelectModelModifier_is_null(
+        self_: *const HandleIGESSelectModelModifier,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_ModelModifier
     pub fn HandleIGESSelectModelModifier_get(
         handle: *const HandleIGESSelectModelModifier,
@@ -76530,6 +77205,10 @@ extern "C" {
     pub fn HandleIGESSelectRebuildDrawings_clone(
         self_: *const HandleIGESSelectRebuildDrawings,
     ) -> crate::OcctResult<*mut HandleIGESSelectRebuildDrawings>;
+    /// Check if Handle<IGESSelect_RebuildDrawings> is null
+    pub fn HandleIGESSelectRebuildDrawings_is_null(
+        self_: *const HandleIGESSelectRebuildDrawings,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_RebuildDrawings
     pub fn HandleIGESSelectRebuildDrawings_get(
         handle: *const HandleIGESSelectRebuildDrawings,
@@ -76701,6 +77380,10 @@ extern "C" {
     pub fn HandleIGESSelectRebuildGroups_clone(
         self_: *const HandleIGESSelectRebuildGroups,
     ) -> crate::OcctResult<*mut HandleIGESSelectRebuildGroups>;
+    /// Check if Handle<IGESSelect_RebuildGroups> is null
+    pub fn HandleIGESSelectRebuildGroups_is_null(
+        self_: *const HandleIGESSelectRebuildGroups,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_RebuildGroups
     pub fn HandleIGESSelectRebuildGroups_get(
         handle: *const HandleIGESSelectRebuildGroups,
@@ -76874,6 +77557,9 @@ extern "C" {
     pub fn HandleIGESSelectRemoveCurves_clone(
         self_: *const HandleIGESSelectRemoveCurves,
     ) -> crate::OcctResult<*mut HandleIGESSelectRemoveCurves>;
+    /// Check if Handle<IGESSelect_RemoveCurves> is null
+    pub fn HandleIGESSelectRemoveCurves_is_null(self_: *const HandleIGESSelectRemoveCurves)
+        -> bool;
     /// Dereference Handle to get *const IGESSelect_RemoveCurves
     pub fn HandleIGESSelectRemoveCurves_get(
         handle: *const HandleIGESSelectRemoveCurves,
@@ -77057,6 +77743,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectBasicGeom_clone(
         self_: *const HandleIGESSelectSelectBasicGeom,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectBasicGeom>;
+    /// Check if Handle<IGESSelect_SelectBasicGeom> is null
+    pub fn HandleIGESSelectSelectBasicGeom_is_null(
+        self_: *const HandleIGESSelectSelectBasicGeom,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectBasicGeom
     pub fn HandleIGESSelectSelectBasicGeom_get(
         handle: *const HandleIGESSelectSelectBasicGeom,
@@ -77236,6 +77926,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectBypassGroup_clone(
         self_: *const HandleIGESSelectSelectBypassGroup,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectBypassGroup>;
+    /// Check if Handle<IGESSelect_SelectBypassGroup> is null
+    pub fn HandleIGESSelectSelectBypassGroup_is_null(
+        self_: *const HandleIGESSelectSelectBypassGroup,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectBypassGroup
     pub fn HandleIGESSelectSelectBypassGroup_get(
         handle: *const HandleIGESSelectSelectBypassGroup,
@@ -77418,6 +78112,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectBypassSubfigure_clone(
         self_: *const HandleIGESSelectSelectBypassSubfigure,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectBypassSubfigure>;
+    /// Check if Handle<IGESSelect_SelectBypassSubfigure> is null
+    pub fn HandleIGESSelectSelectBypassSubfigure_is_null(
+        self_: *const HandleIGESSelectSelectBypassSubfigure,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectBypassSubfigure
     pub fn HandleIGESSelectSelectBypassSubfigure_get(
         handle: *const HandleIGESSelectSelectBypassSubfigure,
@@ -77585,6 +78283,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectDrawingFrom_clone(
         self_: *const HandleIGESSelectSelectDrawingFrom,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectDrawingFrom>;
+    /// Check if Handle<IGESSelect_SelectDrawingFrom> is null
+    pub fn HandleIGESSelectSelectDrawingFrom_is_null(
+        self_: *const HandleIGESSelectSelectDrawingFrom,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectDrawingFrom
     pub fn HandleIGESSelectSelectDrawingFrom_get(
         handle: *const HandleIGESSelectSelectDrawingFrom,
@@ -77743,6 +78445,8 @@ extern "C" {
     pub fn HandleIGESSelectSelectFaces_clone(
         self_: *const HandleIGESSelectSelectFaces,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectFaces>;
+    /// Check if Handle<IGESSelect_SelectFaces> is null
+    pub fn HandleIGESSelectSelectFaces_is_null(self_: *const HandleIGESSelectSelectFaces) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectFaces
     pub fn HandleIGESSelectSelectFaces_get(
         handle: *const HandleIGESSelectSelectFaces,
@@ -77910,6 +78614,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectFromDrawing_clone(
         self_: *const HandleIGESSelectSelectFromDrawing,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectFromDrawing>;
+    /// Check if Handle<IGESSelect_SelectFromDrawing> is null
+    pub fn HandleIGESSelectSelectFromDrawing_is_null(
+        self_: *const HandleIGESSelectSelectFromDrawing,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectFromDrawing
     pub fn HandleIGESSelectSelectFromDrawing_get(
         handle: *const HandleIGESSelectSelectFromDrawing,
@@ -78061,6 +78769,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectFromSingleView_clone(
         self_: *const HandleIGESSelectSelectFromSingleView,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectFromSingleView>;
+    /// Check if Handle<IGESSelect_SelectFromSingleView> is null
+    pub fn HandleIGESSelectSelectFromSingleView_is_null(
+        self_: *const HandleIGESSelectSelectFromSingleView,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectFromSingleView
     pub fn HandleIGESSelectSelectFromSingleView_get(
         handle: *const HandleIGESSelectSelectFromSingleView,
@@ -78230,6 +78942,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectLevelNumber_clone(
         self_: *const HandleIGESSelectSelectLevelNumber,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectLevelNumber>;
+    /// Check if Handle<IGESSelect_SelectLevelNumber> is null
+    pub fn HandleIGESSelectSelectLevelNumber_is_null(
+        self_: *const HandleIGESSelectSelectLevelNumber,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectLevelNumber
     pub fn HandleIGESSelectSelectLevelNumber_get(
         handle: *const HandleIGESSelectSelectLevelNumber,
@@ -78425,6 +79141,8 @@ extern "C" {
     pub fn HandleIGESSelectSelectName_clone(
         self_: *const HandleIGESSelectSelectName,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectName>;
+    /// Check if Handle<IGESSelect_SelectName> is null
+    pub fn HandleIGESSelectSelectName_is_null(self_: *const HandleIGESSelectSelectName) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectName
     pub fn HandleIGESSelectSelectName_get(
         handle: *const HandleIGESSelectSelectName,
@@ -78614,6 +79332,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectPCurves_clone(
         self_: *const HandleIGESSelectSelectPCurves,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectPCurves>;
+    /// Check if Handle<IGESSelect_SelectPCurves> is null
+    pub fn HandleIGESSelectSelectPCurves_is_null(
+        self_: *const HandleIGESSelectSelectPCurves,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectPCurves
     pub fn HandleIGESSelectSelectPCurves_get(
         handle: *const HandleIGESSelectSelectPCurves,
@@ -78782,6 +79504,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectSingleViewFrom_clone(
         self_: *const HandleIGESSelectSelectSingleViewFrom,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectSingleViewFrom>;
+    /// Check if Handle<IGESSelect_SelectSingleViewFrom> is null
+    pub fn HandleIGESSelectSelectSingleViewFrom_is_null(
+        self_: *const HandleIGESSelectSelectSingleViewFrom,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectSingleViewFrom
     pub fn HandleIGESSelectSelectSingleViewFrom_get(
         handle: *const HandleIGESSelectSelectSingleViewFrom,
@@ -78947,6 +79673,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectSubordinate_clone(
         self_: *const HandleIGESSelectSelectSubordinate,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectSubordinate>;
+    /// Check if Handle<IGESSelect_SelectSubordinate> is null
+    pub fn HandleIGESSelectSelectSubordinate_is_null(
+        self_: *const HandleIGESSelectSelectSubordinate,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectSubordinate
     pub fn HandleIGESSelectSelectSubordinate_get(
         handle: *const HandleIGESSelectSelectSubordinate,
@@ -79137,6 +79867,10 @@ extern "C" {
     pub fn HandleIGESSelectSelectVisibleStatus_clone(
         self_: *const HandleIGESSelectSelectVisibleStatus,
     ) -> crate::OcctResult<*mut HandleIGESSelectSelectVisibleStatus>;
+    /// Check if Handle<IGESSelect_SelectVisibleStatus> is null
+    pub fn HandleIGESSelectSelectVisibleStatus_is_null(
+        self_: *const HandleIGESSelectSelectVisibleStatus,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SelectVisibleStatus
     pub fn HandleIGESSelectSelectVisibleStatus_get(
         handle: *const HandleIGESSelectSelectVisibleStatus,
@@ -79341,6 +80075,10 @@ extern "C" {
     pub fn HandleIGESSelectSetGlobalParameter_clone(
         self_: *const HandleIGESSelectSetGlobalParameter,
     ) -> crate::OcctResult<*mut HandleIGESSelectSetGlobalParameter>;
+    /// Check if Handle<IGESSelect_SetGlobalParameter> is null
+    pub fn HandleIGESSelectSetGlobalParameter_is_null(
+        self_: *const HandleIGESSelectSetGlobalParameter,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SetGlobalParameter
     pub fn HandleIGESSelectSetGlobalParameter_get(
         handle: *const HandleIGESSelectSetGlobalParameter,
@@ -79514,6 +80252,8 @@ extern "C" {
     pub fn HandleIGESSelectSetLabel_clone(
         self_: *const HandleIGESSelectSetLabel,
     ) -> crate::OcctResult<*mut HandleIGESSelectSetLabel>;
+    /// Check if Handle<IGESSelect_SetLabel> is null
+    pub fn HandleIGESSelectSetLabel_is_null(self_: *const HandleIGESSelectSetLabel) -> bool;
     /// Dereference Handle to get *const IGESSelect_SetLabel
     pub fn HandleIGESSelectSetLabel_get(
         handle: *const HandleIGESSelectSetLabel,
@@ -79685,6 +80425,8 @@ extern "C" {
     pub fn HandleIGESSelectSetVersion5_clone(
         self_: *const HandleIGESSelectSetVersion5,
     ) -> crate::OcctResult<*mut HandleIGESSelectSetVersion5>;
+    /// Check if Handle<IGESSelect_SetVersion5> is null
+    pub fn HandleIGESSelectSetVersion5_is_null(self_: *const HandleIGESSelectSetVersion5) -> bool;
     /// Dereference Handle to get *const IGESSelect_SetVersion5
     pub fn HandleIGESSelectSetVersion5_get(
         handle: *const HandleIGESSelectSetVersion5,
@@ -79851,6 +80593,8 @@ extern "C" {
     pub fn HandleIGESSelectSignColor_clone(
         self_: *const HandleIGESSelectSignColor,
     ) -> crate::OcctResult<*mut HandleIGESSelectSignColor>;
+    /// Check if Handle<IGESSelect_SignColor> is null
+    pub fn HandleIGESSelectSignColor_is_null(self_: *const HandleIGESSelectSignColor) -> bool;
     /// Dereference Handle to get *const IGESSelect_SignColor
     pub fn HandleIGESSelectSignColor_get(
         handle: *const HandleIGESSelectSignColor,
@@ -80011,6 +80755,10 @@ extern "C" {
     pub fn HandleIGESSelectSignLevelNumber_clone(
         self_: *const HandleIGESSelectSignLevelNumber,
     ) -> crate::OcctResult<*mut HandleIGESSelectSignLevelNumber>;
+    /// Check if Handle<IGESSelect_SignLevelNumber> is null
+    pub fn HandleIGESSelectSignLevelNumber_is_null(
+        self_: *const HandleIGESSelectSignLevelNumber,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SignLevelNumber
     pub fn HandleIGESSelectSignLevelNumber_get(
         handle: *const HandleIGESSelectSignLevelNumber,
@@ -80177,6 +80925,8 @@ extern "C" {
     pub fn HandleIGESSelectSignStatus_clone(
         self_: *const HandleIGESSelectSignStatus,
     ) -> crate::OcctResult<*mut HandleIGESSelectSignStatus>;
+    /// Check if Handle<IGESSelect_SignStatus> is null
+    pub fn HandleIGESSelectSignStatus_is_null(self_: *const HandleIGESSelectSignStatus) -> bool;
     /// Dereference Handle to get *const IGESSelect_SignStatus
     pub fn HandleIGESSelectSignStatus_get(
         handle: *const HandleIGESSelectSignStatus,
@@ -80329,6 +81079,10 @@ extern "C" {
     pub fn HandleIGESSelectSplineToBSpline_clone(
         self_: *const HandleIGESSelectSplineToBSpline,
     ) -> crate::OcctResult<*mut HandleIGESSelectSplineToBSpline>;
+    /// Check if Handle<IGESSelect_SplineToBSpline> is null
+    pub fn HandleIGESSelectSplineToBSpline_is_null(
+        self_: *const HandleIGESSelectSplineToBSpline,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_SplineToBSpline
     pub fn HandleIGESSelectSplineToBSpline_get(
         handle: *const HandleIGESSelectSplineToBSpline,
@@ -80450,6 +81204,10 @@ extern "C" {
     pub fn HandleIGESSelectUpdateCreationDate_clone(
         self_: *const HandleIGESSelectUpdateCreationDate,
     ) -> crate::OcctResult<*mut HandleIGESSelectUpdateCreationDate>;
+    /// Check if Handle<IGESSelect_UpdateCreationDate> is null
+    pub fn HandleIGESSelectUpdateCreationDate_is_null(
+        self_: *const HandleIGESSelectUpdateCreationDate,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_UpdateCreationDate
     pub fn HandleIGESSelectUpdateCreationDate_get(
         handle: *const HandleIGESSelectUpdateCreationDate,
@@ -80621,6 +81379,10 @@ extern "C" {
     pub fn HandleIGESSelectUpdateFileName_clone(
         self_: *const HandleIGESSelectUpdateFileName,
     ) -> crate::OcctResult<*mut HandleIGESSelectUpdateFileName>;
+    /// Check if Handle<IGESSelect_UpdateFileName> is null
+    pub fn HandleIGESSelectUpdateFileName_is_null(
+        self_: *const HandleIGESSelectUpdateFileName,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_UpdateFileName
     pub fn HandleIGESSelectUpdateFileName_get(
         handle: *const HandleIGESSelectUpdateFileName,
@@ -80794,6 +81556,10 @@ extern "C" {
     pub fn HandleIGESSelectUpdateLastChange_clone(
         self_: *const HandleIGESSelectUpdateLastChange,
     ) -> crate::OcctResult<*mut HandleIGESSelectUpdateLastChange>;
+    /// Check if Handle<IGESSelect_UpdateLastChange> is null
+    pub fn HandleIGESSelectUpdateLastChange_is_null(
+        self_: *const HandleIGESSelectUpdateLastChange,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSelect_UpdateLastChange
     pub fn HandleIGESSelectUpdateLastChange_get(
         handle: *const HandleIGESSelectUpdateLastChange,
@@ -80989,6 +81755,8 @@ extern "C" {
     pub fn HandleIGESSelectViewSorter_clone(
         self_: *const HandleIGESSelectViewSorter,
     ) -> crate::OcctResult<*mut HandleIGESSelectViewSorter>;
+    /// Check if Handle<IGESSelect_ViewSorter> is null
+    pub fn HandleIGESSelectViewSorter_is_null(self_: *const HandleIGESSelectViewSorter) -> bool;
     /// Dereference Handle to get *const IGESSelect_ViewSorter
     pub fn HandleIGESSelectViewSorter_get(
         handle: *const HandleIGESSelectViewSorter,
@@ -81095,6 +81863,8 @@ extern "C" {
     pub fn HandleIGESSelectWorkLibrary_clone(
         self_: *const HandleIGESSelectWorkLibrary,
     ) -> crate::OcctResult<*mut HandleIGESSelectWorkLibrary>;
+    /// Check if Handle<IGESSelect_WorkLibrary> is null
+    pub fn HandleIGESSelectWorkLibrary_is_null(self_: *const HandleIGESSelectWorkLibrary) -> bool;
     /// Dereference Handle to get *const IGESSelect_WorkLibrary
     pub fn HandleIGESSelectWorkLibrary_get(
         handle: *const HandleIGESSelectWorkLibrary,
@@ -81239,6 +82009,8 @@ extern "C" {
     pub fn HandleIGESSolidBlock_clone(
         self_: *const HandleIGESSolidBlock,
     ) -> crate::OcctResult<*mut HandleIGESSolidBlock>;
+    /// Check if Handle<IGESSolid_Block> is null
+    pub fn HandleIGESSolidBlock_is_null(self_: *const HandleIGESSolidBlock) -> bool;
     /// Dereference Handle to get *const IGESSolid_Block
     pub fn HandleIGESSolidBlock_get(
         handle: *const HandleIGESSolidBlock,
@@ -81636,6 +82408,8 @@ extern "C" {
     pub fn HandleIGESSolidBooleanTree_clone(
         self_: *const HandleIGESSolidBooleanTree,
     ) -> crate::OcctResult<*mut HandleIGESSolidBooleanTree>;
+    /// Check if Handle<IGESSolid_BooleanTree> is null
+    pub fn HandleIGESSolidBooleanTree_is_null(self_: *const HandleIGESSolidBooleanTree) -> bool;
     /// Dereference Handle to get *const IGESSolid_BooleanTree
     pub fn HandleIGESSolidBooleanTree_get(
         handle: *const HandleIGESSolidBooleanTree,
@@ -82046,6 +82820,8 @@ extern "C" {
     pub fn HandleIGESSolidConeFrustum_clone(
         self_: *const HandleIGESSolidConeFrustum,
     ) -> crate::OcctResult<*mut HandleIGESSolidConeFrustum>;
+    /// Check if Handle<IGESSolid_ConeFrustum> is null
+    pub fn HandleIGESSolidConeFrustum_is_null(self_: *const HandleIGESSolidConeFrustum) -> bool;
     /// Dereference Handle to get *const IGESSolid_ConeFrustum
     pub fn HandleIGESSolidConeFrustum_get(
         handle: *const HandleIGESSolidConeFrustum,
@@ -82452,6 +83228,10 @@ extern "C" {
     pub fn HandleIGESSolidConicalSurface_clone(
         self_: *const HandleIGESSolidConicalSurface,
     ) -> crate::OcctResult<*mut HandleIGESSolidConicalSurface>;
+    /// Check if Handle<IGESSolid_ConicalSurface> is null
+    pub fn HandleIGESSolidConicalSurface_is_null(
+        self_: *const HandleIGESSolidConicalSurface,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_ConicalSurface
     pub fn HandleIGESSolidConicalSurface_get(
         handle: *const HandleIGESSolidConicalSurface,
@@ -82852,6 +83632,8 @@ extern "C" {
     pub fn HandleIGESSolidCylinder_clone(
         self_: *const HandleIGESSolidCylinder,
     ) -> crate::OcctResult<*mut HandleIGESSolidCylinder>;
+    /// Check if Handle<IGESSolid_Cylinder> is null
+    pub fn HandleIGESSolidCylinder_is_null(self_: *const HandleIGESSolidCylinder) -> bool;
     /// Dereference Handle to get *const IGESSolid_Cylinder
     pub fn HandleIGESSolidCylinder_get(
         handle: *const HandleIGESSolidCylinder,
@@ -83256,6 +84038,10 @@ extern "C" {
     pub fn HandleIGESSolidCylindricalSurface_clone(
         self_: *const HandleIGESSolidCylindricalSurface,
     ) -> crate::OcctResult<*mut HandleIGESSolidCylindricalSurface>;
+    /// Check if Handle<IGESSolid_CylindricalSurface> is null
+    pub fn HandleIGESSolidCylindricalSurface_is_null(
+        self_: *const HandleIGESSolidCylindricalSurface,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_CylindricalSurface
     pub fn HandleIGESSolidCylindricalSurface_get(
         handle: *const HandleIGESSolidCylindricalSurface,
@@ -83664,6 +84450,8 @@ extern "C" {
     pub fn HandleIGESSolidEdgeList_clone(
         self_: *const HandleIGESSolidEdgeList,
     ) -> crate::OcctResult<*mut HandleIGESSolidEdgeList>;
+    /// Check if Handle<IGESSolid_EdgeList> is null
+    pub fn HandleIGESSolidEdgeList_is_null(self_: *const HandleIGESSolidEdgeList) -> bool;
     /// Dereference Handle to get *const IGESSolid_EdgeList
     pub fn HandleIGESSolidEdgeList_get(
         handle: *const HandleIGESSolidEdgeList,
@@ -84092,6 +84880,8 @@ extern "C" {
     pub fn HandleIGESSolidEllipsoid_clone(
         self_: *const HandleIGESSolidEllipsoid,
     ) -> crate::OcctResult<*mut HandleIGESSolidEllipsoid>;
+    /// Check if Handle<IGESSolid_Ellipsoid> is null
+    pub fn HandleIGESSolidEllipsoid_is_null(self_: *const HandleIGESSolidEllipsoid) -> bool;
     /// Dereference Handle to get *const IGESSolid_Ellipsoid
     pub fn HandleIGESSolidEllipsoid_get(
         handle: *const HandleIGESSolidEllipsoid,
@@ -84484,6 +85274,8 @@ extern "C" {
     pub fn HandleIGESSolidFace_clone(
         self_: *const HandleIGESSolidFace,
     ) -> crate::OcctResult<*mut HandleIGESSolidFace>;
+    /// Check if Handle<IGESSolid_Face> is null
+    pub fn HandleIGESSolidFace_is_null(self_: *const HandleIGESSolidFace) -> bool;
     /// Dereference Handle to get *const IGESSolid_Face
     pub fn HandleIGESSolidFace_get(
         handle: *const HandleIGESSolidFace,
@@ -84902,6 +85694,9 @@ extern "C" {
     pub fn HandleIGESSolidGeneralModule_clone(
         self_: *const HandleIGESSolidGeneralModule,
     ) -> crate::OcctResult<*mut HandleIGESSolidGeneralModule>;
+    /// Check if Handle<IGESSolid_GeneralModule> is null
+    pub fn HandleIGESSolidGeneralModule_is_null(self_: *const HandleIGESSolidGeneralModule)
+        -> bool;
     /// Dereference Handle to get *const IGESSolid_GeneralModule
     pub fn HandleIGESSolidGeneralModule_get(
         handle: *const HandleIGESSolidGeneralModule,
@@ -85130,6 +85925,9 @@ extern "C" {
     pub fn HandleIGESSolidHArray1OfFace_clone(
         self_: *const HandleIGESSolidHArray1OfFace,
     ) -> crate::OcctResult<*mut HandleIGESSolidHArray1OfFace>;
+    /// Check if Handle<IGESSolid_HArray1OfFace> is null
+    pub fn HandleIGESSolidHArray1OfFace_is_null(self_: *const HandleIGESSolidHArray1OfFace)
+        -> bool;
     /// Dereference Handle to get *const IGESSolid_HArray1OfFace
     pub fn HandleIGESSolidHArray1OfFace_get(
         handle: *const HandleIGESSolidHArray1OfFace,
@@ -85233,6 +86031,9 @@ extern "C" {
     pub fn HandleIGESSolidHArray1OfLoop_clone(
         self_: *const HandleIGESSolidHArray1OfLoop,
     ) -> crate::OcctResult<*mut HandleIGESSolidHArray1OfLoop>;
+    /// Check if Handle<IGESSolid_HArray1OfLoop> is null
+    pub fn HandleIGESSolidHArray1OfLoop_is_null(self_: *const HandleIGESSolidHArray1OfLoop)
+        -> bool;
     /// Dereference Handle to get *const IGESSolid_HArray1OfLoop
     pub fn HandleIGESSolidHArray1OfLoop_get(
         handle: *const HandleIGESSolidHArray1OfLoop,
@@ -85336,6 +86137,10 @@ extern "C" {
     pub fn HandleIGESSolidHArray1OfShell_clone(
         self_: *const HandleIGESSolidHArray1OfShell,
     ) -> crate::OcctResult<*mut HandleIGESSolidHArray1OfShell>;
+    /// Check if Handle<IGESSolid_HArray1OfShell> is null
+    pub fn HandleIGESSolidHArray1OfShell_is_null(
+        self_: *const HandleIGESSolidHArray1OfShell,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_HArray1OfShell
     pub fn HandleIGESSolidHArray1OfShell_get(
         handle: *const HandleIGESSolidHArray1OfShell,
@@ -85443,6 +86248,10 @@ extern "C" {
     pub fn HandleIGESSolidHArray1OfVertexList_clone(
         self_: *const HandleIGESSolidHArray1OfVertexList,
     ) -> crate::OcctResult<*mut HandleIGESSolidHArray1OfVertexList>;
+    /// Check if Handle<IGESSolid_HArray1OfVertexList> is null
+    pub fn HandleIGESSolidHArray1OfVertexList_is_null(
+        self_: *const HandleIGESSolidHArray1OfVertexList,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_HArray1OfVertexList
     pub fn HandleIGESSolidHArray1OfVertexList_get(
         handle: *const HandleIGESSolidHArray1OfVertexList,
@@ -85580,6 +86389,8 @@ extern "C" {
     pub fn HandleIGESSolidLoop_clone(
         self_: *const HandleIGESSolidLoop,
     ) -> crate::OcctResult<*mut HandleIGESSolidLoop>;
+    /// Check if Handle<IGESSolid_Loop> is null
+    pub fn HandleIGESSolidLoop_is_null(self_: *const HandleIGESSolidLoop) -> bool;
     /// Dereference Handle to get *const IGESSolid_Loop
     pub fn HandleIGESSolidLoop_get(
         handle: *const HandleIGESSolidLoop,
@@ -85978,6 +86789,9 @@ extern "C" {
     pub fn HandleIGESSolidManifoldSolid_clone(
         self_: *const HandleIGESSolidManifoldSolid,
     ) -> crate::OcctResult<*mut HandleIGESSolidManifoldSolid>;
+    /// Check if Handle<IGESSolid_ManifoldSolid> is null
+    pub fn HandleIGESSolidManifoldSolid_is_null(self_: *const HandleIGESSolidManifoldSolid)
+        -> bool;
     /// Dereference Handle to get *const IGESSolid_ManifoldSolid
     pub fn HandleIGESSolidManifoldSolid_get(
         handle: *const HandleIGESSolidManifoldSolid,
@@ -86374,6 +87188,8 @@ extern "C" {
     pub fn HandleIGESSolidPlaneSurface_clone(
         self_: *const HandleIGESSolidPlaneSurface,
     ) -> crate::OcctResult<*mut HandleIGESSolidPlaneSurface>;
+    /// Check if Handle<IGESSolid_PlaneSurface> is null
+    pub fn HandleIGESSolidPlaneSurface_is_null(self_: *const HandleIGESSolidPlaneSurface) -> bool;
     /// Dereference Handle to get *const IGESSolid_PlaneSurface
     pub fn HandleIGESSolidPlaneSurface_get(
         handle: *const HandleIGESSolidPlaneSurface,
@@ -86768,6 +87584,8 @@ extern "C" {
     pub fn HandleIGESSolidProtocol_clone(
         self_: *const HandleIGESSolidProtocol,
     ) -> crate::OcctResult<*mut HandleIGESSolidProtocol>;
+    /// Check if Handle<IGESSolid_Protocol> is null
+    pub fn HandleIGESSolidProtocol_is_null(self_: *const HandleIGESSolidProtocol) -> bool;
     /// Dereference Handle to get *const IGESSolid_Protocol
     pub fn HandleIGESSolidProtocol_get(
         handle: *const HandleIGESSolidProtocol,
@@ -86931,6 +87749,10 @@ extern "C" {
     pub fn HandleIGESSolidReadWriteModule_clone(
         self_: *const HandleIGESSolidReadWriteModule,
     ) -> crate::OcctResult<*mut HandleIGESSolidReadWriteModule>;
+    /// Check if Handle<IGESSolid_ReadWriteModule> is null
+    pub fn HandleIGESSolidReadWriteModule_is_null(
+        self_: *const HandleIGESSolidReadWriteModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_ReadWriteModule
     pub fn HandleIGESSolidReadWriteModule_get(
         handle: *const HandleIGESSolidReadWriteModule,
@@ -87107,6 +87929,10 @@ extern "C" {
     pub fn HandleIGESSolidRightAngularWedge_clone(
         self_: *const HandleIGESSolidRightAngularWedge,
     ) -> crate::OcctResult<*mut HandleIGESSolidRightAngularWedge>;
+    /// Check if Handle<IGESSolid_RightAngularWedge> is null
+    pub fn HandleIGESSolidRightAngularWedge_is_null(
+        self_: *const HandleIGESSolidRightAngularWedge,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_RightAngularWedge
     pub fn HandleIGESSolidRightAngularWedge_get(
         handle: *const HandleIGESSolidRightAngularWedge,
@@ -87500,6 +88326,10 @@ extern "C" {
     pub fn HandleIGESSolidSelectedComponent_clone(
         self_: *const HandleIGESSolidSelectedComponent,
     ) -> crate::OcctResult<*mut HandleIGESSolidSelectedComponent>;
+    /// Check if Handle<IGESSolid_SelectedComponent> is null
+    pub fn HandleIGESSolidSelectedComponent_is_null(
+        self_: *const HandleIGESSolidSelectedComponent,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_SelectedComponent
     pub fn HandleIGESSolidSelectedComponent_get(
         handle: *const HandleIGESSolidSelectedComponent,
@@ -87897,6 +88727,8 @@ extern "C" {
     pub fn HandleIGESSolidShell_clone(
         self_: *const HandleIGESSolidShell,
     ) -> crate::OcctResult<*mut HandleIGESSolidShell>;
+    /// Check if Handle<IGESSolid_Shell> is null
+    pub fn HandleIGESSolidShell_is_null(self_: *const HandleIGESSolidShell) -> bool;
     /// Dereference Handle to get *const IGESSolid_Shell
     pub fn HandleIGESSolidShell_get(
         handle: *const HandleIGESSolidShell,
@@ -88298,6 +89130,9 @@ extern "C" {
     pub fn HandleIGESSolidSolidAssembly_clone(
         self_: *const HandleIGESSolidSolidAssembly,
     ) -> crate::OcctResult<*mut HandleIGESSolidSolidAssembly>;
+    /// Check if Handle<IGESSolid_SolidAssembly> is null
+    pub fn HandleIGESSolidSolidAssembly_is_null(self_: *const HandleIGESSolidSolidAssembly)
+        -> bool;
     /// Dereference Handle to get *const IGESSolid_SolidAssembly
     pub fn HandleIGESSolidSolidAssembly_get(
         handle: *const HandleIGESSolidSolidAssembly,
@@ -88689,6 +89524,9 @@ extern "C" {
     pub fn HandleIGESSolidSolidInstance_clone(
         self_: *const HandleIGESSolidSolidInstance,
     ) -> crate::OcctResult<*mut HandleIGESSolidSolidInstance>;
+    /// Check if Handle<IGESSolid_SolidInstance> is null
+    pub fn HandleIGESSolidSolidInstance_is_null(self_: *const HandleIGESSolidSolidInstance)
+        -> bool;
     /// Dereference Handle to get *const IGESSolid_SolidInstance
     pub fn HandleIGESSolidSolidInstance_get(
         handle: *const HandleIGESSolidSolidInstance,
@@ -89091,6 +89929,10 @@ extern "C" {
     pub fn HandleIGESSolidSolidOfLinearExtrusion_clone(
         self_: *const HandleIGESSolidSolidOfLinearExtrusion,
     ) -> crate::OcctResult<*mut HandleIGESSolidSolidOfLinearExtrusion>;
+    /// Check if Handle<IGESSolid_SolidOfLinearExtrusion> is null
+    pub fn HandleIGESSolidSolidOfLinearExtrusion_is_null(
+        self_: *const HandleIGESSolidSolidOfLinearExtrusion,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_SolidOfLinearExtrusion
     pub fn HandleIGESSolidSolidOfLinearExtrusion_get(
         handle: *const HandleIGESSolidSolidOfLinearExtrusion,
@@ -89507,6 +90349,10 @@ extern "C" {
     pub fn HandleIGESSolidSolidOfRevolution_clone(
         self_: *const HandleIGESSolidSolidOfRevolution,
     ) -> crate::OcctResult<*mut HandleIGESSolidSolidOfRevolution>;
+    /// Check if Handle<IGESSolid_SolidOfRevolution> is null
+    pub fn HandleIGESSolidSolidOfRevolution_is_null(
+        self_: *const HandleIGESSolidSolidOfRevolution,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_SolidOfRevolution
     pub fn HandleIGESSolidSolidOfRevolution_get(
         handle: *const HandleIGESSolidSolidOfRevolution,
@@ -89889,6 +90735,10 @@ extern "C" {
     pub fn HandleIGESSolidSpecificModule_clone(
         self_: *const HandleIGESSolidSpecificModule,
     ) -> crate::OcctResult<*mut HandleIGESSolidSpecificModule>;
+    /// Check if Handle<IGESSolid_SpecificModule> is null
+    pub fn HandleIGESSolidSpecificModule_is_null(
+        self_: *const HandleIGESSolidSpecificModule,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_SpecificModule
     pub fn HandleIGESSolidSpecificModule_get(
         handle: *const HandleIGESSolidSpecificModule,
@@ -89995,6 +90845,8 @@ extern "C" {
     pub fn HandleIGESSolidSphere_clone(
         self_: *const HandleIGESSolidSphere,
     ) -> crate::OcctResult<*mut HandleIGESSolidSphere>;
+    /// Check if Handle<IGESSolid_Sphere> is null
+    pub fn HandleIGESSolidSphere_is_null(self_: *const HandleIGESSolidSphere) -> bool;
     /// Dereference Handle to get *const IGESSolid_Sphere
     pub fn HandleIGESSolidSphere_get(
         handle: *const HandleIGESSolidSphere,
@@ -90400,6 +91252,10 @@ extern "C" {
     pub fn HandleIGESSolidSphericalSurface_clone(
         self_: *const HandleIGESSolidSphericalSurface,
     ) -> crate::OcctResult<*mut HandleIGESSolidSphericalSurface>;
+    /// Check if Handle<IGESSolid_SphericalSurface> is null
+    pub fn HandleIGESSolidSphericalSurface_is_null(
+        self_: *const HandleIGESSolidSphericalSurface,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_SphericalSurface
     pub fn HandleIGESSolidSphericalSurface_get(
         handle: *const HandleIGESSolidSphericalSurface,
@@ -92140,6 +92996,10 @@ extern "C" {
     pub fn HandleIGESSolidToroidalSurface_clone(
         self_: *const HandleIGESSolidToroidalSurface,
     ) -> crate::OcctResult<*mut HandleIGESSolidToroidalSurface>;
+    /// Check if Handle<IGESSolid_ToroidalSurface> is null
+    pub fn HandleIGESSolidToroidalSurface_is_null(
+        self_: *const HandleIGESSolidToroidalSurface,
+    ) -> bool;
     /// Dereference Handle to get *const IGESSolid_ToroidalSurface
     pub fn HandleIGESSolidToroidalSurface_get(
         handle: *const HandleIGESSolidToroidalSurface,
@@ -92538,6 +93398,8 @@ extern "C" {
     pub fn HandleIGESSolidTorus_clone(
         self_: *const HandleIGESSolidTorus,
     ) -> crate::OcctResult<*mut HandleIGESSolidTorus>;
+    /// Check if Handle<IGESSolid_Torus> is null
+    pub fn HandleIGESSolidTorus_is_null(self_: *const HandleIGESSolidTorus) -> bool;
     /// Dereference Handle to get *const IGESSolid_Torus
     pub fn HandleIGESSolidTorus_get(
         handle: *const HandleIGESSolidTorus,
@@ -92923,6 +93785,8 @@ extern "C" {
     pub fn HandleIGESSolidVertexList_clone(
         self_: *const HandleIGESSolidVertexList,
     ) -> crate::OcctResult<*mut HandleIGESSolidVertexList>;
+    /// Check if Handle<IGESSolid_VertexList> is null
+    pub fn HandleIGESSolidVertexList_is_null(self_: *const HandleIGESSolidVertexList) -> bool;
     /// Dereference Handle to get *const IGESSolid_VertexList
     pub fn HandleIGESSolidVertexList_get(
         handle: *const HandleIGESSolidVertexList,
@@ -93333,6 +94197,8 @@ extern "C" {
     pub fn HandleIGESToBRepActor_clone(
         self_: *const HandleIGESToBRepActor,
     ) -> crate::OcctResult<*mut HandleIGESToBRepActor>;
+    /// Check if Handle<IGESToBRep_Actor> is null
+    pub fn HandleIGESToBRepActor_is_null(self_: *const HandleIGESToBRepActor) -> bool;
     /// Dereference Handle to get *const IGESToBRep_Actor
     pub fn HandleIGESToBRepActor_get(
         handle: *const HandleIGESToBRepActor,
@@ -93482,6 +94348,10 @@ extern "C" {
     pub fn HandleIGESToBRepAlgoContainer_clone(
         self_: *const HandleIGESToBRepAlgoContainer,
     ) -> crate::OcctResult<*mut HandleIGESToBRepAlgoContainer>;
+    /// Check if Handle<IGESToBRep_AlgoContainer> is null
+    pub fn HandleIGESToBRepAlgoContainer_is_null(
+        self_: *const HandleIGESToBRepAlgoContainer,
+    ) -> bool;
     /// Dereference Handle to get *const IGESToBRep_AlgoContainer
     pub fn HandleIGESToBRepAlgoContainer_get(
         handle: *const HandleIGESToBRepAlgoContainer,
@@ -94628,6 +95498,9 @@ extern "C" {
     pub fn HandleIGESToBRepIGESBoundary_clone(
         self_: *const HandleIGESToBRepIGESBoundary,
     ) -> crate::OcctResult<*mut HandleIGESToBRepIGESBoundary>;
+    /// Check if Handle<IGESToBRep_IGESBoundary> is null
+    pub fn HandleIGESToBRepIGESBoundary_is_null(self_: *const HandleIGESToBRepIGESBoundary)
+        -> bool;
     /// Dereference Handle to get *const IGESToBRep_IGESBoundary
     pub fn HandleIGESToBRepIGESBoundary_get(
         handle: *const HandleIGESToBRepIGESBoundary,
@@ -94800,6 +95673,10 @@ extern "C" {
     pub fn HandleIGESToBRepToolContainer_clone(
         self_: *const HandleIGESToBRepToolContainer,
     ) -> crate::OcctResult<*mut HandleIGESToBRepToolContainer>;
+    /// Check if Handle<IGESToBRep_ToolContainer> is null
+    pub fn HandleIGESToBRepToolContainer_is_null(
+        self_: *const HandleIGESToBRepToolContainer,
+    ) -> bool;
     /// Dereference Handle to get *const IGESToBRep_ToolContainer
     pub fn HandleIGESToBRepToolContainer_get(
         handle: *const HandleIGESToBRepToolContainer,

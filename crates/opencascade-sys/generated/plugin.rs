@@ -295,6 +295,11 @@ unsafe impl crate::CppCopyable for HandlePluginFailure {
 }
 
 impl HandlePluginFailure {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandlePluginFailure_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Plugin_Failure
     pub fn get(&self) -> &crate::ffi_types::Plugin_Failure {
         unsafe {

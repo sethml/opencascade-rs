@@ -525,6 +525,11 @@ unsafe impl crate::CppCopyable for HandleBRepFillACRLaw {
 }
 
 impl HandleBRepFillACRLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleBRepFillACRLaw_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepFill_ACRLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_ACRLaw {
         unsafe {
@@ -1657,6 +1662,13 @@ unsafe impl crate::CppCopyable for HandleBRepFillCurveConstraint {
 }
 
 impl HandleBRepFillCurveConstraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepFill_CurveConstraint
     pub fn get(&self) -> &crate::ffi_types::BRepFill_CurveConstraint {
         unsafe {
@@ -2242,6 +2254,11 @@ unsafe impl crate::CppCopyable for HandleBRepFillDraftLaw {
 }
 
 impl HandleBRepFillDraftLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepFill_DraftLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_DraftLaw {
         unsafe {
@@ -2682,6 +2699,11 @@ unsafe impl crate::CppCopyable for HandleBRepFillEdge3DLaw {
 }
 
 impl HandleBRepFillEdge3DLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepFill_Edge3DLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_Edge3DLaw {
         unsafe {
@@ -3187,6 +3209,13 @@ unsafe impl crate::CppCopyable for HandleBRepFillEdgeOnSurfLaw {
 }
 
 impl HandleBRepFillEdgeOnSurfLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BRepFill_EdgeOnSurfLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_EdgeOnSurfLaw {
         unsafe {
@@ -4516,6 +4545,11 @@ unsafe impl crate::CppCopyable for HandleBRepFillLocationLaw {
 }
 
 impl HandleBRepFillLocationLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepFill_LocationLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_LocationLaw {
         unsafe {
@@ -5226,6 +5260,11 @@ unsafe impl crate::CppCopyable for HandleBRepFillNSections {
 }
 
 impl HandleBRepFillNSections {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleBRepFillNSections_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepFill_NSections
     pub fn get(&self) -> &crate::ffi_types::BRepFill_NSections {
         unsafe {
@@ -6259,6 +6298,11 @@ unsafe impl crate::CppCopyable for HandleBRepFillPipeShell {
 }
 
 impl HandleBRepFillPipeShell {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleBRepFillPipeShell_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepFill_PipeShell
     pub fn get(&self) -> &crate::ffi_types::BRepFill_PipeShell {
         unsafe {
@@ -6688,6 +6732,11 @@ unsafe impl crate::CppCopyable for HandleBRepFillSectionLaw {
 }
 
 impl HandleBRepFillSectionLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepFill_SectionLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_SectionLaw {
         unsafe {
@@ -7233,6 +7282,11 @@ unsafe impl crate::CppCopyable for HandleBRepFillShapeLaw {
 }
 
 impl HandleBRepFillShapeLaw {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepFill_ShapeLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_ShapeLaw {
         unsafe {

@@ -1017,6 +1017,11 @@ unsafe impl crate::CppCopyable for HandleChFiDSChamfSpine {
 }
 
 impl HandleChFiDSChamfSpine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFillet::HandleChFiDSChamfSpine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ChFiDS_ChamfSpine
     pub fn get(&self) -> &crate::ffi_types::ChFiDS_ChamfSpine {
         unsafe {
@@ -1954,6 +1959,11 @@ unsafe impl crate::CppCopyable for HandleChFiDSElSpine {
 }
 
 impl HandleChFiDSElSpine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFillet::HandleChFiDSElSpine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ChFiDS_ElSpine
     pub fn get(&self) -> &crate::ffi_types::ChFiDS_ElSpine {
         unsafe {
@@ -3071,6 +3081,11 @@ unsafe impl crate::CppCopyable for HandleChFiDSFilSpine {
 }
 
 impl HandleChFiDSFilSpine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFillet::HandleChFiDSFilSpine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ChFiDS_FilSpine
     pub fn get(&self) -> &crate::ffi_types::ChFiDS_FilSpine {
         unsafe {
@@ -3329,6 +3344,11 @@ unsafe impl crate::CppCopyable for HandleChFiDSHData {
 }
 
 impl HandleChFiDSHData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFillet::HandleChFiDSHData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ChFiDS_HData
     pub fn get(&self) -> &crate::ffi_types::ChFiDS_HData {
         unsafe {
@@ -3752,6 +3772,11 @@ unsafe impl crate::CppCopyable for HandleChFiDSSecHArray1 {
 }
 
 impl HandleChFiDSSecHArray1 {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFillet::HandleChFiDSSecHArray1_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ChFiDS_SecHArray1
     pub fn get(&self) -> &crate::ffi_types::ChFiDS_SecHArray1 {
         unsafe {
@@ -4579,6 +4604,11 @@ unsafe impl crate::CppCopyable for HandleChFiDSSpine {
 }
 
 impl HandleChFiDSSpine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFillet::HandleChFiDSSpine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ChFiDS_Spine
     pub fn get(&self) -> &crate::ffi_types::ChFiDS_Spine {
         unsafe {
@@ -5265,6 +5295,11 @@ unsafe impl crate::CppCopyable for HandleChFiDSStripe {
 }
 
 impl HandleChFiDSStripe {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFillet::HandleChFiDSStripe_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ChFiDS_Stripe
     pub fn get(&self) -> &crate::ffi_types::ChFiDS_Stripe {
         unsafe {
@@ -6023,6 +6058,11 @@ unsafe impl crate::CppCopyable for HandleChFiDSSurfData {
 }
 
 impl HandleChFiDSSurfData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFillet::HandleChFiDSSurfData_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying ChFiDS_SurfData
     pub fn get(&self) -> &crate::ffi_types::ChFiDS_SurfData {
         unsafe {

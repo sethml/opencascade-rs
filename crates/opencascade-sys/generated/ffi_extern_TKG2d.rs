@@ -166,6 +166,8 @@ extern "C" {
     pub fn HandleAdaptor2dCurve2d_clone(
         self_: *const HandleAdaptor2dCurve2d,
     ) -> crate::OcctResult<*mut HandleAdaptor2dCurve2d>;
+    /// Check if Handle<Adaptor2d_Curve2d> is null
+    pub fn HandleAdaptor2dCurve2d_is_null(self_: *const HandleAdaptor2dCurve2d) -> bool;
     /// Dereference Handle to get *const Adaptor2d_Curve2d
     pub fn HandleAdaptor2dCurve2d_get(
         handle: *const HandleAdaptor2dCurve2d,
@@ -411,6 +413,8 @@ extern "C" {
     pub fn HandleAdaptor2dLine2d_clone(
         self_: *const HandleAdaptor2dLine2d,
     ) -> crate::OcctResult<*mut HandleAdaptor2dLine2d>;
+    /// Check if Handle<Adaptor2d_Line2d> is null
+    pub fn HandleAdaptor2dLine2d_is_null(self_: *const HandleAdaptor2dLine2d) -> bool;
     /// Dereference Handle to get *const Adaptor2d_Line2d
     pub fn HandleAdaptor2dLine2d_get(
         handle: *const HandleAdaptor2dLine2d,
@@ -685,6 +689,8 @@ extern "C" {
     pub fn HandleAdaptor2dOffsetCurve_clone(
         self_: *const HandleAdaptor2dOffsetCurve,
     ) -> crate::OcctResult<*mut HandleAdaptor2dOffsetCurve>;
+    /// Check if Handle<Adaptor2d_OffsetCurve> is null
+    pub fn HandleAdaptor2dOffsetCurve_is_null(self_: *const HandleAdaptor2dOffsetCurve) -> bool;
     /// Dereference Handle to get *const Adaptor2d_OffsetCurve
     pub fn HandleAdaptor2dOffsetCurve_get(
         handle: *const HandleAdaptor2dOffsetCurve,
@@ -825,6 +831,8 @@ extern "C" {
     pub fn HandleGeom2dAxisPlacement_clone(
         self_: *const HandleGeom2dAxisPlacement,
     ) -> crate::OcctResult<*mut HandleGeom2dAxisPlacement>;
+    /// Check if Handle<Geom2d_AxisPlacement> is null
+    pub fn HandleGeom2dAxisPlacement_is_null(self_: *const HandleGeom2dAxisPlacement) -> bool;
     /// Dereference Handle to get *const Geom2d_AxisPlacement
     pub fn HandleGeom2dAxisPlacement_get(
         handle: *const HandleGeom2dAxisPlacement,
@@ -1391,6 +1399,8 @@ extern "C" {
     pub fn HandleGeom2dBSplineCurve_clone(
         self_: *const HandleGeom2dBSplineCurve,
     ) -> crate::OcctResult<*mut HandleGeom2dBSplineCurve>;
+    /// Check if Handle<Geom2d_BSplineCurve> is null
+    pub fn HandleGeom2dBSplineCurve_is_null(self_: *const HandleGeom2dBSplineCurve) -> bool;
     /// Dereference Handle to get *const Geom2d_BSplineCurve
     pub fn HandleGeom2dBSplineCurve_get(
         handle: *const HandleGeom2dBSplineCurve,
@@ -1757,6 +1767,8 @@ extern "C" {
     pub fn HandleGeom2dBezierCurve_clone(
         self_: *const HandleGeom2dBezierCurve,
     ) -> crate::OcctResult<*mut HandleGeom2dBezierCurve>;
+    /// Check if Handle<Geom2d_BezierCurve> is null
+    pub fn HandleGeom2dBezierCurve_is_null(self_: *const HandleGeom2dBezierCurve) -> bool;
     /// Dereference Handle to get *const Geom2d_BezierCurve
     pub fn HandleGeom2dBezierCurve_get(
         handle: *const HandleGeom2dBezierCurve,
@@ -1932,6 +1944,8 @@ extern "C" {
     pub fn HandleGeom2dBoundedCurve_clone(
         self_: *const HandleGeom2dBoundedCurve,
     ) -> crate::OcctResult<*mut HandleGeom2dBoundedCurve>;
+    /// Check if Handle<Geom2d_BoundedCurve> is null
+    pub fn HandleGeom2dBoundedCurve_is_null(self_: *const HandleGeom2dBoundedCurve) -> bool;
     /// Dereference Handle to get *const Geom2d_BoundedCurve
     pub fn HandleGeom2dBoundedCurve_get(
         handle: *const HandleGeom2dBoundedCurve,
@@ -2244,6 +2258,8 @@ extern "C" {
     pub fn HandleGeom2dCartesianPoint_clone(
         self_: *const HandleGeom2dCartesianPoint,
     ) -> crate::OcctResult<*mut HandleGeom2dCartesianPoint>;
+    /// Check if Handle<Geom2d_CartesianPoint> is null
+    pub fn HandleGeom2dCartesianPoint_is_null(self_: *const HandleGeom2dCartesianPoint) -> bool;
     /// Dereference Handle to get *const Geom2d_CartesianPoint
     pub fn HandleGeom2dCartesianPoint_get(
         handle: *const HandleGeom2dCartesianPoint,
@@ -2489,6 +2505,8 @@ extern "C" {
     pub fn HandleGeom2dCircle_clone(
         self_: *const HandleGeom2dCircle,
     ) -> crate::OcctResult<*mut HandleGeom2dCircle>;
+    /// Check if Handle<Geom2d_Circle> is null
+    pub fn HandleGeom2dCircle_is_null(self_: *const HandleGeom2dCircle) -> bool;
     /// Dereference Handle to get *const Geom2d_Circle
     pub fn HandleGeom2dCircle_get(
         handle: *const HandleGeom2dCircle,
@@ -2740,6 +2758,8 @@ extern "C" {
     pub fn HandleGeom2dConic_clone(
         self_: *const HandleGeom2dConic,
     ) -> crate::OcctResult<*mut HandleGeom2dConic>;
+    /// Check if Handle<Geom2d_Conic> is null
+    pub fn HandleGeom2dConic_is_null(self_: *const HandleGeom2dConic) -> bool;
     /// Dereference Handle to get *const Geom2d_Conic
     pub fn HandleGeom2dConic_get(
         handle: *const HandleGeom2dConic,
@@ -3041,6 +3061,8 @@ extern "C" {
     pub fn HandleGeom2dCurve_clone(
         self_: *const HandleGeom2dCurve,
     ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
+    /// Check if Handle<Geom2d_Curve> is null
+    pub fn HandleGeom2dCurve_is_null(self_: *const HandleGeom2dCurve) -> bool;
     /// Dereference Handle to get *const Geom2d_Curve
     pub fn HandleGeom2dCurve_get(
         handle: *const HandleGeom2dCurve,
@@ -3279,6 +3301,8 @@ extern "C" {
     pub fn HandleGeom2dDirection_clone(
         self_: *const HandleGeom2dDirection,
     ) -> crate::OcctResult<*mut HandleGeom2dDirection>;
+    /// Check if Handle<Geom2d_Direction> is null
+    pub fn HandleGeom2dDirection_is_null(self_: *const HandleGeom2dDirection) -> bool;
     /// Dereference Handle to get *const Geom2d_Direction
     pub fn HandleGeom2dDirection_get(
         handle: *const HandleGeom2dDirection,
@@ -3578,6 +3602,8 @@ extern "C" {
     pub fn HandleGeom2dEllipse_clone(
         self_: *const HandleGeom2dEllipse,
     ) -> crate::OcctResult<*mut HandleGeom2dEllipse>;
+    /// Check if Handle<Geom2d_Ellipse> is null
+    pub fn HandleGeom2dEllipse_is_null(self_: *const HandleGeom2dEllipse) -> bool;
     /// Dereference Handle to get *const Geom2d_Ellipse
     pub fn HandleGeom2dEllipse_get(
         handle: *const HandleGeom2dEllipse,
@@ -3853,6 +3879,8 @@ extern "C" {
     pub fn HandleGeom2dGeometry_clone(
         self_: *const HandleGeom2dGeometry,
     ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
+    /// Check if Handle<Geom2d_Geometry> is null
+    pub fn HandleGeom2dGeometry_is_null(self_: *const HandleGeom2dGeometry) -> bool;
     /// Dereference Handle to get *const Geom2d_Geometry
     pub fn HandleGeom2dGeometry_get(
         handle: *const HandleGeom2dGeometry,
@@ -4155,6 +4183,8 @@ extern "C" {
     pub fn HandleGeom2dHyperbola_clone(
         self_: *const HandleGeom2dHyperbola,
     ) -> crate::OcctResult<*mut HandleGeom2dHyperbola>;
+    /// Check if Handle<Geom2d_Hyperbola> is null
+    pub fn HandleGeom2dHyperbola_is_null(self_: *const HandleGeom2dHyperbola) -> bool;
     /// Dereference Handle to get *const Geom2d_Hyperbola
     pub fn HandleGeom2dHyperbola_get(
         handle: *const HandleGeom2dHyperbola,
@@ -4491,6 +4521,8 @@ extern "C" {
     pub fn HandleGeom2dLine_clone(
         self_: *const HandleGeom2dLine,
     ) -> crate::OcctResult<*mut HandleGeom2dLine>;
+    /// Check if Handle<Geom2d_Line> is null
+    pub fn HandleGeom2dLine_is_null(self_: *const HandleGeom2dLine) -> bool;
     /// Dereference Handle to get *const Geom2d_Line
     pub fn HandleGeom2dLine_get(
         handle: *const HandleGeom2dLine,
@@ -4758,6 +4790,8 @@ extern "C" {
     pub fn HandleGeom2dOffsetCurve_clone(
         self_: *const HandleGeom2dOffsetCurve,
     ) -> crate::OcctResult<*mut HandleGeom2dOffsetCurve>;
+    /// Check if Handle<Geom2d_OffsetCurve> is null
+    pub fn HandleGeom2dOffsetCurve_is_null(self_: *const HandleGeom2dOffsetCurve) -> bool;
     /// Dereference Handle to get *const Geom2d_OffsetCurve
     pub fn HandleGeom2dOffsetCurve_get(
         handle: *const HandleGeom2dOffsetCurve,
@@ -5035,6 +5069,8 @@ extern "C" {
     pub fn HandleGeom2dParabola_clone(
         self_: *const HandleGeom2dParabola,
     ) -> crate::OcctResult<*mut HandleGeom2dParabola>;
+    /// Check if Handle<Geom2d_Parabola> is null
+    pub fn HandleGeom2dParabola_is_null(self_: *const HandleGeom2dParabola) -> bool;
     /// Dereference Handle to get *const Geom2d_Parabola
     pub fn HandleGeom2dParabola_get(
         handle: *const HandleGeom2dParabola,
@@ -5254,6 +5290,8 @@ extern "C" {
     pub fn HandleGeom2dPoint_clone(
         self_: *const HandleGeom2dPoint,
     ) -> crate::OcctResult<*mut HandleGeom2dPoint>;
+    /// Check if Handle<Geom2d_Point> is null
+    pub fn HandleGeom2dPoint_is_null(self_: *const HandleGeom2dPoint) -> bool;
     /// Dereference Handle to get *const Geom2d_Point
     pub fn HandleGeom2dPoint_get(
         handle: *const HandleGeom2dPoint,
@@ -5508,6 +5546,8 @@ extern "C" {
     pub fn HandleGeom2dTransformation_clone(
         self_: *const HandleGeom2dTransformation,
     ) -> crate::OcctResult<*mut HandleGeom2dTransformation>;
+    /// Check if Handle<Geom2d_Transformation> is null
+    pub fn HandleGeom2dTransformation_is_null(self_: *const HandleGeom2dTransformation) -> bool;
     /// Dereference Handle to get *const Geom2d_Transformation
     pub fn HandleGeom2dTransformation_get(
         handle: *const HandleGeom2dTransformation,
@@ -5720,6 +5760,8 @@ extern "C" {
     pub fn HandleGeom2dTrimmedCurve_clone(
         self_: *const HandleGeom2dTrimmedCurve,
     ) -> crate::OcctResult<*mut HandleGeom2dTrimmedCurve>;
+    /// Check if Handle<Geom2d_TrimmedCurve> is null
+    pub fn HandleGeom2dTrimmedCurve_is_null(self_: *const HandleGeom2dTrimmedCurve) -> bool;
     /// Dereference Handle to get *const Geom2d_TrimmedCurve
     pub fn HandleGeom2dTrimmedCurve_get(
         handle: *const HandleGeom2dTrimmedCurve,
@@ -5905,6 +5947,10 @@ extern "C" {
     pub fn HandleGeom2dUndefinedDerivative_clone(
         self_: *const HandleGeom2dUndefinedDerivative,
     ) -> crate::OcctResult<*mut HandleGeom2dUndefinedDerivative>;
+    /// Check if Handle<Geom2d_UndefinedDerivative> is null
+    pub fn HandleGeom2dUndefinedDerivative_is_null(
+        self_: *const HandleGeom2dUndefinedDerivative,
+    ) -> bool;
     /// Dereference Handle to get *const Geom2d_UndefinedDerivative
     pub fn HandleGeom2dUndefinedDerivative_get(
         handle: *const HandleGeom2dUndefinedDerivative,
@@ -6041,6 +6087,8 @@ extern "C" {
     pub fn HandleGeom2dUndefinedValue_clone(
         self_: *const HandleGeom2dUndefinedValue,
     ) -> crate::OcctResult<*mut HandleGeom2dUndefinedValue>;
+    /// Check if Handle<Geom2d_UndefinedValue> is null
+    pub fn HandleGeom2dUndefinedValue_is_null(self_: *const HandleGeom2dUndefinedValue) -> bool;
     /// Dereference Handle to get *const Geom2d_UndefinedValue
     pub fn HandleGeom2dUndefinedValue_get(
         handle: *const HandleGeom2dUndefinedValue,
@@ -6173,6 +6221,8 @@ extern "C" {
     pub fn HandleGeom2dVector_clone(
         self_: *const HandleGeom2dVector,
     ) -> crate::OcctResult<*mut HandleGeom2dVector>;
+    /// Check if Handle<Geom2d_Vector> is null
+    pub fn HandleGeom2dVector_is_null(self_: *const HandleGeom2dVector) -> bool;
     /// Dereference Handle to get *const Geom2d_Vector
     pub fn HandleGeom2dVector_get(
         handle: *const HandleGeom2dVector,
@@ -6433,6 +6483,10 @@ extern "C" {
     pub fn HandleGeom2dVectorWithMagnitude_clone(
         self_: *const HandleGeom2dVectorWithMagnitude,
     ) -> crate::OcctResult<*mut HandleGeom2dVectorWithMagnitude>;
+    /// Check if Handle<Geom2d_VectorWithMagnitude> is null
+    pub fn HandleGeom2dVectorWithMagnitude_is_null(
+        self_: *const HandleGeom2dVectorWithMagnitude,
+    ) -> bool;
     /// Dereference Handle to get *const Geom2d_VectorWithMagnitude
     pub fn HandleGeom2dVectorWithMagnitude_get(
         handle: *const HandleGeom2dVectorWithMagnitude,
@@ -6774,6 +6828,8 @@ extern "C" {
     pub fn HandleGeom2dAdaptorCurve_clone(
         self_: *const HandleGeom2dAdaptorCurve,
     ) -> crate::OcctResult<*mut HandleGeom2dAdaptorCurve>;
+    /// Check if Handle<Geom2dAdaptor_Curve> is null
+    pub fn HandleGeom2dAdaptorCurve_is_null(self_: *const HandleGeom2dAdaptorCurve) -> bool;
     /// Dereference Handle to get *const Geom2dAdaptor_Curve
     pub fn HandleGeom2dAdaptorCurve_get(
         handle: *const HandleGeom2dAdaptorCurve,
@@ -6889,6 +6945,8 @@ extern "C" {
     pub fn HandleGeom2dEvaluatorCurve_clone(
         self_: *const HandleGeom2dEvaluatorCurve,
     ) -> crate::OcctResult<*mut HandleGeom2dEvaluatorCurve>;
+    /// Check if Handle<Geom2dEvaluator_Curve> is null
+    pub fn HandleGeom2dEvaluatorCurve_is_null(self_: *const HandleGeom2dEvaluatorCurve) -> bool;
     /// Dereference Handle to get *const Geom2dEvaluator_Curve
     pub fn HandleGeom2dEvaluatorCurve_get(
         handle: *const HandleGeom2dEvaluatorCurve,
@@ -7029,6 +7087,10 @@ extern "C" {
     pub fn HandleGeom2dEvaluatorOffsetCurve_clone(
         self_: *const HandleGeom2dEvaluatorOffsetCurve,
     ) -> crate::OcctResult<*mut HandleGeom2dEvaluatorOffsetCurve>;
+    /// Check if Handle<Geom2dEvaluator_OffsetCurve> is null
+    pub fn HandleGeom2dEvaluatorOffsetCurve_is_null(
+        self_: *const HandleGeom2dEvaluatorOffsetCurve,
+    ) -> bool;
     /// Dereference Handle to get *const Geom2dEvaluator_OffsetCurve
     pub fn HandleGeom2dEvaluatorOffsetCurve_get(
         handle: *const HandleGeom2dEvaluatorOffsetCurve,
@@ -7462,6 +7524,8 @@ extern "C" {
     pub fn HandleLPropBadContinuity_clone(
         self_: *const HandleLPropBadContinuity,
     ) -> crate::OcctResult<*mut HandleLPropBadContinuity>;
+    /// Check if Handle<LProp_BadContinuity> is null
+    pub fn HandleLPropBadContinuity_is_null(self_: *const HandleLPropBadContinuity) -> bool;
     /// Dereference Handle to get *const LProp_BadContinuity
     pub fn HandleLPropBadContinuity_get(
         handle: *const HandleLPropBadContinuity,
@@ -7613,6 +7677,8 @@ extern "C" {
     pub fn HandleLPropNotDefined_clone(
         self_: *const HandleLPropNotDefined,
     ) -> crate::OcctResult<*mut HandleLPropNotDefined>;
+    /// Check if Handle<LProp_NotDefined> is null
+    pub fn HandleLPropNotDefined_is_null(self_: *const HandleLPropNotDefined) -> bool;
     /// Dereference Handle to get *const LProp_NotDefined
     pub fn HandleLPropNotDefined_get(
         handle: *const HandleLPropNotDefined,
@@ -7738,6 +7804,10 @@ extern "C" {
     pub fn HandleTColGeom2dHArray1OfBSplineCurve_clone(
         self_: *const HandleTColGeom2dHArray1OfBSplineCurve,
     ) -> crate::OcctResult<*mut HandleTColGeom2dHArray1OfBSplineCurve>;
+    /// Check if Handle<TColGeom2d_HArray1OfBSplineCurve> is null
+    pub fn HandleTColGeom2dHArray1OfBSplineCurve_is_null(
+        self_: *const HandleTColGeom2dHArray1OfBSplineCurve,
+    ) -> bool;
     /// Dereference Handle to get *const TColGeom2d_HArray1OfBSplineCurve
     pub fn HandleTColGeom2dHArray1OfBSplineCurve_get(
         handle: *const HandleTColGeom2dHArray1OfBSplineCurve,
@@ -7845,6 +7915,10 @@ extern "C" {
     pub fn HandleTColGeom2dHArray1OfBezierCurve_clone(
         self_: *const HandleTColGeom2dHArray1OfBezierCurve,
     ) -> crate::OcctResult<*mut HandleTColGeom2dHArray1OfBezierCurve>;
+    /// Check if Handle<TColGeom2d_HArray1OfBezierCurve> is null
+    pub fn HandleTColGeom2dHArray1OfBezierCurve_is_null(
+        self_: *const HandleTColGeom2dHArray1OfBezierCurve,
+    ) -> bool;
     /// Dereference Handle to get *const TColGeom2d_HArray1OfBezierCurve
     pub fn HandleTColGeom2dHArray1OfBezierCurve_get(
         handle: *const HandleTColGeom2dHArray1OfBezierCurve,
@@ -7948,6 +8022,10 @@ extern "C" {
     pub fn HandleTColGeom2dHArray1OfCurve_clone(
         self_: *const HandleTColGeom2dHArray1OfCurve,
     ) -> crate::OcctResult<*mut HandleTColGeom2dHArray1OfCurve>;
+    /// Check if Handle<TColGeom2d_HArray1OfCurve> is null
+    pub fn HandleTColGeom2dHArray1OfCurve_is_null(
+        self_: *const HandleTColGeom2dHArray1OfCurve,
+    ) -> bool;
     /// Dereference Handle to get *const TColGeom2d_HArray1OfCurve
     pub fn HandleTColGeom2dHArray1OfCurve_get(
         handle: *const HandleTColGeom2dHArray1OfCurve,
@@ -8049,6 +8127,10 @@ extern "C" {
     pub fn HandleTColGeom2dHSequenceOfBoundedCurve_clone(
         self_: *const HandleTColGeom2dHSequenceOfBoundedCurve,
     ) -> crate::OcctResult<*mut HandleTColGeom2dHSequenceOfBoundedCurve>;
+    /// Check if Handle<TColGeom2d_HSequenceOfBoundedCurve> is null
+    pub fn HandleTColGeom2dHSequenceOfBoundedCurve_is_null(
+        self_: *const HandleTColGeom2dHSequenceOfBoundedCurve,
+    ) -> bool;
     /// Dereference Handle to get *const TColGeom2d_HSequenceOfBoundedCurve
     pub fn HandleTColGeom2dHSequenceOfBoundedCurve_get(
         handle: *const HandleTColGeom2dHSequenceOfBoundedCurve,
@@ -8146,6 +8228,10 @@ extern "C" {
     pub fn HandleTColGeom2dHSequenceOfCurve_clone(
         self_: *const HandleTColGeom2dHSequenceOfCurve,
     ) -> crate::OcctResult<*mut HandleTColGeom2dHSequenceOfCurve>;
+    /// Check if Handle<TColGeom2d_HSequenceOfCurve> is null
+    pub fn HandleTColGeom2dHSequenceOfCurve_is_null(
+        self_: *const HandleTColGeom2dHSequenceOfCurve,
+    ) -> bool;
     /// Dereference Handle to get *const TColGeom2d_HSequenceOfCurve
     pub fn HandleTColGeom2dHSequenceOfCurve_get(
         handle: *const HandleTColGeom2dHSequenceOfCurve,

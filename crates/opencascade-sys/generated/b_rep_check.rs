@@ -795,6 +795,11 @@ unsafe impl crate::CppCopyable for HandleBRepCheckEdge {
 }
 
 impl HandleBRepCheckEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleBRepCheckEdge_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepCheck_Edge
     pub fn get(&self) -> &crate::ffi_types::BRepCheck_Edge {
         unsafe {
@@ -1224,6 +1229,11 @@ unsafe impl crate::CppCopyable for HandleBRepCheckFace {
 }
 
 impl HandleBRepCheckFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleBRepCheckFace_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepCheck_Face
     pub fn get(&self) -> &crate::ffi_types::BRepCheck_Face {
         unsafe {
@@ -1555,6 +1565,11 @@ unsafe impl crate::CppCopyable for HandleBRepCheckResult {
 }
 
 impl HandleBRepCheckResult {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleBRepCheckResult_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepCheck_Result
     pub fn get(&self) -> &crate::ffi_types::BRepCheck_Result {
         unsafe {
@@ -2063,6 +2078,11 @@ unsafe impl crate::CppCopyable for HandleBRepCheckShell {
 }
 
 impl HandleBRepCheckShell {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleBRepCheckShell_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepCheck_Shell
     pub fn get(&self) -> &crate::ffi_types::BRepCheck_Shell {
         unsafe {
@@ -2450,6 +2470,11 @@ unsafe impl crate::CppCopyable for HandleBRepCheckSolid {
 }
 
 impl HandleBRepCheckSolid {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleBRepCheckSolid_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepCheck_Solid
     pub fn get(&self) -> &crate::ffi_types::BRepCheck_Solid {
         unsafe {
@@ -2822,6 +2847,11 @@ unsafe impl crate::CppCopyable for HandleBRepCheckVertex {
 }
 
 impl HandleBRepCheckVertex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleBRepCheckVertex_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepCheck_Vertex
     pub fn get(&self) -> &crate::ffi_types::BRepCheck_Vertex {
         unsafe {
@@ -3310,6 +3340,11 @@ unsafe impl crate::CppCopyable for HandleBRepCheckWire {
 }
 
 impl HandleBRepCheckWire {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKTopAlgo::HandleBRepCheckWire_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying BRepCheck_Wire
     pub fn get(&self) -> &crate::ffi_types::BRepCheck_Wire {
         unsafe {

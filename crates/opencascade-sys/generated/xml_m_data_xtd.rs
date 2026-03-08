@@ -320,6 +320,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataXtdConstraintDriver {
 }
 
 impl HandleXmlMDataXtdConstraintDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXml::HandleXmlMDataXtdConstraintDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataXtd_ConstraintDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataXtd_ConstraintDriver {
         unsafe {
@@ -649,6 +656,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataXtdGeometryDriver {
 }
 
 impl HandleXmlMDataXtdGeometryDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXml::HandleXmlMDataXtdGeometryDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataXtd_GeometryDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataXtd_GeometryDriver {
         unsafe {
@@ -982,6 +996,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataXtdPatternStdDriver {
 }
 
 impl HandleXmlMDataXtdPatternStdDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXml::HandleXmlMDataXtdPatternStdDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataXtd_PatternStdDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataXtd_PatternStdDriver {
         unsafe {
@@ -1311,6 +1332,13 @@ unsafe impl crate::CppCopyable for HandleXmlMDataXtdPositionDriver {
 }
 
 impl HandleXmlMDataXtdPositionDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXml::HandleXmlMDataXtdPositionDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataXtd_PositionDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataXtd_PositionDriver {
         unsafe {
@@ -1644,6 +1672,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataXtdPresentationDriver {
 }
 
 impl HandleXmlMDataXtdPresentationDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXml::HandleXmlMDataXtdPresentationDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataXtd_PresentationDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataXtd_PresentationDriver {
         unsafe {
@@ -1973,6 +2010,15 @@ unsafe impl crate::CppCopyable for HandleXmlMDataXtdTriangulationDriver {
 }
 
 impl HandleXmlMDataXtdTriangulationDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKXml::HandleXmlMDataXtdTriangulationDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying XmlMDataXtd_TriangulationDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMDataXtd_TriangulationDriver {
         unsafe {

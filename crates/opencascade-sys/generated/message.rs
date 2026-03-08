@@ -1008,6 +1008,11 @@ unsafe impl crate::CppCopyable for HandleMessageAlert {
 }
 
 impl HandleMessageAlert {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleMessageAlert_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Message_Alert
     pub fn get(&self) -> &crate::ffi_types::Message_Alert {
         unsafe {
@@ -2052,6 +2057,13 @@ unsafe impl crate::CppCopyable for HandleMessageAlertExtended {
 }
 
 impl HandleMessageAlertExtended {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageAlertExtended_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Message_AlertExtended
     pub fn get(&self) -> &crate::ffi_types::Message_AlertExtended {
         unsafe {
@@ -2615,6 +2627,11 @@ unsafe impl crate::CppCopyable for HandleMessageAlgorithm {
 }
 
 impl HandleMessageAlgorithm {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleMessageAlgorithm_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Message_Algorithm
     pub fn get(&self) -> &crate::ffi_types::Message_Algorithm {
         unsafe {
@@ -2903,6 +2920,11 @@ unsafe impl crate::CppCopyable for HandleMessageAttribute {
 }
 
 impl HandleMessageAttribute {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleMessageAttribute_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Message_Attribute
     pub fn get(&self) -> &crate::ffi_types::Message_Attribute {
         unsafe {
@@ -3340,6 +3362,13 @@ unsafe impl crate::CppCopyable for HandleMessageAttributeMeter {
 }
 
 impl HandleMessageAttributeMeter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageAttributeMeter_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Message_AttributeMeter
     pub fn get(&self) -> &crate::ffi_types::Message_AttributeMeter {
         unsafe {
@@ -3625,6 +3654,13 @@ unsafe impl crate::CppCopyable for HandleMessageAttributeObject {
 }
 
 impl HandleMessageAttributeObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageAttributeObject_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Message_AttributeObject
     pub fn get(&self) -> &crate::ffi_types::Message_AttributeObject {
         unsafe {
@@ -3912,6 +3948,13 @@ unsafe impl crate::CppCopyable for HandleMessageAttributeStream {
 }
 
 impl HandleMessageAttributeStream {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageAttributeStream_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Message_AttributeStream
     pub fn get(&self) -> &crate::ffi_types::Message_AttributeStream {
         unsafe {
@@ -4265,6 +4308,13 @@ unsafe impl crate::CppCopyable for HandleMessageCompositeAlerts {
 }
 
 impl HandleMessageCompositeAlerts {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageCompositeAlerts_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Message_CompositeAlerts
     pub fn get(&self) -> &crate::ffi_types::Message_CompositeAlerts {
         unsafe {
@@ -5118,6 +5168,11 @@ unsafe impl crate::CppCopyable for HandleMessageMessenger {
 }
 
 impl HandleMessageMessenger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleMessageMessenger_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Message_Messenger
     pub fn get(&self) -> &crate::ffi_types::Message_Messenger {
         unsafe {
@@ -5900,6 +5955,11 @@ unsafe impl crate::CppCopyable for HandleMessagePrinter {
 }
 
 impl HandleMessagePrinter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleMessagePrinter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Message_Printer
     pub fn get(&self) -> &crate::ffi_types::Message_Printer {
         unsafe {
@@ -6334,6 +6394,13 @@ unsafe impl crate::CppCopyable for HandleMessagePrinterOStream {
 }
 
 impl HandleMessagePrinterOStream {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessagePrinterOStream_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Message_PrinterOStream
     pub fn get(&self) -> &crate::ffi_types::Message_PrinterOStream {
         unsafe {
@@ -6651,6 +6718,13 @@ unsafe impl crate::CppCopyable for HandleMessagePrinterSystemLog {
 }
 
 impl HandleMessagePrinterSystemLog {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Message_PrinterSystemLog
     pub fn get(&self) -> &crate::ffi_types::Message_PrinterSystemLog {
         unsafe {
@@ -6987,6 +7061,13 @@ unsafe impl crate::CppCopyable for HandleMessagePrinterToReport {
 }
 
 impl HandleMessagePrinterToReport {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessagePrinterToReport_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Message_PrinterToReport
     pub fn get(&self) -> &crate::ffi_types::Message_PrinterToReport {
         unsafe {
@@ -7250,6 +7331,13 @@ unsafe impl crate::CppCopyable for HandleMessageProgressIndicator {
 }
 
 impl HandleMessageProgressIndicator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageProgressIndicator_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Message_ProgressIndicator
     pub fn get(&self) -> &crate::ffi_types::Message_ProgressIndicator {
         unsafe {
@@ -8234,6 +8322,11 @@ unsafe impl crate::CppCopyable for HandleMessageReport {
 }
 
 impl HandleMessageReport {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKernel::HandleMessageReport_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Message_Report
     pub fn get(&self) -> &crate::ffi_types::Message_Report {
         unsafe {

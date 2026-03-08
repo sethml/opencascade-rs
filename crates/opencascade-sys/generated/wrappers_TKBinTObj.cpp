@@ -52,42 +52,49 @@ typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleBinTObjDriversDocumentRetrievalDriver_destructor(HandleBinTObjDriversDocumentRetrievalDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinTObjDriversDocumentRetrievalDriver*> HandleBinTObjDriversDocumentRetrievalDriver_clone(const HandleBinTObjDriversDocumentRetrievalDriver* self_) {
     try { return {new HandleBinTObjDriversDocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinTObjDriversDocumentRetrievalDriver_is_null(const HandleBinTObjDriversDocumentRetrievalDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinTObjDriversDocumentStorageDriver_destructor(HandleBinTObjDriversDocumentStorageDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinTObjDriversDocumentStorageDriver*> HandleBinTObjDriversDocumentStorageDriver_clone(const HandleBinTObjDriversDocumentStorageDriver* self_) {
     try { return {new HandleBinTObjDriversDocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinTObjDriversDocumentStorageDriver_is_null(const HandleBinTObjDriversDocumentStorageDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinTObjDriversIntSparseArrayDriver_destructor(HandleBinTObjDriversIntSparseArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinTObjDriversIntSparseArrayDriver*> HandleBinTObjDriversIntSparseArrayDriver_clone(const HandleBinTObjDriversIntSparseArrayDriver* self_) {
     try { return {new HandleBinTObjDriversIntSparseArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinTObjDriversIntSparseArrayDriver_is_null(const HandleBinTObjDriversIntSparseArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinTObjDriversModelDriver_destructor(HandleBinTObjDriversModelDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinTObjDriversModelDriver*> HandleBinTObjDriversModelDriver_clone(const HandleBinTObjDriversModelDriver* self_) {
     try { return {new HandleBinTObjDriversModelDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinTObjDriversModelDriver_is_null(const HandleBinTObjDriversModelDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinTObjDriversObjectDriver_destructor(HandleBinTObjDriversObjectDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinTObjDriversObjectDriver*> HandleBinTObjDriversObjectDriver_clone(const HandleBinTObjDriversObjectDriver* self_) {
     try { return {new HandleBinTObjDriversObjectDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinTObjDriversObjectDriver_is_null(const HandleBinTObjDriversObjectDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinTObjDriversReferenceDriver_destructor(HandleBinTObjDriversReferenceDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinTObjDriversReferenceDriver*> HandleBinTObjDriversReferenceDriver_clone(const HandleBinTObjDriversReferenceDriver* self_) {
     try { return {new HandleBinTObjDriversReferenceDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinTObjDriversReferenceDriver_is_null(const HandleBinTObjDriversReferenceDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinTObjDriversXYZDriver_destructor(HandleBinTObjDriversXYZDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinTObjDriversXYZDriver*> HandleBinTObjDriversXYZDriver_clone(const HandleBinTObjDriversXYZDriver* self_) {
     try { return {new HandleBinTObjDriversXYZDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinTObjDriversXYZDriver_is_null(const HandleBinTObjDriversXYZDriver* self_) { return self_->IsNull(); }
 
 // ========================
 // BinTObjDrivers_DocumentRetrievalDriver wrappers

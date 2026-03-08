@@ -2260,6 +2260,13 @@ unsafe impl crate::CppCopyable for HandlePolyCoherentTriangulation {
 }
 
 impl HandlePolyCoherentTriangulation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyCoherentTriangulation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Poly_CoherentTriangulation
     pub fn get(&self) -> &crate::ffi_types::Poly_CoherentTriangulation {
         unsafe {
@@ -2828,6 +2835,13 @@ unsafe impl crate::CppCopyable for HandlePolyHArray1OfTriangle {
 }
 
 impl HandlePolyHArray1OfTriangle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyHArray1OfTriangle_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Poly_HArray1OfTriangle
     pub fn get(&self) -> &crate::ffi_types::Poly_HArray1OfTriangle {
         unsafe {
@@ -4102,6 +4116,11 @@ unsafe impl crate::CppCopyable for HandlePolyMergeNodesTool {
 }
 
 impl HandlePolyMergeNodesTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandlePolyMergeNodesTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Poly_MergeNodesTool
     pub fn get(&self) -> &crate::ffi_types::Poly_MergeNodesTool {
         unsafe {
@@ -4378,6 +4397,11 @@ unsafe impl crate::CppCopyable for HandlePolyPolygon2D {
 }
 
 impl HandlePolyPolygon2D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandlePolyPolygon2D_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Poly_Polygon2D
     pub fn get(&self) -> &crate::ffi_types::Poly_Polygon2D {
         unsafe {
@@ -4698,6 +4722,11 @@ unsafe impl crate::CppCopyable for HandlePolyPolygon3D {
 }
 
 impl HandlePolyPolygon3D {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandlePolyPolygon3D_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Poly_Polygon3D
     pub fn get(&self) -> &crate::ffi_types::Poly_Polygon3D {
         unsafe {
@@ -5090,6 +5119,13 @@ unsafe impl crate::CppCopyable for HandlePolyPolygonOnTriangulation {
 }
 
 impl HandlePolyPolygonOnTriangulation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyPolygonOnTriangulation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Poly_PolygonOnTriangulation
     pub fn get(&self) -> &crate::ffi_types::Poly_PolygonOnTriangulation {
         unsafe {
@@ -6074,6 +6110,11 @@ unsafe impl crate::CppCopyable for HandlePolyTriangulation {
 }
 
 impl HandlePolyTriangulation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKMath::HandlePolyTriangulation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Poly_Triangulation
     pub fn get(&self) -> &crate::ffi_types::Poly_Triangulation {
         unsafe {
@@ -6403,6 +6444,13 @@ unsafe impl crate::CppCopyable for HandlePolyTriangulationParameters {
 }
 
 impl HandlePolyTriangulationParameters {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyTriangulationParameters_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Poly_TriangulationParameters
     pub fn get(&self) -> &crate::ffi_types::Poly_TriangulationParameters {
         unsafe {

@@ -98,6 +98,10 @@ extern "C" {
     pub fn HandleBinDriversDocumentRetrievalDriver_clone(
         self_: *const HandleBinDriversDocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut HandleBinDriversDocumentRetrievalDriver>;
+    /// Check if Handle<BinDrivers_DocumentRetrievalDriver> is null
+    pub fn HandleBinDriversDocumentRetrievalDriver_is_null(
+        self_: *const HandleBinDriversDocumentRetrievalDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinDrivers_DocumentRetrievalDriver
     pub fn HandleBinDriversDocumentRetrievalDriver_get(
         handle: *const HandleBinDriversDocumentRetrievalDriver,
@@ -282,6 +286,10 @@ extern "C" {
     pub fn HandleBinDriversDocumentStorageDriver_clone(
         self_: *const HandleBinDriversDocumentStorageDriver,
     ) -> crate::OcctResult<*mut HandleBinDriversDocumentStorageDriver>;
+    /// Check if Handle<BinDrivers_DocumentStorageDriver> is null
+    pub fn HandleBinDriversDocumentStorageDriver_is_null(
+        self_: *const HandleBinDriversDocumentStorageDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinDrivers_DocumentStorageDriver
     pub fn HandleBinDriversDocumentStorageDriver_get(
         handle: *const HandleBinDriversDocumentStorageDriver,
@@ -451,6 +459,10 @@ extern "C" {
     pub fn HandleBinMDataXtdConstraintDriver_clone(
         self_: *const HandleBinMDataXtdConstraintDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataXtdConstraintDriver>;
+    /// Check if Handle<BinMDataXtd_ConstraintDriver> is null
+    pub fn HandleBinMDataXtdConstraintDriver_is_null(
+        self_: *const HandleBinMDataXtdConstraintDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataXtd_ConstraintDriver
     pub fn HandleBinMDataXtdConstraintDriver_get(
         handle: *const HandleBinMDataXtdConstraintDriver,
@@ -568,6 +580,10 @@ extern "C" {
     pub fn HandleBinMDataXtdGeometryDriver_clone(
         self_: *const HandleBinMDataXtdGeometryDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataXtdGeometryDriver>;
+    /// Check if Handle<BinMDataXtd_GeometryDriver> is null
+    pub fn HandleBinMDataXtdGeometryDriver_is_null(
+        self_: *const HandleBinMDataXtdGeometryDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataXtd_GeometryDriver
     pub fn HandleBinMDataXtdGeometryDriver_get(
         handle: *const HandleBinMDataXtdGeometryDriver,
@@ -687,6 +703,10 @@ extern "C" {
     pub fn HandleBinMDataXtdPatternStdDriver_clone(
         self_: *const HandleBinMDataXtdPatternStdDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataXtdPatternStdDriver>;
+    /// Check if Handle<BinMDataXtd_PatternStdDriver> is null
+    pub fn HandleBinMDataXtdPatternStdDriver_is_null(
+        self_: *const HandleBinMDataXtdPatternStdDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataXtd_PatternStdDriver
     pub fn HandleBinMDataXtdPatternStdDriver_get(
         handle: *const HandleBinMDataXtdPatternStdDriver,
@@ -804,6 +824,10 @@ extern "C" {
     pub fn HandleBinMDataXtdPositionDriver_clone(
         self_: *const HandleBinMDataXtdPositionDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataXtdPositionDriver>;
+    /// Check if Handle<BinMDataXtd_PositionDriver> is null
+    pub fn HandleBinMDataXtdPositionDriver_is_null(
+        self_: *const HandleBinMDataXtdPositionDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataXtd_PositionDriver
     pub fn HandleBinMDataXtdPositionDriver_get(
         handle: *const HandleBinMDataXtdPositionDriver,
@@ -924,6 +948,10 @@ extern "C" {
     pub fn HandleBinMDataXtdPresentationDriver_clone(
         self_: *const HandleBinMDataXtdPresentationDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataXtdPresentationDriver>;
+    /// Check if Handle<BinMDataXtd_PresentationDriver> is null
+    pub fn HandleBinMDataXtdPresentationDriver_is_null(
+        self_: *const HandleBinMDataXtdPresentationDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataXtd_PresentationDriver
     pub fn HandleBinMDataXtdPresentationDriver_get(
         handle: *const HandleBinMDataXtdPresentationDriver,
@@ -1044,6 +1072,10 @@ extern "C" {
     pub fn HandleBinMDataXtdTriangulationDriver_clone(
         self_: *const HandleBinMDataXtdTriangulationDriver,
     ) -> crate::OcctResult<*mut HandleBinMDataXtdTriangulationDriver>;
+    /// Check if Handle<BinMDataXtd_TriangulationDriver> is null
+    pub fn HandleBinMDataXtdTriangulationDriver_is_null(
+        self_: *const HandleBinMDataXtdTriangulationDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMDataXtd_TriangulationDriver
     pub fn HandleBinMDataXtdTriangulationDriver_get(
         handle: *const HandleBinMDataXtdTriangulationDriver,
@@ -1216,6 +1248,10 @@ extern "C" {
     pub fn HandleBinMNamingNamedShapeDriver_clone(
         self_: *const HandleBinMNamingNamedShapeDriver,
     ) -> crate::OcctResult<*mut HandleBinMNamingNamedShapeDriver>;
+    /// Check if Handle<BinMNaming_NamedShapeDriver> is null
+    pub fn HandleBinMNamingNamedShapeDriver_is_null(
+        self_: *const HandleBinMNamingNamedShapeDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMNaming_NamedShapeDriver
     pub fn HandleBinMNamingNamedShapeDriver_get(
         handle: *const HandleBinMNamingNamedShapeDriver,
@@ -1333,6 +1369,9 @@ extern "C" {
     pub fn HandleBinMNamingNamingDriver_clone(
         self_: *const HandleBinMNamingNamingDriver,
     ) -> crate::OcctResult<*mut HandleBinMNamingNamingDriver>;
+    /// Check if Handle<BinMNaming_NamingDriver> is null
+    pub fn HandleBinMNamingNamingDriver_is_null(self_: *const HandleBinMNamingNamingDriver)
+        -> bool;
     /// Dereference Handle to get *const BinMNaming_NamingDriver
     pub fn HandleBinMNamingNamingDriver_get(
         handle: *const HandleBinMNamingNamingDriver,

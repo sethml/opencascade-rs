@@ -489,6 +489,11 @@ unsafe impl crate::CppCopyable for HandleAdaptor3dCurve {
 }
 
 impl HandleAdaptor3dCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Adaptor3d_Curve
     pub fn get(&self) -> &crate::ffi_types::Adaptor3d_Curve {
         unsafe {
@@ -1307,6 +1312,13 @@ unsafe impl crate::CppCopyable for HandleAdaptor3dCurveOnSurface {
 }
 
 impl HandleAdaptor3dCurveOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleAdaptor3dCurveOnSurface_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying Adaptor3d_CurveOnSurface
     pub fn get(&self) -> &crate::ffi_types::Adaptor3d_CurveOnSurface {
         unsafe {
@@ -2054,6 +2066,11 @@ unsafe impl crate::CppCopyable for HandleAdaptor3dHVertex {
 }
 
 impl HandleAdaptor3dHVertex {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleAdaptor3dHVertex_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Adaptor3d_HVertex
     pub fn get(&self) -> &crate::ffi_types::Adaptor3d_HVertex {
         unsafe {
@@ -2828,6 +2845,11 @@ unsafe impl crate::CppCopyable for HandleAdaptor3dIsoCurve {
 }
 
 impl HandleAdaptor3dIsoCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleAdaptor3dIsoCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Adaptor3d_IsoCurve
     pub fn get(&self) -> &crate::ffi_types::Adaptor3d_IsoCurve {
         unsafe {
@@ -3554,6 +3576,11 @@ unsafe impl crate::CppCopyable for HandleAdaptor3dSurface {
 }
 
 impl HandleAdaptor3dSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleAdaptor3dSurface_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Adaptor3d_Surface
     pub fn get(&self) -> &crate::ffi_types::Adaptor3d_Surface {
         unsafe {
@@ -4199,6 +4226,11 @@ unsafe impl crate::CppCopyable for HandleAdaptor3dTopolTool {
 }
 
 impl HandleAdaptor3dTopolTool {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG3d::HandleAdaptor3dTopolTool_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Adaptor3d_TopolTool
     pub fn get(&self) -> &crate::ffi_types::Adaptor3d_TopolTool {
         unsafe {

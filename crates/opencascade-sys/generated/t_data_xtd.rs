@@ -738,6 +738,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdAxis {
 }
 
 impl HandleTDataXtdAxis {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdAxis_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_Axis
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Axis {
         unsafe {
@@ -1650,6 +1655,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdConstraint {
 }
 
 impl HandleTDataXtdConstraint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdConstraint_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_Constraint
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Constraint {
         unsafe {
@@ -2447,6 +2457,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdGeometry {
 }
 
 impl HandleTDataXtdGeometry {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdGeometry_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_Geometry
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Geometry {
         unsafe {
@@ -2728,6 +2743,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdHArray1OfTrsf {
 }
 
 impl HandleTDataXtdHArray1OfTrsf {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdHArray1OfTrsf_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_HArray1OfTrsf
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_HArray1OfTrsf {
         unsafe {
@@ -3298,6 +3318,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdPattern {
 }
 
 impl HandleTDataXtdPattern {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdPattern_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_Pattern
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Pattern {
         unsafe {
@@ -4165,6 +4190,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdPatternStd {
 }
 
 impl HandleTDataXtdPatternStd {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdPatternStd_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_PatternStd
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_PatternStd {
         unsafe {
@@ -4813,6 +4843,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdPlacement {
 }
 
 impl HandleTDataXtdPlacement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdPlacement_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_Placement
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Placement {
         unsafe {
@@ -5459,6 +5494,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdPlane {
 }
 
 impl HandleTDataXtdPlane {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdPlane_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_Plane
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Plane {
         unsafe {
@@ -6105,6 +6145,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdPoint {
 }
 
 impl HandleTDataXtdPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdPoint_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_Point
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Point {
         unsafe {
@@ -6751,6 +6796,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdPosition {
 }
 
 impl HandleTDataXtdPosition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdPosition_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_Position
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Position {
         unsafe {
@@ -7651,6 +7701,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdPresentation {
 }
 
 impl HandleTDataXtdPresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdPresentation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_Presentation
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Presentation {
         unsafe {
@@ -8297,6 +8352,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdShape {
 }
 
 impl HandleTDataXtdShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_Shape
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Shape {
         unsafe {
@@ -9148,6 +9208,11 @@ unsafe impl crate::CppCopyable for HandleTDataXtdTriangulation {
 }
 
 impl HandleTDataXtdTriangulation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKCAF::HandleTDataXtdTriangulation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying TDataXtd_Triangulation
     pub fn get(&self) -> &crate::ffi_types::TDataXtd_Triangulation {
         unsafe {

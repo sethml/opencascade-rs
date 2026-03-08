@@ -1236,6 +1236,11 @@ unsafe impl crate::CppCopyable for HandleAISAnimation {
 }
 
 impl HandleAISAnimation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISAnimation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_Animation
     pub fn get(&self) -> &crate::ffi_types::AIS_Animation {
         unsafe {
@@ -1827,6 +1832,13 @@ unsafe impl crate::CppCopyable for HandleAISAnimationAxisRotation {
 }
 
 impl HandleAISAnimationAxisRotation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISAnimationAxisRotation_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying AIS_AnimationAxisRotation
     pub fn get(&self) -> &crate::ffi_types::AIS_AnimationAxisRotation {
         unsafe {
@@ -2372,6 +2384,11 @@ unsafe impl crate::CppCopyable for HandleAISAnimationCamera {
 }
 
 impl HandleAISAnimationCamera {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISAnimationCamera_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_AnimationCamera
     pub fn get(&self) -> &crate::ffi_types::AIS_AnimationCamera {
         unsafe {
@@ -2876,6 +2893,11 @@ unsafe impl crate::CppCopyable for HandleAISAnimationObject {
 }
 
 impl HandleAISAnimationObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISAnimationObject_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_AnimationObject
     pub fn get(&self) -> &crate::ffi_types::AIS_AnimationObject {
         unsafe {
@@ -3230,6 +3252,11 @@ unsafe impl crate::CppCopyable for HandleAISAttributeFilter {
 }
 
 impl HandleAISAttributeFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISAttributeFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_AttributeFilter
     pub fn get(&self) -> &crate::ffi_types::AIS_AttributeFilter {
         unsafe {
@@ -4706,6 +4733,11 @@ unsafe impl crate::CppCopyable for HandleAISAxis {
 }
 
 impl HandleAISAxis {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISAxis_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_Axis
     pub fn get(&self) -> &crate::ffi_types::AIS_Axis {
         unsafe {
@@ -5001,6 +5033,11 @@ unsafe impl crate::CppCopyable for HandleAISBadEdgeFilter {
 }
 
 impl HandleAISBadEdgeFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISBadEdgeFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_BadEdgeFilter
     pub fn get(&self) -> &crate::ffi_types::AIS_BadEdgeFilter {
         unsafe {
@@ -5478,6 +5515,13 @@ unsafe impl crate::CppCopyable for HandleAISBaseAnimationObject {
 }
 
 impl HandleAISBaseAnimationObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISBaseAnimationObject_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying AIS_BaseAnimationObject
     pub fn get(&self) -> &crate::ffi_types::AIS_BaseAnimationObject {
         unsafe {
@@ -5761,6 +5805,11 @@ unsafe impl crate::CppCopyable for HandleAISC0RegularityFilter {
 }
 
 impl HandleAISC0RegularityFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISC0RegularityFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_C0RegularityFilter
     pub fn get(&self) -> &crate::ffi_types::AIS_C0RegularityFilter {
         unsafe {
@@ -7235,6 +7284,11 @@ unsafe impl crate::CppCopyable for HandleAISCameraFrustum {
 }
 
 impl HandleAISCameraFrustum {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISCameraFrustum_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_CameraFrustum
     pub fn get(&self) -> &crate::ffi_types::AIS_CameraFrustum {
         unsafe {
@@ -8719,6 +8773,11 @@ unsafe impl crate::CppCopyable for HandleAISCircle {
 }
 
 impl HandleAISCircle {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISCircle_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_Circle
     pub fn get(&self) -> &crate::ffi_types::AIS_Circle {
         unsafe {
@@ -10941,6 +11000,11 @@ unsafe impl crate::CppCopyable for HandleAISColorScale {
 }
 
 impl HandleAISColorScale {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISColorScale_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_ColorScale
     pub fn get(&self) -> &crate::ffi_types::AIS_ColorScale {
         unsafe {
@@ -12950,6 +13014,11 @@ unsafe impl crate::CppCopyable for HandleAISColoredDrawer {
 }
 
 impl HandleAISColoredDrawer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISColoredDrawer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_ColoredDrawer
     pub fn get(&self) -> &crate::ffi_types::AIS_ColoredDrawer {
         unsafe {
@@ -14709,6 +14778,11 @@ unsafe impl crate::CppCopyable for HandleAISColoredShape {
 }
 
 impl HandleAISColoredShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISColoredShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_ColoredShape
     pub fn get(&self) -> &crate::ffi_types::AIS_ColoredShape {
         unsafe {
@@ -16378,6 +16452,13 @@ unsafe impl crate::CppCopyable for HandleAISConnectedInteractive {
 }
 
 impl HandleAISConnectedInteractive {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISConnectedInteractive_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying AIS_ConnectedInteractive
     pub fn get(&self) -> &crate::ffi_types::AIS_ConnectedInteractive {
         unsafe {
@@ -16838,6 +16919,11 @@ unsafe impl crate::CppCopyable for HandleAISExclusionFilter {
 }
 
 impl HandleAISExclusionFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISExclusionFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_ExclusionFilter
     pub fn get(&self) -> &crate::ffi_types::AIS_ExclusionFilter {
         unsafe {
@@ -17155,6 +17241,11 @@ unsafe impl crate::CppCopyable for HandleAISGlobalStatus {
 }
 
 impl HandleAISGlobalStatus {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISGlobalStatus_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_GlobalStatus
     pub fn get(&self) -> &crate::ffi_types::AIS_GlobalStatus {
         unsafe {
@@ -20333,6 +20424,11 @@ unsafe impl crate::CppCopyable for HandleAISInteractiveContext {
 }
 
 impl HandleAISInteractiveContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISInteractiveContext_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_InteractiveContext
     pub fn get(&self) -> &crate::ffi_types::AIS_InteractiveContext {
         unsafe {
@@ -21845,6 +21941,11 @@ unsafe impl crate::CppCopyable for HandleAISInteractiveObject {
 }
 
 impl HandleAISInteractiveObject {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISInteractiveObject_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_InteractiveObject
     pub fn get(&self) -> &crate::ffi_types::AIS_InteractiveObject {
         unsafe {
@@ -24299,6 +24400,11 @@ unsafe impl crate::CppCopyable for HandleAISLightSource {
 }
 
 impl HandleAISLightSource {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISLightSource_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_LightSource
     pub fn get(&self) -> &crate::ffi_types::AIS_LightSource {
         unsafe {
@@ -24849,6 +24955,11 @@ unsafe impl crate::CppCopyable for HandleAISLightSourceOwner {
 }
 
 impl HandleAISLightSourceOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISLightSourceOwner_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_LightSourceOwner
     pub fn get(&self) -> &crate::ffi_types::AIS_LightSourceOwner {
         unsafe {
@@ -26234,6 +26345,11 @@ unsafe impl crate::CppCopyable for HandleAISLine {
 }
 
 impl HandleAISLine {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISLine_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_Line
     pub fn get(&self) -> &crate::ffi_types::AIS_Line {
         unsafe {
@@ -26536,6 +26652,13 @@ unsafe impl crate::CppCopyable for HandleAISManipulatorObjectSequence {
 }
 
 impl HandleAISManipulatorObjectSequence {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISManipulatorObjectSequence_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying AIS_ManipulatorObjectSequence
     pub fn get(&self) -> &crate::ffi_types::AIS_ManipulatorObjectSequence {
         unsafe {
@@ -28516,6 +28639,11 @@ unsafe impl crate::CppCopyable for HandleAISManipulator {
 }
 
 impl HandleAISManipulator {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISManipulator_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_Manipulator
     pub fn get(&self) -> &crate::ffi_types::AIS_Manipulator {
         unsafe {
@@ -29108,6 +29236,11 @@ unsafe impl crate::CppCopyable for HandleAISManipulatorOwner {
 }
 
 impl HandleAISManipulatorOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISManipulatorOwner_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_ManipulatorOwner
     pub fn get(&self) -> &crate::ffi_types::AIS_ManipulatorOwner {
         unsafe {
@@ -30613,6 +30746,11 @@ unsafe impl crate::CppCopyable for HandleAISMediaPlayer {
 }
 
 impl HandleAISMediaPlayer {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISMediaPlayer_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_MediaPlayer
     pub fn get(&self) -> &crate::ffi_types::AIS_MediaPlayer {
         unsafe {
@@ -32163,6 +32301,15 @@ unsafe impl crate::CppCopyable for HandleAISMultipleConnectedInteractive {
 }
 
 impl HandleAISMultipleConnectedInteractive {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISMultipleConnectedInteractive_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying AIS_MultipleConnectedInteractive
     pub fn get(&self) -> &crate::ffi_types::AIS_MultipleConnectedInteractive {
         unsafe {
@@ -33871,6 +34018,11 @@ unsafe impl crate::CppCopyable for HandleAISPlane {
 }
 
 impl HandleAISPlane {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISPlane_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_Plane
     pub fn get(&self) -> &crate::ffi_types::AIS_Plane {
         unsafe {
@@ -35474,6 +35626,11 @@ unsafe impl crate::CppCopyable for HandleAISPlaneTrihedron {
 }
 
 impl HandleAISPlaneTrihedron {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISPlaneTrihedron_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_PlaneTrihedron
     pub fn get(&self) -> &crate::ffi_types::AIS_PlaneTrihedron {
         unsafe {
@@ -36891,6 +37048,11 @@ unsafe impl crate::CppCopyable for HandleAISPoint {
 }
 
 impl HandleAISPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISPoint_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_Point
     pub fn get(&self) -> &crate::ffi_types::AIS_Point {
         unsafe {
@@ -38394,6 +38556,11 @@ unsafe impl crate::CppCopyable for HandleAISPointCloud {
 }
 
 impl HandleAISPointCloud {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISPointCloud_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_PointCloud
     pub fn get(&self) -> &crate::ffi_types::AIS_PointCloud {
         unsafe {
@@ -38954,6 +39121,11 @@ unsafe impl crate::CppCopyable for HandleAISPointCloudOwner {
 }
 
 impl HandleAISPointCloudOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISPointCloudOwner_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_PointCloudOwner
     pub fn get(&self) -> &crate::ffi_types::AIS_PointCloudOwner {
         unsafe {
@@ -40716,6 +40888,11 @@ unsafe impl crate::CppCopyable for HandleAISRubberBand {
 }
 
 impl HandleAISRubberBand {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISRubberBand_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_RubberBand
     pub fn get(&self) -> &crate::ffi_types::AIS_RubberBand {
         unsafe {
@@ -41104,6 +41281,11 @@ unsafe impl crate::CppCopyable for HandleAISSelection {
 }
 
 impl HandleAISSelection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISSelection_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_Selection
     pub fn get(&self) -> &crate::ffi_types::AIS_Selection {
         unsafe {
@@ -42715,6 +42897,11 @@ unsafe impl crate::CppCopyable for HandleAISShape {
 }
 
 impl HandleAISShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_Shape
     pub fn get(&self) -> &crate::ffi_types::AIS_Shape {
         unsafe {
@@ -43101,6 +43288,11 @@ unsafe impl crate::CppCopyable for HandleAISSignatureFilter {
 }
 
 impl HandleAISSignatureFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISSignatureFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_SignatureFilter
     pub fn get(&self) -> &crate::ffi_types::AIS_SignatureFilter {
         unsafe {
@@ -44753,6 +44945,11 @@ unsafe impl crate::CppCopyable for HandleAISTextLabel {
 }
 
 impl HandleAISTextLabel {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISTextLabel_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_TextLabel
     pub fn get(&self) -> &crate::ffi_types::AIS_TextLabel {
         unsafe {
@@ -46707,6 +46904,11 @@ unsafe impl crate::CppCopyable for HandleAISTexturedShape {
 }
 
 impl HandleAISTexturedShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISTexturedShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_TexturedShape
     pub fn get(&self) -> &crate::ffi_types::AIS_TexturedShape {
         unsafe {
@@ -48265,6 +48467,11 @@ unsafe impl crate::CppCopyable for HandleAISTriangulation {
 }
 
 impl HandleAISTriangulation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISTriangulation_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_Triangulation
     pub fn get(&self) -> &crate::ffi_types::AIS_Triangulation {
         unsafe {
@@ -50017,6 +50224,11 @@ unsafe impl crate::CppCopyable for HandleAISTrihedron {
 }
 
 impl HandleAISTrihedron {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISTrihedron_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_Trihedron
     pub fn get(&self) -> &crate::ffi_types::AIS_Trihedron {
         unsafe {
@@ -50559,6 +50771,11 @@ unsafe impl crate::CppCopyable for HandleAISTrihedronOwner {
 }
 
 impl HandleAISTrihedronOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISTrihedronOwner_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_TrihedronOwner
     pub fn get(&self) -> &crate::ffi_types::AIS_TrihedronOwner {
         unsafe {
@@ -50824,6 +51041,11 @@ unsafe impl crate::CppCopyable for HandleAISTypeFilter {
 }
 
 impl HandleAISTypeFilter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISTypeFilter_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_TypeFilter
     pub fn get(&self) -> &crate::ffi_types::AIS_TypeFilter {
         unsafe {
@@ -54860,6 +55082,11 @@ unsafe impl crate::CppCopyable for HandleAISViewCube {
 }
 
 impl HandleAISViewCube {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISViewCube_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_ViewCube
     pub fn get(&self) -> &crate::ffi_types::AIS_ViewCube {
         unsafe {
@@ -55401,6 +55628,11 @@ unsafe impl crate::CppCopyable for HandleAISViewCubeOwner {
 }
 
 impl HandleAISViewCubeOwner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISViewCubeOwner_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_ViewCubeOwner
     pub fn get(&self) -> &crate::ffi_types::AIS_ViewCubeOwner {
         unsafe {
@@ -56176,6 +56408,11 @@ unsafe impl crate::CppCopyable for HandleAISViewCubeSensitive {
 }
 
 impl HandleAISViewCubeSensitive {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISViewCubeSensitive_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_ViewCubeSensitive
     pub fn get(&self) -> &crate::ffi_types::AIS_ViewCubeSensitive {
         unsafe {
@@ -57922,6 +58159,11 @@ unsafe impl crate::CppCopyable for HandleAISXRTrackedDevice {
 }
 
 impl HandleAISXRTrackedDevice {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKV3d::HandleAISXRTrackedDevice_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying AIS_XRTrackedDevice
     pub fn get(&self) -> &crate::ffi_types::AIS_XRTrackedDevice {
         unsafe {

@@ -292,6 +292,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdAsciiStringDriver {
 }
 
 impl HandleBinMDataStdAsciiStringDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdAsciiStringDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_AsciiStringDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_AsciiStringDriver {
         unsafe {
@@ -600,6 +609,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdBooleanArrayDriver {
 }
 
 impl HandleBinMDataStdBooleanArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdBooleanArrayDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_BooleanArrayDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_BooleanArrayDriver {
         unsafe {
@@ -908,6 +926,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdBooleanListDriver {
 }
 
 impl HandleBinMDataStdBooleanListDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdBooleanListDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_BooleanListDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_BooleanListDriver {
         unsafe {
@@ -1218,6 +1245,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdByteArrayDriver {
 }
 
 impl HandleBinMDataStdByteArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdByteArrayDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_ByteArrayDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_ByteArrayDriver {
         unsafe {
@@ -1529,6 +1563,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdExpressionDriver {
 }
 
 impl HandleBinMDataStdExpressionDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdExpressionDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_ExpressionDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_ExpressionDriver {
         unsafe {
@@ -1836,6 +1877,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdExtStringArrayDriver {
 }
 
 impl HandleBinMDataStdExtStringArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdExtStringArrayDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_ExtStringArrayDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_ExtStringArrayDriver {
         unsafe {
@@ -2142,6 +2192,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdExtStringListDriver {
 }
 
 impl HandleBinMDataStdExtStringListDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdExtStringListDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_ExtStringListDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_ExtStringListDriver {
         unsafe {
@@ -2449,6 +2508,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdGenericEmptyDriver {
 }
 
 impl HandleBinMDataStdGenericEmptyDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdGenericEmptyDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_GenericEmptyDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_GenericEmptyDriver {
         unsafe {
@@ -2748,6 +2816,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdGenericExtStringDriver {
 }
 
 impl HandleBinMDataStdGenericExtStringDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdGenericExtStringDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_GenericExtStringDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_GenericExtStringDriver {
         unsafe {
@@ -3057,6 +3134,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdIntPackedMapDriver {
 }
 
 impl HandleBinMDataStdIntPackedMapDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdIntPackedMapDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_IntPackedMapDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_IntPackedMapDriver {
         unsafe {
@@ -3364,6 +3450,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdIntegerArrayDriver {
 }
 
 impl HandleBinMDataStdIntegerArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdIntegerArrayDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_IntegerArrayDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_IntegerArrayDriver {
         unsafe {
@@ -3671,6 +3766,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdIntegerDriver {
 }
 
 impl HandleBinMDataStdIntegerDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdIntegerDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_IntegerDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_IntegerDriver {
         unsafe {
@@ -3983,6 +4085,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdIntegerListDriver {
 }
 
 impl HandleBinMDataStdIntegerListDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdIntegerListDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_IntegerListDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_IntegerListDriver {
         unsafe {
@@ -4293,6 +4404,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdNamedDataDriver {
 }
 
 impl HandleBinMDataStdNamedDataDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdNamedDataDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_NamedDataDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_NamedDataDriver {
         unsafe {
@@ -4604,6 +4722,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdRealArrayDriver {
 }
 
 impl HandleBinMDataStdRealArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdRealArrayDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_RealArrayDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_RealArrayDriver {
         unsafe {
@@ -4907,6 +5032,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdRealDriver {
 }
 
 impl HandleBinMDataStdRealDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdRealDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_RealDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_RealDriver {
         unsafe {
@@ -5217,6 +5349,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdRealListDriver {
 }
 
 impl HandleBinMDataStdRealListDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdRealListDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_RealListDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_RealListDriver {
         unsafe {
@@ -5523,6 +5662,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdReferenceArrayDriver {
 }
 
 impl HandleBinMDataStdReferenceArrayDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdReferenceArrayDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_ReferenceArrayDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_ReferenceArrayDriver {
         unsafe {
@@ -5829,6 +5977,15 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdReferenceListDriver {
 }
 
 impl HandleBinMDataStdReferenceListDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdReferenceListDriver_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_ReferenceListDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_ReferenceListDriver {
         unsafe {
@@ -6136,6 +6293,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdTreeNodeDriver {
 }
 
 impl HandleBinMDataStdTreeNodeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdTreeNodeDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_TreeNodeDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_TreeNodeDriver {
         unsafe {
@@ -6447,6 +6611,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdUAttributeDriver {
 }
 
 impl HandleBinMDataStdUAttributeDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdUAttributeDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_UAttributeDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_UAttributeDriver {
         unsafe {
@@ -6756,6 +6927,13 @@ unsafe impl crate::CppCopyable for HandleBinMDataStdVariableDriver {
 }
 
 impl HandleBinMDataStdVariableDriver {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDataStdVariableDriver_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying BinMDataStd_VariableDriver
     pub fn get(&self) -> &crate::ffi_types::BinMDataStd_VariableDriver {
         unsafe {

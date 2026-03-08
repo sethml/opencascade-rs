@@ -326,6 +326,15 @@ unsafe impl crate::CppCopyable for HandleStepAP242DraughtingModelItemAssociation
 }
 
 impl HandleStepAP242DraughtingModelItemAssociation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP242_DraughtingModelItemAssociation
     pub fn get(&self) -> &crate::ffi_types::StepAP242_DraughtingModelItemAssociation {
         unsafe {
@@ -691,6 +700,15 @@ unsafe impl crate::CppCopyable for HandleStepAP242GeometricItemSpecificUsage {
 }
 
 impl HandleStepAP242GeometricItemSpecificUsage {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP242_GeometricItemSpecificUsage
     pub fn get(&self) -> &crate::ffi_types::StepAP242_GeometricItemSpecificUsage {
         unsafe {
@@ -970,6 +988,13 @@ unsafe impl crate::CppCopyable for HandleStepAP242IdAttribute {
 }
 
 impl HandleStepAP242IdAttribute {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP242_IdAttribute
     pub fn get(&self) -> &crate::ffi_types::StepAP242_IdAttribute {
         unsafe {
@@ -1710,6 +1735,15 @@ unsafe impl crate::CppCopyable for HandleStepAP242ItemIdentifiedRepresentationUs
 }
 
 impl HandleStepAP242ItemIdentifiedRepresentationUsage {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying StepAP242_ItemIdentifiedRepresentationUsage
     pub fn get(&self) -> &crate::ffi_types::StepAP242_ItemIdentifiedRepresentationUsage {
         unsafe {

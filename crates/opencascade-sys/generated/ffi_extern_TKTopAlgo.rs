@@ -124,6 +124,8 @@ extern "C" {
     pub fn HandleBRepApproxApproxLine_clone(
         self_: *const HandleBRepApproxApproxLine,
     ) -> crate::OcctResult<*mut HandleBRepApproxApproxLine>;
+    /// Check if Handle<BRepApprox_ApproxLine> is null
+    pub fn HandleBRepApproxApproxLine_is_null(self_: *const HandleBRepApproxApproxLine) -> bool;
     /// Dereference Handle to get *const BRepApprox_ApproxLine
     pub fn HandleBRepApproxApproxLine_get(
         handle: *const HandleBRepApproxApproxLine,
@@ -2660,6 +2662,10 @@ extern "C" {
     pub fn HandleBRepBuilderAPIFastSewing_clone(
         self_: *const HandleBRepBuilderAPIFastSewing,
     ) -> crate::OcctResult<*mut HandleBRepBuilderAPIFastSewing>;
+    /// Check if Handle<BRepBuilderAPI_FastSewing> is null
+    pub fn HandleBRepBuilderAPIFastSewing_is_null(
+        self_: *const HandleBRepBuilderAPIFastSewing,
+    ) -> bool;
     /// Dereference Handle to get *const BRepBuilderAPI_FastSewing
     pub fn HandleBRepBuilderAPIFastSewing_get(
         handle: *const HandleBRepBuilderAPIFastSewing,
@@ -4481,6 +4487,8 @@ extern "C" {
     pub fn HandleBRepBuilderAPISewing_clone(
         self_: *const HandleBRepBuilderAPISewing,
     ) -> crate::OcctResult<*mut HandleBRepBuilderAPISewing>;
+    /// Check if Handle<BRepBuilderAPI_Sewing> is null
+    pub fn HandleBRepBuilderAPISewing_is_null(self_: *const HandleBRepBuilderAPISewing) -> bool;
     /// Dereference Handle to get *const BRepBuilderAPI_Sewing
     pub fn HandleBRepBuilderAPISewing_get(
         handle: *const HandleBRepBuilderAPISewing,
@@ -4722,6 +4730,8 @@ extern "C" {
     pub fn HandleBRepCheckEdge_clone(
         self_: *const HandleBRepCheckEdge,
     ) -> crate::OcctResult<*mut HandleBRepCheckEdge>;
+    /// Check if Handle<BRepCheck_Edge> is null
+    pub fn HandleBRepCheckEdge_is_null(self_: *const HandleBRepCheckEdge) -> bool;
     /// Dereference Handle to get *const BRepCheck_Edge
     pub fn HandleBRepCheckEdge_get(
         handle: *const HandleBRepCheckEdge,
@@ -4901,6 +4911,8 @@ extern "C" {
     pub fn HandleBRepCheckFace_clone(
         self_: *const HandleBRepCheckFace,
     ) -> crate::OcctResult<*mut HandleBRepCheckFace>;
+    /// Check if Handle<BRepCheck_Face> is null
+    pub fn HandleBRepCheckFace_is_null(self_: *const HandleBRepCheckFace) -> bool;
     /// Dereference Handle to get *const BRepCheck_Face
     pub fn HandleBRepCheckFace_get(
         handle: *const HandleBRepCheckFace,
@@ -5084,6 +5096,8 @@ extern "C" {
     pub fn HandleBRepCheckResult_clone(
         self_: *const HandleBRepCheckResult,
     ) -> crate::OcctResult<*mut HandleBRepCheckResult>;
+    /// Check if Handle<BRepCheck_Result> is null
+    pub fn HandleBRepCheckResult_is_null(self_: *const HandleBRepCheckResult) -> bool;
     /// Dereference Handle to get *const BRepCheck_Result
     pub fn HandleBRepCheckResult_get(
         handle: *const HandleBRepCheckResult,
@@ -5221,6 +5235,8 @@ extern "C" {
     pub fn HandleBRepCheckShell_clone(
         self_: *const HandleBRepCheckShell,
     ) -> crate::OcctResult<*mut HandleBRepCheckShell>;
+    /// Check if Handle<BRepCheck_Shell> is null
+    pub fn HandleBRepCheckShell_is_null(self_: *const HandleBRepCheckShell) -> bool;
     /// Dereference Handle to get *const BRepCheck_Shell
     pub fn HandleBRepCheckShell_get(
         handle: *const HandleBRepCheckShell,
@@ -5368,6 +5384,8 @@ extern "C" {
     pub fn HandleBRepCheckSolid_clone(
         self_: *const HandleBRepCheckSolid,
     ) -> crate::OcctResult<*mut HandleBRepCheckSolid>;
+    /// Check if Handle<BRepCheck_Solid> is null
+    pub fn HandleBRepCheckSolid_is_null(self_: *const HandleBRepCheckSolid) -> bool;
     /// Dereference Handle to get *const BRepCheck_Solid
     pub fn HandleBRepCheckSolid_get(
         handle: *const HandleBRepCheckSolid,
@@ -5517,6 +5535,8 @@ extern "C" {
     pub fn HandleBRepCheckVertex_clone(
         self_: *const HandleBRepCheckVertex,
     ) -> crate::OcctResult<*mut HandleBRepCheckVertex>;
+    /// Check if Handle<BRepCheck_Vertex> is null
+    pub fn HandleBRepCheckVertex_is_null(self_: *const HandleBRepCheckVertex) -> bool;
     /// Dereference Handle to get *const BRepCheck_Vertex
     pub fn HandleBRepCheckVertex_get(
         handle: *const HandleBRepCheckVertex,
@@ -5703,6 +5723,8 @@ extern "C" {
     pub fn HandleBRepCheckWire_clone(
         self_: *const HandleBRepCheckWire,
     ) -> crate::OcctResult<*mut HandleBRepCheckWire>;
+    /// Check if Handle<BRepCheck_Wire> is null
+    pub fn HandleBRepCheckWire_is_null(self_: *const HandleBRepCheckWire) -> bool;
     /// Dereference Handle to get *const BRepCheck_Wire
     pub fn HandleBRepCheckWire_get(
         handle: *const HandleBRepCheckWire,
@@ -7654,6 +7676,9 @@ extern "C" {
     pub fn HandleBRepExtremaTriangleSet_clone(
         self_: *const HandleBRepExtremaTriangleSet,
     ) -> crate::OcctResult<*mut HandleBRepExtremaTriangleSet>;
+    /// Check if Handle<BRepExtrema_TriangleSet> is null
+    pub fn HandleBRepExtremaTriangleSet_is_null(self_: *const HandleBRepExtremaTriangleSet)
+        -> bool;
     /// Dereference Handle to get *const BRepExtrema_TriangleSet
     pub fn HandleBRepExtremaTriangleSet_get(
         handle: *const HandleBRepExtremaTriangleSet,
@@ -7739,6 +7764,10 @@ extern "C" {
     pub fn HandleBRepExtremaUnCompatibleShape_clone(
         self_: *const HandleBRepExtremaUnCompatibleShape,
     ) -> crate::OcctResult<*mut HandleBRepExtremaUnCompatibleShape>;
+    /// Check if Handle<BRepExtrema_UnCompatibleShape> is null
+    pub fn HandleBRepExtremaUnCompatibleShape_is_null(
+        self_: *const HandleBRepExtremaUnCompatibleShape,
+    ) -> bool;
     /// Dereference Handle to get *const BRepExtrema_UnCompatibleShape
     pub fn HandleBRepExtremaUnCompatibleShape_get(
         handle: *const HandleBRepExtremaUnCompatibleShape,
@@ -10823,6 +10852,8 @@ extern "C" {
     pub fn HandleBRepTopAdaptorHVertex_clone(
         self_: *const HandleBRepTopAdaptorHVertex,
     ) -> crate::OcctResult<*mut HandleBRepTopAdaptorHVertex>;
+    /// Check if Handle<BRepTopAdaptor_HVertex> is null
+    pub fn HandleBRepTopAdaptorHVertex_is_null(self_: *const HandleBRepTopAdaptorHVertex) -> bool;
     /// Dereference Handle to get *const BRepTopAdaptor_HVertex
     pub fn HandleBRepTopAdaptorHVertex_get(
         handle: *const HandleBRepTopAdaptorHVertex,
@@ -11077,6 +11108,10 @@ extern "C" {
     pub fn HandleBRepTopAdaptorTopolTool_clone(
         self_: *const HandleBRepTopAdaptorTopolTool,
     ) -> crate::OcctResult<*mut HandleBRepTopAdaptorTopolTool>;
+    /// Check if Handle<BRepTopAdaptor_TopolTool> is null
+    pub fn HandleBRepTopAdaptorTopolTool_is_null(
+        self_: *const HandleBRepTopAdaptorTopolTool,
+    ) -> bool;
     /// Dereference Handle to get *const BRepTopAdaptor_TopolTool
     pub fn HandleBRepTopAdaptorTopolTool_get(
         handle: *const HandleBRepTopAdaptorTopolTool,
@@ -11455,6 +11490,8 @@ extern "C" {
     pub fn HandleBisectorBisecAna_clone(
         self_: *const HandleBisectorBisecAna,
     ) -> crate::OcctResult<*mut HandleBisectorBisecAna>;
+    /// Check if Handle<Bisector_BisecAna> is null
+    pub fn HandleBisectorBisecAna_is_null(self_: *const HandleBisectorBisecAna) -> bool;
     /// Dereference Handle to get *const Bisector_BisecAna
     pub fn HandleBisectorBisecAna_get(
         handle: *const HandleBisectorBisecAna,
@@ -11802,6 +11839,8 @@ extern "C" {
     pub fn HandleBisectorBisecCC_clone(
         self_: *const HandleBisectorBisecCC,
     ) -> crate::OcctResult<*mut HandleBisectorBisecCC>;
+    /// Check if Handle<Bisector_BisecCC> is null
+    pub fn HandleBisectorBisecCC_is_null(self_: *const HandleBisectorBisecCC) -> bool;
     /// Dereference Handle to get *const Bisector_BisecCC
     pub fn HandleBisectorBisecCC_get(
         handle: *const HandleBisectorBisecCC,
@@ -12129,6 +12168,8 @@ extern "C" {
     pub fn HandleBisectorBisecPC_clone(
         self_: *const HandleBisectorBisecPC,
     ) -> crate::OcctResult<*mut HandleBisectorBisecPC>;
+    /// Check if Handle<Bisector_BisecPC> is null
+    pub fn HandleBisectorBisecPC_is_null(self_: *const HandleBisectorBisecPC) -> bool;
     /// Dereference Handle to get *const Bisector_BisecPC
     pub fn HandleBisectorBisecPC_get(
         handle: *const HandleBisectorBisecPC,
@@ -12320,6 +12361,8 @@ extern "C" {
     pub fn HandleBisectorCurve_clone(
         self_: *const HandleBisectorCurve,
     ) -> crate::OcctResult<*mut HandleBisectorCurve>;
+    /// Check if Handle<Bisector_Curve> is null
+    pub fn HandleBisectorCurve_is_null(self_: *const HandleBisectorCurve) -> bool;
     /// Dereference Handle to get *const Bisector_Curve
     pub fn HandleBisectorCurve_get(
         handle: *const HandleBisectorCurve,
@@ -12917,6 +12960,10 @@ extern "C" {
     pub fn HandleIntCurvesFaceIntersector_clone(
         self_: *const HandleIntCurvesFaceIntersector,
     ) -> crate::OcctResult<*mut HandleIntCurvesFaceIntersector>;
+    /// Check if Handle<IntCurvesFace_Intersector> is null
+    pub fn HandleIntCurvesFaceIntersector_is_null(
+        self_: *const HandleIntCurvesFaceIntersector,
+    ) -> bool;
     /// Dereference Handle to get *const IntCurvesFace_Intersector
     pub fn HandleIntCurvesFaceIntersector_get(
         handle: *const HandleIntCurvesFaceIntersector,
@@ -13145,6 +13192,8 @@ extern "C" {
     pub fn HandleMATArc_destructor(self_: *mut HandleMATArc);
     /// Clone Handle<MAT_Arc> (increments reference count)
     pub fn HandleMATArc_clone(self_: *const HandleMATArc) -> crate::OcctResult<*mut HandleMATArc>;
+    /// Check if Handle<MAT_Arc> is null
+    pub fn HandleMATArc_is_null(self_: *const HandleMATArc) -> bool;
     /// Dereference Handle to get *const MAT_Arc
     pub fn HandleMATArc_get(handle: *const HandleMATArc) -> crate::OcctResult<*const MAT_Arc>;
     /// Dereference Handle to get *mut MAT_Arc
@@ -13236,6 +13285,8 @@ extern "C" {
     pub fn HandleMATBasicElt_clone(
         self_: *const HandleMATBasicElt,
     ) -> crate::OcctResult<*mut HandleMATBasicElt>;
+    /// Check if Handle<MAT_BasicElt> is null
+    pub fn HandleMATBasicElt_is_null(self_: *const HandleMATBasicElt) -> bool;
     /// Dereference Handle to get *const MAT_BasicElt
     pub fn HandleMATBasicElt_get(
         handle: *const HandleMATBasicElt,
@@ -13416,6 +13467,8 @@ extern "C" {
     pub fn HandleMATBisector_clone(
         self_: *const HandleMATBisector,
     ) -> crate::OcctResult<*mut HandleMATBisector>;
+    /// Check if Handle<MAT_Bisector> is null
+    pub fn HandleMATBisector_is_null(self_: *const HandleMATBisector) -> bool;
     /// Dereference Handle to get *const MAT_Bisector
     pub fn HandleMATBisector_get(
         handle: *const HandleMATBisector,
@@ -13522,6 +13575,8 @@ extern "C" {
     pub fn HandleMATEdge_clone(
         self_: *const HandleMATEdge,
     ) -> crate::OcctResult<*mut HandleMATEdge>;
+    /// Check if Handle<MAT_Edge> is null
+    pub fn HandleMATEdge_is_null(self_: *const HandleMATEdge) -> bool;
     /// Dereference Handle to get *const MAT_Edge
     pub fn HandleMATEdge_get(handle: *const HandleMATEdge) -> crate::OcctResult<*const MAT_Edge>;
     /// Dereference Handle to get *mut MAT_Edge
@@ -13637,6 +13692,8 @@ extern "C" {
     pub fn HandleMATGraph_clone(
         self_: *const HandleMATGraph,
     ) -> crate::OcctResult<*mut HandleMATGraph>;
+    /// Check if Handle<MAT_Graph> is null
+    pub fn HandleMATGraph_is_null(self_: *const HandleMATGraph) -> bool;
     /// Dereference Handle to get *const MAT_Graph
     pub fn HandleMATGraph_get(handle: *const HandleMATGraph)
         -> crate::OcctResult<*const MAT_Graph>;
@@ -13786,6 +13843,8 @@ extern "C" {
     pub fn HandleMATListOfBisector_clone(
         self_: *const HandleMATListOfBisector,
     ) -> crate::OcctResult<*mut HandleMATListOfBisector>;
+    /// Check if Handle<MAT_ListOfBisector> is null
+    pub fn HandleMATListOfBisector_is_null(self_: *const HandleMATListOfBisector) -> bool;
     /// Dereference Handle to get *const MAT_ListOfBisector
     pub fn HandleMATListOfBisector_get(
         handle: *const HandleMATListOfBisector,
@@ -13941,6 +14000,8 @@ extern "C" {
     pub fn HandleMATListOfEdge_clone(
         self_: *const HandleMATListOfEdge,
     ) -> crate::OcctResult<*mut HandleMATListOfEdge>;
+    /// Check if Handle<MAT_ListOfEdge> is null
+    pub fn HandleMATListOfEdge_is_null(self_: *const HandleMATListOfEdge) -> bool;
     /// Dereference Handle to get *const MAT_ListOfEdge
     pub fn HandleMATListOfEdge_get(
         handle: *const HandleMATListOfEdge,
@@ -14043,6 +14104,8 @@ extern "C" {
     pub fn HandleMATNode_clone(
         self_: *const HandleMATNode,
     ) -> crate::OcctResult<*mut HandleMATNode>;
+    /// Check if Handle<MAT_Node> is null
+    pub fn HandleMATNode_is_null(self_: *const HandleMATNode) -> bool;
     /// Dereference Handle to get *const MAT_Node
     pub fn HandleMATNode_get(handle: *const HandleMATNode) -> crate::OcctResult<*const MAT_Node>;
     /// Dereference Handle to get *mut MAT_Node
@@ -14143,6 +14206,10 @@ extern "C" {
     pub fn HandleMATTListNodeOfListOfBisector_clone(
         self_: *const HandleMATTListNodeOfListOfBisector,
     ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfBisector>;
+    /// Check if Handle<MAT_TListNodeOfListOfBisector> is null
+    pub fn HandleMATTListNodeOfListOfBisector_is_null(
+        self_: *const HandleMATTListNodeOfListOfBisector,
+    ) -> bool;
     /// Dereference Handle to get *const MAT_TListNodeOfListOfBisector
     pub fn HandleMATTListNodeOfListOfBisector_get(
         handle: *const HandleMATTListNodeOfListOfBisector,
@@ -14251,6 +14318,10 @@ extern "C" {
     pub fn HandleMATTListNodeOfListOfEdge_clone(
         self_: *const HandleMATTListNodeOfListOfEdge,
     ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfEdge>;
+    /// Check if Handle<MAT_TListNodeOfListOfEdge> is null
+    pub fn HandleMATTListNodeOfListOfEdge_is_null(
+        self_: *const HandleMATTListNodeOfListOfEdge,
+    ) -> bool;
     /// Dereference Handle to get *const MAT_TListNodeOfListOfEdge
     pub fn HandleMATTListNodeOfListOfEdge_get(
         handle: *const HandleMATTListNodeOfListOfEdge,
@@ -14341,6 +14412,8 @@ extern "C" {
     pub fn HandleMATZone_clone(
         self_: *const HandleMATZone,
     ) -> crate::OcctResult<*mut HandleMATZone>;
+    /// Check if Handle<MAT_Zone> is null
+    pub fn HandleMATZone_is_null(self_: *const HandleMATZone) -> bool;
     /// Dereference Handle to get *const MAT_Zone
     pub fn HandleMATZone_get(handle: *const HandleMATZone) -> crate::OcctResult<*const MAT_Zone>;
     /// Dereference Handle to get *mut MAT_Zone
@@ -14461,6 +14534,8 @@ extern "C" {
     pub fn HandleMAT2dCircuit_clone(
         self_: *const HandleMAT2dCircuit,
     ) -> crate::OcctResult<*mut HandleMAT2dCircuit>;
+    /// Check if Handle<MAT2d_Circuit> is null
+    pub fn HandleMAT2dCircuit_is_null(self_: *const HandleMAT2dCircuit) -> bool;
     /// Dereference Handle to get *const MAT2d_Circuit
     pub fn HandleMAT2dCircuit_get(
         handle: *const HandleMAT2dCircuit,
@@ -14638,6 +14713,8 @@ extern "C" {
     pub fn HandleMAT2dConnexion_clone(
         self_: *const HandleMAT2dConnexion,
     ) -> crate::OcctResult<*mut HandleMAT2dConnexion>;
+    /// Check if Handle<MAT2d_Connexion> is null
+    pub fn HandleMAT2dConnexion_is_null(self_: *const HandleMAT2dConnexion) -> bool;
     /// Dereference Handle to get *const MAT2d_Connexion
     pub fn HandleMAT2dConnexion_get(
         handle: *const HandleMAT2dConnexion,

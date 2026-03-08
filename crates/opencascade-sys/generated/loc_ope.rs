@@ -1127,6 +1127,11 @@ unsafe impl crate::CppCopyable for HandleLocOpeGeneratedShape {
 }
 
 impl HandleLocOpeGeneratedShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFeat::HandleLocOpeGeneratedShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying LocOpe_GeneratedShape
     pub fn get(&self) -> &crate::ffi_types::LocOpe_GeneratedShape {
         unsafe {
@@ -1537,6 +1542,11 @@ unsafe impl crate::CppCopyable for HandleLocOpeGluedShape {
 }
 
 impl HandleLocOpeGluedShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying LocOpe_GluedShape
     pub fn get(&self) -> &crate::ffi_types::LocOpe_GluedShape {
         unsafe {
@@ -3290,6 +3300,11 @@ unsafe impl crate::CppCopyable for HandleLocOpeWiresOnShape {
 }
 
 impl HandleLocOpeWiresOnShape {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKFeat::HandleLocOpeWiresOnShape_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying LocOpe_WiresOnShape
     pub fn get(&self) -> &crate::ffi_types::LocOpe_WiresOnShape {
         unsafe {

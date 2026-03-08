@@ -187,177 +187,211 @@ typedef opencascade::handle<Storage_HeaderData> HandleStorageHeaderData;
 typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
 typedef opencascade::handle<TDF_Data> HandleTDFData;
 
-// Handle type destructors and clone functions
+// Handle type destructors, clone, and is_null functions
 extern "C" void HandleBinLDriversDocumentRetrievalDriver_destructor(HandleBinLDriversDocumentRetrievalDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinLDriversDocumentRetrievalDriver*> HandleBinLDriversDocumentRetrievalDriver_clone(const HandleBinLDriversDocumentRetrievalDriver* self_) {
     try { return {new HandleBinLDriversDocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinLDriversDocumentRetrievalDriver_is_null(const HandleBinLDriversDocumentRetrievalDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinLDriversDocumentStorageDriver_destructor(HandleBinLDriversDocumentStorageDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinLDriversDocumentStorageDriver*> HandleBinLDriversDocumentStorageDriver_clone(const HandleBinLDriversDocumentStorageDriver* self_) {
     try { return {new HandleBinLDriversDocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinLDriversDocumentStorageDriver_is_null(const HandleBinLDriversDocumentStorageDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDFADriver_destructor(HandleBinMDFADriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDFADriver*> HandleBinMDFADriver_clone(const HandleBinMDFADriver* self_) {
     try { return {new HandleBinMDFADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDFADriver_is_null(const HandleBinMDFADriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDFADriverTable_destructor(HandleBinMDFADriverTable* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDFADriverTable*> HandleBinMDFADriverTable_clone(const HandleBinMDFADriverTable* self_) {
     try { return {new HandleBinMDFADriverTable(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDFADriverTable_is_null(const HandleBinMDFADriverTable* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDFDerivedDriver_destructor(HandleBinMDFDerivedDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDFDerivedDriver*> HandleBinMDFDerivedDriver_clone(const HandleBinMDFDerivedDriver* self_) {
     try { return {new HandleBinMDFDerivedDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDFDerivedDriver_is_null(const HandleBinMDFDerivedDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDFReferenceDriver_destructor(HandleBinMDFReferenceDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDFReferenceDriver*> HandleBinMDFReferenceDriver_clone(const HandleBinMDFReferenceDriver* self_) {
     try { return {new HandleBinMDFReferenceDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDFReferenceDriver_is_null(const HandleBinMDFReferenceDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDFTagSourceDriver_destructor(HandleBinMDFTagSourceDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDFTagSourceDriver*> HandleBinMDFTagSourceDriver_clone(const HandleBinMDFTagSourceDriver* self_) {
     try { return {new HandleBinMDFTagSourceDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDFTagSourceDriver_is_null(const HandleBinMDFTagSourceDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdAsciiStringDriver_destructor(HandleBinMDataStdAsciiStringDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdAsciiStringDriver*> HandleBinMDataStdAsciiStringDriver_clone(const HandleBinMDataStdAsciiStringDriver* self_) {
     try { return {new HandleBinMDataStdAsciiStringDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdAsciiStringDriver_is_null(const HandleBinMDataStdAsciiStringDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdBooleanArrayDriver_destructor(HandleBinMDataStdBooleanArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdBooleanArrayDriver*> HandleBinMDataStdBooleanArrayDriver_clone(const HandleBinMDataStdBooleanArrayDriver* self_) {
     try { return {new HandleBinMDataStdBooleanArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdBooleanArrayDriver_is_null(const HandleBinMDataStdBooleanArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdBooleanListDriver_destructor(HandleBinMDataStdBooleanListDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdBooleanListDriver*> HandleBinMDataStdBooleanListDriver_clone(const HandleBinMDataStdBooleanListDriver* self_) {
     try { return {new HandleBinMDataStdBooleanListDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdBooleanListDriver_is_null(const HandleBinMDataStdBooleanListDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdByteArrayDriver_destructor(HandleBinMDataStdByteArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdByteArrayDriver*> HandleBinMDataStdByteArrayDriver_clone(const HandleBinMDataStdByteArrayDriver* self_) {
     try { return {new HandleBinMDataStdByteArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdByteArrayDriver_is_null(const HandleBinMDataStdByteArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdExpressionDriver_destructor(HandleBinMDataStdExpressionDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdExpressionDriver*> HandleBinMDataStdExpressionDriver_clone(const HandleBinMDataStdExpressionDriver* self_) {
     try { return {new HandleBinMDataStdExpressionDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdExpressionDriver_is_null(const HandleBinMDataStdExpressionDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdExtStringArrayDriver_destructor(HandleBinMDataStdExtStringArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdExtStringArrayDriver*> HandleBinMDataStdExtStringArrayDriver_clone(const HandleBinMDataStdExtStringArrayDriver* self_) {
     try { return {new HandleBinMDataStdExtStringArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdExtStringArrayDriver_is_null(const HandleBinMDataStdExtStringArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdExtStringListDriver_destructor(HandleBinMDataStdExtStringListDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdExtStringListDriver*> HandleBinMDataStdExtStringListDriver_clone(const HandleBinMDataStdExtStringListDriver* self_) {
     try { return {new HandleBinMDataStdExtStringListDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdExtStringListDriver_is_null(const HandleBinMDataStdExtStringListDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdGenericEmptyDriver_destructor(HandleBinMDataStdGenericEmptyDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdGenericEmptyDriver*> HandleBinMDataStdGenericEmptyDriver_clone(const HandleBinMDataStdGenericEmptyDriver* self_) {
     try { return {new HandleBinMDataStdGenericEmptyDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdGenericEmptyDriver_is_null(const HandleBinMDataStdGenericEmptyDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdGenericExtStringDriver_destructor(HandleBinMDataStdGenericExtStringDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdGenericExtStringDriver*> HandleBinMDataStdGenericExtStringDriver_clone(const HandleBinMDataStdGenericExtStringDriver* self_) {
     try { return {new HandleBinMDataStdGenericExtStringDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdGenericExtStringDriver_is_null(const HandleBinMDataStdGenericExtStringDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdIntPackedMapDriver_destructor(HandleBinMDataStdIntPackedMapDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdIntPackedMapDriver*> HandleBinMDataStdIntPackedMapDriver_clone(const HandleBinMDataStdIntPackedMapDriver* self_) {
     try { return {new HandleBinMDataStdIntPackedMapDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdIntPackedMapDriver_is_null(const HandleBinMDataStdIntPackedMapDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdIntegerArrayDriver_destructor(HandleBinMDataStdIntegerArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdIntegerArrayDriver*> HandleBinMDataStdIntegerArrayDriver_clone(const HandleBinMDataStdIntegerArrayDriver* self_) {
     try { return {new HandleBinMDataStdIntegerArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdIntegerArrayDriver_is_null(const HandleBinMDataStdIntegerArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdIntegerDriver_destructor(HandleBinMDataStdIntegerDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdIntegerDriver*> HandleBinMDataStdIntegerDriver_clone(const HandleBinMDataStdIntegerDriver* self_) {
     try { return {new HandleBinMDataStdIntegerDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdIntegerDriver_is_null(const HandleBinMDataStdIntegerDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdIntegerListDriver_destructor(HandleBinMDataStdIntegerListDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdIntegerListDriver*> HandleBinMDataStdIntegerListDriver_clone(const HandleBinMDataStdIntegerListDriver* self_) {
     try { return {new HandleBinMDataStdIntegerListDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdIntegerListDriver_is_null(const HandleBinMDataStdIntegerListDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdNamedDataDriver_destructor(HandleBinMDataStdNamedDataDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdNamedDataDriver*> HandleBinMDataStdNamedDataDriver_clone(const HandleBinMDataStdNamedDataDriver* self_) {
     try { return {new HandleBinMDataStdNamedDataDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdNamedDataDriver_is_null(const HandleBinMDataStdNamedDataDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdRealArrayDriver_destructor(HandleBinMDataStdRealArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdRealArrayDriver*> HandleBinMDataStdRealArrayDriver_clone(const HandleBinMDataStdRealArrayDriver* self_) {
     try { return {new HandleBinMDataStdRealArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdRealArrayDriver_is_null(const HandleBinMDataStdRealArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdRealDriver_destructor(HandleBinMDataStdRealDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdRealDriver*> HandleBinMDataStdRealDriver_clone(const HandleBinMDataStdRealDriver* self_) {
     try { return {new HandleBinMDataStdRealDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdRealDriver_is_null(const HandleBinMDataStdRealDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdRealListDriver_destructor(HandleBinMDataStdRealListDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdRealListDriver*> HandleBinMDataStdRealListDriver_clone(const HandleBinMDataStdRealListDriver* self_) {
     try { return {new HandleBinMDataStdRealListDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdRealListDriver_is_null(const HandleBinMDataStdRealListDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdReferenceArrayDriver_destructor(HandleBinMDataStdReferenceArrayDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdReferenceArrayDriver*> HandleBinMDataStdReferenceArrayDriver_clone(const HandleBinMDataStdReferenceArrayDriver* self_) {
     try { return {new HandleBinMDataStdReferenceArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdReferenceArrayDriver_is_null(const HandleBinMDataStdReferenceArrayDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdReferenceListDriver_destructor(HandleBinMDataStdReferenceListDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdReferenceListDriver*> HandleBinMDataStdReferenceListDriver_clone(const HandleBinMDataStdReferenceListDriver* self_) {
     try { return {new HandleBinMDataStdReferenceListDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdReferenceListDriver_is_null(const HandleBinMDataStdReferenceListDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdTreeNodeDriver_destructor(HandleBinMDataStdTreeNodeDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdTreeNodeDriver*> HandleBinMDataStdTreeNodeDriver_clone(const HandleBinMDataStdTreeNodeDriver* self_) {
     try { return {new HandleBinMDataStdTreeNodeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdTreeNodeDriver_is_null(const HandleBinMDataStdTreeNodeDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdUAttributeDriver_destructor(HandleBinMDataStdUAttributeDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdUAttributeDriver*> HandleBinMDataStdUAttributeDriver_clone(const HandleBinMDataStdUAttributeDriver* self_) {
     try { return {new HandleBinMDataStdUAttributeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdUAttributeDriver_is_null(const HandleBinMDataStdUAttributeDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDataStdVariableDriver_destructor(HandleBinMDataStdVariableDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDataStdVariableDriver*> HandleBinMDataStdVariableDriver_clone(const HandleBinMDataStdVariableDriver* self_) {
     try { return {new HandleBinMDataStdVariableDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDataStdVariableDriver_is_null(const HandleBinMDataStdVariableDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMDocStdXLinkDriver_destructor(HandleBinMDocStdXLinkDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMDocStdXLinkDriver*> HandleBinMDocStdXLinkDriver_clone(const HandleBinMDocStdXLinkDriver* self_) {
     try { return {new HandleBinMDocStdXLinkDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMDocStdXLinkDriver_is_null(const HandleBinMDocStdXLinkDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMFunctionFunctionDriver_destructor(HandleBinMFunctionFunctionDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMFunctionFunctionDriver*> HandleBinMFunctionFunctionDriver_clone(const HandleBinMFunctionFunctionDriver* self_) {
     try { return {new HandleBinMFunctionFunctionDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMFunctionFunctionDriver_is_null(const HandleBinMFunctionFunctionDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMFunctionGraphNodeDriver_destructor(HandleBinMFunctionGraphNodeDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMFunctionGraphNodeDriver*> HandleBinMFunctionGraphNodeDriver_clone(const HandleBinMFunctionGraphNodeDriver* self_) {
     try { return {new HandleBinMFunctionGraphNodeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMFunctionGraphNodeDriver_is_null(const HandleBinMFunctionGraphNodeDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinMFunctionScopeDriver_destructor(HandleBinMFunctionScopeDriver* self_) { delete self_; }
 extern "C" OcctResult<HandleBinMFunctionScopeDriver*> HandleBinMFunctionScopeDriver_clone(const HandleBinMFunctionScopeDriver* self_) {
     try { return {new HandleBinMFunctionScopeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinMFunctionScopeDriver_is_null(const HandleBinMFunctionScopeDriver* self_) { return self_->IsNull(); }
 extern "C" void HandleBinObjMgtPosition_destructor(HandleBinObjMgtPosition* self_) { delete self_; }
 extern "C" OcctResult<HandleBinObjMgtPosition*> HandleBinObjMgtPosition_clone(const HandleBinObjMgtPosition* self_) {
     try { return {new HandleBinObjMgtPosition(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool HandleBinObjMgtPosition_is_null(const HandleBinObjMgtPosition* self_) { return self_->IsNull(); }
 
 // ========================
 // BinLDrivers_DocumentRetrievalDriver wrappers

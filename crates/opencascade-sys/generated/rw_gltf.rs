@@ -1005,6 +1005,11 @@ unsafe impl crate::CppCopyable for HandleRWGltfCafReader {
 }
 
 impl HandleRWGltfCafReader {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEGLTF::HandleRWGltfCafReader_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying RWGltf_CafReader
     pub fn get(&self) -> &crate::ffi_types::RWGltf_CafReader {
         unsafe {
@@ -1237,6 +1242,11 @@ unsafe impl crate::CppCopyable for HandleRWGltfGltfFace {
 }
 
 impl HandleRWGltfGltfFace {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfFace_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying RWGltf_GltfFace
     pub fn get(&self) -> &crate::ffi_types::RWGltf_GltfFace {
         unsafe {
@@ -2242,6 +2252,15 @@ unsafe impl crate::CppCopyable for HandleRWGltfGltfLatePrimitiveArray {
 }
 
 impl HandleRWGltfGltfLatePrimitiveArray {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfLatePrimitiveArray_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying RWGltf_GltfLatePrimitiveArray
     pub fn get(&self) -> &crate::ffi_types::RWGltf_GltfLatePrimitiveArray {
         unsafe {
@@ -2612,6 +2631,13 @@ unsafe impl crate::CppCopyable for HandleRWGltfGltfMaterialMap {
 }
 
 impl HandleRWGltfGltfMaterialMap {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfMaterialMap_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying RWGltf_GltfMaterialMap
     pub fn get(&self) -> &crate::ffi_types::RWGltf_GltfMaterialMap {
         unsafe {
@@ -2913,6 +2939,13 @@ unsafe impl crate::CppCopyable for HandleRWGltfMaterialCommon {
 }
 
 impl HandleRWGltfMaterialCommon {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialCommon_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying RWGltf_MaterialCommon
     pub fn get(&self) -> &crate::ffi_types::RWGltf_MaterialCommon {
         unsafe {
@@ -3097,6 +3130,15 @@ unsafe impl crate::CppCopyable for HandleRWGltfMaterialMetallicRoughness {
 }
 
 impl HandleRWGltfMaterialMetallicRoughness {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialMetallicRoughness_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying RWGltf_MaterialMetallicRoughness
     pub fn get(&self) -> &crate::ffi_types::RWGltf_MaterialMetallicRoughness {
         unsafe {
@@ -3479,6 +3521,13 @@ unsafe impl crate::CppCopyable for HandleRWGltfTriangulationReader {
 }
 
 impl HandleRWGltfTriangulationReader {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfTriangulationReader_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying RWGltf_TriangulationReader
     pub fn get(&self) -> &crate::ffi_types::RWGltf_TriangulationReader {
         unsafe {

@@ -259,6 +259,15 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray1OfAsciiString {
 }
 
 impl HandleTColStdHArray1OfAsciiString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray1OfAsciiString_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray1OfAsciiString
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfAsciiString {
         unsafe {
@@ -535,6 +544,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray1OfBoolean {
 }
 
 impl HandleTColStdHArray1OfBoolean {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray1OfBoolean_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray1OfBoolean
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfBoolean {
         unsafe {
@@ -805,6 +821,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray1OfByte {
 }
 
 impl HandleTColStdHArray1OfByte {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray1OfByte_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray1OfByte
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfByte {
         unsafe {
@@ -1085,6 +1108,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray1OfCharacter {
 }
 
 impl HandleTColStdHArray1OfCharacter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray1OfCharacter_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray1OfCharacter
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfCharacter {
         unsafe {
@@ -1359,6 +1389,15 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray1OfExtendedString {
 }
 
 impl HandleTColStdHArray1OfExtendedString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray1OfExtendedString_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray1OfExtendedString
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfExtendedString {
         unsafe {
@@ -1637,6 +1676,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray1OfInteger {
 }
 
 impl HandleTColStdHArray1OfInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray1OfInteger_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray1OfInteger
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfInteger {
         unsafe {
@@ -1919,6 +1965,15 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray1OfListOfInteger {
 }
 
 impl HandleTColStdHArray1OfListOfInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray1OfListOfInteger_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray1OfListOfInteger
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfListOfInteger {
         unsafe {
@@ -2189,6 +2244,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray1OfReal {
 }
 
 impl HandleTColStdHArray1OfReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray1OfReal_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray1OfReal
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfReal {
         unsafe {
@@ -2461,6 +2523,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray1OfTransient {
 }
 
 impl HandleTColStdHArray1OfTransient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray1OfTransient_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray1OfTransient
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray1OfTransient {
         unsafe {
@@ -2721,6 +2790,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray2OfBoolean {
 }
 
 impl HandleTColStdHArray2OfBoolean {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray2OfBoolean_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray2OfBoolean
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray2OfBoolean {
         unsafe {
@@ -2985,6 +3061,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray2OfCharacter {
 }
 
 impl HandleTColStdHArray2OfCharacter {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray2OfCharacter_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray2OfCharacter
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray2OfCharacter {
         unsafe {
@@ -3245,6 +3328,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray2OfInteger {
 }
 
 impl HandleTColStdHArray2OfInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray2OfInteger_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray2OfInteger
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray2OfInteger {
         unsafe {
@@ -3499,6 +3589,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray2OfReal {
 }
 
 impl HandleTColStdHArray2OfReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray2OfReal_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray2OfReal
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray2OfReal {
         unsafe {
@@ -3759,6 +3856,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHArray2OfTransient {
 }
 
 impl HandleTColStdHArray2OfTransient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHArray2OfTransient_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HArray2OfTransient
     pub fn get(&self) -> &crate::ffi_types::TColStd_HArray2OfTransient {
         unsafe {
@@ -4003,6 +4107,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHPackedMapOfInteger {
 }
 
 impl HandleTColStdHPackedMapOfInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHPackedMapOfInteger_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HPackedMapOfInteger
     pub fn get(&self) -> &crate::ffi_types::TColStd_HPackedMapOfInteger {
         unsafe {
@@ -4264,6 +4375,15 @@ unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfAsciiString {
 }
 
 impl HandleTColStdHSequenceOfAsciiString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHSequenceOfAsciiString_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfAsciiString
     pub fn get(&self) -> &crate::ffi_types::TColStd_HSequenceOfAsciiString {
         unsafe {
@@ -4518,6 +4638,15 @@ unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfExtendedString {
 }
 
 impl HandleTColStdHSequenceOfExtendedString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHSequenceOfExtendedString_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfExtendedString
     pub fn get(&self) -> &crate::ffi_types::TColStd_HSequenceOfExtendedString {
         unsafe {
@@ -4779,6 +4908,15 @@ unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfHAsciiString {
 }
 
 impl HandleTColStdHSequenceOfHAsciiString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHSequenceOfHAsciiString_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfHAsciiString
     pub fn get(&self) -> &crate::ffi_types::TColStd_HSequenceOfHAsciiString {
         unsafe {
@@ -5033,6 +5171,15 @@ unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfHExtendedString {
 }
 
 impl HandleTColStdHSequenceOfHExtendedString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHSequenceOfHExtendedString_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfHExtendedString
     pub fn get(&self) -> &crate::ffi_types::TColStd_HSequenceOfHExtendedString {
         unsafe {
@@ -5299,6 +5446,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfInteger {
 }
 
 impl HandleTColStdHSequenceOfInteger {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHSequenceOfInteger_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfInteger
     pub fn get(&self) -> &crate::ffi_types::TColStd_HSequenceOfInteger {
         unsafe {
@@ -5556,6 +5710,13 @@ unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfReal {
 }
 
 impl HandleTColStdHSequenceOfReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHSequenceOfReal_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfReal
     pub fn get(&self) -> &crate::ffi_types::TColStd_HSequenceOfReal {
         unsafe {
@@ -5824,6 +5985,15 @@ unsafe impl crate::CppCopyable for HandleTColStdHSequenceOfTransient {
 }
 
 impl HandleTColStdHSequenceOfTransient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTColStdHSequenceOfTransient_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfTransient
     pub fn get(&self) -> &crate::ffi_types::TColStd_HSequenceOfTransient {
         unsafe {

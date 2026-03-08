@@ -532,6 +532,8 @@ extern "C" {
     pub fn HandleFSDBinaryFile_clone(
         self_: *const HandleFSDBinaryFile,
     ) -> crate::OcctResult<*mut HandleFSDBinaryFile>;
+    /// Check if Handle<FSD_BinaryFile> is null
+    pub fn HandleFSDBinaryFile_is_null(self_: *const HandleFSDBinaryFile) -> bool;
     /// Dereference Handle to get *const FSD_BinaryFile
     pub fn HandleFSDBinaryFile_get(
         handle: *const HandleFSDBinaryFile,
@@ -682,6 +684,8 @@ extern "C" {
     pub fn HandleFSDCmpFile_clone(
         self_: *const HandleFSDCmpFile,
     ) -> crate::OcctResult<*mut HandleFSDCmpFile>;
+    /// Check if Handle<FSD_CmpFile> is null
+    pub fn HandleFSDCmpFile_is_null(self_: *const HandleFSDCmpFile) -> bool;
     /// Dereference Handle to get *const FSD_CmpFile
     pub fn HandleFSDCmpFile_get(
         handle: *const HandleFSDCmpFile,
@@ -1283,6 +1287,8 @@ extern "C" {
     pub fn HandleFSDFile_clone(
         self_: *const HandleFSDFile,
     ) -> crate::OcctResult<*mut HandleFSDFile>;
+    /// Check if Handle<FSD_File> is null
+    pub fn HandleFSDFile_is_null(self_: *const HandleFSDFile) -> bool;
     /// Dereference Handle to get *const FSD_File
     pub fn HandleFSDFile_get(handle: *const HandleFSDFile) -> crate::OcctResult<*const FSD_File>;
     /// Dereference Handle to get *mut FSD_File
@@ -1371,6 +1377,8 @@ extern "C" {
     pub fn HandleMessageAlert_clone(
         self_: *const HandleMessageAlert,
     ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    /// Check if Handle<Message_Alert> is null
+    pub fn HandleMessageAlert_is_null(self_: *const HandleMessageAlert) -> bool;
     /// Dereference Handle to get *const Message_Alert
     pub fn HandleMessageAlert_get(
         handle: *const HandleMessageAlert,
@@ -1655,6 +1663,8 @@ extern "C" {
     pub fn HandleMessageAlertExtended_clone(
         self_: *const HandleMessageAlertExtended,
     ) -> crate::OcctResult<*mut HandleMessageAlertExtended>;
+    /// Check if Handle<Message_AlertExtended> is null
+    pub fn HandleMessageAlertExtended_is_null(self_: *const HandleMessageAlertExtended) -> bool;
     /// Dereference Handle to get *const Message_AlertExtended
     pub fn HandleMessageAlertExtended_get(
         handle: *const HandleMessageAlertExtended,
@@ -1847,6 +1857,8 @@ extern "C" {
     pub fn HandleMessageAlgorithm_clone(
         self_: *const HandleMessageAlgorithm,
     ) -> crate::OcctResult<*mut HandleMessageAlgorithm>;
+    /// Check if Handle<Message_Algorithm> is null
+    pub fn HandleMessageAlgorithm_is_null(self_: *const HandleMessageAlgorithm) -> bool;
     /// Dereference Handle to get *const Message_Algorithm
     pub fn HandleMessageAlgorithm_get(
         handle: *const HandleMessageAlgorithm,
@@ -1946,6 +1958,8 @@ extern "C" {
     pub fn HandleMessageAttribute_clone(
         self_: *const HandleMessageAttribute,
     ) -> crate::OcctResult<*mut HandleMessageAttribute>;
+    /// Check if Handle<Message_Attribute> is null
+    pub fn HandleMessageAttribute_is_null(self_: *const HandleMessageAttribute) -> bool;
     /// Dereference Handle to get *const Message_Attribute
     pub fn HandleMessageAttribute_get(
         handle: *const HandleMessageAttribute,
@@ -2092,6 +2106,8 @@ extern "C" {
     pub fn HandleMessageAttributeMeter_clone(
         self_: *const HandleMessageAttributeMeter,
     ) -> crate::OcctResult<*mut HandleMessageAttributeMeter>;
+    /// Check if Handle<Message_AttributeMeter> is null
+    pub fn HandleMessageAttributeMeter_is_null(self_: *const HandleMessageAttributeMeter) -> bool;
     /// Dereference Handle to get *const Message_AttributeMeter
     pub fn HandleMessageAttributeMeter_get(
         handle: *const HandleMessageAttributeMeter,
@@ -2198,6 +2214,9 @@ extern "C" {
     pub fn HandleMessageAttributeObject_clone(
         self_: *const HandleMessageAttributeObject,
     ) -> crate::OcctResult<*mut HandleMessageAttributeObject>;
+    /// Check if Handle<Message_AttributeObject> is null
+    pub fn HandleMessageAttributeObject_is_null(self_: *const HandleMessageAttributeObject)
+        -> bool;
     /// Dereference Handle to get *const Message_AttributeObject
     pub fn HandleMessageAttributeObject_get(
         handle: *const HandleMessageAttributeObject,
@@ -2304,6 +2323,9 @@ extern "C" {
     pub fn HandleMessageAttributeStream_clone(
         self_: *const HandleMessageAttributeStream,
     ) -> crate::OcctResult<*mut HandleMessageAttributeStream>;
+    /// Check if Handle<Message_AttributeStream> is null
+    pub fn HandleMessageAttributeStream_is_null(self_: *const HandleMessageAttributeStream)
+        -> bool;
     /// Dereference Handle to get *const Message_AttributeStream
     pub fn HandleMessageAttributeStream_get(
         handle: *const HandleMessageAttributeStream,
@@ -2436,6 +2458,9 @@ extern "C" {
     pub fn HandleMessageCompositeAlerts_clone(
         self_: *const HandleMessageCompositeAlerts,
     ) -> crate::OcctResult<*mut HandleMessageCompositeAlerts>;
+    /// Check if Handle<Message_CompositeAlerts> is null
+    pub fn HandleMessageCompositeAlerts_is_null(self_: *const HandleMessageCompositeAlerts)
+        -> bool;
     /// Dereference Handle to get *const Message_CompositeAlerts
     pub fn HandleMessageCompositeAlerts_get(
         handle: *const HandleMessageCompositeAlerts,
@@ -2734,6 +2759,8 @@ extern "C" {
     pub fn HandleMessageMessenger_clone(
         self_: *const HandleMessageMessenger,
     ) -> crate::OcctResult<*mut HandleMessageMessenger>;
+    /// Check if Handle<Message_Messenger> is null
+    pub fn HandleMessageMessenger_is_null(self_: *const HandleMessageMessenger) -> bool;
     /// Dereference Handle to get *const Message_Messenger
     pub fn HandleMessageMessenger_get(
         handle: *const HandleMessageMessenger,
@@ -2967,6 +2994,8 @@ extern "C" {
     pub fn HandleMessagePrinter_clone(
         self_: *const HandleMessagePrinter,
     ) -> crate::OcctResult<*mut HandleMessagePrinter>;
+    /// Check if Handle<Message_Printer> is null
+    pub fn HandleMessagePrinter_is_null(self_: *const HandleMessagePrinter) -> bool;
     /// Dereference Handle to get *const Message_Printer
     pub fn HandleMessagePrinter_get(
         handle: *const HandleMessagePrinter,
@@ -3091,6 +3120,8 @@ extern "C" {
     pub fn HandleMessagePrinterOStream_clone(
         self_: *const HandleMessagePrinterOStream,
     ) -> crate::OcctResult<*mut HandleMessagePrinterOStream>;
+    /// Check if Handle<Message_PrinterOStream> is null
+    pub fn HandleMessagePrinterOStream_is_null(self_: *const HandleMessagePrinterOStream) -> bool;
     /// Dereference Handle to get *const Message_PrinterOStream
     pub fn HandleMessagePrinterOStream_get(
         handle: *const HandleMessagePrinterOStream,
@@ -3206,6 +3237,10 @@ extern "C" {
     pub fn HandleMessagePrinterSystemLog_clone(
         self_: *const HandleMessagePrinterSystemLog,
     ) -> crate::OcctResult<*mut HandleMessagePrinterSystemLog>;
+    /// Check if Handle<Message_PrinterSystemLog> is null
+    pub fn HandleMessagePrinterSystemLog_is_null(
+        self_: *const HandleMessagePrinterSystemLog,
+    ) -> bool;
     /// Dereference Handle to get *const Message_PrinterSystemLog
     pub fn HandleMessagePrinterSystemLog_get(
         handle: *const HandleMessagePrinterSystemLog,
@@ -3339,6 +3374,9 @@ extern "C" {
     pub fn HandleMessagePrinterToReport_clone(
         self_: *const HandleMessagePrinterToReport,
     ) -> crate::OcctResult<*mut HandleMessagePrinterToReport>;
+    /// Check if Handle<Message_PrinterToReport> is null
+    pub fn HandleMessagePrinterToReport_is_null(self_: *const HandleMessagePrinterToReport)
+        -> bool;
     /// Dereference Handle to get *const Message_PrinterToReport
     pub fn HandleMessagePrinterToReport_get(
         handle: *const HandleMessagePrinterToReport,
@@ -3437,6 +3475,10 @@ extern "C" {
     pub fn HandleMessageProgressIndicator_clone(
         self_: *const HandleMessageProgressIndicator,
     ) -> crate::OcctResult<*mut HandleMessageProgressIndicator>;
+    /// Check if Handle<Message_ProgressIndicator> is null
+    pub fn HandleMessageProgressIndicator_is_null(
+        self_: *const HandleMessageProgressIndicator,
+    ) -> bool;
     /// Dereference Handle to get *const Message_ProgressIndicator
     pub fn HandleMessageProgressIndicator_get(
         handle: *const HandleMessageProgressIndicator,
@@ -3710,6 +3752,8 @@ extern "C" {
     pub fn HandleMessageReport_clone(
         self_: *const HandleMessageReport,
     ) -> crate::OcctResult<*mut HandleMessageReport>;
+    /// Check if Handle<Message_Report> is null
+    pub fn HandleMessageReport_is_null(self_: *const HandleMessageReport) -> bool;
     /// Dereference Handle to get *const Message_Report
     pub fn HandleMessageReport_get(
         handle: *const HandleMessageReport,
@@ -3807,6 +3851,10 @@ extern "C" {
     pub fn HandleNCollectionAccAllocator_clone(
         self_: *const HandleNCollectionAccAllocator,
     ) -> crate::OcctResult<*mut HandleNCollectionAccAllocator>;
+    /// Check if Handle<NCollection_AccAllocator> is null
+    pub fn HandleNCollectionAccAllocator_is_null(
+        self_: *const HandleNCollectionAccAllocator,
+    ) -> bool;
     /// Dereference Handle to get *const NCollection_AccAllocator
     pub fn HandleNCollectionAccAllocator_get(
         handle: *const HandleNCollectionAccAllocator,
@@ -3911,6 +3959,10 @@ extern "C" {
     pub fn HandleNCollectionAlignedAllocator_clone(
         self_: *const HandleNCollectionAlignedAllocator,
     ) -> crate::OcctResult<*mut HandleNCollectionAlignedAllocator>;
+    /// Check if Handle<NCollection_AlignedAllocator> is null
+    pub fn HandleNCollectionAlignedAllocator_is_null(
+        self_: *const HandleNCollectionAlignedAllocator,
+    ) -> bool;
     /// Dereference Handle to get *const NCollection_AlignedAllocator
     pub fn HandleNCollectionAlignedAllocator_get(
         handle: *const HandleNCollectionAlignedAllocator,
@@ -4004,6 +4056,10 @@ extern "C" {
     pub fn HandleNCollectionBaseAllocator_clone(
         self_: *const HandleNCollectionBaseAllocator,
     ) -> crate::OcctResult<*mut HandleNCollectionBaseAllocator>;
+    /// Check if Handle<NCollection_BaseAllocator> is null
+    pub fn HandleNCollectionBaseAllocator_is_null(
+        self_: *const HandleNCollectionBaseAllocator,
+    ) -> bool;
     /// Dereference Handle to get *const NCollection_BaseAllocator
     pub fn HandleNCollectionBaseAllocator_get(
         handle: *const HandleNCollectionBaseAllocator,
@@ -4292,6 +4348,8 @@ extern "C" {
     pub fn HandleNCollectionBuffer_clone(
         self_: *const HandleNCollectionBuffer,
     ) -> crate::OcctResult<*mut HandleNCollectionBuffer>;
+    /// Check if Handle<NCollection_Buffer> is null
+    pub fn HandleNCollectionBuffer_is_null(self_: *const HandleNCollectionBuffer) -> bool;
     /// Dereference Handle to get *const NCollection_Buffer
     pub fn HandleNCollectionBuffer_get(
         handle: *const HandleNCollectionBuffer,
@@ -4417,6 +4475,10 @@ extern "C" {
     pub fn HandleNCollectionHeapAllocator_clone(
         self_: *const HandleNCollectionHeapAllocator,
     ) -> crate::OcctResult<*mut HandleNCollectionHeapAllocator>;
+    /// Check if Handle<NCollection_HeapAllocator> is null
+    pub fn HandleNCollectionHeapAllocator_is_null(
+        self_: *const HandleNCollectionHeapAllocator,
+    ) -> bool;
     /// Dereference Handle to get *const NCollection_HeapAllocator
     pub fn HandleNCollectionHeapAllocator_get(
         handle: *const HandleNCollectionHeapAllocator,
@@ -4529,6 +4591,10 @@ extern "C" {
     pub fn HandleNCollectionIncAllocator_clone(
         self_: *const HandleNCollectionIncAllocator,
     ) -> crate::OcctResult<*mut HandleNCollectionIncAllocator>;
+    /// Check if Handle<NCollection_IncAllocator> is null
+    pub fn HandleNCollectionIncAllocator_is_null(
+        self_: *const HandleNCollectionIncAllocator,
+    ) -> bool;
     /// Dereference Handle to get *const NCollection_IncAllocator
     pub fn HandleNCollectionIncAllocator_get(
         handle: *const HandleNCollectionIncAllocator,
@@ -4679,6 +4745,10 @@ extern "C" {
     pub fn HandleNCollectionWinHeapAllocator_clone(
         self_: *const HandleNCollectionWinHeapAllocator,
     ) -> crate::OcctResult<*mut HandleNCollectionWinHeapAllocator>;
+    /// Check if Handle<NCollection_WinHeapAllocator> is null
+    pub fn HandleNCollectionWinHeapAllocator_is_null(
+        self_: *const HandleNCollectionWinHeapAllocator,
+    ) -> bool;
     /// Dereference Handle to get *const NCollection_WinHeapAllocator
     pub fn HandleNCollectionWinHeapAllocator_get(
         handle: *const HandleNCollectionWinHeapAllocator,
@@ -4811,6 +4881,8 @@ extern "C" {
     pub fn HandleOSDCachedFileSystem_clone(
         self_: *const HandleOSDCachedFileSystem,
     ) -> crate::OcctResult<*mut HandleOSDCachedFileSystem>;
+    /// Check if Handle<OSD_CachedFileSystem> is null
+    pub fn HandleOSDCachedFileSystem_is_null(self_: *const HandleOSDCachedFileSystem) -> bool;
     /// Dereference Handle to get *const OSD_CachedFileSystem
     pub fn HandleOSDCachedFileSystem_get(
         handle: *const HandleOSDCachedFileSystem,
@@ -5187,6 +5259,8 @@ extern "C" {
     pub fn HandleOSDException_clone(
         self_: *const HandleOSDException,
     ) -> crate::OcctResult<*mut HandleOSDException>;
+    /// Check if Handle<OSD_Exception> is null
+    pub fn HandleOSDException_is_null(self_: *const HandleOSDException) -> bool;
     /// Dereference Handle to get *const OSD_Exception
     pub fn HandleOSDException_get(
         handle: *const HandleOSDException,
@@ -5361,6 +5435,10 @@ extern "C" {
     pub fn HandleOSDExceptionACCESSVIOLATION_clone(
         self_: *const HandleOSDExceptionACCESSVIOLATION,
     ) -> crate::OcctResult<*mut HandleOSDExceptionACCESSVIOLATION>;
+    /// Check if Handle<OSD_Exception_ACCESS_VIOLATION> is null
+    pub fn HandleOSDExceptionACCESSVIOLATION_is_null(
+        self_: *const HandleOSDExceptionACCESSVIOLATION,
+    ) -> bool;
     /// Dereference Handle to get *const OSD_Exception_ACCESS_VIOLATION
     pub fn HandleOSDExceptionACCESSVIOLATION_get(
         handle: *const HandleOSDExceptionACCESSVIOLATION,
@@ -5503,6 +5581,10 @@ extern "C" {
     pub fn HandleOSDExceptionARRAYBOUNDSEXCEEDED_clone(
         self_: *const HandleOSDExceptionARRAYBOUNDSEXCEEDED,
     ) -> crate::OcctResult<*mut HandleOSDExceptionARRAYBOUNDSEXCEEDED>;
+    /// Check if Handle<OSD_Exception_ARRAY_BOUNDS_EXCEEDED> is null
+    pub fn HandleOSDExceptionARRAYBOUNDSEXCEEDED_is_null(
+        self_: *const HandleOSDExceptionARRAYBOUNDSEXCEEDED,
+    ) -> bool;
     /// Dereference Handle to get *const OSD_Exception_ARRAY_BOUNDS_EXCEEDED
     pub fn HandleOSDExceptionARRAYBOUNDSEXCEEDED_get(
         handle: *const HandleOSDExceptionARRAYBOUNDSEXCEEDED,
@@ -5639,6 +5721,8 @@ extern "C" {
     pub fn HandleOSDExceptionCTRLBREAK_clone(
         self_: *const HandleOSDExceptionCTRLBREAK,
     ) -> crate::OcctResult<*mut HandleOSDExceptionCTRLBREAK>;
+    /// Check if Handle<OSD_Exception_CTRL_BREAK> is null
+    pub fn HandleOSDExceptionCTRLBREAK_is_null(self_: *const HandleOSDExceptionCTRLBREAK) -> bool;
     /// Dereference Handle to get *const OSD_Exception_CTRL_BREAK
     pub fn HandleOSDExceptionCTRLBREAK_get(
         handle: *const HandleOSDExceptionCTRLBREAK,
@@ -5781,6 +5865,10 @@ extern "C" {
     pub fn HandleOSDExceptionILLEGALINSTRUCTION_clone(
         self_: *const HandleOSDExceptionILLEGALINSTRUCTION,
     ) -> crate::OcctResult<*mut HandleOSDExceptionILLEGALINSTRUCTION>;
+    /// Check if Handle<OSD_Exception_ILLEGAL_INSTRUCTION> is null
+    pub fn HandleOSDExceptionILLEGALINSTRUCTION_is_null(
+        self_: *const HandleOSDExceptionILLEGALINSTRUCTION,
+    ) -> bool;
     /// Dereference Handle to get *const OSD_Exception_ILLEGAL_INSTRUCTION
     pub fn HandleOSDExceptionILLEGALINSTRUCTION_get(
         handle: *const HandleOSDExceptionILLEGALINSTRUCTION,
@@ -5917,6 +6005,10 @@ extern "C" {
     pub fn HandleOSDExceptionINTOVERFLOW_clone(
         self_: *const HandleOSDExceptionINTOVERFLOW,
     ) -> crate::OcctResult<*mut HandleOSDExceptionINTOVERFLOW>;
+    /// Check if Handle<OSD_Exception_INT_OVERFLOW> is null
+    pub fn HandleOSDExceptionINTOVERFLOW_is_null(
+        self_: *const HandleOSDExceptionINTOVERFLOW,
+    ) -> bool;
     /// Dereference Handle to get *const OSD_Exception_INT_OVERFLOW
     pub fn HandleOSDExceptionINTOVERFLOW_get(
         handle: *const HandleOSDExceptionINTOVERFLOW,
@@ -6059,6 +6151,10 @@ extern "C" {
     pub fn HandleOSDExceptionINVALIDDISPOSITION_clone(
         self_: *const HandleOSDExceptionINVALIDDISPOSITION,
     ) -> crate::OcctResult<*mut HandleOSDExceptionINVALIDDISPOSITION>;
+    /// Check if Handle<OSD_Exception_INVALID_DISPOSITION> is null
+    pub fn HandleOSDExceptionINVALIDDISPOSITION_is_null(
+        self_: *const HandleOSDExceptionINVALIDDISPOSITION,
+    ) -> bool;
     /// Dereference Handle to get *const OSD_Exception_INVALID_DISPOSITION
     pub fn HandleOSDExceptionINVALIDDISPOSITION_get(
         handle: *const HandleOSDExceptionINVALIDDISPOSITION,
@@ -6195,6 +6291,10 @@ extern "C" {
     pub fn HandleOSDExceptionINPAGEERROR_clone(
         self_: *const HandleOSDExceptionINPAGEERROR,
     ) -> crate::OcctResult<*mut HandleOSDExceptionINPAGEERROR>;
+    /// Check if Handle<OSD_Exception_IN_PAGE_ERROR> is null
+    pub fn HandleOSDExceptionINPAGEERROR_is_null(
+        self_: *const HandleOSDExceptionINPAGEERROR,
+    ) -> bool;
     /// Dereference Handle to get *const OSD_Exception_IN_PAGE_ERROR
     pub fn HandleOSDExceptionINPAGEERROR_get(
         handle: *const HandleOSDExceptionINPAGEERROR,
@@ -6337,6 +6437,10 @@ extern "C" {
     pub fn HandleOSDExceptionNONCONTINUABLEEXCEPTION_clone(
         self_: *const HandleOSDExceptionNONCONTINUABLEEXCEPTION,
     ) -> crate::OcctResult<*mut HandleOSDExceptionNONCONTINUABLEEXCEPTION>;
+    /// Check if Handle<OSD_Exception_NONCONTINUABLE_EXCEPTION> is null
+    pub fn HandleOSDExceptionNONCONTINUABLEEXCEPTION_is_null(
+        self_: *const HandleOSDExceptionNONCONTINUABLEEXCEPTION,
+    ) -> bool;
     /// Dereference Handle to get *const OSD_Exception_NONCONTINUABLE_EXCEPTION
     pub fn HandleOSDExceptionNONCONTINUABLEEXCEPTION_get(
         handle: *const HandleOSDExceptionNONCONTINUABLEEXCEPTION,
@@ -6477,6 +6581,10 @@ extern "C" {
     pub fn HandleOSDExceptionPRIVINSTRUCTION_clone(
         self_: *const HandleOSDExceptionPRIVINSTRUCTION,
     ) -> crate::OcctResult<*mut HandleOSDExceptionPRIVINSTRUCTION>;
+    /// Check if Handle<OSD_Exception_PRIV_INSTRUCTION> is null
+    pub fn HandleOSDExceptionPRIVINSTRUCTION_is_null(
+        self_: *const HandleOSDExceptionPRIVINSTRUCTION,
+    ) -> bool;
     /// Dereference Handle to get *const OSD_Exception_PRIV_INSTRUCTION
     pub fn HandleOSDExceptionPRIVINSTRUCTION_get(
         handle: *const HandleOSDExceptionPRIVINSTRUCTION,
@@ -6614,6 +6722,10 @@ extern "C" {
     pub fn HandleOSDExceptionSTACKOVERFLOW_clone(
         self_: *const HandleOSDExceptionSTACKOVERFLOW,
     ) -> crate::OcctResult<*mut HandleOSDExceptionSTACKOVERFLOW>;
+    /// Check if Handle<OSD_Exception_STACK_OVERFLOW> is null
+    pub fn HandleOSDExceptionSTACKOVERFLOW_is_null(
+        self_: *const HandleOSDExceptionSTACKOVERFLOW,
+    ) -> bool;
     /// Dereference Handle to get *const OSD_Exception_STACK_OVERFLOW
     pub fn HandleOSDExceptionSTACKOVERFLOW_get(
         handle: *const HandleOSDExceptionSTACKOVERFLOW,
@@ -6754,6 +6866,10 @@ extern "C" {
     pub fn HandleOSDExceptionSTATUSNOMEMORY_clone(
         self_: *const HandleOSDExceptionSTATUSNOMEMORY,
     ) -> crate::OcctResult<*mut HandleOSDExceptionSTATUSNOMEMORY>;
+    /// Check if Handle<OSD_Exception_STATUS_NO_MEMORY> is null
+    pub fn HandleOSDExceptionSTATUSNOMEMORY_is_null(
+        self_: *const HandleOSDExceptionSTATUSNOMEMORY,
+    ) -> bool;
     /// Dereference Handle to get *const OSD_Exception_STATUS_NO_MEMORY
     pub fn HandleOSDExceptionSTATUSNOMEMORY_get(
         handle: *const HandleOSDExceptionSTATUSNOMEMORY,
@@ -7131,6 +7247,8 @@ extern "C" {
     pub fn HandleOSDFileSystem_clone(
         self_: *const HandleOSDFileSystem,
     ) -> crate::OcctResult<*mut HandleOSDFileSystem>;
+    /// Check if Handle<OSD_FileSystem> is null
+    pub fn HandleOSDFileSystem_is_null(self_: *const HandleOSDFileSystem) -> bool;
     /// Dereference Handle to get *const OSD_FileSystem
     pub fn HandleOSDFileSystem_get(
         handle: *const HandleOSDFileSystem,
@@ -7271,6 +7389,8 @@ extern "C" {
     pub fn HandleOSDFileSystemSelector_clone(
         self_: *const HandleOSDFileSystemSelector,
     ) -> crate::OcctResult<*mut HandleOSDFileSystemSelector>;
+    /// Check if Handle<OSD_FileSystemSelector> is null
+    pub fn HandleOSDFileSystemSelector_is_null(self_: *const HandleOSDFileSystemSelector) -> bool;
     /// Dereference Handle to get *const OSD_FileSystemSelector
     pub fn HandleOSDFileSystemSelector_get(
         handle: *const HandleOSDFileSystemSelector,
@@ -7408,6 +7528,8 @@ extern "C" {
     pub fn HandleOSDLocalFileSystem_clone(
         self_: *const HandleOSDLocalFileSystem,
     ) -> crate::OcctResult<*mut HandleOSDLocalFileSystem>;
+    /// Check if Handle<OSD_LocalFileSystem> is null
+    pub fn HandleOSDLocalFileSystem_is_null(self_: *const HandleOSDLocalFileSystem) -> bool;
     /// Dereference Handle to get *const OSD_LocalFileSystem
     pub fn HandleOSDLocalFileSystem_get(
         handle: *const HandleOSDLocalFileSystem,
@@ -7672,6 +7794,8 @@ extern "C" {
     pub fn HandleOSDOSDError_clone(
         self_: *const HandleOSDOSDError,
     ) -> crate::OcctResult<*mut HandleOSDOSDError>;
+    /// Check if Handle<OSD_OSDError> is null
+    pub fn HandleOSDOSDError_is_null(self_: *const HandleOSDOSDError) -> bool;
     /// Dereference Handle to get *const OSD_OSDError
     pub fn HandleOSDOSDError_get(
         handle: *const HandleOSDOSDError,
@@ -8129,6 +8253,8 @@ extern "C" {
     pub fn HandleOSDSIGBUS_clone(
         self_: *const HandleOSDSIGBUS,
     ) -> crate::OcctResult<*mut HandleOSDSIGBUS>;
+    /// Check if Handle<OSD_SIGBUS> is null
+    pub fn HandleOSDSIGBUS_is_null(self_: *const HandleOSDSIGBUS) -> bool;
     /// Dereference Handle to get *const OSD_SIGBUS
     pub fn HandleOSDSIGBUS_get(
         handle: *const HandleOSDSIGBUS,
@@ -8251,6 +8377,8 @@ extern "C" {
     pub fn HandleOSDSIGHUP_clone(
         self_: *const HandleOSDSIGHUP,
     ) -> crate::OcctResult<*mut HandleOSDSIGHUP>;
+    /// Check if Handle<OSD_SIGHUP> is null
+    pub fn HandleOSDSIGHUP_is_null(self_: *const HandleOSDSIGHUP) -> bool;
     /// Dereference Handle to get *const OSD_SIGHUP
     pub fn HandleOSDSIGHUP_get(
         handle: *const HandleOSDSIGHUP,
@@ -8373,6 +8501,8 @@ extern "C" {
     pub fn HandleOSDSIGILL_clone(
         self_: *const HandleOSDSIGILL,
     ) -> crate::OcctResult<*mut HandleOSDSIGILL>;
+    /// Check if Handle<OSD_SIGILL> is null
+    pub fn HandleOSDSIGILL_is_null(self_: *const HandleOSDSIGILL) -> bool;
     /// Dereference Handle to get *const OSD_SIGILL
     pub fn HandleOSDSIGILL_get(
         handle: *const HandleOSDSIGILL,
@@ -8495,6 +8625,8 @@ extern "C" {
     pub fn HandleOSDSIGINT_clone(
         self_: *const HandleOSDSIGINT,
     ) -> crate::OcctResult<*mut HandleOSDSIGINT>;
+    /// Check if Handle<OSD_SIGINT> is null
+    pub fn HandleOSDSIGINT_is_null(self_: *const HandleOSDSIGINT) -> bool;
     /// Dereference Handle to get *const OSD_SIGINT
     pub fn HandleOSDSIGINT_get(
         handle: *const HandleOSDSIGINT,
@@ -8619,6 +8751,8 @@ extern "C" {
     pub fn HandleOSDSIGKILL_clone(
         self_: *const HandleOSDSIGKILL,
     ) -> crate::OcctResult<*mut HandleOSDSIGKILL>;
+    /// Check if Handle<OSD_SIGKILL> is null
+    pub fn HandleOSDSIGKILL_is_null(self_: *const HandleOSDSIGKILL) -> bool;
     /// Dereference Handle to get *const OSD_SIGKILL
     pub fn HandleOSDSIGKILL_get(
         handle: *const HandleOSDSIGKILL,
@@ -8743,6 +8877,8 @@ extern "C" {
     pub fn HandleOSDSIGQUIT_clone(
         self_: *const HandleOSDSIGQUIT,
     ) -> crate::OcctResult<*mut HandleOSDSIGQUIT>;
+    /// Check if Handle<OSD_SIGQUIT> is null
+    pub fn HandleOSDSIGQUIT_is_null(self_: *const HandleOSDSIGQUIT) -> bool;
     /// Dereference Handle to get *const OSD_SIGQUIT
     pub fn HandleOSDSIGQUIT_get(
         handle: *const HandleOSDSIGQUIT,
@@ -8867,6 +9003,8 @@ extern "C" {
     pub fn HandleOSDSIGSEGV_clone(
         self_: *const HandleOSDSIGSEGV,
     ) -> crate::OcctResult<*mut HandleOSDSIGSEGV>;
+    /// Check if Handle<OSD_SIGSEGV> is null
+    pub fn HandleOSDSIGSEGV_is_null(self_: *const HandleOSDSIGSEGV) -> bool;
     /// Dereference Handle to get *const OSD_SIGSEGV
     pub fn HandleOSDSIGSEGV_get(
         handle: *const HandleOSDSIGSEGV,
@@ -8989,6 +9127,8 @@ extern "C" {
     pub fn HandleOSDSIGSYS_clone(
         self_: *const HandleOSDSIGSYS,
     ) -> crate::OcctResult<*mut HandleOSDSIGSYS>;
+    /// Check if Handle<OSD_SIGSYS> is null
+    pub fn HandleOSDSIGSYS_is_null(self_: *const HandleOSDSIGSYS) -> bool;
     /// Dereference Handle to get *const OSD_SIGSYS
     pub fn HandleOSDSIGSYS_get(
         handle: *const HandleOSDSIGSYS,
@@ -9133,6 +9273,8 @@ extern "C" {
     pub fn HandleOSDSignal_clone(
         self_: *const HandleOSDSignal,
     ) -> crate::OcctResult<*mut HandleOSDSignal>;
+    /// Check if Handle<OSD_Signal> is null
+    pub fn HandleOSDSignal_is_null(self_: *const HandleOSDSignal) -> bool;
     /// Dereference Handle to get *const OSD_Signal
     pub fn HandleOSDSignal_get(
         handle: *const HandleOSDSignal,
@@ -9319,6 +9461,8 @@ extern "C" {
     pub fn HandleOSDThreadPool_clone(
         self_: *const HandleOSDThreadPool,
     ) -> crate::OcctResult<*mut HandleOSDThreadPool>;
+    /// Check if Handle<OSD_ThreadPool> is null
+    pub fn HandleOSDThreadPool_is_null(self_: *const HandleOSDThreadPool) -> bool;
     /// Dereference Handle to get *const OSD_ThreadPool
     pub fn HandleOSDThreadPool_get(
         handle: *const HandleOSDThreadPool,
@@ -9509,6 +9653,8 @@ extern "C" {
     pub fn HandlePluginFailure_clone(
         self_: *const HandlePluginFailure,
     ) -> crate::OcctResult<*mut HandlePluginFailure>;
+    /// Check if Handle<Plugin_Failure> is null
+    pub fn HandlePluginFailure_is_null(self_: *const HandlePluginFailure) -> bool;
     /// Dereference Handle to get *const Plugin_Failure
     pub fn HandlePluginFailure_get(
         handle: *const HandlePluginFailure,
@@ -10039,6 +10185,10 @@ extern "C" {
     pub fn HandleQuantityDateDefinitionError_clone(
         self_: *const HandleQuantityDateDefinitionError,
     ) -> crate::OcctResult<*mut HandleQuantityDateDefinitionError>;
+    /// Check if Handle<Quantity_DateDefinitionError> is null
+    pub fn HandleQuantityDateDefinitionError_is_null(
+        self_: *const HandleQuantityDateDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Quantity_DateDefinitionError
     pub fn HandleQuantityDateDefinitionError_get(
         handle: *const HandleQuantityDateDefinitionError,
@@ -10163,6 +10313,9 @@ extern "C" {
     pub fn HandleQuantityHArray1OfColor_clone(
         self_: *const HandleQuantityHArray1OfColor,
     ) -> crate::OcctResult<*mut HandleQuantityHArray1OfColor>;
+    /// Check if Handle<Quantity_HArray1OfColor> is null
+    pub fn HandleQuantityHArray1OfColor_is_null(self_: *const HandleQuantityHArray1OfColor)
+        -> bool;
     /// Dereference Handle to get *const Quantity_HArray1OfColor
     pub fn HandleQuantityHArray1OfColor_get(
         handle: *const HandleQuantityHArray1OfColor,
@@ -10364,6 +10517,10 @@ extern "C" {
     pub fn HandleQuantityPeriodDefinitionError_clone(
         self_: *const HandleQuantityPeriodDefinitionError,
     ) -> crate::OcctResult<*mut HandleQuantityPeriodDefinitionError>;
+    /// Check if Handle<Quantity_PeriodDefinitionError> is null
+    pub fn HandleQuantityPeriodDefinitionError_is_null(
+        self_: *const HandleQuantityPeriodDefinitionError,
+    ) -> bool;
     /// Dereference Handle to get *const Quantity_PeriodDefinitionError
     pub fn HandleQuantityPeriodDefinitionError_get(
         handle: *const HandleQuantityPeriodDefinitionError,
@@ -10551,6 +10708,8 @@ extern "C" {
     pub fn HandleResourceManager_clone(
         self_: *const HandleResourceManager,
     ) -> crate::OcctResult<*mut HandleResourceManager>;
+    /// Check if Handle<Resource_Manager> is null
+    pub fn HandleResourceManager_is_null(self_: *const HandleResourceManager) -> bool;
     /// Dereference Handle to get *const Resource_Manager
     pub fn HandleResourceManager_get(
         handle: *const HandleResourceManager,
@@ -10674,6 +10833,9 @@ extern "C" {
     pub fn HandleResourceNoSuchResource_clone(
         self_: *const HandleResourceNoSuchResource,
     ) -> crate::OcctResult<*mut HandleResourceNoSuchResource>;
+    /// Check if Handle<Resource_NoSuchResource> is null
+    pub fn HandleResourceNoSuchResource_is_null(self_: *const HandleResourceNoSuchResource)
+        -> bool;
     /// Dereference Handle to get *const Resource_NoSuchResource
     pub fn HandleResourceNoSuchResource_get(
         handle: *const HandleResourceNoSuchResource,
@@ -10892,6 +11054,10 @@ extern "C" {
     pub fn HandleStandardAbortiveTransaction_clone(
         self_: *const HandleStandardAbortiveTransaction,
     ) -> crate::OcctResult<*mut HandleStandardAbortiveTransaction>;
+    /// Check if Handle<Standard_AbortiveTransaction> is null
+    pub fn HandleStandardAbortiveTransaction_is_null(
+        self_: *const HandleStandardAbortiveTransaction,
+    ) -> bool;
     /// Dereference Handle to get *const Standard_AbortiveTransaction
     pub fn HandleStandardAbortiveTransaction_get(
         handle: *const HandleStandardAbortiveTransaction,
@@ -11067,6 +11233,10 @@ extern "C" {
     pub fn HandleStandardConstructionError_clone(
         self_: *const HandleStandardConstructionError,
     ) -> crate::OcctResult<*mut HandleStandardConstructionError>;
+    /// Check if Handle<Standard_ConstructionError> is null
+    pub fn HandleStandardConstructionError_is_null(
+        self_: *const HandleStandardConstructionError,
+    ) -> bool;
     /// Dereference Handle to get *const Standard_ConstructionError
     pub fn HandleStandardConstructionError_get(
         handle: *const HandleStandardConstructionError,
@@ -11203,6 +11373,9 @@ extern "C" {
     pub fn HandleStandardDimensionError_clone(
         self_: *const HandleStandardDimensionError,
     ) -> crate::OcctResult<*mut HandleStandardDimensionError>;
+    /// Check if Handle<Standard_DimensionError> is null
+    pub fn HandleStandardDimensionError_is_null(self_: *const HandleStandardDimensionError)
+        -> bool;
     /// Dereference Handle to get *const Standard_DimensionError
     pub fn HandleStandardDimensionError_get(
         handle: *const HandleStandardDimensionError,
@@ -11355,6 +11528,10 @@ extern "C" {
     pub fn HandleStandardDimensionMismatch_clone(
         self_: *const HandleStandardDimensionMismatch,
     ) -> crate::OcctResult<*mut HandleStandardDimensionMismatch>;
+    /// Check if Handle<Standard_DimensionMismatch> is null
+    pub fn HandleStandardDimensionMismatch_is_null(
+        self_: *const HandleStandardDimensionMismatch,
+    ) -> bool;
     /// Dereference Handle to get *const Standard_DimensionMismatch
     pub fn HandleStandardDimensionMismatch_get(
         handle: *const HandleStandardDimensionMismatch,
@@ -11495,6 +11672,8 @@ extern "C" {
     pub fn HandleStandardDivideByZero_clone(
         self_: *const HandleStandardDivideByZero,
     ) -> crate::OcctResult<*mut HandleStandardDivideByZero>;
+    /// Check if Handle<Standard_DivideByZero> is null
+    pub fn HandleStandardDivideByZero_is_null(self_: *const HandleStandardDivideByZero) -> bool;
     /// Dereference Handle to get *const Standard_DivideByZero
     pub fn HandleStandardDivideByZero_get(
         handle: *const HandleStandardDivideByZero,
@@ -11622,6 +11801,8 @@ extern "C" {
     pub fn HandleStandardDomainError_clone(
         self_: *const HandleStandardDomainError,
     ) -> crate::OcctResult<*mut HandleStandardDomainError>;
+    /// Check if Handle<Standard_DomainError> is null
+    pub fn HandleStandardDomainError_is_null(self_: *const HandleStandardDomainError) -> bool;
     /// Dereference Handle to get *const Standard_DomainError
     pub fn HandleStandardDomainError_get(
         handle: *const HandleStandardDomainError,
@@ -12112,6 +12293,8 @@ extern "C" {
     pub fn HandleStandardFailure_clone(
         self_: *const HandleStandardFailure,
     ) -> crate::OcctResult<*mut HandleStandardFailure>;
+    /// Check if Handle<Standard_Failure> is null
+    pub fn HandleStandardFailure_is_null(self_: *const HandleStandardFailure) -> bool;
     /// Dereference Handle to get *const Standard_Failure
     pub fn HandleStandardFailure_get(
         handle: *const HandleStandardFailure,
@@ -12738,6 +12921,10 @@ extern "C" {
     pub fn HandleStandardImmutableObject_clone(
         self_: *const HandleStandardImmutableObject,
     ) -> crate::OcctResult<*mut HandleStandardImmutableObject>;
+    /// Check if Handle<Standard_ImmutableObject> is null
+    pub fn HandleStandardImmutableObject_is_null(
+        self_: *const HandleStandardImmutableObject,
+    ) -> bool;
     /// Dereference Handle to get *const Standard_ImmutableObject
     pub fn HandleStandardImmutableObject_get(
         handle: *const HandleStandardImmutableObject,
@@ -12866,6 +13053,8 @@ extern "C" {
     pub fn HandleStandardLicenseError_clone(
         self_: *const HandleStandardLicenseError,
     ) -> crate::OcctResult<*mut HandleStandardLicenseError>;
+    /// Check if Handle<Standard_LicenseError> is null
+    pub fn HandleStandardLicenseError_is_null(self_: *const HandleStandardLicenseError) -> bool;
     /// Dereference Handle to get *const Standard_LicenseError
     pub fn HandleStandardLicenseError_get(
         handle: *const HandleStandardLicenseError,
@@ -13002,6 +13191,10 @@ extern "C" {
     pub fn HandleStandardLicenseNotFound_clone(
         self_: *const HandleStandardLicenseNotFound,
     ) -> crate::OcctResult<*mut HandleStandardLicenseNotFound>;
+    /// Check if Handle<Standard_LicenseNotFound> is null
+    pub fn HandleStandardLicenseNotFound_is_null(
+        self_: *const HandleStandardLicenseNotFound,
+    ) -> bool;
     /// Dereference Handle to get *const Standard_LicenseNotFound
     pub fn HandleStandardLicenseNotFound_get(
         handle: *const HandleStandardLicenseNotFound,
@@ -13204,6 +13397,10 @@ extern "C" {
     pub fn HandleStandardMultiplyDefined_clone(
         self_: *const HandleStandardMultiplyDefined,
     ) -> crate::OcctResult<*mut HandleStandardMultiplyDefined>;
+    /// Check if Handle<Standard_MultiplyDefined> is null
+    pub fn HandleStandardMultiplyDefined_is_null(
+        self_: *const HandleStandardMultiplyDefined,
+    ) -> bool;
     /// Dereference Handle to get *const Standard_MultiplyDefined
     pub fn HandleStandardMultiplyDefined_get(
         handle: *const HandleStandardMultiplyDefined,
@@ -13384,6 +13581,8 @@ extern "C" {
     pub fn HandleStandardNegativeValue_clone(
         self_: *const HandleStandardNegativeValue,
     ) -> crate::OcctResult<*mut HandleStandardNegativeValue>;
+    /// Check if Handle<Standard_NegativeValue> is null
+    pub fn HandleStandardNegativeValue_is_null(self_: *const HandleStandardNegativeValue) -> bool;
     /// Dereference Handle to get *const Standard_NegativeValue
     pub fn HandleStandardNegativeValue_get(
         handle: *const HandleStandardNegativeValue,
@@ -13524,6 +13723,8 @@ extern "C" {
     pub fn HandleStandardNoMoreObject_clone(
         self_: *const HandleStandardNoMoreObject,
     ) -> crate::OcctResult<*mut HandleStandardNoMoreObject>;
+    /// Check if Handle<Standard_NoMoreObject> is null
+    pub fn HandleStandardNoMoreObject_is_null(self_: *const HandleStandardNoMoreObject) -> bool;
     /// Dereference Handle to get *const Standard_NoMoreObject
     pub fn HandleStandardNoMoreObject_get(
         handle: *const HandleStandardNoMoreObject,
@@ -13660,6 +13861,8 @@ extern "C" {
     pub fn HandleStandardNoSuchObject_clone(
         self_: *const HandleStandardNoSuchObject,
     ) -> crate::OcctResult<*mut HandleStandardNoSuchObject>;
+    /// Check if Handle<Standard_NoSuchObject> is null
+    pub fn HandleStandardNoSuchObject_is_null(self_: *const HandleStandardNoSuchObject) -> bool;
     /// Dereference Handle to get *const Standard_NoSuchObject
     pub fn HandleStandardNoSuchObject_get(
         handle: *const HandleStandardNoSuchObject,
@@ -13808,6 +14011,9 @@ extern "C" {
     pub fn HandleStandardNotImplemented_clone(
         self_: *const HandleStandardNotImplemented,
     ) -> crate::OcctResult<*mut HandleStandardNotImplemented>;
+    /// Check if Handle<Standard_NotImplemented> is null
+    pub fn HandleStandardNotImplemented_is_null(self_: *const HandleStandardNotImplemented)
+        -> bool;
     /// Dereference Handle to get *const Standard_NotImplemented
     pub fn HandleStandardNotImplemented_get(
         handle: *const HandleStandardNotImplemented,
@@ -13943,6 +14149,8 @@ extern "C" {
     pub fn HandleStandardNullObject_clone(
         self_: *const HandleStandardNullObject,
     ) -> crate::OcctResult<*mut HandleStandardNullObject>;
+    /// Check if Handle<Standard_NullObject> is null
+    pub fn HandleStandardNullObject_is_null(self_: *const HandleStandardNullObject) -> bool;
     /// Dereference Handle to get *const Standard_NullObject
     pub fn HandleStandardNullObject_get(
         handle: *const HandleStandardNullObject,
@@ -14086,6 +14294,8 @@ extern "C" {
     pub fn HandleStandardNullValue_clone(
         self_: *const HandleStandardNullValue,
     ) -> crate::OcctResult<*mut HandleStandardNullValue>;
+    /// Check if Handle<Standard_NullValue> is null
+    pub fn HandleStandardNullValue_is_null(self_: *const HandleStandardNullValue) -> bool;
     /// Dereference Handle to get *const Standard_NullValue
     pub fn HandleStandardNullValue_get(
         handle: *const HandleStandardNullValue,
@@ -14218,6 +14428,8 @@ extern "C" {
     pub fn HandleStandardNumericError_clone(
         self_: *const HandleStandardNumericError,
     ) -> crate::OcctResult<*mut HandleStandardNumericError>;
+    /// Check if Handle<Standard_NumericError> is null
+    pub fn HandleStandardNumericError_is_null(self_: *const HandleStandardNumericError) -> bool;
     /// Dereference Handle to get *const Standard_NumericError
     pub fn HandleStandardNumericError_get(
         handle: *const HandleStandardNumericError,
@@ -14363,6 +14575,8 @@ extern "C" {
     pub fn HandleStandardOutOfMemory_clone(
         self_: *const HandleStandardOutOfMemory,
     ) -> crate::OcctResult<*mut HandleStandardOutOfMemory>;
+    /// Check if Handle<Standard_OutOfMemory> is null
+    pub fn HandleStandardOutOfMemory_is_null(self_: *const HandleStandardOutOfMemory) -> bool;
     /// Dereference Handle to get *const Standard_OutOfMemory
     pub fn HandleStandardOutOfMemory_get(
         handle: *const HandleStandardOutOfMemory,
@@ -14506,6 +14720,8 @@ extern "C" {
     pub fn HandleStandardOutOfRange_clone(
         self_: *const HandleStandardOutOfRange,
     ) -> crate::OcctResult<*mut HandleStandardOutOfRange>;
+    /// Check if Handle<Standard_OutOfRange> is null
+    pub fn HandleStandardOutOfRange_is_null(self_: *const HandleStandardOutOfRange) -> bool;
     /// Dereference Handle to get *const Standard_OutOfRange
     pub fn HandleStandardOutOfRange_get(
         handle: *const HandleStandardOutOfRange,
@@ -14697,6 +14913,8 @@ extern "C" {
     pub fn HandleStandardOverflow_clone(
         self_: *const HandleStandardOverflow,
     ) -> crate::OcctResult<*mut HandleStandardOverflow>;
+    /// Check if Handle<Standard_Overflow> is null
+    pub fn HandleStandardOverflow_is_null(self_: *const HandleStandardOverflow) -> bool;
     /// Dereference Handle to get *const Standard_Overflow
     pub fn HandleStandardOverflow_get(
         handle: *const HandleStandardOverflow,
@@ -14794,6 +15012,8 @@ extern "C" {
     pub fn HandleStandardPersistent_clone(
         self_: *const HandleStandardPersistent,
     ) -> crate::OcctResult<*mut HandleStandardPersistent>;
+    /// Check if Handle<Standard_Persistent> is null
+    pub fn HandleStandardPersistent_is_null(self_: *const HandleStandardPersistent) -> bool;
     /// Dereference Handle to get *const Standard_Persistent
     pub fn HandleStandardPersistent_get(
         handle: *const HandleStandardPersistent,
@@ -14905,6 +15125,8 @@ extern "C" {
     pub fn HandleStandardProgramError_clone(
         self_: *const HandleStandardProgramError,
     ) -> crate::OcctResult<*mut HandleStandardProgramError>;
+    /// Check if Handle<Standard_ProgramError> is null
+    pub fn HandleStandardProgramError_is_null(self_: *const HandleStandardProgramError) -> bool;
     /// Dereference Handle to get *const Standard_ProgramError
     pub fn HandleStandardProgramError_get(
         handle: *const HandleStandardProgramError,
@@ -15044,6 +15266,8 @@ extern "C" {
     pub fn HandleStandardRangeError_clone(
         self_: *const HandleStandardRangeError,
     ) -> crate::OcctResult<*mut HandleStandardRangeError>;
+    /// Check if Handle<Standard_RangeError> is null
+    pub fn HandleStandardRangeError_is_null(self_: *const HandleStandardRangeError) -> bool;
     /// Dereference Handle to get *const Standard_RangeError
     pub fn HandleStandardRangeError_get(
         handle: *const HandleStandardRangeError,
@@ -15278,6 +15502,8 @@ extern "C" {
     pub fn HandleStandardTransient_clone(
         self_: *const HandleStandardTransient,
     ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    /// Check if Handle<Standard_Transient> is null
+    pub fn HandleStandardTransient_is_null(self_: *const HandleStandardTransient) -> bool;
     /// Dereference Handle to get *const Standard_Transient
     pub fn HandleStandardTransient_get(
         handle: *const HandleStandardTransient,
@@ -25985,6 +26211,8 @@ extern "C" {
     pub fn HandleStandardType_clone(
         self_: *const HandleStandardType,
     ) -> crate::OcctResult<*mut HandleStandardType>;
+    /// Check if Handle<Standard_Type> is null
+    pub fn HandleStandardType_is_null(self_: *const HandleStandardType) -> bool;
     /// Dereference Handle to get *const Standard_Type
     pub fn HandleStandardType_get(
         handle: *const HandleStandardType,
@@ -26098,6 +26326,8 @@ extern "C" {
     pub fn HandleStandardTypeMismatch_clone(
         self_: *const HandleStandardTypeMismatch,
     ) -> crate::OcctResult<*mut HandleStandardTypeMismatch>;
+    /// Check if Handle<Standard_TypeMismatch> is null
+    pub fn HandleStandardTypeMismatch_is_null(self_: *const HandleStandardTypeMismatch) -> bool;
     /// Dereference Handle to get *const Standard_TypeMismatch
     pub fn HandleStandardTypeMismatch_get(
         handle: *const HandleStandardTypeMismatch,
@@ -26236,6 +26466,8 @@ extern "C" {
     pub fn HandleStandardUnderflow_clone(
         self_: *const HandleStandardUnderflow,
     ) -> crate::OcctResult<*mut HandleStandardUnderflow>;
+    /// Check if Handle<Standard_Underflow> is null
+    pub fn HandleStandardUnderflow_is_null(self_: *const HandleStandardUnderflow) -> bool;
     /// Dereference Handle to get *const Standard_Underflow
     pub fn HandleStandardUnderflow_get(
         handle: *const HandleStandardUnderflow,
@@ -26364,6 +26596,10 @@ extern "C" {
     pub fn HandleStdFailInfiniteSolutions_clone(
         self_: *const HandleStdFailInfiniteSolutions,
     ) -> crate::OcctResult<*mut HandleStdFailInfiniteSolutions>;
+    /// Check if Handle<StdFail_InfiniteSolutions> is null
+    pub fn HandleStdFailInfiniteSolutions_is_null(
+        self_: *const HandleStdFailInfiniteSolutions,
+    ) -> bool;
     /// Dereference Handle to get *const StdFail_InfiniteSolutions
     pub fn HandleStdFailInfiniteSolutions_get(
         handle: *const HandleStdFailInfiniteSolutions,
@@ -26487,6 +26723,8 @@ extern "C" {
     pub fn HandleStdFailNotDone_clone(
         self_: *const HandleStdFailNotDone,
     ) -> crate::OcctResult<*mut HandleStdFailNotDone>;
+    /// Check if Handle<StdFail_NotDone> is null
+    pub fn HandleStdFailNotDone_is_null(self_: *const HandleStdFailNotDone) -> bool;
     /// Dereference Handle to get *const StdFail_NotDone
     pub fn HandleStdFailNotDone_get(
         handle: *const HandleStdFailNotDone,
@@ -26608,6 +26846,8 @@ extern "C" {
     pub fn HandleStdFailUndefined_clone(
         self_: *const HandleStdFailUndefined,
     ) -> crate::OcctResult<*mut HandleStdFailUndefined>;
+    /// Check if Handle<StdFail_Undefined> is null
+    pub fn HandleStdFailUndefined_is_null(self_: *const HandleStdFailUndefined) -> bool;
     /// Dereference Handle to get *const StdFail_Undefined
     pub fn HandleStdFailUndefined_get(
         handle: *const HandleStdFailUndefined,
@@ -26742,6 +26982,10 @@ extern "C" {
     pub fn HandleStdFailUndefinedDerivative_clone(
         self_: *const HandleStdFailUndefinedDerivative,
     ) -> crate::OcctResult<*mut HandleStdFailUndefinedDerivative>;
+    /// Check if Handle<StdFail_UndefinedDerivative> is null
+    pub fn HandleStdFailUndefinedDerivative_is_null(
+        self_: *const HandleStdFailUndefinedDerivative,
+    ) -> bool;
     /// Dereference Handle to get *const StdFail_UndefinedDerivative
     pub fn HandleStdFailUndefinedDerivative_get(
         handle: *const HandleStdFailUndefinedDerivative,
@@ -26878,6 +27122,8 @@ extern "C" {
     pub fn HandleStdFailUndefinedValue_clone(
         self_: *const HandleStdFailUndefinedValue,
     ) -> crate::OcctResult<*mut HandleStdFailUndefinedValue>;
+    /// Check if Handle<StdFail_UndefinedValue> is null
+    pub fn HandleStdFailUndefinedValue_is_null(self_: *const HandleStdFailUndefinedValue) -> bool;
     /// Dereference Handle to get *const StdFail_UndefinedValue
     pub fn HandleStdFailUndefinedValue_get(
         handle: *const HandleStdFailUndefinedValue,
@@ -27311,6 +27557,8 @@ extern "C" {
     pub fn HandleStorageBaseDriver_clone(
         self_: *const HandleStorageBaseDriver,
     ) -> crate::OcctResult<*mut HandleStorageBaseDriver>;
+    /// Check if Handle<Storage_BaseDriver> is null
+    pub fn HandleStorageBaseDriver_is_null(self_: *const HandleStorageBaseDriver) -> bool;
     /// Dereference Handle to get *const Storage_BaseDriver
     pub fn HandleStorageBaseDriver_get(
         handle: *const HandleStorageBaseDriver,
@@ -27473,6 +27721,8 @@ extern "C" {
     pub fn HandleStorageCallBack_clone(
         self_: *const HandleStorageCallBack,
     ) -> crate::OcctResult<*mut HandleStorageCallBack>;
+    /// Check if Handle<Storage_CallBack> is null
+    pub fn HandleStorageCallBack_is_null(self_: *const HandleStorageCallBack) -> bool;
     /// Dereference Handle to get *const Storage_CallBack
     pub fn HandleStorageCallBack_get(
         handle: *const HandleStorageCallBack,
@@ -27681,6 +27931,8 @@ extern "C" {
     pub fn HandleStorageData_clone(
         self_: *const HandleStorageData,
     ) -> crate::OcctResult<*mut HandleStorageData>;
+    /// Check if Handle<Storage_Data> is null
+    pub fn HandleStorageData_is_null(self_: *const HandleStorageData) -> bool;
     /// Dereference Handle to get *const Storage_Data
     pub fn HandleStorageData_get(
         handle: *const HandleStorageData,
@@ -27783,6 +28035,9 @@ extern "C" {
     pub fn HandleStorageDefaultCallBack_clone(
         self_: *const HandleStorageDefaultCallBack,
     ) -> crate::OcctResult<*mut HandleStorageDefaultCallBack>;
+    /// Check if Handle<Storage_DefaultCallBack> is null
+    pub fn HandleStorageDefaultCallBack_is_null(self_: *const HandleStorageDefaultCallBack)
+        -> bool;
     /// Dereference Handle to get *const Storage_DefaultCallBack
     pub fn HandleStorageDefaultCallBack_get(
         handle: *const HandleStorageDefaultCallBack,
@@ -27890,6 +28145,10 @@ extern "C" {
     pub fn HandleStorageHArrayOfCallBack_clone(
         self_: *const HandleStorageHArrayOfCallBack,
     ) -> crate::OcctResult<*mut HandleStorageHArrayOfCallBack>;
+    /// Check if Handle<Storage_HArrayOfCallBack> is null
+    pub fn HandleStorageHArrayOfCallBack_is_null(
+        self_: *const HandleStorageHArrayOfCallBack,
+    ) -> bool;
     /// Dereference Handle to get *const Storage_HArrayOfCallBack
     pub fn HandleStorageHArrayOfCallBack_get(
         handle: *const HandleStorageHArrayOfCallBack,
@@ -27993,6 +28252,8 @@ extern "C" {
     pub fn HandleStorageHArrayOfSchema_clone(
         self_: *const HandleStorageHArrayOfSchema,
     ) -> crate::OcctResult<*mut HandleStorageHArrayOfSchema>;
+    /// Check if Handle<Storage_HArrayOfSchema> is null
+    pub fn HandleStorageHArrayOfSchema_is_null(self_: *const HandleStorageHArrayOfSchema) -> bool;
     /// Dereference Handle to get *const Storage_HArrayOfSchema
     pub fn HandleStorageHArrayOfSchema_get(
         handle: *const HandleStorageHArrayOfSchema,
@@ -28095,6 +28356,8 @@ extern "C" {
     pub fn HandleStorageHPArray_clone(
         self_: *const HandleStorageHPArray,
     ) -> crate::OcctResult<*mut HandleStorageHPArray>;
+    /// Check if Handle<Storage_HPArray> is null
+    pub fn HandleStorageHPArray_is_null(self_: *const HandleStorageHPArray) -> bool;
     /// Dereference Handle to get *const Storage_HPArray
     pub fn HandleStorageHPArray_get(
         handle: *const HandleStorageHPArray,
@@ -28189,6 +28452,8 @@ extern "C" {
     pub fn HandleStorageHSeqOfRoot_clone(
         self_: *const HandleStorageHSeqOfRoot,
     ) -> crate::OcctResult<*mut HandleStorageHSeqOfRoot>;
+    /// Check if Handle<Storage_HSeqOfRoot> is null
+    pub fn HandleStorageHSeqOfRoot_is_null(self_: *const HandleStorageHSeqOfRoot) -> bool;
     /// Dereference Handle to get *const Storage_HSeqOfRoot
     pub fn HandleStorageHSeqOfRoot_get(
         handle: *const HandleStorageHSeqOfRoot,
@@ -28373,6 +28638,8 @@ extern "C" {
     pub fn HandleStorageHeaderData_clone(
         self_: *const HandleStorageHeaderData,
     ) -> crate::OcctResult<*mut HandleStorageHeaderData>;
+    /// Check if Handle<Storage_HeaderData> is null
+    pub fn HandleStorageHeaderData_is_null(self_: *const HandleStorageHeaderData) -> bool;
     /// Dereference Handle to get *const Storage_HeaderData
     pub fn HandleStorageHeaderData_get(
         handle: *const HandleStorageHeaderData,
@@ -28451,6 +28718,8 @@ extern "C" {
     pub fn HandleStorageInternalData_clone(
         self_: *const HandleStorageInternalData,
     ) -> crate::OcctResult<*mut HandleStorageInternalData>;
+    /// Check if Handle<Storage_InternalData> is null
+    pub fn HandleStorageInternalData_is_null(self_: *const HandleStorageInternalData) -> bool;
     /// Dereference Handle to get *const Storage_InternalData
     pub fn HandleStorageInternalData_get(
         handle: *const HandleStorageInternalData,
@@ -28568,6 +28837,8 @@ extern "C" {
     pub fn HandleStorageRoot_clone(
         self_: *const HandleStorageRoot,
     ) -> crate::OcctResult<*mut HandleStorageRoot>;
+    /// Check if Handle<Storage_Root> is null
+    pub fn HandleStorageRoot_is_null(self_: *const HandleStorageRoot) -> bool;
     /// Dereference Handle to get *const Storage_Root
     pub fn HandleStorageRoot_get(
         handle: *const HandleStorageRoot,
@@ -28686,6 +28957,8 @@ extern "C" {
     pub fn HandleStorageRootData_clone(
         self_: *const HandleStorageRootData,
     ) -> crate::OcctResult<*mut HandleStorageRootData>;
+    /// Check if Handle<Storage_RootData> is null
+    pub fn HandleStorageRootData_is_null(self_: *const HandleStorageRootData) -> bool;
     /// Dereference Handle to get *const Storage_RootData
     pub fn HandleStorageRootData_get(
         handle: *const HandleStorageRootData,
@@ -28856,6 +29129,8 @@ extern "C" {
     pub fn HandleStorageSchema_clone(
         self_: *const HandleStorageSchema,
     ) -> crate::OcctResult<*mut HandleStorageSchema>;
+    /// Check if Handle<Storage_Schema> is null
+    pub fn HandleStorageSchema_is_null(self_: *const HandleStorageSchema) -> bool;
     /// Dereference Handle to get *const Storage_Schema
     pub fn HandleStorageSchema_get(
         handle: *const HandleStorageSchema,
@@ -28976,6 +29251,10 @@ extern "C" {
     pub fn HandleStorageStreamExtCharParityError_clone(
         self_: *const HandleStorageStreamExtCharParityError,
     ) -> crate::OcctResult<*mut HandleStorageStreamExtCharParityError>;
+    /// Check if Handle<Storage_StreamExtCharParityError> is null
+    pub fn HandleStorageStreamExtCharParityError_is_null(
+        self_: *const HandleStorageStreamExtCharParityError,
+    ) -> bool;
     /// Dereference Handle to get *const Storage_StreamExtCharParityError
     pub fn HandleStorageStreamExtCharParityError_get(
         handle: *const HandleStorageStreamExtCharParityError,
@@ -29104,6 +29383,10 @@ extern "C" {
     pub fn HandleStorageStreamFormatError_clone(
         self_: *const HandleStorageStreamFormatError,
     ) -> crate::OcctResult<*mut HandleStorageStreamFormatError>;
+    /// Check if Handle<Storage_StreamFormatError> is null
+    pub fn HandleStorageStreamFormatError_is_null(
+        self_: *const HandleStorageStreamFormatError,
+    ) -> bool;
     /// Dereference Handle to get *const Storage_StreamFormatError
     pub fn HandleStorageStreamFormatError_get(
         handle: *const HandleStorageStreamFormatError,
@@ -29228,6 +29511,9 @@ extern "C" {
     pub fn HandleStorageStreamModeError_clone(
         self_: *const HandleStorageStreamModeError,
     ) -> crate::OcctResult<*mut HandleStorageStreamModeError>;
+    /// Check if Handle<Storage_StreamModeError> is null
+    pub fn HandleStorageStreamModeError_is_null(self_: *const HandleStorageStreamModeError)
+        -> bool;
     /// Dereference Handle to get *const Storage_StreamModeError
     pub fn HandleStorageStreamModeError_get(
         handle: *const HandleStorageStreamModeError,
@@ -29352,6 +29638,9 @@ extern "C" {
     pub fn HandleStorageStreamReadError_clone(
         self_: *const HandleStorageStreamReadError,
     ) -> crate::OcctResult<*mut HandleStorageStreamReadError>;
+    /// Check if Handle<Storage_StreamReadError> is null
+    pub fn HandleStorageStreamReadError_is_null(self_: *const HandleStorageStreamReadError)
+        -> bool;
     /// Dereference Handle to get *const Storage_StreamReadError
     pub fn HandleStorageStreamReadError_get(
         handle: *const HandleStorageStreamReadError,
@@ -29500,6 +29789,10 @@ extern "C" {
     pub fn HandleStorageStreamTypeMismatchError_clone(
         self_: *const HandleStorageStreamTypeMismatchError,
     ) -> crate::OcctResult<*mut HandleStorageStreamTypeMismatchError>;
+    /// Check if Handle<Storage_StreamTypeMismatchError> is null
+    pub fn HandleStorageStreamTypeMismatchError_is_null(
+        self_: *const HandleStorageStreamTypeMismatchError,
+    ) -> bool;
     /// Dereference Handle to get *const Storage_StreamTypeMismatchError
     pub fn HandleStorageStreamTypeMismatchError_get(
         handle: *const HandleStorageStreamTypeMismatchError,
@@ -29640,6 +29933,10 @@ extern "C" {
     pub fn HandleStorageStreamUnknownTypeError_clone(
         self_: *const HandleStorageStreamUnknownTypeError,
     ) -> crate::OcctResult<*mut HandleStorageStreamUnknownTypeError>;
+    /// Check if Handle<Storage_StreamUnknownTypeError> is null
+    pub fn HandleStorageStreamUnknownTypeError_is_null(
+        self_: *const HandleStorageStreamUnknownTypeError,
+    ) -> bool;
     /// Dereference Handle to get *const Storage_StreamUnknownTypeError
     pub fn HandleStorageStreamUnknownTypeError_get(
         handle: *const HandleStorageStreamUnknownTypeError,
@@ -29768,6 +30065,10 @@ extern "C" {
     pub fn HandleStorageStreamWriteError_clone(
         self_: *const HandleStorageStreamWriteError,
     ) -> crate::OcctResult<*mut HandleStorageStreamWriteError>;
+    /// Check if Handle<Storage_StreamWriteError> is null
+    pub fn HandleStorageStreamWriteError_is_null(
+        self_: *const HandleStorageStreamWriteError,
+    ) -> bool;
     /// Dereference Handle to get *const Storage_StreamWriteError
     pub fn HandleStorageStreamWriteError_get(
         handle: *const HandleStorageStreamWriteError,
@@ -29903,6 +30204,8 @@ extern "C" {
     pub fn HandleStorageTypeData_clone(
         self_: *const HandleStorageTypeData,
     ) -> crate::OcctResult<*mut HandleStorageTypeData>;
+    /// Check if Handle<Storage_TypeData> is null
+    pub fn HandleStorageTypeData_is_null(self_: *const HandleStorageTypeData) -> bool;
     /// Dereference Handle to get *const Storage_TypeData
     pub fn HandleStorageTypeData_get(
         handle: *const HandleStorageTypeData,
@@ -30008,6 +30311,8 @@ extern "C" {
     pub fn HandleStorageTypedCallBack_clone(
         self_: *const HandleStorageTypedCallBack,
     ) -> crate::OcctResult<*mut HandleStorageTypedCallBack>;
+    /// Check if Handle<Storage_TypedCallBack> is null
+    pub fn HandleStorageTypedCallBack_is_null(self_: *const HandleStorageTypedCallBack) -> bool;
     /// Dereference Handle to get *const Storage_TypedCallBack
     pub fn HandleStorageTypedCallBack_get(
         handle: *const HandleStorageTypedCallBack,
@@ -30114,6 +30419,10 @@ extern "C" {
     pub fn HandleTColStdHArray1OfAsciiString_clone(
         self_: *const HandleTColStdHArray1OfAsciiString,
     ) -> crate::OcctResult<*mut HandleTColStdHArray1OfAsciiString>;
+    /// Check if Handle<TColStd_HArray1OfAsciiString> is null
+    pub fn HandleTColStdHArray1OfAsciiString_is_null(
+        self_: *const HandleTColStdHArray1OfAsciiString,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HArray1OfAsciiString
     pub fn HandleTColStdHArray1OfAsciiString_get(
         handle: *const HandleTColStdHArray1OfAsciiString,
@@ -30217,6 +30526,10 @@ extern "C" {
     pub fn HandleTColStdHArray1OfBoolean_clone(
         self_: *const HandleTColStdHArray1OfBoolean,
     ) -> crate::OcctResult<*mut HandleTColStdHArray1OfBoolean>;
+    /// Check if Handle<TColStd_HArray1OfBoolean> is null
+    pub fn HandleTColStdHArray1OfBoolean_is_null(
+        self_: *const HandleTColStdHArray1OfBoolean,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HArray1OfBoolean
     pub fn HandleTColStdHArray1OfBoolean_get(
         handle: *const HandleTColStdHArray1OfBoolean,
@@ -30320,6 +30633,8 @@ extern "C" {
     pub fn HandleTColStdHArray1OfByte_clone(
         self_: *const HandleTColStdHArray1OfByte,
     ) -> crate::OcctResult<*mut HandleTColStdHArray1OfByte>;
+    /// Check if Handle<TColStd_HArray1OfByte> is null
+    pub fn HandleTColStdHArray1OfByte_is_null(self_: *const HandleTColStdHArray1OfByte) -> bool;
     /// Dereference Handle to get *const TColStd_HArray1OfByte
     pub fn HandleTColStdHArray1OfByte_get(
         handle: *const HandleTColStdHArray1OfByte,
@@ -30423,6 +30738,10 @@ extern "C" {
     pub fn HandleTColStdHArray1OfCharacter_clone(
         self_: *const HandleTColStdHArray1OfCharacter,
     ) -> crate::OcctResult<*mut HandleTColStdHArray1OfCharacter>;
+    /// Check if Handle<TColStd_HArray1OfCharacter> is null
+    pub fn HandleTColStdHArray1OfCharacter_is_null(
+        self_: *const HandleTColStdHArray1OfCharacter,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HArray1OfCharacter
     pub fn HandleTColStdHArray1OfCharacter_get(
         handle: *const HandleTColStdHArray1OfCharacter,
@@ -30530,6 +30849,10 @@ extern "C" {
     pub fn HandleTColStdHArray1OfExtendedString_clone(
         self_: *const HandleTColStdHArray1OfExtendedString,
     ) -> crate::OcctResult<*mut HandleTColStdHArray1OfExtendedString>;
+    /// Check if Handle<TColStd_HArray1OfExtendedString> is null
+    pub fn HandleTColStdHArray1OfExtendedString_is_null(
+        self_: *const HandleTColStdHArray1OfExtendedString,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HArray1OfExtendedString
     pub fn HandleTColStdHArray1OfExtendedString_get(
         handle: *const HandleTColStdHArray1OfExtendedString,
@@ -30633,6 +30956,10 @@ extern "C" {
     pub fn HandleTColStdHArray1OfInteger_clone(
         self_: *const HandleTColStdHArray1OfInteger,
     ) -> crate::OcctResult<*mut HandleTColStdHArray1OfInteger>;
+    /// Check if Handle<TColStd_HArray1OfInteger> is null
+    pub fn HandleTColStdHArray1OfInteger_is_null(
+        self_: *const HandleTColStdHArray1OfInteger,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HArray1OfInteger
     pub fn HandleTColStdHArray1OfInteger_get(
         handle: *const HandleTColStdHArray1OfInteger,
@@ -30740,6 +31067,10 @@ extern "C" {
     pub fn HandleTColStdHArray1OfListOfInteger_clone(
         self_: *const HandleTColStdHArray1OfListOfInteger,
     ) -> crate::OcctResult<*mut HandleTColStdHArray1OfListOfInteger>;
+    /// Check if Handle<TColStd_HArray1OfListOfInteger> is null
+    pub fn HandleTColStdHArray1OfListOfInteger_is_null(
+        self_: *const HandleTColStdHArray1OfListOfInteger,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HArray1OfListOfInteger
     pub fn HandleTColStdHArray1OfListOfInteger_get(
         handle: *const HandleTColStdHArray1OfListOfInteger,
@@ -30843,6 +31174,8 @@ extern "C" {
     pub fn HandleTColStdHArray1OfReal_clone(
         self_: *const HandleTColStdHArray1OfReal,
     ) -> crate::OcctResult<*mut HandleTColStdHArray1OfReal>;
+    /// Check if Handle<TColStd_HArray1OfReal> is null
+    pub fn HandleTColStdHArray1OfReal_is_null(self_: *const HandleTColStdHArray1OfReal) -> bool;
     /// Dereference Handle to get *const TColStd_HArray1OfReal
     pub fn HandleTColStdHArray1OfReal_get(
         handle: *const HandleTColStdHArray1OfReal,
@@ -30946,6 +31279,10 @@ extern "C" {
     pub fn HandleTColStdHArray1OfTransient_clone(
         self_: *const HandleTColStdHArray1OfTransient,
     ) -> crate::OcctResult<*mut HandleTColStdHArray1OfTransient>;
+    /// Check if Handle<TColStd_HArray1OfTransient> is null
+    pub fn HandleTColStdHArray1OfTransient_is_null(
+        self_: *const HandleTColStdHArray1OfTransient,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HArray1OfTransient
     pub fn HandleTColStdHArray1OfTransient_get(
         handle: *const HandleTColStdHArray1OfTransient,
@@ -31044,6 +31381,10 @@ extern "C" {
     pub fn HandleTColStdHArray2OfBoolean_clone(
         self_: *const HandleTColStdHArray2OfBoolean,
     ) -> crate::OcctResult<*mut HandleTColStdHArray2OfBoolean>;
+    /// Check if Handle<TColStd_HArray2OfBoolean> is null
+    pub fn HandleTColStdHArray2OfBoolean_is_null(
+        self_: *const HandleTColStdHArray2OfBoolean,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HArray2OfBoolean
     pub fn HandleTColStdHArray2OfBoolean_get(
         handle: *const HandleTColStdHArray2OfBoolean,
@@ -31142,6 +31483,10 @@ extern "C" {
     pub fn HandleTColStdHArray2OfCharacter_clone(
         self_: *const HandleTColStdHArray2OfCharacter,
     ) -> crate::OcctResult<*mut HandleTColStdHArray2OfCharacter>;
+    /// Check if Handle<TColStd_HArray2OfCharacter> is null
+    pub fn HandleTColStdHArray2OfCharacter_is_null(
+        self_: *const HandleTColStdHArray2OfCharacter,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HArray2OfCharacter
     pub fn HandleTColStdHArray2OfCharacter_get(
         handle: *const HandleTColStdHArray2OfCharacter,
@@ -31240,6 +31585,10 @@ extern "C" {
     pub fn HandleTColStdHArray2OfInteger_clone(
         self_: *const HandleTColStdHArray2OfInteger,
     ) -> crate::OcctResult<*mut HandleTColStdHArray2OfInteger>;
+    /// Check if Handle<TColStd_HArray2OfInteger> is null
+    pub fn HandleTColStdHArray2OfInteger_is_null(
+        self_: *const HandleTColStdHArray2OfInteger,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HArray2OfInteger
     pub fn HandleTColStdHArray2OfInteger_get(
         handle: *const HandleTColStdHArray2OfInteger,
@@ -31338,6 +31687,8 @@ extern "C" {
     pub fn HandleTColStdHArray2OfReal_clone(
         self_: *const HandleTColStdHArray2OfReal,
     ) -> crate::OcctResult<*mut HandleTColStdHArray2OfReal>;
+    /// Check if Handle<TColStd_HArray2OfReal> is null
+    pub fn HandleTColStdHArray2OfReal_is_null(self_: *const HandleTColStdHArray2OfReal) -> bool;
     /// Dereference Handle to get *const TColStd_HArray2OfReal
     pub fn HandleTColStdHArray2OfReal_get(
         handle: *const HandleTColStdHArray2OfReal,
@@ -31436,6 +31787,10 @@ extern "C" {
     pub fn HandleTColStdHArray2OfTransient_clone(
         self_: *const HandleTColStdHArray2OfTransient,
     ) -> crate::OcctResult<*mut HandleTColStdHArray2OfTransient>;
+    /// Check if Handle<TColStd_HArray2OfTransient> is null
+    pub fn HandleTColStdHArray2OfTransient_is_null(
+        self_: *const HandleTColStdHArray2OfTransient,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HArray2OfTransient
     pub fn HandleTColStdHArray2OfTransient_get(
         handle: *const HandleTColStdHArray2OfTransient,
@@ -31525,6 +31880,10 @@ extern "C" {
     pub fn HandleTColStdHPackedMapOfInteger_clone(
         self_: *const HandleTColStdHPackedMapOfInteger,
     ) -> crate::OcctResult<*mut HandleTColStdHPackedMapOfInteger>;
+    /// Check if Handle<TColStd_HPackedMapOfInteger> is null
+    pub fn HandleTColStdHPackedMapOfInteger_is_null(
+        self_: *const HandleTColStdHPackedMapOfInteger,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HPackedMapOfInteger
     pub fn HandleTColStdHPackedMapOfInteger_get(
         handle: *const HandleTColStdHPackedMapOfInteger,
@@ -31624,6 +31983,10 @@ extern "C" {
     pub fn HandleTColStdHSequenceOfAsciiString_clone(
         self_: *const HandleTColStdHSequenceOfAsciiString,
     ) -> crate::OcctResult<*mut HandleTColStdHSequenceOfAsciiString>;
+    /// Check if Handle<TColStd_HSequenceOfAsciiString> is null
+    pub fn HandleTColStdHSequenceOfAsciiString_is_null(
+        self_: *const HandleTColStdHSequenceOfAsciiString,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HSequenceOfAsciiString
     pub fn HandleTColStdHSequenceOfAsciiString_get(
         handle: *const HandleTColStdHSequenceOfAsciiString,
@@ -31725,6 +32088,10 @@ extern "C" {
     pub fn HandleTColStdHSequenceOfExtendedString_clone(
         self_: *const HandleTColStdHSequenceOfExtendedString,
     ) -> crate::OcctResult<*mut HandleTColStdHSequenceOfExtendedString>;
+    /// Check if Handle<TColStd_HSequenceOfExtendedString> is null
+    pub fn HandleTColStdHSequenceOfExtendedString_is_null(
+        self_: *const HandleTColStdHSequenceOfExtendedString,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HSequenceOfExtendedString
     pub fn HandleTColStdHSequenceOfExtendedString_get(
         handle: *const HandleTColStdHSequenceOfExtendedString,
@@ -31824,6 +32191,10 @@ extern "C" {
     pub fn HandleTColStdHSequenceOfHAsciiString_clone(
         self_: *const HandleTColStdHSequenceOfHAsciiString,
     ) -> crate::OcctResult<*mut HandleTColStdHSequenceOfHAsciiString>;
+    /// Check if Handle<TColStd_HSequenceOfHAsciiString> is null
+    pub fn HandleTColStdHSequenceOfHAsciiString_is_null(
+        self_: *const HandleTColStdHSequenceOfHAsciiString,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HSequenceOfHAsciiString
     pub fn HandleTColStdHSequenceOfHAsciiString_get(
         handle: *const HandleTColStdHSequenceOfHAsciiString,
@@ -31925,6 +32296,10 @@ extern "C" {
     pub fn HandleTColStdHSequenceOfHExtendedString_clone(
         self_: *const HandleTColStdHSequenceOfHExtendedString,
     ) -> crate::OcctResult<*mut HandleTColStdHSequenceOfHExtendedString>;
+    /// Check if Handle<TColStd_HSequenceOfHExtendedString> is null
+    pub fn HandleTColStdHSequenceOfHExtendedString_is_null(
+        self_: *const HandleTColStdHSequenceOfHExtendedString,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HSequenceOfHExtendedString
     pub fn HandleTColStdHSequenceOfHExtendedString_get(
         handle: *const HandleTColStdHSequenceOfHExtendedString,
@@ -32020,6 +32395,10 @@ extern "C" {
     pub fn HandleTColStdHSequenceOfInteger_clone(
         self_: *const HandleTColStdHSequenceOfInteger,
     ) -> crate::OcctResult<*mut HandleTColStdHSequenceOfInteger>;
+    /// Check if Handle<TColStd_HSequenceOfInteger> is null
+    pub fn HandleTColStdHSequenceOfInteger_is_null(
+        self_: *const HandleTColStdHSequenceOfInteger,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HSequenceOfInteger
     pub fn HandleTColStdHSequenceOfInteger_get(
         handle: *const HandleTColStdHSequenceOfInteger,
@@ -32115,6 +32494,9 @@ extern "C" {
     pub fn HandleTColStdHSequenceOfReal_clone(
         self_: *const HandleTColStdHSequenceOfReal,
     ) -> crate::OcctResult<*mut HandleTColStdHSequenceOfReal>;
+    /// Check if Handle<TColStd_HSequenceOfReal> is null
+    pub fn HandleTColStdHSequenceOfReal_is_null(self_: *const HandleTColStdHSequenceOfReal)
+        -> bool;
     /// Dereference Handle to get *const TColStd_HSequenceOfReal
     pub fn HandleTColStdHSequenceOfReal_get(
         handle: *const HandleTColStdHSequenceOfReal,
@@ -32213,6 +32595,10 @@ extern "C" {
     pub fn HandleTColStdHSequenceOfTransient_clone(
         self_: *const HandleTColStdHSequenceOfTransient,
     ) -> crate::OcctResult<*mut HandleTColStdHSequenceOfTransient>;
+    /// Check if Handle<TColStd_HSequenceOfTransient> is null
+    pub fn HandleTColStdHSequenceOfTransient_is_null(
+        self_: *const HandleTColStdHSequenceOfTransient,
+    ) -> bool;
     /// Dereference Handle to get *const TColStd_HSequenceOfTransient
     pub fn HandleTColStdHSequenceOfTransient_get(
         handle: *const HandleTColStdHSequenceOfTransient,
@@ -33425,6 +33811,10 @@ extern "C" {
     pub fn HandleTCollectionHAsciiString_clone(
         self_: *const HandleTCollectionHAsciiString,
     ) -> crate::OcctResult<*mut HandleTCollectionHAsciiString>;
+    /// Check if Handle<TCollection_HAsciiString> is null
+    pub fn HandleTCollectionHAsciiString_is_null(
+        self_: *const HandleTCollectionHAsciiString,
+    ) -> bool;
     /// Dereference Handle to get *const TCollection_HAsciiString
     pub fn HandleTCollectionHAsciiString_get(
         handle: *const HandleTCollectionHAsciiString,
@@ -33655,6 +34045,10 @@ extern "C" {
     pub fn HandleTCollectionHExtendedString_clone(
         self_: *const HandleTCollectionHExtendedString,
     ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
+    /// Check if Handle<TCollection_HExtendedString> is null
+    pub fn HandleTCollectionHExtendedString_is_null(
+        self_: *const HandleTCollectionHExtendedString,
+    ) -> bool;
     /// Dereference Handle to get *const TCollection_HExtendedString
     pub fn HandleTCollectionHExtendedString_get(
         handle: *const HandleTCollectionHExtendedString,
@@ -33758,6 +34152,10 @@ extern "C" {
     pub fn HandleTShortHArray1OfShortReal_clone(
         self_: *const HandleTShortHArray1OfShortReal,
     ) -> crate::OcctResult<*mut HandleTShortHArray1OfShortReal>;
+    /// Check if Handle<TShort_HArray1OfShortReal> is null
+    pub fn HandleTShortHArray1OfShortReal_is_null(
+        self_: *const HandleTShortHArray1OfShortReal,
+    ) -> bool;
     /// Dereference Handle to get *const TShort_HArray1OfShortReal
     pub fn HandleTShortHArray1OfShortReal_get(
         handle: *const HandleTShortHArray1OfShortReal,
@@ -33856,6 +34254,10 @@ extern "C" {
     pub fn HandleTShortHArray2OfShortReal_clone(
         self_: *const HandleTShortHArray2OfShortReal,
     ) -> crate::OcctResult<*mut HandleTShortHArray2OfShortReal>;
+    /// Check if Handle<TShort_HArray2OfShortReal> is null
+    pub fn HandleTShortHArray2OfShortReal_is_null(
+        self_: *const HandleTShortHArray2OfShortReal,
+    ) -> bool;
     /// Dereference Handle to get *const TShort_HArray2OfShortReal
     pub fn HandleTShortHArray2OfShortReal_get(
         handle: *const HandleTShortHArray2OfShortReal,
@@ -33953,6 +34355,10 @@ extern "C" {
     pub fn HandleTShortHSequenceOfShortReal_clone(
         self_: *const HandleTShortHSequenceOfShortReal,
     ) -> crate::OcctResult<*mut HandleTShortHSequenceOfShortReal>;
+    /// Check if Handle<TShort_HSequenceOfShortReal> is null
+    pub fn HandleTShortHSequenceOfShortReal_is_null(
+        self_: *const HandleTShortHSequenceOfShortReal,
+    ) -> bool;
     /// Dereference Handle to get *const TShort_HSequenceOfShortReal
     pub fn HandleTShortHSequenceOfShortReal_get(
         handle: *const HandleTShortHSequenceOfShortReal,
@@ -34116,6 +34522,8 @@ extern "C" {
     pub fn HandleUnitsDimensions_clone(
         self_: *const HandleUnitsDimensions,
     ) -> crate::OcctResult<*mut HandleUnitsDimensions>;
+    /// Check if Handle<Units_Dimensions> is null
+    pub fn HandleUnitsDimensions_is_null(self_: *const HandleUnitsDimensions) -> bool;
     /// Dereference Handle to get *const Units_Dimensions
     pub fn HandleUnitsDimensions_get(
         handle: *const HandleUnitsDimensions,
@@ -34265,6 +34673,8 @@ extern "C" {
     pub fn HandleUnitsLexicon_clone(
         self_: *const HandleUnitsLexicon,
     ) -> crate::OcctResult<*mut HandleUnitsLexicon>;
+    /// Check if Handle<Units_Lexicon> is null
+    pub fn HandleUnitsLexicon_is_null(self_: *const HandleUnitsLexicon) -> bool;
     /// Dereference Handle to get *const Units_Lexicon
     pub fn HandleUnitsLexicon_get(
         handle: *const HandleUnitsLexicon,
@@ -34496,6 +34906,8 @@ extern "C" {
     pub fn HandleUnitsNoSuchType_clone(
         self_: *const HandleUnitsNoSuchType,
     ) -> crate::OcctResult<*mut HandleUnitsNoSuchType>;
+    /// Check if Handle<Units_NoSuchType> is null
+    pub fn HandleUnitsNoSuchType_is_null(self_: *const HandleUnitsNoSuchType) -> bool;
     /// Dereference Handle to get *const Units_NoSuchType
     pub fn HandleUnitsNoSuchType_get(
         handle: *const HandleUnitsNoSuchType,
@@ -34642,6 +35054,8 @@ extern "C" {
     pub fn HandleUnitsNoSuchUnit_clone(
         self_: *const HandleUnitsNoSuchUnit,
     ) -> crate::OcctResult<*mut HandleUnitsNoSuchUnit>;
+    /// Check if Handle<Units_NoSuchUnit> is null
+    pub fn HandleUnitsNoSuchUnit_is_null(self_: *const HandleUnitsNoSuchUnit) -> bool;
     /// Dereference Handle to get *const Units_NoSuchUnit
     pub fn HandleUnitsNoSuchUnit_get(
         handle: *const HandleUnitsNoSuchUnit,
@@ -34761,6 +35175,10 @@ extern "C" {
     pub fn HandleUnitsQuantitiesSequence_clone(
         self_: *const HandleUnitsQuantitiesSequence,
     ) -> crate::OcctResult<*mut HandleUnitsQuantitiesSequence>;
+    /// Check if Handle<Units_QuantitiesSequence> is null
+    pub fn HandleUnitsQuantitiesSequence_is_null(
+        self_: *const HandleUnitsQuantitiesSequence,
+    ) -> bool;
     /// Dereference Handle to get *const Units_QuantitiesSequence
     pub fn HandleUnitsQuantitiesSequence_get(
         handle: *const HandleUnitsQuantitiesSequence,
@@ -34860,6 +35278,8 @@ extern "C" {
     pub fn HandleUnitsQuantity_clone(
         self_: *const HandleUnitsQuantity,
     ) -> crate::OcctResult<*mut HandleUnitsQuantity>;
+    /// Check if Handle<Units_Quantity> is null
+    pub fn HandleUnitsQuantity_is_null(self_: *const HandleUnitsQuantity) -> bool;
     /// Dereference Handle to get *const Units_Quantity
     pub fn HandleUnitsQuantity_get(
         handle: *const HandleUnitsQuantity,
@@ -34993,6 +35413,8 @@ extern "C" {
     pub fn HandleUnitsShiftedToken_clone(
         self_: *const HandleUnitsShiftedToken,
     ) -> crate::OcctResult<*mut HandleUnitsShiftedToken>;
+    /// Check if Handle<Units_ShiftedToken> is null
+    pub fn HandleUnitsShiftedToken_is_null(self_: *const HandleUnitsShiftedToken) -> bool;
     /// Dereference Handle to get *const Units_ShiftedToken
     pub fn HandleUnitsShiftedToken_get(
         handle: *const HandleUnitsShiftedToken,
@@ -35159,6 +35581,8 @@ extern "C" {
     pub fn HandleUnitsShiftedUnit_clone(
         self_: *const HandleUnitsShiftedUnit,
     ) -> crate::OcctResult<*mut HandleUnitsShiftedUnit>;
+    /// Check if Handle<Units_ShiftedUnit> is null
+    pub fn HandleUnitsShiftedUnit_is_null(self_: *const HandleUnitsShiftedUnit) -> bool;
     /// Dereference Handle to get *const Units_ShiftedUnit
     pub fn HandleUnitsShiftedUnit_get(
         handle: *const HandleUnitsShiftedUnit,
@@ -35404,6 +35828,8 @@ extern "C" {
     pub fn HandleUnitsToken_clone(
         self_: *const HandleUnitsToken,
     ) -> crate::OcctResult<*mut HandleUnitsToken>;
+    /// Check if Handle<Units_Token> is null
+    pub fn HandleUnitsToken_is_null(self_: *const HandleUnitsToken) -> bool;
     /// Dereference Handle to get *const Units_Token
     pub fn HandleUnitsToken_get(
         handle: *const HandleUnitsToken,
@@ -35498,6 +35924,8 @@ extern "C" {
     pub fn HandleUnitsTokensSequence_clone(
         self_: *const HandleUnitsTokensSequence,
     ) -> crate::OcctResult<*mut HandleUnitsTokensSequence>;
+    /// Check if Handle<Units_TokensSequence> is null
+    pub fn HandleUnitsTokensSequence_is_null(self_: *const HandleUnitsTokensSequence) -> bool;
     /// Dereference Handle to get *const Units_TokensSequence
     pub fn HandleUnitsTokensSequence_get(
         handle: *const HandleUnitsTokensSequence,
@@ -35621,6 +36049,8 @@ extern "C" {
     pub fn HandleUnitsUnit_clone(
         self_: *const HandleUnitsUnit,
     ) -> crate::OcctResult<*mut HandleUnitsUnit>;
+    /// Check if Handle<Units_Unit> is null
+    pub fn HandleUnitsUnit_is_null(self_: *const HandleUnitsUnit) -> bool;
     /// Dereference Handle to get *const Units_Unit
     pub fn HandleUnitsUnit_get(
         handle: *const HandleUnitsUnit,
@@ -35763,6 +36193,8 @@ extern "C" {
     pub fn HandleUnitsUnitsDictionary_clone(
         self_: *const HandleUnitsUnitsDictionary,
     ) -> crate::OcctResult<*mut HandleUnitsUnitsDictionary>;
+    /// Check if Handle<Units_UnitsDictionary> is null
+    pub fn HandleUnitsUnitsDictionary_is_null(self_: *const HandleUnitsUnitsDictionary) -> bool;
     /// Dereference Handle to get *const Units_UnitsDictionary
     pub fn HandleUnitsUnitsDictionary_get(
         handle: *const HandleUnitsUnitsDictionary,
@@ -35850,6 +36282,8 @@ extern "C" {
     pub fn HandleUnitsUnitsLexicon_clone(
         self_: *const HandleUnitsUnitsLexicon,
     ) -> crate::OcctResult<*mut HandleUnitsUnitsLexicon>;
+    /// Check if Handle<Units_UnitsLexicon> is null
+    pub fn HandleUnitsUnitsLexicon_is_null(self_: *const HandleUnitsUnitsLexicon) -> bool;
     /// Dereference Handle to get *const Units_UnitsLexicon
     pub fn HandleUnitsUnitsLexicon_get(
         handle: *const HandleUnitsUnitsLexicon,
@@ -35952,6 +36386,8 @@ extern "C" {
     pub fn HandleUnitsUnitsSequence_clone(
         self_: *const HandleUnitsUnitsSequence,
     ) -> crate::OcctResult<*mut HandleUnitsUnitsSequence>;
+    /// Check if Handle<Units_UnitsSequence> is null
+    pub fn HandleUnitsUnitsSequence_is_null(self_: *const HandleUnitsUnitsSequence) -> bool;
     /// Dereference Handle to get *const Units_UnitsSequence
     pub fn HandleUnitsUnitsSequence_get(
         handle: *const HandleUnitsUnitsSequence,
@@ -36085,6 +36521,8 @@ extern "C" {
     pub fn HandleUnitsUnitsSystem_clone(
         self_: *const HandleUnitsUnitsSystem,
     ) -> crate::OcctResult<*mut HandleUnitsUnitsSystem>;
+    /// Check if Handle<Units_UnitsSystem> is null
+    pub fn HandleUnitsUnitsSystem_is_null(self_: *const HandleUnitsUnitsSystem) -> bool;
     /// Dereference Handle to get *const Units_UnitsSystem
     pub fn HandleUnitsUnitsSystem_get(
         handle: *const HandleUnitsUnitsSystem,

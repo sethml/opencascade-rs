@@ -257,6 +257,13 @@ unsafe impl crate::CppCopyable for HandleTShortHArray1OfShortReal {
 }
 
 impl HandleTShortHArray1OfShortReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTShortHArray1OfShortReal_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TShort_HArray1OfShortReal
     pub fn get(&self) -> &crate::ffi_types::TShort_HArray1OfShortReal {
         unsafe {
@@ -519,6 +526,13 @@ unsafe impl crate::CppCopyable for HandleTShortHArray2OfShortReal {
 }
 
 impl HandleTShortHArray2OfShortReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTShortHArray2OfShortReal_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TShort_HArray2OfShortReal
     pub fn get(&self) -> &crate::ffi_types::TShort_HArray2OfShortReal {
         unsafe {
@@ -785,6 +799,13 @@ unsafe impl crate::CppCopyable for HandleTShortHSequenceOfShortReal {
 }
 
 impl HandleTShortHSequenceOfShortReal {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTShortHSequenceOfShortReal_is_null(self as *const Self)
+        }
+    }
+
     /// Dereference this Handle to access the underlying TShort_HSequenceOfShortReal
     pub fn get(&self) -> &crate::ffi_types::TShort_HSequenceOfShortReal {
         unsafe {

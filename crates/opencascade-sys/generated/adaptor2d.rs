@@ -485,6 +485,11 @@ unsafe impl crate::CppCopyable for HandleAdaptor2dCurve2d {
 }
 
 impl HandleAdaptor2dCurve2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleAdaptor2dCurve2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Adaptor2d_Curve2d
     pub fn get(&self) -> &crate::ffi_types::Adaptor2d_Curve2d {
         unsafe {
@@ -1113,6 +1118,11 @@ unsafe impl crate::CppCopyable for HandleAdaptor2dLine2d {
 }
 
 impl HandleAdaptor2dLine2d {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleAdaptor2dLine2d_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Adaptor2d_Line2d
     pub fn get(&self) -> &crate::ffi_types::Adaptor2d_Line2d {
         unsafe {
@@ -1748,6 +1758,11 @@ unsafe impl crate::CppCopyable for HandleAdaptor2dOffsetCurve {
 }
 
 impl HandleAdaptor2dOffsetCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKG2d::HandleAdaptor2dOffsetCurve_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying Adaptor2d_OffsetCurve
     pub fn get(&self) -> &crate::ffi_types::Adaptor2d_OffsetCurve {
         unsafe {

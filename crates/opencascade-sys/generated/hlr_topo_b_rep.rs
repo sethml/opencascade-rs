@@ -838,6 +838,11 @@ unsafe impl crate::CppCopyable for HandleHLRTopoBRepOutLiner {
 }
 
 impl HandleHLRTopoBRepOutLiner {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKHLR::HandleHLRTopoBRepOutLiner_is_null(self as *const Self) }
+    }
+
     /// Dereference this Handle to access the underlying HLRTopoBRep_OutLiner
     pub fn get(&self) -> &crate::ffi_types::HLRTopoBRep_OutLiner {
         unsafe {
