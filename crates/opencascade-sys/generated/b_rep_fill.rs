@@ -49,6 +49,24 @@ pub fn axe(
         crate::ffi_extern_TKBool::BRepFill_axe(Spine, Profile, AxeProf, ProfOnSpine, Tol)
     })
 }
+/// **Source:** `BRepFill.hxx`:60 - `BRepFill::ComputeACR`
+/// Compute ACR on a  wire
+pub fn compute_acr(wire: &crate::topo_ds::Wire, ACR: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    crate::check_void_result(unsafe { crate::ffi_extern_TKBool::BRepFill_compute_acr(wire, ACR) })
+}
+/// **Source:** `BRepFill.hxx`:63 - `BRepFill::InsertACR`
+/// Insert ACR on a  wire
+pub fn insert_acr(
+    wire: &crate::topo_ds::Wire,
+    ACRcuts: &crate::ffi_types::TColStd_Array1OfReal,
+    prec: f64,
+) -> crate::OwnedPtr<crate::topo_ds::Wire> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKBool::BRepFill_insert_acr(wire, ACRcuts, prec),
+        ))
+    }
+}
 
 /// Errors that can occur at thrusection algorithm.
 /// C++ enum: `BRepFill_ThruSectionErrorStatus`

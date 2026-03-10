@@ -111,6 +111,7 @@
 #include <ChFiDS_SurfData.hxx>
 #include <ChFiDS_TypeOfConcavity.hxx>
 #include <ChFiKPart_ComputeData.hxx>
+#include <Convert_ParameterisationType.hxx>
 #include <FilletSurf_Builder.hxx>
 #include <FilletSurf_ErrorTypeStatus.hxx>
 #include <FilletSurf_InternalBuilder.hxx>
@@ -10729,6 +10730,18 @@ extern "C" void FilletSurf_InternalBuilder_destructor(FilletSurf_InternalBuilder
 // ========================
 // BlendFunc namespace functions
 // ========================
+extern "C" const char* BlendFunc_knots_sectionshape_array1ofreal(int32_t SectShape, TColStd_Array1OfReal* TKnots) {
+    try { BlendFunc::Knots(static_cast<BlendFunc_SectionShape>(SectShape), *TKnots); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BlendFunc_mults_sectionshape_array1ofinteger(int32_t SectShape, TColStd_Array1OfInteger* TMults) {
+    try { BlendFunc::Mults(static_cast<BlendFunc_SectionShape>(SectShape), *TMults); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BlendFunc_get_minimal_weights_sectionshape_parameterisationtype_real2_array1ofreal(int32_t SectShape, int32_t TConv, double AngleMin, double AngleMax, TColStd_Array1OfReal* Weigths) {
+    try { BlendFunc::GetMinimalWeights(static_cast<BlendFunc_SectionShape>(SectShape), static_cast<Convert_ParameterisationType>(TConv), AngleMin, AngleMax, *Weigths); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<int32_t> BlendFunc_next_shape(int32_t S) {
     try { return {static_cast<int32_t>(BlendFunc::NextShape(static_cast<GeomAbs_Shape>(S))), nullptr}; }
     OCCT_CATCH_RETURN

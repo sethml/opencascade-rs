@@ -37805,11 +37805,6 @@ pub struct TColStd_Array1OfAsciiString {
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct TColStd_Array1OfBoolean {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
 pub struct TColStd_Array1OfBoolean_value_type {
     _opaque: [u8; 0],
 }
@@ -37840,11 +37835,6 @@ pub struct TColStd_Array1OfExtendedString {
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct TColStd_Array1OfInteger {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
 pub struct TColStd_Array1OfInteger_value_type {
     _opaque: [u8; 0],
 }
@@ -37856,11 +37846,6 @@ pub struct TColStd_Array1OfListOfInteger {
 /// Referenced type from C++
 #[repr(C)]
 pub struct TColStd_Array1OfListOfInteger_value_type {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct TColStd_Array1OfReal {
     _opaque: [u8; 0],
 }
 /// Referenced type from C++
@@ -37895,17 +37880,7 @@ pub struct TColStd_Array2OfCharacter_value_type {
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct TColStd_Array2OfInteger {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
 pub struct TColStd_Array2OfInteger_value_type {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct TColStd_Array2OfReal {
     _opaque: [u8; 0],
 }
 /// Referenced type from C++
@@ -38843,6 +38818,46 @@ pub struct std_shared_ptr_std_streambuf {
 // Collection types (opaque)
 // ========================
 
+#[repr(C)]
+pub struct TColStd_Array1OfBoolean {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1OfBooleanIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct TColStd_Array1OfInteger {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1OfIntegerIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct TColStd_Array1OfReal {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1OfRealIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct TColStd_Array2OfInteger {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array2OfIntegerIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct TColStd_Array2OfReal {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array2OfRealIterator {
+    _opaque: [u8; 0],
+}
 #[repr(C)]
 pub struct TColgp_Array1OfCirc2d {
     _opaque: [u8; 0],
@@ -41481,11 +41496,6 @@ unsafe impl crate::CppDeletable for TColStd_Array1OfAsciiString {
         crate::ffi_extern_TKernel::TColStd_Array1OfAsciiString_destructor(ptr);
     }
 }
-unsafe impl crate::CppDeletable for TColStd_Array1OfBoolean {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_destructor(ptr);
-    }
-}
 unsafe impl crate::CppDeletable for TColStd_Array1OfBoolean_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_value_type_destructor(ptr);
@@ -41516,11 +41526,6 @@ unsafe impl crate::CppDeletable for TColStd_Array1OfExtendedString {
         crate::ffi_extern_TKernel::TColStd_Array1OfExtendedString_destructor(ptr);
     }
 }
-unsafe impl crate::CppDeletable for TColStd_Array1OfInteger {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfInteger_destructor(ptr);
-    }
-}
 unsafe impl crate::CppDeletable for TColStd_Array1OfInteger_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::TColStd_Array1OfInteger_value_type_destructor(ptr);
@@ -41534,11 +41539,6 @@ unsafe impl crate::CppDeletable for TColStd_Array1OfListOfInteger {
 unsafe impl crate::CppDeletable for TColStd_Array1OfListOfInteger_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::TColStd_Array1OfListOfInteger_value_type_destructor(ptr);
-    }
-}
-unsafe impl crate::CppDeletable for TColStd_Array1OfReal {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfReal_destructor(ptr);
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfReal_value_type {
@@ -41571,19 +41571,9 @@ unsafe impl crate::CppDeletable for TColStd_Array2OfCharacter_value_type {
         crate::ffi_extern_TKernel::TColStd_Array2OfCharacter_value_type_destructor(ptr);
     }
 }
-unsafe impl crate::CppDeletable for TColStd_Array2OfInteger {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array2OfInteger_destructor(ptr);
-    }
-}
 unsafe impl crate::CppDeletable for TColStd_Array2OfInteger_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi_extern_TKernel::TColStd_Array2OfInteger_value_type_destructor(ptr);
-    }
-}
-unsafe impl crate::CppDeletable for TColStd_Array2OfReal {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array2OfReal_destructor(ptr);
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array2OfReal_value_type {

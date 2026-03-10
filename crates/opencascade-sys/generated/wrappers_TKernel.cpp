@@ -46745,6 +46745,8 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TColStd_HArray1OfBoolean_get
     try { return {&(TColStd_HArray1OfBoolean::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<const TColStd_Array1OfBoolean*> TColStd_HArray1OfBoolean_as_TColStd_Array1OfBoolean(const TColStd_HArray1OfBoolean* self_) { return {static_cast<const TColStd_Array1OfBoolean*>(self_), nullptr}; }
+extern "C" OcctResult<TColStd_Array1OfBoolean*> TColStd_HArray1OfBoolean_as_TColStd_Array1OfBoolean_mut(TColStd_HArray1OfBoolean* self_) { return {static_cast<TColStd_Array1OfBoolean*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TColStd_HArray1OfBoolean_as_Standard_Transient(const TColStd_HArray1OfBoolean* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TColStd_HArray1OfBoolean_as_Standard_Transient_mut(TColStd_HArray1OfBoolean* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<HandleTColStdHArray1OfBoolean*> TColStd_HArray1OfBoolean_to_handle(TColStd_HArray1OfBoolean* obj) {
@@ -47113,6 +47115,8 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TColStd_HArray1OfInteger_get
     try { return {&(TColStd_HArray1OfInteger::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<const TColStd_Array1OfInteger*> TColStd_HArray1OfInteger_as_TColStd_Array1OfInteger(const TColStd_HArray1OfInteger* self_) { return {static_cast<const TColStd_Array1OfInteger*>(self_), nullptr}; }
+extern "C" OcctResult<TColStd_Array1OfInteger*> TColStd_HArray1OfInteger_as_TColStd_Array1OfInteger_mut(TColStd_HArray1OfInteger* self_) { return {static_cast<TColStd_Array1OfInteger*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TColStd_HArray1OfInteger_as_Standard_Transient(const TColStd_HArray1OfInteger* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TColStd_HArray1OfInteger_as_Standard_Transient_mut(TColStd_HArray1OfInteger* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<HandleTColStdHArray1OfInteger*> TColStd_HArray1OfInteger_to_handle(TColStd_HArray1OfInteger* obj) {
@@ -47297,6 +47301,8 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TColStd_HArray1OfReal_get_ty
     try { return {&(TColStd_HArray1OfReal::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<const TColStd_Array1OfReal*> TColStd_HArray1OfReal_as_TColStd_Array1OfReal(const TColStd_HArray1OfReal* self_) { return {static_cast<const TColStd_Array1OfReal*>(self_), nullptr}; }
+extern "C" OcctResult<TColStd_Array1OfReal*> TColStd_HArray1OfReal_as_TColStd_Array1OfReal_mut(TColStd_HArray1OfReal* self_) { return {static_cast<TColStd_Array1OfReal*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TColStd_HArray1OfReal_as_Standard_Transient(const TColStd_HArray1OfReal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TColStd_HArray1OfReal_as_Standard_Transient_mut(TColStd_HArray1OfReal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<HandleTColStdHArray1OfReal*> TColStd_HArray1OfReal_to_handle(TColStd_HArray1OfReal* obj) {
@@ -47641,6 +47647,8 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TColStd_HArray2OfInteger_get
     try { return {&(TColStd_HArray2OfInteger::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<const TColStd_Array2OfInteger*> TColStd_HArray2OfInteger_as_TColStd_Array2OfInteger(const TColStd_HArray2OfInteger* self_) { return {static_cast<const TColStd_Array2OfInteger*>(self_), nullptr}; }
+extern "C" OcctResult<TColStd_Array2OfInteger*> TColStd_HArray2OfInteger_as_TColStd_Array2OfInteger_mut(TColStd_HArray2OfInteger* self_) { return {static_cast<TColStd_Array2OfInteger*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TColStd_HArray2OfInteger_as_Standard_Transient(const TColStd_HArray2OfInteger* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TColStd_HArray2OfInteger_as_Standard_Transient_mut(TColStd_HArray2OfInteger* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<HandleTColStdHArray2OfInteger*> TColStd_HArray2OfInteger_to_handle(TColStd_HArray2OfInteger* obj) {
@@ -47725,6 +47733,8 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TColStd_HArray2OfReal_get_ty
     try { return {&(TColStd_HArray2OfReal::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<const TColStd_Array2OfReal*> TColStd_HArray2OfReal_as_TColStd_Array2OfReal(const TColStd_HArray2OfReal* self_) { return {static_cast<const TColStd_Array2OfReal*>(self_), nullptr}; }
+extern "C" OcctResult<TColStd_Array2OfReal*> TColStd_HArray2OfReal_as_TColStd_Array2OfReal_mut(TColStd_HArray2OfReal* self_) { return {static_cast<TColStd_Array2OfReal*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TColStd_HArray2OfReal_as_Standard_Transient(const TColStd_HArray2OfReal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TColStd_HArray2OfReal_as_Standard_Transient_mut(TColStd_HArray2OfReal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<HandleTColStdHArray2OfReal*> TColStd_HArray2OfReal_to_handle(TColStd_HArray2OfReal* obj) {
@@ -52578,27 +52588,22 @@ extern "C" void Storage_PArray_destructor(Storage_PArray* self_) { delete self_;
 extern "C" void Storage_PType_destructor(Storage_PType* self_) { delete self_; }
 extern "C" void Storage_SeqOfRoot_destructor(Storage_SeqOfRoot* self_) { delete self_; }
 extern "C" void TColStd_Array1OfAsciiString_destructor(TColStd_Array1OfAsciiString* self_) { delete self_; }
-extern "C" void TColStd_Array1OfBoolean_destructor(TColStd_Array1OfBoolean* self_) { delete self_; }
 extern "C" void TColStd_Array1OfBoolean_value_type_destructor(TColStd_Array1OfBoolean::value_type* self_) { delete self_; }
 extern "C" void TColStd_Array1OfByte_destructor(TColStd_Array1OfByte* self_) { delete self_; }
 extern "C" void TColStd_Array1OfByte_value_type_destructor(TColStd_Array1OfByte::value_type* self_) { delete self_; }
 extern "C" void TColStd_Array1OfCharacter_destructor(TColStd_Array1OfCharacter* self_) { delete self_; }
 extern "C" void TColStd_Array1OfCharacter_value_type_destructor(TColStd_Array1OfCharacter::value_type* self_) { delete self_; }
 extern "C" void TColStd_Array1OfExtendedString_destructor(TColStd_Array1OfExtendedString* self_) { delete self_; }
-extern "C" void TColStd_Array1OfInteger_destructor(TColStd_Array1OfInteger* self_) { delete self_; }
 extern "C" void TColStd_Array1OfInteger_value_type_destructor(TColStd_Array1OfInteger::value_type* self_) { delete self_; }
 extern "C" void TColStd_Array1OfListOfInteger_destructor(TColStd_Array1OfListOfInteger* self_) { delete self_; }
 extern "C" void TColStd_Array1OfListOfInteger_value_type_destructor(TColStd_Array1OfListOfInteger::value_type* self_) { delete self_; }
-extern "C" void TColStd_Array1OfReal_destructor(TColStd_Array1OfReal* self_) { delete self_; }
 extern "C" void TColStd_Array1OfReal_value_type_destructor(TColStd_Array1OfReal::value_type* self_) { delete self_; }
 extern "C" void TColStd_Array1OfTransient_destructor(TColStd_Array1OfTransient* self_) { delete self_; }
 extern "C" void TColStd_Array2OfBoolean_destructor(TColStd_Array2OfBoolean* self_) { delete self_; }
 extern "C" void TColStd_Array2OfBoolean_value_type_destructor(TColStd_Array2OfBoolean::value_type* self_) { delete self_; }
 extern "C" void TColStd_Array2OfCharacter_destructor(TColStd_Array2OfCharacter* self_) { delete self_; }
 extern "C" void TColStd_Array2OfCharacter_value_type_destructor(TColStd_Array2OfCharacter::value_type* self_) { delete self_; }
-extern "C" void TColStd_Array2OfInteger_destructor(TColStd_Array2OfInteger* self_) { delete self_; }
 extern "C" void TColStd_Array2OfInteger_value_type_destructor(TColStd_Array2OfInteger::value_type* self_) { delete self_; }
-extern "C" void TColStd_Array2OfReal_destructor(TColStd_Array2OfReal* self_) { delete self_; }
 extern "C" void TColStd_Array2OfReal_value_type_destructor(TColStd_Array2OfReal::value_type* self_) { delete self_; }
 extern "C" void TColStd_Array2OfTransient_destructor(TColStd_Array2OfTransient* self_) { delete self_; }
 extern "C" void TColStd_DataMapOfAsciiStringInteger_destructor(TColStd_DataMapOfAsciiStringInteger* self_) { delete self_; }
@@ -52635,3 +52640,270 @@ extern "C" void TShort_SequenceOfShortReal_value_type_destructor(TShort_Sequence
 extern "C" void Units_QtsSequence_destructor(Units_QtsSequence* self_) { delete self_; }
 extern "C" void Units_TksSequence_destructor(Units_TksSequence* self_) { delete self_; }
 extern "C" void Units_UtsSequence_destructor(Units_UtsSequence* self_) { delete self_; }
+
+// ========================
+// Collection type wrappers
+// ========================
+
+// ========================
+// TColStd_Array1OfBoolean - Fixed-size 1D array (1-indexed)
+// ========================
+
+extern "C" TColStd_Array1OfBoolean* TColStd_Array1OfBoolean_new() {
+    return new TColStd_Array1OfBoolean();
+}
+
+extern "C" void TColStd_Array1OfBoolean_destructor(TColStd_Array1OfBoolean* self_) {
+    delete self_;
+}
+
+extern "C" TColStd_Array1OfBoolean* TColStd_Array1OfBoolean_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_Array1OfBoolean(theLower, theUpper);
+}
+
+extern "C" TColStd_Array1OfBoolean* TColStd_Array1OfBoolean_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Boolean* theValue) {
+    auto arr = new TColStd_Array1OfBoolean(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" Standard_Integer TColStd_Array1OfBoolean_length(const TColStd_Array1OfBoolean* arr) {
+    return arr->Length();
+}
+
+extern "C" Standard_Integer TColStd_Array1OfBoolean_lower(const TColStd_Array1OfBoolean* arr) {
+    return arr->Lower();
+}
+
+extern "C" Standard_Integer TColStd_Array1OfBoolean_upper(const TColStd_Array1OfBoolean* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Standard_Boolean* TColStd_Array1OfBoolean_value(const TColStd_Array1OfBoolean* arr, Standard_Integer theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void TColStd_Array1OfBoolean_set_value(TColStd_Array1OfBoolean* arr, Standard_Integer theIndex, const Standard_Boolean* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void TColStd_Array1OfBoolean_init(TColStd_Array1OfBoolean* arr, const Standard_Boolean* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// TColStd_Array1OfInteger - Fixed-size 1D array (1-indexed)
+// ========================
+
+extern "C" TColStd_Array1OfInteger* TColStd_Array1OfInteger_new() {
+    return new TColStd_Array1OfInteger();
+}
+
+extern "C" void TColStd_Array1OfInteger_destructor(TColStd_Array1OfInteger* self_) {
+    delete self_;
+}
+
+extern "C" TColStd_Array1OfInteger* TColStd_Array1OfInteger_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_Array1OfInteger(theLower, theUpper);
+}
+
+extern "C" TColStd_Array1OfInteger* TColStd_Array1OfInteger_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Integer* theValue) {
+    auto arr = new TColStd_Array1OfInteger(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" Standard_Integer TColStd_Array1OfInteger_length(const TColStd_Array1OfInteger* arr) {
+    return arr->Length();
+}
+
+extern "C" Standard_Integer TColStd_Array1OfInteger_lower(const TColStd_Array1OfInteger* arr) {
+    return arr->Lower();
+}
+
+extern "C" Standard_Integer TColStd_Array1OfInteger_upper(const TColStd_Array1OfInteger* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Standard_Integer* TColStd_Array1OfInteger_value(const TColStd_Array1OfInteger* arr, Standard_Integer theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void TColStd_Array1OfInteger_set_value(TColStd_Array1OfInteger* arr, Standard_Integer theIndex, const Standard_Integer* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void TColStd_Array1OfInteger_init(TColStd_Array1OfInteger* arr, const Standard_Integer* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// TColStd_Array1OfReal - Fixed-size 1D array (1-indexed)
+// ========================
+
+extern "C" TColStd_Array1OfReal* TColStd_Array1OfReal_new() {
+    return new TColStd_Array1OfReal();
+}
+
+extern "C" void TColStd_Array1OfReal_destructor(TColStd_Array1OfReal* self_) {
+    delete self_;
+}
+
+extern "C" TColStd_Array1OfReal* TColStd_Array1OfReal_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_Array1OfReal(theLower, theUpper);
+}
+
+extern "C" TColStd_Array1OfReal* TColStd_Array1OfReal_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Real* theValue) {
+    auto arr = new TColStd_Array1OfReal(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" Standard_Integer TColStd_Array1OfReal_length(const TColStd_Array1OfReal* arr) {
+    return arr->Length();
+}
+
+extern "C" Standard_Integer TColStd_Array1OfReal_lower(const TColStd_Array1OfReal* arr) {
+    return arr->Lower();
+}
+
+extern "C" Standard_Integer TColStd_Array1OfReal_upper(const TColStd_Array1OfReal* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Standard_Real* TColStd_Array1OfReal_value(const TColStd_Array1OfReal* arr, Standard_Integer theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void TColStd_Array1OfReal_set_value(TColStd_Array1OfReal* arr, Standard_Integer theIndex, const Standard_Real* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void TColStd_Array1OfReal_init(TColStd_Array1OfReal* arr, const Standard_Real* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// TColStd_Array2OfInteger - Fixed-size 2D array (row/col indexed)
+// ========================
+
+extern "C" TColStd_Array2OfInteger* TColStd_Array2OfInteger_new() {
+    return new TColStd_Array2OfInteger();
+}
+
+extern "C" void TColStd_Array2OfInteger_destructor(TColStd_Array2OfInteger* self_) {
+    delete self_;
+}
+
+extern "C" TColStd_Array2OfInteger* TColStd_Array2OfInteger_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return new TColStd_Array2OfInteger(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+extern "C" TColStd_Array2OfInteger* TColStd_Array2OfInteger_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const Standard_Integer* theValue) {
+    auto arr = new TColStd_Array2OfInteger(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" Standard_Integer TColStd_Array2OfInteger_nb_rows(const TColStd_Array2OfInteger* arr) {
+    return arr->NbRows();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfInteger_nb_columns(const TColStd_Array2OfInteger* arr) {
+    return arr->NbColumns();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfInteger_lower_row(const TColStd_Array2OfInteger* arr) {
+    return arr->LowerRow();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfInteger_upper_row(const TColStd_Array2OfInteger* arr) {
+    return arr->UpperRow();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfInteger_lower_col(const TColStd_Array2OfInteger* arr) {
+    return arr->LowerCol();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfInteger_upper_col(const TColStd_Array2OfInteger* arr) {
+    return arr->UpperCol();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfInteger_length(const TColStd_Array2OfInteger* arr) {
+    return arr->Length();
+}
+
+extern "C" const Standard_Integer* TColStd_Array2OfInteger_value(const TColStd_Array2OfInteger* arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return &arr->Value(theRow, theCol);
+}
+
+extern "C" void TColStd_Array2OfInteger_set_value(TColStd_Array2OfInteger* arr, Standard_Integer theRow, Standard_Integer theCol, const Standard_Integer* theItem) {
+    arr->SetValue(theRow, theCol, *theItem);
+}
+
+extern "C" void TColStd_Array2OfInteger_init(TColStd_Array2OfInteger* arr, const Standard_Integer* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// TColStd_Array2OfReal - Fixed-size 2D array (row/col indexed)
+// ========================
+
+extern "C" TColStd_Array2OfReal* TColStd_Array2OfReal_new() {
+    return new TColStd_Array2OfReal();
+}
+
+extern "C" void TColStd_Array2OfReal_destructor(TColStd_Array2OfReal* self_) {
+    delete self_;
+}
+
+extern "C" TColStd_Array2OfReal* TColStd_Array2OfReal_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return new TColStd_Array2OfReal(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+extern "C" TColStd_Array2OfReal* TColStd_Array2OfReal_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const Standard_Real* theValue) {
+    auto arr = new TColStd_Array2OfReal(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" Standard_Integer TColStd_Array2OfReal_nb_rows(const TColStd_Array2OfReal* arr) {
+    return arr->NbRows();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfReal_nb_columns(const TColStd_Array2OfReal* arr) {
+    return arr->NbColumns();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfReal_lower_row(const TColStd_Array2OfReal* arr) {
+    return arr->LowerRow();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfReal_upper_row(const TColStd_Array2OfReal* arr) {
+    return arr->UpperRow();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfReal_lower_col(const TColStd_Array2OfReal* arr) {
+    return arr->LowerCol();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfReal_upper_col(const TColStd_Array2OfReal* arr) {
+    return arr->UpperCol();
+}
+
+extern "C" Standard_Integer TColStd_Array2OfReal_length(const TColStd_Array2OfReal* arr) {
+    return arr->Length();
+}
+
+extern "C" const Standard_Real* TColStd_Array2OfReal_value(const TColStd_Array2OfReal* arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return &arr->Value(theRow, theCol);
+}
+
+extern "C" void TColStd_Array2OfReal_set_value(TColStd_Array2OfReal* arr, Standard_Integer theRow, Standard_Integer theCol, const Standard_Real* theItem) {
+    arr->SetValue(theRow, theCol, *theItem);
+}
+
+extern "C" void TColStd_Array2OfReal_init(TColStd_Array2OfReal* arr, const Standard_Real* theValue) {
+    arr->Init(*theValue);
+}
+

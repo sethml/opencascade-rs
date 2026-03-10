@@ -15175,6 +15175,15 @@ extern "C" {
         t3: f64,
         R: *mut f64,
     ) -> crate::OcctResult<i32>;
+    /// **Source:** `IntTools.hxx`:57 - `IntTools::PrepareArgs`
+    pub fn IntTools_prepare_args(
+        C: *mut BRepAdaptor_Curve,
+        tMax: f64,
+        tMin: f64,
+        Discret: i32,
+        Deflect: f64,
+        anArgs: *mut TColStd_Array1OfReal,
+    ) -> crate::OcctResult<i32>;
 
     // Nested type & typedef type destructors
     pub fn BOPAlgo_ListOfCheckResult_destructor(self_: *mut BOPAlgo_ListOfCheckResult);

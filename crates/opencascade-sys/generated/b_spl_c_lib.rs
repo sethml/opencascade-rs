@@ -6,6 +6,295 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `BSplCLib.hxx`:129 - `BSplCLib::Hunt`
+/// This routine searches the position of the real value theX
+/// in the monotonically increasing set of real values theArray using bisection algorithm.
+///
+/// If the given value is out of range or array values, algorithm returns either
+/// theArray.Lower()-1 or theArray.Upper()+1 depending on theX position in the ordered set.
+///
+/// This routine is used to locate a knot value in a set of knots.
+pub fn hunt(theArray: &crate::ffi_types::TColStd_Array1OfReal, theX: f64, theXPos: &mut i32) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_hunt(theArray, theX, theXPos)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:135 - `BSplCLib::FirstUKnotIndex`
+/// Computes the index of the knots value which gives
+/// the start point of the curve.
+pub fn first_u_knot_index(Degree: i32, Mults: &crate::ffi_types::TColStd_Array1OfInteger) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_first_u_knot_index(Degree, Mults)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:140 - `BSplCLib::LastUKnotIndex`
+/// Computes the index of the knots value which gives
+/// the end point of the curve.
+pub fn last_u_knot_index(Degree: i32, Mults: &crate::ffi_types::TColStd_Array1OfInteger) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_last_u_knot_index(Degree, Mults)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:146 - `BSplCLib::FlatIndex`
+/// Computes the index  of  the  flats knots  sequence
+/// corresponding  to  <Index> in  the  knots sequence
+/// which multiplicities are <Mults>.
+pub fn flat_index(
+    Degree: i32,
+    Index: i32,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    Periodic: bool,
+) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_flat_index(Degree, Index, Mults, Periodic)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:166 - `BSplCLib::LocateParameter`
+/// Locates  the parametric value    U  in the knots
+/// sequence  between  the  knot K1   and the knot  K2.
+/// The value return in Index verifies.
+///
+/// Knots(Index) <= U < Knots(Index + 1)
+/// if U <= Knots (K1) then Index = K1
+/// if U >= Knots (K2) then Index = K2 - 1
+///
+/// If Periodic is True U  may be  modified  to fit in
+/// the range  Knots(K1), Knots(K2).  In any case  the
+/// correct value is returned in NewU.
+///
+/// Warnings :Index is used  as input   data to initialize  the
+/// searching  function.
+/// Warning: Knots have to be "with repetitions"
+pub fn locate_parameter_int_array1ofreal_array1ofinteger_real_bool_int3_real(
+    Degree: i32,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    U: f64,
+    IsPeriodic: bool,
+    FromK1: i32,
+    ToK2: i32,
+    KnotIndex: &mut i32,
+    NewU: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_locate_parameter_int_array1ofreal_array1ofinteger_real_bool_int3_real(Degree, Knots, Mults, U, IsPeriodic, FromK1, ToK2, KnotIndex, NewU)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:191 - `BSplCLib::LocateParameter`
+/// Locates  the parametric value    U  in the knots
+/// sequence  between  the  knot K1   and the knot  K2.
+/// The value return in Index verifies.
+///
+/// Knots(Index) <= U < Knots(Index + 1)
+/// if U <= Knots (K1) then Index = K1
+/// if U >= Knots (K2) then Index = K2 - 1
+///
+/// If Periodic is True U  may be  modified  to fit in
+/// the range  Knots(K1), Knots(K2).  In any case  the
+/// correct value is returned in NewU.
+///
+/// Warnings :Index is used  as input   data to initialize  the
+/// searching  function.
+/// Warning: Knots have to be "flat"
+pub fn locate_parameter_int_array1ofreal_real_bool_int3_real(
+    Degree: i32,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    U: f64,
+    IsPeriodic: bool,
+    FromK1: i32,
+    ToK2: i32,
+    KnotIndex: &mut i32,
+    NewU: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_locate_parameter_int_array1ofreal_real_bool_int3_real(
+            Degree, Knots, U, IsPeriodic, FromK1, ToK2, KnotIndex, NewU,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:200 - `BSplCLib::LocateParameter`
+pub unsafe fn locate_parameter_int_array1ofreal_array1ofintegerptr_real_bool_int_real(
+    Degree: i32,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    U: f64,
+    Periodic: bool,
+    Index: &mut i32,
+    NewU: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_locate_parameter_int_array1ofreal_array1ofintegerptr_real_bool_int_real(Degree, Knots, Mults as *const _, U, Periodic, Index, NewU)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:211 - `BSplCLib::MaxKnotMult`
+/// Finds the greatest multiplicity in a set of knots
+/// between  K1  and K2.   Mults  is  the  multiplicity
+/// associated with each knot value.
+pub fn max_knot_mult(Mults: &crate::ffi_types::TColStd_Array1OfInteger, K1: i32, K2: i32) -> i32 {
+    crate::check_result(unsafe { crate::ffi_extern_TKMath::BSplCLib_max_knot_mult(Mults, K1, K2) })
+}
+/// **Source:** `BSplCLib.hxx`:218 - `BSplCLib::MinKnotMult`
+/// Finds the lowest multiplicity in  a  set of knots
+/// between   K1  and K2.   Mults is  the  multiplicity
+/// associated with each knot value.
+pub fn min_knot_mult(Mults: &crate::ffi_types::TColStd_Array1OfInteger, K1: i32, K2: i32) -> i32 {
+    crate::check_result(unsafe { crate::ffi_extern_TKMath::BSplCLib_min_knot_mult(Mults, K1, K2) })
+}
+/// **Source:** `BSplCLib.hxx`:232 - `BSplCLib::NbPoles`
+/// Returns the number of poles of the curve. Returns 0 if
+/// one of the multiplicities is incorrect.
+///
+/// * Non positive.
+///
+/// * Greater than Degree,  or  Degree+1  at the first and
+/// last knot of a non periodic curve.
+///
+/// *  The  last periodicity  on  a periodic  curve is not
+/// equal to the first.
+pub fn nb_poles(
+    Degree: i32,
+    Periodic: bool,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_nb_poles(Degree, Periodic, Mults)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:247 - `BSplCLib::KnotSequenceLength`
+/// Returns the length  of the sequence  of knots with
+/// repetition.
+///
+/// Periodic :
+///
+/// Sum(Mults(i), i = Mults.Lower(); i <= Mults.Upper());
+///
+/// Non Periodic :
+///
+/// Sum(Mults(i); i = Mults.Lower(); i < Mults.Upper())
+/// + 2 * Degree
+pub fn knot_sequence_length(
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    Degree: i32,
+    Periodic: bool,
+) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_knot_sequence_length(Mults, Degree, Periodic)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:251 - `BSplCLib::KnotSequence`
+pub fn knot_sequence_array1ofreal_array1ofinteger_array1ofreal_bool(
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    KnotSeq: &mut crate::ffi_types::TColStd_Array1OfReal,
+    Periodic: bool,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_knot_sequence_array1ofreal_array1ofinteger_array1ofreal_bool(Knots, Mults, KnotSeq, Periodic)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:261 - `BSplCLib::KnotSequence`
+/// Computes  the  sequence   of knots KnotSeq  with
+/// repetition  of the  knots  of multiplicity  greater
+/// than 1.
+///
+/// Length of KnotSeq must be KnotSequenceLength(Mults,Degree,Periodic)
+pub fn knot_sequence_array1ofreal_array1ofinteger_int_bool_array1ofreal(
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    Degree: i32,
+    Periodic: bool,
+    KnotSeq: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_knot_sequence_array1ofreal_array1ofinteger_int_bool_array1ofreal(Knots, Mults, Degree, Periodic, KnotSeq)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:269 - `BSplCLib::KnotsLength`
+/// Returns the  length  of the   sequence of  knots  (and
+/// Mults)  without repetition.
+pub fn knots_length(KnotSeq: &crate::ffi_types::TColStd_Array1OfReal, Periodic: bool) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_knots_length(KnotSeq, Periodic)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:279 - `BSplCLib::Knots`
+/// Computes  the  sequence   of knots Knots  without
+/// repetition  of the  knots  of multiplicity  greater
+/// than 1.
+///
+/// Length  of <Knots> and  <Mults> must be
+/// KnotsLength(KnotSequence,Periodic)
+pub fn knots_array1ofreal2_array1ofinteger_bool(
+    KnotSeq: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    Periodic: bool,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_knots_array1ofreal2_array1ofinteger_bool(
+            KnotSeq, Knots, Mults, Periodic,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:288 - `BSplCLib::KnotForm`
+/// Analyses if the  knots distribution is "Uniform"
+/// or  "NonUniform" between  the  knot  FromK1 and the
+/// knot ToK2.  There is  no repetition of  knot in the
+/// knots'sequence <Knots>.
+pub fn knot_form(
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    FromK1: i32,
+    ToK2: i32,
+) -> crate::b_spl_c_lib::KnotDistribution {
+    crate::b_spl_c_lib::KnotDistribution::try_from(crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_knot_form(Knots, FromK1, ToK2)
+    }))
+    .unwrap()
+}
+/// **Source:** `BSplCLib.hxx`:294 - `BSplCLib::MultForm`
+/// Analyses the distribution of multiplicities between
+/// the knot FromK1 and the Knot ToK2.
+pub fn mult_form(
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    FromK1: i32,
+    ToK2: i32,
+) -> crate::b_spl_c_lib::MultDistribution {
+    crate::b_spl_c_lib::MultDistribution::try_from(crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_mult_form(Mults, FromK1, ToK2)
+    }))
+    .unwrap()
+}
+/// **Source:** `BSplCLib.hxx`:313 - `BSplCLib::Reparametrize`
+/// Reparametrizes a B-spline curve to [U1, U2].
+/// The knot values are recomputed such that Knots (Lower) = U1
+/// and Knots (Upper) = U2   but the knot form is not modified.
+/// Warnings :
+/// In the array Knots the values must be in ascending order.
+/// U1 must not be equal to U2 to avoid division by zero.
+pub fn reparametrize_real2_array1ofreal(
+    U1: f64,
+    U2: f64,
+    Knots: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_reparametrize_real2_array1ofreal(U1, U2, Knots)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:319 - `BSplCLib::Reverse`
+/// Reverses  the  array   knots  to  become  the knots
+/// sequence of the reversed curve.
+pub fn reverse_array1ofreal(Knots: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_reverse_array1ofreal(Knots)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:322 - `BSplCLib::Reverse`
+/// Reverses  the  array of multiplicities.
+pub fn reverse_array1ofinteger(Mults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_reverse_array1ofinteger(Mults)
+    })
+}
 /// **Source:** `BSplCLib.hxx`:334 - `BSplCLib::Reverse`
 /// Reverses the array of poles. Last is the  index of
 /// the new first pole. On  a  non periodic curve last
@@ -29,6 +318,30 @@ pub fn reverse_array1ofpnt2d_int(Poles: &mut crate::ffi_types::TColgp_Array1OfPn
         crate::ffi_extern_TKMath::BSplCLib_reverse_array1ofpnt2d_int(Poles, Last)
     })
 }
+/// **Source:** `BSplCLib.hxx`:340 - `BSplCLib::Reverse`
+/// Reverses the array of poles.
+pub fn reverse_array1ofreal_int(Weights: &mut crate::ffi_types::TColStd_Array1OfReal, Last: i32) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_reverse_array1ofreal_int(Weights, Last)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:346 - `BSplCLib::IsRational`
+/// Returns False if all the weights  of the  array <Weights>
+/// between   I1 an I2   are  identic.   Epsilon  is used for
+/// comparing  weights. If Epsilon  is 0. the  Epsilon of the
+/// first weight is used.
+pub fn is_rational_array1ofreal_int2_real(
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    I1: i32,
+    I2: i32,
+    Epsilon: f64,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_is_rational_array1ofreal_int2_real(
+            Weights, I1, I2, Epsilon,
+        )
+    })
+}
 /// **Source:** `BSplCLib.hxx`:352 - `BSplCLib::MaxDegree`
 /// returns the degree maxima for a BSplineCurve.
 pub fn max_degree() -> i32 {
@@ -44,9 +357,17 @@ pub fn max_degree() -> i32 {
 ///
 /// Containing  the poles.  At  the end <Poles> contains
 /// the current point.
-pub fn eval(U: f64, Degree: i32, Knots: &mut f64, Dimension: i32, Poles: &mut f64) {
+pub fn eval_real_int_real_int_real(
+    U: f64,
+    Degree: i32,
+    Knots: &mut f64,
+    Dimension: i32,
+    Poles: &mut f64,
+) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKMath::BSplCLib_eval(U, Degree, Knots, Dimension, Poles)
+        crate::ffi_extern_TKMath::BSplCLib_eval_real_int_real_int_real(
+            U, Degree, Knots, Dimension, Poles,
+        )
     })
 }
 /// **Source:** `BSplCLib.hxx`:398 - `BSplCLib::BoorScheme`
@@ -162,6 +483,137 @@ pub fn bohm(U: f64, Degree: i32, N: i32, Knots: &mut f64, Dimension: i32, Poles:
         crate::ffi_extern_TKMath::BSplCLib_bohm(U, Degree, N, Knots, Dimension, Poles)
     })
 }
+/// **Source:** `BSplCLib.hxx`:460 - `BSplCLib::NoWeights`
+/// Used as argument for a non rational curve.
+pub unsafe fn no_weights() -> Option<&'static mut crate::ffi_types::TColStd_Array1OfReal> {
+    {
+        let __val = crate::check_result(unsafe { crate::ffi_extern_TKMath::BSplCLib_no_weights() });
+        if __val.is_null() {
+            None
+        } else {
+            Some(unsafe { &mut *__val })
+        }
+    }
+}
+/// **Source:** `BSplCLib.hxx`:463 - `BSplCLib::NoMults`
+/// Used as argument for a flatknots evaluation.
+pub unsafe fn no_mults() -> Option<&'static mut crate::ffi_types::TColStd_Array1OfInteger> {
+    {
+        let __val = crate::check_result(unsafe { crate::ffi_extern_TKMath::BSplCLib_no_mults() });
+        if __val.is_null() {
+            None
+        } else {
+            Some(unsafe { &mut *__val })
+        }
+    }
+}
+/// **Source:** `BSplCLib.hxx`:467 - `BSplCLib::BuildKnots`
+/// Stores in LK the useful knots for the BoorSchem
+/// on the span Knots(Index) - Knots(Index+1)
+pub unsafe fn build_knots(
+    Degree: i32,
+    Index: i32,
+    Periodic: bool,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    LK: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_build_knots(
+            Degree,
+            Index,
+            Periodic,
+            Knots,
+            Mults as *const _,
+            LK,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:477 - `BSplCLib::PoleIndex`
+/// Return the index of the  first Pole to  use on the
+/// span  Mults(Index)  - Mults(Index+1).  This  index
+/// must be added to Poles.Lower().
+pub fn pole_index(
+    Degree: i32,
+    Index: i32,
+    Periodic: bool,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_pole_index(Degree, Index, Periodic, Mults)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:482 - `BSplCLib::BuildEval`
+pub unsafe fn build_eval_int2_array1ofreal_array1ofrealptr_real(
+    Degree: i32,
+    Index: i32,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    LP: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_build_eval_int2_array1ofreal_array1ofrealptr_real(
+            Degree,
+            Index,
+            Poles,
+            Weights as *const _,
+            LP,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:488 - `BSplCLib::BuildEval`
+pub unsafe fn build_eval_int2_array1ofpnt_array1ofrealptr_real(
+    Degree: i32,
+    Index: i32,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    LP: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_build_eval_int2_array1ofpnt_array1ofrealptr_real(
+            Degree,
+            Index,
+            Poles,
+            Weights as *const _,
+            LP,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:496 - `BSplCLib::BuildEval`
+/// Copy in <LP>  the poles and  weights for  the Eval
+/// scheme. starting from  Poles(Poles.Lower()+Index)
+pub unsafe fn build_eval_int2_array1ofpnt2d_array1ofrealptr_real(
+    Degree: i32,
+    Index: i32,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    LP: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_build_eval_int2_array1ofpnt2d_array1ofrealptr_real(
+            Degree,
+            Index,
+            Poles,
+            Weights as *const _,
+            LP,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:505 - `BSplCLib::BuildBoor`
+/// Copy in <LP>  poles for <Dimension>  Boor  scheme.
+/// Starting  from    <Index>     *  <Dimension>, copy
+/// <Length+1> poles.
+pub fn build_boor(
+    Index: i32,
+    Length: i32,
+    Dimension: i32,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    LP: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_build_boor(Index, Length, Dimension, Poles, LP)
+    })
+}
 /// **Source:** `BSplCLib.hxx`:514 - `BSplCLib::BoorIndex`
 /// Returns the index in  the Boor result array of the
 /// poles <Index>. If  the Boor  algorithm was perform
@@ -169,6 +621,1139 @@ pub fn bohm(U: f64, Degree: i32, N: i32, Knots: &mut f64, Dimension: i32, Poles:
 pub fn boor_index(Index: i32, Length: i32, Depth: i32) -> i32 {
     crate::check_result(unsafe {
         crate::ffi_extern_TKMath::BSplCLib_boor_index(Index, Length, Depth)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:521 - `BSplCLib::GetPole`
+/// Copy  the  pole at  position  <Index>  in  the Boor
+/// scheme of   dimension <Dimension> to  <Position> in
+/// the array <Pole>. <Position> is updated.
+pub fn get_pole(
+    Index: i32,
+    Length: i32,
+    Depth: i32,
+    Dimension: i32,
+    LocPoles: &mut f64,
+    Position: &mut i32,
+    Pole: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_get_pole(
+            Index, Length, Depth, Dimension, LocPoles, Position, Pole,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:544 - `BSplCLib::PrepareInsertKnots`
+/// Returns in <NbPoles, NbKnots> the  new number of poles
+/// and  knots    if  the  sequence   of  knots <AddKnots,
+/// AddMults> is inserted in the sequence <Knots, Mults>.
+///
+/// Epsilon is used to compare knots for equality.
+///
+/// If Add is True  the multiplicities on  equal knots are
+/// added.
+///
+/// If Add is False the max value of the multiplicities is
+/// kept.
+///
+/// Return False if :
+/// The knew knots are knot increasing.
+/// The new knots are not in the range.
+pub unsafe fn prepare_insert_knots(
+    Degree: i32,
+    Periodic: bool,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    AddKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    AddMults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NbPoles: &mut i32,
+    NbKnots: &mut i32,
+    Epsilon: f64,
+    Add: bool,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_prepare_insert_knots(
+            Degree,
+            Periodic,
+            Knots,
+            Mults,
+            AddKnots,
+            AddMults as *const _,
+            NbPoles,
+            NbKnots,
+            Epsilon,
+            Add,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:556 - `BSplCLib::InsertKnots`
+pub unsafe fn insert_knots_int_bool_int_array1ofreal2_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofreal2_array1ofinteger_real_bool(
+    Degree: i32,
+    Periodic: bool,
+    Dimension: i32,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    AddKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    AddMults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    Epsilon: f64,
+    Add: bool,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_insert_knots_int_bool_int_array1ofreal2_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofreal2_array1ofinteger_real_bool(Degree, Periodic, Dimension, Poles, Knots, Mults, AddKnots, AddMults as *const _, NewPoles, NewKnots, NewMults, Epsilon, Add)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:570 - `BSplCLib::InsertKnots`
+pub unsafe fn insert_knots_int_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_real_bool(
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    AddKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    AddMults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    Epsilon: f64,
+    Add: bool,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_insert_knots_int_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_real_bool(Degree, Periodic, Poles, Weights as *const _, Knots, Mults, AddKnots, AddMults as *const _, NewPoles, NewWeights as *mut _, NewKnots, NewMults, Epsilon, Add)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:611 - `BSplCLib::InsertKnots`
+/// Insert   a  sequence  of  knots <AddKnots> with
+/// multiplicities   <AddMults>. <AddKnots>   must  be a   non
+/// decreasing sequence and verifies :
+///
+/// Knots(Knots.Lower()) <= AddKnots(AddKnots.Lower())
+/// Knots(Knots.Upper()) >= AddKnots(AddKnots.Upper())
+///
+/// The NewPoles and NewWeights arrays must have a length :
+/// Poles.Length() + Sum(AddMults())
+///
+/// When a knot  to insert is identic  to an existing knot the
+/// multiplicities   are added.
+///
+/// Epsilon is used to test knots for equality.
+///
+/// When AddMult is negative or null the knot is not inserted.
+/// No multiplicity will becomes higher than the degree.
+///
+/// The new Knots and Multiplicities  are copied in <NewKnots>
+/// and  <NewMults>.
+///
+/// All the New arrays should be correctly dimensioned.
+///
+/// When all  the new knots  are existing knots, i.e. only the
+/// multiplicities  will  change it is   safe to  use the same
+/// arrays as input and output.
+pub unsafe fn insert_knots_int_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_real_bool(
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    AddKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    AddMults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    Epsilon: f64,
+    Add: bool,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_insert_knots_int_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_real_bool(Degree, Periodic, Poles, Weights as *const _, Knots, Mults, AddKnots, AddMults as *const _, NewPoles, NewWeights as *mut _, NewKnots, NewMults, Epsilon, Add)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:626 - `BSplCLib::InsertKnot`
+pub unsafe fn insert_knot_int_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(
+    UIndex: i32,
+    U: f64,
+    UMult: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_insert_knot_int_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(UIndex, U, UMult, Degree, Periodic, Poles, Weights as *const _, Knots, Mults, NewPoles, NewWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:647 - `BSplCLib::InsertKnot`
+/// Insert a new knot U of multiplicity UMult in the
+/// knot sequence.
+///
+/// The  location of the new Knot  should be given as an input
+/// data.  UIndex locates the new knot U  in the knot sequence
+/// and Knots (UIndex) < U < Knots (UIndex + 1).
+///
+/// The new control points corresponding to this insertion are
+/// returned. Knots and Mults are not updated.
+pub unsafe fn insert_knot_int_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(
+    UIndex: i32,
+    U: f64,
+    UMult: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_insert_knot_int_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(UIndex, U, UMult, Degree, Periodic, Poles, Weights as *const _, Knots, Mults, NewPoles, NewWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:659 - `BSplCLib::RaiseMultiplicity`
+pub unsafe fn raise_multiplicity_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(
+    KnotIndex: i32,
+    Mult: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_raise_multiplicity_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(KnotIndex, Mult, Degree, Periodic, Poles, Weights as *const _, Knots, Mults, NewPoles, NewWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:674 - `BSplCLib::RaiseMultiplicity`
+/// Raise the multiplicity of knot to <UMult>.
+///
+/// The new control points  are  returned. Knots and Mults are
+/// not updated.
+pub unsafe fn raise_multiplicity_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(
+    KnotIndex: i32,
+    Mult: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_raise_multiplicity_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(KnotIndex, Mult, Degree, Periodic, Poles, Weights as *const _, Knots, Mults, NewPoles, NewWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:685 - `BSplCLib::RemoveKnot`
+pub fn remove_knot_int3_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger_real(
+    Index: i32,
+    Mult: i32,
+    Degree: i32,
+    Periodic: bool,
+    Dimension: i32,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    Tolerance: f64,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_remove_knot_int3_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger_real(Index, Mult, Degree, Periodic, Dimension, Poles, Knots, Mults, NewPoles, NewKnots, NewMults, Tolerance)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:698 - `BSplCLib::RemoveKnot`
+pub unsafe fn remove_knot_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_real(
+    Index: i32,
+    Mult: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    Tolerance: f64,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_remove_knot_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_real(Index, Mult, Degree, Periodic, Poles, Weights as *const _, Knots, Mults, NewPoles, NewWeights as *mut _, NewKnots, NewMults, Tolerance)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:730 - `BSplCLib::RemoveKnot`
+/// Decrement the  multiplicity  of <Knots(Index)>
+/// to <Mult>. If <Mult>   is  null the   knot  is
+/// removed.
+///
+/// As there are two ways to compute the new poles
+/// the midlle   will  be used  as  long    as the
+/// distance is lower than Tolerance.
+///
+/// If a  distance is  bigger  than  tolerance the
+/// methods returns False  and  the new arrays are
+/// not modified.
+///
+/// A low  tolerance can be  used  to test  if the
+/// knot  can be  removed  without  modifying  the
+/// curve.
+///
+/// A high tolerance  can be used  to "smooth" the
+/// curve.
+pub unsafe fn remove_knot_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_real(
+    Index: i32,
+    Mult: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    Tolerance: f64,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_remove_knot_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_real(Index, Mult, Degree, Periodic, Poles, Weights as *const _, Knots, Mults, NewPoles, NewWeights as *mut _, NewKnots, NewMults, Tolerance)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:748 - `BSplCLib::IncreaseDegreeCountKnots`
+/// Returns the   number   of  knots   of  a  curve   with
+/// multiplicities <Mults> after elevating the degree from
+/// <Degree> to <NewDegree>. See the IncreaseDegree method
+/// for more comments.
+pub fn increase_degree_count_knots(
+    Degree: i32,
+    NewDegree: i32,
+    Periodic: bool,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_increase_degree_count_knots(
+            Degree, NewDegree, Periodic, Mults,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:754 - `BSplCLib::IncreaseDegree`
+pub fn increase_degree_int2_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger(
+    Degree: i32,
+    NewDegree: i32,
+    Periodic: bool,
+    Dimension: i32,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_increase_degree_int2_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger(Degree, NewDegree, Periodic, Dimension, Poles, Knots, Mults, NewPoles, NewKnots, NewMults)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:765 - `BSplCLib::IncreaseDegree`
+pub unsafe fn increase_degree_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger(
+    Degree: i32,
+    NewDegree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_increase_degree_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger(Degree, NewDegree, Periodic, Poles, Weights as *const _, Knots, Mults, NewPoles, NewWeights as *mut _, NewKnots, NewMults)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:777 - `BSplCLib::IncreaseDegree`
+pub unsafe fn increase_degree_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger(
+    Degree: i32,
+    NewDegree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_increase_degree_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger(Degree, NewDegree, Periodic, Poles, Weights as *const _, Knots, Mults, NewPoles, NewWeights as *mut _, NewKnots, NewMults)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:789 - `BSplCLib::IncreaseDegree`
+pub unsafe fn increase_degree_int_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(
+    NewDegree: i32,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_increase_degree_int_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(NewDegree, Poles, Weights as *const _, NewPoles, NewWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:851 - `BSplCLib::IncreaseDegree`
+/// Increase the degree of a bspline (or bezier) curve
+/// of dimension theDimension form theDegree to theNewDegree.
+///
+/// The number of poles in the new curve is:
+/// @code
+/// Poles.Length() + (NewDegree - Degree) * Number of spans
+/// @endcode
+/// Where the number of spans is:
+/// @code
+/// LastUKnotIndex(Mults) - FirstUKnotIndex(Mults) + 1
+/// @endcode
+/// for a non-periodic curve, and
+/// @code
+/// Knots.Length() - 1
+/// @endcode
+/// for a periodic curve.
+///
+/// The multiplicities of all knots are increased by the degree elevation.
+///
+/// The new knots are usually the same knots with the
+/// exception of a non-periodic curve with the first
+/// and last multiplicity not  equal to Degree+1 where
+/// knots are removed form the start and the bottom
+/// until the sum of the multiplicities is equal to
+/// NewDegree+1  at the knots corresponding to the
+/// first and last parameters of the curve.
+///
+/// Example: Suppose a curve of degree 3 starting
+/// with following knots and multiplicities:
+/// @code
+/// knot : 0.  1.  2.
+/// mult : 1   2   1
+/// @endcode
+///
+/// The FirstUKnot is 2.0 because the sum of multiplicities is
+/// @code
+/// Degree+1 : 1 + 2 + 1 = 4 = 3 + 1
+/// @endcode
+/// i.e. the first parameter of the curve is 2.0 and
+/// will still be 2.0 after degree elevation.
+/// Let raise this curve to degree 4.
+/// The multiplicities are increased by 2.
+///
+/// They  become 2 3 2.
+/// But we need a sum of multiplicities of 5 at knot 2.
+/// So the first knot is removed and the new knots are:
+/// @code
+/// knot : 1.  2.
+/// mult : 3   2
+/// @endcode
+/// The multiplicity of the first knot may also be reduced if the sum is still too big.
+///
+/// In the most common situations (periodic curve or curve with first
+/// and last multiplicities equals to Degree+1) the knots are knot changes.
+///
+/// The method IncreaseDegreeCountKnots can be used to compute the new number of knots.
+pub unsafe fn increase_degree_int_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(
+    theNewDegree: i32,
+    thePoles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    theWeights: &crate::ffi_types::TColStd_Array1OfReal,
+    theNewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    theNewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_increase_degree_int_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(theNewDegree, thePoles, theWeights as *const _, theNewPoles, theNewWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:861 - `BSplCLib::PrepareUnperiodize`
+/// Set in <NbKnots> and <NbPolesToAdd> the number of Knots and
+/// Poles   of  the NotPeriodic  Curve   identical  at the
+/// periodic     curve with    a  degree    <Degree>  ,  a
+/// knots-distribution with Multiplicities <Mults>.
+pub fn prepare_unperiodize(
+    Degree: i32,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NbKnots: &mut i32,
+    NbPoles: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_prepare_unperiodize(Degree, Mults, NbKnots, NbPoles)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:866 - `BSplCLib::Unperiodize`
+pub fn unperiodize_int2_array1ofinteger_array1ofreal2_array1ofinteger_array1ofreal2(
+    Degree: i32,
+    Dimension: i32,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewPoles: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_unperiodize_int2_array1ofinteger_array1ofreal2_array1ofinteger_array1ofreal2(Degree, Dimension, Mults, Knots, Poles, NewMults, NewKnots, NewPoles)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:875 - `BSplCLib::Unperiodize`
+pub unsafe fn unperiodize_int_array1ofinteger_array1ofreal_array1ofpnt_array1ofrealptr_array1ofinteger_array1ofreal_array1ofpnt_array1ofrealptr(
+    Degree: i32,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_unperiodize_int_array1ofinteger_array1ofreal_array1ofpnt_array1ofrealptr_array1ofinteger_array1ofreal_array1ofpnt_array1ofrealptr(Degree, Mults, Knots, Poles, Weights as *const _, NewMults, NewKnots, NewPoles, NewWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:885 - `BSplCLib::Unperiodize`
+pub unsafe fn unperiodize_int_array1ofinteger_array1ofreal_array1ofpnt2d_array1ofrealptr_array1ofinteger_array1ofreal_array1ofpnt2d_array1ofrealptr(
+    Degree: i32,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_unperiodize_int_array1ofinteger_array1ofreal_array1ofpnt2d_array1ofrealptr_array1ofinteger_array1ofreal_array1ofpnt2d_array1ofrealptr(Degree, Mults, Knots, Poles, Weights as *const _, NewMults, NewKnots, NewPoles, NewWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:898 - `BSplCLib::PrepareTrimming`
+/// Set in <NbKnots> and <NbPoles> the number of Knots and
+/// Poles of the curve resulting from  the trimming of the
+/// BSplinecurve defined with <degree>, <knots>, <mults>
+pub fn prepare_trimming(
+    Degree: i32,
+    Periodic: bool,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    U1: f64,
+    U2: f64,
+    NbKnots: &mut i32,
+    NbPoles: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_prepare_trimming(
+            Degree, Periodic, Knots, Mults, U1, U2, NbKnots, NbPoles,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:907 - `BSplCLib::Trimming`
+pub fn trimming_int_bool_int_array1ofreal_array1ofinteger_array1ofreal_real2_array1ofreal_array1ofinteger_array1ofreal(
+    Degree: i32,
+    Periodic: bool,
+    Dimension: i32,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    U1: f64,
+    U2: f64,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_trimming_int_bool_int_array1ofreal_array1ofinteger_array1ofreal_real2_array1ofreal_array1ofinteger_array1ofreal(Degree, Periodic, Dimension, Knots, Mults, Poles, U1, U2, NewKnots, NewMults, NewPoles)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:919 - `BSplCLib::Trimming`
+pub unsafe fn trimming_int_bool_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_real2_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(
+    Degree: i32,
+    Periodic: bool,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    U1: f64,
+    U2: f64,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_trimming_int_bool_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_real2_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(Degree, Periodic, Knots, Mults, Poles, Weights as *const _, U1, U2, NewKnots, NewMults, NewPoles, NewWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:932 - `BSplCLib::Trimming`
+pub unsafe fn trimming_int_bool_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_real2_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(
+    Degree: i32,
+    Periodic: bool,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    U1: f64,
+    U2: f64,
+    NewKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+    NewMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    NewWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_trimming_int_bool_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_real2_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(Degree, Periodic, Knots, Mults, Poles, Weights as *const _, U1, U2, NewKnots, NewMults, NewPoles, NewWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:945 - `BSplCLib::D0`
+pub unsafe fn d0_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real(
+    U: f64,
+    Index: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d0_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real(U, Index, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:955 - `BSplCLib::D0`
+pub unsafe fn d0_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt(
+    U: f64,
+    Index: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut crate::gp::Pnt,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d0_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt(U, Index, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:965 - `BSplCLib::D0`
+pub unsafe fn d0_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d(
+    U: f64,
+    UIndex: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut crate::gp::Pnt2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d0_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d(U, UIndex, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:975 - `BSplCLib::D0`
+pub unsafe fn d0_real_array1ofpnt_array1ofrealptr_pnt(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    P: &mut crate::gp::Pnt,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d0_real_array1ofpnt_array1ofrealptr_pnt(
+            U,
+            Poles,
+            Weights as *const _,
+            P,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:980 - `BSplCLib::D0`
+pub unsafe fn d0_real_array1ofpnt2d_array1ofrealptr_pnt2d(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    P: &mut crate::gp::Pnt2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d0_real_array1ofpnt2d_array1ofrealptr_pnt2d(
+            U,
+            Poles,
+            Weights as *const _,
+            P,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:985 - `BSplCLib::D1`
+pub unsafe fn d1_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real2(
+    U: f64,
+    Index: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut f64,
+    V: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d1_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real2(U, Index, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P, V)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:996 - `BSplCLib::D1`
+pub unsafe fn d1_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec(
+    U: f64,
+    Index: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut crate::gp::Pnt,
+    V: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d1_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec(U, Index, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P, V)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1007 - `BSplCLib::D1`
+pub unsafe fn d1_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d(
+    U: f64,
+    UIndex: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut crate::gp::Pnt2d,
+    V: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d1_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d(U, UIndex, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P, V)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1018 - `BSplCLib::D1`
+pub unsafe fn d1_real_array1ofpnt_array1ofrealptr_pnt_vec(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    P: &mut crate::gp::Pnt,
+    V: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d1_real_array1ofpnt_array1ofrealptr_pnt_vec(
+            U,
+            Poles,
+            Weights as *const _,
+            P,
+            V,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1024 - `BSplCLib::D1`
+pub unsafe fn d1_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    P: &mut crate::gp::Pnt2d,
+    V: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d1_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(
+            U,
+            Poles,
+            Weights as *const _,
+            P,
+            V,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1030 - `BSplCLib::D2`
+pub unsafe fn d2_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real3(
+    U: f64,
+    Index: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut f64,
+    V1: &mut f64,
+    V2: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d2_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real3(U, Index, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P, V1, V2)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1042 - `BSplCLib::D2`
+pub unsafe fn d2_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec2(
+    U: f64,
+    Index: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut crate::gp::Pnt,
+    V1: &mut crate::gp::Vec,
+    V2: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d2_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec2(U, Index, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P, V1, V2)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1054 - `BSplCLib::D2`
+pub unsafe fn d2_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d2(
+    U: f64,
+    UIndex: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut crate::gp::Pnt2d,
+    V1: &mut crate::gp::Vec2d,
+    V2: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d2_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d2(U, UIndex, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P, V1, V2)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1066 - `BSplCLib::D2`
+pub unsafe fn d2_real_array1ofpnt_array1ofrealptr_pnt_vec2(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    P: &mut crate::gp::Pnt,
+    V1: &mut crate::gp::Vec,
+    V2: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d2_real_array1ofpnt_array1ofrealptr_pnt_vec2(
+            U,
+            Poles,
+            Weights as *const _,
+            P,
+            V1,
+            V2,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1073 - `BSplCLib::D2`
+pub unsafe fn d2_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    P: &mut crate::gp::Pnt2d,
+    V1: &mut crate::gp::Vec2d,
+    V2: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d2_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(
+            U,
+            Poles,
+            Weights as *const _,
+            P,
+            V1,
+            V2,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1080 - `BSplCLib::D3`
+pub unsafe fn d3_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real4(
+    U: f64,
+    Index: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut f64,
+    V1: &mut f64,
+    V2: &mut f64,
+    V3: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d3_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real4(U, Index, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P, V1, V2, V3)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1093 - `BSplCLib::D3`
+pub unsafe fn d3_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec3(
+    U: f64,
+    Index: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut crate::gp::Pnt,
+    V1: &mut crate::gp::Vec,
+    V2: &mut crate::gp::Vec,
+    V3: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d3_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec3(U, Index, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P, V1, V2, V3)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1106 - `BSplCLib::D3`
+pub unsafe fn d3_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d3(
+    U: f64,
+    UIndex: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    P: &mut crate::gp::Pnt2d,
+    V1: &mut crate::gp::Vec2d,
+    V2: &mut crate::gp::Vec2d,
+    V3: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d3_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d3(U, UIndex, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, P, V1, V2, V3)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1119 - `BSplCLib::D3`
+pub unsafe fn d3_real_array1ofpnt_array1ofrealptr_pnt_vec3(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    P: &mut crate::gp::Pnt,
+    V1: &mut crate::gp::Vec,
+    V2: &mut crate::gp::Vec,
+    V3: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d3_real_array1ofpnt_array1ofrealptr_pnt_vec3(
+            U,
+            Poles,
+            Weights as *const _,
+            P,
+            V1,
+            V2,
+            V3,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1127 - `BSplCLib::D3`
+pub unsafe fn d3_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    P: &mut crate::gp::Pnt2d,
+    V1: &mut crate::gp::Vec2d,
+    V2: &mut crate::gp::Vec2d,
+    V3: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_d3_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(
+            U,
+            Poles,
+            Weights as *const _,
+            P,
+            V1,
+            V2,
+            V3,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1135 - `BSplCLib::DN`
+pub unsafe fn dn_real_int3_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real(
+    U: f64,
+    N: i32,
+    Index: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    VN: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_dn_real_int3_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real(U, N, Index, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, VN)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1146 - `BSplCLib::DN`
+pub unsafe fn dn_real_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_vec(
+    U: f64,
+    N: i32,
+    Index: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    VN: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_dn_real_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_vec(U, N, Index, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, VN)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1157 - `BSplCLib::DN`
+pub unsafe fn dn_real_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_vec2d(
+    U: f64,
+    N: i32,
+    UIndex: i32,
+    Degree: i32,
+    Periodic: bool,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    V: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_dn_real_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_vec2d(U, N, UIndex, Degree, Periodic, Poles, Weights as *const _, Knots, Mults as *const _, V)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1168 - `BSplCLib::DN`
+pub fn dn_real_int_array1ofpnt_array1ofreal_pnt_vec(
+    U: f64,
+    N: i32,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    P: &mut crate::gp::Pnt,
+    VN: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_dn_real_int_array1ofpnt_array1ofreal_pnt_vec(
+            U, N, Poles, Weights, P, VN,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1192 - `BSplCLib::DN`
+/// The  above  functions  compute   values and
+/// derivatives in the following situations :
+///
+/// * 3D, 2D and 1D
+///
+/// * Rational or not Rational.
+///
+/// * Knots  and multiplicities or "flat knots" without
+/// multiplicities.
+///
+/// * The  <Index>  is   the localization  of  the
+/// parameter in the knot sequence.  If <Index> is  out
+/// of range the correct value will be searched.
+///
+/// VERY IMPORTANT!!!
+/// USE  BSplCLib::NoWeights()  as Weights argument for non
+/// rational curves computations.
+pub fn dn_real_int_array1ofpnt2d_array1ofreal_pnt2d_vec2d(
+    U: f64,
+    N: i32,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    P: &mut crate::gp::Pnt2d,
+    VN: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_dn_real_int_array1ofpnt2d_array1ofreal_pnt2d_vec2d(
+            U, N, Poles, Weights, P, VN,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1222 - `BSplCLib::EvalBsplineBasis`
+/// This  evaluates  the Bspline  Basis  at  a
+/// given  parameter  Parameter   up   to  the
+/// requested   DerivativeOrder  and store the
+/// result  in the  array BsplineBasis  in the
+/// following   fashion
+/// BSplineBasis(1,1)   =
+/// value of first non vanishing
+/// Bspline function which has Index FirstNonZeroBsplineIndex
+/// BsplineBasis(1,2)   =
+/// value of second non vanishing
+/// Bspline   function which  has   Index
+/// FirstNonZeroBsplineIndex + 1
+/// BsplineBasis(1,n)   =
+/// value of second non vanishing non vanishing
+/// Bspline   function which  has   Index
+/// FirstNonZeroBsplineIndex + n (n <= Order)
+/// BSplineBasis(2,1)   =
+/// value of derivative of first non vanishing
+/// Bspline function which has Index FirstNonZeroBsplineIndex
+/// BSplineBasis(N,1)   =
+/// value of Nth derivative of first non vanishing
+/// Bspline function which has Index FirstNonZeroBsplineIndex
+/// if N <= DerivativeOrder + 1
+pub fn eval_bspline_basis(
+    DerivativeOrder: i32,
+    Order: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Parameter: f64,
+    FirstNonZeroBsplineIndex: &mut i32,
+    BsplineBasis: &mut crate::math::Matrix,
+    isPeriodic: bool,
+) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_eval_bspline_basis(
+            DerivativeOrder,
+            Order,
+            FlatKnots,
+            Parameter,
+            FirstNonZeroBsplineIndex,
+            BsplineBasis,
+            isPeriodic,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1239 - `BSplCLib::BuildBSpMatrix`
+/// This Builds   a fully  blown   Matrix of
+/// (ni)
+/// Bi    (tj)
+///
+/// with i  and j within 1..Order + NumPoles
+/// The  integer ni is   the ith slot of the
+/// array OrderArray, tj is the jth slot of
+/// the array Parameters
+pub fn build_b_sp_matrix(
+    Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+    OrderArray: &crate::ffi_types::TColStd_Array1OfInteger,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Degree: i32,
+    Matrix: &mut crate::math::Matrix,
+    UpperBandWidth: &mut i32,
+    LowerBandWidth: &mut i32,
+) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_build_b_sp_matrix(
+            Parameters,
+            OrderArray,
+            FlatKnots,
+            Degree,
+            Matrix,
+            UpperBandWidth,
+            LowerBandWidth,
+        )
     })
 }
 /// **Source:** `BSplCLib.hxx`:1254 - `BSplCLib::FactorBandedMatrix`
@@ -291,6 +1876,1016 @@ pub fn solve_banded_system_matrix_int2_bool_int_real2(
         )
     })
 }
+/// **Source:** `BSplCLib.hxx`:1328 - `BSplCLib::SolveBandedSystem`
+/// This solves the  system Matrix.X =  B
+/// with when Matrix is factored in LU form
+/// The    Array   is    an   seen  as   an
+/// Array[1..N][1..ArrayDimension] with N =
+/// the  rank  of  the  matrix Matrix.  The
+/// result is  stored   in Array when  each
+/// coordinate is  solved that is B  is the
+/// array  whose   values     are   B[i]  =
+/// Array[i][p]       for     each  p    in
+/// 1..ArrayDimension. If  HomogeneousFlag ==
+/// 0  the  Poles  are  multiplied by   the
+/// Weights   upon   Entry   and      once
+/// interpolation   is    carried  over the
+/// result of the  poles are divided by the
+/// result of   the   interpolation of  the
+/// weights. Otherwise if HomogenousFlag == 1
+/// the Poles and Weights are treated homogeneously
+/// that is that those are interpolated as they
+/// are and result is returned without division
+/// by the interpolated weights.
+pub fn solve_banded_system_matrix_int2_bool_array1ofpnt2d_array1ofreal(
+    Matrix: &crate::math::Matrix,
+    UpperBandWidth: i32,
+    LowerBandWidth: i32,
+    HomogenousFlag: bool,
+    Array: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_solve_banded_system_matrix_int2_bool_array1ofpnt2d_array1ofreal(Matrix, UpperBandWidth, LowerBandWidth, HomogenousFlag, Array, Weights)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1355 - `BSplCLib::SolveBandedSystem`
+/// This solves  the system Matrix.X =  B
+/// with when Matrix is factored in LU form
+/// The  Array   is    an   seen   as    an
+/// Array[1..N][1..ArrayDimension] with N =
+/// the  rank  of the  matrix  Matrix.  The
+/// result is stored   in Array  when  each
+/// coordinate is  solved that is  B is the
+/// array whose values are
+/// B[i] = Array[i][p] for each p in 1..ArrayDimension
+/// If  HomogeneousFlag ==
+/// 0  the  Poles  are  multiplied by   the
+/// Weights   upon   Entry   and      once
+/// interpolation   is    carried  over the
+/// result of the  poles are divided by the
+/// result of   the   interpolation of  the
+/// weights. Otherwise if HomogenousFlag == 1
+/// the Poles and Weights are treated homogeneously
+/// that is that those are interpolated as they
+/// are and result is returned without division
+/// by the interpolated weights.
+pub fn solve_banded_system_matrix_int2_bool_array1ofpnt_array1ofreal(
+    Matrix: &crate::math::Matrix,
+    UpperBandWidth: i32,
+    LowerBandWidth: i32,
+    HomogeneousFlag: bool,
+    Array: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_solve_banded_system_matrix_int2_bool_array1ofpnt_array1ofreal(Matrix, UpperBandWidth, LowerBandWidth, HomogeneousFlag, Array, Weights)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1364 - `BSplCLib::MergeBSplineKnots`
+/// Merges  two knot vector by   setting the starting and
+/// ending values to StartValue and EndValue
+pub fn merge_b_spline_knots(
+    Tolerance: f64,
+    StartValue: f64,
+    EndValue: f64,
+    Degree1: i32,
+    Knots1: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults1: &crate::ffi_types::TColStd_Array1OfInteger,
+    Degree2: i32,
+    Knots2: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults2: &crate::ffi_types::TColStd_Array1OfInteger,
+    NumPoles: &mut i32,
+    NewKnots: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+    NewMults: &mut crate::ffi_types::HandleTColStdHArray1OfInteger,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_merge_b_spline_knots(
+            Tolerance, StartValue, EndValue, Degree1, Knots1, Mults1, Degree2, Knots2, Mults2,
+            NumPoles, NewKnots, NewMults,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1402 - `BSplCLib::FunctionReparameterise`
+/// This function will compose  a given Vectorial BSpline F(t)
+/// defined  by its  BSplineDegree and BSplineFlatKnotsl,
+/// its Poles  array which are coded as  an array of Real
+/// of  the  form  [1..NumPoles][1..PolesDimension] with  a
+/// function     a(t) which is   assumed to   satisfy the
+/// following:
+///
+/// 1. F(a(t))  is a polynomial BSpline
+/// that can be expressed  exactly as a BSpline of degree
+/// NewDegree on the knots FlatKnots
+///
+/// 2. a(t) defines a differentiable
+/// isomorphism between the range of FlatKnots to the range
+/// of BSplineFlatKnots which is the
+/// same as the  range of F(t)
+///
+/// Warning: it is
+/// the caller's responsibility to insure that conditions
+/// 1. and  2. above are  satisfied : no check whatsoever
+/// is made in this method
+///
+/// theStatus will return 0 if OK else it will return the pivot index
+/// of the matrix that was inverted to compute the multiplied
+/// BSpline : the method used is interpolation at Schoenenberg
+/// points of F(a(t))
+pub fn function_reparameterise_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(
+    Function: &EvaluatorFunction,
+    BSplineDegree: i32,
+    BSplineFlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    PolesDimension: i32,
+    Poles: &mut f64,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    NewDegree: i32,
+    NewPoles: &mut f64,
+    theStatus: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(Function, BSplineDegree, BSplineFlatKnots, PolesDimension, Poles, FlatKnots, NewDegree, NewPoles, theStatus)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1437 - `BSplCLib::FunctionReparameterise`
+/// This function will compose  a given Vectorial BSpline F(t)
+/// defined  by its  BSplineDegree and BSplineFlatKnotsl,
+/// its Poles  array which are coded as  an array of Real
+/// of  the  form  [1..NumPoles][1..PolesDimension] with  a
+/// function     a(t) which is   assumed to   satisfy the
+/// following:
+///
+/// 1. F(a(t))  is a polynomial BSpline
+/// that can be expressed  exactly as a BSpline of degree
+/// NewDegree on the knots FlatKnots
+///
+/// 2. a(t) defines a differentiable
+/// isomorphism between the range of FlatKnots to the range
+/// of BSplineFlatKnots which is the
+/// same as the  range of F(t)
+///
+/// Warning: it is
+/// the caller's responsibility to insure that conditions
+/// 1. and  2. above are  satisfied : no check whatsoever
+/// is made in this method
+///
+/// theStatus will return 0 if OK else it will return the pivot index
+/// of the matrix that was inverted to compute the multiplied
+/// BSpline : the method used is interpolation at Schoenenberg
+/// points of F(a(t))
+pub fn function_reparameterise_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(
+    Function: &EvaluatorFunction,
+    BSplineDegree: i32,
+    BSplineFlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    NewDegree: i32,
+    NewPoles: &mut crate::ffi_types::TColStd_Array1OfReal,
+    theStatus: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(Function, BSplineDegree, BSplineFlatKnots, Poles, FlatKnots, NewDegree, NewPoles, theStatus)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1466 - `BSplCLib::FunctionReparameterise`
+/// this will compose  a given Vectorial BSpline F(t)
+/// defined  by its  BSplineDegree and BSplineFlatKnotsl,
+/// its Poles  array which are coded as  an array of Real
+/// of  the  form  [1..NumPoles][1..PolesDimension] with  a
+/// function     a(t) which is   assumed to   satisfy the
+/// following  : 1. F(a(t))  is a polynomial BSpline
+/// that can be expressed  exactly as a BSpline of degree
+/// NewDegree on the knots FlatKnots
+/// 2. a(t) defines a differentiable
+/// isomorphism between the range of FlatKnots to the range
+/// of BSplineFlatKnots which is the
+/// same as the  range of F(t)
+/// Warning: it is
+/// the caller's responsibility to insure that conditions
+/// 1. and  2. above are  satisfied : no check whatsoever
+/// is made in this method
+/// theStatus will return 0 if OK else it will return the pivot index
+/// of the matrix that was inverted to compute the multiplied
+/// BSpline : the method used is interpolation at Schoenenberg
+/// points of F(a(t))
+pub fn function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(
+    Function: &EvaluatorFunction,
+    BSplineDegree: i32,
+    BSplineFlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    NewDegree: i32,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    theStatus: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(Function, BSplineDegree, BSplineFlatKnots, Poles, FlatKnots, NewDegree, NewPoles, theStatus)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1495 - `BSplCLib::FunctionReparameterise`
+/// this will compose  a given Vectorial BSpline F(t)
+/// defined  by its  BSplineDegree and BSplineFlatKnotsl,
+/// its Poles  array which are coded as  an array of Real
+/// of  the  form  [1..NumPoles][1..PolesDimension] with  a
+/// function     a(t) which is   assumed to   satisfy the
+/// following  : 1. F(a(t))  is a polynomial BSpline
+/// that can be expressed  exactly as a BSpline of degree
+/// NewDegree on the knots FlatKnots
+/// 2. a(t) defines a differentiable
+/// isomorphism between the range of FlatKnots to the range
+/// of BSplineFlatKnots which is the
+/// same as the  range of F(t)
+/// Warning: it is
+/// the caller's responsibility to insure that conditions
+/// 1. and  2. above are  satisfied : no check whatsoever
+/// is made in this method
+/// theStatus will return 0 if OK else it will return the pivot index
+/// of the matrix that was inverted to compute the multiplied
+/// BSpline : the method used is interpolation at Schoenenberg
+/// points of F(a(t))
+pub fn function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(
+    Function: &EvaluatorFunction,
+    BSplineDegree: i32,
+    BSplineFlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    NewDegree: i32,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    theStatus: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(Function, BSplineDegree, BSplineFlatKnots, Poles, FlatKnots, NewDegree, NewPoles, theStatus)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1521 - `BSplCLib::FunctionMultiply`
+/// this will  multiply a given Vectorial BSpline F(t)
+/// defined  by its  BSplineDegree and BSplineFlatKnotsl,
+/// its Poles  array which are coded as  an array of Real
+/// of  the  form  [1..NumPoles][1..PolesDimension] by  a
+/// function     a(t) which is   assumed to   satisfy the
+/// following  : 1. a(t)  * F(t)  is a polynomial BSpline
+/// that can be expressed  exactly as a BSpline of degree
+/// NewDegree on the knots FlatKnots 2. the range of a(t)
+/// is the same as the  range of F(t)
+/// Warning: it is
+/// the caller's responsibility to insure that conditions
+/// 1. and  2. above are  satisfied : no check whatsoever
+/// is made in this method
+/// theStatus will return 0 if OK else it will return the pivot index
+/// of the matrix that was inverted to compute the multiplied
+/// BSpline : the method used is interpolation at Schoenenberg
+/// points of a(t)*F(t)
+pub fn function_multiply_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(
+    Function: &EvaluatorFunction,
+    BSplineDegree: i32,
+    BSplineFlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    PolesDimension: i32,
+    Poles: &mut f64,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    NewDegree: i32,
+    NewPoles: &mut f64,
+    theStatus: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(Function, BSplineDegree, BSplineFlatKnots, PolesDimension, Poles, FlatKnots, NewDegree, NewPoles, theStatus)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1548 - `BSplCLib::FunctionMultiply`
+/// this will  multiply a given Vectorial BSpline F(t)
+/// defined  by its  BSplineDegree and BSplineFlatKnotsl,
+/// its Poles  array which are coded as  an array of Real
+/// of  the  form  [1..NumPoles][1..PolesDimension] by  a
+/// function     a(t) which is   assumed to   satisfy the
+/// following  : 1. a(t)  * F(t)  is a polynomial BSpline
+/// that can be expressed  exactly as a BSpline of degree
+/// NewDegree on the knots FlatKnots 2. the range of a(t)
+/// is the same as the  range of F(t)
+/// Warning: it is
+/// the caller's responsibility to insure that conditions
+/// 1. and  2. above are  satisfied : no check whatsoever
+/// is made in this method
+/// theStatus will return 0 if OK else it will return the pivot index
+/// of the matrix that was inverted to compute the multiplied
+/// BSpline : the method used is interpolation at Schoenenberg
+/// points of a(t)*F(t)
+pub fn function_multiply_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(
+    Function: &EvaluatorFunction,
+    BSplineDegree: i32,
+    BSplineFlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColStd_Array1OfReal,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    NewDegree: i32,
+    NewPoles: &mut crate::ffi_types::TColStd_Array1OfReal,
+    theStatus: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(Function, BSplineDegree, BSplineFlatKnots, Poles, FlatKnots, NewDegree, NewPoles, theStatus)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1574 - `BSplCLib::FunctionMultiply`
+/// this will  multiply a given Vectorial BSpline F(t)
+/// defined  by its  BSplineDegree and BSplineFlatKnotsl,
+/// its Poles  array which are coded as  an array of Real
+/// of  the  form  [1..NumPoles][1..PolesDimension] by  a
+/// function     a(t) which is   assumed to   satisfy the
+/// following  : 1. a(t)  * F(t)  is a polynomial BSpline
+/// that can be expressed  exactly as a BSpline of degree
+/// NewDegree on the knots FlatKnots 2. the range of a(t)
+/// is the same as the  range of F(t)
+/// Warning: it is
+/// the caller's responsibility to insure that conditions
+/// 1. and  2. above are  satisfied : no check whatsoever
+/// is made in this method
+/// theStatus will return 0 if OK else it will return the pivot index
+/// of the matrix that was inverted to compute the multiplied
+/// BSpline : the method used is interpolation at Schoenenberg
+/// points of a(t)*F(t)
+pub fn function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(
+    Function: &EvaluatorFunction,
+    BSplineDegree: i32,
+    BSplineFlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    NewDegree: i32,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    theStatus: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(Function, BSplineDegree, BSplineFlatKnots, Poles, FlatKnots, NewDegree, NewPoles, theStatus)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1600 - `BSplCLib::FunctionMultiply`
+/// this will  multiply a given Vectorial BSpline F(t)
+/// defined  by its  BSplineDegree and BSplineFlatKnotsl,
+/// its Poles  array which are coded as  an array of Real
+/// of  the  form  [1..NumPoles][1..PolesDimension] by  a
+/// function     a(t) which is   assumed to   satisfy the
+/// following  : 1. a(t)  * F(t)  is a polynomial BSpline
+/// that can be expressed  exactly as a BSpline of degree
+/// NewDegree on the knots FlatKnots 2. the range of a(t)
+/// is the same as the  range of F(t)
+/// Warning: it is
+/// the caller's responsibility to insure that conditions
+/// 1. and  2. above are  satisfied : no check whatsoever
+/// is made in this method
+/// theStatus will return 0 if OK else it will return the pivot index
+/// of the matrix that was inverted to compute the multiplied
+/// BSpline : the method used is interpolation at Schoenenberg
+/// points of a(t)*F(t)
+pub fn function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(
+    Function: &EvaluatorFunction,
+    BSplineDegree: i32,
+    BSplineFlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    NewDegree: i32,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    theStatus: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(Function, BSplineDegree, BSplineFlatKnots, Poles, FlatKnots, NewDegree, NewPoles, theStatus)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1623 - `BSplCLib::Eval`
+/// Perform the De Boor   algorithm  to  evaluate a point at
+/// parameter <U>, with <Degree> and <Dimension>.
+///
+/// Poles is  an array of  Reals of size
+///
+/// <Dimension> *  <Degree>+1
+///
+/// Containing the  poles.  At  the end <Poles> contains
+/// the current point.   Poles Contain all  the poles of
+/// the BsplineCurve, Knots  also Contains all the knots
+/// of the BsplineCurve.  ExtrapMode has two slots [0] =
+/// Degree used to extrapolate before the first knot [1]
+/// = Degre used to  extrapolate after the last knot has
+/// to be between 1 and  Degree
+pub fn eval_real_bool_int3_array1ofreal_int_real2(
+    U: f64,
+    PeriodicFlag: bool,
+    DerivativeRequest: i32,
+    ExtrapMode: &mut i32,
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    ArrayDimension: i32,
+    Poles: &mut f64,
+    Result: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_eval_real_bool_int3_array1ofreal_int_real2(
+            U,
+            PeriodicFlag,
+            DerivativeRequest,
+            ExtrapMode,
+            Degree,
+            FlatKnots,
+            ArrayDimension,
+            Poles,
+            Result,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1644 - `BSplCLib::Eval`
+/// Perform the  De Boor algorithm  to evaluate a point at
+/// parameter   <U>,  with   <Degree>    and  <Dimension>.
+/// Evaluates by multiplying the  Poles by the Weights and
+/// gives  the homogeneous  result  in PolesResult that is
+/// the results of the evaluation of the numerator once it
+/// has     been  multiplied   by  the     weights and  in
+/// WeightsResult one has  the result of the evaluation of
+/// the denominator
+///
+/// Warning:   <PolesResult> and <WeightsResult>  must be   dimensioned
+/// properly.
+pub fn eval_real_bool_int3_array1ofreal_int_real4(
+    U: f64,
+    PeriodicFlag: bool,
+    DerivativeRequest: i32,
+    ExtrapMode: &mut i32,
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    ArrayDimension: i32,
+    Poles: &mut f64,
+    Weights: &mut f64,
+    PolesResult: &mut f64,
+    WeightsResult: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_eval_real_bool_int3_array1ofreal_int_real4(
+            U,
+            PeriodicFlag,
+            DerivativeRequest,
+            ExtrapMode,
+            Degree,
+            FlatKnots,
+            ArrayDimension,
+            Poles,
+            Weights,
+            PolesResult,
+            WeightsResult,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1659 - `BSplCLib::Eval`
+/// Perform the evaluation of the Bspline Basis
+/// and then multiplies by the weights
+/// this just evaluates the current point
+pub fn eval_real_bool2_int2_array1ofreal_array1ofpnt_array1ofreal_pnt_real(
+    U: f64,
+    PeriodicFlag: bool,
+    HomogeneousFlag: bool,
+    ExtrapMode: &mut i32,
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt,
+    Weight: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_eval_real_bool2_int2_array1ofreal_array1ofpnt_array1ofreal_pnt_real(U, PeriodicFlag, HomogeneousFlag, ExtrapMode, Degree, FlatKnots, Poles, Weights, Point, Weight)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1673 - `BSplCLib::Eval`
+/// Perform the evaluation of the Bspline Basis
+/// and then multiplies by the weights
+/// this just evaluates the current point
+pub fn eval_real_bool2_int2_array1ofreal_array1ofpnt2d_array1ofreal_pnt2d_real(
+    U: f64,
+    PeriodicFlag: bool,
+    HomogeneousFlag: bool,
+    ExtrapMode: &mut i32,
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt2d,
+    Weight: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_eval_real_bool2_int2_array1ofreal_array1ofpnt2d_array1ofreal_pnt2d_real(U, PeriodicFlag, HomogeneousFlag, ExtrapMode, Degree, FlatKnots, Poles, Weights, Point, Weight)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1691 - `BSplCLib::TangExtendToConstraint`
+/// Extend a BSpline nD using the tangency map
+/// <C1Coefficient> is the coefficient of reparametrisation
+/// <Continuity> must be equal to 1, 2 or 3.
+/// <Degree> must be greater or equal than <Continuity> + 1.
+///
+/// Warning:   <KnotsResult> and <PolesResult>  must be   dimensioned
+/// properly.
+pub fn tang_extend_to_constraint(
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    C1Coefficient: f64,
+    NumPoles: i32,
+    Poles: &mut f64,
+    Dimension: i32,
+    Degree: i32,
+    ConstraintPoint: &crate::ffi_types::TColStd_Array1OfReal,
+    Continuity: i32,
+    After: bool,
+    NbPolesResult: &mut i32,
+    NbKnotsRsult: &mut i32,
+    KnotsResult: &mut f64,
+    PolesResult: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_tang_extend_to_constraint(
+            FlatKnots,
+            C1Coefficient,
+            NumPoles,
+            Poles,
+            Dimension,
+            Degree,
+            ConstraintPoint,
+            Continuity,
+            After,
+            NbPolesResult,
+            NbKnotsRsult,
+            KnotsResult,
+            PolesResult,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1716 - `BSplCLib::CacheD0`
+/// Perform the evaluation of the of the cache
+/// the parameter must be normalized between
+/// the 0 and 1 for the span.
+/// The Cache must be valid when calling this
+/// routine. Geom Package will insure that.
+/// and then multiplies by the weights
+/// this just evaluates the current point
+/// the CacheParameter is where the Cache was
+/// constructed the SpanLength is to normalize
+/// the polynomial in the cache to avoid bad conditioning
+/// effects
+pub unsafe fn cache_d0_real_int_real2_array1ofpnt_array1ofrealptr_pnt(
+    U: f64,
+    Degree: i32,
+    CacheParameter: f64,
+    SpanLenght: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_cache_d0_real_int_real2_array1ofpnt_array1ofrealptr_pnt(
+            U,
+            Degree,
+            CacheParameter,
+            SpanLenght,
+            Poles,
+            Weights as *const _,
+            Point,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1736 - `BSplCLib::CacheD0`
+/// Perform the evaluation of the Bspline Basis
+/// and then multiplies by the weights
+/// this just evaluates the current point
+/// the parameter must be normalized between
+/// the 0 and 1 for the span.
+/// The Cache must be valid when calling this
+/// routine. Geom Package will insure that.
+/// and then multiplies by the weights
+/// ththe CacheParameter is where the Cache was
+/// constructed the SpanLength is to normalize
+/// the polynomial in the cache to avoid bad conditioning
+/// effectsis just evaluates the current point
+pub unsafe fn cache_d0_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d(
+    U: f64,
+    Degree: i32,
+    CacheParameter: f64,
+    SpanLenght: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_cache_d0_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d(U, Degree, CacheParameter, SpanLenght, Poles, Weights as *const _, Point)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1747 - `BSplCLib::CoefsD0`
+/// Calls CacheD0 for Bezier  Curves Arrays computed with
+/// the method PolesCoefficients.
+/// Warning: To be used for Beziercurves ONLY!!!
+pub unsafe fn coefs_d0_real_array1ofpnt_array1ofrealptr_pnt(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_coefs_d0_real_array1ofpnt_array1ofrealptr_pnt(
+            U,
+            Poles,
+            Weights as *const _,
+            Point,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1755 - `BSplCLib::CoefsD0`
+/// Calls CacheD0 for Bezier  Curves Arrays computed with
+/// the method PolesCoefficients.
+/// Warning: To be used for Beziercurves ONLY!!!
+pub unsafe fn coefs_d0_real_array1ofpnt2d_array1ofrealptr_pnt2d(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_coefs_d0_real_array1ofpnt2d_array1ofrealptr_pnt2d(
+            U,
+            Poles,
+            Weights as *const _,
+            Point,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1771 - `BSplCLib::CacheD1`
+/// Perform the evaluation of the of the cache
+/// the parameter must be normalized between
+/// the 0 and 1 for the span.
+/// The Cache must be valid when calling this
+/// routine. Geom Package will insure that.
+/// and then multiplies by the weights
+/// this just evaluates the current point
+/// the CacheParameter is where the Cache was
+/// constructed the SpanLength is to normalize
+/// the polynomial in the cache to avoid bad conditioning
+/// effects
+pub unsafe fn cache_d1_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec(
+    U: f64,
+    Degree: i32,
+    CacheParameter: f64,
+    SpanLenght: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt,
+    Vec: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_cache_d1_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec(U, Degree, CacheParameter, SpanLenght, Poles, Weights as *const _, Point, Vec)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1792 - `BSplCLib::CacheD1`
+/// Perform the evaluation of the Bspline Basis
+/// and then multiplies by the weights
+/// this just evaluates the current point
+/// the parameter must be normalized between
+/// the 0 and 1 for the span.
+/// The Cache must be valid when calling this
+/// routine. Geom Package will insure that.
+/// and then multiplies by the weights
+/// ththe CacheParameter is where the Cache was
+/// constructed the SpanLength is to normalize
+/// the polynomial in the cache to avoid bad conditioning
+/// effectsis just evaluates the current point
+pub unsafe fn cache_d1_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(
+    U: f64,
+    Degree: i32,
+    CacheParameter: f64,
+    SpanLenght: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt2d,
+    Vec: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_cache_d1_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(U, Degree, CacheParameter, SpanLenght, Poles, Weights as *const _, Point, Vec)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1804 - `BSplCLib::CoefsD1`
+/// Calls CacheD1 for Bezier  Curves Arrays computed with
+/// the method PolesCoefficients.
+/// Warning: To be used for Beziercurves ONLY!!!
+pub unsafe fn coefs_d1_real_array1ofpnt_array1ofrealptr_pnt_vec(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt,
+    Vec: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_coefs_d1_real_array1ofpnt_array1ofrealptr_pnt_vec(
+            U,
+            Poles,
+            Weights as *const _,
+            Point,
+            Vec,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1813 - `BSplCLib::CoefsD1`
+/// Calls CacheD1 for Bezier  Curves Arrays computed with
+/// the method PolesCoefficients.
+/// Warning: To be used for Beziercurves ONLY!!!
+pub unsafe fn coefs_d1_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt2d,
+    Vec: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_coefs_d1_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(
+            U,
+            Poles,
+            Weights as *const _,
+            Point,
+            Vec,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1830 - `BSplCLib::CacheD2`
+/// Perform the evaluation of the of the cache
+/// the parameter must be normalized between
+/// the 0 and 1 for the span.
+/// The Cache must be valid when calling this
+/// routine. Geom Package will insure that.
+/// and then multiplies by the weights
+/// this just evaluates the current point
+/// the CacheParameter is where the Cache was
+/// constructed the SpanLength is to normalize
+/// the polynomial in the cache to avoid bad conditioning
+/// effects
+pub unsafe fn cache_d2_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec2(
+    U: f64,
+    Degree: i32,
+    CacheParameter: f64,
+    SpanLenght: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt,
+    Vec1: &mut crate::gp::Vec,
+    Vec2: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_cache_d2_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec2(U, Degree, CacheParameter, SpanLenght, Poles, Weights as *const _, Point, Vec1, Vec2)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1852 - `BSplCLib::CacheD2`
+/// Perform the evaluation of the Bspline Basis
+/// and then multiplies by the weights
+/// this just evaluates the current point
+/// the parameter must be normalized between
+/// the 0 and 1 for the span.
+/// The Cache must be valid when calling this
+/// routine. Geom Package will insure that.
+/// and then multiplies by the weights
+/// ththe CacheParameter is where the Cache was
+/// constructed the SpanLength is to normalize
+/// the polynomial in the cache to avoid bad conditioning
+/// effectsis just evaluates the current point
+pub unsafe fn cache_d2_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(
+    U: f64,
+    Degree: i32,
+    CacheParameter: f64,
+    SpanLenght: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt2d,
+    Vec1: &mut crate::gp::Vec2d,
+    Vec2: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_cache_d2_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(U, Degree, CacheParameter, SpanLenght, Poles, Weights as *const _, Point, Vec1, Vec2)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1865 - `BSplCLib::CoefsD2`
+/// Calls CacheD1 for Bezier  Curves Arrays computed with
+/// the method PolesCoefficients.
+/// Warning: To be used for Beziercurves ONLY!!!
+pub unsafe fn coefs_d2_real_array1ofpnt_array1ofrealptr_pnt_vec2(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt,
+    Vec1: &mut crate::gp::Vec,
+    Vec2: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_coefs_d2_real_array1ofpnt_array1ofrealptr_pnt_vec2(
+            U,
+            Poles,
+            Weights as *const _,
+            Point,
+            Vec1,
+            Vec2,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1875 - `BSplCLib::CoefsD2`
+/// Calls CacheD1 for Bezier  Curves Arrays computed with
+/// the method PolesCoefficients.
+/// Warning: To be used for Beziercurves ONLY!!!
+pub unsafe fn coefs_d2_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt2d,
+    Vec1: &mut crate::gp::Vec2d,
+    Vec2: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_coefs_d2_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(
+            U,
+            Poles,
+            Weights as *const _,
+            Point,
+            Vec1,
+            Vec2,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1893 - `BSplCLib::CacheD3`
+/// Perform the evaluation of the of the cache
+/// the parameter must be normalized between
+/// the 0 and 1 for the span.
+/// The Cache must be valid when calling this
+/// routine. Geom Package will insure that.
+/// and then multiplies by the weights
+/// this just evaluates the current point
+/// the CacheParameter is where the Cache was
+/// constructed the SpanLength is to normalize
+/// the polynomial in the cache to avoid bad conditioning
+/// effects
+pub unsafe fn cache_d3_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec3(
+    U: f64,
+    Degree: i32,
+    CacheParameter: f64,
+    SpanLenght: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt,
+    Vec1: &mut crate::gp::Vec,
+    Vec2: &mut crate::gp::Vec,
+    Vec3: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_cache_d3_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec3(U, Degree, CacheParameter, SpanLenght, Poles, Weights as *const _, Point, Vec1, Vec2, Vec3)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1916 - `BSplCLib::CacheD3`
+/// Perform the evaluation of the Bspline Basis
+/// and then multiplies by the weights
+/// this just evaluates the current point
+/// the parameter must be normalized between
+/// the 0 and 1 for the span.
+/// The Cache must be valid when calling this
+/// routine. Geom Package will insure that.
+/// and then multiplies by the weights
+/// ththe CacheParameter is where the Cache was
+/// constructed the SpanLength is to normalize
+/// the polynomial in the cache to avoid bad conditioning
+/// effectsis just evaluates the current point
+pub unsafe fn cache_d3_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(
+    U: f64,
+    Degree: i32,
+    CacheParameter: f64,
+    SpanLenght: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt2d,
+    Vec1: &mut crate::gp::Vec2d,
+    Vec2: &mut crate::gp::Vec2d,
+    Vec3: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_cache_d3_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(U, Degree, CacheParameter, SpanLenght, Poles, Weights as *const _, Point, Vec1, Vec2, Vec3)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1930 - `BSplCLib::CoefsD3`
+/// Calls CacheD1 for Bezier  Curves Arrays computed with
+/// the method PolesCoefficients.
+/// Warning: To be used for Beziercurves ONLY!!!
+pub unsafe fn coefs_d3_real_array1ofpnt_array1ofrealptr_pnt_vec3(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt,
+    Vec1: &mut crate::gp::Vec,
+    Vec2: &mut crate::gp::Vec,
+    Vec3: &mut crate::gp::Vec,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_coefs_d3_real_array1ofpnt_array1ofrealptr_pnt_vec3(
+            U,
+            Poles,
+            Weights as *const _,
+            Point,
+            Vec1,
+            Vec2,
+            Vec3,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1941 - `BSplCLib::CoefsD3`
+/// Calls CacheD1 for Bezier  Curves Arrays computed with
+/// the method PolesCoefficients.
+/// Warning: To be used for Beziercurves ONLY!!!
+pub unsafe fn coefs_d3_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(
+    U: f64,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    Point: &mut crate::gp::Pnt2d,
+    Vec1: &mut crate::gp::Vec2d,
+    Vec2: &mut crate::gp::Vec2d,
+    Vec3: &mut crate::gp::Vec2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_coefs_d3_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(
+            U,
+            Poles,
+            Weights as *const _,
+            Point,
+            Vec1,
+            Vec2,
+            Vec3,
+        )
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1953 - `BSplCLib::BuildCache`
+/// Perform the evaluation of the Taylor expansion
+/// of the Bspline normalized between 0 and 1.
+/// If rational computes the homogeneous Taylor expansion
+/// for the numerator and stores it in CachePoles
+pub unsafe fn build_cache_real2_bool_int_array1ofreal_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(
+    U: f64,
+    InverseOfSpanDomain: f64,
+    PeriodicFlag: bool,
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    CachePoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    CacheWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_build_cache_real2_bool_int_array1ofreal_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(U, InverseOfSpanDomain, PeriodicFlag, Degree, FlatKnots, Poles, Weights as *const _, CachePoles, CacheWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1967 - `BSplCLib::BuildCache`
+/// Perform the evaluation of the Taylor expansion
+/// of the Bspline normalized between 0 and 1.
+/// If rational computes the homogeneous Taylor expansion
+/// for the numerator and stores it in CachePoles
+pub unsafe fn build_cache_real2_bool_int_array1ofreal_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(
+    U: f64,
+    InverseOfSpanDomain: f64,
+    PeriodicFlag: bool,
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    CachePoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    CacheWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_build_cache_real2_bool_int_array1ofreal_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(U, InverseOfSpanDomain, PeriodicFlag, Degree, FlatKnots, Poles, Weights as *const _, CachePoles, CacheWeights as *mut _)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1980 - `BSplCLib::BuildCache`
+/// Perform the evaluation of the Taylor expansion
+/// of the Bspline normalized between 0 and 1.
+/// Structure of result optimized for BSplCLib_Cache.
+pub unsafe fn build_cache_real2_bool_int2_array1ofreal_array1ofpnt_array1ofrealptr_array2ofreal(
+    theParameter: f64,
+    theSpanDomain: f64,
+    thePeriodicFlag: bool,
+    theDegree: i32,
+    theSpanIndex: i32,
+    theFlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    thePoles: &crate::ffi_types::TColgp_Array1OfPnt,
+    theWeights: &crate::ffi_types::TColStd_Array1OfReal,
+    theCacheArray: &mut crate::ffi_types::TColStd_Array2OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_build_cache_real2_bool_int2_array1ofreal_array1ofpnt_array1ofrealptr_array2ofreal(theParameter, theSpanDomain, thePeriodicFlag, theDegree, theSpanIndex, theFlatKnots, thePoles, theWeights as *const _, theCacheArray)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:1993 - `BSplCLib::BuildCache`
+/// Perform the evaluation of the Taylor expansion
+/// of the Bspline normalized between 0 and 1.
+/// Structure of result optimized for BSplCLib_Cache.
+pub unsafe fn build_cache_real2_bool_int2_array1ofreal_array1ofpnt2d_array1ofrealptr_array2ofreal(
+    theParameter: f64,
+    theSpanDomain: f64,
+    thePeriodicFlag: bool,
+    theDegree: i32,
+    theSpanIndex: i32,
+    theFlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    thePoles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    theWeights: &crate::ffi_types::TColStd_Array1OfReal,
+    theCacheArray: &mut crate::ffi_types::TColStd_Array2OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_build_cache_real2_bool_int2_array1ofreal_array1ofpnt2d_array1ofrealptr_array2ofreal(theParameter, theSpanDomain, thePeriodicFlag, theDegree, theSpanIndex, theFlatKnots, thePoles, theWeights as *const _, theCacheArray)
+    })
+}
 /// **Source:** `BSplCLib.hxx`:2003 - `BSplCLib::PolesCoefficients`
 pub fn poles_coefficients_array1ofpnt2d2(
     Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
@@ -298,6 +2893,17 @@ pub fn poles_coefficients_array1ofpnt2d2(
 ) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKMath::BSplCLib_poles_coefficients_array1ofpnt2d2(Poles, CachePoles)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2006 - `BSplCLib::PolesCoefficients`
+pub unsafe fn poles_coefficients_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    CachePoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    CacheWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_poles_coefficients_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(Poles, Weights as *const _, CachePoles, CacheWeights as *mut _)
     })
 }
 /// **Source:** `BSplCLib.hxx`:2011 - `BSplCLib::PolesCoefficients`
@@ -309,12 +2915,504 @@ pub fn poles_coefficients_array1ofpnt2(
         crate::ffi_extern_TKMath::BSplCLib_poles_coefficients_array1ofpnt2(Poles, CachePoles)
     })
 }
+/// **Source:** `BSplCLib.hxx`:2017 - `BSplCLib::PolesCoefficients`
+/// Encapsulation   of  BuildCache    to   perform   the
+/// evaluation  of the Taylor expansion for beziercurves
+/// at parameter 0.
+/// Warning: To be used for Beziercurves ONLY!!!
+pub unsafe fn poles_coefficients_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    CachePoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    CacheWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_poles_coefficients_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(Poles, Weights as *const _, CachePoles, CacheWeights as *mut _)
+    })
+}
 /// **Source:** `BSplCLib.hxx`:2025 - `BSplCLib::FlatBezierKnots`
 /// Returns pointer to statically allocated array representing
 /// flat knots for bezier curve of the specified degree.
 /// Raises OutOfRange if Degree > MaxDegree()
 pub fn flat_bezier_knots(Degree: i32) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::BSplCLib_flat_bezier_knots(Degree) })
+}
+/// **Source:** `BSplCLib.hxx`:2030 - `BSplCLib::BuildSchoenbergPoints`
+/// builds the Schoenberg points from the flat knot
+/// used to interpolate a BSpline since the
+/// BSpline matrix is invertible.
+pub fn build_schoenberg_points(
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Parameters: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_build_schoenberg_points(Degree, FlatKnots, Parameters)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2053 - `BSplCLib::Interpolate`
+/// Performs the interpolation of  the data given in
+/// the Poles  array  according  to the  requests in
+/// ContactOrderArray    that is      :           if
+/// ContactOrderArray(i) has value  d it means  that
+/// Poles(i)   contains the dth  derivative of  the
+/// function to be interpolated. The length L of the
+/// following arrays must be the same :
+/// Parameters, ContactOrderArray, Poles,
+/// The length of FlatKnots is Degree + L + 1
+/// Warning:
+/// the method used to do that interpolation is
+/// gauss elimination WITHOUT pivoting. Thus if the
+/// diagonal is not dominant there is no guarantee
+/// that the algorithm will work. Nevertheless for
+/// Cubic interpolation or interpolation at Scheonberg
+/// points the method will work
+/// The InversionProblem will report 0 if there was no
+/// problem else it will give the index of the faulty
+/// pivot
+pub fn interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_int(
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+    ContactOrderArray: &crate::ffi_types::TColStd_Array1OfInteger,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    InversionProblem: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_int(Degree, FlatKnots, Parameters, ContactOrderArray, Poles, InversionProblem)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2080 - `BSplCLib::Interpolate`
+/// Performs the interpolation of  the data given in
+/// the Poles  array  according  to the  requests in
+/// ContactOrderArray    that is      :           if
+/// ContactOrderArray(i) has value  d it means  that
+/// Poles(i)   contains the dth  derivative of  the
+/// function to be interpolated. The length L of the
+/// following arrays must be the same :
+/// Parameters, ContactOrderArray, Poles,
+/// The length of FlatKnots is Degree + L + 1
+/// Warning:
+/// the method used to do that interpolation is
+/// gauss elimination WITHOUT pivoting. Thus if the
+/// diagonal is not dominant there is no guarantee
+/// that the algorithm will work. Nevertheless for
+/// Cubic interpolation at knots or interpolation at Scheonberg
+/// points the method will work.
+/// The InversionProblem w
+/// ll report 0 if there was no
+/// problem else it will give the index of the faulty
+/// pivot
+pub fn interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_int(
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+    ContactOrderArray: &crate::ffi_types::TColStd_Array1OfInteger,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    InversionProblem: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_int(Degree, FlatKnots, Parameters, ContactOrderArray, Poles, InversionProblem)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2106 - `BSplCLib::Interpolate`
+/// Performs the interpolation of  the data given in
+/// the Poles  array  according  to the  requests in
+/// ContactOrderArray    that is      :           if
+/// ContactOrderArray(i) has value  d it means  that
+/// Poles(i)   contains the dth  derivative of  the
+/// function to be interpolated. The length L of the
+/// following arrays must be the same :
+/// Parameters, ContactOrderArray, Poles,
+/// The length of FlatKnots is Degree + L + 1
+/// Warning:
+/// the method used to do that interpolation is
+/// gauss elimination WITHOUT pivoting. Thus if the
+/// diagonal is not dominant there is no guarantee
+/// that the algorithm will work. Nevertheless for
+/// Cubic interpolation at knots or interpolation at Scheonberg
+/// points the method will work.
+/// The InversionProblem will report 0 if there was no
+/// problem else it will give the index of the faulty
+/// pivot
+pub fn interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_array1ofreal_int(
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+    ContactOrderArray: &crate::ffi_types::TColStd_Array1OfInteger,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &mut crate::ffi_types::TColStd_Array1OfReal,
+    InversionProblem: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_array1ofreal_int(Degree, FlatKnots, Parameters, ContactOrderArray, Poles, Weights, InversionProblem)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2133 - `BSplCLib::Interpolate`
+/// Performs the interpolation of  the data given in
+/// the Poles  array  according  to the  requests in
+/// ContactOrderArray    that is      :           if
+/// ContactOrderArray(i) has value  d it means  that
+/// Poles(i)   contains the dth  derivative of  the
+/// function to be interpolated. The length L of the
+/// following arrays must be the same :
+/// Parameters, ContactOrderArray, Poles,
+/// The length of FlatKnots is Degree + L + 1
+/// Warning:
+/// the method used to do that interpolation is
+/// gauss elimination WITHOUT pivoting. Thus if the
+/// diagonal is not dominant there is no guarantee
+/// that the algorithm will work. Nevertheless for
+/// Cubic interpolation at knots or interpolation at Scheonberg
+/// points the method will work.
+/// The InversionProblem w
+/// ll report 0 if there was no
+/// problem else it will give the i
+pub fn interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_array1ofreal_int(
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+    ContactOrderArray: &crate::ffi_types::TColStd_Array1OfInteger,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &mut crate::ffi_types::TColStd_Array1OfReal,
+    InversionProblem: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_array1ofreal_int(Degree, FlatKnots, Parameters, ContactOrderArray, Poles, Weights, InversionProblem)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2163 - `BSplCLib::Interpolate`
+/// Performs the interpolation of  the data given in
+/// the Poles  array  according  to the  requests in
+/// ContactOrderArray    that is      :           if
+/// ContactOrderArray(i) has value  d it means  that
+/// Poles(i)   contains the dth  derivative of  the
+/// function to be interpolated. The length L of the
+/// following arrays must be the same :
+/// Parameters, ContactOrderArray
+/// The length of FlatKnots is Degree + L + 1
+/// The  PolesArray   is    an   seen   as    an
+/// Array[1..N][1..ArrayDimension] with N = tge length
+/// of the parameters array
+/// Warning:
+/// the method used to do that interpolation is
+/// gauss elimination WITHOUT pivoting. Thus if the
+/// diagonal is not dominant there is no guarantee
+/// that the algorithm will work. Nevertheless for
+/// Cubic interpolation or interpolation at Scheonberg
+/// points the method will work
+/// The InversionProblem will report 0 if there was no
+/// problem else it will give the index of the faulty
+/// pivot
+pub fn interpolate_int_array1ofreal2_array1ofinteger_int_real_int(
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+    ContactOrderArray: &crate::ffi_types::TColStd_Array1OfInteger,
+    ArrayDimension: i32,
+    Poles: &mut f64,
+    InversionProblem: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_int_real_int(Degree, FlatKnots, Parameters, ContactOrderArray, ArrayDimension, Poles, InversionProblem)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2171 - `BSplCLib::Interpolate`
+pub fn interpolate_int_array1ofreal2_array1ofinteger_int_real2_int(
+    Degree: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+    ContactOrderArray: &crate::ffi_types::TColStd_Array1OfInteger,
+    ArrayDimension: i32,
+    Poles: &mut f64,
+    Weights: &mut f64,
+    InversionProblem: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_int_real2_int(Degree, FlatKnots, Parameters, ContactOrderArray, ArrayDimension, Poles, Weights, InversionProblem)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2189 - `BSplCLib::MovePoint`
+/// Find the new poles which allows  an old point (with a
+/// given  u as parameter) to reach a new position
+/// Index1 and Index2 indicate the range of poles we can move
+/// (1, NbPoles-1) or (2, NbPoles) -> no constraint for one side
+/// don't enter (1,NbPoles) -> error: rigid move
+/// (2, NbPoles-1) -> the ends are enforced
+/// (3, NbPoles-2) -> the ends and the tangency are enforced
+/// if Problem in BSplineBasis calculation, no change for the curve
+/// and FirstIndex, LastIndex = 0
+pub unsafe fn move_point_real_vec2d_int3_array1ofpnt2d_array1ofrealptr_array1ofreal_int2_array1ofpnt2d(
+    U: f64,
+    Displ: &crate::gp::Vec2d,
+    Index1: i32,
+    Index2: i32,
+    Degree: i32,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    FirstIndex: &mut i32,
+    LastIndex: &mut i32,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_move_point_real_vec2d_int3_array1ofpnt2d_array1ofrealptr_array1ofreal_int2_array1ofpnt2d(U, Displ, Index1, Index2, Degree, Poles, Weights as *const _, FlatKnots, FirstIndex, LastIndex, NewPoles)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2210 - `BSplCLib::MovePoint`
+/// Find the new poles which allows  an old point (with a
+/// given  u as parameter) to reach a new position
+/// Index1 and Index2 indicate the range of poles we can move
+/// (1, NbPoles-1) or (2, NbPoles) -> no constraint for one side
+/// don't enter (1,NbPoles) -> error: rigid move
+/// (2, NbPoles-1) -> the ends are enforced
+/// (3, NbPoles-2) -> the ends and the tangency are enforced
+/// if Problem in BSplineBasis calculation, no change for the curve
+/// and FirstIndex, LastIndex = 0
+pub unsafe fn move_point_real_vec_int3_array1ofpnt_array1ofrealptr_array1ofreal_int2_array1ofpnt(
+    U: f64,
+    Displ: &crate::gp::Vec,
+    Index1: i32,
+    Index2: i32,
+    Degree: i32,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    FirstIndex: &mut i32,
+    LastIndex: &mut i32,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_move_point_real_vec_int3_array1ofpnt_array1ofrealptr_array1ofreal_int2_array1ofpnt(U, Displ, Index1, Index2, Degree, Poles, Weights as *const _, FlatKnots, FirstIndex, LastIndex, NewPoles)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2247 - `BSplCLib::MovePointAndTangent`
+/// This is the dimension free version of the utility
+/// U is the parameter  must be within the  first FlatKnots and the
+/// last FlatKnots  Delta is the amount the  curve has  to be moved
+/// DeltaDerivative is the  amount the derivative  has to be moved.
+/// Delta  and   DeltaDerivative   must be    array   of  dimension
+/// ArrayDimension  Degree  is the degree  of   the BSpline and the
+/// FlatKnots are the knots of the BSpline  Starting Condition if =
+/// -1 means the starting point of the curve can move
+/// = 0 means the
+/// starting  point  of the curve  cannot  move but  tangent  starting
+/// point of the curve cannot move
+/// = 1 means the starting point and tangents cannot move
+/// = 2 means the starting point tangent and curvature cannot move
+/// = ...
+/// Same holds for EndingCondition
+/// Poles are the poles of the curve
+/// Weights are the weights of the curve if not NULL
+/// NewPoles are the poles of the deformed curve
+/// ErrorStatus will be 0 if no error happened
+/// 1 if there are not enough knots/poles
+/// the imposed conditions
+/// The way to solve this problem is to add knots to the BSpline
+/// If StartCondition = 1 and EndCondition = 1 then you need at least
+/// 4 + 2 = 6 poles so for example to have a C1 cubic you will need
+/// have at least 2 internal knots.
+pub unsafe fn move_point_and_tangent_real_int_real3_int3_real_array1ofrealptr_array1ofreal_real_int(
+    U: f64,
+    ArrayDimension: i32,
+    Delta: &mut f64,
+    DeltaDerivative: &mut f64,
+    Tolerance: f64,
+    Degree: i32,
+    StartingCondition: i32,
+    EndingCondition: i32,
+    Poles: &mut f64,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    NewPoles: &mut f64,
+    ErrorStatus: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_move_point_and_tangent_real_int_real3_int3_real_array1ofrealptr_array1ofreal_real_int(U, ArrayDimension, Delta, DeltaDerivative, Tolerance, Degree, StartingCondition, EndingCondition, Poles, Weights as *const _, FlatKnots, NewPoles, ErrorStatus)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2286 - `BSplCLib::MovePointAndTangent`
+/// This is the dimension free version of the utility
+/// U is the parameter  must be within the  first FlatKnots and the
+/// last FlatKnots  Delta is the amount the  curve has  to be moved
+/// DeltaDerivative is the  amount the derivative  has to be moved.
+/// Delta  and   DeltaDerivative   must be    array   of  dimension
+/// ArrayDimension  Degree  is the degree  of   the BSpline and the
+/// FlatKnots are the knots of the BSpline  Starting Condition if =
+/// -1 means the starting point of the curve can move
+/// = 0 means the
+/// starting  point  of the curve  cannot  move but  tangent  starting
+/// point of the curve cannot move
+/// = 1 means the starting point and tangents cannot move
+/// = 2 means the starting point tangent and curvature cannot move
+/// = ...
+/// Same holds for EndingCondition
+/// Poles are the poles of the curve
+/// Weights are the weights of the curve if not NULL
+/// NewPoles are the poles of the deformed curve
+/// ErrorStatus will be 0 if no error happened
+/// 1 if there are not enough knots/poles
+/// the imposed conditions
+/// The way to solve this problem is to add knots to the BSpline
+/// If StartCondition = 1 and EndCondition = 1 then you need at least
+/// 4 + 2 = 6 poles so for example to have a C1 cubic you will need
+/// have at least 2 internal knots.
+pub unsafe fn move_point_and_tangent_real_vec2_real_int3_array1ofpnt_array1ofrealptr_array1ofreal_array1ofpnt_int(
+    U: f64,
+    Delta: &crate::gp::Vec,
+    DeltaDerivative: &crate::gp::Vec,
+    Tolerance: f64,
+    Degree: i32,
+    StartingCondition: i32,
+    EndingCondition: i32,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    ErrorStatus: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_move_point_and_tangent_real_vec2_real_int3_array1ofpnt_array1ofrealptr_array1ofreal_array1ofpnt_int(U, Delta, DeltaDerivative, Tolerance, Degree, StartingCondition, EndingCondition, Poles, Weights as *const _, FlatKnots, NewPoles, ErrorStatus)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2324 - `BSplCLib::MovePointAndTangent`
+/// This is the dimension free version of the utility
+/// U is the parameter  must be within the  first FlatKnots and the
+/// last FlatKnots  Delta is the amount the  curve has  to be moved
+/// DeltaDerivative is the  amount the derivative  has to be moved.
+/// Delta  and   DeltaDerivative   must be    array   of  dimension
+/// ArrayDimension  Degree  is the degree  of   the BSpline and the
+/// FlatKnots are the knots of the BSpline  Starting Condition if =
+/// -1 means the starting point of the curve can move
+/// = 0 means the
+/// starting  point  of the curve  cannot  move but  tangent  starting
+/// point of the curve cannot move
+/// = 1 means the starting point and tangents cannot move
+/// = 2 means the starting point tangent and curvature cannot move
+/// = ...
+/// Same holds for EndingCondition
+/// Poles are the poles of the curve
+/// Weights are the weights of the curve if not NULL
+/// NewPoles are the poles of the deformed curve
+/// ErrorStatus will be 0 if no error happened
+/// 1 if there are not enough knots/poles
+/// the imposed conditions
+/// The way to solve this problem is to add knots to the BSpline
+/// If StartCondition = 1 and EndCondition = 1 then you need at least
+/// 4 + 2 = 6 poles so for example to have a C1 cubic you will need
+/// have at least 2 internal knots.
+pub unsafe fn move_point_and_tangent_real_vec2d2_real_int3_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofpnt2d_int(
+    U: f64,
+    Delta: &crate::gp::Vec2d,
+    DeltaDerivative: &crate::gp::Vec2d,
+    Tolerance: f64,
+    Degree: i32,
+    StartingCondition: i32,
+    EndingCondition: i32,
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    NewPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    ErrorStatus: &mut i32,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_move_point_and_tangent_real_vec2d2_real_int3_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofpnt2d_int(U, Delta, DeltaDerivative, Tolerance, Degree, StartingCondition, EndingCondition, Poles, Weights as *const _, FlatKnots, NewPoles, ErrorStatus)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2342 - `BSplCLib::Resolution`
+/// given a tolerance in 3D space returns a
+/// tolerance    in U parameter space such that
+/// all u1 and u0 in the domain of the curve f(u)
+/// | u1 - u0 | < UTolerance and
+/// we have |f (u1) - f (u0)| < Tolerance3D
+pub unsafe fn resolution_real_int2_array1ofrealptr_array1ofreal_int_real2(
+    PolesArray: &mut f64,
+    ArrayDimension: i32,
+    NumPoles: i32,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Degree: i32,
+    Tolerance3D: f64,
+    UTolerance: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_resolution_real_int2_array1ofrealptr_array1ofreal_int_real2(PolesArray, ArrayDimension, NumPoles, Weights as *const _, FlatKnots, Degree, Tolerance3D, UTolerance)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2356 - `BSplCLib::Resolution`
+/// given a tolerance in 3D space returns a
+/// tolerance    in U parameter space such that
+/// all u1 and u0 in the domain of the curve f(u)
+/// | u1 - u0 | < UTolerance and
+/// we have |f (u1) - f (u0)| < Tolerance3D
+pub unsafe fn resolution_array1ofpnt_array1ofrealptr_int_array1ofreal_int_real2(
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    NumPoles: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Degree: i32,
+    Tolerance3D: f64,
+    UTolerance: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_resolution_array1ofpnt_array1ofrealptr_int_array1ofreal_int_real2(Poles, Weights as *const _, NumPoles, FlatKnots, Degree, Tolerance3D, UTolerance)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2369 - `BSplCLib::Resolution`
+/// given a tolerance in 3D space returns a
+/// tolerance    in U parameter space such that
+/// all u1 and u0 in the domain of the curve f(u)
+/// | u1 - u0 | < UTolerance and
+/// we have |f (u1) - f (u0)| < Tolerance3D
+pub unsafe fn resolution_array1ofpnt2d_array1ofrealptr_int_array1ofreal_int_real2(
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    NumPoles: i32,
+    FlatKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    Degree: i32,
+    Tolerance3D: f64,
+    UTolerance: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_resolution_array1ofpnt2d_array1ofrealptr_int_array1ofreal_int_real2(Poles, Weights as *const _, NumPoles, FlatKnots, Degree, Tolerance3D, UTolerance)
+    })
+}
+/// **Source:** `BSplCLib.hxx`:2388 - `BSplCLib::Intervals`
+/// Splits the given range to BSpline intervals of given continuity
+/// @param[in] theKnots the knots of BSpline
+/// @param[in] theMults the knots' multiplicities
+/// @param[in] theDegree the degree of BSpline
+/// @param[in] isPeriodic the periodicity of BSpline
+/// @param[in] theContinuity the target interval's continuity
+/// @param[in] theFirst the begin of the target range
+/// @param[in] theLast the end of the target range
+/// @param[in] theTolerance the tolerance
+/// @param[in,out] theIntervals the array to store intervals if isn't nullptr
+/// @return the number of intervals
+pub unsafe fn intervals(
+    theKnots: &crate::ffi_types::TColStd_Array1OfReal,
+    theMults: &crate::ffi_types::TColStd_Array1OfInteger,
+    theDegree: i32,
+    isPeriodic: bool,
+    theContinuity: i32,
+    theFirst: f64,
+    theLast: f64,
+    theTolerance: f64,
+    theIntervals: &mut crate::ffi_types::TColStd_Array1OfReal,
+) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BSplCLib_intervals(
+            theKnots,
+            theMults,
+            theDegree,
+            isPeriodic,
+            theContinuity,
+            theFirst,
+            theLast,
+            theTolerance,
+            theIntervals as *mut _,
+        )
+    })
 }
 
 /// This enumeration describes the repartition of the

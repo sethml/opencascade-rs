@@ -32123,6 +32123,89 @@ extern "C" {
         Curve1: *const HandleGeomCurve,
         Curve2: *const HandleGeomCurve,
     ) -> crate::OcctResult<*mut HandleGeomSurface>;
+    /// **Source:** `GeomFill.hxx`:47 - `GeomFill::GetCircle`
+    pub fn GeomFill_get_circle_parameterisationtype_vec3_pnt2_real_pnt_array1ofpnt_array1ofreal(
+        TConv: i32,
+        ns1: *const gp_Vec,
+        ns2: *const gp_Vec,
+        nplan: *const gp_Vec,
+        pt1: *const gp_Pnt,
+        pt2: *const gp_Pnt,
+        Rayon: f64,
+        Center: *const gp_Pnt,
+        Poles: *mut TColgp_Array1OfPnt,
+        Weigths: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomFill.hxx`:58 - `GeomFill::GetCircle`
+    pub fn GeomFill_get_circle_parameterisationtype_vec6_pnt2_vec2_real2_pnt_vec_array1ofpnt_array1ofvec_array1ofreal2(
+        TConv: i32,
+        ns1: *const gp_Vec,
+        ns2: *const gp_Vec,
+        dn1w: *const gp_Vec,
+        dn2w: *const gp_Vec,
+        nplan: *const gp_Vec,
+        dnplan: *const gp_Vec,
+        pts1: *const gp_Pnt,
+        pts2: *const gp_Pnt,
+        tang1: *const gp_Vec,
+        tang2: *const gp_Vec,
+        Rayon: f64,
+        DRayon: f64,
+        Center: *const gp_Pnt,
+        DCenter: *const gp_Vec,
+        Poles: *mut TColgp_Array1OfPnt,
+        DPoles: *mut TColgp_Array1OfVec,
+        Weigths: *mut TColStd_Array1OfReal,
+        DWeigths: *mut TColStd_Array1OfReal,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `GeomFill.hxx`:78 - `GeomFill::GetCircle`
+    pub fn GeomFill_get_circle_parameterisationtype_vec9_pnt2_vec4_real3_pnt_vec2_array1ofpnt_array1ofvec2_array1ofreal3(
+        TConv: i32,
+        ns1: *const gp_Vec,
+        ns2: *const gp_Vec,
+        dn1w: *const gp_Vec,
+        dn2w: *const gp_Vec,
+        d2n1w: *const gp_Vec,
+        d2n2w: *const gp_Vec,
+        nplan: *const gp_Vec,
+        dnplan: *const gp_Vec,
+        d2nplan: *const gp_Vec,
+        pts1: *const gp_Pnt,
+        pts2: *const gp_Pnt,
+        tang1: *const gp_Vec,
+        tang2: *const gp_Vec,
+        Dtang1: *const gp_Vec,
+        Dtang2: *const gp_Vec,
+        Rayon: f64,
+        DRayon: f64,
+        D2Rayon: f64,
+        Center: *const gp_Pnt,
+        DCenter: *const gp_Vec,
+        D2Center: *const gp_Vec,
+        Poles: *mut TColgp_Array1OfPnt,
+        DPoles: *mut TColgp_Array1OfVec,
+        D2Poles: *mut TColgp_Array1OfVec,
+        Weigths: *mut TColStd_Array1OfReal,
+        DWeigths: *mut TColStd_Array1OfReal,
+        D2Weigths: *mut TColStd_Array1OfReal,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `GeomFill.hxx`:113 - `GeomFill::Knots`
+    pub fn GeomFill_knots_parameterisationtype_array1ofreal(
+        TypeConv: i32,
+        TKnots: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomFill.hxx`:116 - `GeomFill::Mults`
+    pub fn GeomFill_mults_parameterisationtype_array1ofinteger(
+        TypeConv: i32,
+        TMults: *mut TColStd_Array1OfInteger,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomFill.hxx`:119 - `GeomFill::GetMinimalWeights`
+    pub fn GeomFill_get_minimal_weights_parameterisationtype_real2_array1ofreal(
+        TConv: i32,
+        AngleMin: f64,
+        AngleMax: f64,
+        Weigths: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `GeomFill.hxx`:126 - `GeomFill::GetTolerance`
     pub fn GeomFill_get_tolerance(
         TConv: i32,
@@ -32198,9 +32281,26 @@ extern "C" {
         ThePnt: *const gp_Pnt,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `Law.hxx`:47 - `Law::MixBnd`
-    pub fn Law_mix_bnd(Lin: *const HandleLawLinear) -> crate::OcctResult<*mut HandleLawBSpFunc>;
+    pub fn Law_mix_bnd_handlelawlinear(
+        Lin: *const HandleLawLinear,
+    ) -> crate::OcctResult<*mut HandleLawBSpFunc>;
+    /// **Source:** `Law.hxx`:51 - `Law::MixBnd`
+    pub fn Law_mix_bnd_int_array1ofreal_array1ofinteger_handlelawlinear(
+        Degree: i32,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        Lin: *const HandleLawLinear,
+    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfReal>;
+    /// **Source:** `Law.hxx`:65 - `Law::MixTgt`
+    pub fn Law_mix_tgt(
+        Degree: i32,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NulOnTheRight: bool,
+        Index: i32,
+    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfReal>;
     /// **Source:** `Law.hxx`:74 - `Law::Reparametrize`
-    pub fn Law_reparametrize(
+    pub fn Law_reparametrize_curve_real2_bool2_real2_bool_int(
         Curve: *const Adaptor3d_Curve,
         First: f64,
         Last: f64,

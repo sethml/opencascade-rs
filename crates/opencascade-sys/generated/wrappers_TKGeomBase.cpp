@@ -17552,6 +17552,22 @@ extern "C" const char* GeomLib_inertia(TColgp_Array1OfPnt const* Points, gp_Pnt*
     try { GeomLib::Inertia(*Points, *Bary, *XDir, *YDir, *Xgap, *YGap, *ZGap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* GeomLib_remove_points_from_array(int32_t NumPoints, TColStd_Array1OfReal const* InParameters, Handle(TColStd_HArray1OfReal)* OutParameters) {
+    try { GeomLib::RemovePointsFromArray(NumPoints, *InParameters, *OutParameters); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomLib_densify_array1_of_real(int32_t MinNumPoints, TColStd_Array1OfReal const* InParameters, Handle(TColStd_HArray1OfReal)* OutParameters) {
+    try { GeomLib::DensifyArray1OfReal(MinNumPoints, *InParameters, *OutParameters); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomLib_eval_max_parametric_distance(Adaptor3d_Curve const* Curve, Adaptor3d_Curve const* AReferenceCurve, double Tolerance, TColStd_Array1OfReal const* Parameters, double* MaxDistance) {
+    try { GeomLib::EvalMaxParametricDistance(*Curve, *AReferenceCurve, Tolerance, *Parameters, *MaxDistance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomLib_eval_max_distance_along_parameter(Adaptor3d_Curve const* Curve, Adaptor3d_Curve const* AReferenceCurve, double Tolerance, TColStd_Array1OfReal const* Parameters, double* MaxDistance) {
+    try { GeomLib::EvalMaxDistanceAlongParameter(*Curve, *AReferenceCurve, Tolerance, *Parameters, *MaxDistance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* GeomLib_cancel_denominator_derivative(Handle(Geom_BSplineSurface)* BSurf, bool UDirection, bool VDirection) {
     try { GeomLib::CancelDenominatorDerivative(*BSurf, UDirection, VDirection); return nullptr; }
     OCCT_CATCH_RETURN_VOID

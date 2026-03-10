@@ -13,12 +13,52 @@
 /// construction time.
 /// Builds a 1d bspline that   is near from Lin with  null
 /// derivatives at the extremities.
-pub fn mix_bnd(
+pub fn mix_bnd_handlelawlinear(
     Lin: &crate::ffi_types::HandleLawLinear,
 ) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpFunc> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_mix_bnd(
-            Lin,
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::Law_mix_bnd_handlelawlinear(Lin),
+        ))
+    }
+}
+/// **Source:** `Law.hxx`:51 - `Law::MixBnd`
+/// Builds  the poles of the 1d  bspline that is near from
+/// Lin with null derivatives at the extremities.
+pub fn mix_bnd_int_array1ofreal_array1ofinteger_handlelawlinear(
+    Degree: i32,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    Lin: &crate::ffi_types::HandleLawLinear,
+) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_mix_bnd_int_array1ofreal_array1ofinteger_handlelawlinear(Degree, Knots, Mults, Lin)))
+    }
+}
+/// **Source:** `Law.hxx`:65 - `Law::MixTgt`
+/// Builds the poles of the 1d bspline that is null on the
+/// right    side   of   Knots(Index)  (on  the    left if
+/// NulOnTheRight  is  false)    and   that is     like  a
+/// t*(1-t)(1-t) curve  on the  left side of  Knots(Index)
+/// (on the right  if NulOnTheRight is false).  The result
+/// curve is  C1 with  a derivative  equal  to 1. at first
+/// parameter (-1 at last  parameter  if  NulOnTheRight is
+/// false).
+/// Warning: Mults(Index) must greater or equal to degree-1.
+pub fn mix_tgt(
+    Degree: i32,
+    Knots: &crate::ffi_types::TColStd_Array1OfReal,
+    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    NulOnTheRight: bool,
+    Index: i32,
+) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_mix_tgt(
+            Degree,
+            Knots,
+            Mults,
+            NulOnTheRight,
+            Index,
         )))
     }
 }
@@ -26,7 +66,7 @@ pub fn mix_bnd(
 /// Computes a 1 d curve to  reparametrize a curve. Its an
 /// interpolation of NbPoints  points calculated  at quasi
 /// constant abscissa.
-pub fn reparametrize(
+pub fn reparametrize_curve_real2_bool2_real2_bool_int(
     Curve: &crate::adaptor3d::Curve,
     First: f64,
     Last: f64,
@@ -39,7 +79,7 @@ pub fn reparametrize(
 ) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpline> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi_extern_TKGeomAlgo::Law_reparametrize(
+            crate::ffi_extern_TKGeomAlgo::Law_reparametrize_curve_real2_bool2_real2_bool_int(
                 Curve, First, Last, HasDF, HasDL, DFirst, DLast, Rev, NbPoints,
             ),
         ))

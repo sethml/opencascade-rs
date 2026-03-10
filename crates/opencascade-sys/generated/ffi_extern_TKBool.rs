@@ -16921,6 +16921,17 @@ extern "C" {
         ProfOnSpine: *mut bool,
         Tol: f64,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepFill.hxx`:60 - `BRepFill::ComputeACR`
+    pub fn BRepFill_compute_acr(
+        wire: *const TopoDS_Wire,
+        ACR: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepFill.hxx`:63 - `BRepFill::InsertACR`
+    pub fn BRepFill_insert_acr(
+        wire: *const TopoDS_Wire,
+        ACRcuts: *const TColStd_Array1OfReal,
+        prec: f64,
+    ) -> crate::OcctResult<*mut TopoDS_Wire>;
     /// **Source:** `TopOpeBRep.hxx`:36 - `TopOpeBRep::Print`
     pub fn TopOpeBRep_print_typelinecurve_ostream(
         TLC: i32,

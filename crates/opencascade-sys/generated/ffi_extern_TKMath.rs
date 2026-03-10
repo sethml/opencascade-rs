@@ -16937,6 +16937,139 @@ extern "C" {
     pub fn math_ValueAndWeight_weight(self_: *const math_ValueAndWeight) -> crate::OcctResult<f64>;
 
     // Free functions
+    /// **Source:** `BSplCLib.hxx`:129 - `BSplCLib::Hunt`
+    pub fn BSplCLib_hunt(
+        theArray: *const TColStd_Array1OfReal,
+        theX: f64,
+        theXPos: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:135 - `BSplCLib::FirstUKnotIndex`
+    pub fn BSplCLib_first_u_knot_index(
+        Degree: i32,
+        Mults: *const TColStd_Array1OfInteger,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:140 - `BSplCLib::LastUKnotIndex`
+    pub fn BSplCLib_last_u_knot_index(
+        Degree: i32,
+        Mults: *const TColStd_Array1OfInteger,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:146 - `BSplCLib::FlatIndex`
+    pub fn BSplCLib_flat_index(
+        Degree: i32,
+        Index: i32,
+        Mults: *const TColStd_Array1OfInteger,
+        Periodic: bool,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:166 - `BSplCLib::LocateParameter`
+    pub fn BSplCLib_locate_parameter_int_array1ofreal_array1ofinteger_real_bool_int3_real(
+        Degree: i32,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        U: f64,
+        IsPeriodic: bool,
+        FromK1: i32,
+        ToK2: i32,
+        KnotIndex: *mut i32,
+        NewU: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:191 - `BSplCLib::LocateParameter`
+    pub fn BSplCLib_locate_parameter_int_array1ofreal_real_bool_int3_real(
+        Degree: i32,
+        Knots: *const TColStd_Array1OfReal,
+        U: f64,
+        IsPeriodic: bool,
+        FromK1: i32,
+        ToK2: i32,
+        KnotIndex: *mut i32,
+        NewU: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:200 - `BSplCLib::LocateParameter`
+    pub fn BSplCLib_locate_parameter_int_array1ofreal_array1ofintegerptr_real_bool_int_real(
+        Degree: i32,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        U: f64,
+        Periodic: bool,
+        Index: *mut i32,
+        NewU: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:211 - `BSplCLib::MaxKnotMult`
+    pub fn BSplCLib_max_knot_mult(
+        Mults: *const TColStd_Array1OfInteger,
+        K1: i32,
+        K2: i32,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:218 - `BSplCLib::MinKnotMult`
+    pub fn BSplCLib_min_knot_mult(
+        Mults: *const TColStd_Array1OfInteger,
+        K1: i32,
+        K2: i32,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:232 - `BSplCLib::NbPoles`
+    pub fn BSplCLib_nb_poles(
+        Degree: i32,
+        Periodic: bool,
+        Mults: *const TColStd_Array1OfInteger,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:247 - `BSplCLib::KnotSequenceLength`
+    pub fn BSplCLib_knot_sequence_length(
+        Mults: *const TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:251 - `BSplCLib::KnotSequence`
+    pub fn BSplCLib_knot_sequence_array1ofreal_array1ofinteger_array1ofreal_bool(
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        KnotSeq: *mut TColStd_Array1OfReal,
+        Periodic: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:261 - `BSplCLib::KnotSequence`
+    pub fn BSplCLib_knot_sequence_array1ofreal_array1ofinteger_int_bool_array1ofreal(
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+        KnotSeq: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:269 - `BSplCLib::KnotsLength`
+    pub fn BSplCLib_knots_length(
+        KnotSeq: *const TColStd_Array1OfReal,
+        Periodic: bool,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:279 - `BSplCLib::Knots`
+    pub fn BSplCLib_knots_array1ofreal2_array1ofinteger_bool(
+        KnotSeq: *const TColStd_Array1OfReal,
+        Knots: *mut TColStd_Array1OfReal,
+        Mults: *mut TColStd_Array1OfInteger,
+        Periodic: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:288 - `BSplCLib::KnotForm`
+    pub fn BSplCLib_knot_form(
+        Knots: *const TColStd_Array1OfReal,
+        FromK1: i32,
+        ToK2: i32,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:294 - `BSplCLib::MultForm`
+    pub fn BSplCLib_mult_form(
+        Mults: *const TColStd_Array1OfInteger,
+        FromK1: i32,
+        ToK2: i32,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:313 - `BSplCLib::Reparametrize`
+    pub fn BSplCLib_reparametrize_real2_array1ofreal(
+        U1: f64,
+        U2: f64,
+        Knots: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:319 - `BSplCLib::Reverse`
+    pub fn BSplCLib_reverse_array1ofreal(
+        Knots: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:322 - `BSplCLib::Reverse`
+    pub fn BSplCLib_reverse_array1ofinteger(
+        Mults: *mut TColStd_Array1OfInteger,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BSplCLib.hxx`:334 - `BSplCLib::Reverse`
     pub fn BSplCLib_reverse_array1ofpnt_int(
         Poles: *mut TColgp_Array1OfPnt,
@@ -16947,10 +17080,22 @@ extern "C" {
         Poles: *mut TColgp_Array1OfPnt2d,
         Last: i32,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:340 - `BSplCLib::Reverse`
+    pub fn BSplCLib_reverse_array1ofreal_int(
+        Weights: *mut TColStd_Array1OfReal,
+        Last: i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:346 - `BSplCLib::IsRational`
+    pub fn BSplCLib_is_rational_array1ofreal_int2_real(
+        Weights: *const TColStd_Array1OfReal,
+        I1: i32,
+        I2: i32,
+        Epsilon: f64,
+    ) -> crate::OcctResult<bool>;
     /// **Source:** `BSplCLib.hxx`:352 - `BSplCLib::MaxDegree`
     pub fn BSplCLib_max_degree() -> crate::OcctResult<i32>;
     /// **Source:** `BSplCLib.hxx`:363 - `BSplCLib::Eval`
-    pub fn BSplCLib_eval(
+    pub fn BSplCLib_eval_real_int_real_int_real(
         U: f64,
         Degree: i32,
         Knots: *mut f64,
@@ -16996,8 +17141,702 @@ extern "C" {
         Dimension: i32,
         Poles: *mut f64,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:460 - `BSplCLib::NoWeights`
+    pub fn BSplCLib_no_weights() -> crate::OcctResult<*mut TColStd_Array1OfReal>;
+    /// **Source:** `BSplCLib.hxx`:463 - `BSplCLib::NoMults`
+    pub fn BSplCLib_no_mults() -> crate::OcctResult<*mut TColStd_Array1OfInteger>;
+    /// **Source:** `BSplCLib.hxx`:467 - `BSplCLib::BuildKnots`
+    pub fn BSplCLib_build_knots(
+        Degree: i32,
+        Index: i32,
+        Periodic: bool,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        LK: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:477 - `BSplCLib::PoleIndex`
+    pub fn BSplCLib_pole_index(
+        Degree: i32,
+        Index: i32,
+        Periodic: bool,
+        Mults: *const TColStd_Array1OfInteger,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:482 - `BSplCLib::BuildEval`
+    pub fn BSplCLib_build_eval_int2_array1ofreal_array1ofrealptr_real(
+        Degree: i32,
+        Index: i32,
+        Poles: *const TColStd_Array1OfReal,
+        Weights: *const TColStd_Array1OfReal,
+        LP: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:488 - `BSplCLib::BuildEval`
+    pub fn BSplCLib_build_eval_int2_array1ofpnt_array1ofrealptr_real(
+        Degree: i32,
+        Index: i32,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        LP: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:496 - `BSplCLib::BuildEval`
+    pub fn BSplCLib_build_eval_int2_array1ofpnt2d_array1ofrealptr_real(
+        Degree: i32,
+        Index: i32,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        LP: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:505 - `BSplCLib::BuildBoor`
+    pub fn BSplCLib_build_boor(
+        Index: i32,
+        Length: i32,
+        Dimension: i32,
+        Poles: *const TColStd_Array1OfReal,
+        LP: *mut f64,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BSplCLib.hxx`:514 - `BSplCLib::BoorIndex`
     pub fn BSplCLib_boor_index(Index: i32, Length: i32, Depth: i32) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:521 - `BSplCLib::GetPole`
+    pub fn BSplCLib_get_pole(
+        Index: i32,
+        Length: i32,
+        Depth: i32,
+        Dimension: i32,
+        LocPoles: *mut f64,
+        Position: *mut i32,
+        Pole: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:544 - `BSplCLib::PrepareInsertKnots`
+    pub fn BSplCLib_prepare_insert_knots(
+        Degree: i32,
+        Periodic: bool,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        AddKnots: *const TColStd_Array1OfReal,
+        AddMults: *const TColStd_Array1OfInteger,
+        NbPoles: *mut i32,
+        NbKnots: *mut i32,
+        Epsilon: f64,
+        Add: bool,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `BSplCLib.hxx`:556 - `BSplCLib::InsertKnots`
+    pub fn BSplCLib_insert_knots_int_bool_int_array1ofreal2_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofreal2_array1ofinteger_real_bool(
+        Degree: i32,
+        Periodic: bool,
+        Dimension: i32,
+        Poles: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        AddKnots: *const TColStd_Array1OfReal,
+        AddMults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColStd_Array1OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        Epsilon: f64,
+        Add: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:570 - `BSplCLib::InsertKnots`
+    pub fn BSplCLib_insert_knots_int_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_real_bool(
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        AddKnots: *const TColStd_Array1OfReal,
+        AddMults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt,
+        NewWeights: *mut TColStd_Array1OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        Epsilon: f64,
+        Add: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:611 - `BSplCLib::InsertKnots`
+    pub fn BSplCLib_insert_knots_int_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_real_bool(
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        AddKnots: *const TColStd_Array1OfReal,
+        AddMults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt2d,
+        NewWeights: *mut TColStd_Array1OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        Epsilon: f64,
+        Add: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:626 - `BSplCLib::InsertKnot`
+    pub fn BSplCLib_insert_knot_int_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(
+        UIndex: i32,
+        U: f64,
+        UMult: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt,
+        NewWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:647 - `BSplCLib::InsertKnot`
+    pub fn BSplCLib_insert_knot_int_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(
+        UIndex: i32,
+        U: f64,
+        UMult: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt2d,
+        NewWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:659 - `BSplCLib::RaiseMultiplicity`
+    pub fn BSplCLib_raise_multiplicity_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(
+        KnotIndex: i32,
+        Mult: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt,
+        NewWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:674 - `BSplCLib::RaiseMultiplicity`
+    pub fn BSplCLib_raise_multiplicity_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(
+        KnotIndex: i32,
+        Mult: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt2d,
+        NewWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:685 - `BSplCLib::RemoveKnot`
+    pub fn BSplCLib_remove_knot_int3_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger_real(
+        Index: i32,
+        Mult: i32,
+        Degree: i32,
+        Periodic: bool,
+        Dimension: i32,
+        Poles: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColStd_Array1OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        Tolerance: f64,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `BSplCLib.hxx`:698 - `BSplCLib::RemoveKnot`
+    pub fn BSplCLib_remove_knot_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_real(
+        Index: i32,
+        Mult: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt,
+        NewWeights: *mut TColStd_Array1OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        Tolerance: f64,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `BSplCLib.hxx`:730 - `BSplCLib::RemoveKnot`
+    pub fn BSplCLib_remove_knot_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_real(
+        Index: i32,
+        Mult: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt2d,
+        NewWeights: *mut TColStd_Array1OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        Tolerance: f64,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `BSplCLib.hxx`:748 - `BSplCLib::IncreaseDegreeCountKnots`
+    pub fn BSplCLib_increase_degree_count_knots(
+        Degree: i32,
+        NewDegree: i32,
+        Periodic: bool,
+        Mults: *const TColStd_Array1OfInteger,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:754 - `BSplCLib::IncreaseDegree`
+    pub fn BSplCLib_increase_degree_int2_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger(
+        Degree: i32,
+        NewDegree: i32,
+        Periodic: bool,
+        Dimension: i32,
+        Poles: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColStd_Array1OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:765 - `BSplCLib::IncreaseDegree`
+    pub fn BSplCLib_increase_degree_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger(
+        Degree: i32,
+        NewDegree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt,
+        NewWeights: *mut TColStd_Array1OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:777 - `BSplCLib::IncreaseDegree`
+    pub fn BSplCLib_increase_degree_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger(
+        Degree: i32,
+        NewDegree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt2d,
+        NewWeights: *mut TColStd_Array1OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:789 - `BSplCLib::IncreaseDegree`
+    pub fn BSplCLib_increase_degree_int_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(
+        NewDegree: i32,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        NewPoles: *mut TColgp_Array1OfPnt,
+        NewWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:851 - `BSplCLib::IncreaseDegree`
+    pub fn BSplCLib_increase_degree_int_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(
+        theNewDegree: i32,
+        thePoles: *const TColgp_Array1OfPnt2d,
+        theWeights: *const TColStd_Array1OfReal,
+        theNewPoles: *mut TColgp_Array1OfPnt2d,
+        theNewWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:861 - `BSplCLib::PrepareUnperiodize`
+    pub fn BSplCLib_prepare_unperiodize(
+        Degree: i32,
+        Mults: *const TColStd_Array1OfInteger,
+        NbKnots: *mut i32,
+        NbPoles: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:866 - `BSplCLib::Unperiodize`
+    pub fn BSplCLib_unperiodize_int2_array1ofinteger_array1ofreal2_array1ofinteger_array1ofreal2(
+        Degree: i32,
+        Dimension: i32,
+        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const TColStd_Array1OfReal,
+        Poles: *const TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewPoles: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:875 - `BSplCLib::Unperiodize`
+    pub fn BSplCLib_unperiodize_int_array1ofinteger_array1ofreal_array1ofpnt_array1ofrealptr_array1ofinteger_array1ofreal_array1ofpnt_array1ofrealptr(
+        Degree: i32,
+        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewPoles: *mut TColgp_Array1OfPnt,
+        NewWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:885 - `BSplCLib::Unperiodize`
+    pub fn BSplCLib_unperiodize_int_array1ofinteger_array1ofreal_array1ofpnt2d_array1ofrealptr_array1ofinteger_array1ofreal_array1ofpnt2d_array1ofrealptr(
+        Degree: i32,
+        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewPoles: *mut TColgp_Array1OfPnt2d,
+        NewWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:898 - `BSplCLib::PrepareTrimming`
+    pub fn BSplCLib_prepare_trimming(
+        Degree: i32,
+        Periodic: bool,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        U1: f64,
+        U2: f64,
+        NbKnots: *mut i32,
+        NbPoles: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:907 - `BSplCLib::Trimming`
+    pub fn BSplCLib_trimming_int_bool_int_array1ofreal_array1ofinteger_array1ofreal_real2_array1ofreal_array1ofinteger_array1ofreal(
+        Degree: i32,
+        Periodic: bool,
+        Dimension: i32,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        Poles: *const TColStd_Array1OfReal,
+        U1: f64,
+        U2: f64,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        NewPoles: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:919 - `BSplCLib::Trimming`
+    pub fn BSplCLib_trimming_int_bool_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_real2_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(
+        Degree: i32,
+        Periodic: bool,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        U1: f64,
+        U2: f64,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt,
+        NewWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:932 - `BSplCLib::Trimming`
+    pub fn BSplCLib_trimming_int_bool_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_real2_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(
+        Degree: i32,
+        Periodic: bool,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        U1: f64,
+        U2: f64,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array1OfPnt2d,
+        NewWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:945 - `BSplCLib::D0`
+    pub fn BSplCLib_d0_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real(
+        U: f64,
+        Index: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColStd_Array1OfReal,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:955 - `BSplCLib::D0`
+    pub fn BSplCLib_d0_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt(
+        U: f64,
+        Index: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:965 - `BSplCLib::D0`
+    pub fn BSplCLib_d0_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d(
+        U: f64,
+        UIndex: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut gp_Pnt2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:975 - `BSplCLib::D0`
+    pub fn BSplCLib_d0_real_array1ofpnt_array1ofrealptr_pnt(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        P: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:980 - `BSplCLib::D0`
+    pub fn BSplCLib_d0_real_array1ofpnt2d_array1ofrealptr_pnt2d(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        P: *mut gp_Pnt2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:985 - `BSplCLib::D1`
+    pub fn BSplCLib_d1_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real2(
+        U: f64,
+        Index: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColStd_Array1OfReal,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut f64,
+        V: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:996 - `BSplCLib::D1`
+    pub fn BSplCLib_d1_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec(
+        U: f64,
+        Index: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut gp_Pnt,
+        V: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1007 - `BSplCLib::D1`
+    pub fn BSplCLib_d1_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d(
+        U: f64,
+        UIndex: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut gp_Pnt2d,
+        V: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1018 - `BSplCLib::D1`
+    pub fn BSplCLib_d1_real_array1ofpnt_array1ofrealptr_pnt_vec(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        P: *mut gp_Pnt,
+        V: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1024 - `BSplCLib::D1`
+    pub fn BSplCLib_d1_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        P: *mut gp_Pnt2d,
+        V: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1030 - `BSplCLib::D2`
+    pub fn BSplCLib_d2_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real3(
+        U: f64,
+        Index: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColStd_Array1OfReal,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut f64,
+        V1: *mut f64,
+        V2: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1042 - `BSplCLib::D2`
+    pub fn BSplCLib_d2_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec2(
+        U: f64,
+        Index: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut gp_Pnt,
+        V1: *mut gp_Vec,
+        V2: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1054 - `BSplCLib::D2`
+    pub fn BSplCLib_d2_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d2(
+        U: f64,
+        UIndex: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut gp_Pnt2d,
+        V1: *mut gp_Vec2d,
+        V2: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1066 - `BSplCLib::D2`
+    pub fn BSplCLib_d2_real_array1ofpnt_array1ofrealptr_pnt_vec2(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        P: *mut gp_Pnt,
+        V1: *mut gp_Vec,
+        V2: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1073 - `BSplCLib::D2`
+    pub fn BSplCLib_d2_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        P: *mut gp_Pnt2d,
+        V1: *mut gp_Vec2d,
+        V2: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1080 - `BSplCLib::D3`
+    pub fn BSplCLib_d3_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real4(
+        U: f64,
+        Index: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColStd_Array1OfReal,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut f64,
+        V1: *mut f64,
+        V2: *mut f64,
+        V3: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1093 - `BSplCLib::D3`
+    pub fn BSplCLib_d3_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec3(
+        U: f64,
+        Index: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut gp_Pnt,
+        V1: *mut gp_Vec,
+        V2: *mut gp_Vec,
+        V3: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1106 - `BSplCLib::D3`
+    pub fn BSplCLib_d3_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d3(
+        U: f64,
+        UIndex: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        P: *mut gp_Pnt2d,
+        V1: *mut gp_Vec2d,
+        V2: *mut gp_Vec2d,
+        V3: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1119 - `BSplCLib::D3`
+    pub fn BSplCLib_d3_real_array1ofpnt_array1ofrealptr_pnt_vec3(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        P: *mut gp_Pnt,
+        V1: *mut gp_Vec,
+        V2: *mut gp_Vec,
+        V3: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1127 - `BSplCLib::D3`
+    pub fn BSplCLib_d3_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        P: *mut gp_Pnt2d,
+        V1: *mut gp_Vec2d,
+        V2: *mut gp_Vec2d,
+        V3: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1135 - `BSplCLib::DN`
+    pub fn BSplCLib_dn_real_int3_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real(
+        U: f64,
+        N: i32,
+        Index: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColStd_Array1OfReal,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        VN: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1146 - `BSplCLib::DN`
+    pub fn BSplCLib_dn_real_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_vec(
+        U: f64,
+        N: i32,
+        Index: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        VN: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1157 - `BSplCLib::DN`
+    pub fn BSplCLib_dn_real_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_vec2d(
+        U: f64,
+        N: i32,
+        UIndex: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        V: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1168 - `BSplCLib::DN`
+    pub fn BSplCLib_dn_real_int_array1ofpnt_array1ofreal_pnt_vec(
+        U: f64,
+        N: i32,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        P: *mut gp_Pnt,
+        VN: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1192 - `BSplCLib::DN`
+    pub fn BSplCLib_dn_real_int_array1ofpnt2d_array1ofreal_pnt2d_vec2d(
+        U: f64,
+        N: i32,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        P: *mut gp_Pnt2d,
+        VN: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1222 - `BSplCLib::EvalBsplineBasis`
+    pub fn BSplCLib_eval_bspline_basis(
+        DerivativeOrder: i32,
+        Order: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Parameter: f64,
+        FirstNonZeroBsplineIndex: *mut i32,
+        BsplineBasis: *mut math_Matrix,
+        isPeriodic: bool,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:1239 - `BSplCLib::BuildBSpMatrix`
+    pub fn BSplCLib_build_b_sp_matrix(
+        Parameters: *const TColStd_Array1OfReal,
+        OrderArray: *const TColStd_Array1OfInteger,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Degree: i32,
+        Matrix: *mut math_Matrix,
+        UpperBandWidth: *mut i32,
+        LowerBandWidth: *mut i32,
+    ) -> crate::OcctResult<i32>;
     /// **Source:** `BSplCLib.hxx`:1254 - `BSplCLib::FactorBandedMatrix`
     pub fn BSplCLib_factor_banded_matrix(
         Matrix: *mut math_Matrix,
@@ -17037,18 +17876,613 @@ extern "C" {
         Array: *mut f64,
         Weights: *mut f64,
     ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:1328 - `BSplCLib::SolveBandedSystem`
+    pub fn BSplCLib_solve_banded_system_matrix_int2_bool_array1ofpnt2d_array1ofreal(
+        Matrix: *const math_Matrix,
+        UpperBandWidth: i32,
+        LowerBandWidth: i32,
+        HomogenousFlag: bool,
+        Array: *mut TColgp_Array1OfPnt2d,
+        Weights: *mut TColStd_Array1OfReal,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:1355 - `BSplCLib::SolveBandedSystem`
+    pub fn BSplCLib_solve_banded_system_matrix_int2_bool_array1ofpnt_array1ofreal(
+        Matrix: *const math_Matrix,
+        UpperBandWidth: i32,
+        LowerBandWidth: i32,
+        HomogeneousFlag: bool,
+        Array: *mut TColgp_Array1OfPnt,
+        Weights: *mut TColStd_Array1OfReal,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BSplCLib.hxx`:1364 - `BSplCLib::MergeBSplineKnots`
+    pub fn BSplCLib_merge_b_spline_knots(
+        Tolerance: f64,
+        StartValue: f64,
+        EndValue: f64,
+        Degree1: i32,
+        Knots1: *const TColStd_Array1OfReal,
+        Mults1: *const TColStd_Array1OfInteger,
+        Degree2: i32,
+        Knots2: *const TColStd_Array1OfReal,
+        Mults2: *const TColStd_Array1OfInteger,
+        NumPoles: *mut i32,
+        NewKnots: *mut HandleTColStdHArray1OfReal,
+        NewMults: *mut HandleTColStdHArray1OfInteger,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1402 - `BSplCLib::FunctionReparameterise`
+    pub fn BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(
+        Function: *const BSplCLib_EvaluatorFunction,
+        BSplineDegree: i32,
+        BSplineFlatKnots: *const TColStd_Array1OfReal,
+        PolesDimension: i32,
+        Poles: *mut f64,
+        FlatKnots: *const TColStd_Array1OfReal,
+        NewDegree: i32,
+        NewPoles: *mut f64,
+        theStatus: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1437 - `BSplCLib::FunctionReparameterise`
+    pub fn BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(
+        Function: *const BSplCLib_EvaluatorFunction,
+        BSplineDegree: i32,
+        BSplineFlatKnots: *const TColStd_Array1OfReal,
+        Poles: *const TColStd_Array1OfReal,
+        FlatKnots: *const TColStd_Array1OfReal,
+        NewDegree: i32,
+        NewPoles: *mut TColStd_Array1OfReal,
+        theStatus: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1466 - `BSplCLib::FunctionReparameterise`
+    pub fn BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(
+        Function: *const BSplCLib_EvaluatorFunction,
+        BSplineDegree: i32,
+        BSplineFlatKnots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array1OfPnt,
+        FlatKnots: *const TColStd_Array1OfReal,
+        NewDegree: i32,
+        NewPoles: *mut TColgp_Array1OfPnt,
+        theStatus: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1495 - `BSplCLib::FunctionReparameterise`
+    pub fn BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(
+        Function: *const BSplCLib_EvaluatorFunction,
+        BSplineDegree: i32,
+        BSplineFlatKnots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array1OfPnt2d,
+        FlatKnots: *const TColStd_Array1OfReal,
+        NewDegree: i32,
+        NewPoles: *mut TColgp_Array1OfPnt2d,
+        theStatus: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1521 - `BSplCLib::FunctionMultiply`
+    pub fn BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(
+        Function: *const BSplCLib_EvaluatorFunction,
+        BSplineDegree: i32,
+        BSplineFlatKnots: *const TColStd_Array1OfReal,
+        PolesDimension: i32,
+        Poles: *mut f64,
+        FlatKnots: *const TColStd_Array1OfReal,
+        NewDegree: i32,
+        NewPoles: *mut f64,
+        theStatus: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1548 - `BSplCLib::FunctionMultiply`
+    pub fn BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(
+        Function: *const BSplCLib_EvaluatorFunction,
+        BSplineDegree: i32,
+        BSplineFlatKnots: *const TColStd_Array1OfReal,
+        Poles: *const TColStd_Array1OfReal,
+        FlatKnots: *const TColStd_Array1OfReal,
+        NewDegree: i32,
+        NewPoles: *mut TColStd_Array1OfReal,
+        theStatus: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1574 - `BSplCLib::FunctionMultiply`
+    pub fn BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(
+        Function: *const BSplCLib_EvaluatorFunction,
+        BSplineDegree: i32,
+        BSplineFlatKnots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array1OfPnt2d,
+        FlatKnots: *const TColStd_Array1OfReal,
+        NewDegree: i32,
+        NewPoles: *mut TColgp_Array1OfPnt2d,
+        theStatus: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1600 - `BSplCLib::FunctionMultiply`
+    pub fn BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(
+        Function: *const BSplCLib_EvaluatorFunction,
+        BSplineDegree: i32,
+        BSplineFlatKnots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array1OfPnt,
+        FlatKnots: *const TColStd_Array1OfReal,
+        NewDegree: i32,
+        NewPoles: *mut TColgp_Array1OfPnt,
+        theStatus: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1623 - `BSplCLib::Eval`
+    pub fn BSplCLib_eval_real_bool_int3_array1ofreal_int_real2(
+        U: f64,
+        PeriodicFlag: bool,
+        DerivativeRequest: i32,
+        ExtrapMode: *mut i32,
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        ArrayDimension: i32,
+        Poles: *mut f64,
+        Result: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1644 - `BSplCLib::Eval`
+    pub fn BSplCLib_eval_real_bool_int3_array1ofreal_int_real4(
+        U: f64,
+        PeriodicFlag: bool,
+        DerivativeRequest: i32,
+        ExtrapMode: *mut i32,
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        ArrayDimension: i32,
+        Poles: *mut f64,
+        Weights: *mut f64,
+        PolesResult: *mut f64,
+        WeightsResult: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1659 - `BSplCLib::Eval`
+    pub fn BSplCLib_eval_real_bool2_int2_array1ofreal_array1ofpnt_array1ofreal_pnt_real(
+        U: f64,
+        PeriodicFlag: bool,
+        HomogeneousFlag: bool,
+        ExtrapMode: *mut i32,
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt,
+        Weight: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1673 - `BSplCLib::Eval`
+    pub fn BSplCLib_eval_real_bool2_int2_array1ofreal_array1ofpnt2d_array1ofreal_pnt2d_real(
+        U: f64,
+        PeriodicFlag: bool,
+        HomogeneousFlag: bool,
+        ExtrapMode: *mut i32,
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt2d,
+        Weight: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1691 - `BSplCLib::TangExtendToConstraint`
+    pub fn BSplCLib_tang_extend_to_constraint(
+        FlatKnots: *const TColStd_Array1OfReal,
+        C1Coefficient: f64,
+        NumPoles: i32,
+        Poles: *mut f64,
+        Dimension: i32,
+        Degree: i32,
+        ConstraintPoint: *const TColStd_Array1OfReal,
+        Continuity: i32,
+        After: bool,
+        NbPolesResult: *mut i32,
+        NbKnotsRsult: *mut i32,
+        KnotsResult: *mut f64,
+        PolesResult: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1716 - `BSplCLib::CacheD0`
+    pub fn BSplCLib_cache_d0_real_int_real2_array1ofpnt_array1ofrealptr_pnt(
+        U: f64,
+        Degree: i32,
+        CacheParameter: f64,
+        SpanLenght: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1736 - `BSplCLib::CacheD0`
+    pub fn BSplCLib_cache_d0_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d(
+        U: f64,
+        Degree: i32,
+        CacheParameter: f64,
+        SpanLenght: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1747 - `BSplCLib::CoefsD0`
+    pub fn BSplCLib_coefs_d0_real_array1ofpnt_array1ofrealptr_pnt(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1755 - `BSplCLib::CoefsD0`
+    pub fn BSplCLib_coefs_d0_real_array1ofpnt2d_array1ofrealptr_pnt2d(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1771 - `BSplCLib::CacheD1`
+    pub fn BSplCLib_cache_d1_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec(
+        U: f64,
+        Degree: i32,
+        CacheParameter: f64,
+        SpanLenght: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt,
+        Vec: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1792 - `BSplCLib::CacheD1`
+    pub fn BSplCLib_cache_d1_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(
+        U: f64,
+        Degree: i32,
+        CacheParameter: f64,
+        SpanLenght: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt2d,
+        Vec: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1804 - `BSplCLib::CoefsD1`
+    pub fn BSplCLib_coefs_d1_real_array1ofpnt_array1ofrealptr_pnt_vec(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt,
+        Vec: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1813 - `BSplCLib::CoefsD1`
+    pub fn BSplCLib_coefs_d1_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt2d,
+        Vec: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1830 - `BSplCLib::CacheD2`
+    pub fn BSplCLib_cache_d2_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec2(
+        U: f64,
+        Degree: i32,
+        CacheParameter: f64,
+        SpanLenght: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt,
+        Vec1: *mut gp_Vec,
+        Vec2: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1852 - `BSplCLib::CacheD2`
+    pub fn BSplCLib_cache_d2_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(
+        U: f64,
+        Degree: i32,
+        CacheParameter: f64,
+        SpanLenght: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt2d,
+        Vec1: *mut gp_Vec2d,
+        Vec2: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1865 - `BSplCLib::CoefsD2`
+    pub fn BSplCLib_coefs_d2_real_array1ofpnt_array1ofrealptr_pnt_vec2(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt,
+        Vec1: *mut gp_Vec,
+        Vec2: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1875 - `BSplCLib::CoefsD2`
+    pub fn BSplCLib_coefs_d2_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt2d,
+        Vec1: *mut gp_Vec2d,
+        Vec2: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1893 - `BSplCLib::CacheD3`
+    pub fn BSplCLib_cache_d3_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec3(
+        U: f64,
+        Degree: i32,
+        CacheParameter: f64,
+        SpanLenght: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt,
+        Vec1: *mut gp_Vec,
+        Vec2: *mut gp_Vec,
+        Vec3: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1916 - `BSplCLib::CacheD3`
+    pub fn BSplCLib_cache_d3_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(
+        U: f64,
+        Degree: i32,
+        CacheParameter: f64,
+        SpanLenght: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt2d,
+        Vec1: *mut gp_Vec2d,
+        Vec2: *mut gp_Vec2d,
+        Vec3: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1930 - `BSplCLib::CoefsD3`
+    pub fn BSplCLib_coefs_d3_real_array1ofpnt_array1ofrealptr_pnt_vec3(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt,
+        Vec1: *mut gp_Vec,
+        Vec2: *mut gp_Vec,
+        Vec3: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1941 - `BSplCLib::CoefsD3`
+    pub fn BSplCLib_coefs_d3_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(
+        U: f64,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        Point: *mut gp_Pnt2d,
+        Vec1: *mut gp_Vec2d,
+        Vec2: *mut gp_Vec2d,
+        Vec3: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1953 - `BSplCLib::BuildCache`
+    pub fn BSplCLib_build_cache_real2_bool_int_array1ofreal_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(
+        U: f64,
+        InverseOfSpanDomain: f64,
+        PeriodicFlag: bool,
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        CachePoles: *mut TColgp_Array1OfPnt,
+        CacheWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1967 - `BSplCLib::BuildCache`
+    pub fn BSplCLib_build_cache_real2_bool_int_array1ofreal_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(
+        U: f64,
+        InverseOfSpanDomain: f64,
+        PeriodicFlag: bool,
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        CachePoles: *mut TColgp_Array1OfPnt2d,
+        CacheWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1980 - `BSplCLib::BuildCache`
+    pub fn BSplCLib_build_cache_real2_bool_int2_array1ofreal_array1ofpnt_array1ofrealptr_array2ofreal(
+        theParameter: f64,
+        theSpanDomain: f64,
+        thePeriodicFlag: bool,
+        theDegree: i32,
+        theSpanIndex: i32,
+        theFlatKnots: *const TColStd_Array1OfReal,
+        thePoles: *const TColgp_Array1OfPnt,
+        theWeights: *const TColStd_Array1OfReal,
+        theCacheArray: *mut TColStd_Array2OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:1993 - `BSplCLib::BuildCache`
+    pub fn BSplCLib_build_cache_real2_bool_int2_array1ofreal_array1ofpnt2d_array1ofrealptr_array2ofreal(
+        theParameter: f64,
+        theSpanDomain: f64,
+        thePeriodicFlag: bool,
+        theDegree: i32,
+        theSpanIndex: i32,
+        theFlatKnots: *const TColStd_Array1OfReal,
+        thePoles: *const TColgp_Array1OfPnt2d,
+        theWeights: *const TColStd_Array1OfReal,
+        theCacheArray: *mut TColStd_Array2OfReal,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BSplCLib.hxx`:2003 - `BSplCLib::PolesCoefficients`
     pub fn BSplCLib_poles_coefficients_array1ofpnt2d2(
         Poles: *const TColgp_Array1OfPnt2d,
         CachePoles: *mut TColgp_Array1OfPnt2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2006 - `BSplCLib::PolesCoefficients`
+    pub fn BSplCLib_poles_coefficients_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        CachePoles: *mut TColgp_Array1OfPnt2d,
+        CacheWeights: *mut TColStd_Array1OfReal,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BSplCLib.hxx`:2011 - `BSplCLib::PolesCoefficients`
     pub fn BSplCLib_poles_coefficients_array1ofpnt2(
         Poles: *const TColgp_Array1OfPnt,
         CachePoles: *mut TColgp_Array1OfPnt,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2017 - `BSplCLib::PolesCoefficients`
+    pub fn BSplCLib_poles_coefficients_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        CachePoles: *mut TColgp_Array1OfPnt,
+        CacheWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BSplCLib.hxx`:2025 - `BSplCLib::FlatBezierKnots`
     pub fn BSplCLib_flat_bezier_knots(Degree: i32) -> crate::OcctResult<f64>;
+    /// **Source:** `BSplCLib.hxx`:2030 - `BSplCLib::BuildSchoenbergPoints`
+    pub fn BSplCLib_build_schoenberg_points(
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Parameters: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2053 - `BSplCLib::Interpolate`
+    pub fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_int(
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Parameters: *const TColStd_Array1OfReal,
+        ContactOrderArray: *const TColStd_Array1OfInteger,
+        Poles: *mut TColgp_Array1OfPnt,
+        InversionProblem: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2080 - `BSplCLib::Interpolate`
+    pub fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_int(
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Parameters: *const TColStd_Array1OfReal,
+        ContactOrderArray: *const TColStd_Array1OfInteger,
+        Poles: *mut TColgp_Array1OfPnt2d,
+        InversionProblem: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2106 - `BSplCLib::Interpolate`
+    pub fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_array1ofreal_int(
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Parameters: *const TColStd_Array1OfReal,
+        ContactOrderArray: *const TColStd_Array1OfInteger,
+        Poles: *mut TColgp_Array1OfPnt,
+        Weights: *mut TColStd_Array1OfReal,
+        InversionProblem: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2133 - `BSplCLib::Interpolate`
+    pub fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_array1ofreal_int(
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Parameters: *const TColStd_Array1OfReal,
+        ContactOrderArray: *const TColStd_Array1OfInteger,
+        Poles: *mut TColgp_Array1OfPnt2d,
+        Weights: *mut TColStd_Array1OfReal,
+        InversionProblem: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2163 - `BSplCLib::Interpolate`
+    pub fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_int_real_int(
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Parameters: *const TColStd_Array1OfReal,
+        ContactOrderArray: *const TColStd_Array1OfInteger,
+        ArrayDimension: i32,
+        Poles: *mut f64,
+        InversionProblem: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2171 - `BSplCLib::Interpolate`
+    pub fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_int_real2_int(
+        Degree: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Parameters: *const TColStd_Array1OfReal,
+        ContactOrderArray: *const TColStd_Array1OfInteger,
+        ArrayDimension: i32,
+        Poles: *mut f64,
+        Weights: *mut f64,
+        InversionProblem: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2189 - `BSplCLib::MovePoint`
+    pub fn BSplCLib_move_point_real_vec2d_int3_array1ofpnt2d_array1ofrealptr_array1ofreal_int2_array1ofpnt2d(
+        U: f64,
+        Displ: *const gp_Vec2d,
+        Index1: i32,
+        Index2: i32,
+        Degree: i32,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        FlatKnots: *const TColStd_Array1OfReal,
+        FirstIndex: *mut i32,
+        LastIndex: *mut i32,
+        NewPoles: *mut TColgp_Array1OfPnt2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2210 - `BSplCLib::MovePoint`
+    pub fn BSplCLib_move_point_real_vec_int3_array1ofpnt_array1ofrealptr_array1ofreal_int2_array1ofpnt(
+        U: f64,
+        Displ: *const gp_Vec,
+        Index1: i32,
+        Index2: i32,
+        Degree: i32,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        FlatKnots: *const TColStd_Array1OfReal,
+        FirstIndex: *mut i32,
+        LastIndex: *mut i32,
+        NewPoles: *mut TColgp_Array1OfPnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2247 - `BSplCLib::MovePointAndTangent`
+    pub fn BSplCLib_move_point_and_tangent_real_int_real3_int3_real_array1ofrealptr_array1ofreal_real_int(
+        U: f64,
+        ArrayDimension: i32,
+        Delta: *mut f64,
+        DeltaDerivative: *mut f64,
+        Tolerance: f64,
+        Degree: i32,
+        StartingCondition: i32,
+        EndingCondition: i32,
+        Poles: *mut f64,
+        Weights: *const TColStd_Array1OfReal,
+        FlatKnots: *const TColStd_Array1OfReal,
+        NewPoles: *mut f64,
+        ErrorStatus: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2286 - `BSplCLib::MovePointAndTangent`
+    pub fn BSplCLib_move_point_and_tangent_real_vec2_real_int3_array1ofpnt_array1ofrealptr_array1ofreal_array1ofpnt_int(
+        U: f64,
+        Delta: *const gp_Vec,
+        DeltaDerivative: *const gp_Vec,
+        Tolerance: f64,
+        Degree: i32,
+        StartingCondition: i32,
+        EndingCondition: i32,
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        FlatKnots: *const TColStd_Array1OfReal,
+        NewPoles: *mut TColgp_Array1OfPnt,
+        ErrorStatus: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2324 - `BSplCLib::MovePointAndTangent`
+    pub fn BSplCLib_move_point_and_tangent_real_vec2d2_real_int3_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofpnt2d_int(
+        U: f64,
+        Delta: *const gp_Vec2d,
+        DeltaDerivative: *const gp_Vec2d,
+        Tolerance: f64,
+        Degree: i32,
+        StartingCondition: i32,
+        EndingCondition: i32,
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        FlatKnots: *const TColStd_Array1OfReal,
+        NewPoles: *mut TColgp_Array1OfPnt2d,
+        ErrorStatus: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2342 - `BSplCLib::Resolution`
+    pub fn BSplCLib_resolution_real_int2_array1ofrealptr_array1ofreal_int_real2(
+        PolesArray: *mut f64,
+        ArrayDimension: i32,
+        NumPoles: i32,
+        Weights: *const TColStd_Array1OfReal,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Degree: i32,
+        Tolerance3D: f64,
+        UTolerance: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2356 - `BSplCLib::Resolution`
+    pub fn BSplCLib_resolution_array1ofpnt_array1ofrealptr_int_array1ofreal_int_real2(
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        NumPoles: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Degree: i32,
+        Tolerance3D: f64,
+        UTolerance: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2369 - `BSplCLib::Resolution`
+    pub fn BSplCLib_resolution_array1ofpnt2d_array1ofrealptr_int_array1ofreal_int_real2(
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        NumPoles: i32,
+        FlatKnots: *const TColStd_Array1OfReal,
+        Degree: i32,
+        Tolerance3D: f64,
+        UTolerance: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplCLib.hxx`:2388 - `BSplCLib::Intervals`
+    pub fn BSplCLib_intervals(
+        theKnots: *const TColStd_Array1OfReal,
+        theMults: *const TColStd_Array1OfInteger,
+        theDegree: i32,
+        isPeriodic: bool,
+        theContinuity: i32,
+        theFirst: f64,
+        theLast: f64,
+        theTolerance: f64,
+        theIntervals: *mut TColStd_Array1OfReal,
+    ) -> crate::OcctResult<i32>;
     /// **Source:** `BSplSLib.hxx`:174 - `BSplSLib::RationalDerivative`
     pub fn BSplSLib_rational_derivative_int4_real2_bool(
         UDeg: i32,
@@ -17059,16 +18493,505 @@ extern "C" {
         RDers: *mut f64,
         All: bool,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:182 - `BSplSLib::D0`
+    pub fn BSplSLib_d0_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt(
+        U: f64,
+        V: f64,
+        UIndex: i32,
+        VIndex: i32,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        UKnots: *const TColStd_Array1OfReal,
+        VKnots: *const TColStd_Array1OfReal,
+        UMults: *const TColStd_Array1OfInteger,
+        VMults: *const TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        URat: bool,
+        VRat: bool,
+        UPer: bool,
+        VPer: bool,
+        P: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:200 - `BSplSLib::D1`
+    pub fn BSplSLib_d1_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt_vec2(
+        U: f64,
+        V: f64,
+        UIndex: i32,
+        VIndex: i32,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        UKnots: *const TColStd_Array1OfReal,
+        VKnots: *const TColStd_Array1OfReal,
+        UMults: *const TColStd_Array1OfInteger,
+        VMults: *const TColStd_Array1OfInteger,
+        Degree: i32,
+        VDegree: i32,
+        URat: bool,
+        VRat: bool,
+        UPer: bool,
+        VPer: bool,
+        P: *mut gp_Pnt,
+        Vu: *mut gp_Vec,
+        Vv: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:220 - `BSplSLib::D2`
+    pub fn BSplSLib_d2_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt_vec5(
+        U: f64,
+        V: f64,
+        UIndex: i32,
+        VIndex: i32,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        UKnots: *const TColStd_Array1OfReal,
+        VKnots: *const TColStd_Array1OfReal,
+        UMults: *const TColStd_Array1OfInteger,
+        VMults: *const TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        URat: bool,
+        VRat: bool,
+        UPer: bool,
+        VPer: bool,
+        P: *mut gp_Pnt,
+        Vu: *mut gp_Vec,
+        Vv: *mut gp_Vec,
+        Vuu: *mut gp_Vec,
+        Vvv: *mut gp_Vec,
+        Vuv: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:243 - `BSplSLib::D3`
+    pub fn BSplSLib_d3_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt_vec9(
+        U: f64,
+        V: f64,
+        UIndex: i32,
+        VIndex: i32,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        UKnots: *const TColStd_Array1OfReal,
+        VKnots: *const TColStd_Array1OfReal,
+        UMults: *const TColStd_Array1OfInteger,
+        VMults: *const TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        URat: bool,
+        VRat: bool,
+        UPer: bool,
+        VPer: bool,
+        P: *mut gp_Pnt,
+        Vu: *mut gp_Vec,
+        Vv: *mut gp_Vec,
+        Vuu: *mut gp_Vec,
+        Vvv: *mut gp_Vec,
+        Vuv: *mut gp_Vec,
+        Vuuu: *mut gp_Vec,
+        Vvvv: *mut gp_Vec,
+        Vuuv: *mut gp_Vec,
+        Vuvv: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:270 - `BSplSLib::DN`
+    pub fn BSplSLib_dn_real2_int4_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_vec(
+        U: f64,
+        V: f64,
+        Nu: i32,
+        Nv: i32,
+        UIndex: i32,
+        VIndex: i32,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        UKnots: *const TColStd_Array1OfReal,
+        VKnots: *const TColStd_Array1OfReal,
+        UMults: *const TColStd_Array1OfInteger,
+        VMults: *const TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        URat: bool,
+        VRat: bool,
+        UPer: bool,
+        VPer: bool,
+        Vn: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:293 - `BSplSLib::Iso`
+    pub fn BSplSLib_iso(
+        Param: f64,
+        IsU: bool,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+        CPoles: *mut TColgp_Array1OfPnt,
+        CWeights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BSplSLib.hxx`:313 - `BSplSLib::Reverse`
     pub fn BSplSLib_reverse_array2ofpnt_int_bool(
         Poles: *mut TColgp_Array2OfPnt,
         Last: i32,
         UDirection: bool,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:321 - `BSplSLib::HomogeneousD0`
+    pub fn BSplSLib_homogeneous_d0(
+        U: f64,
+        V: f64,
+        UIndex: i32,
+        VIndex: i32,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        UKnots: *const TColStd_Array1OfReal,
+        VKnots: *const TColStd_Array1OfReal,
+        UMults: *const TColStd_Array1OfInteger,
+        VMults: *const TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        URat: bool,
+        VRat: bool,
+        UPer: bool,
+        VPer: bool,
+        W: *mut f64,
+        P: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:344 - `BSplSLib::HomogeneousD1`
+    pub fn BSplSLib_homogeneous_d1(
+        U: f64,
+        V: f64,
+        UIndex: i32,
+        VIndex: i32,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        UKnots: *const TColStd_Array1OfReal,
+        VKnots: *const TColStd_Array1OfReal,
+        UMults: *const TColStd_Array1OfInteger,
+        VMults: *const TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        URat: bool,
+        VRat: bool,
+        UPer: bool,
+        VPer: bool,
+        N: *mut gp_Pnt,
+        Nu: *mut gp_Vec,
+        Nv: *mut gp_Vec,
+        D: *mut f64,
+        Du: *mut f64,
+        Dv: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:368 - `BSplSLib::Reverse`
+    pub fn BSplSLib_reverse_array2ofreal_int_bool(
+        Weights: *mut TColStd_Array2OfReal,
+        Last: i32,
+        UDirection: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:376 - `BSplSLib::IsRational`
+    pub fn BSplSLib_is_rational_array2ofreal_int4_real(
+        Weights: *const TColStd_Array2OfReal,
+        I1: i32,
+        I2: i32,
+        J1: i32,
+        J2: i32,
+        Epsilon: f64,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `BSplSLib.hxx`:384 - `BSplSLib::SetPoles`
+    pub fn BSplSLib_set_poles_array2ofpnt_array1ofreal_bool(
+        Poles: *const TColgp_Array2OfPnt,
+        FP: *mut TColStd_Array1OfReal,
+        UDirection: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:389 - `BSplSLib::SetPoles`
+    pub fn BSplSLib_set_poles_array2ofpnt_array2ofreal_array1ofreal_bool(
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        FP: *mut TColStd_Array1OfReal,
+        UDirection: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:395 - `BSplSLib::GetPoles`
+    pub fn BSplSLib_get_poles_array1ofreal_array2ofpnt_bool(
+        FP: *const TColStd_Array1OfReal,
+        Poles: *mut TColgp_Array2OfPnt,
+        UDirection: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:400 - `BSplSLib::GetPoles`
+    pub fn BSplSLib_get_poles_array1ofreal_array2ofpnt_array2ofreal_bool(
+        FP: *const TColStd_Array1OfReal,
+        Poles: *mut TColgp_Array2OfPnt,
+        Weights: *mut TColStd_Array2OfReal,
+        UDirection: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:418 - `BSplSLib::MovePoint`
+    pub fn BSplSLib_move_point_real2_vec_int6_bool_array2ofpnt_array2ofreal_array1ofreal2_int4_array2ofpnt(
+        U: f64,
+        V: f64,
+        Displ: *const gp_Vec,
+        UIndex1: i32,
+        UIndex2: i32,
+        VIndex1: i32,
+        VIndex2: i32,
+        UDegree: i32,
+        VDegree: i32,
+        Rational: bool,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        UFlatKnots: *const TColStd_Array1OfReal,
+        VFlatKnots: *const TColStd_Array1OfReal,
+        UFirstIndex: *mut i32,
+        ULastIndex: *mut i32,
+        VFirstIndex: *mut i32,
+        VLastIndex: *mut i32,
+        NewPoles: *mut TColgp_Array2OfPnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:438 - `BSplSLib::InsertKnots`
+    pub fn BSplSLib_insert_knots_bool_int_bool_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_real_bool(
+        UDirection: bool,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        AddKnots: *const TColStd_Array1OfReal,
+        AddMults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array2OfPnt,
+        NewWeights: *mut TColStd_Array2OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        Epsilon: f64,
+        Add: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:454 - `BSplSLib::RemoveKnot`
+    pub fn BSplSLib_remove_knot_bool_int3_bool_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_real(
+        UDirection: bool,
+        Index: i32,
+        Mult: i32,
+        Degree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array2OfPnt,
+        NewWeights: *mut TColStd_Array2OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        Tolerance: f64,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `BSplSLib.hxx`:469 - `BSplSLib::IncreaseDegree`
+    pub fn BSplSLib_increase_degree_bool_int2_bool_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger(
+        UDirection: bool,
+        Degree: i32,
+        NewDegree: i32,
+        Periodic: bool,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        Knots: *const TColStd_Array1OfReal,
+        Mults: *const TColStd_Array1OfInteger,
+        NewPoles: *mut TColgp_Array2OfPnt,
+        NewWeights: *mut TColStd_Array2OfReal,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:482 - `BSplSLib::Unperiodize`
+    pub fn BSplSLib_unperiodize_bool_int_array1ofinteger_array1ofreal_array2ofpnt_array2ofrealptr_array1ofinteger_array1ofreal_array2ofpnt_array2ofrealptr(
+        UDirection: bool,
+        Degree: i32,
+        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        NewMults: *mut TColStd_Array1OfInteger,
+        NewKnots: *mut TColStd_Array1OfReal,
+        NewPoles: *mut TColgp_Array2OfPnt,
+        NewWeights: *mut TColStd_Array2OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:494 - `BSplSLib::NoWeights`
+    pub fn BSplSLib_no_weights() -> crate::OcctResult<*mut TColStd_Array2OfReal>;
+    /// **Source:** `BSplSLib.hxx`:500 - `BSplSLib::BuildCache`
+    pub fn BSplSLib_build_cache_real4_bool2_int4_array1ofreal2_array2ofpnt_array2ofrealptr_array2ofpnt_array2ofrealptr(
+        U: f64,
+        V: f64,
+        USpanDomain: f64,
+        VSpanDomain: f64,
+        UPeriodicFlag: bool,
+        VPeriodicFlag: bool,
+        UDegree: i32,
+        VDegree: i32,
+        UIndex: i32,
+        VIndex: i32,
+        UFlatKnots: *const TColStd_Array1OfReal,
+        VFlatKnots: *const TColStd_Array1OfReal,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        CachePoles: *mut TColgp_Array2OfPnt,
+        CacheWeights: *mut TColStd_Array2OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:520 - `BSplSLib::BuildCache`
+    pub fn BSplSLib_build_cache_real4_bool2_int4_array1ofreal2_array2ofpnt_array2ofrealptr_array2ofreal(
+        theU: f64,
+        theV: f64,
+        theUSpanDomain: f64,
+        theVSpanDomain: f64,
+        theUPeriodic: bool,
+        theVPeriodic: bool,
+        theUDegree: i32,
+        theVDegree: i32,
+        theUIndex: i32,
+        theVIndex: i32,
+        theUFlatKnots: *const TColStd_Array1OfReal,
+        theVFlatKnots: *const TColStd_Array1OfReal,
+        thePoles: *const TColgp_Array2OfPnt,
+        theWeights: *const TColStd_Array2OfReal,
+        theCacheArray: *mut TColStd_Array2OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:547 - `BSplSLib::CacheD0`
+    pub fn BSplSLib_cache_d0_real2_int2_real4_array2ofpnt_array2ofrealptr_pnt(
+        U: f64,
+        V: f64,
+        UDegree: i32,
+        VDegree: i32,
+        UCacheParameter: f64,
+        VCacheParameter: f64,
+        USpanLenght: f64,
+        VSpanLength: f64,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        Point: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:562 - `BSplSLib::CoefsD0`
+    pub fn BSplSLib_coefs_d0_real2_array2ofpnt_array2ofrealptr_pnt(
+        U: f64,
+        V: f64,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        Point: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:579 - `BSplSLib::CacheD1`
+    pub fn BSplSLib_cache_d1_real2_int2_real4_array2ofpnt_array2ofrealptr_pnt_vec2(
+        U: f64,
+        V: f64,
+        UDegree: i32,
+        VDegree: i32,
+        UCacheParameter: f64,
+        VCacheParameter: f64,
+        USpanLenght: f64,
+        VSpanLength: f64,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        Point: *mut gp_Pnt,
+        VecU: *mut gp_Vec,
+        VecV: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:596 - `BSplSLib::CoefsD1`
+    pub fn BSplSLib_coefs_d1_real2_array2ofpnt_array2ofrealptr_pnt_vec2(
+        U: f64,
+        V: f64,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        Point: *mut gp_Pnt,
+        VecU: *mut gp_Vec,
+        VecV: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:615 - `BSplSLib::CacheD2`
+    pub fn BSplSLib_cache_d2_real2_int2_real4_array2ofpnt_array2ofrealptr_pnt_vec5(
+        U: f64,
+        V: f64,
+        UDegree: i32,
+        VDegree: i32,
+        UCacheParameter: f64,
+        VCacheParameter: f64,
+        USpanLenght: f64,
+        VSpanLength: f64,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        Point: *mut gp_Pnt,
+        VecU: *mut gp_Vec,
+        VecV: *mut gp_Vec,
+        VecUU: *mut gp_Vec,
+        VecUV: *mut gp_Vec,
+        VecVV: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:635 - `BSplSLib::CoefsD2`
+    pub fn BSplSLib_coefs_d2_real2_array2ofpnt_array2ofrealptr_pnt_vec5(
+        U: f64,
+        V: f64,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        Point: *mut gp_Pnt,
+        VecU: *mut gp_Vec,
+        VecV: *mut gp_Vec,
+        VecUU: *mut gp_Vec,
+        VecUV: *mut gp_Vec,
+        VecVV: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BSplSLib.hxx`:647 - `BSplSLib::PolesCoefficients`
     pub fn BSplSLib_poles_coefficients_array2ofpnt2(
         Poles: *const TColgp_Array2OfPnt,
         CachePoles: *mut TColgp_Array2OfPnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:653 - `BSplSLib::PolesCoefficients`
+    pub fn BSplSLib_poles_coefficients_array2ofpnt_array2ofrealptr_array2ofpnt_array2ofrealptr(
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        CachePoles: *mut TColgp_Array2OfPnt,
+        CacheWeights: *mut TColStd_Array2OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:665 - `BSplSLib::Resolution`
+    pub fn BSplSLib_resolution_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofinteger2_int2_bool4_real3(
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        UKnots: *const TColStd_Array1OfReal,
+        VKnots: *const TColStd_Array1OfReal,
+        UMults: *const TColStd_Array1OfInteger,
+        VMults: *const TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        URat: bool,
+        VRat: bool,
+        UPer: bool,
+        VPer: bool,
+        Tolerance3D: f64,
+        UTolerance: *mut f64,
+        VTolerance: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:698 - `BSplSLib::Interpolate`
+    pub fn BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_array2ofreal_int(
+        UDegree: i32,
+        VDegree: i32,
+        UFlatKnots: *const TColStd_Array1OfReal,
+        VFlatKnots: *const TColStd_Array1OfReal,
+        UParameters: *const TColStd_Array1OfReal,
+        VParameters: *const TColStd_Array1OfReal,
+        Poles: *mut TColgp_Array2OfPnt,
+        Weights: *mut TColStd_Array2OfReal,
+        InversionProblem: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:724 - `BSplSLib::Interpolate`
+    pub fn BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_int(
+        UDegree: i32,
+        VDegree: i32,
+        UFlatKnots: *const TColStd_Array1OfReal,
+        VFlatKnots: *const TColStd_Array1OfReal,
+        UParameters: *const TColStd_Array1OfReal,
+        VParameters: *const TColStd_Array1OfReal,
+        Poles: *mut TColgp_Array2OfPnt,
+        InversionProblem: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BSplSLib.hxx`:758 - `BSplSLib::FunctionMultiply`
+    pub fn BSplSLib_function_multiply_evaluatorfunction_int2_array1ofreal2_array1ofintegerptr2_array2ofpnt_array2ofrealptr_array1ofreal2_int2_array2ofpnt_array2ofreal_int(
+        Function: *const BSplSLib_EvaluatorFunction,
+        UBSplineDegree: i32,
+        VBSplineDegree: i32,
+        UBSplineKnots: *const TColStd_Array1OfReal,
+        VBSplineKnots: *const TColStd_Array1OfReal,
+        UMults: *const TColStd_Array1OfInteger,
+        VMults: *const TColStd_Array1OfInteger,
+        Poles: *const TColgp_Array2OfPnt,
+        Weights: *const TColStd_Array2OfReal,
+        UFlatKnots: *const TColStd_Array1OfReal,
+        VFlatKnots: *const TColStd_Array1OfReal,
+        UNewDegree: i32,
+        VNewDegree: i32,
+        NewNumerator: *mut TColgp_Array2OfPnt,
+        NewDenominator: *mut TColStd_Array2OfReal,
+        theStatus: *mut i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `CSLib.hxx`:127 - `CSLib::DNNUV`
     pub fn CSLib_dnnuv_int2_array2ofvec(
@@ -18611,6 +20534,54 @@ extern "C" {
     pub fn math_gauss_points_max() -> crate::OcctResult<i32>;
     /// **Source:** `math.hxx`:40 - `math::KronrodPointsMax`
     pub fn math_kronrod_points_max() -> crate::OcctResult<i32>;
+    /// **Source:** `PLib.hxx`:45 - `PLib::NoWeights`
+    pub fn PLib_no_weights() -> crate::OcctResult<*mut TColStd_Array1OfReal>;
+    /// **Source:** `PLib.hxx`:48 - `PLib::NoWeights2`
+    pub fn PLib_no_weights2() -> crate::OcctResult<*mut TColStd_Array2OfReal>;
+    /// **Source:** `PLib.hxx`:51 - `PLib::SetPoles`
+    pub fn PLib_set_poles_array1ofpnt_array1ofreal(
+        Poles: *const TColgp_Array1OfPnt,
+        FP: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:54 - `PLib::SetPoles`
+    pub fn PLib_set_poles_array1ofpnt_array1ofreal2(
+        Poles: *const TColgp_Array1OfPnt,
+        Weights: *const TColStd_Array1OfReal,
+        FP: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:59 - `PLib::GetPoles`
+    pub fn PLib_get_poles_array1ofreal_array1ofpnt(
+        FP: *const TColStd_Array1OfReal,
+        Poles: *mut TColgp_Array1OfPnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:62 - `PLib::GetPoles`
+    pub fn PLib_get_poles_array1ofreal_array1ofpnt_array1ofreal(
+        FP: *const TColStd_Array1OfReal,
+        Poles: *mut TColgp_Array1OfPnt,
+        Weights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:67 - `PLib::SetPoles`
+    pub fn PLib_set_poles_array1ofpnt2d_array1ofreal(
+        Poles: *const TColgp_Array1OfPnt2d,
+        FP: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:70 - `PLib::SetPoles`
+    pub fn PLib_set_poles_array1ofpnt2d_array1ofreal2(
+        Poles: *const TColgp_Array1OfPnt2d,
+        Weights: *const TColStd_Array1OfReal,
+        FP: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:75 - `PLib::GetPoles`
+    pub fn PLib_get_poles_array1ofreal_array1ofpnt2d(
+        FP: *const TColStd_Array1OfReal,
+        Poles: *mut TColgp_Array1OfPnt2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:78 - `PLib::GetPoles`
+    pub fn PLib_get_poles_array1ofreal_array1ofpnt2d_array1ofreal(
+        FP: *const TColStd_Array1OfReal,
+        Poles: *mut TColgp_Array1OfPnt2d,
+        Weights: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `PLib.hxx`:83 - `PLib::Bin`
     pub fn PLib_bin(N: i32, P: i32) -> crate::OcctResult<f64>;
     /// **Source:** `PLib.hxx`:116 - `PLib::RationalDerivative`
@@ -18687,6 +20658,96 @@ extern "C" {
         FirstOrder: i32,
         LastOrder: i32,
         MatrixCoefs: *mut math_Matrix,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `PLib.hxx`:333 - `PLib::CoefficientsPoles`
+    pub fn PLib_coefficients_poles_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(
+        Coefs: *const TColgp_Array1OfPnt,
+        WCoefs: *const TColStd_Array1OfReal,
+        Poles: *mut TColgp_Array1OfPnt,
+        WPoles: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:338 - `PLib::CoefficientsPoles`
+    pub fn PLib_coefficients_poles_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(
+        Coefs: *const TColgp_Array1OfPnt2d,
+        WCoefs: *const TColStd_Array1OfReal,
+        Poles: *mut TColgp_Array1OfPnt2d,
+        WPoles: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:343 - `PLib::CoefficientsPoles`
+    pub fn PLib_coefficients_poles_array1ofreal_array1ofrealptr_array1ofreal_array1ofrealptr(
+        Coefs: *const TColStd_Array1OfReal,
+        WCoefs: *const TColStd_Array1OfReal,
+        Poles: *mut TColStd_Array1OfReal,
+        WPoles: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:348 - `PLib::CoefficientsPoles`
+    pub fn PLib_coefficients_poles_int_array1ofreal_array1ofrealptr_array1ofreal_array1ofrealptr(
+        dim: i32,
+        Coefs: *const TColStd_Array1OfReal,
+        WCoefs: *const TColStd_Array1OfReal,
+        Poles: *mut TColStd_Array1OfReal,
+        WPoles: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:354 - `PLib::Trimming`
+    pub fn PLib_trimming_real2_array1ofpnt_array1ofrealptr(
+        U1: f64,
+        U2: f64,
+        Coeffs: *mut TColgp_Array1OfPnt,
+        WCoeffs: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:359 - `PLib::Trimming`
+    pub fn PLib_trimming_real2_array1ofpnt2d_array1ofrealptr(
+        U1: f64,
+        U2: f64,
+        Coeffs: *mut TColgp_Array1OfPnt2d,
+        WCoeffs: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:364 - `PLib::Trimming`
+    pub fn PLib_trimming_real2_array1ofreal_array1ofrealptr(
+        U1: f64,
+        U2: f64,
+        Coeffs: *mut TColStd_Array1OfReal,
+        WCoeffs: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:369 - `PLib::Trimming`
+    pub fn PLib_trimming_real2_int_array1ofreal_array1ofrealptr(
+        U1: f64,
+        U2: f64,
+        dim: i32,
+        Coeffs: *mut TColStd_Array1OfReal,
+        WCoeffs: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:375 - `PLib::CoefficientsPoles`
+    pub fn PLib_coefficients_poles_array2ofpnt_array2ofrealptr_array2ofpnt_array2ofrealptr(
+        Coefs: *const TColgp_Array2OfPnt,
+        WCoefs: *const TColStd_Array2OfReal,
+        Poles: *mut TColgp_Array2OfPnt,
+        WPoles: *mut TColStd_Array2OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:380 - `PLib::UTrimming`
+    pub fn PLib_u_trimming(
+        U1: f64,
+        U2: f64,
+        Coeffs: *mut TColgp_Array2OfPnt,
+        WCoeffs: *mut TColStd_Array2OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:385 - `PLib::VTrimming`
+    pub fn PLib_v_trimming(
+        V1: f64,
+        V2: f64,
+        Coeffs: *mut TColgp_Array2OfPnt,
+        WCoeffs: *mut TColStd_Array2OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `PLib.hxx`:396 - `PLib::HermiteInterpolate`
+    pub fn PLib_hermite_interpolate(
+        Dimension: i32,
+        FirstParameter: f64,
+        LastParameter: f64,
+        FirstOrder: i32,
+        LastOrder: i32,
+        FirstConstr: *const TColStd_Array2OfReal,
+        LastConstr: *const TColStd_Array2OfReal,
+        Coefficients: *mut TColStd_Array1OfReal,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `PLib.hxx`:420 - `PLib::JacobiParameters`
     pub fn PLib_jacobi_parameters(

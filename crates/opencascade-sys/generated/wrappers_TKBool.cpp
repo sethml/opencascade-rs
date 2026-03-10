@@ -93,6 +93,7 @@
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
 #include <TColStd_Array1OfInteger.hxx>
+#include <TColStd_Array1OfReal.hxx>
 #include <TColStd_ListIteratorOfListOfInteger.hxx>
 #include <TColStd_ListOfInteger.hxx>
 #include <TColStd_MapOfInteger.hxx>
@@ -14638,6 +14639,14 @@ extern "C" OcctResult<TopoDS_Shell*> BRepFill_shell_wire2(TopoDS_Wire const* Wir
 extern "C" const char* BRepFill_axe(TopoDS_Shape const* Spine, TopoDS_Wire const* Profile, gp_Ax3* AxeProf, bool* ProfOnSpine, double Tol) {
     try { BRepFill::Axe(*Spine, *Profile, *AxeProf, *ProfOnSpine, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepFill_compute_acr(TopoDS_Wire const* wire, TColStd_Array1OfReal* ACR) {
+    try { BRepFill::ComputeACR(*wire, *ACR); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<TopoDS_Wire*> BRepFill_insert_acr(TopoDS_Wire const* wire, TColStd_Array1OfReal const* ACRcuts, double prec) {
+    try { return {new TopoDS_Wire(BRepFill::InsertACR(*wire, *ACRcuts, prec)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 
 // ========================

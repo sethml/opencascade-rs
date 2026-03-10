@@ -14281,6 +14281,24 @@ extern "C" {
     ) -> crate::OcctResult<bool>;
 
     // Free functions
+    /// **Source:** `BlendFunc.hxx`:45 - `BlendFunc::Knots`
+    pub fn BlendFunc_knots_sectionshape_array1ofreal(
+        SectShape: i32,
+        TKnots: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BlendFunc.hxx`:48 - `BlendFunc::Mults`
+    pub fn BlendFunc_mults_sectionshape_array1ofinteger(
+        SectShape: i32,
+        TMults: *mut TColStd_Array1OfInteger,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BlendFunc.hxx`:51 - `BlendFunc::GetMinimalWeights`
+    pub fn BlendFunc_get_minimal_weights_sectionshape_parameterisationtype_real2_array1ofreal(
+        SectShape: i32,
+        TConv: i32,
+        AngleMin: f64,
+        AngleMax: f64,
+        Weigths: *mut TColStd_Array1OfReal,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BlendFunc.hxx`:58 - `BlendFunc::NextShape`
     pub fn BlendFunc_next_shape(S: i32) -> crate::OcctResult<i32>;
     /// **Source:** `BlendFunc.hxx`:60 - `BlendFunc::ComputeNormal`

@@ -178,6 +178,99 @@ pub fn inertia(
         crate::ffi_extern_TKGeomBase::GeomLib_inertia(Points, Bary, XDir, YDir, Xgap, YGap, ZGap)
     })
 }
+/// **Source:** `GeomLib.hxx`:182 - `GeomLib::RemovePointsFromArray`
+/// Warning!  This assume that the InParameter is an increasing sequence
+/// of real number and it will not check for that : Unpredictable
+/// result can happen if this is not satisfied. It is the caller
+/// responsibility to check for that property.
+///
+/// This  method makes uniform NumPoints segments S1,...SNumPoints out
+/// of the segment defined by the first parameter and the
+/// last  parameter of the  InParameter ; keeps   only one
+/// point of the InParameters set of parameter in each of
+/// the uniform segments taking care of the first and the
+/// last   parameters. For the ith segment the element of
+/// the InParameter is the one that is the first to exceed
+/// the midpoint of the segment and to fall before the
+/// midpoint of the next segment
+/// There  will be  at  the  end at   most NumPoints + 1  if
+/// NumPoints > 2 in the OutParameters Array
+pub fn remove_points_from_array(
+    NumPoints: i32,
+    InParameters: &crate::ffi_types::TColStd_Array1OfReal,
+    OutParameters: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::GeomLib_remove_points_from_array(
+            NumPoints,
+            InParameters,
+            OutParameters,
+        )
+    })
+}
+/// **Source:** `GeomLib.hxx`:191 - `GeomLib::DensifyArray1OfReal`
+/// this  makes sure that there  is at least MinNumPoints
+/// in OutParameters taking into account the parameters in
+/// the InParameters array provided those are in order,
+/// that is the sequence of real in the InParameter is strictly
+/// non decreasing
+pub fn densify_array1_of_real(
+    MinNumPoints: i32,
+    InParameters: &crate::ffi_types::TColStd_Array1OfReal,
+    OutParameters: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::GeomLib_densify_array1_of_real(
+            MinNumPoints,
+            InParameters,
+            OutParameters,
+        )
+    })
+}
+/// **Source:** `GeomLib.hxx`:214 - `GeomLib::EvalMaxParametricDistance`
+/// this  will compute   the   maximum distance  at  the
+/// parameters  given    in   the Parameters  array    by
+/// evaluating each parameter  the two curves  and taking
+/// the maximum of the evaluated distance
+pub fn eval_max_parametric_distance(
+    Curve: &crate::adaptor3d::Curve,
+    AReferenceCurve: &crate::adaptor3d::Curve,
+    Tolerance: f64,
+    Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+    MaxDistance: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::GeomLib_eval_max_parametric_distance(
+            Curve,
+            AReferenceCurve,
+            Tolerance,
+            Parameters,
+            MaxDistance,
+        )
+    })
+}
+/// **Source:** `GeomLib.hxx`:224 - `GeomLib::EvalMaxDistanceAlongParameter`
+/// this will compute the maximum distance at the parameters
+/// given in the Parameters array by projecting from the Curve
+/// to the reference curve and taking the minimum distance
+/// Than the maximum will be taken on those minimas.
+pub fn eval_max_distance_along_parameter(
+    Curve: &crate::adaptor3d::Curve,
+    AReferenceCurve: &crate::adaptor3d::Curve,
+    Tolerance: f64,
+    Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+    MaxDistance: &mut f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::GeomLib_eval_max_distance_along_parameter(
+            Curve,
+            AReferenceCurve,
+            Tolerance,
+            Parameters,
+            MaxDistance,
+        )
+    })
+}
 /// **Source:** `GeomLib.hxx`:232 - `GeomLib::CancelDenominatorDerivative`
 /// Cancel,on the boundaries,the denominator  first derivative
 /// in  the directions wished by the user and set its value to 1.

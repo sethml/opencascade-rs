@@ -25,6 +25,19 @@ pub fn parameter_pnt_handlegeomcurve_real(
 pub fn get_radius(C: &crate::b_rep_adaptor::Curve, t1: f64, t3: f64, R: &mut f64) -> i32 {
     crate::check_result(unsafe { crate::ffi_extern_TKBO::IntTools_get_radius(C, t1, t3, R) })
 }
+/// **Source:** `IntTools.hxx`:57 - `IntTools::PrepareArgs`
+pub fn prepare_args(
+    C: &mut crate::b_rep_adaptor::Curve,
+    tMax: f64,
+    tMin: f64,
+    Discret: i32,
+    Deflect: f64,
+    anArgs: &mut crate::ffi_types::TColStd_Array1OfReal,
+) -> i32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKBO::IntTools_prepare_args(C, tMax, tMin, Discret, Deflect, anArgs)
+    })
+}
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{HandleAdaptor3dTopolTool, HandleStandardTransient};

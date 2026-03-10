@@ -13201,6 +13201,10 @@ extern "C" OcctResult<int32_t> IntTools_get_radius(BRepAdaptor_Curve const* C, d
     try { return {IntTools::GetRadius(*C, t1, t3, *R), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<int32_t> IntTools_prepare_args(BRepAdaptor_Curve* C, double tMax, double tMin, int32_t Discret, double Deflect, TColStd_Array1OfReal* anArgs) {
+    try { return {IntTools::PrepareArgs(*C, tMax, tMin, Discret, Deflect, *anArgs), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 
 
 // Nested type and typedef type destructors

@@ -462,7 +462,10 @@ pub struct FunctionBinding {
     pub is_unsafe: bool,
     /// Whether this function has ambiguous lifetime (returns ref with 2+ ref params)
     pub unsafe_lifetime: bool,
+    /// Whether this function returns a reference from static data (no ref params)
+    pub static_return_lifetime: bool,
 }
+
 
 // ── Helper functions ────────────────────────────────────────────────────────
 
@@ -3661,9 +3664,19 @@ pub fn compute_all_function_bindings(
         // If the function returns a reference and has 2+ reference params, Rust can't infer
         // which param the return borrows from. We mark it unsafe instead of skipping.
         // Threshold is 2 (not 1 as for methods) because free functions have no &self.
+        let ref_param_count = func.params.iter().filter(|p| p.ty.original.is_lifetime_source()).count();
         let unsafe_lifetime = func.return_type.as_ref()
             .map_or(false, |rt| rt.original.is_reference())
-            && func.params.iter().filter(|p| p.ty.original.is_lifetime_source()).count() >= 2;
+            && ref_param_count >= 2;
+
+        // Static lifetime check for free functions:
+        // If the function returns a class pointer (Option<&T> / Option<&mut T>) but
+        // has 0 reference params, there's nothing to borrow from. The returned reference
+        // must be 'static (e.g. OCCT static helper like NoWeights()).
+        let returns_class_ptr = func.return_type.as_ref()
+            .map_or(false, |rt| rt.original.class_ptr_inner_name().is_some());
+        let static_return_lifetime = returns_class_ptr && ref_param_count == 0;
+
 
         let base_rust_name = &func.rust_name;
         let is_overloaded = name_groups.get(base_rust_name).copied().unwrap_or(0) > 1;
@@ -3771,9 +3784,12 @@ pub fn compute_all_function_bindings(
             cpp_headers,
             is_unsafe: func.params.iter().any(|p| p.ty.original.needs_unsafe_fn())
                 || func.return_type.as_ref().map_or(false, |rt| rt.original.needs_unsafe_fn())
-                || unsafe_lifetime,
+                || unsafe_lifetime
+                || static_return_lifetime,
             unsafe_lifetime,
+            static_return_lifetime,
         });
+
     }
 
     (result, skipped)

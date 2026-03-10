@@ -6,6 +6,118 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `PLib.hxx`:45 - `PLib::NoWeights`
+/// Used as argument for a non rational functions
+pub unsafe fn no_weights() -> Option<&'static mut crate::ffi_types::TColStd_Array1OfReal> {
+    {
+        let __val = crate::check_result(unsafe { crate::ffi_extern_TKMath::PLib_no_weights() });
+        if __val.is_null() {
+            None
+        } else {
+            Some(unsafe { &mut *__val })
+        }
+    }
+}
+/// **Source:** `PLib.hxx`:48 - `PLib::NoWeights2`
+/// Used as argument for a non rational functions
+pub unsafe fn no_weights2() -> Option<&'static mut crate::ffi_types::TColStd_Array2OfReal> {
+    {
+        let __val = crate::check_result(unsafe { crate::ffi_extern_TKMath::PLib_no_weights2() });
+        if __val.is_null() {
+            None
+        } else {
+            Some(unsafe { &mut *__val })
+        }
+    }
+}
+/// **Source:** `PLib.hxx`:51 - `PLib::SetPoles`
+/// Copy in FP the coordinates of the poles.
+pub fn set_poles_array1ofpnt_array1ofreal(
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    FP: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_set_poles_array1ofpnt_array1ofreal(Poles, FP)
+    })
+}
+/// **Source:** `PLib.hxx`:54 - `PLib::SetPoles`
+/// Copy in FP the coordinates of the poles.
+pub fn set_poles_array1ofpnt_array1ofreal2(
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    FP: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_set_poles_array1ofpnt_array1ofreal2(Poles, Weights, FP)
+    })
+}
+/// **Source:** `PLib.hxx`:59 - `PLib::GetPoles`
+/// Get from FP the coordinates of the poles.
+pub fn get_poles_array1ofreal_array1ofpnt(
+    FP: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_get_poles_array1ofreal_array1ofpnt(FP, Poles)
+    })
+}
+/// **Source:** `PLib.hxx`:62 - `PLib::GetPoles`
+/// Get from FP the coordinates of the poles.
+pub fn get_poles_array1ofreal_array1ofpnt_array1ofreal(
+    FP: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    Weights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_get_poles_array1ofreal_array1ofpnt_array1ofreal(
+            FP, Poles, Weights,
+        )
+    })
+}
+/// **Source:** `PLib.hxx`:67 - `PLib::SetPoles`
+/// Copy in FP the coordinates of the poles.
+pub fn set_poles_array1ofpnt2d_array1ofreal(
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    FP: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_set_poles_array1ofpnt2d_array1ofreal(Poles, FP)
+    })
+}
+/// **Source:** `PLib.hxx`:70 - `PLib::SetPoles`
+/// Copy in FP the coordinates of the poles.
+pub fn set_poles_array1ofpnt2d_array1ofreal2(
+    Poles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &crate::ffi_types::TColStd_Array1OfReal,
+    FP: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_set_poles_array1ofpnt2d_array1ofreal2(Poles, Weights, FP)
+    })
+}
+/// **Source:** `PLib.hxx`:75 - `PLib::GetPoles`
+/// Get from FP the coordinates of the poles.
+pub fn get_poles_array1ofreal_array1ofpnt2d(
+    FP: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_get_poles_array1ofreal_array1ofpnt2d(FP, Poles)
+    })
+}
+/// **Source:** `PLib.hxx`:78 - `PLib::GetPoles`
+/// Get from FP the coordinates of the poles.
+pub fn get_poles_array1ofreal_array1ofpnt2d_array1ofreal(
+    FP: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    Weights: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_get_poles_array1ofreal_array1ofpnt2d_array1ofreal(
+            FP, Poles, Weights,
+        )
+    })
+}
 /// **Source:** `PLib.hxx`:83 - `PLib::Bin`
 /// Returns the Binomial Cnp. N should be <= BSplCLib::MaxDegree().
 pub fn bin(N: i32, P: i32) -> f64 {
@@ -358,6 +470,180 @@ pub fn hermite_coefficients(
             FirstOrder,
             LastOrder,
             MatrixCoefs,
+        )
+    })
+}
+/// **Source:** `PLib.hxx`:333 - `PLib::CoefficientsPoles`
+pub unsafe fn coefficients_poles_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(
+    Coefs: &crate::ffi_types::TColgp_Array1OfPnt,
+    WCoefs: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    WPoles: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_coefficients_poles_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(Coefs, WCoefs as *const _, Poles, WPoles as *mut _)
+    })
+}
+/// **Source:** `PLib.hxx`:338 - `PLib::CoefficientsPoles`
+pub unsafe fn coefficients_poles_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(
+    Coefs: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    WCoefs: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    WPoles: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_coefficients_poles_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(Coefs, WCoefs as *const _, Poles, WPoles as *mut _)
+    })
+}
+/// **Source:** `PLib.hxx`:343 - `PLib::CoefficientsPoles`
+pub unsafe fn coefficients_poles_array1ofreal_array1ofrealptr_array1ofreal_array1ofrealptr(
+    Coefs: &crate::ffi_types::TColStd_Array1OfReal,
+    WCoefs: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &mut crate::ffi_types::TColStd_Array1OfReal,
+    WPoles: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_coefficients_poles_array1ofreal_array1ofrealptr_array1ofreal_array1ofrealptr(Coefs, WCoefs as *const _, Poles, WPoles as *mut _)
+    })
+}
+/// **Source:** `PLib.hxx`:348 - `PLib::CoefficientsPoles`
+pub unsafe fn coefficients_poles_int_array1ofreal_array1ofrealptr_array1ofreal_array1ofrealptr(
+    dim: i32,
+    Coefs: &crate::ffi_types::TColStd_Array1OfReal,
+    WCoefs: &crate::ffi_types::TColStd_Array1OfReal,
+    Poles: &mut crate::ffi_types::TColStd_Array1OfReal,
+    WPoles: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_coefficients_poles_int_array1ofreal_array1ofrealptr_array1ofreal_array1ofrealptr(dim, Coefs, WCoefs as *const _, Poles, WPoles as *mut _)
+    })
+}
+/// **Source:** `PLib.hxx`:354 - `PLib::Trimming`
+pub unsafe fn trimming_real2_array1ofpnt_array1ofrealptr(
+    U1: f64,
+    U2: f64,
+    Coeffs: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    WCoeffs: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_trimming_real2_array1ofpnt_array1ofrealptr(
+            U1,
+            U2,
+            Coeffs,
+            WCoeffs as *mut _,
+        )
+    })
+}
+/// **Source:** `PLib.hxx`:359 - `PLib::Trimming`
+pub unsafe fn trimming_real2_array1ofpnt2d_array1ofrealptr(
+    U1: f64,
+    U2: f64,
+    Coeffs: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+    WCoeffs: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_trimming_real2_array1ofpnt2d_array1ofrealptr(
+            U1,
+            U2,
+            Coeffs,
+            WCoeffs as *mut _,
+        )
+    })
+}
+/// **Source:** `PLib.hxx`:364 - `PLib::Trimming`
+pub unsafe fn trimming_real2_array1ofreal_array1ofrealptr(
+    U1: f64,
+    U2: f64,
+    Coeffs: &mut crate::ffi_types::TColStd_Array1OfReal,
+    WCoeffs: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_trimming_real2_array1ofreal_array1ofrealptr(
+            U1,
+            U2,
+            Coeffs,
+            WCoeffs as *mut _,
+        )
+    })
+}
+/// **Source:** `PLib.hxx`:369 - `PLib::Trimming`
+pub unsafe fn trimming_real2_int_array1ofreal_array1ofrealptr(
+    U1: f64,
+    U2: f64,
+    dim: i32,
+    Coeffs: &mut crate::ffi_types::TColStd_Array1OfReal,
+    WCoeffs: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_trimming_real2_int_array1ofreal_array1ofrealptr(
+            U1,
+            U2,
+            dim,
+            Coeffs,
+            WCoeffs as *mut _,
+        )
+    })
+}
+/// **Source:** `PLib.hxx`:375 - `PLib::CoefficientsPoles`
+pub unsafe fn coefficients_poles_array2ofpnt_array2ofrealptr_array2ofpnt_array2ofrealptr(
+    Coefs: &crate::ffi_types::TColgp_Array2OfPnt,
+    WCoefs: &crate::ffi_types::TColStd_Array2OfReal,
+    Poles: &mut crate::ffi_types::TColgp_Array2OfPnt,
+    WPoles: &mut crate::ffi_types::TColStd_Array2OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_coefficients_poles_array2ofpnt_array2ofrealptr_array2ofpnt_array2ofrealptr(Coefs, WCoefs as *const _, Poles, WPoles as *mut _)
+    })
+}
+/// **Source:** `PLib.hxx`:380 - `PLib::UTrimming`
+pub unsafe fn u_trimming(
+    U1: f64,
+    U2: f64,
+    Coeffs: &mut crate::ffi_types::TColgp_Array2OfPnt,
+    WCoeffs: &mut crate::ffi_types::TColStd_Array2OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_u_trimming(U1, U2, Coeffs, WCoeffs as *mut _)
+    })
+}
+/// **Source:** `PLib.hxx`:385 - `PLib::VTrimming`
+pub unsafe fn v_trimming(
+    V1: f64,
+    V2: f64,
+    Coeffs: &mut crate::ffi_types::TColgp_Array2OfPnt,
+    WCoeffs: &mut crate::ffi_types::TColStd_Array2OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_v_trimming(V1, V2, Coeffs, WCoeffs as *mut _)
+    })
+}
+/// **Source:** `PLib.hxx`:396 - `PLib::HermiteInterpolate`
+/// Compute the coefficients in the canonical base of the
+/// polynomial satisfying the given constraints
+/// at the given parameters
+/// The array FirstContr(i,j) i=1,Dimension j=0,FirstOrder
+/// contains the values of the constraint at parameter FirstParameter
+/// idem for LastConstr
+pub fn hermite_interpolate(
+    Dimension: i32,
+    FirstParameter: f64,
+    LastParameter: f64,
+    FirstOrder: i32,
+    LastOrder: i32,
+    FirstConstr: &crate::ffi_types::TColStd_Array2OfReal,
+    LastConstr: &crate::ffi_types::TColStd_Array2OfReal,
+    Coefficients: &mut crate::ffi_types::TColStd_Array1OfReal,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_hermite_interpolate(
+            Dimension,
+            FirstParameter,
+            LastParameter,
+            FirstOrder,
+            LastOrder,
+            FirstConstr,
+            LastConstr,
+            Coefficients,
         )
     })
 }

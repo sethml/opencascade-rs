@@ -206,7 +206,50 @@ fn known_collections() -> HashMap<&'static str, CollectionMetadata> {
         kind: CollectionKind::Array2,
     });
 
+    // TColStd Array1 types (typedef NCollection_Array1<T>)
+    map.insert("TColStd_Array1OfReal", CollectionMetadata::Simple {
+        element_type: "Standard_Real",
+        kind: CollectionKind::Array1,
+    });
+    map.insert("TColStd_Array1OfInteger", CollectionMetadata::Simple {
+        element_type: "Standard_Integer",
+        kind: CollectionKind::Array1,
+    });
+    map.insert("TColStd_Array1OfBoolean", CollectionMetadata::Simple {
+        element_type: "Standard_Boolean",
+        kind: CollectionKind::Array1,
+    });
+
+    // TColStd Array2 types (typedef NCollection_Array2<T>)
+    map.insert("TColStd_Array2OfReal", CollectionMetadata::Simple {
+        element_type: "Standard_Real",
+        kind: CollectionKind::Array2,
+    });
+    map.insert("TColStd_Array2OfInteger", CollectionMetadata::Simple {
+        element_type: "Standard_Integer",
+        kind: CollectionKind::Array2,
+    });
+
     map
+}
+
+/// Maps a C++ element type to its Rust FFI representation.
+/// Primitive types like Standard_Real map to f64, while compound types
+/// like gp_Pnt2d stay as-is (they exist as opaque structs in the FFI).
+pub fn rust_element_type(cpp_type: &str) -> &str {
+
+    match cpp_type {
+        "Standard_Real" => "f64",
+        "Standard_Integer" => "i32",
+        "Standard_Boolean" => "bool",
+        _ => cpp_type,
+    }
+}
+
+/// Returns true if the element type is a C++ primitive that maps to a Rust native type.
+pub fn is_primitive_element(cpp_type: &str) -> bool {
+
+    matches!(cpp_type, "Standard_Real" | "Standard_Integer" | "Standard_Boolean")
 }
 
 /// Helper to extract module name from a type (e.g., "topo_ds" from "TopoDS_Shape")
@@ -1081,7 +1124,8 @@ fn generate_rust_ffi_collection(info: &CollectionInfo) -> String {
 fn generate_rust_ffi_array1(info: &CollectionInfo) -> String {
     let mut output = String::new();
     let coll_name = &info.typedef_name;
-    let elem = &info.element_type;
+    let elem = rust_element_type(&info.element_type);
+
 
     // Default constructor
     output.push_str(&format!("    /// Create a new empty {}\n", coll_name));
@@ -1130,7 +1174,8 @@ fn generate_rust_ffi_array1(info: &CollectionInfo) -> String {
 fn generate_rust_ffi_array2(info: &CollectionInfo) -> String {
     let mut output = String::new();
     let coll_name = &info.typedef_name;
-    let elem = &info.element_type;
+    let elem = rust_element_type(&info.element_type);
+
 
     // Default constructor
     output.push_str(&format!("    /// Create a new empty {}\n", coll_name));
@@ -1197,7 +1242,10 @@ fn generate_rust_ffi_array2(info: &CollectionInfo) -> String {
 pub fn collect_collection_headers(collections: &[CollectionInfo]) -> Vec<String> {
     let mut headers: std::collections::HashSet<String> = std::collections::HashSet::new();
     for info in collections {
-        headers.insert(format!("{}.hxx", info.element_type));
+        // Primitive element types (Standard_Real, etc.) don't have separate headers
+        if !is_primitive_element(&info.element_type) {
+            headers.insert(format!("{}.hxx", info.element_type));
+        }
         headers.insert(format!("{}.hxx", info.typedef_name));
         if let Some(ref value_type) = info.value_type {
             headers.insert(format!("{}.hxx", value_type));
@@ -1208,6 +1256,7 @@ pub fn collect_collection_headers(collections: &[CollectionInfo]) -> Vec<String>
     result.sort();
     result
 }
+
 
 pub fn generate_cpp_collections(collections: &[CollectionInfo]) -> String {
     if collections.is_empty() {

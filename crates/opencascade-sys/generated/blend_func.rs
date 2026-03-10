@@ -6,6 +6,42 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `BlendFunc.hxx`:45 - `BlendFunc::Knots`
+pub fn knots_sectionshape_array1ofreal(
+    SectShape: crate::blend_func::SectionShape,
+    TKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKFillet::BlendFunc_knots_sectionshape_array1ofreal(
+            SectShape.into(),
+            TKnots,
+        )
+    })
+}
+/// **Source:** `BlendFunc.hxx`:48 - `BlendFunc::Mults`
+pub fn mults_sectionshape_array1ofinteger(
+    SectShape: crate::blend_func::SectionShape,
+    TMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKFillet::BlendFunc_mults_sectionshape_array1ofinteger(
+            SectShape.into(),
+            TMults,
+        )
+    })
+}
+/// **Source:** `BlendFunc.hxx`:51 - `BlendFunc::GetMinimalWeights`
+pub fn get_minimal_weights_sectionshape_parameterisationtype_real2_array1ofreal(
+    SectShape: crate::blend_func::SectionShape,
+    TConv: crate::convert::ParameterisationType,
+    AngleMin: f64,
+    AngleMax: f64,
+    Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKFillet::BlendFunc_get_minimal_weights_sectionshape_parameterisationtype_real2_array1ofreal(SectShape.into(), TConv.into(), AngleMin, AngleMax, Weigths)
+    })
+}
 /// **Source:** `BlendFunc.hxx`:58 - `BlendFunc::NextShape`
 /// Used  to obtain the next level of continuity.
 pub fn next_shape(S: crate::geom_abs::Shape) -> crate::geom_abs::Shape {

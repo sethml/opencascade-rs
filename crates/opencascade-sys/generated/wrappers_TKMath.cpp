@@ -8,6 +8,8 @@
 #include <BSplCLib_Cache.hxx>
 #include <BSplCLib_CacheParams.hxx>
 #include <BSplCLib_EvaluatorFunction.hxx>
+#include <BSplCLib_KnotDistribution.hxx>
+#include <BSplCLib_MultDistribution.hxx>
 #include <BSplSLib.hxx>
 #include <BSplSLib_Cache.hxx>
 #include <BSplSLib_EvaluatorFunction.hxx>
@@ -16454,6 +16456,86 @@ extern "C" void math_ValueAndWeight_destructor(math_ValueAndWeight* self_) { del
 // ========================
 // BSplCLib namespace functions
 // ========================
+extern "C" const char* BSplCLib_hunt(TColStd_Array1OfReal const* theArray, double theX, int32_t* theXPos) {
+    try { BSplCLib::Hunt(*theArray, theX, *theXPos); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BSplCLib_first_u_knot_index(int32_t Degree, TColStd_Array1OfInteger const* Mults) {
+    try { return {BSplCLib::FirstUKnotIndex(Degree, *Mults), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BSplCLib_last_u_knot_index(int32_t Degree, TColStd_Array1OfInteger const* Mults) {
+    try { return {BSplCLib::LastUKnotIndex(Degree, *Mults), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BSplCLib_flat_index(int32_t Degree, int32_t Index, TColStd_Array1OfInteger const* Mults, bool Periodic) {
+    try { return {BSplCLib::FlatIndex(Degree, Index, *Mults, Periodic), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_locate_parameter_int_array1ofreal_array1ofinteger_real_bool_int3_real(int32_t Degree, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, double U, bool IsPeriodic, int32_t FromK1, int32_t ToK2, int32_t* KnotIndex, double* NewU) {
+    try { BSplCLib::LocateParameter(Degree, *Knots, *Mults, U, IsPeriodic, FromK1, ToK2, *KnotIndex, *NewU); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_locate_parameter_int_array1ofreal_real_bool_int3_real(int32_t Degree, TColStd_Array1OfReal const* Knots, double U, bool IsPeriodic, int32_t FromK1, int32_t ToK2, int32_t* KnotIndex, double* NewU) {
+    try { BSplCLib::LocateParameter(Degree, *Knots, U, IsPeriodic, FromK1, ToK2, *KnotIndex, *NewU); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_locate_parameter_int_array1ofreal_array1ofintegerptr_real_bool_int_real(int32_t Degree, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double U, bool Periodic, int32_t* Index, double* NewU) {
+    try { BSplCLib::LocateParameter(Degree, *Knots, Mults, U, Periodic, *Index, *NewU); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BSplCLib_max_knot_mult(TColStd_Array1OfInteger const* Mults, int32_t K1, int32_t K2) {
+    try { return {BSplCLib::MaxKnotMult(*Mults, K1, K2), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BSplCLib_min_knot_mult(TColStd_Array1OfInteger const* Mults, int32_t K1, int32_t K2) {
+    try { return {BSplCLib::MinKnotMult(*Mults, K1, K2), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BSplCLib_nb_poles(int32_t Degree, bool Periodic, TColStd_Array1OfInteger const* Mults) {
+    try { return {BSplCLib::NbPoles(Degree, Periodic, *Mults), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BSplCLib_knot_sequence_length(TColStd_Array1OfInteger const* Mults, int32_t Degree, bool Periodic) {
+    try { return {BSplCLib::KnotSequenceLength(*Mults, Degree, Periodic), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_knot_sequence_array1ofreal_array1ofinteger_array1ofreal_bool(TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal* KnotSeq, bool Periodic) {
+    try { BSplCLib::KnotSequence(*Knots, *Mults, *KnotSeq, Periodic); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_knot_sequence_array1ofreal_array1ofinteger_int_bool_array1ofreal(TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, int32_t Degree, bool Periodic, TColStd_Array1OfReal* KnotSeq) {
+    try { BSplCLib::KnotSequence(*Knots, *Mults, Degree, Periodic, *KnotSeq); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BSplCLib_knots_length(TColStd_Array1OfReal const* KnotSeq, bool Periodic) {
+    try { return {BSplCLib::KnotsLength(*KnotSeq, Periodic), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_knots_array1ofreal2_array1ofinteger_bool(TColStd_Array1OfReal const* KnotSeq, TColStd_Array1OfReal* Knots, TColStd_Array1OfInteger* Mults, bool Periodic) {
+    try { BSplCLib::Knots(*KnotSeq, *Knots, *Mults, Periodic); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BSplCLib_knot_form(TColStd_Array1OfReal const* Knots, int32_t FromK1, int32_t ToK2) {
+    try { return {static_cast<int32_t>(BSplCLib::KnotForm(*Knots, FromK1, ToK2)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BSplCLib_mult_form(TColStd_Array1OfInteger const* Mults, int32_t FromK1, int32_t ToK2) {
+    try { return {static_cast<int32_t>(BSplCLib::MultForm(*Mults, FromK1, ToK2)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_reparametrize_real2_array1ofreal(double U1, double U2, TColStd_Array1OfReal* Knots) {
+    try { BSplCLib::Reparametrize(U1, U2, *Knots); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_reverse_array1ofreal(TColStd_Array1OfReal* Knots) {
+    try { BSplCLib::Reverse(*Knots); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_reverse_array1ofinteger(TColStd_Array1OfInteger* Mults) {
+    try { BSplCLib::Reverse(*Mults); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* BSplCLib_reverse_array1ofpnt_int(TColgp_Array1OfPnt* Poles, int32_t Last) {
     try { BSplCLib::Reverse(*Poles, Last); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -16462,11 +16544,19 @@ extern "C" const char* BSplCLib_reverse_array1ofpnt2d_int(TColgp_Array1OfPnt2d* 
     try { BSplCLib::Reverse(*Poles, Last); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BSplCLib_reverse_array1ofreal_int(TColStd_Array1OfReal* Weights, int32_t Last) {
+    try { BSplCLib::Reverse(*Weights, Last); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BSplCLib_is_rational_array1ofreal_int2_real(TColStd_Array1OfReal const* Weights, int32_t I1, int32_t I2, double Epsilon) {
+    try { return {BSplCLib::IsRational(*Weights, I1, I2, Epsilon), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> BSplCLib_max_degree() {
     try { return {BSplCLib::MaxDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_eval(double U, int32_t Degree, double* Knots, int32_t Dimension, double* Poles) {
+extern "C" const char* BSplCLib_eval_real_int_real_int_real(double U, int32_t Degree, double* Knots, int32_t Dimension, double* Poles) {
     try { BSplCLib::Eval(U, Degree, *Knots, Dimension, *Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -16486,8 +16576,252 @@ extern "C" const char* BSplCLib_bohm(double U, int32_t Degree, int32_t N, double
     try { BSplCLib::Bohm(U, Degree, N, *Knots, Dimension, *Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<TColStd_Array1OfReal*> BSplCLib_no_weights() {
+    try { return {BSplCLib::NoWeights(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TColStd_Array1OfInteger*> BSplCLib_no_mults() {
+    try { return {BSplCLib::NoMults(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_build_knots(int32_t Degree, int32_t Index, bool Periodic, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* LK) {
+    try { BSplCLib::BuildKnots(Degree, Index, Periodic, *Knots, Mults, *LK); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BSplCLib_pole_index(int32_t Degree, int32_t Index, bool Periodic, TColStd_Array1OfInteger const* Mults) {
+    try { return {BSplCLib::PoleIndex(Degree, Index, Periodic, *Mults), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_build_eval_int2_array1ofreal_array1ofrealptr_real(int32_t Degree, int32_t Index, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, double* LP) {
+    try { BSplCLib::BuildEval(Degree, Index, *Poles, Weights, *LP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_build_eval_int2_array1ofpnt_array1ofrealptr_real(int32_t Degree, int32_t Index, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, double* LP) {
+    try { BSplCLib::BuildEval(Degree, Index, *Poles, Weights, *LP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_build_eval_int2_array1ofpnt2d_array1ofrealptr_real(int32_t Degree, int32_t Index, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, double* LP) {
+    try { BSplCLib::BuildEval(Degree, Index, *Poles, Weights, *LP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_build_boor(int32_t Index, int32_t Length, int32_t Dimension, TColStd_Array1OfReal const* Poles, double* LP) {
+    try { BSplCLib::BuildBoor(Index, Length, Dimension, *Poles, *LP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<int32_t> BSplCLib_boor_index(int32_t Index, int32_t Length, int32_t Depth) {
     try { return {BSplCLib::BoorIndex(Index, Length, Depth), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_get_pole(int32_t Index, int32_t Length, int32_t Depth, int32_t Dimension, double* LocPoles, int32_t* Position, TColStd_Array1OfReal* Pole) {
+    try { BSplCLib::GetPole(Index, Length, Depth, Dimension, *LocPoles, *Position, *Pole); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BSplCLib_prepare_insert_knots(int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* AddKnots, const TColStd_Array1OfInteger* AddMults, int32_t* NbPoles, int32_t* NbKnots, double Epsilon, bool Add) {
+    try { return {BSplCLib::PrepareInsertKnots(Degree, Periodic, *Knots, *Mults, *AddKnots, AddMults, *NbPoles, *NbKnots, Epsilon, Add), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_insert_knots_int_bool_int_array1ofreal2_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofreal2_array1ofinteger_real_bool(int32_t Degree, bool Periodic, int32_t Dimension, TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* AddKnots, const TColStd_Array1OfInteger* AddMults, TColStd_Array1OfReal* NewPoles, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Epsilon, bool Add) {
+    try { BSplCLib::InsertKnots(Degree, Periodic, Dimension, *Poles, *Knots, *Mults, *AddKnots, AddMults, *NewPoles, *NewKnots, *NewMults, Epsilon, Add); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_insert_knots_int_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_real_bool(int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* AddKnots, const TColStd_Array1OfInteger* AddMults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Epsilon, bool Add) {
+    try { BSplCLib::InsertKnots(Degree, Periodic, *Poles, Weights, *Knots, *Mults, *AddKnots, AddMults, *NewPoles, NewWeights, *NewKnots, *NewMults, Epsilon, Add); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_insert_knots_int_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_real_bool(int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* AddKnots, const TColStd_Array1OfInteger* AddMults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Epsilon, bool Add) {
+    try { BSplCLib::InsertKnots(Degree, Periodic, *Poles, Weights, *Knots, *Mults, *AddKnots, AddMults, *NewPoles, NewWeights, *NewKnots, *NewMults, Epsilon, Add); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_insert_knot_int_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(int32_t UIndex, double U, int32_t UMult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights) {
+    try { BSplCLib::InsertKnot(UIndex, U, UMult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_insert_knot_int_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(int32_t UIndex, double U, int32_t UMult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights) {
+    try { BSplCLib::InsertKnot(UIndex, U, UMult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_raise_multiplicity_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(int32_t KnotIndex, int32_t Mult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights) {
+    try { BSplCLib::RaiseMultiplicity(KnotIndex, Mult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_raise_multiplicity_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(int32_t KnotIndex, int32_t Mult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights) {
+    try { BSplCLib::RaiseMultiplicity(KnotIndex, Mult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BSplCLib_remove_knot_int3_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger_real(int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, int32_t Dimension, TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal* NewPoles, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Tolerance) {
+    try { return {BSplCLib::RemoveKnot(Index, Mult, Degree, Periodic, Dimension, *Poles, *Knots, *Mults, *NewPoles, *NewKnots, *NewMults, Tolerance), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BSplCLib_remove_knot_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_real(int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Tolerance) {
+    try { return {BSplCLib::RemoveKnot(Index, Mult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults, Tolerance), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BSplCLib_remove_knot_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_real(int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Tolerance) {
+    try { return {BSplCLib::RemoveKnot(Index, Mult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults, Tolerance), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BSplCLib_increase_degree_count_knots(int32_t Degree, int32_t NewDegree, bool Periodic, TColStd_Array1OfInteger const* Mults) {
+    try { return {BSplCLib::IncreaseDegreeCountKnots(Degree, NewDegree, Periodic, *Mults), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_increase_degree_int2_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger(int32_t Degree, int32_t NewDegree, bool Periodic, int32_t Dimension, TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal* NewPoles, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults) {
+    try { BSplCLib::IncreaseDegree(Degree, NewDegree, Periodic, Dimension, *Poles, *Knots, *Mults, *NewPoles, *NewKnots, *NewMults); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_increase_degree_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger(int32_t Degree, int32_t NewDegree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults) {
+    try { BSplCLib::IncreaseDegree(Degree, NewDegree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_increase_degree_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger(int32_t Degree, int32_t NewDegree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults) {
+    try { BSplCLib::IncreaseDegree(Degree, NewDegree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_increase_degree_int_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(int32_t NewDegree, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights) {
+    try { BSplCLib::IncreaseDegree(NewDegree, *Poles, Weights, *NewPoles, NewWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_increase_degree_int_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(int32_t theNewDegree, TColgp_Array1OfPnt2d const* thePoles, const TColStd_Array1OfReal* theWeights, TColgp_Array1OfPnt2d* theNewPoles, TColStd_Array1OfReal* theNewWeights) {
+    try { BSplCLib::IncreaseDegree(theNewDegree, *thePoles, theWeights, *theNewPoles, theNewWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_prepare_unperiodize(int32_t Degree, TColStd_Array1OfInteger const* Mults, int32_t* NbKnots, int32_t* NbPoles) {
+    try { BSplCLib::PrepareUnperiodize(Degree, *Mults, *NbKnots, *NbPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_unperiodize_int2_array1ofinteger_array1ofreal2_array1ofinteger_array1ofreal2(int32_t Degree, int32_t Dimension, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* Knots, TColStd_Array1OfReal const* Poles, TColStd_Array1OfInteger* NewMults, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfReal* NewPoles) {
+    try { BSplCLib::Unperiodize(Degree, Dimension, *Mults, *Knots, *Poles, *NewMults, *NewKnots, *NewPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_unperiodize_int_array1ofinteger_array1ofreal_array1ofpnt_array1ofrealptr_array1ofinteger_array1ofreal_array1ofpnt_array1ofrealptr(int32_t Degree, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* Knots, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfInteger* NewMults, TColStd_Array1OfReal* NewKnots, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights) {
+    try { BSplCLib::Unperiodize(Degree, *Mults, *Knots, *Poles, Weights, *NewMults, *NewKnots, *NewPoles, NewWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_unperiodize_int_array1ofinteger_array1ofreal_array1ofpnt2d_array1ofrealptr_array1ofinteger_array1ofreal_array1ofpnt2d_array1ofrealptr(int32_t Degree, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* Knots, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfInteger* NewMults, TColStd_Array1OfReal* NewKnots, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights) {
+    try { BSplCLib::Unperiodize(Degree, *Mults, *Knots, *Poles, Weights, *NewMults, *NewKnots, *NewPoles, NewWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_prepare_trimming(int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, double U1, double U2, int32_t* NbKnots, int32_t* NbPoles) {
+    try { BSplCLib::PrepareTrimming(Degree, Periodic, *Knots, *Mults, U1, U2, *NbKnots, *NbPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_trimming_int_bool_int_array1ofreal_array1ofinteger_array1ofreal_real2_array1ofreal_array1ofinteger_array1ofreal(int32_t Degree, bool Periodic, int32_t Dimension, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* Poles, double U1, double U2, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, TColStd_Array1OfReal* NewPoles) {
+    try { BSplCLib::Trimming(Degree, Periodic, Dimension, *Knots, *Mults, *Poles, U1, U2, *NewKnots, *NewMults, *NewPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_trimming_int_bool_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_real2_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, double U1, double U2, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights) {
+    try { BSplCLib::Trimming(Degree, Periodic, *Knots, *Mults, *Poles, Weights, U1, U2, *NewKnots, *NewMults, *NewPoles, NewWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_trimming_int_bool_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_real2_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, double U1, double U2, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights) {
+    try { BSplCLib::Trimming(Degree, Periodic, *Knots, *Mults, *Poles, Weights, U1, U2, *NewKnots, *NewMults, *NewPoles, NewWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d0_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real(double U, int32_t Index, int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* P) {
+    try { BSplCLib::D0(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d0_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt(double U, int32_t Index, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt* P) {
+    try { BSplCLib::D0(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d0_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d(double U, int32_t UIndex, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt2d* P) {
+    try { BSplCLib::D0(U, UIndex, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d0_real_array1ofpnt_array1ofrealptr_pnt(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* P) {
+    try { BSplCLib::D0(U, *Poles, Weights, *P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d0_real_array1ofpnt2d_array1ofrealptr_pnt2d(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* P) {
+    try { BSplCLib::D0(U, *Poles, Weights, *P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d1_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real2(double U, int32_t Index, int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* P, double* V) {
+    try { BSplCLib::D1(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d1_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec(double U, int32_t Index, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt* P, gp_Vec* V) {
+    try { BSplCLib::D1(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d1_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d(double U, int32_t UIndex, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt2d* P, gp_Vec2d* V) {
+    try { BSplCLib::D1(U, UIndex, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d1_real_array1ofpnt_array1ofrealptr_pnt_vec(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* P, gp_Vec* V) {
+    try { BSplCLib::D1(U, *Poles, Weights, *P, *V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d1_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* P, gp_Vec2d* V) {
+    try { BSplCLib::D1(U, *Poles, Weights, *P, *V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d2_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real3(double U, int32_t Index, int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* P, double* V1, double* V2) {
+    try { BSplCLib::D2(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d2_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec2(double U, int32_t Index, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
+    try { BSplCLib::D2(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d2_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d2(double U, int32_t UIndex, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    try { BSplCLib::D2(U, UIndex, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d2_real_array1ofpnt_array1ofrealptr_pnt_vec2(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
+    try { BSplCLib::D2(U, *Poles, Weights, *P, *V1, *V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d2_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    try { BSplCLib::D2(U, *Poles, Weights, *P, *V1, *V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d3_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real4(double U, int32_t Index, int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* P, double* V1, double* V2, double* V3) {
+    try { BSplCLib::D3(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2, *V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d3_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec3(double U, int32_t Index, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
+    try { BSplCLib::D3(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2, *V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d3_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d3(double U, int32_t UIndex, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    try { BSplCLib::D3(U, UIndex, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2, *V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d3_real_array1ofpnt_array1ofrealptr_pnt_vec3(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
+    try { BSplCLib::D3(U, *Poles, Weights, *P, *V1, *V2, *V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_d3_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    try { BSplCLib::D3(U, *Poles, Weights, *P, *V1, *V2, *V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_dn_real_int3_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real(double U, int32_t N, int32_t Index, int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* VN) {
+    try { BSplCLib::DN(U, N, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *VN); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_dn_real_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_vec(double U, int32_t N, int32_t Index, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Vec* VN) {
+    try { BSplCLib::DN(U, N, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *VN); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_dn_real_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_vec2d(double U, int32_t N, int32_t UIndex, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Vec2d* V) {
+    try { BSplCLib::DN(U, N, UIndex, Degree, Periodic, *Poles, Weights, *Knots, Mults, *V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_dn_real_int_array1ofpnt_array1ofreal_pnt_vec(double U, int32_t N, TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal const* Weights, gp_Pnt* P, gp_Vec* VN) {
+    try { BSplCLib::DN(U, N, *Poles, *Weights, *P, *VN); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_dn_real_int_array1ofpnt2d_array1ofreal_pnt2d_vec2d(double U, int32_t N, TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* Weights, gp_Pnt2d* P, gp_Vec2d* VN) {
+    try { BSplCLib::DN(U, N, *Poles, *Weights, *P, *VN); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BSplCLib_eval_bspline_basis(int32_t DerivativeOrder, int32_t Order, TColStd_Array1OfReal const* FlatKnots, double Parameter, int32_t* FirstNonZeroBsplineIndex, math_Matrix* BsplineBasis, bool isPeriodic) {
+    try { return {BSplCLib::EvalBsplineBasis(DerivativeOrder, Order, *FlatKnots, Parameter, *FirstNonZeroBsplineIndex, *BsplineBasis, isPeriodic), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BSplCLib_build_b_sp_matrix(TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* OrderArray, TColStd_Array1OfReal const* FlatKnots, int32_t Degree, math_Matrix* Matrix, int32_t* UpperBandWidth, int32_t* LowerBandWidth) {
+    try { return {BSplCLib::BuildBSpMatrix(*Parameters, *OrderArray, *FlatKnots, Degree, *Matrix, *UpperBandWidth, *LowerBandWidth), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> BSplCLib_factor_banded_matrix(math_Matrix* Matrix, int32_t UpperBandWidth, int32_t LowerBandWidth, int32_t* PivotIndexProblem) {
@@ -16510,16 +16844,232 @@ extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_bool_int
     try { return {BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, HomogenousFlag, ArrayDimension, *Array, *Weights), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_bool_array1ofpnt2d_array1ofreal(math_Matrix const* Matrix, int32_t UpperBandWidth, int32_t LowerBandWidth, bool HomogenousFlag, TColgp_Array1OfPnt2d* Array, TColStd_Array1OfReal* Weights) {
+    try { return {BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, HomogenousFlag, *Array, *Weights), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_bool_array1ofpnt_array1ofreal(math_Matrix const* Matrix, int32_t UpperBandWidth, int32_t LowerBandWidth, bool HomogeneousFlag, TColgp_Array1OfPnt* Array, TColStd_Array1OfReal* Weights) {
+    try { return {BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, HomogeneousFlag, *Array, *Weights), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_merge_b_spline_knots(double Tolerance, double StartValue, double EndValue, int32_t Degree1, TColStd_Array1OfReal const* Knots1, TColStd_Array1OfInteger const* Mults1, int32_t Degree2, TColStd_Array1OfReal const* Knots2, TColStd_Array1OfInteger const* Mults2, int32_t* NumPoles, Handle(TColStd_HArray1OfReal)* NewKnots, Handle(TColStd_HArray1OfInteger)* NewMults) {
+    try { BSplCLib::MergeBSplineKnots(Tolerance, StartValue, EndValue, Degree1, *Knots1, *Mults1, Degree2, *Knots2, *Mults2, *NumPoles, *NewKnots, *NewMults); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, int32_t PolesDimension, double* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, double* NewPoles, int32_t* theStatus) {
+    try { BSplCLib::FunctionReparameterise(*Function, BSplineDegree, *BSplineFlatKnots, PolesDimension, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColStd_Array1OfReal* NewPoles, int32_t* theStatus) {
+    try { BSplCLib::FunctionReparameterise(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColgp_Array1OfPnt* NewPoles, int32_t* theStatus) {
+    try { BSplCLib::FunctionReparameterise(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColgp_Array1OfPnt2d* NewPoles, int32_t* theStatus) {
+    try { BSplCLib::FunctionReparameterise(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, int32_t PolesDimension, double* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, double* NewPoles, int32_t* theStatus) {
+    try { BSplCLib::FunctionMultiply(*Function, BSplineDegree, *BSplineFlatKnots, PolesDimension, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColStd_Array1OfReal* NewPoles, int32_t* theStatus) {
+    try { BSplCLib::FunctionMultiply(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColgp_Array1OfPnt2d* NewPoles, int32_t* theStatus) {
+    try { BSplCLib::FunctionMultiply(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColgp_Array1OfPnt* NewPoles, int32_t* theStatus) {
+    try { BSplCLib::FunctionMultiply(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_eval_real_bool_int3_array1ofreal_int_real2(double U, bool PeriodicFlag, int32_t DerivativeRequest, int32_t* ExtrapMode, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, int32_t ArrayDimension, double* Poles, double* Result) {
+    try { BSplCLib::Eval(U, PeriodicFlag, DerivativeRequest, *ExtrapMode, Degree, *FlatKnots, ArrayDimension, *Poles, *Result); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_eval_real_bool_int3_array1ofreal_int_real4(double U, bool PeriodicFlag, int32_t DerivativeRequest, int32_t* ExtrapMode, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, int32_t ArrayDimension, double* Poles, double* Weights, double* PolesResult, double* WeightsResult) {
+    try { BSplCLib::Eval(U, PeriodicFlag, DerivativeRequest, *ExtrapMode, Degree, *FlatKnots, ArrayDimension, *Poles, *Weights, *PolesResult, *WeightsResult); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_eval_real_bool2_int2_array1ofreal_array1ofpnt_array1ofreal_pnt_real(double U, bool PeriodicFlag, bool HomogeneousFlag, int32_t* ExtrapMode, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal const* Weights, gp_Pnt* Point, double* Weight) {
+    try { BSplCLib::Eval(U, PeriodicFlag, HomogeneousFlag, *ExtrapMode, Degree, *FlatKnots, *Poles, *Weights, *Point, *Weight); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_eval_real_bool2_int2_array1ofreal_array1ofpnt2d_array1ofreal_pnt2d_real(double U, bool PeriodicFlag, bool HomogeneousFlag, int32_t* ExtrapMode, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* Weights, gp_Pnt2d* Point, double* Weight) {
+    try { BSplCLib::Eval(U, PeriodicFlag, HomogeneousFlag, *ExtrapMode, Degree, *FlatKnots, *Poles, *Weights, *Point, *Weight); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_tang_extend_to_constraint(TColStd_Array1OfReal const* FlatKnots, double C1Coefficient, int32_t NumPoles, double* Poles, int32_t Dimension, int32_t Degree, TColStd_Array1OfReal const* ConstraintPoint, int32_t Continuity, bool After, int32_t* NbPolesResult, int32_t* NbKnotsRsult, double* KnotsResult, double* PolesResult) {
+    try { BSplCLib::TangExtendToConstraint(*FlatKnots, C1Coefficient, NumPoles, *Poles, Dimension, Degree, *ConstraintPoint, Continuity, After, *NbPolesResult, *NbKnotsRsult, *KnotsResult, *PolesResult); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_cache_d0_real_int_real2_array1ofpnt_array1ofrealptr_pnt(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point) {
+    try { BSplCLib::CacheD0(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_cache_d0_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point) {
+    try { BSplCLib::CacheD0(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_coefs_d0_real_array1ofpnt_array1ofrealptr_pnt(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point) {
+    try { BSplCLib::CoefsD0(U, *Poles, Weights, *Point); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_coefs_d0_real_array1ofpnt2d_array1ofrealptr_pnt2d(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point) {
+    try { BSplCLib::CoefsD0(U, *Poles, Weights, *Point); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_cache_d1_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec) {
+    try { BSplCLib::CacheD1(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_cache_d1_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec) {
+    try { BSplCLib::CacheD1(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_coefs_d1_real_array1ofpnt_array1ofrealptr_pnt_vec(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec) {
+    try { BSplCLib::CoefsD1(U, *Poles, Weights, *Point, *Vec); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_coefs_d1_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec) {
+    try { BSplCLib::CoefsD1(U, *Poles, Weights, *Point, *Vec); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_cache_d2_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec2(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2) {
+    try { BSplCLib::CacheD2(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec1, *Vec2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_cache_d2_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2) {
+    try { BSplCLib::CacheD2(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec1, *Vec2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_coefs_d2_real_array1ofpnt_array1ofrealptr_pnt_vec2(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2) {
+    try { BSplCLib::CoefsD2(U, *Poles, Weights, *Point, *Vec1, *Vec2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_coefs_d2_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2) {
+    try { BSplCLib::CoefsD2(U, *Poles, Weights, *Point, *Vec1, *Vec2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_cache_d3_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec3(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2, gp_Vec* Vec3) {
+    try { BSplCLib::CacheD3(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec1, *Vec2, *Vec3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_cache_d3_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2, gp_Vec2d* Vec3) {
+    try { BSplCLib::CacheD3(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec1, *Vec2, *Vec3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_coefs_d3_real_array1ofpnt_array1ofrealptr_pnt_vec3(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2, gp_Vec* Vec3) {
+    try { BSplCLib::CoefsD3(U, *Poles, Weights, *Point, *Vec1, *Vec2, *Vec3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_coefs_d3_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2, gp_Vec2d* Vec3) {
+    try { BSplCLib::CoefsD3(U, *Poles, Weights, *Point, *Vec1, *Vec2, *Vec3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_build_cache_real2_bool_int_array1ofreal_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(double U, double InverseOfSpanDomain, bool PeriodicFlag, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColgp_Array1OfPnt* CachePoles, TColStd_Array1OfReal* CacheWeights) {
+    try { BSplCLib::BuildCache(U, InverseOfSpanDomain, PeriodicFlag, Degree, *FlatKnots, *Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_build_cache_real2_bool_int_array1ofreal_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(double U, double InverseOfSpanDomain, bool PeriodicFlag, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColgp_Array1OfPnt2d* CachePoles, TColStd_Array1OfReal* CacheWeights) {
+    try { BSplCLib::BuildCache(U, InverseOfSpanDomain, PeriodicFlag, Degree, *FlatKnots, *Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_build_cache_real2_bool_int2_array1ofreal_array1ofpnt_array1ofrealptr_array2ofreal(double theParameter, double theSpanDomain, bool thePeriodicFlag, int32_t theDegree, int32_t theSpanIndex, TColStd_Array1OfReal const* theFlatKnots, TColgp_Array1OfPnt const* thePoles, const TColStd_Array1OfReal* theWeights, TColStd_Array2OfReal* theCacheArray) {
+    try { BSplCLib::BuildCache(theParameter, theSpanDomain, thePeriodicFlag, theDegree, theSpanIndex, *theFlatKnots, *thePoles, theWeights, *theCacheArray); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_build_cache_real2_bool_int2_array1ofreal_array1ofpnt2d_array1ofrealptr_array2ofreal(double theParameter, double theSpanDomain, bool thePeriodicFlag, int32_t theDegree, int32_t theSpanIndex, TColStd_Array1OfReal const* theFlatKnots, TColgp_Array1OfPnt2d const* thePoles, const TColStd_Array1OfReal* theWeights, TColStd_Array2OfReal* theCacheArray) {
+    try { BSplCLib::BuildCache(theParameter, theSpanDomain, thePeriodicFlag, theDegree, theSpanIndex, *theFlatKnots, *thePoles, theWeights, *theCacheArray); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* BSplCLib_poles_coefficients_array1ofpnt2d2(TColgp_Array1OfPnt2d const* Poles, TColgp_Array1OfPnt2d* CachePoles) {
     try { BSplCLib::PolesCoefficients(*Poles, *CachePoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_poles_coefficients_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColgp_Array1OfPnt2d* CachePoles, TColStd_Array1OfReal* CacheWeights) {
+    try { BSplCLib::PolesCoefficients(*Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* BSplCLib_poles_coefficients_array1ofpnt2(TColgp_Array1OfPnt const* Poles, TColgp_Array1OfPnt* CachePoles) {
     try { BSplCLib::PolesCoefficients(*Poles, *CachePoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BSplCLib_poles_coefficients_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColgp_Array1OfPnt* CachePoles, TColStd_Array1OfReal* CacheWeights) {
+    try { BSplCLib::PolesCoefficients(*Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<double> BSplCLib_flat_bezier_knots(int32_t Degree) {
     try { return {BSplCLib::FlatBezierKnots(Degree), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_build_schoenberg_points(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal* Parameters) {
+    try { BSplCLib::BuildSchoenbergPoints(Degree, *FlatKnots, *Parameters); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, TColgp_Array1OfPnt* Poles, int32_t* InversionProblem) {
+    try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, *Poles, *InversionProblem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, TColgp_Array1OfPnt2d* Poles, int32_t* InversionProblem) {
+    try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, *Poles, *InversionProblem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_array1ofreal_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* Weights, int32_t* InversionProblem) {
+    try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, *Poles, *Weights, *InversionProblem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_array1ofreal_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, TColgp_Array1OfPnt2d* Poles, TColStd_Array1OfReal* Weights, int32_t* InversionProblem) {
+    try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, *Poles, *Weights, *InversionProblem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_int_real_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, int32_t ArrayDimension, double* Poles, int32_t* InversionProblem) {
+    try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, ArrayDimension, *Poles, *InversionProblem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_int_real2_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, int32_t ArrayDimension, double* Poles, double* Weights, int32_t* InversionProblem) {
+    try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, ArrayDimension, *Poles, *Weights, *InversionProblem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_move_point_real_vec2d_int3_array1ofpnt2d_array1ofrealptr_array1ofreal_int2_array1ofpnt2d(double U, gp_Vec2d const* Displ, int32_t Index1, int32_t Index2, int32_t Degree, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, int32_t* FirstIndex, int32_t* LastIndex, TColgp_Array1OfPnt2d* NewPoles) {
+    try { BSplCLib::MovePoint(U, *Displ, Index1, Index2, Degree, *Poles, Weights, *FlatKnots, *FirstIndex, *LastIndex, *NewPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_move_point_real_vec_int3_array1ofpnt_array1ofrealptr_array1ofreal_int2_array1ofpnt(double U, gp_Vec const* Displ, int32_t Index1, int32_t Index2, int32_t Degree, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, int32_t* FirstIndex, int32_t* LastIndex, TColgp_Array1OfPnt* NewPoles) {
+    try { BSplCLib::MovePoint(U, *Displ, Index1, Index2, Degree, *Poles, Weights, *FlatKnots, *FirstIndex, *LastIndex, *NewPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_move_point_and_tangent_real_int_real3_int3_real_array1ofrealptr_array1ofreal_real_int(double U, int32_t ArrayDimension, double* Delta, double* DeltaDerivative, double Tolerance, int32_t Degree, int32_t StartingCondition, int32_t EndingCondition, double* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, double* NewPoles, int32_t* ErrorStatus) {
+    try { BSplCLib::MovePointAndTangent(U, ArrayDimension, *Delta, *DeltaDerivative, Tolerance, Degree, StartingCondition, EndingCondition, *Poles, Weights, *FlatKnots, *NewPoles, *ErrorStatus); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_move_point_and_tangent_real_vec2_real_int3_array1ofpnt_array1ofrealptr_array1ofreal_array1ofpnt_int(double U, gp_Vec const* Delta, gp_Vec const* DeltaDerivative, double Tolerance, int32_t Degree, int32_t StartingCondition, int32_t EndingCondition, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt* NewPoles, int32_t* ErrorStatus) {
+    try { BSplCLib::MovePointAndTangent(U, *Delta, *DeltaDerivative, Tolerance, Degree, StartingCondition, EndingCondition, *Poles, Weights, *FlatKnots, *NewPoles, *ErrorStatus); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_move_point_and_tangent_real_vec2d2_real_int3_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofpnt2d_int(double U, gp_Vec2d const* Delta, gp_Vec2d const* DeltaDerivative, double Tolerance, int32_t Degree, int32_t StartingCondition, int32_t EndingCondition, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt2d* NewPoles, int32_t* ErrorStatus) {
+    try { BSplCLib::MovePointAndTangent(U, *Delta, *DeltaDerivative, Tolerance, Degree, StartingCondition, EndingCondition, *Poles, Weights, *FlatKnots, *NewPoles, *ErrorStatus); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_resolution_real_int2_array1ofrealptr_array1ofreal_int_real2(double* PolesArray, int32_t ArrayDimension, int32_t NumPoles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, int32_t Degree, double Tolerance3D, double* UTolerance) {
+    try { BSplCLib::Resolution(*PolesArray, ArrayDimension, NumPoles, Weights, *FlatKnots, Degree, Tolerance3D, *UTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_resolution_array1ofpnt_array1ofrealptr_int_array1ofreal_int_real2(TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, int32_t NumPoles, TColStd_Array1OfReal const* FlatKnots, int32_t Degree, double Tolerance3D, double* UTolerance) {
+    try { BSplCLib::Resolution(*Poles, Weights, NumPoles, *FlatKnots, Degree, Tolerance3D, *UTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_resolution_array1ofpnt2d_array1ofrealptr_int_array1ofreal_int_real2(TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, int32_t NumPoles, TColStd_Array1OfReal const* FlatKnots, int32_t Degree, double Tolerance3D, double* UTolerance) {
+    try { BSplCLib::Resolution(*Poles, Weights, NumPoles, *FlatKnots, Degree, Tolerance3D, *UTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BSplCLib_intervals(TColStd_Array1OfReal const* theKnots, TColStd_Array1OfInteger const* theMults, int32_t theDegree, bool isPeriodic, int32_t theContinuity, double theFirst, double theLast, double theTolerance, TColStd_Array1OfReal* theIntervals) {
+    try { return {BSplCLib::Intervals(*theKnots, *theMults, theDegree, isPeriodic, theContinuity, theFirst, theLast, theTolerance, theIntervals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 
@@ -16530,12 +17080,144 @@ extern "C" const char* BSplSLib_rational_derivative_int4_real2_bool(int32_t UDeg
     try { BSplSLib::RationalDerivative(UDeg, VDeg, N, M, *Ders, *RDers, All); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BSplSLib_d0_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P) {
+    try { BSplSLib::D0(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_d1_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt_vec2(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t Degree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P, gp_Vec* Vu, gp_Vec* Vv) {
+    try { BSplSLib::D1(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, Degree, VDegree, URat, VRat, UPer, VPer, *P, *Vu, *Vv); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_d2_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt_vec5(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P, gp_Vec* Vu, gp_Vec* Vv, gp_Vec* Vuu, gp_Vec* Vvv, gp_Vec* Vuv) {
+    try { BSplSLib::D2(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *P, *Vu, *Vv, *Vuu, *Vvv, *Vuv); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_d3_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt_vec9(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P, gp_Vec* Vu, gp_Vec* Vv, gp_Vec* Vuu, gp_Vec* Vvv, gp_Vec* Vuv, gp_Vec* Vuuu, gp_Vec* Vvvv, gp_Vec* Vuuv, gp_Vec* Vuvv) {
+    try { BSplSLib::D3(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *P, *Vu, *Vv, *Vuu, *Vvv, *Vuv, *Vuuu, *Vvvv, *Vuuv, *Vuvv); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_dn_real2_int4_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_vec(double U, double V, int32_t Nu, int32_t Nv, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Vec* Vn) {
+    try { BSplSLib::DN(U, V, Nu, Nv, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *Vn); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_iso(double Param, bool IsU, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, int32_t Degree, bool Periodic, TColgp_Array1OfPnt* CPoles, TColStd_Array1OfReal* CWeights) {
+    try { BSplSLib::Iso(Param, IsU, *Poles, Weights, *Knots, Mults, Degree, Periodic, *CPoles, CWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* BSplSLib_reverse_array2ofpnt_int_bool(TColgp_Array2OfPnt* Poles, int32_t Last, bool UDirection) {
     try { BSplSLib::Reverse(*Poles, Last, UDirection); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BSplSLib_homogeneous_d0(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, double* W, gp_Pnt* P) {
+    try { BSplSLib::HomogeneousD0(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *W, *P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_homogeneous_d1(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* N, gp_Vec* Nu, gp_Vec* Nv, double* D, double* Du, double* Dv) {
+    try { BSplSLib::HomogeneousD1(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *N, *Nu, *Nv, *D, *Du, *Dv); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_reverse_array2ofreal_int_bool(TColStd_Array2OfReal* Weights, int32_t Last, bool UDirection) {
+    try { BSplSLib::Reverse(*Weights, Last, UDirection); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BSplSLib_is_rational_array2ofreal_int4_real(TColStd_Array2OfReal const* Weights, int32_t I1, int32_t I2, int32_t J1, int32_t J2, double Epsilon) {
+    try { return {BSplSLib::IsRational(*Weights, I1, I2, J1, J2, Epsilon), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplSLib_set_poles_array2ofpnt_array1ofreal_bool(TColgp_Array2OfPnt const* Poles, TColStd_Array1OfReal* FP, bool UDirection) {
+    try { BSplSLib::SetPoles(*Poles, *FP, UDirection); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_set_poles_array2ofpnt_array2ofreal_array1ofreal_bool(TColgp_Array2OfPnt const* Poles, TColStd_Array2OfReal const* Weights, TColStd_Array1OfReal* FP, bool UDirection) {
+    try { BSplSLib::SetPoles(*Poles, *Weights, *FP, UDirection); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_get_poles_array1ofreal_array2ofpnt_bool(TColStd_Array1OfReal const* FP, TColgp_Array2OfPnt* Poles, bool UDirection) {
+    try { BSplSLib::GetPoles(*FP, *Poles, UDirection); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_get_poles_array1ofreal_array2ofpnt_array2ofreal_bool(TColStd_Array1OfReal const* FP, TColgp_Array2OfPnt* Poles, TColStd_Array2OfReal* Weights, bool UDirection) {
+    try { BSplSLib::GetPoles(*FP, *Poles, *Weights, UDirection); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_move_point_real2_vec_int6_bool_array2ofpnt_array2ofreal_array1ofreal2_int4_array2ofpnt(double U, double V, gp_Vec const* Displ, int32_t UIndex1, int32_t UIndex2, int32_t VIndex1, int32_t VIndex2, int32_t UDegree, int32_t VDegree, bool Rational, TColgp_Array2OfPnt const* Poles, TColStd_Array2OfReal const* Weights, TColStd_Array1OfReal const* UFlatKnots, TColStd_Array1OfReal const* VFlatKnots, int32_t* UFirstIndex, int32_t* ULastIndex, int32_t* VFirstIndex, int32_t* VLastIndex, TColgp_Array2OfPnt* NewPoles) {
+    try { BSplSLib::MovePoint(U, V, *Displ, UIndex1, UIndex2, VIndex1, VIndex2, UDegree, VDegree, Rational, *Poles, *Weights, *UFlatKnots, *VFlatKnots, *UFirstIndex, *ULastIndex, *VFirstIndex, *VLastIndex, *NewPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_insert_knots_bool_int_bool_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_real_bool(bool UDirection, int32_t Degree, bool Periodic, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* AddKnots, const TColStd_Array1OfInteger* AddMults, TColgp_Array2OfPnt* NewPoles, TColStd_Array2OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Epsilon, bool Add) {
+    try { BSplSLib::InsertKnots(UDirection, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *AddKnots, AddMults, *NewPoles, NewWeights, *NewKnots, *NewMults, Epsilon, Add); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BSplSLib_remove_knot_bool_int3_bool_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_real(bool UDirection, int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array2OfPnt* NewPoles, TColStd_Array2OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Tolerance) {
+    try { return {BSplSLib::RemoveKnot(UDirection, Index, Mult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults, Tolerance), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplSLib_increase_degree_bool_int2_bool_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger(bool UDirection, int32_t Degree, int32_t NewDegree, bool Periodic, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array2OfPnt* NewPoles, TColStd_Array2OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults) {
+    try { BSplSLib::IncreaseDegree(UDirection, Degree, NewDegree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_unperiodize_bool_int_array1ofinteger_array1ofreal_array2ofpnt_array2ofrealptr_array1ofinteger_array1ofreal_array2ofpnt_array2ofrealptr(bool UDirection, int32_t Degree, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* Knots, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfInteger* NewMults, TColStd_Array1OfReal* NewKnots, TColgp_Array2OfPnt* NewPoles, TColStd_Array2OfReal* NewWeights) {
+    try { BSplSLib::Unperiodize(UDirection, Degree, *Mults, *Knots, *Poles, Weights, *NewMults, *NewKnots, *NewPoles, NewWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<TColStd_Array2OfReal*> BSplSLib_no_weights() {
+    try { return {BSplSLib::NoWeights(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplSLib_build_cache_real4_bool2_int4_array1ofreal2_array2ofpnt_array2ofrealptr_array2ofpnt_array2ofrealptr(double U, double V, double USpanDomain, double VSpanDomain, bool UPeriodicFlag, bool VPeriodicFlag, int32_t UDegree, int32_t VDegree, int32_t UIndex, int32_t VIndex, TColStd_Array1OfReal const* UFlatKnots, TColStd_Array1OfReal const* VFlatKnots, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColgp_Array2OfPnt* CachePoles, TColStd_Array2OfReal* CacheWeights) {
+    try { BSplSLib::BuildCache(U, V, USpanDomain, VSpanDomain, UPeriodicFlag, VPeriodicFlag, UDegree, VDegree, UIndex, VIndex, *UFlatKnots, *VFlatKnots, *Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_build_cache_real4_bool2_int4_array1ofreal2_array2ofpnt_array2ofrealptr_array2ofreal(double theU, double theV, double theUSpanDomain, double theVSpanDomain, bool theUPeriodic, bool theVPeriodic, int32_t theUDegree, int32_t theVDegree, int32_t theUIndex, int32_t theVIndex, TColStd_Array1OfReal const* theUFlatKnots, TColStd_Array1OfReal const* theVFlatKnots, TColgp_Array2OfPnt const* thePoles, const TColStd_Array2OfReal* theWeights, TColStd_Array2OfReal* theCacheArray) {
+    try { BSplSLib::BuildCache(theU, theV, theUSpanDomain, theVSpanDomain, theUPeriodic, theVPeriodic, theUDegree, theVDegree, theUIndex, theVIndex, *theUFlatKnots, *theVFlatKnots, *thePoles, theWeights, *theCacheArray); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_cache_d0_real2_int2_real4_array2ofpnt_array2ofrealptr_pnt(double U, double V, int32_t UDegree, int32_t VDegree, double UCacheParameter, double VCacheParameter, double USpanLenght, double VSpanLength, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point) {
+    try { BSplSLib::CacheD0(U, V, UDegree, VDegree, UCacheParameter, VCacheParameter, USpanLenght, VSpanLength, *Poles, Weights, *Point); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_coefs_d0_real2_array2ofpnt_array2ofrealptr_pnt(double U, double V, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point) {
+    try { BSplSLib::CoefsD0(U, V, *Poles, Weights, *Point); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_cache_d1_real2_int2_real4_array2ofpnt_array2ofrealptr_pnt_vec2(double U, double V, int32_t UDegree, int32_t VDegree, double UCacheParameter, double VCacheParameter, double USpanLenght, double VSpanLength, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV) {
+    try { BSplSLib::CacheD1(U, V, UDegree, VDegree, UCacheParameter, VCacheParameter, USpanLenght, VSpanLength, *Poles, Weights, *Point, *VecU, *VecV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_coefs_d1_real2_array2ofpnt_array2ofrealptr_pnt_vec2(double U, double V, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV) {
+    try { BSplSLib::CoefsD1(U, V, *Poles, Weights, *Point, *VecU, *VecV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_cache_d2_real2_int2_real4_array2ofpnt_array2ofrealptr_pnt_vec5(double U, double V, int32_t UDegree, int32_t VDegree, double UCacheParameter, double VCacheParameter, double USpanLenght, double VSpanLength, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV, gp_Vec* VecUU, gp_Vec* VecUV, gp_Vec* VecVV) {
+    try { BSplSLib::CacheD2(U, V, UDegree, VDegree, UCacheParameter, VCacheParameter, USpanLenght, VSpanLength, *Poles, Weights, *Point, *VecU, *VecV, *VecUU, *VecUV, *VecVV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_coefs_d2_real2_array2ofpnt_array2ofrealptr_pnt_vec5(double U, double V, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV, gp_Vec* VecUU, gp_Vec* VecUV, gp_Vec* VecVV) {
+    try { BSplSLib::CoefsD2(U, V, *Poles, Weights, *Point, *VecU, *VecV, *VecUU, *VecUV, *VecVV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* BSplSLib_poles_coefficients_array2ofpnt2(TColgp_Array2OfPnt const* Poles, TColgp_Array2OfPnt* CachePoles) {
     try { BSplSLib::PolesCoefficients(*Poles, *CachePoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_poles_coefficients_array2ofpnt_array2ofrealptr_array2ofpnt_array2ofrealptr(TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColgp_Array2OfPnt* CachePoles, TColStd_Array2OfReal* CacheWeights) {
+    try { BSplSLib::PolesCoefficients(*Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_resolution_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofinteger2_int2_bool4_real3(TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, TColStd_Array1OfInteger const* UMults, TColStd_Array1OfInteger const* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, double Tolerance3D, double* UTolerance, double* VTolerance) {
+    try { BSplSLib::Resolution(*Poles, Weights, *UKnots, *VKnots, *UMults, *VMults, UDegree, VDegree, URat, VRat, UPer, VPer, Tolerance3D, *UTolerance, *VTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_array2ofreal_int(int32_t UDegree, int32_t VDegree, TColStd_Array1OfReal const* UFlatKnots, TColStd_Array1OfReal const* VFlatKnots, TColStd_Array1OfReal const* UParameters, TColStd_Array1OfReal const* VParameters, TColgp_Array2OfPnt* Poles, TColStd_Array2OfReal* Weights, int32_t* InversionProblem) {
+    try { BSplSLib::Interpolate(UDegree, VDegree, *UFlatKnots, *VFlatKnots, *UParameters, *VParameters, *Poles, *Weights, *InversionProblem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_int(int32_t UDegree, int32_t VDegree, TColStd_Array1OfReal const* UFlatKnots, TColStd_Array1OfReal const* VFlatKnots, TColStd_Array1OfReal const* UParameters, TColStd_Array1OfReal const* VParameters, TColgp_Array2OfPnt* Poles, int32_t* InversionProblem) {
+    try { BSplSLib::Interpolate(UDegree, VDegree, *UFlatKnots, *VFlatKnots, *UParameters, *VParameters, *Poles, *InversionProblem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_function_multiply_evaluatorfunction_int2_array1ofreal2_array1ofintegerptr2_array2ofpnt_array2ofrealptr_array1ofreal2_int2_array2ofpnt_array2ofreal_int(BSplSLib_EvaluatorFunction const* Function, int32_t UBSplineDegree, int32_t VBSplineDegree, TColStd_Array1OfReal const* UBSplineKnots, TColStd_Array1OfReal const* VBSplineKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UFlatKnots, TColStd_Array1OfReal const* VFlatKnots, int32_t UNewDegree, int32_t VNewDegree, TColgp_Array2OfPnt* NewNumerator, TColStd_Array2OfReal* NewDenominator, int32_t* theStatus) {
+    try { BSplSLib::FunctionMultiply(*Function, UBSplineDegree, VBSplineDegree, *UBSplineKnots, *VBSplineKnots, UMults, VMults, *Poles, Weights, *UFlatKnots, *VFlatKnots, UNewDegree, VNewDegree, *NewNumerator, *NewDenominator, *theStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 
@@ -17350,6 +18032,46 @@ extern "C" OcctResult<gp_Circ*> ElSLib_torus_v_iso(gp_Ax3 const* Pos, double Maj
 // ========================
 // PLib namespace functions
 // ========================
+extern "C" OcctResult<TColStd_Array1OfReal*> PLib_no_weights() {
+    try { return {PLib::NoWeights(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TColStd_Array2OfReal*> PLib_no_weights2() {
+    try { return {PLib::NoWeights2(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* PLib_set_poles_array1ofpnt_array1ofreal(TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal* FP) {
+    try { PLib::SetPoles(*Poles, *FP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_set_poles_array1ofpnt_array1ofreal2(TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal const* Weights, TColStd_Array1OfReal* FP) {
+    try { PLib::SetPoles(*Poles, *Weights, *FP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_get_poles_array1ofreal_array1ofpnt(TColStd_Array1OfReal const* FP, TColgp_Array1OfPnt* Poles) {
+    try { PLib::GetPoles(*FP, *Poles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_get_poles_array1ofreal_array1ofpnt_array1ofreal(TColStd_Array1OfReal const* FP, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* Weights) {
+    try { PLib::GetPoles(*FP, *Poles, *Weights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_set_poles_array1ofpnt2d_array1ofreal(TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal* FP) {
+    try { PLib::SetPoles(*Poles, *FP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_set_poles_array1ofpnt2d_array1ofreal2(TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* Weights, TColStd_Array1OfReal* FP) {
+    try { PLib::SetPoles(*Poles, *Weights, *FP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_get_poles_array1ofreal_array1ofpnt2d(TColStd_Array1OfReal const* FP, TColgp_Array1OfPnt2d* Poles) {
+    try { PLib::GetPoles(*FP, *Poles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_get_poles_array1ofreal_array1ofpnt2d_array1ofreal(TColStd_Array1OfReal const* FP, TColgp_Array1OfPnt2d* Poles, TColStd_Array1OfReal* Weights) {
+    try { PLib::GetPoles(*FP, *Poles, *Weights); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<double> PLib_bin(int32_t N, int32_t P) {
     try { return {PLib::Bin(N, P), nullptr}; }
     OCCT_CATCH_RETURN
@@ -17384,6 +18106,54 @@ extern "C" OcctResult<int32_t> PLib_eval_cubic_hermite(double U, int32_t Derivat
 }
 extern "C" OcctResult<bool> PLib_hermite_coefficients(double FirstParameter, double LastParameter, int32_t FirstOrder, int32_t LastOrder, math_Matrix* MatrixCoefs) {
     try { return {PLib::HermiteCoefficients(FirstParameter, LastParameter, FirstOrder, LastOrder, *MatrixCoefs), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* PLib_coefficients_poles_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(TColgp_Array1OfPnt const* Coefs, const TColStd_Array1OfReal* WCoefs, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* WPoles) {
+    try { PLib::CoefficientsPoles(*Coefs, WCoefs, *Poles, WPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_coefficients_poles_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(TColgp_Array1OfPnt2d const* Coefs, const TColStd_Array1OfReal* WCoefs, TColgp_Array1OfPnt2d* Poles, TColStd_Array1OfReal* WPoles) {
+    try { PLib::CoefficientsPoles(*Coefs, WCoefs, *Poles, WPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_coefficients_poles_array1ofreal_array1ofrealptr_array1ofreal_array1ofrealptr(TColStd_Array1OfReal const* Coefs, const TColStd_Array1OfReal* WCoefs, TColStd_Array1OfReal* Poles, TColStd_Array1OfReal* WPoles) {
+    try { PLib::CoefficientsPoles(*Coefs, WCoefs, *Poles, WPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_coefficients_poles_int_array1ofreal_array1ofrealptr_array1ofreal_array1ofrealptr(int32_t dim, TColStd_Array1OfReal const* Coefs, const TColStd_Array1OfReal* WCoefs, TColStd_Array1OfReal* Poles, TColStd_Array1OfReal* WPoles) {
+    try { PLib::CoefficientsPoles(dim, *Coefs, WCoefs, *Poles, WPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_trimming_real2_array1ofpnt_array1ofrealptr(double U1, double U2, TColgp_Array1OfPnt* Coeffs, TColStd_Array1OfReal* WCoeffs) {
+    try { PLib::Trimming(U1, U2, *Coeffs, WCoeffs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_trimming_real2_array1ofpnt2d_array1ofrealptr(double U1, double U2, TColgp_Array1OfPnt2d* Coeffs, TColStd_Array1OfReal* WCoeffs) {
+    try { PLib::Trimming(U1, U2, *Coeffs, WCoeffs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_trimming_real2_array1ofreal_array1ofrealptr(double U1, double U2, TColStd_Array1OfReal* Coeffs, TColStd_Array1OfReal* WCoeffs) {
+    try { PLib::Trimming(U1, U2, *Coeffs, WCoeffs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_trimming_real2_int_array1ofreal_array1ofrealptr(double U1, double U2, int32_t dim, TColStd_Array1OfReal* Coeffs, TColStd_Array1OfReal* WCoeffs) {
+    try { PLib::Trimming(U1, U2, dim, *Coeffs, WCoeffs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_coefficients_poles_array2ofpnt_array2ofrealptr_array2ofpnt_array2ofrealptr(TColgp_Array2OfPnt const* Coefs, const TColStd_Array2OfReal* WCoefs, TColgp_Array2OfPnt* Poles, TColStd_Array2OfReal* WPoles) {
+    try { PLib::CoefficientsPoles(*Coefs, WCoefs, *Poles, WPoles); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_u_trimming(double U1, double U2, TColgp_Array2OfPnt* Coeffs, TColStd_Array2OfReal* WCoeffs) {
+    try { PLib::UTrimming(U1, U2, *Coeffs, WCoeffs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* PLib_v_trimming(double V1, double V2, TColgp_Array2OfPnt* Coeffs, TColStd_Array2OfReal* WCoeffs) {
+    try { PLib::VTrimming(V1, V2, *Coeffs, WCoeffs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> PLib_hermite_interpolate(int32_t Dimension, double FirstParameter, double LastParameter, int32_t FirstOrder, int32_t LastOrder, TColStd_Array2OfReal const* FirstConstr, TColStd_Array2OfReal const* LastConstr, TColStd_Array1OfReal* Coefficients) {
+    try { return {PLib::HermiteInterpolate(Dimension, FirstParameter, LastParameter, FirstOrder, LastOrder, *FirstConstr, *LastConstr, *Coefficients), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* PLib_jacobi_parameters(int32_t ConstraintOrder, int32_t MaxDegree, int32_t Code, int32_t* NbGaussPoints, int32_t* WorkDegree) {

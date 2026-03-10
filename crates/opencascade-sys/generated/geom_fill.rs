@@ -18,6 +18,119 @@ pub fn surface(
         ))
     }
 }
+/// **Source:** `GeomFill.hxx`:47 - `GeomFill::GetCircle`
+pub fn get_circle_parameterisationtype_vec3_pnt2_real_pnt_array1ofpnt_array1ofreal(
+    TConv: crate::convert::ParameterisationType,
+    ns1: &crate::gp::Vec,
+    ns2: &crate::gp::Vec,
+    nplan: &crate::gp::Vec,
+    pt1: &crate::gp::Pnt,
+    pt2: &crate::gp::Pnt,
+    Rayon: f64,
+    Center: &crate::gp::Pnt,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomAlgo::GeomFill_get_circle_parameterisationtype_vec3_pnt2_real_pnt_array1ofpnt_array1ofreal(TConv.into(), ns1, ns2, nplan, pt1, pt2, Rayon, Center, Poles, Weigths)
+    })
+}
+/// **Source:** `GeomFill.hxx`:58 - `GeomFill::GetCircle`
+pub fn get_circle_parameterisationtype_vec6_pnt2_vec2_real2_pnt_vec_array1ofpnt_array1ofvec_array1ofreal2(
+    TConv: crate::convert::ParameterisationType,
+    ns1: &crate::gp::Vec,
+    ns2: &crate::gp::Vec,
+    dn1w: &crate::gp::Vec,
+    dn2w: &crate::gp::Vec,
+    nplan: &crate::gp::Vec,
+    dnplan: &crate::gp::Vec,
+    pts1: &crate::gp::Pnt,
+    pts2: &crate::gp::Pnt,
+    tang1: &crate::gp::Vec,
+    tang2: &crate::gp::Vec,
+    Rayon: f64,
+    DRayon: f64,
+    Center: &crate::gp::Pnt,
+    DCenter: &crate::gp::Vec,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+    Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+    DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKGeomAlgo::GeomFill_get_circle_parameterisationtype_vec6_pnt2_vec2_real2_pnt_vec_array1ofpnt_array1ofvec_array1ofreal2(TConv.into(), ns1, ns2, dn1w, dn2w, nplan, dnplan, pts1, pts2, tang1, tang2, Rayon, DRayon, Center, DCenter, Poles, DPoles, Weigths, DWeigths)
+    })
+}
+/// **Source:** `GeomFill.hxx`:78 - `GeomFill::GetCircle`
+pub fn get_circle_parameterisationtype_vec9_pnt2_vec4_real3_pnt_vec2_array1ofpnt_array1ofvec2_array1ofreal3(
+    TConv: crate::convert::ParameterisationType,
+    ns1: &crate::gp::Vec,
+    ns2: &crate::gp::Vec,
+    dn1w: &crate::gp::Vec,
+    dn2w: &crate::gp::Vec,
+    d2n1w: &crate::gp::Vec,
+    d2n2w: &crate::gp::Vec,
+    nplan: &crate::gp::Vec,
+    dnplan: &crate::gp::Vec,
+    d2nplan: &crate::gp::Vec,
+    pts1: &crate::gp::Pnt,
+    pts2: &crate::gp::Pnt,
+    tang1: &crate::gp::Vec,
+    tang2: &crate::gp::Vec,
+    Dtang1: &crate::gp::Vec,
+    Dtang2: &crate::gp::Vec,
+    Rayon: f64,
+    DRayon: f64,
+    D2Rayon: f64,
+    Center: &crate::gp::Pnt,
+    DCenter: &crate::gp::Vec,
+    D2Center: &crate::gp::Vec,
+    Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+    D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+    Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+    DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+    D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKGeomAlgo::GeomFill_get_circle_parameterisationtype_vec9_pnt2_vec4_real3_pnt_vec2_array1ofpnt_array1ofvec2_array1ofreal3(TConv.into(), ns1, ns2, dn1w, dn2w, d2n1w, d2n2w, nplan, dnplan, d2nplan, pts1, pts2, tang1, tang2, Dtang1, Dtang2, Rayon, DRayon, D2Rayon, Center, DCenter, D2Center, Poles, DPoles, D2Poles, Weigths, DWeigths, D2Weigths)
+    })
+}
+/// **Source:** `GeomFill.hxx`:113 - `GeomFill::Knots`
+pub fn knots_parameterisationtype_array1ofreal(
+    TypeConv: crate::convert::ParameterisationType,
+    TKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomAlgo::GeomFill_knots_parameterisationtype_array1ofreal(
+            TypeConv.into(),
+            TKnots,
+        )
+    })
+}
+/// **Source:** `GeomFill.hxx`:116 - `GeomFill::Mults`
+pub fn mults_parameterisationtype_array1ofinteger(
+    TypeConv: crate::convert::ParameterisationType,
+    TMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomAlgo::GeomFill_mults_parameterisationtype_array1ofinteger(
+            TypeConv.into(),
+            TMults,
+        )
+    })
+}
+/// **Source:** `GeomFill.hxx`:119 - `GeomFill::GetMinimalWeights`
+pub fn get_minimal_weights_parameterisationtype_real2_array1ofreal(
+    TConv: crate::convert::ParameterisationType,
+    AngleMin: f64,
+    AngleMax: f64,
+    Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomAlgo::GeomFill_get_minimal_weights_parameterisationtype_real2_array1ofreal(TConv.into(), AngleMin, AngleMax, Weigths)
+    })
+}
 /// **Source:** `GeomFill.hxx`:126 - `GeomFill::GetTolerance`
 /// Used  by  the  generical classes to determine
 /// Tolerance for approximation

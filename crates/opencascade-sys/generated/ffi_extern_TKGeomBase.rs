@@ -20922,6 +20922,34 @@ extern "C" {
         YGap: *mut f64,
         ZGap: *mut f64,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomLib.hxx`:182 - `GeomLib::RemovePointsFromArray`
+    pub fn GeomLib_remove_points_from_array(
+        NumPoints: i32,
+        InParameters: *const TColStd_Array1OfReal,
+        OutParameters: *mut HandleTColStdHArray1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomLib.hxx`:191 - `GeomLib::DensifyArray1OfReal`
+    pub fn GeomLib_densify_array1_of_real(
+        MinNumPoints: i32,
+        InParameters: *const TColStd_Array1OfReal,
+        OutParameters: *mut HandleTColStdHArray1OfReal,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomLib.hxx`:214 - `GeomLib::EvalMaxParametricDistance`
+    pub fn GeomLib_eval_max_parametric_distance(
+        Curve: *const Adaptor3d_Curve,
+        AReferenceCurve: *const Adaptor3d_Curve,
+        Tolerance: f64,
+        Parameters: *const TColStd_Array1OfReal,
+        MaxDistance: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomLib.hxx`:224 - `GeomLib::EvalMaxDistanceAlongParameter`
+    pub fn GeomLib_eval_max_distance_along_parameter(
+        Curve: *const Adaptor3d_Curve,
+        AReferenceCurve: *const Adaptor3d_Curve,
+        Tolerance: f64,
+        Parameters: *const TColStd_Array1OfReal,
+        MaxDistance: *mut f64,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `GeomLib.hxx`:232 - `GeomLib::CancelDenominatorDerivative`
     pub fn GeomLib_cancel_denominator_derivative(
         BSurf: *mut HandleGeomBSplineSurface,

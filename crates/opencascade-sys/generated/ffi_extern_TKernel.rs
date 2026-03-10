@@ -30508,6 +30508,14 @@ extern "C" {
     /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::get_type_descriptor()`
     pub fn TColStd_HArray1OfBoolean_get_type_descriptor(
     ) -> crate::OcctResult<*const HandleStandardType>;
+    /// Upcast TColStd_HArray1OfBoolean to TColStd_Array1OfBoolean
+    pub fn TColStd_HArray1OfBoolean_as_TColStd_Array1OfBoolean(
+        self_: *const TColStd_HArray1OfBoolean,
+    ) -> crate::OcctResult<*const TColStd_Array1OfBoolean>;
+    /// Upcast TColStd_HArray1OfBoolean to TColStd_Array1OfBoolean (mutable)
+    pub fn TColStd_HArray1OfBoolean_as_TColStd_Array1OfBoolean_mut(
+        self_: *mut TColStd_HArray1OfBoolean,
+    ) -> crate::OcctResult<*mut TColStd_Array1OfBoolean>;
     /// Upcast TColStd_HArray1OfBoolean to Standard_Transient
     pub fn TColStd_HArray1OfBoolean_as_Standard_Transient(
         self_: *const TColStd_HArray1OfBoolean,
@@ -30938,6 +30946,14 @@ extern "C" {
     /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::get_type_descriptor()`
     pub fn TColStd_HArray1OfInteger_get_type_descriptor(
     ) -> crate::OcctResult<*const HandleStandardType>;
+    /// Upcast TColStd_HArray1OfInteger to TColStd_Array1OfInteger
+    pub fn TColStd_HArray1OfInteger_as_TColStd_Array1OfInteger(
+        self_: *const TColStd_HArray1OfInteger,
+    ) -> crate::OcctResult<*const TColStd_Array1OfInteger>;
+    /// Upcast TColStd_HArray1OfInteger to TColStd_Array1OfInteger (mutable)
+    pub fn TColStd_HArray1OfInteger_as_TColStd_Array1OfInteger_mut(
+        self_: *mut TColStd_HArray1OfInteger,
+    ) -> crate::OcctResult<*mut TColStd_Array1OfInteger>;
     /// Upcast TColStd_HArray1OfInteger to Standard_Transient
     pub fn TColStd_HArray1OfInteger_as_Standard_Transient(
         self_: *const TColStd_HArray1OfInteger,
@@ -31156,6 +31172,14 @@ extern "C" {
     /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::get_type_descriptor()`
     pub fn TColStd_HArray1OfReal_get_type_descriptor(
     ) -> crate::OcctResult<*const HandleStandardType>;
+    /// Upcast TColStd_HArray1OfReal to TColStd_Array1OfReal
+    pub fn TColStd_HArray1OfReal_as_TColStd_Array1OfReal(
+        self_: *const TColStd_HArray1OfReal,
+    ) -> crate::OcctResult<*const TColStd_Array1OfReal>;
+    /// Upcast TColStd_HArray1OfReal to TColStd_Array1OfReal (mutable)
+    pub fn TColStd_HArray1OfReal_as_TColStd_Array1OfReal_mut(
+        self_: *mut TColStd_HArray1OfReal,
+    ) -> crate::OcctResult<*mut TColStd_Array1OfReal>;
     /// Upcast TColStd_HArray1OfReal to Standard_Transient
     pub fn TColStd_HArray1OfReal_as_Standard_Transient(
         self_: *const TColStd_HArray1OfReal,
@@ -31567,6 +31591,14 @@ extern "C" {
     /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::get_type_descriptor()`
     pub fn TColStd_HArray2OfInteger_get_type_descriptor(
     ) -> crate::OcctResult<*const HandleStandardType>;
+    /// Upcast TColStd_HArray2OfInteger to TColStd_Array2OfInteger
+    pub fn TColStd_HArray2OfInteger_as_TColStd_Array2OfInteger(
+        self_: *const TColStd_HArray2OfInteger,
+    ) -> crate::OcctResult<*const TColStd_Array2OfInteger>;
+    /// Upcast TColStd_HArray2OfInteger to TColStd_Array2OfInteger (mutable)
+    pub fn TColStd_HArray2OfInteger_as_TColStd_Array2OfInteger_mut(
+        self_: *mut TColStd_HArray2OfInteger,
+    ) -> crate::OcctResult<*mut TColStd_Array2OfInteger>;
     /// Upcast TColStd_HArray2OfInteger to Standard_Transient
     pub fn TColStd_HArray2OfInteger_as_Standard_Transient(
         self_: *const TColStd_HArray2OfInteger,
@@ -31669,6 +31701,14 @@ extern "C" {
     /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::get_type_descriptor()`
     pub fn TColStd_HArray2OfReal_get_type_descriptor(
     ) -> crate::OcctResult<*const HandleStandardType>;
+    /// Upcast TColStd_HArray2OfReal to TColStd_Array2OfReal
+    pub fn TColStd_HArray2OfReal_as_TColStd_Array2OfReal(
+        self_: *const TColStd_HArray2OfReal,
+    ) -> crate::OcctResult<*const TColStd_Array2OfReal>;
+    /// Upcast TColStd_HArray2OfReal to TColStd_Array2OfReal (mutable)
+    pub fn TColStd_HArray2OfReal_as_TColStd_Array2OfReal_mut(
+        self_: *mut TColStd_HArray2OfReal,
+    ) -> crate::OcctResult<*mut TColStd_Array2OfReal>;
     /// Upcast TColStd_HArray2OfReal to Standard_Transient
     pub fn TColStd_HArray2OfReal_as_Standard_Transient(
         self_: *const TColStd_HArray2OfReal,
@@ -36953,6 +36993,267 @@ extern "C" {
         theCaseSensitive: bool,
     ) -> crate::OcctResult<i32>;
 
+    // Collection type wrappers
+    // ========================
+    // Collection type wrappers
+    // ========================
+
+    /// Create a new empty TColStd_Array1OfBoolean
+    pub fn TColStd_Array1OfBoolean_new() -> *mut TColStd_Array1OfBoolean;
+
+    /// Destroy a TColStd_Array1OfBoolean
+    pub fn TColStd_Array1OfBoolean_destructor(self_: *mut TColStd_Array1OfBoolean);
+
+    /// Create TColStd_Array1OfBoolean with lower and upper bounds
+    pub fn TColStd_Array1OfBoolean_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut TColStd_Array1OfBoolean;
+
+    /// Create TColStd_Array1OfBoolean with bounds, all elements initialized to theValue
+    pub fn TColStd_Array1OfBoolean_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const bool,
+    ) -> *mut TColStd_Array1OfBoolean;
+
+    /// Get number of elements
+    pub fn TColStd_Array1OfBoolean_length(arr: *const TColStd_Array1OfBoolean) -> i32;
+
+    /// Get lower bound index
+    pub fn TColStd_Array1OfBoolean_lower(arr: *const TColStd_Array1OfBoolean) -> i32;
+
+    /// Get upper bound index
+    pub fn TColStd_Array1OfBoolean_upper(arr: *const TColStd_Array1OfBoolean) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn TColStd_Array1OfBoolean_value(
+        arr: *const TColStd_Array1OfBoolean,
+        theIndex: i32,
+    ) -> *const bool;
+
+    /// Set element at index (bounds-checked)
+    pub fn TColStd_Array1OfBoolean_set_value(
+        arr: *mut TColStd_Array1OfBoolean,
+        theIndex: i32,
+        theItem: *const bool,
+    );
+
+    /// Set all elements to the same value
+    pub fn TColStd_Array1OfBoolean_init(arr: *mut TColStd_Array1OfBoolean, theValue: *const bool);
+
+    /// Create a new empty TColStd_Array1OfInteger
+    pub fn TColStd_Array1OfInteger_new() -> *mut TColStd_Array1OfInteger;
+
+    /// Destroy a TColStd_Array1OfInteger
+    pub fn TColStd_Array1OfInteger_destructor(self_: *mut TColStd_Array1OfInteger);
+
+    /// Create TColStd_Array1OfInteger with lower and upper bounds
+    pub fn TColStd_Array1OfInteger_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut TColStd_Array1OfInteger;
+
+    /// Create TColStd_Array1OfInteger with bounds, all elements initialized to theValue
+    pub fn TColStd_Array1OfInteger_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const i32,
+    ) -> *mut TColStd_Array1OfInteger;
+
+    /// Get number of elements
+    pub fn TColStd_Array1OfInteger_length(arr: *const TColStd_Array1OfInteger) -> i32;
+
+    /// Get lower bound index
+    pub fn TColStd_Array1OfInteger_lower(arr: *const TColStd_Array1OfInteger) -> i32;
+
+    /// Get upper bound index
+    pub fn TColStd_Array1OfInteger_upper(arr: *const TColStd_Array1OfInteger) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn TColStd_Array1OfInteger_value(
+        arr: *const TColStd_Array1OfInteger,
+        theIndex: i32,
+    ) -> *const i32;
+
+    /// Set element at index (bounds-checked)
+    pub fn TColStd_Array1OfInteger_set_value(
+        arr: *mut TColStd_Array1OfInteger,
+        theIndex: i32,
+        theItem: *const i32,
+    );
+
+    /// Set all elements to the same value
+    pub fn TColStd_Array1OfInteger_init(arr: *mut TColStd_Array1OfInteger, theValue: *const i32);
+
+    /// Create a new empty TColStd_Array1OfReal
+    pub fn TColStd_Array1OfReal_new() -> *mut TColStd_Array1OfReal;
+
+    /// Destroy a TColStd_Array1OfReal
+    pub fn TColStd_Array1OfReal_destructor(self_: *mut TColStd_Array1OfReal);
+
+    /// Create TColStd_Array1OfReal with lower and upper bounds
+    pub fn TColStd_Array1OfReal_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut TColStd_Array1OfReal;
+
+    /// Create TColStd_Array1OfReal with bounds, all elements initialized to theValue
+    pub fn TColStd_Array1OfReal_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const f64,
+    ) -> *mut TColStd_Array1OfReal;
+
+    /// Get number of elements
+    pub fn TColStd_Array1OfReal_length(arr: *const TColStd_Array1OfReal) -> i32;
+
+    /// Get lower bound index
+    pub fn TColStd_Array1OfReal_lower(arr: *const TColStd_Array1OfReal) -> i32;
+
+    /// Get upper bound index
+    pub fn TColStd_Array1OfReal_upper(arr: *const TColStd_Array1OfReal) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn TColStd_Array1OfReal_value(
+        arr: *const TColStd_Array1OfReal,
+        theIndex: i32,
+    ) -> *const f64;
+
+    /// Set element at index (bounds-checked)
+    pub fn TColStd_Array1OfReal_set_value(
+        arr: *mut TColStd_Array1OfReal,
+        theIndex: i32,
+        theItem: *const f64,
+    );
+
+    /// Set all elements to the same value
+    pub fn TColStd_Array1OfReal_init(arr: *mut TColStd_Array1OfReal, theValue: *const f64);
+
+    /// Create a new empty TColStd_Array2OfInteger
+    pub fn TColStd_Array2OfInteger_new() -> *mut TColStd_Array2OfInteger;
+
+    /// Destroy a TColStd_Array2OfInteger
+    pub fn TColStd_Array2OfInteger_destructor(self_: *mut TColStd_Array2OfInteger);
+
+    /// Create TColStd_Array2OfInteger with row and column bounds
+    pub fn TColStd_Array2OfInteger_ctor_int4(
+        theRowLower: i32,
+        theRowUpper: i32,
+        theColLower: i32,
+        theColUpper: i32,
+    ) -> *mut TColStd_Array2OfInteger;
+
+    /// Create TColStd_Array2OfInteger with bounds, all elements initialized to theValue
+    pub fn TColStd_Array2OfInteger_ctor_int4_value(
+        theRowLower: i32,
+        theRowUpper: i32,
+        theColLower: i32,
+        theColUpper: i32,
+        theValue: *const i32,
+    ) -> *mut TColStd_Array2OfInteger;
+
+    /// Get number of rows
+    pub fn TColStd_Array2OfInteger_nb_rows(arr: *const TColStd_Array2OfInteger) -> i32;
+
+    /// Get number of columns
+    pub fn TColStd_Array2OfInteger_nb_columns(arr: *const TColStd_Array2OfInteger) -> i32;
+
+    /// Get lower row bound
+    pub fn TColStd_Array2OfInteger_lower_row(arr: *const TColStd_Array2OfInteger) -> i32;
+
+    /// Get upper row bound
+    pub fn TColStd_Array2OfInteger_upper_row(arr: *const TColStd_Array2OfInteger) -> i32;
+
+    /// Get lower column bound
+    pub fn TColStd_Array2OfInteger_lower_col(arr: *const TColStd_Array2OfInteger) -> i32;
+
+    /// Get upper column bound
+    pub fn TColStd_Array2OfInteger_upper_col(arr: *const TColStd_Array2OfInteger) -> i32;
+
+    /// Get total number of elements
+    pub fn TColStd_Array2OfInteger_length(arr: *const TColStd_Array2OfInteger) -> i32;
+
+    /// Get element at row/col (bounds-checked)
+    pub fn TColStd_Array2OfInteger_value(
+        arr: *const TColStd_Array2OfInteger,
+        theRow: i32,
+        theCol: i32,
+    ) -> *const i32;
+
+    /// Set element at row/col (bounds-checked)
+    pub fn TColStd_Array2OfInteger_set_value(
+        arr: *mut TColStd_Array2OfInteger,
+        theRow: i32,
+        theCol: i32,
+        theItem: *const i32,
+    );
+
+    /// Set all elements to the same value
+    pub fn TColStd_Array2OfInteger_init(arr: *mut TColStd_Array2OfInteger, theValue: *const i32);
+
+    /// Create a new empty TColStd_Array2OfReal
+    pub fn TColStd_Array2OfReal_new() -> *mut TColStd_Array2OfReal;
+
+    /// Destroy a TColStd_Array2OfReal
+    pub fn TColStd_Array2OfReal_destructor(self_: *mut TColStd_Array2OfReal);
+
+    /// Create TColStd_Array2OfReal with row and column bounds
+    pub fn TColStd_Array2OfReal_ctor_int4(
+        theRowLower: i32,
+        theRowUpper: i32,
+        theColLower: i32,
+        theColUpper: i32,
+    ) -> *mut TColStd_Array2OfReal;
+
+    /// Create TColStd_Array2OfReal with bounds, all elements initialized to theValue
+    pub fn TColStd_Array2OfReal_ctor_int4_value(
+        theRowLower: i32,
+        theRowUpper: i32,
+        theColLower: i32,
+        theColUpper: i32,
+        theValue: *const f64,
+    ) -> *mut TColStd_Array2OfReal;
+
+    /// Get number of rows
+    pub fn TColStd_Array2OfReal_nb_rows(arr: *const TColStd_Array2OfReal) -> i32;
+
+    /// Get number of columns
+    pub fn TColStd_Array2OfReal_nb_columns(arr: *const TColStd_Array2OfReal) -> i32;
+
+    /// Get lower row bound
+    pub fn TColStd_Array2OfReal_lower_row(arr: *const TColStd_Array2OfReal) -> i32;
+
+    /// Get upper row bound
+    pub fn TColStd_Array2OfReal_upper_row(arr: *const TColStd_Array2OfReal) -> i32;
+
+    /// Get lower column bound
+    pub fn TColStd_Array2OfReal_lower_col(arr: *const TColStd_Array2OfReal) -> i32;
+
+    /// Get upper column bound
+    pub fn TColStd_Array2OfReal_upper_col(arr: *const TColStd_Array2OfReal) -> i32;
+
+    /// Get total number of elements
+    pub fn TColStd_Array2OfReal_length(arr: *const TColStd_Array2OfReal) -> i32;
+
+    /// Get element at row/col (bounds-checked)
+    pub fn TColStd_Array2OfReal_value(
+        arr: *const TColStd_Array2OfReal,
+        theRow: i32,
+        theCol: i32,
+    ) -> *const f64;
+
+    /// Set element at row/col (bounds-checked)
+    pub fn TColStd_Array2OfReal_set_value(
+        arr: *mut TColStd_Array2OfReal,
+        theRow: i32,
+        theCol: i32,
+        theItem: *const f64,
+    );
+
+    /// Set all elements to the same value
+    pub fn TColStd_Array2OfReal_init(arr: *mut TColStd_Array2OfReal, theValue: *const f64);
+
     // Nested type & typedef type destructors
     pub fn Message_ListOfAlert_destructor(self_: *mut Message_ListOfAlert);
     pub fn Message_SequenceOfPrinters_destructor(self_: *mut Message_SequenceOfPrinters);
@@ -37112,7 +37413,6 @@ extern "C" {
     pub fn Storage_PType_destructor(self_: *mut Storage_PType);
     pub fn Storage_SeqOfRoot_destructor(self_: *mut Storage_SeqOfRoot);
     pub fn TColStd_Array1OfAsciiString_destructor(self_: *mut TColStd_Array1OfAsciiString);
-    pub fn TColStd_Array1OfBoolean_destructor(self_: *mut TColStd_Array1OfBoolean);
     pub fn TColStd_Array1OfBoolean_value_type_destructor(
         self_: *mut TColStd_Array1OfBoolean_value_type,
     );
@@ -37123,7 +37423,6 @@ extern "C" {
         self_: *mut TColStd_Array1OfCharacter_value_type,
     );
     pub fn TColStd_Array1OfExtendedString_destructor(self_: *mut TColStd_Array1OfExtendedString);
-    pub fn TColStd_Array1OfInteger_destructor(self_: *mut TColStd_Array1OfInteger);
     pub fn TColStd_Array1OfInteger_value_type_destructor(
         self_: *mut TColStd_Array1OfInteger_value_type,
     );
@@ -37131,7 +37430,6 @@ extern "C" {
     pub fn TColStd_Array1OfListOfInteger_value_type_destructor(
         self_: *mut TColStd_Array1OfListOfInteger_value_type,
     );
-    pub fn TColStd_Array1OfReal_destructor(self_: *mut TColStd_Array1OfReal);
     pub fn TColStd_Array1OfReal_value_type_destructor(self_: *mut TColStd_Array1OfReal_value_type);
     pub fn TColStd_Array1OfTransient_destructor(self_: *mut TColStd_Array1OfTransient);
     pub fn TColStd_Array2OfBoolean_destructor(self_: *mut TColStd_Array2OfBoolean);
@@ -37142,11 +37440,9 @@ extern "C" {
     pub fn TColStd_Array2OfCharacter_value_type_destructor(
         self_: *mut TColStd_Array2OfCharacter_value_type,
     );
-    pub fn TColStd_Array2OfInteger_destructor(self_: *mut TColStd_Array2OfInteger);
     pub fn TColStd_Array2OfInteger_value_type_destructor(
         self_: *mut TColStd_Array2OfInteger_value_type,
     );
-    pub fn TColStd_Array2OfReal_destructor(self_: *mut TColStd_Array2OfReal);
     pub fn TColStd_Array2OfReal_value_type_destructor(self_: *mut TColStd_Array2OfReal_value_type);
     pub fn TColStd_Array2OfTransient_destructor(self_: *mut TColStd_Array2OfTransient);
     pub fn TColStd_DataMapOfAsciiStringInteger_destructor(

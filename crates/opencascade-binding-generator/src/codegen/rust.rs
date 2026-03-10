@@ -663,6 +663,23 @@ fn add_lifetime_to_ref_type(ty: &str) -> String {
     }
 }
 
+/// Add 'static lifetime to reference types in a type string.
+/// Handles Option<&mut T>, Option<&T>, &mut T, and &T patterns.
+fn add_static_lifetime_to_ref_type(ty: &str) -> String {
+    if let Some(inner) = ty.strip_prefix("Option<&mut ") {
+        format!("Option<&'static mut {inner}")
+    } else if let Some(inner) = ty.strip_prefix("Option<&") {
+        format!("Option<&'static {inner}")
+    } else if let Some(inner) = ty.strip_prefix("&mut ") {
+        format!("&'static mut {inner}")
+    } else if let Some(inner) = ty.strip_prefix('&') {
+        format!("&'static {inner}")
+    } else {
+        ty.to_string()
+    }
+}
+
+
 /// Emit a wrapper function for a free function in the public module.
 /// All free functions are real functions (not pub use re-exports) so that
 /// IDE "go to definition" lands in the public module, not ffi::.
@@ -709,16 +726,21 @@ fn emit_free_function_wrapper(
     let prelude = super::bindings::cstr_prelude_params(&func.params, "    ");
 
     // Build return type string.
+    // Build return type string.
     // For unsafe_lifetime free functions, add lifetime 'a to reference return types.
+    // For static_return_lifetime free functions, add 'static to reference return types.
     let return_type_str = func.return_type.as_ref()
         .map(|rt| {
             if func.unsafe_lifetime {
                 format!(" -> {}", add_lifetime_to_ref_type(&rt.rust_reexport_type))
+            } else if func.static_return_lifetime {
+                format!(" -> {}", add_static_lifetime_to_ref_type(&rt.rust_reexport_type))
             } else {
                 format!(" -> {}", rt.rust_reexport_type)
             }
         })
         .unwrap_or_default();
+
 
     // Build call expression args
     let args_str = args.join(", ");
@@ -918,6 +940,17 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
     let coll_name = &coll.typedef_name;
     let short = &coll.short_name;
     let elem = &coll.element_type;
+    // For primitive element types (Standard_Real -> f64, etc.), use the Rust type directly
+    // instead of crate::ffi::{elem} which doesn't exist for primitives.
+    let rust_elem = super::collections::rust_element_type(elem);
+    let is_primitive = super::collections::is_primitive_element(elem);
+    // How to refer to the element type in Rust code
+    let elem_type_ref = if is_primitive {
+        rust_elem.to_string()
+    } else {
+        format!("crate::ffi::{}", elem)
+    };
+
 
     out.push_str(&format!("impl {} {{\n", short));
 
@@ -1083,8 +1116,8 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
             ));
             // ctor with bounds and init value
             out.push_str(&format!(
-                "    /// Create with bounds, all elements initialized\n    pub fn new_int2_value(lower: i32, upper: i32, value: &crate::ffi::{}) -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_ctor_int2_value(lower, upper, value as *const crate::ffi::{})) }}\n    }}\n\n",
-                elem, coll_name, elem
+                "    /// Create with bounds, all elements initialized\n    pub fn new_int2_value(lower: i32, upper: i32, value: &{}) -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_ctor_int2_value(lower, upper, value as *const {})) }}\n    }}\n\n",
+                elem_type_ref, coll_name, elem_type_ref
             ));
             // length
             out.push_str(&format!(
@@ -1103,13 +1136,13 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
             ));
             // value
             out.push_str(&format!(
-                "    /// Get element at index\n    pub fn value(&self, index: i32) -> &crate::ffi::{} {{\n        unsafe {{ &*crate::ffi::{}_value(self as *const Self, index) }}\n    }}\n\n",
-                elem, coll_name
+                "    /// Get element at index\n    pub fn value(&self, index: i32) -> &{} {{\n        unsafe {{ &*crate::ffi::{}_value(self as *const Self, index) }}\n    }}\n\n",
+                elem_type_ref, coll_name
             ));
             // set_value
             out.push_str(&format!(
-                "    /// Set element at index\n    pub fn set_value(&mut self, index: i32, item: &crate::ffi::{}) {{\n        unsafe {{ crate::ffi::{}_set_value(self as *mut Self, index, item as *const crate::ffi::{}) }}\n    }}\n\n",
-                elem, coll_name, elem
+                "    /// Set element at index\n    pub fn set_value(&mut self, index: i32, item: &{}) {{\n        unsafe {{ crate::ffi::{}_set_value(self as *mut Self, index, item as *const {}) }}\n    }}\n\n",
+                elem_type_ref, coll_name, elem_type_ref
             ));
         }
         CollectionKind::Array2 => {
@@ -1125,8 +1158,8 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
             ));
             // ctor with bounds and init value
             out.push_str(&format!(
-                "    /// Create with bounds, all elements initialized\n    pub fn new_int4_value(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32, value: &crate::ffi::{}) -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value as *const crate::ffi::{})) }}\n    }}\n\n",
-                elem, coll_name, elem
+                "    /// Create with bounds, all elements initialized\n    pub fn new_int4_value(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32, value: &{}) -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value as *const {})) }}\n    }}\n\n",
+                elem_type_ref, coll_name, elem_type_ref
             ));
             // nb_rows / nb_columns
             out.push_str(&format!(
@@ -1139,15 +1172,16 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
             ));
             // value
             out.push_str(&format!(
-                "    /// Get element at (row, col)\n    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::{} {{\n        unsafe {{ &*crate::ffi::{}_value(self as *const Self, row, col) }}\n    }}\n\n",
-                elem, coll_name
+                "    /// Get element at (row, col)\n    pub fn value(&self, row: i32, col: i32) -> &{} {{\n        unsafe {{ &*crate::ffi::{}_value(self as *const Self, row, col) }}\n    }}\n\n",
+                elem_type_ref, coll_name
             ));
             // set_value
             out.push_str(&format!(
-                "    /// Set element at (row, col)\n    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::{}) {{\n        unsafe {{ crate::ffi::{}_set_value(self as *mut Self, row, col, item as *const crate::ffi::{}) }}\n    }}\n\n",
-                elem, coll_name, elem
+                "    /// Set element at (row, col)\n    pub fn set_value(&mut self, row: i32, col: i32, item: &{}) {{\n        unsafe {{ crate::ffi::{}_set_value(self as *mut Self, row, col, item as *const {}) }}\n    }}\n\n",
+                elem_type_ref, coll_name, elem_type_ref
             ));
         }
+
     }
 
     // Add iter() method for non-array collection types

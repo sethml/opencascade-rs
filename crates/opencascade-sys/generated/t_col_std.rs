@@ -6,6 +6,382 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi_types::{
+    TColStd_Array1OfBoolean as Array1OfBoolean, TColStd_Array1OfInteger as Array1OfInteger,
+    TColStd_Array1OfReal as Array1OfReal, TColStd_Array2OfInteger as Array2OfInteger,
+    TColStd_Array2OfReal as Array2OfReal,
+};
+
+impl Array1OfBoolean {
+    /// Create a new empty Array1OfBoolean
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_ctor_int2(
+                lower, upper,
+            ))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(lower: i32, upper: i32, value: &bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_ctor_int2_value(
+                    lower,
+                    upper,
+                    value as *const bool,
+                ),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_length(self as *const Self) }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_lower(self as *const Self) }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_upper(self as *const Self) }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &bool {
+        unsafe {
+            &*crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &bool) {
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_set_value(
+                self as *mut Self,
+                index,
+                item as *const bool,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfBoolean {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_destructor(ptr);
+    }
+}
+
+impl Array1OfInteger {
+    /// Create a new empty Array1OfInteger
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::TColStd_Array1OfInteger_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::TColStd_Array1OfInteger_ctor_int2(
+                lower, upper,
+            ))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(lower: i32, upper: i32, value: &i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::TColStd_Array1OfInteger_ctor_int2_value(
+                    lower,
+                    upper,
+                    value as *const i32,
+                ),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array1OfInteger_length(self as *const Self) }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array1OfInteger_lower(self as *const Self) }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array1OfInteger_upper(self as *const Self) }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &i32 {
+        unsafe {
+            &*crate::ffi_extern_TKernel::TColStd_Array1OfInteger_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &i32) {
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfInteger_set_value(
+                self as *mut Self,
+                index,
+                item as *const i32,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKernel::TColStd_Array1OfInteger_destructor(ptr);
+    }
+}
+
+impl Array1OfReal {
+    /// Create a new empty Array1OfReal
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::TColStd_Array1OfReal_new()) }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::TColStd_Array1OfReal_ctor_int2(
+                lower, upper,
+            ))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(lower: i32, upper: i32, value: &f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::TColStd_Array1OfReal_ctor_int2_value(
+                    lower,
+                    upper,
+                    value as *const f64,
+                ),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array1OfReal_length(self as *const Self) }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array1OfReal_lower(self as *const Self) }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array1OfReal_upper(self as *const Self) }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &f64 {
+        unsafe {
+            &*crate::ffi_extern_TKernel::TColStd_Array1OfReal_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &f64) {
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfReal_set_value(
+                self as *mut Self,
+                index,
+                item as *const f64,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKernel::TColStd_Array1OfReal_destructor(ptr);
+    }
+}
+
+impl Array2OfInteger {
+    /// Create a new empty Array2OfInteger
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::TColStd_Array2OfInteger_new())
+        }
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::TColStd_Array2OfInteger_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::TColStd_Array2OfInteger_ctor_int4_value(
+                    row_lower,
+                    row_upper,
+                    col_lower,
+                    col_upper,
+                    value as *const i32,
+                ),
+            )
+        }
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array2OfInteger_nb_rows(self as *const Self) }
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array2OfInteger_nb_columns(self as *const Self)
+        }
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &i32 {
+        unsafe {
+            &*crate::ffi_extern_TKernel::TColStd_Array2OfInteger_value(
+                self as *const Self,
+                row,
+                col,
+            )
+        }
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &i32) {
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array2OfInteger_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const i32,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKernel::TColStd_Array2OfInteger_destructor(ptr);
+    }
+}
+
+impl Array2OfReal {
+    /// Create a new empty Array2OfReal
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::TColStd_Array2OfReal_new()) }
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::TColStd_Array2OfReal_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::TColStd_Array2OfReal_ctor_int4_value(
+                    row_lower,
+                    row_upper,
+                    col_lower,
+                    col_upper,
+                    value as *const f64,
+                ),
+            )
+        }
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array2OfReal_nb_rows(self as *const Self) }
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        unsafe { crate::ffi_extern_TKernel::TColStd_Array2OfReal_nb_columns(self as *const Self) }
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &f64 {
+        unsafe {
+            &*crate::ffi_extern_TKernel::TColStd_Array2OfReal_value(self as *const Self, row, col)
+        }
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &f64) {
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array2OfReal_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const f64,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKernel::TColStd_Array2OfReal_destructor(ptr);
+    }
+}
+
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::HandleStandardTransient;
 
@@ -420,6 +796,28 @@ impl HArray1OfBoolean {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::TColStd_HArray1OfBoolean_get_type_descriptor(),
             ))
+        }
+    }
+
+    /// Upcast to TColStd_Array1OfBoolean
+    pub fn as_array1_of_boolean(&self) -> &Array1OfBoolean {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::TColStd_HArray1OfBoolean_as_TColStd_Array1OfBoolean(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to TColStd_Array1OfBoolean (mutable)
+    pub fn as_array1_of_boolean_mut(&mut self) -> &mut Array1OfBoolean {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::TColStd_HArray1OfBoolean_as_TColStd_Array1OfBoolean_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -1555,6 +1953,28 @@ impl HArray1OfInteger {
         }
     }
 
+    /// Upcast to TColStd_Array1OfInteger
+    pub fn as_array1_of_integer(&self) -> &Array1OfInteger {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::TColStd_HArray1OfInteger_as_TColStd_Array1OfInteger(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to TColStd_Array1OfInteger (mutable)
+    pub fn as_array1_of_integer_mut(&mut self) -> &mut Array1OfInteger {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::TColStd_HArray1OfInteger_as_TColStd_Array1OfInteger_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
@@ -2124,6 +2544,28 @@ impl HArray1OfReal {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::TColStd_HArray1OfReal_get_type_descriptor(),
             ))
+        }
+    }
+
+    /// Upcast to TColStd_Array1OfReal
+    pub fn as_array1_of_real(&self) -> &Array1OfReal {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::TColStd_HArray1OfReal_as_TColStd_Array1OfReal(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to TColStd_Array1OfReal (mutable)
+    pub fn as_array1_of_real_mut(&mut self) -> &mut Array1OfReal {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::TColStd_HArray1OfReal_as_TColStd_Array1OfReal_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -3207,6 +3649,28 @@ impl HArray2OfInteger {
         }
     }
 
+    /// Upcast to TColStd_Array2OfInteger
+    pub fn as_array2_of_integer(&self) -> &Array2OfInteger {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::TColStd_HArray2OfInteger_as_TColStd_Array2OfInteger(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to TColStd_Array2OfInteger (mutable)
+    pub fn as_array2_of_integer_mut(&mut self) -> &mut Array2OfInteger {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::TColStd_HArray2OfInteger_as_TColStd_Array2OfInteger_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
@@ -3469,6 +3933,28 @@ impl HArray2OfReal {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::TColStd_HArray2OfReal_get_type_descriptor(),
             ))
+        }
+    }
+
+    /// Upcast to TColStd_Array2OfReal
+    pub fn as_array2_of_real(&self) -> &Array2OfReal {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::TColStd_HArray2OfReal_as_TColStd_Array2OfReal(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to TColStd_Array2OfReal (mutable)
+    pub fn as_array2_of_real_mut(&mut self) -> &mut Array2OfReal {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::TColStd_HArray2OfReal_as_TColStd_Array2OfReal_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -6424,14 +6910,12 @@ impl PackedMapOfInteger_Iterator {
 // ========================
 
 pub use crate::ffi_types::{
-    TColStd_Array1OfAsciiString as Array1OfAsciiString, TColStd_Array1OfBoolean as Array1OfBoolean,
-    TColStd_Array1OfByte as Array1OfByte, TColStd_Array1OfCharacter as Array1OfCharacter,
+    TColStd_Array1OfAsciiString as Array1OfAsciiString, TColStd_Array1OfByte as Array1OfByte,
+    TColStd_Array1OfCharacter as Array1OfCharacter,
     TColStd_Array1OfExtendedString as Array1OfExtendedString,
-    TColStd_Array1OfInteger as Array1OfInteger,
-    TColStd_Array1OfListOfInteger as Array1OfListOfInteger, TColStd_Array1OfReal as Array1OfReal,
+    TColStd_Array1OfListOfInteger as Array1OfListOfInteger,
     TColStd_Array1OfTransient as Array1OfTransient, TColStd_Array2OfBoolean as Array2OfBoolean,
-    TColStd_Array2OfCharacter as Array2OfCharacter, TColStd_Array2OfInteger as Array2OfInteger,
-    TColStd_Array2OfReal as Array2OfReal, TColStd_Array2OfTransient as Array2OfTransient,
+    TColStd_Array2OfCharacter as Array2OfCharacter, TColStd_Array2OfTransient as Array2OfTransient,
     TColStd_DataMapOfAsciiStringInteger as DataMapOfAsciiStringInteger,
     TColStd_DataMapOfIntegerInteger as DataMapOfIntegerInteger,
     TColStd_DataMapOfIntegerReal as DataMapOfIntegerReal,

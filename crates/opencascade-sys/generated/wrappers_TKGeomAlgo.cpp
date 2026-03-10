@@ -26911,6 +26911,30 @@ extern "C" OcctResult<Handle(Geom_Surface)*> GeomFill_surface(Handle(Geom_Curve)
     try { return {new Handle(Geom_Surface)(GeomFill::Surface(*Curve1, *Curve2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* GeomFill_get_circle_parameterisationtype_vec3_pnt2_real_pnt_array1ofpnt_array1ofreal(int32_t TConv, gp_Vec const* ns1, gp_Vec const* ns2, gp_Vec const* nplan, gp_Pnt const* pt1, gp_Pnt const* pt2, double Rayon, gp_Pnt const* Center, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* Weigths) {
+    try { GeomFill::GetCircle(static_cast<Convert_ParameterisationType>(TConv), *ns1, *ns2, *nplan, *pt1, *pt2, Rayon, *Center, *Poles, *Weigths); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> GeomFill_get_circle_parameterisationtype_vec6_pnt2_vec2_real2_pnt_vec_array1ofpnt_array1ofvec_array1ofreal2(int32_t TConv, gp_Vec const* ns1, gp_Vec const* ns2, gp_Vec const* dn1w, gp_Vec const* dn2w, gp_Vec const* nplan, gp_Vec const* dnplan, gp_Pnt const* pts1, gp_Pnt const* pts2, gp_Vec const* tang1, gp_Vec const* tang2, double Rayon, double DRayon, gp_Pnt const* Center, gp_Vec const* DCenter, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+    try { return {GeomFill::GetCircle(static_cast<Convert_ParameterisationType>(TConv), *ns1, *ns2, *dn1w, *dn2w, *nplan, *dnplan, *pts1, *pts2, *tang1, *tang2, Rayon, DRayon, *Center, *DCenter, *Poles, *DPoles, *Weigths, *DWeigths), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> GeomFill_get_circle_parameterisationtype_vec9_pnt2_vec4_real3_pnt_vec2_array1ofpnt_array1ofvec2_array1ofreal3(int32_t TConv, gp_Vec const* ns1, gp_Vec const* ns2, gp_Vec const* dn1w, gp_Vec const* dn2w, gp_Vec const* d2n1w, gp_Vec const* d2n2w, gp_Vec const* nplan, gp_Vec const* dnplan, gp_Vec const* d2nplan, gp_Pnt const* pts1, gp_Pnt const* pts2, gp_Vec const* tang1, gp_Vec const* tang2, gp_Vec const* Dtang1, gp_Vec const* Dtang2, double Rayon, double DRayon, double D2Rayon, gp_Pnt const* Center, gp_Vec const* DCenter, gp_Vec const* D2Center, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+    try { return {GeomFill::GetCircle(static_cast<Convert_ParameterisationType>(TConv), *ns1, *ns2, *dn1w, *dn2w, *d2n1w, *d2n2w, *nplan, *dnplan, *d2nplan, *pts1, *pts2, *tang1, *tang2, *Dtang1, *Dtang2, Rayon, DRayon, D2Rayon, *Center, *DCenter, *D2Center, *Poles, *DPoles, *D2Poles, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* GeomFill_knots_parameterisationtype_array1ofreal(int32_t TypeConv, TColStd_Array1OfReal* TKnots) {
+    try { GeomFill::Knots(static_cast<Convert_ParameterisationType>(TypeConv), *TKnots); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomFill_mults_parameterisationtype_array1ofinteger(int32_t TypeConv, TColStd_Array1OfInteger* TMults) {
+    try { GeomFill::Mults(static_cast<Convert_ParameterisationType>(TypeConv), *TMults); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomFill_get_minimal_weights_parameterisationtype_real2_array1ofreal(int32_t TConv, double AngleMin, double AngleMax, TColStd_Array1OfReal* Weigths) {
+    try { GeomFill::GetMinimalWeights(static_cast<Convert_ParameterisationType>(TConv), AngleMin, AngleMax, *Weigths); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<double> GeomFill_get_tolerance(int32_t TConv, double AngleMin, double Radius, double AngularTol, double SpatialTol) {
     try { return {GeomFill::GetTolerance(static_cast<Convert_ParameterisationType>(TConv), AngleMin, Radius, AngularTol, SpatialTol), nullptr}; }
     OCCT_CATCH_RETURN
@@ -26967,11 +26991,19 @@ extern "C" OcctResult<bool> Intf_contain(gp_Pnt const* P1, gp_Pnt const* P2, gp_
 // ========================
 // Law namespace functions
 // ========================
-extern "C" OcctResult<Handle(Law_BSpFunc)*> Law_mix_bnd(Handle(Law_Linear) const* Lin) {
+extern "C" OcctResult<Handle(Law_BSpFunc)*> Law_mix_bnd_handlelawlinear(Handle(Law_Linear) const* Lin) {
     try { return {new Handle(Law_BSpFunc)(Law::MixBnd(*Lin)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Law_BSpline)*> Law_reparametrize(Adaptor3d_Curve const* Curve, double First, double Last, bool HasDF, bool HasDL, double DFirst, double DLast, bool Rev, int32_t NbPoints) {
+extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> Law_mix_bnd_int_array1ofreal_array1ofinteger_handlelawlinear(int32_t Degree, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, Handle(Law_Linear) const* Lin) {
+    try { return {new Handle(TColStd_HArray1OfReal)(Law::MixBnd(Degree, *Knots, *Mults, *Lin)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> Law_mix_tgt(int32_t Degree, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, bool NulOnTheRight, int32_t Index) {
+    try { return {new Handle(TColStd_HArray1OfReal)(Law::MixTgt(Degree, *Knots, *Mults, NulOnTheRight, Index)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Law_BSpline)*> Law_reparametrize_curve_real2_bool2_real2_bool_int(Adaptor3d_Curve const* Curve, double First, double Last, bool HasDF, bool HasDL, double DFirst, double DLast, bool Rev, int32_t NbPoints) {
     try { return {new Handle(Law_BSpline)(Law::Reparametrize(*Curve, First, Last, HasDF, HasDL, DFirst, DLast, Rev, NbPoints)), nullptr}; }
     OCCT_CATCH_RETURN
 }
