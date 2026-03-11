@@ -156,6 +156,7 @@ pub fn generate_ffi_split(
     handle_able_classes: &HashSet<String>,
     extra_typedef_names: &HashSet<String>,
     non_allocatable_classes: &HashSet<String>,
+    thread_unsafe_classes: &HashSet<String>,
     module_to_toolkit: &std::collections::HashMap<String, String>,
 ) -> (String, Vec<NestedTypeInfo>, Vec<(String, String)>) {
     // Get all classes with protected destructors, and merge in non-allocatable classes
@@ -183,6 +184,9 @@ pub fn generate_ffi_split(
     writeln!(ffi_types, "#![allow(dead_code)]").unwrap();
     writeln!(ffi_types, "#![allow(non_snake_case)]").unwrap();
     writeln!(ffi_types, "#![allow(clippy::missing_safety_doc)]").unwrap();
+    if !thread_unsafe_classes.is_empty() {
+        writeln!(ffi_types, "use core::marker::PhantomData;").unwrap();
+    }
     writeln!(ffi_types).unwrap();
 
     // Handle types (opaque structs + extra handle destructor extern block + CppDeletable)
@@ -207,7 +211,11 @@ pub fn generate_ffi_split(
             .filter(|b| !collection_type_names.contains(&b.cpp_name))
         {
             writeln!(ffi_types, "#[repr(C)]").unwrap();
-            writeln!(ffi_types, "pub struct {} {{ _opaque: [u8; 0] }}", b.cpp_name).unwrap();
+            if thread_unsafe_classes.contains(&b.cpp_name) {
+                writeln!(ffi_types, "pub struct {} {{ _opaque: [u8; 0], _not_send_sync: PhantomData<*const ()> }}", b.cpp_name).unwrap();
+            } else {
+                writeln!(ffi_types, "pub struct {} {{ _opaque: [u8; 0] }}", b.cpp_name).unwrap();
+            }
         }
         writeln!(ffi_types).unwrap();
     }

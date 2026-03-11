@@ -100,6 +100,7 @@ struct SelectionInputs {
     exclude_methods: HashSet<(String, String)>,
     ambiguous_methods: HashSet<(String, String)>,
     non_allocatable_classes: HashSet<String>,
+    thread_unsafe_classes: HashSet<String>,
     manual_type_names: HashSet<String>,
     template_instantiations: HashMap<String, config::TemplateInstantiation>,
     occt_alias_type_overrides: HashMap<String, String>,
@@ -154,6 +155,7 @@ fn main() -> Result<()> {
         let excludes: std::collections::HashSet<String> = cfg.exclude_headers.into_iter().collect();
         let exclude_mods: Vec<String> = cfg.exclude_modules;
         let non_alloc_cls: HashSet<String> = cfg.non_allocatable_classes.into_iter().collect();
+        let thread_unsafe_cls: HashSet<String> = cfg.thread_unsafe_classes.into_iter().collect();
         let manual_names: HashSet<String> = cfg.manual_types.keys().cloned().collect();
         let tmpl_inst = cfg.template_instantiations;
         let occt_alias_overrides = cfg.occt_alias_type_overrides;
@@ -165,6 +167,7 @@ fn main() -> Result<()> {
             exclude_methods: method_exclusions,
             ambiguous_methods: ambiguous_method_exclusions,
             non_allocatable_classes: non_alloc_cls,
+            thread_unsafe_classes: thread_unsafe_cls,
             manual_type_names: manual_names,
             template_instantiations: tmpl_inst,
             occt_alias_type_overrides: occt_alias_overrides,
@@ -178,6 +181,7 @@ fn main() -> Result<()> {
             exclude_methods: HashSet::new(),
             ambiguous_methods: HashSet::new(),
             non_allocatable_classes: HashSet::new(),
+            thread_unsafe_classes: HashSet::new(),
             manual_type_names: HashSet::new(),
             template_instantiations: HashMap::new(),
             occt_alias_type_overrides: HashMap::new(),
@@ -194,6 +198,7 @@ fn main() -> Result<()> {
         exclude_methods,
         ambiguous_methods,
         non_allocatable_classes,
+        thread_unsafe_classes,
         manual_type_names,
         template_instantiations,
         occt_alias_type_overrides,
@@ -548,7 +553,7 @@ fn main() -> Result<()> {
     }
 
     // Generate FFI output
-    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &ambiguous_methods, &non_allocatable_classes, &handle_able_classes, &manual_type_names, &template_instantiations, &split_config, config_dir.as_deref())
+    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &ambiguous_methods, &non_allocatable_classes, &thread_unsafe_classes, &handle_able_classes, &manual_type_names, &template_instantiations, &split_config, config_dir.as_deref())
 }
 
 /// Rewrite template spellings in Handle types to alias names.
@@ -951,6 +956,7 @@ fn generate_output(
     exclude_methods: &HashSet<(String, String)>,
     ambiguous_methods: &HashSet<(String, String)>,
     non_allocatable_classes: &HashSet<String>,
+    thread_unsafe_classes: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
     manual_type_names: &HashSet<String>,
     template_instantiations: &HashMap<String, config::TemplateInstantiation>,
@@ -1024,6 +1030,7 @@ fn generate_output(
         &handle_able_classes,
         &extra_typedef_names,
         non_allocatable_classes,
+        thread_unsafe_classes,
         &module_to_toolkit,
     );
     let ffi_path = args.output.join("ffi_types.rs");

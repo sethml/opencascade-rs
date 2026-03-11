@@ -590,6 +590,32 @@ pub mod b_rep_algo_api;
 
 ---
 
+### Thread Safety (`thread_unsafe_classes`)
+
+Some OCCT classes are not thread-safe because their constructors or methods
+mutate process-global state (static singletons, global message channels)
+without synchronization. For example, `STEPControl_Reader` and
+`STEPControl_Writer` call `STEPControl_Controller::Init()` which writes to
+static `XSAlgo_AlgoContainer` and `Interface_Static` globals, and the STEP
+parser uses the global `Message_Messenger` without synchronization.
+
+Classes listed in `thread_unsafe_classes` in `bindings.toml` get a
+`PhantomData<*const ()>` field in their generated opaque struct, which makes
+them `!Send + !Sync` in Rust. This turns concurrent usage into a compile
+error instead of a runtime crash:
+
+```rust
+// In ffi_types.rs:
+#[repr(C)]
+pub struct STEPControl_Reader {
+    _opaque: [u8; 0],
+    _not_send_sync: PhantomData<*const ()>,
+}
+```
+
+All other opaque types use only `_opaque: [u8; 0]` and are `Send + Sync`
+by default.
+
 ## Known Issues
 
 ### UB crash in `clang` crate (v2.0.0) — worked around via `--release` build
