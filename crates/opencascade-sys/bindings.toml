@@ -124,6 +124,15 @@ Standard_SStream = { header = "Standard_SStream.hxx" }
 # Methods using these types are marked unsafe.
 void_pointer_types = ["Aspect_RenderingContext"]
 
+# Constructors that should be marked `unsafe` with a safety note.
+# Use for classes whose construction has global side effects (e.g. non-reentrant
+# global state) that make concurrent or careless use unsound.
+# Format: "ClassName" = "Safety note explaining why and what to use instead."
+[unsafe_constructors]
+STEPControl_Reader = "Uses OCCT global state that is not thread-safe. Use step_control::StepReader for safe concurrent access."
+STEPControl_Writer = "Uses OCCT global state that is not thread-safe. Use step_control::StepWriter for safe concurrent access."
+
+
 # Template instantiation aliases: declare C++ template instantiations as opaque
 # Rust types. The generator creates C++ typedefs, Rust opaque types, and Handle
 # wrappers for each entry. The TOML key is the exact C++ template spelling as it

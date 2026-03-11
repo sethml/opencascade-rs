@@ -98,6 +98,12 @@ pub struct BindingConfig {
     /// Configuration for splitting generated output files.
     #[serde(default)]
     pub split: SplitConfig,
+
+    /// Constructors that should be marked `unsafe` with a safety note.
+    /// Format: `"ClassName" = "Safety note explaining why and what to use instead."`
+    /// All constructors (including convenience wrappers) for the class will be `unsafe fn`.
+    #[serde(default)]
+    pub unsafe_constructors: std::collections::HashMap<String, String>,
 }
 
 /// Configuration for splitting generated output files for build parallelization.

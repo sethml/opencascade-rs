@@ -37,7 +37,7 @@ impl StepReader {
     pub fn new() -> Self {
         let lock = STEP_MUTEX.lock().unwrap();
         Self {
-            inner: Reader::new(),
+            inner: unsafe { Reader::new() },
             _lock: lock,
         }
     }
@@ -84,7 +84,7 @@ impl StepWriter {
     pub fn new() -> Self {
         let lock = STEP_MUTEX.lock().unwrap();
         Self {
-            inner: Writer::new(),
+            inner: unsafe { Writer::new() },
             _lock: lock,
         }
     }

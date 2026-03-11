@@ -104,6 +104,7 @@ struct SelectionInputs {
     template_instantiations: HashMap<String, config::TemplateInstantiation>,
     occt_alias_type_overrides: HashMap<String, String>,
     void_pointer_types: HashSet<String>,
+    unsafe_constructors: HashMap<String, String>,
 }
 
 fn main() -> Result<()> {
@@ -158,6 +159,7 @@ fn main() -> Result<()> {
         let tmpl_inst = cfg.template_instantiations;
         let occt_alias_overrides = cfg.occt_alias_type_overrides;
         let void_ptr_types: HashSet<String> = cfg.void_pointer_types.into_iter().collect();
+        let unsafe_ctors = cfg.unsafe_constructors;
         SelectionInputs {
             explicit_headers: headers,
             exclude_set: excludes,
@@ -169,6 +171,7 @@ fn main() -> Result<()> {
             template_instantiations: tmpl_inst,
             occt_alias_type_overrides: occt_alias_overrides,
             void_pointer_types: void_ptr_types,
+            unsafe_constructors: unsafe_ctors,
         }
     } else if !args.headers.is_empty() {
         SelectionInputs {
@@ -182,6 +185,7 @@ fn main() -> Result<()> {
             template_instantiations: HashMap::new(),
             occt_alias_type_overrides: HashMap::new(),
             void_pointer_types: HashSet::new(),
+            unsafe_constructors: HashMap::new(),
         }
     } else {
         anyhow::bail!("Either --config <file.toml> or positional header arguments are required");
@@ -198,6 +202,7 @@ fn main() -> Result<()> {
         template_instantiations,
         occt_alias_type_overrides,
         void_pointer_types,
+        unsafe_constructors,
     } = inputs;
 
     // Resolve header dependencies when include directories are available.
@@ -548,7 +553,7 @@ fn main() -> Result<()> {
     }
 
     // Generate FFI output
-    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &ambiguous_methods, &non_allocatable_classes, &handle_able_classes, &manual_type_names, &template_instantiations, &split_config, config_dir.as_deref())
+    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &ambiguous_methods, &non_allocatable_classes, &handle_able_classes, &manual_type_names, &template_instantiations, &split_config, config_dir.as_deref(), &unsafe_constructors)
 }
 
 /// Rewrite template spellings in Handle types to alias names.
@@ -956,6 +961,7 @@ fn generate_output(
     template_instantiations: &HashMap<String, config::TemplateInstantiation>,
     split_config: &config::SplitConfig,
     config_dir: Option<&Path>,
+    unsafe_constructors: &HashMap<String, String>,
 ) -> Result<()> {
     use model::ParsedClass;
 
@@ -993,6 +999,17 @@ fn generate_output(
             b.has_protected_destructor = true;
         }
     }
+
+    // Mark constructors of unsafe_constructors classes as `unsafe fn` and add safety note.
+    for b in &mut all_bindings {
+        if let Some(note) = unsafe_constructors.get(&b.cpp_name) {
+            for ctor in &mut b.constructors {
+                ctor.is_unsafe = true;
+                ctor.safety_note = Some(note.clone());
+            }
+        }
+    }
+
 
     // Compute FunctionBindings once for ALL free functions — shared by all three generators
     let (all_function_bindings, all_skipped_functions) = codegen::bindings::compute_all_function_bindings(

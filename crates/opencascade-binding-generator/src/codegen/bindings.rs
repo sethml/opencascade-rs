@@ -121,6 +121,8 @@ pub struct ConstructorBinding {
     pub convenience_of: Option<ConvenienceInfo>,
     /// Whether this constructor should be marked `unsafe fn` (has raw pointer params/returns)
     pub is_unsafe: bool,
+    /// Optional safety note added to doc comment when constructor is marked unsafe by config
+    pub safety_note: Option<String>,
 }
 
 /// Info for a convenience constructor that delegates to a full-argument version.
@@ -1754,6 +1756,7 @@ pub fn compute_class_bindings(
                 source_line: None,
                 convenience_of: None,
                 is_unsafe: false,
+                safety_note: None,
             });
         }
         ctors
@@ -2594,6 +2597,7 @@ fn compute_constructor_bindings(
                 source_line: trimmed.original.source_line,
                 convenience_of,
                 is_unsafe,
+                safety_note: None,
             }
         })
         .collect()
@@ -4652,6 +4656,11 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             &format!("{}::{}()", cn, cn),
         );
         let doc = format_reexport_doc(&source_attr, &ctor.doc_comment);
+        let doc = if let Some(ref note) = ctor.safety_note {
+            format!("{}    ///\n    /// # Safety\n    ///\n    /// {}\n", doc, note)
+        } else {
+            doc
+        };
 
         if let Some(ref conv) = ctor.convenience_of {
             // Convenience constructor: Rust-only wrapper that delegates to full-arg version

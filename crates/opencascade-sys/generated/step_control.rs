@@ -1769,7 +1769,11 @@ unsafe impl crate::CppDeletable for Reader {
 impl Reader {
     /// **Source:** `STEPControl_Reader.hxx`:75 - `STEPControl_Reader::STEPControl_Reader()`
     /// Creates a reader object with an empty STEP model.
-    pub fn new() -> crate::OwnedPtr<Self> {
+    ///
+    /// # Safety
+    ///
+    /// Uses OCCT global state that is not thread-safe. Use step_control::StepReader for safe concurrent access.
+    pub unsafe fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::STEPControl_Reader_ctor(),
@@ -1780,7 +1784,11 @@ impl Reader {
     /// **Source:** `STEPControl_Reader.hxx`:79 - `STEPControl_Reader::STEPControl_Reader()`
     /// Creates a Reader for STEP from an already existing Session
     /// Clears the session if it was not yet set for STEP
-    pub fn new_handlexscontrolworksession_bool(
+    ///
+    /// # Safety
+    ///
+    /// Uses OCCT global state that is not thread-safe. Use step_control::StepReader for safe concurrent access.
+    pub unsafe fn new_handlexscontrolworksession_bool(
         WS: &crate::ffi_types::HandleXSControlWorkSession,
         scratch: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -1796,7 +1804,11 @@ impl Reader {
     /// **Source:** `STEPControl_Reader.hxx`:79 - `STEPControl_Reader::STEPControl_Reader()`
     /// Creates a Reader for STEP from an already existing Session
     /// Clears the session if it was not yet set for STEP
-    pub fn new_handlexscontrolworksession(
+    ///
+    /// # Safety
+    ///
+    /// Uses OCCT global state that is not thread-safe. Use step_control::StepReader for safe concurrent access.
+    pub unsafe fn new_handlexscontrolworksession(
         WS: &crate::ffi_types::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlexscontrolworksession_bool(WS, true)
@@ -2243,7 +2255,11 @@ unsafe impl crate::CppDeletable for Writer {
 impl Writer {
     /// **Source:** `STEPControl_Writer.hxx`:51 - `STEPControl_Writer::STEPControl_Writer()`
     /// Creates a Writer from scratch
-    pub fn new() -> crate::OwnedPtr<Self> {
+    ///
+    /// # Safety
+    ///
+    /// Uses OCCT global state that is not thread-safe. Use step_control::StepWriter for safe concurrent access.
+    pub unsafe fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::STEPControl_Writer_ctor(),
@@ -2254,7 +2270,11 @@ impl Writer {
     /// **Source:** `STEPControl_Writer.hxx`:55 - `STEPControl_Writer::STEPControl_Writer()`
     /// Creates a Writer from an already existing Session
     /// If <scratch> is True (D), clears already recorded data
-    pub fn new_handlexscontrolworksession_bool(
+    ///
+    /// # Safety
+    ///
+    /// Uses OCCT global state that is not thread-safe. Use step_control::StepWriter for safe concurrent access.
+    pub unsafe fn new_handlexscontrolworksession_bool(
         WS: &crate::ffi_types::HandleXSControlWorkSession,
         scratch: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -2270,7 +2290,11 @@ impl Writer {
     /// **Source:** `STEPControl_Writer.hxx`:55 - `STEPControl_Writer::STEPControl_Writer()`
     /// Creates a Writer from an already existing Session
     /// If <scratch> is True (D), clears already recorded data
-    pub fn new_handlexscontrolworksession(
+    ///
+    /// # Safety
+    ///
+    /// Uses OCCT global state that is not thread-safe. Use step_control::StepWriter for safe concurrent access.
+    pub unsafe fn new_handlexscontrolworksession(
         WS: &crate::ffi_types::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlexscontrolworksession_bool(WS, true)

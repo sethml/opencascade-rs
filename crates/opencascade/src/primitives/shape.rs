@@ -488,7 +488,7 @@ impl Shape {
     }
 
     pub fn read_step(path: impl AsRef<Path>) -> Result<Self, Error> {
-        let mut reader = step_control::Reader::new();
+        let mut reader = step_control::StepReader::new();
         let path_str = path.as_ref().to_string_lossy();
         let status = reader.read_file_charptr(&path_str);
         if status != if_select::ReturnStatus::Retvoid {
@@ -501,7 +501,7 @@ impl Shape {
     }
 
     pub fn write_step(&self, path: impl AsRef<Path>) -> Result<(), Error> {
-        let mut writer = step_control::Writer::new();
+        let mut writer = step_control::StepWriter::new();
         let progress = message::ProgressRange::new();
         // STEPControl_AsIs = 0
         let status = writer.transfer_shape_stepmodeltype_bool_progressrange(
