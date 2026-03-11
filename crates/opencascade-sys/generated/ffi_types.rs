@@ -6,7 +6,6 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
-use core::marker::PhantomData;
 
 // ========================
 // Handle types
@@ -25859,12 +25858,10 @@ pub struct STEPControl_Controller {
 #[repr(C)]
 pub struct STEPControl_Reader {
     _opaque: [u8; 0],
-    _not_send_sync: PhantomData<*const ()>,
 }
 #[repr(C)]
 pub struct STEPControl_Writer {
     _opaque: [u8; 0],
-    _not_send_sync: PhantomData<*const ()>,
 }
 #[repr(C)]
 pub struct STEPEdit_EditContext {

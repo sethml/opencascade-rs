@@ -2510,3 +2510,18 @@ impl Writer {
 //   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
 //   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
 //
+
+// Manual bindings:
+// Thread-safety wrappers for STEPControl_Reader and STEPControl_Writer.
+//
+// OCCT's STEP I/O subsystem uses global mutable state internally:
+// - STEPControl_Controller::Init() writes to static globals
+// - The STEP parser uses non-reentrant lex/yacc state machines
+// - Message_Messenger instances are shared without synchronization
+//
+// This means that even two *independent* Reader or Writer instances on
+// separate threads can corrupt each other's state. The wrappers below
+// hold a MutexGuard for the Reader/Writer's entire lifetime, serializing
+// all STEP I/O. Because MutexGuard is !Send, the wrappers are also !Send,
+// preventing them from being moved to another thread.
+include!("../manual/step_control.rs");

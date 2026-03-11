@@ -5,7 +5,6 @@
 # Main sections:
 # - `modules`, `exclude_modules`, `include_headers`, `exclude_headers`: header selection
 # - `exclude_methods`, `ambiguous_methods`, `non_allocatable_classes`: symbol/class filtering
-# - `thread_unsafe_classes`: classes marked !Send + !Sync (touch process-global state)
 # - `[occt_alias_type_overrides]`: canonical OCCT type spelling rewrites
 # - `[manual_types]`: opaque manual types treated as known
 # - `[template_instantiations]`: explicit template alias generation
@@ -101,14 +100,6 @@ non_allocatable_classes = [
     "Poly_CoherentTriPtr",                 # Hidden operator new/delete (DEFINE_NCOLLECTION_ALLOC)
 ]
 
-# Thread-unsafe classes: generated opaque structs include PhantomData<*const ()>
-# so the types are !Send + !Sync, preventing concurrent use at compile time.
-# Use for classes whose constructors or methods mutate process-global state
-# (e.g., static singletons, global message channels) without synchronization.
-thread_unsafe_classes = [
-    "STEPControl_Reader",   # Init() writes static XSAlgo/Interface_Static globals; parser uses global messenger
-    "STEPControl_Writer",   # Init() writes the same statics; also uses global messenger
-]
 
 # Canonical OCCT type spellings that should be rewritten to public typedef aliases.
 # This is used when clang reports internal template names in canonical form.

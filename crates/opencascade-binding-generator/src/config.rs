@@ -68,13 +68,6 @@ pub struct BindingConfig {
     #[serde(default)]
     pub non_allocatable_classes: Vec<String>,
 
-    /// Thread-unsafe classes: opaque structs include `PhantomData<*const ()>` so the
-    /// generated types are `!Send + !Sync`, preventing concurrent use at compile time.
-    /// Use for classes whose constructors or methods mutate process-global state
-    /// without synchronization.
-    #[serde(default)]
-    pub thread_unsafe_classes: Vec<String>,
-
     /// Opaque types defined in manual/ files but referenced by auto-generated bindings.
     /// The generator adds these to the known class set so methods using them
     /// aren't skipped as "unknown type".
