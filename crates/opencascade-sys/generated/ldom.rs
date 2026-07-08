@@ -18,13 +18,15 @@ pub use crate::ffi_types::LDOM_Attr as Attr;
 
 unsafe impl crate::CppDeletable for Attr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_Attr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Attr_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Attr {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::LDOM_Attr_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::LDOM_Attr_clone(ptr)) }
     }
 }
 
@@ -199,7 +201,9 @@ pub use crate::ffi_types::LDOM_BasicAttribute as BasicAttribute;
 
 unsafe impl crate::CppDeletable for BasicAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_BasicAttribute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_BasicAttribute_destructor(ptr);
+        }
     }
 }
 
@@ -308,7 +312,9 @@ pub use crate::ffi_types::LDOM_BasicElement as BasicElement;
 
 unsafe impl crate::CppDeletable for BasicElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_BasicElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_BasicElement_destructor(ptr);
+        }
     }
 }
 
@@ -458,7 +464,9 @@ pub use crate::ffi_types::LDOM_BasicNode as BasicNode;
 
 unsafe impl crate::CppDeletable for BasicNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_BasicNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_BasicNode_destructor(ptr);
+        }
     }
 }
 
@@ -503,7 +511,9 @@ pub use crate::ffi_types::LDOM_BasicText as BasicText;
 
 unsafe impl crate::CppDeletable for BasicText {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_BasicText_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_BasicText_destructor(ptr);
+        }
     }
 }
 
@@ -595,13 +605,15 @@ pub use crate::ffi_types::LDOM_CDATASection as CDATASection;
 
 unsafe impl crate::CppDeletable for CDATASection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_CDATASection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_CDATASection_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for CDATASection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::LDOM_CDATASection_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::LDOM_CDATASection_clone(ptr)) }
     }
 }
 
@@ -832,7 +844,9 @@ pub use crate::ffi_types::LDOM_CharReference as CharReference;
 
 unsafe impl crate::CppDeletable for CharReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_CharReference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_CharReference_destructor(ptr);
+        }
     }
 }
 
@@ -880,13 +894,15 @@ pub use crate::ffi_types::LDOM_CharacterData as CharacterData;
 
 unsafe impl crate::CppDeletable for CharacterData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_CharacterData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_CharacterData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for CharacterData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::LDOM_CharacterData_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::LDOM_CharacterData_clone(ptr)) }
     }
 }
 
@@ -1079,13 +1095,15 @@ pub use crate::ffi_types::LDOM_Comment as Comment;
 
 unsafe impl crate::CppDeletable for Comment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_Comment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Comment_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Comment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::LDOM_Comment_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::LDOM_Comment_clone(ptr)) }
     }
 }
 
@@ -1278,7 +1296,9 @@ pub use crate::ffi_types::LDOM_Document as Document;
 
 unsafe impl crate::CppDeletable for Document {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_Document_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Document_destructor(ptr);
+        }
     }
 }
 
@@ -1407,7 +1427,9 @@ pub use crate::ffi_types::LDOM_DocumentType as DocumentType;
 
 unsafe impl crate::CppDeletable for DocumentType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_DocumentType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_DocumentType_destructor(ptr);
+        }
     }
 }
 
@@ -1431,13 +1453,15 @@ pub use crate::ffi_types::LDOM_Element as Element;
 
 unsafe impl crate::CppDeletable for Element {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_Element_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Element_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Element {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::LDOM_Element_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::LDOM_Element_clone(ptr)) }
     }
 }
 
@@ -1705,7 +1729,9 @@ pub use crate::ffi_types::LDOM_LDOMImplementation as LDOMImplementation;
 
 unsafe impl crate::CppDeletable for LDOMImplementation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_LDOMImplementation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_LDOMImplementation_destructor(ptr);
+        }
     }
 }
 
@@ -1747,7 +1773,9 @@ pub use crate::ffi_types::LDOM_MemManager as MemManager;
 
 unsafe impl crate::CppDeletable for MemManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_MemManager_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_MemManager_destructor(ptr);
+        }
     }
 }
 
@@ -1978,13 +2006,15 @@ pub use crate::ffi_types::HandleLDOMMemManager;
 
 unsafe impl crate::CppDeletable for HandleLDOMMemManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::HandleLDOMMemManager_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::HandleLDOMMemManager_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLDOMMemManager {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::HandleLDOMMemManager_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::HandleLDOMMemManager_clone(ptr)) }
     }
 }
 
@@ -2035,13 +2065,15 @@ pub use crate::ffi_types::LDOM_Node as Node;
 
 unsafe impl crate::CppDeletable for Node {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_Node_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Node_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Node {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::LDOM_Node_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::LDOM_Node_clone(ptr)) }
     }
 }
 
@@ -2173,13 +2205,15 @@ pub use crate::ffi_types::LDOM_NodeList as NodeList;
 
 unsafe impl crate::CppDeletable for NodeList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_NodeList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_NodeList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for NodeList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::LDOM_NodeList_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::LDOM_NodeList_clone(ptr)) }
     }
 }
 
@@ -2233,7 +2267,9 @@ pub use crate::ffi_types::LDOM_SBuffer as SBuffer;
 
 unsafe impl crate::CppDeletable for SBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_SBuffer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_SBuffer_destructor(ptr);
+        }
     }
 }
 
@@ -2314,7 +2350,9 @@ pub use crate::ffi_types::LDOM_OSStream as OSStream;
 
 unsafe impl crate::CppDeletable for OSStream {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_OSStream_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_OSStream_destructor(ptr);
+        }
     }
 }
 
@@ -2382,13 +2420,15 @@ pub use crate::ffi_types::LDOM_Text as Text;
 
 unsafe impl crate::CppDeletable for Text {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_Text_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Text_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Text {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::LDOM_Text_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::LDOM_Text_clone(ptr)) }
     }
 }
 
@@ -2579,7 +2619,9 @@ pub use crate::ffi_types::LDOM_XmlReader as XmlReader;
 
 unsafe impl crate::CppDeletable for XmlReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_XmlReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_XmlReader_destructor(ptr);
+        }
     }
 }
 
@@ -2685,7 +2727,9 @@ pub use crate::ffi_types::LDOM_XmlWriter as XmlWriter;
 
 unsafe impl crate::CppDeletable for XmlWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_XmlWriter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_XmlWriter_destructor(ptr);
+        }
     }
 }
 

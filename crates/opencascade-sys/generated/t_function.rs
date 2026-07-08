@@ -61,7 +61,9 @@ pub use crate::ffi_types::TFunction_Driver as Driver;
 
 unsafe impl crate::CppDeletable for Driver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_Driver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Driver_destructor(ptr);
+        }
     }
 }
 
@@ -255,13 +257,15 @@ pub use crate::ffi_types::HandleTFunctionDriver;
 
 unsafe impl crate::CppDeletable for HandleTFunctionDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTFunctionDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTFunctionDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTFunctionDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionDriver_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionDriver_clone(ptr)) }
     }
 }
 
@@ -315,7 +319,9 @@ pub use crate::ffi_types::TFunction_DriverTable as DriverTable;
 
 unsafe impl crate::CppDeletable for DriverTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_DriverTable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_destructor(ptr);
+        }
     }
 }
 
@@ -563,13 +569,17 @@ pub use crate::ffi_types::HandleTFunctionDriverTable;
 
 unsafe impl crate::CppDeletable for HandleTFunctionDriverTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTFunctionDriverTable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTFunctionDriverTable_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTFunctionDriverTable {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionDriverTable_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionDriverTable_clone(ptr))
+        }
     }
 }
 
@@ -624,7 +634,9 @@ pub use crate::ffi_types::TFunction_Function as Function;
 
 unsafe impl crate::CppDeletable for Function {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_Function_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Function_destructor(ptr);
+        }
     }
 }
 
@@ -1234,13 +1246,15 @@ pub use crate::ffi_types::HandleTFunctionFunction;
 
 unsafe impl crate::CppDeletable for HandleTFunctionFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTFunctionFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTFunctionFunction_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTFunctionFunction {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionFunction_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionFunction_clone(ptr)) }
     }
 }
 
@@ -1303,7 +1317,9 @@ pub use crate::ffi_types::TFunction_GraphNode as GraphNode;
 
 unsafe impl crate::CppDeletable for GraphNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_GraphNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_destructor(ptr);
+        }
     }
 }
 
@@ -1986,13 +2002,17 @@ pub use crate::ffi_types::HandleTFunctionGraphNode;
 
 unsafe impl crate::CppDeletable for HandleTFunctionGraphNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTFunctionGraphNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTFunctionGraphNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTFunctionGraphNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionGraphNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionGraphNode_clone(ptr))
+        }
     }
 }
 
@@ -2054,7 +2074,9 @@ pub use crate::ffi_types::TFunction_HArray1OfDataMapOfGUIDDriver as HArray1OfDat
 
 unsafe impl crate::CppDeletable for HArray1OfDataMapOfGUIDDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_destructor(ptr);
+        }
     }
 }
 
@@ -2268,15 +2290,19 @@ pub use crate::ffi_types::HandleTFunctionHArray1OfDataMapOfGUIDDriver;
 
 unsafe impl crate::CppDeletable for HandleTFunctionHArray1OfDataMapOfGUIDDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTFunctionHArray1OfDataMapOfGUIDDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTFunctionHArray1OfDataMapOfGUIDDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTFunctionHArray1OfDataMapOfGUIDDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKLCAF::HandleTFunctionHArray1OfDataMapOfGUIDDriver_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTFunctionHArray1OfDataMapOfGUIDDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2332,7 +2358,9 @@ pub use crate::ffi_types::TFunction_IFunction as IFunction;
 
 unsafe impl crate::CppDeletable for IFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_IFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_destructor(ptr);
+        }
     }
 }
 
@@ -2528,7 +2556,9 @@ pub use crate::ffi_types::TFunction_Iterator as Iterator;
 
 unsafe impl crate::CppDeletable for Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Iterator_destructor(ptr);
+        }
     }
 }
 
@@ -2686,7 +2716,9 @@ pub use crate::ffi_types::TFunction_Logbook as Logbook;
 
 unsafe impl crate::CppDeletable for Logbook {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_Logbook_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_destructor(ptr);
+        }
     }
 }
 
@@ -3344,13 +3376,15 @@ pub use crate::ffi_types::HandleTFunctionLogbook;
 
 unsafe impl crate::CppDeletable for HandleTFunctionLogbook {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTFunctionLogbook_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTFunctionLogbook_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTFunctionLogbook {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionLogbook_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionLogbook_clone(ptr)) }
     }
 }
 
@@ -3413,7 +3447,9 @@ pub use crate::ffi_types::TFunction_Scope as Scope;
 
 unsafe impl crate::CppDeletable for Scope {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_Scope_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Scope_destructor(ptr);
+        }
     }
 }
 
@@ -4068,13 +4104,15 @@ pub use crate::ffi_types::HandleTFunctionScope;
 
 unsafe impl crate::CppDeletable for HandleTFunctionScope {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTFunctionScope_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTFunctionScope_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTFunctionScope {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionScope_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionScope_clone(ptr)) }
     }
 }
 

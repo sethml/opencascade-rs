@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== Expr_Absolute ========================
     pub fn Expr_Absolute_destructor(self_: *mut Expr_Absolute);
     /// **Source:** `Expr_Absolute.hxx`:37 - `Expr_Absolute::Expr_Absolute()`

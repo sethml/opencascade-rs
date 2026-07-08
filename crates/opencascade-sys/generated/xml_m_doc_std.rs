@@ -30,7 +30,9 @@ pub use crate::ffi_types::XmlMDocStd_XLinkDriver as XLinkDriver;
 
 unsafe impl crate::CppDeletable for XLinkDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_destructor(ptr);
+        }
     }
 }
 
@@ -291,13 +293,17 @@ pub use crate::ffi_types::HandleXmlMDocStdXLinkDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDocStdXLinkDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDocStdXLinkDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDocStdXLinkDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDocStdXLinkDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDocStdXLinkDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDocStdXLinkDriver_clone(ptr))
+        }
     }
 }
 

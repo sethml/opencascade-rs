@@ -79,7 +79,9 @@ pub use crate::ffi_types::STEPConstruct_AP203Context as AP203Context;
 
 unsafe impl crate::CppDeletable for AP203Context {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPConstruct_AP203Context_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_AP203Context_destructor(ptr);
+        }
     }
 }
 
@@ -551,7 +553,9 @@ pub use crate::ffi_types::STEPConstruct_Assembly as Assembly;
 
 unsafe impl crate::CppDeletable for Assembly {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPConstruct_Assembly_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_Assembly_destructor(ptr);
+        }
     }
 }
 
@@ -666,7 +670,9 @@ pub use crate::ffi_types::STEPConstruct_ContextTool as ContextTool;
 
 unsafe impl crate::CppDeletable for ContextTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPConstruct_ContextTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_ContextTool_destructor(ptr);
+        }
     }
 }
 
@@ -1001,7 +1007,9 @@ pub use crate::ffi_types::STEPConstruct_ExternRefs as ExternRefs;
 
 unsafe impl crate::CppDeletable for ExternRefs {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPConstruct_ExternRefs_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_ExternRefs_destructor(ptr);
+        }
     }
 }
 
@@ -1297,7 +1305,9 @@ pub use crate::ffi_types::STEPConstruct_Part as Part;
 
 unsafe impl crate::CppDeletable for Part {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPConstruct_Part_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_Part_destructor(ptr);
+        }
     }
 }
 
@@ -1744,7 +1754,9 @@ pub use crate::ffi_types::STEPConstruct_Styles as Styles;
 
 unsafe impl crate::CppDeletable for Styles {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPConstruct_Styles_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_Styles_destructor(ptr);
+        }
     }
 }
 
@@ -2172,7 +2184,9 @@ pub use crate::ffi_types::STEPConstruct_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPConstruct_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_Tool_destructor(ptr);
+        }
     }
 }
 
@@ -2264,7 +2278,9 @@ pub use crate::ffi_types::STEPConstruct_UnitContext as UnitContext;
 
 unsafe impl crate::CppDeletable for UnitContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPConstruct_UnitContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_UnitContext_destructor(ptr);
+        }
     }
 }
 
@@ -2506,7 +2522,9 @@ pub use crate::ffi_types::STEPConstruct_ValidationProps as ValidationProps;
 
 unsafe impl crate::CppDeletable for ValidationProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPConstruct_ValidationProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_ValidationProps_destructor(ptr);
+        }
     }
 }
 

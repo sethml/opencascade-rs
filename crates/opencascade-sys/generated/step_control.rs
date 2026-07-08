@@ -78,7 +78,9 @@ pub use crate::ffi_types::STEPControl_ActorRead as ActorRead;
 
 unsafe impl crate::CppDeletable for ActorRead {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_destructor(ptr);
+        }
     }
 }
 
@@ -565,13 +567,17 @@ pub use crate::ffi_types::HandleSTEPControlActorRead;
 
 unsafe impl crate::CppDeletable for HandleSTEPControlActorRead {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPControlActorRead {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_clone(ptr))
+        }
     }
 }
 
@@ -644,7 +650,9 @@ pub use crate::ffi_types::STEPControl_ActorWrite as ActorWrite;
 
 unsafe impl crate::CppDeletable for ActorWrite {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_destructor(ptr);
+        }
     }
 }
 
@@ -1164,13 +1172,17 @@ pub use crate::ffi_types::HandleSTEPControlActorWrite;
 
 unsafe impl crate::CppDeletable for HandleSTEPControlActorWrite {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPControlActorWrite {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_clone(ptr))
+        }
     }
 }
 
@@ -1258,7 +1270,9 @@ pub use crate::ffi_types::STEPControl_Controller as Controller;
 
 unsafe impl crate::CppDeletable for Controller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPControl_Controller_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_destructor(ptr);
+        }
     }
 }
 
@@ -1643,13 +1657,17 @@ pub use crate::ffi_types::HandleSTEPControlController;
 
 unsafe impl crate::CppDeletable for HandleSTEPControlController {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPControlController_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPControlController_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPControlController {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlController_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlController_clone(ptr))
+        }
     }
 }
 
@@ -1762,7 +1780,9 @@ pub use crate::ffi_types::STEPControl_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPControl_Reader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_destructor(ptr);
+        }
     }
 }
 
@@ -1811,7 +1831,7 @@ impl Reader {
     pub unsafe fn new_handlexscontrolworksession(
         WS: &crate::ffi_types::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_handlexscontrolworksession_bool(WS, true)
+        unsafe { Self::new_handlexscontrolworksession_bool(WS, true) }
     }
 
     /// **Source:** `STEPControl_Reader.hxx`:84 - `STEPControl_Reader::StepModel()`
@@ -2248,7 +2268,9 @@ pub use crate::ffi_types::STEPControl_Writer as Writer;
 
 unsafe impl crate::CppDeletable for Writer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPControl_Writer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPControl_Writer_destructor(ptr);
+        }
     }
 }
 
@@ -2297,7 +2319,7 @@ impl Writer {
     pub unsafe fn new_handlexscontrolworksession(
         WS: &crate::ffi_types::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_handlexscontrolworksession_bool(WS, true)
+        unsafe { Self::new_handlexscontrolworksession_bool(WS, true) }
     }
 
     /// **Source:** `STEPControl_Writer.hxx`:61 - `STEPControl_Writer::SetTolerance()`

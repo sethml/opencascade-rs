@@ -56,7 +56,9 @@ pub use crate::ffi_types::IntImpParGen_ImpTool as ImpTool;
 
 unsafe impl crate::CppDeletable for ImpTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntImpParGen_ImpTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntImpParGen_ImpTool_destructor(ptr);
+        }
     }
 }
 

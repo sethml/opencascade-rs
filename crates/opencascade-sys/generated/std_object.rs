@@ -15,7 +15,9 @@ pub use crate::ffi_types::StdObject_Location as Location;
 
 unsafe impl crate::CppDeletable for Location {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStd::StdObject_Location_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStd::StdObject_Location_destructor(ptr);
+        }
     }
 }
 
@@ -74,7 +76,9 @@ pub use crate::ffi_types::StdObject_Shape as Shape;
 
 unsafe impl crate::CppDeletable for Shape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStd::StdObject_Shape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStd::StdObject_Shape_destructor(ptr);
+        }
     }
 }
 

@@ -85,7 +85,9 @@ pub use crate::ffi_types::VrmlConverter_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -168,7 +170,9 @@ pub use crate::ffi_types::VrmlConverter_DeflectionCurve as DeflectionCurve;
 
 unsafe impl crate::CppDeletable for DeflectionCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_DeflectionCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_DeflectionCurve_destructor(ptr);
+        }
     }
 }
 
@@ -304,7 +308,9 @@ pub use crate::ffi_types::VrmlConverter_Drawer as Drawer;
 
 unsafe impl crate::CppDeletable for Drawer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_destructor(ptr);
+        }
     }
 }
 
@@ -953,13 +959,17 @@ pub use crate::ffi_types::HandleVrmlConverterDrawer;
 
 unsafe impl crate::CppDeletable for HandleVrmlConverterDrawer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlConverterDrawer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_clone(ptr))
+        }
     }
 }
 
@@ -1026,7 +1036,9 @@ pub use crate::ffi_types::VrmlConverter_HLRShape as HLRShape;
 
 unsafe impl crate::CppDeletable for HLRShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_HLRShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_HLRShape_destructor(ptr);
+        }
     }
 }
 
@@ -1067,7 +1079,9 @@ pub use crate::ffi_types::VrmlConverter_IsoAspect as IsoAspect;
 
 unsafe impl crate::CppDeletable for IsoAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_destructor(ptr);
+        }
     }
 }
 
@@ -1316,13 +1330,17 @@ pub use crate::ffi_types::HandleVrmlConverterIsoAspect;
 
 unsafe impl crate::CppDeletable for HandleVrmlConverterIsoAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlConverterIsoAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_clone(ptr))
+        }
     }
 }
 
@@ -1386,7 +1404,9 @@ pub use crate::ffi_types::VrmlConverter_LineAspect as LineAspect;
 
 unsafe impl crate::CppDeletable for LineAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_destructor(ptr);
+        }
     }
 }
 
@@ -1597,13 +1617,19 @@ pub use crate::ffi_types::HandleVrmlConverterLineAspect;
 
 unsafe impl crate::CppDeletable for HandleVrmlConverterLineAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlConverterLineAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1672,7 +1698,9 @@ pub use crate::ffi_types::VrmlConverter_PointAspect as PointAspect;
 
 unsafe impl crate::CppDeletable for PointAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_destructor(ptr);
+        }
     }
 }
 
@@ -1883,13 +1911,19 @@ pub use crate::ffi_types::HandleVrmlConverterPointAspect;
 
 unsafe impl crate::CppDeletable for HandleVrmlConverterPointAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlConverterPointAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1945,7 +1979,9 @@ pub use crate::ffi_types::VrmlConverter_Projector as Projector;
 
 unsafe impl crate::CppDeletable for Projector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_destructor(ptr);
+        }
     }
 }
 
@@ -2168,13 +2204,17 @@ pub use crate::ffi_types::HandleVrmlConverterProjector;
 
 unsafe impl crate::CppDeletable for HandleVrmlConverterProjector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlConverterProjector {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_clone(ptr))
+        }
     }
 }
 
@@ -2234,7 +2274,9 @@ pub use crate::ffi_types::VrmlConverter_ShadedShape as ShadedShape;
 
 unsafe impl crate::CppDeletable for ShadedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_ShadedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_ShadedShape_destructor(ptr);
+        }
     }
 }
 
@@ -2283,7 +2325,9 @@ pub use crate::ffi_types::VrmlConverter_ShadingAspect as ShadingAspect;
 
 unsafe impl crate::CppDeletable for ShadingAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_destructor(ptr);
+        }
     }
 }
 
@@ -2529,13 +2573,19 @@ pub use crate::ffi_types::HandleVrmlConverterShadingAspect;
 
 unsafe impl crate::CppDeletable for HandleVrmlConverterShadingAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlConverterShadingAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2598,7 +2648,9 @@ pub use crate::ffi_types::VrmlConverter_WFDeflectionRestrictedFace as WFDeflecti
 
 unsafe impl crate::CppDeletable for WFDeflectionRestrictedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_WFDeflectionRestrictedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_WFDeflectionRestrictedFace_destructor(ptr);
+        }
     }
 }
 
@@ -2685,7 +2737,9 @@ pub use crate::ffi_types::VrmlConverter_WFDeflectionShape as WFDeflectionShape;
 
 unsafe impl crate::CppDeletable for WFDeflectionShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_WFDeflectionShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_WFDeflectionShape_destructor(ptr);
+        }
     }
 }
 
@@ -2732,7 +2786,9 @@ pub use crate::ffi_types::VrmlConverter_WFRestrictedFace as WFRestrictedFace;
 
 unsafe impl crate::CppDeletable for WFRestrictedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_WFRestrictedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_WFRestrictedFace_destructor(ptr);
+        }
     }
 }
 
@@ -2818,7 +2874,9 @@ pub use crate::ffi_types::VrmlConverter_WFShape as WFShape;
 
 unsafe impl crate::CppDeletable for WFShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlConverter_WFShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlConverter_WFShape_destructor(ptr);
+        }
     }
 }
 

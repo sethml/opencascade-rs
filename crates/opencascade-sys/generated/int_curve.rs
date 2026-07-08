@@ -17,13 +17,15 @@ pub use crate::ffi_types::IntCurve_IConicTool as IConicTool;
 
 unsafe impl crate::CppDeletable for IConicTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for IConicTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_clone(ptr)) }
     }
 }
 
@@ -172,7 +174,9 @@ pub use crate::ffi_types::IntCurve_IntConicConic as IntConicConic;
 
 unsafe impl crate::CppDeletable for IntConicConic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_destructor(ptr);
+        }
     }
 }
 
@@ -790,7 +794,9 @@ pub use crate::ffi_types::Interval;
 
 unsafe impl crate::CppDeletable for Interval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Interval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Interval_destructor(ptr);
+        }
     }
 }
 
@@ -799,7 +805,9 @@ pub use crate::ffi_types::PeriodicInterval;
 
 unsafe impl crate::CppDeletable for PeriodicInterval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::PeriodicInterval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::PeriodicInterval_destructor(ptr);
+        }
     }
 }
 
@@ -812,7 +820,9 @@ pub use crate::ffi_types::IntCurve_IntImpConicParConic as IntImpConicParConic;
 
 unsafe impl crate::CppDeletable for IntImpConicParConic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_destructor(ptr);
+        }
     }
 }
 
@@ -1034,7 +1044,11 @@ pub use crate::ffi_types::IntCurve_MyImpParToolOfIntImpConicParConic as MyImpPar
 
 unsafe impl crate::CppDeletable for MyImpParToolOfIntImpConicParConic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -1137,13 +1151,15 @@ pub use crate::ffi_types::IntCurve_PConic as PConic;
 
 unsafe impl crate::CppDeletable for PConic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for PConic {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_clone(ptr)) }
     }
 }
 
@@ -1282,7 +1298,9 @@ pub use crate::ffi_types::IntCurve_PConicTool as PConicTool;
 
 unsafe impl crate::CppDeletable for PConicTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurve_PConicTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConicTool_destructor(ptr);
+        }
     }
 }
 
@@ -1357,7 +1375,9 @@ pub use crate::ffi_types::IntCurve_ProjectOnPConicTool as ProjectOnPConicTool;
 
 unsafe impl crate::CppDeletable for ProjectOnPConicTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurve_ProjectOnPConicTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_ProjectOnPConicTool_destructor(ptr);
+        }
     }
 }
 

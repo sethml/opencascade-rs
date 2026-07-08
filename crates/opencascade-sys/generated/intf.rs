@@ -204,7 +204,9 @@ pub use crate::ffi_types::Intf_InterferencePolygon2d as InterferencePolygon2d;
 
 unsafe impl crate::CppDeletable for InterferencePolygon2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_destructor(ptr);
+        }
     }
 }
 
@@ -413,7 +415,9 @@ pub use crate::ffi_types::Intf_Polygon2d as Polygon2d;
 
 unsafe impl crate::CppDeletable for Polygon2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Intf_Polygon2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_Polygon2d_destructor(ptr);
+        }
     }
 }
 
@@ -484,13 +488,15 @@ pub use crate::ffi_types::Intf_SectionLine as SectionLine;
 
 unsafe impl crate::CppDeletable for SectionLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for SectionLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_clone(ptr)) }
     }
 }
 
@@ -646,7 +652,9 @@ pub use crate::ffi_types::Intf_SectionPoint as SectionPoint;
 
 unsafe impl crate::CppDeletable for SectionPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_destructor(ptr);
+        }
     }
 }
 
@@ -887,7 +895,9 @@ pub use crate::ffi_types::Intf_TangentZone as TangentZone;
 
 unsafe impl crate::CppDeletable for TangentZone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_destructor(ptr);
+        }
     }
 }
 
@@ -1111,7 +1121,9 @@ pub use crate::ffi_types::Intf_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Intf_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_Tool_destructor(ptr);
+        }
     }
 }
 

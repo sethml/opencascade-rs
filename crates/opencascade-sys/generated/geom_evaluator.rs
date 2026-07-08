@@ -20,7 +20,9 @@ pub use crate::ffi_types::GeomEvaluator_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomEvaluator_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomEvaluator_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -229,13 +231,15 @@ pub use crate::ffi_types::HandleGeomEvaluatorCurve;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleGeomEvaluatorCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomEvaluatorCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorCurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorCurve_clone(ptr)) }
     }
 }
 
@@ -303,7 +307,9 @@ pub use crate::ffi_types::GeomEvaluator_OffsetCurve as OffsetCurve;
 
 unsafe impl crate::CppDeletable for OffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_destructor(ptr);
+        }
     }
 }
 
@@ -612,13 +618,17 @@ pub use crate::ffi_types::HandleGeomEvaluatorOffsetCurve;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorOffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomEvaluatorOffsetCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetCurve_clone(ptr))
+        }
     }
 }
 
@@ -683,7 +693,9 @@ pub use crate::ffi_types::GeomEvaluator_OffsetSurface as OffsetSurface;
 
 unsafe impl crate::CppDeletable for OffsetSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1020,13 +1032,19 @@ pub use crate::ffi_types::HandleGeomEvaluatorOffsetSurface;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorOffsetSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomEvaluatorOffsetSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetSurface_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1088,7 +1106,9 @@ pub use crate::ffi_types::GeomEvaluator_Surface as Surface;
 
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomEvaluator_Surface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomEvaluator_Surface_destructor(ptr);
+        }
     }
 }
 
@@ -1349,13 +1369,17 @@ pub use crate::ffi_types::HandleGeomEvaluatorSurface;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomEvaluatorSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_clone(ptr))
+        }
     }
 }
 
@@ -1455,7 +1479,9 @@ pub use crate::ffi_types::GeomEvaluator_SurfaceOfExtrusion as SurfaceOfExtrusion
 
 unsafe impl crate::CppDeletable for SurfaceOfExtrusion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_destructor(ptr);
+        }
     }
 }
 
@@ -1791,15 +1817,19 @@ pub use crate::ffi_types::HandleGeomEvaluatorSurfaceOfExtrusion;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorSurfaceOfExtrusion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfExtrusion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfExtrusion_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomEvaluatorSurfaceOfExtrusion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfExtrusion_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfExtrusion_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1864,7 +1894,9 @@ pub use crate::ffi_types::GeomEvaluator_SurfaceOfRevolution as SurfaceOfRevoluti
 
 unsafe impl crate::CppDeletable for SurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_destructor(ptr);
+        }
     }
 }
 
@@ -2217,15 +2249,19 @@ pub use crate::ffi_types::HandleGeomEvaluatorSurfaceOfRevolution;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorSurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfRevolution_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomEvaluatorSurfaceOfRevolution {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfRevolution_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfRevolution_clone(ptr),
+            )
+        }
     }
 }
 

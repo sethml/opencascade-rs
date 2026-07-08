@@ -18,7 +18,9 @@ pub use crate::ffi_types::TColGeom2d_HArray1OfBSplineCurve as HArray1OfBSplineCu
 
 unsafe impl crate::CppDeletable for HArray1OfBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::TColGeom2d_HArray1OfBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::TColGeom2d_HArray1OfBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -242,15 +244,19 @@ pub use crate::ffi_types::HandleTColGeom2dHArray1OfBSplineCurve;
 
 unsafe impl crate::CppDeletable for HandleTColGeom2dHArray1OfBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfBSplineCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeom2dHArray1OfBSplineCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfBSplineCurve_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfBSplineCurve_clone(ptr),
+            )
+        }
     }
 }
 
@@ -305,7 +311,9 @@ pub use crate::ffi_types::TColGeom2d_HArray1OfBezierCurve as HArray1OfBezierCurv
 
 unsafe impl crate::CppDeletable for HArray1OfBezierCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::TColGeom2d_HArray1OfBezierCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::TColGeom2d_HArray1OfBezierCurve_destructor(ptr);
+        }
     }
 }
 
@@ -529,15 +537,19 @@ pub use crate::ffi_types::HandleTColGeom2dHArray1OfBezierCurve;
 
 unsafe impl crate::CppDeletable for HandleTColGeom2dHArray1OfBezierCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfBezierCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfBezierCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeom2dHArray1OfBezierCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfBezierCurve_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfBezierCurve_clone(ptr),
+            )
+        }
     }
 }
 
@@ -592,7 +604,9 @@ pub use crate::ffi_types::TColGeom2d_HArray1OfCurve as HArray1OfCurve;
 
 unsafe impl crate::CppDeletable for HArray1OfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::TColGeom2d_HArray1OfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::TColGeom2d_HArray1OfCurve_destructor(ptr);
+        }
     }
 }
 
@@ -814,13 +828,17 @@ pub use crate::ffi_types::HandleTColGeom2dHArray1OfCurve;
 
 unsafe impl crate::CppDeletable for HandleTColGeom2dHArray1OfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeom2dHArray1OfCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHArray1OfCurve_clone(ptr))
+        }
     }
 }
 
@@ -873,7 +891,9 @@ pub use crate::ffi_types::TColGeom2d_HSequenceOfBoundedCurve as HSequenceOfBound
 
 unsafe impl crate::CppDeletable for HSequenceOfBoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::TColGeom2d_HSequenceOfBoundedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::TColGeom2d_HSequenceOfBoundedCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1073,15 +1093,19 @@ pub use crate::ffi_types::HandleTColGeom2dHSequenceOfBoundedCurve;
 
 unsafe impl crate::CppDeletable for HandleTColGeom2dHSequenceOfBoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfBoundedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfBoundedCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeom2dHSequenceOfBoundedCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfBoundedCurve_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfBoundedCurve_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1136,7 +1160,9 @@ pub use crate::ffi_types::TColGeom2d_HSequenceOfCurve as HSequenceOfCurve;
 
 unsafe impl crate::CppDeletable for HSequenceOfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::TColGeom2d_HSequenceOfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::TColGeom2d_HSequenceOfCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1345,13 +1371,19 @@ pub use crate::ffi_types::HandleTColGeom2dHSequenceOfCurve;
 
 unsafe impl crate::CppDeletable for HandleTColGeom2dHSequenceOfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeom2dHSequenceOfCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG2d::HandleTColGeom2dHSequenceOfCurve_clone(
+                ptr,
+            ))
+        }
     }
 }
 

@@ -108,7 +108,9 @@ pub use crate::ffi_types::ChFi3d_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFi3d_Builder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFi3d_Builder_destructor(ptr);
+        }
     }
 }
 
@@ -481,7 +483,9 @@ pub use crate::ffi_types::ChFi3d_ChBuilder as ChBuilder;
 
 unsafe impl crate::CppDeletable for ChBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -1308,7 +1312,9 @@ pub use crate::ffi_types::ChFi3d_FilBuilder as FilBuilder;
 
 unsafe impl crate::CppDeletable for FilBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -1934,7 +1940,9 @@ pub use crate::ffi_types::ChFi3d_SearchSing as SearchSing;
 
 unsafe impl crate::CppDeletable for SearchSing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFi3d_SearchSing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFi3d_SearchSing_destructor(ptr);
+        }
     }
 }
 

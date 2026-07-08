@@ -53,7 +53,9 @@ pub use crate::ffi_types::BiTgte_Blend as Blend;
 
 unsafe impl crate::CppDeletable for Blend {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BiTgte_Blend_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BiTgte_Blend_destructor(ptr);
+        }
     }
 }
 
@@ -415,7 +417,9 @@ pub use crate::ffi_types::BiTgte_CurveOnEdge as CurveOnEdge;
 
 unsafe impl crate::CppDeletable for CurveOnEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_destructor(ptr);
+        }
     }
 }
 
@@ -913,13 +917,17 @@ pub use crate::ffi_types::HandleBiTgteCurveOnEdge;
 
 unsafe impl crate::CppDeletable for HandleBiTgteCurveOnEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBiTgteCurveOnEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_clone(ptr))
+        }
     }
 }
 
@@ -983,7 +991,9 @@ pub use crate::ffi_types::BiTgte_CurveOnVertex as CurveOnVertex;
 
 unsafe impl crate::CppDeletable for CurveOnVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_destructor(ptr);
+        }
     }
 }
 
@@ -1489,13 +1499,17 @@ pub use crate::ffi_types::HandleBiTgteCurveOnVertex;
 
 unsafe impl crate::CppDeletable for HandleBiTgteCurveOnVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBiTgteCurveOnVertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_clone(ptr))
+        }
     }
 }
 

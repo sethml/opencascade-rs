@@ -126,7 +126,9 @@ pub use crate::ffi_types::Transfer_ActorDispatch as ActorDispatch;
 
 unsafe impl crate::CppDeletable for ActorDispatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_destructor(ptr);
+        }
     }
 }
 
@@ -542,13 +544,17 @@ pub use crate::ffi_types::HandleTransferActorDispatch;
 
 unsafe impl crate::CppDeletable for HandleTransferActorDispatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferActorDispatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferActorDispatch_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferActorDispatch {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorDispatch_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorDispatch_clone(ptr))
+        }
     }
 }
 
@@ -623,7 +629,9 @@ pub use crate::ffi_types::Transfer_ActorOfFinderProcess as ActorOfFinderProcess;
 
 unsafe impl crate::CppDeletable for ActorOfFinderProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_destructor(ptr);
+        }
     }
 }
 
@@ -1012,15 +1020,19 @@ pub use crate::ffi_types::HandleTransferActorOfFinderProcess;
 
 unsafe impl crate::CppDeletable for HandleTransferActorOfFinderProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferActorOfFinderProcess {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1141,7 +1153,9 @@ pub use crate::ffi_types::Transfer_ActorOfProcessForFinder as ActorOfProcessForF
 
 unsafe impl crate::CppDeletable for ActorOfProcessForFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_destructor(ptr);
+        }
     }
 }
 
@@ -1416,15 +1430,19 @@ pub use crate::ffi_types::HandleTransferActorOfProcessForFinder;
 
 unsafe impl crate::CppDeletable for HandleTransferActorOfProcessForFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferActorOfProcessForFinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1543,7 +1561,9 @@ pub use crate::ffi_types::Transfer_ActorOfProcessForTransient as ActorOfProcessF
 
 unsafe impl crate::CppDeletable for ActorOfProcessForTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_destructor(ptr);
+        }
     }
 }
 
@@ -1817,15 +1837,19 @@ pub use crate::ffi_types::HandleTransferActorOfProcessForTransient;
 
 unsafe impl crate::CppDeletable for HandleTransferActorOfProcessForTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferActorOfProcessForTransient {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1945,7 +1969,9 @@ pub use crate::ffi_types::Transfer_ActorOfTransientProcess as ActorOfTransientPr
 
 unsafe impl crate::CppDeletable for ActorOfTransientProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_destructor(ptr);
+        }
     }
 }
 
@@ -2308,15 +2334,19 @@ pub use crate::ffi_types::HandleTransferActorOfTransientProcess;
 
 unsafe impl crate::CppDeletable for HandleTransferActorOfTransientProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferActorOfTransientProcess {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2459,7 +2489,9 @@ pub use crate::ffi_types::Transfer_Binder as Binder;
 
 unsafe impl crate::CppDeletable for Binder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_Binder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_Binder_destructor(ptr);
+        }
     }
 }
 
@@ -2759,13 +2791,15 @@ pub use crate::ffi_types::HandleTransferBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferBinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBinder_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBinder_clone(ptr)) }
     }
 }
 
@@ -2952,7 +2986,9 @@ pub use crate::ffi_types::Transfer_BinderOfTransientInteger as BinderOfTransient
 
 unsafe impl crate::CppDeletable for BinderOfTransientInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_destructor(ptr);
+        }
     }
 }
 
@@ -3298,15 +3334,19 @@ pub use crate::ffi_types::HandleTransferBinderOfTransientInteger;
 
 unsafe impl crate::CppDeletable for HandleTransferBinderOfTransientInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferBinderOfTransientInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBinderOfTransientInteger_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferBinderOfTransientInteger {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKXSBase::HandleTransferBinderOfTransientInteger_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferBinderOfTransientInteger_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3380,7 +3420,9 @@ pub use crate::ffi_types::Transfer_DataInfo as DataInfo;
 
 unsafe impl crate::CppDeletable for DataInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_DataInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_DataInfo_destructor(ptr);
+        }
     }
 }
 
@@ -3435,7 +3477,9 @@ pub use crate::ffi_types::Transfer_DispatchControl as DispatchControl;
 
 unsafe impl crate::CppDeletable for DispatchControl {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_DispatchControl_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_DispatchControl_destructor(ptr);
+        }
     }
 }
 
@@ -3677,13 +3721,19 @@ pub use crate::ffi_types::HandleTransferDispatchControl;
 
 unsafe impl crate::CppDeletable for HandleTransferDispatchControl {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferDispatchControl_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferDispatchControl_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferDispatchControl {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferDispatchControl_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferDispatchControl_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3748,7 +3798,9 @@ pub use crate::ffi_types::Transfer_Finder as Finder;
 
 unsafe impl crate::CppDeletable for Finder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_Finder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_Finder_destructor(ptr);
+        }
     }
 }
 
@@ -4179,13 +4231,15 @@ pub use crate::ffi_types::HandleTransferFinder;
 
 unsafe impl crate::CppDeletable for HandleTransferFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferFinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferFinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferFinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferFinder_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferFinder_clone(ptr)) }
     }
 }
 
@@ -4270,7 +4324,9 @@ pub use crate::ffi_types::Transfer_FinderProcess as FinderProcess;
 
 unsafe impl crate::CppDeletable for FinderProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_FinderProcess_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_destructor(ptr);
+        }
     }
 }
 
@@ -5198,13 +5254,17 @@ pub use crate::ffi_types::HandleTransferFinderProcess;
 
 unsafe impl crate::CppDeletable for HandleTransferFinderProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferFinderProcess_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferFinderProcess_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferFinderProcess {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferFinderProcess_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferFinderProcess_clone(ptr))
+        }
     }
 }
 
@@ -5266,7 +5326,9 @@ pub use crate::ffi_types::Transfer_HSequenceOfBinder as HSequenceOfBinder;
 
 unsafe impl crate::CppDeletable for HSequenceOfBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_destructor(ptr);
+        }
     }
 }
 
@@ -5482,13 +5544,19 @@ pub use crate::ffi_types::HandleTransferHSequenceOfBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferHSequenceOfBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfBinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferHSequenceOfBinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfBinder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfBinder_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -5539,7 +5607,9 @@ pub use crate::ffi_types::Transfer_HSequenceOfFinder as HSequenceOfFinder;
 
 unsafe impl crate::CppDeletable for HSequenceOfFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_destructor(ptr);
+        }
     }
 }
 
@@ -5755,13 +5825,19 @@ pub use crate::ffi_types::HandleTransferHSequenceOfFinder;
 
 unsafe impl crate::CppDeletable for HandleTransferHSequenceOfFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfFinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfFinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferHSequenceOfFinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfFinder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfFinder_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -5812,7 +5888,9 @@ pub use crate::ffi_types::Transfer_IteratorOfProcessForFinder as IteratorOfProce
 
 unsafe impl crate::CppDeletable for IteratorOfProcessForFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_destructor(ptr);
+        }
     }
 }
 
@@ -6097,7 +6175,9 @@ pub use crate::ffi_types::Transfer_IteratorOfProcessForTransient as IteratorOfPr
 
 unsafe impl crate::CppDeletable for IteratorOfProcessForTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_destructor(ptr);
+        }
     }
 }
 
@@ -6372,7 +6452,9 @@ pub use crate::ffi_types::Transfer_MapContainer as MapContainer;
 
 unsafe impl crate::CppDeletable for MapContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_MapContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_MapContainer_destructor(ptr);
+        }
     }
 }
 
@@ -6551,13 +6633,17 @@ pub use crate::ffi_types::HandleTransferMapContainer;
 
 unsafe impl crate::CppDeletable for HandleTransferMapContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferMapContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferMapContainer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferMapContainer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferMapContainer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferMapContainer_clone(ptr))
+        }
     }
 }
 
@@ -6628,7 +6714,9 @@ pub use crate::ffi_types::Transfer_MultipleBinder as MultipleBinder;
 
 unsafe impl crate::CppDeletable for MultipleBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_destructor(ptr);
+        }
     }
 }
 
@@ -6995,13 +7083,17 @@ pub use crate::ffi_types::HandleTransferMultipleBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferMultipleBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferMultipleBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferMultipleBinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferMultipleBinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferMultipleBinder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferMultipleBinder_clone(ptr))
+        }
     }
 }
 
@@ -7065,7 +7157,9 @@ pub use crate::ffi_types::Transfer_ProcessForFinder as ProcessForFinder;
 
 unsafe impl crate::CppDeletable for ProcessForFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_destructor(ptr);
+        }
     }
 }
 
@@ -8219,13 +8313,19 @@ pub use crate::ffi_types::HandleTransferProcessForFinder;
 
 unsafe impl crate::CppDeletable for HandleTransferProcessForFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferProcessForFinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferProcessForFinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferProcessForFinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferProcessForFinder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferProcessForFinder_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -8297,7 +8397,9 @@ pub use crate::ffi_types::Transfer_ProcessForTransient as ProcessForTransient;
 
 unsafe impl crate::CppDeletable for ProcessForTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_destructor(ptr);
+        }
     }
 }
 
@@ -9467,15 +9569,19 @@ pub use crate::ffi_types::HandleTransferProcessForTransient;
 
 unsafe impl crate::CppDeletable for HandleTransferProcessForTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferProcessForTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferProcessForTransient_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferProcessForTransient {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferProcessForTransient_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferProcessForTransient_clone(ptr),
+            )
+        }
     }
 }
 
@@ -9561,7 +9667,9 @@ pub use crate::ffi_types::Transfer_ResultFromModel as ResultFromModel;
 
 unsafe impl crate::CppDeletable for ResultFromModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_destructor(ptr);
+        }
     }
 }
 
@@ -9984,13 +10092,19 @@ pub use crate::ffi_types::HandleTransferResultFromModel;
 
 unsafe impl crate::CppDeletable for HandleTransferResultFromModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferResultFromModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferResultFromModel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferResultFromModel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferResultFromModel_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferResultFromModel_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -10049,7 +10163,9 @@ pub use crate::ffi_types::Transfer_ResultFromTransient as ResultFromTransient;
 
 unsafe impl crate::CppDeletable for ResultFromTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_destructor(ptr);
+        }
     }
 }
 
@@ -10387,15 +10503,19 @@ pub use crate::ffi_types::HandleTransferResultFromTransient;
 
 unsafe impl crate::CppDeletable for HandleTransferResultFromTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferResultFromTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferResultFromTransient_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferResultFromTransient {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferResultFromTransient_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferResultFromTransient_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10453,7 +10573,9 @@ pub use crate::ffi_types::Transfer_SimpleBinderOfTransient as SimpleBinderOfTran
 
 unsafe impl crate::CppDeletable for SimpleBinderOfTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_destructor(ptr);
+        }
     }
 }
 
@@ -10810,15 +10932,19 @@ pub use crate::ffi_types::HandleTransferSimpleBinderOfTransient;
 
 unsafe impl crate::CppDeletable for HandleTransferSimpleBinderOfTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferSimpleBinderOfTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferSimpleBinderOfTransient_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferSimpleBinderOfTransient {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKXSBase::HandleTransferSimpleBinderOfTransient_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferSimpleBinderOfTransient_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10896,7 +11022,9 @@ pub use crate::ffi_types::Transfer_TransferDeadLoop as TransferDeadLoop;
 
 unsafe impl crate::CppDeletable for TransferDeadLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_destructor(ptr);
+        }
     }
 }
 
@@ -11209,13 +11337,19 @@ pub use crate::ffi_types::HandleTransferTransferDeadLoop;
 
 unsafe impl crate::CppDeletable for HandleTransferTransferDeadLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferTransferDeadLoop {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -11308,7 +11442,9 @@ pub use crate::ffi_types::Transfer_TransferDispatch as TransferDispatch;
 
 unsafe impl crate::CppDeletable for TransferDispatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_destructor(ptr);
+        }
     }
 }
 
@@ -11585,7 +11721,9 @@ pub use crate::ffi_types::Transfer_TransferFailure as TransferFailure;
 
 unsafe impl crate::CppDeletable for TransferFailure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_TransferFailure_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_destructor(ptr);
+        }
     }
 }
 
@@ -11880,13 +12018,19 @@ pub use crate::ffi_types::HandleTransferTransferFailure;
 
 unsafe impl crate::CppDeletable for HandleTransferTransferFailure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferTransferFailure {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -11978,7 +12122,9 @@ pub use crate::ffi_types::Transfer_TransferInput as TransferInput;
 
 unsafe impl crate::CppDeletable for TransferInput {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_TransferInput_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_TransferInput_destructor(ptr);
+        }
     }
 }
 
@@ -12087,7 +12233,9 @@ pub use crate::ffi_types::Transfer_TransferIterator as TransferIterator;
 
 unsafe impl crate::CppDeletable for TransferIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_TransferIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_destructor(ptr);
+        }
     }
 }
 
@@ -12330,7 +12478,9 @@ pub use crate::ffi_types::Transfer_TransferOutput as TransferOutput;
 
 unsafe impl crate::CppDeletable for TransferOutput {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_TransferOutput_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_TransferOutput_destructor(ptr);
+        }
     }
 }
 
@@ -12516,7 +12666,9 @@ pub use crate::ffi_types::Transfer_TransientListBinder as TransientListBinder;
 
 unsafe impl crate::CppDeletable for TransientListBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_destructor(ptr);
+        }
     }
 }
 
@@ -12881,15 +13033,19 @@ pub use crate::ffi_types::HandleTransferTransientListBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferTransientListBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferTransientListBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferTransientListBinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferTransientListBinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientListBinder_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferTransientListBinder_clone(ptr),
+            )
+        }
     }
 }
 
@@ -12951,7 +13107,9 @@ pub use crate::ffi_types::Transfer_TransientMapper as TransientMapper;
 
 unsafe impl crate::CppDeletable for TransientMapper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_TransientMapper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_TransientMapper_destructor(ptr);
+        }
     }
 }
 
@@ -13213,13 +13371,19 @@ pub use crate::ffi_types::HandleTransferTransientMapper;
 
 unsafe impl crate::CppDeletable for HandleTransferTransientMapper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferTransientMapper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferTransientMapper_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferTransientMapper {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientMapper_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientMapper_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -13287,7 +13451,9 @@ pub use crate::ffi_types::Transfer_TransientProcess as TransientProcess;
 
 unsafe impl crate::CppDeletable for TransientProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_TransientProcess_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_destructor(ptr);
+        }
     }
 }
 
@@ -14317,13 +14483,19 @@ pub use crate::ffi_types::HandleTransferTransientProcess;
 
 unsafe impl crate::CppDeletable for HandleTransferTransientProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferTransientProcess_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferTransientProcess_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferTransientProcess {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientProcess_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientProcess_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -14388,7 +14560,9 @@ pub use crate::ffi_types::Transfer_VoidBinder as VoidBinder;
 
 unsafe impl crate::CppDeletable for VoidBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_VoidBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_destructor(ptr);
+        }
     }
 }
 
@@ -14690,13 +14864,17 @@ pub use crate::ffi_types::HandleTransferVoidBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferVoidBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferVoidBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferVoidBinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferVoidBinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferVoidBinder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferVoidBinder_clone(ptr))
+        }
     }
 }
 

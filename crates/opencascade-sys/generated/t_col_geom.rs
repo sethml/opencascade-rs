@@ -18,7 +18,9 @@ pub use crate::ffi_types::TColGeom_HArray1OfBSplineCurve as HArray1OfBSplineCurv
 
 unsafe impl crate::CppDeletable for HArray1OfBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_HArray1OfBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_HArray1OfBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -240,13 +242,19 @@ pub use crate::ffi_types::HandleTColGeomHArray1OfBSplineCurve;
 
 unsafe impl crate::CppDeletable for HandleTColGeomHArray1OfBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfBSplineCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeomHArray1OfBSplineCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfBSplineCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfBSplineCurve_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -299,7 +307,9 @@ pub use crate::ffi_types::TColGeom_HArray1OfBezierCurve as HArray1OfBezierCurve;
 
 unsafe impl crate::CppDeletable for HArray1OfBezierCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_HArray1OfBezierCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_HArray1OfBezierCurve_destructor(ptr);
+        }
     }
 }
 
@@ -521,13 +531,19 @@ pub use crate::ffi_types::HandleTColGeomHArray1OfBezierCurve;
 
 unsafe impl crate::CppDeletable for HandleTColGeomHArray1OfBezierCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfBezierCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfBezierCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeomHArray1OfBezierCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfBezierCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfBezierCurve_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -578,7 +594,9 @@ pub use crate::ffi_types::TColGeom_HArray1OfCurve as HArray1OfCurve;
 
 unsafe impl crate::CppDeletable for HArray1OfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_HArray1OfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_HArray1OfCurve_destructor(ptr);
+        }
     }
 }
 
@@ -796,13 +814,17 @@ pub use crate::ffi_types::HandleTColGeomHArray1OfCurve;
 
 unsafe impl crate::CppDeletable for HandleTColGeomHArray1OfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeomHArray1OfCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfCurve_clone(ptr))
+        }
     }
 }
 
@@ -855,7 +877,9 @@ pub use crate::ffi_types::TColGeom_HArray1OfSurface as HArray1OfSurface;
 
 unsafe impl crate::CppDeletable for HArray1OfSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_HArray1OfSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_HArray1OfSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1077,13 +1101,17 @@ pub use crate::ffi_types::HandleTColGeomHArray1OfSurface;
 
 unsafe impl crate::CppDeletable for HandleTColGeomHArray1OfSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeomHArray1OfSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHArray1OfSurface_clone(ptr))
+        }
     }
 }
 
@@ -1136,7 +1164,9 @@ pub use crate::ffi_types::TColGeom_HArray2OfSurface as HArray2OfSurface;
 
 unsafe impl crate::CppDeletable for HArray2OfSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_HArray2OfSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_HArray2OfSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1342,13 +1372,17 @@ pub use crate::ffi_types::HandleTColGeomHArray2OfSurface;
 
 unsafe impl crate::CppDeletable for HandleTColGeomHArray2OfSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleTColGeomHArray2OfSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHArray2OfSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeomHArray2OfSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHArray2OfSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHArray2OfSurface_clone(ptr))
+        }
     }
 }
 
@@ -1401,7 +1435,9 @@ pub use crate::ffi_types::TColGeom_HSequenceOfBoundedCurve as HSequenceOfBounded
 
 unsafe impl crate::CppDeletable for HSequenceOfBoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_HSequenceOfBoundedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_HSequenceOfBoundedCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1613,15 +1649,19 @@ pub use crate::ffi_types::HandleTColGeomHSequenceOfBoundedCurve;
 
 unsafe impl crate::CppDeletable for HandleTColGeomHSequenceOfBoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleTColGeomHSequenceOfBoundedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHSequenceOfBoundedCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeomHSequenceOfBoundedCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHSequenceOfBoundedCurve_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKG3d::HandleTColGeomHSequenceOfBoundedCurve_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1676,7 +1716,9 @@ pub use crate::ffi_types::TColGeom_HSequenceOfCurve as HSequenceOfCurve;
 
 unsafe impl crate::CppDeletable for HSequenceOfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_HSequenceOfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_HSequenceOfCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1883,13 +1925,17 @@ pub use crate::ffi_types::HandleTColGeomHSequenceOfCurve;
 
 unsafe impl crate::CppDeletable for HandleTColGeomHSequenceOfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleTColGeomHSequenceOfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleTColGeomHSequenceOfCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColGeomHSequenceOfCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHSequenceOfCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG3d::HandleTColGeomHSequenceOfCurve_clone(ptr))
+        }
     }
 }
 

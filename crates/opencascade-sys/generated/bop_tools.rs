@@ -22,7 +22,9 @@ pub use crate::ffi_types::BOPTools_AlgoTools as AlgoTools;
 
 unsafe impl crate::CppDeletable for AlgoTools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPTools_AlgoTools_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_destructor(ptr);
+        }
     }
 }
 
@@ -960,7 +962,9 @@ pub use crate::ffi_types::BOPTools_AlgoTools2D as AlgoTools2D;
 
 unsafe impl crate::CppDeletable for AlgoTools2D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_destructor(ptr);
+        }
     }
 }
 
@@ -1271,7 +1275,9 @@ pub use crate::ffi_types::BOPTools_AlgoTools3D as AlgoTools3D;
 
 unsafe impl crate::CppDeletable for AlgoTools3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_destructor(ptr);
+        }
     }
 }
 
@@ -1647,7 +1653,9 @@ pub use crate::ffi_types::BOPTools_ConnexityBlock as ConnexityBlock;
 
 unsafe impl crate::CppDeletable for ConnexityBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPTools_ConnexityBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPTools_ConnexityBlock_destructor(ptr);
+        }
     }
 }
 
@@ -1734,7 +1742,9 @@ pub use crate::ffi_types::BOPTools_CoupleOfShape as CoupleOfShape;
 
 unsafe impl crate::CppDeletable for CoupleOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPTools_CoupleOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPTools_CoupleOfShape_destructor(ptr);
+        }
     }
 }
 
@@ -1790,13 +1800,15 @@ pub use crate::ffi_types::BOPTools_Set as Set;
 
 unsafe impl crate::CppDeletable for Set {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPTools_Set_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPTools_Set_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Set {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBO::BOPTools_Set_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBO::BOPTools_Set_clone(ptr)) }
     }
 }
 

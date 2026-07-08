@@ -66,7 +66,9 @@ pub use crate::ffi_types::XCAFPrs_AISObject as AISObject;
 
 unsafe impl crate::CppDeletable for AISObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFPrs_AISObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFPrs_AISObject_destructor(ptr);
+        }
     }
 }
 
@@ -1822,13 +1824,15 @@ pub use crate::ffi_types::HandleXCAFPrsAISObject;
 
 unsafe impl crate::CppDeletable for HandleXCAFPrsAISObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::HandleXCAFPrsAISObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFPrsAISObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXCAFPrsAISObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFPrsAISObject_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFPrsAISObject_clone(ptr)) }
     }
 }
 
@@ -1943,7 +1947,9 @@ pub use crate::ffi_types::XCAFPrs_DocumentExplorer as DocumentExplorer;
 
 unsafe impl crate::CppDeletable for DocumentExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFPrs_DocumentExplorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFPrs_DocumentExplorer_destructor(ptr);
+        }
     }
 }
 
@@ -2190,7 +2196,9 @@ pub use crate::ffi_types::XCAFPrs_DocumentIdIterator as DocumentIdIterator;
 
 unsafe impl crate::CppDeletable for DocumentIdIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFPrs_DocumentIdIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFPrs_DocumentIdIterator_destructor(ptr);
+        }
     }
 }
 
@@ -2242,7 +2250,9 @@ pub use crate::ffi_types::XCAFPrs_DocumentNode as DocumentNode;
 
 unsafe impl crate::CppDeletable for DocumentNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFPrs_DocumentNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFPrs_DocumentNode_destructor(ptr);
+        }
     }
 }
 
@@ -2269,7 +2279,9 @@ pub use crate::ffi_types::XCAFPrs_Driver as Driver;
 
 unsafe impl crate::CppDeletable for Driver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFPrs_Driver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFPrs_Driver_destructor(ptr);
+        }
     }
 }
 
@@ -2445,13 +2457,15 @@ pub use crate::ffi_types::HandleXCAFPrsDriver;
 
 unsafe impl crate::CppDeletable for HandleXCAFPrsDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::HandleXCAFPrsDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFPrsDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXCAFPrsDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFPrsDriver_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFPrsDriver_clone(ptr)) }
     }
 }
 
@@ -2514,7 +2528,9 @@ pub use crate::ffi_types::XCAFPrs_Style as Style;
 
 unsafe impl crate::CppDeletable for Style {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFPrs_Style_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFPrs_Style_destructor(ptr);
+        }
     }
 }
 
@@ -2693,7 +2709,9 @@ pub use crate::ffi_types::XCAFPrs_Texture as Texture;
 
 unsafe impl crate::CppDeletable for Texture {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFPrs_Texture_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFPrs_Texture_destructor(ptr);
+        }
     }
 }
 
@@ -3142,13 +3160,15 @@ pub use crate::ffi_types::HandleXCAFPrsTexture;
 
 unsafe impl crate::CppDeletable for HandleXCAFPrsTexture {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::HandleXCAFPrsTexture_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFPrsTexture_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXCAFPrsTexture {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFPrsTexture_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFPrsTexture_clone(ptr)) }
     }
 }
 

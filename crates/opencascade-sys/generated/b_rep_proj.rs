@@ -19,7 +19,9 @@ pub use crate::ffi_types::BRepProj_Projection as Projection;
 
 unsafe impl crate::CppDeletable for Projection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepProj_Projection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepProj_Projection_destructor(ptr);
+        }
     }
 }
 

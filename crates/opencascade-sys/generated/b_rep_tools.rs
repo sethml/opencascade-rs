@@ -550,7 +550,9 @@ pub use crate::ffi_types::BRepTools_CopyModification as CopyModification;
 
 unsafe impl crate::CppDeletable for CopyModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_CopyModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_CopyModification_destructor(ptr);
+        }
     }
 }
 
@@ -965,13 +967,19 @@ pub use crate::ffi_types::HandleBRepToolsCopyModification;
 
 unsafe impl crate::CppDeletable for HandleBRepToolsCopyModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepToolsCopyModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsCopyModification_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepToolsCopyModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsCopyModification_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsCopyModification_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1050,7 +1058,9 @@ pub use crate::ffi_types::BRepTools_GTrsfModification as GTrsfModification;
 
 unsafe impl crate::CppDeletable for GTrsfModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_GTrsfModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_GTrsfModification_destructor(ptr);
+        }
     }
 }
 
@@ -1457,13 +1467,19 @@ pub use crate::ffi_types::HandleBRepToolsGTrsfModification;
 
 unsafe impl crate::CppDeletable for HandleBRepToolsGTrsfModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepToolsGTrsfModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsGTrsfModification_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepToolsGTrsfModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsGTrsfModification_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsGTrsfModification_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1585,7 +1601,9 @@ pub use crate::ffi_types::BRepTools_History as History;
 
 unsafe impl crate::CppDeletable for History {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_History_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_History_destructor(ptr);
+        }
     }
 }
 
@@ -1934,13 +1952,15 @@ pub use crate::ffi_types::HandleBRepToolsHistory;
 
 unsafe impl crate::CppDeletable for HandleBRepToolsHistory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepToolsHistory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsHistory_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepToolsHistory {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsHistory_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsHistory_clone(ptr)) }
     }
 }
 
@@ -1993,7 +2013,9 @@ pub use crate::ffi_types::BRepTools_Modification as Modification;
 
 unsafe impl crate::CppDeletable for Modification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_Modification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_Modification_destructor(ptr);
+        }
     }
 }
 
@@ -2341,13 +2363,17 @@ pub use crate::ffi_types::HandleBRepToolsModification;
 
 unsafe impl crate::CppDeletable for HandleBRepToolsModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepToolsModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsModification_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepToolsModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsModification_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsModification_clone(ptr))
+        }
     }
 }
 
@@ -2609,7 +2635,9 @@ pub use crate::ffi_types::BRepTools_Modifier as Modifier;
 
 unsafe impl crate::CppDeletable for Modifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_Modifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_Modifier_destructor(ptr);
+        }
     }
 }
 
@@ -2736,7 +2764,9 @@ pub use crate::ffi_types::BRepTools_NurbsConvertModification as NurbsConvertModi
 
 unsafe impl crate::CppDeletable for NurbsConvertModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_NurbsConvertModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_NurbsConvertModification_destructor(ptr);
+        }
     }
 }
 
@@ -3139,15 +3169,19 @@ pub use crate::ffi_types::HandleBRepToolsNurbsConvertModification;
 
 unsafe impl crate::CppDeletable for HandleBRepToolsNurbsConvertModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepToolsNurbsConvertModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsNurbsConvertModification_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepToolsNurbsConvertModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKBRep::HandleBRepToolsNurbsConvertModification_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBRep::HandleBRepToolsNurbsConvertModification_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3223,7 +3257,9 @@ pub use crate::ffi_types::BRepTools_PurgeLocations as PurgeLocations;
 
 unsafe impl crate::CppDeletable for PurgeLocations {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_PurgeLocations_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_PurgeLocations_destructor(ptr);
+        }
     }
 }
 
@@ -3303,7 +3339,9 @@ pub use crate::ffi_types::BRepTools_Quilt as Quilt;
 
 unsafe impl crate::CppDeletable for Quilt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_Quilt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_Quilt_destructor(ptr);
+        }
     }
 }
 
@@ -3422,7 +3460,9 @@ pub use crate::ffi_types::BRepTools_ReShape as ReShape;
 
 unsafe impl crate::CppDeletable for ReShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_ReShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_ReShape_destructor(ptr);
+        }
     }
 }
 
@@ -3732,13 +3772,15 @@ pub use crate::ffi_types::HandleBRepToolsReShape;
 
 unsafe impl crate::CppDeletable for HandleBRepToolsReShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepToolsReShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsReShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepToolsReShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsReShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsReShape_clone(ptr)) }
     }
 }
 
@@ -3811,7 +3853,9 @@ pub use crate::ffi_types::BRepTools_ShapeSet as ShapeSet;
 
 unsafe impl crate::CppDeletable for ShapeSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_ShapeSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_ShapeSet_destructor(ptr);
+        }
     }
 }
 
@@ -4349,7 +4393,9 @@ pub use crate::ffi_types::BRepTools_Substitution as Substitution;
 
 unsafe impl crate::CppDeletable for Substitution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_Substitution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_Substitution_destructor(ptr);
+        }
     }
 }
 
@@ -4446,7 +4492,9 @@ pub use crate::ffi_types::BRepTools_TrsfModification as TrsfModification;
 
 unsafe impl crate::CppDeletable for TrsfModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_TrsfModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_TrsfModification_destructor(ptr);
+        }
     }
 }
 
@@ -4867,13 +4915,19 @@ pub use crate::ffi_types::HandleBRepToolsTrsfModification;
 
 unsafe impl crate::CppDeletable for HandleBRepToolsTrsfModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepToolsTrsfModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepToolsTrsfModification_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepToolsTrsfModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsTrsfModification_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepToolsTrsfModification_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4962,7 +5016,9 @@ pub use crate::ffi_types::BRepTools_WireExplorer as WireExplorer;
 
 unsafe impl crate::CppDeletable for WireExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepTools_WireExplorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepTools_WireExplorer_destructor(ptr);
+        }
     }
 }
 

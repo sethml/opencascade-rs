@@ -15,7 +15,9 @@ pub use crate::ffi_types::TopBas_TestInterference as TestInterference;
 
 unsafe impl crate::CppDeletable for TestInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::TopBas_TestInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::TopBas_TestInterference_destructor(ptr);
+        }
     }
 }
 

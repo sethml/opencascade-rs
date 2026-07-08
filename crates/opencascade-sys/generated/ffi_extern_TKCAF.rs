@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== AppStd_Application ========================
     pub fn AppStd_Application_destructor(self_: *mut AppStd_Application);
     /// **Source:** `AppStd_Application.hxx` - `AppStd_Application::AppStd_Application()`

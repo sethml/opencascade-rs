@@ -37,7 +37,9 @@ pub use crate::ffi_types::BRep_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_Builder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_Builder_destructor(ptr);
+        }
     }
 }
 
@@ -988,7 +990,9 @@ pub use crate::ffi_types::BRep_Curve3D as Curve3D;
 
 unsafe impl crate::CppDeletable for Curve3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_Curve3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_Curve3D_destructor(ptr);
+        }
     }
 }
 
@@ -1430,13 +1434,15 @@ pub use crate::ffi_types::HandleBRepCurve3D;
 
 unsafe impl crate::CppDeletable for HandleBRepCurve3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepCurve3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepCurve3D_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCurve3D {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepCurve3D_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleBRepCurve3D_clone(ptr)) }
     }
 }
 
@@ -1512,7 +1518,9 @@ pub use crate::ffi_types::BRep_CurveOn2Surfaces as CurveOn2Surfaces;
 
 unsafe impl crate::CppDeletable for CurveOn2Surfaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_CurveOn2Surfaces_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_CurveOn2Surfaces_destructor(ptr);
+        }
     }
 }
 
@@ -1952,13 +1960,17 @@ pub use crate::ffi_types::HandleBRepCurveOn2Surfaces;
 
 unsafe impl crate::CppDeletable for HandleBRepCurveOn2Surfaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepCurveOn2Surfaces_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepCurveOn2Surfaces_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCurveOn2Surfaces {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepCurveOn2Surfaces_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepCurveOn2Surfaces_clone(ptr))
+        }
     }
 }
 
@@ -2020,7 +2032,9 @@ pub use crate::ffi_types::BRep_CurveOnClosedSurface as CurveOnClosedSurface;
 
 unsafe impl crate::CppDeletable for CurveOnClosedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_CurveOnClosedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_CurveOnClosedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -2607,13 +2621,17 @@ pub use crate::ffi_types::HandleBRepCurveOnClosedSurface;
 
 unsafe impl crate::CppDeletable for HandleBRepCurveOnClosedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepCurveOnClosedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepCurveOnClosedSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCurveOnClosedSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepCurveOnClosedSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepCurveOnClosedSurface_clone(ptr))
+        }
     }
 }
 
@@ -2697,7 +2715,9 @@ pub use crate::ffi_types::BRep_CurveOnSurface as CurveOnSurface;
 
 unsafe impl crate::CppDeletable for CurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_CurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_CurveOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -3208,13 +3228,17 @@ pub use crate::ffi_types::HandleBRepCurveOnSurface;
 
 unsafe impl crate::CppDeletable for HandleBRepCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCurveOnSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepCurveOnSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepCurveOnSurface_clone(ptr))
+        }
     }
 }
 
@@ -3307,7 +3331,9 @@ pub use crate::ffi_types::BRep_CurveRepresentation as CurveRepresentation;
 
 unsafe impl crate::CppDeletable for CurveRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_CurveRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_CurveRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -3823,13 +3849,17 @@ pub use crate::ffi_types::HandleBRepCurveRepresentation;
 
 unsafe impl crate::CppDeletable for HandleBRepCurveRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepCurveRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepCurveRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCurveRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepCurveRepresentation_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepCurveRepresentation_clone(ptr))
+        }
     }
 }
 
@@ -4033,7 +4063,9 @@ pub use crate::ffi_types::BRep_GCurve as GCurve;
 
 unsafe impl crate::CppDeletable for GCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_GCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_GCurve_destructor(ptr);
+        }
     }
 }
 
@@ -4434,13 +4466,15 @@ pub use crate::ffi_types::HandleBRepGCurve;
 
 unsafe impl crate::CppDeletable for HandleBRepGCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepGCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepGCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepGCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepGCurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleBRepGCurve_clone(ptr)) }
     }
 }
 
@@ -4559,7 +4593,9 @@ pub use crate::ffi_types::BRep_PointOnCurve as PointOnCurve;
 
 unsafe impl crate::CppDeletable for PointOnCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_PointOnCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_PointOnCurve_destructor(ptr);
+        }
     }
 }
 
@@ -4832,13 +4868,15 @@ pub use crate::ffi_types::HandleBRepPointOnCurve;
 
 unsafe impl crate::CppDeletable for HandleBRepPointOnCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepPointOnCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPointOnCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepPointOnCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPointOnCurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPointOnCurve_clone(ptr)) }
     }
 }
 
@@ -4904,7 +4942,9 @@ pub use crate::ffi_types::BRep_PointOnCurveOnSurface as PointOnCurveOnSurface;
 
 unsafe impl crate::CppDeletable for PointOnCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_PointOnCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_PointOnCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -5212,13 +5252,19 @@ pub use crate::ffi_types::HandleBRepPointOnCurveOnSurface;
 
 unsafe impl crate::CppDeletable for HandleBRepPointOnCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepPointOnCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPointOnCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepPointOnCurveOnSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPointOnCurveOnSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPointOnCurveOnSurface_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -5288,7 +5334,9 @@ pub use crate::ffi_types::BRep_PointOnSurface as PointOnSurface;
 
 unsafe impl crate::CppDeletable for PointOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_PointOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_PointOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -5583,13 +5631,17 @@ pub use crate::ffi_types::HandleBRepPointOnSurface;
 
 unsafe impl crate::CppDeletable for HandleBRepPointOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepPointOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPointOnSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepPointOnSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPointOnSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPointOnSurface_clone(ptr))
+        }
     }
 }
 
@@ -5668,7 +5720,9 @@ pub use crate::ffi_types::BRep_PointRepresentation as PointRepresentation;
 
 unsafe impl crate::CppDeletable for PointRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_PointRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_PointRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -5983,13 +6037,17 @@ pub use crate::ffi_types::HandleBRepPointRepresentation;
 
 unsafe impl crate::CppDeletable for HandleBRepPointRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepPointRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPointRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepPointRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPointRepresentation_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPointRepresentation_clone(ptr))
+        }
     }
 }
 
@@ -6107,7 +6165,9 @@ pub use crate::ffi_types::BRep_PointsOnSurface as PointsOnSurface;
 
 unsafe impl crate::CppDeletable for PointsOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_PointsOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_PointsOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -6360,13 +6420,17 @@ pub use crate::ffi_types::HandleBRepPointsOnSurface;
 
 unsafe impl crate::CppDeletable for HandleBRepPointsOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepPointsOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPointsOnSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepPointsOnSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPointsOnSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPointsOnSurface_clone(ptr))
+        }
     }
 }
 
@@ -6461,7 +6525,9 @@ pub use crate::ffi_types::BRep_Polygon3D as Polygon3D;
 
 unsafe impl crate::CppDeletable for Polygon3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_Polygon3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_Polygon3D_destructor(ptr);
+        }
     }
 }
 
@@ -6851,13 +6917,15 @@ pub use crate::ffi_types::HandleBRepPolygon3D;
 
 unsafe impl crate::CppDeletable for HandleBRepPolygon3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepPolygon3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPolygon3D_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepPolygon3D {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPolygon3D_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPolygon3D_clone(ptr)) }
     }
 }
 
@@ -6923,7 +6991,9 @@ pub use crate::ffi_types::BRep_PolygonOnClosedSurface as PolygonOnClosedSurface;
 
 unsafe impl crate::CppDeletable for PolygonOnClosedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_PolygonOnClosedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_PolygonOnClosedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -7364,13 +7434,19 @@ pub use crate::ffi_types::HandleBRepPolygonOnClosedSurface;
 
 unsafe impl crate::CppDeletable for HandleBRepPolygonOnClosedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepPolygonOnClosedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPolygonOnClosedSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepPolygonOnClosedSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPolygonOnClosedSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPolygonOnClosedSurface_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -7441,7 +7517,9 @@ pub use crate::ffi_types::BRep_PolygonOnClosedTriangulation as PolygonOnClosedTr
 
 unsafe impl crate::CppDeletable for PolygonOnClosedTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_PolygonOnClosedTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_PolygonOnClosedTriangulation_destructor(ptr);
+        }
     }
 }
 
@@ -7865,15 +7943,19 @@ pub use crate::ffi_types::HandleBRepPolygonOnClosedTriangulation;
 
 unsafe impl crate::CppDeletable for HandleBRepPolygonOnClosedTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepPolygonOnClosedTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPolygonOnClosedTriangulation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepPolygonOnClosedTriangulation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPolygonOnClosedTriangulation_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBRep::HandleBRepPolygonOnClosedTriangulation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -7948,7 +8030,9 @@ pub use crate::ffi_types::BRep_PolygonOnSurface as PolygonOnSurface;
 
 unsafe impl crate::CppDeletable for PolygonOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_PolygonOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_PolygonOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -8384,13 +8468,17 @@ pub use crate::ffi_types::HandleBRepPolygonOnSurface;
 
 unsafe impl crate::CppDeletable for HandleBRepPolygonOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepPolygonOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPolygonOnSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepPolygonOnSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPolygonOnSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPolygonOnSurface_clone(ptr))
+        }
     }
 }
 
@@ -8468,7 +8556,9 @@ pub use crate::ffi_types::BRep_PolygonOnTriangulation as PolygonOnTriangulation;
 
 unsafe impl crate::CppDeletable for PolygonOnTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_PolygonOnTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_PolygonOnTriangulation_destructor(ptr);
+        }
     }
 }
 
@@ -8906,13 +8996,19 @@ pub use crate::ffi_types::HandleBRepPolygonOnTriangulation;
 
 unsafe impl crate::CppDeletable for HandleBRepPolygonOnTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepPolygonOnTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepPolygonOnTriangulation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepPolygonOnTriangulation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPolygonOnTriangulation_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleBRepPolygonOnTriangulation_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -9002,7 +9098,9 @@ pub use crate::ffi_types::BRep_TEdge as TEdge;
 
 unsafe impl crate::CppDeletable for TEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_TEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_TEdge_destructor(ptr);
+        }
     }
 }
 
@@ -9334,13 +9432,15 @@ pub use crate::ffi_types::HandleBRepTEdge;
 
 unsafe impl crate::CppDeletable for HandleBRepTEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepTEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepTEdge_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepTEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepTEdge_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleBRepTEdge_clone(ptr)) }
     }
 }
 
@@ -9433,7 +9533,9 @@ pub use crate::ffi_types::BRep_TFace as TFace;
 
 unsafe impl crate::CppDeletable for TFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_TFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_TFace_destructor(ptr);
+        }
     }
 }
 
@@ -9845,13 +9947,15 @@ pub use crate::ffi_types::HandleBRepTFace;
 
 unsafe impl crate::CppDeletable for HandleBRepTFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepTFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepTFace_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepTFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepTFace_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleBRepTFace_clone(ptr)) }
     }
 }
 
@@ -9926,7 +10030,9 @@ pub use crate::ffi_types::BRep_TVertex as TVertex;
 
 unsafe impl crate::CppDeletable for TVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_TVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_TVertex_destructor(ptr);
+        }
     }
 }
 
@@ -10232,13 +10338,15 @@ pub use crate::ffi_types::HandleBRepTVertex;
 
 unsafe impl crate::CppDeletable for HandleBRepTVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleBRepTVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleBRepTVertex_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepTVertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleBRepTVertex_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleBRepTVertex_clone(ptr)) }
     }
 }
 
@@ -10313,7 +10421,9 @@ pub use crate::ffi_types::BRep_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_Tool_destructor(ptr);
+        }
     }
 }
 

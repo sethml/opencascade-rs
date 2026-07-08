@@ -24,7 +24,9 @@ pub use crate::ffi_types::BinObjMgt_Persistent as Persistent;
 
 unsafe impl crate::CppDeletable for Persistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinL::BinObjMgt_Persistent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinL::BinObjMgt_Persistent_destructor(ptr);
+        }
     }
 }
 
@@ -820,7 +822,9 @@ pub use crate::ffi_types::BinObjMgt_Position as Position;
 
 unsafe impl crate::CppDeletable for Position {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinL::BinObjMgt_Position_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinL::BinObjMgt_Position_destructor(ptr);
+        }
     }
 }
 
@@ -995,13 +999,15 @@ pub use crate::ffi_types::HandleBinObjMgtPosition;
 
 unsafe impl crate::CppDeletable for HandleBinObjMgtPosition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinObjMgtPosition {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_clone(ptr)) }
     }
 }
 
@@ -1056,7 +1062,9 @@ pub use crate::ffi_types::BinObjMgt_RRelocationTable as RRelocationTable;
 
 unsafe impl crate::CppDeletable for RRelocationTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinL::BinObjMgt_RRelocationTable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinL::BinObjMgt_RRelocationTable_destructor(ptr);
+        }
     }
 }
 

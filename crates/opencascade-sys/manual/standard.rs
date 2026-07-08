@@ -7,7 +7,7 @@
 // This file is include!()'d into the generated standard.rs module, which
 // already provides OStream/IStream type aliases via its re-exports section.
 
-extern "C" {
+unsafe extern "C" {
     fn iostream_cout() -> *mut crate::ffi_types::Standard_OStream;
     fn iostream_cerr() -> *mut crate::ffi_types::Standard_OStream;
     fn iostream_clog() -> *mut crate::ffi_types::Standard_OStream;

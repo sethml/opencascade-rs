@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== BRepMesh_BaseMeshAlgo ========================
     pub fn BRepMesh_BaseMeshAlgo_destructor(self_: *mut BRepMesh_BaseMeshAlgo);
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform()`

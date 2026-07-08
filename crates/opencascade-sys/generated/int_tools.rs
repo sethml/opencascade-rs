@@ -52,7 +52,9 @@ pub use crate::ffi_types::IntTools_BaseRangeSample as BaseRangeSample;
 
 unsafe impl crate::CppDeletable for BaseRangeSample {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_BaseRangeSample_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_BaseRangeSample_destructor(ptr);
+        }
     }
 }
 
@@ -106,7 +108,9 @@ pub use crate::ffi_types::IntTools_BeanFaceIntersector as BeanFaceIntersector;
 
 unsafe impl crate::CppDeletable for BeanFaceIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_BeanFaceIntersector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_BeanFaceIntersector_destructor(ptr);
+        }
     }
 }
 
@@ -384,13 +388,15 @@ pub use crate::ffi_types::IntTools_CommonPrt as CommonPrt;
 
 unsafe impl crate::CppDeletable for CommonPrt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_CommonPrt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_CommonPrt_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for CommonPrt {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBO::IntTools_CommonPrt_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBO::IntTools_CommonPrt_clone(ptr)) }
     }
 }
 
@@ -653,7 +659,9 @@ pub use crate::ffi_types::IntTools_Context as Context;
 
 unsafe impl crate::CppDeletable for Context {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_Context_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_Context_destructor(ptr);
+        }
     }
 }
 
@@ -1379,13 +1387,15 @@ pub use crate::ffi_types::HandleIntToolsContext;
 
 unsafe impl crate::CppDeletable for HandleIntToolsContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::HandleIntToolsContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::HandleIntToolsContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntToolsContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsContext_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsContext_clone(ptr)) }
     }
 }
 
@@ -1446,7 +1456,9 @@ pub use crate::ffi_types::IntTools_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -1680,7 +1692,9 @@ pub use crate::ffi_types::IntTools_CurveRangeLocalizeData as CurveRangeLocalizeD
 
 unsafe impl crate::CppDeletable for CurveRangeLocalizeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_CurveRangeLocalizeData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_CurveRangeLocalizeData_destructor(ptr);
+        }
     }
 }
 
@@ -1778,7 +1792,9 @@ pub use crate::ffi_types::IntTools_CurveRangeSample as CurveRangeSample;
 
 unsafe impl crate::CppDeletable for CurveRangeSample {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_CurveRangeSample_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_CurveRangeSample_destructor(ptr);
+        }
     }
 }
 
@@ -1907,7 +1923,9 @@ pub use crate::ffi_types::IntTools_EdgeEdge as EdgeEdge;
 
 unsafe impl crate::CppDeletable for EdgeEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_EdgeEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_EdgeEdge_destructor(ptr);
+        }
     }
 }
 
@@ -2106,7 +2124,9 @@ pub use crate::ffi_types::IntTools_EdgeFace as EdgeFace;
 
 unsafe impl crate::CppDeletable for EdgeFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_EdgeFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_EdgeFace_destructor(ptr);
+        }
     }
 }
 
@@ -2312,7 +2332,9 @@ pub use crate::ffi_types::IntTools_FClass2d as FClass2d;
 
 unsafe impl crate::CppDeletable for FClass2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_FClass2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_FClass2d_destructor(ptr);
+        }
     }
 }
 
@@ -2416,7 +2438,9 @@ pub use crate::ffi_types::IntTools_FaceFace as FaceFace;
 
 unsafe impl crate::CppDeletable for FaceFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_FaceFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_FaceFace_destructor(ptr);
+        }
     }
 }
 
@@ -2589,7 +2613,9 @@ pub use crate::ffi_types::IntTools_MarkedRangeSet as MarkedRangeSet;
 
 unsafe impl crate::CppDeletable for MarkedRangeSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_MarkedRangeSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_MarkedRangeSet_destructor(ptr);
+        }
     }
 }
 
@@ -2859,7 +2885,9 @@ pub use crate::ffi_types::IntTools_PntOn2Faces as PntOn2Faces;
 
 unsafe impl crate::CppDeletable for PntOn2Faces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_PntOn2Faces_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_PntOn2Faces_destructor(ptr);
+        }
     }
 }
 
@@ -2947,7 +2975,9 @@ pub use crate::ffi_types::IntTools_PntOnFace as PntOnFace;
 
 unsafe impl crate::CppDeletable for PntOnFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_PntOnFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_PntOnFace_destructor(ptr);
+        }
     }
 }
 
@@ -3059,7 +3089,9 @@ pub use crate::ffi_types::IntTools_Range as Range;
 
 unsafe impl crate::CppDeletable for Range {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_Range_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_Range_destructor(ptr);
+        }
     }
 }
 
@@ -3137,7 +3169,9 @@ pub use crate::ffi_types::IntTools_Root as Root;
 
 unsafe impl crate::CppDeletable for Root {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_Root_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_Root_destructor(ptr);
+        }
     }
 }
 
@@ -3298,7 +3332,9 @@ pub use crate::ffi_types::IntTools_ShrunkRange as ShrunkRange;
 
 unsafe impl crate::CppDeletable for ShrunkRange {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_ShrunkRange_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_ShrunkRange_destructor(ptr);
+        }
     }
 }
 
@@ -3428,13 +3464,19 @@ pub use crate::ffi_types::IntTools_SurfaceRangeLocalizeData as SurfaceRangeLocal
 
 unsafe impl crate::CppDeletable for SurfaceRangeLocalizeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for SurfaceRangeLocalizeData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3825,13 +3867,17 @@ pub use crate::ffi_types::IntTools_SurfaceRangeSample as SurfaceRangeSample;
 
 unsafe impl crate::CppDeletable for SurfaceRangeSample {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_SurfaceRangeSample_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_SurfaceRangeSample_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for SurfaceRangeSample {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBO::IntTools_SurfaceRangeSample_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBO::IntTools_SurfaceRangeSample_clone(ptr))
+        }
     }
 }
 
@@ -4143,7 +4189,9 @@ pub use crate::ffi_types::IntTools_Tools as Tools;
 
 unsafe impl crate::CppDeletable for Tools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_Tools_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_Tools_destructor(ptr);
+        }
     }
 }
 
@@ -4440,7 +4488,9 @@ pub use crate::ffi_types::IntTools_TopolTool as TopolTool;
 
 unsafe impl crate::CppDeletable for TopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_TopolTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_TopolTool_destructor(ptr);
+        }
     }
 }
 
@@ -4910,13 +4960,15 @@ pub use crate::ffi_types::HandleIntToolsTopolTool;
 
 unsafe impl crate::CppDeletable for HandleIntToolsTopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::HandleIntToolsTopolTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::HandleIntToolsTopolTool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntToolsTopolTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsTopolTool_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsTopolTool_clone(ptr)) }
     }
 }
 
@@ -4981,7 +5033,9 @@ pub use crate::ffi_types::IntTools_WLineTool as WLineTool;
 
 unsafe impl crate::CppDeletable for WLineTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_WLineTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_WLineTool_destructor(ptr);
+        }
     }
 }
 

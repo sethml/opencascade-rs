@@ -31,7 +31,9 @@ pub use crate::ffi_types::DEIGES_ConfigurationNode as ConfigurationNode;
 
 unsafe impl crate::CppDeletable for ConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::DEIGES_ConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::DEIGES_ConfigurationNode_destructor(ptr);
+        }
     }
 }
 
@@ -408,13 +410,19 @@ pub use crate::ffi_types::HandleDEIGESConfigurationNode;
 
 unsafe impl crate::CppDeletable for HandleDEIGESConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleDEIGESConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleDEIGESConfigurationNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEIGESConfigurationNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleDEIGESConfigurationNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleDEIGESConfigurationNode_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -483,7 +491,9 @@ pub use crate::ffi_types::DEIGES_Parameters as Parameters;
 
 unsafe impl crate::CppDeletable for Parameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::DEIGES_Parameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::DEIGES_Parameters_destructor(ptr);
+        }
     }
 }
 
@@ -542,7 +552,9 @@ pub use crate::ffi_types::DEIGES_Provider as Provider;
 
 unsafe impl crate::CppDeletable for Provider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::DEIGES_Provider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::DEIGES_Provider_destructor(ptr);
+        }
     }
 }
 
@@ -917,13 +929,15 @@ pub use crate::ffi_types::HandleDEIGESProvider;
 
 unsafe impl crate::CppDeletable for HandleDEIGESProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleDEIGESProvider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleDEIGESProvider_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEIGESProvider {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleDEIGESProvider_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEIGES::HandleDEIGESProvider_clone(ptr)) }
     }
 }
 

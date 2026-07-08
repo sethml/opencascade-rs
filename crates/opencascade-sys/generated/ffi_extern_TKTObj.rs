@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== TObj_Application ========================
     pub fn TObj_Application_destructor(self_: *mut TObj_Application);
     /// **Source:** `TObj_Application.hxx`:36 - `TObj_Application::Messenger()`

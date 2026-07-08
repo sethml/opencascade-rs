@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== DEVRML_ConfigurationNode ========================
     pub fn DEVRML_ConfigurationNode_destructor(self_: *mut DEVRML_ConfigurationNode);
     /// **Source:** `DEVRML_ConfigurationNode.hxx`:35 - `DEVRML_ConfigurationNode::DEVRML_ConfigurationNode()`

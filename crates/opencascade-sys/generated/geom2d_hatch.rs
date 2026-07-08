@@ -15,7 +15,9 @@ pub use crate::ffi_types::Geom2dHatch_Classifier as Classifier;
 
 unsafe impl crate::CppDeletable for Classifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_destructor(ptr);
+        }
     }
 }
 
@@ -129,7 +131,9 @@ pub use crate::ffi_types::Geom2dHatch_Element as Element;
 
 unsafe impl crate::CppDeletable for Element {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Element_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Element_destructor(ptr);
+        }
     }
 }
 
@@ -209,13 +213,17 @@ pub use crate::ffi_types::Geom2dHatch_Elements as Elements;
 
 unsafe impl crate::CppDeletable for Elements {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Elements {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_clone(ptr))
+        }
     }
 }
 
@@ -423,7 +431,9 @@ pub use crate::ffi_types::Geom2dHatch_FClass2dOfClassifier as FClass2dOfClassifi
 
 unsafe impl crate::CppDeletable for FClass2dOfClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_FClass2dOfClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_FClass2dOfClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -536,7 +546,9 @@ pub use crate::ffi_types::Geom2dHatch_Hatcher as Hatcher;
 
 unsafe impl crate::CppDeletable for Hatcher {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_destructor(ptr);
+        }
     }
 }
 
@@ -952,7 +964,9 @@ pub use crate::ffi_types::Geom2dHatch_Hatching as Hatching;
 
 unsafe impl crate::CppDeletable for Hatching {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_destructor(ptr);
+        }
     }
 }
 
@@ -1213,7 +1227,9 @@ pub use crate::ffi_types::Geom2dHatch_Intersector as Intersector;
 
 unsafe impl crate::CppDeletable for Intersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_destructor(ptr);
+        }
     }
 }
 

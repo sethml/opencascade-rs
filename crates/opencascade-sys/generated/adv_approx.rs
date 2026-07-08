@@ -16,7 +16,9 @@ pub use crate::ffi_types::AdvApprox_ApproxAFunction as ApproxAFunction;
 
 unsafe impl crate::CppDeletable for ApproxAFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_destructor(ptr);
+        }
     }
 }
 
@@ -344,7 +346,9 @@ pub use crate::ffi_types::AdvApprox_Cutting as Cutting;
 
 unsafe impl crate::CppDeletable for Cutting {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::AdvApprox_Cutting_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::AdvApprox_Cutting_destructor(ptr);
+        }
     }
 }
 
@@ -372,7 +376,9 @@ pub use crate::ffi_types::AdvApprox_DichoCutting as DichoCutting;
 
 unsafe impl crate::CppDeletable for DichoCutting {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::AdvApprox_DichoCutting_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::AdvApprox_DichoCutting_destructor(ptr);
+        }
     }
 }
 
@@ -432,7 +438,9 @@ pub use crate::ffi_types::AdvApprox_EvaluatorFunction as EvaluatorFunction;
 
 unsafe impl crate::CppDeletable for EvaluatorFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::AdvApprox_EvaluatorFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::AdvApprox_EvaluatorFunction_destructor(ptr);
+        }
     }
 }
 
@@ -474,7 +482,9 @@ pub use crate::ffi_types::AdvApprox_PrefAndRec as PrefAndRec;
 
 unsafe impl crate::CppDeletable for PrefAndRec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::AdvApprox_PrefAndRec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::AdvApprox_PrefAndRec_destructor(ptr);
+        }
     }
 }
 
@@ -556,7 +566,9 @@ pub use crate::ffi_types::AdvApprox_PrefCutting as PrefCutting;
 
 unsafe impl crate::CppDeletable for PrefCutting {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::AdvApprox_PrefCutting_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::AdvApprox_PrefCutting_destructor(ptr);
+        }
     }
 }
 
@@ -621,7 +633,9 @@ pub use crate::ffi_types::AdvApprox_SimpleApprox as SimpleApprox;
 
 unsafe impl crate::CppDeletable for SimpleApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::AdvApprox_SimpleApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::AdvApprox_SimpleApprox_destructor(ptr);
+        }
     }
 }
 

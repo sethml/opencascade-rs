@@ -23,7 +23,9 @@ pub use crate::ffi_types::ChFiKPart_ComputeData as ComputeData;
 
 unsafe impl crate::CppDeletable for ComputeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiKPart_ComputeData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiKPart_ComputeData_destructor(ptr);
+        }
     }
 }
 

@@ -54,7 +54,9 @@ pub use crate::ffi_types::IGESSelect_Activator as Activator;
 
 unsafe impl crate::CppDeletable for Activator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_Activator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_Activator_destructor(ptr);
+        }
     }
 }
 
@@ -250,13 +252,17 @@ pub use crate::ffi_types::HandleIGESSelectActivator;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectActivator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectActivator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_clone(ptr))
+        }
     }
 }
 
@@ -325,7 +331,9 @@ pub use crate::ffi_types::IGESSelect_AddFileComment as AddFileComment;
 
 unsafe impl crate::CppDeletable for AddFileComment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_destructor(ptr);
+        }
     }
 }
 
@@ -690,13 +698,19 @@ pub use crate::ffi_types::HandleIGESSelectAddFileComment;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectAddFileComment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectAddFileComment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -767,7 +781,9 @@ pub use crate::ffi_types::IGESSelect_AddGroup as AddGroup;
 
 unsafe impl crate::CppDeletable for AddGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_destructor(ptr);
+        }
     }
 }
 
@@ -1129,13 +1145,17 @@ pub use crate::ffi_types::HandleIGESSelectAddGroup;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectAddGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectAddGroup {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_clone(ptr))
+        }
     }
 }
 
@@ -1236,7 +1256,9 @@ pub use crate::ffi_types::IGESSelect_AutoCorrect as AutoCorrect;
 
 unsafe impl crate::CppDeletable for AutoCorrect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_destructor(ptr);
+        }
     }
 }
 
@@ -1604,13 +1626,17 @@ pub use crate::ffi_types::HandleIGESSelectAutoCorrect;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectAutoCorrect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectAutoCorrect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_clone(ptr))
+        }
     }
 }
 
@@ -1703,7 +1729,9 @@ pub use crate::ffi_types::IGESSelect_ChangeLevelList as ChangeLevelList;
 
 unsafe impl crate::CppDeletable for ChangeLevelList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_destructor(ptr);
+        }
     }
 }
 
@@ -2144,13 +2172,19 @@ pub use crate::ffi_types::HandleIGESSelectChangeLevelList;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectChangeLevelList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectChangeLevelList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2234,7 +2268,9 @@ pub use crate::ffi_types::IGESSelect_ChangeLevelNumber as ChangeLevelNumber;
 
 unsafe impl crate::CppDeletable for ChangeLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_destructor(ptr);
+        }
     }
 }
 
@@ -2654,15 +2690,19 @@ pub use crate::ffi_types::HandleIGESSelectChangeLevelNumber;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectChangeLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectChangeLevelNumber {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2749,7 +2789,9 @@ pub use crate::ffi_types::IGESSelect_ComputeStatus as ComputeStatus;
 
 unsafe impl crate::CppDeletable for ComputeStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_destructor(ptr);
+        }
     }
 }
 
@@ -3112,13 +3154,19 @@ pub use crate::ffi_types::HandleIGESSelectComputeStatus;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectComputeStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectComputeStatus {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3205,7 +3253,9 @@ pub use crate::ffi_types::IGESSelect_CounterOfLevelNumber as CounterOfLevelNumbe
 
 unsafe impl crate::CppDeletable for CounterOfLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_destructor(ptr);
+        }
     }
 }
 
@@ -3722,15 +3772,19 @@ pub use crate::ffi_types::HandleIGESSelectCounterOfLevelNumber;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectCounterOfLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectCounterOfLevelNumber {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3809,7 +3863,9 @@ pub use crate::ffi_types::IGESSelect_DispPerDrawing as DispPerDrawing;
 
 unsafe impl crate::CppDeletable for DispPerDrawing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_destructor(ptr);
+        }
     }
 }
 
@@ -4144,13 +4200,19 @@ pub use crate::ffi_types::HandleIGESSelectDispPerDrawing;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectDispPerDrawing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectDispPerDrawing {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4214,7 +4276,9 @@ pub use crate::ffi_types::IGESSelect_DispPerSingleView as DispPerSingleView;
 
 unsafe impl crate::CppDeletable for DispPerSingleView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_destructor(ptr);
+        }
     }
 }
 
@@ -4549,15 +4613,19 @@ pub use crate::ffi_types::HandleIGESSelectDispPerSingleView;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectDispPerSingleView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectDispPerSingleView {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4622,7 +4690,9 @@ pub use crate::ffi_types::IGESSelect_Dumper as Dumper;
 
 unsafe impl crate::CppDeletable for Dumper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_destructor(ptr);
+        }
     }
 }
 
@@ -4833,13 +4903,17 @@ pub use crate::ffi_types::HandleIGESSelectDumper;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectDumper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectDumper {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_clone(ptr))
+        }
     }
 }
 
@@ -4905,7 +4979,9 @@ pub use crate::ffi_types::IGESSelect_EditDirPart as EditDirPart;
 
 unsafe impl crate::CppDeletable for EditDirPart {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_destructor(ptr);
+        }
     }
 }
 
@@ -5331,13 +5407,17 @@ pub use crate::ffi_types::HandleIGESSelectEditDirPart;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectEditDirPart {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectEditDirPart {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_clone(ptr))
+        }
     }
 }
 
@@ -5403,7 +5483,9 @@ pub use crate::ffi_types::IGESSelect_EditHeader as EditHeader;
 
 unsafe impl crate::CppDeletable for EditHeader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_destructor(ptr);
+        }
     }
 }
 
@@ -5827,13 +5909,17 @@ pub use crate::ffi_types::HandleIGESSelectEditHeader;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectEditHeader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectEditHeader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_clone(ptr))
+        }
     }
 }
 
@@ -5897,7 +5983,9 @@ pub use crate::ffi_types::IGESSelect_FileModifier as FileModifier;
 
 unsafe impl crate::CppDeletable for FileModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_destructor(ptr);
+        }
     }
 }
 
@@ -6167,13 +6255,17 @@ pub use crate::ffi_types::HandleIGESSelectFileModifier;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectFileModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectFileModifier {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_clone(ptr))
+        }
     }
 }
 
@@ -6271,7 +6363,9 @@ pub use crate::ffi_types::IGESSelect_FloatFormat as FloatFormat;
 
 unsafe impl crate::CppDeletable for FloatFormat {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_destructor(ptr);
+        }
     }
 }
 
@@ -6668,13 +6762,17 @@ pub use crate::ffi_types::HandleIGESSelectFloatFormat;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectFloatFormat {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectFloatFormat {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_clone(ptr))
+        }
     }
 }
 
@@ -6749,7 +6847,9 @@ pub use crate::ffi_types::IGESSelect_IGESName as IGESName;
 
 unsafe impl crate::CppDeletable for IGESName {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_destructor(ptr);
+        }
     }
 }
 
@@ -7094,13 +7194,17 @@ pub use crate::ffi_types::HandleIGESSelectIGESName;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectIGESName {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectIGESName {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_clone(ptr))
+        }
     }
 }
 
@@ -7193,7 +7297,9 @@ pub use crate::ffi_types::IGESSelect_IGESTypeForm as IGESTypeForm;
 
 unsafe impl crate::CppDeletable for IGESTypeForm {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_destructor(ptr);
+        }
     }
 }
 
@@ -7562,13 +7668,17 @@ pub use crate::ffi_types::HandleIGESSelectIGESTypeForm;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectIGESTypeForm {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectIGESTypeForm {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_clone(ptr))
+        }
     }
 }
 
@@ -7658,7 +7768,9 @@ pub use crate::ffi_types::IGESSelect_ModelModifier as ModelModifier;
 
 unsafe impl crate::CppDeletable for ModelModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_destructor(ptr);
+        }
     }
 }
 
@@ -7989,13 +8101,19 @@ pub use crate::ffi_types::HandleIGESSelectModelModifier;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectModelModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectModelModifier {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -8300,7 +8418,9 @@ pub use crate::ffi_types::IGESSelect_RebuildDrawings as RebuildDrawings;
 
 unsafe impl crate::CppDeletable for RebuildDrawings {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_destructor(ptr);
+        }
     }
 }
 
@@ -8660,13 +8780,19 @@ pub use crate::ffi_types::HandleIGESSelectRebuildDrawings;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectRebuildDrawings {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectRebuildDrawings {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -8752,7 +8878,9 @@ pub use crate::ffi_types::IGESSelect_RebuildGroups as RebuildGroups;
 
 unsafe impl crate::CppDeletable for RebuildGroups {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_destructor(ptr);
+        }
     }
 }
 
@@ -9112,13 +9240,19 @@ pub use crate::ffi_types::HandleIGESSelectRebuildGroups;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectRebuildGroups {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectRebuildGroups {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -9200,7 +9334,9 @@ pub use crate::ffi_types::IGESSelect_RemoveCurves as RemoveCurves;
 
 unsafe impl crate::CppDeletable for RemoveCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_destructor(ptr);
+        }
     }
 }
 
@@ -9570,13 +9706,17 @@ pub use crate::ffi_types::HandleIGESSelectRemoveCurves;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectRemoveCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectRemoveCurves {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_clone(ptr))
+        }
     }
 }
 
@@ -9671,7 +9811,9 @@ pub use crate::ffi_types::IGESSelect_SelectBasicGeom as SelectBasicGeom;
 
 unsafe impl crate::CppDeletable for SelectBasicGeom {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_destructor(ptr);
+        }
     }
 }
 
@@ -10090,13 +10232,19 @@ pub use crate::ffi_types::HandleIGESSelectSelectBasicGeom;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectBasicGeom {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectBasicGeom {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -10182,7 +10330,9 @@ pub use crate::ffi_types::IGESSelect_SelectBypassGroup as SelectBypassGroup;
 
 unsafe impl crate::CppDeletable for SelectBypassGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_destructor(ptr);
+        }
     }
 }
 
@@ -10577,15 +10727,19 @@ pub use crate::ffi_types::HandleIGESSelectSelectBypassGroup;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectBypassGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectBypassGroup {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10681,7 +10835,9 @@ pub use crate::ffi_types::IGESSelect_SelectBypassSubfigure as SelectBypassSubfig
 
 unsafe impl crate::CppDeletable for SelectBypassSubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_destructor(ptr);
+        }
     }
 }
 
@@ -11053,15 +11209,19 @@ pub use crate::ffi_types::HandleIGESSelectSelectBypassSubfigure;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectBypassSubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectBypassSubfigure {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_clone(ptr),
+            )
+        }
     }
 }
 
@@ -11146,7 +11306,9 @@ pub use crate::ffi_types::IGESSelect_SelectDrawingFrom as SelectDrawingFrom;
 
 unsafe impl crate::CppDeletable for SelectDrawingFrom {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_destructor(ptr);
+        }
     }
 }
 
@@ -11474,15 +11636,19 @@ pub use crate::ffi_types::HandleIGESSelectSelectDrawingFrom;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectDrawingFrom {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectDrawingFrom {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_clone(ptr),
+            )
+        }
     }
 }
 
@@ -11565,7 +11731,9 @@ pub use crate::ffi_types::IGESSelect_SelectFaces as SelectFaces;
 
 unsafe impl crate::CppDeletable for SelectFaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_destructor(ptr);
+        }
     }
 }
 
@@ -11955,13 +12123,17 @@ pub use crate::ffi_types::HandleIGESSelectSelectFaces;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectFaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectFaces {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_clone(ptr))
+        }
     }
 }
 
@@ -12049,7 +12221,9 @@ pub use crate::ffi_types::IGESSelect_SelectFromDrawing as SelectFromDrawing;
 
 unsafe impl crate::CppDeletable for SelectFromDrawing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_destructor(ptr);
+        }
     }
 }
 
@@ -12377,15 +12551,19 @@ pub use crate::ffi_types::HandleIGESSelectSelectFromDrawing;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectFromDrawing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectFromDrawing {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_clone(ptr),
+            )
+        }
     }
 }
 
@@ -12462,7 +12640,9 @@ pub use crate::ffi_types::IGESSelect_SelectFromSingleView as SelectFromSingleVie
 
 unsafe impl crate::CppDeletable for SelectFromSingleView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_destructor(ptr);
+        }
     }
 }
 
@@ -12773,15 +12953,19 @@ pub use crate::ffi_types::HandleIGESSelectSelectFromSingleView;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectFromSingleView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectFromSingleView {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_clone(ptr),
+            )
+        }
     }
 }
 
@@ -12862,7 +13046,9 @@ pub use crate::ffi_types::IGESSelect_SelectLevelNumber as SelectLevelNumber;
 
 unsafe impl crate::CppDeletable for SelectLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_destructor(ptr);
+        }
     }
 }
 
@@ -13302,15 +13488,19 @@ pub use crate::ffi_types::HandleIGESSelectSelectLevelNumber;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectLevelNumber {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_clone(ptr),
+            )
+        }
     }
 }
 
@@ -13397,7 +13587,9 @@ pub use crate::ffi_types::IGESSelect_SelectName as SelectName;
 
 unsafe impl crate::CppDeletable for SelectName {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_destructor(ptr);
+        }
     }
 }
 
@@ -13833,13 +14025,17 @@ pub use crate::ffi_types::HandleIGESSelectSelectName;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectName {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectName {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_clone(ptr))
+        }
     }
 }
 
@@ -13926,7 +14122,9 @@ pub use crate::ffi_types::IGESSelect_SelectPCurves as SelectPCurves;
 
 unsafe impl crate::CppDeletable for SelectPCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_destructor(ptr);
+        }
     }
 }
 
@@ -14325,13 +14523,19 @@ pub use crate::ffi_types::HandleIGESSelectSelectPCurves;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectPCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectPCurves {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -14412,7 +14616,9 @@ pub use crate::ffi_types::IGESSelect_SelectSingleViewFrom as SelectSingleViewFro
 
 unsafe impl crate::CppDeletable for SelectSingleViewFrom {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_destructor(ptr);
+        }
     }
 }
 
@@ -14723,15 +14929,19 @@ pub use crate::ffi_types::HandleIGESSelectSelectSingleViewFrom;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectSingleViewFrom {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectSingleViewFrom {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_clone(ptr),
+            )
+        }
     }
 }
 
@@ -14815,7 +15025,9 @@ pub use crate::ffi_types::IGESSelect_SelectSubordinate as SelectSubordinate;
 
 unsafe impl crate::CppDeletable for SelectSubordinate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_destructor(ptr);
+        }
     }
 }
 
@@ -15236,15 +15448,19 @@ pub use crate::ffi_types::HandleIGESSelectSelectSubordinate;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectSubordinate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectSubordinate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_clone(ptr),
+            )
+        }
     }
 }
 
@@ -15329,7 +15545,9 @@ pub use crate::ffi_types::IGESSelect_SelectVisibleStatus as SelectVisibleStatus;
 
 unsafe impl crate::CppDeletable for SelectVisibleStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_destructor(ptr);
+        }
     }
 }
 
@@ -15730,15 +15948,19 @@ pub use crate::ffi_types::HandleIGESSelectSelectVisibleStatus;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSelectVisibleStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSelectVisibleStatus {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_clone(ptr),
+            )
+        }
     }
 }
 
@@ -15830,7 +16052,9 @@ pub use crate::ffi_types::IGESSelect_SetGlobalParameter as SetGlobalParameter;
 
 unsafe impl crate::CppDeletable for SetGlobalParameter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_destructor(ptr);
+        }
     }
 }
 
@@ -16221,15 +16445,19 @@ pub use crate::ffi_types::HandleIGESSelectSetGlobalParameter;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSetGlobalParameter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSetGlobalParameter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_clone(ptr),
+            )
+        }
     }
 }
 
@@ -16315,7 +16543,9 @@ pub use crate::ffi_types::IGESSelect_SetLabel as SetLabel;
 
 unsafe impl crate::CppDeletable for SetLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_destructor(ptr);
+        }
     }
 }
 
@@ -16679,13 +16909,17 @@ pub use crate::ffi_types::HandleIGESSelectSetLabel;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSetLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSetLabel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_clone(ptr))
+        }
     }
 }
 
@@ -16770,7 +17004,9 @@ pub use crate::ffi_types::IGESSelect_SetVersion5 as SetVersion5;
 
 unsafe impl crate::CppDeletable for SetVersion5 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_destructor(ptr);
+        }
     }
 }
 
@@ -17139,13 +17375,17 @@ pub use crate::ffi_types::HandleIGESSelectSetVersion5;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSetVersion5 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSetVersion5 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_clone(ptr))
+        }
     }
 }
 
@@ -17238,7 +17478,9 @@ pub use crate::ffi_types::IGESSelect_SignColor as SignColor;
 
 unsafe impl crate::CppDeletable for SignColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_destructor(ptr);
+        }
     }
 }
 
@@ -17584,13 +17826,17 @@ pub use crate::ffi_types::HandleIGESSelectSignColor;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSignColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSignColor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_clone(ptr))
+        }
     }
 }
 
@@ -17686,7 +17932,9 @@ pub use crate::ffi_types::IGESSelect_SignLevelNumber as SignLevelNumber;
 
 unsafe impl crate::CppDeletable for SignLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_destructor(ptr);
+        }
     }
 }
 
@@ -18038,13 +18286,19 @@ pub use crate::ffi_types::HandleIGESSelectSignLevelNumber;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSignLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSignLevelNumber {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -18134,7 +18388,9 @@ pub use crate::ffi_types::IGESSelect_SignStatus as SignStatus;
 
 unsafe impl crate::CppDeletable for SignStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_destructor(ptr);
+        }
     }
 }
 
@@ -18479,13 +18735,17 @@ pub use crate::ffi_types::HandleIGESSelectSignStatus;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSignStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSignStatus {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_clone(ptr))
+        }
     }
 }
 
@@ -18588,7 +18848,9 @@ pub use crate::ffi_types::IGESSelect_SplineToBSpline as SplineToBSpline;
 
 unsafe impl crate::CppDeletable for SplineToBSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_destructor(ptr);
+        }
     }
 }
 
@@ -18845,13 +19107,19 @@ pub use crate::ffi_types::HandleIGESSelectSplineToBSpline;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectSplineToBSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectSplineToBSpline {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -18916,7 +19184,9 @@ pub use crate::ffi_types::IGESSelect_UpdateCreationDate as UpdateCreationDate;
 
 unsafe impl crate::CppDeletable for UpdateCreationDate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_destructor(ptr);
+        }
     }
 }
 
@@ -19271,15 +19541,19 @@ pub use crate::ffi_types::HandleIGESSelectUpdateCreationDate;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectUpdateCreationDate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectUpdateCreationDate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_clone(ptr),
+            )
+        }
     }
 }
 
@@ -19366,7 +19640,9 @@ pub use crate::ffi_types::IGESSelect_UpdateFileName as UpdateFileName;
 
 unsafe impl crate::CppDeletable for UpdateFileName {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_destructor(ptr);
+        }
     }
 }
 
@@ -19727,13 +20003,19 @@ pub use crate::ffi_types::HandleIGESSelectUpdateFileName;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectUpdateFileName {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectUpdateFileName {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -19816,7 +20098,9 @@ pub use crate::ffi_types::IGESSelect_UpdateLastChange as UpdateLastChange;
 
 unsafe impl crate::CppDeletable for UpdateLastChange {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_destructor(ptr);
+        }
     }
 }
 
@@ -20178,13 +20462,19 @@ pub use crate::ffi_types::HandleIGESSelectUpdateLastChange;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectUpdateLastChange {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectUpdateLastChange {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -20270,7 +20560,9 @@ pub use crate::ffi_types::IGESSelect_ViewSorter as ViewSorter;
 
 unsafe impl crate::CppDeletable for ViewSorter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_destructor(ptr);
+        }
     }
 }
 
@@ -20564,13 +20856,17 @@ pub use crate::ffi_types::HandleIGESSelectViewSorter;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectViewSorter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectViewSorter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_clone(ptr))
+        }
     }
 }
 
@@ -20624,7 +20920,9 @@ pub use crate::ffi_types::IGESSelect_WorkLibrary as WorkLibrary;
 
 unsafe impl crate::CppDeletable for WorkLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_destructor(ptr);
+        }
     }
 }
 
@@ -20913,13 +21211,17 @@ pub use crate::ffi_types::HandleIGESSelectWorkLibrary;
 
 unsafe impl crate::CppDeletable for HandleIGESSelectWorkLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESSelectWorkLibrary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_clone(ptr))
+        }
     }
 }
 

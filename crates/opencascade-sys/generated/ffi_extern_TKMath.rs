@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== BSplCLib_Cache ========================
     pub fn BSplCLib_Cache_destructor(self_: *mut BSplCLib_Cache);
     /// **Source:** `BSplCLib_Cache.hxx`:33 - `BSplCLib_Cache::BSplCLib_Cache()`

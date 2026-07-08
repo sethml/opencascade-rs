@@ -33,7 +33,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakeBox as MakeBox;
 
 unsafe impl crate::CppDeletable for MakeBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_destructor(ptr);
+        }
     }
 }
 
@@ -335,7 +337,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakeCone as MakeCone;
 
 unsafe impl crate::CppDeletable for MakeCone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_destructor(ptr);
+        }
     }
 }
 
@@ -597,7 +601,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakeCylinder as MakeCylinder;
 
 unsafe impl crate::CppDeletable for MakeCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_destructor(ptr);
+        }
     }
 }
 
@@ -866,7 +872,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakeHalfSpace as MakeHalfSpace;
 
 unsafe impl crate::CppDeletable for MakeHalfSpace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_destructor(ptr);
+        }
     }
 }
 
@@ -1012,7 +1020,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakeOneAxis as MakeOneAxis;
 
 unsafe impl crate::CppDeletable for MakeOneAxis {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_destructor(ptr);
+        }
     }
 }
 
@@ -1172,7 +1182,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakePrism as MakePrism;
 
 unsafe impl crate::CppDeletable for MakePrism {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_destructor(ptr);
+        }
     }
 }
 
@@ -1518,7 +1530,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakeRevol as MakeRevol;
 
 unsafe impl crate::CppDeletable for MakeRevol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_destructor(ptr);
+        }
     }
 }
 
@@ -1801,7 +1815,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakeRevolution as MakeRevolution;
 
 unsafe impl crate::CppDeletable for MakeRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_destructor(ptr);
+        }
     }
 }
 
@@ -2119,7 +2135,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakeSphere as MakeSphere;
 
 unsafe impl crate::CppDeletable for MakeSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_destructor(ptr);
+        }
     }
 }
 
@@ -2500,7 +2518,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakeSweep as MakeSweep;
 
 unsafe impl crate::CppDeletable for MakeSweep {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_destructor(ptr);
+        }
     }
 }
 
@@ -2629,7 +2649,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakeTorus as MakeTorus;
 
 unsafe impl crate::CppDeletable for MakeTorus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_destructor(ptr);
+        }
     }
 }
 
@@ -2960,7 +2982,9 @@ pub use crate::ffi_types::BRepPrimAPI_MakeWedge as MakeWedge;
 
 unsafe impl crate::CppDeletable for MakeWedge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_destructor(ptr);
+        }
     }
 }
 

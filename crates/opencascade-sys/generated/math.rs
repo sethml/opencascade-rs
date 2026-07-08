@@ -73,7 +73,9 @@ pub use crate::ffi_types::math_BFGS as BFGS;
 
 unsafe impl crate::CppDeletable for BFGS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_BFGS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_BFGS_destructor(ptr);
+        }
     }
 }
 
@@ -283,7 +285,9 @@ pub use crate::ffi_types::math_BissecNewton as BissecNewton;
 
 unsafe impl crate::CppDeletable for BissecNewton {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_BissecNewton_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_BissecNewton_destructor(ptr);
+        }
     }
 }
 
@@ -403,7 +407,9 @@ pub use crate::ffi_types::math_BracketMinimum as BracketMinimum;
 
 unsafe impl crate::CppDeletable for BracketMinimum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_BracketMinimum_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_BracketMinimum_destructor(ptr);
+        }
     }
 }
 
@@ -561,7 +567,9 @@ pub use crate::ffi_types::math_BracketedRoot as BracketedRoot;
 
 unsafe impl crate::CppDeletable for BracketedRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_BracketedRoot_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_BracketedRoot_destructor(ptr);
+        }
     }
 }
 
@@ -689,7 +697,9 @@ pub use crate::ffi_types::math_BrentMinimum as BrentMinimum;
 
 unsafe impl crate::CppDeletable for BrentMinimum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_BrentMinimum_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_BrentMinimum_destructor(ptr);
+        }
     }
 }
 
@@ -843,7 +853,9 @@ pub use crate::ffi_types::math_BullardGenerator as BullardGenerator;
 
 unsafe impl crate::CppDeletable for BullardGenerator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_BullardGenerator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_BullardGenerator_destructor(ptr);
+        }
     }
 }
 
@@ -898,7 +910,9 @@ pub use crate::ffi_types::math_ComputeGaussPointsAndWeights as ComputeGaussPoint
 
 unsafe impl crate::CppDeletable for ComputeGaussPointsAndWeights {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_ComputeGaussPointsAndWeights_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_ComputeGaussPointsAndWeights_destructor(ptr);
+        }
     }
 }
 
@@ -951,7 +965,9 @@ pub use crate::ffi_types::math_ComputeKronrodPointsAndWeights as ComputeKronrodP
 
 unsafe impl crate::CppDeletable for ComputeKronrodPointsAndWeights {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_ComputeKronrodPointsAndWeights_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_ComputeKronrodPointsAndWeights_destructor(ptr);
+        }
     }
 }
 
@@ -1011,7 +1027,9 @@ pub use crate::ffi_types::math_Crout as Crout;
 
 unsafe impl crate::CppDeletable for Crout {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_Crout_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_Crout_destructor(ptr);
+        }
     }
 }
 
@@ -1124,7 +1142,9 @@ pub use crate::ffi_types::math_DirectPolynomialRoots as DirectPolynomialRoots;
 
 unsafe impl crate::CppDeletable for DirectPolynomialRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_DirectPolynomialRoots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_DirectPolynomialRoots_destructor(ptr);
+        }
     }
 }
 
@@ -1228,13 +1248,15 @@ pub use crate::ffi_types::math_DoubleTab as DoubleTab;
 
 unsafe impl crate::CppDeletable for DoubleTab {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_DoubleTab_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_DoubleTab_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for DoubleTab {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::math_DoubleTab_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::math_DoubleTab_clone(ptr)) }
     }
 }
 
@@ -1340,7 +1362,9 @@ pub use crate::ffi_types::math_EigenValuesSearcher as EigenValuesSearcher;
 
 unsafe impl crate::CppDeletable for EigenValuesSearcher {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_EigenValuesSearcher_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_EigenValuesSearcher_destructor(ptr);
+        }
     }
 }
 
@@ -1416,7 +1440,9 @@ pub use crate::ffi_types::math_FRPR as FRPR;
 
 unsafe impl crate::CppDeletable for FRPR {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_FRPR_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_FRPR_destructor(ptr);
+        }
     }
 }
 
@@ -1589,7 +1615,9 @@ pub use crate::ffi_types::math_Function as Function;
 
 unsafe impl crate::CppDeletable for Function {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_Function_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_Function_destructor(ptr);
+        }
     }
 }
 
@@ -1641,7 +1669,9 @@ pub use crate::ffi_types::math_FunctionAllRoots as FunctionAllRoots;
 
 unsafe impl crate::CppDeletable for FunctionAllRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_FunctionAllRoots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_FunctionAllRoots_destructor(ptr);
+        }
     }
 }
 
@@ -1770,7 +1800,9 @@ pub use crate::ffi_types::math_FunctionRoot as FunctionRoot;
 
 unsafe impl crate::CppDeletable for FunctionRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_FunctionRoot_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_FunctionRoot_destructor(ptr);
+        }
     }
 }
 
@@ -1931,7 +1963,9 @@ pub use crate::ffi_types::math_FunctionRoots as FunctionRoots;
 
 unsafe impl crate::CppDeletable for FunctionRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_FunctionRoots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_FunctionRoots_destructor(ptr);
+        }
     }
 }
 
@@ -2100,7 +2134,9 @@ pub use crate::ffi_types::math_FunctionSample as FunctionSample;
 
 unsafe impl crate::CppDeletable for FunctionSample {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_FunctionSample_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_FunctionSample_destructor(ptr);
+        }
     }
 }
 
@@ -2152,7 +2188,9 @@ pub use crate::ffi_types::math_FunctionSet as FunctionSet;
 
 unsafe impl crate::CppDeletable for FunctionSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_FunctionSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_FunctionSet_destructor(ptr);
+        }
     }
 }
 
@@ -2226,7 +2264,9 @@ pub use crate::ffi_types::math_FunctionSetRoot as FunctionSetRoot;
 
 unsafe impl crate::CppDeletable for FunctionSetRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_FunctionSetRoot_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_destructor(ptr);
+        }
     }
 }
 
@@ -2485,7 +2525,9 @@ pub use crate::ffi_types::math_FunctionSetWithDerivatives as FunctionSetWithDeri
 
 unsafe impl crate::CppDeletable for FunctionSetWithDerivatives {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_FunctionSetWithDerivatives_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_FunctionSetWithDerivatives_destructor(ptr);
+        }
     }
 }
 
@@ -2605,7 +2647,9 @@ pub use crate::ffi_types::math_FunctionWithDerivative as FunctionWithDerivative;
 
 unsafe impl crate::CppDeletable for FunctionWithDerivative {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_FunctionWithDerivative_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_FunctionWithDerivative_destructor(ptr);
+        }
     }
 }
 
@@ -2693,7 +2737,9 @@ pub use crate::ffi_types::math_Gauss as Gauss;
 
 unsafe impl crate::CppDeletable for Gauss {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_Gauss_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_Gauss_destructor(ptr);
+        }
     }
 }
 
@@ -2807,7 +2853,9 @@ pub use crate::ffi_types::math_GaussLeastSquare as GaussLeastSquare;
 
 unsafe impl crate::CppDeletable for GaussLeastSquare {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_GaussLeastSquare_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_GaussLeastSquare_destructor(ptr);
+        }
     }
 }
 
@@ -2886,7 +2934,9 @@ pub use crate::ffi_types::math_GaussMultipleIntegration as GaussMultipleIntegrat
 
 unsafe impl crate::CppDeletable for GaussMultipleIntegration {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_GaussMultipleIntegration_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_GaussMultipleIntegration_destructor(ptr);
+        }
     }
 }
 
@@ -2944,7 +2994,9 @@ pub use crate::ffi_types::math_GaussSetIntegration as GaussSetIntegration;
 
 unsafe impl crate::CppDeletable for GaussSetIntegration {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_GaussSetIntegration_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_GaussSetIntegration_destructor(ptr);
+        }
     }
 }
 
@@ -3003,7 +3055,9 @@ pub use crate::ffi_types::math_GaussSingleIntegration as GaussSingleIntegration;
 
 unsafe impl crate::CppDeletable for GaussSingleIntegration {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_GaussSingleIntegration_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_GaussSingleIntegration_destructor(ptr);
+        }
     }
 }
 
@@ -3115,7 +3169,9 @@ pub use crate::ffi_types::math_GlobOptMin as GlobOptMin;
 
 unsafe impl crate::CppDeletable for GlobOptMin {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_GlobOptMin_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_GlobOptMin_destructor(ptr);
+        }
     }
 }
 
@@ -3413,7 +3469,9 @@ pub use crate::ffi_types::math_Householder as Householder;
 
 unsafe impl crate::CppDeletable for Householder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_Householder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_Householder_destructor(ptr);
+        }
     }
 }
 
@@ -3581,7 +3639,9 @@ pub use crate::ffi_types::math_Jacobi as Jacobi;
 
 unsafe impl crate::CppDeletable for Jacobi {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_Jacobi_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_Jacobi_destructor(ptr);
+        }
     }
 }
 
@@ -3670,7 +3730,9 @@ pub use crate::ffi_types::math_KronrodSingleIntegration as KronrodSingleIntegrat
 
 unsafe impl crate::CppDeletable for KronrodSingleIntegration {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_KronrodSingleIntegration_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_KronrodSingleIntegration_destructor(ptr);
+        }
     }
 }
 
@@ -3907,13 +3969,15 @@ pub use crate::ffi_types::math_Matrix as Matrix;
 
 unsafe impl crate::CppDeletable for Matrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_Matrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_Matrix_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Matrix {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::math_Matrix_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::math_Matrix_clone(ptr)) }
     }
 }
 
@@ -4503,7 +4567,9 @@ pub use crate::ffi_types::math_MultipleVarFunction as MultipleVarFunction;
 
 unsafe impl crate::CppDeletable for MultipleVarFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_MultipleVarFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_MultipleVarFunction_destructor(ptr);
+        }
     }
 }
 
@@ -4560,7 +4626,9 @@ pub use crate::ffi_types::math_MultipleVarFunctionWithGradient as MultipleVarFun
 
 unsafe impl crate::CppDeletable for MultipleVarFunctionWithGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_MultipleVarFunctionWithGradient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithGradient_destructor(ptr);
+        }
     }
 }
 
@@ -4661,7 +4729,9 @@ pub use crate::ffi_types::math_MultipleVarFunctionWithHessian as MultipleVarFunc
 
 unsafe impl crate::CppDeletable for MultipleVarFunctionWithHessian {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_destructor(ptr);
+        }
     }
 }
 
@@ -4800,7 +4870,9 @@ pub use crate::ffi_types::math_NewtonFunctionRoot as NewtonFunctionRoot;
 
 unsafe impl crate::CppDeletable for NewtonFunctionRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_NewtonFunctionRoot_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_NewtonFunctionRoot_destructor(ptr);
+        }
     }
 }
 
@@ -4986,7 +5058,9 @@ pub use crate::ffi_types::math_NewtonFunctionSetRoot as NewtonFunctionSetRoot;
 
 unsafe impl crate::CppDeletable for NewtonFunctionSetRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_destructor(ptr);
+        }
     }
 }
 
@@ -5238,7 +5312,9 @@ pub use crate::ffi_types::math_NewtonMinimum as NewtonMinimum;
 
 unsafe impl crate::CppDeletable for NewtonMinimum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_NewtonMinimum_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_NewtonMinimum_destructor(ptr);
+        }
     }
 }
 
@@ -5473,7 +5549,9 @@ pub use crate::ffi_types::math_NotSquare as NotSquare;
 
 unsafe impl crate::CppDeletable for NotSquare {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_NotSquare_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_NotSquare_destructor(ptr);
+        }
     }
 }
 
@@ -5764,13 +5842,15 @@ pub use crate::ffi_types::HandlemathNotSquare;
 
 unsafe impl crate::CppDeletable for HandlemathNotSquare {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandlemathNotSquare_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandlemathNotSquare_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlemathNotSquare {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandlemathNotSquare_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandlemathNotSquare_clone(ptr)) }
     }
 }
 
@@ -5888,7 +5968,9 @@ pub use crate::ffi_types::math_PSO as PSO;
 
 unsafe impl crate::CppDeletable for PSO {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_PSO_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_PSO_destructor(ptr);
+        }
     }
 }
 
@@ -6039,7 +6121,9 @@ pub use crate::ffi_types::PSO_Particle;
 
 unsafe impl crate::CppDeletable for PSO_Particle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::PSO_Particle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::PSO_Particle_destructor(ptr);
+        }
     }
 }
 
@@ -6059,7 +6143,9 @@ pub use crate::ffi_types::math_PSOParticlesPool as PSOParticlesPool;
 
 unsafe impl crate::CppDeletable for PSOParticlesPool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_PSOParticlesPool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_PSOParticlesPool_destructor(ptr);
+        }
     }
 }
 
@@ -6135,7 +6221,9 @@ pub use crate::ffi_types::math_Powell as Powell;
 
 unsafe impl crate::CppDeletable for Powell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_Powell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_Powell_destructor(ptr);
+        }
     }
 }
 
@@ -6292,7 +6380,9 @@ pub use crate::ffi_types::math_SVD as SVD;
 
 unsafe impl crate::CppDeletable for SVD {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_SVD_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_SVD_destructor(ptr);
+        }
     }
 }
 
@@ -6367,7 +6457,9 @@ pub use crate::ffi_types::math_SingularMatrix as SingularMatrix;
 
 unsafe impl crate::CppDeletable for SingularMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_SingularMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_SingularMatrix_destructor(ptr);
+        }
     }
 }
 
@@ -6630,13 +6722,17 @@ pub use crate::ffi_types::HandlemathSingularMatrix;
 
 unsafe impl crate::CppDeletable for HandlemathSingularMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandlemathSingularMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandlemathSingularMatrix_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlemathSingularMatrix {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandlemathSingularMatrix_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandlemathSingularMatrix_clone(ptr))
+        }
     }
 }
 
@@ -6701,7 +6797,9 @@ pub use crate::ffi_types::math_TrigonometricEquationFunction as TrigonometricEqu
 
 unsafe impl crate::CppDeletable for TrigonometricEquationFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_destructor(ptr);
+        }
     }
 }
 
@@ -6809,7 +6907,9 @@ pub use crate::ffi_types::math_TrigonometricFunctionRoots as TrigonometricFuncti
 
 unsafe impl crate::CppDeletable for TrigonometricFunctionRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_TrigonometricFunctionRoots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_TrigonometricFunctionRoots_destructor(ptr);
+        }
     }
 }
 
@@ -6945,7 +7045,9 @@ pub use crate::ffi_types::math_Uzawa as Uzawa;
 
 unsafe impl crate::CppDeletable for Uzawa {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_Uzawa_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_Uzawa_destructor(ptr);
+        }
     }
 }
 
@@ -7275,7 +7377,9 @@ pub use crate::ffi_types::math_ValueAndWeight as ValueAndWeight;
 
 unsafe impl crate::CppDeletable for ValueAndWeight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_ValueAndWeight_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_ValueAndWeight_destructor(ptr);
+        }
     }
 }
 

@@ -18,7 +18,9 @@ pub use crate::ffi_types::APIHeaderSection_EditHeader as EditHeader;
 
 unsafe impl crate::CppDeletable for EditHeader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_destructor(ptr);
+        }
     }
 }
 
@@ -449,13 +451,19 @@ pub use crate::ffi_types::HandleAPIHeaderSectionEditHeader;
 
 unsafe impl crate::CppDeletable for HandleAPIHeaderSectionEditHeader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAPIHeaderSectionEditHeader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -517,7 +525,9 @@ pub use crate::ffi_types::APIHeaderSection_MakeHeader as MakeHeader;
 
 unsafe impl crate::CppDeletable for MakeHeader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_destructor(ptr);
+        }
     }
 }
 

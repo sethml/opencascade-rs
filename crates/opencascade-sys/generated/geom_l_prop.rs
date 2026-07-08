@@ -58,7 +58,9 @@ pub use crate::ffi_types::GeomLProp_CLProps as CLProps;
 
 unsafe impl crate::CppDeletable for CLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomLProp_CLProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_CLProps_destructor(ptr);
+        }
     }
 }
 
@@ -234,7 +236,9 @@ pub use crate::ffi_types::GeomLProp_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomLProp_CurveTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_CurveTool_destructor(ptr);
+        }
     }
 }
 
@@ -339,7 +343,9 @@ pub use crate::ffi_types::GeomLProp_SLProps as SLProps;
 
 unsafe impl crate::CppDeletable for SLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomLProp_SLProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_destructor(ptr);
+        }
     }
 }
 
@@ -609,7 +615,9 @@ pub use crate::ffi_types::GeomLProp_SurfaceTool as SurfaceTool;
 
 unsafe impl crate::CppDeletable for SurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomLProp_SurfaceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_SurfaceTool_destructor(ptr);
+        }
     }
 }
 

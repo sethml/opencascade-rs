@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== DEOBJ_ConfigurationNode ========================
     pub fn DEOBJ_ConfigurationNode_destructor(self_: *mut DEOBJ_ConfigurationNode);
     /// **Source:** `DEOBJ_ConfigurationNode.hxx`:35 - `DEOBJ_ConfigurationNode::DEOBJ_ConfigurationNode()`

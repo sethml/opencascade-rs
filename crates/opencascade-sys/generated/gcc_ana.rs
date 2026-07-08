@@ -28,7 +28,9 @@ pub use crate::ffi_types::GccAna_Circ2d2TanOn as Circ2d2TanOn;
 
 unsafe impl crate::CppDeletable for Circ2d2TanOn {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_destructor(ptr);
+        }
     }
 }
 
@@ -457,7 +459,9 @@ pub use crate::ffi_types::GccAna_Circ2d2TanRad as Circ2d2TanRad;
 
 unsafe impl crate::CppDeletable for Circ2d2TanRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_destructor(ptr);
+        }
     }
 }
 
@@ -754,7 +758,9 @@ pub use crate::ffi_types::GccAna_Circ2d3Tan as Circ2d3Tan;
 
 unsafe impl crate::CppDeletable for Circ2d3Tan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_destructor(ptr);
+        }
     }
 }
 
@@ -1157,7 +1163,9 @@ pub use crate::ffi_types::GccAna_Circ2dBisec as Circ2dBisec;
 
 unsafe impl crate::CppDeletable for Circ2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dBisec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dBisec_destructor(ptr);
+        }
     }
 }
 
@@ -1239,7 +1247,9 @@ pub use crate::ffi_types::GccAna_Circ2dTanCen as Circ2dTanCen;
 
 unsafe impl crate::CppDeletable for Circ2dTanCen {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_destructor(ptr);
+        }
     }
 }
 
@@ -1444,7 +1454,9 @@ pub use crate::ffi_types::GccAna_Circ2dTanOnRad as Circ2dTanOnRad;
 
 unsafe impl crate::CppDeletable for Circ2dTanOnRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_destructor(ptr);
+        }
     }
 }
 
@@ -1731,7 +1743,9 @@ pub use crate::ffi_types::GccAna_CircLin2dBisec as CircLin2dBisec;
 
 unsafe impl crate::CppDeletable for CircLin2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_CircLin2dBisec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_CircLin2dBisec_destructor(ptr);
+        }
     }
 }
 
@@ -1807,7 +1821,9 @@ pub use crate::ffi_types::GccAna_CircPnt2dBisec as CircPnt2dBisec;
 
 unsafe impl crate::CppDeletable for CircPnt2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_CircPnt2dBisec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_CircPnt2dBisec_destructor(ptr);
+        }
     }
 }
 
@@ -1905,7 +1921,9 @@ pub use crate::ffi_types::GccAna_Lin2d2Tan as Lin2d2Tan;
 
 unsafe impl crate::CppDeletable for Lin2d2Tan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_destructor(ptr);
+        }
     }
 }
 
@@ -2126,7 +2144,9 @@ pub use crate::ffi_types::GccAna_Lin2dBisec as Lin2dBisec;
 
 unsafe impl crate::CppDeletable for Lin2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dBisec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dBisec_destructor(ptr);
+        }
     }
 }
 
@@ -2248,7 +2268,9 @@ pub use crate::ffi_types::GccAna_Lin2dTanObl as Lin2dTanObl;
 
 unsafe impl crate::CppDeletable for Lin2dTanObl {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanObl_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanObl_destructor(ptr);
+        }
     }
 }
 
@@ -2428,7 +2450,9 @@ pub use crate::ffi_types::GccAna_Lin2dTanPar as Lin2dTanPar;
 
 unsafe impl crate::CppDeletable for Lin2dTanPar {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPar_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPar_destructor(ptr);
+        }
     }
 }
 
@@ -2579,7 +2603,9 @@ pub use crate::ffi_types::GccAna_Lin2dTanPer as Lin2dTanPer;
 
 unsafe impl crate::CppDeletable for Lin2dTanPer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_destructor(ptr);
+        }
     }
 }
 
@@ -2794,7 +2820,9 @@ pub use crate::ffi_types::GccAna_LinPnt2dBisec as LinPnt2dBisec;
 
 unsafe impl crate::CppDeletable for LinPnt2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_LinPnt2dBisec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_LinPnt2dBisec_destructor(ptr);
+        }
     }
 }
 
@@ -2843,7 +2871,9 @@ pub use crate::ffi_types::GccAna_NoSolution as NoSolution;
 
 unsafe impl crate::CppDeletable for NoSolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_destructor(ptr);
+        }
     }
 }
 
@@ -3108,13 +3138,17 @@ pub use crate::ffi_types::HandleGccAnaNoSolution;
 
 unsafe impl crate::CppDeletable for HandleGccAnaNoSolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGccAnaNoSolution {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_clone(ptr))
+        }
     }
 }
 
@@ -3185,7 +3219,9 @@ pub use crate::ffi_types::GccAna_Pnt2dBisec as Pnt2dBisec;
 
 unsafe impl crate::CppDeletable for Pnt2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccAna_Pnt2dBisec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Pnt2dBisec_destructor(ptr);
+        }
     }
 }
 

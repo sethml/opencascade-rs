@@ -20,7 +20,9 @@ pub use crate::ffi_types::BRepTopAdaptor_FClass2d as FClass2d;
 
 unsafe impl crate::CppDeletable for FClass2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_FClass2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_FClass2d_destructor(ptr);
+        }
     }
 }
 
@@ -114,7 +116,9 @@ pub use crate::ffi_types::BRepTopAdaptor_HVertex as HVertex;
 
 unsafe impl crate::CppDeletable for HVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_destructor(ptr);
+        }
     }
 }
 
@@ -351,13 +355,17 @@ pub use crate::ffi_types::HandleBRepTopAdaptorHVertex;
 
 unsafe impl crate::CppDeletable for HandleBRepTopAdaptorHVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorHVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorHVertex_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepTopAdaptorHVertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorHVertex_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorHVertex_clone(ptr))
+        }
     }
 }
 
@@ -421,7 +429,9 @@ pub use crate::ffi_types::BRepTopAdaptor_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_destructor(ptr);
+        }
     }
 }
 
@@ -528,7 +538,9 @@ pub use crate::ffi_types::BRepTopAdaptor_TopolTool as TopolTool;
 
 unsafe impl crate::CppDeletable for TopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_destructor(ptr);
+        }
     }
 }
 
@@ -1066,13 +1078,19 @@ pub use crate::ffi_types::HandleBRepTopAdaptorTopolTool;
 
 unsafe impl crate::CppDeletable for HandleBRepTopAdaptorTopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorTopolTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorTopolTool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepTopAdaptorTopolTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorTopolTool_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorTopolTool_clone(
+                ptr,
+            ))
+        }
     }
 }
 

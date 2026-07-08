@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== BRepToIGES_BREntity ========================
     pub fn BRepToIGES_BREntity_destructor(self_: *mut BRepToIGES_BREntity);
     /// **Source:** `BRepToIGES_BREntity.hxx`:40 - `BRepToIGES_BREntity::BRepToIGES_BREntity()`

@@ -144,7 +144,9 @@ pub use crate::ffi_types::Law_BSpFunc as BSpFunc;
 
 unsafe impl crate::CppDeletable for BSpFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_destructor(ptr);
+        }
     }
 }
 
@@ -417,13 +419,15 @@ pub use crate::ffi_types::HandleLawBSpFunc;
 
 unsafe impl crate::CppDeletable for HandleLawBSpFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLawBSpFunc {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_clone(ptr)) }
     }
 }
 
@@ -571,7 +575,9 @@ pub use crate::ffi_types::Law_BSpline as BSpline;
 
 unsafe impl crate::CppDeletable for BSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Law_BSpline_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Law_BSpline_destructor(ptr);
+        }
     }
 }
 
@@ -1616,13 +1622,15 @@ pub use crate::ffi_types::HandleLawBSpline;
 
 unsafe impl crate::CppDeletable for HandleLawBSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLawBSpline {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_clone(ptr)) }
     }
 }
 
@@ -1692,7 +1700,9 @@ pub use crate::ffi_types::Law_BSplineKnotSplitting as BSplineKnotSplitting;
 
 unsafe impl crate::CppDeletable for BSplineKnotSplitting {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Law_BSplineKnotSplitting_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Law_BSplineKnotSplitting_destructor(ptr);
+        }
     }
 }
 
@@ -1771,7 +1781,9 @@ pub use crate::ffi_types::Law_Composite as Composite;
 
 unsafe impl crate::CppDeletable for Composite {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Law_Composite_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Law_Composite_destructor(ptr);
+        }
     }
 }
 
@@ -2073,13 +2085,15 @@ pub use crate::ffi_types::HandleLawComposite;
 
 unsafe impl crate::CppDeletable for HandleLawComposite {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleLawComposite_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleLawComposite_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLawComposite {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawComposite_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawComposite_clone(ptr)) }
     }
 }
 
@@ -2142,7 +2156,9 @@ pub use crate::ffi_types::Law_Constant as Constant;
 
 unsafe impl crate::CppDeletable for Constant {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Law_Constant_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Law_Constant_destructor(ptr);
+        }
     }
 }
 
@@ -2391,13 +2407,15 @@ pub use crate::ffi_types::HandleLawConstant;
 
 unsafe impl crate::CppDeletable for HandleLawConstant {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleLawConstant_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleLawConstant_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLawConstant {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawConstant_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawConstant_clone(ptr)) }
     }
 }
 
@@ -2460,7 +2478,9 @@ pub use crate::ffi_types::Law_Function as Function;
 
 unsafe impl crate::CppDeletable for Function {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Law_Function_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Law_Function_destructor(ptr);
+        }
     }
 }
 
@@ -2673,13 +2693,15 @@ pub use crate::ffi_types::HandleLawFunction;
 
 unsafe impl crate::CppDeletable for HandleLawFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleLawFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleLawFunction_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLawFunction {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawFunction_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawFunction_clone(ptr)) }
     }
 }
 
@@ -2836,7 +2858,9 @@ pub use crate::ffi_types::Law_Interpol as Interpol;
 
 unsafe impl crate::CppDeletable for Interpol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Law_Interpol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Law_Interpol_destructor(ptr);
+        }
     }
 }
 
@@ -3221,13 +3245,15 @@ pub use crate::ffi_types::HandleLawInterpol;
 
 unsafe impl crate::CppDeletable for HandleLawInterpol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLawInterpol {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_clone(ptr)) }
     }
 }
 
@@ -3307,7 +3333,9 @@ pub use crate::ffi_types::Law_Interpolate as Interpolate;
 
 unsafe impl crate::CppDeletable for Interpolate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Law_Interpolate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Law_Interpolate_destructor(ptr);
+        }
     }
 }
 
@@ -3415,7 +3443,9 @@ pub use crate::ffi_types::Law_Linear as Linear;
 
 unsafe impl crate::CppDeletable for Linear {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Law_Linear_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Law_Linear_destructor(ptr);
+        }
     }
 }
 
@@ -3678,13 +3708,15 @@ pub use crate::ffi_types::HandleLawLinear;
 
 unsafe impl crate::CppDeletable for HandleLawLinear {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleLawLinear_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleLawLinear_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLawLinear {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawLinear_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawLinear_clone(ptr)) }
     }
 }
 
@@ -3747,7 +3779,9 @@ pub use crate::ffi_types::Law_S as S;
 
 unsafe impl crate::CppDeletable for S {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Law_S_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Law_S_destructor(ptr);
+        }
     }
 }
 
@@ -4054,13 +4088,15 @@ pub use crate::ffi_types::HandleLawS;
 
 unsafe impl crate::CppDeletable for HandleLawS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleLawS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleLawS_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLawS {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawS_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawS_clone(ptr)) }
     }
 }
 

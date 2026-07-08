@@ -72,7 +72,9 @@ pub use crate::ffi_types::TDataStd_AsciiString as AsciiString;
 
 unsafe impl crate::CppDeletable for AsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_AsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_AsciiString_destructor(ptr);
+        }
     }
 }
 
@@ -683,13 +685,17 @@ pub use crate::ffi_types::HandleTDataStdAsciiString;
 
 unsafe impl crate::CppDeletable for HandleTDataStdAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdAsciiString_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdAsciiString {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdAsciiString_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdAsciiString_clone(ptr))
+        }
     }
 }
 
@@ -752,7 +758,9 @@ pub use crate::ffi_types::TDataStd_BooleanArray as BooleanArray;
 
 unsafe impl crate::CppDeletable for BooleanArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_BooleanArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_BooleanArray_destructor(ptr);
+        }
     }
 }
 
@@ -1417,13 +1425,17 @@ pub use crate::ffi_types::HandleTDataStdBooleanArray;
 
 unsafe impl crate::CppDeletable for HandleTDataStdBooleanArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdBooleanArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdBooleanArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdBooleanArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdBooleanArray_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdBooleanArray_clone(ptr))
+        }
     }
 }
 
@@ -1486,7 +1498,9 @@ pub use crate::ffi_types::TDataStd_BooleanList as BooleanList;
 
 unsafe impl crate::CppDeletable for BooleanList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_BooleanList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_BooleanList_destructor(ptr);
+        }
     }
 }
 
@@ -2160,13 +2174,17 @@ pub use crate::ffi_types::HandleTDataStdBooleanList;
 
 unsafe impl crate::CppDeletable for HandleTDataStdBooleanList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdBooleanList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdBooleanList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdBooleanList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdBooleanList_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdBooleanList_clone(ptr))
+        }
     }
 }
 
@@ -2229,7 +2247,9 @@ pub use crate::ffi_types::TDataStd_ByteArray as ByteArray;
 
 unsafe impl crate::CppDeletable for ByteArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_ByteArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ByteArray_destructor(ptr);
+        }
     }
 }
 
@@ -2911,13 +2931,15 @@ pub use crate::ffi_types::HandleTDataStdByteArray;
 
 unsafe impl crate::CppDeletable for HandleTDataStdByteArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdByteArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdByteArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdByteArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdByteArray_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdByteArray_clone(ptr)) }
     }
 }
 
@@ -2983,7 +3005,9 @@ pub use crate::ffi_types::TDataStd_ChildNodeIterator as ChildNodeIterator;
 
 unsafe impl crate::CppDeletable for ChildNodeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_ChildNodeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ChildNodeIterator_destructor(ptr);
+        }
     }
 }
 
@@ -3091,7 +3115,9 @@ pub use crate::ffi_types::TDataStd_Comment as Comment;
 
 unsafe impl crate::CppDeletable for Comment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_Comment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Comment_destructor(ptr);
+        }
     }
 }
 
@@ -3701,13 +3727,15 @@ pub use crate::ffi_types::HandleTDataStdComment;
 
 unsafe impl crate::CppDeletable for HandleTDataStdComment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdComment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdComment_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdComment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdComment_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdComment_clone(ptr)) }
     }
 }
 
@@ -3784,7 +3812,9 @@ pub use crate::ffi_types::TDataStd_Current as Current;
 
 unsafe impl crate::CppDeletable for Current {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_Current_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Current_destructor(ptr);
+        }
     }
 }
 
@@ -4354,13 +4384,15 @@ pub use crate::ffi_types::HandleTDataStdCurrent;
 
 unsafe impl crate::CppDeletable for HandleTDataStdCurrent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdCurrent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdCurrent_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdCurrent {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdCurrent_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdCurrent_clone(ptr)) }
     }
 }
 
@@ -4424,7 +4456,9 @@ pub use crate::ffi_types::TDataStd_DeltaOnModificationOfByteArray as DeltaOnModi
 
 unsafe impl crate::CppDeletable for DeltaOnModificationOfByteArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_DeltaOnModificationOfByteArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_DeltaOnModificationOfByteArray_destructor(ptr);
+        }
     }
 }
 
@@ -4635,15 +4669,19 @@ pub use crate::ffi_types::HandleTDataStdDeltaOnModificationOfByteArray;
 
 unsafe impl crate::CppDeletable for HandleTDataStdDeltaOnModificationOfByteArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfByteArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfByteArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdDeltaOnModificationOfByteArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfByteArray_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfByteArray_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4718,7 +4756,9 @@ pub use crate::ffi_types::TDataStd_DeltaOnModificationOfExtStringArray as DeltaO
 
 unsafe impl crate::CppDeletable for DeltaOnModificationOfExtStringArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_DeltaOnModificationOfExtStringArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_DeltaOnModificationOfExtStringArray_destructor(ptr);
+        }
     }
 }
 
@@ -4912,15 +4952,23 @@ pub use crate::ffi_types::HandleTDataStdDeltaOnModificationOfExtStringArray;
 
 unsafe impl crate::CppDeletable for HandleTDataStdDeltaOnModificationOfExtStringArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfExtStringArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfExtStringArray_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdDeltaOnModificationOfExtStringArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfExtStringArray_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfExtStringArray_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -4997,7 +5045,9 @@ pub use crate::ffi_types::TDataStd_DeltaOnModificationOfIntArray as DeltaOnModif
 
 unsafe impl crate::CppDeletable for DeltaOnModificationOfIntArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_DeltaOnModificationOfIntArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_DeltaOnModificationOfIntArray_destructor(ptr);
+        }
     }
 }
 
@@ -5208,15 +5258,19 @@ pub use crate::ffi_types::HandleTDataStdDeltaOnModificationOfIntArray;
 
 unsafe impl crate::CppDeletable for HandleTDataStdDeltaOnModificationOfIntArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfIntArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfIntArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdDeltaOnModificationOfIntArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfIntArray_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfIntArray_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5291,7 +5345,9 @@ pub use crate::ffi_types::TDataStd_DeltaOnModificationOfIntPackedMap as DeltaOnM
 
 unsafe impl crate::CppDeletable for DeltaOnModificationOfIntPackedMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_DeltaOnModificationOfIntPackedMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_DeltaOnModificationOfIntPackedMap_destructor(ptr);
+        }
     }
 }
 
@@ -5494,15 +5550,23 @@ pub use crate::ffi_types::HandleTDataStdDeltaOnModificationOfIntPackedMap;
 
 unsafe impl crate::CppDeletable for HandleTDataStdDeltaOnModificationOfIntPackedMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfIntPackedMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfIntPackedMap_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdDeltaOnModificationOfIntPackedMap {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfIntPackedMap_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfIntPackedMap_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -5577,7 +5641,9 @@ pub use crate::ffi_types::TDataStd_DeltaOnModificationOfRealArray as DeltaOnModi
 
 unsafe impl crate::CppDeletable for DeltaOnModificationOfRealArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_DeltaOnModificationOfRealArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_DeltaOnModificationOfRealArray_destructor(ptr);
+        }
     }
 }
 
@@ -5788,15 +5854,19 @@ pub use crate::ffi_types::HandleTDataStdDeltaOnModificationOfRealArray;
 
 unsafe impl crate::CppDeletable for HandleTDataStdDeltaOnModificationOfRealArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfRealArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfRealArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdDeltaOnModificationOfRealArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfRealArray_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTDataStdDeltaOnModificationOfRealArray_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5873,7 +5943,9 @@ pub use crate::ffi_types::TDataStd_Directory as Directory;
 
 unsafe impl crate::CppDeletable for Directory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_Directory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Directory_destructor(ptr);
+        }
     }
 }
 
@@ -6489,13 +6561,15 @@ pub use crate::ffi_types::HandleTDataStdDirectory;
 
 unsafe impl crate::CppDeletable for HandleTDataStdDirectory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdDirectory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdDirectory_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdDirectory {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdDirectory_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdDirectory_clone(ptr)) }
     }
 }
 
@@ -6578,7 +6652,9 @@ pub use crate::ffi_types::TDataStd_Expression as Expression;
 
 unsafe impl crate::CppDeletable for Expression {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_Expression_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Expression_destructor(ptr);
+        }
     }
 }
 
@@ -7162,13 +7238,17 @@ pub use crate::ffi_types::HandleTDataStdExpression;
 
 unsafe impl crate::CppDeletable for HandleTDataStdExpression {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdExpression_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdExpression_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdExpression {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdExpression_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdExpression_clone(ptr))
+        }
     }
 }
 
@@ -7250,7 +7330,9 @@ pub use crate::ffi_types::TDataStd_ExtStringArray as ExtStringArray;
 
 unsafe impl crate::CppDeletable for ExtStringArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_ExtStringArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ExtStringArray_destructor(ptr);
+        }
     }
 }
 
@@ -7967,13 +8049,17 @@ pub use crate::ffi_types::HandleTDataStdExtStringArray;
 
 unsafe impl crate::CppDeletable for HandleTDataStdExtStringArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdExtStringArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdExtStringArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdExtStringArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdExtStringArray_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdExtStringArray_clone(ptr))
+        }
     }
 }
 
@@ -8038,7 +8124,9 @@ pub use crate::ffi_types::TDataStd_ExtStringList as ExtStringList;
 
 unsafe impl crate::CppDeletable for ExtStringList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_ExtStringList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ExtStringList_destructor(ptr);
+        }
     }
 }
 
@@ -8777,13 +8865,17 @@ pub use crate::ffi_types::HandleTDataStdExtStringList;
 
 unsafe impl crate::CppDeletable for HandleTDataStdExtStringList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdExtStringList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdExtStringList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdExtStringList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdExtStringList_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdExtStringList_clone(ptr))
+        }
     }
 }
 
@@ -8849,7 +8941,9 @@ pub use crate::ffi_types::TDataStd_GenericEmpty as GenericEmpty;
 
 unsafe impl crate::CppDeletable for GenericEmpty {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_GenericEmpty_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_GenericEmpty_destructor(ptr);
+        }
     }
 }
 
@@ -9356,13 +9450,17 @@ pub use crate::ffi_types::HandleTDataStdGenericEmpty;
 
 unsafe impl crate::CppDeletable for HandleTDataStdGenericEmpty {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdGenericEmpty_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdGenericEmpty_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdGenericEmpty {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdGenericEmpty_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdGenericEmpty_clone(ptr))
+        }
     }
 }
 
@@ -9778,7 +9876,9 @@ pub use crate::ffi_types::TDataStd_GenericExtString as GenericExtString;
 
 unsafe impl crate::CppDeletable for GenericExtString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_GenericExtString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_GenericExtString_destructor(ptr);
+        }
     }
 }
 
@@ -10317,13 +10417,17 @@ pub use crate::ffi_types::HandleTDataStdGenericExtString;
 
 unsafe impl crate::CppDeletable for HandleTDataStdGenericExtString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdGenericExtString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdGenericExtString_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdGenericExtString {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdGenericExtString_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdGenericExtString_clone(ptr))
+        }
     }
 }
 
@@ -10423,7 +10527,9 @@ pub use crate::ffi_types::TDataStd_HDataMapOfStringByte as HDataMapOfStringByte;
 
 unsafe impl crate::CppDeletable for HDataMapOfStringByte {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringByte_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringByte_destructor(ptr);
+        }
     }
 }
 
@@ -10616,13 +10722,19 @@ pub use crate::ffi_types::HandleTDataStdHDataMapOfStringByte;
 
 unsafe impl crate::CppDeletable for HandleTDataStdHDataMapOfStringByte {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringByte_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringByte_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringByte {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringByte_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringByte_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -10677,7 +10789,9 @@ pub use crate::ffi_types::TDataStd_HDataMapOfStringHArray1OfInteger as HDataMapO
 
 unsafe impl crate::CppDeletable for HDataMapOfStringHArray1OfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfInteger_destructor(ptr);
+        }
     }
 }
 
@@ -10858,15 +10972,21 @@ pub use crate::ffi_types::HandleTDataStdHDataMapOfStringHArray1OfInteger;
 
 unsafe impl crate::CppDeletable for HandleTDataStdHDataMapOfStringHArray1OfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringHArray1OfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringHArray1OfInteger_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringHArray1OfInteger {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringHArray1OfInteger_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringHArray1OfInteger_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10923,7 +11043,9 @@ pub use crate::ffi_types::TDataStd_HDataMapOfStringHArray1OfReal as HDataMapOfSt
 
 unsafe impl crate::CppDeletable for HDataMapOfStringHArray1OfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfReal_destructor(ptr);
+        }
     }
 }
 
@@ -11104,15 +11226,19 @@ pub use crate::ffi_types::HandleTDataStdHDataMapOfStringHArray1OfReal;
 
 unsafe impl crate::CppDeletable for HandleTDataStdHDataMapOfStringHArray1OfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringHArray1OfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringHArray1OfReal_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringHArray1OfReal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringHArray1OfReal_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringHArray1OfReal_clone(ptr),
+            )
+        }
     }
 }
 
@@ -11169,7 +11295,9 @@ pub use crate::ffi_types::TDataStd_HDataMapOfStringInteger as HDataMapOfStringIn
 
 unsafe impl crate::CppDeletable for HDataMapOfStringInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringInteger_destructor(ptr);
+        }
     }
 }
 
@@ -11356,15 +11484,19 @@ pub use crate::ffi_types::HandleTDataStdHDataMapOfStringInteger;
 
 unsafe impl crate::CppDeletable for HandleTDataStdHDataMapOfStringInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringInteger_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringInteger {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringInteger_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringInteger_clone(ptr),
+            )
+        }
     }
 }
 
@@ -11421,7 +11553,9 @@ pub use crate::ffi_types::TDataStd_HDataMapOfStringReal as HDataMapOfStringReal;
 
 unsafe impl crate::CppDeletable for HDataMapOfStringReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringReal_destructor(ptr);
+        }
     }
 }
 
@@ -11614,13 +11748,19 @@ pub use crate::ffi_types::HandleTDataStdHDataMapOfStringReal;
 
 unsafe impl crate::CppDeletable for HandleTDataStdHDataMapOfStringReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringReal_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringReal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringReal_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringReal_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -11675,7 +11815,9 @@ pub use crate::ffi_types::TDataStd_HDataMapOfStringString as HDataMapOfStringStr
 
 unsafe impl crate::CppDeletable for HDataMapOfStringString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringString_destructor(ptr);
+        }
     }
 }
 
@@ -11864,15 +12006,19 @@ pub use crate::ffi_types::HandleTDataStdHDataMapOfStringString;
 
 unsafe impl crate::CppDeletable for HandleTDataStdHDataMapOfStringString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringString_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdHDataMapOfStringString {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringString_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTDataStdHDataMapOfStringString_clone(ptr),
+            )
+        }
     }
 }
 
@@ -11927,7 +12073,9 @@ pub use crate::ffi_types::TDataStd_HLabelArray1 as HLabelArray1;
 
 unsafe impl crate::CppDeletable for HLabelArray1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_HLabelArray1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_HLabelArray1_destructor(ptr);
+        }
     }
 }
 
@@ -12145,13 +12293,17 @@ pub use crate::ffi_types::HandleTDataStdHLabelArray1;
 
 unsafe impl crate::CppDeletable for HandleTDataStdHLabelArray1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdHLabelArray1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdHLabelArray1_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdHLabelArray1 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdHLabelArray1_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdHLabelArray1_clone(ptr))
+        }
     }
 }
 
@@ -12203,7 +12355,9 @@ pub use crate::ffi_types::TDataStd_IntPackedMap as IntPackedMap;
 
 unsafe impl crate::CppDeletable for IntPackedMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_IntPackedMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_IntPackedMap_destructor(ptr);
+        }
     }
 }
 
@@ -12874,13 +13028,17 @@ pub use crate::ffi_types::HandleTDataStdIntPackedMap;
 
 unsafe impl crate::CppDeletable for HandleTDataStdIntPackedMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdIntPackedMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdIntPackedMap_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdIntPackedMap {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdIntPackedMap_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdIntPackedMap_clone(ptr))
+        }
     }
 }
 
@@ -12943,7 +13101,9 @@ pub use crate::ffi_types::TDataStd_Integer as Integer;
 
 unsafe impl crate::CppDeletable for Integer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_Integer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Integer_destructor(ptr);
+        }
     }
 }
 
@@ -13536,13 +13696,15 @@ pub use crate::ffi_types::HandleTDataStdInteger;
 
 unsafe impl crate::CppDeletable for HandleTDataStdInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdInteger_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdInteger {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdInteger_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdInteger_clone(ptr)) }
     }
 }
 
@@ -13605,7 +13767,9 @@ pub use crate::ffi_types::TDataStd_IntegerArray as IntegerArray;
 
 unsafe impl crate::CppDeletable for IntegerArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_IntegerArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_IntegerArray_destructor(ptr);
+        }
     }
 }
 
@@ -14311,13 +14475,17 @@ pub use crate::ffi_types::HandleTDataStdIntegerArray;
 
 unsafe impl crate::CppDeletable for HandleTDataStdIntegerArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdIntegerArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdIntegerArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdIntegerArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdIntegerArray_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdIntegerArray_clone(ptr))
+        }
     }
 }
 
@@ -14380,7 +14548,9 @@ pub use crate::ffi_types::TDataStd_IntegerList as IntegerList;
 
 unsafe impl crate::CppDeletable for IntegerList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_IntegerList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_IntegerList_destructor(ptr);
+        }
     }
 }
 
@@ -15084,13 +15254,17 @@ pub use crate::ffi_types::HandleTDataStdIntegerList;
 
 unsafe impl crate::CppDeletable for HandleTDataStdIntegerList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdIntegerList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdIntegerList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdIntegerList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdIntegerList_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdIntegerList_clone(ptr))
+        }
     }
 }
 
@@ -15153,7 +15327,9 @@ pub use crate::ffi_types::TDataStd_Name as Name;
 
 unsafe impl crate::CppDeletable for Name {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_Name_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Name_destructor(ptr);
+        }
     }
 }
 
@@ -15768,13 +15944,15 @@ pub use crate::ffi_types::HandleTDataStdName;
 
 unsafe impl crate::CppDeletable for HandleTDataStdName {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdName_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdName_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdName {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdName_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdName_clone(ptr)) }
     }
 }
 
@@ -15850,7 +16028,9 @@ pub use crate::ffi_types::TDataStd_NamedData as NamedData;
 
 unsafe impl crate::CppDeletable for NamedData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_NamedData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_NamedData_destructor(ptr);
+        }
     }
 }
 
@@ -17004,13 +17184,15 @@ pub use crate::ffi_types::HandleTDataStdNamedData;
 
 unsafe impl crate::CppDeletable for HandleTDataStdNamedData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdNamedData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdNamedData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdNamedData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdNamedData_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdNamedData_clone(ptr)) }
     }
 }
 
@@ -17073,7 +17255,9 @@ pub use crate::ffi_types::TDataStd_NoteBook as NoteBook;
 
 unsafe impl crate::CppDeletable for NoteBook {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_NoteBook_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_NoteBook_destructor(ptr);
+        }
     }
 }
 
@@ -17698,13 +17882,15 @@ pub use crate::ffi_types::HandleTDataStdNoteBook;
 
 unsafe impl crate::CppDeletable for HandleTDataStdNoteBook {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdNoteBook_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdNoteBook_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdNoteBook {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdNoteBook_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdNoteBook_clone(ptr)) }
     }
 }
 
@@ -17780,7 +17966,9 @@ pub use crate::ffi_types::TDataStd_Real as Real;
 
 unsafe impl crate::CppDeletable for Real {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_Real_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Real_destructor(ptr);
+        }
     }
 }
 
@@ -18361,13 +18549,15 @@ pub use crate::ffi_types::HandleTDataStdReal;
 
 unsafe impl crate::CppDeletable for HandleTDataStdReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdReal_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdReal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdReal_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdReal_clone(ptr)) }
     }
 }
 
@@ -18464,7 +18654,9 @@ pub use crate::ffi_types::TDataStd_RealArray as RealArray;
 
 unsafe impl crate::CppDeletable for RealArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_RealArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_RealArray_destructor(ptr);
+        }
     }
 }
 
@@ -19150,13 +19342,15 @@ pub use crate::ffi_types::HandleTDataStdRealArray;
 
 unsafe impl crate::CppDeletable for HandleTDataStdRealArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdRealArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdRealArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdRealArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdRealArray_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdRealArray_clone(ptr)) }
     }
 }
 
@@ -19219,7 +19413,9 @@ pub use crate::ffi_types::TDataStd_RealList as RealList;
 
 unsafe impl crate::CppDeletable for RealList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_RealList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_RealList_destructor(ptr);
+        }
     }
 }
 
@@ -19911,13 +20107,15 @@ pub use crate::ffi_types::HandleTDataStdRealList;
 
 unsafe impl crate::CppDeletable for HandleTDataStdRealList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdRealList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdRealList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdRealList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdRealList_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdRealList_clone(ptr)) }
     }
 }
 
@@ -19980,7 +20178,9 @@ pub use crate::ffi_types::TDataStd_ReferenceArray as ReferenceArray;
 
 unsafe impl crate::CppDeletable for ReferenceArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_ReferenceArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ReferenceArray_destructor(ptr);
+        }
     }
 }
 
@@ -20665,13 +20865,17 @@ pub use crate::ffi_types::HandleTDataStdReferenceArray;
 
 unsafe impl crate::CppDeletable for HandleTDataStdReferenceArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdReferenceArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdReferenceArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdReferenceArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdReferenceArray_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdReferenceArray_clone(ptr))
+        }
     }
 }
 
@@ -20736,7 +20940,9 @@ pub use crate::ffi_types::TDataStd_ReferenceList as ReferenceList;
 
 unsafe impl crate::CppDeletable for ReferenceList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_ReferenceList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ReferenceList_destructor(ptr);
+        }
     }
 }
 
@@ -21466,13 +21672,17 @@ pub use crate::ffi_types::HandleTDataStdReferenceList;
 
 unsafe impl crate::CppDeletable for HandleTDataStdReferenceList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdReferenceList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdReferenceList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdReferenceList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdReferenceList_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdReferenceList_clone(ptr))
+        }
     }
 }
 
@@ -21544,7 +21754,9 @@ pub use crate::ffi_types::TDataStd_Relation as Relation;
 
 unsafe impl crate::CppDeletable for Relation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_Relation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Relation_destructor(ptr);
+        }
     }
 }
 
@@ -22174,13 +22386,15 @@ pub use crate::ffi_types::HandleTDataStdRelation;
 
 unsafe impl crate::CppDeletable for HandleTDataStdRelation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdRelation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdRelation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdRelation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdRelation_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdRelation_clone(ptr)) }
     }
 }
 
@@ -22258,7 +22472,9 @@ pub use crate::ffi_types::TDataStd_Tick as Tick;
 
 unsafe impl crate::CppDeletable for Tick {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_Tick_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Tick_destructor(ptr);
+        }
     }
 }
 
@@ -22803,13 +23019,15 @@ pub use crate::ffi_types::HandleTDataStdTick;
 
 unsafe impl crate::CppDeletable for HandleTDataStdTick {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdTick_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdTick_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdTick {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdTick_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdTick_clone(ptr)) }
     }
 }
 
@@ -22891,7 +23109,9 @@ pub use crate::ffi_types::TDataStd_TreeNode as TreeNode;
 
 unsafe impl crate::CppDeletable for TreeNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_TreeNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_TreeNode_destructor(ptr);
+        }
     }
 }
 
@@ -23745,13 +23965,15 @@ pub use crate::ffi_types::HandleTDataStdTreeNode;
 
 unsafe impl crate::CppDeletable for HandleTDataStdTreeNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdTreeNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdTreeNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdTreeNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdTreeNode_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdTreeNode_clone(ptr)) }
     }
 }
 
@@ -23813,7 +24035,9 @@ pub use crate::ffi_types::TDataStd_UAttribute as UAttribute;
 
 unsafe impl crate::CppDeletable for UAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_UAttribute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_UAttribute_destructor(ptr);
+        }
     }
 }
 
@@ -24356,13 +24580,17 @@ pub use crate::ffi_types::HandleTDataStdUAttribute;
 
 unsafe impl crate::CppDeletable for HandleTDataStdUAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdUAttribute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdUAttribute_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdUAttribute {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdUAttribute_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdUAttribute_clone(ptr))
+        }
     }
 }
 
@@ -24436,7 +24664,9 @@ pub use crate::ffi_types::TDataStd_Variable as Variable;
 
 unsafe impl crate::CppDeletable for Variable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_Variable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Variable_destructor(ptr);
+        }
     }
 }
 
@@ -25123,13 +25353,15 @@ pub use crate::ffi_types::HandleTDataStdVariable;
 
 unsafe impl crate::CppDeletable for HandleTDataStdVariable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDataStdVariable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDataStdVariable_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDataStdVariable {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdVariable_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDataStdVariable_clone(ptr)) }
     }
 }
 

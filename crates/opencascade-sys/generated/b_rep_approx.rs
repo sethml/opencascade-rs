@@ -18,7 +18,9 @@ pub use crate::ffi_types::BRepApprox_Approx as Approx;
 
 unsafe impl crate::CppDeletable for Approx {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_destructor(ptr);
+        }
     }
 }
 
@@ -165,7 +167,9 @@ pub use crate::ffi_types::BRepApprox_ApproxLine as ApproxLine;
 
 unsafe impl crate::CppDeletable for ApproxLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_destructor(ptr);
+        }
     }
 }
 
@@ -361,13 +365,17 @@ pub use crate::ffi_types::HandleBRepApproxApproxLine;
 
 unsafe impl crate::CppDeletable for HandleBRepApproxApproxLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepApproxApproxLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepApproxApproxLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepApproxApproxLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepApproxApproxLine_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepApproxApproxLine_clone(ptr))
+        }
     }
 }
 
@@ -420,7 +428,9 @@ pub use crate::ffi_types::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComput
 
 unsafe impl crate::CppDeletable for BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -555,7 +565,9 @@ pub use crate::ffi_types::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeL
 
 unsafe impl crate::CppDeletable for BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -779,7 +791,9 @@ pub use crate::ffi_types::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheCompu
 
 unsafe impl crate::CppDeletable for BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1076,7 +1090,9 @@ pub use crate::ffi_types::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBe
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1211,7 +1227,9 @@ pub use crate::ffi_types::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLin
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1346,9 +1364,9 @@ pub use crate::ffi_types::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox as M
 
 unsafe impl crate::CppDeletable for MyBSplGradientOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1497,9 +1515,9 @@ pub use crate::ffi_types::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox as
 
 unsafe impl crate::CppDeletable for MyGradientOfTheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1617,9 +1635,9 @@ pub use crate::ffi_types::BRepApprox_MyGradientbisOfTheComputeLineOfApprox as My
 
 unsafe impl crate::CppDeletable for MyGradientbisOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1741,7 +1759,9 @@ pub use crate::ffi_types::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezi
 
 unsafe impl crate::CppDeletable for ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1920,7 +1940,9 @@ pub use crate::ffi_types::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineO
 
 unsafe impl crate::CppDeletable for ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -2099,7 +2121,9 @@ pub use crate::ffi_types::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineB
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -2396,7 +2420,9 @@ pub use crate::ffi_types::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLi
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -2693,7 +2719,9 @@ pub use crate::ffi_types::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBe
 
 unsafe impl crate::CppDeletable for ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -2818,7 +2846,9 @@ pub use crate::ffi_types::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLin
 
 unsafe impl crate::CppDeletable for ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -2943,7 +2973,9 @@ pub use crate::ffi_types::BRepApprox_SurfaceTool as SurfaceTool;
 
 unsafe impl crate::CppDeletable for SurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_destructor(ptr);
+        }
     }
 }
 
@@ -3345,7 +3377,9 @@ pub use crate::ffi_types::BRepApprox_TheComputeLineBezierOfApprox as TheComputeL
 
 unsafe impl crate::CppDeletable for TheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -3959,7 +3993,9 @@ pub use crate::ffi_types::BRepApprox_TheComputeLineOfApprox as TheComputeLineOfA
 
 unsafe impl crate::CppDeletable for TheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -4619,7 +4655,9 @@ pub use crate::ffi_types::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesO
 
 unsafe impl crate::CppDeletable for TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -4811,7 +4849,9 @@ pub use crate::ffi_types::BRepApprox_TheImpPrmSvSurfacesOfApprox as TheImpPrmSvS
 
 unsafe impl crate::CppDeletable for TheImpPrmSvSurfacesOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -5020,9 +5060,9 @@ pub use crate::ffi_types::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox as Th
 
 unsafe impl crate::CppDeletable for TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -5187,7 +5227,9 @@ pub use crate::ffi_types::BRepApprox_TheMultiLineOfApprox as TheMultiLineOfAppro
 
 unsafe impl crate::CppDeletable for TheMultiLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -5279,24 +5321,26 @@ impl TheMultiLineOfApprox {
         P2DOnFirst: bool,
         IndMin: i32,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(
-            line,
-            PtrSvSurfaces,
-            NbP3d,
-            NbP2d,
-            ApproxU1V1,
-            ApproxU2V2,
-            xo,
-            yo,
-            zo,
-            u1o,
-            v1o,
-            u2o,
-            v2o,
-            P2DOnFirst,
-            IndMin,
-            0,
-        )
+        unsafe {
+            Self::new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(
+                line,
+                PtrSvSurfaces,
+                NbP3d,
+                NbP2d,
+                ApproxU1V1,
+                ApproxU2V2,
+                xo,
+                yo,
+                zo,
+                u1o,
+                v1o,
+                u2o,
+                v2o,
+                P2DOnFirst,
+                IndMin,
+                0,
+            )
+        }
     }
 
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:48 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
@@ -5322,24 +5366,26 @@ impl TheMultiLineOfApprox {
         v2o: f64,
         P2DOnFirst: bool,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(
-            line,
-            PtrSvSurfaces,
-            NbP3d,
-            NbP2d,
-            ApproxU1V1,
-            ApproxU2V2,
-            xo,
-            yo,
-            zo,
-            u1o,
-            v1o,
-            u2o,
-            v2o,
-            P2DOnFirst,
-            0,
-            0,
-        )
+        unsafe {
+            Self::new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(
+                line,
+                PtrSvSurfaces,
+                NbP3d,
+                NbP2d,
+                ApproxU1V1,
+                ApproxU2V2,
+                xo,
+                yo,
+                zo,
+                u1o,
+                v1o,
+                u2o,
+                v2o,
+                P2DOnFirst,
+                0,
+                0,
+            )
+        }
     }
 
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:66 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
@@ -5583,7 +5629,9 @@ pub use crate::ffi_types::BRepApprox_TheMultiLineToolOfApprox as TheMultiLineToo
 
 unsafe impl crate::CppDeletable for TheMultiLineToolOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -5809,7 +5857,9 @@ pub use crate::ffi_types::BRepApprox_ThePrmPrmSvSurfacesOfApprox as ThePrmPrmSvS
 
 unsafe impl crate::CppDeletable for ThePrmPrmSvSurfacesOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_destructor(ptr);
+        }
     }
 }
 
@@ -5992,7 +6042,9 @@ pub use crate::ffi_types::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox 
 
 unsafe impl crate::CppDeletable for TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_destructor(ptr);
+        }
     }
 }
 

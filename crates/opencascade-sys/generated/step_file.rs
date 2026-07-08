@@ -15,7 +15,9 @@ pub use crate::ffi_types::StepFile_ReadData as ReadData;
 
 unsafe impl crate::CppDeletable for ReadData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFile_ReadData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFile_ReadData_destructor(ptr);
+        }
     }
 }
 

@@ -185,7 +185,9 @@ pub use crate::ffi_types::BRepFill_ACRLaw as ACRLaw;
 
 unsafe impl crate::CppDeletable for ACRLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_ACRLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_ACRLaw_destructor(ptr);
+        }
     }
 }
 
@@ -532,13 +534,15 @@ pub use crate::ffi_types::HandleBRepFillACRLaw;
 
 unsafe impl crate::CppDeletable for HandleBRepFillACRLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleBRepFillACRLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillACRLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepFillACRLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillACRLaw_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillACRLaw_clone(ptr)) }
     }
 }
 
@@ -604,7 +608,9 @@ pub use crate::ffi_types::BRepFill_AdvancedEvolved as AdvancedEvolved;
 
 unsafe impl crate::CppDeletable for AdvancedEvolved {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_AdvancedEvolved_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_AdvancedEvolved_destructor(ptr);
+        }
     }
 }
 
@@ -694,7 +700,9 @@ pub use crate::ffi_types::BRepFill_ApproxSeewing as ApproxSeewing;
 
 unsafe impl crate::CppDeletable for ApproxSeewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_ApproxSeewing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_ApproxSeewing_destructor(ptr);
+        }
     }
 }
 
@@ -776,7 +784,9 @@ pub use crate::ffi_types::BRepFill_CompatibleWires as CompatibleWires;
 
 unsafe impl crate::CppDeletable for CompatibleWires {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_CompatibleWires_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_CompatibleWires_destructor(ptr);
+        }
     }
 }
 
@@ -915,7 +925,9 @@ pub use crate::ffi_types::BRepFill_ComputeCLine as ComputeCLine;
 
 unsafe impl crate::CppDeletable for ComputeCLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_ComputeCLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_ComputeCLine_destructor(ptr);
+        }
     }
 }
 
@@ -1130,7 +1142,9 @@ pub use crate::ffi_types::BRepFill_CurveConstraint as CurveConstraint;
 
 unsafe impl crate::CppDeletable for CurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_CurveConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_CurveConstraint_destructor(ptr);
+        }
     }
 }
 
@@ -1669,13 +1683,17 @@ pub use crate::ffi_types::HandleBRepFillCurveConstraint;
 
 unsafe impl crate::CppDeletable for HandleBRepFillCurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepFillCurveConstraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_clone(ptr))
+        }
     }
 }
 
@@ -1737,7 +1755,9 @@ pub use crate::ffi_types::BRepFill_Draft as Draft;
 
 unsafe impl crate::CppDeletable for Draft {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_Draft_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_Draft_destructor(ptr);
+        }
     }
 }
 
@@ -1872,7 +1892,9 @@ pub use crate::ffi_types::BRepFill_DraftLaw as DraftLaw;
 
 unsafe impl crate::CppDeletable for DraftLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_DraftLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_DraftLaw_destructor(ptr);
+        }
     }
 }
 
@@ -2261,13 +2283,15 @@ pub use crate::ffi_types::HandleBRepFillDraftLaw;
 
 unsafe impl crate::CppDeletable for HandleBRepFillDraftLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepFillDraftLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_clone(ptr)) }
     }
 }
 
@@ -2345,7 +2369,9 @@ pub use crate::ffi_types::BRepFill_Edge3DLaw as Edge3DLaw;
 
 unsafe impl crate::CppDeletable for Edge3DLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_destructor(ptr);
+        }
     }
 }
 
@@ -2706,13 +2732,15 @@ pub use crate::ffi_types::HandleBRepFillEdge3DLaw;
 
 unsafe impl crate::CppDeletable for HandleBRepFillEdge3DLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepFillEdge3DLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_clone(ptr)) }
     }
 }
 
@@ -2794,7 +2822,9 @@ pub use crate::ffi_types::BRepFill_EdgeFaceAndOrder as EdgeFaceAndOrder;
 
 unsafe impl crate::CppDeletable for EdgeFaceAndOrder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_EdgeFaceAndOrder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_EdgeFaceAndOrder_destructor(ptr);
+        }
     }
 }
 
@@ -2836,7 +2866,9 @@ pub use crate::ffi_types::BRepFill_EdgeOnSurfLaw as EdgeOnSurfLaw;
 
 unsafe impl crate::CppDeletable for EdgeOnSurfLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_destructor(ptr);
+        }
     }
 }
 
@@ -3216,13 +3248,17 @@ pub use crate::ffi_types::HandleBRepFillEdgeOnSurfLaw;
 
 unsafe impl crate::CppDeletable for HandleBRepFillEdgeOnSurfLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepFillEdgeOnSurfLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_clone(ptr))
+        }
     }
 }
 
@@ -3290,7 +3326,9 @@ pub use crate::ffi_types::BRepFill_Evolved as Evolved;
 
 unsafe impl crate::CppDeletable for Evolved {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_Evolved_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_Evolved_destructor(ptr);
+        }
     }
 }
 
@@ -3508,7 +3546,9 @@ pub use crate::ffi_types::BRepFill_FaceAndOrder as FaceAndOrder;
 
 unsafe impl crate::CppDeletable for FaceAndOrder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_FaceAndOrder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_FaceAndOrder_destructor(ptr);
+        }
     }
 }
 
@@ -3577,7 +3617,9 @@ pub use crate::ffi_types::BRepFill_Filling as Filling;
 
 unsafe impl crate::CppDeletable for Filling {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_Filling_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_Filling_destructor(ptr);
+        }
     }
 }
 
@@ -4073,7 +4115,9 @@ pub use crate::ffi_types::BRepFill_Generator as Generator;
 
 unsafe impl crate::CppDeletable for Generator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_Generator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_Generator_destructor(ptr);
+        }
     }
 }
 
@@ -4200,7 +4244,9 @@ pub use crate::ffi_types::BRepFill_LocationLaw as LocationLaw;
 
 unsafe impl crate::CppDeletable for LocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_LocationLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_LocationLaw_destructor(ptr);
+        }
     }
 }
 
@@ -4552,13 +4598,17 @@ pub use crate::ffi_types::HandleBRepFillLocationLaw;
 
 unsafe impl crate::CppDeletable for HandleBRepFillLocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepFillLocationLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_clone(ptr))
+        }
     }
 }
 
@@ -4687,7 +4737,9 @@ pub use crate::ffi_types::BRepFill_MultiLine as MultiLine;
 
 unsafe impl crate::CppDeletable for MultiLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_MultiLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_MultiLine_destructor(ptr);
+        }
     }
 }
 
@@ -4929,7 +4981,9 @@ pub use crate::ffi_types::BRepFill_NSections as NSections;
 
 unsafe impl crate::CppDeletable for NSections {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_NSections_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_NSections_destructor(ptr);
+        }
     }
 }
 
@@ -5267,13 +5321,15 @@ pub use crate::ffi_types::HandleBRepFillNSections;
 
 unsafe impl crate::CppDeletable for HandleBRepFillNSections {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleBRepFillNSections_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillNSections_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepFillNSections {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillNSections_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillNSections_clone(ptr)) }
     }
 }
 
@@ -5339,7 +5395,9 @@ pub use crate::ffi_types::BRepFill_OffsetAncestors as OffsetAncestors;
 
 unsafe impl crate::CppDeletable for OffsetAncestors {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_OffsetAncestors_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_OffsetAncestors_destructor(ptr);
+        }
     }
 }
 
@@ -5424,7 +5482,9 @@ pub use crate::ffi_types::BRepFill_OffsetWire as OffsetWire;
 
 unsafe impl crate::CppDeletable for OffsetWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_OffsetWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_OffsetWire_destructor(ptr);
+        }
     }
 }
 
@@ -5587,7 +5647,9 @@ pub use crate::ffi_types::BRepFill_Pipe as Pipe;
 
 unsafe impl crate::CppDeletable for Pipe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_Pipe_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_Pipe_destructor(ptr);
+        }
     }
 }
 
@@ -5795,7 +5857,9 @@ pub use crate::ffi_types::BRepFill_PipeShell as PipeShell;
 
 unsafe impl crate::CppDeletable for PipeShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_PipeShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_PipeShell_destructor(ptr);
+        }
     }
 }
 
@@ -6305,13 +6369,15 @@ pub use crate::ffi_types::HandleBRepFillPipeShell;
 
 unsafe impl crate::CppDeletable for HandleBRepFillPipeShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleBRepFillPipeShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillPipeShell_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepFillPipeShell {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillPipeShell_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillPipeShell_clone(ptr)) }
     }
 }
 
@@ -6363,7 +6429,9 @@ pub use crate::ffi_types::BRepFill_Section as Section;
 
 unsafe impl crate::CppDeletable for Section {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_Section_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_Section_destructor(ptr);
+        }
     }
 }
 
@@ -6484,7 +6552,9 @@ pub use crate::ffi_types::BRepFill_SectionLaw as SectionLaw;
 
 unsafe impl crate::CppDeletable for SectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_SectionLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_SectionLaw_destructor(ptr);
+        }
     }
 }
 
@@ -6739,13 +6809,17 @@ pub use crate::ffi_types::HandleBRepFillSectionLaw;
 
 unsafe impl crate::CppDeletable for HandleBRepFillSectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepFillSectionLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_clone(ptr))
+        }
     }
 }
 
@@ -6833,7 +6907,9 @@ pub use crate::ffi_types::BRepFill_SectionPlacement as SectionPlacement;
 
 unsafe impl crate::CppDeletable for SectionPlacement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_SectionPlacement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_SectionPlacement_destructor(ptr);
+        }
     }
 }
 
@@ -6934,7 +7010,9 @@ pub use crate::ffi_types::BRepFill_ShapeLaw as ShapeLaw;
 
 unsafe impl crate::CppDeletable for ShapeLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_ShapeLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_ShapeLaw_destructor(ptr);
+        }
     }
 }
 
@@ -7289,13 +7367,15 @@ pub use crate::ffi_types::HandleBRepFillShapeLaw;
 
 unsafe impl crate::CppDeletable for HandleBRepFillShapeLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepFillShapeLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_clone(ptr)) }
     }
 }
 
@@ -7362,7 +7442,9 @@ pub use crate::ffi_types::BRepFill_Sweep as Sweep;
 
 unsafe impl crate::CppDeletable for Sweep {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_Sweep_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_Sweep_destructor(ptr);
+        }
     }
 }
 
@@ -7558,7 +7640,9 @@ pub use crate::ffi_types::BRepFill_TrimEdgeTool as TrimEdgeTool;
 
 unsafe impl crate::CppDeletable for TrimEdgeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_TrimEdgeTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_TrimEdgeTool_destructor(ptr);
+        }
     }
 }
 
@@ -7650,7 +7734,9 @@ pub use crate::ffi_types::BRepFill_TrimShellCorner as TrimShellCorner;
 
 unsafe impl crate::CppDeletable for TrimShellCorner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_TrimShellCorner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_TrimShellCorner_destructor(ptr);
+        }
     }
 }
 
@@ -7753,7 +7839,9 @@ pub use crate::ffi_types::BRepFill_TrimSurfaceTool as TrimSurfaceTool;
 
 unsafe impl crate::CppDeletable for TrimSurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_TrimSurfaceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_TrimSurfaceTool_destructor(ptr);
+        }
     }
 }
 

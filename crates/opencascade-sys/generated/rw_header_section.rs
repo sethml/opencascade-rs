@@ -30,7 +30,9 @@ pub use crate::ffi_types::RWHeaderSection_GeneralModule as GeneralModule;
 
 unsafe impl crate::CppDeletable for GeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::RWHeaderSection_GeneralModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::RWHeaderSection_GeneralModule_destructor(ptr);
+        }
     }
 }
 
@@ -482,15 +484,19 @@ pub use crate::ffi_types::HandleRWHeaderSectionGeneralModule;
 
 unsafe impl crate::CppDeletable for HandleRWHeaderSectionGeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionGeneralModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionGeneralModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWHeaderSectionGeneralModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionGeneralModule_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionGeneralModule_clone(ptr),
+            )
+        }
     }
 }
 
@@ -564,7 +570,9 @@ pub use crate::ffi_types::RWHeaderSection_RWFileDescription as RWFileDescription
 
 unsafe impl crate::CppDeletable for RWFileDescription {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::RWHeaderSection_RWFileDescription_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::RWHeaderSection_RWFileDescription_destructor(ptr);
+        }
     }
 }
 
@@ -623,7 +631,9 @@ pub use crate::ffi_types::RWHeaderSection_RWFileName as RWFileName;
 
 unsafe impl crate::CppDeletable for RWFileName {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::RWHeaderSection_RWFileName_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::RWHeaderSection_RWFileName_destructor(ptr);
+        }
     }
 }
 
@@ -682,7 +692,9 @@ pub use crate::ffi_types::RWHeaderSection_RWFileSchema as RWFileSchema;
 
 unsafe impl crate::CppDeletable for RWFileSchema {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::RWHeaderSection_RWFileSchema_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::RWHeaderSection_RWFileSchema_destructor(ptr);
+        }
     }
 }
 
@@ -741,7 +753,9 @@ pub use crate::ffi_types::RWHeaderSection_ReadWriteModule as ReadWriteModule;
 
 unsafe impl crate::CppDeletable for ReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::RWHeaderSection_ReadWriteModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::RWHeaderSection_ReadWriteModule_destructor(ptr);
+        }
     }
 }
 
@@ -1089,15 +1103,19 @@ pub use crate::ffi_types::HandleRWHeaderSectionReadWriteModule;
 
 unsafe impl crate::CppDeletable for HandleRWHeaderSectionReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionReadWriteModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionReadWriteModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWHeaderSectionReadWriteModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionReadWriteModule_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleRWHeaderSectionReadWriteModule_clone(ptr),
+            )
+        }
     }
 }
 

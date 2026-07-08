@@ -466,7 +466,9 @@ pub use crate::ffi_types::GeomLib_Check2dBSplineCurve as Check2dBSplineCurve;
 
 unsafe impl crate::CppDeletable for Check2dBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomLib_Check2dBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomLib_Check2dBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -545,7 +547,9 @@ pub use crate::ffi_types::GeomLib_CheckBSplineCurve as CheckBSplineCurve;
 
 unsafe impl crate::CppDeletable for CheckBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomLib_CheckBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomLib_CheckBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -624,7 +628,9 @@ pub use crate::ffi_types::GeomLib_CheckCurveOnSurface as CheckCurveOnSurface;
 
 unsafe impl crate::CppDeletable for CheckCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomLib_CheckCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomLib_CheckCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -762,7 +768,9 @@ pub use crate::ffi_types::GeomLib_DenominatorMultiplier as DenominatorMultiplier
 
 unsafe impl crate::CppDeletable for DenominatorMultiplier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomLib_DenominatorMultiplier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomLib_DenominatorMultiplier_destructor(ptr);
+        }
     }
 }
 
@@ -826,7 +834,9 @@ pub use crate::ffi_types::GeomLib_Interpolate as Interpolate;
 
 unsafe impl crate::CppDeletable for Interpolate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomLib_Interpolate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomLib_Interpolate_destructor(ptr);
+        }
     }
 }
 
@@ -881,7 +891,9 @@ pub use crate::ffi_types::GeomLib_IsPlanarSurface as IsPlanarSurface;
 
 unsafe impl crate::CppDeletable for IsPlanarSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomLib_IsPlanarSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomLib_IsPlanarSurface_destructor(ptr);
+        }
     }
 }
 
@@ -933,7 +945,9 @@ pub use crate::ffi_types::GeomLib_LogSample as LogSample;
 
 unsafe impl crate::CppDeletable for LogSample {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomLib_LogSample_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomLib_LogSample_destructor(ptr);
+        }
     }
 }
 
@@ -1012,7 +1026,9 @@ pub use crate::ffi_types::GeomLib_MakeCurvefromApprox as MakeCurvefromApprox;
 
 unsafe impl crate::CppDeletable for MakeCurvefromApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomLib_MakeCurvefromApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomLib_MakeCurvefromApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1185,7 +1201,9 @@ pub use crate::ffi_types::GeomLib_PolyFunc as PolyFunc;
 
 unsafe impl crate::CppDeletable for PolyFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomLib_PolyFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomLib_PolyFunc_destructor(ptr);
+        }
     }
 }
 
@@ -1303,7 +1321,9 @@ pub use crate::ffi_types::GeomLib_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomLib_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomLib_Tool_destructor(ptr);
+        }
     }
 }
 

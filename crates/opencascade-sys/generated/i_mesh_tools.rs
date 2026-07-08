@@ -61,7 +61,9 @@ pub use crate::ffi_types::IMeshTools_Context as Context;
 
 unsafe impl crate::CppDeletable for Context {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshTools_Context_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshTools_Context_destructor(ptr);
+        }
     }
 }
 
@@ -493,13 +495,15 @@ pub use crate::ffi_types::HandleIMeshToolsContext;
 
 unsafe impl crate::CppDeletable for HandleIMeshToolsContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshToolsContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshToolsContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsContext_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsContext_clone(ptr)) }
     }
 }
 
@@ -580,7 +584,9 @@ pub use crate::ffi_types::IMeshTools_CurveTessellator as CurveTessellator;
 
 unsafe impl crate::CppDeletable for CurveTessellator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshTools_CurveTessellator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshTools_CurveTessellator_destructor(ptr);
+        }
     }
 }
 
@@ -745,13 +751,19 @@ pub use crate::ffi_types::HandleIMeshToolsCurveTessellator;
 
 unsafe impl crate::CppDeletable for HandleIMeshToolsCurveTessellator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshToolsCurveTessellator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsCurveTessellator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshToolsCurveTessellator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsCurveTessellator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsCurveTessellator_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -835,7 +847,9 @@ pub use crate::ffi_types::IMeshTools_MeshAlgo as MeshAlgo;
 
 unsafe impl crate::CppDeletable for MeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshTools_MeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshTools_MeshAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -980,13 +994,17 @@ pub use crate::ffi_types::HandleIMeshToolsMeshAlgo;
 
 unsafe impl crate::CppDeletable for HandleIMeshToolsMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshToolsMeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsMeshAlgo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshToolsMeshAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsMeshAlgo_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsMeshAlgo_clone(ptr))
+        }
     }
 }
 
@@ -1087,7 +1105,9 @@ pub use crate::ffi_types::IMeshTools_MeshAlgoFactory as MeshAlgoFactory;
 
 unsafe impl crate::CppDeletable for MeshAlgoFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshTools_MeshAlgoFactory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshTools_MeshAlgoFactory_destructor(ptr);
+        }
     }
 }
 
@@ -1240,13 +1260,19 @@ pub use crate::ffi_types::HandleIMeshToolsMeshAlgoFactory;
 
 unsafe impl crate::CppDeletable for HandleIMeshToolsMeshAlgoFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshToolsMeshAlgoFactory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsMeshAlgoFactory_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshToolsMeshAlgoFactory {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsMeshAlgoFactory_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsMeshAlgoFactory_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1345,7 +1371,9 @@ pub use crate::ffi_types::IMeshTools_MeshBuilder as MeshBuilder;
 
 unsafe impl crate::CppDeletable for MeshBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshTools_MeshBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshTools_MeshBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -1690,13 +1718,17 @@ pub use crate::ffi_types::HandleIMeshToolsMeshBuilder;
 
 unsafe impl crate::CppDeletable for HandleIMeshToolsMeshBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshToolsMeshBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsMeshBuilder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshToolsMeshBuilder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsMeshBuilder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsMeshBuilder_clone(ptr))
+        }
     }
 }
 
@@ -1761,7 +1793,9 @@ pub use crate::ffi_types::IMeshTools_ModelAlgo as ModelAlgo;
 
 unsafe impl crate::CppDeletable for ModelAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshTools_ModelAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshTools_ModelAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -1908,13 +1942,17 @@ pub use crate::ffi_types::HandleIMeshToolsModelAlgo;
 
 unsafe impl crate::CppDeletable for HandleIMeshToolsModelAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshToolsModelAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsModelAlgo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshToolsModelAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsModelAlgo_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsModelAlgo_clone(ptr))
+        }
     }
 }
 
@@ -2051,7 +2089,9 @@ pub use crate::ffi_types::IMeshTools_ModelBuilder as ModelBuilder;
 
 unsafe impl crate::CppDeletable for ModelBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshTools_ModelBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshTools_ModelBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -2353,13 +2393,17 @@ pub use crate::ffi_types::HandleIMeshToolsModelBuilder;
 
 unsafe impl crate::CppDeletable for HandleIMeshToolsModelBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshToolsModelBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsModelBuilder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshToolsModelBuilder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsModelBuilder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsModelBuilder_clone(ptr))
+        }
     }
 }
 
@@ -2440,7 +2484,9 @@ pub use crate::ffi_types::IMeshTools_Parameters as Parameters;
 
 unsafe impl crate::CppDeletable for Parameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshTools_Parameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshTools_Parameters_destructor(ptr);
+        }
     }
 }
 
@@ -2475,7 +2521,9 @@ pub use crate::ffi_types::IMeshTools_ShapeExplorer as ShapeExplorer;
 
 unsafe impl crate::CppDeletable for ShapeExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshTools_ShapeExplorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshTools_ShapeExplorer_destructor(ptr);
+        }
     }
 }
 
@@ -2680,13 +2728,17 @@ pub use crate::ffi_types::HandleIMeshToolsShapeExplorer;
 
 unsafe impl crate::CppDeletable for HandleIMeshToolsShapeExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshToolsShapeExplorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsShapeExplorer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshToolsShapeExplorer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsShapeExplorer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsShapeExplorer_clone(ptr))
+        }
     }
 }
 
@@ -2751,7 +2803,9 @@ pub use crate::ffi_types::IMeshTools_ShapeVisitor as ShapeVisitor;
 
 unsafe impl crate::CppDeletable for ShapeVisitor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshTools_ShapeVisitor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshTools_ShapeVisitor_destructor(ptr);
+        }
     }
 }
 
@@ -2898,13 +2952,17 @@ pub use crate::ffi_types::HandleIMeshToolsShapeVisitor;
 
 unsafe impl crate::CppDeletable for HandleIMeshToolsShapeVisitor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshToolsShapeVisitor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshToolsShapeVisitor_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshToolsShapeVisitor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsShapeVisitor_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshToolsShapeVisitor_clone(ptr))
+        }
     }
 }
 

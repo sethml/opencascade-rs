@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== BRepAlgo_AsDes ========================
     pub fn BRepAlgo_AsDes_destructor(self_: *mut BRepAlgo_AsDes);
     /// **Source:** `BRepAlgo_AsDes.hxx`:36 - `BRepAlgo_AsDes::BRepAlgo_AsDes()`

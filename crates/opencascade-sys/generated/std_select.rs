@@ -160,7 +160,9 @@ pub use crate::ffi_types::StdSelect_BRepOwner as BRepOwner;
 
 unsafe impl crate::CppDeletable for BRepOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdSelect_BRepOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_destructor(ptr);
+        }
     }
 }
 
@@ -754,13 +756,15 @@ pub use crate::ffi_types::HandleStdSelectBRepOwner;
 
 unsafe impl crate::CppDeletable for HandleStdSelectBRepOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleStdSelectBRepOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleStdSelectBRepOwner_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdSelectBRepOwner {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectBRepOwner_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectBRepOwner_clone(ptr)) }
     }
 }
 
@@ -852,7 +856,9 @@ pub use crate::ffi_types::StdSelect_BRepSelectionTool as BRepSelectionTool;
 
 unsafe impl crate::CppDeletable for BRepSelectionTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_destructor(ptr);
+        }
     }
 }
 
@@ -1085,7 +1091,9 @@ pub use crate::ffi_types::StdSelect_EdgeFilter as EdgeFilter;
 
 unsafe impl crate::CppDeletable for EdgeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_destructor(ptr);
+        }
     }
 }
 
@@ -1292,13 +1300,17 @@ pub use crate::ffi_types::HandleStdSelectEdgeFilter;
 
 unsafe impl crate::CppDeletable for HandleStdSelectEdgeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleStdSelectEdgeFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleStdSelectEdgeFilter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdSelectEdgeFilter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectEdgeFilter_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectEdgeFilter_clone(ptr))
+        }
     }
 }
 
@@ -1368,7 +1380,9 @@ pub use crate::ffi_types::StdSelect_FaceFilter as FaceFilter;
 
 unsafe impl crate::CppDeletable for FaceFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdSelect_FaceFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdSelect_FaceFilter_destructor(ptr);
+        }
     }
 }
 
@@ -1575,13 +1589,17 @@ pub use crate::ffi_types::HandleStdSelectFaceFilter;
 
 unsafe impl crate::CppDeletable for HandleStdSelectFaceFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdSelectFaceFilter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_clone(ptr))
+        }
     }
 }
 
@@ -1644,7 +1662,9 @@ pub use crate::ffi_types::StdSelect_Shape as Shape;
 
 unsafe impl crate::CppDeletable for Shape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdSelect_Shape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdSelect_Shape_destructor(ptr);
+        }
     }
 }
 
@@ -2599,13 +2619,15 @@ pub use crate::ffi_types::HandleStdSelectShape;
 
 unsafe impl crate::CppDeletable for HandleStdSelectShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleStdSelectShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleStdSelectShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdSelectShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectShape_clone(ptr)) }
     }
 }
 
@@ -2670,7 +2692,9 @@ pub use crate::ffi_types::StdSelect_ShapeTypeFilter as ShapeTypeFilter;
 
 unsafe impl crate::CppDeletable for ShapeTypeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_destructor(ptr);
+        }
     }
 }
 
@@ -2872,13 +2896,17 @@ pub use crate::ffi_types::HandleStdSelectShapeTypeFilter;
 
 unsafe impl crate::CppDeletable for HandleStdSelectShapeTypeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdSelectShapeTypeFilter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_clone(ptr))
+        }
     }
 }
 

@@ -19,7 +19,9 @@ pub use crate::ffi_types::MAT2d_BiInt as BiInt;
 
 unsafe impl crate::CppDeletable for BiInt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT2d_BiInt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_BiInt_destructor(ptr);
+        }
     }
 }
 
@@ -81,7 +83,9 @@ pub use crate::ffi_types::MAT2d_Circuit as Circuit;
 
 unsafe impl crate::CppDeletable for Circuit {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_destructor(ptr);
+        }
     }
 }
 
@@ -317,13 +321,15 @@ pub use crate::ffi_types::HandleMAT2dCircuit;
 
 unsafe impl crate::CppDeletable for HandleMAT2dCircuit {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleMAT2dCircuit_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleMAT2dCircuit_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMAT2dCircuit {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMAT2dCircuit_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMAT2dCircuit_clone(ptr)) }
     }
 }
 
@@ -378,7 +384,9 @@ pub use crate::ffi_types::MAT2d_Connexion as Connexion;
 
 unsafe impl crate::CppDeletable for Connexion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_destructor(ptr);
+        }
     }
 }
 
@@ -757,13 +765,15 @@ pub use crate::ffi_types::HandleMAT2dConnexion;
 
 unsafe impl crate::CppDeletable for HandleMAT2dConnexion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleMAT2dConnexion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleMAT2dConnexion_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMAT2dConnexion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMAT2dConnexion_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMAT2dConnexion_clone(ptr)) }
     }
 }
 
@@ -817,7 +827,9 @@ pub use crate::ffi_types::MAT2d_CutCurve as CutCurve;
 
 unsafe impl crate::CppDeletable for CutCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT2d_CutCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_CutCurve_destructor(ptr);
+        }
     }
 }
 
@@ -919,7 +931,9 @@ pub use crate::ffi_types::MAT2d_Mat2d as Mat2d;
 
 unsafe impl crate::CppDeletable for Mat2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_destructor(ptr);
+        }
     }
 }
 
@@ -1040,7 +1054,9 @@ pub use crate::ffi_types::MAT2d_MiniPath as MiniPath;
 
 unsafe impl crate::CppDeletable for MiniPath {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_destructor(ptr);
+        }
     }
 }
 
@@ -1169,7 +1185,9 @@ pub use crate::ffi_types::MAT2d_Tool2d as Tool2d;
 
 unsafe impl crate::CppDeletable for Tool2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_destructor(ptr);
+        }
     }
 }
 

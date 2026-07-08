@@ -124,7 +124,9 @@ pub use crate::ffi_types::Convert_CircleToBSplineCurve as CircleToBSplineCurve;
 
 unsafe impl crate::CppDeletable for CircleToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -290,7 +292,9 @@ pub use crate::ffi_types::Convert_CompBezierCurves2dToBSplineCurve2d as CompBezi
 
 unsafe impl crate::CppDeletable for CompBezierCurves2dToBSplineCurve2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_CompBezierCurves2dToBSplineCurve2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_CompBezierCurves2dToBSplineCurve2d_destructor(ptr);
+        }
     }
 }
 
@@ -527,7 +531,9 @@ pub use crate::ffi_types::Convert_CompBezierCurvesToBSplineCurve as CompBezierCu
 
 unsafe impl crate::CppDeletable for CompBezierCurvesToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_CompBezierCurvesToBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_CompBezierCurvesToBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -778,7 +784,9 @@ pub use crate::ffi_types::Convert_CompPolynomialToPoles as CompPolynomialToPoles
 
 unsafe impl crate::CppDeletable for CompPolynomialToPoles {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_destructor(ptr);
+        }
     }
 }
 
@@ -948,7 +956,9 @@ pub use crate::ffi_types::Convert_ConeToBSplineSurface as ConeToBSplineSurface;
 
 unsafe impl crate::CppDeletable for ConeToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1173,7 +1183,9 @@ pub use crate::ffi_types::Convert_ConicToBSplineCurve as ConicToBSplineCurve;
 
 unsafe impl crate::CppDeletable for ConicToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1324,7 +1336,9 @@ pub use crate::ffi_types::Convert_CylinderToBSplineSurface as CylinderToBSplineS
 
 unsafe impl crate::CppDeletable for CylinderToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1561,7 +1575,9 @@ pub use crate::ffi_types::Convert_ElementarySurfaceToBSplineSurface as Elementar
 
 unsafe impl crate::CppDeletable for ElementarySurfaceToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1756,7 +1772,9 @@ pub use crate::ffi_types::Convert_EllipseToBSplineCurve as EllipseToBSplineCurve
 
 unsafe impl crate::CppDeletable for EllipseToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1921,7 +1939,9 @@ pub use crate::ffi_types::Convert_GridPolynomialToPoles as GridPolynomialToPoles
 
 unsafe impl crate::CppDeletable for GridPolynomialToPoles {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_destructor(ptr);
+        }
     }
 }
 
@@ -2140,7 +2160,9 @@ pub use crate::ffi_types::Convert_HyperbolaToBSplineCurve as HyperbolaToBSplineC
 
 unsafe impl crate::CppDeletable for HyperbolaToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -2295,7 +2317,9 @@ pub use crate::ffi_types::Convert_ParabolaToBSplineCurve as ParabolaToBSplineCur
 
 unsafe impl crate::CppDeletable for ParabolaToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -2452,7 +2476,9 @@ pub use crate::ffi_types::Convert_SphereToBSplineSurface as SphereToBSplineSurfa
 
 unsafe impl crate::CppDeletable for SphereToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -2700,7 +2726,9 @@ pub use crate::ffi_types::Convert_TorusToBSplineSurface as TorusToBSplineSurface
 
 unsafe impl crate::CppDeletable for TorusToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_destructor(ptr);
+        }
     }
 }
 

@@ -20,7 +20,9 @@ pub use crate::ffi_types::StdFail_InfiniteSolutions as InfiniteSolutions;
 
 unsafe impl crate::CppDeletable for InfiniteSolutions {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_destructor(ptr);
+        }
     }
 }
 
@@ -297,13 +299,19 @@ pub use crate::ffi_types::HandleStdFailInfiniteSolutions;
 
 unsafe impl crate::CppDeletable for HandleStdFailInfiniteSolutions {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdFailInfiniteSolutions {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -365,7 +373,9 @@ pub use crate::ffi_types::StdFail_NotDone as NotDone;
 
 unsafe impl crate::CppDeletable for NotDone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::StdFail_NotDone_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::StdFail_NotDone_destructor(ptr);
+        }
     }
 }
 
@@ -622,13 +632,15 @@ pub use crate::ffi_types::HandleStdFailNotDone;
 
 unsafe impl crate::CppDeletable for HandleStdFailNotDone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleStdFailNotDone_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStdFailNotDone_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdFailNotDone {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleStdFailNotDone_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleStdFailNotDone_clone(ptr)) }
     }
 }
 
@@ -690,7 +702,9 @@ pub use crate::ffi_types::StdFail_Undefined as Undefined;
 
 unsafe impl crate::CppDeletable for Undefined {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::StdFail_Undefined_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::StdFail_Undefined_destructor(ptr);
+        }
     }
 }
 
@@ -951,13 +965,15 @@ pub use crate::ffi_types::HandleStdFailUndefined;
 
 unsafe impl crate::CppDeletable for HandleStdFailUndefined {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleStdFailUndefined_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStdFailUndefined_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdFailUndefined {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefined_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefined_clone(ptr)) }
     }
 }
 
@@ -1019,7 +1035,9 @@ pub use crate::ffi_types::StdFail_UndefinedDerivative as UndefinedDerivative;
 
 unsafe impl crate::CppDeletable for UndefinedDerivative {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_destructor(ptr);
+        }
     }
 }
 
@@ -1318,13 +1336,19 @@ pub use crate::ffi_types::HandleStdFailUndefinedDerivative;
 
 unsafe impl crate::CppDeletable for HandleStdFailUndefinedDerivative {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdFailUndefinedDerivative {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1391,7 +1415,9 @@ pub use crate::ffi_types::StdFail_UndefinedValue as UndefinedValue;
 
 unsafe impl crate::CppDeletable for UndefinedValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::StdFail_UndefinedValue_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::StdFail_UndefinedValue_destructor(ptr);
+        }
     }
 }
 
@@ -1682,13 +1708,17 @@ pub use crate::ffi_types::HandleStdFailUndefinedValue;
 
 unsafe impl crate::CppDeletable for HandleStdFailUndefinedValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdFailUndefinedValue {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_clone(ptr))
+        }
     }
 }
 

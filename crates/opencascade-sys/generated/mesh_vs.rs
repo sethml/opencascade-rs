@@ -331,7 +331,9 @@ pub use crate::ffi_types::MeshVS_Buffer as Buffer;
 
 unsafe impl crate::CppDeletable for Buffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_Buffer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_Buffer_destructor(ptr);
+        }
     }
 }
 
@@ -357,7 +359,9 @@ pub use crate::ffi_types::MeshVS_CommonSensitiveEntity as CommonSensitiveEntity;
 
 unsafe impl crate::CppDeletable for CommonSensitiveEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_CommonSensitiveEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_CommonSensitiveEntity_destructor(ptr);
+        }
     }
 }
 
@@ -788,15 +792,19 @@ pub use crate::ffi_types::HandleMeshVSCommonSensitiveEntity;
 
 unsafe impl crate::CppDeletable for HandleMeshVSCommonSensitiveEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSCommonSensitiveEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSCommonSensitiveEntity_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSCommonSensitiveEntity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSCommonSensitiveEntity_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKMeshVS::HandleMeshVSCommonSensitiveEntity_clone(ptr),
+            )
+        }
     }
 }
 
@@ -880,7 +888,9 @@ pub use crate::ffi_types::MeshVS_DataSource as DataSource;
 
 unsafe impl crate::CppDeletable for DataSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_DataSource_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_DataSource_destructor(ptr);
+        }
     }
 }
 
@@ -1363,13 +1373,17 @@ pub use crate::ffi_types::HandleMeshVSDataSource;
 
 unsafe impl crate::CppDeletable for HandleMeshVSDataSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSDataSource_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSDataSource_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSDataSource {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSDataSource_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSDataSource_clone(ptr))
+        }
     }
 }
 
@@ -1454,7 +1468,9 @@ pub use crate::ffi_types::MeshVS_DataSource3D as DataSource3D;
 
 unsafe impl crate::CppDeletable for DataSource3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_DataSource3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_DataSource3D_destructor(ptr);
+        }
     }
 }
 
@@ -1822,13 +1838,17 @@ pub use crate::ffi_types::HandleMeshVSDataSource3D;
 
 unsafe impl crate::CppDeletable for HandleMeshVSDataSource3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSDataSource3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSDataSource3D_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSDataSource3D {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSDataSource3D_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSDataSource3D_clone(ptr))
+        }
     }
 }
 
@@ -1896,7 +1916,9 @@ pub use crate::ffi_types::MeshVS_DeformedDataSource as DeformedDataSource;
 
 unsafe impl crate::CppDeletable for DeformedDataSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_DeformedDataSource_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_DeformedDataSource_destructor(ptr);
+        }
     }
 }
 
@@ -2388,13 +2410,19 @@ pub use crate::ffi_types::HandleMeshVSDeformedDataSource;
 
 unsafe impl crate::CppDeletable for HandleMeshVSDeformedDataSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSDeformedDataSource_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSDeformedDataSource_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSDeformedDataSource {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSDeformedDataSource_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSDeformedDataSource_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2458,7 +2486,9 @@ pub use crate::ffi_types::MeshVS_Drawer as Drawer;
 
 unsafe impl crate::CppDeletable for Drawer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_Drawer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_Drawer_destructor(ptr);
+        }
     }
 }
 
@@ -2741,13 +2771,15 @@ pub use crate::ffi_types::HandleMeshVSDrawer;
 
 unsafe impl crate::CppDeletable for HandleMeshVSDrawer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSDrawer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSDrawer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSDrawer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSDrawer_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSDrawer_clone(ptr)) }
     }
 }
 
@@ -2802,7 +2834,9 @@ pub use crate::ffi_types::MeshVS_DummySensitiveEntity as DummySensitiveEntity;
 
 unsafe impl crate::CppDeletable for DummySensitiveEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_DummySensitiveEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_DummySensitiveEntity_destructor(ptr);
+        }
     }
 }
 
@@ -3134,13 +3168,19 @@ pub use crate::ffi_types::HandleMeshVSDummySensitiveEntity;
 
 unsafe impl crate::CppDeletable for HandleMeshVSDummySensitiveEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSDummySensitiveEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSDummySensitiveEntity_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSDummySensitiveEntity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSDummySensitiveEntity_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSDummySensitiveEntity_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3205,7 +3245,9 @@ pub use crate::ffi_types::MeshVS_ElementalColorPrsBuilder as ElementalColorPrsBu
 
 unsafe impl crate::CppDeletable for ElementalColorPrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_ElementalColorPrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_ElementalColorPrsBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -3700,15 +3742,19 @@ pub use crate::ffi_types::HandleMeshVSElementalColorPrsBuilder;
 
 unsafe impl crate::CppDeletable for HandleMeshVSElementalColorPrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSElementalColorPrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSElementalColorPrsBuilder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSElementalColorPrsBuilder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSElementalColorPrsBuilder_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKMeshVS::HandleMeshVSElementalColorPrsBuilder_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3772,7 +3818,9 @@ pub use crate::ffi_types::MeshVS_HArray1OfSequenceOfInteger as HArray1OfSequence
 
 unsafe impl crate::CppDeletable for HArray1OfSequenceOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_HArray1OfSequenceOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_HArray1OfSequenceOfInteger_destructor(ptr);
+        }
     }
 }
 
@@ -3994,15 +4042,19 @@ pub use crate::ffi_types::HandleMeshVSHArray1OfSequenceOfInteger;
 
 unsafe impl crate::CppDeletable for HandleMeshVSHArray1OfSequenceOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSHArray1OfSequenceOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSHArray1OfSequenceOfInteger_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSHArray1OfSequenceOfInteger {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKMeshVS::HandleMeshVSHArray1OfSequenceOfInteger_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKMeshVS::HandleMeshVSHArray1OfSequenceOfInteger_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4058,7 +4110,9 @@ pub use crate::ffi_types::MeshVS_Mesh as Mesh;
 
 unsafe impl crate::CppDeletable for Mesh {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_Mesh_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_Mesh_destructor(ptr);
+        }
     }
 }
 
@@ -5779,13 +5833,15 @@ pub use crate::ffi_types::HandleMeshVSMesh;
 
 unsafe impl crate::CppDeletable for HandleMeshVSMesh {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSMesh_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSMesh_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSMesh {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSMesh_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSMesh_clone(ptr)) }
     }
 }
 
@@ -5879,7 +5935,9 @@ pub use crate::ffi_types::MeshVS_MeshEntityOwner as MeshEntityOwner;
 
 unsafe impl crate::CppDeletable for MeshEntityOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_MeshEntityOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_MeshEntityOwner_destructor(ptr);
+        }
     }
 }
 
@@ -5906,9 +5964,11 @@ impl MeshEntityOwner {
         Type: crate::mesh_vs::EntityType,
         Priority: i32,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_selectableobjectptr_int_address_entitytype_int_bool(
-            SelObj, ID, MeshEntity, Type, Priority, false,
-        )
+        unsafe {
+            Self::new_selectableobjectptr_int_address_entitytype_int_bool(
+                SelObj, ID, MeshEntity, Type, Priority, false,
+            )
+        }
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:35 - `MeshVS_MeshEntityOwner::MeshVS_MeshEntityOwner()`
@@ -5918,9 +5978,11 @@ impl MeshEntityOwner {
         MeshEntity: *mut std::ffi::c_void,
         Type: crate::mesh_vs::EntityType,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_selectableobjectptr_int_address_entitytype_int_bool(
-            SelObj, ID, MeshEntity, Type, 0, false,
-        )
+        unsafe {
+            Self::new_selectableobjectptr_int_address_entitytype_int_bool(
+                SelObj, ID, MeshEntity, Type, 0, false,
+            )
+        }
     }
 
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:43 - `MeshVS_MeshEntityOwner::Owner()`
@@ -6388,13 +6450,17 @@ pub use crate::ffi_types::HandleMeshVSMeshEntityOwner;
 
 unsafe impl crate::CppDeletable for HandleMeshVSMeshEntityOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSMeshEntityOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSMeshEntityOwner_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSMeshEntityOwner {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSMeshEntityOwner_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSMeshEntityOwner_clone(ptr))
+        }
     }
 }
 
@@ -6459,7 +6525,9 @@ pub use crate::ffi_types::MeshVS_MeshOwner as MeshOwner;
 
 unsafe impl crate::CppDeletable for MeshOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_MeshOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_MeshOwner_destructor(ptr);
+        }
     }
 }
 
@@ -6999,13 +7067,15 @@ pub use crate::ffi_types::HandleMeshVSMeshOwner;
 
 unsafe impl crate::CppDeletable for HandleMeshVSMeshOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSMeshOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSMeshOwner_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSMeshOwner {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSMeshOwner_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSMeshOwner_clone(ptr)) }
     }
 }
 
@@ -7070,7 +7140,9 @@ pub use crate::ffi_types::MeshVS_MeshPrsBuilder as MeshPrsBuilder;
 
 unsafe impl crate::CppDeletable for MeshPrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_MeshPrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_MeshPrsBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -7529,13 +7601,17 @@ pub use crate::ffi_types::HandleMeshVSMeshPrsBuilder;
 
 unsafe impl crate::CppDeletable for HandleMeshVSMeshPrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSMeshPrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSMeshPrsBuilder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSMeshPrsBuilder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSMeshPrsBuilder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSMeshPrsBuilder_clone(ptr))
+        }
     }
 }
 
@@ -7614,7 +7690,9 @@ pub use crate::ffi_types::MeshVS_NodalColorPrsBuilder as NodalColorPrsBuilder;
 
 unsafe impl crate::CppDeletable for NodalColorPrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_NodalColorPrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_NodalColorPrsBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -8166,13 +8244,19 @@ pub use crate::ffi_types::HandleMeshVSNodalColorPrsBuilder;
 
 unsafe impl crate::CppDeletable for HandleMeshVSNodalColorPrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSNodalColorPrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSNodalColorPrsBuilder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSNodalColorPrsBuilder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSNodalColorPrsBuilder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSNodalColorPrsBuilder_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -8236,7 +8320,9 @@ pub use crate::ffi_types::MeshVS_PrsBuilder as PrsBuilder;
 
 unsafe impl crate::CppDeletable for PrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_PrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_PrsBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -8551,13 +8637,17 @@ pub use crate::ffi_types::HandleMeshVSPrsBuilder;
 
 unsafe impl crate::CppDeletable for HandleMeshVSPrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSPrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSPrsBuilder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSPrsBuilder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSPrsBuilder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSPrsBuilder_clone(ptr))
+        }
     }
 }
 
@@ -8689,7 +8779,9 @@ pub use crate::ffi_types::MeshVS_SensitiveFace as SensitiveFace;
 
 unsafe impl crate::CppDeletable for SensitiveFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_SensitiveFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_SensitiveFace_destructor(ptr);
+        }
     }
 }
 
@@ -9060,13 +9152,17 @@ pub use crate::ffi_types::HandleMeshVSSensitiveFace;
 
 unsafe impl crate::CppDeletable for HandleMeshVSSensitiveFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveFace_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSSensitiveFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveFace_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveFace_clone(ptr))
+        }
     }
 }
 
@@ -9138,7 +9234,9 @@ pub use crate::ffi_types::MeshVS_SensitiveMesh as SensitiveMesh;
 
 unsafe impl crate::CppDeletable for SensitiveMesh {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_SensitiveMesh_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_SensitiveMesh_destructor(ptr);
+        }
     }
 }
 
@@ -9488,13 +9586,17 @@ pub use crate::ffi_types::HandleMeshVSSensitiveMesh;
 
 unsafe impl crate::CppDeletable for HandleMeshVSSensitiveMesh {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveMesh_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveMesh_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSSensitiveMesh {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveMesh_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveMesh_clone(ptr))
+        }
     }
 }
 
@@ -9560,7 +9662,9 @@ pub use crate::ffi_types::MeshVS_SensitivePolyhedron as SensitivePolyhedron;
 
 unsafe impl crate::CppDeletable for SensitivePolyhedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_SensitivePolyhedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_SensitivePolyhedron_destructor(ptr);
+        }
     }
 }
 
@@ -9900,13 +10004,19 @@ pub use crate::ffi_types::HandleMeshVSSensitivePolyhedron;
 
 unsafe impl crate::CppDeletable for HandleMeshVSSensitivePolyhedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSSensitivePolyhedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSSensitivePolyhedron_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSSensitivePolyhedron {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSSensitivePolyhedron_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSSensitivePolyhedron_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -9968,7 +10078,9 @@ pub use crate::ffi_types::MeshVS_SensitiveQuad as SensitiveQuad;
 
 unsafe impl crate::CppDeletable for SensitiveQuad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_SensitiveQuad_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_SensitiveQuad_destructor(ptr);
+        }
     }
 }
 
@@ -10320,13 +10432,17 @@ pub use crate::ffi_types::HandleMeshVSSensitiveQuad;
 
 unsafe impl crate::CppDeletable for HandleMeshVSSensitiveQuad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveQuad_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveQuad_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSSensitiveQuad {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveQuad_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveQuad_clone(ptr))
+        }
     }
 }
 
@@ -10389,7 +10505,9 @@ pub use crate::ffi_types::MeshVS_SensitiveSegment as SensitiveSegment;
 
 unsafe impl crate::CppDeletable for SensitiveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_SensitiveSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_SensitiveSegment_destructor(ptr);
+        }
     }
 }
 
@@ -10796,13 +10914,17 @@ pub use crate::ffi_types::HandleMeshVSSensitiveSegment;
 
 unsafe impl crate::CppDeletable for HandleMeshVSSensitiveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveSegment_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSSensitiveSegment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveSegment_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSSensitiveSegment_clone(ptr))
+        }
     }
 }
 
@@ -10875,7 +10997,9 @@ pub use crate::ffi_types::MeshVS_TextPrsBuilder as TextPrsBuilder;
 
 unsafe impl crate::CppDeletable for TextPrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_TextPrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_TextPrsBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -11306,13 +11430,17 @@ pub use crate::ffi_types::HandleMeshVSTextPrsBuilder;
 
 unsafe impl crate::CppDeletable for HandleMeshVSTextPrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSTextPrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSTextPrsBuilder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSTextPrsBuilder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSTextPrsBuilder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSTextPrsBuilder_clone(ptr))
+        }
     }
 }
 
@@ -11379,7 +11507,9 @@ pub use crate::ffi_types::MeshVS_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_Tool_destructor(ptr);
+        }
     }
 }
 
@@ -11491,7 +11621,9 @@ pub use crate::ffi_types::MeshVS_TwoColors as TwoColors;
 
 unsafe impl crate::CppDeletable for TwoColors {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_TwoColors_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_TwoColors_destructor(ptr);
+        }
     }
 }
 
@@ -11506,7 +11638,9 @@ pub use crate::ffi_types::MeshVS_TwoNodes as TwoNodes;
 
 unsafe impl crate::CppDeletable for TwoNodes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_TwoNodes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_TwoNodes_destructor(ptr);
+        }
     }
 }
 
@@ -11522,7 +11656,9 @@ pub use crate::ffi_types::MeshVS_VectorPrsBuilder as VectorPrsBuilder;
 
 unsafe impl crate::CppDeletable for VectorPrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_VectorPrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_VectorPrsBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -12066,13 +12202,17 @@ pub use crate::ffi_types::HandleMeshVSVectorPrsBuilder;
 
 unsafe impl crate::CppDeletable for HandleMeshVSVectorPrsBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::HandleMeshVSVectorPrsBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::HandleMeshVSVectorPrsBuilder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMeshVSVectorPrsBuilder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSVectorPrsBuilder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMeshVS::HandleMeshVSVectorPrsBuilder_clone(ptr))
+        }
     }
 }
 

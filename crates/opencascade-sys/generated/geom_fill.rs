@@ -299,7 +299,9 @@ pub use crate::ffi_types::GeomFill_AppSurf as AppSurf;
 
 unsafe impl crate::CppDeletable for AppSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_destructor(ptr);
+        }
     }
 }
 
@@ -728,7 +730,9 @@ pub use crate::ffi_types::GeomFill_AppSweep as AppSweep;
 
 unsafe impl crate::CppDeletable for AppSweep {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_destructor(ptr);
+        }
     }
 }
 
@@ -1167,7 +1171,9 @@ pub use crate::ffi_types::GeomFill_BSplineCurves as BSplineCurves;
 
 unsafe impl crate::CppDeletable for BSplineCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_BSplineCurves_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BSplineCurves_destructor(ptr);
+        }
     }
 }
 
@@ -1313,7 +1319,9 @@ pub use crate::ffi_types::GeomFill_BezierCurves as BezierCurves;
 
 unsafe impl crate::CppDeletable for BezierCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_BezierCurves_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BezierCurves_destructor(ptr);
+        }
     }
 }
 
@@ -1455,7 +1463,9 @@ pub use crate::ffi_types::GeomFill_BoundWithSurf as BoundWithSurf;
 
 unsafe impl crate::CppDeletable for BoundWithSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_destructor(ptr);
+        }
     }
 }
 
@@ -1786,13 +1796,19 @@ pub use crate::ffi_types::HandleGeomFillBoundWithSurf;
 
 unsafe impl crate::CppDeletable for HandleGeomFillBoundWithSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundWithSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundWithSurf_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillBoundWithSurf {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundWithSurf_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundWithSurf_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1862,7 +1878,9 @@ pub use crate::ffi_types::GeomFill_Boundary as Boundary;
 
 unsafe impl crate::CppDeletable for Boundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_destructor(ptr);
+        }
     }
 }
 
@@ -2108,13 +2126,17 @@ pub use crate::ffi_types::HandleGeomFillBoundary;
 
 unsafe impl crate::CppDeletable for HandleGeomFillBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillBoundary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_clone(ptr))
+        }
     }
 }
 
@@ -2215,7 +2237,9 @@ pub use crate::ffi_types::GeomFill_CircularBlendFunc as CircularBlendFunc;
 
 unsafe impl crate::CppDeletable for CircularBlendFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_destructor(ptr);
+        }
     }
 }
 
@@ -2703,15 +2727,19 @@ pub use crate::ffi_types::HandleGeomFillCircularBlendFunc;
 
 unsafe impl crate::CppDeletable for HandleGeomFillCircularBlendFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillCircularBlendFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillCircularBlendFunc_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillCircularBlendFunc {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCircularBlendFunc_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillCircularBlendFunc_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2776,7 +2804,9 @@ pub use crate::ffi_types::GeomFill_ConstantBiNormal as ConstantBiNormal;
 
 unsafe impl crate::CppDeletable for ConstantBiNormal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_destructor(ptr);
+        }
     }
 }
 
@@ -3151,13 +3181,19 @@ pub use crate::ffi_types::HandleGeomFillConstantBiNormal;
 
 unsafe impl crate::CppDeletable for HandleGeomFillConstantBiNormal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillConstantBiNormal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillConstantBiNormal_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillConstantBiNormal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillConstantBiNormal_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillConstantBiNormal_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3233,7 +3269,9 @@ pub use crate::ffi_types::GeomFill_ConstrainedFilling as ConstrainedFilling;
 
 unsafe impl crate::CppDeletable for ConstrainedFilling {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_destructor(ptr);
+        }
     }
 }
 
@@ -3422,7 +3460,9 @@ pub use crate::ffi_types::GeomFill_Coons as Coons;
 
 unsafe impl crate::CppDeletable for Coons {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_destructor(ptr);
+        }
     }
 }
 
@@ -3587,7 +3627,9 @@ pub use crate::ffi_types::GeomFill_CoonsAlgPatch as CoonsAlgPatch;
 
 unsafe impl crate::CppDeletable for CoonsAlgPatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_destructor(ptr);
+        }
     }
 }
 
@@ -3860,13 +3902,19 @@ pub use crate::ffi_types::HandleGeomFillCoonsAlgPatch;
 
 unsafe impl crate::CppDeletable for HandleGeomFillCoonsAlgPatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillCoonsAlgPatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillCoonsAlgPatch_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillCoonsAlgPatch {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCoonsAlgPatch_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCoonsAlgPatch_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3921,7 +3969,9 @@ pub use crate::ffi_types::GeomFill_CornerState as CornerState;
 
 unsafe impl crate::CppDeletable for CornerState {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_destructor(ptr);
+        }
     }
 }
 
@@ -4017,7 +4067,9 @@ pub use crate::ffi_types::GeomFill_CorrectedFrenet as CorrectedFrenet;
 
 unsafe impl crate::CppDeletable for CorrectedFrenet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_destructor(ptr);
+        }
     }
 }
 
@@ -4423,13 +4475,19 @@ pub use crate::ffi_types::HandleGeomFillCorrectedFrenet;
 
 unsafe impl crate::CppDeletable for HandleGeomFillCorrectedFrenet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillCorrectedFrenet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillCorrectedFrenet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillCorrectedFrenet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCorrectedFrenet_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCorrectedFrenet_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4496,7 +4554,9 @@ pub use crate::ffi_types::GeomFill_CurveAndTrihedron as CurveAndTrihedron;
 
 unsafe impl crate::CppDeletable for CurveAndTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_destructor(ptr);
+        }
     }
 }
 
@@ -5013,15 +5073,19 @@ pub use crate::ffi_types::HandleGeomFillCurveAndTrihedron;
 
 unsafe impl crate::CppDeletable for HandleGeomFillCurveAndTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillCurveAndTrihedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillCurveAndTrihedron_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillCurveAndTrihedron {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCurveAndTrihedron_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillCurveAndTrihedron_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5085,7 +5149,9 @@ pub use crate::ffi_types::GeomFill_Curved as Curved;
 
 unsafe impl crate::CppDeletable for Curved {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_destructor(ptr);
+        }
     }
 }
 
@@ -5315,7 +5381,9 @@ pub use crate::ffi_types::GeomFill_Darboux as Darboux;
 
 unsafe impl crate::CppDeletable for Darboux {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_destructor(ptr);
+        }
     }
 }
 
@@ -5684,13 +5752,17 @@ pub use crate::ffi_types::HandleGeomFillDarboux;
 
 unsafe impl crate::CppDeletable for HandleGeomFillDarboux {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillDarboux_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillDarboux_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillDarboux {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDarboux_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDarboux_clone(ptr))
+        }
     }
 }
 
@@ -5759,7 +5831,9 @@ pub use crate::ffi_types::GeomFill_DegeneratedBound as DegeneratedBound;
 
 unsafe impl crate::CppDeletable for DegeneratedBound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_destructor(ptr);
+        }
     }
 }
 
@@ -6070,13 +6144,19 @@ pub use crate::ffi_types::HandleGeomFillDegeneratedBound;
 
 unsafe impl crate::CppDeletable for HandleGeomFillDegeneratedBound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillDegeneratedBound_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillDegeneratedBound_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillDegeneratedBound {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDegeneratedBound_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDegeneratedBound_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -6140,7 +6220,9 @@ pub use crate::ffi_types::GeomFill_DiscreteTrihedron as DiscreteTrihedron;
 
 unsafe impl crate::CppDeletable for DiscreteTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_destructor(ptr);
+        }
     }
 }
 
@@ -6528,15 +6610,19 @@ pub use crate::ffi_types::HandleGeomFillDiscreteTrihedron;
 
 unsafe impl crate::CppDeletable for HandleGeomFillDiscreteTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillDiscreteTrihedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillDiscreteTrihedron_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillDiscreteTrihedron {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDiscreteTrihedron_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillDiscreteTrihedron_clone(ptr),
+            )
+        }
     }
 }
 
@@ -6600,7 +6686,9 @@ pub use crate::ffi_types::GeomFill_DraftTrihedron as DraftTrihedron;
 
 unsafe impl crate::CppDeletable for DraftTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_destructor(ptr);
+        }
     }
 }
 
@@ -6991,13 +7079,19 @@ pub use crate::ffi_types::HandleGeomFillDraftTrihedron;
 
 unsafe impl crate::CppDeletable for HandleGeomFillDraftTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillDraftTrihedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillDraftTrihedron_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillDraftTrihedron {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDraftTrihedron_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDraftTrihedron_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -7058,7 +7152,9 @@ pub use crate::ffi_types::GeomFill_EvolvedSection as EvolvedSection;
 
 unsafe impl crate::CppDeletable for EvolvedSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_destructor(ptr);
+        }
     }
 }
 
@@ -7572,13 +7668,19 @@ pub use crate::ffi_types::HandleGeomFillEvolvedSection;
 
 unsafe impl crate::CppDeletable for HandleGeomFillEvolvedSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillEvolvedSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillEvolvedSection_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillEvolvedSection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillEvolvedSection_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillEvolvedSection_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -7639,7 +7741,9 @@ pub use crate::ffi_types::GeomFill_Filling as Filling;
 
 unsafe impl crate::CppDeletable for Filling {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Filling_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Filling_destructor(ptr);
+        }
     }
 }
 
@@ -7699,7 +7803,9 @@ pub use crate::ffi_types::GeomFill_Fixed as Fixed;
 
 unsafe impl crate::CppDeletable for Fixed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_destructor(ptr);
+        }
     }
 }
 
@@ -8058,13 +8164,15 @@ pub use crate::ffi_types::HandleGeomFillFixed;
 
 unsafe impl crate::CppDeletable for HandleGeomFillFixed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillFixed_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillFixed_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillFixed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillFixed_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillFixed_clone(ptr)) }
     }
 }
 
@@ -8129,7 +8237,9 @@ pub use crate::ffi_types::GeomFill_Frenet as Frenet;
 
 unsafe impl crate::CppDeletable for Frenet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_destructor(ptr);
+        }
     }
 }
 
@@ -8503,13 +8613,17 @@ pub use crate::ffi_types::HandleGeomFillFrenet;
 
 unsafe impl crate::CppDeletable for HandleGeomFillFrenet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillFrenet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillFrenet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillFrenet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillFrenet_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillFrenet_clone(ptr))
+        }
     }
 }
 
@@ -8573,7 +8687,9 @@ pub use crate::ffi_types::GeomFill_FunctionDraft as FunctionDraft;
 
 unsafe impl crate::CppDeletable for FunctionDraft {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_destructor(ptr);
+        }
     }
 }
 
@@ -8791,7 +8907,9 @@ pub use crate::ffi_types::GeomFill_FunctionGuide as FunctionGuide;
 
 unsafe impl crate::CppDeletable for FunctionGuide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_destructor(ptr);
+        }
     }
 }
 
@@ -9012,7 +9130,9 @@ pub use crate::ffi_types::GeomFill_Generator as Generator;
 
 unsafe impl crate::CppDeletable for Generator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_destructor(ptr);
+        }
     }
 }
 
@@ -9169,7 +9289,9 @@ pub use crate::ffi_types::GeomFill_GuideTrihedronAC as GuideTrihedronAC;
 
 unsafe impl crate::CppDeletable for GuideTrihedronAC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_destructor(ptr);
+        }
     }
 }
 
@@ -9588,13 +9710,19 @@ pub use crate::ffi_types::HandleGeomFillGuideTrihedronAC;
 
 unsafe impl crate::CppDeletable for HandleGeomFillGuideTrihedronAC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronAC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronAC_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillGuideTrihedronAC {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronAC_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronAC_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -9667,7 +9795,9 @@ pub use crate::ffi_types::GeomFill_GuideTrihedronPlan as GuideTrihedronPlan;
 
 unsafe impl crate::CppDeletable for GuideTrihedronPlan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_destructor(ptr);
+        }
     }
 }
 
@@ -10095,15 +10225,19 @@ pub use crate::ffi_types::HandleGeomFillGuideTrihedronPlan;
 
 unsafe impl crate::CppDeletable for HandleGeomFillGuideTrihedronPlan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronPlan_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronPlan_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillGuideTrihedronPlan {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronPlan_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronPlan_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10176,7 +10310,9 @@ pub use crate::ffi_types::GeomFill_HArray1OfLocationLaw as HArray1OfLocationLaw;
 
 unsafe impl crate::CppDeletable for HArray1OfLocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_destructor(ptr);
+        }
     }
 }
 
@@ -10390,15 +10526,19 @@ pub use crate::ffi_types::HandleGeomFillHArray1OfLocationLaw;
 
 unsafe impl crate::CppDeletable for HandleGeomFillHArray1OfLocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfLocationLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfLocationLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillHArray1OfLocationLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfLocationLaw_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfLocationLaw_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10453,7 +10593,9 @@ pub use crate::ffi_types::GeomFill_HArray1OfSectionLaw as HArray1OfSectionLaw;
 
 unsafe impl crate::CppDeletable for HArray1OfSectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_destructor(ptr);
+        }
     }
 }
 
@@ -10675,15 +10817,19 @@ pub use crate::ffi_types::HandleGeomFillHArray1OfSectionLaw;
 
 unsafe impl crate::CppDeletable for HandleGeomFillHArray1OfSectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfSectionLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfSectionLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillHArray1OfSectionLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfSectionLaw_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfSectionLaw_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10738,7 +10884,9 @@ pub use crate::ffi_types::GeomFill_HSequenceOfAx2 as HSequenceOfAx2;
 
 unsafe impl crate::CppDeletable for HSequenceOfAx2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_destructor(ptr);
+        }
     }
 }
 
@@ -10947,13 +11095,19 @@ pub use crate::ffi_types::HandleGeomFillHSequenceOfAx2;
 
 unsafe impl crate::CppDeletable for HandleGeomFillHSequenceOfAx2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillHSequenceOfAx2_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillHSequenceOfAx2_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillHSequenceOfAx2 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillHSequenceOfAx2_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillHSequenceOfAx2_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -11005,7 +11159,9 @@ pub use crate::ffi_types::GeomFill_Line as Line;
 
 unsafe impl crate::CppDeletable for Line {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Line_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Line_destructor(ptr);
+        }
     }
 }
 
@@ -11175,13 +11331,15 @@ pub use crate::ffi_types::HandleGeomFillLine;
 
 unsafe impl crate::CppDeletable for HandleGeomFillLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLine_clone(ptr)) }
     }
 }
 
@@ -11232,7 +11390,9 @@ pub use crate::ffi_types::GeomFill_LocFunction as LocFunction;
 
 unsafe impl crate::CppDeletable for LocFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_LocFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocFunction_destructor(ptr);
+        }
     }
 }
 
@@ -11324,7 +11484,9 @@ pub use crate::ffi_types::GeomFill_LocationDraft as LocationDraft;
 
 unsafe impl crate::CppDeletable for LocationDraft {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_destructor(ptr);
+        }
     }
 }
 
@@ -11888,13 +12050,19 @@ pub use crate::ffi_types::HandleGeomFillLocationDraft;
 
 unsafe impl crate::CppDeletable for HandleGeomFillLocationDraft {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationDraft_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationDraft_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillLocationDraft {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationDraft_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationDraft_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -11954,7 +12122,9 @@ pub use crate::ffi_types::GeomFill_LocationGuide as LocationGuide;
 
 unsafe impl crate::CppDeletable for LocationGuide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_destructor(ptr);
+        }
     }
 }
 
@@ -12557,13 +12727,19 @@ pub use crate::ffi_types::HandleGeomFillLocationGuide;
 
 unsafe impl crate::CppDeletable for HandleGeomFillLocationGuide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationGuide_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationGuide_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillLocationGuide {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationGuide_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationGuide_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -12626,7 +12802,9 @@ pub use crate::ffi_types::GeomFill_LocationLaw as LocationLaw;
 
 unsafe impl crate::CppDeletable for LocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_destructor(ptr);
+        }
     }
 }
 
@@ -13106,13 +13284,17 @@ pub use crate::ffi_types::HandleGeomFillLocationLaw;
 
 unsafe impl crate::CppDeletable for HandleGeomFillLocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillLocationLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_clone(ptr))
+        }
     }
 }
 
@@ -13214,7 +13396,9 @@ pub use crate::ffi_types::GeomFill_NSections as NSections;
 
 unsafe impl crate::CppDeletable for NSections {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_destructor(ptr);
+        }
     }
 }
 
@@ -13802,13 +13986,17 @@ pub use crate::ffi_types::HandleGeomFillNSections;
 
 unsafe impl crate::CppDeletable for HandleGeomFillNSections {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillNSections_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillNSections_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillNSections {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillNSections_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillNSections_clone(ptr))
+        }
     }
 }
 
@@ -13927,7 +14115,9 @@ pub use crate::ffi_types::GeomFill_Pipe as Pipe;
 
 unsafe impl crate::CppDeletable for Pipe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_destructor(ptr);
+        }
     }
 }
 
@@ -14402,7 +14592,9 @@ pub use crate::ffi_types::GeomFill_PlanFunc as PlanFunc;
 
 unsafe impl crate::CppDeletable for PlanFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_destructor(ptr);
+        }
     }
 }
 
@@ -14559,7 +14751,9 @@ pub use crate::ffi_types::GeomFill_PolynomialConvertor as PolynomialConvertor;
 
 unsafe impl crate::CppDeletable for PolynomialConvertor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_PolynomialConvertor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PolynomialConvertor_destructor(ptr);
+        }
     }
 }
 
@@ -14661,7 +14855,9 @@ pub use crate::ffi_types::GeomFill_Profiler as Profiler;
 
 unsafe impl crate::CppDeletable for Profiler {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_destructor(ptr);
+        }
     }
 }
 
@@ -14793,7 +14989,9 @@ pub use crate::ffi_types::GeomFill_QuasiAngularConvertor as QuasiAngularConverto
 
 unsafe impl crate::CppDeletable for QuasiAngularConvertor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_QuasiAngularConvertor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_QuasiAngularConvertor_destructor(ptr);
+        }
     }
 }
 
@@ -14900,7 +15098,9 @@ pub use crate::ffi_types::GeomFill_SectionGenerator as SectionGenerator;
 
 unsafe impl crate::CppDeletable for SectionGenerator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_destructor(ptr);
+        }
     }
 }
 
@@ -15145,7 +15345,9 @@ pub use crate::ffi_types::GeomFill_SectionLaw as SectionLaw;
 
 unsafe impl crate::CppDeletable for SectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_destructor(ptr);
+        }
     }
 }
 
@@ -15618,13 +15820,17 @@ pub use crate::ffi_types::HandleGeomFillSectionLaw;
 
 unsafe impl crate::CppDeletable for HandleGeomFillSectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillSectionLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_clone(ptr))
+        }
     }
 }
 
@@ -15726,7 +15932,9 @@ pub use crate::ffi_types::GeomFill_SectionPlacement as SectionPlacement;
 
 unsafe impl crate::CppDeletable for SectionPlacement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_destructor(ptr);
+        }
     }
 }
 
@@ -15893,7 +16101,9 @@ pub use crate::ffi_types::GeomFill_SimpleBound as SimpleBound;
 
 unsafe impl crate::CppDeletable for SimpleBound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_destructor(ptr);
+        }
     }
 }
 
@@ -16223,13 +16433,17 @@ pub use crate::ffi_types::HandleGeomFillSimpleBound;
 
 unsafe impl crate::CppDeletable for HandleGeomFillSimpleBound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillSimpleBound_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillSimpleBound_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillSimpleBound {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSimpleBound_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSimpleBound_clone(ptr))
+        }
     }
 }
 
@@ -16294,7 +16508,9 @@ pub use crate::ffi_types::GeomFill_SnglrFunc as SnglrFunc;
 
 unsafe impl crate::CppDeletable for SnglrFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_destructor(ptr);
+        }
     }
 }
 
@@ -16783,13 +16999,17 @@ pub use crate::ffi_types::HandleGeomFillSnglrFunc;
 
 unsafe impl crate::CppDeletable for HandleGeomFillSnglrFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillSnglrFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillSnglrFunc_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillSnglrFunc {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSnglrFunc_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSnglrFunc_clone(ptr))
+        }
     }
 }
 
@@ -16853,7 +17073,9 @@ pub use crate::ffi_types::GeomFill_Stretch as Stretch;
 
 unsafe impl crate::CppDeletable for Stretch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_destructor(ptr);
+        }
     }
 }
 
@@ -17021,7 +17243,9 @@ pub use crate::ffi_types::GeomFill_Sweep as Sweep;
 
 unsafe impl crate::CppDeletable for Sweep {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_destructor(ptr);
+        }
     }
 }
 
@@ -17269,7 +17493,9 @@ pub use crate::ffi_types::GeomFill_SweepFunction as SweepFunction;
 
 unsafe impl crate::CppDeletable for SweepFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_destructor(ptr);
+        }
     }
 }
 
@@ -17729,13 +17955,19 @@ pub use crate::ffi_types::HandleGeomFillSweepFunction;
 
 unsafe impl crate::CppDeletable for HandleGeomFillSweepFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillSweepFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillSweepFunction_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillSweepFunction {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSweepFunction_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSweepFunction_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -17797,7 +18029,9 @@ pub use crate::ffi_types::GeomFill_SweepSectionGenerator as SweepSectionGenerato
 
 unsafe impl crate::CppDeletable for SweepSectionGenerator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_destructor(ptr);
+        }
     }
 }
 
@@ -18087,7 +18321,9 @@ pub use crate::ffi_types::GeomFill_Tensor as Tensor;
 
 unsafe impl crate::CppDeletable for Tensor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Tensor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Tensor_destructor(ptr);
+        }
     }
 }
 
@@ -18168,7 +18404,9 @@ pub use crate::ffi_types::GeomFill_TgtField as TgtField;
 
 unsafe impl crate::CppDeletable for TgtField {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_destructor(ptr);
+        }
     }
 }
 
@@ -18347,13 +18585,17 @@ pub use crate::ffi_types::HandleGeomFillTgtField;
 
 unsafe impl crate::CppDeletable for HandleGeomFillTgtField {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtField_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtField_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillTgtField {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtField_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtField_clone(ptr))
+        }
     }
 }
 
@@ -18422,7 +18664,9 @@ pub use crate::ffi_types::GeomFill_TgtOnCoons as TgtOnCoons;
 
 unsafe impl crate::CppDeletable for TgtOnCoons {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_destructor(ptr);
+        }
     }
 }
 
@@ -18651,13 +18895,17 @@ pub use crate::ffi_types::HandleGeomFillTgtOnCoons;
 
 unsafe impl crate::CppDeletable for HandleGeomFillTgtOnCoons {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtOnCoons_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtOnCoons_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillTgtOnCoons {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtOnCoons_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtOnCoons_clone(ptr))
+        }
     }
 }
 
@@ -18722,7 +18970,9 @@ pub use crate::ffi_types::GeomFill_TrihedronLaw as TrihedronLaw;
 
 unsafe impl crate::CppDeletable for TrihedronLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_destructor(ptr);
+        }
     }
 }
 
@@ -19067,13 +19317,17 @@ pub use crate::ffi_types::HandleGeomFillTrihedronLaw;
 
 unsafe impl crate::CppDeletable for HandleGeomFillTrihedronLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillTrihedronLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_clone(ptr))
+        }
     }
 }
 
@@ -19273,7 +19527,9 @@ pub use crate::ffi_types::GeomFill_TrihedronWithGuide as TrihedronWithGuide;
 
 unsafe impl crate::CppDeletable for TrihedronWithGuide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_destructor(ptr);
+        }
     }
 }
 
@@ -19649,15 +19905,19 @@ pub use crate::ffi_types::HandleGeomFillTrihedronWithGuide;
 
 unsafe impl crate::CppDeletable for HandleGeomFillTrihedronWithGuide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillTrihedronWithGuide {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_clone(ptr),
+            )
+        }
     }
 }
 
@@ -19754,7 +20014,9 @@ pub use crate::ffi_types::GeomFill_UniformSection as UniformSection;
 
 unsafe impl crate::CppDeletable for UniformSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_destructor(ptr);
+        }
     }
 }
 
@@ -20293,13 +20555,19 @@ pub use crate::ffi_types::HandleGeomFillUniformSection;
 
 unsafe impl crate::CppDeletable for HandleGeomFillUniformSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomFillUniformSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillUniformSection_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomFillUniformSection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillUniformSection_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillUniformSection_clone(
+                ptr,
+            ))
+        }
     }
 }
 

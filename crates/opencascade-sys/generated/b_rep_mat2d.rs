@@ -49,7 +49,9 @@ pub use crate::ffi_types::BRepMAT2d_BisectingLocus as BisectingLocus;
 
 unsafe impl crate::CppDeletable for BisectingLocus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_destructor(ptr);
+        }
     }
 }
 
@@ -228,7 +230,9 @@ pub use crate::ffi_types::BRepMAT2d_Explorer as Explorer;
 
 unsafe impl crate::CppDeletable for Explorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_destructor(ptr);
+        }
     }
 }
 
@@ -385,7 +389,9 @@ pub use crate::ffi_types::BRepMAT2d_LinkTopoBilo as LinkTopoBilo;
 
 unsafe impl crate::CppDeletable for LinkTopoBilo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepMAT2d_LinkTopoBilo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_LinkTopoBilo_destructor(ptr);
+        }
     }
 }
 

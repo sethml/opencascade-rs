@@ -16,7 +16,9 @@ pub use crate::ffi_types::StepAP209_Construct as Construct;
 
 unsafe impl crate::CppDeletable for Construct {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP209_Construct_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP209_Construct_destructor(ptr);
+        }
     }
 }
 

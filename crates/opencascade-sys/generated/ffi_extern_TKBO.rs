@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== BOPAlgo_AlertUserBreak ========================
     pub fn BOPAlgo_AlertUserBreak_destructor(self_: *mut BOPAlgo_AlertUserBreak);
     /// **Source:** `BOPAlgo_Alerts.hxx` - `BOPAlgo_AlertUserBreak::BOPAlgo_AlertUserBreak()`

@@ -19,7 +19,9 @@ pub use crate::ffi_types::FEmTool_Assembly as Assembly;
 
 unsafe impl crate::CppDeletable for Assembly {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::FEmTool_Assembly_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_destructor(ptr);
+        }
     }
 }
 
@@ -170,7 +172,9 @@ pub use crate::ffi_types::FEmTool_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::FEmTool_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -464,13 +468,15 @@ pub use crate::ffi_types::HandleFEmToolCurve;
 
 unsafe impl crate::CppDeletable for HandleFEmToolCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleFEmToolCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFEmToolCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolCurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolCurve_clone(ptr)) }
     }
 }
 
@@ -522,7 +528,9 @@ pub use crate::ffi_types::FEmTool_ElementaryCriterion as ElementaryCriterion;
 
 unsafe impl crate::CppDeletable for ElementaryCriterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_destructor(ptr);
+        }
     }
 }
 
@@ -734,15 +742,19 @@ pub use crate::ffi_types::HandleFEmToolElementaryCriterion;
 
 unsafe impl crate::CppDeletable for HandleFEmToolElementaryCriterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFEmToolElementaryCriterion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_clone(ptr),
+            )
+        }
     }
 }
 
@@ -852,7 +864,9 @@ pub use crate::ffi_types::FEmTool_ElementsOfRefMatrix as ElementsOfRefMatrix;
 
 unsafe impl crate::CppDeletable for ElementsOfRefMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::FEmTool_ElementsOfRefMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementsOfRefMatrix_destructor(ptr);
+        }
     }
 }
 
@@ -951,7 +965,9 @@ pub use crate::ffi_types::FEmTool_HAssemblyTable as HAssemblyTable;
 
 unsafe impl crate::CppDeletable for HAssemblyTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_destructor(ptr);
+        }
     }
 }
 
@@ -1157,13 +1173,19 @@ pub use crate::ffi_types::HandleFEmToolHAssemblyTable;
 
 unsafe impl crate::CppDeletable for HandleFEmToolHAssemblyTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleFEmToolHAssemblyTable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolHAssemblyTable_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFEmToolHAssemblyTable {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolHAssemblyTable_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolHAssemblyTable_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1215,7 +1237,9 @@ pub use crate::ffi_types::FEmTool_LinearFlexion as LinearFlexion;
 
 unsafe impl crate::CppDeletable for LinearFlexion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_destructor(ptr);
+        }
     }
 }
 
@@ -1447,13 +1471,17 @@ pub use crate::ffi_types::HandleFEmToolLinearFlexion;
 
 unsafe impl crate::CppDeletable for HandleFEmToolLinearFlexion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFEmToolLinearFlexion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_clone(ptr))
+        }
     }
 }
 
@@ -1516,7 +1544,9 @@ pub use crate::ffi_types::FEmTool_LinearJerk as LinearJerk;
 
 unsafe impl crate::CppDeletable for LinearJerk {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_destructor(ptr);
+        }
     }
 }
 
@@ -1743,13 +1773,17 @@ pub use crate::ffi_types::HandleFEmToolLinearJerk;
 
 unsafe impl crate::CppDeletable for HandleFEmToolLinearJerk {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFEmToolLinearJerk {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_clone(ptr))
+        }
     }
 }
 
@@ -1812,7 +1846,9 @@ pub use crate::ffi_types::FEmTool_LinearTension as LinearTension;
 
 unsafe impl crate::CppDeletable for LinearTension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_destructor(ptr);
+        }
     }
 }
 
@@ -2044,13 +2080,17 @@ pub use crate::ffi_types::HandleFEmToolLinearTension;
 
 unsafe impl crate::CppDeletable for HandleFEmToolLinearTension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFEmToolLinearTension {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_clone(ptr))
+        }
     }
 }
 
@@ -2114,7 +2154,9 @@ pub use crate::ffi_types::FEmTool_ProfileMatrix as ProfileMatrix;
 
 unsafe impl crate::CppDeletable for ProfileMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_destructor(ptr);
+        }
     }
 }
 
@@ -2429,13 +2471,17 @@ pub use crate::ffi_types::HandleFEmToolProfileMatrix;
 
 unsafe impl crate::CppDeletable for HandleFEmToolProfileMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleFEmToolProfileMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolProfileMatrix_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFEmToolProfileMatrix {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolProfileMatrix_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolProfileMatrix_clone(ptr))
+        }
     }
 }
 
@@ -2498,7 +2544,9 @@ pub use crate::ffi_types::FEmTool_SparseMatrix as SparseMatrix;
 
 unsafe impl crate::CppDeletable for SparseMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_destructor(ptr);
+        }
     }
 }
 
@@ -2740,13 +2788,17 @@ pub use crate::ffi_types::HandleFEmToolSparseMatrix;
 
 unsafe impl crate::CppDeletable for HandleFEmToolSparseMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFEmToolSparseMatrix {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_clone(ptr))
+        }
     }
 }
 

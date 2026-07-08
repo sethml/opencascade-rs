@@ -23,7 +23,9 @@ pub use crate::ffi_types::CPnts_AbscissaPoint as AbscissaPoint;
 
 unsafe impl crate::CppDeletable for AbscissaPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_destructor(ptr);
+        }
     }
 }
 
@@ -384,7 +386,9 @@ pub use crate::ffi_types::CPnts_MyGaussFunction as MyGaussFunction;
 
 unsafe impl crate::CppDeletable for MyGaussFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::CPnts_MyGaussFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::CPnts_MyGaussFunction_destructor(ptr);
+        }
     }
 }
 
@@ -457,7 +461,9 @@ pub use crate::ffi_types::CPnts_MyRootFunction as MyRootFunction;
 
 unsafe impl crate::CppDeletable for MyRootFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_destructor(ptr);
+        }
     }
 }
 
@@ -609,7 +615,9 @@ pub use crate::ffi_types::CPnts_UniformDeflection as UniformDeflection;
 
 unsafe impl crate::CppDeletable for UniformDeflection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_destructor(ptr);
+        }
     }
 }
 

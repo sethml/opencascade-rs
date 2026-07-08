@@ -60,7 +60,9 @@ pub use crate::ffi_types::IntCurveSurface_HInter as HInter;
 
 unsafe impl crate::CppDeletable for HInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_HInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_HInter_destructor(ptr);
+        }
     }
 }
 
@@ -339,7 +341,9 @@ pub use crate::ffi_types::IntCurveSurface_IntersectionPoint as IntersectionPoint
 
 unsafe impl crate::CppDeletable for IntersectionPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_IntersectionPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_IntersectionPoint_destructor(ptr);
+        }
     }
 }
 
@@ -484,7 +488,9 @@ pub use crate::ffi_types::IntCurveSurface_IntersectionSegment as IntersectionSeg
 
 unsafe impl crate::CppDeletable for IntersectionSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_IntersectionSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_IntersectionSegment_destructor(ptr);
+        }
     }
 }
 
@@ -585,7 +591,9 @@ pub use crate::ffi_types::IntCurveSurface_TheCSFunctionOfHInter as TheCSFunction
 
 unsafe impl crate::CppDeletable for TheCSFunctionOfHInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheCSFunctionOfHInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheCSFunctionOfHInter_destructor(ptr);
+        }
     }
 }
 
@@ -752,7 +760,9 @@ pub use crate::ffi_types::IntCurveSurface_TheExactHInter as TheExactHInter;
 
 unsafe impl crate::CppDeletable for TheExactHInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheExactHInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheExactHInter_destructor(ptr);
+        }
     }
 }
 
@@ -928,7 +938,9 @@ pub use crate::ffi_types::IntCurveSurface_TheHCurveTool as TheHCurveTool;
 
 unsafe impl crate::CppDeletable for TheHCurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheHCurveTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheHCurveTool_destructor(ptr);
+        }
     }
 }
 
@@ -1230,7 +1242,9 @@ pub use crate::ffi_types::IntCurveSurface_TheInterferenceOfHInter as TheInterfer
 
 unsafe impl crate::CppDeletable for TheInterferenceOfHInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheInterferenceOfHInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheInterferenceOfHInter_destructor(ptr);
+        }
     }
 }
 
@@ -1531,7 +1545,9 @@ pub use crate::ffi_types::IntCurveSurface_ThePolygonOfHInter as ThePolygonOfHInt
 
 unsafe impl crate::CppDeletable for ThePolygonOfHInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_ThePolygonOfHInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_ThePolygonOfHInter_destructor(ptr);
+        }
     }
 }
 
@@ -1703,7 +1719,9 @@ pub use crate::ffi_types::IntCurveSurface_ThePolygonToolOfHInter as ThePolygonTo
 
 unsafe impl crate::CppDeletable for ThePolygonToolOfHInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_ThePolygonToolOfHInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_ThePolygonToolOfHInter_destructor(ptr);
+        }
     }
 }
 
@@ -1794,7 +1812,9 @@ pub use crate::ffi_types::IntCurveSurface_ThePolyhedronOfHInter as ThePolyhedron
 
 unsafe impl crate::CppDeletable for ThePolyhedronOfHInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_ThePolyhedronOfHInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_ThePolyhedronOfHInter_destructor(ptr);
+        }
     }
 }
 
@@ -2187,7 +2207,9 @@ pub use crate::ffi_types::IntCurveSurface_ThePolyhedronToolOfHInter as ThePolyhe
 
 unsafe impl crate::CppDeletable for ThePolyhedronToolOfHInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_ThePolyhedronToolOfHInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_ThePolyhedronToolOfHInter_destructor(ptr);
+        }
     }
 }
 
@@ -2332,7 +2354,9 @@ pub use crate::ffi_types::IntCurveSurface_TheQuadCurvExactHInter as TheQuadCurvE
 
 unsafe impl crate::CppDeletable for TheQuadCurvExactHInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheQuadCurvExactHInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheQuadCurvExactHInter_destructor(ptr);
+        }
     }
 }
 
@@ -2410,7 +2434,9 @@ pub use crate::ffi_types::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInte
 
 unsafe impl crate::CppDeletable for TheQuadCurvFuncOfTheQuadCurvExactHInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_destructor(ptr);
+        }
     }
 }
 

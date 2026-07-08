@@ -96,7 +96,9 @@ pub use crate::ffi_types::IntPatch_ALine as ALine;
 
 unsafe impl crate::CppDeletable for ALine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_destructor(ptr);
+        }
     }
 }
 
@@ -599,13 +601,15 @@ pub use crate::ffi_types::HandleIntPatchALine;
 
 unsafe impl crate::CppDeletable for HandleIntPatchALine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntPatchALine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_clone(ptr)) }
     }
 }
 
@@ -667,7 +671,9 @@ pub use crate::ffi_types::IntPatch_ALineToWLine as ALineToWLine;
 
 unsafe impl crate::CppDeletable for ALineToWLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_destructor(ptr);
+        }
     }
 }
 
@@ -779,7 +785,9 @@ pub use crate::ffi_types::IntPatch_ArcFunction as ArcFunction;
 
 unsafe impl crate::CppDeletable for ArcFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_destructor(ptr);
+        }
     }
 }
 
@@ -959,7 +967,9 @@ pub use crate::ffi_types::IntPatch_CSFunction as CSFunction;
 
 unsafe impl crate::CppDeletable for CSFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_CSFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_CSFunction_destructor(ptr);
+        }
     }
 }
 
@@ -1122,7 +1132,9 @@ pub use crate::ffi_types::IntPatch_CurvIntSurf as CurvIntSurf;
 
 unsafe impl crate::CppDeletable for CurvIntSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_CurvIntSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_CurvIntSurf_destructor(ptr);
+        }
     }
 }
 
@@ -1303,7 +1315,9 @@ pub use crate::ffi_types::IntPatch_GLine as GLine;
 
 unsafe impl crate::CppDeletable for GLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_destructor(ptr);
+        }
     }
 }
 
@@ -1979,13 +1993,15 @@ pub use crate::ffi_types::HandleIntPatchGLine;
 
 unsafe impl crate::CppDeletable for HandleIntPatchGLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntPatchGLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_clone(ptr)) }
     }
 }
 
@@ -2047,7 +2063,9 @@ pub use crate::ffi_types::IntPatch_HCurve2dTool as HCurve2dTool;
 
 unsafe impl crate::CppDeletable for HCurve2dTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_destructor(ptr);
+        }
     }
 }
 
@@ -2337,7 +2355,9 @@ pub use crate::ffi_types::IntPatch_HInterTool as HInterTool;
 
 unsafe impl crate::CppDeletable for HInterTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_destructor(ptr);
+        }
     }
 }
 
@@ -2605,7 +2625,9 @@ pub use crate::ffi_types::IntPatch_ImpImpIntersection as ImpImpIntersection;
 
 unsafe impl crate::CppDeletable for ImpImpIntersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_ImpImpIntersection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_ImpImpIntersection_destructor(ptr);
+        }
     }
 }
 
@@ -2800,7 +2822,9 @@ pub use crate::ffi_types::IntPatch_ImpPrmIntersection as ImpPrmIntersection;
 
 unsafe impl crate::CppDeletable for ImpPrmIntersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_ImpPrmIntersection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_ImpPrmIntersection_destructor(ptr);
+        }
     }
 }
 
@@ -2940,7 +2964,9 @@ pub use crate::ffi_types::IntPatch_InterferencePolyhedron as InterferencePolyhed
 
 unsafe impl crate::CppDeletable for InterferencePolyhedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_InterferencePolyhedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_InterferencePolyhedron_destructor(ptr);
+        }
     }
 }
 
@@ -3133,7 +3159,9 @@ pub use crate::ffi_types::IntPatch_Intersection as Intersection;
 
 unsafe impl crate::CppDeletable for Intersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_Intersection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_Intersection_destructor(ptr);
+        }
     }
 }
 
@@ -3478,7 +3506,9 @@ pub use crate::ffi_types::IntPatch_Line as Line;
 
 unsafe impl crate::CppDeletable for Line {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_Line_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_Line_destructor(ptr);
+        }
     }
 }
 
@@ -3748,13 +3778,15 @@ pub use crate::ffi_types::HandleIntPatchLine;
 
 unsafe impl crate::CppDeletable for HandleIntPatchLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntPatchLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_clone(ptr)) }
     }
 }
 
@@ -3880,7 +3912,9 @@ pub use crate::ffi_types::IntPatch_LineConstructor as LineConstructor;
 
 unsafe impl crate::CppDeletable for LineConstructor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_LineConstructor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_LineConstructor_destructor(ptr);
+        }
     }
 }
 
@@ -3951,7 +3985,9 @@ pub use crate::ffi_types::IntPatch_Point as Point;
 
 unsafe impl crate::CppDeletable for Point {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_Point_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_Point_destructor(ptr);
+        }
     }
 }
 
@@ -4374,7 +4410,9 @@ pub use crate::ffi_types::IntPatch_PointLine as PointLine;
 
 unsafe impl crate::CppDeletable for PointLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_destructor(ptr);
+        }
     }
 }
 
@@ -4773,13 +4811,17 @@ pub use crate::ffi_types::HandleIntPatchPointLine;
 
 unsafe impl crate::CppDeletable for HandleIntPatchPointLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntPatchPointLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_clone(ptr))
+        }
     }
 }
 
@@ -4879,7 +4921,9 @@ pub use crate::ffi_types::IntPatch_PolyArc as PolyArc;
 
 unsafe impl crate::CppDeletable for PolyArc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_PolyArc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PolyArc_destructor(ptr);
+        }
     }
 }
 
@@ -5051,7 +5095,9 @@ pub use crate::ffi_types::IntPatch_PolyLine as PolyLine;
 
 unsafe impl crate::CppDeletable for PolyLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_PolyLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PolyLine_destructor(ptr);
+        }
     }
 }
 
@@ -5240,7 +5286,9 @@ pub use crate::ffi_types::IntPatch_Polygo as Polygo;
 
 unsafe impl crate::CppDeletable for Polygo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_Polygo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_Polygo_destructor(ptr);
+        }
     }
 }
 
@@ -5361,7 +5409,9 @@ pub use crate::ffi_types::IntPatch_Polyhedron as Polyhedron;
 
 unsafe impl crate::CppDeletable for Polyhedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_destructor(ptr);
+        }
     }
 }
 
@@ -5759,7 +5809,9 @@ pub use crate::ffi_types::IntPatch_PolyhedronTool as PolyhedronTool;
 
 unsafe impl crate::CppDeletable for PolyhedronTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronTool_destructor(ptr);
+        }
     }
 }
 
@@ -5873,7 +5925,9 @@ pub use crate::ffi_types::IntPatch_PrmPrmIntersection as PrmPrmIntersection;
 
 unsafe impl crate::CppDeletable for PrmPrmIntersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_destructor(ptr);
+        }
     }
 }
 
@@ -6308,7 +6362,9 @@ pub use crate::ffi_types::IntPatch_PrmPrmIntersection_T3Bits as PrmPrmIntersecti
 
 unsafe impl crate::CppDeletable for PrmPrmIntersection_T3Bits {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_T3Bits_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_T3Bits_destructor(ptr);
+        }
     }
 }
 
@@ -6384,7 +6440,9 @@ pub use crate::ffi_types::IntPatch_RLine as RLine;
 
 unsafe impl crate::CppDeletable for RLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_destructor(ptr);
+        }
     }
 }
 
@@ -7024,13 +7082,15 @@ pub use crate::ffi_types::HandleIntPatchRLine;
 
 unsafe impl crate::CppDeletable for HandleIntPatchRLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntPatchRLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_clone(ptr)) }
     }
 }
 
@@ -7107,7 +7167,9 @@ pub use crate::ffi_types::IntPatch_RstInt as RstInt;
 
 unsafe impl crate::CppDeletable for RstInt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_RstInt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_RstInt_destructor(ptr);
+        }
     }
 }
 
@@ -7148,7 +7210,9 @@ pub use crate::ffi_types::IntPatch_SpecialPoints as SpecialPoints;
 
 unsafe impl crate::CppDeletable for SpecialPoints {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_SpecialPoints_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_SpecialPoints_destructor(ptr);
+        }
     }
 }
 
@@ -7333,7 +7397,9 @@ pub use crate::ffi_types::IntPatch_TheIWLineOfTheIWalking as TheIWLineOfTheIWalk
 
 unsafe impl crate::CppDeletable for TheIWLineOfTheIWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_destructor(ptr);
+        }
     }
 }
 
@@ -7803,15 +7869,19 @@ pub use crate::ffi_types::HandleIntPatchTheIWLineOfTheIWalking;
 
 unsafe impl crate::CppDeletable for HandleIntPatchTheIWLineOfTheIWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntPatchTheIWLineOfTheIWalking {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_clone(ptr),
+            )
+        }
     }
 }
 
@@ -7866,7 +7936,9 @@ pub use crate::ffi_types::IntPatch_TheIWalking as TheIWalking;
 
 unsafe impl crate::CppDeletable for TheIWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWalking_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWalking_destructor(ptr);
+        }
     }
 }
 
@@ -8027,7 +8099,9 @@ pub use crate::ffi_types::IntPatch_ThePathPointOfTheSOnBounds as ThePathPointOfT
 
 unsafe impl crate::CppDeletable for ThePathPointOfTheSOnBounds {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_ThePathPointOfTheSOnBounds_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_ThePathPointOfTheSOnBounds_destructor(ptr);
+        }
     }
 }
 
@@ -8163,7 +8237,9 @@ pub use crate::ffi_types::IntPatch_TheSOnBounds as TheSOnBounds;
 
 unsafe impl crate::CppDeletable for TheSOnBounds {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_TheSOnBounds_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_TheSOnBounds_destructor(ptr);
+        }
     }
 }
 
@@ -8282,7 +8358,9 @@ pub use crate::ffi_types::IntPatch_TheSearchInside as TheSearchInside;
 
 unsafe impl crate::CppDeletable for TheSearchInside {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_TheSearchInside_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_TheSearchInside_destructor(ptr);
+        }
     }
 }
 
@@ -8376,7 +8454,9 @@ pub use crate::ffi_types::IntPatch_TheSegmentOfTheSOnBounds as TheSegmentOfTheSO
 
 unsafe impl crate::CppDeletable for TheSegmentOfTheSOnBounds {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_TheSegmentOfTheSOnBounds_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_TheSegmentOfTheSOnBounds_destructor(ptr);
+        }
     }
 }
 
@@ -8484,7 +8564,9 @@ pub use crate::ffi_types::IntPatch_TheSurfFunction as TheSurfFunction;
 
 unsafe impl crate::CppDeletable for TheSurfFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_TheSurfFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_TheSurfFunction_destructor(ptr);
+        }
     }
 }
 
@@ -8741,7 +8823,9 @@ pub use crate::ffi_types::IntPatch_WLine as WLine;
 
 unsafe impl crate::CppDeletable for WLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_destructor(ptr);
+        }
     }
 }
 
@@ -9452,13 +9536,15 @@ pub use crate::ffi_types::HandleIntPatchWLine;
 
 unsafe impl crate::CppDeletable for HandleIntPatchWLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntPatchWLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_clone(ptr)) }
     }
 }
 
@@ -9534,7 +9620,9 @@ pub use crate::ffi_types::IntPatch_WLineTool as WLineTool;
 
 unsafe impl crate::CppDeletable for WLineTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_WLineTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_WLineTool_destructor(ptr);
+        }
     }
 }
 

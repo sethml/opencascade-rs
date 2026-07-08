@@ -42,7 +42,9 @@ pub use crate::ffi_types::Geom2dAdaptor_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::Geom2dAdaptor_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::Geom2dAdaptor_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -575,13 +577,15 @@ pub use crate::ffi_types::HandleGeom2dAdaptorCurve;
 
 unsafe impl crate::CppDeletable for HandleGeom2dAdaptorCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::HandleGeom2dAdaptorCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleGeom2dAdaptorCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeom2dAdaptorCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dAdaptorCurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dAdaptorCurve_clone(ptr)) }
     }
 }
 

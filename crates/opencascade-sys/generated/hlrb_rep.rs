@@ -113,7 +113,9 @@ pub use crate::ffi_types::HLRBRep_Algo as Algo;
 
 unsafe impl crate::CppDeletable for Algo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_Algo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_destructor(ptr);
+        }
     }
 }
 
@@ -462,13 +464,15 @@ pub use crate::ffi_types::HandleHLRBRepAlgo;
 
 unsafe impl crate::CppDeletable for HandleHLRBRepAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRBRepAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRBRepAlgo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRBRepAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepAlgo_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepAlgo_clone(ptr)) }
     }
 }
 
@@ -535,7 +539,9 @@ pub use crate::ffi_types::HLRBRep_AreaLimit as AreaLimit;
 
 unsafe impl crate::CppDeletable for AreaLimit {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_destructor(ptr);
+        }
     }
 }
 
@@ -838,13 +844,15 @@ pub use crate::ffi_types::HandleHLRBRepAreaLimit;
 
 unsafe impl crate::CppDeletable for HandleHLRBRepAreaLimit {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRBRepAreaLimit_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRBRepAreaLimit_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRBRepAreaLimit {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepAreaLimit_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepAreaLimit_clone(ptr)) }
     }
 }
 
@@ -895,7 +903,9 @@ pub use crate::ffi_types::HLRBRep_BCurveTool as BCurveTool;
 
 unsafe impl crate::CppDeletable for BCurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_destructor(ptr);
+        }
     }
 }
 
@@ -1193,7 +1203,9 @@ pub use crate::ffi_types::HLRBRep_BSurfaceTool as BSurfaceTool;
 
 unsafe impl crate::CppDeletable for BSurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_destructor(ptr);
+        }
     }
 }
 
@@ -1651,7 +1663,9 @@ pub use crate::ffi_types::HLRBRep_BiPnt2D as BiPnt2D;
 
 unsafe impl crate::CppDeletable for BiPnt2D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_destructor(ptr);
+        }
     }
 }
 
@@ -1806,7 +1820,9 @@ pub use crate::ffi_types::HLRBRep_BiPoint as BiPoint;
 
 unsafe impl crate::CppDeletable for BiPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_BiPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BiPoint_destructor(ptr);
+        }
     }
 }
 
@@ -1943,7 +1959,9 @@ pub use crate::ffi_types::HLRBRep_CInter as CInter;
 
 unsafe impl crate::CppDeletable for CInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_CInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_destructor(ptr);
+        }
     }
 }
 
@@ -2309,7 +2327,9 @@ pub use crate::ffi_types::HLRBRep_CLProps as CLProps;
 
 unsafe impl crate::CppDeletable for CLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_CLProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CLProps_destructor(ptr);
+        }
     }
 }
 
@@ -2477,7 +2497,9 @@ pub use crate::ffi_types::HLRBRep_CLPropsATool as CLPropsATool;
 
 unsafe impl crate::CppDeletable for CLPropsATool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_CLPropsATool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CLPropsATool_destructor(ptr);
+        }
     }
 }
 
@@ -2585,7 +2607,9 @@ pub use crate::ffi_types::HLRBRep_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -3037,7 +3061,9 @@ pub use crate::ffi_types::HLRBRep_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_CurveTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_destructor(ptr);
+        }
     }
 }
 
@@ -3341,7 +3367,9 @@ pub use crate::ffi_types::HLRBRep_Data as Data;
 
 unsafe impl crate::CppDeletable for Data {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_Data_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Data_destructor(ptr);
+        }
     }
 }
 
@@ -3869,13 +3897,15 @@ pub use crate::ffi_types::HandleHLRBRepData;
 
 unsafe impl crate::CppDeletable for HandleHLRBRepData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRBRepData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRBRepData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRBRepData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepData_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepData_clone(ptr)) }
     }
 }
 
@@ -3926,7 +3956,9 @@ pub use crate::ffi_types::HLRBRep_EdgeBuilder as EdgeBuilder;
 
 unsafe impl crate::CppDeletable for EdgeBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -4116,7 +4148,9 @@ pub use crate::ffi_types::HLRBRep_EdgeData as EdgeData;
 
 unsafe impl crate::CppDeletable for EdgeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_EdgeData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_destructor(ptr);
+        }
     }
 }
 
@@ -4475,7 +4509,9 @@ pub use crate::ffi_types::HLRBRep_EdgeFaceTool as EdgeFaceTool;
 
 unsafe impl crate::CppDeletable for EdgeFaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_EdgeFaceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeFaceTool_destructor(ptr);
+        }
     }
 }
 
@@ -4526,7 +4562,9 @@ pub use crate::ffi_types::HLRBRep_EdgeIList as EdgeIList;
 
 unsafe impl crate::CppDeletable for EdgeIList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_EdgeIList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeIList_destructor(ptr);
+        }
     }
 }
 
@@ -4576,7 +4614,9 @@ pub use crate::ffi_types::HLRBRep_EdgeInterferenceTool as EdgeInterferenceTool;
 
 unsafe impl crate::CppDeletable for EdgeInterferenceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_destructor(ptr);
+        }
     }
 }
 
@@ -4751,7 +4791,9 @@ pub use crate::ffi_types::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCI
 
 unsafe impl crate::CppDeletable for ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_destructor(ptr);
+        }
     }
 }
 
@@ -4820,7 +4862,9 @@ pub use crate::ffi_types::HLRBRep_FaceData as FaceData;
 
 unsafe impl crate::CppDeletable for FaceData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_FaceData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_destructor(ptr);
+        }
     }
 }
 
@@ -5137,7 +5181,9 @@ pub use crate::ffi_types::HLRBRep_FaceIterator as FaceIterator;
 
 unsafe impl crate::CppDeletable for FaceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_destructor(ptr);
+        }
     }
 }
 
@@ -5290,7 +5336,9 @@ pub use crate::ffi_types::HLRBRep_HLRToShape as HLRToShape;
 
 unsafe impl crate::CppDeletable for HLRToShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_destructor(ptr);
+        }
     }
 }
 
@@ -5596,7 +5644,9 @@ pub use crate::ffi_types::HLRBRep_Hider as Hider;
 
 unsafe impl crate::CppDeletable for Hider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_Hider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Hider_destructor(ptr);
+        }
     }
 }
 
@@ -5642,7 +5692,9 @@ pub use crate::ffi_types::HLRBRep_IntConicCurveOfCInter as IntConicCurveOfCInter
 
 unsafe impl crate::CppDeletable for IntConicCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_destructor(ptr);
+        }
     }
 }
 
@@ -5916,7 +5968,9 @@ pub use crate::ffi_types::HLRBRep_InterCSurf as InterCSurf;
 
 unsafe impl crate::CppDeletable for InterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_destructor(ptr);
+        }
     }
 }
 
@@ -6107,7 +6161,9 @@ pub use crate::ffi_types::HLRBRep_InternalAlgo as InternalAlgo;
 
 unsafe impl crate::CppDeletable for InternalAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -6502,13 +6558,17 @@ pub use crate::ffi_types::HandleHLRBRepInternalAlgo;
 
 unsafe impl crate::CppDeletable for HandleHLRBRepInternalAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRBRepInternalAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRBRepInternalAlgo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRBRepInternalAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepInternalAlgo_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepInternalAlgo_clone(ptr))
+        }
     }
 }
 
@@ -6577,7 +6637,9 @@ pub use crate::ffi_types::HLRBRep_Intersector as Intersector;
 
 unsafe impl crate::CppDeletable for Intersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_Intersector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Intersector_destructor(ptr);
+        }
     }
 }
 
@@ -6740,7 +6802,9 @@ pub use crate::ffi_types::HLRBRep_LineTool as LineTool;
 
 unsafe impl crate::CppDeletable for LineTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_LineTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_destructor(ptr);
+        }
     }
 }
 
@@ -7069,7 +7133,9 @@ pub use crate::ffi_types::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurve
 
 unsafe impl crate::CppDeletable for MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_destructor(ptr);
+        }
     }
 }
 
@@ -7159,9 +7225,11 @@ pub use crate::ffi_types::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter as
 
 unsafe impl crate::CppDeletable for PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -7397,7 +7465,9 @@ pub use crate::ffi_types::HLRBRep_PolyAlgo as PolyAlgo;
 
 unsafe impl crate::CppDeletable for PolyAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -7803,13 +7873,15 @@ pub use crate::ffi_types::HandleHLRBRepPolyAlgo;
 
 unsafe impl crate::CppDeletable for HandleHLRBRepPolyAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRBRepPolyAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRBRepPolyAlgo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRBRepPolyAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepPolyAlgo_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepPolyAlgo_clone(ptr)) }
     }
 }
 
@@ -7887,7 +7959,9 @@ pub use crate::ffi_types::HLRBRep_PolyHLRToShape as PolyHLRToShape;
 
 unsafe impl crate::CppDeletable for PolyHLRToShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_destructor(ptr);
+        }
     }
 }
 
@@ -8147,7 +8221,9 @@ pub use crate::ffi_types::HLRBRep_SLProps as SLProps;
 
 unsafe impl crate::CppDeletable for SLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_SLProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_destructor(ptr);
+        }
     }
 }
 
@@ -8405,7 +8481,9 @@ pub use crate::ffi_types::HLRBRep_SLPropsATool as SLPropsATool;
 
 unsafe impl crate::CppDeletable for SLPropsATool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_SLPropsATool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SLPropsATool_destructor(ptr);
+        }
     }
 }
 
@@ -8515,7 +8593,9 @@ pub use crate::ffi_types::HLRBRep_ShapeBounds as ShapeBounds;
 
 unsafe impl crate::CppDeletable for ShapeBounds {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_destructor(ptr);
+        }
     }
 }
 
@@ -8693,7 +8773,9 @@ pub use crate::ffi_types::HLRBRep_ShapeToHLR as ShapeToHLR;
 
 unsafe impl crate::CppDeletable for ShapeToHLR {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_ShapeToHLR_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_ShapeToHLR_destructor(ptr);
+        }
     }
 }
 
@@ -8734,7 +8816,9 @@ pub use crate::ffi_types::HLRBRep_Surface as Surface;
 
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_Surface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_destructor(ptr);
+        }
     }
 }
 
@@ -9155,7 +9239,9 @@ pub use crate::ffi_types::HLRBRep_SurfaceTool as SurfaceTool;
 
 unsafe impl crate::CppDeletable for SurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_destructor(ptr);
+        }
     }
 }
 
@@ -9559,7 +9645,9 @@ pub use crate::ffi_types::HLRBRep_TheCSFunctionOfInterCSurf as TheCSFunctionOfIn
 
 unsafe impl crate::CppDeletable for TheCSFunctionOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_destructor(ptr);
+        }
     }
 }
 
@@ -9740,7 +9828,9 @@ pub use crate::ffi_types::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter as TheCur
 
 unsafe impl crate::CppDeletable for TheCurveLocatorOfTheProjPCurOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_destructor(ptr);
+        }
     }
 }
 
@@ -9816,7 +9906,9 @@ pub use crate::ffi_types::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCIn
 
 unsafe impl crate::CppDeletable for TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_destructor(ptr);
+        }
     }
 }
 
@@ -9946,7 +10038,9 @@ pub use crate::ffi_types::HLRBRep_TheExactInterCSurf as TheExactInterCSurf;
 
 unsafe impl crate::CppDeletable for TheExactInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_destructor(ptr);
+        }
     }
 }
 
@@ -10114,7 +10208,9 @@ pub use crate::ffi_types::HLRBRep_TheIntConicCurveOfCInter as TheIntConicCurveOf
 
 unsafe impl crate::CppDeletable for TheIntConicCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_destructor(ptr);
+        }
     }
 }
 
@@ -10381,7 +10477,9 @@ pub use crate::ffi_types::HLRBRep_TheIntPCurvePCurveOfCInter as TheIntPCurvePCur
 
 unsafe impl crate::CppDeletable for TheIntPCurvePCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_destructor(ptr);
+        }
     }
 }
 
@@ -10540,7 +10638,9 @@ pub use crate::ffi_types::HLRBRep_TheInterferenceOfInterCSurf as TheInterference
 
 unsafe impl crate::CppDeletable for TheInterferenceOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_destructor(ptr);
+        }
     }
 }
 
@@ -10868,7 +10968,11 @@ pub use crate::ffi_types::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter as Th
 
 unsafe impl crate::CppDeletable for TheIntersectorOfTheIntConicCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -11068,7 +11172,9 @@ pub use crate::ffi_types::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter as TheLoca
 
 unsafe impl crate::CppDeletable for TheLocateExtPCOfTheProjPCurOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_destructor(ptr);
+        }
     }
 }
 
@@ -11209,7 +11315,11 @@ pub use crate::ffi_types::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter as Th
 
 unsafe impl crate::CppDeletable for ThePolygon2dOfTheIntPCurvePCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -11398,7 +11508,9 @@ pub use crate::ffi_types::HLRBRep_ThePolygonOfInterCSurf as ThePolygonOfInterCSu
 
 unsafe impl crate::CppDeletable for ThePolygonOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_destructor(ptr);
+        }
     }
 }
 
@@ -11576,7 +11688,9 @@ pub use crate::ffi_types::HLRBRep_ThePolygonToolOfInterCSurf as ThePolygonToolOf
 
 unsafe impl crate::CppDeletable for ThePolygonToolOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_ThePolygonToolOfInterCSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonToolOfInterCSurf_destructor(ptr);
+        }
     }
 }
 
@@ -11668,7 +11782,9 @@ pub use crate::ffi_types::HLRBRep_ThePolyhedronOfInterCSurf as ThePolyhedronOfIn
 
 unsafe impl crate::CppDeletable for ThePolyhedronOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_destructor(ptr);
+        }
     }
 }
 
@@ -12081,7 +12197,9 @@ pub use crate::ffi_types::HLRBRep_ThePolyhedronToolOfInterCSurf as ThePolyhedron
 
 unsafe impl crate::CppDeletable for ThePolyhedronToolOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_destructor(ptr);
+        }
     }
 }
 
@@ -12227,7 +12345,9 @@ pub use crate::ffi_types::HLRBRep_TheProjPCurOfCInter as TheProjPCurOfCInter;
 
 unsafe impl crate::CppDeletable for TheProjPCurOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheProjPCurOfCInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheProjPCurOfCInter_destructor(ptr);
+        }
     }
 }
 
@@ -12309,7 +12429,9 @@ pub use crate::ffi_types::HLRBRep_TheQuadCurvExactInterCSurf as TheQuadCurvExact
 
 unsafe impl crate::CppDeletable for TheQuadCurvExactInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvExactInterCSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvExactInterCSurf_destructor(ptr);
+        }
     }
 }
 
@@ -12387,9 +12509,11 @@ pub use crate::ffi_types::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf as
 
 unsafe impl crate::CppDeletable for TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -12495,7 +12619,9 @@ pub use crate::ffi_types::HLRBRep_VertexList as VertexList;
 
 unsafe impl crate::CppDeletable for VertexList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_VertexList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_VertexList_destructor(ptr);
+        }
     }
 }
 

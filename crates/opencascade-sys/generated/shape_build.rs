@@ -33,7 +33,9 @@ pub use crate::ffi_types::ShapeBuild_Edge as Edge;
 
 unsafe impl crate::CppDeletable for Edge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeBuild_Edge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeBuild_Edge_destructor(ptr);
+        }
     }
 }
 
@@ -390,7 +392,9 @@ pub use crate::ffi_types::ShapeBuild_ReShape as ReShape;
 
 unsafe impl crate::CppDeletable for ReShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_destructor(ptr);
+        }
     }
 }
 
@@ -766,13 +770,17 @@ pub use crate::ffi_types::HandleShapeBuildReShape;
 
 unsafe impl crate::CppDeletable for HandleShapeBuildReShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeBuildReShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_clone(ptr))
+        }
     }
 }
 
@@ -837,7 +845,9 @@ pub use crate::ffi_types::ShapeBuild_Vertex as Vertex;
 
 unsafe impl crate::CppDeletable for Vertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeBuild_Vertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeBuild_Vertex_destructor(ptr);
+        }
     }
 }
 

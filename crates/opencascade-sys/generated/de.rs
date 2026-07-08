@@ -32,7 +32,9 @@ pub use crate::ffi_types::DE_ConfigurationContext as ConfigurationContext;
 
 unsafe impl crate::CppDeletable for ConfigurationContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::DE_ConfigurationContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::DE_ConfigurationContext_destructor(ptr);
+        }
     }
 }
 
@@ -450,13 +452,17 @@ pub use crate::ffi_types::HandleDEConfigurationContext;
 
 unsafe impl crate::CppDeletable for HandleDEConfigurationContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::HandleDEConfigurationContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::HandleDEConfigurationContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEConfigurationContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationContext_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationContext_clone(ptr))
+        }
     }
 }
 
@@ -533,7 +539,9 @@ pub use crate::ffi_types::DE_ConfigurationNode as ConfigurationNode;
 
 unsafe impl crate::CppDeletable for ConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::DE_ConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::DE_ConfigurationNode_destructor(ptr);
+        }
     }
 }
 
@@ -859,13 +867,15 @@ pub use crate::ffi_types::HandleDEConfigurationNode;
 
 unsafe impl crate::CppDeletable for HandleDEConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::HandleDEConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::HandleDEConfigurationNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEConfigurationNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationNode_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationNode_clone(ptr)) }
     }
 }
 
@@ -1072,7 +1082,9 @@ pub use crate::ffi_types::DE_ConfigurationNode_DE_SectionGlobal as Configuration
 
 unsafe impl crate::CppDeletable for ConfigurationNode_DE_SectionGlobal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::DE_ConfigurationNode_DE_SectionGlobal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::DE_ConfigurationNode_DE_SectionGlobal_destructor(ptr);
+        }
     }
 }
 
@@ -1102,7 +1114,9 @@ pub use crate::ffi_types::DE_Provider as Provider;
 
 unsafe impl crate::CppDeletable for Provider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::DE_Provider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::DE_Provider_destructor(ptr);
+        }
     }
 }
 
@@ -1414,13 +1428,15 @@ pub use crate::ffi_types::HandleDEProvider;
 
 unsafe impl crate::CppDeletable for HandleDEProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::HandleDEProvider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::HandleDEProvider_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEProvider {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDE::HandleDEProvider_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDE::HandleDEProvider_clone(ptr)) }
     }
 }
 
@@ -1632,7 +1648,9 @@ pub use crate::ffi_types::DE_ShapeFixConfigurationNode as ShapeFixConfigurationN
 
 unsafe impl crate::CppDeletable for ShapeFixConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_destructor(ptr);
+        }
     }
 }
 
@@ -1946,13 +1964,19 @@ pub use crate::ffi_types::HandleDEShapeFixConfigurationNode;
 
 unsafe impl crate::CppDeletable for HandleDEShapeFixConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEShapeFixConfigurationNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2045,7 +2069,9 @@ pub use crate::ffi_types::DE_ShapeFixParameters as ShapeFixParameters;
 
 unsafe impl crate::CppDeletable for ShapeFixParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::DE_ShapeFixParameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::DE_ShapeFixParameters_destructor(ptr);
+        }
     }
 }
 
@@ -2091,7 +2117,9 @@ pub use crate::ffi_types::DE_Wrapper as Wrapper;
 
 unsafe impl crate::CppDeletable for Wrapper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::DE_Wrapper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_destructor(ptr);
+        }
     }
 }
 
@@ -2659,13 +2687,15 @@ pub use crate::ffi_types::HandleDEWrapper;
 
 unsafe impl crate::CppDeletable for HandleDEWrapper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::HandleDEWrapper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::HandleDEWrapper_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEWrapper {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDE::HandleDEWrapper_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDE::HandleDEWrapper_clone(ptr)) }
     }
 }
 

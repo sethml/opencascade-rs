@@ -72,13 +72,15 @@ pub use crate::ffi_types::MoniTool_AttrList as AttrList;
 
 unsafe impl crate::CppDeletable for AttrList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_AttrList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_AttrList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for AttrList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::MoniTool_AttrList_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::MoniTool_AttrList_clone(ptr)) }
     }
 }
 
@@ -403,7 +405,9 @@ pub use crate::ffi_types::MoniTool_CaseData as CaseData;
 
 unsafe impl crate::CppDeletable for CaseData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_CaseData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_CaseData_destructor(ptr);
+        }
     }
 }
 
@@ -1127,13 +1131,17 @@ pub use crate::ffi_types::HandleMoniToolCaseData;
 
 unsafe impl crate::CppDeletable for HandleMoniToolCaseData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleMoniToolCaseData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolCaseData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMoniToolCaseData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolCaseData_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolCaseData_clone(ptr))
+        }
     }
 }
 
@@ -1187,7 +1195,9 @@ pub use crate::ffi_types::MoniTool_DataInfo as DataInfo;
 
 unsafe impl crate::CppDeletable for DataInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_DataInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_DataInfo_destructor(ptr);
+        }
     }
 }
 
@@ -1243,7 +1253,9 @@ pub use crate::ffi_types::MoniTool_Element as Element;
 
 unsafe impl crate::CppDeletable for Element {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_Element_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_Element_destructor(ptr);
+        }
     }
 }
 
@@ -1434,13 +1446,15 @@ pub use crate::ffi_types::HandleMoniToolElement;
 
 unsafe impl crate::CppDeletable for HandleMoniToolElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleMoniToolElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolElement_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMoniToolElement {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolElement_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolElement_clone(ptr)) }
     }
 }
 
@@ -1507,7 +1521,9 @@ pub use crate::ffi_types::MoniTool_HSequenceOfElement as HSequenceOfElement;
 
 unsafe impl crate::CppDeletable for HSequenceOfElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_HSequenceOfElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_HSequenceOfElement_destructor(ptr);
+        }
     }
 }
 
@@ -1723,13 +1739,19 @@ pub use crate::ffi_types::HandleMoniToolHSequenceOfElement;
 
 unsafe impl crate::CppDeletable for HandleMoniToolHSequenceOfElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleMoniToolHSequenceOfElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolHSequenceOfElement_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMoniToolHSequenceOfElement {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolHSequenceOfElement_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolHSequenceOfElement_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1783,7 +1805,9 @@ pub use crate::ffi_types::MoniTool_IntVal as IntVal;
 
 unsafe impl crate::CppDeletable for IntVal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_IntVal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_IntVal_destructor(ptr);
+        }
     }
 }
 
@@ -1951,13 +1975,15 @@ pub use crate::ffi_types::HandleMoniToolIntVal;
 
 unsafe impl crate::CppDeletable for HandleMoniToolIntVal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleMoniToolIntVal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolIntVal_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMoniToolIntVal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolIntVal_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolIntVal_clone(ptr)) }
     }
 }
 
@@ -2009,7 +2035,9 @@ pub use crate::ffi_types::MoniTool_RealVal as RealVal;
 
 unsafe impl crate::CppDeletable for RealVal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_RealVal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_RealVal_destructor(ptr);
+        }
     }
 }
 
@@ -2177,13 +2205,15 @@ pub use crate::ffi_types::HandleMoniToolRealVal;
 
 unsafe impl crate::CppDeletable for HandleMoniToolRealVal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleMoniToolRealVal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolRealVal_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMoniToolRealVal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolRealVal_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolRealVal_clone(ptr)) }
     }
 }
 
@@ -2236,7 +2266,9 @@ pub use crate::ffi_types::MoniTool_SignShape as SignShape;
 
 unsafe impl crate::CppDeletable for SignShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_SignShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_SignShape_destructor(ptr);
+        }
     }
 }
 
@@ -2453,13 +2485,17 @@ pub use crate::ffi_types::HandleMoniToolSignShape;
 
 unsafe impl crate::CppDeletable for HandleMoniToolSignShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleMoniToolSignShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolSignShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMoniToolSignShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolSignShape_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolSignShape_clone(ptr))
+        }
     }
 }
 
@@ -2526,7 +2562,9 @@ pub use crate::ffi_types::MoniTool_SignText as SignText;
 
 unsafe impl crate::CppDeletable for SignText {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_SignText_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_SignText_destructor(ptr);
+        }
     }
 }
 
@@ -2703,13 +2741,17 @@ pub use crate::ffi_types::HandleMoniToolSignText;
 
 unsafe impl crate::CppDeletable for HandleMoniToolSignText {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleMoniToolSignText_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolSignText_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMoniToolSignText {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolSignText_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolSignText_clone(ptr))
+        }
     }
 }
 
@@ -3064,13 +3106,15 @@ pub use crate::ffi_types::MoniTool_Stat as Stat;
 
 unsafe impl crate::CppDeletable for Stat {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_Stat_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_Stat_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Stat {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::MoniTool_Stat_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::MoniTool_Stat_clone(ptr)) }
     }
 }
 
@@ -3184,7 +3228,9 @@ pub use crate::ffi_types::MoniTool_Timer as Timer;
 
 unsafe impl crate::CppDeletable for Timer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_Timer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_Timer_destructor(ptr);
+        }
     }
 }
 
@@ -3490,13 +3536,15 @@ pub use crate::ffi_types::HandleMoniToolTimer;
 
 unsafe impl crate::CppDeletable for HandleMoniToolTimer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleMoniToolTimer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolTimer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMoniToolTimer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolTimer_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolTimer_clone(ptr)) }
     }
 }
 
@@ -3553,7 +3601,9 @@ pub use crate::ffi_types::MoniTool_TimerSentry as TimerSentry;
 
 unsafe impl crate::CppDeletable for TimerSentry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_TimerSentry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_TimerSentry_destructor(ptr);
+        }
     }
 }
 
@@ -3616,7 +3666,9 @@ pub use crate::ffi_types::MoniTool_TransientElem as TransientElem;
 
 unsafe impl crate::CppDeletable for TransientElem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_TransientElem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_TransientElem_destructor(ptr);
+        }
     }
 }
 
@@ -3875,13 +3927,17 @@ pub use crate::ffi_types::HandleMoniToolTransientElem;
 
 unsafe impl crate::CppDeletable for HandleMoniToolTransientElem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleMoniToolTransientElem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolTransientElem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMoniToolTransientElem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolTransientElem_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolTransientElem_clone(ptr))
+        }
     }
 }
 
@@ -3957,7 +4013,9 @@ pub use crate::ffi_types::MoniTool_TypedValue as TypedValue;
 
 unsafe impl crate::CppDeletable for TypedValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_TypedValue_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_TypedValue_destructor(ptr);
+        }
     }
 }
 
@@ -4815,13 +4873,17 @@ pub use crate::ffi_types::HandleMoniToolTypedValue;
 
 unsafe impl crate::CppDeletable for HandleMoniToolTypedValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleMoniToolTypedValue_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleMoniToolTypedValue_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMoniToolTypedValue {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolTypedValue_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleMoniToolTypedValue_clone(ptr))
+        }
     }
 }
 

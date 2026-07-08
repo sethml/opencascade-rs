@@ -296,7 +296,9 @@ pub use crate::ffi_types::BRepGProp_Cinert as Cinert;
 
 unsafe impl crate::CppDeletable for Cinert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_destructor(ptr);
+        }
     }
 }
 
@@ -451,7 +453,9 @@ pub use crate::ffi_types::BRepGProp_Domain as Domain;
 
 unsafe impl crate::CppDeletable for Domain {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_Domain_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Domain_destructor(ptr);
+        }
     }
 }
 
@@ -531,7 +535,9 @@ pub use crate::ffi_types::BRepGProp_EdgeTool as EdgeTool;
 
 unsafe impl crate::CppDeletable for EdgeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_EdgeTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_EdgeTool_destructor(ptr);
+        }
     }
 }
 
@@ -637,7 +643,9 @@ pub use crate::ffi_types::BRepGProp_Face as Face;
 
 unsafe impl crate::CppDeletable for Face {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_Face_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_destructor(ptr);
+        }
     }
 }
 
@@ -940,7 +948,9 @@ pub use crate::ffi_types::BRepGProp_Gauss as Gauss;
 
 unsafe impl crate::CppDeletable for Gauss {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_destructor(ptr);
+        }
     }
 }
 
@@ -1178,7 +1188,9 @@ pub use crate::ffi_types::BRepGProp_MeshCinert as MeshCinert;
 
 unsafe impl crate::CppDeletable for MeshCinert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_destructor(ptr);
+        }
     }
 }
 
@@ -1341,7 +1353,9 @@ pub use crate::ffi_types::BRepGProp_MeshProps as MeshProps;
 
 unsafe impl crate::CppDeletable for MeshProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_destructor(ptr);
+        }
     }
 }
 
@@ -1556,7 +1570,9 @@ pub use crate::ffi_types::BRepGProp_Sinert as Sinert;
 
 unsafe impl crate::CppDeletable for Sinert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_destructor(ptr);
+        }
     }
 }
 
@@ -1799,7 +1815,9 @@ pub use crate::ffi_types::BRepGProp_TFunction as TFunction;
 
 unsafe impl crate::CppDeletable for TFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_destructor(ptr);
+        }
     }
 }
 
@@ -1981,7 +1999,9 @@ pub use crate::ffi_types::BRepGProp_UFunction as UFunction;
 
 unsafe impl crate::CppDeletable for UFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_UFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_UFunction_destructor(ptr);
+        }
     }
 }
 
@@ -2098,7 +2118,9 @@ pub use crate::ffi_types::BRepGProp_Vinert as Vinert;
 
 unsafe impl crate::CppDeletable for Vinert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_destructor(ptr);
+        }
     }
 }
 
@@ -2664,7 +2686,9 @@ pub use crate::ffi_types::BRepGProp_VinertGK as VinertGK;
 
 unsafe impl crate::CppDeletable for VinertGK {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_destructor(ptr);
+        }
     }
 }
 

@@ -38,7 +38,9 @@ pub use crate::ffi_types::StlAPI_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTL::StlAPI_Reader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTL::StlAPI_Reader_destructor(ptr);
+        }
     }
 }
 
@@ -80,7 +82,9 @@ pub use crate::ffi_types::StlAPI_Writer as Writer;
 
 unsafe impl crate::CppDeletable for Writer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTL::StlAPI_Writer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTL::StlAPI_Writer_destructor(ptr);
+        }
     }
 }
 

@@ -32,7 +32,9 @@ pub use crate::ffi_types::Adaptor2d_Curve2d as Curve2d;
 
 unsafe impl crate::CppDeletable for Curve2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::Adaptor2d_Curve2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::Adaptor2d_Curve2d_destructor(ptr);
+        }
     }
 }
 
@@ -474,13 +476,15 @@ pub use crate::ffi_types::HandleAdaptor2dCurve2d;
 
 unsafe impl crate::CppDeletable for HandleAdaptor2dCurve2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::HandleAdaptor2dCurve2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleAdaptor2dCurve2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAdaptor2dCurve2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG2d::HandleAdaptor2dCurve2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG2d::HandleAdaptor2dCurve2d_clone(ptr)) }
     }
 }
 
@@ -638,7 +642,9 @@ pub use crate::ffi_types::Adaptor2d_Line2d as Line2d;
 
 unsafe impl crate::CppDeletable for Line2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::Adaptor2d_Line2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::Adaptor2d_Line2d_destructor(ptr);
+        }
     }
 }
 
@@ -1107,13 +1113,15 @@ pub use crate::ffi_types::HandleAdaptor2dLine2d;
 
 unsafe impl crate::CppDeletable for HandleAdaptor2dLine2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::HandleAdaptor2dLine2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleAdaptor2dLine2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAdaptor2dLine2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG2d::HandleAdaptor2dLine2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG2d::HandleAdaptor2dLine2d_clone(ptr)) }
     }
 }
 
@@ -1176,7 +1184,9 @@ pub use crate::ffi_types::Adaptor2d_OffsetCurve as OffsetCurve;
 
 unsafe impl crate::CppDeletable for OffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::Adaptor2d_OffsetCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::Adaptor2d_OffsetCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1747,13 +1757,17 @@ pub use crate::ffi_types::HandleAdaptor2dOffsetCurve;
 
 unsafe impl crate::CppDeletable for HandleAdaptor2dOffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::HandleAdaptor2dOffsetCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleAdaptor2dOffsetCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAdaptor2dOffsetCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG2d::HandleAdaptor2dOffsetCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG2d::HandleAdaptor2dOffsetCurve_clone(ptr))
+        }
     }
 }
 

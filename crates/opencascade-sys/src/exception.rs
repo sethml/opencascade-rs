@@ -42,7 +42,7 @@ pub fn check_void_result(exc: *const std::ffi::c_char) {
 /// The C++ side formats "TypeName: message" and passes it here.
 /// We copy into Rust-allocated memory so `wrapper_threw_exception`
 /// can free it with the Rust allocator.
-#[no_mangle]
+#[unsafe(no_mangle)]
 extern "C" fn occt_alloc_exception(ptr: *const u8, len: usize) -> *const std::ffi::c_char {
     unsafe {
         let layout = std::alloc::Layout::from_size_align_unchecked(len + 1, 1);

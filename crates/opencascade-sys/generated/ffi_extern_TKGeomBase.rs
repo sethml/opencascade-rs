@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== AdvApp2Var_ApproxAFunc2Var ========================
     pub fn AdvApp2Var_ApproxAFunc2Var_destructor(self_: *mut AdvApp2Var_ApproxAFunc2Var);
     /// **Source:** `AdvApp2Var_ApproxAFunc2Var.hxx`:89 - `AdvApp2Var_ApproxAFunc2Var::AdvApp2Var_ApproxAFunc2Var()`

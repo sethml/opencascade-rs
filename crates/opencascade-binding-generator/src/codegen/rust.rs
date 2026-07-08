@@ -349,7 +349,7 @@ pub fn generate_ffi_split(
         writeln!(out).unwrap();
         writeln!(out, "use crate::ffi_types::*;").unwrap();
         writeln!(out).unwrap();
-        writeln!(out, "extern \"C\" {{").unwrap();
+        writeln!(out, "unsafe extern \"C\" {{").unwrap();
 
         // Class methods
         if let Some(bindings) = tk_bindings.get(toolkit.as_str()) {
@@ -403,7 +403,7 @@ pub fn generate_ffi_split(
                 .unwrap_or("misc");
             writeln!(ffi_types, "unsafe impl crate::CppDeletable for {} {{", nt.ffi_name).unwrap();
             writeln!(ffi_types, "    unsafe fn cpp_delete(ptr: *mut Self) {{").unwrap();
-            writeln!(ffi_types, "        crate::ffi_extern_{}::{}_destructor(ptr);", toolkit, nt.ffi_name).unwrap();
+            writeln!(ffi_types, "        unsafe {{ crate::ffi_extern_{}::{}_destructor(ptr); }}", toolkit, nt.ffi_name).unwrap();
             writeln!(ffi_types, "    }}").unwrap();
             writeln!(ffi_types, "}}").unwrap();
         }
@@ -480,7 +480,7 @@ fn generate_handle_declarations(
         .collect();
     if !extra_handles.is_empty() {
         writeln!(out).unwrap();
-        writeln!(out, "extern \"C\" {{").unwrap();
+        writeln!(out, "unsafe extern \"C\" {{").unwrap();
         for class_name in &extra_handles {
             let handle_type_name = type_mapping::handle_type_name(class_name);
             writeln!(out, "    pub fn {}_destructor(ptr: *mut {});", handle_type_name, handle_type_name).unwrap();
@@ -493,12 +493,12 @@ fn generate_handle_declarations(
             let handle_type_name = type_mapping::handle_type_name(class_name);
             writeln!(out, "unsafe impl crate::CppDeletable for {} {{", handle_type_name).unwrap();
             writeln!(out, "    unsafe fn cpp_delete(ptr: *mut Self) {{").unwrap();
-            writeln!(out, "        {}_destructor(ptr);", handle_type_name).unwrap();
+            writeln!(out, "        unsafe {{ {}_destructor(ptr); }}", handle_type_name).unwrap();
             writeln!(out, "    }}").unwrap();
             writeln!(out, "}}").unwrap();
             writeln!(out, "unsafe impl crate::CppCopyable for {} {{", handle_type_name).unwrap();
             writeln!(out, "    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {{").unwrap();
-            writeln!(out, "        crate::check_result({}_clone(ptr))", handle_type_name).unwrap();
+            writeln!(out, "        unsafe {{ crate::check_result({}_clone(ptr)) }}", handle_type_name).unwrap();
             writeln!(out, "    }}").unwrap();
             writeln!(out, "}}").unwrap();
             writeln!(out, "impl {} {{", handle_type_name).unwrap();
@@ -1217,7 +1217,7 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
 
             // CppDeletable for iterator
             out.push_str(&format!(
-                "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        crate::ffi::{}_destructor(ptr);\n    }}\n}}\n\n",
+                "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        unsafe {{ crate::ffi::{}_destructor(ptr); }}\n    }}\n}}\n\n",
                 iter_type, iter_type
             ));
         }
@@ -1225,7 +1225,7 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
 
     // CppDeletable for collection
     out.push_str(&format!(
-        "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        crate::ffi::{}_destructor(ptr);\n    }}\n}}\n\n",
+        "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        unsafe {{ crate::ffi::{}_destructor(ptr); }}\n    }}\n}}\n\n",
         short, coll_name
     ));
 

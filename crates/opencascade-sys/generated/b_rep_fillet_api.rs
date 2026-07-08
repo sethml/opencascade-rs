@@ -16,7 +16,9 @@ pub use crate::ffi_types::BRepFilletAPI_LocalOperation as LocalOperation;
 
 unsafe impl crate::CppDeletable for LocalOperation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BRepFilletAPI_LocalOperation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BRepFilletAPI_LocalOperation_destructor(ptr);
+        }
     }
 }
 
@@ -317,7 +319,9 @@ pub use crate::ffi_types::BRepFilletAPI_MakeChamfer as MakeChamfer;
 
 unsafe impl crate::CppDeletable for MakeChamfer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BRepFilletAPI_MakeChamfer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BRepFilletAPI_MakeChamfer_destructor(ptr);
+        }
     }
 }
 
@@ -972,7 +976,9 @@ pub use crate::ffi_types::BRepFilletAPI_MakeFillet as MakeFillet;
 
 unsafe impl crate::CppDeletable for MakeFillet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BRepFilletAPI_MakeFillet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BRepFilletAPI_MakeFillet_destructor(ptr);
+        }
     }
 }
 
@@ -1919,7 +1925,9 @@ pub use crate::ffi_types::BRepFilletAPI_MakeFillet2d as MakeFillet2d;
 
 unsafe impl crate::CppDeletable for MakeFillet2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BRepFilletAPI_MakeFillet2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BRepFilletAPI_MakeFillet2d_destructor(ptr);
+        }
     }
 }
 

@@ -104,7 +104,9 @@ pub use crate::ffi_types::BRepAlgoAPI_BooleanOperation as BooleanOperation;
 
 unsafe impl crate::CppDeletable for BooleanOperation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BRepAlgoAPI_BooleanOperation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BRepAlgoAPI_BooleanOperation_destructor(ptr);
+        }
     }
 }
 
@@ -526,7 +528,9 @@ pub use crate::ffi_types::BRepAlgoAPI_BuilderAlgo as BuilderAlgo;
 
 unsafe impl crate::CppDeletable for BuilderAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BRepAlgoAPI_BuilderAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BRepAlgoAPI_BuilderAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -952,7 +956,9 @@ pub use crate::ffi_types::BRepAlgoAPI_Check as Check;
 
 unsafe impl crate::CppDeletable for Check {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BRepAlgoAPI_Check_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BRepAlgoAPI_Check_destructor(ptr);
+        }
     }
 }
 
@@ -1303,7 +1309,9 @@ pub use crate::ffi_types::BRepAlgoAPI_Common as Common;
 
 unsafe impl crate::CppDeletable for Common {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BRepAlgoAPI_Common_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BRepAlgoAPI_Common_destructor(ptr);
+        }
     }
 }
 
@@ -1728,7 +1736,9 @@ pub use crate::ffi_types::BRepAlgoAPI_Cut as Cut;
 
 unsafe impl crate::CppDeletable for Cut {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BRepAlgoAPI_Cut_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BRepAlgoAPI_Cut_destructor(ptr);
+        }
     }
 }
 
@@ -2217,7 +2227,9 @@ pub use crate::ffi_types::BRepAlgoAPI_Defeaturing as Defeaturing;
 
 unsafe impl crate::CppDeletable for Defeaturing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BRepAlgoAPI_Defeaturing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BRepAlgoAPI_Defeaturing_destructor(ptr);
+        }
     }
 }
 
@@ -2507,7 +2519,9 @@ pub use crate::ffi_types::BRepAlgoAPI_Fuse as Fuse;
 
 unsafe impl crate::CppDeletable for Fuse {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BRepAlgoAPI_Fuse_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BRepAlgoAPI_Fuse_destructor(ptr);
+        }
     }
 }
 
@@ -2933,7 +2947,9 @@ pub use crate::ffi_types::BRepAlgoAPI_Section as Section;
 
 unsafe impl crate::CppDeletable for Section {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BRepAlgoAPI_Section_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BRepAlgoAPI_Section_destructor(ptr);
+        }
     }
 }
 
@@ -3715,7 +3731,9 @@ pub use crate::ffi_types::BRepAlgoAPI_Splitter as Splitter;
 
 unsafe impl crate::CppDeletable for Splitter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BRepAlgoAPI_Splitter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BRepAlgoAPI_Splitter_destructor(ptr);
+        }
     }
 }
 

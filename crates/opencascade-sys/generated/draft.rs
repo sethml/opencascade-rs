@@ -60,7 +60,9 @@ pub use crate::ffi_types::Draft_EdgeInfo as EdgeInfo;
 
 unsafe impl crate::CppDeletable for EdgeInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::Draft_EdgeInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::Draft_EdgeInfo_destructor(ptr);
+        }
     }
 }
 
@@ -230,7 +232,9 @@ pub use crate::ffi_types::Draft_FaceInfo as FaceInfo;
 
 unsafe impl crate::CppDeletable for FaceInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::Draft_FaceInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::Draft_FaceInfo_destructor(ptr);
+        }
     }
 }
 
@@ -353,7 +357,9 @@ pub use crate::ffi_types::Draft_Modification as Modification;
 
 unsafe impl crate::CppDeletable for Modification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::Draft_Modification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::Draft_Modification_destructor(ptr);
+        }
     }
 }
 
@@ -864,13 +870,17 @@ pub use crate::ffi_types::HandleDraftModification;
 
 unsafe impl crate::CppDeletable for HandleDraftModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::HandleDraftModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::HandleDraftModification_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDraftModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKOffset::HandleDraftModification_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKOffset::HandleDraftModification_clone(ptr))
+        }
     }
 }
 
@@ -934,7 +944,9 @@ pub use crate::ffi_types::Draft_VertexInfo as VertexInfo;
 
 unsafe impl crate::CppDeletable for VertexInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::Draft_VertexInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::Draft_VertexInfo_destructor(ptr);
+        }
     }
 }
 

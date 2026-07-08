@@ -75,7 +75,9 @@ pub use crate::ffi_types::VrmlAPI_CafReader as CafReader;
 
 unsafe impl crate::CppDeletable for CafReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_destructor(ptr);
+        }
     }
 }
 
@@ -517,13 +519,17 @@ pub use crate::ffi_types::HandleVrmlAPICafReader;
 
 unsafe impl crate::CppDeletable for HandleVrmlAPICafReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlAPICafReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_clone(ptr))
+        }
     }
 }
 
@@ -588,7 +594,9 @@ pub use crate::ffi_types::VrmlAPI_Writer as Writer;
 
 unsafe impl crate::CppDeletable for Writer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_destructor(ptr);
+        }
     }
 }
 

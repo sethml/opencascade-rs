@@ -33,7 +33,9 @@ pub use crate::ffi_types::TopTrans_CurveTransition as CurveTransition;
 
 unsafe impl crate::CppDeletable for CurveTransition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::TopTrans_CurveTransition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::TopTrans_CurveTransition_destructor(ptr);
+        }
     }
 }
 
@@ -153,7 +155,9 @@ pub use crate::ffi_types::TopTrans_SurfaceTransition as SurfaceTransition;
 
 unsafe impl crate::CppDeletable for SurfaceTransition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_destructor(ptr);
+        }
     }
 }
 

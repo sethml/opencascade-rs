@@ -14252,7 +14252,7 @@ pub struct HandlemathSingularMatrix {
     _opaque: [u8; 0],
 }
 
-extern "C" {
+unsafe extern "C" {
     pub fn HandleBVHBuilderdouble3_destructor(ptr: *mut HandleBVHBuilderdouble3);
     pub fn HandleBVHBuilderdouble3_clone(
         ptr: *const HandleBVHBuilderdouble3,
@@ -14326,12 +14326,14 @@ extern "C" {
 
 unsafe impl crate::CppDeletable for HandleBVHBuilderdouble3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        HandleBVHBuilderdouble3_destructor(ptr);
+        unsafe {
+            HandleBVHBuilderdouble3_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppCopyable for HandleBVHBuilderdouble3 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(HandleBVHBuilderdouble3_clone(ptr))
+        unsafe { crate::check_result(HandleBVHBuilderdouble3_clone(ptr)) }
     }
 }
 impl HandleBVHBuilderdouble3 {
@@ -14342,12 +14344,14 @@ impl HandleBVHBuilderdouble3 {
 }
 unsafe impl crate::CppDeletable for HandleBVHTreedouble3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        HandleBVHTreedouble3_destructor(ptr);
+        unsafe {
+            HandleBVHTreedouble3_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppCopyable for HandleBVHTreedouble3 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(HandleBVHTreedouble3_clone(ptr))
+        unsafe { crate::check_result(HandleBVHTreedouble3_clone(ptr)) }
     }
 }
 impl HandleBVHTreedouble3 {
@@ -14358,12 +14362,18 @@ impl HandleBVHTreedouble3 {
 }
 unsafe impl crate::CppDeletable for HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_destructor(ptr);
+        unsafe {
+            HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppCopyable for HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_clone(ptr))
+        unsafe {
+            crate::check_result(HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex_clone(
+                ptr,
+            ))
+        }
     }
 }
 impl HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
@@ -14380,18 +14390,18 @@ unsafe impl crate::CppDeletable
     for HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner_destructor(ptr);
+        unsafe {
+            HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppCopyable
     for HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner
 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner_clone(ptr))
+        }
     }
 }
 impl HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner {
@@ -14404,12 +14414,14 @@ impl HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntit
 }
 unsafe impl crate::CppDeletable for HandleNCollectionSharedNCollectionListgpPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        HandleNCollectionSharedNCollectionListgpPnt2d_destructor(ptr);
+        unsafe {
+            HandleNCollectionSharedNCollectionListgpPnt2d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppCopyable for HandleNCollectionSharedNCollectionListgpPnt2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(HandleNCollectionSharedNCollectionListgpPnt2d_clone(ptr))
+        unsafe { crate::check_result(HandleNCollectionSharedNCollectionListgpPnt2d_clone(ptr)) }
     }
 }
 impl HandleNCollectionSharedNCollectionListgpPnt2d {
@@ -14420,12 +14432,14 @@ impl HandleNCollectionSharedNCollectionListgpPnt2d {
 }
 unsafe impl crate::CppDeletable for HandleNCollectionSharedTColStdPackedMapOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        HandleNCollectionSharedTColStdPackedMapOfInteger_destructor(ptr);
+        unsafe {
+            HandleNCollectionSharedTColStdPackedMapOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppCopyable for HandleNCollectionSharedTColStdPackedMapOfInteger {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(HandleNCollectionSharedTColStdPackedMapOfInteger_clone(ptr))
+        unsafe { crate::check_result(HandleNCollectionSharedTColStdPackedMapOfInteger_clone(ptr)) }
     }
 }
 impl HandleNCollectionSharedTColStdPackedMapOfInteger {
@@ -14436,12 +14450,14 @@ impl HandleNCollectionSharedTColStdPackedMapOfInteger {
 }
 unsafe impl crate::CppDeletable for HandleShapePersistentGeom2dCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        HandleShapePersistentGeom2dCurve_destructor(ptr);
+        unsafe {
+            HandleShapePersistentGeom2dCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppCopyable for HandleShapePersistentGeom2dCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(HandleShapePersistentGeom2dCurve_clone(ptr))
+        unsafe { crate::check_result(HandleShapePersistentGeom2dCurve_clone(ptr)) }
     }
 }
 impl HandleShapePersistentGeom2dCurve {
@@ -14452,12 +14468,14 @@ impl HandleShapePersistentGeom2dCurve {
 }
 unsafe impl crate::CppDeletable for HandleShapePersistentGeomCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        HandleShapePersistentGeomCurve_destructor(ptr);
+        unsafe {
+            HandleShapePersistentGeomCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppCopyable for HandleShapePersistentGeomCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(HandleShapePersistentGeomCurve_clone(ptr))
+        unsafe { crate::check_result(HandleShapePersistentGeomCurve_clone(ptr)) }
     }
 }
 impl HandleShapePersistentGeomCurve {
@@ -14468,12 +14486,14 @@ impl HandleShapePersistentGeomCurve {
 }
 unsafe impl crate::CppDeletable for HandleShapePersistentGeomSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        HandleShapePersistentGeomSurface_destructor(ptr);
+        unsafe {
+            HandleShapePersistentGeomSurface_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppCopyable for HandleShapePersistentGeomSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(HandleShapePersistentGeomSurface_clone(ptr))
+        unsafe { crate::check_result(HandleShapePersistentGeomSurface_clone(ptr)) }
     }
 }
 impl HandleShapePersistentGeomSurface {
@@ -39070,3426 +39090,4812 @@ pub struct SequenceOfShapeIterator {
 // CppDeletable impls for nested and typedef types
 unsafe impl crate::CppDeletable for AIS_DataMapIteratorOfDataMapOfIOStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_DataMapIteratorOfDataMapOfIOStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_DataMapIteratorOfDataMapOfIOStatus_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AIS_DataMapOfShapeDrawer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_DataMapOfShapeDrawer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_DataMapOfShapeDrawer_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AIS_ListOfInteractive {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ListOfInteractive_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ListOfInteractive_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AIS_Manipulator_ManipulatorSkin {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Manipulator_ManipulatorSkin_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Manipulator_ManipulatorSkin_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AIS_MouseGestureMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_MouseGestureMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_MouseGestureMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AIS_MouseSelectionSchemeMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_MouseSelectionSchemeMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_MouseSelectionSchemeMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AIS_NArray1OfEntityOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_NArray1OfEntityOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_NArray1OfEntityOwner_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AIS_NListOfEntityOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_NListOfEntityOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_NListOfEntityOwner_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AdvApp2Var_SequenceOfNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_SequenceOfNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SequenceOfNode_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AdvApp2Var_SequenceOfPatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_SequenceOfPatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SequenceOfPatch_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AdvApp2Var_SequenceOfStrip {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_SequenceOfStrip_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SequenceOfStrip_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AppDef_Array1OfMultiPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_Array1OfMultiPointConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_Array1OfMultiPointConstraint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AppParCurves_Array1OfConstraintCouple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_Array1OfConstraintCouple_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_Array1OfConstraintCouple_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AppParCurves_Array1OfMultiBSpCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_Array1OfMultiBSpCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_Array1OfMultiBSpCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AppParCurves_Array1OfMultiCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_Array1OfMultiCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_Array1OfMultiCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AppParCurves_Array1OfMultiPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_Array1OfMultiPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_Array1OfMultiPoint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for AppParCurves_SequenceOfMultiCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_SequenceOfMultiCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_SequenceOfMultiCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Approx_Array1OfAdHSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_Array1OfAdHSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_Array1OfAdHSurface_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Approx_Array1OfGTrsf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_Array1OfGTrsf2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_Array1OfGTrsf2d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Approx_Array1OfGTrsf2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_Array1OfGTrsf2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_Array1OfGTrsf2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Aspect_FrustumLRBT_Standard_Real {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_FrustumLRBT_Standard_Real_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_FrustumLRBT_Standard_Real_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Aspect_FrustumLRBT_double {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_FrustumLRBT_double_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_FrustumLRBT_double_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Aspect_SequenceOfColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_SequenceOfColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_SequenceOfColor_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Aspect_TouchMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_TouchMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_TouchMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Aspect_TrackedDevicePoseArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_TrackedDevicePoseArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_TrackedDevicePoseArray_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Aspect_XRActionMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_XRActionMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_XRActionMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Aspect_XRSession_InfoString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_XRSession_InfoString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_XRSession_InfoString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Aspect_XRSession_TrackingUniverseOrigin {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_XRSession_TrackingUniverseOrigin_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_XRSession_TrackingUniverseOrigin_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPAlgo_ListOfCheckResult {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPAlgo_ListOfCheckResult_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPAlgo_ListOfCheckResult_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_IndexedDataMapOfPaveBlockListOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_IndexedDataMapOfPaveBlockListOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_IndexedDataMapOfPaveBlockListOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_IndexedMapOfPaveBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_IndexedMapOfPaveBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_IndexedMapOfPaveBlock_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_ListOfPave {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_ListOfPave_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_ListOfPave_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_ListOfPaveBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_ListOfPaveBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_ListOfPaveBlock_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_MapOfPair {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_MapOfPair_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_MapOfPair_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_MapOfPaveBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_MapOfPaveBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_MapOfPaveBlock_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfFaceInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfFaceInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfFaceInfo_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfInterfEE {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfInterfEE_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfInterfEE_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfInterfEF {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfInterfEF_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfInterfEF_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfInterfEZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfInterfEZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfInterfEZ_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfInterfFF {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfInterfFF_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfInterfFF_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfInterfFZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfInterfFZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfInterfFZ_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfInterfVE {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfInterfVE_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfInterfVE_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfInterfVF {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfInterfVF_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfInterfVF_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfInterfVV {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfInterfVV_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfInterfVV_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfInterfVZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfInterfVZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfInterfVZ_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfInterfZZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfInterfZZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfInterfZZ_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfListOfPaveBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfListOfPaveBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfListOfPaveBlock_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPDS_VectorOfPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_VectorOfPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_VectorOfPoint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPTools_ListOfConnexityBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPTools_ListOfConnexityBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPTools_ListOfConnexityBlock_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BOPTools_ListOfCoupleOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPTools_ListOfCoupleOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPTools_ListOfCoupleOfShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepAdaptor_Array1OfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepAdaptor_Array1OfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepAdaptor_Array1OfCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepCheck_ListOfStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepCheck_ListOfStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepCheck_ListOfStatus_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepClass3d_BndBoxTree {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass3d_BndBoxTree_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass3d_BndBoxTree_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepExtrema_ElementFilter_FilterResult {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ElementFilter_FilterResult_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ElementFilter_FilterResult_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepExtrema_MapOfIntegerPackedMapOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_MapOfIntegerPackedMapOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_MapOfIntegerPackedMapOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepExtrema_ProximityDistTool_BVH_PrjState {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_BVH_PrjState_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_BVH_PrjState_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepExtrema_ProximityDistTool_ProxPnt_Status {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_ProxPnt_Status_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_ProxPnt_Status_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepExtrema_SeqOfSolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_SeqOfSolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_SeqOfSolution_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepExtrema_ShapeList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ShapeList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ShapeList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepFill_DataMapOfShapeHArray2OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepFill_DataMapOfShapeHArray2OfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepFill_DataMapOfShapeHArray2OfShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepGProp_Gauss_BRepGProp_GaussType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_BRepGProp_GaussType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_BRepGProp_GaussType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepGProp_MeshProps_BRepGProp_MeshObjType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_BRepGProp_MeshObjType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_BRepGProp_MeshObjType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepMesh_GeomTool_IntFlag {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_GeomTool_IntFlag_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_GeomTool_IntFlag_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepOffset_DataMapOfShapeOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_DataMapOfShapeOffset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_DataMapOfShapeOffset_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepOffset_ListOfInterval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_ListOfInterval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_ListOfInterval_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRepTopAdaptor_MapOfShapeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_MapOfShapeTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_MapOfShapeTool_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRep_ListOfCurveRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_ListOfCurveRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_ListOfCurveRepresentation_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BRep_ListOfPointRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRep_ListOfPointRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRep_ListOfPointRepresentation_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BVH_Array3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::BVH_Array3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::BVH_Array3d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BVH_Box_Standard_Real_2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::BVH_Box_Standard_Real_2_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::BVH_Box_Standard_Real_2_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BVH_Builder_double_3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::BVH_Builder_double_3_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::BVH_Builder_double_3_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BVH_Mat4d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::BVH_Mat4d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::BVH_Mat4d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BVH_Tree_double_3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::BVH_Tree_double_3_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::BVH_Tree_double_3_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BVH_Vec2i {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::BVH_Vec2i_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::BVH_Vec2i_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BVH_Vec3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::BVH_Vec3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::BVH_Vec3d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for BVH_Vec4f {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::BVH_Vec4f_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::BVH_Vec4f_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Bnd_Array1OfBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_Array1OfBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_Array1OfBox_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Bnd_Array1OfBox2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_Array1OfBox2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_Array1OfBox2d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Bnd_Array1OfSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_Array1OfSphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_Array1OfSphere_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for CDM_MetaDataLookUpTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::CDM_MetaDataLookUpTable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::CDM_MetaDataLookUpTable_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ChFiDS_ListOfHElSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_ListOfHElSpine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_ListOfHElSpine_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ChFiDS_ListOfStripe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_ListOfStripe_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_ListOfStripe_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ChFiDS_SecArray1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_SecArray1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SecArray1_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ChFiDS_SequenceOfSurfData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_SequenceOfSurfData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SequenceOfSurfData_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Contap_TheSequenceOfPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_TheSequenceOfPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_TheSequenceOfPoint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for DESTEP_Parameters_ReadMode_ProductContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::DESTEP_Parameters_ReadMode_ProductContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::DESTEP_Parameters_ReadMode_ProductContext_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for DE_ConfigurationFormatMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::DE_ConfigurationFormatMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::DE_ConfigurationFormatMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for DE_ResourceMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::DE_ResourceMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::DE_ResourceMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for DE_ShapeFixParameters_FixMode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDE::DE_ShapeFixParameters_FixMode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDE::DE_ShapeFixParameters_FixMode_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ExprIntrp_SequenceOfNamedExpression {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::ExprIntrp_SequenceOfNamedExpression_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_SequenceOfNamedExpression_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ExprIntrp_SequenceOfNamedFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::ExprIntrp_SequenceOfNamedFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_SequenceOfNamedFunction_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Expr_Array1OfGeneralExpression {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::Expr_Array1OfGeneralExpression_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::Expr_Array1OfGeneralExpression_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Expr_Array1OfNamedUnknown {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::Expr_Array1OfNamedUnknown_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::Expr_Array1OfNamedUnknown_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Expr_SequenceOfGeneralExpression {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::Expr_SequenceOfGeneralExpression_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::Expr_SequenceOfGeneralExpression_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Extrema_Array1OfPOnCurv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_Array1OfPOnCurv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_Array1OfPOnCurv_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Extrema_Array1OfPOnCurv2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_Array1OfPOnCurv2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_Array1OfPOnCurv2d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Extrema_Array1OfPOnSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_Array1OfPOnSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_Array1OfPOnSurf_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Extrema_Array2OfPOnCurv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_Array2OfPOnCurv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_Array2OfPOnCurv_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Extrema_Array2OfPOnCurv2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_Array2OfPOnCurv2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_Array2OfPOnCurv2d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Extrema_Array2OfPOnSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_Array2OfPOnSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_Array2OfPOnSurf_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Extrema_SequenceOfPOnCurv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_SequenceOfPOnCurv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_SequenceOfPOnCurv_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Extrema_SequenceOfPOnSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_SequenceOfPOnSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_SequenceOfPOnSurf_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for FEmTool_AssemblyTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::FEmTool_AssemblyTable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_AssemblyTable_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Font_NListOfSystemFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Font_NListOfSystemFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Font_NListOfSystemFont_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Font_TextFormatter_IterationFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Font_TextFormatter_IterationFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Font_TextFormatter_IterationFilter_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomFill_Array1OfLocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Array1OfLocationLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Array1OfLocationLaw_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomFill_Array1OfSectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_Array1OfSectionLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Array1OfSectionLaw_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomFill_SequenceOfAx2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_SequenceOfAx2_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SequenceOfAx2_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomFill_SequenceOfAx2_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_SequenceOfAx2_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SequenceOfAx2_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomFill_SequenceOfTrsf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomFill_SequenceOfTrsf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SequenceOfTrsf_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomInt_VectorOfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_VectorOfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_VectorOfReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomPlate_Array1OfHCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_Array1OfHCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Array1OfHCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomPlate_Array1OfSequenceOfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_Array1OfSequenceOfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Array1OfSequenceOfReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomPlate_Array1OfSequenceOfReal_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_Array1OfSequenceOfReal_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Array1OfSequenceOfReal_value_type_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomPlate_SequenceOfAij {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_SequenceOfAij_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_SequenceOfAij_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomPlate_SequenceOfCurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_SequenceOfCurveConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_SequenceOfCurveConstraint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for GeomPlate_SequenceOfPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_SequenceOfPointConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_SequenceOfPointConstraint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Geom_SequenceOfBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::Geom_SequenceOfBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::Geom_SequenceOfBSplineSurface_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Array1OfAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Array1OfAttribute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Array1OfAttribute_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_BndBox3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_BndBox3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_BndBox3d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_BndBox4f {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_BndBox4f_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_BndBox4f_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Camera_FocusType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Camera_FocusType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Camera_FocusType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Camera_IODType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Camera_IODType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Camera_IODType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Camera_Projection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Camera_Projection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Camera_Projection_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_GraduatedTrihedron_MinMaxValuesCallback {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_GraduatedTrihedron_MinMaxValuesCallback_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_GraduatedTrihedron_MinMaxValuesCallback_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_GraphicDriverFactoryList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_GraphicDriverFactoryList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_GraphicDriverFactoryList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_IndexedMapOfStructure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_IndexedMapOfStructure_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_IndexedMapOfStructure_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_IndexedMapOfView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_IndexedMapOfView_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_IndexedMapOfView_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_LightSet_IterationFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_LightSet_IterationFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_LightSet_IterationFilter_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_MapOfAspectsToAspects {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_MapOfAspectsToAspects_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_MapOfAspectsToAspects_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_MapOfStructure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_MapOfStructure_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_MapOfStructure_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Mat4 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Mat4_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Mat4_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Mat4d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Mat4d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Mat4d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_MediaTextureSet_CallbackOnUpdate_t {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_MediaTextureSet_CallbackOnUpdate_t_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_MediaTextureSet_CallbackOnUpdate_t_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_RenderingParams_FrustumCulling {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_RenderingParams_FrustumCulling_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_RenderingParams_FrustumCulling_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_RenderingParams_PerfCounters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_RenderingParams_PerfCounters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_RenderingParams_PerfCounters_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_SequenceOfGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_SequenceOfGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_SequenceOfGroup_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_ShaderAttributeList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_ShaderAttributeList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_ShaderAttributeList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_ShaderObject_ShaderVariableList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_ShaderObject_ShaderVariableList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_ShaderObject_ShaderVariableList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_ShaderObjectList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_ShaderObjectList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_ShaderObjectList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_ShaderVariableList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_ShaderVariableList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_ShaderVariableList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Vec2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Vec2_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Vec2_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Vec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Vec2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Vec2d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Vec2i {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Vec2i_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Vec2i_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Vec3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Vec3_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Vec3_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Vec3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Vec3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Vec3d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Vec3i {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Vec3i_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Vec3i_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Vec4 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Vec4_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Vec4_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Vec4d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Vec4d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Vec4d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Vec4i {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Vec4i_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Vec4i_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Graphic3d_Vec4ub {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Graphic3d_Vec4ub_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Graphic3d_Vec4ub_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for HLRAlgo_Array1OfPHDat {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_Array1OfPHDat_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_Array1OfPHDat_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for HLRAlgo_Array1OfPINod {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_Array1OfPINod_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_Array1OfPINod_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for HLRAlgo_Array1OfPISeg {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_Array1OfPISeg_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_Array1OfPISeg_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for HLRAlgo_Array1OfTData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_Array1OfTData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_Array1OfTData_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for HLRAlgo_InterferenceList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_InterferenceList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_InterferenceList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for HLRAlgo_ListIteratorOfInterferenceList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_ListIteratorOfInterferenceList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_ListIteratorOfInterferenceList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for HLRAlgo_ListOfBPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_ListOfBPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_ListOfBPoint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for HLRBRep_Array1OfEData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_Array1OfEData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Array1OfEData_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for HLRBRep_Array1OfFData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_Array1OfFData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Array1OfFData_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for HLRBRep_SeqOfShapeBounds {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRBRep_SeqOfShapeBounds_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SeqOfShapeBounds_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IFSelect_ActFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFSelect_ActFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFSelect_ActFunc_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IFSelect_TSeqOfSelection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFSelect_TSeqOfSelection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFSelect_TSeqOfSelection_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESAppli_Array1OfFiniteElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESAppli_Array1OfFiniteElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESAppli_Array1OfFiniteElement_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESAppli_Array1OfFlow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESAppli_Array1OfFlow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESAppli_Array1OfFlow_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESAppli_Array1OfNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESAppli_Array1OfNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESAppli_Array1OfNode_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESBasic_Array1OfLineFontEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESBasic_Array1OfLineFontEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESBasic_Array1OfLineFontEntity_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESBasic_Array2OfHArray1OfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESBasic_Array2OfHArray1OfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESBasic_Array2OfHArray1OfReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESData_Array1OfIGESEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESData_Array1OfIGESEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESData_Array1OfIGESEntity_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESDefs_Array1OfTabularData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDefs_Array1OfTabularData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDefs_Array1OfTabularData_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESDimen_Array1OfGeneralNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_Array1OfGeneralNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_Array1OfGeneralNote_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESDimen_Array1OfLeaderArrow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_Array1OfLeaderArrow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_Array1OfLeaderArrow_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESDraw_Array1OfConnectPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDraw_Array1OfConnectPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDraw_Array1OfConnectPoint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESDraw_Array1OfViewKindEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDraw_Array1OfViewKindEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDraw_Array1OfViewKindEntity_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESGeom_Array1OfBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_Array1OfBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_Array1OfBoundary_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESGeom_Array1OfCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_Array1OfCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_Array1OfCurveOnSurface_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESGeom_Array1OfTransformationMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_Array1OfTransformationMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_Array1OfTransformationMatrix_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESGraph_Array1OfColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_Array1OfColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_Array1OfColor_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESGraph_Array1OfTextDisplayTemplate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_Array1OfTextDisplayTemplate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_Array1OfTextDisplayTemplate_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESGraph_Array1OfTextFontDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_Array1OfTextFontDef_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_Array1OfTextFontDef_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESSolid_Array1OfFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSolid_Array1OfFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSolid_Array1OfFace_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESSolid_Array1OfLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSolid_Array1OfLoop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSolid_Array1OfLoop_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESSolid_Array1OfShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSolid_Array1OfShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSolid_Array1OfShell_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IGESSolid_Array1OfVertexList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESSolid_Array1OfVertexList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESSolid_Array1OfVertexList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IMeshData_Array1OfVertexOfDelaun {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::IMeshData_Array1OfVertexOfDelaun_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::IMeshData_Array1OfVertexOfDelaun_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IMeshData_IMapOfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::IMeshData_IMapOfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::IMeshData_IMapOfReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IMeshData_ListOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::IMeshData_ListOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::IMeshData_ListOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IMeshData_MapOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::IMeshData_MapOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::IMeshData_MapOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IMeshData_MapOfIntegerInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::IMeshData_MapOfIntegerInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::IMeshData_MapOfIntegerInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IMeshData_VectorOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::IMeshData_VectorOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::IMeshData_VectorOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntPatch_ImpImpIntersection_IntStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_ImpImpIntersection_IntStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_ImpImpIntersection_IntStatus_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntPatch_SequenceOfLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_SequenceOfLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_SequenceOfLine_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntPatch_SequenceOfPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_SequenceOfPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_SequenceOfPoint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntPatch_WLine_IntPatch_WLType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_IntPatch_WLType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_IntPatch_WLType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntPolyh_ArrayOfEdges {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfEdges_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfEdges_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntPolyh_ArrayOfPointNormal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfPointNormal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfPointNormal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntPolyh_ArrayOfPoints {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfPoints_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfPoints_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntPolyh_ArrayOfSectionLines {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfSectionLines_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfSectionLines_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntPolyh_ArrayOfTangentZones {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfTangentZones_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfTangentZones_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntPolyh_ArrayOfTriangles {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfTriangles_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_ArrayOfTriangles_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntPolyh_ListOfCouples {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_ListOfCouples_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_ListOfCouples_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntRes2d_SequenceOfIntersectionPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntRes2d_SequenceOfIntersectionPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_SequenceOfIntersectionPoint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntSurf_ListOfPntOn2S {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_ListOfPntOn2S_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_ListOfPntOn2S_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntSurf_SequenceOfInteriorPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_SequenceOfInteriorPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_SequenceOfInteriorPoint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntSurf_SequenceOfPathPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_SequenceOfPathPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_SequenceOfPathPoint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntTools_ListOfCurveRangeSample {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_ListOfCurveRangeSample_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_ListOfCurveRangeSample_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntTools_ListOfSurfaceRangeSample {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_ListOfSurfaceRangeSample_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_ListOfSurfaceRangeSample_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntTools_SequenceOfCommonPrts {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_SequenceOfCommonPrts_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_SequenceOfCommonPrts_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntTools_SequenceOfCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_SequenceOfCurves_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_SequenceOfCurves_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntTools_SequenceOfPntOn2Faces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_SequenceOfPntOn2Faces_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_SequenceOfPntOn2Faces_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntTools_SequenceOfRanges {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_SequenceOfRanges_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_SequenceOfRanges_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for IntTools_SequenceOfRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::IntTools_SequenceOfRoots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::IntTools_SequenceOfRoots_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Interface_Array1OfHAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Interface_Array1OfHAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Interface_Array1OfHAsciiString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Interface_IndexedMapOfAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Interface_IndexedMapOfAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Interface_IndexedMapOfAsciiString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Interface_SequenceOfCheck {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Interface_SequenceOfCheck_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Interface_SequenceOfCheck_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Intf_Array1OfLin {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Intf_Array1OfLin_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_Array1OfLin_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for LDOMBasicString_StringType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::LDOMBasicString_StringType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::LDOMBasicString_StringType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for LDOM_Node_NodeType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_Node_NodeType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Node_NodeType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for LDOM_OSStream_BOMType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_OSStream_BOMType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_OSStream_BOMType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for LDOM_XmlReader_RecordType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::LDOM_XmlReader_RecordType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::LDOM_XmlReader_RecordType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Law_Laws {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Law_Laws_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Law_Laws_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for LocOpe_SequenceOfCirc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_SequenceOfCirc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_SequenceOfCirc_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for LocOpe_SequenceOfLin {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_SequenceOfLin_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_SequenceOfLin_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MAT2d_SequenceOfConnexion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT2d_SequenceOfConnexion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_SequenceOfConnexion_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MAT2d_SequenceOfSequenceOfGeometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT2d_SequenceOfSequenceOfGeometry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_SequenceOfSequenceOfGeometry_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MAT_DataMapOfIntegerBasicElt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT_DataMapOfIntegerBasicElt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT_DataMapOfIntegerBasicElt_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MAT_SequenceOfArc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT_SequenceOfArc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT_SequenceOfArc_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MAT_SequenceOfBasicElt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::MAT_SequenceOfBasicElt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT_SequenceOfBasicElt_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MeshVS_Array1OfSequenceOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_Array1OfSequenceOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_Array1OfSequenceOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MeshVS_Array1OfSequenceOfInteger_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_Array1OfSequenceOfInteger_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_Array1OfSequenceOfInteger_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MeshVS_DataMapOfIntegerAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_DataMapOfIntegerAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_DataMapOfIntegerAsciiString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MeshVS_DataMapOfIntegerColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_DataMapOfIntegerColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_DataMapOfIntegerColor_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MeshVS_DataMapOfIntegerOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_DataMapOfIntegerOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_DataMapOfIntegerOwner_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MeshVS_DataMapOfIntegerTwoColors {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_DataMapOfIntegerTwoColors_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_DataMapOfIntegerTwoColors_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MeshVS_DataMapOfIntegerVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMeshVS::MeshVS_DataMapOfIntegerVector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMeshVS::MeshVS_DataMapOfIntegerVector_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Message_ListOfAlert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_ListOfAlert_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_ListOfAlert_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Message_SequenceOfPrinters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_SequenceOfPrinters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_SequenceOfPrinters_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MoniTool_DataMapOfShapeTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_DataMapOfShapeTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_DataMapOfShapeTransient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MoniTool_DataMapOfTimer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_DataMapOfTimer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_DataMapOfTimer_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MoniTool_SequenceOfElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_SequenceOfElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_SequenceOfElement_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MoniTool_ValueInterpret {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_ValueInterpret_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_ValueInterpret_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for MoniTool_ValueSatisfies {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::MoniTool_ValueSatisfies_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::MoniTool_ValueSatisfies_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Array1_Graphic3d_FrameStatsData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Array1_Graphic3d_FrameStatsData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Graphic3d_FrameStatsData_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Array1_Graphic3d_Vec3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Array1_Graphic3d_Vec3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Graphic3d_Vec3d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Array1_StdObject_Shape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Array1_StdObject_Shape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_StdObject_Shape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Array1_gp_Vec3f {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Array1_gp_Vec3f_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_gp_Vec3f_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Array1_opencascade_handle_HLRAlgo_PolyData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Array1_opencascade_handle_HLRAlgo_PolyData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_opencascade_handle_HLRAlgo_PolyData_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Array1_opencascade_handle_Image_PixMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Array1_opencascade_handle_Image_PixMap_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_opencascade_handle_Image_PixMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Array1_opencascade_handle_StdObjMgt_Persistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Array1_opencascade_handle_StdObjMgt_Persistent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_opencascade_handle_StdObjMgt_Persistent_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Array2_opencascade_handle_StdObjMgt_Persistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Array2_opencascade_handle_StdObjMgt_Persistent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array2_opencascade_handle_StdObjMgt_Persistent_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_DataMap_TCollection_AsciiString_RWObj_Material {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_RWObj_Material_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_RWObj_Material_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable
     for NCollection_DataMap_TCollection_AsciiString_opencascade_handle_STEPCAFControl_ExternFile
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_opencascade_handle_STEPCAFControl_ExternFile_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_opencascade_handle_STEPCAFControl_ExternFile_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_DataMap_opencascade_handle_XCAFDoc_VisMaterial_opencascade_handle_XCAFDoc_VisMaterial {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_DataMap_opencascade_handle_XCAFDoc_VisMaterial_opencascade_handle_XCAFDoc_VisMaterial_destructor(ptr);
+        unsafe { crate::ffi_extern_TKernel::NCollection_DataMap_opencascade_handle_XCAFDoc_VisMaterial_opencascade_handle_XCAFDoc_VisMaterial_destructor(ptr); }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Handle_StepVisual_Array1OfTessellatedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Handle_StepVisual_Array1OfTessellatedItem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Handle_StepVisual_Array1OfTessellatedItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Handle_StepVisual_VectorOfHSequenceOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Handle_StepVisual_VectorOfHSequenceOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Handle_StepVisual_VectorOfHSequenceOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable
     for NCollection_IndexedDataMap_TCollection_AsciiString_Standard_DumpValue
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Standard_DumpValue_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Standard_DumpValue_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable
     for NCollection_IndexedDataMap_TCollection_AsciiString_opencascade_handle_Standard_Transient
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_opencascade_handle_Standard_Transient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_opencascade_handle_Standard_Transient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_IndexedDataMap_TDF_Label_TopoDS_Shape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TDF_Label_TopoDS_Shape_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TDF_Label_TopoDS_Shape_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_IndexedMap_Message_MetricType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_IndexedMap_Message_MetricType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Message_MetricType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_List_Bnd_Range {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_List_Bnd_Range_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Bnd_Range_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_List_Poly_Triangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_List_Poly_Triangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Poly_Triangle_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_List_TColStd_SequenceOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_List_TColStd_SequenceOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_TColStd_SequenceOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_List_gp_Pnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_List_gp_Pnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_gp_Pnt_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_List_opencascade_handle_Graphic3d_Layer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_List_opencascade_handle_Graphic3d_Layer_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_opencascade_handle_Graphic3d_Layer_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_LocalArray_Standard_Real {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_LocalArray_Standard_Real_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_LocalArray_Standard_Real_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Map_Graphic3d_Structure_ptr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Map_Graphic3d_Structure_ptr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Graphic3d_Structure_ptr_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Mat3_Standard_Real {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Mat3_Standard_Real_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Mat3_Standard_Real_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Sequence_Graphic3d_Vec2i {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Sequence_Graphic3d_Vec2i_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Graphic3d_Vec2i_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Sequence_RWGltf_GltfPrimArrayData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Sequence_RWGltf_GltfPrimArrayData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_RWGltf_GltfPrimArrayData_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Sequence_constgp_Pnt2d_ptr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Sequence_constgp_Pnt2d_ptr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_constgp_Pnt2d_ptr_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Sequence_opencascade_handle_AIS_Animation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_AIS_Animation_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_AIS_Animation_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Sequence_opencascade_handle_AIS_InteractiveObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_AIS_InteractiveObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_AIS_InteractiveObject_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Sequence_opencascade_handle_Font_SystemFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_Font_SystemFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_Font_SystemFont_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Sequence_opencascade_handle_Graphic3d_CView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_Graphic3d_CView_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_Graphic3d_CView_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Sequence_opencascade_handle_Poly_Triangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_Poly_Triangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_Poly_Triangulation_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Sequence_opencascade_handle_V3d_View {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_V3d_View_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_opencascade_handle_V3d_View_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable
     for NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Shared_NCollection_List_gp_Pnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Shared_NCollection_List_gp_Pnt2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Shared_NCollection_List_gp_Pnt2d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Shared_TColStd_PackedMapOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Shared_TColStd_PackedMapOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Shared_TColStd_PackedMapOfInteger_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Utf8String {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Utf8String_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Utf8String_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vec3_Standard_Size {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vec3_Standard_Size_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vec3_Standard_Size_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vec3_bool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vec3_bool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vec3_bool_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vector_NCollection_Vec2_Standard_ShortReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vector_NCollection_Vec2_Standard_ShortReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vector_NCollection_Vec2_Standard_ShortReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vector_NCollection_Vec4_Standard_Real {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vector_NCollection_Vec4_Standard_Real_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vector_NCollection_Vec4_Standard_Real_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vector_ProxPnt_Status {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vector_ProxPnt_Status_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vector_ProxPnt_Status_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vector_SelectMgr_Vec4 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vector_SelectMgr_Vec4_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vector_SelectMgr_Vec4_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vector_Standard_Integer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vector_Standard_Integer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vector_Standard_Integer_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vector_Standard_ShortReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vector_Standard_ShortReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vector_Standard_ShortReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vector_gp_XYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vector_gp_XYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vector_gp_XYZ_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vector_opencascade_handle_Adaptor3d_Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vector_opencascade_handle_Adaptor3d_Surface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vector_opencascade_handle_Adaptor3d_Surface_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vector_opencascade_handle_Select3D_SensitiveEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vector_opencascade_handle_Select3D_SensitiveEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vector_opencascade_handle_Select3D_SensitiveEntity_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable
     for NCollection_Vector_opencascade_handle_SelectMgr_SensitiveEntity
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vector_opencascade_handle_SelectMgr_SensitiveEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vector_opencascade_handle_SelectMgr_SensitiveEntity_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_Vector_opencascade_handle_Standard_Transient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Vector_opencascade_handle_Standard_Transient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Vector_opencascade_handle_Standard_Transient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for OSD_MemInfo_Counter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_MemInfo_Counter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_MemInfo_Counter_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for PCDM_ReaderFilter_AppendMode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::PCDM_ReaderFilter_AppendMode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_AppendMode_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for PCDM_SequenceOfDocument {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::PCDM_SequenceOfDocument_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::PCDM_SequenceOfDocument_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for PCDM_SequenceOfReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::PCDM_SequenceOfReference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::PCDM_SequenceOfReference_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Plate_Array1OfPinpointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Plate_Array1OfPinpointConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Plate_Array1OfPinpointConstraint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Plate_SequenceOfPinpointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Plate_SequenceOfPinpointConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Plate_SequenceOfPinpointConstraint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Poly_Array1OfTriangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_Array1OfTriangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_Array1OfTriangle_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Poly_ListOfTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_ListOfTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_ListOfTriangulation_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Poly_MakeLoops_LinkFlag {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MakeLoops_LinkFlag_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MakeLoops_LinkFlag_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Poly_MakeLoops_ListOfLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MakeLoops_ListOfLink_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MakeLoops_ListOfLink_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Poly_MakeLoops_Loop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MakeLoops_Loop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MakeLoops_Loop_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ProjLib_SequenceOfHSequenceOfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_SequenceOfHSequenceOfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_SequenceOfHSequenceOfPnt_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Prs3d_NListOfSequenceOfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_NListOfSequenceOfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_NListOfSequenceOfPnt_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for PrsMgr_ListOfPresentableObjects {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::PrsMgr_ListOfPresentableObjects_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::PrsMgr_ListOfPresentableObjects_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for PrsMgr_Presentations {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::PrsMgr_Presentations_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::PrsMgr_Presentations_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Quantity_Array1OfColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Quantity_Array1OfColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Quantity_Array1OfColor_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Resource_DataMapOfAsciiStringAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Resource_DataMapOfAsciiStringAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Resource_DataMapOfAsciiStringAsciiString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for STEPConstruct_DataMapOfAsciiStringTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPConstruct_DataMapOfAsciiStringTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_DataMapOfAsciiStringTransient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for STEPConstruct_DataMapOfPointTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPConstruct_DataMapOfPointTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_DataMapOfPointTransient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for STEPSelections_SequenceOfAssemblyLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_SequenceOfAssemblyLink_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_SequenceOfAssemblyLink_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Select3D_BndBox3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_BndBox3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_BndBox3d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Select3D_EntitySequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_EntitySequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_EntitySequence_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Select3D_IndexedMapOfEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_IndexedMapOfEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_IndexedMapOfEntity_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Select3D_Vec3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_Vec3_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_Vec3_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for SelectMgr_IndexedMapOfHSensitive {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::SelectMgr_IndexedMapOfHSensitive_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::SelectMgr_IndexedMapOfHSensitive_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for SelectMgr_ListOfFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::SelectMgr_ListOfFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::SelectMgr_ListOfFilter_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for SelectMgr_MapOfOwners {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::SelectMgr_MapOfOwners_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::SelectMgr_MapOfOwners_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for SelectMgr_SelectableObjectSet_BVHSubset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_BVHSubset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_BVHSubset_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for SelectMgr_SequenceOfOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::SelectMgr_SequenceOfOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::SelectMgr_SequenceOfOwner_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for SelectMgr_SequenceOfSelection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::SelectMgr_SequenceOfSelection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::SelectMgr_SequenceOfSelection_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for SelectMgr_Vec3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::SelectMgr_Vec3_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::SelectMgr_Vec3_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ShapeAnalysis_DataMapOfShapeListOfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeAnalysis_DataMapOfShapeListOfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_DataMapOfShapeListOfReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ShapeAnalysis_SequenceOfFreeBounds {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeAnalysis_SequenceOfFreeBounds_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_SequenceOfFreeBounds_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ShapeExtend_DataMapOfShapeListOfMsg {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeExtend_DataMapOfShapeListOfMsg_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeExtend_DataMapOfShapeListOfMsg_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ShapeExtend_DataMapOfTransientListOfMsg {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeExtend_DataMapOfTransientListOfMsg_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeExtend_DataMapOfTransientListOfMsg_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ShapeFix_SequenceOfWireSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeFix_SequenceOfWireSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SequenceOfWireSegment_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ShapeProcess_OperationsFlags {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::ShapeProcess_OperationsFlags_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::ShapeProcess_OperationsFlags_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for ShapeProcess_OperFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeProcess_OperFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeProcess_OperFunc_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Standard_AllocatorType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::Standard_AllocatorType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::Standard_AllocatorType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Standard_CLocaleSentry_clocale_t {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Standard_CLocaleSentry_clocale_t_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Standard_CLocaleSentry_clocale_t_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Standard_MMgrOpt_TPCallBackFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Standard_MMgrOpt_TPCallBackFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Standard_MMgrOpt_TPCallBackFunc_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StdObjMgt_Persistent_Instantiator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdObjMgt_Persistent_Instantiator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdObjMgt_Persistent_Instantiator_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StdObjMgt_Persistent_SequenceOfPersistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdObjMgt_Persistent_SequenceOfPersistent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdObjMgt_Persistent_SequenceOfPersistent_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StdObjMgt_TransientPersistentMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdObjMgt_TransientPersistentMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdObjMgt_TransientPersistentMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StdStorage_SequenceOfRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStd::StdStorage_SequenceOfRoots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStd::StdStorage_SequenceOfRoots_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP203_Array1OfApprovedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP203_Array1OfApprovedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP203_Array1OfApprovedItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP203_Array1OfCertifiedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP203_Array1OfCertifiedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP203_Array1OfCertifiedItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP203_Array1OfChangeRequestItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP203_Array1OfChangeRequestItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP203_Array1OfChangeRequestItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP203_Array1OfClassifiedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP203_Array1OfClassifiedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP203_Array1OfClassifiedItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP203_Array1OfContractedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP203_Array1OfContractedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP203_Array1OfContractedItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP203_Array1OfDateTimeItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP203_Array1OfDateTimeItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP203_Array1OfDateTimeItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP203_Array1OfPersonOrganizationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP203_Array1OfPersonOrganizationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP203_Array1OfPersonOrganizationItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP203_Array1OfSpecifiedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP203_Array1OfSpecifiedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP203_Array1OfSpecifiedItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP203_Array1OfStartRequestItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP203_Array1OfStartRequestItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP203_Array1OfStartRequestItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP203_Array1OfWorkItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP203_Array1OfWorkItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP203_Array1OfWorkItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfApprovalItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfApprovalItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfApprovalItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfAutoDesignDateAndPersonItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignDateAndPersonItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignDateAndPersonItem_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfAutoDesignDateAndTimeItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignDateAndTimeItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignDateAndTimeItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfAutoDesignDatedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignDatedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignDatedItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfAutoDesignGeneralOrgItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignGeneralOrgItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignGeneralOrgItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfAutoDesignGroupedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignGroupedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignGroupedItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfAutoDesignPresentedItemSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignPresentedItemSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignPresentedItemSelect_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfAutoDesignReferencingItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignReferencingItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfAutoDesignReferencingItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfDateAndTimeItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfDateAndTimeItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfDateAndTimeItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfDateItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfDateItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfDateItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfDocumentReferenceItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfDocumentReferenceItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfDocumentReferenceItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfExternalIdentificationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfExternalIdentificationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfExternalIdentificationItem_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfGroupItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfGroupItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfGroupItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfOrganizationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfOrganizationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfOrganizationItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfPersonAndOrganizationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfPersonAndOrganizationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfPersonAndOrganizationItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfPresentedItemSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfPresentedItemSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfPresentedItemSelect_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepAP214_Array1OfSecurityClassificationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP214_Array1OfSecurityClassificationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP214_Array1OfSecurityClassificationItem_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepBasic_Array1OfApproval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepBasic_Array1OfApproval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepBasic_Array1OfApproval_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepBasic_Array1OfDerivedUnitElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepBasic_Array1OfDerivedUnitElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepBasic_Array1OfDerivedUnitElement_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepBasic_Array1OfDocument {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepBasic_Array1OfDocument_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepBasic_Array1OfDocument_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepBasic_Array1OfNamedUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepBasic_Array1OfNamedUnit_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepBasic_Array1OfNamedUnit_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepBasic_Array1OfOrganization {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepBasic_Array1OfOrganization_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepBasic_Array1OfOrganization_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepBasic_Array1OfPerson {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepBasic_Array1OfPerson_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepBasic_Array1OfPerson_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepBasic_Array1OfProduct {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepBasic_Array1OfProduct_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepBasic_Array1OfProduct_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepBasic_Array1OfProductContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepBasic_Array1OfProductContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepBasic_Array1OfProductContext_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepBasic_Array1OfProductDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepBasic_Array1OfProductDefinition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepBasic_Array1OfProductDefinition_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepBasic_Array1OfUncertaintyMeasureWithUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepBasic_Array1OfUncertaintyMeasureWithUnit_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepBasic_Array1OfUncertaintyMeasureWithUnit_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepData_Array1OfField {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_Array1OfField_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Array1OfField_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepDimTol_Array1OfDatumReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfDatumReference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfDatumReference_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepDimTol_Array1OfDatumReferenceCompartment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfDatumReferenceCompartment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfDatumReferenceCompartment_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepDimTol_Array1OfDatumReferenceElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfDatumReferenceElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfDatumReferenceElement_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepDimTol_Array1OfDatumReferenceModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfDatumReferenceModifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfDatumReferenceModifier_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepDimTol_Array1OfDatumSystemOrReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfDatumSystemOrReference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfDatumSystemOrReference_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepDimTol_Array1OfGeometricToleranceModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfGeometricToleranceModifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfGeometricToleranceModifier_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepDimTol_Array1OfToleranceZoneTarget {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfToleranceZoneTarget_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepDimTol_Array1OfToleranceZoneTarget_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_Array1OfCurveElementEndReleasePacket {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_Array1OfCurveElementEndReleasePacket_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_Array1OfCurveElementEndReleasePacket_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_Array1OfCurveElementSectionDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_Array1OfCurveElementSectionDefinition_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_Array1OfCurveElementSectionDefinition_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_Array1OfHSequenceOfCurveElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_Array1OfHSequenceOfCurveElementPurposeMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_Array1OfHSequenceOfCurveElementPurposeMember_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_Array1OfMeasureOrUnspecifiedValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_Array1OfMeasureOrUnspecifiedValue_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_Array1OfMeasureOrUnspecifiedValue_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_Array1OfSurfaceSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_Array1OfSurfaceSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_Array1OfSurfaceSection_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_Array1OfVolumeElementPurpose {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_Array1OfVolumeElementPurpose_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_Array1OfVolumeElementPurpose_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_Array1OfVolumeElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_Array1OfVolumeElementPurposeMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_Array1OfVolumeElementPurposeMember_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_Array2OfCurveElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_Array2OfCurveElementPurposeMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_Array2OfCurveElementPurposeMember_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_Array2OfSurfaceElementPurpose {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_Array2OfSurfaceElementPurpose_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_Array2OfSurfaceElementPurpose_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_Array2OfSurfaceElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_Array2OfSurfaceElementPurposeMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_Array2OfSurfaceElementPurposeMember_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_SequenceOfCurveElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_SequenceOfCurveElementPurposeMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_SequenceOfCurveElementPurposeMember_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_SequenceOfCurveElementSectionDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_SequenceOfCurveElementSectionDefinition_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_SequenceOfCurveElementSectionDefinition_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_SequenceOfElementMaterial {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_SequenceOfElementMaterial_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_SequenceOfElementMaterial_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepElement_SequenceOfSurfaceElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepElement_SequenceOfSurfaceElementPurposeMember_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepElement_SequenceOfSurfaceElementPurposeMember_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepFEA_Array1OfCurveElementEndOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_Array1OfCurveElementEndOffset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_Array1OfCurveElementEndOffset_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepFEA_Array1OfCurveElementEndRelease {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_Array1OfCurveElementEndRelease_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_Array1OfCurveElementEndRelease_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepFEA_Array1OfCurveElementInterval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_Array1OfCurveElementInterval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_Array1OfCurveElementInterval_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepFEA_Array1OfDegreeOfFreedom {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_Array1OfDegreeOfFreedom_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_Array1OfDegreeOfFreedom_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepFEA_Array1OfElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_Array1OfElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_Array1OfElementRepresentation_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepFEA_Array1OfNodeRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_Array1OfNodeRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_Array1OfNodeRepresentation_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepFEA_SequenceOfCurve3dElementProperty {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_SequenceOfCurve3dElementProperty_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_SequenceOfCurve3dElementProperty_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepFEA_SequenceOfElementGeometricRelationship {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_SequenceOfElementGeometricRelationship_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_SequenceOfElementGeometricRelationship_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepFEA_SequenceOfElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_SequenceOfElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_SequenceOfElementRepresentation_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepFEA_SequenceOfNodeRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_SequenceOfNodeRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_SequenceOfNodeRepresentation_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepGeom_Array1OfBoundaryCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Array1OfBoundaryCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Array1OfBoundaryCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepGeom_Array1OfCartesianPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Array1OfCartesianPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Array1OfCartesianPoint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepGeom_Array1OfCompositeCurveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Array1OfCompositeCurveSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Array1OfCompositeCurveSegment_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepGeom_Array1OfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Array1OfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Array1OfCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepGeom_Array1OfPcurveOrSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Array1OfPcurveOrSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Array1OfPcurveOrSurface_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepGeom_Array1OfSurfaceBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Array1OfSurfaceBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Array1OfSurfaceBoundary_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepGeom_Array1OfTrimmingSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Array1OfTrimmingSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Array1OfTrimmingSelect_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepGeom_Array2OfCartesianPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Array2OfCartesianPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Array2OfCartesianPoint_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepGeom_Array2OfSurfacePatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Array2OfSurfacePatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Array2OfSurfacePatch_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepRepr_Array1OfMaterialPropertyRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepRepr_Array1OfMaterialPropertyRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepRepr_Array1OfMaterialPropertyRepresentation_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepRepr_Array1OfPropertyDefinitionRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepRepr_Array1OfPropertyDefinitionRepresentation_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepRepr_Array1OfPropertyDefinitionRepresentation_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepRepr_Array1OfRepresentationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepRepr_Array1OfRepresentationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepRepr_Array1OfRepresentationItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepRepr_Array1OfShapeAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepRepr_Array1OfShapeAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepRepr_Array1OfShapeAspect_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepRepr_SequenceOfMaterialPropertyRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepRepr_SequenceOfMaterialPropertyRepresentation_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepRepr_SequenceOfMaterialPropertyRepresentation_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepRepr_SequenceOfRepresentationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepRepr_SequenceOfRepresentationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepRepr_SequenceOfRepresentationItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepShape_Array1OfConnectedEdgeSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepShape_Array1OfConnectedEdgeSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepShape_Array1OfConnectedEdgeSet_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepShape_Array1OfConnectedFaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepShape_Array1OfConnectedFaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepShape_Array1OfConnectedFaceSet_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepShape_Array1OfEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepShape_Array1OfEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepShape_Array1OfEdge_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepShape_Array1OfFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepShape_Array1OfFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepShape_Array1OfFace_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepShape_Array1OfFaceBound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepShape_Array1OfFaceBound_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepShape_Array1OfFaceBound_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepShape_Array1OfGeometricSetSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepShape_Array1OfGeometricSetSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepShape_Array1OfGeometricSetSelect_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepShape_Array1OfOrientedClosedShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepShape_Array1OfOrientedClosedShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepShape_Array1OfOrientedClosedShell_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepShape_Array1OfOrientedEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepShape_Array1OfOrientedEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepShape_Array1OfOrientedEdge_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepShape_Array1OfShapeDimensionRepresentationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepShape_Array1OfShapeDimensionRepresentationItem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepShape_Array1OfShapeDimensionRepresentationItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepShape_Array1OfShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepShape_Array1OfShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepShape_Array1OfShell_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepShape_Array1OfValueQualifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepShape_Array1OfValueQualifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepShape_Array1OfValueQualifier_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepToTopoDS_DataMapOfRI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_DataMapOfRI_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_DataMapOfRI_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepToTopoDS_DataMapOfRINames {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_DataMapOfRINames_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_DataMapOfRINames_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepToTopoDS_DataMapOfTRI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_DataMapOfTRI_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_DataMapOfTRI_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfAnnotationPlaneElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfAnnotationPlaneElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfAnnotationPlaneElement_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfBoxCharacteristicSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfBoxCharacteristicSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfBoxCharacteristicSelect_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfCurveStyleFontPattern {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfCurveStyleFontPattern_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfCurveStyleFontPattern_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfDirectionCountSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfDirectionCountSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfDirectionCountSelect_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfDraughtingCalloutElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfDraughtingCalloutElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfDraughtingCalloutElement_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfFillStyleSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfFillStyleSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfFillStyleSelect_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfInvisibleItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfInvisibleItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfInvisibleItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfLayeredItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfLayeredItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfLayeredItem_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfPresentationStyleAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfPresentationStyleAssignment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfPresentationStyleAssignment_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfPresentationStyleSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfPresentationStyleSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfPresentationStyleSelect_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfRenderingPropertiesSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfRenderingPropertiesSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfRenderingPropertiesSelect_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfStyleContextSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfStyleContextSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfStyleContextSelect_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfSurfaceStyleElementSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfSurfaceStyleElementSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfSurfaceStyleElementSelect_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfTessellatedEdgeOrVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfTessellatedEdgeOrVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfTessellatedEdgeOrVertex_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfTessellatedStructuredItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfTessellatedStructuredItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfTessellatedStructuredItem_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for StepVisual_Array1OfTextOrCharacter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Array1OfTextOrCharacter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Array1OfTextOrCharacter_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Storage_ArrayOfCallBack {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Storage_ArrayOfCallBack_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Storage_ArrayOfCallBack_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Storage_ArrayOfSchema {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Storage_ArrayOfSchema_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Storage_ArrayOfSchema_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Storage_PArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Storage_PArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Storage_PArray_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Storage_PType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Storage_PType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Storage_PType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Storage_SeqOfRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Storage_SeqOfRoot_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Storage_SeqOfRoot_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom2d_Array1OfBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::TColGeom2d_Array1OfBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::TColGeom2d_Array1OfBSplineCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom2d_Array1OfBezierCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::TColGeom2d_Array1OfBezierCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::TColGeom2d_Array1OfBezierCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom2d_Array1OfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::TColGeom2d_Array1OfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::TColGeom2d_Array1OfCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom2d_SequenceOfBoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::TColGeom2d_SequenceOfBoundedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::TColGeom2d_SequenceOfBoundedCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom2d_SequenceOfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::TColGeom2d_SequenceOfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::TColGeom2d_SequenceOfCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom_Array1OfBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_Array1OfBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_Array1OfBSplineCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom_Array1OfBezierCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_Array1OfBezierCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_Array1OfBezierCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom_Array1OfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_Array1OfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_Array1OfCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom_Array1OfSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_Array1OfSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_Array1OfSurface_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom_Array2OfBezierSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_Array2OfBezierSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_Array2OfBezierSurface_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom_Array2OfSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_Array2OfSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_Array2OfSurface_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom_SequenceOfBoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_SequenceOfBoundedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_SequenceOfBoundedCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColGeom_SequenceOfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::TColGeom_SequenceOfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::TColGeom_SequenceOfCurve_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfAsciiString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfBoolean_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfBoolean_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfByte {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfByte_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfByte_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfByte_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfByte_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfByte_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfCharacter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfCharacter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfCharacter_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfCharacter_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfCharacter_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfCharacter_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfExtendedString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfExtendedString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfInteger_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfInteger_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfInteger_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfListOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfListOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfListOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfListOfInteger_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfListOfInteger_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfListOfInteger_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfReal_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfReal_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfReal_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array1OfTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array1OfTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array1OfTransient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array2OfBoolean {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array2OfBoolean_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array2OfBoolean_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array2OfBoolean_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array2OfBoolean_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array2OfBoolean_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array2OfCharacter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array2OfCharacter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array2OfCharacter_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array2OfCharacter_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array2OfCharacter_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array2OfCharacter_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array2OfInteger_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array2OfInteger_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array2OfInteger_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array2OfReal_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array2OfReal_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array2OfReal_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_Array2OfTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_Array2OfTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_Array2OfTransient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_DataMapOfAsciiStringInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_DataMapOfAsciiStringInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_DataMapOfAsciiStringInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_DataMapOfIntegerInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_DataMapOfIntegerInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_DataMapOfIntegerInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_DataMapOfIntegerReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_DataMapOfIntegerReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_DataMapOfIntegerReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_DataMapOfStringInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_DataMapOfStringInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_DataMapOfStringInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_DataMapOfTransientTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_DataMapOfTransientTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_DataMapOfTransientTransient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_IndexedDataMapOfStringString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_IndexedDataMapOfStringString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_IndexedDataMapOfStringString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_IndexedDataMapOfTransientTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_IndexedDataMapOfTransientTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_IndexedDataMapOfTransientTransient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_IndexedMapOfTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_IndexedMapOfTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_IndexedMapOfTransient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_ListIteratorOfListOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_ListIteratorOfListOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_ListIteratorOfListOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_ListOfAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_ListOfAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_ListOfAsciiString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_ListOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_ListOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_ListOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_ListOfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_ListOfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_ListOfReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_ListOfTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_ListOfTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_ListOfTransient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_MapOfAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_MapOfAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_MapOfAsciiString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_MapOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_MapOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_MapOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_SequenceOfAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_SequenceOfAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_SequenceOfAsciiString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_SequenceOfBoolean {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_SequenceOfBoolean_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_SequenceOfBoolean_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_SequenceOfExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_SequenceOfExtendedString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_SequenceOfExtendedString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_SequenceOfHAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_SequenceOfHAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_SequenceOfHAsciiString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_SequenceOfHExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_SequenceOfHExtendedString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_SequenceOfHExtendedString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_SequenceOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_SequenceOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_SequenceOfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_SequenceOfInteger_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_SequenceOfInteger_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_SequenceOfInteger_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_SequenceOfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_SequenceOfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_SequenceOfReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_SequenceOfReal_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_SequenceOfReal_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_SequenceOfReal_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColStd_SequenceOfTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TColStd_SequenceOfTransient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TColStd_SequenceOfTransient_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array1OfCirc2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array1OfDir2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array1OfDir_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfDir_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfDir_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array1OfLin2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array1OfPnt2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array1OfPnt_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfPnt_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfPnt_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array1OfVec2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array1OfVec_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfVec_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfVec_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array1OfXY_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfXY_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfXY_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array1OfXYZ_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array2OfCirc2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array2OfDir2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array2OfDir_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfDir_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfDir_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array2OfLin2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array2OfPnt2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array2OfPnt_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfPnt_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfPnt_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array2OfVec2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array2OfVec_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfVec_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfVec_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array2OfXY_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfXY_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfXY_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_Array2OfXYZ_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfDir_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfDir_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfDir2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfDir2d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfDir2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfDir2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfDir2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfDir_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfDir_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfDir_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfPnt_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfPnt2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfPnt2d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfPnt2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfPnt2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfPnt2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfPnt_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfPnt_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfPnt_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfVec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfVec_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfVec2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfVec2d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfVec2d_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfVec2d_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfVec2d_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfVec_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfVec_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfVec_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfXY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfXY_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfXY_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfXY_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfXY_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfXYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfXYZ_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TColgp_SequenceOfXYZ_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_SequenceOfXYZ_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_SequenceOfXYZ_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_AttributeArray1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_AttributeArray1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_AttributeArray1_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_AttributeDataMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_AttributeDataMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_AttributeDataMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_AttributeDeltaList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_AttributeDeltaList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_AttributeDeltaList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_AttributeIndexedMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_AttributeIndexedMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_AttributeIndexedMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_AttributeList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_AttributeList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_AttributeList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_AttributeMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_AttributeMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_AttributeMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_AttributeSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_AttributeSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_AttributeSequence_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_DeltaList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_DeltaList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_DeltaList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_DerivedAttribute_NewDerived {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_DerivedAttribute_NewDerived_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_DerivedAttribute_NewDerived_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_IDList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_IDList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_IDList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_LabelDataMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_LabelDataMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_LabelDataMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_LabelIndexedMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_LabelIndexedMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_LabelIndexedMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_LabelIntegerMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_LabelIntegerMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_LabelIntegerMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_LabelList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_LabelList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_LabelList_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_LabelMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_LabelMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_LabelMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDF_LabelSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDF_LabelSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDF_LabelSequence_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDataStd_DataMapOfStringByte {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_DataMapOfStringByte_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_DataMapOfStringByte_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDataStd_DataMapOfStringHArray1OfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_DataMapOfStringHArray1OfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_DataMapOfStringHArray1OfInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDataStd_DataMapOfStringHArray1OfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_DataMapOfStringHArray1OfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_DataMapOfStringHArray1OfReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDataStd_DataMapOfStringReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_DataMapOfStringReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_DataMapOfStringReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDataStd_DataMapOfStringString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_DataMapOfStringString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_DataMapOfStringString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDataStd_LabelArray1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_LabelArray1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_LabelArray1_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDataStd_ListIteratorOfListOfExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_ListIteratorOfListOfExtendedString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ListIteratorOfListOfExtendedString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDataStd_ListOfByte {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_ListOfByte_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ListOfByte_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDataStd_ListOfExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDataStd_ListOfExtendedString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ListOfExtendedString_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDataXtd_Array1OfTrsf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TDataXtd_Array1OfTrsf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TDataXtd_Array1OfTrsf_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDataXtd_Array1OfTrsf_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TDataXtd_Array1OfTrsf_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TDataXtd_Array1OfTrsf_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDocStd_SequenceOfApplicationDelta {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_SequenceOfApplicationDelta_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_SequenceOfApplicationDelta_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TDocStd_SequenceOfDocument {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_SequenceOfDocument_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_SequenceOfDocument_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TFunction_Array1OfDataMapOfGUIDDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_Array1OfDataMapOfGUIDDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Array1OfDataMapOfGUIDDriver_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TFunction_Array1OfDataMapOfGUIDDriver_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_Array1OfDataMapOfGUIDDriver_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Array1OfDataMapOfGUIDDriver_value_type_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for TFunction_DoubleMapOfIntegerLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TFunction_DoubleMapOfIntegerLabel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_DoubleMapOfIntegerLabel_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TNaming_DataMapOfShapePtrRefShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_DataMapOfShapePtrRefShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_DataMapOfShapePtrRefShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TNaming_ListOfNamedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_ListOfNamedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_ListOfNamedShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TNaming_MapOfNamedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_MapOfNamedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_MapOfNamedShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TObj_DataMapOfNameLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_DataMapOfNameLabel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_DataMapOfNameLabel_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TObj_SequenceOfObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_SequenceOfObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_SequenceOfObject_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TObj_TIntSparseArray_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_TIntSparseArray_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_Iterator_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TShort_Array1OfShortReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TShort_Array1OfShortReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TShort_Array1OfShortReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TShort_Array1OfShortReal_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TShort_Array1OfShortReal_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TShort_Array1OfShortReal_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TShort_Array2OfShortReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TShort_Array2OfShortReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TShort_Array2OfShortReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TShort_Array2OfShortReal_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TShort_Array2OfShortReal_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TShort_Array2OfShortReal_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TShort_SequenceOfShortReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TShort_SequenceOfShortReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TShort_SequenceOfShortReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TShort_SequenceOfShortReal_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TShort_SequenceOfShortReal_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TShort_SequenceOfShortReal_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepBuild_ListIteratorOfListOfLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_ListIteratorOfListOfLoop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_ListIteratorOfListOfLoop_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepBuild_ListOfLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_ListOfLoop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_ListOfLoop_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepBuild_ListOfPave {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_ListOfPave_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_ListOfPave_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable
     for TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_value_type
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepDS_DataMapOfShapeState {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_DataMapOfShapeState_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_DataMapOfShapeState_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepDS_IndexedDataMapOfShapeWithState {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_IndexedDataMapOfShapeWithState_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_IndexedDataMapOfShapeWithState_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepDS_ListIteratorOfListOfInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_ListIteratorOfListOfInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_ListIteratorOfListOfInterference_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepDS_ListOfInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_ListOfInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_ListOfInterference_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepDS_MapOfShapeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_MapOfShapeData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_MapOfShapeData_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRepTool_IndexedDataMapOfShapeBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_IndexedDataMapOfShapeBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_IndexedDataMapOfShapeBox_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRep_Array1OfLineInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRep_Array1OfLineInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_Array1OfLineInter_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRep_Array1OfVPointInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRep_Array1OfVPointInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_Array1OfVPointInter_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopOpeBRep_SequenceOfPoint2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRep_SequenceOfPoint2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_SequenceOfPoint2d_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_Array1OfListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_Array1OfListOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_Array1OfListOfShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_Array1OfListOfShape_value_type {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_Array1OfListOfShape_value_type_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_Array1OfListOfShape_value_type_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_Array1OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_Array1OfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_Array1OfShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_Array2OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_Array2OfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_Array2OfShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_DataMapOfIntegerListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_DataMapOfIntegerListOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_DataMapOfIntegerListOfShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_DataMapOfIntegerShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_DataMapOfIntegerShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_DataMapOfIntegerShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_DataMapOfOrientedShapeInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_DataMapOfOrientedShapeInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_DataMapOfOrientedShapeInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_DataMapOfShapeBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeBox_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_DataMapOfShapeInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeInteger_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_DataMapOfShapeListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeListOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeListOfShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_DataMapOfShapeReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_IndexedDataMapOfShapeReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeReal_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_IndexedDataMapOfShapeShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_IndexedMapOfOrientedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_IndexedMapOfOrientedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_IndexedMapOfOrientedShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_ListIteratorOfListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_ListIteratorOfListOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_ListIteratorOfListOfShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopTools_ListOfListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_ListOfListOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_ListOfListOfShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TopoDS_ListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_ListOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_ListOfShape_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for TransferBRep_SequenceOfTransferResultInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::TransferBRep_SequenceOfTransferResultInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::TransferBRep_SequenceOfTransferResultInfo_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Transfer_SequenceOfBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_SequenceOfBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_SequenceOfBinder_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Transfer_SequenceOfFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::Transfer_SequenceOfFinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_SequenceOfFinder_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Units_QtsSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Units_QtsSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Units_QtsSequence_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Units_TksSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Units_TksSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Units_TksSequence_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for Units_UtsSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Units_UtsSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Units_UtsSequence_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for V3d_ListOfLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::V3d_ListOfLight_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::V3d_ListOfLight_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for V3d_ListOfLight_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::V3d_ListOfLight_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::V3d_ListOfLight_Iterator_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for V3d_ListOfView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::V3d_ListOfView_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::V3d_ListOfView_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for V3d_ListOfView_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::V3d_ListOfView_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::V3d_ListOfView_Iterator_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for VrmlData_DataMapOfShapeAppearance {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_DataMapOfShapeAppearance_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_DataMapOfShapeAppearance_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for VrmlData_Group_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Group_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Group_Iterator_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for VrmlData_MapOfNode_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_MapOfNode_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_MapOfNode_Iterator_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for VrmlData_Scene_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Scene_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Scene_Iterator_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XCAFDimTolObjects_DataMapOfToleranceDatum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DataMapOfToleranceDatum_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DataMapOfToleranceDatum_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XCAFDimTolObjects_DatumModifiersSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumModifiersSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumModifiersSequence_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XCAFDimTolObjects_DatumObjectSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObjectSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObjectSequence_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XCAFDimTolObjects_DimensionModifiersSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionModifiersSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionModifiersSequence_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XCAFDimTolObjects_DimensionObjectSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObjectSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObjectSequence_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XCAFDimTolObjects_GeomToleranceModifiersSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceModifiersSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceModifiersSequence_destructor(
+                ptr,
+            );
+        }
     }
 }
 unsafe impl crate::CppDeletable for XCAFDimTolObjects_GeomToleranceObjectSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObjectSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObjectSequence_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XCAFDoc_AssemblyGraph_AdjacencyMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDoc_AssemblyGraph_AdjacencyMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_AssemblyGraph_AdjacencyMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XCAFDoc_AssemblyGraph_NodeType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDoc_AssemblyGraph_NodeType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_AssemblyGraph_NodeType_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XCAFDoc_DataMapOfShapeLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDoc_DataMapOfShapeLabel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_DataMapOfShapeLabel_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XCAFPrs_IndexedDataMapOfShapeStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFPrs_IndexedDataMapOfShapeStyle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFPrs_IndexedDataMapOfShapeStyle_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XSAlgo_ShapeProcessor_ParameterMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSAlgo_ShapeProcessor_ParameterMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSAlgo_ShapeProcessor_ParameterMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XSAlgo_ShapeProcessor_ProcessingData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSAlgo_ShapeProcessor_ProcessingData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSAlgo_ShapeProcessor_ProcessingData_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XSAlgo_ShapeProcessor_ProcessingFlags {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSAlgo_ShapeProcessor_ProcessingFlags_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSAlgo_ShapeProcessor_ProcessingFlags_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XSControl_WorkSessionMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_WorkSessionMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_WorkSessionMap_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for XmlMDF_MapOfDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDF_MapOfDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDF_MapOfDriver_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for gp_Vec2f {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Vec2f_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Vec2f_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for gp_Vec3f {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Vec3f_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Vec3f_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for math_IntegerVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_IntegerVector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_IntegerVector_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for math_Vector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::math_Vector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::math_Vector_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for std_ios_base_openmode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::std_ios_base_openmode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::std_ios_base_openmode_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for std_streampos {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::std_streampos_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::std_streampos_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for std_streamsize {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::std_streamsize_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::std_streamsize_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for std_type_info {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::std_type_info_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::std_type_info_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for std_pair_Standard_Integer_Standard_Integer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::std_pair_Standard_Integer_Standard_Integer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::std_pair_Standard_Integer_Standard_Integer_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for std_pair_Standard_Real_Standard_Real {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::std_pair_Standard_Real_Standard_Real_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::std_pair_Standard_Real_Standard_Real_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for std_shared_ptr_std_istream {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::std_shared_ptr_std_istream_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::std_shared_ptr_std_istream_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for std_shared_ptr_std_ostream {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::std_shared_ptr_std_ostream_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::std_shared_ptr_std_ostream_destructor(ptr);
+        }
     }
 }
 unsafe impl crate::CppDeletable for std_shared_ptr_std_streambuf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::std_shared_ptr_std_streambuf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::std_shared_ptr_std_streambuf_destructor(ptr);
+        }
     }
 }

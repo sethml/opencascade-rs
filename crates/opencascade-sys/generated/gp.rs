@@ -300,13 +300,15 @@ pub use crate::ffi_types::gp_Ax1 as Ax1;
 
 unsafe impl crate::CppDeletable for Ax1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Ax1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Ax1_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Ax1 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Ax1_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Ax1_clone(ptr)) }
     }
 }
 
@@ -672,13 +674,15 @@ pub use crate::ffi_types::gp_Ax2 as Ax2;
 
 unsafe impl crate::CppDeletable for Ax2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Ax2_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Ax2_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Ax2 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Ax2_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Ax2_clone(ptr)) }
     }
 }
 
@@ -1154,13 +1158,15 @@ pub use crate::ffi_types::gp_Ax22d as Ax22d;
 
 unsafe impl crate::CppDeletable for Ax22d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Ax22d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Ax22d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Ax22d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Ax22d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Ax22d_clone(ptr)) }
     }
 }
 
@@ -1542,13 +1548,15 @@ pub use crate::ffi_types::gp_Ax2d as Ax2d;
 
 unsafe impl crate::CppDeletable for Ax2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Ax2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Ax2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Ax2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Ax2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Ax2d_clone(ptr)) }
     }
 }
 
@@ -1881,13 +1889,15 @@ pub use crate::ffi_types::gp_Ax3 as Ax3;
 
 unsafe impl crate::CppDeletable for Ax3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Ax3_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Ax3_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Ax3 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Ax3_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Ax3_clone(ptr)) }
     }
 }
 
@@ -2370,13 +2380,15 @@ pub use crate::ffi_types::gp_Circ as Circ;
 
 unsafe impl crate::CppDeletable for Circ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Circ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Circ_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Circ {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Circ_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Circ_clone(ptr)) }
     }
 }
 
@@ -2742,13 +2754,15 @@ pub use crate::ffi_types::gp_Circ2d as Circ2d;
 
 unsafe impl crate::CppDeletable for Circ2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Circ2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Circ2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Circ2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Circ2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Circ2d_clone(ptr)) }
     }
 }
 
@@ -3194,13 +3208,15 @@ pub use crate::ffi_types::gp_Cone as Cone;
 
 unsafe impl crate::CppDeletable for Cone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Cone_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Cone_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Cone {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Cone_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Cone_clone(ptr)) }
     }
 }
 
@@ -3601,13 +3617,15 @@ pub use crate::ffi_types::gp_Cylinder as Cylinder;
 
 unsafe impl crate::CppDeletable for Cylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Cylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Cylinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Cylinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Cylinder_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Cylinder_clone(ptr)) }
     }
 }
 
@@ -3962,13 +3980,15 @@ pub use crate::ffi_types::gp_Dir as Dir;
 
 unsafe impl crate::CppDeletable for Dir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Dir_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Dir_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Dir {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Dir_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Dir_clone(ptr)) }
     }
 }
 
@@ -4421,13 +4441,15 @@ pub use crate::ffi_types::gp_Dir2d as Dir2d;
 
 unsafe impl crate::CppDeletable for Dir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Dir2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Dir2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Dir2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Dir2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Dir2d_clone(ptr)) }
     }
 }
 
@@ -4843,13 +4865,15 @@ pub use crate::ffi_types::gp_Elips as Elips;
 
 unsafe impl crate::CppDeletable for Elips {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Elips_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Elips_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Elips {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Elips_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Elips_clone(ptr)) }
     }
 }
 
@@ -5293,13 +5317,15 @@ pub use crate::ffi_types::gp_Elips2d as Elips2d;
 
 unsafe impl crate::CppDeletable for Elips2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Elips2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Elips2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Elips2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Elips2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Elips2d_clone(ptr)) }
     }
 }
 
@@ -5818,13 +5844,15 @@ pub use crate::ffi_types::gp_GTrsf as GTrsf;
 
 unsafe impl crate::CppDeletable for GTrsf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_GTrsf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_GTrsf_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for GTrsf {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_GTrsf_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_GTrsf_clone(ptr)) }
     }
 }
 
@@ -6186,13 +6214,15 @@ pub use crate::ffi_types::gp_GTrsf2d as GTrsf2d;
 
 unsafe impl crate::CppDeletable for GTrsf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_GTrsf2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_GTrsf2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for GTrsf2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_GTrsf2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_GTrsf2d_clone(ptr)) }
     }
 }
 
@@ -6542,13 +6572,15 @@ pub use crate::ffi_types::gp_Hypr as Hypr;
 
 unsafe impl crate::CppDeletable for Hypr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Hypr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Hypr_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Hypr {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Hypr_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Hypr_clone(ptr)) }
     }
 }
 
@@ -7068,13 +7100,15 @@ pub use crate::ffi_types::gp_Hypr2d as Hypr2d;
 
 unsafe impl crate::CppDeletable for Hypr2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Hypr2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Hypr2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Hypr2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Hypr2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Hypr2d_clone(ptr)) }
     }
 }
 
@@ -7659,13 +7693,15 @@ pub use crate::ffi_types::gp_Lin as Lin;
 
 unsafe impl crate::CppDeletable for Lin {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Lin_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Lin_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Lin {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Lin_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Lin_clone(ptr)) }
     }
 }
 
@@ -8024,13 +8060,15 @@ pub use crate::ffi_types::gp_Lin2d as Lin2d;
 
 unsafe impl crate::CppDeletable for Lin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Lin2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Lin2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Lin2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Lin2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Lin2d_clone(ptr)) }
     }
 }
 
@@ -8383,13 +8421,15 @@ pub use crate::ffi_types::gp_Mat as Mat;
 
 unsafe impl crate::CppDeletable for Mat {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Mat_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Mat_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Mat {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Mat_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Mat_clone(ptr)) }
     }
 }
 
@@ -8815,13 +8855,15 @@ pub use crate::ffi_types::gp_Mat2d as Mat2d;
 
 unsafe impl crate::CppDeletable for Mat2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Mat2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Mat2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Mat2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Mat2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Mat2d_clone(ptr)) }
     }
 }
 
@@ -9225,13 +9267,15 @@ pub use crate::ffi_types::gp_Parab as Parab;
 
 unsafe impl crate::CppDeletable for Parab {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Parab_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Parab_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Parab {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Parab_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Parab_clone(ptr)) }
     }
 }
 
@@ -9613,13 +9657,15 @@ pub use crate::ffi_types::gp_Parab2d as Parab2d;
 
 unsafe impl crate::CppDeletable for Parab2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Parab2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Parab2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Parab2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Parab2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Parab2d_clone(ptr)) }
     }
 }
 
@@ -10076,13 +10122,15 @@ pub use crate::ffi_types::gp_Pln as Pln;
 
 unsafe impl crate::CppDeletable for Pln {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Pln_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Pln_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Pln {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Pln_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Pln_clone(ptr)) }
     }
 }
 
@@ -10523,13 +10571,15 @@ pub use crate::ffi_types::gp_Pnt as Pnt;
 
 unsafe impl crate::CppDeletable for Pnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Pnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Pnt_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Pnt {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Pnt_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Pnt_clone(ptr)) }
     }
 }
 
@@ -10886,13 +10936,15 @@ pub use crate::ffi_types::gp_Pnt2d as Pnt2d;
 
 unsafe impl crate::CppDeletable for Pnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Pnt2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Pnt2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Pnt2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Pnt2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Pnt2d_clone(ptr)) }
     }
 }
 
@@ -11217,13 +11269,15 @@ pub use crate::ffi_types::gp_Quaternion as Quaternion;
 
 unsafe impl crate::CppDeletable for Quaternion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Quaternion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Quaternion_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Quaternion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Quaternion_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Quaternion_clone(ptr)) }
     }
 }
 
@@ -11710,13 +11764,15 @@ pub use crate::ffi_types::gp_QuaternionNLerp as QuaternionNLerp;
 
 unsafe impl crate::CppDeletable for QuaternionNLerp {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_QuaternionNLerp_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_QuaternionNLerp_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for QuaternionNLerp {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_QuaternionNLerp_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_QuaternionNLerp_clone(ptr)) }
     }
 }
 
@@ -11815,13 +11871,15 @@ pub use crate::ffi_types::gp_QuaternionSLerp as QuaternionSLerp;
 
 unsafe impl crate::CppDeletable for QuaternionSLerp {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_QuaternionSLerp_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_QuaternionSLerp_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for QuaternionSLerp {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_QuaternionSLerp_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_QuaternionSLerp_clone(ptr)) }
     }
 }
 
@@ -11938,13 +11996,15 @@ pub use crate::ffi_types::gp_Sphere as Sphere;
 
 unsafe impl crate::CppDeletable for Sphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Sphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Sphere_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Sphere {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Sphere_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Sphere_clone(ptr)) }
     }
 }
 
@@ -12330,13 +12390,15 @@ pub use crate::ffi_types::gp_Torus as Torus;
 
 unsafe impl crate::CppDeletable for Torus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Torus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Torus_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Torus {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Torus_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Torus_clone(ptr)) }
     }
 }
 
@@ -12742,13 +12804,15 @@ pub use crate::ffi_types::gp_Trsf as Trsf;
 
 unsafe impl crate::CppDeletable for Trsf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Trsf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Trsf_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Trsf {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Trsf_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Trsf_clone(ptr)) }
     }
 }
 
@@ -13277,13 +13341,15 @@ pub use crate::ffi_types::gp_Trsf2d as Trsf2d;
 
 unsafe impl crate::CppDeletable for Trsf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Trsf2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Trsf2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Trsf2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Trsf2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Trsf2d_clone(ptr)) }
     }
 }
 
@@ -13624,13 +13690,15 @@ pub use crate::ffi_types::gp_Vec as Vec;
 
 unsafe impl crate::CppDeletable for Vec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Vec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Vec_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Vec {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Vec_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Vec_clone(ptr)) }
     }
 }
 
@@ -14334,13 +14402,15 @@ pub use crate::ffi_types::gp_Vec2d as Vec2d;
 
 unsafe impl crate::CppDeletable for Vec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_Vec2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_Vec2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Vec2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_Vec2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_Vec2d_clone(ptr)) }
     }
 }
 
@@ -14913,7 +14983,9 @@ pub use crate::ffi_types::gp_VectorWithNullMagnitude as VectorWithNullMagnitude;
 
 unsafe impl crate::CppDeletable for VectorWithNullMagnitude {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_VectorWithNullMagnitude_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_VectorWithNullMagnitude_destructor(ptr);
+        }
     }
 }
 
@@ -15212,13 +15284,19 @@ pub use crate::ffi_types::HandlegpVectorWithNullMagnitude;
 
 unsafe impl crate::CppDeletable for HandlegpVectorWithNullMagnitude {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandlegpVectorWithNullMagnitude_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandlegpVectorWithNullMagnitude_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlegpVectorWithNullMagnitude {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandlegpVectorWithNullMagnitude_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandlegpVectorWithNullMagnitude_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -15295,13 +15373,15 @@ pub use crate::ffi_types::gp_XY as XY;
 
 unsafe impl crate::CppDeletable for XY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_XY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_XY_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for XY {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_XY_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_XY_clone(ptr)) }
     }
 }
 
@@ -15754,13 +15834,15 @@ pub use crate::ffi_types::gp_XYZ as XYZ;
 
 unsafe impl crate::CppDeletable for XYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::gp_XYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::gp_XYZ_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for XYZ {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::gp_XYZ_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::gp_XYZ_clone(ptr)) }
     }
 }
 

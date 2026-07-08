@@ -374,7 +374,9 @@ pub use crate::ffi_types::StepToTopoDS_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_Builder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_Builder_destructor(ptr);
+        }
     }
 }
 
@@ -644,7 +646,9 @@ pub use crate::ffi_types::StepToTopoDS_GeometricTool as GeometricTool;
 
 unsafe impl crate::CppDeletable for GeometricTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_GeometricTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_GeometricTool_destructor(ptr);
+        }
     }
 }
 
@@ -718,7 +722,9 @@ pub use crate::ffi_types::StepToTopoDS_MakeTransformed as MakeTransformed;
 
 unsafe impl crate::CppDeletable for MakeTransformed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_MakeTransformed_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_MakeTransformed_destructor(ptr);
+        }
     }
 }
 
@@ -896,7 +902,9 @@ pub use crate::ffi_types::StepToTopoDS_NMTool as NMTool;
 
 unsafe impl crate::CppDeletable for NMTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_NMTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_NMTool_destructor(ptr);
+        }
     }
 }
 
@@ -1107,7 +1115,9 @@ pub use crate::ffi_types::StepToTopoDS_PointPair as PointPair;
 
 unsafe impl crate::CppDeletable for PointPair {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_PointPair_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_PointPair_destructor(ptr);
+        }
     }
 }
 
@@ -1153,7 +1163,9 @@ pub use crate::ffi_types::StepToTopoDS_Root as Root;
 
 unsafe impl crate::CppDeletable for Root {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_Root_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_Root_destructor(ptr);
+        }
     }
 }
 
@@ -1209,7 +1221,9 @@ pub use crate::ffi_types::StepToTopoDS_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_Tool_destructor(ptr);
+        }
     }
 }
 
@@ -1511,7 +1525,9 @@ pub use crate::ffi_types::StepToTopoDS_TranslateCompositeCurve as TranslateCompo
 
 unsafe impl crate::CppDeletable for TranslateCompositeCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateCompositeCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateCompositeCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1674,7 +1690,9 @@ pub use crate::ffi_types::StepToTopoDS_TranslateCurveBoundedSurface as Translate
 
 unsafe impl crate::CppDeletable for TranslateCurveBoundedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateCurveBoundedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateCurveBoundedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1794,7 +1812,9 @@ pub use crate::ffi_types::StepToTopoDS_TranslateEdge as TranslateEdge;
 
 unsafe impl crate::CppDeletable for TranslateEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateEdge_destructor(ptr);
+        }
     }
 }
 
@@ -1985,7 +2005,9 @@ pub use crate::ffi_types::StepToTopoDS_TranslateEdgeLoop as TranslateEdgeLoop;
 
 unsafe impl crate::CppDeletable for TranslateEdgeLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateEdgeLoop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateEdgeLoop_destructor(ptr);
+        }
     }
 }
 
@@ -2140,7 +2162,9 @@ pub use crate::ffi_types::StepToTopoDS_TranslateFace as TranslateFace;
 
 unsafe impl crate::CppDeletable for TranslateFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateFace_destructor(ptr);
+        }
     }
 }
 
@@ -2329,7 +2353,9 @@ pub use crate::ffi_types::StepToTopoDS_TranslatePolyLoop as TranslatePolyLoop;
 
 unsafe impl crate::CppDeletable for TranslatePolyLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslatePolyLoop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslatePolyLoop_destructor(ptr);
+        }
     }
 }
 
@@ -2475,7 +2501,9 @@ pub use crate::ffi_types::StepToTopoDS_TranslateShell as TranslateShell;
 
 unsafe impl crate::CppDeletable for TranslateShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateShell_destructor(ptr);
+        }
     }
 }
 
@@ -2615,7 +2643,9 @@ pub use crate::ffi_types::StepToTopoDS_TranslateSolid as TranslateSolid;
 
 unsafe impl crate::CppDeletable for TranslateSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateSolid_destructor(ptr);
+        }
     }
 }
 
@@ -2752,7 +2782,9 @@ pub use crate::ffi_types::StepToTopoDS_TranslateVertex as TranslateVertex;
 
 unsafe impl crate::CppDeletable for TranslateVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateVertex_destructor(ptr);
+        }
     }
 }
 
@@ -2893,7 +2925,9 @@ pub use crate::ffi_types::StepToTopoDS_TranslateVertexLoop as TranslateVertexLoo
 
 unsafe impl crate::CppDeletable for TranslateVertexLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateVertexLoop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_TranslateVertexLoop_destructor(ptr);
+        }
     }
 }
 

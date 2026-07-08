@@ -820,7 +820,9 @@ pub use crate::ffi_types::Message_Alert as Alert;
 
 unsafe impl crate::CppDeletable for Alert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_Alert_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_Alert_destructor(ptr);
+        }
     }
 }
 
@@ -997,13 +999,15 @@ pub use crate::ffi_types::HandleMessageAlert;
 
 unsafe impl crate::CppDeletable for HandleMessageAlert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessageAlert_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageAlert_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessageAlert {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlert_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlert_clone(ptr)) }
     }
 }
 
@@ -1774,7 +1778,9 @@ pub use crate::ffi_types::Message_AlertExtended as AlertExtended;
 
 unsafe impl crate::CppDeletable for AlertExtended {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_AlertExtended_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_AlertExtended_destructor(ptr);
+        }
     }
 }
 
@@ -2046,13 +2052,17 @@ pub use crate::ffi_types::HandleMessageAlertExtended;
 
 unsafe impl crate::CppDeletable for HandleMessageAlertExtended {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessageAlertExtended_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageAlertExtended_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessageAlertExtended {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlertExtended_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlertExtended_clone(ptr))
+        }
     }
 }
 
@@ -2157,7 +2167,9 @@ pub use crate::ffi_types::Message_Algorithm as Algorithm;
 
 unsafe impl crate::CppDeletable for Algorithm {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_Algorithm_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_Algorithm_destructor(ptr);
+        }
     }
 }
 
@@ -2616,13 +2628,15 @@ pub use crate::ffi_types::HandleMessageAlgorithm;
 
 unsafe impl crate::CppDeletable for HandleMessageAlgorithm {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessageAlgorithm_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageAlgorithm_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessageAlgorithm {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlgorithm_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlgorithm_clone(ptr)) }
     }
 }
 
@@ -2727,7 +2741,9 @@ pub use crate::ffi_types::Message_Attribute as Attribute;
 
 unsafe impl crate::CppDeletable for Attribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_Attribute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_Attribute_destructor(ptr);
+        }
     }
 }
 
@@ -2909,13 +2925,15 @@ pub use crate::ffi_types::HandleMessageAttribute;
 
 unsafe impl crate::CppDeletable for HandleMessageAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessageAttribute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageAttribute_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessageAttribute {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttribute_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttribute_clone(ptr)) }
     }
 }
 
@@ -3034,7 +3052,9 @@ pub use crate::ffi_types::Message_AttributeMeter as AttributeMeter;
 
 unsafe impl crate::CppDeletable for AttributeMeter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_AttributeMeter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_AttributeMeter_destructor(ptr);
+        }
     }
 }
 
@@ -3351,13 +3371,17 @@ pub use crate::ffi_types::HandleMessageAttributeMeter;
 
 unsafe impl crate::CppDeletable for HandleMessageAttributeMeter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessageAttributeMeter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageAttributeMeter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessageAttributeMeter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeMeter_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeMeter_clone(ptr))
+        }
     }
 }
 
@@ -3422,7 +3446,9 @@ pub use crate::ffi_types::Message_AttributeObject as AttributeObject;
 
 unsafe impl crate::CppDeletable for AttributeObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_AttributeObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_AttributeObject_destructor(ptr);
+        }
     }
 }
 
@@ -3643,13 +3669,17 @@ pub use crate::ffi_types::HandleMessageAttributeObject;
 
 unsafe impl crate::CppDeletable for HandleMessageAttributeObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessageAttributeObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageAttributeObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessageAttributeObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeObject_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeObject_clone(ptr))
+        }
     }
 }
 
@@ -3714,7 +3744,9 @@ pub use crate::ffi_types::Message_AttributeStream as AttributeStream;
 
 unsafe impl crate::CppDeletable for AttributeStream {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_AttributeStream_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_AttributeStream_destructor(ptr);
+        }
     }
 }
 
@@ -3937,13 +3969,17 @@ pub use crate::ffi_types::HandleMessageAttributeStream;
 
 unsafe impl crate::CppDeletable for HandleMessageAttributeStream {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessageAttributeStream_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageAttributeStream_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessageAttributeStream {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeStream_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeStream_clone(ptr))
+        }
     }
 }
 
@@ -4024,7 +4060,9 @@ pub use crate::ffi_types::Message_CompositeAlerts as CompositeAlerts;
 
 unsafe impl crate::CppDeletable for CompositeAlerts {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_CompositeAlerts_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_CompositeAlerts_destructor(ptr);
+        }
     }
 }
 
@@ -4297,13 +4335,17 @@ pub use crate::ffi_types::HandleMessageCompositeAlerts;
 
 unsafe impl crate::CppDeletable for HandleMessageCompositeAlerts {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessageCompositeAlerts_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageCompositeAlerts_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessageCompositeAlerts {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessageCompositeAlerts_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleMessageCompositeAlerts_clone(ptr))
+        }
     }
 }
 
@@ -4372,7 +4414,9 @@ pub use crate::ffi_types::Message_ExecStatus as ExecStatus;
 
 unsafe impl crate::CppDeletable for ExecStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_ExecStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_ExecStatus_destructor(ptr);
+        }
     }
 }
 
@@ -4645,7 +4689,9 @@ pub use crate::ffi_types::Message_Level as Level;
 
 unsafe impl crate::CppDeletable for Level {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_Level_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_Level_destructor(ptr);
+        }
     }
 }
 
@@ -4740,7 +4786,9 @@ pub use crate::ffi_types::Message_Messenger as Messenger;
 
 unsafe impl crate::CppDeletable for Messenger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_Messenger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_Messenger_destructor(ptr);
+        }
     }
 }
 
@@ -5157,13 +5205,15 @@ pub use crate::ffi_types::HandleMessageMessenger;
 
 unsafe impl crate::CppDeletable for HandleMessageMessenger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessageMessenger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageMessenger_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessageMessenger {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessageMessenger_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessageMessenger_clone(ptr)) }
     }
 }
 
@@ -5216,13 +5266,19 @@ pub use crate::ffi_types::Message_Messenger_StreamBuffer as Messenger_StreamBuff
 
 unsafe impl crate::CppDeletable for Messenger_StreamBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_Messenger_StreamBuffer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_Messenger_StreamBuffer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Messenger_StreamBuffer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::Message_Messenger_StreamBuffer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::Message_Messenger_StreamBuffer_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -5305,13 +5361,15 @@ pub use crate::ffi_types::Message_Msg as Msg;
 
 unsafe impl crate::CppDeletable for Msg {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_Msg_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_Msg_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Msg {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::Message_Msg_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::Message_Msg_clone(ptr)) }
     }
 }
 
@@ -5577,7 +5635,9 @@ pub use crate::ffi_types::Message_MsgFile as MsgFile;
 
 unsafe impl crate::CppDeletable for MsgFile {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_MsgFile_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_MsgFile_destructor(ptr);
+        }
     }
 }
 
@@ -5712,7 +5772,9 @@ pub use crate::ffi_types::Message_Printer as Printer;
 
 unsafe impl crate::CppDeletable for Printer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_Printer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_Printer_destructor(ptr);
+        }
     }
 }
 
@@ -5944,13 +6006,15 @@ pub use crate::ffi_types::HandleMessagePrinter;
 
 unsafe impl crate::CppDeletable for HandleMessagePrinter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessagePrinter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessagePrinter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessagePrinter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinter_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinter_clone(ptr)) }
     }
 }
 
@@ -6056,7 +6120,9 @@ pub use crate::ffi_types::Message_PrinterOStream as PrinterOStream;
 
 unsafe impl crate::CppDeletable for PrinterOStream {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_PrinterOStream_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_PrinterOStream_destructor(ptr);
+        }
     }
 }
 
@@ -6383,13 +6449,17 @@ pub use crate::ffi_types::HandleMessagePrinterOStream;
 
 unsafe impl crate::CppDeletable for HandleMessagePrinterOStream {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessagePrinterOStream_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessagePrinterOStream_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessagePrinterOStream {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterOStream_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterOStream_clone(ptr))
+        }
     }
 }
 
@@ -6458,7 +6528,9 @@ pub use crate::ffi_types::Message_PrinterSystemLog as PrinterSystemLog;
 
 unsafe impl crate::CppDeletable for PrinterSystemLog {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_PrinterSystemLog_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_PrinterSystemLog_destructor(ptr);
+        }
     }
 }
 
@@ -6707,13 +6779,17 @@ pub use crate::ffi_types::HandleMessagePrinterSystemLog;
 
 unsafe impl crate::CppDeletable for HandleMessagePrinterSystemLog {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessagePrinterSystemLog {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_clone(ptr))
+        }
     }
 }
 
@@ -6780,7 +6856,9 @@ pub use crate::ffi_types::Message_PrinterToReport as PrinterToReport;
 
 unsafe impl crate::CppDeletable for PrinterToReport {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_PrinterToReport_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_PrinterToReport_destructor(ptr);
+        }
     }
 }
 
@@ -7050,13 +7128,17 @@ pub use crate::ffi_types::HandleMessagePrinterToReport;
 
 unsafe impl crate::CppDeletable for HandleMessagePrinterToReport {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessagePrinterToReport_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessagePrinterToReport_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessagePrinterToReport {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterToReport_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterToReport_clone(ptr))
+        }
     }
 }
 
@@ -7150,7 +7232,9 @@ pub use crate::ffi_types::Message_ProgressIndicator as ProgressIndicator;
 
 unsafe impl crate::CppDeletable for ProgressIndicator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_ProgressIndicator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_ProgressIndicator_destructor(ptr);
+        }
     }
 }
 
@@ -7320,13 +7404,19 @@ pub use crate::ffi_types::HandleMessageProgressIndicator;
 
 unsafe impl crate::CppDeletable for HandleMessageProgressIndicator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessageProgressIndicator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageProgressIndicator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessageProgressIndicator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessageProgressIndicator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleMessageProgressIndicator_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -7395,13 +7485,15 @@ pub use crate::ffi_types::Message_ProgressRange as ProgressRange;
 
 unsafe impl crate::CppDeletable for ProgressRange {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_ProgressRange_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_ProgressRange_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for ProgressRange {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::Message_ProgressRange_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::Message_ProgressRange_clone(ptr)) }
     }
 }
 
@@ -7631,7 +7723,9 @@ pub use crate::ffi_types::Message_ProgressScope as ProgressScope;
 
 unsafe impl crate::CppDeletable for ProgressScope {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_ProgressScope_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_ProgressScope_destructor(ptr);
+        }
     }
 }
 
@@ -7868,7 +7962,9 @@ pub use crate::ffi_types::Message_Report as Report;
 
 unsafe impl crate::CppDeletable for Report {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Message_Report_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Message_Report_destructor(ptr);
+        }
     }
 }
 
@@ -8311,13 +8407,15 @@ pub use crate::ffi_types::HandleMessageReport;
 
 unsafe impl crate::CppDeletable for HandleMessageReport {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleMessageReport_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleMessageReport_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMessageReport {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleMessageReport_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessageReport_clone(ptr)) }
     }
 }
 

@@ -43,7 +43,9 @@ pub use crate::ffi_types::Bisector_Bisec as Bisec;
 
 unsafe impl crate::CppDeletable for Bisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::Bisector_Bisec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_Bisec_destructor(ptr);
+        }
     }
 }
 
@@ -171,7 +173,9 @@ pub use crate::ffi_types::Bisector_BisecAna as BisecAna;
 
 unsafe impl crate::CppDeletable for BisecAna {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_destructor(ptr);
+        }
     }
 }
 
@@ -867,13 +871,17 @@ pub use crate::ffi_types::HandleBisectorBisecAna;
 
 unsafe impl crate::CppDeletable for HandleBisectorBisecAna {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBisectorBisecAna {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_clone(ptr))
+        }
     }
 }
 
@@ -961,7 +969,9 @@ pub use crate::ffi_types::Bisector_BisecCC as BisecCC;
 
 unsafe impl crate::CppDeletable for BisecCC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_destructor(ptr);
+        }
     }
 }
 
@@ -1711,13 +1721,17 @@ pub use crate::ffi_types::HandleBisectorBisecCC;
 
 unsafe impl crate::CppDeletable for HandleBisectorBisecCC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBisectorBisecCC {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_clone(ptr))
+        }
     }
 }
 
@@ -1806,7 +1820,9 @@ pub use crate::ffi_types::Bisector_BisecPC as BisecPC;
 
 unsafe impl crate::CppDeletable for BisecPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_destructor(ptr);
+        }
     }
 }
 
@@ -2502,13 +2518,17 @@ pub use crate::ffi_types::HandleBisectorBisecPC;
 
 unsafe impl crate::CppDeletable for HandleBisectorBisecPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBisectorBisecPC {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_clone(ptr))
+        }
     }
 }
 
@@ -2594,7 +2614,9 @@ pub use crate::ffi_types::Bisector_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::Bisector_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -3102,13 +3124,15 @@ pub use crate::ffi_types::HandleBisectorCurve;
 
 unsafe impl crate::CppDeletable for HandleBisectorCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBisectorCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_clone(ptr)) }
     }
 }
 
@@ -3238,7 +3262,9 @@ pub use crate::ffi_types::Bisector_FunctionH as FunctionH;
 
 unsafe impl crate::CppDeletable for FunctionH {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::Bisector_FunctionH_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_FunctionH_destructor(ptr);
+        }
     }
 }
 
@@ -3347,7 +3373,9 @@ pub use crate::ffi_types::Bisector_FunctionInter as FunctionInter;
 
 unsafe impl crate::CppDeletable for FunctionInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::Bisector_FunctionInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_FunctionInter_destructor(ptr);
+        }
     }
 }
 
@@ -3475,7 +3503,9 @@ pub use crate::ffi_types::Bisector_Inter as Inter;
 
 unsafe impl crate::CppDeletable for Inter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::Bisector_Inter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_Inter_destructor(ptr);
+        }
     }
 }
 
@@ -3631,7 +3661,9 @@ pub use crate::ffi_types::Bisector_PointOnBis as PointOnBis;
 
 unsafe impl crate::CppDeletable for PointOnBis {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::Bisector_PointOnBis_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_PointOnBis_destructor(ptr);
+        }
     }
 }
 
@@ -3781,7 +3813,9 @@ pub use crate::ffi_types::Bisector_PolyBis as PolyBis;
 
 unsafe impl crate::CppDeletable for PolyBis {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::Bisector_PolyBis_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_PolyBis_destructor(ptr);
+        }
     }
 }
 

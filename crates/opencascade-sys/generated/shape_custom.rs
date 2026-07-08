@@ -153,7 +153,9 @@ pub use crate::ffi_types::ShapeCustom_BSplineRestriction as BSplineRestriction;
 
 unsafe impl crate::CppDeletable for BSplineRestriction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_destructor(ptr);
+        }
     }
 }
 
@@ -892,15 +894,19 @@ pub use crate::ffi_types::HandleShapeCustomBSplineRestriction;
 
 unsafe impl crate::CppDeletable for HandleShapeCustomBSplineRestriction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeCustomBSplineRestriction {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_clone(ptr),
+            )
+        }
     }
 }
 
@@ -978,7 +984,9 @@ pub use crate::ffi_types::ShapeCustom_ConvertToBSpline as ConvertToBSpline;
 
 unsafe impl crate::CppDeletable for ConvertToBSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_destructor(ptr);
+        }
     }
 }
 
@@ -1444,15 +1452,19 @@ pub use crate::ffi_types::HandleShapeCustomConvertToBSpline;
 
 unsafe impl crate::CppDeletable for HandleShapeCustomConvertToBSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeCustomConvertToBSpline {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1528,7 +1540,9 @@ pub use crate::ffi_types::ShapeCustom_ConvertToRevolution as ConvertToRevolution
 
 unsafe impl crate::CppDeletable for ConvertToRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_destructor(ptr);
+        }
     }
 }
 
@@ -1939,15 +1953,19 @@ pub use crate::ffi_types::HandleShapeCustomConvertToRevolution;
 
 unsafe impl crate::CppDeletable for HandleShapeCustomConvertToRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeCustomConvertToRevolution {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2021,7 +2039,9 @@ pub use crate::ffi_types::ShapeCustom_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeCustom_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeCustom_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -2085,7 +2105,9 @@ pub use crate::ffi_types::ShapeCustom_Curve2d as Curve2d;
 
 unsafe impl crate::CppDeletable for Curve2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeCustom_Curve2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeCustom_Curve2d_destructor(ptr);
+        }
     }
 }
 
@@ -2174,7 +2196,9 @@ pub use crate::ffi_types::ShapeCustom_DirectModification as DirectModification;
 
 unsafe impl crate::CppDeletable for DirectModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_destructor(ptr);
+        }
     }
 }
 
@@ -2592,15 +2616,19 @@ pub use crate::ffi_types::HandleShapeCustomDirectModification;
 
 unsafe impl crate::CppDeletable for HandleShapeCustomDirectModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeCustomDirectModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2675,7 +2703,9 @@ pub use crate::ffi_types::ShapeCustom_Modification as Modification;
 
 unsafe impl crate::CppDeletable for Modification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeCustom_Modification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeCustom_Modification_destructor(ptr);
+        }
     }
 }
 
@@ -3042,13 +3072,19 @@ pub use crate::ffi_types::HandleShapeCustomModification;
 
 unsafe impl crate::CppDeletable for HandleShapeCustomModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeCustomModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomModification_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeCustomModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomModification_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomModification_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3192,7 +3228,9 @@ pub use crate::ffi_types::ShapeCustom_RestrictionParameters as RestrictionParame
 
 unsafe impl crate::CppDeletable for RestrictionParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeCustom_RestrictionParameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeCustom_RestrictionParameters_destructor(ptr);
+        }
     }
 }
 
@@ -3497,15 +3535,19 @@ pub use crate::ffi_types::HandleShapeCustomRestrictionParameters;
 
 unsafe impl crate::CppDeletable for HandleShapeCustomRestrictionParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeCustomRestrictionParameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomRestrictionParameters_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeCustomRestrictionParameters {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKShHealing::HandleShapeCustomRestrictionParameters_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeCustomRestrictionParameters_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3564,7 +3606,9 @@ pub use crate::ffi_types::ShapeCustom_Surface as Surface;
 
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeCustom_Surface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeCustom_Surface_destructor(ptr);
+        }
     }
 }
 
@@ -3666,7 +3710,9 @@ pub use crate::ffi_types::ShapeCustom_SweptToElementary as SweptToElementary;
 
 unsafe impl crate::CppDeletable for SweptToElementary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_destructor(ptr);
+        }
     }
 }
 
@@ -4087,15 +4133,19 @@ pub use crate::ffi_types::HandleShapeCustomSweptToElementary;
 
 unsafe impl crate::CppDeletable for HandleShapeCustomSweptToElementary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeCustomSweptToElementary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4173,7 +4223,9 @@ pub use crate::ffi_types::ShapeCustom_TrsfModification as TrsfModification;
 
 unsafe impl crate::CppDeletable for TrsfModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_destructor(ptr);
+        }
     }
 }
 
@@ -4557,15 +4609,19 @@ pub use crate::ffi_types::HandleShapeCustomTrsfModification;
 
 unsafe impl crate::CppDeletable for HandleShapeCustomTrsfModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeCustomTrsfModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_clone(ptr),
+            )
+        }
     }
 }
 

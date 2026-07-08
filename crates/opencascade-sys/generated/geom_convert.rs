@@ -355,7 +355,9 @@ pub use crate::ffi_types::GeomConvert_ApproxCurve as ApproxCurve;
 
 unsafe impl crate::CppDeletable for ApproxCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_ApproxCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_ApproxCurve_destructor(ptr);
+        }
     }
 }
 
@@ -462,7 +464,9 @@ pub use crate::ffi_types::GeomConvert_ApproxSurface as ApproxSurface;
 
 unsafe impl crate::CppDeletable for ApproxSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_ApproxSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_ApproxSurface_destructor(ptr);
+        }
     }
 }
 
@@ -600,7 +604,9 @@ pub use crate::ffi_types::GeomConvert_BSplineCurveKnotSplitting as BSplineCurveK
 
 unsafe impl crate::CppDeletable for BSplineCurveKnotSplitting {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_BSplineCurveKnotSplitting_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_BSplineCurveKnotSplitting_destructor(ptr);
+        }
     }
 }
 
@@ -708,7 +714,9 @@ pub use crate::ffi_types::GeomConvert_BSplineCurveToBezierCurve as BSplineCurveT
 
 unsafe impl crate::CppDeletable for BSplineCurveToBezierCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_BSplineCurveToBezierCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_BSplineCurveToBezierCurve_destructor(ptr);
+        }
     }
 }
 
@@ -853,7 +861,9 @@ pub use crate::ffi_types::GeomConvert_BSplineSurfaceKnotSplitting as BSplineSurf
 
 unsafe impl crate::CppDeletable for BSplineSurfaceKnotSplitting {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_BSplineSurfaceKnotSplitting_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_BSplineSurfaceKnotSplitting_destructor(ptr);
+        }
     }
 }
 
@@ -1025,7 +1035,9 @@ pub use crate::ffi_types::GeomConvert_BSplineSurfaceToBezierSurface as BSplineSu
 
 unsafe impl crate::CppDeletable for BSplineSurfaceToBezierSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_BSplineSurfaceToBezierSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_BSplineSurfaceToBezierSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1259,9 +1271,11 @@ pub use crate::ffi_types::GeomConvert_CompBezierSurfacesToBSplineSurface as Comp
 
 unsafe impl crate::CppDeletable for CompBezierSurfacesToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -1708,7 +1722,9 @@ pub use crate::ffi_types::GeomConvert_CompCurveToBSplineCurve as CompCurveToBSpl
 
 unsafe impl crate::CppDeletable for CompCurveToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_CompCurveToBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_CompCurveToBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1798,7 +1814,9 @@ pub use crate::ffi_types::GeomConvert_CurveToAnaCurve as CurveToAnaCurve;
 
 unsafe impl crate::CppDeletable for CurveToAnaCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_CurveToAnaCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_CurveToAnaCurve_destructor(ptr);
+        }
     }
 }
 
@@ -2060,7 +2078,9 @@ pub use crate::ffi_types::GeomConvert_FuncConeLSDist as FuncConeLSDist;
 
 unsafe impl crate::CppDeletable for FuncConeLSDist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_FuncConeLSDist_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_FuncConeLSDist_destructor(ptr);
+        }
     }
 }
 
@@ -2187,7 +2207,9 @@ pub use crate::ffi_types::GeomConvert_FuncCylinderLSDist as FuncCylinderLSDist;
 
 unsafe impl crate::CppDeletable for FuncCylinderLSDist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_FuncCylinderLSDist_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_FuncCylinderLSDist_destructor(ptr);
+        }
     }
 }
 
@@ -2356,7 +2378,9 @@ pub use crate::ffi_types::GeomConvert_FuncSphereLSDist as FuncSphereLSDist;
 
 unsafe impl crate::CppDeletable for FuncSphereLSDist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_FuncSphereLSDist_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_FuncSphereLSDist_destructor(ptr);
+        }
     }
 }
 
@@ -2501,7 +2525,9 @@ pub use crate::ffi_types::GeomConvert_SurfToAnaSurf as SurfToAnaSurf;
 
 unsafe impl crate::CppDeletable for SurfToAnaSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_SurfToAnaSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_SurfToAnaSurf_destructor(ptr);
+        }
     }
 }
 
@@ -2632,7 +2658,9 @@ pub use crate::ffi_types::GeomConvert_Units as Units;
 
 unsafe impl crate::CppDeletable for Units {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomConvert_Units_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_Units_destructor(ptr);
+        }
     }
 }
 

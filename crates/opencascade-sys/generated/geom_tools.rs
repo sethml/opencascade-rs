@@ -136,7 +136,9 @@ pub use crate::ffi_types::GeomTools_Curve2dSet as Curve2dSet;
 
 unsafe impl crate::CppDeletable for Curve2dSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomTools_Curve2dSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomTools_Curve2dSet_destructor(ptr);
+        }
     }
 }
 
@@ -266,7 +268,9 @@ pub use crate::ffi_types::GeomTools_CurveSet as CurveSet;
 
 unsafe impl crate::CppDeletable for CurveSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomTools_CurveSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomTools_CurveSet_destructor(ptr);
+        }
     }
 }
 
@@ -396,7 +400,9 @@ pub use crate::ffi_types::GeomTools_SurfaceSet as SurfaceSet;
 
 unsafe impl crate::CppDeletable for SurfaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomTools_SurfaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomTools_SurfaceSet_destructor(ptr);
+        }
     }
 }
 
@@ -525,7 +531,9 @@ pub use crate::ffi_types::GeomTools_UndefinedTypeHandler as UndefinedTypeHandler
 
 unsafe impl crate::CppDeletable for UndefinedTypeHandler {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GeomTools_UndefinedTypeHandler_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GeomTools_UndefinedTypeHandler_destructor(ptr);
+        }
     }
 }
 
@@ -800,15 +808,19 @@ pub use crate::ffi_types::HandleGeomToolsUndefinedTypeHandler;
 
 unsafe impl crate::CppDeletable for HandleGeomToolsUndefinedTypeHandler {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleGeomToolsUndefinedTypeHandler_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleGeomToolsUndefinedTypeHandler_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomToolsUndefinedTypeHandler {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKGeomBase::HandleGeomToolsUndefinedTypeHandler_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleGeomToolsUndefinedTypeHandler_clone(ptr),
+            )
+        }
     }
 }
 

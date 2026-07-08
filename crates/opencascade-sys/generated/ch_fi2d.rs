@@ -101,7 +101,9 @@ pub use crate::ffi_types::ChFi2d_AnaFilletAlgo as AnaFilletAlgo;
 
 unsafe impl crate::CppDeletable for AnaFilletAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFi2d_AnaFilletAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFi2d_AnaFilletAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -224,7 +226,9 @@ pub use crate::ffi_types::ChFi2d_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFi2d_Builder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFi2d_Builder_destructor(ptr);
+        }
     }
 }
 
@@ -556,7 +560,9 @@ pub use crate::ffi_types::ChFi2d_ChamferAPI as ChamferAPI;
 
 unsafe impl crate::CppDeletable for ChamferAPI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFi2d_ChamferAPI_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFi2d_ChamferAPI_destructor(ptr);
+        }
     }
 }
 
@@ -670,7 +676,9 @@ pub use crate::ffi_types::ChFi2d_FilletAPI as FilletAPI;
 
 unsafe impl crate::CppDeletable for FilletAPI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFi2d_FilletAPI_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFi2d_FilletAPI_destructor(ptr);
+        }
     }
 }
 
@@ -828,7 +836,9 @@ pub use crate::ffi_types::ChFi2d_FilletAlgo as FilletAlgo;
 
 unsafe impl crate::CppDeletable for FilletAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFi2d_FilletAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFi2d_FilletAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -958,7 +968,9 @@ pub use crate::ffi_types::FilletPoint;
 
 unsafe impl crate::CppDeletable for FilletPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::FilletPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::FilletPoint_destructor(ptr);
+        }
     }
 }
 

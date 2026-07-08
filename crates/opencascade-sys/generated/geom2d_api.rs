@@ -38,7 +38,9 @@ pub use crate::ffi_types::Geom2dAPI_ExtremaCurveCurve as ExtremaCurveCurve;
 
 unsafe impl crate::CppDeletable for ExtremaCurveCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_destructor(ptr);
+        }
     }
 }
 
@@ -202,7 +204,9 @@ pub use crate::ffi_types::Geom2dAPI_InterCurveCurve as InterCurveCurve;
 
 unsafe impl crate::CppDeletable for InterCurveCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_destructor(ptr);
+        }
     }
 }
 
@@ -431,7 +435,9 @@ pub use crate::ffi_types::Geom2dAPI_Interpolate as Interpolate;
 
 unsafe impl crate::CppDeletable for Interpolate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_destructor(ptr);
+        }
     }
 }
 
@@ -572,7 +578,9 @@ pub use crate::ffi_types::Geom2dAPI_PointsToBSpline as PointsToBSpline;
 
 unsafe impl crate::CppDeletable for PointsToBSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_destructor(ptr);
+        }
     }
 }
 
@@ -966,7 +974,9 @@ pub use crate::ffi_types::Geom2dAPI_ProjectPointOnCurve as ProjectPointOnCurve;
 
 unsafe impl crate::CppDeletable for ProjectPointOnCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_destructor(ptr);
+        }
     }
 }
 

@@ -581,13 +581,13 @@ fn rewrite_type(ty: &mut model::Type, alias_map: &HashMap<String, String>) -> us
     let mut count = 0;
     ty.visit_inner_mut(&mut |inner| {
         match inner {
-            model::Type::Handle(ref mut name) => {
+            model::Type::Handle(name) => {
                 if let Some(alias) = alias_map.get(name.as_str()) {
                     *name = alias.clone();
                     count += 1;
                 }
             }
-            model::Type::Class(ref mut name) if name.contains('<') => {
+            model::Type::Class(name) if name.contains('<') => {
                 if let Some(alias) = alias_map.get(name.as_str()) {
                     *name = alias.clone();
                     count += 1;

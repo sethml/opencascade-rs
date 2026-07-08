@@ -133,7 +133,9 @@ pub use crate::ffi_types::HLRAlgo_BiPoint as BiPoint;
 
 unsafe impl crate::CppDeletable for BiPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_BiPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_BiPoint_destructor(ptr);
+        }
     }
 }
 
@@ -429,7 +431,9 @@ pub use crate::ffi_types::HLRAlgo_BiPoint_IndicesT as BiPoint_IndicesT;
 
 unsafe impl crate::CppDeletable for BiPoint_IndicesT {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_BiPoint_IndicesT_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_BiPoint_IndicesT_destructor(ptr);
+        }
     }
 }
 
@@ -438,7 +442,9 @@ pub use crate::ffi_types::HLRAlgo_BiPoint_PointsT as BiPoint_PointsT;
 
 unsafe impl crate::CppDeletable for BiPoint_PointsT {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_BiPoint_PointsT_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_BiPoint_PointsT_destructor(ptr);
+        }
     }
 }
 
@@ -493,7 +499,9 @@ pub use crate::ffi_types::HLRAlgo_Coincidence as Coincidence;
 
 unsafe impl crate::CppDeletable for Coincidence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_Coincidence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_Coincidence_destructor(ptr);
+        }
     }
 }
 
@@ -557,7 +565,9 @@ pub use crate::ffi_types::HLRAlgo_EdgeIterator as EdgeIterator;
 
 unsafe impl crate::CppDeletable for EdgeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_EdgeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_EdgeIterator_destructor(ptr);
+        }
     }
 }
 
@@ -670,7 +680,9 @@ pub use crate::ffi_types::HLRAlgo_EdgeStatus as EdgeStatus;
 
 unsafe impl crate::CppDeletable for EdgeStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_EdgeStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_EdgeStatus_destructor(ptr);
+        }
     }
 }
 
@@ -862,7 +874,9 @@ pub use crate::ffi_types::HLRAlgo_EdgesBlock as EdgesBlock;
 
 unsafe impl crate::CppDeletable for EdgesBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_destructor(ptr);
+        }
     }
 }
 
@@ -1122,13 +1136,15 @@ pub use crate::ffi_types::HandleHLRAlgoEdgesBlock;
 
 unsafe impl crate::CppDeletable for HandleHLRAlgoEdgesBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRAlgoEdgesBlock {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_clone(ptr)) }
     }
 }
 
@@ -1175,7 +1191,9 @@ pub use crate::ffi_types::HLRAlgo_EdgesBlock_MinMaxIndices as EdgesBlock_MinMaxI
 
 unsafe impl crate::CppDeletable for EdgesBlock_MinMaxIndices {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_MinMaxIndices_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_MinMaxIndices_destructor(ptr);
+        }
     }
 }
 
@@ -1188,7 +1206,9 @@ pub use crate::ffi_types::HLRAlgo_HArray1OfPHDat as HArray1OfPHDat;
 
 unsafe impl crate::CppDeletable for HArray1OfPHDat {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_destructor(ptr);
+        }
     }
 }
 
@@ -1406,13 +1426,17 @@ pub use crate::ffi_types::HandleHLRAlgoHArray1OfPHDat;
 
 unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPHDat {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPHDat {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_clone(ptr))
+        }
     }
 }
 
@@ -1463,7 +1487,9 @@ pub use crate::ffi_types::HLRAlgo_HArray1OfPINod as HArray1OfPINod;
 
 unsafe impl crate::CppDeletable for HArray1OfPINod {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_destructor(ptr);
+        }
     }
 }
 
@@ -1673,13 +1699,17 @@ pub use crate::ffi_types::HandleHLRAlgoHArray1OfPINod;
 
 unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPINod {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPINod {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_clone(ptr))
+        }
     }
 }
 
@@ -1730,7 +1760,9 @@ pub use crate::ffi_types::HLRAlgo_HArray1OfPISeg as HArray1OfPISeg;
 
 unsafe impl crate::CppDeletable for HArray1OfPISeg {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_destructor(ptr);
+        }
     }
 }
 
@@ -1948,13 +1980,17 @@ pub use crate::ffi_types::HandleHLRAlgoHArray1OfPISeg;
 
 unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPISeg {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPISeg {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_clone(ptr))
+        }
     }
 }
 
@@ -2005,7 +2041,9 @@ pub use crate::ffi_types::HLRAlgo_HArray1OfTData as HArray1OfTData;
 
 unsafe impl crate::CppDeletable for HArray1OfTData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_destructor(ptr);
+        }
     }
 }
 
@@ -2223,13 +2261,17 @@ pub use crate::ffi_types::HandleHLRAlgoHArray1OfTData;
 
 unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfTData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfTData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_clone(ptr))
+        }
     }
 }
 
@@ -2280,7 +2322,9 @@ pub use crate::ffi_types::HLRAlgo_Interference as Interference;
 
 unsafe impl crate::CppDeletable for Interference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_Interference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_Interference_destructor(ptr);
+        }
     }
 }
 
@@ -2429,7 +2473,9 @@ pub use crate::ffi_types::HLRAlgo_Intersection as Intersection;
 
 unsafe impl crate::CppDeletable for Intersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_Intersection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_Intersection_destructor(ptr);
+        }
     }
 }
 
@@ -2572,7 +2618,9 @@ pub use crate::ffi_types::HLRAlgo_PolyAlgo as PolyAlgo;
 
 unsafe impl crate::CppDeletable for PolyAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -2856,13 +2904,15 @@ pub use crate::ffi_types::HandleHLRAlgoPolyAlgo;
 
 unsafe impl crate::CppDeletable for HandleHLRAlgoPolyAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRAlgoPolyAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_clone(ptr)) }
     }
 }
 
@@ -2914,7 +2964,9 @@ pub use crate::ffi_types::HLRAlgo_PolyData as PolyData;
 
 unsafe impl crate::CppDeletable for PolyData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyData_destructor(ptr);
+        }
     }
 }
 
@@ -3164,13 +3216,15 @@ pub use crate::ffi_types::HandleHLRAlgoPolyData;
 
 unsafe impl crate::CppDeletable for HandleHLRAlgoPolyData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRAlgoPolyData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_clone(ptr)) }
     }
 }
 
@@ -3217,7 +3271,9 @@ pub use crate::ffi_types::HLRAlgo_PolyData_FaceIndices as PolyData_FaceIndices;
 
 unsafe impl crate::CppDeletable for PolyData_FaceIndices {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyData_FaceIndices_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyData_FaceIndices_destructor(ptr);
+        }
     }
 }
 
@@ -3226,7 +3282,9 @@ pub use crate::ffi_types::HLRAlgo_PolyData_Triangle as PolyData_Triangle;
 
 unsafe impl crate::CppDeletable for PolyData_Triangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyData_Triangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyData_Triangle_destructor(ptr);
+        }
     }
 }
 
@@ -3247,7 +3305,9 @@ pub use crate::ffi_types::HLRAlgo_PolyData_Box as PolyData_Box;
 
 unsafe impl crate::CppDeletable for PolyData_Box {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyData_Box_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyData_Box_destructor(ptr);
+        }
     }
 }
 
@@ -3261,7 +3321,9 @@ pub use crate::ffi_types::HLRAlgo_PolyHidingData as PolyHidingData;
 
 unsafe impl crate::CppDeletable for PolyHidingData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyHidingData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyHidingData_destructor(ptr);
+        }
     }
 }
 
@@ -3315,7 +3377,9 @@ pub use crate::ffi_types::HLRAlgo_PolyHidingData_TriangleIndices as PolyHidingDa
 
 unsafe impl crate::CppDeletable for PolyHidingData_TriangleIndices {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyHidingData_TriangleIndices_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyHidingData_TriangleIndices_destructor(ptr);
+        }
     }
 }
 
@@ -3324,7 +3388,9 @@ pub use crate::ffi_types::HLRAlgo_PolyHidingData_PlaneT as PolyHidingData_PlaneT
 
 unsafe impl crate::CppDeletable for PolyHidingData_PlaneT {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyHidingData_PlaneT_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyHidingData_PlaneT_destructor(ptr);
+        }
     }
 }
 
@@ -3349,7 +3415,9 @@ pub use crate::ffi_types::HLRAlgo_PolyInternalData as PolyInternalData;
 
 unsafe impl crate::CppDeletable for PolyInternalData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_destructor(ptr);
+        }
     }
 }
 
@@ -3706,13 +3774,17 @@ pub use crate::ffi_types::HandleHLRAlgoPolyInternalData;
 
 unsafe impl crate::CppDeletable for HandleHLRAlgoPolyInternalData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRAlgoPolyInternalData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_clone(ptr))
+        }
     }
 }
 
@@ -3766,7 +3838,9 @@ pub use crate::ffi_types::HLRAlgo_PolyInternalNode as PolyInternalNode;
 
 unsafe impl crate::CppDeletable for PolyInternalNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_destructor(ptr);
+        }
     }
 }
 
@@ -3935,13 +4009,17 @@ pub use crate::ffi_types::HandleHLRAlgoPolyInternalNode;
 
 unsafe impl crate::CppDeletable for HandleHLRAlgoPolyInternalNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRAlgoPolyInternalNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_clone(ptr))
+        }
     }
 }
 
@@ -3990,7 +4068,9 @@ pub use crate::ffi_types::HLRAlgo_PolyInternalNode_NodeIndices as PolyInternalNo
 
 unsafe impl crate::CppDeletable for PolyInternalNode_NodeIndices {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_NodeIndices_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_NodeIndices_destructor(ptr);
+        }
     }
 }
 
@@ -3999,7 +4079,9 @@ pub use crate::ffi_types::HLRAlgo_PolyInternalNode_NodeData as PolyInternalNode_
 
 unsafe impl crate::CppDeletable for PolyInternalNode_NodeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_NodeData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_NodeData_destructor(ptr);
+        }
     }
 }
 
@@ -4024,7 +4106,9 @@ pub use crate::ffi_types::HLRAlgo_PolyInternalSegment as PolyInternalSegment;
 
 unsafe impl crate::CppDeletable for PolyInternalSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalSegment_destructor(ptr);
+        }
     }
 }
 
@@ -4038,7 +4122,9 @@ pub use crate::ffi_types::HLRAlgo_PolyShellData as PolyShellData;
 
 unsafe impl crate::CppDeletable for PolyShellData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_destructor(ptr);
+        }
     }
 }
 
@@ -4254,13 +4340,17 @@ pub use crate::ffi_types::HandleHLRAlgoPolyShellData;
 
 unsafe impl crate::CppDeletable for HandleHLRAlgoPolyShellData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRAlgoPolyShellData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_clone(ptr))
+        }
     }
 }
 
@@ -4307,7 +4397,9 @@ pub use crate::ffi_types::HLRAlgo_PolyShellData_ShellIndices as PolyShellData_Sh
 
 unsafe impl crate::CppDeletable for PolyShellData_ShellIndices {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_ShellIndices_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_ShellIndices_destructor(ptr);
+        }
     }
 }
 
@@ -4332,7 +4424,9 @@ pub use crate::ffi_types::HLRAlgo_Projector as Projector;
 
 unsafe impl crate::CppDeletable for Projector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_Projector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_Projector_destructor(ptr);
+        }
     }
 }
 
@@ -4558,7 +4652,9 @@ pub use crate::ffi_types::HLRAlgo_TriangleData as TriangleData;
 
 unsafe impl crate::CppDeletable for TriangleData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_TriangleData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_TriangleData_destructor(ptr);
+        }
     }
 }
 
@@ -4577,7 +4673,9 @@ pub use crate::ffi_types::HLRAlgo_WiresBlock as WiresBlock;
 
 unsafe impl crate::CppDeletable for WiresBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_destructor(ptr);
+        }
     }
 }
 
@@ -4768,13 +4866,15 @@ pub use crate::ffi_types::HandleHLRAlgoWiresBlock;
 
 unsafe impl crate::CppDeletable for HandleHLRAlgoWiresBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRAlgoWiresBlock {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_clone(ptr)) }
     }
 }
 

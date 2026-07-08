@@ -19,7 +19,9 @@ pub use crate::ffi_types::GeomToStep_MakeAxis1Placement as MakeAxis1Placement;
 
 unsafe impl crate::CppDeletable for MakeAxis1Placement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeAxis1Placement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeAxis1Placement_destructor(ptr);
+        }
     }
 }
 
@@ -130,7 +132,9 @@ pub use crate::ffi_types::GeomToStep_MakeAxis2Placement2d as MakeAxis2Placement2
 
 unsafe impl crate::CppDeletable for MakeAxis2Placement2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeAxis2Placement2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeAxis2Placement2d_destructor(ptr);
+        }
     }
 }
 
@@ -221,7 +225,9 @@ pub use crate::ffi_types::GeomToStep_MakeAxis2Placement3d as MakeAxis2Placement3
 
 unsafe impl crate::CppDeletable for MakeAxis2Placement3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeAxis2Placement3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeAxis2Placement3d_destructor(ptr);
+        }
     }
 }
 
@@ -349,7 +355,9 @@ pub use crate::ffi_types::GeomToStep_MakeBSplineCurveWithKnots as MakeBSplineCur
 
 unsafe impl crate::CppDeletable for MakeBSplineCurveWithKnots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineCurveWithKnots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineCurveWithKnots_destructor(ptr);
+        }
     }
 }
 
@@ -427,7 +435,9 @@ pub use crate::ffi_types::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSpline
 
 unsafe impl crate::CppDeletable for MakeBSplineCurveWithKnotsAndRationalBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -497,7 +507,9 @@ pub use crate::ffi_types::GeomToStep_MakeBSplineSurfaceWithKnots as MakeBSplineS
 
 unsafe impl crate::CppDeletable for MakeBSplineSurfaceWithKnots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineSurfaceWithKnots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineSurfaceWithKnots_destructor(ptr);
+        }
     }
 }
 
@@ -561,7 +573,9 @@ pub use crate::ffi_types::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSpli
 
 unsafe impl crate::CppDeletable for MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -621,7 +635,9 @@ pub use crate::ffi_types::GeomToStep_MakeBoundedCurve as MakeBoundedCurve;
 
 unsafe impl crate::CppDeletable for MakeBoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeBoundedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeBoundedCurve_destructor(ptr);
+        }
     }
 }
 
@@ -701,7 +717,9 @@ pub use crate::ffi_types::GeomToStep_MakeBoundedSurface as MakeBoundedSurface;
 
 unsafe impl crate::CppDeletable for MakeBoundedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeBoundedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeBoundedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -772,7 +790,9 @@ pub use crate::ffi_types::GeomToStep_MakeCartesianPoint as MakeCartesianPoint;
 
 unsafe impl crate::CppDeletable for MakeCartesianPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeCartesianPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeCartesianPoint_destructor(ptr);
+        }
     }
 }
 
@@ -872,7 +892,9 @@ pub use crate::ffi_types::GeomToStep_MakeCircle as MakeCircle;
 
 unsafe impl crate::CppDeletable for MakeCircle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeCircle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeCircle_destructor(ptr);
+        }
     }
 }
 
@@ -974,7 +996,9 @@ pub use crate::ffi_types::GeomToStep_MakeConic as MakeConic;
 
 unsafe impl crate::CppDeletable for MakeConic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeConic_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeConic_destructor(ptr);
+        }
     }
 }
 
@@ -1061,7 +1085,9 @@ pub use crate::ffi_types::GeomToStep_MakeConicalSurface as MakeConicalSurface;
 
 unsafe impl crate::CppDeletable for MakeConicalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeConicalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeConicalSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1132,7 +1158,9 @@ pub use crate::ffi_types::GeomToStep_MakeCurve as MakeCurve;
 
 unsafe impl crate::CppDeletable for MakeCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1219,7 +1247,9 @@ pub use crate::ffi_types::GeomToStep_MakeCylindricalSurface as MakeCylindricalSu
 
 unsafe impl crate::CppDeletable for MakeCylindricalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeCylindricalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeCylindricalSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1286,7 +1316,9 @@ pub use crate::ffi_types::GeomToStep_MakeDirection as MakeDirection;
 
 unsafe impl crate::CppDeletable for MakeDirection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeDirection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeDirection_destructor(ptr);
+        }
     }
 }
 
@@ -1386,7 +1418,9 @@ pub use crate::ffi_types::GeomToStep_MakeElementarySurface as MakeElementarySurf
 
 unsafe impl crate::CppDeletable for MakeElementarySurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeElementarySurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeElementarySurface_destructor(ptr);
+        }
     }
 }
 
@@ -1457,7 +1491,9 @@ pub use crate::ffi_types::GeomToStep_MakeEllipse as MakeEllipse;
 
 unsafe impl crate::CppDeletable for MakeEllipse {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeEllipse_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeEllipse_destructor(ptr);
+        }
     }
 }
 
@@ -1558,7 +1594,9 @@ pub use crate::ffi_types::GeomToStep_MakeHyperbola as MakeHyperbola;
 
 unsafe impl crate::CppDeletable for MakeHyperbola {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeHyperbola_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeHyperbola_destructor(ptr);
+        }
     }
 }
 
@@ -1637,7 +1675,9 @@ pub use crate::ffi_types::GeomToStep_MakeLine as MakeLine;
 
 unsafe impl crate::CppDeletable for MakeLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeLine_destructor(ptr);
+        }
     }
 }
 
@@ -1753,7 +1793,9 @@ pub use crate::ffi_types::GeomToStep_MakeParabola as MakeParabola;
 
 unsafe impl crate::CppDeletable for MakeParabola {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeParabola_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeParabola_destructor(ptr);
+        }
     }
 }
 
@@ -1837,7 +1879,9 @@ pub use crate::ffi_types::GeomToStep_MakePlane as MakePlane;
 
 unsafe impl crate::CppDeletable for MakePlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakePlane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakePlane_destructor(ptr);
+        }
     }
 }
 
@@ -1922,7 +1966,9 @@ pub use crate::ffi_types::GeomToStep_MakePolyline as MakePolyline;
 
 unsafe impl crate::CppDeletable for MakePolyline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakePolyline_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakePolyline_destructor(ptr);
+        }
     }
 }
 
@@ -2012,7 +2058,9 @@ pub use crate::ffi_types::GeomToStep_MakeRectangularTrimmedSurface as MakeRectan
 
 unsafe impl crate::CppDeletable for MakeRectangularTrimmedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeRectangularTrimmedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeRectangularTrimmedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -2075,7 +2123,9 @@ pub use crate::ffi_types::GeomToStep_MakeSphericalSurface as MakeSphericalSurfac
 
 unsafe impl crate::CppDeletable for MakeSphericalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeSphericalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeSphericalSurface_destructor(ptr);
+        }
     }
 }
 
@@ -2146,7 +2196,9 @@ pub use crate::ffi_types::GeomToStep_MakeSurface as MakeSurface;
 
 unsafe impl crate::CppDeletable for MakeSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeSurface_destructor(ptr);
+        }
     }
 }
 
@@ -2218,7 +2270,9 @@ pub use crate::ffi_types::GeomToStep_MakeSurfaceOfLinearExtrusion as MakeSurface
 
 unsafe impl crate::CppDeletable for MakeSurfaceOfLinearExtrusion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeSurfaceOfLinearExtrusion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeSurfaceOfLinearExtrusion_destructor(ptr);
+        }
     }
 }
 
@@ -2281,7 +2335,9 @@ pub use crate::ffi_types::GeomToStep_MakeSurfaceOfRevolution as MakeSurfaceOfRev
 
 unsafe impl crate::CppDeletable for MakeSurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeSurfaceOfRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeSurfaceOfRevolution_destructor(ptr);
+        }
     }
 }
 
@@ -2349,7 +2405,9 @@ pub use crate::ffi_types::GeomToStep_MakeSweptSurface as MakeSweptSurface;
 
 unsafe impl crate::CppDeletable for MakeSweptSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeSweptSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeSweptSurface_destructor(ptr);
+        }
     }
 }
 
@@ -2418,7 +2476,9 @@ pub use crate::ffi_types::GeomToStep_MakeToroidalSurface as MakeToroidalSurface;
 
 unsafe impl crate::CppDeletable for MakeToroidalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeToroidalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeToroidalSurface_destructor(ptr);
+        }
     }
 }
 
@@ -2489,7 +2549,9 @@ pub use crate::ffi_types::GeomToStep_MakeVector as MakeVector;
 
 unsafe impl crate::CppDeletable for MakeVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_MakeVector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeVector_destructor(ptr);
+        }
     }
 }
 
@@ -2604,7 +2666,9 @@ pub use crate::ffi_types::GeomToStep_Root as Root;
 
 unsafe impl crate::CppDeletable for Root {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::GeomToStep_Root_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_Root_destructor(ptr);
+        }
     }
 }
 

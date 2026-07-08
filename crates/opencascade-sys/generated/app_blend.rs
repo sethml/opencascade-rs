@@ -16,7 +16,9 @@ pub use crate::ffi_types::AppBlend_Approx as Approx;
 
 unsafe impl crate::CppDeletable for Approx {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_destructor(ptr);
+        }
     }
 }
 

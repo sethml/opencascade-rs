@@ -16,7 +16,9 @@ pub use crate::ffi_types::BRepToIGES_BREntity as BREntity;
 
 unsafe impl crate::CppDeletable for BREntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_destructor(ptr);
+        }
     }
 }
 
@@ -282,7 +284,9 @@ pub use crate::ffi_types::BRepToIGES_BRShell as BRShell;
 
 unsafe impl crate::CppDeletable for BRShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_destructor(ptr);
+        }
     }
 }
 
@@ -533,7 +537,9 @@ pub use crate::ffi_types::BRepToIGES_BRSolid as BRSolid;
 
 unsafe impl crate::CppDeletable for BRSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_destructor(ptr);
+        }
     }
 }
 
@@ -803,7 +809,9 @@ pub use crate::ffi_types::BRepToIGES_BRWire as BRWire;
 
 unsafe impl crate::CppDeletable for BRWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_destructor(ptr);
+        }
     }
 }
 

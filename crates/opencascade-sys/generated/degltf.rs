@@ -28,7 +28,9 @@ pub use crate::ffi_types::DEGLTF_ConfigurationNode as ConfigurationNode;
 
 unsafe impl crate::CppDeletable for ConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::DEGLTF_ConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::DEGLTF_ConfigurationNode_destructor(ptr);
+        }
     }
 }
 
@@ -386,13 +388,19 @@ pub use crate::ffi_types::HandleDEGLTFConfigurationNode;
 
 unsafe impl crate::CppDeletable for HandleDEGLTFConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::HandleDEGLTFConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleDEGLTFConfigurationNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEGLTFConfigurationNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleDEGLTFConfigurationNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEGLTF::HandleDEGLTFConfigurationNode_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -448,7 +456,11 @@ pub use crate::ffi_types::DEGLTF_ConfigurationNode_RWGltf_InternalSection as Con
 
 unsafe impl crate::CppDeletable for ConfigurationNode_RWGltf_InternalSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::DEGLTF_ConfigurationNode_RWGltf_InternalSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::DEGLTF_ConfigurationNode_RWGltf_InternalSection_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -482,7 +494,9 @@ pub use crate::ffi_types::DEGLTF_Provider as Provider;
 
 unsafe impl crate::CppDeletable for Provider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::DEGLTF_Provider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::DEGLTF_Provider_destructor(ptr);
+        }
     }
 }
 
@@ -857,13 +871,15 @@ pub use crate::ffi_types::HandleDEGLTFProvider;
 
 unsafe impl crate::CppDeletable for HandleDEGLTFProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::HandleDEGLTFProvider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleDEGLTFProvider_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEGLTFProvider {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleDEGLTFProvider_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEGLTF::HandleDEGLTFProvider_clone(ptr)) }
     }
 }
 

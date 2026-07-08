@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== DEBREP_ConfigurationNode ========================
     pub fn DEBREP_ConfigurationNode_destructor(self_: *mut DEBREP_ConfigurationNode);
     /// **Source:** `DEBREP_ConfigurationNode.hxx`:37 - `DEBREP_ConfigurationNode::DEBREP_ConfigurationNode()`

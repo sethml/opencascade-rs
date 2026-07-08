@@ -21,7 +21,9 @@ pub use crate::ffi_types::XCAFApp_Application as Application;
 
 unsafe impl crate::CppDeletable for Application {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFApp_Application_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFApp_Application_destructor(ptr);
+        }
     }
 }
 
@@ -666,13 +668,17 @@ pub use crate::ffi_types::HandleXCAFAppApplication;
 
 unsafe impl crate::CppDeletable for HandleXCAFAppApplication {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::HandleXCAFAppApplication_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFAppApplication_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXCAFAppApplication {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFAppApplication_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFAppApplication_clone(ptr))
+        }
     }
 }
 

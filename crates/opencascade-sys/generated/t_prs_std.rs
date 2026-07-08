@@ -26,7 +26,9 @@ pub use crate::ffi_types::TPrsStd_AISPresentation as AISPresentation;
 
 unsafe impl crate::CppDeletable for AISPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -906,13 +908,17 @@ pub use crate::ffi_types::HandleTPrsStdAISPresentation;
 
 unsafe impl crate::CppDeletable for HandleTPrsStdAISPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTPrsStdAISPresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_clone(ptr))
+        }
     }
 }
 
@@ -979,7 +985,9 @@ pub use crate::ffi_types::TPrsStd_AISViewer as AISViewer;
 
 unsafe impl crate::CppDeletable for AISViewer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_destructor(ptr);
+        }
     }
 }
 
@@ -1610,13 +1618,15 @@ pub use crate::ffi_types::HandleTPrsStdAISViewer;
 
 unsafe impl crate::CppDeletable for HandleTPrsStdAISViewer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTPrsStdAISViewer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_clone(ptr)) }
     }
 }
 
@@ -1679,7 +1689,9 @@ pub use crate::ffi_types::TPrsStd_AxisDriver as AxisDriver;
 
 unsafe impl crate::CppDeletable for AxisDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1866,13 +1878,15 @@ pub use crate::ffi_types::HandleTPrsStdAxisDriver;
 
 unsafe impl crate::CppDeletable for HandleTPrsStdAxisDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTPrsStdAxisDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_clone(ptr)) }
     }
 }
 
@@ -1935,7 +1949,9 @@ pub use crate::ffi_types::TPrsStd_ConstraintDriver as ConstraintDriver;
 
 unsafe impl crate::CppDeletable for ConstraintDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_destructor(ptr);
+        }
     }
 }
 
@@ -2130,13 +2146,17 @@ pub use crate::ffi_types::HandleTPrsStdConstraintDriver;
 
 unsafe impl crate::CppDeletable for HandleTPrsStdConstraintDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTPrsStdConstraintDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_clone(ptr))
+        }
     }
 }
 
@@ -2200,7 +2220,9 @@ pub use crate::ffi_types::TPrsStd_ConstraintTools as ConstraintTools;
 
 unsafe impl crate::CppDeletable for ConstraintTools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_destructor(ptr);
+        }
     }
 }
 
@@ -2476,7 +2498,9 @@ pub use crate::ffi_types::TPrsStd_Driver as Driver;
 
 unsafe impl crate::CppDeletable for Driver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::TPrsStd_Driver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::TPrsStd_Driver_destructor(ptr);
+        }
     }
 }
 
@@ -2609,13 +2633,15 @@ pub use crate::ffi_types::HandleTPrsStdDriver;
 
 unsafe impl crate::CppDeletable for HandleTPrsStdDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTPrsStdDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_clone(ptr)) }
     }
 }
 
@@ -2796,7 +2822,9 @@ pub use crate::ffi_types::TPrsStd_DriverTable as DriverTable;
 
 unsafe impl crate::CppDeletable for DriverTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_destructor(ptr);
+        }
     }
 }
 
@@ -3015,13 +3043,17 @@ pub use crate::ffi_types::HandleTPrsStdDriverTable;
 
 unsafe impl crate::CppDeletable for HandleTPrsStdDriverTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTPrsStdDriverTable {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_clone(ptr))
+        }
     }
 }
 
@@ -3073,7 +3105,9 @@ pub use crate::ffi_types::TPrsStd_GeometryDriver as GeometryDriver;
 
 unsafe impl crate::CppDeletable for GeometryDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_destructor(ptr);
+        }
     }
 }
 
@@ -3264,13 +3298,17 @@ pub use crate::ffi_types::HandleTPrsStdGeometryDriver;
 
 unsafe impl crate::CppDeletable for HandleTPrsStdGeometryDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTPrsStdGeometryDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_clone(ptr))
+        }
     }
 }
 
@@ -3335,7 +3373,9 @@ pub use crate::ffi_types::TPrsStd_NamedShapeDriver as NamedShapeDriver;
 
 unsafe impl crate::CppDeletable for NamedShapeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_destructor(ptr);
+        }
     }
 }
 
@@ -3530,13 +3570,17 @@ pub use crate::ffi_types::HandleTPrsStdNamedShapeDriver;
 
 unsafe impl crate::CppDeletable for HandleTPrsStdNamedShapeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTPrsStdNamedShapeDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_clone(ptr))
+        }
     }
 }
 
@@ -3601,7 +3645,9 @@ pub use crate::ffi_types::TPrsStd_PlaneDriver as PlaneDriver;
 
 unsafe impl crate::CppDeletable for PlaneDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_destructor(ptr);
+        }
     }
 }
 
@@ -3788,13 +3834,17 @@ pub use crate::ffi_types::HandleTPrsStdPlaneDriver;
 
 unsafe impl crate::CppDeletable for HandleTPrsStdPlaneDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTPrsStdPlaneDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_clone(ptr))
+        }
     }
 }
 
@@ -3857,7 +3907,9 @@ pub use crate::ffi_types::TPrsStd_PointDriver as PointDriver;
 
 unsafe impl crate::CppDeletable for PointDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_destructor(ptr);
+        }
     }
 }
 
@@ -4044,13 +4096,17 @@ pub use crate::ffi_types::HandleTPrsStdPointDriver;
 
 unsafe impl crate::CppDeletable for HandleTPrsStdPointDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTPrsStdPointDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_clone(ptr))
+        }
     }
 }
 

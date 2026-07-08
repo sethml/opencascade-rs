@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== BRepOffset_Analyse ========================
     pub fn BRepOffset_Analyse_destructor(self_: *mut BRepOffset_Analyse);
     /// **Source:** `BRepOffset_Analyse.hxx`:50 - `BRepOffset_Analyse::BRepOffset_Analyse()`

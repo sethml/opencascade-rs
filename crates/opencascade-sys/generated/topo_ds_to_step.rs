@@ -264,7 +264,9 @@ pub use crate::ffi_types::TopoDSToStep_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_Builder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_Builder_destructor(ptr);
+        }
     }
 }
 
@@ -395,7 +397,9 @@ pub use crate::ffi_types::TopoDSToStep_FacetedTool as FacetedTool;
 
 unsafe impl crate::CppDeletable for FacetedTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_FacetedTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_FacetedTool_destructor(ptr);
+        }
     }
 }
 
@@ -433,7 +437,9 @@ pub use crate::ffi_types::TopoDSToStep_MakeBrepWithVoids as MakeBrepWithVoids;
 
 unsafe impl crate::CppDeletable for MakeBrepWithVoids {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeBrepWithVoids_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeBrepWithVoids_destructor(ptr);
+        }
     }
 }
 
@@ -529,7 +535,9 @@ pub use crate::ffi_types::TopoDSToStep_MakeFacetedBrep as MakeFacetedBrep;
 
 unsafe impl crate::CppDeletable for MakeFacetedBrep {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeFacetedBrep_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeFacetedBrep_destructor(ptr);
+        }
     }
 }
 
@@ -635,7 +643,11 @@ pub use crate::ffi_types::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids as MakeFa
 
 unsafe impl crate::CppDeletable for MakeFacetedBrepAndBrepWithVoids {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -711,7 +723,9 @@ pub use crate::ffi_types::TopoDSToStep_MakeGeometricCurveSet as MakeGeometricCur
 
 unsafe impl crate::CppDeletable for MakeGeometricCurveSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeGeometricCurveSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeGeometricCurveSet_destructor(ptr);
+        }
     }
 }
 
@@ -791,7 +805,9 @@ pub use crate::ffi_types::TopoDSToStep_MakeManifoldSolidBrep as MakeManifoldSoli
 
 unsafe impl crate::CppDeletable for MakeManifoldSolidBrep {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeManifoldSolidBrep_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeManifoldSolidBrep_destructor(ptr);
+        }
     }
 }
 
@@ -894,7 +910,9 @@ pub use crate::ffi_types::TopoDSToStep_MakeShellBasedSurfaceModel as MakeShellBa
 
 unsafe impl crate::CppDeletable for MakeShellBasedSurfaceModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeShellBasedSurfaceModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeShellBasedSurfaceModel_destructor(ptr);
+        }
     }
 }
 
@@ -996,7 +1014,9 @@ pub use crate::ffi_types::TopoDSToStep_MakeStepEdge as MakeStepEdge;
 
 unsafe impl crate::CppDeletable for MakeStepEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepEdge_destructor(ptr);
+        }
     }
 }
 
@@ -1113,7 +1133,9 @@ pub use crate::ffi_types::TopoDSToStep_MakeStepFace as MakeStepFace;
 
 unsafe impl crate::CppDeletable for MakeStepFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepFace_destructor(ptr);
+        }
     }
 }
 
@@ -1230,7 +1252,9 @@ pub use crate::ffi_types::TopoDSToStep_MakeStepVertex as MakeStepVertex;
 
 unsafe impl crate::CppDeletable for MakeStepVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepVertex_destructor(ptr);
+        }
     }
 }
 
@@ -1347,7 +1371,9 @@ pub use crate::ffi_types::TopoDSToStep_MakeStepWire as MakeStepWire;
 
 unsafe impl crate::CppDeletable for MakeStepWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepWire_destructor(ptr);
+        }
     }
 }
 
@@ -1463,7 +1489,9 @@ pub use crate::ffi_types::TopoDSToStep_MakeTessellatedItem as MakeTessellatedIte
 
 unsafe impl crate::CppDeletable for MakeTessellatedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeTessellatedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeTessellatedItem_destructor(ptr);
+        }
     }
 }
 
@@ -1590,7 +1618,9 @@ pub use crate::ffi_types::TopoDSToStep_Root as Root;
 
 unsafe impl crate::CppDeletable for Root {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_Root_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_Root_destructor(ptr);
+        }
     }
 }
 
@@ -1625,7 +1655,9 @@ pub use crate::ffi_types::TopoDSToStep_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_destructor(ptr);
+        }
     }
 }
 
@@ -1845,7 +1877,9 @@ pub use crate::ffi_types::TopoDSToStep_WireframeBuilder as WireframeBuilder;
 
 unsafe impl crate::CppDeletable for WireframeBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::TopoDSToStep_WireframeBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_WireframeBuilder_destructor(ptr);
+        }
     }
 }
 

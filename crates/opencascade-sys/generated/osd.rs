@@ -596,7 +596,9 @@ pub use crate::ffi_types::OSD_CachedFileSystem as CachedFileSystem;
 
 unsafe impl crate::CppDeletable for CachedFileSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_CachedFileSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_CachedFileSystem_destructor(ptr);
+        }
     }
 }
 
@@ -901,13 +903,17 @@ pub use crate::ffi_types::HandleOSDCachedFileSystem;
 
 unsafe impl crate::CppDeletable for HandleOSDCachedFileSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDCachedFileSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_clone(ptr))
+        }
     }
 }
 
@@ -977,7 +983,9 @@ pub use crate::ffi_types::OSD_Chronometer as Chronometer;
 
 unsafe impl crate::CppDeletable for Chronometer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Chronometer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Chronometer_destructor(ptr);
+        }
     }
 }
 
@@ -1164,7 +1172,9 @@ pub use crate::ffi_types::OSD_Directory as Directory;
 
 unsafe impl crate::CppDeletable for Directory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Directory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Directory_destructor(ptr);
+        }
     }
 }
 
@@ -1354,7 +1364,9 @@ pub use crate::ffi_types::OSD_DirectoryIterator as DirectoryIterator;
 
 unsafe impl crate::CppDeletable for DirectoryIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_DirectoryIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_DirectoryIterator_destructor(ptr);
+        }
     }
 }
 
@@ -1477,7 +1489,9 @@ pub use crate::ffi_types::OSD_Disk as Disk;
 
 unsafe impl crate::CppDeletable for Disk {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Disk_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Disk_destructor(ptr);
+        }
     }
 }
 
@@ -1603,7 +1617,9 @@ pub use crate::ffi_types::OSD_Environment as Environment;
 
 unsafe impl crate::CppDeletable for Environment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Environment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Environment_destructor(ptr);
+        }
     }
 }
 
@@ -1744,7 +1760,9 @@ pub use crate::ffi_types::OSD_Error as Error;
 
 unsafe impl crate::CppDeletable for Error {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Error_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Error_destructor(ptr);
+        }
     }
 }
 
@@ -1825,7 +1843,9 @@ pub use crate::ffi_types::OSD_Exception as Exception;
 
 unsafe impl crate::CppDeletable for Exception {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_destructor(ptr);
+        }
     }
 }
 
@@ -2074,13 +2094,15 @@ pub use crate::ffi_types::HandleOSDException;
 
 unsafe impl crate::CppDeletable for HandleOSDException {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDException_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDException_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDException {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDException_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDException_clone(ptr)) }
     }
 }
 
@@ -2324,7 +2346,9 @@ pub use crate::ffi_types::OSD_Exception_ACCESS_VIOLATION as Exception_ACCESS_VIO
 
 unsafe impl crate::CppDeletable for Exception_ACCESS_VIOLATION {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_destructor(ptr);
+        }
     }
 }
 
@@ -2625,13 +2649,19 @@ pub use crate::ffi_types::HandleOSDExceptionACCESSVIOLATION;
 
 unsafe impl crate::CppDeletable for HandleOSDExceptionACCESSVIOLATION {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDExceptionACCESSVIOLATION {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2702,7 +2732,9 @@ pub use crate::ffi_types::OSD_Exception_ARRAY_BOUNDS_EXCEEDED as Exception_ARRAY
 
 unsafe impl crate::CppDeletable for Exception_ARRAY_BOUNDS_EXCEEDED {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_destructor(ptr);
+        }
     }
 }
 
@@ -2985,15 +3017,19 @@ pub use crate::ffi_types::HandleOSDExceptionARRAYBOUNDSEXCEEDED;
 
 unsafe impl crate::CppDeletable for HandleOSDExceptionARRAYBOUNDSEXCEEDED {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDExceptionARRAYBOUNDSEXCEEDED {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3062,7 +3098,9 @@ pub use crate::ffi_types::OSD_Exception_CTRL_BREAK as Exception_CTRL_BREAK;
 
 unsafe impl crate::CppDeletable for Exception_CTRL_BREAK {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_destructor(ptr);
+        }
     }
 }
 
@@ -3357,13 +3395,17 @@ pub use crate::ffi_types::HandleOSDExceptionCTRLBREAK;
 
 unsafe impl crate::CppDeletable for HandleOSDExceptionCTRLBREAK {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDExceptionCTRLBREAK {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_clone(ptr))
+        }
     }
 }
 
@@ -3438,7 +3480,9 @@ pub use crate::ffi_types::OSD_Exception_ILLEGAL_INSTRUCTION as Exception_ILLEGAL
 
 unsafe impl crate::CppDeletable for Exception_ILLEGAL_INSTRUCTION {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_destructor(ptr);
+        }
     }
 }
 
@@ -3729,15 +3773,19 @@ pub use crate::ffi_types::HandleOSDExceptionILLEGALINSTRUCTION;
 
 unsafe impl crate::CppDeletable for HandleOSDExceptionILLEGALINSTRUCTION {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDExceptionILLEGALINSTRUCTION {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3806,7 +3854,9 @@ pub use crate::ffi_types::OSD_Exception_INT_OVERFLOW as Exception_INT_OVERFLOW;
 
 unsafe impl crate::CppDeletable for Exception_INT_OVERFLOW {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_destructor(ptr);
+        }
     }
 }
 
@@ -4105,13 +4155,17 @@ pub use crate::ffi_types::HandleOSDExceptionINTOVERFLOW;
 
 unsafe impl crate::CppDeletable for HandleOSDExceptionINTOVERFLOW {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDExceptionINTOVERFLOW {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_clone(ptr))
+        }
     }
 }
 
@@ -4186,7 +4240,9 @@ pub use crate::ffi_types::OSD_Exception_INVALID_DISPOSITION as Exception_INVALID
 
 unsafe impl crate::CppDeletable for Exception_INVALID_DISPOSITION {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_destructor(ptr);
+        }
     }
 }
 
@@ -4477,15 +4533,19 @@ pub use crate::ffi_types::HandleOSDExceptionINVALIDDISPOSITION;
 
 unsafe impl crate::CppDeletable for HandleOSDExceptionINVALIDDISPOSITION {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDExceptionINVALIDDISPOSITION {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4554,7 +4614,9 @@ pub use crate::ffi_types::OSD_Exception_IN_PAGE_ERROR as Exception_IN_PAGE_ERROR
 
 unsafe impl crate::CppDeletable for Exception_IN_PAGE_ERROR {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_destructor(ptr);
+        }
     }
 }
 
@@ -4853,13 +4915,17 @@ pub use crate::ffi_types::HandleOSDExceptionINPAGEERROR;
 
 unsafe impl crate::CppDeletable for HandleOSDExceptionINPAGEERROR {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDExceptionINPAGEERROR {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_clone(ptr))
+        }
     }
 }
 
@@ -4934,7 +5000,9 @@ pub use crate::ffi_types::OSD_Exception_NONCONTINUABLE_EXCEPTION as Exception_NO
 
 unsafe impl crate::CppDeletable for Exception_NONCONTINUABLE_EXCEPTION {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_destructor(ptr);
+        }
     }
 }
 
@@ -5204,15 +5272,19 @@ pub use crate::ffi_types::HandleOSDExceptionNONCONTINUABLEEXCEPTION;
 
 unsafe impl crate::CppDeletable for HandleOSDExceptionNONCONTINUABLEEXCEPTION {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDExceptionNONCONTINUABLEEXCEPTION {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5281,7 +5353,9 @@ pub use crate::ffi_types::OSD_Exception_PRIV_INSTRUCTION as Exception_PRIV_INSTR
 
 unsafe impl crate::CppDeletable for Exception_PRIV_INSTRUCTION {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_destructor(ptr);
+        }
     }
 }
 
@@ -5582,13 +5656,19 @@ pub use crate::ffi_types::HandleOSDExceptionPRIVINSTRUCTION;
 
 unsafe impl crate::CppDeletable for HandleOSDExceptionPRIVINSTRUCTION {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDExceptionPRIVINSTRUCTION {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -5659,7 +5739,9 @@ pub use crate::ffi_types::OSD_Exception_STACK_OVERFLOW as Exception_STACK_OVERFL
 
 unsafe impl crate::CppDeletable for Exception_STACK_OVERFLOW {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_destructor(ptr);
+        }
     }
 }
 
@@ -5960,13 +6042,19 @@ pub use crate::ffi_types::HandleOSDExceptionSTACKOVERFLOW;
 
 unsafe impl crate::CppDeletable for HandleOSDExceptionSTACKOVERFLOW {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDExceptionSTACKOVERFLOW {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -6039,7 +6127,9 @@ pub use crate::ffi_types::OSD_Exception_STATUS_NO_MEMORY as Exception_STATUS_NO_
 
 unsafe impl crate::CppDeletable for Exception_STATUS_NO_MEMORY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_destructor(ptr);
+        }
     }
 }
 
@@ -6340,13 +6430,19 @@ pub use crate::ffi_types::HandleOSDExceptionSTATUSNOMEMORY;
 
 unsafe impl crate::CppDeletable for HandleOSDExceptionSTATUSNOMEMORY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDExceptionSTATUSNOMEMORY {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -6418,7 +6514,9 @@ pub use crate::ffi_types::OSD_File as File;
 
 unsafe impl crate::CppDeletable for File {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_File_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_File_destructor(ptr);
+        }
     }
 }
 
@@ -6885,7 +6983,9 @@ pub use crate::ffi_types::OSD_FileIterator as FileIterator;
 
 unsafe impl crate::CppDeletable for FileIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_FileIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_FileIterator_destructor(ptr);
+        }
     }
 }
 
@@ -7139,7 +7239,9 @@ pub use crate::ffi_types::OSD_FileSystem as FileSystem;
 
 unsafe impl crate::CppDeletable for FileSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_FileSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_FileSystem_destructor(ptr);
+        }
     }
 }
 
@@ -7419,13 +7521,15 @@ pub use crate::ffi_types::HandleOSDFileSystem;
 
 unsafe impl crate::CppDeletable for HandleOSDFileSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDFileSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDFileSystem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDFileSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDFileSystem_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDFileSystem_clone(ptr)) }
     }
 }
 
@@ -7531,7 +7635,9 @@ pub use crate::ffi_types::OSD_FileSystemSelector as FileSystemSelector;
 
 unsafe impl crate::CppDeletable for FileSystemSelector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_FileSystemSelector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_FileSystemSelector_destructor(ptr);
+        }
     }
 }
 
@@ -7836,13 +7942,17 @@ pub use crate::ffi_types::HandleOSDFileSystemSelector;
 
 unsafe impl crate::CppDeletable for HandleOSDFileSystemSelector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDFileSystemSelector {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_clone(ptr))
+        }
     }
 }
 
@@ -7908,7 +8018,9 @@ pub use crate::ffi_types::OSD_Host as Host;
 
 unsafe impl crate::CppDeletable for Host {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Host_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Host_destructor(ptr);
+        }
     }
 }
 
@@ -8022,7 +8134,9 @@ pub use crate::ffi_types::OSD_LocalFileSystem as LocalFileSystem;
 
 unsafe impl crate::CppDeletable for LocalFileSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_LocalFileSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_LocalFileSystem_destructor(ptr);
+        }
     }
 }
 
@@ -8291,13 +8405,17 @@ pub use crate::ffi_types::HandleOSDLocalFileSystem;
 
 unsafe impl crate::CppDeletable for HandleOSDLocalFileSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDLocalFileSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_clone(ptr))
+        }
     }
 }
 
@@ -8364,7 +8482,9 @@ pub use crate::ffi_types::OSD_MAllocHook as MAllocHook;
 
 unsafe impl crate::CppDeletable for MAllocHook {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_MAllocHook_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_MAllocHook_destructor(ptr);
+        }
     }
 }
 
@@ -8445,7 +8565,9 @@ pub use crate::ffi_types::OSD_MAllocHook_Callback as MAllocHook_Callback;
 
 unsafe impl crate::CppDeletable for MAllocHook_Callback {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_MAllocHook_Callback_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_MAllocHook_Callback_destructor(ptr);
+        }
     }
 }
 
@@ -8504,7 +8626,9 @@ pub use crate::ffi_types::OSD_MAllocHook_LogFileHandler as MAllocHook_LogFileHan
 
 unsafe impl crate::CppDeletable for MAllocHook_LogFileHandler {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_MAllocHook_LogFileHandler_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_MAllocHook_LogFileHandler_destructor(ptr);
+        }
     }
 }
 
@@ -8596,7 +8720,9 @@ pub use crate::ffi_types::OSD_MAllocHook_CollectBySize as MAllocHook_CollectBySi
 
 unsafe impl crate::CppDeletable for MAllocHook_CollectBySize {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_MAllocHook_CollectBySize_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_MAllocHook_CollectBySize_destructor(ptr);
+        }
     }
 }
 
@@ -8665,7 +8791,9 @@ pub use crate::ffi_types::OSD_MAllocHook_CollectBySize_Numbers as MAllocHook_Col
 
 unsafe impl crate::CppDeletable for MAllocHook_CollectBySize_Numbers {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_MAllocHook_CollectBySize_Numbers_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_MAllocHook_CollectBySize_Numbers_destructor(ptr);
+        }
     }
 }
 
@@ -8706,7 +8834,9 @@ pub use crate::ffi_types::OSD_MemInfo as MemInfo;
 
 unsafe impl crate::CppDeletable for MemInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_MemInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_MemInfo_destructor(ptr);
+        }
     }
 }
 
@@ -8841,7 +8971,9 @@ pub use crate::ffi_types::OSD_OSDError as OSDError;
 
 unsafe impl crate::CppDeletable for OSDError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_OSDError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_OSDError_destructor(ptr);
+        }
     }
 }
 
@@ -9084,13 +9216,15 @@ pub use crate::ffi_types::HandleOSDOSDError;
 
 unsafe impl crate::CppDeletable for HandleOSDOSDError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDOSDError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDOSDError_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDOSDError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDOSDError_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDOSDError_clone(ptr)) }
     }
 }
 
@@ -9188,7 +9322,9 @@ pub use crate::ffi_types::OSD_Parallel as Parallel;
 
 unsafe impl crate::CppDeletable for Parallel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Parallel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Parallel_destructor(ptr);
+        }
     }
 }
 
@@ -9241,7 +9377,9 @@ pub use crate::ffi_types::OSD_Path as Path;
 
 unsafe impl crate::CppDeletable for Path {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Path_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Path_destructor(ptr);
+        }
     }
 }
 
@@ -9851,7 +9989,9 @@ pub use crate::ffi_types::OSD_PerfMeter as PerfMeter;
 
 unsafe impl crate::CppDeletable for PerfMeter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_PerfMeter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_PerfMeter_destructor(ptr);
+        }
     }
 }
 
@@ -9938,7 +10078,9 @@ pub use crate::ffi_types::OSD_Process as Process;
 
 unsafe impl crate::CppDeletable for Process {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Process_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Process_destructor(ptr);
+        }
     }
 }
 
@@ -10096,7 +10238,9 @@ pub use crate::ffi_types::OSD_Protection as Protection;
 
 unsafe impl crate::CppDeletable for Protection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Protection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Protection_destructor(ptr);
+        }
     }
 }
 
@@ -10303,7 +10447,9 @@ pub use crate::ffi_types::OSD_SIGBUS as SIGBUS;
 
 unsafe impl crate::CppDeletable for SIGBUS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_SIGBUS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_SIGBUS_destructor(ptr);
+        }
     }
 }
 
@@ -10559,13 +10705,15 @@ pub use crate::ffi_types::HandleOSDSIGBUS;
 
 unsafe impl crate::CppDeletable for HandleOSDSIGBUS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDSIGBUS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDSIGBUS_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDSIGBUS {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGBUS_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGBUS_clone(ptr)) }
     }
 }
 
@@ -10636,7 +10784,9 @@ pub use crate::ffi_types::OSD_SIGHUP as SIGHUP;
 
 unsafe impl crate::CppDeletable for SIGHUP {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_SIGHUP_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_SIGHUP_destructor(ptr);
+        }
     }
 }
 
@@ -10892,13 +11042,15 @@ pub use crate::ffi_types::HandleOSDSIGHUP;
 
 unsafe impl crate::CppDeletable for HandleOSDSIGHUP {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDSIGHUP_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDSIGHUP_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDSIGHUP {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGHUP_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGHUP_clone(ptr)) }
     }
 }
 
@@ -10969,7 +11121,9 @@ pub use crate::ffi_types::OSD_SIGILL as SIGILL;
 
 unsafe impl crate::CppDeletable for SIGILL {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_SIGILL_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_SIGILL_destructor(ptr);
+        }
     }
 }
 
@@ -11225,13 +11379,15 @@ pub use crate::ffi_types::HandleOSDSIGILL;
 
 unsafe impl crate::CppDeletable for HandleOSDSIGILL {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDSIGILL_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDSIGILL_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDSIGILL {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGILL_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGILL_clone(ptr)) }
     }
 }
 
@@ -11302,7 +11458,9 @@ pub use crate::ffi_types::OSD_SIGINT as SIGINT;
 
 unsafe impl crate::CppDeletable for SIGINT {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_SIGINT_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_SIGINT_destructor(ptr);
+        }
     }
 }
 
@@ -11558,13 +11716,15 @@ pub use crate::ffi_types::HandleOSDSIGINT;
 
 unsafe impl crate::CppDeletable for HandleOSDSIGINT {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDSIGINT_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDSIGINT_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDSIGINT {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGINT_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGINT_clone(ptr)) }
     }
 }
 
@@ -11635,7 +11795,9 @@ pub use crate::ffi_types::OSD_SIGKILL as SIGKILL;
 
 unsafe impl crate::CppDeletable for SIGKILL {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_SIGKILL_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_SIGKILL_destructor(ptr);
+        }
     }
 }
 
@@ -11894,13 +12056,15 @@ pub use crate::ffi_types::HandleOSDSIGKILL;
 
 unsafe impl crate::CppDeletable for HandleOSDSIGKILL {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDSIGKILL_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDSIGKILL_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDSIGKILL {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGKILL_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGKILL_clone(ptr)) }
     }
 }
 
@@ -11971,7 +12135,9 @@ pub use crate::ffi_types::OSD_SIGQUIT as SIGQUIT;
 
 unsafe impl crate::CppDeletable for SIGQUIT {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_SIGQUIT_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_SIGQUIT_destructor(ptr);
+        }
     }
 }
 
@@ -12230,13 +12396,15 @@ pub use crate::ffi_types::HandleOSDSIGQUIT;
 
 unsafe impl crate::CppDeletable for HandleOSDSIGQUIT {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDSIGQUIT_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDSIGQUIT_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDSIGQUIT {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGQUIT_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGQUIT_clone(ptr)) }
     }
 }
 
@@ -12307,7 +12475,9 @@ pub use crate::ffi_types::OSD_SIGSEGV as SIGSEGV;
 
 unsafe impl crate::CppDeletable for SIGSEGV {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_SIGSEGV_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_SIGSEGV_destructor(ptr);
+        }
     }
 }
 
@@ -12566,13 +12736,15 @@ pub use crate::ffi_types::HandleOSDSIGSEGV;
 
 unsafe impl crate::CppDeletable for HandleOSDSIGSEGV {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDSIGSEGV_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDSIGSEGV_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDSIGSEGV {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGSEGV_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGSEGV_clone(ptr)) }
     }
 }
 
@@ -12643,7 +12815,9 @@ pub use crate::ffi_types::OSD_SIGSYS as SIGSYS;
 
 unsafe impl crate::CppDeletable for SIGSYS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_SIGSYS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_SIGSYS_destructor(ptr);
+        }
     }
 }
 
@@ -12899,13 +13073,15 @@ pub use crate::ffi_types::HandleOSDSIGSYS;
 
 unsafe impl crate::CppDeletable for HandleOSDSIGSYS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDSIGSYS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDSIGSYS_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDSIGSYS {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGSYS_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGSYS_clone(ptr)) }
     }
 }
 
@@ -12979,7 +13155,9 @@ pub use crate::ffi_types::OSD_SharedLibrary as SharedLibrary;
 
 unsafe impl crate::CppDeletable for SharedLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_SharedLibrary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_SharedLibrary_destructor(ptr);
+        }
     }
 }
 
@@ -13110,7 +13288,9 @@ pub use crate::ffi_types::OSD_Signal as Signal;
 
 unsafe impl crate::CppDeletable for Signal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Signal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Signal_destructor(ptr);
+        }
     }
 }
 
@@ -13348,13 +13528,15 @@ pub use crate::ffi_types::HandleOSDSignal;
 
 unsafe impl crate::CppDeletable for HandleOSDSignal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDSignal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDSignal_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDSignal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDSignal_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSignal_clone(ptr)) }
     }
 }
 
@@ -13552,13 +13734,15 @@ pub use crate::ffi_types::OSD_Thread as Thread;
 
 unsafe impl crate::CppDeletable for Thread {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Thread_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Thread_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Thread {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::OSD_Thread_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::OSD_Thread_clone(ptr)) }
     }
 }
 
@@ -13735,7 +13919,9 @@ pub use crate::ffi_types::OSD_ThreadPool as ThreadPool;
 
 unsafe impl crate::CppDeletable for ThreadPool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_ThreadPool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_ThreadPool_destructor(ptr);
+        }
     }
 }
 
@@ -13977,13 +14163,15 @@ pub use crate::ffi_types::HandleOSDThreadPool;
 
 unsafe impl crate::CppDeletable for HandleOSDThreadPool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleOSDThreadPool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleOSDThreadPool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleOSDThreadPool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleOSDThreadPool_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDThreadPool_clone(ptr)) }
     }
 }
 
@@ -14032,7 +14220,9 @@ pub use crate::ffi_types::OSD_ThreadPool_Launcher as ThreadPool_Launcher;
 
 unsafe impl crate::CppDeletable for ThreadPool_Launcher {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_ThreadPool_Launcher_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_ThreadPool_Launcher_destructor(ptr);
+        }
     }
 }
 
@@ -14139,7 +14329,9 @@ pub use crate::ffi_types::OSD_Timer as Timer;
 
 unsafe impl crate::CppDeletable for Timer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::OSD_Timer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::OSD_Timer_destructor(ptr);
+        }
     }
 }
 

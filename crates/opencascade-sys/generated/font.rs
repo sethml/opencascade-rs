@@ -162,7 +162,9 @@ pub use crate::ffi_types::Font_FTFontParams as FTFontParams;
 
 unsafe impl crate::CppDeletable for FTFontParams {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Font_FTFontParams_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Font_FTFontParams_destructor(ptr);
+        }
     }
 }
 
@@ -199,7 +201,9 @@ pub use crate::ffi_types::Font_FTFont as FTFont;
 
 unsafe impl crate::CppDeletable for FTFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Font_FTFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_destructor(ptr);
+        }
     }
 }
 
@@ -759,13 +763,15 @@ pub use crate::ffi_types::HandleFontFTFont;
 
 unsafe impl crate::CppDeletable for HandleFontFTFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleFontFTFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleFontFTFont_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFontFTFont {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleFontFTFont_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleFontFTFont_clone(ptr)) }
     }
 }
 
@@ -826,7 +832,9 @@ pub use crate::ffi_types::Font_FTLibrary as FTLibrary;
 
 unsafe impl crate::CppDeletable for FTLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Font_FTLibrary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Font_FTLibrary_destructor(ptr);
+        }
     }
 }
 
@@ -983,13 +991,15 @@ pub use crate::ffi_types::HandleFontFTLibrary;
 
 unsafe impl crate::CppDeletable for HandleFontFTLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleFontFTLibrary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleFontFTLibrary_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFontFTLibrary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleFontFTLibrary_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleFontFTLibrary_clone(ptr)) }
     }
 }
 
@@ -1048,7 +1058,9 @@ pub use crate::ffi_types::Font_FontMgr as FontMgr;
 
 unsafe impl crate::CppDeletable for FontMgr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Font_FontMgr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Font_FontMgr_destructor(ptr);
+        }
     }
 }
 
@@ -1543,13 +1555,15 @@ pub use crate::ffi_types::HandleFontFontMgr;
 
 unsafe impl crate::CppDeletable for HandleFontFontMgr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleFontFontMgr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleFontFontMgr_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFontFontMgr {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleFontFontMgr_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleFontFontMgr_clone(ptr)) }
     }
 }
 
@@ -1601,7 +1615,9 @@ pub use crate::ffi_types::Font_Rect as Rect;
 
 unsafe impl crate::CppDeletable for Rect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Font_Rect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Font_Rect_destructor(ptr);
+        }
     }
 }
 
@@ -1616,7 +1632,9 @@ pub use crate::ffi_types::Font_SystemFont as SystemFont;
 
 unsafe impl crate::CppDeletable for SystemFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Font_SystemFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Font_SystemFont_destructor(ptr);
+        }
     }
 }
 
@@ -1903,13 +1921,15 @@ pub use crate::ffi_types::HandleFontSystemFont;
 
 unsafe impl crate::CppDeletable for HandleFontSystemFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleFontSystemFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleFontSystemFont_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFontSystemFont {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleFontSystemFont_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleFontSystemFont_clone(ptr)) }
     }
 }
 
@@ -1984,7 +2004,9 @@ pub use crate::ffi_types::Font_TextFormatter as TextFormatter;
 
 unsafe impl crate::CppDeletable for TextFormatter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Font_TextFormatter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Font_TextFormatter_destructor(ptr);
+        }
     }
 }
 
@@ -2429,13 +2451,17 @@ pub use crate::ffi_types::HandleFontTextFormatter;
 
 unsafe impl crate::CppDeletable for HandleFontTextFormatter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleFontTextFormatter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleFontTextFormatter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleFontTextFormatter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleFontTextFormatter_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleFontTextFormatter_clone(ptr))
+        }
     }
 }
 
@@ -2484,7 +2510,9 @@ pub use crate::ffi_types::Font_TextFormatter_Iterator as TextFormatter_Iterator;
 
 unsafe impl crate::CppDeletable for TextFormatter_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Font_TextFormatter_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Font_TextFormatter_Iterator_destructor(ptr);
+        }
     }
 }
 

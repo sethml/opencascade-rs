@@ -385,7 +385,9 @@ pub use crate::ffi_types::BinTools_Curve2dSet as Curve2dSet;
 
 unsafe impl crate::CppDeletable for Curve2dSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BinTools_Curve2dSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BinTools_Curve2dSet_destructor(ptr);
+        }
     }
 }
 
@@ -503,7 +505,9 @@ pub use crate::ffi_types::BinTools_CurveSet as CurveSet;
 
 unsafe impl crate::CppDeletable for CurveSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BinTools_CurveSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BinTools_CurveSet_destructor(ptr);
+        }
     }
 }
 
@@ -615,7 +619,9 @@ pub use crate::ffi_types::BinTools_IStream as IStream;
 
 unsafe impl crate::CppDeletable for IStream {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BinTools_IStream_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BinTools_IStream_destructor(ptr);
+        }
     }
 }
 
@@ -828,7 +834,9 @@ pub use crate::ffi_types::BinTools_LocationSet as LocationSet;
 
 unsafe impl crate::CppDeletable for LocationSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BinTools_LocationSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BinTools_LocationSet_destructor(ptr);
+        }
     }
 }
 
@@ -917,7 +925,9 @@ pub use crate::ffi_types::BinTools_OStream as OStream;
 
 unsafe impl crate::CppDeletable for OStream {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BinTools_OStream_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BinTools_OStream_destructor(ptr);
+        }
     }
 }
 
@@ -1022,7 +1032,9 @@ pub use crate::ffi_types::BinTools_ShapeReader as ShapeReader;
 
 unsafe impl crate::CppDeletable for ShapeReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BinTools_ShapeReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BinTools_ShapeReader_destructor(ptr);
+        }
     }
 }
 
@@ -1182,7 +1194,9 @@ pub use crate::ffi_types::BinTools_ShapeSet as ShapeSet;
 
 unsafe impl crate::CppDeletable for ShapeSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BinTools_ShapeSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BinTools_ShapeSet_destructor(ptr);
+        }
     }
 }
 
@@ -1658,7 +1672,9 @@ pub use crate::ffi_types::BinTools_ShapeSetBase as ShapeSetBase;
 
 unsafe impl crate::CppDeletable for ShapeSetBase {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BinTools_ShapeSetBase_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BinTools_ShapeSetBase_destructor(ptr);
+        }
     }
 }
 
@@ -1840,7 +1856,9 @@ pub use crate::ffi_types::BinTools_ShapeWriter as ShapeWriter;
 
 unsafe impl crate::CppDeletable for ShapeWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BinTools_ShapeWriter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BinTools_ShapeWriter_destructor(ptr);
+        }
     }
 }
 
@@ -2000,7 +2018,9 @@ pub use crate::ffi_types::BinTools_SurfaceSet as SurfaceSet;
 
 unsafe impl crate::CppDeletable for SurfaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BinTools_SurfaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BinTools_SurfaceSet_destructor(ptr);
+        }
     }
 }
 

@@ -28,7 +28,9 @@ pub use crate::ffi_types::DEPLY_ConfigurationNode as ConfigurationNode;
 
 unsafe impl crate::CppDeletable for ConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEPLY::DEPLY_ConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEPLY::DEPLY_ConfigurationNode_destructor(ptr);
+        }
     }
 }
 
@@ -380,13 +382,17 @@ pub use crate::ffi_types::HandleDEPLYConfigurationNode;
 
 unsafe impl crate::CppDeletable for HandleDEPLYConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEPLY::HandleDEPLYConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEPLY::HandleDEPLYConfigurationNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEPLYConfigurationNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEPLY::HandleDEPLYConfigurationNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEPLY::HandleDEPLYConfigurationNode_clone(ptr))
+        }
     }
 }
 
@@ -444,7 +450,11 @@ pub use crate::ffi_types::DEPLY_ConfigurationNode_RWPly_InternalSection as Confi
 
 unsafe impl crate::CppDeletable for ConfigurationNode_RWPly_InternalSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEPLY::DEPLY_ConfigurationNode_RWPly_InternalSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEPLY::DEPLY_ConfigurationNode_RWPly_InternalSection_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -478,7 +488,9 @@ pub use crate::ffi_types::DEPLY_Provider as Provider;
 
 unsafe impl crate::CppDeletable for Provider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEPLY::DEPLY_Provider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEPLY::DEPLY_Provider_destructor(ptr);
+        }
     }
 }
 
@@ -785,13 +797,15 @@ pub use crate::ffi_types::HandleDEPLYProvider;
 
 unsafe impl crate::CppDeletable for HandleDEPLYProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEPLY::HandleDEPLYProvider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEPLY::HandleDEPLYProvider_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEPLYProvider {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEPLY::HandleDEPLYProvider_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEPLY::HandleDEPLYProvider_clone(ptr)) }
     }
 }
 

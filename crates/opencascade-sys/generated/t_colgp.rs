@@ -87,7 +87,9 @@ impl Array1OfCirc2d {
 
 unsafe impl crate::CppDeletable for Array1OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_destructor(ptr);
+        }
     }
 }
 
@@ -155,7 +157,9 @@ impl Array1OfDir {
 
 unsafe impl crate::CppDeletable for Array1OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfDir_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfDir_destructor(ptr);
+        }
     }
 }
 
@@ -227,7 +231,9 @@ impl Array1OfDir2d {
 
 unsafe impl crate::CppDeletable for Array1OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_destructor(ptr);
+        }
     }
 }
 
@@ -299,7 +305,9 @@ impl Array1OfLin2d {
 
 unsafe impl crate::CppDeletable for Array1OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_destructor(ptr);
+        }
     }
 }
 
@@ -367,7 +375,9 @@ impl Array1OfPnt {
 
 unsafe impl crate::CppDeletable for Array1OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfPnt_destructor(ptr);
+        }
     }
 }
 
@@ -439,7 +449,9 @@ impl Array1OfPnt2d {
 
 unsafe impl crate::CppDeletable for Array1OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_destructor(ptr);
+        }
     }
 }
 
@@ -507,7 +519,9 @@ impl Array1OfVec {
 
 unsafe impl crate::CppDeletable for Array1OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfVec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfVec_destructor(ptr);
+        }
     }
 }
 
@@ -579,7 +593,9 @@ impl Array1OfVec2d {
 
 unsafe impl crate::CppDeletable for Array1OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_destructor(ptr);
+        }
     }
 }
 
@@ -647,7 +663,9 @@ impl Array1OfXY {
 
 unsafe impl crate::CppDeletable for Array1OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfXY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfXY_destructor(ptr);
+        }
     }
 }
 
@@ -715,7 +733,9 @@ impl Array1OfXYZ {
 
 unsafe impl crate::CppDeletable for Array1OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_destructor(ptr);
+        }
     }
 }
 
@@ -792,7 +812,9 @@ impl Array2OfCirc2d {
 
 unsafe impl crate::CppDeletable for Array2OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_destructor(ptr);
+        }
     }
 }
 
@@ -867,7 +889,9 @@ impl Array2OfDir {
 
 unsafe impl crate::CppDeletable for Array2OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfDir_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfDir_destructor(ptr);
+        }
     }
 }
 
@@ -944,7 +968,9 @@ impl Array2OfDir2d {
 
 unsafe impl crate::CppDeletable for Array2OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_destructor(ptr);
+        }
     }
 }
 
@@ -1021,7 +1047,9 @@ impl Array2OfLin2d {
 
 unsafe impl crate::CppDeletable for Array2OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_destructor(ptr);
+        }
     }
 }
 
@@ -1096,7 +1124,9 @@ impl Array2OfPnt {
 
 unsafe impl crate::CppDeletable for Array2OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfPnt_destructor(ptr);
+        }
     }
 }
 
@@ -1173,7 +1203,9 @@ impl Array2OfPnt2d {
 
 unsafe impl crate::CppDeletable for Array2OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_destructor(ptr);
+        }
     }
 }
 
@@ -1248,7 +1280,9 @@ impl Array2OfVec {
 
 unsafe impl crate::CppDeletable for Array2OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfVec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfVec_destructor(ptr);
+        }
     }
 }
 
@@ -1325,7 +1359,9 @@ impl Array2OfVec2d {
 
 unsafe impl crate::CppDeletable for Array2OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_destructor(ptr);
+        }
     }
 }
 
@@ -1400,7 +1436,9 @@ impl Array2OfXY {
 
 unsafe impl crate::CppDeletable for Array2OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfXY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfXY_destructor(ptr);
+        }
     }
 }
 
@@ -1475,7 +1513,9 @@ impl Array2OfXYZ {
 
 unsafe impl crate::CppDeletable for Array2OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_destructor(ptr);
+        }
     }
 }
 
@@ -1491,7 +1531,9 @@ pub use crate::ffi_types::TColgp_HArray1OfCirc2d as HArray1OfCirc2d;
 
 unsafe impl crate::CppDeletable for HArray1OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_destructor(ptr);
+        }
     }
 }
 
@@ -1731,13 +1773,17 @@ pub use crate::ffi_types::HandleTColgpHArray1OfCirc2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray1OfCirc2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray1OfCirc2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray1OfCirc2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfCirc2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfCirc2d_clone(ptr))
+        }
     }
 }
 
@@ -1790,7 +1836,9 @@ pub use crate::ffi_types::TColgp_HArray1OfDir as HArray1OfDir;
 
 unsafe impl crate::CppDeletable for HArray1OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray1OfDir_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir_destructor(ptr);
+        }
     }
 }
 
@@ -2028,13 +2076,17 @@ pub use crate::ffi_types::HandleTColgpHArray1OfDir;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray1OfDir {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir_clone(ptr))
+        }
     }
 }
 
@@ -2085,7 +2137,9 @@ pub use crate::ffi_types::TColgp_HArray1OfDir2d as HArray1OfDir2d;
 
 unsafe impl crate::CppDeletable for HArray1OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_destructor(ptr);
+        }
     }
 }
 
@@ -2325,13 +2379,17 @@ pub use crate::ffi_types::HandleTColgpHArray1OfDir2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray1OfDir2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir2d_clone(ptr))
+        }
     }
 }
 
@@ -2382,7 +2440,9 @@ pub use crate::ffi_types::TColgp_HArray1OfLin2d as HArray1OfLin2d;
 
 unsafe impl crate::CppDeletable for HArray1OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_destructor(ptr);
+        }
     }
 }
 
@@ -2622,13 +2682,17 @@ pub use crate::ffi_types::HandleTColgpHArray1OfLin2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray1OfLin2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray1OfLin2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray1OfLin2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfLin2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfLin2d_clone(ptr))
+        }
     }
 }
 
@@ -2679,7 +2743,9 @@ pub use crate::ffi_types::TColgp_HArray1OfPnt as HArray1OfPnt;
 
 unsafe impl crate::CppDeletable for HArray1OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_destructor(ptr);
+        }
     }
 }
 
@@ -2917,13 +2983,17 @@ pub use crate::ffi_types::HandleTColgpHArray1OfPnt;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray1OfPnt {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt_clone(ptr))
+        }
     }
 }
 
@@ -2974,7 +3044,9 @@ pub use crate::ffi_types::TColgp_HArray1OfPnt2d as HArray1OfPnt2d;
 
 unsafe impl crate::CppDeletable for HArray1OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_destructor(ptr);
+        }
     }
 }
 
@@ -3214,13 +3286,17 @@ pub use crate::ffi_types::HandleTColgpHArray1OfPnt2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray1OfPnt2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt2d_clone(ptr))
+        }
     }
 }
 
@@ -3271,7 +3347,9 @@ pub use crate::ffi_types::TColgp_HArray1OfVec as HArray1OfVec;
 
 unsafe impl crate::CppDeletable for HArray1OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray1OfVec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec_destructor(ptr);
+        }
     }
 }
 
@@ -3509,13 +3587,17 @@ pub use crate::ffi_types::HandleTColgpHArray1OfVec;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray1OfVec {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec_clone(ptr))
+        }
     }
 }
 
@@ -3566,7 +3648,9 @@ pub use crate::ffi_types::TColgp_HArray1OfVec2d as HArray1OfVec2d;
 
 unsafe impl crate::CppDeletable for HArray1OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_destructor(ptr);
+        }
     }
 }
 
@@ -3806,13 +3890,17 @@ pub use crate::ffi_types::HandleTColgpHArray1OfVec2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray1OfVec2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec2d_clone(ptr))
+        }
     }
 }
 
@@ -3863,7 +3951,9 @@ pub use crate::ffi_types::TColgp_HArray1OfXY as HArray1OfXY;
 
 unsafe impl crate::CppDeletable for HArray1OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray1OfXY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXY_destructor(ptr);
+        }
     }
 }
 
@@ -4099,13 +4189,15 @@ pub use crate::ffi_types::HandleTColgpHArray1OfXY;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray1OfXY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray1OfXY_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray1OfXY {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfXY_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfXY_clone(ptr)) }
     }
 }
 
@@ -4156,7 +4248,9 @@ pub use crate::ffi_types::TColgp_HArray1OfXYZ as HArray1OfXYZ;
 
 unsafe impl crate::CppDeletable for HArray1OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_destructor(ptr);
+        }
     }
 }
 
@@ -4394,13 +4488,17 @@ pub use crate::ffi_types::HandleTColgpHArray1OfXYZ;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray1OfXYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray1OfXYZ_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray1OfXYZ {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfXYZ_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfXYZ_clone(ptr))
+        }
     }
 }
 
@@ -4451,7 +4549,9 @@ pub use crate::ffi_types::TColgp_HArray2OfCirc2d as HArray2OfCirc2d;
 
 unsafe impl crate::CppDeletable for HArray2OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_destructor(ptr);
+        }
     }
 }
 
@@ -4675,13 +4775,17 @@ pub use crate::ffi_types::HandleTColgpHArray2OfCirc2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray2OfCirc2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray2OfCirc2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray2OfCirc2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfCirc2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfCirc2d_clone(ptr))
+        }
     }
 }
 
@@ -4734,7 +4838,9 @@ pub use crate::ffi_types::TColgp_HArray2OfDir as HArray2OfDir;
 
 unsafe impl crate::CppDeletable for HArray2OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray2OfDir_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir_destructor(ptr);
+        }
     }
 }
 
@@ -4956,13 +5062,17 @@ pub use crate::ffi_types::HandleTColgpHArray2OfDir;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray2OfDir {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir_clone(ptr))
+        }
     }
 }
 
@@ -5013,7 +5123,9 @@ pub use crate::ffi_types::TColgp_HArray2OfDir2d as HArray2OfDir2d;
 
 unsafe impl crate::CppDeletable for HArray2OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_destructor(ptr);
+        }
     }
 }
 
@@ -5237,13 +5349,17 @@ pub use crate::ffi_types::HandleTColgpHArray2OfDir2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray2OfDir2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir2d_clone(ptr))
+        }
     }
 }
 
@@ -5294,7 +5410,9 @@ pub use crate::ffi_types::TColgp_HArray2OfLin2d as HArray2OfLin2d;
 
 unsafe impl crate::CppDeletable for HArray2OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_destructor(ptr);
+        }
     }
 }
 
@@ -5518,13 +5636,17 @@ pub use crate::ffi_types::HandleTColgpHArray2OfLin2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray2OfLin2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray2OfLin2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray2OfLin2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfLin2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfLin2d_clone(ptr))
+        }
     }
 }
 
@@ -5575,7 +5697,9 @@ pub use crate::ffi_types::TColgp_HArray2OfPnt as HArray2OfPnt;
 
 unsafe impl crate::CppDeletable for HArray2OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_destructor(ptr);
+        }
     }
 }
 
@@ -5797,13 +5921,17 @@ pub use crate::ffi_types::HandleTColgpHArray2OfPnt;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray2OfPnt {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt_clone(ptr))
+        }
     }
 }
 
@@ -5854,7 +5982,9 @@ pub use crate::ffi_types::TColgp_HArray2OfPnt2d as HArray2OfPnt2d;
 
 unsafe impl crate::CppDeletable for HArray2OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_destructor(ptr);
+        }
     }
 }
 
@@ -6078,13 +6208,17 @@ pub use crate::ffi_types::HandleTColgpHArray2OfPnt2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray2OfPnt2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt2d_clone(ptr))
+        }
     }
 }
 
@@ -6135,7 +6269,9 @@ pub use crate::ffi_types::TColgp_HArray2OfVec as HArray2OfVec;
 
 unsafe impl crate::CppDeletable for HArray2OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray2OfVec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec_destructor(ptr);
+        }
     }
 }
 
@@ -6357,13 +6493,17 @@ pub use crate::ffi_types::HandleTColgpHArray2OfVec;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray2OfVec {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec_clone(ptr))
+        }
     }
 }
 
@@ -6414,7 +6554,9 @@ pub use crate::ffi_types::TColgp_HArray2OfVec2d as HArray2OfVec2d;
 
 unsafe impl crate::CppDeletable for HArray2OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_destructor(ptr);
+        }
     }
 }
 
@@ -6638,13 +6780,17 @@ pub use crate::ffi_types::HandleTColgpHArray2OfVec2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray2OfVec2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec2d_clone(ptr))
+        }
     }
 }
 
@@ -6695,7 +6841,9 @@ pub use crate::ffi_types::TColgp_HArray2OfXY as HArray2OfXY;
 
 unsafe impl crate::CppDeletable for HArray2OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray2OfXY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXY_destructor(ptr);
+        }
     }
 }
 
@@ -6915,13 +7063,15 @@ pub use crate::ffi_types::HandleTColgpHArray2OfXY;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray2OfXY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray2OfXY_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray2OfXY {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfXY_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfXY_clone(ptr)) }
     }
 }
 
@@ -6972,7 +7122,9 @@ pub use crate::ffi_types::TColgp_HArray2OfXYZ as HArray2OfXYZ;
 
 unsafe impl crate::CppDeletable for HArray2OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_destructor(ptr);
+        }
     }
 }
 
@@ -7194,13 +7346,17 @@ pub use crate::ffi_types::HandleTColgpHArray2OfXYZ;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHArray2OfXYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHArray2OfXYZ_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHArray2OfXYZ {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfXYZ_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfXYZ_clone(ptr))
+        }
     }
 }
 
@@ -7251,7 +7407,9 @@ pub use crate::ffi_types::TColgp_HSequenceOfDir as HSequenceOfDir;
 
 unsafe impl crate::CppDeletable for HSequenceOfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_destructor(ptr);
+        }
     }
 }
 
@@ -7449,13 +7607,17 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfDir;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfDir {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir_clone(ptr))
+        }
     }
 }
 
@@ -7506,7 +7668,9 @@ pub use crate::ffi_types::TColgp_HSequenceOfDir2d as HSequenceOfDir2d;
 
 unsafe impl crate::CppDeletable for HSequenceOfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_destructor(ptr);
+        }
     }
 }
 
@@ -7711,13 +7875,17 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfDir2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfDir2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir2d_clone(ptr))
+        }
     }
 }
 
@@ -7770,7 +7938,9 @@ pub use crate::ffi_types::TColgp_HSequenceOfPnt as HSequenceOfPnt;
 
 unsafe impl crate::CppDeletable for HSequenceOfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_destructor(ptr);
+        }
     }
 }
 
@@ -7968,13 +8138,17 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfPnt;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfPnt {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt_clone(ptr))
+        }
     }
 }
 
@@ -8025,7 +8199,9 @@ pub use crate::ffi_types::TColgp_HSequenceOfPnt2d as HSequenceOfPnt2d;
 
 unsafe impl crate::CppDeletable for HSequenceOfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_destructor(ptr);
+        }
     }
 }
 
@@ -8230,13 +8406,17 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfPnt2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfPnt2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt2d_clone(ptr))
+        }
     }
 }
 
@@ -8289,7 +8469,9 @@ pub use crate::ffi_types::TColgp_HSequenceOfVec as HSequenceOfVec;
 
 unsafe impl crate::CppDeletable for HSequenceOfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_destructor(ptr);
+        }
     }
 }
 
@@ -8487,13 +8669,17 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfVec;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfVec {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec_clone(ptr))
+        }
     }
 }
 
@@ -8544,7 +8730,9 @@ pub use crate::ffi_types::TColgp_HSequenceOfVec2d as HSequenceOfVec2d;
 
 unsafe impl crate::CppDeletable for HSequenceOfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_destructor(ptr);
+        }
     }
 }
 
@@ -8749,13 +8937,17 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfVec2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfVec2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec2d_clone(ptr))
+        }
     }
 }
 
@@ -8808,7 +9000,9 @@ pub use crate::ffi_types::TColgp_HSequenceOfXY as HSequenceOfXY;
 
 unsafe impl crate::CppDeletable for HSequenceOfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_destructor(ptr);
+        }
     }
 }
 
@@ -9003,13 +9197,17 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfXY;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXY_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXY_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfXY {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXY_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXY_clone(ptr))
+        }
     }
 }
 
@@ -9060,7 +9258,9 @@ pub use crate::ffi_types::TColgp_HSequenceOfXYZ as HSequenceOfXYZ;
 
 unsafe impl crate::CppDeletable for HSequenceOfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_destructor(ptr);
+        }
     }
 }
 
@@ -9258,13 +9458,17 @@ pub use crate::ffi_types::HandleTColgpHSequenceOfXYZ;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXYZ_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTColgpHSequenceOfXYZ {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXYZ_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXYZ_clone(ptr))
+        }
     }
 }
 

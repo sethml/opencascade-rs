@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== AIS_AnimationProgress (POD) ========================
     pub fn AIS_AnimationProgress_destructor(self_: *mut AIS_AnimationProgress);
     pub fn AIS_AnimationProgress_sizeof() -> usize;

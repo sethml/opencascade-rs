@@ -129,7 +129,9 @@ pub use crate::ffi_types::Resource_LexicalCompare as LexicalCompare;
 
 unsafe impl crate::CppDeletable for LexicalCompare {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Resource_LexicalCompare_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Resource_LexicalCompare_destructor(ptr);
+        }
     }
 }
 
@@ -170,7 +172,9 @@ pub use crate::ffi_types::Resource_Manager as Manager;
 
 unsafe impl crate::CppDeletable for Manager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Resource_Manager_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Resource_Manager_destructor(ptr);
+        }
     }
 }
 
@@ -593,13 +597,15 @@ pub use crate::ffi_types::HandleResourceManager;
 
 unsafe impl crate::CppDeletable for HandleResourceManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleResourceManager_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleResourceManager_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleResourceManager {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleResourceManager_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleResourceManager_clone(ptr)) }
     }
 }
 
@@ -650,7 +656,9 @@ pub use crate::ffi_types::Resource_NoSuchResource as NoSuchResource;
 
 unsafe impl crate::CppDeletable for NoSuchResource {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Resource_NoSuchResource_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Resource_NoSuchResource_destructor(ptr);
+        }
     }
 }
 
@@ -965,13 +973,17 @@ pub use crate::ffi_types::HandleResourceNoSuchResource;
 
 unsafe impl crate::CppDeletable for HandleResourceNoSuchResource {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleResourceNoSuchResource_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleResourceNoSuchResource_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleResourceNoSuchResource {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleResourceNoSuchResource_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleResourceNoSuchResource_clone(ptr))
+        }
     }
 }
 
@@ -1056,7 +1068,9 @@ pub use crate::ffi_types::Resource_Unicode as Unicode;
 
 unsafe impl crate::CppDeletable for Unicode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Resource_Unicode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Resource_Unicode_destructor(ptr);
+        }
     }
 }
 

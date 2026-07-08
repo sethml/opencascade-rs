@@ -16,7 +16,9 @@ pub use crate::ffi_types::ShapeProcessAPI_ApplySequence as ApplySequence;
 
 unsafe impl crate::CppDeletable for ApplySequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeProcessAPI_ApplySequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeProcessAPI_ApplySequence_destructor(ptr);
+        }
     }
 }
 

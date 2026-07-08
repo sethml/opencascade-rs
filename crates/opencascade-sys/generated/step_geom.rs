@@ -280,7 +280,9 @@ pub use crate::ffi_types::StepGeom_Axis1Placement as Axis1Placement;
 
 unsafe impl crate::CppDeletable for Axis1Placement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Axis1Placement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Axis1Placement_destructor(ptr);
+        }
     }
 }
 
@@ -583,13 +585,17 @@ pub use crate::ffi_types::HandleStepGeomAxis1Placement;
 
 unsafe impl crate::CppDeletable for HandleStepGeomAxis1Placement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomAxis1Placement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomAxis1Placement_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomAxis1Placement {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomAxis1Placement_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomAxis1Placement_clone(ptr))
+        }
     }
 }
 
@@ -673,7 +679,9 @@ pub use crate::ffi_types::StepGeom_Axis2Placement as Axis2Placement;
 
 unsafe impl crate::CppDeletable for Axis2Placement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Axis2Placement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Axis2Placement_destructor(ptr);
+        }
     }
 }
 
@@ -930,7 +938,9 @@ pub use crate::ffi_types::StepGeom_Axis2Placement2d as Axis2Placement2d;
 
 unsafe impl crate::CppDeletable for Axis2Placement2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Axis2Placement2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Axis2Placement2d_destructor(ptr);
+        }
     }
 }
 
@@ -1238,13 +1248,19 @@ pub use crate::ffi_types::HandleStepGeomAxis2Placement2d;
 
 unsafe impl crate::CppDeletable for HandleStepGeomAxis2Placement2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomAxis2Placement2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomAxis2Placement2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomAxis2Placement2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomAxis2Placement2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomAxis2Placement2d_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1322,7 +1338,9 @@ pub use crate::ffi_types::StepGeom_Axis2Placement3d as Axis2Placement3d;
 
 unsafe impl crate::CppDeletable for Axis2Placement3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Axis2Placement3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Axis2Placement3d_destructor(ptr);
+        }
     }
 }
 
@@ -1664,13 +1682,19 @@ pub use crate::ffi_types::HandleStepGeomAxis2Placement3d;
 
 unsafe impl crate::CppDeletable for HandleStepGeomAxis2Placement3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomAxis2Placement3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomAxis2Placement3d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomAxis2Placement3d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomAxis2Placement3d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomAxis2Placement3d_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1764,7 +1788,9 @@ pub use crate::ffi_types::StepGeom_BSplineCurve as BSplineCurve;
 
 unsafe impl crate::CppDeletable for BSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -2156,13 +2182,17 @@ pub use crate::ffi_types::HandleStepGeomBSplineCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBSplineCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurve_clone(ptr))
+        }
     }
 }
 
@@ -2405,7 +2435,9 @@ pub use crate::ffi_types::StepGeom_BSplineCurveWithKnots as BSplineCurveWithKnot
 
 unsafe impl crate::CppDeletable for BSplineCurveWithKnots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnots_destructor(ptr);
+        }
     }
 }
 
@@ -2917,15 +2949,19 @@ pub use crate::ffi_types::HandleStepGeomBSplineCurveWithKnots;
 
 unsafe impl crate::CppDeletable for HandleStepGeomBSplineCurveWithKnots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurveWithKnots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurveWithKnots_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBSplineCurveWithKnots {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurveWithKnots_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurveWithKnots_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3023,7 +3059,9 @@ pub use crate::ffi_types::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve 
 
 unsafe impl crate::CppDeletable for BSplineCurveWithKnotsAndRationalBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -3490,13 +3528,17 @@ pub use crate::ffi_types::HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineC
 
 unsafe impl crate::CppDeletable for HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve_clone(ptr))
+        }
     }
 }
 
@@ -3586,7 +3628,9 @@ pub use crate::ffi_types::StepGeom_BSplineSurface as BSplineSurface;
 
 unsafe impl crate::CppDeletable for BSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -4035,13 +4079,17 @@ pub use crate::ffi_types::HandleStepGeomBSplineSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBSplineSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurface_clone(ptr))
+        }
     }
 }
 
@@ -4288,7 +4336,9 @@ pub use crate::ffi_types::StepGeom_BSplineSurfaceWithKnots as BSplineSurfaceWith
 
 unsafe impl crate::CppDeletable for BSplineSurfaceWithKnots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnots_destructor(ptr);
+        }
     }
 }
 
@@ -4924,15 +4974,19 @@ pub use crate::ffi_types::HandleStepGeomBSplineSurfaceWithKnots;
 
 unsafe impl crate::CppDeletable for HandleStepGeomBSplineSurfaceWithKnots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurfaceWithKnots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurfaceWithKnots_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBSplineSurfaceWithKnots {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurfaceWithKnots_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurfaceWithKnots_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5030,7 +5084,9 @@ pub use crate::ffi_types::StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurf
 
 unsafe impl crate::CppDeletable for BSplineSurfaceWithKnotsAndRationalBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -5606,13 +5662,17 @@ pub use crate::ffi_types::HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplin
 
 unsafe impl crate::CppDeletable for HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface_clone(ptr))
+        }
     }
 }
 
@@ -5704,7 +5764,9 @@ pub use crate::ffi_types::StepGeom_BezierCurve as BezierCurve;
 
 unsafe impl crate::CppDeletable for BezierCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BezierCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BezierCurve_destructor(ptr);
+        }
     }
 }
 
@@ -6129,13 +6191,17 @@ pub use crate::ffi_types::HandleStepGeomBezierCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomBezierCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBezierCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBezierCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBezierCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBezierCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBezierCurve_clone(ptr))
+        }
     }
 }
 
@@ -6243,7 +6309,9 @@ pub use crate::ffi_types::StepGeom_BezierCurveAndRationalBSplineCurve as BezierC
 
 unsafe impl crate::CppDeletable for BezierCurveAndRationalBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BezierCurveAndRationalBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BezierCurveAndRationalBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -6649,17 +6717,23 @@ pub use crate::ffi_types::HandleStepGeomBezierCurveAndRationalBSplineCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomBezierCurveAndRationalBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBezierCurveAndRationalBSplineCurve_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBezierCurveAndRationalBSplineCurve_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBezierCurveAndRationalBSplineCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomBezierCurveAndRationalBSplineCurve_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomBezierCurveAndRationalBSplineCurve_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -6755,7 +6829,9 @@ pub use crate::ffi_types::StepGeom_BezierSurface as BezierSurface;
 
 unsafe impl crate::CppDeletable for BezierSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BezierSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BezierSurface_destructor(ptr);
+        }
     }
 }
 
@@ -7236,13 +7312,17 @@ pub use crate::ffi_types::HandleStepGeomBezierSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomBezierSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBezierSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBezierSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBezierSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBezierSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBezierSurface_clone(ptr))
+        }
     }
 }
 
@@ -7342,7 +7422,11 @@ pub use crate::ffi_types::StepGeom_BezierSurfaceAndRationalBSplineSurface as Bez
 
 unsafe impl crate::CppDeletable for BezierSurfaceAndRationalBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BezierSurfaceAndRationalBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BezierSurfaceAndRationalBSplineSurface_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -7778,19 +7862,17 @@ pub use crate::ffi_types::HandleStepGeomBezierSurfaceAndRationalBSplineSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomBezierSurfaceAndRationalBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBezierSurfaceAndRationalBSplineSurface_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBezierSurfaceAndRationalBSplineSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBezierSurfaceAndRationalBSplineSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomBezierSurfaceAndRationalBSplineSurface_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBezierSurfaceAndRationalBSplineSurface_clone(ptr))
+        }
     }
 }
 
@@ -7882,7 +7964,9 @@ pub use crate::ffi_types::StepGeom_BoundaryCurve as BoundaryCurve;
 
 unsafe impl crate::CppDeletable for BoundaryCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BoundaryCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BoundaryCurve_destructor(ptr);
+        }
     }
 }
 
@@ -8258,13 +8342,17 @@ pub use crate::ffi_types::HandleStepGeomBoundaryCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomBoundaryCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBoundaryCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBoundaryCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBoundaryCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBoundaryCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBoundaryCurve_clone(ptr))
+        }
     }
 }
 
@@ -8389,7 +8477,9 @@ pub use crate::ffi_types::StepGeom_BoundedCurve as BoundedCurve;
 
 unsafe impl crate::CppDeletable for BoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BoundedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BoundedCurve_destructor(ptr);
+        }
     }
 }
 
@@ -8628,13 +8718,17 @@ pub use crate::ffi_types::HandleStepGeomBoundedCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomBoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBoundedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBoundedCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBoundedCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBoundedCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBoundedCurve_clone(ptr))
+        }
     }
 }
 
@@ -8980,7 +9074,9 @@ pub use crate::ffi_types::StepGeom_BoundedSurface as BoundedSurface;
 
 unsafe impl crate::CppDeletable for BoundedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_BoundedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_BoundedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -9223,13 +9319,17 @@ pub use crate::ffi_types::HandleStepGeomBoundedSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomBoundedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomBoundedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomBoundedSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomBoundedSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBoundedSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomBoundedSurface_clone(ptr))
+        }
     }
 }
 
@@ -9531,7 +9631,9 @@ pub use crate::ffi_types::StepGeom_CartesianPoint as CartesianPoint;
 
 unsafe impl crate::CppDeletable for CartesianPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_CartesianPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_CartesianPoint_destructor(ptr);
+        }
     }
 }
 
@@ -9853,13 +9955,17 @@ pub use crate::ffi_types::HandleStepGeomCartesianPoint;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCartesianPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianPoint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCartesianPoint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianPoint_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianPoint_clone(ptr))
+        }
     }
 }
 
@@ -9941,7 +10047,9 @@ pub use crate::ffi_types::StepGeom_CartesianTransformationOperator as CartesianT
 
 unsafe impl crate::CppDeletable for CartesianTransformationOperator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_CartesianTransformationOperator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_CartesianTransformationOperator_destructor(ptr);
+        }
     }
 }
 
@@ -10298,15 +10406,23 @@ pub use crate::ffi_types::HandleStepGeomCartesianTransformationOperator;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCartesianTransformationOperator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCartesianTransformationOperator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -10414,7 +10530,9 @@ pub use crate::ffi_types::StepGeom_CartesianTransformationOperator2d as Cartesia
 
 unsafe impl crate::CppDeletable for CartesianTransformationOperator2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_CartesianTransformationOperator2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_CartesianTransformationOperator2d_destructor(ptr);
+        }
     }
 }
 
@@ -10737,15 +10855,23 @@ pub use crate::ffi_types::HandleStepGeomCartesianTransformationOperator2d;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCartesianTransformationOperator2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator2d_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCartesianTransformationOperator2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator2d_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator2d_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -10827,7 +10953,9 @@ pub use crate::ffi_types::StepGeom_CartesianTransformationOperator3d as Cartesia
 
 unsafe impl crate::CppDeletable for CartesianTransformationOperator3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_CartesianTransformationOperator3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_CartesianTransformationOperator3d_destructor(ptr);
+        }
     }
 }
 
@@ -11194,15 +11322,23 @@ pub use crate::ffi_types::HandleStepGeomCartesianTransformationOperator3d;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCartesianTransformationOperator3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator3d_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCartesianTransformationOperator3d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator3d_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomCartesianTransformationOperator3d_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -11284,7 +11420,9 @@ pub use crate::ffi_types::StepGeom_Circle as Circle;
 
 unsafe impl crate::CppDeletable for Circle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Circle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Circle_destructor(ptr);
+        }
     }
 }
 
@@ -11580,13 +11718,15 @@ pub use crate::ffi_types::HandleStepGeomCircle;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCircle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCircle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCircle_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCircle {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCircle_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCircle_clone(ptr)) }
     }
 }
 
@@ -11677,7 +11817,9 @@ pub use crate::ffi_types::StepGeom_CompositeCurve as CompositeCurve;
 
 unsafe impl crate::CppDeletable for CompositeCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_CompositeCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_CompositeCurve_destructor(ptr);
+        }
     }
 }
 
@@ -12013,13 +12155,17 @@ pub use crate::ffi_types::HandleStepGeomCompositeCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCompositeCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCompositeCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurve_clone(ptr))
+        }
     }
 }
 
@@ -12158,7 +12304,9 @@ pub use crate::ffi_types::StepGeom_CompositeCurveOnSurface as CompositeCurveOnSu
 
 unsafe impl crate::CppDeletable for CompositeCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_CompositeCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_CompositeCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -12491,15 +12639,19 @@ pub use crate::ffi_types::HandleStepGeomCompositeCurveOnSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCompositeCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCompositeCurveOnSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurveOnSurface_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurveOnSurface_clone(ptr),
+            )
+        }
     }
 }
 
@@ -12629,7 +12781,9 @@ pub use crate::ffi_types::StepGeom_CompositeCurveSegment as CompositeCurveSegmen
 
 unsafe impl crate::CppDeletable for CompositeCurveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_CompositeCurveSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_CompositeCurveSegment_destructor(ptr);
+        }
     }
 }
 
@@ -12860,15 +13014,19 @@ pub use crate::ffi_types::HandleStepGeomCompositeCurveSegment;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCompositeCurveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurveSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurveSegment_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCompositeCurveSegment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurveSegment_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomCompositeCurveSegment_clone(ptr),
+            )
+        }
     }
 }
 
@@ -12940,7 +13098,9 @@ pub use crate::ffi_types::StepGeom_Conic as Conic;
 
 unsafe impl crate::CppDeletable for Conic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Conic_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Conic_destructor(ptr);
+        }
     }
 }
 
@@ -13187,13 +13347,15 @@ pub use crate::ffi_types::HandleStepGeomConic;
 
 unsafe impl crate::CppDeletable for HandleStepGeomConic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomConic_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomConic_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomConic {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomConic_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomConic_clone(ptr)) }
     }
 }
 
@@ -13349,7 +13511,9 @@ pub use crate::ffi_types::StepGeom_ConicalSurface as ConicalSurface;
 
 unsafe impl crate::CppDeletable for ConicalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_ConicalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_ConicalSurface_destructor(ptr);
+        }
     }
 }
 
@@ -13674,13 +13838,17 @@ pub use crate::ffi_types::HandleStepGeomConicalSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomConicalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomConicalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomConicalSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomConicalSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomConicalSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomConicalSurface_clone(ptr))
+        }
     }
 }
 
@@ -13771,7 +13939,9 @@ pub use crate::ffi_types::StepGeom_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -13980,13 +14150,15 @@ pub use crate::ffi_types::HandleStepGeomCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCurve_clone(ptr)) }
     }
 }
 
@@ -14586,7 +14758,9 @@ pub use crate::ffi_types::StepGeom_CurveBoundedSurface as CurveBoundedSurface;
 
 unsafe impl crate::CppDeletable for CurveBoundedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_CurveBoundedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_CurveBoundedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -14925,15 +15099,19 @@ pub use crate::ffi_types::HandleStepGeomCurveBoundedSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCurveBoundedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCurveBoundedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCurveBoundedSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCurveBoundedSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCurveBoundedSurface_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomCurveBoundedSurface_clone(ptr),
+            )
+        }
     }
 }
 
@@ -15022,7 +15200,9 @@ pub use crate::ffi_types::StepGeom_CurveOnSurface as CurveOnSurface;
 
 unsafe impl crate::CppDeletable for CurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_CurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_CurveOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -15288,7 +15468,9 @@ pub use crate::ffi_types::StepGeom_CurveReplica as CurveReplica;
 
 unsafe impl crate::CppDeletable for CurveReplica {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_CurveReplica_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_CurveReplica_destructor(ptr);
+        }
     }
 }
 
@@ -15579,13 +15761,17 @@ pub use crate::ffi_types::HandleStepGeomCurveReplica;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCurveReplica {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCurveReplica_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCurveReplica_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCurveReplica {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCurveReplica_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCurveReplica_clone(ptr))
+        }
     }
 }
 
@@ -15667,7 +15853,9 @@ pub use crate::ffi_types::StepGeom_CylindricalSurface as CylindricalSurface;
 
 unsafe impl crate::CppDeletable for CylindricalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_CylindricalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_CylindricalSurface_destructor(ptr);
+        }
     }
 }
 
@@ -15965,13 +16153,19 @@ pub use crate::ffi_types::HandleStepGeomCylindricalSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomCylindricalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomCylindricalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomCylindricalSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomCylindricalSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCylindricalSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomCylindricalSurface_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -16058,7 +16252,9 @@ pub use crate::ffi_types::StepGeom_DegeneratePcurve as DegeneratePcurve;
 
 unsafe impl crate::CppDeletable for DegeneratePcurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_DegeneratePcurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_DegeneratePcurve_destructor(ptr);
+        }
     }
 }
 
@@ -16351,13 +16547,19 @@ pub use crate::ffi_types::HandleStepGeomDegeneratePcurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomDegeneratePcurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomDegeneratePcurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomDegeneratePcurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomDegeneratePcurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomDegeneratePcurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomDegeneratePcurve_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -16453,7 +16655,9 @@ pub use crate::ffi_types::StepGeom_DegenerateToroidalSurface as DegenerateToroid
 
 unsafe impl crate::CppDeletable for DegenerateToroidalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_DegenerateToroidalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_DegenerateToroidalSurface_destructor(ptr);
+        }
     }
 }
 
@@ -16796,15 +17000,19 @@ pub use crate::ffi_types::HandleStepGeomDegenerateToroidalSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomDegenerateToroidalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomDegenerateToroidalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomDegenerateToroidalSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomDegenerateToroidalSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomDegenerateToroidalSurface_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomDegenerateToroidalSurface_clone(ptr),
+            )
+        }
     }
 }
 
@@ -16902,7 +17110,9 @@ pub use crate::ffi_types::StepGeom_Direction as Direction;
 
 unsafe impl crate::CppDeletable for Direction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Direction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Direction_destructor(ptr);
+        }
     }
 }
 
@@ -17167,13 +17377,17 @@ pub use crate::ffi_types::HandleStepGeomDirection;
 
 unsafe impl crate::CppDeletable for HandleStepGeomDirection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomDirection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomDirection_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomDirection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomDirection_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomDirection_clone(ptr))
+        }
     }
 }
 
@@ -17242,7 +17456,9 @@ pub use crate::ffi_types::StepGeom_ElementarySurface as ElementarySurface;
 
 unsafe impl crate::CppDeletable for ElementarySurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_ElementarySurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_ElementarySurface_destructor(ptr);
+        }
     }
 }
 
@@ -17507,13 +17723,19 @@ pub use crate::ffi_types::HandleStepGeomElementarySurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomElementarySurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomElementarySurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomElementarySurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomElementarySurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomElementarySurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomElementarySurface_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -17685,7 +17907,9 @@ pub use crate::ffi_types::StepGeom_Ellipse as Ellipse;
 
 unsafe impl crate::CppDeletable for Ellipse {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Ellipse_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Ellipse_destructor(ptr);
+        }
     }
 }
 
@@ -18001,13 +18225,15 @@ pub use crate::ffi_types::HandleStepGeomEllipse;
 
 unsafe impl crate::CppDeletable for HandleStepGeomEllipse {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomEllipse_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomEllipse_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomEllipse {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomEllipse_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomEllipse_clone(ptr)) }
     }
 }
 
@@ -18098,7 +18324,9 @@ pub use crate::ffi_types::StepGeom_EvaluatedDegeneratePcurve as EvaluatedDegener
 
 unsafe impl crate::CppDeletable for EvaluatedDegeneratePcurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_EvaluatedDegeneratePcurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_EvaluatedDegeneratePcurve_destructor(ptr);
+        }
     }
 }
 
@@ -18409,15 +18637,19 @@ pub use crate::ffi_types::HandleStepGeomEvaluatedDegeneratePcurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomEvaluatedDegeneratePcurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomEvaluatedDegeneratePcurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomEvaluatedDegeneratePcurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomEvaluatedDegeneratePcurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomEvaluatedDegeneratePcurve_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomEvaluatedDegeneratePcurve_clone(ptr),
+            )
+        }
     }
 }
 
@@ -18506,7 +18738,9 @@ pub use crate::ffi_types::StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncerta
 
 unsafe impl crate::CppDeletable for GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_destructor(ptr);
+        }
     }
 }
 
@@ -18843,7 +19077,9 @@ unsafe impl crate::CppDeletable
     for HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_destructor(ptr);
+        }
     }
 }
 
@@ -18851,7 +19087,9 @@ unsafe impl crate::CppCopyable
     for HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx
 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_clone(ptr))
+        }
     }
 }
 
@@ -18910,7 +19148,9 @@ pub use crate::ffi_types::StepGeom_GeometricRepresentationContext as GeometricRe
 
 unsafe impl crate::CppDeletable for GeometricRepresentationContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationContext_destructor(ptr);
+        }
     }
 }
 
@@ -19135,15 +19375,21 @@ pub use crate::ffi_types::HandleStepGeomGeometricRepresentationContext;
 
 unsafe impl crate::CppDeletable for HandleStepGeomGeometricRepresentationContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContext_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomGeometricRepresentationContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContext_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContext_clone(ptr),
+            )
+        }
     }
 }
 
@@ -19207,7 +19453,9 @@ pub use crate::ffi_types::StepGeom_GeometricRepresentationContextAndGlobalUnitAs
 
 unsafe impl crate::CppDeletable for GeometricRepresentationContextAndGlobalUnitAssignedContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_destructor(ptr);
+        }
     }
 }
 
@@ -19488,7 +19736,9 @@ unsafe impl crate::CppDeletable
     for HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext_destructor(ptr);
+        }
     }
 }
 
@@ -19496,7 +19746,9 @@ unsafe impl crate::CppCopyable
     for HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext
 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContextAndGlobalUnitAssignedContext_clone(ptr))
+        }
     }
 }
 
@@ -19558,7 +19810,9 @@ unsafe impl crate::CppDeletable
     for GeometricRepresentationContextAndParametricRepresentationContext
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationContextAndParametricRepresentationContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationContextAndParametricRepresentationContext_destructor(ptr);
+        }
     }
 }
 
@@ -19803,7 +20057,9 @@ unsafe impl crate::CppDeletable
     for HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext_destructor(ptr);
+        }
     }
 }
 
@@ -19811,7 +20067,9 @@ unsafe impl crate::CppCopyable
     for HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext
 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationContextAndParametricRepresentationContext_clone(ptr))
+        }
     }
 }
 
@@ -19868,7 +20126,9 @@ pub use crate::ffi_types::StepGeom_GeometricRepresentationItem as GeometricRepre
 
 unsafe impl crate::CppDeletable for GeometricRepresentationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationItem_destructor(ptr);
+        }
     }
 }
 
@@ -20059,15 +20319,19 @@ pub use crate::ffi_types::HandleStepGeomGeometricRepresentationItem;
 
 unsafe impl crate::CppDeletable for HandleStepGeomGeometricRepresentationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomGeometricRepresentationItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationItem_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomGeometricRepresentationItem_clone(ptr),
+            )
+        }
     }
 }
 
@@ -23463,7 +23727,9 @@ pub use crate::ffi_types::StepGeom_HArray1OfBoundaryCurve as HArray1OfBoundaryCu
 
 unsafe impl crate::CppDeletable for HArray1OfBoundaryCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfBoundaryCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfBoundaryCurve_destructor(ptr);
+        }
     }
 }
 
@@ -23677,15 +23943,19 @@ pub use crate::ffi_types::HandleStepGeomHArray1OfBoundaryCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomHArray1OfBoundaryCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfBoundaryCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfBoundaryCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfBoundaryCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfBoundaryCurve_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfBoundaryCurve_clone(ptr),
+            )
+        }
     }
 }
 
@@ -23740,7 +24010,9 @@ pub use crate::ffi_types::StepGeom_HArray1OfCartesianPoint as HArray1OfCartesian
 
 unsafe impl crate::CppDeletable for HArray1OfCartesianPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfCartesianPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfCartesianPoint_destructor(ptr);
+        }
     }
 }
 
@@ -23954,15 +24226,19 @@ pub use crate::ffi_types::HandleStepGeomHArray1OfCartesianPoint;
 
 unsafe impl crate::CppDeletable for HandleStepGeomHArray1OfCartesianPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCartesianPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCartesianPoint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfCartesianPoint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCartesianPoint_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCartesianPoint_clone(ptr),
+            )
+        }
     }
 }
 
@@ -24017,7 +24293,9 @@ pub use crate::ffi_types::StepGeom_HArray1OfCompositeCurveSegment as HArray1OfCo
 
 unsafe impl crate::CppDeletable for HArray1OfCompositeCurveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfCompositeCurveSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfCompositeCurveSegment_destructor(ptr);
+        }
     }
 }
 
@@ -24225,15 +24503,21 @@ pub use crate::ffi_types::HandleStepGeomHArray1OfCompositeCurveSegment;
 
 unsafe impl crate::CppDeletable for HandleStepGeomHArray1OfCompositeCurveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCompositeCurveSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCompositeCurveSegment_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfCompositeCurveSegment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCompositeCurveSegment_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCompositeCurveSegment_clone(ptr),
+            )
+        }
     }
 }
 
@@ -24288,7 +24572,9 @@ pub use crate::ffi_types::StepGeom_HArray1OfCurve as HArray1OfCurve;
 
 unsafe impl crate::CppDeletable for HArray1OfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfCurve_destructor(ptr);
+        }
     }
 }
 
@@ -24510,13 +24796,17 @@ pub use crate::ffi_types::HandleStepGeomHArray1OfCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomHArray1OfCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfCurve_clone(ptr))
+        }
     }
 }
 
@@ -24569,7 +24859,9 @@ pub use crate::ffi_types::StepGeom_HArray1OfPcurveOrSurface as HArray1OfPcurveOr
 
 unsafe impl crate::CppDeletable for HArray1OfPcurveOrSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfPcurveOrSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfPcurveOrSurface_destructor(ptr);
+        }
     }
 }
 
@@ -24783,15 +25075,19 @@ pub use crate::ffi_types::HandleStepGeomHArray1OfPcurveOrSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomHArray1OfPcurveOrSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfPcurveOrSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfPcurveOrSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfPcurveOrSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfPcurveOrSurface_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfPcurveOrSurface_clone(ptr),
+            )
+        }
     }
 }
 
@@ -24846,7 +25142,9 @@ pub use crate::ffi_types::StepGeom_HArray1OfSurfaceBoundary as HArray1OfSurfaceB
 
 unsafe impl crate::CppDeletable for HArray1OfSurfaceBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfSurfaceBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfSurfaceBoundary_destructor(ptr);
+        }
     }
 }
 
@@ -25060,15 +25358,19 @@ pub use crate::ffi_types::HandleStepGeomHArray1OfSurfaceBoundary;
 
 unsafe impl crate::CppDeletable for HandleStepGeomHArray1OfSurfaceBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfSurfaceBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfSurfaceBoundary_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfSurfaceBoundary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfSurfaceBoundary_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfSurfaceBoundary_clone(ptr),
+            )
+        }
     }
 }
 
@@ -25123,7 +25425,9 @@ pub use crate::ffi_types::StepGeom_HArray1OfTrimmingSelect as HArray1OfTrimmingS
 
 unsafe impl crate::CppDeletable for HArray1OfTrimmingSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfTrimmingSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_HArray1OfTrimmingSelect_destructor(ptr);
+        }
     }
 }
 
@@ -25337,15 +25641,19 @@ pub use crate::ffi_types::HandleStepGeomHArray1OfTrimmingSelect;
 
 unsafe impl crate::CppDeletable for HandleStepGeomHArray1OfTrimmingSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfTrimmingSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfTrimmingSelect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomHArray1OfTrimmingSelect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfTrimmingSelect_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomHArray1OfTrimmingSelect_clone(ptr),
+            )
+        }
     }
 }
 
@@ -25400,7 +25708,9 @@ pub use crate::ffi_types::StepGeom_HArray2OfCartesianPoint as HArray2OfCartesian
 
 unsafe impl crate::CppDeletable for HArray2OfCartesianPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_HArray2OfCartesianPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_HArray2OfCartesianPoint_destructor(ptr);
+        }
     }
 }
 
@@ -25600,15 +25910,19 @@ pub use crate::ffi_types::HandleStepGeomHArray2OfCartesianPoint;
 
 unsafe impl crate::CppDeletable for HandleStepGeomHArray2OfCartesianPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomHArray2OfCartesianPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray2OfCartesianPoint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomHArray2OfCartesianPoint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray2OfCartesianPoint_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomHArray2OfCartesianPoint_clone(ptr),
+            )
+        }
     }
 }
 
@@ -25663,7 +25977,9 @@ pub use crate::ffi_types::StepGeom_HArray2OfSurfacePatch as HArray2OfSurfacePatc
 
 unsafe impl crate::CppDeletable for HArray2OfSurfacePatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_HArray2OfSurfacePatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_HArray2OfSurfacePatch_destructor(ptr);
+        }
     }
 }
 
@@ -25867,15 +26183,19 @@ pub use crate::ffi_types::HandleStepGeomHArray2OfSurfacePatch;
 
 unsafe impl crate::CppDeletable for HandleStepGeomHArray2OfSurfacePatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomHArray2OfSurfacePatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHArray2OfSurfacePatch_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomHArray2OfSurfacePatch {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomHArray2OfSurfacePatch_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomHArray2OfSurfacePatch_clone(ptr),
+            )
+        }
     }
 }
 
@@ -25930,7 +26250,9 @@ pub use crate::ffi_types::StepGeom_Hyperbola as Hyperbola;
 
 unsafe impl crate::CppDeletable for Hyperbola {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Hyperbola_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Hyperbola_destructor(ptr);
+        }
     }
 }
 
@@ -26251,13 +26573,17 @@ pub use crate::ffi_types::HandleStepGeomHyperbola;
 
 unsafe impl crate::CppDeletable for HandleStepGeomHyperbola {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomHyperbola_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomHyperbola_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomHyperbola {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomHyperbola_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomHyperbola_clone(ptr))
+        }
     }
 }
 
@@ -26348,7 +26674,9 @@ pub use crate::ffi_types::StepGeom_IntersectionCurve as IntersectionCurve;
 
 unsafe impl crate::CppDeletable for IntersectionCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_IntersectionCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_IntersectionCurve_destructor(ptr);
+        }
     }
 }
 
@@ -26699,13 +27027,19 @@ pub use crate::ffi_types::HandleStepGeomIntersectionCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomIntersectionCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomIntersectionCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomIntersectionCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomIntersectionCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomIntersectionCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomIntersectionCurve_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -26794,7 +27128,9 @@ pub use crate::ffi_types::StepGeom_Line as Line;
 
 unsafe impl crate::CppDeletable for Line {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Line_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Line_destructor(ptr);
+        }
     }
 }
 
@@ -27055,13 +27391,15 @@ pub use crate::ffi_types::HandleStepGeomLine;
 
 unsafe impl crate::CppDeletable for HandleStepGeomLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomLine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomLine_clone(ptr)) }
     }
 }
 
@@ -27145,7 +27483,9 @@ pub use crate::ffi_types::StepGeom_OffsetCurve3d as OffsetCurve3d;
 
 unsafe impl crate::CppDeletable for OffsetCurve3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_OffsetCurve3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_OffsetCurve3d_destructor(ptr);
+        }
     }
 }
 
@@ -27472,13 +27812,17 @@ pub use crate::ffi_types::HandleStepGeomOffsetCurve3d;
 
 unsafe impl crate::CppDeletable for HandleStepGeomOffsetCurve3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomOffsetCurve3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomOffsetCurve3d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomOffsetCurve3d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomOffsetCurve3d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomOffsetCurve3d_clone(ptr))
+        }
     }
 }
 
@@ -27560,7 +27904,9 @@ pub use crate::ffi_types::StepGeom_OffsetSurface as OffsetSurface;
 
 unsafe impl crate::CppDeletable for OffsetSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_OffsetSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_OffsetSurface_destructor(ptr);
+        }
     }
 }
 
@@ -27866,13 +28212,17 @@ pub use crate::ffi_types::HandleStepGeomOffsetSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomOffsetSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomOffsetSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomOffsetSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomOffsetSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomOffsetSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomOffsetSurface_clone(ptr))
+        }
     }
 }
 
@@ -27955,7 +28305,9 @@ pub use crate::ffi_types::StepGeom_OrientedSurface as OrientedSurface;
 
 unsafe impl crate::CppDeletable for OrientedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_OrientedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_OrientedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -28223,13 +28575,19 @@ pub use crate::ffi_types::HandleStepGeomOrientedSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomOrientedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomOrientedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomOrientedSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomOrientedSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomOrientedSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomOrientedSurface_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -28309,7 +28667,9 @@ pub use crate::ffi_types::StepGeom_OuterBoundaryCurve as OuterBoundaryCurve;
 
 unsafe impl crate::CppDeletable for OuterBoundaryCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_OuterBoundaryCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_OuterBoundaryCurve_destructor(ptr);
+        }
     }
 }
 
@@ -28693,13 +29053,19 @@ pub use crate::ffi_types::HandleStepGeomOuterBoundaryCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomOuterBoundaryCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomOuterBoundaryCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomOuterBoundaryCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomOuterBoundaryCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomOuterBoundaryCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomOuterBoundaryCurve_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -28817,7 +29183,9 @@ pub use crate::ffi_types::StepGeom_Parabola as Parabola;
 
 unsafe impl crate::CppDeletable for Parabola {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Parabola_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Parabola_destructor(ptr);
+        }
     }
 }
 
@@ -29117,13 +29485,17 @@ pub use crate::ffi_types::HandleStepGeomParabola;
 
 unsafe impl crate::CppDeletable for HandleStepGeomParabola {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomParabola_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomParabola_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomParabola {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomParabola_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomParabola_clone(ptr))
+        }
     }
 }
 
@@ -29214,7 +29586,9 @@ pub use crate::ffi_types::StepGeom_Pcurve as Pcurve;
 
 unsafe impl crate::CppDeletable for Pcurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Pcurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Pcurve_destructor(ptr);
+        }
     }
 }
 
@@ -29500,13 +29874,15 @@ pub use crate::ffi_types::HandleStepGeomPcurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomPcurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomPcurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomPcurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomPcurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPcurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPcurve_clone(ptr)) }
     }
 }
 
@@ -29586,7 +29962,9 @@ pub use crate::ffi_types::StepGeom_PcurveOrSurface as PcurveOrSurface;
 
 unsafe impl crate::CppDeletable for PcurveOrSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_PcurveOrSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_PcurveOrSurface_destructor(ptr);
+        }
     }
 }
 
@@ -29837,7 +30215,9 @@ pub use crate::ffi_types::StepGeom_Placement as Placement;
 
 unsafe impl crate::CppDeletable for Placement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Placement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Placement_destructor(ptr);
+        }
     }
 }
 
@@ -30074,13 +30454,17 @@ pub use crate::ffi_types::HandleStepGeomPlacement;
 
 unsafe impl crate::CppDeletable for HandleStepGeomPlacement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomPlacement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomPlacement_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomPlacement {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPlacement_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPlacement_clone(ptr))
+        }
     }
 }
 
@@ -30213,7 +30597,9 @@ pub use crate::ffi_types::StepGeom_Plane as Plane;
 
 unsafe impl crate::CppDeletable for Plane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Plane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Plane_destructor(ptr);
+        }
     }
 }
 
@@ -30491,13 +30877,15 @@ pub use crate::ffi_types::HandleStepGeomPlane;
 
 unsafe impl crate::CppDeletable for HandleStepGeomPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomPlane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomPlane_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomPlane {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPlane_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPlane_clone(ptr)) }
     }
 }
 
@@ -30594,7 +30982,9 @@ pub use crate::ffi_types::StepGeom_Point as Point;
 
 unsafe impl crate::CppDeletable for Point {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Point_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Point_destructor(ptr);
+        }
     }
 }
 
@@ -30803,13 +31193,15 @@ pub use crate::ffi_types::HandleStepGeomPoint;
 
 unsafe impl crate::CppDeletable for HandleStepGeomPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomPoint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomPoint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPoint_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPoint_clone(ptr)) }
     }
 }
 
@@ -31002,7 +31394,9 @@ pub use crate::ffi_types::StepGeom_PointOnCurve as PointOnCurve;
 
 unsafe impl crate::CppDeletable for PointOnCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_PointOnCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_PointOnCurve_destructor(ptr);
+        }
     }
 }
 
@@ -31284,13 +31678,17 @@ pub use crate::ffi_types::HandleStepGeomPointOnCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomPointOnCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomPointOnCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomPointOnCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomPointOnCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPointOnCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPointOnCurve_clone(ptr))
+        }
     }
 }
 
@@ -31372,7 +31770,9 @@ pub use crate::ffi_types::StepGeom_PointOnSurface as PointOnSurface;
 
 unsafe impl crate::CppDeletable for PointOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_PointOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_PointOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -31683,13 +32083,17 @@ pub use crate::ffi_types::HandleStepGeomPointOnSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomPointOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomPointOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomPointOnSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomPointOnSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPointOnSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPointOnSurface_clone(ptr))
+        }
     }
 }
 
@@ -31771,7 +32175,9 @@ pub use crate::ffi_types::StepGeom_PointReplica as PointReplica;
 
 unsafe impl crate::CppDeletable for PointReplica {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_PointReplica_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_PointReplica_destructor(ptr);
+        }
     }
 }
 
@@ -32062,13 +32468,17 @@ pub use crate::ffi_types::HandleStepGeomPointReplica;
 
 unsafe impl crate::CppDeletable for HandleStepGeomPointReplica {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomPointReplica_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomPointReplica_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomPointReplica {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPointReplica_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPointReplica_clone(ptr))
+        }
     }
 }
 
@@ -32150,7 +32560,9 @@ pub use crate::ffi_types::StepGeom_Polyline as Polyline;
 
 unsafe impl crate::CppDeletable for Polyline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Polyline_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Polyline_destructor(ptr);
+        }
     }
 }
 
@@ -32451,13 +32863,17 @@ pub use crate::ffi_types::HandleStepGeomPolyline;
 
 unsafe impl crate::CppDeletable for HandleStepGeomPolyline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomPolyline_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomPolyline_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomPolyline {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPolyline_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomPolyline_clone(ptr))
+        }
     }
 }
 
@@ -32550,7 +32966,9 @@ pub use crate::ffi_types::StepGeom_QuasiUniformCurve as QuasiUniformCurve;
 
 unsafe impl crate::CppDeletable for QuasiUniformCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurve_destructor(ptr);
+        }
     }
 }
 
@@ -32970,13 +33388,19 @@ pub use crate::ffi_types::HandleStepGeomQuasiUniformCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomQuasiUniformCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomQuasiUniformCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformCurve_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -33074,9 +33498,9 @@ pub use crate::ffi_types::StepGeom_QuasiUniformCurveAndRationalBSplineCurve as Q
 
 unsafe impl crate::CppDeletable for QuasiUniformCurveAndRationalBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurveAndRationalBSplineCurve_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurveAndRationalBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -33470,13 +33894,17 @@ pub use crate::ffi_types::HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve
 
 unsafe impl crate::CppDeletable for HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformCurveAndRationalBSplineCurve_clone(ptr))
+        }
     }
 }
 
@@ -33566,7 +33994,9 @@ pub use crate::ffi_types::StepGeom_QuasiUniformSurface as QuasiUniformSurface;
 
 unsafe impl crate::CppDeletable for QuasiUniformSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurface_destructor(ptr);
+        }
     }
 }
 
@@ -34027,15 +34457,19 @@ pub use crate::ffi_types::HandleStepGeomQuasiUniformSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomQuasiUniformSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomQuasiUniformSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformSurface_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformSurface_clone(ptr),
+            )
+        }
     }
 }
 
@@ -34133,7 +34567,9 @@ pub use crate::ffi_types::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface 
 
 unsafe impl crate::CppDeletable for QuasiUniformSurfaceAndRationalBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -34569,13 +35005,17 @@ pub use crate::ffi_types::HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSur
 
 unsafe impl crate::CppDeletable for HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomQuasiUniformSurfaceAndRationalBSplineSurface_clone(ptr))
+        }
     }
 }
 
@@ -34665,7 +35105,9 @@ pub use crate::ffi_types::StepGeom_RationalBSplineCurve as RationalBSplineCurve;
 
 unsafe impl crate::CppDeletable for RationalBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_RationalBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_RationalBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -35118,15 +35560,19 @@ pub use crate::ffi_types::HandleStepGeomRationalBSplineCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomRationalBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomRationalBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomRationalBSplineCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomRationalBSplineCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomRationalBSplineCurve_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomRationalBSplineCurve_clone(ptr),
+            )
+        }
     }
 }
 
@@ -35224,7 +35670,9 @@ pub use crate::ffi_types::StepGeom_RationalBSplineSurface as RationalBSplineSurf
 
 unsafe impl crate::CppDeletable for RationalBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_RationalBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_RationalBSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -35719,15 +36167,19 @@ pub use crate::ffi_types::HandleStepGeomRationalBSplineSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomRationalBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomRationalBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomRationalBSplineSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomRationalBSplineSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomRationalBSplineSurface_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomRationalBSplineSurface_clone(ptr),
+            )
+        }
     }
 }
 
@@ -35825,7 +36277,9 @@ pub use crate::ffi_types::StepGeom_RectangularCompositeSurface as RectangularCom
 
 unsafe impl crate::CppDeletable for RectangularCompositeSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_RectangularCompositeSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_RectangularCompositeSurface_destructor(ptr);
+        }
     }
 }
 
@@ -36124,15 +36578,19 @@ pub use crate::ffi_types::HandleStepGeomRectangularCompositeSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomRectangularCompositeSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomRectangularCompositeSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomRectangularCompositeSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomRectangularCompositeSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomRectangularCompositeSurface_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomRectangularCompositeSurface_clone(ptr),
+            )
+        }
     }
 }
 
@@ -36221,7 +36679,9 @@ pub use crate::ffi_types::StepGeom_RectangularTrimmedSurface as RectangularTrimm
 
 unsafe impl crate::CppDeletable for RectangularTrimmedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_RectangularTrimmedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_RectangularTrimmedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -36605,15 +37065,19 @@ pub use crate::ffi_types::HandleStepGeomRectangularTrimmedSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomRectangularTrimmedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomRectangularTrimmedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomRectangularTrimmedSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomRectangularTrimmedSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomRectangularTrimmedSurface_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomRectangularTrimmedSurface_clone(ptr),
+            )
+        }
     }
 }
 
@@ -36702,7 +37166,11 @@ pub use crate::ffi_types::StepGeom_ReparametrisedCompositeCurveSegment as Repara
 
 unsafe impl crate::CppDeletable for ReparametrisedCompositeCurveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_ReparametrisedCompositeCurveSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_ReparametrisedCompositeCurveSegment_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -36913,19 +37381,21 @@ pub use crate::ffi_types::HandleStepGeomReparametrisedCompositeCurveSegment;
 
 unsafe impl crate::CppDeletable for HandleStepGeomReparametrisedCompositeCurveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomReparametrisedCompositeCurveSegment_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomReparametrisedCompositeCurveSegment_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomReparametrisedCompositeCurveSegment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomReparametrisedCompositeCurveSegment_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomReparametrisedCompositeCurveSegment_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -36987,7 +37457,9 @@ pub use crate::ffi_types::StepGeom_SeamCurve as SeamCurve;
 
 unsafe impl crate::CppDeletable for SeamCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_SeamCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_SeamCurve_destructor(ptr);
+        }
     }
 }
 
@@ -37348,13 +37820,17 @@ pub use crate::ffi_types::HandleStepGeomSeamCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomSeamCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomSeamCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSeamCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomSeamCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSeamCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSeamCurve_clone(ptr))
+        }
     }
 }
 
@@ -37447,7 +37923,9 @@ pub use crate::ffi_types::StepGeom_SphericalSurface as SphericalSurface;
 
 unsafe impl crate::CppDeletable for SphericalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_SphericalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_SphericalSurface_destructor(ptr);
+        }
     }
 }
 
@@ -37749,13 +38227,19 @@ pub use crate::ffi_types::HandleStepGeomSphericalSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomSphericalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomSphericalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSphericalSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomSphericalSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSphericalSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSphericalSurface_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -37845,7 +38329,9 @@ pub use crate::ffi_types::StepGeom_SuParameters as SuParameters;
 
 unsafe impl crate::CppDeletable for SuParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_SuParameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_SuParameters_destructor(ptr);
+        }
     }
 }
 
@@ -38174,13 +38660,17 @@ pub use crate::ffi_types::HandleStepGeomSuParameters;
 
 unsafe impl crate::CppDeletable for HandleStepGeomSuParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomSuParameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSuParameters_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomSuParameters {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSuParameters_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSuParameters_clone(ptr))
+        }
     }
 }
 
@@ -38251,7 +38741,9 @@ pub use crate::ffi_types::StepGeom_Surface as Surface;
 
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Surface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Surface_destructor(ptr);
+        }
     }
 }
 
@@ -38460,13 +38952,15 @@ pub use crate::ffi_types::HandleStepGeomSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSurface_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSurface_clone(ptr)) }
     }
 }
 
@@ -38984,7 +39478,9 @@ pub use crate::ffi_types::StepGeom_SurfaceBoundary as SurfaceBoundary;
 
 unsafe impl crate::CppDeletable for SurfaceBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_SurfaceBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_SurfaceBoundary_destructor(ptr);
+        }
     }
 }
 
@@ -39241,7 +39737,9 @@ pub use crate::ffi_types::StepGeom_SurfaceCurve as SurfaceCurve;
 
 unsafe impl crate::CppDeletable for SurfaceCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_SurfaceCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_SurfaceCurve_destructor(ptr);
+        }
     }
 }
 
@@ -39580,13 +40078,17 @@ pub use crate::ffi_types::HandleStepGeomSurfaceCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomSurfaceCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomSurfaceCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceCurve_clone(ptr))
+        }
     }
 }
 
@@ -39718,7 +40220,9 @@ pub use crate::ffi_types::StepGeom_SurfaceCurveAndBoundedCurve as SurfaceCurveAn
 
 unsafe impl crate::CppDeletable for SurfaceCurveAndBoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_SurfaceCurveAndBoundedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_SurfaceCurveAndBoundedCurve_destructor(ptr);
+        }
     }
 }
 
@@ -40045,15 +40549,19 @@ pub use crate::ffi_types::HandleStepGeomSurfaceCurveAndBoundedCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomSurfaceCurveAndBoundedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceCurveAndBoundedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceCurveAndBoundedCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomSurfaceCurveAndBoundedCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceCurveAndBoundedCurve_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceCurveAndBoundedCurve_clone(ptr),
+            )
+        }
     }
 }
 
@@ -40142,7 +40650,9 @@ pub use crate::ffi_types::StepGeom_SurfaceOfLinearExtrusion as SurfaceOfLinearEx
 
 unsafe impl crate::CppDeletable for SurfaceOfLinearExtrusion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_SurfaceOfLinearExtrusion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_SurfaceOfLinearExtrusion_destructor(ptr);
+        }
     }
 }
 
@@ -40434,15 +40944,19 @@ pub use crate::ffi_types::HandleStepGeomSurfaceOfLinearExtrusion;
 
 unsafe impl crate::CppDeletable for HandleStepGeomSurfaceOfLinearExtrusion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceOfLinearExtrusion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceOfLinearExtrusion_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomSurfaceOfLinearExtrusion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceOfLinearExtrusion_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceOfLinearExtrusion_clone(ptr),
+            )
+        }
     }
 }
 
@@ -40531,7 +41045,9 @@ pub use crate::ffi_types::StepGeom_SurfaceOfRevolution as SurfaceOfRevolution;
 
 unsafe impl crate::CppDeletable for SurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_SurfaceOfRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_SurfaceOfRevolution_destructor(ptr);
+        }
     }
 }
 
@@ -40840,15 +41356,19 @@ pub use crate::ffi_types::HandleStepGeomSurfaceOfRevolution;
 
 unsafe impl crate::CppDeletable for HandleStepGeomSurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceOfRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceOfRevolution_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomSurfaceOfRevolution {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceOfRevolution_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceOfRevolution_clone(ptr),
+            )
+        }
     }
 }
 
@@ -40937,7 +41457,9 @@ pub use crate::ffi_types::StepGeom_SurfacePatch as SurfacePatch;
 
 unsafe impl crate::CppDeletable for SurfacePatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_SurfacePatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_SurfacePatch_destructor(ptr);
+        }
     }
 }
 
@@ -41206,13 +41728,17 @@ pub use crate::ffi_types::HandleStepGeomSurfacePatch;
 
 unsafe impl crate::CppDeletable for HandleStepGeomSurfacePatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomSurfacePatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfacePatch_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomSurfacePatch {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSurfacePatch_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSurfacePatch_clone(ptr))
+        }
     }
 }
 
@@ -41265,7 +41791,9 @@ pub use crate::ffi_types::StepGeom_SurfaceReplica as SurfaceReplica;
 
 unsafe impl crate::CppDeletable for SurfaceReplica {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_SurfaceReplica_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_SurfaceReplica_destructor(ptr);
+        }
     }
 }
 
@@ -41562,13 +42090,17 @@ pub use crate::ffi_types::HandleStepGeomSurfaceReplica;
 
 unsafe impl crate::CppDeletable for HandleStepGeomSurfaceReplica {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceReplica_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceReplica_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomSurfaceReplica {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceReplica_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSurfaceReplica_clone(ptr))
+        }
     }
 }
 
@@ -41650,7 +42182,9 @@ pub use crate::ffi_types::StepGeom_SweptSurface as SweptSurface;
 
 unsafe impl crate::CppDeletable for SweptSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_SweptSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_SweptSurface_destructor(ptr);
+        }
     }
 }
 
@@ -41913,13 +42447,17 @@ pub use crate::ffi_types::HandleStepGeomSweptSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomSweptSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomSweptSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomSweptSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomSweptSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSweptSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomSweptSurface_clone(ptr))
+        }
     }
 }
 
@@ -42033,7 +42571,9 @@ pub use crate::ffi_types::StepGeom_ToroidalSurface as ToroidalSurface;
 
 unsafe impl crate::CppDeletable for ToroidalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_ToroidalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_ToroidalSurface_destructor(ptr);
+        }
     }
 }
 
@@ -42358,13 +42898,19 @@ pub use crate::ffi_types::HandleStepGeomToroidalSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomToroidalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomToroidalSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomToroidalSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomToroidalSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomToroidalSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomToroidalSurface_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -42469,7 +43015,9 @@ pub use crate::ffi_types::StepGeom_TrimmedCurve as TrimmedCurve;
 
 unsafe impl crate::CppDeletable for TrimmedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_TrimmedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_TrimmedCurve_destructor(ptr);
+        }
     }
 }
 
@@ -42876,13 +43424,17 @@ pub use crate::ffi_types::HandleStepGeomTrimmedCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomTrimmedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomTrimmedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomTrimmedCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomTrimmedCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomTrimmedCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomTrimmedCurve_clone(ptr))
+        }
     }
 }
 
@@ -42975,7 +43527,9 @@ pub use crate::ffi_types::StepGeom_TrimmingMember as TrimmingMember;
 
 unsafe impl crate::CppDeletable for TrimmingMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_TrimmingMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_TrimmingMember_destructor(ptr);
+        }
     }
 }
 
@@ -43329,13 +43883,17 @@ pub use crate::ffi_types::HandleStepGeomTrimmingMember;
 
 unsafe impl crate::CppDeletable for HandleStepGeomTrimmingMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomTrimmingMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomTrimmingMember_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomTrimmingMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomTrimmingMember_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomTrimmingMember_clone(ptr))
+        }
     }
 }
 
@@ -43406,7 +43964,9 @@ pub use crate::ffi_types::StepGeom_TrimmingSelect as TrimmingSelect;
 
 unsafe impl crate::CppDeletable for TrimmingSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_TrimmingSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_TrimmingSelect_destructor(ptr);
+        }
     }
 }
 
@@ -43666,7 +44226,9 @@ pub use crate::ffi_types::StepGeom_UniformCurve as UniformCurve;
 
 unsafe impl crate::CppDeletable for UniformCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_UniformCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_UniformCurve_destructor(ptr);
+        }
     }
 }
 
@@ -44089,13 +44651,17 @@ pub use crate::ffi_types::HandleStepGeomUniformCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomUniformCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomUniformCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomUniformCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomUniformCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomUniformCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomUniformCurve_clone(ptr))
+        }
     }
 }
 
@@ -44195,7 +44761,11 @@ pub use crate::ffi_types::StepGeom_UniformCurveAndRationalBSplineCurve as Unifor
 
 unsafe impl crate::CppDeletable for UniformCurveAndRationalBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_UniformCurveAndRationalBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_UniformCurveAndRationalBSplineCurve_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -44591,19 +45161,21 @@ pub use crate::ffi_types::HandleStepGeomUniformCurveAndRationalBSplineCurve;
 
 unsafe impl crate::CppDeletable for HandleStepGeomUniformCurveAndRationalBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomUniformCurveAndRationalBSplineCurve_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomUniformCurveAndRationalBSplineCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomUniformCurveAndRationalBSplineCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomUniformCurveAndRationalBSplineCurve_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepGeomUniformCurveAndRationalBSplineCurve_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -44699,7 +45271,9 @@ pub use crate::ffi_types::StepGeom_UniformSurface as UniformSurface;
 
 unsafe impl crate::CppDeletable for UniformSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_UniformSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_UniformSurface_destructor(ptr);
+        }
     }
 }
 
@@ -45176,13 +45750,17 @@ pub use crate::ffi_types::HandleStepGeomUniformSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomUniformSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomUniformSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomUniformSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomUniformSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomUniformSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomUniformSurface_clone(ptr))
+        }
     }
 }
 
@@ -45282,9 +45860,11 @@ pub use crate::ffi_types::StepGeom_UniformSurfaceAndRationalBSplineSurface as Un
 
 unsafe impl crate::CppDeletable for UniformSurfaceAndRationalBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_UniformSurfaceAndRationalBSplineSurface_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_UniformSurfaceAndRationalBSplineSurface_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -45722,17 +46302,17 @@ pub use crate::ffi_types::HandleStepGeomUniformSurfaceAndRationalBSplineSurface;
 
 unsafe impl crate::CppDeletable for HandleStepGeomUniformSurfaceAndRationalBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomUniformSurfaceAndRationalBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomUniformSurfaceAndRationalBSplineSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomUniformSurfaceAndRationalBSplineSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepGeomUniformSurfaceAndRationalBSplineSurface_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomUniformSurfaceAndRationalBSplineSurface_clone(ptr))
+        }
     }
 }
 
@@ -45822,7 +46402,9 @@ pub use crate::ffi_types::StepGeom_Vector as Vector;
 
 unsafe impl crate::CppDeletable for Vector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_Vector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_Vector_destructor(ptr);
+        }
     }
 }
 
@@ -46078,13 +46660,15 @@ pub use crate::ffi_types::HandleStepGeomVector;
 
 unsafe impl crate::CppDeletable for HandleStepGeomVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepGeomVector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepGeomVector_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepGeomVector {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomVector_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepGeomVector_clone(ptr)) }
     }
 }
 
@@ -46153,7 +46737,9 @@ pub use crate::ffi_types::StepGeom_VectorOrDirection as VectorOrDirection;
 
 unsafe impl crate::CppDeletable for VectorOrDirection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepGeom_VectorOrDirection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepGeom_VectorOrDirection_destructor(ptr);
+        }
     }
 }
 

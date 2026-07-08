@@ -30,7 +30,9 @@ pub use crate::ffi_types::HeaderSection_FileDescription as FileDescription;
 
 unsafe impl crate::CppDeletable for FileDescription {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HeaderSection_FileDescription_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HeaderSection_FileDescription_destructor(ptr);
+        }
     }
 }
 
@@ -277,15 +279,19 @@ pub use crate::ffi_types::HandleHeaderSectionFileDescription;
 
 unsafe impl crate::CppDeletable for HandleHeaderSectionFileDescription {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileDescription_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileDescription_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHeaderSectionFileDescription {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileDescription_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileDescription_clone(ptr),
+            )
+        }
     }
 }
 
@@ -340,7 +346,9 @@ pub use crate::ffi_types::HeaderSection_FileName as FileName;
 
 unsafe impl crate::CppDeletable for FileName {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HeaderSection_FileName_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HeaderSection_FileName_destructor(ptr);
+        }
     }
 }
 
@@ -723,13 +731,17 @@ pub use crate::ffi_types::HandleHeaderSectionFileName;
 
 unsafe impl crate::CppDeletable for HandleHeaderSectionFileName {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileName_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileName_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHeaderSectionFileName {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileName_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileName_clone(ptr))
+        }
     }
 }
 
@@ -782,7 +794,9 @@ pub use crate::ffi_types::HeaderSection_FileSchema as FileSchema;
 
 unsafe impl crate::CppDeletable for FileSchema {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HeaderSection_FileSchema_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HeaderSection_FileSchema_destructor(ptr);
+        }
     }
 }
 
@@ -1001,13 +1015,19 @@ pub use crate::ffi_types::HandleHeaderSectionFileSchema;
 
 unsafe impl crate::CppDeletable for HandleHeaderSectionFileSchema {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileSchema_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileSchema_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHeaderSectionFileSchema {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileSchema_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleHeaderSectionFileSchema_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1060,7 +1080,9 @@ pub use crate::ffi_types::HeaderSection_Protocol as Protocol;
 
 unsafe impl crate::CppDeletable for Protocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HeaderSection_Protocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HeaderSection_Protocol_destructor(ptr);
+        }
     }
 }
 
@@ -1492,13 +1514,17 @@ pub use crate::ffi_types::HandleHeaderSectionProtocol;
 
 unsafe impl crate::CppDeletable for HandleHeaderSectionProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleHeaderSectionProtocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleHeaderSectionProtocol_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHeaderSectionProtocol {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleHeaderSectionProtocol_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleHeaderSectionProtocol_clone(ptr))
+        }
     }
 }
 

@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== Contap_ArcFunction ========================
     pub fn Contap_ArcFunction_destructor(self_: *mut Contap_ArcFunction);
     /// **Source:** `Contap_ArcFunction.hxx`:34 - `Contap_ArcFunction::Contap_ArcFunction()`

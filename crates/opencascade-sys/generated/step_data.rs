@@ -96,7 +96,9 @@ pub use crate::ffi_types::StepData_DefaultGeneral as DefaultGeneral;
 
 unsafe impl crate::CppDeletable for DefaultGeneral {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_destructor(ptr);
+        }
     }
 }
 
@@ -560,13 +562,17 @@ pub use crate::ffi_types::HandleStepDataDefaultGeneral;
 
 unsafe impl crate::CppDeletable for HandleStepDataDefaultGeneral {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataDefaultGeneral_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataDefaultGeneral_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataDefaultGeneral {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataDefaultGeneral_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataDefaultGeneral_clone(ptr))
+        }
     }
 }
 
@@ -639,7 +645,9 @@ pub use crate::ffi_types::StepData_Described as Described;
 
 unsafe impl crate::CppDeletable for Described {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_Described_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Described_destructor(ptr);
+        }
     }
 }
 
@@ -880,13 +888,17 @@ pub use crate::ffi_types::HandleStepDataDescribed;
 
 unsafe impl crate::CppDeletable for HandleStepDataDescribed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataDescribed_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataDescribed_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataDescribed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataDescribed_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataDescribed_clone(ptr))
+        }
     }
 }
 
@@ -974,7 +986,9 @@ pub use crate::ffi_types::StepData_ECDescr as ECDescr;
 
 unsafe impl crate::CppDeletable for ECDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_ECDescr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_ECDescr_destructor(ptr);
+        }
     }
 }
 
@@ -1212,13 +1226,15 @@ pub use crate::ffi_types::HandleStepDataECDescr;
 
 unsafe impl crate::CppDeletable for HandleStepDataECDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataECDescr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataECDescr_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataECDescr {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataECDescr_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataECDescr_clone(ptr)) }
     }
 }
 
@@ -1282,7 +1298,9 @@ pub use crate::ffi_types::StepData_EDescr as EDescr;
 
 unsafe impl crate::CppDeletable for EDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_EDescr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_EDescr_destructor(ptr);
+        }
     }
 }
 
@@ -1439,13 +1457,15 @@ pub use crate::ffi_types::HandleStepDataEDescr;
 
 unsafe impl crate::CppDeletable for HandleStepDataEDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataEDescr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataEDescr_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataEDescr {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataEDescr_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataEDescr_clone(ptr)) }
     }
 }
 
@@ -1534,7 +1554,9 @@ pub use crate::ffi_types::StepData_ESDescr as ESDescr;
 
 unsafe impl crate::CppDeletable for ESDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_ESDescr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_destructor(ptr);
+        }
     }
 }
 
@@ -1887,13 +1909,15 @@ pub use crate::ffi_types::HandleStepDataESDescr;
 
 unsafe impl crate::CppDeletable for HandleStepDataESDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataESDescr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataESDescr_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataESDescr {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataESDescr_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataESDescr_clone(ptr)) }
     }
 }
 
@@ -1971,7 +1995,9 @@ pub use crate::ffi_types::StepData_EnumTool as EnumTool;
 
 unsafe impl crate::CppDeletable for EnumTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_EnumTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_EnumTool_destructor(ptr);
+        }
     }
 }
 
@@ -2234,7 +2260,9 @@ pub use crate::ffi_types::StepData_Factors as Factors;
 
 unsafe impl crate::CppDeletable for Factors {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_Factors_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Factors_destructor(ptr);
+        }
     }
 }
 
@@ -2352,13 +2380,15 @@ pub use crate::ffi_types::StepData_Field as Field;
 
 unsafe impl crate::CppDeletable for Field {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_Field_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Field_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Field {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Field_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Field_clone(ptr)) }
     }
 }
 
@@ -2803,7 +2833,9 @@ pub use crate::ffi_types::StepData_FieldList as FieldList;
 
 unsafe impl crate::CppDeletable for FieldList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_FieldList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_FieldList_destructor(ptr);
+        }
     }
 }
 
@@ -2868,7 +2900,9 @@ pub use crate::ffi_types::StepData_FieldList1 as FieldList1;
 
 unsafe impl crate::CppDeletable for FieldList1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_FieldList1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_FieldList1_destructor(ptr);
+        }
     }
 }
 
@@ -2959,7 +2993,9 @@ pub use crate::ffi_types::StepData_FieldListD as FieldListD;
 
 unsafe impl crate::CppDeletable for FieldListD {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_FieldListD_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_FieldListD_destructor(ptr);
+        }
     }
 }
 
@@ -3058,7 +3094,9 @@ pub use crate::ffi_types::StepData_FieldListN as FieldListN;
 
 unsafe impl crate::CppDeletable for FieldListN {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_FieldListN_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_FieldListN_destructor(ptr);
+        }
     }
 }
 
@@ -3152,7 +3190,9 @@ pub use crate::ffi_types::StepData_FileProtocol as FileProtocol;
 
 unsafe impl crate::CppDeletable for FileProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_FileProtocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_destructor(ptr);
+        }
     }
 }
 
@@ -3601,13 +3641,17 @@ pub use crate::ffi_types::HandleStepDataFileProtocol;
 
 unsafe impl crate::CppDeletable for HandleStepDataFileProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataFileProtocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataFileProtocol_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataFileProtocol {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataFileProtocol_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataFileProtocol_clone(ptr))
+        }
     }
 }
 
@@ -3686,7 +3730,9 @@ pub use crate::ffi_types::StepData_FileRecognizer as FileRecognizer;
 
 unsafe impl crate::CppDeletable for FileRecognizer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_destructor(ptr);
+        }
     }
 }
 
@@ -3863,13 +3909,17 @@ pub use crate::ffi_types::HandleStepDataFileRecognizer;
 
 unsafe impl crate::CppDeletable for HandleStepDataFileRecognizer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataFileRecognizer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataFileRecognizer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataFileRecognizer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataFileRecognizer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataFileRecognizer_clone(ptr))
+        }
     }
 }
 
@@ -3927,7 +3977,9 @@ pub use crate::ffi_types::StepData_FreeFormEntity as FreeFormEntity;
 
 unsafe impl crate::CppDeletable for FreeFormEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_destructor(ptr);
+        }
     }
 }
 
@@ -4223,13 +4275,17 @@ pub use crate::ffi_types::HandleStepDataFreeFormEntity;
 
 unsafe impl crate::CppDeletable for HandleStepDataFreeFormEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataFreeFormEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataFreeFormEntity_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataFreeFormEntity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataFreeFormEntity_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataFreeFormEntity_clone(ptr))
+        }
     }
 }
 
@@ -4283,7 +4339,9 @@ pub use crate::ffi_types::StepData_GeneralModule as GeneralModule;
 
 unsafe impl crate::CppDeletable for GeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_GeneralModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_destructor(ptr);
+        }
     }
 }
 
@@ -4705,13 +4763,17 @@ pub use crate::ffi_types::HandleStepDataGeneralModule;
 
 unsafe impl crate::CppDeletable for HandleStepDataGeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataGeneralModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_clone(ptr))
+        }
     }
 }
 
@@ -4805,7 +4867,9 @@ pub use crate::ffi_types::StepData_GlobalNodeOfWriterLib as GlobalNodeOfWriterLi
 
 unsafe impl crate::CppDeletable for GlobalNodeOfWriterLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_destructor(ptr);
+        }
     }
 }
 
@@ -5015,15 +5079,19 @@ pub use crate::ffi_types::HandleStepDataGlobalNodeOfWriterLib;
 
 unsafe impl crate::CppDeletable for HandleStepDataGlobalNodeOfWriterLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataGlobalNodeOfWriterLib_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataGlobalNodeOfWriterLib_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataGlobalNodeOfWriterLib {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataGlobalNodeOfWriterLib_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataGlobalNodeOfWriterLib_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5078,7 +5146,9 @@ pub use crate::ffi_types::StepData_HArray1OfField as HArray1OfField;
 
 unsafe impl crate::CppDeletable for HArray1OfField {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_destructor(ptr);
+        }
     }
 }
 
@@ -5300,13 +5370,17 @@ pub use crate::ffi_types::HandleStepDataHArray1OfField;
 
 unsafe impl crate::CppDeletable for HandleStepDataHArray1OfField {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataHArray1OfField_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataHArray1OfField_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataHArray1OfField {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataHArray1OfField_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataHArray1OfField_clone(ptr))
+        }
     }
 }
 
@@ -5359,7 +5433,9 @@ pub use crate::ffi_types::StepData_NodeOfWriterLib as NodeOfWriterLib;
 
 unsafe impl crate::CppDeletable for NodeOfWriterLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_destructor(ptr);
+        }
     }
 }
 
@@ -5555,13 +5631,19 @@ pub use crate::ffi_types::HandleStepDataNodeOfWriterLib;
 
 unsafe impl crate::CppDeletable for HandleStepDataNodeOfWriterLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataNodeOfWriterLib_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataNodeOfWriterLib_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataNodeOfWriterLib {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataNodeOfWriterLib_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataNodeOfWriterLib_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -5617,7 +5699,9 @@ pub use crate::ffi_types::StepData_PDescr as PDescr;
 
 unsafe impl crate::CppDeletable for PDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_PDescr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_destructor(ptr);
+        }
     }
 }
 
@@ -6194,13 +6278,15 @@ pub use crate::ffi_types::HandleStepDataPDescr;
 
 unsafe impl crate::CppDeletable for HandleStepDataPDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataPDescr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataPDescr_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataPDescr {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataPDescr_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataPDescr_clone(ptr)) }
     }
 }
 
@@ -6254,7 +6340,9 @@ pub use crate::ffi_types::StepData_Plex as Plex;
 
 unsafe impl crate::CppDeletable for Plex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_Plex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Plex_destructor(ptr);
+        }
     }
 }
 
@@ -6579,13 +6667,15 @@ pub use crate::ffi_types::HandleStepDataPlex;
 
 unsafe impl crate::CppDeletable for HandleStepDataPlex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataPlex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataPlex_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataPlex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataPlex_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataPlex_clone(ptr)) }
     }
 }
 
@@ -6654,7 +6744,9 @@ pub use crate::ffi_types::StepData_Protocol as Protocol;
 
 unsafe impl crate::CppDeletable for Protocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_Protocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_destructor(ptr);
+        }
     }
 }
 
@@ -7141,13 +7233,17 @@ pub use crate::ffi_types::HandleStepDataProtocol;
 
 unsafe impl crate::CppDeletable for HandleStepDataProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataProtocol {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_clone(ptr))
+        }
     }
 }
 
@@ -7266,7 +7362,9 @@ pub use crate::ffi_types::StepData_ReadWriteModule as ReadWriteModule;
 
 unsafe impl crate::CppDeletable for ReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_destructor(ptr);
+        }
     }
 }
 
@@ -7623,13 +7721,19 @@ pub use crate::ffi_types::HandleStepDataReadWriteModule;
 
 unsafe impl crate::CppDeletable for HandleStepDataReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataReadWriteModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataReadWriteModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataReadWriteModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataReadWriteModule_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataReadWriteModule_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -7705,7 +7809,9 @@ pub use crate::ffi_types::StepData_SelectArrReal as SelectArrReal;
 
 unsafe impl crate::CppDeletable for SelectArrReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_destructor(ptr);
+        }
     }
 }
 
@@ -8075,13 +8181,17 @@ pub use crate::ffi_types::HandleStepDataSelectArrReal;
 
 unsafe impl crate::CppDeletable for HandleStepDataSelectArrReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataSelectArrReal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_clone(ptr))
+        }
     }
 }
 
@@ -8188,7 +8298,9 @@ pub use crate::ffi_types::StepData_SelectInt as SelectInt;
 
 unsafe impl crate::CppDeletable for SelectInt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_SelectInt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_destructor(ptr);
+        }
     }
 }
 
@@ -8475,13 +8587,17 @@ pub use crate::ffi_types::HandleStepDataSelectInt;
 
 unsafe impl crate::CppDeletable for HandleStepDataSelectInt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataSelectInt {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_clone(ptr))
+        }
     }
 }
 
@@ -8610,7 +8726,9 @@ pub use crate::ffi_types::StepData_SelectMember as SelectMember;
 
 unsafe impl crate::CppDeletable for SelectMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_SelectMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_destructor(ptr);
+        }
     }
 }
 
@@ -8975,13 +9093,17 @@ pub use crate::ffi_types::HandleStepDataSelectMember;
 
 unsafe impl crate::CppDeletable for HandleStepDataSelectMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataSelectMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_clone(ptr))
+        }
     }
 }
 
@@ -9345,7 +9467,9 @@ pub use crate::ffi_types::StepData_SelectNamed as SelectNamed;
 
 unsafe impl crate::CppDeletable for SelectNamed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_SelectNamed_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_destructor(ptr);
+        }
     }
 }
 
@@ -9700,13 +9824,17 @@ pub use crate::ffi_types::HandleStepDataSelectNamed;
 
 unsafe impl crate::CppDeletable for HandleStepDataSelectNamed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataSelectNamed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_clone(ptr))
+        }
     }
 }
 
@@ -9939,7 +10067,9 @@ pub use crate::ffi_types::StepData_SelectReal as SelectReal;
 
 unsafe impl crate::CppDeletable for SelectReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_SelectReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_destructor(ptr);
+        }
     }
 }
 
@@ -10229,13 +10359,17 @@ pub use crate::ffi_types::HandleStepDataSelectReal;
 
 unsafe impl crate::CppDeletable for HandleStepDataSelectReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataSelectReal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_clone(ptr))
+        }
     }
 }
 
@@ -10365,7 +10499,9 @@ pub use crate::ffi_types::StepData_SelectType as SelectType;
 
 unsafe impl crate::CppDeletable for SelectType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_SelectType_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_destructor(ptr);
+        }
     }
 }
 
@@ -10635,7 +10771,9 @@ pub use crate::ffi_types::StepData_Simple as Simple;
 
 unsafe impl crate::CppDeletable for Simple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_Simple_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Simple_destructor(ptr);
+        }
     }
 }
 
@@ -10992,13 +11130,15 @@ pub use crate::ffi_types::HandleStepDataSimple;
 
 unsafe impl crate::CppDeletable for HandleStepDataSimple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataSimple_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataSimple_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataSimple {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSimple_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSimple_clone(ptr)) }
     }
 }
 
@@ -11070,7 +11210,9 @@ pub use crate::ffi_types::StepData_StepDumper as StepDumper;
 
 unsafe impl crate::CppDeletable for StepDumper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_StepDumper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_StepDumper_destructor(ptr);
+        }
     }
 }
 
@@ -11187,7 +11329,9 @@ pub use crate::ffi_types::StepData_StepModel as StepModel;
 
 unsafe impl crate::CppDeletable for StepModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_StepModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_destructor(ptr);
+        }
     }
 }
 
@@ -12083,13 +12227,17 @@ pub use crate::ffi_types::HandleStepDataStepModel;
 
 unsafe impl crate::CppDeletable for HandleStepDataStepModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataStepModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataStepModel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataStepModel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataStepModel_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataStepModel_clone(ptr))
+        }
     }
 }
 
@@ -12154,7 +12302,9 @@ pub use crate::ffi_types::StepData_StepReaderData as StepReaderData;
 
 unsafe impl crate::CppDeletable for StepReaderData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_StepReaderData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_destructor(ptr);
+        }
     }
 }
 
@@ -13382,13 +13532,17 @@ pub use crate::ffi_types::HandleStepDataStepReaderData;
 
 unsafe impl crate::CppDeletable for HandleStepDataStepReaderData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataStepReaderData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataStepReaderData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataStepReaderData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataStepReaderData_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataStepReaderData_clone(ptr))
+        }
     }
 }
 
@@ -13454,7 +13608,9 @@ pub use crate::ffi_types::StepData_StepReaderTool as StepReaderTool;
 
 unsafe impl crate::CppDeletable for StepReaderTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_destructor(ptr);
+        }
     }
 }
 
@@ -13818,7 +13974,9 @@ pub use crate::ffi_types::StepData_StepWriter as StepWriter;
 
 unsafe impl crate::CppDeletable for StepWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_StepWriter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_destructor(ptr);
+        }
     }
 }
 
@@ -14378,7 +14536,9 @@ pub use crate::ffi_types::StepData_UndefinedEntity as UndefinedEntity;
 
 unsafe impl crate::CppDeletable for UndefinedEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_destructor(ptr);
+        }
     }
 }
 
@@ -14669,13 +14829,19 @@ pub use crate::ffi_types::HandleStepDataUndefinedEntity;
 
 unsafe impl crate::CppDeletable for HandleStepDataUndefinedEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepDataUndefinedEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepDataUndefinedEntity_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepDataUndefinedEntity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataUndefinedEntity_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataUndefinedEntity_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -14726,7 +14892,9 @@ pub use crate::ffi_types::StepData_WriterLib as WriterLib;
 
 unsafe impl crate::CppDeletable for WriterLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepData_WriterLib_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_WriterLib_destructor(ptr);
+        }
     }
 }
 

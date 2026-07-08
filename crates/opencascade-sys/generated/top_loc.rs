@@ -23,7 +23,9 @@ pub use crate::ffi_types::TopLoc_Datum3D as Datum3D;
 
 unsafe impl crate::CppDeletable for Datum3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TopLoc_Datum3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TopLoc_Datum3D_destructor(ptr);
+        }
     }
 }
 
@@ -212,13 +214,15 @@ pub use crate::ffi_types::HandleTopLocDatum3D;
 
 unsafe impl crate::CppDeletable for HandleTopLocDatum3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTopLocDatum3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTopLocDatum3D_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopLocDatum3D {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTopLocDatum3D_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandleTopLocDatum3D_clone(ptr)) }
     }
 }
 
@@ -279,13 +283,15 @@ pub use crate::ffi_types::TopLoc_ItemLocation as ItemLocation;
 
 unsafe impl crate::CppDeletable for ItemLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TopLoc_ItemLocation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TopLoc_ItemLocation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for ItemLocation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::TopLoc_ItemLocation_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::TopLoc_ItemLocation_clone(ptr)) }
     }
 }
 
@@ -328,13 +334,15 @@ pub use crate::ffi_types::TopLoc_Location as Location;
 
 unsafe impl crate::CppDeletable for Location {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TopLoc_Location_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TopLoc_Location_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Location {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::TopLoc_Location_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::TopLoc_Location_clone(ptr)) }
     }
 }
 
@@ -571,7 +579,9 @@ pub use crate::ffi_types::TopLoc_SListNodeOfItemLocation as SListNodeOfItemLocat
 
 unsafe impl crate::CppDeletable for SListNodeOfItemLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_destructor(ptr);
+        }
     }
 }
 
@@ -745,15 +755,19 @@ pub use crate::ffi_types::HandleTopLocSListNodeOfItemLocation;
 
 unsafe impl crate::CppDeletable for HandleTopLocSListNodeOfItemLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleTopLocSListNodeOfItemLocation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleTopLocSListNodeOfItemLocation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopLocSListNodeOfItemLocation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleTopLocSListNodeOfItemLocation_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKMath::HandleTopLocSListNodeOfItemLocation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -823,13 +837,17 @@ pub use crate::ffi_types::TopLoc_SListOfItemLocation as SListOfItemLocation;
 
 unsafe impl crate::CppDeletable for SListOfItemLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for SListOfItemLocation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_clone(ptr))
+        }
     }
 }
 

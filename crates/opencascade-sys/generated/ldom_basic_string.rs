@@ -15,13 +15,15 @@ pub use crate::ffi_types::LDOMBasicString;
 
 unsafe impl crate::CppDeletable for LDOMBasicString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::LDOMBasicString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::LDOMBasicString_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for LDOMBasicString {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_misc::LDOMBasicString_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_misc::LDOMBasicString_clone(ptr)) }
     }
 }
 

@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== Adaptor3d_Curve ========================
     pub fn Adaptor3d_Curve_destructor(self_: *mut Adaptor3d_Curve);
     /// **Source:** `Adaptor3d_Curve.hxx` - `Adaptor3d_Curve::Adaptor3d_Curve()`

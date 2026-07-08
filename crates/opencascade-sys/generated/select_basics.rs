@@ -29,7 +29,9 @@ pub use crate::ffi_types::SelectBasics_PickResult as PickResult;
 
 unsafe impl crate::CppDeletable for PickResult {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::SelectBasics_PickResult_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::SelectBasics_PickResult_destructor(ptr);
+        }
     }
 }
 
@@ -207,7 +209,9 @@ pub use crate::ffi_types::SelectBasics_SelectingVolumeManager as SelectingVolume
 
 unsafe impl crate::CppDeletable for SelectingVolumeManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_destructor(ptr);
+        }
     }
 }
 

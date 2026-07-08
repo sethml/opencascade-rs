@@ -52,7 +52,9 @@ pub use crate::ffi_types::XSControl_ConnectedShapes as ConnectedShapes;
 
 unsafe impl crate::CppDeletable for ConnectedShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_destructor(ptr);
+        }
     }
 }
 
@@ -488,13 +490,19 @@ pub use crate::ffi_types::HandleXSControlConnectedShapes;
 
 unsafe impl crate::CppDeletable for HandleXSControlConnectedShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXSControlConnectedShapes {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -587,7 +595,9 @@ pub use crate::ffi_types::XSControl_Controller as Controller;
 
 unsafe impl crate::CppDeletable for Controller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_Controller_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_Controller_destructor(ptr);
+        }
     }
 }
 
@@ -1073,13 +1083,17 @@ pub use crate::ffi_types::HandleXSControlController;
 
 unsafe impl crate::CppDeletable for HandleXSControlController {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleXSControlController_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlController_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXSControlController {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlController_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlController_clone(ptr))
+        }
     }
 }
 
@@ -1190,7 +1204,9 @@ pub use crate::ffi_types::XSControl_FuncShape as FuncShape;
 
 unsafe impl crate::CppDeletable for FuncShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_FuncShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_FuncShape_destructor(ptr);
+        }
     }
 }
 
@@ -1287,7 +1303,9 @@ pub use crate::ffi_types::XSControl_Functions as Functions;
 
 unsafe impl crate::CppDeletable for Functions {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_Functions_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_Functions_destructor(ptr);
+        }
     }
 }
 
@@ -1349,7 +1367,9 @@ pub use crate::ffi_types::XSControl_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_Reader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_Reader_destructor(ptr);
+        }
     }
 }
 
@@ -1953,7 +1973,9 @@ pub use crate::ffi_types::XSControl_SelectForTransfer as SelectForTransfer;
 
 unsafe impl crate::CppDeletable for SelectForTransfer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_destructor(ptr);
+        }
     }
 }
 
@@ -2426,13 +2448,19 @@ pub use crate::ffi_types::HandleXSControlSelectForTransfer;
 
 unsafe impl crate::CppDeletable for HandleXSControlSelectForTransfer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXSControlSelectForTransfer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2541,7 +2569,9 @@ pub use crate::ffi_types::XSControl_SignTransferStatus as SignTransferStatus;
 
 unsafe impl crate::CppDeletable for SignTransferStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_destructor(ptr);
+        }
     }
 }
 
@@ -2948,15 +2978,19 @@ pub use crate::ffi_types::HandleXSControlSignTransferStatus;
 
 unsafe impl crate::CppDeletable for HandleXSControlSignTransferStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXSControlSignTransferStatus {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3054,7 +3088,9 @@ pub use crate::ffi_types::XSControl_TransferReader as TransferReader;
 
 unsafe impl crate::CppDeletable for TransferReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_TransferReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_destructor(ptr);
+        }
     }
 }
 
@@ -3984,13 +4020,19 @@ pub use crate::ffi_types::HandleXSControlTransferReader;
 
 unsafe impl crate::CppDeletable for HandleXSControlTransferReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleXSControlTransferReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlTransferReader_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXSControlTransferReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlTransferReader_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlTransferReader_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4047,7 +4089,9 @@ pub use crate::ffi_types::XSControl_TransferWriter as TransferWriter;
 
 unsafe impl crate::CppDeletable for TransferWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_TransferWriter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_destructor(ptr);
+        }
     }
 }
 
@@ -4401,13 +4445,19 @@ pub use crate::ffi_types::HandleXSControlTransferWriter;
 
 unsafe impl crate::CppDeletable for HandleXSControlTransferWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleXSControlTransferWriter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlTransferWriter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXSControlTransferWriter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlTransferWriter_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlTransferWriter_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4469,7 +4519,9 @@ pub use crate::ffi_types::XSControl_Utils as Utils;
 
 unsafe impl crate::CppDeletable for Utils {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_Utils_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_Utils_destructor(ptr);
+        }
     }
 }
 
@@ -5082,7 +5134,9 @@ pub use crate::ffi_types::XSControl_Vars as Vars;
 
 unsafe impl crate::CppDeletable for Vars {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_Vars_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_Vars_destructor(ptr);
+        }
     }
 }
 
@@ -5359,13 +5413,15 @@ pub use crate::ffi_types::HandleXSControlVars;
 
 unsafe impl crate::CppDeletable for HandleXSControlVars {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleXSControlVars_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlVars_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXSControlVars {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlVars_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlVars_clone(ptr)) }
     }
 }
 
@@ -5424,7 +5480,9 @@ pub use crate::ffi_types::XSControl_WorkSession as WorkSession;
 
 unsafe impl crate::CppDeletable for WorkSession {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_WorkSession_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_destructor(ptr);
+        }
     }
 }
 
@@ -7534,13 +7592,17 @@ pub use crate::ffi_types::HandleXSControlWorkSession;
 
 unsafe impl crate::CppDeletable for HandleXSControlWorkSession {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleXSControlWorkSession_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSControlWorkSession_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXSControlWorkSession {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlWorkSession_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlWorkSession_clone(ptr))
+        }
     }
 }
 
@@ -7609,7 +7671,9 @@ pub use crate::ffi_types::XSControl_Writer as Writer;
 
 unsafe impl crate::CppDeletable for Writer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSControl_Writer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_Writer_destructor(ptr);
+        }
     }
 }
 

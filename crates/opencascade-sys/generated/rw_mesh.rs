@@ -171,7 +171,9 @@ pub use crate::ffi_types::RWMesh_CafReader as CafReader;
 
 unsafe impl crate::CppDeletable for CafReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_CafReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_CafReader_destructor(ptr);
+        }
     }
 }
 
@@ -651,13 +653,15 @@ pub use crate::ffi_types::HandleRWMeshCafReader;
 
 unsafe impl crate::CppDeletable for HandleRWMeshCafReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWMeshCafReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_clone(ptr)) }
     }
 }
 
@@ -759,7 +763,9 @@ pub use crate::ffi_types::RWMesh_CafReader_CafDocumentTools as CafReader_CafDocu
 
 unsafe impl crate::CppDeletable for CafReader_CafDocumentTools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_CafReader_CafDocumentTools_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_CafReader_CafDocumentTools_destructor(ptr);
+        }
     }
 }
 
@@ -808,7 +814,9 @@ pub use crate::ffi_types::RWMesh_CoordinateSystemConverter as CoordinateSystemCo
 
 unsafe impl crate::CppDeletable for CoordinateSystemConverter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_CoordinateSystemConverter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_CoordinateSystemConverter_destructor(ptr);
+        }
     }
 }
 
@@ -1028,7 +1036,9 @@ pub use crate::ffi_types::RWMesh_EdgeIterator as EdgeIterator;
 
 unsafe impl crate::CppDeletable for EdgeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_EdgeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_EdgeIterator_destructor(ptr);
+        }
     }
 }
 
@@ -1267,7 +1277,9 @@ pub use crate::ffi_types::RWMesh_FaceIterator as FaceIterator;
 
 unsafe impl crate::CppDeletable for FaceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_FaceIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_FaceIterator_destructor(ptr);
+        }
     }
 }
 
@@ -1630,7 +1642,9 @@ pub use crate::ffi_types::RWMesh_MaterialMap as MaterialMap;
 
 unsafe impl crate::CppDeletable for MaterialMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_MaterialMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_MaterialMap_destructor(ptr);
+        }
     }
 }
 
@@ -1870,13 +1884,17 @@ pub use crate::ffi_types::HandleRWMeshMaterialMap;
 
 unsafe impl crate::CppDeletable for HandleRWMeshMaterialMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWMeshMaterialMap {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_clone(ptr))
+        }
     }
 }
 
@@ -1960,7 +1978,9 @@ pub use crate::ffi_types::RWMesh_NodeAttributes as NodeAttributes;
 
 unsafe impl crate::CppDeletable for NodeAttributes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_NodeAttributes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_NodeAttributes_destructor(ptr);
+        }
     }
 }
 
@@ -1989,7 +2009,9 @@ pub use crate::ffi_types::RWMesh_ShapeIterator as ShapeIterator;
 
 unsafe impl crate::CppDeletable for ShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_ShapeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_ShapeIterator_destructor(ptr);
+        }
     }
 }
 
@@ -2132,7 +2154,9 @@ pub use crate::ffi_types::RWMesh_TriangulationReader as TriangulationReader;
 
 unsafe impl crate::CppDeletable for TriangulationReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_destructor(ptr);
+        }
     }
 }
 
@@ -2427,13 +2451,19 @@ pub use crate::ffi_types::HandleRWMeshTriangulationReader;
 
 unsafe impl crate::CppDeletable for HandleRWMeshTriangulationReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWMeshTriangulationReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2496,7 +2526,9 @@ pub use crate::ffi_types::RWMesh_TriangulationReader_LoadingStatistic as Triangu
 
 unsafe impl crate::CppDeletable for TriangulationReader_LoadingStatistic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_LoadingStatistic_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_LoadingStatistic_destructor(ptr);
+        }
     }
 }
 
@@ -2512,7 +2544,9 @@ pub use crate::ffi_types::RWMesh_TriangulationSource as TriangulationSource;
 
 unsafe impl crate::CppDeletable for TriangulationSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_destructor(ptr);
+        }
     }
 }
 
@@ -3317,13 +3351,19 @@ pub use crate::ffi_types::HandleRWMeshTriangulationSource;
 
 unsafe impl crate::CppDeletable for HandleRWMeshTriangulationSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWMeshTriangulationSource {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3403,7 +3443,9 @@ pub use crate::ffi_types::RWMesh_VertexIterator as VertexIterator;
 
 unsafe impl crate::CppDeletable for VertexIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKRWMesh::RWMesh_VertexIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKRWMesh::RWMesh_VertexIterator_destructor(ptr);
+        }
     }
 }
 

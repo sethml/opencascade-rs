@@ -15,7 +15,9 @@ pub use crate::ffi_types::LDOMParser;
 
 unsafe impl crate::CppDeletable for LDOMParser {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_misc::LDOMParser_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_misc::LDOMParser_destructor(ptr);
+        }
     }
 }
 

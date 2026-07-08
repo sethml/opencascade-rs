@@ -40,7 +40,9 @@ pub use crate::ffi_types::IGESDimen_AngularDimension as AngularDimension;
 
 unsafe impl crate::CppDeletable for AngularDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_AngularDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_AngularDimension_destructor(ptr);
+        }
     }
 }
 
@@ -1043,13 +1045,19 @@ pub use crate::ffi_types::HandleIGESDimenAngularDimension;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenAngularDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenAngularDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenAngularDimension_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenAngularDimension {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenAngularDimension_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenAngularDimension_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1113,7 +1121,9 @@ pub use crate::ffi_types::IGESDimen_BasicDimension as BasicDimension;
 
 unsafe impl crate::CppDeletable for BasicDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_BasicDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_BasicDimension_destructor(ptr);
+        }
     }
 }
 
@@ -2048,13 +2058,19 @@ pub use crate::ffi_types::HandleIGESDimenBasicDimension;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenBasicDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenBasicDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenBasicDimension_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenBasicDimension {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenBasicDimension_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenBasicDimension_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2118,7 +2134,9 @@ pub use crate::ffi_types::IGESDimen_CenterLine as CenterLine;
 
 unsafe impl crate::CppDeletable for CenterLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_CenterLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_CenterLine_destructor(ptr);
+        }
     }
 }
 
@@ -3043,13 +3061,17 @@ pub use crate::ffi_types::HandleIGESDimenCenterLine;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenCenterLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenCenterLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenCenterLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenCenterLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenCenterLine_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenCenterLine_clone(ptr))
+        }
     }
 }
 
@@ -3121,7 +3143,9 @@ pub use crate::ffi_types::IGESDimen_CurveDimension as CurveDimension;
 
 unsafe impl crate::CppDeletable for CurveDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_CurveDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_CurveDimension_destructor(ptr);
+        }
     }
 }
 
@@ -4129,13 +4153,19 @@ pub use crate::ffi_types::HandleIGESDimenCurveDimension;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenCurveDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenCurveDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenCurveDimension_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenCurveDimension {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenCurveDimension_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenCurveDimension_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4198,7 +4228,9 @@ pub use crate::ffi_types::IGESDimen_DiameterDimension as DiameterDimension;
 
 unsafe impl crate::CppDeletable for DiameterDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_DiameterDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_DiameterDimension_destructor(ptr);
+        }
     }
 }
 
@@ -5139,13 +5171,19 @@ pub use crate::ffi_types::HandleIGESDimenDiameterDimension;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenDiameterDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenDiameterDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenDiameterDimension_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenDiameterDimension {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenDiameterDimension_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenDiameterDimension_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -5213,7 +5251,9 @@ pub use crate::ffi_types::IGESDimen_DimensionDisplayData as DimensionDisplayData
 
 unsafe impl crate::CppDeletable for DimensionDisplayData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_DimensionDisplayData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_DimensionDisplayData_destructor(ptr);
+        }
     }
 }
 
@@ -6251,15 +6291,19 @@ pub use crate::ffi_types::HandleIGESDimenDimensionDisplayData;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenDimensionDisplayData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionDisplayData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionDisplayData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenDimensionDisplayData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionDisplayData_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionDisplayData_clone(ptr),
+            )
+        }
     }
 }
 
@@ -6328,7 +6372,9 @@ pub use crate::ffi_types::IGESDimen_DimensionTolerance as DimensionTolerance;
 
 unsafe impl crate::CppDeletable for DimensionTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_DimensionTolerance_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_DimensionTolerance_destructor(ptr);
+        }
     }
 }
 
@@ -7322,15 +7368,19 @@ pub use crate::ffi_types::HandleIGESDimenDimensionTolerance;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenDimensionTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionTolerance_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionTolerance_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenDimensionTolerance {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionTolerance_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionTolerance_clone(ptr),
+            )
+        }
     }
 }
 
@@ -7398,7 +7448,9 @@ pub use crate::ffi_types::IGESDimen_DimensionUnits as DimensionUnits;
 
 unsafe impl crate::CppDeletable for DimensionUnits {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_DimensionUnits_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_DimensionUnits_destructor(ptr);
+        }
     }
 }
 
@@ -8371,13 +8423,19 @@ pub use crate::ffi_types::HandleIGESDimenDimensionUnits;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenDimensionUnits {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionUnits_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionUnits_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenDimensionUnits {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionUnits_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionUnits_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -8442,7 +8500,9 @@ pub use crate::ffi_types::IGESDimen_DimensionedGeometry as DimensionedGeometry;
 
 unsafe impl crate::CppDeletable for DimensionedGeometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_DimensionedGeometry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_DimensionedGeometry_destructor(ptr);
+        }
     }
 }
 
@@ -9346,15 +9406,19 @@ pub use crate::ffi_types::HandleIGESDimenDimensionedGeometry;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenDimensionedGeometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionedGeometry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionedGeometry_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenDimensionedGeometry {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionedGeometry_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDimenDimensionedGeometry_clone(ptr),
+            )
+        }
     }
 }
 
@@ -9421,7 +9485,9 @@ pub use crate::ffi_types::IGESDimen_FlagNote as FlagNote;
 
 unsafe impl crate::CppDeletable for FlagNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_FlagNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_FlagNote_destructor(ptr);
+        }
     }
 }
 
@@ -10379,13 +10445,17 @@ pub use crate::ffi_types::HandleIGESDimenFlagNote;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenFlagNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenFlagNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenFlagNote_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenFlagNote {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenFlagNote_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenFlagNote_clone(ptr))
+        }
     }
 }
 
@@ -10452,7 +10522,9 @@ pub use crate::ffi_types::IGESDimen_GeneralLabel as GeneralLabel;
 
 unsafe impl crate::CppDeletable for GeneralLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_GeneralLabel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_GeneralLabel_destructor(ptr);
+        }
     }
 }
 
@@ -11358,13 +11430,17 @@ pub use crate::ffi_types::HandleIGESDimenGeneralLabel;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenGeneralLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralLabel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralLabel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenGeneralLabel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralLabel_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralLabel_clone(ptr))
+        }
     }
 }
 
@@ -11432,7 +11508,9 @@ pub use crate::ffi_types::IGESDimen_GeneralModule as GeneralModule;
 
 unsafe impl crate::CppDeletable for GeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_GeneralModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_GeneralModule_destructor(ptr);
+        }
     }
 }
 
@@ -12018,13 +12096,17 @@ pub use crate::ffi_types::HandleIGESDimenGeneralModule;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenGeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenGeneralModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralModule_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralModule_clone(ptr))
+        }
     }
 }
 
@@ -12098,7 +12180,9 @@ pub use crate::ffi_types::IGESDimen_GeneralNote as GeneralNote;
 
 unsafe impl crate::CppDeletable for GeneralNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_GeneralNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_GeneralNote_destructor(ptr);
+        }
     }
 }
 
@@ -13188,13 +13272,17 @@ pub use crate::ffi_types::HandleIGESDimenGeneralNote;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenGeneralNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralNote_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenGeneralNote {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralNote_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralNote_clone(ptr))
+        }
     }
 }
 
@@ -13265,7 +13353,9 @@ pub use crate::ffi_types::IGESDimen_GeneralSymbol as GeneralSymbol;
 
 unsafe impl crate::CppDeletable for GeneralSymbol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_GeneralSymbol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_GeneralSymbol_destructor(ptr);
+        }
     }
 }
 
@@ -14223,13 +14313,17 @@ pub use crate::ffi_types::HandleIGESDimenGeneralSymbol;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenGeneralSymbol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralSymbol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralSymbol_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenGeneralSymbol {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralSymbol_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenGeneralSymbol_clone(ptr))
+        }
     }
 }
 
@@ -14291,7 +14385,9 @@ pub use crate::ffi_types::IGESDimen_HArray1OfGeneralNote as HArray1OfGeneralNote
 
 unsafe impl crate::CppDeletable for HArray1OfGeneralNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_HArray1OfGeneralNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_HArray1OfGeneralNote_destructor(ptr);
+        }
     }
 }
 
@@ -14513,15 +14609,19 @@ pub use crate::ffi_types::HandleIGESDimenHArray1OfGeneralNote;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenHArray1OfGeneralNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenHArray1OfGeneralNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenHArray1OfGeneralNote_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenHArray1OfGeneralNote {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenHArray1OfGeneralNote_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDimenHArray1OfGeneralNote_clone(ptr),
+            )
+        }
     }
 }
 
@@ -14576,7 +14676,9 @@ pub use crate::ffi_types::IGESDimen_HArray1OfLeaderArrow as HArray1OfLeaderArrow
 
 unsafe impl crate::CppDeletable for HArray1OfLeaderArrow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_HArray1OfLeaderArrow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_HArray1OfLeaderArrow_destructor(ptr);
+        }
     }
 }
 
@@ -14798,15 +14900,19 @@ pub use crate::ffi_types::HandleIGESDimenHArray1OfLeaderArrow;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenHArray1OfLeaderArrow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenHArray1OfLeaderArrow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenHArray1OfLeaderArrow_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenHArray1OfLeaderArrow {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenHArray1OfLeaderArrow_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDimenHArray1OfLeaderArrow_clone(ptr),
+            )
+        }
     }
 }
 
@@ -14866,7 +14972,9 @@ pub use crate::ffi_types::IGESDimen_LeaderArrow as LeaderArrow;
 
 unsafe impl crate::CppDeletable for LeaderArrow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_LeaderArrow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_LeaderArrow_destructor(ptr);
+        }
     }
 }
 
@@ -15832,13 +15940,17 @@ pub use crate::ffi_types::HandleIGESDimenLeaderArrow;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenLeaderArrow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenLeaderArrow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenLeaderArrow_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenLeaderArrow {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenLeaderArrow_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenLeaderArrow_clone(ptr))
+        }
     }
 }
 
@@ -15907,7 +16019,9 @@ pub use crate::ffi_types::IGESDimen_LinearDimension as LinearDimension;
 
 unsafe impl crate::CppDeletable for LinearDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_LinearDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_LinearDimension_destructor(ptr);
+        }
     }
 }
 
@@ -16882,13 +16996,19 @@ pub use crate::ffi_types::HandleIGESDimenLinearDimension;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenLinearDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenLinearDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenLinearDimension_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenLinearDimension {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenLinearDimension_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenLinearDimension_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -16954,7 +17074,9 @@ pub use crate::ffi_types::IGESDimen_NewDimensionedGeometry as NewDimensionedGeom
 
 unsafe impl crate::CppDeletable for NewDimensionedGeometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_NewDimensionedGeometry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_NewDimensionedGeometry_destructor(ptr);
+        }
     }
 }
 
@@ -17904,15 +18026,19 @@ pub use crate::ffi_types::HandleIGESDimenNewDimensionedGeometry;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenNewDimensionedGeometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenNewDimensionedGeometry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenNewDimensionedGeometry_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenNewDimensionedGeometry {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDEIGES::HandleIGESDimenNewDimensionedGeometry_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDimenNewDimensionedGeometry_clone(ptr),
+            )
+        }
     }
 }
 
@@ -17979,7 +18105,9 @@ pub use crate::ffi_types::IGESDimen_NewGeneralNote as NewGeneralNote;
 
 unsafe impl crate::CppDeletable for NewGeneralNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_NewGeneralNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_NewGeneralNote_destructor(ptr);
+        }
     }
 }
 
@@ -19376,13 +19504,19 @@ pub use crate::ffi_types::HandleIGESDimenNewGeneralNote;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenNewGeneralNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenNewGeneralNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenNewGeneralNote_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenNewGeneralNote {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenNewGeneralNote_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenNewGeneralNote_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -19448,7 +19582,9 @@ pub use crate::ffi_types::IGESDimen_OrdinateDimension as OrdinateDimension;
 
 unsafe impl crate::CppDeletable for OrdinateDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_OrdinateDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_OrdinateDimension_destructor(ptr);
+        }
     }
 }
 
@@ -20364,13 +20500,19 @@ pub use crate::ffi_types::HandleIGESDimenOrdinateDimension;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenOrdinateDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenOrdinateDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenOrdinateDimension_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenOrdinateDimension {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenOrdinateDimension_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenOrdinateDimension_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -20440,7 +20582,9 @@ pub use crate::ffi_types::IGESDimen_PointDimension as PointDimension;
 
 unsafe impl crate::CppDeletable for PointDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_PointDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_PointDimension_destructor(ptr);
+        }
     }
 }
 
@@ -21381,13 +21525,19 @@ pub use crate::ffi_types::HandleIGESDimenPointDimension;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenPointDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenPointDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenPointDimension_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenPointDimension {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenPointDimension_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenPointDimension_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -21448,7 +21598,9 @@ pub use crate::ffi_types::IGESDimen_Protocol as Protocol;
 
 unsafe impl crate::CppDeletable for Protocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_Protocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_Protocol_destructor(ptr);
+        }
     }
 }
 
@@ -21779,13 +21931,17 @@ pub use crate::ffi_types::HandleIGESDimenProtocol;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenProtocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenProtocol_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenProtocol {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenProtocol_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenProtocol_clone(ptr))
+        }
     }
 }
 
@@ -21868,7 +22024,9 @@ pub use crate::ffi_types::IGESDimen_RadiusDimension as RadiusDimension;
 
 unsafe impl crate::CppDeletable for RadiusDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_RadiusDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_RadiusDimension_destructor(ptr);
+        }
     }
 }
 
@@ -22811,13 +22969,19 @@ pub use crate::ffi_types::HandleIGESDimenRadiusDimension;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenRadiusDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenRadiusDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenRadiusDimension_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenRadiusDimension {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenRadiusDimension_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenRadiusDimension_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -22880,7 +23044,9 @@ pub use crate::ffi_types::IGESDimen_ReadWriteModule as ReadWriteModule;
 
 unsafe impl crate::CppDeletable for ReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ReadWriteModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ReadWriteModule_destructor(ptr);
+        }
     }
 }
 
@@ -23183,13 +23349,19 @@ pub use crate::ffi_types::HandleIGESDimenReadWriteModule;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenReadWriteModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenReadWriteModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenReadWriteModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenReadWriteModule_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenReadWriteModule_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -23261,7 +23433,9 @@ pub use crate::ffi_types::IGESDimen_Section as Section;
 
 unsafe impl crate::CppDeletable for Section {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_Section_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_Section_destructor(ptr);
+        }
     }
 }
 
@@ -24154,13 +24328,17 @@ pub use crate::ffi_types::HandleIGESDimenSection;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenSection_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenSection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenSection_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenSection_clone(ptr))
+        }
     }
 }
 
@@ -24236,7 +24414,9 @@ pub use crate::ffi_types::IGESDimen_SectionedArea as SectionedArea;
 
 unsafe impl crate::CppDeletable for SectionedArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_SectionedArea_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_SectionedArea_destructor(ptr);
+        }
     }
 }
 
@@ -25227,13 +25407,17 @@ pub use crate::ffi_types::HandleIGESDimenSectionedArea;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenSectionedArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenSectionedArea_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenSectionedArea_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenSectionedArea {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenSectionedArea_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenSectionedArea_clone(ptr))
+        }
     }
 }
 
@@ -25297,7 +25481,9 @@ pub use crate::ffi_types::IGESDimen_SpecificModule as SpecificModule;
 
 unsafe impl crate::CppDeletable for SpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_SpecificModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_SpecificModule_destructor(ptr);
+        }
     }
 }
 
@@ -25512,13 +25698,19 @@ pub use crate::ffi_types::HandleIGESDimenSpecificModule;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenSpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenSpecificModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenSpecificModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenSpecificModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenSpecificModule_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenSpecificModule_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -25580,7 +25772,9 @@ pub use crate::ffi_types::IGESDimen_ToolAngularDimension as ToolAngularDimension
 
 unsafe impl crate::CppDeletable for ToolAngularDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolAngularDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolAngularDimension_destructor(ptr);
+        }
     }
 }
 
@@ -25731,7 +25925,9 @@ pub use crate::ffi_types::IGESDimen_ToolBasicDimension as ToolBasicDimension;
 
 unsafe impl crate::CppDeletable for ToolBasicDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolBasicDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolBasicDimension_destructor(ptr);
+        }
     }
 }
 
@@ -25894,7 +26090,9 @@ pub use crate::ffi_types::IGESDimen_ToolCenterLine as ToolCenterLine;
 
 unsafe impl crate::CppDeletable for ToolCenterLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolCenterLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolCenterLine_destructor(ptr);
+        }
     }
 }
 
@@ -26057,7 +26255,9 @@ pub use crate::ffi_types::IGESDimen_ToolCurveDimension as ToolCurveDimension;
 
 unsafe impl crate::CppDeletable for ToolCurveDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolCurveDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolCurveDimension_destructor(ptr);
+        }
     }
 }
 
@@ -26208,7 +26408,9 @@ pub use crate::ffi_types::IGESDimen_ToolDiameterDimension as ToolDiameterDimensi
 
 unsafe impl crate::CppDeletable for ToolDiameterDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolDiameterDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolDiameterDimension_destructor(ptr);
+        }
     }
 }
 
@@ -26359,7 +26561,9 @@ pub use crate::ffi_types::IGESDimen_ToolDimensionDisplayData as ToolDimensionDis
 
 unsafe impl crate::CppDeletable for ToolDimensionDisplayData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolDimensionDisplayData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolDimensionDisplayData_destructor(ptr);
+        }
     }
 }
 
@@ -26522,7 +26726,9 @@ pub use crate::ffi_types::IGESDimen_ToolDimensionTolerance as ToolDimensionToler
 
 unsafe impl crate::CppDeletable for ToolDimensionTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolDimensionTolerance_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolDimensionTolerance_destructor(ptr);
+        }
     }
 }
 
@@ -26685,7 +26891,9 @@ pub use crate::ffi_types::IGESDimen_ToolDimensionUnits as ToolDimensionUnits;
 
 unsafe impl crate::CppDeletable for ToolDimensionUnits {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolDimensionUnits_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolDimensionUnits_destructor(ptr);
+        }
     }
 }
 
@@ -26848,7 +27056,9 @@ pub use crate::ffi_types::IGESDimen_ToolDimensionedGeometry as ToolDimensionedGe
 
 unsafe impl crate::CppDeletable for ToolDimensionedGeometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolDimensionedGeometry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolDimensionedGeometry_destructor(ptr);
+        }
     }
 }
 
@@ -27011,7 +27221,9 @@ pub use crate::ffi_types::IGESDimen_ToolFlagNote as ToolFlagNote;
 
 unsafe impl crate::CppDeletable for ToolFlagNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolFlagNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolFlagNote_destructor(ptr);
+        }
     }
 }
 
@@ -27162,7 +27374,9 @@ pub use crate::ffi_types::IGESDimen_ToolGeneralLabel as ToolGeneralLabel;
 
 unsafe impl crate::CppDeletable for ToolGeneralLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolGeneralLabel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolGeneralLabel_destructor(ptr);
+        }
     }
 }
 
@@ -27313,7 +27527,9 @@ pub use crate::ffi_types::IGESDimen_ToolGeneralNote as ToolGeneralNote;
 
 unsafe impl crate::CppDeletable for ToolGeneralNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolGeneralNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolGeneralNote_destructor(ptr);
+        }
     }
 }
 
@@ -27464,7 +27680,9 @@ pub use crate::ffi_types::IGESDimen_ToolGeneralSymbol as ToolGeneralSymbol;
 
 unsafe impl crate::CppDeletable for ToolGeneralSymbol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolGeneralSymbol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolGeneralSymbol_destructor(ptr);
+        }
     }
 }
 
@@ -27615,7 +27833,9 @@ pub use crate::ffi_types::IGESDimen_ToolLeaderArrow as ToolLeaderArrow;
 
 unsafe impl crate::CppDeletable for ToolLeaderArrow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolLeaderArrow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolLeaderArrow_destructor(ptr);
+        }
     }
 }
 
@@ -27766,7 +27986,9 @@ pub use crate::ffi_types::IGESDimen_ToolLinearDimension as ToolLinearDimension;
 
 unsafe impl crate::CppDeletable for ToolLinearDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolLinearDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolLinearDimension_destructor(ptr);
+        }
     }
 }
 
@@ -27917,7 +28139,9 @@ pub use crate::ffi_types::IGESDimen_ToolNewDimensionedGeometry as ToolNewDimensi
 
 unsafe impl crate::CppDeletable for ToolNewDimensionedGeometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolNewDimensionedGeometry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolNewDimensionedGeometry_destructor(ptr);
+        }
     }
 }
 
@@ -28083,7 +28307,9 @@ pub use crate::ffi_types::IGESDimen_ToolNewGeneralNote as ToolNewGeneralNote;
 
 unsafe impl crate::CppDeletable for ToolNewGeneralNote {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolNewGeneralNote_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolNewGeneralNote_destructor(ptr);
+        }
     }
 }
 
@@ -28234,7 +28460,9 @@ pub use crate::ffi_types::IGESDimen_ToolOrdinateDimension as ToolOrdinateDimensi
 
 unsafe impl crate::CppDeletable for ToolOrdinateDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolOrdinateDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolOrdinateDimension_destructor(ptr);
+        }
     }
 }
 
@@ -28385,7 +28613,9 @@ pub use crate::ffi_types::IGESDimen_ToolPointDimension as ToolPointDimension;
 
 unsafe impl crate::CppDeletable for ToolPointDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolPointDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolPointDimension_destructor(ptr);
+        }
     }
 }
 
@@ -28536,7 +28766,9 @@ pub use crate::ffi_types::IGESDimen_ToolRadiusDimension as ToolRadiusDimension;
 
 unsafe impl crate::CppDeletable for ToolRadiusDimension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolRadiusDimension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolRadiusDimension_destructor(ptr);
+        }
     }
 }
 
@@ -28687,7 +28919,9 @@ pub use crate::ffi_types::IGESDimen_ToolSection as ToolSection;
 
 unsafe impl crate::CppDeletable for ToolSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolSection_destructor(ptr);
+        }
     }
 }
 
@@ -28847,7 +29081,9 @@ pub use crate::ffi_types::IGESDimen_ToolSectionedArea as ToolSectionedArea;
 
 unsafe impl crate::CppDeletable for ToolSectionedArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolSectionedArea_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolSectionedArea_destructor(ptr);
+        }
     }
 }
 
@@ -28998,7 +29234,9 @@ pub use crate::ffi_types::IGESDimen_ToolWitnessLine as ToolWitnessLine;
 
 unsafe impl crate::CppDeletable for ToolWitnessLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_ToolWitnessLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_ToolWitnessLine_destructor(ptr);
+        }
     }
 }
 
@@ -29163,7 +29401,9 @@ pub use crate::ffi_types::IGESDimen_WitnessLine as WitnessLine;
 
 unsafe impl crate::CppDeletable for WitnessLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESDimen_WitnessLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDimen_WitnessLine_destructor(ptr);
+        }
     }
 }
 
@@ -30078,13 +30318,17 @@ pub use crate::ffi_types::HandleIGESDimenWitnessLine;
 
 unsafe impl crate::CppDeletable for HandleIGESDimenWitnessLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESDimenWitnessLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESDimenWitnessLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESDimenWitnessLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenWitnessLine_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDimenWitnessLine_clone(ptr))
+        }
     }
 }
 

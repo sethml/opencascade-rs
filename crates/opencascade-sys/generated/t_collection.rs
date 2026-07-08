@@ -33,13 +33,17 @@ pub use crate::ffi_types::TCollection_AsciiString as AsciiString;
 
 unsafe impl crate::CppDeletable for AsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TCollection_AsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TCollection_AsciiString_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for AsciiString {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::TCollection_AsciiString_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::TCollection_AsciiString_clone(ptr))
+        }
     }
 }
 
@@ -1322,13 +1326,17 @@ pub use crate::ffi_types::TCollection_ExtendedString as ExtendedString;
 
 unsafe impl crate::CppDeletable for ExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TCollection_ExtendedString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TCollection_ExtendedString_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for ExtendedString {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::TCollection_ExtendedString_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::TCollection_ExtendedString_clone(ptr))
+        }
     }
 }
 
@@ -1960,7 +1968,9 @@ pub use crate::ffi_types::TCollection_HAsciiString as HAsciiString;
 
 unsafe impl crate::CppDeletable for HAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TCollection_HAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TCollection_HAsciiString_destructor(ptr);
+        }
     }
 }
 
@@ -3067,13 +3077,17 @@ pub use crate::ffi_types::HandleTCollectionHAsciiString;
 
 unsafe impl crate::CppDeletable for HandleTCollectionHAsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleTCollectionHAsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTCollectionHAsciiString_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTCollectionHAsciiString {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleTCollectionHAsciiString_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleTCollectionHAsciiString_clone(ptr))
+        }
     }
 }
 
@@ -3144,7 +3158,9 @@ pub use crate::ffi_types::TCollection_HExtendedString as HExtendedString;
 
 unsafe impl crate::CppDeletable for HExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::TCollection_HExtendedString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::TCollection_HExtendedString_destructor(ptr);
+        }
     }
 }
 
@@ -3709,13 +3725,19 @@ pub use crate::ffi_types::HandleTCollectionHExtendedString;
 
 unsafe impl crate::CppDeletable for HandleTCollectionHExtendedString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleTCollectionHExtendedString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleTCollectionHExtendedString_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTCollectionHExtendedString {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleTCollectionHExtendedString_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleTCollectionHExtendedString_clone(
+                ptr,
+            ))
+        }
     }
 }
 

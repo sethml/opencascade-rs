@@ -23,7 +23,9 @@ pub use crate::ffi_types::STEPSelections_AssemblyComponent as AssemblyComponent;
 
 unsafe impl crate::CppDeletable for AssemblyComponent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_AssemblyComponent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_AssemblyComponent_destructor(ptr);
+        }
     }
 }
 
@@ -234,15 +236,19 @@ pub use crate::ffi_types::HandleSTEPSelectionsAssemblyComponent;
 
 unsafe impl crate::CppDeletable for HandleSTEPSelectionsAssemblyComponent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsAssemblyComponent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsAssemblyComponent_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPSelectionsAssemblyComponent {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsAssemblyComponent_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsAssemblyComponent_clone(ptr),
+            )
+        }
     }
 }
 
@@ -297,7 +303,9 @@ pub use crate::ffi_types::STEPSelections_AssemblyExplorer as AssemblyExplorer;
 
 unsafe impl crate::CppDeletable for AssemblyExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_AssemblyExplorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_AssemblyExplorer_destructor(ptr);
+        }
     }
 }
 
@@ -407,7 +415,9 @@ pub use crate::ffi_types::STEPSelections_AssemblyLink as AssemblyLink;
 
 unsafe impl crate::CppDeletable for AssemblyLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_AssemblyLink_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_AssemblyLink_destructor(ptr);
+        }
     }
 }
 
@@ -643,13 +653,19 @@ pub use crate::ffi_types::HandleSTEPSelectionsAssemblyLink;
 
 unsafe impl crate::CppDeletable for HandleSTEPSelectionsAssemblyLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsAssemblyLink_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsAssemblyLink_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPSelectionsAssemblyLink {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsAssemblyLink_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsAssemblyLink_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -702,7 +718,9 @@ pub use crate::ffi_types::STEPSelections_Counter as Counter;
 
 unsafe impl crate::CppDeletable for Counter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_Counter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_Counter_destructor(ptr);
+        }
     }
 }
 
@@ -842,7 +860,9 @@ pub use crate::ffi_types::STEPSelections_HSequenceOfAssemblyLink as HSequenceOfA
 
 unsafe impl crate::CppDeletable for HSequenceOfAssemblyLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_HSequenceOfAssemblyLink_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_HSequenceOfAssemblyLink_destructor(ptr);
+        }
     }
 }
 
@@ -1038,15 +1058,19 @@ pub use crate::ffi_types::HandleSTEPSelectionsHSequenceOfAssemblyLink;
 
 unsafe impl crate::CppDeletable for HandleSTEPSelectionsHSequenceOfAssemblyLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsHSequenceOfAssemblyLink_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsHSequenceOfAssemblyLink_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPSelectionsHSequenceOfAssemblyLink {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsHSequenceOfAssemblyLink_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsHSequenceOfAssemblyLink_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1101,7 +1125,9 @@ pub use crate::ffi_types::STEPSelections_SelectAssembly as SelectAssembly;
 
 unsafe impl crate::CppDeletable for SelectAssembly {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_SelectAssembly_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_SelectAssembly_destructor(ptr);
+        }
     }
 }
 
@@ -1487,15 +1513,19 @@ pub use crate::ffi_types::HandleSTEPSelectionsSelectAssembly;
 
 unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectAssembly {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectAssembly_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectAssembly_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectAssembly {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectAssembly_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectAssembly_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1577,7 +1607,9 @@ pub use crate::ffi_types::STEPSelections_SelectDerived as SelectDerived;
 
 unsafe impl crate::CppDeletable for SelectDerived {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_SelectDerived_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_SelectDerived_destructor(ptr);
+        }
     }
 }
 
@@ -1937,15 +1969,19 @@ pub use crate::ffi_types::HandleSTEPSelectionsSelectDerived;
 
 unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectDerived {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectDerived_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectDerived_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectDerived {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectDerived_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectDerived_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2035,7 +2071,9 @@ pub use crate::ffi_types::STEPSelections_SelectFaces as SelectFaces;
 
 unsafe impl crate::CppDeletable for SelectFaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_SelectFaces_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_SelectFaces_destructor(ptr);
+        }
     }
 }
 
@@ -2425,13 +2463,19 @@ pub use crate::ffi_types::HandleSTEPSelectionsSelectFaces;
 
 unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectFaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectFaces_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectFaces_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectFaces {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectFaces_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectFaces_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2509,7 +2553,9 @@ pub use crate::ffi_types::STEPSelections_SelectForTransfer as SelectForTransfer;
 
 unsafe impl crate::CppDeletable for SelectForTransfer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_SelectForTransfer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_SelectForTransfer_destructor(ptr);
+        }
     }
 }
 
@@ -2963,15 +3009,19 @@ pub use crate::ffi_types::HandleSTEPSelectionsSelectForTransfer;
 
 unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectForTransfer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectForTransfer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectForTransfer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectForTransfer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectForTransfer_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectForTransfer_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3063,7 +3113,9 @@ pub use crate::ffi_types::STEPSelections_SelectGSCurves as SelectGSCurves;
 
 unsafe impl crate::CppDeletable for SelectGSCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_SelectGSCurves_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_SelectGSCurves_destructor(ptr);
+        }
     }
 }
 
@@ -3447,15 +3499,19 @@ pub use crate::ffi_types::HandleSTEPSelectionsSelectGSCurves;
 
 unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectGSCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectGSCurves_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectGSCurves_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectGSCurves {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectGSCurves_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectGSCurves_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3537,7 +3593,9 @@ pub use crate::ffi_types::STEPSelections_SelectInstances as SelectInstances;
 
 unsafe impl crate::CppDeletable for SelectInstances {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPSelections_SelectInstances_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPSelections_SelectInstances_destructor(ptr);
+        }
     }
 }
 
@@ -3911,15 +3969,19 @@ pub use crate::ffi_types::HandleSTEPSelectionsSelectInstances;
 
 unsafe impl crate::CppDeletable for HandleSTEPSelectionsSelectInstances {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectInstances_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectInstances_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPSelectionsSelectInstances {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectInstances_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleSTEPSelectionsSelectInstances_clone(ptr),
+            )
+        }
     }
 }
 

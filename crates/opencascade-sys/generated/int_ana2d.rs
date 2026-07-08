@@ -23,7 +23,9 @@ pub use crate::ffi_types::IntAna2d_AnaIntersection as AnaIntersection;
 
 unsafe impl crate::CppDeletable for AnaIntersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_destructor(ptr);
+        }
     }
 }
 
@@ -292,7 +294,9 @@ pub use crate::ffi_types::IntAna2d_Conic as Conic;
 
 unsafe impl crate::CppDeletable for Conic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::IntAna2d_Conic_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna2d_Conic_destructor(ptr);
+        }
     }
 }
 
@@ -441,7 +445,9 @@ pub use crate::ffi_types::IntAna2d_IntPoint as IntPoint;
 
 unsafe impl crate::CppDeletable for IntPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_destructor(ptr);
+        }
     }
 }
 
@@ -555,7 +561,9 @@ pub use crate::ffi_types::MyDirectPolynomialRoots;
 
 unsafe impl crate::CppDeletable for MyDirectPolynomialRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::MyDirectPolynomialRoots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::MyDirectPolynomialRoots_destructor(ptr);
+        }
     }
 }
 

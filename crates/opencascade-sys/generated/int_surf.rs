@@ -122,7 +122,9 @@ pub use crate::ffi_types::IntSurf_Couple as Couple;
 
 unsafe impl crate::CppDeletable for Couple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_Couple_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_Couple_destructor(ptr);
+        }
     }
 }
 
@@ -177,7 +179,9 @@ pub use crate::ffi_types::IntSurf_InteriorPoint as InteriorPoint;
 
 unsafe impl crate::CppDeletable for InteriorPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_InteriorPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_InteriorPoint_destructor(ptr);
+        }
     }
 }
 
@@ -307,7 +311,9 @@ pub use crate::ffi_types::IntSurf_InteriorPointTool as InteriorPointTool;
 
 unsafe impl crate::CppDeletable for InteriorPointTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_InteriorPointTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_InteriorPointTool_destructor(ptr);
+        }
     }
 }
 
@@ -375,7 +381,9 @@ pub use crate::ffi_types::IntSurf_LineOn2S as LineOn2S;
 
 unsafe impl crate::CppDeletable for LineOn2S {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_destructor(ptr);
+        }
     }
 }
 
@@ -663,13 +671,17 @@ pub use crate::ffi_types::HandleIntSurfLineOn2S;
 
 unsafe impl crate::CppDeletable for HandleIntSurfLineOn2S {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntSurfLineOn2S {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_clone(ptr))
+        }
     }
 }
 
@@ -720,7 +732,9 @@ pub use crate::ffi_types::IntSurf_PathPoint as PathPoint;
 
 unsafe impl crate::CppDeletable for PathPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_destructor(ptr);
+        }
     }
 }
 
@@ -855,7 +869,9 @@ pub use crate::ffi_types::IntSurf_PathPointTool as PathPointTool;
 
 unsafe impl crate::CppDeletable for PathPointTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_PathPointTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_PathPointTool_destructor(ptr);
+        }
     }
 }
 
@@ -972,7 +988,9 @@ pub use crate::ffi_types::IntSurf_PntOn2S as PntOn2S;
 
 unsafe impl crate::CppDeletable for PntOn2S {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_PntOn2S_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_PntOn2S_destructor(ptr);
+        }
     }
 }
 
@@ -1155,7 +1173,9 @@ pub use crate::ffi_types::IntSurf_Quadric as Quadric;
 
 unsafe impl crate::CppDeletable for Quadric {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_Quadric_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_Quadric_destructor(ptr);
+        }
     }
 }
 
@@ -1405,7 +1425,9 @@ pub use crate::ffi_types::IntSurf_QuadricTool as QuadricTool;
 
 unsafe impl crate::CppDeletable for QuadricTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_QuadricTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_QuadricTool_destructor(ptr);
+        }
     }
 }
 
@@ -1474,7 +1496,9 @@ pub use crate::ffi_types::IntSurf_Transition as Transition;
 
 unsafe impl crate::CppDeletable for Transition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntSurf_Transition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntSurf_Transition_destructor(ptr);
+        }
     }
 }
 

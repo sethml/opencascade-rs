@@ -46,7 +46,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_Area1dBuilder as Area1dBuilder;
 
 unsafe impl crate::CppDeletable for Area1dBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -261,7 +263,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_Area2dBuilder as Area2dBuilder;
 
 unsafe impl crate::CppDeletable for Area2dBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -457,7 +461,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_Area3dBuilder as Area3dBuilder;
 
 unsafe impl crate::CppDeletable for Area3dBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -662,7 +668,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_AreaBuilder as AreaBuilder;
 
 unsafe impl crate::CppDeletable for AreaBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -837,7 +845,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_BlockBuilder as BlockBuilder;
 
 unsafe impl crate::CppDeletable for BlockBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -1009,7 +1019,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_BlockIterator as BlockIterator;
 
 unsafe impl crate::CppDeletable for BlockIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockIterator_destructor(ptr);
+        }
     }
 }
 
@@ -1084,7 +1096,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_destructor(ptr);
+        }
     }
 }
 
@@ -3519,7 +3533,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_Builder1 as Builder1;
 
 unsafe impl crate::CppDeletable for Builder1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_destructor(ptr);
+        }
     }
 }
 
@@ -5801,7 +5817,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_BuilderON as BuilderON;
 
 unsafe impl crate::CppDeletable for BuilderON {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_BuilderON_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_BuilderON_destructor(ptr);
+        }
     }
 }
 
@@ -5932,7 +5950,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_CompositeClassifier as CompositeClassi
 
 unsafe impl crate::CppDeletable for CompositeClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_CompositeClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_CompositeClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -6057,7 +6077,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_CorrectFace2d as CorrectFace2d;
 
 unsafe impl crate::CppDeletable for CorrectFace2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_CorrectFace2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_CorrectFace2d_destructor(ptr);
+        }
     }
 }
 
@@ -6185,7 +6207,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_EdgeBuilder as EdgeBuilder;
 
 unsafe impl crate::CppDeletable for EdgeBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -6473,7 +6497,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_FaceAreaBuilder as FaceAreaBuilder;
 
 unsafe impl crate::CppDeletable for FaceAreaBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -6685,7 +6711,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_FaceBuilder as FaceBuilder;
 
 unsafe impl crate::CppDeletable for FaceBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -6940,7 +6968,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_FuseFace as FuseFace;
 
 unsafe impl crate::CppDeletable for FuseFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_destructor(ptr);
+        }
     }
 }
 
@@ -7113,7 +7143,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_GIter as GIter;
 
 unsafe impl crate::CppDeletable for GIter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_GIter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_GIter_destructor(ptr);
+        }
     }
 }
 
@@ -7196,7 +7228,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_GTool as GTool;
 
 unsafe impl crate::CppDeletable for GTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_GTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_GTool_destructor(ptr);
+        }
     }
 }
 
@@ -7336,7 +7370,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_GTopo as GTopo;
 
 unsafe impl crate::CppDeletable for GTopo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_destructor(ptr);
+        }
     }
 }
 
@@ -7672,7 +7708,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_HBuilder as HBuilder;
 
 unsafe impl crate::CppDeletable for HBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -8257,13 +8295,17 @@ pub use crate::ffi_types::HandleTopOpeBRepBuildHBuilder;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildHBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildHBuilder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_clone(ptr))
+        }
     }
 }
 
@@ -8319,7 +8361,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_Loop as Loop;
 
 unsafe impl crate::CppDeletable for Loop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_destructor(ptr);
+        }
     }
 }
 
@@ -8509,13 +8553,17 @@ pub use crate::ffi_types::HandleTopOpeBRepBuildLoop;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildLoop {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_clone(ptr))
+        }
     }
 }
 
@@ -8583,7 +8631,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_LoopClassifier as LoopClassifier;
 
 unsafe impl crate::CppDeletable for LoopClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_LoopClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_LoopClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -8615,7 +8665,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_LoopSet as LoopSet;
 
 unsafe impl crate::CppDeletable for LoopSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_LoopSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_LoopSet_destructor(ptr);
+        }
     }
 }
 
@@ -8680,7 +8732,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_Pave as Pave;
 
 unsafe impl crate::CppDeletable for Pave {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_destructor(ptr);
+        }
     }
 }
 
@@ -8967,13 +9021,17 @@ pub use crate::ffi_types::HandleTopOpeBRepBuildPave;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildPave {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildPave {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_clone(ptr))
+        }
     }
 }
 
@@ -9044,7 +9102,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_PaveClassifier as PaveClassifier;
 
 unsafe impl crate::CppDeletable for PaveClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -9143,7 +9203,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_PaveSet as PaveSet;
 
 unsafe impl crate::CppDeletable for PaveSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_destructor(ptr);
+        }
     }
 }
 
@@ -9289,7 +9351,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_ShapeListOfShape as ShapeListOfShape;
 
 unsafe impl crate::CppDeletable for ShapeListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeListOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeListOfShape_destructor(ptr);
+        }
     }
 }
 
@@ -9401,7 +9465,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_ShapeSet as ShapeSet;
 
 unsafe impl crate::CppDeletable for ShapeSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_destructor(ptr);
+        }
     }
 }
 
@@ -9815,7 +9881,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_ShellFaceClassifier as ShellFaceClassi
 
 unsafe impl crate::CppDeletable for ShellFaceClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -9980,7 +10048,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_ShellFaceSet as ShellFaceSet;
 
 unsafe impl crate::CppDeletable for ShellFaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_destructor(ptr);
+        }
     }
 }
 
@@ -10370,7 +10440,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_ShellToSolid as ShellToSolid;
 
 unsafe impl crate::CppDeletable for ShellToSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellToSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellToSolid_destructor(ptr);
+        }
     }
 }
 
@@ -10431,7 +10503,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_SolidAreaBuilder as SolidAreaBuilder;
 
 unsafe impl crate::CppDeletable for SolidAreaBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -10643,7 +10717,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_SolidBuilder as SolidBuilder;
 
 unsafe impl crate::CppDeletable for SolidBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -10794,7 +10870,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_Tools as Tools;
 
 unsafe impl crate::CppDeletable for Tools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_destructor(ptr);
+        }
     }
 }
 
@@ -11132,7 +11210,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_Tools2d as Tools2d;
 
 unsafe impl crate::CppDeletable for Tools2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools2d_destructor(ptr);
+        }
     }
 }
 
@@ -11188,7 +11268,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_VertexInfo as VertexInfo;
 
 unsafe impl crate::CppDeletable for VertexInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_destructor(ptr);
+        }
     }
 }
 
@@ -11364,7 +11446,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_WireEdgeClassifier as WireEdgeClassifi
 
 unsafe impl crate::CppDeletable for WireEdgeClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -11535,7 +11619,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_WireEdgeSet as WireEdgeSet;
 
 unsafe impl crate::CppDeletable for WireEdgeSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_destructor(ptr);
+        }
     }
 }
 
@@ -11954,7 +12040,9 @@ pub use crate::ffi_types::TopOpeBRepBuild_WireToFace as WireToFace;
 
 unsafe impl crate::CppDeletable for WireToFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepBuild_WireToFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_WireToFace_destructor(ptr);
+        }
     }
 }
 

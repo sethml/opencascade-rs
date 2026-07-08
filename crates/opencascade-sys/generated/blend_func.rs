@@ -112,7 +112,9 @@ pub use crate::ffi_types::BlendFunc_CSCircular as CSCircular;
 
 unsafe impl crate::CppDeletable for CSCircular {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_CSCircular_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_CSCircular_destructor(ptr);
+        }
     }
 }
 
@@ -750,7 +752,9 @@ pub use crate::ffi_types::BlendFunc_CSConstRad as CSConstRad;
 
 unsafe impl crate::CppDeletable for CSConstRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_CSConstRad_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_CSConstRad_destructor(ptr);
+        }
     }
 }
 
@@ -1379,7 +1383,9 @@ pub use crate::ffi_types::BlendFunc_ChAsym as ChAsym;
 
 unsafe impl crate::CppDeletable for ChAsym {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_ChAsym_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_ChAsym_destructor(ptr);
+        }
     }
 }
 
@@ -1989,7 +1995,9 @@ pub use crate::ffi_types::BlendFunc_ChAsymInv as ChAsymInv;
 
 unsafe impl crate::CppDeletable for ChAsymInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_ChAsymInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_ChAsymInv_destructor(ptr);
+        }
     }
 }
 
@@ -2234,7 +2242,9 @@ pub use crate::ffi_types::BlendFunc_ChamfInv as ChamfInv;
 
 unsafe impl crate::CppDeletable for ChamfInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_ChamfInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_ChamfInv_destructor(ptr);
+        }
     }
 }
 
@@ -2467,7 +2477,9 @@ pub use crate::ffi_types::BlendFunc_Chamfer as Chamfer;
 
 unsafe impl crate::CppDeletable for Chamfer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_Chamfer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_Chamfer_destructor(ptr);
+        }
     }
 }
 
@@ -2990,7 +3002,9 @@ pub use crate::ffi_types::BlendFunc_ConstRad as ConstRad;
 
 unsafe impl crate::CppDeletable for ConstRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_ConstRad_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_ConstRad_destructor(ptr);
+        }
     }
 }
 
@@ -3611,7 +3625,9 @@ pub use crate::ffi_types::BlendFunc_ConstRadInv as ConstRadInv;
 
 unsafe impl crate::CppDeletable for ConstRadInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_ConstRadInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_ConstRadInv_destructor(ptr);
+        }
     }
 }
 
@@ -3836,7 +3852,9 @@ pub use crate::ffi_types::BlendFunc_ConstThroat as ConstThroat;
 
 unsafe impl crate::CppDeletable for ConstThroat {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_ConstThroat_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_ConstThroat_destructor(ptr);
+        }
     }
 }
 
@@ -4390,7 +4408,9 @@ pub use crate::ffi_types::BlendFunc_ConstThroatInv as ConstThroatInv;
 
 unsafe impl crate::CppDeletable for ConstThroatInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_ConstThroatInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_ConstThroatInv_destructor(ptr);
+        }
     }
 }
 
@@ -4634,7 +4654,9 @@ pub use crate::ffi_types::BlendFunc_ConstThroatWithPenetration as ConstThroatWit
 
 unsafe impl crate::CppDeletable for ConstThroatWithPenetration {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_ConstThroatWithPenetration_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_ConstThroatWithPenetration_destructor(ptr);
+        }
     }
 }
 
@@ -5160,7 +5182,9 @@ pub use crate::ffi_types::BlendFunc_ConstThroatWithPenetrationInv as ConstThroat
 
 unsafe impl crate::CppDeletable for ConstThroatWithPenetrationInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_ConstThroatWithPenetrationInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_ConstThroatWithPenetrationInv_destructor(ptr);
+        }
     }
 }
 
@@ -5386,7 +5410,9 @@ pub use crate::ffi_types::BlendFunc_Corde as Corde;
 
 unsafe impl crate::CppDeletable for Corde {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_Corde_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_Corde_destructor(ptr);
+        }
     }
 }
 
@@ -5532,7 +5558,9 @@ pub use crate::ffi_types::BlendFunc_EvolRad as EvolRad;
 
 unsafe impl crate::CppDeletable for EvolRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_EvolRad_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_EvolRad_destructor(ptr);
+        }
     }
 }
 
@@ -6138,7 +6166,9 @@ pub use crate::ffi_types::BlendFunc_EvolRadInv as EvolRadInv;
 
 unsafe impl crate::CppDeletable for EvolRadInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_EvolRadInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_EvolRadInv_destructor(ptr);
+        }
     }
 }
 
@@ -6363,7 +6393,9 @@ pub use crate::ffi_types::BlendFunc_GenChamfInv as GenChamfInv;
 
 unsafe impl crate::CppDeletable for GenChamfInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_GenChamfInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_GenChamfInv_destructor(ptr);
+        }
     }
 }
 
@@ -6577,7 +6609,9 @@ pub use crate::ffi_types::BlendFunc_GenChamfer as GenChamfer;
 
 unsafe impl crate::CppDeletable for GenChamfer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_GenChamfer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_GenChamfer_destructor(ptr);
+        }
     }
 }
 
@@ -7207,7 +7241,9 @@ pub use crate::ffi_types::BlendFunc_Ruled as Ruled;
 
 unsafe impl crate::CppDeletable for Ruled {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_Ruled_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_Ruled_destructor(ptr);
+        }
     }
 }
 
@@ -7789,7 +7825,9 @@ pub use crate::ffi_types::BlendFunc_RuledInv as RuledInv;
 
 unsafe impl crate::CppDeletable for RuledInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_RuledInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_RuledInv_destructor(ptr);
+        }
     }
 }
 
@@ -7992,7 +8030,9 @@ pub use crate::ffi_types::BlendFunc_Tensor as Tensor;
 
 unsafe impl crate::CppDeletable for Tensor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::BlendFunc_Tensor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::BlendFunc_Tensor_destructor(ptr);
+        }
     }
 }
 

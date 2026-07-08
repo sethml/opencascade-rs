@@ -746,7 +746,9 @@ pub use crate::ffi_types::XCAFDimTolObjects_DatumObject as DatumObject;
 
 unsafe impl crate::CppDeletable for DatumObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_destructor(ptr);
+        }
     }
 }
 
@@ -1358,13 +1360,19 @@ pub use crate::ffi_types::HandleXCAFDimTolObjectsDatumObject;
 
 unsafe impl crate::CppDeletable for HandleXCAFDimTolObjectsDatumObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsDatumObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1418,7 +1426,9 @@ pub use crate::ffi_types::XCAFDimTolObjects_DimensionObject as DimensionObject;
 
 unsafe impl crate::CppDeletable for DimensionObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_destructor(ptr);
+        }
     }
 }
 
@@ -2266,15 +2276,19 @@ pub use crate::ffi_types::HandleXCAFDimTolObjectsDimensionObject;
 
 unsafe impl crate::CppDeletable for HandleXCAFDimTolObjectsDimensionObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsDimensionObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2330,7 +2344,9 @@ pub use crate::ffi_types::XCAFDimTolObjects_GeomToleranceObject as GeomTolerance
 
 unsafe impl crate::CppDeletable for GeomToleranceObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_destructor(ptr);
+        }
     }
 }
 
@@ -2925,15 +2941,19 @@ pub use crate::ffi_types::HandleXCAFDimTolObjectsGeomToleranceObject;
 
 unsafe impl crate::CppDeletable for HandleXCAFDimTolObjectsGeomToleranceObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsGeomToleranceObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2988,7 +3008,9 @@ pub use crate::ffi_types::XCAFDimTolObjects_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFDimTolObjects_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_Tool_destructor(ptr);
+        }
     }
 }
 

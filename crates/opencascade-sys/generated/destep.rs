@@ -31,7 +31,9 @@ pub use crate::ffi_types::DESTEP_ConfigurationNode as ConfigurationNode;
 
 unsafe impl crate::CppDeletable for ConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::DESTEP_ConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::DESTEP_ConfigurationNode_destructor(ptr);
+        }
     }
 }
 
@@ -408,13 +410,19 @@ pub use crate::ffi_types::HandleDESTEPConfigurationNode;
 
 unsafe impl crate::CppDeletable for HandleDESTEPConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleDESTEPConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleDESTEPConfigurationNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDESTEPConfigurationNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleDESTEPConfigurationNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleDESTEPConfigurationNode_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -483,7 +491,9 @@ pub use crate::ffi_types::DESTEP_Parameters as Parameters;
 
 unsafe impl crate::CppDeletable for Parameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::DESTEP_Parameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::DESTEP_Parameters_destructor(ptr);
+        }
     }
 }
 
@@ -557,7 +567,9 @@ pub use crate::ffi_types::DESTEP_Provider as Provider;
 
 unsafe impl crate::CppDeletable for Provider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::DESTEP_Provider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::DESTEP_Provider_destructor(ptr);
+        }
     }
 }
 
@@ -932,13 +944,15 @@ pub use crate::ffi_types::HandleDESTEPProvider;
 
 unsafe impl crate::CppDeletable for HandleDESTEPProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleDESTEPProvider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleDESTEPProvider_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDESTEPProvider {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleDESTEPProvider_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleDESTEPProvider_clone(ptr)) }
     }
 }
 

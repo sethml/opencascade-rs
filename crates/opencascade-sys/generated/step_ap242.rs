@@ -19,7 +19,9 @@ pub use crate::ffi_types::StepAP242_DraughtingModelItemAssociation as Draughting
 
 unsafe impl crate::CppDeletable for DraughtingModelItemAssociation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_destructor(ptr);
+        }
     }
 }
 
@@ -313,15 +315,23 @@ pub use crate::ffi_types::HandleStepAP242DraughtingModelItemAssociation;
 
 unsafe impl crate::CppDeletable for HandleStepAP242DraughtingModelItemAssociation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepAP242DraughtingModelItemAssociation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -386,7 +396,9 @@ pub use crate::ffi_types::StepAP242_GeometricItemSpecificUsage as GeometricItemS
 
 unsafe impl crate::CppDeletable for GeometricItemSpecificUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_destructor(ptr);
+        }
     }
 }
 
@@ -687,15 +699,19 @@ pub use crate::ffi_types::HandleStepAP242GeometricItemSpecificUsage;
 
 unsafe impl crate::CppDeletable for HandleStepAP242GeometricItemSpecificUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepAP242GeometricItemSpecificUsage {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_clone(ptr),
+            )
+        }
     }
 }
 
@@ -759,7 +775,9 @@ pub use crate::ffi_types::StepAP242_IdAttribute as IdAttribute;
 
 unsafe impl crate::CppDeletable for IdAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_destructor(ptr);
+        }
     }
 }
 
@@ -977,13 +995,17 @@ pub use crate::ffi_types::HandleStepAP242IdAttribute;
 
 unsafe impl crate::CppDeletable for HandleStepAP242IdAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepAP242IdAttribute {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_clone(ptr))
+        }
     }
 }
 
@@ -1036,7 +1058,9 @@ pub use crate::ffi_types::StepAP242_IdAttributeSelect as IdAttributeSelect;
 
 unsafe impl crate::CppDeletable for IdAttributeSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_destructor(ptr);
+        }
     }
 }
 
@@ -1426,7 +1450,9 @@ pub use crate::ffi_types::StepAP242_ItemIdentifiedRepresentationUsage as ItemIde
 
 unsafe impl crate::CppDeletable for ItemIdentifiedRepresentationUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_destructor(ptr);
+        }
     }
 }
 
@@ -1720,17 +1746,23 @@ pub use crate::ffi_types::HandleStepAP242ItemIdentifiedRepresentationUsage;
 
 unsafe impl crate::CppDeletable for HandleStepAP242ItemIdentifiedRepresentationUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepAP242ItemIdentifiedRepresentationUsage {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -1816,7 +1848,9 @@ pub use crate::ffi_types::StepAP242_ItemIdentifiedRepresentationUsageDefinition 
 
 unsafe impl crate::CppDeletable for ItemIdentifiedRepresentationUsageDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_destructor(ptr);
+        }
     }
 }
 

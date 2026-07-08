@@ -125,7 +125,9 @@ pub use crate::ffi_types::BRepAlgo_AsDes as AsDes;
 
 unsafe impl crate::CppDeletable for AsDes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepAlgo_AsDes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepAlgo_AsDes_destructor(ptr);
+        }
     }
 }
 
@@ -403,13 +405,15 @@ pub use crate::ffi_types::HandleBRepAlgoAsDes;
 
 unsafe impl crate::CppDeletable for HandleBRepAlgoAsDes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleBRepAlgoAsDes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleBRepAlgoAsDes_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepAlgoAsDes {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleBRepAlgoAsDes_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepAlgoAsDes_clone(ptr)) }
     }
 }
 
@@ -466,7 +470,9 @@ pub use crate::ffi_types::BRepAlgo_FaceRestrictor as FaceRestrictor;
 
 unsafe impl crate::CppDeletable for FaceRestrictor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepAlgo_FaceRestrictor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepAlgo_FaceRestrictor_destructor(ptr);
+        }
     }
 }
 
@@ -572,7 +578,9 @@ pub use crate::ffi_types::BRepAlgo_Image as Image;
 
 unsafe impl crate::CppDeletable for Image {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepAlgo_Image_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepAlgo_Image_destructor(ptr);
+        }
     }
 }
 
@@ -802,7 +810,9 @@ pub use crate::ffi_types::BRepAlgo_Loop as Loop;
 
 unsafe impl crate::CppDeletable for Loop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepAlgo_Loop_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepAlgo_Loop_destructor(ptr);
+        }
     }
 }
 
@@ -1002,7 +1012,9 @@ pub use crate::ffi_types::BRepAlgo_NormalProjection as NormalProjection;
 
 unsafe impl crate::CppDeletable for NormalProjection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::BRepAlgo_NormalProjection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::BRepAlgo_NormalProjection_destructor(ptr);
+        }
     }
 }
 

@@ -199,7 +199,9 @@ pub use crate::ffi_types::StepVisual_AnnotationCurveOccurrence as AnnotationCurv
 
 unsafe impl crate::CppDeletable for AnnotationCurveOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_AnnotationCurveOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_AnnotationCurveOccurrence_destructor(ptr);
+        }
     }
 }
 
@@ -498,15 +500,19 @@ pub use crate::ffi_types::HandleStepVisualAnnotationCurveOccurrence;
 
 unsafe impl crate::CppDeletable for HandleStepVisualAnnotationCurveOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationCurveOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationCurveOccurrence_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualAnnotationCurveOccurrence {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationCurveOccurrence_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationCurveOccurrence_clone(ptr),
+            )
+        }
     }
 }
 
@@ -609,9 +615,9 @@ pub use crate::ffi_types::StepVisual_AnnotationCurveOccurrenceAndGeomReprItem as
 
 unsafe impl crate::CppDeletable for AnnotationCurveOccurrenceAndGeomReprItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_destructor(ptr);
+        }
     }
 }
 
@@ -868,13 +874,17 @@ pub use crate::ffi_types::HandleStepVisualAnnotationCurveOccurrenceAndGeomReprIt
 
 unsafe impl crate::CppDeletable for HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationCurveOccurrenceAndGeomReprItem_clone(ptr))
+        }
     }
 }
 
@@ -957,7 +967,9 @@ pub use crate::ffi_types::StepVisual_AnnotationFillArea as AnnotationFillArea;
 
 unsafe impl crate::CppDeletable for AnnotationFillArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_AnnotationFillArea_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_AnnotationFillArea_destructor(ptr);
+        }
     }
 }
 
@@ -1267,15 +1279,19 @@ pub use crate::ffi_types::HandleStepVisualAnnotationFillArea;
 
 unsafe impl crate::CppDeletable for HandleStepVisualAnnotationFillArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationFillArea_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationFillArea_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualAnnotationFillArea {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationFillArea_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationFillArea_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1366,7 +1382,9 @@ pub use crate::ffi_types::StepVisual_AnnotationFillAreaOccurrence as AnnotationF
 
 unsafe impl crate::CppDeletable for AnnotationFillAreaOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_AnnotationFillAreaOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_AnnotationFillAreaOccurrence_destructor(ptr);
+        }
     }
 }
 
@@ -1683,15 +1701,21 @@ pub use crate::ffi_types::HandleStepVisualAnnotationFillAreaOccurrence;
 
 unsafe impl crate::CppDeletable for HandleStepVisualAnnotationFillAreaOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationFillAreaOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationFillAreaOccurrence_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualAnnotationFillAreaOccurrence {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationFillAreaOccurrence_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationFillAreaOccurrence_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1773,7 +1797,9 @@ pub use crate::ffi_types::StepVisual_AnnotationOccurrence as AnnotationOccurrenc
 
 unsafe impl crate::CppDeletable for AnnotationOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_AnnotationOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_AnnotationOccurrence_destructor(ptr);
+        }
     }
 }
 
@@ -2073,15 +2099,19 @@ pub use crate::ffi_types::HandleStepVisualAnnotationOccurrence;
 
 unsafe impl crate::CppDeletable for HandleStepVisualAnnotationOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationOccurrence_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualAnnotationOccurrence {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationOccurrence_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationOccurrence_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2254,7 +2284,9 @@ pub use crate::ffi_types::StepVisual_AnnotationPlane as AnnotationPlane;
 
 unsafe impl crate::CppDeletable for AnnotationPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_AnnotationPlane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_AnnotationPlane_destructor(ptr);
+        }
     }
 }
 
@@ -2645,13 +2677,19 @@ pub use crate::ffi_types::HandleStepVisualAnnotationPlane;
 
 unsafe impl crate::CppDeletable for HandleStepVisualAnnotationPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationPlane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationPlane_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualAnnotationPlane {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationPlane_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationPlane_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2729,7 +2767,9 @@ pub use crate::ffi_types::StepVisual_AnnotationPlaneElement as AnnotationPlaneEl
 
 unsafe impl crate::CppDeletable for AnnotationPlaneElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_AnnotationPlaneElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_AnnotationPlaneElement_destructor(ptr);
+        }
     }
 }
 
@@ -2985,7 +3025,9 @@ pub use crate::ffi_types::StepVisual_AnnotationText as AnnotationText;
 
 unsafe impl crate::CppDeletable for AnnotationText {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_AnnotationText_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_AnnotationText_destructor(ptr);
+        }
     }
 }
 
@@ -3269,13 +3311,19 @@ pub use crate::ffi_types::HandleStepVisualAnnotationText;
 
 unsafe impl crate::CppDeletable for HandleStepVisualAnnotationText {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationText_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationText_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualAnnotationText {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationText_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationText_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3344,7 +3392,9 @@ pub use crate::ffi_types::StepVisual_AnnotationTextOccurrence as AnnotationTextO
 
 unsafe impl crate::CppDeletable for AnnotationTextOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_AnnotationTextOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_AnnotationTextOccurrence_destructor(ptr);
+        }
     }
 }
 
@@ -3650,15 +3700,19 @@ pub use crate::ffi_types::HandleStepVisualAnnotationTextOccurrence;
 
 unsafe impl crate::CppDeletable for HandleStepVisualAnnotationTextOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationTextOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationTextOccurrence_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualAnnotationTextOccurrence {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationTextOccurrence_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualAnnotationTextOccurrence_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3740,7 +3794,9 @@ pub use crate::ffi_types::StepVisual_AreaInSet as AreaInSet;
 
 unsafe impl crate::CppDeletable for AreaInSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_AreaInSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_AreaInSet_destructor(ptr);
+        }
     }
 }
 
@@ -3933,13 +3989,17 @@ pub use crate::ffi_types::HandleStepVisualAreaInSet;
 
 unsafe impl crate::CppDeletable for HandleStepVisualAreaInSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualAreaInSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualAreaInSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualAreaInSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualAreaInSet_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualAreaInSet_clone(ptr))
+        }
     }
 }
 
@@ -3992,7 +4052,9 @@ pub use crate::ffi_types::StepVisual_AreaOrView as AreaOrView;
 
 unsafe impl crate::CppDeletable for AreaOrView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_AreaOrView_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_AreaOrView_destructor(ptr);
+        }
     }
 }
 
@@ -4241,7 +4303,9 @@ pub use crate::ffi_types::StepVisual_BackgroundColour as BackgroundColour;
 
 unsafe impl crate::CppDeletable for BackgroundColour {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_BackgroundColour_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_BackgroundColour_destructor(ptr);
+        }
     }
 }
 
@@ -4450,13 +4514,19 @@ pub use crate::ffi_types::HandleStepVisualBackgroundColour;
 
 unsafe impl crate::CppDeletable for HandleStepVisualBackgroundColour {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualBackgroundColour_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualBackgroundColour_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualBackgroundColour {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualBackgroundColour_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualBackgroundColour_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4516,7 +4586,9 @@ pub use crate::ffi_types::StepVisual_BoxCharacteristicSelect as BoxCharacteristi
 
 unsafe impl crate::CppDeletable for BoxCharacteristicSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_BoxCharacteristicSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_BoxCharacteristicSelect_destructor(ptr);
+        }
     }
 }
 
@@ -4578,7 +4650,9 @@ pub use crate::ffi_types::StepVisual_CameraImage as CameraImage;
 
 unsafe impl crate::CppDeletable for CameraImage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraImage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraImage_destructor(ptr);
+        }
     }
 }
 
@@ -4864,13 +4938,17 @@ pub use crate::ffi_types::HandleStepVisualCameraImage;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCameraImage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCameraImage {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage_clone(ptr))
+        }
     }
 }
 
@@ -4977,7 +5055,9 @@ pub use crate::ffi_types::StepVisual_CameraImage2dWithScale as CameraImage2dWith
 
 unsafe impl crate::CppDeletable for CameraImage2dWithScale {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraImage2dWithScale_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraImage2dWithScale_destructor(ptr);
+        }
     }
 }
 
@@ -5252,15 +5332,19 @@ pub use crate::ffi_types::HandleStepVisualCameraImage2dWithScale;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCameraImage2dWithScale {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage2dWithScale_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage2dWithScale_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCameraImage2dWithScale {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage2dWithScale_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage2dWithScale_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5342,7 +5426,9 @@ pub use crate::ffi_types::StepVisual_CameraImage3dWithScale as CameraImage3dWith
 
 unsafe impl crate::CppDeletable for CameraImage3dWithScale {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraImage3dWithScale_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraImage3dWithScale_destructor(ptr);
+        }
     }
 }
 
@@ -5617,15 +5703,19 @@ pub use crate::ffi_types::HandleStepVisualCameraImage3dWithScale;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCameraImage3dWithScale {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage3dWithScale_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage3dWithScale_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCameraImage3dWithScale {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage3dWithScale_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualCameraImage3dWithScale_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5707,7 +5797,9 @@ pub use crate::ffi_types::StepVisual_CameraModel as CameraModel;
 
 unsafe impl crate::CppDeletable for CameraModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraModel_destructor(ptr);
+        }
     }
 }
 
@@ -5930,13 +6022,17 @@ pub use crate::ffi_types::HandleStepVisualCameraModel;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCameraModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCameraModel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModel_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModel_clone(ptr))
+        }
     }
 }
 
@@ -6055,7 +6151,9 @@ pub use crate::ffi_types::StepVisual_CameraModelD2 as CameraModelD2;
 
 unsafe impl crate::CppDeletable for CameraModelD2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD2_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD2_destructor(ptr);
+        }
     }
 }
 
@@ -6349,13 +6447,19 @@ pub use crate::ffi_types::HandleStepVisualCameraModelD2;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCameraModelD2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD2_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD2_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCameraModelD2 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD2_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD2_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -6433,7 +6537,9 @@ pub use crate::ffi_types::StepVisual_CameraModelD3 as CameraModelD3;
 
 unsafe impl crate::CppDeletable for CameraModelD3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3_destructor(ptr);
+        }
     }
 }
 
@@ -6739,13 +6845,19 @@ pub use crate::ffi_types::HandleStepVisualCameraModelD3;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCameraModelD3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCameraModelD3 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -6839,7 +6951,9 @@ pub use crate::ffi_types::StepVisual_CameraModelD3MultiClipping as CameraModelD3
 
 unsafe impl crate::CppDeletable for CameraModelD3MultiClipping {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3MultiClipping_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3MultiClipping_destructor(ptr);
+        }
     }
 }
 
@@ -7151,15 +7265,19 @@ pub use crate::ffi_types::HandleStepVisualCameraModelD3MultiClipping;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCameraModelD3MultiClipping {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClipping_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClipping_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCameraModelD3MultiClipping {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClipping_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClipping_clone(ptr),
+            )
+        }
     }
 }
 
@@ -7250,7 +7368,9 @@ pub use crate::ffi_types::StepVisual_CameraModelD3MultiClippingInterectionSelect
 
 unsafe impl crate::CppDeletable for CameraModelD3MultiClippingInterectionSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3MultiClippingInterectionSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3MultiClippingInterectionSelect_destructor(ptr);
+        }
     }
 }
 
@@ -7440,9 +7560,9 @@ pub use crate::ffi_types::StepVisual_CameraModelD3MultiClippingIntersection as C
 
 unsafe impl crate::CppDeletable for CameraModelD3MultiClippingIntersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3MultiClippingIntersection_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3MultiClippingIntersection_destructor(ptr);
+        }
     }
 }
 
@@ -7646,13 +7766,17 @@ pub use crate::ffi_types::HandleStepVisualCameraModelD3MultiClippingIntersection
 
 unsafe impl crate::CppDeletable for HandleStepVisualCameraModelD3MultiClippingIntersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClippingIntersection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClippingIntersection_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCameraModelD3MultiClippingIntersection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClippingIntersection_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClippingIntersection_clone(ptr))
+        }
     }
 }
 
@@ -7717,7 +7841,9 @@ pub use crate::ffi_types::StepVisual_CameraModelD3MultiClippingUnion as CameraMo
 
 unsafe impl crate::CppDeletable for CameraModelD3MultiClippingUnion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3MultiClippingUnion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3MultiClippingUnion_destructor(ptr);
+        }
     }
 }
 
@@ -7935,15 +8061,23 @@ pub use crate::ffi_types::HandleStepVisualCameraModelD3MultiClippingUnion;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCameraModelD3MultiClippingUnion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClippingUnion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClippingUnion_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCameraModelD3MultiClippingUnion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClippingUnion_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualCameraModelD3MultiClippingUnion_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -8016,9 +8150,11 @@ pub use crate::ffi_types::StepVisual_CameraModelD3MultiClippingUnionSelect as Ca
 
 unsafe impl crate::CppDeletable for CameraModelD3MultiClippingUnionSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3MultiClippingUnionSelect_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraModelD3MultiClippingUnionSelect_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -8218,7 +8354,9 @@ pub use crate::ffi_types::StepVisual_CameraUsage as CameraUsage;
 
 unsafe impl crate::CppDeletable for CameraUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CameraUsage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CameraUsage_destructor(ptr);
+        }
     }
 }
 
@@ -8459,13 +8597,17 @@ pub use crate::ffi_types::HandleStepVisualCameraUsage;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCameraUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCameraUsage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCameraUsage_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCameraUsage {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraUsage_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCameraUsage_clone(ptr))
+        }
     }
 }
 
@@ -8530,7 +8672,9 @@ pub use crate::ffi_types::StepVisual_CharacterizedObjAndRepresentationAndDraught
 
 unsafe impl crate::CppDeletable for CharacterizedObjAndRepresentationAndDraughtingModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_destructor(ptr);
+        }
     }
 }
 
@@ -8758,7 +8902,9 @@ unsafe impl crate::CppDeletable
     for HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel_destructor(ptr);
+        }
     }
 }
 
@@ -8766,7 +8912,9 @@ unsafe impl crate::CppCopyable
     for HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel
 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCharacterizedObjAndRepresentationAndDraughtingModel_clone(ptr))
+        }
     }
 }
 
@@ -8833,7 +8981,9 @@ pub use crate::ffi_types::StepVisual_Colour as Colour;
 
 unsafe impl crate::CppDeletable for Colour {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Colour_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Colour_destructor(ptr);
+        }
     }
 }
 
@@ -8981,13 +9131,17 @@ pub use crate::ffi_types::HandleStepVisualColour;
 
 unsafe impl crate::CppDeletable for HandleStepVisualColour {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualColour_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualColour_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualColour {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualColour_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualColour_clone(ptr))
+        }
     }
 }
 
@@ -9120,7 +9274,9 @@ pub use crate::ffi_types::StepVisual_ColourRgb as ColourRgb;
 
 unsafe impl crate::CppDeletable for ColourRgb {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_ColourRgb_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_ColourRgb_destructor(ptr);
+        }
     }
 }
 
@@ -9392,13 +9548,17 @@ pub use crate::ffi_types::HandleStepVisualColourRgb;
 
 unsafe impl crate::CppDeletable for HandleStepVisualColourRgb {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualColourRgb_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualColourRgb_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualColourRgb {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualColourRgb_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualColourRgb_clone(ptr))
+        }
     }
 }
 
@@ -9471,7 +9631,9 @@ pub use crate::ffi_types::StepVisual_ColourSpecification as ColourSpecification;
 
 unsafe impl crate::CppDeletable for ColourSpecification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_ColourSpecification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_ColourSpecification_destructor(ptr);
+        }
     }
 }
 
@@ -9678,15 +9840,19 @@ pub use crate::ffi_types::HandleStepVisualColourSpecification;
 
 unsafe impl crate::CppDeletable for HandleStepVisualColourSpecification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualColourSpecification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualColourSpecification_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualColourSpecification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualColourSpecification_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualColourSpecification_clone(ptr),
+            )
+        }
     }
 }
 
@@ -9765,7 +9931,9 @@ pub use crate::ffi_types::StepVisual_ComplexTriangulatedFace as ComplexTriangula
 
 unsafe impl crate::CppDeletable for ComplexTriangulatedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedFace_destructor(ptr);
+        }
     }
 }
 
@@ -10251,15 +10419,19 @@ pub use crate::ffi_types::HandleStepVisualComplexTriangulatedFace;
 
 unsafe impl crate::CppDeletable for HandleStepVisualComplexTriangulatedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualComplexTriangulatedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualComplexTriangulatedFace_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualComplexTriangulatedFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualComplexTriangulatedFace_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualComplexTriangulatedFace_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10360,7 +10532,9 @@ pub use crate::ffi_types::StepVisual_ComplexTriangulatedSurfaceSet as ComplexTri
 
 unsafe impl crate::CppDeletable for ComplexTriangulatedSurfaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedSurfaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedSurfaceSet_destructor(ptr);
+        }
     }
 }
 
@@ -10786,15 +10960,23 @@ pub use crate::ffi_types::HandleStepVisualComplexTriangulatedSurfaceSet;
 
 unsafe impl crate::CppDeletable for HandleStepVisualComplexTriangulatedSurfaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualComplexTriangulatedSurfaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualComplexTriangulatedSurfaceSet_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualComplexTriangulatedSurfaceSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualComplexTriangulatedSurfaceSet_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualComplexTriangulatedSurfaceSet_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -10885,7 +11067,9 @@ pub use crate::ffi_types::StepVisual_CompositeText as CompositeText;
 
 unsafe impl crate::CppDeletable for CompositeText {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CompositeText_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CompositeText_destructor(ptr);
+        }
     }
 }
 
@@ -11162,13 +11346,19 @@ pub use crate::ffi_types::HandleStepVisualCompositeText;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCompositeText {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCompositeText_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCompositeText_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCompositeText {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCompositeText_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCompositeText_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -11253,7 +11443,9 @@ pub use crate::ffi_types::StepVisual_CompositeTextWithExtent as CompositeTextWit
 
 unsafe impl crate::CppDeletable for CompositeTextWithExtent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CompositeTextWithExtent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CompositeTextWithExtent_destructor(ptr);
+        }
     }
 }
 
@@ -11542,15 +11734,19 @@ pub use crate::ffi_types::HandleStepVisualCompositeTextWithExtent;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCompositeTextWithExtent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCompositeTextWithExtent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCompositeTextWithExtent_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCompositeTextWithExtent {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualCompositeTextWithExtent_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualCompositeTextWithExtent_clone(ptr),
+            )
+        }
     }
 }
 
@@ -11632,7 +11828,9 @@ pub use crate::ffi_types::StepVisual_ContextDependentInvisibility as ContextDepe
 
 unsafe impl crate::CppDeletable for ContextDependentInvisibility {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_ContextDependentInvisibility_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_ContextDependentInvisibility_destructor(ptr);
+        }
     }
 }
 
@@ -11850,15 +12048,21 @@ pub use crate::ffi_types::HandleStepVisualContextDependentInvisibility;
 
 unsafe impl crate::CppDeletable for HandleStepVisualContextDependentInvisibility {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualContextDependentInvisibility_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualContextDependentInvisibility_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualContextDependentInvisibility {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualContextDependentInvisibility_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualContextDependentInvisibility_clone(ptr),
+            )
+        }
     }
 }
 
@@ -11922,7 +12126,11 @@ pub use crate::ffi_types::StepVisual_ContextDependentOverRidingStyledItem as Con
 
 unsafe impl crate::CppDeletable for ContextDependentOverRidingStyledItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_ContextDependentOverRidingStyledItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_ContextDependentOverRidingStyledItem_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -12229,19 +12437,17 @@ pub use crate::ffi_types::HandleStepVisualContextDependentOverRidingStyledItem;
 
 unsafe impl crate::CppDeletable for HandleStepVisualContextDependentOverRidingStyledItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualContextDependentOverRidingStyledItem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualContextDependentOverRidingStyledItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualContextDependentOverRidingStyledItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualContextDependentOverRidingStyledItem_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualContextDependentOverRidingStyledItem_clone(ptr))
+        }
     }
 }
 
@@ -12317,7 +12523,9 @@ pub use crate::ffi_types::StepVisual_CoordinatesList as CoordinatesList;
 
 unsafe impl crate::CppDeletable for CoordinatesList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CoordinatesList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CoordinatesList_destructor(ptr);
+        }
     }
 }
 
@@ -12566,13 +12774,19 @@ pub use crate::ffi_types::HandleStepVisualCoordinatesList;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCoordinatesList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCoordinatesList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCoordinatesList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCoordinatesList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCoordinatesList_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCoordinatesList_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -12651,7 +12865,9 @@ pub use crate::ffi_types::StepVisual_CubicBezierTessellatedEdge as CubicBezierTe
 
 unsafe impl crate::CppDeletable for CubicBezierTessellatedEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CubicBezierTessellatedEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CubicBezierTessellatedEdge_destructor(ptr);
+        }
     }
 }
 
@@ -12989,15 +13205,19 @@ pub use crate::ffi_types::HandleStepVisualCubicBezierTessellatedEdge;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCubicBezierTessellatedEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCubicBezierTessellatedEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCubicBezierTessellatedEdge_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCubicBezierTessellatedEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualCubicBezierTessellatedEdge_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualCubicBezierTessellatedEdge_clone(ptr),
+            )
+        }
     }
 }
 
@@ -13098,7 +13318,9 @@ pub use crate::ffi_types::StepVisual_CubicBezierTriangulatedFace as CubicBezierT
 
 unsafe impl crate::CppDeletable for CubicBezierTriangulatedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CubicBezierTriangulatedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CubicBezierTriangulatedFace_destructor(ptr);
+        }
     }
 }
 
@@ -13486,15 +13708,19 @@ pub use crate::ffi_types::HandleStepVisualCubicBezierTriangulatedFace;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCubicBezierTriangulatedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCubicBezierTriangulatedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCubicBezierTriangulatedFace_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCubicBezierTriangulatedFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualCubicBezierTriangulatedFace_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualCubicBezierTriangulatedFace_clone(ptr),
+            )
+        }
     }
 }
 
@@ -13594,7 +13820,9 @@ pub use crate::ffi_types::StepVisual_CurveStyle as CurveStyle;
 
 unsafe impl crate::CppDeletable for CurveStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CurveStyle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CurveStyle_destructor(ptr);
+        }
     }
 }
 
@@ -13838,13 +14066,17 @@ pub use crate::ffi_types::HandleStepVisualCurveStyle;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCurveStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyle_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCurveStyle {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyle_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyle_clone(ptr))
+        }
     }
 }
 
@@ -13897,7 +14129,9 @@ pub use crate::ffi_types::StepVisual_CurveStyleFont as CurveStyleFont;
 
 unsafe impl crate::CppDeletable for CurveStyleFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CurveStyleFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CurveStyleFont_destructor(ptr);
+        }
     }
 }
 
@@ -14134,13 +14368,19 @@ pub use crate::ffi_types::HandleStepVisualCurveStyleFont;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCurveStyleFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyleFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyleFont_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCurveStyleFont {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyleFont_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyleFont_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -14191,7 +14431,9 @@ pub use crate::ffi_types::StepVisual_CurveStyleFontPattern as CurveStyleFontPatt
 
 unsafe impl crate::CppDeletable for CurveStyleFontPattern {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CurveStyleFontPattern_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CurveStyleFontPattern_destructor(ptr);
+        }
     }
 }
 
@@ -14387,15 +14629,19 @@ pub use crate::ffi_types::HandleStepVisualCurveStyleFontPattern;
 
 unsafe impl crate::CppDeletable for HandleStepVisualCurveStyleFontPattern {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyleFontPattern_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyleFontPattern_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualCurveStyleFontPattern {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyleFontPattern_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualCurveStyleFontPattern_clone(ptr),
+            )
+        }
     }
 }
 
@@ -14450,7 +14696,9 @@ pub use crate::ffi_types::StepVisual_CurveStyleFontSelect as CurveStyleFontSelec
 
 unsafe impl crate::CppDeletable for CurveStyleFontSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_CurveStyleFontSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_CurveStyleFontSelect_destructor(ptr);
+        }
     }
 }
 
@@ -14723,7 +14971,9 @@ pub use crate::ffi_types::StepVisual_DirectionCountSelect as DirectionCountSelec
 
 unsafe impl crate::CppDeletable for DirectionCountSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_DirectionCountSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_DirectionCountSelect_destructor(ptr);
+        }
     }
 }
 
@@ -14804,7 +15054,9 @@ pub use crate::ffi_types::StepVisual_DraughtingAnnotationOccurrence as Draughtin
 
 unsafe impl crate::CppDeletable for DraughtingAnnotationOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_DraughtingAnnotationOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_DraughtingAnnotationOccurrence_destructor(ptr);
+        }
     }
 }
 
@@ -15084,15 +15336,23 @@ pub use crate::ffi_types::HandleStepVisualDraughtingAnnotationOccurrence;
 
 unsafe impl crate::CppDeletable for HandleStepVisualDraughtingAnnotationOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingAnnotationOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingAnnotationOccurrence_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualDraughtingAnnotationOccurrence {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingAnnotationOccurrence_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingAnnotationOccurrence_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -15174,7 +15434,9 @@ pub use crate::ffi_types::StepVisual_DraughtingCallout as DraughtingCallout;
 
 unsafe impl crate::CppDeletable for DraughtingCallout {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_DraughtingCallout_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_DraughtingCallout_destructor(ptr);
+        }
     }
 }
 
@@ -15464,15 +15726,19 @@ pub use crate::ffi_types::HandleStepVisualDraughtingCallout;
 
 unsafe impl crate::CppDeletable for HandleStepVisualDraughtingCallout {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingCallout_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingCallout_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualDraughtingCallout {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingCallout_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingCallout_clone(ptr),
+            )
+        }
     }
 }
 
@@ -15545,7 +15811,9 @@ pub use crate::ffi_types::StepVisual_DraughtingCalloutElement as DraughtingCallo
 
 unsafe impl crate::CppDeletable for DraughtingCalloutElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_DraughtingCalloutElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_DraughtingCalloutElement_destructor(ptr);
+        }
     }
 }
 
@@ -15814,7 +16082,9 @@ pub use crate::ffi_types::StepVisual_DraughtingModel as DraughtingModel;
 
 unsafe impl crate::CppDeletable for DraughtingModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_DraughtingModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_DraughtingModel_destructor(ptr);
+        }
     }
 }
 
@@ -16102,13 +16372,19 @@ pub use crate::ffi_types::HandleStepVisualDraughtingModel;
 
 unsafe impl crate::CppDeletable for HandleStepVisualDraughtingModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingModel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualDraughtingModel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingModel_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingModel_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -16188,7 +16464,9 @@ pub use crate::ffi_types::StepVisual_DraughtingPreDefinedColour as DraughtingPre
 
 unsafe impl crate::CppDeletable for DraughtingPreDefinedColour {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_DraughtingPreDefinedColour_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_DraughtingPreDefinedColour_destructor(ptr);
+        }
     }
 }
 
@@ -16377,15 +16655,19 @@ pub use crate::ffi_types::HandleStepVisualDraughtingPreDefinedColour;
 
 unsafe impl crate::CppDeletable for HandleStepVisualDraughtingPreDefinedColour {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingPreDefinedColour_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingPreDefinedColour_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualDraughtingPreDefinedColour {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingPreDefinedColour_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingPreDefinedColour_clone(ptr),
+            )
+        }
     }
 }
 
@@ -16456,7 +16738,9 @@ pub use crate::ffi_types::StepVisual_DraughtingPreDefinedCurveFont as Draughting
 
 unsafe impl crate::CppDeletable for DraughtingPreDefinedCurveFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_DraughtingPreDefinedCurveFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_DraughtingPreDefinedCurveFont_destructor(ptr);
+        }
     }
 }
 
@@ -16655,15 +16939,23 @@ pub use crate::ffi_types::HandleStepVisualDraughtingPreDefinedCurveFont;
 
 unsafe impl crate::CppDeletable for HandleStepVisualDraughtingPreDefinedCurveFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingPreDefinedCurveFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingPreDefinedCurveFont_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualDraughtingPreDefinedCurveFont {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingPreDefinedCurveFont_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualDraughtingPreDefinedCurveFont_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -16737,7 +17029,9 @@ pub use crate::ffi_types::StepVisual_EdgeOrCurve as EdgeOrCurve;
 
 unsafe impl crate::CppDeletable for EdgeOrCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_EdgeOrCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_EdgeOrCurve_destructor(ptr);
+        }
     }
 }
 
@@ -16984,7 +17278,9 @@ pub use crate::ffi_types::StepVisual_ExternallyDefinedCurveFont as ExternallyDef
 
 unsafe impl crate::CppDeletable for ExternallyDefinedCurveFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_ExternallyDefinedCurveFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_ExternallyDefinedCurveFont_destructor(ptr);
+        }
     }
 }
 
@@ -17203,15 +17499,19 @@ pub use crate::ffi_types::HandleStepVisualExternallyDefinedCurveFont;
 
 unsafe impl crate::CppDeletable for HandleStepVisualExternallyDefinedCurveFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualExternallyDefinedCurveFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualExternallyDefinedCurveFont_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualExternallyDefinedCurveFont {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualExternallyDefinedCurveFont_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualExternallyDefinedCurveFont_clone(ptr),
+            )
+        }
     }
 }
 
@@ -17276,7 +17576,9 @@ pub use crate::ffi_types::StepVisual_ExternallyDefinedTextFont as ExternallyDefi
 
 unsafe impl crate::CppDeletable for ExternallyDefinedTextFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_ExternallyDefinedTextFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_ExternallyDefinedTextFont_destructor(ptr);
+        }
     }
 }
 
@@ -17495,15 +17797,19 @@ pub use crate::ffi_types::HandleStepVisualExternallyDefinedTextFont;
 
 unsafe impl crate::CppDeletable for HandleStepVisualExternallyDefinedTextFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualExternallyDefinedTextFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualExternallyDefinedTextFont_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualExternallyDefinedTextFont {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualExternallyDefinedTextFont_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualExternallyDefinedTextFont_clone(ptr),
+            )
+        }
     }
 }
 
@@ -17568,7 +17874,9 @@ pub use crate::ffi_types::StepVisual_FaceOrSurface as FaceOrSurface;
 
 unsafe impl crate::CppDeletable for FaceOrSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_FaceOrSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_FaceOrSurface_destructor(ptr);
+        }
     }
 }
 
@@ -17818,7 +18126,9 @@ pub use crate::ffi_types::StepVisual_FillAreaStyle as FillAreaStyle;
 
 unsafe impl crate::CppDeletable for FillAreaStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_FillAreaStyle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_FillAreaStyle_destructor(ptr);
+        }
     }
 }
 
@@ -18050,13 +18360,19 @@ pub use crate::ffi_types::HandleStepVisualFillAreaStyle;
 
 unsafe impl crate::CppDeletable for HandleStepVisualFillAreaStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualFillAreaStyle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualFillAreaStyle_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualFillAreaStyle {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualFillAreaStyle_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualFillAreaStyle_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -18107,7 +18423,9 @@ pub use crate::ffi_types::StepVisual_FillAreaStyleColour as FillAreaStyleColour;
 
 unsafe impl crate::CppDeletable for FillAreaStyleColour {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_FillAreaStyleColour_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_FillAreaStyleColour_destructor(ptr);
+        }
     }
 }
 
@@ -18318,15 +18636,19 @@ pub use crate::ffi_types::HandleStepVisualFillAreaStyleColour;
 
 unsafe impl crate::CppDeletable for HandleStepVisualFillAreaStyleColour {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualFillAreaStyleColour_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualFillAreaStyleColour_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualFillAreaStyleColour {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualFillAreaStyleColour_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualFillAreaStyleColour_clone(ptr),
+            )
+        }
     }
 }
 
@@ -18381,7 +18703,9 @@ pub use crate::ffi_types::StepVisual_FillStyleSelect as FillStyleSelect;
 
 unsafe impl crate::CppDeletable for FillStyleSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_FillStyleSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_FillStyleSelect_destructor(ptr);
+        }
     }
 }
 
@@ -18636,7 +18960,9 @@ pub use crate::ffi_types::StepVisual_FontSelect as FontSelect;
 
 unsafe impl crate::CppDeletable for FontSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_FontSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_FontSelect_destructor(ptr);
+        }
     }
 }
 
@@ -18885,7 +19211,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfAnnotationPlaneElement as HArray1O
 
 unsafe impl crate::CppDeletable for HArray1OfAnnotationPlaneElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfAnnotationPlaneElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfAnnotationPlaneElement_destructor(ptr);
+        }
     }
 }
 
@@ -19078,15 +19406,23 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfAnnotationPlaneElement;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfAnnotationPlaneElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfAnnotationPlaneElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfAnnotationPlaneElement_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfAnnotationPlaneElement {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfAnnotationPlaneElement_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfAnnotationPlaneElement_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -19141,7 +19477,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfBoxCharacteristicSelect as HArray1
 
 unsafe impl crate::CppDeletable for HArray1OfBoxCharacteristicSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfBoxCharacteristicSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfBoxCharacteristicSelect_destructor(ptr);
+        }
     }
 }
 
@@ -19330,17 +19668,23 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfBoxCharacteristicSelect;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfBoxCharacteristicSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfBoxCharacteristicSelect_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfBoxCharacteristicSelect_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfBoxCharacteristicSelect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfBoxCharacteristicSelect_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfBoxCharacteristicSelect_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -19393,7 +19737,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfCameraModelD3MultiClippingInterect
 
 unsafe impl crate::CppDeletable for HArray1OfCameraModelD3MultiClippingInterectionSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect_destructor(ptr);
+        }
     }
 }
 
@@ -19569,7 +19915,9 @@ unsafe impl crate::CppDeletable
     for HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect_destructor(ptr);
+        }
     }
 }
 
@@ -19577,7 +19925,9 @@ unsafe impl crate::CppCopyable
     for HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect
 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCameraModelD3MultiClippingInterectionSelect_clone(ptr))
+        }
     }
 }
 
@@ -19627,7 +19977,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfCameraModelD3MultiClippingUnionSel
 
 unsafe impl crate::CppDeletable for HArray1OfCameraModelD3MultiClippingUnionSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect_destructor(ptr);
+        }
     }
 }
 
@@ -19801,13 +20153,17 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfCameraModelD3MultiClippingUni
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCameraModelD3MultiClippingUnionSelect_clone(ptr))
+        }
     }
 }
 
@@ -19856,7 +20212,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfCurveStyleFontPattern as HArray1Of
 
 unsafe impl crate::CppDeletable for HArray1OfCurveStyleFontPattern {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfCurveStyleFontPattern_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfCurveStyleFontPattern_destructor(ptr);
+        }
     }
 }
 
@@ -20062,15 +20420,23 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfCurveStyleFontPattern;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfCurveStyleFontPattern {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCurveStyleFontPattern_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCurveStyleFontPattern_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfCurveStyleFontPattern {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCurveStyleFontPattern_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfCurveStyleFontPattern_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -20125,7 +20491,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfDirectionCountSelect as HArray1OfD
 
 unsafe impl crate::CppDeletable for HArray1OfDirectionCountSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfDirectionCountSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfDirectionCountSelect_destructor(ptr);
+        }
     }
 }
 
@@ -20331,15 +20699,23 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfDirectionCountSelect;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfDirectionCountSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfDirectionCountSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfDirectionCountSelect_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfDirectionCountSelect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfDirectionCountSelect_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfDirectionCountSelect_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -20394,7 +20770,11 @@ pub use crate::ffi_types::StepVisual_HArray1OfDraughtingCalloutElement as HArray
 
 unsafe impl crate::CppDeletable for HArray1OfDraughtingCalloutElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfDraughtingCalloutElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfDraughtingCalloutElement_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -20578,19 +20958,21 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfDraughtingCalloutElement;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfDraughtingCalloutElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfDraughtingCalloutElement_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfDraughtingCalloutElement_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfDraughtingCalloutElement {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfDraughtingCalloutElement_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfDraughtingCalloutElement_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -20643,7 +21025,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfFillStyleSelect as HArray1OfFillSt
 
 unsafe impl crate::CppDeletable for HArray1OfFillStyleSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfFillStyleSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfFillStyleSelect_destructor(ptr);
+        }
     }
 }
 
@@ -20854,15 +21238,19 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfFillStyleSelect;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfFillStyleSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfFillStyleSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfFillStyleSelect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfFillStyleSelect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfFillStyleSelect_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfFillStyleSelect_clone(ptr),
+            )
+        }
     }
 }
 
@@ -20917,7 +21305,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfInvisibleItem as HArray1OfInvisibl
 
 unsafe impl crate::CppDeletable for HArray1OfInvisibleItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfInvisibleItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfInvisibleItem_destructor(ptr);
+        }
     }
 }
 
@@ -21131,15 +21521,19 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfInvisibleItem;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfInvisibleItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfInvisibleItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfInvisibleItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfInvisibleItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfInvisibleItem_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfInvisibleItem_clone(ptr),
+            )
+        }
     }
 }
 
@@ -21194,7 +21588,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfLayeredItem as HArray1OfLayeredIte
 
 unsafe impl crate::CppDeletable for HArray1OfLayeredItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfLayeredItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfLayeredItem_destructor(ptr);
+        }
     }
 }
 
@@ -21412,15 +21808,19 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfLayeredItem;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfLayeredItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfLayeredItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfLayeredItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfLayeredItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfLayeredItem_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfLayeredItem_clone(ptr),
+            )
+        }
     }
 }
 
@@ -21475,7 +21875,11 @@ pub use crate::ffi_types::StepVisual_HArray1OfPresentationStyleAssignment as HAr
 
 unsafe impl crate::CppDeletable for HArray1OfPresentationStyleAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfPresentationStyleAssignment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfPresentationStyleAssignment_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -21652,19 +22056,17 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfPresentationStyleAssignment;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfPresentationStyleAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfPresentationStyleAssignment_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfPresentationStyleAssignment_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfPresentationStyleAssignment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfPresentationStyleAssignment_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfPresentationStyleAssignment_clone(ptr))
+        }
     }
 }
 
@@ -21713,7 +22115,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfPresentationStyleSelect as HArray1
 
 unsafe impl crate::CppDeletable for HArray1OfPresentationStyleSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfPresentationStyleSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfPresentationStyleSelect_destructor(ptr);
+        }
     }
 }
 
@@ -21902,17 +22306,23 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfPresentationStyleSelect;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfPresentationStyleSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfPresentationStyleSelect_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfPresentationStyleSelect_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfPresentationStyleSelect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfPresentationStyleSelect_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfPresentationStyleSelect_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -21965,7 +22375,11 @@ pub use crate::ffi_types::StepVisual_HArray1OfRenderingPropertiesSelect as HArra
 
 unsafe impl crate::CppDeletable for HArray1OfRenderingPropertiesSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfRenderingPropertiesSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfRenderingPropertiesSelect_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -22149,19 +22563,17 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfRenderingPropertiesSelect;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfRenderingPropertiesSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfRenderingPropertiesSelect_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfRenderingPropertiesSelect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfRenderingPropertiesSelect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfRenderingPropertiesSelect_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfRenderingPropertiesSelect_clone(ptr))
+        }
     }
 }
 
@@ -22214,7 +22626,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfStyleContextSelect as HArray1OfSty
 
 unsafe impl crate::CppDeletable for HArray1OfStyleContextSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfStyleContextSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfStyleContextSelect_destructor(ptr);
+        }
     }
 }
 
@@ -22424,15 +22838,19 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfStyleContextSelect;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfStyleContextSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfStyleContextSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfStyleContextSelect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfStyleContextSelect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfStyleContextSelect_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfStyleContextSelect_clone(ptr),
+            )
+        }
     }
 }
 
@@ -22487,7 +22905,11 @@ pub use crate::ffi_types::StepVisual_HArray1OfSurfaceStyleElementSelect as HArra
 
 unsafe impl crate::CppDeletable for HArray1OfSurfaceStyleElementSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfSurfaceStyleElementSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfSurfaceStyleElementSelect_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -22671,19 +23093,17 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfSurfaceStyleElementSelect;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfSurfaceStyleElementSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfSurfaceStyleElementSelect_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfSurfaceStyleElementSelect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfSurfaceStyleElementSelect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfSurfaceStyleElementSelect_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfSurfaceStyleElementSelect_clone(ptr))
+        }
     }
 }
 
@@ -22736,7 +23156,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfTessellatedEdgeOrVertex as HArray1
 
 unsafe impl crate::CppDeletable for HArray1OfTessellatedEdgeOrVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfTessellatedEdgeOrVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfTessellatedEdgeOrVertex_destructor(ptr);
+        }
     }
 }
 
@@ -22925,17 +23347,23 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfTessellatedEdgeOrVertex;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfTessellatedEdgeOrVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTessellatedEdgeOrVertex_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTessellatedEdgeOrVertex_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfTessellatedEdgeOrVertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTessellatedEdgeOrVertex_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTessellatedEdgeOrVertex_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -22988,7 +23416,11 @@ pub use crate::ffi_types::StepVisual_HArray1OfTessellatedStructuredItem as HArra
 
 unsafe impl crate::CppDeletable for HArray1OfTessellatedStructuredItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfTessellatedStructuredItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfTessellatedStructuredItem_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -23172,19 +23604,17 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfTessellatedStructuredItem;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfTessellatedStructuredItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTessellatedStructuredItem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTessellatedStructuredItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfTessellatedStructuredItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTessellatedStructuredItem_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTessellatedStructuredItem_clone(ptr))
+        }
     }
 }
 
@@ -23237,7 +23667,9 @@ pub use crate::ffi_types::StepVisual_HArray1OfTextOrCharacter as HArray1OfTextOr
 
 unsafe impl crate::CppDeletable for HArray1OfTextOrCharacter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfTextOrCharacter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_HArray1OfTextOrCharacter_destructor(ptr);
+        }
     }
 }
 
@@ -23448,15 +23880,19 @@ pub use crate::ffi_types::HandleStepVisualHArray1OfTextOrCharacter;
 
 unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfTextOrCharacter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTextOrCharacter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTextOrCharacter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualHArray1OfTextOrCharacter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTextOrCharacter_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualHArray1OfTextOrCharacter_clone(ptr),
+            )
+        }
     }
 }
 
@@ -23511,7 +23947,9 @@ pub use crate::ffi_types::StepVisual_Invisibility as Invisibility;
 
 unsafe impl crate::CppDeletable for Invisibility {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Invisibility_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Invisibility_destructor(ptr);
+        }
     }
 }
 
@@ -23727,13 +24165,17 @@ pub use crate::ffi_types::HandleStepVisualInvisibility;
 
 unsafe impl crate::CppDeletable for HandleStepVisualInvisibility {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualInvisibility_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualInvisibility_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualInvisibility {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualInvisibility_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualInvisibility_clone(ptr))
+        }
     }
 }
 
@@ -23803,7 +24245,9 @@ pub use crate::ffi_types::StepVisual_InvisibilityContext as InvisibilityContext;
 
 unsafe impl crate::CppDeletable for InvisibilityContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_InvisibilityContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_InvisibilityContext_destructor(ptr);
+        }
     }
 }
 
@@ -24076,7 +24520,9 @@ pub use crate::ffi_types::StepVisual_InvisibleItem as InvisibleItem;
 
 unsafe impl crate::CppDeletable for InvisibleItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_InvisibleItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_InvisibleItem_destructor(ptr);
+        }
     }
 }
 
@@ -24348,7 +24794,9 @@ pub use crate::ffi_types::StepVisual_LayeredItem as LayeredItem;
 
 unsafe impl crate::CppDeletable for LayeredItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_LayeredItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_LayeredItem_destructor(ptr);
+        }
     }
 }
 
@@ -24605,7 +25053,9 @@ pub use crate::ffi_types::StepVisual_MarkerMember as MarkerMember;
 
 unsafe impl crate::CppDeletable for MarkerMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_MarkerMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_MarkerMember_destructor(ptr);
+        }
     }
 }
 
@@ -25000,13 +25450,17 @@ pub use crate::ffi_types::HandleStepVisualMarkerMember;
 
 unsafe impl crate::CppDeletable for HandleStepVisualMarkerMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualMarkerMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualMarkerMember_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualMarkerMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualMarkerMember_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualMarkerMember_clone(ptr))
+        }
     }
 }
 
@@ -25081,7 +25535,9 @@ pub use crate::ffi_types::StepVisual_MarkerSelect as MarkerSelect;
 
 unsafe impl crate::CppDeletable for MarkerSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_MarkerSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_MarkerSelect_destructor(ptr);
+        }
     }
 }
 
@@ -25317,9 +25773,9 @@ pub use crate::ffi_types::StepVisual_MechanicalDesignGeometricPresentationArea a
 
 unsafe impl crate::CppDeletable for MechanicalDesignGeometricPresentationArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_MechanicalDesignGeometricPresentationArea_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_MechanicalDesignGeometricPresentationArea_destructor(ptr);
+        }
     }
 }
 
@@ -25559,13 +26015,17 @@ pub use crate::ffi_types::HandleStepVisualMechanicalDesignGeometricPresentationA
 
 unsafe impl crate::CppDeletable for HandleStepVisualMechanicalDesignGeometricPresentationArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualMechanicalDesignGeometricPresentationArea_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualMechanicalDesignGeometricPresentationArea_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualMechanicalDesignGeometricPresentationArea {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualMechanicalDesignGeometricPresentationArea_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualMechanicalDesignGeometricPresentationArea_clone(ptr))
+        }
     }
 }
 
@@ -25639,7 +26099,9 @@ pub use crate::ffi_types::StepVisual_MechanicalDesignGeometricPresentationRepres
 
 unsafe impl crate::CppDeletable for MechanicalDesignGeometricPresentationRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_MechanicalDesignGeometricPresentationRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_MechanicalDesignGeometricPresentationRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -25868,7 +26330,9 @@ unsafe impl crate::CppDeletable
     for HandleStepVisualMechanicalDesignGeometricPresentationRepresentation
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualMechanicalDesignGeometricPresentationRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualMechanicalDesignGeometricPresentationRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -25876,7 +26340,9 @@ unsafe impl crate::CppCopyable
     for HandleStepVisualMechanicalDesignGeometricPresentationRepresentation
 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualMechanicalDesignGeometricPresentationRepresentation_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualMechanicalDesignGeometricPresentationRepresentation_clone(ptr))
+        }
     }
 }
 
@@ -25945,7 +26411,9 @@ pub use crate::ffi_types::StepVisual_NullStyleMember as NullStyleMember;
 
 unsafe impl crate::CppDeletable for NullStyleMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_NullStyleMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_NullStyleMember_destructor(ptr);
+        }
     }
 }
 
@@ -26348,13 +26816,19 @@ pub use crate::ffi_types::HandleStepVisualNullStyleMember;
 
 unsafe impl crate::CppDeletable for HandleStepVisualNullStyleMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualNullStyleMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualNullStyleMember_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualNullStyleMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualNullStyleMember_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualNullStyleMember_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -26423,7 +26897,9 @@ pub use crate::ffi_types::StepVisual_OverRidingStyledItem as OverRidingStyledIte
 
 unsafe impl crate::CppDeletable for OverRidingStyledItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_OverRidingStyledItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_OverRidingStyledItem_destructor(ptr);
+        }
     }
 }
 
@@ -26751,15 +27227,19 @@ pub use crate::ffi_types::HandleStepVisualOverRidingStyledItem;
 
 unsafe impl crate::CppDeletable for HandleStepVisualOverRidingStyledItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualOverRidingStyledItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualOverRidingStyledItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualOverRidingStyledItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualOverRidingStyledItem_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualOverRidingStyledItem_clone(ptr),
+            )
+        }
     }
 }
 
@@ -26851,7 +27331,9 @@ pub use crate::ffi_types::StepVisual_PathOrCompositeCurve as PathOrCompositeCurv
 
 unsafe impl crate::CppDeletable for PathOrCompositeCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PathOrCompositeCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PathOrCompositeCurve_destructor(ptr);
+        }
     }
 }
 
@@ -27110,7 +27592,9 @@ pub use crate::ffi_types::StepVisual_PlanarBox as PlanarBox;
 
 unsafe impl crate::CppDeletable for PlanarBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PlanarBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PlanarBox_destructor(ptr);
+        }
     }
 }
 
@@ -27417,13 +27901,17 @@ pub use crate::ffi_types::HandleStepVisualPlanarBox;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPlanarBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPlanarBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPlanarBox_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPlanarBox {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPlanarBox_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPlanarBox_clone(ptr))
+        }
     }
 }
 
@@ -27503,7 +27991,9 @@ pub use crate::ffi_types::StepVisual_PlanarExtent as PlanarExtent;
 
 unsafe impl crate::CppDeletable for PlanarExtent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PlanarExtent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PlanarExtent_destructor(ptr);
+        }
     }
 }
 
@@ -27769,13 +28259,17 @@ pub use crate::ffi_types::HandleStepVisualPlanarExtent;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPlanarExtent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPlanarExtent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPlanarExtent_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPlanarExtent {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPlanarExtent_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPlanarExtent_clone(ptr))
+        }
     }
 }
 
@@ -27862,7 +28356,9 @@ pub use crate::ffi_types::StepVisual_PointStyle as PointStyle;
 
 unsafe impl crate::CppDeletable for PointStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PointStyle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PointStyle_destructor(ptr);
+        }
     }
 }
 
@@ -28105,13 +28601,17 @@ pub use crate::ffi_types::HandleStepVisualPointStyle;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPointStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPointStyle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPointStyle_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPointStyle {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPointStyle_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPointStyle_clone(ptr))
+        }
     }
 }
 
@@ -28164,7 +28664,9 @@ pub use crate::ffi_types::StepVisual_PreDefinedColour as PreDefinedColour;
 
 unsafe impl crate::CppDeletable for PreDefinedColour {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PreDefinedColour_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PreDefinedColour_destructor(ptr);
+        }
     }
 }
 
@@ -28368,13 +28870,19 @@ pub use crate::ffi_types::HandleStepVisualPreDefinedColour;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPreDefinedColour {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedColour_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedColour_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPreDefinedColour {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedColour_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedColour_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -28450,7 +28958,9 @@ pub use crate::ffi_types::StepVisual_PreDefinedCurveFont as PreDefinedCurveFont;
 
 unsafe impl crate::CppDeletable for PreDefinedCurveFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PreDefinedCurveFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PreDefinedCurveFont_destructor(ptr);
+        }
     }
 }
 
@@ -28649,15 +29159,19 @@ pub use crate::ffi_types::HandleStepVisualPreDefinedCurveFont;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPreDefinedCurveFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedCurveFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedCurveFont_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPreDefinedCurveFont {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedCurveFont_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedCurveFont_clone(ptr),
+            )
+        }
     }
 }
 
@@ -28738,7 +29252,9 @@ pub use crate::ffi_types::StepVisual_PreDefinedItem as PreDefinedItem;
 
 unsafe impl crate::CppDeletable for PreDefinedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PreDefinedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PreDefinedItem_destructor(ptr);
+        }
     }
 }
 
@@ -28917,13 +29433,19 @@ pub use crate::ffi_types::HandleStepVisualPreDefinedItem;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPreDefinedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPreDefinedItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedItem_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedItem_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -29023,7 +29545,9 @@ pub use crate::ffi_types::StepVisual_PreDefinedTextFont as PreDefinedTextFont;
 
 unsafe impl crate::CppDeletable for PreDefinedTextFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PreDefinedTextFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PreDefinedTextFont_destructor(ptr);
+        }
     }
 }
 
@@ -29224,15 +29748,19 @@ pub use crate::ffi_types::HandleStepVisualPreDefinedTextFont;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPreDefinedTextFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedTextFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedTextFont_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPreDefinedTextFont {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedTextFont_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualPreDefinedTextFont_clone(ptr),
+            )
+        }
     }
 }
 
@@ -29296,7 +29824,9 @@ pub use crate::ffi_types::StepVisual_PresentationArea as PresentationArea;
 
 unsafe impl crate::CppDeletable for PresentationArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationArea_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationArea_destructor(ptr);
+        }
     }
 }
 
@@ -29598,13 +30128,19 @@ pub use crate::ffi_types::HandleStepVisualPresentationArea;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPresentationArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationArea_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationArea_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPresentationArea {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationArea_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationArea_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -29695,7 +30231,9 @@ pub use crate::ffi_types::StepVisual_PresentationLayerAssignment as Presentation
 
 unsafe impl crate::CppDeletable for PresentationLayerAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationLayerAssignment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationLayerAssignment_destructor(ptr);
+        }
     }
 }
 
@@ -29943,15 +30481,19 @@ pub use crate::ffi_types::HandleStepVisualPresentationLayerAssignment;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPresentationLayerAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationLayerAssignment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationLayerAssignment_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPresentationLayerAssignment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationLayerAssignment_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationLayerAssignment_clone(ptr),
+            )
+        }
     }
 }
 
@@ -30007,7 +30549,9 @@ pub use crate::ffi_types::StepVisual_PresentationLayerUsage as PresentationLayer
 
 unsafe impl crate::CppDeletable for PresentationLayerUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationLayerUsage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationLayerUsage_destructor(ptr);
+        }
     }
 }
 
@@ -30223,15 +30767,19 @@ pub use crate::ffi_types::HandleStepVisualPresentationLayerUsage;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPresentationLayerUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationLayerUsage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationLayerUsage_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPresentationLayerUsage {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationLayerUsage_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationLayerUsage_clone(ptr),
+            )
+        }
     }
 }
 
@@ -30286,7 +30834,9 @@ pub use crate::ffi_types::StepVisual_PresentationRepresentation as PresentationR
 
 unsafe impl crate::CppDeletable for PresentationRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -30546,15 +31096,19 @@ pub use crate::ffi_types::HandleStepVisualPresentationRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPresentationRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPresentationRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationRepresentation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationRepresentation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -30690,7 +31244,9 @@ pub use crate::ffi_types::StepVisual_PresentationRepresentationSelect as Present
 
 unsafe impl crate::CppDeletable for PresentationRepresentationSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationRepresentationSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationRepresentationSelect_destructor(ptr);
+        }
     }
 }
 
@@ -30896,7 +31452,9 @@ pub use crate::ffi_types::StepVisual_PresentationSet as PresentationSet;
 
 unsafe impl crate::CppDeletable for PresentationSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationSet_destructor(ptr);
+        }
     }
 }
 
@@ -31052,13 +31610,19 @@ pub use crate::ffi_types::HandleStepVisualPresentationSet;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPresentationSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPresentationSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationSet_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationSet_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -31109,7 +31673,9 @@ pub use crate::ffi_types::StepVisual_PresentationSize as PresentationSize;
 
 unsafe impl crate::CppDeletable for PresentationSize {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationSize_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationSize_destructor(ptr);
+        }
     }
 }
 
@@ -31318,13 +31884,19 @@ pub use crate::ffi_types::HandleStepVisualPresentationSize;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPresentationSize {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationSize_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationSize_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPresentationSize {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationSize_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationSize_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -31377,7 +31949,9 @@ pub use crate::ffi_types::StepVisual_PresentationSizeAssignmentSelect as Present
 
 unsafe impl crate::CppDeletable for PresentationSizeAssignmentSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationSizeAssignmentSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationSizeAssignmentSelect_destructor(ptr);
+        }
     }
 }
 
@@ -31596,7 +32170,9 @@ pub use crate::ffi_types::StepVisual_PresentationStyleAssignment as Presentation
 
 unsafe impl crate::CppDeletable for PresentationStyleAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationStyleAssignment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationStyleAssignment_destructor(ptr);
+        }
     }
 }
 
@@ -31800,15 +32376,19 @@ pub use crate::ffi_types::HandleStepVisualPresentationStyleAssignment;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPresentationStyleAssignment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationStyleAssignment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationStyleAssignment_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPresentationStyleAssignment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationStyleAssignment_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationStyleAssignment_clone(ptr),
+            )
+        }
     }
 }
 
@@ -31879,7 +32459,9 @@ pub use crate::ffi_types::StepVisual_PresentationStyleByContext as PresentationS
 
 unsafe impl crate::CppDeletable for PresentationStyleByContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationStyleByContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationStyleByContext_destructor(ptr);
+        }
     }
 }
 
@@ -32115,15 +32697,19 @@ pub use crate::ffi_types::HandleStepVisualPresentationStyleByContext;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPresentationStyleByContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationStyleByContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationStyleByContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPresentationStyleByContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationStyleByContext_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationStyleByContext_clone(ptr),
+            )
+        }
     }
 }
 
@@ -32187,7 +32773,9 @@ pub use crate::ffi_types::StepVisual_PresentationStyleSelect as PresentationStyl
 
 unsafe impl crate::CppDeletable for PresentationStyleSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationStyleSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationStyleSelect_destructor(ptr);
+        }
     }
 }
 
@@ -32468,7 +33056,9 @@ pub use crate::ffi_types::StepVisual_PresentationView as PresentationView;
 
 unsafe impl crate::CppDeletable for PresentationView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentationView_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentationView_destructor(ptr);
+        }
     }
 }
 
@@ -32770,13 +33360,19 @@ pub use crate::ffi_types::HandleStepVisualPresentationView;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPresentationView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationView_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationView_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPresentationView {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationView_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPresentationView_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -32847,7 +33443,9 @@ pub use crate::ffi_types::StepVisual_PresentedItem as PresentedItem;
 
 unsafe impl crate::CppDeletable for PresentedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentedItem_destructor(ptr);
+        }
     }
 }
 
@@ -33003,13 +33601,19 @@ pub use crate::ffi_types::HandleStepVisualPresentedItem;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPresentedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPresentedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentedItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPresentedItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPresentedItem_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualPresentedItem_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -33093,7 +33697,9 @@ pub use crate::ffi_types::StepVisual_PresentedItemRepresentation as PresentedIte
 
 unsafe impl crate::CppDeletable for PresentedItemRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_PresentedItemRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_PresentedItemRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -33293,15 +33899,19 @@ pub use crate::ffi_types::HandleStepVisualPresentedItemRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepVisualPresentedItemRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualPresentedItemRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentedItemRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualPresentedItemRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualPresentedItemRepresentation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualPresentedItemRepresentation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -33357,7 +33967,9 @@ pub use crate::ffi_types::StepVisual_RenderingPropertiesSelect as RenderingPrope
 
 unsafe impl crate::CppDeletable for RenderingPropertiesSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_RenderingPropertiesSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_RenderingPropertiesSelect_destructor(ptr);
+        }
     }
 }
 
@@ -33599,7 +34211,11 @@ pub use crate::ffi_types::StepVisual_RepositionedTessellatedGeometricSet as Repo
 
 unsafe impl crate::CppDeletable for RepositionedTessellatedGeometricSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_RepositionedTessellatedGeometricSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_RepositionedTessellatedGeometricSet_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -33845,19 +34461,17 @@ pub use crate::ffi_types::HandleStepVisualRepositionedTessellatedGeometricSet;
 
 unsafe impl crate::CppDeletable for HandleStepVisualRepositionedTessellatedGeometricSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualRepositionedTessellatedGeometricSet_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualRepositionedTessellatedGeometricSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualRepositionedTessellatedGeometricSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualRepositionedTessellatedGeometricSet_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualRepositionedTessellatedGeometricSet_clone(ptr))
+        }
     }
 }
 
@@ -33947,7 +34561,9 @@ pub use crate::ffi_types::StepVisual_RepositionedTessellatedItem as Repositioned
 
 unsafe impl crate::CppDeletable for RepositionedTessellatedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_RepositionedTessellatedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_RepositionedTessellatedItem_destructor(ptr);
+        }
     }
 }
 
@@ -34199,15 +34815,19 @@ pub use crate::ffi_types::HandleStepVisualRepositionedTessellatedItem;
 
 unsafe impl crate::CppDeletable for HandleStepVisualRepositionedTessellatedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualRepositionedTessellatedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualRepositionedTessellatedItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualRepositionedTessellatedItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualRepositionedTessellatedItem_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualRepositionedTessellatedItem_clone(ptr),
+            )
+        }
     }
 }
 
@@ -34289,7 +34909,9 @@ pub use crate::ffi_types::StepVisual_StyleContextSelect as StyleContextSelect;
 
 unsafe impl crate::CppDeletable for StyleContextSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_StyleContextSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_StyleContextSelect_destructor(ptr);
+        }
     }
 }
 
@@ -34566,7 +35188,9 @@ pub use crate::ffi_types::StepVisual_StyledItem as StyledItem;
 
 unsafe impl crate::CppDeletable for StyledItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_StyledItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_StyledItem_destructor(ptr);
+        }
     }
 }
 
@@ -34855,13 +35479,17 @@ pub use crate::ffi_types::HandleStepVisualStyledItem;
 
 unsafe impl crate::CppDeletable for HandleStepVisualStyledItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualStyledItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualStyledItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualStyledItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualStyledItem_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualStyledItem_clone(ptr))
+        }
     }
 }
 
@@ -35090,7 +35718,9 @@ pub use crate::ffi_types::StepVisual_StyledItemTarget as StyledItemTarget;
 
 unsafe impl crate::CppDeletable for StyledItemTarget {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_StyledItemTarget_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_StyledItemTarget_destructor(ptr);
+        }
     }
 }
 
@@ -35376,7 +36006,9 @@ pub use crate::ffi_types::StepVisual_SurfaceSideStyle as SurfaceSideStyle;
 
 unsafe impl crate::CppDeletable for SurfaceSideStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceSideStyle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceSideStyle_destructor(ptr);
+        }
     }
 }
 
@@ -35609,13 +36241,19 @@ pub use crate::ffi_types::HandleStepVisualSurfaceSideStyle;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceSideStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceSideStyle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceSideStyle_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceSideStyle {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceSideStyle_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceSideStyle_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -35668,7 +36306,9 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleBoundary as SurfaceStyleBoundar
 
 unsafe impl crate::CppDeletable for SurfaceStyleBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleBoundary_destructor(ptr);
+        }
     }
 }
 
@@ -35854,15 +36494,19 @@ pub use crate::ffi_types::HandleStepVisualSurfaceStyleBoundary;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceStyleBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleBoundary_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleBoundary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleBoundary_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleBoundary_clone(ptr),
+            )
+        }
     }
 }
 
@@ -35917,7 +36561,9 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleControlGrid as SurfaceStyleCont
 
 unsafe impl crate::CppDeletable for SurfaceStyleControlGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleControlGrid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleControlGrid_destructor(ptr);
+        }
     }
 }
 
@@ -36096,15 +36742,19 @@ pub use crate::ffi_types::HandleStepVisualSurfaceStyleControlGrid;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceStyleControlGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleControlGrid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleControlGrid_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleControlGrid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleControlGrid_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleControlGrid_clone(ptr),
+            )
+        }
     }
 }
 
@@ -36159,7 +36809,9 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleElementSelect as SurfaceStyleEl
 
 unsafe impl crate::CppDeletable for SurfaceStyleElementSelect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleElementSelect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleElementSelect_destructor(ptr);
+        }
     }
 }
 
@@ -36426,7 +37078,9 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleFillArea as SurfaceStyleFillAre
 
 unsafe impl crate::CppDeletable for SurfaceStyleFillArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleFillArea_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleFillArea_destructor(ptr);
+        }
     }
 }
 
@@ -36607,15 +37261,19 @@ pub use crate::ffi_types::HandleStepVisualSurfaceStyleFillArea;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceStyleFillArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleFillArea_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleFillArea_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleFillArea {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleFillArea_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleFillArea_clone(ptr),
+            )
+        }
     }
 }
 
@@ -36670,7 +37328,9 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleParameterLine as SurfaceStylePa
 
 unsafe impl crate::CppDeletable for SurfaceStyleParameterLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleParameterLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleParameterLine_destructor(ptr);
+        }
     }
 }
 
@@ -36890,15 +37550,19 @@ pub use crate::ffi_types::HandleStepVisualSurfaceStyleParameterLine;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceStyleParameterLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleParameterLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleParameterLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleParameterLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleParameterLine_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleParameterLine_clone(ptr),
+            )
+        }
     }
 }
 
@@ -36954,7 +37618,9 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleReflectanceAmbient as SurfaceSt
 
 unsafe impl crate::CppDeletable for SurfaceStyleReflectanceAmbient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleReflectanceAmbient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleReflectanceAmbient_destructor(ptr);
+        }
     }
 }
 
@@ -37121,15 +37787,23 @@ pub use crate::ffi_types::HandleStepVisualSurfaceStyleReflectanceAmbient;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceStyleReflectanceAmbient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleReflectanceAmbient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleReflectanceAmbient_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleReflectanceAmbient {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleReflectanceAmbient_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleReflectanceAmbient_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -37185,7 +37859,9 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleRendering as SurfaceStyleRender
 
 unsafe impl crate::CppDeletable for SurfaceStyleRendering {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleRendering_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleRendering_destructor(ptr);
+        }
     }
 }
 
@@ -37402,15 +38078,19 @@ pub use crate::ffi_types::HandleStepVisualSurfaceStyleRendering;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceStyleRendering {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleRendering_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleRendering_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleRendering {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleRendering_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleRendering_clone(ptr),
+            )
+        }
     }
 }
 
@@ -37484,7 +38164,11 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleRenderingWithProperties as Surf
 
 unsafe impl crate::CppDeletable for SurfaceStyleRenderingWithProperties {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleRenderingWithProperties_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleRenderingWithProperties_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -37688,19 +38372,17 @@ pub use crate::ffi_types::HandleStepVisualSurfaceStyleRenderingWithProperties;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceStyleRenderingWithProperties {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleRenderingWithProperties_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleRenderingWithProperties_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleRenderingWithProperties {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleRenderingWithProperties_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleRenderingWithProperties_clone(ptr))
+        }
     }
 }
 
@@ -37762,7 +38444,9 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleSegmentationCurve as SurfaceSty
 
 unsafe impl crate::CppDeletable for SurfaceStyleSegmentationCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleSegmentationCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleSegmentationCurve_destructor(ptr);
+        }
     }
 }
 
@@ -37934,15 +38618,23 @@ pub use crate::ffi_types::HandleStepVisualSurfaceStyleSegmentationCurve;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceStyleSegmentationCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleSegmentationCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleSegmentationCurve_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleSegmentationCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleSegmentationCurve_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleSegmentationCurve_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -37997,7 +38689,9 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleSilhouette as SurfaceStyleSilho
 
 unsafe impl crate::CppDeletable for SurfaceStyleSilhouette {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleSilhouette_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleSilhouette_destructor(ptr);
+        }
     }
 }
 
@@ -38183,15 +38877,19 @@ pub use crate::ffi_types::HandleStepVisualSurfaceStyleSilhouette;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceStyleSilhouette {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleSilhouette_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleSilhouette_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleSilhouette {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleSilhouette_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleSilhouette_clone(ptr),
+            )
+        }
     }
 }
 
@@ -38247,7 +38945,9 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleTransparent as SurfaceStyleTran
 
 unsafe impl crate::CppDeletable for SurfaceStyleTransparent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleTransparent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleTransparent_destructor(ptr);
+        }
     }
 }
 
@@ -38426,15 +39126,19 @@ pub use crate::ffi_types::HandleStepVisualSurfaceStyleTransparent;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceStyleTransparent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleTransparent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleTransparent_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleTransparent {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleTransparent_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleTransparent_clone(ptr),
+            )
+        }
     }
 }
 
@@ -38489,7 +39193,9 @@ pub use crate::ffi_types::StepVisual_SurfaceStyleUsage as SurfaceStyleUsage;
 
 unsafe impl crate::CppDeletable for SurfaceStyleUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleUsage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_SurfaceStyleUsage_destructor(ptr);
+        }
     }
 }
 
@@ -38697,15 +39403,19 @@ pub use crate::ffi_types::HandleStepVisualSurfaceStyleUsage;
 
 unsafe impl crate::CppDeletable for HandleStepVisualSurfaceStyleUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleUsage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleUsage_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualSurfaceStyleUsage {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleUsage_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualSurfaceStyleUsage_clone(ptr),
+            )
+        }
     }
 }
 
@@ -38760,7 +39470,9 @@ pub use crate::ffi_types::StepVisual_Template as Template;
 
 unsafe impl crate::CppDeletable for Template {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_Template_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_Template_destructor(ptr);
+        }
     }
 }
 
@@ -39042,13 +39754,17 @@ pub use crate::ffi_types::HandleStepVisualTemplate;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTemplate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTemplate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTemplate_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTemplate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTemplate_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTemplate_clone(ptr))
+        }
     }
 }
 
@@ -39108,7 +39824,9 @@ pub use crate::ffi_types::StepVisual_TemplateInstance as TemplateInstance;
 
 unsafe impl crate::CppDeletable for TemplateInstance {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TemplateInstance_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TemplateInstance_destructor(ptr);
+        }
     }
 }
 
@@ -39392,13 +40110,19 @@ pub use crate::ffi_types::HandleStepVisualTemplateInstance;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTemplateInstance {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTemplateInstance_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTemplateInstance_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTemplateInstance {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTemplateInstance_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTemplateInstance_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -39469,7 +40193,9 @@ pub use crate::ffi_types::StepVisual_TessellatedAnnotationOccurrence as Tessella
 
 unsafe impl crate::CppDeletable for TessellatedAnnotationOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedAnnotationOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedAnnotationOccurrence_destructor(ptr);
+        }
     }
 }
 
@@ -39724,15 +40450,23 @@ pub use crate::ffi_types::HandleStepVisualTessellatedAnnotationOccurrence;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedAnnotationOccurrence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedAnnotationOccurrence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedAnnotationOccurrence_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedAnnotationOccurrence {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedAnnotationOccurrence_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedAnnotationOccurrence_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -39806,7 +40540,9 @@ pub use crate::ffi_types::StepVisual_TessellatedConnectingEdge as TessellatedCon
 
 unsafe impl crate::CppDeletable for TessellatedConnectingEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedConnectingEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedConnectingEdge_destructor(ptr);
+        }
     }
 }
 
@@ -40321,15 +41057,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedConnectingEdge;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedConnectingEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedConnectingEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedConnectingEdge_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedConnectingEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedConnectingEdge_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedConnectingEdge_clone(ptr),
+            )
+        }
     }
 }
 
@@ -40429,7 +41169,9 @@ pub use crate::ffi_types::StepVisual_TessellatedCurveSet as TessellatedCurveSet;
 
 unsafe impl crate::CppDeletable for TessellatedCurveSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedCurveSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedCurveSet_destructor(ptr);
+        }
     }
 }
 
@@ -40694,15 +41436,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedCurveSet;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedCurveSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedCurveSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedCurveSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedCurveSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedCurveSet_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedCurveSet_clone(ptr),
+            )
+        }
     }
 }
 
@@ -40785,7 +41531,9 @@ pub use crate::ffi_types::StepVisual_TessellatedEdge as TessellatedEdge;
 
 unsafe impl crate::CppDeletable for TessellatedEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedEdge_destructor(ptr);
+        }
     }
 }
 
@@ -41154,13 +41902,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedEdge;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedEdge_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedEdge_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedEdge_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -41280,7 +42034,9 @@ pub use crate::ffi_types::StepVisual_TessellatedEdgeOrVertex as TessellatedEdgeO
 
 unsafe impl crate::CppDeletable for TessellatedEdgeOrVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedEdgeOrVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedEdgeOrVertex_destructor(ptr);
+        }
     }
 }
 
@@ -41534,7 +42290,9 @@ pub use crate::ffi_types::StepVisual_TessellatedFace as TessellatedFace;
 
 unsafe impl crate::CppDeletable for TessellatedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedFace_destructor(ptr);
+        }
     }
 }
 
@@ -41906,13 +42664,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedFace;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedFace_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedFace_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedFace_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -42048,7 +42812,9 @@ pub use crate::ffi_types::StepVisual_TessellatedGeometricSet as TessellatedGeome
 
 unsafe impl crate::CppDeletable for TessellatedGeometricSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedGeometricSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedGeometricSet_destructor(ptr);
+        }
     }
 }
 
@@ -42293,15 +43059,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedGeometricSet;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedGeometricSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedGeometricSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedGeometricSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedGeometricSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedGeometricSet_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedGeometricSet_clone(ptr),
+            )
+        }
     }
 }
 
@@ -42401,7 +43171,9 @@ pub use crate::ffi_types::StepVisual_TessellatedItem as TessellatedItem;
 
 unsafe impl crate::CppDeletable for TessellatedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedItem_destructor(ptr);
+        }
     }
 }
 
@@ -42622,13 +43394,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedItem;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedItem_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedItem_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -43039,7 +43817,9 @@ pub use crate::ffi_types::StepVisual_TessellatedPointSet as TessellatedPointSet;
 
 unsafe impl crate::CppDeletable for TessellatedPointSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedPointSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedPointSet_destructor(ptr);
+        }
     }
 }
 
@@ -43355,15 +44135,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedPointSet;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedPointSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedPointSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedPointSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedPointSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedPointSet_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedPointSet_clone(ptr),
+            )
+        }
     }
 }
 
@@ -43446,7 +44230,9 @@ pub use crate::ffi_types::StepVisual_TessellatedShapeRepresentation as Tessellat
 
 unsafe impl crate::CppDeletable for TessellatedShapeRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShapeRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShapeRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -43710,15 +44496,23 @@ pub use crate::ffi_types::HandleStepVisualTessellatedShapeRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedShapeRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShapeRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShapeRepresentation_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedShapeRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShapeRepresentation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShapeRepresentation_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -43812,7 +44606,9 @@ pub use crate::ffi_types::StepVisual_TessellatedShapeRepresentationWithAccuracyP
 
 unsafe impl crate::CppDeletable for TessellatedShapeRepresentationWithAccuracyParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_destructor(ptr);
+        }
     }
 }
 
@@ -44098,7 +44894,9 @@ unsafe impl crate::CppDeletable
     for HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters_destructor(ptr);
+        }
     }
 }
 
@@ -44106,7 +44904,9 @@ unsafe impl crate::CppCopyable
     for HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters
 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShapeRepresentationWithAccuracyParameters_clone(ptr))
+        }
     }
 }
 
@@ -44184,7 +44984,9 @@ pub use crate::ffi_types::StepVisual_TessellatedShell as TessellatedShell;
 
 unsafe impl crate::CppDeletable for TessellatedShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShell_destructor(ptr);
+        }
     }
 }
 
@@ -44517,13 +45319,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedShell;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShell_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedShell {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShell_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedShell_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -44604,7 +45412,9 @@ pub use crate::ffi_types::StepVisual_TessellatedSolid as TessellatedSolid;
 
 unsafe impl crate::CppDeletable for TessellatedSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedSolid_destructor(ptr);
+        }
     }
 }
 
@@ -44937,13 +45747,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedSolid;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedSolid_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedSolid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedSolid_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedSolid_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -45024,7 +45840,9 @@ pub use crate::ffi_types::StepVisual_TessellatedStructuredItem as TessellatedStr
 
 unsafe impl crate::CppDeletable for TessellatedStructuredItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedStructuredItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedStructuredItem_destructor(ptr);
+        }
     }
 }
 
@@ -45247,15 +46065,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedStructuredItem;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedStructuredItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedStructuredItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedStructuredItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedStructuredItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedStructuredItem_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedStructuredItem_clone(ptr),
+            )
+        }
     }
 }
 
@@ -45467,7 +46289,9 @@ pub use crate::ffi_types::StepVisual_TessellatedSurfaceSet as TessellatedSurface
 
 unsafe impl crate::CppDeletable for TessellatedSurfaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedSurfaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedSurfaceSet_destructor(ptr);
+        }
     }
 }
 
@@ -45786,15 +46610,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedSurfaceSet;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedSurfaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedSurfaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedSurfaceSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedSurfaceSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedSurfaceSet_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedSurfaceSet_clone(ptr),
+            )
+        }
     }
 }
 
@@ -45910,7 +46738,9 @@ pub use crate::ffi_types::StepVisual_TessellatedVertex as TessellatedVertex;
 
 unsafe impl crate::CppDeletable for TessellatedVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedVertex_destructor(ptr);
+        }
     }
 }
 
@@ -46258,15 +47088,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedVertex;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedVertex_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedVertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedVertex_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedVertex_clone(ptr),
+            )
+        }
     }
 }
 
@@ -46358,7 +47192,9 @@ pub use crate::ffi_types::StepVisual_TessellatedWire as TessellatedWire;
 
 unsafe impl crate::CppDeletable for TessellatedWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TessellatedWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TessellatedWire_destructor(ptr);
+        }
     }
 }
 
@@ -46683,13 +47519,19 @@ pub use crate::ffi_types::HandleStepVisualTessellatedWire;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTessellatedWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedWire_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTessellatedWire {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedWire_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTessellatedWire_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -46767,7 +47609,9 @@ pub use crate::ffi_types::StepVisual_TextLiteral as TextLiteral;
 
 unsafe impl crate::CppDeletable for TextLiteral {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TextLiteral_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TextLiteral_destructor(ptr);
+        }
     }
 }
 
@@ -47094,13 +47938,17 @@ pub use crate::ffi_types::HandleStepVisualTextLiteral;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTextLiteral {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTextLiteral_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTextLiteral_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTextLiteral {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTextLiteral_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTextLiteral_clone(ptr))
+        }
     }
 }
 
@@ -47171,7 +48019,9 @@ pub use crate::ffi_types::StepVisual_TextOrCharacter as TextOrCharacter;
 
 unsafe impl crate::CppDeletable for TextOrCharacter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TextOrCharacter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TextOrCharacter_destructor(ptr);
+        }
     }
 }
 
@@ -47450,7 +48300,9 @@ pub use crate::ffi_types::StepVisual_TextStyle as TextStyle;
 
 unsafe impl crate::CppDeletable for TextStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TextStyle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TextStyle_destructor(ptr);
+        }
     }
 }
 
@@ -47657,13 +48509,17 @@ pub use crate::ffi_types::HandleStepVisualTextStyle;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTextStyle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyle_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTextStyle {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyle_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyle_clone(ptr))
+        }
     }
 }
 
@@ -47733,7 +48589,9 @@ pub use crate::ffi_types::StepVisual_TextStyleForDefinedFont as TextStyleForDefi
 
 unsafe impl crate::CppDeletable for TextStyleForDefinedFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TextStyleForDefinedFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TextStyleForDefinedFont_destructor(ptr);
+        }
     }
 }
 
@@ -47911,15 +48769,19 @@ pub use crate::ffi_types::HandleStepVisualTextStyleForDefinedFont;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTextStyleForDefinedFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyleForDefinedFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyleForDefinedFont_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTextStyleForDefinedFont {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyleForDefinedFont_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyleForDefinedFont_clone(ptr),
+            )
+        }
     }
 }
 
@@ -47974,7 +48836,9 @@ pub use crate::ffi_types::StepVisual_TextStyleWithBoxCharacteristics as TextStyl
 
 unsafe impl crate::CppDeletable for TextStyleWithBoxCharacteristics {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TextStyleWithBoxCharacteristics_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TextStyleWithBoxCharacteristics_destructor(ptr);
+        }
     }
 }
 
@@ -48205,15 +49069,23 @@ pub use crate::ffi_types::HandleStepVisualTextStyleWithBoxCharacteristics;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTextStyleWithBoxCharacteristics {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyleWithBoxCharacteristics_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyleWithBoxCharacteristics_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTextStyleWithBoxCharacteristics {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyleWithBoxCharacteristics_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTextStyleWithBoxCharacteristics_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -48278,7 +49150,9 @@ pub use crate::ffi_types::StepVisual_TriangulatedFace as TriangulatedFace;
 
 unsafe impl crate::CppDeletable for TriangulatedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TriangulatedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TriangulatedFace_destructor(ptr);
+        }
     }
 }
 
@@ -48742,13 +49616,19 @@ pub use crate::ffi_types::HandleStepVisualTriangulatedFace;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTriangulatedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTriangulatedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTriangulatedFace_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTriangulatedFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTriangulatedFace_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualTriangulatedFace_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -48847,7 +49727,9 @@ pub use crate::ffi_types::StepVisual_TriangulatedSurfaceSet as TriangulatedSurfa
 
 unsafe impl crate::CppDeletable for TriangulatedSurfaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_TriangulatedSurfaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_TriangulatedSurfaceSet_destructor(ptr);
+        }
     }
 }
 
@@ -49259,15 +50141,19 @@ pub use crate::ffi_types::HandleStepVisualTriangulatedSurfaceSet;
 
 unsafe impl crate::CppDeletable for HandleStepVisualTriangulatedSurfaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualTriangulatedSurfaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualTriangulatedSurfaceSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualTriangulatedSurfaceSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepVisualTriangulatedSurfaceSet_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepVisualTriangulatedSurfaceSet_clone(ptr),
+            )
+        }
     }
 }
 
@@ -49358,7 +50244,9 @@ pub use crate::ffi_types::StepVisual_ViewVolume as ViewVolume;
 
 unsafe impl crate::CppDeletable for ViewVolume {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepVisual_ViewVolume_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepVisual_ViewVolume_destructor(ptr);
+        }
     }
 }
 
@@ -49716,13 +50604,17 @@ pub use crate::ffi_types::HandleStepVisualViewVolume;
 
 unsafe impl crate::CppDeletable for HandleStepVisualViewVolume {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepVisualViewVolume_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepVisualViewVolume_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepVisualViewVolume {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualViewVolume_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepVisualViewVolume_clone(ptr))
+        }
     }
 }
 

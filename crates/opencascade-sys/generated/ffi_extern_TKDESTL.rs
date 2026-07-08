@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== DESTL_ConfigurationNode ========================
     pub fn DESTL_ConfigurationNode_destructor(self_: *mut DESTL_ConfigurationNode);
     /// **Source:** `DESTL_ConfigurationNode.hxx`:34 - `DESTL_ConfigurationNode::DESTL_ConfigurationNode()`

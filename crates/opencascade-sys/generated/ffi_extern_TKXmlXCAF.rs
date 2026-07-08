@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== XmlMXCAFDoc_AssemblyItemRefDriver ========================
     pub fn XmlMXCAFDoc_AssemblyItemRefDriver_destructor(
         self_: *mut XmlMXCAFDoc_AssemblyItemRefDriver,

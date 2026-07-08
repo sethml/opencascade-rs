@@ -114,7 +114,9 @@ pub use crate::ffi_types::IntRes2d_Domain as Domain;
 
 unsafe impl crate::CppDeletable for Domain {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_destructor(ptr);
+        }
     }
 }
 
@@ -439,7 +441,9 @@ pub use crate::ffi_types::IntRes2d_IntersectionPoint as IntersectionPoint;
 
 unsafe impl crate::CppDeletable for IntersectionPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionPoint_destructor(ptr);
+        }
     }
 }
 
@@ -569,7 +573,9 @@ pub use crate::ffi_types::IntRes2d_IntersectionSegment as IntersectionSegment;
 
 unsafe impl crate::CppDeletable for IntersectionSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_destructor(ptr);
+        }
     }
 }
 
@@ -707,7 +713,9 @@ pub use crate::ffi_types::IntRes2d_Transition as Transition;
 
 unsafe impl crate::CppDeletable for Transition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_destructor(ptr);
+        }
     }
 }
 

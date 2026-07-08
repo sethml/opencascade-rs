@@ -59,7 +59,9 @@ pub use crate::ffi_types::IntAna_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::IntAna_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -291,7 +293,9 @@ pub use crate::ffi_types::IntAna_Int3Pln as Int3Pln;
 
 unsafe impl crate::CppDeletable for Int3Pln {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::IntAna_Int3Pln_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_Int3Pln_destructor(ptr);
+        }
     }
 }
 
@@ -383,7 +387,9 @@ pub use crate::ffi_types::IntAna_IntConicQuad as IntConicQuad;
 
 unsafe impl crate::CppDeletable for IntConicQuad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_destructor(ptr);
+        }
     }
 }
 
@@ -805,7 +811,9 @@ pub use crate::ffi_types::IntAna_IntLinTorus as IntLinTorus;
 
 unsafe impl crate::CppDeletable for IntLinTorus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::IntAna_IntLinTorus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_IntLinTorus_destructor(ptr);
+        }
     }
 }
 
@@ -909,7 +917,9 @@ pub use crate::ffi_types::IntAna_IntQuadQuad as IntQuadQuad;
 
 unsafe impl crate::CppDeletable for IntQuadQuad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_destructor(ptr);
+        }
     }
 }
 
@@ -1143,7 +1153,9 @@ pub use crate::ffi_types::IntAna_QuadQuadGeo as QuadQuadGeo;
 
 unsafe impl crate::CppDeletable for QuadQuadGeo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_destructor(ptr);
+        }
     }
 }
 
@@ -1834,7 +1846,9 @@ pub use crate::ffi_types::IntAna_Quadric as Quadric;
 
 unsafe impl crate::CppDeletable for Quadric {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::IntAna_Quadric_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_Quadric_destructor(ptr);
+        }
     }
 }
 

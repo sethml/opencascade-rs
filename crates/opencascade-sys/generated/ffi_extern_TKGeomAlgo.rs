@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== AppBlend_Approx ========================
     pub fn AppBlend_Approx_destructor(self_: *mut AppBlend_Approx);
     /// **Source:** `AppBlend_Approx.hxx`:37 - `AppBlend_Approx::IsDone()`

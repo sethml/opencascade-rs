@@ -19,7 +19,9 @@ pub use crate::ffi_types::Media_BufferPool as BufferPool;
 
 unsafe impl crate::CppDeletable for BufferPool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Media_BufferPool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Media_BufferPool_destructor(ptr);
+        }
     }
 }
 
@@ -191,13 +193,17 @@ pub use crate::ffi_types::HandleMediaBufferPool;
 
 unsafe impl crate::CppDeletable for HandleMediaBufferPool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleMediaBufferPool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleMediaBufferPool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMediaBufferPool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleMediaBufferPool_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleMediaBufferPool_clone(ptr))
+        }
     }
 }
 
@@ -256,7 +262,9 @@ pub use crate::ffi_types::Media_CodecContext as CodecContext;
 
 unsafe impl crate::CppDeletable for CodecContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Media_CodecContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Media_CodecContext_destructor(ptr);
+        }
     }
 }
 
@@ -479,13 +487,17 @@ pub use crate::ffi_types::HandleMediaCodecContext;
 
 unsafe impl crate::CppDeletable for HandleMediaCodecContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleMediaCodecContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleMediaCodecContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMediaCodecContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleMediaCodecContext_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleMediaCodecContext_clone(ptr))
+        }
     }
 }
 
@@ -558,7 +570,9 @@ pub use crate::ffi_types::Media_FormatContext as FormatContext;
 
 unsafe impl crate::CppDeletable for FormatContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Media_FormatContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Media_FormatContext_destructor(ptr);
+        }
     }
 }
 
@@ -844,13 +858,17 @@ pub use crate::ffi_types::HandleMediaFormatContext;
 
 unsafe impl crate::CppDeletable for HandleMediaFormatContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleMediaFormatContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleMediaFormatContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMediaFormatContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleMediaFormatContext_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleMediaFormatContext_clone(ptr))
+        }
     }
 }
 
@@ -949,7 +967,9 @@ pub use crate::ffi_types::Media_Frame as Frame;
 
 unsafe impl crate::CppDeletable for Frame {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Media_Frame_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Media_Frame_destructor(ptr);
+        }
     }
 }
 
@@ -1260,13 +1280,15 @@ pub use crate::ffi_types::HandleMediaFrame;
 
 unsafe impl crate::CppDeletable for HandleMediaFrame {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleMediaFrame_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleMediaFrame_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMediaFrame {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleMediaFrame_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleMediaFrame_clone(ptr)) }
     }
 }
 
@@ -1330,7 +1352,9 @@ pub use crate::ffi_types::Media_IFrameQueue as IFrameQueue;
 
 unsafe impl crate::CppDeletable for IFrameQueue {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Media_IFrameQueue_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Media_IFrameQueue_destructor(ptr);
+        }
     }
 }
 
@@ -1368,7 +1392,9 @@ pub use crate::ffi_types::Media_Packet as Packet;
 
 unsafe impl crate::CppDeletable for Packet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Media_Packet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Media_Packet_destructor(ptr);
+        }
     }
 }
 
@@ -1608,13 +1634,15 @@ pub use crate::ffi_types::HandleMediaPacket;
 
 unsafe impl crate::CppDeletable for HandleMediaPacket {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleMediaPacket_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleMediaPacket_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMediaPacket {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleMediaPacket_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleMediaPacket_clone(ptr)) }
     }
 }
 
@@ -1678,7 +1706,9 @@ pub use crate::ffi_types::Media_PlayerContext as PlayerContext;
 
 unsafe impl crate::CppDeletable for PlayerContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Media_PlayerContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Media_PlayerContext_destructor(ptr);
+        }
     }
 }
 
@@ -1964,13 +1994,17 @@ pub use crate::ffi_types::HandleMediaPlayerContext;
 
 unsafe impl crate::CppDeletable for HandleMediaPlayerContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleMediaPlayerContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleMediaPlayerContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMediaPlayerContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleMediaPlayerContext_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleMediaPlayerContext_clone(ptr))
+        }
     }
 }
 
@@ -2024,7 +2058,9 @@ pub use crate::ffi_types::Media_Scaler as Scaler;
 
 unsafe impl crate::CppDeletable for Scaler {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Media_Scaler_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Media_Scaler_destructor(ptr);
+        }
     }
 }
 
@@ -2217,13 +2253,15 @@ pub use crate::ffi_types::HandleMediaScaler;
 
 unsafe impl crate::CppDeletable for HandleMediaScaler {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleMediaScaler_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleMediaScaler_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMediaScaler {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleMediaScaler_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleMediaScaler_clone(ptr)) }
     }
 }
 
@@ -2275,7 +2313,9 @@ pub use crate::ffi_types::Media_Timer as Timer;
 
 unsafe impl crate::CppDeletable for Timer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Media_Timer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Media_Timer_destructor(ptr);
+        }
     }
 }
 
@@ -2480,13 +2520,15 @@ pub use crate::ffi_types::HandleMediaTimer;
 
 unsafe impl crate::CppDeletable for HandleMediaTimer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleMediaTimer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleMediaTimer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleMediaTimer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleMediaTimer_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleMediaTimer_clone(ptr)) }
     }
 }
 

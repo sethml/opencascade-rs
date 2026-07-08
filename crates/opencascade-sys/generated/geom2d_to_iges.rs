@@ -29,7 +29,9 @@ pub use crate::ffi_types::Geom2dToIGES_Geom2dCurve as Geom2dCurve;
 
 unsafe impl crate::CppDeletable for Geom2dCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_destructor(ptr);
+        }
     }
 }
 
@@ -144,13 +146,17 @@ pub use crate::ffi_types::Geom2dToIGES_Geom2dEntity as Geom2dEntity;
 
 unsafe impl crate::CppDeletable for Geom2dEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Geom2dEntity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_clone(ptr))
+        }
     }
 }
 
@@ -229,7 +235,9 @@ pub use crate::ffi_types::Geom2dToIGES_Geom2dPoint as Geom2dPoint;
 
 unsafe impl crate::CppDeletable for Geom2dPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_destructor(ptr);
+        }
     }
 }
 
@@ -351,7 +359,9 @@ pub use crate::ffi_types::Geom2dToIGES_Geom2dVector as Geom2dVector;
 
 unsafe impl crate::CppDeletable for Geom2dVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_destructor(ptr);
+        }
     }
 }
 

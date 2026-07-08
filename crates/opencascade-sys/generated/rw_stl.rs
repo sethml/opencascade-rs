@@ -153,7 +153,9 @@ pub use crate::ffi_types::RWStl_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTL::RWStl_Reader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTL::RWStl_Reader_destructor(ptr);
+        }
     }
 }
 
@@ -399,13 +401,15 @@ pub use crate::ffi_types::HandleRWStlReader;
 
 unsafe impl crate::CppDeletable for HandleRWStlReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTL::HandleRWStlReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTL::HandleRWStlReader_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWStlReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTL::HandleRWStlReader_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTL::HandleRWStlReader_clone(ptr)) }
     }
 }
 

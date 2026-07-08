@@ -143,13 +143,17 @@ impl DataMapOfShapeShapeIterator {
 
 unsafe impl crate::CppDeletable for DataMapOfShapeShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::DataMapOfShapeShapeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::DataMapOfShapeShapeIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppDeletable for DataMapOfShapeShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeShape_destructor(ptr);
+        }
     }
 }
 
@@ -283,13 +287,17 @@ impl IndexedDataMapOfShapeListOfShapeIterator {
 
 unsafe impl crate::CppDeletable for IndexedDataMapOfShapeListOfShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::IndexedDataMapOfShapeListOfShapeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::IndexedDataMapOfShapeListOfShapeIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppDeletable for IndexedDataMapOfShapeListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_destructor(ptr);
+        }
     }
 }
 
@@ -356,13 +364,17 @@ impl IndexedMapOfShapeIterator {
 
 unsafe impl crate::CppDeletable for IndexedMapOfShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::IndexedMapOfShapeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::IndexedMapOfShapeIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppDeletable for IndexedMapOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_IndexedMapOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_IndexedMapOfShape_destructor(ptr);
+        }
     }
 }
 
@@ -426,13 +438,17 @@ impl ListOfShapeIterator {
 
 unsafe impl crate::CppDeletable for ListOfShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::ListOfShapeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::ListOfShapeIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppDeletable for ListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_ListOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_ListOfShape_destructor(ptr);
+        }
     }
 }
 
@@ -486,13 +502,17 @@ impl MapOfShapeIterator {
 
 unsafe impl crate::CppDeletable for MapOfShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::MapOfShapeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::MapOfShapeIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppDeletable for MapOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_MapOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_MapOfShape_destructor(ptr);
+        }
     }
 }
 
@@ -556,13 +576,17 @@ impl SequenceOfShapeIterator {
 
 unsafe impl crate::CppDeletable for SequenceOfShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::SequenceOfShapeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::SequenceOfShapeIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppDeletable for SequenceOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_SequenceOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_SequenceOfShape_destructor(ptr);
+        }
     }
 }
 
@@ -578,7 +602,9 @@ pub use crate::ffi_types::TopTools_HArray1OfListOfShape as HArray1OfListOfShape;
 
 unsafe impl crate::CppDeletable for HArray1OfListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_destructor(ptr);
+        }
     }
 }
 
@@ -808,13 +834,19 @@ pub use crate::ffi_types::HandleTopToolsHArray1OfListOfShape;
 
 unsafe impl crate::CppDeletable for HandleTopToolsHArray1OfListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfListOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfListOfShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopToolsHArray1OfListOfShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfListOfShape_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfListOfShape_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -867,7 +899,9 @@ pub use crate::ffi_types::TopTools_HArray1OfShape as HArray1OfShape;
 
 unsafe impl crate::CppDeletable for HArray1OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_destructor(ptr);
+        }
     }
 }
 
@@ -1087,13 +1121,17 @@ pub use crate::ffi_types::HandleTopToolsHArray1OfShape;
 
 unsafe impl crate::CppDeletable for HandleTopToolsHArray1OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopToolsHArray1OfShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfShape_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfShape_clone(ptr))
+        }
     }
 }
 
@@ -1146,7 +1184,9 @@ pub use crate::ffi_types::TopTools_HArray2OfShape as HArray2OfShape;
 
 unsafe impl crate::CppDeletable for HArray2OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_destructor(ptr);
+        }
     }
 }
 
@@ -1350,13 +1390,17 @@ pub use crate::ffi_types::HandleTopToolsHArray2OfShape;
 
 unsafe impl crate::CppDeletable for HandleTopToolsHArray2OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopToolsHArray2OfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopToolsHArray2OfShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopToolsHArray2OfShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray2OfShape_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray2OfShape_clone(ptr))
+        }
     }
 }
 
@@ -1409,7 +1453,9 @@ pub use crate::ffi_types::TopTools_HSequenceOfShape as HSequenceOfShape;
 
 unsafe impl crate::CppDeletable for HSequenceOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_destructor(ptr);
+        }
     }
 }
 
@@ -1640,13 +1686,17 @@ pub use crate::ffi_types::HandleTopToolsHSequenceOfShape;
 
 unsafe impl crate::CppDeletable for HandleTopToolsHSequenceOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopToolsHSequenceOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopToolsHSequenceOfShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopToolsHSequenceOfShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHSequenceOfShape_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHSequenceOfShape_clone(ptr))
+        }
     }
 }
 
@@ -1707,7 +1757,9 @@ pub use crate::ffi_types::TopTools_LocationSet as LocationSet;
 
 unsafe impl crate::CppDeletable for LocationSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_LocationSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_LocationSet_destructor(ptr);
+        }
     }
 }
 
@@ -1808,7 +1860,9 @@ pub use crate::ffi_types::TopTools_MutexForShapeProvider as MutexForShapeProvide
 
 unsafe impl crate::CppDeletable for MutexForShapeProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_MutexForShapeProvider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_MutexForShapeProvider_destructor(ptr);
+        }
     }
 }
 
@@ -1894,7 +1948,9 @@ pub use crate::ffi_types::TopTools_ShapeSet as ShapeSet;
 
 unsafe impl crate::CppDeletable for ShapeSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopTools_ShapeSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_destructor(ptr);
+        }
     }
 }
 

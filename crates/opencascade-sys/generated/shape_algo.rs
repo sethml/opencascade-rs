@@ -45,7 +45,9 @@ pub use crate::ffi_types::ShapeAlgo_AlgoContainer as AlgoContainer;
 
 unsafe impl crate::CppDeletable for AlgoContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeAlgo_AlgoContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeAlgo_AlgoContainer_destructor(ptr);
+        }
     }
 }
 
@@ -452,13 +454,19 @@ pub use crate::ffi_types::HandleShapeAlgoAlgoContainer;
 
 unsafe impl crate::CppDeletable for HandleShapeAlgoAlgoContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeAlgoAlgoContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeAlgoAlgoContainer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeAlgoAlgoContainer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAlgoAlgoContainer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAlgoAlgoContainer_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -510,7 +518,9 @@ pub use crate::ffi_types::ShapeAlgo_ToolContainer as ToolContainer;
 
 unsafe impl crate::CppDeletable for ToolContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeAlgo_ToolContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeAlgo_ToolContainer_destructor(ptr);
+        }
     }
 }
 
@@ -690,13 +700,19 @@ pub use crate::ffi_types::HandleShapeAlgoToolContainer;
 
 unsafe impl crate::CppDeletable for HandleShapeAlgoToolContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeAlgoToolContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeAlgoToolContainer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeAlgoToolContainer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAlgoToolContainer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAlgoToolContainer_clone(
+                ptr,
+            ))
+        }
     }
 }
 

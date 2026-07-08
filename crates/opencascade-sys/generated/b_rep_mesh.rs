@@ -91,7 +91,9 @@ pub use crate::ffi_types::BRepMesh_BaseMeshAlgo as BaseMeshAlgo;
 
 unsafe impl crate::CppDeletable for BaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_BaseMeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_BaseMeshAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -260,13 +262,17 @@ pub use crate::ffi_types::HandleBRepMeshBaseMeshAlgo;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshBaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshBaseMeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshBaseMeshAlgo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshBaseMeshAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshBaseMeshAlgo_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshBaseMeshAlgo_clone(ptr))
+        }
     }
 }
 
@@ -380,7 +386,9 @@ pub use crate::ffi_types::BRepMesh_BoundaryParamsRangeSplitter as BoundaryParams
 
 unsafe impl crate::CppDeletable for BoundaryParamsRangeSplitter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_BoundaryParamsRangeSplitter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_BoundaryParamsRangeSplitter_destructor(ptr);
+        }
     }
 }
 
@@ -608,7 +616,9 @@ pub use crate::ffi_types::BRepMesh_Circle as Circle;
 
 unsafe impl crate::CppDeletable for Circle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_Circle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_Circle_destructor(ptr);
+        }
     }
 }
 
@@ -684,7 +694,9 @@ pub use crate::ffi_types::BRepMesh_CircleTool as CircleTool;
 
 unsafe impl crate::CppDeletable for CircleTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_CircleTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_CircleTool_destructor(ptr);
+        }
     }
 }
 
@@ -892,7 +904,9 @@ pub use crate::ffi_types::BRepMesh_Classifier as Classifier;
 
 unsafe impl crate::CppDeletable for Classifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_Classifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_Classifier_destructor(ptr);
+        }
     }
 }
 
@@ -1078,13 +1092,17 @@ pub use crate::ffi_types::HandleBRepMeshClassifier;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshClassifier_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshClassifier {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshClassifier_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshClassifier_clone(ptr))
+        }
     }
 }
 
@@ -1137,7 +1155,9 @@ pub use crate::ffi_types::BRepMesh_ConeRangeSplitter as ConeRangeSplitter;
 
 unsafe impl crate::CppDeletable for ConeRangeSplitter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_ConeRangeSplitter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_ConeRangeSplitter_destructor(ptr);
+        }
     }
 }
 
@@ -1352,7 +1372,9 @@ pub use crate::ffi_types::BRepMesh_ConstrainedBaseMeshAlgo as ConstrainedBaseMes
 
 unsafe impl crate::CppDeletable for ConstrainedBaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_ConstrainedBaseMeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_ConstrainedBaseMeshAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -1536,15 +1558,19 @@ pub use crate::ffi_types::HandleBRepMeshConstrainedBaseMeshAlgo;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshConstrainedBaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshConstrainedBaseMeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshConstrainedBaseMeshAlgo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshConstrainedBaseMeshAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshConstrainedBaseMeshAlgo_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKMesh::HandleBRepMeshConstrainedBaseMeshAlgo_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1651,7 +1677,9 @@ pub use crate::ffi_types::BRepMesh_Context as Context;
 
 unsafe impl crate::CppDeletable for Context {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_Context_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_Context_destructor(ptr);
+        }
     }
 }
 
@@ -2083,13 +2111,15 @@ pub use crate::ffi_types::HandleBRepMeshContext;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshContext_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshContext_clone(ptr)) }
     }
 }
 
@@ -2163,7 +2193,9 @@ pub use crate::ffi_types::BRepMesh_CurveTessellator as CurveTessellator;
 
 unsafe impl crate::CppDeletable for CurveTessellator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_CurveTessellator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_CurveTessellator_destructor(ptr);
+        }
     }
 }
 
@@ -2411,13 +2443,17 @@ pub use crate::ffi_types::HandleBRepMeshCurveTessellator;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshCurveTessellator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshCurveTessellator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshCurveTessellator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshCurveTessellator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshCurveTessellator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshCurveTessellator_clone(ptr))
+        }
     }
 }
 
@@ -2481,7 +2517,9 @@ pub use crate::ffi_types::BRepMesh_CustomBaseMeshAlgo as CustomBaseMeshAlgo;
 
 unsafe impl crate::CppDeletable for CustomBaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_CustomBaseMeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_CustomBaseMeshAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -2691,13 +2729,19 @@ pub use crate::ffi_types::HandleBRepMeshCustomBaseMeshAlgo;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshCustomBaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshCustomBaseMeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshCustomBaseMeshAlgo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshCustomBaseMeshAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshCustomBaseMeshAlgo_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshCustomBaseMeshAlgo_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2793,7 +2837,9 @@ pub use crate::ffi_types::BRepMesh_CylinderRangeSplitter as CylinderRangeSplitte
 
 unsafe impl crate::CppDeletable for CylinderRangeSplitter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_CylinderRangeSplitter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_CylinderRangeSplitter_destructor(ptr);
+        }
     }
 }
 
@@ -2989,7 +3035,9 @@ pub use crate::ffi_types::BRepMesh_DataStructureOfDelaun as DataStructureOfDelau
 
 unsafe impl crate::CppDeletable for DataStructureOfDelaun {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_DataStructureOfDelaun_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_DataStructureOfDelaun_destructor(ptr);
+        }
     }
 }
 
@@ -3522,15 +3570,19 @@ pub use crate::ffi_types::HandleBRepMeshDataStructureOfDelaun;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshDataStructureOfDelaun {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshDataStructureOfDelaun_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshDataStructureOfDelaun_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshDataStructureOfDelaun {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDataStructureOfDelaun_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKMesh::HandleBRepMeshDataStructureOfDelaun_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3587,7 +3639,9 @@ pub use crate::ffi_types::BRepMesh_DefaultRangeSplitter as DefaultRangeSplitter;
 
 unsafe impl crate::CppDeletable for DefaultRangeSplitter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_DefaultRangeSplitter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_DefaultRangeSplitter_destructor(ptr);
+        }
     }
 }
 
@@ -3781,7 +3835,9 @@ pub use crate::ffi_types::BRepMesh_Deflection as Deflection;
 
 unsafe impl crate::CppDeletable for Deflection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_Deflection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_Deflection_destructor(ptr);
+        }
     }
 }
 
@@ -4009,13 +4065,17 @@ pub use crate::ffi_types::HandleBRepMeshDeflection;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshDeflection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshDeflection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshDeflection_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshDeflection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDeflection_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDeflection_clone(ptr))
+        }
     }
 }
 
@@ -4068,7 +4128,9 @@ pub use crate::ffi_types::BRepMesh_DelabellaBaseMeshAlgo as DelabellaBaseMeshAlg
 
 unsafe impl crate::CppDeletable for DelabellaBaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_DelabellaBaseMeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_DelabellaBaseMeshAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -4309,15 +4371,19 @@ pub use crate::ffi_types::HandleBRepMeshDelabellaBaseMeshAlgo;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshDelabellaBaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaBaseMeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaBaseMeshAlgo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshDelabellaBaseMeshAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaBaseMeshAlgo_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaBaseMeshAlgo_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4410,7 +4476,9 @@ pub use crate::ffi_types::BRepMesh_DelabellaMeshAlgoFactory as DelabellaMeshAlgo
 
 unsafe impl crate::CppDeletable for DelabellaMeshAlgoFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_DelabellaMeshAlgoFactory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_DelabellaMeshAlgoFactory_destructor(ptr);
+        }
     }
 }
 
@@ -4594,15 +4662,19 @@ pub use crate::ffi_types::HandleBRepMeshDelabellaMeshAlgoFactory;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshDelabellaMeshAlgoFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaMeshAlgoFactory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaMeshAlgoFactory_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshDelabellaMeshAlgoFactory {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaMeshAlgoFactory_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKMesh::HandleBRepMeshDelabellaMeshAlgoFactory_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4667,7 +4739,9 @@ pub use crate::ffi_types::BRepMesh_Delaun as Delaun;
 
 unsafe impl crate::CppDeletable for Delaun {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_Delaun_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_Delaun_destructor(ptr);
+        }
     }
 }
 
@@ -4938,7 +5012,9 @@ pub use crate::ffi_types::BRepMesh_DelaunayBaseMeshAlgo as DelaunayBaseMeshAlgo;
 
 unsafe impl crate::CppDeletable for DelaunayBaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_DelaunayBaseMeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_DelaunayBaseMeshAlgo_destructor(ptr);
+        }
     }
 }
 
@@ -5165,13 +5241,19 @@ pub use crate::ffi_types::HandleBRepMeshDelaunayBaseMeshAlgo;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshDelaunayBaseMeshAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshDelaunayBaseMeshAlgo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshDelaunayBaseMeshAlgo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshDelaunayBaseMeshAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDelaunayBaseMeshAlgo_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDelaunayBaseMeshAlgo_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -5382,7 +5464,9 @@ pub use crate::ffi_types::BRepMesh_DiscretRoot as DiscretRoot;
 
 unsafe impl crate::CppDeletable for DiscretRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_DiscretRoot_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_DiscretRoot_destructor(ptr);
+        }
     }
 }
 
@@ -5544,13 +5628,17 @@ pub use crate::ffi_types::HandleBRepMeshDiscretRoot;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshDiscretRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshDiscretRoot_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshDiscretRoot_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshDiscretRoot {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDiscretRoot_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshDiscretRoot_clone(ptr))
+        }
     }
 }
 
@@ -5618,7 +5706,9 @@ pub use crate::ffi_types::BRepMesh_Edge as Edge;
 
 unsafe impl crate::CppDeletable for Edge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_Edge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_Edge_destructor(ptr);
+        }
     }
 }
 
@@ -5743,7 +5833,9 @@ pub use crate::ffi_types::BRepMesh_EdgeDiscret as EdgeDiscret;
 
 unsafe impl crate::CppDeletable for EdgeDiscret {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_EdgeDiscret_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_EdgeDiscret_destructor(ptr);
+        }
     }
 }
 
@@ -5997,13 +6089,17 @@ pub use crate::ffi_types::HandleBRepMeshEdgeDiscret;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshEdgeDiscret {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshEdgeDiscret_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshEdgeDiscret_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshEdgeDiscret {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshEdgeDiscret_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshEdgeDiscret_clone(ptr))
+        }
     }
 }
 
@@ -6069,7 +6165,9 @@ pub use crate::ffi_types::BRepMesh_EdgeTessellationExtractor as EdgeTessellation
 
 unsafe impl crate::CppDeletable for EdgeTessellationExtractor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_EdgeTessellationExtractor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_EdgeTessellationExtractor_destructor(ptr);
+        }
     }
 }
 
@@ -6268,15 +6366,19 @@ pub use crate::ffi_types::HandleBRepMeshEdgeTessellationExtractor;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshEdgeTessellationExtractor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshEdgeTessellationExtractor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshEdgeTessellationExtractor_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshEdgeTessellationExtractor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKMesh::HandleBRepMeshEdgeTessellationExtractor_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKMesh::HandleBRepMeshEdgeTessellationExtractor_clone(ptr),
+            )
+        }
     }
 }
 
@@ -6341,7 +6443,9 @@ pub use crate::ffi_types::BRepMesh_ExtrusionRangeSplitter as ExtrusionRangeSplit
 
 unsafe impl crate::CppDeletable for ExtrusionRangeSplitter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_ExtrusionRangeSplitter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_ExtrusionRangeSplitter_destructor(ptr);
+        }
     }
 }
 
@@ -6582,7 +6686,9 @@ pub use crate::ffi_types::BRepMesh_FaceChecker as FaceChecker;
 
 unsafe impl crate::CppDeletable for FaceChecker {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_FaceChecker_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_FaceChecker_destructor(ptr);
+        }
     }
 }
 
@@ -6747,13 +6853,17 @@ pub use crate::ffi_types::HandleBRepMeshFaceChecker;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshFaceChecker {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshFaceChecker_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshFaceChecker_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshFaceChecker {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshFaceChecker_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshFaceChecker_clone(ptr))
+        }
     }
 }
 
@@ -6809,7 +6919,9 @@ pub use crate::ffi_types::BRepMesh_FaceChecker_Segment as FaceChecker_Segment;
 
 unsafe impl crate::CppDeletable for FaceChecker_Segment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_FaceChecker_Segment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_FaceChecker_Segment_destructor(ptr);
+        }
     }
 }
 
@@ -6843,7 +6955,9 @@ pub use crate::ffi_types::BRepMesh_FaceDiscret as FaceDiscret;
 
 unsafe impl crate::CppDeletable for FaceDiscret {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_FaceDiscret_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_FaceDiscret_destructor(ptr);
+        }
     }
 }
 
@@ -7036,13 +7150,17 @@ pub use crate::ffi_types::HandleBRepMeshFaceDiscret;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshFaceDiscret {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshFaceDiscret_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshFaceDiscret_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshFaceDiscret {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshFaceDiscret_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshFaceDiscret_clone(ptr))
+        }
     }
 }
 
@@ -7111,7 +7229,9 @@ pub use crate::ffi_types::BRepMesh_GeomTool as GeomTool;
 
 unsafe impl crate::CppDeletable for GeomTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_GeomTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_GeomTool_destructor(ptr);
+        }
     }
 }
 
@@ -7400,7 +7520,9 @@ pub use crate::ffi_types::BRepMesh_IncrementalMesh as IncrementalMesh;
 
 unsafe impl crate::CppDeletable for IncrementalMesh {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_IncrementalMesh_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_IncrementalMesh_destructor(ptr);
+        }
     }
 }
 
@@ -7814,13 +7936,17 @@ pub use crate::ffi_types::HandleBRepMeshIncrementalMesh;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshIncrementalMesh {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshIncrementalMesh_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshIncrementalMesh_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshIncrementalMesh {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshIncrementalMesh_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshIncrementalMesh_clone(ptr))
+        }
     }
 }
 
@@ -7884,7 +8010,9 @@ pub use crate::ffi_types::BRepMesh_MeshAlgoFactory as MeshAlgoFactory;
 
 unsafe impl crate::CppDeletable for MeshAlgoFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_MeshAlgoFactory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_MeshAlgoFactory_destructor(ptr);
+        }
     }
 }
 
@@ -8076,13 +8204,17 @@ pub use crate::ffi_types::HandleBRepMeshMeshAlgoFactory;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshMeshAlgoFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshMeshAlgoFactory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshMeshAlgoFactory_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshMeshAlgoFactory {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshMeshAlgoFactory_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshMeshAlgoFactory_clone(ptr))
+        }
     }
 }
 
@@ -8145,7 +8277,9 @@ pub use crate::ffi_types::BRepMesh_MeshTool as MeshTool;
 
 unsafe impl crate::CppDeletable for MeshTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_MeshTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_MeshTool_destructor(ptr);
+        }
     }
 }
 
@@ -8476,13 +8610,15 @@ pub use crate::ffi_types::HandleBRepMeshMeshTool;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshMeshTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshMeshTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshMeshTool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshMeshTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshMeshTool_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshMeshTool_clone(ptr)) }
     }
 }
 
@@ -8530,7 +8666,9 @@ pub use crate::ffi_types::BRepMesh_MeshTool_NodeClassifier as MeshTool_NodeClass
 
 unsafe impl crate::CppDeletable for MeshTool_NodeClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_MeshTool_NodeClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_MeshTool_NodeClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -8571,7 +8709,9 @@ pub use crate::ffi_types::BRepMesh_ModelBuilder as ModelBuilder;
 
 unsafe impl crate::CppDeletable for ModelBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_ModelBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_ModelBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -8910,13 +9050,17 @@ pub use crate::ffi_types::HandleBRepMeshModelBuilder;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshModelBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshModelBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshModelBuilder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshModelBuilder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelBuilder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelBuilder_clone(ptr))
+        }
     }
 }
 
@@ -8999,7 +9143,9 @@ pub use crate::ffi_types::BRepMesh_ModelHealer as ModelHealer;
 
 unsafe impl crate::CppDeletable for ModelHealer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_ModelHealer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_ModelHealer_destructor(ptr);
+        }
     }
 }
 
@@ -9188,13 +9334,17 @@ pub use crate::ffi_types::HandleBRepMeshModelHealer;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshModelHealer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshModelHealer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshModelHealer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshModelHealer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelHealer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelHealer_clone(ptr))
+        }
     }
 }
 
@@ -9260,7 +9410,9 @@ pub use crate::ffi_types::BRepMesh_ModelPostProcessor as ModelPostProcessor;
 
 unsafe impl crate::CppDeletable for ModelPostProcessor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_ModelPostProcessor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_ModelPostProcessor_destructor(ptr);
+        }
     }
 }
 
@@ -9455,13 +9607,19 @@ pub use crate::ffi_types::HandleBRepMeshModelPostProcessor;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshModelPostProcessor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshModelPostProcessor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshModelPostProcessor_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshModelPostProcessor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelPostProcessor_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelPostProcessor_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -9524,7 +9682,9 @@ pub use crate::ffi_types::BRepMesh_ModelPreProcessor as ModelPreProcessor;
 
 unsafe impl crate::CppDeletable for ModelPreProcessor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_ModelPreProcessor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_ModelPreProcessor_destructor(ptr);
+        }
     }
 }
 
@@ -9719,13 +9879,19 @@ pub use crate::ffi_types::HandleBRepMeshModelPreProcessor;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshModelPreProcessor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshModelPreProcessor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshModelPreProcessor_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshModelPreProcessor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelPreProcessor_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshModelPreProcessor_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -9787,7 +9953,9 @@ pub use crate::ffi_types::BRepMesh_NURBSRangeSplitter as NURBSRangeSplitter;
 
 unsafe impl crate::CppDeletable for NURBSRangeSplitter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_NURBSRangeSplitter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_NURBSRangeSplitter_destructor(ptr);
+        }
     }
 }
 
@@ -10016,7 +10184,9 @@ pub use crate::ffi_types::BRepMesh_OrientedEdge as OrientedEdge;
 
 unsafe impl crate::CppDeletable for OrientedEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_OrientedEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_OrientedEdge_destructor(ptr);
+        }
     }
 }
 
@@ -10083,7 +10253,9 @@ pub use crate::ffi_types::BRepMesh_PairOfIndex as PairOfIndex;
 
 unsafe impl crate::CppDeletable for PairOfIndex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_PairOfIndex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_PairOfIndex_destructor(ptr);
+        }
     }
 }
 
@@ -10201,7 +10373,9 @@ pub use crate::ffi_types::BRepMesh_SelectorOfDataStructureOfDelaun as SelectorOf
 
 unsafe impl crate::CppDeletable for SelectorOfDataStructureOfDelaun {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_SelectorOfDataStructureOfDelaun_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_SelectorOfDataStructureOfDelaun_destructor(ptr);
+        }
     }
 }
 
@@ -10510,15 +10684,19 @@ pub use crate::ffi_types::HandleBRepMeshSelectorOfDataStructureOfDelaun;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshSelectorOfDataStructureOfDelaun {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshSelectorOfDataStructureOfDelaun_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshSelectorOfDataStructureOfDelaun_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshSelectorOfDataStructureOfDelaun {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKMesh::HandleBRepMeshSelectorOfDataStructureOfDelaun_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKMesh::HandleBRepMeshSelectorOfDataStructureOfDelaun_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10575,7 +10753,9 @@ pub use crate::ffi_types::BRepMesh_ShapeTool as ShapeTool;
 
 unsafe impl crate::CppDeletable for ShapeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_ShapeTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_ShapeTool_destructor(ptr);
+        }
     }
 }
 
@@ -10935,13 +11115,15 @@ pub use crate::ffi_types::HandleBRepMeshShapeTool;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshShapeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshShapeTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshShapeTool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshShapeTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshShapeTool_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshShapeTool_clone(ptr)) }
     }
 }
 
@@ -10996,7 +11178,9 @@ pub use crate::ffi_types::BRepMesh_ShapeVisitor as ShapeVisitor;
 
 unsafe impl crate::CppDeletable for ShapeVisitor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_ShapeVisitor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_ShapeVisitor_destructor(ptr);
+        }
     }
 }
 
@@ -11186,13 +11370,17 @@ pub use crate::ffi_types::HandleBRepMeshShapeVisitor;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshShapeVisitor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshShapeVisitor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshShapeVisitor_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshShapeVisitor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshShapeVisitor_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshShapeVisitor_clone(ptr))
+        }
     }
 }
 
@@ -11254,7 +11442,9 @@ pub use crate::ffi_types::BRepMesh_SphereRangeSplitter as SphereRangeSplitter;
 
 unsafe impl crate::CppDeletable for SphereRangeSplitter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_SphereRangeSplitter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_SphereRangeSplitter_destructor(ptr);
+        }
     }
 }
 
@@ -11449,7 +11639,9 @@ pub use crate::ffi_types::BRepMesh_TorusRangeSplitter as TorusRangeSplitter;
 
 unsafe impl crate::CppDeletable for TorusRangeSplitter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_TorusRangeSplitter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_TorusRangeSplitter_destructor(ptr);
+        }
     }
 }
 
@@ -11681,7 +11873,9 @@ pub use crate::ffi_types::BRepMesh_Triangle as Triangle;
 
 unsafe impl crate::CppDeletable for Triangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_Triangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_Triangle_destructor(ptr);
+        }
     }
 }
 
@@ -11793,7 +11987,9 @@ pub use crate::ffi_types::BRepMesh_Triangulator as Triangulator;
 
 unsafe impl crate::CppDeletable for Triangulator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_Triangulator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_Triangulator_destructor(ptr);
+        }
     }
 }
 
@@ -11863,7 +12059,9 @@ pub use crate::ffi_types::BRepMesh_UVParamRangeSplitter as UVParamRangeSplitter;
 
 unsafe impl crate::CppDeletable for UVParamRangeSplitter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_UVParamRangeSplitter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_UVParamRangeSplitter_destructor(ptr);
+        }
     }
 }
 
@@ -12101,7 +12299,9 @@ pub use crate::ffi_types::BRepMesh_UndefinedRangeSplitter as UndefinedRangeSplit
 
 unsafe impl crate::CppDeletable for UndefinedRangeSplitter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_UndefinedRangeSplitter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_UndefinedRangeSplitter_destructor(ptr);
+        }
     }
 }
 
@@ -12341,7 +12541,9 @@ pub use crate::ffi_types::BRepMesh_Vertex as Vertex;
 
 unsafe impl crate::CppDeletable for Vertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_Vertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_Vertex_destructor(ptr);
+        }
     }
 }
 
@@ -12490,7 +12692,9 @@ pub use crate::ffi_types::BRepMesh_VertexTool as VertexTool;
 
 unsafe impl crate::CppDeletable for VertexTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::BRepMesh_VertexTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::BRepMesh_VertexTool_destructor(ptr);
+        }
     }
 }
 
@@ -12836,13 +13040,17 @@ pub use crate::ffi_types::HandleBRepMeshVertexTool;
 
 unsafe impl crate::CppDeletable for HandleBRepMeshVertexTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleBRepMeshVertexTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleBRepMeshVertexTool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepMeshVertexTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshVertexTool_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleBRepMeshVertexTool_clone(ptr))
+        }
     }
 }
 

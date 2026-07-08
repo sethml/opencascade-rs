@@ -337,7 +337,9 @@ pub use crate::ffi_types::BRepBuilderAPI_BndBoxTreeSelector as BndBoxTreeSelecto
 
 unsafe impl crate::CppDeletable for BndBoxTreeSelector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_BndBoxTreeSelector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_BndBoxTreeSelector_destructor(ptr);
+        }
     }
 }
 
@@ -423,7 +425,9 @@ pub use crate::ffi_types::BRepBuilderAPI_Collect as Collect;
 
 unsafe impl crate::CppDeletable for Collect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_destructor(ptr);
+        }
     }
 }
 
@@ -508,7 +512,9 @@ pub use crate::ffi_types::BRepBuilderAPI_Command as Command;
 
 unsafe impl crate::CppDeletable for Command {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Command_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Command_destructor(ptr);
+        }
     }
 }
 
@@ -543,7 +549,9 @@ pub use crate::ffi_types::BRepBuilderAPI_Copy as Copy;
 
 unsafe impl crate::CppDeletable for Copy {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_destructor(ptr);
+        }
     }
 }
 
@@ -773,7 +781,9 @@ pub use crate::ffi_types::BRepBuilderAPI_FastSewing as FastSewing;
 
 unsafe impl crate::CppDeletable for FastSewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_destructor(ptr);
+        }
     }
 }
 
@@ -1012,13 +1022,19 @@ pub use crate::ffi_types::HandleBRepBuilderAPIFastSewing;
 
 unsafe impl crate::CppDeletable for HandleBRepBuilderAPIFastSewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepBuilderAPIFastSewing {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1075,7 +1091,9 @@ pub use crate::ffi_types::BRepBuilderAPI_FindPlane as FindPlane;
 
 unsafe impl crate::CppDeletable for FindPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FindPlane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FindPlane_destructor(ptr);
+        }
     }
 }
 
@@ -1189,7 +1207,9 @@ pub use crate::ffi_types::BRepBuilderAPI_GTransform as GTransform;
 
 unsafe impl crate::CppDeletable for GTransform {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_destructor(ptr);
+        }
     }
 }
 
@@ -1457,7 +1477,9 @@ pub use crate::ffi_types::BRepBuilderAPI_MakeEdge as MakeEdge;
 
 unsafe impl crate::CppDeletable for MakeEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_destructor(ptr);
+        }
     }
 }
 
@@ -2296,7 +2318,9 @@ pub use crate::ffi_types::BRepBuilderAPI_MakeEdge2d as MakeEdge2d;
 
 unsafe impl crate::CppDeletable for MakeEdge2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_destructor(ptr);
+        }
     }
 }
 
@@ -2881,7 +2905,9 @@ pub use crate::ffi_types::BRepBuilderAPI_MakeFace as MakeFace;
 
 unsafe impl crate::CppDeletable for MakeFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_destructor(ptr);
+        }
     }
 }
 
@@ -3534,7 +3560,9 @@ pub use crate::ffi_types::BRepBuilderAPI_MakePolygon as MakePolygon;
 
 unsafe impl crate::CppDeletable for MakePolygon {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_destructor(ptr);
+        }
     }
 }
 
@@ -3949,7 +3977,9 @@ pub use crate::ffi_types::BRepBuilderAPI_MakeShape as MakeShape;
 
 unsafe impl crate::CppDeletable for MakeShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_destructor(ptr);
+        }
     }
 }
 
@@ -4079,7 +4109,9 @@ pub use crate::ffi_types::BRepBuilderAPI_MakeShapeOnMesh as MakeShapeOnMesh;
 
 unsafe impl crate::CppDeletable for MakeShapeOnMesh {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_destructor(ptr);
+        }
     }
 }
 
@@ -4206,7 +4238,9 @@ pub use crate::ffi_types::BRepBuilderAPI_MakeShell as MakeShell;
 
 unsafe impl crate::CppDeletable for MakeShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_destructor(ptr);
+        }
     }
 }
 
@@ -4444,7 +4478,9 @@ pub use crate::ffi_types::BRepBuilderAPI_MakeSolid as MakeSolid;
 
 unsafe impl crate::CppDeletable for MakeSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_destructor(ptr);
+        }
     }
 }
 
@@ -4692,7 +4728,9 @@ pub use crate::ffi_types::BRepBuilderAPI_MakeVertex as MakeVertex;
 
 unsafe impl crate::CppDeletable for MakeVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_destructor(ptr);
+        }
     }
 }
 
@@ -4846,7 +4884,9 @@ pub use crate::ffi_types::BRepBuilderAPI_MakeWire as MakeWire;
 
 unsafe impl crate::CppDeletable for MakeWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_destructor(ptr);
+        }
     }
 }
 
@@ -5179,7 +5219,9 @@ pub use crate::ffi_types::BRepBuilderAPI_ModifyShape as ModifyShape;
 
 unsafe impl crate::CppDeletable for ModifyShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_destructor(ptr);
+        }
     }
 }
 
@@ -5331,7 +5373,9 @@ pub use crate::ffi_types::BRepBuilderAPI_NurbsConvert as NurbsConvert;
 
 unsafe impl crate::CppDeletable for NurbsConvert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_destructor(ptr);
+        }
     }
 }
 
@@ -5570,7 +5614,9 @@ pub use crate::ffi_types::BRepBuilderAPI_Sewing as Sewing;
 
 unsafe impl crate::CppDeletable for Sewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_destructor(ptr);
+        }
     }
 }
 
@@ -6299,13 +6345,17 @@ pub use crate::ffi_types::HandleBRepBuilderAPISewing;
 
 unsafe impl crate::CppDeletable for HandleBRepBuilderAPISewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepBuilderAPISewing {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_clone(ptr))
+        }
     }
 }
 
@@ -6369,7 +6419,9 @@ pub use crate::ffi_types::BRepBuilderAPI_Transform as Transform;
 
 unsafe impl crate::CppDeletable for Transform {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_destructor(ptr);
+        }
     }
 }
 

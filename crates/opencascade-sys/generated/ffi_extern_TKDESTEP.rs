@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== APIHeaderSection_EditHeader ========================
     pub fn APIHeaderSection_EditHeader_destructor(self_: *mut APIHeaderSection_EditHeader);
     /// **Source:** `APIHeaderSection_EditHeader.hxx`:37 - `APIHeaderSection_EditHeader::APIHeaderSection_EditHeader()`

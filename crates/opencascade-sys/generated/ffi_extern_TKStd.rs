@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== ShapePersistent_BRep ========================
     pub fn ShapePersistent_BRep_destructor(self_: *mut ShapePersistent_BRep);
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep::ShapePersistent_BRep()`

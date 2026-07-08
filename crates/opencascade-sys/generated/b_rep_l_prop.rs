@@ -47,7 +47,9 @@ pub use crate::ffi_types::BRepLProp_CLProps as CLProps;
 
 unsafe impl crate::CppDeletable for CLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepLProp_CLProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepLProp_CLProps_destructor(ptr);
+        }
     }
 }
 
@@ -221,7 +223,9 @@ pub use crate::ffi_types::BRepLProp_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepLProp_CurveTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepLProp_CurveTool_destructor(ptr);
+        }
     }
 }
 
@@ -326,7 +330,9 @@ pub use crate::ffi_types::BRepLProp_SLProps as SLProps;
 
 unsafe impl crate::CppDeletable for SLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepLProp_SLProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepLProp_SLProps_destructor(ptr);
+        }
     }
 }
 
@@ -594,7 +600,9 @@ pub use crate::ffi_types::BRepLProp_SurfaceTool as SurfaceTool;
 
 unsafe impl crate::CppDeletable for SurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::BRepLProp_SurfaceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::BRepLProp_SurfaceTool_destructor(ptr);
+        }
     }
 }
 

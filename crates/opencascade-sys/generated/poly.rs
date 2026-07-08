@@ -252,13 +252,15 @@ pub use crate::ffi_types::Poly_ArrayOfNodes as ArrayOfNodes;
 
 unsafe impl crate::CppDeletable for ArrayOfNodes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_ArrayOfNodes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_ArrayOfNodes_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for ArrayOfNodes {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Poly_ArrayOfNodes_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Poly_ArrayOfNodes_clone(ptr)) }
     }
 }
 
@@ -406,13 +408,15 @@ pub use crate::ffi_types::Poly_ArrayOfUVNodes as ArrayOfUVNodes;
 
 unsafe impl crate::CppDeletable for ArrayOfUVNodes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_ArrayOfUVNodes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_ArrayOfUVNodes_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for ArrayOfUVNodes {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Poly_ArrayOfUVNodes_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Poly_ArrayOfUVNodes_clone(ptr)) }
     }
 }
 
@@ -568,7 +572,9 @@ pub use crate::ffi_types::Poly_CoherentLink as CoherentLink;
 
 unsafe impl crate::CppDeletable for CoherentLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_CoherentLink_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_CoherentLink_destructor(ptr);
+        }
     }
 }
 
@@ -701,7 +707,9 @@ pub use crate::ffi_types::Poly_CoherentNode as CoherentNode;
 
 unsafe impl crate::CppDeletable for CoherentNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_CoherentNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_CoherentNode_destructor(ptr);
+        }
     }
 }
 
@@ -1365,7 +1373,9 @@ pub use crate::ffi_types::Poly_CoherentTriPtr_Iterator as CoherentTriPtr_Iterato
 
 unsafe impl crate::CppDeletable for CoherentTriPtr_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_CoherentTriPtr_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_CoherentTriPtr_Iterator_destructor(ptr);
+        }
     }
 }
 
@@ -1468,7 +1478,9 @@ pub use crate::ffi_types::Poly_CoherentTriangle as CoherentTriangle;
 
 unsafe impl crate::CppDeletable for CoherentTriangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_CoherentTriangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_CoherentTriangle_destructor(ptr);
+        }
     }
 }
 
@@ -1737,7 +1749,9 @@ pub use crate::ffi_types::Poly_CoherentTriangulation as CoherentTriangulation;
 
 unsafe impl crate::CppDeletable for CoherentTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_CoherentTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_CoherentTriangulation_destructor(ptr);
+        }
     }
 }
 
@@ -2249,13 +2263,19 @@ pub use crate::ffi_types::HandlePolyCoherentTriangulation;
 
 unsafe impl crate::CppDeletable for HandlePolyCoherentTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandlePolyCoherentTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyCoherentTriangulation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePolyCoherentTriangulation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandlePolyCoherentTriangulation_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandlePolyCoherentTriangulation_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2313,7 +2333,9 @@ pub use crate::ffi_types::Poly_CoherentTriangulation_IteratorOfTriangle as Coher
 
 unsafe impl crate::CppDeletable for CoherentTriangulation_IteratorOfTriangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_CoherentTriangulation_IteratorOfTriangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_CoherentTriangulation_IteratorOfTriangle_destructor(ptr);
+        }
     }
 }
 
@@ -2346,7 +2368,9 @@ pub use crate::ffi_types::Poly_CoherentTriangulation_IteratorOfNode as CoherentT
 
 unsafe impl crate::CppDeletable for CoherentTriangulation_IteratorOfNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_CoherentTriangulation_IteratorOfNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_CoherentTriangulation_IteratorOfNode_destructor(ptr);
+        }
     }
 }
 
@@ -2379,7 +2403,9 @@ pub use crate::ffi_types::Poly_CoherentTriangulation_IteratorOfLink as CoherentT
 
 unsafe impl crate::CppDeletable for CoherentTriangulation_IteratorOfLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_CoherentTriangulation_IteratorOfLink_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_CoherentTriangulation_IteratorOfLink_destructor(ptr);
+        }
     }
 }
 
@@ -2411,7 +2437,9 @@ pub use crate::ffi_types::Poly_CoherentTriangulation_TwoIntegers as CoherentTria
 
 unsafe impl crate::CppDeletable for CoherentTriangulation_TwoIntegers {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_CoherentTriangulation_TwoIntegers_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_CoherentTriangulation_TwoIntegers_destructor(ptr);
+        }
     }
 }
 
@@ -2457,7 +2485,9 @@ pub use crate::ffi_types::Poly_Connect as Connect;
 
 unsafe impl crate::CppDeletable for Connect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_Connect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_Connect_destructor(ptr);
+        }
     }
 }
 
@@ -2606,7 +2636,9 @@ pub use crate::ffi_types::Poly_HArray1OfTriangle as HArray1OfTriangle;
 
 unsafe impl crate::CppDeletable for HArray1OfTriangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_HArray1OfTriangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_HArray1OfTriangle_destructor(ptr);
+        }
     }
 }
 
@@ -2824,13 +2856,17 @@ pub use crate::ffi_types::HandlePolyHArray1OfTriangle;
 
 unsafe impl crate::CppDeletable for HandlePolyHArray1OfTriangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandlePolyHArray1OfTriangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyHArray1OfTriangle_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePolyHArray1OfTriangle {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandlePolyHArray1OfTriangle_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandlePolyHArray1OfTriangle_clone(ptr))
+        }
     }
 }
 
@@ -2886,7 +2922,9 @@ pub use crate::ffi_types::Poly_MakeLoops as MakeLoops;
 
 unsafe impl crate::CppDeletable for MakeLoops {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MakeLoops_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MakeLoops_destructor(ptr);
+        }
     }
 }
 
@@ -3011,7 +3049,9 @@ pub use crate::ffi_types::Poly_MakeLoops_Link as MakeLoops_Link;
 
 unsafe impl crate::CppDeletable for MakeLoops_Link {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MakeLoops_Link_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MakeLoops_Link_destructor(ptr);
+        }
     }
 }
 
@@ -3021,7 +3061,9 @@ pub use crate::ffi_types::Poly_MakeLoops_Helper as MakeLoops_Helper;
 
 unsafe impl crate::CppDeletable for MakeLoops_Helper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MakeLoops_Helper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MakeLoops_Helper_destructor(ptr);
+        }
     }
 }
 
@@ -3060,7 +3102,9 @@ pub use crate::ffi_types::Poly_MakeLoops_HeapOfInteger as MakeLoops_HeapOfIntege
 
 unsafe impl crate::CppDeletable for MakeLoops_HeapOfInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MakeLoops_HeapOfInteger_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MakeLoops_HeapOfInteger_destructor(ptr);
+        }
     }
 }
 
@@ -3133,7 +3177,9 @@ pub use crate::ffi_types::Poly_MakeLoops3D as MakeLoops3D;
 
 unsafe impl crate::CppDeletable for MakeLoops3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MakeLoops3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MakeLoops3D_destructor(ptr);
+        }
     }
 }
 
@@ -3278,7 +3324,9 @@ pub use crate::ffi_types::Poly_MakeLoops3D_Helper as MakeLoops3D_Helper;
 
 unsafe impl crate::CppDeletable for MakeLoops3D_Helper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MakeLoops3D_Helper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MakeLoops3D_Helper_destructor(ptr);
+        }
     }
 }
 
@@ -3370,7 +3418,9 @@ pub use crate::ffi_types::Poly_MakeLoops2D as MakeLoops2D;
 
 unsafe impl crate::CppDeletable for MakeLoops2D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MakeLoops2D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MakeLoops2D_destructor(ptr);
+        }
     }
 }
 
@@ -3516,7 +3566,9 @@ pub use crate::ffi_types::Poly_MakeLoops2D_Helper as MakeLoops2D_Helper;
 
 unsafe impl crate::CppDeletable for MakeLoops2D_Helper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MakeLoops2D_Helper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MakeLoops2D_Helper_destructor(ptr);
+        }
     }
 }
 
@@ -3611,7 +3663,9 @@ pub use crate::ffi_types::Poly_MergeNodesTool as MergeNodesTool;
 
 unsafe impl crate::CppDeletable for MergeNodesTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_MergeNodesTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_MergeNodesTool_destructor(ptr);
+        }
     }
 }
 
@@ -4105,13 +4159,17 @@ pub use crate::ffi_types::HandlePolyMergeNodesTool;
 
 unsafe impl crate::CppDeletable for HandlePolyMergeNodesTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandlePolyMergeNodesTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyMergeNodesTool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePolyMergeNodesTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandlePolyMergeNodesTool_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandlePolyMergeNodesTool_clone(ptr))
+        }
     }
 }
 
@@ -4168,7 +4226,9 @@ pub use crate::ffi_types::Poly_Polygon2D as Polygon2D;
 
 unsafe impl crate::CppDeletable for Polygon2D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_Polygon2D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_Polygon2D_destructor(ptr);
+        }
     }
 }
 
@@ -4386,13 +4446,15 @@ pub use crate::ffi_types::HandlePolyPolygon2D;
 
 unsafe impl crate::CppDeletable for HandlePolyPolygon2D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandlePolyPolygon2D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyPolygon2D_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePolyPolygon2D {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandlePolyPolygon2D_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandlePolyPolygon2D_clone(ptr)) }
     }
 }
 
@@ -4448,7 +4510,9 @@ pub use crate::ffi_types::Poly_Polygon3D as Polygon3D;
 
 unsafe impl crate::CppDeletable for Polygon3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_Polygon3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_Polygon3D_destructor(ptr);
+        }
     }
 }
 
@@ -4711,13 +4775,15 @@ pub use crate::ffi_types::HandlePolyPolygon3D;
 
 unsafe impl crate::CppDeletable for HandlePolyPolygon3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandlePolyPolygon3D_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyPolygon3D_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePolyPolygon3D {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandlePolyPolygon3D_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandlePolyPolygon3D_clone(ptr)) }
     }
 }
 
@@ -4780,7 +4846,9 @@ pub use crate::ffi_types::Poly_PolygonOnTriangulation as PolygonOnTriangulation;
 
 unsafe impl crate::CppDeletable for PolygonOnTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_PolygonOnTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_PolygonOnTriangulation_destructor(ptr);
+        }
     }
 }
 
@@ -5108,13 +5176,19 @@ pub use crate::ffi_types::HandlePolyPolygonOnTriangulation;
 
 unsafe impl crate::CppDeletable for HandlePolyPolygonOnTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandlePolyPolygonOnTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyPolygonOnTriangulation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePolyPolygonOnTriangulation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandlePolyPolygonOnTriangulation_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandlePolyPolygonOnTriangulation_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -5169,7 +5243,9 @@ pub use crate::ffi_types::Poly_Triangle as Triangle;
 
 unsafe impl crate::CppDeletable for Triangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_Triangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_Triangle_destructor(ptr);
+        }
     }
 }
 
@@ -5276,7 +5352,9 @@ pub use crate::ffi_types::Poly_Triangulation as Triangulation;
 
 unsafe impl crate::CppDeletable for Triangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_Triangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_Triangulation_destructor(ptr);
+        }
     }
 }
 
@@ -6099,13 +6177,15 @@ pub use crate::ffi_types::HandlePolyTriangulation;
 
 unsafe impl crate::CppDeletable for HandlePolyTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandlePolyTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyTriangulation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePolyTriangulation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandlePolyTriangulation_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandlePolyTriangulation_clone(ptr)) }
     }
 }
 
@@ -6189,7 +6269,9 @@ pub use crate::ffi_types::Poly_TriangulationParameters as TriangulationParameter
 
 unsafe impl crate::CppDeletable for TriangulationParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Poly_TriangulationParameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Poly_TriangulationParameters_destructor(ptr);
+        }
     }
 }
 
@@ -6433,13 +6515,19 @@ pub use crate::ffi_types::HandlePolyTriangulationParameters;
 
 unsafe impl crate::CppDeletable for HandlePolyTriangulationParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandlePolyTriangulationParameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandlePolyTriangulationParameters_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePolyTriangulationParameters {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandlePolyTriangulationParameters_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandlePolyTriangulationParameters_clone(
+                ptr,
+            ))
+        }
     }
 }
 

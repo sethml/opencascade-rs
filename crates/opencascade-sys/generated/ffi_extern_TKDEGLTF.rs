@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== DEGLTF_ConfigurationNode ========================
     pub fn DEGLTF_ConfigurationNode_destructor(self_: *mut DEGLTF_ConfigurationNode);
     /// **Source:** `DEGLTF_ConfigurationNode.hxx`:37 - `DEGLTF_ConfigurationNode::DEGLTF_ConfigurationNode()`

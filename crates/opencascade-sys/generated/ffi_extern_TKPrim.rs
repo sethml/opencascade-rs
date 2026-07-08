@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== BRepPreviewAPI_MakeBox ========================
     pub fn BRepPreviewAPI_MakeBox_destructor(self_: *mut BRepPreviewAPI_MakeBox);
     /// **Source:** `BRepPreviewAPI_MakeBox.hxx`:33 - `BRepPreviewAPI_MakeBox::BRepPreviewAPI_MakeBox()`

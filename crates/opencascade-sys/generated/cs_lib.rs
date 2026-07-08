@@ -186,7 +186,9 @@ pub use crate::ffi_types::CSLib_Class2d as Class2d;
 
 unsafe impl crate::CppDeletable for Class2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::CSLib_Class2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::CSLib_Class2d_destructor(ptr);
+        }
     }
 }
 
@@ -287,7 +289,9 @@ pub use crate::ffi_types::CSLib_NormalPolyDef as NormalPolyDef;
 
 unsafe impl crate::CppDeletable for NormalPolyDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::CSLib_NormalPolyDef_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::CSLib_NormalPolyDef_destructor(ptr);
+        }
     }
 }
 

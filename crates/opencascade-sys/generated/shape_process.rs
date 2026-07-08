@@ -73,7 +73,9 @@ pub use crate::ffi_types::ShapeProcess_Context as Context;
 
 unsafe impl crate::CppDeletable for Context {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeProcess_Context_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_destructor(ptr);
+        }
     }
 }
 
@@ -476,13 +478,17 @@ pub use crate::ffi_types::HandleShapeProcessContext;
 
 unsafe impl crate::CppDeletable for HandleShapeProcessContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeProcessContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeProcessContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeProcessContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessContext_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessContext_clone(ptr))
+        }
     }
 }
 
@@ -569,7 +575,9 @@ pub use crate::ffi_types::ShapeProcess_OperLibrary as OperLibrary;
 
 unsafe impl crate::CppDeletable for OperLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeProcess_OperLibrary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeProcess_OperLibrary_destructor(ptr);
+        }
     }
 }
 
@@ -631,7 +639,9 @@ pub use crate::ffi_types::ShapeProcess_Operator as Operator;
 
 unsafe impl crate::CppDeletable for Operator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeProcess_Operator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeProcess_Operator_destructor(ptr);
+        }
     }
 }
 
@@ -783,13 +793,19 @@ pub use crate::ffi_types::HandleShapeProcessOperator;
 
 unsafe impl crate::CppDeletable for HandleShapeProcessOperator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeProcessOperator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -859,7 +875,9 @@ pub use crate::ffi_types::ShapeProcess_ShapeContext as ShapeContext;
 
 unsafe impl crate::CppDeletable for ShapeContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_destructor(ptr);
+        }
     }
 }
 
@@ -1369,15 +1387,19 @@ pub use crate::ffi_types::HandleShapeProcessShapeContext;
 
 unsafe impl crate::CppDeletable for HandleShapeProcessShapeContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeProcessShapeContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeProcessShapeContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeProcessShapeContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessShapeContext_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeProcessShapeContext_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1444,7 +1466,9 @@ pub use crate::ffi_types::ShapeProcess_UOperator as UOperator;
 
 unsafe impl crate::CppDeletable for UOperator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_destructor(ptr);
+        }
     }
 }
 
@@ -1639,13 +1663,19 @@ pub use crate::ffi_types::HandleShapeProcessUOperator;
 
 unsafe impl crate::CppDeletable for HandleShapeProcessUOperator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeProcessUOperator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_clone(
+                ptr,
+            ))
+        }
     }
 }
 

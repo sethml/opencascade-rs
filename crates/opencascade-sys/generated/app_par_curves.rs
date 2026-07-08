@@ -54,7 +54,9 @@ pub use crate::ffi_types::AppParCurves_ConstraintCouple as ConstraintCouple;
 
 unsafe impl crate::CppDeletable for ConstraintCouple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_ConstraintCouple_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_ConstraintCouple_destructor(ptr);
+        }
     }
 }
 
@@ -137,7 +139,9 @@ pub use crate::ffi_types::AppParCurves_HArray1OfConstraintCouple as HArray1OfCon
 
 unsafe impl crate::CppDeletable for HArray1OfConstraintCouple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_destructor(ptr);
+        }
     }
 }
 
@@ -343,15 +347,23 @@ pub use crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple;
 
 unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfConstraintCouple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfConstraintCouple_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfConstraintCouple_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAppParCurvesHArray1OfConstraintCouple {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfConstraintCouple_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfConstraintCouple_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -406,7 +418,9 @@ pub use crate::ffi_types::AppParCurves_HArray1OfMultiBSpCurve as HArray1OfMultiB
 
 unsafe impl crate::CppDeletable for HArray1OfMultiBSpCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_destructor(ptr);
+        }
     }
 }
 
@@ -614,15 +628,19 @@ pub use crate::ffi_types::HandleAppParCurvesHArray1OfMultiBSpCurve;
 
 unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfMultiBSpCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiBSpCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiBSpCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAppParCurvesHArray1OfMultiBSpCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiBSpCurve_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiBSpCurve_clone(ptr),
+            )
+        }
     }
 }
 
@@ -677,7 +695,9 @@ pub use crate::ffi_types::AppParCurves_HArray1OfMultiCurve as HArray1OfMultiCurv
 
 unsafe impl crate::CppDeletable for HArray1OfMultiCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_destructor(ptr);
+        }
     }
 }
 
@@ -892,15 +912,19 @@ pub use crate::ffi_types::HandleAppParCurvesHArray1OfMultiCurve;
 
 unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfMultiCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAppParCurvesHArray1OfMultiCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiCurve_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiCurve_clone(ptr),
+            )
+        }
     }
 }
 
@@ -955,7 +979,9 @@ pub use crate::ffi_types::AppParCurves_HArray1OfMultiPoint as HArray1OfMultiPoin
 
 unsafe impl crate::CppDeletable for HArray1OfMultiPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_destructor(ptr);
+        }
     }
 }
 
@@ -1170,15 +1196,19 @@ pub use crate::ffi_types::HandleAppParCurvesHArray1OfMultiPoint;
 
 unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfMultiPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiPoint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAppParCurvesHArray1OfMultiPoint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiPoint_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiPoint_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1256,7 +1286,9 @@ pub use crate::ffi_types::AppParCurves_MultiBSpCurve as MultiBSpCurve;
 
 unsafe impl crate::CppDeletable for MultiBSpCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1668,7 +1700,9 @@ pub use crate::ffi_types::AppParCurves_MultiCurve as MultiCurve;
 
 unsafe impl crate::CppDeletable for MultiCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_destructor(ptr);
+        }
     }
 }
 
@@ -2043,7 +2077,9 @@ pub use crate::ffi_types::AppParCurves_MultiPoint as MultiPoint;
 
 unsafe impl crate::CppDeletable for MultiPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_destructor(ptr);
+        }
     }
 }
 

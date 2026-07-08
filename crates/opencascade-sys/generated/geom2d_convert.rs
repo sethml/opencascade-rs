@@ -188,7 +188,9 @@ pub use crate::ffi_types::Geom2dConvert_ApproxArcsSegments as ApproxArcsSegments
 
 unsafe impl crate::CppDeletable for ApproxArcsSegments {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Geom2dConvert_ApproxArcsSegments_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Geom2dConvert_ApproxArcsSegments_destructor(ptr);
+        }
     }
 }
 
@@ -235,7 +237,9 @@ pub use crate::ffi_types::Geom2dConvert_ApproxCurve as ApproxCurve;
 
 unsafe impl crate::CppDeletable for ApproxCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Geom2dConvert_ApproxCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Geom2dConvert_ApproxCurve_destructor(ptr);
+        }
     }
 }
 
@@ -357,7 +361,9 @@ pub use crate::ffi_types::Geom2dConvert_BSplineCurveKnotSplitting as BSplineCurv
 
 unsafe impl crate::CppDeletable for BSplineCurveKnotSplitting {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Geom2dConvert_BSplineCurveKnotSplitting_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Geom2dConvert_BSplineCurveKnotSplitting_destructor(ptr);
+        }
     }
 }
 
@@ -466,7 +472,9 @@ pub use crate::ffi_types::Geom2dConvert_BSplineCurveToBezierCurve as BSplineCurv
 
 unsafe impl crate::CppDeletable for BSplineCurveToBezierCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Geom2dConvert_BSplineCurveToBezierCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Geom2dConvert_BSplineCurveToBezierCurve_destructor(ptr);
+        }
     }
 }
 
@@ -603,7 +611,9 @@ pub use crate::ffi_types::Geom2dConvert_CompCurveToBSplineCurve as CompCurveToBS
 
 unsafe impl crate::CppDeletable for CompCurveToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Geom2dConvert_CompCurveToBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Geom2dConvert_CompCurveToBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -685,7 +695,9 @@ pub use crate::ffi_types::Geom2dConvert_PPoint as PPoint;
 
 unsafe impl crate::CppDeletable for PPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Geom2dConvert_PPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Geom2dConvert_PPoint_destructor(ptr);
+        }
     }
 }
 

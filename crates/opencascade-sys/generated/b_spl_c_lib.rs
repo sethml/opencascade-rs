@@ -3501,7 +3501,9 @@ pub use crate::ffi_types::BSplCLib_Cache as Cache;
 
 unsafe impl crate::CppDeletable for Cache {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::BSplCLib_Cache_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::BSplCLib_Cache_destructor(ptr);
+        }
     }
 }
 
@@ -3875,13 +3877,15 @@ pub use crate::ffi_types::HandleBSplCLibCache;
 
 unsafe impl crate::CppDeletable for HandleBSplCLibCache {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleBSplCLibCache_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleBSplCLibCache_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBSplCLibCache {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleBSplCLibCache_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandleBSplCLibCache_clone(ptr)) }
     }
 }
 
@@ -3935,7 +3939,9 @@ pub use crate::ffi_types::BSplCLib_CacheParams as CacheParams;
 
 unsafe impl crate::CppDeletable for CacheParams {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::BSplCLib_CacheParams_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::BSplCLib_CacheParams_destructor(ptr);
+        }
     }
 }
 
@@ -3948,7 +3954,9 @@ pub use crate::ffi_types::BSplCLib_EvaluatorFunction as EvaluatorFunction;
 
 unsafe impl crate::CppDeletable for EvaluatorFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::BSplCLib_EvaluatorFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::BSplCLib_EvaluatorFunction_destructor(ptr);
+        }
     }
 }
 

@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== XCAFApp_Application ========================
     pub fn XCAFApp_Application_destructor(self_: *mut XCAFApp_Application);
     /// **Source:** `XCAFApp_Application.hxx`:35 - `XCAFApp_Application::ResourcesName()`

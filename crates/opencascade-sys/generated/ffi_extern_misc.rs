@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== LDOMBasicString ========================
     pub fn LDOMBasicString_destructor(self_: *mut LDOMBasicString);
     /// **Source:** `LDOMBasicString.hxx`:89 - `LDOMBasicString::LDOMBasicString()`

@@ -392,7 +392,9 @@ pub use crate::ffi_types::RWGltf_CafReader as CafReader;
 
 unsafe impl crate::CppDeletable for CafReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::RWGltf_CafReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::RWGltf_CafReader_destructor(ptr);
+        }
     }
 }
 
@@ -994,13 +996,15 @@ pub use crate::ffi_types::HandleRWGltfCafReader;
 
 unsafe impl crate::CppDeletable for HandleRWGltfCafReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::HandleRWGltfCafReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfCafReader_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWGltfCafReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfCafReader_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfCafReader_clone(ptr)) }
     }
 }
 
@@ -1063,7 +1067,9 @@ pub use crate::ffi_types::RWGltf_DracoParameters as DracoParameters;
 
 unsafe impl crate::CppDeletable for DracoParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::RWGltf_DracoParameters_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::RWGltf_DracoParameters_destructor(ptr);
+        }
     }
 }
 
@@ -1077,7 +1083,9 @@ pub use crate::ffi_types::RWGltf_GltfBufferView as GltfBufferView;
 
 unsafe impl crate::CppDeletable for GltfBufferView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::RWGltf_GltfBufferView_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::RWGltf_GltfBufferView_destructor(ptr);
+        }
     }
 }
 
@@ -1102,7 +1110,9 @@ pub use crate::ffi_types::RWGltf_GltfFace as GltfFace;
 
 unsafe impl crate::CppDeletable for GltfFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::RWGltf_GltfFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::RWGltf_GltfFace_destructor(ptr);
+        }
     }
 }
 
@@ -1231,13 +1241,15 @@ pub use crate::ffi_types::HandleRWGltfGltfFace;
 
 unsafe impl crate::CppDeletable for HandleRWGltfGltfFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfFace_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWGltfGltfFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfFace_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfFace_clone(ptr)) }
     }
 }
 
@@ -1289,7 +1301,9 @@ pub use crate::ffi_types::RWGltf_GltfLatePrimitiveArray as GltfLatePrimitiveArra
 
 unsafe impl crate::CppDeletable for GltfLatePrimitiveArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::RWGltf_GltfLatePrimitiveArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::RWGltf_GltfLatePrimitiveArray_destructor(ptr);
+        }
     }
 }
 
@@ -2239,15 +2253,19 @@ pub use crate::ffi_types::HandleRWGltfGltfLatePrimitiveArray;
 
 unsafe impl crate::CppDeletable for HandleRWGltfGltfLatePrimitiveArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfLatePrimitiveArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfLatePrimitiveArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWGltfGltfLatePrimitiveArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfLatePrimitiveArray_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfLatePrimitiveArray_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2321,7 +2339,9 @@ pub use crate::ffi_types::RWGltf_GltfMaterialMap as GltfMaterialMap;
 
 unsafe impl crate::CppDeletable for GltfMaterialMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::RWGltf_GltfMaterialMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::RWGltf_GltfMaterialMap_destructor(ptr);
+        }
     }
 }
 
@@ -2620,13 +2640,17 @@ pub use crate::ffi_types::HandleRWGltfGltfMaterialMap;
 
 unsafe impl crate::CppDeletable for HandleRWGltfGltfMaterialMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfMaterialMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfMaterialMap_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWGltfGltfMaterialMap {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfMaterialMap_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfGltfMaterialMap_clone(ptr))
+        }
     }
 }
 
@@ -2722,7 +2746,9 @@ pub use crate::ffi_types::RWGltf_GltfPrimArrayData as GltfPrimArrayData;
 
 unsafe impl crate::CppDeletable for GltfPrimArrayData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::RWGltf_GltfPrimArrayData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::RWGltf_GltfPrimArrayData_destructor(ptr);
+        }
     }
 }
 
@@ -2758,7 +2784,9 @@ pub use crate::ffi_types::RWGltf_GltfSceneNodeMap as GltfSceneNodeMap;
 
 unsafe impl crate::CppDeletable for GltfSceneNodeMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::RWGltf_GltfSceneNodeMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::RWGltf_GltfSceneNodeMap_destructor(ptr);
+        }
     }
 }
 
@@ -2795,7 +2823,9 @@ pub use crate::ffi_types::RWGltf_MaterialCommon as MaterialCommon;
 
 unsafe impl crate::CppDeletable for MaterialCommon {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::RWGltf_MaterialCommon_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::RWGltf_MaterialCommon_destructor(ptr);
+        }
     }
 }
 
@@ -2928,13 +2958,17 @@ pub use crate::ffi_types::HandleRWGltfMaterialCommon;
 
 unsafe impl crate::CppDeletable for HandleRWGltfMaterialCommon {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialCommon_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialCommon_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWGltfMaterialCommon {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialCommon_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialCommon_clone(ptr))
+        }
     }
 }
 
@@ -2988,7 +3022,9 @@ pub use crate::ffi_types::RWGltf_MaterialMetallicRoughness as MaterialMetallicRo
 
 unsafe impl crate::CppDeletable for MaterialMetallicRoughness {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::RWGltf_MaterialMetallicRoughness_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::RWGltf_MaterialMetallicRoughness_destructor(ptr);
+        }
     }
 }
 
@@ -3117,15 +3153,19 @@ pub use crate::ffi_types::HandleRWGltfMaterialMetallicRoughness;
 
 unsafe impl crate::CppDeletable for HandleRWGltfMaterialMetallicRoughness {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialMetallicRoughness_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialMetallicRoughness_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWGltfMaterialMetallicRoughness {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialMetallicRoughness_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEGLTF::HandleRWGltfMaterialMetallicRoughness_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3181,7 +3221,9 @@ pub use crate::ffi_types::RWGltf_TriangulationReader as TriangulationReader;
 
 unsafe impl crate::CppDeletable for TriangulationReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::RWGltf_TriangulationReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::RWGltf_TriangulationReader_destructor(ptr);
+        }
     }
 }
 
@@ -3510,13 +3552,19 @@ pub use crate::ffi_types::HandleRWGltfTriangulationReader;
 
 unsafe impl crate::CppDeletable for HandleRWGltfTriangulationReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEGLTF::HandleRWGltfTriangulationReader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEGLTF::HandleRWGltfTriangulationReader_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWGltfTriangulationReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfTriangulationReader_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEGLTF::HandleRWGltfTriangulationReader_clone(
+                ptr,
+            ))
+        }
     }
 }
 

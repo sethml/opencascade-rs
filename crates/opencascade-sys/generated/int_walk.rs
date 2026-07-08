@@ -53,7 +53,9 @@ pub use crate::ffi_types::IntWalk_PWalking as PWalking;
 
 unsafe impl crate::CppDeletable for PWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntWalk_PWalking_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntWalk_PWalking_destructor(ptr);
+        }
     }
 }
 
@@ -411,7 +413,9 @@ pub use crate::ffi_types::IntWalk_TheFunctionOfTheInt2S as TheFunctionOfTheInt2S
 
 unsafe impl crate::CppDeletable for TheFunctionOfTheInt2S {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntWalk_TheFunctionOfTheInt2S_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntWalk_TheFunctionOfTheInt2S_destructor(ptr);
+        }
     }
 }
 
@@ -667,7 +671,9 @@ pub use crate::ffi_types::IntWalk_TheInt2S as TheInt2S;
 
 unsafe impl crate::CppDeletable for TheInt2S {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntWalk_TheInt2S_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntWalk_TheInt2S_destructor(ptr);
+        }
     }
 }
 
@@ -847,6 +853,8 @@ pub use crate::ffi_types::IntWalk_WalkingData as WalkingData;
 
 unsafe impl crate::CppDeletable for WalkingData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntWalk_WalkingData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntWalk_WalkingData_destructor(ptr);
+        }
     }
 }

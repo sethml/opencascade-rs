@@ -113,7 +113,9 @@ pub use crate::ffi_types::FilletSurf_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::FilletSurf_Builder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::FilletSurf_Builder_destructor(ptr);
+        }
     }
 }
 
@@ -434,7 +436,9 @@ pub use crate::ffi_types::FilletSurf_InternalBuilder as InternalBuilder;
 
 unsafe impl crate::CppDeletable for InternalBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_destructor(ptr);
+        }
     }
 }
 

@@ -148,7 +148,9 @@ pub use crate::ffi_types::Image_AlienPixMap as AlienPixMap;
 
 unsafe impl crate::CppDeletable for AlienPixMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Image_AlienPixMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Image_AlienPixMap_destructor(ptr);
+        }
     }
 }
 
@@ -736,13 +738,17 @@ pub use crate::ffi_types::HandleImageAlienPixMap;
 
 unsafe impl crate::CppDeletable for HandleImageAlienPixMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleImageAlienPixMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleImageAlienPixMap_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleImageAlienPixMap {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleImageAlienPixMap_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleImageAlienPixMap_clone(ptr))
+        }
     }
 }
 
@@ -806,7 +812,9 @@ pub use crate::ffi_types::Image_CompressedPixMap as CompressedPixMap;
 
 unsafe impl crate::CppDeletable for CompressedPixMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Image_CompressedPixMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Image_CompressedPixMap_destructor(ptr);
+        }
     }
 }
 
@@ -1142,13 +1150,17 @@ pub use crate::ffi_types::HandleImageCompressedPixMap;
 
 unsafe impl crate::CppDeletable for HandleImageCompressedPixMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleImageCompressedPixMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleImageCompressedPixMap_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleImageCompressedPixMap {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleImageCompressedPixMap_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleImageCompressedPixMap_clone(ptr))
+        }
     }
 }
 
@@ -1202,7 +1214,9 @@ pub use crate::ffi_types::Image_DDSParser as DDSParser;
 
 unsafe impl crate::CppDeletable for DDSParser {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Image_DDSParser_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Image_DDSParser_destructor(ptr);
+        }
     }
 }
 
@@ -1297,7 +1311,9 @@ pub use crate::ffi_types::Image_Diff as Diff;
 
 unsafe impl crate::CppDeletable for Diff {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Image_Diff_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Image_Diff_destructor(ptr);
+        }
     }
 }
 
@@ -1552,13 +1568,15 @@ pub use crate::ffi_types::HandleImageDiff;
 
 unsafe impl crate::CppDeletable for HandleImageDiff {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleImageDiff_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleImageDiff_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleImageDiff {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleImageDiff_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleImageDiff_clone(ptr)) }
     }
 }
 
@@ -1610,7 +1628,9 @@ pub use crate::ffi_types::Image_PixMap as PixMap;
 
 unsafe impl crate::CppDeletable for PixMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Image_PixMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Image_PixMap_destructor(ptr);
+        }
     }
 }
 
@@ -2481,13 +2501,15 @@ pub use crate::ffi_types::HandleImagePixMap;
 
 unsafe impl crate::CppDeletable for HandleImagePixMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleImagePixMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleImagePixMap_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleImagePixMap {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleImagePixMap_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleImagePixMap_clone(ptr)) }
     }
 }
 
@@ -2557,7 +2579,9 @@ pub use crate::ffi_types::Image_PixMapData as PixMapData;
 
 unsafe impl crate::CppDeletable for PixMapData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Image_PixMapData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Image_PixMapData_destructor(ptr);
+        }
     }
 }
 
@@ -2964,13 +2988,17 @@ pub use crate::ffi_types::HandleImagePixMapData;
 
 unsafe impl crate::CppDeletable for HandleImagePixMapData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleImagePixMapData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleImagePixMapData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleImagePixMapData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleImagePixMapData_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleImagePixMapData_clone(ptr))
+        }
     }
 }
 
@@ -3033,7 +3061,9 @@ pub use crate::ffi_types::Image_SupportedFormats as SupportedFormats;
 
 unsafe impl crate::CppDeletable for SupportedFormats {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Image_SupportedFormats_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Image_SupportedFormats_destructor(ptr);
+        }
     }
 }
 
@@ -3249,13 +3279,17 @@ pub use crate::ffi_types::HandleImageSupportedFormats;
 
 unsafe impl crate::CppDeletable for HandleImageSupportedFormats {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleImageSupportedFormats_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleImageSupportedFormats_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleImageSupportedFormats {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleImageSupportedFormats_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleImageSupportedFormats_clone(ptr))
+        }
     }
 }
 
@@ -3311,7 +3345,9 @@ pub use crate::ffi_types::Image_Texture as Texture;
 
 unsafe impl crate::CppDeletable for Texture {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Image_Texture_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Image_Texture_destructor(ptr);
+        }
     }
 }
 
@@ -3617,13 +3653,15 @@ pub use crate::ffi_types::HandleImageTexture;
 
 unsafe impl crate::CppDeletable for HandleImageTexture {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleImageTexture_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleImageTexture_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleImageTexture {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleImageTexture_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleImageTexture_clone(ptr)) }
     }
 }
 
@@ -3676,7 +3714,9 @@ pub use crate::ffi_types::Image_VideoParams as VideoParams;
 
 unsafe impl crate::CppDeletable for VideoParams {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Image_VideoParams_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Image_VideoParams_destructor(ptr);
+        }
     }
 }
 
@@ -3723,7 +3763,9 @@ pub use crate::ffi_types::Image_VideoRecorder as VideoRecorder;
 
 unsafe impl crate::CppDeletable for VideoRecorder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Image_VideoRecorder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Image_VideoRecorder_destructor(ptr);
+        }
     }
 }
 
@@ -3923,13 +3965,17 @@ pub use crate::ffi_types::HandleImageVideoRecorder;
 
 unsafe impl crate::CppDeletable for HandleImageVideoRecorder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleImageVideoRecorder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleImageVideoRecorder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleImageVideoRecorder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleImageVideoRecorder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleImageVideoRecorder_clone(ptr))
+        }
     }
 }
 

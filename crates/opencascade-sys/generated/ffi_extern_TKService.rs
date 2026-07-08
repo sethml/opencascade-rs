@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== Aspect_AspectFillAreaDefinitionError ========================
     pub fn Aspect_AspectFillAreaDefinitionError_destructor(
         self_: *mut Aspect_AspectFillAreaDefinitionError,

@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== MeshVS_Buffer ========================
     pub fn MeshVS_Buffer_destructor(self_: *mut MeshVS_Buffer);
     /// **Source:** `MeshVS_Buffer.hxx`:37 - `MeshVS_Buffer::MeshVS_Buffer()`

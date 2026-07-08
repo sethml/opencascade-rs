@@ -48,7 +48,9 @@ pub use crate::ffi_types::XCAFView_Object as Object;
 
 unsafe impl crate::CppDeletable for Object {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFView_Object_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFView_Object_destructor(ptr);
+        }
     }
 }
 
@@ -487,13 +489,15 @@ pub use crate::ffi_types::HandleXCAFViewObject;
 
 unsafe impl crate::CppDeletable for HandleXCAFViewObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::HandleXCAFViewObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFViewObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXCAFViewObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFViewObject_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFViewObject_clone(ptr)) }
     }
 }
 

@@ -252,7 +252,9 @@ pub use crate::ffi_types::BRepFeat_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_Builder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_Builder_destructor(ptr);
+        }
     }
 }
 
@@ -1018,7 +1020,9 @@ pub use crate::ffi_types::BRepFeat_Form as Form;
 
 unsafe impl crate::CppDeletable for Form {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_Form_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_Form_destructor(ptr);
+        }
     }
 }
 
@@ -1310,7 +1314,9 @@ pub use crate::ffi_types::BRepFeat_Gluer as Gluer;
 
 unsafe impl crate::CppDeletable for Gluer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_Gluer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_Gluer_destructor(ptr);
+        }
     }
 }
 
@@ -1520,7 +1526,9 @@ pub use crate::ffi_types::BRepFeat_MakeCylindricalHole as MakeCylindricalHole;
 
 unsafe impl crate::CppDeletable for MakeCylindricalHole {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_MakeCylindricalHole_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_MakeCylindricalHole_destructor(ptr);
+        }
     }
 }
 
@@ -2431,7 +2439,9 @@ pub use crate::ffi_types::BRepFeat_MakeDPrism as MakeDPrism;
 
 unsafe impl crate::CppDeletable for MakeDPrism {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_MakeDPrism_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_MakeDPrism_destructor(ptr);
+        }
     }
 }
 
@@ -2877,7 +2887,9 @@ pub use crate::ffi_types::BRepFeat_MakeLinearForm as MakeLinearForm;
 
 unsafe impl crate::CppDeletable for MakeLinearForm {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_MakeLinearForm_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_MakeLinearForm_destructor(ptr);
+        }
     }
 }
 
@@ -3217,7 +3229,9 @@ pub use crate::ffi_types::BRepFeat_MakePipe as MakePipe;
 
 unsafe impl crate::CppDeletable for MakePipe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_MakePipe_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_MakePipe_destructor(ptr);
+        }
     }
 }
 
@@ -3578,7 +3592,9 @@ pub use crate::ffi_types::BRepFeat_MakePrism as MakePrism;
 
 unsafe impl crate::CppDeletable for MakePrism {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_MakePrism_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_MakePrism_destructor(ptr);
+        }
     }
 }
 
@@ -3987,7 +4003,9 @@ pub use crate::ffi_types::BRepFeat_MakeRevol as MakeRevol;
 
 unsafe impl crate::CppDeletable for MakeRevol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_MakeRevol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_MakeRevol_destructor(ptr);
+        }
     }
 }
 
@@ -4372,7 +4390,9 @@ pub use crate::ffi_types::BRepFeat_MakeRevolutionForm as MakeRevolutionForm;
 
 unsafe impl crate::CppDeletable for MakeRevolutionForm {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_MakeRevolutionForm_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_MakeRevolutionForm_destructor(ptr);
+        }
     }
 }
 
@@ -4684,7 +4704,9 @@ pub use crate::ffi_types::BRepFeat_RibSlot as RibSlot;
 
 unsafe impl crate::CppDeletable for RibSlot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_RibSlot_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_RibSlot_destructor(ptr);
+        }
     }
 }
 
@@ -4934,7 +4956,9 @@ pub use crate::ffi_types::BRepFeat_SplitShape as SplitShape;
 
 unsafe impl crate::CppDeletable for SplitShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::BRepFeat_SplitShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_SplitShape_destructor(ptr);
+        }
     }
 }
 

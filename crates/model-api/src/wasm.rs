@@ -54,7 +54,7 @@ fn model() -> &'static mut dyn Model {
 #[macro_export]
 macro_rules! register_model {
     ($model_type:ty) => {
-        #[export_name = "init-model"]
+        #[unsafe(export_name = "init-model")]
         pub extern "C" fn __init_model() {
             model_api::wasm::register_model(|| Box::new(<$model_type as model_api::Model>::new()));
         }

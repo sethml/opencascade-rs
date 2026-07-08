@@ -69,7 +69,9 @@ pub use crate::ffi_types::NCollection_AccAllocator as AccAllocator;
 
 unsafe impl crate::CppDeletable for AccAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_AccAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_AccAllocator_destructor(ptr);
+        }
     }
 }
 
@@ -271,13 +273,17 @@ pub use crate::ffi_types::HandleNCollectionAccAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionAccAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleNCollectionAccAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionAccAllocator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleNCollectionAccAllocator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionAccAllocator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionAccAllocator_clone(ptr))
+        }
     }
 }
 
@@ -340,7 +346,9 @@ pub use crate::ffi_types::NCollection_AlignedAllocator as AlignedAllocator;
 
 unsafe impl crate::CppDeletable for AlignedAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_AlignedAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_AlignedAllocator_destructor(ptr);
+        }
     }
 }
 
@@ -542,13 +550,19 @@ pub use crate::ffi_types::HandleNCollectionAlignedAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionAlignedAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleNCollectionAlignedAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionAlignedAllocator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleNCollectionAlignedAllocator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionAlignedAllocator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionAlignedAllocator_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -621,7 +635,9 @@ pub use crate::ffi_types::NCollection_BaseAllocator as BaseAllocator;
 
 unsafe impl crate::CppDeletable for BaseAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_BaseAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_BaseAllocator_destructor(ptr);
+        }
     }
 }
 
@@ -807,13 +823,19 @@ pub use crate::ffi_types::HandleNCollectionBaseAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionBaseAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleNCollectionBaseAllocator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -944,7 +966,9 @@ pub use crate::ffi_types::NCollection_BaseList as BaseList;
 
 unsafe impl crate::CppDeletable for BaseList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_BaseList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_BaseList_destructor(ptr);
+        }
     }
 }
 
@@ -980,7 +1004,9 @@ pub use crate::ffi_types::NCollection_BaseList_Iterator as BaseList_Iterator;
 
 unsafe impl crate::CppDeletable for BaseList_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_BaseList_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_BaseList_Iterator_destructor(ptr);
+        }
     }
 }
 
@@ -1107,7 +1133,9 @@ pub use crate::ffi_types::NCollection_BaseMap_Iterator as BaseMap_Iterator;
 
 unsafe impl crate::CppDeletable for BaseMap_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_BaseMap_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_BaseMap_Iterator_destructor(ptr);
+        }
     }
 }
 
@@ -1159,13 +1187,17 @@ pub use crate::ffi_types::NCollection_BasePointerVector as BasePointerVector;
 
 unsafe impl crate::CppDeletable for BasePointerVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_BasePointerVector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_BasePointerVector_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for BasePointerVector {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::NCollection_BasePointerVector_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::NCollection_BasePointerVector_clone(ptr))
+        }
     }
 }
 
@@ -1321,7 +1353,9 @@ pub use crate::ffi_types::NCollection_BaseSequence_Iterator as BaseSequence_Iter
 
 unsafe impl crate::CppDeletable for BaseSequence_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_BaseSequence_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_BaseSequence_Iterator_destructor(ptr);
+        }
     }
 }
 
@@ -1379,7 +1413,9 @@ pub use crate::ffi_types::NCollection_Buffer as Buffer;
 
 unsafe impl crate::CppDeletable for Buffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_Buffer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Buffer_destructor(ptr);
+        }
     }
 }
 
@@ -1600,13 +1636,17 @@ pub use crate::ffi_types::HandleNCollectionBuffer;
 
 unsafe impl crate::CppDeletable for HandleNCollectionBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleNCollectionBuffer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionBuffer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleNCollectionBuffer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionBuffer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionBuffer_clone(ptr))
+        }
     }
 }
 
@@ -1775,7 +1815,9 @@ pub use crate::ffi_types::NCollection_HeapAllocator as HeapAllocator;
 
 unsafe impl crate::CppDeletable for HeapAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_HeapAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HeapAllocator_destructor(ptr);
+        }
     }
 }
 
@@ -1975,13 +2017,19 @@ pub use crate::ffi_types::HandleNCollectionHeapAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionHeapAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleNCollectionHeapAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionHeapAllocator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleNCollectionHeapAllocator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionHeapAllocator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionHeapAllocator_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2064,7 +2112,9 @@ pub use crate::ffi_types::NCollection_IncAllocator as IncAllocator;
 
 unsafe impl crate::CppDeletable for IncAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_IncAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_destructor(ptr);
+        }
     }
 }
 
@@ -2301,13 +2351,17 @@ pub use crate::ffi_types::HandleNCollectionIncAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionIncAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleNCollectionIncAllocator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_clone(ptr))
+        }
     }
 }
 
@@ -2367,7 +2421,9 @@ pub use crate::ffi_types::NCollection_IncAllocator_IBlock as IncAllocator_IBlock
 
 unsafe impl crate::CppDeletable for IncAllocator_IBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_IncAllocator_IBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_IBlock_destructor(ptr);
+        }
     }
 }
 
@@ -2446,7 +2502,9 @@ pub use crate::ffi_types::NCollection_SparseArrayBase_Iterator as SparseArrayBas
 
 unsafe impl crate::CppDeletable for SparseArrayBase_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_SparseArrayBase_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_SparseArrayBase_Iterator_destructor(ptr);
+        }
     }
 }
 
@@ -2512,7 +2570,9 @@ pub use crate::ffi_types::NCollection_WinHeapAllocator as WinHeapAllocator;
 
 unsafe impl crate::CppDeletable for WinHeapAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_destructor(ptr);
+        }
     }
 }
 
@@ -2715,13 +2775,19 @@ pub use crate::ffi_types::HandleNCollectionWinHeapAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionWinHeapAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleNCollectionWinHeapAllocator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_clone(
+                ptr,
+            ))
+        }
     }
 }
 

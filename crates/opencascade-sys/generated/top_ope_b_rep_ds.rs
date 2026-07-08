@@ -291,7 +291,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Association as Association;
 
 unsafe impl crate::CppDeletable for Association {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Association_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Association_destructor(ptr);
+        }
     }
 }
 
@@ -509,13 +511,17 @@ pub use crate::ffi_types::HandleTopOpeBRepDSAssociation;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSAssociation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSAssociation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSAssociation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSAssociation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSAssociation_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSAssociation_clone(ptr))
+        }
     }
 }
 
@@ -570,7 +576,9 @@ pub use crate::ffi_types::TopOpeBRepDS_BuildTool as BuildTool;
 
 unsafe impl crate::CppDeletable for BuildTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_BuildTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_BuildTool_destructor(ptr);
+        }
     }
 }
 
@@ -1176,7 +1184,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Check as Check;
 
 unsafe impl crate::CppDeletable for Check {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Check_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Check_destructor(ptr);
+        }
     }
 }
 
@@ -1502,13 +1512,15 @@ pub use crate::ffi_types::HandleTopOpeBRepDSCheck;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSCheck {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSCheck_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSCheck_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSCheck {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSCheck_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSCheck_clone(ptr)) }
     }
 }
 
@@ -1560,7 +1572,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -1866,7 +1880,9 @@ pub use crate::ffi_types::TopOpeBRepDS_CurveData as CurveData;
 
 unsafe impl crate::CppDeletable for CurveData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_CurveData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_CurveData_destructor(ptr);
+        }
     }
 }
 
@@ -1965,7 +1981,9 @@ pub use crate::ffi_types::TopOpeBRepDS_CurveExplorer as CurveExplorer;
 
 unsafe impl crate::CppDeletable for CurveExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_CurveExplorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_CurveExplorer_destructor(ptr);
+        }
     }
 }
 
@@ -2081,7 +2099,9 @@ pub use crate::ffi_types::TopOpeBRepDS_CurveIterator as CurveIterator;
 
 unsafe impl crate::CppDeletable for CurveIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_CurveIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_CurveIterator_destructor(ptr);
+        }
     }
 }
 
@@ -2260,7 +2280,9 @@ pub use crate::ffi_types::TopOpeBRepDS_CurvePointInterference as CurvePointInter
 
 unsafe impl crate::CppDeletable for CurvePointInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_CurvePointInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_CurvePointInterference_destructor(ptr);
+        }
     }
 }
 
@@ -2539,15 +2561,19 @@ pub use crate::ffi_types::HandleTopOpeBRepDSCurvePointInterference;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSCurvePointInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSCurvePointInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSCurvePointInterference_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSCurvePointInterference {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKBool::HandleTopOpeBRepDSCurvePointInterference_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepDSCurvePointInterference_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2616,7 +2642,9 @@ pub use crate::ffi_types::TopOpeBRepDS_DataStructure as DataStructure;
 
 unsafe impl crate::CppDeletable for DataStructure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_destructor(ptr);
+        }
     }
 }
 
@@ -3801,7 +3829,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Dumper as Dumper;
 
 unsafe impl crate::CppDeletable for Dumper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Dumper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Dumper_destructor(ptr);
+        }
     }
 }
 
@@ -3911,7 +3941,9 @@ pub use crate::ffi_types::TopOpeBRepDS_EIR as EIR;
 
 unsafe impl crate::CppDeletable for EIR {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_EIR_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_EIR_destructor(ptr);
+        }
     }
 }
 
@@ -3959,7 +3991,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Edge3dInterferenceTool as Edge3dInterfere
 
 unsafe impl crate::CppDeletable for Edge3dInterferenceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Edge3dInterferenceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Edge3dInterferenceTool_destructor(ptr);
+        }
     }
 }
 
@@ -4043,7 +4077,9 @@ pub use crate::ffi_types::TopOpeBRepDS_EdgeInterferenceTool as EdgeInterferenceT
 
 unsafe impl crate::CppDeletable for EdgeInterferenceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_EdgeInterferenceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_EdgeInterferenceTool_destructor(ptr);
+        }
     }
 }
 
@@ -4117,7 +4153,9 @@ pub use crate::ffi_types::TopOpeBRepDS_EdgeVertexInterference as EdgeVertexInter
 
 unsafe impl crate::CppDeletable for EdgeVertexInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_EdgeVertexInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_EdgeVertexInterference_destructor(ptr);
+        }
     }
 }
 
@@ -4474,15 +4512,19 @@ pub use crate::ffi_types::HandleTopOpeBRepDSEdgeVertexInterference;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSEdgeVertexInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSEdgeVertexInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSEdgeVertexInterference_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSEdgeVertexInterference {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKBool::HandleTopOpeBRepDSEdgeVertexInterference_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepDSEdgeVertexInterference_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4555,7 +4597,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Explorer as Explorer;
 
 unsafe impl crate::CppDeletable for Explorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Explorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Explorer_destructor(ptr);
+        }
     }
 }
 
@@ -4681,7 +4725,9 @@ pub use crate::ffi_types::TopOpeBRepDS_FIR as FIR;
 
 unsafe impl crate::CppDeletable for FIR {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_FIR_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_FIR_destructor(ptr);
+        }
     }
 }
 
@@ -4731,7 +4777,9 @@ pub use crate::ffi_types::TopOpeBRepDS_FaceEdgeInterference as FaceEdgeInterfere
 
 unsafe impl crate::CppDeletable for FaceEdgeInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_FaceEdgeInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_FaceEdgeInterference_destructor(ptr);
+        }
     }
 }
 
@@ -5034,15 +5082,19 @@ pub use crate::ffi_types::HandleTopOpeBRepDSFaceEdgeInterference;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSFaceEdgeInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSFaceEdgeInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSFaceEdgeInterference_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSFaceEdgeInterference {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSFaceEdgeInterference_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepDSFaceEdgeInterference_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5116,7 +5168,9 @@ pub use crate::ffi_types::TopOpeBRepDS_FaceInterferenceTool as FaceInterferenceT
 
 unsafe impl crate::CppDeletable for FaceInterferenceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_FaceInterferenceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_FaceInterferenceTool_destructor(ptr);
+        }
     }
 }
 
@@ -5232,7 +5286,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Filter as Filter;
 
 unsafe impl crate::CppDeletable for Filter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Filter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Filter_destructor(ptr);
+        }
     }
 }
 
@@ -5323,7 +5379,9 @@ pub use crate::ffi_types::TopOpeBRepDS_GapFiller as GapFiller;
 
 unsafe impl crate::CppDeletable for GapFiller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_GapFiller_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_GapFiller_destructor(ptr);
+        }
     }
 }
 
@@ -5514,7 +5572,9 @@ pub use crate::ffi_types::TopOpeBRepDS_GapTool as GapTool;
 
 unsafe impl crate::CppDeletable for GapTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_GapTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_GapTool_destructor(ptr);
+        }
     }
 }
 
@@ -5824,13 +5884,17 @@ pub use crate::ffi_types::HandleTopOpeBRepDSGapTool;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSGapTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSGapTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSGapTool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSGapTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSGapTool_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSGapTool_clone(ptr))
+        }
     }
 }
 
@@ -5882,13 +5946,17 @@ pub use crate::ffi_types::TopOpeBRepDS_GeometryData as GeometryData;
 
 unsafe impl crate::CppDeletable for GeometryData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_GeometryData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_GeometryData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for GeometryData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_GeometryData_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_GeometryData_clone(ptr))
+        }
     }
 }
 
@@ -5963,7 +6031,9 @@ pub use crate::ffi_types::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterferen
 
 unsafe impl crate::CppDeletable for HArray1OfDataMapOfIntegerListOfInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_destructor(ptr);
+        }
     }
 }
 
@@ -6137,13 +6207,17 @@ pub use crate::ffi_types::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInter
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_clone(ptr))
+        }
     }
 }
 
@@ -6192,7 +6266,9 @@ pub use crate::ffi_types::TopOpeBRepDS_HDataStructure as HDataStructure;
 
 unsafe impl crate::CppDeletable for HDataStructure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_HDataStructure_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_HDataStructure_destructor(ptr);
+        }
     }
 }
 
@@ -6920,13 +6996,19 @@ pub use crate::ffi_types::HandleTopOpeBRepDSHDataStructure;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSHDataStructure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSHDataStructure_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSHDataStructure_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSHDataStructure {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSHDataStructure_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSHDataStructure_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -6998,7 +7080,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Interference as Interference;
 
 unsafe impl crate::CppDeletable for Interference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Interference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Interference_destructor(ptr);
+        }
     }
 }
 
@@ -7326,13 +7410,17 @@ pub use crate::ffi_types::HandleTopOpeBRepDSInterference;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSInterference_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSInterference {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSInterference_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSInterference_clone(ptr))
+        }
     }
 }
 
@@ -7490,7 +7578,9 @@ pub use crate::ffi_types::TopOpeBRepDS_InterferenceIterator as InterferenceItera
 
 unsafe impl crate::CppDeletable for InterferenceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_InterferenceIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_InterferenceIterator_destructor(ptr);
+        }
     }
 }
 
@@ -7651,7 +7741,9 @@ pub use crate::ffi_types::TopOpeBRepDS_InterferenceTool as InterferenceTool;
 
 unsafe impl crate::CppDeletable for InterferenceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_InterferenceTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_InterferenceTool_destructor(ptr);
+        }
     }
 }
 
@@ -7810,7 +7902,9 @@ pub use crate::ffi_types::TopOpeBRepDS_ListOfShapeOn1State as ListOfShapeOn1Stat
 
 unsafe impl crate::CppDeletable for ListOfShapeOn1State {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_ListOfShapeOn1State_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_ListOfShapeOn1State_destructor(ptr);
+        }
     }
 }
 
@@ -7877,7 +7971,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Marker as Marker;
 
 unsafe impl crate::CppDeletable for Marker {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Marker_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Marker_destructor(ptr);
+        }
     }
 }
 
@@ -8064,13 +8160,17 @@ pub use crate::ffi_types::HandleTopOpeBRepDSMarker;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSMarker {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSMarker_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSMarker_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSMarker {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSMarker_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepDSMarker_clone(ptr))
+        }
     }
 }
 
@@ -8122,7 +8222,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Point as Point;
 
 unsafe impl crate::CppDeletable for Point {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Point_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Point_destructor(ptr);
+        }
     }
 }
 
@@ -8217,7 +8319,9 @@ pub use crate::ffi_types::TopOpeBRepDS_PointData as PointData;
 
 unsafe impl crate::CppDeletable for PointData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_PointData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_PointData_destructor(ptr);
+        }
     }
 }
 
@@ -8339,7 +8443,9 @@ pub use crate::ffi_types::TopOpeBRepDS_PointExplorer as PointExplorer;
 
 unsafe impl crate::CppDeletable for PointExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_PointExplorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_PointExplorer_destructor(ptr);
+        }
     }
 }
 
@@ -8455,7 +8561,9 @@ pub use crate::ffi_types::TopOpeBRepDS_PointIterator as PointIterator;
 
 unsafe impl crate::CppDeletable for PointIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_PointIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_PointIterator_destructor(ptr);
+        }
     }
 }
 
@@ -8658,7 +8766,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Reducer as Reducer;
 
 unsafe impl crate::CppDeletable for Reducer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Reducer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Reducer_destructor(ptr);
+        }
     }
 }
 
@@ -8704,7 +8814,9 @@ pub use crate::ffi_types::TopOpeBRepDS_ShapeData as ShapeData;
 
 unsafe impl crate::CppDeletable for ShapeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_ShapeData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_ShapeData_destructor(ptr);
+        }
     }
 }
 
@@ -8765,7 +8877,9 @@ pub use crate::ffi_types::TopOpeBRepDS_ShapeShapeInterference as ShapeShapeInter
 
 unsafe impl crate::CppDeletable for ShapeShapeInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_ShapeShapeInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_ShapeShapeInterference_destructor(ptr);
+        }
     }
 }
 
@@ -9077,15 +9191,19 @@ pub use crate::ffi_types::HandleTopOpeBRepDSShapeShapeInterference;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSShapeShapeInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSShapeShapeInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSShapeShapeInterference_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSShapeShapeInterference {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKBool::HandleTopOpeBRepDSShapeShapeInterference_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepDSShapeShapeInterference_clone(ptr),
+            )
+        }
     }
 }
 
@@ -9181,7 +9299,9 @@ pub use crate::ffi_types::TopOpeBRepDS_ShapeWithState as ShapeWithState;
 
 unsafe impl crate::CppDeletable for ShapeWithState {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_ShapeWithState_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_ShapeWithState_destructor(ptr);
+        }
     }
 }
 
@@ -9277,7 +9397,9 @@ pub use crate::ffi_types::TopOpeBRepDS_SolidSurfaceInterference as SolidSurfaceI
 
 unsafe impl crate::CppDeletable for SolidSurfaceInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_SolidSurfaceInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_SolidSurfaceInterference_destructor(ptr);
+        }
     }
 }
 
@@ -9526,15 +9648,19 @@ pub use crate::ffi_types::HandleTopOpeBRepDSSolidSurfaceInterference;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSSolidSurfaceInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSSolidSurfaceInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSSolidSurfaceInterference_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSSolidSurfaceInterference {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKBool::HandleTopOpeBRepDSSolidSurfaceInterference_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepDSSolidSurfaceInterference_clone(ptr),
+            )
+        }
     }
 }
 
@@ -9599,13 +9725,15 @@ pub use crate::ffi_types::TopOpeBRepDS_Surface as Surface;
 
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Surface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Surface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Surface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_Surface_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_Surface_clone(ptr)) }
     }
 }
 
@@ -9697,7 +9825,9 @@ pub use crate::ffi_types::TopOpeBRepDS_SurfaceCurveInterference as SurfaceCurveI
 
 unsafe impl crate::CppDeletable for SurfaceCurveInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceCurveInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceCurveInterference_destructor(ptr);
+        }
     }
 }
 
@@ -9983,15 +10113,19 @@ pub use crate::ffi_types::HandleTopOpeBRepDSSurfaceCurveInterference;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepDSSurfaceCurveInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepDSSurfaceCurveInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepDSSurfaceCurveInterference_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepDSSurfaceCurveInterference {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKBool::HandleTopOpeBRepDSSurfaceCurveInterference_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepDSSurfaceCurveInterference_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10055,7 +10189,9 @@ pub use crate::ffi_types::TopOpeBRepDS_SurfaceData as SurfaceData;
 
 unsafe impl crate::CppDeletable for SurfaceData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceData_destructor(ptr);
+        }
     }
 }
 
@@ -10154,7 +10290,9 @@ pub use crate::ffi_types::TopOpeBRepDS_SurfaceExplorer as SurfaceExplorer;
 
 unsafe impl crate::CppDeletable for SurfaceExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceExplorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceExplorer_destructor(ptr);
+        }
     }
 }
 
@@ -10275,7 +10413,9 @@ pub use crate::ffi_types::TopOpeBRepDS_SurfaceIterator as SurfaceIterator;
 
 unsafe impl crate::CppDeletable for SurfaceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceIterator_destructor(ptr);
+        }
     }
 }
 
@@ -10445,7 +10585,9 @@ pub use crate::ffi_types::TopOpeBRepDS_TKI as TKI;
 
 unsafe impl crate::CppDeletable for TKI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_TKI_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_TKI_destructor(ptr);
+        }
     }
 }
 
@@ -10644,7 +10786,9 @@ pub use crate::ffi_types::TopOpeBRepDS_TOOL as TOOL;
 
 unsafe impl crate::CppDeletable for TOOL {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_TOOL_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_TOOL_destructor(ptr);
+        }
     }
 }
 
@@ -10729,7 +10873,9 @@ pub use crate::ffi_types::TopOpeBRepDS_Transition as Transition;
 
 unsafe impl crate::CppDeletable for Transition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepDS_Transition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Transition_destructor(ptr);
+        }
     }
 }
 

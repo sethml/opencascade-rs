@@ -209,7 +209,9 @@ pub use crate::ffi_types::ProjLib_CompProjectedCurve as CompProjectedCurve;
 
 unsafe impl crate::CppDeletable for CompProjectedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1170,15 +1172,19 @@ pub use crate::ffi_types::HandleProjLibCompProjectedCurve;
 
 unsafe impl crate::CppDeletable for HandleProjLibCompProjectedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleProjLibCompProjectedCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1250,7 +1256,9 @@ pub use crate::ffi_types::ProjLib_ComputeApprox as ComputeApprox;
 
 unsafe impl crate::CppDeletable for ComputeApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_ComputeApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_ComputeApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1393,7 +1401,9 @@ pub use crate::ffi_types::ProjLib_ComputeApproxOnPolarSurface as ComputeApproxOn
 
 unsafe impl crate::CppDeletable for ComputeApproxOnPolarSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_ComputeApproxOnPolarSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_ComputeApproxOnPolarSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1634,7 +1644,9 @@ pub use crate::ffi_types::ProjLib_Cone as Cone;
 
 unsafe impl crate::CppDeletable for Cone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_Cone_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_Cone_destructor(ptr);
+        }
     }
 }
 
@@ -1901,7 +1913,9 @@ pub use crate::ffi_types::ProjLib_Cylinder as Cylinder;
 
 unsafe impl crate::CppDeletable for Cylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_Cylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_Cylinder_destructor(ptr);
+        }
     }
 }
 
@@ -2203,7 +2217,9 @@ pub use crate::ffi_types::ProjLib_HSequenceOfHSequenceOfPnt as HSequenceOfHSeque
 
 unsafe impl crate::CppDeletable for HSequenceOfHSequenceOfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_destructor(ptr);
+        }
     }
 }
 
@@ -2400,15 +2416,19 @@ pub use crate::ffi_types::HandleProjLibHSequenceOfHSequenceOfPnt;
 
 unsafe impl crate::CppDeletable for HandleProjLibHSequenceOfHSequenceOfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleProjLibHSequenceOfHSequenceOfPnt {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2464,7 +2484,9 @@ pub use crate::ffi_types::ProjLib_Plane as Plane;
 
 unsafe impl crate::CppDeletable for Plane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_Plane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_Plane_destructor(ptr);
+        }
     }
 }
 
@@ -2762,7 +2784,9 @@ pub use crate::ffi_types::ProjLib_PrjFunc as PrjFunc;
 
 unsafe impl crate::CppDeletable for PrjFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_PrjFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_PrjFunc_destructor(ptr);
+        }
     }
 }
 
@@ -2921,7 +2945,9 @@ pub use crate::ffi_types::ProjLib_PrjResolve as PrjResolve;
 
 unsafe impl crate::CppDeletable for PrjResolve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_PrjResolve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_PrjResolve_destructor(ptr);
+        }
     }
 }
 
@@ -3006,7 +3032,9 @@ pub use crate::ffi_types::ProjLib_ProjectOnPlane as ProjectOnPlane;
 
 unsafe impl crate::CppDeletable for ProjectOnPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_destructor(ptr);
+        }
     }
 }
 
@@ -3589,13 +3617,19 @@ pub use crate::ffi_types::HandleProjLibProjectOnPlane;
 
 unsafe impl crate::CppDeletable for HandleProjLibProjectOnPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleProjLibProjectOnPlane {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3659,7 +3693,9 @@ pub use crate::ffi_types::ProjLib_ProjectOnSurface as ProjectOnSurface;
 
 unsafe impl crate::CppDeletable for ProjectOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -3753,7 +3789,9 @@ pub use crate::ffi_types::ProjLib_ProjectedCurve as ProjectedCurve;
 
 unsafe impl crate::CppDeletable for ProjectedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_destructor(ptr);
+        }
     }
 }
 
@@ -4421,13 +4459,19 @@ pub use crate::ffi_types::HandleProjLibProjectedCurve;
 
 unsafe impl crate::CppDeletable for HandleProjLibProjectedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleProjLibProjectedCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4490,7 +4534,9 @@ pub use crate::ffi_types::ProjLib_Projector as Projector;
 
 unsafe impl crate::CppDeletable for Projector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_Projector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_Projector_destructor(ptr);
+        }
     }
 }
 
@@ -4704,7 +4750,9 @@ pub use crate::ffi_types::ProjLib_Sphere as Sphere;
 
 unsafe impl crate::CppDeletable for Sphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_Sphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_Sphere_destructor(ptr);
+        }
     }
 }
 
@@ -4976,7 +5024,9 @@ pub use crate::ffi_types::ProjLib_Torus as Torus;
 
 unsafe impl crate::CppDeletable for Torus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::ProjLib_Torus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_Torus_destructor(ptr);
+        }
     }
 }
 

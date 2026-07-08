@@ -45,7 +45,9 @@ pub use crate::ffi_types::IGESGraph_Color as Color;
 
 unsafe impl crate::CppDeletable for Color {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_Color_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_Color_destructor(ptr);
+        }
     }
 }
 
@@ -939,13 +941,15 @@ pub use crate::ffi_types::HandleIGESGraphColor;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphColor_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphColor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphColor_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphColor_clone(ptr)) }
     }
 }
 
@@ -1027,7 +1031,9 @@ pub use crate::ffi_types::IGESGraph_DefinitionLevel as DefinitionLevel;
 
 unsafe impl crate::CppDeletable for DefinitionLevel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_DefinitionLevel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_DefinitionLevel_destructor(ptr);
+        }
     }
 }
 
@@ -1955,13 +1961,19 @@ pub use crate::ffi_types::HandleIGESGraphDefinitionLevel;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphDefinitionLevel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphDefinitionLevel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphDefinitionLevel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphDefinitionLevel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphDefinitionLevel_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphDefinitionLevel_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2036,7 +2048,9 @@ pub use crate::ffi_types::IGESGraph_DrawingSize as DrawingSize;
 
 unsafe impl crate::CppDeletable for DrawingSize {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_DrawingSize_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_DrawingSize_destructor(ptr);
+        }
     }
 }
 
@@ -2923,13 +2937,17 @@ pub use crate::ffi_types::HandleIGESGraphDrawingSize;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphDrawingSize {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphDrawingSize_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphDrawingSize_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphDrawingSize {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphDrawingSize_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphDrawingSize_clone(ptr))
+        }
     }
 }
 
@@ -3000,7 +3018,9 @@ pub use crate::ffi_types::IGESGraph_DrawingUnits as DrawingUnits;
 
 unsafe impl crate::CppDeletable for DrawingUnits {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_DrawingUnits_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_DrawingUnits_destructor(ptr);
+        }
     }
 }
 
@@ -3911,13 +3931,17 @@ pub use crate::ffi_types::HandleIGESGraphDrawingUnits;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphDrawingUnits {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphDrawingUnits_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphDrawingUnits_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphDrawingUnits {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphDrawingUnits_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphDrawingUnits_clone(ptr))
+        }
     }
 }
 
@@ -3985,7 +4009,9 @@ pub use crate::ffi_types::IGESGraph_GeneralModule as GeneralModule;
 
 unsafe impl crate::CppDeletable for GeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_GeneralModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_GeneralModule_destructor(ptr);
+        }
     }
 }
 
@@ -4571,13 +4597,17 @@ pub use crate::ffi_types::HandleIGESGraphGeneralModule;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphGeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphGeneralModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphGeneralModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphGeneralModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphGeneralModule_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphGeneralModule_clone(ptr))
+        }
     }
 }
 
@@ -4648,7 +4678,9 @@ pub use crate::ffi_types::IGESGraph_HArray1OfColor as HArray1OfColor;
 
 unsafe impl crate::CppDeletable for HArray1OfColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_HArray1OfColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_HArray1OfColor_destructor(ptr);
+        }
     }
 }
 
@@ -4870,13 +4902,19 @@ pub use crate::ffi_types::HandleIGESGraphHArray1OfColor;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphHArray1OfColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfColor_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphHArray1OfColor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfColor_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfColor_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4927,7 +4965,9 @@ pub use crate::ffi_types::IGESGraph_HArray1OfTextDisplayTemplate as HArray1OfTex
 
 unsafe impl crate::CppDeletable for HArray1OfTextDisplayTemplate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_HArray1OfTextDisplayTemplate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_HArray1OfTextDisplayTemplate_destructor(ptr);
+        }
     }
 }
 
@@ -5137,15 +5177,19 @@ pub use crate::ffi_types::HandleIGESGraphHArray1OfTextDisplayTemplate;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphHArray1OfTextDisplayTemplate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfTextDisplayTemplate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfTextDisplayTemplate_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphHArray1OfTextDisplayTemplate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfTextDisplayTemplate_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfTextDisplayTemplate_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5200,7 +5244,9 @@ pub use crate::ffi_types::IGESGraph_HArray1OfTextFontDef as HArray1OfTextFontDef
 
 unsafe impl crate::CppDeletable for HArray1OfTextFontDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_HArray1OfTextFontDef_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_HArray1OfTextFontDef_destructor(ptr);
+        }
     }
 }
 
@@ -5422,15 +5468,19 @@ pub use crate::ffi_types::HandleIGESGraphHArray1OfTextFontDef;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphHArray1OfTextFontDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfTextFontDef_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfTextFontDef_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphHArray1OfTextFontDef {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfTextFontDef_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESGraphHArray1OfTextFontDef_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5490,7 +5540,9 @@ pub use crate::ffi_types::IGESGraph_HighLight as HighLight;
 
 unsafe impl crate::CppDeletable for HighLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_HighLight_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_HighLight_destructor(ptr);
+        }
     }
 }
 
@@ -6362,13 +6414,17 @@ pub use crate::ffi_types::HandleIGESGraphHighLight;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphHighLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphHighLight_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphHighLight_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphHighLight {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphHighLight_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphHighLight_clone(ptr))
+        }
     }
 }
 
@@ -6437,7 +6493,9 @@ pub use crate::ffi_types::IGESGraph_IntercharacterSpacing as IntercharacterSpaci
 
 unsafe impl crate::CppDeletable for IntercharacterSpacing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_IntercharacterSpacing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_IntercharacterSpacing_destructor(ptr);
+        }
     }
 }
 
@@ -7288,15 +7346,19 @@ pub use crate::ffi_types::HandleIGESGraphIntercharacterSpacing;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphIntercharacterSpacing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphIntercharacterSpacing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphIntercharacterSpacing_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphIntercharacterSpacing {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphIntercharacterSpacing_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESGraphIntercharacterSpacing_clone(ptr),
+            )
+        }
     }
 }
 
@@ -7367,7 +7429,9 @@ pub use crate::ffi_types::IGESGraph_LineFontDefPattern as LineFontDefPattern;
 
 unsafe impl crate::CppDeletable for LineFontDefPattern {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_LineFontDefPattern_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_LineFontDefPattern_destructor(ptr);
+        }
     }
 }
 
@@ -8307,15 +8371,19 @@ pub use crate::ffi_types::HandleIGESGraphLineFontDefPattern;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphLineFontDefPattern {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontDefPattern_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontDefPattern_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphLineFontDefPattern {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontDefPattern_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontDefPattern_clone(ptr),
+            )
+        }
     }
 }
 
@@ -8395,7 +8463,9 @@ pub use crate::ffi_types::IGESGraph_LineFontDefTemplate as LineFontDefTemplate;
 
 unsafe impl crate::CppDeletable for LineFontDefTemplate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_LineFontDefTemplate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_LineFontDefTemplate_destructor(ptr);
+        }
     }
 }
 
@@ -9324,15 +9394,19 @@ pub use crate::ffi_types::HandleIGESGraphLineFontDefTemplate;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphLineFontDefTemplate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontDefTemplate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontDefTemplate_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphLineFontDefTemplate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontDefTemplate_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontDefTemplate_clone(ptr),
+            )
+        }
     }
 }
 
@@ -9411,7 +9485,9 @@ pub use crate::ffi_types::IGESGraph_LineFontPredefined as LineFontPredefined;
 
 unsafe impl crate::CppDeletable for LineFontPredefined {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_LineFontPredefined_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_LineFontPredefined_destructor(ptr);
+        }
     }
 }
 
@@ -10292,15 +10368,19 @@ pub use crate::ffi_types::HandleIGESGraphLineFontPredefined;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphLineFontPredefined {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontPredefined_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontPredefined_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphLineFontPredefined {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontPredefined_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESGraphLineFontPredefined_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10369,7 +10449,9 @@ pub use crate::ffi_types::IGESGraph_NominalSize as NominalSize;
 
 unsafe impl crate::CppDeletable for NominalSize {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_NominalSize_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_NominalSize_destructor(ptr);
+        }
     }
 }
 
@@ -11295,13 +11377,17 @@ pub use crate::ffi_types::HandleIGESGraphNominalSize;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphNominalSize {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphNominalSize_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphNominalSize_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphNominalSize {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphNominalSize_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphNominalSize_clone(ptr))
+        }
     }
 }
 
@@ -11373,7 +11459,9 @@ pub use crate::ffi_types::IGESGraph_Pick as Pick;
 
 unsafe impl crate::CppDeletable for Pick {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_Pick_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_Pick_destructor(ptr);
+        }
     }
 }
 
@@ -12184,13 +12272,15 @@ pub use crate::ffi_types::HandleIGESGraphPick;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphPick {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphPick_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphPick_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphPick {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphPick_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphPick_clone(ptr)) }
     }
 }
 
@@ -12255,7 +12345,9 @@ pub use crate::ffi_types::IGESGraph_Protocol as Protocol;
 
 unsafe impl crate::CppDeletable for Protocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_Protocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_Protocol_destructor(ptr);
+        }
     }
 }
 
@@ -12586,13 +12678,17 @@ pub use crate::ffi_types::HandleIGESGraphProtocol;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphProtocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphProtocol_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphProtocol {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphProtocol_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphProtocol_clone(ptr))
+        }
     }
 }
 
@@ -12672,7 +12768,9 @@ pub use crate::ffi_types::IGESGraph_ReadWriteModule as ReadWriteModule;
 
 unsafe impl crate::CppDeletable for ReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ReadWriteModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ReadWriteModule_destructor(ptr);
+        }
     }
 }
 
@@ -12975,13 +13073,19 @@ pub use crate::ffi_types::HandleIGESGraphReadWriteModule;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphReadWriteModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphReadWriteModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphReadWriteModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphReadWriteModule_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphReadWriteModule_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -13052,7 +13156,9 @@ pub use crate::ffi_types::IGESGraph_SpecificModule as SpecificModule;
 
 unsafe impl crate::CppDeletable for SpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_SpecificModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_SpecificModule_destructor(ptr);
+        }
     }
 }
 
@@ -13266,13 +13372,19 @@ pub use crate::ffi_types::HandleIGESGraphSpecificModule;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphSpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphSpecificModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphSpecificModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphSpecificModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphSpecificModule_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphSpecificModule_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -13338,7 +13450,9 @@ pub use crate::ffi_types::IGESGraph_TextDisplayTemplate as TextDisplayTemplate;
 
 unsafe impl crate::CppDeletable for TextDisplayTemplate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_TextDisplayTemplate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_TextDisplayTemplate_destructor(ptr);
+        }
     }
 }
 
@@ -14363,15 +14477,19 @@ pub use crate::ffi_types::HandleIGESGraphTextDisplayTemplate;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphTextDisplayTemplate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphTextDisplayTemplate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphTextDisplayTemplate_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphTextDisplayTemplate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphTextDisplayTemplate_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESGraphTextDisplayTemplate_clone(ptr),
+            )
+        }
     }
 }
 
@@ -14441,7 +14559,9 @@ pub use crate::ffi_types::IGESGraph_TextFontDef as TextFontDef;
 
 unsafe impl crate::CppDeletable for TextFontDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_TextFontDef_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_TextFontDef_destructor(ptr);
+        }
     }
 }
 
@@ -15471,13 +15591,17 @@ pub use crate::ffi_types::HandleIGESGraphTextFontDef;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphTextFontDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphTextFontDef_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphTextFontDef_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphTextFontDef {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphTextFontDef_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphTextFontDef_clone(ptr))
+        }
     }
 }
 
@@ -15545,7 +15669,9 @@ pub use crate::ffi_types::IGESGraph_ToolColor as ToolColor;
 
 unsafe impl crate::CppDeletable for ToolColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolColor_destructor(ptr);
+        }
     }
 }
 
@@ -15696,7 +15822,9 @@ pub use crate::ffi_types::IGESGraph_ToolDefinitionLevel as ToolDefinitionLevel;
 
 unsafe impl crate::CppDeletable for ToolDefinitionLevel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolDefinitionLevel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolDefinitionLevel_destructor(ptr);
+        }
     }
 }
 
@@ -15847,7 +15975,9 @@ pub use crate::ffi_types::IGESGraph_ToolDrawingSize as ToolDrawingSize;
 
 unsafe impl crate::CppDeletable for ToolDrawingSize {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolDrawingSize_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolDrawingSize_destructor(ptr);
+        }
     }
 }
 
@@ -16010,7 +16140,9 @@ pub use crate::ffi_types::IGESGraph_ToolDrawingUnits as ToolDrawingUnits;
 
 unsafe impl crate::CppDeletable for ToolDrawingUnits {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolDrawingUnits_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolDrawingUnits_destructor(ptr);
+        }
     }
 }
 
@@ -16173,7 +16305,9 @@ pub use crate::ffi_types::IGESGraph_ToolHighLight as ToolHighLight;
 
 unsafe impl crate::CppDeletable for ToolHighLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolHighLight_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolHighLight_destructor(ptr);
+        }
     }
 }
 
@@ -16336,7 +16470,9 @@ pub use crate::ffi_types::IGESGraph_ToolIntercharacterSpacing as ToolIntercharac
 
 unsafe impl crate::CppDeletable for ToolIntercharacterSpacing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolIntercharacterSpacing_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolIntercharacterSpacing_destructor(ptr);
+        }
     }
 }
 
@@ -16502,7 +16638,9 @@ pub use crate::ffi_types::IGESGraph_ToolLineFontDefPattern as ToolLineFontDefPat
 
 unsafe impl crate::CppDeletable for ToolLineFontDefPattern {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolLineFontDefPattern_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolLineFontDefPattern_destructor(ptr);
+        }
     }
 }
 
@@ -16653,7 +16791,9 @@ pub use crate::ffi_types::IGESGraph_ToolLineFontDefTemplate as ToolLineFontDefTe
 
 unsafe impl crate::CppDeletable for ToolLineFontDefTemplate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolLineFontDefTemplate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolLineFontDefTemplate_destructor(ptr);
+        }
     }
 }
 
@@ -16804,7 +16944,9 @@ pub use crate::ffi_types::IGESGraph_ToolLineFontPredefined as ToolLineFontPredef
 
 unsafe impl crate::CppDeletable for ToolLineFontPredefined {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolLineFontPredefined_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolLineFontPredefined_destructor(ptr);
+        }
     }
 }
 
@@ -16967,7 +17109,9 @@ pub use crate::ffi_types::IGESGraph_ToolNominalSize as ToolNominalSize;
 
 unsafe impl crate::CppDeletable for ToolNominalSize {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolNominalSize_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolNominalSize_destructor(ptr);
+        }
     }
 }
 
@@ -17130,7 +17274,9 @@ pub use crate::ffi_types::IGESGraph_ToolPick as ToolPick;
 
 unsafe impl crate::CppDeletable for ToolPick {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolPick_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolPick_destructor(ptr);
+        }
     }
 }
 
@@ -17290,7 +17436,9 @@ pub use crate::ffi_types::IGESGraph_ToolTextDisplayTemplate as ToolTextDisplayTe
 
 unsafe impl crate::CppDeletable for ToolTextDisplayTemplate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolTextDisplayTemplate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolTextDisplayTemplate_destructor(ptr);
+        }
     }
 }
 
@@ -17441,7 +17589,9 @@ pub use crate::ffi_types::IGESGraph_ToolTextFontDef as ToolTextFontDef;
 
 unsafe impl crate::CppDeletable for ToolTextFontDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolTextFontDef_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolTextFontDef_destructor(ptr);
+        }
     }
 }
 
@@ -17592,7 +17742,9 @@ pub use crate::ffi_types::IGESGraph_ToolUniformRectGrid as ToolUniformRectGrid;
 
 unsafe impl crate::CppDeletable for ToolUniformRectGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_ToolUniformRectGrid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_ToolUniformRectGrid_destructor(ptr);
+        }
     }
 }
 
@@ -17758,7 +17910,9 @@ pub use crate::ffi_types::IGESGraph_UniformRectGrid as UniformRectGrid;
 
 unsafe impl crate::CppDeletable for UniformRectGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGraph_UniformRectGrid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGraph_UniformRectGrid_destructor(ptr);
+        }
     }
 }
 
@@ -18731,13 +18885,19 @@ pub use crate::ffi_types::HandleIGESGraphUniformRectGrid;
 
 unsafe impl crate::CppDeletable for HandleIGESGraphUniformRectGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGraphUniformRectGrid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGraphUniformRectGrid_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGraphUniformRectGrid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphUniformRectGrid_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGraphUniformRectGrid_clone(
+                ptr,
+            ))
+        }
     }
 }
 

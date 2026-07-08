@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== DE_ConfigurationContext ========================
     pub fn DE_ConfigurationContext_destructor(self_: *mut DE_ConfigurationContext);
     /// **Source:** `DE_ConfigurationContext.hxx`:34 - `DE_ConfigurationContext::DE_ConfigurationContext()`

@@ -238,7 +238,9 @@ pub use crate::ffi_types::TopExp_Explorer as Explorer;
 
 unsafe impl crate::CppDeletable for Explorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopExp_Explorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopExp_Explorer_destructor(ptr);
+        }
     }
 }
 

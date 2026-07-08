@@ -148,7 +148,9 @@ pub use crate::ffi_types::TDocStd_Application as Application;
 
 unsafe impl crate::CppDeletable for Application {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_Application_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_Application_destructor(ptr);
+        }
     }
 }
 
@@ -978,13 +980,17 @@ pub use crate::ffi_types::HandleTDocStdApplication;
 
 unsafe impl crate::CppDeletable for HandleTDocStdApplication {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDocStdApplication_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDocStdApplication_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDocStdApplication {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdApplication_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdApplication_clone(ptr))
+        }
     }
 }
 
@@ -1133,7 +1139,9 @@ pub use crate::ffi_types::TDocStd_ApplicationDelta as ApplicationDelta;
 
 unsafe impl crate::CppDeletable for ApplicationDelta {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_ApplicationDelta_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_ApplicationDelta_destructor(ptr);
+        }
     }
 }
 
@@ -1318,13 +1326,17 @@ pub use crate::ffi_types::HandleTDocStdApplicationDelta;
 
 unsafe impl crate::CppDeletable for HandleTDocStdApplicationDelta {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDocStdApplicationDelta_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDocStdApplicationDelta_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDocStdApplicationDelta {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdApplicationDelta_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdApplicationDelta_clone(ptr))
+        }
     }
 }
 
@@ -1380,7 +1392,9 @@ pub use crate::ffi_types::TDocStd_CompoundDelta as CompoundDelta;
 
 unsafe impl crate::CppDeletable for CompoundDelta {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_CompoundDelta_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_CompoundDelta_destructor(ptr);
+        }
     }
 }
 
@@ -1629,13 +1643,17 @@ pub use crate::ffi_types::HandleTDocStdCompoundDelta;
 
 unsafe impl crate::CppDeletable for HandleTDocStdCompoundDelta {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDocStdCompoundDelta_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDocStdCompoundDelta_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDocStdCompoundDelta {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdCompoundDelta_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdCompoundDelta_clone(ptr))
+        }
     }
 }
 
@@ -1697,7 +1715,9 @@ pub use crate::ffi_types::TDocStd_Context as Context;
 
 unsafe impl crate::CppDeletable for Context {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_Context_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_Context_destructor(ptr);
+        }
     }
 }
 
@@ -1748,7 +1768,9 @@ pub use crate::ffi_types::TDocStd_Document as Document;
 
 unsafe impl crate::CppDeletable for Document {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_Document_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_Document_destructor(ptr);
+        }
     }
 }
 
@@ -3006,13 +3028,15 @@ pub use crate::ffi_types::HandleTDocStdDocument;
 
 unsafe impl crate::CppDeletable for HandleTDocStdDocument {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDocStdDocument_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDocStdDocument_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDocStdDocument {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdDocument_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdDocument_clone(ptr)) }
     }
 }
 
@@ -3076,7 +3100,9 @@ pub use crate::ffi_types::TDocStd_Modified as Modified;
 
 unsafe impl crate::CppDeletable for Modified {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_Modified_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_Modified_destructor(ptr);
+        }
     }
 }
 
@@ -3685,13 +3711,15 @@ pub use crate::ffi_types::HandleTDocStdModified;
 
 unsafe impl crate::CppDeletable for HandleTDocStdModified {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDocStdModified_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDocStdModified_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDocStdModified {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdModified_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdModified_clone(ptr)) }
     }
 }
 
@@ -3768,7 +3796,9 @@ pub use crate::ffi_types::TDocStd_MultiTransactionManager as MultiTransactionMan
 
 unsafe impl crate::CppDeletable for MultiTransactionManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_MultiTransactionManager_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_MultiTransactionManager_destructor(ptr);
+        }
     }
 }
 
@@ -4172,15 +4202,19 @@ pub use crate::ffi_types::HandleTDocStdMultiTransactionManager;
 
 unsafe impl crate::CppDeletable for HandleTDocStdMultiTransactionManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDocStdMultiTransactionManager_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDocStdMultiTransactionManager_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDocStdMultiTransactionManager {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdMultiTransactionManager_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTDocStdMultiTransactionManager_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4239,7 +4273,9 @@ pub use crate::ffi_types::TDocStd_Owner as Owner;
 
 unsafe impl crate::CppDeletable for Owner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_Owner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_Owner_destructor(ptr);
+        }
     }
 }
 
@@ -4822,13 +4858,15 @@ pub use crate::ffi_types::HandleTDocStdOwner;
 
 unsafe impl crate::CppDeletable for HandleTDocStdOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDocStdOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDocStdOwner_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDocStdOwner {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdOwner_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdOwner_clone(ptr)) }
     }
 }
 
@@ -4891,7 +4929,9 @@ pub use crate::ffi_types::TDocStd_PathParser as PathParser;
 
 unsafe impl crate::CppDeletable for PathParser {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_PathParser_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_PathParser_destructor(ptr);
+        }
     }
 }
 
@@ -4969,7 +5009,9 @@ pub use crate::ffi_types::TDocStd_XLink as XLink;
 
 unsafe impl crate::CppDeletable for XLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_XLink_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_XLink_destructor(ptr);
+        }
     }
 }
 
@@ -5575,13 +5617,15 @@ pub use crate::ffi_types::HandleTDocStdXLink;
 
 unsafe impl crate::CppDeletable for HandleTDocStdXLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDocStdXLink_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDocStdXLink_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDocStdXLink {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdXLink_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdXLink_clone(ptr)) }
     }
 }
 
@@ -5646,7 +5690,9 @@ pub use crate::ffi_types::TDocStd_XLinkIterator as XLinkIterator;
 
 unsafe impl crate::CppDeletable for XLinkIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_XLinkIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_XLinkIterator_destructor(ptr);
+        }
     }
 }
 
@@ -5728,7 +5774,9 @@ pub use crate::ffi_types::TDocStd_XLinkRoot as XLinkRoot;
 
 unsafe impl crate::CppDeletable for XLinkRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_XLinkRoot_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_XLinkRoot_destructor(ptr);
+        }
     }
 }
 
@@ -6288,13 +6336,15 @@ pub use crate::ffi_types::HandleTDocStdXLinkRoot;
 
 unsafe impl crate::CppDeletable for HandleTDocStdXLinkRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::HandleTDocStdXLinkRoot_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::HandleTDocStdXLinkRoot_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTDocStdXLinkRoot {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdXLinkRoot_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKLCAF::HandleTDocStdXLinkRoot_clone(ptr)) }
     }
 }
 
@@ -6372,7 +6422,9 @@ pub use crate::ffi_types::TDocStd_XLinkTool as XLinkTool;
 
 unsafe impl crate::CppDeletable for XLinkTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKLCAF::TDocStd_XLinkTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_XLinkTool_destructor(ptr);
+        }
     }
 }
 

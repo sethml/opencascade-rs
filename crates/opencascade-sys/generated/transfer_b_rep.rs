@@ -287,7 +287,9 @@ pub use crate::ffi_types::TransferBRep_BinderOfShape as BinderOfShape;
 
 unsafe impl crate::CppDeletable for BinderOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_destructor(ptr);
+        }
     }
 }
 
@@ -649,13 +651,19 @@ pub use crate::ffi_types::HandleTransferBRepBinderOfShape;
 
 unsafe impl crate::CppDeletable for HandleTransferBRepBinderOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferBRepBinderOfShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -733,7 +741,9 @@ pub use crate::ffi_types::TransferBRep_HSequenceOfTransferResultInfo as HSequenc
 
 unsafe impl crate::CppDeletable for HSequenceOfTransferResultInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_destructor(ptr);
+        }
     }
 }
 
@@ -912,15 +922,23 @@ pub use crate::ffi_types::HandleTransferBRepHSequenceOfTransferResultInfo;
 
 unsafe impl crate::CppDeletable for HandleTransferBRepHSequenceOfTransferResultInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferBRepHSequenceOfTransferResultInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepHSequenceOfTransferResultInfo_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferBRepHSequenceOfTransferResultInfo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKXSBase::HandleTransferBRepHSequenceOfTransferResultInfo_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferBRepHSequenceOfTransferResultInfo_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -980,7 +998,9 @@ pub use crate::ffi_types::TransferBRep_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::TransferBRep_Reader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::TransferBRep_Reader_destructor(ptr);
+        }
     }
 }
 
@@ -1376,7 +1396,9 @@ pub use crate::ffi_types::TransferBRep_ShapeBinder as ShapeBinder;
 
 unsafe impl crate::CppDeletable for ShapeBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_destructor(ptr);
+        }
     }
 }
 
@@ -1818,13 +1840,19 @@ pub use crate::ffi_types::HandleTransferBRepShapeBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferBRepShapeBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferBRepShapeBinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1897,7 +1925,9 @@ pub use crate::ffi_types::TransferBRep_ShapeInfo as ShapeInfo;
 
 unsafe impl crate::CppDeletable for ShapeInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::TransferBRep_ShapeInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::TransferBRep_ShapeInfo_destructor(ptr);
+        }
     }
 }
 
@@ -1952,7 +1982,9 @@ pub use crate::ffi_types::TransferBRep_ShapeListBinder as ShapeListBinder;
 
 unsafe impl crate::CppDeletable for ShapeListBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_destructor(ptr);
+        }
     }
 }
 
@@ -2420,15 +2452,19 @@ pub use crate::ffi_types::HandleTransferBRepShapeListBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferBRepShapeListBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferBRepShapeListBinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2490,7 +2526,9 @@ pub use crate::ffi_types::TransferBRep_ShapeMapper as ShapeMapper;
 
 unsafe impl crate::CppDeletable for ShapeMapper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_destructor(ptr);
+        }
     }
 }
 
@@ -2748,13 +2786,19 @@ pub use crate::ffi_types::HandleTransferBRepShapeMapper;
 
 unsafe impl crate::CppDeletable for HandleTransferBRepShapeMapper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferBRepShapeMapper {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2826,7 +2870,9 @@ pub use crate::ffi_types::TransferBRep_TransferResultInfo as TransferResultInfo;
 
 unsafe impl crate::CppDeletable for TransferResultInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::TransferBRep_TransferResultInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::TransferBRep_TransferResultInfo_destructor(ptr);
+        }
     }
 }
 
@@ -3072,15 +3118,19 @@ pub use crate::ffi_types::HandleTransferBRepTransferResultInfo;
 
 unsafe impl crate::CppDeletable for HandleTransferBRepTransferResultInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleTransferBRepTransferResultInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleTransferBRepTransferResultInfo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTransferBRepTransferResultInfo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepTransferResultInfo_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferBRepTransferResultInfo_clone(ptr),
+            )
+        }
     }
 }
 

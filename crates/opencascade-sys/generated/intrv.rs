@@ -77,7 +77,9 @@ pub use crate::ffi_types::Intrv_Interval as Interval;
 
 unsafe impl crate::CppDeletable for Interval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Intrv_Interval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Intrv_Interval_destructor(ptr);
+        }
     }
 }
 
@@ -411,7 +413,9 @@ pub use crate::ffi_types::Intrv_Intervals as Intervals;
 
 unsafe impl crate::CppDeletable for Intervals {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Intrv_Intervals_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Intrv_Intervals_destructor(ptr);
+        }
     }
 }
 

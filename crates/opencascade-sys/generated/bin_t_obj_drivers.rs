@@ -44,7 +44,9 @@ pub use crate::ffi_types::BinTObjDrivers_DocumentRetrievalDriver as DocumentRetr
 
 unsafe impl crate::CppDeletable for DocumentRetrievalDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::BinTObjDrivers_DocumentRetrievalDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::BinTObjDrivers_DocumentRetrievalDriver_destructor(ptr);
+        }
     }
 }
 
@@ -293,15 +295,21 @@ pub use crate::ffi_types::HandleBinTObjDriversDocumentRetrievalDriver;
 
 unsafe impl crate::CppDeletable for HandleBinTObjDriversDocumentRetrievalDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentRetrievalDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentRetrievalDriver_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinTObjDriversDocumentRetrievalDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentRetrievalDriver_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentRetrievalDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -381,7 +389,9 @@ pub use crate::ffi_types::BinTObjDrivers_DocumentStorageDriver as DocumentStorag
 
 unsafe impl crate::CppDeletable for DocumentStorageDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::BinTObjDrivers_DocumentStorageDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::BinTObjDrivers_DocumentStorageDriver_destructor(ptr);
+        }
     }
 }
 
@@ -690,15 +700,19 @@ pub use crate::ffi_types::HandleBinTObjDriversDocumentStorageDriver;
 
 unsafe impl crate::CppDeletable for HandleBinTObjDriversDocumentStorageDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentStorageDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentStorageDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinTObjDriversDocumentStorageDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentStorageDriver_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBinTObj::HandleBinTObjDriversDocumentStorageDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -778,7 +792,9 @@ pub use crate::ffi_types::BinTObjDrivers_IntSparseArrayDriver as IntSparseArrayD
 
 unsafe impl crate::CppDeletable for IntSparseArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::BinTObjDrivers_IntSparseArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::BinTObjDrivers_IntSparseArrayDriver_destructor(ptr);
+        }
     }
 }
 
@@ -999,15 +1015,19 @@ pub use crate::ffi_types::HandleBinTObjDriversIntSparseArrayDriver;
 
 unsafe impl crate::CppDeletable for HandleBinTObjDriversIntSparseArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::HandleBinTObjDriversIntSparseArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversIntSparseArrayDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinTObjDriversIntSparseArrayDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversIntSparseArrayDriver_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBinTObj::HandleBinTObjDriversIntSparseArrayDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1069,7 +1089,9 @@ pub use crate::ffi_types::BinTObjDrivers_ModelDriver as ModelDriver;
 
 unsafe impl crate::CppDeletable for ModelDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::BinTObjDrivers_ModelDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::BinTObjDrivers_ModelDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1318,13 +1340,19 @@ pub use crate::ffi_types::HandleBinTObjDriversModelDriver;
 
 unsafe impl crate::CppDeletable for HandleBinTObjDriversModelDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::HandleBinTObjDriversModelDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversModelDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinTObjDriversModelDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBinTObj::HandleBinTObjDriversModelDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBinTObj::HandleBinTObjDriversModelDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1388,7 +1416,9 @@ pub use crate::ffi_types::BinTObjDrivers_ObjectDriver as ObjectDriver;
 
 unsafe impl crate::CppDeletable for ObjectDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::BinTObjDrivers_ObjectDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::BinTObjDrivers_ObjectDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1633,15 +1663,19 @@ pub use crate::ffi_types::HandleBinTObjDriversObjectDriver;
 
 unsafe impl crate::CppDeletable for HandleBinTObjDriversObjectDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::HandleBinTObjDriversObjectDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversObjectDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinTObjDriversObjectDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBinTObj::HandleBinTObjDriversObjectDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBinTObj::HandleBinTObjDriversObjectDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1703,7 +1737,9 @@ pub use crate::ffi_types::BinTObjDrivers_ReferenceDriver as ReferenceDriver;
 
 unsafe impl crate::CppDeletable for ReferenceDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::BinTObjDrivers_ReferenceDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::BinTObjDrivers_ReferenceDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1942,15 +1978,19 @@ pub use crate::ffi_types::HandleBinTObjDriversReferenceDriver;
 
 unsafe impl crate::CppDeletable for HandleBinTObjDriversReferenceDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::HandleBinTObjDriversReferenceDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversReferenceDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinTObjDriversReferenceDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBinTObj::HandleBinTObjDriversReferenceDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBinTObj::HandleBinTObjDriversReferenceDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2012,7 +2052,9 @@ pub use crate::ffi_types::BinTObjDrivers_XYZDriver as XYZDriver;
 
 unsafe impl crate::CppDeletable for XYZDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::BinTObjDrivers_XYZDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::BinTObjDrivers_XYZDriver_destructor(ptr);
+        }
     }
 }
 
@@ -2261,13 +2303,19 @@ pub use crate::ffi_types::HandleBinTObjDriversXYZDriver;
 
 unsafe impl crate::CppDeletable for HandleBinTObjDriversXYZDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinTObj::HandleBinTObjDriversXYZDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinTObj::HandleBinTObjDriversXYZDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinTObjDriversXYZDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBinTObj::HandleBinTObjDriversXYZDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBinTObj::HandleBinTObjDriversXYZDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 

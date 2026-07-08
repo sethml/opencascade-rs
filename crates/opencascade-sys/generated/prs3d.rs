@@ -455,7 +455,9 @@ pub use crate::ffi_types::Prs3d_Arrow as Arrow;
 
 unsafe impl crate::CppDeletable for Arrow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_Arrow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_Arrow_destructor(ptr);
+        }
     }
 }
 
@@ -564,7 +566,9 @@ pub use crate::ffi_types::Prs3d_ArrowAspect as ArrowAspect;
 
 unsafe impl crate::CppDeletable for ArrowAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_ArrowAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_ArrowAspect_destructor(ptr);
+        }
     }
 }
 
@@ -830,13 +834,15 @@ pub use crate::ffi_types::HandlePrs3dArrowAspect;
 
 unsafe impl crate::CppDeletable for HandlePrs3dArrowAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dArrowAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dArrowAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dArrowAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dArrowAspect_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dArrowAspect_clone(ptr)) }
     }
 }
 
@@ -902,7 +908,9 @@ pub use crate::ffi_types::Prs3d_BasicAspect as BasicAspect;
 
 unsafe impl crate::CppDeletable for BasicAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_BasicAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_BasicAspect_destructor(ptr);
+        }
     }
 }
 
@@ -1025,13 +1033,15 @@ pub use crate::ffi_types::HandlePrs3dBasicAspect;
 
 unsafe impl crate::CppDeletable for HandlePrs3dBasicAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dBasicAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dBasicAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dBasicAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dBasicAspect_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dBasicAspect_clone(ptr)) }
     }
 }
 
@@ -1245,7 +1255,9 @@ pub use crate::ffi_types::Prs3d_BndBox as BndBox;
 
 unsafe impl crate::CppDeletable for BndBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_BndBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_BndBox_destructor(ptr);
+        }
     }
 }
 
@@ -1383,7 +1395,9 @@ pub use crate::ffi_types::Prs3d_DatumAspect as DatumAspect;
 
 unsafe impl crate::CppDeletable for DatumAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_DatumAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_DatumAspect_destructor(ptr);
+        }
     }
 }
 
@@ -1783,13 +1797,15 @@ pub use crate::ffi_types::HandlePrs3dDatumAspect;
 
 unsafe impl crate::CppDeletable for HandlePrs3dDatumAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dDatumAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dDatumAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dDatumAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dDatumAspect_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dDatumAspect_clone(ptr)) }
     }
 }
 
@@ -1854,7 +1870,9 @@ pub use crate::ffi_types::Prs3d_DimensionAspect as DimensionAspect;
 
 unsafe impl crate::CppDeletable for DimensionAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_DimensionAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_DimensionAspect_destructor(ptr);
+        }
     }
 }
 
@@ -2309,13 +2327,17 @@ pub use crate::ffi_types::HandlePrs3dDimensionAspect;
 
 unsafe impl crate::CppDeletable for HandlePrs3dDimensionAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dDimensionAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dDimensionAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dDimensionAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dDimensionAspect_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dDimensionAspect_clone(ptr))
+        }
     }
 }
 
@@ -2382,13 +2404,15 @@ pub use crate::ffi_types::Prs3d_DimensionUnits as DimensionUnits;
 
 unsafe impl crate::CppDeletable for DimensionUnits {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_DimensionUnits_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_DimensionUnits_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for DimensionUnits {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::Prs3d_DimensionUnits_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::Prs3d_DimensionUnits_clone(ptr)) }
     }
 }
 
@@ -2469,7 +2493,9 @@ pub use crate::ffi_types::Prs3d_Drawer as Drawer;
 
 unsafe impl crate::CppDeletable for Drawer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_Drawer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_Drawer_destructor(ptr);
+        }
     }
 }
 
@@ -4369,13 +4395,15 @@ pub use crate::ffi_types::HandlePrs3dDrawer;
 
 unsafe impl crate::CppDeletable for HandlePrs3dDrawer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dDrawer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dDrawer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dDrawer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dDrawer_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dDrawer_clone(ptr)) }
     }
 }
 
@@ -4457,7 +4485,9 @@ pub use crate::ffi_types::Prs3d_InvalidAngle as InvalidAngle;
 
 unsafe impl crate::CppDeletable for InvalidAngle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_InvalidAngle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_InvalidAngle_destructor(ptr);
+        }
     }
 }
 
@@ -4762,13 +4792,15 @@ pub use crate::ffi_types::HandlePrs3dInvalidAngle;
 
 unsafe impl crate::CppDeletable for HandlePrs3dInvalidAngle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dInvalidAngle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dInvalidAngle_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dInvalidAngle {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dInvalidAngle_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dInvalidAngle_clone(ptr)) }
     }
 }
 
@@ -4859,7 +4891,9 @@ pub use crate::ffi_types::Prs3d_IsoAspect as IsoAspect;
 
 unsafe impl crate::CppDeletable for IsoAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_IsoAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_IsoAspect_destructor(ptr);
+        }
     }
 }
 
@@ -5114,13 +5148,15 @@ pub use crate::ffi_types::HandlePrs3dIsoAspect;
 
 unsafe impl crate::CppDeletable for HandlePrs3dIsoAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dIsoAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dIsoAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dIsoAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dIsoAspect_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dIsoAspect_clone(ptr)) }
     }
 }
 
@@ -5205,7 +5241,9 @@ pub use crate::ffi_types::Prs3d_LineAspect as LineAspect;
 
 unsafe impl crate::CppDeletable for LineAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_LineAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_LineAspect_destructor(ptr);
+        }
     }
 }
 
@@ -5440,13 +5478,15 @@ pub use crate::ffi_types::HandlePrs3dLineAspect;
 
 unsafe impl crate::CppDeletable for HandlePrs3dLineAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dLineAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dLineAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dLineAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dLineAspect_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dLineAspect_clone(ptr)) }
     }
 }
 
@@ -5529,7 +5569,9 @@ pub use crate::ffi_types::Prs3d_PlaneAspect as PlaneAspect;
 
 unsafe impl crate::CppDeletable for PlaneAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_PlaneAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_PlaneAspect_destructor(ptr);
+        }
     }
 }
 
@@ -5889,13 +5931,15 @@ pub use crate::ffi_types::HandlePrs3dPlaneAspect;
 
 unsafe impl crate::CppDeletable for HandlePrs3dPlaneAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dPlaneAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dPlaneAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dPlaneAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dPlaneAspect_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dPlaneAspect_clone(ptr)) }
     }
 }
 
@@ -5962,7 +6006,9 @@ pub use crate::ffi_types::Prs3d_PointAspect as PointAspect;
 
 unsafe impl crate::CppDeletable for PointAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_PointAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_PointAspect_destructor(ptr);
+        }
     }
 }
 
@@ -6227,13 +6273,15 @@ pub use crate::ffi_types::HandlePrs3dPointAspect;
 
 unsafe impl crate::CppDeletable for HandlePrs3dPointAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dPointAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dPointAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dPointAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dPointAspect_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dPointAspect_clone(ptr)) }
     }
 }
 
@@ -6298,7 +6346,9 @@ pub use crate::ffi_types::Prs3d_PresentationShadow as PresentationShadow;
 
 unsafe impl crate::CppDeletable for PresentationShadow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_PresentationShadow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_PresentationShadow_destructor(ptr);
+        }
     }
 }
 
@@ -7088,13 +7138,17 @@ pub use crate::ffi_types::HandlePrs3dPresentationShadow;
 
 unsafe impl crate::CppDeletable for HandlePrs3dPresentationShadow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dPresentationShadow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dPresentationShadow_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dPresentationShadow {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dPresentationShadow_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dPresentationShadow_clone(ptr))
+        }
     }
 }
 
@@ -7165,7 +7219,9 @@ pub use crate::ffi_types::Prs3d_ShadingAspect as ShadingAspect;
 
 unsafe impl crate::CppDeletable for ShadingAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_ShadingAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_ShadingAspect_destructor(ptr);
+        }
     }
 }
 
@@ -7447,13 +7503,15 @@ pub use crate::ffi_types::HandlePrs3dShadingAspect;
 
 unsafe impl crate::CppDeletable for HandlePrs3dShadingAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dShadingAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dShadingAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dShadingAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dShadingAspect_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dShadingAspect_clone(ptr)) }
     }
 }
 
@@ -7518,7 +7576,9 @@ pub use crate::ffi_types::Prs3d_Text as Text;
 
 unsafe impl crate::CppDeletable for Text {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_Text_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_Text_destructor(ptr);
+        }
     }
 }
 
@@ -7582,7 +7642,9 @@ pub use crate::ffi_types::Prs3d_TextAspect as TextAspect;
 
 unsafe impl crate::CppDeletable for TextAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_TextAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_TextAspect_destructor(ptr);
+        }
     }
 }
 
@@ -7913,13 +7975,15 @@ pub use crate::ffi_types::HandlePrs3dTextAspect;
 
 unsafe impl crate::CppDeletable for HandlePrs3dTextAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandlePrs3dTextAspect_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandlePrs3dTextAspect_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandlePrs3dTextAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dTextAspect_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandlePrs3dTextAspect_clone(ptr)) }
     }
 }
 
@@ -7984,7 +8048,9 @@ pub use crate::ffi_types::Prs3d_ToolCylinder as ToolCylinder;
 
 unsafe impl crate::CppDeletable for ToolCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_ToolCylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_ToolCylinder_destructor(ptr);
+        }
     }
 }
 
@@ -8140,7 +8206,9 @@ pub use crate::ffi_types::Prs3d_ToolDisk as ToolDisk;
 
 unsafe impl crate::CppDeletable for ToolDisk {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_ToolDisk_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_ToolDisk_destructor(ptr);
+        }
     }
 }
 
@@ -8302,7 +8370,9 @@ pub use crate::ffi_types::Prs3d_ToolQuadric as ToolQuadric;
 
 unsafe impl crate::CppDeletable for ToolQuadric {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_ToolQuadric_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_ToolQuadric_destructor(ptr);
+        }
     }
 }
 
@@ -8414,7 +8484,9 @@ pub use crate::ffi_types::Prs3d_ToolSector as ToolSector;
 
 unsafe impl crate::CppDeletable for ToolSector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_ToolSector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_ToolSector_destructor(ptr);
+        }
     }
 }
 
@@ -8558,7 +8630,9 @@ pub use crate::ffi_types::Prs3d_ToolSphere as ToolSphere;
 
 unsafe impl crate::CppDeletable for ToolSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_ToolSphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_ToolSphere_destructor(ptr);
+        }
     }
 }
 
@@ -8702,7 +8776,9 @@ pub use crate::ffi_types::Prs3d_ToolTorus as ToolTorus;
 
 unsafe impl crate::CppDeletable for ToolTorus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Prs3d_ToolTorus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Prs3d_ToolTorus_destructor(ptr);
+        }
     }
 }
 

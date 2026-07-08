@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== FSD_Base64 ========================
     pub fn FSD_Base64_destructor(self_: *mut FSD_Base64);
     /// **Source:** `FSD_Base64.hxx` - `FSD_Base64::FSD_Base64()`

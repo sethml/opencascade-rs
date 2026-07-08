@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== BRepApprox_Approx ========================
     pub fn BRepApprox_Approx_destructor(self_: *mut BRepApprox_Approx);
     /// **Source:** `BRepApprox_Approx.hxx`:85 - `BRepApprox_Approx::BRepApprox_Approx()`

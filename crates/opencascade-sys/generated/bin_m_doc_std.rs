@@ -30,7 +30,9 @@ pub use crate::ffi_types::BinMDocStd_XLinkDriver as XLinkDriver;
 
 unsafe impl crate::CppDeletable for XLinkDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinL::BinMDocStd_XLinkDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinL::BinMDocStd_XLinkDriver_destructor(ptr);
+        }
     }
 }
 
@@ -271,13 +273,17 @@ pub use crate::ffi_types::HandleBinMDocStdXLinkDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMDocStdXLinkDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBinL::HandleBinMDocStdXLinkDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBinL::HandleBinMDocStdXLinkDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinMDocStdXLinkDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDocStdXLinkDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBinL::HandleBinMDocStdXLinkDriver_clone(ptr))
+        }
     }
 }
 

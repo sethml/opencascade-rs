@@ -55,7 +55,9 @@ pub use crate::ffi_types::TObj_Application as Application;
 
 unsafe impl crate::CppDeletable for Application {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_Application_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_Application_destructor(ptr);
+        }
     }
 }
 
@@ -818,13 +820,15 @@ pub use crate::ffi_types::HandleTObjApplication;
 
 unsafe impl crate::CppDeletable for HandleTObjApplication {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjApplication_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjApplication_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjApplication {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjApplication_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTObj::HandleTObjApplication_clone(ptr)) }
     }
 }
 
@@ -921,7 +925,9 @@ pub use crate::ffi_types::TObj_Assistant as Assistant;
 
 unsafe impl crate::CppDeletable for Assistant {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_Assistant_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_Assistant_destructor(ptr);
+        }
     }
 }
 
@@ -1047,7 +1053,9 @@ pub use crate::ffi_types::TObj_CheckModel as CheckModel;
 
 unsafe impl crate::CppDeletable for CheckModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_CheckModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_CheckModel_destructor(ptr);
+        }
     }
 }
 
@@ -1375,13 +1383,15 @@ pub use crate::ffi_types::HandleTObjCheckModel;
 
 unsafe impl crate::CppDeletable for HandleTObjCheckModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjCheckModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjCheckModel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjCheckModel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjCheckModel_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTObj::HandleTObjCheckModel_clone(ptr)) }
     }
 }
 
@@ -1445,7 +1455,9 @@ pub use crate::ffi_types::TObj_HiddenPartition as HiddenPartition;
 
 unsafe impl crate::CppDeletable for HiddenPartition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_HiddenPartition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_destructor(ptr);
+        }
     }
 }
 
@@ -2191,13 +2203,17 @@ pub use crate::ffi_types::HandleTObjHiddenPartition;
 
 unsafe impl crate::CppDeletable for HandleTObjHiddenPartition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjHiddenPartition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjHiddenPartition_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjHiddenPartition {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjHiddenPartition_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTObj::HandleTObjHiddenPartition_clone(ptr))
+        }
     }
 }
 
@@ -2272,7 +2288,9 @@ pub use crate::ffi_types::TObj_LabelIterator as LabelIterator;
 
 unsafe impl crate::CppDeletable for LabelIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_LabelIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_LabelIterator_destructor(ptr);
+        }
     }
 }
 
@@ -2460,13 +2478,15 @@ pub use crate::ffi_types::HandleTObjLabelIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjLabelIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjLabelIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjLabelIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjLabelIterator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjLabelIterator_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTObj::HandleTObjLabelIterator_clone(ptr)) }
     }
 }
 
@@ -3042,13 +3062,15 @@ pub use crate::ffi_types::HandleTObjModel;
 
 unsafe impl crate::CppDeletable for HandleTObjModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjModel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjModel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjModel_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTObj::HandleTObjModel_clone(ptr)) }
     }
 }
 
@@ -3101,7 +3123,9 @@ pub use crate::ffi_types::TObj_ModelIterator as ModelIterator;
 
 unsafe impl crate::CppDeletable for ModelIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_ModelIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_ModelIterator_destructor(ptr);
+        }
     }
 }
 
@@ -3306,13 +3330,15 @@ pub use crate::ffi_types::HandleTObjModelIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjModelIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjModelIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjModelIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjModelIterator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjModelIterator_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTObj::HandleTObjModelIterator_clone(ptr)) }
     }
 }
 
@@ -3377,7 +3403,9 @@ pub use crate::ffi_types::TObj_Object as Object;
 
 unsafe impl crate::CppDeletable for Object {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_Object_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_Object_destructor(ptr);
+        }
     }
 }
 
@@ -4099,13 +4127,15 @@ pub use crate::ffi_types::HandleTObjObject;
 
 unsafe impl crate::CppDeletable for HandleTObjObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjObject_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTObj::HandleTObjObject_clone(ptr)) }
     }
 }
 
@@ -4195,7 +4225,9 @@ pub use crate::ffi_types::TObj_ObjectIterator as ObjectIterator;
 
 unsafe impl crate::CppDeletable for ObjectIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_ObjectIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_ObjectIterator_destructor(ptr);
+        }
     }
 }
 
@@ -4376,13 +4408,17 @@ pub use crate::ffi_types::HandleTObjObjectIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjObjectIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjObjectIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjObjectIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjObjectIterator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjObjectIterator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTObj::HandleTObjObjectIterator_clone(ptr))
+        }
     }
 }
 
@@ -4502,7 +4538,9 @@ pub use crate::ffi_types::TObj_OcafObjectIterator as OcafObjectIterator;
 
 unsafe impl crate::CppDeletable for OcafObjectIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_destructor(ptr);
+        }
     }
 }
 
@@ -4774,13 +4812,17 @@ pub use crate::ffi_types::HandleTObjOcafObjectIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjOcafObjectIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjOcafObjectIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjOcafObjectIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjOcafObjectIterator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjOcafObjectIterator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTObj::HandleTObjOcafObjectIterator_clone(ptr))
+        }
     }
 }
 
@@ -4862,7 +4904,9 @@ pub use crate::ffi_types::TObj_Partition as Partition;
 
 unsafe impl crate::CppDeletable for Partition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_Partition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_Partition_destructor(ptr);
+        }
     }
 }
 
@@ -5582,13 +5626,15 @@ pub use crate::ffi_types::HandleTObjPartition;
 
 unsafe impl crate::CppDeletable for HandleTObjPartition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjPartition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjPartition_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjPartition {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjPartition_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTObj::HandleTObjPartition_clone(ptr)) }
     }
 }
 
@@ -5715,7 +5761,9 @@ pub use crate::ffi_types::TObj_ReferenceIterator as ReferenceIterator;
 
 unsafe impl crate::CppDeletable for ReferenceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_ReferenceIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_ReferenceIterator_destructor(ptr);
+        }
     }
 }
 
@@ -5967,13 +6015,17 @@ pub use crate::ffi_types::HandleTObjReferenceIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjReferenceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjReferenceIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjReferenceIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjReferenceIterator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjReferenceIterator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTObj::HandleTObjReferenceIterator_clone(ptr))
+        }
     }
 }
 
@@ -6054,7 +6106,9 @@ pub use crate::ffi_types::TObj_SequenceIterator as SequenceIterator;
 
 unsafe impl crate::CppDeletable for SequenceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_SequenceIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_SequenceIterator_destructor(ptr);
+        }
     }
 }
 
@@ -6256,13 +6310,17 @@ pub use crate::ffi_types::HandleTObjSequenceIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjSequenceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjSequenceIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjSequenceIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjSequenceIterator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjSequenceIterator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTObj::HandleTObjSequenceIterator_clone(ptr))
+        }
     }
 }
 
@@ -6326,7 +6384,9 @@ pub use crate::ffi_types::TObj_HSequenceOfObject as HSequenceOfObject;
 
 unsafe impl crate::CppDeletable for HSequenceOfObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_destructor(ptr);
+        }
     }
 }
 
@@ -6527,13 +6587,17 @@ pub use crate::ffi_types::HandleTObjHSequenceOfObject;
 
 unsafe impl crate::CppDeletable for HandleTObjHSequenceOfObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjHSequenceOfObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjHSequenceOfObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjHSequenceOfObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjHSequenceOfObject_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTObj::HandleTObjHSequenceOfObject_clone(ptr))
+        }
     }
 }
 
@@ -6590,7 +6654,9 @@ pub use crate::ffi_types::TObj_TIntSparseArray as TIntSparseArray;
 
 unsafe impl crate::CppDeletable for TIntSparseArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_TIntSparseArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_destructor(ptr);
+        }
     }
 }
 
@@ -7223,13 +7289,17 @@ pub use crate::ffi_types::HandleTObjTIntSparseArray;
 
 unsafe impl crate::CppDeletable for HandleTObjTIntSparseArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjTIntSparseArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjTIntSparseArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjTIntSparseArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTIntSparseArray_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTIntSparseArray_clone(ptr))
+        }
     }
 }
 
@@ -7295,7 +7365,9 @@ pub use crate::ffi_types::TObj_TModel as TModel;
 
 unsafe impl crate::CppDeletable for TModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_TModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_TModel_destructor(ptr);
+        }
     }
 }
 
@@ -7800,13 +7872,15 @@ pub use crate::ffi_types::HandleTObjTModel;
 
 unsafe impl crate::CppDeletable for HandleTObjTModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjTModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjTModel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjTModel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTModel_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTModel_clone(ptr)) }
     }
 }
 
@@ -7871,7 +7945,9 @@ pub use crate::ffi_types::TObj_TNameContainer as TNameContainer;
 
 unsafe impl crate::CppDeletable for TNameContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_TNameContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_destructor(ptr);
+        }
     }
 }
 
@@ -8473,13 +8549,17 @@ pub use crate::ffi_types::HandleTObjTNameContainer;
 
 unsafe impl crate::CppDeletable for HandleTObjTNameContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjTNameContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjTNameContainer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjTNameContainer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTNameContainer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTNameContainer_clone(ptr))
+        }
     }
 }
 
@@ -8546,7 +8626,9 @@ pub use crate::ffi_types::TObj_TObject as TObject;
 
 unsafe impl crate::CppDeletable for TObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_TObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_TObject_destructor(ptr);
+        }
     }
 }
 
@@ -9078,13 +9160,15 @@ pub use crate::ffi_types::HandleTObjTObject;
 
 unsafe impl crate::CppDeletable for HandleTObjTObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjTObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjTObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjTObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTObject_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTObject_clone(ptr)) }
     }
 }
 
@@ -9153,7 +9237,9 @@ pub use crate::ffi_types::TObj_TReference as TReference;
 
 unsafe impl crate::CppDeletable for TReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_TReference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_TReference_destructor(ptr);
+        }
     }
 }
 
@@ -9744,13 +9830,15 @@ pub use crate::ffi_types::HandleTObjTReference;
 
 unsafe impl crate::CppDeletable for HandleTObjTReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjTReference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjTReference_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjTReference {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTReference_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTReference_clone(ptr)) }
     }
 }
 
@@ -9813,7 +9901,9 @@ pub use crate::ffi_types::TObj_TXYZ as TXYZ;
 
 unsafe impl crate::CppDeletable for TXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::TObj_TXYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::TObj_TXYZ_destructor(ptr);
+        }
     }
 }
 
@@ -10341,13 +10431,15 @@ pub use crate::ffi_types::HandleTObjTXYZ;
 
 unsafe impl crate::CppDeletable for HandleTObjTXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTObj::HandleTObjTXYZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTObj::HandleTObjTXYZ_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTObjTXYZ {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTXYZ_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTXYZ_clone(ptr)) }
     }
 }
 

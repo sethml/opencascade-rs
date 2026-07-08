@@ -77,7 +77,9 @@ pub use crate::ffi_types::Hatch_Hatcher as Hatcher;
 
 unsafe impl crate::CppDeletable for Hatcher {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Hatch_Hatcher_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Hatch_Hatcher_destructor(ptr);
+        }
     }
 }
 
@@ -343,7 +345,9 @@ pub use crate::ffi_types::Hatch_Line as Line;
 
 unsafe impl crate::CppDeletable for Line {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Hatch_Line_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Hatch_Line_destructor(ptr);
+        }
     }
 }
 
@@ -406,7 +410,9 @@ pub use crate::ffi_types::Hatch_Parameter as Parameter;
 
 unsafe impl crate::CppDeletable for Parameter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Hatch_Parameter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Hatch_Parameter_destructor(ptr);
+        }
     }
 }
 

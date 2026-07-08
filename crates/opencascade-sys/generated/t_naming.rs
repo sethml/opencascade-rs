@@ -340,7 +340,9 @@ pub use crate::ffi_types::TNaming_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_Builder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Builder_destructor(ptr);
+        }
     }
 }
 
@@ -436,7 +438,9 @@ pub use crate::ffi_types::TNaming_CopyShape as CopyShape;
 
 unsafe impl crate::CppDeletable for CopyShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_CopyShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_CopyShape_destructor(ptr);
+        }
     }
 }
 
@@ -503,7 +507,9 @@ pub use crate::ffi_types::TNaming_DeltaOnModification as DeltaOnModification;
 
 unsafe impl crate::CppDeletable for DeltaOnModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_destructor(ptr);
+        }
     }
 }
 
@@ -748,13 +754,19 @@ pub use crate::ffi_types::HandleTNamingDeltaOnModification;
 
 unsafe impl crate::CppDeletable for HandleTNamingDeltaOnModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTNamingDeltaOnModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -823,7 +835,9 @@ pub use crate::ffi_types::TNaming_DeltaOnRemoval as DeltaOnRemoval;
 
 unsafe impl crate::CppDeletable for DeltaOnRemoval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_destructor(ptr);
+        }
     }
 }
 
@@ -1058,13 +1072,17 @@ pub use crate::ffi_types::HandleTNamingDeltaOnRemoval;
 
 unsafe impl crate::CppDeletable for HandleTNamingDeltaOnRemoval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTNamingDeltaOnRemoval {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_clone(ptr))
+        }
     }
 }
 
@@ -1141,7 +1159,9 @@ pub use crate::ffi_types::TNaming_Identifier as Identifier;
 
 unsafe impl crate::CppDeletable for Identifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_Identifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Identifier_destructor(ptr);
+        }
     }
 }
 
@@ -1352,7 +1372,9 @@ pub use crate::ffi_types::TNaming_Iterator as Iterator;
 
 unsafe impl crate::CppDeletable for Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Iterator_destructor(ptr);
+        }
     }
 }
 
@@ -1457,7 +1479,9 @@ pub use crate::ffi_types::TNaming_IteratorOnShapesSet as IteratorOnShapesSet;
 
 unsafe impl crate::CppDeletable for IteratorOnShapesSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_IteratorOnShapesSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_IteratorOnShapesSet_destructor(ptr);
+        }
     }
 }
 
@@ -1524,7 +1548,9 @@ pub use crate::ffi_types::TNaming_Localizer as Localizer;
 
 unsafe impl crate::CppDeletable for Localizer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_Localizer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Localizer_destructor(ptr);
+        }
     }
 }
 
@@ -1703,7 +1729,9 @@ pub use crate::ffi_types::TNaming_Name as Name;
 
 unsafe impl crate::CppDeletable for Name {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_Name_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Name_destructor(ptr);
+        }
     }
 }
 
@@ -1884,7 +1912,9 @@ pub use crate::ffi_types::TNaming_NamedShape as NamedShape;
 
 unsafe impl crate::CppDeletable for NamedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_NamedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_destructor(ptr);
+        }
     }
 }
 
@@ -2495,13 +2525,15 @@ pub use crate::ffi_types::HandleTNamingNamedShape;
 
 unsafe impl crate::CppDeletable for HandleTNamingNamedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::HandleTNamingNamedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::HandleTNamingNamedShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTNamingNamedShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingNamedShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingNamedShape_clone(ptr)) }
     }
 }
 
@@ -2568,7 +2600,9 @@ pub use crate::ffi_types::TNaming_Naming as Naming;
 
 unsafe impl crate::CppDeletable for Naming {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_Naming_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Naming_destructor(ptr);
+        }
     }
 }
 
@@ -3168,13 +3202,15 @@ pub use crate::ffi_types::HandleTNamingNaming;
 
 unsafe impl crate::CppDeletable for HandleTNamingNaming {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::HandleTNamingNaming_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::HandleTNamingNaming_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTNamingNaming {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingNaming_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingNaming_clone(ptr)) }
     }
 }
 
@@ -3236,7 +3272,9 @@ pub use crate::ffi_types::TNaming_NamingTool as NamingTool;
 
 unsafe impl crate::CppDeletable for NamingTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_NamingTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_NamingTool_destructor(ptr);
+        }
     }
 }
 
@@ -3299,13 +3337,15 @@ pub use crate::ffi_types::TNaming_NewShapeIterator as NewShapeIterator;
 
 unsafe impl crate::CppDeletable for NewShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for NewShapeIterator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_clone(ptr)) }
     }
 }
 
@@ -3421,13 +3461,15 @@ pub use crate::ffi_types::TNaming_OldShapeIterator as OldShapeIterator;
 
 unsafe impl crate::CppDeletable for OldShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for OldShapeIterator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_clone(ptr)) }
     }
 }
 
@@ -3541,7 +3583,9 @@ pub use crate::ffi_types::TNaming_RefShape as RefShape;
 
 unsafe impl crate::CppDeletable for RefShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_RefShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_RefShape_destructor(ptr);
+        }
     }
 }
 
@@ -3620,7 +3664,9 @@ pub use crate::ffi_types::TNaming_SameShapeIterator as SameShapeIterator;
 
 unsafe impl crate::CppDeletable for SameShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_SameShapeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_SameShapeIterator_destructor(ptr);
+        }
     }
 }
 
@@ -3672,7 +3718,9 @@ pub use crate::ffi_types::TNaming_Scope as Scope;
 
 unsafe impl crate::CppDeletable for Scope {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_Scope_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Scope_destructor(ptr);
+        }
     }
 }
 
@@ -3839,7 +3887,9 @@ pub use crate::ffi_types::TNaming_Selector as Selector;
 
 unsafe impl crate::CppDeletable for Selector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_Selector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Selector_destructor(ptr);
+        }
     }
 }
 
@@ -3972,7 +4022,9 @@ pub use crate::ffi_types::TNaming_ShapesSet as ShapesSet;
 
 unsafe impl crate::CppDeletable for ShapesSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_ShapesSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_ShapesSet_destructor(ptr);
+        }
     }
 }
 
@@ -4102,7 +4154,9 @@ pub use crate::ffi_types::TNaming_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Tool_destructor(ptr);
+        }
     }
 }
 
@@ -4357,7 +4411,9 @@ pub use crate::ffi_types::TNaming_TranslateTool as TranslateTool;
 
 unsafe impl crate::CppDeletable for TranslateTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_TranslateTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_destructor(ptr);
+        }
     }
 }
 
@@ -4628,13 +4684,17 @@ pub use crate::ffi_types::HandleTNamingTranslateTool;
 
 unsafe impl crate::CppDeletable for HandleTNamingTranslateTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::HandleTNamingTranslateTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::HandleTNamingTranslateTool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTNamingTranslateTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingTranslateTool_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingTranslateTool_clone(ptr))
+        }
     }
 }
 
@@ -4686,7 +4746,9 @@ pub use crate::ffi_types::TNaming_Translator as Translator;
 
 unsafe impl crate::CppDeletable for Translator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_Translator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Translator_destructor(ptr);
+        }
     }
 }
 
@@ -4769,7 +4831,9 @@ pub use crate::ffi_types::TNaming_UsedShapes as UsedShapes;
 
 unsafe impl crate::CppDeletable for UsedShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::TNaming_UsedShapes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_destructor(ptr);
+        }
     }
 }
 
@@ -5329,13 +5393,15 @@ pub use crate::ffi_types::HandleTNamingUsedShapes;
 
 unsafe impl crate::CppDeletable for HandleTNamingUsedShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTNamingUsedShapes {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_clone(ptr)) }
     }
 }
 

@@ -50,7 +50,9 @@ pub use crate::ffi_types::BRepExtrema_DistShapeShape as DistShapeShape;
 
 unsafe impl crate::CppDeletable for DistShapeShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_destructor(ptr);
+        }
     }
 }
 
@@ -394,7 +396,9 @@ pub use crate::ffi_types::BRepExtrema_DistanceSS as DistanceSS;
 
 unsafe impl crate::CppDeletable for DistanceSS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_DistanceSS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_DistanceSS_destructor(ptr);
+        }
     }
 }
 
@@ -477,7 +481,9 @@ pub use crate::ffi_types::BRepExtrema_ElementFilter as ElementFilter;
 
 unsafe impl crate::CppDeletable for ElementFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ElementFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ElementFilter_destructor(ptr);
+        }
     }
 }
 
@@ -521,7 +527,9 @@ pub use crate::ffi_types::BRepExtrema_ExtCC as ExtCC;
 
 unsafe impl crate::CppDeletable for ExtCC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCC_destructor(ptr);
+        }
     }
 }
 
@@ -672,7 +680,9 @@ pub use crate::ffi_types::BRepExtrema_ExtCF as ExtCF;
 
 unsafe impl crate::CppDeletable for ExtCF {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCF_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCF_destructor(ptr);
+        }
     }
 }
 
@@ -804,7 +814,9 @@ pub use crate::ffi_types::BRepExtrema_ExtFF as ExtFF;
 
 unsafe impl crate::CppDeletable for ExtFF {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtFF_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtFF_destructor(ptr);
+        }
     }
 }
 
@@ -941,7 +953,9 @@ pub use crate::ffi_types::BRepExtrema_ExtPC as ExtPC;
 
 unsafe impl crate::CppDeletable for ExtPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPC_destructor(ptr);
+        }
     }
 }
 
@@ -1067,7 +1081,9 @@ pub use crate::ffi_types::BRepExtrema_ExtPF as ExtPF;
 
 unsafe impl crate::CppDeletable for ExtPF {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPF_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPF_destructor(ptr);
+        }
     }
 }
 
@@ -1208,7 +1224,9 @@ pub use crate::ffi_types::BRepExtrema_OverlapTool as OverlapTool;
 
 unsafe impl crate::CppDeletable for OverlapTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_OverlapTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_OverlapTool_destructor(ptr);
+        }
     }
 }
 
@@ -1361,7 +1379,9 @@ pub use crate::ffi_types::BRepExtrema_Poly as Poly;
 
 unsafe impl crate::CppDeletable for Poly {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_Poly_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_Poly_destructor(ptr);
+        }
     }
 }
 
@@ -1410,7 +1430,9 @@ pub use crate::ffi_types::BRepExtrema_ProximityDistTool as ProximityDistTool;
 
 unsafe impl crate::CppDeletable for ProximityDistTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_destructor(ptr);
+        }
     }
 }
 
@@ -1605,7 +1627,9 @@ pub use crate::ffi_types::BRepExtrema_ProximityDistTool_PrjState as ProximityDis
 
 unsafe impl crate::CppDeletable for ProximityDistTool_PrjState {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_PrjState_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_PrjState_destructor(ptr);
+        }
     }
 }
 
@@ -1686,7 +1710,9 @@ pub use crate::ffi_types::BRepExtrema_ProximityValueTool as ProximityValueTool;
 
 unsafe impl crate::CppDeletable for ProximityValueTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityValueTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityValueTool_destructor(ptr);
+        }
     }
 }
 
@@ -1838,7 +1864,9 @@ pub use crate::ffi_types::BRepExtrema_SelfIntersection as SelfIntersection;
 
 unsafe impl crate::CppDeletable for SelfIntersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_SelfIntersection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_SelfIntersection_destructor(ptr);
+        }
     }
 }
 
@@ -2011,7 +2039,9 @@ pub use crate::ffi_types::BRepExtrema_ShapeProximity as ShapeProximity;
 
 unsafe impl crate::CppDeletable for ShapeProximity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_ShapeProximity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_ShapeProximity_destructor(ptr);
+        }
     }
 }
 
@@ -2262,7 +2292,9 @@ pub use crate::ffi_types::BRepExtrema_SolutionElem as SolutionElem;
 
 unsafe impl crate::CppDeletable for SolutionElem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_SolutionElem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_SolutionElem_destructor(ptr);
+        }
     }
 }
 
@@ -2431,7 +2463,9 @@ pub use crate::ffi_types::BRepExtrema_TriangleSet as TriangleSet;
 
 unsafe impl crate::CppDeletable for TriangleSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_TriangleSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_TriangleSet_destructor(ptr);
+        }
     }
 }
 
@@ -2661,13 +2695,19 @@ pub use crate::ffi_types::HandleBRepExtremaTriangleSet;
 
 unsafe impl crate::CppDeletable for HandleBRepExtremaTriangleSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepExtremaTriangleSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepExtremaTriangleSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepExtremaTriangleSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepExtremaTriangleSet_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepExtremaTriangleSet_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2709,7 +2749,9 @@ pub use crate::ffi_types::BRepExtrema_UnCompatibleShape as UnCompatibleShape;
 
 unsafe impl crate::CppDeletable for UnCompatibleShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_destructor(ptr);
+        }
     }
 }
 
@@ -3004,15 +3046,19 @@ pub use crate::ffi_types::HandleBRepExtremaUnCompatibleShape;
 
 unsafe impl crate::CppDeletable for HandleBRepExtremaUnCompatibleShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepExtremaUnCompatibleShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_clone(ptr),
+            )
+        }
     }
 }
 

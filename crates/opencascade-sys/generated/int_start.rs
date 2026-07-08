@@ -21,7 +21,9 @@ pub use crate::ffi_types::IntStart_SITopolTool as SITopolTool;
 
 unsafe impl crate::CppDeletable for SITopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_destructor(ptr);
+        }
     }
 }
 
@@ -162,13 +164,17 @@ pub use crate::ffi_types::HandleIntStartSITopolTool;
 
 unsafe impl crate::CppDeletable for HandleIntStartSITopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleIntStartSITopolTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleIntStartSITopolTool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntStartSITopolTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntStartSITopolTool_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntStartSITopolTool_clone(ptr))
+        }
     }
 }
 

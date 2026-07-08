@@ -18,7 +18,9 @@ pub use crate::ffi_types::BRepClass_Edge as Edge;
 
 unsafe impl crate::CppDeletable for Edge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass_Edge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass_Edge_destructor(ptr);
+        }
     }
 }
 
@@ -151,7 +153,9 @@ pub use crate::ffi_types::BRepClass_FClass2dOfFClassifier as FClass2dOfFClassifi
 
 unsafe impl crate::CppDeletable for FClass2dOfFClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass_FClass2dOfFClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClass2dOfFClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -262,7 +266,9 @@ pub use crate::ffi_types::BRepClass_FClassifier as FClassifier;
 
 unsafe impl crate::CppDeletable for FClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -372,7 +378,9 @@ pub use crate::ffi_types::BRepClass_FaceClassifier as FaceClassifier;
 
 unsafe impl crate::CppDeletable for FaceClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -642,7 +650,9 @@ pub use crate::ffi_types::BRepClass_FaceExplorer as FaceExplorer;
 
 unsafe impl crate::CppDeletable for FaceExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_destructor(ptr);
+        }
     }
 }
 
@@ -859,7 +869,9 @@ pub use crate::ffi_types::BRepClass_FacePassiveClassifier as FacePassiveClassifi
 
 unsafe impl crate::CppDeletable for FacePassiveClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass_FacePassiveClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass_FacePassiveClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -972,7 +984,9 @@ pub use crate::ffi_types::BRepClass_Intersector as Intersector;
 
 unsafe impl crate::CppDeletable for Intersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_destructor(ptr);
+        }
     }
 }
 

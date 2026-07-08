@@ -75,7 +75,9 @@ pub use crate::ffi_types::IMeshData_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshData_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshData_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -295,13 +297,15 @@ pub use crate::ffi_types::HandleIMeshDataCurve;
 
 unsafe impl crate::CppDeletable for HandleIMeshDataCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshDataCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshDataCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshDataCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataCurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataCurve_clone(ptr)) }
     }
 }
 
@@ -366,7 +370,9 @@ pub use crate::ffi_types::IMeshData_Edge as Edge;
 
 unsafe impl crate::CppDeletable for Edge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshData_Edge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshData_Edge_destructor(ptr);
+        }
     }
 }
 
@@ -758,13 +764,15 @@ pub use crate::ffi_types::HandleIMeshDataEdge;
 
 unsafe impl crate::CppDeletable for HandleIMeshDataEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshDataEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshDataEdge_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshDataEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataEdge_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataEdge_clone(ptr)) }
     }
 }
 
@@ -854,7 +862,9 @@ pub use crate::ffi_types::IMeshData_Face as Face;
 
 unsafe impl crate::CppDeletable for Face {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshData_Face_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshData_Face_destructor(ptr);
+        }
     }
 }
 
@@ -1182,13 +1192,15 @@ pub use crate::ffi_types::HandleIMeshDataFace;
 
 unsafe impl crate::CppDeletable for HandleIMeshDataFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshDataFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshDataFace_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshDataFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataFace_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataFace_clone(ptr)) }
     }
 }
 
@@ -1264,7 +1276,9 @@ pub use crate::ffi_types::IMeshData_Model as Model;
 
 unsafe impl crate::CppDeletable for Model {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshData_Model_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshData_Model_destructor(ptr);
+        }
     }
 }
 
@@ -1509,13 +1523,15 @@ pub use crate::ffi_types::HandleIMeshDataModel;
 
 unsafe impl crate::CppDeletable for HandleIMeshDataModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshDataModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshDataModel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshDataModel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataModel_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataModel_clone(ptr)) }
     }
 }
 
@@ -1579,7 +1595,9 @@ pub use crate::ffi_types::IMeshData_PCurve as PCurve;
 
 unsafe impl crate::CppDeletable for PCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshData_PCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshData_PCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1838,13 +1856,15 @@ pub use crate::ffi_types::HandleIMeshDataPCurve;
 
 unsafe impl crate::CppDeletable for HandleIMeshDataPCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshDataPCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshDataPCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshDataPCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataPCurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataPCurve_clone(ptr)) }
     }
 }
 
@@ -1916,7 +1936,9 @@ pub use crate::ffi_types::IMeshData_ParametersList as ParametersList;
 
 unsafe impl crate::CppDeletable for ParametersList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshData_ParametersList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshData_ParametersList_destructor(ptr);
+        }
     }
 }
 
@@ -2081,13 +2103,17 @@ pub use crate::ffi_types::HandleIMeshDataParametersList;
 
 unsafe impl crate::CppDeletable for HandleIMeshDataParametersList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshDataParametersList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshDataParametersList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshDataParametersList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataParametersList_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataParametersList_clone(ptr))
+        }
     }
 }
 
@@ -2143,7 +2169,9 @@ pub use crate::ffi_types::IMeshData_Shape as Shape;
 
 unsafe impl crate::CppDeletable for Shape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshData_Shape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshData_Shape_destructor(ptr);
+        }
     }
 }
 
@@ -2292,13 +2320,15 @@ pub use crate::ffi_types::HandleIMeshDataShape;
 
 unsafe impl crate::CppDeletable for HandleIMeshDataShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshDataShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshDataShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshDataShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataShape_clone(ptr)) }
     }
 }
 
@@ -2420,7 +2450,9 @@ pub use crate::ffi_types::IMeshData_StatusOwner as StatusOwner;
 
 unsafe impl crate::CppDeletable for StatusOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshData_StatusOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshData_StatusOwner_destructor(ptr);
+        }
     }
 }
 
@@ -2479,7 +2511,9 @@ pub use crate::ffi_types::IMeshData_TessellatedShape as TessellatedShape;
 
 unsafe impl crate::CppDeletable for TessellatedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshData_TessellatedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshData_TessellatedShape_destructor(ptr);
+        }
     }
 }
 
@@ -2687,13 +2721,19 @@ pub use crate::ffi_types::HandleIMeshDataTessellatedShape;
 
 unsafe impl crate::CppDeletable for HandleIMeshDataTessellatedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshDataTessellatedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshDataTessellatedShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshDataTessellatedShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataTessellatedShape_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataTessellatedShape_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2757,7 +2797,9 @@ pub use crate::ffi_types::IMeshData_Wire as Wire;
 
 unsafe impl crate::CppDeletable for Wire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::IMeshData_Wire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::IMeshData_Wire_destructor(ptr);
+        }
     }
 }
 
@@ -3046,13 +3088,15 @@ pub use crate::ffi_types::HandleIMeshDataWire;
 
 unsafe impl crate::CppDeletable for HandleIMeshDataWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMesh::HandleIMeshDataWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMesh::HandleIMeshDataWire_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIMeshDataWire {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataWire_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMesh::HandleIMeshDataWire_clone(ptr)) }
     }
 }
 

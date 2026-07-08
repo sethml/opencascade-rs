@@ -30,7 +30,9 @@ pub use crate::ffi_types::XmlMDataStd_AsciiStringDriver as AsciiStringDriver;
 
 unsafe impl crate::CppDeletable for AsciiStringDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_AsciiStringDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_AsciiStringDriver_destructor(ptr);
+        }
     }
 }
 
@@ -301,13 +303,19 @@ pub use crate::ffi_types::HandleXmlMDataStdAsciiStringDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdAsciiStringDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdAsciiStringDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdAsciiStringDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdAsciiStringDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdAsciiStringDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdAsciiStringDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -371,7 +379,9 @@ pub use crate::ffi_types::XmlMDataStd_BooleanArrayDriver as BooleanArrayDriver;
 
 unsafe impl crate::CppDeletable for BooleanArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_BooleanArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_BooleanArrayDriver_destructor(ptr);
+        }
     }
 }
 
@@ -636,15 +646,19 @@ pub use crate::ffi_types::HandleXmlMDataStdBooleanArrayDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdBooleanArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdBooleanArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdBooleanArrayDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdBooleanArrayDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdBooleanArrayDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlMDataStdBooleanArrayDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -706,7 +720,9 @@ pub use crate::ffi_types::XmlMDataStd_BooleanListDriver as BooleanListDriver;
 
 unsafe impl crate::CppDeletable for BooleanListDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_BooleanListDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_BooleanListDriver_destructor(ptr);
+        }
     }
 }
 
@@ -975,13 +991,19 @@ pub use crate::ffi_types::HandleXmlMDataStdBooleanListDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdBooleanListDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdBooleanListDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdBooleanListDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdBooleanListDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdBooleanListDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdBooleanListDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1045,7 +1067,9 @@ pub use crate::ffi_types::XmlMDataStd_ByteArrayDriver as ByteArrayDriver;
 
 unsafe impl crate::CppDeletable for ByteArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_ByteArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_ByteArrayDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1314,13 +1338,19 @@ pub use crate::ffi_types::HandleXmlMDataStdByteArrayDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdByteArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdByteArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdByteArrayDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdByteArrayDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdByteArrayDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdByteArrayDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1383,7 +1413,9 @@ pub use crate::ffi_types::XmlMDataStd_ExpressionDriver as ExpressionDriver;
 
 unsafe impl crate::CppDeletable for ExpressionDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_ExpressionDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_ExpressionDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1652,13 +1684,19 @@ pub use crate::ffi_types::HandleXmlMDataStdExpressionDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdExpressionDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdExpressionDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdExpressionDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdExpressionDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdExpressionDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdExpressionDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1721,7 +1759,9 @@ pub use crate::ffi_types::XmlMDataStd_ExtStringArrayDriver as ExtStringArrayDriv
 
 unsafe impl crate::CppDeletable for ExtStringArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_ExtStringArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_ExtStringArrayDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1984,15 +2024,19 @@ pub use crate::ffi_types::HandleXmlMDataStdExtStringArrayDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdExtStringArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdExtStringArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdExtStringArrayDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdExtStringArrayDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdExtStringArrayDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlMDataStdExtStringArrayDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2054,7 +2098,9 @@ pub use crate::ffi_types::XmlMDataStd_ExtStringListDriver as ExtStringListDriver
 
 unsafe impl crate::CppDeletable for ExtStringListDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_ExtStringListDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_ExtStringListDriver_destructor(ptr);
+        }
     }
 }
 
@@ -2319,15 +2365,19 @@ pub use crate::ffi_types::HandleXmlMDataStdExtStringListDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdExtStringListDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdExtStringListDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdExtStringListDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdExtStringListDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdExtStringListDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlMDataStdExtStringListDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2389,7 +2439,9 @@ pub use crate::ffi_types::XmlMDataStd_GenericEmptyDriver as GenericEmptyDriver;
 
 unsafe impl crate::CppDeletable for GenericEmptyDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_GenericEmptyDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_GenericEmptyDriver_destructor(ptr);
+        }
     }
 }
 
@@ -2654,15 +2706,19 @@ pub use crate::ffi_types::HandleXmlMDataStdGenericEmptyDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdGenericEmptyDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdGenericEmptyDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdGenericEmptyDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdGenericEmptyDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdGenericEmptyDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlMDataStdGenericEmptyDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2725,7 +2781,9 @@ pub use crate::ffi_types::XmlMDataStd_GenericExtStringDriver as GenericExtString
 
 unsafe impl crate::CppDeletable for GenericExtStringDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_GenericExtStringDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_GenericExtStringDriver_destructor(ptr);
+        }
     }
 }
 
@@ -2980,15 +3038,19 @@ pub use crate::ffi_types::HandleXmlMDataStdGenericExtStringDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdGenericExtStringDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdGenericExtStringDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdGenericExtStringDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdGenericExtStringDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKXmlL::HandleXmlMDataStdGenericExtStringDriver_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlMDataStdGenericExtStringDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3051,7 +3113,9 @@ pub use crate::ffi_types::XmlMDataStd_IntPackedMapDriver as IntPackedMapDriver;
 
 unsafe impl crate::CppDeletable for IntPackedMapDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_IntPackedMapDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_IntPackedMapDriver_destructor(ptr);
+        }
     }
 }
 
@@ -3318,15 +3382,19 @@ pub use crate::ffi_types::HandleXmlMDataStdIntPackedMapDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdIntPackedMapDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntPackedMapDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntPackedMapDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdIntPackedMapDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntPackedMapDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntPackedMapDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3389,7 +3457,9 @@ pub use crate::ffi_types::XmlMDataStd_IntegerArrayDriver as IntegerArrayDriver;
 
 unsafe impl crate::CppDeletable for IntegerArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_IntegerArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_IntegerArrayDriver_destructor(ptr);
+        }
     }
 }
 
@@ -3654,15 +3724,19 @@ pub use crate::ffi_types::HandleXmlMDataStdIntegerArrayDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdIntegerArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerArrayDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdIntegerArrayDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerArrayDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerArrayDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3725,7 +3799,9 @@ pub use crate::ffi_types::XmlMDataStd_IntegerDriver as IntegerDriver;
 
 unsafe impl crate::CppDeletable for IntegerDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_IntegerDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_IntegerDriver_destructor(ptr);
+        }
     }
 }
 
@@ -3992,13 +4068,17 @@ pub use crate::ffi_types::HandleXmlMDataStdIntegerDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdIntegerDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdIntegerDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerDriver_clone(ptr))
+        }
     }
 }
 
@@ -4062,7 +4142,9 @@ pub use crate::ffi_types::XmlMDataStd_IntegerListDriver as IntegerListDriver;
 
 unsafe impl crate::CppDeletable for IntegerListDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_IntegerListDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_IntegerListDriver_destructor(ptr);
+        }
     }
 }
 
@@ -4331,13 +4413,19 @@ pub use crate::ffi_types::HandleXmlMDataStdIntegerListDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdIntegerListDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerListDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerListDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdIntegerListDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerListDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdIntegerListDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4401,7 +4489,9 @@ pub use crate::ffi_types::XmlMDataStd_NamedDataDriver as NamedDataDriver;
 
 unsafe impl crate::CppDeletable for NamedDataDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_NamedDataDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_NamedDataDriver_destructor(ptr);
+        }
     }
 }
 
@@ -4670,13 +4760,19 @@ pub use crate::ffi_types::HandleXmlMDataStdNamedDataDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdNamedDataDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdNamedDataDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdNamedDataDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdNamedDataDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdNamedDataDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdNamedDataDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4739,7 +4835,9 @@ pub use crate::ffi_types::XmlMDataStd_RealArrayDriver as RealArrayDriver;
 
 unsafe impl crate::CppDeletable for RealArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_RealArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_RealArrayDriver_destructor(ptr);
+        }
     }
 }
 
@@ -5008,13 +5106,19 @@ pub use crate::ffi_types::HandleXmlMDataStdRealArrayDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdRealArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealArrayDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdRealArrayDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealArrayDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealArrayDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -5077,7 +5181,9 @@ pub use crate::ffi_types::XmlMDataStd_RealDriver as RealDriver;
 
 unsafe impl crate::CppDeletable for RealDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_RealDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_RealDriver_destructor(ptr);
+        }
     }
 }
 
@@ -5338,13 +5444,17 @@ pub use crate::ffi_types::HandleXmlMDataStdRealDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdRealDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdRealDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealDriver_clone(ptr))
+        }
     }
 }
 
@@ -5408,7 +5518,9 @@ pub use crate::ffi_types::XmlMDataStd_RealListDriver as RealListDriver;
 
 unsafe impl crate::CppDeletable for RealListDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_RealListDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_RealListDriver_destructor(ptr);
+        }
     }
 }
 
@@ -5675,13 +5787,19 @@ pub use crate::ffi_types::HandleXmlMDataStdRealListDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdRealListDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealListDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealListDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdRealListDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealListDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdRealListDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -5743,7 +5861,9 @@ pub use crate::ffi_types::XmlMDataStd_ReferenceArrayDriver as ReferenceArrayDriv
 
 unsafe impl crate::CppDeletable for ReferenceArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_ReferenceArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_ReferenceArrayDriver_destructor(ptr);
+        }
     }
 }
 
@@ -6006,15 +6126,19 @@ pub use crate::ffi_types::HandleXmlMDataStdReferenceArrayDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdReferenceArrayDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdReferenceArrayDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdReferenceArrayDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdReferenceArrayDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdReferenceArrayDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlMDataStdReferenceArrayDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -6076,7 +6200,9 @@ pub use crate::ffi_types::XmlMDataStd_ReferenceListDriver as ReferenceListDriver
 
 unsafe impl crate::CppDeletable for ReferenceListDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_ReferenceListDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_ReferenceListDriver_destructor(ptr);
+        }
     }
 }
 
@@ -6341,15 +6467,19 @@ pub use crate::ffi_types::HandleXmlMDataStdReferenceListDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdReferenceListDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdReferenceListDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdReferenceListDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdReferenceListDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdReferenceListDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlMDataStdReferenceListDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -6412,7 +6542,9 @@ pub use crate::ffi_types::XmlMDataStd_TreeNodeDriver as TreeNodeDriver;
 
 unsafe impl crate::CppDeletable for TreeNodeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_TreeNodeDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_TreeNodeDriver_destructor(ptr);
+        }
     }
 }
 
@@ -6679,13 +6811,19 @@ pub use crate::ffi_types::HandleXmlMDataStdTreeNodeDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdTreeNodeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdTreeNodeDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdTreeNodeDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdTreeNodeDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdTreeNodeDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdTreeNodeDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -6748,7 +6886,9 @@ pub use crate::ffi_types::XmlMDataStd_UAttributeDriver as UAttributeDriver;
 
 unsafe impl crate::CppDeletable for UAttributeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_UAttributeDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_UAttributeDriver_destructor(ptr);
+        }
     }
 }
 
@@ -7017,13 +7157,19 @@ pub use crate::ffi_types::HandleXmlMDataStdUAttributeDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdUAttributeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdUAttributeDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdUAttributeDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdUAttributeDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdUAttributeDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdUAttributeDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -7086,7 +7232,9 @@ pub use crate::ffi_types::XmlMDataStd_VariableDriver as VariableDriver;
 
 unsafe impl crate::CppDeletable for VariableDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlMDataStd_VariableDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDataStd_VariableDriver_destructor(ptr);
+        }
     }
 }
 
@@ -7353,13 +7501,19 @@ pub use crate::ffi_types::HandleXmlMDataStdVariableDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDataStdVariableDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlMDataStdVariableDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlMDataStdVariableDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMDataStdVariableDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdVariableDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDataStdVariableDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 

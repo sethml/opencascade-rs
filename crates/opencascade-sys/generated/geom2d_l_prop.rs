@@ -15,7 +15,9 @@ pub use crate::ffi_types::Geom2dLProp_CLProps2d as CLProps2d;
 
 unsafe impl crate::CppDeletable for CLProps2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::Geom2dLProp_CLProps2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::Geom2dLProp_CLProps2d_destructor(ptr);
+        }
     }
 }
 
@@ -199,7 +201,9 @@ pub use crate::ffi_types::Geom2dLProp_CurAndInf2d as CurAndInf2d;
 
 unsafe impl crate::CppDeletable for CurAndInf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::Geom2dLProp_CurAndInf2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::Geom2dLProp_CurAndInf2d_destructor(ptr);
+        }
     }
 }
 
@@ -353,7 +357,9 @@ pub use crate::ffi_types::Geom2dLProp_Curve2dTool as Curve2dTool;
 
 unsafe impl crate::CppDeletable for Curve2dTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::Geom2dLProp_Curve2dTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::Geom2dLProp_Curve2dTool_destructor(ptr);
+        }
     }
 }
 
@@ -461,7 +467,9 @@ pub use crate::ffi_types::Geom2dLProp_FuncCurExt as FuncCurExt;
 
 unsafe impl crate::CppDeletable for FuncCurExt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::Geom2dLProp_FuncCurExt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::Geom2dLProp_FuncCurExt_destructor(ptr);
+        }
     }
 }
 
@@ -576,7 +584,9 @@ pub use crate::ffi_types::Geom2dLProp_FuncCurNul as FuncCurNul;
 
 unsafe impl crate::CppDeletable for FuncCurNul {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::Geom2dLProp_FuncCurNul_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::Geom2dLProp_FuncCurNul_destructor(ptr);
+        }
     }
 }
 
@@ -680,7 +690,9 @@ pub use crate::ffi_types::Geom2dLProp_NumericCurInf2d as NumericCurInf2d;
 
 unsafe impl crate::CppDeletable for NumericCurInf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::Geom2dLProp_NumericCurInf2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::Geom2dLProp_NumericCurInf2d_destructor(ptr);
+        }
     }
 }
 

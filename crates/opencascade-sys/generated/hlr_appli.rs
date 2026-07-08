@@ -18,7 +18,9 @@ pub use crate::ffi_types::HLRAppli_ReflectLines as ReflectLines;
 
 unsafe impl crate::CppDeletable for ReflectLines {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRAppli_ReflectLines_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRAppli_ReflectLines_destructor(ptr);
+        }
     }
 }
 

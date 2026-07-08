@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== CDF_Application ========================
     pub fn CDF_Application_destructor(self_: *mut CDF_Application);
     /// **Source:** `CDF_Application.hxx`:61 - `CDF_Application::NewDocument()`

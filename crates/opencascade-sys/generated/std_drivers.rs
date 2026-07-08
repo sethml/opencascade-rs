@@ -41,7 +41,9 @@ pub use crate::ffi_types::StdDrivers_DocumentRetrievalDriver as DocumentRetrieva
 
 unsafe impl crate::CppDeletable for DocumentRetrievalDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStd::StdDrivers_DocumentRetrievalDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStd::StdDrivers_DocumentRetrievalDriver_destructor(ptr);
+        }
     }
 }
 
@@ -301,15 +303,19 @@ pub use crate::ffi_types::HandleStdDriversDocumentRetrievalDriver;
 
 unsafe impl crate::CppDeletable for HandleStdDriversDocumentRetrievalDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStd::HandleStdDriversDocumentRetrievalDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStd::HandleStdDriversDocumentRetrievalDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdDriversDocumentRetrievalDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKStd::HandleStdDriversDocumentRetrievalDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKStd::HandleStdDriversDocumentRetrievalDriver_clone(ptr),
+            )
+        }
     }
 }
 

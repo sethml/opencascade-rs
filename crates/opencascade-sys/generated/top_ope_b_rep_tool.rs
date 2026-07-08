@@ -70,7 +70,9 @@ pub use crate::ffi_types::TopOpeBRepTool_AncestorsTool as AncestorsTool;
 
 unsafe impl crate::CppDeletable for AncestorsTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_AncestorsTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_AncestorsTool_destructor(ptr);
+        }
     }
 }
 
@@ -113,7 +115,9 @@ pub use crate::ffi_types::TopOpeBRepTool_BoxSort as BoxSort;
 
 unsafe impl crate::CppDeletable for BoxSort {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_BoxSort_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_BoxSort_destructor(ptr);
+        }
     }
 }
 
@@ -321,7 +325,9 @@ pub use crate::ffi_types::TopOpeBRepTool_C2DF as C2DF;
 
 unsafe impl crate::CppDeletable for C2DF {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_C2DF_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_C2DF_destructor(ptr);
+        }
     }
 }
 
@@ -434,7 +440,9 @@ pub use crate::ffi_types::TopOpeBRepTool_CLASSI as CLASSI;
 
 unsafe impl crate::CppDeletable for CLASSI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_CLASSI_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_CLASSI_destructor(ptr);
+        }
     }
 }
 
@@ -558,7 +566,9 @@ pub use crate::ffi_types::TopOpeBRepTool_CORRISO as CORRISO;
 
 unsafe impl crate::CppDeletable for CORRISO {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_destructor(ptr);
+        }
     }
 }
 
@@ -847,7 +857,9 @@ pub use crate::ffi_types::TopOpeBRepTool_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_CurveTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_CurveTool_destructor(ptr);
+        }
     }
 }
 
@@ -1017,7 +1029,9 @@ pub use crate::ffi_types::TopOpeBRepTool_FuseEdges as FuseEdges;
 
 unsafe impl crate::CppDeletable for FuseEdges {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_FuseEdges_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_FuseEdges_destructor(ptr);
+        }
     }
 }
 
@@ -1136,7 +1150,9 @@ pub use crate::ffi_types::TopOpeBRepTool_GeomTool as GeomTool;
 
 unsafe impl crate::CppDeletable for GeomTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_GeomTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_GeomTool_destructor(ptr);
+        }
     }
 }
 
@@ -1368,7 +1384,9 @@ pub use crate::ffi_types::TopOpeBRepTool_HBoxTool as HBoxTool;
 
 unsafe impl crate::CppDeletable for HBoxTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_destructor(ptr);
+        }
     }
 }
 
@@ -1646,13 +1664,17 @@ pub use crate::ffi_types::HandleTopOpeBRepToolHBoxTool;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepToolHBoxTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopOpeBRepToolHBoxTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_clone(ptr))
+        }
     }
 }
 
@@ -1717,7 +1739,9 @@ pub use crate::ffi_types::TopOpeBRepTool_PurgeInternalEdges as PurgeInternalEdge
 
 unsafe impl crate::CppDeletable for PurgeInternalEdges {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_PurgeInternalEdges_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_PurgeInternalEdges_destructor(ptr);
+        }
     }
 }
 
@@ -1813,7 +1837,9 @@ pub use crate::ffi_types::TopOpeBRepTool_REGUS as REGUS;
 
 unsafe impl crate::CppDeletable for REGUS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_destructor(ptr);
+        }
     }
 }
 
@@ -1960,7 +1986,9 @@ pub use crate::ffi_types::TopOpeBRepTool_REGUW as REGUW;
 
 unsafe impl crate::CppDeletable for REGUW {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_destructor(ptr);
+        }
     }
 }
 
@@ -2169,7 +2197,9 @@ pub use crate::ffi_types::TopOpeBRepTool_ShapeClassifier as ShapeClassifier;
 
 unsafe impl crate::CppDeletable for ShapeClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -2408,7 +2438,9 @@ pub use crate::ffi_types::TopOpeBRepTool_ShapeExplorer as ShapeExplorer;
 
 unsafe impl crate::CppDeletable for ShapeExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeExplorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeExplorer_destructor(ptr);
+        }
     }
 }
 
@@ -2605,7 +2637,9 @@ pub use crate::ffi_types::TopOpeBRepTool_ShapeTool as ShapeTool;
 
 unsafe impl crate::CppDeletable for ShapeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_destructor(ptr);
+        }
     }
 }
 
@@ -2866,7 +2900,9 @@ pub use crate::ffi_types::TopOpeBRepTool_SolidClassifier as SolidClassifier;
 
 unsafe impl crate::CppDeletable for SolidClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_SolidClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_SolidClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -2965,7 +3001,9 @@ pub use crate::ffi_types::TopOpeBRepTool_TOOL as TOOL;
 
 unsafe impl crate::CppDeletable for TOOL {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_destructor(ptr);
+        }
     }
 }
 
@@ -3553,7 +3591,9 @@ pub use crate::ffi_types::TopOpeBRepTool_connexity as connexity;
 
 unsafe impl crate::CppDeletable for connexity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_destructor(ptr);
+        }
     }
 }
 
@@ -3703,7 +3743,9 @@ pub use crate::ffi_types::TopOpeBRepTool_face as face;
 
 unsafe impl crate::CppDeletable for face {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_face_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_face_destructor(ptr);
+        }
     }
 }
 
@@ -3775,7 +3817,9 @@ pub use crate::ffi_types::TopOpeBRepTool_makeTransition as makeTransition;
 
 unsafe impl crate::CppDeletable for makeTransition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_makeTransition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_makeTransition_destructor(ptr);
+        }
     }
 }
 
@@ -3946,7 +3990,9 @@ pub use crate::ffi_types::TopOpeBRepTool_mkTondgE as mkTondgE;
 
 unsafe impl crate::CppDeletable for mkTondgE {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBool::TopOpeBRepTool_mkTondgE_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepTool_mkTondgE_destructor(ptr);
+        }
     }
 }
 

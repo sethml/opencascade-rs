@@ -102,7 +102,9 @@ pub use crate::ffi_types::Extrema_CCLocFOfLocECC as CCLocFOfLocECC;
 
 unsafe impl crate::CppDeletable for CCLocFOfLocECC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_destructor(ptr);
+        }
     }
 }
 
@@ -364,7 +366,9 @@ pub use crate::ffi_types::Extrema_CCLocFOfLocECC2d as CCLocFOfLocECC2d;
 
 unsafe impl crate::CppDeletable for CCLocFOfLocECC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_destructor(ptr);
+        }
     }
 }
 
@@ -628,7 +632,9 @@ pub use crate::ffi_types::Extrema_Curve2dTool as Curve2dTool;
 
 unsafe impl crate::CppDeletable for Curve2dTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_destructor(ptr);
+        }
     }
 }
 
@@ -917,7 +923,9 @@ pub use crate::ffi_types::Extrema_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_CurveTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_destructor(ptr);
+        }
     }
 }
 
@@ -1177,7 +1185,9 @@ pub use crate::ffi_types::Extrema_ECC as ECC;
 
 unsafe impl crate::CppDeletable for ECC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ECC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ECC_destructor(ptr);
+        }
     }
 }
 
@@ -1340,7 +1350,9 @@ pub use crate::ffi_types::Extrema_ECC2d as ECC2d;
 
 unsafe impl crate::CppDeletable for ECC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ECC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_destructor(ptr);
+        }
     }
 }
 
@@ -1505,7 +1517,9 @@ pub use crate::ffi_types::Extrema_ELPCOfLocateExtPC as ELPCOfLocateExtPC;
 
 unsafe impl crate::CppDeletable for ELPCOfLocateExtPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_destructor(ptr);
+        }
     }
 }
 
@@ -1704,7 +1718,9 @@ pub use crate::ffi_types::Extrema_ELPCOfLocateExtPC2d as ELPCOfLocateExtPC2d;
 
 unsafe impl crate::CppDeletable for ELPCOfLocateExtPC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_destructor(ptr);
+        }
     }
 }
 
@@ -1908,7 +1924,9 @@ pub use crate::ffi_types::Extrema_EPCOfELPCOfLocateExtPC as EPCOfELPCOfLocateExt
 
 unsafe impl crate::CppDeletable for EPCOfELPCOfLocateExtPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_destructor(ptr);
+        }
     }
 }
 
@@ -2118,7 +2136,9 @@ pub use crate::ffi_types::Extrema_EPCOfELPCOfLocateExtPC2d as EPCOfELPCOfLocateE
 
 unsafe impl crate::CppDeletable for EPCOfELPCOfLocateExtPC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_destructor(ptr);
+        }
     }
 }
 
@@ -2316,7 +2336,9 @@ pub use crate::ffi_types::Extrema_EPCOfExtPC as EPCOfExtPC;
 
 unsafe impl crate::CppDeletable for EPCOfExtPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_destructor(ptr);
+        }
     }
 }
 
@@ -2518,7 +2540,9 @@ pub use crate::ffi_types::Extrema_EPCOfExtPC2d as EPCOfExtPC2d;
 
 unsafe impl crate::CppDeletable for EPCOfExtPC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_destructor(ptr);
+        }
     }
 }
 
@@ -2728,7 +2752,9 @@ pub use crate::ffi_types::Extrema_ExtCC as ExtCC;
 
 unsafe impl crate::CppDeletable for ExtCC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtCC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtCC_destructor(ptr);
+        }
     }
 }
 
@@ -3047,7 +3073,9 @@ pub use crate::ffi_types::Extrema_ExtCC2d as ExtCC2d;
 
 unsafe impl crate::CppDeletable for ExtCC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtCC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtCC2d_destructor(ptr);
+        }
     }
 }
 
@@ -3280,7 +3308,9 @@ pub use crate::ffi_types::Extrema_ExtCS as ExtCS;
 
 unsafe impl crate::CppDeletable for ExtCS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtCS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtCS_destructor(ptr);
+        }
     }
 }
 
@@ -3443,7 +3473,9 @@ pub use crate::ffi_types::Extrema_ExtElC as ExtElC;
 
 unsafe impl crate::CppDeletable for ExtElC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtElC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtElC_destructor(ptr);
+        }
     }
 }
 
@@ -3586,7 +3618,9 @@ pub use crate::ffi_types::Extrema_ExtElC2d as ExtElC2d;
 
 unsafe impl crate::CppDeletable for ExtElC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtElC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtElC2d_destructor(ptr);
+        }
     }
 }
 
@@ -3780,7 +3814,9 @@ pub use crate::ffi_types::Extrema_ExtElCS as ExtElCS;
 
 unsafe impl crate::CppDeletable for ExtElCS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_destructor(ptr);
+        }
     }
 }
 
@@ -4069,7 +4105,9 @@ pub use crate::ffi_types::Extrema_ExtElSS as ExtElSS;
 
 unsafe impl crate::CppDeletable for ExtElSS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtElSS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtElSS_destructor(ptr);
+        }
     }
 }
 
@@ -4264,7 +4302,9 @@ pub use crate::ffi_types::Extrema_ExtPC as ExtPC;
 
 unsafe impl crate::CppDeletable for ExtPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtPC_destructor(ptr);
+        }
     }
 }
 
@@ -4458,7 +4498,9 @@ pub use crate::ffi_types::Extrema_ExtPC2d as ExtPC2d;
 
 unsafe impl crate::CppDeletable for ExtPC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_destructor(ptr);
+        }
     }
 }
 
@@ -4658,7 +4700,9 @@ pub use crate::ffi_types::Extrema_ExtPElC as ExtPElC;
 
 unsafe impl crate::CppDeletable for ExtPElC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtPElC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtPElC_destructor(ptr);
+        }
     }
 }
 
@@ -4956,7 +5000,9 @@ pub use crate::ffi_types::Extrema_ExtPElC2d as ExtPElC2d;
 
 unsafe impl crate::CppDeletable for ExtPElC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtPElC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtPElC2d_destructor(ptr);
+        }
     }
 }
 
@@ -5254,7 +5300,9 @@ pub use crate::ffi_types::Extrema_ExtPElS as ExtPElS;
 
 unsafe impl crate::CppDeletable for ExtPElS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtPElS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtPElS_destructor(ptr);
+        }
     }
 }
 
@@ -5462,7 +5510,9 @@ pub use crate::ffi_types::Extrema_ExtPExtS as ExtPExtS;
 
 unsafe impl crate::CppDeletable for ExtPExtS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_destructor(ptr);
+        }
     }
 }
 
@@ -5711,13 +5761,17 @@ pub use crate::ffi_types::HandleExtremaExtPExtS;
 
 unsafe impl crate::CppDeletable for HandleExtremaExtPExtS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExtremaExtPExtS {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_clone(ptr))
+        }
     }
 }
 
@@ -5771,7 +5825,9 @@ pub use crate::ffi_types::Extrema_ExtPRevS as ExtPRevS;
 
 unsafe impl crate::CppDeletable for ExtPRevS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_destructor(ptr);
+        }
     }
 }
 
@@ -6019,13 +6075,17 @@ pub use crate::ffi_types::HandleExtremaExtPRevS;
 
 unsafe impl crate::CppDeletable for HandleExtremaExtPRevS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExtremaExtPRevS {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_clone(ptr))
+        }
     }
 }
 
@@ -6079,7 +6139,9 @@ pub use crate::ffi_types::Extrema_ExtPS as ExtPS;
 
 unsafe impl crate::CppDeletable for ExtPS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtPS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtPS_destructor(ptr);
+        }
     }
 }
 
@@ -6297,7 +6359,9 @@ pub use crate::ffi_types::Extrema_ExtSS as ExtSS;
 
 unsafe impl crate::CppDeletable for ExtSS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_ExtSS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_ExtSS_destructor(ptr);
+        }
     }
 }
 
@@ -6455,7 +6519,9 @@ pub use crate::ffi_types::Extrema_FuncExtCS as FuncExtCS;
 
 unsafe impl crate::CppDeletable for FuncExtCS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_FuncExtCS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_FuncExtCS_destructor(ptr);
+        }
     }
 }
 
@@ -6674,7 +6740,9 @@ pub use crate::ffi_types::Extrema_FuncExtSS as FuncExtSS;
 
 unsafe impl crate::CppDeletable for FuncExtSS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_FuncExtSS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_FuncExtSS_destructor(ptr);
+        }
     }
 }
 
@@ -6873,7 +6941,9 @@ pub use crate::ffi_types::Extrema_FuncPSDist as FuncPSDist;
 
 unsafe impl crate::CppDeletable for FuncPSDist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_FuncPSDist_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_FuncPSDist_destructor(ptr);
+        }
     }
 }
 
@@ -7011,7 +7081,9 @@ pub use crate::ffi_types::Extrema_FuncPSNorm as FuncPSNorm;
 
 unsafe impl crate::CppDeletable for FuncPSNorm {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_FuncPSNorm_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_FuncPSNorm_destructor(ptr);
+        }
     }
 }
 
@@ -7196,7 +7268,9 @@ pub use crate::ffi_types::Extrema_GenExtCS as GenExtCS;
 
 unsafe impl crate::CppDeletable for GenExtCS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GenExtCS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GenExtCS_destructor(ptr);
+        }
     }
 }
 
@@ -7415,7 +7489,9 @@ pub use crate::ffi_types::Extrema_GenExtPS as GenExtPS;
 
 unsafe impl crate::CppDeletable for GenExtPS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GenExtPS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GenExtPS_destructor(ptr);
+        }
     }
 }
 
@@ -7612,7 +7688,9 @@ pub use crate::ffi_types::Extrema_GenExtSS as GenExtSS;
 
 unsafe impl crate::CppDeletable for GenExtSS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GenExtSS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GenExtSS_destructor(ptr);
+        }
     }
 }
 
@@ -7831,7 +7909,9 @@ pub use crate::ffi_types::Extrema_GenLocateExtCS as GenLocateExtCS;
 
 unsafe impl crate::CppDeletable for GenLocateExtCS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GenLocateExtCS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GenLocateExtCS_destructor(ptr);
+        }
     }
 }
 
@@ -7950,7 +8030,9 @@ pub use crate::ffi_types::Extrema_GenLocateExtPS as GenLocateExtPS;
 
 unsafe impl crate::CppDeletable for GenLocateExtPS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GenLocateExtPS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GenLocateExtPS_destructor(ptr);
+        }
     }
 }
 
@@ -8052,7 +8134,9 @@ pub use crate::ffi_types::Extrema_GenLocateExtSS as GenLocateExtSS;
 
 unsafe impl crate::CppDeletable for GenLocateExtSS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GenLocateExtSS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GenLocateExtSS_destructor(ptr);
+        }
     }
 }
 
@@ -8173,7 +8257,9 @@ pub use crate::ffi_types::Extrema_GlobOptFuncCCC0 as GlobOptFuncCCC0;
 
 unsafe impl crate::CppDeletable for GlobOptFuncCCC0 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCCC0_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCCC0_destructor(ptr);
+        }
     }
 }
 
@@ -8251,7 +8337,9 @@ pub use crate::ffi_types::Extrema_GlobOptFuncCCC1 as GlobOptFuncCCC1;
 
 unsafe impl crate::CppDeletable for GlobOptFuncCCC1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCCC1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCCC1_destructor(ptr);
+        }
     }
 }
 
@@ -8370,7 +8458,9 @@ pub use crate::ffi_types::Extrema_GlobOptFuncCCC2 as GlobOptFuncCCC2;
 
 unsafe impl crate::CppDeletable for GlobOptFuncCCC2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCCC2_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCCC2_destructor(ptr);
+        }
     }
 }
 
@@ -8535,7 +8625,9 @@ pub use crate::ffi_types::Extrema_GlobOptFuncCQuadric as GlobOptFuncCQuadric;
 
 unsafe impl crate::CppDeletable for GlobOptFuncCQuadric {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCQuadric_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCQuadric_destructor(ptr);
+        }
     }
 }
 
@@ -8676,7 +8768,9 @@ pub use crate::ffi_types::Extrema_GlobOptFuncCS as GlobOptFuncCS;
 
 unsafe impl crate::CppDeletable for GlobOptFuncCS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCS_destructor(ptr);
+        }
     }
 }
 
@@ -8841,7 +8935,9 @@ pub use crate::ffi_types::Extrema_GlobOptFuncConicS as GlobOptFuncConicS;
 
 unsafe impl crate::CppDeletable for GlobOptFuncConicS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncConicS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncConicS_destructor(ptr);
+        }
     }
 }
 
@@ -8974,7 +9070,9 @@ pub use crate::ffi_types::Extrema_HArray1OfPOnCurv as HArray1OfPOnCurv;
 
 unsafe impl crate::CppDeletable for HArray1OfPOnCurv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_destructor(ptr);
+        }
     }
 }
 
@@ -9204,13 +9302,19 @@ pub use crate::ffi_types::HandleExtremaHArray1OfPOnCurv;
 
 unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnCurv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnCurv {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -9261,7 +9365,9 @@ pub use crate::ffi_types::Extrema_HArray1OfPOnCurv2d as HArray1OfPOnCurv2d;
 
 unsafe impl crate::CppDeletable for HArray1OfPOnCurv2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_destructor(ptr);
+        }
     }
 }
 
@@ -9493,15 +9599,19 @@ pub use crate::ffi_types::HandleExtremaHArray1OfPOnCurv2d;
 
 unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnCurv2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnCurv2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_clone(ptr),
+            )
+        }
     }
 }
 
@@ -9556,7 +9666,9 @@ pub use crate::ffi_types::Extrema_HArray1OfPOnSurf as HArray1OfPOnSurf;
 
 unsafe impl crate::CppDeletable for HArray1OfPOnSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_destructor(ptr);
+        }
     }
 }
 
@@ -9786,13 +9898,19 @@ pub use crate::ffi_types::HandleExtremaHArray1OfPOnSurf;
 
 unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnSurf {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -9843,7 +9961,9 @@ pub use crate::ffi_types::Extrema_HArray2OfPOnCurv as HArray2OfPOnCurv;
 
 unsafe impl crate::CppDeletable for HArray2OfPOnCurv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_destructor(ptr);
+        }
     }
 }
 
@@ -10055,13 +10175,19 @@ pub use crate::ffi_types::HandleExtremaHArray2OfPOnCurv;
 
 unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnCurv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnCurv {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -10112,7 +10238,9 @@ pub use crate::ffi_types::Extrema_HArray2OfPOnCurv2d as HArray2OfPOnCurv2d;
 
 unsafe impl crate::CppDeletable for HArray2OfPOnCurv2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_destructor(ptr);
+        }
     }
 }
 
@@ -10326,15 +10454,19 @@ pub use crate::ffi_types::HandleExtremaHArray2OfPOnCurv2d;
 
 unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnCurv2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnCurv2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_clone(ptr),
+            )
+        }
     }
 }
 
@@ -10389,7 +10521,9 @@ pub use crate::ffi_types::Extrema_HArray2OfPOnSurf as HArray2OfPOnSurf;
 
 unsafe impl crate::CppDeletable for HArray2OfPOnSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_destructor(ptr);
+        }
     }
 }
 
@@ -10601,13 +10735,19 @@ pub use crate::ffi_types::HandleExtremaHArray2OfPOnSurf;
 
 unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnSurf {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -10658,7 +10798,9 @@ pub use crate::ffi_types::Extrema_LocECC as LocECC;
 
 unsafe impl crate::CppDeletable for LocECC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_LocECC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_LocECC_destructor(ptr);
+        }
     }
 }
 
@@ -10722,7 +10864,9 @@ pub use crate::ffi_types::Extrema_LocECC2d as LocECC2d;
 
 unsafe impl crate::CppDeletable for LocECC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_LocECC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_LocECC2d_destructor(ptr);
+        }
     }
 }
 
@@ -10786,7 +10930,9 @@ pub use crate::ffi_types::Extrema_LocEPCOfLocateExtPC as LocEPCOfLocateExtPC;
 
 unsafe impl crate::CppDeletable for LocEPCOfLocateExtPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_destructor(ptr);
+        }
     }
 }
 
@@ -10929,7 +11075,9 @@ pub use crate::ffi_types::Extrema_LocEPCOfLocateExtPC2d as LocEPCOfLocateExtPC2d
 
 unsafe impl crate::CppDeletable for LocEPCOfLocateExtPC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_destructor(ptr);
+        }
     }
 }
 
@@ -11067,7 +11215,9 @@ pub use crate::ffi_types::Extrema_LocateExtCC as LocateExtCC;
 
 unsafe impl crate::CppDeletable for LocateExtCC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_LocateExtCC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_LocateExtCC_destructor(ptr);
+        }
     }
 }
 
@@ -11130,7 +11280,9 @@ pub use crate::ffi_types::Extrema_LocateExtCC2d as LocateExtCC2d;
 
 unsafe impl crate::CppDeletable for LocateExtCC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_LocateExtCC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_LocateExtCC2d_destructor(ptr);
+        }
     }
 }
 
@@ -11192,7 +11344,9 @@ pub use crate::ffi_types::Extrema_LocateExtPC as LocateExtPC;
 
 unsafe impl crate::CppDeletable for LocateExtPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_destructor(ptr);
+        }
     }
 }
 
@@ -11324,7 +11478,9 @@ pub use crate::ffi_types::Extrema_LocateExtPC2d as LocateExtPC2d;
 
 unsafe impl crate::CppDeletable for LocateExtPC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_destructor(ptr);
+        }
     }
 }
 
@@ -11456,7 +11612,9 @@ pub use crate::ffi_types::Extrema_PCFOfEPCOfELPCOfLocateExtPC as PCFOfEPCOfELPCO
 
 unsafe impl crate::CppDeletable for PCFOfEPCOfELPCOfLocateExtPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_destructor(ptr);
+        }
     }
 }
 
@@ -11658,7 +11816,9 @@ pub use crate::ffi_types::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d as PCFOfEPCOfELP
 
 unsafe impl crate::CppDeletable for PCFOfEPCOfELPCOfLocateExtPC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_destructor(ptr);
+        }
     }
 }
 
@@ -11855,7 +12015,9 @@ pub use crate::ffi_types::Extrema_PCFOfEPCOfExtPC as PCFOfEPCOfExtPC;
 
 unsafe impl crate::CppDeletable for PCFOfEPCOfExtPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_destructor(ptr);
+        }
     }
 }
 
@@ -12046,7 +12208,9 @@ pub use crate::ffi_types::Extrema_PCFOfEPCOfExtPC2d as PCFOfEPCOfExtPC2d;
 
 unsafe impl crate::CppDeletable for PCFOfEPCOfExtPC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_destructor(ptr);
+        }
     }
 }
 
@@ -12240,7 +12404,9 @@ pub use crate::ffi_types::Extrema_PCLocFOfLocEPCOfLocateExtPC as PCLocFOfLocEPCO
 
 unsafe impl crate::CppDeletable for PCLocFOfLocEPCOfLocateExtPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_destructor(ptr);
+        }
     }
 }
 
@@ -12442,7 +12608,9 @@ pub use crate::ffi_types::Extrema_PCLocFOfLocEPCOfLocateExtPC2d as PCLocFOfLocEP
 
 unsafe impl crate::CppDeletable for PCLocFOfLocEPCOfLocateExtPC2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_destructor(ptr);
+        }
     }
 }
 
@@ -12639,7 +12807,9 @@ pub use crate::ffi_types::Extrema_POnCurv as POnCurv;
 
 unsafe impl crate::CppDeletable for POnCurv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_POnCurv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_POnCurv_destructor(ptr);
+        }
     }
 }
 
@@ -12701,7 +12871,9 @@ pub use crate::ffi_types::Extrema_POnCurv2d as POnCurv2d;
 
 unsafe impl crate::CppDeletable for POnCurv2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_POnCurv2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_POnCurv2d_destructor(ptr);
+        }
     }
 }
 
@@ -12764,7 +12936,9 @@ pub use crate::ffi_types::Extrema_POnSurf as POnSurf;
 
 unsafe impl crate::CppDeletable for POnSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_POnSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_POnSurf_destructor(ptr);
+        }
     }
 }
 
@@ -12835,7 +13009,9 @@ pub use crate::ffi_types::Extrema_POnSurfParams as POnSurfParams;
 
 unsafe impl crate::CppDeletable for POnSurfParams {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Extrema_POnSurfParams_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_POnSurfParams_destructor(ptr);
+        }
     }
 }
 

@@ -18,13 +18,15 @@ pub use crate::ffi_types::Bnd_B2d as B2d;
 
 unsafe impl crate::CppDeletable for B2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_B2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for B2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Bnd_B2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Bnd_B2d_clone(ptr)) }
     }
 }
 
@@ -275,13 +277,15 @@ pub use crate::ffi_types::Bnd_B2f as B2f;
 
 unsafe impl crate::CppDeletable for B2f {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_B2f_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2f_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for B2f {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Bnd_B2f_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Bnd_B2f_clone(ptr)) }
     }
 }
 
@@ -532,13 +536,15 @@ pub use crate::ffi_types::Bnd_B3d as B3d;
 
 unsafe impl crate::CppDeletable for B3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_B3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for B3d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Bnd_B3d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Bnd_B3d_clone(ptr)) }
     }
 }
 
@@ -808,13 +814,15 @@ pub use crate::ffi_types::Bnd_B3f as B3f;
 
 unsafe impl crate::CppDeletable for B3f {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_B3f_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3f_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for B3f {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Bnd_B3f_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Bnd_B3f_clone(ptr)) }
     }
 }
 
@@ -1091,13 +1099,15 @@ pub use crate::ffi_types::Bnd_BoundSortBox as BoundSortBox;
 
 unsafe impl crate::CppDeletable for BoundSortBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_BoundSortBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_BoundSortBox_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for BoundSortBox {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Bnd_BoundSortBox_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Bnd_BoundSortBox_clone(ptr)) }
     }
 }
 
@@ -1289,13 +1299,15 @@ pub use crate::ffi_types::Bnd_Box as Box;
 
 unsafe impl crate::CppDeletable for Box {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_Box_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Box {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Bnd_Box_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Bnd_Box_clone(ptr)) }
     }
 }
 
@@ -1847,13 +1859,15 @@ pub use crate::ffi_types::Bnd_Box2d as Box2d;
 
 unsafe impl crate::CppDeletable for Box2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_Box2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Box2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Bnd_Box2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Bnd_Box2d_clone(ptr)) }
     }
 }
 
@@ -2201,7 +2215,9 @@ pub use crate::ffi_types::Bnd_HArray1OfBox as HArray1OfBox;
 
 unsafe impl crate::CppDeletable for HArray1OfBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_HArray1OfBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox_destructor(ptr);
+        }
     }
 }
 
@@ -2407,13 +2423,15 @@ pub use crate::ffi_types::HandleBndHArray1OfBox;
 
 unsafe impl crate::CppDeletable for HandleBndHArray1OfBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleBndHArray1OfBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleBndHArray1OfBox_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBndHArray1OfBox {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfBox_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfBox_clone(ptr)) }
     }
 }
 
@@ -2464,7 +2482,9 @@ pub use crate::ffi_types::Bnd_HArray1OfBox2d as HArray1OfBox2d;
 
 unsafe impl crate::CppDeletable for HArray1OfBox2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_destructor(ptr);
+        }
     }
 }
 
@@ -2676,13 +2696,15 @@ pub use crate::ffi_types::HandleBndHArray1OfBox2d;
 
 unsafe impl crate::CppDeletable for HandleBndHArray1OfBox2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleBndHArray1OfBox2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleBndHArray1OfBox2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBndHArray1OfBox2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfBox2d_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfBox2d_clone(ptr)) }
     }
 }
 
@@ -2733,7 +2755,9 @@ pub use crate::ffi_types::Bnd_HArray1OfSphere as HArray1OfSphere;
 
 unsafe impl crate::CppDeletable for HArray1OfSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_destructor(ptr);
+        }
     }
 }
 
@@ -2949,13 +2973,17 @@ pub use crate::ffi_types::HandleBndHArray1OfSphere;
 
 unsafe impl crate::CppDeletable for HandleBndHArray1OfSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::HandleBndHArray1OfSphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::HandleBndHArray1OfSphere_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBndHArray1OfSphere {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfSphere_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfSphere_clone(ptr))
+        }
     }
 }
 
@@ -3013,13 +3041,15 @@ pub use crate::ffi_types::Bnd_OBB as OBB;
 
 unsafe impl crate::CppDeletable for OBB {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_OBB_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_OBB_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for OBB {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Bnd_OBB_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Bnd_OBB_clone(ptr)) }
     }
 }
 
@@ -3346,13 +3376,15 @@ pub use crate::ffi_types::Bnd_Range as Range;
 
 unsafe impl crate::CppDeletable for Range {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_Range_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_Range_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Range {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Bnd_Range_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Bnd_Range_clone(ptr)) }
     }
 }
 
@@ -3617,13 +3649,15 @@ pub use crate::ffi_types::Bnd_Sphere as Sphere;
 
 unsafe impl crate::CppDeletable for Sphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_Sphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_Sphere_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Sphere {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Bnd_Sphere_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Bnd_Sphere_clone(ptr)) }
     }
 }
 
@@ -3819,13 +3853,15 @@ pub use crate::ffi_types::Bnd_Tools as Tools;
 
 unsafe impl crate::CppDeletable for Tools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKMath::Bnd_Tools_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKMath::Bnd_Tools_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Tools {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKMath::Bnd_Tools_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Bnd_Tools_clone(ptr)) }
     }
 }
 

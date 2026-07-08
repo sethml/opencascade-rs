@@ -83,7 +83,9 @@ pub use crate::ffi_types::Approx_Curve2d as Curve2d;
 
 unsafe impl crate::CppDeletable for Curve2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_Curve2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_Curve2d_destructor(ptr);
+        }
     }
 }
 
@@ -151,7 +153,9 @@ pub use crate::ffi_types::Approx_Curve3d as Curve3d;
 
 unsafe impl crate::CppDeletable for Curve3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_Curve3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_Curve3d_destructor(ptr);
+        }
     }
 }
 
@@ -227,7 +231,9 @@ pub use crate::ffi_types::Approx_CurveOnSurface as CurveOnSurface;
 
 unsafe impl crate::CppDeletable for CurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -355,7 +361,9 @@ pub use crate::ffi_types::Approx_CurvilinearParameter as CurvilinearParameter;
 
 unsafe impl crate::CppDeletable for CurvilinearParameter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_destructor(ptr);
+        }
     }
 }
 
@@ -510,7 +518,9 @@ pub use crate::ffi_types::Approx_CurvlinFunc as CurvlinFunc;
 
 unsafe impl crate::CppDeletable for CurvlinFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_destructor(ptr);
+        }
     }
 }
 
@@ -870,13 +880,17 @@ pub use crate::ffi_types::HandleApproxCurvlinFunc;
 
 unsafe impl crate::CppDeletable for HandleApproxCurvlinFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleApproxCurvlinFunc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleApproxCurvlinFunc_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleApproxCurvlinFunc {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxCurvlinFunc_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxCurvlinFunc_clone(ptr))
+        }
     }
 }
 
@@ -929,7 +943,9 @@ pub use crate::ffi_types::Approx_FitAndDivide as FitAndDivide;
 
 unsafe impl crate::CppDeletable for FitAndDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_destructor(ptr);
+        }
     }
 }
 
@@ -1143,7 +1159,9 @@ pub use crate::ffi_types::Approx_FitAndDivide2d as FitAndDivide2d;
 
 unsafe impl crate::CppDeletable for FitAndDivide2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_destructor(ptr);
+        }
     }
 }
 
@@ -1350,7 +1368,9 @@ pub use crate::ffi_types::Approx_HArray1OfAdHSurface as HArray1OfAdHSurface;
 
 unsafe impl crate::CppDeletable for HArray1OfAdHSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1574,15 +1594,19 @@ pub use crate::ffi_types::HandleApproxHArray1OfAdHSurface;
 
 unsafe impl crate::CppDeletable for HandleApproxHArray1OfAdHSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfAdHSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfAdHSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleApproxHArray1OfAdHSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfAdHSurface_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfAdHSurface_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1637,7 +1661,9 @@ pub use crate::ffi_types::Approx_HArray1OfGTrsf2d as HArray1OfGTrsf2d;
 
 unsafe impl crate::CppDeletable for HArray1OfGTrsf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_destructor(ptr);
+        }
     }
 }
 
@@ -1865,13 +1891,19 @@ pub use crate::ffi_types::HandleApproxHArray1OfGTrsf2d;
 
 unsafe impl crate::CppDeletable for HandleApproxHArray1OfGTrsf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfGTrsf2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfGTrsf2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleApproxHArray1OfGTrsf2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfGTrsf2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfGTrsf2d_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1922,7 +1954,9 @@ pub use crate::ffi_types::Approx_MCurvesToBSpCurve as MCurvesToBSpCurve;
 
 unsafe impl crate::CppDeletable for MCurvesToBSpCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_MCurvesToBSpCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_MCurvesToBSpCurve_destructor(ptr);
+        }
     }
 }
 
@@ -2005,7 +2039,9 @@ pub use crate::ffi_types::Approx_SameParameter as SameParameter;
 
 unsafe impl crate::CppDeletable for SameParameter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_SameParameter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_SameParameter_destructor(ptr);
+        }
     }
 }
 
@@ -2137,7 +2173,9 @@ pub use crate::ffi_types::Approx_SweepApproximation as SweepApproximation;
 
 unsafe impl crate::CppDeletable for SweepApproximation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_destructor(ptr);
+        }
     }
 }
 
@@ -2508,7 +2546,9 @@ pub use crate::ffi_types::Approx_SweepFunction as SweepFunction;
 
 unsafe impl crate::CppDeletable for SweepFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Approx_SweepFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_destructor(ptr);
+        }
     }
 }
 
@@ -2918,13 +2958,17 @@ pub use crate::ffi_types::HandleApproxSweepFunction;
 
 unsafe impl crate::CppDeletable for HandleApproxSweepFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleApproxSweepFunction {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_clone(ptr))
+        }
     }
 }
 

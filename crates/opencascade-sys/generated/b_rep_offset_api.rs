@@ -38,7 +38,9 @@ pub use crate::ffi_types::BRepOffsetAPI_DraftAngle as DraftAngle;
 
 unsafe impl crate::CppDeletable for DraftAngle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_destructor(ptr);
+        }
     }
 }
 
@@ -446,7 +448,9 @@ pub use crate::ffi_types::BRepOffsetAPI_FindContigousEdges as FindContigousEdges
 
 unsafe impl crate::CppDeletable for FindContigousEdges {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_destructor(ptr);
+        }
     }
 }
 
@@ -730,7 +734,9 @@ pub use crate::ffi_types::BRepOffsetAPI_MakeDraft as MakeDraft;
 
 unsafe impl crate::CppDeletable for MakeDraft {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_destructor(ptr);
+        }
     }
 }
 
@@ -1021,7 +1027,9 @@ pub use crate::ffi_types::BRepOffsetAPI_MakeEvolved as MakeEvolved;
 
 unsafe impl crate::CppDeletable for MakeEvolved {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_destructor(ptr);
+        }
     }
 }
 
@@ -1393,7 +1401,9 @@ pub use crate::ffi_types::BRepOffsetAPI_MakeFilling as MakeFilling;
 
 unsafe impl crate::CppDeletable for MakeFilling {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_destructor(ptr);
+        }
     }
 }
 
@@ -2162,7 +2172,9 @@ pub use crate::ffi_types::BRepOffsetAPI_MakeOffset as MakeOffset;
 
 unsafe impl crate::CppDeletable for MakeOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_destructor(ptr);
+        }
     }
 }
 
@@ -2447,7 +2459,9 @@ pub use crate::ffi_types::BRepOffsetAPI_MakeOffsetShape as MakeOffsetShape;
 
 unsafe impl crate::CppDeletable for MakeOffsetShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_destructor(ptr);
+        }
     }
 }
 
@@ -2732,7 +2746,9 @@ pub use crate::ffi_types::BRepOffsetAPI_MakePipe as MakePipe;
 
 unsafe impl crate::CppDeletable for MakePipe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_destructor(ptr);
+        }
     }
 }
 
@@ -3009,7 +3025,9 @@ pub use crate::ffi_types::BRepOffsetAPI_MakePipeShell as MakePipeShell;
 
 unsafe impl crate::CppDeletable for MakePipeShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_destructor(ptr);
+        }
     }
 }
 
@@ -3598,7 +3616,9 @@ pub use crate::ffi_types::BRepOffsetAPI_MakeThickSolid as MakeThickSolid;
 
 unsafe impl crate::CppDeletable for MakeThickSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_destructor(ptr);
+        }
     }
 }
 
@@ -3897,7 +3917,9 @@ pub use crate::ffi_types::BRepOffsetAPI_MiddlePath as MiddlePath;
 
 unsafe impl crate::CppDeletable for MiddlePath {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_destructor(ptr);
+        }
     }
 }
 
@@ -4021,7 +4043,9 @@ pub use crate::ffi_types::BRepOffsetAPI_NormalProjection as NormalProjection;
 
 unsafe impl crate::CppDeletable for NormalProjection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_destructor(ptr);
+        }
     }
 }
 
@@ -4337,7 +4361,9 @@ pub use crate::ffi_types::BRepOffsetAPI_ThruSections as ThruSections;
 
 unsafe impl crate::CppDeletable for ThruSections {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_destructor(ptr);
+        }
     }
 }
 

@@ -19,7 +19,9 @@ pub use crate::ffi_types::XCAFNoteObjects_NoteObject as NoteObject;
 
 unsafe impl crate::CppDeletable for NoteObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_destructor(ptr);
+        }
     }
 }
 
@@ -305,13 +307,19 @@ pub use crate::ffi_types::HandleXCAFNoteObjectsNoteObject;
 
 unsafe impl crate::CppDeletable for HandleXCAFNoteObjectsNoteObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXCAFNoteObjectsNoteObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_clone(
+                ptr,
+            ))
+        }
     }
 }
 

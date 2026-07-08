@@ -146,7 +146,9 @@ pub use crate::ffi_types::ShapeConstruct_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeConstruct_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeConstruct_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -316,7 +318,9 @@ pub use crate::ffi_types::ShapeConstruct_MakeTriangulation as MakeTriangulation;
 
 unsafe impl crate::CppDeletable for MakeTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeConstruct_MakeTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeConstruct_MakeTriangulation_destructor(ptr);
+        }
     }
 }
 
@@ -451,7 +455,9 @@ pub use crate::ffi_types::ShapeConstruct_ProjectCurveOnSurface as ProjectCurveOn
 
 unsafe impl crate::CppDeletable for ProjectCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -753,15 +759,21 @@ pub use crate::ffi_types::HandleShapeConstructProjectCurveOnSurface;
 
 unsafe impl crate::CppDeletable for HandleShapeConstructProjectCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKShHealing::HandleShapeConstructProjectCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKShHealing::HandleShapeConstructProjectCurveOnSurface_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleShapeConstructProjectCurveOnSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKShHealing::HandleShapeConstructProjectCurveOnSurface_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeConstructProjectCurveOnSurface_clone(ptr),
+            )
+        }
     }
 }
 

@@ -200,7 +200,9 @@ pub use crate::ffi_types::ChFiDS_ChamfSpine as ChamfSpine;
 
 unsafe impl crate::CppDeletable for ChamfSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_destructor(ptr);
+        }
     }
 }
 
@@ -1006,13 +1008,17 @@ pub use crate::ffi_types::HandleChFiDSChamfSpine;
 
 unsafe impl crate::CppDeletable for HandleChFiDSChamfSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::HandleChFiDSChamfSpine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::HandleChFiDSChamfSpine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleChFiDSChamfSpine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSChamfSpine_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSChamfSpine_clone(ptr))
+        }
     }
 }
 
@@ -1075,7 +1081,9 @@ pub use crate::ffi_types::ChFiDS_CircSection as CircSection;
 
 unsafe impl crate::CppDeletable for CircSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_CircSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_CircSection_destructor(ptr);
+        }
     }
 }
 
@@ -1145,7 +1153,9 @@ pub use crate::ffi_types::ChFiDS_CommonPoint as CommonPoint;
 
 unsafe impl crate::CppDeletable for CommonPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_destructor(ptr);
+        }
     }
 }
 
@@ -1348,7 +1358,9 @@ pub use crate::ffi_types::ChFiDS_ElSpine as ElSpine;
 
 unsafe impl crate::CppDeletable for ElSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_ElSpine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_destructor(ptr);
+        }
     }
 }
 
@@ -1948,13 +1960,15 @@ pub use crate::ffi_types::HandleChFiDSElSpine;
 
 unsafe impl crate::CppDeletable for HandleChFiDSElSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::HandleChFiDSElSpine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::HandleChFiDSElSpine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleChFiDSElSpine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSElSpine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSElSpine_clone(ptr)) }
     }
 }
 
@@ -2017,7 +2031,9 @@ pub use crate::ffi_types::ChFiDS_FaceInterference as FaceInterference;
 
 unsafe impl crate::CppDeletable for FaceInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_destructor(ptr);
+        }
     }
 }
 
@@ -2193,7 +2209,9 @@ pub use crate::ffi_types::ChFiDS_FilSpine as FilSpine;
 
 unsafe impl crate::CppDeletable for FilSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_FilSpine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_destructor(ptr);
+        }
     }
 }
 
@@ -3070,13 +3088,15 @@ pub use crate::ffi_types::HandleChFiDSFilSpine;
 
 unsafe impl crate::CppDeletable for HandleChFiDSFilSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::HandleChFiDSFilSpine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::HandleChFiDSFilSpine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleChFiDSFilSpine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSFilSpine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSFilSpine_clone(ptr)) }
     }
 }
 
@@ -3138,7 +3158,9 @@ pub use crate::ffi_types::ChFiDS_HData as HData;
 
 unsafe impl crate::CppDeletable for HData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_HData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_HData_destructor(ptr);
+        }
     }
 }
 
@@ -3333,13 +3355,15 @@ pub use crate::ffi_types::HandleChFiDSHData;
 
 unsafe impl crate::CppDeletable for HandleChFiDSHData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::HandleChFiDSHData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::HandleChFiDSHData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleChFiDSHData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSHData_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSHData_clone(ptr)) }
     }
 }
 
@@ -3391,7 +3415,9 @@ pub use crate::ffi_types::ChFiDS_Map as Map;
 
 unsafe impl crate::CppDeletable for Map {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_Map_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Map_destructor(ptr);
+        }
     }
 }
 
@@ -3467,7 +3493,9 @@ pub use crate::ffi_types::ChFiDS_Regul as Regul;
 
 unsafe impl crate::CppDeletable for Regul {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_Regul_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Regul_destructor(ptr);
+        }
     }
 }
 
@@ -3547,7 +3575,9 @@ pub use crate::ffi_types::ChFiDS_SecHArray1 as SecHArray1;
 
 unsafe impl crate::CppDeletable for SecHArray1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_destructor(ptr);
+        }
     }
 }
 
@@ -3761,13 +3791,17 @@ pub use crate::ffi_types::HandleChFiDSSecHArray1;
 
 unsafe impl crate::CppDeletable for HandleChFiDSSecHArray1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::HandleChFiDSSecHArray1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::HandleChFiDSSecHArray1_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleChFiDSSecHArray1 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSecHArray1_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSecHArray1_clone(ptr))
+        }
     }
 }
 
@@ -3841,7 +3875,9 @@ pub use crate::ffi_types::ChFiDS_Spine as Spine;
 
 unsafe impl crate::CppDeletable for Spine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_Spine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_destructor(ptr);
+        }
     }
 }
 
@@ -4593,13 +4629,15 @@ pub use crate::ffi_types::HandleChFiDSSpine;
 
 unsafe impl crate::CppDeletable for HandleChFiDSSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::HandleChFiDSSpine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::HandleChFiDSSpine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleChFiDSSpine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSpine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSpine_clone(ptr)) }
     }
 }
 
@@ -4687,7 +4725,9 @@ pub use crate::ffi_types::ChFiDS_Stripe as Stripe;
 
 unsafe impl crate::CppDeletable for Stripe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_Stripe_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_destructor(ptr);
+        }
     }
 }
 
@@ -5284,13 +5324,15 @@ pub use crate::ffi_types::HandleChFiDSStripe;
 
 unsafe impl crate::CppDeletable for HandleChFiDSStripe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::HandleChFiDSStripe_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::HandleChFiDSStripe_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleChFiDSStripe {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSStripe_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSStripe_clone(ptr)) }
     }
 }
 
@@ -5342,7 +5384,9 @@ pub use crate::ffi_types::ChFiDS_StripeMap as StripeMap;
 
 unsafe impl crate::CppDeletable for StripeMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_StripeMap_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_StripeMap_destructor(ptr);
+        }
     }
 }
 
@@ -5428,7 +5472,9 @@ pub use crate::ffi_types::ChFiDS_SurfData as SurfData;
 
 unsafe impl crate::CppDeletable for SurfData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::ChFiDS_SurfData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_destructor(ptr);
+        }
     }
 }
 
@@ -6047,13 +6093,15 @@ pub use crate::ffi_types::HandleChFiDSSurfData;
 
 unsafe impl crate::CppDeletable for HandleChFiDSSurfData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::HandleChFiDSSurfData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::HandleChFiDSSurfData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleChFiDSSurfData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSurfData_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSurfData_clone(ptr)) }
     }
 }
 

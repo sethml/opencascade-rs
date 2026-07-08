@@ -81,7 +81,9 @@ pub use crate::ffi_types::GCPnts_AbscissaPoint as AbscissaPoint;
 
 unsafe impl crate::CppDeletable for AbscissaPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GCPnts_AbscissaPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GCPnts_AbscissaPoint_destructor(ptr);
+        }
     }
 }
 
@@ -393,13 +395,15 @@ pub use crate::ffi_types::GCPnts_DistFunction as DistFunction;
 
 unsafe impl crate::CppDeletable for DistFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GCPnts_DistFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GCPnts_DistFunction_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for DistFunction {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::GCPnts_DistFunction_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomBase::GCPnts_DistFunction_clone(ptr)) }
     }
 }
 
@@ -475,7 +479,9 @@ pub use crate::ffi_types::GCPnts_DistFunctionMV as DistFunctionMV;
 
 unsafe impl crate::CppDeletable for DistFunctionMV {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GCPnts_DistFunctionMV_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GCPnts_DistFunctionMV_destructor(ptr);
+        }
     }
 }
 
@@ -550,13 +556,17 @@ pub use crate::ffi_types::GCPnts_DistFunction2d as DistFunction2d;
 
 unsafe impl crate::CppDeletable for DistFunction2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GCPnts_DistFunction2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GCPnts_DistFunction2d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for DistFunction2d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::GCPnts_DistFunction2d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::GCPnts_DistFunction2d_clone(ptr))
+        }
     }
 }
 
@@ -633,7 +643,9 @@ pub use crate::ffi_types::GCPnts_DistFunction2dMV as DistFunction2dMV;
 
 unsafe impl crate::CppDeletable for DistFunction2dMV {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GCPnts_DistFunction2dMV_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GCPnts_DistFunction2dMV_destructor(ptr);
+        }
     }
 }
 
@@ -705,7 +717,9 @@ pub use crate::ffi_types::GCPnts_QuasiUniformAbscissa as QuasiUniformAbscissa;
 
 unsafe impl crate::CppDeletable for QuasiUniformAbscissa {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GCPnts_QuasiUniformAbscissa_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GCPnts_QuasiUniformAbscissa_destructor(ptr);
+        }
     }
 }
 
@@ -976,7 +990,9 @@ pub use crate::ffi_types::GCPnts_QuasiUniformDeflection as QuasiUniformDeflectio
 
 unsafe impl crate::CppDeletable for QuasiUniformDeflection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GCPnts_QuasiUniformDeflection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GCPnts_QuasiUniformDeflection_destructor(ptr);
+        }
     }
 }
 
@@ -1339,7 +1355,9 @@ pub use crate::ffi_types::GCPnts_TangentialDeflection as TangentialDeflection;
 
 unsafe impl crate::CppDeletable for TangentialDeflection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GCPnts_TangentialDeflection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GCPnts_TangentialDeflection_destructor(ptr);
+        }
     }
 }
 
@@ -1941,7 +1959,9 @@ pub use crate::ffi_types::GCPnts_UniformAbscissa as UniformAbscissa;
 
 unsafe impl crate::CppDeletable for UniformAbscissa {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GCPnts_UniformAbscissa_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GCPnts_UniformAbscissa_destructor(ptr);
+        }
     }
 }
 
@@ -2527,7 +2547,9 @@ pub use crate::ffi_types::GCPnts_UniformDeflection as UniformDeflection;
 
 unsafe impl crate::CppDeletable for UniformDeflection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::GCPnts_UniformDeflection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GCPnts_UniformDeflection_destructor(ptr);
+        }
     }
 }
 

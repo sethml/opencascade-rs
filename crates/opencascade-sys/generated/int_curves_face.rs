@@ -18,7 +18,9 @@ pub use crate::ffi_types::IntCurvesFace_Intersector as Intersector;
 
 unsafe impl crate::CppDeletable for Intersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_destructor(ptr);
+        }
     }
 }
 
@@ -428,13 +430,19 @@ pub use crate::ffi_types::HandleIntCurvesFaceIntersector;
 
 unsafe impl crate::CppDeletable for HandleIntCurvesFaceIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleIntCurvesFaceIntersector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleIntCurvesFaceIntersector_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIntCurvesFaceIntersector {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleIntCurvesFaceIntersector_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleIntCurvesFaceIntersector_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -485,7 +493,9 @@ pub use crate::ffi_types::IntCurvesFace_ShapeIntersector as ShapeIntersector;
 
 unsafe impl crate::CppDeletable for ShapeIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_destructor(ptr);
+        }
     }
 }
 

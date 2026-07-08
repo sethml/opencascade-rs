@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== BRep_Builder ========================
     pub fn BRep_Builder_destructor(self_: *mut BRep_Builder);
     /// **Source:** `BRep_Builder.hxx` - `BRep_Builder::BRep_Builder()`

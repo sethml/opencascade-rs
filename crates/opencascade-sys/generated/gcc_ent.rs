@@ -187,7 +187,9 @@ pub use crate::ffi_types::GccEnt_BadQualifier as BadQualifier;
 
 unsafe impl crate::CppDeletable for BadQualifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_destructor(ptr);
+        }
     }
 }
 
@@ -478,13 +480,17 @@ pub use crate::ffi_types::HandleGccEntBadQualifier;
 
 unsafe impl crate::CppDeletable for HandleGccEntBadQualifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGccEntBadQualifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGccEntBadQualifier_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGccEntBadQualifier {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccEntBadQualifier_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccEntBadQualifier_clone(ptr))
+        }
     }
 }
 
@@ -569,7 +575,9 @@ pub use crate::ffi_types::GccEnt_QualifiedCirc as QualifiedCirc;
 
 unsafe impl crate::CppDeletable for QualifiedCirc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedCirc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedCirc_destructor(ptr);
+        }
     }
 }
 
@@ -677,7 +685,9 @@ pub use crate::ffi_types::GccEnt_QualifiedLin as QualifiedLin;
 
 unsafe impl crate::CppDeletable for QualifiedLin {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedLin_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedLin_destructor(ptr);
+        }
     }
 }
 

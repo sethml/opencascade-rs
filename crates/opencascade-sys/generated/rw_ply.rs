@@ -19,7 +19,9 @@ pub use crate::ffi_types::RWPly_CafWriter as CafWriter;
 
 unsafe impl crate::CppDeletable for CafWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEPLY::RWPly_CafWriter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_destructor(ptr);
+        }
     }
 }
 
@@ -373,13 +375,15 @@ pub use crate::ffi_types::HandleRWPlyCafWriter;
 
 unsafe impl crate::CppDeletable for HandleRWPlyCafWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleRWPlyCafWriter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_clone(ptr)) }
     }
 }
 
@@ -431,7 +435,9 @@ pub use crate::ffi_types::RWPly_PlyWriterContext as PlyWriterContext;
 
 unsafe impl crate::CppDeletable for PlyWriterContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_destructor(ptr);
+        }
     }
 }
 

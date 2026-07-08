@@ -126,7 +126,9 @@ pub use crate::ffi_types::AdvApp2Var_ApproxAFunc2Var as ApproxAFunc2Var;
 
 unsafe impl crate::CppDeletable for ApproxAFunc2Var {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_destructor(ptr);
+        }
     }
 }
 
@@ -399,7 +401,9 @@ pub use crate::ffi_types::AdvApp2Var_ApproxF2var as ApproxF2var;
 
 unsafe impl crate::CppDeletable for ApproxF2var {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_destructor(ptr);
+        }
     }
 }
 
@@ -719,7 +723,9 @@ pub use crate::ffi_types::AdvApp2Var_Context as Context;
 
 unsafe impl crate::CppDeletable for Context {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_destructor(ptr);
+        }
     }
 }
 
@@ -911,7 +917,9 @@ pub use crate::ffi_types::AdvApp2Var_Criterion as Criterion;
 
 unsafe impl crate::CppDeletable for Criterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_Criterion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Criterion_destructor(ptr);
+        }
     }
 }
 
@@ -963,7 +971,9 @@ pub use crate::ffi_types::mdnombr_1_;
 
 unsafe impl crate::CppDeletable for mdnombr_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::mdnombr_1__destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::mdnombr_1__destructor(ptr);
+        }
     }
 }
 
@@ -972,7 +982,9 @@ pub use crate::ffi_types::minombr_1_;
 
 unsafe impl crate::CppDeletable for minombr_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::minombr_1__destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::minombr_1__destructor(ptr);
+        }
     }
 }
 
@@ -981,7 +993,9 @@ pub use crate::ffi_types::maovpar_1_;
 
 unsafe impl crate::CppDeletable for maovpar_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::maovpar_1__destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::maovpar_1__destructor(ptr);
+        }
     }
 }
 
@@ -990,7 +1004,9 @@ pub use crate::ffi_types::maovpch_1_;
 
 unsafe impl crate::CppDeletable for maovpch_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::maovpch_1__destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::maovpch_1__destructor(ptr);
+        }
     }
 }
 
@@ -1011,7 +1027,9 @@ pub use crate::ffi_types::mlgdrtl_1_;
 
 unsafe impl crate::CppDeletable for mlgdrtl_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::mlgdrtl_1__destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::mlgdrtl_1__destructor(ptr);
+        }
     }
 }
 
@@ -1020,7 +1038,9 @@ pub use crate::ffi_types::mmjcobi_1_;
 
 unsafe impl crate::CppDeletable for mmjcobi_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::mmjcobi_1__destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::mmjcobi_1__destructor(ptr);
+        }
     }
 }
 
@@ -1029,7 +1049,9 @@ pub use crate::ffi_types::mmcmcnp_1_;
 
 unsafe impl crate::CppDeletable for mmcmcnp_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::mmcmcnp_1__destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::mmcmcnp_1__destructor(ptr);
+        }
     }
 }
 
@@ -1038,7 +1060,9 @@ pub use crate::ffi_types::mmapgss_1_;
 
 unsafe impl crate::CppDeletable for mmapgss_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::mmapgss_1__destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::mmapgss_1__destructor(ptr);
+        }
     }
 }
 
@@ -1047,7 +1071,9 @@ pub use crate::ffi_types::mmapgs0_1_;
 
 unsafe impl crate::CppDeletable for mmapgs0_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::mmapgs0_1__destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::mmapgs0_1__destructor(ptr);
+        }
     }
 }
 
@@ -1056,7 +1082,9 @@ pub use crate::ffi_types::mmapgs1_1_;
 
 unsafe impl crate::CppDeletable for mmapgs1_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::mmapgs1_1__destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::mmapgs1_1__destructor(ptr);
+        }
     }
 }
 
@@ -1065,7 +1093,9 @@ pub use crate::ffi_types::mmapgs2_1_;
 
 unsafe impl crate::CppDeletable for mmapgs2_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::mmapgs2_1__destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::mmapgs2_1__destructor(ptr);
+        }
     }
 }
 
@@ -1075,7 +1105,9 @@ pub use crate::ffi_types::AdvApp2Var_Data as Data;
 
 unsafe impl crate::CppDeletable for Data {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_destructor(ptr);
+        }
     }
 }
 
@@ -1177,7 +1209,9 @@ pub use crate::ffi_types::complex;
 
 unsafe impl crate::CppDeletable for complex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::complex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::complex_destructor(ptr);
+        }
     }
 }
 
@@ -1186,7 +1220,9 @@ pub use crate::ffi_types::doublecomplex;
 
 unsafe impl crate::CppDeletable for doublecomplex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::doublecomplex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::doublecomplex_destructor(ptr);
+        }
     }
 }
 
@@ -1195,7 +1231,9 @@ pub use crate::ffi_types::cilist;
 
 unsafe impl crate::CppDeletable for cilist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::cilist_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::cilist_destructor(ptr);
+        }
     }
 }
 
@@ -1216,7 +1254,9 @@ pub use crate::ffi_types::icilist;
 
 unsafe impl crate::CppDeletable for icilist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::icilist_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::icilist_destructor(ptr);
+        }
     }
 }
 
@@ -1237,7 +1277,9 @@ pub use crate::ffi_types::olist;
 
 unsafe impl crate::CppDeletable for olist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::olist_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::olist_destructor(ptr);
+        }
     }
 }
 
@@ -1258,7 +1300,9 @@ pub use crate::ffi_types::cllist;
 
 unsafe impl crate::CppDeletable for cllist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::cllist_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::cllist_destructor(ptr);
+        }
     }
 }
 
@@ -1279,7 +1323,9 @@ pub use crate::ffi_types::alist;
 
 unsafe impl crate::CppDeletable for alist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::alist_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::alist_destructor(ptr);
+        }
     }
 }
 
@@ -1288,7 +1334,9 @@ pub use crate::ffi_types::inlist;
 
 unsafe impl crate::CppDeletable for inlist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::inlist_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::inlist_destructor(ptr);
+        }
     }
 }
 
@@ -1309,7 +1357,9 @@ pub use crate::ffi_types::Vardesc;
 
 unsafe impl crate::CppDeletable for Vardesc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Vardesc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Vardesc_destructor(ptr);
+        }
     }
 }
 
@@ -1330,7 +1380,9 @@ pub use crate::ffi_types::Namelist;
 
 unsafe impl crate::CppDeletable for Namelist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::Namelist_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Namelist_destructor(ptr);
+        }
     }
 }
 
@@ -1355,7 +1407,9 @@ pub use crate::ffi_types::AdvApp2Var_EvaluatorFunc2Var as EvaluatorFunc2Var;
 
 unsafe impl crate::CppDeletable for EvaluatorFunc2Var {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_EvaluatorFunc2Var_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_EvaluatorFunc2Var_destructor(ptr);
+        }
     }
 }
 
@@ -1404,7 +1458,9 @@ pub use crate::ffi_types::AdvApp2Var_Framework as Framework;
 
 unsafe impl crate::CppDeletable for Framework {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_destructor(ptr);
+        }
     }
 }
 
@@ -1600,7 +1656,9 @@ pub use crate::ffi_types::AdvApp2Var_Iso as Iso;
 
 unsafe impl crate::CppDeletable for Iso {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_destructor(ptr);
+        }
     }
 }
 
@@ -2016,13 +2074,15 @@ pub use crate::ffi_types::HandleAdvApp2VarIso;
 
 unsafe impl crate::CppDeletable for HandleAdvApp2VarIso {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleAdvApp2VarIso_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAdvApp2VarIso_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAdvApp2VarIso {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarIso_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarIso_clone(ptr)) }
     }
 }
 
@@ -2073,7 +2133,9 @@ pub use crate::ffi_types::AdvApp2Var_MathBase as MathBase;
 
 unsafe impl crate::CppDeletable for MathBase {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_destructor(ptr);
+        }
     }
 }
 
@@ -2681,7 +2743,9 @@ pub use crate::ffi_types::AdvApp2Var_Network as Network;
 
 unsafe impl crate::CppDeletable for Network {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_destructor(ptr);
+        }
     }
 }
 
@@ -2820,7 +2884,9 @@ pub use crate::ffi_types::AdvApp2Var_Node as Node;
 
 unsafe impl crate::CppDeletable for Node {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_destructor(ptr);
+        }
     }
 }
 
@@ -3060,13 +3126,17 @@ pub use crate::ffi_types::HandleAdvApp2VarNode;
 
 unsafe impl crate::CppDeletable for HandleAdvApp2VarNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleAdvApp2VarNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAdvApp2VarNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAdvApp2VarNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarNode_clone(ptr))
+        }
     }
 }
 
@@ -3118,7 +3188,9 @@ pub use crate::ffi_types::AdvApp2Var_Patch as Patch;
 
 unsafe impl crate::CppDeletable for Patch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_destructor(ptr);
+        }
     }
 }
 
@@ -3543,13 +3615,17 @@ pub use crate::ffi_types::HandleAdvApp2VarPatch;
 
 unsafe impl crate::CppDeletable for HandleAdvApp2VarPatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleAdvApp2VarPatch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAdvApp2VarPatch_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAdvApp2VarPatch {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarPatch_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarPatch_clone(ptr))
+        }
     }
 }
 
@@ -3600,7 +3676,9 @@ pub use crate::ffi_types::AdvApp2Var_SysBase as SysBase;
 
 unsafe impl crate::CppDeletable for SysBase {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_destructor(ptr);
+        }
     }
 }
 

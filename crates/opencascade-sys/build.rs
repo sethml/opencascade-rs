@@ -174,7 +174,9 @@ impl OcctConfig {
             if !marker_lib.exists() {
                 occt_sys::build_occt();
             }
-            std::env::set_var("DEP_OCCT_ROOT", builtin_occt_path.as_os_str());
+            // SAFETY: This build script is single-threaded, so there are no
+            // concurrent reads of the environment variable.
+            unsafe { std::env::set_var("DEP_OCCT_ROOT", builtin_occt_path.as_os_str()) };
 
             // With builtin feature, skip cmake detection and use built OCCT directly
             // Headers can be in either build/include (during build) or include (after install)

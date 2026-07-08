@@ -161,7 +161,11 @@ pub use crate::ffi_types::StepFEA_AlignedCurve3dElementCoordinateSystem as Align
 
 unsafe impl crate::CppDeletable for AlignedCurve3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_AlignedCurve3dElementCoordinateSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_AlignedCurve3dElementCoordinateSystem_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -364,19 +368,17 @@ pub use crate::ffi_types::HandleStepFEAAlignedCurve3dElementCoordinateSystem;
 
 unsafe impl crate::CppDeletable for HandleStepFEAAlignedCurve3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAAlignedCurve3dElementCoordinateSystem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAAlignedCurve3dElementCoordinateSystem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAAlignedCurve3dElementCoordinateSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAAlignedCurve3dElementCoordinateSystem_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAAlignedCurve3dElementCoordinateSystem_clone(ptr))
+        }
     }
 }
 
@@ -448,7 +450,11 @@ pub use crate::ffi_types::StepFEA_AlignedSurface3dElementCoordinateSystem as Ali
 
 unsafe impl crate::CppDeletable for AlignedSurface3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_AlignedSurface3dElementCoordinateSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_AlignedSurface3dElementCoordinateSystem_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -648,19 +654,17 @@ pub use crate::ffi_types::HandleStepFEAAlignedSurface3dElementCoordinateSystem;
 
 unsafe impl crate::CppDeletable for HandleStepFEAAlignedSurface3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAAlignedSurface3dElementCoordinateSystem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAAlignedSurface3dElementCoordinateSystem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAAlignedSurface3dElementCoordinateSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAAlignedSurface3dElementCoordinateSystem_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAAlignedSurface3dElementCoordinateSystem_clone(ptr))
+        }
     }
 }
 
@@ -728,9 +732,11 @@ pub use crate::ffi_types::StepFEA_ArbitraryVolume3dElementCoordinateSystem as Ar
 
 unsafe impl crate::CppDeletable for ArbitraryVolume3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_ArbitraryVolume3dElementCoordinateSystem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_ArbitraryVolume3dElementCoordinateSystem_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -930,17 +936,17 @@ pub use crate::ffi_types::HandleStepFEAArbitraryVolume3dElementCoordinateSystem;
 
 unsafe impl crate::CppDeletable for HandleStepFEAArbitraryVolume3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAArbitraryVolume3dElementCoordinateSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAArbitraryVolume3dElementCoordinateSystem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAArbitraryVolume3dElementCoordinateSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAArbitraryVolume3dElementCoordinateSystem_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAArbitraryVolume3dElementCoordinateSystem_clone(ptr))
+        }
     }
 }
 
@@ -1006,9 +1012,11 @@ pub use crate::ffi_types::StepFEA_ConstantSurface3dElementCoordinateSystem as Co
 
 unsafe impl crate::CppDeletable for ConstantSurface3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_ConstantSurface3dElementCoordinateSystem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_ConstantSurface3dElementCoordinateSystem_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -1231,17 +1239,17 @@ pub use crate::ffi_types::HandleStepFEAConstantSurface3dElementCoordinateSystem;
 
 unsafe impl crate::CppDeletable for HandleStepFEAConstantSurface3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAConstantSurface3dElementCoordinateSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAConstantSurface3dElementCoordinateSystem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAConstantSurface3dElementCoordinateSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAConstantSurface3dElementCoordinateSystem_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAConstantSurface3dElementCoordinateSystem_clone(ptr))
+        }
     }
 }
 
@@ -1307,7 +1315,9 @@ pub use crate::ffi_types::StepFEA_Curve3dElementProperty as Curve3dElementProper
 
 unsafe impl crate::CppDeletable for Curve3dElementProperty {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementProperty_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementProperty_destructor(ptr);
+        }
     }
 }
 
@@ -1619,15 +1629,19 @@ pub use crate::ffi_types::HandleStepFEACurve3dElementProperty;
 
 unsafe impl crate::CppDeletable for HandleStepFEACurve3dElementProperty {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEACurve3dElementProperty_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurve3dElementProperty_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEACurve3dElementProperty {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEACurve3dElementProperty_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEACurve3dElementProperty_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1683,7 +1697,9 @@ pub use crate::ffi_types::StepFEA_Curve3dElementRepresentation as Curve3dElement
 
 unsafe impl crate::CppDeletable for Curve3dElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -2096,15 +2112,19 @@ pub use crate::ffi_types::HandleStepFEACurve3dElementRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepFEACurve3dElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEACurve3dElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurve3dElementRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEACurve3dElementRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEACurve3dElementRepresentation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEACurve3dElementRepresentation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2178,7 +2198,9 @@ pub use crate::ffi_types::StepFEA_CurveElementEndCoordinateSystem as CurveElemen
 
 unsafe impl crate::CppDeletable for CurveElementEndCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_CurveElementEndCoordinateSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_CurveElementEndCoordinateSystem_destructor(ptr);
+        }
     }
 }
 
@@ -2429,7 +2451,9 @@ pub use crate::ffi_types::StepFEA_CurveElementEndOffset as CurveElementEndOffset
 
 unsafe impl crate::CppDeletable for CurveElementEndOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_CurveElementEndOffset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_CurveElementEndOffset_destructor(ptr);
+        }
     }
 }
 
@@ -2650,15 +2674,19 @@ pub use crate::ffi_types::HandleStepFEACurveElementEndOffset;
 
 unsafe impl crate::CppDeletable for HandleStepFEACurveElementEndOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementEndOffset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementEndOffset_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEACurveElementEndOffset {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementEndOffset_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementEndOffset_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2714,7 +2742,9 @@ pub use crate::ffi_types::StepFEA_CurveElementEndRelease as CurveElementEndRelea
 
 unsafe impl crate::CppDeletable for CurveElementEndRelease {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_CurveElementEndRelease_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_CurveElementEndRelease_destructor(ptr);
+        }
     }
 }
 
@@ -2936,15 +2966,19 @@ pub use crate::ffi_types::HandleStepFEACurveElementEndRelease;
 
 unsafe impl crate::CppDeletable for HandleStepFEACurveElementEndRelease {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementEndRelease_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementEndRelease_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEACurveElementEndRelease {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementEndRelease_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementEndRelease_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3000,7 +3034,9 @@ pub use crate::ffi_types::StepFEA_CurveElementInterval as CurveElementInterval;
 
 unsafe impl crate::CppDeletable for CurveElementInterval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_CurveElementInterval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_CurveElementInterval_destructor(ptr);
+        }
     }
 }
 
@@ -3223,15 +3259,19 @@ pub use crate::ffi_types::HandleStepFEACurveElementInterval;
 
 unsafe impl crate::CppDeletable for HandleStepFEACurveElementInterval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementInterval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementInterval_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEACurveElementInterval {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementInterval_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementInterval_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3320,7 +3360,9 @@ pub use crate::ffi_types::StepFEA_CurveElementIntervalConstant as CurveElementIn
 
 unsafe impl crate::CppDeletable for CurveElementIntervalConstant {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_CurveElementIntervalConstant_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_CurveElementIntervalConstant_destructor(ptr);
+        }
     }
 }
 
@@ -3564,15 +3606,19 @@ pub use crate::ffi_types::HandleStepFEACurveElementIntervalConstant;
 
 unsafe impl crate::CppDeletable for HandleStepFEACurveElementIntervalConstant {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementIntervalConstant_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementIntervalConstant_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEACurveElementIntervalConstant {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementIntervalConstant_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementIntervalConstant_clone(ptr),
+            )
+        }
     }
 }
 
@@ -3637,7 +3683,9 @@ pub use crate::ffi_types::StepFEA_CurveElementIntervalLinearlyVarying as CurveEl
 
 unsafe impl crate::CppDeletable for CurveElementIntervalLinearlyVarying {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_CurveElementIntervalLinearlyVarying_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_CurveElementIntervalLinearlyVarying_destructor(ptr);
+        }
     }
 }
 
@@ -3858,17 +3906,23 @@ pub use crate::ffi_types::HandleStepFEACurveElementIntervalLinearlyVarying;
 
 unsafe impl crate::CppDeletable for HandleStepFEACurveElementIntervalLinearlyVarying {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementIntervalLinearlyVarying_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementIntervalLinearlyVarying_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEACurveElementIntervalLinearlyVarying {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementIntervalLinearlyVarying_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementIntervalLinearlyVarying_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -3931,7 +3985,9 @@ pub use crate::ffi_types::StepFEA_CurveElementLocation as CurveElementLocation;
 
 unsafe impl crate::CppDeletable for CurveElementLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_CurveElementLocation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_CurveElementLocation_destructor(ptr);
+        }
     }
 }
 
@@ -4124,15 +4180,19 @@ pub use crate::ffi_types::HandleStepFEACurveElementLocation;
 
 unsafe impl crate::CppDeletable for HandleStepFEACurveElementLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementLocation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementLocation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEACurveElementLocation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementLocation_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEACurveElementLocation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4188,7 +4248,9 @@ pub use crate::ffi_types::StepFEA_DegreeOfFreedom as DegreeOfFreedom;
 
 unsafe impl crate::CppDeletable for DegreeOfFreedom {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_DegreeOfFreedom_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_DegreeOfFreedom_destructor(ptr);
+        }
     }
 }
 
@@ -4462,7 +4524,9 @@ pub use crate::ffi_types::StepFEA_DegreeOfFreedomMember as DegreeOfFreedomMember
 
 unsafe impl crate::CppDeletable for DegreeOfFreedomMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_DegreeOfFreedomMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_DegreeOfFreedomMember_destructor(ptr);
+        }
     }
 }
 
@@ -4854,15 +4918,19 @@ pub use crate::ffi_types::HandleStepFEADegreeOfFreedomMember;
 
 unsafe impl crate::CppDeletable for HandleStepFEADegreeOfFreedomMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEADegreeOfFreedomMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEADegreeOfFreedomMember_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEADegreeOfFreedomMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEADegreeOfFreedomMember_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEADegreeOfFreedomMember_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4936,7 +5004,9 @@ pub use crate::ffi_types::StepFEA_DummyNode as DummyNode;
 
 unsafe impl crate::CppDeletable for DummyNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_DummyNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_DummyNode_destructor(ptr);
+        }
     }
 }
 
@@ -5259,13 +5329,17 @@ pub use crate::ffi_types::HandleStepFEADummyNode;
 
 unsafe impl crate::CppDeletable for HandleStepFEADummyNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEADummyNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEADummyNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEADummyNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEADummyNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEADummyNode_clone(ptr))
+        }
     }
 }
 
@@ -5339,7 +5413,9 @@ pub use crate::ffi_types::StepFEA_ElementGeometricRelationship as ElementGeometr
 
 unsafe impl crate::CppDeletable for ElementGeometricRelationship {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_ElementGeometricRelationship_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_ElementGeometricRelationship_destructor(ptr);
+        }
     }
 }
 
@@ -5575,15 +5651,19 @@ pub use crate::ffi_types::HandleStepFEAElementGeometricRelationship;
 
 unsafe impl crate::CppDeletable for HandleStepFEAElementGeometricRelationship {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAElementGeometricRelationship_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAElementGeometricRelationship_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAElementGeometricRelationship {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAElementGeometricRelationship_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAElementGeometricRelationship_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5639,7 +5719,9 @@ pub use crate::ffi_types::StepFEA_ElementGroup as ElementGroup;
 
 unsafe impl crate::CppDeletable for ElementGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_ElementGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_ElementGroup_destructor(ptr);
+        }
     }
 }
 
@@ -5954,13 +6036,17 @@ pub use crate::ffi_types::HandleStepFEAElementGroup;
 
 unsafe impl crate::CppDeletable for HandleStepFEAElementGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAElementGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAElementGroup_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAElementGroup {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAElementGroup_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAElementGroup_clone(ptr))
+        }
     }
 }
 
@@ -6036,7 +6122,9 @@ pub use crate::ffi_types::StepFEA_ElementOrElementGroup as ElementOrElementGroup
 
 unsafe impl crate::CppDeletable for ElementOrElementGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_ElementOrElementGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_ElementOrElementGroup_destructor(ptr);
+        }
     }
 }
 
@@ -6297,7 +6385,9 @@ pub use crate::ffi_types::StepFEA_ElementRepresentation as ElementRepresentation
 
 unsafe impl crate::CppDeletable for ElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_ElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_ElementRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -6612,15 +6702,19 @@ pub use crate::ffi_types::HandleStepFEAElementRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepFEAElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAElementRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAElementRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAElementRepresentation_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAElementRepresentation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -6734,7 +6828,9 @@ pub use crate::ffi_types::StepFEA_FeaAreaDensity as FeaAreaDensity;
 
 unsafe impl crate::CppDeletable for FeaAreaDensity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaAreaDensity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaAreaDensity_destructor(ptr);
+        }
     }
 }
 
@@ -6982,13 +7078,17 @@ pub use crate::ffi_types::HandleStepFEAFeaAreaDensity;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaAreaDensity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaAreaDensity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaAreaDensity_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaAreaDensity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaAreaDensity_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaAreaDensity_clone(ptr))
+        }
     }
 }
 
@@ -7060,7 +7160,9 @@ pub use crate::ffi_types::StepFEA_FeaAxis2Placement3d as FeaAxis2Placement3d;
 
 unsafe impl crate::CppDeletable for FeaAxis2Placement3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaAxis2Placement3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaAxis2Placement3d_destructor(ptr);
+        }
     }
 }
 
@@ -7482,13 +7584,19 @@ pub use crate::ffi_types::HandleStepFEAFeaAxis2Placement3d;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaAxis2Placement3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaAxis2Placement3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaAxis2Placement3d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaAxis2Placement3d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaAxis2Placement3d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaAxis2Placement3d_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -7578,7 +7686,11 @@ pub use crate::ffi_types::StepFEA_FeaCurveSectionGeometricRelationship as FeaCur
 
 unsafe impl crate::CppDeletable for FeaCurveSectionGeometricRelationship {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaCurveSectionGeometricRelationship_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaCurveSectionGeometricRelationship_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -7768,19 +7880,21 @@ pub use crate::ffi_types::HandleStepFEAFeaCurveSectionGeometricRelationship;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaCurveSectionGeometricRelationship {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaCurveSectionGeometricRelationship_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaCurveSectionGeometricRelationship_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaCurveSectionGeometricRelationship {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaCurveSectionGeometricRelationship_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAFeaCurveSectionGeometricRelationship_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -7834,7 +7948,9 @@ pub use crate::ffi_types::StepFEA_FeaGroup as FeaGroup;
 
 unsafe impl crate::CppDeletable for FeaGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaGroup_destructor(ptr);
+        }
     }
 }
 
@@ -8087,13 +8203,15 @@ pub use crate::ffi_types::HandleStepFEAFeaGroup;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaGroup_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaGroup {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaGroup_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaGroup_clone(ptr)) }
     }
 }
 
@@ -8192,7 +8310,9 @@ pub use crate::ffi_types::StepFEA_FeaLinearElasticity as FeaLinearElasticity;
 
 unsafe impl crate::CppDeletable for FeaLinearElasticity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaLinearElasticity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaLinearElasticity_destructor(ptr);
+        }
     }
 }
 
@@ -8442,13 +8562,19 @@ pub use crate::ffi_types::HandleStepFEAFeaLinearElasticity;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaLinearElasticity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaLinearElasticity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaLinearElasticity_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaLinearElasticity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaLinearElasticity_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaLinearElasticity_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -8520,7 +8646,9 @@ pub use crate::ffi_types::StepFEA_FeaMassDensity as FeaMassDensity;
 
 unsafe impl crate::CppDeletable for FeaMassDensity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaMassDensity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaMassDensity_destructor(ptr);
+        }
     }
 }
 
@@ -8768,13 +8896,17 @@ pub use crate::ffi_types::HandleStepFEAFeaMassDensity;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaMassDensity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMassDensity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMassDensity_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaMassDensity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMassDensity_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMassDensity_clone(ptr))
+        }
     }
 }
 
@@ -8846,7 +8978,9 @@ pub use crate::ffi_types::StepFEA_FeaMaterialPropertyRepresentation as FeaMateri
 
 unsafe impl crate::CppDeletable for FeaMaterialPropertyRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaMaterialPropertyRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaMaterialPropertyRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -9091,15 +9225,23 @@ pub use crate::ffi_types::HandleStepFEAFeaMaterialPropertyRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaMaterialPropertyRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMaterialPropertyRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMaterialPropertyRepresentation_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaMaterialPropertyRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMaterialPropertyRepresentation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMaterialPropertyRepresentation_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -9173,7 +9315,11 @@ pub use crate::ffi_types::StepFEA_FeaMaterialPropertyRepresentationItem as FeaMa
 
 unsafe impl crate::CppDeletable for FeaMaterialPropertyRepresentationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaMaterialPropertyRepresentationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaMaterialPropertyRepresentationItem_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -9335,19 +9481,17 @@ pub use crate::ffi_types::HandleStepFEAFeaMaterialPropertyRepresentationItem;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaMaterialPropertyRepresentationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMaterialPropertyRepresentationItem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMaterialPropertyRepresentationItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaMaterialPropertyRepresentationItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMaterialPropertyRepresentationItem_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMaterialPropertyRepresentationItem_clone(ptr))
+        }
     }
 }
 
@@ -9580,7 +9724,9 @@ pub use crate::ffi_types::StepFEA_FeaModel as FeaModel;
 
 unsafe impl crate::CppDeletable for FeaModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaModel_destructor(ptr);
+        }
     }
 }
 
@@ -9968,13 +10114,15 @@ pub use crate::ffi_types::HandleStepFEAFeaModel;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaModel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModel_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModel_clone(ptr)) }
     }
 }
 
@@ -10057,7 +10205,9 @@ pub use crate::ffi_types::StepFEA_FeaModel3d as FeaModel3d;
 
 unsafe impl crate::CppDeletable for FeaModel3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaModel3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaModel3d_destructor(ptr);
+        }
     }
 }
 
@@ -10469,13 +10619,17 @@ pub use crate::ffi_types::HandleStepFEAFeaModel3d;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaModel3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModel3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModel3d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaModel3d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModel3d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModel3d_clone(ptr))
+        }
     }
 }
 
@@ -10551,7 +10705,9 @@ pub use crate::ffi_types::StepFEA_FeaModelDefinition as FeaModelDefinition;
 
 unsafe impl crate::CppDeletable for FeaModelDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaModelDefinition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaModelDefinition_destructor(ptr);
+        }
     }
 }
 
@@ -10839,13 +10995,19 @@ pub use crate::ffi_types::HandleStepFEAFeaModelDefinition;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaModelDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModelDefinition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModelDefinition_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaModelDefinition {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModelDefinition_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaModelDefinition_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -10906,7 +11068,9 @@ pub use crate::ffi_types::StepFEA_FeaMoistureAbsorption as FeaMoistureAbsorption
 
 unsafe impl crate::CppDeletable for FeaMoistureAbsorption {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaMoistureAbsorption_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaMoistureAbsorption_destructor(ptr);
+        }
     }
 }
 
@@ -11156,15 +11320,19 @@ pub use crate::ffi_types::HandleStepFEAFeaMoistureAbsorption;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaMoistureAbsorption {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMoistureAbsorption_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMoistureAbsorption_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaMoistureAbsorption {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMoistureAbsorption_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAFeaMoistureAbsorption_clone(ptr),
+            )
+        }
     }
 }
 
@@ -11238,7 +11406,9 @@ pub use crate::ffi_types::StepFEA_FeaParametricPoint as FeaParametricPoint;
 
 unsafe impl crate::CppDeletable for FeaParametricPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaParametricPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaParametricPoint_destructor(ptr);
+        }
     }
 }
 
@@ -11510,13 +11680,19 @@ pub use crate::ffi_types::HandleStepFEAFeaParametricPoint;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaParametricPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaParametricPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaParametricPoint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaParametricPoint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaParametricPoint_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaParametricPoint_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -11597,7 +11773,9 @@ pub use crate::ffi_types::StepFEA_FeaRepresentationItem as FeaRepresentationItem
 
 unsafe impl crate::CppDeletable for FeaRepresentationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaRepresentationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaRepresentationItem_destructor(ptr);
+        }
     }
 }
 
@@ -11800,15 +11978,19 @@ pub use crate::ffi_types::HandleStepFEAFeaRepresentationItem;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaRepresentationItem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaRepresentationItem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaRepresentationItem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaRepresentationItem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaRepresentationItem_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAFeaRepresentationItem_clone(ptr),
+            )
+        }
     }
 }
 
@@ -11998,9 +12180,9 @@ pub use crate::ffi_types::StepFEA_FeaSecantCoefficientOfLinearThermalExpansion a
 
 unsafe impl crate::CppDeletable for FeaSecantCoefficientOfLinearThermalExpansion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaSecantCoefficientOfLinearThermalExpansion_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaSecantCoefficientOfLinearThermalExpansion_destructor(ptr);
+        }
     }
 }
 
@@ -12215,13 +12397,17 @@ pub use crate::ffi_types::HandleStepFEAFeaSecantCoefficientOfLinearThermalExpans
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaSecantCoefficientOfLinearThermalExpansion_clone(ptr))
+        }
     }
 }
 
@@ -12287,7 +12473,9 @@ pub use crate::ffi_types::StepFEA_FeaShellBendingStiffness as FeaShellBendingSti
 
 unsafe impl crate::CppDeletable for FeaShellBendingStiffness {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaShellBendingStiffness_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaShellBendingStiffness_destructor(ptr);
+        }
     }
 }
 
@@ -12531,15 +12719,19 @@ pub use crate::ffi_types::HandleStepFEAFeaShellBendingStiffness;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaShellBendingStiffness {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellBendingStiffness_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellBendingStiffness_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaShellBendingStiffness {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellBendingStiffness_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellBendingStiffness_clone(ptr),
+            )
+        }
     }
 }
 
@@ -12613,9 +12805,11 @@ pub use crate::ffi_types::StepFEA_FeaShellMembraneBendingCouplingStiffness as Fe
 
 unsafe impl crate::CppDeletable for FeaShellMembraneBendingCouplingStiffness {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaShellMembraneBendingCouplingStiffness_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaShellMembraneBendingCouplingStiffness_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -12814,17 +13008,17 @@ pub use crate::ffi_types::HandleStepFEAFeaShellMembraneBendingCouplingStiffness;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaShellMembraneBendingCouplingStiffness {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellMembraneBendingCouplingStiffness_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellMembraneBendingCouplingStiffness_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaShellMembraneBendingCouplingStiffness {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellMembraneBendingCouplingStiffness_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellMembraneBendingCouplingStiffness_clone(ptr))
+        }
     }
 }
 
@@ -12890,7 +13084,9 @@ pub use crate::ffi_types::StepFEA_FeaShellMembraneStiffness as FeaShellMembraneS
 
 unsafe impl crate::CppDeletable for FeaShellMembraneStiffness {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaShellMembraneStiffness_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaShellMembraneStiffness_destructor(ptr);
+        }
     }
 }
 
@@ -13134,15 +13330,19 @@ pub use crate::ffi_types::HandleStepFEAFeaShellMembraneStiffness;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaShellMembraneStiffness {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellMembraneStiffness_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellMembraneStiffness_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaShellMembraneStiffness {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellMembraneStiffness_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellMembraneStiffness_clone(ptr),
+            )
+        }
     }
 }
 
@@ -13216,7 +13416,9 @@ pub use crate::ffi_types::StepFEA_FeaShellShearStiffness as FeaShellShearStiffne
 
 unsafe impl crate::CppDeletable for FeaShellShearStiffness {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaShellShearStiffness_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaShellShearStiffness_destructor(ptr);
+        }
     }
 }
 
@@ -13464,15 +13666,19 @@ pub use crate::ffi_types::HandleStepFEAFeaShellShearStiffness;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaShellShearStiffness {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellShearStiffness_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellShearStiffness_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaShellShearStiffness {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellShearStiffness_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAFeaShellShearStiffness_clone(ptr),
+            )
+        }
     }
 }
 
@@ -13546,7 +13752,11 @@ pub use crate::ffi_types::StepFEA_FeaSurfaceSectionGeometricRelationship as FeaS
 
 unsafe impl crate::CppDeletable for FeaSurfaceSectionGeometricRelationship {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaSurfaceSectionGeometricRelationship_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaSurfaceSectionGeometricRelationship_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -13730,19 +13940,17 @@ pub use crate::ffi_types::HandleStepFEAFeaSurfaceSectionGeometricRelationship;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaSurfaceSectionGeometricRelationship {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaSurfaceSectionGeometricRelationship_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaSurfaceSectionGeometricRelationship_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaSurfaceSectionGeometricRelationship {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaSurfaceSectionGeometricRelationship_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaSurfaceSectionGeometricRelationship_clone(ptr))
+        }
     }
 }
 
@@ -13796,7 +14004,9 @@ pub use crate::ffi_types::StepFEA_FeaTangentialCoefficientOfLinearThermalExpansi
 
 unsafe impl crate::CppDeletable for FeaTangentialCoefficientOfLinearThermalExpansion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion_destructor(ptr);
+        }
     }
 }
 
@@ -13990,13 +14200,17 @@ pub use crate::ffi_types::HandleStepFEAFeaTangentialCoefficientOfLinearThermalEx
 
 unsafe impl crate::CppDeletable for HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFeaTangentialCoefficientOfLinearThermalExpansion_clone(ptr))
+        }
     }
 }
 
@@ -14064,7 +14278,9 @@ pub use crate::ffi_types::StepFEA_FreedomAndCoefficient as FreedomAndCoefficient
 
 unsafe impl crate::CppDeletable for FreedomAndCoefficient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FreedomAndCoefficient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FreedomAndCoefficient_destructor(ptr);
+        }
     }
 }
 
@@ -14277,15 +14493,19 @@ pub use crate::ffi_types::HandleStepFEAFreedomAndCoefficient;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFreedomAndCoefficient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFreedomAndCoefficient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFreedomAndCoefficient_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFreedomAndCoefficient {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFreedomAndCoefficient_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAFreedomAndCoefficient_clone(ptr),
+            )
+        }
     }
 }
 
@@ -14341,7 +14561,9 @@ pub use crate::ffi_types::StepFEA_FreedomsList as FreedomsList;
 
 unsafe impl crate::CppDeletable for FreedomsList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_FreedomsList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_FreedomsList_destructor(ptr);
+        }
     }
 }
 
@@ -14525,13 +14747,17 @@ pub use crate::ffi_types::HandleStepFEAFreedomsList;
 
 unsafe impl crate::CppDeletable for HandleStepFEAFreedomsList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAFreedomsList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAFreedomsList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAFreedomsList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFreedomsList_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAFreedomsList_clone(ptr))
+        }
     }
 }
 
@@ -14585,7 +14811,9 @@ pub use crate::ffi_types::StepFEA_GeometricNode as GeometricNode;
 
 unsafe impl crate::CppDeletable for GeometricNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_GeometricNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_GeometricNode_destructor(ptr);
+        }
     }
 }
 
@@ -14916,13 +15144,17 @@ pub use crate::ffi_types::HandleStepFEAGeometricNode;
 
 unsafe impl crate::CppDeletable for HandleStepFEAGeometricNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAGeometricNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAGeometricNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAGeometricNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAGeometricNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAGeometricNode_clone(ptr))
+        }
     }
 }
 
@@ -14993,7 +15225,9 @@ pub use crate::ffi_types::StepFEA_HArray1OfCurveElementEndOffset as HArray1OfCur
 
 unsafe impl crate::CppDeletable for HArray1OfCurveElementEndOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfCurveElementEndOffset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfCurveElementEndOffset_destructor(ptr);
+        }
     }
 }
 
@@ -15203,15 +15437,19 @@ pub use crate::ffi_types::HandleStepFEAHArray1OfCurveElementEndOffset;
 
 unsafe impl crate::CppDeletable for HandleStepFEAHArray1OfCurveElementEndOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementEndOffset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementEndOffset_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfCurveElementEndOffset {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementEndOffset_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementEndOffset_clone(ptr),
+            )
+        }
     }
 }
 
@@ -15266,7 +15504,9 @@ pub use crate::ffi_types::StepFEA_HArray1OfCurveElementEndRelease as HArray1OfCu
 
 unsafe impl crate::CppDeletable for HArray1OfCurveElementEndRelease {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfCurveElementEndRelease_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfCurveElementEndRelease_destructor(ptr);
+        }
     }
 }
 
@@ -15474,15 +15714,21 @@ pub use crate::ffi_types::HandleStepFEAHArray1OfCurveElementEndRelease;
 
 unsafe impl crate::CppDeletable for HandleStepFEAHArray1OfCurveElementEndRelease {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementEndRelease_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementEndRelease_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfCurveElementEndRelease {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementEndRelease_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementEndRelease_clone(ptr),
+            )
+        }
     }
 }
 
@@ -15537,7 +15783,9 @@ pub use crate::ffi_types::StepFEA_HArray1OfCurveElementInterval as HArray1OfCurv
 
 unsafe impl crate::CppDeletable for HArray1OfCurveElementInterval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfCurveElementInterval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfCurveElementInterval_destructor(ptr);
+        }
     }
 }
 
@@ -15745,15 +15993,19 @@ pub use crate::ffi_types::HandleStepFEAHArray1OfCurveElementInterval;
 
 unsafe impl crate::CppDeletable for HandleStepFEAHArray1OfCurveElementInterval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementInterval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementInterval_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfCurveElementInterval {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementInterval_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfCurveElementInterval_clone(ptr),
+            )
+        }
     }
 }
 
@@ -15808,7 +16060,9 @@ pub use crate::ffi_types::StepFEA_HArray1OfDegreeOfFreedom as HArray1OfDegreeOfF
 
 unsafe impl crate::CppDeletable for HArray1OfDegreeOfFreedom {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfDegreeOfFreedom_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfDegreeOfFreedom_destructor(ptr);
+        }
     }
 }
 
@@ -16022,15 +16276,19 @@ pub use crate::ffi_types::HandleStepFEAHArray1OfDegreeOfFreedom;
 
 unsafe impl crate::CppDeletable for HandleStepFEAHArray1OfDegreeOfFreedom {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfDegreeOfFreedom_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfDegreeOfFreedom_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfDegreeOfFreedom {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfDegreeOfFreedom_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfDegreeOfFreedom_clone(ptr),
+            )
+        }
     }
 }
 
@@ -16085,7 +16343,9 @@ pub use crate::ffi_types::StepFEA_HArray1OfElementRepresentation as HArray1OfEle
 
 unsafe impl crate::CppDeletable for HArray1OfElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfElementRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -16295,15 +16555,19 @@ pub use crate::ffi_types::HandleStepFEAHArray1OfElementRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepFEAHArray1OfElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfElementRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfElementRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfElementRepresentation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfElementRepresentation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -16358,7 +16622,9 @@ pub use crate::ffi_types::StepFEA_HArray1OfNodeRepresentation as HArray1OfNodeRe
 
 unsafe impl crate::CppDeletable for HArray1OfNodeRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfNodeRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_HArray1OfNodeRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -16569,15 +16835,19 @@ pub use crate::ffi_types::HandleStepFEAHArray1OfNodeRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepFEAHArray1OfNodeRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfNodeRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfNodeRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAHArray1OfNodeRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfNodeRepresentation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAHArray1OfNodeRepresentation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -16632,7 +16902,9 @@ pub use crate::ffi_types::StepFEA_HSequenceOfCurve3dElementProperty as HSequence
 
 unsafe impl crate::CppDeletable for HSequenceOfCurve3dElementProperty {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_HSequenceOfCurve3dElementProperty_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_HSequenceOfCurve3dElementProperty_destructor(ptr);
+        }
     }
 }
 
@@ -16820,15 +17092,23 @@ pub use crate::ffi_types::HandleStepFEAHSequenceOfCurve3dElementProperty;
 
 unsafe impl crate::CppDeletable for HandleStepFEAHSequenceOfCurve3dElementProperty {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfCurve3dElementProperty_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfCurve3dElementProperty_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAHSequenceOfCurve3dElementProperty {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfCurve3dElementProperty_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfCurve3dElementProperty_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -16883,7 +17163,11 @@ pub use crate::ffi_types::StepFEA_HSequenceOfElementGeometricRelationship as HSe
 
 unsafe impl crate::CppDeletable for HSequenceOfElementGeometricRelationship {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_HSequenceOfElementGeometricRelationship_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_HSequenceOfElementGeometricRelationship_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -17046,19 +17330,17 @@ pub use crate::ffi_types::HandleStepFEAHSequenceOfElementGeometricRelationship;
 
 unsafe impl crate::CppDeletable for HandleStepFEAHSequenceOfElementGeometricRelationship {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfElementGeometricRelationship_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfElementGeometricRelationship_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAHSequenceOfElementGeometricRelationship {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfElementGeometricRelationship_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfElementGeometricRelationship_clone(ptr))
+        }
     }
 }
 
@@ -17107,7 +17389,9 @@ pub use crate::ffi_types::StepFEA_HSequenceOfElementRepresentation as HSequenceO
 
 unsafe impl crate::CppDeletable for HSequenceOfElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_HSequenceOfElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_HSequenceOfElementRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -17295,15 +17579,23 @@ pub use crate::ffi_types::HandleStepFEAHSequenceOfElementRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepFEAHSequenceOfElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfElementRepresentation_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAHSequenceOfElementRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfElementRepresentation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfElementRepresentation_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -17358,7 +17650,9 @@ pub use crate::ffi_types::StepFEA_HSequenceOfNodeRepresentation as HSequenceOfNo
 
 unsafe impl crate::CppDeletable for HSequenceOfNodeRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_HSequenceOfNodeRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_HSequenceOfNodeRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -17554,15 +17848,19 @@ pub use crate::ffi_types::HandleStepFEAHSequenceOfNodeRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepFEAHSequenceOfNodeRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfNodeRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfNodeRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAHSequenceOfNodeRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfNodeRepresentation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAHSequenceOfNodeRepresentation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -17618,7 +17916,9 @@ pub use crate::ffi_types::StepFEA_Node as Node;
 
 unsafe impl crate::CppDeletable for Node {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_Node_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_Node_destructor(ptr);
+        }
     }
 }
 
@@ -17926,13 +18226,15 @@ pub use crate::ffi_types::HandleStepFEANode;
 
 unsafe impl crate::CppDeletable for HandleStepFEANode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEANode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEANode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEANode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANode_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANode_clone(ptr)) }
     }
 }
 
@@ -18045,7 +18347,9 @@ pub use crate::ffi_types::StepFEA_NodeDefinition as NodeDefinition;
 
 unsafe impl crate::CppDeletable for NodeDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_NodeDefinition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_NodeDefinition_destructor(ptr);
+        }
     }
 }
 
@@ -18331,13 +18635,17 @@ pub use crate::ffi_types::HandleStepFEANodeDefinition;
 
 unsafe impl crate::CppDeletable for HandleStepFEANodeDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEANodeDefinition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEANodeDefinition_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEANodeDefinition {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANodeDefinition_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANodeDefinition_clone(ptr))
+        }
     }
 }
 
@@ -18400,7 +18708,9 @@ pub use crate::ffi_types::StepFEA_NodeGroup as NodeGroup;
 
 unsafe impl crate::CppDeletable for NodeGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_NodeGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_NodeGroup_destructor(ptr);
+        }
     }
 }
 
@@ -18703,13 +19013,17 @@ pub use crate::ffi_types::HandleStepFEANodeGroup;
 
 unsafe impl crate::CppDeletable for HandleStepFEANodeGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEANodeGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEANodeGroup_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEANodeGroup {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANodeGroup_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANodeGroup_clone(ptr))
+        }
     }
 }
 
@@ -18783,7 +19097,9 @@ pub use crate::ffi_types::StepFEA_NodeRepresentation as NodeRepresentation;
 
 unsafe impl crate::CppDeletable for NodeRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_NodeRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_NodeRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -19097,13 +19413,19 @@ pub use crate::ffi_types::HandleStepFEANodeRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepFEANodeRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEANodeRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEANodeRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEANodeRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANodeRepresentation_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANodeRepresentation_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -19243,7 +19565,9 @@ pub use crate::ffi_types::StepFEA_NodeSet as NodeSet;
 
 unsafe impl crate::CppDeletable for NodeSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_NodeSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_NodeSet_destructor(ptr);
+        }
     }
 }
 
@@ -19492,13 +19816,15 @@ pub use crate::ffi_types::HandleStepFEANodeSet;
 
 unsafe impl crate::CppDeletable for HandleStepFEANodeSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEANodeSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEANodeSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEANodeSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANodeSet_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANodeSet_clone(ptr)) }
     }
 }
 
@@ -19568,7 +19894,9 @@ pub use crate::ffi_types::StepFEA_NodeWithSolutionCoordinateSystem as NodeWithSo
 
 unsafe impl crate::CppDeletable for NodeWithSolutionCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_NodeWithSolutionCoordinateSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_NodeWithSolutionCoordinateSystem_destructor(ptr);
+        }
     }
 }
 
@@ -19864,15 +20192,23 @@ pub use crate::ffi_types::HandleStepFEANodeWithSolutionCoordinateSystem;
 
 unsafe impl crate::CppDeletable for HandleStepFEANodeWithSolutionCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEANodeWithSolutionCoordinateSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEANodeWithSolutionCoordinateSystem_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEANodeWithSolutionCoordinateSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEANodeWithSolutionCoordinateSystem_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEANodeWithSolutionCoordinateSystem_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -19953,7 +20289,9 @@ pub use crate::ffi_types::StepFEA_NodeWithVector as NodeWithVector;
 
 unsafe impl crate::CppDeletable for NodeWithVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_NodeWithVector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_NodeWithVector_destructor(ptr);
+        }
     }
 }
 
@@ -20306,13 +20644,17 @@ pub use crate::ffi_types::HandleStepFEANodeWithVector;
 
 unsafe impl crate::CppDeletable for HandleStepFEANodeWithVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEANodeWithVector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEANodeWithVector_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEANodeWithVector {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANodeWithVector_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEANodeWithVector_clone(ptr))
+        }
     }
 }
 
@@ -20395,9 +20737,9 @@ pub use crate::ffi_types::StepFEA_ParametricCurve3dElementCoordinateDirection as
 
 unsafe impl crate::CppDeletable for ParametricCurve3dElementCoordinateDirection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_ParametricCurve3dElementCoordinateDirection_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_ParametricCurve3dElementCoordinateDirection_destructor(ptr);
+        }
     }
 }
 
@@ -20590,13 +20932,17 @@ pub use crate::ffi_types::HandleStepFEAParametricCurve3dElementCoordinateDirecti
 
 unsafe impl crate::CppDeletable for HandleStepFEAParametricCurve3dElementCoordinateDirection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAParametricCurve3dElementCoordinateDirection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAParametricCurve3dElementCoordinateDirection_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAParametricCurve3dElementCoordinateDirection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAParametricCurve3dElementCoordinateDirection_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAParametricCurve3dElementCoordinateDirection_clone(ptr))
+        }
     }
 }
 
@@ -20662,9 +21008,11 @@ pub use crate::ffi_types::StepFEA_ParametricCurve3dElementCoordinateSystem as Pa
 
 unsafe impl crate::CppDeletable for ParametricCurve3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_ParametricCurve3dElementCoordinateSystem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_ParametricCurve3dElementCoordinateSystem_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -20865,17 +21213,17 @@ pub use crate::ffi_types::HandleStepFEAParametricCurve3dElementCoordinateSystem;
 
 unsafe impl crate::CppDeletable for HandleStepFEAParametricCurve3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAParametricCurve3dElementCoordinateSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAParametricCurve3dElementCoordinateSystem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAParametricCurve3dElementCoordinateSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAParametricCurve3dElementCoordinateSystem_clone(
-                ptr,
-            ),
-        )
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAParametricCurve3dElementCoordinateSystem_clone(ptr))
+        }
     }
 }
 
@@ -20941,9 +21289,9 @@ pub use crate::ffi_types::StepFEA_ParametricSurface3dElementCoordinateSystem as 
 
 unsafe impl crate::CppDeletable for ParametricSurface3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_ParametricSurface3dElementCoordinateSystem_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_ParametricSurface3dElementCoordinateSystem_destructor(ptr);
+        }
     }
 }
 
@@ -21167,13 +21515,17 @@ pub use crate::ffi_types::HandleStepFEAParametricSurface3dElementCoordinateSyste
 
 unsafe impl crate::CppDeletable for HandleStepFEAParametricSurface3dElementCoordinateSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAParametricSurface3dElementCoordinateSystem_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAParametricSurface3dElementCoordinateSystem_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAParametricSurface3dElementCoordinateSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAParametricSurface3dElementCoordinateSystem_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepFEAParametricSurface3dElementCoordinateSystem_clone(ptr))
+        }
     }
 }
 
@@ -21239,7 +21591,9 @@ pub use crate::ffi_types::StepFEA_Surface3dElementRepresentation as Surface3dEle
 
 unsafe impl crate::CppDeletable for Surface3dElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_Surface3dElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_Surface3dElementRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -21641,15 +21995,19 @@ pub use crate::ffi_types::HandleStepFEASurface3dElementRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepFEASurface3dElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEASurface3dElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEASurface3dElementRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEASurface3dElementRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEASurface3dElementRepresentation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEASurface3dElementRepresentation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -21723,7 +22081,9 @@ pub use crate::ffi_types::StepFEA_SymmetricTensor22d as SymmetricTensor22d;
 
 unsafe impl crate::CppDeletable for SymmetricTensor22d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor22d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor22d_destructor(ptr);
+        }
     }
 }
 
@@ -21971,7 +22331,9 @@ pub use crate::ffi_types::StepFEA_SymmetricTensor23d as SymmetricTensor23d;
 
 unsafe impl crate::CppDeletable for SymmetricTensor23d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor23d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor23d_destructor(ptr);
+        }
     }
 }
 
@@ -22277,7 +22639,9 @@ pub use crate::ffi_types::StepFEA_SymmetricTensor23dMember as SymmetricTensor23d
 
 unsafe impl crate::CppDeletable for SymmetricTensor23dMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor23dMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor23dMember_destructor(ptr);
+        }
     }
 }
 
@@ -22694,15 +23058,19 @@ pub use crate::ffi_types::HandleStepFEASymmetricTensor23dMember;
 
 unsafe impl crate::CppDeletable for HandleStepFEASymmetricTensor23dMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEASymmetricTensor23dMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEASymmetricTensor23dMember_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEASymmetricTensor23dMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEASymmetricTensor23dMember_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEASymmetricTensor23dMember_clone(ptr),
+            )
+        }
     }
 }
 
@@ -22785,7 +23153,9 @@ pub use crate::ffi_types::StepFEA_SymmetricTensor42d as SymmetricTensor42d;
 
 unsafe impl crate::CppDeletable for SymmetricTensor42d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor42d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor42d_destructor(ptr);
+        }
     }
 }
 
@@ -23033,7 +23403,9 @@ pub use crate::ffi_types::StepFEA_SymmetricTensor43d as SymmetricTensor43d;
 
 unsafe impl crate::CppDeletable for SymmetricTensor43d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor43d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor43d_destructor(ptr);
+        }
     }
 }
 
@@ -23347,7 +23719,9 @@ pub use crate::ffi_types::StepFEA_SymmetricTensor43dMember as SymmetricTensor43d
 
 unsafe impl crate::CppDeletable for SymmetricTensor43dMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor43dMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_SymmetricTensor43dMember_destructor(ptr);
+        }
     }
 }
 
@@ -23764,15 +24138,19 @@ pub use crate::ffi_types::HandleStepFEASymmetricTensor43dMember;
 
 unsafe impl crate::CppDeletable for HandleStepFEASymmetricTensor43dMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEASymmetricTensor43dMember_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEASymmetricTensor43dMember_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEASymmetricTensor43dMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEASymmetricTensor43dMember_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEASymmetricTensor43dMember_clone(ptr),
+            )
+        }
     }
 }
 
@@ -23855,7 +24233,9 @@ pub use crate::ffi_types::StepFEA_Volume3dElementRepresentation as Volume3dEleme
 
 unsafe impl crate::CppDeletable for Volume3dElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::StepFEA_Volume3dElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::StepFEA_Volume3dElementRepresentation_destructor(ptr);
+        }
     }
 }
 
@@ -24230,15 +24610,19 @@ pub use crate::ffi_types::HandleStepFEAVolume3dElementRepresentation;
 
 unsafe impl crate::CppDeletable for HandleStepFEAVolume3dElementRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleStepFEAVolume3dElementRepresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleStepFEAVolume3dElementRepresentation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStepFEAVolume3dElementRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDESTEP::HandleStepFEAVolume3dElementRepresentation_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepFEAVolume3dElementRepresentation_clone(ptr),
+            )
+        }
     }
 }
 

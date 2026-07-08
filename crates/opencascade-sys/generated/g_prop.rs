@@ -126,13 +126,15 @@ pub use crate::ffi_types::GProp_CelGProps as CelGProps;
 
 unsafe impl crate::CppDeletable for CelGProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GProp_CelGProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GProp_CelGProps_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for CelGProps {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::GProp_CelGProps_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::GProp_CelGProps_clone(ptr)) }
     }
 }
 
@@ -395,13 +397,15 @@ pub use crate::ffi_types::GProp_GProps as GProps;
 
 unsafe impl crate::CppDeletable for GProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GProp_GProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GProp_GProps_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for GProps {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::GProp_GProps_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::GProp_GProps_clone(ptr)) }
     }
 }
 
@@ -634,13 +638,15 @@ pub use crate::ffi_types::GProp_PEquation as PEquation;
 
 unsafe impl crate::CppDeletable for PEquation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GProp_PEquation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GProp_PEquation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for PEquation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::GProp_PEquation_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::GProp_PEquation_clone(ptr)) }
     }
 }
 
@@ -832,13 +838,15 @@ pub use crate::ffi_types::GProp_PGProps as PGProps;
 
 unsafe impl crate::CppDeletable for PGProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GProp_PGProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GProp_PGProps_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for PGProps {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::GProp_PGProps_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::GProp_PGProps_clone(ptr)) }
     }
 }
 
@@ -1153,13 +1161,15 @@ pub use crate::ffi_types::GProp_PrincipalProps as PrincipalProps;
 
 unsafe impl crate::CppDeletable for PrincipalProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GProp_PrincipalProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GProp_PrincipalProps_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for PrincipalProps {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::GProp_PrincipalProps_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::GProp_PrincipalProps_clone(ptr)) }
     }
 }
 
@@ -1352,13 +1362,15 @@ pub use crate::ffi_types::GProp_SelGProps as SelGProps;
 
 unsafe impl crate::CppDeletable for SelGProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GProp_SelGProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GProp_SelGProps_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for SelGProps {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::GProp_SelGProps_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::GProp_SelGProps_clone(ptr)) }
     }
 }
 
@@ -1654,7 +1666,9 @@ pub use crate::ffi_types::GProp_UndefinedAxis as UndefinedAxis;
 
 unsafe impl crate::CppDeletable for UndefinedAxis {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GProp_UndefinedAxis_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GProp_UndefinedAxis_destructor(ptr);
+        }
     }
 }
 
@@ -1937,13 +1951,15 @@ pub use crate::ffi_types::HandleGPropUndefinedAxis;
 
 unsafe impl crate::CppDeletable for HandleGPropUndefinedAxis {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleGPropUndefinedAxis_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGPropUndefinedAxis_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGPropUndefinedAxis {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleGPropUndefinedAxis_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::HandleGPropUndefinedAxis_clone(ptr)) }
     }
 }
 
@@ -2021,13 +2037,15 @@ pub use crate::ffi_types::GProp_VelGProps as VelGProps;
 
 unsafe impl crate::CppDeletable for VelGProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GProp_VelGProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GProp_VelGProps_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for VelGProps {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::GProp_VelGProps_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::GProp_VelGProps_clone(ptr)) }
     }
 }
 

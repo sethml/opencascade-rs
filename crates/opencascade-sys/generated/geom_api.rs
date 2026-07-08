@@ -77,7 +77,9 @@ pub use crate::ffi_types::GeomAPI_ExtremaCurveCurve as ExtremaCurveCurve;
 
 unsafe impl crate::CppDeletable for ExtremaCurveCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomAPI_ExtremaCurveCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomAPI_ExtremaCurveCurve_destructor(ptr);
+        }
     }
 }
 
@@ -386,7 +388,9 @@ pub use crate::ffi_types::GeomAPI_ExtremaCurveSurface as ExtremaCurveSurface;
 
 unsafe impl crate::CppDeletable for ExtremaCurveSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomAPI_ExtremaCurveSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomAPI_ExtremaCurveSurface_destructor(ptr);
+        }
     }
 }
 
@@ -638,7 +642,9 @@ pub use crate::ffi_types::GeomAPI_ExtremaSurfaceSurface as ExtremaSurfaceSurface
 
 unsafe impl crate::CppDeletable for ExtremaSurfaceSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomAPI_ExtremaSurfaceSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomAPI_ExtremaSurfaceSurface_destructor(ptr);
+        }
     }
 }
 
@@ -900,7 +906,9 @@ pub use crate::ffi_types::GeomAPI_IntCS as IntCS;
 
 unsafe impl crate::CppDeletable for IntCS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomAPI_IntCS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomAPI_IntCS_destructor(ptr);
+        }
     }
 }
 
@@ -1073,7 +1081,9 @@ pub use crate::ffi_types::GeomAPI_IntSS as IntSS;
 
 unsafe impl crate::CppDeletable for IntSS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomAPI_IntSS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomAPI_IntSS_destructor(ptr);
+        }
     }
 }
 
@@ -1188,7 +1198,9 @@ pub use crate::ffi_types::GeomAPI_Interpolate as Interpolate;
 
 unsafe impl crate::CppDeletable for Interpolate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomAPI_Interpolate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomAPI_Interpolate_destructor(ptr);
+        }
     }
 }
 
@@ -1390,7 +1402,9 @@ pub use crate::ffi_types::GeomAPI_PointsToBSpline as PointsToBSpline;
 
 unsafe impl crate::CppDeletable for PointsToBSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomAPI_PointsToBSpline_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomAPI_PointsToBSpline_destructor(ptr);
+        }
     }
 }
 
@@ -1726,7 +1740,9 @@ pub use crate::ffi_types::GeomAPI_PointsToBSplineSurface as PointsToBSplineSurfa
 
 unsafe impl crate::CppDeletable for PointsToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomAPI_PointsToBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomAPI_PointsToBSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -2119,7 +2135,9 @@ pub use crate::ffi_types::GeomAPI_ProjectPointOnCurve as ProjectPointOnCurve;
 
 unsafe impl crate::CppDeletable for ProjectPointOnCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomAPI_ProjectPointOnCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomAPI_ProjectPointOnCurve_destructor(ptr);
+        }
     }
 }
 
@@ -2367,7 +2385,9 @@ pub use crate::ffi_types::GeomAPI_ProjectPointOnSurf as ProjectPointOnSurf;
 
 unsafe impl crate::CppDeletable for ProjectPointOnSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomAPI_ProjectPointOnSurf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomAPI_ProjectPointOnSurf_destructor(ptr);
+        }
     }
 }
 

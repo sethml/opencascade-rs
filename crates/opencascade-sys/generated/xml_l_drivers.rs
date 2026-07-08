@@ -53,7 +53,9 @@ pub use crate::ffi_types::XmlLDrivers_DocumentRetrievalDriver as DocumentRetriev
 
 unsafe impl crate::CppDeletable for DocumentRetrievalDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlLDrivers_DocumentRetrievalDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlLDrivers_DocumentRetrievalDriver_destructor(ptr);
+        }
     }
 }
 
@@ -313,15 +315,19 @@ pub use crate::ffi_types::HandleXmlLDriversDocumentRetrievalDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlLDriversDocumentRetrievalDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlLDriversDocumentRetrievalDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlLDriversDocumentRetrievalDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlLDriversDocumentRetrievalDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKXmlL::HandleXmlLDriversDocumentRetrievalDriver_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlLDriversDocumentRetrievalDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -442,7 +448,9 @@ pub use crate::ffi_types::XmlLDrivers_DocumentStorageDriver as DocumentStorageDr
 
 unsafe impl crate::CppDeletable for DocumentStorageDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlLDrivers_DocumentStorageDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlLDrivers_DocumentStorageDriver_destructor(ptr);
+        }
     }
 }
 
@@ -749,15 +757,19 @@ pub use crate::ffi_types::HandleXmlLDriversDocumentStorageDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlLDriversDocumentStorageDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::HandleXmlLDriversDocumentStorageDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::HandleXmlLDriversDocumentStorageDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlLDriversDocumentStorageDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlLDriversDocumentStorageDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlLDriversDocumentStorageDriver_clone(ptr),
+            )
+        }
     }
 }
 
@@ -876,7 +888,9 @@ pub use crate::ffi_types::XmlLDrivers_NamespaceDef as NamespaceDef;
 
 unsafe impl crate::CppDeletable for NamespaceDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlLDrivers_NamespaceDef_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlLDrivers_NamespaceDef_destructor(ptr);
+        }
     }
 }
 

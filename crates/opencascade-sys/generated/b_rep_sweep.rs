@@ -16,7 +16,9 @@ pub use crate::ffi_types::BRepSweep_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepSweep_Builder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepSweep_Builder_destructor(ptr);
+        }
     }
 }
 
@@ -131,7 +133,9 @@ pub use crate::ffi_types::BRepSweep_Iterator as Iterator;
 
 unsafe impl crate::CppDeletable for Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepSweep_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepSweep_Iterator_destructor(ptr);
+        }
     }
 }
 
@@ -235,7 +239,9 @@ pub use crate::ffi_types::BRepSweep_NumLinearRegularSweep as NumLinearRegularSwe
 
 unsafe impl crate::CppDeletable for NumLinearRegularSweep {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepSweep_NumLinearRegularSweep_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepSweep_NumLinearRegularSweep_destructor(ptr);
+        }
     }
 }
 
@@ -769,7 +775,9 @@ pub use crate::ffi_types::BRepSweep_Prism as Prism;
 
 unsafe impl crate::CppDeletable for Prism {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepSweep_Prism_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepSweep_Prism_destructor(ptr);
+        }
     }
 }
 
@@ -995,7 +1003,9 @@ pub use crate::ffi_types::BRepSweep_Revol as Revol;
 
 unsafe impl crate::CppDeletable for Revol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepSweep_Revol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepSweep_Revol_destructor(ptr);
+        }
     }
 }
 
@@ -1167,7 +1177,9 @@ pub use crate::ffi_types::BRepSweep_Rotation as Rotation;
 
 unsafe impl crate::CppDeletable for Rotation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepSweep_Rotation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepSweep_Rotation_destructor(ptr);
+        }
     }
 }
 
@@ -1727,7 +1739,9 @@ pub use crate::ffi_types::BRepSweep_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepSweep_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepSweep_Tool_destructor(ptr);
+        }
     }
 }
 
@@ -1816,7 +1830,9 @@ pub use crate::ffi_types::BRepSweep_Translation as Translation;
 
 unsafe impl crate::CppDeletable for Translation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepSweep_Translation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepSweep_Translation_destructor(ptr);
+        }
     }
 }
 
@@ -2393,7 +2409,9 @@ pub use crate::ffi_types::BRepSweep_Trsf as Trsf;
 
 unsafe impl crate::CppDeletable for Trsf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepSweep_Trsf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepSweep_Trsf_destructor(ptr);
+        }
     }
 }
 

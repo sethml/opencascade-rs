@@ -57,7 +57,9 @@ pub use crate::ffi_types::StdPrs_BRepFont as BRepFont;
 
 unsafe impl crate::CppDeletable for BRepFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_BRepFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_destructor(ptr);
+        }
     }
 }
 
@@ -495,13 +497,15 @@ pub use crate::ffi_types::HandleStdPrsBRepFont;
 
 unsafe impl crate::CppDeletable for HandleStdPrsBRepFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleStdPrsBRepFont_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleStdPrsBRepFont_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdPrsBRepFont {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsBRepFont_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsBRepFont_clone(ptr)) }
     }
 }
 
@@ -553,7 +557,9 @@ pub use crate::ffi_types::StdPrs_BRepTextBuilder as BRepTextBuilder;
 
 unsafe impl crate::CppDeletable for BRepTextBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_BRepTextBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_BRepTextBuilder_destructor(ptr);
+        }
     }
 }
 
@@ -617,7 +623,9 @@ pub use crate::ffi_types::StdPrs_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -825,7 +833,9 @@ pub use crate::ffi_types::StdPrs_DeflectionCurve as DeflectionCurve;
 
 unsafe impl crate::CppDeletable for DeflectionCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1061,7 +1071,9 @@ pub use crate::ffi_types::StdPrs_HLRPolyShape as HLRPolyShape;
 
 unsafe impl crate::CppDeletable for HLRPolyShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_destructor(ptr);
+        }
     }
 }
 
@@ -1249,13 +1261,15 @@ pub use crate::ffi_types::HandleStdPrsHLRPolyShape;
 
 unsafe impl crate::CppDeletable for HandleStdPrsHLRPolyShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleStdPrsHLRPolyShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleStdPrsHLRPolyShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdPrsHLRPolyShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRPolyShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRPolyShape_clone(ptr)) }
     }
 }
 
@@ -1321,7 +1335,9 @@ pub use crate::ffi_types::StdPrs_HLRShape as HLRShape;
 
 unsafe impl crate::CppDeletable for HLRShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_HLRShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_HLRShape_destructor(ptr);
+        }
     }
 }
 
@@ -1500,13 +1516,15 @@ pub use crate::ffi_types::HandleStdPrsHLRShape;
 
 unsafe impl crate::CppDeletable for HandleStdPrsHLRShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleStdPrsHLRShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleStdPrsHLRShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdPrsHLRShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRShape_clone(ptr)) }
     }
 }
 
@@ -1572,7 +1590,9 @@ pub use crate::ffi_types::StdPrs_HLRShapeI as HLRShapeI;
 
 unsafe impl crate::CppDeletable for HLRShapeI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_destructor(ptr);
+        }
     }
 }
 
@@ -1712,13 +1732,15 @@ pub use crate::ffi_types::HandleStdPrsHLRShapeI;
 
 unsafe impl crate::CppDeletable for HandleStdPrsHLRShapeI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdPrsHLRShapeI {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_clone(ptr)) }
     }
 }
 
@@ -1805,7 +1827,9 @@ pub use crate::ffi_types::StdPrs_HLRToolShape as HLRToolShape;
 
 unsafe impl crate::CppDeletable for HLRToolShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_destructor(ptr);
+        }
     }
 }
 
@@ -1913,7 +1937,9 @@ pub use crate::ffi_types::StdPrs_Isolines as Isolines;
 
 unsafe impl crate::CppDeletable for Isolines {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_Isolines_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_destructor(ptr);
+        }
     }
 }
 
@@ -2131,7 +2157,9 @@ pub use crate::ffi_types::StdPrs_Isolines_PntOnIso as Isolines_PntOnIso;
 
 unsafe impl crate::CppDeletable for Isolines_PntOnIso {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_Isolines_PntOnIso_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_PntOnIso_destructor(ptr);
+        }
     }
 }
 
@@ -2153,7 +2181,9 @@ pub use crate::ffi_types::StdPrs_Isolines_SegOnIso as Isolines_SegOnIso;
 
 unsafe impl crate::CppDeletable for Isolines_SegOnIso {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_Isolines_SegOnIso_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_SegOnIso_destructor(ptr);
+        }
     }
 }
 
@@ -2179,7 +2209,9 @@ pub use crate::ffi_types::StdPrs_Plane as Plane;
 
 unsafe impl crate::CppDeletable for Plane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_Plane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_Plane_destructor(ptr);
+        }
     }
 }
 
@@ -2237,7 +2269,9 @@ pub use crate::ffi_types::StdPrs_PoleCurve as PoleCurve;
 
 unsafe impl crate::CppDeletable for PoleCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_PoleCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_PoleCurve_destructor(ptr);
+        }
     }
 }
 
@@ -2315,7 +2349,9 @@ pub use crate::ffi_types::StdPrs_ShadedShape as ShadedShape;
 
 unsafe impl crate::CppDeletable for ShadedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_ShadedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ShadedShape_destructor(ptr);
+        }
     }
 }
 
@@ -2492,7 +2528,9 @@ pub use crate::ffi_types::StdPrs_ShadedSurface as ShadedSurface;
 
 unsafe impl crate::CppDeletable for ShadedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_ShadedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ShadedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -2533,7 +2571,9 @@ pub use crate::ffi_types::StdPrs_ShapeTool as ShapeTool;
 
 unsafe impl crate::CppDeletable for ShapeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_ShapeTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_destructor(ptr);
+        }
     }
 }
 
@@ -2771,7 +2811,9 @@ pub use crate::ffi_types::StdPrs_ToolPoint as ToolPoint;
 
 unsafe impl crate::CppDeletable for ToolPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_ToolPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ToolPoint_destructor(ptr);
+        }
     }
 }
 
@@ -2811,7 +2853,9 @@ pub use crate::ffi_types::StdPrs_ToolRFace as ToolRFace;
 
 unsafe impl crate::CppDeletable for ToolRFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_ToolRFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ToolRFace_destructor(ptr);
+        }
     }
 }
 
@@ -2917,7 +2961,9 @@ pub use crate::ffi_types::StdPrs_ToolTriangulatedShape as ToolTriangulatedShape;
 
 unsafe impl crate::CppDeletable for ToolTriangulatedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_destructor(ptr);
+        }
     }
 }
 
@@ -3052,7 +3098,9 @@ pub use crate::ffi_types::StdPrs_ToolVertex as ToolVertex;
 
 unsafe impl crate::CppDeletable for ToolVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_ToolVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ToolVertex_destructor(ptr);
+        }
     }
 }
 
@@ -3092,7 +3140,9 @@ pub use crate::ffi_types::StdPrs_WFDeflectionRestrictedFace as WFDeflectionRestr
 
 unsafe impl crate::CppDeletable for WFDeflectionRestrictedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_destructor(ptr);
+        }
     }
 }
 
@@ -3301,7 +3351,9 @@ pub use crate::ffi_types::StdPrs_WFDeflectionSurface as WFDeflectionSurface;
 
 unsafe impl crate::CppDeletable for WFDeflectionSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_WFDeflectionSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_WFDeflectionSurface_destructor(ptr);
+        }
     }
 }
 
@@ -3355,7 +3407,9 @@ pub use crate::ffi_types::StdPrs_WFPoleSurface as WFPoleSurface;
 
 unsafe impl crate::CppDeletable for WFPoleSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_WFPoleSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_WFPoleSurface_destructor(ptr);
+        }
     }
 }
 
@@ -3396,7 +3450,9 @@ pub use crate::ffi_types::StdPrs_WFRestrictedFace as WFRestrictedFace;
 
 unsafe impl crate::CppDeletable for WFRestrictedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_destructor(ptr);
+        }
     }
 }
 
@@ -3554,7 +3610,9 @@ pub use crate::ffi_types::StdPrs_WFShape as WFShape;
 
 unsafe impl crate::CppDeletable for WFShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_WFShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_WFShape_destructor(ptr);
+        }
     }
 }
 
@@ -3673,7 +3731,9 @@ pub use crate::ffi_types::StdPrs_WFSurface as WFSurface;
 
 unsafe impl crate::CppDeletable for WFSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::StdPrs_WFSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_WFSurface_destructor(ptr);
+        }
     }
 }
 

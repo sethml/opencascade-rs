@@ -82,7 +82,9 @@ pub use crate::ffi_types::LProp_AnalyticCurInf as AnalyticCurInf;
 
 unsafe impl crate::CppDeletable for AnalyticCurInf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::LProp_AnalyticCurInf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::LProp_AnalyticCurInf_destructor(ptr);
+        }
     }
 }
 
@@ -125,7 +127,9 @@ pub use crate::ffi_types::LProp_BadContinuity as BadContinuity;
 
 unsafe impl crate::CppDeletable for BadContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::LProp_BadContinuity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::LProp_BadContinuity_destructor(ptr);
+        }
     }
 }
 
@@ -386,13 +390,15 @@ pub use crate::ffi_types::HandleLPropBadContinuity;
 
 unsafe impl crate::CppDeletable for HandleLPropBadContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::HandleLPropBadContinuity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleLPropBadContinuity_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLPropBadContinuity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG2d::HandleLPropBadContinuity_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG2d::HandleLPropBadContinuity_clone(ptr)) }
     }
 }
 
@@ -456,7 +462,9 @@ pub use crate::ffi_types::LProp_CurAndInf as CurAndInf;
 
 unsafe impl crate::CppDeletable for CurAndInf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::LProp_CurAndInf_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::LProp_CurAndInf_destructor(ptr);
+        }
     }
 }
 
@@ -542,7 +550,9 @@ pub use crate::ffi_types::LProp_NotDefined as NotDefined;
 
 unsafe impl crate::CppDeletable for NotDefined {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::LProp_NotDefined_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::LProp_NotDefined_destructor(ptr);
+        }
     }
 }
 
@@ -796,13 +806,15 @@ pub use crate::ffi_types::HandleLPropNotDefined;
 
 unsafe impl crate::CppDeletable for HandleLPropNotDefined {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG2d::HandleLPropNotDefined_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG2d::HandleLPropNotDefined_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLPropNotDefined {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG2d::HandleLPropNotDefined_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG2d::HandleLPropNotDefined_clone(ptr)) }
     }
 }
 

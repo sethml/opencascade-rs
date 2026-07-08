@@ -62,7 +62,9 @@ pub use crate::ffi_types::FairCurve_Batten as Batten;
 
 unsafe impl crate::CppDeletable for Batten {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_destructor(ptr);
+        }
     }
 }
 
@@ -444,7 +446,9 @@ pub use crate::ffi_types::FairCurve_BattenLaw as BattenLaw;
 
 unsafe impl crate::CppDeletable for BattenLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::FairCurve_BattenLaw_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_BattenLaw_destructor(ptr);
+        }
     }
 }
 
@@ -542,7 +546,9 @@ pub use crate::ffi_types::FairCurve_DistributionOfEnergy as DistributionOfEnergy
 
 unsafe impl crate::CppDeletable for DistributionOfEnergy {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfEnergy_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfEnergy_destructor(ptr);
+        }
     }
 }
 
@@ -630,7 +636,9 @@ pub use crate::ffi_types::FairCurve_DistributionOfJerk as DistributionOfJerk;
 
 unsafe impl crate::CppDeletable for DistributionOfJerk {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_destructor(ptr);
+        }
     }
 }
 
@@ -770,7 +778,9 @@ pub use crate::ffi_types::FairCurve_DistributionOfSagging as DistributionOfSaggi
 
 unsafe impl crate::CppDeletable for DistributionOfSagging {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_destructor(ptr);
+        }
     }
 }
 
@@ -903,7 +913,9 @@ pub use crate::ffi_types::FairCurve_DistributionOfTension as DistributionOfTensi
 
 unsafe impl crate::CppDeletable for DistributionOfTension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_destructor(ptr);
+        }
     }
 }
 
@@ -1056,7 +1068,9 @@ pub use crate::ffi_types::FairCurve_Energy as Energy;
 
 unsafe impl crate::CppDeletable for Energy {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_destructor(ptr);
+        }
     }
 }
 
@@ -1235,7 +1249,9 @@ pub use crate::ffi_types::FairCurve_EnergyOfBatten as EnergyOfBatten;
 
 unsafe impl crate::CppDeletable for EnergyOfBatten {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_destructor(ptr);
+        }
     }
 }
 
@@ -1490,7 +1506,9 @@ pub use crate::ffi_types::FairCurve_EnergyOfMVC as EnergyOfMVC;
 
 unsafe impl crate::CppDeletable for EnergyOfMVC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_destructor(ptr);
+        }
     }
 }
 
@@ -1796,7 +1814,9 @@ pub use crate::ffi_types::FairCurve_MinimalVariation as MinimalVariation;
 
 unsafe impl crate::CppDeletable for MinimalVariation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_destructor(ptr);
+        }
     }
 }
 
@@ -2271,7 +2291,9 @@ pub use crate::ffi_types::FairCurve_Newton as Newton;
 
 unsafe impl crate::CppDeletable for Newton {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_destructor(ptr);
+        }
     }
 }
 

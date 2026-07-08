@@ -123,7 +123,9 @@ pub use crate::ffi_types::IGESToBRep_Actor as Actor;
 
 unsafe impl crate::CppDeletable for Actor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_destructor(ptr);
+        }
     }
 }
 
@@ -523,13 +525,15 @@ pub use crate::ffi_types::HandleIGESToBRepActor;
 
 unsafe impl crate::CppDeletable for HandleIGESToBRepActor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESToBRepActor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_clone(ptr)) }
     }
 }
 
@@ -598,7 +602,9 @@ pub use crate::ffi_types::IGESToBRep_AlgoContainer as AlgoContainer;
 
 unsafe impl crate::CppDeletable for AlgoContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_destructor(ptr);
+        }
     }
 }
 
@@ -779,13 +785,19 @@ pub use crate::ffi_types::HandleIGESToBRepAlgoContainer;
 
 unsafe impl crate::CppDeletable for HandleIGESToBRepAlgoContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESToBRepAlgoContainer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -856,7 +868,9 @@ pub use crate::ffi_types::IGESToBRep_BRepEntity as BRepEntity;
 
 unsafe impl crate::CppDeletable for BRepEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_destructor(ptr);
+        }
     }
 }
 
@@ -1507,7 +1521,9 @@ pub use crate::ffi_types::IGESToBRep_BasicCurve as BasicCurve;
 
 unsafe impl crate::CppDeletable for BasicCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_destructor(ptr);
+        }
     }
 }
 
@@ -2257,7 +2273,9 @@ pub use crate::ffi_types::IGESToBRep_BasicSurface as BasicSurface;
 
 unsafe impl crate::CppDeletable for BasicSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_destructor(ptr);
+        }
     }
 }
 
@@ -2883,7 +2901,9 @@ pub use crate::ffi_types::IGESToBRep_CurveAndSurface as CurveAndSurface;
 
 unsafe impl crate::CppDeletable for CurveAndSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_destructor(ptr);
+        }
     }
 }
 
@@ -3421,7 +3441,9 @@ pub use crate::ffi_types::IGESToBRep_IGESBoundary as IGESBoundary;
 
 unsafe impl crate::CppDeletable for IGESBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_destructor(ptr);
+        }
     }
 }
 
@@ -3735,13 +3757,17 @@ pub use crate::ffi_types::HandleIGESToBRepIGESBoundary;
 
 unsafe impl crate::CppDeletable for HandleIGESToBRepIGESBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESToBRepIGESBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESToBRepIGESBoundary_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESToBRepIGESBoundary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepIGESBoundary_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepIGESBoundary_clone(ptr))
+        }
     }
 }
 
@@ -3812,7 +3838,9 @@ pub use crate::ffi_types::IGESToBRep_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_destructor(ptr);
+        }
     }
 }
 
@@ -4092,7 +4120,9 @@ pub use crate::ffi_types::IGESToBRep_ToolContainer as ToolContainer;
 
 unsafe impl crate::CppDeletable for ToolContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_destructor(ptr);
+        }
     }
 }
 
@@ -4260,13 +4290,19 @@ pub use crate::ffi_types::HandleIGESToBRepToolContainer;
 
 unsafe impl crate::CppDeletable for HandleIGESToBRepToolContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESToBRepToolContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESToBRepToolContainer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESToBRepToolContainer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepToolContainer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepToolContainer_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -4335,13 +4371,15 @@ pub use crate::ffi_types::IGESToBRep_TopoCurve as TopoCurve;
 
 unsafe impl crate::CppDeletable for TopoCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for TopoCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_clone(ptr)) }
     }
 }
 
@@ -5190,7 +5228,9 @@ pub use crate::ffi_types::IGESToBRep_TopoSurface as TopoSurface;
 
 unsafe impl crate::CppDeletable for TopoSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_destructor(ptr);
+        }
     }
 }
 

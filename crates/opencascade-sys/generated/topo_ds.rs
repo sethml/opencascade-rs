@@ -167,7 +167,9 @@ pub use crate::ffi_types::TopoDS_AlertAttribute as AlertAttribute;
 
 unsafe impl crate::CppDeletable for AlertAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_destructor(ptr);
+        }
     }
 }
 
@@ -426,13 +428,17 @@ pub use crate::ffi_types::HandleTopoDSAlertAttribute;
 
 unsafe impl crate::CppDeletable for HandleTopoDSAlertAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSAlertAttribute {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_clone(ptr))
+        }
     }
 }
 
@@ -504,7 +510,9 @@ pub use crate::ffi_types::TopoDS_AlertWithShape as AlertWithShape;
 
 unsafe impl crate::CppDeletable for AlertWithShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_destructor(ptr);
+        }
     }
 }
 
@@ -708,13 +716,17 @@ pub use crate::ffi_types::HandleTopoDSAlertWithShape;
 
 unsafe impl crate::CppDeletable for HandleTopoDSAlertWithShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSAlertWithShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_clone(ptr))
+        }
     }
 }
 
@@ -1236,13 +1248,15 @@ pub use crate::ffi_types::TopoDS_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_Builder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_Builder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Builder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Builder_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Builder_clone(ptr)) }
     }
 }
 
@@ -1347,13 +1361,15 @@ pub use crate::ffi_types::TopoDS_CompSolid as CompSolid;
 
 unsafe impl crate::CppDeletable for CompSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_CompSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_CompSolid_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for CompSolid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_CompSolid_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_CompSolid_clone(ptr)) }
     }
 }
 
@@ -1697,13 +1713,15 @@ pub use crate::ffi_types::TopoDS_Compound as Compound;
 
 unsafe impl crate::CppDeletable for Compound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_Compound_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_Compound_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Compound {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Compound_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Compound_clone(ptr)) }
     }
 }
 
@@ -2046,13 +2064,15 @@ pub use crate::ffi_types::TopoDS_Edge as Edge;
 
 unsafe impl crate::CppDeletable for Edge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_Edge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_Edge_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Edge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Edge_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Edge_clone(ptr)) }
     }
 }
 
@@ -2381,13 +2401,15 @@ pub use crate::ffi_types::TopoDS_Face as Face;
 
 unsafe impl crate::CppDeletable for Face {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_Face_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_Face_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Face {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Face_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Face_clone(ptr)) }
     }
 }
 
@@ -2711,7 +2733,9 @@ pub use crate::ffi_types::TopoDS_FrozenShape as FrozenShape;
 
 unsafe impl crate::CppDeletable for FrozenShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_FrozenShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_FrozenShape_destructor(ptr);
+        }
     }
 }
 
@@ -2994,13 +3018,15 @@ pub use crate::ffi_types::HandleTopoDSFrozenShape;
 
 unsafe impl crate::CppDeletable for HandleTopoDSFrozenShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSFrozenShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_clone(ptr)) }
     }
 }
 
@@ -3076,7 +3102,9 @@ pub use crate::ffi_types::TopoDS_HShape as HShape;
 
 unsafe impl crate::CppDeletable for HShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_HShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_HShape_destructor(ptr);
+        }
     }
 }
 
@@ -3256,13 +3284,15 @@ pub use crate::ffi_types::HandleTopoDSHShape;
 
 unsafe impl crate::CppDeletable for HandleTopoDSHShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSHShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSHShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSHShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSHShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSHShape_clone(ptr)) }
     }
 }
 
@@ -3318,13 +3348,15 @@ pub use crate::ffi_types::TopoDS_Iterator as Iterator;
 
 unsafe impl crate::CppDeletable for Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_Iterator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Iterator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Iterator_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Iterator_clone(ptr)) }
     }
 }
 
@@ -3453,7 +3485,9 @@ pub use crate::ffi_types::TopoDS_LockedShape as LockedShape;
 
 unsafe impl crate::CppDeletable for LockedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_LockedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_LockedShape_destructor(ptr);
+        }
     }
 }
 
@@ -3736,13 +3770,15 @@ pub use crate::ffi_types::HandleTopoDSLockedShape;
 
 unsafe impl crate::CppDeletable for HandleTopoDSLockedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSLockedShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_clone(ptr)) }
     }
 }
 
@@ -3827,13 +3863,15 @@ pub use crate::ffi_types::TopoDS_Shape as Shape;
 
 unsafe impl crate::CppDeletable for Shape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_Shape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_Shape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Shape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Shape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Shape_clone(ptr)) }
     }
 }
 
@@ -4308,13 +4346,15 @@ pub use crate::ffi_types::TopoDS_Shell as Shell;
 
 unsafe impl crate::CppDeletable for Shell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_Shell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_Shell_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Shell {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Shell_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Shell_clone(ptr)) }
     }
 }
 
@@ -4647,13 +4687,15 @@ pub use crate::ffi_types::TopoDS_Solid as Solid;
 
 unsafe impl crate::CppDeletable for Solid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_Solid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_Solid_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Solid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Solid_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Solid_clone(ptr)) }
     }
 }
 
@@ -4979,7 +5021,9 @@ pub use crate::ffi_types::TopoDS_TCompSolid as TCompSolid;
 
 unsafe impl crate::CppDeletable for TCompSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_TCompSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TCompSolid_destructor(ptr);
+        }
     }
 }
 
@@ -5227,13 +5271,15 @@ pub use crate::ffi_types::HandleTopoDSTCompSolid;
 
 unsafe impl crate::CppDeletable for HandleTopoDSTCompSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSTCompSolid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_clone(ptr)) }
     }
 }
 
@@ -5296,7 +5342,9 @@ pub use crate::ffi_types::TopoDS_TCompound as TCompound;
 
 unsafe impl crate::CppDeletable for TCompound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_TCompound_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TCompound_destructor(ptr);
+        }
     }
 }
 
@@ -5540,13 +5588,15 @@ pub use crate::ffi_types::HandleTopoDSTCompound;
 
 unsafe impl crate::CppDeletable for HandleTopoDSTCompound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSTCompound_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSTCompound_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSTCompound {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompound_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompound_clone(ptr)) }
     }
 }
 
@@ -5610,7 +5660,9 @@ pub use crate::ffi_types::TopoDS_TEdge as TEdge;
 
 unsafe impl crate::CppDeletable for TEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_TEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TEdge_destructor(ptr);
+        }
     }
 }
 
@@ -5823,13 +5875,15 @@ pub use crate::ffi_types::HandleTopoDSTEdge;
 
 unsafe impl crate::CppDeletable for HandleTopoDSTEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSTEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSTEdge_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSTEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTEdge_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTEdge_clone(ptr)) }
     }
 }
 
@@ -5910,7 +5964,9 @@ pub use crate::ffi_types::TopoDS_TFace as TFace;
 
 unsafe impl crate::CppDeletable for TFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_TFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TFace_destructor(ptr);
+        }
     }
 }
 
@@ -6145,13 +6201,15 @@ pub use crate::ffi_types::HandleTopoDSTFace;
 
 unsafe impl crate::CppDeletable for HandleTopoDSTFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSTFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSTFace_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSTFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTFace_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTFace_clone(ptr)) }
     }
 }
 
@@ -6254,7 +6312,9 @@ pub use crate::ffi_types::TopoDS_TShape as TShape;
 
 unsafe impl crate::CppDeletable for TShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_TShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TShape_destructor(ptr);
+        }
     }
 }
 
@@ -6530,13 +6590,15 @@ pub use crate::ffi_types::HandleTopoDSTShape;
 
 unsafe impl crate::CppDeletable for HandleTopoDSTShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSTShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSTShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSTShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShape_clone(ptr)) }
     }
 }
 
@@ -6786,7 +6848,9 @@ pub use crate::ffi_types::TopoDS_TShell as TShell;
 
 unsafe impl crate::CppDeletable for TShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_TShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TShell_destructor(ptr);
+        }
     }
 }
 
@@ -7023,13 +7087,15 @@ pub use crate::ffi_types::HandleTopoDSTShell;
 
 unsafe impl crate::CppDeletable for HandleTopoDSTShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSTShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSTShell_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSTShell {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShell_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShell_clone(ptr)) }
     }
 }
 
@@ -7093,7 +7159,9 @@ pub use crate::ffi_types::TopoDS_TSolid as TSolid;
 
 unsafe impl crate::CppDeletable for TSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_TSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TSolid_destructor(ptr);
+        }
     }
 }
 
@@ -7330,13 +7398,15 @@ pub use crate::ffi_types::HandleTopoDSTSolid;
 
 unsafe impl crate::CppDeletable for HandleTopoDSTSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSTSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSTSolid_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSTSolid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTSolid_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTSolid_clone(ptr)) }
     }
 }
 
@@ -7400,7 +7470,9 @@ pub use crate::ffi_types::TopoDS_TVertex as TVertex;
 
 unsafe impl crate::CppDeletable for TVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_TVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TVertex_destructor(ptr);
+        }
     }
 }
 
@@ -7619,13 +7691,15 @@ pub use crate::ffi_types::HandleTopoDSTVertex;
 
 unsafe impl crate::CppDeletable for HandleTopoDSTVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSTVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSTVertex_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSTVertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTVertex_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTVertex_clone(ptr)) }
     }
 }
 
@@ -7706,7 +7780,9 @@ pub use crate::ffi_types::TopoDS_TWire as TWire;
 
 unsafe impl crate::CppDeletable for TWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_TWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TWire_destructor(ptr);
+        }
     }
 }
 
@@ -7941,13 +8017,15 @@ pub use crate::ffi_types::HandleTopoDSTWire;
 
 unsafe impl crate::CppDeletable for HandleTopoDSTWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSTWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSTWire_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSTWire {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTWire_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTWire_clone(ptr)) }
     }
 }
 
@@ -8010,7 +8088,9 @@ pub use crate::ffi_types::TopoDS_UnCompatibleShapes as UnCompatibleShapes;
 
 unsafe impl crate::CppDeletable for UnCompatibleShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_destructor(ptr);
+        }
     }
 }
 
@@ -8305,13 +8385,17 @@ pub use crate::ffi_types::HandleTopoDSUnCompatibleShapes;
 
 unsafe impl crate::CppDeletable for HandleTopoDSUnCompatibleShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleTopoDSUnCompatibleShapes {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_clone(ptr))
+        }
     }
 }
 
@@ -8392,13 +8476,15 @@ pub use crate::ffi_types::TopoDS_Vertex as Vertex;
 
 unsafe impl crate::CppDeletable for Vertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_Vertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_Vertex_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Vertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Vertex_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Vertex_clone(ptr)) }
     }
 }
 
@@ -8730,13 +8816,15 @@ pub use crate::ffi_types::TopoDS_Wire as Wire;
 
 unsafe impl crate::CppDeletable for Wire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBRep::TopoDS_Wire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_Wire_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for Wire {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Wire_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Wire_clone(ptr)) }
     }
 }
 

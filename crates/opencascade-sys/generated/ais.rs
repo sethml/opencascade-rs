@@ -789,7 +789,9 @@ pub use crate::ffi_types::AIS_AnimationProgress as AnimationProgress;
 
 unsafe impl crate::CppDeletable for AnimationProgress {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_AnimationProgress_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_AnimationProgress_destructor(ptr);
+        }
     }
 }
 
@@ -834,7 +836,9 @@ pub use crate::ffi_types::AIS_Animation as Animation;
 
 unsafe impl crate::CppDeletable for Animation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Animation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Animation_destructor(ptr);
+        }
     }
 }
 
@@ -1225,13 +1229,15 @@ pub use crate::ffi_types::HandleAISAnimation;
 
 unsafe impl crate::CppDeletable for HandleAISAnimation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISAnimation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISAnimation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISAnimation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISAnimation_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISAnimation_clone(ptr)) }
     }
 }
 
@@ -1355,7 +1361,9 @@ pub use crate::ffi_types::AIS_AnimationAxisRotation as AnimationAxisRotation;
 
 unsafe impl crate::CppDeletable for AnimationAxisRotation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_AnimationAxisRotation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_AnimationAxisRotation_destructor(ptr);
+        }
     }
 }
 
@@ -1821,13 +1829,17 @@ pub use crate::ffi_types::HandleAISAnimationAxisRotation;
 
 unsafe impl crate::CppDeletable for HandleAISAnimationAxisRotation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISAnimationAxisRotation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISAnimationAxisRotation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISAnimationAxisRotation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISAnimationAxisRotation_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleAISAnimationAxisRotation_clone(ptr))
+        }
     }
 }
 
@@ -1901,7 +1913,9 @@ pub use crate::ffi_types::AIS_AnimationCamera as AnimationCamera;
 
 unsafe impl crate::CppDeletable for AnimationCamera {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_AnimationCamera_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_AnimationCamera_destructor(ptr);
+        }
     }
 }
 
@@ -2373,13 +2387,15 @@ pub use crate::ffi_types::HandleAISAnimationCamera;
 
 unsafe impl crate::CppDeletable for HandleAISAnimationCamera {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISAnimationCamera_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISAnimationCamera_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISAnimationCamera {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISAnimationCamera_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISAnimationCamera_clone(ptr)) }
     }
 }
 
@@ -2442,7 +2458,9 @@ pub use crate::ffi_types::AIS_AnimationObject as AnimationObject;
 
 unsafe impl crate::CppDeletable for AnimationObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_AnimationObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_AnimationObject_destructor(ptr);
+        }
     }
 }
 
@@ -2882,13 +2900,15 @@ pub use crate::ffi_types::HandleAISAnimationObject;
 
 unsafe impl crate::CppDeletable for HandleAISAnimationObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISAnimationObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISAnimationObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISAnimationObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISAnimationObject_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISAnimationObject_clone(ptr)) }
     }
 }
 
@@ -2973,7 +2993,9 @@ pub use crate::ffi_types::AIS_AttributeFilter as AttributeFilter;
 
 unsafe impl crate::CppDeletable for AttributeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_AttributeFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_AttributeFilter_destructor(ptr);
+        }
     }
 }
 
@@ -3241,13 +3263,15 @@ pub use crate::ffi_types::HandleAISAttributeFilter;
 
 unsafe impl crate::CppDeletable for HandleAISAttributeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISAttributeFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISAttributeFilter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISAttributeFilter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISAttributeFilter_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISAttributeFilter_clone(ptr)) }
     }
 }
 
@@ -3315,7 +3339,9 @@ pub use crate::ffi_types::AIS_Axis as Axis;
 
 unsafe impl crate::CppDeletable for Axis {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Axis_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Axis_destructor(ptr);
+        }
     }
 }
 
@@ -4722,13 +4748,15 @@ pub use crate::ffi_types::HandleAISAxis;
 
 unsafe impl crate::CppDeletable for HandleAISAxis {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISAxis_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISAxis_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISAxis {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISAxis_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISAxis_clone(ptr)) }
     }
 }
 
@@ -4817,7 +4845,9 @@ pub use crate::ffi_types::AIS_BadEdgeFilter as BadEdgeFilter;
 
 unsafe impl crate::CppDeletable for BadEdgeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_BadEdgeFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_BadEdgeFilter_destructor(ptr);
+        }
     }
 }
 
@@ -5022,13 +5052,15 @@ pub use crate::ffi_types::HandleAISBadEdgeFilter;
 
 unsafe impl crate::CppDeletable for HandleAISBadEdgeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISBadEdgeFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISBadEdgeFilter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISBadEdgeFilter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISBadEdgeFilter_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISBadEdgeFilter_clone(ptr)) }
     }
 }
 
@@ -5091,7 +5123,9 @@ pub use crate::ffi_types::AIS_BaseAnimationObject as BaseAnimationObject;
 
 unsafe impl crate::CppDeletable for BaseAnimationObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_BaseAnimationObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_BaseAnimationObject_destructor(ptr);
+        }
     }
 }
 
@@ -5504,13 +5538,17 @@ pub use crate::ffi_types::HandleAISBaseAnimationObject;
 
 unsafe impl crate::CppDeletable for HandleAISBaseAnimationObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISBaseAnimationObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISBaseAnimationObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISBaseAnimationObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISBaseAnimationObject_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleAISBaseAnimationObject_clone(ptr))
+        }
     }
 }
 
@@ -5606,7 +5644,9 @@ pub use crate::ffi_types::AIS_C0RegularityFilter as C0RegularityFilter;
 
 unsafe impl crate::CppDeletable for C0RegularityFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_C0RegularityFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_C0RegularityFilter_destructor(ptr);
+        }
     }
 }
 
@@ -5794,13 +5834,17 @@ pub use crate::ffi_types::HandleAISC0RegularityFilter;
 
 unsafe impl crate::CppDeletable for HandleAISC0RegularityFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISC0RegularityFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISC0RegularityFilter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISC0RegularityFilter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISC0RegularityFilter_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleAISC0RegularityFilter_clone(ptr))
+        }
     }
 }
 
@@ -5864,7 +5908,9 @@ pub use crate::ffi_types::AIS_CameraFrustum as CameraFrustum;
 
 unsafe impl crate::CppDeletable for CameraFrustum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_CameraFrustum_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_CameraFrustum_destructor(ptr);
+        }
     }
 }
 
@@ -7273,13 +7319,15 @@ pub use crate::ffi_types::HandleAISCameraFrustum;
 
 unsafe impl crate::CppDeletable for HandleAISCameraFrustum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISCameraFrustum_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISCameraFrustum_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISCameraFrustum {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISCameraFrustum_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISCameraFrustum_clone(ptr)) }
     }
 }
 
@@ -7371,7 +7419,9 @@ pub use crate::ffi_types::AIS_Circle as Circle;
 
 unsafe impl crate::CppDeletable for Circle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Circle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Circle_destructor(ptr);
+        }
     }
 }
 
@@ -8762,13 +8812,15 @@ pub use crate::ffi_types::HandleAISCircle;
 
 unsafe impl crate::CppDeletable for HandleAISCircle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISCircle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISCircle_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISCircle {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISCircle_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISCircle_clone(ptr)) }
     }
 }
 
@@ -8865,7 +8917,9 @@ pub use crate::ffi_types::AIS_ColorScale as ColorScale;
 
 unsafe impl crate::CppDeletable for ColorScale {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ColorScale_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ColorScale_destructor(ptr);
+        }
     }
 }
 
@@ -10989,13 +11043,15 @@ pub use crate::ffi_types::HandleAISColorScale;
 
 unsafe impl crate::CppDeletable for HandleAISColorScale {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISColorScale_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISColorScale_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISColorScale {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISColorScale_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISColorScale_clone(ptr)) }
     }
 }
 
@@ -11086,7 +11142,9 @@ pub use crate::ffi_types::AIS_ColoredDrawer as ColoredDrawer;
 
 unsafe impl crate::CppDeletable for ColoredDrawer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ColoredDrawer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ColoredDrawer_destructor(ptr);
+        }
     }
 }
 
@@ -13003,13 +13061,15 @@ pub use crate::ffi_types::HandleAISColoredDrawer;
 
 unsafe impl crate::CppDeletable for HandleAISColoredDrawer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISColoredDrawer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISColoredDrawer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISColoredDrawer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISColoredDrawer_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISColoredDrawer_clone(ptr)) }
     }
 }
 
@@ -13081,7 +13141,9 @@ pub use crate::ffi_types::AIS_ColoredShape as ColoredShape;
 
 unsafe impl crate::CppDeletable for ColoredShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ColoredShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ColoredShape_destructor(ptr);
+        }
     }
 }
 
@@ -14767,13 +14829,15 @@ pub use crate::ffi_types::HandleAISColoredShape;
 
 unsafe impl crate::CppDeletable for HandleAISColoredShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISColoredShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISColoredShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISColoredShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISColoredShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISColoredShape_clone(ptr)) }
     }
 }
 
@@ -14904,7 +14968,9 @@ pub use crate::ffi_types::AIS_ConnectedInteractive as ConnectedInteractive;
 
 unsafe impl crate::CppDeletable for ConnectedInteractive {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ConnectedInteractive_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ConnectedInteractive_destructor(ptr);
+        }
     }
 }
 
@@ -16441,13 +16507,17 @@ pub use crate::ffi_types::HandleAISConnectedInteractive;
 
 unsafe impl crate::CppDeletable for HandleAISConnectedInteractive {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISConnectedInteractive_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISConnectedInteractive_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISConnectedInteractive {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISConnectedInteractive_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleAISConnectedInteractive_clone(ptr))
+        }
     }
 }
 
@@ -16541,7 +16611,9 @@ pub use crate::ffi_types::AIS_ExclusionFilter as ExclusionFilter;
 
 unsafe impl crate::CppDeletable for ExclusionFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ExclusionFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ExclusionFilter_destructor(ptr);
+        }
     }
 }
 
@@ -16908,13 +16980,15 @@ pub use crate::ffi_types::HandleAISExclusionFilter;
 
 unsafe impl crate::CppDeletable for HandleAISExclusionFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISExclusionFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISExclusionFilter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISExclusionFilter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISExclusionFilter_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISExclusionFilter_clone(ptr)) }
     }
 }
 
@@ -16977,7 +17051,9 @@ pub use crate::ffi_types::AIS_GlobalStatus as GlobalStatus;
 
 unsafe impl crate::CppDeletable for GlobalStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_GlobalStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_GlobalStatus_destructor(ptr);
+        }
     }
 }
 
@@ -17230,13 +17306,15 @@ pub use crate::ffi_types::HandleAISGlobalStatus;
 
 unsafe impl crate::CppDeletable for HandleAISGlobalStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISGlobalStatus_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISGlobalStatus_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISGlobalStatus {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISGlobalStatus_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISGlobalStatus_clone(ptr)) }
     }
 }
 
@@ -17287,7 +17365,9 @@ pub use crate::ffi_types::AIS_GraphicTool as GraphicTool;
 
 unsafe impl crate::CppDeletable for GraphicTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_GraphicTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_GraphicTool_destructor(ptr);
+        }
     }
 }
 
@@ -17424,7 +17504,9 @@ pub use crate::ffi_types::AIS_InteractiveContext as InteractiveContext;
 
 unsafe impl crate::CppDeletable for InteractiveContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_InteractiveContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_InteractiveContext_destructor(ptr);
+        }
     }
 }
 
@@ -20413,13 +20495,17 @@ pub use crate::ffi_types::HandleAISInteractiveContext;
 
 unsafe impl crate::CppDeletable for HandleAISInteractiveContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISInteractiveContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISInteractiveContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISInteractiveContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISInteractiveContext_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleAISInteractiveContext_clone(ptr))
+        }
     }
 }
 
@@ -20487,7 +20573,9 @@ pub use crate::ffi_types::AIS_InteractiveObject as InteractiveObject;
 
 unsafe impl crate::CppDeletable for InteractiveObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_InteractiveObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_InteractiveObject_destructor(ptr);
+        }
     }
 }
 
@@ -21930,13 +22018,17 @@ pub use crate::ffi_types::HandleAISInteractiveObject;
 
 unsafe impl crate::CppDeletable for HandleAISInteractiveObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISInteractiveObject_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISInteractiveObject_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISInteractiveObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISInteractiveObject_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleAISInteractiveObject_clone(ptr))
+        }
     }
 }
 
@@ -22803,7 +22895,9 @@ pub use crate::ffi_types::AIS_LightSource as LightSource;
 
 unsafe impl crate::CppDeletable for LightSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_LightSource_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_LightSource_destructor(ptr);
+        }
     }
 }
 
@@ -24389,13 +24483,15 @@ pub use crate::ffi_types::HandleAISLightSource;
 
 unsafe impl crate::CppDeletable for HandleAISLightSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISLightSource_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISLightSource_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISLightSource {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISLightSource_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISLightSource_clone(ptr)) }
     }
 }
 
@@ -24482,7 +24578,9 @@ pub use crate::ffi_types::AIS_LightSourceOwner as LightSourceOwner;
 
 unsafe impl crate::CppDeletable for LightSourceOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_LightSourceOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_LightSourceOwner_destructor(ptr);
+        }
     }
 }
 
@@ -24944,13 +25042,17 @@ pub use crate::ffi_types::HandleAISLightSourceOwner;
 
 unsafe impl crate::CppDeletable for HandleAISLightSourceOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISLightSourceOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISLightSourceOwner_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISLightSourceOwner {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISLightSourceOwner_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleAISLightSourceOwner_clone(ptr))
+        }
     }
 }
 
@@ -25016,7 +25118,9 @@ pub use crate::ffi_types::AIS_Line as Line;
 
 unsafe impl crate::CppDeletable for Line {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Line_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Line_destructor(ptr);
+        }
     }
 }
 
@@ -26334,13 +26438,15 @@ pub use crate::ffi_types::HandleAISLine;
 
 unsafe impl crate::CppDeletable for HandleAISLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISLine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISLine_clone(ptr)) }
     }
 }
 
@@ -26428,7 +26534,9 @@ pub use crate::ffi_types::AIS_ManipulatorObjectSequence as ManipulatorObjectSequ
 
 unsafe impl crate::CppDeletable for ManipulatorObjectSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ManipulatorObjectSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ManipulatorObjectSequence_destructor(ptr);
+        }
     }
 }
 
@@ -26641,13 +26749,19 @@ pub use crate::ffi_types::HandleAISManipulatorObjectSequence;
 
 unsafe impl crate::CppDeletable for HandleAISManipulatorObjectSequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISManipulatorObjectSequence_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISManipulatorObjectSequence_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISManipulatorObjectSequence {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISManipulatorObjectSequence_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleAISManipulatorObjectSequence_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -26752,7 +26866,9 @@ pub use crate::ffi_types::AIS_Manipulator as Manipulator;
 
 unsafe impl crate::CppDeletable for Manipulator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Manipulator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Manipulator_destructor(ptr);
+        }
     }
 }
 
@@ -28628,13 +28744,15 @@ pub use crate::ffi_types::HandleAISManipulator;
 
 unsafe impl crate::CppDeletable for HandleAISManipulator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISManipulator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISManipulator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISManipulator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISManipulator_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISManipulator_clone(ptr)) }
     }
 }
 
@@ -28723,7 +28841,9 @@ pub use crate::ffi_types::AIS_Manipulator_OptionsForAttach as Manipulator_Option
 
 unsafe impl crate::CppDeletable for Manipulator_OptionsForAttach {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Manipulator_OptionsForAttach_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Manipulator_OptionsForAttach_destructor(ptr);
+        }
     }
 }
 
@@ -28735,7 +28855,9 @@ pub use crate::ffi_types::AIS_Manipulator_BehaviorOnTransform as Manipulator_Beh
 
 unsafe impl crate::CppDeletable for Manipulator_BehaviorOnTransform {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Manipulator_BehaviorOnTransform_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Manipulator_BehaviorOnTransform_destructor(ptr);
+        }
     }
 }
 
@@ -28749,7 +28871,9 @@ pub use crate::ffi_types::AIS_ManipulatorOwner as ManipulatorOwner;
 
 unsafe impl crate::CppDeletable for ManipulatorOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ManipulatorOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ManipulatorOwner_destructor(ptr);
+        }
     }
 }
 
@@ -29225,13 +29349,17 @@ pub use crate::ffi_types::HandleAISManipulatorOwner;
 
 unsafe impl crate::CppDeletable for HandleAISManipulatorOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISManipulatorOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISManipulatorOwner_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISManipulatorOwner {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISManipulatorOwner_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleAISManipulatorOwner_clone(ptr))
+        }
     }
 }
 
@@ -29296,7 +29424,9 @@ pub use crate::ffi_types::AIS_MediaPlayer as MediaPlayer;
 
 unsafe impl crate::CppDeletable for MediaPlayer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_MediaPlayer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_MediaPlayer_destructor(ptr);
+        }
     }
 }
 
@@ -30735,13 +30865,15 @@ pub use crate::ffi_types::HandleAISMediaPlayer;
 
 unsafe impl crate::CppDeletable for HandleAISMediaPlayer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISMediaPlayer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISMediaPlayer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISMediaPlayer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISMediaPlayer_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISMediaPlayer_clone(ptr)) }
     }
 }
 
@@ -30836,7 +30968,9 @@ pub use crate::ffi_types::AIS_MultipleConnectedInteractive as MultipleConnectedI
 
 unsafe impl crate::CppDeletable for MultipleConnectedInteractive {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_MultipleConnectedInteractive_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_MultipleConnectedInteractive_destructor(ptr);
+        }
     }
 }
 
@@ -32288,15 +32422,19 @@ pub use crate::ffi_types::HandleAISMultipleConnectedInteractive;
 
 unsafe impl crate::CppDeletable for HandleAISMultipleConnectedInteractive {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISMultipleConnectedInteractive_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISMultipleConnectedInteractive_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISMultipleConnectedInteractive {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISMultipleConnectedInteractive_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKV3d::HandleAISMultipleConnectedInteractive_clone(ptr),
+            )
+        }
     }
 }
 
@@ -32380,7 +32518,9 @@ pub use crate::ffi_types::AIS_Plane as Plane;
 
 unsafe impl crate::CppDeletable for Plane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Plane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Plane_destructor(ptr);
+        }
     }
 }
 
@@ -34007,13 +34147,15 @@ pub use crate::ffi_types::HandleAISPlane;
 
 unsafe impl crate::CppDeletable for HandleAISPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISPlane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISPlane_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISPlane {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISPlane_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISPlane_clone(ptr)) }
     }
 }
 
@@ -34118,7 +34260,9 @@ pub use crate::ffi_types::AIS_PlaneTrihedron as PlaneTrihedron;
 
 unsafe impl crate::CppDeletable for PlaneTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_PlaneTrihedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_PlaneTrihedron_destructor(ptr);
+        }
     }
 }
 
@@ -35615,13 +35759,15 @@ pub use crate::ffi_types::HandleAISPlaneTrihedron;
 
 unsafe impl crate::CppDeletable for HandleAISPlaneTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISPlaneTrihedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISPlaneTrihedron_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISPlaneTrihedron {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISPlaneTrihedron_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISPlaneTrihedron_clone(ptr)) }
     }
 }
 
@@ -35713,7 +35859,9 @@ pub use crate::ffi_types::AIS_Point as Point;
 
 unsafe impl crate::CppDeletable for Point {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Point_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Point_destructor(ptr);
+        }
     }
 }
 
@@ -37037,13 +37185,15 @@ pub use crate::ffi_types::HandleAISPoint;
 
 unsafe impl crate::CppDeletable for HandleAISPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISPoint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISPoint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISPoint_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISPoint_clone(ptr)) }
     }
 }
 
@@ -37142,7 +37292,9 @@ pub use crate::ffi_types::AIS_PointCloud as PointCloud;
 
 unsafe impl crate::CppDeletable for PointCloud {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_PointCloud_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_PointCloud_destructor(ptr);
+        }
     }
 }
 
@@ -38545,13 +38697,15 @@ pub use crate::ffi_types::HandleAISPointCloud;
 
 unsafe impl crate::CppDeletable for HandleAISPointCloud {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISPointCloud_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISPointCloud_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISPointCloud {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISPointCloud_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISPointCloud_clone(ptr)) }
     }
 }
 
@@ -38638,7 +38792,9 @@ pub use crate::ffi_types::AIS_PointCloudOwner as PointCloudOwner;
 
 unsafe impl crate::CppDeletable for PointCloudOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_PointCloudOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_PointCloudOwner_destructor(ptr);
+        }
     }
 }
 
@@ -39110,13 +39266,15 @@ pub use crate::ffi_types::HandleAISPointCloudOwner;
 
 unsafe impl crate::CppDeletable for HandleAISPointCloudOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISPointCloudOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISPointCloudOwner_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISPointCloudOwner {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISPointCloudOwner_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISPointCloudOwner_clone(ptr)) }
     }
 }
 
@@ -39186,7 +39344,9 @@ pub use crate::ffi_types::AIS_RubberBand as RubberBand;
 
 unsafe impl crate::CppDeletable for RubberBand {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_RubberBand_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_RubberBand_destructor(ptr);
+        }
     }
 }
 
@@ -40877,13 +41037,15 @@ pub use crate::ffi_types::HandleAISRubberBand;
 
 unsafe impl crate::CppDeletable for HandleAISRubberBand {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISRubberBand_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISRubberBand_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISRubberBand {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISRubberBand_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISRubberBand_clone(ptr)) }
     }
 }
 
@@ -40974,7 +41136,9 @@ pub use crate::ffi_types::AIS_Selection as Selection;
 
 unsafe impl crate::CppDeletable for Selection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Selection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Selection_destructor(ptr);
+        }
     }
 }
 
@@ -41270,13 +41434,15 @@ pub use crate::ffi_types::HandleAISSelection;
 
 unsafe impl crate::CppDeletable for HandleAISSelection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISSelection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISSelection_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISSelection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISSelection_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISSelection_clone(ptr)) }
     }
 }
 
@@ -41362,7 +41528,9 @@ pub use crate::ffi_types::AIS_Shape as Shape;
 
 unsafe impl crate::CppDeletable for Shape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Shape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Shape_destructor(ptr);
+        }
     }
 }
 
@@ -42886,13 +43054,15 @@ pub use crate::ffi_types::HandleAISShape;
 
 unsafe impl crate::CppDeletable for HandleAISShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISShape_clone(ptr)) }
     }
 }
 
@@ -43061,7 +43231,9 @@ pub use crate::ffi_types::AIS_SignatureFilter as SignatureFilter;
 
 unsafe impl crate::CppDeletable for SignatureFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_SignatureFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_SignatureFilter_destructor(ptr);
+        }
     }
 }
 
@@ -43277,13 +43449,15 @@ pub use crate::ffi_types::HandleAISSignatureFilter;
 
 unsafe impl crate::CppDeletable for HandleAISSignatureFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISSignatureFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISSignatureFilter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISSignatureFilter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISSignatureFilter_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISSignatureFilter_clone(ptr)) }
     }
 }
 
@@ -43357,7 +43531,9 @@ pub use crate::ffi_types::AIS_TextLabel as TextLabel;
 
 unsafe impl crate::CppDeletable for TextLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_TextLabel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_TextLabel_destructor(ptr);
+        }
     }
 }
 
@@ -44934,13 +45110,15 @@ pub use crate::ffi_types::HandleAISTextLabel;
 
 unsafe impl crate::CppDeletable for HandleAISTextLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISTextLabel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISTextLabel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISTextLabel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISTextLabel_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISTextLabel_clone(ptr)) }
     }
 }
 
@@ -45046,7 +45224,9 @@ pub use crate::ffi_types::AIS_TexturedShape as TexturedShape;
 
 unsafe impl crate::CppDeletable for TexturedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_TexturedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_TexturedShape_destructor(ptr);
+        }
     }
 }
 
@@ -46893,13 +47073,15 @@ pub use crate::ffi_types::HandleAISTexturedShape;
 
 unsafe impl crate::CppDeletable for HandleAISTexturedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISTexturedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISTexturedShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISTexturedShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISTexturedShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISTexturedShape_clone(ptr)) }
     }
 }
 
@@ -47004,7 +47186,9 @@ pub use crate::ffi_types::AIS_Triangulation as Triangulation;
 
 unsafe impl crate::CppDeletable for Triangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Triangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Triangulation_destructor(ptr);
+        }
     }
 }
 
@@ -48456,13 +48640,15 @@ pub use crate::ffi_types::HandleAISTriangulation;
 
 unsafe impl crate::CppDeletable for HandleAISTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISTriangulation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISTriangulation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISTriangulation_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISTriangulation_clone(ptr)) }
     }
 }
 
@@ -48570,7 +48756,9 @@ pub use crate::ffi_types::AIS_Trihedron as Trihedron;
 
 unsafe impl crate::CppDeletable for Trihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_Trihedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_Trihedron_destructor(ptr);
+        }
     }
 }
 
@@ -50213,13 +50401,15 @@ pub use crate::ffi_types::HandleAISTrihedron;
 
 unsafe impl crate::CppDeletable for HandleAISTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISTrihedron_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISTrihedron_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISTrihedron {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISTrihedron_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISTrihedron_clone(ptr)) }
     }
 }
 
@@ -50310,7 +50500,9 @@ pub use crate::ffi_types::AIS_TrihedronOwner as TrihedronOwner;
 
 unsafe impl crate::CppDeletable for TrihedronOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_TrihedronOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_TrihedronOwner_destructor(ptr);
+        }
     }
 }
 
@@ -50760,13 +50952,15 @@ pub use crate::ffi_types::HandleAISTrihedronOwner;
 
 unsafe impl crate::CppDeletable for HandleAISTrihedronOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISTrihedronOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISTrihedronOwner_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISTrihedronOwner {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISTrihedronOwner_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISTrihedronOwner_clone(ptr)) }
     }
 }
 
@@ -50853,7 +51047,9 @@ pub use crate::ffi_types::AIS_TypeFilter as TypeFilter;
 
 unsafe impl crate::CppDeletable for TypeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_TypeFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_TypeFilter_destructor(ptr);
+        }
     }
 }
 
@@ -51030,13 +51226,15 @@ pub use crate::ffi_types::HandleAISTypeFilter;
 
 unsafe impl crate::CppDeletable for HandleAISTypeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISTypeFilter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISTypeFilter_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISTypeFilter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISTypeFilter_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISTypeFilter_clone(ptr)) }
     }
 }
 
@@ -51124,7 +51322,9 @@ pub use crate::ffi_types::AIS_ViewController as ViewController;
 
 unsafe impl crate::CppDeletable for ViewController {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ViewController_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ViewController_destructor(ptr);
+        }
     }
 }
 
@@ -53054,7 +53254,9 @@ pub use crate::ffi_types::AIS_ViewCube as ViewCube;
 
 unsafe impl crate::CppDeletable for ViewCube {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ViewCube_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ViewCube_destructor(ptr);
+        }
     }
 }
 
@@ -55071,13 +55273,15 @@ pub use crate::ffi_types::HandleAISViewCube;
 
 unsafe impl crate::CppDeletable for HandleAISViewCube {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISViewCube_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISViewCube_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISViewCube {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISViewCube_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISViewCube_clone(ptr)) }
     }
 }
 
@@ -55165,7 +55369,9 @@ pub use crate::ffi_types::AIS_ViewCubeOwner as ViewCubeOwner;
 
 unsafe impl crate::CppDeletable for ViewCubeOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ViewCubeOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ViewCubeOwner_destructor(ptr);
+        }
     }
 }
 
@@ -55617,13 +55823,15 @@ pub use crate::ffi_types::HandleAISViewCubeOwner;
 
 unsafe impl crate::CppDeletable for HandleAISViewCubeOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISViewCubeOwner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISViewCubeOwner_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISViewCubeOwner {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISViewCubeOwner_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISViewCubeOwner_clone(ptr)) }
     }
 }
 
@@ -55684,7 +55892,9 @@ pub use crate::ffi_types::AIS_ViewCubeSensitive as ViewCubeSensitive;
 
 unsafe impl crate::CppDeletable for ViewCubeSensitive {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ViewCubeSensitive_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ViewCubeSensitive_destructor(ptr);
+        }
     }
 }
 
@@ -56397,13 +56607,17 @@ pub use crate::ffi_types::HandleAISViewCubeSensitive;
 
 unsafe impl crate::CppDeletable for HandleAISViewCubeSensitive {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISViewCubeSensitive_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISViewCubeSensitive_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISViewCubeSensitive {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISViewCubeSensitive_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleAISViewCubeSensitive_clone(ptr))
+        }
     }
 }
 
@@ -56486,7 +56700,9 @@ pub use crate::ffi_types::AIS_ViewInputBuffer as ViewInputBuffer;
 
 unsafe impl crate::CppDeletable for ViewInputBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_ViewInputBuffer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_ViewInputBuffer_destructor(ptr);
+        }
     }
 }
 
@@ -56519,7 +56735,9 @@ pub use crate::ffi_types::AIS_WalkPart as WalkPart;
 
 unsafe impl crate::CppDeletable for WalkPart {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_WalkPart_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_WalkPart_destructor(ptr);
+        }
     }
 }
 
@@ -56529,7 +56747,9 @@ pub use crate::ffi_types::AIS_WalkDelta as WalkDelta;
 
 unsafe impl crate::CppDeletable for WalkDelta {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_WalkDelta_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_WalkDelta_destructor(ptr);
+        }
     }
 }
 
@@ -56643,7 +56863,9 @@ pub use crate::ffi_types::AIS_XRTrackedDevice as XRTrackedDevice;
 
 unsafe impl crate::CppDeletable for XRTrackedDevice {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::AIS_XRTrackedDevice_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::AIS_XRTrackedDevice_destructor(ptr);
+        }
     }
 }
 
@@ -58148,13 +58370,15 @@ pub use crate::ffi_types::HandleAISXRTrackedDevice;
 
 unsafe impl crate::CppDeletable for HandleAISXRTrackedDevice {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleAISXRTrackedDevice_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleAISXRTrackedDevice_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAISXRTrackedDevice {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleAISXRTrackedDevice_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKV3d::HandleAISXRTrackedDevice_clone(ptr)) }
     }
 }
 

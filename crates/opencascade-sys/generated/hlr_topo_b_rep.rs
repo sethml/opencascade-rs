@@ -19,7 +19,9 @@ pub use crate::ffi_types::HLRTopoBRep_DSFiller as DSFiller;
 
 unsafe impl crate::CppDeletable for DSFiller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRTopoBRep_DSFiller_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRTopoBRep_DSFiller_destructor(ptr);
+        }
     }
 }
 
@@ -61,7 +63,9 @@ pub use crate::ffi_types::HLRTopoBRep_Data as Data;
 
 unsafe impl crate::CppDeletable for Data {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRTopoBRep_Data_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRTopoBRep_Data_destructor(ptr);
+        }
     }
 }
 
@@ -457,7 +461,9 @@ pub use crate::ffi_types::HLRTopoBRep_FaceData as FaceData;
 
 unsafe impl crate::CppDeletable for FaceData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRTopoBRep_FaceData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRTopoBRep_FaceData_destructor(ptr);
+        }
     }
 }
 
@@ -535,7 +541,9 @@ pub use crate::ffi_types::HLRTopoBRep_FaceIsoLiner as FaceIsoLiner;
 
 unsafe impl crate::CppDeletable for FaceIsoLiner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRTopoBRep_FaceIsoLiner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRTopoBRep_FaceIsoLiner_destructor(ptr);
+        }
     }
 }
 
@@ -600,7 +608,9 @@ pub use crate::ffi_types::HLRTopoBRep_OutLiner as OutLiner;
 
 unsafe impl crate::CppDeletable for OutLiner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRTopoBRep_OutLiner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRTopoBRep_OutLiner_destructor(ptr);
+        }
     }
 }
 
@@ -827,13 +837,17 @@ pub use crate::ffi_types::HandleHLRTopoBRepOutLiner;
 
 unsafe impl crate::CppDeletable for HandleHLRTopoBRepOutLiner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleHLRTopoBRepOutLiner_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleHLRTopoBRepOutLiner_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleHLRTopoBRepOutLiner {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleHLRTopoBRepOutLiner_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRTopoBRepOutLiner_clone(ptr))
+        }
     }
 }
 
@@ -884,7 +898,9 @@ pub use crate::ffi_types::HLRTopoBRep_VData as VData;
 
 unsafe impl crate::CppDeletable for VData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HLRTopoBRep_VData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HLRTopoBRep_VData_destructor(ptr);
+        }
     }
 }
 

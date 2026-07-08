@@ -18,7 +18,9 @@ pub use crate::ffi_types::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineComput
 
 unsafe impl crate::CppDeletable for BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_destructor(ptr);
+        }
     }
 }
 
@@ -153,7 +155,9 @@ pub use crate::ffi_types::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute 
 
 unsafe impl crate::CppDeletable for BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_destructor(ptr);
+        }
     }
 }
 
@@ -377,7 +381,9 @@ pub use crate::ffi_types::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompu
 
 unsafe impl crate::CppDeletable for BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_destructor(ptr);
+        }
     }
 }
 
@@ -674,7 +680,9 @@ pub use crate::ffi_types::AppDef_BSplineCompute as BSplineCompute;
 
 unsafe impl crate::CppDeletable for BSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_destructor(ptr);
+        }
     }
 }
 
@@ -1320,7 +1328,9 @@ pub use crate::ffi_types::AppDef_Compute as Compute;
 
 unsafe impl crate::CppDeletable for Compute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_Compute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_Compute_destructor(ptr);
+        }
     }
 }
 
@@ -1928,7 +1938,9 @@ pub use crate::ffi_types::AppDef_Gradient_BFGSOfMyGradientOfCompute as Gradient_
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientOfCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_destructor(ptr);
+        }
     }
 }
 
@@ -2068,7 +2080,9 @@ pub use crate::ffi_types::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute as
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientbisOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_destructor(ptr);
+        }
     }
 }
 
@@ -2203,7 +2217,9 @@ pub use crate::ffi_types::AppDef_Gradient_BFGSOfTheGradient as Gradient_BFGSOfTh
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfTheGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_destructor(ptr);
+        }
     }
 }
 
@@ -2374,7 +2390,9 @@ pub use crate::ffi_types::AppDef_HArray1OfMultiPointConstraint as HArray1OfMulti
 
 unsafe impl crate::CppDeletable for HArray1OfMultiPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_destructor(ptr);
+        }
     }
 }
 
@@ -2582,15 +2600,19 @@ pub use crate::ffi_types::HandleAppDefHArray1OfMultiPointConstraint;
 
 unsafe impl crate::CppDeletable for HandleAppDefHArray1OfMultiPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleAppDefHArray1OfMultiPointConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppDefHArray1OfMultiPointConstraint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAppDefHArray1OfMultiPointConstraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKGeomBase::HandleAppDefHArray1OfMultiPointConstraint_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppDefHArray1OfMultiPointConstraint_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2647,7 +2669,9 @@ pub use crate::ffi_types::AppDef_LinearCriteria as LinearCriteria;
 
 unsafe impl crate::CppDeletable for LinearCriteria {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_destructor(ptr);
+        }
     }
 }
 
@@ -3045,13 +3069,17 @@ pub use crate::ffi_types::HandleAppDefLinearCriteria;
 
 unsafe impl crate::CppDeletable for HandleAppDefLinearCriteria {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAppDefLinearCriteria {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_clone(ptr))
+        }
     }
 }
 
@@ -3134,7 +3162,9 @@ pub use crate::ffi_types::AppDef_MultiLine as MultiLine;
 
 unsafe impl crate::CppDeletable for MultiLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_MultiLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_MultiLine_destructor(ptr);
+        }
     }
 }
 
@@ -3297,7 +3327,9 @@ pub use crate::ffi_types::AppDef_MultiPointConstraint as MultiPointConstraint;
 
 unsafe impl crate::CppDeletable for MultiPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_destructor(ptr);
+        }
     }
 }
 
@@ -3744,7 +3776,9 @@ pub use crate::ffi_types::AppDef_MyBSplGradientOfBSplineCompute as MyBSplGradien
 
 unsafe impl crate::CppDeletable for MyBSplGradientOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_MyBSplGradientOfBSplineCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_MyBSplGradientOfBSplineCompute_destructor(ptr);
+        }
     }
 }
 
@@ -3903,7 +3937,9 @@ pub use crate::ffi_types::AppDef_MyGradientOfCompute as MyGradientOfCompute;
 
 unsafe impl crate::CppDeletable for MyGradientOfCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_MyGradientOfCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientOfCompute_destructor(ptr);
+        }
     }
 }
 
@@ -4037,7 +4073,9 @@ pub use crate::ffi_types::AppDef_MyGradientbisOfBSplineCompute as MyGradientbisO
 
 unsafe impl crate::CppDeletable for MyGradientbisOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_MyGradientbisOfBSplineCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientbisOfBSplineCompute_destructor(ptr);
+        }
     }
 }
 
@@ -4177,7 +4215,9 @@ pub use crate::ffi_types::AppDef_MyLineTool as MyLineTool;
 
 unsafe impl crate::CppDeletable for MyLineTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_destructor(ptr);
+        }
     }
 }
 
@@ -4416,7 +4456,9 @@ pub use crate::ffi_types::AppDef_ParFunctionOfMyGradientOfCompute as ParFunction
 
 unsafe impl crate::CppDeletable for ParFunctionOfMyGradientOfCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_destructor(ptr);
+        }
     }
 }
 
@@ -4636,9 +4678,9 @@ pub use crate::ffi_types::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute as P
 
 unsafe impl crate::CppDeletable for ParFunctionOfMyGradientbisOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_destructor(ptr);
+        }
     }
 }
 
@@ -4834,7 +4876,9 @@ pub use crate::ffi_types::AppDef_ParFunctionOfTheGradient as ParFunctionOfTheGra
 
 unsafe impl crate::CppDeletable for ParFunctionOfTheGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_destructor(ptr);
+        }
     }
 }
 
@@ -5060,7 +5104,11 @@ pub use crate::ffi_types::AppDef_ParLeastSquareOfMyGradientOfCompute as ParLeast
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientOfCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -5393,7 +5441,9 @@ pub use crate::ffi_types::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute a
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientbisOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_destructor(ptr);
+        }
     }
 }
 
@@ -5695,7 +5745,9 @@ pub use crate::ffi_types::AppDef_ParLeastSquareOfTheGradient as ParLeastSquareOf
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfTheGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_destructor(ptr);
+        }
     }
 }
 
@@ -6061,7 +6113,9 @@ pub use crate::ffi_types::AppDef_ResConstraintOfMyGradientOfCompute as ResConstr
 
 unsafe impl crate::CppDeletable for ResConstraintOfMyGradientOfCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientOfCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientOfCompute_destructor(ptr);
+        }
     }
 }
 
@@ -6203,7 +6257,9 @@ pub use crate::ffi_types::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute as
 
 unsafe impl crate::CppDeletable for ResConstraintOfMyGradientbisOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_destructor(ptr);
+        }
     }
 }
 
@@ -6339,7 +6395,9 @@ pub use crate::ffi_types::AppDef_ResConstraintOfTheGradient as ResConstraintOfTh
 
 unsafe impl crate::CppDeletable for ResConstraintOfTheGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfTheGradient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfTheGradient_destructor(ptr);
+        }
     }
 }
 
@@ -6490,7 +6548,9 @@ pub use crate::ffi_types::AppDef_SmoothCriterion as SmoothCriterion;
 
 unsafe impl crate::CppDeletable for SmoothCriterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_destructor(ptr);
+        }
     }
 }
 
@@ -6840,13 +6900,19 @@ pub use crate::ffi_types::HandleAppDefSmoothCriterion;
 
 unsafe impl crate::CppDeletable for HandleAppDefSmoothCriterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAppDefSmoothCriterion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -6913,7 +6979,9 @@ pub use crate::ffi_types::AppDef_TheFunction as TheFunction;
 
 unsafe impl crate::CppDeletable for TheFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_TheFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_TheFunction_destructor(ptr);
+        }
     }
 }
 
@@ -7126,7 +7194,9 @@ pub use crate::ffi_types::AppDef_TheGradient as TheGradient;
 
 unsafe impl crate::CppDeletable for TheGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_TheGradient_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_TheGradient_destructor(ptr);
+        }
     }
 }
 
@@ -7251,7 +7321,9 @@ pub use crate::ffi_types::AppDef_TheLeastSquares as TheLeastSquares;
 
 unsafe impl crate::CppDeletable for TheLeastSquares {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_destructor(ptr);
+        }
     }
 }
 
@@ -7607,7 +7679,9 @@ pub use crate::ffi_types::AppDef_TheResol as TheResol;
 
 unsafe impl crate::CppDeletable for TheResol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_TheResol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_TheResol_destructor(ptr);
+        }
     }
 }
 
@@ -7762,7 +7836,9 @@ pub use crate::ffi_types::AppDef_Variational as Variational;
 
 unsafe impl crate::CppDeletable for Variational {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppDef_Variational_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_destructor(ptr);
+        }
     }
 }
 

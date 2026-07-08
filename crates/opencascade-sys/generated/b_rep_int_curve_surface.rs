@@ -35,7 +35,9 @@ pub use crate::ffi_types::BRepIntCurveSurface_Inter as Inter;
 
 unsafe impl crate::CppDeletable for Inter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepIntCurveSurface_Inter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepIntCurveSurface_Inter_destructor(ptr);
+        }
     }
 }
 

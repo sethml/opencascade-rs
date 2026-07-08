@@ -4624,7 +4624,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
     // They still need CppDeletable because other classes may return them by pointer.
     if bindings.is_pod_struct {
         output.push_str(&format!(
-            "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        crate::ffi::{}_destructor(ptr);\n    }}\n}}\n\n",
+            "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        unsafe {{ crate::ffi::{}_destructor(ptr); }}\n    }}\n}}\n\n",
             short_name, cn
         ));
         return output;
@@ -4633,7 +4633,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
     // CppDeletable impl (unless protected destructor)
     if !bindings.has_protected_destructor {
         output.push_str(&format!(
-            "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        crate::ffi::{}_destructor(ptr);\n    }}\n}}\n\n",
+            "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        unsafe {{ crate::ffi::{}_destructor(ptr); }}\n    }}\n}}\n\n",
             short_name, cn
         ));
     }
@@ -4669,14 +4669,21 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             let mut all_args = convenience_args;
             all_args.extend(conv.default_exprs.iter().cloned());
             let unsafe_kw = if ctor.is_unsafe { "unsafe " } else { "" };
+            // In edition 2024, unsafe fn bodies need explicit unsafe blocks to call
+            // other unsafe fns. The full-arg constructor is also unsafe when the
+            // convenience constructor is unsafe (both are constructors of the same class).
+            let call_body = if ctor.is_unsafe {
+                format!("unsafe {{ Self::{}({}) }}", conv.full_method_name, all_args.join(", "))
+            } else {
+                format!("Self::{}({})", conv.full_method_name, all_args.join(", "))
+            };
             impl_methods.push(format!(
-                "{}    pub {}fn {}({}) -> crate::OwnedPtr<Self> {{\n        Self::{}({})\n    }}\n",
+                "{}    pub {}fn {}({}) -> crate::OwnedPtr<Self> {{\n        {}\n    }}\n",
                 doc,
                 unsafe_kw,
                 ctor.impl_method_name,
                 params.join(", "),
-                conv.full_method_name,
-                all_args.join(", ")
+                call_body,
             ));
         } else {
             // Regular constructor: delegates to ffi function
@@ -4902,7 +4909,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
     if bindings.is_copyable {
         let ffi_fn_name = format!("{}_clone", cn);
         output.push_str(&format!(
-            "unsafe impl crate::CppCopyable for {} {{\n    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {{\n        crate::check_result(crate::ffi::{}(ptr))\n    }}\n}}\n\n",
+            "unsafe impl crate::CppCopyable for {} {{\n    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {{\n        unsafe {{ crate::check_result(crate::ffi::{}(ptr)) }}\n    }}\n}}\n\n",
             short_name, ffi_fn_name
         ));
         output.push_str(&format!(
@@ -5009,13 +5016,13 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
 
         // CppDeletable for handle type
         output.push_str(&format!(
-            "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        crate::ffi::{}_destructor(ptr);\n    }}\n}}\n\n",
+            "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        unsafe {{ crate::ffi::{}_destructor(ptr); }}\n    }}\n}}\n\n",
             handle_type_name, handle_type_name
         ));
 
         // CppCopyable for handle type (enables Clone on OwnedPtr<HandleT>)
         output.push_str(&format!(
-            "unsafe impl crate::CppCopyable for {} {{\n    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {{\n        crate::check_result(crate::ffi::{}_clone(ptr))\n    }}\n}}\n\n",
+            "unsafe impl crate::CppCopyable for {} {{\n    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {{\n        unsafe {{ crate::check_result(crate::ffi::{}_clone(ptr)) }}\n    }}\n}}\n\n",
             handle_type_name, handle_type_name
         ));
 

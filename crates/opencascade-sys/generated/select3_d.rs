@@ -53,7 +53,9 @@ pub use crate::ffi_types::Select3D_BVHIndexBuffer as BVHIndexBuffer;
 
 unsafe impl crate::CppDeletable for BVHIndexBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_destructor(ptr);
+        }
     }
 }
 
@@ -481,13 +483,17 @@ pub use crate::ffi_types::HandleSelect3DBVHIndexBuffer;
 
 unsafe impl crate::CppDeletable for HandleSelect3DBVHIndexBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DBVHIndexBuffer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DBVHIndexBuffer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DBVHIndexBuffer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DBVHIndexBuffer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DBVHIndexBuffer_clone(ptr))
+        }
     }
 }
 
@@ -569,7 +575,9 @@ pub use crate::ffi_types::Select3D_InteriorSensitivePointSet as InteriorSensitiv
 
 unsafe impl crate::CppDeletable for InteriorSensitivePointSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_destructor(ptr);
+        }
     }
 }
 
@@ -995,15 +1003,19 @@ pub use crate::ffi_types::HandleSelect3DInteriorSensitivePointSet;
 
 unsafe impl crate::CppDeletable for HandleSelect3DInteriorSensitivePointSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DInteriorSensitivePointSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DInteriorSensitivePointSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DInteriorSensitivePointSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DInteriorSensitivePointSet_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DInteriorSensitivePointSet_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1076,7 +1088,9 @@ pub use crate::ffi_types::Select3D_Pnt as Pnt;
 
 unsafe impl crate::CppDeletable for Pnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_Pnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_Pnt_destructor(ptr);
+        }
     }
 }
 
@@ -1089,7 +1103,9 @@ pub use crate::ffi_types::Select3D_PointData as PointData;
 
 unsafe impl crate::CppDeletable for PointData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_PointData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_PointData_destructor(ptr);
+        }
     }
 }
 
@@ -1162,7 +1178,9 @@ pub use crate::ffi_types::Select3D_SensitiveBox as SensitiveBox;
 
 unsafe impl crate::CppDeletable for SensitiveBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_destructor(ptr);
+        }
     }
 }
 
@@ -1535,13 +1553,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveBox;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveBox_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveBox {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveBox_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveBox_clone(ptr))
+        }
     }
 }
 
@@ -1602,7 +1624,9 @@ pub use crate::ffi_types::Select3D_SensitiveCircle as SensitiveCircle;
 
 unsafe impl crate::CppDeletable for SensitiveCircle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_destructor(ptr);
+        }
     }
 }
 
@@ -1985,13 +2009,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveCircle;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveCircle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCircle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCircle_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveCircle {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCircle_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCircle_clone(ptr))
+        }
     }
 }
 
@@ -2056,7 +2084,9 @@ pub use crate::ffi_types::Select3D_SensitiveCurve as SensitiveCurve;
 
 unsafe impl crate::CppDeletable for SensitiveCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_destructor(ptr);
+        }
     }
 }
 
@@ -2576,13 +2606,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveCurve;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_clone(ptr))
+        }
     }
 }
 
@@ -2667,7 +2701,9 @@ pub use crate::ffi_types::Select3D_SensitiveCylinder as SensitiveCylinder;
 
 unsafe impl crate::CppDeletable for SensitiveCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_destructor(ptr);
+        }
     }
 }
 
@@ -3086,13 +3122,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveCylinder;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCylinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveCylinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCylinder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCylinder_clone(ptr))
+        }
     }
 }
 
@@ -3155,7 +3195,9 @@ pub use crate::ffi_types::Select3D_SensitiveEntity as SensitiveEntity;
 
 unsafe impl crate::CppDeletable for SensitiveEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_destructor(ptr);
+        }
     }
 }
 
@@ -3465,13 +3507,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveEntity;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveEntity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_clone(ptr))
+        }
     }
 }
 
@@ -3895,7 +3941,9 @@ pub use crate::ffi_types::Select3D_SensitiveFace as SensitiveFace;
 
 unsafe impl crate::CppDeletable for SensitiveFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_destructor(ptr);
+        }
     }
 }
 
@@ -4265,13 +4313,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveFace;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveFace_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveFace_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveFace_clone(ptr))
+        }
     }
 }
 
@@ -4354,7 +4406,9 @@ pub use crate::ffi_types::Select3D_SensitiveGroup as SensitiveGroup;
 
 unsafe impl crate::CppDeletable for SensitiveGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_destructor(ptr);
+        }
     }
 }
 
@@ -4962,13 +5016,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveGroup;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveGroup_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveGroup {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveGroup_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveGroup_clone(ptr))
+        }
     }
 }
 
@@ -5044,7 +5102,9 @@ pub use crate::ffi_types::Select3D_SensitivePoint as SensitivePoint;
 
 unsafe impl crate::CppDeletable for SensitivePoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitivePoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_destructor(ptr);
+        }
     }
 }
 
@@ -5393,13 +5453,17 @@ pub use crate::ffi_types::HandleSelect3DSensitivePoint;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitivePoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitivePoint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoint_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoint_clone(ptr))
+        }
     }
 }
 
@@ -5465,7 +5529,9 @@ pub use crate::ffi_types::Select3D_SensitivePoly as SensitivePoly;
 
 unsafe impl crate::CppDeletable for SensitivePoly {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitivePoly_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_destructor(ptr);
+        }
     }
 }
 
@@ -6033,13 +6099,17 @@ pub use crate::ffi_types::HandleSelect3DSensitivePoly;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitivePoly {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitivePoly {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_clone(ptr))
+        }
     }
 }
 
@@ -6131,7 +6201,9 @@ pub use crate::ffi_types::Select3D_SensitivePrimitiveArray as SensitivePrimitive
 
 unsafe impl crate::CppDeletable for SensitivePrimitiveArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_destructor(ptr);
+        }
     }
 }
 
@@ -6922,15 +6994,19 @@ pub use crate::ffi_types::HandleSelect3DSensitivePrimitiveArray;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitivePrimitiveArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitivePrimitiveArray {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_clone(ptr),
+            )
+        }
     }
 }
 
@@ -7021,7 +7097,9 @@ pub use crate::ffi_types::Select3D_SensitiveSegment as SensitiveSegment;
 
 unsafe impl crate::CppDeletable for SensitiveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_destructor(ptr);
+        }
     }
 }
 
@@ -7429,13 +7507,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveSegment;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSegment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSegment_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveSegment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSegment_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSegment_clone(ptr))
+        }
     }
 }
 
@@ -7521,7 +7603,9 @@ pub use crate::ffi_types::Select3D_SensitiveSet as SensitiveSet;
 
 unsafe impl crate::CppDeletable for SensitiveSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_destructor(ptr);
+        }
     }
 }
 
@@ -7931,13 +8015,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveSet;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_clone(ptr))
+        }
     }
 }
 
@@ -8142,7 +8230,9 @@ pub use crate::ffi_types::Select3D_SensitiveSphere as SensitiveSphere;
 
 unsafe impl crate::CppDeletable for SensitiveSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_destructor(ptr);
+        }
     }
 }
 
@@ -8514,13 +8604,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveSphere;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSphere_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveSphere {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSphere_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSphere_clone(ptr))
+        }
     }
 }
 
@@ -8586,7 +8680,9 @@ pub use crate::ffi_types::Select3D_SensitiveTriangle as SensitiveTriangle;
 
 unsafe impl crate::CppDeletable for SensitiveTriangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_destructor(ptr);
+        }
     }
 }
 
@@ -8963,13 +9059,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveTriangle;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveTriangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangle_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveTriangle {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangle_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangle_clone(ptr))
+        }
     }
 }
 
@@ -9032,7 +9132,9 @@ pub use crate::ffi_types::Select3D_SensitiveTriangulation as SensitiveTriangulat
 
 unsafe impl crate::CppDeletable for SensitiveTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_destructor(ptr);
+        }
     }
 }
 
@@ -9565,15 +9667,19 @@ pub use crate::ffi_types::HandleSelect3DSensitiveTriangulation;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangulation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangulation_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveTriangulation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangulation_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangulation_clone(ptr),
+            )
+        }
     }
 }
 
@@ -9648,7 +9754,9 @@ pub use crate::ffi_types::Select3D_SensitiveWire as SensitiveWire;
 
 unsafe impl crate::CppDeletable for SensitiveWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::Select3D_SensitiveWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_destructor(ptr);
+        }
     }
 }
 
@@ -10112,13 +10220,17 @@ pub use crate::ffi_types::HandleSelect3DSensitiveWire;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveWire_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSelect3DSensitiveWire {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveWire_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveWire_clone(ptr))
+        }
     }
 }
 

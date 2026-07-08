@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== IFGraph_AllConnected ========================
     pub fn IFGraph_AllConnected_destructor(self_: *mut IFGraph_AllConnected);
     /// **Source:** `IFGraph_AllConnected.hxx`:36 - `IFGraph_AllConnected::IFGraph_AllConnected()`

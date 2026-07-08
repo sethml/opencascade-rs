@@ -73,7 +73,9 @@ pub use crate::ffi_types::LocalAnalysis_CurveContinuity as CurveContinuity;
 
 unsafe impl crate::CppDeletable for CurveContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_destructor(ptr);
+        }
     }
 }
 
@@ -1179,7 +1181,9 @@ pub use crate::ffi_types::LocalAnalysis_SurfaceContinuity as SurfaceContinuity;
 
 unsafe impl crate::CppDeletable for SurfaceContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_destructor(ptr);
+        }
     }
 }
 

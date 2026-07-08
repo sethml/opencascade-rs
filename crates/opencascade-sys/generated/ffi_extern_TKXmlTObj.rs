@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== XmlTObjDrivers_DocumentRetrievalDriver ========================
     pub fn XmlTObjDrivers_DocumentRetrievalDriver_destructor(
         self_: *mut XmlTObjDrivers_DocumentRetrievalDriver,

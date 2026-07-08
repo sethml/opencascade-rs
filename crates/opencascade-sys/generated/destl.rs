@@ -28,7 +28,9 @@ pub use crate::ffi_types::DESTL_ConfigurationNode as ConfigurationNode;
 
 unsafe impl crate::CppDeletable for ConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTL::DESTL_ConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTL::DESTL_ConfigurationNode_destructor(ptr);
+        }
     }
 }
 
@@ -380,13 +382,17 @@ pub use crate::ffi_types::HandleDESTLConfigurationNode;
 
 unsafe impl crate::CppDeletable for HandleDESTLConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTL::HandleDESTLConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTL::HandleDESTLConfigurationNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDESTLConfigurationNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTL::HandleDESTLConfigurationNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTL::HandleDESTLConfigurationNode_clone(ptr))
+        }
     }
 }
 
@@ -444,7 +450,11 @@ pub use crate::ffi_types::DESTL_ConfigurationNode_RWStl_InternalSection as Confi
 
 unsafe impl crate::CppDeletable for ConfigurationNode_RWStl_InternalSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTL::DESTL_ConfigurationNode_RWStl_InternalSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTL::DESTL_ConfigurationNode_RWStl_InternalSection_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -466,7 +476,9 @@ pub use crate::ffi_types::DESTL_Provider as Provider;
 
 unsafe impl crate::CppDeletable for Provider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTL::DESTL_Provider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTL::DESTL_Provider_destructor(ptr);
+        }
     }
 }
 
@@ -831,13 +843,15 @@ pub use crate::ffi_types::HandleDESTLProvider;
 
 unsafe impl crate::CppDeletable for HandleDESTLProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTL::HandleDESTLProvider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTL::HandleDESTLProvider_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDESTLProvider {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTL::HandleDESTLProvider_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTL::HandleDESTLProvider_clone(ptr)) }
     }
 }
 

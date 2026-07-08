@@ -80,7 +80,9 @@ pub use crate::ffi_types::VrmlData_Appearance as Appearance;
 
 unsafe impl crate::CppDeletable for Appearance {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Appearance_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Appearance_destructor(ptr);
+        }
     }
 }
 
@@ -425,13 +427,17 @@ pub use crate::ffi_types::HandleVrmlDataAppearance;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataAppearance {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataAppearance_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataAppearance_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataAppearance {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataAppearance_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataAppearance_clone(ptr))
+        }
     }
 }
 
@@ -496,7 +502,9 @@ pub use crate::ffi_types::VrmlData_ArrayVec3d as ArrayVec3d;
 
 unsafe impl crate::CppDeletable for ArrayVec3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_destructor(ptr);
+        }
     }
 }
 
@@ -807,13 +815,17 @@ pub use crate::ffi_types::HandleVrmlDataArrayVec3d;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataArrayVec3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataArrayVec3d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_clone(ptr))
+        }
     }
 }
 
@@ -931,7 +943,9 @@ pub use crate::ffi_types::VrmlData_Box as Box;
 
 unsafe impl crate::CppDeletable for Box {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Box_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Box_destructor(ptr);
+        }
     }
 }
 
@@ -1279,13 +1293,15 @@ pub use crate::ffi_types::HandleVrmlDataBox;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataBox {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_clone(ptr)) }
     }
 }
 
@@ -1360,7 +1376,9 @@ pub use crate::ffi_types::VrmlData_Color as Color;
 
 unsafe impl crate::CppDeletable for Color {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Color_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Color_destructor(ptr);
+        }
     }
 }
 
@@ -1719,13 +1737,15 @@ pub use crate::ffi_types::HandleVrmlDataColor;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataColor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_clone(ptr)) }
     }
 }
 
@@ -1804,7 +1824,9 @@ pub use crate::ffi_types::VrmlData_Cone as Cone;
 
 unsafe impl crate::CppDeletable for Cone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Cone_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Cone_destructor(ptr);
+        }
     }
 }
 
@@ -2188,13 +2210,15 @@ pub use crate::ffi_types::HandleVrmlDataCone;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataCone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataCone {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_clone(ptr)) }
     }
 }
 
@@ -2269,7 +2293,9 @@ pub use crate::ffi_types::VrmlData_Coordinate as Coordinate;
 
 unsafe impl crate::CppDeletable for Coordinate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_destructor(ptr);
+        }
     }
 }
 
@@ -2633,13 +2659,17 @@ pub use crate::ffi_types::HandleVrmlDataCoordinate;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataCoordinate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataCoordinate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_clone(ptr))
+        }
     }
 }
 
@@ -2716,7 +2746,9 @@ pub use crate::ffi_types::VrmlData_Cylinder as Cylinder;
 
 unsafe impl crate::CppDeletable for Cylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_destructor(ptr);
+        }
     }
 }
 
@@ -3120,13 +3152,17 @@ pub use crate::ffi_types::HandleVrmlDataCylinder;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataCylinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_clone(ptr))
+        }
     }
 }
 
@@ -3202,7 +3238,9 @@ pub use crate::ffi_types::VrmlData_Faceted as Faceted;
 
 unsafe impl crate::CppDeletable for Faceted {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Faceted_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Faceted_destructor(ptr);
+        }
     }
 }
 
@@ -3523,13 +3561,15 @@ pub use crate::ffi_types::HandleVrmlDataFaceted;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataFaceted {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataFaceted {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_clone(ptr)) }
     }
 }
 
@@ -3621,7 +3661,9 @@ pub use crate::ffi_types::VrmlData_Geometry as Geometry;
 
 unsafe impl crate::CppDeletable for Geometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Geometry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Geometry_destructor(ptr);
+        }
     }
 }
 
@@ -3850,13 +3892,17 @@ pub use crate::ffi_types::HandleVrmlDataGeometry;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataGeometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataGeometry {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_clone(ptr))
+        }
     }
 }
 
@@ -4040,7 +4086,9 @@ pub use crate::ffi_types::VrmlData_Group as Group;
 
 unsafe impl crate::CppDeletable for Group {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Group_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Group_destructor(ptr);
+        }
     }
 }
 
@@ -4474,13 +4522,15 @@ pub use crate::ffi_types::HandleVrmlDataGroup;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataGroup_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataGroup_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataGroup {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataGroup_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataGroup_clone(ptr)) }
     }
 }
 
@@ -4544,7 +4594,9 @@ pub use crate::ffi_types::VrmlData_ImageTexture as ImageTexture;
 
 unsafe impl crate::CppDeletable for ImageTexture {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_destructor(ptr);
+        }
     }
 }
 
@@ -4925,13 +4977,17 @@ pub use crate::ffi_types::HandleVrmlDataImageTexture;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataImageTexture {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataImageTexture {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_clone(ptr))
+        }
     }
 }
 
@@ -5008,7 +5064,9 @@ pub use crate::ffi_types::VrmlData_InBuffer as InBuffer;
 
 unsafe impl crate::CppDeletable for InBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_InBuffer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_InBuffer_destructor(ptr);
+        }
     }
 }
 
@@ -5036,7 +5094,9 @@ pub use crate::ffi_types::VrmlData_IndexedFaceSet as IndexedFaceSet;
 
 unsafe impl crate::CppDeletable for IndexedFaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_destructor(ptr);
+        }
     }
 }
 
@@ -5831,13 +5891,17 @@ pub use crate::ffi_types::HandleVrmlDataIndexedFaceSet;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataIndexedFaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataIndexedFaceSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_clone(ptr))
+        }
     }
 }
 
@@ -5925,7 +5989,9 @@ pub use crate::ffi_types::VrmlData_IndexedLineSet as IndexedLineSet;
 
 unsafe impl crate::CppDeletable for IndexedLineSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_destructor(ptr);
+        }
     }
 }
 
@@ -6417,13 +6483,17 @@ pub use crate::ffi_types::HandleVrmlDataIndexedLineSet;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataIndexedLineSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataIndexedLineSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_clone(ptr))
+        }
     }
 }
 
@@ -6500,7 +6570,9 @@ pub use crate::ffi_types::VrmlData_Material as Material;
 
 unsafe impl crate::CppDeletable for Material {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Material_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Material_destructor(ptr);
+        }
     }
 }
 
@@ -6964,13 +7036,17 @@ pub use crate::ffi_types::HandleVrmlDataMaterial;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataMaterial {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataMaterial_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataMaterial_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataMaterial {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataMaterial_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataMaterial_clone(ptr))
+        }
     }
 }
 
@@ -7034,7 +7110,9 @@ pub use crate::ffi_types::VrmlData_Node as Node;
 
 unsafe impl crate::CppDeletable for Node {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Node_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Node_destructor(ptr);
+        }
     }
 }
 
@@ -7349,13 +7427,15 @@ pub use crate::ffi_types::HandleVrmlDataNode;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_clone(ptr)) }
     }
 }
 
@@ -7780,7 +7860,9 @@ pub use crate::ffi_types::VrmlData_Normal as Normal;
 
 unsafe impl crate::CppDeletable for Normal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Normal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Normal_destructor(ptr);
+        }
     }
 }
 
@@ -8131,13 +8213,15 @@ pub use crate::ffi_types::HandleVrmlDataNormal;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataNormal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataNormal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_clone(ptr)) }
     }
 }
 
@@ -8214,7 +8298,9 @@ pub use crate::ffi_types::VrmlData_Scene as Scene;
 
 unsafe impl crate::CppDeletable for Scene {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Scene_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Scene_destructor(ptr);
+        }
     }
 }
 
@@ -8700,7 +8786,9 @@ pub use crate::ffi_types::VrmlData_ShapeConvert as ShapeConvert;
 
 unsafe impl crate::CppDeletable for ShapeConvert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_ShapeConvert_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_ShapeConvert_destructor(ptr);
+        }
     }
 }
 
@@ -8800,7 +8888,9 @@ pub use crate::ffi_types::VrmlData_ShapeConvert_ShapeData as ShapeConvert_ShapeD
 
 unsafe impl crate::CppDeletable for ShapeConvert_ShapeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_ShapeConvert_ShapeData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_ShapeConvert_ShapeData_destructor(ptr);
+        }
     }
 }
 
@@ -8827,7 +8917,9 @@ pub use crate::ffi_types::VrmlData_ShapeNode as ShapeNode;
 
 unsafe impl crate::CppDeletable for ShapeNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_destructor(ptr);
+        }
     }
 }
 
@@ -9145,13 +9237,17 @@ pub use crate::ffi_types::HandleVrmlDataShapeNode;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataShapeNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataShapeNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataShapeNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataShapeNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataShapeNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataShapeNode_clone(ptr))
+        }
     }
 }
 
@@ -9215,7 +9311,9 @@ pub use crate::ffi_types::VrmlData_Sphere as Sphere;
 
 unsafe impl crate::CppDeletable for Sphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Sphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Sphere_destructor(ptr);
+        }
     }
 }
 
@@ -9541,13 +9639,15 @@ pub use crate::ffi_types::HandleVrmlDataSphere;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataSphere {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_clone(ptr)) }
     }
 }
 
@@ -9622,7 +9722,9 @@ pub use crate::ffi_types::VrmlData_Texture as Texture;
 
 unsafe impl crate::CppDeletable for Texture {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_Texture_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Texture_destructor(ptr);
+        }
     }
 }
 
@@ -9873,13 +9975,15 @@ pub use crate::ffi_types::HandleVrmlDataTexture;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataTexture {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataTexture {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_clone(ptr)) }
     }
 }
 
@@ -9961,7 +10065,9 @@ pub use crate::ffi_types::VrmlData_TextureCoordinate as TextureCoordinate;
 
 unsafe impl crate::CppDeletable for TextureCoordinate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_destructor(ptr);
+        }
     }
 }
 
@@ -10287,13 +10393,19 @@ pub use crate::ffi_types::HandleVrmlDataTextureCoordinate;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataTextureCoordinate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureCoordinate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureCoordinate_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataTextureCoordinate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureCoordinate_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureCoordinate_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -10356,7 +10468,9 @@ pub use crate::ffi_types::VrmlData_TextureTransform as TextureTransform;
 
 unsafe impl crate::CppDeletable for TextureTransform {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_destructor(ptr);
+        }
     }
 }
 
@@ -10670,13 +10784,19 @@ pub use crate::ffi_types::HandleVrmlDataTextureTransform;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataTextureTransform {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureTransform_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureTransform_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataTextureTransform {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureTransform_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureTransform_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -10741,7 +10861,9 @@ pub use crate::ffi_types::VrmlData_UnknownNode as UnknownNode;
 
 unsafe impl crate::CppDeletable for UnknownNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_destructor(ptr);
+        }
     }
 }
 
@@ -11019,13 +11141,17 @@ pub use crate::ffi_types::HandleVrmlDataUnknownNode;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataUnknownNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataUnknownNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataUnknownNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataUnknownNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataUnknownNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataUnknownNode_clone(ptr))
+        }
     }
 }
 
@@ -11091,7 +11217,9 @@ pub use crate::ffi_types::VrmlData_WorldInfo as WorldInfo;
 
 unsafe impl crate::CppDeletable for WorldInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_destructor(ptr);
+        }
     }
 }
 
@@ -11408,13 +11536,17 @@ pub use crate::ffi_types::HandleVrmlDataWorldInfo;
 
 unsafe impl crate::CppDeletable for HandleVrmlDataWorldInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleVrmlDataWorldInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleVrmlDataWorldInfo_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleVrmlDataWorldInfo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataWorldInfo_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataWorldInfo_clone(ptr))
+        }
     }
 }
 

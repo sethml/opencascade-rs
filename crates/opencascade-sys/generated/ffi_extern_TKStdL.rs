@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== StdLDrivers_DocumentRetrievalDriver ========================
     pub fn StdLDrivers_DocumentRetrievalDriver_destructor(
         self_: *mut StdLDrivers_DocumentRetrievalDriver,

@@ -54,7 +54,9 @@ pub use crate::ffi_types::GeomAdaptor_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomAdaptor_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -619,13 +621,15 @@ pub use crate::ffi_types::HandleGeomAdaptorCurve;
 
 unsafe impl crate::CppDeletable for HandleGeomAdaptorCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomAdaptorCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_clone(ptr)) }
     }
 }
 
@@ -695,7 +699,9 @@ pub use crate::ffi_types::GeomAdaptor_Surface as Surface;
 
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomAdaptor_Surface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_destructor(ptr);
+        }
     }
 }
 
@@ -1504,13 +1510,15 @@ pub use crate::ffi_types::HandleGeomAdaptorSurface;
 
 unsafe impl crate::CppDeletable for HandleGeomAdaptorSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomAdaptorSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_clone(ptr)) }
     }
 }
 
@@ -1611,7 +1619,9 @@ pub use crate::ffi_types::GeomAdaptor_SurfaceOfLinearExtrusion as SurfaceOfLinea
 
 unsafe impl crate::CppDeletable for SurfaceOfLinearExtrusion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_destructor(ptr);
+        }
     }
 }
 
@@ -2433,15 +2443,19 @@ pub use crate::ffi_types::HandleGeomAdaptorSurfaceOfLinearExtrusion;
 
 unsafe impl crate::CppDeletable for HandleGeomAdaptorSurfaceOfLinearExtrusion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomAdaptorSurfaceOfLinearExtrusion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2530,7 +2544,9 @@ pub use crate::ffi_types::GeomAdaptor_SurfaceOfRevolution as SurfaceOfRevolution
 
 unsafe impl crate::CppDeletable for SurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_destructor(ptr);
+        }
     }
 }
 
@@ -3368,15 +3384,19 @@ pub use crate::ffi_types::HandleGeomAdaptorSurfaceOfRevolution;
 
 unsafe impl crate::CppDeletable for HandleGeomAdaptorSurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomAdaptorSurfaceOfRevolution {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_clone(ptr),
+            )
+        }
     }
 }
 

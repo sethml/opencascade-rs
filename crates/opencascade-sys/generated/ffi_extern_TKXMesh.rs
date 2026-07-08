@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
 
     // Free functions
     /// **Source:** `XBRepMesh.hxx`:31 - `XBRepMesh::Discret`

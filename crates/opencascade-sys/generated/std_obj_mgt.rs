@@ -25,7 +25,9 @@ pub use crate::ffi_types::StdObjMgt_Persistent as Persistent;
 
 unsafe impl crate::CppDeletable for Persistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdObjMgt_Persistent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdObjMgt_Persistent_destructor(ptr);
+        }
     }
 }
 
@@ -298,13 +300,17 @@ pub use crate::ffi_types::HandleStdObjMgtPersistent;
 
 unsafe impl crate::CppDeletable for HandleStdObjMgtPersistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::HandleStdObjMgtPersistent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::HandleStdObjMgtPersistent_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdObjMgtPersistent {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKStdL::HandleStdObjMgtPersistent_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKStdL::HandleStdObjMgtPersistent_clone(ptr))
+        }
     }
 }
 
@@ -488,7 +494,9 @@ pub use crate::ffi_types::StdObjMgt_ReadData as ReadData;
 
 unsafe impl crate::CppDeletable for ReadData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdObjMgt_ReadData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdObjMgt_ReadData_destructor(ptr);
+        }
     }
 }
 
@@ -553,7 +561,9 @@ pub use crate::ffi_types::StdObjMgt_ReadData_ObjectSentry as ReadData_ObjectSent
 
 unsafe impl crate::CppDeletable for ReadData_ObjectSentry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdObjMgt_ReadData_ObjectSentry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdObjMgt_ReadData_ObjectSentry_destructor(ptr);
+        }
     }
 }
 
@@ -578,7 +588,9 @@ pub use crate::ffi_types::StdObjMgt_WriteData as WriteData;
 
 unsafe impl crate::CppDeletable for WriteData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdObjMgt_WriteData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdObjMgt_WriteData_destructor(ptr);
+        }
     }
 }
 
@@ -618,7 +630,9 @@ pub use crate::ffi_types::StdObjMgt_WriteData_ObjectSentry as WriteData_ObjectSe
 
 unsafe impl crate::CppDeletable for WriteData_ObjectSentry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdObjMgt_WriteData_ObjectSentry_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdObjMgt_WriteData_ObjectSentry_destructor(ptr);
+        }
     }
 }
 

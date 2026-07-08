@@ -231,7 +231,9 @@ pub use crate::ffi_types::Geom2dGcc_Circ2d2TanOn as Circ2d2TanOn;
 
 unsafe impl crate::CppDeletable for Circ2d2TanOn {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_destructor(ptr);
+        }
     }
 }
 
@@ -520,7 +522,9 @@ pub use crate::ffi_types::Geom2dGcc_Circ2d2TanOnGeo as Circ2d2TanOnGeo;
 
 unsafe impl crate::CppDeletable for Circ2d2TanOnGeo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_destructor(ptr);
+        }
     }
 }
 
@@ -824,7 +828,9 @@ pub use crate::ffi_types::Geom2dGcc_Circ2d2TanOnIter as Circ2d2TanOnIter;
 
 unsafe impl crate::CppDeletable for Circ2d2TanOnIter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_destructor(ptr);
+        }
     }
 }
 
@@ -1235,7 +1241,9 @@ pub use crate::ffi_types::Geom2dGcc_Circ2d2TanRad as Circ2d2TanRad;
 
 unsafe impl crate::CppDeletable for Circ2d2TanRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_destructor(ptr);
+        }
     }
 }
 
@@ -1533,7 +1541,9 @@ pub use crate::ffi_types::Geom2dGcc_Circ2d2TanRadGeo as Circ2d2TanRadGeo;
 
 unsafe impl crate::CppDeletable for Circ2d2TanRadGeo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_destructor(ptr);
+        }
     }
 }
 
@@ -1791,7 +1801,9 @@ pub use crate::ffi_types::Geom2dGcc_Circ2d3Tan as Circ2d3Tan;
 
 unsafe impl crate::CppDeletable for Circ2d3Tan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_destructor(ptr);
+        }
     }
 }
 
@@ -2123,7 +2135,9 @@ pub use crate::ffi_types::Geom2dGcc_Circ2d3TanIter as Circ2d3TanIter;
 
 unsafe impl crate::CppDeletable for Circ2d3TanIter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_destructor(ptr);
+        }
     }
 }
 
@@ -2468,7 +2482,9 @@ pub use crate::ffi_types::Geom2dGcc_Circ2dTanCen as Circ2dTanCen;
 
 unsafe impl crate::CppDeletable for Circ2dTanCen {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCen_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCen_destructor(ptr);
+        }
     }
 }
 
@@ -2644,7 +2660,9 @@ pub use crate::ffi_types::Geom2dGcc_Circ2dTanCenGeo as Circ2dTanCenGeo;
 
 unsafe impl crate::CppDeletable for Circ2dTanCenGeo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCenGeo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCenGeo_destructor(ptr);
+        }
     }
 }
 
@@ -2784,7 +2802,9 @@ pub use crate::ffi_types::Geom2dGcc_Circ2dTanOnRad as Circ2dTanOnRad;
 
 unsafe impl crate::CppDeletable for Circ2dTanOnRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_destructor(ptr);
+        }
     }
 }
 
@@ -3040,7 +3060,9 @@ pub use crate::ffi_types::Geom2dGcc_Circ2dTanOnRadGeo as Circ2dTanOnRadGeo;
 
 unsafe impl crate::CppDeletable for Circ2dTanOnRadGeo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_destructor(ptr);
+        }
     }
 }
 
@@ -3296,7 +3318,9 @@ pub use crate::ffi_types::Geom2dGcc_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_destructor(ptr);
+        }
     }
 }
 
@@ -3399,7 +3423,9 @@ pub use crate::ffi_types::Geom2dGcc_FunctionTanCirCu as FunctionTanCirCu;
 
 unsafe impl crate::CppDeletable for FunctionTanCirCu {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_destructor(ptr);
+        }
     }
 }
 
@@ -3517,7 +3543,9 @@ pub use crate::ffi_types::Geom2dGcc_FunctionTanCuCu as FunctionTanCuCu;
 
 unsafe impl crate::CppDeletable for FunctionTanCuCu {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_destructor(ptr);
+        }
     }
 }
 
@@ -3707,7 +3735,9 @@ pub use crate::ffi_types::Geom2dGcc_FunctionTanCuCuCu as FunctionTanCuCuCu;
 
 unsafe impl crate::CppDeletable for FunctionTanCuCuCu {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_destructor(ptr);
+        }
     }
 }
 
@@ -4004,7 +4034,9 @@ pub use crate::ffi_types::Geom2dGcc_FunctionTanCuCuOnCu as FunctionTanCuCuOnCu;
 
 unsafe impl crate::CppDeletable for FunctionTanCuCuOnCu {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_destructor(ptr);
+        }
     }
 }
 
@@ -4337,7 +4369,9 @@ pub use crate::ffi_types::Geom2dGcc_FunctionTanCuPnt as FunctionTanCuPnt;
 
 unsafe impl crate::CppDeletable for FunctionTanCuPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_destructor(ptr);
+        }
     }
 }
 
@@ -4452,7 +4486,9 @@ pub use crate::ffi_types::Geom2dGcc_FunctionTanObl as FunctionTanObl;
 
 unsafe impl crate::CppDeletable for FunctionTanObl {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_destructor(ptr);
+        }
     }
 }
 
@@ -4566,7 +4602,9 @@ pub use crate::ffi_types::Geom2dGcc_IsParallel as IsParallel;
 
 unsafe impl crate::CppDeletable for IsParallel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_destructor(ptr);
+        }
     }
 }
 
@@ -4859,13 +4897,17 @@ pub use crate::ffi_types::HandleGeom2dGccIsParallel;
 
 unsafe impl crate::CppDeletable for HandleGeom2dGccIsParallel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeom2dGccIsParallel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_clone(ptr))
+        }
     }
 }
 
@@ -4952,7 +4994,9 @@ pub use crate::ffi_types::Geom2dGcc_Lin2d2Tan as Lin2d2Tan;
 
 unsafe impl crate::CppDeletable for Lin2d2Tan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_destructor(ptr);
+        }
     }
 }
 
@@ -5187,7 +5231,9 @@ pub use crate::ffi_types::Geom2dGcc_Lin2d2TanIter as Lin2d2TanIter;
 
 unsafe impl crate::CppDeletable for Lin2d2TanIter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_destructor(ptr);
+        }
     }
 }
 
@@ -5345,7 +5391,9 @@ pub use crate::ffi_types::Geom2dGcc_Lin2dTanObl as Lin2dTanObl;
 
 unsafe impl crate::CppDeletable for Lin2dTanObl {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_destructor(ptr);
+        }
     }
 }
 
@@ -5546,7 +5594,9 @@ pub use crate::ffi_types::Geom2dGcc_Lin2dTanOblIter as Lin2dTanOblIter;
 
 unsafe impl crate::CppDeletable for Lin2dTanOblIter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_destructor(ptr);
+        }
     }
 }
 
@@ -5666,7 +5716,9 @@ pub use crate::ffi_types::Geom2dGcc_QCurve as QCurve;
 
 unsafe impl crate::CppDeletable for QCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QCurve_destructor(ptr);
+        }
     }
 }
 
@@ -5757,7 +5809,9 @@ pub use crate::ffi_types::Geom2dGcc_QualifiedCurve as QualifiedCurve;
 
 unsafe impl crate::CppDeletable for QualifiedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QualifiedCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QualifiedCurve_destructor(ptr);
+        }
     }
 }
 

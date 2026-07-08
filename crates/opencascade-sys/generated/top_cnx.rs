@@ -18,7 +18,9 @@ pub use crate::ffi_types::TopCnx_EdgeFaceTransition as EdgeFaceTransition;
 
 unsafe impl crate::CppDeletable for EdgeFaceTransition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::TopCnx_EdgeFaceTransition_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::TopCnx_EdgeFaceTransition_destructor(ptr);
+        }
     }
 }
 

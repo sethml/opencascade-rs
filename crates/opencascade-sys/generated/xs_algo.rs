@@ -44,7 +44,9 @@ pub use crate::ffi_types::XSAlgo_AlgoContainer as AlgoContainer;
 
 unsafe impl crate::CppDeletable for AlgoContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSAlgo_AlgoContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSAlgo_AlgoContainer_destructor(ptr);
+        }
     }
 }
 
@@ -299,13 +301,17 @@ pub use crate::ffi_types::HandleXSAlgoAlgoContainer;
 
 unsafe impl crate::CppDeletable for HandleXSAlgoAlgoContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::HandleXSAlgoAlgoContainer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::HandleXSAlgoAlgoContainer_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXSAlgoAlgoContainer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXSBase::HandleXSAlgoAlgoContainer_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::HandleXSAlgoAlgoContainer_clone(ptr))
+        }
     }
 }
 
@@ -360,7 +366,9 @@ pub use crate::ffi_types::XSAlgo_ShapeProcessor as ShapeProcessor;
 
 unsafe impl crate::CppDeletable for ShapeProcessor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::XSAlgo_ShapeProcessor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::XSAlgo_ShapeProcessor_destructor(ptr);
+        }
     }
 }
 

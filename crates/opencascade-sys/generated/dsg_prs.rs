@@ -272,7 +272,9 @@ pub use crate::ffi_types::DsgPrs_AnglePresentation as AnglePresentation;
 
 unsafe impl crate::CppDeletable for AnglePresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_AnglePresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_AnglePresentation_destructor(ptr);
+        }
     }
 }
 
@@ -447,7 +449,9 @@ pub use crate::ffi_types::DsgPrs_Chamf2dPresentation as Chamf2dPresentation;
 
 unsafe impl crate::CppDeletable for Chamf2dPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_Chamf2dPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_Chamf2dPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -515,7 +519,9 @@ pub use crate::ffi_types::DsgPrs_ConcentricPresentation as ConcentricPresentatio
 
 unsafe impl crate::CppDeletable for ConcentricPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_ConcentricPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_ConcentricPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -569,7 +575,9 @@ pub use crate::ffi_types::DsgPrs_DatumPrs as DatumPrs;
 
 unsafe impl crate::CppDeletable for DatumPrs {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_DatumPrs_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_DatumPrs_destructor(ptr);
+        }
     }
 }
 
@@ -616,7 +624,9 @@ pub use crate::ffi_types::DsgPrs_DiameterPresentation as DiameterPresentation;
 
 unsafe impl crate::CppDeletable for DiameterPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_DiameterPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_DiameterPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -690,7 +700,9 @@ pub use crate::ffi_types::DsgPrs_EllipseRadiusPresentation as EllipseRadiusPrese
 
 unsafe impl crate::CppDeletable for EllipseRadiusPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_EllipseRadiusPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_EllipseRadiusPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -781,7 +793,9 @@ pub use crate::ffi_types::DsgPrs_EqualDistancePresentation as EqualDistancePrese
 
 unsafe impl crate::CppDeletable for EqualDistancePresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_EqualDistancePresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_EqualDistancePresentation_destructor(ptr);
+        }
     }
 }
 
@@ -893,7 +907,9 @@ pub use crate::ffi_types::DsgPrs_EqualRadiusPresentation as EqualRadiusPresentat
 
 unsafe impl crate::CppDeletable for EqualRadiusPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_EqualRadiusPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_EqualRadiusPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -950,7 +966,9 @@ pub use crate::ffi_types::DsgPrs_FilletRadiusPresentation as FilletRadiusPresent
 
 unsafe impl crate::CppDeletable for FilletRadiusPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_FilletRadiusPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_FilletRadiusPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1021,7 +1039,9 @@ pub use crate::ffi_types::DsgPrs_FixPresentation as FixPresentation;
 
 unsafe impl crate::CppDeletable for FixPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_FixPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_FixPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1072,7 +1092,9 @@ pub use crate::ffi_types::DsgPrs_IdenticPresentation as IdenticPresentation;
 
 unsafe impl crate::CppDeletable for IdenticPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_IdenticPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_IdenticPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1199,7 +1221,9 @@ pub use crate::ffi_types::DsgPrs_LengthPresentation as LengthPresentation;
 
 unsafe impl crate::CppDeletable for LengthPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_LengthPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_LengthPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1348,7 +1372,9 @@ pub use crate::ffi_types::DsgPrs_MidPointPresentation as MidPointPresentation;
 
 unsafe impl crate::CppDeletable for MidPointPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_MidPointPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_MidPointPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1448,7 +1474,9 @@ pub use crate::ffi_types::DsgPrs_OffsetPresentation as OffsetPresentation;
 
 unsafe impl crate::CppDeletable for OffsetPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_OffsetPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_OffsetPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1535,7 +1563,9 @@ pub use crate::ffi_types::DsgPrs_ParalPresentation as ParalPresentation;
 
 unsafe impl crate::CppDeletable for ParalPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_ParalPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_ParalPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1610,7 +1640,9 @@ pub use crate::ffi_types::DsgPrs_PerpenPresentation as PerpenPresentation;
 
 unsafe impl crate::CppDeletable for PerpenPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_PerpenPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_PerpenPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1671,7 +1703,9 @@ pub use crate::ffi_types::DsgPrs_RadiusPresentation as RadiusPresentation;
 
 unsafe impl crate::CppDeletable for RadiusPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_RadiusPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_RadiusPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1782,7 +1816,9 @@ pub use crate::ffi_types::DsgPrs_ShadedPlanePresentation as ShadedPlanePresentat
 
 unsafe impl crate::CppDeletable for ShadedPlanePresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_ShadedPlanePresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_ShadedPlanePresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1832,7 +1868,9 @@ pub use crate::ffi_types::DsgPrs_ShapeDirPresentation as ShapeDirPresentation;
 
 unsafe impl crate::CppDeletable for ShapeDirPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_ShapeDirPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_ShapeDirPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1877,7 +1915,9 @@ pub use crate::ffi_types::DsgPrs_SymbPresentation as SymbPresentation;
 
 unsafe impl crate::CppDeletable for SymbPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_SymbPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_SymbPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -1924,7 +1964,9 @@ pub use crate::ffi_types::DsgPrs_SymmetricPresentation as SymmetricPresentation;
 
 unsafe impl crate::CppDeletable for SymmetricPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_SymmetricPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_SymmetricPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -2013,7 +2055,9 @@ pub use crate::ffi_types::DsgPrs_TangentPresentation as TangentPresentation;
 
 unsafe impl crate::CppDeletable for TangentPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_TangentPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_TangentPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -2062,7 +2106,9 @@ pub use crate::ffi_types::DsgPrs_XYZAxisPresentation as XYZAxisPresentation;
 
 unsafe impl crate::CppDeletable for XYZAxisPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_XYZAxisPresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_XYZAxisPresentation_destructor(ptr);
+        }
     }
 }
 
@@ -2132,7 +2178,9 @@ pub use crate::ffi_types::DsgPrs_XYZPlanePresentation as XYZPlanePresentation;
 
 unsafe impl crate::CppDeletable for XYZPlanePresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKV3d::DsgPrs_XYZPlanePresentation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKV3d::DsgPrs_XYZPlanePresentation_destructor(ptr);
+        }
     }
 }
 

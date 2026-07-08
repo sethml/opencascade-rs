@@ -1139,7 +1139,9 @@ pub use crate::ffi_types::Quantity_Color as Color;
 
 unsafe impl crate::CppDeletable for Color {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Quantity_Color_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Quantity_Color_destructor(ptr);
+        }
     }
 }
 
@@ -1737,7 +1739,9 @@ pub use crate::ffi_types::Quantity_ColorRGBA as ColorRGBA;
 
 unsafe impl crate::CppDeletable for ColorRGBA {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Quantity_ColorRGBA_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Quantity_ColorRGBA_destructor(ptr);
+        }
     }
 }
 
@@ -1976,7 +1980,9 @@ pub use crate::ffi_types::Quantity_Date as Date;
 
 unsafe impl crate::CppDeletable for Date {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Quantity_Date_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Quantity_Date_destructor(ptr);
+        }
     }
 }
 
@@ -2328,7 +2334,9 @@ pub use crate::ffi_types::Quantity_DateDefinitionError as DateDefinitionError;
 
 unsafe impl crate::CppDeletable for DateDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Quantity_DateDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Quantity_DateDefinitionError_destructor(ptr);
+        }
     }
 }
 
@@ -2629,13 +2637,19 @@ pub use crate::ffi_types::HandleQuantityDateDefinitionError;
 
 unsafe impl crate::CppDeletable for HandleQuantityDateDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleQuantityDateDefinitionError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2704,7 +2718,9 @@ pub use crate::ffi_types::Quantity_HArray1OfColor as HArray1OfColor;
 
 unsafe impl crate::CppDeletable for HArray1OfColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Quantity_HArray1OfColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Quantity_HArray1OfColor_destructor(ptr);
+        }
     }
 }
 
@@ -2922,13 +2938,17 @@ pub use crate::ffi_types::HandleQuantityHArray1OfColor;
 
 unsafe impl crate::CppDeletable for HandleQuantityHArray1OfColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleQuantityHArray1OfColor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleQuantityHArray1OfColor_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleQuantityHArray1OfColor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleQuantityHArray1OfColor_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::HandleQuantityHArray1OfColor_clone(ptr))
+        }
     }
 }
 
@@ -2984,7 +3004,9 @@ pub use crate::ffi_types::Quantity_Period as Period;
 
 unsafe impl crate::CppDeletable for Period {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Quantity_Period_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Quantity_Period_destructor(ptr);
+        }
     }
 }
 
@@ -3226,7 +3248,9 @@ pub use crate::ffi_types::Quantity_PeriodDefinitionError as PeriodDefinitionErro
 
 unsafe impl crate::CppDeletable for PeriodDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_destructor(ptr);
+        }
     }
 }
 
@@ -3523,15 +3547,19 @@ pub use crate::ffi_types::HandleQuantityPeriodDefinitionError;
 
 unsafe impl crate::CppDeletable for HandleQuantityPeriodDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleQuantityPeriodDefinitionError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_clone(ptr),
+            )
+        }
     }
 }
 

@@ -222,13 +222,13 @@ fn check_example(name: &str) {
 
 // Generate a test for each example
 macro_rules! golden_test {
-    ($test_name:ident, $example_name:expr) => {
+    ($test_name:ident, $example_name:expr_2021) => {
         #[test]
         fn $test_name() {
             check_example($example_name);
         }
     };
-    ($test_name:ident, $example_name:expr, ignore = $reason:expr) => {
+    ($test_name:ident, $example_name:expr_2021, ignore = $reason:expr_2021) => {
         #[test]
         #[ignore = $reason]
         fn $test_name() {

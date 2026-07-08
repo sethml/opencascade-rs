@@ -17,7 +17,9 @@ pub use crate::ffi_types::Sweep_NumShape as NumShape;
 
 unsafe impl crate::CppDeletable for NumShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::Sweep_NumShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::Sweep_NumShape_destructor(ptr);
+        }
     }
 }
 
@@ -211,7 +213,9 @@ pub use crate::ffi_types::Sweep_NumShapeIterator as NumShapeIterator;
 
 unsafe impl crate::CppDeletable for NumShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::Sweep_NumShapeIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::Sweep_NumShapeIterator_destructor(ptr);
+        }
     }
 }
 
@@ -281,7 +285,9 @@ pub use crate::ffi_types::Sweep_NumShapeTool as NumShapeTool;
 
 unsafe impl crate::CppDeletable for NumShapeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::Sweep_NumShapeTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::Sweep_NumShapeTool_destructor(ptr);
+        }
     }
 }
 

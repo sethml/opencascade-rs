@@ -17,7 +17,9 @@ pub use crate::ffi_types::AppCont_Function as Function;
 
 unsafe impl crate::CppDeletable for Function {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppCont_Function_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppCont_Function_destructor(ptr);
+        }
     }
 }
 
@@ -127,7 +129,9 @@ pub use crate::ffi_types::PeriodicityInfo;
 
 unsafe impl crate::CppDeletable for PeriodicityInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::PeriodicityInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::PeriodicityInfo_destructor(ptr);
+        }
     }
 }
 
@@ -136,7 +140,9 @@ pub use crate::ffi_types::AppCont_LeastSquare as LeastSquare;
 
 unsafe impl crate::CppDeletable for LeastSquare {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::AppCont_LeastSquare_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::AppCont_LeastSquare_destructor(ptr);
+        }
     }
 }
 

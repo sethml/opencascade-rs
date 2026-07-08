@@ -78,7 +78,9 @@ pub use crate::ffi_types::Contap_ArcFunction as ArcFunction;
 
 unsafe impl crate::CppDeletable for ArcFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_ArcFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_ArcFunction_destructor(ptr);
+        }
     }
 }
 
@@ -275,7 +277,9 @@ pub use crate::ffi_types::Contap_ContAna as ContAna;
 
 unsafe impl crate::CppDeletable for ContAna {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_ContAna_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_ContAna_destructor(ptr);
+        }
     }
 }
 
@@ -424,7 +428,9 @@ pub use crate::ffi_types::Contap_Contour as Contour;
 
 unsafe impl crate::CppDeletable for Contour {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_Contour_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_Contour_destructor(ptr);
+        }
     }
 }
 
@@ -635,7 +641,9 @@ pub use crate::ffi_types::Contap_HContTool as HContTool;
 
 unsafe impl crate::CppDeletable for HContTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_HContTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_HContTool_destructor(ptr);
+        }
     }
 }
 
@@ -855,7 +863,9 @@ pub use crate::ffi_types::Contap_HCurve2dTool as HCurve2dTool;
 
 unsafe impl crate::CppDeletable for HCurve2dTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_HCurve2dTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_HCurve2dTool_destructor(ptr);
+        }
     }
 }
 
@@ -1137,7 +1147,9 @@ pub use crate::ffi_types::Contap_Line as Line;
 
 unsafe impl crate::CppDeletable for Line {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_Line_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_Line_destructor(ptr);
+        }
     }
 }
 
@@ -1326,7 +1338,9 @@ pub use crate::ffi_types::Contap_Point as Point;
 
 unsafe impl crate::CppDeletable for Point {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_Point_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_Point_destructor(ptr);
+        }
     }
 }
 
@@ -1537,7 +1551,9 @@ pub use crate::ffi_types::Contap_SurfFunction as SurfFunction;
 
 unsafe impl crate::CppDeletable for SurfFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_SurfFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_SurfFunction_destructor(ptr);
+        }
     }
 }
 
@@ -1818,7 +1834,9 @@ pub use crate::ffi_types::Contap_SurfProps as SurfProps;
 
 unsafe impl crate::CppDeletable for SurfProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_SurfProps_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_SurfProps_destructor(ptr);
+        }
     }
 }
 
@@ -1892,7 +1910,9 @@ pub use crate::ffi_types::Contap_TheHSequenceOfPoint as TheHSequenceOfPoint;
 
 unsafe impl crate::CppDeletable for TheHSequenceOfPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_destructor(ptr);
+        }
     }
 }
 
@@ -2103,13 +2123,17 @@ pub use crate::ffi_types::HandleContapTheHSequenceOfPoint;
 
 unsafe impl crate::CppDeletable for HandleContapTheHSequenceOfPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleContapTheHSequenceOfPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleContapTheHSequenceOfPoint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleContapTheHSequenceOfPoint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleContapTheHSequenceOfPoint_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::HandleContapTheHSequenceOfPoint_clone(ptr))
+        }
     }
 }
 
@@ -2162,7 +2186,9 @@ pub use crate::ffi_types::Contap_TheIWLineOfTheIWalking as TheIWLineOfTheIWalkin
 
 unsafe impl crate::CppDeletable for TheIWLineOfTheIWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_destructor(ptr);
+        }
     }
 }
 
@@ -2624,13 +2650,19 @@ pub use crate::ffi_types::HandleContapTheIWLineOfTheIWalking;
 
 unsafe impl crate::CppDeletable for HandleContapTheIWLineOfTheIWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleContapTheIWLineOfTheIWalking {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -2681,7 +2713,9 @@ pub use crate::ffi_types::Contap_TheIWalking as TheIWalking;
 
 unsafe impl crate::CppDeletable for TheIWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_TheIWalking_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_TheIWalking_destructor(ptr);
+        }
     }
 }
 
@@ -2842,7 +2876,9 @@ pub use crate::ffi_types::Contap_ThePathPointOfTheSearch as ThePathPointOfTheSea
 
 unsafe impl crate::CppDeletable for ThePathPointOfTheSearch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_ThePathPointOfTheSearch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_ThePathPointOfTheSearch_destructor(ptr);
+        }
     }
 }
 
@@ -2966,7 +3002,9 @@ pub use crate::ffi_types::Contap_TheSearch as TheSearch;
 
 unsafe impl crate::CppDeletable for TheSearch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_TheSearch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_TheSearch_destructor(ptr);
+        }
     }
 }
 
@@ -3083,7 +3121,9 @@ pub use crate::ffi_types::Contap_TheSearchInside as TheSearchInside;
 
 unsafe impl crate::CppDeletable for TheSearchInside {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_TheSearchInside_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_TheSearchInside_destructor(ptr);
+        }
     }
 }
 
@@ -3177,7 +3217,9 @@ pub use crate::ffi_types::Contap_TheSegmentOfTheSearch as TheSegmentOfTheSearch;
 
 unsafe impl crate::CppDeletable for TheSegmentOfTheSearch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKHLR::Contap_TheSegmentOfTheSearch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKHLR::Contap_TheSegmentOfTheSearch_destructor(ptr);
+        }
     }
 }
 

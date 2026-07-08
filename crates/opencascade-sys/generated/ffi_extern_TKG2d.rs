@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== Adaptor2d_Curve2d ========================
     pub fn Adaptor2d_Curve2d_destructor(self_: *mut Adaptor2d_Curve2d);
     /// **Source:** `Adaptor2d_Curve2d.hxx` - `Adaptor2d_Curve2d::Adaptor2d_Curve2d()`

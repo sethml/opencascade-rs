@@ -25,7 +25,9 @@ pub use crate::ffi_types::ApproxInt_KnotTools as KnotTools;
 
 unsafe impl crate::CppDeletable for KnotTools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::ApproxInt_KnotTools_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_KnotTools_destructor(ptr);
+        }
     }
 }
 
@@ -137,7 +139,9 @@ pub use crate::ffi_types::ApproxInt_SvSurfaces as SvSurfaces;
 
 unsafe impl crate::CppDeletable for SvSurfaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::ApproxInt_SvSurfaces_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_SvSurfaces_destructor(ptr);
+        }
     }
 }
 

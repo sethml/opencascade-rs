@@ -203,7 +203,9 @@ pub use crate::ffi_types::BRepOffset_Analyse as Analyse;
 
 unsafe impl crate::CppDeletable for Analyse {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_Analyse_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_destructor(ptr);
+        }
     }
 }
 
@@ -552,7 +554,9 @@ pub use crate::ffi_types::BRepOffset_Inter2d as Inter2d;
 
 unsafe impl crate::CppDeletable for Inter2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_Inter2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Inter2d_destructor(ptr);
+        }
     }
 }
 
@@ -705,7 +709,9 @@ pub use crate::ffi_types::BRepOffset_Inter3d as Inter3d;
 
 unsafe impl crate::CppDeletable for Inter3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_Inter3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Inter3d_destructor(ptr);
+        }
     }
 }
 
@@ -924,7 +930,9 @@ pub use crate::ffi_types::BRepOffset_Interval as Interval;
 
 unsafe impl crate::CppDeletable for Interval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_Interval_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Interval_destructor(ptr);
+        }
     }
 }
 
@@ -1011,7 +1019,9 @@ pub use crate::ffi_types::BRepOffset_MakeLoops as MakeLoops;
 
 unsafe impl crate::CppDeletable for MakeLoops {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_MakeLoops_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_MakeLoops_destructor(ptr);
+        }
     }
 }
 
@@ -1098,7 +1108,9 @@ pub use crate::ffi_types::BRepOffset_MakeOffset as MakeOffset;
 
 unsafe impl crate::CppDeletable for MakeOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_destructor(ptr);
+        }
     }
 }
 
@@ -1406,7 +1418,9 @@ pub use crate::ffi_types::BRepOffset_MakeSimpleOffset as MakeSimpleOffset;
 
 unsafe impl crate::CppDeletable for MakeSimpleOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_destructor(ptr);
+        }
     }
 }
 
@@ -1619,7 +1633,9 @@ pub use crate::ffi_types::BRepOffset_Offset as Offset;
 
 unsafe impl crate::CppDeletable for Offset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_Offset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Offset_destructor(ptr);
+        }
     }
 }
 
@@ -1921,7 +1937,9 @@ pub use crate::ffi_types::BRepOffset_SimpleOffset as SimpleOffset;
 
 unsafe impl crate::CppDeletable for SimpleOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_destructor(ptr);
+        }
     }
 }
 
@@ -2321,13 +2339,17 @@ pub use crate::ffi_types::HandleBRepOffsetSimpleOffset;
 
 unsafe impl crate::CppDeletable for HandleBRepOffsetSimpleOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::HandleBRepOffsetSimpleOffset_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::HandleBRepOffsetSimpleOffset_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepOffsetSimpleOffset {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKOffset::HandleBRepOffsetSimpleOffset_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKOffset::HandleBRepOffsetSimpleOffset_clone(ptr))
+        }
     }
 }
 
@@ -2389,7 +2411,9 @@ pub use crate::ffi_types::BRepOffset_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKOffset::BRepOffset_Tool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_destructor(ptr);
+        }
     }
 }
 

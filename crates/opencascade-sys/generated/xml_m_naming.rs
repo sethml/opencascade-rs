@@ -29,7 +29,9 @@ pub use crate::ffi_types::XmlMNaming_NamedShapeDriver as NamedShapeDriver;
 
 unsafe impl crate::CppDeletable for NamedShapeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_destructor(ptr);
+        }
     }
 }
 
@@ -350,13 +352,19 @@ pub use crate::ffi_types::HandleXmlMNamingNamedShapeDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMNamingNamedShapeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMNamingNamedShapeDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -418,7 +426,9 @@ pub use crate::ffi_types::XmlMNaming_NamingDriver as NamingDriver;
 
 unsafe impl crate::CppDeletable for NamingDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_destructor(ptr);
+        }
     }
 }
 
@@ -679,13 +689,17 @@ pub use crate::ffi_types::HandleXmlMNamingNamingDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMNamingNamingDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleXmlMNamingNamingDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_clone(ptr))
+        }
     }
 }
 
@@ -755,7 +769,9 @@ pub use crate::ffi_types::XmlMNaming_Shape1 as Shape1;
 
 unsafe impl crate::CppDeletable for Shape1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXml::XmlMNaming_Shape1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXml::XmlMNaming_Shape1_destructor(ptr);
+        }
     }
 }
 

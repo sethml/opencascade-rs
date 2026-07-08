@@ -28,7 +28,9 @@ pub use crate::ffi_types::DEVRML_ConfigurationNode as ConfigurationNode;
 
 unsafe impl crate::CppDeletable for ConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::DEVRML_ConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::DEVRML_ConfigurationNode_destructor(ptr);
+        }
     }
 }
 
@@ -386,13 +388,19 @@ pub use crate::ffi_types::HandleDEVRMLConfigurationNode;
 
 unsafe impl crate::CppDeletable for HandleDEVRMLConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleDEVRMLConfigurationNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleDEVRMLConfigurationNode_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEVRMLConfigurationNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleDEVRMLConfigurationNode_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::HandleDEVRMLConfigurationNode_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -448,7 +456,11 @@ pub use crate::ffi_types::DEVRML_ConfigurationNode_Vrml_InternalSection as Confi
 
 unsafe impl crate::CppDeletable for ConfigurationNode_Vrml_InternalSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::DEVRML_ConfigurationNode_Vrml_InternalSection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::DEVRML_ConfigurationNode_Vrml_InternalSection_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -482,7 +494,9 @@ pub use crate::ffi_types::DEVRML_Provider as Provider;
 
 unsafe impl crate::CppDeletable for Provider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::DEVRML_Provider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::DEVRML_Provider_destructor(ptr);
+        }
     }
 }
 
@@ -857,13 +871,15 @@ pub use crate::ffi_types::HandleDEVRMLProvider;
 
 unsafe impl crate::CppDeletable for HandleDEVRMLProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEVRML::HandleDEVRMLProvider_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEVRML::HandleDEVRMLProvider_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleDEVRMLProvider {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEVRML::HandleDEVRMLProvider_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleDEVRMLProvider_clone(ptr)) }
     }
 }
 

@@ -15,7 +15,9 @@ pub use crate::ffi_types::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOf
 
 unsafe impl crate::CppDeletable for ExactIntersectionPointOfTheIntPCurvePCurveOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_destructor(ptr);
+        }
     }
 }
 
@@ -84,7 +86,9 @@ pub use crate::ffi_types::Geom2dInt_GInter as GInter;
 
 unsafe impl crate::CppDeletable for GInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_GInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_GInter_destructor(ptr);
+        }
     }
 }
 
@@ -446,7 +450,9 @@ pub use crate::ffi_types::Geom2dInt_Geom2dCurveTool as Geom2dCurveTool;
 
 unsafe impl crate::CppDeletable for Geom2dCurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_Geom2dCurveTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_Geom2dCurveTool_destructor(ptr);
+        }
     }
 }
 
@@ -698,7 +704,9 @@ pub use crate::ffi_types::Geom2dInt_IntConicCurveOfGInter as IntConicCurveOfGInt
 
 unsafe impl crate::CppDeletable for IntConicCurveOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_IntConicCurveOfGInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_IntConicCurveOfGInter_destructor(ptr);
+        }
     }
 }
 
@@ -961,7 +969,9 @@ pub use crate::ffi_types::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCur
 
 unsafe impl crate::CppDeletable for MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_destructor(ptr);
+        }
     }
 }
 
@@ -1051,7 +1061,9 @@ pub use crate::ffi_types::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter 
 
 unsafe impl crate::CppDeletable for PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_destructor(ptr);
+        }
     }
 }
 
@@ -1210,9 +1222,11 @@ pub use crate::ffi_types::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter as TheC
 
 unsafe impl crate::CppDeletable for TheCurveLocatorOfTheProjPCurOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -1288,7 +1302,9 @@ pub use crate::ffi_types::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfG
 
 unsafe impl crate::CppDeletable for TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_destructor(ptr);
+        }
     }
 }
 
@@ -1414,7 +1430,9 @@ pub use crate::ffi_types::Geom2dInt_TheIntConicCurveOfGInter as TheIntConicCurve
 
 unsafe impl crate::CppDeletable for TheIntConicCurveOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheIntConicCurveOfGInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheIntConicCurveOfGInter_destructor(ptr);
+        }
     }
 }
 
@@ -1677,7 +1695,9 @@ pub use crate::ffi_types::Geom2dInt_TheIntPCurvePCurveOfGInter as TheIntPCurvePC
 
 unsafe impl crate::CppDeletable for TheIntPCurvePCurveOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheIntPCurvePCurveOfGInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheIntPCurvePCurveOfGInter_destructor(ptr);
+        }
     }
 }
 
@@ -1825,9 +1845,9 @@ pub use crate::ffi_types::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter as 
 
 unsafe impl crate::CppDeletable for TheIntersectorOfTheIntConicCurveOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_destructor(ptr);
+        }
     }
 }
 
@@ -2025,7 +2045,11 @@ pub use crate::ffi_types::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter as TheLo
 
 unsafe impl crate::CppDeletable for TheLocateExtPCOfTheProjPCurOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -2162,9 +2186,9 @@ pub use crate::ffi_types::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter as 
 
 unsafe impl crate::CppDeletable for ThePolygon2dOfTheIntPCurvePCurveOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_destructor(ptr);
+        }
     }
 }
 
@@ -2336,7 +2360,9 @@ pub use crate::ffi_types::Geom2dInt_TheProjPCurOfGInter as TheProjPCurOfGInter;
 
 unsafe impl crate::CppDeletable for TheProjPCurOfGInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheProjPCurOfGInter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dInt_TheProjPCurOfGInter_destructor(ptr);
+        }
     }
 }
 

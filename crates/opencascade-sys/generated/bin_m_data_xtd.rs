@@ -40,7 +40,9 @@ pub use crate::ffi_types::BinMDataXtd_ConstraintDriver as ConstraintDriver;
 
 unsafe impl crate::CppDeletable for ConstraintDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::BinMDataXtd_ConstraintDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_ConstraintDriver_destructor(ptr);
+        }
     }
 }
 
@@ -289,13 +291,19 @@ pub use crate::ffi_types::HandleBinMDataXtdConstraintDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMDataXtdConstraintDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::HandleBinMDataXtdConstraintDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdConstraintDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinMDataXtdConstraintDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBin::HandleBinMDataXtdConstraintDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBin::HandleBinMDataXtdConstraintDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -358,7 +366,9 @@ pub use crate::ffi_types::BinMDataXtd_GeometryDriver as GeometryDriver;
 
 unsafe impl crate::CppDeletable for GeometryDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::BinMDataXtd_GeometryDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_GeometryDriver_destructor(ptr);
+        }
     }
 }
 
@@ -605,13 +615,17 @@ pub use crate::ffi_types::HandleBinMDataXtdGeometryDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMDataXtdGeometryDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::HandleBinMDataXtdGeometryDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdGeometryDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinMDataXtdGeometryDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBin::HandleBinMDataXtdGeometryDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBin::HandleBinMDataXtdGeometryDriver_clone(ptr))
+        }
     }
 }
 
@@ -676,7 +690,9 @@ pub use crate::ffi_types::BinMDataXtd_PatternStdDriver as PatternStdDriver;
 
 unsafe impl crate::CppDeletable for PatternStdDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::BinMDataXtd_PatternStdDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_PatternStdDriver_destructor(ptr);
+        }
     }
 }
 
@@ -925,13 +941,19 @@ pub use crate::ffi_types::HandleBinMDataXtdPatternStdDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMDataXtdPatternStdDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::HandleBinMDataXtdPatternStdDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdPatternStdDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinMDataXtdPatternStdDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBin::HandleBinMDataXtdPatternStdDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBin::HandleBinMDataXtdPatternStdDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -994,7 +1016,9 @@ pub use crate::ffi_types::BinMDataXtd_PositionDriver as PositionDriver;
 
 unsafe impl crate::CppDeletable for PositionDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::BinMDataXtd_PositionDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_PositionDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1241,13 +1265,17 @@ pub use crate::ffi_types::HandleBinMDataXtdPositionDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMDataXtdPositionDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::HandleBinMDataXtdPositionDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdPositionDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinMDataXtdPositionDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBin::HandleBinMDataXtdPositionDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBin::HandleBinMDataXtdPositionDriver_clone(ptr))
+        }
     }
 }
 
@@ -1312,7 +1340,9 @@ pub use crate::ffi_types::BinMDataXtd_PresentationDriver as PresentationDriver;
 
 unsafe impl crate::CppDeletable for PresentationDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::BinMDataXtd_PresentationDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_PresentationDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1561,13 +1591,19 @@ pub use crate::ffi_types::HandleBinMDataXtdPresentationDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMDataXtdPresentationDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::HandleBinMDataXtdPresentationDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdPresentationDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinMDataXtdPresentationDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBin::HandleBinMDataXtdPresentationDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBin::HandleBinMDataXtdPresentationDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1632,7 +1668,9 @@ pub use crate::ffi_types::BinMDataXtd_TriangulationDriver as TriangulationDriver
 
 unsafe impl crate::CppDeletable for TriangulationDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::BinMDataXtd_TriangulationDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_TriangulationDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1877,15 +1915,19 @@ pub use crate::ffi_types::HandleBinMDataXtdTriangulationDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMDataXtdTriangulationDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::HandleBinMDataXtdTriangulationDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMDataXtdTriangulationDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinMDataXtdTriangulationDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBin::HandleBinMDataXtdTriangulationDriver_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKBin::HandleBinMDataXtdTriangulationDriver_clone(ptr),
+            )
+        }
     }
 }
 

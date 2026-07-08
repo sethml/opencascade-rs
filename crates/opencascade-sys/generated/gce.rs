@@ -99,7 +99,9 @@ pub use crate::ffi_types::gce_MakeCirc as MakeCirc;
 
 unsafe impl crate::CppDeletable for MakeCirc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeCirc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeCirc_destructor(ptr);
+        }
     }
 }
 
@@ -305,7 +307,9 @@ pub use crate::ffi_types::gce_MakeCirc2d as MakeCirc2d;
 
 unsafe impl crate::CppDeletable for MakeCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeCirc2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeCirc2d_destructor(ptr);
+        }
     }
 }
 
@@ -534,7 +538,9 @@ pub use crate::ffi_types::gce_MakeCone as MakeCone;
 
 unsafe impl crate::CppDeletable for MakeCone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeCone_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeCone_destructor(ptr);
+        }
     }
 }
 
@@ -763,7 +769,9 @@ pub use crate::ffi_types::gce_MakeCylinder as MakeCylinder;
 
 unsafe impl crate::CppDeletable for MakeCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeCylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeCylinder_destructor(ptr);
+        }
     }
 }
 
@@ -922,7 +930,9 @@ pub use crate::ffi_types::gce_MakeDir as MakeDir;
 
 unsafe impl crate::CppDeletable for MakeDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeDir_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeDir_destructor(ptr);
+        }
     }
 }
 
@@ -1052,7 +1062,9 @@ pub use crate::ffi_types::gce_MakeDir2d as MakeDir2d;
 
 unsafe impl crate::CppDeletable for MakeDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeDir2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeDir2d_destructor(ptr);
+        }
     }
 }
 
@@ -1182,7 +1194,9 @@ pub use crate::ffi_types::gce_MakeElips as MakeElips;
 
 unsafe impl crate::CppDeletable for MakeElips {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeElips_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeElips_destructor(ptr);
+        }
     }
 }
 
@@ -1309,7 +1323,9 @@ pub use crate::ffi_types::gce_MakeElips2d as MakeElips2d;
 
 unsafe impl crate::CppDeletable for MakeElips2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeElips2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeElips2d_destructor(ptr);
+        }
     }
 }
 
@@ -1514,7 +1530,9 @@ pub use crate::ffi_types::gce_MakeHypr as MakeHypr;
 
 unsafe impl crate::CppDeletable for MakeHypr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeHypr_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeHypr_destructor(ptr);
+        }
     }
 }
 
@@ -1669,7 +1687,9 @@ pub use crate::ffi_types::gce_MakeHypr2d as MakeHypr2d;
 
 unsafe impl crate::CppDeletable for MakeHypr2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeHypr2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeHypr2d_destructor(ptr);
+        }
     }
 }
 
@@ -1811,7 +1831,9 @@ pub use crate::ffi_types::gce_MakeLin as MakeLin;
 
 unsafe impl crate::CppDeletable for MakeLin {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeLin_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeLin_destructor(ptr);
+        }
     }
 }
 
@@ -1934,7 +1956,9 @@ pub use crate::ffi_types::gce_MakeLin2d as MakeLin2d;
 
 unsafe impl crate::CppDeletable for MakeLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeLin2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeLin2d_destructor(ptr);
+        }
     }
 }
 
@@ -2087,7 +2111,9 @@ pub use crate::ffi_types::gce_MakeMirror as MakeMirror;
 
 unsafe impl crate::CppDeletable for MakeMirror {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeMirror_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeMirror_destructor(ptr);
+        }
     }
 }
 
@@ -2185,7 +2211,9 @@ pub use crate::ffi_types::gce_MakeMirror2d as MakeMirror2d;
 
 unsafe impl crate::CppDeletable for MakeMirror2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeMirror2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeMirror2d_destructor(ptr);
+        }
     }
 }
 
@@ -2287,7 +2315,9 @@ pub use crate::ffi_types::gce_MakeParab as MakeParab;
 
 unsafe impl crate::CppDeletable for MakeParab {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeParab_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeParab_destructor(ptr);
+        }
     }
 }
 
@@ -2412,7 +2442,9 @@ pub use crate::ffi_types::gce_MakeParab2d as MakeParab2d;
 
 unsafe impl crate::CppDeletable for MakeParab2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeParab2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeParab2d_destructor(ptr);
+        }
     }
 }
 
@@ -2596,7 +2628,9 @@ pub use crate::ffi_types::gce_MakePln as MakePln;
 
 unsafe impl crate::CppDeletable for MakePln {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakePln_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakePln_destructor(ptr);
+        }
     }
 }
 
@@ -2782,7 +2816,9 @@ pub use crate::ffi_types::gce_MakeRotation as MakeRotation;
 
 unsafe impl crate::CppDeletable for MakeRotation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeRotation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeRotation_destructor(ptr);
+        }
     }
 }
 
@@ -2859,7 +2895,9 @@ pub use crate::ffi_types::gce_MakeRotation2d as MakeRotation2d;
 
 unsafe impl crate::CppDeletable for MakeRotation2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeRotation2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeRotation2d_destructor(ptr);
+        }
     }
 }
 
@@ -2909,7 +2947,9 @@ pub use crate::ffi_types::gce_MakeScale as MakeScale;
 
 unsafe impl crate::CppDeletable for MakeScale {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeScale_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeScale_destructor(ptr);
+        }
     }
 }
 
@@ -2961,7 +3001,9 @@ pub use crate::ffi_types::gce_MakeScale2d as MakeScale2d;
 
 unsafe impl crate::CppDeletable for MakeScale2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeScale2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeScale2d_destructor(ptr);
+        }
     }
 }
 
@@ -3013,7 +3055,9 @@ pub use crate::ffi_types::gce_MakeTranslation as MakeTranslation;
 
 unsafe impl crate::CppDeletable for MakeTranslation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeTranslation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeTranslation_destructor(ptr);
+        }
     }
 }
 
@@ -3074,7 +3118,9 @@ pub use crate::ffi_types::gce_MakeTranslation2d as MakeTranslation2d;
 
 unsafe impl crate::CppDeletable for MakeTranslation2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_MakeTranslation2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeTranslation2d_destructor(ptr);
+        }
     }
 }
 
@@ -3134,7 +3180,9 @@ pub use crate::ffi_types::gce_Root as Root;
 
 unsafe impl crate::CppDeletable for Root {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::gce_Root_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::gce_Root_destructor(ptr);
+        }
     }
 }
 

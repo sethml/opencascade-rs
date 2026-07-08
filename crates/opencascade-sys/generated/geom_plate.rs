@@ -21,7 +21,9 @@ pub use crate::ffi_types::GeomPlate_Aij as Aij;
 
 unsafe impl crate::CppDeletable for Aij {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_Aij_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Aij_destructor(ptr);
+        }
     }
 }
 
@@ -58,7 +60,9 @@ pub use crate::ffi_types::GeomPlate_BuildAveragePlane as BuildAveragePlane;
 
 unsafe impl crate::CppDeletable for BuildAveragePlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildAveragePlane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildAveragePlane_destructor(ptr);
+        }
     }
 }
 
@@ -180,7 +184,9 @@ pub use crate::ffi_types::GeomPlate_BuildPlateSurface as BuildPlateSurface;
 
 unsafe impl crate::CppDeletable for BuildPlateSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_destructor(ptr);
+        }
     }
 }
 
@@ -1066,7 +1072,9 @@ pub use crate::ffi_types::GeomPlate_CurveConstraint as CurveConstraint;
 
 unsafe impl crate::CppDeletable for CurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_destructor(ptr);
+        }
     }
 }
 
@@ -1600,13 +1608,19 @@ pub use crate::ffi_types::HandleGeomPlateCurveConstraint;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateCurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateCurveConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateCurveConstraint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomPlateCurveConstraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateCurveConstraint_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateCurveConstraint_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1675,7 +1689,9 @@ pub use crate::ffi_types::GeomPlate_HArray1OfHCurve as HArray1OfHCurve;
 
 unsafe impl crate::CppDeletable for HArray1OfHCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1897,13 +1913,19 @@ pub use crate::ffi_types::HandleGeomPlateHArray1OfHCurve;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateHArray1OfHCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfHCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfHCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomPlateHArray1OfHCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfHCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfHCurve_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -1956,7 +1978,9 @@ pub use crate::ffi_types::GeomPlate_HArray1OfSequenceOfReal as HArray1OfSequence
 
 unsafe impl crate::CppDeletable for HArray1OfSequenceOfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_destructor(ptr);
+        }
     }
 }
 
@@ -2175,15 +2199,19 @@ pub use crate::ffi_types::HandleGeomPlateHArray1OfSequenceOfReal;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateHArray1OfSequenceOfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfSequenceOfReal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfSequenceOfReal_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomPlateHArray1OfSequenceOfReal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfSequenceOfReal_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfSequenceOfReal_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2238,7 +2266,9 @@ pub use crate::ffi_types::GeomPlate_HSequenceOfCurveConstraint as HSequenceOfCur
 
 unsafe impl crate::CppDeletable for HSequenceOfCurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_destructor(ptr);
+        }
     }
 }
 
@@ -2434,15 +2464,19 @@ pub use crate::ffi_types::HandleGeomPlateHSequenceOfCurveConstraint;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateHSequenceOfCurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfCurveConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfCurveConstraint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomPlateHSequenceOfCurveConstraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfCurveConstraint_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfCurveConstraint_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2497,7 +2531,9 @@ pub use crate::ffi_types::GeomPlate_HSequenceOfPointConstraint as HSequenceOfPoi
 
 unsafe impl crate::CppDeletable for HSequenceOfPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_destructor(ptr);
+        }
     }
 }
 
@@ -2693,15 +2729,19 @@ pub use crate::ffi_types::HandleGeomPlateHSequenceOfPointConstraint;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateHSequenceOfPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfPointConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfPointConstraint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomPlateHSequenceOfPointConstraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfPointConstraint_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfPointConstraint_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2757,7 +2797,9 @@ pub use crate::ffi_types::GeomPlate_MakeApprox as MakeApprox;
 
 unsafe impl crate::CppDeletable for MakeApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_MakeApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_MakeApprox_destructor(ptr);
+        }
     }
 }
 
@@ -2889,7 +2931,9 @@ pub use crate::ffi_types::GeomPlate_PlateG0Criterion as PlateG0Criterion;
 
 unsafe impl crate::CppDeletable for PlateG0Criterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG0Criterion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG0Criterion_destructor(ptr);
+        }
     }
 }
 
@@ -2986,7 +3030,9 @@ pub use crate::ffi_types::GeomPlate_PlateG1Criterion as PlateG1Criterion;
 
 unsafe impl crate::CppDeletable for PlateG1Criterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG1Criterion_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG1Criterion_destructor(ptr);
+        }
     }
 }
 
@@ -3083,7 +3129,9 @@ pub use crate::ffi_types::GeomPlate_PointConstraint as PointConstraint;
 
 unsafe impl crate::CppDeletable for PointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_destructor(ptr);
+        }
     }
 }
 
@@ -3573,13 +3621,19 @@ pub use crate::ffi_types::HandleGeomPlatePointConstraint;
 
 unsafe impl crate::CppDeletable for HandleGeomPlatePointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomPlatePointConstraint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlatePointConstraint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomPlatePointConstraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlatePointConstraint_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlatePointConstraint_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3640,7 +3694,9 @@ pub use crate::ffi_types::GeomPlate_Surface as Surface;
 
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_destructor(ptr);
+        }
     }
 }
 
@@ -4435,13 +4491,17 @@ pub use crate::ffi_types::HandleGeomPlateSurface;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleGeomPlateSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_clone(ptr))
+        }
     }
 }
 

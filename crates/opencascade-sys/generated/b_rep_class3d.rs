@@ -27,7 +27,9 @@ pub use crate::ffi_types::BRepClass3d_BndBoxTreeSelectorPoint as BndBoxTreeSelec
 
 unsafe impl crate::CppDeletable for BndBoxTreeSelectorPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass3d_BndBoxTreeSelectorPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass3d_BndBoxTreeSelectorPoint_destructor(ptr);
+        }
     }
 }
 
@@ -77,7 +79,9 @@ pub use crate::ffi_types::BRepClass3d_BndBoxTreeSelectorLine as BndBoxTreeSelect
 
 unsafe impl crate::CppDeletable for BndBoxTreeSelectorLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass3d_BndBoxTreeSelectorLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass3d_BndBoxTreeSelectorLine_destructor(ptr);
+        }
     }
 }
 
@@ -201,7 +205,11 @@ pub use crate::ffi_types::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam as BndBox
 
 unsafe impl crate::CppDeletable for BndBoxTreeSelectorLine_EdgeParam {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -222,7 +230,11 @@ pub use crate::ffi_types::BRepClass3d_BndBoxTreeSelectorLine_VertParam as BndBox
 
 unsafe impl crate::CppDeletable for BndBoxTreeSelectorLine_VertParam {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass3d_BndBoxTreeSelectorLine_VertParam_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass3d_BndBoxTreeSelectorLine_VertParam_destructor(
+                ptr,
+            );
+        }
     }
 }
 
@@ -247,7 +259,9 @@ pub use crate::ffi_types::BRepClass3d_Intersector3d as Intersector3d;
 
 unsafe impl crate::CppDeletable for Intersector3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass3d_Intersector3d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass3d_Intersector3d_destructor(ptr);
+        }
     }
 }
 
@@ -383,7 +397,9 @@ pub use crate::ffi_types::BRepClass3d_SClassifier as SClassifier;
 
 unsafe impl crate::CppDeletable for SClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass3d_SClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass3d_SClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -494,7 +510,9 @@ pub use crate::ffi_types::BRepClass3d_SolidClassifier as SolidClassifier;
 
 unsafe impl crate::CppDeletable for SolidClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass3d_SolidClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass3d_SolidClassifier_destructor(ptr);
+        }
     }
 }
 
@@ -645,7 +663,9 @@ pub use crate::ffi_types::BRepClass3d_SolidExplorer as SolidExplorer;
 
 unsafe impl crate::CppDeletable for SolidExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass3d_SolidExplorer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass3d_SolidExplorer_destructor(ptr);
+        }
     }
 }
 
@@ -1063,7 +1083,9 @@ pub use crate::ffi_types::BRepClass3d_SolidPassiveClassifier as SolidPassiveClas
 
 unsafe impl crate::CppDeletable for SolidPassiveClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepClass3d_SolidPassiveClassifier_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass3d_SolidPassiveClassifier_destructor(ptr);
+        }
     }
 }
 

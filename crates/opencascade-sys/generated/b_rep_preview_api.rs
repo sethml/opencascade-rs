@@ -22,7 +22,9 @@ pub use crate::ffi_types::BRepPreviewAPI_MakeBox as MakeBox;
 
 unsafe impl crate::CppDeletable for MakeBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_destructor(ptr);
+        }
     }
 }
 

@@ -16,7 +16,9 @@ pub use crate::ffi_types::BRepToIGESBRep_Entity as Entity;
 
 unsafe impl crate::CppDeletable for Entity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_destructor(ptr);
+        }
     }
 }
 

@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== TPrsStd_AISPresentation ========================
     pub fn TPrsStd_AISPresentation_destructor(self_: *mut TPrsStd_AISPresentation);
     /// **Source:** `TPrsStd_AISPresentation.hxx`:68 - `TPrsStd_AISPresentation::TPrsStd_AISPresentation()`

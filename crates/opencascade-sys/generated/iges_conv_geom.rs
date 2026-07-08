@@ -117,7 +117,9 @@ pub use crate::ffi_types::IGESConvGeom_GeomBuilder as GeomBuilder;
 
 unsafe impl crate::CppDeletable for GeomBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_destructor(ptr);
+        }
     }
 }
 

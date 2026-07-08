@@ -323,7 +323,9 @@ pub use crate::ffi_types::BndLib_Add2dCurve as Add2dCurve;
 
 unsafe impl crate::CppDeletable for Add2dCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::BndLib_Add2dCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::BndLib_Add2dCurve_destructor(ptr);
+        }
     }
 }
 
@@ -497,7 +499,9 @@ pub use crate::ffi_types::BndLib_Add3dCurve as Add3dCurve;
 
 unsafe impl crate::CppDeletable for Add3dCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::BndLib_Add3dCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::BndLib_Add3dCurve_destructor(ptr);
+        }
     }
 }
 
@@ -643,7 +647,9 @@ pub use crate::ffi_types::BndLib_AddSurface as AddSurface;
 
 unsafe impl crate::CppDeletable for AddSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomBase::BndLib_AddSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomBase::BndLib_AddSurface_destructor(ptr);
+        }
     }
 }
 

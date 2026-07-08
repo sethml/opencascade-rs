@@ -25,7 +25,9 @@ pub use crate::ffi_types::BOPDS_CommonBlock as CommonBlock;
 
 unsafe impl crate::CppDeletable for CommonBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_CommonBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_CommonBlock_destructor(ptr);
+        }
     }
 }
 
@@ -393,13 +395,15 @@ pub use crate::ffi_types::HandleBOPDSCommonBlock;
 
 unsafe impl crate::CppDeletable for HandleBOPDSCommonBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::HandleBOPDSCommonBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPDSCommonBlock_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBOPDSCommonBlock {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBO::HandleBOPDSCommonBlock_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBO::HandleBOPDSCommonBlock_clone(ptr)) }
     }
 }
 
@@ -455,7 +459,9 @@ pub use crate::ffi_types::BOPDS_CoupleOfPaveBlocks as CoupleOfPaveBlocks;
 
 unsafe impl crate::CppDeletable for CoupleOfPaveBlocks {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_CoupleOfPaveBlocks_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_CoupleOfPaveBlocks_destructor(ptr);
+        }
     }
 }
 
@@ -667,7 +673,9 @@ pub use crate::ffi_types::BOPDS_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_Curve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_Curve_destructor(ptr);
+        }
     }
 }
 
@@ -881,7 +889,9 @@ pub use crate::ffi_types::BOPDS_DS as DS;
 
 unsafe impl crate::CppDeletable for DS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_DS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_DS_destructor(ptr);
+        }
     }
 }
 
@@ -1776,7 +1786,9 @@ pub use crate::ffi_types::BOPDS_FaceInfo as FaceInfo;
 
 unsafe impl crate::CppDeletable for FaceInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_FaceInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_FaceInfo_destructor(ptr);
+        }
     }
 }
 
@@ -1999,7 +2011,9 @@ pub use crate::ffi_types::BOPDS_IndexRange as IndexRange;
 
 unsafe impl crate::CppDeletable for IndexRange {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_IndexRange_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_IndexRange_destructor(ptr);
+        }
     }
 }
 
@@ -2256,7 +2270,9 @@ pub use crate::ffi_types::BOPDS_InterfVV as InterfVV;
 
 unsafe impl crate::CppDeletable for InterfVV {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_InterfVV_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_InterfVV_destructor(ptr);
+        }
     }
 }
 
@@ -2410,7 +2426,9 @@ pub use crate::ffi_types::BOPDS_InterfVE as InterfVE;
 
 unsafe impl crate::CppDeletable for InterfVE {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_InterfVE_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_InterfVE_destructor(ptr);
+        }
     }
 }
 
@@ -2592,7 +2610,9 @@ pub use crate::ffi_types::BOPDS_InterfVF as InterfVF;
 
 unsafe impl crate::CppDeletable for InterfVF {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_InterfVF_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_InterfVF_destructor(ptr);
+        }
     }
 }
 
@@ -2778,7 +2798,9 @@ pub use crate::ffi_types::BOPDS_InterfEE as InterfEE;
 
 unsafe impl crate::CppDeletable for InterfEE {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_InterfEE_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_InterfEE_destructor(ptr);
+        }
     }
 }
 
@@ -2958,7 +2980,9 @@ pub use crate::ffi_types::BOPDS_InterfEF as InterfEF;
 
 unsafe impl crate::CppDeletable for InterfEF {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_InterfEF_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_InterfEF_destructor(ptr);
+        }
     }
 }
 
@@ -3140,7 +3164,9 @@ pub use crate::ffi_types::BOPDS_InterfFF as InterfFF;
 
 unsafe impl crate::CppDeletable for InterfFF {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_InterfFF_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_InterfFF_destructor(ptr);
+        }
     }
 }
 
@@ -3370,7 +3396,9 @@ pub use crate::ffi_types::BOPDS_InterfVZ as InterfVZ;
 
 unsafe impl crate::CppDeletable for InterfVZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_InterfVZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_InterfVZ_destructor(ptr);
+        }
     }
 }
 
@@ -3524,7 +3552,9 @@ pub use crate::ffi_types::BOPDS_InterfEZ as InterfEZ;
 
 unsafe impl crate::CppDeletable for InterfEZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_InterfEZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_InterfEZ_destructor(ptr);
+        }
     }
 }
 
@@ -3678,7 +3708,9 @@ pub use crate::ffi_types::BOPDS_InterfFZ as InterfFZ;
 
 unsafe impl crate::CppDeletable for InterfFZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_InterfFZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_InterfFZ_destructor(ptr);
+        }
     }
 }
 
@@ -3832,7 +3864,9 @@ pub use crate::ffi_types::BOPDS_InterfZZ as InterfZZ;
 
 unsafe impl crate::CppDeletable for InterfZZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_InterfZZ_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_InterfZZ_destructor(ptr);
+        }
     }
 }
 
@@ -3993,7 +4027,9 @@ pub use crate::ffi_types::BOPDS_Iterator as Iterator;
 
 unsafe impl crate::CppDeletable for Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_Iterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_Iterator_destructor(ptr);
+        }
     }
 }
 
@@ -4170,7 +4206,9 @@ pub use crate::ffi_types::BOPDS_IteratorSI as IteratorSI;
 
 unsafe impl crate::CppDeletable for IteratorSI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_IteratorSI_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_IteratorSI_destructor(ptr);
+        }
     }
 }
 
@@ -4355,7 +4393,9 @@ pub use crate::ffi_types::BOPDS_Pair as Pair;
 
 unsafe impl crate::CppDeletable for Pair {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_Pair_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_Pair_destructor(ptr);
+        }
     }
 }
 
@@ -4414,7 +4454,9 @@ pub use crate::ffi_types::BOPDS_Pave as Pave;
 
 unsafe impl crate::CppDeletable for Pave {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_Pave_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_Pave_destructor(ptr);
+        }
     }
 }
 
@@ -4515,7 +4557,9 @@ pub use crate::ffi_types::BOPDS_PaveBlock as PaveBlock;
 
 unsafe impl crate::CppDeletable for PaveBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_PaveBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_PaveBlock_destructor(ptr);
+        }
     }
 }
 
@@ -4970,13 +5014,15 @@ pub use crate::ffi_types::HandleBOPDSPaveBlock;
 
 unsafe impl crate::CppDeletable for HandleBOPDSPaveBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::HandleBOPDSPaveBlock_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::HandleBOPDSPaveBlock_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBOPDSPaveBlock {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBO::HandleBOPDSPaveBlock_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKBO::HandleBOPDSPaveBlock_clone(ptr)) }
     }
 }
 
@@ -5029,7 +5075,9 @@ pub use crate::ffi_types::BOPDS_Point as Point;
 
 unsafe impl crate::CppDeletable for Point {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_Point_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_Point_destructor(ptr);
+        }
     }
 }
 
@@ -5132,7 +5180,9 @@ pub use crate::ffi_types::BOPDS_ShapeInfo as ShapeInfo;
 
 unsafe impl crate::CppDeletable for ShapeInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_ShapeInfo_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_ShapeInfo_destructor(ptr);
+        }
     }
 }
 
@@ -5369,7 +5419,9 @@ pub use crate::ffi_types::BOPDS_SubIterator as SubIterator;
 
 unsafe impl crate::CppDeletable for SubIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_SubIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_SubIterator_destructor(ptr);
+        }
     }
 }
 
@@ -5522,7 +5574,9 @@ pub use crate::ffi_types::BOPDS_Tools as Tools;
 
 unsafe impl crate::CppDeletable for Tools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBO::BOPDS_Tools_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBO::BOPDS_Tools_destructor(ptr);
+        }
     }
 }
 

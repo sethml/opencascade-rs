@@ -30,7 +30,9 @@ pub use crate::ffi_types::BinMNaming_NamedShapeDriver as NamedShapeDriver;
 
 unsafe impl crate::CppDeletable for NamedShapeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_destructor(ptr);
+        }
     }
 }
 
@@ -411,13 +413,19 @@ pub use crate::ffi_types::HandleBinMNamingNamedShapeDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMNamingNamedShapeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::HandleBinMNamingNamedShapeDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMNamingNamedShapeDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinMNamingNamedShapeDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBin::HandleBinMNamingNamedShapeDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBin::HandleBinMNamingNamedShapeDriver_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -480,7 +488,9 @@ pub use crate::ffi_types::BinMNaming_NamingDriver as NamingDriver;
 
 unsafe impl crate::CppDeletable for NamingDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::BinMNaming_NamingDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_destructor(ptr);
+        }
     }
 }
 
@@ -721,13 +731,17 @@ pub use crate::ffi_types::HandleBinMNamingNamingDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMNamingNamingDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBinMNamingNamingDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_clone(ptr))
+        }
     }
 }
 

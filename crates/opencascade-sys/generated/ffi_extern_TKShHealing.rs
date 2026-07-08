@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== ShapeAlgo_AlgoContainer ========================
     pub fn ShapeAlgo_AlgoContainer_destructor(self_: *mut ShapeAlgo_AlgoContainer);
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:49 - `ShapeAlgo_AlgoContainer::ShapeAlgo_AlgoContainer()`

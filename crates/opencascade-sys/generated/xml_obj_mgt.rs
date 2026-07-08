@@ -132,7 +132,9 @@ pub use crate::ffi_types::XmlObjMgt_Array1 as Array1;
 
 unsafe impl crate::CppDeletable for Array1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_destructor(ptr);
+        }
     }
 }
 
@@ -246,7 +248,9 @@ pub use crate::ffi_types::XmlObjMgt_GP as GP;
 
 unsafe impl crate::CppDeletable for GP {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlObjMgt_GP_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_GP_destructor(ptr);
+        }
     }
 }
 
@@ -333,7 +337,9 @@ pub use crate::ffi_types::XmlObjMgt_Persistent as Persistent;
 
 unsafe impl crate::CppDeletable for Persistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlObjMgt_Persistent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_Persistent_destructor(ptr);
+        }
     }
 }
 
@@ -439,7 +445,9 @@ pub use crate::ffi_types::XmlObjMgt_RRelocationTable as RRelocationTable;
 
 unsafe impl crate::CppDeletable for RRelocationTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlObjMgt_RRelocationTable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_RRelocationTable_destructor(ptr);
+        }
     }
 }
 
@@ -503,7 +511,9 @@ pub use crate::ffi_types::XmlObjMgt_SRelocationTable as SRelocationTable;
 
 unsafe impl crate::CppDeletable for SRelocationTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXmlL::XmlObjMgt_SRelocationTable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_SRelocationTable_destructor(ptr);
+        }
     }
 }
 

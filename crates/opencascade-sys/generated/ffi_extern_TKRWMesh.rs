@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== RWMesh_CafReader ========================
     pub fn RWMesh_CafReader_destructor(self_: *mut RWMesh_CafReader);
     /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::DynamicType()`

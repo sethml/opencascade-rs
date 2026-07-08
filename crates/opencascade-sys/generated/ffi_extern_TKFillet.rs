@@ -7,7 +7,7 @@
 
 use crate::ffi_types::*;
 
-extern "C" {
+unsafe extern "C" {
     // ======================== BRepBlend_AppFunc ========================
     pub fn BRepBlend_AppFunc_destructor(self_: *mut BRepBlend_AppFunc);
     /// **Source:** `BRepBlend_AppFunc.hxx`:39 - `BRepBlend_AppFunc::BRepBlend_AppFunc()`

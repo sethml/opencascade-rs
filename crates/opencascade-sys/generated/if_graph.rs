@@ -17,7 +17,9 @@ pub use crate::ffi_types::IFGraph_AllConnected as AllConnected;
 
 unsafe impl crate::CppDeletable for AllConnected {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFGraph_AllConnected_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFGraph_AllConnected_destructor(ptr);
+        }
     }
 }
 
@@ -289,7 +291,9 @@ pub use crate::ffi_types::IFGraph_AllShared as AllShared;
 
 unsafe impl crate::CppDeletable for AllShared {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFGraph_AllShared_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFGraph_AllShared_destructor(ptr);
+        }
     }
 }
 
@@ -558,7 +562,9 @@ pub use crate::ffi_types::IFGraph_Articulations as Articulations;
 
 unsafe impl crate::CppDeletable for Articulations {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFGraph_Articulations_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFGraph_Articulations_destructor(ptr);
+        }
     }
 }
 
@@ -822,7 +828,9 @@ pub use crate::ffi_types::IFGraph_Compare as Compare;
 
 unsafe impl crate::CppDeletable for Compare {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFGraph_Compare_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFGraph_Compare_destructor(ptr);
+        }
     }
 }
 
@@ -1139,7 +1147,9 @@ pub use crate::ffi_types::IFGraph_ConnectedComponants as ConnectedComponants;
 
 unsafe impl crate::CppDeletable for ConnectedComponants {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFGraph_ConnectedComponants_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFGraph_ConnectedComponants_destructor(ptr);
+        }
     }
 }
 
@@ -1409,7 +1419,9 @@ pub use crate::ffi_types::IFGraph_Cumulate as Cumulate;
 
 unsafe impl crate::CppDeletable for Cumulate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFGraph_Cumulate_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFGraph_Cumulate_destructor(ptr);
+        }
     }
 }
 
@@ -1703,7 +1715,9 @@ pub use crate::ffi_types::IFGraph_Cycles as Cycles;
 
 unsafe impl crate::CppDeletable for Cycles {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFGraph_Cycles_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFGraph_Cycles_destructor(ptr);
+        }
     }
 }
 
@@ -1948,7 +1962,9 @@ pub use crate::ffi_types::IFGraph_ExternalSources as ExternalSources;
 
 unsafe impl crate::CppDeletable for ExternalSources {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFGraph_ExternalSources_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFGraph_ExternalSources_destructor(ptr);
+        }
     }
 }
 
@@ -2219,7 +2235,9 @@ pub use crate::ffi_types::IFGraph_SCRoots as SCRoots;
 
 unsafe impl crate::CppDeletable for SCRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFGraph_SCRoots_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFGraph_SCRoots_destructor(ptr);
+        }
     }
 }
 
@@ -2485,7 +2503,9 @@ pub use crate::ffi_types::IFGraph_StrongComponants as StrongComponants;
 
 unsafe impl crate::CppDeletable for StrongComponants {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFGraph_StrongComponants_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFGraph_StrongComponants_destructor(ptr);
+        }
     }
 }
 
@@ -2752,7 +2772,9 @@ pub use crate::ffi_types::IFGraph_SubPartsIterator as SubPartsIterator;
 
 unsafe impl crate::CppDeletable for SubPartsIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKXSBase::IFGraph_SubPartsIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKXSBase::IFGraph_SubPartsIterator_destructor(ptr);
+        }
     }
 }
 

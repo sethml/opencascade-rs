@@ -1508,7 +1508,9 @@ pub use crate::ffi_types::Aspect_AspectFillAreaDefinitionError as AspectFillArea
 
 unsafe impl crate::CppDeletable for AspectFillAreaDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_AspectFillAreaDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_AspectFillAreaDefinitionError_destructor(ptr);
+        }
     }
 }
 
@@ -1802,15 +1804,19 @@ pub use crate::ffi_types::HandleAspectAspectFillAreaDefinitionError;
 
 unsafe impl crate::CppDeletable for HandleAspectAspectFillAreaDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectAspectFillAreaDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectAspectFillAreaDefinitionError_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectAspectFillAreaDefinitionError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKService::HandleAspectAspectFillAreaDefinitionError_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKService::HandleAspectAspectFillAreaDefinitionError_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1899,7 +1905,9 @@ pub use crate::ffi_types::Aspect_AspectLineDefinitionError as AspectLineDefiniti
 
 unsafe impl crate::CppDeletable for AspectLineDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_AspectLineDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_AspectLineDefinitionError_destructor(ptr);
+        }
     }
 }
 
@@ -2210,15 +2218,19 @@ pub use crate::ffi_types::HandleAspectAspectLineDefinitionError;
 
 unsafe impl crate::CppDeletable for HandleAspectAspectLineDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectAspectLineDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectAspectLineDefinitionError_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectAspectLineDefinitionError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKService::HandleAspectAspectLineDefinitionError_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKService::HandleAspectAspectLineDefinitionError_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2307,7 +2319,9 @@ pub use crate::ffi_types::Aspect_AspectMarkerDefinitionError as AspectMarkerDefi
 
 unsafe impl crate::CppDeletable for AspectMarkerDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_AspectMarkerDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_AspectMarkerDefinitionError_destructor(ptr);
+        }
     }
 }
 
@@ -2608,15 +2622,19 @@ pub use crate::ffi_types::HandleAspectAspectMarkerDefinitionError;
 
 unsafe impl crate::CppDeletable for HandleAspectAspectMarkerDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectAspectMarkerDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectAspectMarkerDefinitionError_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectAspectMarkerDefinitionError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKService::HandleAspectAspectMarkerDefinitionError_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKService::HandleAspectAspectMarkerDefinitionError_clone(ptr),
+            )
+        }
     }
 }
 
@@ -2707,7 +2725,9 @@ pub use crate::ffi_types::Aspect_Background as Background;
 
 unsafe impl crate::CppDeletable for Background {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_Background_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_Background_destructor(ptr);
+        }
     }
 }
 
@@ -2761,7 +2781,9 @@ pub use crate::ffi_types::Aspect_CircularGrid as CircularGrid;
 
 unsafe impl crate::CppDeletable for CircularGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_CircularGrid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_CircularGrid_destructor(ptr);
+        }
     }
 }
 
@@ -3169,13 +3191,17 @@ pub use crate::ffi_types::HandleAspectCircularGrid;
 
 unsafe impl crate::CppDeletable for HandleAspectCircularGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectCircularGrid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectCircularGrid_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectCircularGrid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectCircularGrid_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleAspectCircularGrid_clone(ptr))
+        }
     }
 }
 
@@ -3261,7 +3287,9 @@ pub use crate::ffi_types::Aspect_DisplayConnection as DisplayConnection;
 
 unsafe impl crate::CppDeletable for DisplayConnection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_DisplayConnection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_DisplayConnection_destructor(ptr);
+        }
     }
 }
 
@@ -3470,13 +3498,19 @@ pub use crate::ffi_types::HandleAspectDisplayConnection;
 
 unsafe impl crate::CppDeletable for HandleAspectDisplayConnection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectDisplayConnection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectDisplayConnection_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectDisplayConnection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectDisplayConnection_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleAspectDisplayConnection_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -3563,7 +3597,9 @@ pub use crate::ffi_types::Aspect_DisplayConnectionDefinitionError as DisplayConn
 
 unsafe impl crate::CppDeletable for DisplayConnectionDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_DisplayConnectionDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_DisplayConnectionDefinitionError_destructor(ptr);
+        }
     }
 }
 
@@ -3853,15 +3889,23 @@ pub use crate::ffi_types::HandleAspectDisplayConnectionDefinitionError;
 
 unsafe impl crate::CppDeletable for HandleAspectDisplayConnectionDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectDisplayConnectionDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectDisplayConnectionDefinitionError_destructor(
+                ptr,
+            );
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectDisplayConnectionDefinitionError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKService::HandleAspectDisplayConnectionDefinitionError_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKService::HandleAspectDisplayConnectionDefinitionError_clone(
+                    ptr,
+                ),
+            )
+        }
     }
 }
 
@@ -3951,7 +3995,9 @@ pub use crate::ffi_types::Aspect_GenId as GenId;
 
 unsafe impl crate::CppDeletable for GenId {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_GenId_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_GenId_destructor(ptr);
+        }
     }
 }
 
@@ -4056,7 +4102,9 @@ pub use crate::ffi_types::Aspect_GradientBackground as GradientBackground;
 
 unsafe impl crate::CppDeletable for GradientBackground {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_GradientBackground_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_GradientBackground_destructor(ptr);
+        }
     }
 }
 
@@ -4183,7 +4231,9 @@ pub use crate::ffi_types::Aspect_GraphicDeviceDefinitionError as GraphicDeviceDe
 
 unsafe impl crate::CppDeletable for GraphicDeviceDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_GraphicDeviceDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_GraphicDeviceDefinitionError_destructor(ptr);
+        }
     }
 }
 
@@ -4477,15 +4527,19 @@ pub use crate::ffi_types::HandleAspectGraphicDeviceDefinitionError;
 
 unsafe impl crate::CppDeletable for HandleAspectGraphicDeviceDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectGraphicDeviceDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectGraphicDeviceDefinitionError_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectGraphicDeviceDefinitionError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKService::HandleAspectGraphicDeviceDefinitionError_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKService::HandleAspectGraphicDeviceDefinitionError_clone(ptr),
+            )
+        }
     }
 }
 
@@ -4574,7 +4628,9 @@ pub use crate::ffi_types::Aspect_Grid as Grid;
 
 unsafe impl crate::CppDeletable for Grid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_Grid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_Grid_destructor(ptr);
+        }
     }
 }
 
@@ -4892,13 +4948,15 @@ pub use crate::ffi_types::HandleAspectGrid;
 
 unsafe impl crate::CppDeletable for HandleAspectGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectGrid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectGrid_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectGrid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectGrid_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleAspectGrid_clone(ptr)) }
     }
 }
 
@@ -5021,7 +5079,9 @@ pub use crate::ffi_types::Aspect_IdentDefinitionError as IdentDefinitionError;
 
 unsafe impl crate::CppDeletable for IdentDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_IdentDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_IdentDefinitionError_destructor(ptr);
+        }
     }
 }
 
@@ -5362,15 +5422,19 @@ pub use crate::ffi_types::HandleAspectIdentDefinitionError;
 
 unsafe impl crate::CppDeletable for HandleAspectIdentDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectIdentDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectIdentDefinitionError_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectIdentDefinitionError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectIdentDefinitionError_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKService::HandleAspectIdentDefinitionError_clone(ptr),
+            )
+        }
     }
 }
 
@@ -5464,7 +5528,9 @@ pub use crate::ffi_types::Aspect_NeutralWindow as NeutralWindow;
 
 unsafe impl crate::CppDeletable for NeutralWindow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_NeutralWindow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_NeutralWindow_destructor(ptr);
+        }
     }
 }
 
@@ -5941,13 +6007,17 @@ pub use crate::ffi_types::HandleAspectNeutralWindow;
 
 unsafe impl crate::CppDeletable for HandleAspectNeutralWindow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectNeutralWindow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectNeutralWindow_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectNeutralWindow {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectNeutralWindow_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleAspectNeutralWindow_clone(ptr))
+        }
     }
 }
 
@@ -6025,7 +6095,9 @@ pub use crate::ffi_types::Aspect_OpenVRSession as OpenVRSession;
 
 unsafe impl crate::CppDeletable for OpenVRSession {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_OpenVRSession_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_OpenVRSession_destructor(ptr);
+        }
     }
 }
 
@@ -6628,13 +6700,17 @@ pub use crate::ffi_types::HandleAspectOpenVRSession;
 
 unsafe impl crate::CppDeletable for HandleAspectOpenVRSession {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectOpenVRSession_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectOpenVRSession_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectOpenVRSession {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectOpenVRSession_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleAspectOpenVRSession_clone(ptr))
+        }
     }
 }
 
@@ -6698,7 +6774,9 @@ pub use crate::ffi_types::Aspect_RectangularGrid as RectangularGrid;
 
 unsafe impl crate::CppDeletable for RectangularGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_RectangularGrid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_RectangularGrid_destructor(ptr);
+        }
     }
 }
 
@@ -7150,13 +7228,17 @@ pub use crate::ffi_types::HandleAspectRectangularGrid;
 
 unsafe impl crate::CppDeletable for HandleAspectRectangularGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectRectangularGrid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectRectangularGrid_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectRectangularGrid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectRectangularGrid_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleAspectRectangularGrid_clone(ptr))
+        }
     }
 }
 
@@ -7237,7 +7319,9 @@ pub use crate::ffi_types::Aspect_ScrollDelta as ScrollDelta;
 
 unsafe impl crate::CppDeletable for ScrollDelta {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_ScrollDelta_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_ScrollDelta_destructor(ptr);
+        }
     }
 }
 
@@ -7305,7 +7389,9 @@ pub use crate::ffi_types::Aspect_SkydomeBackground as SkydomeBackground;
 
 unsafe impl crate::CppDeletable for SkydomeBackground {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_SkydomeBackground_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_SkydomeBackground_destructor(ptr);
+        }
     }
 }
 
@@ -7472,7 +7558,9 @@ pub use crate::ffi_types::Aspect_Touch as Touch;
 
 unsafe impl crate::CppDeletable for Touch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_Touch_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_Touch_destructor(ptr);
+        }
     }
 }
 
@@ -7538,7 +7626,9 @@ pub use crate::ffi_types::Aspect_TrackedDevicePose as TrackedDevicePose;
 
 unsafe impl crate::CppDeletable for TrackedDevicePose {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_TrackedDevicePose_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_TrackedDevicePose_destructor(ptr);
+        }
     }
 }
 
@@ -7564,7 +7654,9 @@ pub use crate::ffi_types::Aspect_VKeySet as VKeySet;
 
 unsafe impl crate::CppDeletable for VKeySet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_VKeySet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_VKeySet_destructor(ptr);
+        }
     }
 }
 
@@ -7864,13 +7956,15 @@ pub use crate::ffi_types::HandleAspectVKeySet;
 
 unsafe impl crate::CppDeletable for HandleAspectVKeySet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectVKeySet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectVKeySet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectVKeySet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectVKeySet_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleAspectVKeySet_clone(ptr)) }
     }
 }
 
@@ -7922,7 +8016,9 @@ pub use crate::ffi_types::Aspect_Window as Window;
 
 unsafe impl crate::CppDeletable for Window {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_Window_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_Window_destructor(ptr);
+        }
     }
 }
 
@@ -8324,13 +8420,15 @@ pub use crate::ffi_types::HandleAspectWindow;
 
 unsafe impl crate::CppDeletable for HandleAspectWindow {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectWindow_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectWindow_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectWindow {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectWindow_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleAspectWindow_clone(ptr)) }
     }
 }
 
@@ -8406,7 +8504,9 @@ pub use crate::ffi_types::Aspect_WindowDefinitionError as WindowDefinitionError;
 
 unsafe impl crate::CppDeletable for WindowDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_WindowDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_WindowDefinitionError_destructor(ptr);
+        }
     }
 }
 
@@ -8739,15 +8839,19 @@ pub use crate::ffi_types::HandleAspectWindowDefinitionError;
 
 unsafe impl crate::CppDeletable for HandleAspectWindowDefinitionError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectWindowDefinitionError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectWindowDefinitionError_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectWindowDefinitionError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectWindowDefinitionError_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKService::HandleAspectWindowDefinitionError_clone(ptr),
+            )
+        }
     }
 }
 
@@ -8836,7 +8940,9 @@ pub use crate::ffi_types::Aspect_WindowError as WindowError;
 
 unsafe impl crate::CppDeletable for WindowError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_WindowError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_WindowError_destructor(ptr);
+        }
     }
 }
 
@@ -9167,13 +9273,17 @@ pub use crate::ffi_types::HandleAspectWindowError;
 
 unsafe impl crate::CppDeletable for HandleAspectWindowError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectWindowError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectWindowError_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectWindowError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectWindowError_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleAspectWindowError_clone(ptr))
+        }
     }
 }
 
@@ -9275,7 +9385,9 @@ pub use crate::ffi_types::Aspect_WindowInputListener as WindowInputListener;
 
 unsafe impl crate::CppDeletable for WindowInputListener {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_WindowInputListener_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_WindowInputListener_destructor(ptr);
+        }
     }
 }
 
@@ -9791,7 +9903,9 @@ pub use crate::ffi_types::Aspect_XRAction as XRAction;
 
 unsafe impl crate::CppDeletable for XRAction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_XRAction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_XRAction_destructor(ptr);
+        }
     }
 }
 
@@ -9988,13 +10102,15 @@ pub use crate::ffi_types::HandleAspectXRAction;
 
 unsafe impl crate::CppDeletable for HandleAspectXRAction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectXRAction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectXRAction_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectXRAction {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectXRAction_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKService::HandleAspectXRAction_clone(ptr)) }
     }
 }
 
@@ -10046,7 +10162,9 @@ pub use crate::ffi_types::Aspect_XRActionSet as XRActionSet;
 
 unsafe impl crate::CppDeletable for XRActionSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_XRActionSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_XRActionSet_destructor(ptr);
+        }
     }
 }
 
@@ -10243,13 +10361,17 @@ pub use crate::ffi_types::HandleAspectXRActionSet;
 
 unsafe impl crate::CppDeletable for HandleAspectXRActionSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectXRActionSet_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectXRActionSet_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectXRActionSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectXRActionSet_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleAspectXRActionSet_clone(ptr))
+        }
     }
 }
 
@@ -10301,7 +10423,9 @@ pub use crate::ffi_types::Aspect_XRAnalogActionData as XRAnalogActionData;
 
 unsafe impl crate::CppDeletable for XRAnalogActionData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_XRAnalogActionData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_XRAnalogActionData_destructor(ptr);
+        }
     }
 }
 
@@ -10335,7 +10459,9 @@ pub use crate::ffi_types::Aspect_XRDigitalActionData as XRDigitalActionData;
 
 unsafe impl crate::CppDeletable for XRDigitalActionData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_XRDigitalActionData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_XRDigitalActionData_destructor(ptr);
+        }
     }
 }
 
@@ -10349,7 +10475,9 @@ pub use crate::ffi_types::Aspect_XRHapticActionData as XRHapticActionData;
 
 unsafe impl crate::CppDeletable for XRHapticActionData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_XRHapticActionData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_XRHapticActionData_destructor(ptr);
+        }
     }
 }
 
@@ -10363,7 +10491,9 @@ pub use crate::ffi_types::Aspect_XRPoseActionData as XRPoseActionData;
 
 unsafe impl crate::CppDeletable for XRPoseActionData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_XRPoseActionData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_XRPoseActionData_destructor(ptr);
+        }
     }
 }
 
@@ -10389,7 +10519,9 @@ pub use crate::ffi_types::Aspect_XRSession as XRSession;
 
 unsafe impl crate::CppDeletable for XRSession {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::Aspect_XRSession_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::Aspect_XRSession_destructor(ptr);
+        }
     }
 }
 
@@ -10965,13 +11097,17 @@ pub use crate::ffi_types::HandleAspectXRSession;
 
 unsafe impl crate::CppDeletable for HandleAspectXRSession {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKService::HandleAspectXRSession_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKService::HandleAspectXRSession_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleAspectXRSession {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKService::HandleAspectXRSession_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKService::HandleAspectXRSession_clone(ptr))
+        }
     }
 }
 

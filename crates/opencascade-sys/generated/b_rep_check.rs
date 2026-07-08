@@ -152,7 +152,9 @@ pub use crate::ffi_types::BRepCheck_Analyzer as Analyzer;
 
 unsafe impl crate::CppDeletable for Analyzer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepCheck_Analyzer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepCheck_Analyzer_destructor(ptr);
+        }
     }
 }
 
@@ -413,7 +415,9 @@ pub use crate::ffi_types::BRepCheck_Edge as Edge;
 
 unsafe impl crate::CppDeletable for Edge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepCheck_Edge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepCheck_Edge_destructor(ptr);
+        }
     }
 }
 
@@ -784,13 +788,15 @@ pub use crate::ffi_types::HandleBRepCheckEdge;
 
 unsafe impl crate::CppDeletable for HandleBRepCheckEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepCheckEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepCheckEdge_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCheckEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckEdge_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckEdge_clone(ptr)) }
     }
 }
 
@@ -852,7 +858,9 @@ pub use crate::ffi_types::BRepCheck_Face as Face;
 
 unsafe impl crate::CppDeletable for Face {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepCheck_Face_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepCheck_Face_destructor(ptr);
+        }
     }
 }
 
@@ -1218,13 +1226,15 @@ pub use crate::ffi_types::HandleBRepCheckFace;
 
 unsafe impl crate::CppDeletable for HandleBRepCheckFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepCheckFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepCheckFace_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCheckFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckFace_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckFace_clone(ptr)) }
     }
 }
 
@@ -1286,7 +1296,9 @@ pub use crate::ffi_types::BRepCheck_Result as Result;
 
 unsafe impl crate::CppDeletable for Result {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepCheck_Result_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepCheck_Result_destructor(ptr);
+        }
     }
 }
 
@@ -1554,13 +1566,17 @@ pub use crate::ffi_types::HandleBRepCheckResult;
 
 unsafe impl crate::CppDeletable for HandleBRepCheckResult {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepCheckResult_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepCheckResult_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCheckResult {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckResult_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckResult_clone(ptr))
+        }
     }
 }
 
@@ -1719,7 +1735,9 @@ pub use crate::ffi_types::BRepCheck_Shell as Shell;
 
 unsafe impl crate::CppDeletable for Shell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepCheck_Shell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepCheck_Shell_destructor(ptr);
+        }
     }
 }
 
@@ -2067,13 +2085,15 @@ pub use crate::ffi_types::HandleBRepCheckShell;
 
 unsafe impl crate::CppDeletable for HandleBRepCheckShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepCheckShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepCheckShell_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCheckShell {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckShell_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckShell_clone(ptr)) }
     }
 }
 
@@ -2136,7 +2156,9 @@ pub use crate::ffi_types::BRepCheck_Solid as Solid;
 
 unsafe impl crate::CppDeletable for Solid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepCheck_Solid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepCheck_Solid_destructor(ptr);
+        }
     }
 }
 
@@ -2459,13 +2481,15 @@ pub use crate::ffi_types::HandleBRepCheckSolid;
 
 unsafe impl crate::CppDeletable for HandleBRepCheckSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepCheckSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepCheckSolid_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCheckSolid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckSolid_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckSolid_clone(ptr)) }
     }
 }
 
@@ -2527,7 +2551,9 @@ pub use crate::ffi_types::BRepCheck_Vertex as Vertex;
 
 unsafe impl crate::CppDeletable for Vertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepCheck_Vertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepCheck_Vertex_destructor(ptr);
+        }
     }
 }
 
@@ -2836,13 +2862,17 @@ pub use crate::ffi_types::HandleBRepCheckVertex;
 
 unsafe impl crate::CppDeletable for HandleBRepCheckVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepCheckVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepCheckVertex_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCheckVertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckVertex_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckVertex_clone(ptr))
+        }
     }
 }
 
@@ -2904,7 +2934,9 @@ pub use crate::ffi_types::BRepCheck_Wire as Wire;
 
 unsafe impl crate::CppDeletable for Wire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepCheck_Wire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepCheck_Wire_destructor(ptr);
+        }
     }
 }
 
@@ -3329,13 +3361,15 @@ pub use crate::ffi_types::HandleBRepCheckWire;
 
 unsafe impl crate::CppDeletable for HandleBRepCheckWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::HandleBRepCheckWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::HandleBRepCheckWire_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleBRepCheckWire {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckWire_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepCheckWire_clone(ptr)) }
     }
 }
 

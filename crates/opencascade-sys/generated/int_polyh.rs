@@ -17,7 +17,9 @@ pub use crate::ffi_types::IntPolyh_PointNormal as PointNormal;
 
 unsafe impl crate::CppDeletable for PointNormal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_PointNormal_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_PointNormal_destructor(ptr);
+        }
     }
 }
 
@@ -46,7 +48,9 @@ pub use crate::ffi_types::IntPolyh_Couple as Couple;
 
 unsafe impl crate::CppDeletable for Couple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_Couple_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_Couple_destructor(ptr);
+        }
     }
 }
 
@@ -175,7 +179,9 @@ pub use crate::ffi_types::IntPolyh_Edge as Edge;
 
 unsafe impl crate::CppDeletable for Edge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_Edge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_Edge_destructor(ptr);
+        }
     }
 }
 
@@ -315,7 +321,9 @@ pub use crate::ffi_types::IntPolyh_Intersection as Intersection;
 
 unsafe impl crate::CppDeletable for Intersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_Intersection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_Intersection_destructor(ptr);
+        }
     }
 }
 
@@ -504,7 +512,9 @@ pub use crate::ffi_types::IntPolyh_MaillageAffinage as MaillageAffinage;
 
 unsafe impl crate::CppDeletable for MaillageAffinage {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_destructor(ptr);
+        }
     }
 }
 
@@ -1050,7 +1060,9 @@ pub use crate::ffi_types::IntPolyh_Point as Point;
 
 unsafe impl crate::CppDeletable for Point {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_Point_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_Point_destructor(ptr);
+        }
     }
 }
 
@@ -1314,13 +1326,17 @@ pub use crate::ffi_types::IntPolyh_SectionLine as SectionLine;
 
 unsafe impl crate::CppDeletable for SectionLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for SectionLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_clone(ptr))
+        }
     }
 }
 
@@ -1452,7 +1468,9 @@ pub use crate::ffi_types::IntPolyh_StartPoint as StartPoint;
 
 unsafe impl crate::CppDeletable for StartPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_destructor(ptr);
+        }
     }
 }
 
@@ -1721,7 +1739,9 @@ pub use crate::ffi_types::IntPolyh_Tools as Tools;
 
 unsafe impl crate::CppDeletable for Tools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_Tools_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_Tools_destructor(ptr);
+        }
     }
 }
 
@@ -1821,7 +1841,9 @@ pub use crate::ffi_types::IntPolyh_Triangle as Triangle;
 
 unsafe impl crate::CppDeletable for Triangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::IntPolyh_Triangle_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_Triangle_destructor(ptr);
+        }
     }
 }
 

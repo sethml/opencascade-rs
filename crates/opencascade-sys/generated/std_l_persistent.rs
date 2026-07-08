@@ -18,7 +18,9 @@ pub use crate::ffi_types::StdLPersistent_Data as Data;
 
 unsafe impl crate::CppDeletable for Data {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Data_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Data_destructor(ptr);
+        }
     }
 }
 
@@ -316,13 +318,17 @@ pub use crate::ffi_types::HandleStdLPersistentData;
 
 unsafe impl crate::CppDeletable for HandleStdLPersistentData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::HandleStdLPersistentData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::HandleStdLPersistentData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdLPersistentData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentData_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentData_clone(ptr))
+        }
     }
 }
 
@@ -386,7 +392,9 @@ pub use crate::ffi_types::StdLPersistent_Document as Document;
 
 unsafe impl crate::CppDeletable for Document {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Document_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Document_destructor(ptr);
+        }
     }
 }
 
@@ -679,13 +687,17 @@ pub use crate::ffi_types::HandleStdLPersistentDocument;
 
 unsafe impl crate::CppDeletable for HandleStdLPersistentDocument {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdLPersistentDocument {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_clone(ptr))
+        }
     }
 }
 
@@ -751,7 +763,9 @@ pub use crate::ffi_types::StdLPersistent_Function as Function;
 
 unsafe impl crate::CppDeletable for Function {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Function_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Function_destructor(ptr);
+        }
     }
 }
 
@@ -829,7 +843,9 @@ pub use crate::ffi_types::StdLPersistent_HArray1OfPersistent as HArray1OfPersist
 
 unsafe impl crate::CppDeletable for HArray1OfPersistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_destructor(ptr);
+        }
     }
 }
 
@@ -1047,15 +1063,19 @@ pub use crate::ffi_types::HandleStdLPersistentHArray1OfPersistent;
 
 unsafe impl crate::CppDeletable for HandleStdLPersistentHArray1OfPersistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdLPersistentHArray1OfPersistent {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1110,7 +1130,9 @@ pub use crate::ffi_types::StdLPersistent_HArray2OfPersistent as HArray2OfPersist
 
 unsafe impl crate::CppDeletable for HArray2OfPersistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_destructor(ptr);
+        }
     }
 }
 
@@ -1314,15 +1336,19 @@ pub use crate::ffi_types::HandleStdLPersistentHArray2OfPersistent;
 
 unsafe impl crate::CppDeletable for HandleStdLPersistentHArray2OfPersistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleStdLPersistentHArray2OfPersistent {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_clone(ptr),
+            )
+        }
     }
 }
 
@@ -1377,7 +1403,9 @@ pub use crate::ffi_types::StdLPersistent_HString as HString;
 
 unsafe impl crate::CppDeletable for HString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_HString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_HString_destructor(ptr);
+        }
     }
 }
 
@@ -1398,7 +1426,9 @@ pub use crate::ffi_types::StdLPersistent_HString_Ascii as HString_Ascii;
 
 unsafe impl crate::CppDeletable for HString_Ascii {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_HString_Ascii_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_HString_Ascii_destructor(ptr);
+        }
     }
 }
 
@@ -1442,7 +1472,9 @@ pub use crate::ffi_types::StdLPersistent_HString_Extended as HString_Extended;
 
 unsafe impl crate::CppDeletable for HString_Extended {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_HString_Extended_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_HString_Extended_destructor(ptr);
+        }
     }
 }
 
@@ -1494,7 +1526,9 @@ pub use crate::ffi_types::StdLPersistent_NamedData as NamedData;
 
 unsafe impl crate::CppDeletable for NamedData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_NamedData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_NamedData_destructor(ptr);
+        }
     }
 }
 
@@ -1572,7 +1606,9 @@ pub use crate::ffi_types::StdLPersistent_Real as Real;
 
 unsafe impl crate::CppDeletable for Real {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Real_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Real_destructor(ptr);
+        }
     }
 }
 
@@ -1644,7 +1680,9 @@ pub use crate::ffi_types::StdLPersistent_TreeNode as TreeNode;
 
 unsafe impl crate::CppDeletable for TreeNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_TreeNode_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_TreeNode_destructor(ptr);
+        }
     }
 }
 
@@ -1731,7 +1769,9 @@ pub use crate::ffi_types::StdLPersistent_Value as Value;
 
 unsafe impl crate::CppDeletable for Value {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Value_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Value_destructor(ptr);
+        }
     }
 }
 
@@ -1752,7 +1792,9 @@ pub use crate::ffi_types::StdLPersistent_Value_TagSource as Value_TagSource;
 
 unsafe impl crate::CppDeletable for Value_TagSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Value_TagSource_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Value_TagSource_destructor(ptr);
+        }
     }
 }
 
@@ -1786,7 +1828,9 @@ pub use crate::ffi_types::StdLPersistent_Value_Reference as Value_Reference;
 
 unsafe impl crate::CppDeletable for Value_Reference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Value_Reference_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Value_Reference_destructor(ptr);
+        }
     }
 }
 
@@ -1820,7 +1864,9 @@ pub use crate::ffi_types::StdLPersistent_Value_Comment as Value_Comment;
 
 unsafe impl crate::CppDeletable for Value_Comment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Value_Comment_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Value_Comment_destructor(ptr);
+        }
     }
 }
 
@@ -1852,7 +1898,9 @@ pub use crate::ffi_types::StdLPersistent_Value_UAttribute as Value_UAttribute;
 
 unsafe impl crate::CppDeletable for Value_UAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Value_UAttribute_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Value_UAttribute_destructor(ptr);
+        }
     }
 }
 
@@ -1898,7 +1946,9 @@ pub use crate::ffi_types::StdLPersistent_Value_Integer as Value_Integer;
 
 unsafe impl crate::CppDeletable for Value_Integer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Value_Integer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Value_Integer_destructor(ptr);
+        }
     }
 }
 
@@ -1942,7 +1992,9 @@ pub use crate::ffi_types::StdLPersistent_Value_Name as Value_Name;
 
 unsafe impl crate::CppDeletable for Value_Name {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Value_Name_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Value_Name_destructor(ptr);
+        }
     }
 }
 
@@ -1986,7 +2038,9 @@ pub use crate::ffi_types::StdLPersistent_Value_AsciiString as Value_AsciiString;
 
 unsafe impl crate::CppDeletable for Value_AsciiString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Value_AsciiString_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Value_AsciiString_destructor(ptr);
+        }
     }
 }
 
@@ -2036,7 +2090,9 @@ pub use crate::ffi_types::StdLPersistent_Variable as Variable;
 
 unsafe impl crate::CppDeletable for Variable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_Variable_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_Variable_destructor(ptr);
+        }
     }
 }
 
@@ -2117,7 +2173,9 @@ pub use crate::ffi_types::StdLPersistent_XLink as XLink;
 
 unsafe impl crate::CppDeletable for XLink {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKStdL::StdLPersistent_XLink_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKStdL::StdLPersistent_XLink_destructor(ptr);
+        }
     }
 }
 

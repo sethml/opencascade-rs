@@ -43,7 +43,9 @@ pub use crate::ffi_types::IGESGeom_BSplineCurve as BSplineCurve;
 
 unsafe impl crate::CppDeletable for BSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_BSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_BSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -1094,13 +1096,17 @@ pub use crate::ffi_types::HandleIGESGeomBSplineCurve;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomBSplineCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineCurve_clone(ptr))
+        }
     }
 }
 
@@ -1171,7 +1177,9 @@ pub use crate::ffi_types::IGESGeom_BSplineSurface as BSplineSurface;
 
 unsafe impl crate::CppDeletable for BSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_BSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_BSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -2315,13 +2323,17 @@ pub use crate::ffi_types::HandleIGESGeomBSplineSurface;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomBSplineSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBSplineSurface_clone(ptr))
+        }
     }
 }
 
@@ -2387,7 +2399,9 @@ pub use crate::ffi_types::IGESGeom_Boundary as Boundary;
 
 unsafe impl crate::CppDeletable for Boundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_Boundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_Boundary_destructor(ptr);
+        }
     }
 }
 
@@ -3356,13 +3370,17 @@ pub use crate::ffi_types::HandleIGESGeomBoundary;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundary_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomBoundary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundary_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundary_clone(ptr))
+        }
     }
 }
 
@@ -3431,7 +3449,9 @@ pub use crate::ffi_types::IGESGeom_BoundedSurface as BoundedSurface;
 
 unsafe impl crate::CppDeletable for BoundedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_BoundedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_BoundedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -4355,13 +4375,17 @@ pub use crate::ffi_types::HandleIGESGeomBoundedSurface;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomBoundedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundedSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomBoundedSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundedSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomBoundedSurface_clone(ptr))
+        }
     }
 }
 
@@ -4430,7 +4454,9 @@ pub use crate::ffi_types::IGESGeom_CircularArc as CircularArc;
 
 unsafe impl crate::CppDeletable for CircularArc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_CircularArc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_CircularArc_destructor(ptr);
+        }
     }
 }
 
@@ -5415,13 +5441,17 @@ pub use crate::ffi_types::HandleIGESGeomCircularArc;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomCircularArc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomCircularArc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomCircularArc_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomCircularArc {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCircularArc_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCircularArc_clone(ptr))
+        }
     }
 }
 
@@ -5492,7 +5522,9 @@ pub use crate::ffi_types::IGESGeom_CompositeCurve as CompositeCurve;
 
 unsafe impl crate::CppDeletable for CompositeCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_CompositeCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_CompositeCurve_destructor(ptr);
+        }
     }
 }
 
@@ -6378,13 +6410,17 @@ pub use crate::ffi_types::HandleIGESGeomCompositeCurve;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomCompositeCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomCompositeCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomCompositeCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomCompositeCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCompositeCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCompositeCurve_clone(ptr))
+        }
     }
 }
 
@@ -6456,7 +6492,9 @@ pub use crate::ffi_types::IGESGeom_ConicArc as ConicArc;
 
 unsafe impl crate::CppDeletable for ConicArc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ConicArc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ConicArc_destructor(ptr);
+        }
     }
 }
 
@@ -7529,13 +7567,17 @@ pub use crate::ffi_types::HandleIGESGeomConicArc;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomConicArc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomConicArc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomConicArc_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomConicArc {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomConicArc_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomConicArc_clone(ptr))
+        }
     }
 }
 
@@ -7604,7 +7646,9 @@ pub use crate::ffi_types::IGESGeom_CopiousData as CopiousData;
 
 unsafe impl crate::CppDeletable for CopiousData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_CopiousData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_CopiousData_destructor(ptr);
+        }
     }
 }
 
@@ -8605,13 +8649,17 @@ pub use crate::ffi_types::HandleIGESGeomCopiousData;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomCopiousData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomCopiousData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomCopiousData_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomCopiousData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCopiousData_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCopiousData_clone(ptr))
+        }
     }
 }
 
@@ -8682,7 +8730,9 @@ pub use crate::ffi_types::IGESGeom_CurveOnSurface as CurveOnSurface;
 
 unsafe impl crate::CppDeletable for CurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_CurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_CurveOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -9622,13 +9672,17 @@ pub use crate::ffi_types::HandleIGESGeomCurveOnSurface;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomCurveOnSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCurveOnSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomCurveOnSurface_clone(ptr))
+        }
     }
 }
 
@@ -9696,7 +9750,9 @@ pub use crate::ffi_types::IGESGeom_Direction as Direction;
 
 unsafe impl crate::CppDeletable for Direction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_Direction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_Direction_destructor(ptr);
+        }
     }
 }
 
@@ -10551,13 +10607,17 @@ pub use crate::ffi_types::HandleIGESGeomDirection;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomDirection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomDirection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomDirection_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomDirection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomDirection_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomDirection_clone(ptr))
+        }
     }
 }
 
@@ -10630,7 +10690,9 @@ pub use crate::ffi_types::IGESGeom_Flash as Flash;
 
 unsafe impl crate::CppDeletable for Flash {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_Flash_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_Flash_destructor(ptr);
+        }
     }
 }
 
@@ -11510,13 +11572,15 @@ pub use crate::ffi_types::HandleIGESGeomFlash;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomFlash {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomFlash_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomFlash_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomFlash {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomFlash_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomFlash_clone(ptr)) }
     }
 }
 
@@ -11582,7 +11646,9 @@ pub use crate::ffi_types::IGESGeom_GeneralModule as GeneralModule;
 
 unsafe impl crate::CppDeletable for GeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_GeneralModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_GeneralModule_destructor(ptr);
+        }
     }
 }
 
@@ -12167,13 +12233,17 @@ pub use crate::ffi_types::HandleIGESGeomGeneralModule;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomGeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomGeneralModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomGeneralModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomGeneralModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomGeneralModule_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomGeneralModule_clone(ptr))
+        }
     }
 }
 
@@ -12244,7 +12314,9 @@ pub use crate::ffi_types::IGESGeom_HArray1OfBoundary as HArray1OfBoundary;
 
 unsafe impl crate::CppDeletable for HArray1OfBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_HArray1OfBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_HArray1OfBoundary_destructor(ptr);
+        }
     }
 }
 
@@ -12466,13 +12538,19 @@ pub use crate::ffi_types::HandleIGESGeomHArray1OfBoundary;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomHArray1OfBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfBoundary_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomHArray1OfBoundary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfBoundary_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfBoundary_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -12523,7 +12601,9 @@ pub use crate::ffi_types::IGESGeom_HArray1OfCurveOnSurface as HArray1OfCurveOnSu
 
 unsafe impl crate::CppDeletable for HArray1OfCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_HArray1OfCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_HArray1OfCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -12737,15 +12817,19 @@ pub use crate::ffi_types::HandleIGESGeomHArray1OfCurveOnSurface;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomHArray1OfCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomHArray1OfCurveOnSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfCurveOnSurface_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfCurveOnSurface_clone(ptr),
+            )
+        }
     }
 }
 
@@ -12800,7 +12884,9 @@ pub use crate::ffi_types::IGESGeom_HArray1OfTransformationMatrix as HArray1OfTra
 
 unsafe impl crate::CppDeletable for HArray1OfTransformationMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_HArray1OfTransformationMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_HArray1OfTransformationMatrix_destructor(ptr);
+        }
     }
 }
 
@@ -13010,15 +13096,19 @@ pub use crate::ffi_types::HandleIGESGeomHArray1OfTransformationMatrix;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomHArray1OfTransformationMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfTransformationMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfTransformationMatrix_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomHArray1OfTransformationMatrix {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(
-            crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfTransformationMatrix_clone(ptr),
-        )
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESGeomHArray1OfTransformationMatrix_clone(ptr),
+            )
+        }
     }
 }
 
@@ -13083,7 +13173,9 @@ pub use crate::ffi_types::IGESGeom_Line as Line;
 
 unsafe impl crate::CppDeletable for Line {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_Line_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_Line_destructor(ptr);
+        }
     }
 }
 
@@ -13910,13 +14002,15 @@ pub use crate::ffi_types::HandleIGESGeomLine;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomLine_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomLine_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomLine_clone(ptr)) }
     }
 }
 
@@ -13986,7 +14080,9 @@ pub use crate::ffi_types::IGESGeom_OffsetCurve as OffsetCurve;
 
 unsafe impl crate::CppDeletable for OffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_OffsetCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_OffsetCurve_destructor(ptr);
+        }
     }
 }
 
@@ -15040,13 +15136,17 @@ pub use crate::ffi_types::HandleIGESGeomOffsetCurve;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomOffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomOffsetCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetCurve_clone(ptr))
+        }
     }
 }
 
@@ -15122,7 +15222,9 @@ pub use crate::ffi_types::IGESGeom_OffsetSurface as OffsetSurface;
 
 unsafe impl crate::CppDeletable for OffsetSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_OffsetSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_OffsetSurface_destructor(ptr);
+        }
     }
 }
 
@@ -16038,13 +16140,17 @@ pub use crate::ffi_types::HandleIGESGeomOffsetSurface;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomOffsetSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomOffsetSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomOffsetSurface_clone(ptr))
+        }
     }
 }
 
@@ -16117,7 +16223,9 @@ pub use crate::ffi_types::IGESGeom_Plane as Plane;
 
 unsafe impl crate::CppDeletable for Plane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_Plane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_Plane_destructor(ptr);
+        }
     }
 }
 
@@ -17016,13 +17124,15 @@ pub use crate::ffi_types::HandleIGESGeomPlane;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomPlane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomPlane_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomPlane {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomPlane_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomPlane_clone(ptr)) }
     }
 }
 
@@ -17088,7 +17198,9 @@ pub use crate::ffi_types::IGESGeom_Point as Point;
 
 unsafe impl crate::CppDeletable for Point {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_Point_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_Point_destructor(ptr);
+        }
     }
 }
 
@@ -17917,13 +18029,15 @@ pub use crate::ffi_types::HandleIGESGeomPoint;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomPoint_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomPoint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomPoint_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomPoint_clone(ptr)) }
     }
 }
 
@@ -17988,7 +18102,9 @@ pub use crate::ffi_types::IGESGeom_Protocol as Protocol;
 
 unsafe impl crate::CppDeletable for Protocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_Protocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_Protocol_destructor(ptr);
+        }
     }
 }
 
@@ -18317,13 +18433,17 @@ pub use crate::ffi_types::HandleIGESGeomProtocol;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomProtocol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomProtocol_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomProtocol {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomProtocol_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomProtocol_clone(ptr))
+        }
     }
 }
 
@@ -18403,7 +18523,9 @@ pub use crate::ffi_types::IGESGeom_ReadWriteModule as ReadWriteModule;
 
 unsafe impl crate::CppDeletable for ReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ReadWriteModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ReadWriteModule_destructor(ptr);
+        }
     }
 }
 
@@ -18706,13 +18828,19 @@ pub use crate::ffi_types::HandleIGESGeomReadWriteModule;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomReadWriteModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomReadWriteModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomReadWriteModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomReadWriteModule_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomReadWriteModule_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -18790,7 +18918,9 @@ pub use crate::ffi_types::IGESGeom_RuledSurface as RuledSurface;
 
 unsafe impl crate::CppDeletable for RuledSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_RuledSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_RuledSurface_destructor(ptr);
+        }
     }
 }
 
@@ -19723,13 +19853,17 @@ pub use crate::ffi_types::HandleIGESGeomRuledSurface;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomRuledSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomRuledSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomRuledSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomRuledSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomRuledSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomRuledSurface_clone(ptr))
+        }
     }
 }
 
@@ -19797,7 +19931,9 @@ pub use crate::ffi_types::IGESGeom_SpecificModule as SpecificModule;
 
 unsafe impl crate::CppDeletable for SpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_SpecificModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_SpecificModule_destructor(ptr);
+        }
     }
 }
 
@@ -20010,13 +20146,17 @@ pub use crate::ffi_types::HandleIGESGeomSpecificModule;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomSpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomSpecificModule_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomSpecificModule_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomSpecificModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomSpecificModule_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomSpecificModule_clone(ptr))
+        }
     }
 }
 
@@ -20086,7 +20226,9 @@ pub use crate::ffi_types::IGESGeom_SplineCurve as SplineCurve;
 
 unsafe impl crate::CppDeletable for SplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_SplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_SplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -21141,13 +21283,17 @@ pub use crate::ffi_types::HandleIGESGeomSplineCurve;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineCurve_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomSplineCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineCurve_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineCurve_clone(ptr))
+        }
     }
 }
 
@@ -21221,7 +21367,9 @@ pub use crate::ffi_types::IGESGeom_SplineSurface as SplineSurface;
 
 unsafe impl crate::CppDeletable for SplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_SplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_SplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -22253,13 +22401,17 @@ pub use crate::ffi_types::HandleIGESGeomSplineSurface;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomSplineSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomSplineSurface_clone(ptr))
+        }
     }
 }
 
@@ -22331,7 +22483,9 @@ pub use crate::ffi_types::IGESGeom_SurfaceOfRevolution as SurfaceOfRevolution;
 
 unsafe impl crate::CppDeletable for SurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_SurfaceOfRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_SurfaceOfRevolution_destructor(ptr);
+        }
     }
 }
 
@@ -23243,15 +23397,19 @@ pub use crate::ffi_types::HandleIGESGeomSurfaceOfRevolution;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomSurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomSurfaceOfRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomSurfaceOfRevolution_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomSurfaceOfRevolution {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomSurfaceOfRevolution_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESGeomSurfaceOfRevolution_clone(ptr),
+            )
+        }
     }
 }
 
@@ -23322,7 +23480,9 @@ pub use crate::ffi_types::IGESGeom_TabulatedCylinder as TabulatedCylinder;
 
 unsafe impl crate::CppDeletable for TabulatedCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_TabulatedCylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_TabulatedCylinder_destructor(ptr);
+        }
     }
 }
 
@@ -24235,13 +24395,19 @@ pub use crate::ffi_types::HandleIGESGeomTabulatedCylinder;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomTabulatedCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomTabulatedCylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomTabulatedCylinder_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomTabulatedCylinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomTabulatedCylinder_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomTabulatedCylinder_clone(
+                ptr,
+            ))
+        }
     }
 }
 
@@ -24303,7 +24469,9 @@ pub use crate::ffi_types::IGESGeom_ToolBSplineCurve as ToolBSplineCurve;
 
 unsafe impl crate::CppDeletable for ToolBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolBSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolBSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -24454,7 +24622,9 @@ pub use crate::ffi_types::IGESGeom_ToolBSplineSurface as ToolBSplineSurface;
 
 unsafe impl crate::CppDeletable for ToolBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolBSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolBSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -24605,7 +24775,9 @@ pub use crate::ffi_types::IGESGeom_ToolBoundary as ToolBoundary;
 
 unsafe impl crate::CppDeletable for ToolBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolBoundary_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolBoundary_destructor(ptr);
+        }
     }
 }
 
@@ -24765,7 +24937,9 @@ pub use crate::ffi_types::IGESGeom_ToolBoundedSurface as ToolBoundedSurface;
 
 unsafe impl crate::CppDeletable for ToolBoundedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolBoundedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolBoundedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -24916,7 +25090,9 @@ pub use crate::ffi_types::IGESGeom_ToolCircularArc as ToolCircularArc;
 
 unsafe impl crate::CppDeletable for ToolCircularArc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolCircularArc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolCircularArc_destructor(ptr);
+        }
     }
 }
 
@@ -25067,7 +25243,9 @@ pub use crate::ffi_types::IGESGeom_ToolCompositeCurve as ToolCompositeCurve;
 
 unsafe impl crate::CppDeletable for ToolCompositeCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolCompositeCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolCompositeCurve_destructor(ptr);
+        }
     }
 }
 
@@ -25218,7 +25396,9 @@ pub use crate::ffi_types::IGESGeom_ToolConicArc as ToolConicArc;
 
 unsafe impl crate::CppDeletable for ToolConicArc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolConicArc_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolConicArc_destructor(ptr);
+        }
     }
 }
 
@@ -25378,7 +25558,9 @@ pub use crate::ffi_types::IGESGeom_ToolCopiousData as ToolCopiousData;
 
 unsafe impl crate::CppDeletable for ToolCopiousData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolCopiousData_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolCopiousData_destructor(ptr);
+        }
     }
 }
 
@@ -25529,7 +25711,9 @@ pub use crate::ffi_types::IGESGeom_ToolCurveOnSurface as ToolCurveOnSurface;
 
 unsafe impl crate::CppDeletable for ToolCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -25692,7 +25876,9 @@ pub use crate::ffi_types::IGESGeom_ToolDirection as ToolDirection;
 
 unsafe impl crate::CppDeletable for ToolDirection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolDirection_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolDirection_destructor(ptr);
+        }
     }
 }
 
@@ -25843,7 +26029,9 @@ pub use crate::ffi_types::IGESGeom_ToolFlash as ToolFlash;
 
 unsafe impl crate::CppDeletable for ToolFlash {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolFlash_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolFlash_destructor(ptr);
+        }
     }
 }
 
@@ -26003,7 +26191,9 @@ pub use crate::ffi_types::IGESGeom_ToolLine as ToolLine;
 
 unsafe impl crate::CppDeletable for ToolLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolLine_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolLine_destructor(ptr);
+        }
     }
 }
 
@@ -26147,7 +26337,9 @@ pub use crate::ffi_types::IGESGeom_ToolOffsetCurve as ToolOffsetCurve;
 
 unsafe impl crate::CppDeletable for ToolOffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolOffsetCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolOffsetCurve_destructor(ptr);
+        }
     }
 }
 
@@ -26310,7 +26502,9 @@ pub use crate::ffi_types::IGESGeom_ToolOffsetSurface as ToolOffsetSurface;
 
 unsafe impl crate::CppDeletable for ToolOffsetSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolOffsetSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolOffsetSurface_destructor(ptr);
+        }
     }
 }
 
@@ -26461,7 +26655,9 @@ pub use crate::ffi_types::IGESGeom_ToolPlane as ToolPlane;
 
 unsafe impl crate::CppDeletable for ToolPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolPlane_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolPlane_destructor(ptr);
+        }
     }
 }
 
@@ -26612,7 +26808,9 @@ pub use crate::ffi_types::IGESGeom_ToolPoint as ToolPoint;
 
 unsafe impl crate::CppDeletable for ToolPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolPoint_destructor(ptr);
+        }
     }
 }
 
@@ -26763,7 +26961,9 @@ pub use crate::ffi_types::IGESGeom_ToolRuledSurface as ToolRuledSurface;
 
 unsafe impl crate::CppDeletable for ToolRuledSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolRuledSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolRuledSurface_destructor(ptr);
+        }
     }
 }
 
@@ -26914,7 +27114,9 @@ pub use crate::ffi_types::IGESGeom_ToolSplineCurve as ToolSplineCurve;
 
 unsafe impl crate::CppDeletable for ToolSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolSplineCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolSplineCurve_destructor(ptr);
+        }
     }
 }
 
@@ -27065,7 +27267,9 @@ pub use crate::ffi_types::IGESGeom_ToolSplineSurface as ToolSplineSurface;
 
 unsafe impl crate::CppDeletable for ToolSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolSplineSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolSplineSurface_destructor(ptr);
+        }
     }
 }
 
@@ -27216,7 +27420,9 @@ pub use crate::ffi_types::IGESGeom_ToolSurfaceOfRevolution as ToolSurfaceOfRevol
 
 unsafe impl crate::CppDeletable for ToolSurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolSurfaceOfRevolution_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolSurfaceOfRevolution_destructor(ptr);
+        }
     }
 }
 
@@ -27367,7 +27573,9 @@ pub use crate::ffi_types::IGESGeom_ToolTabulatedCylinder as ToolTabulatedCylinde
 
 unsafe impl crate::CppDeletable for ToolTabulatedCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolTabulatedCylinder_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolTabulatedCylinder_destructor(ptr);
+        }
     }
 }
 
@@ -27518,7 +27726,9 @@ pub use crate::ffi_types::IGESGeom_ToolTransformationMatrix as ToolTransformatio
 
 unsafe impl crate::CppDeletable for ToolTransformationMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolTransformationMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolTransformationMatrix_destructor(ptr);
+        }
     }
 }
 
@@ -27681,7 +27891,9 @@ pub use crate::ffi_types::IGESGeom_ToolTrimmedSurface as ToolTrimmedSurface;
 
 unsafe impl crate::CppDeletable for ToolTrimmedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_ToolTrimmedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_ToolTrimmedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -27837,7 +28049,9 @@ pub use crate::ffi_types::IGESGeom_TransformationMatrix as TransformationMatrix;
 
 unsafe impl crate::CppDeletable for TransformationMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_TransformationMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_TransformationMatrix_destructor(ptr);
+        }
     }
 }
 
@@ -28747,15 +28961,19 @@ pub use crate::ffi_types::HandleIGESGeomTransformationMatrix;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomTransformationMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomTransformationMatrix_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomTransformationMatrix_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomTransformationMatrix {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomTransformationMatrix_clone(
-            ptr,
-        ))
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESGeomTransformationMatrix_clone(ptr),
+            )
+        }
     }
 }
 
@@ -28838,7 +29056,9 @@ pub use crate::ffi_types::IGESGeom_TrimmedSurface as TrimmedSurface;
 
 unsafe impl crate::CppDeletable for TrimmedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::IGESGeom_TrimmedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::IGESGeom_TrimmedSurface_destructor(ptr);
+        }
     }
 }
 
@@ -29793,13 +30013,17 @@ pub use crate::ffi_types::HandleIGESGeomTrimmedSurface;
 
 unsafe impl crate::CppDeletable for HandleIGESGeomTrimmedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::HandleIGESGeomTrimmedSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::HandleIGESGeomTrimmedSurface_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleIGESGeomTrimmedSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomTrimmedSurface_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESGeomTrimmedSurface_clone(ptr))
+        }
     }
 }
 

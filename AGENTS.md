@@ -24,31 +24,3 @@ Never git commit unless explicitly asked to do so.
 When resolving git merge conflicts, any code in crates/opencascade-sys/generated is generated code and should be regenerated rather than trying to resolve conflicts.
 
 When converting code to use the new API, refer to crates/opencascade-sys/PORTING.md. Update that file as you discover new porting ideas or changes.
-
-## Chat Log Export
-
-After **every** commit, give a written summary of what you accomplished in this session, then
-export the current chat session to `agent-logs/`. Use this command exactly:
-`( ../vscode-export-chat-log/export-chat-log.py --wait && git add agent-logs/ && git commit --amend --no-edit ) &`
-
-## File Editing
-
-When reading files for editing, use `#tool:hashlineRead` instead of the
-built-in file read tool. It returns lines tagged with content hashes in the
-format `{lineNumber}:{hash}|{content}`.
-
-When editing files, use `#tool:hashlineEdit` instead of string-replace tools.
-Reference lines by their `{line}:{hash}` pairs from the read output. This
-avoids needing to reproduce existing file content and prevents edits to stale
-files.
-
-Example workflow:
-1. Read: `hashline_read({filePath: "src/app.ts", startLine: 1, endLine: 20})`
-   Returns: `1:qk|import React...`
-2. Edit: `hashline_edit({edits: [{filePath: "src/app.ts", lineHashes: "4:mp", content: "  return <div>Hello</div>;"}]})`
-
-Operations:
-- **Replace**: set `lineHashes` to all lines being replaced, `content` to new text
-- **Insert after**: set `insertAfter: true`, `lineHashes` to anchor line
-- **Delete**: set `content` to empty string
-- Multiple edits can be batched in one call across files

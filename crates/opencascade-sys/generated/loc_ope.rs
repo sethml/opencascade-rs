@@ -68,7 +68,9 @@ pub use crate::ffi_types::LocOpe_BuildShape as BuildShape;
 
 unsafe impl crate::CppDeletable for BuildShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_BuildShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_BuildShape_destructor(ptr);
+        }
     }
 }
 
@@ -121,7 +123,9 @@ pub use crate::ffi_types::LocOpe_BuildWires as BuildWires;
 
 unsafe impl crate::CppDeletable for BuildWires {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_BuildWires_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_BuildWires_destructor(ptr);
+        }
     }
 }
 
@@ -186,7 +190,9 @@ pub use crate::ffi_types::LocOpe_CSIntersector as CSIntersector;
 
 unsafe impl crate::CppDeletable for CSIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_CSIntersector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_destructor(ptr);
+        }
     }
 }
 
@@ -437,7 +443,9 @@ pub use crate::ffi_types::LocOpe_CurveShapeIntersector as CurveShapeIntersector;
 
 unsafe impl crate::CppDeletable for CurveShapeIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_destructor(ptr);
+        }
     }
 }
 
@@ -647,7 +655,9 @@ pub use crate::ffi_types::LocOpe_DPrism as DPrism;
 
 unsafe impl crate::CppDeletable for DPrism {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_DPrism_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_DPrism_destructor(ptr);
+        }
     }
 }
 
@@ -778,7 +788,9 @@ pub use crate::ffi_types::LocOpe_FindEdges as FindEdges;
 
 unsafe impl crate::CppDeletable for FindEdges {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_FindEdges_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_FindEdges_destructor(ptr);
+        }
     }
 }
 
@@ -860,7 +872,9 @@ pub use crate::ffi_types::LocOpe_FindEdgesInFace as FindEdgesInFace;
 
 unsafe impl crate::CppDeletable for FindEdgesInFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_FindEdgesInFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_FindEdgesInFace_destructor(ptr);
+        }
     }
 }
 
@@ -933,7 +947,9 @@ pub use crate::ffi_types::LocOpe_GeneratedShape as GeneratedShape;
 
 unsafe impl crate::CppDeletable for GeneratedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_destructor(ptr);
+        }
     }
 }
 
@@ -1116,13 +1132,17 @@ pub use crate::ffi_types::HandleLocOpeGeneratedShape;
 
 unsafe impl crate::CppDeletable for HandleLocOpeGeneratedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::HandleLocOpeGeneratedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::HandleLocOpeGeneratedShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLocOpeGeneratedShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeGeneratedShape_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeGeneratedShape_clone(ptr))
+        }
     }
 }
 
@@ -1191,7 +1211,9 @@ pub use crate::ffi_types::LocOpe_Generator as Generator;
 
 unsafe impl crate::CppDeletable for Generator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_Generator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Generator_destructor(ptr);
+        }
     }
 }
 
@@ -1291,7 +1313,9 @@ pub use crate::ffi_types::LocOpe_GluedShape as GluedShape;
 
 unsafe impl crate::CppDeletable for GluedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_GluedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_GluedShape_destructor(ptr);
+        }
     }
 }
 
@@ -1531,13 +1555,15 @@ pub use crate::ffi_types::HandleLocOpeGluedShape;
 
 unsafe impl crate::CppDeletable for HandleLocOpeGluedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLocOpeGluedShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_clone(ptr)) }
     }
 }
 
@@ -1601,7 +1627,9 @@ pub use crate::ffi_types::LocOpe_Gluer as Gluer;
 
 unsafe impl crate::CppDeletable for Gluer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_Gluer_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Gluer_destructor(ptr);
+        }
     }
 }
 
@@ -1746,7 +1774,9 @@ pub use crate::ffi_types::LocOpe_LinearForm as LinearForm;
 
 unsafe impl crate::CppDeletable for LinearForm {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_LinearForm_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_LinearForm_destructor(ptr);
+        }
     }
 }
 
@@ -1891,7 +1921,9 @@ pub use crate::ffi_types::LocOpe_Pipe as Pipe;
 
 unsafe impl crate::CppDeletable for Pipe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_Pipe_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Pipe_destructor(ptr);
+        }
     }
 }
 
@@ -2010,7 +2042,9 @@ pub use crate::ffi_types::LocOpe_PntFace as PntFace;
 
 unsafe impl crate::CppDeletable for PntFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_PntFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_PntFace_destructor(ptr);
+        }
     }
 }
 
@@ -2117,7 +2151,9 @@ pub use crate::ffi_types::LocOpe_Prism as Prism;
 
 unsafe impl crate::CppDeletable for Prism {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_Prism_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Prism_destructor(ptr);
+        }
     }
 }
 
@@ -2254,7 +2290,9 @@ pub use crate::ffi_types::LocOpe_Revol as Revol;
 
 unsafe impl crate::CppDeletable for Revol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_Revol_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Revol_destructor(ptr);
+        }
     }
 }
 
@@ -2407,7 +2445,9 @@ pub use crate::ffi_types::LocOpe_RevolutionForm as RevolutionForm;
 
 unsafe impl crate::CppDeletable for RevolutionForm {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_RevolutionForm_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_RevolutionForm_destructor(ptr);
+        }
     }
 }
 
@@ -2509,7 +2549,9 @@ pub use crate::ffi_types::LocOpe_SplitDrafts as SplitDrafts;
 
 unsafe impl crate::CppDeletable for SplitDrafts {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_destructor(ptr);
+        }
     }
 }
 
@@ -2667,7 +2709,9 @@ pub use crate::ffi_types::LocOpe_SplitShape as SplitShape;
 
 unsafe impl crate::CppDeletable for SplitShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_SplitShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_SplitShape_destructor(ptr);
+        }
     }
 }
 
@@ -2816,7 +2860,9 @@ pub use crate::ffi_types::LocOpe_Spliter as Spliter;
 
 unsafe impl crate::CppDeletable for Spliter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_Spliter_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Spliter_destructor(ptr);
+        }
     }
 }
 
@@ -2936,7 +2982,9 @@ pub use crate::ffi_types::LocOpe_WiresOnShape as WiresOnShape;
 
 unsafe impl crate::CppDeletable for WiresOnShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_destructor(ptr);
+        }
     }
 }
 
@@ -3289,13 +3337,17 @@ pub use crate::ffi_types::HandleLocOpeWiresOnShape;
 
 unsafe impl crate::CppDeletable for HandleLocOpeWiresOnShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFeat::HandleLocOpeWiresOnShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFeat::HandleLocOpeWiresOnShape_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleLocOpeWiresOnShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeWiresOnShape_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeWiresOnShape_clone(ptr))
+        }
     }
 }
 

@@ -33,7 +33,9 @@ pub use crate::ffi_types::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLi
 
 unsafe impl crate::CppDeletable for BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -168,7 +170,9 @@ pub use crate::ffi_types::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLine
 
 unsafe impl crate::CppDeletable for BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -392,7 +396,9 @@ pub use crate::ffi_types::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeL
 
 unsafe impl crate::CppDeletable for BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -689,7 +695,9 @@ pub use crate::ffi_types::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezie
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -824,7 +832,9 @@ pub use crate::ffi_types::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOf
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -959,7 +969,9 @@ pub use crate::ffi_types::GeomInt_IntSS as IntSS;
 
 unsafe impl crate::CppDeletable for IntSS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_IntSS_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_IntSS_destructor(ptr);
+        }
     }
 }
 
@@ -1385,7 +1397,9 @@ pub use crate::ffi_types::GeomInt_LineConstructor as LineConstructor;
 
 unsafe impl crate::CppDeletable for LineConstructor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_LineConstructor_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_LineConstructor_destructor(ptr);
+        }
     }
 }
 
@@ -1469,7 +1483,9 @@ pub use crate::ffi_types::GeomInt_LineTool as LineTool;
 
 unsafe impl crate::CppDeletable for LineTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_LineTool_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_LineTool_destructor(ptr);
+        }
     }
 }
 
@@ -1544,9 +1560,9 @@ pub use crate::ffi_types::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox as My
 
 unsafe impl crate::CppDeletable for MyBSplGradientOfTheComputeLineOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1695,9 +1711,9 @@ pub use crate::ffi_types::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox as 
 
 unsafe impl crate::CppDeletable for MyGradientOfTheComputeLineBezierOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1815,9 +1831,9 @@ pub use crate::ffi_types::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox as MyG
 
 unsafe impl crate::CppDeletable for MyGradientbisOfTheComputeLineOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -1939,7 +1955,9 @@ pub use crate::ffi_types::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierO
 
 unsafe impl crate::CppDeletable for ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -2118,7 +2136,9 @@ pub use crate::ffi_types::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWL
 
 unsafe impl crate::CppDeletable for ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -2297,7 +2317,9 @@ pub use crate::ffi_types::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezi
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -2594,7 +2616,9 @@ pub use crate::ffi_types::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineO
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -2891,7 +2915,9 @@ pub use crate::ffi_types::GeomInt_ParameterAndOrientation as ParameterAndOrienta
 
 unsafe impl crate::CppDeletable for ParameterAndOrientation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_ParameterAndOrientation_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_ParameterAndOrientation_destructor(ptr);
+        }
     }
 }
 
@@ -2975,7 +3001,9 @@ pub use crate::ffi_types::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezie
 
 unsafe impl crate::CppDeletable for ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -3100,7 +3128,9 @@ pub use crate::ffi_types::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOf
 
 unsafe impl crate::CppDeletable for ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -3225,7 +3255,9 @@ pub use crate::ffi_types::GeomInt_TheComputeLineBezierOfWLApprox as TheComputeLi
 
 unsafe impl crate::CppDeletable for TheComputeLineBezierOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_TheComputeLineBezierOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_TheComputeLineBezierOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -3839,7 +3871,9 @@ pub use crate::ffi_types::GeomInt_TheComputeLineOfWLApprox as TheComputeLineOfWL
 
 unsafe impl crate::CppDeletable for TheComputeLineOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_TheComputeLineOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_TheComputeLineOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -4499,7 +4533,9 @@ pub use crate::ffi_types::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWL
 
 unsafe impl crate::CppDeletable for TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -4691,7 +4727,9 @@ pub use crate::ffi_types::GeomInt_TheImpPrmSvSurfacesOfWLApprox as TheImpPrmSvSu
 
 unsafe impl crate::CppDeletable for TheImpPrmSvSurfacesOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_TheImpPrmSvSurfacesOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_TheImpPrmSvSurfacesOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -4900,9 +4938,9 @@ pub use crate::ffi_types::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox as The
 
 unsafe impl crate::CppDeletable for TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_destructor(
-            ptr,
-        );
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -5067,7 +5105,9 @@ pub use crate::ffi_types::GeomInt_TheMultiLineOfWLApprox as TheMultiLineOfWLAppr
 
 unsafe impl crate::CppDeletable for TheMultiLineOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_TheMultiLineOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_TheMultiLineOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -5159,24 +5199,26 @@ impl TheMultiLineOfWLApprox {
         P2DOnFirst: bool,
         IndMin: i32,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_handleintpatchwline_address_int2_bool2_real7_bool_int2(
-            line,
-            PtrSvSurfaces,
-            NbP3d,
-            NbP2d,
-            ApproxU1V1,
-            ApproxU2V2,
-            xo,
-            yo,
-            zo,
-            u1o,
-            v1o,
-            u2o,
-            v2o,
-            P2DOnFirst,
-            IndMin,
-            0,
-        )
+        unsafe {
+            Self::new_handleintpatchwline_address_int2_bool2_real7_bool_int2(
+                line,
+                PtrSvSurfaces,
+                NbP3d,
+                NbP2d,
+                ApproxU1V1,
+                ApproxU2V2,
+                xo,
+                yo,
+                zo,
+                u1o,
+                v1o,
+                u2o,
+                v2o,
+                P2DOnFirst,
+                IndMin,
+                0,
+            )
+        }
     }
 
     /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:48 - `GeomInt_TheMultiLineOfWLApprox::GeomInt_TheMultiLineOfWLApprox()`
@@ -5202,24 +5244,26 @@ impl TheMultiLineOfWLApprox {
         v2o: f64,
         P2DOnFirst: bool,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_handleintpatchwline_address_int2_bool2_real7_bool_int2(
-            line,
-            PtrSvSurfaces,
-            NbP3d,
-            NbP2d,
-            ApproxU1V1,
-            ApproxU2V2,
-            xo,
-            yo,
-            zo,
-            u1o,
-            v1o,
-            u2o,
-            v2o,
-            P2DOnFirst,
-            0,
-            0,
-        )
+        unsafe {
+            Self::new_handleintpatchwline_address_int2_bool2_real7_bool_int2(
+                line,
+                PtrSvSurfaces,
+                NbP3d,
+                NbP2d,
+                ApproxU1V1,
+                ApproxU2V2,
+                xo,
+                yo,
+                zo,
+                u1o,
+                v1o,
+                u2o,
+                v2o,
+                P2DOnFirst,
+                0,
+                0,
+            )
+        }
     }
 
     /// **Source:** `GeomInt_TheMultiLineOfWLApprox.hxx`:66 - `GeomInt_TheMultiLineOfWLApprox::GeomInt_TheMultiLineOfWLApprox()`
@@ -5465,7 +5509,9 @@ pub use crate::ffi_types::GeomInt_TheMultiLineToolOfWLApprox as TheMultiLineTool
 
 unsafe impl crate::CppDeletable for TheMultiLineToolOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_TheMultiLineToolOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_TheMultiLineToolOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -5691,7 +5737,9 @@ pub use crate::ffi_types::GeomInt_ThePrmPrmSvSurfacesOfWLApprox as ThePrmPrmSvSu
 
 unsafe impl crate::CppDeletable for ThePrmPrmSvSurfacesOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_ThePrmPrmSvSurfacesOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -5870,7 +5918,9 @@ pub use crate::ffi_types::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox a
 
 unsafe impl crate::CppDeletable for TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_destructor(ptr);
+        }
     }
 }
 
@@ -6081,7 +6131,9 @@ pub use crate::ffi_types::GeomInt_WLApprox as WLApprox;
 
 unsafe impl crate::CppDeletable for WLApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::GeomInt_WLApprox_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_WLApprox_destructor(ptr);
+        }
     }
 }
 

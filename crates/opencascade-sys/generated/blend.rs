@@ -89,7 +89,9 @@ pub use crate::ffi_types::Blend_AppFunction as AppFunction;
 
 unsafe impl crate::CppDeletable for AppFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::Blend_AppFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::Blend_AppFunction_destructor(ptr);
+        }
     }
 }
 
@@ -520,7 +522,9 @@ pub use crate::ffi_types::Blend_CSFunction as CSFunction;
 
 unsafe impl crate::CppDeletable for CSFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::Blend_CSFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::Blend_CSFunction_destructor(ptr);
+        }
     }
 }
 
@@ -1058,7 +1062,9 @@ pub use crate::ffi_types::Blend_CurvPointFuncInv as CurvPointFuncInv;
 
 unsafe impl crate::CppDeletable for CurvPointFuncInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_destructor(ptr);
+        }
     }
 }
 
@@ -1248,7 +1254,9 @@ pub use crate::ffi_types::Blend_FuncInv as FuncInv;
 
 unsafe impl crate::CppDeletable for FuncInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::Blend_FuncInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::Blend_FuncInv_destructor(ptr);
+        }
     }
 }
 
@@ -1437,7 +1445,9 @@ pub use crate::ffi_types::Blend_Function as Function;
 
 unsafe impl crate::CppDeletable for Function {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::Blend_Function_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::Blend_Function_destructor(ptr);
+        }
     }
 }
 
@@ -1908,7 +1918,9 @@ pub use crate::ffi_types::Blend_Point as Point;
 
 unsafe impl crate::CppDeletable for Point {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::Blend_Point_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::Blend_Point_destructor(ptr);
+        }
     }
 }
 
@@ -2591,7 +2603,9 @@ pub use crate::ffi_types::Blend_RstRstFunction as RstRstFunction;
 
 unsafe impl crate::CppDeletable for RstRstFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::Blend_RstRstFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_destructor(ptr);
+        }
     }
 }
 
@@ -3200,7 +3214,9 @@ pub use crate::ffi_types::Blend_SurfCurvFuncInv as SurfCurvFuncInv;
 
 unsafe impl crate::CppDeletable for SurfCurvFuncInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_destructor(ptr);
+        }
     }
 }
 
@@ -3390,7 +3406,9 @@ pub use crate::ffi_types::Blend_SurfPointFuncInv as SurfPointFuncInv;
 
 unsafe impl crate::CppDeletable for SurfPointFuncInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_destructor(ptr);
+        }
     }
 }
 
@@ -3577,7 +3595,9 @@ pub use crate::ffi_types::Blend_SurfRstFunction as SurfRstFunction;
 
 unsafe impl crate::CppDeletable for SurfRstFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKFillet::Blend_SurfRstFunction_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_destructor(ptr);
+        }
     }
 }
 

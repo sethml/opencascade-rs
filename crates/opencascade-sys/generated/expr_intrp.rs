@@ -18,7 +18,9 @@ pub use crate::ffi_types::ExprIntrp_Analysis as Analysis;
 
 unsafe impl crate::CppDeletable for Analysis {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::ExprIntrp_Analysis_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_destructor(ptr);
+        }
     }
 }
 
@@ -205,7 +207,9 @@ pub use crate::ffi_types::ExprIntrp_GenExp as GenExp;
 
 unsafe impl crate::CppDeletable for GenExp {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::ExprIntrp_GenExp_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_GenExp_destructor(ptr);
+        }
     }
 }
 
@@ -446,13 +450,17 @@ pub use crate::ffi_types::HandleExprIntrpGenExp;
 
 unsafe impl crate::CppDeletable for HandleExprIntrpGenExp {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::HandleExprIntrpGenExp_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprIntrpGenExp_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExprIntrpGenExp {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenExp_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenExp_clone(ptr))
+        }
     }
 }
 
@@ -519,7 +527,9 @@ pub use crate::ffi_types::ExprIntrp_GenFct as GenFct;
 
 unsafe impl crate::CppDeletable for GenFct {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::ExprIntrp_GenFct_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_GenFct_destructor(ptr);
+        }
     }
 }
 
@@ -746,13 +756,17 @@ pub use crate::ffi_types::HandleExprIntrpGenFct;
 
 unsafe impl crate::CppDeletable for HandleExprIntrpGenFct {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExprIntrpGenFct {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_clone(ptr))
+        }
     }
 }
 
@@ -818,7 +832,9 @@ pub use crate::ffi_types::ExprIntrp_GenRel as GenRel;
 
 unsafe impl crate::CppDeletable for GenRel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::ExprIntrp_GenRel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_GenRel_destructor(ptr);
+        }
     }
 }
 
@@ -1059,13 +1075,17 @@ pub use crate::ffi_types::HandleExprIntrpGenRel;
 
 unsafe impl crate::CppDeletable for HandleExprIntrpGenRel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::HandleExprIntrpGenRel_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprIntrpGenRel_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExprIntrpGenRel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenRel_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenRel_clone(ptr))
+        }
     }
 }
 
@@ -1131,7 +1151,9 @@ pub use crate::ffi_types::ExprIntrp_Generator as Generator;
 
 unsafe impl crate::CppDeletable for Generator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::ExprIntrp_Generator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_Generator_destructor(ptr);
+        }
     }
 }
 
@@ -1351,13 +1373,17 @@ pub use crate::ffi_types::HandleExprIntrpGenerator;
 
 unsafe impl crate::CppDeletable for HandleExprIntrpGenerator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExprIntrpGenerator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_clone(ptr))
+        }
     }
 }
 
@@ -1464,7 +1490,9 @@ pub use crate::ffi_types::ExprIntrp_SyntaxError as SyntaxError;
 
 unsafe impl crate::CppDeletable for SyntaxError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_destructor(ptr);
+        }
     }
 }
 
@@ -1735,13 +1763,17 @@ pub use crate::ffi_types::HandleExprIntrpSyntaxError;
 
 unsafe impl crate::CppDeletable for HandleExprIntrpSyntaxError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleExprIntrpSyntaxError {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_clone(ptr))
+        }
     }
 }
 

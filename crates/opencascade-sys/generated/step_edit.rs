@@ -88,7 +88,9 @@ pub use crate::ffi_types::STEPEdit_EditContext as EditContext;
 
 unsafe impl crate::CppDeletable for EditContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPEdit_EditContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPEdit_EditContext_destructor(ptr);
+        }
     }
 }
 
@@ -508,13 +510,17 @@ pub use crate::ffi_types::HandleSTEPEditEditContext;
 
 unsafe impl crate::CppDeletable for HandleSTEPEditEditContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPEditEditContext_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPEditEditContext_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPEditEditContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPEditEditContext_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPEditEditContext_clone(ptr))
+        }
     }
 }
 
@@ -580,7 +586,9 @@ pub use crate::ffi_types::STEPEdit_EditSDR as EditSDR;
 
 unsafe impl crate::CppDeletable for EditSDR {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::STEPEdit_EditSDR_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::STEPEdit_EditSDR_destructor(ptr);
+        }
     }
 }
 
@@ -985,13 +993,15 @@ pub use crate::ffi_types::HandleSTEPEditEditSDR;
 
 unsafe impl crate::CppDeletable for HandleSTEPEditEditSDR {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDESTEP::HandleSTEPEditEditSDR_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDESTEP::HandleSTEPEditEditSDR_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleSTEPEditEditSDR {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPEditEditSDR_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPEditEditSDR_clone(ptr)) }
     }
 }
 

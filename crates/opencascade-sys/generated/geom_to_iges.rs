@@ -29,7 +29,9 @@ pub use crate::ffi_types::GeomToIGES_GeomCurve as GeomCurve;
 
 unsafe impl crate::CppDeletable for GeomCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_destructor(ptr);
+        }
     }
 }
 
@@ -272,13 +274,15 @@ pub use crate::ffi_types::GeomToIGES_GeomEntity as GeomEntity;
 
 unsafe impl crate::CppDeletable for GeomEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for GeomEntity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_clone(ptr)) }
     }
 }
 
@@ -352,7 +356,9 @@ pub use crate::ffi_types::GeomToIGES_GeomPoint as GeomPoint;
 
 unsafe impl crate::CppDeletable for GeomPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_destructor(ptr);
+        }
     }
 }
 
@@ -492,7 +498,9 @@ pub use crate::ffi_types::GeomToIGES_GeomSurface as GeomSurface;
 
 unsafe impl crate::CppDeletable for GeomSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_destructor(ptr);
+        }
     }
 }
 
@@ -970,7 +978,9 @@ pub use crate::ffi_types::GeomToIGES_GeomVector as GeomVector;
 
 unsafe impl crate::CppDeletable for GeomVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_destructor(ptr);
+        }
     }
 }
 

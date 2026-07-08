@@ -138,7 +138,9 @@ pub use crate::ffi_types::CDF_Application as Application;
 
 unsafe impl crate::CppDeletable for Application {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::CDF_Application_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::CDF_Application_destructor(ptr);
+        }
     }
 }
 
@@ -652,13 +654,15 @@ pub use crate::ffi_types::HandleCDFApplication;
 
 unsafe impl crate::CppDeletable for HandleCDFApplication {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::HandleCDFApplication_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::HandleCDFApplication_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleCDFApplication {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::HandleCDFApplication_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::HandleCDFApplication_clone(ptr)) }
     }
 }
 
@@ -813,7 +817,9 @@ pub use crate::ffi_types::CDF_Directory as Directory;
 
 unsafe impl crate::CppDeletable for Directory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::CDF_Directory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::CDF_Directory_destructor(ptr);
+        }
     }
 }
 
@@ -999,13 +1005,15 @@ pub use crate::ffi_types::HandleCDFDirectory;
 
 unsafe impl crate::CppDeletable for HandleCDFDirectory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::HandleCDFDirectory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::HandleCDFDirectory_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleCDFDirectory {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::HandleCDFDirectory_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::HandleCDFDirectory_clone(ptr)) }
     }
 }
 
@@ -1056,7 +1064,9 @@ pub use crate::ffi_types::CDF_DirectoryIterator as DirectoryIterator;
 
 unsafe impl crate::CppDeletable for DirectoryIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::CDF_DirectoryIterator_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::CDF_DirectoryIterator_destructor(ptr);
+        }
     }
 }
 
@@ -1120,7 +1130,9 @@ pub use crate::ffi_types::CDF_FWOSDriver as FWOSDriver;
 
 unsafe impl crate::CppDeletable for FWOSDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::CDF_FWOSDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1452,13 +1464,15 @@ pub use crate::ffi_types::HandleCDFFWOSDriver;
 
 unsafe impl crate::CppDeletable for HandleCDFFWOSDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::HandleCDFFWOSDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::HandleCDFFWOSDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleCDFFWOSDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::HandleCDFFWOSDriver_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::HandleCDFFWOSDriver_clone(ptr)) }
     }
 }
 
@@ -1524,7 +1538,9 @@ pub use crate::ffi_types::CDF_MetaDataDriver as MetaDataDriver;
 
 unsafe impl crate::CppDeletable for MetaDataDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::CDF_MetaDataDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_destructor(ptr);
+        }
     }
 }
 
@@ -1922,13 +1938,15 @@ pub use crate::ffi_types::HandleCDFMetaDataDriver;
 
 unsafe impl crate::CppDeletable for HandleCDFMetaDataDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::HandleCDFMetaDataDriver_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::HandleCDFMetaDataDriver_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleCDFMetaDataDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::HandleCDFMetaDataDriver_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::HandleCDFMetaDataDriver_clone(ptr)) }
     }
 }
 
@@ -1997,7 +2015,9 @@ pub use crate::ffi_types::CDF_MetaDataDriverFactory as MetaDataDriverFactory;
 
 unsafe impl crate::CppDeletable for MetaDataDriverFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_destructor(ptr);
+        }
     }
 }
 
@@ -2139,13 +2159,17 @@ pub use crate::ffi_types::HandleCDFMetaDataDriverFactory;
 
 unsafe impl crate::CppDeletable for HandleCDFMetaDataDriverFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::HandleCDFMetaDataDriverFactory_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::HandleCDFMetaDataDriverFactory_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleCDFMetaDataDriverFactory {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::HandleCDFMetaDataDriverFactory_clone(ptr))
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKCDF::HandleCDFMetaDataDriverFactory_clone(ptr))
+        }
     }
 }
 
@@ -2198,7 +2222,9 @@ pub use crate::ffi_types::CDF_Store as Store;
 
 unsafe impl crate::CppDeletable for Store {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::CDF_Store_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::CDF_Store_destructor(ptr);
+        }
     }
 }
 
@@ -2454,7 +2480,9 @@ pub use crate::ffi_types::CDF_StoreList as StoreList;
 
 unsafe impl crate::CppDeletable for StoreList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::CDF_StoreList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::CDF_StoreList_destructor(ptr);
+        }
     }
 }
 
@@ -2647,13 +2675,15 @@ pub use crate::ffi_types::HandleCDFStoreList;
 
 unsafe impl crate::CppDeletable for HandleCDFStoreList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKCDF::HandleCDFStoreList_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKCDF::HandleCDFStoreList_destructor(ptr);
+        }
     }
 }
 
 unsafe impl crate::CppCopyable for HandleCDFStoreList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        crate::check_result(crate::ffi_extern_TKCDF::HandleCDFStoreList_clone(ptr))
+        unsafe { crate::check_result(crate::ffi_extern_TKCDF::HandleCDFStoreList_clone(ptr)) }
     }
 }
 

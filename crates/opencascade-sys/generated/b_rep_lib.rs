@@ -645,7 +645,9 @@ pub use crate::ffi_types::BRepLib_CheckCurveOnSurface as CheckCurveOnSurface;
 
 unsafe impl crate::CppDeletable for CheckCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_CheckCurveOnSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_CheckCurveOnSurface_destructor(ptr);
+        }
     }
 }
 
@@ -777,7 +779,9 @@ pub use crate::ffi_types::BRepLib_Command as Command;
 
 unsafe impl crate::CppDeletable for Command {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_Command_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_Command_destructor(ptr);
+        }
     }
 }
 
@@ -827,7 +831,9 @@ pub use crate::ffi_types::BRepLib_FindSurface as FindSurface;
 
 unsafe impl crate::CppDeletable for FindSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_FindSurface_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_FindSurface_destructor(ptr);
+        }
     }
 }
 
@@ -994,7 +1000,9 @@ pub use crate::ffi_types::BRepLib_FuseEdges as FuseEdges;
 
 unsafe impl crate::CppDeletable for FuseEdges {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_FuseEdges_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_FuseEdges_destructor(ptr);
+        }
     }
 }
 
@@ -1150,7 +1158,9 @@ pub use crate::ffi_types::BRepLib_MakeEdge as MakeEdge;
 
 unsafe impl crate::CppDeletable for MakeEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_MakeEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_MakeEdge_destructor(ptr);
+        }
     }
 }
 
@@ -1938,7 +1948,9 @@ pub use crate::ffi_types::BRepLib_MakeEdge2d as MakeEdge2d;
 
 unsafe impl crate::CppDeletable for MakeEdge2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_MakeEdge2d_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_MakeEdge2d_destructor(ptr);
+        }
     }
 }
 
@@ -2560,7 +2572,9 @@ pub use crate::ffi_types::BRepLib_MakeFace as MakeFace;
 
 unsafe impl crate::CppDeletable for MakeFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_MakeFace_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_MakeFace_destructor(ptr);
+        }
     }
 }
 
@@ -3164,7 +3178,9 @@ pub use crate::ffi_types::BRepLib_MakePolygon as MakePolygon;
 
 unsafe impl crate::CppDeletable for MakePolygon {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_MakePolygon_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_MakePolygon_destructor(ptr);
+        }
     }
 }
 
@@ -3500,7 +3516,9 @@ pub use crate::ffi_types::BRepLib_MakeShape as MakeShape;
 
 unsafe impl crate::CppDeletable for MakeShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_MakeShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_MakeShape_destructor(ptr);
+        }
     }
 }
 
@@ -3657,7 +3675,9 @@ pub use crate::ffi_types::BRepLib_MakeShell as MakeShell;
 
 unsafe impl crate::CppDeletable for MakeShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_MakeShell_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_MakeShell_destructor(ptr);
+        }
     }
 }
 
@@ -3888,7 +3908,9 @@ pub use crate::ffi_types::BRepLib_MakeSolid as MakeSolid;
 
 unsafe impl crate::CppDeletable for MakeSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_MakeSolid_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_MakeSolid_destructor(ptr);
+        }
     }
 }
 
@@ -4115,7 +4137,9 @@ pub use crate::ffi_types::BRepLib_MakeVertex as MakeVertex;
 
 unsafe impl crate::CppDeletable for MakeVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_MakeVertex_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_MakeVertex_destructor(ptr);
+        }
     }
 }
 
@@ -4306,7 +4330,9 @@ pub use crate::ffi_types::BRepLib_MakeWire as MakeWire;
 
 unsafe impl crate::CppDeletable for MakeWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_MakeWire_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_MakeWire_destructor(ptr);
+        }
     }
 }
 
@@ -4588,7 +4614,9 @@ pub use crate::ffi_types::BRepLib_PointCloudShape as PointCloudShape;
 
 unsafe impl crate::CppDeletable for PointCloudShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_PointCloudShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_PointCloudShape_destructor(ptr);
+        }
     }
 }
 
@@ -4711,7 +4739,9 @@ pub use crate::ffi_types::BRepLib_ToolTriangulatedShape as ToolTriangulatedShape
 
 unsafe impl crate::CppDeletable for ToolTriangulatedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_ToolTriangulatedShape_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_ToolTriangulatedShape_destructor(ptr);
+        }
     }
 }
 
@@ -4769,7 +4799,9 @@ pub use crate::ffi_types::BRepLib_ValidateEdge as ValidateEdge;
 
 unsafe impl crate::CppDeletable for ValidateEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKTopAlgo::BRepLib_ValidateEdge_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepLib_ValidateEdge_destructor(ptr);
+        }
     }
 }
 

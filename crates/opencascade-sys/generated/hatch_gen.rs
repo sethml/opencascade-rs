@@ -80,7 +80,9 @@ pub use crate::ffi_types::HatchGen_Domain as Domain;
 
 unsafe impl crate::CppDeletable for Domain {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_destructor(ptr);
+        }
     }
 }
 
@@ -403,7 +405,9 @@ pub use crate::ffi_types::HatchGen_PointOnElement as PointOnElement;
 
 unsafe impl crate::CppDeletable for PointOnElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_destructor(ptr);
+        }
     }
 }
 
@@ -657,7 +661,9 @@ pub use crate::ffi_types::HatchGen_PointOnHatching as PointOnHatching;
 
 unsafe impl crate::CppDeletable for PointOnHatching {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_destructor(ptr);
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_destructor(ptr);
+        }
     }
 }
 
