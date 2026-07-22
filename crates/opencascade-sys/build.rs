@@ -178,10 +178,10 @@ impl OcctConfig {
         {
             let builtin_occt_path = occt_sys::occt_path();
 
-            // Skip building if OCCT appears to be already installed
-            // Check for a key library file to determine if build is needed
-            let marker_lib = builtin_occt_path.join("lib").join("libTKernel.a");
-            if !marker_lib.exists() {
+            // Skip building only if a prebuilt OCCT is present *and* its recorded
+            // source revision matches the current submodule. A marker-only check
+            // would silently reuse a stale tree after an OCCT version bump.
+            if !occt_sys::occt_is_up_to_date() {
                 occt_sys::build_occt();
             }
             // SAFETY: This build script is single-threaded, so there are no
